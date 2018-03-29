@@ -1,24 +1,24 @@
 ---
-title: "Apache Spark strukturált Streamelés Kafka az Azure Cosmos DB - az Azure HDInsight |} Microsoft Docs"
-description: "Útmutató Apache Spark strukturált Streaming adatokat olvasni az Apache Kafka, és a tárolás Azure Cosmos DB. Ebben a példában a HDInsight Spark a Jupyter notebook használatával adatok folyamatos átviteléhez."
+title: Apache Spark strukturált Streamelés Kafka az Azure Cosmos DB - az Azure HDInsight |} Microsoft Docs
+description: Útmutató Apache Spark strukturált Streaming adatokat olvasni az Apache Kafka, és a tárolás Azure Cosmos DB. Ebben a példában a HDInsight Spark a Jupyter notebook használatával adatok folyamatos átviteléhez.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/16/2018
+ms.date: 03/26/2018
 ms.author: larryfr
-ms.openlocfilehash: 55d0fb91c8a8b995a5b9369d762f5bd87cb086c9
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 7346a45cf04b50369cc7b853b985a8b0bc865493
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-spark-structured-streaming-with-kafka-and-azure-cosmos-db"></a>Válassza a Spark strukturált Kafka és Azure Cosmos DB Stream továbbítása
 
@@ -29,7 +29,7 @@ Azure Cosmos-adatbázis egy olyan globálisan elosztott, több modellre adatbáz
 Strukturált Spark streaming olyan adatfolyam feldolgozása a Spark SQL épül. Lehetővé teszi adatfolyam számítások express ugyanaz, mint a batch számítási statikus adatok. A strukturált Streaming további információkért lásd: a [strukturált Streaming programozási útmutató [Alpha]](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html) az Apache.org webhelyen.
 
 > [!IMPORTANT]
-> Ebben a példában HDInsight 3.6 Spark 2.1 használni. Strukturált Streaming tekinthető __alpha__ Spark 2.1-es verziójának.
+> Ebben a példában HDInsight 3.6 Spark 2.2 használni.
 >
 > A jelen dokumentumban leírt lépések, amely tartalmazza a Spark on HDInsight és egy HDInsight-fürt Kafka Azure erőforráscsoport-csoport létrehozása. Ezeken a fürtökön is egy Azure virtuális hálózatot, amely lehetővé teszi a Kafka közvetlenül kommunikálni a Spark-fürtön belül található a fürtön.
 >
@@ -48,7 +48,9 @@ Létrehozhat egy Azure virtuális hálózatra, Kafka, és a Spark-fürtök manu�
 
 1. A következő gomb segítségével jelentkezzen be az Azure-ba, és nyissa meg a sablon az Azure portálon.
     
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-spark-scala-kafka-cosmosdb%2Fmaster%2Fazuredeploy.json" target="_blank"> <img src="http://azuredeploy.net/deploybutton.png"/> </a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-spark-scala-kafka-cosmosdb%2Fmaster%2Fazuredeploy.json" target="_blank">
+    <img src="http://azuredeploy.net/deploybutton.png"/>
+    </a>
 
     A GitHub-tárházban, ebben a projektben található, az Azure Resource Manager-sablon ([https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb)).
 
@@ -60,6 +62,9 @@ Létrehozhat egy Azure virtuális hálózatra, Kafka, és a Spark-fürtök manu�
 
     * Egy Azure virtuális hálózatot, amely a HDInsight-fürtöt tartalmaz.
 
+        > [!NOTE]
+        > A virtuális hálózat, a sablon által létrehozott 10.0.0.0/16 címterület használja.
+
     * Egy Azure Cosmos DB SQL API-adatbázis.
 
     > [!IMPORTANT]
@@ -67,13 +72,22 @@ Létrehozhat egy Azure virtuális hálózatra, Kafka, és a Spark-fürtök manu�
 
 2. A következő információk segítségével a feltöltik a **egyéni telepítési** szakasz:
    
-    ![HDInsight egyéni központi telepítés](./media/hdinsight-apache-spark-with-kafka/parameters.png)
+    ![HDInsight egyéni központi telepítés](./media/apache-kafka-spark-structured-streaming-cosmosdb/parameters.png)
+
+    * **Előfizetés**: Válassza ki az Azure-előfizetést.
    
     * **Erőforráscsoport**: hozzon létre egy csoportot, vagy válasszon egy meglévőt. Ez a csoport tartalmazza a HDInsight-fürthöz.
 
     * **Hely**: Adjon meg egy földrajzilag Önhöz legközelebb eső helyet.
 
-    * **Fürt neve kiinduló**: Ez az érték használható a Spark alap néven és Kafka fürtök. Ha például **hdi** hoz létre a Spark, spark-hdi__ nevű és egy Kafka fürtön nevű **kafka-hdi**.
+    * **Cosmos DB fióknév**: Ez az érték használható a Cosmos DB fiókja néven.
+
+    * **Fürt neve kiinduló**: Ez az érték használható a Spark alap néven és Kafka fürtök. Ha például **myhdi** hoz létre a Spark-fürt nevű __spark-myhdi__ és nevű Kafka fürt **kafka-myhdi**.
+
+    * **A fürt verzió**: A HDInsight-fürt verziószáma.
+
+        > [!IMPORTANT]
+        > Ebben a példában a HDInsight 3.6 szolgáltatás tesztelése, és más fürttípusok nem működik.
 
     * **A fürt bejelentkezési felhasználónevét**: A rendszergazda felhasználóneve a Spark és Kafka fürt.
 
@@ -87,12 +101,51 @@ Létrehozhat egy Azure virtuális hálózatra, Kafka, és a Spark-fürtök manu�
 
 4. Végül ellenőrizze **rögzítés az irányítópulton** majd **beszerzési**. A fürt létrehozása nagyjából 20 percet vesz igénybe.
 
-Az erőforrások létrehozása után, egy összegző lap is megjelenik.
+> [!IMPORTANT]
+> A fürtök, a virtuális hálózat és a Cosmos DB-fiók létrehozása akár 45 percet is igénybe vehet.
 
-![A virtuális hálózat és a fürtök csoport erőforrásadatok](./media/hdinsight-apache-spark-with-kafka/groupblade.png)
+## <a name="create-the-cosmos-db-database-and-collection"></a>A Cosmos DB adatbázis és gyűjtemény létrehozása
+
+A projekt itt Cosmos-adatbázis tárolja az adatokat. Mielőtt futtatná a kódot, akkor először létre kell hoznia egy _adatbázis_ és _gyűjtemény_ Cosmos DB példányában. A dokumentum végpont is be kell olvasni és a _kulcs_ Cosmos DB kérelmek hitelesítéséhez szükséges. 
+
+Ehhez a egyirányú azt használja a [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest). A következő parancsfájl egy nevű adatbázist hoz létre `kafkadata` és nevű gyűjtemény `kafkacollection`. Ezután az elsődleges kulcs adja vissza.
+
+```azurecli
+#!/bin/bash
+
+# Replace 'myresourcegroup' with the name of your resource group
+resourceGroupName='myresourcegroup'
+# Replace 'mycosmosaccount' with the name of your Cosmos DB account name
+name='mycosmosaccount'
+
+# WARNING: If you change the databaseName or collectionName
+#          then you must update the values in the Jupyter notebook
+databaseName='kafkadata'
+collectionName='kafkacollection'
+
+# Create the database
+az cosmosdb database create --name $name --db-name $databaseName --resource-group $resourceGroupName
+# Create the collection
+az cosmosdb collection create --collection-name $collectionName --name $name --db-name $databaseName --resource-group $resourceGroupName
+
+# Get the endpoint
+az cosmosdb show --name $name --resource-group $resourceGroupName --query documentEndpoint
+
+# Get the primary key
+az cosmosdb list-keys --name $name --resource-group $resourceGroupName --query primaryMasterKey
+```
+
+A dokumentum végpont és az elsődleges kulcs adataira az alábbihoz hasonló:
+
+```text
+# endpoint
+"https://mycosmosaccount.documents.azure.com:443/"
+# key
+"YqPXw3RP7TsJoBF5imkYR0QNA02IrreNAlkrUMkL8EW94YHs41bktBhIgWq4pqj6HCGYijQKMRkCTsSaKUO2pw=="
+```
 
 > [!IMPORTANT]
-> Figyelje meg, hogy a HDInsight-fürtök neve **spark-BASENAME** és **kafka-BASENAME**, ahol BASENAME a sablonhoz megadott név. Ezeket a neveket a későbbi lépésekben használja, a fürtök történő csatlakozás során.
+> Mentse a végpont és a kulcs értékeit, szükség esetén a Jupyter notebookok a.
 
 ## <a name="get-the-kafka-brokers"></a>A Kafka brókerek beolvasása
 
@@ -102,22 +155,23 @@ Ebben a példában a kód Kafka broker a fürt állomásai között Kafka csatla
 $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 $clusterName = Read-Host -Prompt "Enter the Kafka cluster name"
 $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER" `
-    -Credential $creds
+    -Credential $creds `
+    -UseBasicParsing
 $respObj = ConvertFrom-Json $resp.Content
 $brokerHosts = $respObj.host_components.HostRoles.host_name[0..1]
 ($brokerHosts -join ":9092,") + ":9092"
 ```
+
+> [!NOTE]
+> A Bash példa vár `$CLUSTERNAME` magában foglalja a Kafka fürt nevét.
+>
+> Ez a példa a [jq](https://stedolan.github.io/jq/) segédprogram a JSON-dokumentum kívül az adatok.
 
 ```bash
 curl -u admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2
 ```
 
 Amikor a rendszer kéri, adja meg a jelszót a fürt (rendszergazda) bejelentkezési fiók
-
-> [!NOTE]
-> Ez a példa vár `$CLUSTERNAME` magában foglalja a Kafka fürt nevét.
->
-> Ez a példa a [jq](https://stedolan.github.io/jq/) segédprogram a JSON-dokumentum kívül az adatok.
 
 A kimenet az alábbi szöveghez hasonló:
 
@@ -127,7 +181,7 @@ Ezt az információt akkor menteni, mert használatban van ebben a dokumentumban
 
 ## <a name="get-the-notebooks"></a>A notebookok beolvasása
 
-A jelen dokumentumban ismertetett példa kódja megtalálható [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb).
+A jelen dokumentumban ismertetett példa kódja megtalálható [ https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb ](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb).
 
 ## <a name="upload-the-notebooks"></a>Töltse fel a notebookok
 

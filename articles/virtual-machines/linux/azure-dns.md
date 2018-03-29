@@ -1,6 +1,6 @@
 ---
-title: "DNS-név feloldása beállítások a Linux virtuális gépek Azure-ban"
-description: "Név feloldása forgatókönyvek a Linux virtuális gépek Azure IaaS, beleértve a megadott DNS-szolgáltatásokra, hibrid külső DNS- és Bring Your Own DNS-kiszolgáló."
+title: DNS-név feloldása beállítások a Linux virtuális gépek Azure-ban
+description: Név feloldása forgatókönyvek a Linux virtuális gépek Azure IaaS, beleértve a megadott DNS-szolgáltatásokra, hibrid külső DNS- és Bring Your Own DNS-kiszolgáló.
 services: virtual-machines
 documentationcenter: na
 author: RicksterCDN
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: cc06ee9305b4d3034154a0825c1aea53fe446f80
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a445de3e1bfbeb2cd2e5674418688d6bb610a3c2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>A DNS-névfeloldás beállítások a Linux virtuális gépek Azure-ban
 Azure alapértelmezés szerint a DNS-névfeloldás biztosít egy virtuális hálózaton lévő összes virtuális gépekhez. Valósíthatja meg a saját DNS-név feloldása megoldást a saját DNS-szolgáltatások konfigurálása a virtuális gépeken, amely az Azure futtatja. A következő forgatókönyvek segítséget válassza azt, amelyik a helyzetnek működik.
@@ -30,7 +30,7 @@ A névfeloldás, amelyekkel típusa attól függ, hogyan a virtuális gépek és
 
 A következő táblázat bemutatja a forgatókönyvek és a megfelelő név feloldása megoldások:
 
-| **A forgatókönyv** | **Megoldás** | **Utótag** |
+| **Scenario** | **Megoldás** | **Suffix** |
 | --- | --- | --- |
 | Névfeloldás szerepkörpéldányokat vagy az azonos virtuális hálózatban lévő virtuális gépek között |[Azure által biztosított névfeloldás](#azure-provided-name-resolution) |állomásnév vagy teljesen minősített tartománynevét (FQDN) |
 | Névfeloldás szerepkörpéldányokat vagy különböző virtuális hálózatokon lévő virtuális gépek között |Ügyfél által felügyelt DNS-kiszolgálók, amelyek az Azure-ban (DNS-proxy) megoldás virtuális hálózatok közötti lekérdezéseket. Lásd: [névfeloldáshoz a saját DNS-kiszolgáló](#name-resolution-using-your-own-dns-server). |Kizárólag az FQDN esetében |
@@ -82,7 +82,7 @@ Számos különböző DNS-, csomagok, például a dnsmasq, gyorsítótárazás �
 1. Telepítse a dnsmasq csomagot ("sudo yum telepítés dnsmasq").
 2. Engedélyezze a dnsmasq szolgáltatást ("systemctl engedélyezése dnsmasq.service").
 3. Indítsa el a dnsmasq szolgáltatást ("systemctl start dnsmasq.service").
-4. Adja hozzá a "név-tartománykiszolgálók 127.0.0.1; illesztenie" a "/etc/dhclient-eth0.conf".
+4. Add “prepend domain-name-servers 127.0.0.1;” to “/etc/dhclient-eth0.conf”.
 5. Indítsa újra a hálózati szolgáltatást ("szolgáltatás hálózati restart"), a gyorsítótár állítja be a helyi DNS-feloldó
 
 > [!NOTE]
@@ -112,7 +112,7 @@ A resolv.conf fájl jön létre automatikusan, és nem szerkeszthető. Adja hozz
 2. Futtassa a "netconfig update" frissítéséhez.
 
 **Az engedélyezetlen Wave szoftver (korábbi nevén OpenLogic) – centOS** (NetworkManager használ)
-1. Hozzáadása "echo"beállítások timeout:1 kísérletek: 5"" "/ etc/NetworkManager/dispatcher.d/11-dhclient".
+1. Hozzáadása "RES_OPTIONS"timeout:1 kísérletek: 5"=" "/ etc/sysconfig/hálózati".
 2. Futtassa a "szolgáltatás hálózati újraindítás" frissítéséhez.
 
 ## <a name="name-resolution-using-your-own-dns-server"></a>Névfeloldás a saját DNS-kiszolgáló használatával

@@ -1,8 +1,8 @@
 ---
-title: "Azure-erőforrások áthelyezése új előfizetés vagy az erőforrás csoport |} Microsoft Docs"
-description: "Azure Resource Manager segítségével az erőforrások áthelyezése egy új erőforráscsoportba vagy előfizetésbe."
+title: Azure-erőforrások áthelyezése új előfizetés vagy az erőforrás csoport |} Microsoft Docs
+description: Azure Resource Manager segítségével az erőforrások áthelyezése egy új erőforráscsoportba vagy előfizetésbe.
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 03/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: 4709ee707aa67c8de531b2b3e0b58dbed5c2667b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 94f11504597c127d505d103a417c3d78744d99d1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -87,6 +87,11 @@ Néhány fontos lépést végre kell hajtani az erőforrások áthelyezése elő
   az provider register --namespace Microsoft.Batch
   ```
 
+4. A fiók az erőforrások áthelyezése legalább a következő engedélyekkel kell rendelkeznie:
+
+   * **Microsoft.Resources/subscriptions/resourceGroups/moveResources/action** a forrás-erőforráscsoporton.
+   * **Microsoft.Resources/subscriptions/resourceGroups/write** meg a célként megadott erőforráscsoport.
+
 ## <a name="when-to-call-support"></a>Mikor érdemes az ügyfélszolgálat
 
 Áthelyezheti a legtöbb erőforrást ebben a cikkben szereplő önkiszolgáló műveletek révén. Használja az önkiszolgáló műveletek:
@@ -105,6 +110,7 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 
 * API Management
 * App Service apps (webalkalmazások) – lásd: [App Service korlátozásai](#app-service-limitations)
+* App Service-tanúsítvány
 * Application Insights
 * Automatizálás
 * Azure Cosmos DB
@@ -193,7 +199,9 @@ Virtuális hálózat nem helyezhető át egy másik előfizetésben található,
 
 ## <a name="app-service-limitations"></a>App Service korlátozásai
 
-A korlátozások vonatkoznak az App Service-erőforrások áthelyezésére attól függően változnak, hogy helyez át az erőforrásokat egy előfizetésen belül vagy egy új előfizetést.
+A korlátozások vonatkoznak az App Service-erőforrások áthelyezésére attól függően változnak, hogy helyez át az erőforrásokat egy előfizetésen belül vagy egy új előfizetést. 
+
+Az ezekben a szakaszokban ismertetett korlátozások érvényesek, a feltöltött tanúsítványok, nem App Service-tanúsítványokkal. App Service-tanúsítványokkal áthelyezése egy új erőforráscsoportot, vagy a korlátozások nélkül. Ha még több webes használó alkalmazások ugyanazt a alkalmazás Service tanúsítványt, először helyezze át a webes alkalmazások majd helyezze át a tanúsítványt.
 
 ### <a name="moving-within-the-same-subscription"></a>Egyazon előfizetésen belül
 

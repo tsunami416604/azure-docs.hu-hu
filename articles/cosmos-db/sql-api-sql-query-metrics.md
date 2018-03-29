@@ -1,9 +1,9 @@
 ---
-title: "SQL lekérdezés metrikák Azure Cosmos DB SQL API-hoz |} Microsoft Docs"
-description: "További tudnivalók állíthatnak be, és a hibakeresési Azure Cosmos DB kérelmek SQL lekérdezési teljesítményét."
-keywords: "SQL-szintaxis, sql-lekérdezést, az sql-lekérdezések, json lekérdezési nyelv, adatbázis fogalmait és az sql-lekérdezések, összesítő függvények"
+title: SQL lekérdezés metrikák Azure Cosmos DB SQL API-hoz |} Microsoft Docs
+description: További tudnivalók állíthatnak be, és a hibakeresési Azure Cosmos DB kérelmek SQL lekérdezési teljesítményét.
+keywords: SQL-szintaxis, sql-lekérdezést, az sql-lekérdezések, json lekérdezési nyelv, adatbázis fogalmait és az sql-lekérdezések, összesítő függvények
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: arramac
 manager: jhubbard
 editor: monicar
@@ -15,15 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: arramac
-ms.openlocfilehash: a2a42fd65ba4344f703ca423dc451802f3f0ac76
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: a92d2ed1686765a54812ff82066bc30c1d48848d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Az Azure Cosmos DB lekérdezési teljesítmény hangolása
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Az Azure Cosmos DB biztosít egy [SQL API-t a lekérdezésre adatok](sql-api-sql-query.md), anélkül, hogy a séma vagy másodlagos kulcsot. Ez a cikk a fejlesztők számára a következő adatokat tartalmazza:
 
@@ -150,8 +148,8 @@ Leggyakoribb Azure Cosmos DB lekérdezések teljesítményét befolyásoló tén
 | Kiosztott átviteli kapacitás | RU mérjük lekérdezésenként, és győződjön meg arról, hogy rendelkezik-e a szükséges kiosztott átviteli sebesség a lekérdezések. | 
 | Particionálás és partíciós kulcsok | A partíciós kulcs értékét a szűrőfeltételben az alacsony késleltetés az alkalmazást a lekérdezések. |
 | SDK-t és a lekérdezés beállításai | Kövesse a bevált gyakorlatokat SDK például közvetlen kapcsolatot, és az ügyféloldali lekérdezés végrehajtási beállítások hangolását. |
-| Hálózati késés | Protokollterhelés a mérési hálózati fiókot, és többhelyű API-k használata a legközelebbi régiót olvasni. |
-| Indexelési házirendet | Győződjön meg arról, hogy rendelkezik-e a szükséges indexelési elérési utak/házirendet a lekérdezéshez. |
+| Hálózati késleltetés | Protokollterhelés a mérési hálózati fiókot, és többhelyű API-k használata a legközelebbi régiót olvasni. |
+| Indexelési házirend | Győződjön meg arról, hogy rendelkezik-e a szükséges indexelési elérési utak/házirendet a lekérdezéshez. |
 | Lekérdezés-végrehajtási metrikák | Vizsgálja meg a lekérdezés végrehajtása metrikák lekérdezés- és alakzatok lehetséges újraírások azonosításához.  |
 
 ### <a name="provisioned-throughput"></a>Kiosztott átviteli kapacitás
@@ -191,7 +189,7 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
 ```
 
 #### <a name="max-degree-of-parallelism"></a>Párhuzamossági maximális fok
-A lekérdezések hangolja a `MaxDegreeOfParallelism` felismerésében a legjobb az alkalmazáshoz, különösen akkor, ha Ön lekérdezésére kereszt-partíció (nélkül egy szűrőt a partíciókulcs érték). `MaxDegreeOfParallelism`a feladatok maximális száma párhuzamos, azaz, a maximális száma párhuzamos látogatják partíciók szabályozza. 
+A lekérdezések hangolja a `MaxDegreeOfParallelism` felismerésében a legjobb az alkalmazáshoz, különösen akkor, ha Ön lekérdezésére kereszt-partíció (nélkül egy szűrőt a partíciókulcs érték). `MaxDegreeOfParallelism`  a feladatok maximális száma párhuzamos, azaz, a maximális száma párhuzamos látogatják partíciók szabályozza. 
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -217,7 +215,7 @@ Az alábbiakban hogyan a párhuzamos lekérdezések viselkednek a p különböz�
 
 Az SDK kibocsátási megjegyzéseket, és részleteket megvalósított osztályokat és metódusokat [SQL SDK-k](sql-api-sdk-dotnet.md)
 
-### <a name="network-latency"></a>Hálózati késés
+### <a name="network-latency"></a>Hálózati késleltetés
 Lásd: [Azure Cosmos DB globális terjesztési](tutorial-global-distribution-sql-api.md) globális terjesztési beállítása, és csatlakozzon a legközelebbi régiót. Hálózati késés jelentős hatással a lekérdezési teljesítményre van szüksége több üzenetváltások utak számát vagy a lekérdezés nagy eredményhalmazt beolvasása. 
 
 A lekérdezés végrehajtása mérőszámokat szakasz azt ismerteti, hogyan lekérdezések server végrehajtási idejének lekérdezésére ( `totalExecutionTimeInMs`), így meg tudja különböztetni a lekérdezés-végrehajtás töltött időt és az idő a hálózati átvitel során.
@@ -260,7 +258,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 | `retrievedDocumentSize` | bájt | A beolvasott dokumentumokat a bájtok teljes mérete  | 
 | `outputDocumentCount` | darab | Kimeneti dokumentumok száma | 
 | `writeOutputTimeInMs` | ezredmásodperc | Lekérdezés-végrehajtási idő ezredmásodpercben | 
-| `indexUtilizationRatio` | arány (< = 1) | A betöltött dokumentumok száma szűrőt egyező dokumentumok száma aránya  | 
+| `indexUtilizationRatio` | ratio (<=1) | A betöltött dokumentumok száma szűrőt egyező dokumentumok száma aránya  | 
 
 Az ügyfél SDK-k belső teheti több lekérdezési műveletek kiszolgálásához a lekérdezés minden partíción belül. Az ügyfél hívást egynél több partíciónkénti Ha meghaladja a teljes eredmények `x-ms-max-item-count`, ha a lekérdezés meghaladja a kiosztott átviteli sebesség a partíció található, vagy ha a lekérdezés forgalma eléri a maximális méretet egy oldalon, vagy ha a lekérdezés eléri a rendszer lefoglalt időkorlátja. Minden egyes részleges lekérdezés-végrehajtás adja vissza egy `x-ms-documentdb-query-metrics` lap. 
 
@@ -278,7 +276,7 @@ Az alábbiakban néhány mintalekérdezések, és a lekérdezés-végrehajtás v
 | `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(LOWER(c.Name), 'den')` | `"IndexLookupTime": "00:00:00", "RetrievedDocumentCount": 2491,  "OutputDocumentCount": 500` | Lekérdezést végrehajtja a rendszer egy vizsgálatot, mivel a program `LOWER`, és 500 2491 lekérdezése dokumentumból ad vissza. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A támogatott SQL-lekérdezési operátorok és kulcsszavak kapcsolatos további tudnivalókért lásd: [SQL-lekérdezés](sql-api-sql-query.md). 
 * Kapcsolatos további tudnivalókért lásd: [egységek kérelem](request-units.md).
 * Az indexelő házirenddel kapcsolatos további tudnivalókért lásd: [indexelő házirend](indexing-policies.md) 

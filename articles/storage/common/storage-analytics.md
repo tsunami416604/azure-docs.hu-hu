@@ -1,10 +1,10 @@
 ---
-title: "Azure Storage Analytics segítségével naplók és a metrikák adatgyűjtés |} Microsoft Docs"
-description: "Tárolási analitika lehetővé teszi a tárolási szolgáltatások metrikai adatok nyomon követésére, valamint gyűjtött naplók tárolására Blob, Queue és Table storage."
+title: Azure Storage Analytics segítségével naplók és a metrikák adatgyűjtés |} Microsoft Docs
+description: Tárolási analitika lehetővé teszi a tárolási szolgáltatások metrikai adatok nyomon követésére, valamint gyűjtött naplók tárolására Blob, Queue és Table storage.
 services: storage
-documentationcenter: 
-author: tamram
-manager: timlt
+documentationcenter: ''
+author: roygara
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 7894993b-ca42-4125-8f17-8f6dfe3dca76
 ms.service: storage
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/03/2017
-ms.author: tamram
-ms.openlocfilehash: 9ae9dd0b078911a695d441cd3891be720dc204ac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: rogarana
+ms.openlocfilehash: edda01cbfe1b53d934f9f4a7bb01c645fa680873
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
@@ -79,7 +79,7 @@ A következő táblázat ismerteti az egyes attribútumot a napló nevét.
 
 | Attribútum | Leírás |
 | --- | --- |
-| < szolgáltatásnév > |A storage szolgáltatás nevét. Például: blob, table vagy várólista. |
+| <service-name> |A storage szolgáltatás nevét. Például: blob, table vagy várólista. |
 | ÉÉÉÉ |A napló négyjegyű év. Például: 2011. |
 | MM |A napló kétjegyű hónap. Például: 07. |
 | DD |A napló kétjegyű hónap. Például: 07. |
@@ -95,7 +95,7 @@ Az alább látható egy minta URI, amelyet az előző naplóban eléréséhez ha
 
     https://<accountname>.blob.core.windows.net/$logs/blob/2011/07/31/1800/000001.log
 
-A tárolási kérés naplózásakor az eredményül kapott napló neve felel meg az órát, amikor a kért műveletet végrehajtani. Például, ha egy GetBlob kérés végre lett hajtva, 6:30-kor: a 7 31/2011 a napló tartalmazná meg a következő előtaggal:`blob/2011/07/31/1800/`
+A tárolási kérés naplózásakor az eredményül kapott napló neve felel meg az órát, amikor a kért műveletet végrehajtani. Például, ha egy GetBlob kérés végre lett hajtva, 6:30-kor: a 7 31/2011 a napló tartalmazná meg a következő előtaggal: `blob/2011/07/31/1800/`
 
 ### <a name="log-metadata"></a>Napló metaadatai
 Összes naplózási BLOB milyen naplózási adatokat tartalmaz a blob azonosítására használt metaadatok tárolódnak. A következő táblázat ismerteti az egyes metaadat-attribútum.
@@ -103,16 +103,16 @@ A tárolási kérés naplózásakor az eredményül kapott napló neve felel meg
 | Attribútum | Leírás |
 | --- | --- |
 | LogType |Ismerteti, hogy a napló tartalmaz-e olvasási, írási vagy törlési műveletek alkalmas adatok. Ez az érték egy típus vagy három, vesszővel elválasztva kombinációja tartalmazhatnak. 1. példa: írási; 2. példa: Olvasás, írás; 3. példa: Olvasás, írás, törölje. |
-| Kezdő időpont |A legkorábbi időpontot, amikor egy bejegyzés, éééé formájában-hh-SSz. Például: 2011-07-31T18:21:46Z. |
+| StartTime |A legkorábbi időpontot, amikor egy bejegyzés, éééé formájában-hh-SSz. Például: 2011-07-31T18:21:46Z. |
 | Befejezés időpontja |A naplóban éééé formájában bejegyzés legutóbbi időpont-hh-SSz. Például: 2011-07-31T18:22:09Z. |
 | LogVersion |A naplófájl formátumának verziója. Jelenleg az egyetlen támogatott érték 1.0. |
 
 Az alábbi listában megjeleníti az előző példák segítségével teljes mintát metaadatait.
 
-* LogType írási =
-* StartTime = 2011-07-31T18:21:46Z
-* EndTime = 2011-07-31T18:22:09Z
-* LogVersion = 1.0
+* LogType=write
+* StartTime=2011-07-31T18:21:46Z
+* EndTime=2011-07-31T18:22:09Z
+* LogVersion=1.0
 
 ### <a name="accessing-logging-data"></a>Naplózási adatok elérése
 Az összes adat a `$logs` tároló a Blob szolgáltatás API-k használatával is elérhetők, beleértve a .NET API-k, az Azure által biztosított felügyelt kódtárára. A tárolási fiók rendszergazdájához olvassa el és törölheti naplókat, de nem létrehozása vagy frissítse azokat. A napló metaadatai és a napló nevét is használható az naplók lekérdezésekor. Lehetséges, hogy egy adott óra naplók sorrendje, de a metaadatok mindig adja meg a naplóbejegyzések timespan egy naplóban. Ezért használható naplófájl nevét és a metaadatok az adott naplók keresésekor.
@@ -148,7 +148,7 @@ A teljesítmény-mérőszámait kapcsolatos további információkért lásd: [S
 ### <a name="how-metrics-are-stored"></a>Metrikák tárolási módját
 A tárolási szolgáltatások mindegyikének összes metrikai adatok három táblát, hogy a szolgáltatás számára fenntartott tárolja: tranzakció információt egy tábla, egy perc tranzakció információt, egy másik táblázat és kapacitás információt. Tranzakció és percben tranzakció információinak kérelem-válasz adatok áll, és kapacitásadatait tárolási használati adatok áll. Óra metrikákat, percenkénti metrikákat és a tárfiók a Blob szolgáltatás kapacitását érhetők el a következő táblázatban ismertetett módon nevű tábla.
 
-| Metrikák szint | Tábla neve | Támogatott verziók |
+| Metrikák szint | Táblanevek | Támogatott verziók |
 | --- | --- | --- |
 | Óránkénti metrika, elsődleges hely |$MetricsTransactionsBlob <br/>$MetricsTransactionsTable <br/> $MetricsTransactionsQueue |2013-08-15 csak korábbi verziók. Ezeket a neveket továbbra is támogatottak, váltson az alább felsorolt táblák használata ajánlott. |
 | Óránkénti metrika, elsődleges hely |$MetricsHourPrimaryTransactionsBlob <br/>$MetricsHourPrimaryTransactionsTable <br/>$MetricsHourPrimaryTransactionsQueue |Az összes verzió, beleértve a 2013-08-15. |
@@ -157,7 +157,7 @@ A tárolási szolgáltatások mindegyikének összes metrikai adatok három táb
 | Percenkénti metrikákat, másodlagos hely |$MetricsMinuteSecondaryTransactionsBlob <br/>$MetricsMinuteSecondaryTransactionsTable <br/>$MetricsMinuteSecondaryTransactionsQueue |Az összes verzió, beleértve a 2013-08-15. Írásvédett georedundáns replikáció engedélyezve kell lennie. |
 | Kapacitás (csak a Blob szolgáltatás) |$MetricsCapacityBlob |Az összes verzió, beleértve a 2013-08-15. |
 
-Ezek a táblázatok jönnek létre automatikusan tárolási analitika engedélyezve van a tárfiók. Hozzáférhetők keresztül a névtér a tárfiók, például:`https://<accountname>.table.core.windows.net/Tables("$MetricsTransactionsBlob")`
+Ezek a táblázatok jönnek létre automatikusan tárolási analitika engedélyezve van a tárfiók. Hozzáférhetők keresztül a névtér a tárfiók, például: `https://<accountname>.table.core.windows.net/Tables("$MetricsTransactionsBlob")`
 
 ### <a name="accessing-metrics-data"></a>Metrikai adatok elérése
 A metrikák táblák összes adatot a Table szolgáltatás API-k használatával is elérhetők, beleértve a .NET API-k, az Azure által biztosított felügyelt kódtárára. A tárolási fiók rendszergazdájához olvassa el és törölheti táblaentitásokat, de nem létrehozása vagy frissítse azokat.
@@ -177,7 +177,7 @@ Egy fiók társzolgáltatás intézett kérelmek számlázható, vagy nem száml
 
 Tárolási analitikai adatok megnézi, használhatja a táblázatok a [Storage Analytics naplózott műveletekkel és az állapotüzenetek](https://msdn.microsoft.com/library/azure/hh343260.aspx) annak meghatározására, hogy mely kérelmek számlázható témakör. Ezután összehasonlíthatja a naplókat és az állapotüzenetek megtekintéséhez, ha Ön volt szó, a egy adott kérés metrikák adatokat. Vizsgálja meg a rendelkezésre állási tárolási szolgáltatás vagy egyéni API-művelet az előző témakörben is használhatja a táblák.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 ### <a name="setting-up-storage-analytics"></a>Tárolási analitika beállítása
 * [A figyelő egy tárfiókot az Azure portálon](storage-monitor-storage-account.md)
 * [Engedélyezése és konfigurálása a tárolási analitika](https://msdn.microsoft.com/library/hh360996.aspx)

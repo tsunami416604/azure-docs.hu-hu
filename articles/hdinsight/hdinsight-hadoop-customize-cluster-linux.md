@@ -1,8 +1,8 @@
 ---
-title: "A Parancsfájlműveletek - Azure HDInsight-fürtök testreszabása |} Microsoft Docs"
-description: "Linux-alapú HDInsight-fürtök Parancsfájlműveletek segítségével egyéni összetevők hozzáadása. A Parancsfájlműveletek olyan Bash parancsfájlok, amelyek segítségével testre szabhatja a fürtkonfiguráció, vagy adja hozzá a további szolgáltatások és segédprogramok Hue, Solr vagy R."
+title: A Parancsfájlműveletek - Azure HDInsight-fürtök testreszabása |} Microsoft Docs
+description: Linux-alapú HDInsight-fürtök Parancsfájlműveletek segítségével egyéni összetevők hozzáadása. A Parancsfájlműveletek olyan Bash parancsfájlok, amelyek segítségével testre szabhatja a fürtkonfiguráció, vagy adja hozzá a további szolgáltatások és segédprogramok Hue, Solr vagy R.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: larryfr
-ms.openlocfilehash: 42bf760b793f3c035a766c4d39524e03c1cbe6ee
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: bc8078a1681b8977a0748f633df02beb2f2bdc8a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>A Parancsfájlműveletek Linux-alapú HDInsight-fürtök testreszabása
 
@@ -210,17 +210,19 @@ Ez a szakasz a különböző módszereket, Parancsfájlműveletek létrehozása 
 
 ### <a name="use-a-script-action-from-azure-resource-manager-templates"></a>Egy parancsfájlművelettel Azure Resource Manager-sablonok alapján
 
-A Parancsfájlműveletek Azure Resource Manager sablonokban használható. Egy vonatkozó példáért lásd: [https://azure.microsoft.com/resources/templates/hdinsight-linux-run-script-action/](https://azure.microsoft.com/en-us/resources/templates/hdinsight-linux-run-script-action/).
+A Parancsfájlműveletek Azure Resource Manager sablonokban használható. Egy vonatkozó példáért lásd: [ https://azure.microsoft.com/resources/templates/hdinsight-linux-run-script-action/ ](https://azure.microsoft.com/en-us/resources/templates/hdinsight-linux-run-script-action/).
 
 Ebben a példában a parancsfájlművelet hozzáadása a következő kódot:
 
-    "scriptActions": [
-        {
-            "name": "setenvironmentvariable",
-            "uri": "[parameters('scriptActionUri')]",
-            "parameters": "headnode"
-        }
-    ]
+```json
+"scriptActions": [
+    {
+        "name": "setenvironmentvariable",
+        "uri": "[parameters('scriptActionUri')]",
+        "parameters": "headnode"
+    }
+]
+```
 
 Egy sablon telepítésének módjáról további információkért lásd a következő dokumentumokat:
 
@@ -305,15 +307,21 @@ A folytatás előtt győződjön meg arról, hogy telepítette és konfigurálta
 
 1. Váltson Azure Resource Manager módra, használja a következő parancsot a parancssorból:
 
-        azure config mode arm
+    ```bash
+    azure config mode arm
+    ```
 
 2. Használja a következő hitelesítéséhez az Azure-előfizetéshez.
 
-        azure login
+    ```bash
+    azure login
+    ```
 
 3. A következő paranccsal egy parancsfájlművelet alkalmazandó működő fürthöz
 
-        azure hdinsight script-action create <clustername> -g <resourcegroupname> -n <scriptname> -u <scriptURI> -t <nodetypes>
+    ```bash
+    azure hdinsight script-action create <clustername> -g <resourcegroupname> -n <scriptname> -u <scriptURI> -t <nodetypes>
+    ```
 
     Ha nincs megadva ez a parancs paramétereit, kéri azokat. Ha a parancsfájl adja meg a `-u` fogad el paramétert, is megadhat használatával a `-p` paraméter.
 
@@ -337,7 +345,7 @@ Lásd: [Parancsfájlműveletek futtatása a futó fürtön](https://msdn.microso
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-hdinsight-net-sdk"></a>A parancsfájlművelet alkalmazása futó fürt a HDInsight .NET SDK-ból
 
-A .NET SDK használatával parancsfájlok alkalmazása a fürt egy példát, lásd: [https://github.com/Azure-Samples/hdinsight-dotnet-script-action](https://github.com/Azure-Samples/hdinsight-dotnet-script-action).
+A .NET SDK használatával parancsfájlok alkalmazása a fürt egy példát, lásd: [ https://github.com/Azure-Samples/hdinsight-dotnet-script-action ](https://github.com/Azure-Samples/hdinsight-dotnet-script-action).
 
 ## <a name="view-history-promote-and-demote-script-actions"></a>Előzményeinek megtekintése, előléptetése és lefokozása Parancsfájlműveletek
 
@@ -396,7 +404,7 @@ Az alábbi példa parancsfájl bemutatja, a parancsmagok használatával léptet
 
 ### <a name="using-the-hdinsight-net-sdk"></a>A HDInsight .NET SDK használatával
 
-A .NET SDK használatával parancsfájl előzményeinek lekérése a fürt egy példát, előléptetni vagy parancsfájlok fokozni, lásd: [https://github.com/Azure-Samples/hdinsight-dotnet-script-action](https://github.com/Azure-Samples/hdinsight-dotnet-script-action).
+A .NET SDK használatával parancsfájl előzményeinek lekérése a fürt egy példát, előléptetni vagy parancsfájlok fokozni, lásd: [ https://github.com/Azure-Samples/hdinsight-dotnet-script-action ](https://github.com/Azure-Samples/hdinsight-dotnet-script-action).
 
 > [!NOTE]
 > Ez a példa is mutatja be a .NET SDK használatával HDInsight-alkalmazások telepítéséhez.
@@ -413,7 +421,7 @@ A HDInsight szolgáltatásban elérhető nyílt forráskódú összetevőinek k�
 > [!WARNING]
 > A HDInsight-fürt összetevői teljes mértékben támogatottak. Microsoft Support segít elkülöníteni, és ezeket az összetevőket kapcsolatos problémák megoldásához.
 >
-> Egyéni összetevők kapnak minden üzleti szempontból ésszerű támogatási segítséget nyújtanak a probléma további hibaelhárításához. Lehet, hogy a Microsoft támogatási szolgálatához tudja megoldani a problémát, vagy azok megkérheti, hogy a nyílt forráskódú technológiák, ahol a részletes segítséget, hogy a technológiát található elérhető csatorna kódolása. Például nincsenek sok közösségi webhelyek használható, például: [MSDN fórum hdinsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Is Apache projektek rendelkezik projekt helyek [http://apache.org](http://apache.org), például: [Hadoop](http://hadoop.apache.org/).
+> Egyéni összetevők kapnak minden üzleti szempontból ésszerű támogatási segítséget nyújtanak a probléma további hibaelhárításához. Lehet, hogy a Microsoft támogatási szolgálatához tudja megoldani a problémát, vagy azok megkérheti, hogy a nyílt forráskódú technológiák, ahol a részletes segítséget, hogy a technológiát található elérhető csatorna kódolása. Például nincsenek sok közösségi webhelyek használható, például: [MSDN fórum hdinsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Is Apache projektek rendelkezik projekt helyek [ http://apache.org ](http://apache.org), például: [Hadoop](http://hadoop.apache.org/).
 
 A HDInsight-szolgáltatás többféleképpen is egyéni összetevőket használnak. Az azonos szintű támogatást hogyan összetevőt használja, és a fürtön telepítve függetlenül érvényes. Az alábbi lista ismerteti a leggyakoribb módon, hogy a HDInsight-fürtök egyéni összetevők használható:
 
@@ -429,7 +437,7 @@ Ambari webes felhasználói felület segítségével Parancsfájlműveletek ált
 
 ### <a name="using-the-ambari-web-ui"></a>Az Ambari webes felhasználói felület használatával
 
-1. A böngészőben navigáljon https://CLUSTERNAME.azurehdinsight.net. CLUSTERNAME cserélje le a HDInsight-fürt nevét.
+1. A böngészőjében lépjen a https://CLUSTERNAME.azurehdinsight.net helyre. CLUSTERNAME cserélje le a HDInsight-fürt nevét.
 
     Amikor a rendszer kéri, írja be a rendszergazdai fiók neve (rendszergazda) és a jelszót a fürt. Előfordulhat, hogy a rendszergazdai hitelesítő adatok webes űrlapon újbóli.
 
@@ -493,7 +501,7 @@ __OK__: Ez a hiba akkor fordul elő, ha a Python Azure Storage ügyfelet frissí
 
 __Megoldási__: Ez a hiba elhárításához manuálisan kapcsolódás minden fürt csomópont `ssh` és telepítse újra a megfelelő tárolási ügyfél verzióját a következő paranccsal:
 
-```
+```bash
 sudo pip install azure-storage==0.20.0
 ```
 

@@ -1,11 +1,11 @@
 ---
-title: "Ismerkedés a blob storage és a Visual Studio kapcsolódó szolgáltatások (az ASP.NET Core) |} Microsoft Docs"
-description: "Első lépések a Visual Studio ASP.NET Core projektben Azure Blob storage használatával, a Visual Studio használatával storage-fiók létrehozása után kapcsolódó szolgáltatások"
+title: Ismerkedés a blob storage és a Visual Studio kapcsolódó szolgáltatások (az ASP.NET Core) |} Microsoft Docs
+description: Első lépések a Visual Studio ASP.NET Core projektben Azure Blob storage használatával, a Visual Studio használatával storage-fiók létrehozása után kapcsolódó szolgáltatások
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: kraigb
 manager: ghogen
-editor: 
+editor: ''
 ms.assetid: 094b596a-c92c-40c4-a0f5-86407ae79672
 ms.service: storage
 ms.workload: web
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: kraigb
-ms.openlocfilehash: afd73bd0fd041a53fbe31aa3a5c23b3e27d7a9ec
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: e3814533b955d5b6444692a7b565219d28002262
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Ismerkedés az Azure Blob storage és a Visual Studio kapcsolódó szolgáltatások (ASP.NET mag)
 
@@ -28,7 +28,7 @@ Ez a cikk ismerteti az első lépések az Azure Blob storage a Visual Studióban
 
 Az Azure Blob storage egy olyan szolgáltatás nagy mennyiségű strukturálatlan adatok, amelyek elérhetők bárhol a világon HTTP vagy HTTPS PROTOKOLLON keresztül tárolásához. Egy blob bármilyen méretű lehet. Blobok lehetnek többek között a lemezképek, a hang- és fájlok, a nyers adatok és a fájlok. Ez a cikk ismerteti, hogyan lásson a blob storage a Visual Studio használatával Azure-tárfiók létrehozása után **kapcsolódó szolgáltatások** ASP.NET Core projektben.
 
-Ugyanúgy, mint a él fájlok, mappák, a tárolási BLOB élő tárolókban lévő. Miután létrehozta a blob, egy vagy több tárolóban, hogy a blob hoz létre. Például egy blobba "Lapkivágások" nevű, "képek" képek tárolására nevű tárolókat hozhat létre, és más néven "hang", illetve hang-fájlok tárolására. A tárolók létrehozása után feltöltheti a fájlokat hozzájuk. Lásd: [az Azure Blob storage .NET használatának első lépései](../storage/blobs/storage-dotnet-how-to-use-blobs.md) programozott módon kezelésére a blobok további tájékoztatást.
+Ugyanúgy, mint a él fájlok, mappák, a tárolási BLOB élő tárolókban lévő. Miután létrehozta a blob, egy vagy több tárolóban, hogy a blob hoz létre. Például egy blobba "Lapkivágások" nevű, "képek" képek tárolására nevű tárolókat hozhat létre, és más néven "hang", illetve hang-fájlok tárolására. A tárolók létrehozása után feltöltheti a fájlokat hozzájuk. Lásd: [gyors üzembe helyezés: feltöltés, a letöltés és a lista blobok .NET használatával](../storage/blobs/storage-quickstart-blobs-dotnet.md) programozott módon kezelésére a blobok további tájékoztatást.
 
 Az Azure Storage API-k között aszinkron, és ebben a cikkben a kód azt feltételezi, hogy aszinkron metódusok használatban van. Lásd: [aszinkron programozás](https://docs.microsoft.com/dotnet/csharp/async) további információt.
 
@@ -141,7 +141,7 @@ do
 } while (token != null);
 ```
 
-Lásd: [az Azure Blob storage .NET használatának első lépései](../storage/blobs/storage-dotnet-how-to-use-blobs.md#list-the-blobs-in-a-container) az egyéb módjai a blob-tároló tartalmának megjelenítése.
+Lásd: [gyors üzembe helyezés: feltöltés, a letöltés és a lista blobok .NET használatával](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-the-blobs-in-a-container) az egyéb módjai a blob-tároló tartalmának megjelenítése.
 
 ## <a name="download-a-blob"></a>Blob letöltése
 
@@ -158,7 +158,7 @@ using (var fileStream = System.IO.File.OpenWrite(@"path\myfile"))
 }
 ```
 
-Lásd: [az Azure Blob storage .NET használatának első lépései](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs) az egyéb módjai blobok fájlokként menti.
+Lásd: [gyors üzembe helyezés: feltöltés, a letöltés és a lista blobok .NET használatával](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-blobs) az egyéb módjai blobok fájlokként menti.
 
 ## <a name="delete-a-blob"></a>Blob törlése
 
@@ -172,6 +172,6 @@ CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob.txt");
 await blockBlob.DeleteAsync();
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [vs-storage-dotnet-blobs-next-steps](../../includes/vs-storage-dotnet-blobs-next-steps.md)]

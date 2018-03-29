@@ -42,7 +42,7 @@ Nem.
 
 **Vannak-e a felügyelt lemezeket használó ügyfelek skálázási korlátozások?**
 
-Kezelt lemezek megszünteti a társított tárfiókok korlátok. Azonban a előfizetésenként felügyelt lemezek számát korlátozódik 2000 alapértelmezés szerint. Ezt a számot növelheti a támogatási hívása.
+Kezelt lemezek megszünteti a társított tárfiókok korlátok. A maximális száma, valamint az alapértelmezett határérték 10 000 felügyelt lemezek régiónként és lemez típusonkénti az előfizetéshez.
 
 **Eltarthat egy kezelt lemez növekményes pillanatképet?**
 

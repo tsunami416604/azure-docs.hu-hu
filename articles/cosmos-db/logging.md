@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: mimig
-ms.openlocfilehash: b1921820b5a1d94c6f5d6413204ee7814cc25c74
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3b7c9f1acd79a2f170ecead9dedd200ad37d9388
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Az Azure Cosmos DB diagnosztikai naplózás
 
-Egy vagy több Azure Cosmos DB adatbázis használandó elindítása után is figyelni kívánt hogyan és mikor érhetők el az adatbázisok. Ez a cikk áttekintést nyújt a naplók az Azure platformon elérhető. Megismerheti, hogyan ellenőrzési célból segítségével diagnosztikai naplózás engedélyezése [Azure Storage](https://azure.microsoft.com/services/storage/), hogyan adatfolyam-bejegyzéseit, amelyek [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), és a naplók exportálása [Azure Naplóelemzés ](https://azure.microsoft.com/services/log-analytics/), amely része [Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite).
+Egy vagy több Azure Cosmos DB adatbázis használandó elindítása után is figyelni kívánt hogyan és mikor érhetők el az adatbázisok. Ez a cikk áttekintést nyújt a naplók az Azure platformon elérhető. Megismerheti, hogyan ellenőrzési célból segítségével diagnosztikai naplózás engedélyezése [Azure Storage](https://azure.microsoft.com/services/storage/), hogyan adatfolyam-bejegyzéseit, amelyek [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), és a naplók exportálása [Azure Naplóelemzés ](https://azure.microsoft.com/services/log-analytics/).
 
 ## <a name="logs-available-in-azure"></a>Az Azure-ban elérhető naplók
 
@@ -57,7 +57,7 @@ Tevékenységi naplóit (vezérlő vezérlősík műveletek) gazdagabb jellegűe
 
 Az Azure diagnosztikai naplók az erőforrás által kibocsátott, és adja meg az erőforrás a művelet részletes, gyakori adatait. Ezek a naplók tartalmának erőforrástípusok szerint változik. Erőforrás-szintű diagnosztikai naplók is eltérnek a vendég operációs rendszer szintű diagnosztikai naplókat. Vendég operációs rendszer diagnosztikai naplók, hogy a virtuális gépek vagy más támogatott belül fut egy ügynök által gyűjtött erőforrástípus. Erőforrás-szintű diagnosztikai naplók szükséges nincs ügynök és a rögzítési erőforrás-specifikus adatok az Azure platformról magát. Vendég operációs rendszer szintű diagnosztikai naplók az operációs rendszer és a virtuális gépen futó alkalmazások adatait rögzíti.
 
-![Diagnosztikai naplózás tárolási, az Event Hubs vagy az Operations Management Suite Naplóelemzési keresztül](./media/logging/azure-cosmos-db-logging-overview.png)
+![Diagnosztikai naplózás tárolási, az Event Hubs vagy Naplóelemzési](./media/logging/azure-cosmos-db-logging-overview.png)
 
 ### <a name="what-is-logged-by-azure-diagnostic-logs"></a>Mi az Azure diagnosztikai naplók által naplózott?
 

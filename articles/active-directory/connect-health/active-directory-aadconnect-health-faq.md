@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Active Directory Connect Health – gyakori kérdések – Azure |} Microsoft Docs"
-description: "Ez a GYIK az Azure AD Connect Health kapcsolatos kérdésekre ad választ. Ez a GYIK a szolgáltatás használatával kapcsolatos kérdéseket fedi le, beleértve a számlázási modell, a képességek, a korlátozások és a támogatás témaköreit."
+title: Az Azure Active Directory Connect Health – gyakori kérdések – Azure |} Microsoft Docs
+description: Ez a GYIK az Azure AD Connect Health kapcsolatos kérdésekre ad választ. Ez a GYIK a szolgáltatás használatával kapcsolatos kérdéseket fedi le, beleértve a számlázási modell, a képességek, a korlátozások és a támogatás témaköreit.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 312980ded8fad84f2ea4a41078597dd3a6cb8ca7
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: b4c977b54c87276bd4b168bc56e70f3b918e6634
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health – gyakori kérdések
 Ez a cikk kapcsolatos gyakori kérdések (GYIK) Azure Active Directory (Azure AD) Connect Health rájuk adott válaszokat tartalmazza. Ezeket a gyakori kérdések a szolgáltatás, amely tartalmazza a számlázási modell, képességek, korlátozások és támogatás használatával kapcsolatos kérdésekre foglalkozik.
@@ -175,6 +175,9 @@ CheckForMS17-010
 
 ```
 
+**K: Miért does a PowerShell-parancsmag <i>Get-MsolDirSyncProvisioningError</i> kevesebb szinkronizálási hibák megjelenítése az eredményben?**
+
+<i>Get-MsolDirSyncProvisioningError</i> kiépítési hibák DirSync csak adja vissza. Amellett, hogy a Connect Health portálon is látható más szinkronizálási exportálási hibák például típusok. Ez megfelel az Azure AD Connect különbözeti eredménye. Tudjon meg többet az [Azure AD Connect szinkronizálási hibák](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors).
 
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások

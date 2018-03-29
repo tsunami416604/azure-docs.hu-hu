@@ -1,47 +1,31 @@
 ---
-title: "A Service Fabric-alkalmazások titkos kulcsok kezelése |} Microsoft Docs"
-description: "A cikkből megtudhatja, mennyire biztonságos a Service Fabric-alkalmazás titkos értékeit."
+title: Azure Service Fabric-alkalmazás titkos kulcsok kezelése |} Microsoft Docs
+description: Megtudhatja, mennyire biztonságos a Service Fabric-alkalmazás titkos értékeit.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 94a67e45-7094-4fbd-9c88-51f4fc3c523a
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/02/2017
+ms.date: 03/21/2018
 ms.author: vturecek
-ms.openlocfilehash: bb40f841c6c2671621624e0599a5f3a36a36ab26
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 931667509a9aa5e898cd01ad26ff046e30acd3fe
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="managing-secrets-in-service-fabric-applications"></a>A Service Fabric-alkalmazások titkos kulcsok kezelése
+# <a name="manage-secrets-in-service-fabric-applications"></a>A Service Fabric-alkalmazások titkos kulcsok kezelése
 Ez az útmutató végigvezeti a Service Fabric-alkalmazás a titkos kulcsok kezelése. Titkos kulcsok lehet bármely bizalmas adatokat, például a tárolási kapcsolati karakterláncok, jelszavak és egyéb értékek, amelyek nem egyszerű szöveges kezelje.
 
-Ez az útmutató az Azure Key Vault használatával kulcsokat és titkos kódokat. Azonban *használatával* egy alkalmazás titkos kulcsainak van cloud platform-független bárhol üzemeltetett fürt központilag telepített alkalmazások. 
+[Az Azure Key Vault] [ key-vault-get-started] itt történik, a tanúsítványok biztonságos tárolási helyeként, valamint az Azure Service Fabric-fürtök telepített tanúsítványok lekérése is. Ha nem telepíti az Azure-ba, nem kell Key Vault segítségével kezelheti a Service Fabric-alkalmazások a titkos kulcsok. Azonban *használatával* egy alkalmazás titkos kulcsainak van cloud platform-független bárhol üzemeltetett fürt központilag telepített alkalmazások. 
 
-## <a name="overview"></a>Áttekintés
-Az ajánlott módszer a szolgáltatás konfigurációs beállítások kezeléséhez van keresztül [szolgáltatás konfigurációs csomagok][config-package]. Konfigurációs csomagok a következők: rendszerverzióval ellátott és a rendszerállapot-érvényesítési és automatikus visszaállítási felügyelt közbeni keresztül frissíthető. Ez az előnyben részesített a globális konfigurációs, mivel csökkenti a veszélyét annak, hogy a globális szolgáltatáskimaradás. Titkosított titkokat sem kivétel. A Service Fabric titkosítására és visszafejtésére értékek a tanúsítvány titkosítással konfigurációs csomag Settings.xml fájlban beépített lehetőséggel rendelkezik.
-
-A következő ábra szemlélteti a titkos kezelése a Service Fabric-alkalmazás általános folyamata:
-
-![titkos – áttekintés][overview]
-
-Ez a folyamat négy fő lépésből áll:
-
-1. Adatok rejtjelezése tanúsítványának beszerzése.
-2. Telepítse a tanúsítványt a fürtön.
-3. Titkosítani a titkos értékek, a tanúsítvány az alkalmazás telepítésekor, és azokat behelyezése egy szolgáltatás Settings.xml konfigurációs fájlt.
-4. Olvassa el a titkosított értékeket abból Settings.xml visszafejti rejtjelezése ugyanazzal a tanúsítvánnyal. 
-
-[Az Azure Key Vault] [ key-vault-get-started] itt történik, a tanúsítványok biztonságos tárolási helyeként, valamint az Azure Service Fabric-fürtök telepített tanúsítványok lekérése is. Ha nem telepíti az Azure-ba, nem kell Key Vault segítségével kezelheti a Service Fabric-alkalmazások a titkos kulcsok.
-
-## <a name="data-encipherment-certificate"></a>Adatok rejtjelezése tanúsítvány
+## <a name="obtain-a-data-encipherment-certificate"></a>Adatok rejtjelezése tanúsítványának beszerzése
 Adatok rejtjelezése tanúsítvány szigorúan titkosítást használja és konfigurációs visszafejtése egy szolgáltatás Settings.xml értékei, és nem a hitelesítéshez használt vagy aláírási titkosított szöveg. A tanúsítvány a következő követelményeknek kell megfelelniük:
 
 * A tanúsítványnak tartalmaznia kell egy titkos kulccsal.
@@ -58,7 +42,7 @@ Adatok rejtjelezése tanúsítvány szigorúan titkosítást használja és konf
 Ez a tanúsítvány a fürt minden csomópontján telepítenie kell. Ez használható futásidőben visszafejteni a szolgáltatás Settings.xml tárolt értékek. Lásd: [hogyan hozhat létre egy fürtöt, Azure Resource Manager használatával] [ service-fabric-cluster-creation-via-arm] a telepítési utasításokat. 
 
 ## <a name="encrypt-application-secrets"></a>Alkalmazás titkos kulcsok titkosítása
-A Service Fabric SDK beépített titkos titkosítási és visszafejtési funkciókkal rendelkezik. Titkos értékek is kell beépített időpontban titkosított visszafejti és programozott módon olvassa el a szolgáltatáskód hibáit. 
+Alkalmazások telepítésekor a tanúsítvány titkos értékek titkosításához, és azokat behelyezése egy szolgáltatás Settings.xml konfigurációs fájlja. A Service Fabric SDK beépített titkos titkosítási és visszafejtési funkciókkal rendelkezik. Titkos értékek is kell beépített időpontban titkosított visszafejti és programozott módon olvassa el a szolgáltatáskód hibáit. 
 
 A következő PowerShell-parancsot a titkos kulcs titkosítására szolgál. Ez a parancs csak titkosítja a érték; létezik **nem** a titkosított szöveg aláírásához. Titkosított szöveg titkos értékek létrehozásához a fürtben telepített azonos rejtjelezése tanúsítványt kell használnia:
 
@@ -66,7 +50,7 @@ A következő PowerShell-parancsot a titkos kulcs titkosítására szolgál. Ez 
 Invoke-ServiceFabricEncryptText -CertStore -CertThumbprint "<thumbprint>" -Text "mysecret" -StoreLocation CurrentUser -StoreName My
 ```
 
-Az eredményül kapott base-64 karakterláncot tartalmaz, mind a titkos titkosított szöveg, valamint a titkosításhoz használt tanúsítvány adatait.  A base-64 kódolású karakterlánc szúrhatók be, a szolgáltatás Settings.xml tartalmazó konfigurációs fájl egyik paraméterének a `IsEncrypted` attribútum értékének beállítása `true`:
+Az eredményül kapott base-64 kódolású karakterlánc mind a titkos titkosított szöveg, valamint a titkosításhoz használt tanúsítvány kapcsolatos információkat tartalmazza.  A base-64 kódolású karakterlánc szúrhatók be, a szolgáltatás Settings.xml tartalmazó konfigurációs fájl egyik paraméterének a `IsEncrypted` attribútum értékének beállítása `true`:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -140,7 +124,7 @@ await fabricClient.ApplicationManager.CreateApplicationAsync(applicationDescript
 ```
 
 ## <a name="decrypt-secrets-from-service-code"></a>Szolgáltatás kódból titkos kulcsok visszafejtéséhez
-A Service Fabric szolgáltatások alapértelmezés szerint a Windows hálózati szolgáltatás alatt futnak, és nem férnek hozzá a csomópont egy külön beállítások elvégzése nélkül telepített tanúsítványok.
+Titkosított értékeket abból Settings.xml visszafejti azokat a titkos kulcs titkosításához használt rejtjelezése tanúsítvánnyal olvashatók. A Service Fabric szolgáltatások alapértelmezés szerint a Windows hálózati szolgáltatás alatt futnak, és nem férnek hozzá a csomópont egy külön beállítások elvégzése nélkül telepített tanúsítványok.
 
 Ha adatok rejtjelezése tanúsítványt használ, meg kell győződnie, hogy a hálózati szolgáltatás, vagy tetszőleges felhasználói fiókot a szolgáltatás fut. a tanúsítvány titkos kulcsához hozzáfér. A Service Fabric fogja kezelni, a szolgáltatás-hozzáférés automatikusan engedélyezése, ha úgy állítja be ehhez. Ez a konfiguráció ApplicationManifest.xml felhasználók és biztonsági házirendeket a tanúsítványok megadásával teheti. A következő példában a hálózati szolgáltatás fiók olvasás való hozzáférése annak ujjlenyomata által definiált tanúsítványt:
 
@@ -175,8 +159,8 @@ ConfigurationPackage configPackage = this.Context.CodePackageActivationContext.G
 SecureString mySecretValue = configPackage.Settings.Sections["MySettings"].Parameters["MySecret"].DecryptValue()
 ```
 
-## <a name="next-steps"></a>Következő lépések
-További információ [futó alkalmazások különböző biztonsági engedélyekkel](service-fabric-application-runas-security.md)
+## <a name="next-steps"></a>További lépések
+További információ [alkalmazás és szolgáltatás biztonsága](service-fabric-application-and-service-security.md)
 
 <!-- Links -->
 [key-vault-get-started]:../key-vault/key-vault-get-started.md

@@ -1,11 +1,11 @@
 ---
-title: "Linux Azure N-sorozat illesztőprogram beállítása |} Microsoft Docs"
-description: "N sorozatú virtuális gépek Azure-ban futó Linux NVIDIA GPU illesztőprogramok beállítása"
+title: Linux Azure N-sorozat illesztőprogram beállítása |} Microsoft Docs
+description: N sorozatú virtuális gépek Azure-ban futó Linux NVIDIA GPU illesztőprogramok beállítása
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: d91695d0-64b9-4e6b-84bd-18401eaecdde
 ms.service: virtual-machines-linux
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/12/2018
+ms.date: 03/20/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7d353adcafed02832243277118da8480e54544ce
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d97afd2b5dccca64db2df7cb0d4f110987642cfb
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>N-sorozat linuxos virtuális gépek NVIDIA GPU illesztőprogramok telepítéséhez
 
-Linuxos Azure N sorozatú virtuális gépek GPU lehetőségeinek kihasználásához, támogatott NVIDIA video-illesztőprogramok telepítéséhez. Ez a cikk lépéseit illesztőprogram beállítása az N-sorozatú virtuális gép telepítése után. Telepítési információk illesztőprogram érhető el is [Windows virtuális gépek](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Linuxos Azure N sorozatú virtuális gépek GPU lehetőségeinek kihasználásához, NVIDIA video-illesztőprogramok kell telepíteni. Ez a cikk lépéseit illesztőprogram beállítása az N-sorozatú virtuális gép telepítése után. Telepítési információk illesztőprogram érhető el is [Windows virtuális gépek](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 N sorozatú virtuális gép specifikációk, tárolási kapacitás, és a lemez adatai: [GPU Linux Virtuálisgép-méretek](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 
@@ -32,15 +32,12 @@ N sorozatú virtuális gép specifikációk, tárolási kapacitás, és a lemez 
 
 ## <a name="install-cuda-drivers-for-nc-ncv2-ncv3-and-nd-series-vms"></a>A hálózati vezérlő által, NCv2, NCv3 és ND sorozatú virtuális gépek CUDA illesztőprogramok telepítése
 
-Az alábbiakban a NVIDIA CUDA eszközkészlet N sorozatú virtuális gépeken a NVIDIA illesztőprogramok telepítésének lépéseit. 
+Az alábbiakban a NVIDIA CUDA eszközkészlet N sorozatú virtuális gépeken a CUDA illesztőprogramok telepítésének lépéseit. 
+
 
 C és C++ fejlesztők is telepíthet a teljes eszközkészlet GPU-gyorsított alkalmazásokat hozhatnak létre. További információkért lásd: a [CUDA a telepítési útmutató](http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
 
-> [!NOTE]
-> CUDA illesztőprogram letöltési hivatkozásokat itt megadott aktuális kiadvány időpontban. A legújabb CUDA illesztőprogramokat, látogasson el a [NVIDIA](https://developer.nvidia.com/cuda-zone) webhelyet.
->
-
-CUDA eszközkészlet telepítése, ellenőrizze az SSH-kapcsolat az egyes virtuális. Ellenőrizze, hogy a rendszer egy CUDA-kompatibilis grafikus processzort tartalmaz, futtassa a következő parancsot:
+Minden virtuális gép az SSH-kapcsolat teremtsen CUDA illesztőprogramok telepítéséhez. Ellenőrizze, hogy a rendszer egy CUDA-kompatibilis grafikus processzort tartalmaz, futtassa a következő parancsot:
 
 ```bash
 lspci | grep -i NVIDIA
@@ -162,16 +159,13 @@ RDMA hálózati kapcsolatot az RDMA-kompatibilis N sorozatú virtuális gépeken
 
 ### <a name="distributions"></a>Felosztások
 
-RDMA-kompatibilisek-e N sorozatú virtuális gépek, az Azure piactéren, amely támogatja az RDMA-kapcsolatot az N-sorozatú virtuális gépeken futó lemezkép központi telepítése:
+Az Azure piactéren, amely támogatja az RDMA-kapcsolatot az N-sorozatú virtuális gépeken futó lemezképet egy RDMA-kompatibilis N-sorozat VMs telepítése:
   
 * **Ubuntu 16.04 LTS** - RDMA illesztőprogramok konfigurálja a virtuális Gépre, és regisztrálhatja az Intel Intel MPI letöltése:
 
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]
 
-> [!NOTE]
-> CentOS-alapú HPC képek jelenleg nem ajánlottak RDMA csatlakozási N sorozatú virtuális gépeken. A legújabb CentOS 7.4 kernel, amely támogatja a NVIDIA Feldolgozóegységekkel nem támogatják az RDMA.
-> 
-
+* **7.4 HPC centOS alapú** -RDMA-illesztőprogramok és Intel MPI 5.1 telepítve vannak a virtuális Gépet.
 
 ## <a name="install-grid-drivers-for-nv-series-vms"></a>Portok HV-sorozatú virtuális gépek rács illesztőprogramok telepítése
 
@@ -321,10 +315,10 @@ EndSection
  
 Emellett frissítse a `"Screen"` szakasz az eszköz használatához.
  
-A BusID található futtatásával
+A tizedesvesszőtől BusID található futtatásával
 
 ```bash
-/usr/bin/nvidia-smi --query-gpu=pci.bus_id --format=csv | tail -1 | cut -d ':' -f 1
+echo $((16#`/usr/bin/nvidia-smi --query-gpu=pci.bus_id --format=csv | tail -1 | cut -d ':' -f 1`))
 ```
  
 A BusID módosíthatja, ha egy virtuális gép lekérdezi teljesítményigény vagy újraindítása után. Emiatt érdemes lehet egy parancsfájl segítségével frissítse a X11 a BusID konfigurációs, amikor egy virtuális gép újraindítása után. Példa:

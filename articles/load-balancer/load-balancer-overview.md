@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: 4f46e796ff1ab85c0061c70ff9a725a6945a4f5d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3a5d1e897d8ffe063ecf9277bef346c8b7c5092b
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-load-balancer-overview"></a>Az Azure Load Balancer áttekintése
 
@@ -41,7 +41,7 @@ Az Azure Load Balancer a következőkre használható:
 
 
 >[!NOTE]
-> Azure teljes körűen felügyelt terheléselosztási megoldások az forgatókönyvek együttesét nyújtja.  Ha a TLS-lezárást ("SSL kiszervezési") vagy HTTP/HTTPS alkalmazás réteg feldolgozási keres, tekintse át a [Alkalmazásátjáró](../application-gateway/application-gateway-introduction.md).  Ha a globális DNS a(z) terheléselosztást, tekintse át [Traffic Manager](../traffic-manager/traffic-manager-overview.md).  Előfordulhat, hogy a végpont forgatókönyvek előnyt ezek a megoldások kombinálásával, igény szerint.
+> Azure teljes körűen felügyelt terheléselosztási megoldások az forgatókönyvek együttesét nyújtja.  Ha a TLS-záráshoz ("SSL kiszervezési"), vagy a HTTP/HTTPS Kérelemfeldolgozás alkalmazás réteg, tekintse át a [Alkalmazásátjáró](../application-gateway/application-gateway-introduction.md).  Ha a globális DNS a(z) terheléselosztást, tekintse át [Traffic Manager](../traffic-manager/traffic-manager-overview.md).  Előfordulhat, hogy a végpont forgatókönyvek előnyt ezek a megoldások kombinálásával, igény szerint.
 
 ## <a name="what-is-load-balancer"></a>Mi az a Load Balancer?
 
@@ -107,7 +107,7 @@ Az Azure Load Balancer két különböző Termékváltozatai támogatja: Basic �
 Előfordulhat azonban, attól függően, amelyek SKU választja, a konfiguráció teljes forgatókönyv részletes némileg eltérő. A Load Balancer dokumentáció meghívja egy cikk csak egy adott SKU alkalmazandó esetén. Tekintse át a következő különbségek megismeréséhez, és hasonlítsa össze az alábbi táblázat.  Felülvizsgálati [szokásos terhelés terheléselosztó áttekintése](load-balancer-standard-overview.md) további tájékoztatást talál.
 
 >[!NOTE]
-> Új tervek szabványos terheléselosztót használja. 
+> Új tervek érdemes megfontolni, szabványos terheléselosztó használatát. 
 
 Önálló virtuális gépek, a rendelkezésre állási készletek és a virtuálisgép-méretezési csoportok csak egy SKU, soha nem is kell csatlakoztatni. Nyilvános IP-címek használata esetén mind a Terheléselosztóról, mind a nyilvános IP-cím SKU meg kell egyeznie. Terheléselosztó és a nyilvános IP-SKU nincsenek változtatható.
 
@@ -118,17 +118,17 @@ _Ajánlott eljárás, explicit módon, adja meg a SKU annak ellenére, hogy még
 
 | | [Standard Termékváltozat](load-balancer-standard-overview.md) | Alapszintű termékváltozat |
 | --- | --- | --- |
-| Háttér-készlet mérete | legfeljebb 1000 példányok | legfeljebb 100 példányok|
+| Háttér-készlet mérete | legfeljebb 1000 példányok | legfeljebb 100 példányok |
 | Háttér címkészletet végpontok | Egyetlen virtuális hálózatban, beleértve a virtuális gépek rendelkezésre állási csoportok esetében, amelyet minden virtuális gép virtuálisgép-skálázási készletekben. | virtuális gépek egy egyetlen rendelkezésre állási készlet vagy a virtuális gép méretezési beállítása |
 | Rendelkezésre állási zónák | Zónaredundáns és zonal frontends a bejövő és kimenő, a kimenő forgalom hozzárendelések után is megmaradnak a zóna hiba, terheléselosztás kereszt-zóna | / |
-| Diagnosztika | Azure figyelő bájt és csomag számlálók, egészségügyi többdimenziós metrikákat a állapot, kapcsolódási kísérletek (TCP SZIN), kimenő kapcsolat állapota (SNAT sikeres és sikertelen adatfolyamok), az aktív adatforrás vezérlősík mérések mintavételi modulja | Az Azure naplóelemzés csak a nyilvános terheléselosztót, SNAT Erőforrásfogyás riasztást, háttér címkészletet állapotfigyelő száma |
+| Diagnosztika | Azure figyelő bájt és csomag számlálók, egészségügyi többdimenziós metrikákat a állapot, kapcsolódási kísérletek (TCP SZIN), kimenő kapcsolat állapota (SNAT sikeres és sikertelen adatfolyamok), az aktív adatforrás vezérlősík mérések mintavételi modulja | Az Azure Naplóelemzés csak a nyilvános terheléselosztót, SNAT Erőforrásfogyás riasztást, háttér címkészletet állapotfigyelő száma |
 | Magas rendelkezésre ÁLLÁSÚ portok | Belső terheléselosztó | / |
-| Alapértelmezés szerint biztonságos | nyilvános IP-cím és a terheléselosztó végpontok mindig az alapértelmezett bezárul, explicit módon engedélyezett használt hálózati biztonsági csoport | Alapértelmezett nyissa meg a hálózati biztonsági csoport nem kötelező |
-| Kimenő kapcsolatok | Több frontends szabály lemondáshoz száma. Kimenő címmel rendelkező virtuális gép társítása _kell_ explicit módon hozható létre.  Ez magában foglalja a más Azure PaaS-szolgáltatásokkal létesített kapcsolatok vagy [VNet Szolgáltatásvégpontok](../virtual-network/virtual-network-service-endpoints-overview.md) kell használni. Kimenő kapcsolatok alapértelmezett SNAT keresztül nem érhetők el, ha csak egy belső terheléselosztón van szolgál a virtuális gép. | Egyetlen előtér. Csak belső terheléselosztó van szolgál a virtuális gépek alapértelmezett SNAT használatos |
+| Alapértelmezés szerint biztonságos | alapértelmezett le a következő nyilvános IP-cím és a terheléselosztó végpontokat és a hálózati biztonsági csoport kell használni kifejezetten engedélyezett forgalom áramlását felé | alapértelmezett megnyitva, a hálózati biztonsági csoport nem kötelező |
+| Kimenő kapcsolatok | Egy szabályban a több frontends lemondáshoz. Egy kimenő forgatókönyv _kell_ explicit módon hozhatók létre a virtuális gép nem használható a kimenő kapcsolat.  [Virtuális hálózat Szolgáltatásvégpontok](../virtual-network/virtual-network-service-endpoints-overview.md) kimenő kapcsolat nélkül elérhető, és nem számítanak bele a feldolgozott adatokat.  Nyilvános IP-címek, beleértve az Azure PaaS szolgáltatások nem érhetők el a virtuális hálózat szolgáltatás végpontként kell kimenő kapcsolat és a feldolgozott adatok felé száma keresztül érhető el. Ha csak egy belső terheléselosztó van egy virtuális gépet szolgáltató, alapértelmezett SNAT keresztül kifelé irányuló kapcsolatok nem érhetők el. Kimenő SNAT programozás az átviteli protokoll adott protokoll a bejövő terheléselosztási szabály alapján. | Egyetlen előtér véletlenszerűen kiválasztott, ha több frontends jelen.  Csak belső terheléselosztó van egy virtuális gépet szolgáltató, amikor az alapértelmezett SNAT szolgál. |
 | Több frontends | Bejövő és kimenő | Csak bejövő |
-| Műveletek | A legtöbb műveletek < 30 másodperc | 60-90 másodpercet tipikus |
+| Felügyeleti műveletek | A legtöbb műveletek < 30 másodperc | 60-90 másodpercet tipikus |
 | SLA | a két kifogástalan állapotú virtuális gép elérési útja 99,99 %-os | A virtuális gép SLA implicit | 
-| Díjszabás | Számlázott szabályok száma alapján, adatfeldolgozási bejövő vagy kimenő társított erőforrás  | Nem kell fizetni |
+| Díjszabás | A szabályok száma alapján, adatfeldolgozási bejövő vagy kimenő társított erőforrás  | Nem kell fizetni |
 
 Felülvizsgálati [szolgáltatási korlátait terheléselosztóhoz](https://aka.ms/lblimits).  Standard terheléselosztóhoz is tekintse át a részletes [áttekintése](load-balancer-standard-overview.md), [árképzési](https://aka.ms/lbpricing), és [SLA](https://aka.ms/lbsla).
 

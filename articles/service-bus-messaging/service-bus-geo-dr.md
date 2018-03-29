@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Service Bus földrajzi-vész-helyreállítási |} Microsoft Docs"
-description: "Feladatátvételi földrajzi régió használatáról, és hajtsa végre a vész-helyreállítási Azure Service Bus"
+title: Az Azure Service Bus földrajzi-vész-helyreállítási |} Microsoft Docs
+description: Feladatátvételi földrajzi régió használatáról, és hajtsa végre a vész-helyreállítási Azure Service Bus
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: christianwolf42
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: sethm
-ms.openlocfilehash: 9cbeff82f7a237c813ea91cd83e9273cad934991
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 652adcf78add8ae699a7f827a915e90ce1694c61
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus Geo-disaster recovery
 
@@ -86,12 +86,13 @@ Ha egy olyan forgatókönyvet, amelyben létrehozói és felhasználói kapcsola
 
 ## <a name="samples"></a>Példák
 
-A [minták a Githubon](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR2) bemutatják, hogyan állíthat be, és kezdeményezze a feladatátvételt. Ezeket a mintákat azt mutatják be a következő fogalmak:
+A [minták a Githubon](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/) bemutatják, hogyan állíthat be, és kezdeményezze a feladatátvételt. Ezeket a mintákat azt mutatják be a következő fogalmak:
 
-- A Service Bus Azure Resource Manager használata az Azure Active Directoryban szükséges beállításokat. 
-- A mintakód végrehajtásához szükséges lépéseket. 
-- Küldése és fogadása a jelenlegi elsődleges névtérből. 
+- A .net-minta és az Azure Active Directoryban Azure Resource Manager telepítő a Service busszal használni, és földrajzi-katasztrófa utáni helyreállítás engedélyezéséhez szükséges beállításokat.
+- A mintakód végrehajtásához szükséges lépéseket.
 - Hogyan használható egy már létező névteret aliasként.
+- Másik lehetőségként a földrajzi vészhelyreállítás PowerShell vagy a parancssori felületen keresztül engedélyezésének lépései.
+- [Küldési és fogadási](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/TestGeoDR/ConsoleApp1) névtérből a jelenlegi elsődleges vagy másodlagos az aliast használni.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 

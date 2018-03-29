@@ -1,11 +1,11 @@
 ---
-title: "Szolgáltatási korlátait, az Azure Search |} Microsoft Docs"
-description: "A kapacitástervezés használt szolgáltatásra vonatkozó korlátozások és kérelmeit és válaszait az Azure Search maximális korlátozásait."
+title: Szolgáltatási korlátait, az Azure Search |} Microsoft Docs
+description: A kapacitástervezés használt szolgáltatásra vonatkozó korlátozások és kérelmeit és válaszait az Azure Search maximális korlátozásait.
 services: search
-documentationcenter: 
+documentationcenter: ''
 author: HeidiSteen
 manager: jhubbard
-editor: 
+editor: ''
 tags: azure-portal
 ms.assetid: 857a8606-c1bf-48f1-8758-8032bbe220ad
 ms.service: search
@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 11/09/2017
+ms.date: 03/26/2018
 ms.author: heidist
-ms.openlocfilehash: 3deb0ff81114c840798c5927ad7311d7e603813d
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: fb2234e79e8deb98a94068f31a40c8f0b415d7ba
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="service-limits-in-azure-search"></a>Az Azure Search szolgáltatásra vonatkozó korlátozások
 Maximális korlátozza a tárolási, számítási feladatok és indexek, dokumentumok, mennyiségét, és más objektumok függenek, hogy Ön [kiépíteni az Azure Search](search-create-service-portal.md) , egy **szabad**, **alapvető**, vagy **Szabványos** tarifacsomagra vált.
@@ -32,35 +32,40 @@ Maximális korlátozza a tárolási, számítási feladatok és indexek, dokumen
 > A szolgáltatás van üzembe helyezve egy konkrét csomagot kiválasztani. Ahhoz, hogy a kapacitás rétegek Ugrás magában foglalja a (nincs nincs frissítés) egy új szolgáltatás kiépítését. További információkért lásd: [válasszon egy SKU vagy a réteg](search-sku-tier.md). Beállítja egy már kiépített szolgáltatás belül kapcsolatos további információkért lásd: [erőforrás szintek lekérdezési és indexelési munkaterhelések méretezése](search-capacity-planning.md).
 >
 
-## <a name="per-subscription-limits"></a>Előfizetés korlátokat
+## <a name="subscription-limits"></a>Előfizetési korlátozásait
 [!INCLUDE [azure-search-limits-per-subscription](../../includes/azure-search-limits-per-subscription.md)]
 
-## <a name="per-service-limits"></a>Egy szolgáltatásra vonatkozó korlátozások
+## <a name="service-limits"></a>Szolgáltatási korlátozások
 [!INCLUDE [azure-search-limits-per-service](../../includes/azure-search-limits-per-service.md)]
 
-## <a name="per-index-limits"></a>Index korlátokat
-Van egy-az-egyhez levelezés között indexek vonatkozó korlátozások és indexelők korlátozásait. 200 indexek legfeljebb megadott, indexelők maximális egyben ugyanahhoz a 200-as.
+## <a name="index-limits"></a>Index korlátok
 
 | Erőforrás | Ingyenes | Alapszintű | S1 | S2 | S3 | S3 HD |
 | --- | --- | --- | --- | --- | --- | --- |
-| Index: maximális mezők / index |1000 |100 <sup>1</sup> |1000 |1000 |1000 |1000 |
-| Index: maximális pontozási / index profilok |100 |100 |100 |100 |100 |100 |
-| Index: maximális funkciók profilonként |8 |8 |8 |8 |8 |8 |
-| Indexelők: hívásonkénti indexelési terhelés maximális |10 000 dokumentumok |Maximális dokumentumokat csak korlátozva |Maximális dokumentumokat csak korlátozva |Maximális dokumentumokat csak korlátozva |Maximális dokumentumokat csak korlátozva |N/A <sup>2</sup> |
-| Indexelők: maximális futási időt | 1 – 3 percet <sup>3</sup> |24 óra |24 óra |24 óra |24 óra |N/A <sup>2</sup> |
-| A BLOB indexelő: blob maximális mérete, MB |16 |16 |128 |256 |256 |N/A <sup>2</sup> |
-| A BLOB indexelő: blob kinyert tartalom maximális karakterszám |32,000 |64,000 |4 millió |4 millió |4 millió |N/A <sup>2</sup> |
+| Egy index maximális mezők |1000 |100 <sup>1</sup> |1000 |1000 |1000 |1000 |
+| Egy index maximális pontozási profilok |100 |100 |100 |100 |100 |100 |
+| Profilonként maximális funkciók |8 |8 |8 |8 |8 |8 |
 
 <sup>1</sup> alapvető érvényben lévő korlát miatt az index / 100 mezők alsó határának csak Termékváltozat.
 
-<sup>2</sup> S3 HD jelenleg nem támogatja az indexelők. Ha ezt a képességet sürgős van, forduljon az Azure támogatási szolgálatához.
+## <a name="indexer-limits"></a>Az indexelő korlátok
 
-<sup>3</sup> indexelő maximális végrehajtási ingyenes szint ideje 3 perc, a blob-forrásoknak és más adatforrások 1 perc.
+| Erőforrás | Ingyenes | Alapszintű | S1 | S2 | S3 | S3 HD |
+| --- | --- | --- | --- | --- | --- | --- |
+| Hívásonkénti maximális indexelési betöltése |10 000 dokumentumok |Maximális dokumentumokat csak korlátozva |Maximális dokumentumokat csak korlátozva |Maximális dokumentumokat csak korlátozva |Maximális dokumentumokat csak korlátozva |N/A <sup>1</sup> |
+| Maximális futási időt | 1 – 3 percet <sup>2</sup> |24 óra |24 óra |24 óra |24 óra |N/A <sup>1</sup> |
+| A BLOB indexelő: blob maximális mérete, MB |16 |16 |128 |256 |256 |N/A <sup>1</sup> |
+| A BLOB indexelő: blob kinyert tartalom maximális karakterszám |32,000 |64,000 |4 millió |4 millió |4 millió |N/A <sup>1</sup> |
+
+<sup>1</sup> S3 HD jelenleg nem támogatja az indexelők. Ha ezt a képességet sürgős van, forduljon az Azure támogatási szolgálatához.
+
+<sup>2</sup> indexelő maximális végrehajtási ingyenes szint ideje 3 perc, a blob-forrásoknak és más adatforrások 1 perc.
+
 
 ## <a name="document-size-limits"></a>A dokumentum méretkorlátai
 | Erőforrás | Ingyenes | Alapszintű | S1 | S2 | S3 | S3 HD |
 | --- | --- | --- | --- | --- | --- | --- |
-| Egyes dokumentum méretet a Index API |< 16 MB |< 16 MB |< 16 MB |< 16 MB |< 16 MB |< 16 MB |
+| Egyes dokumentum méretet a Index API |<16 MB |<16 MB |<16 MB |<16 MB |<16 MB |<16 MB |
 
 A dokumentum maximális méretét jelenti az Index API-k hívásakor. A dokumentum mérete ténylegesen maximális mérete a Index API-kérés törzsében. Átadhatók egy kötegelt több dokumentumot az Index API egyszerre, mivel a méretkorlátot ténylegesen hány dokumentumok szerepelnek a kötegelt függ. Egyetlen dokumentum kötegben a dokumentum maximális mérete 16 MB JSON.
 

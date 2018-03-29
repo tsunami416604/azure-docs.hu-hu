@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2017
 ms.author: magoedte
-ms.openlocfilehash: 0041a58c8da58785ebc3ead6c8128316b153728c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6d2c85225ab74c912183a0bb8d7f100d1354e6c5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>A Naplóelemzési tároló figyelés megoldás
 
@@ -547,15 +547,15 @@ Az alábbi táblázat a tároló figyelésére szolgáló megoldás és az adato
 
 | Adattípus | A naplófájl-keresési adattípust tartalmaz | Mezők |
 | --- | --- | --- |
-| A gazdagépek és a tárolók teljesítmény | `Type=Perf` | Számítógép, ObjectName, CounterName &#40;kihasználtsága (%), a lemez beolvassa MB, szabad MB memória kihasználtsága (MB), írja hálózati fogadott bájtok, hálózati küldését bájt, a processzor kihasználtsága mp, hálózati&#41;, ellenértéknek, TimeGenerated, Számláló_elérési_útja, SourceSystem |
-| Tároló leltár | `Type=ContainerInventory` | TimeGenerated, Computer, container name, ContainerHostname, Image, ImageTag, ContainerState, ExitCode, EnvironmentVar, Command, CreatedTime, StartedTime, FinishedTime, SourceSystem, ContainerID, ImageID |
-| Tároló kép készlet | `Type=ContainerImageInventory` | TimeGenerated, számítógép, kép, ImageTag, ImageSize, VirtualSize, futó, szünetel, leállítását követően nem sikerült, SourceSystem, ImageID, TotalContainer |
-| Tároló-napló | `Type=ContainerLog` | TimeGenerated, a számítógép, a lemezkép-Azonosítót, a tároló neve, LogEntrySource, LogEntry, SourceSystem, Tárolóazonosító |
-| Tároló szolgáltatás bejelentkezési | `Type=ContainerServiceLog`  | TimeGenerated, számítógép, TimeOfCommand, kép, a parancs, SourceSystem, Tárolóazonosító |
-| Tároló csomópont készlet | `Type=ContainerNodeInventory_CL`| TimeGenerated, Computer, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, SourceSystem|
-| Kubernetes készlet | `Type=KubePodInventory_CL` | TimeGenerated, Computer, PodLabel_deployment_s, PodLabel_deploymentconfig_s, PodLabel_docker_registry_s, Name_s, Namespace_s, PodStatus_s, PodIp_s, PodUid_g, PodCreationTimeStamp_t, SourceSystem |
-| Tároló folyamat | `Type=ContainerProcess_CL` | TimeGenerated, számítógép, Pod_s, Namespace_s, ClassName_s, InstanceID_s, Uid_s, PID_s, PPID_s, C_s, STIME_s, Tty_s, TIME_s, Cmd_s, Id_s, Name_s, SourceSystem |
-| Kubernetes események | `Type=KubeEvents_CL` | TimeGenerated, Computer, Name_s, ObjectKind_s, Namespace_s, Reason_s, Type_s, SourceComponent_s, SourceSystem, Message |
+| A gazdagépek és a tárolók teljesítmény | `Perf` | Számítógép, ObjectName, CounterName &#40;kihasználtsága (%), a lemez beolvassa MB, szabad MB memória kihasználtsága (MB), írja hálózati fogadott bájtok, hálózati küldését bájt, a processzor kihasználtsága mp, hálózati&#41;, ellenértéknek, TimeGenerated, Számláló_elérési_útja, SourceSystem |
+| Tároló leltár | `ContainerInventory` | TimeGenerated, Computer, container name, ContainerHostname, Image, ImageTag, ContainerState, ExitCode, EnvironmentVar, Command, CreatedTime, StartedTime, FinishedTime, SourceSystem, ContainerID, ImageID |
+| Tároló kép készlet | `ContainerImageInventory` | TimeGenerated, számítógép, kép, ImageTag, ImageSize, VirtualSize, futó, szünetel, leállítását követően nem sikerült, SourceSystem, ImageID, TotalContainer |
+| Tároló-napló | `ContainerLog` | TimeGenerated, a számítógép, a lemezkép-Azonosítót, a tároló neve, LogEntrySource, LogEntry, SourceSystem, Tárolóazonosító |
+| Tároló szolgáltatás bejelentkezési | `ContainerServiceLog`  | TimeGenerated, számítógép, TimeOfCommand, kép, a parancs, SourceSystem, Tárolóazonosító |
+| Tároló csomópont készlet | `ContainerNodeInventory_CL`| TimeGenerated, Computer, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, SourceSystem|
+| Kubernetes készlet | `KubePodInventory_CL` | TimeGenerated, Computer, PodLabel_deployment_s, PodLabel_deploymentconfig_s, PodLabel_docker_registry_s, Name_s, Namespace_s, PodStatus_s, PodIp_s, PodUid_g, PodCreationTimeStamp_t, SourceSystem |
+| Tároló folyamat | `ContainerProcess_CL` | TimeGenerated, számítógép, Pod_s, Namespace_s, ClassName_s, InstanceID_s, Uid_s, PID_s, PPID_s, C_s, STIME_s, Tty_s, TIME_s, Cmd_s, Id_s, Name_s, SourceSystem |
+| Kubernetes események | `KubeEvents_CL` | TimeGenerated, Computer, Name_s, ObjectKind_s, Namespace_s, Reason_s, Type_s, SourceComponent_s, SourceSystem, Message |
 
 Címkék fűzött *PodLabel* adattípusok a következők saját címkét. A hozzáfűzött PodLabel címkék a táblázatban szereplő példák. Igen `PodLabel_deployment_s`, `PodLabel_deploymentconfig_s`, `PodLabel_docker_registry_s` lesznek a környezet adatkészlet különböznek és általános hasonlítanak `PodLabel_yourlabel_s`.
 
@@ -610,7 +610,7 @@ A Naplóelemzési jelöli meg a tárolóban **sikertelen** Ha egy nem nulla kil�
    ![tárolók állapota](./media/log-analytics-containers/containers-log-search.png)
 3. Ezután kattintson a további információk megjelenítéséhez sikertelen tárolók összesített értékét. Bontsa ki a **megjelenítése további** megtekintéséhez a lemezkép-azonosítót.  
    ![nem sikerült tárolók](./media/log-analytics-containers/containers-state-failed.png)  
-4. Ezután írja be a következőt a keresési lekérdezés. `Type=ContainerInventory <ImageID>` a kép, például a lemezkép mérete és a leállított és sikertelen csomópontképek száma kapcsolatos részletek megtekintéséhez.  
+4. Ezután írja be a következőt a keresési lekérdezés. `ContainerInventory <ImageID>` a kép, például a lemezkép mérete és a leállított és sikertelen csomópontképek száma kapcsolatos részletek megtekintéséhez.  
    ![nem sikerült tárolók](./media/log-analytics-containers/containers-failed04.png)
 
 ## <a name="search-logs-for-container-data"></a>Keresési naplókat a további adatai
@@ -628,17 +628,17 @@ Ha egy adott hiba elhárításához van, hogy hol lépett fel a környezetben se
 
 
 ### <a name="to-search-logs-for-container-data"></a>Keresés a naplókat a további adatai
-* Válassza ki, hogy tudja, hogy a képfájl nemrég sikertelen volt, és a hibanaplók keresése. Indítsa el a tároló neve, amelyen fut. a lemezkép keresése a **ContainerInventory** keresési. Például keresése `Type=ContainerInventory ubuntu Failed`  
+* Válassza ki, hogy tudja, hogy a képfájl nemrég sikertelen volt, és a hibanaplók keresése. Indítsa el a tároló neve, amelyen fut. a lemezkép keresése a **ContainerInventory** keresési. Például keresése `ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"`  
     ![Ubuntu tárolók keresése](./media/log-analytics-containers/search-ubuntu.png)
 
-  A tároló neve **neve**, majd keresse meg a lesznek a naplók. Ebben a példában ez `Type=ContainerLog cranky_stonebreaker`.
+  A tároló neve **neve**, majd keresse meg a lesznek a naplók. Ebben a példában ez `ContainerLog | where Name == "cranky_stonebreaker"`.
 
 **Teljesítmény-információk megtekintése**
 
 Ha éppen kezdődő, lekérdezések összeállításához, megtudhatja, mi lehetséges először segítséget. Például minden teljesítményadat megtekintéséhez próbálja írja be a következő keresési lekérdezés széleskörű lekérdezést.
 
 ```
-Type=Perf
+Perf
 ```
 
 ![tárolók teljesítmény](./media/log-analytics-containers/containers-perf01.png)
@@ -646,7 +646,7 @@ Type=Perf
 Hatókörét megadhatja a teljesítményadatokat is lát egy adott tárolóhoz jobb oldalán a lekérdezést, hogy a név beírásával.
 
 ```
-Type=Perf <containerName>
+Perf <containerName>
 ```
 
 Amely az egyes tároló összegyűjtött teljesítménymutatók listáját jeleníti meg.
@@ -655,8 +655,6 @@ Amely az egyes tároló összegyűjtött teljesítménymutatók listáját jelen
 
 ## <a name="example-log-search-queries"></a>Példa napló keresési lekérdezések
 Gyakran érdemes hozhatók létre olyan lekérdezések például vagy két és megfeleljenek a környezet módosításával. Kiindulási pontként, kísérletezhet az **mintalekérdezések** terület segíteni bonyolultabb lekérdezéseket.
-
-[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![Tárolók lekérdezések](./media/log-analytics-containers/containers-queries.png)
 

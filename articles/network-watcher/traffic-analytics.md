@@ -1,11 +1,11 @@
 ---
-title: Azure-forgalmat Analytics |} Microsoft Docs
-description: "Útmutató: Azure hálózati biztonsági csoport folyamata naplók és a forgalom Analytics elemzése."
+title: Azure-forgalmat analytics |} Microsoft Docs
+description: 'Útmutató: Azure hálózati biztonsági csoport folyamata naplók és a forgalom analytics elemzése.'
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -13,56 +13,56 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: jdial
-ms.openlocfilehash: 9fc44fdd6ce01452ffc2506c599e3d05aa0803e1
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: ffb13d1190535dacbe3a0781a1d3b425a970d26e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="traffic-analytics"></a>Traffic Analytics
+# <a name="traffic-analytics"></a>Forgalom elemzés
 
-Forgalom Analytics egy felhőalapú megoldás, amely felhőalapú hálózatokhoz a felhasználói és alkalmazás tevékenységek láthatósága. Forgalom elemzés elemzi a hálózati figyelőt hálózati biztonsági csoport (NSG) folyamat bejegyzéseit, amelyek a forgalom áramlását az Azure felhőben betekintést. A forgalom Analytics segítségével:
+Forgalom analytics egy felhőalapú megoldás, amely felhőalapú hálózatokhoz a felhasználói és alkalmazás tevékenységek láthatósága. Forgalom elemzés elemzi a hálózati figyelőt hálózati biztonsági csoport (NSG) folyamat bejegyzéseit, amelyek a forgalom áramlását az Azure felhőben betekintést. A forgalom analytics segítségével:
 
 - Hálózati tevékenységek jelenítheti meg az Azure-előfizetések között, és azonosíthatja a csatlakozási pontokhoz.
 - Biztonsági fenyegetéseket jelezhetnek határozza meg, és a hálózat, például a Megnyitás-portok, internet-hozzáféréssel, és a virtuális gépek (VM) támadó hálózatok csatlakoztatása alkalmazásokat adatokkal biztonságáról.
 - Ismerje meg a folyamat forgalmat Azure-régiók és a saját hálózati telepítéséhez a teljesítmény és a kapacitás optimalizálása érdekében az interneten keresztül.
 - A rögzítési ponthoz vezető sikertelen kapcsolatok a hálózaton lévő hálózati konfigurációs hibák.
 
-## <a name="why-traffic-analytics"></a>Miért forgalom Analytics?
+## <a name="why-traffic-analytics"></a>Miért forgalom analytics?
 
 Elengedhetetlen, figyeléséhez, kezeléséhez, és ismeri a saját hálózati biztonsági szempontból sértetlen biztonsági, megfelelőségi és teljesítmény. A saját környezetben tudatában van kiemelkedő fontosságú védelemmel való ellátásához és optimalizálhatja azt. Gyakran van szükség, hogy a jelenlegi állapotában a hálózat, akik kapcsolódik, mely portokon is nyitva csatlakozik az internethez, a várt hálózati működés, szabálytalan hálózati probléma, és a forgalom hirtelen nő.
 
 Felhőalapú hálózatokhoz eltérnek a helyszíni vállalati hálózatokban, Netflow vagy azzal egyenértékű protokollt támogató útválasztók és kapcsolókat, amelyek a lehetőségét nyújtani az IP-hálózati forgalom gyűjtése lép, vagy kilép egy hálózati adapter esetében. Forgalom folyamata adatok elemzése, hálózati forgalmat, és a kötet elemzésének hozhat létre.
 
-Egy Azure virtuális hálózatot rendelkezik ismertetik, hogy érkező NSG folyamata naplókat, és egyes hálózati adapterek, virtuális gépek és alhálózatok tartozó virtuális IP-forgalom a hálózati biztonsági csoporton keresztül. Nyers NSG elemzésével flow a naplókat, és biztonsági, topológia és geográfiai eszközintelligencia beszúrni, forgalom Analytics adja meg a forgalom áramlását környezetében betekintést. Forgalom Analytics leggyakrabban kommunikáló állomások, legtöbb kommunikáló alkalmazás-protokollokra, a beszélgetést állomás párok, engedélyezett/letiltott forgalom, bejövő/kimenő forgalom, portjain internet, legtöbb blokkoló szabályokat, forgalom vonatkozó információkat biztosít terjesztési / Azure-adatközpontban, virtuális hálózatot, alhálózatot, vagy a támadó hálózatok.
+Egy Azure virtuális hálózatot rendelkezik ismertetik, hogy érkező NSG folyamata naplókat, és egyes hálózati adapterek, virtuális gépek és alhálózatok tartozó virtuális IP-forgalom a hálózati biztonsági csoporton keresztül. Nyers NSG folyamata naplók elemzésével és biztonság, a topológia és a földrajzi hely, forgalom eszközintelligencia beszúrása analytics adja meg a vállalati ügyei elemzéseit adatforgalmat a környezetben. Forgalom Analytics leggyakrabban kommunikáló állomások, legtöbb kommunikáló alkalmazás-protokollokra, a beszélgetést állomás párok, engedélyezett/letiltott forgalom, bejövő/kimenő forgalom, portjain internet, legtöbb blokkoló szabályokat, forgalom vonatkozó információkat biztosít terjesztési / Azure-adatközpontban, virtuális hálózatot, alhálózatot, vagy a támadó hálózatok.
 
 ## <a name="key-components"></a>A legfontosabb összetevők 
 
 - **Hálózati biztonsági csoport (NSG)**: felsorolja azokat a szabályokat, amelyek egy Azure virtuális hálózathoz kapcsolódó erőforrások hálózati adatforgalom engedélyezéséhez vagy letiltásához. Az NSG-k társíthatóak alhálózatokhoz, egyedi virtuális gépekhez (klasszikus) vagy virtuális gépekhez (Resource Manager) kapcsolt hálózati adapterekhez (NIC). További információkért lásd: [hálózati biztonsági csoport – áttekintés](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **Hálózati biztonsági csoport (NSG) folyamat naplók**: bemenő és kimenő IP-forgalom a hálózati biztonsági csoportok használatával kapcsolatos információk megtekintéséhez. NSG folyamata naplók json formátumban vannak megírva, és megjelenítése a kimenő és bejövő adatfolyamok / szabály alapján, a hálózati adapter a folyamat vonatkozik, 5 rekordos információ a folyamattal (forrás vagy a cél IP-cím forrás vagy a cél-port és protokoll), és ha a forgalom engedélyezve lett, vagy megtagadva. NSG folyamata naplók kapcsolatos további információkért lásd: [NSG folyamata naplók](network-watcher-nsg-flow-logging-overview.md).
-- **Naplófájl Analytics**: Azure szolgáltatás, amely figyelési adatokat gyűjt, és tárolja az adatok egy központi tárházban. Ezek az adatok tartalmazhatnak eseményeket, teljesítményadatokat vagy egyéni adatok az Azure API-n keresztül megadott. Az összegyűjtésüket követően az adatok használhatók riasztáshoz, elemzéshez vagy exportáláshoz. Alkalmazások figyelése, például a Naplóelemzési alapjaként használatával készített hálózati Teljesítményfigyelő és a forgalom elemzés. További információkért lásd: [analytics jelentkezzen](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **A Naplóelemzési munkaterület jelentkezzen**: Log Analytics egy Azure-fiókra vonatkozó adatok tárolására példánya. Napló Analytics munkaterületekkel kapcsolatos további információkért lásd: [Naplóelemzési munkaterület létrehozása](../log-analytics/log-analytics-quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Naplófájl Analytics**: Azure szolgáltatás, amely figyelési adatokat gyűjt, és tárolja az adatok egy központi tárházban. Ezek az adatok tartalmazhatnak eseményeket, teljesítményadatokat vagy egyéni adatok az Azure API-n keresztül megadott. Az összegyűjtésüket követően az adatok használhatók riasztáshoz, elemzéshez vagy exportáláshoz. Például a hálózati teljesítmény figyelése és a forgalom analytics alapjaként Naplóelemzési használatával készített alkalmazások figyelése. További információkért lásd: [analytics jelentkezzen](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **A naplóelemzési munkaterület jelentkezzen**: naplóelemzési, egy Azure-fiókra vonatkozó adatok tárolására példánya. Napló analytics munkaterületekkel kapcsolatos további információkért lásd: [Naplóelemzési munkaterület létrehozása](../log-analytics/log-analytics-quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **Hálózati figyelő**: egy regionális szolgáltatás, amely lehetővé teszi, hogy figyelése és diagnosztizálása egy Azure hálózati forgatókönyv szintjén feltételek. Ha bekapcsolja NSG folyamata naplók be- és kikapcsolását és a hálózati figyelőt. További információkért lásd: [hálózati figyelőt](network-watcher-monitoring-overview.md#network-watcher).
 
 ## <a name="how-traffic-analytics-works"></a>Hogyan működik a forgalom elemzés 
 
-Forgalom Analytics megvizsgálja a nyers NSG folyamata naplókat, és közös forgalom az azonos forrás IP-címe, cél IP-címe, célport és protokoll között összesítésével csökkentett naplók rögzíti. Például a gazdagép-1 (IP-cím: 10.10.10.10) kommunikál a gazdagép 2 (IP-cím: 10.10.20.10), 100 alkalommal 1 óra (például 80-as) és protokollt (például http) segítségével egy adott időszakban. A csökkentett naplóban szerepel egy vagy több bejegyzése, 1 óra porton keresztül egy meghatározott időtartam során 100 alkalommal közölt állomás 1 és 2 gazdagép *80* és protokoll *HTTP*, ahelyett, hogy 100 bejegyzéseket. Csökkentett naplók geográfiai, biztonsági és topológiainfomációja bővül, és aztán a Naplóelemzési munkaterület. Az alábbi képen látható az adatfolyam:
+Forgalom analytics megvizsgálja a nyers NSG folyamata naplókat, és közös forgalom az azonos forrás IP-címe, cél IP-címe, célport és protokoll között összesítésével csökkentett naplók rögzíti. Például a gazdagép-1 (IP-cím: 10.10.10.10) kommunikál a gazdagép 2 (IP-cím: 10.10.20.10), 100 alkalommal 1 óra (például 80-as) és protokollt (például http) segítségével egy adott időszakban. A csökkentett naplóban szerepel egy vagy több bejegyzése, 1 óra porton keresztül egy meghatározott időtartam során 100 alkalommal közölt állomás 1 és 2 gazdagép *80* és protokoll *HTTP*, ahelyett, hogy 100 bejegyzéseket. Csökkentett naplók geográfiai, biztonsági és topológiainfomációja bővül, és aztán a log analytics-munkaterület. Az alábbi képen látható az adatfolyam:
 
 ![NSG folyamata naplók feldolgozása folyamatábrája](media/traffic-analytics/data-flow-for-nsg-flow-log-processing.png)
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
-Forgalom Analytics előzetes verzió érhető el. Az előzetes funkciók nem rendelkeznek azonos szintű rendelkezésre állást és megbízhatóságot, mint a szolgáltatások általában kiadási.  Az előzetes kiadásban használhat forgalom Analytics NSG-ket, sem a következő régióban: nyugati középső Régiójában, USA keleti régiója, USA keleti régiója 2, északi középső Régiójában, déli középső Régiójában, USA középső RÉGIÓJA, USA nyugati régiója, USA nyugati régiója-2, Nyugat-Európa, Észak-Európa, Nyugat UK, Dél-UK, Kelet-Ausztrália , és Ausztrália délkeleti. A Naplóelemzési munkaterület léteznie kell a nyugati középső Régiójában, USA keleti régiója, Nyugat-Európában, Ausztrália délkeleti vagy déli UK régió.
+Forgalom analytics előzetes verzió érhető el. Az előzetes funkciók nem rendelkeznek azonos szintű rendelkezésre állást és megbízhatóságot, mint a szolgáltatások általában kiadási.  Az előzetes kiadásban használhat forgalom analytics NSG-ket, sem a következő régióban: nyugati középső Régiójában, USA keleti régiója, USA keleti régiója 2, északi középső Régiójában, déli középső Régiójában, USA középső RÉGIÓJA, USA nyugati régiója, USA nyugati régiója-2, Nyugat-Európa, Észak-Európa, Nyugat UK, Dél-UK, Kelet-Ausztrália , és Ausztrália délkeleti. A naplóelemzési munkaterület léteznie kell a nyugati középső Régiójában, USA keleti régiója, Nyugat-Európában, Ausztrália délkeleti vagy déli UK régió.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="enable-network-watcher"></a>Engedélyezze a hálózati figyelőt 
 
-Elemezze az adatforgalmat, hogy szüksége van egy meglévő hálózati figyelőt, vagy [engedélyezése az Azure hálózati figyelőjét](network-watcher-create.md) minden régióban, hogy rendelkezik-e az elemezni kívánt NSG-ket forgalmi a. Forgalom Analytics engedélyezhető az NSG-ket egyikében sem található a [támogató régiók](#supported-regions).
+Elemezze az adatforgalmat, hogy szüksége van egy meglévő hálózati figyelőt, vagy [engedélyezéséhez egy hálózati figyelőt](network-watcher-create.md) minden régióban, hogy rendelkezik-e az elemezni kívánt NSG-ket forgalmi a. Forgalom analytics engedélyezhető az NSG-ket egyikében sem található a [támogató régiók](#supported-regions).
 
 ### <a name="re-register-the-network-resource-provider"></a>Regisztrálja újra a hálózati erőforrás-szolgáltató 
 
-Forgalom Analytics az előzetes használata előtt újra regisztrálnia kell a hálózati erőforrás-szolgáltató. Kattintson a **kipróbálás** a következő kód mezőbe az Azure-felhő rendszerhéj megnyitásához. A felhő rendszerhéj automatikusan jelentkezik be, az Azure-előfizetéshez. Miután a felhő rendszerhéj meg nyitva, adja meg a következő parancs futtatásával regisztrálja újra a hálózati erőforrás-szolgáltató:
+Forgalom analytics az előzetes használata előtt újra regisztrálnia kell a hálózati erőforrás-szolgáltató. Kattintson a **kipróbálás** a következő kód mezőbe az Azure-felhő rendszerhéj megnyitásához. A felhő rendszerhéj automatikusan jelentkezik be, az Azure-előfizetéshez. Miután a felhő rendszerhéj meg nyitva, adja meg a következő parancs futtatásával regisztrálja újra a hálózati erőforrás-szolgáltató:
 
 ```azurepowershell-interactive
 Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Network"
@@ -76,7 +76,7 @@ Az Azure portál bal oldalán válassza ki a **figyelő**, majd **hálózati fig
 
 ![Az NSG-k engedélyezése NSG folyamata napló igénylő kiválasztása](media/traffic-analytics/selection-of-nsgs-that-require- enablement-of-nsg-flow-logging.png)
 
-Ha mégis megpróbálja forgalom Analytics egy NSG-t, amely minden régióban eltérő engedélyezése a [támogató régiók](#supported-regions), a "Nem található" hibaüzenet. 
+Ha mégis megpróbálja forgalom analytics egy NSG-t, amely minden régióban eltérő engedélyezése a [támogató régiók](#supported-regions), a "Nem található" hibaüzenet. 
 
 ## <a name="enable-flow-log-settings"></a>Attribútumfolyam naplófájl-beállítások engedélyezése
 
@@ -107,7 +107,7 @@ Válassza ki a következő beállításokat, a képen látható módon:
 4. Válassza ki *a* a **forgalmat, elemzési állapot**.
 5. Jelöljön ki egy meglévő Naplóelemzés (OMS) munkaterülettel, vagy **új munkaterület létrehozása** számára hozzon létre egy újat. A Naplóelemzési munkaterület forgalom Analytics tárolására szolgál majd előállítására szolgál a analytics összesített és indexelt adatokat. Ha egy meglévő munkaterülettel, azt már léteznie kell egy a [támogató régiók](#traffic-analytics-supported-regions) és az új lekérdezés nyelvének frissítése után. Ha nem kíván egy meglévő munkaterület frissítése, vagy nem rendelkezik a munkaterületen egy támogatott régióban, hozzon létre egy újat. Lekérdezési nyelv kapcsolatos további információkért lásd: [Azure Naplóelemzés frissítsen az új naplófájl-keresési](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
-    A Naplóelemzés (OMS) munkaterületen, a forgalom elemzési megoldások és az NSG-k üzemeltetéséhez nem kell ugyanabban a régióban kell. Például előfordulhat, hogy forgalom Analytics Nyugat-Európában régióban munkaterület során előfordulhat, hogy az NSG-k USA keleti régiója, és az USA nyugati régiója. Több NSG-ket az ugyanazon a munkaterületen konfigurálhatók.
+    A naplóelemzési munkaterület a forgalom elemzési megoldások és az NSG-k üzemeltetéséhez nem kell ugyanabban a régióban kell. Például előfordulhat, hogy forgalom analytics Nyugat-Európában régióban munkaterület során előfordulhat, hogy az NSG-k USA keleti régiója, és az USA nyugati régiója. Több NSG-ket az ugyanazon a munkaterületen konfigurálhatók.
 6. Kattintson a **Mentés** gombra.
 
     ![A tárfiók, a Naplóelemzési munkaterület és a forgalom Analytics engedélyezése kiválasztása](media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement.png)
@@ -276,4 +276,4 @@ Rendelkezik rosszindulatú forgalmat a környezetében? Ha az azt származó? Ha
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-Gyakran feltett kérdésekre adott válaszok, lásd: [forgalom Analytics gyakran ismételt kérdések](traffic-analytics-faq.md).
+Gyakran feltett kérdésekre adott válaszok, lásd: [analytics gyakran ismételt kérdések forgalom](traffic-analytics-faq.md).

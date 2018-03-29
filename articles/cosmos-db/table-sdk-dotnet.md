@@ -1,24 +1,24 @@
 ---
-title: "Az Azure CosmosDB tábla API .NET SDK & erőforrások |} Microsoft Docs"
-description: "Tudnivalók az Azure Cosmos DB tábla API beleértve a kiadási dátum, a használatból való kivonást dátumot és az egyes verziók között végrehajtott módosításokat."
+title: Az Azure CosmosDB tábla API .NET SDK & erőforrások |} Microsoft Docs
+description: Tudnivalók az Azure Cosmos DB tábla API beleértve a kiadási dátum, a használatból való kivonást dátumot és az egyes verziók között végrehajtott módosításokat.
 services: cosmos-db
 documentationcenter: .net
 author: rnagpal
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/21/2018
+ms.date: 03/26/2018
 ms.author: mimig
-ms.openlocfilehash: af14e9dbd5f65d5cefa3d9424b8628f10d8160da
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 2afd7df65e7b223845752fc6bea5bc0ab4d3efd8
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Az Azure Cosmos DB táblában .NET API: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -40,6 +40,11 @@ ms.lasthandoff: 02/23/2018
 >
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
+* A hozzáadott érvényesíteni a következő hibás ETag-EK közvetlen módban.
+* Javított LINQ lekérdezés hibát átjáró módban esetén.
+* Szinkron API-k most futtassa a SynchronizationContext tulajdonságot a szálkészlethez.
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
 * Add TableQueryMaxItemCount, TableQueryEnableScan, TableQueryMaxDegreeOfParallelism and TableQueryContinuationTokenLimitInKb to TableRequestOptions
@@ -63,6 +68,8 @@ A szolgáltatás bármely Azure Cosmos DB kivont SDK használatával kérelmeket
 
 | Verzió | Kiadás dátuma | Kivezetési dátum |
 | --- | --- | --- |
+| [1.1.1](#1.1.1) |2018. március 26.|--- |
+| [1.1.0](#1.1.0) |2018. február 21.|--- |
 | [1.0.0](#1.0.0) |2017. november 15.|--- |
 | [0.9.0-preview](#0.9.0-preview) |2017. november 11. |--- |
 

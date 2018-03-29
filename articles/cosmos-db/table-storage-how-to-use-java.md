@@ -1,6 +1,6 @@
 ---
-title: "Azure Table storage-ának Java használatával |} Microsoft Docs"
-description: "Az Azure Table Storage, amely egy NoSQL-adattár, a strukturált adatok felhőben való tárolásához használható."
+title: Azure Table storage vagy Azure Cosmos DB tábla API a Java használatával |} Microsoft Docs
+description: Az Azure Table Storage, amely egy NoSQL-adattár, a strukturált adatok felhőben való tárolásához használható.
 services: cosmos-db
 documentationcenter: java
 author: mimig1
@@ -12,20 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 03/20/2018
 ms.author: mimig
-ms.openlocfilehash: 6862475e05f49c7da823bcfb70f30ee484131d12
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: b11faf56ac700399fc411c7feb9910ada355e952
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="how-to-use-azure-table-storage-from-java"></a>Azure Table storage-ának Java használatával
+# <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Azure Table storage vagy Azure Cosmos DB tábla API a Java használatával
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
 ## <a name="overview"></a>Áttekintés
-Ez az útmutató bemutatja, hogyan hajthat végre a szolgáltatást az Azure Table storage szolgáltatást használó általános forgatókönyvhöz. A mintákat a Java és -felhasználási nyelven íródtak a [Azure Storage SDK for Java][Azure Storage SDK for Java]. Az ismertetett forgatókönyvek **létrehozása**, **listázása**, és **törlése** táblák, valamint **beszúrása**, **lekérdezése**, **módosítása**, és **törlése** entitások egy tábla. További tudnivalókat lásd: a [további lépések](#Next-Steps) szakasz.
+Ez a cikk bemutatja, hogyan hajthat végre a szolgáltatást az Azure Table storage szolgáltatást és az Azure Cosmos DB használó általános forgatókönyvhöz. A mintákat a Java és -felhasználási nyelven íródtak a [Azure Storage SDK for Java][Azure Storage SDK for Java]. Az ismertetett forgatókönyvek **létrehozása**, **listázása**, és **törlése** táblák, valamint **beszúrása**, **lekérdezése**, **módosítása**, és **törlése** entitások egy tábla. További tudnivalókat lásd: a [további lépések](#next-steps) szakasz.
 
 > [!NOTE]
 > Az SDK nem elérhető a fejlesztők számára, akik Azure Storage Android-eszközökön. További információkért lásd: a [Azure Storage SDK for Android][Azure Storage SDK for Android].
@@ -36,12 +36,12 @@ Ez az útmutató bemutatja, hogyan hajthat végre a szolgáltatást az Azure Tab
 [!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-java-application"></a>Java-alkalmazás létrehozása
-Ez az útmutató a tárolási szolgáltatásokkal, amelyek helyben, vagy a webes szerepkör vagy a feldolgozói szerepkör az Azure-ban futó belül Java-alkalmazások futtatása fogja használni.
+Ez az útmutató a tárolási szolgáltatásokkal, amelyet helyben, vagy egy webes szerepkör vagy a feldolgozói szerepkör az Azure-ban futó futtathat a Java-alkalmazás fogja használni.
 
-Ehhez szüksége lesz a Java fejlesztői készlet (JDK) telepítése, és hozzon létre egy Azure storage-fiókot az Azure-előfizetéshez. Ha ezzel végzett, akkor győződjön meg arról, hogy a fejlesztési rendszer megfelel-e a minimális követelményeit és függőségeit, amelyek szerepelnek a [Azure Storage SDK for Java] [ Azure Storage SDK for Java] GitHub tárházából. Ha a rendszer megfelel ezeknek a követelményeknek, akkor is kövesse letöltése és telepítése az Azure Storage szalagtárak Java ebből a rendszeren. Ezek a feladatok befejezése után lesz ebben a cikkben a példák használó Java-alkalmazás létrehozása.
+Ebben a cikkben a minta használatához a Java fejlesztői készlet (JDK) telepítése, majd hozzon létre egy Azure storage-fiókot az Azure-előfizetéshez. Ha ezzel végzett, győződjön meg arról, hogy a fejlesztési rendszer megfelel-e a minimális követelményeit és függőségeit, amelyek szerepelnek a [Azure Storage SDK for Java] [ Azure Storage SDK for Java] GitHub tárházából. Ha a rendszer megfelel ezeknek a követelményeknek, követheti az útmutatást követve töltse le és telepítse az Azure Storage szalagtárak Java ebből a rendszeren. Ha ezeket a feladatokat, a cikkben a példák használó Java-alkalmazások is létrehozhat.
 
 ## <a name="configure-your-application-to-access-table-storage"></a>Állítsa be az alkalmazását, a table storage eléréséhez
-Vegye fel a következő importálási utasításokat a felső részén a Java-fájlt, amelyre a Microsoft Azure storage API-kkal táblák eléréséhez használható:
+Vegye fel a következő importálási utasításokat a, ahol az Azure storage API-k vagy az Azure Cosmos DB tábla API access táblákra használni kívánt Java fájl elejéhez:
 
 ```java
 // Include the following imports to use table APIs
@@ -50,8 +50,10 @@ import com.microsoft.azure.storage.table.*;
 import com.microsoft.azure.storage.table.TableQuery.*;
 ```
 
-## <a name="set-up-an-azure-storage-connection-string"></a>Egy Azure storage kapcsolati karakterlánc beállítása
-Egy Azure storage-ügyfél egy tárolási kapcsolati karakterlánc végpontok és adatok szolgáltatások eléréséhez szükséges hitelesítő adatok tárolására használ. Ha egy ügyfél-alkalmazás fut, meg kell adnia a tárolási kapcsolati karakterlánc a következő formátumban a tárfiók nevével, és a tárfiók elsődleges elérési kulcs szerepel az [Azure-portálon](https://portal.azure.com) a a *AccountName* és *AccountKey* értékek. Ez a példa bemutatja, hogyan deklarálhatnak ahhoz, hogy a kapcsolati karakterlánc statikus mezőben:
+## <a name="add-an-azure-storage-connection-string"></a>Az Azure storage kapcsolati karakterlánc hozzáadása
+Egy Azure storage-ügyfél egy tárolási kapcsolati karakterlánc végpontok és adatok szolgáltatások eléréséhez szükséges hitelesítő adatok tárolására használ. Ha egy ügyfél-alkalmazás fut, meg kell adnia a tárolási kapcsolati karakterlánc a következő formátumban a tárfiók nevével, és a tárfiók elsődleges elérési kulcs szerepel az [Azure-portálon](https://portal.azure.com) a a *AccountName* és *AccountKey* értékek. 
+
+Ez a példa bemutatja, hogyan deklarálhatnak ahhoz, hogy a kapcsolati karakterlánc statikus mezőben:
 
 ```java
 // Define the connection-string with your values.
@@ -61,7 +63,20 @@ public static final String storageConnectionString =
     "AccountKey=your_storage_account_key";
 ```
 
-Egy alkalmazás fut, a Microsoft Azure-ban a szerepkörön belüli, az ezt a karakterláncot tárolhatja a konfigurációs fájlban, *ServiceConfiguration.cscfg*, és hívja érhető el a **RoleEnvironment.getConfigurationSettings** metódust. Íme egy példa a kapcsolati karakterlánc beolvasása egy **beállítás** nevű elem *StorageConnectionString* a konfigurációs fájlban:
+## <a name="add-an-azure-cosmos-db-connection-string"></a>Azure Cosmos DB kapcsolati karakterlánc hozzáadása
+Egy Azure Cosmos DB fiók egy kapcsolati karakterláncot használ a tábla végpont és a hitelesítő adatok tárolására. Amikor egy ügyfél-alkalmazás fut, meg kell adni az Azure Cosmos DB kapcsolati karakterlánc a következő formátumban Azure Cosmos DB fiókja nevével, és az elsődleges elérési kulcsot a fiók szerepel a [Azure-portálon](https://portal.azure.com) számára a *AccountName* és *AccountKey* értékeket. 
+
+Ez a példa bemutatja, hogyan deklarálhatnak ahhoz, hogy az Azure Cosmos DB kapcsolati karakterlánc statikus mezőben:
+
+```java
+public static final String storageConnectionString =
+    "DefaultEndpointsProtocol=https;" + 
+    "AccountName=your_cosmosdb_account;" + 
+    "AccountKey=your_account_key;" + 
+    "TableEndpoint=https://your_endpoint;" ;
+```
+
+Egy alkalmazás fut, az Azure-ban a szerepkörön belüli, az ezt a karakterláncot, a szolgáltatás konfigurációs fájlban tárolhatja *ServiceConfiguration.cscfg*, és hozzá tud férni hívja a  **RoleEnvironment.getConfigurationSettings** metódust. Íme egy példa a kapcsolati karakterlánc beolvasása egy **beállítás** nevű elem *StorageConnectionString* a konfigurációs fájlban:
 
 ```java
 // Retrieve storage account from connection-string.
@@ -69,13 +84,19 @@ String storageConnectionString =
     RoleEnvironment.getConfigurationSettings().get("StorageConnectionString");
 ```
 
-A következő minták azt feltételezik, hogy használt két módszer közül egyik beolvasni a tárolási kapcsolati karakterlánc.
+A kapcsolati karakterláncot is tárolhatja a projektfájl config.properties:
 
-## <a name="how-to-create-a-table"></a>Útmutató: a tábla létrehozása
+```java
+StorageConnectionString = DefaultEndpointsProtocol=https;AccountName=your_account;AccountKey=your_account_key;TableEndpoint=https://your_table_endpoint/
+```
+
+A következő minták azt feltételezik, hogy használt ezen módszerek egyikét a tárolási kapcsolati karakterlánc eléréséhez.
+
+## <a name="create-a-table"></a>Tábla létrehozása
 A **CloudTableClient** objektum lehetővé teszi, hogy a hivatkozás objektum lekérése a táblákat és entitásokat. Az alábbi kód létrehoz egy **CloudTableClient** objektumot, és hozzon létre egy új használja **CloudTable** objektum egy tábla nevű, "személyek". 
 
 > [!NOTE]
-> Nincsenek további módon hozhat létre **CloudStorageAccount** objektumok; további információkért lásd: **CloudStorageAccount** a a [Azure Storage ügyfél SDK-dokumentáció].)
+> Egyéb módon létrehozásához **CloudStorageAccount** objektumok; további információkért lásd: **CloudStorageAccount** a a [Azure Storage ügyfél SDK-dokumentáció]).
 >
 
 ```java
@@ -100,7 +121,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-list-the-tables"></a>Hogyan: táblák listázása
+## <a name="list-the-tables"></a>Táblák listázása
 Ahhoz, hogy a táblák listáját, hívja az **CloudTableClient.listTables()** metódusának segítéségével lekérheti az táblanevek iterable listája.
 
 ```java
@@ -127,7 +148,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-add-an-entity-to-a-table"></a>Hogyan: vehető fel olyan entitás egy táblához
+## <a name="add-an-entity-to-a-table"></a>Entitás hozzáadása a táblához
 Entitások leképezése egy egyéni osztály végrehajtási Java objektumok **TableEntity**. Kényelmi célokat szolgál a **TableServiceEntity** osztály megvalósítja **TableEntity** és képezze le a tulajdonságait a Tulajdonságok nevű elérő és beállító metódusok reflexió használatával. Egy entitás egy táblához hozzáadásához először létre kell hoznia egy osztály, amely az entitás tulajdonságait határozza meg. Az alábbi kód meghatároz egy entitásosztályt, amely az ügyfél keresztnevét használja, mint a sorkulcs, vezetéknevét partíciókulcsnak. Egy entitás partíció- és sorkulcsa együttesen azonosítja az entitást a táblán belül. Az azonos partíciókulcsú entitások gyorsabban azokat a különböző partíciókulcsúak lehet lekérdezni.
 
 ```java
@@ -193,7 +214,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-insert-a-batch-of-entities"></a>Útmutató: egy teljes entitásköteget beszúrása
+## <a name="insert-a-batch-of-entities"></a>Entitásköteg beszúrása
 Egyetlen írási művelettel a table szolgáltatásba entitásköteget is beszúrhat. Az alábbi kód létrehoz egy **TableBatchOperation** objektumot, majd hozzáadja a három a beszúrási műveletek rá. Minden egyes végrehajtott beszúrási művelet hozzáadott új forrásentitás-objektum létrehozása, annak értékét, és majd hívja a **beszúrása** metódust a **TableBatchOperation** objektum az entitás egy új insert művelethez társítható. Ezután a kód hívások **hajtható végre** a a **CloudTable** objektum, adja meg a "felhasználók" tábla és a **TableBatchOperation** objektum, amely a köteg tábla műveletek küld a társzolgáltatás az egy kérelemhez.
 
 ```java
@@ -247,7 +268,7 @@ A kötegműveletekkel kapcsolatban ügyeljen a következőkre:
 * Egy adott kötegművelet összes entitásának ugyanazzal a partíciókulccsal kell rendelkeznie.
 * A kötegelt művelet egy 4MB adattartalom korlátozódik.
 
-## <a name="how-to-retrieve-all-entities-in-a-partition"></a>Útmutató: egy partíció összes entitásának lekérése
+## <a name="retrieve-all-entities-in-a-partition"></a>Egy partíció összes entitásának lekérése
 Ha egy táblából egy partíció entitások, használhatja a **TableQuery**. Hívás **TableQuery.from** egy adott táblán, amely visszaadja a megadott típusú lekérdezés létrehozásához. A következő kódot megad egy szűrőt, ahol a "Smith" a partíciókulcs az entitások. **TableQuery.generateFilterCondition** van egy segédmetódust a lekérdezések-szűrők létrehozásához. Hívás **ahol** által visszaadott hivatkozás a a **TableQuery.from** módszer a szűrő alkalmazása a lekérdezést. Ha a lekérdezés végrehajtása hívja **hajtható végre** a a **CloudTable** objektumot ad vissza egy **iterátor** rendelkező a **CustomerEntity** eredménye a megadott típus. Ezután a **iterátor** vissza egy for-each ciklus felhasználásához, az eredményeket. Ez a kód kiírja a mezőket a konzolba a lekérdezés eredményében.
 
 ```java
@@ -294,7 +315,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-retrieve-a-range-of-entities-in-a-partition"></a>Útmutató: egy partíció entitástartományának lekérése
+## <a name="retrieve-a-range-of-entities-in-a-partition"></a>Partíció entitástartományának lekérése
 Ha nem szeretné egy partíció összes entitást lekérdezni, megadhat egy tartományt a szűrőben lévő összehasonlító operátorok használatával. Az alábbi kód két szűrőket, hogy a "Smith", ahol a sorkulcs (Keresztnév) legfeljebb "E" betűvel kezdődik partíció összes entitásának lekérése az ábécé egyesíti. Majd megjeleníti a lekérdezés eredményeit. Ha használja az entitásokat, adja hozzá a kötegben táblázathoz című szakaszában talál, csak két olyan entitásra visszaadott (Ben és Denise Smith); Jeff Smith nincs megadva.
 
 ```java
@@ -352,8 +373,8 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-retrieve-a-single-entity"></a>Hogyan: egyetlen entitás lekérdezése
-Írhat egy lekérdezést egy adott entitás lekérdezéséhez. A következő kódot a hívások **TableOperation.retrieve** partícióból kulcs vagy sor kulcs paramétereket adja meg a "Jeff Smith" létrehozása helyett egy **TableQuery** és hajtsa végre ugyanezt a szűrők használatával. Végrehajtásakor a beolvasási műveletet egy gyűjtemény helyett csak egyetlen entitást ad vissza. A **getResultAsType** metódus árnyékot a hozzárendelés cél típusának eredménye egy **CustomerEntity** objektum. Ha ez a típus nem kompatibilis a lekérdezéshez megadott típus, egy kivételt fog jelezni. Null értékű ad vissza, ha nem entitás egy pontos partíció- és sorkulcsa felel meg. Ha egyetlen entitást szeretne lekérdezni a Table szolgáltatásból, ennek leggyorsabb módja a partíció- és sorkulcsok megadása a lekérdezésben.
+## <a name="retrieve-a-single-entity"></a>Egyetlen entitás lekérdezése
+Írhat egy lekérdezést egy adott entitás lekérdezéséhez. A következő kódot a hívások **TableOperation.retrieve** partícióból kulcs vagy sor kulcs paramétereket adja meg a "Jeff Smith" létrehozása helyett egy **TableQuery** és hajtsa végre ugyanezt a szűrők használatával. Végrehajtásakor a beolvasási műveletet egy gyűjtemény helyett csak egyetlen entitást ad vissza. A **getResultAsType** metódus árnyékot a hozzárendelés cél típusának eredménye egy **CustomerEntity** objektum. Ha ez a típus nem kompatibilis a típussal, a lekérdezéshez megadott, a rendszer kivételt hoz létre. Null értékű ad vissza, ha nem entitás egy pontos partíció- és sorkulcsa felel meg. Ha egyetlen entitást szeretne lekérdezni a Table szolgáltatásból, ennek leggyorsabb módja a partíció- és sorkulcsok megadása a lekérdezésben.
 
 ```java
 try
@@ -392,8 +413,8 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-modify-an-entity"></a>Hogyan: entitás módosítása
-Entitás módosítása lekéréséhez a table szolgáltatásból, módosítja a forrásentitás-objektum, és menti a módosításokat vissza az a table szolgáltatás egy áthelyezési vagy merge műveletet. A következő kód egy meglévő ügyfél telefonszámát módosítja. Telefonhívás helyett **TableOperation.insert** beszúrása megszokott azt meghívja-e ezt a kódot **TableOperation.replace**. A **CloudTable.execute** metódus meghívja a table szolgáltatás, és az entitás helyébe, kivéve, ha egy másik alkalmazás módosított azt az időt mivel ez az alkalmazás azt lekérése. Ebben az esetben kivételt vált ki, és az entitás kell beolvasni, módosíthatók, és újra menti. Egyidejű hozzáférések optimista újrapróbálkozási zárolás közös az olyan elosztott tárolórendszer.
+## <a name="modify-an-entity"></a>Entitás módosítása
+Entitás módosítása lekéréséhez a table szolgáltatásból, módosítja a forrásentitás-objektum, és menti a módosításokat vissza az a table szolgáltatás egy áthelyezési vagy merge műveletet. A következő kód egy meglévő ügyfél telefonszámát módosítja. Telefonhívás helyett **TableOperation.insert** hasonlóan szúrható be, ezzel a kóddal meghívja **TableOperation.replace**. A **CloudTable.execute** metódus meghívja a table szolgáltatás, és az entitás helyébe, kivéve, ha egy másik alkalmazás módosított azt az időt mivel ez az alkalmazás azt lekérése. Ebben az esetben kivételt vált ki, és az entitás kell beolvasni, módosíthatók, és újra menti. Egyidejű hozzáférések optimista újrapróbálkozási zárolás közös az olyan elosztott tárolórendszer.
 
 ```java
 try
@@ -432,7 +453,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-query-a-subset-of-entity-properties"></a>Útmutató: az Entitástulajdonságok egy részének lekérdezése
+## <a name="query-a-subset-of-entity-properties"></a>Az entitástulajdonságok egy részének lekérdezése
 A lekérdezés egy táblához pár tulajdonságok kérhetnek le egy entitás. Ez a leképezésnek hívott technika csökkenti a sávszélesség felhasználását, és javítja a lekérdezési teljesítményt, főleg a nagy entitások esetében. A lekérdezés a következő kódrészlet használja a **válasszon** metódus csak az e-mail címek entitások vissza a táblában. Az eredmények gyűjteménye van képezik le **karakterlánc** segítségével. egy **EntityResolver**, amelynek szerepe, hogy a kiszolgáló által visszaadott entitásokat a típuskonverziós. A leképezési kapcsolatos részletesebb [Azure táblák: Introducing Upsert és Query Projection][Azure Tables: Introducing Upsert and Query Projection]. Vegye figyelembe, hogy nem támogatja a helyi tárterület-emulátor, így a kód csak akkor, ha a table szolgáltatás fiók használatával.
 
 ```java
@@ -474,7 +495,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-insert-or-replace-an-entity"></a>Hogyan: beszúrása vagy entitás cseréje
+## <a name="insert-or-replace-an-entity"></a>Helyezze be vagy entitás cseréje
 Gyakran hozzáadandó entitást egy táblához anélkül, hogy tudnák, ha a tábla már létezik. Egy beszúrása vagy lecserélése művelet lehetővé teszi egyetlen kérelem, amelyet az entitás szúrnak, ha nem létezik vagy lecserélheti a meglévőt, ellenkező esetben. Előzetes példák építve, az alábbi kód beszúrása vagy az entitás "Walter grönlandi" a felváltja. Miután létrehozta az új entitás, ez a kód meghívja a **TableOperation.insertOrReplace** metódust. Ez a kód majd meghívja a **hajtható végre** a a **CloudTable** a tábla és a Beszúrás objektumot, vagy cserélje le a tábla műveletet, mert a paraméterek. Egy entitás csak egy része frissíteni a **TableOperation.insertOrMerge** módszer is lehet használni. Vegye figyelembe, hogy beszúrása vagy lecserélése nem támogatott a helyi storage emulator, így a kód csak akkor, ha a table szolgáltatás fiók használatával. További információ a beszúrása vagy lecserélése és beszúrási vagy-egyesítéses ezen tudhat [Azure táblák: Introducing Upsert és Query Projection][Azure Tables: Introducing Upsert and Query Projection].
 
 ```java
@@ -508,7 +529,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-delete-an-entity"></a>Hogyan: entitás törlése
+## <a name="delete-an-entity"></a>Entitás törlése
 Egy entitás azt beolvasása után egyszerűen törölheti. Az entitás beolvasott, ha hívása **TableOperation.delete** törli az entitáshoz. Majd meghívják a **hajtható végre** a a **CloudTable** objektum. Az alábbi kód lekérdez, majd töröl egy ügyfélentitást.
 
 ```java
@@ -544,8 +565,8 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-delete-a-table"></a>Hogyan: tábla törlése
-Végezetül a következő kódot törölhető egy tábla a tárfiókból. Egy tábla már törölt újból létre kell hozni egy ideig, a törlés, körülbelül 40 másodpercig általában kevesebb, mint a következő érhető el.
+## <a name="delete-a-table"></a>Tábla törlése
+Végezetül a következő kódot törölhető egy tábla a tárfiókból. Hamarosan 40 másodpercig Ha töröl egy tábla, akkor nem hozza létre újra. 
 
 ```java
 try
@@ -571,6 +592,7 @@ catch (Exception e)
 
 ## <a name="next-steps"></a>További lépések
 
+* [Ismerkedés az Azure Table szolgáltatás Java nyelven](https://github.com/Azure-Samples/storage-table-java-getting-started)
 * A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
 * [Az Azure Storage Java SDK][Azure Storage SDK for Java]
 * [Az Azure Storage ügyfél SDK-dokumentáció][Azure Storage ügyfél SDK-dokumentáció]
@@ -582,7 +604,7 @@ További információ: [Azure Java-fejlesztőknek](/java/azure).
 [Azure SDK for Java]: http://go.microsoft.com/fwlink/?LinkID=525671
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
-[Azure Storage ügyfél SDK-dokumentáció]: http://dl.windowsazure.com/storage/javadoc/
+[Azure Storage ügyfél SDK-dokumentáció]: http://azure.github.io/azure-storage-java/
 [Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
 [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
 [Azure Tables: Introducing Upsert and Query Projection]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx

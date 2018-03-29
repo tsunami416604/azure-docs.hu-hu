@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Machine Learning automatikus adatok csővezeték-Adatlap |} Microsoft Docs"
-description: "Nyomtatható Adatlap, amely azt ismerteti, hogyan beállítása az Azure Machine Learning webszolgáltatásba az automatikus csővezeték-e az adatok a helyszínen, streamelés esetén az Azure-ban vagy harmadik fél felhőszolgáltatásban."
+title: Az Azure Machine Learning automatikus adatok csővezeték-Adatlap |} Microsoft Docs
+description: Nyomtatható Adatlap, amely azt ismerteti, hogyan beállítása az Azure Machine Learning webszolgáltatásba az automatikus csővezeték-e az adatok a helyszínen, streamelés esetén az Azure-ban vagy harmadik fél felhőszolgáltatásban.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: garyericson
 manager: jhubbard
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: mithal;garye
-ms.openlocfilehash: a2b14dd39c0247c35ef006385eceebfa4fbe82d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: garye
+ms.openlocfilehash: f07e7cc9c97dcd5ef6ebc2d4c16d31b831869352
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Gyorsreferencia az Azure Machine Learning-előrejelzések automatikus folyamatához
 A **Microsoft Azure Machine Learning automatikus adatok csővezeték-adatlap** segít a technológia beolvasni az adatokat, hogy a Machine Learning segítségével történő navigálás webszolgáltatás, ahol azt is pontozni a prediktív elemzési modell.

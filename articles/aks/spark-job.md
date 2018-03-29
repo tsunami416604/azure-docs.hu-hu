@@ -1,6 +1,6 @@
 ---
-title: "Az Apache Spark feladat futtatása Azure tároló szolgáltatás (AKS)"
-description: "Az Apache Spark feladat futtatásához használt Azure tároló szolgáltatás (AKS)"
+title: Az Apache Spark feladat futtatása Azure tároló szolgáltatás (AKS)
+description: Az Apache Spark feladat futtatásához használt Azure tároló szolgáltatás (AKS)
 services: container-service
 author: lenadroid
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 9d57f572ba159191f5b634b5ea604563ac2f7801
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3991312d7f7609bb0a206ccc0ecc67123ebec469
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>Apache Spark feladatok futó AKS
 
@@ -33,7 +33,7 @@ Ez a cikk belül lépések végrehajtásához a következők szükségesek.
 ## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
 
 Spark nagy méretű adatok feldolgozásához használt, és megköveteli, hogy a külső erőforrások követelményeinek megfelelően Kubernetes csomópontok mérete. Azt javasoljuk, hogy a minimális méret `Standard_D3_v2` az Azure-tároló szolgáltatás (AKS) csomópontok.
- 
+
 Ha egy AKS fürt, amely megfelel a minimális javaslaton van szüksége, a következő parancsokat.
 
 Hozzon létre egy erőforráscsoportot a fürthöz.
@@ -58,12 +58,12 @@ Azure tároló beállításjegyzék (ACR) segítségével tároló lemezképeket
 
 ## <a name="build-the-spark-source"></a>A Spark-adatforrás létrehozása
 
-Spark feladatok fürtön fut egy AKS, mielőtt kell hozza létre a Spark forráskódját, és azt egy tároló lemezképpel csomag. A külső forrás tartalmaz olyan parancsfájlok, amelyek segítségével a folyamat befejezéséhez. 
+Spark feladatok fürtön fut egy AKS, mielőtt kell hozza létre a Spark forráskódját, és azt egy tároló lemezképpel csomag. A külső forrás tartalmaz olyan parancsfájlok, amelyek segítségével a folyamat befejezéséhez.
 
 A fejlesztői rendszerhez a Spark projekt tárház klónozása.
 
 ```bash
-git clone https://github.com/apache/spark
+git clone -b branch-2.3 https://github.com/apache/spark
 ```
 
 Módosítsa a klónozott tárház a könyvtárba, és mentse a Spark-adatforrás elérési változó.
@@ -73,7 +73,7 @@ cd spark
 sparkdir=$(pwd)
 ```
 
-Ha több JDK verziója telepítve van, `JAVA_HOME` 8-as verzió használatára az aktuális munkamenet. 
+Ha több JDK verziója telepítve van, `JAVA_HOME` 8-as verzió használatára az aktuális munkamenet.
 
 ```bash
 export JAVA_HOME=`/usr/libexec/java_home -d 64 -v "1.8*"`
@@ -85,16 +85,21 @@ A következő parancsot hozhat létre a Spark forráskód Kubernetes támogatás
 ./build/mvn -Pkubernetes -DskipTests clean package
 ```
 
-A következő parancs tároló képeket hoz létre a Spark, és leküldéses értesítések, a tároló kép beállításjegyzék. Cserélje le az `registry.example.com` kifejezést a tárolóregisztrációs adatbázis nevére. Docker Hub használata, ha az értéke a neve. Azure tároló beállításjegyzék (ACR) használata esetén ez az érték az az ACR bejelentkezési kiszolgáló.
+Az alábbi parancsokat a Spark tároló lemezkép létrehozása, és hogy a tároló kép beállításjegyzék. Cserélje le `registry.example.com` nevű, a tároló beállításjegyzék és `v1` a címkével ellátott szeretné használni. Docker Hub használata, ha az értéke a neve. Azure tároló beállításjegyzék (ACR) használata esetén ez az érték az az ACR bejelentkezési kiszolgáló.
 
 ```bash
-./bin/docker-image-tool.sh -r registry.example.com -t v1 build
+REGISTRY_NAME=registry.example.com
+REGISTRY_TAG=v1
+```
+
+```bash
+./bin/docker-image-tool.sh -r $REGISTRY_NAME -t $REGISTRY_TAG build
 ```
 
 A tároló kép leküldése a tároló kép beállításjegyzék.
 
 ```bash
-./bin/docker-image-tool.sh -r registry.example.com -t v1 push
+./bin/docker-image-tool.sh -r $REGISTRY_NAME -t $REGISTRY_TAG push
 ```
 
 ## <a name="prepare-a-spark-job"></a>A Spark feladatok előkészítése
@@ -196,18 +201,10 @@ Változó `jarUrl` már tartalmazza a nyilvánosan elérhető elérési útját 
 
 ## <a name="submit-a-spark-job"></a>Spark feladat elküldése
 
-A Spark feladat elküldése előtt kell Kubernetes API-kiszolgáló címe. Használja a `kubectl cluster-info` parancs használatával beszerezheti az ezt a címet.
-
-Fedezze fel az URL-cím, ahol Kubernetes API-kiszolgáló újabb rendszerű.
+Indítsa el a kube-proxy egy különálló parancssori a következő kóddal.
 
 ```bash
-kubectl cluster-info
-```
-
-Jegyezze fel a címet és portot.
-
-```bash
-Kubernetes master is running at https://<your api server>:443
+kubectl proxy
 ```
 
 Lépjen vissza a Spark-tárház gyökérkönyvtárában.
@@ -216,18 +213,16 @@ Lépjen vissza a Spark-tárház gyökérkönyvtárában.
 cd $sparkdir
 ```
 
-Küldje el a feladat használ `spark-submit`. 
-
-Cserélje le a értékét `<kubernetes-api-server>` az API-kiszolgáló címét és portjával. Cserélje le `<spark-image>` formátumban a tároló lemezkép nevű `<your container registry name>/spark:<tag>`.
+Küldje el a feladat használ `spark-submit`.
 
 ```bash
 ./bin/spark-submit \
-  --master k8s://https://<k8s-apiserver-host>:<k8s-apiserver-port> \
+  --master k8s://http://127.0.0.1:8001 \
   --deploy-mode cluster \
   --name spark-pi \
   --class org.apache.spark.examples.SparkPi \
   --conf spark.executor.instances=3 \
-  --conf spark.kubernetes.container.image=<spark-image> \
+  --conf spark.kubernetes.container.image=$REGISTRY_NAME/spark:$REGISTRY_TAG \
   $jarUrl
 ```
 
@@ -315,6 +310,9 @@ A feladat jelző egy távoli jar URL-cím helyett a `local://` séma használhat
     --conf spark.kubernetes.container.image=<spark-image> \
     local:///opt/spark/work-dir/<your-jar-name>.jar
 ```
+
+> [!WARNING]
+> A Spark [dokumentáció][spark-docs]: "a Kubernetes Feladatütemező jelenleg kísérleti. A későbbi verziókban előfordulhat konfiguráció, a tároló képek és entrypoints viselkedési módosítások".
 
 ## <a name="next-steps"></a>További lépések
 

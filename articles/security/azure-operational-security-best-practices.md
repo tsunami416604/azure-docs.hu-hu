@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Operational bevált gyakorlatát |} Microsoft Docs"
-description: "Ez a cikk számos gyakorlati tanácsok a működési biztonság Azure."
+title: Az Azure Operational bevált gyakorlatát |} Microsoft Docs
+description: Ez a cikk számos gyakorlati tanácsok a működési biztonság Azure.
 services: security
 documentationcenter: na
 author: unifycloud
 manager: swadhwa
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: db9840817d92b4f2f63009d30dbd554666d53dbe
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: bb7e0df046ecc2ffcd3fa59ac53edf36095933c7
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-operational-security-best-practices"></a>Az Azure Operational biztonsági gyakorlati tanácsok
 Az Azure Operational biztonsági hivatkozik a szolgáltatások, a vezérlők és a felhasználók számára elérhető szolgáltatások védelmére az adatok, alkalmazások és egyéb eszközök a Microsoft Azure-ban. Az Azure Operational biztonsági egy keretrendszer, amely magában foglalja a különböző képességeket, amelyek a Microsoftnak, beleértve a Microsoft biztonsági fejlesztési életciklus (SDL), a Microsoft Security Response Center program egyedi keresztül tapasztalatok épül és részletes tájékoztatást nyújthatnak a a számítógépes fenyegetésekről alkotott képet.
@@ -167,12 +167,12 @@ Konfigurálja a hálózati figyelőt és az engedélyezéshez kapcsolatos továb
 Ezek közé tartoznak a a lista az Azure DevOps gyakorlatnak része a Microsoft Cloud tárhelyen, ami hatékonyabbá teszi a vállalatok és a csoportokat.
 
 -   **Szolgáltatott infrastruktúra (IaC) kód:** kódú infrastruktúra olyan technológiák és eljárások, amelyek segítségével az informatikusok, távolítsa el a napi build és moduláris infrastruktúra felügyeleti terheket. Lehetővé teszi az informatikai szakemberek hozza létre és kezelheti a modern server környezetet oly módon, hogy hogyan szoftverfejlesztők létrehozása és karbantartása alkalmazáskód hasonlít. Az Azure-ba, tudunk [Azure Resource Manager]( https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/) lehetővé teszi az alkalmazások olyan deklaratív sablonok segítségével kiosztását. Egyetlen sablonnal több szolgáltatást is üzembe helyezhet azok függőségeivel együtt. Ugyanazt a sablont újra és újra, az alkalmazás életciklusának minden fázisában felhasználhatja az alkalmazás üzembe helyezéséhez.
--   **Folyamatos integrációt és telepítést:** konfigurálhatja a Visual Studio Online csapata projektek [automatikusan és üzembe](https://www.visualstudio.com/docs/build/overview) Azure-webalkalmazásokban vagy felhőszolgáltatások. VSO automatikusan telepíti a bináris fájlok ezután build Azure minden kód beadása után. Az itt leírt csomag felépítési folyamat megegyezik a Visual Studio csomag parancsot, és a közzétételi lépések a Visual Studio Közzététel parancs egyenértékűek.
+-   **Folyamatos integrációt és telepítést:** konfigurálhatja a Visual Studio Team Services (VSTS) csapatprojektek való [automatikusan és üzembe](https://www.visualstudio.com/docs/build/overview) Azure-webalkalmazásokban vagy felhőszolgáltatások. VSTS automatikusan telepíti a bináris fájlok ezután build Azure minden kód beadása után. Az itt leírt csomag felépítési folyamat megegyezik a Visual Studio csomag parancsot, és a közzétételi lépések a Visual Studio Közzététel parancs egyenértékűek.
 -   **A Kiadáskezelés:** Visual Studio [kiadási felügyeleti](https://msdn.microsoft.com/library/vs/alm/release/overview) kiválóan többlépcsős telepítés automatizálásáról és a kiadási folyamat kezelése. Hozzon létre felügyelt folyamatos üzembe helyezés adatcsatornák gyors, egyszerű és gyakran felszabadítása. A kiadási felügyeleti azt sokkal menet közben automatizálhatja a kiadási folyamat, és azt is előre meghatározott jóváhagyási munkafolyamatok. Telepítse a helyszíni kiterjesztése a felhőbe, és szükség szerint testre szabhatja.
 -   **Alkalmazás teljesítményének figyelése:** problémák észlelése, a problémák megoldására, és folyamatosan fejleszteni az alkalmazások. Gyorsan diagnosztizálhat bármilyen problémát az élő alkalmazással. Megismerheti, hogyan használják a felhasználók az alkalmazást. Konfigurációs könnyen függetlenül attól, hogy JS kódot és egy webconfig bejegyzés hozzáadása, és dokumentumkönyvtárából jelennek meg a részleteket a portálon percen belül. [App insights](https://azure.microsoft.com/documentation/articles/app-insights-start-monitoring-app-health-usage/) segítséget nyújt a vállalatok számára a problémák & szervizelésének gyorsabb észleléséhez.
--   **Tesztelés & automatikus skálázás betölteni:** az alkalmazás központi telepítési minőségének javítására is találtunk teljesítménybeli problémákat, és ellenőrizze, hogy az alkalmazás mindig naprakészek vagy elérhető elemeket, az üzleti kell. Győződjön meg arról, hogy az alkalmazás kezelik a forgalmat a következő indítási vagy marketing kampány. Elindultak, felhőalapú [tesztek betöltése](https://www.visualstudio.com/docs/test/performance-testing/getting-started/getting-started-with-performance-testing) szinte nem időben, a Visual Studio Online-nal.
+-   **Tesztelés & automatikus skálázás betölteni:** az alkalmazás központi telepítési minőségének javítására is találtunk teljesítménybeli problémákat, és ellenőrizze, hogy az alkalmazás mindig naprakészek vagy elérhető elemeket, az üzleti kell. Győződjön meg arról, hogy az alkalmazás kezelik a forgalmat a következő indítási vagy marketing kampány. Elindultak, felhőalapú [tesztek betöltése](https://www.visualstudio.com/docs/test/performance-testing/getting-started/getting-started-with-performance-testing) szinte nem VSTS idejű.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ [Azure működési biztonság](https://docs.microsoft.com/azure/security/azure-operational-security).
 - További [Operations Management Suite |} Biztonsági és megfelelőségi](https://www.microsoft.com/cloud-platform/security-and-compliance).
 - [Ismerkedés az Operations Management Suite biztonsági és naplózási megoldás](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started).

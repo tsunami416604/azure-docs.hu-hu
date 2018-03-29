@@ -1,6 +1,6 @@
 ---
-title: "Engedélyezze a replikálást az Azure VMware virtuális gépek az Azure Site Recovery szolgáltatással |} Microsoft Docs"
-description: "A cikkből megtudhatja, hogyan állíthat be az Azure-bA az Azure Site Recovery VMware virtuális gépek replikációját."
+title: Engedélyezze a replikálást az Azure VMware virtuális gépek az Azure Site Recovery szolgáltatással |} Microsoft Docs
+description: A cikkből megtudhatja, hogyan állíthat be az Azure-bA az Azure Site Recovery VMware virtuális gépek replikációját.
 services: site-recovery
 author: asgang
 manager: rochakm
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: asgang
-ms.openlocfilehash: 17cd6a931563c7d33576749453d742aca253526b
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 48d84f59a80ea14c2b40821d886fc410c7e3f2c3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>VMware virtuális gépek Azure-bA replikáció engedélyezése
 
@@ -112,15 +112,15 @@ Ezután ellenőrizheti a forrásgép tulajdonságait. Ne feledje, hogy az Azure 
     Például ha a forrásgépen két hálózati adaptert, és a célgép mérete négy támogatja, a célgépen két adapter rendelkezik. Ha a forrásgépen két adapter, de a cél méretét csak támogat egy, a célgépen csak egy adapterrel rendelkezik.
     - Ha a virtuális gépnek több hálózati adapter, minden csatlakoznak az ugyanazon a hálózaton. Emellett az elsőt a listán látható lesz a *alapértelmezett* az Azure virtuális gép hálózati adapteréhez.
 
-### <a name="azure-hybrid-use-benefit"></a>Azure Hybrid Use Benefit
+### <a name="azure-hybrid-benefit"></a>Azure Hybrid Benefit
 
-Microsoft Szoftverbiztosítással az ügyfelek használhatják Azure hibrid használja juttatásra, licencelési költségeit, amelyek áttelepítése az Azure Windows Server-gépek mentheti, vagy vész-helyreállítási Azure használ. Ha Ön jogosult az Azure hibrid használja kiszolgálóterhelések használják ki a használandó, megadhatja, hogy a virtuális géphez hozzárendelt az előnyök egyike az Azure Site Recovery hoz létre, ha egy feladatátvevő. Ehhez tegye a következőket:
+A Microsoft Szoftverbiztosításról az ügyfelek használhatják Azure hibrid juttatásra, licencelési költségeit, amelyek áttelepítése az Azure Windows Server-gépek mentheti, vagy vész-helyreállítási Azure használ. Ha Ön jogosult az Azure hibrid kiszolgálóterhelések használják ki a használandó, megadhatja, hogy a virtuális géphez hozzárendelt az előnyök egyike az Azure Site Recovery hoz létre, ha egy feladatátvevő. Ehhez tegye a következőket:
 - Nyissa meg a replikált virtuális gép számítási és hálózati tulajdonságok szakaszába.
-- Válaszolja meg a kérdést, amely rákérdez, hogy van-e egy Windows Server-licenc, amely lehetővé teszi, hogy jogosult Azure hibrid használata juttatásra.
-- Jelölje be a jelölőnégyzetet annak megerősítéséhez, hogy rendelkezik-e egy jogosult Windows Server-licenc és frissítési garancia, amelyek segítségével a hibrid használja juttatás alkalmazni a számítógépen, a feladatátvételi létrehozott.
+- Válaszolja meg a kérdést, amely rákérdez, hogy van-e a Windows Server-licenc, amely lehetővé teszi, hogy jogosult Azure hibrid juttatásra.
+- Jelölje be a jelölőnégyzetet annak megerősítéséhez, hogy rendelkezik-e egy jogosult Windows Server-licenc és frissítési garancia, amelyek segítségével az Azure hibrid juttatás alkalmazni a számítógépen, a feladatátvételi létrehozott.
 - A replikált gép beállításainak mentése.
 
-További információ [Azure hibrid használata juttatás](https://aka.ms/azure-hybrid-use-benefit-pricing).
+További információ [Azure hibrid juttatás](https://aka.ms/azure-hybrid-benefit-pricing).
 
 ## <a name="common-issues"></a>Gyakori problémák
 

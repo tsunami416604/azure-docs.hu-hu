@@ -1,6 +1,6 @@
 ---
-title: "Védelem-újrabeállítási átadja a Azure virtuális gépek vissza az elsődleges Azure-régió az Azure Site Recovery szolgáltatással |} Microsoft Docs"
-description: "Azure virtuális gépek egy másodlagos régióban, egy elsődleges régióban, az Azure Site Recovery segítségével a feladatátvételt követően állítsa ismerteti."
+title: Védelem-újrabeállítási átadja a Azure virtuális gépek vissza az elsődleges Azure-régió az Azure Site Recovery szolgáltatással |} Microsoft Docs
+description: Azure virtuális gépek egy másodlagos régióban, egy elsődleges régióban, az Azure Site Recovery segítségével a feladatátvételt követően állítsa ismerteti.
 services: site-recovery
 author: rajani-janaki-ram
 manager: gauravd
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: rajanaki
-ms.openlocfilehash: 47056c85c6cb66a7fa28d623a4472b827d970dab
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4171a904626d3b624b39b8a3a261df0d342012df
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Védelem-újrabeállítási átadja Azure virtuális gépeket az elsődleges régióban
 
@@ -57,7 +57,8 @@ Testre szabhatja, hogy a következő tulajdonságok a cél VMe ismételt védele
 |---------|---------|
 |Cél-erőforráscsoport     | Módosítsa a célként megadott erőforráscsoportja, amelyben a virtuális gép létrehozása. Ismételt védelem részeként a cél virtuális gép törlődik. Választhat egy új erőforráscsoportot, a feladatátvétel után a virtuális gép létrehozásához.        |
 |Virtuális hálózati cél     | A célhálózat nem módosítható a védelem-újrabeállítási feladat során. Ha módosítani szeretné a hálózathoz, végezze el újra a hálózat leképezését.         |
-|Célként megadott     | A storage-fiók, amely a virtuális gépről a feladatátvétel után módosíthatja.         |
+|Célként megadott (másodlagos virtuális gép nem használja a felügyelt lemezek)     | A storage-fiók, amely a virtuális gépről a feladatátvétel után módosíthatja.         |
+|Replika (másodlagos virtuális gép használ felügyelt lemezek) lemezek felügyelete    | A Site Recovery kezelt lemezek az elsődleges régióban mappába történő tükrözésének kezelt a másodlagos virtuális lemezeket hoz létre.         | 
 |Cache Storage     | A replikáció során használandó gyorsítótár tárfiók is megadhat. Alapértelmezés szerint egy új gyorsítótár tárfiók van hozható létre, ha még nem létezik.         |
 |Rendelkezésre állási csoport     |Ha a másodlagos régióban a virtuális gép rendelkezésre állási csoport része, választhat a rendelkezésre állási készlet a cél virtuális gép az elsődleges régióban. Alapértelmezés szerint a Site Recovery próbál meg megtalálni a meglévő rendelkezésre állási az elsődleges régióban csoportot, és használja. Testreszabás adjon meg egy új rendelkezésre állási csoportot.         |
 
@@ -68,7 +69,8 @@ Alapértelmezés szerint a következő történik:
 
 1. A gyorsítótár tárfiók létrehozása az elsődleges régióban
 2. Ha nem létezik a céloldali tárfiók (az eredeti tárfiók elsődleges régióban), egy új jön létre. A hozzárendelt tárfiókneve a másodlagos virtuális gép, a "automatikus" utótaggal használja a tárfiók nevét.
-3. Ha a célként megadott rendelkezésre állási csoport nem létezik, szükség esetén egy új létrejön a védelem-újrabeállítási feladat részeként. Ha testreszabott az ismételt védelem beállításokat, majd a kijelölt használatos.
+3. Ha a virtuális Gépet felügyelt lemezt használ, a replika felügyelt lemezek jönnek létre az elsődleges régióban, a másodlagos virtuális gép lemezeinek a replikált adatok tárolására. 
+4. Ha a célként megadott rendelkezésre állási csoport nem létezik, szükség esetén egy új létrejön a védelem-újrabeállítási feladat részeként. Ha testreszabott az ismételt védelem beállításokat, majd a kijelölt használatos.
 
 Amikor a védelem-újrabeállítási feladat, és a cél virtuális gép létezik indít el, az alábbiak történnek:
 

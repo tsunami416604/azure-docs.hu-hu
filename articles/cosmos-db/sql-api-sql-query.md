@@ -1,9 +1,9 @@
 ---
-title: "Azure Cosmos adatbázis SQL-lekérdezések |} Microsoft Docs"
-description: "A Azure Cosmos DB SQL-szintaxis, adatbázis fogalmait és az SQL-lekérdezések megismerése. SQL Azure Cosmos adatbázis a JSON lekérdezésnyelvet is használja."
-keywords: "SQL-szintaxis, sql-lekérdezést, az sql-lekérdezések, json lekérdezési nyelv, adatbázis fogalmait és az sql-lekérdezések, összesítő függvények"
+title: Azure Cosmos adatbázis SQL-lekérdezések |} Microsoft Docs
+description: A Azure Cosmos DB SQL-szintaxis, adatbázis fogalmait és az SQL-lekérdezések megismerése. SQL Azure Cosmos adatbázis a JSON lekérdezésnyelvet is használja.
+keywords: SQL-szintaxis, sql-lekérdezést, az sql-lekérdezések, json lekérdezési nyelv, adatbázis fogalmait és az sql-lekérdezések, összesítő függvények
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: LalithaMV
 manager: jhubbard
 editor: monicar
@@ -13,17 +13,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 03/26/2018
 ms.author: laviswa
-ms.openlocfilehash: 8425c9eae1bb7b50edec1d36d4e7c80b49b243ac
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: a79b1a97909a38b4bfba06186db875d0c0c25f03
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="sql-queries-for-azure-cosmos-db"></a>Azure Cosmos adatbázis SQL-lekérdezések
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 A Microsoft Azure Cosmos DB SQL (Structured Query Language) használatával dokumentumok lekérdezését támogatja egy JSON lekérdezést nyelve az SQL API-fiókot. Az Azure Cosmos DB valóban sémamentes. A JSON-adatmodell, közvetlenül az adatbázis motorján belül az elkötelezettségének, címtár biztosít automatikus indexeléshez JSON-dokumentumok explicit séma vagy a másodlagos indexek létrehozása nélkül.
 
@@ -34,11 +32,17 @@ A lekérdezési nyelv a Cosmos DB tervezésekor két célok szem előtt tartás�
 
 Biztosak vagyunk abban, hogy ezek a képességek csökkenti az alkalmazás és az adatbázis közötti súrlódás billentyűt, és fontosságúak a fejlesztést tesz lehetővé.
 
-Azt javasoljuk, kezdeti lépések, amelyet figyeli az alábbi videót, ahol Aravind Ramachandran jeleníti meg, Cosmos DB tartozó lekérdezési képességeket, és látogasson el a [Tesztlekérdezéseket](http://www.documentdb.com/sql/demo), ahol Cosmos DB kipróbálásához és SQL-lekérdezések futtatása az adatkészletet.
+Azt javasoljuk, hogy Kezdésként tekintse meg az alábbi videót, ahol Azure Cosmos DB Programvezető Andrew Liu Azure Cosmos DB lekérdező képességeit jeleníti meg, és bemutatja a online [Tesztlekérdezéseket](http://www.documentdb.com/sql/demo), ahol Azure kipróbálása Cosmos DB és futtatási SQL lekérdezések írásában, az adatkészletet, ahogyan az a videót.
 
-> [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/DataExposedQueryingDocumentDB/player]
-> 
-> 
+> [!VIDEO https://www.youtube.com/embed/1LqUQRpHfFI]
+>
+>
+
+Ez a videó követendő az egy lekérdező technikák speciális:
+
+> [!VIDEO https://www.youtube.com/embed/kASU9NOIR90]
+>
+>
 
 Ezt követően térjen vissza a cikkhez, ha először egy SQL-lekérdezés oktatóanyag, amely bemutatja, hogyan néhány egyszerű JSON-dokumentumokat és az SQL-parancsokat.
 
@@ -110,7 +114,7 @@ Most próbáljon néhány lekérdezést megérteni az egyes Azure Cosmos DB SQL 
     FROM Families f 
     WHERE f.id = "AndersenFamily"
 
-**Eredmények**
+**Results**
 
     [{
         "id": "AndersenFamily",
@@ -139,7 +143,7 @@ Most pedig nézzük meg az esetben, ha igazolnia kell formáznia egy másik alak
     FROM Families f 
     WHERE f.address.city = f.address.state
 
-**Eredmények**
+**Results**
 
     [{
         "Family": {
@@ -159,7 +163,7 @@ A következő lekérdezés gyermekek minden megadott nevét adja vissza a termé
     WHERE f.id = 'WakefieldFamily'
     ORDER BY f.address.city ASC
 
-**Eredmények**
+**Results**
 
     [
       { "givenName": "Jesse" }, 
@@ -215,7 +219,7 @@ A forrás kisebb részhalmazát is lehet korlátozni. Például számbavétele m
     SELECT * 
     FROM Families.children
 
-**Eredmények**  
+**Results**  
 
     [
       [
@@ -253,7 +257,7 @@ A fenti példa egy tömb forrásaként használható, amíg az objektum is lehet
     SELECT * 
     FROM Families.address.state
 
-**Eredmények**
+**Results**
 
     [
       "WA", 
@@ -272,7 +276,7 @@ A következő lekérdezés kéri a name tulajdonság, amelynek értéke tartalma
     FROM Families f 
     WHERE f.id = "AndersenFamily"
 
-**Eredmények**
+**Results**
 
     [{
       "address": {
@@ -611,7 +615,7 @@ A következő példa bemutatja egy tipikus SELECT lekérdezés.
     FROM Families f 
     WHERE f.id = "AndersenFamily"
 
-**Eredmények**
+**Results**
 
     [{
       "address": {
@@ -631,7 +635,7 @@ A következő példában két beágyazott tulajdonságok azt kivetítéséről `
     FROM Families f 
     WHERE f.id = "AndersenFamily"
 
-**Eredmények**
+**Results**
 
     [{
       "state": "WA", 
@@ -647,7 +651,7 @@ Leképezési JSON kifejezések is támogatja, a következő példában látható
     FROM Families f 
     WHERE f.id = "AndersenFamily"
 
-**Eredmények**
+**Results**
 
     [{
       "$1": {
@@ -667,7 +671,7 @@ Nézzük szerepe `$1` itt. A `SELECT` záradék létre kell hoznia egy JSON-obje
     FROM Families f 
     WHERE f.id = "AndersenFamily"
 
-**Eredmények**
+**Results**
 
     [{
       "$1": {
@@ -693,7 +697,7 @@ Abban az esetben, ha a lekérdezés két tulajdonság azonos névvel rendelkezik
     FROM Families f 
     WHERE f.id = "AndersenFamily"
 
-**Eredmények**
+**Results**
 
     [{
       "AddressInfo": {
@@ -713,7 +717,7 @@ Mellett tulajdonsághivatkozást a SELECT záradék is támogatja a skaláris ki
 
     SELECT "Hello World"
 
-**Eredmények**
+**Results**
 
     [{
       "$1": "Hello World"
@@ -726,7 +730,7 @@ Ez egy összetett példa, amely a skaláris kifejezést használ.
 
     SELECT ((2 + 11 % 7)-2)/3    
 
-**Eredmények**
+**Results**
 
     [{
       "$1": 1.33333
@@ -740,7 +744,7 @@ A következő példában a skaláris kifejezés eredménye egy logikai érték.
     SELECT f.address.city = f.address.state AS AreFromSameCityState
     FROM Families f    
 
-**Eredmények**
+**Results**
 
     [
       {
@@ -760,7 +764,7 @@ Az SQL API-t egy másik alapfunkciója tömb vagy objektum-létrehozás. Az elő
     SELECT [f.address.city, f.address.state] AS CityState 
     FROM Families f    
 
-**Eredmények**  
+**Results**  
 
     [
       {
@@ -784,7 +788,7 @@ A **érték** kulcsszó vissza JSON-érték lehetőséget kínál. Például az 
 
     SELECT VALUE "Hello World"
 
-**Eredmények**
+**Results**
 
     [
       "Hello World"
@@ -798,7 +802,7 @@ A következő lekérdezés visszaadja a JSON-érték nélkül a `"address"` cím
     SELECT VALUE f.address
     FROM Families f    
 
-**Eredmények**  
+**Results**  
 
     [
       {
@@ -820,7 +824,7 @@ Az alábbi példa bővíti a bemutatják, hogyan adhat vissza JSON egyszerű ér
     SELECT VALUE f.address.state
     FROM Families f    
 
-**Eredmények**
+**Results**
 
     [
       "WA",
@@ -837,7 +841,7 @@ A speciális operátort (*) a rendszer támogatja a dokumentumot a projekt-van. 
     FROM Families f 
     WHERE f.id = "AndersenFamily"
 
-**Eredmények**
+**Results**
 
     [{
         "id": "AndersenFamily",
@@ -865,7 +869,7 @@ A felső kulcsszó is használható egy lekérdezés által értékek számának
     SELECT TOP 1 * 
     FROM Families f 
 
-**Eredmények**
+**Results**
 
     [{
         "id": "AndersenFamily",
@@ -895,7 +899,7 @@ Az összesítéseket is elvégezheti a `SELECT` záradékban. Az aggregátumfüg
     SELECT COUNT(1) 
     FROM Families f 
 
-**Eredmények**
+**Results**
 
     [{
         "$1": 2
@@ -908,7 +912,7 @@ Az összesítés skaláris érték használatával is visszatérhet a `VALUE` ku
     SELECT VALUE COUNT(1) 
     FROM Families f 
 
-**Eredmények**
+**Results**
 
     [ 2 ]
 
@@ -920,7 +924,7 @@ A szűrők együtt is elvégezheti összesíti. Például a következő lekérde
     FROM Families f
     WHERE f.address.state = "WA" 
 
-**Eredmények**
+**Results**
 
     [ 1 ]
 
@@ -953,7 +957,7 @@ Például ez kártevőcsaládok a rezidens városnév sorrendjét, amely.
     FROM Families f 
     ORDER BY f.address.city
 
-**Eredmények**
+**Results**
 
     [
       {
@@ -974,7 +978,7 @@ Például ez kártevőcsaládok a rezidens városnév sorrendjét, amely.
     FROM Families f 
     ORDER BY f.creationDate DESC
 
-**Eredmények**
+**Results**
 
     [
       {
@@ -997,7 +1001,7 @@ Egy új szerkezet művelettel lett hozzáadva a **IN** keresztül JSON-tömbök 
     SELECT * 
     FROM Families.children
 
-**Eredmények**  
+**Results**  
 
     [
       [
@@ -1031,7 +1035,7 @@ Most már egy másik lekérdezés keresztül a gyűjtemény gyermekek iteráció
     SELECT * 
     FROM c IN Families.children
 
-**Eredmények**  
+**Results**  
 
     [
       {
@@ -1062,7 +1066,7 @@ Ez további használható szűrést végezni a tömb minden egyes bejegyzés, a 
     FROM c IN Families.children
     WHERE c.grade = 8
 
-**Eredmények**  
+**Results**  
 
     [{
       "givenName": "Lisa"
@@ -1075,7 +1079,7 @@ Ez további használható szűrést végezni a tömb minden egyes bejegyzés, a 
     SELECT COUNT(child) 
     FROM child IN Families.children
 
-**Eredmények**  
+**Results**  
 
     [
       { 
@@ -1096,7 +1100,7 @@ Az alábbi példák bemutatják, hogyan működik a JOIN záradékban. A követk
     FROM Families f
     JOIN f.NonExistent
 
-**Eredmények**  
+**Results**  
 
     [{
     }]
@@ -1110,7 +1114,7 @@ A következő példában az illesztés a dokumentumgyökér között van, és a 
     FROM Families f
     JOIN f.children
 
-**Eredmények**
+**Results**
 
     [
       {
@@ -1130,7 +1134,7 @@ A következő példa bemutatja a több hagyományos csatlakozzon:
     FROM Families f
     JOIN c IN f.children 
 
-**Eredmények**
+**Results**
 
     [
       {
@@ -1167,7 +1171,7 @@ A valós segédprogram csatlakozási űrlap rekordokat származik, amely egyébk
     JOIN c IN f.children 
     JOIN p IN c.pets
 
-**Eredmények**
+**Results**
 
     [
       {
@@ -1221,7 +1225,7 @@ A következő példában nincs egy kiegészítő szűrőt `pet`. Ez nem tartalma
     JOIN p IN c.pets
     WHERE p.givenName = "Shadow"
 
-**Eredmények**
+**Results**
 
     [
       {
@@ -1271,7 +1275,7 @@ A Microsoft most már használhatja a UDF leképezés lekérdezést. Felhasznál
     SELECT udf.REGEX_MATCH(Families.address.city, ".*eattle")
     FROM Families
 
-**Eredmények**
+**Results**
 
     [
       {
@@ -1290,7 +1294,7 @@ Az UDF is használható egy szűrő belül ahogy az alábbi példában is tartom
     FROM Families
     WHERE udf.REGEX_MATCH(Families.address.city, ".*eattle")
 
-**Eredmények**
+**Results**
 
     [{
         "id": "AndersenFamily",
@@ -1330,7 +1334,7 @@ Az alábbiakban látható egy példa, gyakorolja az UDF-ben.
     SELECT f.address.city, udf.SEALEVEL(f.address.city) AS seaLevel
     FROM Families f    
 
-**Eredmények**
+**Results**
 
      [
       {
@@ -1436,7 +1440,7 @@ Például most lekérdezéseket is futtathat a következőhöz hasonló:
 
     SELECT VALUE ABS(-4)
 
-**Eredmények**
+**Results**
 
     [4]
 
@@ -1491,7 +1495,7 @@ Ezeket a funkciókat használ, most lekérdezéseket is futtathat a következőh
 
     SELECT VALUE IS_NUMBER(-4)
 
-**Eredmények**
+**Results**
 
     [true]
 
@@ -1524,7 +1528,7 @@ Ezeket a funkciókat használ, most lekérdezéseket is futtathat a következőh
     SELECT VALUE UPPER(Families.id)
     FROM Families
 
-**Eredmények**
+**Results**
 
     [
         "WAKEFIELDFAMILY", 
@@ -1538,7 +1542,7 @@ Vagy ebben a példában például karakterlánc összefűzésére:
     SELECT Families.id, CONCAT(Families.address.city, ",", Families.address.state) AS location
     FROM Families
 
-**Eredmények**
+**Results**
 
     [{
       "id": "WakefieldFamily",
@@ -1558,7 +1562,7 @@ Karakterlánc is használható a WHERE záradékban szűrése eredményeket, pé
     FROM Families
     WHERE STARTSWITH(Families.id, "Wakefield")
 
-**Eredmények**
+**Results**
 
     [{
       "id": "WakefieldFamily",
@@ -1583,7 +1587,7 @@ Tömb funkciók segítségével kezelheti a tömbök JSON belül. Például itt 
     FROM Families 
     WHERE ARRAY_CONTAINS(Families.parents, { givenName: "Robin", familyName: "Wakefield" })
 
-**Eredmények**
+**Results**
 
     [{
       "id": "WakefieldFamily"
@@ -1597,7 +1601,7 @@ Megadhatja az egyező elemek a tömbön belüli részleges töredéket. A követ
     FROM Families 
     WHERE ARRAY_CONTAINS(Families.parents, { givenName: "Robin" }, true)
 
-**Eredmények**
+**Results**
 
     [{
       "id": "WakefieldFamily"
@@ -1611,7 +1615,7 @@ Ez például akkor ARRAY_LENGTH használatával gyermekek termékcsalád másodp
     SELECT Families.id, ARRAY_LENGTH(Families.children) AS numberOfChildren
     FROM Families 
 
-**Eredmények**
+**Results**
 
     [{
       "id": "WakefieldFamily",
@@ -1660,7 +1664,7 @@ Térbeli funkciók térbeli adatok közelségi kapcsolat lekérdezések végreha
     FROM Families f 
     WHERE ST_DISTANCE(f.location, {'type': 'Point', 'coordinates':[31.9, -4.8]}) < 30000
 
-**Eredmények**
+**Results**
 
     [{
       "id": "WakefieldFamily"
@@ -2012,7 +2016,7 @@ A következő példák azt szemléltetik, amennyiben azt már áttekintette a k�
     }
 
 
-**Eredmények**
+**Results**
 
     HTTP/1.1 200 Ok
     x-ms-activity-id: 8b4678fa-a947-47d3-8dd3-549a40da6eed
@@ -2085,7 +2089,7 @@ A második példában egy összetettebb lekérdezés, amely több eredményt ad 
     }
 
 
-**Eredmények**
+**Results**
 
     HTTP/1.1 200 Ok
     x-ms-activity-id: 568f34e3-5695-44d3-9b7d-62f8b83e509d
@@ -2257,8 +2261,8 @@ A következő példa bemutatja, hogyan lehet a JavaScript-kiszolgáló API a que
 3. [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-documentdb-net)
 4. [Az Azure Cosmos DB Konzisztenciaszintek][consistency-levels]
 5. ANSI SQL 2011 [http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
-6. JSON [http://json.org/](http://json.org/)
-7. Javascript Specification [http://www.ecma-international.org/publications/standards/Ecma-262.htm](http://www.ecma-international.org/publications/standards/Ecma-262.htm) 
+6. JSON-BAN [http://json.org/](http://json.org/)
+7. JavaScript-specifikációja [http://www.ecma-international.org/publications/standards/Ecma-262.htm](http://www.ecma-international.org/publications/standards/Ecma-262.htm) 
 8. LINQ [http://msdn.microsoft.com/library/bb308959.aspx](http://msdn.microsoft.com/library/bb308959.aspx) 
 9. Lekérdezés kiértékelése technikák nagy adatbázisokhoz [http://dl.acm.org/citation.cfm?id=152611](http://dl.acm.org/citation.cfm?id=152611)
 10. A lekérdezés feldolgozás alatt álló párhuzamos relációs adatbázis-rendszerek, IEEE számítógép társadalom nyomja le az 1994.

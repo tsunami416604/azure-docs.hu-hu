@@ -8,11 +8,11 @@ ms.topic: include file for PowerShell for Azure DNS
 ms.date: 03/21/2018
 ms.author: subsarma
 ms.custom: include file for PowerShell for Azure DNS
-ms.openlocfilehash: e96b312f03069256396261bd6efe2f2586cdadea
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1ddfd1ae8dffbc5d381773ea9679713e93a44a32
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 ## <a name="set-up-azure-powershell-for-azure-dns"></a>Az Azure DNS az Azure PowerShell beállítása
 
@@ -27,7 +27,17 @@ Emellett saját zónák (nyilvános előzetes verzió) használatához szükség
 * AzureRM.Dns - [verzió 4.1.0](https://www.powershellgallery.com/packages/AzureRM.Dns/4.1.0) vagy újabb
 * AzureRM.Network - [verzió 5.4.0](https://www.powershellgallery.com/packages/AzureRM.Network/5.4.0) vagy újabb
 
-Letöltheti a fenti modulok a PowerShell-galériából hivatkozásokkal fent mellett a modul verziója. Ezután telepítheti őket használatával az alábbi parancsok. Mindkét a modulok szükségesek, és teljesen visszafelé kompatibilis. 
+```powershell 
+Find-Module -Name AzureRM.Dns 
+``` 
+ 
+```powershell 
+Find-Module -Name AzureRM.Network 
+``` 
+ 
+A fenti parancsok kimenetének kell jelenítse meg, hogy AzureRM.Dns verziója 4.1.0 vagy újabb verziójú, és AzureRM.Network 5.4.0 vagy újabb verzió esetén.  
+
+Abban az esetben, ha a rendszeren csak a korábbi verziók, vagy telepítse a legújabb Azure PowerShell, vagy letöltheti és telepítheti a fenti modulok a PowerShell-galériából hivatkozásokkal a fenti mellett a verziója. Ezután telepítheti őket használatával az alábbi parancsok. Mindkét a modulok szükségesek, és teljesen visszafelé kompatibilis. 
 
 ```powershell
 Install-Module -Name AzureRM.Dns -Force

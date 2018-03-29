@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/17/2017
+ms.date: 3/23/2018
 ms.author: amitsriva
-ms.openlocfilehash: c739d98f81bafb6474995b141cab3400bcb4dc33
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: dfa451a06fbadbb63c83f800ac164db399efd583
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Háttér-állapot, a diagnosztikai naplók és a metrikák az Alkalmazásátjáró
 
@@ -176,7 +176,7 @@ A hozzáférési napló jön létre, csak akkor, ha engedélyezte az összes App
 |clientPort     | A kérelem származási port.       |
 |httpMethod     | A kérelem által használt HTTP-metódus.       |
 |requestUri     | URI-címe, a kérelem érkezett.        |
-|RequestQuery     | **Kiszolgáló irányított**: háttér-készlet-példányt, a kérelem lett elküldve. </br> **X-AzureApplicationGateway-napló-ID**: a kérelemhez használt korrelációs azonosítója. A háttér-kiszolgálókon forgalom problémák hibaelhárításához használható. </br>**KISZOLGÁLÓ-állapota**: Application Gateway kapott a háttér HTTP válaszkódot.       |
+|RequestQuery     | **Kiszolgáló irányított**: háttér-készlet-példányt, a kérelem lett elküldve.</br>**X-AzureApplicationGateway-napló-ID**: a kérelemhez használt korrelációs azonosítója. A háttér-kiszolgálókon forgalom problémák hibaelhárításához használható. </br>**KISZOLGÁLÓ-állapota**: Application Gateway kapott a háttér HTTP válaszkódot.       |
 |UserAgent     | Felhasználói ügynök a HTTP-kérelem fejléc.        |
 |httpStatus     | HTTP-állapotkód küld vissza az ügyfélnek az Alkalmazásátjáró.       |
 |httpVersion     | A kérelem HTTP-verzió.        |
@@ -316,9 +316,21 @@ Is csatlakozni a tárfiókhoz és a JSON naplóbejegyzéseket a hozzáférés é
 
 ## <a name="metrics"></a>Mérőszámok
 
-Metrikák egyik újdonsága az egyes Azure-erőforrások ahol teljesítményszámlálók megtekintheti a portálon. Az Alkalmazásátjáró még egy metrika már elérhető. Ez a metrika átviteli, és megtekintheti a portálon. Keresse meg a meglévő Alkalmazásátjáró, és kattintson a **metrikák**. Válassza ki, ha az értékeket, az átviteli sebesség a **elérhető** szakasz. Az alábbi képen látható egy példa a szűrőkkel, amelyek segítségével az adatok különböző időtartományhoz megjelenítése.
+Metrikák egyik újdonsága az egyes Azure-erőforrások ahol teljesítményszámlálók megtekintheti a portálon. Az Alkalmazásátjáró a következő mérőszámokat érhetők el:
 
-![A szűrők metrika megtekintése][5]
+- Jelenlegi kapcsolatok száma
+- Sikertelen kérések
+- Kifogástalan állapotú gazdagép száma
+- Válaszállapot
+- Teljesítmény
+- Összes kérelem
+- A nem megfelelő gazdagép száma
+
+Az Alkalmazásátjáró, tallózással **figyelés** kattintson **metrikák**. Válassza ki, ha az elérhető értékek a **METRIKA** legördülő listából.
+
+Az alábbi ábrán egy példa a három metrikák jelennek meg az elmúlt 30 perc lásd:
+
+[![](media/application-gateway-diagnostics/figure5.png "Metrika megtekintése")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
 
 Metrikák aktuális listájának megtekintéséhez lásd: [támogatott Azure-figyelő metrikák](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
 
@@ -336,7 +348,7 @@ A következő példa bemutatja, hogyan létrehozása, amely egy e-mailt küld a 
 
    * Az a **feltétel** választó, válasszon ki egy négy eleme: **nagyobb, mint**, **nagyobb vagy egyenlő**, **kisebb, mint**, vagy **Kisebb vagy egyenlő, mint**.
 
-   * Az a **időszak** választó, jelöljön ki egy időszakot 5 perc és 6 óra.
+   * Az a **időszak** választó, jelöljön ki egy időszakot öt perc hat órán keresztül.
 
    * Ha **E-mail-tulajdonosok, közreműködőknek és olvasóknak**, az e-mailt dinamikus lehet az erőforráshoz hozzáféréssel rendelkező felhasználók alapján. Ellenkező esetben a felhasználók vesszővel elválasztott listája biztosíthat a **további rendszergazda email(s)** mezőbe.
 

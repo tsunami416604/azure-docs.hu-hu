@@ -1,11 +1,11 @@
 ---
-title: "Előfizetések Azure-tevékenységnaplóinak gyűjtése a Log Analyticsbe | Microsoft Docs"
-description: "Az Event Hubs és a Logic Apps segítségével adatokat gyűjtet az Azure-tevékenységnaplóból, és elküldheti azokat egy másik bérlőben található Azure Log Analytics-munkaterületre."
+title: Előfizetések Azure-tevékenységnaplóinak gyűjtése a Log Analyticsbe | Microsoft Docs
+description: Az Event Hubs és a Logic Apps segítségével adatokat gyűjtet az Azure-tevékenységnaplóból, és elküldheti azokat egy másik bérlőben található Azure Log Analytics-munkaterületre.
 services: log-analytics, logic-apps, event-hubs
-documentationcenter: 
+documentationcenter: ''
 author: richrundmsft
 manager: carmonm
-editor: 
+editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/08/2018
 ms.author: richrund; bwren
-ms.openlocfilehash: 89c62563b9772fa07d63a24b4aa20857b0143f85
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 23e4b7c74e6dfb88ec6ec50d5b8ae6d8288223f3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>Előfizetések Azure-tevékenységnaplóinak gyűjtése a Log Analyticsbe
 
@@ -113,7 +113,7 @@ A logikai alkalmazás létrehozása előtt győződjön meg arról, hogy rendelk
 - A Log Analytics-munkaterület azonosítója
 - A Log Analytics megosztott kulcsa
 
-Az eseményközpont nevének és a kapcsolati sztringjének lekéréséhez kövesse [Az Event Hubs névtérengedélyeinek ellenőrzése és a kapcsolati karakterlánc megkeresése](../connectors/connectors-create-api-azure-event-hubs.md#check-event-hubs-namespace-permissions-and-find-the-connection-string) című cikk lépéseit.
+Az eseményközpont nevének és a kapcsolati sztringjének lekéréséhez kövesse [Az Event Hubs névtérengedélyeinek ellenőrzése és a kapcsolati karakterlánc megkeresése](../connectors/connectors-create-api-azure-event-hubs.md#connect-to-azure-event-hubs) című cikk lépéseit.
 
 
 ### <a name="create-a-new-blank-logic-app"></a>Új üres logikai alkalmazás létrehozása

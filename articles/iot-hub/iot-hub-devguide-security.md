@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/29/2018
+ms.date: 02/12/2018
 ms.author: dobett
-ms.openlocfilehash: 9de332324ba853d3df0aacce2db4bbc3d4d9d62d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e7e45a6af0857520eec27263281a0f0a43b30013
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub-hozzáférés szabályozása
 
@@ -338,13 +338,17 @@ Az eredmény, az eszköz identitások olvasási hozzáférést biztosítanak, am
 
 ## <a name="supported-x509-certificates"></a>Támogatott X.509-tanúsítványokat
 
-X.509-tanúsítvány használatával hitelesíteni egy eszközt az IoT-központ. A tanúsítványok tartalmaznak:
+X.509-tanúsítvány használatával hitelesítik egy eszközt az IoT-központ vagy a tanúsítvány-ujjlenyomat, vagy a hitelesítésszolgáltatótól (CA) feltöltése az Azure IoT Hub. Csak a tanúsítvány-ujjlenyomatok hitelesítés ellenőrzi, hogy a bemutatott ujjlenyomat megegyezik-e a konfigurált ujjlenyomattal. Hitelesítésszolgáltató használata hitelesítési a tanúsítványlánc ellenőrzése. 
 
-* **Meglévő X.509 tanúsítvány**. Előfordulhat, hogy egy eszköz már társítva X.509 tanúsítvány. Az eszköz a tanúsítvány használatával hitelesítik magukat az IoT-központ.
-* **A önálló jön létre, és önaláírt tanúsítvány X-509**. A gyártó vagy a belső fejlesztésű deployer ezeket a tanúsítványokat létrehozni és és tárolására is a megfelelő titkos kulcsnak (tanúsítvány) az eszközön. Használhatja például a [OpenSSL] [ lnk-openssl] és [Windows SelfSignedCertificate] [ lnk-selfsigned] segédprogram erre a célra.
-* **X.509 tanúsítvány hitelesítésszolgáltató által aláírt**. Egy eszköz azonosítására és sikerült magát hitelesítenie, IoT-központ, egy X.509 tanúsítvány jön létre, és aláírt által hitelesítésszolgáltató (CA) is használhat. Az IoT-központ csak ellenőrzi, hogy az ujjlenyomat jelenik meg a megegyezik-e a konfigurált ujjlenyomattal. IOT hubbal nem felel meg a tanúsítványlánc.
+Támogatott a tanúsítványok tartalmaznak:
+
+* **Meglévő X.509 tanúsítvány**. Előfordulhat, hogy egy eszköz már társítva X.509 tanúsítvány. Az eszköz a tanúsítvány használatával hitelesítik magukat az IoT-központ. Ujjlenyomattal vagy a CA hitelesítési együttműködik. 
+* **X.509 tanúsítvány hitelesítésszolgáltató által aláírt**. Egy eszköz azonosítására és sikerült magát hitelesítenie, IoT-központ, egy X.509 tanúsítvány jön létre, és aláírt által hitelesítésszolgáltató (CA) is használhat. Ujjlenyomattal vagy a CA hitelesítési együttműködik.
+* **A önálló jön létre, és önaláírt tanúsítvány X-509**. A gyártó vagy a belső fejlesztésű deployer ezeket a tanúsítványokat létrehozni és és tárolására is a megfelelő titkos kulcsnak (tanúsítvány) az eszközön. Használhatja például a [OpenSSL] [ lnk-openssl] és [Windows SelfSignedCertificate] [ lnk-selfsigned] segédprogram erre a célra. Csak akkor működik ujjlenyomat-hitelesítéssel. 
 
 Egy eszköz vagy használhat egy X.509 tanúsítvány vagy egy biztonsági jogkivonatot a hitelesítés, de soha sem egyszerre mindkettőre.
+
+Hitelesítésszolgáltató használatával hitelesítéssel kapcsolatos további információkért lásd: [X.509 CA-tanúsítványok fogalmi ismertetése](iot-hub-x509ca-concept.md).
 
 ### <a name="register-an-x509-certificate-for-a-device"></a>Egy eszköz X.509 tanúsítvány regisztrálása
 
@@ -354,10 +358,7 @@ A [Azure IoT szolgáltatás SDK for C#] [ lnk-service-sdk] (verzió 1.0.8+) tám
 
 A **RegistryManager** osztály programozott módon kell regisztrálni egy eszközt biztosít. Különösen a **AddDeviceAsync** és **UpdateDeviceAsync** módszerek lehetővé teszik a regisztrálja, és frissítse egy eszközt az IoT-központ identitásjegyzékhez. Ez a két módszer igénybe vehet egy **eszköz** példány bemeneti adatként. A **eszköz** osztály tartalmaz egy **hitelesítési** tulajdonság, amely lehetővé teszi az elsődleges és másodlagos X.509 tanúsítvány-ujjlenyomatok megadását. Az ujjlenyomat (kódolással bináris DER tárolt) X.509-tanúsítvány egy SHA-1 kivonatoló jelöli. Lehetősége van egy elsődleges ujjlenyomatot vagy egy másodlagos ujjlenyomatot, vagy mindkettő megadására. Elsődleges és másodlagos ujjlenyomatok tanúsítvány helyettesítő helyzetek kezelésére használhatók.
 
-> [!NOTE]
-> Az IoT-központ nem kér és nem tárolja a teljes X.509-tanúsítványt, csak az ujjlenyomat.
-
-Íme egy minta C\# kell regisztrálni egy X.509 tanúsítvánnyal eszközt kódrészletet:
+Íme egy minta C\# kódrészletet kell regisztrálni egy eszközt, az X.509 tanúsítvány ujjlenyomata:
 
 ```csharp
 var device = new Device(deviceId)

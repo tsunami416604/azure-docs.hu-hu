@@ -1,11 +1,12 @@
 ---
-title: "Mire használható az Azure Machine Learning funkciója? | Microsoft Docs"
-description: "Ismerteti a felhőalapú Machine Learning alapvető fogalmait, az alkalmazási területeket, valamint a Machine Learning kifejezéseit."
-keywords: "mi az a machine learning,machine learning-kifejezések,prediktív,mi az a prediktív elemzés,machine learning-kifejezések"
+title: Mire használható az Azure Machine Learning funkciója? | Microsoft Docs
+description: Ismerteti a felhőalapú Machine Learning alapvető fogalmait, az alkalmazási területeket, valamint a Machine Learning kifejezéseit.
+keywords: mi az a machine learning,machine learning-kifejezések,prediktív,mi az a prediktív elemzés,machine learning-kifejezések
 services: machine-learning
-documentationcenter: 
-author: cjgronlund
-manager: jhubbard
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
+manager: hjerez
 editor: cgronlun
 ms.assetid: eaee083e-eaa1-4408-838b-93e51423d159
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/23/2018
-ms.author: cgronlun;tedway;olgali
-ms.openlocfilehash: 2968a71141eb6e036bc8bff1bc620b978f3ffdd9
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 36095d24f091ac195fe95c839924b15efae05232
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="introduction-to-machine-learning-in-the-azure-cloud"></a>Bevezetés az Azure-felhőalapú Machine Learning használatába
 

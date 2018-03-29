@@ -1,23 +1,23 @@
 ---
-title: "Az Azure PowerShell tárolás kezelése az Azure független a felhők |} Microsoft Docs"
-description: "Tárhelykezelés a kínai felhő, kormányzati felhőalapú és német felhőalapú Azure PowerShell használatával"
+title: Az Azure PowerShell tárolás kezelése az Azure független a felhők |} Microsoft Docs
+description: Tárhelykezelés a kínai felhő, kormányzati felhőalapú és német felhőalapú Azure PowerShell használatával
 services: storage
 documentationcenter: na
-author: robinsh
-manager: timlt
-ms.assetid: 
+author: roygara
+manager: jeconnoc
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
-ms.author: robinsh
-ms.openlocfilehash: 08e1af929d7ddc30c7dc149f6305ca1ca0bc22ae
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.author: rogarana
+ms.openlocfilehash: 31b36e6fb6a1ebf09c559b2777ffa5f554c3cfa0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Tárhelykezelés a felhőben az Azure független PowerShell használatával
 
@@ -25,7 +25,7 @@ A legtöbben Azure nyilvános Felhőjében használja a globális Azure telepít
 
 * [Az Azure Government felhő](https://azure.microsoft.com/features/gov/)
 * [Azure Kínában a 21Vianet által működtetett Kína-felhő](http://www.windowsazure.cn/)
-* [Az Azure német felhő](../../germany/germany-welcome.md)
+* [Azure German Cloud](../../germany/germany-welcome.md)
 
 ## <a name="using-an-independent-cloud"></a>Egy független a felhővel 
 
@@ -61,7 +61,7 @@ Get-AzureRmLocation | select Location, DisplayName
 
 Az alábbi táblázat a helyek, a német felhő adott vissza.
 
-|Hely | displayName |
+|Hely | DisplayName |
 |----|----|
 | germanycentral | Közép-Németország|
 | germanynortheast | Északkelet-Németország | 
@@ -83,12 +83,12 @@ Get-AzureRmEnvironment | select Name, StorageEndpointSuffix
 
 Ez a parancs a következő eredményt ad vissza.
 
-| Név| StorageEndpointSuffix|
+| Name (Név)| StorageEndpointSuffix|
 |----|----|
-|AzureChinaCloud | Core.chinacloudapi.CN|
-| AzureCloud | Core.Windows.NET |
-| AzureGermanCloud | Core.cloudapi.de|
-| AzureUSGovernment | Core.usgov.cloudapi.NET |
+|AzureChinaCloud | core.chinacloudapi.cn|
+| AzureCloud | core.windows.net |
+| AzureGermanCloud | core.cloudapi.de|
+| AzureUSGovernment | core.usgov.cloudapi.net |
 
 
 Összes tulajdonság a megadott környezet lekéréséhez hívja **Get-AzureRmEnvironment** , és adja meg a felhő neve. A kódrészletet tulajdonságok; listáját adja vissza. Keressen **StorageEndpointSuffix** a listában. A következő példa a német felhőben van.
@@ -101,16 +101,16 @@ A eredményei a következőhöz hasonló:
 
 |Tulajdonság neve|Érték|
 |----|----|
-| Név | AzureGermanCloud |
+| Name (Név) | AzureGermanCloud |
 | EnableAdfsAuthentication | False (Hamis) |
-| ActiveDirectoryServiceEndpointResourceI | http://Management.Core.cloudapi.de/ |
-| GalleryURL | https://Gallery.cloudapi.de/ |
-| ManagementPortalUrl | https://Portal.microsoftazure.de/ | 
-| ServiceManagementUrl | https://Manage.Core.cloudapi.de/ |
-| PublishSettingsFileUrl| https://Manage.microsoftazure.de/publishsettings/index |
-| ResourceManagerUrl | http://Management.microsoftazure.de/ |
-| SqlDatabaseDnsSuffix | . database.cloudapi.de |
-| **StorageEndpointSuffix** | Core.cloudapi.de |
+| ActiveDirectoryServiceEndpointResourceI | http://management.core.cloudapi.de/ |
+| GalleryURL | https://gallery.cloudapi.de/ |
+| ManagementPortalUrl | https://portal.microsoftazure.de/ | 
+| ServiceManagementUrl | https://manage.core.cloudapi.de/ |
+| PublishSettingsFileUrl| https://manage.microsoftazure.de/publishsettings/index |
+| ResourceManagerUrl | http://management.microsoftazure.de/ |
+| SqlDatabaseDnsSuffix | .database.cloudapi.de |
+| **StorageEndpointSuffix** | core.cloudapi.de |
 | ... | ... | 
 
 Csak a tárolási végpont utótag tulajdonság beolvasása, az adott felhő beolvasása, és kérje meg, hogy egy tulajdonság.
@@ -159,13 +159,13 @@ Az itt továbbítja, használhatja a használja a storage-fiókok kezelése, és
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha létrehozott egy új erőforráscsoportot és az ebben a gyakorlatban egy tárfiókot, távolítsa el az eszközök összes az erőforráscsoport eltávolításával. Ez törli a csoportban található összes erőforrást is. Ebben az esetben eltávolítja a létrehozott tárfiókban és az erőforráscsoport magát.
+Ha létrehozott egy új erőforráscsoportot és az ebben a gyakorlatban egy tárfiókot, távolítsa el az eszközök összes az erőforráscsoport eltávolításával. Így törli a csoportban lévő összes erőforrást is. Ebben az esetben eltávolítja a létrehozott tárfiókban és az erőforráscsoport magát.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [PowerShell-munkamenetek között tárolásakor felhasználói bejelentkezések](/powershell/azure/context-persistence)
 * [Az Azure Government storage](../../azure-government/documentation-government-services-storage.md)

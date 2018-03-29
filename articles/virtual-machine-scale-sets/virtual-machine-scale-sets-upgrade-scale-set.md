@@ -1,11 +1,11 @@
 ---
-title: "Egy Azure virtuálisgép-méretezési csoport módosítása |} Microsoft Docs"
-description: "Egy Azure virtuálisgép-méretezési csoport módosítása"
+title: Egy Azure virtuálisgép-méretezési csoport módosítása |} Microsoft Docs
+description: Megtudhatja, hogyan módosítása vagy egy Azure virtuálisgép-méretezési állítsa be a REST API-k, az Azure PowerShell és az Azure CLI 2.0 frissítése
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
 ms.service: virtual-machine-scale-sets
@@ -15,45 +15,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: negat
-ms.openlocfilehash: fcca912a8120a51d2f0a454ef0a6341cd5882015
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 91eccd2b4587d7cb926ca506ae2f2e5b91ea1f3e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Módosítsa a virtuálisgép-méretezési csoport
-A cikkből megtudhatja, hogyan lehet módosítani egy meglévő virtuálisgép-méretezési készlet. A feladatok közé tartozik a skála konfigurációjának módosítása beállítása, a skála futó alkalmazások a konfiguráció módosítása beállításához rendelkezésre állását, és több kezelése.
+Az alkalmazások életciklusa során szükség lehet módosítani, vagy a virtuálisgép-méretezési csoport frissítése. Ezeket a frissítéseket is venni, hogyan lehet frissíteni a beállításait, a méretezési, vagy módosítsa az alkalmazás konfigurációját. A cikkből megtudhatja, hogyan lehet módosítani egy meglévő méretezési a REST API-k, az Azure PowerShell vagy Azure CLI 2.0 készletben.
 
 ## <a name="fundamental-concepts"></a>alapvető fogalmai
 
-### <a name="scale-set-model"></a>Virtuális gépek méretezési csoportjának modell
+### <a name="the-scale-set-model"></a>A méretezési modell
+A méretezési rendelkezik egy "méretezési modellel", amely rögzíti a *kívánt* a skála állapotát állítja be a teljes. A modell skálázási készletének lekérdezéséhez használja a 
 
-A méretezési csoportban van olyan modellt, amely rögzíti a *kívánt* a skála állapotát állítja be a teljes. A modell skálázási készletének lekérdezéséhez használhatja:
+- REST API-t [compute/virtualmachinescalesets/get](/rest/api/compute/virtualmachinescalesets/get) az alábbiak szerint:
 
-* REST API: 
+    ```rest
+    GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet?api-version={apiVersion}
+    ```
 
-  `GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}?api-version={apiVersion}` 
-   
-  További információkért lásd: a [REST API-dokumentáció](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/get).
+- Az Azure Powershell [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss):
 
-* PowerShell:
+    ```powershell
+    Get-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
+    ```
 
-  `Get-AzureRmVmss -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName}`
-   
-  További információkért lásd: a [PowerShell dokumentációs](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss).
+- Az Azure CLI 2.0 [az vmss megjelenítése](/cli/azure/vmss#az_vmss_show):
 
-* Azure CLI: 
+    ```azurecli
+    az vmss show --resource-group myResourceGroup --name myScaleSet
+    ```
 
-  `az vmss show -g {resourceGroupName} -n {vmSaleSetName}` 
-   
-  További információkért lásd: a [Azure CLI dokumentáció](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az_vmss_show).
+- Is [resources.azure.com](https://resources.azure.com) vagy a nyelvspecifikus [Azure SDK-k](https://azure.microsoft.com/downloads/).
 
-Is [Azure erőforrás-kezelővel (előzetes verzió)](https://resources.azure.com) vagy a [Azure SDK-k](https://azure.microsoft.com/downloads/) skálázási készletének modell lekérdezni.
+A kimeneti pontos bemutató attól függ, hogy a beállításokat, majd a parancs való. A következő példa bemutatja a tömörített minta kimenet az Azure CLI 2.0:
 
-A kimeneti pontos bemutató attól függ, hogy a beállításokat, majd a parancs való. Itt egy minta kimenet az Azure parancssori felület:
-
-```
-$ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
+```azurecli
+az vmss show --resource-group myResourceGroup --name myScaleSet
 {
   "location": "westus",
   "overprovision": true,
@@ -65,44 +64,39 @@ $ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
     "name": "Standard_D2_v2",
     "tier": "Standard"
   },
-  .
-  .
-  .
 }
 ```
 
-Ahogy látja, ezeket a tulajdonságokat a méretezési készletben egészére vonatkozik.
+Ezeket a tulajdonságokat a méretezési készletben egészére vonatkozik.
 
 
+### <a name="the-scale-set-instance-view"></a>A méretezési csoport példányait tartalmazó nézet
+A méretezési készletben is megtalálható a "méretezési készlet példánya megtekintése", amely rögzíti az aktuális *futásidejű* a skála állapotát állítja be a teljes. Az egy méretezési csoport példányait tartalmazó nézetet lekérdezéséhez használhatja:
 
-### <a name="scale-set-instance-view"></a>Méretezési csoport példányait tartalmazó nézet
+- REST API-t [compute/virtualmachinescalesets/getinstanceview](/rest/api/compute/virtualmachinescalesets/getinstanceview) az alábbiak szerint:
 
-A méretezési készletben is rendelkezik egy példányait tartalmazó nézetet, amely rögzíti az aktuális *futásidejű* a skála állapotát állítja be a teljes. Az egy méretezési csoport példányait tartalmazó nézetet lekérdezéséhez használhatja:
+    ```rest
+    GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/instanceView?api-version={apiVersion}
+    ```
 
-* REST API: 
+- Az Azure Powershell [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss):
 
-  `GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/instanceView?api-version={apiVersion}` 
-   
-  További információkért lásd: a [REST API-dokumentáció](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/getinstanceview).
+    ```powershell
+    Get-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceView
+    ```
 
-* PowerShell: 
+- Az Azure CLI 2.0 [get-példány-nézet az vmss](/cli/azure/vmss#az_vmss_get_instance_view):
 
-  `Get-AzureRmVmss -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceView` 
-  
-  További információkért lásd: a [PowerShell dokumentációs](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss).
+    ```azurecli
+    az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet
+    ```
 
-* Azure CLI: 
+- Is [resources.azure.com](https://resources.azure.com) vagy a nyelvspecifikus [Azure SDK-k](https://azure.microsoft.com/downloads/)
 
-  `az vmss get-instance-view -g {resourceGroupName} -n {vmSaleSetName}` 
-   
-  További információkért lásd: a [Azure CLI dokumentáció](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az_vmss_get_instance_view).
+A kimeneti pontos bemutató attól függ, hogy a beállításokat, majd a parancs való. A következő példa bemutatja a tömörített minta kimenet az Azure CLI 2.0:
 
-Is [Azure erőforrás-kezelővel (előzetes verzió)](https://resources.azure.com) vagy a [Azure SDK-k](https://azure.microsoft.com/downloads/) lekérdezni a egy méretezési csoport példányait tartalmazó nézetet.
-
-A kimeneti pontos bemutató attól függ, hogy a beállításokat, majd a parancs való. Itt egy minta kimenet az Azure parancssori felület:
-
-```
-$ az vmss get-instance-view -g {resourceGroupName} -n {virtualMachineScaleSetName}
+```azurecli
+$ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet
 {
   "statuses": [
     {
@@ -124,44 +118,39 @@ $ az vmss get-instance-view -g {resourceGroupName} -n {virtualMachineScaleSetNam
       }
     ]
   }
-  .
-  .
-  .
 }
 ```
 
-Ahogy látja, ezeket a tulajdonságokat meg az aktuális futási állapotát a méretezési csoportban lévő virtuális gépek. Az összegzés tartalmazza a méretezési készletben (elhagyott kivonatosan mutatja) alkalmazott bővítmények állapotát.
+Ezeket a tulajdonságokat adja meg az aktuális futási állapotát, például a méretezési alkalmazott bővítmények állapotának a méretezési csoportban lévő virtuális gépek.
 
 
-
-### <a name="scale-set-vm-model-view"></a>Méretezési VM modell megtekintése
-
+### <a name="the-scale-set-vm-model-view"></a>A méretezési VM modell megtekintése
 Hasonló hogyan egy méretezési csoport rendelkezik a modell nézet, a méretezési csoportban lévő összes virtuális Géphez van saját modell nézet. A modell nézetét a méretezési lekérdezéséhez használhatja:
 
-* REST API: 
+- REST API-t [compute/virtualmachinescalesetvms/get](/rest/api/compute/virtualmachinescalesetvms/get) az alábbiak szerint:
 
-  `GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}?api-version={apiVersion}` 
-  
-  További információkért lásd: a [REST API-dokumentáció](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesetvms/get).
+    ```rest
+    GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/virtualmachines/instanceId?api-version={apiVersion}
+    ```
 
-* PowerShell: 
+- Az Azure Powershell [Get-AzureRmVmssVm](/powershell/module/azurerm.compute/get-azurermvmssvm):
 
-  `Get-AzureRmVmssVm -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId}` 
-  
-  További információkért lásd: a [PowerShell dokumentációs](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmssvm).
+    ```powershell
+    Get-AzureRmVmssVm -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId
+    ```
 
-* Azure CLI: 
+- Az Azure CLI 2.0 [az vmss megjelenítése](/cli/azure/vmss#az_vmss_show):
 
-  `az vmss show -g {resourceGroupName} -n {vmSaleSetName} --instance-id {instanceId}` 
-  
-  További információkért lásd: a [Azure CLI dokumentáció](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az_vmss_show).
+    ```azurecli
+    az vmss show --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
+    ```
 
-Is [Azure erőforrás-kezelővel (előzetes verzió)](https://resources.azure.com) vagy a [Azure SDK-k](https://azure.microsoft.com/downloads/) a modell egy Virtuálisgép-méretezési csoportban lévő lekérdezésére.
+- Is [resources.azure.com](https://resources.azure.com) vagy a [Azure SDK-k](https://azure.microsoft.com/downloads/).
 
-A kimeneti pontos bemutató attól függ, hogy a beállításokat, majd a parancs való. Itt egy minta kimenet az Azure parancssori felület:
+A kimeneti pontos bemutató attól függ, hogy a beállításokat, majd a parancs való. A következő példa bemutatja a tömörített minta kimenet az Azure CLI 2.0:
 
-```
-$ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
+```azurecli
+$ az vmss show --resource-group myResourceGroup --name myScaleSet
 {
   "location": "westus",
   "name": "{name}",
@@ -169,44 +158,39 @@ $ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
     "name": "Standard_D2_v2",
     "tier": "Standard"
   },
-  .
-  .
-  .
 }
 ```
 
-Ahogy látja, ezek a Tulajdonságok konfigurálását a virtuális gép, nem a méretezési készletben egész konfigurációját. Például a skála modellel rendelkezik `overprovision` tulajdonságként, mivel a virtuális gépek egy méretezési modell viszont nem. Ezt a különbséget oka, hogy a elhelyezésétől-e a skála állítja be a teljes, nem az egyes virtuális gépek a méretezési csoportban lévő egy tulajdonság. (Elhelyezésétől kapcsolatos további információkért lásd: [kialakítási szempontok a méretezési készlet](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning).)
+Ezek a Tulajdonságok konfigurálását a virtuális gép, nem a méretezési készletben egész konfigurációját. Például a skála modellel rendelkezik `overprovision` tulajdonságként, míg a virtuális gépek méretezési csoportban lévő modell nem. Ezt a különbséget azért, mert a elhelyezésétől állítja be a teljes, nem az egyes virtuális gépek a méretezési csoportban lévő a skála tulajdonságának (elhelyezésétől kapcsolatos további információkért lásd: [kialakítási szempontok a méretezési készlet](virtual-machine-scale-sets-design-overview.md#overprovisioning)).
 
 
-
-### <a name="scale-set-vm-instance-view"></a>Méretezési csoportban a virtuális gép példányait tartalmazó nézet
-
+### <a name="the-scale-set-vm-instance-view"></a>A méretezési virtuális gép példányait tartalmazó nézet
 Hasonló hogyan rendelkezik, egy méretezési csoport példányait tartalmazó nézetet, a méretezési csoportban lévő összes virtuális Géphez van saját példányait tartalmazó nézetet. Az egy méretezési csoport példányait tartalmazó nézetet lekérdezéséhez használhatja:
 
-* REST API: 
+- REST API-t [compute/virtualmachinescalesetvms/getinstanceview](/rest/api/compute/virtualmachinescalesetvms/getinstanceview) az alábbiak szerint:
 
-  `GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/instanceView?api-version={apiVersion}` 
- 
-  További információkért lásd: a [REST API-dokumentáció](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesetvms/getinstanceview).
+    ```rest
+    GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/virtualmachines/instanceId/instanceView?api-version={apiVersion}
+    ```
 
-* PowerShell: 
+- Az Azure Powershell [Get-AzureRmVmssVm](/powershell/module/azurerm.compute/get-azurermvmssvm):
 
-  `Get-AzureRmVmssVm -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -InstanceView` 
-  
-  További információkért lásd: a [PowerShell dokumentációs](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmssvm).
+    ```powershell
+    Get-AzureRmVmssVm -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId -InstanceView
+    ```
 
-* Azure CLI: 
+- Az Azure CLI 2.0 [az vmss get-példány-nézet](/cli/azure/vmss#az_vmss_get_instance_view)
 
-  `az vmss get-instance-view -g {resourceGroupName} -n {vmSaleSetName} --instance-id {instanceId}` 
-  
-  További információkért lásd: a [Azure CLI dokumentáció](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az_vmss_get_instance_view).
+    ```azurecli
+    az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
+    ```
 
-Is [Azure erőforrás-kezelővel (előzetes verzió)](https://resources.azure.com) vagy a [Azure SDK-k](https://azure.microsoft.com/downloads/) lekérdezni a méretezési csoportban lévő virtuális gép példányait tartalmazó nézetet.
+- Is [resources.azure.com](https://resources.azure.com) vagy a [Azure SDK-k](https://azure.microsoft.com/downloads/)
 
-A kimeneti pontos bemutató attól függ, hogy a beállításokat, majd a parancs való. Itt egy minta kimenet az Azure parancssori felület:
+A kimeneti pontos bemutató attól függ, hogy a beállításokat, majd a parancs való. A következő példa bemutatja a tömörített minta kimenet az Azure CLI 2.0:
 
-```
-$ az vmss get-instance-view -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}
+```azurecli
+$ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
 {
   "additionalProperties": {
     "osName": "ubuntu",
@@ -251,202 +235,203 @@ $ az vmss get-instance-view -g {resourceGroupName} -n {vmScaleSetName} --instanc
     ],
     "vmAgentVersion": "{version}"
   },
-  .
-  .
-  .
 }
 ```
 
-Ahogy látja, akkor ezeket a tulajdonságokat a virtuális gépért aktuális futási állapotának ismertetik. Az állapot-bővítmény sem. a méretezési készletben (elhagyott kivonatosan mutatja) alkalmazott tartalmazza.
+Ezeket a tulajdonságokat a virtuális Gépet, a méretezési alkalmazott kiterjesztések tartalmazó aktuális futási állapotának ismertetik.
 
 
-
-
-## <a name="techniques-for-updating-global-scale-set-properties"></a>Globális méretű frissítési módszerek tulajdonságainak beállítása
-
+## <a name="how-to-update-global-scale-set-properties"></a>Globális méretű frissítése tulajdonságainak beállítása
 A globális méretű tulajdonságbeállító frissítéséhez frissítenie kell a méretezési készlet modell tulajdonság. A frissítés keresztül teheti meg:
 
-* REST API: 
+- REST API-t [compute/virtualmachinescalesets/createorupdate](/rest/api/compute/virtualmachinescalesets/createorupdate) az alábbiak szerint:
 
-  `PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}?api-version={apiVersion}` 
-  
-  További információkért lásd: a [REST API-dokumentáció](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate).
+    ```rest
+    PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet?api-version={apiVersion}
+    ```
 
-  Másik lehetőségként telepítése Azure Resource Manager-sablonok globális méretű készlet tulajdonságainak módosítása a tulajdonságok a REST API használatával.
+- A Resource Manager-sablon a tulajdonságokkal a REST API, globális méretű készlet tulajdonságainak frissítésére való telepítése.
 
-* PowerShell: 
+- Az Azure Powershell [frissítés-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss):
 
-  `Update-AzureRmVmss -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -VirtualMachineScaleSet {scaleSetConfigPowershellObject}` 
-  
-  További információkért lásd: a [PowerShell dokumentációs](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss).
+    ```powershell
+    Update-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -VirtualMachineScaleSet {scaleSetConfigPowershellObject}
+    ```
 
-* Azure CLI:
+- Az Azure CLI 2.0 [az vmss frissítése](/cli/azure/vmss#az_vmss_update):
+    - Ha egy tulajdonság módosítására:
 
-  * Ha egy tulajdonság módosítására: `az vmss update --set {propertyPath}={value}` 
-  
-  * Méretezési csoportban lévő lista tulajdonság az objektum hozzáadása: `az vmss update --add {propertyPath} {JSONObjectToAdd}` 
-  
-  * Méretezési csoportban lévő lista tulajdonság az objektum eltávolítása: `az vmss update --remove {propertyPath} {indexToRemove}` 
-  
-  További információkért lásd: a [Azure CLI dokumentáció](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az_vmss_update). 
-  
-  Azt is megteheti Ha korábban telepítette a méretezési készletben használatával a `az vmss create` parancsot futtathatja a `az vmss create` újra a parancsot a skála frissítéséhez. Ehhez az szükséges, győződjön meg arról, hogy az összes tulajdonság a `az vmss create` parancs ugyanazok, mint korábban, kivéve a módosítani kívánt tulajdonságokat.
+        ```azurecli
+        az vmss update --set {propertyPath}={value}
+        ```
+
+    - Méretezési csoportban lévő lista tulajdonság az objektum hozzáadása: 
+
+        ```azurecli
+        az vmss update --add {propertyPath} {JSONObjectToAdd}
+        ```
+
+    - Méretezési csoportban lévő lista tulajdonság az objektum eltávolítása: 
+
+        ```azurecli
+        az vmss update --remove {propertyPath} {indexToRemove}
+        ```
+
+    - Ha korábban telepítette a méretezési készletben a `az vmss create` parancsot futtathatja a `az vmss create` újra a parancsot a skála frissítéséhez. Győződjön meg arról, hogy az összes tulajdonság a `az vmss create` parancs ugyanazok, mint korábban, kivéve a módosítani kívánt tulajdonságokat.
+
+- Is [resources.azure.com](https://resources.azure.com) vagy a [Azure SDK-k](https://azure.microsoft.com/downloads/).
+
+A skála modellel frissül, ha az új konfiguráció bármely új virtuális gépek létrehozása a méretezési csoportban lévő vonatkozik. Azonban a meglévő virtuális gépek, a méretezési csoportban lévő modellek kell továbbra is vonhatók naprakész, és a legújabb összesített méretezési modellel. A modell az egyes virtuális gépek logikai tulajdonság neve `latestModelApplied` , amely azt jelzi, hogy-e a virtuális Gépet a legújabb összesített méretezési modellel naprakészen (`true` azt jelenti, hogy a virtuális Gépet a legújabb modellt naprakész).
 
 
+## <a name="how-to-bring-vms-up-to-date-with-the-latest-scale-set-model"></a>Virtuális gépek naprakész, amely a legfrissebb állapotba állítsa be a modell
+Méretezési csoportok rendelkezik egy "frissítési házirend", amely határozza meg, hogyan kerülnek naprakész a legújabb méretezési modellel, és a virtuális gépek. A házirend három módot a következők:
 
-Is [Azure erőforrás-kezelővel (előzetes verzió)](https://resources.azure.com) vagy a [Azure SDK-k](https://azure.microsoft.com/downloads/) frissíteni a skála beállítása a modell.
+- **Automatikus** -ebben a módban a méretezési készlet lehetővé teszi virtuális gépek indítottak sorrendjével kapcsolatos nem garantálja. A méretezési előfordulhat, hogy minden virtuális gép le egyszerre. 
+- **Működés közbeni** -ebben a módban a méretezési bevezeti a kötegek egy választható szüneteltetése, amikor a frissítés kötegek között.
+- **Manuális** – ebben a módban, ha frissíti a skála modellel, semmi nem történik a meglévő virtuális gépekhez.
+ 
+Meglévő virtuális gépek frissítéséhez tegye minden meglévő virtuális gép "Kézi frissítés". Ez a kézi frissítés teheti meg:
 
-Miután a skála modellel frissült, az új konfiguráció bármely új virtuális gépek létrehozása a méretezési csoportban lévő vonatkozik. Azonban a meglévő virtuális gépek, a méretezési csoportban lévő modellek kell továbbra is vonhatók naprakészek legyenek a legújabb összesített méretezési készlet modellt. A modell az egyes virtuális gépek, logikai tulajdonsággal nevű `latestModelApplied` azt jelzi, hogy-e a virtuális gép naprakészen a legújabb összesített méretezési modellel. (A érték `true` azt jelenti, hogy a virtuális Gépet a legújabb modellt naprakész.)
+- REST API-t [compute/virtualmachinescalesets/updateinstances](/rest/api/compute/virtualmachinescalesets/updateinstances) az alábbiak szerint:
 
+    ```rest
+    POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/manualupgrade?api-version={apiVersion}
+    ```
 
-
-
-## <a name="techniques-for-bringing-vms-up-to-date-with-the-latest-scale-set-model"></a>Annak érdekében, hogy a virtuális gépek naprakészen a legújabb méretezési modellel technikák
-
-Méretezési csoportok rendelkezik egy *házirend frissítése* , amely meghatározza, hogy hogyan virtuális gépek naprakészen a legújabb méretezési modellel kerülnek. A házirend három módot a következők:
-
-- **Automatikus**: Ebben a módban a méretezési lehetővé teszi virtuális gépek, amelyek le kerülnek sorrendjével kapcsolatos nem garantálja. A méretezési előfordulhat, hogy minden virtuális gép le egy időben. 
-- **Működés közbeni**: Ebben a módban a méretezési bevezeti a kötegek kötegek között egy választható szüneteltetése, amikor a frissítés.
-- **Manuális**: Ebben a módban, amikor frissíti a skála modellel, semmi nem történik a meglévő virtuális gépekhez. Meglévő virtuális gépek frissítése, kézzel kell frissítenie a minden egyes. A kézi frissítés keresztül teheti meg:
-
-  - REST API: 
-  
-    `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/manualupgrade?api-version={apiVersion}` 
+- Az Azure Powershell [frissítés-AzureRmVmssInstance](/powershell/module/azurerm.compute/update-azurermvmssinstance):
     
-    További információkért lásd: a [REST API-dokumentáció](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/updateinstances).
+    ```powershell
+    Update-AzureRmVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId
+    ```
 
-  - PowerShell: 
-  
-    `Update-AzureRmVmssInstance -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId}` 
-    
-    További információkért lásd: a [PowerShell dokumentációs](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmssinstance).
+- Az Azure CLI 2.0 [az vmss frissítés-példányok](/cli/azure/vmss#az_vmss_update_instances)
 
-  - Azure CLI: 
-  
-    `az vmss update-instances -g {resourceGroupName} -n {vmScaleSetName} --instance-ids {instanceIds}` 
-    
-    További információkért lásd: a [Azure CLI dokumentáció](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az_vmss_update_instances).
+    ```azurecli
+    az vmss update-instances --resource-group myResourceGroup --name myScaleSet --instance-ids {instanceIds}
+    ```
 
-  Használhatja a [Azure SDK-k](https://azure.microsoft.com/downloads/) manuális frissítése a Virtuálisgép-méretezési csoportban lévő.
+- Használhatja a nyelvspecifikus [Azure SDK-k](https://azure.microsoft.com/downloads/).
 
 >[!NOTE]
-> Az Azure Service Fabric-fürtök csak automatikus módot használhat, de a frissítés eltérően kell kezelni. A Service Fabric-frissítések további információkért lásd: a [Service Fabric-dokumentáció](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade).
+> Service Fabric-fürtök csak használható *automatikus* mód, de a frissítés eltérően kell kezelni. További információkért lásd: [ Service Fabric az alkalmazásfrissítéseket](../service-fabric/service-fabric-application-upgrade.md).
 
-Egy adott típusú globális méretű készlet tulajdonságainak módosítása nem követi a házirend: a skála módosításai operációsrendszer-profil beállítása. (Többek között az rendszergazda felhasználónevét és jelszavát.) Ezek a tulajdonságok csak az API-verzió 2017-12-01 vagy későbbi lehet. A módosítások csak virtuális gépek létrehozása után a változás a skála modell vonatkoznak. Ahhoz, hogy a meglévő virtuális gépek naprakész, meg kell újból lemezképet létrehozni meglévő virtuális gépek. Ön újból lemezképet létrehozni egy virtuális gépről:
+Nincs a globális méretű tulajdonságainak beállítása, amely nem követi a házirend módosítása egy adott típusú. A méretezési operációsrendszer-profilt (például a rendszergazda felhasználónevét és jelszavát) csak akkor módosítható az API-verzió vált *2017-12-01* vagy újabb. A módosítások csak a virtuális gépek létrehozása után a változás a skála modell vonatkoznak. Ahhoz, hogy a meglévő virtuális gépek naprakész, hajtsa végre a "lemezkép alaphelyzetbe" minden meglévő virtuális gép. A lemezkép-visszaállítási keresztül teheti meg:
 
-* REST API: 
+- REST API-t [compute/virtualmachinescalesets vagy lemezkép-visszaállítási](/rest/api/compute/virtualmachinescalesets/reimage) az alábbiak szerint:
 
-  `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimage?api-version={apiVersion}` 
-  
-  További információkért lásd: a [REST API-dokumentáció](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage).
+    ```rest
+    POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/reimage?api-version={apiVersion}
+    ```
 
-* PowerShell: 
+- Az Azure Powershell [Set-AzureRmVmssVm](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmssvm):
 
-  `Set-AzureRmVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` 
-  
-  További információkért lásd: a [PowerShell dokumentációs](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmssvm).
+    ```powershell
+    Set-AzureRmVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId -Reimage
+    ```
 
-* Azure CLI: 
+- Az Azure CLI 2.0 [az vmss lemezkép-visszaállítási](https://docs.microsoft.com/cli/azure/vmss#az_vmss_reimage):
 
-  `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` 
-  
-  További információkért lásd: a [Azure CLI dokumentáció](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az_vmss_reimage).
+    ```azurecli
+    az vmss reimage --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
+    ```
 
-Használhatja a [Azure SDK-k](https://azure.microsoft.com/downloads/) egy Virtuálisgép-méretezési csoportban lévő lemezképet.
-
-
+- Használhatja a nyelvspecifikus [Azure SDK-k](https://azure.microsoft.com/downloads/).
 
 
 ## <a name="properties-with-restrictions-on-modification"></a>Tulajdonság módosítása korlátozásai
 
 ### <a name="create-time-properties"></a>Hozzon létre idő tulajdonságai
+Néhány tulajdonság csak akkor állítható be, a méretezési csoport létrehozásakor. Ezek a tulajdonságok a következők:
 
-Néhány tulajdonság csak akkor, amikor először hoz létre, a méretezési állítható be. Ezek a tulajdonságok a következők:
-
-- Zóna
+- Rendelkezésre állási zónák
 - lemezkép referencia publisher
 - lemezkép referencia ajánlat
 
-### <a name="properties-that-can-be-changed-based-on-the-current-value-only"></a>Csak az aktuális érték alapján, amelyek módosíthatók tulajdonságai
+### <a name="properties-that-can-only-be-changed-based-on-the-current-value"></a>A jelenlegi érték alapján, amely csak akkor módosítható, tulajdonságok
+Néhány tulajdonságát lehet módosítani, és kivételeket megadni, attól függően, hogy a jelenlegi érték. Ezek a tulajdonságok a következők:
 
-Néhány tulajdonság módosítható, és kivételeket megadni, attól függően, hogy a jelenlegi érték. Ezek a tulajdonságok a következők:
-
-- `singlePlacementGroup`: Ha `singlePlacementGroup` értéke igaz, hamis értékre módosítani. Azonban ha `singlePlacementGroup` értéke HAMIS, akkor *nem* módosítható igaz értékre.
-- `subnet`: Az alhálózat egy méretezési módosítható, ha az eredeti alhálózat és az új alhálózat ugyanabban a virtuális hálózatban.
+- **singlePlacementGroup** – Ha singlePlacementGroup értéke igaz, hamis értékre módosíthatja. Azonban, ha hamis, singlePlacementGroup azt **nem** módosítható igaz értékre.
+- **alhálózati** – az alhálózat egy méretezési addig, amíg az eredeti alhálózat módosíthat, és az új alhálózat ugyanabban a virtuális hálózatban.
 
 ### <a name="properties-that-require-deallocation-to-change"></a>Felszabadítás módosításához szükséges tulajdonságokat
+Néhány tulajdonság csak akkor bizonyos értékekre módosítható, ha a virtuális gépeket, a méretezési csoportban lévő fel van szabadítva. Ezek a tulajdonságok a következők:
 
-Néhány tulajdonság módosítható egyes értékek csak akkor, ha a virtuális gépeket, a méretezési csoportban lévő fel van szabadítva. Ezek a tulajdonságok a következők:
-
-- `sku name`: Ha az új virtuális gép Termékváltozat nem támogatja a hardvert, amely a méretezési csoportban, szeretné-e a skála módosítása előtt állítsa be a virtuális gépek felszabadítani `sku name`. A virtuális gépek átméretezésével további információkért lásd: [Azure ebben a blogbejegyzésben](https://azure.microsoft.com/blog/resize-virtual-machines/).
+- **Termékváltozat**– Ha az új virtuális gép SKU nem támogatott a méretezési, a skála a termékváltozat módosítása előtt állítsa be a virtuális gépek felszabadítani kell hardveren. További információkért lásd: [egy Azure virtuális gép átméretezése](../virtual-machines/windows/resize-vm.md).
 
 
 ## <a name="vm-specific-updates"></a>VM-specifikus frissítések
+Egyes módosítások alkalmazhatók az adott virtuális gépen a globális méretű tulajdonságainak beállítása helyett. Jelenleg az egyetlen támogatott Virtuálisgép-specifikus frissítés, hogy az adatlemezek/virtuális gépek a méretezési csoportban lévő csatlakoztatási/leválasztási. A funkció jelenleg előzetes verzió. További információkért lásd: a [dokumentáció előzetes](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk).
 
-Egyes módosítások alkalmazhatók az adott virtuális gépen a globális méretű tulajdonságainak beállítása helyett. Jelenleg az egyetlen támogatott Virtuálisgép-specifikus frissítés van csatolása/leválasztása adatlemezek/virtuális gépek a méretezési csoportban lévő. A funkció jelenleg előzetes verzió. További információkért lásd: a [dokumentáció előzetes](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk).
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
 ### <a name="application-updates"></a>Alkalmazás frissítései
-
-Ha egy alkalmazás központi telepítése egy méretezési extensions segítségével állíthatók be, a bővítmény-konfigurációjának frissítése hatására az alkalmazás megfelel a házirend-e frissíteni kell. Például ha egy parancsfájl futtatását egy egyéni parancsprogramok futtatására szolgáló bővítmény új verzióját, előfordulhat, hogy frissíti a `fileUris` tulajdonság úgy, hogy az új parancsfájl mutasson. 
-
-Bizonyos esetekben előfordulhat, hogy kényszeríteni kívánja frissítés annak ellenére, hogy a bővítmény konfigurációja nem változott. (Például frissítése a parancsfájl URI-azonosítója a parancsfájl módosítása nélkül.) Ezekben az esetekben módosíthatja `forceUpdateTag` frissítés kényszerítéséhez. Az Azure platformon értelmezi ezt a tulajdonságot, ezért az érték módosítása nem befolyásolja a bővítmény működésével. Egyszerűen módosításához futtassa újra a bővítmény kényszeríti. 
-
-További információ a `forceUpdateTag`, tekintse meg a [bővítmények REST API dokumentációja](https://docs.microsoft.com/rest/api/compute/virtualmachineextensions/createorupdate).
+Ha egy alkalmazás központi telepítése egy méretezési extensions segítségével állíthatók be, a egy frissítést adunk ki a bővítmény konfigurációja hatására az alkalmazás a frissítési házirendjével összhangban frissíteni. Például ha egy parancsfájl futtatását egy egyéni parancsprogramok futtatására szolgáló bővítmény új verzióját, akkor sikerült frissíteni a *fileUris* tulajdonság úgy, hogy az új parancsfájl mutasson. Bizonyos esetekben érdemes lehet kényszeríteni a frissítést, annak ellenére, hogy a bővítmény konfigurációja nem változott (például a parancsfájl megváltoztatása nélkül történő frissítés a parancsfájl URI). Ezekben az esetekben, módosíthatja a *forceUpdateTag* frissítés kényszerítéséhez. Az Azure platformon értelmezi ezt a tulajdonságot. Ha az érték módosításához nincs nincs hatással a bővítmény működésével. Változás egyszerűen kényszeríti kattintva futtassa újra a bővítményt. További információ a *forceUpdateTag*, tekintse meg a [bővítmények REST API dokumentációja](/rest/api/compute/virtualmachineextensions/createorupdate).
 
 Azt is alkalmazások esetében gyakori egyéni lemezkép keresztül telepíteni. Ebben a forgatókönyvben a következő szakasz foglalkozik.
 
 ### <a name="os-updates"></a>Operációs rendszer frissítése érdekében
-
-Platform lemezképek használata, frissítheti úgy a lemezképeket módosításával `imageReference`. További információkért lásd: a [REST API-dokumentáció](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachinescalesets/createorupdate).
+Ha Azure platformon lemezképeket használ, a kép módosításával frissítheti a *imageReference* (további információkért lásd: a [REST API-dokumentáció](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachinescalesets/createorupdate)).
 
 >[!NOTE]
-> Platform képekkel esetében gyakori, a lemezkép referencia verziója "legújabb" megadása. Ez azt jelenti, hogy méretezési csoportok létrehozásakor ki méretezett, valamint azon, a virtuális gépeket hoz létre az elérhető legújabb verzióra. Azonban az *nem* jelenti azt, hogy az operációsrendszer-lemezképek automatikusan frissíti az adott idő alatt kiadott új lemezkép-verziók. Ez az külön szolgáltatása, jelenleg előzetes verzió. További információkért lásd: [frissíti az operációs rendszer automatikus](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade).
+> Platform képekkel esetében gyakori, a lemezkép referencia verziója "legújabb" megadása. Létrehozásakor réteget, és lemezkép alaphelyzetbe, virtuális gépek jönnek létre az elérhető legújabb verzióra. Azonban az **nem** jelenti azt, hogy az operációsrendszer-lemezképek automatikusan frissül időbeli kiadott új lemezkép-verziók. Egy külön funkció jelenleg előzetes, amely automatikus operációsrendszer-frissítések. További információkért lásd: a [automatikus operációsrendszer-frissítések dokumentáció](virtual-machine-scale-sets-automatic-upgrade.md).
 
-Egyéni lemezképek használata, a lemezképek frissítéséhez frissítheti a `imageReference` azonosítóját. További információkért lásd: a [REST API-dokumentáció](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachinescalesets/createorupdate).
+Egyéni lemezképek használatakor a lemezkép frissítéséhez frissítheti a *imageReference* azonosítója (további információkért tekintse meg a [REST API-dokumentáció](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachinescalesets/createorupdate)).
 
 ## <a name="examples"></a>Példák
 
 ### <a name="update-the-os-image-for-your-scale-set"></a>Az operációs rendszer lemezképét a méretezési készlet
+Előfordulhat, hogy egy méretezési csoport, amely az Ubuntu LTS 16.04 régebbi verzióját futtatja. Egy újabb verzióra az Ubuntu LTS 16.04, például a verziót frissíti *16.04.201801090*. A lemezkép referencia version tulajdonság nem része a listáját, és így közvetlenül módosíthatja ezeket a tulajdonságokat, a következő parancsok egyikét:
 
-Tegyük fel, hogy rendelkezik-e a méretezési készletben, az Ubuntu LTS 16.04 régebbi verzióját futtató. Ubuntu LTS 16.04 (például a 16.04.201801090 verzió) egy újabb verziójára frissíteni kívánt. A lemezkép referencia version tulajdonság nem része a listáját, és így ezek a parancsok segítségével közvetlenül módosíthatja ezeket a tulajdonságokat:
+- Az Azure Powershell [frissítés-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss) az alábbiak szerint:
 
-* PowerShell: 
+    ```powershell
+    Update-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -ImageReferenceVersion 16.04.201801090
+    ```
 
-  `Update-AzureRmVmss -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -ImageReferenceVersion 16.04.201801090`
+- Az Azure CLI 2.0 [az vmss frissítése](/cli/azure/vmss#az_vmss_update_instances):
 
-* Azure CLI: 
-
-  `az vmss update -g {resourceGroupName} -n {vmScaleSetName} --set virtualMachineProfile.storageProfile.imageReference.version=16.04.201801090`
+    ```azurecli
+    az vmss update --resource-group myResourceGroup --name myScaleSet --set virtualMachineProfile.storageProfile.imageReference.version=16.04.201801090
+    ```
 
 
 ### <a name="update-the-load-balancer-for-your-scale-set"></a>A terheléselosztó a méretezési készlet frissítése
+Tegyük fel, a méretezési Azure terheléselosztással készletben rendelkezik, és cserélje le az Azure Load Balancer egy Azure Application Gateway szeretné. A terheléselosztó és a skálázási készletének Alkalmazásátjáró tulajdonságok listáját, részét képezik, a parancsok segítségével távolítsa el, vagy adja hozzá a lista elemeinek helyett közvetlenül módosítsák a tulajdonságait:
 
-Tegyük fel, a méretezési Azure terheléselosztással készletben rendelkezik, és cserélje le a terheléselosztó olyan Azure átjárót szeretne. A betöltési terheléselosztó és az alkalmazás átjáró tulajdonságait egy méretezési listáját a részét képezik. Igen a parancsokat használhatja eltávolítása és a lista elemekkel helyett közvetlenül tulajdonságainak módosításával.
+- Az Azure Powershell:
 
-PowerShell:
-```
-# Get the current model of the scale set and store it in a local PowerShell object named $vmss
-> $vmss=Get-AzureRmVmss -ResourceGroupName {resourceGroupName} -Name {vmScaleSetName}
+    ```powershell
+    # Get the current model of the scale set and store it in a local powershell object named $vmss
+    $vmss=Get-AzureRmVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet"
+    
+    # Create a local powershell object for the new desired IP configuration, which includes the referencerence to the application gateway
+    $ipconf = New-AzureRmVmssIPConfig "myNic" -ApplicationGatewayBackendAddressPoolsId /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/backendAddressPools/{applicationGatewayBackendAddressPoolName} -SubnetId $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet.Id –Name $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Name
+    
+    # Replace the existing IP configuration in the local powershell object (which contains the references to the current Azure Load Balancer) with the new IP configuration
+    $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0] = $ipconf
+    
+    # Update the model of the scale set with the new configuration in the local powershell object
+    Update-AzureRmVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet" -virtualMachineScaleSet $vmss
+    ```
 
-# Create a local PowerShell object for the new desired IP configuration, which includes the reference to the application gateway
-> $ipconf = New-AzureRmVmssIPConfig myNic -ApplicationGatewayBackendAddressPoolsId /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/backendAddressPools/{applicationGatewayBackendAddressPoolName} -SubnetId $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet.Id –Name $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Name
+- Azure CLI 2.0:
 
-# Replace the existing IP configuration in the local PowerShell object (which contains the references to the current Azure load balancer) with the new IP configuration
-> $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0] = $ipconf
-
-# Update the model of the scale set with the new configuration in the local PowerShell object
-> Update-AzureRmVmss -ResourceGroupName {resourceGroupName} -Name {vmScaleSetName} -virtualMachineScaleSet $vmss
-
-```
-
-Azure CLI:
-```
-az vmss update -g {resourceGroupName} -n {vmScaleSetName} --remove virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerBackendAddressPools 0 # Remove the load balancer back-end pool from the scale set model
-az vmss update -g {resourceGroupName} -n {vmScaleSetName} --remove virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerInboundNatPools 0 # Remove the load balancer back-end pool from the scale set model; only necessary if you have NAT pools configured on the scale set
-az vmss update -g {resourceGroupName} -n {vmScaleSetName} --add virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].ApplicationGatewayBackendAddressPools '{"id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/backendAddressPools/{applicationGatewayBackendPoolName}"}' # Add the application gateway back-end pool to the scale set model
-```
+    ```azurecli
+    # Remove the load balancer backend pool from the scale set model
+    az vmss update --resource-group myResourceGroup --name myScaleSet --remove virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerBackendAddressPools 0
+    
+    # Remove the load balancer backend pool from the scale set model; only necessary if you have NAT pools configured on the scale set
+    az vmss update --resource-group myResourceGroup --name myScaleSet --remove virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerInboundNatPools 0
+    
+    # Add the application gateway backend pool to the scale set model
+    az vmss update --resource-group myResourceGroup --name myScaleSet --add virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].ApplicationGatewayBackendAddressPools '{"id": "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/backendAddressPools/{applicationGatewayBackendPoolName}"}'
+    ```
 
 >[!NOTE]
-> A parancsok használata nincs csak egy IP konfigurációs és a terheléselosztó a méretezési készlet. Ha több, szükség lehet egy lista index eltérő 0 használatát.
+> A parancsok használata nincs csak egy IP konfigurációs és a terheléselosztó a méretezési készlet. Ha több, szükség lehet egy listaindex eltérő használandó *0*.
+
+
+## <a name="next-steps"></a>További lépések
+Általános kezelési feladatai a skálázási készletek is elvégezheti a [Azure CLI 2.0](virtual-machine-scale-sets-manage-cli.md) vagy [Azure PowerShell](virtual-machine-scale-sets-manage-powershell.md).

@@ -1,21 +1,20 @@
 ---
-title: "Hozzon létre egy alkalmazás URL-cím elérési út-alapú útválasztási szabályokat - Azure-portál |} Microsoft Docs"
-description: "Útmutató: az URL-cím elérési út-alapú útválasztási szabályok létrehozása az Alkalmazásátjáró és virtuálisgép-méretezési beállítása az Azure portál használatával."
+title: Hozzon létre egy alkalmazás URL-cím elérési út-alapú útválasztási szabályokat - Azure-portálon
+description: 'Útmutató: az URL-cím elérési út-alapú útválasztási szabályok létrehozása az Alkalmazásátjáró és virtuálisgép-méretezési beállítása az Azure portál használatával.'
 services: application-gateway
-author: davidmu1
-manager: timlt
-editor: tysonn
+author: vhorne
+manager: jpconnock
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 01/26/2018
-ms.author: davidmu
-ms.openlocfilehash: 62063c42ab15a071a4500417a5d8adf6bfeac97f
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.date: 3/26/2018
+ms.author: victorh
+ms.openlocfilehash: 4ffaeedf125b6f74aeb88e22248040c6c3ef001c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Hozzon létre egy alkalmazás elérési útja-alapú útválasztási szabályokat az Azure portál használatával
 
@@ -36,7 +35,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be az Azure portálon, a [http://portal.azure.com](http://portal.azure.com)
+Jelentkezzen be az Azure-portálon: [http://portal.azure.com](http://portal.azure.com)
 
 ## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 
@@ -154,11 +153,11 @@ Ebben a példában az Alkalmazásátjáró háttér-kiszolgálóként használan
 
     ![Rekord alkalmazás átjáró nyilvános IP-címe](./media/application-gateway-create-url-route-portal/application-gateway-record-ag-address.png)
 
-2. Másolja a nyilvános IP-címet, és illessze be a böngésző címsorába. Például http://http: / / 40.121.222.19.
+2. Másolja a nyilvános IP-címet, és illessze be a böngésző címsorába. Például a http://http://40.121.222.19.
 
     ![Az alkalmazás átjáró alap URL-cím tesztelése](./media/application-gateway-create-url-route-portal/application-gateway-iistest.png)
 
-3. Módosítsa az URL-címet http://&lt;ip-cím&gt;: 8080/video/test.htm, és &lt;ip-cím&gt; az IP-címet, és meg kell megjelennie az alábbihoz hasonlót:
+3. Módosítsa az URL-címet http://&lt;ip-cím&gt;: 8080/images/test.htm, és &lt;ip-cím&gt; az IP-címet, és meg kell megjelennie az alábbihoz hasonlót:
 
     ![Az alkalmazás átjáró képek URL tesztelése](./media/application-gateway-create-url-route-portal/application-gateway-iistest-images.png)
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure Redis Cache – gyakori kérdések |} Microsoft Docs"
-description: "A kérdésekre adott válaszokat gyakori kérdésekre, mintákat és ajánlott eljárások Azure Redis Cache megismerése"
+title: Azure Redis Cache – gyakori kérdések |} Microsoft Docs
+description: A kérdésekre adott válaszokat gyakori kérdésekre, mintákat és ajánlott eljárások Azure Redis Cache megismerése
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: c2c52b7d-b2d1-433a-b635-c20180e5cab2
 ms.service: cache
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: 82c01419d65e00ddf27dfeb8fd444d5d3d81803c
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 66340e690e5a6ac3e440b8b4d26e1a8b2abab266
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-redis-cache-faq"></a>Azure Redis Cache – Gyakori kérdések
 Azure Redis Cache a gyakori kérdéseket, a mintákat és ajánlott eljárások a válaszok megismerése.
@@ -89,7 +89,7 @@ Ismerkedés az Azure Redis Cache számos módja van.
 
 * Megtekintheti az elérhető oktatóprogramok valamelyikét [.NET](cache-dotnet-how-to-use-azure-redis-cache.md), [ASP.NET](cache-web-app-howto.md), [Java](cache-java-get-started.md), [Node.js](cache-nodejs-get-started.md), és [Python](cache-python-get-started.md).
 * Figyelheti az [Build nagy teljesítményű alkalmazások használata a Microsoft Azure Redis Cache hogyan](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/).
-* Megtekintheti az ügyfelek, amelyek megfelelnek a fejlesztési nyelvét a használata a Redis-projektet az ügyfél dokumentációjában olvashatók. Nincsenek sok használható az Azure Redis Cache Redis-ügyfelek. Egy Redis-ügyfelek listája, [http://redis.io/clients](http://redis.io/clients).
+* Megtekintheti az ügyfelek, amelyek megfelelnek a fejlesztési nyelvét a használata a Redis-projektet az ügyfél dokumentációjában olvashatók. Nincsenek sok használható az Azure Redis Cache Redis-ügyfelek. Egy Redis-ügyfelek listája, [ http://redis.io/clients ](http://redis.io/clients).
 
 Ha még nem rendelkezik Azure-fiókot, akkor a következőket teheti:
 
@@ -111,7 +111,7 @@ A Cache-ajánlatot kiválasztására vonatkozó szempontok a következők:
 * **Redis-fürt**: létrehozásához gyorsítótárazza a 53 GB-nál nagyobb, vagy részekre bonthatók az adatok több Redis-csomópont között, fürtözéssel Redis, elérhető, a prémium tarifacsomagra. Minden csomópont a magas rendelkezésre állású gyorsítótár elsődleges vagy replika párból áll. További információk: [How to configure clustering for a Premium Azure Redis Cache](cache-how-to-premium-clustering.md) (Fürtözés konfigurálása prémium szintű Azure Redis Cache-gyorsítótárhoz).
 * **Fokozott biztonsági és hálózati elkülönítési**: Azure virtuális hálózatot (VNET) központi telepítés biztosít magasabb védelmet és elszigeteltséget az Azure Redis Cache, valamint a alhálózatok, hozzáférés-vezérlési házirendeket, és további egyéb szolgáltatások elérésének korlátozása. További információk: [How to configure clustering for a Premium Azure Redis Cache](cache-how-to-premium-vnet.md) (Virtuális hálózat támogatásának konfigurálása prémium szintű Azure Redis Cache-gyorsítótárhoz).
 * **Konfigurálja a Redis**: a Standard és a prémium rétegek, konfigurálhatja a Redis kulcstérértesítések használatával az értesítésekhez.
-* **Ügyfélkapcsolatok maximális számát**: A prémium csomagban kínál, amely csatlakozni tudna a Redis, a nagyobb méretű gyorsítótárak esetében kapcsolatok magasabb azonosítószámot ügyfelek maximális számát. További információkért lásd: [Azure Redis Cache árképzési](https://azure.microsoft.com/pricing/details/cache/).
+* **Ügyfélkapcsolatok maximális számát**: A prémium csomagban kínál, amely csatlakozni tudna a Redis, a nagyobb méretű gyorsítótárak esetében kapcsolatok magasabb azonosítószámot ügyfelek maximális számát. Fürtszolgáltatás nem növeli a fürtözött gyorsítótára számára rendelkezésre álló kapcsolatok száma. További információkért lásd: [Azure Redis Cache árképzési](https://azure.microsoft.com/pricing/details/cache/).
 * **A Redis Server Core dedikált**: a prémium szinten lévő összes gyorsítótár méretének rendelkezik egy dedikált core Redis. A Basic vagy Standard rétegek, a C1 méretét és az újabb rendelkezik egy dedikált core Redis-kiszolgáló.
 * **A redis az egyszálas** , kettőnél több maggal rendelkező nem biztosít további előnye képest csak két maggal rendelkező, de nagyobb Virtuálisgép-méretek általában rendelkeznek nagyobb sávszélesség-nál kisebb méretű. Ha a gyorsítótár-kiszolgáló vagy az ügyfél eléri a sávszélesség korlátja, majd kapni az ügyféloldalon időtúllépések.
 * **Teljesítménnyel kapcsolatos fejlesztések**: gyorsítótárakat a prémium tarifacsomagra vannak telepítve, amely gyorsabb processzorral rendelkezik hardver Basic vagy Standard csomagra képest nagyobb teljesítményt nyújtó. Prémium szintű réteghez gyorsítótárainak rendelkezik nagyobb átviteli teljesítményt és kisebb késések fordulnak elő.

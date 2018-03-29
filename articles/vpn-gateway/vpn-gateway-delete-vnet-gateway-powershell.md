@@ -1,25 +1,25 @@
 ---
-title: "A virtuális hálózati átjáró törlése: PowerShell: Azure Resource Manager |} Microsoft Docs"
-description: "A PowerShell használatával a Resource Manager üzembe helyezési modellel virtuális hálózati átjáró törlése."
+title: 'A virtuális hálózati átjáró törlése: PowerShell: Azure Resource Manager |} Microsoft Docs'
+description: A PowerShell használatával a Resource Manager üzembe helyezési modellel virtuális hálózati átjáró törlése.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: 
+ms.topic: ''
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/20/2017
+ms.date: 03/26/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4d0f085423d5bd60b24d88649ee1d77bcd1d009f
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: c7e536b62ecaa374a278aeb8d18ef39489675711
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>A PowerShell használatával virtuális hálózati átjáró törlése
 > [!div class="op_single_selector"]
@@ -74,7 +74,7 @@ Az alábbi lépéseket a Resource Manager üzembe helyezési modellel vonatkozik
 ### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. A virtuális hálózati átjáró, amely a törölni kívánt beolvasása.
 
 ```powershell
-$Gateway=get-azurermvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
+$GW=get-azurermvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
 ### <a name="2-check-to-see-if-the-virtual-network-gateway-has-any-connections"></a>2. Ellenőrizze, hogy a virtuális hálózati átjáró rendelkezik-e a kapcsolatokat.
@@ -157,7 +157,7 @@ Az alábbi lépéseket a Resource Manager üzembe helyezési modellel vonatkozik
 ### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. A virtuális hálózati átjáró, amely a törölni kívánt beolvasása.
 
 ```powershell
-$Gateway=get-azurermvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
+$GW=get-azurermvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
 ### <a name="2-check-to-see-if-the-virtual-network-gateway-has-any-connections"></a>2. Ellenőrizze, hogy a virtuális hálózati átjáró rendelkezik-e a kapcsolatokat.
@@ -251,7 +251,7 @@ Az alábbi lépéseket a Resource Manager üzembe helyezési modellel vonatkozik
 ### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. A virtuális hálózati átjáró, amely a törölni kívánt beolvasása.
 
 ```powershell
-$Gateway=get-azurermvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
+$GW=get-azurermvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
 ### <a name="2-delete-the-virtual-network-gateway"></a>2. A virtuális hálózati átjáró törlése.

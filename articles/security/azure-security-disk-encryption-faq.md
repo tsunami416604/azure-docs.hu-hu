@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Disk Encryption – gyakori kérdések |} Microsoft Docs"
-description: "Ez a cikk ismerteti a Microsoft Azure lemez titkosítása a Windows és Linux IaaS virtuális gépeket gyakran feltett kérdésekre adott válaszok."
+title: Az Azure Disk Encryption – gyakori kérdések |} Microsoft Docs
+description: Ez a cikk ismerteti a Microsoft Azure lemez titkosítása a Windows és Linux IaaS virtuális gépeket gyakran feltett kérdésekre adott válaszok.
 services: security
 documentationcenter: na
 author: DevTiw
@@ -12,38 +12,37 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/11/2017
+ms.date: 03/18/2018
 ms.author: devtiw;ejarvi;mayank88mahajan;vermashi;sudhakarareddyevuri;aravindthoram
-ms.openlocfilehash: f3cb11bc13ad2561e62c096d840c0b8e4471d271
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 5316efb54a12b5ad057d5a0561f36efdfff30884
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-disk-encryption-faq"></a>Az Azure Disk Encryption – gyakori kérdések
 
 Ez a cikk kapcsolatos gyakori kérdések (GYIK) lemez titkosítás a Windows Azure és a Linux IaaS virtuális gépeket választ ad. Ezzel a szolgáltatással kapcsolatos további információkért lásd: [lemez titkosítás a Windows Azure és a Linux IaaS virtuális gépeket](https://docs.microsoft.com/azure/security/azure-security-disk-encryption).
 
-## <a name="general-questions"></a>Általános kérdések
-**K:** hol van Azure Disk Encryption általános elérhetőségével (GA)?
+## <a name="where-is-azure-disk-encryption-in-general-availability-ga"></a>Ha az Azure Disk Encryption az általános elérhetőségével (GA)?
 
-**V:** lemez titkosítása a Windows Azure Linux IaaS virtuális gépeket pedig általános rendelkezésre állás biztosításához az Azure nyilvános-régiók.
+Általános rendelkezésre állás biztosításához az Azure nyilvános-régiók Azure lemez titkosítása a Windows és Linux IaaS virtuális gépeket.
 
-**K:** milyen felhasználó érhetők el az Azure Disk Encryption?
+## <a name="what-user-experiences-are-available-with-azure-disk-encryption"></a>Milyen a felhasználói élmény érhetők el az Azure Disk Encryption?
 
-**V:** Azure lemez titkosítási GA támogatja az Azure Resource Manager sablonok, Azure PowerShell és az Azure parancssori felület. Ez lehetővé teszi a magas fokú rugalmasságot biztosít. Az infrastruktúra-szolgáltatási virtuális gépek lemeztitkosítás engedélyezésének három különböző lehetőségek állnak rendelkezésre. A felhasználói élmény és részletes útmutatás érhető el az Azure Disk Encryption további információkért lásd: Azure Disk Encryption üzembe helyezési forgatókönyvek és feladatait.
+Az Azure lemez titkosítási GA támogatja az Azure Resource Manager-sablonok, Azure PowerShell és az Azure parancssori felület. Ez lehetővé teszi a magas fokú rugalmasságot biztosít. Az infrastruktúra-szolgáltatási virtuális gépek lemeztitkosítás engedélyezésének három különböző lehetőségek állnak rendelkezésre. A felhasználói élmény és részletes útmutatás érhető el az Azure Disk Encryption további információkért lásd: [Azure Disk Encryption üzembe helyezési forgatókönyvek és lép](azure-security-disk-encryption.md#disk-encryption-deployment-scenarios-and-user-experiences).
 
-**K:** mennyi does Azure Disk Encryption költség?
+## <a name="how-much-does-azure-disk-encryption-cost"></a>Milyen mértékű nem költségű Azure Disk Encryption?
 
-**V:** használata virtuális gépek lemezei az Azure Disk Encryption titkosítási díjmentes.
+Használata virtuális gépek lemezei az Azure Disk Encryption titkosítási díjmentes.
 
-**K:** mely virtuális gépek rétegek Azure Disk Encryption támogatja?
+## <a name="which-virtual-machine-tiers-does-azure-disk-encryption-support"></a>Mely virtuálisgép-réteg nem támogatja az Azure Disk Encryption?
 
-**V:** Azure Disk Encryption érhető el standard csomagra virtuális gépeken, beleértve a [A, D, DS, G, GS és F](https://azure.microsoft.com/pricing/details/virtual-machines/) adatsorozat IaaS virtuális gépeket. Akkor érhető el virtuális gépek prémium szintű Storage. Nem érhető el a virtuális gépek alapszintű rétegben.
+Az Azure Disk Encryption érhető el standard csomagra virtuális gépeken, beleértve a [A, D, DS, G, GS és F](https://azure.microsoft.com/pricing/details/virtual-machines/) adatsorozat IaaS virtuális gépeket. Akkor érhető el virtuális gépek prémium szintű Storage. Nem érhető el a virtuális gépek alapszintű rétegben.
 
-**K:** mi Linux terjesztésekről does Azure Disk Encryption támogatás?
+## <a name="what-linux-distributions-does-azure-disk-encryption-support"></a>Milyen Linux terjesztésekről támogatja az Azure Disk Encryption?
 
-**V:** Azure Disk Encryption támogatott a következő Linux server disztribúciók és verziók:
+Az Azure Disk Encryption támogatott a következő Linux server disztribúciók és verziók:
 
 | A Linux-disztribúció | Verzió | Támogatott titkosítási a kötet típusa|
 | --- | --- |--- |
@@ -71,52 +70,52 @@ Ez a cikk kapcsolatos gyakori kérdések (GYIK) lemez titkosítás a Windows Azu
 
 *__Adatlemez az RHEL ADE esetén támogatott. A jelenlegi ADE implementációja operációsrendszer-lemez esetében működik, de közösen jelenleg nem támogatott. A Microsoft és a Red Hat dolgozik közösen támogatott megoldás. Az idő alatt is hivatkozni lehessen a ADE tanulmány a Linux operációs rendszert futtató lemeztitkosítás [Itt](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption).__
 
-**K:** hogyan tudom kezdheti Azure Disk Encryption?
+## <a name="how-can-i-start-using-azure-disk-encryption"></a>Hogyan tudom kezdheti Azure Disk Encryption?
 
-**V:** első lépések, olvassa el a [lemez titkosítás a Windows Azure és a Linux IaaS virtuális gépeket](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) találhatók meg.
+Első lépések, olvassa el a [lemez titkosítás a Windows Azure és a Linux IaaS virtuális gépeket](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) találhatók meg.
 
-**K:** titkosíthatók a rendszerindító és adatkötetek számára, az Azure Disk Encryption?
+## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>A rendszerindító és adatkötetek számára, az Azure Disk Encryption is titkosítani?
 
-**V:** Igen, a Windows és Linux IaaS virtuális gépeket titkosíthatja rendszerindító- és adatkötetek számára. Windows virtuális gépek anélkül, hogy az operációs rendszer kötetének titkosításához az adatok nem titkosíthatók. Linux virtuális gépekhez anélkül, hogy az operációs rendszer kötetének titkosításához először adatmennyiség titkosíthatja. Miután az operációs rendszer kötetén Linux titkosított, Linux IaaS virtuális gépeket az operációs rendszer kötet titkosításának letiltása nem támogatott.
+Igen, rendszerindító- és adatkötetek titkosíthatja a Windows és Linux IaaS virtuális gépeket. Windows virtuális gépek anélkül, hogy az operációs rendszer kötetének titkosításához az adatok nem titkosíthatók. Linux virtuális gépekhez anélkül, hogy az operációs rendszer kötetének titkosításához először adatmennyiség titkosíthatja. Miután az operációs rendszer kötetén Linux titkosított, Linux IaaS virtuális gépeket az operációs rendszer kötet titkosításának letiltása nem támogatott.
 
-**K:** Does Azure Disk Encryption teszik lehetővé a saját kulcs (használatának BYOK) funkció érdekében?
+## <a name="does-azure-disk-encryption-allow-you-to-bring-your-own-key-byok-capability"></a>Azure Disk Encryption lehetővé teszi, hogy a saját kulcs (használatának BYOK) funkció?
 
-**V:** Igen, megadhatja a saját kulcs titkosítási kulcsokat. Ezek a kulcsok elő az Azure Key Vault, ez az az Azure Disk Encryption kulcstároló. További információ a fő titkosítási kulcsok forgatókönyvek támogatása, tekintse meg az Azure Disk Encryption üzembe helyezési forgatókönyvek és feladatait.
+Igen, megadhatja a saját kulcs titkosítási kulcsokat. Ezek a kulcsok elő az Azure Key Vault, ez az az Azure Disk Encryption kulcstároló. További információ a fő titkosítási kulcsok helyzetek feltételeinek megteremtésére című [Azure Disk Encryption üzembe helyezési forgatókönyvek és lép](azure-security-disk-encryption.md#disk-encryption-deployment-scenarios-and-user-experiences).
 
-**K:** használhatók az Azure által létrehozott kulcs titkosítási kulcsot?
+## <a name="can-i-use-an-azure-created-key-encryption-key"></a>Azure által létrehozott kulcs titkosítási kulcs használata
 
-**V:** Igen, használja a Azure Key Vault Azure disk encryption titkosítás kulcs létrehozásához. Ezek a kulcsok elő az Azure Key Vault, ez az az Azure Disk Encryption kulcstároló. A kulcs titkosítási kulcs támogatási példák további információkért lásd: Azure Disk Encryption üzembe helyezési forgatókönyvek és feladatait.
+Igen, az Azure Key Vault segítségével Azure disk encryption titkosítás kulcs létrehozása. Ezek a kulcsok elő az Azure Key Vault, ez az az Azure Disk Encryption kulcstároló. A kulcs titkosítási kulcs támogatási példák további információkért lásd: [Azure Disk Encryption üzembe helyezési forgatókönyvek és lép](azure-security-disk-encryption.md#disk-encryption-deployment-scenarios-and-user-experiences).
 
-**K:** használhatók egy helyszíni kulcskezelő szolgáltatás vagy a HSM titkosítási kulcsok védelme?
+## <a name="can-i-use-an-on-premises-key-management-service-or-hsm-to-safeguard-the-encryption-keys"></a>Használhatok egy helyszíni kulcskezelő szolgáltatás vagy a HSM titkosítási kulcsok védelme?
 
-**V:** a helyszíni kulcskezelő szolgáltatás vagy a HSM nem használható az Azure Disk Encryption titkosítási kulcsok védelme. Használhatja az Azure Key Vault szolgáltatás csak a titkosítási kulcsok védelme. A kulcs titkosítási kulcs támogatási példák további információkért lásd: Azure Disk Encryption üzembe helyezési forgatókönyvek és feladatait.
+A helyszíni kulcskezelő szolgáltatás vagy a HSM nem használható az Azure Disk Encryption titkosítási kulcsok védelme. Használhatja az Azure Key Vault szolgáltatás csak a titkosítási kulcsok védelme. A kulcs titkosítási kulcs támogatási példák további információkért lásd: [Azure Disk Encryption üzembe helyezési forgatókönyvek és lép](azure-security-disk-encryption.md#disk-encryption-deployment-scenarios-and-user-experiences).
 
-**K:** Mik az Előfeltételek konfigurálása az Azure Disk Encryption?
+## <a name="what-are-the-prerequisites-to-configure-azure-disk-encryption"></a>Mik az Előfeltételek konfigurálása az Azure Disk Encryption?
 
-**V:** van egy előfeltételként szükséges PowerShell-parancsfájlt. Ezzel a parancsprogrammal hozzon létre egy Azure Active Directory-alkalmazás, hozzon létre egy új kulcstartó vagy egy meglévő kulcstároló a lemezekhez titkosítási való hozzáférés engedélyezése a titkosítás és a biztonságos működés érdekében titkos kulcsok és a kulcsok beállításához. A kulcs titkosítási kulcs támogatási példák további információkért lásd: Azure Disk Encryption előfeltétel és üzembe helyezési forgatókönyvek és feladatait.
+Nincs előfeltétel PowerShell-parancsfájlt. Ezzel a parancsprogrammal hozzon létre egy Azure Active Directory-alkalmazás, hozzon létre egy új kulcstartó vagy egy meglévő kulcstároló a lemezekhez titkosítási való hozzáférés engedélyezése a titkosítás és a biztonságos működés érdekében titkos kulcsok és a kulcsok beállításához. A kulcs titkosítási kulcs támogatási példák további információkért lásd: [Azure Disk Encryption előfeltétel és üzembe helyezési forgatókönyvek és lép](azure-security-disk-encryption.md#prerequisites).
 
-**K:** Honnan kaphatok további információt a PowerShell használata Azure Disk Encryption konfigurálásához?
+## <a name="where-can-i-get-more-information-on-how-to-use-powershell-for-configuring-azure-disk-encryption"></a>Hol találhatok további információt a PowerShell használata Azure Disk Encryption konfigurálásához?
 
-**V:** van néhány nagy cikkeket hogyan hajthat végre a alapszintű Azure Disk Encryption feladatokat, valamint speciális forgatókönyvekhez. Az egyszerű feladatokat [Azure Disk Encryption megismerkedhet az Azure PowerShell – 1. rész](https://blogs.msdn.microsoft.com/azuresecurity/2015/11/16/explore-azure-disk-encryption-with-azure-powershell/). Speciális forgatókönyvek esetén lásd: [Azure Disk Encryption megismerkedhet az Azure PowerShell – 2. rész](https://blogs.msdn.microsoft.com/azuresecurity/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2/).
+Van néhány nagy cikkeket hogyan hajthat végre a alapszintű Azure Disk Encryption feladatokat, valamint speciális forgatókönyvekhez. Az egyszerű feladatokat [Azure Disk Encryption megismerkedhet az Azure PowerShell – 1. rész](https://blogs.msdn.microsoft.com/azuresecurity/2015/11/16/explore-azure-disk-encryption-with-azure-powershell/). Speciális forgatókönyvek esetén lásd: [Azure Disk Encryption megismerkedhet az Azure PowerShell – 2. rész](https://blogs.msdn.microsoft.com/azuresecurity/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2/).
 
-**K:** Azure PowerShell verziójának Azure Disk Encryption támogatja?
+## <a name="what-version-of-azure-powershell-does-azure-disk-encryption-support"></a>Azure PowerShell melyik verzióját nem támogatja az Azure Disk Encryption?
 
-**V:** Azure Disk Encryption konfigurálása az Azure PowerShell SDK legújabb verzióját használja. Töltse le a legújabb verzióját [Azure PowerShell](https://github.com/Azure/azure-powershell/releases). Az Azure Disk Encryption van *nem* Azure SDK 1.1.0-ás verziója támogatott.
+Azure Disk Encryption konfigurálása az Azure PowerShell SDK legújabb verzióját használja. Töltse le a legújabb verzióját [Azure PowerShell](https://github.com/Azure/azure-powershell/releases). Az Azure Disk Encryption van *nem* Azure SDK 1.1.0-ás verziója támogatott.
 
 > [!NOTE]
 > A Linux Azure lemez titkosítási preview bővítmény elavult. További információkért lásd: [elavulttá Azure lemez titkosítási preview bővítmény Linux IaaS virtuális gépek](https://blogs.msdn.microsoft.com/azuresecurity/2017/07/12/deprecating-azure-disk-encryption-preview-extension-for-linux-iaas-vms/).
 
-**K:** alkalmazhatók az Azure Disk Encryption saját egyéni Linux rendszerképre?
+## <a name="can-i-apply-azure-disk-encryption-on-my-custom-linux-image"></a>Alkalmazhatók az Azure Disk Encryption saját egyéni Linux rendszerképre?
 
-**V:** Azure Disk Encryption az egyéni Linux-lemezkép nem lehet alkalmazni. A támogatott disztribúcióiról feltüntettük korábban csak a lévő Linux képek támogatjuk. Jelenleg nem támogatott Linux egyéni lemezképek.
+Az egyéni Linux lemezkép az Azure Disk Encryption nem alkalmazható. A támogatott disztribúcióiról feltüntettük korábban csak a lévő Linux képek támogatjuk. Jelenleg nem támogatott Linux egyéni lemezképek.
 
-**K:** I alkalmazható frissítések Linux Red Hat virtuális gép által használt yum frissítés?
+## <a name="can-i-apply-updates-to-a-linux-red-hat-vm-that-uses-the-yum-update"></a>Képes vagyok frissítések alkalmazása Linux Red Hat virtuális gép által használt yum frissítés?
 
-**V:** Igen, hajtsa végre a frissítést, vagy a Red Hat Linux virtuális gép javítása. További információkért lásd: [egy titkosított Azure IaaS Red Hat VM frissítéseinek alkalmazása a yum update segítségével](https://blogs.msdn.microsoft.com/azuresecurity/2017/07/13/applying-updates-to-a-encrypted-azure-iaas-red-hat-vm-using-yum-update/).
+Igen, hajtsa végre a frissítést, vagy a Red Hat Linux virtuális gép javítása. További információkért lásd: [egy titkosított Azure IaaS Red Hat VM frissítéseinek alkalmazása a yum update segítségével](https://blogs.msdn.microsoft.com/azuresecurity/2017/07/13/applying-updates-to-a-encrypted-azure-iaas-red-hat-vm-using-yum-update/).
 
-**K:** Mi az az ajánlott Azure lemez titkosítási munkafolyamat Linux?
+## <a name="what-is-the-recommended-azure-disk-encryption-workflow-for-linux"></a>Mi az az ajánlott Azure lemez titkosítási munkafolyamat Linux?
 
-**V:** az alábbi munkafolyamat javasoljuk, hogy a legjobb eredmények Linux rendszeren:
+Az alábbi munkafolyamat javasoljuk, hogy a legjobb eredmények Linux rendszeren:
 * Indítsa el a kívánt operációs rendszer distro és a verziója megfelelő változatlan készlet gyűjtemény kép
 * Készítsen biztonsági másolatot minden csatlakoztatott meghajtókon tárolt titkosított marad.  Ez lehetővé teszi a helyreállítási hiba, például ha a virtuális gép újraindítása után titkosítási befejezése előtt esetén.
 * Titkosításához (eltarthat több órákig vagy akár napokig függően vm jellemzőit és a mellékelt adatok lemezek mérete)
@@ -124,15 +123,15 @@ Ez a cikk kapcsolatos gyakori kérdések (GYIK) lemez titkosítás a Windows Azu
 
 Ha a munkafolyamat nem lehetséges, a függő [Storage szolgáltatás titkosítási](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) (SSE), a platform tárolási fiók réteg lehet a teljes lemez titkosítása dm-crypt használata helyett.
 
-**K:** Mi az a lemez "Bek Volume" vagy "/ mnt/azure_bek_disk"?
+## <a name="what-is-the-disk-bek-volume-or-mntazurebekdisk"></a>Mi az a lemez "Bek Volume" vagy "/ mnt/azure_bek_disk"?
 
-**V:** "Bek kötet" a Windows vagy a "/ mnt/azure_bek_disk" Linux olyan helyi adatok kötet, amely biztonságosan tárolja a titkosítási kulcsokat a titkosított Azure IaaS virtuális gépeket.
+"Bek volume" a Windows vagy a "/ mnt/azure_bek_disk" Linux nem egy helyi adatmennyiség, amely biztonságosan tárolja a titkosítási kulcsokat a titkosított Azure IaaS virtuális gépeket.
 > [!NOTE]
 > Nem törölhető és nem bármely ezt a lemezt a tartalom szerkesztése. Nem leválasztani a lemezt, mivel a titkosítási kulcs jelenléte szükséges a titkosítási műveleteket a IaaS virtuális Gépen.
 
-**K:** ahol lehet ugrani kérdései vannak, vagy visszajelzést?
+## <a name="where-can-i-go-to-ask-questions-or-provide-feedback"></a>Ahol folytathatja kérdései vannak, vagy visszajelzést?
 
-**V:** kérdései vannak, vagy visszajelzést adhat a [Azure Disk Encryption fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDiskEncryption).
+Kérdései vannak, vagy visszajelzést adhat a [Azure Disk Encryption fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDiskEncryption).
 
 ## <a name="next-steps"></a>További lépések
 Ebből a dokumentumból megtanulta, további információk a leggyakoribb Azure Disk Encryption kapcsolatos kérdésekre. Ez a szolgáltatás és platformképességei kapcsolatos további információkért tekintse meg a következő cikkeket:

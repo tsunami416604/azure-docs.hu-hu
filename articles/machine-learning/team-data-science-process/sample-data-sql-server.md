@@ -2,7 +2,7 @@
 title: Az adatokat az SQL Server az Azure-on |} Microsoft Docs
 description: A mintaadatok az SQL Server az Azure-on
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgeonlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: garye;bradsev
-ms.openlocfilehash: a82e4703f68271d6d10719e6be8465efa9b71a79
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.author: bradsev
+ms.openlocfilehash: e854f35cb68ddf0bc93e7c7959d14ef79a346c6e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="heading"></a>Mintaadatok az SQL Server az Azure-on
 Ez a cikk bemutatja, hogyan az SQL Server az Azure-on tárolt adatokat SQL vagy a Python programozási nyelv használatával. Azt is bemutatja, hogyan mintaadatokat áthelyezi az Azure Machine Learning fájlba menti, feltölti az Azure blob, és olvassa Azure Machine Learning Studio.

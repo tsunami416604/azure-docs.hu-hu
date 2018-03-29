@@ -1,6 +1,6 @@
 ---
-title: "Vásároljon és SSL-tanúsítvány konfigurálása az Azure App Service |} Microsoft Docs"
-description: "Megtudhatja, hogyan vásárolhat egy tanúsítványt az alkalmazás szolgáltatáshoz, majd kösse App Service-alkalmazás"
+title: Vásároljon és SSL-tanúsítvány konfigurálása az Azure App Service |} Microsoft Docs
+description: Megtudhatja, hogyan vásárolhat egy tanúsítványt az alkalmazás szolgáltatáshoz, majd kösse App Service-alkalmazás
 services: app-service
 documentationcenter: .net
 author: cephalin
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 6c0125bf0bd22912a21372b5a7da6846e924e6cd
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 759bd1e8be8aaebbf98e1c02d67f3e56609354aa
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>SSL-tanúsítvány vásárlása és konfigurálása saját Azure App Service szolgáltatások számára
 
@@ -42,8 +42,8 @@ Adjon meg egy rövid **neve** SSL-tanúsítványok a tanúsítványok, és írja
 
 Válassza ki a **előfizetés**, **erőforráscsoport**, és **tanúsítvány-SKU**
 
-> [!WARNING]
-> App Service-tanúsítványok csak egyazon előfizetésen belül más alkalmazásszolgáltatások használható.  
+> [!TIP]
+> App Service-tanúsítványok bármely Azure vagy az Azure szolgáltatások is használható, és nem korlátozódik alkalmazásszolgáltatások. Ehhez szüksége helyi PFX másolatot készít egy App Service-tanúsítvány használható az tetszőleges helyre kívánja. További információkért olvassa el a [PFX helyi másolat készítését egy App Service tanúsítvány](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/).
 >
 
 ## <a name="step-3---store-the-certificate-in-azure-key-vault"></a>3. lépés - a tanúsítványt az Azure Key Vault
@@ -107,7 +107,7 @@ Kattintson a **App Service-tanúsítvány importálása** , és válassza ki az 
 
 ![Helyezze be a tanúsítvány importálása képe](./media/app-service-web-purchase-ssl-web-site/ImportCertificate.png)
 
-Az a **ssl-kötések** szakaszban kattintson a **felvenni kötéseket**, és a legördülő lista segítségével válassza ki a biztonságos SSL és a tanúsítvány használatára a tartomány nevét. Is kiválaszthat a használ-e  **[kiszolgálónév jelzése (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)**  vagy IP-alapú SSL.
+Az a **ssl-kötések** szakaszban kattintson a **felvenni kötéseket**, és a legördülő lista segítségével válassza ki a biztonságos SSL és a tanúsítvány használatára a tartomány nevét. Is kiválaszthat a használ-e **[kiszolgálónév jelzése (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)** vagy IP-alapú SSL.
 
 ![az SSL-kötések kép beszúrása](./media/app-service-web-purchase-ssl-web-site/SSLBindings.png)
 

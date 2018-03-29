@@ -1,8 +1,8 @@
 ---
-title: "Vész-helyreállítási útmutató a Azure Data Lake Store |} Microsoft Docs"
-description: "Azure Data Lake Store vész-helyreállítási útmutatást"
+title: Vész-helyreállítási útmutató a Azure Data Lake Store |} Microsoft Docs
+description: Azure Data Lake Store vész-helyreállítási útmutatást
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: d76f756e7a6fe77886f0d4e00ab8b23273b4e09d
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 9a2705a2372ea4f2fbea1e27bf675679dfda28f8
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="disaster-recovery-guidance-for-data-in-data-lake-store"></a>A Data Lake Store adatok vész helyreállítási útmutatást
 
-Az Azure Data Lake Store-fiókban lévő adatok automatikus replikációja biztosítja a rugalmasságot az átmeneti hardverhibák esetén az egyes régiókban. Ez tartósságot és magas szintű rendelkezésre állást nyújt, az Azure Data Lake Store SLA feltételeinek megfelelően. Ez a cikk az adatok további védelméhez a ritka régió kiterjedő valamilyen okból kimaradás vagy véletlen törlések módjáról nyújt útmutatást.
+Azure Data Lake Store helyileg redundáns tárolás (LRS) biztosít. Emiatt az adatokat az Azure Data Lake Store-fiókban is lehetséges legyen átmeneti hardverhibák esetén keresztül automatizált replikák régión belül. Ez tartósságot és magas szintű rendelkezésre állást nyújt, az Azure Data Lake Store SLA feltételeinek megfelelően. Ez a cikk az adatok további védelméhez a ritka régió kiterjedő valamilyen okból kimaradás vagy véletlen törlések módjáról nyújt útmutatást.
 
 ## <a name="disaster-recovery-guidance"></a>Vészhelyreállítási útmutató
-Minden ügyfél számára kritikus fontosságú, hogy előkészítse a saját vészhelyreállítási tervét. A saját vészhelyreállítási tervének elkészítéséhez tekintse meg az alábbi Azure-dokumentációt. Itt talál néhány forrásanyagot, amelyek segítenek a saját terve létrehozásában.
+Minden ügyfél számára kritikus fontosságú, hogy előkészítse a saját vészhelyreállítási tervét. Olvassa el a vész-helyreállítási terv létrehozásához a cikkben szereplő információkat. Itt talál néhány forrásanyagot, amelyek segítenek a saját terve létrehozásában.
 
 * [Vészhelyreállítás és magas szintű rendelkezésre állás az Azure-alkalmazásokhoz](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
 * [Műszaki útmutató az Azure rugalmasságáról](../resiliency/resiliency-technical-guidance.md)

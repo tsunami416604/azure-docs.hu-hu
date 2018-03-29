@@ -27,6 +27,10 @@
       href: resize-images-on-storage-blob-upload-event.md
     - name: Az Automation-runbook elindítása
       href: ensure-tags-exists-on-new-virtual-machines.md
+- name: Példák
+  items:
+    - name: Resource Manager-sablonok
+      href: template-samples.md
 - name: Alapelvek
   items:
     - name: Az Event Griddel kapcsolatos fogalmak
@@ -47,8 +51,6 @@
       href: publish-iot-hub-events-to-logic-apps.md
     - name: Service Bus-események figyelése a Functions és a Logic Apps használatával
       href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
-    - name: Sablonok esemény-előfizetésekhez
-      href: event-subscription-template.md
     - name: Eseménykézbesítés figyelése
       href: monitor-event-delivery.md
 - name: Referencia

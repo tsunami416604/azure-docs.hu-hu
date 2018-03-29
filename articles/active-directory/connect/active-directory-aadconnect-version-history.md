@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/16/2018
 ms.author: billmath
-ms.openlocfilehash: 0fd653b1a4058ce4284bf87b0b9152a264581e5c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8bae1140d4a3ac4762bdcbabb16851d29415a8fe
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect: Verziókiadások
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden kiegészítéseket célrendszerekhez vonatkoznak.
@@ -37,12 +37,12 @@ Szükséges engedélyek | Egy frissítés alkalmazásához szükséges engedély
 Töltse le |} [Azure AD Connect letöltése](http://go.microsoft.com/fwlink/?LinkId=615771).
 
 ## <a name="117500"></a>1.1.750.0
-Állapot: Kiadott ügyfelek ebben a kiadásban terjesztése zajlik, amelyeken engedélyezve az automatikus frissítési AADConnect bérlők kis- és véletlenszerű kijelölt kiválasztásához. Ez a csoport a bérlő kiterjed az elkövetkező hetektől mindaddig, amíg az automatikus frissítési ügyfelei 100 %-os kapott ebben a kiadásban. Ezt követően a build általános letölthető lesz közzétesszük a fenti letöltés hivatkozásra.
+Állapot 3/22/2018: automatikus frissítési és a letöltés.
 >[!NOTE]
 >Az új verzió a frissítés befejezése után automatikusan indít el egy teljes szinkronizálást és az Azure AD-összekötő teljes importálást és teljes szinkronizálást az AD-összekötő. Mivel ez eltarthat egy ideig, az Azure AD Connect környezet méretétől függően győződjön meg arról, hogy elvégezte-e a szükséges lépéseket ezt támogatja, vagy tartsa addig, amíg az erre alkalmas időpontban talált frissítéséről.
 
 >[!NOTE]
->"AutoUpgrade funkció helytelenül letiltotta az egyes bérlők számára buildek 1.1.524.0 később. Győződjön meg arról, hogy az Azure AD Connect-példány még abban az esetben jogosult AutoUpgrade, futtassa a következő PowerShell-parancsmagot: "Set-ADSyncAutoUpgrade - AutoupGradeState AutoUpgradeConfigurationState.Enabled"?
+>"A AutoUpgrade funkció helytelenül letiltotta az egyes bérlők számára, akik buildek 1.1.524.0 később telepítették. Győződjön meg arról, hogy az Azure AD Connect-példány még abban az esetben jogosult AutoUpgrade, futtassa a következő PowerShell-parancsmagot: "Set-ADSyncAutoUpgrade - AutoupGradeState Enabled"
 
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect

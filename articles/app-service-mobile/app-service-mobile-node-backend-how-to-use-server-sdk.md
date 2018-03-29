@@ -1,11 +1,11 @@
 ---
-title: "Hogyan használható a Node.js háttér-Server SDK-val a Mobile Apps |} Microsoft Docs"
-description: "Megtudhatja, hogyan használható a Node.js háttér-Server SDK az Azure App Service Mobile Apps a."
+title: Hogyan használható a Node.js háttér-Server SDK-val a Mobile Apps |} Microsoft Docs
+description: Megtudhatja, hogyan használható a Node.js háttér-Server SDK az Azure App Service Mobile Apps a.
 services: app-service\mobile
-documentationcenter: 
+documentationcenter: ''
 author: elamalani
 manager: elamalani
-editor: 
+editor: ''
 ms.assetid: e7d97d3b-356e-4fb3-ba88-38ecbda5ea50
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: bd423d6fb62b2ace16832f665c8834b4aea7e26f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 335186deccaa82b9a8d262d62dd8ce5d620446b6
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>A Mobile Apps Node.js SDK használatával
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -119,7 +119,7 @@ Visual Studio 2015-öt bővítménye belül az IDE Node.js-alkalmazások fejlesz
         app.use(mobile);
 
    Mentse a fájlt.
-10. Futtassa az alkalmazást helyileg (az API-t kiszolgált a http://localhost: 3000), vagy közzététele az Azure-bA.
+10. Vagy az alkalmazás helyileg történő futtatása (az API-t a kiszolgált http://localhost:3000) vagy közzététele az Azure-bA.
 
 ### <a name="create-node-backend-portal"></a>A Node.js háttérből létrehozása az Azure-portál használatával
 A Mobile Apps háttérből közvetlenül hozhat létre a a [Azure-portálon]. Kövesse az alábbi lépéseket, vagy hozzon létre egy ügyfél és kiszolgáló együtt a [mobilalkalmazás létrehozása](app-service-mobile-ios-get-started.md) oktatóanyag. Az oktatóanyag ezek az utasítások egyszerűsített verzióját tartalmazza, és a koncepció igazolása projektek.
@@ -135,7 +135,7 @@ Amikor a Node.js Mobile Apps háttérből hoz létre a portál használatával *
 Az alábbi eljárás egy Git-tárház használatával töltse le a gyors üzembe helyezési projekt kódot:
 
 1. Ha még nem tette, telepítse a Git esetében. A Git telepítéséhez szükséges lépések eltérőek, operációs rendszerek között. Operációsrendszer-specifikus disztribúcióiról, valamint a telepítési útmutatót lásd: [telepítése Git](http://git-scm.com/book/en/Getting-Started-Installing-Git).
-2. Kövesse a [engedélyezése az App Service alkalmazás tárház](../app-service/app-service-deploy-local-git.md#Step3) ahhoz, hogy a háttér-webhely a Git-tárházat. Jegyezze fel a központi telepítés felhasználónevet és jelszót.
+2. Lásd: [készítse elő a tárház](../app-service/app-service-deploy-local-git.md#prepare-your-repository) ahhoz, hogy a háttér-webhely a Git-tárházat. Jegyezze fel a központi telepítés felhasználónevet és jelszót.
 3. A panelen a a Mobile Apps háttér, jegyezze fel a **Git-klón URL-cím** beállítást.
 4. Hajtsa végre a `git clone` parancsot a Git-klón URL-cím használatával. Írja be a jelszót, ha szükséges, az alábbi példában látható módon:
 

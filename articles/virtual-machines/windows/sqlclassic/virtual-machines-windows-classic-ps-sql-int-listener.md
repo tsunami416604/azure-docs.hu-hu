@@ -1,11 +1,11 @@
 ---
-title: "Egy ILB figyelőt az Always On rendelkezésre állási csoportok konfigurálása az Azure-ban |} Microsoft Docs"
-description: "Ez az oktatóanyag a klasszikus üzembe helyezési modellel létrehozott erőforrást használ, és a belső terheléselosztót használó Azure-ban létrehoz egy Always On rendelkezésre állási csoport figyelőjének."
+title: Egy ILB figyelőt az Always On rendelkezésre állási csoportok konfigurálása az Azure-ban |} Microsoft Docs
+description: Ez az oktatóanyag a klasszikus üzembe helyezési modellel létrehozott erőforrást használ, és a belső terheléselosztót használó Azure-ban létrehoz egy Always On rendelkezésre állási csoport figyelőjének.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 291288a0-740b-4cfa-af62-053218beba77
 ms.service: virtual-machines-sql
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 418920899612cac7336af14baff75c58a1cd8bef
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0466265ad5a24e8ea6dc5079e2b4006d74e7dde0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="configure-an-ilb-listener-for-always-on-availability-groups-in-azure"></a>Egy ILB figyelőt az Always On rendelkezésre állási csoportok konfigurálása az Azure-ban
 > [!div class="op_single_selector"]
@@ -104,7 +104,7 @@ Az egyes virtuális gépek az Azure-replikát tartalmazó elosztott terhelésű 
             Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -LBSetName "ListenerEndpointLB" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName $ILBName -DirectServerReturn $true | Update-AzureVM
         }
 
-13. Miután beállította a változókat, másolja a parancsfájlt a szövegszerkesztőben az futtatni a PowerShell-munkamenethez. Ha a parancssor még mindig  **>>** , nyomja le az Enter újra győződjön meg arról, hogy a parancsfájl futásának indításakor.
+13. Miután beállította a változókat, másolja a parancsfájlt a szövegszerkesztőben az futtatni a PowerShell-munkamenethez. Ha a parancssor még mindig **>>**, nyomja le az Enter újra győződjön meg arról, hogy a parancsfájl futásának indításakor.
 
 ## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>Győződjön meg arról, hogy KB2854082 telepítve van-e, ha szükséges
 [!INCLUDE [kb2854082](../../../../includes/virtual-machines-ag-listener-kb2854082.md)]
@@ -133,7 +133,7 @@ A rendelkezésre állási csoport figyelőjének létrehozása két lépésben. 
         # Define variables
         $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
         $IPResourceName = "<IPResourceName>" # the IP address resource name
-        $ILBIP = “<X.X.X.X>” # the IP address of the ILB
+        $ILBIP = "<X.X.X.X>" # the IP address of the ILB
 
         Import-Module FailoverClusters
 
@@ -144,13 +144,13 @@ A rendelkezésre állási csoport figyelőjének létrehozása két lépésben. 
         # Define variables
         $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
         $IPResourceName = "<IPResourceName>" # the IP address resource name
-        $ILBIP = “<X.X.X.X>” # the IP address of the ILB
+        $ILBIP = "<X.X.X.X>" # the IP address of the ILB
 
         Import-Module FailoverClusters
 
         cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
 
-3. Miután beállította a változókat, nyisson meg egy rendszergazda jogú Windows PowerShell-ablakban, a parancsfájl a szövegszerkesztőben illessze be a PowerShell-munkamenetet futtatni. Ha a parancssor még mindig  **>>** , nyomja le az Enter újra annak ellenőrzése, hogy a parancsfájl futásának indításakor.
+3. Miután beállította a változókat, nyisson meg egy rendszergazda jogú Windows PowerShell-ablakban, a parancsfájl a szövegszerkesztőben illessze be a PowerShell-munkamenetet futtatni. Ha a parancssor még mindig **>>**, nyomja le az Enter újra annak ellenőrzése, hogy a parancsfájl futásának indításakor.
 
 4. Ismételje meg az előző lépést az egyes virtuális gépek.  
     Ez a parancsfájl az IP-cím erőforrás a felhőalapú szolgáltatás IP-címmel konfigurálja, és paramétereinek más, mint a mintavételi portot. Az IP-cím erőforrás online állapotba kerül, ha azt is válaszol a mintavételi portot a lekérdezés a korábban létrehozott elosztott terhelésű végpont.

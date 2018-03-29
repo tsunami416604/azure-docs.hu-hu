@@ -1,12 +1,12 @@
 ---
-title: "Nem lehet kapcsolódni a Windows Azure-ban való RDP-|} Microsoft Docs"
-description: "Ha nem tud kapcsolódni a távoli asztali kapcsolat segítségével Windows rendszerű virtuális gép problémák elhárítása"
-keywords: "Távoli asztali hiba, a távoli asztali kapcsolat hiba, nem lehet csatlakozni a virtuális gép, távoli asztal – hibaelhárítás"
+title: Nem lehet kapcsolódni a Windows Azure-ban való RDP-|} Microsoft Docs
+description: Ha nem tud kapcsolódni a távoli asztali kapcsolat segítségével Windows rendszerű virtuális gép problémák elhárítása
+keywords: Távoli asztali hiba, a távoli asztali kapcsolat hiba, nem lehet csatlakozni a virtuális gép, távoli asztal – hibaelhárítás
 services: virtual-machines-windows
-documentationcenter: 
-author: genlin
+documentationcenter: ''
+author: danielsollondon
 manager: timlt
-editor: 
+editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: 0d740f8e-98b8-4e55-bb02-520f604f5b18
 ms.service: virtual-machines-windows
@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
-ms.author: genli
-ms.openlocfilehash: 4731a34d143d402372aaff7c03f95dbf0bb508a4
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.date: 03/23/2018
+ms.author: danis
+ms.openlocfilehash: e2b792743f1b4ba458cff111ab6dd888b0c26d93
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Egy Azure virtuális géphez a távoli asztali kapcsolatok hibáinak elhárítása
 A távoli asztal protokoll (RDP) kapcsolatot a Windows-alapú Azure virtuális gép (VM) különböző okokból, így nem érhető el a virtuális gép sikertelen lehet. A probléma lehet a távoli asztali szolgáltatás a virtuális Gépet, a hálózati kapcsolat vagy a távoli asztali ügyfél a gazdaszámítógépen. Ez a cikk végigvezeti Önt egy RDP-kapcsolati problémák megoldása a leggyakrabban használt módszerek. 
@@ -77,7 +77,7 @@ Minden hibaelhárítási lépés után ismét kapcsolódni a virtuális Gépre p
     Válassza ki a virtuális Gépet az Azure portálon. Görgessen lefelé a beállítások panelen a **támogatási + hibaelhárítás** szakasz közelében tétellista aljához. Kattintson a **erőforrás állapota** gombra. A megfelelő virtuális gépek jelenti, hogy **elérhető**:
    
     ![Ellenőrizze a VM erőforrás állapota az Azure-portálon](./media/troubleshoot-rdp-connection/check-resource-health.png)
-6. **Felhasználói hitelesítő adatok alaphelyzetbe állítása**. Ez a hibaelhárítási lépés egy helyi rendszergazdai fiók jelszavának alaphelyzetbe állítása, ha bizonytalan, vagy elfelejtette a hitelesítő adatokat.
+6. **Felhasználói hitelesítő adatok alaphelyzetbe állítása**. Ez a hibaelhárítási lépés egy helyi rendszergazdai fiók jelszavának alaphelyzetbe állítása, ha bizonytalan, vagy elfelejtette a hitelesítő adatokat.  Miután jelentkezett be a virtuális Gépet, alaphelyzetbe kell, hogy a felhasználó jelszavát.
    
     Válassza ki a virtuális Gépet az Azure portálon. Görgessen lefelé a beállítások panelen a **támogatási + hibaelhárítás** szakasz közelében tétellista aljához. Kattintson a **jelszó-átállítási** gombra. Győződjön meg arról, hogy a **mód** értéke **jelszó-átállítási** és írja be a felhasználónevet és egy új jelszót. Végül kattintson a **frissítés** gombra:
    
@@ -207,7 +207,7 @@ Hibaelhárítási lépések, után próbáljon újra csatlakozni a virtuális G�
     Válassza ki a virtuális Gépet az Azure portálon. Görgessen lefelé a beállítások panelen a **támogatási + hibaelhárítás** szakasz közelében tétellista aljához. Kattintson a **Resource Health** gombra. A megfelelő virtuális gépek jelenti, hogy **elérhető**:
    
     ![Ellenőrizze a VM erőforrás állapota az Azure-portálon](./media/troubleshoot-rdp-connection/classic-check-resource-health.png)
-5. **Felhasználói hitelesítő adatok alaphelyzetbe állítása**. Ez a hibaelhárítási lépés, ha nem ismeri, vagy elfelejtette a hitelesítő adatok helyi rendszergazdai fiók jelszavának alaphelyzetbe állítása.
+5. **Felhasználói hitelesítő adatok alaphelyzetbe állítása**. Ez a hibaelhárítási lépés, ha nem ismeri, vagy elfelejtette a hitelesítő adatok helyi rendszergazdai fiók jelszavának alaphelyzetbe állítása.  Miután jelentkezett be a virtuális Gépet, alaphelyzetbe kell, hogy a felhasználó jelszavát.
    
     Válassza ki a virtuális Gépet az Azure portálon. Görgessen lefelé a beállítások panelen a **támogatási + hibaelhárítás** szakasz közelében tétellista aljához. Kattintson a **jelszó-átállítási** gombra. Adja meg a felhasználónevet és egy új jelszót. Végül kattintson a **mentése** gombra:
    

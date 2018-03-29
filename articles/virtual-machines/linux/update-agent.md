@@ -1,11 +1,11 @@
 ---
-title: "A Githubból Azure Linux ügynök frissítése |} Microsoft Docs"
-description: "Útmutató: Azure Linux ügynök frissítése a Linux virtuális gép az Azure-ban"
+title: A Githubból Azure Linux ügynök frissítése |} Microsoft Docs
+description: 'Útmutató: Azure Linux ügynök frissítése a Linux virtuális gép az Azure-ban'
 services: virtual-machines-linux
-documentationcenter: 
-author: SuperScottz
-manager: timlt
-editor: 
+documentationcenter: ''
+author: danielsollondon
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: f1f19300-987d-4f29-9393-9aba866f049c
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
-ms.author: mingzhan
-ms.openlocfilehash: 62e365c46d48285b2c03493debff86508b94348a
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.author: danis
+ms.openlocfilehash: ed5bea98bc9b4849436ff5fafc90f85c99d582aa
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>A virtuális gép az Azure Linux ügynök frissítése
 
@@ -120,7 +120,7 @@ Debian ezen verziója nem rendelkezik egy verzió > = 2.0.16, ezért nem áll re
 #### <a name="check-your-current-package-version"></a>Ellenőrizze a csomag aktuális verziója
 
 ```bash
-apt list --installed | grep walinuxagent
+apt list --installed | grep waagent
 ```
 
 #### <a name="update-package-cache"></a>Frissítési csomag gyorsítótár
@@ -389,7 +389,7 @@ enabled=0
 sudo yum update WALinuxAgent
 ```
 
-Ez általában az összes szükséges, de ha valamilyen okból közvetlenül, telepítse azt https://github.com kell kövesse az alábbi lépéseket.
+Ez általában a szüksége, de ha valamilyen okból szeretné telepíteni a https://github.com közvetlenül, kövesse az alábbi lépéseket.
 
 
 ## <a name="update-the-linux-agent-when-no-agent-package-exists-for-distribution"></a>A Linux-ügynök frissítése, amikor nincs ügynök csomag létezik-e a terjesztési

@@ -1,6 +1,6 @@
 ---
 title: Azure Log Analytics-adatok importálása a Power BI-bA |} Microsoft Docs
-description: A Power BI-alapú üzleti analytics felhőszolgáltatás, amely gazdag képi megjelenítések és jelentéseket biztosít a különböző adatok elemzése a Microsoft.  Ez a cikk ismerteti, hogyan konfigurálhatja a Naplóelemzési adatok importálása a Power BI-ba, és konfigurálja úgy, hogy automatikusan frissítse.
+description: A Power BI-alapú üzleti analytics felhőszolgáltatás, amely gazdag képi megjelenítések és jelentéseket biztosít a különböző adatok elemzése a Microsoft.  A cikkből megtudhatja, hogyan lehet konfigurálni és Log Analytics-adatok importálása a Power BI-ba, és konfigurálja úgy, hogy automatikusan frissítse.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: bwren
-ms.openlocfilehash: 6d7f8f89f90223dc5dd186a63b3912a13910cb34
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 725828c2acc5ac4bb53c5e6af14d20578a3d3652
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="import-azure-log-analytics-data-into-power-bi"></a>Azure Log Analytics-adatok importálása a Power BI-bA
 
 
-[A Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) , amely gazdag képi megjelenítések és jelentéseket biztosít a különböző adatok elemzése a Microsoft felhőalapú üzleti analytics szolgáltatás.  Így kihasználhatja a szolgáltatások suchas combing különböző forrásokból származó adatok és a webes és mobil eszközök megosztása a Naplóelemzési napló keresés eredményeit tudja importálni a Power BI-adatkészletet.
+[A Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) , amely gazdag képi megjelenítések és jelentéseket biztosít a különböző adatok elemzése a Microsoft felhőalapú üzleti analytics szolgáltatás.  Így kihasználhatja a a szolgáltatások, például a különböző forrásokból származó adatok összefésülésére és megoszthatók a jelentések a webes és mobil eszközök, Naplóelemzési napló keresés eredményeit importálhatja a Power BI-adatkészletet.
 
 ## <a name="overview"></a>Áttekintés
 A Naplóelemzési munkaterület adatokat importálhat a Power bi-ba, létrehozhat egy adatkészlet Naplóelemzési a napló keresési lekérdezés alapján a Power BI-ban.  A lekérdezés futtatása az adatkészlet frissítésekor.  Ezután az adatkészlet adatait használó Power BI-jelentéseket hozhat létre.  Sikerült létrehozni az adatkészletet a Power bi-ban, a lekérdezés exportálása Log Analyticshez való [Power Query (M) nyelvi](https://msdn.microsoft.com/library/mt807488.aspx).  Használhatja a Power BI Desktop-lekérdezés létrehozásához és közzétételéhez adatkészletként Power bi-ban.  Ez a folyamat részleteit az alábbiakban található.

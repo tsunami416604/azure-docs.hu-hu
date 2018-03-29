@@ -1,12 +1,12 @@
 ---
-title: "Engedélyezze a titkosítást a storage-fiókot az Azure Security Centerben |} Microsoft Docs"
-description: "Ez a dokumentum azt ismerteti, hogyan valósítja meg az Azure Security Center javaslatait ** engedélyezheti a titkosítást az Azure Storage fiók **."
+title: Engedélyezze a titkosítást a storage-fiókot az Azure Security Centerben |} Microsoft Docs
+description: Ez a dokumentum azt ismerteti, hogyan valósítja meg az Azure Security Center javaslatait **engedélyezheti a titkosítást az Azure Storage-fiók**.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/20/2016
 ms.author: terrylan
-ms.openlocfilehash: b7b2e8a12cbab68da9c8fcc348e8e3c543607007
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 82bb201c0b518d0b45e06a1eb25d54f60cb3e028
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="enable-encryption-for-azure-storage-account-in-azure-security-center"></a>Engedélyezze a titkosítást az Azure storage-fiókot az Azure Security Centerben
 Az Azure Security Center javasolhatja Azure Storage szolgáltatás titkosítási engedélyeznie az inaktív adatok.
@@ -27,7 +27,7 @@ Storage Service Encryption (SSE) működik, az adatok titkosítása az Azure sto
 
 
 > [!Note]
-> Miután engedélyezte a titkosítás, csak az új adatok titkosítva van. Minden létező blobot, amely a tárfiók nem titkosított marad. Meglévő blobok titkosítása, tekintse meg a [Storage szolgáltatás titkosítási GYIK](../storage/common/storage-service-encryption.md#frequently-asked-questions-about-storage-service-encryption-for-data-at-rest).
+> Miután engedélyezte a titkosítás, csak az új adatok titkosítva van. Minden létező blobot, amely a tárfiók nem titkosított marad. Meglévő blobok titkosítása, tekintse meg a [Storage szolgáltatás titkosítási GYIK](../storage/common/storage-service-encryption.md#faq-for-storage-service-encryption).
 >
 >
 
@@ -50,7 +50,7 @@ Storage szolgáltatás titkosítási csak erőforrás-kezelő tárfiókok eseté
 Most már engedélyezte a tárolás titkosítása **storageacct1**.
 
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 Ez a dokumentum bemutatta megvalósításához a Security Center ajánlás "Titkosítási Azure Storage-fiókhoz tartozó Engedélyezés." Azure Storage szolgáltatás titkosítási kapcsolatos további tudnivalókért olvassa el a következőket:
 
 * [Az Azure Storage szolgáltatás titkosítási az inaktív adatok](../storage/common/storage-service-encryption.md)

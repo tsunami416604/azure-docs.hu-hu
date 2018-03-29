@@ -1,11 +1,11 @@
 ---
-title: "Állapotkonfiguráció bővítmény Azure Resource Manager-sablonok szükséges |} Microsoft Docs"
-description: "Ismerje meg a kívánt állapot konfigurációs szolgáltatása (DSC) bővítmény, az Azure Resource Manager sablon definíciója."
+title: Állapotkonfiguráció bővítmény Azure Resource Manager-sablonok szükséges |} Microsoft Docs
+description: Ismerje meg a kívánt állapot konfigurációs szolgáltatása (DSC) bővítmény, az Azure Resource Manager sablon definíciója.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: mgreenegit
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 keywords: dsc
 ms.assetid: b5402e5a-1768-4075-8c19-b7f7402687af
@@ -14,99 +14,121 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
-ms.date: 02/02/2018
+ms.date: 03/22/2018
 ms.author: migreene
-ms.openlocfilehash: 0f1c53c9eafcd96e49232b75d46ef34537a1160f
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: ea259fc316827872cb1df8bcec385dddf8d2a461
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok kívánt állapot konfigurációs bővítmény
 
-Ez a cikk ismerteti az Azure Resource Manager sablon a [kívánt állapot konfigurációs szolgáltatása (DSC) bővítmény kezelő](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Ez a cikk ismerteti az Azure Resource Manager sablon a [kívánt állapot konfigurációs szolgáltatása (DSC) bővítmény kezelő](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 > [!NOTE]
 > Némileg eltérő séma példák léphetnek fel. A séma megváltozott a 2016. októberi kiadás. További információkért lásd: [frissítés az előző formátumból](#update-from-the-previous-format).
 
 ## <a name="template-example-for-a-windows-vm"></a>A Windows virtuális gépek sablon – példa
 
-A következő kódrészletet mutat a **erőforrás** a sablon szakasza. A DSC-bővítményt alapértelmezett bővítmény tulajdonságokat örökli. További információkért lásd: [VirtualMachineExtension osztály](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension?view=azure-dotnet.).
+A következő kódrészletet mutat a **erőforrás** a sablon szakasza.
+A DSC-bővítményt alapértelmezett bővítmény tulajdonságokat örökli.
+További információkért lásd: [VirtualMachineExtension osztály](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension?view=azure-dotnet.).
 
 ```json
-            "name": "Microsoft.Powershell.DSC",
-            "type": "extensions",
-             "location": "[resourceGroup().location]",
-             "apiVersion": "2015-06-15",
-             "dependsOn": [
-                  "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
-              ],
-              "properties": {
-                  "publisher": "Microsoft.Powershell",
-                  "type": "DSC",
-                  "typeHandlerVersion": "2.72",
-                  "autoUpgradeMinorVersion": true,
-                  "forceUpdateTag": "[parameters('dscExtensionUpdateTagVersion')]",
-                  "settings": {
-                    "configurationArguments": {
-                        {
-                            "Name": "RegistrationKey",
-                            "Value": {
-                                "UserName": "PLACEHOLDER_DONOTUSE",
-                                "Password": "PrivateSettingsRef:registrationKeyPrivate"
-                            },
+{
+    "type": "Microsoft.Compute/virtualMachines/extensions",
+    "name": "[concat(parameters('VMName'),'/Microsoft.Powershell.DSC')]",
+    "apiVersion": "2017-12-01",
+    "location": "[resourceGroup().location]",
+    "dependsOn": [
+        "[concat('Microsoft.Compute/virtualMachines/', parameters('VMName'))]"
+    ],
+    "properties": {
+        "publisher": "Microsoft.Powershell",
+        "type": "DSC",
+        "typeHandlerVersion": "2.75",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+            "protectedSettings": {
+            "Items": {
+                        "registrationKeyPrivate": "registrationKey"
+            }
+            },
+            "publicSettings": {
+                "configurationArguments": [
+                    {
+                        "Name": "RegistrationKey",
+                        "Value": {
+                            "UserName": "PLACEHOLDER_DONOTUSE",
+                            "Password": "PrivateSettingsRef:registrationKeyPrivate"
                         },
-                        "RegistrationUrl" : "[parameters('registrationUrl1')]",
-                        "NodeConfigurationName" : "nodeConfigurationNameValue1"
-                        }
-                        },
-                        "protectedSettings": {
-                            "Items": {
-                                        "registrationKeyPrivate": "[parameters('registrationKey1']"
-                                    }
-                        }
+                    },
+                    {
+                        "RegistrationUrl" : "registrationUrl",
+                    },
+                    {
+                        "NodeConfigurationName" : "nodeConfigurationName"
                     }
+                ]
+            }
+        },
+    }
+}
 ```
 
 ## <a name="template-example-for-windows-virtual-machine-scale-sets"></a>Windows virtuálisgép-méretezési sablon példa beállítása
 
-A virtuális gép méretezési készlet fürtcsomópont egy **tulajdonságok** szakaszt, amely rendelkezik egy **VirtualMachineProfile, extensionProfile** attribútum. A **bővítmények**, vegye fel a DSC-ből.
+A virtuális gép méretezési készlet fürtcsomópont egy **tulajdonságok** szakaszt, amely rendelkezik egy **VirtualMachineProfile, extensionProfile** attribútum.
+A **bővítmények**, a részletek hozzáadása a DSC-bővítményt.
 
-A DSC-bővítményt alapértelmezett bővítmény tulajdonságokat örökli. További információkért lásd: [VirtualMachineScaleSetExtension osztály](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension?view=azure-dotnet).
+A DSC-bővítményt alapértelmezett bővítmény tulajdonságokat örökli.
+További információkért lásd: [VirtualMachineScaleSetExtension osztály](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension?view=azure-dotnet).
 
 ```json
 "extensionProfile": {
-            "extensions": [
-                {
-                    "name": "Microsoft.Powershell.DSC",
-                    "properties": {
-                        "publisher": "Microsoft.Powershell",
-                        "type": "DSC",
-                        "typeHandlerVersion": "2.72",
-                        "autoUpgradeMinorVersion": true,
-                        "forceUpdateTag": "[parameters('DscExtensionUpdateTagVersion')]",
-                        "settings": {
-                            "configurationArguments": {
-                                {
-                                    "Name": "RegistrationKey",
-                                    "Value": {
-                                        "UserName": "PLACEHOLDER_DONOTUSE",
-                                        "Password": "PrivateSettingsRef:registrationKeyPrivate"
-                                    },
-                                },
-                                "RegistrationUrl" : "[parameters('registrationUrl1')]",
-                                "NodeConfigurationName" : "nodeConfigurationNameValue1"
-                        }
-                        },
-                        "protectedSettings": {
-                            "Items": {
-                                        "registrationKeyPrivate": "[parameters('registrationKey1']"
-                                    }
-                        }
+    "extensions": [
+        {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "name": "[concat(parameters('VMName'),'/Microsoft.Powershell.DSC')]",
+            "apiVersion": "2017-12-01",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[concat('Microsoft.Compute/virtualMachines/', parameters('VMName'))]"
+            ],
+            "properties": {
+                "publisher": "Microsoft.Powershell",
+                "type": "DSC",
+                "typeHandlerVersion": "2.75",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "protectedSettings": {
+                    "Items": {
+                                "registrationKeyPrivate": "registrationKey"
                     }
-                ]
+                    },
+                    "publicSettings": {
+                        "configurationArguments": [
+                            {
+                                "Name": "RegistrationKey",
+                                "Value": {
+                                    "UserName": "PLACEHOLDER_DONOTUSE",
+                                    "Password": "PrivateSettingsRef:registrationKeyPrivate"
+                                },
+                            },
+                            {
+                                "RegistrationUrl" : "registrationUrl",
+                            },
+                            {
+                                "NodeConfigurationName" : "nodeConfigurationName"
+                            }
+                        ]
+                    }
+                },
             }
         }
+    ]
+}
 ```
 
 ## <a name="detailed-settings-information"></a>Részletes beállítási információk
@@ -175,7 +197,8 @@ A következő paraméterek érhetők el az alapértelmezett konfigurációs para
 
 ## <a name="default-configuration-script"></a>Alapértelmezett konfigurációs parancsfájl
 
-A következő értékek kapcsolatos további információkért lásd: [helyi Configuration Manager alapbeállítások](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig#basic-settings). A DSC-bővítmény alapértelmezett konfigurációs parancsfájl segítségével csak a felsorolt LCM tulajdonságainak konfigurálása a következő táblázat az.
+A következő értékek kapcsolatos további információkért lásd: [helyi Configuration Manager alapbeállítások](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig#basic-settings).
+A DSC-bővítmény alapértelmezett konfigurációs parancsfájl segítségével csak a felsorolt LCM tulajdonságainak konfigurálása a következő táblázat az.
 
 | Tulajdonság neve | Típus | Leírás |
 | --- | --- | --- |
@@ -191,7 +214,10 @@ A következő értékek kapcsolatos további információkért lásd: [helyi Con
 
 ## <a name="settings-vs-protectedsettings"></a>Vs beállításait. ProtectedSettings
 
-Minden beállítások mentése beállítások a fájlt a virtuális Gépen. A felsorolt tulajdonságok **beállítások** nyilvános tulajdonságokat. Nyilvános tulajdonságok a beállítások szövegfájlban nincsenek titkosítva. A felsorolt tulajdonságok **protectedSettings** a tanúsítvánnyal titkosított, és nem jelenítjük meg egyszerű szövegként a virtuális Gépre, a beállítások fájlban.
+Minden beállítások mentése beállítások a fájlt a virtuális Gépen.
+A felsorolt tulajdonságok **beállítások** nyilvános tulajdonságokat.
+Nyilvános tulajdonságok a beállítások szövegfájlban nincsenek titkosítva.
+A felsorolt tulajdonságok **protectedSettings** a tanúsítvánnyal titkosított, és nem jelenítjük meg egyszerű szövegként a virtuális Gépre, a beállítások fájlban.
 
 Ha a konfiguráció a hitelesítő adatokat igényel, a felhasználó hitelesítő adatait is felvehet **protectedSettings**:
 
@@ -208,7 +234,9 @@ Ha a konfiguráció a hitelesítő adatokat igényel, a felhasználó hitelesít
 
 ## <a name="example-configuration-script"></a>Példa konfigurációs parancsfájl
 
-A következő példa bemutatja a DSC-bővítményt, amely metaadat-beállításai LCM adja meg, és regisztrálja az Automation DSC szolgáltatással alapértelmezett viselkedése. Konfigurációs argumentumok megadása kötelező.  Konfigurációs argumentumok továbbítódnak az alapértelmezett konfigurációs parancsfájl LCM metaadatok beállításához.
+A következő példa bemutatja a DSC-bővítményt, amely metaadat-beállításai LCM adja meg, és regisztrálja az Automation DSC szolgáltatással alapértelmezett viselkedése.
+Konfigurációs argumentumok megadása kötelező.
+Konfigurációs argumentumok továbbítódnak az alapértelmezett konfigurációs parancsfájl LCM metaadatok beállításához.
 
 ```json
 "settings": {
@@ -233,7 +261,10 @@ A következő példa bemutatja a DSC-bővítményt, amely metaadat-beállítása
 
 ## <a name="example-using-the-configuration-script-in-azure-storage"></a>A konfigurációs parancsfájl használata az Azure Storage – példa
 
-A rendszer a következő példa a [DSC-bővítmény kezelő áttekintése](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). A példa Resource Manager-sablonok parancsmagok helyett a bővítmény telepítéséhez. A IisInstall.ps1 konfiguráció mentéséhez, és helyezheti el egy .zip fájl majd töltse fel a fájlt egy elérhető URL-CÍMÉT. A példában az Azure Blob Storage tárolóban, de a .zip-fájlt tölthet le bármely tetszőleges helyre.
+A rendszer a következő példa a [DSC-bővítmény kezelő áttekintése](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+A példa Resource Manager-sablonok parancsmagok helyett a bővítmény telepítéséhez.
+A IisInstall.ps1 konfiguráció mentéséhez, és helyezheti el egy .zip fájl majd töltse fel a fájlt egy elérhető URL-CÍMÉT.
+A példában az Azure Blob Storage tárolóban, de a .zip-fájlt tölthet le bármely tetszőleges helyre.
 
 A Resource Manager sablon a következő kódot arra utasítja a virtuális Gépet, és töltse le a megfelelő fájlt, majd futtassa a megfelelő PowerShell függvényt:
 
@@ -252,7 +283,8 @@ A Resource Manager sablon a következő kódot arra utasítja a virtuális Gépe
 
 ## <a name="update-from-a-previous-format"></a>Előző formátumból frissítése
 
-A bővítmény előző formátum tartozó egyik beállítás (és a nyilvános jellemzőkkel rendelkezik, amely **ModulesUrl**, **ConfigurationFunction**, **SasToken**, vagy  **Tulajdonságok**) automatikusan alkalmazkodnak hozzá a bővítmény formátumban. A Futtatás mint előtt.
+A bővítmény előző formátum tartozó egyik beállítás (és a nyilvános jellemzőkkel rendelkezik, amely **ModulesUrl**, **ConfigurationFunction**, **SasToken**, vagy  **Tulajdonságok**) automatikusan alkalmazkodnak hozzá a bővítmény formátumban.
+A Futtatás mint előtt.
 
 A következő séma bemutatja, milyen az előző beállítási sémában például keresést végrehajtani:
 
@@ -302,7 +334,9 @@ Ez a korábbi formátum hogyan alkalmazkodik a formátumban:
 
 ## <a name="troubleshooting---error-code-1100"></a>Hibaelhárítás – 1100-as hibakód
 
-1100-as hibakód azt jelzi, hogy a felhasználó által megadott a DSC-bővítmény probléma. Ezek a hibák szövegét változik, és előfordulhat, hogy módosítani. Íme néhány a hibák mutatjuk be, és hogyan oldhatja meg őket.
+1100-as hibakód azt jelzi, hogy a felhasználó által megadott a DSC-bővítmény probléma.
+Ezek a hibák szövegét változik, és előfordulhat, hogy módosítani.
+Íme néhány a hibák mutatjuk be, és hogyan oldhatja meg őket.
 
 ### <a name="invalid-values"></a>Érvénytelen értékekkel
 
@@ -313,7 +347,8 @@ Csak a lehetséges értékek a következők... "legújabb" és ".
 
 **A probléma**: A megadott érték nem megengedett.
 
-**Megoldás**: módosítsa a érvénytelen érvényes értéket. További információkért lásd: a táblázatban szereplő [részletek](#details).
+**Megoldás**: módosítsa a érvénytelen érvényes értéket.
+További információkért lásd: a táblázatban szereplő [részletek](#details).
 
 ### <a name="invalid-url"></a>Érvénytelen URL
 
@@ -321,7 +356,8 @@ Csak a lehetséges értékek a következők... "legújabb" és ".
 
 **A probléma**: A megadott URL-cím érvénytelen.
 
-**Megoldás**: Ellenőrizze az a megadott URL-címet. Győződjön meg arról, hogy az URL-címet oldható fel érvényes helyekre, hogy a kiterjesztés hozzáférhet-e a távoli számítógépen.
+**Megoldás**: Ellenőrizze az a megadott URL-címet.
+Győződjön meg arról, hogy az URL-címet oldható fel érvényes helyekre, hogy a kiterjesztés hozzáférhet-e a távoli számítógépen.
 
 ### <a name="invalid-configurationargument-type"></a>Érvénytelen ConfigurationArgument típusa
 
@@ -329,7 +365,8 @@ Csak a lehetséges értékek a következők... "legújabb" és ".
 
 **A probléma**: A *ConfigurationArguments* tulajdonság nem oldható fel egy **Hashtable** objektum.
 
-**Megoldás**: Ellenőrizze a *ConfigurationArguments* tulajdonság egy **Hashtable**. Kövesse az előző példában megadott formátumban. Figyelendő ajánlatok, vesszővel válassza el egymástól, és kell használni.
+**Megoldás**: Ellenőrizze a *ConfigurationArguments* tulajdonság egy **Hashtable**.
+Kövesse az előző példában megadott formátumban. Figyelendő ajánlatok, vesszővel válassza el egymástól, és kell használni.
 
 ### <a name="duplicate-configurationarguments"></a>Ismétlődő ConfigurationArguments
 

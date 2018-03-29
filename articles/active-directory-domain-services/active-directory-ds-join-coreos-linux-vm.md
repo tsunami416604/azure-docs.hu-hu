@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Active Directory tartományi szolgáltatások: CoreOS Linux virtuális gép csatlakoztatása felügyelt tartományhoz |} Microsoft Docs"
-description: "A CoreOS Linux virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások"
+title: 'Az Azure Active Directory tartományi szolgáltatások: CoreOS Linux virtuális gép csatlakoztatása felügyelt tartományhoz |} Microsoft Docs'
+description: A CoreOS Linux virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: maheshu
-ms.openlocfilehash: 790ad85df0dbf68674e2b9c6254858100ddfd0fd
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6c7290db73645a4e1e745142f266aabc6df735df
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="join-a-coreos-linux-virtual-machine-to-a-managed-domain"></a>A CoreOS Linux virtuális gép csatlakoztatása felügyelt tartományhoz
 Ez a cikk bemutatja, hogyan CoreOS Linux virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz az Azure-ban.
@@ -140,7 +140,7 @@ Győződjön meg arról, hogy a gép sikeresen csatlakoztatva lett a felügyelt 
 
 
 ## <a name="troubleshooting-domain-join"></a>Hibaelhárítás a tartományhoz való csatlakozást
-Tekintse meg a [hibaelhárítás tartományhoz való csatlakozást](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshooting-domain-join) cikk.
+Tekintse meg a [hibaelhárítás tartományhoz való csatlakozást](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshoot-joining-a-domain) cikk.
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 * [Azure AD tartományi szolgáltatások – első lépések útmutató](active-directory-ds-getting-started.md)

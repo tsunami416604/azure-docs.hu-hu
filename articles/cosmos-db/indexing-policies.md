@@ -1,10 +1,10 @@
 ---
-title: "Azure-házirendek indexelő Cosmos adatbázis |} Microsoft Docs"
-description: "Indexelő működésének megismerése az Azure Cosmos-Adatbázisba. Ismerje meg, hogyan lehet konfigurálni, és módosítsa az automatikus indexeléshez és jobb teljesítményt nyújt az indexelési házirendet."
-keywords: "Indexelő működése, az automatikus indexeléshez, adatbázis indexelő"
+title: Azure-házirendek indexelő Cosmos adatbázis |} Microsoft Docs
+description: Indexelő működésének megismerése az Azure Cosmos-Adatbázisba. Ismerje meg, hogyan lehet konfigurálni, és módosítsa az automatikus indexeléshez és jobb teljesítményt nyújt az indexelési házirendet.
+keywords: Indexelő működése, az automatikus indexeléshez, adatbázis indexelő
 services: cosmos-db
-documentationcenter: 
-author: arramac
+documentationcenter: ''
+author: rafats
 manager: jhubbard
 editor: monicar
 ms.assetid: d5e8f338-605d-4dff-8a61-7505d5fc46d7
@@ -13,19 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 08/17/2017
-ms.author: arramac
-ms.openlocfilehash: b09f5323f0378721412baade9be9926ebd0c171e
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.date: 03/26/2018
+ms.author: rafats
+ms.openlocfilehash: 5610c5fdc6a04f9ef13d2e4592f0d7e5d8eba30c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Hogyan működik az Azure Cosmos DB index adatokat?
 
 Alapértelmezés szerint az összes Azure Cosmos DB adatok indexelése. Bár sok ügyfél ahhoz, hogy automatikusan kezelik az indexelő minden szempontját Azure Cosmos DB problémamentesen működjön, megadhat egy egyéni *házirend indexelő* gyűjtemények létrehozása az Azure Cosmos-Adatbázisba. Az indexelő házirendek az Azure Cosmos Adatbázisba rugalmasabb és hatékonyabb, mint más adatbázis platformokon felkínált másodlagos indexek. Az Azure Cosmos Adatbázisba tervezését és testre szabhatja az index az alakzat séma rugalmasságát feláldozása nélkül. 
 
 Megtudhatja, hogyan indexelési működik az Azure Cosmos Adatbázisba, fontos megérteni, hogy ha Ön kezeli az indexelési házirendet, hogy részletes kompromisszumot indextárolási terheléssel jár, az írási és a lekérdezés átviteli sebesség és a lekérdezés konzisztencia között.  
+
+Az alábbi videó az Azure Cosmos DB Programvezető Andrew Liu automatikus képességeket és hangolására, és az indexelési házirendet konfigurálása az Azure Cosmos DB tárolóra indexelő Azure Cosmos-DB mutatja be. 
+
+>[!VIDEO https://www.youtube.com/embed/uFu2D-GscG0]
 
 Ez a cikk azt nézze meg Azure Cosmos DB indexelő házirendjeit, hogyan szabhatja testre az indexelési házirendet, és a kapcsolódó kompromisszumot. 
 
@@ -37,7 +41,7 @@ A cikk elolvasása után képes lesz a következő kérdések megválaszolásáh
 * Hogyan tehetem módosításokat egy gyűjtemény indexelési házirendet?
 * Hogyan összehasonlítása tárterületi és teljesítménybeli különböző indexelési házirendek?
 
-## Az indexelési házirendet gyűjtemény testreszabása<a id="CustomizingIndexingPolicy"></a>  
+## Az indexelési házirendet gyűjtemény testreszabása <a id="CustomizingIndexingPolicy"></a>  
 Az alapértelmezett házirendet az Azure Cosmos DB gyűjteményt a indexelő felülbírálásával testre tárolás, az írási és a lekérdezési teljesítmény és a lekérdezés konzisztencia közötti kompromisszumot. Konfigurálhatja a következő szempontokat:
 
 * **Bevonhat vagy kizárhat a dokumentumok és az elérési út, és onnan az index**. Zárja ki, vagy bizonyos dokumentumokhoz szerepeljenek az index beszúrása vagy cserélje le a dokumentumokat a gyűjteményben. Akkor is is bevonhat vagy kizárhat JSON tulajdonságokat, más néven *elérési utak*, indexben szereplő dokumentumok között indexelése. Elérési utak közé tartozik a helyettesítő mintákat.
@@ -69,7 +73,7 @@ Az indexelési házirendet a gyűjtemény az Azure-portálon módosíthatja:
 2. Válassza ki a bal oldali navigációs menü **beállítások**, majd válassza ki **indexelő házirend**. 
 3. A **indexelő házirend**, módosítsa az indexelési házirendet, és válassza **OK**. 
 
-### Az indexelő adatbázis-mód<a id="indexing-modes"></a>  
+### Az indexelő adatbázis-mód <a id="indexing-modes"></a>  
 Azure Cosmos-adatbázis támogatja az indexelési házirendet egy Azure Cosmos DB gyűjteményen keresztül konfigurálható három indexelési módot: egységes, lassú, és "nincs".
 
 **Egységes**: Ha egy Azure Cosmos DB gyűjtési Consistent, egy adott Azure Cosmos DB gyűjtemény lekérdezései hajtsa végre a konzisztencia szintjét a pont olvasása megadott (erős, kötött elavulás, munkamenet és végleges). Az index frissítése a dokumentum frissítéssel (insert, replace, update és delete egy dokumentumot egy Azure Cosmos DB gyűjteményben) szinkron módon történik.
@@ -365,7 +369,7 @@ A JSON-specifikáció bevezetett a következő módosításokat:
 * Mindegyik elérési út lehet több index definíciója. Egy, az egyes adattípusokhoz rendelkezhet.
 * 1 és 8 számok, 1 és 100 karakterláncok, illetve -1 (maximális pontosság) pontosság indexelő támogatja.
 * Elérési út szegmensek nem feltétlenül szükséges egy idézőjel karaktert az egyes elérési utakat. Például hozzáadhat egy elérési utat   **/cím /?** Ahelyett, hogy **/ "title" /?**.
-* Az útvonalgyökér "görbékhez" jelölő ábrázolhatók  **/ \***  (kívül  **/** ).
+* Az útvonalgyökér "görbékhez" jelölő ábrázolhatók **/ \*** (kívül **/**).
 
 Ha rendelkezik kódot, hogy rendelkezések gyűjtemények a .NET SDK 1.1.0-ás verzióját vagy régebbi verziójú készült egyéni indexelési házirendet, áthelyezése SDK verzió 1.2.0, módosítania kell az alkalmazás kódjában, ezek a változások kezelésére. Ha még nem rendelkezik a kódot, hogy konfigurálja az indexelési házirendet, vagy ha azt tervezi, továbbra is az SDK-t egy korábbi verzióját használja, nem módosításokra szükség.
 

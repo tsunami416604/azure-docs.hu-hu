@@ -1,6 +1,6 @@
 ---
-title: "Az Azure App Service-környezetek létrehozása egy Resource Manager-sablon használatával"
-description: "Ismerteti, hogyan egy külső vagy ILB Azure App Service-környezet létrehozása egy Resource Manager-sablon használatával"
+title: Az Azure App Service-környezetek létrehozása egy Resource Manager-sablon használatával
+description: Ismerteti, hogyan egy külső vagy ILB Azure App Service-környezet létrehozása egy Resource Manager-sablon használatával
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 015bf031aea6b79fcca0a416253e9aa47bb245b6
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d85384620b2e4c7ba0de84e0fe82ef3e83376dd8
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Hozzon létre egy ASE Azure Resource Manager-sablon használatával
 
@@ -40,7 +40,7 @@ A ASE létrehozásának automatizálása:
 
 2. A ILB ASE létrehozása után, amely megfelel a ILB ASE tartomány SSL-tanúsítvány feltöltése.
 
-3. A feltöltött SSL-tanúsítvány hozzá van rendelve a ILB ASE az "alapértelmezett" SSL-tanúsítványt.  Ez a tanúsítvány használható SSL-forgalom a ILB ASE található alkalmazások használata a közös gyökértartomány, amely hozzá van rendelve a ASE (például https://someapp.mycustomrootdomain.com).
+3. A feltöltött SSL-tanúsítvány hozzá van rendelve a ILB ASE az "alapértelmezett" SSL-tanúsítványt.  Ez a tanúsítvány használható SSL-forgalom a ILB ASE található alkalmazások a közös gyökértartomány, amely hozzá van rendelve a ASE használata (például https://someapp.mycustomrootdomain.com).
 
 
 ## <a name="create-the-ase"></a>A ASE létrehozása
@@ -54,15 +54,17 @@ Ha engedélyezni szeretné egy ILB ASE, használja a Resource Manager-sablon [p�
 
 Miután a *azuredeploy.parameters.json* fájl ki van töltve, a ASE létrehozása a PowerShell kódrészletet használatával. Módosítsa az elérési utat kell egyeznie a Resource Manager sablon-fájlhelyek a számítógépen. Ne felejtse el az erőforrás-kezelő központi telepítés nevét és az erőforráscsoport neve a saját értéket ad meg:
 
-    $templatePath="PATH\azuredeploy.json"
-    $parameterPath="PATH\azuredeploy.parameters.json"
+```powershell
+$templatePath="PATH\azuredeploy.json"
+$parameterPath="PATH\azuredeploy.parameters.json"
 
-    New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+```
 
 A létrehozandó ASE egy órát vesz igénybe. Ezután a ASE megjelennek a portálon az előfizetés, a központi telepítés kiváltó ASEs listájában.
 
 ## <a name="upload-and-configure-the-default-ssl-certificate"></a>Töltse fel, és az "alapértelmezett" SSL-tanúsítvány konfigurálása
-Az SSL-tanúsítvány alkalmazások SSL-kapcsolat létrehozásához használt "alapértelmezett" SSL-tanúsítványt kell rendelni, a mértékéig. Ha a ASE alapértelmezett DNS-utótagja *belső contoso.com*, https://some-random-app.internal-contoso.com kapcsolatot igényel, amely érvényes SSL-tanúsítvány **.internal-contoso.com*. 
+Az SSL-tanúsítvány alkalmazások SSL-kapcsolat létrehozásához használt "alapértelmezett" SSL-tanúsítványt kell rendelni, a mértékéig. Ha a ASE alapértelmezett DNS-utótagja *belső contoso.com*, kapcsolat https://some-random-app.internal-contoso.com érvényes SSL-tanúsítvány szükséges **.internal-contoso.com*. 
 
 Szerezzen be egy érvényes SSL-tanúsítvány belső hitelesítésszolgáltatók használatával, egy tanúsítvány beszerzése egy külső kiállítótól érkező, vagy önaláírt tanúsítványt használ. Az SSL-tanúsítvány forrását, függetlenül a következő tanúsítvány attribútumok megfelelően kell konfigurálni:
 
@@ -82,17 +84,19 @@ A következő PowerShell-kódrészletet a használja:
 
 A PowerShell-kódot az alkalmazás base64 kódolást volt módosítani a a [PowerShell parancsfájlok blog][examplebase64encoding]:
 
-        $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
+```powershell
+$certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
-        $certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
-        $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
+$certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
+$password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
 
-        $fileName = "exportedcert.pfx"
-        Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password     
+$fileName = "exportedcert.pfx"
+Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password     
 
-        $fileContentBytes = get-content -encoding byte $fileName
-        $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
-        $fileContentEncoded | set-content ($fileName + ".b64")
+$fileContentBytes = get-content -encoding byte $fileName
+$fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
+$fileContentEncoded | set-content ($fileName + ".b64")
+```
 
 Miután sikeresen generált és base64-kódolású karakterlánccá alakítja át az SSL-tanúsítvány, a példa a Resource Manager-sablon [az alapértelmezett SSL-tanúsítvány konfigurálása] [ quickstartconfiguressl] a Githubon. 
 
@@ -107,37 +111,41 @@ A paraméterek a *azuredeploy.parameters.json* fájl itt találhatók:
 
 Rövidített például *azuredeploy.parameters.json* itt jelenik meg:
 
-    {
-         "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
-         "contentVersion": "1.0.0.0",
-         "parameters": {
-              "appServiceEnvironmentName": {
-                   "value": "yourASENameHere"
-              },
-              "existingAseLocation": {
-                   "value": "East US 2"
-              },
-              "pfxBlobString": {
-                   "value": "MIIKcAIBAz...snip...snip...pkCAgfQ"
-              },
-              "password": {
-                   "value": "PASSWORDGOESHERE"
-              },
-              "certificateThumbprint": {
-                   "value": "AF3143EB61D43F6727842115BB7F17BBCECAECAE"
-              },
-              "certificateName": {
-                   "value": "DefaultCertificateFor_yourASENameHere_InternalLoadBalancingASE"
-              }
-         }
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "appServiceEnvironmentName": {
+      "value": "yourASENameHere"
+    },
+    "existingAseLocation": {
+      "value": "East US 2"
+    },
+    "pfxBlobString": {
+      "value": "MIIKcAIBAz...snip...snip...pkCAgfQ"
+    },
+    "password": {
+      "value": "PASSWORDGOESHERE"
+    },
+    "certificateThumbprint": {
+      "value": "AF3143EB61D43F6727842115BB7F17BBCECAECAE"
+    },
+    "certificateName": {
+      "value": "DefaultCertificateFor_yourASENameHere_InternalLoadBalancingASE"
     }
+  }
+}
+```
 
 Miután a *azuredeploy.parameters.json* fájl ki van töltve, az alapértelmezett SSL-tanúsítvány konfigurálása a PowerShell kódrészletet használatával. Módosítsa a fájlelérési út egyezőre, hol található a Resource Manager sablon fájlokat a számítógépre. Ne felejtse el az erőforrás-kezelő központi telepítés nevét és az erőforráscsoport neve a saját értéket ad meg:
 
-     $templatePath="PATH\azuredeploy.json"
-     $parameterPath="PATH\azuredeploy.parameters.json"
+```powershell
+$templatePath="PATH\azuredeploy.json"
+$parameterPath="PATH\azuredeploy.parameters.json"
 
-     New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+```
 
 A módosítás alkalmazására ASE előtér / nagyjából 40 percet vesz igénybe. Például az alapértelmezett méretű ASE, két előtér-webkiszolgálóinak használó, a sablon befejezéséhez körülbelül egy óra és 20 perc. A sablon futása közben a ASE nem lehet méretezni.  
 

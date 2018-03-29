@@ -1,6 +1,6 @@
 ---
-title: "Irányelvek és javaslatok az Azure-ban megbízható gyűjtemények szolgáltatás háló |} Microsoft Docs"
-description: "Irányelvek és javaslatok a Service Fabric megbízható gyűjtemények"
+title: Irányelvek és javaslatok az Azure-ban megbízható gyűjtemények szolgáltatás háló |} Microsoft Docs
+description: Irányelvek és javaslatok a Service Fabric megbízható gyűjtemények
 services: service-fabric
 documentationcenter: .net
 author: mcoskun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 12/10/2017
 ms.author: mcoskun
-ms.openlocfilehash: 27ea71bcc378100e613a8edd1c57a93f3c9ed925
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b0eb6a5aab5e71c0a8ac8263e177c493a07dafc0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Irányelvek és javaslatok az Azure Service Fabric megbízható gyűjtemények
 Ez a szakasz útmutatást nyújt a megbízható állapotkezelője és megbízható gyűjtemények használatával. A cél, hogy a felhasználók közös nehézségek elkerülése érdekében.
@@ -52,7 +52,6 @@ Az alábbiakban néhány dolgot figyelembe venni:
 ### <a name="next-steps"></a>További lépések
 * [A Reliable Collections használata](service-fabric-work-with-reliable-collections.md)
 * [Tranzakciók és a zárolásokat](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
-* [Megbízható állapot Manager és a gyűjtemény belső funkciói](service-fabric-reliable-services-reliable-collections-internals.md)
 * Adatok kezelése
   * [Biztonsági mentés és visszaállítás](service-fabric-reliable-services-backup-restore.md)
   * [Értesítések](service-fabric-reliable-services-notifications.md)

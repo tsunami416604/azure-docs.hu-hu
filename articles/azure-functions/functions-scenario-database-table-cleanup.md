@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Functions segítségével hajtsa végre a tisztítási feladat adatbázis |} Microsoft Docs"
-description: "Az Azure Functions használatával, amely kapcsolódik az Azure SQL-adatbázis rendszeres időközönként sorait tisztítja meg a feladat ütemezését."
+title: Az Azure Functions segítségével hajtsa végre a tisztítási feladat adatbázis |} Microsoft Docs
+description: Az Azure Functions használatával, amely kapcsolódik az Azure SQL-adatbázis rendszeres időközönként sorait tisztítja meg a feladat ütemezését.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.service: functions
 ms.devlang: multiple
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/22/2017
 ms.author: glenga
-ms.openlocfilehash: 9d8261a22f5ea9ce61bcdc79d24a6c054597039b
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 2947fc6da0c4559e81cf97255b8375b020e0b657
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Használja az Azure Functions egy Azure SQL adatbázishoz való kapcsolódáshoz
-Ez a témakör bemutatja, hogyan hozzon létre egy ütemezett feladatot, amely egy Azure SQL-adatbázis egy tábla sorainak a szükségtelenné vált az Azure Functions használatával. Az új C# függvény az Azure-portálon előre definiált időzítő eseményindító sablon alapján jön létre. Ez a forgatókönyv támogatása érdekében is meg kell adni egy adatbázis-kapcsolati karakterláncot, a függvény alkalmazás Alkalmazásbeállítás. Ez a forgatókönyv használ egy tömeges művelet az adatbázison. 
+Ez a témakör bemutatja, hogyan hozzon létre egy ütemezett feladatot, amely egy Azure SQL-adatbázis egy tábla sorainak a szükségtelenné vált az Azure Functions használatával. Az új C# parancsfájl függvény az Azure-portálon előre definiált időzítő eseményindító sablon alapján jön létre. Ez a forgatókönyv támogatása érdekében is meg kell adni egy adatbázis-kapcsolati karakterláncot, a függvény alkalmazás Alkalmazásbeállítás. Ez a forgatókönyv használ egy tömeges művelet az adatbázison. 
 
 Szeretné, hogy a függvény folyamat egyéni létrehozás, Olvasás, frissítés és Törlés (CRUD) operations a Mobile Apps tábla, Ehelyett használjon [Mobile Apps kötések](functions-bindings-mobile-apps.md).
 
@@ -40,7 +40,7 @@ Le kell töltenie a kapcsolati karakterláncot az adatbázishoz való befejezés
  
 3. Válassza ki **SQL-adatbázisok** a bal oldali menüben válassza ki az adatbázist a a **SQL-adatbázisok** lap.
 
-4. Válassza ki **adatbázis-kapcsolati karakterláncok megjelenítése** , és másolja a teljes **ADO.NET** kapcsolati karakterláncot.
+4. Válassza ki **adatbázis-kapcsolati karakterláncok megjelenítése** , és másolja a teljes **ADO.NET** kapcsolati karakterláncot. 
 
     ![Másolja az ADO.NET kapcsolati karakterláncot.](./media/functions-scenario-database-table-cleanup/adonet-connection-string.png)
 
@@ -70,14 +70,16 @@ Most a C# függvény kódot, amely összeköti az SQL-adatbázis is hozzáadhat.
 
 ## <a name="update-your-function-code"></a>Frissítse a függvény kódot
 
-1. A függvény alkalmazást válassza ki a időzítő-eseményindítóval aktivált függvény.
+1. A függvény alkalmazásban a portálon válassza ki a időzítő indított függvényt.
  
-3. A meglévő funkciókódot tetején adja hozzá a következő szerelvény hivatkozásokat:
+3. A meglévő C# függvény parancsfájlkód tetején adja hozzá a következő szerelvény hivatkozásokat:
 
     ```cs
     #r "System.Configuration"
     #r "System.Data"
     ```
+    >[!NOTE]
+    >A kód a következő példákban olyan C# parancsfájl a portálról. Amikor egy lefordított C# függvény helyileg fejleszt, helyette hozzá kell ezeket a hivatkozásokat állítja össze a helyi projekt.  
 
 3. Adja hozzá a következő `using` utasítást, hogy a funkciót:
     ```cs
@@ -113,7 +115,7 @@ Most a C# függvény kódot, amely összeköti az SQL-adatbázis is hozzáadhat.
 
     ![A függvény naplók megtekintéséhez.](./media/functions-scenario-database-table-cleanup/functions-logs.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő további funkciók használata a Logic Apps a más szolgáltatásokkal való integrációjához.
 

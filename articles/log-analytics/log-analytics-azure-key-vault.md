@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Key Vault megoldás Naplóelemzési |} Microsoft Docs"
-description: "Log Analytics az Azure Key Vault megoldás használatával tekintse át az Azure Key Vault naplóinak."
+title: Az Azure Key Vault megoldás Naplóelemzési |} Microsoft Docs
+description: Log Analytics az Azure Key Vault megoldás használatával tekintse át az Azure Key Vault naplóinak.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: richrundmsft
 manager: jochan
-editor: 
+editor: ''
 ms.assetid: 5e25e6d6-dd20-4528-9820-6e2958a40dae
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: richrund
-ms.openlocfilehash: 651586e0846ffb22a23e64b73c2cc614980d9b92
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9c4b16ec11d1990de687014c5385314f0e0c602a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Log Analytics az Azure Key Vault Analytics megoldás
 
@@ -118,8 +118,8 @@ Az Azure Key Vault megoldás elemzi az azt jelzi, hogy rendelkezik olyan típus�
 | Erőforrás |A kulcstároló neve |
 | ResourceGroup |A key vault erőforrás-csoport |
 | ResourceId |Az Azure Resource Manager szerinti erőforrás-azonosító. Key Vault naplóinak ez pedig a Key Vault erőforrás-azonosító. |
-| ResourceProvider |*MICROSOFT. KEYVAULT* |
-| ResourceType | *TÁROLÓK* |
+| ResourceProvider |*MICROSOFT.KEYVAULT* |
+| ResourceType | *VAULTS* |
 | ResultSignature |HTTP-állapot (például *OK*) |
 | ResultType |REST API-kérelem eredménye (például *sikeres*) |
 | SubscriptionId |Az előfizetés, amely tartalmazza a Key Vault Azure-előfizetése Azonosítóját |
@@ -137,18 +137,18 @@ A frissített megoldás használata:
 2. Engedélyezze az Azure Key Vault-megoldás a ismertetett folyamatot [hozzáadni a Naplóelemzési megoldások a megoldások gyűjteményből](log-analytics-add-solutions.md)
 3. Bármely lekérdezések, irányítópultok vagy használni az új adattípusra riasztások frissítése
   + Típus: változás: az AzureDiagnostics KeyVaults. A Key Vault naplóinak szűrése használhatja az erőforrástípus.
-  - Ahelyett, hogy: `Type=KeyVaults`, használata`Type=AzureDiagnostics ResourceType=VAULTS`
+  - Ahelyett, hogy: `KeyVaults`, használata `AzureDiagnostics | where ResourceType'=="VAULTS"`
   + Mezők: (mezőnevek számítanak a kis-és nagybetűket)
   - Bármely mezőhöz, amely rendelkezik egy utótagja \_s, \_d, vagy \_nevét, a g kisbetű módosítsa az első karakter
-  - Bármely mezőhöz, amely rendelkezik egy utótagja \_o a neve, az adatok egy egyéni mezők beágyazott mező neve alapján van osztva. Például az egyszerű felhasználónév a hívó mező tárolva van`identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`
+  - Bármely mezőhöz, amely rendelkezik egy utótagja \_o a neve, az adatok egy egyéni mezők beágyazott mező neve alapján van osztva. Például az egyszerű felhasználónév a hívó mező tárolva van `identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`
    - A mező CallerIpAddress CallerIPAddress változott
    - A mező RemoteIPCountry már nincs jelen
-4. Távolítsa el a *Key Vault Analytics (elavult)* megoldás. Ha a PowerShell használata esetén`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`
+4. Távolítsa el a *Key Vault Analytics (elavult)* megoldás. Ha a PowerShell használata esetén `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`
 
 Mielőtt a változás nem jelenik meg az új megoldás összegyűjtött adatok. Továbbra is a régi típusú és mezőnevek ezeket az adatokat lekérdezni.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Használjon [Log Analytics-e jelentkezni a keresések](log-analytics-log-searches.md) Azure Key Vault részletes adatainak megtekintéséhez.

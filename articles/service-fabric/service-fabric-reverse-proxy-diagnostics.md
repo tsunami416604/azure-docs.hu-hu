@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Service Fabric fordított proxy diagnosztika |} Microsoft Docs"
-description: "Megtudhatja, hogyan figyelése és diagnosztizálása a fordított proxy kérelem feldolgozását."
+title: Az Azure Service Fabric fordított proxy diagnosztika |} Microsoft Docs
+description: Megtudhatja, hogyan figyelése és diagnosztizálása a fordított proxy kérelem feldolgozását.
 services: service-fabric
 documentationcenter: .net
 author: kavyako
 manager: vipulm
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/08/2017
 ms.author: kavyako
-ms.openlocfilehash: 1c62d2390709577bfde6225b783642fb55396a6b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e645d86e4527cab1e650575c4d9a10dbd4b9de4e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>Figyelése és diagnosztizálása kérelem feldolgozását a fordított proxy
 
 A Service Fabric 5.7 kiadástól kezdve, fordított proxy események állnak rendelkezésre a következő gyűjtemény számára. Az események két csatorna, egyet a kérelem feldolgozása sikertelen a fordított proxy és a bejegyzéseket a sikeres és a sikertelen kérelmek részletes eseményeket tartalmazó második csatorna kapcsolatos hibaeseményeket csak érhetők el.
 
-Tekintse meg [fordított proxy eseményeinek gyűjtése](service-fabric-diagnostics-event-aggregation-wad.md#collect-reverse-proxy-events) ahhoz, hogy ezeknek a csatornáknak a helyi és az Azure Service Fabric-fürtök gyűjtését eseményekről.
+Tekintse meg [fordított proxy eseményeinek gyűjtése](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations) ahhoz, hogy ezeknek a csatornáknak a helyi és az Azure Service Fabric-fürtök gyűjtését eseményekről.
 
 ## <a name="troubleshoot-using-diagnostics-logs"></a>Diagnosztikai naplók segítségével hibaelhárítása
 Íme néhány példa a találkozhat egy általános hiba naplók értelmezése:
@@ -37,7 +37,7 @@ Az első esemény naplók alatt a fordított proxy fogadja a kérelem részletes
 
     *  **traceId**: A GUID egy kérelemhez tartozó összes esemény összefüggéseket használható. Az az alábbi két esemény, a traceId = **2f87b722-e254-4ac2-a802-fd315c1a0271**, úgy, hogy a kérésben tartoznak.
     *  **requestUrl**: az URL-cím (fordított proxy URL-cím), amelyhez a kérés lett elküldve.
-    *  **művelet**: HTTP-műveletet.
+    *  **verb**: HTTP verb.
     *  **remoteAddress**: a kérést küldő ügyfél címe.
     *  **resolvedServiceUrl**: végpont URL-címét, amelyhez a bejövő kérelem lett feloldva. 
     *  **Hiba részletei**: a hibával kapcsolatos további információkat.
@@ -195,7 +195,7 @@ Az első esemény naplók alatt a fordított proxy fogadja a kérelem részletes
 > [!NOTE]
 > A websocket-kérelem feldolgozásra kapcsolatos események nem jelenleg bejelentkezett. Ez a következő kiadásban lesz hozzáadva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Esemény összesítésére és az adatgyűjtést, a Windows Azure diagnosztikai](service-fabric-diagnostics-event-aggregation-wad.md) naplógyűjtést Azure fürtök engedélyezéséhez.
 * Service Fabric-események megtekintése a Visual Studio: [figyelése és diagnosztizálása helyileg](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md).
 * Tekintse meg [fordított proxy konfigurálása a biztonságos szolgáltatásokhoz](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample#configure-reverse-proxy-to-connect-to-secure-services) az Azure Resource Manager sablon minták konfigurálása biztonságos különböző szolgáltatástanúsítvány fordított proxy ellenőrzési beállítások.

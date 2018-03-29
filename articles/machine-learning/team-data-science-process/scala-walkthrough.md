@@ -1,8 +1,8 @@
 ---
-title: "Adattudomány Scala és Spark használata az Azure-on |} Microsoft Docs"
-description: "Hogyan használható a Scala a felügyelt gépi tanulási feladatok a Spark méretezhető MLlib és Spark ML-csomagba egy Azure HDInsight Spark-fürtön."
+title: Adattudomány Scala és Spark használata az Azure-on |} Microsoft Docs
+description: Hogyan használható a Scala a felügyelt gépi tanulási feladatok a Spark méretezhető MLlib és Spark ML-csomagba egy Azure HDInsight Spark-fürtön.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev;deguhath
-ms.openlocfilehash: 940911144993f30723ad395722742c81a4b0a71c
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: bradsev
+ms.openlocfilehash: dbd68508d83936964d213d94d5a30c15548cbdfc
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Adatelemzés a Scala és a Spark használatával az Azure rendszerben
 Ez a cikk bemutatja, hogyan Scala felügyelt gépi tanulási feladatok a Spark méretezhető MLlib és Spark ML-csomagba egy Azure HDInsight Spark-fürt használatára. Az végigvezeti a feladatok alkotó a [Adattudomány folyamat](http://aka.ms/datascienceprocess): adatfeldolgozást és a feltárása, a képi megjelenítés, a szolgáltatás mérnöki csapathoz, a modellezési és a model felhasználás. A cikkben szereplő modellek között logisztikai és lineáris regressziós, véletlenszerű erdők és színátmenetes súlyozott fák (GBTs) két általános felügyelt gépi tanulási feladatok mellett:
@@ -42,7 +42,7 @@ A beállítási lépéseket, illetve a cikkben az Azure HDInsight 3.4 Spark 1.6 
 > 
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Azure-előfizetéssel kell rendelkeznie. Ha még nem rendelkezik egy, [egy Azure ingyenes próbaverzió beszerzése](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* Rendelkeznie kell egy Azure-előfizetéssel. Ha még nem rendelkezik egy, [egy Azure ingyenes próbaverzió beszerzése](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Szüksége van az Azure HDInsight 3.4 Spark 1.6-os-fürt a következő műveletek végrehajtásához. A fürt létrehozásához lásd: utasításait [első lépések: hozzon létre Apache Spark on Azure Hdinsighttal](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). A fürt típusa és verzió beállítása a **fürt típusának kiválasztása** menü.
 
 ![A HDInsight fürt típus konfigurálása](./media/scala-walkthrough/spark-cluster-on-portal.png)
@@ -77,14 +77,14 @@ A Jupyter Notebook kiszolgálóhoz közvetlenül a Githubból a notebook feltöl
 
 A Spark mag Jupyter notebookok által biztosított rendelkezik előre beállított környezeteket. Nem kell explicit módon állítsa be a Spark, vagy az alkalmazás használata előtt Hive-környezeteket fejleszt. Az előre definiált környezetekben a következők:
 
-* `sc`a SparkContext
-* `sqlContext`a HiveContext
+* `sc` a SparkContext
+* `sqlContext` a HiveContext
 
 ### <a name="spark-magics"></a>Spark magics
 A Spark kernel tartalmaz néhány előre definiált "magics", amelyeket meghívhatja a különleges parancsok `%%`. Ezek a parancsok közül kettő a következő mintakódok használnak.
 
-* `%%local`Meghatározza, hogy a kód egymás utáni sorok végrehajtja helyileg. A kód érvényes Scala-kódot kell lennie.
-* `%%sql -o <variable name>`végrehajtja a Hive-lekérdezések elleni `sqlContext`. Ha a `-o` paramétert, a lekérdezés eredménye őrzi a `%%local` adatok keretként Spark Scala környezetben.
+* `%%local` Meghatározza, hogy a kód egymás utáni sorok végrehajtja helyileg. A kód érvényes Scala-kódot kell lennie.
+* `%%sql -o <variable name>` végrehajtja a Hive-lekérdezések elleni `sqlContext`. Ha a `-o` paramétert, a lekérdezés eredménye őrzi a `%%local` adatok keretként Spark Scala környezetben.
 
 A Jupyter notebookokból és az előre definiált kernelek kapcsolatos további információk "magics", amely meghívja a `%%` (például `%%local`), lásd: [HDInsight Spark Linux és a Jupyter notebookok elérhető kernelek a HDInsight-fürtök](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 
@@ -262,7 +262,7 @@ Miután az adatok beolvasása a Spark, a Adattudomány folyamat következő lép
 Alapértelmezés szerint minden kódrészletet, amely futtatja a Jupyter notebook eredménye a munkamenet fennállásának a feldolgozó csomópontokon keretén belül érhető el. Ha a munkavégző csomópontokhoz minden számításhoz utazás menti, és a számítási szükséges összes adatot a helyi kiszolgáló-csomóponton a Jupyter (amely az átjárócsomópont) érhető el, ha a `%%local` magic futtatását a kódrészletet a Jupyter kiszolgálón.
 
 * **SQL magic** (`%%sql`). A HDInsight Spark kernel az SQLContext könnyen beágyazott HiveQL lekérdezéseket támogatja. A (`-o VARIABLE_NAME`) argumentum az SQL-lekérdezés kimenetét a Jupyter kiszolgálón Pandas adatok keretként továbbra is fennáll. Ez azt jelenti, hogy a helyi módban érhető el lesz.
-* `%%local`**magic**. A `%%local` magic a kód futtatása helyben a Jupyter kiszolgálón, amely a HDInsight-fürt átjárócsomópontjához. Általában akkor használják `%%local` magic együtt a `%%sql` rendelkező magic a `-o` paraméter. A `-o` paraméter szeretné megőrizni a helyileg, az SQL-lekérdezés kimenete, majd `%%local` magic indítsa el a következő készlete futtatásához helyi SQL-lekérdezések eredményének helyileg fennállásának kódrészletet.
+* `%%local` **magic**. A `%%local` magic a kód futtatása helyben a Jupyter kiszolgálón, amely a HDInsight-fürt átjárócsomópontjához. Általában akkor használják `%%local` magic együtt a `%%sql` rendelkező magic a `-o` paraméter. A `-o` paraméter szeretné megőrizni a helyileg, az SQL-lekérdezés kimenete, majd `%%local` magic indítsa el a következő készlete futtatásához helyi SQL-lekérdezések eredményének helyileg fennállásának kódrészletet.
 
 ### <a name="query-the-data-by-using-sql"></a>A lekérdezést SQL használatával
 Ez a lekérdezés lekéri a jegy ára, utas száma, és tipp által taxi való adatváltások számát.

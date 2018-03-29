@@ -1,6 +1,6 @@
 ---
-title: "Azure Site Recovery architektúrájáról Azure az Azure-bA replikációs |} Microsoft Docs"
-description: "Ez a cikk a összetevők és használható, ha az Azure virtuális gépek replikálása az Azure Site Recovery szolgáltatással Azure-régiók közötti architektúra áttekintése."
+title: Azure Site Recovery architektúrájáról Azure az Azure-bA replikációs |} Microsoft Docs
+description: Ez a cikk a összetevők és használható, ha az Azure virtuális gépek replikálása az Azure Site Recovery szolgáltatással Azure-régiók közötti architektúra áttekintése.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 02/07/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 126f5c4db355af19a7151a267115127757b17599
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 111217e9335b16659c93da88731e0b7ce6d5fecd
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-to-azure-replication-architecture"></a>Azure-az Azure-bA replikációs architektúrája
 
@@ -28,7 +28,7 @@ Ez a cikk ismerteti a használható, ha a replikálása, feladatátvétele és h
 ## <a name="architectural-components"></a>Az architektúra összetevői
 
 A következő ábra egy Azure virtuális környezetben (a példában az USA keleti régiója helye) egy adott régióban magas szintű áttekintést nyújt. Egy Azure virtuális környezetben:
-- Storage-fiókok elosztva lemezek alkalmazásokat futtathat virtuális gépeken.
+- Alkalmazások futtathat virtuális gépeken felügyelt lemezek, vagy nem kezelt lemezek tárfiókokban elosztva.
 - A virtuális gépeket tartalmazhat egy vagy több alhálózatot a virtuális hálózaton belül.
 
 
@@ -49,7 +49,8 @@ Ha engedélyezi az Azure Virtuálisgép-replikációt, az alábbi erőforrások 
 **Cél-erőforráscsoport** | Az erőforráscsoport, amelybe a replikált virtuális gépek a feladatátvételt követően tartoznak.
 **Virtuális hálózati cél** | A virtuális hálózatot, amelyben replikált virtuális gépek a feladatátvétel után. A hálózatleképezés jön létre a forrás és cél virtuális hálózatok között, és ez fordítva is igaz.
 **Gyorsítótár-storage-fiókok** | Ahhoz a forrás virtuális gép változásai replikálódnak a cél tárfiókkal, ezeket nyomon követheti és a gyorsítótár tárfiók a forráshely küldött. Ez a lépés biztosítja a virtuális Gépen futó termelési alkalmazások gyakorolt minimális hatás mellett.
-**Cél storage-fiókok**  | Storage-fiók, amelyhez a rendszer replikálja az adatokat a célhelyre.
+**Cél storage-fiókok (Ha a forrás virtuális gép nem használ által kezelt lemezeken)**  | Storage-fiók, amelyhez a rendszer replikálja az adatokat a célhelyre.
+** A replika által kezelt lemezeken (Ha a virtuális gép a forrás által kezelt lemezeken) **  | Által kezelt lemezeken a célhelyen, amelyhez adatokat a rendszer replikálja.
 **Cél rendelkezésre állási csoportok**  | Rendelkezésre állási készletek, amelyek a replikált virtuális gépek a feladatátvétel után.
 
 ### <a name="step-2"></a>2. lépés
@@ -76,7 +77,7 @@ Ha Linux rendszerű virtuális gépeket szeretne egy replikációs csoport rész
 
 ### <a name="step-3"></a>3. lépés
 
-Miután folyamatos replikálásra van folyamatban, folyamat a lemezírásokat azonnal átkerülnek a gyorsítótár tárfiókot. A Site Recovery feldolgozza az adatokat, és elküldi a céloldali tárfiók. Az adatok feldolgozása után helyreállítási pontok létrejönnek a céloldali tárfiók néhány percenként.
+Miután folyamatos replikálásra van folyamatban, folyamat a lemezírásokat azonnal átkerülnek a gyorsítótár tárfiókot. A Site Recovery feldolgozza az adatokat, és elküldi a cél tárfiók, vagy a replika által kezelt lemezeken. Az adatok feldolgozása után helyreállítási pontok létrejönnek a céloldali tárfiók néhány percenként.
 
 ## <a name="failover-process"></a>Feladatátvételi folyamat
 

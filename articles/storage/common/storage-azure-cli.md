@@ -1,24 +1,24 @@
 ---
-title: "Az Azure parancssori felület 2.0 használatával az Azure Storage |} Microsoft Docs"
-description: "Megtudhatja, hogyan használható az Azure parancssori felület (CLI) 2.0 az Azure Storage létrehozása és a storage-fiókok kezelése és a munkahelyi Azure-blobokat és fájlokat. Az Azure CLI 2.0 pythonban írt platformfüggetlen eszköz."
+title: Az Azure parancssori felület 2.0 használatával az Azure Storage |} Microsoft Docs
+description: Megtudhatja, hogyan használható az Azure parancssori felület (CLI) 2.0 az Azure Storage létrehozása és a storage-fiókok kezelése és a munkahelyi Azure-blobokat és fájlokat. Az Azure CLI 2.0 pythonban írt platformfüggetlen eszköz.
 services: storage
 documentationcenter: na
-author: tamram
-manager: timlt
+author: roygara
+manager: jeconnoc
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/02/2017
-ms.author: tamram
-ms.openlocfilehash: 509c702054961c9d9fa525242ce0542059e32d81
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: rogarana
+ms.openlocfilehash: 99e67b9c8469f08f1cbfc980568eec35694d1ae2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="using-the-azure-cli-20-with-azure-storage"></a>Az Azure parancssori felület 2.0 használatával az Azure Storage
 
@@ -95,10 +95,10 @@ Subgroups:
 
 Az Azure-előfizetés az erőforrások használatához kell először jelentkezik be az Azure-fiókja `az login`. Többféleképpen is bejelentkezhet:
 
-* **Interaktív bejelentkezés**:`az login`
-* **Jelentkezzen be a felhasználónevet és jelszót**:`az login -u johndoe@contoso.com -p VerySecret`
+* **Interaktív bejelentkezés**: `az login`
+* **Jelentkezzen be a felhasználónevet és jelszót**: `az login -u johndoe@contoso.com -p VerySecret`
   * A Microsoft és fiókok számára, hogy a többtényezős hitelesítés használata mellett nem működik.
-* **Jelentkezzen be egy egyszerű**:`az login --service-principal -u http://azure-cli-2016-08-05-14-31-15 -p VerySecret --tenant contoso.onmicrosoft.com`
+* **Jelentkezzen be egy egyszerű**: `az login --service-principal -u http://azure-cli-2016-08-05-14-31-15 -p VerySecret --tenant contoso.onmicrosoft.com`
 
 ## <a name="azure-cli-20-sample-script"></a>Az Azure CLI 2.0 parancsfájlpéldát
 
@@ -146,11 +146,11 @@ echo "Done"
 
 3. Miután frissítette a szükséges változók, mentse a parancsfájlt, és zárja be a szerkesztőt. A következő lépések azt feltételezik, hogy a parancsfájl nevű **my_storage_sample.sh**.
 
-4. Szükség esetén jelölje meg a parancsfájl végrehajtható, mint:`chmod +x my_storage_sample.sh`
+4. Szükség esetén jelölje meg a parancsfájl végrehajtható, mint: `chmod +x my_storage_sample.sh`
 
-5. Hajtsa végre a parancsfájlt. Például a Bash:`./my_storage_sample.sh`
+5. Hajtsa végre a parancsfájlt. Például a Bash: `./my_storage_sample.sh`
 
-A következőhöz hasonló kimenetnek kell megjelennie, és a  **\<destination_file\>**  az megjelenjen-e a parancsfájl a helyi számítógépen.
+A következőhöz hasonló kimenetnek kell megjelennie, és a **\<destination_file\>** az megjelenjen-e a parancsfájl a helyi számítógépen.
 
 ```
 Creating the container...
@@ -187,10 +187,10 @@ az storage account create \
     --sku <account_sku>
 ```
 
-* `--location`[Szükséges]: helyét. Például "USA nyugati régiója".
-* `--name`[Szükséges]: A tárfiók nevét. A névnek kell 3 – 24 karakter hosszúságú lehet, és csak kisbetűs alfanumerikus karaktereket használjon.
-* `--resource-group`[Szükséges]: erőforráscsoport nevét.
-* `--sku`[Szükséges]: A tárfiók Termékváltozat. Megengedett értékek:
+* `--location` [Szükséges]: helyét. Például "USA nyugati régiója".
+* `--name` [Szükséges]: A tárfiók nevét. A névnek kell 3 – 24 karakter hosszúságú lehet, és csak kisbetűs alfanumerikus karaktereket használjon.
+* `--resource-group` [Szükséges]: erőforráscsoport nevét.
+* `--sku` [Szükséges]: A tárfiók Termékváltozat. Megengedett értékek:
   * `Premium_LRS`
   * `Standard_GRS`
   * `Standard_LRS`
@@ -236,7 +236,7 @@ az storage container create --name <container_name>
 
 Beállíthatja három szintjének olvasási hozzáférés egy új tároló az opcionális megadásával `--public-access` argumentum:
 
-* `off`(alapértelmezett): tároló adatokat a fiók tulajdonosának a saját.
+* `off` (alapértelmezett): tároló adatokat a fiók tulajdonosának a saját.
 * `blob`: Blobok nyilvános olvasási hozzáférés.
 * `container`: A teljes tárolóhoz nyilvános olvasási és lista eléréséhez.
 
@@ -396,7 +396,7 @@ Minta kimenet
 
 ### <a name="list-share-snapshots"></a>Lista megosztás pillanatképek
 
-Előfordulhat, hogy felsorolja megosztás pillanatképek egy adott használatával`az storage share list --include-snapshots`
+Előfordulhat, hogy felsorolja megosztás pillanatképek egy adott használatával `az storage share list --include-snapshots`
 
 ```cli
 az storage share list --include-snapshots
@@ -439,7 +439,7 @@ az storage share list --include-snapshots
 ```
 
 ### <a name="browse-share-snapshots"></a>Keresse meg a megosztás pillanatképek
-Előfordulhat, hogy is Tallózás a pillanatkép-megtekintéséhez a tartalom használatával egy adott megosztás `az storage file list`. Egy megosztás nevének megadására van `--share-name <snare name>` és az időbélyeg`--snapshot '2017-10-04T19:45:18.0000000Z'`
+Előfordulhat, hogy is Tallózás a pillanatkép-megtekintéséhez a tartalom használatával egy adott megosztás `az storage file list`. Egy megosztás nevének megadására van `--share-name <snare name>` és az időbélyeg `--snapshot '2017-10-04T19:45:18.0000000Z'`
 
 ```azurecli-interactive
 az storage file list --share-name sharesnapshotdefs --snapshot '2017-10-04T19:45:18.0000000Z' -otable

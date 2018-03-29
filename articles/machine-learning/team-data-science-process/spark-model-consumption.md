@@ -1,8 +1,8 @@
 ---
-title: "Azok a Spark-beépített machine learning modellek |} Microsoft Docs"
-description: "Hogyan tölthetők be, és az Azure Blob Storage (WASB) Python tárolt tanulási modellek pontozása."
+title: Azok a Spark-beépített machine learning modellek |} Microsoft Docs
+description: Hogyan tölthetők be, és az Azure Blob Storage (WASB) Python tárolt tanulási modellek pontozása.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: jhubbard
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
-ms.author: deguhath;bradsev;gokuma
-ms.openlocfilehash: 9ff633b4543fbc537ffdb721756706e8de5e8e88
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.author: bradsev
+ms.openlocfilehash: 3a586d40a9d195fe5ec3fa456d450cb3d86f2e9d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Azok a Spark-beépített machine learning modellek
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
@@ -85,7 +85,7 @@ A könyvtár elérési útvonalak beállítása a kód itt látható:
 
 **A KIMENETRE:**
 
-DateTime.DateTime (2016, 4, 25, 23, 56, 19, 229403)
+datetime.datetime(2016, 4, 25, 23, 56, 19, 229403)
 
 ### <a name="import-libraries"></a>Könyvtárak importálása
 Spark környezet beállítása, majd importálja a következő kóddal szükséges kódtárak
@@ -115,7 +115,7 @@ A Jupyter notebookok kapnak PySpark kernelt beállításkészletet kontextusban 
 A PySpark kernel tartalmaz néhány előre definiált "magics", amelyeket speciális meghívhatja a parancsok %%. Nincsenek két ilyen parancsot a következő kód mintákat használt.
 
 * **%% helyi** megadott helyileg hajtotta végre az egymás utáni sorok a kódot. Kód érvényes Python-kódot kell lennie.
-* **%% sql -o<variable name>** 
+* **%% sql -o <variable name>** 
 * Végrehajtja a Hive-lekérdezések a sqlContext ellen. Ha az -o paramétert, a lekérdezés eredménye megőrződjön-e az a %%, egy Pandas dataframe helyi Python-környezetben.
 
 További információ a Jupyter notebookokból és az előre meghatározott kernelek "magics", amely a biztosítanak, lásd: [HDInsight Spark Linux és a Jupyter notebookok elérhető kernelek a HDInsight-fürtök](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
@@ -587,7 +587,7 @@ A kód szabad ügyfélélmény tetszés szerint használja a [Azure Logic Apps](
 * Elindítani a **Logic Apps Designer**, adja meg a Logic App és az App Service-csomag nevét.
 * Válasszon ki egy HTTP-műveletet, és adja meg a paramétereket, az alábbi ábrán látható:
 
-![Logic Apps-Tervező](./media/spark-model-consumption/spark-logica-app-client.png)
+![Logic Apps Designer](./media/spark-model-consumption/spark-logica-app-client.png)
 
 ## <a name="whats-next"></a>A következő lépések
 **Kereszt-ellenőrzési és hyperparameter abszolút**: lásd: [speciális adatok feltárása és Spark modellezés](spark-advanced-data-exploration-modeling.md) meg, hogyan lehet a modellek betanítása a kereszt-ellenőrzési és a hyper-paraméter abszolút használatával.

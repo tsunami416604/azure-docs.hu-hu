@@ -1,6 +1,6 @@
 ---
-title: "Az SQL Server rendelkezésre állási csoportok – az Azure Virtual Machines - oktatóanyag |} Microsoft Docs"
-description: "Ez az oktatóanyag bemutatja, hogyan hozhat létre egy SQL Server mindig a rendelkezésre állási csoport Azure virtuális gépeken."
+title: Az SQL Server rendelkezésre állási csoportok – az Azure Virtual Machines - oktatóanyag |} Microsoft Docs
+description: Ez az oktatóanyag bemutatja, hogyan hozhat létre egy SQL Server mindig a rendelkezésre állási csoport Azure virtuális gépeken.
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: 70e483f8b64648200bd6f0898a2877c2bf95e590
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: fe79c6e6344bef8f25ae2e343e3301959c4e0ae5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Konfigurálás mindig a rendelkezésre állási csoport az Azure virtuális gép manuálisan
 
@@ -356,7 +356,7 @@ Azure virtuális gépeken futó SQL Server rendelkezésre állási csoport terhe
    | **Virtuális hálózat** |Az Azure virtuális hálózat nevét használja. |
    | **Alhálózat** |Az alhálózathoz, amelyhez a virtuális gép nevét használja.  |
    | **IP-cím hozzárendelése** |Statikus |
-   | **IP-cím** |Egy alhálózatból címet használja. |
+   | **IP-cím** |Egy alhálózatból címet használja. Ez eltér a fürt IP-címe |
    | **Előfizetés** |Használja a virtuális gép ugyanahhoz az előfizetéshez. |
    | **Hely** |A virtuális gép ugyanazon a helyen használható. |
 

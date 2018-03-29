@@ -1,10 +1,10 @@
 ---
-title: "Az Azure Storage kapcsolati karakterláncának konfigurálása |} Microsoft Docs"
-description: "Az Azure-tárfiók kapcsolati karakterláncának konfigurálása. A kapcsolati karakterlánc hitelesíti a hozzáférést a tárfiókhoz futásidőben az alkalmazásból szükséges információkat tartalmazza."
+title: Az Azure Storage kapcsolati karakterláncának konfigurálása |} Microsoft Docs
+description: Az Azure-tárfiók kapcsolati karakterláncának konfigurálása. A kapcsolati karakterlánc hitelesíti a hozzáférést a tárfiókhoz futásidőben az alkalmazásból szükséges információkat tartalmazza.
 services: storage
-documentationcenter: 
-author: tamram
-manager: timlt
+documentationcenter: ''
+author: craigshoemaker
+manager: jeconnoc
 editor: tysonn
 ms.assetid: ecb0acb5-90a9-4eb2-93e6-e9860eda5e53
 ms.service: storage
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
-ms.author: tamram
-ms.openlocfilehash: 192799cb44dc9a56c65a6414c1267c506252fe29
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: cshoe
+ms.openlocfilehash: dee0fd68ccaf80ff6e44ee10fa24bb19e220d0d5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Configure Azure Storage connection strings (Az Azure Storage kapcsolati karakterláncok konfigurálása)
 
@@ -132,7 +132,7 @@ EndpointSuffix=core.chinacloudapi.cn;
 ## <a name="parsing-a-connection-string"></a>A kapcsolódási karakterlánc elemzésekor
 [!INCLUDE [storage-cloud-configuration-manager-include](../../../includes/storage-cloud-configuration-manager-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az Azure storage emulator használata a fejlesztéshez és teszteléshez](storage-use-emulator.md)
 * [Az Azure Storage-kezelők](storage-explorers.md)
 * [Közös hozzáférésű Jogosultságkód (SAS) használatával](storage-dotnet-shared-access-signature-part-1.md)

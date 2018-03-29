@@ -1,24 +1,24 @@
 ---
-title: "Adatgyűjtést és a csoport az tudományos folyamata életciklus - Azure szakasza ismertetése |} Microsoft Docs"
-description: "A célok, a feladatok és a termékek esetében az adatgyűjtést és a adattudomány projektek állapotának ismertetése"
+title: Adatgyűjtést és a csoport az tudományos folyamata életciklus - Azure szakasza ismertetése |} Microsoft Docs
+description: A célok, a feladatok és a termékek esetében az adatgyűjtést és a adattudomány projektek állapotának ismertetése
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev;
-ms.openlocfilehash: 9618653e8f77c69a3a95fe27ee55c4f05c55a66e
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.author: bradsev
+ms.openlocfilehash: 028992561b1c2481dc72af3c4edcc16f65f25105
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="data-acquisition-and-understanding"></a>Adatgyűjtés és adatértelmezés
 
@@ -72,7 +72,7 @@ A következők a céljai legyenek ebben a szakaszban:
    * **Megoldás architektúrája**: A megoldásarchitektúra lehet egy diagramot, vagy az adatok leírása a következő feldolgozási sorban, amikor pontozási futtatásával vagy az új adatok előrejelzéseket a modell létrehozása után. A kimenetátirányítási újratanítása a modellt új adatok alapján is tartalmaz. A dokumentum tárolása a [projekt](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project) directory a TDSP directory struktúra sablon használatakor.
    * **Ellenőrzőpont döntési**: teljes körű szolgáltatásokat termékgondozó csoportja és a modell létrehozásának megkezdése előtt is újra kiértékelje a projekt meghatározásához. a várt értéket elméletben a minden esetben hasznos, a folytatáshoz elegendő. Lehet, például lehet készen áll a folytatáshoz további adatokat gyűjteni, vagy szakítsa a projekt, az adatok nem létezik a kérdésre válaszolnia kell.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbiakban a TDSP életciklusát lépésre mutató hivatkozásokat:
 

@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: 7567ce516e6d08a458ff96f4554d9e92934408f5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8c976e5508c928943e2a5e4820f72520554f9b5d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Az Azure HDInsight eszközök segítségével a Visual Studio Code
 
@@ -69,9 +69,9 @@ Munkaterület létrehozása a Visual STUDIO Code, mielőtt csatlakozna az Azure-
 
 4. Nyissa meg **XXXX_hdi_settings.json** a **EXPLORER**, vagy kattintson a jobb gombbal a parancsprogram-szerkesztő kiválasztásához **konfigurációs beállítása**. Bejelentkezési bejegyzést, az alapértelmezett fürt és a feladat elküldése paramétereit a fájlban a mintában látható módon is konfigurálhatja. Is hagyhatja a többi paraméter üres.
 
-## <a name="connect-to-azure"></a>Csatlakozás az Azure szolgáltatáshoz
+## <a name="connect-to-hdinsight-cluster"></a>HDInsight-fürthöz csatlakozik
 
-Elküldés előtt parancsfájlok a HDInsight-fürtökhöz a Visual STUDIO Code, csatlakozni kell az Azure-fiókjával.
+Elküldés előtt parancsfájlok a HDInsight-fürtökhöz a Visual STUDIO Code, szeretné-e csatlakozni az Azure-fiókjával, vagy hivatkozás egy fürt (Ambari használatával felhasználónév/jelszó adatokat vagy tartományhoz csatlakozó fiókot).
 
 **Csatlakozás az Azure-bA**
 

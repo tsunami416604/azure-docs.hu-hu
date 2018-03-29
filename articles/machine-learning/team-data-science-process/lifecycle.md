@@ -1,8 +1,8 @@
 ---
-title: "A csoport az tudományos folyamata életciklus - Azure |} Microsoft Docs"
-description: "A adattudomány projektek végrehajtásához szükséges lépéseket"
+title: A csoport az tudományos folyamata életciklus - Azure |} Microsoft Docs
+description: A adattudomány projektek végrehajtásához szükséges lépéseket
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev;
-ms.openlocfilehash: 5d69d4d2371b42b3595cf3dc71d99d913e225c59
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.author: bradsev
+ms.openlocfilehash: a971e40bc4338f187991eeae991044248844d8b6
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>A csoport az tudományos folyamata életciklusa
 
@@ -47,7 +47,7 @@ Minden szakaszhoz azt adja meg a következő információkat:
    * **Megtudhatja, hogyan teheti**: áttekintése, amelyek a meghatározott feladatok és útmutatás végrehajtani azokat.
    * **Az összetevők**: A termékek és a támogatási azt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Teljes-végpontok forgatókönyvek, amelyek azt mutatják, meghatározott forgatókönyvek esetén a folyamat lépései a Microsoft biztosítja. A [példa forgatókönyvek](walkthroughs.md) a cikk ismerteti a miniatűr leírások és hivatkozások forgatókönyvek listája. A forgatókönyvek bemutatják, hogyan lehet a felhő, a helyszíni eszközök és szolgáltatások egyesítése munkafolyamat vagy csővezeték intelligens alkalmazás létrehozása. 
 

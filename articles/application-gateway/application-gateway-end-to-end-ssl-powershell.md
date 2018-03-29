@@ -1,24 +1,22 @@
 ---
-title: "Végpontok közötti SSL konfigurálása az Azure Application Gateway |} Microsoft Docs"
-description: "Ez a cikk ismerteti, hogyan végpontok közötti SSL konfigurálása az Azure Application Gateway PowerShell használatával"
+title: Azure Application Gateway-végpontok közötti SSL konfigurálása
+description: Ez a cikk ismerteti, hogyan végpontok közötti SSL konfigurálása az Azure Application Gateway PowerShell használatával
 services: application-gateway
 documentationcenter: na
-author: davidmu1
-manager: timlt
-editor: tysonn
-ms.assetid: e6d80a33-4047-4538-8c83-e88876c8834e
+author: vhorne
+manager: jpconnock
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/19/2017
-ms.author: davidmu
-ms.openlocfilehash: df14d5c4572a250f9f8951ee3b86e87e6f652782
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 3/27/2018
+ms.author: victorh
+ms.openlocfilehash: 2de7086d7c26d5a655ad5998678f392126ea7e1d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Végpontok közötti SSL konfigurálása az Alkalmazásátjáró a PowerShell használatával
 
@@ -160,7 +158,8 @@ Az összes konfigurációs elemek vannak állítva az Alkalmazásátjáró létr
    5. A tanúsítvány az alkalmazás-átjáró konfigurálása. Ezt a tanúsítványt a forgalmat az Alkalmazásátjáró reencrypt és visszafejtésére szolgál.
 
    ```powershell
-   $cert = New-AzureRmApplicationGatewaySSLCertificate -Name cert01 -CertificateFile <full path to .pfx file> -Password <password for certificate file>
+   $password = ConvertTo-SecureString  <password for certificate file> -AsPlainText -Force 
+   $cert = New-AzureRmApplicationGatewaySSLCertificate -Name cert01 -CertificateFile <full path to .pfx file> -Password $password 
    ```
 
    > [!NOTE]
@@ -177,7 +176,7 @@ Az összes konfigurációs elemek vannak állítva az Alkalmazásátjáró létr
    > [!NOTE]
    > Az alapértelmezett mintavétel lekérdezi a nyilvános kulcs a a *alapértelmezett* SSL-kötést a háttér IP-cím és a nyilvános kulcs értékét, kapott a nyilvános kulcs értékét Ön adja meg itt hasonlítja össze. 
    
-   > Ha állomásfejléc és kiszolgálónév jelzése (SNI) a háttérben futó használ, a letöltött nyilvános kulcs nem feltétlenül a kívánt helyet, hogy milyen forgalom. Ha kétségei vannak, látogasson el https://127.0.0.1/ erősítse meg, melyik tanúsítványt használják a háttér-kiszolgálókon a *alapértelmezett* SSL-kötést. A nyilvános kulcs a kérés használja ebben a szakaszban. Ha a HTTPS-kötések használunk állomásfejléc és SNI, és nem jelenik meg egy válasz és a tanúsítvány egy manuális böngésző kérelemből való https://127.0.0.1/ a háttér-kiszolgálókon, be kell állítania egy alapértelmezett SSL-kötést a rajtuk. Ha ezt nem teszi meg, mintavételt sikertelen lesz, és a program nem szerepel az engedélyezési listán.
+   > Ha állomásfejléc és kiszolgálónév jelzése (SNI) a háttérben futó használ, a letöltött nyilvános kulcs nem feltétlenül a kívánt helyet, hogy milyen forgalom. Ha kétségei vannak, látogasson el a https://127.0.0.1/ erősítse meg, melyik tanúsítványt használják a háttér-kiszolgálókon a *alapértelmezett* SSL-kötést. A nyilvános kulcs a kérés használja ebben a szakaszban. Ha a HTTPS-kötések használunk állomásfejléc és SNI, és nem kapott választ, és a tanúsítvány manuális böngésző kérelem https://127.0.0.1/ a háttér-kiszolgálókon be kell állítania egy alapértelmezett SSL-kötést a rajtuk. Ha ezt nem teszi meg, mintavételt sikertelen lesz, és a program nem szerepel az engedélyezési listán.
 
    ```powershell
    $authcert = New-AzureRmApplicationGatewayAuthenticationCertificate -Name 'whitelistcert1' -CertificateFile C:\users\gwallace\Desktop\cert.cer
@@ -283,7 +282,7 @@ DnsSettings              : {
                             }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alkalmazás átjárón keresztül webalkalmazási tűzfal a webalkalmazások biztonsági korlátozások kapcsolatos további információkért tekintse meg a [webalkalmazás tűzfal áttekintése](application-gateway-webapplicationfirewall-overview.md).
 

@@ -13,19 +13,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 03/27/2018
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aa95cae5d62ebe23d6822232c4a5ab872e1f2c6a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5b0e46eb001e0b100ad1e181b02c18cfe67648f9
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Az Azure Cosmos Adatbázisba hangolható konzisztencia szintek
 Azure Cosmos-adatbázis úgy van kialakítva egészen az alapoktól fel a globális terjesztési szem előtt az összes adatmodell. Előre jelezhető késés garanciák és több jól meghatározott laza konzisztencia modellek tervezték. Jelenleg az Azure Cosmos DB biztosít öt konzisztenciaszintek: erős, kötött elavulás, munkamenet, egységes előtag, és végleges. Kötött elavulás, munkamenet, egységes előtag és végleges biztosan néven "laza konzisztencia modellek" azok adjon meg kevesebb konzisztencia erős, mint amely a legtöbb rendelkezésre állású egységes modellje. 
 
 Emellett a **erős** és **végleges konzisztencia** modellek gyakran által nyújtott elosztott adatbázisok Azure Cosmos DB három további gondosan kódolt és operationalized konzisztencia modellt kínál:  **a kötött elavulási**, **munkamenet**, és **konzisztens előtag**. Mindegyik konzisztencia szinten hasznosságát ellenőrzött valós használati esetek ellen. Együttesen ezek öt konzisztenciaszintek lehetővé teszi végre jól indokolt kompromisszumot konzisztencia, a rendelkezésre állás és a késleltetés között. 
+
+Az alábbi videó az Azure Cosmos DB Programvezető Andrew Liu a kulcsrakész globális terjesztési funkciókat mutatja be.
+
+>[!VIDEO https://www.youtube.com/embed/-4FsGysVD14]
 
 ## <a name="distributed-databases-and-consistency"></a>Elosztott adatbázisok és a konzisztencia
 Kereskedelmi elosztott adatbázisok két kategóriába sorolhatók: adatbázisok, amelyek egyáltalán nem képes a jól meghatározott hangelemzés konzisztencia lehetőségeket, és két szélsőséges programozhatóság lehetőség (erős és a végleges konzisztencia) adatbázisok. 

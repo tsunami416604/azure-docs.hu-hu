@@ -1,11 +1,11 @@
 ---
 title: SQL Data Warehouse Transact-SQL referencia |} Microsoft Docs
-description: "A Transact-SQL témaköröket, használja az SQL Data Warehouse referenciatartalmat mutató hivatkozásokat."
+description: A Transact-SQL témaköröket, használja az SQL Data Warehouse referenciatartalmat mutató hivatkozásokat.
 services: sql-data-warehouse
 documentationcenter: NA
 author: kevinvngo
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 0abc5934-1e67-491a-b7d7-8b520d1ae98e
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: reference
-ms.date: 10/31/2016
+ms.date: 03/22/2018
 ms.author: kevin;barbkess
-ms.openlocfilehash: d6ad9db8eae0dc35580194f2ffbf02eeab6b70d2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f2148f6087a43f9cec252df4ef2b97b4a7afcb3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="transact-sql-topics"></a>Transact-SQL kapcsolatos témakörök
+# <a name="transact-sql-topics"></a>Transact-SQL topics
 ## <a name="data-definition-language-ddl-statements"></a>Adatok Definition nyelvi (DDL) utasítás
 * [ALTER DATABASE](https://msdn.microsoft.com/library/mt204042.aspx)
 * [AZ ALTER INDEX](https://msdn.microsoft.com/library/ms188388.aspx)
@@ -37,26 +37,26 @@ ms.lasthandoff: 10/11/2017
 * [FÜGGVÉNY LÉTREHOZÁSA](https://msdn.microsoft.com/library/mt203952.aspx)
 * [INDEX LÉTREHOZÁSA](https://msdn.microsoft.com/library/ms188783.aspx)
 * [ELJÁRÁS LÉTREHOZÁSA](https://msdn.microsoft.com/library/ms187926.aspx)
-* [SÉMA LÉTREHOZÁSA](https://msdn.microsoft.com/library/ms189462.aspx)
+* [CREATE SCHEMA](https://msdn.microsoft.com/library/ms189462.aspx)
 * [CREATE STATISTICS](https://msdn.microsoft.com/library/ms188038.aspx)
 * [CREATE TABLE](https://msdn.microsoft.com/library/mt203953.aspx)
 * [CREATE TABLE AS SELECT](https://msdn.microsoft.com/library/mt204041.aspx)
 * [NÉZET LÉTREHOZÁSA](https://msdn.microsoft.com/library/ms187956.aspx)
 * [KÜLSŐ ADATFORRÁSBÓL ELDOBÁSI](https://msdn.microsoft.com/library/mt146367.aspx)
-* [DOBJA EL A KÜLSŐ FÁJLFORMÁTUM](https://msdn.microsoft.com/library/mt146379.aspx)
+* [DROP EXTERNAL FILE FORMAT](https://msdn.microsoft.com/library/mt146379.aspx)
 * [DOBJA EL A KÜLSŐ TÁBLA](https://msdn.microsoft.com/library/mt130698.aspx)
 * [A DROP INDEX](https://msdn.microsoft.com/library/ms176118.aspx)
 * [A DROP ELJÁRÁST](https://msdn.microsoft.com/library/ms174969.aspx)
 * [KÖZVETLEN STATISZTIKÁK](https://msdn.microsoft.com/library/ms175075.aspx)
 * [KÖZVETLEN TÁBLA](https://msdn.microsoft.com/library/ms173790.aspx)
-* [KÖZVETLEN SÉMA](https://msdn.microsoft.com/library/ms186751.aspx)
+* [DROP SCHEMA](https://msdn.microsoft.com/library/ms186751.aspx)
 * [KÖZVETLEN MEGTEKINTÉSE](https://msdn.microsoft.com/library/ms173492.aspx)
 * [NEVEZZE ÁT](https://msdn.microsoft.com/library/mt631611.aspx)
 * [TRUNCATE TABLE](https://msdn.microsoft.com/library/ms177570.aspx)
 * [UPDATE STATISTICS](https://msdn.microsoft.com/library/ms187348.aspx)
 
 ## <a name="data-manipulation-language-dml-statements"></a>Adatok adatkezelési nyelvi (DML) utasítás
-* [TÖRLÉSE](https://msdn.microsoft.com/library/ms189835.aspx)
+* [DELETE](https://msdn.microsoft.com/library/ms189835.aspx)
 * [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)
 * [FRISSÍTÉS](https://msdn.microsoft.com/library/ms177523.aspx)
 
@@ -70,22 +70,22 @@ ms.lasthandoff: 10/11/2017
 * [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/mt204043.aspx)
 
 ## <a name="query-statements"></a>Lekérdezési utasítás
-* [VÁLASSZA KI](https://msdn.microsoft.com/library/ms189499.aspx)
+* [SELECT](https://msdn.microsoft.com/library/ms189499.aspx)
 * [A common_table_expression](https://msdn.microsoft.com/library/ms175972.aspx)
 * [INTERSECT és kivételével](https://msdn.microsoft.com/library/ms188055.aspx)
-* [MAGYARÁZÓ](https://msdn.microsoft.com/library/mt631615.aspx)
-* [A](https://msdn.microsoft.com/library/ms177634.aspx)
+* [EXPLAIN](https://msdn.microsoft.com/library/mt631615.aspx)
+* [FROM](https://msdn.microsoft.com/library/ms177634.aspx)
 * [PIVOT és az UNPIVOT használatával](https://msdn.microsoft.com/library/ms177410.aspx)
 * [CSOPORTOSÍTÁSI SZEMPONT](https://msdn.microsoft.com/library/ms177673.aspx)
-* [HA](https://msdn.microsoft.com/library/ms180199.aspx)
+* [HAVING](https://msdn.microsoft.com/library/ms180199.aspx)
 * [ORDER BY](https://msdn.microsoft.com/library/ms188385.aspx)
 * [OPTION](https://msdn.microsoft.com/library/ms190322.aspx)
 * [A UNION](https://msdn.microsoft.com/library/ms180026.aspx)
-* [HA](https://msdn.microsoft.com/library/ms188047.aspx)
-* [FELSŐ](https://msdn.microsoft.com/library/ms189463.aspx)
-* [Aliasképző](https://msdn.microsoft.com/library/mt631614.aspx)
+* [WHERE](https://msdn.microsoft.com/library/ms188047.aspx)
+* [TOP](https://msdn.microsoft.com/library/ms189463.aspx)
+* [Aliasing](https://msdn.microsoft.com/library/mt631614.aspx)
 * [Keresési feltétel](https://msdn.microsoft.com/library/ms173545.aspx)
-* [A segédlekérdezések](https://msdn.microsoft.com/library/mt631613.aspx)
+* [Subqueries](https://msdn.microsoft.com/library/mt631613.aspx)
 
 ## <a name="security-statements"></a>Biztonsági utasítások
 * Engedélyek: [GRANT](https://msdn.microsoft.com/library/ms187965.aspx), [MEGTAGADÁS](https://msdn.microsoft.com/library/ms188338.aspx), [visszavonása](https://msdn.microsoft.com/library/ms187728.aspx)
@@ -112,13 +112,13 @@ ms.lasthandoff: 10/11/2017
 * [KÖZVETLEN FELHASZNÁLÓ](https://msdn.microsoft.com/library/ms189438.aspx)
 * [NYISSA MEG A FŐKULCS](https://msdn.microsoft.com/library/ms174433.aspx)
 
-## <a name="next-steps"></a>Következő lépések
-További TSQL, tekintse meg a [SQL Data Warehouse hivatkozás áttekintés][SQL Data Warehouse reference overview].
+## <a name="next-steps"></a>További lépések
+További TSQL referenciáért lásd: [SQL Data Warehouse T-SQL nyelvi elemek](sql-data-warehouse-reference-tsql-language-elements.md).
 
 <!--Image references-->
 
 <!--Article references-->
-[SQL Data Warehouse reference overview]: sql-data-warehouse-overview-reference.md
+
 
 <!--MSDN references-->
 

@@ -1,24 +1,24 @@
 ---
-title: "Hálózati topológia az Azure SQL DB felügyelt példány áttelepítéshez az Azure-adatbázis áttelepítése szolgáltatással |} Microsoft Docs"
-description: "Ismerje meg, hogy a forrás és cél konfigurációk adatbázis áttelepítési szolgáltatás."
+title: Hálózati topológia az Azure SQL DB felügyelt példány áttelepítéshez az Azure-adatbázis áttelepítése szolgáltatással |} Microsoft Docs
+description: Ismerje meg, hogy a forrás és cél konfigurációk adatbázis áttelepítési szolgáltatás.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
-manager: 
-ms.reviewer: 
+manager: ''
+ms.reviewer: ''
 ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 03/06/2018
-ms.openlocfilehash: 892cff02b5b70f09236bb37ae786f180ddca9316
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 5904864ffba656dab17e1549ed9832be4258a67f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="network-topologies-for-azure-sql-db-managed-instance-migrations-using-the-azure-database-migration-service"></a>Az Azure SQL DB felügyelt példány áttelepítéshez az Azure-adatbázis áttelepítése szolgáltatással hálózati topológiák
-Ebből a cikkből megtudhatja, hogyan különböző hálózati topológiákat, hogy Azure adatbázis áttelepítési szolgáltatás együttműködhet az áttelepítési zökkenőmentes élményt biztosíthat az Azure SQL Database felügyelt-példányt a helyszíni SQL Server-kiszolgálók.
+Ebből a cikkből megtudhatja, hogyan különböző hálózati topológiákat, amely az Azure-adatbázis áttelepítési szolgáltatás zökkenőmentes áttelepítés felületet tudjon biztosítani a helyszíni SQL Server-kiszolgálók az Azure SQL adatbázis felügyelt példányra való használható.
 
 ## <a name="azure-sql-database-managed-instance-configured-for-hybrid-workloads"></a>Az Azure SQL adatbázis felügyelt példány konfigurálva hibrid munkaterhelések 
 Ez a topológia akkor használja, ha az Azure SQL adatbázis-felügyelt példány a helyi hálózathoz csatlakozik. Ezt a módszert biztosít a leggyakrabban egyszerűsített hálózati, és adatok legnagyobb átviteli sebességet eredményez az áttelepítés során.
@@ -27,28 +27,42 @@ Ez a topológia akkor használja, ha az Azure SQL adatbázis-felügyelt példán
 
 **Követelmények**
 - Ebben a forgatókönyvben az Azure SQL adatbázis-felügyelt példány és az Azure adatbázis áttelepítési szolgáltatáspéldány ugyanazon Azure virtuális jönnek létre, de különböző alhálózatokon használnak.  
-- Az ebben a forgatókönyvben használt VNET is a helyszíni hálózathoz csatlakozik ExpressRoute vagy VPN használatával.
+- Az ebben a forgatókönyvben használt VNET is csatlakozik-e a helyszíni hálózat használatával vagy [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
 
 ## <a name="azure-sql-database-managed-instance-isolated-from-the-on-premises-network"></a>Az Azure SQL adatbázis felügyelt példány különítve a helyszíni hálózat
 A hálózati topológia használja, ha a környezetében szükséges legalább egy, a következő esetekben:
 - Az Azure SQL adatbázis-felügyelt példány el különítve a helyi kapcsolat, de az Azure adatbázis áttelepítési szolgáltatáspéldány a helyszíni hálózathoz csatlakozik.
-- Szerepkör alapú hozzáférés-vezérlés (RBAC) házirendek legyenek érvényben, és ugyanahhoz az előfizetéshez, amelyen az Azure SQL adatbázis felügyelt példány felhasználói hozzáférés korlátozására.
-- Az Azure SQL Database felügyelt-példányt és Azure adatbázis áttelepítési szolgáltatás Vnetekhez különböző előfizetésekhez vannak.
+- Ha a szerepköralapú hozzáférés vezérlés (RBAC) házirendek legyenek érvényben, és ugyanahhoz az előfizetéshez, amelyen az Azure SQL adatbázis felügyelt példány elérése a felhasználók korlátozása kell.
+- A Vnetek az Azure SQL adatbázis-felügyelt példány használja, és az Azure-adatbázis áttelepítési szolgáltatás különböző előfizetésekhez.
 
 ![A helyszíni hálózat különítve felügyelt példány hálózati topológia](media\resource-network-topologies\mi-isolated-workload.png)
 
 **Követelmények**
-- A VNET Azure adatbázis áttelepítési szolgáltatás által használt ebben a forgatókönyvben is kapcsolódnia kell a helyszíni hálózat ExpressRoute vagy VPN használatával.
-- Hozzon létre egy virtuális hálózat hálózati társviszony-létesítés a VNETBEN használt Azure SQL adatbázis felügyelt példányhoz, és Azure adatbázis áttelepítési szolgáltatás között.
+- A VNET Azure adatbázis áttelepítési szolgáltatás által használt ebben a forgatókönyvben is kapcsolódnia kell a helyszíni hálózat használatával (https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+- Be kell állítania [virtuális hálózat hálózati társviszony-létesítés](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) a VNETBEN használt Azure SQL adatbázis felügyelt példányhoz, és az Azure-adatbázis áttelepítési szolgáltatás között.
 
 
-## <a name="cloud-to-cloud-migrations"></a>Felhő áttelepítések felhőbe
-Ez a topológia használja, ha a forrás SQL Server Azure virtuális gépre.
+## <a name="cloud-to-cloud-migrations-shared-vnet"></a>Felhő felhő áttelepítések: megosztott virtuális hálózat
 
-![Hálózati topológia felhő felhő áttelepítések](media\resource-network-topologies\cloud-to-cloud.png)
+Ebben a topológiában használja, ha a forrás SQL Server egy Azure virtuális gép üzemel, és osztja meg ugyanazt a virtuális Hálózatot az Azure SQL Database felügyelt-példányt és az Azure-adatbázis áttelepítési szolgáltatás.
+
+![Hálózati topológia felhő felhő áttelepítések egy megosztott virtuális hálózaton](media\resource-network-topologies\cloud-to-cloud.png)
 
 **Követelmények**
-- Hozzon létre egy virtuális hálózat hálózati társviszony-létesítés a VNETBEN használt Azure SQL adatbázis felügyelt példányhoz, és Azure adatbázis áttelepítési szolgáltatás között.
+- Nincsenek további követelmények.
+
+## <a name="cloud-to-cloud-migrations-isolated-vnet"></a>Felhő áttelepítésre felhőbeli: elkülönített hálózatok
+
+A hálózati topológia használja, ha a környezetében szükséges legalább egy, a következő esetekben:
+- Az Azure SQL adatbázis-felügyelt példány egy elszigetelt virtuális lett kiépítve.
+- Ha a szerepköralapú hozzáférés vezérlés (RBAC) házirendek legyenek érvényben, és ugyanahhoz az előfizetéshez, amelyen az Azure SQL adatbázis felügyelt példány elérése a felhasználók korlátozása kell.
+- Az Azure SQL Database felügyelt-példányt és az Azure-adatbázis áttelepítési szolgáltatás Vnetekhez különböző előfizetésekhez vannak.
+
+![Hálózati topológia felhő felhő áttelepítések egy elszigetelt virtuális hálózaton](media\resource-network-topologies\cloud-to-cloud-isolated.png)
+
+**Követelmények**
+- Be kell állítania [virtuális hálózat hálózati társviszony-létesítés](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) a VNETBEN használt Azure SQL adatbázis felügyelt példányhoz, és az Azure-adatbázis áttelepítési szolgáltatás között.
+
 
 ## <a name="see-also"></a>Lásd még:
 - [Az Azure SQL adatbázis felügyelt példány SQL-kiszolgáló áttelepítése](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance)

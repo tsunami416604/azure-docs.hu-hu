@@ -1,11 +1,11 @@
 ---
-title: "Az Azure virtuálisgép-skálázási készletekben – gyakori kérdések |} Microsoft Docs"
-description: "Virtuálisgép-méretezési csoportok gyakran feltett kérdésekre adott válaszok."
+title: Az Azure virtuálisgép-skálázási készletekben – gyakori kérdések |} Microsoft Docs
+description: Virtuálisgép-méretezési csoportok gyakran feltett kérdésekre adott válaszok.
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
@@ -16,15 +16,55 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: 52be84b73e70a02c43ef71917dc272060d82b42d
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 4dd908908877a222c708c9b2ab6255ab9a4b414a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Az Azure virtuálisgép-skálázási készletekben – gyakori kérdések
 
 Válaszok virtuálisgép-méretezési csoportok kapcsolatos gyakori kérdések az Azure-ban.
+
+## <a name="top-frequently-asked-questions-for-scale-sets"></a>Gyakori kérdések a méretezési készlet felső
+**K.** Hány virtuális gépet tartalmazhat egy méretezési csoport?
+
+**V.** A méretezési csoport 0–1000, platformrendszerképen alapuló virtuális gépet, vagy 0–300, egyéni rendszerképen alapuló virtuális gépet tartalmazhat. 
+
+**K.** Támogatott az adatlemezek használata a méretezési csoportokon belül?
+
+**V.** Igen. A méretezési csoportok meghatározhatnak egy csatlakoztatott adatlemezekből álló konfigurációt, amely a csoport összes virtuális gépére érvényes. További információ: [Azure-beli méretezési csoportok és csatlakoztatott adatlemezek](virtual-machine-scale-sets-attached-disks.md). Egyéb adattárolási lehetőségek:
+
+* Azure Files (SMB-megosztásos meghajtók)
+* Operációs rendszer meghajtója
+* Ideiglenes meghajtó (helyi, nem Azure Storage-alapú)
+* Azure-adatszolgáltatás (például Azure-táblák, Azure-blobok)
+* Külső adatszolgáltatás (például távoli adatbázis)
+
+**K.** Mely Azure-régiók támogatják a méretezési csoportokat?
+
+**V.** Mindegyik régió támogatja a méretezési csoportokat.
+
+**K.** Hogyan lehet egyéni rendszerképekből méretezési csoportot létrehozni?
+
+**V.** Hozzon létre egy felügyelt lemezt az egyéni rendszerkép VHD-fájlja alapján, és hivatkozzon arra a méretezési csoport sablonjában. [Például:](https://github.com/chagarw/MDPP/tree/master/101-vmss-custom-os)
+
+**K.** Ha a méretezési csoportom kapacitását 20-ról 15-re csökkentem, mely virtuális gépek lesznek eltávolítva?
+
+**V.** A rendszer egyenlő arányban távolítja el a virtuális gépeket a méretezési csoportból a frissítési és tartalék tartományok egészében, a rendelkezésre állás maximalizálása érdekében. A rendszer a legmagasabb azonosítóval rendelkező virtuális gépeket távolítja el először.
+
+**K.** Mi történik, ha ezután 15-ről 18-ra növelem a kapacitást?
+
+**V.** Ha 18-ra növeli a kapacitást, akkor a rendszer 3 új virtuális gépet hoz létre. A rendszer minden alkalommal a legmagasabb előző értéktől növeli a virtuálisgép-példány azonosítóját (például: 20, 21, 22). A virtuális gépek a tartalék és frissítési tartományok között oszlanak el.
+
+**K.** Ha több bővítményt használok egy méretezési csoportban, van lehetőség végrehajtási sorrend kényszerítésére?
+
+**V.** Közvetlenül nem, bár a customScript bővítmény esetében a szkript megvárhatja egy másik bővítmény futtatásának befejezését. A végrehajtási sorrendről az [Azure-alapú virtuálisgép-méretezési csoportok végrehajtási sorrendjének beállítását](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/) ismertető blogbejegyzésben talál további információt.
+
+**K.** Használhatok virtuálisgép-méretezési csoportokat Azure rendelkezésre állási csoportokkal?
+
+**V.** Igen. A méretezési csoport egy implicit rendelkezésre állási csoport öt tartalék és öt frissítési tartománnyal. A 100-nál több virtuális gépet tartalmazó méretezési csoportok több *elhelyezési csoportra* is kiterjednek, amelyek több rendelkezésre állási csoportnak felelnek meg. További információ az elhelyezési csoportokról: [Nagyméretű virtuálisgép-méretezési csoportok használata](virtual-machine-scale-sets-placement-groups.md). A virtuális gépek rendelkezésre állási csoportja létrejöhet ugyanabban a virtuális hálózatban, mint a virtuálisgép-méretezési csoport. Az egyik gyakran alkalmazott konfiguráció egy rendelkezésre állási csoportba helyezi a vezérlő csomópont virtuális gépeit (ezek gyakran igényelnek egyéni konfigurálást), és a méretezési csoportba helyezi az adatcsomópontokat.
+
 
 ## <a name="autoscale"></a>Automatikus méretezés
 
@@ -558,7 +598,7 @@ Hozzon létre egy virtuálisgép-méretezési állítható be egy egyéni DNS-ko
 
 ### <a name="how-can-i-configure-a-scale-set-to-assign-a-public-ip-address-to-each-vm"></a>Hogyan konfigurálható a skála állítsa be a nyilvános IP-cím hozzárendelése az egyes virtuális gépek?
 
-Egy virtuálisgép-méretezési csoport, amely egy nyilvános IP-címet rendel az egyes virtuális gépek létrehozásához tegye a Microsoft.Compute/virtualMAchineScaleSets erőforrás API-verzió 2017-03-30, és adja hozzá a _publicipaddressconfiguration_ JSON a skála csomag IP-konfigurációk szakasz beállítása. Példa:
+Egy virtuálisgép-méretezési csoport, amely egy nyilvános IP-címet rendel az egyes virtuális gépek létrehozásához tegye a Microsoft.Compute/virtualMachineScaleSets erőforrás API-verzió 2017-03-30, és adja hozzá a _publicipaddressconfiguration_ JSON a skála csomag IP-konfigurációk szakasz beállítása. Példa:
 
 ```json
     "publicipaddressconfiguration": {
@@ -694,7 +734,7 @@ Ahhoz, hogy az egyes virtuális gépek a tulajdonság adatait anélkül, hogy t�
 
 ### <a name="can-i-pass-different-extension-arguments-to-different-vms-in-a-virtual-machine-scale-set"></a>I argumentumok adhatók át másik bővítményt egy virtuálisgép-méretezési csoportban lévő különböző virtuális gépek?
 
-Nem, a virtuálisgép-méretezési csoportban lévő különböző virtuális gépek különböző argumentumok nem adható át. Azonban bővítmények működhet-e azok futnak, például a gép nevét a virtuális gép egyedi tulajdonságai alapján. Bővítmények is lekérdezheti a példány metaadatainak az http://169.254.169.254 a virtuális gép kapcsolatban további információkat.
+Nem, a virtuálisgép-méretezési csoportban lévő különböző virtuális gépek különböző argumentumok nem adható át. Azonban bővítmények működhet-e azok futnak, például a gép nevét a virtuális gép egyedi tulajdonságai alapján. Bővítmények is lekérdezheti példány metaadatok a http://169.254.169.254 a virtuális gép kapcsolatban további információkat.
 
 ### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>Miért van a virtuális gép méretezési VM számítógép nevének és a virtuális gép azonosítók között lévő hézagokat? Például: 0, 1, 3...
 

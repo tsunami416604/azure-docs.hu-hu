@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/23/2018
+ms.date: 03/26/2018
 ms.author: mikhegn
-ms.openlocfilehash: 16ca821f7cae252148e8901c2ccb8539a25d1d59
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5c5c3dc20996fbbdee9f9ed61eb3b09e4b274d92
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Visual Studio segítségével egyszerűsítheti az írást, és a Service Fabric-alkalmazások kezelése
 Az Azure Service Fabric-alkalmazások és szolgáltatások Visual Studio alkalmazással kezelheti. Miután megismerte [beállította a fejlesztőkörnyezetet](service-fabric-get-started.md), használhatja a Visual Studio Service Fabric-alkalmazások létrehozása, adja hozzá a szolgáltatásokhoz, vagy a csomag, regisztrálása és alkalmazások telepítése a helyi fejlesztési fürtöt.
@@ -32,7 +32,7 @@ Alapértelmezés szerint az alkalmazás központi telepítése egyesíti be egy 
 4. Eltávolítani a alkalmazáspéldányok fut
 5. Az alkalmazáspéldány létrehozása
 
-A Visual Studio lenyomásával **F5** telepíti az alkalmazást, és csatolja a hibakereső alkalmazás összes példányát. Használhat **Ctrl + F5** nem hibakeresés, illetve hogy az alkalmazás központi telepítéséről is közzéteheti a helyi vagy távoli fürt a közzétételi profil használatával. 
+A Visual Studio lenyomásával **F5** telepíti az alkalmazást, és csatolja a hibakereső alkalmazás összes példányát. Használhat **Ctrl + F5** nem hibakeresés, illetve hogy az alkalmazás központi telepítéséről is közzéteheti a helyi vagy távoli fürt a közzétételi profil használatával.
 
 ### <a name="application-debug-mode"></a>Alkalmazás hibakeresési módban
 A Visual Studio adja meg a tulajdonságot, **alkalmazás hibakeresési módban**, amely meghatározza, hogyan szeretné kezelni az alkalmazás központi telepítésének részeként a Hibakeresés Visual Studios.
@@ -45,7 +45,7 @@ A Visual Studio adja meg a tulajdonságot, **alkalmazás hibakeresési módban**
 
 #### <a name="application-debug-modes"></a>Alkalmazás hibakeresési üzemmód
 
-1. **Frissítse az alkalmazás** ebben a módban lehetővé teszi, hogy gyorsan módosítása és hibakeresése a kód és a statikus webes fájlok szerkesztésének hibakeresés során támogatja. Ebben az üzemmódban csak akkor működik, ha a helyi fejlesztési fürtök [1-csomópont mód](/service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode). Ez az alkalmazás hibakeresési mód alapértelmezés szerint.
+1. **Frissítse az alkalmazás** ebben a módban lehetővé teszi, hogy gyorsan módosítása és hibakeresése a kód és a statikus webes fájlok szerkesztésének hibakeresés során támogatja. Ebben az üzemmódban csak akkor működik, ha a helyi fejlesztési fürtök [1-csomópont üzemmódban]. Ez az alkalmazás hibakeresési mód alapértelmezés szerint. (/ service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode).
 2. **Távolítsa el az alkalmazás** az alkalmazás távolítható el, amikor a hibakeresési munkamenet befejeződik.
 3. **Automatikus frissítés** az alkalmazás továbbra is fut, amikor a hibakeresési munkamenet befejeződik. A következő hibakeresési munkamenetben kezeli az üzemelő példány frissítése. A frissítési folyamat megőrzi a korábbi hibakeresési munkamenetben megadott adatokat.
 4. **Alkalmazás megtartása** az alkalmazás a fürt folyamatosan működik, amikor a hibakeresési munkamenet befejeződik. A következő hibakeresési munkamenet elején, az alkalmazás törlődni fog.

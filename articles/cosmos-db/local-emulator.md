@@ -1,12 +1,12 @@
 ---
-title: "Helyileg Azure Cosmos DB emulátorral kidolgozása |} Microsoft Docs"
-description: "Az Azure Cosmos DB Emulator használatával, fejlesztése és tesztelése az alkalmazás helyileg szabad, Azure-előfizetés létrehozása nélkül."
+title: Helyileg Azure Cosmos DB emulátorral kidolgozása |} Microsoft Docs
+description: Az Azure Cosmos DB Emulator használatával, fejlesztése és tesztelése az alkalmazás helyileg szabad, Azure-előfizetés létrehozása nélkül.
 services: cosmos-db
-documentationcenter: 
-keywords: "Az Azure Cosmos DB emulátor"
+documentationcenter: ''
+keywords: Az Azure Cosmos DB emulátor
 author: David-Noble-at-work
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 90b379a6-426b-4915-9635-822f1a138656
 ms.service: cosmos-db
 ms.devlang: multiple
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2018
 ms.author: danoble
-ms.openlocfilehash: 1991157330f6607efcf42ad42694c6b4d19fe609
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 4a393887d8e82e833b0c956666bf36e5adb19e70
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Az Azure Cosmos DB Emulator használja a helyi fejlesztéshez és teszteléshez
 
@@ -43,7 +43,7 @@ Az Azure Cosmos DB Emulator emulálja a Azure Cosmos DB szolgáltatás fejleszt�
 > [!NOTE]
 > Jelenleg az adatkezelő az emulátorban csak teljes mértékben támogatja az SQL API-gyűjtemények és a MongoDB-gyűjtemény. Tábla Graph és Cassandra tárolók jelenleg nem teljes mértékben támogatottak. 
 
-Ez a cikk ismerteti a következő feladatokat: 
+Ez a cikk a következő feladatokat mutatja be: 
 
 > [!div class="checklist"]
 > * Az emulátor telepítése
@@ -105,7 +105,7 @@ Az Azure Cosmos DB Emulator alapértelmezés szerint telepítve van a `C:\Progra
 
 ## <a name="start-data-explorer"></a>Adatok Explorer elindítása
 
-Az Azure Cosmos DB emulátor indításakor automatikusan megnyitja az Azure Cosmos DB adatkezelő a böngészőben. A cím jelenik meg [https://localhost:8081/_explorer/index.html](https://localhost:8081/_explorer/index.html). Zárja be a Explorert, és szeretné nyissa meg újra később, ha a böngészőben nyissa meg az URL-címet, vagy indítsa el a Windows tálcaikon Azure Cosmos DB emulátorától alább látható módon.
+Az Azure Cosmos DB emulátor indításakor automatikusan megnyitja az Azure Cosmos DB adatkezelő a böngészőben. A cím jelenik meg [ https://localhost:8081/_explorer/index.html ](https://localhost:8081/_explorer/index.html). Zárja be a Explorert, és szeretné nyissa meg újra később, ha a böngészőben nyissa meg az URL-címet, vagy indítsa el a Windows tálcaikon Azure Cosmos DB emulátorától alább látható módon.
 
 ![Az Azure Cosmos DB helyi emulátor data explorer indítója](./media/local-emulator/database-local-emulator-data-explorer-launcher.png)
 
@@ -312,7 +312,7 @@ Gyűjtemény létrehozása után az aktuális partíciók száma túl lett lépv
     Sorry, we are currently experiencing high demand in this region, 
     and cannot fulfill your request at this time. We work continuously 
     to bring more and more capacity online, and encourage you to try again. 
-    Please do not hesitate to email docdbswat@microsoft.com at any time or 
+    Please do not hesitate to email askcosmosdb@microsoft.com at any time or
     for any reason. ActivityId: 29da65cc-fba1-45f9-b82c-bf01d78a1f91
 
 A rendelkezésre álló gyűjtemények száma az Azure Cosmos DB Emulator módosításához tegye a következőket:
@@ -483,7 +483,7 @@ Az ügyfelek az említett rendelkezik már megtartásról hány: célszerű, ha 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban ezt a következők:
+Ebben az oktatóanyagban a következőket hajtotta végre:
 
 > [!div class="checklist"]
 > * A helyi emulátor telepítve

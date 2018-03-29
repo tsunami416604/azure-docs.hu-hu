@@ -1,6 +1,6 @@
 ---
-title: "Azure Cosmos DB: SQL Node.js API-t, az SDK és erőforrások |} Microsoft Docs"
-description: "Tudnivalók az SQL Node.js API-t és SDK, beleértve a kiadási dátum, használatból való kivonást dátumok és az Azure Cosmos DB Node.js SDK verziói között végrehajtott módosításokat."
+title: 'Azure Cosmos DB: SQL Node.js API-t, az SDK és erőforrások |} Microsoft Docs'
+description: Tudnivalók az SQL Node.js API-t és SDK, beleértve a kiadási dátum, használatból való kivonást dátumok és az Azure Cosmos DB Node.js SDK verziói között végrehajtott módosításokat.
 services: cosmos-db
 documentationcenter: nodejs
 author: rnagpal
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 1/4/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a8869d8a8eead8bdaeda5dc1d6eeb2f81b16928e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 58d043ac7037567d37321cb874804ad0e6cb5ed8
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB Node.js SDK API-SQL: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -35,8 +35,6 @@ ms.lasthandoff: 03/02/2018
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 > 
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 <table>
 
@@ -73,7 +71,7 @@ ms.lasthandoff: 03/02/2018
 
 ### <a name="1.14.0"/>1.14.0</a>
 * Támogatást nyújt a munkamenet-konzisztencia.
-* Az SDK-verzió telepítéséhez a legújabb Azure Cosmos DB emulátorának elérhetősége a https://aka.ms/cosmosdb-emulator letölthető.
+* Az SDK-verzió Azure Cosmos DB emulátorának elérhetősége a legújabb verziója szükséges a letölthető https://aka.ms/cosmosdb-emulator.
 
 ### <a name="1.13.0"/>1.13.0</a>
 * A felosztott proofed közötti partíció lekérdezések.
@@ -164,7 +162,7 @@ ms.lasthandoff: 03/02/2018
 
 ### <a name="1.2.0"/>1.2.0</a>
 * A földrajzi index támogatása.
-* Ellenőrzi az összes erőforrás id tulajdonság. Erőforrások azonosító nem tartalmazhat?, /, #, &#47; &#47; karaktereket vagy záró szóközt.
+* Ellenőrzi az összes erőforrás id tulajdonság. Erőforrások azonosító nem tartalmazhat?, /, #, &#47; &#47;, karaktereket vagy záró szóközt.
 * Új fejléc "index átalakítása folyamatban" hozzáadása ResourceResponse.
 
 ### <a name="1.1.0"/>1.1.0</a>

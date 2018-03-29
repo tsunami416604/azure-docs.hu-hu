@@ -1,24 +1,24 @@
 ---
-title: "Központi telepítési fázis a csapat az tudományos folyamata életciklus - Azure |} Microsoft Docs"
-description: "A célok, feladatok és a telepítési fázis a adattudomány projektek a termékek esetében"
+title: Központi telepítési fázis a csapat az tudományos folyamata életciklus - Azure |} Microsoft Docs
+description: A célok, feladatok és a telepítési fázis a adattudomány projektek a termékek esetében
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev;
-ms.openlocfilehash: 45d801bf0096879143f91feb230445625559379f
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.author: bradsev
+ms.openlocfilehash: 5cb6361ed674ffaaf776adafd6f3ff87272c73eb
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="deployment"></a>Környezet
 
@@ -43,11 +43,11 @@ Ebben a szakaszban tárgyalt fő feladat:
 
 **Azok a modell**: a modell és a kimenetátirányítási telepítése egy éles vagy hasonló környezet alkalmazás felhasználásra.
 
-### <a name="operationalize-a-model"></a>Azok a modell
+### <a name="operationalize-a-model"></a>Modell üzembe helyezése
 Miután egy modellt a hatékony készletét, üzembe azokat más alkalmazások felhasználását. Attól függően, hogy az üzleti igények előrejelzéseket valós időben vagy kötegelt alapon történik. Modellek telepíteni, akkor tegye őket elérhetővé egy megnyitott API felületen. A felület lehetővé teszi, hogy a modell könnyen használható a különböző alkalmazások, például:
 
    * Online webhelyek
-   * Táblázatok 
+   * Számolótáblák 
    * Irányítópultok
    * Az üzletági alkalmazások 
    * Háttér-alkalmazások 
@@ -61,7 +61,7 @@ Az Azure Machine Learning webszolgáltatás a modell operationalization példák
 * A végső megoldás architektúrája dokumentum
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbiakban a TDSP életciklusát lépésre mutató hivatkozásokat:
 

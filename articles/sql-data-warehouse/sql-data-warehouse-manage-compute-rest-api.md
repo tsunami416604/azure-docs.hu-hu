@@ -1,24 +1,24 @@
 ---
-title: "Szüneteltetése, folytatása, az Azure SQL Data Warehouse REST méretezést |} Microsoft Docs"
-description: "Számítási teljesítményt az SQL Data Warehouse REST API-k segítségével kezelheti."
+title: Szüneteltetése, folytatása, az Azure SQL Data Warehouse REST méretezést |} Microsoft Docs
+description: Számítási teljesítményt az SQL Data Warehouse REST API-k segítségével kezelheti.
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: kfile
-editor: 
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
-ms.date: 02/13/2018
+ms.date: 03/22/2018
 ms.author: barbkess
-ms.openlocfilehash: cb5b6221a5fc1d02ed1d93d56fd3db4858923307
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 518bbe23f1dcb9ffdffcfb67f875165617762c78
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="rest-apis-for-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse REST API-k
 REST API-khoz, az Azure SQL Data Warehouse számítási kezelése.
@@ -61,5 +61,5 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 
 ## <a name="next-steps"></a>További lépések
-Más felügyeleti feladatokat [kezelése-áttekintés](./sql-data-warehouse-overview-manage.md).
+További információkért lásd: [számítási kezelése](sql-data-warehouse-manage-compute-overview.md).
 

@@ -1,10 +1,10 @@
 ---
-title: "Az Azure Storage méretezhetőségi és teljesítménycéloknak |} Microsoft Docs"
-description: "További tudnivalók a méretezhetőségi és Teljesítménycélok az Azure Storage, beleértve a kapacitás, a lekérdezési gyakorisága és a bejövő és kimenő sávszélesség mindkét standard és prémium szintű storage-fiókok. Ismerje meg az Azure Storage szolgáltatások belül partíciók teljesítménycéloknak."
+title: Az Azure Storage méretezhetőségi és teljesítménycéloknak |} Microsoft Docs
+description: További tudnivalók a méretezhetőségi és Teljesítménycélok az Azure Storage, beleértve a kapacitás, a lekérdezési gyakorisága és a bejövő és kimenő sávszélesség mindkét standard és prémium szintű storage-fiókok. Ismerje meg az Azure Storage szolgáltatások belül partíciók teljesítménycéloknak.
 services: storage
 documentationcenter: na
-author: tamram
-manager: timlt
+author: roygara
+manager: jeconnoc
 editor: tysonn
 ms.assetid: be721bd3-159f-40a1-88c1-96418537fe75
 ms.service: storage
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 10/24/2017
-ms.author: tamram
-ms.openlocfilehash: f62f2020d40e473886cb679cdfe1c164b95f7114
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.author: rogarana
+ms.openlocfilehash: e393bb9e7615b893699caf5a931ede5803046892
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-storage-scalability-and-performance-targets"></a>Az Azure Storage méretezhetőségi és teljesítménycéljai
 ## <a name="overview"></a>Áttekintés
@@ -63,6 +63,6 @@ A méretezési és teljesítménycéljaival kapcsolatos információkért Azure 
 * [Tárolás díjszabása](https://azure.microsoft.com/pricing/details/storage/)
 * [Azure-előfizetés és szolgáltatási korlátok, kvóták és megkötések](../../azure-subscription-service-limits.md)
 * [Az Azure Storage replikáció](../storage-redundancy.md)
-* [A Microsoft Azure tárolási teljesítmény és méretezhetőség ellenőrzőlista](../storage-performance-checklist.md)
+* [A Microsoft Azure Storage teljesítmény- és skálázhatósági ellenőrzőlistája](../storage-performance-checklist.md)
 * [A Microsoft Azure Storage: Egy magas rendelkezésre állású felhőalapú tárolási szolgáltatásba erős konzisztencia](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 

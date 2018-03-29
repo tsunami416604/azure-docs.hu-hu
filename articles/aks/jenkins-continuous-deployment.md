@@ -1,19 +1,19 @@
 ---
-title: "Az az Azure Tárolószolgáltatásban Kubernetes Jenkins folyamatos üzembe helyezés"
-description: "A folyamatos üzembe helyezés folyamat telepítésének és frissítésének a tárolóalapú alkalmazást az Azure Tárolószolgáltatásban Kubernetes Jenkins automatizálása"
+title: Az az Azure Tárolószolgáltatásban Kubernetes Jenkins folyamatos üzembe helyezés
+description: A folyamatos üzembe helyezés folyamat telepítésének és frissítésének a tárolóalapú alkalmazást az Azure Tárolószolgáltatásban Kubernetes Jenkins automatizálása
 services: container-service
 author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 03/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 1293fda45602203570a0f7f75481f67bdcb6edf3
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 8238e0f55b88e4fa207357630aa4228250c33249
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="continuous-deployment-with-jenkins-and-azure-container-service"></a>Azure Tárolószolgáltatás és Jenkins folyamatos üzembe helyezés
 
@@ -57,7 +57,7 @@ Miután létrejött a elágazás, klónozza a fejlesztői rendszerhez. Győződj
 git clone https://github.com/<your-github-account>/azure-voting-app-redis.git
 ```
 
-Módosítsa a könyvtárat, hogy a klónozott könyvtárból dolgozik.
+Módosítsa a könyvtárakat, hogy a klónozott könyvtárból dolgozzon.
 
 ```bash
 cd azure-voting-app-redis
@@ -71,7 +71,7 @@ docker-compose up -d
 
 Befejezése után használja a [docker képek] [ docker-images] parancs a létrehozott kép megtekintéséhez.
 
-Figyelje meg, hogy három képek letöltése vagy létrehozni. A `azure-vote-front` lemezképet tartalmazza az alkalmazás, és használja a `nginx-flask` kép alapjaként. A `redis` lemezkép használatával indítsa el a Redis-példányt.
+Figyelje meg, hogy három rendszerkép lett letöltve vagy jött létre. Az `azure-vote-front` rendszerkép tartalmazza az alkalmazást, és a `nginx-flask` rendszerképet használja alapként. A `redis` rendszerkép használatával indítható el egy Redis-példány.
 
 ```console
 $ docker images
@@ -160,6 +160,20 @@ Open a browser to http://52.166.118.64:8080
 Enter the following to Unlock Jenkins:
 667e24bba78f4de6b51d330ad89ec6c6
 ```
+
+Ha problémák Jenkins való bejelentkezés, a Jenkins virtuális gép SSH-munkamenetet létrehozni, és indítsa újra a Jenkins szolgáltatást. A virtuális gép IP-címe a build parancsfájl által megadott címmel. A virtuális gép rendszergazdai felhasználónév `azureuser`.
+
+```bash
+ssh azureuser@52.166.118.64
+```
+
+Indítsa újra a Jenkins szolgáltatást.
+
+```bash
+sudo service jenkins restart
+```
+
+Frissítse a böngészőt, és a Jenkins bejelentkezési űrlap jelenik meg.
 
 ## <a name="jenkins-environment-variables"></a>Jenkins környezeti változók
 

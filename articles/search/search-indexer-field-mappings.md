@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Search indexelők mező hozzárendelések"
-description: "Konfigurálja a fiókot használja a mezőnevek és az adatok felelősséget Azure keresési indexelő mező leképezései"
+title: Az Azure Search indexelők mező hozzárendelések
+description: Konfigurálja a fiókot használja a mezőnevek és az adatok felelősséget Azure keresési indexelő mező leképezései
 services: search
-documentationcenter: 
+documentationcenter: ''
 author: chaosrealm
 manager: pablocas
-editor: 
+editor: ''
 ms.assetid: 0325a4de-0190-4dd5-a64d-4e56601d973b
 ms.service: search
 ms.devlang: rest-api
@@ -14,11 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 08/30/2017
 ms.author: eugenesh
-ms.openlocfilehash: 3f2ead208ea1525489a40d1fb637da47cd8a9b24
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e4d6960e540641405b879064a8064d45521dc04f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="field-mappings-in-azure-search-indexers"></a>Az Azure Search indexelők mező hozzárendelések
 Azure keresési indexelő használatához alkalmanként található saját kezűleg olyan esetekben, ahol a bemeneti adatok nem teljesen felel meg a sémának a cél index. Ezekben az esetekben használható **hozzárendelések mezőben** az adatok átalakítására be a kívánt alakot.
@@ -60,7 +60,7 @@ Az indexelő rendelkezhet több mező leképezést. Ha például az alábbiakban
 
 "fieldMappings" : [
     { "sourceFieldName" : "text", "targetFieldName" : "textStandardEnglishAnalyzer" },
-    { "sourceFieldName" : "text", "targetFieldName" : "textSoundexAnalyzer" },
+    { "sourceFieldName" : "text", "targetFieldName" : "textSoundexAnalyzer" }
 ]
 ```
 

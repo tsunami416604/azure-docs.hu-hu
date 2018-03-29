@@ -1,19 +1,19 @@
 ---
-title: "Az Azure IoT peremhálózati modul-összeállítást |} Microsoft Docs"
-description: "Ismerje meg, mi az Azure IoT peremhálózati modulok kerül, és hogyan felhasználhatók"
+title: Az Azure IoT peremhálózati modul-összeállítást |} Microsoft Docs
+description: Ismerje meg, mi az Azure IoT peremhálózati modulok kerül, és hogyan felhasználhatók
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 03/14/2018
+ms.date: 03/23/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 4b59a715919e38e68c3b7518932617e9950940e3
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7df566ced755e1e817b3107dac8f17e9f6e9b8e4
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="understand-how-iot-edge-modules-can-be-used-configured-and-reused---preview"></a>Megérteni, hogyan használható a IoT peremhálózati modulok, konfigurálva, és használja fel újra – előzetes
 
@@ -134,32 +134,21 @@ A forrás adja meg, ahol az üzenetek származik. Ez a következő értékek egy
 ### <a name="condition"></a>Feltétel
 A feltétel nem kötelező megadni egy útvonal deklarációjában. Ha azt szeretné, a gyűjtő összes üzenetek átadása a forrás, hagyja a **ahol** záradék teljesen. Vagy használhatja a [IoT-központ lekérdezési nyelv] [ lnk-iothub-query] szűrése az egyes üzenetek vagy üzenettípusok, amelyek megfelelnek a következő feltételt.
 
-Az Azure IoT-üzenetek JSON-ként formázott és mindig legalább egy **törzs** paraméter. Példa:
+Az üzeneteket, amelyek megfelelnek az IoT-Edge modulok között formázott ugyanaz, mint az üzeneteket, amelyek az eszközök és az Azure IoT-központ között. Az összes üzenet JSON-ként formázott, és rendelkezik **systemProperties**, **appProperties**, és **törzs** paraméterek. 
 
-```json
-"message": {
-    "body":{
-        "ambient":{
-            "temperature": 54.3421,
-            "humidity": 25
-        },
-        "machine":{
-            "status": "running",
-            "temperature": 62.2214
-        }
-    },
-    "appProperties":{
-        ...
-    }
-}
+Összes három paraméter a következő szintaxissal körül lekérdezéseket hozhat létre: 
+
+* A Rendszertulajdonságok: `$<propertyName>` vagy `{$<propertyName>}`
+* Alkalmazás tulajdonságai: `<propertyName>`
+* Törzs tulajdonságai: `$body.<propertyName>` 
+
+Az üzenet tulajdonságainak lekérdezéséhez használatáról, tekintse meg a [útvonalak lekérdezési kifejezések eszközről a felhőbe üzenet](../iot-hub/iot-hub-devguide-query-language.md#device-to-cloud-message-routes-query-expressions).
+
+IoT peremhálózati jellemző példa az, amikor egy levél eszközről egy átjáróeszköz érkező üzenetek szűréséhez. Modulok érkező üzenetek rendszer tulajdonságot tartalmaz **connectionModuleId**. Ezért az üzenetek útválasztását a levél eszközök közvetlenül az IoT hubhoz, használja a következő útvonal modul üzenetek:
+
+```sql
+FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream
 ```
-
-A mintaüzenet miatt számos feltétel adható meg, például:
-* `WHERE $body.machine.status != "running"`
-* `WHERE $body.ambient.temperature <= 60 AND $body.machine.temperature >= 60`
-
-A feltétel üzenettípusok, például egy átjáró, amely a levél eszközök érkező üzenetek szeretné rendezni is használható. Modulok érkező üzenetek tartalmaznak egy adott tulajdonságra nevű **connectionModuleId**. Ezért az üzenetek útválasztását a levél eszközök közvetlenül az IoT hubhoz, használja a következő útvonal modul üzenetek:
-* `FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream`
 
 ### <a name="sink"></a>Fogadó
 A fogadó határozza meg, ahol az üzenetek küldése történik-e. Ez a következő értékek egyike lehet:

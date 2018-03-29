@@ -1,10 +1,10 @@
 ---
-title: "Az Azure portálon storage mérőszámainak engedélyezése |} Microsoft Docs"
-description: "A Blob, a várólista, a tábla és a fájl szolgáltatások storage mérőszámainak engedélyezése"
+title: Az Azure portálon storage mérőszámainak engedélyezése |} Microsoft Docs
+description: A Blob, a várólista, a tábla és a fájl szolgáltatások storage mérőszámainak engedélyezése
 services: storage
-documentationcenter: 
-author: tamram
-manager: timlt
+documentationcenter: ''
+author: roygara
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 0407adfc-2a41-4126-922d-b76e90b74563
 ms.service: storage
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/14/2017
-ms.author: tamram
-ms.openlocfilehash: 8abb4f968c1fa84e03c8cc807826d3684713847a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: rogarana
+ms.openlocfilehash: 0caa4eff80877ad4bf8d501a276e82922b1a84c7
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="enabling-azure-storage-metrics-and-viewing-metrics-data"></a>Azure Storage mérőszámainak engedélyezése és metrikai adatok megtekintése
 [!INCLUDE [storage-selector-portal-enable-and-view-metrics](../../../includes/storage-selector-portal-enable-and-view-metrics.md)]
@@ -135,12 +135,12 @@ Ahhoz, hogy hozzáférhessen a analytics táblák programozott módon, vegye fig
 
 A sémák teljes körű információkat találhat meg ezek a táblázatok, [Storage Analytics metrikák táblaséma](https://msdn.microsoft.com/library/azure/hh343264.aspx). A minta sorokat megjelenítése csak az elérhető oszlopok egy részét, de néhány fontosabb funkciói a Storage Metrics menti ezeket a mérési módját mutatja be:
 
-| PartitionKey | RowKey | időbélyeg | TotalRequests | TotalBillableRequests | TotalIngress | TotalEgress | Rendelkezésre állás | AverageE2ELatency | AverageServerLatency | PercentSuccess |
+| PartitionKey | RowKey | Időbélyeg | TotalRequests | TotalBillableRequests | TotalIngress | TotalEgress | Rendelkezésre állás | AverageE2ELatency | AverageServerLatency | PercentSuccess |
 | --- |:---:| ---:| --- | --- | --- | --- | --- | --- | --- | --- |
-| 20140522T1100 |felhasználói; Minden |2014-05-22T11:01:16.7650250Z |7 |7 |4003 |46801 |100 |104.4286 |6.857143 |100 |
-| 20140522T1100 |felhasználói; QueryEntities |2014-05-22T11:01:16.7640250Z |5 |5 |2694 |45951 |100 |143.8 |7.8 |100 |
-| 20140522T1100 |felhasználói; QueryEntity |2014-05-22T11:01:16.7650250Z |1 |1 |538 |633 |100 |3 |3 |100 |
-| 20140522T1100 |felhasználói; UpdateEntity |2014-05-22T11:01:16.7650250Z |1 |1 |771 |217 |100 |9 |6 |100 |
+| 20140522T1100 |user;All |2014-05-22T11:01:16.7650250Z |7 |7 |4003 |46801 |100 |104.4286 |6.857143 |100 |
+| 20140522T1100 |user;QueryEntities |2014-05-22T11:01:16.7640250Z |5 |5 |2694 |45951 |100 |143.8 |7.8 |100 |
+| 20140522T1100 |user;QueryEntity |2014-05-22T11:01:16.7650250Z |1 |1 |538 |633 |100 |3 |3 |100 |
+| 20140522T1100 |user;UpdateEntity |2014-05-22T11:01:16.7650250Z |1 |1 |771 |217 |100 |9 |6 |100 |
 
 A példaadatokat percenkénti metrikákat a partíciós kulcs használja az idő percben felbontásban. A sorkulcs azonosítja a sor tárolt információ típusát. A sorkulcs kétféle információt, a hozzáférés típusa, és a kérelem áll:
 
@@ -212,5 +212,5 @@ A metrikák tábla által használt kapacitás egyben számlázható: a követke
 * Ha minden órában egy szolgáltatás minden API-nak minden szolgáltatást használja, majd körülbelül 12KB adatot tárolják metrikák tranzakció táblázatokban óránként Ha engedélyezte az imént szolgáltatási szint összefoglaló.
 * Blobok kapacitás táblához két sort hozzáadott minden nap (feltéve, hogy felhasználói naplók feliratkozott): Ez azt jelenti, hogy minden nap a táblázat mérete nő körülbelül 300 bájt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Naplózás és naplózási adatok elérése tárolási engedélyezése](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data)

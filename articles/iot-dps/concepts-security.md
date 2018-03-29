@@ -1,26 +1,26 @@
 ---
-title: "Az Azure IoT Hub eszköz kiépítése szolgáltatáshoz biztonsági fogalmak |} Microsoft Docs"
-description: "Biztonsági kiépítése a eszköz kiépítése szolgáltatáshoz és az IoT-központ jellemző fogalmakat ismerteti"
+title: Az Azure IoT Hub eszköz kiépítése szolgáltatáshoz biztonsági fogalmak |} Microsoft Docs
+description: Biztonsági kiépítése a eszköz kiépítése szolgáltatáshoz és az IoT-központ jellemző fogalmakat ismerteti
 services: iot-dps
-keywords: 
+keywords: ''
 author: nberdy
 ms.author: nberdy
-ms.date: 09/05/2017
+ms.date: 03/27/2018
 ms.topic: article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: ab2bfff571af659552eef8117de041ca6367ce56
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 5e35a802349bd85b50a13a3d9a7e0c78945937bd
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT Hub eszköz kiépítése szolgáltatáshoz biztonsági fogalmak 
 
-IoT Hub eszköz kiépítése szolgáltatáshoz olyan IoT hub, amely egy megadott IoT-központ nulla érintéssel eszközkiépítési konfigurálására használt segítő szolgáltatás. Az eszköz kiépítése szolgáltatáshoz megadhat eszközök millióira biztonságos és skálázható módon. Ez a cikk áttekintést a *biztonsági* fogalmak részt vevő eszközök kiépítését. Ez a cikk akkor szükséges, az eszköz telepítési Felkészülés részt vevő összes személyeknek.
+IoT Hub eszköz kiépítése szolgáltatáshoz olyan IoT hub, amely egy megadott IoT-központ nulla érintéssel eszközkiépítési konfigurálására használt segítő szolgáltatás. A Device Provisioning Service-szel több millió eszköz kiépítését végezheti el biztonságosan és skálázható módon. Ez a cikk áttekintést a *biztonsági* fogalmak részt vevő eszközök kiépítését. Ez a cikk akkor szükséges, az eszköz telepítési Felkészülés részt vevő összes személyeknek.
 
 ## <a name="attestation-mechanism"></a>Állapotigazolási mechanizmus
 
@@ -31,7 +31,7 @@ Az igazolás módszer használata általában egy eszközidentitás használt m�
 
 Eszköz kiépítése szolgáltatás igazolási két formáját támogatja:
 * **X.509 tanúsítvány** a szabványos X.509 tanúsítvány hitelesítési folyamat alapján.
-* **SAS-tokenje** TPM használó kulcs nonce kihívást alapján. Ennek a fizikai TPM az eszközön nem szükséges, de a szolgáltatás várhatóan igazolják, hogy az ellenőrzőkulcsot / használatával az [TPM spec](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
+* **Platformmegbízhatósági modul (TPM) megbízható** nonce kihívást, a TPM szabvány a kulcsok használatával van a közös hozzáférésű Jogosultságkód (SAS) aláírt jogkivonat alapján. Ennek a fizikai TPM az eszközön nem szükséges, de a szolgáltatás várhatóan igazolják, hogy az ellenőrzőkulcsot / használatával az [TPM spec](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
 
 ## <a name="hardware-security-module"></a>Hardveres biztonsági modul
 
@@ -42,7 +42,7 @@ A hardveres biztonsági modult, vagy a hardveres biztonsági MODULT, biztonságo
 
 Eszköz titkokat is tárolhatók a szoftver (memória), de tárolási kevésbé biztonságos formája, mint a hardveres biztonsági MODULT.
 
-## <a name="trusted-platform-module-tpm"></a>Platformmegbízhatósági modul (TPM)
+## <a name="trusted-platform-module"></a>Platformmegbízhatósági modul
 
 TPM jelentheti a platform hitelesítéséhez használt kulcsokat biztonságosan tárolásához standard, vagy a modulok, a standard végrehajtási együttműködhet használt i/o-felület hivatkozhat. TPM diszkrét hardverként integrált hardver, a belső vezérlőprogram-alapú vagy szoftveres létezhet. További információ [TPM és TPM igazolás](/windows-server/identity/ad-ds/manage/component-updates/tpm-key-attestation). Eszköz kiépítése szolgáltatáshoz csak a TPM 2.0 támogatja.
 
@@ -66,7 +66,7 @@ Egy legfelső szintű tanúsítványt a hitelesítésszolgáltatótól (CA) jel�
 
 ### <a name="intermediate-certificate"></a>Köztes tanúsítvány
 
-Egy köztes tanúsítványhoz egy X.509 tanúsítvány aláírtak a legfelső szintű tanúsítvány (vagy egy másik köztes tanúsítvány láncában a legfelső szintű tanúsítvánnyal). Az a lánc utolsó köztes tanúsítványa a levél tanúsítvány aláírására használatos. Egy köztes tanúsítvány is is hivatkozhatnak egy köztes Hitelesítésszolgáltatói tanúsítványhoz.
+Egy köztes tanúsítványhoz egy X.509 tanúsítvány, amely a főtanúsítványt (vagy egy másik köztes tanúsítványt a főtanúsítvány láncában) aláírta. Az a lánc utolsó köztes tanúsítványa a levél tanúsítvány aláírására használatos. Egy köztes tanúsítvány is is hivatkozhatnak egy köztes Hitelesítésszolgáltatói tanúsítványhoz.
 
 ### <a name="leaf-certificate"></a>Levéltanúsítvány
 
@@ -76,10 +76,10 @@ A levél tanúsítvány, vagy végfelhasználói tanúsítvány, azonosítja a t
 
 A létesítési szolgáltatás regisztrációs bejegyzés használatával, amely segítségével az X.509 tanúsítvány mechanizmus használó eszközök a hozzáférés-vezérlésének két típusú mutatja:  
 
-- [Az egyes beléptetési](./concepts-service.md#individual-enrollment) bejegyzések az eszköz tanúsítványát egy adott eszközhöz hozzárendelt vannak konfigurálva. Ezek a bejegyzések meghatározott eszközök regisztrálásának szabályozzák.
-- [Beléptetési csoport](./concepts-service.md#enrollment-group) társítva van egy adott köztes vagy a legfelső szintű Hitelesítésszolgáltatói tanúsítványt a rendszer. Ezeket a bejegyzéseket beléptetési összes rendelkező eszközök, amelyek köztes vagy a tanúsítványt a tanúsítványlánc legfelső szintű vezérlő. 
+- [Az egyes beléptetési](./concepts-service.md#individual-enrollment) bejegyzések az eszköz tanúsítványát egy adott eszközhöz hozzárendelt vannak konfigurálva. Ezeket a bejegyzéseket szabályozhatja az egyes eszközökre történő regisztrációt.
+- [Beléptetési csoport](./concepts-service.md#enrollment-group) társítva van egy adott köztes vagy a legfelső szintű Hitelesítésszolgáltatói tanúsítványt a rendszer. Ezek a bejegyzések regisztrációkat az összes eszköz, amely rendelkezik, amely köztes vagy a tanúsítványt a tanúsítványlánc legfelső szintű vezérlő. 
 
-Amikor egy eszköz csatlakozik a létesítési szolgáltatás, a szolgáltatás kevesebb adott regisztrációs bejegyzéseket keresztül helyezi előtérbe pontosabb regisztrációs bejegyzéseket. Ez azt jelenti, hogy ha egy egyéni regisztrációt az adott eszköz már létezik, a létesítési szolgáltatás vonatkozik, a bejegyzést. Ha nem egyedi az eszköz regisztrációját, valamint egy beléptetési csoport számára az eszköz tanúsítványláncában szereplő első köztes tanúsítvány létezik-e, a szolgáltatás alkalmazza a bejegyzést, és így tovább fel a lánc és a legfelső szintű. A szolgáltatás vonatkozik az első vonatkozó bejegyzés talált, úgy, hogy:
+Amikor egy eszköz csatlakozik a létesítési szolgáltatás, a szolgáltatás kevesebb adott regisztrációs bejegyzéseket keresztül helyezi előtérbe pontosabb regisztrációs bejegyzéseket. Ez azt jelenti, hogy ha egy egyéni regisztrációt az adott eszköz már létezik, a létesítési szolgáltatás vonatkozik, a bejegyzést. Nem egyedi az eszköz regisztrációját, valamint egy beléptetési csoport számára az eszköz tanúsítványláncában szereplő első köztes tanúsítvány létezik-e, ha a szolgáltatás vonatkozik, hogy bejegyzést, és így tovább, a legfelső szintű lánc fel. A szolgáltatás vonatkozik az első vonatkozó bejegyzés talált, úgy, hogy:
 
 - Ha az első regisztrációs bejegyzés található engedélyezve van, a szolgáltatás látja el az eszközt.
 - Ha az első regisztrációs bejegyzés található le van tiltva, a szolgáltatás nem biztosítsa az eszköz.  

@@ -1,30 +1,30 @@
 ---
-title: "Az MPIO konfigurálása a StorSimple eszköz |} Microsoft Docs"
-description: "A StorSimple eszköz egy Windows Server 2012 R2 rendszerű gazdagép csatlakozik a többutas I/O (MPIO) beállításának módját ismerteti."
+title: Az MPIO konfigurálása a StorSimple eszköz |} Microsoft Docs
+description: A StorSimple eszköz egy Windows Server 2012 R2 rendszerű gazdagép csatlakozik a többutas I/O (MPIO) beállításának módját ismerteti.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/05/2017
+ms.date: 03/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 9fe3fa3a2df63d111de742ecb48b1469aad543cd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f2b094604f486d283574f4669fcad6f72bd4431
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>Többutas I/O konfigurálása a StorSimple eszköz
 
 Ez az oktatóanyag ismerteti, hogyan telepítheti és használhatja a többutas I/O (MPIO) szolgáltatást futtató Windows Server 2012 R2 nyújtanak, és a StorSimple fizikai eszköz csatlakozik. A StorSimple 8000 series csak a fizikai eszközök vonatkozik az útmutató. Az MPIO jelenleg nem támogatott a StorSimple-felhő készüléken.
 
-A Microsoft beépített támogatása a többutas I/O (MPIO) szolgáltatást a Windows Server a Súgó build magas rendelkezésre állású, nagy hibatűrésű SAN beállításokat. Az MPIO használ a redundáns összetevők – adapterek, kábelek és kapcsolók – a kiszolgáló és a tárolóeszköz közötti logikai útvonalak létrehozásához. Ha sikertelen egy összetevő, és ezáltal a logikai útvonal is meghibásodik, többutas logika egy alternatív útvonalat használ az i/o, hogy az alkalmazások továbbra is hozzáférjenek az adataikhoz. Emellett a konfigurációtól függően az MPIO is a jobb teljesítmény érdekében a terhelés újraelosztás közötti összes elérési utat. További információkért lásd: [MPIO áttekintése](https://technet.microsoft.com/library/cc725907.aspx "MPIO áttekintése és a szolgáltatások").
+A többutas I/O (MPIO) szolgáltatást a Windows Server iSCSI magas rendelkezésre állású, és hibatűrő hálózati konfigurációk építhető támogatása a beépített Microsoft. Az MPIO használ a redundáns összetevők – adapterek, kábelek és kapcsolók – a kiszolgáló és a tárolóeszköz közötti logikai útvonalak létrehozásához. Ha sikertelen egy összetevő, és ezáltal a logikai útvonal is meghibásodik, többutas logika egy alternatív útvonalat használ az i/o, hogy az alkalmazások továbbra is hozzáférjenek az adataikhoz. Emellett a konfigurációtól függően az MPIO is a jobb teljesítmény érdekében a terhelés újraelosztás közötti összes elérési utat. További információkért lásd: [MPIO áttekintése](https://technet.microsoft.com/library/cc725907.aspx "MPIO áttekintése és a szolgáltatások").
 
 A magas rendelkezésre állású a StorSimple megoldás, a többutas I/O konfigurálnia kell a StorSimple eszközt. Ha az MPIO telepítve van a Windows Server 2012 R2 rendszert futtató kiszolgálók, a kiszolgálók majd tűri egy hivatkozás, hálózati vagy adapterhibákat.
 
@@ -49,7 +49,7 @@ A szolgáltatás telepítéséhez a Windows Server-állomáson, hajtsa végre az
 
 1. Nyissa meg a Kiszolgálókezelőt a Windows Server-állomáson. Alapértelmezés szerint a Kiszolgálókezelő akkor kezdődik, amikor egy tagja a Rendszergazdák csoport bejelentkezik egy Windows Server 2012 R2 vagy Windows Server 2012 rendszert futtató számítógép. Ha a Kiszolgálókezelő még nincs megnyitva, kattintson a **Start > Kiszolgálókezelő**.
    
-   ![Kiszolgálókezelő](./media/storsimple-configure-mpio-windows-server/IC740997.png)
+   ![Server Manager](./media/storsimple-configure-mpio-windows-server/IC740997.png)
 
 2. Kattintson a **Kiszolgálókezelő > irányítópult > szerepkörök és szolgáltatások hozzáadása**. Ekkor elindul a **szerepkörök és szolgáltatások hozzáadása** varázsló.
    
@@ -149,12 +149,12 @@ Az MPIO konfigurálása után a Windows Server, a StorSimple eszközön létre k
 
 ## <a name="step-4-configure-mpio-for-high-availability-and-load-balancing"></a>4. lépés: Az MPIO konfigurálása a magas rendelkezésre állás érdekében és terheléselosztás
 
-Többutas alapú magas rendelkezésre állás és a terheléselosztás, több munkamenetet kell kézzel felvenni segítségével deklarálja azt az elérési útja eltér érhető el. Például ha a gazdagép két csatolót San hálózathoz csatlakoznak az eszköz felületei két San hálózathoz csatlakoznak, majd négy munkamenetek (csak két munkamenet lesz szükség, ha minden adatillesztő állomás felület egy másik IP-alhálózat és nem irányítható) megfelelő elérési kombinációinak konfigurálni kell.
+Többutas alapú magas rendelkezésre állás és a terheléselosztás, több munkamenetet kell kézzel felvenni segítségével deklarálja azt az elérési útja eltér érhető el. Például ha a gazdagép iSCSI hálózathoz csatlakozó két csatolót az eszköz regisztrációját az iSCSI-hálózathoz csatlakozó két csatolót, majd négy munkamenetek megfelelő elérési kombinációinak konfigurálva van szüksége (csak két munkamenet lesz szükség, ha minden adatillesztő és állomás felület egy másik IP-alhálózat és nem irányítható).
 
 **Azt javasoljuk, hogy rendelkezik-e legalább 8 aktív párhuzamos munkamenetek az eszköz és az alkalmazás-állomás között.** Ez a Windows Server rendszer csatolóinak 4 hálózati engedélyezésével elérhető. Használja a hálózati virtualizálási technológiák keresztül fizikai hálózati illesztőkre vagy virtuális a hardver vagy operációs rendszer szintjén, a Windows Server-állomáson. A két hálózati adapterrel az eszközön, az ebben a konfigurációban 8 aktív munkamenetek eredményezne. Ez a konfiguráció segít, hogy az eszköz és a felhő teljesítmény optimalizálása.
 
 > [!IMPORTANT]
-> **Azt javasoljuk, hogy azt ne keverje 1 gbe-s és a 10 GbE hálózati adapterrel. Ha két hálózati adaptert használ, a két felülethez a azonos típusúnak kellene lennie.**
+> **Azt javasoljuk, hogy azt ne keverje 1 gbe-s és a 10 GbE hálózati adapterrel. Ha két hálózati adaptert használ, a két felülethez egy azonos típusúnak kell lennie.**
 
 Az alábbi eljárás ismerteti, hogyan hozzáadása munkamenetek két hálózati adapterrel egy olyan gazdagépre a két hálózati adapterrel a StorSimple eszköz csatlakoztatásakor. Ez lehetővé teszi csak 4 munkamenetek. A StorSimple eszköz négy hálózati adapterrel rendelkező a gazdagéphez csatlakoztatott két hálózati adapterrel rendelkező ugyanezt az eljárást használ. Szüksége lesz az itt leírt 4 munkamenetek helyett 8 konfigurálása.
 
@@ -172,22 +172,22 @@ Az alábbi eljárás ismerteti, hogyan hozzáadása munkamenetek két hálózati
 6. Az a **speciális beállítások** párbeszédpanel:
    
    1. Az a **helyi Adapter** legördülő listában válassza **Microsoft iSCSI-kezdeményező**.
-   2. Az a **kezdeményező IP** legördülő listára, válassza ki a gazdagép IP-címét.
-   3. Az a **cél portál IP-címet** legördülő listában válassza az IP-címét az felületen engedélyezve van az eszközön.
+   2. Az a **kezdeményező IP** legördülő listára, válassza ki a gazdagép (iSCSI-illesztő) első felületet megfelelő IP-cím.
+   3. Az a **cél portál IP-címet** legördülő listában válassza az IP-címe az első felületen engedélyezve van az eszközön.
    4. Kattintson a **OK** való visszatéréshez az iSCSI-kezdeményező tulajdonságai párbeszédpanel megnyitásához.
 7. Kattintson a **tulajdonságok**, majd a a **tulajdonságok** párbeszédpanel, kattintson a **munkamenet hozzáadása**.
 8. Az a **cél kapcsolódás** párbeszédpanelen jelölje ki a **engedélyezése többutas** jelölőnégyzetet, majd kattintson a **speciális**.
 9. Az a **speciális beállítások** párbeszédpanel:
    
    1. Az a **helyi adapter** legördülő listában válassza **Microsoft iSCSI-kezdeményező**.
-   2. Az a **kezdeményező IP** legördülő listára, válassza ki a második illesztőfelülete a gazdagép a megfelelő IP-cím.
+   2. Az a **kezdeményező IP** legördülő listára, válassza ki a második iSCSI-illesztő a gazdagép a megfelelő IP-cím.
    3. Az a **cél portál IP-címet** legördülő listáról, válassza ki az IP-cím, a második adatok kapcsolat engedélyezve van az eszközön.
    4. Kattintson a **OK** való visszatéréshez a **iSCSI-kezdeményező tulajdonságai** párbeszédpanel megnyitásához. Ezzel hozzáadta a második munkamenet a cél.
 10. Adja hozzá a további munkamenetek (elérési út) a cél ismételje meg a 8 – 10. Két adapter áll rendelkezésükre a gazdagépen és a két az eszközön összesen négy munkamenetek is hozzáadhat.
 11. A kívánt munkamenetek (elérési útja), a hozzáadása után a **iSCSI-kezdeményező tulajdonságai** párbeszédpanel mezőben jelölje ki a cél, és kattintson **tulajdonságok**. A munkamenetek lapján a **tulajdonságok** párbeszédpanel, vegye figyelembe a négy munkamenet a lehetséges útvonal kombinációinak megfelelő. A munkamenet megszakítása, jelölje be a munkamenet-azonosítót melletti jelölőnégyzetet, majd **Disconnect**.
 12. Munkamenetek belül eszközök megtekintéséhez jelölje ki a **eszközök** fülre. A többutas I/O házirend a kiválasztott eszköz konfigurálásához kattintson **MPIO**. A **eszközadatok** párbeszédpanel jelenik meg. Az a **MPIO** lapon kiválaszthatja a megfelelő **terheléselosztási házirend** beállításait. Megtekintheti továbbá a **aktív** vagy **készenléti** elérési út típusa.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ [a StorSimple eszköz konfigurációs módosítja a StorSimple Device Manager szolgáltatás segítségével](storsimple-8000-modify-device-config.md).
 

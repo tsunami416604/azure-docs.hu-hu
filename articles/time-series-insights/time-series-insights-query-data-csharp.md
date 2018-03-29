@@ -1,22 +1,22 @@
 ---
-title: "Adatait kéri le egy C#-kódban használó Azure idő adatsorozat Insights környezetben |} Microsoft Docs"
-description: "Ez a cikk ismerteti a adatait kéri le egy Azure idő adatsorozat Insights környezet által a C# (C-éles) .NET nyelven írt egyéni alkalmazás kódolása."
+title: Adatait kéri le egy C#-kódban használó Azure idő adatsorozat Insights környezetben |} Microsoft Docs
+description: Ez a cikk ismerteti a adatait kéri le egy Azure idő adatsorozat Insights környezet által a C# (C-éles) .NET nyelven írt egyéni alkalmazás kódolása.
 services: time-series-insights
 ms.service: time-series-insights
 author: ankryach
 ms.author: ankryach
 manager: jhubbard
 editor: MicrosoftDocs/tsidocs
-reviewer: v-mamcge, jasonwhowell, kfile, tsidocs
+reviewer: jasonwhowell, kfile, tsidocs
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
-ms.date: 11/15/2017
-ms.openlocfilehash: 561ad848e7bddc6bf9d71328db4ddbba9bc5d2b4
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.date: 03/23/2018
+ms.openlocfilehash: 2cbdf4a5c7272e88430b1db7b853f8b6d441c893
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="query-data-from-the-azure-time-series-insights-environment-using-c"></a>Az Azure idő adatsorozat Insights környezet használatával C# az adatait
 
@@ -26,6 +26,11 @@ A minta számos alapszintű példát is tartalmat a Query API használatára:
 2. A beolvasni a felhasználó rendelkezik hozzáférési jogosultsággal környezetek listáját. Egyik a környezetben van felvenni, mint a környezet egyik fontos, és további adatokat kérnek ebben a környezetben.
 3. A HTTPS-kérés példájaként a rendszer lekéri az érintett környezet rendelkezésreállási adatait.
 4. A websocket-kérés példájaként a rendszer lekéri az érintett környezet összesített eseményadatait. Az adatokat a rendszer a teljes rendelkezésre állási időtartamra lekéri.
+
+Ez a példa kód is érhető el: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights)
+
+## <a name="project-references"></a>A projekt hivatkozásainak
+Adja hozzá a NuGet-csomagok `Microsoft.IdentityModel.Clients.ActiveDirectory` és `Newtonsoft.Json` ehhez a példához. 
 
 ## <a name="c-example"></a>C# – példa
 

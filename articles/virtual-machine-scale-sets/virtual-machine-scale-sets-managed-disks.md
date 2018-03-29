@@ -1,11 +1,11 @@
 ---
-title: "Felügyelt lemezek használata Azure-beli virtuálisgép-méretezési csoportokkal | Microsoft Docs"
-description: "Ebből a cikkből megtudhatja, hogyan használhat felügyelt lemezeket virtuálisgép-méretezési csoportokkal"
+title: Felügyelt lemezek használata Azure-beli virtuálisgép-méretezési csoportokkal | Microsoft Docs
+description: Ebből a cikkből megtudhatja, hogyan használhat felügyelt lemezeket virtuálisgép-méretezési csoportokkal
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 6/01/2017
 ms.author: negat
 ms.openlocfilehash: 82fa518e6c0498a13f950ce33c51be8581918f9b
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 03/27/2018
 ---
 # <a name="azure-vm-scale-sets-and-managed-disks"></a>Azure-beli virtuálisgép-méretezési csoportok és felügyelt lemezek
 
@@ -42,7 +42,7 @@ az vmss create -g dsktest -n dskvmss --image ubuntults --instance-count 10 --dat
 
 Vagy az [Azure-gyorsindítási sablonok GitHub-adattárában](https://github.com/Azure/azure-quickstart-templates) a `vmss` elemet tartalmazó mappákra rákeresve megtekintheti a méretezési csoportokat üzembe helyező sablonok előre felépített példáit. [Ebből a listából](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md) megtudhatja, hogy melyik sablon használ már felügyelt lemezeket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A felügyelt lemezekkel kapcsolatban [ebben a cikkben](../virtual-machines/windows/managed-disks-overview.md) talál további információt.
 

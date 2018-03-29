@@ -1,24 +1,24 @@
 ---
-title: "A Naplóelemzési Azure Networking elemzési megoldások |} Microsoft Docs"
-description: "Log Analytics az Azure-hálózat elemzési megoldás használatával nézze át az Azure hálózati biztonsági csoport naplók és Azure Application Gateway naplókat."
+title: A Naplóelemzési Azure Networking elemzési megoldások |} Microsoft Docs
+description: Log Analytics az Azure-hálózat elemzési megoldás használatával nézze át az Azure hálózati biztonsági csoport naplók és Azure Application Gateway naplókat.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: richrundmsft
 manager: ewinner
-editor: 
+editor: ''
 ms.assetid: 66a3b8a1-6c55-4533-9538-cad60c18f28b
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2017
+ms.date: 03/20/2018
 ms.author: richrund
-ms.openlocfilehash: 06b67322b3812a668a515ecc357171ede1d85441
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 17dadd784d59a2cc0cab6ffbae144010f896b296
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>Figyelési megoldásoknak a Naplóelemzési Azure hálózatkezelés
 
@@ -205,25 +205,25 @@ A frissített megoldások használata:
 
 1. [Azure Alkalmazásátjárót közvetlenül a Log Analyticshez való küldésének diagnosztika konfigurálása](#enable-azure-application-gateway-diagnostics-in-the-portal)
 2. [Diagnosztika küldendő közvetlenül Naplóelemzési az Azure hálózati biztonsági csoportok konfigurálása](#enable-azure-network-security-group-diagnostics-in-the-portal)
-2. Engedélyezze a *Azure Application Gateway Analytics* és a *Azure hálózati biztonsági csoport Analytics* ismertetett folyamatot követve megoldás [hozzáadni a Naplóelemzési megoldások a megoldások gyűjteményből](log-analytics-add-solutions.md)
+2. Engedélyezze a *Azure Application Gateway Analytics* és a *Azure hálózati biztonsági csoport Analytics* ismertetett folyamatot követve megoldás [hozzáadni a Naplóelemzési megoldásokat az a Megoldások gyűjteménye](log-analytics-add-solutions.md)
 3. Bármely lekérdezések, irányítópultok vagy használni az új adattípusra riasztások frissítése
   + A AzureDiagnostics típus. A ResourceType használhatja az Azure hálózati naplók szűrése.
 
     | ahelyett, hogy: | Használata: |
     | --- | --- |
-    |`Type=NetworkApplicationgateways OperationName=ApplicationGatewayAccess`| `Type=AzureDiagnostics ResourceType=APPLICATIONGATEWAYS OperationName=ApplicationGatewayAccess` |
-    |`Type=NetworkApplicationgateways OperationName=ApplicationGatewayPerformance` | `Type=AzureDiagnostics ResourceType=APPLICATIONGATEWAYS OperationName=ApplicationGatewayPerformance` |
-    | `Type=NetworkSecuritygroups` | `Type=AzureDiagnostics ResourceType=NETWORKSECURITYGROUPS` |
+    | NetworkApplicationgateways &#124; ahol OperationName == "ApplicationGatewayAccess" | AzureDiagnostics &#124; where ResourceType="APPLICATIONGATEWAYS" and OperationName=="ApplicationGatewayAccess" |
+    | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayPerformance" | AzureDiagnostics &#124; where ResourceType=="APPLICATIONGATEWAYS" and OperationName=ApplicationGatewayPerformance |
+    | NetworkSecuritygroups | AzureDiagnostics &#124; ahol ResourceType == "Biztonsági csoportok" |
 
    + Bármely mezőhöz, amely rendelkezik egy utótagja \_s, \_d, vagy \_nevét, a g kisbetű módosítsa az első karakter
    + Bármely mezőhöz, amely rendelkezik egy utótagja \_o a neve, az adatok egy egyéni mezők beágyazott mező neve alapján van osztva.
 4. Távolítsa el a *Azure hálózatkezelési elemzés (elavult)* megoldás.
-  + Ha a PowerShell használata esetén`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`
+  + Ha a PowerShell használata esetén `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`
 
 Mielőtt a változás nem jelenik meg az új megoldás összegyűjtött adatok. Továbbra is a régi típusú és mezőnevek ezeket az adatokat lekérdezni.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Használjon [Log Analytics-e jelentkezni a keresések](log-analytics-log-searches.md) részletes Azure diagnosztikai adatainak megtekintése.

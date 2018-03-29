@@ -1,7 +1,7 @@
 ---
-title: "Az SQL API Python példák Azure Cosmos DB |} Microsoft Docs"
-description: "Python példák a githubon található Azure Cosmos DB, beleértve a CRUD műveletek az általános feladatok."
-keywords: "Python példák"
+title: Az SQL API Python példák Azure Cosmos DB |} Microsoft Docs
+description: Python példák a githubon található Azure Cosmos DB, beleértve a CRUD műveletek az általános feladatok.
+keywords: Python példák
 services: cosmos-db
 author: mimig1
 manager: jhubbard
@@ -14,11 +14,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: mimig
-ms.openlocfilehash: 869c38c1f3dbdb21c3ecc21141341b1ae9dbaad6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ce9a7d071575b30e0150b23291292bddd0c65f1f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Az Azure Cosmos DB Python-példák
 
@@ -30,8 +30,6 @@ ms.lasthandoff: 03/16/2018
 > * [A minta Azure Kódgalériából.](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)
 > 
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Minta megoldások, amelyek a CRUD műveletek és más olyan gyakori műveleteket Azure Cosmos DB erőforrások szerepelnek a [azure-documentdb-python](https://github.com/Azure/azure-documentdb-python) GitHub-tárházban. Ez a cikk a következő információkat tartalmazza:
 

@@ -1,11 +1,11 @@
 ---
-title: "Állítsa be a Linux virtuális gép PostgreSQL |} Microsoft Docs"
-description: "Megtudhatja, hogyan telepítheti és konfigurálhatja PostgreSQL egy Linux virtuális gép az Azure-ban"
+title: Állítsa be a Linux virtuális gép PostgreSQL |} Microsoft Docs
+description: Megtudhatja, hogyan telepítheti és konfigurálhatja PostgreSQL egy Linux virtuális gép az Azure-ban
 services: virtual-machines-linux
-documentationcenter: 
-author: SuperScottz
-manager: timlt
-editor: 
+documentationcenter: ''
+author: iainfoulds
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 1a747363-0cc5-4ba3-9be7-084dfeb04651
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
-ms.author: mingzhan
-ms.openlocfilehash: 0bccdc1cfdbda06b57da8cd662373ef137768672
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: iainfou
+ms.openlocfilehash: 7741f861c5697da1e453c0d613b4b762511cf555
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>A PostgreSQL telepítése és konfigurálása Azure-ban
 PostgreSQL szerepel egy speciális nyílt forráskódú adatbázis Oracle és DB2 hasonló. Ez magában foglalja a vállalati szolgáltatások, mint a teljes ACID megfelelőségi megbízható tranzakciós feldolgozást és több verzió egyidejűség-vezérlési. Például az ANSI SQL és az SQL/MED (beleértve a külső adatokat burkolók Oracle, MySQL, MongoDB és sok más) szabványokat is támogatja. Széles körben bővíthető támogatja a több mint 12 eljárási nyelveket, GIN és GiST indexek, térbeli adatokat, és több NoSQL-hasonló szolgáltatásokat JSON vagy kulcs-érték-alapú alkalmazások is.
@@ -28,7 +28,7 @@ PostgreSQL szerepel egy speciális nyílt forráskódú adatbázis Oracle és DB
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="install-postgresql"></a>PostgreSQL telepítése
+## <a name="install-postgresql"></a>Install PostgreSQL
 > [!NOTE]
 > Az oktatóanyag teljesítéséhez Linux operációs rendszert futtató Azure virtuális gép már kell rendelkeznie. Hozzon létre, és a folytatás előtt Linux virtuális gépet, a [Azure Linux virtuális gép oktatóanyag](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 > 
@@ -72,7 +72,7 @@ A PuTTY használatával létrehozott virtuális gép Linux csatlakozni. Ha az el
    
         PostgreSQL, contrib, and documentation successfully made. Ready to install.
 
-## <a name="configure-postgresql"></a>PostgreSQL konfigurálása
+## <a name="configure-postgresql"></a>Configure PostgreSQL
 1. (Választható) Hozzon létre egy szimbolikus hivatkozást, hogy csökkentse a PostgreSQL hivatkozást tartalmaz a verziószám:
    
         # ln -s /opt/pgsql9.3.5 /opt/pgsql
@@ -124,7 +124,7 @@ A PuTTY használatával létrehozott virtuális gép Linux csatlakozni. Ha az el
    
     A következő kimenetet kell kapnia:
 
-![Kép](./media/postgresql-install/no1.png)
+![image](./media/postgresql-install/no1.png)
 
 ## <a name="set-up-postgresql"></a>PostgreSQL beállítása
 <!--    [postgres@ test ~]$ exit -->
@@ -141,13 +141,13 @@ A /etc/init.d/postgresql fájlban két változók módosításához. Az előtag 
 
     # sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
 
-![Kép](./media/postgresql-install/no2.png)
+![image](./media/postgresql-install/no2.png)
 
 Abba, hogy a végrehajtható fájl módosítása:
 
     # chmod +x /etc/init.d/postgresql
 
-Indítsa el a PostgreSQL:
+Start PostgreSQL:
 
     # /etc/init.d/postgresql start
 
@@ -157,7 +157,7 @@ Annak ellenőrzése, hogy a végpont esetén PostgreSQL meg:
 
 A következő kimenetet kell megjelennie:
 
-![Kép](./media/postgresql-install/no3.png)
+![image](./media/postgresql-install/no3.png)
 
 ## <a name="connect-to-the-postgres-database"></a>Csatlakozás a Postgres adatbázishoz
 A postgres felhasználó ismét váltani:
@@ -188,11 +188,11 @@ Most már készen négy oszlop táblázatot a következő oszlopneveket és korl
 
 A következő kell megjelennie, ha a tábla létrehozása sikeresen megtörtént:
 
-![Kép](./media/postgresql-install/no4.png)
+![image](./media/postgresql-install/no4.png)
 
 A táblázat szerkezetét ellenőrzéséhez a következő parancsot:
 
-![Kép](./media/postgresql-install/no5.png)
+![image](./media/postgresql-install/no5.png)
 
 ### <a name="add-data-to-a-table"></a>Adatok hozzáadása a táblához
 Információk először beszúrni egy sort:
@@ -201,7 +201,7 @@ Információk először beszúrni egy sort:
 
 A kimenetnek kell megjelennie:
 
-![Kép](./media/postgresql-install/no6.png)
+![image](./media/postgresql-install/no6.png)
 
 Néhány több ember is hozzáadhat. Néhány lehetőség, vagy létrehozhat saját:
 
@@ -218,7 +218,7 @@ A következő paranccsal egy táblázat megjelenítése:
 
 A kimenete:
 
-![Kép](./media/postgresql-install/no7.png)
+![image](./media/postgresql-install/no7.png)
 
 ### <a name="delete-data-in-a-table"></a>A tábla adatainak törlése
 A következő parancs segítségével törölheti az adatok a táblázatban:
@@ -227,7 +227,7 @@ A következő parancs segítségével törölheti az adatok a táblázatban:
 
 Ezzel törli a "John" sor összes információt. A kimenete:
 
-![Kép](./media/postgresql-install/no8.png)
+![image](./media/postgresql-install/no8.png)
 
 ### <a name="update-data-in-a-table"></a>A tábla adatainak frissítése
 A következő paranccsal egy tábla adatainak frissítése. Ez egy Sandy megerősítette, hogy ő lesz ott, így azt fogja módosítani a saját RSVP "N" a "Y":

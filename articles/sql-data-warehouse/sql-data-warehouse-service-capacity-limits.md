@@ -1,11 +1,11 @@
 ---
-title: "Az SQL Data Warehouse kapacitáskorlátait |} Microsoft Docs"
-description: "A kapcsolatok, adatbázisok, táblák és az SQL Data Warehouse lekérdezések maximális értékeket."
+title: Az SQL Data Warehouse kapacitáskorlátait |} Microsoft Docs
+description: A kapcsolatok, adatbázisok, táblák és az SQL Data Warehouse lekérdezések maximális értékeket.
 services: sql-data-warehouse
 documentationcenter: NA
-author: kevinvngo
+author: barbkess
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: e1eac122-baee-4200-a2ed-f38bfa0f67ce
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: reference
-ms.date: 03/15/2018
+ms.date: 03/27/2018
 ms.author: kevin;barbkess
-ms.openlocfilehash: b1ff33f80a8dd0a0861a5c39731c9f59689db101
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: fa7d8a9880ff97f30dc583d792e39aa914ea5435
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Az SQL Data Warehouse kapacitáskorlátait
 Az alábbi táblázatban a különböző összetevőket az Azure SQL Data Warehouse engedélyezett maximális értékeket tartalmazza.
@@ -39,13 +39,13 @@ Az alábbi táblázatban a különböző összetevőket az Azure SQL Data Wareho
 |:--- |:--- |:--- |
 | Adatbázis |Maximális méret |A lemezen tömörített 240 TB<br/><br/>Ez a terület független a tempdb vagy a napló, és ezért van kijelölve az ezen a helyen állandó táblákat.  Fürtözött oszlopcentrikus tömörítési becsült 5 X.  Ez a fajta tömörítés lehetővé teszi, hogy az adatbázis méretét a körülbelül 1 PB, ha minden tábla fürtözött oszlopcentrikus (az alapértelmezett táblatípus). |
 | Tábla |Maximális méret |A lemezen tömörített 60 TB |
-| Tábla |Adatbázisonként táblák |2 milliárd |
+| Tábla |Adatbázisonként táblák |10,000 |
 | Tábla |Táblánként oszlopok |1024 oszlopot |
 | Tábla |Bájt / oszlop |Oszlop függ [adattípus][data type].  A határ 8000 char adattípus, nvarchar a 4000 vagy MAX adattípusok 2 GB. |
 | Tábla |Soronként meghatározott bájt |8060 bájt<br/><br/>A soronkénti bájtok száma kiszámítása ugyanolyan módon, mert az SQL Server lap tömörítést. Például az SQL Server, az SQL Data Warehouse támogatja a sor-túlcsordulás tárolóról, ami lehetővé teszi, hogy **változó hosszúságú oszloppal** a soron kívüli leküldött. Változó hosszúságú sorok soron kívüli elküldte azokat, csak 24 bájtos gyökér tárolja a fő rekordban. További információkért lásd: a [sor-túlcsordulás adatok meghaladja a 8 KB-os][Row-Overflow Data Exceeding 8 KB]. |
 | Tábla |Táblánként partíciók |15,000<br/><br/>A nagy teljesítményű, azt javasoljuk, számának minimalizálása a partíciók száma meg kell során továbbra is támogató üzleti igényeinek. A partíciók számának növekedésével a terhelés adatok Definition nyelvi (DDL) és az adatok adatkezelési nyelvi (DML) műveletekhez növekedésének és az alacsonyabb teljesítményt. |
 | Tábla |Az karakter / partíció határérték. |4000 |
-| Index |A nem fürtözött indexek táblánként. |999<br/><br/>Csak a sortárindex táblák vonatkozik. |
+| Index |A nem fürtözött indexek táblánként. |50<br/><br/>Csak a sortárindex táblák vonatkozik. |
 | Index |Fürtözött indexek táblánként. |1<br><br/>Sortárindex és a oszlopcentrikus vonatkozik. |
 | Index |Indexkulcs mérete. |900 bájtot.<br/><br/>Csak a sortárindex indexek vonatkozik.<br/><br/>Több mint 900 bájtos maximális mérettel varchar típusú oszlopokon indexek is létrehozható, ha a meglévő adatok az oszlopok nem haladja meg a 900 bájtot az index létrehozásakor. Azonban később INSERT vagy az oszlopokat, amelyek a teljes mérete meghaladja a 900 bájtot frissítés művelet sikertelen lesz. |
 | Index |Kulcs oszlopot. |16<br/><br/>Csak a sortárindex indexek vonatkozik. Fürtözött oszlopcentrikus indexek tartalmazza az összes oszlopot. |
@@ -72,8 +72,9 @@ Az alábbi táblázatban a különböző összetevőket az Azure SQL Data Wareho
 | KIVÁLASZTÁS |Beágyazott segédlekérdezések |32<br/><br/>Soha nem lehet több mint 32 beágyazott segédlekérdezések SELECT utasítással. Nincs nem garantálja, hogy mindig legyen a 32. Például a CSATLAKOZZON egy segédlekérdezésbe is bevezetéséhez a lekérdezéstervben. A segédlekérdezések számát is is korlátozza a memória. |
 | KIVÁLASZTÁS |CSATLAKOZTATÁS / oszlopok |1024 oszlopot<br/><br/>Az ILLESZTÉS soha nem lehet több mint 1024 oszlopot. Nincs nem garantálja, hogy mindig legyen a 1024. Ha az ILLESZTÉS terv több oszlop, mint az ILLESZTÉS eredményeit tartalmazó ideiglenes táblát igényel, az 1024 korlát vonatkozik, az ideiglenes táblába. |
 | KIVÁLASZTÁS |A GROUP BY oszlopok bájtokat. |8060<br/><br/>A GROUP BY záradékban oszlopok 8060 bájtok maximális rendelkezhet. |
-| KIVÁLASZTÁS |Bájtok ORDER BY oszlopok száma |8060 bájt.<br/><br/>Az oszlopok az ORDER BY záradékban legfeljebb 8060 bájt lehet. |
-| Azonosítók és állandók utasítás száma |Hivatkozott azonosítók és állandók száma. |65,535<br/><br/>Az SQL Data Warehouse azonosítók és a lekérdezés egyetlen kifejezés tartalmazó állandók számának korlátozása. Ezt a határt 65 535. Haladja meg az SQL Server-hiba 8632 szám eredményez. További információkért lásd: [belső hiba: elérte az egyik korlátozását][Internal error: An expression services limit has been reached]. |
+| KIVÁLASZTÁS |Bájtok ORDER BY oszlopok száma |8060 bájt<br/><br/>Az oszlopok az ORDER BY záradékban 8060 bájtok maximális rendelkezhet. |
+| Egy utasítás azonosítói |A hivatkozott azonosítók száma |65,535<br/><br/>Az SQL Data Warehouse a lekérdezés egyetlen kifejezés tartalmazó azonosítók számának korlátozása. Haladja meg az SQL Server-hiba 8632 szám eredményez. További információkért lásd: [belső hiba: elérte az egyik korlátozását][Internal error: An expression services limit has been reached]. |
+| A szövegkonstansok | A szövegkonstansok utasításban száma | 20,000 <br/><br/>Az SQL Data Warehouse limites a lekérdezés egyetlen kifejezés tartalmazó karakterlánckonstansokat száma. Haladja meg az SQL Server-hiba 8632 szám eredményez. További információkért lásd: [belső hiba: elérte az egyik korlátozását][Internal error: An expression services limit has been reached]. |
 
 ## <a name="metadata"></a>Metaadatok
 | Rendszernézet | Sorok maximális száma |

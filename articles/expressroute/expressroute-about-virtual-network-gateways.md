@@ -1,11 +1,11 @@
 ---
-title: "Kapcsolatos az ExpressRoute virtuális hálózati átjárók |} Microsoft Docs"
-description: "További információk a virtuális hálózati átjárók az ExpressRoute."
+title: Kapcsolatos az ExpressRoute virtuális hálózati átjárók |} Microsoft Docs
+description: További információk a virtuális hálózati átjárók az ExpressRoute.
 services: expressroute
 documentationcenter: na
 author: cherylmc
 manager: carmonm
-editor: 
+editor: ''
 tags: azure-resource-manager, azure-service-management
 ms.assetid: 7e0d9658-bc00-45b0-848f-f7a6da648635
 ms.service: expressroute
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/05/2018
+ms.date: 03/22/2018
 ms.author: cherylmc
-ms.openlocfilehash: 0517caed3a7d6632c1a5650147f4db240dbe0a17
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ae971e7743d6dd3269c0a4f976bd2a5316300f58
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="about-virtual-network-gateways-for-expressroute"></a>Az ExpressRoute virtuális hálózati átjáróinak ismertetése
 A virtuális hálózati átjáró küldhető Azure virtuális hálózatok közötti hálózati forgalom és a helyszíni helyek. Amikor konfigurál egy ExpressRoute-kapcsolatot, hozzon létre és konfigurálnia kell a virtuális hálózati átjáró és a virtuális hálózati átjáró kapcsolat.
@@ -35,13 +35,13 @@ Mindegyik virtuális hálózat csak egy virtuális hálózati átjáróval rende
 
 Ha szeretné frissíteni az átjárót egy nagyobb teljesítményű átjáró SKU, a legtöbb esetben használhatja a "Átméretezési-AzureRmVirtualNetworkGateway" PowerShell-parancsmagot. Ez a Standard és a HighPerformance termékváltozatok frissítésekre fog működni. Azonban a UltraPerformance SKU frissítéséhez, akkor hozza létre újra az átjárót.
 
-### <a name="aggthroughput"></a>Összesített becsült gateway SKU
-Az alábbi táblázatban az átjárótípusok és azok becsült összesített átviteli sebessége tekinthető meg. Ez a tábla a Resource Managerre és a klasszikus üzembe helyezési modellre is érvényes.
+### <a name="aggthroughput"></a>Termékváltozat-átjáró által becsült teljesítmény
+A következő táblázat az átjáró típusa és a becsült teljesítményét. Ez a tábla a Resource Managerre és a klasszikus üzembe helyezési modellre is érvényes.
 
 [!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
 
 > [!IMPORTANT]
-> Alkalmazás átviteli sebességére több tényezőtől függ, többek között a végpontok közötti késés, és megnyílik az alkalmazás forgalom számát. A táblázatban szereplő számok jelölik a felső korlátja, amely az alkalmazás a ideális környezet elméletileg érhető el. 
+> Alkalmazásteljesítmény több tényezőtől függ, többek között a végpontok közötti késés, és megnyílik az alkalmazás forgalom számát. A táblázatban szereplő számok jelölik a felső korlátja, amely az alkalmazás a ideális környezet elméletileg érhető el. 
 > 
 >
 

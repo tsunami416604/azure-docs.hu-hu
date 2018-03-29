@@ -1,9 +1,9 @@
 ---
-title: "Az Azure AD Connect: Zökkenőmentes egyszeri bejelentkezés – gyakori kérdések |} Microsoft Docs"
-description: "Tudnivalók Azure Active Directory zökkenőmentes egyszeri bejelentkezést gyakran feltett kérdésekre adott válaszokat."
+title: 'Az Azure AD Connect: Zökkenőmentes egyszeri bejelentkezés – gyakori kérdések |} Microsoft Docs'
+description: Tudnivalók Azure Active Directory zökkenőmentes egyszeri bejelentkezést gyakran feltett kérdésekre adott válaszokat.
 services: active-directory
-keywords: "Mi az Azure AD Connect telepítés Active Directory szükséges összetevőket az Azure AD, SSO, egyszeri bejelentkezést."
-documentationcenter: 
+keywords: Mi az Azure AD Connect telepítés Active Directory szükséges összetevőket az Azure AD, SSO, egyszeri bejelentkezést.
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/22/2018
 ms.author: billmath
-ms.openlocfilehash: 8a91960f150e9298515cd52fe192ec1abdd89f9c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c34293796860e0ab72eecedab9cd8b023237050d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyakran ismételt kérdések
 
@@ -38,16 +38,23 @@ Nem. Zökkenőmentes SSO csak érhető el a világméretű az Azure AD-példány
 
 ## <a name="what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso"></a>Milyen alkalmazások előnyeit `domain_hint` vagy `login_hint` zökkenőmentes SSO-paraméter képességét?
 
-Ezek a paraméterek küldése az Azure AD, és ezért felhasználók csendes bejelentkezési élményt nyújt zökkenőmentes egyszeri Bejelentkezést használó alkalmazások nem teljes listája alább felsorolt van:
+Alább felsorolt van küldött ezek a paraméterek az Azure AD, és ezért felhasználók csendes bejelentkezési élményt nyújt zökkenőmentes egyszeri Bejelentkezést (azaz, nincs szükség a felhasználók számára a felhasználónevek bemeneti) használó alkalmazások nem teljes listája:
 
 | Alkalmazásnév | Használandó URL-címe |
 | -- | -- |
 | Hozzáférési panel | myapps.microsoft.com/contoso.com |
 | Az Outlook Web | outlook.office365.com/contoso.com |
 
-A fenti táblázatban cserélje le a "contoso.com" a bérlő a megfelelő alkalmazás URL-címek lekérése a tartomány nevét.
+Emellett a felhasználónál a beavatkozás nélküli bejelentkezést Ha kérelmet küld a bejelentkezési kérelmek központjaként az Azure AD-végpontok – Ez azt jelenti, hogy https://login.microsoftonline.com/contoso.com/<..> vagy https://login.microsoftonline.com/<tenant_ID>/<..> - helyett az Azure AD közös végpont - Ez azt jelenti, hogy https://login.microsoftonline.com/common/<...>. Alkalmazások, amelyek az ilyen típusú bejelentkezési kérelmek nem teljes listája alább felsorolt van.
 
-Ha más alkalmazásokat, amelyek érdekli, ossza meg velünk megjegyzéseit szakaszában.
+| Alkalmazásnév | Használandó URL-címe |
+| -- | -- |
+| SharePoint Online | contoso.sharepoint.com |
+| Azure Portal | portal.azure.com/contoso.com |
+
+A fenti táblák cserélje le a "contoso.com" a megfelelő alkalmazás URL-címek lekérése a bérlő a tartomány nevét.
+
+Ha azt szeretné, hogy más alkalmazások, amelyek a beavatkozás nélküli bejelentkezést, ossza meg velünk a visszajelzés szakaszban.
 
 ## <a name="does-seamless-sso-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Zökkenőmentes egyszeri Bejelentkezést támogatja `Alternate ID` , a felhasználónév helyett `userPrincipalName`?
 
