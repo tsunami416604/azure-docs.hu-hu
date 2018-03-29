@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/16/2018
 ms.author: billmath
-ms.openlocfilehash: 8bae1140d4a3ac4762bdcbabb16851d29415a8fe
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 5308803bb36024ee2373cf07ec46f798eb7192c5
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect: Verziókiadások
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden kiegészítéseket célrendszerekhez vonatkoznak.
@@ -49,6 +49,7 @@ Töltse le |} [Azure AD Connect letöltése](http://go.microsoft.com/fwlink/?Lin
 #### <a name="fixed-issues"></a>Javított problémák
 
 * Set-ADSyncAutoUpgrade parancsmag korábban megakadályozza a Autoupgrade Ha automatikus frissítési állapot felfüggesztve értékre van beállítva. Ez most módosul, ezért az nem blokkolja a jövőbeli buildek AutoUpgrade.
+* Módosította a **felhasználói bejelentkezés** lapon a "Jelszó-szinkronizálás" "Jelszókivonat-szinkronizálást" lehetőséget.  Az Azure AD Connect jelszókivonatait, nem a jelszavak, szinkronizálja a, Ez mit ténylegesen előforduló igazodik.  További információ: [Jelszókivonat-szinkronizálást és az Azure AD Connect-szinkronizálás megvalósítása](active-directory-aadconnectsync-implement-password-hash-synchronization.md)
 
 ## <a name="117490"></a>1.1.749.0
 Állapota: Válassza ki az ügyfelek kiadott
@@ -558,7 +559,7 @@ Az Azure AD Connect szinkronizálása
   * Hozzáadott **userType** metaverzumséma és AAD-összekötő séma. Az ügyfelek, akik vagy attribútumok frissíti az Azure ad-ben egyéni szinkronizálási szabályok erre is létrehozható.
 
 * Az Azure AD Connect mostantól automatikusan lehetővé teszi, hogy a ConsistencyGuid attribútum használata a Forráshorgony attribútumaként a helyszíni Active Directory-objektumok. További, az Azure AD Connect tölti fel az objectGuid attribútum értékét a ConsistencyGuid attribútumot, ha üres. Ez a funkció esetében csak az új telepítési alkalmazható. További információkért erről a szolgáltatásról, tekintse át a cikk részt [az Azure AD Connect: tervezési alapelvek - msDS-ConsistencyGuid használata sourceAnchor](active-directory-aadconnect-design-concepts.md#using-msds-consistencyguid-as-sourceanchor).
-* Új hibaelhárítási parancsmag Invoke-ADSyncDiagnostics bővült Jelszókivonat-szinkronizálást diagnosztizálásához kapcsolatos hiba lépett fel. A parancsmag használatával kapcsolatos információkért tekintse meg a cikk [és az Azure AD Connect-szinkronizálás jelszó-szinkronizálás hibaelhárítása](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-troubleshoot-password-synchronization).
+* Új hibaelhárítási parancsmag Invoke-ADSyncDiagnostics bővült Jelszókivonat-szinkronizálást diagnosztizálásához kapcsolatos hiba lépett fel. A parancsmag használatával kapcsolatos információkért tekintse meg a cikk [Jelszókivonat-szinkronizálást és az Azure AD Connect-szinkronizálás hibaelhárítása](active-directory-aadconnectsync-troubleshoot-password-hash-synchronization.md).
 * Az Azure AD Connect mostantól támogatja a szinkronizálási Mail-Enabled nyilvános mappa a következő helyről objektumokat a helyszíni AD-ből az Azure AD. A funkciót, az Azure AD Connect varázsló a nem kötelező funkcióinak használatával engedélyezheti. További információkért erről a szolgáltatásról, tekintse meg a cikk [Office 365 Directory-alapú biztonsági blokkolja a támogatása a helyszíni Mail nyilvános mappák](https://blogs.technet.microsoft.com/exchange/2017/05/19/office-365-directory-based-edge-blocking-support-for-on-premises-mail-enabled-public-folders).
 * Az Azure AD Connect van szükség az AD DS fiók szinkronizálása a helyszíni AD. Korábban Ha az Expressz mód segítségével az Azure AD Connect telepíti, akkor biztosíthatja a hitelesítő adatokat az Azure AD Connect és egy vállalati rendszergazdai fiók hozna létre az AD DS-fiókjához szükséges. Azonban az egyéni telepítés és erdők hozzáadása egy meglévő központi telepítési kellett Ehelyett meg az AD DS-fiókjához. Most is lehetősége nyílik egy vállalati rendszergazdai fiók hitelesítő adatait adja egyéni telepítés során, és lehetővé teszik a szükséges Active Directory tartományi szolgáltatások-fiók létrehozása az Azure AD Connect.
 * Az Azure AD Connect mostantól támogatja az SQL AOA. Az Azure AD Connect telepítése előtt engedélyeznie kell az SQL AOA. A telepítés során az Azure AD Connect észleli, hogy a megadott SQL-példány engedélyezve van az SQL AOA vagy nem. Ha SQL AOA engedélyezve van, az Azure AD Connect további adatok Ha SQL AOA replikáció szinkron vagy aszinkron replikáció használatára van konfigurálva. A rendelkezésre állási csoport figyelőjének beállításakor javasoljuk, hogy a RegisterAllProvidersIP tulajdonságot 0 értékre állítja. Ennek az az oka az Azure AD Connect jelenleg használ SQL Native Client kapcsolódni az SQL és az SQL natív ügyfél nem támogatja a MultiSubNetFailover tulajdonság használatával.
@@ -748,7 +749,7 @@ Kiadás dátuma: 2016. június
 **Javított problémák és fejlesztései:**
 
 * Az Azure AD Connect mostantól a FIPS előírásainak megfelelő kiszolgálóra telepíthető.
-  * A jelszó-szinkronizálás, lásd: [jelszó-szinkronizálással és FIPS](active-directory-aadconnectsync-implement-password-synchronization.md#password-synchronization-and-fips).
+  * A jelszó-szinkronizálás, lásd: [Jelszókivonat-szinkronizálás és a FIPS](active-directory-aadconnectsync-implement-password-hash-synchronization.md#password-hash-synchronization-and-fips).
 * Ha NetBIOS-név nem oldható fel az Active Directory-összekötő az FQDN rögzített kapcsolatos problémát.
 
 ## <a name="111800"></a>1.1.180.0

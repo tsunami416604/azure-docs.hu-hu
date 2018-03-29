@@ -1,6 +1,6 @@
 ---
-title: "Egy fájlkiszolgáló védelméhez az Azure Site Recovery használatával"
-description: "Ez a cikk ismerteti, hogyan védi a fájlkiszolgáló Azure Site Recovery segítségével"
+title: Egy fájlkiszolgáló védelméhez az Azure Site Recovery használatával
+description: Ez a cikk ismerteti, hogyan védi a fájlkiszolgáló Azure Site Recovery segítségével
 services: site-recovery
 author: rajani-janaki-ram
 manager: gauravd
@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 02/06/2018
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: f53a8641a50a6c968a6ba7b841e0e8f938b5d9f6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 830f9c76d9d1bf11692fa9f2f5c49cbecdb69f25
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Egy fájlkiszolgáló védelméhez az Azure Site Recovery használatával 
 
@@ -48,7 +48,7 @@ Az előző ábrán aktívan nevű tagok több fájlkiszolgáló részt fájlok r
 
     * Ezt a módszert is használhatja, ha a virtuális gépek kell beállítani, a Site Recovery által nem támogatott. Példa: egy megosztott fürtlemezre mutat, egyes esetekben gyakori használati módszereinek fájl kiszolgálói környezetekben. Elosztott fájlrendszer-replikációs közepes változási sebessége a kis sávszélességű környezetekben is működik. Fontolja meg a további költségeket az Azure virtuális gép rendelkezik, és folyamatosan futó kell. 
 
-* **Azure fájlszinkronizálás használja replikálja a fájlok**: Ha azt tervezi, a felhő, vagy egy Azure virtuális gép már használ, fájlszinkronizálás használhatja. Fájlszinkronizálás kínál a teljes körűen felügyelt fájlmegosztások a felhőben, amelyek elérhetők a szabványos szinkronizálása [Server Message Block](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (SMB) protokollt. Azure fájlmegosztásokat majd lehet csatlakoztatni egyidejűleg Windows, Linux és macOS felhőalapú vagy helyszíni központi telepítések során. 
+* **Azure fájlszinkronizálás használja replikálja a fájlok**: Ha azt tervezi, a felhő, vagy egy Azure virtuális gép már használ, Azure fájlszinkronizálás használhatja. Azure fájlszinkronizálás kínál a teljes körűen felügyelt fájlmegosztások a felhőben, amelyek elérhetők a szabványos szinkronizálása [Server Message Block](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (SMB) protokollt. Azure fájlmegosztásokat egyidejűleg majd csatlakoztatható Windows, Linux és macOS felhőalapú vagy helyszíni központi telepítések során. 
 
 A következő diagram segít meghatározni, melyik stratégia fájl kiszolgálói környezetre.
 
