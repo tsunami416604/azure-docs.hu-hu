@@ -1,33 +1,33 @@
 ---
-title: "Az Azure AD-hitelesítő tanúsítványt |} Microsoft Docs"
-description: "Ez a cikk ismerteti a regisztrációs és az alkalmazás-hitelesítési tanúsítvány hitelesítő adatok használatát"
+title: Az Azure AD-hitelesítő tanúsítványt |} Microsoft Docs
+description: Ez a cikk ismerteti a regisztrációs és az alkalmazás-hitelesítési tanúsítvány hitelesítő adatok használatát
 services: active-directory
 documentationcenter: .net
 author: navyasric
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 88f0c64a-25f7-4974-aca2-2acadc9acbd8
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/02/2017
+ms.date: 03/15/2018
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 68de6295b84385f54eaadd6d24e8309a32fae9ce
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f7c58b4ebd840aca555b52a03cf44ace311b64e3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>Alkalmazás-hitelesítési tanúsítvány hitelesítő adatai
 
-Az Azure Active Directory lehetővé teszi az saját hitelesítő adatait használja a hitelesítéshez, például az OAuth 2.0 ügyfél hitelesítő adatok megadása folyamatában ([v1](active-directory-protocols-oauth-service-to-service.md) [v2](active-directory-v2-protocols-oauth-client-creds.md)) és az On-meghatalmazásos folyamat ([v1](active-directory-protocols-oauth-on-behalf-of.md) [v2](active-directory-v2-protocols-oauth-on-behalf-of.md)).
+Az Azure Active Directory lehetővé teszi az saját hitelesítő adatait használja a hitelesítéshez. Például az OAuth 2.0 ügyfél hitelesítő adatok Grant flow a ([v1](active-directory-protocols-oauth-service-to-service.md), [v2](active-directory-v2-protocols-oauth-client-creds.md)) és az On-meghatalmazásos folyamat ([v1](active-directory-protocols-oauth-on-behalf-of.md), [v2](active-directory-v2-protocols-oauth-on-behalf-of.md)).
 A hitelesítő adatok, használhat egy formátuma egy JSON webes Token(JWT) helyességi feltételt, amely az alkalmazás tulajdonosa a tanúsítvánnyal aláírt.
 
 ## <a name="format-of-the-assertion"></a>A helyességi feltétel formátuma
-A helyességi feltétel kiszámításához, érdemes lehet a több valamelyikével [JSON Web Token](https://jwt.io/) szalagtárak a választott nyelven történik. A token által az információkat a következő:
+A helyességi feltétel kiszámításához, érdemes lehet a több valamelyikével [JSON Web Token](https://jwt.ms/) szalagtárak a választott nyelven történik. A token által az információkat a következő:
 
 #### <a name="header"></a>Fejléc
 
@@ -43,10 +43,10 @@ A helyességi feltétel kiszámításához, érdemes lehet a több valamelyikév
 | --- | --- |
 | `aud` | A célközönség: Kell  **https://login.microsoftonline.com/ *tenant_Id*  /oauth2/token** |
 | `exp` | Lejárat dátuma: a dátum, amikor a jogkivonat érvényessége lejár. Az idő másodpercben 1970. január 1. a ki (1970-01-01T0:0:0Z) UTC, amíg a token érvényességi lejárati idejének.|
-| `iss` | Kibocsátó: a client_id (az ügyfélszolgáltatás alkalmazásazonosító) kell lennie. |
+| `iss` | Kibocsátó: a client_id (az ügyfélszolgáltatás Alkalmazásazonosító) kell lennie. |
 | `jti` | GUID-ja: a JWT azonosító |
 | `nbf` | Hatálybalépési idő: az a dátum előtt, amely a token nem használható. Az idő másodpercben 1970. január 1. a ki (1970-01-01T0:0:0Z) UTC, amíg a token lett kiállítva. |
-| `sub` | Tulajdonos: megegyezik a `iss`, a client_id (az ügyfélszolgáltatás alkalmazásazonosító) kell lennie. |
+| `sub` | Tulajdonos: megegyezik a `iss`, a client_id (az ügyfélszolgáltatás Alkalmazásazonosító) kell lennie. |
 
 #### <a name="signature"></a>Aláírás
 
@@ -85,7 +85,14 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 
 ### <a name="register-your-certificate-with-azure-ad"></a>A tanúsítvány regisztrálása az Azure AD-val
 
-A tanúsítvány hitelesítő adat társítandó az ügyfélalkalmazás Azure AD-ben, akkor az alkalmazás jegyzékében módosíthatók.
+Az ügyfélalkalmazás az Azure AD a következő módszereket az Azure portálon keresztül is társíthat a tanúsítvány hitelesítő adat:
+
+**A tanúsítványfájl feltöltését**
+
+Az ügyfélalkalmazást Azure-alkalmazás regisztrációja, kattintson a **beállítások**, kattintson a **kulcsok** majd **nyilvános kulcs feltöltése**. Válassza ki a tanúsítványfájl feltöltését, és kattintson a kívánt **mentése**. Menti a tanúsítvány feltöltése és az ujjlenyomat kezdetének és lejár értékek jelennek meg. 
+
+**Az alkalmazás jegyzékében frissítése**
+
 Tanúsítvány céllal rendelkezik, kell számítási:
 
 - `$base64Thumbprint`, vagyis a base64 kódolás a tanúsítvány kivonata

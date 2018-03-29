@@ -1,7 +1,7 @@
 ---
-title: "Az Azure Cosmos DB: SQL API használatába bevezető oktatóanyagot |} Microsoft Docs"
-description: "Ez az oktatóanyag létrehoz egy online adatbázist és az SQL API-val C# konzolalkalmazást."
-keywords: "nosql-oktatóanyag, online adatbázis, c# konzolalkalmazás"
+title: 'Az Azure Cosmos DB: SQL API használatába bevezető oktatóanyagot |} Microsoft Docs'
+description: Ez az oktatóanyag létrehoz egy online adatbázist és az SQL API-val C# konzolalkalmazást.
+keywords: nosql-oktatóanyag, online adatbázis, c# konzolalkalmazás
 services: cosmos-db
 documentationcenter: .net
 author: AndrewHoh
@@ -15,11 +15,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: anhoh
-ms.openlocfilehash: 28714106a6228b5bdaa1933d6e8ea89105eb4b30
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 870bdce0b909a882b99de92bbe5ad1e51db11a39
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-sql-api-getting-started-tutorial"></a>Az Azure Cosmos DB: SQL API használatába bevezető oktatóanyagot
 > [!div class="op_single_selector"]
@@ -31,8 +31,6 @@ ms.lasthandoff: 12/18/2017
 > * [C++](sql-api-cpp-get-started.md)
 >  
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Az Azure Cosmos DB SQL API alapszintű bemutató Üdvözöljük! Az oktatóanyag lépéseinek követésével egy olyan konzolalkalmazást készít, amely Azure Cosmos DB-erőforrásokat hoz létre és kérdez le.
 
@@ -542,7 +540,7 @@ Az Azure Cosmos DB .NET SDK-t a Visual Studio hivatkozásainak visszaállítás�
 Ennyi az egész! Építse ki, és máris jó úton jár!
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Összetettebb ASP.NET MVC-oktatóanyagot szeretne? Lásd: [ASP.NET MVC oktatóprogram: webalkalmazás fejlesztése a Azure Cosmos DB](sql-api-dotnet-application.md).
 * Méret- és teljesítménytesztelést szeretne végezni az Azure Cosmos DB használatával? Lásd: [teljesítmény és méretezhetőség, az Azure Cosmos DB tesztelése](performance-testing.md)
 * Megtudhatja, hogyan [figyelése Azure Cosmos DB kéréseket, a használat és a tárolási](monitor-accounts.md).

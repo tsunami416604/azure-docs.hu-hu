@@ -1,24 +1,24 @@
 ---
-title: "Számítási kiszolgáló nélküli adatbázis - Azure Functions és Azure Cosmos DB |} Microsoft Docs"
-description: "Ismerje meg, hogyan Azure Cosmos adatbázis és az Azure Functions együtt is használható eseményvezérelt kiszolgáló nélküli számítógépes-alkalmazásai létrehozására."
+title: Számítási kiszolgáló nélküli adatbázis - Azure Functions és Azure Cosmos DB |} Microsoft Docs
+description: Ismerje meg, hogyan Azure Cosmos adatbázis és az Azure Functions együtt is használható eseményvezérelt kiszolgáló nélküli számítógépes-alkalmazásai létrehozására.
 services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: monicar
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 03/26/2018
 ms.author: mimig
-ms.openlocfilehash: 297f8929ec11b37a2cbbfb79bb442da75b4368a8
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 39155a2407efa0cc13236a1bbbbcd292daac86b6
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Az Azure Cosmos DB: Kiszolgáló nélküli adatbázis számítási Azure Functions használatával
 
@@ -113,12 +113,16 @@ Mindegyik eseteinek, a függvény az alkalmazás rendelkezik le, mert nem kell �
 
 ## <a name="tooling"></a>Tooling eszköz
 
-Natív integráció az Azure Cosmos adatbázis és az Azure Functions között érhető el az Azure portálon.
+Natív integráció az Azure Cosmos adatbázis és az Azure Functions között érhető el az Azure portálon, és a Visual Studio 2017.
 * Az Azure Functions portálon létrehozhat egy Azure Cosmos DB eseményindító. Gyors üzembe helyezés útmutatásért lásd: [egy Azure Cosmos DB eseményindító létrehozása az Azure portálon](https://aka.ms/cosmosdbtriggerportalfunc) ![egy Azure Cosmos DB eseményindító létrehozása az Azure Functions portálon](./media/serverless-computing-database/azure-function-cosmos-db-trigger.png) 
 * Az Azure Functions portálon hozzáadhatja Azure Cosmos DB bemeneti kötései és a kimeneti kötések eseményindítók más típusú. Gyors üzembe helyezés útmutatásért lásd: [Azure Functions és Cosmos DB strukturálatlan adatok tárolásához](../azure-functions/functions-integrate-store-unstructured-data-cosmosdb.md).
     ![Egy Azure Cosmos DB eseményindító létrehozása az Azure Functions portálon](./media/serverless-computing-database/function-portal-input-binding.png)
 *   A Azure Cosmos DB-portálon egy Azure Cosmos DB eseményindító adhat hozzá egy meglévő Azure-függvény alkalmazást ugyanabban az erőforráscsoportban.
     ![Egy Azure Cosmos DB eseményindító létrehozása az Azure Functions portálon](./media/serverless-computing-database/cosmos-db-portal.png)
+* A Visual Studio 2017 létrehozhat egy az integrált sablonnal Azure Cosmos DB eseményindító:
+
+    >[!VIDEO https://www.youtube.com/embed/iprndNsUeeg]
+
 
 ## <a name="why-choose-azure-functions-integration-for-serverless-computing"></a>Miért válassza ki az Azure Functions-integráció kiszolgáló nélküli számítástechnikai?
 

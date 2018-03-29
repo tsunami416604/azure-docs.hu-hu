@@ -1,13 +1,13 @@
 ---
-title: "A felhasználóknak engedélyezik, az Ambari nézetek - Azure HDInsight |} Microsoft Docs"
-description: "Hogyan tartományhoz a HDInsight-fürtök az Ambari felhasználók és csoportok engedélyeinek kezelése."
+title: A felhasználóknak engedélyezik, az Ambari nézetek - Azure HDInsight |} Microsoft Docs
+description: Hogyan tartományhoz a HDInsight-fürtök az Ambari felhasználók és csoportok engedélyeinek kezelése.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: maxluk
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.workload: big-data
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: e8c1ff23ee00e15325a82e1df0f4643ec429b119
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: f4dfb51cf344d1ec51363ef3a9f74c1ca59119a6
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="authorize-users-for-ambari-views"></a>Az Ambari Views használatának engedélyezése felhasználók számára
 
@@ -35,7 +35,7 @@ Ha még nem tette meg, kövesse az [ezeket az utasításokat](./domain-joined/ap
 
 ## <a name="access-the-ambari-management-page"></a>Hozzáférés az Ambari kezelése lap
 
-Eléréséhez a **Ambari kezelése lap** a a [Ambari webes felhasználói felületén](hdinsight-hadoop-manage-ambari.md), keresse meg a  **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** . Adja meg a fürt rendszergazdai jogosultságú felhasználónevet és jelszót, amelyet a fürt létrehozásakor megadott. Az Ambari irányítópulton, válassza ki, **kezelése az Ambari** alatt a **admin** menüben:
+Eléréséhez a **Ambari kezelése lap** a a [Ambari webes felhasználói felületén](hdinsight-hadoop-manage-ambari.md), keresse meg a **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`**. Adja meg a fürt rendszergazdai jogosultságú felhasználónevet és jelszót, amelyet a fürt létrehozásakor megadott. Az Ambari irányítópulton, válassza ki, **kezelése az Ambari** alatt a **admin** menüben:
 
 ![Ambari kezelése](./media/hdinsight-authorize-users-to-ambari/manage-ambari.png)
 
@@ -122,7 +122,7 @@ A lista nézet két kategóriába gyors szerkesztési képességeket biztosít: 
 
     ![Szerepkörök listanézet - felhasználók](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
 
-* A csoportok kategória a listanézet összes csoport és az egyes csoportokhoz rendelt szerepkör jeleníti meg. A jelen példában csoportok listájának szinkronizálása a megadott Azure AD-csoport a **hozzáférés felhasználói csoport** a fürt tartománybeállítások tulajdonsága. Lásd: [hozzon létre HDInsight-fürt](./domain-joined/apache-domain-joined-configure.md#create-an-hdinsight-cluster-in-the-vnet).
+* A csoportok kategória a listanézet összes csoport és az egyes csoportokhoz rendelt szerepkör jeleníti meg. A jelen példában csoportok listájának szinkronizálása a megadott Azure AD-csoport a **hozzáférés felhasználói csoport** a fürt tartománybeállítások tulajdonsága. Lásd: [tartományhoz HDInsight-fürt létrehozása](/domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster).
 
     ![Szerepkörök listanézet - csoportok](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
 

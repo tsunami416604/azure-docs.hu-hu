@@ -1,8 +1,8 @@
 ---
-title: "Háttérfeladatok futtatása a webjobs-feladatok az Azure App Service-ben"
-description: "Ismerje meg a WebJobs használata az Azure App Service web apps, az API-alkalmazások vagy a mobilalkalmazások háttér feladatok futtatásához."
+title: Háttérfeladatok futtatása a webjobs-feladatok az Azure App Service-ben
+description: Ismerje meg a WebJobs használata az Azure App Service web apps, az API-alkalmazások vagy a mobilalkalmazások háttér feladatok futtatásához.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: tdykstra
 manager: erikre
 editor: jimbe
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/09/2017
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 3652e0171e0c6a53c16fb5b5fde20df9ed2ab7c7
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: f41cc83bfb18146e46e7d8501318acd68ce9c421
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Háttérfeladatok futtatása a webjobs-feladatok az Azure App Service-ben
 
@@ -170,15 +170,7 @@ when making changes in one don't forget the other two.
 
 ## <a name="cron-expressions"></a>CRON-kifejezés
 
-A [CRON-kifejezés](https://en.wikipedia.org/wiki/Cron) hat mezők tevődik össze: `{second} {minute} {hour} {day} {month} {day of the week}`.  Néhány példa:
-
-* 15 percenként: `0 */15 * * * *`
-* Minden órában (Ez azt jelenti, hogy mindig, amikor a perc száma 0): `0 0 * * * *` 
-* Minden órában a Reggel 9 a délután 5 óra: `0 0 9-17 * * *` 
-* A 9:30 AM minden nap: `0 30 9 * * *`
-* A 9:30 AM minden hétköznap: `0 30 9 * * 1-5`
-
-A CRON-kifejezés adja meg a portálon, vagy tartalmaznak egy `settings.job` fájl a webjobs-feladat gyökerében *.zip* fájlt, az alábbi példában látható módon:
+Megadhat egy [CRON-kifejezés](../azure-functions/functions-bindings-timer.md#cron-expressions) a portálon vagy egy `settings.job` fájl a webjobs-feladat gyökerében *.zip* fájlt, az alábbi példában látható módon:
 
 ```json
 {

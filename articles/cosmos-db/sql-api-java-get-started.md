@@ -1,7 +1,7 @@
 ---
-title: "NoSQL-oktatóanyag: Azure Cosmos DB Java SDK-t az SQL API |} Microsoft Docs"
-description: "NoSQL-oktatóanyag, amely létrehoz egy online adatbázist és az SQL API-val az Azure Cosmos DB Java konzolalkalmazást. Az Azure SQL egy NoSQL-adatbázis a JSON Formátumhoz."
-keywords: "nosql-oktatóanyag, online adatbázis, java konzolalkalmazás"
+title: 'NoSQL-oktatóanyag: Azure Cosmos DB Java SDK-t az SQL API |} Microsoft Docs'
+description: NoSQL-oktatóanyag, amely létrehoz egy online adatbázist és az SQL API-val az Azure Cosmos DB Java konzolalkalmazást. Az Azure SQL egy NoSQL-adatbázis a JSON Formátumhoz.
+keywords: nosql-oktatóanyag, online adatbázis, java konzolalkalmazás
 services: cosmos-db
 documentationcenter: Java
 author: arramac
@@ -15,11 +15,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: arramac
-ms.openlocfilehash: 9714234411e96074daae17b4711a52991768bd7b
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 5052c3cdeabd5001c6d0144dc77401a9495ba887
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>NoSQL-oktatóanyag: egy SQL API Java-Konzolalkalmazás létrehozása
 > [!div class="op_single_selector"]
@@ -31,8 +31,6 @@ ms.lasthandoff: 12/18/2017
 > * [C++](sql-api-cpp-get-started.md)
 >  
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Üdvözöljük a NoSQL-oktatóanyag az SQL API Azure Cosmos DB Java SDK-t! Az oktatóanyag lépéseinek követésével egy olyan konzolalkalmazást készít, amely Azure Cosmos DB-erőforrásokat hoz létre és kérdez le.
 
@@ -190,7 +188,7 @@ A `mvn package` futtatása letölti a legújabb Azure Cosmos DB-erőforrástára
 
 Gratulálunk! Elvégezte a NoSQL-oktatóanyagot, és egy működőképes Java konzolalkalmazással rendelkezik!
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Szüksége van egy Java-webalkalmazás létrehozására vonatkozó oktatóanyagra? Tekintse meg a [Java-webalkalmazás létrehozása az Azure Cosmos DB használatával](sql-api-java-application.md) című cikket.
 * Ismerje meg, hogyan [figyelhet egy Azure Cosmos DB-fiókot](monitor-accounts.md).
 * Futtasson lekérdezéseket a minta-adatkészleteken a [Query Playground](https://www.documentdb.com/sql/demo) (Tesztlekérdezések) használatával.

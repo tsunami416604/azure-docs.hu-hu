@@ -1,11 +1,11 @@
 ---
 title: SQL Data Warehouse Transact-SQL nyelvi elemek |} Microsoft Docs
-description: "Az SQL Data Warehouse használt Transact-SQL nyelvi elem esetén referenciatartalmat listája."
+description: Az SQL Data Warehouse használt Transact-SQL nyelvi elem esetén referenciatartalmat listája.
 services: sql-data-warehouse
 documentationcenter: NA
 author: kevinvngo
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: ea0b9a3e-e489-458e-addc-cc153e5cc158
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: reference
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
-ms.openlocfilehash: 7a20cd8f3c2f304d12a49755dbe6e04f9b1d36df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dd9dc070c817a7276369a9be7126b0d48dc9e4eb
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="language-elements"></a>Nyelvi elemek
 ## <a name="core-elements"></a>Alapvető elemei
@@ -28,30 +28,30 @@ ms.lasthandoff: 10/11/2017
 * [foglalt kulcsszavak](https://msdn.microsoft.com/library/ms189822.aspx)
 * [Rendezések](https://msdn.microsoft.com/library/ff848763.aspx)
 * [Megjegyzések](https://msdn.microsoft.com/library/ms181627.aspx)
-* [állandók](https://msdn.microsoft.com/library/ms179899.aspx)
-* [adattípusok](https://msdn.microsoft.com/library/ms187752.aspx)
+* [Állandók](https://msdn.microsoft.com/library/ms179899.aspx)
+* [Adattípusok](https://msdn.microsoft.com/library/ms187752.aspx)
 * [VÉGREHAJTÁS](https://msdn.microsoft.com/library/ms188332.aspx)
-* [kifejezések](https://msdn.microsoft.com/library/ms190286.aspx)
+* [Kifejezések](https://msdn.microsoft.com/library/ms190286.aspx)
 * [KILL](https://msdn.microsoft.com/library/ms173730.aspx)
 * [IDENTITÁS tulajdonság megoldás](https://msdn.microsoft.com/library/ms186775.aspx)
-* [NYOMTATÁS](https://msdn.microsoft.com/library/ms176047.aspx)
+* [PRINT](https://msdn.microsoft.com/library/ms176047.aspx)
 * [HASZNÁLATA](https://msdn.microsoft.com/library/ms188366.aspx)
 
 ## <a name="batches-control-of-flow-and-variables"></a>Kötegek, vezérlő-vezérlési és változók
 * [A KEZDŐ... VÉGE](https://msdn.microsoft.com/library/ms190487.aspx)
-* [TÖRÉS AZ](https://msdn.microsoft.com/library/ms181271.aspx)
-* [DEKLARÁLJA@local_variable](https://msdn.microsoft.com/library/ms188927.aspx)
-* [HA... MÁS](https://msdn.microsoft.com/library/ms182717.aspx)
+* [BREAK](https://msdn.microsoft.com/library/ms181271.aspx)
+* [DEKLARÁLJA @local_variable](https://msdn.microsoft.com/library/ms188927.aspx)
+* [IF...ELSE](https://msdn.microsoft.com/library/ms182717.aspx)
 * [RAISERROR](https://msdn.microsoft.com/library/ms178592.aspx)
 * [SET@local_variable](https://msdn.microsoft.com/library/ms189484.aspx)
 * [THROW](https://msdn.microsoft.com/library/ee677615.aspx)
-* [PRÓBÁLJA MEG... CATCH](https://msdn.microsoft.com/library/ms175976.aspx)
-* [IGÉNYBE](https://msdn.microsoft.com/library/ms178642.aspx)
+* [TRY...CATCH](https://msdn.microsoft.com/library/ms175976.aspx)
+* [WHILE](https://msdn.microsoft.com/library/ms178642.aspx)
 
 ## <a name="operators"></a>Operátorok
-* [+ (Hozzáadás)](https://msdn.microsoft.com/library/ms178565.aspx)
+* [+ (Add)](https://msdn.microsoft.com/library/ms178565.aspx)
 * [(Karakterlánc-összefűzés) +](https://msdn.microsoft.com/library/ms177561.aspx)
-* [-(Negatív)](https://msdn.microsoft.com/library/ms189480.aspx)
+* [- (Negative)](https://msdn.microsoft.com/library/ms189480.aspx)
 * [-(Kivonás)](https://msdn.microsoft.com/library/ms189518.aspx)
 * [* (Szorozza meg)](https://msdn.microsoft.com/library/ms176019.aspx)
 * [/ (Osztás)](https://msdn.microsoft.com/library/ms175009.aspx)
@@ -66,13 +66,13 @@ ms.lasthandoff: 10/11/2017
 * [<> (Nem egyenlő)](https://msdn.microsoft.com/library/ms176020.aspx)
 * [! = (Nem egyenlő)](https://msdn.microsoft.com/library/ms190296.aspx)
 * [ÉS](https://msdn.microsoft.com/library/ms188372.aspx)
-* [KÖZÖTT](https://msdn.microsoft.com/library/ms187922.aspx)
-* [LÉTEZIK-E](https://msdn.microsoft.com/library/ms188336.aspx)
+* [BETWEEN](https://msdn.microsoft.com/library/ms187922.aspx)
+* [EXISTS](https://msdn.microsoft.com/library/ms188336.aspx)
 * [IN](https://msdn.microsoft.com/library/ms177682.aspx)
 * [IS [NOT] NULL ÉRTÉKŰ](https://msdn.microsoft.com/library/ms188795.aspx)
-* [PÉLDÁUL](https://msdn.microsoft.com/library/ms179859.aspx)
+* [LIKE](https://msdn.microsoft.com/library/ms179859.aspx)
 * [NEM](https://msdn.microsoft.com/library/ms189455.aspx)
-* [VAGY](https://msdn.microsoft.com/library/ms188361.aspx)
+* [OR](https://msdn.microsoft.com/library/ms188361.aspx)
 
 ### <a name="bitwise-operators"></a>Bitenkénti operátorok
 * [& (Bitenkénti és)](https://msdn.microsoft.com/library/ms174965.aspx)
@@ -91,24 +91,24 @@ ms.lasthandoff: 10/11/2017
 * [@@TRANCOUNT](https://msdn.microsoft.com/library/ms187967.aspx)
 * [@@VERSION](https://msdn.microsoft.com/library/ms177512.aspx)
 * [ABS](https://msdn.microsoft.com/library/ms189800.aspx)
-* [ARCCOS](https://msdn.microsoft.com/library/ms178627.aspx)
+* [ACOS](https://msdn.microsoft.com/library/ms178627.aspx)
 * [ASCII](https://msdn.microsoft.com/library/ms177545.aspx)
-* [ARCSIN](https://msdn.microsoft.com/library/ms181581.aspx)
+* [ASIN](https://msdn.microsoft.com/library/ms181581.aspx)
 * [ATAN](https://msdn.microsoft.com/library/ms181746.aspx)
 * [ATN2](https://msdn.microsoft.com/library/ms173854.aspx)
 * [BINARY_CHECKSUM](https://msdn.microsoft.com/library/ms173784.aspx)
-* [ESET](https://msdn.microsoft.com/library/ms181765.aspx)
+* [CASE](https://msdn.microsoft.com/library/ms181765.aspx)
 * [CAST és ÁTALAKÍTÁSA](https://msdn.microsoft.com/library/ms187928.aspx)
-* [FELSŐ HATÁR](https://msdn.microsoft.com/library/ms189818.aspx)
-* [KARAKTER](https://msdn.microsoft.com/library/ms187323.aspx)
+* [CEILING](https://msdn.microsoft.com/library/ms189818.aspx)
+* [CHAR](https://msdn.microsoft.com/library/ms187323.aspx)
 * [CHARINDEX](https://msdn.microsoft.com/library/ms186323.aspx)
 * [ELLENŐRZŐÖSSZEG](https://msdn.microsoft.com/library/ms189788.aspx)
-* [EGYESÍTÉS](https://msdn.microsoft.com/library/ms190349.aspx)
+* [COALESCE](https://msdn.microsoft.com/library/ms190349.aspx)
 * [COL_NAME](https://msdn.microsoft.com/library/ms174974.aspx)
 * [COLLATIONPROPERTY](https://msdn.microsoft.com/library/ms190305.aspx)
 * [CONCAT](https://msdn.microsoft.com/library/hh231515.aspx)
 * [COS](https://msdn.microsoft.com/library/ms188919.aspx)
-* [TŰZ](https://msdn.microsoft.com/library/ms188921.aspx)
+* [COT](https://msdn.microsoft.com/library/ms188921.aspx)
 * [SZÁMA](https://msdn.microsoft.com/library/ms175997.aspx)
 * [COUNT_BIG](https://msdn.microsoft.com/library/ms190317.aspx)
 * [CUME_DIST](https://msdn.microsoft.com/library/hh231078.aspx)
@@ -127,7 +127,7 @@ ms.lasthandoff: 10/11/2017
 * [NAP](https://msdn.microsoft.com/library/ms176052.aspx)
 * [DB_ID](https://msdn.microsoft.com/library/ms186274.aspx)
 * [DB_NAME](https://msdn.microsoft.com/library/ms189753.aspx)
-* [FOK](https://msdn.microsoft.com/library/ms178566.aspx)
+* [DEGREES](https://msdn.microsoft.com/library/ms178566.aspx)
 * [DENSE_RANK](https://msdn.microsoft.com/library/ms173825.aspx)
 * [KÜLÖNBSÉG](https://msdn.microsoft.com/library/ms188753.aspx)
 * [EOMONTH](https://msdn.microsoft.com/library/hh213020.aspx)
@@ -138,7 +138,7 @@ ms.lasthandoff: 10/11/2017
 * [ERROR_STATE](https://msdn.microsoft.com/library/ms180031.aspx)
 * [EXP](https://msdn.microsoft.com/library/ms179857.aspx)
 * [FIRST_VALUE](https://msdn.microsoft.com/library/hh213018.aspx)
-* [EMELET](https://msdn.microsoft.com/library/ms178531.aspx)
+* [FLOOR](https://msdn.microsoft.com/library/ms178531.aspx)
 * [GETDATE](https://msdn.microsoft.com/library/ms188383.aspx)
 * [GETUTCDATE](https://msdn.microsoft.com/library/ms178635.aspx)
 * [HAS_DBACCESS](https://msdn.microsoft.com/library/ms187718.aspx)
@@ -147,17 +147,17 @@ ms.lasthandoff: 10/11/2017
 * [ISDATE](https://msdn.microsoft.com/library/ms187347.aspx)
 * [ISNULL](https://msdn.microsoft.com/library/ms184325.aspx)
 * [ISNUMERIC](https://msdn.microsoft.com/library/ms186272.aspx)
-* [KÉSÉS](https://msdn.microsoft.com/library/hh231256.aspx)
+* [LAG](https://msdn.microsoft.com/library/hh231256.aspx)
 * [LAST_VALUE](https://msdn.microsoft.com/library/hh231517.aspx)
-* [AZ ÉRDEKLŐDÉSI](https://msdn.microsoft.com/library/hh213125.aspx)
-* [BALRA](https://msdn.microsoft.com/library/ms177601.aspx)
-* [HOSSZ](https://msdn.microsoft.com/library/ms190329.aspx)
-* [NAPLÓ](https://msdn.microsoft.com/library/ms190319.aspx)
+* [LEAD](https://msdn.microsoft.com/library/hh213125.aspx)
+* [LEFT](https://msdn.microsoft.com/library/ms177601.aspx)
+* [LEN](https://msdn.microsoft.com/library/ms190329.aspx)
+* [LOG](https://msdn.microsoft.com/library/ms190319.aspx)
 * [LOG10](https://msdn.microsoft.com/library/ms175121.aspx)
-* [ALACSONYABB](https://msdn.microsoft.com/library/ms174400.aspx)
+* [LOWER](https://msdn.microsoft.com/library/ms174400.aspx)
 * [LTRIM](https://msdn.microsoft.com/library/ms177827.aspx)
-* [MAXIMÁLIS SZÁMA](https://msdn.microsoft.com/library/ms187751.aspx)
-* [PERC](https://msdn.microsoft.com/library/ms179916.aspx)
+* [MAX](https://msdn.microsoft.com/library/ms187751.aspx)
+* [MIN](https://msdn.microsoft.com/library/ms179916.aspx)
 * [HÓNAP](https://msdn.microsoft.com/library/ms187813.aspx)
 * [NCHAR](https://msdn.microsoft.com/library/ms182673.aspx)
 * [NTILE](https://msdn.microsoft.com/library/ms175126.aspx)
@@ -173,16 +173,16 @@ ms.lasthandoff: 10/11/2017
 * [PERCENTILE_CONT](https://msdn.microsoft.com/library/hh231473.aspx)
 * [PERCENTILE_DISC](https://msdn.microsoft.com/library/hh231327.aspx)
 * [PERCENT_RANK](https://msdn.microsoft.com/library/hh213573.aspx)
-* [A PI](https://msdn.microsoft.com/library/ms189512.aspx)
-* [ENERGIAGAZDÁLKODÁSI](https://msdn.microsoft.com/library/ms174276.aspx)
+* [PI](https://msdn.microsoft.com/library/ms189512.aspx)
+* [POWER](https://msdn.microsoft.com/library/ms174276.aspx)
 * [QUOTENAME](https://msdn.microsoft.com/library/ms176114.aspx)
-* [RADIÁNBAN MEGADOTT SZÖG](https://msdn.microsoft.com/library/ms189742.aspx)
+* [RADIANS](https://msdn.microsoft.com/library/ms189742.aspx)
 * [VÉL](https://msdn.microsoft.com/library/ms177610.aspx)
 * [DIMENZIÓSZÁMA](https://msdn.microsoft.com/library/ms176102.aspx)
 * [CSERÉLJE LE](https://msdn.microsoft.com/library/ms186862.aspx)
 * [REPLIKÁLÁS](https://msdn.microsoft.com/library/ms174383.aspx)
 * [FORDÍTOTT](https://msdn.microsoft.com/library/ms180040.aspx)
-* [JOBBRA](https://msdn.microsoft.com/library/ms177532.aspx)
+* [RIGHT](https://msdn.microsoft.com/library/ms177532.aspx)
 * [CIKLIKUS](https://msdn.microsoft.com/library/ms175003.aspx)
 * [OSZLOPSZÁM ALAPJÁN](https://msdn.microsoft.com/library/ms186734.aspx)
 * [RTRIM](https://msdn.microsoft.com/library/ms178660.aspx)
@@ -190,16 +190,16 @@ ms.lasthandoff: 10/11/2017
 * [SCHEMA_NAME](https://msdn.microsoft.com/library/ms175068.aspx)
 * [SERVERPROPERTY](https://msdn.microsoft.com/library/ms174396.aspx)
 * [SESSION_USER](https://msdn.microsoft.com/library/ms177587.aspx)
-* [BEJELENTKEZÉS](https://msdn.microsoft.com/library/ms188420.aspx)
-* [EG](https://msdn.microsoft.com/library/ms188377.aspx)
+* [SIGN](https://msdn.microsoft.com/library/ms188420.aspx)
+* [SIN](https://msdn.microsoft.com/library/ms188377.aspx)
 * [SMALLDATETIMEFROMPARTS](https://msdn.microsoft.com/library/hh213396.aspx)
 * [SOUNDEX](https://msdn.microsoft.com/library/ms187384.aspx)
-* [LEMEZTERÜLET](https://msdn.microsoft.com/library/ms187950.aspx)
+* [SPACE](https://msdn.microsoft.com/library/ms187950.aspx)
 * [SQL_VARIANT_PROPERTY](https://msdn.microsoft.com/library/ms178550.aspx)
 * [SQRT](https://msdn.microsoft.com/library/ms176108.aspx)
 * [NÉGYZETES](https://msdn.microsoft.com/library/ms173569.aspx)
 * [STATS_DATE](https://msdn.microsoft.com/library/ms190330.aspx)
-* [SZÓRÁS](https://msdn.microsoft.com/library/ms190474.aspx)
+* [STDEV](https://msdn.microsoft.com/library/ms190474.aspx)
 * [STDEVP](https://msdn.microsoft.com/library/ms176080.aspx)
 * [STR](https://msdn.microsoft.com/library/ms189527.aspx)
 * [LÁTHATJA](https://msdn.microsoft.com/library/ms188043.aspx)
@@ -219,28 +219,28 @@ ms.lasthandoff: 10/11/2017
 * [TYPE_NAME](https://msdn.microsoft.com/library/ms189750.aspx)
 * [TYPEPROPERTY](https://msdn.microsoft.com/library/ms188419.aspx)
 * [UNICODE](https://msdn.microsoft.com/library/ms180059.aspx)
-* [FELSŐ](https://msdn.microsoft.com/library/ms180055.aspx)
-* [FELHASZNÁLÓ](https://msdn.microsoft.com/library/ms186738.aspx)
-* [FELHASZNÁLÓNÉV](https://msdn.microsoft.com/library/ms188014.aspx)
+* [UPPER](https://msdn.microsoft.com/library/ms180055.aspx)
+* [USER](https://msdn.microsoft.com/library/ms186738.aspx)
+* [USER_NAME](https://msdn.microsoft.com/library/ms188014.aspx)
 * [VAR](https://msdn.microsoft.com/library/ms186290.aspx)
 * [VARP](https://msdn.microsoft.com/library/ms188735.aspx)
-* [ÉV](https://msdn.microsoft.com/library/ms186313.aspx)
+* [YEAR](https://msdn.microsoft.com/library/ms186313.aspx)
 * [XACT_STATE](https://msdn.microsoft.com/library/ms189797.aspx)
 
 ## <a name="transactions"></a>Tranzakciók
-* [tranzakciók](https://msdn.microsoft.com/library/mt204031.aspx)
+* [Tranzakciók](https://msdn.microsoft.com/library/mt204031.aspx)
 
 ## <a name="diagnostic-sessions"></a>Diagnosztikai munkamenetek
 * [DIAGNOSTICS-MUNKAMENET LÉTREHOZÁSA](https://msdn.microsoft.com/library/mt204029.aspx)
 
 ## <a name="procedures"></a>Eljárások
 * [sp_addrolemember](https://msdn.microsoft.com/library/ms187750.aspx)
-* [az sp_columns](https://msdn.microsoft.com/library/ms176077.aspx)
-* [az sp_configure eljárást](https://msdn.microsoft.com/library/ms188787.aspx)
+* [sp_columns](https://msdn.microsoft.com/library/ms176077.aspx)
+* [sp_configure](https://msdn.microsoft.com/library/ms188787.aspx)
 * [sp_datatype_info_90](https://msdn.microsoft.com/library/mt204014.aspx)
 * [sp_droprolemember](https://msdn.microsoft.com/library/ms188369.aspx)
 * [sp_execute](https://msdn.microsoft.com/library/ff848746.aspx)
-* [Sp_executesql](https://msdn.microsoft.com/library/ms188001.aspx)
+* [sp_executesql](https://msdn.microsoft.com/library/ms188001.aspx)
 * [sp_fkeys](https://msdn.microsoft.com/library/ms175090.aspx)
 * [sp_pdw_add_network_credentials](https://msdn.microsoft.com/library/mt204011.aspx)
 * [sp_pdw_database_encryption](https://msdn.microsoft.com/library/mt219360.aspx)
@@ -278,12 +278,6 @@ ms.lasthandoff: 10/11/2017
 * [SET TRANZAKCIÓELKÜLÖNÍTÉSI SZINT](https://msdn.microsoft.com/library/ms173763.aspx)
 * [SET XACT_ABORT](https://msdn.microsoft.com/library/ms188792.aspx)
 
-## <a name="next-steps"></a>Következő lépések
-Hivatkozás kapcsolatos további információkért lásd: [SQL Data Warehouse hivatkozás áttekintés][SQL Data Warehouse reference overview].
+## <a name="next-steps"></a>További lépések
+További TSQL referenciáért lásd: [SQL Data Warehouse T-SQL utasítás](sql-data-warehouse-reference-tsql-statements.md).
 
-<!--Image references-->
-
-<!--Article references-->
-[SQL Data Warehouse reference overview]: sql-data-warehouse-overview-reference.md
-
-<!--MSDN references-->

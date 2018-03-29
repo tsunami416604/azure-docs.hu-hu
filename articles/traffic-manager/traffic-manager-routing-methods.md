@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Traffic Manager - forgalom-útválasztási módszerei |} Microsoft Docs"
-description: "Ez a cikk, valamit megismerheti a különböző forgalom-útválasztási módszerekkel Traffic Manager által használt"
+title: Az Azure Traffic Manager - forgalom-útválasztási módszerei |} Microsoft Docs
+description: Ez a cikk, valamit megismerheti a különböző forgalom-útválasztási módszerekkel Traffic Manager által használt
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: KumudD
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: db1efbf6-6762-4c7a-ac99-675d4eeb54d0
 ms.service: traffic-manager
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2017
 ms.author: kumud
-ms.openlocfilehash: fe776e24a4f78b389c6096694055b38befa3c419
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c9bd9b4913e38ed5c1f7f4ec8ee7e3210fa3be8f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="traffic-manager-routing-methods"></a>Traffic Manager útválasztási módszerek
 
@@ -50,7 +50,7 @@ A "Súlyozott" forgalom-útválasztási módszerrel forgalom egyenletes elosztá
 
 ![Az Azure Traffic Manager az "Súlyozott" forgalom-útválasztási módszer][2]
 
-A súlyozott forgalom-útválasztási módszert rendeljen hozzá egy minden végpontra a Traffic Manager-profil konfigurációban. A súly egy 1 és 1000 egész. Ez a paraméter nem kötelező megadni. Ha nincs megadva, a forgalom kezelők "1" alapértelmezett súlyt használja.
+A súlyozott forgalom-útválasztási módszert rendeljen hozzá egy minden végpontra a Traffic Manager-profil konfigurációban. A súly egy 1 és 1000 egész. Ez a paraméter nem kötelező megadni. Ha nincs megadva, a forgalom kezelők "1" alapértelmezett súlyt használja. A nagyobb súlyt, annál magasabb a prioritás.
 
 Minden egyes megadott DNS-lekérdezés érkezett Traffic Manager véletlenszerűen választ egy elérhető végpontot. A valószínűségi végpont kiválasztása a súlyok rendelt összes elérhető végpontok alapul. Az azonos súlyozással használatával egy még akkor is, a forgalom eloszlása eredményez az összes végpontok között. A meghatározott végpontokhoz magasabb vagy alacsonyabb súlyok használatával azt eredményezi, ezekre a végpontokra ritkább vagy gyakoribb visszahelyezi a DNS-válaszok.
 
@@ -124,7 +124,7 @@ A TRAFFIC Manager beolvassa a forrás IP-címét a DNS-lekérdezés, és úgy d�
 A [Traffic Manager működése](traffic-manager-how-traffic-manager-works.md), a Traffic Manager nem kapja meg DNS-lekérdezések közvetlenül az ügyfelektől. Ahelyett, hogy DNS-lekérdezések határozza meg a rekurzív DNS-szolgáltatás, hogy az ügyfelek használatára van konfigurálva. Ezért az IP-cím segítségével meghatározhatja a régió nem az ügyfél IP-cím, de a rekurzív DNS-szolgáltatás IP-címét. A gyakorlatban az IP-cím esetén az ügyfél a helyes proxy.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Útmutató a magas rendelkezésre állású alkalmazások fejlesztéséhez [Traffic Manager-végpont figyelése](traffic-manager-monitoring.md)
 

@@ -5,6 +5,10 @@ Kulcs tranzakciók (10 másodperc telepítésenként engedélyezett maximális t
 |2048 bites RSA|5|1000|10|2000|
 |3072 bites RSA|5|250|10|500|
 |RSA 4096 bites|5|125|10|250|
+|ECC P-256|5|1000|10|2000|
+|ECC 384|5|1000|10|2000|
+|ECC P-521|5|1000|10|2000|
+|ECC SECP256K1|5|1000|10|2000|
 |
 
 Titkos kulcsok, a Tárfiókkulcsok felügyelt és a tároló tranzakciók:

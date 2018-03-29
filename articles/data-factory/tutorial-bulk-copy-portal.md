@@ -1,11 +1,11 @@
 ---
-title: "Adatok tömeges másolása az Azure Data Factory használatával | Microsoft Docs"
-description: "Megismerheti, hogyan másolhat tömegesen adatokat egy forrásadattárból a céladattárba az Azure Data Factory és a másolási tevékenység használatával."
+title: Adatok tömeges másolása az Azure Data Factory használatával | Microsoft Docs
+description: Megismerheti, hogyan másolhat tömegesen adatokat egy forrásadattárból a céladattárba az Azure Data Factory és a másolási tevékenység használatával.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/10/2018
 ms.author: jingwang
-ms.openlocfilehash: 5f0703a3cb2ce912bfc042d0717ad8d921ec43e3
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 440b07b494b34db7ff3fcdf5d5ac830b165c339d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Táblák tömeges másolása az Azure Data Factory használatával
 Ez az oktatóanyag azt mutatja be, hogyan lehet **táblákat másolni az Azure SQL Database-ből az Azure SQL Data Warehouse-ba**. A minta egyéb másolási forgatókönyvek esetén is alkalmazható. Például táblák másolására az SQL Serverről/Oracle-ből az Azure SQL Database-be/Data Warehouse-ba/Azure Blobba, vagy különböző elérési utak másolására a Blobból Azure SQL Database-táblákba.
@@ -314,7 +314,7 @@ Ez a folyamat két lépést hajt végre:
     2. Bontsa ki a **Speciális** szakaszt. 
     3. Kattintson az **+ Új** elemre a **Paraméterek** szakaszban. 
     4. A **név** paraméternél adja meg a **tableList** értéket.
-    5. Az `@activity('LookupTableList').output.value`érték **paraméternél adja meg a következő értéket:** . A keresési tevékenység eredménylistáját a második folyamat bemeneteként állítja be. Az eredménylista tartalmazza azokat a táblákat, amelyeknek az adatait a célhelyre kell másolni. 
+    5. Az `@activity('LookupTableList').output.value`érték**paraméternél adja meg a következő értéket:**. A keresési tevékenység eredménylistáját a második folyamat bemeneteként állítja be. Az eredménylista tartalmazza azokat a táblákat, amelyeknek az adatait a célhelyre kell másolni. 
 
         ![Folyamat végrehajtása tevékenység – beállítások lap](./media/tutorial-bulk-copy-portal/execute-pipeline-settings-page.png)
 7. A keresési tevékenységhez tartozó **zöld mezőt** a Folyamat végrehajtása tevékenység bal oldalára húzva **csatlakoztassa** a **keresési** tevékenységet a **Folyamat végrehajtása** tevékenységhez.

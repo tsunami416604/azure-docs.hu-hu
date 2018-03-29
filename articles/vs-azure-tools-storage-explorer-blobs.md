@@ -1,11 +1,11 @@
 ---
-title: "A Tártallózó (előzetes verzió) Azure Blob Storage-erőforrások kezelése |} Microsoft Docs"
-description: "Az Azure Blob-tárolók és Blobok a Tártallózó (előzetes verzió) kezelése"
+title: A Tártallózó (előzetes verzió) Azure Blob Storage-erőforrások kezelése |} Microsoft Docs
+description: Az Azure Blob-tárolók és Blobok a Tártallózó (előzetes verzió) kezelése
 services: storage
 documentationcenter: na
 author: cawa
 manager: paulyuk
-editor: 
+editor: ''
 ms.assetid: 2f09e545-ec94-4d89-b96c-14783cc9d7a9
 ms.service: storage
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
-ms.openlocfilehash: c23b87cca66df0834a31494be7d8657ff9f2a865
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 98a1016f78587b4139041f140634b98fa47edfd1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer-preview"></a>A Tártallózó (előzetes verzió) Azure Blob Storage-erőforrások kezelése
 ## <a name="overview"></a>Áttekintés
@@ -31,7 +31,7 @@ A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 * [A Tártallózó (előzetes verzió) letöltése és telepítése](http://www.storageexplorer.com)
 * [Csatlakozás egy Azure-tárfiókhoz vagy -szolgáltatáshoz](vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
 
-## <a name="create-a-blob-container"></a>A blob-tároló létrehozása
+## <a name="create-a-blob-container"></a>Blobtároló létrehozása
 Minden BLOB egy blob tároló, amely egyszerűen blobok logikai csoportosítása kell lennie. Egy fiók korlátlan számú tárolót tartalmazhat, és minden egyes tároló korlátlan számú BLOB tárolhatja.
 
 A következő lépések bemutatják, hogyan lehet a Tártallózó (előzetes verzió) belül blob tárolókat hozhat létre.
@@ -41,7 +41,7 @@ A következő lépések bemutatják, hogyan lehet a Tártallózó (előzetes ver
 3. Kattintson a jobb gombbal **Blobtárolók**, és válassza – a helyi menüből – a **Blob-tároló létrehozása**.
 
    ![Blob tárolók a helyi menü létrehozása][0]
-4. Szövegmező alatt megjelenik a **Blobtárolók** mappa. Adja meg a blob-tároló nevét. Tekintse meg a [tároló elnevezési szabályait](storage/blobs/storage-dotnet-how-to-use-blobs.md#create-a-container) listáját szakasza szabályok és a blob tárolók elnevezési korlátozás.
+4. Szövegmező alatt megjelenik a **Blobtárolók** mappa. Adja meg a blobtároló nevét. Tekintse meg a [létrehozni a tárolót, és az engedélyek beállítása](storage/blobs/storage-quickstart-blobs-dotnet.md#create-the-container-and-set-permissions) szabályok és a blob tárolók elnevezési korlátozásai információt.
 
    ![Szövegmező Blob tárolók létrehozása][1]
 5. Nyomja le az **Enter** végzett a blob-tároló létrehozásához vagy **Esc** megszakítja a műveletet. A blob-tároló sikeres létrehozását követően megjelenik a a **Blobtárolók** a kiválasztott tárolási fiók mappáját.
@@ -170,11 +170,11 @@ A következő lépések bemutatják a blobok (és a mappák) kezelése a blob-t�
 
      1. A fő ablaktábla eszköztárán válassza a **Feltöltés**, majd a legördülő menüből a **Fájlok feltöltése** lehetőséget.
 
-        ![Fájl menü feltöltése][15]
+        ![Fájlok feltöltése menü][15]
      2. A **Fájlok feltöltése** párbeszédpanelen válassza a **Fájlok** szövegbeviteli mező jobb oldalán lévő, három pontot (**…**) ábrázoló gombot a feltölteni kívánt fájl(ok) kiválasztásához.
 
         ![Töltse fel a fájlok beállítások][16]
-     3. Adja meg, milyen típusú **Blob-típusú**. A cikk [az Azure Blob storage .NET használatának első lépései](storage/blobs/storage-dotnet-how-to-use-blobs.md#blob-service-concepts) a blob különféle közötti különbségeket ismerteti.
+     3. Adja meg, milyen típusú **Blob-típusú**. Lásd: [létrehozni a tárolót, és az engedélyek beállítása](storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-the-container) további információt.
      4. Szükség esetén adja meg, hogy a célmappa, amelybe a kijelölt fájlok lesz feltöltve. Ha a célmappa nem létezik, a rendszer létrehozza.
      5. Válassza a **Feltöltés** lehetőséget.
    * **Töltse fel egy mappát egy blob-tárolóba**
@@ -185,7 +185,7 @@ A következő lépések bemutatják a blobok (és a mappák) kezelése a blob-t�
      2. A **Mappa feltöltése** párbeszédpanelen a **Mappa** szövegbeviteli mező jobb oldalán lévő, három pontot (**…**) ábrázoló gombbal válassza ki a mappát, amelynek a tartalmát fel kívánja tölteni.
 
         ![Töltse fel a mappa beállításai][18]
-     3. Adja meg, milyen típusú **Blob-típusú**. A cikk [az Azure Blob storage .NET használatának első lépései](storage/blobs/storage-dotnet-how-to-use-blobs.md#blob-service-concepts) a blob különféle közötti különbségeket ismerteti.
+     3. Adja meg, milyen típusú **Blob-típusú**. Lásd: [létrehozni a tárolót, és az engedélyek beállítása](storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-the-container) további információt.
      4. Igény szerint megadhat egy célmappát, amelybe a kiválasztott mappa tartalma fel lesz töltve. Ha a célmappa nem létezik, a rendszer létrehozza.
      5. Válassza a **Feltöltés** lehetőséget.
    * **Egy blob letöltése a helyi számítógépen**
@@ -211,7 +211,7 @@ A következő lépések bemutatják a blobok (és a mappák) kezelése a blob-t�
      2. A fő ablaktábla eszköztárán válassza a **Törlés** parancsot.
      3. Válassza az **Igen** lehetőséget a megerősítési párbeszédpanelen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A [Storage Explorer (előzetes verzió) legújabb kibocsátási megjegyzéseinek és videóinak megtekintése](http://www.storageexplorer.com).
 * Annak megismerése, hogyan [hozhat létre alkalmazásokat Azure-blobok, -táblák, -üzenetsorok és -fájlok használatával](https://azure.microsoft.com/documentation/services/storage/).
 

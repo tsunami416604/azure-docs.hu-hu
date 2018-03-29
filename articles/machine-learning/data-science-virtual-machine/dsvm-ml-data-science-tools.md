@@ -1,25 +1,25 @@
 ---
-title: "Számítógép-tanulási és adatok tudományos eszközök - Azure |} Microsoft Docs"
-description: "Machine learning és az adatok tudományos eszközök"
-keywords: "adatok tudományos eszközök, adatok tudományos virtuális gép, adattudomány, linux adattudomány eszközei"
+title: Számítógép-tanulási és adatok tudományos eszközök - Azure |} Microsoft Docs
+description: Machine learning és az adatok tudományos eszközök
+keywords: adatok tudományos eszközök, adatok tudományos virtuális gép, adattudomány, linux adattudomány eszközei
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: gopitk
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
-ms.author: gokuma;bradsev
-ms.openlocfilehash: 1897f793b5907a304af0859a1ab321a06d1ce808
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.author: gokuma
+ms.openlocfilehash: f8d7fff30d5f5289c362d78ad89027b8141bbbe6
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="machine-learning-and-data-science-tools"></a>Machine learning és az adatok tudományos eszközök
 Az adatok tudományos virtuális gép (DSVM) rendelkezik széles választékának eszközök és a könyvtárak a machine Learning szolgáltatáshoz hasonlóan a Python, R, Ágnes népszerű nyelveken érhető el. 

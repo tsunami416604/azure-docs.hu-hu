@@ -1,24 +1,24 @@
 ---
-title: "Az Azure Naplóelemzés DNS elemzési megoldások |} Microsoft Docs"
-description: "Állítsa be, és Naplóelemzési a DNS elemzési megoldások segítségével gyűjtse össze a DNS-infrastruktúra a biztonsággal, a teljesítmény és a műveletek betekintést."
+title: Az Azure Naplóelemzés DNS elemzési megoldások |} Microsoft Docs
+description: Állítsa be, és Naplóelemzési a DNS elemzési megoldások segítségével gyűjtse össze a DNS-infrastruktúra a biztonsággal, a teljesítmény és a műveletek betekintést.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: f44a40c4-820a-406e-8c40-70bd8dc67ae7
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 8ead058108f39eca8682eccc296760d4b756d336
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 6a59cf8b9444fe7cb197501c51d10dae81acb027
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>A DNS-infrastruktúra DNS Analytics Preview megoldással észrevételeket összegyűjtése
 
@@ -145,7 +145,6 @@ Az információk alapján azonosíthatja a:
 
 **Eszközillesztő elemzési lekérdezések minta**. A leggyakoribb keresési lekérdezések raw analytics adatlehívás közvetlenül listáját tartalmazza.
 
-[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![A lekérdezés](./media/log-analytics-dns/queries.png)
 
@@ -166,7 +165,7 @@ Ezeket a lekérdezéseket kiindulási pontként használható a saját testresza
 
 A napló lapon létrehozhat egy lekérdezést. A keresési eredményeket szűrheti értékkorlátozás vezérlők használatával. Az eredmények átalakító, a szűrő és a jelentés speciális lekérdezéseket is létrehozhat. Indítsa el az alábbi lekérdezéseket:
 
-1. Az a **lekérdezés keresőmezőbe**, típus `Type=DnsEvents` a megoldás által kezelt DNS-kiszolgálók által létrehozott DNS-események megtekintése. Az eredmények a naplóadatok keresési lekérdezések, a dinamikus regisztráció és a konfigurációs módosítások kapcsolódó összes esemény felsorolása.
+1. Az a **lekérdezés keresőmezőbe**, típus `DnsEvents` a megoldás által kezelt DNS-kiszolgálók által létrehozott DNS-események megtekintése. Az eredmények a naplóadatok keresési lekérdezések, a dinamikus regisztráció és a konfigurációs módosítások kapcsolódó összes esemény felsorolása.
 
     ![DnsEvents napló keresése](./media/log-analytics-dns/log-search-dnsevents.png)  
 
@@ -176,7 +175,7 @@ A napló lapon létrehozhat egy lekérdezést. A keresési eredményeket szűrhe
 
     c. Válassza ki, ha a konfigurációs módosítások naplóadatok **konfigurációváltozás** , a **altípus** szűrő a bal oldali értékkorlátozás vezérlőből. Minden a konfigurációmódosítási események a kiválasztott időszak tartalmazó táblázat jelenik meg.
 
-2. Az a **lekérdezés keresőmezőbe**, típus `Type=DnsInventory` minden DNS leltárral kapcsolatos adatok megtekintéséhez a megoldás által kezelt DNS-kiszolgálók. Az eredmények a naplóadatok a DNS-kiszolgálók, DNS-zónák és erőforrásrekordok listában.
+2. Az a **lekérdezés keresőmezőbe**, típus `DnsInventory` minden DNS leltárral kapcsolatos adatok megtekintéséhez a megoldás által kezelt DNS-kiszolgálók. Az eredmények a naplóadatok a DNS-kiszolgálók, DNS-zónák és erőforrásrekordok listában.
 
     ![DnsInventory napló keresése](./media/log-analytics-dns/log-search-dnsinventory.png)
 

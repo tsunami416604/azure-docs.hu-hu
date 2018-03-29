@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/22/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 17edbef03f1e2882bd85f5a58e2a32a1541b50c8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d9eaab359d76afce61cfcc72e3fa125b08856e32
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 Ez a feladat lépéseit a következő konfigurációs hivatkozás listában található értékek alapján a VNet használja. További beállításokat és a nevek azt is ezen a listán. Nem használjuk a lista összes lépést, közvetlenül a Bár jelenleg felvenni a listában szereplő értékek alapján a változók. A listában referenciaként, az értékeket cserélje le a saját másolhatja.
 
@@ -63,7 +63,7 @@ Ez a feladat lépéseit a következő konfigurációs hivatkozás listában tal�
 5. Állítsa be a konfigurációt.
 
   ```powershell
-  Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
+  $vnet = Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
   ```
 6. Az átjáró alhálózatának tárolására változóként.
 

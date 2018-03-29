@@ -1,9 +1,9 @@
 ---
-title: "Az Azure AD Connect: Zökkenőmentes egyszeri bejelentkezést |} Microsoft Docs"
-description: "Ez a témakör ismerteti az Azure Active Directory (Azure AD) zökkenőmentes egyszeri bejelentkezést és hogyan lehetővé teszi, hogy valódi egyszeri bejelentkezést a vállalati asztali felhasználók a vállalati hálózaton belüli adja meg."
+title: 'Az Azure AD Connect: Zökkenőmentes egyszeri bejelentkezést |} Microsoft Docs'
+description: Ez a témakör ismerteti az Azure Active Directory (Azure AD) zökkenőmentes egyszeri bejelentkezést és hogyan lehetővé teszi, hogy valódi egyszeri bejelentkezést a vállalati asztali felhasználók a vállalati hálózaton belüli adja meg.
 services: active-directory
-keywords: "Mi az Azure AD Connect telepítés Active Directory szükséges összetevőket az Azure AD, SSO, egyszeri bejelentkezést."
-documentationcenter: 
+keywords: Mi az Azure AD Connect telepítés Active Directory szükséges összetevőket az Azure AD, SSO, egyszeri bejelentkezést.
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/22/2018
 ms.author: billmath
-ms.openlocfilehash: 14018db3cbe34c9eca9048ceaf376ff3a06a4353
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b1c82727e97b85fae5f315ceb1cd79cfdd111b45
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezést.
 
@@ -50,7 +50,8 @@ Zökkenőmentes SSO kombinálva, vagy a [Jelszókivonat-szinkronizálást](activ
 
 - Bejelentkezési felhasználónév vagy a helyszíni alapértelmezett felhasználónév lehet (`userPrincipalName`) vagy az Azure AD Connect konfigurált egy másik attribútum (`Alternate ID`). Mindkét esetben a munkahelyi használható, mert a zökkenőmentes egyszeri Bejelentkezést használ a `securityIdentifier` ellenőrizzék a megfelelő felhasználói objektum, az Azure ad-ben a Kerberos jegyet a jogcímek.
 - Zökkenőmentes SSO az alkalmi szolgáltatása. Ha bármilyen okból nem sikerül, a felhasználói bejelentkezési élmény visszatér a rendszeres viselkedését - Egytényezős, a felhasználó adja meg a jelszót a bejelentkezési oldalon kell.
-- Ha egy alkalmazás továbbítja a `domain_hint` (OpenID Connect) vagy `whr` (SAML) paraméter - azonosító a bérlő vagy `login_hint` paraméter - azonosító a felhasználó a Azure AD-bejelentkezés kérelemre, a felhasználók automatikusan bejelentkeztetjük nélkül őket Írja be a felhasználónevet és jelszót.
+- Ha egy alkalmazás (például https://myapps.microsoft.com/contoso.com) továbbítja a `domain_hint` (OpenID Connect) vagy `whr` (SAML) paraméter - azonosító a bérlő vagy `login_hint` paraméter - a felhasználói azonosító az Azure AD bejelentkezési kérelem, a felhasználók vannak automatikusan megtörténik a őket belépés felhasználónév vagy jelszó nélkül.
+- A felhasználók is kapnak a beavatkozás nélküli bejelentkezést, ha egy alkalmazás (például https://contoso.sharepoint.com) bejelentkezési kérelmek küldése az Azure AD-végpontok központjaként – Ez azt jelenti, hogy https://login.microsoftonline.com/contoso.com/<..> vagy https://login.microsoftonline.com/<tenant_ID>/<..> - helyett az Azure AD közös végpont - Ez azt jelenti, hogy https://login.microsoftonline.com/common/<...>.
 - Kijelentkezési esetén támogatott. Ez lehetővé teszi a felhasználók kiválaszthatják a bejelentkezéshez, zökkenőmentes SSO használatával automatikusan automatikusan aláírás alatt álló helyett egy másik Azure AD-fiókot.
 - Office 365-ügyfelek (16.0.8730.xxxx és újabb) használata támogatott a nem interaktív folyamat használatával.
 - Az Azure AD Connect használatával engedélyezhető.

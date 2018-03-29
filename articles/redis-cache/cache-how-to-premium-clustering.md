@@ -1,24 +1,24 @@
 ---
-title: "Prémium szintű Azure Redis Cache Redis Fürtszolgáltatás konfigurálása |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozhatja létre és kezelheti a fürtszolgáltatás a prémium csomagban Azure Redis Cache példány Redis"
+title: Prémium szintű Azure Redis Cache Redis Fürtszolgáltatás konfigurálása |} Microsoft Docs
+description: Megtudhatja, hogyan hozhatja létre és kezelheti a fürtszolgáltatás a prémium csomagban Azure Redis Cache példány Redis
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 62208eec-52ae-4713-b077-62659fd844ab
 ms.service: cache
 ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 03/26/2018
 ms.author: wesmc
-ms.openlocfilehash: 16281cca4e4bc95e145317365d42382ab11fde93
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 4af6545058ab0031d7cd1b38618b6d80204f83b9
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-redis-cache"></a>Prémium szintű Azure Redis Cache Redis Fürtszolgáltatás konfigurálása
 Azure Redis Cache rendelkezik másik gyorsítótármappa ajánlatokat, amelyek gyorsítótár mérete és a funkciót, beleértve a prémium réteg szolgáltatások, például a fürtszolgáltatás, az adatmegőrzésre és a virtuális hálózat támogatásának rugalmasságot biztosítanak. Ez a cikk ismerteti, hogyan konfigurálhatja a fürtözést prémium szintű Azure Redis Cache példányt.
@@ -33,7 +33,7 @@ Azure Redis Cache Redis-fürt kínál [Redis megvalósított](http://redis.io/to
 * További átviteli sebesség: átviteli lineárisan növeli, mivel a szilánkok számának növeléséhez. 
 * További memória mérete: lineárisan növeli, mivel a szilánkok számának növeléséhez.  
 
-Méret, átviteli sebesség és a prémium szintű gyorsítótárak sávszélesség kapcsolatos további információkért lásd: [milyen Redis Cache-ajánlatot és méretet használjam?](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)
+Fürtszolgáltatás nem növeli a fürtözött gyorsítótára számára rendelkezésre álló kapcsolatok száma. Méret, átviteli sebesség és a prémium szintű gyorsítótárak sávszélesség kapcsolatos további információkért lásd: [milyen Redis Cache-ajánlatot és méretet használjam?](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)
 
 Az Azure Redis-fürt érhető el egy elsődleges vagy replika modell, ahol minden shard rendelkezik egy elsődleges vagy replika pár replikációs ahol a replikáció Azure Redis Cache szolgáltatás kezeli. 
 
@@ -75,6 +75,8 @@ A fürt méretét, a futó módosítása prémium gyorsítótár fürtözési en
 ![Redis foglalásiegység-méret][redis-cache-redis-cluster-size]
 
 A fürt méretének módosításához használja a csúszkát, vagy írjon be egy számot 1 és 10 között a **Shard száma** szöveges értéket, majd kattintson **OK** mentéséhez.
+
+A fürtméret növelése növeli a maximális átviteli sebesség és a gyorsítótár méretét. A fürtméret növelése nő a max. az ügyfelek számára elérhető kapcsolatok.
 
 > [!NOTE]
 > Egy fürt skálázás futtatja a [ÁTTELEPÍTÉSE](https://redis.io/commands/migrate) parancs, amely egy drága parancs, ezért a gyakorolt minimális hatás mellett, fontolja meg a művelet során nem csúcsidőre futtatása. Az áttelepítési folyamat során látni fogja a csúcs az igények kiszolgáló terhelését. Egy fürt skálázás folyamat fut egy hosszú, és a szükséges idő mértékét kulcsok száma és mérete ezeknek a kulcsoknak tartozó értékek.
@@ -132,7 +134,7 @@ Jelenleg nem minden ügyfél támogatja a Redis a fürtszolgáltatás. StackExch
 Csatlakozhat a gyorsítótár azonos [végpontok](cache-configure.md#properties), [portok](cache-configure.md#properties), és [kulcsok](cache-configure.md#access-keys) használni, amikor csatlakozik egy gyorsítótár, amely nem rendelkezik a fürtszolgáltatás engedélyezve van. A redis kezeli a háttérkiszolgálón fürtszolgáltatással, így nem kell azt az ügyfél kezeléséhez.
 
 ### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>Képes közvetlenül kapcsolódni a gyorsítótár egyedi szilánkok?
-Ez hivatalosan nem támogatott. Az említett, minden egyes shard elsődleges vagy replika gyorsítótár párból áll, a gyorsítótárpéldány összefoglaló néven. Ezek a gyorsítótár példányok a redis-cli segédprogram használatával kapcsolódhat a [instabil](http://redis.io/download) ágat a github webhelyen a Redis-tárház. Ebben a verzióban megvalósítja az alapszintű támogatás indítva a `-c` váltani. További információ: [játszik és a fürt](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster) a [http://redis.io](http://redis.io) a a [Redis-fürt oktatóanyag](http://redis.io/topics/cluster-tutorial).
+Ez hivatalosan nem támogatott. Az említett, minden egyes shard elsődleges vagy replika gyorsítótár párból áll, a gyorsítótárpéldány összefoglaló néven. Ezek a gyorsítótár példányok a redis-cli segédprogram használatával kapcsolódhat a [instabil](http://redis.io/download) ágat a github webhelyen a Redis-tárház. Ebben a verzióban megvalósítja az alapszintű támogatás indítva a `-c` váltani. További információ: [játszik és a fürt](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster) a [ http://redis.io ](http://redis.io) a a [Redis-fürt oktatóanyag](http://redis.io/topics/cluster-tutorial).
 
 Nem ssl használja a következő parancsokat.
 

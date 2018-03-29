@@ -1,6 +1,6 @@
 ---
-title: "Azure-beli virtuális gépek másodlagos Azure-régióba történő vészhelyreállításának beállítása az Azure Site Recovery használatával (előzetes verzió)"
-description: "Megismerheti, hogyan állíthatja be az Azure-beli virtuális gépek egy másik Azure-régióba történő vészhelyreállítását az Azure Site Recovery szolgáltatással."
+title: Azure-beli virtuális gépek másodlagos Azure-régióba történő vészhelyreállításának beállítása az Azure Site Recovery használatával (előzetes verzió)
+description: Megismerheti, hogyan állíthatja be az Azure-beli virtuális gépek egy másik Azure-régióba történő vészhelyreállítását az Azure Site Recovery szolgáltatással.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -12,11 +12,11 @@ ms.workload: storage-backup-recovery
 ms.date: 03/16/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 47d9a1e8aecde8ba0f01034f1d172c3fbd87ccfe
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 7dd0bfbd96e6ba7b5d2174334419797c4fd60a51
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>Azure-beli virtuális gépek másodlagos Azure-régióba történő vészhelyreállításának beállítása (előzetes verzió)
 
@@ -144,7 +144,9 @@ A Site Recovery létrehozza a célrégióra vonatkozó alapértelmezett beállí
 
 - **Gyorsítótár tárfiókjai**: A Site Recovery tárfiókot használ a forrásrégióban. A forrás virtuális gépekre vonatkozó módosítások ebbe a fiókba érkeznek a célhelyre történő replikáció előtt.
 
-- **Cél tárfiókok**: Alapértelmezés szerint a Site Recovery új tárfiókot hoz létre a célrégióban a forrás virtuális gép tárfiókjának tükrözéséhez.
+- **Cél storage-fiókok (Ha a forrás virtuális gép nem használ által kezelt lemezeken)**: alapértelmezés szerint a Site Recovery hoz létre egy új tárfiókot mappába történő tükrözésének a forrás virtuális gép tárfiók cél régióban.
+
+- **A replika (Ha a virtuális gép használja a felügyelt lemezek) által kezelt lemezeken**: alapértelmezés szerint a Site Recovery kezelt lemezek létrehozza a cél régióban mappába történő tükrözésének felügyelt lemezeket a forrás virtuális gép (Standard vagy prémium) azonos tárolási módot, a forrás virtuális gép kezeli a lemez.
 
 - **Cél rendelkezésre állási csoportok**: Alapértelmezés szerint a Site Recovery létrehoz egy új rendelkezésre állási csoportot a célrégióban az „asr” utótaggal. Rendelkezésre állási csoportot csak vehet fel, ha a virtuális gépek egy csoport részei a forrásrégióban.
 

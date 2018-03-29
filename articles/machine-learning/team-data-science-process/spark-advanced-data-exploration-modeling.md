@@ -1,8 +1,8 @@
 ---
-title: "Az adatok feltárása és Spark modellezés speciális |} Microsoft Docs"
-description: "HDInsight Spark használja az adatok feltárása és kereszt-ellenőrzési és hyperparameter optimalizálással bináris osztályozás és regressziós modell betanításához."
+title: Az adatok feltárása és Spark modellezés speciális |} Microsoft Docs
+description: HDInsight Spark használja az adatok feltárása és kereszt-ellenőrzési és hyperparameter optimalizálással bináris osztályozás és regressziós modell betanításához.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: jhubbard
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
-ms.author: deguhath;bradsev;gokuma
-ms.openlocfilehash: 016d7760895e9b8cca082bac4e14388680fbbc05
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.author: bradsev
+ms.openlocfilehash: 3d4cd29596b14e6de07fdf06191f7d69c2d39641
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Speciális adatáttekintés és modellezés a Spark segítségével
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
@@ -85,7 +85,7 @@ A következő példakód határozza meg a helyét, olvassa el az adatokat, valam
     import datetime
     datetime.datetime.now()
 
-**KIMENETI**
+**OUTPUT**
 
 DateTime.DateTime (2016, 4, 18., 17, 36, 27 és 832799)
 
@@ -188,7 +188,7 @@ A kód adatfeldolgozást az itt látható.
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**KIMENETI**
+**OUTPUT**
 
 Cella fent ideje: 276.62 másodperc
 
@@ -240,7 +240,7 @@ Ez a kód létrehoz egy helyi adatok-keret a lekérdezés eredményében, és az
     fig.set_ylabel('Trip counts')
     plt.show()
 
-**KIMENETI**
+**OUTPUT**
 
 ![Gyakoriság utak utas száma szerint](./media/spark-advanced-data-exploration-modeling/frequency-of-trips-by-passenger-count.png)
 
@@ -333,7 +333,7 @@ A kód bemutatja, hogyan hozhat létre egy új szolgáltatás a bins forgalom al
     taxi_df_train_with_newFeatures.cache()
     taxi_df_train_with_newFeatures.count()
 
-**KIMENETI**
+**OUTPUT**
 
 126050
 
@@ -384,7 +384,7 @@ Index és kategorikus szolgáltatások kódolja a kód itt látható:
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**KIMENETI**
+**OUTPUT**
 
 Cella fent ideje: 3.14 másodpercben
 
@@ -477,7 +477,7 @@ Ez a kód hoz létre egy véletlenszerű mintavételi (25 % itt használt) adato
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**KIMENETI**
+**OUTPUT**
 
 Cella fent ideje: 0.31 másodperc
 
@@ -518,7 +518,7 @@ Ez a kód méretezési változók a regularized lineáris SGD algoritmus való h
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**KIMENETI**
+**OUTPUT**
 
 Cella fent ideje: 11.67 másodperc
 
@@ -549,7 +549,7 @@ A modell betanítására és tesztelésére ML algoritmusok szükséges idő a b
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**KIMENETI** 
+**OUTPUT** 
 
 Cella fent ideje: 0.13 másodperc
 
@@ -664,9 +664,9 @@ Ebben a szakaszban a kód bemutatja, hogyan betanítása, értékelje ki és log
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**KIMENETI**
+**OUTPUT**
 
-Együttható: [0.0082065285375,-0.0223675576104,-0.0183812028036, - 3.48124578069e-05,-0.00247646947233,-0.00165897881503, 0.0675394837328,-0.111823113101,-0.324609912762,-0.204549780032,-1.36499216354, 0.591088507921,-0.664263411392,-1.00439726852, 3.46567827545,-3.51025855172,-0.0471341112232,-0.043521833294, 0.000243375810385, 0.054518719222]
+Coefficients: [0.0082065285375, -0.0223675576104, -0.0183812028036, -3.48124578069e-05, -0.00247646947233, -0.00165897881503, 0.0675394837328, -0.111823113101, -0.324609912762, -0.204549780032, -1.36499216354, 0.591088507921, -0.664263411392, -1.00439726852, 3.46567827545, -3.51025855172, -0.0471341112232, -0.043521833294, 0.000243375810385, 0.054518719222]
 
 INTERCEPT:-0.0111216486893
 
@@ -717,7 +717,7 @@ Ebben a szakaszban a kód bemutatja, hogyan egy test-adatkészlet, beleértve a 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**KIMENETI**
+**OUTPUT**
 
 Törlés a ka területen = 0.985336538462
 
@@ -729,7 +729,7 @@ Pontosság = 0.984174341679
 
 Visszahívása = 0.984174341679
 
-F1 Pontozása = 0.984174341679
+F1 Score = 0.984174341679
 
 Cella fent ideje: 2.67 másodpercben
 
@@ -770,7 +770,7 @@ Ez a kód előrejelzéseket készítsen, és a ROC-görbe megrajzolásához.
     plt.show()
 
 
-**KIMENETI**
+**OUTPUT**
 
 ![Logisztikai regresszió: ROC-görbe általános módszer](./media/spark-advanced-data-exploration-modeling/logistic-regression-roc-curve.png)
 
@@ -797,7 +797,7 @@ Ebben a szakaszban a kód bemutatja, hogyan mentse a logisztikai regresszió mod
     print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 
-**KIMENETI**
+**OUTPUT**
 
 Cella fent ideje: 34.57 másodperc
 
@@ -853,7 +853,7 @@ Ebben a szakaszban a kód bemutatja, hogyan betanítása, értékelje ki és log
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
-**KIMENETI**
+**OUTPUT**
 
 Cella fent ideje: 107.98 másodperc
 
@@ -889,7 +889,7 @@ Ez a kód a: ROC-görbe megrajzolásához.
     plt.show()
 
 
-**KIMENETI**
+**OUTPUT**
 
 ![Logisztikai regresszió: ROC-görbe MLlib tartozó CrossValidator használatával](./media/spark-advanced-data-exploration-modeling/mllib-crossvalidator-roc-curve.png)
 
@@ -938,7 +938,7 @@ Ebben a szakaszban a kód bemutatja, hogyan képzése, értékelje ki és mentse
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**KIMENETI**
+**OUTPUT**
 
 ROC területen = 0.985336538462
 
@@ -982,7 +982,7 @@ Ebben a szakaszban a kód bemutatja, hogyan képzése, értékelje ki, és átme
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**KIMENETI**
+**OUTPUT**
 
 ROC területen = 0.985336538462
 
@@ -1053,13 +1053,13 @@ A kódot az itt látható egy lineáris regressziós optimális stochastic átme
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**KIMENETI**
+**OUTPUT**
 
-Együttható: [0.0141707753435,-0.0252930927087,-0.0231442517137, 0.247070902996, 0.312544147152, 0.360296120645, 0.0122079566092,-0.00456498588241,-0.0898228505177, 0.0714046248793, 0.102171263868, 0.100022455632,-0.00289545676449,-0.00791124681938, 0.54396316518,-0.536293513569, 0.0119076553369,-0.0173039244582, 0.0119632796147, 0.00146764882502]
+Coefficients: [0.0141707753435, -0.0252930927087, -0.0231442517137, 0.247070902996, 0.312544147152, 0.360296120645, 0.0122079566092, -0.00456498588241, -0.0898228505177, 0.0714046248793, 0.102171263868, 0.100022455632, -0.00289545676449, -0.00791124681938, 0.54396316518, -0.536293513569, 0.0119076553369, -0.0173039244582, 0.0119632796147, 0.00146764882502]
 
 INTERCEPT: 0.854507624459
 
-GYÖKÁTLAGOS = 1.23485131376
+RMSE = 1.23485131376
 
 R-sqr = 0.597963951127
 
@@ -1113,9 +1113,9 @@ Ebben a szakaszban a kód bemutatja, hogyan képzése, értékelje ki és mentse
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**KIMENETI**
+**OUTPUT**
 
-GYÖKÁTLAGOS = 0.931981967875
+RMSE = 0.931981967875
 
 R-sqr = 0.733445485802
 
@@ -1164,15 +1164,15 @@ Ebben a szakaszban a kód bemutatja, hogyan betanítása, kiértékeléséhez é
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**KIMENETI**
+**OUTPUT**
 
-GYÖKÁTLAGOS = 0.928172197114
+RMSE = 0.928172197114
 
 R-sqr = 0.732680354389
 
 Cella fent ideje: 20.9 másodperc
 
-**Ábrázolása**
+**Plot**
 
 *tmp_results* az előző cella Hive tábla néven van regisztrálva. Kerülnek a kimenetbe az eredményeket a táblából a *sqlResults* adatok-keret ábrázolásához. A kód itt látható
 
@@ -1199,7 +1199,7 @@ A Jupyter kiszolgálóval az adatok ábrázolása a kód itt látható.
     plt.axis([-1, 15, -1, 15])
     plt.show(ax)
 
-![Tényleges-vs-előre jelezni-tipp-díjak](./media/spark-advanced-data-exploration-modeling/actual-vs-predicted-tips.png)
+![Actual-vs-predicted-tip-amounts](./media/spark-advanced-data-exploration-modeling/actual-vs-predicted-tips.png)
 
 ## <a name="appendix-additional-regression-tasks-using-cross-validation-with-parameter-sweeps"></a>A függelék: További regressziós feladatok keresztellenőrzési használata paraméter el
 E függelék rugalmas net használ lineáris regressziós KtgE módjáról és az egyéni kód használatával a véletlenszerű erdő regressziós paraméter ismétlés KtgE módjáról kódját tartalmazza.
@@ -1261,7 +1261,7 @@ Ebben a szakaszban a kódot a kereszt-ellenőrzési rugalmas net használ lineá
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**KIMENETI**
+**OUTPUT**
 
 Cella fent ideje: 161.21 másodperc
 
@@ -1286,7 +1286,7 @@ Ez a kód R-sqr kiszámításához.
     print("R-sqr = %s" % r2)
 
 
-**KIMENETI**
+**OUTPUT**
 
 R-sqr = 0.619184907088
 
@@ -1373,9 +1373,9 @@ Ebben a szakaszban a kódot a kereszt-ellenőrzési az egyéni kód használatá
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**KIMENETI**
+**OUTPUT**
 
-GYÖKÁTLAGOS = 0.906972198262
+RMSE = 0.906972198262
 
 R-sqr = 0.740751197012
 
@@ -1409,7 +1409,7 @@ Használjon `unpersist()` jelenleg a memóriában lévő objektumok törlése.
     oneHotTESTregScaled.unpersist()
 
 
-**KIMENETI**
+**OUTPUT**
 
 [122] PythonRDD RDD PythonRDD.scala a következő: 43
 
@@ -1424,7 +1424,7 @@ Használjon `unpersist()` jelenleg a memóriában lévő objektumok törlése.
     print "BoostedTreeRegressionFileLoc = modelDir + \"" + btregressionfilename + "\"";
 
 
-**KIMENETI**
+**OUTPUT**
 
 logisticRegFileLoc = modelDir + "LogisticRegressionWithLBFGS_2016-05-0316_47_30.096528"
 

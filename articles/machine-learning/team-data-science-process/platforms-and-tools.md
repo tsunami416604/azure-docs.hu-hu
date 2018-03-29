@@ -1,23 +1,23 @@
 ---
-title: "Platformok és az eszközök adattudomány a csapat projektek - Azure |} Microsoft Docs"
-description: "Részletezi, valamint az adatok és analitikák rendelkezésére álló erőforrások Team adatok tudományos folyamat szabványosítása vállalatok ismerteti."
-documentationcenter: 
+title: Platformok és az eszközök adattudomány a csapat projektek - Azure |} Microsoft Docs
+description: Részletezi, valamint az adatok és analitikák rendelkezésére álló erőforrások Team adatok tudományos folyamat szabványosítása vállalatok ismerteti.
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: bradsev;
-ms.openlocfilehash: 3ec2eaaf4e8d54e7b1ea3d272c47eac96451f317
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.author: bradsev
+ms.openlocfilehash: 404e3dd106edf82f4f22e4c6a17987bd0bc51f65
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="platforms-and-tools-for-data-science-team-projects"></a>Platformok és az adatok tudományos csapatprojektek eszközök
 
@@ -30,8 +30,8 @@ Az elérhető adatok tudományos csoportok használatával a TDSP adatok és ana
 - SQL Data Warehouse
 - Azure Data Lake
 - A HDInsight Hive-fürtök
-- Az Azure File Storage
-- SQL Server 2016 R Serviceshez
+- Azure File Storage
+- SQL Server 2016 R Services
 
 Ez a dokumentum azt röviden erőforrásokat leíró, és adja meg az oktatóanyagok és a TDSP csoportokkal közzétett forgatókönyvek mutató hivatkozásokat tartalmaz. Ezek segítségével megtudhatja, hogyan használhatja őket részletes máris használhatja azokat az intelligens alkalmazásokat hozhatnak létre. Ezeket az erőforrásokat további információk a termék oldalain érhető el. 
 
@@ -89,14 +89,14 @@ Adatszakértőkön, a Hive futtathat Python User-Defined funkciókat (UDF) rekor
 Azure HDInsight Hive fürtökön további információkért lásd: [használata Hive és a HiveQL hadooppal a Hdinsightban](../../hdinsight/hadoop/hdinsight-use-hive.md). Az Azure HDInsight Hive fürtök egy méretezhető végpont adatok tudományos megoldás kiépítését, lásd: [a csapat adatok tudományos folyamat működés közben: HDInsight Hadoop-fürtök használata](hive-walkthrough.md).
 
 
-## <a name="azure-file-storage"></a>Az Azure File Storage 
+## <a name="azure-file-storage"></a>Azure File Storage 
 
 Az Azure File Storage egy olyan szolgáltatás, a felhőben, a standard Server Message Block (SMB) protokollt használó fájlmegosztások által. Az SMB 2.1 és az SMB 3.0 protokollt is támogatja. Az Azure File Storage szolgáltatással költséges újraírások nélkül, gyorsan megoldható a fájlmegosztásra támaszkodó, régi típusú alkalmazások áttelepítése az Azure-ra. Az Azure virtuális gépeken vagy felhőszolgáltatásában, esetleg helyszíni ügyfeleken üzemelő alkalmazások fájlmegosztást csatlakoztathatnak a felhőben. Ez a megosztás hasonló ahhoz a csatlakoztatott SMB-megosztáshoz, amelyet az asztali alkalmazások használnak. Ezután bármennyi alkalmazás-összetevő egyszerre csatlakoztathatja a File Storage-megosztást, és hozzá is férhet.
 
 Különösen hasznos az adatok tudományos projektek azt a képességet hozzon létre egy Azure fájltároló projekt adatok megosztása a projekt csapattagok helyként. Azok majd az az Azure file storage az adatok ugyanazon példányát hozzáféréssel rendelkezik. A fájltároló ahhoz, hogy a projekt végrehajtása során létrehozott szolgáltatáskészletek szolgáltatást is alkalmazhatja. Ha a projekt egy ügyfél engagement, az ügyfelek számára a saját Azure-előfizetéshez a projekt adatok és a szolgáltatások megosztott Önnel egy az Azure file storage hozhat létre. Így az ügyfél rendelkezik teljes körű hozzáférést engedélyezzenek a projekt adategységeket. További információ az Azure File Storage: [Ismerkedés az Azure File storage on Windows](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files) és [Azure File Storage használata Linux](../../storage/files/storage-how-to-use-files-linux.md).
 
 
-## <a name="sql-server-2016-r-services"></a>SQL Server 2016 R Serviceshez
+## <a name="sql-server-2016-r-services"></a>SQL Server 2016 R Services
 
 (Az adatbázis-) R biztosítanak a platform fejlesztéséhez és telepítéséhez is nyújt új betekintést intelligens alkalmazásokat. A hatékony és erőteljes R nyelvi, többek között a csomagok számát az R Közösség által biztosított modellek létrehozásához, és hozza létre az SQL Server-adatok előrejelzéseket használhatja. R szolgáltatások (az adatbázis-) az R nyelv integrálható az SQL Server, mert a analytics megközelíti az adatokat, így a költségeket és a biztonsági kockázatok megköveteli az adatok nem tartanak.
 
@@ -146,7 +146,7 @@ Linux (CentOS) gépek használatakor a git-parancsok futtatásához kell hozzáa
 - Beillesztés az ssh kulcs legutóbb másolt a szövegmezőbe, és mentse el.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Végpont forgatókönyvek, amelyek azt mutatják, a folyamat lépései teljes **meghatározott forgatókönyvek** is rendelkezésre állnak. Szerepel a listában, és kapcsolódik a miniatűr leírásokat a [példa forgatókönyvek](walkthroughs.md) témakör. Ezek bemutatják, hogyan lehet felhő, a helyszíni eszközök és szolgáltatások egyesítése munkafolyamat vagy csővezeték intelligens alkalmazás létrehozása. 
 

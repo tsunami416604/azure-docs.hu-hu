@@ -1,11 +1,11 @@
 ---
-title: "A Service Fabric-fürt kapacitásának megtervezése |} Microsoft Docs"
-description: "A Service Fabric fürt kapacitástervezésének szempontjai. A NodeType tulajdonságok értéke, a műveletek, a tartósság és a megbízhatóság rétegek"
+title: A Service Fabric-fürt kapacitásának megtervezése |} Microsoft Docs
+description: A Service Fabric fürt kapacitástervezésének szempontjai. A NodeType tulajdonságok értéke, a műveletek, a tartósság és a megbízhatóság rétegek
 services: service-fabric
 documentationcenter: .net
 author: ChackDan
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4c584f4a-cb1f-400c-b61f-1f797f11c982
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2018
 ms.author: chackdan
-ms.openlocfilehash: ad5f396cd71eb0136fe683bbccb9360291be2d59
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b39c22fb45b0e20a3aa7a6dcf59619a87df32ca1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>A Service Fabric fürt kapacitástervezésének szempontjai
 Minden éles telepítésében kapacitásának megtervezése fontos lépés. Az alábbiakban néhány kell figyelembe venni, hogy a folyamat részeként elemek.
@@ -69,7 +69,7 @@ A tartóssági szint megjelenítésével jelzi a rendszer a virtuális gépeket,
 
 Ez a jogosultság van kifejezve, a következő értékeket:
 
-* Arany – az infrastruktúra-feladatok szüneteltethetők UD két órát időtartamára. Arany tartóssági akkor engedélyezhető, csak a teljes csomópont L32s, GS5, G5, DS15_v2 stb D15_v2 (általában a Virtuálisgép-méretek megtalálható a http://aka.ms/vmspecs, "Példány egyetlen ügyfélhez dedikált hardverre elkülönített" megjegyzésben szereplő állapotúként megjelölt VM termékváltozatok Teljes csomópont virtuális gép)
+* Arany – az infrastruktúra-feladatok szüneteltethetők UD két órát időtartamára. Arany tartóssági csak teljes csomópont VM termékváltozatok L32s, GS5, G5, DS15_v2 stb D15_v2 engedélyezhető (általában a Virtuálisgép-méretek megtalálható-e a http://aka.ms/vmspecs, amely "Példány egyetlen ügyfélhez dedikált hardverre elkülönített" megjegyzésben szereplő van megjelölve, teljes csomópont virtuális gép)
 * Az infrastruktúra-feladatok ezüst - UD 10 perces időtartamra szüneteltethető, és elérhető összes szabványos virtuális egymagos és annál.
 * Bronz - jogosultság nélküli. Ez az alapértelmezett beállítás. Csak a tartóssági szint csomópont típusú használ, amelynek futtatása _csak_ állapot nélküli munkaterheléseket. 
 
@@ -87,7 +87,7 @@ Az egyes a csomóponttípusok tartóssági szint kiválasztásához kap. Egy cso
 **Hátrányait ezüst vagy arany tartóssági szint.**
  
 1. Központi telepítések a virtuálisgép-méretezési készlet és egyéb kapcsolódó Azure-erőforrások) késleltethető, is időtúllépéssel fejeződött be, vagy teljesen problémák, a fürt vagy az infrastruktúra szintjén blokkolhatja. 
-2. Száma [replika életciklus-események](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle ) (például elsődleges swap) miatt automatikus csomópont deactivations Azure-infrastruktúra műveletek során.
+2. Száma [replika életciklus-események](service-fabric-reliable-services-lifecycle.md) (például elsődleges swap) miatt automatikus csomópont deactivations Azure-infrastruktúra műveletek során.
 3. Csomópontok nem működik az Azure platformon és szoftverfrissítéseket hardver karbantartás tevékenységek során ideig tart. Ezek a tevékenységek során letiltása vagy letiltott állapotú csomópontokat jelenhet meg. A kapacitás, a fürt ideiglenesen csökkenti, de kell befolyásolja a fürt vagy az alkalmazások rendelkezésre állását.
 
 ### <a name="recommendations-on-when-to-use-silver-or-gold-durability-levels"></a>Ezüst vagy arany tartóssági szint használatával kapcsolatos javaslatok
@@ -101,10 +101,10 @@ Ezüst vagy arany tartóssági minden csomópont típusú használ, amelynek a s
 
 ### <a name="operational-recommendations-for-the-node-type-that-you-have-set-to-silver-or-gold-durability-level"></a>A csomópont működési javaslatok adja meg, hogy adott meg ezüst vagy arany tartóssági szint.
 
-1. Tartsa a fürt és az alkalmazások megfelelő időben a tulajdonos, és győződjön meg arról, hogy válaszol-e alkalmazások az összes [replika életciklus-események szolgáltatás](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle) (ilyen például a build replika Beragadt) időben.
+1. Tartsa a fürt és az alkalmazások megfelelő időben a tulajdonos, és győződjön meg arról, hogy válaszol-e alkalmazások az összes [replika életciklus-események szolgáltatás](service-fabric-reliable-services-lifecycle.md) (ilyen például a build replika Beragadt) időben.
 2. Elfogadja a biztonságosabb módszer tesz virtuális gép Termékváltozat (méretezési fel/le): a virtuális gép egy virtuálisgép-méretezési csoportban Termékváltozata módosítása során eredendően nem biztonságos, és ezért el kell kerülni Ha lehetséges. Itt az a folyamat követésével gyakori problémák elkerülése érdekében.
     - **A nem elsődleges NodeType tulajdonságok értéke:** javasoljuk, hogy hozzon létre új virtuálisgép-méretezési készlet, a szolgáltatás elhelyezési korlátozás tartalmaz az új virtuálisgép-méretezési készlet/csomópont-típust, és csökkentse a régi virtuálisgép-méretezési csoport példány módosítása száma 0-ra, (Ez a győződjön meg arról, hogy a csomópont eltávolítása nincs hatással a fürt megbízhatóságát) egyszerre csak egy csomópont.
-    - **Az elsődleges nodetype:** azt javasoljuk, nem módosíthatja, hogy az elsődleges csomóponttípusok VM Termékváltozata. Az elsődleges csomóponttípusok SKU nem támogatott módosítása. Ha az új SKU oka kapacitás, ajánlott több példány hozzáadása. Ha a nem lehetséges, hozzon létre egy új fürtöt és [alkalmazásállapot visszaállítása](service-fabric-reliable-services-backup-restore.md) (ha van ilyen) a régi fürtről. Nem kell minden rendszer szolgáltatás állapotának visszaállítására, akkor jönnek létre újból az új fürt számára az alkalmazások központi telepítésekor. Ha csak állapot nélküli alkalmazásokban a fürtben futó, akkor kell a alkalmazásokat az új fürtre, a rendszer nincs semmi visszaállítása. Ha úgy dönt, nyissa meg a nem támogatott útvonal és a virtuális gép SKU módosítani kívánja, majd hajtsa végre a virtuális gép méretezési beállítása Model definition tükrözzék az új SKU módosításokat. Ha a fürt csak egy nodetype, majd győződjön meg arról, hogy válaszol-e az állapotalapú alkalmazások az összes [replika életciklus-események szolgáltatás](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle) (ilyen például a build replika Beragadt) egy időben, valamint a szolgáltatás replika Újraépítés időtartama legalább öt percet (ezüst tartóssági szint). 
+    - **Az elsődleges nodetype:** azt javasoljuk, nem módosíthatja, hogy az elsődleges csomóponttípusok VM Termékváltozata. Az elsődleges csomóponttípusok SKU nem támogatott módosítása. Ha az új SKU oka kapacitás, ajánlott több példány hozzáadása. Ha a nem lehetséges, hozzon létre egy új fürtöt és [alkalmazásállapot visszaállítása](service-fabric-reliable-services-backup-restore.md) (ha van ilyen) a régi fürtről. Nem kell minden rendszer szolgáltatás állapotának visszaállítására, akkor jönnek létre újból az új fürt számára az alkalmazások központi telepítésekor. Ha csak állapot nélküli alkalmazásokban a fürtben futó, akkor kell a alkalmazásokat az új fürtre, a rendszer nincs semmi visszaállítása. Ha úgy dönt, nyissa meg a nem támogatott útvonal és a virtuális gép SKU módosítani kívánja, majd hajtsa végre a virtuális gép méretezési beállítása Model definition tükrözzék az új SKU módosításokat. Ha a fürt csak egy nodetype, majd győződjön meg arról, hogy válaszol-e az állapotalapú alkalmazások az összes [replika életciklus-események szolgáltatás](service-fabric-reliable-services-lifecycle.md) (ilyen például a build replika Beragadt) egy időben, valamint a szolgáltatás replika Újraépítés időtartama legalább öt percet (ezüst tartóssági szint). 
 
 
 > [!WARNING]

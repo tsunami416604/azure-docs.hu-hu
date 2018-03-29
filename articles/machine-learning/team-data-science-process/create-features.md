@@ -1,8 +1,8 @@
 ---
-title: "Jellemzőkiemelés adatok tudományos |} Microsoft Docs"
-description: "Elmagyarázza, a szolgáltatás műszaki osztály alkalmazásában és példák a szerepét a gépi tanulás adatokat a fejlesztés folyamatán."
+title: Jellemzőkiemelés adatok tudományos |} Microsoft Docs
+description: Elmagyarázza, a szolgáltatás műszaki osztály alkalmazásában és példák a szerepét a gépi tanulás adatokat a fejlesztés folyamatán.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
-ms.author: zhangya;bradsev
-ms.openlocfilehash: 72a412c08e57491a306f405f400665e2b0d25a3c
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.author: bradsev
+ms.openlocfilehash: 70a78659bc14ce5ff9358ed11ad0af68be31bd17
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="feature-engineering-in-data-science"></a>Jellemzőkiemelés tudományos adatok
 Ez a cikk azt ismerteti, a szolgáltatás műszaki osztály alkalmazásában és példák a szerepet a gépi tanulás adatokat a fejlesztés során. A példák ezt a folyamatot mutatja be az Azure Machine Learning Studio állítják. 
@@ -70,7 +70,7 @@ A teljesítmény eredmények négy modell összehasonlítása az alábbi táblá
 
 A legjobb eredmények elérése érdekében A + B + C látható funkcióihoz. Vegye figyelembe, hogy a Hibaarány csökken, ha további szolgáltatáskészlet a betanítási adatok szerepelnek. Ellenőrzi, hogy a szolgáltatáskészlete B, C biztosítson a regressziós feladat kapcsolatos további információt a feltételezés. De hozzáadása a D szolgáltatás nem úgy tűnik, hogy adja meg a Hibaarány további csökkentését.
 
-## <a name="example2"></a>2. példa: Szöveg adatbányászati szolgáltatások létrehozása
+## <a name="example2"></a> 2. példa: Szöveg adatbányászati szolgáltatások létrehozása
 Szöveg adatbányászati, például a besorolás és a céggel kapcsolatos véleményeket dokumentumelemzés kapcsolatos feladatok széles körben alkalmazása szolgáltatás mérnöki csapathoz. Például, ha szeretné besorolni a dokumentumok számos kategóriába sorolhatók, egy tipikus feltételezi, hogy kevésbé valószínű egy másik doc kategóriába-e a word/kifejezések egy dokumentumot a kategóriába tartozik. Más szóval a szavakat vagy kifejezéseket terjesztési gyakoriságát el tudja írhatók le másik dokumentum kategóriák. Szöveg adatbányászati alkalmazásokban mivel egyes adatra szöveges-tartalom általában szolgál a bemeneti adatként, a folyamat mérnöki szolgáltatás létrehozásához szükséges a szolgáltatásokat érintő szó vagy kifejezés gyakoriságot.
 
 Ez a feladat eléréséhez technika nevű **szolgáltatáskivonatolás** tetszőleges szöveg szolgáltatások hatékonyan ikonná indexek vonatkozik. Ahelyett, hogy egy adott index, a kivonatoló függvényt alkalmazásával a szolgáltatásokhoz, és közvetlenül a kivonati értékek használata indexek metódus funkciók közötti társítás minden szöveges funkciót (szavak vagy kifejezések).

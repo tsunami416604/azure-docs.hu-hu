@@ -1,6 +1,6 @@
 ---
-title: "Azure Cosmos DB: SQL Java API-t, az SDK és erőforrások |} Microsoft Docs"
-description: "Tudnivalók az SQL Java API-t és SDK, beleértve a kiadási dátum, használatból való kivonást dátumok és az Azure Cosmos DB SQL Java SDK verziói között végrehajtott módosításokat."
+title: 'Azure Cosmos DB: SQL Java API-t, az SDK és erőforrások |} Microsoft Docs'
+description: Tudnivalók az SQL Java API-t és SDK, beleértve a kiadási dátum, használatból való kivonást dátumok és az Azure Cosmos DB SQL Java SDK verziói között végrehajtott módosításokat.
 services: cosmos-db
 documentationcenter: java
 author: rnagpal
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/14/2017
 ms.author: khdang
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 979fcebd60d62c714a1c521013cf391ebf18a73c
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: a8917e85ce5fb0e43593c34fc83046ec727e4aac
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API-t Azure Cosmos DB Java SDK: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -35,8 +35,6 @@ ms.lasthandoff: 03/02/2018
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 > 
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Az SQL API Java SDK támogatja a szinkron műveleteket. Az aszinkron támogatást, használja a [SQL API aszinkron Java SDK](sql-api-sdk-async-java.md). 
 
@@ -59,7 +57,7 @@ Az SQL API Java SDK támogatja a szinkron műveleteket. Az aszinkron támogatás
 
 ### <a name="a-name11501150"></a><a name="1.15.0"/>1.15.0
 * A Json-szerializálást javítja a teljesítményt.
-* Az SDK-verzió telepítéséhez a legújabb Azure Cosmos DB emulátorának elérhetősége a https://aka.ms/cosmosdb-emulator letölthető.
+* Az SDK-verzió Azure Cosmos DB emulátorának elérhetősége a legújabb verziója szükséges a letölthető https://aka.ms/cosmosdb-emulator.
 
 ### <a name="a-name11401140"></a><a name="1.14.0"/>1.14.0
 * A Microsoft ismerősök tárak belső módosításokat.

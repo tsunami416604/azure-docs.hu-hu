@@ -1,13 +1,13 @@
 ---
-title: "Virtuálisgép-méretezési csoport létrehozása az Azure CLI 2.0 használatával | Microsoft Docs"
-description: "Ismerje meg, hogyan hozhat létre gyorsan virtuálisgép-méretezési csoportot az Azure PowerShellel"
+title: Virtuálisgép-méretezési csoport létrehozása az Azure CLI 2.0 használatával | Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre gyorsan virtuálisgép-méretezési csoportot az Azure PowerShellel
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 12/19/2017
 ms.author: iainfou
 ms.openlocfilehash: 8794ea7d998293e7ea88ba780f67ef8a021f2298
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/27/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Virtuálisgép-méretezési csoport létrehozása az Azure CLI 2.0 használatával
 A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A méretezési csoportban lévő virtuális gépek számát skálázhatja manuálisan, vagy megadhat automatikus skálázási szabályokat is az erőforrás-használat (például processzorhasználat, memóriaigény vagy hálózati forgalom) alapján. Ebben az első lépéseket bemutató cikkben egy virtuálisgép-méretezési csoportot hozunk létre az Azure CLI 2.0 használatával. Méretezési csoportokat az [Azure PowerShell](virtual-machine-scale-sets-create-powershell.md) használatával, illetve az [Azure Portalon](virtual-machine-scale-sets-create-portal.md) is létrehozhat.

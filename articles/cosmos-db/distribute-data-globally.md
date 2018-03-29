@@ -1,24 +1,24 @@
 ---
-title: "Globális adatok Azure Cosmos DB terjesztése |} Microsoft Docs"
-description: "Ismerje meg a globális adatbázisokat az Azure Cosmos Adatbázisból, egy globálisan elosztott, mutli-modell dokumentumadatbázis-szolgáltatás segítségével bolygónk méretű georeplikáció, a feladatátvételt és az adatok helyreállítás."
+title: Globális adatok Azure Cosmos DB terjesztése |} Microsoft Docs
+description: Ismerje meg a globális adatbázisokat az Azure Cosmos Adatbázisból, egy globálisan elosztott, mutli-modell dokumentumadatbázis-szolgáltatás segítségével bolygónk méretű georeplikáció, a feladatátvételt és az adatok helyreállítás.
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: arramac
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: ba5ad0cc-aa1f-4f40-aee9-3364af070725
 ms.service: cosmos-db
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 03/26/2018
 ms.author: arramac
-ms.openlocfilehash: 0be81802996f27a4c063e4e728a3c95ad757bea0
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: e31b66f20c51e95dbc2d8285bb5602590abd4f4f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>Globális adatok Azure Cosmos DB terjesztése
 Azure a széles körű – folyamatosan bővülő, és egy globális erőforrásigényét tért 30 + földrajzi régiók között. A globális jelenlét, az Azure felajánlja, hogy a fejlesztők differenciált képességeit egyik létre, telepíthetnek és könnyen globálisan elosztott alkalmazások kezelésére képes. 
@@ -37,6 +37,11 @@ Ebben a cikkben nyújtunk Azure Cosmos DB globális terjesztési funkcióiról. 
 
 ## <a id="EnableGlobalDistribution"></a>Kulcsrakész globális terjesztési engedélyezése
 Azure Cosmos-adatbázis egyszerű megírásához bolygónk méretű alkalmazások engedélyezéséhez a következő lehetőségeket biztosítja. Ezek a képességek érhetők el az Azure Cosmos DB erőforrás-szolgáltató alapú [REST API-k](https://docs.microsoft.com/rest/api/documentdbresourceprovider/) továbbá az Azure-portálon.
+
+Az alábbi videó az Azure Cosmos DB Programvezető Andrew Liu a kulcsrakész globális terjesztési funkciókat mutatja be.
+
+> [!VIDEO https://www.youtube.com/embed/1D06yjTVxt8]
+>
 
 ### <a id="RegionalPresence"></a>A széles körű regionális jelenléte 
 Azure folyamatosan nő a földrajzi jelenléte hozásával [új régiók](https://azure.microsoft.com/regions/) online. Alapértelmezés szerint minden új Azure régiók Cosmos. Azure-adatbázis nem áll rendelkezésre. Ez lehetővé teszi, hogy rendelje hozzá az Azure Cosmos DB adatbázisfiók egy földrajzi régiót, amint Azure megnyílik az új üzleti régióját.
@@ -226,10 +231,10 @@ Azure Cosmos DB transzparens módon az átviteli sebesség, a késés, a konzisz
 ## <a id="References"></a>Hivatkozások
 1. Eric sörgyár. [Robusztus elosztott rendszerek felé](https://people.eecs.berkeley.edu/~brewer/cs262b-2004/PODC-keynote.pdf)
 2. Eric sörgyár. [SAPKA később – az alkalmazásának tizenkét éve hogyan módosultak a szabályok](http://informatik.unibas.ch/fileadmin/Lectures/HS2012/CS341/workshops/reportsAndSlides/PresentationKevinUrban.pdf)
-3. Gilbert, Lynch. - [Sörgyár &#39; s feltevésen és egységes, elérhető megvalósíthatóságának, partíció hibatűrő webes szolgáltatások](http://www.glassbeam.com/sites/all/themes/glassbeam/images/blog/10.1.1.67.6951.pdf)
+3. Gilbert, Lynch. - [Sörgyár&#39;s feltevésen és egységes, elérhető megvalósíthatóságának, partíció hibatűrő webes szolgáltatások](http://www.glassbeam.com/sites/all/themes/glassbeam/images/blog/10.1.1.67.6951.pdf)
 4. Daniel Abadi. [A Modern konzisztencia mellékhatásokkal elosztott adatbázis rendszerek kialakítása](http://cs-www.cs.yale.edu/homes/dna/papers/abadi-pacelc.pdf)
 5. János Kleppmann. [Állítsa le az adatbázisok CP vagy a hozzáférési pont hívása](https://martin.kleppmann.com/2015/05/11/please-stop-calling-databases-cp-or-ap.html)
 6. Peter Bailis és mások. [A gyakorlati részleges határozatképességére probabilisztikus a kötött elavulási (PBS)](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
 7. Naor és gyapjú. [Betöltési, a kapacitás és a rendelkezésre állási kvórum rendszerekben](http://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf)
 8. Herlihy és a következő. [Lineralizability: Helyességét feltételt az egyidejű objektumok](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf)
-9. [Az Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/)
+9. [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/)

@@ -1,25 +1,25 @@
 ---
-title: "A Git - Azure Machine Learning együttműködési kódolási |} Microsoft Docs"
-description: "Együttműködési kód fejlesztési adatok tudományos projektek Git használatával gyors tervezéssel módjáról."
-documentationcenter: 
+title: A Git - Azure Machine Learning együttműködési kódolási |} Microsoft Docs
+description: Együttműködési kód fejlesztési adatok tudományos projektek Git használatával gyors tervezéssel módjáról.
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: bradsev;
-ms.openlocfilehash: e6808c0d9d4ca14101eeebe8b3e286d64e2328f9
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.author: bradsev
+ms.openlocfilehash: f3eabf0b754f777f25811d30c158b647b1d3954e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="collaborative-coding-with-git"></a>Együttműködési git kódolása
+# <a name="collaborative-coding-with-git"></a>Együttműködésen alapuló kódolás a Gittel
 
 Ebben a cikkben azt ismerteti, hogyan együttműködési kód fejlesztési adatok tudományos projektek Git használatával, a megosztott kód fejlesztési keretrendszer elvégzéséhez. Bemutatja, hogyan adhat hivatkozás ezeket kódolás tevékenységekhez, hogy a tervezett munka [gyors fejlesztési](agile-development.md) és kód értékelést.
 
@@ -110,7 +110,7 @@ A következő Git-parancsok segítségével a munkaágat az alap elágazási egy
 
 
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Adatok tudományos feladatok végrehajtása](execute-data-science-tasks.md) több közös adatok tudományos feladatokhoz, mint az adatok interaktív áttekintését, a adatelemzés, a jelentéskészítés és a modell létrehozása befejezéséhez segédprogramok használatát ismerteti.
 

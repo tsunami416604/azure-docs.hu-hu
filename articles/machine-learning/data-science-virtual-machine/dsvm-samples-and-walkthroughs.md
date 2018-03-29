@@ -1,25 +1,25 @@
 ---
-title: "Kódminták és az adatok tudományos virtuálisgép - Azure forgatókönyvek |} Microsoft Docs"
-description: "Kódminták és forgatókönyvek esetében az adatok tudományos virtuális gép."
-keywords: "adatok tudományos eszközök, adatok tudományos virtuális gép, adattudomány, linux adattudomány eszközei"
+title: Kódminták és az adatok tudományos virtuálisgép - Azure forgatókönyvek |} Microsoft Docs
+description: Kódminták és forgatókönyvek esetében az adatok tudományos virtuális gép.
+keywords: adatok tudományos eszközök, adatok tudományos virtuális gép, adattudomány, linux adattudomány eszközei
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: gopitk
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
-ms.author: gokuma;bradsev
-ms.openlocfilehash: fb9a7e900c489b3d22594dfcb6e1faa736c3c490
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: gokuma
+ms.openlocfilehash: 6c5b5c8c9dbb03a2189eb5f1539499ace55e7dfc
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="samples-on-the-data-science-virtual-machines-dsvm"></a>Az adatok tudományos virtuális gépeken (DSVM) minták
 
@@ -47,22 +47,22 @@ A DSVMs belefoglalt teljesen működőképes kibővített minták Jupyter Notebo
 
 ## <a name="access-jupyter"></a>Hozzáférés Jupyter 
 
-Látogasson el Jupyter kezdőlapja a  **`https://localhost:9999`**  Windows vagy  **`https://localhost:8000`**  az Ubuntu.
+Látogasson el Jupyter kezdőlapja a **`https://localhost:9999`** Windows vagy **`https://localhost:8000`** az Ubuntu.
 
 
 ### <a name="enabling-jupyter-access-from-browser"></a>A böngésző Jupyter hozzáférés engedélyezése
 
 **Windows DSVM**
 
-Futtatás  **`Jupyter SetPassword`**  az asztali parancsikonjára, és kövesse a jelenít meg a jelszó beállítása/reset a Jupyter, és indítsa el a Jupyter feldolgozni. 
+Futtatás **`Jupyter SetPassword`** az asztali parancsikonjára, és kövesse a jelenít meg a jelszó beállítása/reset a Jupyter, és indítsa el a Jupyter feldolgozni. 
 <br/>![Jupyter kivétel engedélyezése](./media/jupyter-setpassword.png)<br/>
-Van-e hozzáférési Jupyter kezdőlap után a Jupyter folyamat sikeresen elindult a virtuális gépen látogasson el  **`https://localhost:9999`**  a böngésző. Lásd: a kivétel hozzáadása és Jupyter hozzáférés engedélyezése a böngészőben képernyőképe
+Van-e hozzáférési Jupyter kezdőlap után a Jupyter folyamat sikeresen elindult a virtuális gépen látogasson el **`https://localhost:9999`** a böngésző. Lásd: a kivétel hozzáadása és Jupyter hozzáférés engedélyezése a böngészőben képernyőképe
 <br/>![Jupyter kivétel engedélyezése](./media/windows-jupyter-exception.png)<br/>
 Jelentkezzen be az imént beállított új jelszót.
 <br/>
 **Linux DSVM**
 
-Látogasson el a virtuális Gépet a Jupyter otthoni végezheti el  **`https://localhost:8000`**  a böngésző. Tekintse meg a kivétel hozzáadása és Jupyter hozzáférés engedélyezése a böngészőben képernyőképet.
+Látogasson el a virtuális Gépet a Jupyter otthoni végezheti el **`https://localhost:8000`** a böngésző. Tekintse meg a kivétel hozzáadása és Jupyter hozzáférés engedélyezése a böngészőben képernyőképet.
 <br/>![Jupyter kivétel engedélyezése](./media/ubuntu-jupyter-exception.png)<br/>
 Jelentkezzen be ugyanazt a jelszót, mint a bejelentkezési adatait a DSVM számára.
 <br/>

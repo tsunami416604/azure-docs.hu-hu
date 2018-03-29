@@ -1,7 +1,7 @@
 ---
-title: "Az Azure Cosmos DB: Java-alapú példa az SQL API-hoz |} Microsoft Docs"
-description: "Java-alapú példa a Githubon található gyakori feladatok a Azure Cosmos DB SQL API-t, beleértve a CRUD műveletek."
-keywords: "NoSQL-példa"
+title: 'Az Azure Cosmos DB: Java-alapú példa az SQL API-hoz |} Microsoft Docs'
+description: Java-alapú példa a Githubon található gyakori feladatok a Azure Cosmos DB SQL API-t, beleértve a CRUD műveletek.
+keywords: NoSQL-példa
 services: cosmos-db
 author: mimig1
 manager: jhubbard
@@ -14,11 +14,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: mimig
-ms.openlocfilehash: a46b6e4d64b44c07fe7a2aa63bc49bea59ad5b53
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 992451018baeea15bf63906c71ad72faccb0dbe4
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-java-examples-for-the-sql-api"></a>Az Azure Cosmos DB: Java példák az SQL API-hoz.
 
@@ -30,8 +30,6 @@ ms.lasthandoff: 02/11/2018
 > * [A minta Azure Kódgalériából.](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)
 > 
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 A legújabb alkalmazásokat CRUD műveletek és más olyan gyakori műveleteket Azure Cosmos DB erőforrások végző szerepelnek a [azure-documentdb-java](https://github.com/Azure/azure-documentdb-java) GitHub-tárházban. Ez a cikk a következő információkat tartalmazza:
 

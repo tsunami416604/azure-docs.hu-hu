@@ -1,11 +1,11 @@
 ---
-title: "Elemzés API HTTP adatgyűjtő naplózása |} Microsoft Docs"
-description: "A napló Analytics HTTP Data Collector API segítségével POST JSON-adatokat hozzáadni a Naplóelemzési tárház minden ügyfélről, amely a REST API meghívása. Ez a cikk ismerteti, hogyan lehet az API-val, és példák közzétegyék az adataikat a különböző programnyelveken rendelkezik."
+title: Elemzés API HTTP adatgyűjtő naplózása |} Microsoft Docs
+description: A napló Analytics HTTP Data Collector API segítségével POST JSON-adatokat hozzáadni a Naplóelemzési tárház minden ügyfélről, amely a REST API meghívása. Ez a cikk ismerteti, hogyan lehet az API-val, és példák közzétegyék az adataikat a különböző programnyelveken rendelkezik.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
-editor: 
+editor: ''
 ms.assetid: a831fd90-3f55-423b-8b20-ccbaaac2ca75
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: bwren
-ms.openlocfilehash: 5c6f2b35b48988af533612cb48da8fe79a838cf6
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 167c36d2fa9bc182b6e37c0f47f838fde1ba01df
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Adatokat küldeni a Log Analyticshez a HTTP adatait gyűjtője API-t (nyilvános előzetes verzió)
 Ez a cikk bemutatja, hogyan használja a HTTP adatok adatgyűjtő API REST API-ügyfél Naplóelemzési adatküldéshez.  Bemutatja, hogyan lehet a parancsfájl vagy az alkalmazás által összegyűjtött adatok formázása, adja hozzá a kérelem és a kérésre Naplóelemzési engedélyezve van.  A példák PowerShell, a C# és Python.
@@ -328,7 +328,7 @@ namespace OIAPIExample
         {
             // Create a hash for the API signature
             var datestring = DateTime.UtcNow.ToString("r");
-            var jsonBytes = Encoding.UTF8.GetBytes(message);
+            var jsonBytes = Encoding.UTF8.GetBytes(json);
             string stringToHash = "POST\n" + jsonBytes.Length + "\napplication/json\n" + "x-ms-date:" + datestring + "\n/api/logs";
             string hashedString = BuildSignature(stringToHash, sharedKey);
             string signature = "SharedKey " + customerId + ":" + hashedString;

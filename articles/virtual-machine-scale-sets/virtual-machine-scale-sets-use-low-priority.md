@@ -1,13 +1,13 @@
 ---
-title: "Hozzon létre egy alacsony prioritású virtuális gépek (előzetes verzió) használó Azure méretezési |} Microsoft Docs"
-description: "Megtudhatja, alacsony prioritású virtuális gépek használni kívánja, mentheti a költségek Azure virtuálisgép-méretezési csoportok"
+title: Hozzon létre egy alacsony prioritású virtuális gépek (előzetes verzió) használó Azure méretezési |} Microsoft Docs
+description: Megtudhatja, alacsony prioritású virtuális gépek használni kívánja, mentheti a költségek Azure virtuálisgép-méretezési csoportok
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: mmccrory
 manager: rajraj
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: memccror
-ms.openlocfilehash: 9e4970ecc538caab537281931b89bfd57d994cfa
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f25e4d1e3906a610e7c60e348f872a78d7db8fd3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="low-priority-vms-on-scale-sets-preview"></a>Alacsony prioritású futó virtuális gépek méretezési csoportok (előzetes verzió)
 
@@ -48,7 +48,7 @@ Kis prioritású virtuális gépek méretezési csoportok a telepítendő állí
 
 ## <a name="use-the-azure-cli-20"></a>Az Azure parancssori felület használatával 2.0
 
-A skála beállítása alacsony prioritású virtuális gépek létrehozásának folyamata megegyezik a részletes a [bevezető cikkben](virtual-machine-scale-sets-create-cli.md). Csak adja hozzá a "--prioritás" paraméter a parancssori felület segítségével hívja, és állítsa az értékét *alacsony* az alábbi példában látható módon:
+A skála beállítása alacsony prioritású virtuális gépek létrehozásának folyamata megegyezik a részletes a [bevezető cikkben](quick-create-cli.md). Csak adja hozzá a "--prioritás" paraméter a parancssori felület segítségével hívja, és állítsa az értékét *alacsony* az alábbi példában látható módon:
 
 ```azurecli
 az vmss create \
@@ -63,7 +63,7 @@ az vmss create \
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell használatával
 
-A skála beállítása alacsony prioritású virtuális gépek létrehozásának folyamata megegyezik a részletes a [bevezető cikkben](virtual-machine-scale-sets-create-powershell.md).
+A skála beállítása alacsony prioritású virtuális gépek létrehozásának folyamata megegyezik a részletes a [bevezető cikkben](quick-create-powershell.md).
 Csak adja hozzá a "-prioritás" paramétert a [New-AzureRmVmssConfig](/powershell/module/azurerm.compute/new-azurermvmssconfig) és *alacsony* az alábbi példában látható módon:
 
 ```powershell
@@ -77,7 +77,7 @@ $vmssConfig = New-AzureRmVmssConfig `
 
 ## <a name="use-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok használata
 
-A folyamat által használt alacsony prioritású virtuális gépek méretezési készlet létrehozása megegyezik az első lépések cikk részletes [Linux](virtual-machine-scale-sets-create-template-linux.md) vagy [Windows](virtual-machine-scale-sets-create-template-windows.md). Adja hozzá a "priority" tulajdonságot a *Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile* erőforrás adja meg a sablont, és adja meg *alacsony* értékeként. Használjon *2017-10 – 30 – előzetes* API-verzió vagy újabb verzióját. 
+A folyamat által használt alacsony prioritású virtuális gépek méretezési készlet létrehozása megegyezik az első lépések cikk részletes [Linux](quick-create-template-linux.md) vagy [Windows](quick-create-template-windows.md). Adja hozzá a "priority" tulajdonságot a *Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile* erőforrás adja meg a sablont, és adja meg *alacsony* értékeként. Használjon *2017-10 – 30 – előzetes* API-verzió vagy újabb verzióját. 
 
 Ahhoz, hogy a kiürítés házirend értékre törlését, adja hozzá a "evictionPolicy" paramétert, és állítsa az értékét *törlése*.
 

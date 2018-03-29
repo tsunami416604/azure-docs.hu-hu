@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Service Fabric esemény összesítési rendelkező EventFlow |} Microsoft Docs"
-description: "További tudnivalók összesítésére és események gyűjtése EventFlow figyelési és diagnosztika Azure Service Fabric-fürt segítségével."
+title: Az Azure Service Fabric esemény összesítési rendelkező EventFlow |} Microsoft Docs
+description: További tudnivalók összesítésére és események gyűjtése EventFlow figyelési és diagnosztika Azure Service Fabric-fürt segítségével.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: fd4c28c2317356cbc6e3fd4d46a10509c029d530
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 37cae133dda2f274a83db1df37e798c5da58c539
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>Esemény összevonásának és a gyűjtemény EventFlow használatával
 
@@ -30,7 +30,7 @@ EventFlow bináris NuGet-csomagok készletként érhetők el. Service Fabric-szo
 
 ![A Visual Studio NuGet-Csomagkezelő felhasználói felület EventFlow NuGet-csomagok](./media/service-fabric-diagnostics-event-aggregation-eventflow/eventflow-nuget.png)
 
-Látni fogja a különböző csomagok listája jelenik meg, az "A bemeneti" és "Kimeneti" címkével ellátott. EventFlow különböző különböző naplózási szolgáltatók és elemzőkkel támogatja. A szolgáltatásüzemeltetési EventFlow attól függően, hogy a forrás- és az alkalmazásnaplókat a megfelelő csomagokat kell tartalmaznia. A core ServiceFabric csomag mellett is szükség van legalább egy bemeneti és kimeneti konfigurálva. Hozzáadhat például a következő csomagok Application insights szolgáltatásnak elküldött EventSource események:
+Látni fogja a különböző csomagok listája jelenik meg, az "A bemeneti" és "Kimeneti" címkével ellátott. EventFlow különböző különböző naplózási szolgáltatók és elemzőkkel támogatja. A szolgáltatásüzemeltetési EventFlow attól függően, hogy a forrás- és az alkalmazásnaplókat a megfelelő csomagokat kell tartalmaznia. A core ServiceFabric csomag mellett is szükség van legalább egy bemeneti és kimeneti konfigurálva. Például a következő csomagok EventSource események küldése az Application Insights is hozzáadhat:
 
 * `Microsoft.Diagnostics.EventFlow.Inputs.EventSource` a szolgáltatás az EventSource osztályból származik, és a szabványos EventSources adatok rögzítéséhez *Microsoft-ServiceFabric-szolgáltatások* és *Microsoft-ServiceFabric-szereplője*)
 * `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights` (fogjuk küldeni a naplókat az Azure Application Insights-erőforrás)

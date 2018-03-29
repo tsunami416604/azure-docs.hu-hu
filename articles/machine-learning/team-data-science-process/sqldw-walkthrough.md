@@ -1,8 +1,8 @@
 ---
-title: "Az Team tudományos folyamat működés közben: az SQL Data Warehouse |} Microsoft Docs"
-description: "Bővített Analitikát folyamat és a technológia, működés közben"
+title: 'Az Team tudományos folyamat működés közben: az SQL Data Warehouse |} Microsoft Docs'
+description: Bővített Analitikát folyamat és a technológia, működés közben
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
-ms.author: bradsev;weig
-ms.openlocfilehash: 9c858427b01f7b94aae87136a46e1d9ae5e09a1c
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.author: bradsev
+ms.openlocfilehash: 6566db5f186b92179df3125deaf5ad17c6f9e974
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Az Team tudományos folyamat működés közben: az SQL Data Warehouse
 Az oktatóanyag azt ismerteti létrehozása és telepítése a gépi tanulási modellek az SQL Data Warehouse (SQL DW) keresztül egy nyilvánosan elérhető adatkészlet--a [NYC Taxi Utazgatással](http://www.andresmh.com/nyctaxitrips/) adatkészlet. A bináris osztályozási modell összeállított képes-e tipp fizetnek útnak, és multiclass besorolás és regressziós modell, amely a terjesztési megjósolható a fizetős tipp adatmennyiség is ismertetése.
@@ -80,7 +80,7 @@ Azt a három előrejelzés problémák alapján állítson össze a *tipp\_össz
 Kövesse a dokumentációban a [SQL Data Warehouse létrehozása](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md) egy SQL Data Warehouse-példányokhoz kiépítéséhez. Győződjön meg arról, hogy, hogy a következő SQL-adatraktár hitelesítő adatok a későbbi lépésekben használt jelölések.
 
 * **Kiszolgálónév**: <server Name>. database.windows.net
-* **SQLDW (adatbázis) neve**
+* **SQLDW (Database) Name**
 * **Felhasználónév**
 * **Jelszó**
 
@@ -319,7 +319,7 @@ A storage-fiókok földrajzi helye a betöltési idők hatással van.
 Döntse el, hogy milyen Ha ismétlődő a forrás és cél fájlokat fog.
 
 > [!NOTE]
-> Ha a .csv-fájlokat másolni a nyilvános blob storage a saját blob storage-fiók már szerepel a titkos blob storage-fiók, AzCopy megkérdezi, hogy meg szeretné felülír. Ha nem szeretné, hogy felülírja, bemeneti  **n**  megjelenésekor. Ha szeretné felülírni **összes** , bemeneti **egy** megjelenésekor. Is szövegszerkesztőben **y** .csv fájlok egyenként felülírásához.
+> Ha a .csv-fájlokat másolni a nyilvános blob storage a saját blob storage-fiók már szerepel a titkos blob storage-fiók, AzCopy megkérdezi, hogy meg szeretné felülír. Ha nem szeretné, hogy felülírja, bemeneti **n** megjelenésekor. Ha szeretné felülírni **összes** , bemeneti **egy** megjelenésekor. Is szövegszerkesztőben **y** .csv fájlok egyenként felülírásához.
 > 
 > 
 
@@ -836,7 +836,7 @@ Ebben a gyakorlatban azt már megismerkedett és fejthetők vissza az adatokat a
    
     ![Azure ML importálási adatok][17]
 2. Válassza ki **Azure SQL Database** , a **adatforrás** a a **tulajdonságok** panel.
-3. Az adatbázis DNS-nevét adja meg a **adatbázis-kiszolgáló neve** mező. Formátum:`tcp:<your_virtual_machine_DNS_name>,1433`
+3. Az adatbázis DNS-nevét adja meg a **adatbázis-kiszolgáló neve** mező. Formátum: `tcp:<your_virtual_machine_DNS_name>,1433`
 4. Adja meg a **adatbázisnév** a megfelelő mezőben.
 5. Adja meg a *SQL felhasználónév* a a **kiszolgáló felhasználói fiók nevét**, és a *jelszó* a a **kiszolgáló felhasználói fiók jelszavát**.
 7. Az a **adatbázis-lekérdezés** szöveg terület szerkesztése, illessze be a lekérdezést, amely a szükséges adatbázis-mezők (beleértve a számított mezőket a címkéket például) és régebbi minták a kívánt mintájának méretét az adatokat.
@@ -862,7 +862,7 @@ Egy új webszolgáltatás-bővítmény telepítéséhez kell:
 
 Egy pontozási kísérletet a létrehozásához egy **befejezett** betanítása kísérletet, kattintson a **létrehozása pontozási KÍSÉRLETEZHET** alacsonyabb műveletsávon.
 
-![Pontozás az Azure][18]
+![Azure Scoring][18]
 
 Az Azure Machine Learning megpróbál létrehozni egy pontozási kísérletet, a tanítási kísérletet összetevői alapján. Különösen a következőket hajtja végre:
 
@@ -876,7 +876,7 @@ Az alábbi ábra a kísérletben pontozási minta valósul meg. Amikor készen �
 
 ![Az Azure ML közzététele][11]
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Recap mi azt megtette az oktatóanyag forgatókönyv, hogy hozott létre az Azure data tudományos környezethez, a nagy nyilvános dataset dolgozott véve a folyamatot, a csapat adatok tudományos, egészen az adatgyűjtést modell betanítási, majd a az Azure Machine Learning webszolgáltatás üzembe helyezése.
 
 ### <a name="license-information"></a>Licencinformációk

@@ -1,18 +1,18 @@
 ---
-title: "Az Azure Storage biztonsági útmutatója |} Microsoft Docs"
-description: "A sok védelmének biztosítása az Azure Storage, beleértve többek között a Szerepalapú, Storage szolgáltatás titkosítási, ügyféloldali titkosítás, az SMB 3.0-s és Azure Disk Encryption adatokat."
+title: Az Azure Storage biztonsági útmutatója |} Microsoft Docs
+description: A sok védelmének biztosítása az Azure Storage, beleértve többek között a Szerepalapú, Storage szolgáltatás titkosítási, ügyféloldali titkosítás, az SMB 3.0-s és Azure Disk Encryption adatokat.
 services: storage
-author: tamram
+author: craigshoemaker
 manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 03/06/2018
-ms.author: tamram
-ms.openlocfilehash: d1a81a9029f2e9b8a36ecebdcc4be44984e82515
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.author: cshoe
+ms.openlocfilehash: e0a398075b01b3c3750a33a9dd74b5ad1c0f71fd
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-storage-security-guide"></a>Az Azure Storage biztonsági útmutató
 
@@ -296,7 +296,7 @@ SSE engedélyezve van az összes tárfiók, és nem tiltható le. SSE automatiku
 
 A Microsoft által felügyelt SSE használt kulcsokkal. Microsoft eredetileg állít elő, a kulcsok és a biztonságos tárolására, valamint a rendszeres Elforgatás belső Microsoft házirend által meghatározott kezeli. Ügyfél által felügyelt kulcsok végül lesz elérhető, a Microsoft által felügyelt kulcsok áttelepítési elérési kulcsok ügyfél által felügyelt együtt.
 
-SSE automatikusan titkosítja az összes teljesítmény rétegek (Standard és prémium), minden üzembe helyezési modellel (Azure Resource Manager és klasszikus) és az összes Azure Storage szolgáltatás (Blob, várólista, a táblának és fájl). 
+Az SSE automatikusan titkosítja minden teljesítményszint (Standard és Prémium), minden üzembehelyezési modell (Azure Resource Manager és klasszikus) és minden Azure Storage-szolgáltatás (Blob, Queue, Table és File) adatait. 
 
 ### <a name="client-side-encryption"></a>Client-side Encryption
 Ügyféloldali titkosítás azt említett, az adatok átvitele történik a titkosítás ismertetésekor. Ez a funkció lehetővé teszi a programozott módon az ügyfélalkalmazás mielőtt elküldené a hálózaton keresztül Azure Storage kellene írni, és szoftveres visszafejteni az adatok beolvasása az Azure Storage-ból után az adatok titkosítását.
@@ -376,7 +376,7 @@ Az ügyféloldali titkosítással táblaentitásokat, az üzenetsor-üzeneteket 
 
 #### <a name="storage-service-encryption-sse"></a>Storage Service Encryption (SSE)
 
-Azure Storage SSE kezeli. SSE nem biztosítja a biztonsági adatok az átvitel során, de az adatok titkosítása, Azure Storage változatlan formában. SSE Azure tárolási teljesítménye nincs hatással.
+Azure Storage SSE kezeli. SSE nem biztosítja a biztonsági adatok az átvitel során, de az adatok titkosítása, Azure Storage változatlan formában. Az SSE nem befolyásolja az Azure Storage teljesítményét.
 
 Titkosíthatja az adatokat a tárfiók SSE használatával bármilyen típusú (blokkblobokat, hozzáfűző blobokat, a lapblobokat, a tábla adatai, a várólista adatok és a fájlok).
 

@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: renash
-ms.openlocfilehash: a6b80c134351429ec85a20f7ab83b7674b8b7352
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 671e3737a620d85c732a091d5a62f35f35c1d515
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="overview-of-share-snapshots-for-azure-files-preview"></a>A megosztás pillanatképek Azure-fájlok (előzetes verzió) – áttekintés
-Az Azure Files lehetővé teszi a megosztás pillanatképek készítése fájlmegosztások. Megosztás-pillanatképeket (előzetes verzió) a fájlmegosztási állapot ezen a ponton az idő rögzítése. Ez a cikk azt írják le, milyen lehetőségek megosztás pillanatképek adja meg, és hogyan fordíthatja előnyére azokat az egyéni használati eset a.
+# <a name="overview-of-share-snapshots-for-azure-files"></a>Azure-fájlok megosztási pillanatképek áttekintése 
+Az Azure Files lehetővé teszi a megosztás pillanatképek készítése fájlmegosztások. A fájlmegosztási állapot pillanatképek rögzítési ezen a ponton idő megosztás. Ez a cikk azt írják le, milyen lehetőségek megosztás pillanatképek adja meg, és hogyan fordíthatja előnyére azokat az egyéni használati eset a.
 
 
 ## <a name="when-to-use-share-snapshots"></a>Megosztás pillanatképek használata

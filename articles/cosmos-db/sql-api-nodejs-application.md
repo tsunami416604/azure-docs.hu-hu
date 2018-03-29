@@ -1,7 +1,7 @@
 ---
-title: "A Node.js-webalkalmazás létrehozása az Azure Cosmos DB |} Microsoft Docs"
-description: "A Node.js-oktatóanyag Azure Websitesban tárolt Node.js Express-webalkalmazások használata a Microsoft Azure Cosmos DB tárolására és a hozzáférési adatok ismerteti."
-keywords: "Alkalmazásfejlesztés, adatbázis-oktatóanyag, node.js, a node.js-oktatóanyag megismerése"
+title: A Node.js-webalkalmazás létrehozása az Azure Cosmos DB |} Microsoft Docs
+description: A Node.js-oktatóanyag Azure Websitesban tárolt Node.js Express-webalkalmazások használata a Microsoft Azure Cosmos DB tárolására és a hozzáférési adatok ismerteti.
+keywords: Alkalmazásfejlesztés, adatbázis-oktatóanyag, node.js, a node.js-oktatóanyag megismerése
 services: cosmos-db
 documentationcenter: nodejs
 author: mimig1
@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/23/2018
 ms.author: mimig
-ms.openlocfilehash: 441f352555f40c0467df4c466d58ac35e32f9e61
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: ad6e335c562e52d7e2336dd1f29e5c159fe46589
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="_Toc395783175"></a>Node.js-webalkalmazás létrehozása az Azure Cosmos DB használatával
 > [!div class="op_single_selector"]
@@ -29,8 +29,6 @@ ms.lasthandoff: 02/14/2018
 > * [Python](sql-api-python-application.md)
 > 
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 A Node.js-oktatóanyag bemutatja, hogyan Azure Cosmos DB és az SQL API segítségével történő tárolására és a hozzáférési adatok az Azure Websitesban tárolt Node.js Express-alkalmazás. Olyan egyszerű webalapú teendőkezelő alkalmazást, todo appot fog létrehozni, amellyel feladatokat készíthet, kérhet le, és végezhet el. A feladatokat JSON-dokumentumok formájában tárolja az Azure Cosmos DB. Ez az oktatóanyag bemutatja az alkalmazás létrehozásának és üzembe helyezésének lépéseit, valamint hogy mi történik az egyes kódrészletekben.
 
@@ -76,7 +74,7 @@ Most megtanulhatja, hogyan hozhat létre egy alapszintű Hello World Node.js-pro
 5. Futtassa az új alkalmazást.
    
         npm start
-6. Az új alkalmazás megtekintéséhez navigáljon a böngészőben a következő címre: [http://localhost:3000](http://localhost:3000).
+6. Az új alkalmazás megtekintéséhez navigáljon a böngészőben a [ http://localhost:3000 ](http://localhost:3000).
    
     ![A Node.js megismerése – Képernyőfelvétel a Hello World alkalmazásról egy böngészőablakban](./media/sql-api-nodejs-application/cosmos-db-node-js-express.png)
 
@@ -154,7 +152,7 @@ Ezzel a kezdeti beállítás és konfiguráció készen is van. Ideje elkezdeni 
 
     ```nodejs
     let DocumentDBClient = require('documentdb').DocumentClient;
-    let docdbUtils = require('./docdbUtils');
+    let docdbUtils = require('./cosmosdb-manager.js');
     ```
 7. Ezután adja hozzá a feladatobjektum meghatározására és exportálására használt kódot. Ez felelős a feladatobjektum elindításáért, valamint a használni kívánt adatbázis és dokumentumgyűjtemény beállításáért.  
 
@@ -411,7 +409,7 @@ Ezzel a kezdeti beállítás és konfiguráció készen is van. Ideje elkezdeni 
 6. Végül mentse és zárja be az **app.js** fájlt. És már majdnem készen is van.
 
 ## <a name="_Toc395783181"></a>5. lépés: Felhasználói felület létrehozása
-Most térjünk át a felhasználói felület létrehozására, hogy a felhasználók ténylegesen használatba vehessék az alkalmazást. A létrehozott Express-alkalmazás a **Jade** megjelenítési motort használja. A Jade motorral kapcsolatos további információkért lásd: [http://jade-lang.com/](http://jade-lang.com/).
+Most térjünk át a felhasználói felület létrehozására, hogy a felhasználók ténylegesen használatba vehessék az alkalmazást. A létrehozott Express-alkalmazás a **Jade** megjelenítési motort használja. További információ a Jade tekintse meg [ http://jade-lang.com/ ](http://jade-lang.com/).
 
 1. A rendszer a **views** (nézetek) könyvtárban található **layout.jade** fájlt használja a többi **.jade** fájl globális sablonjaként. Ebben a lépésben ezt a sablont a [Twitter Bootstrap](https://github.com/twbs/bootstrap) eszközkészletre módosítja majd, amellyel könnyen tervezhet tetszetős webhelyeket. 
 2. Nyissa meg a **views** (nézetek) mappában található **layout.jade** fájlt, és cserélje ki annak tartalmát a következőre:
@@ -489,7 +487,7 @@ A második űrlap két beviteli mezőt és egy gombot tartalmaz, amely lehetőv�
 Az alkalmazás működéséhez csak ennyire van szükség.
 
 ## <a name="_Toc395783181"></a>6. lépés: Az alkalmazás helyileg történő futtatása
-1. Ha a helyi gépén szeretné tesztelni az alkalmazást, futtassa az `npm start` parancsot a terminálon az alkalmazás elindításához, majd frissítse a [http://localhost:3000](http://localhost:3000) böngészőoldalt. Az oldalnak most úgy kell kinéznie, ahogy az alábbi képen látható:
+1. A helyi gépen lévő alkalmazás teszteléséhez futtassa `npm start` a terminálban az alkalmazás indításához, majd frissítse a [ http://localhost:3000 ](http://localhost:3000) webböngészőben. Az oldalnak most úgy kell kinéznie, ahogy az alábbi képen látható:
    
     ![Képernyőfelvétel a My Todo List (Saját teendőlista) alkalmazásról egy böngészőablakban](./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png)
 

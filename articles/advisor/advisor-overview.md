@@ -1,12 +1,12 @@
 ---
-title: "Bevezetés az Azure Advisor |} Microsoft Docs"
-description: "Azure Advisor segítségével optimalizálhatja az Azure-környezetekhez."
+title: Bevezetés az Azure Advisor |} Microsoft Docs
+description: Azure Advisor segítségével optimalizálhatja az Azure-környezetekhez.
 services: advisor
 documentationcenter: NA
 author: KumudD
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: advisor
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: a4096b11a828cf6676aa22b11c4dd4d75f3b0286
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 0aa97a7557706f0b704d4e31a84e9d356d1ad087
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="introduction-to-azure-advisor"></a>Bevezetés az Azure Advisor
 
@@ -43,9 +43,6 @@ Az Advisor irányítópult megjeleníti az előfizetések személyre szabott jav
 
   ![Az Advisor javaslat típusok](./media/advisor-overview/advisor-dashboard.png)
 
-> [!NOTE]
-> Az előfizetéshez, előfizetés Azure Advisor használandó *tulajdonos* kell indítsa el az Advisor irányítópulton.  Ez a művelet regisztrálja az előfizetés az Advisor szolgáltatásban.  Bármely előfizetés meg *tulajdonos*, *közreműködő*, vagy *olvasó* férhetnek hozzá az előfizetés az Advisor-javaslatokra. 
-
 Egy kategóriát az adott kategóriába javaslatok listájának megjelenítéséhez kattintson, és válassza ki a javaslatra kattintva olvashat azokról bővebben.  Lehetőség előnyeit, vagy hárítsa el a problémát a végrehajtható műveletek is olvashat.
 
 ![Az Advisor javaslat kategória](./media/advisor-overview/advisor-ha-category-example.png) 
@@ -62,12 +59,12 @@ Az Advisor keresztül érheti el a [Azure-portálon](https://aka.ms/azureadvisor
 Javaslatokat biztosít a virtuális gép erőforrás-felületen keresztül is megtekintheti. Válassza ki a virtuális gépet, és görgessen a menü javaslatokat biztosít. 
 
 ### <a name="what-permissions-do-i-need-to-access-advisor"></a>Milyen engedélyekkel Advisor elérésére van?
-
-Az előfizetéshez tartozó Advisor-javaslatokra megszerzéséhez először regisztrálnia kell az előfizetés az Advisor szolgáltatásban. Egy előfizetés regisztrálva van, ha az előfizetés *tulajdonos* elindítja az Advisor irányítópulton. Ez az műveletet egyszer kell elvégezni. Az előfizetés regisztrálása után érheti el, az Advisor-javaslatokra *tulajdonos*, *közreműködő*, vagy *olvasó* az előfizetés.
+ 
+Érheti el, az Advisor-javaslatokra *tulajdonos*, *közreműködő*, vagy *olvasó* az előfizetés.
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Milyen erőforrásokat Advisor nyújt javaslatokat?
 
-Az Advisor virtuális gépek rendelkezésre állási készletek, alkalmazásátjárót, alkalmazásszolgáltatások, SQL Server-kiszolgálók, SQL-adatbázisok és Redis Cache vonatkozó javaslatokkal szolgál.
+Az Advisor virtuális gépek rendelkezésre állási készletek, alkalmazásátjárót, alkalmazásszolgáltatások, SQL Server-kiszolgálók és Redis Cache vonatkozó javaslatokkal szolgál.
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>Halassza el vagy hagyja figyelmen kívül az ajánlás?
 

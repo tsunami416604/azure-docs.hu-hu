@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: 8a24987ae3423a02647b1dd246b40179be100c06
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ec13109173f89b53e32f903febcec13c7f38c574
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="outbound-connections-classic"></a>Kimenő kapcsolatok (klasszikus)
 
@@ -60,7 +60,7 @@ A [előzetes lefoglalása elmúló port használt algoritmust](#ephemeralports) 
 
 Ebben a forgatókönyvben a virtuális Gépnek legyen egy példány szint nyilvános IP (ILPIP) rendelve. Kimenő kapcsolatok illeti nem számít, hogy a virtuális gép elosztott terhelésű végpont rendelkezik, vagy nem. Ebben a forgatókönyvben élvez a többi. Egy ILPIP használata esetén a virtuális Gépet a ILPIP minden kimenő forgalom használ.  
 
-A virtuális Gépnek legyen használható elmúló port, és nem használja a port színleg (PAT).
+Nyilvános IP-egy virtuális Géphez rendelt egy 1:1 kapcsolat (nem 1:many), és valósul meg állapotmentes 1:1 hálózati címfordítást.  A virtuális Gépnek legyen használható elmúló port, és nem használja a port színleg (PAT).
 
 Ha az alkalmazás számos kimenő forgalom kezdeményez, és SNAT port Erőforrásfogyás tapasztal, érdemes lehet hozzárendelése egy [SNAT megkötések mérséklése ILPIP](#assignilpip). Felülvizsgálati [kezelése SNAT Erőforrásfogyás](#snatexhaust) egészében.
 

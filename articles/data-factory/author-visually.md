@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/9/2018
+ms.date: 03/27/2018
 ms.author: shlo
-ms.openlocfilehash: bce74c80f53eda654bb0289a1ff8a6cb88fd13f5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 977fd59b746d13e9bf331edc32c63dd5a21c69f7
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Az Azure Data Factory Visual készítése
 Az Azure Data Factory felhasználói felület élmény (UX) lehetővé teszi vizuálisan hozhatnak létre és telepítését erőforrások az a data factory kód írása nélkül. Húzzon tevékenységeket a feldolgozási sor vásznon, hajtsa végre a teszt futtatása, debug ismételt, és telepítheti és figyelheti a folyamat futtatása. Kétféleképpen használatához a UX visual szerzői műveletek végrehajtásához:
@@ -33,7 +33,7 @@ A Data Factory szolgáltatással Visual szerzői eltér az visual szerkesztése 
 
 ![A Data Factory szolgáltatásnak konfigurálása ](media/author-visually/configure-data-factory.png)
 
-A UX használatakor **vászonra szerzői** ahhoz, hogy közvetlenül a Data Factory szolgáltatásnak, csak az a **közzététel** módban érhető el. A végrehajtott módosításokat közvetlenül a Data Factory szolgáltatásnak kerülnek közzétételre.
+A UX használatakor **vászonra szerzői** ahhoz, hogy közvetlenül a Data Factory szolgáltatásnak, csak az a **összes** módban érhető el. A végrehajtott módosításokat közvetlenül a Data Factory szolgáltatásnak kerülnek közzétételre.
 
 ![Közzétételi mód](media/author-visually/data-factory-publish.png)
 
@@ -61,9 +61,12 @@ A ablaktábla megjeleníti azokat a következő VSTS-kód tárház beállításo
 | Beállítás | Leírás | Érték |
 |:--- |:--- |:--- |
 | **Tárház típusa** | A VSTS kód tárház típusa.<br/>**Megjegyzés:**: GitHub jelenleg nem támogatott. | Visual Studio Team Services Git |
+| **Azure Active Directory** | Az Azure AD bérlő neve. | <your tenant name> |
 | **Visual Studio Team Services Account** | A VSTS-fiók nevét. Megkeresheti a VSTS-fiók nevére, `https://{account name}.visualstudio.com`. Is [jelentkezzen be a VSTS-fiókba](https://www.visualstudio.com/team-services/git/) érhető el a Visual Studio-profil és a tárolóhelyekkel és a projektek. | \<a fiók neve > |
 | **ProjectName** | A VSTS-projekt nevét. Megkeresheti a VSTS projektnévre, `https://{account name}.visualstudio.com/{project name}`. | \<a VSTS-projekt neve > |
 | **RepositoryName** | A VSTS kód tárház nevét. VSTS-projektek Git tárhelyek kezelése a forráskódot, a projekt növekedésével tartalmaz. Hozzon létre egy új tárházat, vagy egy meglévő tárházon, amely már a projekthez. | \<a VSTS tárház neve > |
+| **Együttműködés ág** | A VSTS együttműködés fiókirodai, amely jelzi a közzététel. Alapértelmezés szerint van `master`. Abban az esetben, ha a másik fiókiroda erőforrásaihoz közzé szeretné tenni, módosítsa az. | \<az együttműködés ág neve > |
+| **Gyökérmappa** | A legfelső szintű mappa az VSTS együttműködés ágában. | \<a mappa neve > |
 | **Importálja a meglévő adat-előállító erőforrások tárházba** | Megadja, hogy a meglévő data factory erőforrások importálása a UX **vászonra szerzői** be egy VSTS Git-tárházat. Jelölje be a jelölőnégyzetet annak a data factory erőforrások importálnia kell a társított Git-tárház JSON formátumban. Ez a művelet exportálja az egyes erőforrások külön-külön (Ez azt jelenti, hogy a társított szolgáltatások és az adatkészletek exportálása külön JSONs be). Ha ez a mező nincs bejelölve, a nem importált a meglévő erőforrásokat. | Kijelölt (alapértelmezett) |
 
 #### <a name="configuration-method-2-ux-authoring-canvas"></a>Konfigurációs 2. módszer: UX szerzői vászonra
@@ -76,41 +79,41 @@ Egy konfigurációs ablaktáblán jelenik meg. További konfigurációs beállí
 ### <a name="use-version-control"></a>Verziókövetés alkalmazása
 Verzió rendszerek (más néven _verziókövető_) segítségével a fejlesztők közösen dolgozzon a kódot, és nyomon követése végzett módosításokat a kód alap. A verziókövetési rendszerrel több fejlesztői projektek alapvető eszközét.
 
-Minden adat-előállító társított VSTS Git-tárház egy főághoz rendelkezik. Amikor hozzáfér a VSTS Git-tárházba, a kódot választva módosíthatja **szinkronizálási** vagy **közzététel**:
+Minden adat-előállító társított VSTS Git-tárház rendelkezik egy együttműködés ág. (`master` alapértelmezett együttműködés ág). Felhasználók emellett létrehozhatják szolgáltatás ágak kattintva **+ új fiókirodai** és a szolgáltatás ágak fejlesztésbe.
 
 ![A kód módosítása vagy szinkronizálása](media/author-visually/sync-publish.png)
 
-#### <a name="sync-code-changes"></a>Szinkronizálási kódmódosításokat
-Miután kiválasztotta a **szinkronizálási**, akkor is lekéréses értéke a főágba helyett a helyi fiókiroda vagy változások az Ön helyi ágából a főágba.
+Ha készen áll a szolgáltatás fejlesztés és a szolgáltatás ágában, kattinthat **hozzon létre lekérési kérelmet**. A rendszer ekkor VSTS GIT, ahol merülhet lekéréses kérések kód értékelést, és az együttműködés ágában egyesítési vált. (`master` az alapértelmezett beállítás). Csak az a Data Factory szolgáltatás az Ön együttműködés ágából engedélyezettek. 
 
-![Szinkronizálási kódmódosításokat](media/author-visually/sync-change.png)
+![Hozzon létre egy új lekérést](media/author-visually/create-pull-request.png)
 
 #### <a name="publish-code-changes"></a>Kódmódosításokat közzététele
-Válassza ki **közzététel** közzététele kézzel a kódmódosításokat a főágba a Data Factory szolgáltatásnak.
+Miután módosításai az együttműködés ág lehet egyesített (`master` az alapértelmezett), jelölje be **közzététel** közzététele kézzel a kódmódosításokat a főágba a Data Factory szolgáltatásnak.
+
+![Változások közzétételére a Data Factory szolgáltatásnak](media/author-visually/publish-changes.png)
 
 > [!IMPORTANT]
 > A főágba nincs képviselő mi történik a Data Factory szolgáltatásban. A főágba *kell* manuálisan közzé kell tenni a Data Factory szolgáltatásnak.
 
 ## <a name="use-the-expression-language"></a>A kifejezés nyelv használatával
-A kifejezés nyelv, amely támogatja-e az Azure Data Factory használatával megadhatja a tulajdonságértékek kifejezések. Támogatott kifejezésekkel kapcsolatos információkért lásd: [kifejezések és az Azure Data Factory funkciók](control-flow-expression-language-functions.md).
+A kifejezés nyelv, amely támogatja-e az Azure Data Factory használatával megadhatja a tulajdonságértékek kifejezések. 
 
-Adja meg a tulajdonságok értékeit az adott kifejezések a UX használatával **vászonra szerzői**:
+Adja meg a tulajdonságok értékeit az adott kifejezések kiválasztásával **dinamikus tartalom hozzáadása**:
 
-![A kifejezés nyelv használatával](media/author-visually/expression-language.png)
+![A kifejezés nyelv használatával](media/author-visually/dynamic-content-1.png)
 
-## <a name="specify-parameters"></a>Adja meg a paraméterek
-Az Azure Data Factory adatcsatornákat és adathalmazokat paramétereinek megadhat **paraméterek** fülre. Könnyen használható paraméterek tulajdonságai kiválasztásával **dinamikus tartalom hozzáadása**:
+## <a name="use-functions-and-parameters"></a>Paraméterek és függvények használata
 
-![Dinamikus tartalom hozzáadása](media/author-visually/dynamic-content.png)
+Függvények, vagy adja meg a Data Factory adatcsatornákat és adathalmazokat paramétereinek **Kifejezésszerkesztő**:
 
-Használjon meglévő paramétereket, vagy adjon meg új paramétereket a tulajdonságértékek:
+Támogatott kifejezésekkel kapcsolatos információkért lásd: [kifejezések és az Azure Data Factory funkciók](control-flow-expression-language-functions.md).
 
-![Adja meg a tulajdonságértékek paraméterek](media/author-visually/parameters.png)
+![Dinamikus tartalom hozzáadása](media/author-visually/dynamic-content-2.png)
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 Válassza ki **visszajelzés** funkciókkal kapcsolatos megjegyzés, vagy értesítést küldeni a Microsoft az eszközzel kapcsolatos problémák:
 
-![Visszajelzés](media/monitor-visually/feedback.png)
+![Visszajelzés](media/author-visually/provide-feedback.png)
 
 ## <a name="next-steps"></a>További lépések
 További információk figyelését és folyamatok kezelése című témakörben talál [figyelő programozott folyamatok kezelését és](monitor-programmatically.md).

@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Advisor költség javaslatok |} Microsoft Docs"
-description: "Azure Advisor segítségével optimalizálhatja az Azure-környezetekhez költségét."
+title: Az Azure Advisor költség javaslatok |} Microsoft Docs
+description: Azure Advisor segítségével optimalizálhatja az Azure-környezetekhez költségét.
 services: advisor
 documentationcenter: NA
 author: KumudD
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: advisor
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 7b9c7037271fabd67c1ada80420ad72c340e46bb
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 7a8807a580f1a7f1fe67e026a8fbd4cc0e96c41c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="advisor-cost-recommendations"></a>Költség javaslatokat biztosít
 
@@ -31,9 +31,6 @@ Az Advisor jeleníti meg, hogy ha szeretné leállítani, vagy méretezze át a 
 
 Ha szigorúbb túl virtuális gépek azonosításához, lehet, módosíthatja a átlagos CPU kihasználtsága szabály egy előfizetés alapon.
 
-## <a name="use-a-cost-effective-solution-to-manage-performance-goals-of-multiple-sql-databases"></a>Költséghatékony megoldás segítségével Teljesítménycélok több SQL-adatbázisok kezelése
-Az Advisor azonosítja az SQL server-példányokat, amelyek kihasználhatják a rugalmas adatbáziskészlet létrehozása. A rugalmas adatbáziskészletek adja meg, amely egyszerű és költséghatékony megoldást teljesítményértékeket rendelkező, különböző használati minták több adatbázis kezelésére. Az Azure rugalmas készletek kapcsolatos további információkért lásd: [Mi az Azure rugalmas készletek?](https://azure.microsoft.com/en-us/documentation/articles/sql-database-elastic-pool/).
-
 ## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>Csökkentheti a költségeket kiépített ExpressRoute-Kapcsolatcsoportok kiküszöbölése révén
 Az Advisor azonosítja a szolgáltató állapota már ExpressRoute-Kapcsolatcsoportok *nincs kiépítve* több mint egy hónap, és javasolja a kapcsolatcsoport törlése, ha nem tervezi a kapcsolatcsoport adja meg a kapcsolatot szolgáltató.
 
@@ -43,7 +40,7 @@ Az Advisor azonosítja a szolgáltató állapota már ExpressRoute-Kapcsolatcsop
 
 2.  Az Advisor irányítópultján kattintson a **költség** fülre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Advisor-javaslatokra kapcsolatos további információkért lásd:
 * [Az Advisor bemutatása](advisor-overview.md)

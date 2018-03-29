@@ -1,23 +1,23 @@
 ---
-title: "Vonja össze az adatokat tudományos folyamat feladatok számára egy egyéni közreműködő - Azure |} Microsoft Docs"
-description: "A feladatok a tudományos adatok team projekt egy egyéni közreműködő áttekintését."
-documentationcenter: 
+title: Vonja össze az adatokat tudományos folyamat feladatok számára egy egyéni közreműködő - Azure |} Microsoft Docs
+description: A feladatok a tudományos adatok team projekt egy egyéni közreműködő áttekintését.
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev;
-ms.openlocfilehash: 526260c3f61a203fe2770a0c6d0d23d95916a2b7
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: bradsev
+ms.openlocfilehash: af60b188fe8db278297e1ece400bf4398e36094a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="individual-contributor-tasks"></a>Egyes közreműködői feladatok
 
@@ -102,7 +102,7 @@ Ellenőrizze, hogy látható-e a három mappák a projekt könyvtárában.
 
 Csatlakoztatási Azure file Storage a DSVM számára, lásd a 4. szakaszban található utasítások a [Team átfutási feladatok tudományos adatok csoport](team-lead-tasks.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbiakban a szerepkörök és az adatok tudományos eljárással meghatározott feladatok részletes leírását mutató hivatkozásokat:
 

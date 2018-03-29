@@ -1,8 +1,8 @@
 ---
-title: "Hive-lekérdezésekkel Hadoop-fürtben lévő adatok funkciók létrehozása |} Microsoft Docs"
-description: "Példák a szolgáltatások készítése az Azure HDInsight Hadoop-fürt tárolt adatokat a Hive-lekérdezéseket."
+title: Hive-lekérdezésekkel Hadoop-fürtben lévő adatok funkciók létrehozása |} Microsoft Docs
+description: Példák a szolgáltatások készítése az Azure HDInsight Hadoop-fürt tárolt adatokat a Hive-lekérdezéseket.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
-ms.author: hangzh;bradsev
-ms.openlocfilehash: d72e10332263fac0b0ca0f937d394d2832d88781
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.author: bradsev
+ms.openlocfilehash: f49eeee2dd26d54674b4619e6c986952718caa47
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>A Hive-lekérdezéseket a Hadoop fürtök adatok funkciók létrehozása
 Ez a dokumentum bemutatja, hogyan hozzon létre egy Azure HDInsight Hadoop-fürt Hive-lekérdezésekkel tárolt adatok funkciói. A Hive-lekérdezéseket beágyazott Hive User-Defined funkciókat (UDF), amelynek a parancsfájlokat használja.
@@ -93,14 +93,14 @@ Hive tartalmaz egy felhasználó által megadott függvények a datetime mezők 
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
 
-A Hive-lekérdezést feltételezi, hogy a  *<datetime field>*  az alapértelmezett dátum és idő formátumban.
+A Hive-lekérdezést feltételezi, hogy a *<datetime field>* az alapértelmezett dátum és idő formátumban.
 
 Egy DateTime típusú mező nem az alapértelmezett formátumban van, ha először a DateTime típusú mező átalakítása Unix időbélyegzőjét, és majd alakíthatja át a Unix időbélyeg dátum/idő karakterlánc, amely az alapértelmezett formátumban van szüksége. A dátum és idő formátuma alapértelmezett, ha felhasználók alkalmazhatja a beágyazott datetime felhasználó által megadott függvények szolgáltatások kibontásához.
 
         select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
         from <databasename>.<tablename>;
 
-Ebben a lekérdezésben Ha a  *<datetime field>*  rendelkezik a minta like *2015-03/26 12:04:39*, a  *<pattern of the datetime field>"* kell `'MM/dd/yyyy HH:mm:ss'`. Tesztelheti, hogy a felhasználók futtathatják
+Ebben a lekérdezésben Ha a *<datetime field>* rendelkezik a minta like *2015-03/26 12:04:39*, a  *<pattern of the datetime field>"* kell `'MM/dd/yyyy HH:mm:ss'`. Tesztelheti, hogy a felhasználók futtathatják
 
         select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
         from hivesampletable limit 1;

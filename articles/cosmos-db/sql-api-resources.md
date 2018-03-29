@@ -1,9 +1,9 @@
 ---
-title: "Az Azure Cosmos DB erőforrás-modellje és fogalmai |} Microsoft Docs"
-description: "További információk a hierarchikus modell Azure Cosmos DB adatbázisok, gyűjtemények, felhasználó által definiált függvény (UDF), dokumentumok, erőforrások és még sok más kezeléséhez szükséges jogokat kapjon."
+title: Az Azure Cosmos DB erőforrás-modellje és fogalmai |} Microsoft Docs
+description: További információk a hierarchikus modell Azure Cosmos DB adatbázisok, gyűjtemények, felhasználó által definiált függvény (UDF), dokumentumok, erőforrások és még sok más kezeléséhez szükséges jogokat kapjon.
 keywords: Hierarchikus modell cosmosdb, az azure, a Microsoft azure
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: rafats
 manager: jhubbard
 ms.assetid: ef9d5c0c-0867-4317-bb1b-98e219799fd5
@@ -12,18 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 03/26/2018
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a88f17a658987e1ff3ae0e0f38d6551c3acee1da
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: f64d79cd3929a279c7e279e74b0b21d163c0fa45
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Az Azure Cosmos DB hierarchikus erőforrás-modellje és alapfogalmai
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Az Azure Cosmos DB kezelő adatbázis entitásokat nevezzük **erőforrások**. Az egyes erőforrások egyedileg azonosít egy logikai URI-t. Az erőforrások szabványos HTTP-műveletek, kérelem/válasz fejlécek és állapotkódokat alállapotkódok használatával kommunikálhat. 
 
@@ -34,6 +32,12 @@ Ez a cikk az alábbi kérdéseket:
 * Hogyan kezelje a egy erőforrást?
 * Hogyan működik a gyűjteményekkel?
 * Hogyan működik a tárolt eljárások, eseményindítók és felhasználó által megadott funkciókat (UDF)?
+
+Az alábbi videó az Azure Cosmos DB Programvezető Andrew Liu végigvezeti az Azure Cosmos DB erőforrás-modellje. 
+
+> [!VIDEO https://www.youtube.com/embed/luWFgTP0IL4]
+>
+>
 
 ## <a name="hierarchical-resource-model"></a>Hierarchikus erőforrás-modellje
 Az az alábbi ábrán látható módon, hierarchikus Azure Cosmos-DB **erőforrás-modellje** áll egy adatbázis-fiók, logikai és állandó URI segítségével minden egyes megcímezhető alatt lévő erőforrások csoportja. Erőforráscsoport nevezzük egy **hírcsatorna** ebben a cikkben. 
@@ -57,7 +61,7 @@ Erőforrások munkakezdéshez kell [adatbázisfiók létrehozása](create-sql-ap
 | Gyűjtemény |A gyűjtemény egy JSON-dokumentumokat és a kapcsolódó JavaScript-alkalmazáslogikát tartalmazó tároló. Egy gyűjtemény egy számlázható entitás, ahol a [költség](performance-levels.md) a gyűjteményhez társított teljesítményszint határozza meg. A gyűjtemények egy vagy több partícióra/kiszolgálóra is kiterjedhetnek, valamint gyakorlatilag korlátlan mennyiségű tárterület vagy átviteli sebesség kezelésére méretezhetők. |
 | Tárolt eljárás |A JavaScript, amely regisztrálva gyűjtemény és tranzakciós úton futtatásuk az adatbázismotor írt alkalmazás logikáját. |
 | Eseményindító |Úgy az alkalmazáslogikát végrehajtása előtt vagy után vagy egy INSERT utasítás, JavaScript nyelven írt csere vagy törlési művelet. |
-| AZ UDF |JavaScript nyelven írt alkalmazás logikáját. Felhasználó által megadott függvények lehetővé teszik egy egyéni lekérdezés operátor modell, és ezáltal kiterjesztése a core SQL API lekérdező nyelve. |
+| UDF |JavaScript nyelven írt alkalmazás logikáját. Felhasználó által megadott függvények lehetővé teszik egy egyéni lekérdezés operátor modell, és ezáltal kiterjesztése a core SQL API lekérdező nyelve. |
 | Dokumentum |Felhasználó által definiált (tetszőleges) JSON-tartalmak. Alapértelmezés szerint nem tartozik séma kell definiálni, sem másodlagos indexek kell adni a gyűjteménybe felvett összes dokumentumot. |
 | Melléklet |Egy mellékletet tartalmazó hivatkozásokat és a külső blob/médiához kapcsolódó metaadatok különleges dokumentumot. A fejlesztői választhat Cosmos DB kezeli a blob rendelkezik, vagy tárolja el azt egy külső blob-szolgáltatónál, például a onedrive-on, Dropbox, stb. |
 
@@ -113,15 +117,15 @@ Minden erőforrás URI-címmel rendelkező. Értékét a **_self** erőforrás t
 | A _self értéke | Leírás |
 | --- | --- |
 | /dbs |Adatcsatorna adatbázisok egy adatbázis-fiókkal |
-| /dbs/ {%{dbname/} |{%{Dbname/} értékével egyező azonosítójú adatbázis |
+| /dbs/{dbName} |{%{Dbname/} értékével egyező azonosítójú adatbázis |
 | {%{dbname/} /dbs/ /colls/ |A gyűjtemények az adatbázis adatcsatorna |
 | {%{dbname/} /dbs/ /colls/ {collName} |{CollName} értékével egyező azonosítójú gyűjtemény |
 | {%{dbname/} /dbs/ /colls/ {collName} / docs |A gyűjtemény dokumentumok adatcsatorna |
-| {%{dbname/} /dbs/ /colls/ {collName} /docs/ {dokumentumazonosító} |{Doc} értékével egyező azonosítójú dokumentálása |
-| {%{dbname/} /dbs/ /felhasználók/ |A felhasználók egy adatbázist a hírcsatorna |
-| {%{dbname/} /dbs/ /felhasználók/ {userId} |{Felhasználó} értékével egyező azonosítójú felhasználó |
-| {%{dbname/} /dbs/ /felhasználók/ {userId} / engedélyek |Adatcsatorna egy felhasználói engedélyek |
-| {%{dbname/} /dbs/ /felhasználók/ {userId} /permissions/ {permissionId} |{Engedély} értékével egyező azonosítójú engedély |
+| /dbs/{dbName}/colls/{collName}/docs/{docId} |{Doc} értékével egyező azonosítójú dokumentálása |
+| /dbs/{dbName}/users/ |A felhasználók egy adatbázist a hírcsatorna |
+| /dbs/{dbName}/users/{userId} |{Felhasználó} értékével egyező azonosítójú felhasználó |
+| /dbs/{dbName}/users/{userId}/permissions |Adatcsatorna egy felhasználói engedélyek |
+| /dbs/{dbName}/users/{userId}/permissions/{permissionId} |{Engedély} értékével egyező azonosítójú engedély |
 
 Minden erőforrás azonosítója tulajdonságon keresztül elérhetővé tett egyedi felhasználói névvel rendelkezik. Megjegyzés: a dokumentumok, ha a felhasználó nem adja meg az azonosító, az SDK-k automatikusan egyedi azonosítót előállítani a dokumentumhoz. Az azonosító: felhasználói karakterlánc, legfeljebb 256 karakter, amely egy adott szülő erőforrás keretén belül egyedi. 
 
@@ -132,7 +136,7 @@ A REST API-k erőforrások címzést és útválasztást kérelem az azonosító
 ## <a name="database-accounts"></a>Adatbázis-fiókok
 Megadhat egy vagy több Cosmos DB adatbázis fiókot az Azure-előfizetését használja.
 
-Hozhat létre és kezelheti a Cosmos DB adatbázis fiókokat, Azure-portálon [http://portal.azure.com/](https://portal.azure.com/). Létrehozását és kezelését egy adatbázis-fiók rendszergazdai hozzáférésre van szüksége, és csak az Azure-előfizetéshez tartozó hajtható végre. 
+Hozhat létre és kezelheti a Cosmos DB adatbázis fiókokat, Azure-portálon [ http://portal.azure.com/ ](https://portal.azure.com/). Létrehozását és kezelését egy adatbázis-fiók rendszergazdai hozzáférésre van szüksége, és csak az Azure-előfizetéshez tartozó hajtható végre. 
 
 ### <a name="database-account-properties"></a>Adatbázis-fiók tulajdonságai
 Kiépítése és kezelése az adatbázisfiók részeként konfigurálja, és olvassa el a következő tulajdonságokkal:  
@@ -457,7 +461,7 @@ A csak egy erőforrás-kulcs beszerzése, egy adott felhasználói engedélyt er
 
 Mint minden más erőforrások, az Azure Cosmos Adatbázisba engedélyek hozhatók létre, cserélni, törlése, olvassa el vagy számba egyszerűen a REST API-k vagy bármely, az ügyfél SDK-k használatával. Azure Cosmos DB mindig nyújt erős konzisztenciát biztosít a olvasása vagy kérdez le a metaadatokat az engedély. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További tudnivalókat a HTTP-parancsokat kell használnia, erőforrásokkal [Azure Cosmos DB erőforrások RESTful interakció](https://msdn.microsoft.com/library/azure/mt622086.aspx).
 
 [1]: media/sql-api-resources/resources1.png

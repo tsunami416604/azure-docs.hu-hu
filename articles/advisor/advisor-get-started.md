@@ -1,12 +1,12 @@
 ---
-title: "Ismerkedés az Azure Advisor |} Microsoft Docs"
-description: "Ismerkedés az Azure Advisor."
+title: Ismerkedés az Azure Advisor |} Microsoft Docs
+description: Ismerkedés az Azure Advisor.
 services: advisor
 documentationcenter: NA
 author: manbeenkohli
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: advisor
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/10/2017
 ms.author: makohli
-ms.openlocfilehash: 5a7864597e50294c8e1227cbab7a3be73dde0a7f
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: cd64515beabec43a5209d62dccf2b55b21702c16
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="get-started-with-azure-advisor"></a>Ismerkedés az Azure Advisor szolgáltatással
 
@@ -35,10 +35,7 @@ ms.lasthandoff: 02/24/2018
 
 4. Az Advisor irányítópult a kijelölt előfizetéseket javaslatok összegzését jeleníti meg.  Kiválaszthatja az előfizetéseket, amelyet meg szeretne megjeleníteni az előfizetés használatára vonatkozó javaslatok legördülő lista szűréséhez.
 
-5. Ahhoz, hogy egy adott konkrét kategóriával javaslatokat, kattintson a lapfülek egyikére: **magas rendelkezésre állású**, **biztonsági**, **teljesítmény**, vagy **költség**.
- 
-> [!NOTE]
-> Az előfizetéshez, előfizetés Azure Advisor használandó *tulajdonos* kell indítsa el az Advisor irányítópulton.  Ez a művelet regisztrálja az előfizetés az Advisor szolgáltatásban.  Bármely előfizetés meg *tulajdonos*, *közreműködő*, vagy *olvasó* férhetnek hozzá az előfizetés az Advisor-javaslatokra.  
+5. Ahhoz, hogy egy adott konkrét kategóriával javaslatokat, kattintson a lapfülek egyikére: **magas rendelkezésre állású**, **biztonsági**, **teljesítmény**, vagy **költség**. 
 
   ![Az Azure Advisor irányítópult](./media/advisor-overview/advisor-dashboard.png)
 

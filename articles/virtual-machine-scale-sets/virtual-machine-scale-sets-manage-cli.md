@@ -1,13 +1,13 @@
 ---
-title: "Az Azure parancssori felület 2.0 rendelkező virtuálisgép-méretezési csoportok kezelése |} Microsoft Docs"
-description: "Közös Azure CLI 2.0 parancsok futtatásával kezelheti a virtuálisgép-méretezési csoportok, például indítása és leállítása egy példányát, vagy módosítsa a skála kapacitás beállítása."
+title: Az Azure parancssori felület 2.0 rendelkező virtuálisgép-méretezési csoportok kezelése |} Microsoft Docs
+description: Közös Azure CLI 2.0 parancsok futtatásával kezelheti a virtuálisgép-méretezési csoportok, például indítása és leállítása egy példányát, vagy módosítsa a skála kapacitás beállítása.
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
-ms.openlocfilehash: a484cf6734ff663a852be1a46e2b2ca2f75bb17d
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 1afb43b65203406a7d49b0e3f641bc22d164a4a9
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>A virtuálisgép-méretezési beállítása az Azure CLI 2.0 kezelése
-A virtuálisgép-méretezési csoport életciklusa során szükség lehet egy vagy több felügyeleti feladatok futtatásához. Emellett érdemes lehet különböző életciklus-feladatokat automatizáló parancsfájlokat hozhatnak létre. Ez a cikk részletezi az egyes közös Azure CLI 2.0 parancsok, amelyek lehetővé teszik, hogy ezeket a műveleteket.
+A virtuálisgép-méretezési csoport életciklusa során szükség lehet egy vagy több felügyeleti feladatok futtatásához. Emellett előfordulhat, hogy különféle szkripteket is érdemes létrehozni az életciklus-feladatok automatizálására. Ez a cikk részletezi az egyes közös Azure CLI 2.0 parancsok, amelyek lehetővé teszik, hogy ezeket a műveleteket.
 
-Felügyeleti feladatok elvégzéséhez szüksége van a legújabb Azure CLI 2.0 build. Hogyan kell telepíteni, és a legújabb verzióját használja a további információkért lásd: [az Azure CLI 2.0-s verzióját](/cli/azure/install-azure-cli). Ha egy virtuálisgép-méretezési csoport létrehozásához szükséges, akkor [hozzon létre egy méretezési beállítása az Azure portálon](virtual-machine-scale-sets-create-portal.md).
+Felügyeleti feladatok elvégzéséhez szüksége van a legújabb Azure CLI 2.0-s. További információ: [az Azure CLI 2.0-s verzióját](/cli/azure/install-azure-cli). Ha egy virtuálisgép-méretezési csoport létrehozásához szükséges, akkor [hozzon létre egy méretezési beállítása az Azure CLI 2.0](quick-create-cli.md).
 
 
 ## <a name="view-information-about-a-scale-set"></a>A méretezési adatainak megtekintése
@@ -35,7 +35,7 @@ az vmss show --resource-group myResourceGroup --name myScaleSet
 ```
 
 
-## <a name="view-vms-in-a-scale-set"></a>Nézet virtuális gépek méretezési csoportban lévő
+## <a name="view-vms-in-a-scale-set"></a>Virtuális gépek megtekintése egy méretezési csoportban
 Méretezési csoportban lévő Virtuálisgép-példány listájának megtekintéséhez használja [az vmss-példányokat](/cli/azure/vmss#list-instances). Az alábbi példa listában az összes Virtuálisgép-példány a méretezési készletben elnevezett *myScaleSet* a a *myResourceGroup* erőforráscsoportot. Adja meg ezeket a neveket a saját értékeit:
 
 ```azurecli
@@ -68,7 +68,7 @@ az vmss list-instance-connection-info \
 ## <a name="change-the-capacity-of-a-scale-set"></a>A kapacitás, a méretezési módosítása
 A fenti parancsok bemutatta, a méretezési és a Virtuálisgép-példányok kapcsolatos információkat. Növeléséhez vagy csökkentéséhez tegye a következőket a méretezési csoportban lévő példányok, módosíthatja a kapacitást. A méretezési hoz létre vagy eltávolítja a virtuális gépek szükséges számát, majd konfigurálja a virtuális gépek alkalmazás forgalom fogadására.
 
-Már van egy méretezési csoportban lévő példányok száma, használja a [az vmss megjelenítése](/cli/azure/vmss#az_vmss_show) és a lekérdezés *sku.capacity*:
+A méretezési csoportban jelenleg futó példányok számának megtekintéséhez használja az [az vmss show](/cli/azure/vmss#az_vmss_show) parancsot, és állítsa be az *sku.capacity* lekérdezést:
 
 ```azurecli
 az vmss show \
@@ -78,7 +78,7 @@ az vmss show \
     --output table
 ```
 
-Ezután manuálisan növeléséhez vagy csökkentéséhez tegye a következőket a méretezési készletben rendelkező virtuális gépek [az vmss méretezési](/cli/azure/vmss#az_vmss_scale). Az alábbi példában a virtuális gépek számát beállítja a méretezés beállítása *5*:
+Ezt követően az [az vmss scale](/cli/azure/vmss#az_vmss_scale) parancs használatával manuálisan növelheti vagy csökkentheti a méretezési csoportban futó virtuális gépek számát. Az alábbi példában a virtuális gépek számát beállítja a méretezés beállítása *5*:
 
 ```azurecli
 az vmss scale \

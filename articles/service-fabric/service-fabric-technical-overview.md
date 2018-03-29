@@ -1,6 +1,6 @@
 ---
-title: "További tudnivalók az Azure Service Fabric terminológiája |} Microsoft Docs"
-description: "A Service Fabric terminológia áttekintése. Kulcs terminológia fogalmakat és szakkifejezéseket tartalmazza a dokumentáció a többi használt ismerteti."
+title: További tudnivalók az Azure Service Fabric terminológiája |} Microsoft Docs
+description: A Service Fabric terminológia áttekintése. Kulcs terminológia fogalmakat és szakkifejezéseket tartalmazza a dokumentáció a többi használt ismerteti.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/18/2017
+ms.date: 03/26/2018
 ms.author: ryanwi
-ms.openlocfilehash: dc7e536ce40bf95e1950e1e44844cd8fe26ea1a1
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: bd57b6344baef3bdf97c850564ae2d3afa9c811e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="service-fabric-terminology-overview"></a>A Service Fabric-terminológia áttekintése
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások csomagolását, üzembe helyezését és kezelését. Ez a cikk részletesen tudni, hogy a kifejezés, amely a dokumentáció a Service Fabric által használt terminológiával.
@@ -26,9 +26,9 @@ Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a sk
 A jelen szakaszban felsorolt fogalmakat is tárgyalja a következő videók a Microsoft Virtual Academy: <a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tbuZM46yC_5206218965">alapvető fogalmait</a>, <a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tlkI046yC_2906218965">tervezési idejű fogalmak</a>, és <a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=x7CVH56yC_1406218965">futásidejű fogalmak</a>.
 
 ## <a name="infrastructure-concepts"></a>Infrastruktúrával kapcsolatos fogalmak
-**Fürt**: virtuális vagy fizikai gépek, amelybe a mikroszolgáltatások telepíteni és felügyelni hálózathoz csatlakozó készlete.  Fürtök méretezhető, több ezer gép.
+**Fürt**: virtuális vagy fizikai gépek, amelybe a mikroszolgáltatások telepíteni és felügyelni hálózathoz csatlakozó készlete.  A fürtök több ezer gépre skálázhatók.
 
-**Csomópont**: egy számítógép vagy virtuális Gépet, amely egy fürt része nevezzük egy *csomópont*. Minden csomópont hozzá van rendelve egy csomópont neve (karakterlánc). Csomópontok, hogy jellemzőkkel elhelyezési tulajdonságok. Minden számítógép vagy virtuális gép rendelkezik egy automatikusan induló Windows szolgáltatás `FabricHost.exe`, rendszerindító után elindul, és elindítja a két végrehajtható fájlok: `Fabric.exe` és `FabricGateway.exe`. E két végrehajtható fájlokat a csomópont alkotják. Tesztelési forgatókönyvek, tárolhatja, több csomópont egyetlen számítógép vagy virtuális gép több példányára futtatásával `Fabric.exe` és `FabricGateway.exe`.
+**Csomópont**: egy számítógép vagy virtuális Gépet, amely egy fürt része nevezzük egy *csomópont*. Minden csomóponthoz hozzá van rendelve egy csomópontnév (egy karakterlánc). Csomópontok, hogy jellemzőkkel elhelyezési tulajdonságok. Minden számítógép vagy virtuális gép rendelkezik egy automatikusan induló Windows szolgáltatás `FabricHost.exe`, rendszerindító után elindul, és elindítja a két végrehajtható fájlok: `Fabric.exe` és `FabricGateway.exe`. E két végrehajtható fájlokat a csomópont alkotják. Tesztelési forgatókönyvek, tárolhatja, több csomópont egyetlen számítógép vagy virtuális gép több példányára futtatásával `Fabric.exe` és `FabricGateway.exe`.
 
 ## <a name="application-concepts"></a>Alkalmazás fogalmak
 **Az alkalmazástípus**: hozzárendeli egy gyűjteményhez található szolgáltatástípusok neve/verziója. Meg van határozva egy `ApplicationManifest.xml` fájlt, és a beágyazott egy alkalmazás csomag könyvtárában. A könyvtár majd másolja a Service Fabric-fürt lemezképtárolóhoz. Ezután az alkalmazás típusa a fürtön belül létrehozhat egy elnevezett alkalmazást.
@@ -89,12 +89,22 @@ Olvassa el a [alkalmazás üzembe helyezése](service-fabric-deploy-remove-appli
    - Alkalmazás és a fürt frissítéseket koordinálja.
    - Egyéb rendszerösszetevők kommunikál.
 
+**Javítsa ki a service Manager**: Ez egy választható-szolgáltatás, amely lehetővé teszi, hogy egy módon biztonságos, a fürt végrehajtandó javítási műveletek automatable és átlátható az. A javítási Managert használja:
+   - Az Azure karbantartást kijavítja [ezüst és arany tartóssági](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) Azure Service Fabric-fürtök.
+   - A javítási műveletek elvégzése [javítás Vezénylési alkalmazás](service-fabric-patch-orchestration-application.md)
+
 ## <a name="built-in-programming-models"></a>Beépített programozási modellek
-Nincsenek elérhető, hogy a Service Fabric szolgáltatásokat .NET-keretrendszer programozási modellek:
+Nincsenek elérhető, hogy a Service Fabric-szolgáltatásokat a .NET Framework és a Java programozási modellek:
 
 **Megbízható szolgáltatások**: az API állapotmentes és állapotalapú szolgáltatással létrehozásához. Állapotalapú szolgáltatások állapotukra megbízható gyűjteményekben, például egy könyvtár, illetve a várólista tárolja. Különböző kommunikációs verem, például a Web API és a Windows Communication Foundation (WCF) is csatlakoztatható.
 
 **Reliable Actors**: az API a virtuális szereplő programozási modell használatával az állapotmentes és állapotalapú objektumok létrehozásához. Ez a modell akkor hasznos, ha nagyszámú független egység számítási vagy állapotban van. Ez a modell kapcsolja alapú szálkezelési modellt használ, a legjobb behívó kód más szereplője vagy szolgáltatásokhoz, mert egy egyedi szereplő más bejövő kérelmek nem dolgozható fel a kimenő kérelmek befejezéséig elkerülése érdekében.
+
+A meglévő alkalmazások Service Fabric is futtathatja:
+
+**Tárolók**: a Service Fabric a Docker-tároló központi telepítését támogatja a Linux és Windows Server-tárolókra vonatkozóan a Windows Server 2016 működési feltételeit, támogatja a Hyper-V elkülönítési üzemmódját. A Service Fabric a [alkalmazásmodell](service-fabric-application-model.md), a tároló jelöli egy alkalmazásgazda, mely több szolgáltatásban replikák kerülnek. A Service Fabric tárolókkal futtathatja, és a forgatókönyv hasonló Vendég végrehajtható forgatókönyvet, ahol a becsomagolt belül egy tárolót egy meglévő alkalmazást. Emellett képes [tárolókba Service Fabric-szolgáltatások futtatásához](service-fabric-services-inside-containers.md) is.
+
+**Vendég végrehajtható fájlok**: Azure Service Fabric szolgáltatás kódok, például a Node.js, Java vagy C++ bármilyen típusú futtathat. A Service Fabric Vendég végrehajtható fájlok, amelyek állapotmentes szolgáltatások számít ilyen típusú szolgáltatások néven hivatkozik. A Vendég végrehajtható, a Service Fabric-fürt futtatására előny magas rendelkezésre állású, állapotfigyelés, alkalmazás-életciklus kezelésének, nagy sűrűségű, és a Felderíthetőségi.
 
 Olvassa el a [válassza ki a szolgáltatás programozási modellt](service-fabric-choose-framework.md) cikkében találja.
 

@@ -1,23 +1,23 @@
 ---
-title: "Alkalmazás lapján nem jelennek meg helyesen az alkalmazásproxy-alkalmazás |} Microsoft Docs"
-description: "Ha a lap nem megfelelően jelennek meg az alkalmazás Proxy alkalmazás útmutatást integrálva van az Azure AD"
+title: Alkalmazás lapján nem jelennek meg helyesen az alkalmazásproxy-alkalmazás |} Microsoft Docs
+description: Ha a lap nem megfelelően jelennek meg az alkalmazás Proxy alkalmazás útmutatást integrálva van az Azure AD
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
+ms.date: 03/23/2018
 ms.author: asteen
-ms.openlocfilehash: 017267620a1bcd6242bceb395966cc4190677c1a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d187b545a486be28fc80e6baf8e58079ff94ec5e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="application-page-does-not-display-correctly-for-an-application-proxy-application"></a>Alkalmazás lapján nem jelennek meg helyesen az alkalmazásproxy-alkalmazáshoz
 
@@ -34,7 +34,7 @@ Ebben az esetben, például azt feltételezik, miután közzétette költségek 
 
 Ha nincs lehetőség az ugyanazon alkalmazásban minden erőforrások közzétételét, módosítania több alkalmazások közzététele és a hivatkozások között.
 
-Ha igen, azt javasoljuk, a [egyéni tartományok](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains) megoldás. Azonban az ehhez a megoldáshoz szükségesek, hogy Ön a tulajdonosa a tanúsítványt a tartomány és az alkalmazások teljes tartományneveit (FQDN) használja. Egyéb lehetőségek, tekintse meg a [hivatkozások dokumentáció hibaelhárítása](https://microsoft-my.sharepoint.com/personal/harshja_microsoft_com/_layouts/15/guestaccess.aspx?guestaccesstoken=IxuG3mFVbnPWI3Yn4Qi7wCNi8VIfHS5mwPt5quh8DMw%3d&docid=2_14558cd6ddea34c1c9887dc640feb5831&rev=1).
+Ha igen, azt javasoljuk, a [egyéni tartományok](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains) megoldás. Azonban az ehhez a megoldáshoz szükségesek, hogy Ön a tulajdonosa a tanúsítványt a tartomány és az alkalmazások teljes tartományneveit (FQDN) használja. Egyéb lehetőségek, tekintse meg a [hivatkozások dokumentáció hibaelhárítása](application-proxy-page-links-broken-problem.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Az Azure AD-alkalmazásproxy használó alkalmazások közzététele](application-proxy-publish-azure-portal.md)

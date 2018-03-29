@@ -1,10 +1,10 @@
 ---
-title: "Megosztott hozzáférésű jogosultságkódokat (SAS) az Azure Storage használata |} Microsoft Docs"
-description: "Ismerkedjen meg az Azure Storage-erőforrások, például a BLOB, üzenetsorok, táblák és fájlok hozzáférést biztosíthat a közös hozzáférésű jogosultságkód (SAS) segítségével."
+title: Megosztott hozzáférésű jogosultságkódokat (SAS) az Azure Storage használata |} Microsoft Docs
+description: Ismerkedjen meg az Azure Storage-erőforrások, például a BLOB, üzenetsorok, táblák és fájlok hozzáférést biztosíthat a közös hozzáférésű jogosultságkód (SAS) segítségével.
 services: storage
-documentationcenter: 
-author: tamram
-manager: timlt
+documentationcenter: ''
+author: craigshoemaker
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 46fd99d7-36b3-4283-81e3-f214b29f1152
 ms.service: storage
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/18/2017
-ms.author: tamram
-ms.openlocfilehash: 32e92e6ffc376d27297810596691f0371770e86d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: cshoe
+ms.openlocfilehash: d3f8b3261f9e2e86dbcaa41b92111545abeffe54
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="using-shared-access-signatures-sas"></a>Közös hozzáférésű jogosultságkód (SAS) használatával
 
@@ -27,7 +27,7 @@ A közös hozzáférésű jogosultságkód (SAS) biztosít jogokat a tárfiókba
 Kód itt bemutatott ruházzák SAS használatával tekintse meg a [Ismerkedés az Azure Blob Storage a .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/) és más elérhető mintákat a [Azure mintakódok](https://azure.microsoft.com/documentation/samples/?service=storage) könyvtár. A mintaalkalmazások letöltése és futtathatja őket, vagy keresse meg a kódot a Githubon.
 
 ## <a name="what-is-a-shared-access-signature"></a>Mi az a közös hozzáférésű jogosultságkód?
-A közös hozzáférésű jogosultságkód a tárfiókban lévő erőforrások delegált hozzáférést biztosít. SAS-kód, az ügyfelek hozzáférést biztosíthat erőforrásokhoz a tárfiókban lévő megosztása a kulcsait nélkül. Ez az a közös hozzáférésű jogosultságkód a lényeg az alkalmazásokban – SAS módja a biztonságos tároló-erőforrások megosztása a kulcsait veszélyeztetése nélkül.
+A közös hozzáférésű jogosultságkód a tárfiókban lévő erőforrások delegált hozzáférést biztosít. SAS-kód, az ügyfelek hozzáférést biztosíthat erőforrásokhoz a tárfiókban lévő megosztása a kulcsait nélkül. Ez a lényege a közös hozzáférésű jogosultságkód alkalmazásokban való használatának – az SAS a fiókkulcsok veszélyeztetése nélkül teszi lehetővé a tárolási erőforrások megosztását.
 
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 
@@ -62,7 +62,7 @@ Ezen felül kell hitelesítenie a forrásobjektumot, a másolási műveletek biz
 ## <a name="types-of-shared-access-signatures"></a>Közös hozzáférésű jogosultságkód típusai
 Közös hozzáférésű jogosultságkód két típusa hozható létre:
 
-* **SAS-szolgáltatás.** A szolgáltatásalapú SAS csak egy társzolgáltatás (a Blob, a Queue, a Table vagy a File szolgáltatás) egy erőforrásához biztosít hozzáférést. Lásd: [hozhat létre, egy szolgáltatás SAS](https://msdn.microsoft.com/library/dn140255.aspx) és [szolgáltatás SAS példák](https://msdn.microsoft.com/library/dn140256.aspx) részletes információ a SAS-jogkivonat létrehozásával.
+* **Service SAS.** A szolgáltatásalapú SAS csak egy társzolgáltatás (a Blob, a Queue, a Table vagy a File szolgáltatás) egy erőforrásához biztosít hozzáférést. Lásd: [hozhat létre, egy szolgáltatás SAS](https://msdn.microsoft.com/library/dn140255.aspx) és [szolgáltatás SAS példák](https://msdn.microsoft.com/library/dn140256.aspx) részletes információ a SAS-jogkivonat létrehozásával.
 * **SAS-fiók.** A fiók SAS delegáltak erőforrások elérését egy vagy több, a tárolási szolgáltatások. A biztonsági Társítások szolgáltatáson keresztül elérhető műveleteket is elérhetők SAS fiók használatával. Emellett SAS fiókkal is adhat hozzáférést egy adott szolgáltatáshoz, például a vonatkozó műveletek **Get vagy Set szolgáltatástulajdonságok** és **első szolgáltatás-statisztikák**. A blobtárolók, táblák, üzenetsorok és fájlmegosztások olvasási, írási és törlési műveleteihez is hozzáférést biztosíthat, amelyeket a szolgáltatásalapú SAS nem engedélyez. Lásd: [hozhat létre egy fiókot SAS](https://msdn.microsoft.com/library/mt584140.aspx) hozhat létre, a fiók SAS-jogkivonat részletesebb információt.
 
 ## <a name="how-a-shared-access-signature-works"></a>A közös hozzáférésű jogosultságkód működése
@@ -85,7 +85,7 @@ A fiók SAS és a SAS-tokenje néhány általános paramétereket tartalmaz, és
 * **Kezdési időpontja.** Ez az az idő, ahol a biztonsági Társítások hatályba lép. A közös hozzáférésű jogosultságkód kezdési időpontja nem kötelező megadni. Ha a kezdő időpont nincs megadva, a biztonsági Társítások azonnal hatékony. A kezdési időpontot kell megadni az UTC (egyezményes világidő), egy különös UTC jelzéssel ("Z"), például `1994-11-05T13:15:30Z`.
 * **Lejárati idő.** Ez az az idő, amely után a biztonsági Társítások már nem érvényes. A bevált gyakorlat része, hogy adja meg a lejárat időpontjának tartozó SAS korlátozására, vagy rendelje hozzá azt a tárolt házirend. A lejárati időpont kell megadni az UTC (egyezményes világidő), egy különös UTC jelzéssel ("Z"), például `1994-11-05T13:15:30Z` (további információk alatt).
 * **Engedélyek.** Az engedélyeket a biztonsági Társítások megadott azt jelzi, hogy az ügyfél a tárolási erőforrások a SAS használatával szemben hajthat végre műveleteket. Elérhető engedélyek a SAS fiók és a szolgáltatásalapú SAS térnek el egymástól.
-* **IP-CÍMET.** Egy nem kötelező paraméter, amely megadja egy IP-címet vagy egy Azure-on kívüli az IP-címek (című szakaszában talál [útválasztás munkamenet-konfiguráció állapota](../../expressroute/expressroute-workflows.md#routing-session-configuration-state) az Express Route), amelyből kérelmek fogadására.
+* **IP.** Egy nem kötelező paraméter, amely megadja egy IP-címet vagy egy Azure-on kívüli az IP-címek (című szakaszában talál [útválasztás munkamenet-konfiguráció állapota](../../expressroute/expressroute-workflows.md#routing-session-configuration-state) az Express Route), amelyből kérelmek fogadására.
 * **Protokoll.** Egy nem kötelező paraméter, amely meghatározza a protokoll érkező kérelmek végrehajtására megengedett. Lehetséges értékei a HTTPS és a HTTP (`https,http`), amely a az alapértelmezett érték, vagy HTTPS csak (`https`). Vegye figyelembe, hogy HTTP csak nem megengedett értéket.
 * **Aláírás.** Az aláírás a többi paraméter megadott rész jogkivonatot, és titkosítja, majd értékekből összeállított. A biztonsági Társítások hitelesítésére szolgál.
 
@@ -113,12 +113,12 @@ A fiók SAS és a SAS-tokenje néhány általános paramétereket tartalmaz, és
 https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D
 ```
 
-| Név | SAS részére | Leírás |
+| Name (Név) | SAS részére | Leírás |
 | --- | --- | --- |
-| A BLOB URI |`https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt` |A blob címe. Vegye figyelembe, hogy a HTTPS-kapcsolaton keresztül erősen ajánlott. |
+| Blob URI |`https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt` |A blob címe. Vegye figyelembe, hogy a HTTPS-kapcsolaton keresztül erősen ajánlott. |
 | Storage services, verziószám: |`sv=2015-04-05` |A tárolási szolgáltatások 2012-02-12-es és újabb, ez a paraméter azt jelzi, melyik verziót kell használni. |
-| Kezdési idő |`st=2015-04-29T22%3A18%3A26Z` |UTC idő szerint megadva. Ha azt szeretné, hogy a biztonsági Társítások azonnal érvényes legyen, hagyja ki a kezdési időpontot. |
-| Lejárati idő |`se=2015-04-30T02%3A23%3A26Z` |UTC idő szerint megadva. |
+| Kezdés időpontja |`st=2015-04-29T22%3A18%3A26Z` |UTC idő szerint megadva. Ha azt szeretné, hogy a biztonsági Társítások azonnal érvényes legyen, hagyja ki a kezdési időpontot. |
+| Lejárat időpontja |`se=2015-04-30T02%3A23%3A26Z` |UTC idő szerint megadva. |
 | Erőforrás |`sr=b` |Az erőforrás egy blob. |
 | Engedélyek |`sp=rw` |A biztonsági Társítások engedélyekre Read (r) és írjunk (w). |
 | IP-címtartomány |`sip=168.1.5.60-168.1.5.70` |Az az IP-címek tartománya, amelyből a kérelem fogja elfogadni. |
@@ -133,7 +133,7 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&s
 https://myaccount.blob.core.windows.net/?restype=service&comp=properties&sv=2015-04-05&ss=bf&srt=s&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=F%6GRVAZ5Cdj2Pw4tgU7IlSTkWgn7bUkkAg8P6HESXwmf%4B
 ```
 
-| Név | SAS részére | Leírás |
+| Name (Név) | SAS részére | Leírás |
 | --- | --- | --- |
 | Erőforrás URI azonosítója |`https://myaccount.blob.core.windows.net/?restype=service&comp=properties` |A Blob-szolgáltatásvégpont, a szolgáltatás Tulajdonságok (Ha hívása GET) vagy (készlettel meghívásakor) szolgáltatási tulajdonságainak beállítása paraméterekkel. |
 | Szolgáltatások |`ss=bf` |A Blob és a fájl szolgáltatásra vonatkozik, a biztonsági Társítások |
@@ -425,7 +425,7 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
 ## <a name="conclusion"></a>Összegzés
 Korlátozott engedélyekkel a tárfiókhoz biztosít az ügyfelek nem rendelkezhet a fiókkulcs közös hozzáférésű jogosultságkód hasznosak. Ilyen a biztonsági modellt az Azure Storage használó alkalmazások fontos részei. Ha az itt felsorolt ajánlott eljárást követi, SAS segítségével erőforrásokhoz való hozzáférés nagyobb rugalmasságot biztosítanak a tárfiókban lévő az alkalmazás a biztonság csökkenése nélkül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Közös hozzáférésű Jogosultságkód, 2. rész: Létrehozása és SAS-kód használata a Blob-tároló](../blobs/storage-dotnet-shared-access-signature-part-2.md)
 * [Tárolók és blobok névtelen olvasási hozzáférés kezelése](../blobs/storage-manage-access-to-resources.md)
 * [Hozzáférés delegálása közös hozzáférésű jogosultságkód használatával](http://msdn.microsoft.com/library/azure/ee395415.aspx)

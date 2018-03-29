@@ -1,8 +1,8 @@
 ---
-title: "Azure SQL eléréséhez használja a Windows virtuális gép MSI"
-description: "Ez az oktatóanyag végigvezeti az Azure SQL eléréséhez használt egy Windows virtuális gép felügyelt szolgáltatás identitás (MSI)."
+title: Azure SQL eléréséhez használja a Windows virtuális gép MSI
+description: Ez az oktatóanyag végigvezeti az Azure SQL eléréséhez használt egy Windows virtuális gép felügyelt szolgáltatás identitás (MSI).
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: skwan
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: b5bab684a7b188d1dc2e1f1f29a772aab8955e43
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1ac3c341f7ffc1911fc063202c043351e412843f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-sql"></a>Egy Windows virtuális gép felügyelt szolgáltatás identitás (MSI) Azure SQL eléréséhez használja
 
@@ -39,7 +39,7 @@ Ez az oktatóanyag bemutatja, hogyan felügyelt szolgáltatás identitásának (
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
+Jelentkezzen be az Azure portálon, a [ https://portal.azure.com ](https://portal.azure.com).
 
 ## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Windows virtuális gép egy új erőforráscsoport létrehozása
 
@@ -137,7 +137,7 @@ b83305de-f496-49ca-9427-e77512f6cc64 0b67a6d6-6090-4ab4-b423-d6edda8e5d9f DevTes
 
 ### <a name="enable-azure-ad-authentication-for-the-sql-server"></a>Az SQL Server az Azure AD-alapú hitelesítés engedélyezése
 
-Most, hogy létrehozta a csoport és a virtuális gép MSI hozzáadva a tagsághoz, [konfigurálása az Azure AD-alapú hitelesítés, az SQL Server](~/articles/sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-server) az alábbi lépéseket követve:
+Most, hogy létrehozta a csoport és a virtuális gép MSI hozzáadva a tagsághoz, [konfigurálása az Azure AD-alapú hitelesítés, az SQL Server](~/articles/sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance) az alábbi lépéseket követve:
 
 1.  Válassza ki az Azure-portálon **SQL Server-kiszolgálók** a bal oldali navigációs sávon.
 2.  Kattintson az SQL server engedélyezni kell az Azure AD-alapú hitelesítés.

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/19/2018
 ms.author: dekapur;srrengar
-ms.openlocfilehash: f8159d8637967c3297c886ec79a002f0765047e4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ede128d23ca73dc46f2d4dc4b1dd4b1f83a2bc3f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Esemény összesítésére és az adatgyűjtést, a Windows Azure diagnosztikai
 > [!div class="op_single_selector"]
@@ -169,6 +169,18 @@ Ezt követően frissítse a `VirtualMachineProfile` a template.json fájl a köv
 ```
 
 Lásd a template.json fájl módosítása, után közzé a Resource Manager-sablon. Ha a sablon exportált, a sablon a deploy.ps1 fájlt futtatja addig. Miután telepít, győződjön meg arról, hogy **ProvisioningState** van **sikeres**.
+
+> [!TIP]
+> Tároló üzembe helyezése a fürthöz fog, ha engedélyezi a ÜVEGVATTA hozzáadásával a docker statisztikák átvételéhez a **WadCfg > DiagnosticMonitorConfiguration** szakasz.
+>
+>```json
+>"DockerSources": {
+>    "Stats": {
+>        "enabled": true,
+>        "sampleRate": "PT1M"
+>    }
+>},
+>```
 
 ## <a name="log-collection-configurations"></a>Napló gyűjtemény konfigurációk
 A további csatornák érhetők el naplók is gyűjtemény, Íme néhány a leggyakrabban használt használható konfigurációkat részletezik Azure-ban futó fürtök a sablonban.

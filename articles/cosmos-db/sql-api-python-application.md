@@ -1,7 +1,7 @@
 ---
-title: "Python Flask-webalkalmazási oktatóanyag az Azure Cosmos DB-hez | Microsoft Docs"
-description: "Egy adatbázis-oktatóanyag áttekintésével megtudhatja, hogyan tárolhatja és érheti el az Azure-ban tárolt Python Flask-webalkalmazások adatait az Azure Cosmos DB használatával. Alkalmazásfejlesztési megoldások keresése."
-keywords: "Alkalmazásfejlesztés, python flask, python-webalkalmazás, python-webfejlesztés"
+title: Python Flask-webalkalmazási oktatóanyag az Azure Cosmos DB-hez | Microsoft Docs
+description: Egy adatbázis-oktatóanyag áttekintésével megtudhatja, hogyan tárolhatja és érheti el az Azure-ban tárolt Python Flask-webalkalmazások adatait az Azure Cosmos DB használatával. Alkalmazásfejlesztési megoldások keresése.
+keywords: Alkalmazásfejlesztés, python flask, python-webalkalmazás, python-webfejlesztés
 services: cosmos-db
 documentationcenter: python
 author: mimig1
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 02/23/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2150b91b5c8dd0326893497fe963fbe1d7cc59bd
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 333d34e2c7b07b1ec09d1375d4d05075ed7dde0d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="build-a-python-flask-web-application-using-azure-cosmos-db"></a>Python Flask-webalkalmazás létrehozása az Azure Cosmos DB használatával
 > [!div class="op_single_selector"]
@@ -30,8 +30,6 @@ ms.lasthandoff: 02/28/2018
 > * [Python](sql-api-python-application.md)
 > 
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Az oktatóanyag bemutatja, hogyan használható az Azure Cosmos DB tárolására és érheti el egy Azure App Service szolgáltatásban tárolt Python Flask-webalkalmazások adatait. Ez az oktatóanyag feltételezi, hogy rendelkezik némi tapasztalattal a Python és az Azure-webhelyek használatát.
 

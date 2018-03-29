@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Active Directory tartományi szolgáltatások: RHEL virtuális gép csatlakoztatása felügyelt tartományhoz |} Microsoft Docs"
-description: "Red Hat Enterprise Linux virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások"
+title: 'Az Azure Active Directory tartományi szolgáltatások: RHEL virtuális gép csatlakoztatása felügyelt tartományhoz |} Microsoft Docs'
+description: Red Hat Enterprise Linux virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2017
 ms.author: maheshu
-ms.openlocfilehash: 9046bdb5bd8ff21429c951cbe7120334bd000621
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: b278f5c4c8c87590205aca13a50a82fe8712d909
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>Red Hat Enterprise Linux 7 virtuális gépek csatlakoztatása felügyelt tartományokhoz
 Ez a cikk bemutatja, hogyan Red Hat Enterprise Linux (RHEL) 7 virtuális gép csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz.
@@ -133,7 +133,7 @@ Győződjön meg arról, hogy a gép sikeresen csatlakoztatva lett a felügyelt 
 
 
 ## <a name="troubleshooting-domain-join"></a>Hibaelhárítás a tartományhoz való csatlakozást
-Tekintse meg a [hibaelhárítás tartományhoz való csatlakozást](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshooting-domain-join) cikk.
+Tekintse meg a [hibaelhárítás tartományhoz való csatlakozást](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshoot-joining-a-domain) cikk.
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 * [Azure AD tartományi szolgáltatások – első lépések útmutató](active-directory-ds-getting-started.md)

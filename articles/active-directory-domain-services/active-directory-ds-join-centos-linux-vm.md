@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Active Directory tartományi szolgáltatások: A CentOS virtuális gép csatlakoztatása felügyelt tartományhoz |} Microsoft Docs"
-description: "A CentOS Linux virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások"
+title: 'Az Azure Active Directory tartományi szolgáltatások: A CentOS virtuális gép csatlakoztatása felügyelt tartományhoz |} Microsoft Docs'
+description: A CentOS Linux virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: maheshu
-ms.openlocfilehash: 9f3b6425f3c13080985fb168f46ea1f6be5d18ee
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f7095e82605d12221ba7beb0c48fd3eda75a2e7b
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-a-managed-domain"></a>A CentOS Linux virtuális gép csatlakoztatása felügyelt tartományhoz
 Ez a cikk bemutatja, hogyan CentOS Linux virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz az Azure-ban.
@@ -133,7 +133,7 @@ Győződjön meg arról, hogy a gép sikeresen csatlakoztatva lett a felügyelt 
 
 
 ## <a name="troubleshooting-domain-join"></a>Hibaelhárítás a tartományhoz való csatlakozást
-Tekintse meg a [hibaelhárítás tartományhoz való csatlakozást](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshooting-domain-join) cikk.
+Tekintse meg a [hibaelhárítás tartományhoz való csatlakozást](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshoot-joining-a-domain) cikk.
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 * [Azure AD tartományi szolgáltatások – első lépések útmutató](active-directory-ds-getting-started.md)

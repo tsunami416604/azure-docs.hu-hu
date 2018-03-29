@@ -1,19 +1,19 @@
 ---
-title: "Visual Studio Code használatát C# modul Azure IoT oldala |} Microsoft Docs"
-description: "A C# modul Visual Studio Code Azure IoT szegélyt a hibakereséshez."
+title: Visual Studio Code használatát C# modul Azure IoT oldala |} Microsoft Docs
+description: A C# modul Visual Studio Code Azure IoT szegélyt a hibakereséshez.
 services: iot-edge
-keywords: 
+keywords: ''
 author: shizn
 manager: timlt
 ms.author: xshi
-ms.date: 12/06/2017
+ms.date: 03/18/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 5ed517cf8d70cd279a55b79ad448709116cf511b
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: c2a1acd2c249bdbc92119bc92f055b095f318f00
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-visual-studio-code-to-debug-a-c-module-with-azure-iot-edge"></a>Visual Studio Code használatát C# modul Azure IoT oldala
 Ez a cikk részletes utasításokat biztosít [Visual Studio Code](https://code.visualstudio.com/) hibakeresése az Azure IoT peremhálózati modulok fő fejlesztési eszközként.
@@ -22,39 +22,33 @@ Ez a cikk részletes utasításokat biztosít [Visual Studio Code](https://code.
 Ez az oktatóanyag feltételezi, hogy egy számítógép vagy a fejlesztői számítógépén, a Windows vagy Linux rendszerű virtuális gép használ. Az IoT-peremhálózati eszköz egy másik fizikai eszköz lehet, vagy az IoT-peremhálózati eszköz szimulálhatja a fejlesztési számítógépén.
 
 Ez az útmutató megkezdése előtt hajtsa végre a következő oktatóanyagot:
-- [Használja a Visual Studio Code fejlesztésére C# modul Azure IoT oldala](how-to-vscode-develop-csharp-module.md)
+- [Az IoT peremhálózati megoldás több modulok a Visual Studio Code fejlesztése](tutorial-multiple-modules-in-vscode.md)
 
 Az előző oktatóanyag befejezése után készen áll a következő elemeket kell:
-- A fejlesztői gépen futó helyi Docker beállításjegyzékbeli. Ez a prototípusának és tesztelési célokra.
-- A `Program.cs` fájl, a legújabb szűrő modul kóddal.
-- Egy frissített `deployment.json` fájl az érzékelő és a szűrő modulban.
-- Egy IoT peremhálózati futtatókörnyezetet, amely a fejlesztési számítógépen futtatja.
+- A fejlesztői gépen futó helyi Docker beállításjegyzékbeli. Helyi Docker-beállításjegyzék prototípus és tesztelési célú használata javasolt. A tároló regisztrációs frissítheti a `module.json` minden modul fájlban.
+- Az IoT peremhálózati megoldás projekt munkaterület C# modul almappája azt.
+- A `Program.cs` fájl, a legújabb modul kóddal.
+- Egy peremhálózati futtatókörnyezetet fut a fejlesztési számítógépén.
 
-## <a name="build-your-iot-edge-module-for-debugging"></a>A hibakeresési IoT peremhálózati modul létrehozása
-1. A hibakeresés, használjon **dockerfile.debug** építse újra a Docker-lemezképet, és telepítse újra az IoT-peremhálózati megoldás. Visual Studio Code Explorerben válassza ki a Docker mappára a megnyitásához. Válassza ki a **linux-x64** mappát, kattintson a jobb gombbal **Dockerfile.debug**, és válassza ki **Build IoT peremhálózati modul Docker kép**.
+## <a name="build-your-iot-edge-c-module-for-debugging"></a>Az IoT peremhálózati C# modul hibakeresési összeállítása
+1. A hibakeresés, kell használnia a **Dockerfile.amd64.debug** építse újra a docker-lemezképet, és telepítse újra a peremhálózati megoldás. A Visual STUDIO Code Intézőben navigáljon `deployment.template.json` fájlt. A függvény kép URL-CÍMÉT frissíteni hozzáadásával egy `.debug` a végén.
 
-    ![Képernyőfelvétel a Visual STUDIO Code Explorer](./media/how-to-debug-csharp-module/build-debug-image.png)
+2. A megoldás újbóli létrehozása. A Visual STUDIO Code parancs paletta, írja be, és futtassa a parancsot **peremhálózati: Build IoT peremhálózati megoldás**.
 
-3. Az a **Mappaválasztás** ablak, írja be vagy keresse meg a **./bin/Debug/netcoreapp2.0/publish**. Válassza ki **EXE_DIR mappában válassza ki**.
-4. Az előugró szövegmezőben a Visual STUDIO Code ablak tetején adja meg a lemezkép nevét. Például: `<your container registry address>/filtermodule:latest`. Ha a helyi beállításjegyzékben telepít, meg kell: `localhost:5000/filtermodule:latest`.
-5. A Docker-tárház küldje le a lemezképet. Használja a **peremhálózati: leküldéses IoT peremhálózati modul Docker kép** parancsot, és az előugró mezőben a Visual STUDIO Code ablak tetején adja meg a kép URL-címe. A kép URL-CÍMÉRE az előző lépésben használt használja.
-6. Újrahasználhatja a `deployment.json` újratelepíteni. Írja be a parancs paletta, és válassza ki **peremhálózati: Indítsa újra a peremhálózati** a a hibakeresési verzió fut modulja segítségével.
+3. Az Azure IoT Hub-eszközöknek Explorerben (megoldáskezelőben) kattintson a jobb gombbal egy IoT peremhálózati eszköz azonosítója, majd válasszon **peremhálózati eszköz a központi telepítés létrehozásához**. Válassza ki a `deployment.json` alatt `config` mappát. Láthatja majd a telepítés sikeres létrehozása a Visual STUDIO Code azonosító integrált telepítés terminál.
 
-## <a name="start-debugging-in-vs-code"></a>Indítsa el a Visual STUDIO Code-hibakeresés
-1. Ugrás a Visual STUDIO Code hibakeresési ablakban. Nyomja le az **F5**, és válassza ki **IoT Edge(.NET Core)**.
+> [!NOTE]
+> Ellenőrizheti, hogy a tároló állapota a Visual STUDIO Code Docker explorer, vagy futtassa a `docker images` a Terminálszolgáltatások parancsot.
 
-    ![Képernyőfelvétel a Visual STUDIO kód hibakeresési ablak](./media/how-to-debug-csharp-module/f5-debug-option.png)
+## <a name="start-debugging-c-module-in-vs-code"></a>Indítsa el a Visual STUDIO Code modul C#-hibakeresés
+1. Visual STUDIO Code tartja a hibakeresés található konfigurációs információk egy `launch.json` található fájl egy `.vscode` mappa a munkaterületen. Ez `launch.json` fájl hozott létre egy új IoT peremhálózati megoldás létrehozásakor. És frissíti az új modul, amely támogatja a hibakeresés hozzáadásakor. Nyissa meg a hibakeresési nézetet, és válassza ki a megfelelő hibakeresési konfigurációs fájlt.
+    ![Válassza ki a hibakeresési konfiguráció](./media/how-to-debug-csharp-function/select-debug-configuration.jpg)
 
-2. A `launch.json`, keresse meg a **Debug IoT peremhálózati egyéni modul (.NET Core)** szakasz. A **pipeArgs**, töltse ki a `<container_name>`. Meg kell `filtermodule` ebben az oktatóanyagban.
+2. Nyissa meg a `program.cs` címet. Ebben a fájlban adja hozzá a töréspont.
 
-    ![Képernyőfelvétel a Visual STUDIO Code launch.json](./media/how-to-debug-csharp-module/add-container-name.png)
+3. Kattintson a Start Debugging gombra vagy nyomja le az **F5**, és válassza ki a csatlakoztatni kívánt folyamatot.
 
-3. Keresse meg a **Program.cs**. A Töréspont a `method static async Task<MessageResponse> FilterModule(Message message, object userContext)`.
-4. Nyomja le az **F5** újra, és válassza ki a csatlakoztatni kívánt folyamatot. Ebben az oktatóanyagban a folyamat neve legyen `FilterModule.dll`.
-
-    ![Képernyőfelvétel a Visual STUDIO kód hibakeresési ablak](./media/how-to-debug-csharp-module/attach-process.png)
-
-5. A Visual STUDIO Code hibakeresési ablakban megtekintheti a változók a bal oldali panelen. 
+4. A Visual STUDIO Code hibakeresési nézet a változók a bal oldali panelen látható. 
 
 > [!NOTE]
 > Az előző példa bemutatja, hogyan tárolók .NET Core IoT peremhálózati modulok hibakereséséhez. Hibakeresési alapul a `Dockerfile.debug`, mely tartalmazza (a .NET Core parancssori hibakereső) VSDBG a tároló lemezkép összeállítása során. A C# modulok hibakeresés befejezése után ajánlott közvetlenül a vagy testreszabása `Dockerfile` VSDBG, éles használatra kész IoT peremhálózati modulok nélkül.
@@ -64,4 +58,5 @@ Az előző oktatóanyag befejezése után készen áll a következő elemeket ke
 Ebben az oktatóanyagban egy IoT-Edge-modul létrehozása, és telepítve lett a hibakereséshez. A Visual STUDIO Code hibakeresését azt fut. Más esetekben Azure IoT peremhálózati Visual STUDIO Code fejlesztésekor, című témakörben olvashat: 
 
 > [!div class="nextstepaction"]
-> [Fejlesztésekor és telepítésekor a Visual STUDIO Code modul C#](how-to-vscode-develop-csharp-module.md)
+> [Az IoT peremhálózati megoldás több modulok a Visual Studio Code fejlesztése](tutorial-multiple-modules-in-vscode.md)
+

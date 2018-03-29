@@ -1,19 +1,19 @@
 ---
-title: "Gyors üzembe helyezés Azure IoT peremhálózati + Windows |} Microsoft Docs"
-description: "Próbálja ki Azure IoT peremhálózati analytics egy szimulált peremhálózati eszköz futtatásával"
+title: Gyors üzembe helyezés Azure IoT peremhálózati + Windows |} Microsoft Docs
+description: Próbálja ki Azure IoT peremhálózati analytics egy szimulált peremhálózati eszköz futtatásával
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 16d9431ec0a0425c8433557fe384864bb599bf1f
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: f9ad01d3194ee0f8be4c3b4321c83c4bb15ea55c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Gyors üzembe helyezés: Az első IoT peremhálózati modul az Azure-portálon a Windows rendszerű eszközre központi telepítése – előzetes
 
@@ -79,7 +79,7 @@ Az IoT-Edge futásidejű minden IoT peremhálózati eszközön van telepítve. E
 A futtatókörnyezet konfigurálása az IoT-peremhálózati eszköz kapcsolati karakterlánccal előző szakaszából.
 
 ```cmd
-iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
+iotedgectl setup --connection-string "{device connection string}" --nopass
 ```
 
 Indítsa el a futtatókörnyezetben.

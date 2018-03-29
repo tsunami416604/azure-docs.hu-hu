@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Service Fabric állapotalapú szolgáltatások megbízható gyűjteményeinek bemutatása |} Microsoft Docs"
-description: "A Service Fabric állapotalapú szolgáltatások adja meg a megbízható gyűjteményeket, amelyek lehetővé teszik a magas rendelkezésre álló, méretezhető és alacsony késésű felhőalapú alkalmazásokhoz írni."
+title: Az Azure Service Fabric állapotalapú szolgáltatások megbízható gyűjteményeinek bemutatása |} Microsoft Docs
+description: A Service Fabric állapotalapú szolgáltatások adja meg a megbízható gyűjteményeket, amelyek lehetővé teszik a magas rendelkezésre álló, méretezhető és alacsony késésű felhőalapú alkalmazásokhoz írni.
 services: service-fabric
 documentationcenter: .net
 author: mcoskun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/6/2017
 ms.author: mcoskun
-ms.openlocfilehash: 0e89df79d2ff619343f914ce3a5ffe87b7bf25de
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: c6425f7642d9dbecafc6779184a2a5b0cc1a2cab
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Az Azure Service Fabric állapotalapú szolgáltatások megbízható gyűjteményeinek bemutatása
 Megbízható gyűjtemények lehetővé teszik a magas rendelkezésre álló, méretezhető és alacsony késésű felhőalapú alkalmazások írását, mintha egyetlen számítógép alkalmazások írása. Az osztályok a **Microsoft.ServiceFabric.Data.Collections** névtér kínálnak gyűjteményeket, amelyek automatikusan a állapot magas rendelkezésre állású legyen. A fejlesztők csak a megbízható gyűjtemény API-k programot, és lehetővé teszik a replikált és helyi állapot kezelése megbízható gyűjteményeket kell.
@@ -44,7 +44,7 @@ Gyengébb konzisztencia eléréséhez alkalmazások is igazolja vissza az ügyf�
 A megbízható gyűjtemények API-jainak egy alakulása egyidejű gyűjtemények API-k (megtalálható a **System.Collections.Concurrent** névtér):
 
 * Aszinkron: Ad vissza egy feladatot, mivel a műveletek replikálásra, megőrzött eltérően egyidejű gyűjtemények.
-* Nincs kimeneti paramétere: használ `ConditionalValue<T>` adhatja vissza a logikai és a kimenő paraméterek ahelyett, hogy egy érték. `ConditionalValue<T>`mint `Nullable<T>` , de nincs szükség a Struct típusnak kell T.
+* Nincs kimeneti paramétere: használ `ConditionalValue<T>` adhatja vissza a logikai és a kimenő paraméterek ahelyett, hogy egy érték. `ConditionalValue<T>` mint `Nullable<T>` , de nincs szükség a Struct típusnak kell T.
 * Tranzakciók: Egy transaction objektumnak használatával lehetővé teszik a felhasználónak a tranzakción belül több megbízható gyűjtemény műveleteit.
 
 Napjainkban **Microsoft.ServiceFabric.Data.Collections** három gyűjteményeket tartalmazza:
@@ -53,11 +53,10 @@ Napjainkban **Microsoft.ServiceFabric.Data.Collections** három gyűjteményeket
 * [Megbízható várólista](https://msdn.microsoft.com/library/azure/dn971527.aspx): a replikált tranzakciós és aszinkron szigorú érkezési sorrendben történő (FIFO) tárolását jelöli. Hasonló **ConcurrentQueue**, értéke lehet bármely típusú.
 * [Megbízható egyidejű várólista](service-fabric-reliable-services-reliable-concurrent-queue.md): nagy átviteli sebesség eléréséhez várólista rendelési replikált tranzakciós és aszinkron legkedvezőbb jelöli. Hasonló a **ConcurrentQueue**, értéke lehet bármely típusú.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Megbízható gyűjtemény irányelvek és javaslatok](service-fabric-reliable-services-reliable-collections-guidelines.md)
 * [A Reliable Collections használata](service-fabric-work-with-reliable-collections.md)
 * [Tranzakciók és a zárolásokat](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
-* [Megbízható állapot Manager és a gyűjtemény belső funkciói](service-fabric-reliable-services-reliable-collections-internals.md)
 * Adatok kezelése
   * [Biztonsági mentés és visszaállítás](service-fabric-reliable-services-backup-restore.md)
   * [Értesítések](service-fabric-reliable-services-notifications.md)

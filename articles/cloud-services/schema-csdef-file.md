@@ -1,23 +1,23 @@
 ---
-title: "Azure Cloud Services – Definition séma (.csdef fájl) |} Microsoft Docs"
-ms.custom: 
+title: Azure Cloud Services – Definition séma (.csdef fájl) |} Microsoft Docs
+ms.custom: ''
 ms.date: 04/14/2015
 ms.prod: azure
-ms.reviewer: 
+ms.reviewer: ''
 ms.service: cloud-services
-ms.suite: 
-ms.tgt_pltfrm: 
+ms.suite: ''
+ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: b7735dbf-8e91-4d1b-89f7-2f17e9302469
-caps.latest.revision: "42"
+caps.latest.revision: ''
 author: thraka
 ms.author: adegeo
 manager: timlt
-ms.openlocfilehash: b833fdc06e4193c1b478028733c336feb6d8b9ba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d49112df207e3b8e781480e25855ebb259bbab8e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cloud-services-definition-schema-csdef-file"></a>Azure Cloud Services Definition séma (.csdef fájl)
 A szolgáltatásdefiníciós fájl határozza meg a szolgáltatásmodellt az alkalmazáshoz. A fájl egy felhőalapú szolgáltatás számára elérhetők lesznek a szerepkörök definícióit tartalmazza, adja meg a végpontok, és megállapítja a szolgáltatás konfigurációs beállításait. Konfigurációs beállítás értéke a konfigurációs fájlban, szerint a [Felhőszolgáltatás (klasszikus) konfigurációs séma](http://msdn.microsoft.com/library/b1ae68cd-cc95-48cb-a4a4-da91dc708a35).
@@ -61,7 +61,7 @@ A következő témakörök ismertetik a sémában:
 - [WorkerRole séma](schema-csdef-workerrole.md)
 - [NetworkTrafficRules séma](schema-csdef-networktrafficrules.md)
 
-##  <a name="ServiceDefinition"></a>ServiceDefinition elem
+##  <a name="ServiceDefinition"></a> ServiceDefinition elem
 A `ServiceDefinition` eleme a legfelső szintű elemének a szolgáltatásdefiníciós fájlban.
 
 A következő táblázat ismerteti az attribútumai a `ServiceDefinition` elemet.
@@ -69,6 +69,6 @@ A következő táblázat ismerteti az attribútumai a `ServiceDefinition` elemet
 | Attribútum               | Leírás |
 | ----------------------- | ----------- |
 | név                    |Kötelező. A szolgáltatás nevét. A név a szolgáltatásfiók belül egyedinek kell lennie.|
-| topologyChangeDiscovery | Választható. Határozza meg a topológia módosítási értesítést. Lehetséges értékek:<br /><br /> -   `Blast`-Küld a frissítés a lehető leghamarabb összes szerepkörpéldányt. Ha a beállítást választja, a szerepkör tudja kezelni a topológia a frissítés újraindítás nélkül kell lennie.<br />-   `UpgradeDomainWalk`– A frissítést küld minden szerepkörpéldányt soros módon az előző példány sikeresen fogadták el a frissítés után.|
+| topologyChangeDiscovery | Választható. Határozza meg a topológia módosítási értesítést. Lehetséges értékek:<br /><br /> -   `Blast` -Küld a frissítés a lehető leghamarabb összes szerepkörpéldányt. Ha a beállítást választja, a szerepkör tudja kezelni a topológia a frissítés újraindítás nélkül kell lennie.<br />-   `UpgradeDomainWalk` – A frissítést küld minden szerepkörpéldányt soros módon az előző példány sikeresen fogadták el a frissítés után.|
 | sémaverzióval           | Választható. Határozza meg a szolgáltatás definíciós séma verzióját. A sémaverzió lehetővé teszi, hogy válassza ki a megfelelő SDK eszközöket a sémaérvényesítés használandó, ha az SDK több verziója telepítve van a Visual Studio egymás mellett.|
-| upgradeDomainCount      | Választható. A frissítési tartományok között, amelyek ezt a szolgáltatást a szerepkörök foglal le azt. A szolgáltatás telepítésekor szerepkörpéldányokat kiosztott frissítési tartományokhoz. További információkért lásd: [felhő szerepkör-szolgáltatás vagy a központi telepítési](cloud-services-how-to-manage-portal.md#how-to-update-a-cloud-service-role-or-deployment).<br /><br /> Legfeljebb 20 frissítési tartományt is megadhat. Ha nincs megadva, a frissítési tartományok száma alapértelmezett érték 5.|
+| upgradeDomainCount      | Választható. A frissítési tartományok között, amelyek ezt a szolgáltatást a szerepkörök foglal le azt. A szolgáltatás telepítésekor szerepkörpéldányokat kiosztott frissítési tartományokhoz. További információkért lásd: [felhő szerepkör-szolgáltatás vagy a központi telepítési](cloud-services-how-to-manage-portal.md#update-a-cloud-service-role-or-deployment).<br /><br /> Legfeljebb 20 frissítési tartományt is megadhat. Ha nincs megadva, a frissítési tartományok száma alapértelmezett érték 5.|

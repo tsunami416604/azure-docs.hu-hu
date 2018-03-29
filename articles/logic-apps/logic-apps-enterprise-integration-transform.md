@@ -1,6 +1,6 @@
 ---
-title: "Alakítsa át az XML-adatok átalakító - Azure Logic Apps |} Microsoft Docs"
-description: "Hozzon létre átalakítások vagy mapps átalakítani az XML-adatok között a logic Apps alkalmazásokat a vállalati integrációs SDK használatával"
+title: Alakítsa át az XML-adatok átalakító - Azure Logic Apps |} Microsoft Docs
+description: Hozzon létre átalakítások vagy mapps átalakítani az XML-adatok között a logic Apps alkalmazásokat a vállalati integrációs SDK használatával
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: f4ca7004432d28233888483424164456b008e992
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: fd59b6b3f51adb538e774bc5bb089880ca22e97e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="enterprise-integration-with-xml-transforms"></a>XML-átalakítók vállalati integrációja
 ## <a name="overview"></a>Áttekintés
@@ -64,6 +64,7 @@ Ezen a ponton befejezte a térképre beállítása. Egy valós alkalmazás érde
 
 Az átalakítási kérelmet a HTTP-végpont, így most tesztelheti.  
 
+
 ## <a name="features-and-use-cases"></a>Szolgáltatások és a használati esetek
 * Lehet, hogy a térkép létrehozott átalakítása egyszerű, például másolása nevét és címét egy dokumentum másik. Vagy a out-of-az-box térkép műveletekkel összetettebb átalakítások is létrehozhat.  
 * Több leképezés műveletek vagy funkciók azonnal elérhetők, beleértve a karakterláncok, dátum időpont függvényei, és így tovább.  
@@ -73,11 +74,49 @@ Az átalakítási kérelmet a HTTP-végpont, így most tesztelheti.
 * Töltse fel a meglévő leképezéseket  
 * Az XML-formátuma támogatását is magában foglalja.
 
-## <a name="adanced-features"></a>Adanced szolgáltatások
-A következő funkciók csak érhetők el a kód nézetre.
+## <a name="advanced-features"></a>Speciális funkciók
+
+### <a name="reference-assembly-or-custom-code-from-maps"></a>Referencia szerelvény, illetve a maps egyéni kód 
+Az átalakítási műveletet is támogatja a maps vagy külső szerelvény hivatkozással alakítja. Ez a funkció lehetővé teszi, hogy a hívások egyéni .NET kódot közvetlenül az XSLT-leképezések. Az alábbiakban a maps-szerelvény használatának előfeltételei.
+
+* A térkép és a térkép kell lennie a hivatkozott [tölt fel az integráció fiókba](./logic-apps-enterprise-integration-maps.md). 
+
+  > [!NOTE]
+  > Térkép és szerelvény is fel kell tölteni, meghatározott sorrendben. A szerelvény kell tölteni, mielőtt feltölti a térkép, amely a szerelvényre hivatkozik.
+
+* A térkép ezek az attribútumok és a szerelvény kód hívása tartalmazó CDATA szakasz kell rendelkeznie:
+
+    * **név** az egyéni szerelvénynév.
+    * **névtér** az a névtér, amely tartalmazza az egyéni kódot a szerelvényben.
+
+  Ez a példa bemutatja, hogy olyan szerelvényre hivatkozik, neve "XslUtilitiesLib" és a hívások a `circumreference` metódus a szerelvényből.
+
+  ````xml
+  <?xml version="1.0" encoding="UTF-8"?>
+  <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:user="urn:my-scripts">
+  <msxsl:script language="C#" implements-prefix="user">
+    <msxsl:assembly name="XsltHelperLib"/>
+    <msxsl:using namespace="XsltHelpers"/>
+    <![CDATA[public double circumference(int radius){ XsltHelper helper = new XsltHelper(); return helper.circumference(radius); }]]>
+  </msxsl:script>
+  <xsl:template match="data">
+     <circles>
+        <xsl:for-each select="circle">
+            <circle>
+                <xsl:copy-of select="node()"/>
+                    <circumference>
+                        <xsl:value-of select="user:circumference(radius)"/>
+                    </circumference>
+            </circle>
+        </xsl:for-each>
+     </circles>
+    </xsl:template>
+    </xsl:stylesheet>
+  ````
+
 
 ### <a name="byte-order-mark"></a>Bájt rendelés be van jelölve
-Alapértelmezés szerint az átalakítás válasza a bájt rendelés jel (AJ) indul el. Ez a funkció letiltásához adja meg a `disableByteOrderMark` a a `transformOptions` tulajdonság:
+Alapértelmezés szerint az átalakítás válaszát elindul a bájt rendelés jel (AJ). Ez a funkció csak a kód nézetre szerkesztőben végzett munka közben érheti el. Ez a funkció letiltásához adja meg a `disableByteOrderMark` a a `transformOptions` tulajdonság:
 
 ````json
 "Transform_XML": {
@@ -94,6 +133,10 @@ Alapértelmezés szerint az átalakítás válasza a bájt rendelés jel (AJ) in
     "type": "Xslt"
 }
 ````
+
+
+
+
 
 ## <a name="learn-more"></a>Részletek
 * [További tudnivalók a vállalati integrációs csomag](../logic-apps/logic-apps-enterprise-integration-overview.md "további információ a vállalati integrációs csomag")  

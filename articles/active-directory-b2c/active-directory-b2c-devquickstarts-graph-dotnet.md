@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: davidmu
-ms.openlocfilehash: 2f95df26abcd2c0d5b62c395f92c359170d6d701
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ff3aa44a4e2513f4d3e5ac2eed84715b8fe9b004
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Az Azure AD B2C: Használja az Azure AD Graph API
 
@@ -45,7 +45,7 @@ Miután a B2C-bérlő elkészült, az alkalmazás használatával regisztrálnia
 3. A bal oldali navigációs ablaktábláján válassza **minden szolgáltatás**, kattintson a **App regisztrációk**, és kattintson a **hozzáadása**.
 4. Kövesse az utasításokat az új alkalmazás létrehozásához. 
     1. Válassza ki **Web App / API** az alkalmazás típusa.    
-    2. Adjon meg **bármely átirányítási URI** (pl. https://B2CGraphAPI), mert nincs megfelelő ehhez a példához.  
+    2. Adjon meg **valamennyi bejelentkezési URL-cím** (pl. https://B2CGraphAPI) , mert nincs megfelelő ehhez a példához.  
 5. Az alkalmazás lesz most megjelenjenek az alkalmazások listájának kattintson rá az beszerzése a **Alkalmazásazonosító** (más néven Ügyfélazonosítót). Másolja, szüksége lehet rájuk egy későbbi szakasz ismerteti.
 6. A beállítások menüben kattintson a **kulcsok** , és adja hozzá egy új kulcsot (más néven ügyfélkulcs). Is másolja azt egy későbbi szakasz ismerteti a használatra.
 

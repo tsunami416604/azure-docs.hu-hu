@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: cfc789b3768c21efc7a03c11370b17ac6c3985cd
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d7ee74a19f806faed0bcfcfa5f1c5de3937d9f31
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Az Azure Load Balancer szabványos áttekintése
 
@@ -39,7 +39,7 @@ Egyik legfőbb szempontja a virtuális hálózat a az erőforrás.  Közben alap
 Load Balancer erőforrások objektumai belül, amely akkor is express hogyan Azure kell programot, a több-bérlős-infrastruktúrát a létrehozni kívánt forgatókönyvhöz.  Nincs terheléselosztó erőforrások és a tényleges infrastruktúra; közötti közvetlen kapcsolat Terheléselosztó létrehozása nem példányt létrehozni, mindig érhető el a kapacitás és nem indítási vagy skálázás késések kell figyelembe venni. 
 
 >[!NOTE]
-> Azure teljes körűen felügyelt terheléselosztási megoldások az forgatókönyvek együttesét nyújtja.  Ha a TLS-lezárást ("SSL kiszervezési") vagy HTTP/HTTPS alkalmazás réteg feldolgozási keres, tekintse át a [Alkalmazásátjáró](../application-gateway/application-gateway-introduction.md).  Ha a globális DNS a(z) terheléselosztást, tekintse át [Traffic Manager](../traffic-manager/traffic-manager-overview.md).  Előfordulhat, hogy a végpont forgatókönyvek előnyt ezek a megoldások kombinálásával, igény szerint.
+> Azure teljes körűen felügyelt terheléselosztási megoldások az forgatókönyvek együttesét nyújtja.  Ha a TLS-záráshoz ("SSL kiszervezési"), vagy a HTTP/HTTPS Kérelemfeldolgozás alkalmazás réteg, tekintse át a [Alkalmazásátjáró](../application-gateway/application-gateway-introduction.md).  Ha a globális DNS a(z) terheléselosztást, tekintse át [Traffic Manager](../traffic-manager/traffic-manager-overview.md).  Előfordulhat, hogy a végpont forgatókönyvek előnyt ezek a megoldások kombinálásával, igény szerint.
 
 ## <a name="why-use-standard-load-balancer"></a>Standard terheléselosztó miért érdemes használni?
 
@@ -58,7 +58,7 @@ Tekintse át az alábbi táblázatban a szabványos terheléselosztó és alapve
 | Diagnosztika | Azure figyelő bájt és csomag számlálók, egészségügyi többdimenziós metrikákat a állapot, kapcsolódási kísérletek (TCP SZIN), kimenő kapcsolat állapota (SNAT sikeres és sikertelen adatfolyamok), az aktív adatforrás vezérlősík mérések mintavételi modulja | Az Azure Naplóelemzés csak a nyilvános terheléselosztót, SNAT Erőforrásfogyás riasztást, háttér címkészletet állapotfigyelő száma |
 | Magas rendelkezésre ÁLLÁSÚ portok | Belső terheléselosztó | / |
 | Alapértelmezés szerint biztonságos | alapértelmezett le a következő nyilvános IP-cím és a terheléselosztó végpontokat és a hálózati biztonsági csoport kell használni kifejezetten engedélyezett forgalom áramlását felé | alapértelmezett megnyitva, a hálózati biztonsági csoport nem kötelező |
-| Kimenő kapcsolatok | Egy szabályban a több frontends lemondáshoz. Egy kimenő forgatókönyv _kell_ explicit módon hozhatók létre a virtuális gép nem használható a kimenő kapcsolat.  [Virtuális hálózat Szolgáltatásvégpontok](../virtual-network/virtual-network-service-endpoints-overview.md) kimenő kapcsolat nélkül elérhető, és nem számítanak bele a feldolgozott adatokat.  Nyilvános IP-címek, beleértve az Azure PaaS szolgáltatások nem érhetők el a virtuális hálózat szolgáltatás végpontként kell kimenő kapcsolat és a feldolgozott adatok felé száma keresztül érhető el. Ha csak egy belső terheléselosztó van egy virtuális gépet szolgáltató, alapértelmezett SNAT keresztül kifelé irányuló kapcsolatok nem érhetők el. | Egyetlen előtér véletlenszerűen kiválasztott, ha több frontends jelen.  Csak belső terheléselosztó van egy virtuális gépet szolgáltató, amikor az alapértelmezett SNAT szolgál.  Kimenő SNAT programozás az átviteli protokoll adott. |
+| Kimenő kapcsolatok | Egy szabályban a több frontends lemondáshoz. Egy kimenő forgatókönyv _kell_ explicit módon hozhatók létre a virtuális gép nem használható a kimenő kapcsolat.  [Virtuális hálózat Szolgáltatásvégpontok](../virtual-network/virtual-network-service-endpoints-overview.md) kimenő kapcsolat nélkül elérhető, és nem számítanak bele a feldolgozott adatokat.  Nyilvános IP-címek, beleértve az Azure PaaS szolgáltatások nem érhetők el a virtuális hálózat szolgáltatás végpontként kell kimenő kapcsolat és a feldolgozott adatok felé száma keresztül érhető el. Ha csak egy belső terheléselosztó van egy virtuális gépet szolgáltató, alapértelmezett SNAT keresztül kifelé irányuló kapcsolatok nem érhetők el. Kimenő SNAT programozás az átviteli protokoll adott protokoll a bejövő terheléselosztási szabály alapján. | Egyetlen előtér véletlenszerűen kiválasztott, ha több frontends jelen.  Csak belső terheléselosztó van egy virtuális gépet szolgáltató, amikor az alapértelmezett SNAT szolgál. |
 | Több frontends | Bejövő és kimenő | Csak bejövő |
 | Felügyeleti műveletek | A legtöbb műveletek < 30 másodperc | 60-90 másodpercet tipikus |
 | SLA | a két kifogástalan állapotú virtuális gép elérési útja 99,99 %-os | A virtuális gép SLA implicit | 
@@ -218,13 +218,9 @@ Standard terheléselosztó terheléselosztási szabályok konfigurálva és az �
 
 ## <a name="limitations"></a>Korlátozások
 
-A következő korlátozások vonatkoznak az előzetes időpontjában alkalmazni, és van változhatnak:
-
 - Betöltési terheléselosztó háttér példányok nem található a virtuális hálózatok társviszonyban most. Háttér-példányainak ugyanabban a régióban kell lennie.
 - Termékváltozat nem változtatható. A meglévő erőforrás Termékváltozata nem módosítható.
 - Egy különálló virtuális gép erőforrás rendelkezésre állási csoport erőforrás, vagy a virtuálisgép-méretezési készlet erőforrás egyik Termékváltozatáról, soha nem is hivatkozhat.
-- A virtuális hálózaton Azure DDoS-védelem engedélyezése hatással van a felügyeleti műveletek időtartama.
-- Az IPv6 nem támogatott.
 - [Riasztások figyelése Azure](../monitoring-and-diagnostics/monitoring-overview-alerts.md) jelenleg nem támogatottak.
 - [Előfizetés műveletek áthelyezése](../azure-resource-manager/resource-group-move-resources.md) Standard Termékváltozat LB és PIP erőforrások esetén nem támogatottak.
 

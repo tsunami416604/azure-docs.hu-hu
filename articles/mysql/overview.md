@@ -10,11 +10,11 @@ ms.service: mysql-database
 ms.topic: article
 ms.date: 03/20/2018
 ms.custom: mvc
-ms.openlocfilehash: 2689befc6a686d0ffc25d1fccbacb66cc6e10725
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3b7ae08446e672c218e7278cff4f77739286fead
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Mi az Azure-adatbázis a MySQL?
 Azure MySQL-adatbázis a Microsoft felhőalapú relációs adatbázis-szolgáltatás a [MySQL Community Edition](https://www.mysql.com/products/community/) adatbázismotor. Azure MySQL-adatbázis biztosítja:
@@ -47,7 +47,7 @@ Hogyan lehet megállapítani, hogy mikor van szükség fel- és leskálázásra?
 Azure iparágvezető 99,99 % rendelkezésre állási szolgáltatásiszint-szerződés (SLA), a Microsoft által kezelt adatbázisok globális hálózata technológiával segít a 24 és Windows 7 rendszerben futó alkalmazást. Minden Azure adatbázissal MySQL-kiszolgáló használatakor élvezheti a beépített biztonsági hibatűrést és az adatvédelem, amelyeket egyébként külön megvásárlása vagy kialakításával, létrehozása és kezelése. MySQL az Azure-adatbázissal pont időponthoz kötött visszaállítás segítségével kötött 35 nappal korábbi állapotba való kiszolgáló helyreállítása.
 
 ## <a name="secure-your-data"></a>Az adatok védelme
-Azure-adatbázis szolgáltatások, amelyek a MySQL az Azure-adatbázis garantálják adatbiztonság hagyományokkal rendelkezik, a szolgáltatásokkal, amelyek korlátozzák a hozzáférést, adatokat nyugalmi és a mozgási védheti meg és segítséget figyelése. Az Azure platform biztonságáról az [Azure biztonsági és adatkezelési központban](https://www.microsoft.com/en-us/TrustCenter/Security/default.aspx) talál információkat.
+Azure-adatbázis szolgáltatások, amelyek a MySQL az Azure-adatbázis garantálják adatbiztonság hagyományokkal rendelkezik, a szolgáltatásokkal, amelyek korlátozzák a hozzáférést, adatokat nyugalmi és a mozgási védheti meg és segítséget figyelése. Az Azure platform biztonságáról az [Azure biztonsági és adatkezelési központban](https://www.microsoft.com/en-us/trustcenter/security) talál információkat.
 
 Az Azure-adatbázishoz a MySQL-szolgáltatás adatokat nyugalmi tárolási titkosítást használ. Adatok biztonsági mentése, beleértve a lemezen (kivéve a lekérdezések futtatása során a motor által létrehozott ideiglenes fájlok) vannak titkosítva. A szolgáltatás AES 256 bites titkosítást használ, amely az Azure tárolási titkosításban szerepel, és a kulcsokat a rendszer felügyeli. A tárolási titkosítás mindig be van kapcsolva és nem tiltható le.
 

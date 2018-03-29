@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Data Lake Store diagnosztikai naplók megtekintése |} Microsoft Docs"
-description: "Ismerje meg, hogyan kell beállítania, és hozzáférés az Azure Data Lake Store diagnosztikai naplók "
+title: Az Azure Data Lake Store diagnosztikai naplók megtekintése |} Microsoft Docs
+description: 'Ismerje meg, hogyan kell beállítania, és hozzáférés az Azure Data Lake Store diagnosztikai naplók '
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/21/2018
+ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: b58a4b215b13d2e57a69a94a60e3e37471c926c8
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 5f1fa378c8eea68181d4596700238d03f360c5d0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Diagnosztikai naplók az Azure Data Lake Store elérése
 További diagnosztikai a Data Lake Store-fiók és a fiókja gyűjtött naplók megtekintéséhez a naplózás engedélyezéséhez.
@@ -31,7 +31,7 @@ A szervezetek diagnosztikai naplózását is az Azure Data Lake Store fiók gyű
 
 ## <a name="enable-diagnostic-logging-for-your-data-lake-store-account"></a>A Data Lake Store-fiók diagnosztikai naplózás engedélyezése
 1. Jelentkezzen be az új [Azure Portalra](https://portal.azure.com).
-2. Nyissa meg a Data Lake Store-fiókot, és a Data Lake Store-fiók panelen kattintson **beállítások**, és kattintson a **diagnosztikai naplók**.
+2. Nyissa meg a Data Lake Store-fiókot, és a Data Lake Store-fiók panelen kattintson **diagnosztikai naplók**.
 3. Az a **diagnosztikai naplók** panelen kattintson a **a diagnosztika bekapcsolásához**.
 
     ![Diagnosztikai naplózás engedélyezése](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "diagnosztikai naplók engedélyezése")
@@ -150,6 +150,7 @@ A naplózási és kérelem naplók JSON formátumban vannak. Ez a szakasz azt n�
              "category": "Audit",
              "operationName": "SeOpenStream",
              "resultType": "0",
+             "resultSignature": "0",
              "correlationId": "381110fc03534e1cb99ec52376ceebdf;Append_BrEKAmg;25.66.9.145",
              "identity": "A9DAFFAF-FFEE-4BB5-A4A0-1B6CBBF24355",
              "properties": {"StreamName":"adl://<data_lake_store_account_name>.azuredatalakestore.net/logs.csv"}
@@ -167,6 +168,7 @@ A naplózási és kérelem naplók JSON formátumban vannak. Ez a szakasz azt n�
 | category |Karakterlánc |A napló kategóriát. Például **naplózási**. |
 | operationName |Karakterlánc |A művelet naplózott neve. Például getfilestatus. |
 | resultType |Karakterlánc |A művelet, például 200 állapotát. |
+| resultSignature |Karakterlánc |További részletek a műveletet. |
 | correlationId |Karakterlánc |A napló, amelyek azonosítója használt csoportba a kapcsolódó naplóbejegyzések készlete |
 | identity |Objektum |Az identitás, amely a napló jön létre |
 | properties |JSON |További információ alább olvasható |
@@ -186,7 +188,7 @@ search *
 ```
 
 
-Azure Data Lake Store minta hogyan feldolgozhatja és elemezheti a naplózási adatokat biztosít. A minta a található [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample). 
+Azure Data Lake Store minta hogyan feldolgozhatja és elemezheti a naplózási adatokat biztosít. A minta a található [ https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample ](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample). 
 
 ## <a name="see-also"></a>Lásd még
 * [Az Azure Data Lake Store áttekintése](data-lake-store-overview.md)

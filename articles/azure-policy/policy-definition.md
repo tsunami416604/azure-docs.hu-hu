@@ -1,19 +1,19 @@
 ---
-title: "Házirend-definíció Azure szerkezetet |} Microsoft Docs"
-description: "Ismerteti, hogyan erőforrás házirend-definíció Azure házirend létrehozásához használt erőforrásokra vonatkozó konvenciók a szervezet ismertetésével, ha a házirend érvényesítve van-e, és a végrehajtandó műveletet."
+title: Házirend-definíció Azure szerkezetet |} Microsoft Docs
+description: Ismerteti, hogyan erőforrás házirend-definíció Azure házirend létrehozásához használt erőforrásokra vonatkozó konvenciók a szervezet ismertetésével, ha a házirend érvényesítve van-e, és a végrehajtandó műveletet.
 services: azure-policy
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 01/17/2018
 ms.topic: article
 ms.service: azure-policy
-ms.custom: 
-ms.openlocfilehash: ffff4a663b64342142f42a662905a290044e2dfb
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.custom: ''
+ms.openlocfilehash: 50965010d821d4edf94e2f5727546cb56f61f5db
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -70,7 +70,9 @@ A **mód** határozza meg, milyen típusú erőforrások kiértékelendő tábla
 * `all`: erőforráscsoportok és az összes erőforrástípus kiértékelése 
 * `indexed`: csak értékelje ki, amely támogatja a címkék és a hely típusú erőforrások
 
-Azt javasoljuk, hogy állítsa **mód** való `all`. Az összes házirend-definíciók létrehozása a portál használata révén a `all` mód. Ha a PowerShell vagy Azure CLI-t használ, meg kell adnia a **mód** paramétert, majd állítsa be `all`. 
+Azt javasoljuk, hogy állítsa **mód** való `all` a legtöbb esetben. Az összes házirend-definíciók létrehozása a portál használata révén a `all` mód. Ha a PowerShell vagy Azure CLI-t használ, meg kell adnia a **mód** paraméter manuálisan.
+
+`indexed` kell használni, amikor a házirendek létrehozásával kényszeríti ki a címkéket és a helyek. Ez azonban nem kötelező, de megakadályozza, hogy erőforrásokat, amelyek nem támogatják a címkék és a helyek jelennek meg, nem kompatibilis a megfelelőségi eredmények a. Az egyetlen kivétel ez alól **erőforráscsoportok**. Házirendek kényszerítése, hely vagy egy erőforráscsoportot a címkék megkísérlő-et kell beállítania **mód** való `all` és kifejezetten célja a `Microsoft.Resources/subscriptions/resourceGroup` típusa. Egy vonatkozó példáért lásd: [erőforráscímkék csoport kényszerítése](scripts/enforce-tag-rg.md).
 
 ## <a name="parameters"></a>Paraméterek
 
@@ -126,7 +128,7 @@ Az a **majd** blokk, megadhatja a hatást, amelyet akkor fordul elő, amikor a *
     <condition> | <logical operator>
   },
   "then": {
-    "effect": "deny | audit | append"
+    "effect": "deny | audit | append | auditIfNotExists | deployIfNotExists"
   }
 }
 ```
@@ -165,16 +167,22 @@ Logikai operátorok ágyazhatja be. Az alábbi példa mutatja egy **nem** művel
 A feltétel e egy **mező** meghatározott feltételeknek eleget. A támogatott feltételek esetén:
 
 * `"equals": "value"`
+* `"notEquals": "value"`
 * `"like": "value"`
+* `"notLike": "value"`
 * `"match": "value"`
+* `"notMatch": "value"`
 * `"contains": "value"`
+* `"notContains": "value"`
 * `"in": ["value1","value2"]`
+* `"notIn": ["value1","value2"]`
 * `"containsKey": "keyName"`
+* `"notContainsKey": "keyName"`
 * `"exists": "bool"`
 
-Használatakor a **például** feltétel, megadhatja a helyettesítő karakter (*) értékét.
+Használatakor a **például** és **notLike** feltételek, megadhatja a helyettesítő karakter (*) értékét.
 
-Használatakor a **megfelelő** feltétel, adja meg `#` képviselő számjegy, `?` betűvel, és bármely más karaktert adott tényleges karakter helyettesítéséhez. Tekintse meg a [jóváhagyott Virtuálisgép-rendszerképek](scripts/allowed-custom-images.md).
+Használata esetén a **megfelelő** és **notMatch** feltételek, `#` képviselő számjegy, `?` betűvel, és bármely más karaktert adott tényleges karakter helyettesítéséhez. Tekintse meg a [jóváhagyott Virtuálisgép-rendszerképek](scripts/allowed-custom-images.md).
 
 ### <a name="fields"></a>Mezők
 Feltételek mezőkkel jöttek létre. A mező képviseli tulajdonság az erőforrás-kérések forgalma, amellyel ismertetik az erőforrás állapotát.  
@@ -182,12 +190,28 @@ Feltételek mezőkkel jöttek létre. A mező képviseli tulajdonság az erőfor
 A következő mezők támogatottak:
 
 * `name`
+* `fullName`
+  * Az erőforrást, beleértve a szülője (pl. "myServer/adatbázis") teljes nevét adja vissza
 * `kind`
 * `type`
 * `location`
 * `tags`
-* `tags.*`
+* `tags.tagName`
+* `tags[tagName]`
+  * Ez a zárójel szintaxis támogatja pontot tartalmazó címke neve
 * tulajdonságának aliasokat - listájáért lásd: [aliasok](#aliases).
+
+### <a name="alternative-accessors"></a>Alternatív leíró.
+**A mező** a házirend szabályokban használt elsődleges elérővel. Azt közvetlenül megvizsgálja, hogy az erőforrás. Azonban a házirend támogatja egy más elérőnek **forrás**.
+
+```json
+"source": "action",
+"equals": "Microsoft.Compute/virtualMachines/write"
+```
+
+**Forrás** csak a több érték használatát támogatja **művelet**. A művelet az engedélyezési művelet, amely kiértékelése megtörténik a kérelem adja vissza. Engedélyezési műveletek érhetők el az engedélyezési szakaszában a [tevékenységnapló](../monitoring-and-diagnostics/monitoring-activity-log-schema.md).
+
+Ha házirend értékeli a háttérben állítja a meglévő erőforrásokat **művelet** való egy `/write` engedélyezési műveletet az erőforrás-típus.
 
 ### <a name="effect"></a>Következmény
 A házirend hatása a következő típusú támogatja:
@@ -212,7 +236,7 @@ A **hozzáfűzése**, meg kell adnia a következő adatokat:
 
 Az érték lehet egy karakterlánc vagy egy JSON-formátumú objektum.
 
-A **AuditIfNotExists** és **DeployIfNotExists** értékelje ki a gyermek-erőforrás meglétét, és alkalmazza a szabályt, és a megfelelő hatása, ha adott erőforrás nem létezik. Például megkövetelheti, hogy egy hálózati figyelőt az összes virtuális hálózathoz van-e telepítve.
+A **AuditIfNotExists** és **DeployIfNotExists** értékelje ki a kapcsolódó erőforrások meglétét, és alkalmazza a szabályt, és a megfelelő hatása, ha adott erőforrás nem létezik. Például megkövetelheti, hogy egy hálózati figyelőt az összes virtuális hálózathoz van-e telepítve.
 Példa a naplózást, ha egy virtuálisgép-bővítmény nincs telepítve, tekintse meg [kiterjesztés nem található naplózási](scripts/audit-ext-not-exist.md).
 
 

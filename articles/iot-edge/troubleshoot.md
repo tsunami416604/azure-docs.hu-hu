@@ -6,15 +6,15 @@ keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 12/15/2017
-ms.topic: tutorial
+ms.date: 03/23/2018
+ms.topic: article
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 4d6dd0d46d909acfbfc04a23be74a571953ce660
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
-ms.translationtype: HT
+ms.openlocfilehash: b03ece52c4ff77c9e0abbc794325cd7e9a20c915
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Az Azure IoT Edge gyakori problémái és azok megoldásai
 
@@ -104,7 +104,8 @@ Az Edge Agentnek nincs engedélye egy modul rendszerképének eléréséhez.
 Próbálja meg ismét futtatni az `iotedgectl login` parancsot.
 
 ## <a name="iotedgectl-cant-find-docker"></a>Az iotedgectl nem találja a Dockert.
-Az iotedgectl nem végezte el a beállítást vagy nem indította el a parancsot, és az alábbi üzenetet írja a naplókba:
+
+A parancsok `iotedgectl setup` vagy `iotedgectl start` sikertelen lesz, és nyomtassa ki a naplók a következő üzenetet:
 ```output
 File "/usr/local/lib/python2.7/dist-packages/edgectl/host/dockerclient.py", line 98, in get_os_type
   info = self._client.info()
@@ -119,6 +120,33 @@ Az iotedgectl nem találja a Dockert, amely előfeltétel.
 
 ### <a name="resolution"></a>Megoldás:
 Telepítse a Dockert, futtassa, majd próbálkozzon újra.
+
+## <a name="iotedgectl-setup-fails-with-an-invalid-hostname"></a>iotedgectl telepítője a egy érvénytelen állomásnév
+
+A parancs `iotedgectl setup` sikertelen lesz, és kiírja a következő üzenetet: 
+
+```output
+Error parsing user input data: invalid hostname. Hostname cannot be empty or greater than 64 characters
+```
+
+### <a name="root-cause"></a>Gyökérok
+Az IoT-Edge futásidejű csak támogat, amelyek 64 karakternél rövidebb állomásnevek. Ez általában a fizikai gépek lemezhely, de akkor fordulhat elő, ha beállít egy virtuális gépen a futtatókörnyezet. Az automatikusan létrehozott állomásnevek Windows virtuális gépek Azure-ban üzemeltetett különösen általában hosszú. 
+
+### <a name="resolution"></a>Megoldás:
+Ha ez a hibaüzenet jelenik meg, hogyan oldható meg konfigurálásával a virtuális gép DNS-nevét, és majd beállítását az állomásnevet a setup parancs a DNS-nevét.
+
+1. Az Azure-portálon lépjen a virtuális gép – áttekintés oldalra. 
+2. Válassza ki **konfigurálása** DNS-neve alatt. Ha a virtuális gép már a DNS-név konfigurálva van, nem kell egy új konfigurálása. 
+
+   ![DNS-nevét konfigurálja](./media/troubleshoot/configure-dns.png)
+
+3. Adjon meg egy értéket a **DNS-névcímke** válassza **mentése**.
+4. Másolja az új DNS-neve, ami a formátumúnak kell lennie  **\<DNSnamelabel\>.\< vmlocation\>. cloudapp.azure.com**.
+5. A virtuális gépen belül az alábbi parancs segítségével állítsa be a DNS-névvel az IoT peremhálózati futásidejű:
+
+   ```input
+   iotedgectl setup --connection-string "<connection string>" --nopass --edge-hostname "<DNS name>"
+   ```
 
 ## <a name="next-steps"></a>További lépések
 Úgy gondolja, hogy hibát talált az IoT Edge platformon? Kérjük, a kijavításához [küldje el a problémát](https://github.com/Azure/iot-edge/issues). 

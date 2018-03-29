@@ -1,9 +1,9 @@
 ---
-title: "Hdinsight Hadoop-feladatokat az adatok feltöltése |} Microsoft Docs"
-description: "Megtudhatja, hogyan töltse fel, és hozzáférési adatokat az Azure parancssori felület, a Azure Tártallózó, Azure PowerShell, a Hadoop parancssor vagy a Sqoop használatával hdinsight Hadoop-feladatokat."
-keywords: "etl hadoop adatok beérkezése hadoop, hadoop adatok betöltése"
+title: Hdinsight Hadoop-feladatokat az adatok feltöltése |} Microsoft Docs
+description: Megtudhatja, hogyan töltse fel, és hozzáférési adatokat az Azure parancssori felület, a Azure Tártallózó, Azure PowerShell, a Hadoop parancssor vagy a Sqoop használatával hdinsight Hadoop-feladatokat.
+keywords: etl hadoop adatok beérkezése hadoop, hadoop adatok betöltése
 services: hdinsight,storage
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: jgao
-ms.openlocfilehash: cfe1b6bee9bc1f093b239f8f4acc523e47ad5d1a
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: ddb6291cdff7e2b65f54e89196c2b07dd6e4aaff
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>Hadoop-feladatok adatainak feltöltése a HDInsightba
 
@@ -31,7 +31,7 @@ Az Azure HDInsight egy teljes körű Hadoop elosztott fájlrendszer (HDFS) keres
 
 Mielőtt elkezdené, vegye figyelembe az alábbi követelményeknek:
 
-* Egy Azure HDInsight-fürtre. Útmutatásért lásd: [Ismerkedés az Azure HDInsight] [ hdinsight-get-started] vagy [HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md).
+* Egy Azure-beli HDInsight-fürt. Útmutatásért lásd: [Ismerkedés az Azure HDInsight] [ hdinsight-get-started] vagy [HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md).
 * A következő két cikkek Tudásbázis:
 
     - [Az Azure Storage használata a hdinsight eszközzel][hdinsight-storage]
@@ -45,7 +45,7 @@ Az alábbi segédprogramokat, ha az Azure Storage használatához a Microsoft bi
 | Eszköz | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
 | [Azure parancssori felület][azurecli] |✔ |✔ |✔ |
-| [Az Azure PowerShell][azure-powershell] | | |✔ |
+| [Azure PowerShell][azure-powershell] | | |✔ |
 | [AzCopy][azure-azcopy] |✔ | |✔ |
 | [Hadoop parancs](#commandline) |✔ |✔ |✔ |
 
@@ -54,7 +54,7 @@ Az alábbi segédprogramokat, ha az Azure Storage használatához a Microsoft bi
 >
 >
 
-#### <a id="xplatcli"></a>Az Azure parancssori felület
+#### <a id="xplatcli"></a>Azure CLI
 Az Azure parancssori felület az Azure-szolgáltatások kezelése platformfüggetlen eszközzel. Az alábbi lépések segítségével adatokat feltölteni az Azure Storage:
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
@@ -108,7 +108,7 @@ Az Azure parancssori felület az Azure-szolgáltatások kezelése platformfügge
 >
 >
 
-#### <a id="powershell"></a>Az Azure PowerShell
+#### <a id="powershell"></a>Azure PowerShell
 Az Azure PowerShell egy parancsfájl-kezelési környezet, melyekkel automatizálhatja a központi telepítési és felügyeleti a munkaterhelések az Azure-ban, és szabályozhatja. A munkaállomás Azure PowerShell futtatásához konfigurálásával kapcsolatos további információkért lásd: [telepítse és konfigurálja az Azure Powershellt](/powershell/azure/overview).
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell.md)]
@@ -176,7 +176,7 @@ vagy
 
     wasb://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
 
-Más Hadoop listáját, hogy a munkahelyi fájlok parancsok, lásd: [http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html](http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html)
+Egyéb Hadoop parancsok, amelyek a fájlok listája: [http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html](http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
 > [!WARNING]
 > A HBase fürtök esetén az alapértelmezett blokkméret használható, ha a adatainak írása 256 KB. Amíg ez a HBase API-k és a REST API-k használata remekül működik, használja a `hadoop` vagy `hdfs dfs` parancsok írása ~ 12 GB-nál nagyobb adatok hibát eredményez. További információkért lásd: a [írás a blob storage-hibát](#storageexception) című részben.
@@ -188,18 +188,18 @@ Van még több alkalmazás, amely a grafikus felületet biztosít az Azure Stora
 
 | Ügyfél | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [A Microsoft Visual Studio Tools for HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md#navigate-the-linked-resources) |✔ |✔ |✔ |
+| [A Microsoft Visual Studio Tools for HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources) |✔ |✔ |✔ |
 | [Azure Storage Explorer](http://storageexplorer.com/) |✔ |✔ |✔ |
 | [Felhőalapú tárolás Studio 2](http://www.cerebrata.com/Products/CloudStorageStudio/) | | |✔ |
 | [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer) | | |✔ |
-| [Az Azure Explorer](http://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |
+| [Azure Explorer](http://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |
 | [Cyberduck](https://cyberduck.io/) | |✔ |✔ |
 
-#### <a name="visual-studio-tools-for-hdinsight"></a>HDInsight Visual Studio eszközök
-További információkért lásd: [Navigálás a kapcsolt erőforrásokban](hadoop/apache-hadoop-visual-studio-tools-get-started.md#navigate-the-linked-resources).
+#### <a name="visual-studio-tools-for-hdinsight"></a>Visual Studio Tools for HDInsight
+További információkért lásd: [Navigálás a kapcsolt erőforrásokban](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources).
 
-#### <a id="storageexplorer"></a>Az Azure Storage Explorer
-*Az Azure Tártallózó* hasznos eszköz a Kérem, és módosítsa az adatokat a BLOB. Ingyenes, nyissa meg a forrás eszköz, amely letölthető [http://storageexplorer.com/](http://storageexplorer.com/). A forráskódot, valamint a hivatkozás érhető el.
+#### <a id="storageexplorer"></a>Azure Storage Explorer
+*Az Azure Tártallózó* hasznos eszköz a Kérem, és módosítsa az adatokat a BLOB. Ingyenes, nyissa meg a forrás eszköz, amely letölthető [ http://storageexplorer.com/ ](http://storageexplorer.com/). A forráskódot, valamint a hivatkozás érhető el.
 
 Az eszköz használata előtt ismernie kell az Azure storage-fiók nevét és a fiók kulcs. Az alábbi információk eljussanak vonatkozó utasításokért lásd: a "hogyan: nézet, a másolás és a hívóbetűk újragenerálása tárolási" szakasza [létrehozása, kezelése vagy törlése a tárfiók][azure-create-storage-account].
 
@@ -207,7 +207,7 @@ Az eszköz használata előtt ismernie kell az Azure storage-fiók nevét és a 
 
     Adja meg a nevét, és a tárfiók a HDInsight-fürt által használt kulcs, és válassza ki **MENTÉS és MEGNYITÁS**.
 
-    ![HDI. AzureStorageExplorer][image-azure-storage-explorer]
+    ![HDI.AzureStorageExplorer][image-azure-storage-explorer]
 2. A bal oldali interfész tárolók listájáról kattintson a tárolót a HDInsight-fürthöz társított nevét. Alapértelmezés szerint azt a HDInsight-fürt neve, de eltérő, ha a fürt létrehozásakor adja meg az adott név lehet.
 3. Az eszköztáron válassza ki a Feltöltés ikonra.
 
@@ -280,7 +280,7 @@ hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file
 
 Növelje a értékének `fs.azure.write.request.size` globálisan Ambari használatával. Az alábbi lépések segítségével módosítsa az értéket a Ambari webes felhasználói felületén:
 
-1. A böngészőben nyissa meg az Ambari webes felhasználói felületén, a fürt számára. Ez a https://CLUSTERNAME.azurehdinsight.net, ahol **CLUSTERNAME** a fürt neve.
+1. A böngészőben nyissa meg az Ambari webes felhasználói felületén, a fürt számára. Ez az https://CLUSTERNAME.azurehdinsight.net, ahol **CLUSTERNAME** a fürt neve.
 
     Amikor a rendszer kéri, adja meg a rendszergazda nevét és jelszavát a fürt.
 2. Válassza ki a képernyő bal oldalán, **HDFS**, majd válassza ki a **Configs** fülre.

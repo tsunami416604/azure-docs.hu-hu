@@ -1,25 +1,25 @@
 ---
-title: "Az Azure Functions HTTP és a webhook kötések"
-description: "A HTTP és a webhook eseményindítók és kötések az Azure Functions használatának megismerése."
+title: Az Azure Functions HTTP és a webhook kötések
+description: A HTTP és a webhook eseményindítók és kötések az Azure Functions használatának megismerése.
 services: functions
 documentationcenter: na
-author: mattchenderson
+author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure functions, Funkciók, esemény feldolgozása, webhookokkal, dinamikus számítás-, kiszolgáló nélküli architektúra, HTTP, API REST"
+editor: ''
+tags: ''
+keywords: Azure functions, Funkciók, esemény feldolgozása, webhookokkal, dinamikus számítás-, kiszolgáló nélküli architektúra, HTTP, API REST
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
-ms.author: mahender
-ms.openlocfilehash: a46177183035a53128c5341a3ce4c63dbc3a7497
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.author: tdykstra
+ms.openlocfilehash: 94a039ab1973cbd4112ddd0cd7548baa69924d26
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>Az Azure Functions HTTP és a webhook kötések
 
@@ -536,7 +536,7 @@ A webhook fogadó összetevőt, a HTTP-eseményindítóval részét Webhook enge
 
 ## <a name="trigger---limits"></a>Eseményindító - korlátok
 
-A HTTP-kérelem hosszabb 100 kilobájt (102,400) korlátozott, és az URL-cím hossza legfeljebb 4 KB-os (4096) bájt. Ezek a korlátozások vannak megadva a `httpRuntime` elem a futtatókörnyezet [Web.config fájl](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config).
+A HTTP-kérelem hossza korlátozott, 100 MB-ra (104,857,600 bájt), és az URL-cím hossza legfeljebb 4 KB-os (4096 bájt). Ezek a korlátozások vannak megadva a `httpRuntime` elem a futtatókörnyezet [Web.config fájl](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config).
 
 Ha egy függvény által használt nem körülbelül 2,5 perc, az átjáró lesz időkorláton belül végrehajtani az a HTTP-eseményindítóval, és HTTP 502-es hibát ad vissza. A függvény futása folytatódik, de nem lehet egy HTTP-válasz visszaadása. Hosszan futó feladatokat az azt javasoljuk, hogy hajtsa végre az aszinkron minták, és adott vissza egy helyet, ahol megpingelheti a kérés állapotát. Mennyi ideig futhat egy függvény kapcsolatos információkért lásd: [méretezés és a tároló - fogyasztás megtervezése](functions-scale.md#consumption-plan). 
 

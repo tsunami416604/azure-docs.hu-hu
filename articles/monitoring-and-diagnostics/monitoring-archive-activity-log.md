@@ -1,9 +1,9 @@
 ---
-title: "Az Azure tevékenységnapló archiválására |} Microsoft Docs"
-description: "Útmutató az Azure tevékenységnapló a hosszú távú megőrzési tárfiókokban archiválja."
+title: Az Azure tevékenységnapló archiválására |} Microsoft Docs
+description: Útmutató az Azure tevékenységnapló a hosszú távú megőrzési tárfiókokban archiválja.
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: d37d3fda-8ef1-477c-a360-a855b418de84
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2016
 ms.author: johnkem
-ms.openlocfilehash: 0b041cc6a986c6f7a11d213f03294c9716c20d04
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1ee634b3acf0fa8815b69aef21e6213aee636ce1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="archive-the-azure-activity-log"></a>Az Azure tevékenységnapló archiválása
 Ebben a cikkben megmutatjuk használatát az Azure portálon, a PowerShell-parancsmagokkal vagy a platformfüggetlen parancssori felület archiválására a [ **Azure tevékenységnapló** ](monitoring-overview-activity-logs.md) tárfiókokban. Ez a beállítás akkor hasznos, ha azt szeretné, hogy megőrzi a naplózási, statikus elemzési vagy biztonsági mentése (a teljes hozzáféréssel az adatmegőrzési) 90 napnál hosszabb tevékenységnapló. Ha csak szeretné megőrizni az események 90 napig, vagy kevesebb nem kell beállítása archiválási tárfiókba, mert tevékenységnapló események kerülnek be az Azure platformon 90 napig engedélyezése archiválás nélkül.
@@ -164,7 +164,7 @@ PT1H.json fájlon belül mindegyik esemény tárolja a "rekordok" tömb, a köve
 > 
 
 ## <a name="next-steps"></a>További lépések
-* [Elemzés blobok letöltése](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs)
+* [Elemzés blobok letöltése](../storage/blobs/storage-quickstart-blobs-dotnet.md)
 * [Az Event hubs tevékenységnapló adatfolyam](monitoring-stream-activity-logs-event-hubs.md)
 * [További tudnivalók a műveletnapló](monitoring-overview-activity-logs.md)
 

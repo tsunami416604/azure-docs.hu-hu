@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: vinagara
-ms.openlocfilehash: 9361c2a0a4854f463eb2d679c3884f84f6858997
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 76b7481223566f16a5da8c08d9d76f2bdb6b542a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="initiate-extending-alerts-from-oms-into-azure"></a>Az OMS kibővítése riasztásait az Azure kezdeményezése
 Verziótól **2018. április 23.**, a konfigurált riasztások minden felhasználója [a Microsoft Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md), az Azure kiterjesztése. Riasztásokat, amelyek az Azure-bA bővítve lettek OMS a megszokott módon működik. Megfigyelési lehetőségek változatlanok maradnak. Az Azure-bA OMS létrehozott riasztások kiterjesztése számos előnyt kínál. Az előnyei és a folyamat, amely a riasztásokat az OMS Szolgáltatáshoz Azure kapcsolatos további információkért lásd: [terjessze ki a riasztások az OMS Szolgáltatáshoz Azure](monitoring-alerts-extend.md).
@@ -40,16 +40,14 @@ Az alábbi minta képernyő.
 
     ![Terjessze ki a riasztások a OMS az Azure - 2. lépés](./media/monitor-alerts-extend/ExtendStep2.png)
 
-    > [!NOTE]
-    > A Szerkesztés riasztási a fenti beállítás, ha szolgál; a felhasználó nem lesz képes való visszatéréshez. És újrakezdi a folyamatot, amely riasztások az OMS Szolgáltatáshoz Azure, az 1. lépésben kell. A lista megjelenítése ajánlott változás összefoglaló, a tényleges eredmény eltérhetnek bármely végbement változások alapján is párhuzamosan történik.
 
-4. A varázsló utolsó lépése megkérheti a OMS ütemezése, a riasztások kiterjeszti az Azure - művelet új csoportok létrehozása és társítása őket riasztásokat, a korábbi képernyőn látható módon. A folytatáshoz válassza a "OMS automatikusan összes riasztást küld a munkaterületen, az Azure-bA rendelkezik", majd kattintson a Befejezés gombra és erősítse meg a folyamat kezdeményezéséhez a parancssorba. Ügyfelek is használhatja egy új naplófájl Analytics API - manuálisan elindítani a riasztások kiterjesztése a másik lehetőség kiválasztásával. 
+4. A varázsló utolsó lépése megkérheti a OMS ütemezése, a riasztások kiterjeszti az Azure - művelet új csoportok létrehozása és társítása őket riasztásokat, a korábbi képernyőn látható módon. A folytatáshoz válasszon kattintson a Befejezés gombra, majd erősítse meg a folyamat kezdeményezéséhez a parancssorba. Szükség esetén az ügyfelek e-mail címet, amelyre szeretné elküldeni a jelentés a feldolgozás befejezése a OMS is megadhatja.
 
     ![Terjessze ki a riasztások a OMS az Azure - 3. lépés](./media/monitor-alerts-extend/ExtendStep3.png)
 
-5. A varázsló befejezése után vezérlő visszatér a riasztási beállítások lapra, és "Kiterjesztése az Azure" beállítás törlődni fog. A háttérben OMS beütemezett riasztások az OMS ki kell terjeszteni az Azure; Ez eltarthat egy ideig, és egy rövid időszak riasztások az OMS a művelet kezdetekor csak akkor módosítható. Ha a háttérben folyamat befejeződött, egy e-mailt kapnak minden felhasználó a rendszergazda vagy közreműködő szerepkörrel; a művelet csoportja és a megfelelő riasztások adatokkal azok van társítva van. 
+5. A varázsló befejezése után vezérlő visszatér a riasztási beállítások lapra, és "Kiterjesztése az Azure" beállítás törlődni fog. A háttérben OMS beütemezett riasztások az OMS ki kell terjeszteni az Azure; Ez eltarthat egy ideig, és egy rövid időszak riasztások az OMS a művelet kezdetekor csak akkor módosítható. Aktuális állapot jelenik meg szalagcím keresztül, és ha e-mail-címet where megadott során 4. lépés, majd fogja küldjenek, amikor háttérfolyamatként sikeresen kibővíti az összes riasztás az Azure. 
 
-6. Riasztások OMS-ben, szereplő azok beolvasása kiterjeszthetőek az Azure után is folytatódik.
+6. Riasztások OMS-ben, szereplő azok beolvasása sikeresen kiterjeszthetőek Azure után is folytatódik.
 
     ![Az Azure-ba történő bővítése a riasztások az OMS után](./media/monitor-alerts-extend/PostExtendList.png)
 
@@ -141,10 +139,11 @@ Ha a megadott munkaterület minden riasztás már fut az Azure - GET hívást v�
 }
 ```
 
-Kezdeményezheti az ütemezést, amely a riasztásoknak az OMS az Azure-ba, az API-t mutató POST kezdeményeznek. Ennek a hívás/parancs megerősíti, hogy a felhasználó leképezés, valamint elfogadási figyelmeztetések az OMS Azure terjeszteni, majd hajtsa végre a módosításokat, a válasz GET hívás az API-hoz.
+Kezdeményezheti az ütemezést, amely a riasztásoknak az OMS az Azure-ba, az API-t mutató POST kezdeményeznek. Ennek a hívás/parancs megerősíti, hogy a felhasználó leképezés, valamint elfogadási figyelmeztetések az OMS Azure terjeszteni, majd hajtsa végre a módosításokat, a válasz GET hívás az API-hoz. Szükség esetén a felhasználó biztosíthatnak e-mail címét, amelyhez OMS lesz az e-mail egy jelentés, ha ütemezett háttérfolyamatként, amely a riasztásoknak az OMS Azure futtatása sikeresen befejeződött.
 
 ```
-armclient POST  /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
+$emailJSON = “{‘Recipients’: [‘a@b.com’, ‘b@a.com’]}”
+armclient POST  /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview $emailJSON
 ```
 
 > [!NOTE]

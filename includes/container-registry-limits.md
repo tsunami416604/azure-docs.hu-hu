@@ -1,12 +1,28 @@
-| Erőforrás | Basic | Standard | Prémium |
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: container-registry
+author: mmacy
+ms.service: container-registry
+ms.topic: include
+ms.date: 03/23/2018
+ms.author: marsma
+ms.custom: include file
+ms.openlocfilehash: 575483192954f4e05db50e701e223829e041cffc
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/28/2018
+---
+| Erőforrás | Alapszintű | Standard | Prémium |
 |---|---|---|---|---|
-| Storage | 10 giB | 100 giB| 500 giB |
-| Percenként ReadOps<sup>1, 2</sup> | 1k | 300-k | 10 000-k |
-| Percenként WriteOps<sup>1, 3</sup> | 100 | 500 | 2-k |
+| Tárolás | 10 GiB | 100 GiB| 500 GiB |
+| Percenként ReadOps<sup>1, 2</sup> | 1000 | 3000 | 10000 |
+| Percenként WriteOps<sup>1, 3</sup> | 100 | 500 | 2000 |
 | Töltse le a MB/s sávszélesség<sup>1</sup> | 30 | 60 | 100 |
 | Töltse fel a MB/s sávszélesség<sup>1</sup> | 10 | 20 | 50 |
-| webhook | 2 | 10 | 100 |
-| Georeplikáció | N/A | N/A | [Támogatott *(előzetes verzió)*](https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication) |
+| Webhookok | 2 | 10 | 100 |
+| Georeplikáció | – | – | [Támogatott *(előzetes verzió)*](https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication) |
 
 <sup>1</sup> *ReadOps*, *WriteOps*, és *sávszélesség* minimális hozzávetőlegesek. ACR nagy hangsúlyt fektet használati van szüksége a teljesítmény javítása érdekében.
 

@@ -1,8 +1,8 @@
 ---
-title: "Az Eclipse Azure eszközkészlet: HDInsight Spark Scala létrehozása alkalmazások |} Microsoft Docs"
-description: "Az Eclipse eszköztára Azure HDInsight Tools használatával scalában írt Spark-alkalmazások fejlesztéséhez és küldheti el ezeket a HDInsight Spark-fürt az Eclipse IDE-ről."
+title: 'Az Eclipse Azure eszközkészlet: HDInsight Spark Scala létrehozása alkalmazások |} Microsoft Docs'
+description: Az Eclipse eszköztára Azure HDInsight Tools használatával scalában írt Spark-alkalmazások fejlesztéséhez és küldheti el ezeket a HDInsight Spark-fürt az Eclipse IDE-ről.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: nitinme
-ms.openlocfilehash: 8ac118593ecc93a2dd9e53ff7ad9ecf13daef017
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4ff67ebcbac5b1b85345421b16036c96f8e807cc
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-spark-applications-for-an-hdinsight-cluster"></a>Azure eszköztára Eclipse használata Spark-alkalmazások a HDInsight-fürtök létrehozása
 
@@ -51,6 +51,8 @@ Eclipse megnyitásakor a HDInsight eszközzel automatikusan észleli, hogy telep
 
 ![A beépülő modul Scala automatikus telepítése](./media/apache-spark-eclipse-tool-plugin/auto-install-scala.png)
 
+Felhasználói lehetőségek közül választhat [jelentkezzen be Azure-előfizetés](#Sign-in-to-your-Azure-subscription), vagy [hivatkozás egy HDInsight-fürt](#Link-a-cluster) Ambari használatával felhasználónév/jelszó adatokat vagy tartományhoz csatlakoztatott indítsa el a hitelesítő adatot. 
+
 ## <a name="sign-in-to-your-azure-subscription"></a>Jelentkezzen be az Azure-előfizetésébe
 1. Indítsa el az Eclipse IDE, és nyissa meg az Azure-kezelővel. Az a **ablak** menüjében válassza **nézet megjelenítése**, majd válassza ki **más**. A megnyíló párbeszédpanelen bontsa ki a **Azure**, jelölje be **Azure Explorer**, majd válassza ki **OK**.
 
@@ -75,12 +77,13 @@ Egy normál fürt hivatkozás segítségével felügyelt Ambari felhasználóné
 
    ![hivatkozás fürt helyi menü](./media/apache-spark-intellij-tool-plugin/link-a-cluster-context-menu.png)
 
-2. Adja meg **fürtnév**, **Tárfiók**, **Biztonságitár-kulcs**, majd válassza ki a tárolót **tároló**, legalább, adjon meg felhasználónevet és jelszó. Kattintson az OK gombra a fürt hivatkozásra.
+2. Adja meg **fürtnév**, **felhasználónév** és **jelszó**, majd kattintson az OK gombra, ha szeretné kapcsolni a fürtöt. Megadhatja a Tárfiókot, a kulcs, és válassza ki a bal oldali fanézetben működéséhez Tártallózó a tároló
    
    ![hivatkozás fürt párbeszédpanel](./media/apache-spark-eclipse-tool-plugin/link-cluster-dialog.png)
    
    > [!NOTE]
    > Ha a fürt egyaránt bejelentkezett az Azure-előfizetés és a fürthöz kapcsolódó csatolt biztonságitár-kulcs, felhasználónevet és jelszót használunk.
+   > ![a Tártallózó az eclipse-ben](./media/apache-spark-eclipse-tool-plugin/storage-explorer-in-Eclipse.png)
 
 3. Láthatja, hogy a társított fürt **HDInsight** csomópont után az OK gombra kattintás, ha a bemeneti adatokat megfelelőek. Most is elküldhetik a csatolt fürthöz kérelmet.
 
@@ -212,7 +215,7 @@ Ez a hiba elhárításához szükséges [töltse le a végrehajtható fájl](htt
 ### <a name="run-a-local-spark-scala-application"></a>A helyi Spark Scala-alkalmazások futtatása
 1. Indítsa el az Eclipse, és hozzon létre egy projektet. Az a **új projekt** párbeszédpanelen válassza a következőket, majd válassza ki **következő**.
    
-   * A bal oldali panelen válassza ki a **HDInsight**.
+   * A bal oldali panelen válassza ki a **HDInsight** elemet.
    * A jobb oldali ablaktáblában jelölje ki a **a Spark on HDInsight helyi futtatása minta (Scala)**.
 
    ![A New Project (Új projekt) párbeszédpanel](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run.png)

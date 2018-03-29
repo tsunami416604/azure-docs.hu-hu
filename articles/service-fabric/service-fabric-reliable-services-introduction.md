@@ -1,6 +1,6 @@
 ---
-title: "A Service Fabric megbízható szolgáltatás programozási modell áttekintése |} Microsoft Docs"
-description: "További tudnivalók a Service Fabric megbízható programozási modell, valamint Ismerkedés a saját szolgáltatások írása."
+title: A Service Fabric megbízható szolgáltatás programozási modell áttekintése |} Microsoft Docs
+description: További tudnivalók a Service Fabric megbízható programozási modell, valamint Ismerkedés a saját szolgáltatások írása.
 services: Service-Fabric
 documentationcenter: .net
 author: masnider
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: masnider;
-ms.openlocfilehash: 1cbc116a8d595cfea0e87cd17b556e005f276774
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 66e3939a59f09650ce76488c38eb46699ab9f63f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="reliable-services-overview"></a>A Reliable Services áttekintése
 Az Azure Service Fabric leegyszerűsíti az írást, és az állapotmentes és állapotalapú Reliable Services kezelése. Ez a témakör ismerteti:
@@ -111,5 +111,5 @@ Ha az alkalmazás van szüksége, az alábbi jellemző, akkor érdemes lehet meg
 
 ## <a name="next-steps"></a>További lépések
 * [Megbízható szolgáltatások – első lépések](service-fabric-reliable-services-quick-start.md)
-* [Megbízható szolgáltatás használati speciális](service-fabric-reliable-services-advanced-usage.md)
+* [Megbízható gyűjtemények](service-fabric-reliable-services-reliable-collections.md)
 * [A Reliable Actors programozási modell](service-fabric-reliable-actors-introduction.md)

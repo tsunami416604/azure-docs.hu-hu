@@ -1,7 +1,7 @@
 ---
-title: "Oktatóanyag Java alapú alkalmazásfejlesztéshez Azure Cosmos DB használatával | Microsoft Docs"
-description: "Ez a Java webalkalmazásokra vonatkozó oktatóanyag bemutatja, tárolására az Azure Cosmos DB és az SQL API segítségével és a hozzáférési adatok Azure Websitesban tárolt Java-alkalmazás."
-keywords: "Alkalmazásfejlesztés, adatbázis-oktatóanyag, java-alkalmazások, java webalkalmazásokra vonatkozó oktatóanyag, azure, a Microsoft azure"
+title: Oktatóanyag Java alapú alkalmazásfejlesztéshez Azure Cosmos DB használatával | Microsoft Docs
+description: Ez a Java webalkalmazásokra vonatkozó oktatóanyag bemutatja, tárolására az Azure Cosmos DB és az SQL API segítségével és a hozzáférési adatok Azure Websitesban tárolt Java-alkalmazás.
+keywords: Alkalmazásfejlesztés, adatbázis-oktatóanyag, java-alkalmazások, java webalkalmazásokra vonatkozó oktatóanyag, azure, a Microsoft azure
 services: cosmos-db
 documentationcenter: java
 author: dennyglee
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 08/22/2017
 ms.author: denlee
-ms.openlocfilehash: 8507b772c537ac50bd40367fbde260a8d72375ca
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 816ea6e575759186973e23c6adfccd389c6920d9
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Azure Cosmos DB és az SQL API-t használó Java-webalkalmazás létrehozása
 > [!div class="op_single_selector"]
@@ -29,8 +29,6 @@ ms.lasthandoff: 12/18/2017
 > * [Python](sql-api-python-application.md)
 > 
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Ez a Java webalkalmazásokra vonatkozó oktatóanyag bemutatja, hogyan használja a [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás tárolhatja és érheti el az Azure App Service Web Apps tárolt Java-alkalmazás adatait. A témakörben érintett témák köre:
 
@@ -107,7 +105,7 @@ Ehhez át kell konvertálnia a projektet Maven-projektté az alábbi lépések v
      
    * Vagy adja hozzá a függőség XML a csoport és összetevő-azonosító közvetlenül a pom.xml fájlhoz egy szövegszerkesztő:
      
-        <dependency><groupId>következőt: com.microsoft.azure</groupId> <artifactId>azure-documentdb</artifactId> <version>1.9.1</version></dependency>
+        <dependency> <groupId>com.microsoft.azure</groupId> <artifactId>azure-documentdb</artifactId> <version>1.9.1</version> </dependency>
 6. Kattintson a **OK** és után a Maven feltelepíti a SQL Java SDK-t.
 7. Mentse a pom.xml fájlt.
 
@@ -729,7 +727,7 @@ Az Azure-webhelyek teszi a Java-alkalmazások telepítését más dolga, mint ex
 3. Most, hogy a WAR-fájl jár, egyszerűen feltöltheti azt a a Azure webhely **webapps** könyvtár. Fájlok feltöltésével kapcsolatos útmutatásért lásd: [hozzáadása a Java-alkalmazások az Azure App Service Web Apps](../app-service/web-sites-java-add-app.md).
    
     Miután feltöltötte a WAR-fájlt a webapps könyvtárba, a futtatókörnyezet észleli majd annak hozzáadását, és automatikusan betölti azt.
-4. A kész termék megtekintéséhez keresse meg http://YOUR\_hely\_NAME.azurewebsites.net/azure-java-sample/ és a feladatok hozzáadását start!
+4. A kész termék megtekintéséhez keresse meg http://YOUR \_hely\_NAME.azurewebsites.net/azure-java-sample/ és a feladatok hozzáadását start!
 
 ## <a id="GetProject"></a>A projekt beszerzése a GitHubról
 A jelen oktatóanyag minden példáját megtalálhatja a GitHubról elérhető [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) (teendők) projektben. A teendők projekt Eclipse-be történő importálásához győződjön meg arról, hogy rendelkezik az [Előfeltételek](#Prerequisites) szakaszban ismertetett szoftverekkel és erőforrásokkal, majd tegye a következőket:
@@ -739,7 +737,7 @@ A jelen oktatóanyag minden példáját megtalálhatja a GitHubról elérhető [
 3. Az Eclipse **File** (Fájl) menüjében kattintson az **Import** (Importálás) elemre.
 4. Az **Import** (Importálás) ablakban kattintson a **Git**, majd a **Projects from Git** (Git-projektek), és végül a **Next** (Tovább) lehetőségre.
 5. A **Select Repository Source** (Tárház forrásának kiválasztása) képernyőn kattintson a **Clone URI** (URI klónozása) lehetőségre.
-6. Az a **forrás Git-tárház** képernyő a **URI** mezőbe, írja be a https://github.com/Azure-Samples/java-todo-app.git, és kattintson **következő**.
+6. Az a **forrás Git-tárház** képernyő a **URI** adja meg a https://github.com/Azure-Samples/java-todo-app.git, és kattintson a **következő**.
 7. A **Branch Selection** (Ág kiválasztása) képernyőn válassza a **master** (fő) lehetőséget, majd kattintson a **Next** (Tovább) gombra.
 8. A **Local Destination** (Helyi cél) képernyőn kattintson a **Browse** (Tallózás) lehetőségre, válassza ki a mappát, ahova a tárházat másolni szeretné, majd kattintson a **Next** (Tovább) gombra.
 9. A **Select a wizard to use for importing projects** (Varázsló kiválasztása a projektek importálásához) képernyőn győződjön meg arról, hogy az **Import existing projects** (Létező projektek importálása) lehetőség van kiválasztva, majd kattintson a **Next** (Tovább) gombra.
@@ -754,6 +752,6 @@ A jelen oktatóanyag minden példáját megtalálhatja a GitHubról elérhető [
 18. A **Servers** (Kiszolgálók) lapon, a képernyő alján, kattintson a jobb gombbal a **Tomcat v7.0 Server at localhost** (Tomcat 7.0-s verziójú kiszolgáló itt: localhost), majd az **Add and Remove** (Hozzáadás és eltávolítás) lehetőségre.
 19. Az **Add and Remove** (Hozzáadás és eltávolítás) ablakban helyezze át az **azure-documentdb-java-sample** kiszolgálót a **Configured** (Konfigurált) mezőbe, majd kattintson a **Finish** (Befejezés) gombra.
 20. Az a **kiszolgálók** lapon kattintson a jobb gombbal **Tomcat v7.0 Server localhost:**, és kattintson a **indítsa újra a**.
-21. Egy böngészőből keresse fel a http://localhost:8080/azure-documentdb-java-sample/ címet, és kezdje el hozzáadni a feladatait a listához. Ügyeljen arra, hogy ha módosította a portok alapértelmezett értékét, akkor a 8080 értéket módosítsa a választott értékre.
+21. Egy böngészőben navigáljon http://localhost:8080/azure-documentdb-java-sample/ és kezdje el hozzáadni a feladatait a listához. Ügyeljen arra, hogy ha módosította a portok alapértelmezett értékét, akkor a 8080 értéket módosítsa a választott értékre.
 22. Projekt telepítése egy Azure-webhelyre: [6. lépés Telepítheti az alkalmazást az Azure-webhelyek](#Deploy).
 

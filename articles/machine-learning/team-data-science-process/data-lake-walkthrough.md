@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Data Lake méretezhető Adattudomány: egy végpontok közötti forgatókönyv |} Microsoft Docs"
-description: "Hogyan használható az Azure Data Lake adatok feltárása és bináris osztályozás feladatok végrehajtására a dataset."
+title: 'Az Azure Data Lake méretezhető Adattudomány: egy végpontok közötti forgatókönyv |} Microsoft Docs'
+description: Hogyan használható az Azure Data Lake adatok feltárása és bináris osztályozás feladatok végrehajtására a dataset.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev; weig
-ms.openlocfilehash: b18b454d1fcdfb2b6e8ea77508f779aeabdc87a0
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: bradsev
+ms.openlocfilehash: 6d0f889e1cc76eced172d66755a0a9275e6b7bdf
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Az Azure Data Lake méretezhető Adattudomány: egy végpont forgatókönyv
 Ez a bemutató ismerteti az Azure Data Lake használata az adatok feltárása és a bináris osztályozási feladatok NYC taxi út mintán és díjszabás adatkészlet-e a tipp egy jegy ára fizeti előre. Az végigvezeti a lépéseken, a [Team adatok tudományos folyamat](http://aka.ms/datascienceprocess), végpontok, tanítási modell az adatgyűjtést, majd egy webszolgáltatás, amely közzéteszi a modell a központi telepítéshez.
@@ -39,7 +39,7 @@ Ez a forgatókönyv bemutatja, hogyan létrehozásához és telepítéséhez has
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 Az Azure Machine Learning Studio létrehozásához és telepítéséhez a prediktív modellek szolgál. Ebben az esetben két módszer használatával: első Python-parancsfájlok majd Hive táblák HDInsight (Hadoop) fürtökön.
 
-### <a name="scripts"></a>Parancsprogramok
+### <a name="scripts"></a>Scripts
 A bemutatóban szereplő eljárásokat csak az egyszerű lépéseket. Letöltheti a teljes **U-SQL parancsfájl** és **Jupyter Notebook** a [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough).
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -57,7 +57,7 @@ Ezek a témakörök elkezdéséhez az alábbiakkal kell rendelkeznie:
 ## <a name="prepare-data-science-environment-for-azure-data-lake"></a>Azure Data Lake data tudományos környezet előkészítése
 Ez a forgatókönyv az adatok tudományos környezet előkészítése, hozzon létre a következőket:
 
-* Az Azure Data Lake Store-(ADLS) 
+* Azure Data Lake Store (ADLS) 
 * Az Azure Data Lake Analytics (ADLA)
 * Az Azure Blob storage-fiók
 * Azure Machine Learning Studio-fiók
@@ -149,7 +149,7 @@ U-SQL, nyissa meg a Visual Studio, végrehajtásához kattintson **fájl--> Új 
 ![9](./media/data-lake-walkthrough/9-portal-submit-job.PNG)
 
 ### <a name="ingest"></a>Adatfeldolgozást: A nyilvános blob adatainak olvasása
-Az adatok az Azure-blobot a helyét hivatkozott  **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**  és használatával kiolvasható **Extractors.Csv()**. Helyettesítse a saját tároló nevének és a tárfiók nevét az alábbi parancsfájlok a container_name@blob_storage_account_name wasb címe. Mivel ugyanazt a formátumot a fájlneveket, lehetőség **út\_data_ {\*\}.csv** összes 12 út fájl olvasásához. 
+Az adatok az Azure-blobot a helyét hivatkozott **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** és használatával kiolvasható **Extractors.Csv()**. Helyettesítse a saját tároló nevének és a tárfiók nevét az alábbi parancsfájlok a container_name@blob_storage_account_name wasb címe. Mivel ugyanazt a formátumot a fájlneveket, lehetőség **út\_data_ {\*\}.csv** összes 12 út fájl olvasásához. 
 
     ///Read in Trip data
     @trip0 =
@@ -562,7 +562,7 @@ Azok a gépi tanulási modell, miután be lett építve szeretné. A bináris lo
 
 * A munkaterület hitelesítő adatait az Azure ML studio beállítások megkeresése Az Azure Machine Learning Studióban, kattintson a **beállítások** --> **neve** --> **engedélyezési jogkivonatok**. 
   
-    ![C3](./media/data-lake-walkthrough/c3-workspace-id.PNG)
+    ![c3](./media/data-lake-walkthrough/c3-workspace-id.PNG)
 
         workspaceid = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx'
         auth_token = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx'
@@ -678,7 +678,7 @@ A webes szolgáltatás irányítópultját hamarosan jeleníti meg:
 
  ![27](./media/data-lake-walkthrough/27-AML-web-api.PNG)
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Ez a forgatókönyv végrehajtásával létrehozott egy adatok tudományos környezet méretezhető végpontok közötti megoldások Azure Data Lake készítéséhez. Ebben a környezetben használt elemzése a nagy nyilvános adatkészlet véve azt a tudományos folyamat, a modell képzés útján, majd a központi telepítéshez a modell webszolgáltatásként adatgyűjtést kanonikus lépésein. U-SQL használatával feldolgozni, vizsgálatát, és az az adatokat. Python és a Hive használt Azure Machine Learning Studio build és üzembe prediktív modelleket.
 
 ## <a name="whats-next"></a>A következő lépések

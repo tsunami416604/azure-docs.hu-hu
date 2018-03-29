@@ -1,25 +1,25 @@
 ---
-title: "Az Azure Cosmos Adatbázisba regionális feladatátvétel |} Microsoft Docs"
-description: "Tudnivalók Azure Cosmos DB hogyan manuális és automatikus feladatátvételt együttműködik."
+title: Az Azure Cosmos Adatbázisba regionális feladatátvétel |} Microsoft Docs
+description: Tudnivalók Azure Cosmos DB hogyan manuális és automatikus feladatátvételt együttműködik.
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: arramac
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 446e2580-ff49-4485-8e53-ae34e08d997f
 ms.service: cosmos-db
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2017
+ms.date: 03/27/2018
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3a8b32440ce3ec6cd2da7aaccf218a94e0ee3e77
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 8da3e2c970ab1e60e3396cb0aaeaba64dba1713c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="automatic-regional-failover-for-business-continuity-in-azure-cosmos-db"></a>Az üzletmenet folytonossága érdekében az Azure Cosmos Adatbázisba automatikus regionális feladatátvétel
 Azure Cosmos DB egyszerűbbé teszi a globális adatok terjesztési felajánlásával teljes körűen felügyelt, [több területi adatbázis fiókok](distribute-data-globally.md) biztosító egyértelmű mellékhatásokkal konzisztencia, a rendelkezésre állás és a teljesítmény, az összes megfelelő garanciák között. Cosmos DB fiókok kínálnak a magas rendelkezésre állású, egyetlen számjegy ms késések, [jól meghatározott konzisztenciaszintek](consistency-levels.md), többhelyű API-khoz transzparens regionális feladatátvétel és rugalmasan méretezhető átviteli sebesség és tárterület világszerte képességét. 
@@ -30,9 +30,10 @@ Cosmos DB egyaránt explicit támogat, és a feladatátvétel vezérelt háziren
 * Hogyan tegye Cosmos DB automatikus feladatátvétel munka és mi történik, ha egy data center álljon le?
 * Hogyan használhatók kézi feladatátvételt alkalmazási architektúrákban található?
 
-Is megismerheti az Azure-ban a regionális feladatátvétel videó péntek Scott Hanselman és egyszerű mérnöki Manager Karthik Raman.
+Ez a videó bemutatja a globális terjesztési funkciót, beleértve a regionális feladatátvétel Azure Cosmos DB Programvezető Andrew Liu által regionális feladatátvétel is olvashat.
 
->[!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Planet-Scale-NoSQL-with-DocumentDB/player]  
+>[!VIDEO https://www.youtube.com/embed/1D06yjTVxt8]
+>
 
 ## <a id="ConfigureMultiRegionApplications"></a>Több területi alkalmazások konfigurálása
 Ahhoz, hogy alaposabban feladatátvételi mód, úgy tekintünk, hogyan konfigurálhat egy alkalmazás több régiónkénti elérhetőség előnyeinek kihasználása és a regionális feladatátvétel állásuk rugalmasak lehetnek.
@@ -138,7 +139,7 @@ A gyakori forgatókönyvek, ahol a kézi feladatátvételre hasznos lehet a köv
 
 Ez a cikk azt felül Cosmos DB hogyan manuális és automatikus feladatátvételt munka, és hogyan konfigurálhatja a Cosmos DB fiókok és az alkalmazások globálisan elérhető legyen. Globális replikációs támogatási Cosmos DB használatával végpontok közötti késés javítása, és, hogy azok magas rendelkezésre állású még régió hibák esetén. 
 
-## <a id="NextSteps"></a>Következő lépések
+## <a id="NextSteps"></a>További lépések
 * További tudnivalók arról, hogyan támogatja a Cosmos DB [globális terjesztési](distribute-data-globally.md)
 * További tudnivalók [az Azure Cosmos DB globális egységesítése](consistency-levels.md)
 * Azure Cosmos DB használatával több régióba fejlesztést [SQL API](tutorial-global-distribution-sql-api.md)

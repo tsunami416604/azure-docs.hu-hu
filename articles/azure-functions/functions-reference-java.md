@@ -1,11 +1,11 @@
 ---
-title: "Java fejlesztői dokumentáció az Azure Functions |} Microsoft Docs"
-description: "Megtudhatja, hogyan működik együtt a Java fejlesztéséhez."
+title: Java fejlesztői dokumentáció az Azure Functions |} Microsoft Docs
+description: Megtudhatja, hogyan működik együtt a Java fejlesztéséhez.
 services: functions
 documentationcenter: na
 author: rloutlaw
 manager: justhe
-keywords: "Azure functions, Funkciók, Eseményfeldolgozási, webhookokkal, a dinamikus számítási, a kiszolgáló nélküli architektúra, a java"
+keywords: Azure functions, Funkciók, Eseményfeldolgozási, webhookokkal, a dinamikus számítási, a kiszolgáló nélküli architektúra, a java
 ms.service: functions
 ms.devlang: java
 ms.topic: article
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/07/2017
 ms.author: routlaw
-ms.openlocfilehash: 09a48d61cb27b4db0778295565d167a0688cc99f
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 71576e65d20d7e8cb7f5ff1c5f19c82439bb6807
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-functions-java-developer-guide"></a>Az Azure Functions Java fejlesztői útmutató
 > [!div class="op_single_selector"]
 [!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
 
-## <a name="programming-model"></a>Programozási modell 
+## <a name="programming-model"></a>A programozási modell 
 
 Az Azure-függvény dolgozza fel a bemeneti és a kimenetet állapotmentes osztály metódus kell lennie. Bár a metódusok írni engedélyezettek, a függvény nem függhet osztály minden példánya mezőt. Minden függvény módszerek rendelkeznie kell egy `public` access módosítóval.
 
@@ -39,7 +39,7 @@ CosmosDB | –
 HTTP | <ul><li>`HttpTrigger`</li><li>`HttpOutput`</li></ul>
 Mobile Apps | –
 Notification Hubs | –
-Storage-Blobba | <ul><li>`BlobTrigger`</li><li>`BlobInput`</li><li>`BlobOutput`</li></ul>
+Storage Blob | <ul><li>`BlobTrigger`</li><li>`BlobInput`</li><li>`BlobOutput`</li></ul>
 Tárolási üzenetsor | <ul><li>`QueueTrigger`</li><li>`QueueOutput`</li></ul>
 Tárolási tábla | <ul><li>`TableInput`</li><li>`TableOutput`</li></ul>
 Időzítő | <ul><li>`TimerTrigger`</li></ul>
@@ -325,9 +325,33 @@ public class Function {
 }
 ```
 
+## <a name="environment-variables"></a>Környezeti változók
+
+Gyakran kívánatos forráskód biztonsági okokból a titkos adatok kibontásához. Ez lehetővé teszi, hogy közzé tenni forrás kód repók véletlenül más fejlesztők számára a hitelesítő adatok megadása nélkül. Ez egyszerűen használatával környezeti változókat, mind az Azure Functions a helyi futtatás során, és a funkciók Azure történő telepítéskor elérhető.
+
+– Könnyedén telepíthető a környezeti változók, ha fut az Azure Functions helyileg, választhatja, hogy ezek a változók hozzáadása a local.settings.json fájlhoz. Ha még nincs jelen, a függvény projekt gyökérkönyvtárában, nyugodtan hozzon létre egyet. Íme, mi a fájl hasonlóan kell kinéznie:
+
+```xml
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "AzureWebJobsDashboard": ""
+  }
+}
+```
+
+Minden egyes kulcs / érték-hozzárendelését a `values` térkép elérhetik futásidőben, egy környezeti változó, elérhető meghívásával `System.getenv("<keyname>")`, például `System.getenv("AzureWebJobsStorage")`. Hozzáadás további kulcs / érték párok, és lehet ajánlott eljárás.
+
+> [!NOTE]
+> Ha ezt a módszert használja, lehet, hogy figyelembe kell venni, hogy a local.settings.json hozzáadása a tárházhoz fájl figyelmen kívül fájl, hogy nincs véglegesítve.
+
+A kód most attól függően, hogy ezek a környezeti változók bejelentkezhet ugyanazzal a kulccsal beállítása / érték párok az függvény alkalmazás beállításaiban, az Azure portálra, hogy a kód év működjön a tesztelés helyileg és amikor központi telepítésekor az Azure-bA.
+
 ## <a name="next-steps"></a>További lépések
 További információkért lásd a következőket:
 
 * [Azure Functions – ajánlott eljárások](functions-best-practices.md)
 * [Az Azure Functions fejlesztői segédanyagai](functions-reference.md)
 * [Az Azure Functions eseményindítók és kötések](functions-triggers-bindings.md)
+* [Távoli hibakeresési Java Azure működik együtt a Visual Studio Code](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)

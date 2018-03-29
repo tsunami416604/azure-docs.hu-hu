@@ -1,12 +1,12 @@
 ---
-title: "Az Azure pont – hely kapcsolat kapcsolatos problémák elhárítása |} Microsoft Docs"
-description: "Útmutató a pont-pont csatlakozási hibák elhárítása."
+title: Az Azure pont – hely kapcsolat kapcsolatos problémák elhárítása |} Microsoft Docs
+description: Útmutató a pont-pont csatlakozási hibák elhárítása.
 services: vpn-gateway
 documentationcenter: na
 author: chadmath
 manager: cshepard
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: troubleshooting
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2018
 ms.author: genli
-ms.openlocfilehash: 3884eec0e65f856be87505d45c25cad7d3742bab
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 51076c225167accaf386190eeda4ec159cb5657d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Hibáinak elhárítása: Az Azure pont – hely kapcsolat problémák
 
@@ -289,7 +289,7 @@ Pont-pont VPN-ügyfél használ az Azure DNS-kiszolgálók, az Azure virtuális 
 
 ### <a name="solution"></a>Megoldás
 
-A probléma elhárításához győződjön meg arról, hogy az Azure DNS-kiszolgálók, amely használja az Azure virtuális hálózaton történő oldhatja helyi erőforrások DNS-rekordjait. Ehhez használhatja a DNS-továbbítók vagy feltételes továbbítók. További információkért lásd: [névfeloldáshoz a saját DNS-kiszolgáló](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)
+A probléma elhárításához győződjön meg arról, hogy az Azure DNS-kiszolgálók, amely használja az Azure virtuális hálózaton történő oldhatja helyi erőforrások DNS-rekordjait. Ehhez használhatja a DNS-továbbítók vagy feltételes továbbítók. További információkért lásd: [névfeloldáshoz a saját DNS-kiszolgáló](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)
 
 ## <a name="the-point-to-site-vpn-connection-is-established-but-you-still-cannot-connect-to-azure-resources"></a>A pont-pont VPN-kapcsolat létrejött, de még nem csatlakozik Azure-erőforrások 
 
@@ -304,11 +304,11 @@ Ez a probléma megoldásához [alaphelyzetbe állítani az Azure VPN gateway](vp
 ## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Hiba: "a visszavont tanúsítványok függvény nem tudta ellenőrizni a visszavont tanúsítványok, mert a visszavont tanúsítványok kiszolgálója offline állapotban volt. (Hiba 0x80092013)"
 
 ### <a name="causes"></a>Okok
-Ez a hibaüzenet akkor fordul elő, ha az ügyfél nem tud hozzáférni a http://crl3.digicert.com/ssca-sha2-g1.crl és http://crl4.digicert.com/ssca-sha2-g1.cr.  A visszavonási állapotának ellenőrzése a két hely hozzáférésre van szüksége.  Ez a probléma általában akkor fordul elő, az ügyfélen, amely a proxykiszolgáló konfigurálva van. Bizonyos környezetekben Ha a kérelem nem fog a proxykiszolgálón keresztül, a rendszer megtagadja a peremhálózati tűzfalon.
+Ez a hibaüzenet akkor fordul elő, ha az ügyfél nem tud hozzáférni http://crl3.digicert.com/ssca-sha2-g1.crl és http://crl4.digicert.com/ssca-sha2-g1.cr.  A visszavonási állapotának ellenőrzése a két hely hozzáférésre van szüksége.  Ez a probléma általában akkor fordul elő, az ügyfélen, amely a proxykiszolgáló konfigurálva van. Bizonyos környezetekben Ha a kérelem nem fog a proxykiszolgálón keresztül, a rendszer megtagadja a peremhálózati tűzfalon.
 
 ### <a name="solution"></a>Megoldás
 
-Ellenőrizze a proxykiszolgáló beállításait, győződjön meg arról, hogy az ügyfél http://crl3.digicert.com/ssca-sha2-g1.crl és http://crl4.digicert.com/ssca-sha2-g1.cr hozzáférhet-e.
+Jelölje be a proxykiszolgáló beállításait, győződjön meg arról, hogy az ügyfél hozzáférhet http://crl3.digicert.com/ssca-sha2-g1.crl és http://crl4.digicert.com/ssca-sha2-g1.cr.
 
 ## <a name="vpn-client-error-the-connection-was-prevented-because-of-a-policy-configured-on-your-rasvpn-server-error-812"></a>VPN-ügyfél hiba: A kapcsolatot a távelérési kiszolgáló és a VPN-kiszolgálón konfigurált házirend miatt nem tudta. (812-es hiba)
 

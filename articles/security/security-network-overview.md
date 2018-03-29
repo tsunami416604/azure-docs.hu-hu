@@ -1,5 +1,5 @@
 ---
-title: "Hálózati követelmények az Azure biztonsági fogalmak |} Microsoft Docs"
+title: Hálózati követelmények az Azure biztonsági fogalmak |} Microsoft Docs
 description: " Ez a cikk könnyen érthető rendelkezik Microsoft Azure hálózati biztonság területén kínálnak. Azt magyarázattal alapszintű hálózati biztonsági Alapfogalmak és követelmények és információk az Azure rendelkezik kínálnak az egyes ezeket a területeket. "
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: e477ce9a5f9f35d88a6faeb68ee4e0403f64c030
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 0e32cd1f4267b9ae0825fbb34ed00e25dd1b63b5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-network-security-overview"></a>Az Azure biztonsági áttekintése
 A Microsoft Azure tartalmazza az alkalmazás és szolgáltatás hálózati kapcsolati követelményeinek támogatására robusztus hálózati infrastruktúrát. Helyszíni között, az Azure-ban lévő erőforrások közötti hálózati kapcsolatot, és Azure üzemeltetett erőforrásokhoz, és hogy, és az internetről és az Azure.
@@ -252,11 +252,11 @@ Azure közül választhat a kulcsfontosságú terület korai észlelési képess
 ### <a name="azure-network-watcher"></a>Azure Network Watcher
 Azure hálózati figyelőt tartalmaz számos képességeket kínál, amelyek segítenek a hibaelhárításban, valamint a adjon meg egy teljesen új eszközöket a biztonsági problémákat azonosítása.
 
-[Biztonsági csoport megtekintése ](/network-watcher/network-watcher-security-group-view-overview.md) elősegíti a naplózás és a biztonsági megfelelőség virtuális gépek és összehasonlítása az alapkonfigurációk házirendeket, a virtuális gépek mindegyikének hatékony szabályokra a szervezet által meghatározott programozott naplózás végrehajtásához használható. Ez segít azonosítani a konfigurációs eltéréseket.
+[Biztonsági csoport megtekintése ](../network-watcher/network-watcher-security-group-view-overview.md) elősegíti a naplózás és a biztonsági megfelelőség virtuális gépek és összehasonlítása az alapkonfigurációk házirendeket, a virtuális gépek mindegyikének hatékony szabályokra a szervezet által meghatározott programozott naplózás végrehajtásához használható. Ez segít azonosítani a konfigurációs eltéréseket.
 
-[Csomagrögzítéssel](/network-watcher/network-watcher-packet-capture-overview.md) lehetővé teszi a hálózati forgalmat a virtuális gép rögzítése. Azáltal, hogy hálózati statisztikákat gyűjt, és az alkalmazással kapcsolatos problémák elhárítása segítése mellett csomagrögzítéssel lehet hasznos információt a hálózati behatolások vizsgálata során. Ez a funkció együtt az Azure Functions segítségével indítsa el a hálózati rögzítést adott Azure riasztás.
+[Csomagrögzítéssel](../network-watcher/network-watcher-packet-capture-overview.md) lehetővé teszi a hálózati forgalmat a virtuális gép rögzítése. Azáltal, hogy hálózati statisztikákat gyűjt, és az alkalmazással kapcsolatos problémák elhárítása segítése mellett csomagrögzítéssel lehet hasznos információt a hálózati behatolások vizsgálata során. Ez a funkció együtt az Azure Functions segítségével indítsa el a hálózati rögzítést adott Azure riasztás.
 
-További információ a Azure hálózati figyelőt és a vizsgálat indítása a fejlesztőlaborokban lévő funkciók némelyike vessen egy pillantást a [Azure hálózati figyelőt figyelési áttekintés](/network-watcher/network-watcher-monitoring-overview.md)
+További információ a Azure hálózati figyelőt és a vizsgálat indítása a fejlesztőlaborokban lévő funkciók némelyike vessen egy pillantást a [Azure hálózati figyelőt figyelési áttekintés](../network-watcher/network-watcher-monitoring-overview.md)
 
 >[!NOTE]
 Azure hálózati figyelőt a helyzet továbbra is a nyilvános előzetes verzió még nem rendelkezik azonos szintű rendelkezésre állást és megbízhatóságot, szolgáltatásokat, amelyek általában a rendelkezésre állási kiadási. Egyes funkciók nem támogatott, van, korlátozott képességeit, és előfordulhat, hogy nem érhető el az összes Azure helyét. A rendelkezésre állás és a szolgáltatás állapotát a legfrissebb értesítések, tekintse meg a [Azure frissítések lap](https://azure.microsoft.com/updates/?product=network-watcher)

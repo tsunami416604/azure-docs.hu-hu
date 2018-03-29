@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Konfigurálja automatikus felhasználói történő üzembe helyezéséhez az Azure Active Directoryval Workday |} Microsoft Docs"
-description: "Útmutató a Workday használandó adatforrás azonosító adatok az Active Directory és az Azure Active Directory."
+title: 'Oktatóanyag: Konfigurálja automatikus felhasználói történő üzembe helyezéséhez az Azure Active Directoryval Workday |} Microsoft Docs'
+description: Útmutató a Workday használandó adatforrás azonosító adatok az Active Directory és az Azure Active Directory.
 services: active-directory
 author: asmalser-msft
 documentationcenter: na
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: 976d7e7cb304a24f235e51952ce04826776e2789
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5c2c39db7ab89b06915c014778977915cca15190
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: Konfigurálja automatikus felhasználói kialakítási munkanap
 
@@ -397,9 +397,9 @@ Ahhoz, hogy a helyszíni Active Directory kiépíteni, az ügynök az Active Dir
 
 **A parancs #1**
 
-> CD C:\\programfájlok\\Microsoft Azure Active Directory szinkronizálási ügynök\\modulok\\AADSyncAgent
+> CD "C:\Program Files\Microsoft Azure AD Connect Agent\Modules\AADSyncAgent kiépítése" ügynök\\modulok\\AADSyncAgent
 
-> import-module AADSyncAgent.psd1
+> Import-Module "C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\Modules\AADSyncAgent\AADSyncAgent.psd1"
 
 **A parancs #2**
 
@@ -416,6 +416,9 @@ Ahhoz, hogy a helyszíni Active Directory kiépíteni, az ügynök az Active Dir
 
 >[!IMPORTANT]
 >Jelenleg egy ismert probléma globális rendszergazdai hitelesítő adatokkal nem működik, ha azok az egyéni tartománynév (Példa: admin@contoso.com). Megoldás létrehozása, és egy globális rendszergazdai fiók használata onmicrosoft.com tartománnyal (Példa: admin@contoso.onmicrosoft.com)
+
+>[!IMPORTANT]
+>Jelenleg nem működik, ha a többtényezős hitelesítés engedélyezve van a globális rendszergazdai hitelesítő adatokkal egy ismert probléma. A probléma megoldásához tiltsa le a többtényezős hitelesítést a globális rendszergazda.
 
 
 **A parancs #4**

@@ -1,11 +1,11 @@
 ---
-title: "IP-cím-típusok az Azure-ban | Microsoft Docs"
-description: "Információk a nyilvános és privát IP-címekről az Azure-ban."
+title: IP-cím-típusok az Azure-ban | Microsoft Docs
+description: Információk a nyilvános és privát IP-címekről az Azure-ban.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 610b911c-f358-4cfe-ad82-8b61b87c3b7e
 ms.service: virtual-network
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/16/2017
 ms.author: jdial
-ms.openlocfilehash: e3baedba814cf6ac19df72c49e1c95ea2cd5cf73
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: a5cda1b5ecb686c9b03da27bdbca42ddc1a74f54
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-cím-típusok és lefoglalási módszerek az Azure-ban
 
@@ -53,7 +53,7 @@ A nyilvános IP-címek IPv4- vagy IPv6-címekkel jönnek létre. A nyilvános IP
 
 A nyilvános IP-címek a következő termékváltozatok valamelyikével jönnek létre:
 
-#### <a name="basic"></a>Basic
+#### <a name="basic"></a>Alapszintű
 
 A termékváltozatok bevezetése előtt létrehozott minden nyilvános IP-cím alapszintű termékváltozatú nyilvános IP-cím. A termékváltozatok bevezetésének köszönhetően mostantól megadhatja, hogy milyen termékváltozatú legyen a nyilvános IP-cím. Az alapszintű termékváltozatú címek jellemzői:
 
@@ -68,13 +68,10 @@ A standard termékváltozatú nyilvános IP-címek jellemzői:
 
 - Csak a statikus kiosztási módszerrel oszthatók ki.
 - Hálózati adapterek vagy standard, internetkapcsolattal rendelkező terheléselosztók számára oszthatók ki. Az Azure Load Balancer termékváltozataival kapcsolatos további információkért tekintse meg [az Azure Load Balancer standard termékváltozatáról](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szóló cikket.
-- Alapértelmezés szerint zónaredundánsak. Létrehozhatóak zónásan, és garantálhatóak adott rendelkezésre állási zónákban.  A rendelkezésre állási zónákkal kapcsolatos további információkért tekintse meg [a rendelkezésre állási zónák áttekintését](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Alapértelmezés szerint zónaredundánsak. Létrehozhatóak zónásan, és garantálhatóak adott rendelkezésre állási zónákban. A rendelkezésre állási zónákkal kapcsolatos további információkért tekintse meg [a rendelkezésre állási zónák áttekintését](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
  
 > [!NOTE]
-> Ha egy standard termékváltozatú nyilvános IP-címet hozzárendel egy virtuális gép hálózati adapteréhez, kifejezetten engedélyeznie kell a kívánt forgalmat egy [hálózati biztonsági csoporttal](security-overview.md#network-security-groups).  Az erőforrással történő kommunikáció meghiúsul, amíg nem hoz létre és rendel hozzá egy hálózati biztonsági csoportot, és kifejezetten nem engedélyezi a kívánt forgalmat.
-
-A standard termékváltozat előzetes kiadásban érhető el. Standard termékváltozatú nyilvános IP-cím létrehozásához először regisztrálnia kell az előzetes kiadásra, és a címet egy támogatott helyen kell létrehoznia. Az előzetes kiadásra való regisztrációval kapcsolatban tekintse meg [a standard termékváltozat előzetes kiadására való regisztrációt ismertető](virtual-network-public-ip-address.md#register-for-the-standard-sku-preview) cikket. A támogatott helyek (régiók) listájáért tekintse meg a [régiónkénti elérhetőséget](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region-availability) részletező szakaszt, és a további támogatott régiókért kövesse az [Azure virtuális hálózati frissítésekkel kapcsolatos](https://azure.microsoft.com/updates/?product=virtual-network) oldalát.
-
+> Ha egy standard termékváltozatú nyilvános IP-címet hozzárendel egy virtuális gép hálózati adapteréhez, kifejezetten engedélyeznie kell a kívánt forgalmat egy [hálózati biztonsági csoporttal](security-overview.md#network-security-groups). Az erőforrással történő kommunikáció meghiúsul, amíg nem hoz létre és rendel hozzá egy hálózati biztonsági csoportot, és kifejezetten nem engedélyezi a kívánt forgalmat.
 
 ### <a name="allocation-method"></a>Lefoglalási módszer
 
@@ -183,7 +180,7 @@ Az IP-címkezelésre vonatkozó korlátokat a [hálózati korlátok](../azure-su
 ## <a name="pricing"></a>Díjszabás
 A nyilvános IP-címek kapcsán névleges díjak merülhetnek fel. Ha többet szeretne megtudni az Azure-ban használt IP-címek díjszabásáról, tekintse át az [IP-címek díjszabását](https://azure.microsoft.com/pricing/details/ip-addresses) ismertető oldalt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Statikus nyilvános IP-címmel rendelkező virtuális gép telepítése az Azure Portal használatával](virtual-network-deploy-static-pip-arm-portal.md)
 * [Statikus nyilvános IP-címmel rendelkező virtuális gép telepítése sablon használatával](virtual-network-deploy-static-pip-arm-template.md)
 * [Statikus magánhálózati IP-címmel rendelkező virtuális gép telepítése az Azure Portal használatával](virtual-networks-static-private-ip-arm-pportal.md)

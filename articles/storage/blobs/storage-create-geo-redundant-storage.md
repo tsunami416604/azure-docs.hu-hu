@@ -1,6 +1,6 @@
 ---
-title: "Alkalmazásadatok magas rendelkezésre állásának biztosítása az Azure-ban | Microsoft Docs"
-description: "Írásvédett georedundáns tárolás használata az alkalmazásadatok magas rendelkezésre állásának biztosításához"
+title: Alkalmazásadatok magas rendelkezésre állásának biztosítása az Azure-ban | Microsoft Docs
+description: Írásvédett georedundáns tárolás használata az alkalmazásadatok magas rendelkezésre állásának biztosításához
 services: storage
 author: tamram
 manager: jeconnoc
@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 5b1c443cae8481d98c32a3f4d9e3899621d1dd89
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: ce72c1a68c1dbe5cede33dd42adc1b002a81326e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="make-your-application-data-highly-available-with-azure-storage"></a>Az alkalmazásadatok magas rendelkezésre állásának biztosítása az Azure Storage használatával
 
@@ -43,7 +43,7 @@ Az oktatóanyag elvégzéséhez:
 # <a name="python-tabpython"></a>[Python] (#tab/python) 
 
 * Telepítse a [Pythont](https://www.python.org/downloads/).
-* A [Pythonhoz készült Azure Storage SDK](storage-python-how-to-use-blob-storage.md#download-and-install-azure-storage-sdk-for-python) letöltése és telepítése
+* A [Pythonhoz készült Azure Storage SDK](https://github.com/Azure/azure-storage-python) letöltése és telepítése
 * (Választható) A [Fiddler](https://www.telerik.com/download/fiddler) letöltése és telepítése
 
 ---

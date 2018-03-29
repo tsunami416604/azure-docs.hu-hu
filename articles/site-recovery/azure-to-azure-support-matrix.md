@@ -1,21 +1,21 @@
 ---
-title: "Az Azure Site Recovery mátrix a replikálása Azure-bA az Azure-ból |} Microsoft Docs"
-description: "Foglalja össze a támogatott operációs rendszerek és konfigurációk az Azure Site Recovery replikálása az Azure virtuális gépek (VM) több régióban másikra vész-helyreállítási igényekre."
+title: Az Azure Site Recovery mátrix a replikálása Azure-bA az Azure-ból |} Microsoft Docs
+description: Foglalja össze a támogatott operációs rendszerek és konfigurációk az Azure Site Recovery replikálása az Azure virtuális gépek (VM) több régióban másikra vész-helyreállítási igényekre.
 services: site-recovery
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 03/24/2018
 ms.author: sujayt
-ms.openlocfilehash: 4383286285f02bad1645344fab43f8b6bdb145cb
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 30ee269b3f484256001af211181a517821d79617
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>Az Azure Site Recovery mátrix a replikálása Azure-bA az Azure-ból
+# <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Az Azure-régió, egy másik replikálásához támogatási mátrix
 
 
 >[!NOTE]
@@ -133,7 +133,7 @@ Kína | Kínai keleti, Kína északi régiója
 
 **Konfigurálás** | **Támogatott/nem támogatott** | **Megjegyzések**
 --- | --- | ---
-Méret | Bármely Azure Virtuálisgép-méretet a CPU-magokat legalább 2 és 1 GB RAM | Tekintse meg [Azure virtuálisgép-méretek](../virtual-machines/windows/sizes.md)
+Méret | Bármely Azure Virtuálisgép-méretet a Processzormagok legalább 2 és 1 GB RAM | Tekintse meg [Azure virtuálisgép-méretek](../virtual-machines/windows/sizes.md)
 Rendelkezésre állási csoportok | Támogatott | Portál "Replikáció engedélyezése" lépése során az alapértelmezett beállítást használja, ha a a rendelkezésre állási csoportok pedig automatikusan létrehozott adatforrását régió konfigurációja alapján. Módosíthatja a célként megadott rendelkezésre állási csoport "replikált elemek > Beállítások > Számítás és hálózat > rendelkezésre állási csoport" bármikor.
 Hibrid használata juttatás (HUB) virtuális gépek | Támogatott | Ha a forrás virtuális gép HUB licenc engedélyezve van, a feladatátvételi teszt vagy feladatátvételi VM is használja a központ licenc.
 Virtuálisgép-méretezési csoportok | Nem támogatott |
@@ -149,7 +149,7 @@ Virtuális gépek áttelepítése a Site Recovery | Támogatott | Ha a rendszer 
 Maximális operációsrendszer-lemez mérete | 2048 GB | Tekintse meg [virtuális gépek által használt lemezek.](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)
 Maximális adattároló lemezeinek mérete | 4095 GB | Tekintse meg [virtuális gépek által használt lemezek.](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)
 Adatlemezek száma | Egy adott Azure virtuális gép mérete által támogatott legfeljebb 64 | Tekintse meg [Azure virtuálisgép-méretek](../virtual-machines/windows/sizes.md)
-Ideiglenes lemez | Mindig ki vannak zárva a replikációból | Ideiglenes lemez ki van zárva a replikációból mindig. Azure guida nce szerint ideiglenes lemezen ne helyezzen állandó adatokat. Tekintse meg [Azure virtuális gépeken mennyiségű ideiglenes lemezes](../virtual-machines/windows/about-disks-and-vhds.md#temporary-disk) további részleteket.
+Ideiglenes lemez | Mindig ki vannak zárva a replikációból | Ideiglenes lemez ki van zárva a replikációból mindig. Az Azure útmutatás szerint ideiglenes lemezen ne helyezzen állandó adatokat. Tekintse meg [Azure virtuális gépeken mennyiségű ideiglenes lemezes](../virtual-machines/windows/about-disks-and-vhds.md#temporary-disk) további részleteket.
 A lemezen adatváltozási sebesség | Legfeljebb egy prémium szintű storage a lemezen 10 MB/s és a Standard tárolási lemezenként 2 MB/s | Ha a lemezen a átlagos adatváltozási sebesség meghaladja a 10 MB/s (a Premium) és 2 MB/s (általános) folyamatosan, replikáció nem képes. Azonban ha egy alkalmanként adatokat kapacitásnövelés, és az adatmódosítási arány nagyobb, mint 10 MB/s (a Premium) és 2 MB/s (általános) egy kis ideig, és származnak, replikációs fog szinkronizálásához. Ebben az esetben jelenhet meg némileg késleltetett helyreállítási pontokat.
 Standard szintű storage-fiókok lemezek | Támogatott |
 Prémium szintű storage-fiókok lemezek | Támogatott | Ha egy virtuális gép prémium és standard szintű storage-fiókok elosztva lemezzel rendelkezik, válassza az egyes lemezek ugyanazt a tárolási konfigurációt, hogy a cél régióban másik cél tárfiók
@@ -179,7 +179,7 @@ Internetes Load Balancer | Támogatott | Társítsa a előre konfigurált load b
 Belső terheléselosztó | Támogatott | Társítsa a előre konfigurált load balancer egy azure Automation szolgáltatásbeli parancsfájl használata a helyreállítási tervben kell.
 Nyilvános IP-cím| Támogatott | Egy már meglévő nyilvános IP-cím a hálózati adapterhez társítani vagy hozzon létre egyet, és társítsa a hálózati adapterhez, egy azure Automation szolgáltatásbeli parancsfájl használata a helyreállítási tervben kell.
 NSG a hálózati Adapteren (erőforrás-kezelő)| Támogatott | A hálózati adapterhez, egy azure Automation szolgáltatásbeli parancsfájl használata a helyreállítási tervben szereplő NSG társítása kell.  
-NSG alhálózat (Resource Manager és klasszikus)| Támogatott | A hálózati adapterhez, egy azure Automation szolgáltatásbeli parancsfájl használata a helyreállítási tervben szereplő NSG társítása kell.
+NSG alhálózat (Resource Manager és klasszikus)| Támogatott | Egy azure Automation szolgáltatásbeli parancsfájl használata a helyreállítási tervben alhálózathoz NSG társítása kell.
 NSG a virtuális gép (klasszikus)| Támogatott | A hálózati adapterhez, egy azure Automation szolgáltatásbeli parancsfájl használata a helyreállítási tervben szereplő NSG társítása kell.
 Fenntartott IP (statikus IP-cím) / megőrizni a forrás IP-címe | Támogatott | Ha a forrás virtuális gép hálózati adapter van statikus IP-konfigurációt, és a cél alhálózathoz az azonos IP-cím elérhető, a virtuális gép feladatátvételi hozzá van rendelve. A célként megadott alhálózat nem rendelkezik az azonos IP-cím elérhető, ha az alhálózat elérhető IP-címek egyikét a virtuális gép számára van fenntartva. Megadhat egy fix IP-cím az Ön által választott, a "replikált elemek > Beállítások > Számítás és hálózat > hálózati illesztőt. Válassza ki a hálózati Adaptert, és adja meg az alhálózatot és IP-címe a kiválasztott.
 Dinamikus IP| Támogatott | Ha a hálózati adapter a forrás virtuális gép dinamikus IP-konfiguráció, a hálózati adapter a feladatátvétel virtuális gép is alapértelmezés szerint dinamikus. Megadhat egy fix IP-cím az Ön által választott, a "replikált elemek > Beállítások > Számítás és hálózat > hálózati illesztőt. Válassza ki a hálózati Adaptert, és adja meg az alhálózatot és IP-címe a kiválasztott.

@@ -1,13 +1,13 @@
 ---
-title: "Apache Hive - az Azure HDInsight Beeline használata |} Microsoft Docs"
-description: "Megtudhatja, hogyan használhatja a Beeline a HDInsight Hadoop Hive-lekérdezések futtatásához. Beeline olyan eszköz, amellyel a hiveserver2-n keresztül JDBC használata."
+title: Apache Hive - az Azure HDInsight Beeline használata |} Microsoft Docs
+description: Megtudhatja, hogyan használhatja a Beeline a HDInsight Hadoop Hive-lekérdezések futtatásához. Beeline olyan eszköz, amellyel a hiveserver2-n keresztül JDBC használata.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-keywords: "beeline struktúra, hive beeline"
+keywords: beeline struktúra, hive beeline
 ms.assetid: 3adfb1ba-8924-4a13-98db-10a67ab24fca
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/02/2018
+ms.date: 03/26/2018
 ms.author: larryfr
-ms.openlocfilehash: 5d4e9d6ffb7fa0c2e4b69c5b534f0078aec5f68c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f2beb42f51bbbf65abe7bb6d95579106cdf1857a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-the-beeline-client-with-apache-hive"></a>Használhatja a Beeline Apache Hive
 
@@ -110,7 +110,7 @@ Beeline Hive ügyfél, amely az átjárócsomópontokkal a HDInsight-fürt rész
         | sessionpagevieworder  | bigint     |          |
         +-----------------------+------------+----------+--+
 
-    Ez a témakör a tábla oszlopai. Most tudta elvégezni egyes lekérdezések adatok alapján, amíg inkább hozzon létre egy új tábla ismerteti az adatok betöltése a Hive és a séma alkalmazása.
+    Ez a témakör a tábla oszlopai.
 
 4. Adja meg a következő utasításokat nevű tábla létrehozása **log4jLogs** a HDInsight-fürthöz megadott mintaadatokat használatával:
 

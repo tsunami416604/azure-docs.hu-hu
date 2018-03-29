@@ -1,25 +1,25 @@
 ---
-title: "Azure Service Fabric-alkalmazás üzembe helyezése egy fürtön a Visual Studióból | Microsoft Docs"
-description: "Ismerje meg, hogyan helyezhető üzembe egy alkalmazás egy fürtön a Visual Studióból"
+title: Azure Service Fabric-alkalmazás üzembe helyezése egy fürtön a Visual Studióból | Microsoft Docs
+description: Ismerje meg, hogyan helyezhető üzembe egy alkalmazás egy fürtön a Visual Studióból
 services: service-fabric
 documentationcenter: .net
 -author: mikkelhegn
 -manager: msfussell
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/21/2018
-ms.author: mikkelhegn
+ms.date: 02/23/2018
+ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 21c991a4e3f9ae19a4ad4a96427fdc1c91c55a1c
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 1d8f8d903046f1d471f7abbe08a957b81522e391
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="tutorial-deploy-an-application-to-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Alkalmazás üzembe helyezése egy Service Fabric-fürtön az Azure-ban
 Ez az oktatóanyag a sorozat második része, amely azt mutatja be, hogyan helyezhetők üzembe az Azure Service Fabric-alkalmazások egy új fürtön az Azure-ban, közvetlenül a Visual Studióból.
@@ -65,7 +65,6 @@ Ez az oktatóanyag lépésenként bemutatja, hogyan hozhat létre egy fürtöt a
 > Számos szolgáltatás fordított proxyt használ az egymással folytatott kommunikációhoz. A Visual Studióból létrehozott fürtök és a nyilvános fürtök esetében a fordított proxy alapértelmezés szerint engedélyezve van.  Ha meglévő fürtöt használ, [engedélyeznie kell a fürtben a fordított proxyt](service-fabric-reverseproxy.md#setup-and-configuration).
 
 ### <a name="deploy-the-app-to-the-service-fabric-cluster"></a>Az alkalmazás üzembe helyezése a Service Fabric-fürtben
-
 1. A Megoldáskezelőben kattintson a jobb gombbal az alkalmazásra, és válassza a **Közzététel** lehetőséget.
 
 2. Jelentkezzen be az Azure-fiókjával, hogy hozzáférjen az előfizetéséhez vagy előfizetéseihez. Ez a lépés nem kötelező, ha nyilvános fürtöt használ.

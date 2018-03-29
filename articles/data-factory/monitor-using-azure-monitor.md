@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: d4022a89b8e0e08679e1c593dc1b691a23d21471
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8ab2e7cdc8472be9c0800eea5bef9322b0ed87f2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="monitor-data-factories-using-azure-monitor"></a>Azure-figyelővel képernyő adat-előállítók  
 Sok áthelyezése alkotórészek összetettek a felhőalapú alkalmazásokhoz. Győződjön meg arról, hogy az alkalmazás marad be adatokat, és megfelelő állapotban fut figyelés nyújt. Emellett segít, hogy ki a lehetséges problémák stave és a múltbeli kiépítettektől eltérő hibakeresést. Figyelési adatok segítségével emellett az alkalmazással kapcsolatos átfogó megismerésében. Ennek az információnak a segítséget nyújtanak az alkalmazások teljesítményének vagy karbantartási követelmények, vagy a, amelyek egyébként kézi beavatkozás műveletek automatizálására.
@@ -381,7 +381,7 @@ További információ az itt] ()https://msdn.microsoft.com/en-us/library/azure/d
 |start| Karakterlánc | TimeSpan érték, UTC formátumban eseményindító tűz elindítása | `2017-06-26T20:55:29.5007959Z`|
 |status| Karakterlánc | Végső állapotát e trigger sikeresen következik (sikeres vagy sikertelen) | `Succeeded`|
 
-### <a name="metrics"></a>Mérőszámok
+## <a name="metrics"></a>Mérőszámok
 
 Azure figyelő címinfrastruktúra megjelenítési lehetőségeinek a teljesítmény- és a munkaterhelések Azure állapot telemetriai adatok felhasználását teszi lehetővé. A legfontosabb Azure telemetriai adatok típus (más néven teljesítményszámlálók) vagy az Azure erőforrások által kibocsátott metrikákat. Az Azure figyelő többféleképpen is konfigurálhatja, és felhasználhatják a figyeléshez és hibaelhárításhoz metrikákat.
 
@@ -397,6 +397,51 @@ ADFV2 bocsát ki a következő metrikák
 | TriggerFailedRuns    | Nem sikerült az eseményindító futtatása metrikák     | Darabszám    | Összes                | Teljes eseményindító sikertelen futtat egy perc időszakban      |
 
 A metrikák szeretne használni, kövesse a cikkben- https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics 
+
+## <a name="alerts"></a>Riasztások
+
+Riasztással támogatott mérőszámokat adat-előállítóban. Kattintson a **riasztások** gombra a Data Factory **figyelő** lap.
+
+![Riasztások beállítás](media/monitor-using-azure-monitor/alerts_image1.png)
+
+Ehhez szükséges, hogy a **riasztások** lap.
+
+![Riasztások lap](media/monitor-using-azure-monitor/alerts_image2.png)
+
+Is jelentkezzen be az Azure-portálon, és kattintson a **figyelője –&gt; riasztások** eléréséhez a **riasztások** közvetlenül lapon.
+
+![A portál menüjében riasztások](media/monitor-using-azure-monitor/alerts_image3.png)
+
+### <a name="create-alerts"></a>Riasztás létrehozása
+
+1.  Kattintson a **+ Új riasztási szabály** létrehozni egy új riasztás.
+
+    ![Új riasztási szabályt](media/monitor-using-azure-monitor/alerts_image4.png)
+
+2.  Adja meg a **riasztási feltétel**.
+
+    > [!NOTE]
+    > Ügyeljen arra, hogy válasszon **összes** a a **erőforrástípus szűrés**.
+
+    ![Riasztási feltétel, a képernyőn 1 / 3](media/monitor-using-azure-monitor/alerts_image5.png)
+
+    ![Riasztási feltétel, 2, 3 képernyőn](media/monitor-using-azure-monitor/alerts_image6.png)
+
+    ![Riasztási feltétel, 3, 3 képernyőn](media/monitor-using-azure-monitor/alerts_image7.png)
+
+3.  Adja meg a **riasztás részletei**.
+
+    ![Riasztás részletei](media/monitor-using-azure-monitor/alerts_image8.png)
+
+4.  Adja meg a **művelet csoport**.
+
+    ![A művelet csoport, 4 1. képernyő](media/monitor-using-azure-monitor/alerts_image9.png)
+
+    ![A művelet csoport, 4 2 képernyője](media/monitor-using-azure-monitor/alerts_image10.png)
+
+    ![A művelet csoport, képernyőjén 3 4](media/monitor-using-azure-monitor/alerts_image11.png)
+
+    ![A művelet csoport, 4 4 képernyője](media/monitor-using-azure-monitor/alerts_image12.png)
 
 ## <a name="next-steps"></a>További lépések
 Lásd: [figyelő programozott folyamatok kezelését és](monitor-programmatically.md) cikkben tájékozódhat az figyelése és kezelése a folyamatok futtatásával. 

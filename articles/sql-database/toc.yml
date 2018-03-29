@@ -16,6 +16,7 @@
     - name: Adatbázis létrehozása – Azure PowerShell
       href: sql-database-get-started-powershell.md
     - name: Csatlakozás és lekérdezés
+      href: sql-database-connect-query.md
       items:
         - name: SSMS
           href: sql-database-connect-query-ssms.md

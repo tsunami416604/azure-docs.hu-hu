@@ -1,8 +1,8 @@
 ---
-title: "Az adatok feltárása és Spark modellezés |} Microsoft Docs"
-description: "Az feltárására és modellezési képességek az Azure-on a Spark MLlib eszközkészlet bővíthető."
+title: Az adatok feltárása és Spark modellezés |} Microsoft Docs
+description: Az feltárására és modellezési képességek az Azure-on a Spark MLlib eszközkészlet bővíthető.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: jhubbard
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
-ms.author: deguhath;bradsev;gokuma
-ms.openlocfilehash: 078e1d209d0472051e2ec2804e67518a92285413
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.author: bradsev
+ms.openlocfilehash: c796cc5f19ac3a30d2cdf72b8fea2813a1586c1b
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Adatáttekintés és modellezés a Spark segítségével
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
@@ -55,18 +55,18 @@ Beállítási lépéseket és kód okat ebben a forgatókönyvben egy HDInsight 
 ### <a name="spark-20-notebooks"></a>Spark 2.0 notebookok
 A regresszió és besorolási feladatokat, amelyeket a rendszer egy külső 2.0 fürt használatával külön jegyzetfüzetek és a besorolási notebook használja egy másik adatkészletet:
 
-- [Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Ez a fájl hogyan hajthat végre az adatok feltárása, modellezési, és a Spark 2.0 pontozási fürtök NYC Taxi út és jegy ára adatkészlet leírt [Itt](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). A notebook gyorsan felfedezése a Spark 2.0 adtunk kódot az jó kiindulási pont lehet. További részletes notebook elemzi az NYC Taxi adatokat, lásd: a következő notebook ezen a listán. Tekintse meg a megjegyzéseket, a lista a következő, hasonlítsa össze ezeket a jegyzetfüzetek. 
-- [Spark2.0-pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): Ez a fájl bemutatja, hogyan végezhet wrangling (Spark SQL és dataframe műveletek), feltárása, modellezéséhez és a NYC Taxi út és a jegy ára adatkészlet leírt pontozási [Itt](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
-- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): Ez a fájl bemutatja, hogyan végezhet wrangling (Spark SQL és dataframe műveletek), feltárása, modellezéséhez és pontozási a jól ismert légitársaság időben indító adatkészlet 2011 és a 2012. Azt integrálva az adatokkal repülőtéri időjárási (pl. szélsebesség, hőmérséklet, magasság stb.) a légitársaság dataset előtt modellezési, így időjárási felhasználásokhoz felvehetők a modell.
+- [Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Ez a fájl hogyan hajthat végre az adatok feltárása, modellezési, és a NYC Taxi út használata Spark 2.0 pontozási fürtök és jegy ára-adatkészlet leírt [Itt](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). A notebook gyorsan felfedezése a Spark 2.0 adtunk kódot az jó kiindulási pont lehet. További részletes notebook elemzi az NYC Taxi adatokat, lásd: a következő notebook ezen a listán. Tekintse meg a megjegyzéseket, a lista a következő, hasonlítsa össze ezeket a jegyzetfüzetek. 
+- [Spark2.0-pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): Ez a fájl bemutatja, hogyan végezhet wrangling (Spark SQL és dataframe műveletek), feltárása, modellezéséhez és a NYC Taxi út és a jegy ára adatkészlet leírt pontozási [Itt ](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
+- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): Ez a fájl bemutatja, hogyan végezhet wrangling (Spark SQL és dataframe műveletek), feltárása, modellezéséhez és pontozási a jól ismert légitársaság időben indító használatával a DataSet 2012 és a 2011. Azt integrálva az adatokkal repülőtéri időjárási (pl. szélsebesség, hőmérséklet, magasság stb.) a légitársaság dataset előtt modellezési, így időjárási felhasználásokhoz felvehetők a modell.
 
 <!-- -->
 
 > [!NOTE]
 > A légitársaság dataset lett hozzáadva, a Spark 2.0 jegyzetfüzeteihez jobban a besorolási algoritmusok használatát mutatja be. Tekintse meg a következőket légitársaság kapcsolatos információk időben indító dataset és időjárási adatkészlet:
 
->- Légitársaság időben indító adatok: [http://www.transtats.bts.gov/ONTIME/](http://www.transtats.bts.gov/ONTIME/)
+>- Légitársaság időben indító adatokat: [http://www.transtats.bts.gov/ONTIME/](http://www.transtats.bts.gov/ONTIME/)
 
->- Repülőtéri időjárási adatok: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/) 
+>- Repülőtéri időjárási adatokat: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/) 
 > 
 > 
 

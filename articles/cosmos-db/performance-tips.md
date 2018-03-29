@@ -1,12 +1,12 @@
 ---
-title: ".NET-keretrendszerhez készült Azure Cosmos DB teljesítmény tippek |} Microsoft Docs"
-description: "Ismerje meg az ügyfél-konfigurációs beállítások Azure Cosmos DB adatbázis teljesítményének javítása érdekében"
-keywords: "adatbázis teljesítményének javításával"
+title: .NET-keretrendszerhez készült Azure Cosmos DB teljesítmény tippek |} Microsoft Docs
+description: Ismerje meg az ügyfél-konfigurációs beállítások Azure Cosmos DB adatbázis teljesítményének javítása érdekében
+keywords: adatbázis teljesítményének javításával
 services: cosmos-db
 author: mimig1
 manager: jhubbard
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: 94ff155e-f9bc-488f-8c7a-5e7037091bb9
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: mimig
-ms.openlocfilehash: 2b822794cbafa037d4ab3cb23d2a885914c83607
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 6b8ff8d2efd2039e7b71f4e8f25b2756d324940f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 > [!div class="op_single_selector"]
 > * [Java](performance-tips-java.md)
@@ -28,8 +28,6 @@ ms.lasthandoff: 02/28/2018
 > 
 
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Teljesítmény tippek az Azure Cosmos DB és .NET
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Azure Cosmos-adatbázis egy gyors és rugalmas elosztott adatbázis, amely zökkenőmentesen méretezi, garantált késéssel és átviteli sebesség. Nincs a fő architektúra módosításokat, vagy írja meg az adatbázist az Azure Cosmos DB méretezési komplex kódot. Felfelé és lefelé skálázás be lehető legkönnyebben egyetlen API-hívás vagy [SDK metódus hívása](set-throughput.md#set-throughput-sdk). Azonban mivel Azure Cosmos DB hálózati hívások keresztül érhető el nincsenek ügyféloldali optimalizálása, hogy használata esetén a csúcsteljesítmény eléréséhez a [SQL .NET SDK](documentdb-sdk-dotnet.md).
 

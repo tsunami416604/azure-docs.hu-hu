@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 4a334b63856a348838cbe61dfc0ab724f58100fb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d635938558a5c2bf68e7c20c287b16c672bdf962
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>A hibrid forgatókönyv-feldolgozók a futó runbookot 
 Nincs különbség a futó Azure Automation és a hibrid forgatókönyv-feldolgozót a futó runbookok struktúrában. Az összes használt Runbookok valószínűleg jelentős különbség azonban mivel a hibrid forgatókönyv-feldolgozók általában célzó runbookok kezelheti az erőforrásokat a helyi számítógép vagy a helyi környezetben, ahol központilag telepítették, a runbookok közben erőforrásokon Azure Automation szolgáltatásbeli általában az Azure felhőalapú erőforrások kezelésére.
@@ -20,7 +20,7 @@ Nincs különbség a futó Azure Automation és a hibrid forgatókönyv-feldolgo
 Runbook szerkesztése a hibrid forgatókönyv-feldolgozó Azure Automation, de előfordulhat, hogy nehézségek Ha kísérli meg a runbook tesztelése a szerkesztőben.  A PowerShell-moduljai a helyi erőforrások nincs telepítve az Azure Automation környezetben ebben az esetben elérhető, a teszt sikertelen lesz.  Ha a szükséges modulokat telepíti, a runbookot a rendszer futtatja, de akkor nem fog tudni hozzáférni a helyi erőforrások teljes vizsgálat.
 
 ## <a name="starting-a-runbook-on-hybrid-runbook-worker"></a>Runbook indítása a hibrid forgatókönyv-feldolgozó
-[Runbook elindítása az Azure Automationben](automation-starting-a-runbook.md) runbook indítása másik módszerét ismerteti.  Hibrid forgatókönyv-feldolgozó hozzáadása egy **RunOn** beállítás, amelyen megadhatja a hibrid forgatókönyv-feldolgozó csoport nevét.  Ha kiválaszt egy csoportot, majd a runbook lekérése és csoport munkavállalók futtatásához.  Ha ez a beállítás nincs megadva, majd azt legyen futtatva az Azure Automationben normál.
+[Runbook elindítása az Azure Automationben](automation-starting-a-runbook.md) runbook indítása másik módszerét ismerteti.  Hibrid forgatókönyv-feldolgozó hozzáadása egy **RunOn** beállítás, amelyen megadhatja a hibrid forgatókönyv-feldolgozó csoport nevét.  Ha kiválaszt egy csoportot, majd a runbook lekérése és futtassa a dolgozók, a csoport egyik.  Ha ez a beállítás nincs megadva, majd azt legyen futtatva az Azure Automationben normál.
 
 Amikor elindít egy forgatókönyvet az Azure portálon, lehetősége lesz a **futtatnak** beállítás, ahol kiválaszthatja **Azure** vagy **Hibridfeldolgozó**.  Ha **Hibridfeldolgozó**, jelölje be a csoport a legördülő listából.
 

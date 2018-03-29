@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: tdykstra
 ms.custom: ''
-ms.openlocfilehash: 6f74dd4d9cb78c1316c87bd5a261e751b9b34923
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 89469af2b1d02ef00fc347e47719956885e7f142
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Az Azure Functions időzítő indítófeltételt 
 
@@ -52,6 +52,10 @@ Az alábbi példa mutatja egy [C# függvény](functions-dotnet-class-library.md)
 [FunctionName("TimerTriggerCSharp")]
 public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWriter log)
 {
+    if(myTimer.IsPastDue)
+    {
+        log.Info("Timer is running late!");
+    }
     log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
 }
 ```
@@ -144,19 +148,19 @@ module.exports = function (context, myTimer) {
 
 A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs).
 
-Az attribútumok konstruktorában CRON-kifejezés, hajtja végre a következő példában látható módon:
+Az attribútumok konstruktorában CRON-kifejezés vesz igénybe, vagy egy `TimeSpan`. Használhat `TimeSpan` csak akkor, ha a függvény az alkalmazás fut. az App Service-csomag. A következő példa bemutatja egy CRON-kifejezés:
 
 ```csharp
 [FunctionName("TimerTriggerCSharp")]
 public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWriter log)
 {
-   ...
+    if (myTimer.IsPastDue)
+    {
+        log.Info("Timer is running late!");
+    }
+    log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
 }
  ```
-
-Megadhat egy `TimeSpan` egy CRON-kifejezés, ha a függvény-alkalmazás az App Service-csomag (nem a fogyasztás terv) fut. helyett.
-
-Tekintse meg a teljes például [C# példa](#c-example).
 
 ## <a name="configuration"></a>Konfiguráció
 
@@ -167,75 +171,11 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 |**Típusa** | n/a | "TimerTrigger" értékre kell állítani. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon.|
 |**direction** | n/a | "A" értékre kell állítani. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon. |
 |**name** | n/a | A függvény a kódban időzítő az objektumot határozza meg a változó neve. | 
-|**schedule**|**ScheduleExpression**|A felhasználási terv ütemezés a CRON-kifejezés lehet definiálni. Ha használ egy App Service-csomag, használhatja a `TimeSpan` karakterlánc. Az alábbi szakaszok ismertetik a CRON-kifejezést. Az ütemezés kifejezés be Alkalmazásbeállítás, és csomagolni értékre állítani ezt a tulajdonságot **%** jelentkezik, például: "% NameOfAppSettingWithCRONExpression %". |
+|**schedule**|**ScheduleExpression**|A [CRON-kifejezés](#cron-expressions) vagy egy [TimeSpan](#timespan) érték. A `TimeSpan` csak egy függvény alkalmazást az App Service-csomag futó használható. Az ütemezés kifejezés be Alkalmazásbeállítás, és állítsa be ezt a tulajdonságot a beállítás neve a becsomagolt alkalmazás **%** jelentkezik, például: "% NameOfAppSettingWithScheduleExpression %". |
+|**runOnStartup**|**RunOnStartup**|Ha `true`, a függvény meghívták a futtatókörnyezet indításakor. Például a futtatókörnyezet kezdődik, amikor a függvény app felébred üresjárati tétlenség miatt váltás után. Ha a függvény alkalmazás-újraindítások függvény-módosítások miatt, ha a függvény app méretezi ki. Ezért **runOnStartup** ritkán Ha valaha is meg `true`, mert a teszi, hogy kód magas előre nem látható időpontokban hajtható végre. Ha a funkció az időzítő ütemezés kívül van szüksége, hozzon létre egy második függvényt különböző eseményindító típusú, és a két funkciók között kóddal rendelkeznek. Például elindítható a központi telepítés akkor is [testre szabhatja a központi telepítés](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) azáltal, hogy a HTTP-kérelem a telepítés befejezésekor a második függvény meghívásához.|
+|**useMonitor**|**UseMonitor**|Beállítása `true` vagy `false` annak jelzésére, hogy az ütemezés kell figyelni. Figyelési ütemezés fenntartása ütemezés előfordulási biztosítása az ütemezés karban kell akkor is, ha a függvény app példányok indítsa újra a segítése érdekében. Ha nem állítja be, az alapértelmezett érték `true` az ütemezést, amelyekben egy nagyobb, mint 1 perces ismétlődési időköz. Percenként egynél többször kiváltó ütemezéseket, az alapértelmezett érték `false`.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
-
-### <a name="cron-format"></a>CRON formátumban 
-
-A [CRON-kifejezés](http://en.wikipedia.org/wiki/Cron#CRON_expression) az Azure Functions időzítő eseményindító magában foglalja a hat mezők: 
-
-```
-{second} {minute} {hour} {day} {month} {day-of-week}
-```
-
->[!NOTE]   
->A CRON-kifejezés talál online számos hagyja ki ezt a `{second}` mező. Ha másolása egyik, adja hozzá a hiányzó `{second}` mező.
-
-### <a name="cron-time-zones"></a>CRON időzónák
-
-Az alapértelmezett időzónát együtt a CRON-kifejezés az egyezményes világidő (UTC). A CRON-kifejezés alapján másik időzónában van, hozzon létre egy új alkalmazásbeállítást nevű függvény alkalmazás `WEBSITE_TIME_ZONE`. Adja meg a értéket a kívánt időzóna neve látható módon a [Microsoft időzóna Index](https://technet.microsoft.com/library/cc749073(v=ws.10).aspx). 
-
-Például *keleti téli idő* az UTC-05:00. Szeretné, hogy a időzítő tűz indítás: 10:00 de minden nap, használja a következő CRON-kifejezés, amely az UTC időzóna:
-
-```json
-"schedule": "0 0 15 * * *",
-``` 
-
-Azt is megteheti, hozzáadhatja egy új alkalmazásbeállítást a függvény nevű alkalmazást `WEBSITE_TIME_ZONE` és állítsa be az értéket **keleti téli idő**.  Ezután a következő CRON-kifejezés 10:00 de használható: 
-
-```json
-"schedule": "0 0 10 * * *",
-``` 
-### <a name="cron-examples"></a>CRON példák
-
-Az alábbiakban néhány olyan CRON kifejezéseket is használhat az Azure Functions időzítő eseményindítót. 
-
-5 percenként egyszer indításához:
-
-```json
-"schedule": "0 */5 * * * *"
-```
-
-Az Indítás egyszer minden órában tetején:
-
-```json
-"schedule": "0 0 * * * *",
-```
-
-Két óránként indításához:
-
-```json
-"schedule": "0 0 */2 * * *",
-```
-
-Óránként egyszer a Reggel 9 délután 5 óra történő indításához:
-
-```json
-"schedule": "0 0 9-17 * * *",
-```
-
-Indításához: 9:30 AM minden nap:
-
-```json
-"schedule": "0 30 9 * * *",
-```
-
-Indításához: 9:30 AM minden hétköznap:
-
-```json
-"schedule": "0 30 9 * * 1-5",
-```
 
 ## <a name="usage"></a>Használat
 
@@ -246,20 +186,91 @@ Egy időzítő funkció meghívásakor a [objektum](https://github.com/Azure/azu
     "Schedule":{
     },
     "ScheduleStatus": {
-        "Last":"2016-10-04T10:15:00.012699+00:00",
+        "Last":"2016-10-04T10:15:00+00:00",
+        "LastUpdated":"2016-10-04T10:16:00+00:00",
         "Next":"2016-10-04T10:20:00+00:00"
     },
     "IsPastDue":false
 }
 ```
 
+A `IsPastDue` tulajdonság `true` későbbi, mint az ütemezett aktuális függvény hívása esetén. Újra kell indítani a függvény alkalmazást okozhatja például lehet kihagyni egy híváshoz.
+
+## <a name="cron-expressions"></a>CRON-kifejezés 
+
+A CRON-kifejezés az Azure Functions időzítő eseményindító hat mezőket tartalmazza: 
+
+`{second} {minute} {hour} {day} {month} {day-of-week}`
+
+Minden mező a következő típusú értékek egyike lehet:
+
+|Típus  |Példa  |Elindítása  |
+|---------|---------|---------|
+|Egy adott érték |<nobr>"0 5 * * * *"</nobr>|hh:05:00, ahol az ÓÓ az óránként (óránként):|
+|Összes értéket (`*`)|<nobr>"0 * 5 * * *"</nobr>|5:mm:: 00 naponta, ahol az mm percenként az óra (60 naponta alkalommal)|
+|A tartomány (`-` operátor)|<nobr>"5-7 * * * * *"</nobr>|hh:mm:05, valamint hh:mm:06 és hh:mm:07 óó: pp esetén minden perce minden órában (3-szor perc)|  
+|Az értékek egy halmazát (`,` operátor)|<nobr>"5,8,10 * * * * *"</nobr>|hh:mm:05, valamint hh:mm:08 és hh:mm:10 óó: pp esetén minden perce minden órában (3-szor perc)|
+|Az intervallum értéke (`/` operátor)|<nobr>"0 */5 * * * *"</nobr>|hh:05:00, hh:10:00, hh:15:00, és így tovább keresztül hh:55:00, ahol az ÓÓ az óránként (12-szer egy óra)|
+
+### <a name="cron-examples"></a>CRON példák
+
+Az alábbiakban néhány olyan CRON kifejezéseket is használhat az Azure Functions időzítő eseményindítót.
+
+|Példa|Elindítása  |
+|---------|---------|
+|"0 */5 * * * *"|5 percenként egyszer|
+|"0 0 * * * *"|egyszer minden órában tetején|
+|"0 0 */2 * * *"|két óránként|
+|"0 0 9-17 * * *"|óránként egyszer a Reggel 9 a délután 5 óra|
+|"0 30 9 * * *"|9:30 AM minden nap:|
+|"0 30 9 * * 1-5"|9:30 AM minden hétköznap:|
+
+>[!NOTE]   
+>Online CRON-példák találhatók, de ezek hagyja ki ezt a `{second}` mező. Ha másolása egyik, adja hozzá a hiányzó `{second}` mező. Általában érdemes a mezőben egy csillag nem nulla.
+
+### <a name="cron-time-zones"></a>CRON időzónák
+
+A számok CRON-kifejezés egy napon és időpontban, nem az időtartama hivatkozik. Például egy 5 a `hour` mező 5:00-kor, nem minden 5 óra hivatkozik.
+
+Az alapértelmezett időzónát együtt a CRON-kifejezés az egyezményes világidő (UTC). A CRON-kifejezés alapján másik időzónában van, hozzon létre az függvény alkalmazás nevű Alkalmazásbeállítás `WEBSITE_TIME_ZONE`. Adja meg a értéket a kívánt időzóna neve látható módon a [Microsoft időzóna Index](https://technet.microsoft.com/library/cc749073). 
+
+Például *keleti téli idő* az UTC-05:00. Szeretné, hogy a időzítő tűz indítás: 10:00 de minden nap, használja a következő CRON-kifejezés, amely az UTC időzóna:
+
+```json
+"schedule": "0 0 15 * * *",
+``` 
+
+Vagy hozzon létre az függvény alkalmazás nevű Alkalmazásbeállítás `WEBSITE_TIME_ZONE` és állítsa be az értéket **keleti téli idő**.  Akkor használja a következő CRON-kifejezés: 
+
+```json
+"schedule": "0 0 10 * * *",
+``` 
+
+## <a name="timespan"></a>TimeSpan
+
+ A `TimeSpan` csak egy függvény alkalmazást az App Service-csomag futó használható.
+
+CRON-kifejezés, ellentétben a `TimeSpan` érték meghatározza, hogy a minden függvény meghívása között. Egy függvény futtatása hosszabb, mint a megadott időszak után befejezése után a időzítő azonnal hív meg, a függvény újra.
+
+Egy karakterlánc kifejezett a `TimeSpan` formátuma `hh:mm:ss` amikor `hh` : kisebb, mint 24. Ha az első két szám 24 vagy nagyobb, a formátuma `dd:hh:mm`. Néhány példa:
+
+|Példa |Elindítása  |
+|---------|---------|
+|"01:00:00" | Minden órában        |
+|"00:01:00"|percenként         |
+|"24:00:00" | 24 naponta        |
+
 ## <a name="scale-out"></a>Kiterjesztés
 
-Az időzítő indítófeltételt többpéldányos kibővített támogatja. Egy adott időzítő egyetlen példányán fut minden példányára.
+Egy függvény alkalmazást több példányára méretezze át, ha egy időzítő-eseményindítóval aktivált függvény csak egyetlen példányán fut minden példányára.
 
 ## <a name="function-apps-sharing-storage"></a>Függvény alkalmazások megosztása
 
 Ha több függvény alkalmazások között megosztott tárfiókot, győződjön meg arról, hogy minden függvény alkalmazás rendelkezik egy másik `id` a *host.json*. Akkor kihagyhatja a `id` tulajdonság, vagy manuálisan állítsa be az egyes függvény alkalmazások `id` más értékre. Az időzítő indítófeltételt tárolási zárolást használatával gondoskodjon arról, hogy csak egy időzítő példány amikor egy függvény app méretezi ki több példányára. Ha két függvény alkalmazások azonos `id` és egy időzítő indítófeltételt használó minden egyes, csak egy időzítő fog futni.
+
+## <a name="retry-behavior"></a>Újrapróbálási viselkedés
+
+Várólista eseményindító eltérően az időzítő indítófeltételt nem után próbálja megismételni a parancs nem működik. Ha nem sikerül egy olyan függvényt, azt is't nevű újra, amíg az ütemezés.
 
 ## <a name="next-steps"></a>További lépések
 

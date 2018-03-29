@@ -1,10 +1,10 @@
 ---
-title: "Particionálás és az Azure Cosmos Adatbázisba skálázás |} Microsoft Docs"
-description: "Ismerje meg, hogyan particionálási működését Azure Cosmos DB, hogyan lehet konfigurálni a particionálás és kulcsok partícióazonosító és hogyan válassza ki a megfelelő partíciókulcs az alkalmazáshoz."
+title: Particionálás és az Azure Cosmos Adatbázisba skálázás |} Microsoft Docs
+description: Ismerje meg, hogyan particionálási működését Azure Cosmos DB, hogyan lehet konfigurálni a particionálás és kulcsok partícióazonosító és hogyan válassza ki a megfelelő partíciókulcs az alkalmazáshoz.
 services: cosmos-db
 author: rafats
 manager: jhubbard
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 702c39b4-1798-48dd-9993-4493a2f6df9e
 ms.service: cosmos-db
 ms.workload: data-services
@@ -14,15 +14,13 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bfed50eef02c237ce0ea4480e2e208f2e61ccbef
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: a48c1bb246e3e8659aada614d39fdc608e5bc8d8
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="partitioning-in-azure-cosmos-db-using-the-sql-api"></a>Az Azure Cosmos-Adatbázisba az SQL API-val particionálás
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 [A Microsoft Azure Cosmos DB](../cosmos-db/introduction.md) egy globális elosztott, több modellre adatbázis szolgáltatás célja, hogy gyors és kiszámítható teljesítmény és méretezhetőség zökkenőmentesen együtt az alkalmazás eléréséhez, növekedésével azt. 
 
@@ -58,11 +56,11 @@ Az SQL API-t a partíciós kulcs definíciójában egy JSON-útvonal formájába
             <td valign="top"><p>A cikk esetén a doc doc.department értékének felel meg.</p></td>
         </tr>
         <tr>
-            <td valign="top"><p>/ tulajdonságok/neve</p></td>
+            <td valign="top"><p>/properties/name</p></td>
             <td valign="top"><p>Ahol doc-e az elem (beágyazott tulajdonság) doc.properties.name értékének felel meg.</p></td>
         </tr>
         <tr>
-            <td valign="top"><p>/ID</p></td>
+            <td valign="top"><p>/id</p></td>
             <td valign="top"><p>Doc.id értéke megfelel (azonosító és a partíciós kulcs, amelyek ugyanahhoz a tulajdonsághoz).</p></td>
         </tr>
         <tr>
@@ -223,7 +221,7 @@ await client.ExecuteStoredProcedureAsync<DeviceReading>(
    
 A következő szakaszban úgy tekintünk, hogyan viheti át a particionált tárolók egypartíciós tárolókból.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben azt használata Azure Cosmos DB tároló SQL API-val particionálás áttekintését biztosítja. Lásd még: [particionálás és horizontális skálázás](../cosmos-db/partition-data.md) fogalmakat és ajánlott eljárások az Azure Cosmos DB API-k a particionálás áttekintését. 
 
 * Hajtsa végre a méretezés és teljesítmény Azure Cosmos DB tesztelték. Lásd: [teljesítmény- és Mérettesztelés az Azure Cosmos DB](performance-testing.md) egy minta.

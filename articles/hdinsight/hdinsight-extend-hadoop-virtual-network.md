@@ -1,8 +1,8 @@
 ---
-title: "A virtuális hálózattal - Azure HDInsight kiterjesztése |} Microsoft Docs"
-description: "Azure virtuális hálózat használata a HDInsight csatlakozni más felhőalapú erőforrásokat, vagy az adatközpontban lévő erőforrások"
+title: A virtuális hálózattal - Azure HDInsight kiterjesztése |} Microsoft Docs
+description: Azure virtuális hálózat használata a HDInsight csatlakozni más felhőalapú erőforrásokat, vagy az adatközpontban lévő erőforrások
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/21/2018
 ms.author: larryfr
-ms.openlocfilehash: ea686ea5dd6166d6e4e4055cb4a2cdd70af81ab4
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b02a4625e3973ca7679d1d2018bd37ff1d2ae2ba
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Azure virtuális hálózat használatával Azure HDInsight kiterjesztése
 
@@ -173,11 +173,11 @@ Ahhoz, hogy a névfeloldás a virtuális hálózat és a csatlakoztatott hálóz
 
     Minden egyes konfigurációs példáért lásd: a [példa: egyéni DNS](#example-dns) szakasz.
 
-További információkért lásd: a [névfeloldás virtuális gépek és a Szerepkörpéldányok](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server) dokumentum.
+További információkért lásd: a [névfeloldás virtuális gépek és a Szerepkörpéldányok](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) dokumentum.
 
 ## <a name="directly-connect-to-hadoop-services"></a>Közvetlenül csatlakozik a Hadoop-szolgáltatás
 
-A legtöbb dokumentáció a HDInsight feltételezi, hogy rendelkezik-e a fürt eléréséhez az interneten keresztül. Például, hogy a fürthöz https://CLUSTERNAME.azurehdinsight.net kapcsolódhat. A cím használja a nyilvános átjáró, amely nem érhető el, ha már használta az NSG-k vagy udr-EK hozzáférés korlátozása az internetről.
+A legtöbb dokumentáció a HDInsight feltételezi, hogy rendelkezik-e a fürt eléréséhez az interneten keresztül. Például hogy a https://CLUSTERNAME.azurehdinsight.net címen tud csatlakozni a fürthöz. A cím használja a nyilvános átjáró, amely nem érhető el, ha már használta az NSG-k vagy udr-EK hozzáférés korlátozása az internetről.
 
 Ambari és más weblapok a virtuális hálózaton keresztül csatlakozhat, tegye a következőket:
 

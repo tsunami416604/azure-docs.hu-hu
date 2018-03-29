@@ -1,8 +1,8 @@
 ---
-title: "Feladat böngésző és a feladatok használja az Azure Data Lake Analytics-feladatok |} Microsoft Docs"
-description: "Útmutató feladat böngésző és a feladatok az Azure Data Lake Analytics-feladatok. "
+title: Feladat böngésző és a feladatok használja az Azure Data Lake Analytics-feladatok |} Microsoft Docs
+description: 'Útmutató feladat böngésző és a feladatok az Azure Data Lake Analytics-feladatok. '
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/02/2017
 ms.author: jgao
-ms.openlocfilehash: 8f1729f84a4fde2a56427a41b356d6263818519e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cc9048566dd58733cd86aac0f9836763fa095843
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics-jobs"></a>Feladat böngésző és a feladatok használja az Azure Data lake Analytics-feladatok
 Az Azure Data Lake Analytics szolgáltatás archiválja az elküldött feladatok egy [lekérdezéstár](#query-store). Ebből a cikkből megismerheti, hogyan feladat böngésző és a feladatok használatát az Azure Data Lake Tools for Visual Studio korábbi adatok kereséséhez. 
@@ -49,7 +49,7 @@ Feladat-nézet tartalmazza:
       ![Az Azure Data Lake Analytics-feladat fázisok állapota](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-phases.png)
     
     * Előkészítése: A parancsfájl töltse fel a felhőbe, fordítása, és a parancsfájl a fordítási szolgáltatás használatakor optimalizálására.
-    * A várólistára: Feladatok várólistára helyezett savó elegendő erőforrást vár, vagy a feladatok haladhatja meg egy fiókot a korlátozás a maximális egyidejűleg futó feladatainak. A prioritási beállítás határozza meg az aszinkron feladatok - minél alacsonyabb a szám, annál magasabb a prioritás.
+    * Várólistára helyezett: Feladatok várólistára elegendő erőforrást vár, vagy a feladatok haladhatja meg egy fiókot a korlátozás a maximális egyidejűleg futó feladatainak. A prioritási beállítás határozza meg az aszinkron feladatok - minél alacsonyabb a szám, annál magasabb a prioritás.
     * Futó: A feladat ténylegesen fut a Data Lake Analytics-fiók.
     * Véglegesítése: A feladat befejeződik (például a fájl véglegesítése).
       
@@ -164,14 +164,14 @@ Feladat részletei a feladat, beleértve a parancsfájl, erőforrások és a Ver
 * Szkript
   
     A feladat a U-SQL parancsfájl tárolása a lekérdezést. Az eredeti U-SQL parancsfájl megtekintése, és küldje el újra, ha szükséges.
-* Erőforrások
+* További források
   
     A feladat fordítási kimenetek erőforrások révén a lekérdezés tárolóban található. Például található "algebra.xml" megjelenítése a feladat ábra szolgáló, a regisztrált szerelvényeket, itt stb.
 * Vertex végrehajtási nézetet
   
     Csúcsban végrehajtási részleteit mutatja. A feladat profil archiválja minden csúcspont végrehajtási napló, például az összes adat olvasása/írása, runtime, állapot, stb. Ebben a nézetben keresztül kaphat további részleteket a módját a feladat futott-e. További információkért lásd: [a Vertex végrehajtási nézetet használja a Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A diagnosztikai információk naplózása: [Accessing diagnostics logs for Azure Data Lake Analytics](data-lake-analytics-diagnostic-logs.md) (Az Azure Data Lake Analytics diagnosztikai naplóinak elérése).
 * Egy összetettebb lekérdezés megtekintéséhez lásd: [Analyze Website logs using Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md) (Webhelyek naplóinak elemzése az Azure Data Lake Analytics használatával).
 * Vertex végrehajtási nézetet használ, tekintse meg [a Vertex végrehajtási nézetet használja a Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)

@@ -1,6 +1,6 @@
 ---
-title: "Internetre irányuló load balancer áttekintése |} Microsoft Docs"
-description: "Az internetre irányuló terheléselosztót és a szolgáltatások áttekintése. A terheléselosztó működéséről az Azure virtuális gépek és felhőszolgáltatások használatával."
+title: Internetre irányuló load balancer áttekintése |} Microsoft Docs
+description: Az internetre irányuló terheléselosztót és a szolgáltatások áttekintése. A terheléselosztó működéséről az Azure virtuális gépek és felhőszolgáltatások használatával.
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 5b9ffeadf6b1ffc4eaf4f49b85ba752c27da0e46
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 14375dc7777a4f24db9f7246e6e99f26bd0eb858
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="internet-facing-load-balancer-overview"></a>Az Internet felé néző terhelés terheléselosztó áttekintése
 
@@ -38,11 +38,11 @@ Az alábbi ábrán egy elosztott terhelésű végpont a webes forgalomban, amely
 
 1. ábra – elosztott terhelésű végpont a webes forgalom
 
-Amikor internetes ügyfelek weblap kérést küld a nyilvános IP-cím 80-as TCP-porton a felhőalapú szolgáltatás, az Azure terheléselosztó a kérelmeket az elosztott terhelésű készlet a három virtuális gépek között osztja el. A load balancer algoritmusok kapcsolatos további információkért lásd: a [load balancer áttekintése lapon](load-balancer-overview.md#load-balancer-features).
+Amikor internetes ügyfelek weblap kérést küld a nyilvános IP-cím 80-as TCP-porton a felhőalapú szolgáltatás, az Azure terheléselosztó a kérelmeket az elosztott terhelésű készlet a három virtuális gépek között osztja el. A load balancer algoritmusok kapcsolatos további információkért lásd: a [alapvető load balancer – áttekintés oldalra](load-balancer-overview.md#fundamental-load-balancer-features).
 
 Alapértelmezés szerint az Azure Load Balancer osztja el a hálózati forgalom több virtuálisgép-példánya között. Beállíthatja úgy is munkamenet-kapcsolatot, további információkért lásd: [terheléselosztó terheléselosztási mód](load-balancer-distribution-mode.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További tudnivalók [belső terheléselosztó](load-balancer-internal-overview.md) jobb megértése érdekében melyik terheléselosztó a felhő üzembe helyezése jobban megfelelnek.
 

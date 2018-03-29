@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/05/2018
+ms.date: 03/20/2018
 ms.author: sedusch
-ms.openlocfilehash: 27fa58042b1d3dbed111d6ec7f3b3e96a9161180
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 75615de523f1fba808f44fb1a1015138fb190edc
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>A SUSE Linux Enterprise Server az Azure-ban támasztja beállítása
 
@@ -28,14 +28,13 @@ ms.lasthandoff: 03/23/2018
 [dbms-guide]:dbms-guide.md
 [sap-hana-ha]:sap-hana-high-availability.md
 
-![Támasztja a SLES áttekintése](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
-
-
 Az Azure-ban támasztja fürt beállításához két lehetőség áll rendelkezésre. Használhatja a kerítés ügynök, amely gondoskodik az Azure API-k segítségével sikertelen csomópont újraindítása, vagy egy SBD eszközt is használhat.
 
 A SBD eszköz szükséges további virtuális gépek közül az iSCSI-tárolókiszolgáló funkcionál, és egy SBD eszközt biztosít. Az iSCSI-tárolókiszolgáló azonban lehet más támasztja fürtök megosztott. Egy SBD eszköz használatának előnye feladatátvételi gyorsabb és SBD a helyszíni eszközök, használatakor nem szükséges hogyan fog működni a támasztja fürt végzett módosításokat. A SBD kerítés továbbra is használhatja az Azure időkorlát ügynök biztonsági kerítésépítés mechanizmus, abban az esetben, ha az iSCSI-tárolókiszolgáló nem érhető el.
 
 Ha nem szeretné, hogy további virtuális gépek beruházásának, az Azure időkorlát ügynök is használhatja. A hátránya az, hogy a feladatátvétel esetén is igénybe vehet 10 – 15 perc között erőforrás stop meghibásodik, vagy a fürt csomópontjai nem tud kommunikálni amelyek egymással többé.
+
+![Támasztja a SLES áttekintése](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
 ## <a name="sbd-fencing"></a>SBD kerítés
 
@@ -61,12 +60,11 @@ Először hozzon létre egy iSCSI cél virtuális gépre, ha még nem rendelkezi
 
 1. Az iSCSI-tároló szolgáltatás engedélyezése
 
-   <pre><code>
-   # This will make sure that targetcli was called at least once and the initial configuration was done.
-   sudo targetcli --help
-   
+   <pre><code>   
    sudo systemctl enable target
+   sudo systemctl enable targetcli
    sudo systemctl start target
+   sudo systemctl start targetcli
    </code></pre>
 
 ### <a name="create-iscsi-device-on-iscsi-target-server"></a>Az iSCSI-tárolókiszolgáló iSCSI-eszköz létrehozása
@@ -79,15 +77,28 @@ Futtassa a következő parancsot a **iSCSI-tároló virtuális gép** iSCSI-leme
 # List all data disks with the following command
 sudo ls -al /dev/disk/azure/scsi1/
 
+# total 0
+# drwxr-xr-x 2 root root  80 Mar 26 14:42 .
+# drwxr-xr-x 3 root root 160 Mar 26 14:42 ..
+# lrwxrwxrwx 1 root root  12 Mar 26 14:42 lun0 -> ../../../<b>sdc</b>
+# lrwxrwxrwx 1 root root  12 Mar 26 14:42 lun1 -> ../../../sdd
+
+# Then use the disk name to list the disk id
+sudo ls -l /dev/disk/by-id/scsi-* | grep sdc
+
+# lrwxrwxrwx 1 root root  9 Mar 26 14:42 /dev/disk/by-id/scsi-14d53465420202020a50923c92babda40974bef49ae8828f0 -> ../../sdc
+# lrwxrwxrwx 1 root root  9 Mar 26 14:42 <b>/dev/disk/by-id/scsi-360022480a50923c92babef49ae8828f0 -> ../../sdc</b>
+
 # Use the data disk that you attached for this cluster to create a new backstore
-sudo targetcli backstores/block create <b>cl1</b> /dev/disk/azure/scsi1/<b>lun0</b>
+sudo targetcli backstores/block create <b>cl1</b> <b>/dev/disk/by-id/scsi-360022480a50923c92babef49ae8828f0</b>
 
 sudo targetcli iscsi/ create iqn.2006-04.<b>cl1</b>.local:<b>cl1</b>
 sudo targetcli iscsi/iqn.2006-04.<b>cl1</b>.local:<b>cl1</b>/tpg1/luns/ create /backstores/block/<b>cl1</b>
 sudo targetcli iscsi/iqn.2006-04.<b>cl1</b>.local:<b>cl1</b>/tpg1/acls/ create iqn.2006-04.<b>prod-cl1-0.local:prod-cl1-0</b>
 sudo targetcli iscsi/iqn.2006-04.<b>cl1</b>.local:<b>cl1</b>/tpg1/acls/ create iqn.2006-04.<b>prod-cl1-1.local:prod-cl1-1</b>
 
-# restart the iSCSI target service to persist the changes
+# save the targetcli changes
+sudo targetcli saveconfig
 sudo systemctl restart target
 </code></pre>
 
@@ -370,7 +381,7 @@ A STONITH eszköz egy egyszerű szolgáltatást használ, szemben a Microsoft Az
    Nyissa meg tulajdonságait, és jegyezze fel a könyvtár-azonosító. Ez a **bérlői azonosító**.
 1. Kattintson az alkalmazás-regisztráció
 1. Kattintson az Add (Hozzáadás) parancsra
-1. Adjon meg egy nevet, válassza ki a "Web app/API" alkalmazástípus, adja meg a bejelentkezési URL-címet (például http://localhost) és kattintson a Létrehozás gombra
+1. Adjon meg egy nevet, válassza ki a "Web app/API" alkalmazástípus, adja meg a bejelentkezési URL-címet (például http://localhost) , és kattintson a Létrehozás gombra
 1. A bejelentkezési URL-címet nem használja, és bármilyen érvényes URL-CÍMEK lehetnek
 1. Válassza ki az új alkalmazást, és a beállítások lapon kattintson a kulcsok
 1. Adja meg egy új kulcs leírását, válassza a "Soha nem jár le", és kattintson a Mentés gombra
@@ -436,7 +447,7 @@ sudo crm configure primitive rsc_st_azure stonith:fence_azure_arm \
 Ha egy SBD eszközt használni kívánt, továbbra is használatát javasoljuk Azure időkorlát ügynök biztonsági abban az esetben, ha az iSCSI-tárolókiszolgáló nem érhető el.
 
 <pre><code>
-fencing_topology \
+sudo crm configure fencing_topology \
   stonith-sbd rsc_st_azure
 
 </code></pre>

@@ -1,23 +1,23 @@
 ---
-title: "Vonja össze az adatokat tudományos folyamatban Project vezethet feladatok – Azure |} Microsoft Docs"
-description: "Projekt feladatok röviden a tudományos adatok team projekt vezethet."
-documentationcenter: 
+title: Vonja össze az adatokat tudományos folyamatban Project vezethet feladatok – Azure |} Microsoft Docs
+description: Projekt feladatok röviden a tudományos adatok team projekt vezethet.
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev;
-ms.openlocfilehash: fe7cf1e6167de7d0dfaa5ed75c0b7f5ec23b18cf
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: bradsev
+ms.openlocfilehash: 5c769fda09e70cfb0a43e0305ffab4923fbe3307
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="project-lead-tasks"></a>Az érdeklődési tevékenységeket
 
@@ -127,7 +127,7 @@ Ebben a példában vezetünk be:
 
 Ha használ VSTS platformként a kódot futtató, általában a *SSH URL-CÍMÉT a team projekt sablon tárház* van:
 
-***ssh: / /\<VSTS kiszolgálónév\>@\<VSTS kiszolgálónév\>.visualstudio.com:22/\<a Csapatprojekt nevét > /_git/\<a csapat projekt sablon tárház név\>.*** 
+***ssh: / /\<VSTS kiszolgálónév\>@\<VSTS kiszolgálónév\>.visualstudio.com:22/\<a Csapatprojekt nevét > /_git/\<a csapatprojekt sablon tárház nevét \>.*** 
 
 Ebben a példában vezetünk be:
 
@@ -151,7 +151,7 @@ Használata VSTS platformként a kódot futtató, általában a _HTTPS URL-cím,
 
 ![10](./media/project-lead-tasks/project-leads-10-clone-project-repository-linux.png)
 
-Használata VSTS platformként a kódot futtató, általában a _SSH URL-címet a projekt tárház_ _ssh van: / / < VSTS kiszolgálónév\>@< VSTS kiszolgálónév\>.visualstudio.com:22/<Your Team Project Name> / \_git / < a tárház projektnévre\>. Ebben a példában tudunk  ***ssh://mysamplegroup@mysamplegroup.visualstudio.com:22/MyTeam/_git/DSProject1*** .
+Használata VSTS platformként a kódot futtató, általában a _SSH URL-címet a projekt tárház_ _ssh van: / / < VSTS kiszolgálónév\>@< VSTS kiszolgálónév\>.visualstudio.com:22/<Your Team Project Name> / \_git / < a tárház projektnévre\>. Ebben a példában tudunk ***ssh://mysamplegroup@mysamplegroup.visualstudio.com:22/MyTeam/_git/DSProject1***.
 
 ### <a name="copy-contents-of-d3-to-d5"></a>D3 D5 másolja 
 
@@ -186,7 +186,7 @@ Ha a projekt egy adott könyvtárakat és a dokumentumokat, eltérő kap a csapa
 
 ### <a name="add-contents-of-dsproject1-in-d5-to-r5-on-your-group-vsts-server"></a>Hozzáadhat DSProject1 tartalmát D5 az R5 a VSTS-kiszolgálón
 
-Tartalom leküldéses most kell  **_DSProject1_**  való _R5_ a csoport VSTS-kiszolgálón a csapatprojekt-tárház. 
+Tartalom leküldéses most kell **_DSProject1_** való _R5_ a csoport VSTS-kiszolgálón a csapatprojekt-tárház. 
 
 
 - Váltson **D5**. 
@@ -212,7 +212,7 @@ Tartalom leküldéses most kell  **_DSProject1_**  való _R5_ a csoport VSTS-kis
 Ha szeretne létrehozni az Azure file storage adatmegosztásra, például a projekt nyers adatok vagy a szolgáltatások jön létre a projekthez, hogy az összes projektet hozzáférése van az azonos adatkészletek több DSVMs a kövesse az utasításokat a 3. és 4 [ Vonja össze az adatokat tudományos csoport átfutási feladatok](team-lead-tasks.md). 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbiakban a szerepkörök és az adatok tudományos eljárással meghatározott feladatok részletes leírását mutató hivatkozásokat:
 

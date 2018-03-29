@@ -1,8 +1,8 @@
 ---
-title: "Az IntelliJ Azure eszköztára: Spark-alkalmazások a HDInsight-fürtök létrehozása |} Microsoft Docs"
-description: "Az IntelliJ Azure eszköztára használata Spark scalában írt alkalmazások fejlesztéséhez, és egy HDInsight Spark-fürt küldheti el ezeket."
+title: 'Az IntelliJ Azure eszköztára: Spark-alkalmazások a HDInsight-fürtök létrehozása |} Microsoft Docs'
+description: Az IntelliJ Azure eszköztára használata Spark scalában írt alkalmazások fejlesztéséhez, és egy HDInsight Spark-fürt küldheti el ezeket.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2017
 ms.author: maxluk,jejiang
-ms.openlocfilehash: 69f5857f89271b3e4865b93e42e5233ead572715
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 2ebf87b0436dbc5ee12a1c41d33ff3d17af1f043
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Az IntelliJ Azure eszköztára használata Spark-alkalmazások a HDInsight-fürtök létrehozása
 
@@ -44,6 +44,10 @@ A projekt létrehozásához tekintse meg a [Spark-alkalmazások létrehozása az
 
 ## <a name="install-azure-toolkit-for-intellij"></a>Az intellij-t Azure eszközkészlet telepítése
 A telepítési utasításokért lásd: [Azure eszközkészlet telepítése az IntelliJ](https://docs.microsoft.com/azure/azure-toolkit-for-intellij-installation).
+
+## <a name="get-started"></a>Első lépések
+Felhasználói lehetőségek közül választhat [jelentkezzen be Azure-előfizetés](#sign-in-to-your-azure-subscription), vagy [hivatkozás egy HDInsight-fürt](#link-a-cluster) Ambari használatával felhasználónév/jelszó adatokat vagy tartományhoz csatlakoztatott indítsa el a hitelesítő adatot.
+
 
 ## <a name="sign-in-to-your-azure-subscription"></a>Jelentkezzen be az Azure-előfizetésébe
 
@@ -75,12 +79,14 @@ Egy normál fürt hivatkozás segítségével felügyelt Ambari felhasználóné
 
    ![hivatkozás fürt helyi menü](./media/apache-spark-intellij-tool-plugin/link-a-cluster-context-menu.png)
 
-2. Adja meg **fürtnév**, **Tárfiók**, **Biztonságitár-kulcs**, majd válassza ki a tárolót **tároló**, legalább, adjon meg felhasználónevet és jelszó. Ellenőrizze a felhasználónevet és jelszót, ha a hitelesítési hiba.
+2. Adja meg **a fürt neve**, **felhasználónév** és **jelszó**. Ellenőrizze a felhasználónevet és jelszót, ha a hitelesítési hiba van szükség. Szükség esetén adja hozzá a Tárfiók, Biztonságitár-kulcs, majd jelöljön ki egy tárolót a tároló. A bal oldali fában Tártallózó tárolással kapcsolatos van
    
    ![hivatkozás fürt párbeszédpanel](./media/apache-spark-intellij-tool-plugin/link-a-cluster-dialog.png)
 
    > [!NOTE]
-   > Ha a fürt egyaránt bejelentkezett az Azure-előfizetés és a fürthöz kapcsolódó csatolt biztonságitár-kulcs, felhasználónevet és jelszót használunk. 
+   > Ha a fürt egyaránt bejelentkezett az Azure-előfizetés és a fürthöz kapcsolódó csatolt biztonságitár-kulcs, felhasználónevet és jelszót használunk.
+   > ![az IntelliJ Tártallózó](./media/apache-spark-intellij-tool-plugin/storage-explorer-in-IntelliJ.png)
+
    
 3. Láthatja, hogy a társított fürt **HDInsight** csomópont, ha a bemeneti adatokat megfelelőek. Most is elküldhetik a csatolt fürthöz kérelmet.
 
@@ -285,7 +291,7 @@ Azure Data Lake Store kérelmet elküldéséhez válassza **interaktív** mód a
 
 Most azt feloldotta azt. Az Azure Data Lake fürt elküldeni az alkalmazás egyik bejelentkezési módszer kiválasztása
 
-## <a name="feedback-and-known-issues"></a>Visszajelzések és ismert problémák
+## <a name="feedback-and-known-issues"></a>Visszajelzés és ismert problémák
 Spark kimenetek közvetlenül megtekintése jelenleg nem támogatott.
 
 Ha javaslata vagy visszajelzést, vagy ha ez a beépülő modul használatakor bármely problémákat tapasztal, e-mail nekünk az hdivstool@microsoft.com.

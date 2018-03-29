@@ -1,23 +1,23 @@
 ---
-title: "Gyakori kérdések az Azure-fájlok |} Microsoft Docs"
-description: "Azure-fájlokkal kapcsolatban gyakran feltett kérdésekre adott válaszokat megkeresése"
+title: Gyakori kérdések az Azure-fájlok |} Microsoft Docs
+description: Azure-fájlokkal kapcsolatban gyakran feltett kérdésekre adott válaszokat megkeresése
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: RenaShahMSFT
 manager: aungoo
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/04/2017
 ms.author: renash
-ms.openlocfilehash: 8762b2cca03f4c95f7543803a024bff4573927a1
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: cb44f1d456ec12b7fd21e397b749117942560f05
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="frequently-asked-questions-about-azure-files"></a>Azure-fájlok kapcsolatos gyakori kérdések
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló a felhőben, amelyek elérhetők a szabványos [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (más néven Common Internet File System vagy CIFS). Akkor is csatlakoztathatja az Azure fájlmegosztások egyidejűleg felhőalapú vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. Azure fájlmegosztásokat Windows kiszolgáló gépen a gyors hozzáférés megközelíti az adatok helyének Azure fájlszinkronizálás (előzetes verzió) segítségével képes gyorsítótárazni.
@@ -232,7 +232,7 @@ Ebben a cikkben megválaszolunk Azure fájlok szolgáltatásokat és funkciókat
 ## <a name="backup"></a>Biztonsági mentés
 * <a id="backup-share"></a>
 **Készítsen biztonsági másolatot az Azure-fájl megosztása?**  
-    Rendszeres használható [megosztása (előzetes verzió) pillanatképek](storage-how-to-use-files-snapshots.md) véletlen törlés elleni védelem. Is használhatja AzCopy, Robocopy, vagy egy külső biztonsági mentési eszköz képes biztonsági mentést egy csatlakoztatott fájlmegosztást. 
+    Rendszeres használható [pillanatképek megosztása](storage-how-to-use-files-snapshots.md) véletlen törlés elleni védelem. Is használhatja AzCopy, Robocopy, vagy egy külső biztonsági mentési eszköz képes biztonsági mentést egy csatlakoztatott fájlmegosztást. 
 
 ## <a name="share-snapshots"></a>A pillanatképek megosztása
 ### <a name="share-snapshots-general"></a>Pillanatképek megosztása: általános
@@ -255,6 +255,10 @@ Ebben a cikkben megválaszolunk Azure fájlok szolgáltatásokat és funkciókat
 * <a id="snapshot-limits"></a>
 **Vannak-e használható megosztás pillanatképek számára vonatkozó korlátozások?**  
     Igen. Az Azure Files legfeljebb 200 megosztás pillanatképek továbbra is. Megosztás pillanatképek nem száma a fájlmegosztási kvóta felé így a teljes lemezterület, melynek használatával a megosztás pillanatképek megosztásonkénti korlátozva. Tárfiókok korlátai továbbra is érvényesek lesznek. Után 200 megosztás pillanatképeket törölnie kell a korábbi pillanatképek új megosztás-pillanatképek létrehozásához.
+* <a id="snapshot-cost"></a>
+**Mennyi nem megosztás pillanatkép költség?**  
+    Szabványos és standard tárolási költségű pillanatkép vonatkoznak. A pillanatképeket növekményes jellegűek. A kiinduló pillanatkép a megosztás saját magát. A későbbi pillanatképek növekményes, és csak a korábbi pillanatképből különbözeti tárolja. Ez azt jelenti, hogy az új módosításokkal, amely a számlázási lesz látható minimális, ha a munkaterhelés forgalom minimális lesz. Lásd: [árazás lap](https://azure.microsoft.com/en-us/pricing/details/storage/files/) Standard Azure-fájlok díjszabási információkat. A megosztás pillanatkép által felhasznált mérete meg módja a számlázott kapacitás összevetésével ma használható kapacitás. Jelenleg is dolgozunk eszközt használunk erre a jelentéskészítési javítása érdekében.
+
 
 ### <a name="create-share-snapshots"></a>Megosztás pillanatképeket
 * <a id="file-snaphsots"></a>

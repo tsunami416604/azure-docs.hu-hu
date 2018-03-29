@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Automation hibrid runbook-feldolgozója Windowsra"
-description: "Ez a cikk tájékoztatást nyújt telepítése egy Azure Automation hibrid forgatókönyv-feldolgozó, amely lehetővé teszi runbookok futtatását a helyi adatközpontban, illetve a felhőalapú környezetben a Windows-alapú számítógépeken."
+title: Az Azure Automation hibrid runbook-feldolgozója Windowsra
+description: Ez a cikk tájékoztatást nyújt telepítése egy Azure Automation hibrid forgatókönyv-feldolgozó, amely lehetővé teszi runbookok futtatását a helyi adatközpontban, illetve a felhőalapú környezetben a Windows-alapú számítógépeken.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: c03b124e21603056219a6ff6458469b4ecd60969
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: fa74f2e2d8fb9fc9f11810a4af4978fb4b443bcc
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-deploy-a-windows-hybrid-runbook-worker"></a>A Windows hibrid forgatókönyv-feldolgozók központi telepítése
 
@@ -68,7 +68,7 @@ A következő lépésekkel automatizálhatja a telepítése és konfigurálása 
         -ResourceGroupName <NameofOResourceGroup> -HybridGroupName <NameofHRWGroup> `
         -SubscriptionId <AzureSubscriptionId> -WorkspaceName <NameOfOMSWorkspace>
 
-4. Vállalja, hogy a telepítés megkezdésére **NuGet** és a hitelesítést az Azure hitelesítő adatait kéri.<br><br> ![A New-OnPremiseHybridWorker parancsprogram végrehajtása](media/automation-hybrid-runbook-worker/new-onpremisehybridworker-scriptoutput.png)
+4. Vállalja, hogy a telepítés megkezdésére **NuGet** és a hitelesítést az Azure hitelesítő adatait kéri.<br><br>![A New-OnPremiseHybridWorker parancsprogram végrehajtása](/media/automation-hybrid-runbook-worker/new-onpremisehybridworker-scriptoutput.png)
 
 5. A parancsfájl befejezése után a hibrid dolgozó csoportok lapon megjelenik az új csoport és a tagok száma, vagy ha egy meglévő csoportot, a tagok száma növeli.  A csoportot a listából kiválaszthatja a a **hibrid dolgozó csoportok** lapon, és válassza a **hibrid feldolgozók** csempére.  Az a **hibrid feldolgozók** lapon megjelenik a felsorolt csoport minden tagja.  
 

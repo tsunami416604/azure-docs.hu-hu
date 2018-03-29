@@ -1,8 +1,8 @@
 ---
-title: "Mi az az Team tudományos folyamat? | Microsoft Docs"
-description: "A prediktív elemzési megoldások és intelligens alkalmazások adatok-tudományos módszertannal nyújt."
+title: Mi a csoportos adatelemzési folyamat? | Microsoft Docs
+description: A prediktív elemzési megoldások és intelligens alkalmazások adatok-tudományos módszertannal nyújt.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
-ms.author: bradsev;
-ms.openlocfilehash: 75e170f29f9a6abeeb3393e43e6a4c355749044d
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.author: bradsev
+ms.openlocfilehash: f7c081dcd74164f4b1f054f5a65f2ff6aaabebd7
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="what-is-the-team-data-science-process"></a>Mi az az Team tudományos folyamat?
+# <a name="what-is-the-team-data-science-process"></a>Mi a csoportos adatelemzési folyamat?
 
-A csapat adatok tudományos folyamat (TDSP) egy gyors, fokozatos adatok tudományos módszertana prediktív elemzési megoldások és intelligens alkalmazások hatékonyan továbbítani. TDSP javítja a csoportos együttműködés és megismerését. Az ajánlott eljárásokról és szerkezetek a Microsoft és más az iparág adatok tudományos kezdeményezések sikeres végrehajtásának megkönnyítése érdekében a lepárlása tartalmaz. A cél, segítségével a vállalatok teljes mértékben vegye figyelembe az analytics program előnyeit.
+A csapat adatok tudományos folyamat (TDSP) egy gyors, fokozatos adatok tudományos módszertana prediktív elemzési megoldások és intelligens alkalmazások hatékonyan továbbítani. A csoportos adatelemzési folyamat elősegíti a csoportok hatékonyabb együttműködését és tanulását. A Microsofttól és az iparág más vállalataitól származó, olyan ajánlott eljárásokból és szerkezetekből álló válogatást tartalmaz, amelyek az adatelemzési kezdeményezések sikeres megvalósítását segítik elő. A cél a vállalatok segítése az elemzési programjuk előnyeinek teljes körű megvalósításában.
 
 Ez a cikk áttekintése TDSP és fő összetevőit. Számos különböző eszközök nyújtunk általános leírását itt a folyamat, amely végrehajtható legyen. Részletes leírása a tevékenységeket és a folyamat az életciklus részt szerepkörök további csatolt témakörökben találhatók. A Microsoft eszközök és infrastruktúra, amely a TDSP megvalósíthatja a csoportok használatával adott használatával TDSP megvalósításához is útmutatást.
 
@@ -65,7 +65,7 @@ A célok, a feladatok és a dokumentáció összetevők minden szakaszra a TDSP 
 
 Az alábbi ábra a (kékkel jelölt) feladatok és ezeket a szerepköröket (a függőleges tengely) (a vízszintes tengely) életciklus minden szakaszhoz tartozó összetevők (zöld) a rács nézetét biztosítja. 
 
-![TDSP-szerepkörök-és-feladatok](./media/overview/tdsp-tasks-by-roles.png)
+![TDSP-roles-and-tasks](./media/overview/tdsp-tasks-by-roles.png)
 
 ## <a name="standardized-project-structure"></a>Szabványos projekt struktúra
 
@@ -104,6 +104,6 @@ A felhőbeli vagy helyszíni az elemzés és tároló-infrastruktúra lehet. Ez 
 A legtöbb szervezetben folyamatok bevezetéséről kihívást. Az eszközök valósítja meg az adatok tudományos folyamat és életciklus súgó alacsonyabb korlátainak és növelje a konzisztenciájának azok elfogadását. TDSP tartalmaz egy kezdeti eszközök és parancsfájlok jump-start a csapaton belüli TDSP elfogadását. Emellett segít a adatok tudományos életciklusának például az adatok feltárása és alapterv modellezési gyakori feladatokat automatizálja. Nincs megosztott eszközök és segédprogramok történő a csoport megosztott kód tárházba közre egyéni felhasználók számára előírt jól definiált szerkezetben. A csoport vagy a szervezet más projektek majd is javítható ezeket az erőforrásokat. TDSP terveket is eszközöket és segédprogramokat, ha a teljes közösségi hozzájárulás engedélyezése. A TDSP segédprogramok a klónozható [Github](https://github.com/Azure/Azure-TDSP-Utilities).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Team tudományos folyamata: Szerepköröket és feladatokat](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) bemutatja azokat a kulcsfontosságú személyzet szerepkörök és a kapcsolódó feladatok a folyamattal szabványosítja adatok tudományos csoport. 

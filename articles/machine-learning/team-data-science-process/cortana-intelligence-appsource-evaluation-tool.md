@@ -1,8 +1,8 @@
 ---
-title: "A Cortana Intelligence megoldás kiértékelési eszközével |} Microsoft Docs"
-description: "A Microsoft Partner, lépései a következők minden közzétenni a Cortana Intelligence megoldás AppSource kövesse."
+title: A Cortana Intelligence megoldás kiértékelési eszközével |} Microsoft Docs
+description: A Microsoft Partner, lépései a következők minden közzétenni a Cortana Intelligence megoldás AppSource kövesse.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: AnupamMicrosoft
 manager: jhubbard
 editor: cgronlun
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
-ms.author: anupams;v-bruham;garye
-ms.openlocfilehash: c9ea8164d5866662a7ed81672ee1ba776603b193
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: anupams
+ms.openlocfilehash: f678cb9819a2c03f97bcca5a2092160212779328
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="cortana-intelligence-solution-evaluation-tool"></a>Cortana Intelligence megoldásértékelési eszköz
 ## <a name="overview"></a>Áttekintés
 A Cortana Intelligence megoldás kiértékelési eszköz segítségével felmérheti a speciális elemzési megoldások a Microsoft által ajánlott gyakorlati eljárásoknak megfelelő beállításában. A Microsoft a partnerekkel együttműködve az van érdeklődőbbek (ISV-k / SIs) kiváló minőségű megoldást jelentenek az ügyfelek, viszonteladók és végrehajtása. Ez az útmutató ismerteti a folyamatot, amely a megoldás a megoldás kiértékelési eszköz segítségével, és a keres az adott ajánlott eljárások ismertetik.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 Adjon [letöltése](https://aka.ms/aa-evaluation-tool-download) és a Cortana Intelligence megoldás kiértékelési eszközével telepítse.
 
 Előfeltételek:
@@ -97,7 +97,7 @@ A sloution az Azure SQL- vagy Azure SQL DW erőforrásokat az Azure Active Direc
 | --- | --- |
 | SQL-adatbázis és az SQL Data Warehouse az aad-ben | [Az SQL Database vagy az SQL Data Warehouse hitelesítéshez használandó Azure Active Directory-hitelesítés](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) |
 | Konfigurálhatja és kezelheti az aad-ben | [Konfigurálhatja és kezelheti az Azure Active Directory-hitelesítés az SQL Database vagy az SQL Data Warehouse](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure) |
-| Az Azure webalkalmazás-hitelesítés | [Hitelesítési és engedélyezési az Azure App Service-ben](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview) |
+| Azure WebApps authentication | [Hitelesítési és engedélyezési az Azure App Service-ben](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview) |
 | Webalkalmazás konfigurálása az aad-ben | [Az App Service alkalmazás használhatja az Azure Active Directory bejelentkezési konfigurálása](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication)|
 
 ### <a name="datasets-accessible-to-end-users-should-support-role-based-access-control"></a>Végfelhasználók számára elérhető adatkészletek támogatnia kell a szerepköralapú hozzáférés-vezérlés
@@ -121,8 +121,8 @@ Az Azure SQL és Azure SQL DW is támogatja a transzparens adatok titkosítás (
 
 | További információ | Ebben a cikkben találhat |
 | --- | --- |
-| Az átlátható adattitkosítás (TDE) | [Átlátható adattitkosítás](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) |
-| Az Azure SQL Data Warehouse TDE | [SQL Data Warehouse-Encrption TDE TSQL](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-encryption-tde-tsql) |
+| Transparent Data Encryption (TDE) | [Átlátható adattitkosítás](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) |
+| Az Azure SQL Data Warehouse TDE | [SQL Data Warehouse Encrption TDE TSQL](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-encryption-tde-tsql) |
 | Az Azure SQL TDE konfigurálása | [Az Azure SQL Database átlátható adattitkosítás](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database) |
 | Mindig titkosítja az Azure SQL konfigurálása | [SQL-adatbázis mindig titkosítja az Azure Key Vault](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)|
 

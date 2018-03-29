@@ -1,11 +1,11 @@
 ---
-title: "Azure Event Hubs-névtér létrehozása és a Rögzítés funkció engedélyezése sablon használatával | Microsoft Docs"
-description: "Azure Event Hubs-névtér létrehozása egy eseményközponttal és a Rögzítés funkció engedélyezése az Azure Resource Manager sablonjának használatával"
+title: Azure Event Hubs-névtér létrehozása és a Rögzítés funkció engedélyezése sablon használatával | Microsoft Docs
+description: Azure Event Hubs-névtér létrehozása egy eseményközponttal és a Rögzítés funkció engedélyezése az Azure Resource Manager sablonjának használatával
 services: event-hubs
 documentationcenter: .net
 author: ShubhaVijayasarathy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 8bdda6a2-5ff1-45e3-b696-c553768f1090
 ms.service: event-hubs
 ms.devlang: tbd
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/30/2018
 ms.author: sethm
-ms.openlocfilehash: 09345b32e80008d4afe61078bd4d272fafe631d2
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: c241b8c38aab355729cd1bea318e70e85cf4ff1f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Névtér létrehozása egy eseményközponttal és a Rögzítés funkció engedélyezése sablon használatával
 
@@ -177,7 +177,7 @@ Az a méretegység, amelynek elérésekor a Capture funkció elkezdi az adatok r
 }
 ```
 
-###<a name="capturenameformat"></a>captureNameFormat
+### <a name="capturenameformat"></a>captureNameFormat
 
 Az Event Hubs Capture által használt névformátum az Avro-fájlok írásakor. Vegye figyelembe, hogy a Capture névformátumának tartalmaznia kell a következő mezőket: `{Namespace}`, `{EventHub}`, `{PartitionId}`, `{Year}`, `{Month}`, `{Day}`, `{Hour}`, `{Minute}` és `{Second}`. Ezek a mezők bármilyen sorrend szerint rendezhetők, elválasztó karakterekkel vagy azok nélkül.
  
@@ -236,7 +236,7 @@ A blobtároló, amelyben rögzíti az eseményadatokat.
 
 Ha az Azure Data Lake Store-t választja célhelyként, használja az alábbi paramétereket. Az engedélyeket arra a Data Lake Store-útvonalra kell beállítania, ahol az eseményeket rögzíteni kívánja. Az engedélyek beállítását lásd [ebben a cikkben](event-hubs-capture-enable-through-portal.md#capture-data-to-an-azure-data-lake-store-account).
 
-###<a name="subscriptionid"></a>subscriptionId
+### <a name="subscriptionid"></a>subscriptionId
 
 Az Event Hubs-névtér és az Azure Data Lake Store előfizetés-azonosítója. Mindkét erőforráshoz azonos előfizetés-azonosítónak kell tartoznia.
 
@@ -249,7 +249,7 @@ Az Event Hubs-névtér és az Azure Data Lake Store előfizetés-azonosítója. 
  }
 ```
 
-###<a name="datalakeaccountname"></a>dataLakeAccountName
+### <a name="datalakeaccountname"></a>dataLakeAccountName
 
 A rögzített események Azure Data Lake Store-neve.
 
@@ -262,7 +262,7 @@ A rögzített események Azure Data Lake Store-neve.
 }
 ```
 
-###<a name="datalakefolderpath"></a>dataLakeFolderPath
+### <a name="datalakefolderpath"></a>dataLakeFolderPath
 
 A rögzített események célmappájának elérési útja. Ez az a mappa a Data Lake Store-fiókban, amelybe a rendszer leküldi az eseményeket a rögzítési művelet során. A mappa engedélyeinek beállításáról lásd [az Event Hubsból származó adatok Azure Data Lake Store segítségével történő rögzítését ismertető](../data-lake-store/data-lake-store-archive-eventhub-capture.md) cikket.
 

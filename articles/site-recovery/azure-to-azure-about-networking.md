@@ -1,18 +1,18 @@
 ---
-title: "Az Azure Site Recovery segítségével Azure az Azure-bA vész-helyreállítási alkalmazás hálózatkezelési funkcióiról |} Microsoft Docs"
-description: "Azure Site Recovery segítségével Azure virtuális gépek replikálását hálózatkezelés áttekintése."
+title: Az Azure Site Recovery segítségével Azure az Azure-bA vész-helyreállítási alkalmazás hálózatkezelési funkcióiról |} Microsoft Docs
+description: Azure Site Recovery segítségével Azure virtuális gépek replikálását hálózatkezelés áttekintése.
 services: site-recovery
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/08/2018
+ms.date: 03/26/2018
 ms.author: sujayt
-ms.openlocfilehash: 5ce85761df4e0ad62c22a829f67464a3145fd827
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 48be55632d9c1bece3f1a6e4f9ac12a68f9cb7ab
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Az Azure az Azure-bA replikációs alkalmazás hálózatkezelési funkcióiról
 
@@ -53,7 +53,7 @@ login.microsoftonline.com | A Site Recovery szolgáltatás URL-címek a hiteles�
 *.hypervrecoverymanager.windowsazure.com | Szükséges, hogy a Site Recovery szolgáltatás kommunikációja akkor fordulhat elő, a virtuális gépről.
 *.servicebus.windows.net | Szükséges, hogy a Site Recovery figyelése és diagnosztikai adatokat a virtuális gépről is beírhatók.
 
-## <a name="outbound-connectivity-for-ip-address-ranges"></a>Kimenő kapcsolódás az IP-címtartományok
+## <a name="outbound-connectivity-for-ip-address-ranges"></a>Kimenő kapcsolat az IP-címtartományokhoz
 
 Az IP-alapú tűzfal proxy vagy az NSG-szabályok kimenő kapcsolat ellenőrzésére használnak, ha ezek IP-címtartományok engedélyezni kell.
 
@@ -154,9 +154,10 @@ Kövesse a kapcsolatok a cél helyét, és a helyszíni hely közötti:
 ### <a name="expressroute-configuration"></a>Az ExpressRoute-konfiguráció
 Kövesse az alábbi gyakorlati tanácsok az ExpressRoute-konfiguráció:
 
-- ExpressRoute-kapcsolatcsoportot létrehozni a forrás- és a cél régiókban kell. Majd szüksége közötti kapcsolat létrehozásához:
-  - A forrás virtuális hálózat és az ExpressRoute-kapcsolatcsoportot.
-  - A cél virtuális hálózat és az ExpressRoute-kapcsolatcsoportot.
+- A forrás- és a cél régiókban ExpressRoute-kapcsolatcsoportot létrehozni. Majd szüksége közötti kapcsolat létrehozásához:
+    - A forrás virtuális hálózat és a helyszíni hálózatát, a forrás régióban ExpressRoute-kapcsolatcsoportot.
+    - A cél virtuális hálózat és a helyszíni hálózatát, a cél régióban ExpressRoute-kapcsolatcsoportot.
+
 
 - ExpressRoute standard részeként geopolitikai ugyanabban a régióban áramkör hozhat létre. Hozzon létre ExpressRoute-Kapcsolatcsoportok geopolitikai különböző régiókban, prémium szintű Azure ExpressRoute szükség, amely magában foglalja egy növekményes költséget. (Ha már használ ExpressRoute prémium, hogy ingyenesen.) További részletekért lásd: a [helyek ExpressRoute a dokumentum](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) és [ExpressRoute árképzési](https://azure.microsoft.com/pricing/details/expressroute/).
 

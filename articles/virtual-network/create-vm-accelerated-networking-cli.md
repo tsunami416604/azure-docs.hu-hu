@@ -1,13 +1,13 @@
 ---
-title: "Hozzon létre egy Azure virtuális gép a hálózat elérését gyorsítja fel |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozzon létre egy Linux virtuális gép a hálózat elérését gyorsítja fel."
+title: Hozzon létre egy Azure virtuális gép a hálózat elérését gyorsítja fel |} Microsoft Docs
+description: Megtudhatja, hogyan hozzon létre egy Linux virtuális gép a hálózat elérését gyorsítja fel.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/02/2018
 ms.author: jdial
-ms.custom: 
-ms.openlocfilehash: 5c09ffe6867972e772334ae7ae1dd655cdac431f
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.custom: ''
+ms.openlocfilehash: aa74596906206ba4460e80af9015955c0b848cd4
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>A hálózat elérését gyorsítja fel Linux virtuális gép létrehozása
 
@@ -57,7 +57,7 @@ Gyorsított hálózatkezelés legtöbb általános célú és számítási optim
 További információ a Virtuálisgép-példányok: [Linux Virtuálisgép-méretek](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="regions"></a>Régiók
-Kelet-Ázsia kivételével minden nyilvános Azure régióban elérhető.   Azure Government felhőalapú jelenleg nem támogatott.
+Elérhető az összes Azure-régiók, valamint Azure Government felhők.
 
 ## <a name="limitations"></a>Korlátozások
 A következő korlátozások vonatkoznak az e funkció használata esetén:

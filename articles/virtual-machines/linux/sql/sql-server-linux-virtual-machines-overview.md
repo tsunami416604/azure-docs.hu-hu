@@ -1,8 +1,8 @@
 ---
-title: "Az SQL Server használatának áttekintése az Azure Virtual Machines szolgáltatásban (Linux rendszeren) | Microsoft Docs"
-description: "Ismerje meg, hogyan futtathat teljes SQL Server-kiadásokat Azure-beli, Linux rendszerű virtuális gépeken. Ebben a cikkben közvetlen hivatkozásokat találhat az SQL Servert tartalmazó összes linuxos virtuálisgép-rendszerképhez és a kapcsolódó tartalmakhoz."
+title: Az SQL Server használatának áttekintése az Azure Virtual Machines szolgáltatásban (Linux rendszeren) | Microsoft Docs
+description: Ismerje meg, hogyan futtathat teljes SQL Server-kiadásokat Azure-beli, Linux rendszerű virtuális gépeken. Ebben a cikkben közvetlen hivatkozásokat találhat az SQL Servert tartalmazó összes linuxos virtuálisgép-rendszerképhez és a kapcsolódó tartalmakhoz.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rothja
 manager: jhubbard
 tags: azure-service-management
@@ -10,13 +10,13 @@ ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: get-started-article
 ms.workload: iaas-sql-server
-ms.date: 10/02/2017
+ms.date: 03/22/2018
 ms.author: jroth
-ms.openlocfilehash: f044fcba92eb7aa7f4ac44608571fab3db0e03f5
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: e752ad844a6efe572564e7081ebac87193e9c2a7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Az SQL Server használatának áttekintése az Azure Virtual Machines szolgáltatásban (Linux rendszeren)
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 12/18/2017
 > * [Windows](../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
 > * [Linux](sql-server-linux-virtual-machines-overview.md)
 
-Ez a témakör az SQL Server Azure-beli, Linux rendszerű virtuális gépeken történő futtatásának lehetőségeit ismerteti, valamint [hivatkozásokat tartalmaz a portálon elérhető rendszerképekhez](#option-1-create-a-sql-vm-with-per-minute-licensing).
+Ez a témakör az SQL Server Azure-beli, Linux rendszerű virtuális gépeken történő futtatásának lehetőségeit ismerteti, valamint [hivatkozásokat tartalmaz a portálon elérhető rendszerképekhez](#create).
 
 > [!NOTE]
 > Ha már ismeri az SQL Server használatát, és csak azt szeretné megtudni, hogyan helyezhet üzembe egy SQL Servert futtató, Linux rendszerű virtuális gépet, tekintse meg az [SQL Servert futtató, Linux rendszerű virtuális gép az Azure szolgáltatásban történő létrehozását](provision-sql-server-linux-virtual-machine.md) ismertető cikket. Ha pedig egy Windows rendszerű virtuális gépet szeretne létrehozni egy SQL Server futtatásához, tekintse meg az [SQL Servert futtató, Windows rendszerű virtuális gép az Azure szolgáltatásban történő létrehozását](../../windows/sql/virtual-machines-windows-portal-sql-server-provision.md) ismertető cikket.
@@ -65,6 +65,6 @@ A Linuxon futó SQL Server konfigurálásakor a telepítő telepíti az adatbáz
 | SLES | ![igen](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![igen](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![igen](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![igen](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![nem](./media/sql-server-linux-virtual-machines-overview/no.png) | ![nem](./media/sql-server-linux-virtual-machines-overview/no.png) |
 | Ubuntu | ![igen](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![igen](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![igen](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![igen](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![igen](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![igen](./media/sql-server-linux-virtual-machines-overview/yes.png) |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkat a Linuxon futó SQL Server konfigurálásáról és használatáról [a Linuxon futó SQL Server áttekintésében](https://docs.microsoft.com/sql/linux/sql-server-linux-overview) talál.

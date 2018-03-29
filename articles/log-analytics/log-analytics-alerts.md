@@ -1,8 +1,8 @@
 ---
-title: "Understanding riasztásait az Azure Naplóelemzés |} Microsoft Docs"
-description: "Naplóelemzési riasztások határozza meg az OMS-adattárban lévő fontos adatokat és is proaktív értesítést küldenek, problémák vagy meghívása műveletek kijavításának őket.  Ez a cikk ismerteti a különböző riasztási szabályok és hogyan vannak definiálva."
+title: Understanding riasztásait az Azure Naplóelemzés |} Microsoft Docs
+description: Naplóelemzési riasztások határozza meg az OMS-adattárban lévő fontos adatokat és is proaktív értesítést küldenek, problémák vagy meghívása műveletek kijavításának őket.  Ez a cikk ismerteti a különböző riasztási szabályok és hogyan vannak definiálva.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/05/2018
 ms.author: bwren
-ms.openlocfilehash: 07e8312d5e113eeb9016dcc832b1cf66f8001c5f
-ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
+ms.openlocfilehash: ece2e7eeb53aebbb18bce4bb34e03307b0aea74c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="understanding-alerts-in-log-analytics"></a>A Naplóelemzési riasztások ismertetése
 
-Log Analytics riasztások határozza meg a Naplóelemzési tárházban fontos adatokat.  Ez a cikk ismerteti a tervezési szempontokat sorát kell elvégezni a gyűjtemény gyakoriság az éppen lekérdezett, véletlenszerű késleltetése oka valószínűleg a hálózati késés vagy feldolgozási kapacitás és az adatok véglegesítése naplóba adatfeldolgozást az adatok alapján Elemzés tárházba.  Részletesen ismerteti, hogyan riasztási szabályok használatát Naplóelemzési munkahelyi és a különböző típusú riasztási szabályok közötti különbségeket ismerteti.
+A Log Analytics-riasztások azonosítják a Log Analytics-adattárban található fontos információkat.  Ez a cikk ismerteti a tervezési szempontokat sorát kell elvégezni a gyűjtemény gyakoriság az éppen lekérdezett, véletlenszerű késleltetése oka valószínűleg a hálózati késés vagy feldolgozási kapacitás és az adatok véglegesítése naplóba adatfeldolgozást az adatok alapján Elemzés tárházba.  Részletesen ismerteti, hogyan riasztási szabályok használatát Naplóelemzési munkahelyi és a különböző típusú riasztási szabályok közötti különbségeket ismerteti.
 
 A riasztási szabályok létrehozásának folyamatán tekintse meg a következő cikkeket:
 
@@ -41,7 +41,7 @@ Információk a adatainak gyűjtési gyakoriságát, a különböző megoldások
 
 ## <a name="alert-rules"></a>Riasztási szabályok
 
-A riasztási szabályok, amelyek automatikusan futnak a napló keresések rendszeres időközönként riasztások jönnek létre.  Ha a napló keresés eredményeit az adott feltételeknek megfelelő, egy riasztás rekord jön létre.  A szabály úgy automatikusan futtatja egy vagy több műveletek proaktív értesítést küldenek, a figyelmeztetés vagy meg kíván hívni egy másik folyamat.  Különböző típusú riasztási szabályok az elemzés végrehajtásához használja a másik programot.
+A riasztásokat riasztási szabályok hozzák létre, amelyek rendszeres időközönként automatikus naplókereséseket futtatnak.  Ha a napló keresés eredményeit az adott feltételeknek megfelelő, egy riasztás rekord jön létre.  A szabály ekkor automatikusan lefuttathat egy vagy több műveletet, hogy proaktívan értesítse Önt a riasztásról, vagy meghívjon egy másik folyamatot.  Különböző típusú riasztási szabályok az elemzés végrehajtásához használja a másik programot.
 
 ![Log Analytics-riasztások](media/log-analytics-alerts/overview.png)
 
@@ -52,7 +52,7 @@ Nincs megbízhatósági riasztások és értesítések válaszképességének k�
 A riasztási szabályok határozzák meg a következő adatokat:
 
 - **Naplófájl-keresési**.  A lekérdezés, amely futtatja a minden alkalommal, amikor a riasztási szabály következik be.  Ez a lekérdezés által visszaadott rekordok segítségével határozza meg, hogy riasztás jöjjön létre.
-- **Időablak**.  Adja meg a lekérdezés időintervallumát.  A lekérdezés visszaadja csak azt jelzi, hogy az aktuális időponthoz képest ebben a tartományban jöttek létre.  Ez lehet öt perc és 24 óra közötti értéket. A tartományban kell lennie fér adatfeldolgozást ésszerű késést befogadásához. Az időszak kell lennie a leghosszabb tudja kezelni kívánt késleltetés hosszát kétszer.<br> Például ha azt szeretné, hogy a riasztásokat a 30 perces késést megbízható, majd a tartományban kell lennie egy óra.  
+- **Időablak**.  Adja meg a lekérdezés időintervallumát.  A lekérdezés csak azokat a rekordokat adja vissza, amelyek az aktuális idő ezen tartományában jöttek létre.  Ez lehet öt perc és 24 óra közötti értéket. A tartományban kell lennie fér adatfeldolgozást ésszerű késést befogadásához. Az időszak kell lennie a leghosszabb tudja kezelni kívánt késleltetés hosszát kétszer.<br> Például ha azt szeretné, hogy a riasztásokat a 30 perces késést megbízható, majd a tartományban kell lennie egy óra.  
 
     Nincsenek két jelenségek sikerült tapasztal, ha az időtartományt túl kicsi.
 
@@ -102,12 +102,12 @@ Ha szeretné a processzor futtatásakor riasztás például több mint 90 %, has
 
     Type=Perf ObjectName=Processor CounterName="% Processor Time" CounterValue>90
 
-Riasztás, ha a processzor átlagosan több mint 90 %-át egy adott időtartomány szeretne, ha szeretné használni egy lekérdezés segítségével a [parancs mérésére](log-analytics-search-reference.md#commands) , például a küszöbértéket, a riasztási szabály a következőre **0-nálnagyobb**.
+Riasztás, ha a processzor átlagosan több mint 90 %-át egy adott időtartomány szeretne, ha szeretné használni egy lekérdezés segítségével a `measure` parancsot a következő, a riasztási szabály a küszöbértékkel **0-nál nagyobb**.
 
     Type=Perf ObjectName=Processor CounterName="% Processor Time" | measure avg(CounterValue) by Computer | where AggregatedValue>90
 
 >[!NOTE]
-> Ha a munkaterületet lett frissítve a [új Log Analytics lekérdezési nyelv](log-analytics-log-search-upgrade.md), majd a fenti lekérdezések megváltozna a következők:`Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" and CounterValue>90`
+> Ha a munkaterületet lett frissítve a [új Log Analytics lekérdezési nyelv](log-analytics-log-search-upgrade.md), majd a fenti lekérdezések megváltozna a következők: `Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" and CounterValue>90`
 > `Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" | summarize avg(CounterValue) by Computer | where CounterValue>90`
 
 
@@ -119,7 +119,7 @@ Riasztás, ha a processzor átlagosan több mint 90 %-át egy adott időtartomá
 **Metrika mérési** riasztási szabályok létrehozása minden objektum egy riasztást a megadott küszöbértéket meghaladó érték lekérdezésben.  A következő különböző különbségeket rendelkeznek **eredmények száma** riasztási szabályok.
 
 #### <a name="log-search"></a>Naplókeresés
-Használhatja a lekérdezés egy **eredmények száma** riasztás szabályok vonatkoznak konkrét követelmények a lekérdezés egy metrika mérési riasztási szabály.  Tartalmaznia kell egy [parancs mérésére](log-analytics-search-reference.md#commands) egy adott mező az eredmények csoportosításához. Ez a parancs a következő elemeket kell tartalmaznia.
+Használhatja a lekérdezés egy **eredmények száma** riasztás szabályok vonatkoznak konkrét követelmények a lekérdezés egy metrika mérési riasztási szabály.  Tartalmaznia kell egy `measure` parancs egy adott mező az eredmények csoportosításához. Ez a parancs a következő elemeket kell tartalmaznia.
 
 - **Összesítő függvény**.  Meghatározza a számítás, amely történik, és potenciálisan egy numerikus összesítendő mező.  Például **count()** visszatér a rekordok számát a lekérdezésben **avg(CounterValue)** arra az időtartamra, lesz a ellenértéknek mező átlagának visszaadása.
 - **Csoport mező**.  Az összesített érték egy rekord jön létre minden egyes példányánál ebben a mezőben, és a riasztás is generálható minden.  Például, ha az egyes számítógépek riasztás létrehozása, használhatja **számítógépenként**.   
@@ -148,9 +148,9 @@ A Naplóelemzési riasztási szabályok által létrehozott riasztás rekordok r
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Típus |*Riasztás* |
+| Típus |*Alert* |
 | SourceSystem |*OMS* |
-| *Objektum*  | [Metrika mérési riasztások](#metric-measurement-alert-rules) egy tulajdonság az a csoportmező fog rendelkezni.  Például ha a naplófájl-keresési csoportjait a számítógép, az értesítési rekord rendelkezik annak a számítógépnek a nevét számítógép mezővel értékeként.
+| *Object*  | [Metrika mérési riasztások](#metric-measurement-alert-rules) egy tulajdonság az a csoportmező fog rendelkezni.  Például ha a naplófájl-keresési csoportjait a számítógép, az értesítési rekord rendelkezik annak a számítógépnek a nevét számítógép mezővel értékeként.
 | AlertName |A riasztás nevét. |
 | AlertSeverity |A riasztás súlyossági szintje. |
 | LinkToSearchResults |A lekérdezésből, amely a riasztás létrehozása a rekordok visszaadó Naplóelemzési napló keresési kapcsolódik. |

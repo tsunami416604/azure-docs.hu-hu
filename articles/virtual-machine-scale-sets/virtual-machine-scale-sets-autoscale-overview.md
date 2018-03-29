@@ -1,11 +1,11 @@
 ---
-title: "Az Azure virtuálisgép-méretezési csoportok automatikusan skálázva áttekintése |} Microsoft Docs"
-description: "A különböző módjait, hogy egy Azure virtuálisgép-méretezési beállítása alapján, a teljesítményre vagy meghatározott ütemezés szerint automatikusan méretezheti"
+title: Az Azure virtuálisgép-méretezési csoportok automatikusan skálázva áttekintése |} Microsoft Docs
+description: A különböző módjait, hogy egy Azure virtuálisgép-méretezési beállítása alapján, a teljesítményre vagy meghatározott ütemezés szerint automatikusan méretezheti
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: d29a3385-179e-4331-a315-daa7ea5701df
 ms.service: virtual-machine-scale-sets
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 868523a3aca441a47218297be2ce9f9e46dd84a1
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: 03053f8427fbd20b0a7288d930dca258ee3070b6
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Beállítja az Azure virtuálisgép-méretezési automatikusan skálázva áttekintése
 Egy Azure virtuálisgép-méretezési csoport automatikusan növelhető és csökkenthető az alkalmazást futtató Virtuálisgép-példányok számát. Automatizált és rugalmas mindez csökkenti a felügyeleti figyelését, valamint az alkalmazás teljesítményének optimalizálásához. Egy pozitív felhasználói élmény a minimálisan elfogadható teljesítményt meghatározó szabályok létrehozása. Ha meghatározott küszöbértékeket mindegyike teljesül, az automatikus skálázási szabályok úgy, hogy a kapacitás, a méretezési művelet igénybe vehet. Események megadásával automatikusan növelhető vagy csökkentse a kapacitás, a méretezési rögzített többször is ütemezhető. Ez a cikk ismerteti, amelyek metrikák érhetők el áttekintése és milyen műveletek automatikus skálázás hajthat végre.
@@ -40,8 +40,9 @@ A Virtuálisgép-példányok az automatikus skálázási szabályok adott beép�
 A gazdagépalapú mérőszámokat használó automatikus méretezési szabályok a következő eszközökkel hozhatók létre:
 
 - [Azure Portal](virtual-machine-scale-sets-autoscale-portal.md)
-- [Azure PowerShell](virtual-machine-scale-sets-autoscale-powershell.md)
-- [Azure CLI 2.0](virtual-machine-scale-sets-autoscale-cli.md)
+- [Azure PowerShell](tutorial-autoscale-powershell.md)
+- [Azure CLI 2.0](tutorial-autoscale-cli.md)
+- [Azure-sablon alapján](tutorial-autoscale-template.md)
 
 Részletesebb teljesítménymutatók használó automatikus skálázási szabályok létrehozására lehet [telepítése és konfigurálása az Azure diagnostics bővítmény](#in-guest-vm-metrics-with-the-azure-diagnostics-extension) a Virtuálisgép-példányok vagy [konfigurálhatja az alkalmazás App Insights](#application-level-metrics-with-app-insights).
 
@@ -50,11 +51,11 @@ A Vendég virtuális gép metrikák az Azure diagnosztikai-bővítményt, és Ap
 ### <a name="metric-sources"></a>Metrika források
 Automatikus skálázási szabályok a következő forrásokból származó metrikák használatával:
 
-| Mérték forrása        | Használati eset                                                                                                                     |
+| Metrikaforrás        | Használati eset                                                                                                                     |
 |----------------------|------------------------------------------------------------------------------------------------------------------------------|
 | Aktuális méretezési csoport    | A gazdagép-alapú metrikákat, nincs szükség további ügynökök telepítve vagy konfigurálva.                                  |
 | Tárfiók      | Az Azure diagnosztikai bővítmény teljesítménymutatók ír majd felhasznált való automatikus skálázási szabályok az Azure storage. |
-| Service Bus-üzenetsorba    | Az alkalmazás vagy többi összetevő tud továbbítani több, az Azure Service Bus-üzenetsorba, eseményindító szabályok üzeneteket.                   |
+| Service Bus-üzenetsor    | Az alkalmazás vagy többi összetevő tud továbbítani több, az Azure Service Bus-üzenetsorba, eseményindító szabályok üzeneteket.                   |
 | Application Insights | Egy instrumentation csomagot, az alkalmazás, amely az adatfolyamokat, közvetlenül az alkalmazásból metrikák telepítve.                         |
 
 
@@ -63,25 +64,25 @@ A következő állomásalapú metrikák használhatók automatikus skálázási 
 
 | Metrika neve               |
 |---------------------------|
-| Processzor-százalékos aránya            |
-| A hálózati                |
-| Kimenő hálózati               |
-| Lemez olvasott bájtok           |
-| Lemez írt bájtok száma          |
-| Lemezolvasási műveletek másodpercenkénti száma  |
-| Lemez írási művelet/mp |
-| Fennmaradó CPU kreditek     |
-| Felhasznált CPU kreditek      |
+| Százalékos processzorhasználat            |
+| Hálózat bejövő adatforgalma                |
+| Hálózat kimenő adatforgalma               |
+| Lemezről beolvasott bájtok           |
+| Lemezre írt bájtok          |
+| Lemezolvasási művelet/s  |
+| Lemezre írási művelet/s |
+| Fennmaradó processzorkreditek     |
+| Felhasznált processzorkreditek      |
 
 Egy metrika figyelése automatikus skálázási szabályok létrehozásakor a szabályok nézze meg a következő metrikák összesítési műveletek egyikét:
 
 | Aggregáció típusa |
 |------------------|
-| Átlagos          |
+| Átlag          |
 | Minimális          |
-| Maximális          |
+| Maximum          |
 | Összes            |
-| utolsó             |
+| Vezetéknév             |
 | Darabszám            |
 
 Az automatikus skálázási szabályok majd által kiváltott, ha a metrikák összehasonlítja a megadott küszöbértéket meghaladó valamelyik az alábbi műveleteket:
@@ -91,7 +92,7 @@ Az automatikus skálázási szabályok majd által kiváltott, ha a metrikák ö
 | Nagyobb mint             |
 | Nagyobb vagy egyenlő |
 | Kisebb mint                |
-| Kisebb vagy egyenlő, mint    |
+| kisebb vagy egyenlő    |
 | Egyenlő                 |
 | Nem egyenlő             |
 
@@ -101,12 +102,12 @@ Ha az automatikus skálázási szabály eseményindítók, a méretezési automa
 
 | Skálázási művelet     | Használati eset                                                                                                                               |
 |---------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| Növelje a száma szerint   | Virtuálisgép-példányok létrehozása rögzített száma. Hasznos a virtuális gépek kisebb számú méretezési készlet.                                           |
-| Növekmény százaléka alapján | Virtuálisgép-példányok százalékos alapú növelését. Jó nagyobb bővített állítja be, amelyben a rögzített növelését nem feltétlenül javíthatja a teljesítményt. |
-| Növelje a számát, hogy   | Hozzon létre több Virtuálisgép-példányok szükséges elérni a kívánt maximális memóriamennyiséget.                                                            |
-| Csökkentse a számát, hogy   | Távolítsa el a Virtuálisgép-példányok rögzített száma. Hasznos a virtuális gépek kisebb számú méretezési készlet.                                           |
-| Százalék által csökkentése | Virtuálisgép-példányok százalékos alapú csökken. Jó nagyobb bővített állítja be, amelyben a rögzített növelését előfordulhat, hogy nem feltétlenül erőforrás-felhasználás és költségek csökkentése érdekében. |
-| Csökkentse a számát, hogy   | Távolítsa el a Virtuálisgép-példányok kívánt minimális eléréséhez szükséges.                                                            |
+| Mennyiség növelése a következővel:   | Virtuálisgép-példányok létrehozása rögzített száma. Hasznos a virtuális gépek kisebb számú méretezési készlet.                                           |
+| Százalék növelése a következővel: | Virtuálisgép-példányok százalékos alapú növelését. Jó nagyobb bővített állítja be, amelyben a rögzített növelését nem feltétlenül javíthatja a teljesítményt. |
+| Mennyiség növelése a következőre:   | Hozzon létre több Virtuálisgép-példányok szükséges elérni a kívánt maximális memóriamennyiséget.                                                            |
+| Mennyiség csökkentése a következőre:   | Távolítsa el a Virtuálisgép-példányok rögzített száma. Hasznos a virtuális gépek kisebb számú méretezési készlet.                                           |
+| Százalék csökkentése a következővel: | Virtuálisgép-példányok százalékos alapú csökken. Jó nagyobb bővített állítja be, amelyben a rögzített növelését előfordulhat, hogy nem feltétlenül erőforrás-felhasználás és költségek csökkentése érdekében. |
+| Mennyiség csökkentése a következőre:   | Távolítsa el a Virtuálisgép-példányok kívánt minimális eléréséhez szükséges.                                                            |
 
 
 ## <a name="in-guest-vm-metrics-with-the-azure-diagnostics-extension"></a>A Vendég virtuális gép metrikák az Azure diagnostics-bővítmény
@@ -133,12 +134,12 @@ A következő példák előfordulhat, hogy ütemezés alapján automatikus skál
 - Ha van egy marketing esemény, előléptetést vagy szünnap pénztári automatikusan méretezheti előre várható keresletének Virtuálisgép-példányok számát. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alábbi eszközök egyikével állomásalapú metrikák használó automatikus skálázási szabályok hozhat létre:
 
-- [Azure Portal](virtual-machine-scale-sets-autoscale-portal.md)
-- [Azure PowerShell](virtual-machine-scale-sets-autoscale-powershell.md)
-- [Azure CLI 2.0](virtual-machine-scale-sets-autoscale-cli.md)
+- [Azure PowerShell](tutorial-autoscale-powershell.md)
+- [Azure CLI 2.0](tutorial-autoscale-cli.md)
+- [Azure-sablon alapján](tutorial-autoscale-template.md)
 
 Ez az Áttekintés részletes automatikus skálázási szabályok segítségével horizontálisan méretezhető és növeli vagy csökkenti a *szám* állítsa be a skálázási Virtuálisgép-példánya. Is méretezheti függőleges növelheti vagy csökkentheti a Virtuálisgép-példány *mérete*. További információkért lásd: [virtuálisgép-méretezési csoportok függőleges skálázva](virtual-machine-scale-sets-vertical-scale-reprovision.md).
 

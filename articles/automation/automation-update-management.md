@@ -1,6 +1,6 @@
 ---
-title: "Frissítse a felügyeleti megoldás az Azure-ban"
-description: "Ebből a cikkből megtudhatja, hogyan használhatja ezt a megoldást Windows és Linux rendszerű számítógépek frissítéseinek kezelésére."
+title: Frissítse a felügyeleti megoldás az Azure-ban
+description: Ebből a cikkből megtudhatja, hogyan használhatja ezt a megoldást Windows és Linux rendszerű számítógépek frissítéseinek kezelésére.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 202c75366477ae3445f607f75d08faf0335de79f
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: e426f2b90e3ac3ac6bcb9825c7848c76e52a1021
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítse a felügyeleti megoldás az Azure-ban
 
@@ -36,7 +36,7 @@ Az alábbi ábrán látható konceptuális ábrázolása viselkedését, és ada
 
 Miután a számítógép frissítési megfelelőség szempontjából vizsgálatot végez, az ügynök továbbítja a tömeges szolgáltatáshoz. Windows-számítógépeken a rendszer alapértelmezés szerint 12 óránként elvégzi a megfelelőségi vizsgálatot. A vizsgálati ütemezés szerint mellett vizsgálata frissítési megfelelőség szempontjából a kezdeményezett belül 15 perc, ha a Microsoft Monitoring Agent (MMA) újraindítása, rissítés telepítése előtt, és a frissítés telepítése után. Linux-számítógépeken a rendszer alapértelmezés szerint 3 óránként végzi el a megfelelőségi vizsgálatot, valamint az MMA-ügynök újraindítása után 15 percen belül.
 
-A megoldás jelenti, hogy mennyire naprakész a számítógép az alapján, hogy milyen forrást konfigurált a szinkronizáláshoz. Ha a Windows-számítógép a WSUS-nak való jelentésre van konfigurálva, az eredmények eltérőek lehetnek a Microsoft Update által megjelenített adatoktól attól függően, hogy a WSUS mikor szinkronizált utoljára a Microsoft Update-tel. Ugyanez a helyzet a Linux-számítógépek esetében, amelyek nyilvános adattár helyett helyi adattárnak való jelentésre vannak konfigurálva.
+A megoldás jelenti, hogy mennyire naprakész a számítógép az alapján, hogy milyen forrást konfigurált a szinkronizáláshoz. Ha a Windows-számítógép a WSUS-nak való jelentésre van konfigurálva, az eredmények eltérőek lehetnek a Microsoft Update által megjelenített adatoktól attól függően, hogy a WSUS mikor szinkronizált utoljára a Microsoft Update-tel. Ez megegyezik a Linux rendszerű számítógépek, jelentést és egy nyilvános tárház egy helyi tárház vannak konfigurálva.
 
 A szoftverfrissítések központi telepítéséhez vagy telepítéséhez létrehozhat egy ütemezett üzembe helyezést a frissítést igénylő számítógépeken. Windows-számítógépek esetében a *Választható* besorolású frissítések nem tartoznak az üzembe helyezés hatálya alá, csak a kötelező frissítések. Az ütemezett telepítési határozza meg, milyen cél számítógépek megkapják a megfelelő frissítéseket, vagy explicit módon adja meg a számítógépeket, vagy jelöljön ki egy [számítógépcsoport](../log-analytics/log-analytics-computer-groups.md) alapuló számítógépek egy adott készletét napló átvizsgálása ki. Emellett meghatároz egy ütemezést egy időszak jóváhagyására és kijelölésére, amelyen belül engedélyezett a frissítések telepítése. A telepítést az Azure Automation runbookjai végzik. A runbookok nem tekinthetők meg, és nem kívánnak semmilyen konfigurálást. Frissítéstelepítés létrehozásakor egy ütemezés jön létre, amely a megadott időben az érintett számítógépekre irányuló frissítési mesterrunbookot indít el. A mesterrunbook minden olyan ügynökön egy gyermekrunbookot indít el, amely elvégzi a szükséges frissítések telepítését.
 

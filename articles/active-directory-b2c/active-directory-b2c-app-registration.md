@@ -1,23 +1,20 @@
 ---
-title: "Alkalmazásregisztráció – Azure Active Directory B2C"
-description: "Hogyan regisztrálhatja alkalmazását Azure Active Directory B2C-vel?"
+title: Alkalmazásregisztráció – Azure Active Directory B2C
+description: Hogyan regisztrálhatja alkalmazását Azure Active Directory B2C-vel?
 services: active-directory-b2c
-author: PatAltimore
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.custom: seo
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: get-started-article
 ms.date: 6/13/2017
-ms.author: parakhj
-ms.openlocfilehash: b1d145466382c8fc2ea6c5e4e295940b0f000b97
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: davidmu
+ms.openlocfilehash: 0d3c351ebe70a963db0453538108ae9b2fefef86
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-register-your-application"></a>Azure Active Directory B2C: Az alkalmazás regisztrációja
 
@@ -132,7 +129,7 @@ Ha a leírtak alapján szerkeszti az Azure AD B2C-alkalmazást, és ezután megp
 
 Az alkalmazás törléséhez lépjen az [alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/), ahol törölheti az alkalmazást. Ahhoz, hogy láthatóvá lehessen tenni az alkalmazást, Önnek kell lennie az alkalmazás tulajdonosának (és nem csak a bérlő rendszergazdájának).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy az Azure AD B2C-vel regisztrált egy alkalmazást, [gyors üzembehelyezési oktatóanyagaink](active-directory-b2c-overview.md#get-started) segítségével elsajátíthatja a használatát.
 

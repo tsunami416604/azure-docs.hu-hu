@@ -1,24 +1,24 @@
 ---
-title: "A csoport az tudományos folyamata életciklus - Azure szakasza üzleti ismertetése |} Microsoft Docs"
-description: "A célok, feladatok és az üzleti ismertetése szakasza a adattudomány projektek a termékek esetében"
+title: A csoport az tudományos folyamata életciklus - Azure szakasza üzleti ismertetése |} Microsoft Docs
+description: A célok, feladatok és az üzleti ismertetése szakasza a adattudomány projektek a termékek esetében
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev;
-ms.openlocfilehash: 82784cbfd5f12297c376a395b54a817a2ae915a5
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.author: bradsev
+ms.openlocfilehash: daaaccaeac196b5f4651183173c8e83085d5184d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="business-understanding"></a>Üzleti ismertetés
 
@@ -80,10 +80,10 @@ Előfordulhat például, hogy a meglévő rendszerek kell gyűjteni, és oldja m
 Ebben a szakaszban az alábbiakban a termékek esetében:
 
    * [Okleveles dokumentum](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md): szabványos sablon megtalálható a TDSP projekt struktúra definíciójának. A bérleti dokumentum egy élő dokumentumot. A sablon a projekt teljes frissíti, akkor ellenőrizze, hogy új felderítések és üzleti követelmények változnak. A fontos, hogy ez a dokumentum részletesen, hozzáadása során a felderítési folyamat során többször. Megőrzése az ügyfél és egyéb érintett felek részt vesz a módosítások elvégzése, és egyértelműen kommunikálnak a okok miatt a módosítások.  
-   * [Adatforrások](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/Data%20Defintion.md#raw-data-sources): A **nyers adatforrások** szakasza a **adatmeghatározások** jelentést, amely megtalálható a TDSP projekt **jelentés** mappa tartalmazza a adatforrások. Ez a szakasz a nyers adatok eredeti és a rendeltetési helyét adja meg. Későbbi szakaszaiban ki további adatait, például a parancsfájlok az adatok áthelyezése az analitikus környezethez.  
+   * [Adatforrások](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/Data%20Defintion.md#raw-data-sources): A **nyers adatforrások** szakasza a **adatmeghatározások** jelentést, amely megtalálható a TDSP projekt **jelentés** mappa tartalmazza az adatokat forrás. Ez a szakasz a nyers adatok eredeti és a rendeltetési helyét adja meg. Későbbi szakaszaiban ki további adatait, például a parancsfájlok az adatok áthelyezése az analitikus környezethez.  
    * [Adatok szótárak](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Data_Dictionaries): Ez a dokumentum ismerteti az ügyfél által meghatározott adatok. A leírások információkat tartalmaznak a séma (a az adattípusokat és az információkat az ellenőrzési szabályok, ha van ilyen) és az entitás-kapcsolat diagramokat, ha elérhető.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbiakban a TDSP életciklusát lépésre mutató hivatkozásokat:
 

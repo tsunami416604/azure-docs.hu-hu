@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/21/2018
+ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: 70b39b854a3b7cb28716d3cb290998690dbeb549
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9f5a68972015f54e2333199652075cda2535a3c8
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Standard terheléselosztó és a rendelkezésre állási zónák
 
 Támogatja az Azure Load Balancer Standard Termékváltozat [rendelkezésre állási zónák](../availability-zones/az-overview.md) forgatókönyvek. Néhány új fogalom érhetők el Standard terheléselosztással, amelyek lehetővé teszik a végpont forgatókönyv a rendelkezésre állási optimalizálhatja a zónák erőforrások igazítása, valamint a szét azokat a zónákat.  Felülvizsgálati [rendelkezésre állási zónák](../availability-zones/az-overview.md) régiók jelenleg támogatja a rendelkezésre állási zónák és más Mik azok a rendelkezésre állási zónák útmutatást, fogalmak és a termékek kapcsolatos. Rendelkezésre állási zónák együtt szabványos terheléselosztással egy kiterjedtnek és rugalmas készlet, amely számos különböző alkalmazási helyzetek hozhat létre.  Tekintse át a jelen dokumentum értenek [fogalmak](#concepts) és alapvető forgatókönyv [tervezési útmutató](#design).
 
 >[!NOTE]
-> A Load Balancer Standard Termékváltozat jelenleg előzetes verzió. Előzetes a szolgáltatás esetleg nincs azonos szintű rendelkezésre állást és megbízhatóságot, szolgáltatások, amelyek általában a rendelkezésre állási kiadási. További részletekért lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Használja a nyilvánosan elérhető [Load Balancer alapszintű Termékváltozat](load-balancer-overview.md) a termelés számára. Használandó [rendelkezésre állási zónák előzetes](https://aka.ms/availabilityzones) ebben az előzetes szükséges egy [előfizetési külön](https://aka.ms/availabilityzones), mellett regisztrál a Load Balancer [szabványos előzetes](#preview-sign-up).
+>Felülvizsgálati [rendelkezésre állási zónák Preview](https://aka.ms/availabilityzones) az egyéb kapcsolódó témakörök. 
 
 ## <a name="concepts"></a> Terheléselosztó alkalmazott rendelkezésre állási zónák fogalmak
 

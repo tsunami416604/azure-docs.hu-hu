@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 12/06/2017
+ms.date: 03/23/2018
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 22fdb448dda1c824ae5e1fee6f9b2e7377680d6b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2b42840bc1053e9574e7c8ab1c68611c3b2bc7df
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Dinamikus csoporttagság Attribútumalapú szabályok létrehozása az Azure Active Directoryban
 Az Azure Active Directory (Azure AD) összetett Attribútumalapú dinamikus csoporttagságok csoportok engedélyezése speciális szabályokat hozhat létre. Ez a cikk részletezi az attribútumokat és a felhasználók vagy eszközök dinamikus tagsági szabályok létrehozásához szintaxist.
@@ -74,7 +74,7 @@ Támogatott paraméterek és kifejezés szabályoperátorokat teljes listájáé
 A speciális szabály törzsét teljes hossza legfeljebb 2048 karakter hosszú lehet.
 
 > [!NOTE]
-> Karakterlánc és regex műveletek még nem kis-és nagybetűket. Is végrehajtható, Null-ellenőrzések *null* konstansként, például felhasználó.részleg - eq *null*.
+> Karakterlánc és regex műveletek még nem kis-és nagybetűket. Is végrehajtható null-ellenőrzések *null* konstansként, például felhasználó.részleg - eq *$null*.
 > Idézőjeleket tartalmazó karakterláncok "használatával kell megjelölni" karakter, például felhasználó.részleg - eq \`"Értékesítési".
 
 ## <a name="supported-expression-rule-operators"></a>Támogatott kifejezés szabály operátorok
@@ -160,32 +160,32 @@ Engedélyezett operátorok
 
 | Tulajdonságok | Megengedett értékek | Használat |
 | --- | --- | --- |
-| city |A karakterlánc értéke vagy *null értékű* |(user.city - eq "érték") |
-| Ország |A karakterlánc értéke vagy *null értékű* |(felhasználó.ország - eq "érték") |
-| Cégnév | A karakterlánc értéke vagy *null értékű* | (user.companyName - eq "érték") |
-| Szervezeti egység |A karakterlánc értéke vagy *null értékű* |(felhasználó.részleg - eq "érték") |
+| city |A karakterlánc értéke vagy *$null* |(user.city - eq "érték") |
+| Ország |A karakterlánc értéke vagy *$null* |(felhasználó.ország - eq "érték") |
+| Cégnév | A karakterlánc értéke vagy *$null* | (user.companyName - eq "érték") |
+| Szervezeti egység |A karakterlánc értéke vagy *$null* |(felhasználó.részleg - eq "érték") |
 | displayName |Bármilyen karakterlánc típusú értéket |(user.displayName - eq "érték") |
-| employeeId |Bármilyen karakterlánc típusú értéket |(user.employeeId -eq "value")<br>(user.employeeId - ne *null*) |
-| facsimileTelephoneNumber |A karakterlánc értéke vagy *null értékű* |(user.facsimileTelephoneNumber - eq "érték") |
-| givenName |A karakterlánc értéke vagy *null értékű* |(user.givenName -eq "value") |
-| jobTitle |A karakterlánc értéke vagy *null értékű* |(user.jobTitle - eq "érték") |
-| mail |A karakterlánc értéke vagy *null* (SMTP-cím felhasználó) |(user.mail - eq "érték") |
+| employeeId |Bármilyen karakterlánc típusú értéket |(user.employeeId -eq "value")<br>(user.employeeId - ne *$null*) |
+| facsimileTelephoneNumber |A karakterlánc értéke vagy *$null* |(user.facsimileTelephoneNumber - eq "érték") |
+| givenName |A karakterlánc értéke vagy *$null* |(user.givenName -eq "value") |
+| jobTitle |A karakterlánc értéke vagy *$null* |(user.jobTitle - eq "érték") |
+| mail |A karakterlánc értéke vagy *$null* (SMTP-cím felhasználó) |(user.mail - eq "érték") |
 | mailNickName |Bármilyen karakterlánc típusú értéket (mail alias a felhasználó) |(user.mailNickName - eq "érték") |
-| Mobileszköz |A karakterlánc értéke vagy *null értékű* |(user.mobile - eq "érték") |
+| Mobileszköz |A karakterlánc értéke vagy *$null* |(user.mobile - eq "érték") |
 | objectId |A user objektum GUID-azonosítója |(user.objectId - eq "1111111-1111-1111-1111-111111111111") |
 | onPremisesSecurityIdentifier | A helyi biztonsági azonosítóját (SID) a felhasználók számára a felhőbe a helyszíni szinkronizálva. |(user.onPremisesSecurityIdentifier -eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |None DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(user.passwordPolicies -eq "DisableStrongPassword") |
-| physicalDeliveryOfficeName |A karakterlánc értéke vagy *null értékű* |(user.physicalDeliveryOfficeName -eq "value") |
-| Irányítószám |A karakterlánc értéke vagy *null értékű* |(user.postalCode - eq "érték") |
+| physicalDeliveryOfficeName |A karakterlánc értéke vagy *$null* |(user.physicalDeliveryOfficeName -eq "value") |
+| Irányítószám |A karakterlánc értéke vagy *$null* |(user.postalCode - eq "érték") |
 | preferredLanguage |ISO 639-1 kódot |(user.preferredLanguage - eq "en-US") |
-| sipProxyAddress |A karakterlánc értéke vagy *null értékű* |(user.sipProxyAddress -eq "value") |
-| state |A karakterlánc értéke vagy *null értékű* |(user.state - eq "érték") |
-| streetAddress |A karakterlánc értéke vagy *null értékű* |(user.streetAddress -eq "value") |
-| Vezetéknév |A karakterlánc értéke vagy *null értékű* |(user.surname - eq "érték") |
-| TelephoneNumber |A karakterlánc értéke vagy *null értékű* |(user.telephoneNumber - eq "érték") |
+| sipProxyAddress |A karakterlánc értéke vagy *$null* |(user.sipProxyAddress -eq "value") |
+| state |A karakterlánc értéke vagy *$null* |(user.state - eq "érték") |
+| streetAddress |A karakterlánc értéke vagy *$null* |(user.streetAddress -eq "value") |
+| Vezetéknév |A karakterlánc értéke vagy *$null* |(user.surname - eq "érték") |
+| TelephoneNumber |A karakterlánc értéke vagy *$null* |(user.telephoneNumber - eq "érték") |
 | usageLocation |Két betűkkel országhívószám |(user.usageLocation - eq "US") |
 | userPrincipalName |Bármilyen karakterlánc típusú értéket |(user.userPrincipalName - eq "alias@domain") |
-| userType |tag vendég *null értékű* |(user.userType - eq "Tag") |
+| userType |tag vendég *$null* |(user.userType - eq "Tag") |
 
 ### <a name="properties-of-type-string-collection"></a>Típusú karakterlánc gyűjtemény tulajdonságai
 Engedélyezett operátorok
@@ -230,7 +230,7 @@ user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabi
 
 A szabály a null érték megadásához használja a *null* érték. Ügyeljen arra, hogy nem használja a word idézőjelbe *null* -Ha így tesz, azt fogja értelmezni literál karakterlánc-érték. A megfelelő módon való hivatkozáshoz a null érték a következőképpen történik:
 ```
-   user.mail –ne null
+   user.mail –ne $null
 ```
 
 ## <a name="extension-attributes-and-custom-attributes"></a>Egyéni oszlopainál és a bővítmény

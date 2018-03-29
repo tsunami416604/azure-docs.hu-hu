@@ -1,8 +1,8 @@
 ---
-title: "A Cortana Intelligence AppSource közzétételi útmutató |} Microsoft Docs"
-description: "A Microsoft Partner, lépései a következők minden közzétenni a Cortana Intelligence megoldás AppSource kövesse."
+title: A Cortana Intelligence AppSource közzétételi útmutató |} Microsoft Docs
+description: A Microsoft Partner, lépései a következők minden közzétenni a Cortana Intelligence megoldás AppSource kövesse.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: AnupamMicrosoft
 manager: jhubbard
 editor: cgronlun
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
-ms.author: anupams;v-bruham;garye
-ms.openlocfilehash: 9f867641b77c8148c1d6cbf2913da9c1f5ce5b71
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: anupams
+ms.openlocfilehash: 1a5671eda967c1bba585d31b001bb465526709f3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="cortana-intelligence-appsource-publishing-guide"></a>A Cortana Intelligence AppSource közzétételi útmutató
 
@@ -33,7 +33,7 @@ Vessen egy pillantást [Cortana Intelligence megoldások](https://appsource.micr
 
 Ez a cikk részletesen ismerteti a lépéseket a AppSource közzétett egy partner által létrehozott Cortana Intelligence megoldás keresztül
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 1. Az a [Partner Közösség előnyei útmutató](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=Hosted%20Documents/Partner%20Community%20Benefits%20Guide%20-%20Cloud%20and%20Enterprise.pdf) (PDF), lásd az beszerzése felsorolt Advanced Analytics partnerként 9.
 1. Fejezze be a [küldje el az alkalmazás](https://appsource.microsoft.com/en-us/partners/list-an-app) űrlap.
 
@@ -109,10 +109,10 @@ Ezért partnerek gondolja kell, hogy azok magánjellegét, mint egy teljes kör�
 ## <a name="publish-your-app-on-the-publishing-portal"></a>A közzétételi portálon az alkalmazás közzététele
 Ha az alkalmazás azt kiértékelni a fenti lépéseket a közzétételi portál eléréséhez, és látható [keresztül Cloud Partner portálra a Cortana Intelligence ajánlat közzététele](https://cloudpartner.azure.com/#documentation/cloud-partner-portal-publish-cortana-intelligence-app) lépések részletes ismertetése.
 
-Információ mezőinek van szüksége, ha e-mail- < appsourcecissupport@microsoft.com >.
+Információ mezőinek van szüksége, ha e-mail- <appsourcecissupport@microsoft.com>.
 ## <a name="my-app-is-published-on-appsource---now-what"></a>Saját alkalmazás közzétett AppSource - most Mi a teendő?
 Először is az alkalmazás első Gratulálunk közzé.
 A szint nem tesz közzé az alkalmazást a AppSource fokozottan kapott értéket ad vissza attól függ, hogyan befolyásolja-e a célközönség. Lásd: [a Cortana Intelligence alkalmazás AppSource növekedési támadásoknak](http://aka.ms/aagrowthhackguide) olvashat, hogyan maximalizálhatja a értéket ad vissza.
 
-Ha bármilyen kérdése vagy javaslatok, hogy kapcsolatba velünk, < appsourcecissupport@microsoft.com >.
+Ha bármilyen kérdése vagy javaslatok, hogy kapcsolatba velünk, <appsourcecissupport@microsoft.com>.
 

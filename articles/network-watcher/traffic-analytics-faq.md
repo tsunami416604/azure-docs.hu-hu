@@ -1,6 +1,6 @@
 ---
-title: Az Azure Traffic Analytics kapcsolatos gyakori kérdések |} Microsoft Docs
-description: Egyes forgalom Analytics leggyakrabban feltett kérdésekre adott válaszok.
+title: Azure-forgalmat analytics kapcsolatos gyakori kérdések |} Microsoft Docs
+description: Egyes forgalom analytics leggyakrabban feltett kérdésekre adott válaszok.
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: b9090f91db11b5bde53f3652028030201f135fa5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 01d5150bff8642a1a3fe9b7ac063923916f191c0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Gyakori kérdések a forgalom elemzés
 
-1.  Mik azok a forgalom Analytics használatához szükséges előfeltételek?
+1.  Mik azok a forgalom analytics használatához szükséges előfeltételek?
 
     Forgalom elemzés szükséges a következő előfeltételeknek:
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 03/23/2018
         - Microsoft.Network/virtualNetworkGateways/read 
         - Microsoft.Network/virtualNetworks/read
 
-2.  Mely Azure-régiók találhatók forgalom Analytics?
+2.  Mely Azure-régiók találhatók forgalom analytics?
 
     Az előzetes kiadásban használhat forgalom elemzés a következő az NSG-k **támogató régiók**: nyugati középső Régiójában, USA keleti régiója, USA keleti régiója 2. régiója, északi középső Régiójában, déli középső Régiójában, USA középső RÉGIÓJA, USA nyugati régiója, USA nyugati régiója-2, Nyugat-Európában, Észak-Európa , Nyugati UK, Dél-UK, Kelet-Ausztrália és Ausztrália délkeleti. A Naplóelemzési munkaterület léteznie kell a nyugati középső Régiójában, USA keleti régiója, Nyugat-Európában, Ausztrália délkeleti, vagy a déli UK régió.
 
@@ -66,7 +66,7 @@ ms.lasthandoff: 03/23/2018
 
     Nem. Tárolhatja a nyers naplók bármely tárfiókban, amelyben engedélyezve van egy NSG folyamata naplókhoz, azonban mind a tárfiók és a nyers naplók kell lennie a azonos előfizetésbe és azonos térségbe.
 
-8.  Ha egy NSG konfigurálása a forgalom elemzés közben kapok "Nem található" hibaüzenet, hogyan szeretnék kiderítését?
+8.  Ha a "Nem található" hibaüzenet jelenik konfigurálása egy NSG-t forgalom elemzés közben, hogyan szeretnék kiderítését?
 
     Válasszon egy támogatott régióban kérdés 2 szerepel. Ha egy nem támogatott régióban, a "Nem található" hibaüzenetet kap.
 
@@ -95,7 +95,7 @@ ms.lasthandoff: 03/23/2018
 12.  Ha a következő hibaüzenet: "1.) a NSG elemzése flow naplók először. Ez a folyamat 20-30 percet is igénybe vehet. Ellenőrizze újra egy kis idő múlva. 2.) Ha a fenti lépést nem működik, és a munkaterületen a szabad SKU alatt, majd ellenőrizze a munkaterület használatát itt ellenőrzése túllépte a kvótát, ellenkező esetben tekintse meg a gyakran feltett kérdésekre további információk", hogyan hárítható el azt?
 
         Előfordulhat, hogy a hibaüzenet a következő okok miatt:
-        - Forgalom Analytics előfordulhat, hogy nemrég engedélyezve van, és előfordulhat, hogy kevés az adat ahhoz, hogy a jelentéssel bíró insights származnia ahhoz, azok a jelentések is generálható kell összesítése. Ebben az esetben próbálja meg újra a 30 perc után
+        - Forgalom analytics előfordulhat, hogy nemrég engedélyezve van, és előfordulhat, hogy kevés az adat ahhoz, hogy a jelentéssel bíró insights származnia ahhoz, azok a jelentések is generálható kell összesítése. Ebben az esetben próbálja meg újra a 30 perc után
         - Az OMS-munkaterület a szabad SKU alatt áll, és a kvótakorlát megszegése azt. Ebben az esetben előfordulhat, hogy kell használnia a Termékváltozat munkaterületeinek nagyobb kapacitással rendelkező átjáróeszközt.
     
         Ha a probléma továbbra is fennáll, a aggodalomra a [felhasználói hang fórum](https://feedback.azure.com/forums/217313-networking?category_id=195844).
@@ -104,9 +104,9 @@ ms.lasthandoff: 03/23/2018
 
         Ön az erőforrások információi az irányítópulton; azonban folyamat kapcsolatos jelenleg nincs jelen. Adatok nem találhatók az erőforrások között nincs kommunikáció adatfolyamok miatt. 60 perc várakozás és újbóli állapotának ellenőrzéséhez. Ha biztos benne, hogy létezik-e erőforrások közötti kommunikációs forgalom, majd a aggodalomra a [felhasználói hang fórum](https://feedback.azure.com/forums/217313-networking?category_id=195844).
 
-14.  Hogyan áron a forgalom Analytics?
+14.  Hogyan áron a forgalom analytics?
 
-        Forgalom Analytics forgalmi díjas csökkentett naplók növelésére és a továbbfejlesztett naplók tárolása a Naplóelemzési munkaterület. A képen forgalom Analytics nem számlázása történik a csökkentett naplók lehetőségeinek azonban munkaterület az adatok tárolási közzétett ütemben számlázási vonatkoznak. Ez a válasz frissíti az forgalom Analytics díjszabása elérhetővé válik.
+        Forgalom analytics forgalmi díjas csökkentett naplók növelésére és a továbbfejlesztett naplók tárolása a Naplóelemzési munkaterület. A képen forgalom analytics nem számlázása történik a csökkentett naplók lehetőségeinek azonban munkaterület az adatok tárolási közzétett ütemben számlázási vonatkoznak. Ez a válasz frissíti az forgalom analytics díjszabása elérhetővé válik.
 
 15.  Hogyan navigálhatnak meg, hogy a földrajzi nézet a billentyűzet használata-e?
 

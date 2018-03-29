@@ -1,11 +1,11 @@
 ---
-title: "Az Azure PowerShell rendelkező virtuálisgép-méretezési csoportok kezelése |} Microsoft Docs"
-description: "Közös Azure PowerShell-parancsmagok segítségével kezelheti a virtuálisgép-méretezési csoportok, például indítása és leállítása egy példányát, vagy módosítsa a skála kapacitás beállítása."
+title: Az Azure PowerShell rendelkező virtuálisgép-méretezési csoportok kezelése |} Microsoft Docs
+description: Közös Azure PowerShell-parancsmagok segítségével kezelheti a virtuálisgép-méretezési csoportok, például indítása és leállítása egy példányát, vagy módosítsa a skála kapacitás beállítása.
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: d35fa77a-de96-4ccd-a332-eb181d1f4273
 ms.service: virtual-machine-scale-sets
@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 5b5f3eb05f0d6c10f7efe8af1b93b2cb4fc585c5
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: c463dd26c106b3178becc977a8afd742220d7973
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-azure-powershell"></a>A virtuálisgép-méretezési beállítása az Azure PowerShell kezelése
-A virtuálisgép-méretezési csoport életciklusa során szükség lehet egy vagy több felügyeleti feladatok futtatásához. Emellett érdemes lehet különböző életciklus-feladatokat automatizáló parancsfájlokat hozhatnak létre. Ez a cikk részletesen néhány gyakori Azure PowerShell-parancsmagok, amelyek lehetővé teszik, hogy ezeket a műveleteket.
+A virtuálisgép-méretezési csoport életciklusa során szükség lehet egy vagy több felügyeleti feladatok futtatásához. Emellett előfordulhat, hogy különféle szkripteket is érdemes létrehozni az életciklus-feladatok automatizálására. Ez a cikk részletesen néhány gyakori Azure PowerShell-parancsmagok, amelyek lehetővé teszik, hogy ezeket a műveleteket.
 
-Felügyeleti feladatok elvégzéséhez szüksége van a legújabb Azure PowerShell modul. Hogyan kell telepíteni, és a legújabb verzióját használja a további információkért lásd: [Ismerkedés az Azure PowerShell](/powershell/azure/get-started-azureps). Ha egy virtuálisgép-méretezési csoport létrehozásához szükséges, akkor [hozzon létre egy méretezési beállítása az Azure portálon](virtual-machine-scale-sets-create-portal.md).
+Felügyeleti feladatok elvégzéséhez szüksége van a legújabb Azure PowerShell modul. További információ: [Ismerkedés az Azure PowerShell](/powershell/azure/get-started-azureps). Ha egy virtuálisgép-méretezési csoport létrehozásához szükséges, akkor [hozzon létre egy méretezési beállítása az Azure PowerShell](quick-create-powershell.md).
 
 
 ## <a name="view-information-about-a-scale-set"></a>A méretezési adatainak megtekintése
@@ -35,7 +35,7 @@ Get-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet
 ```
 
 
-## <a name="view-vms-in-a-scale-set"></a>Nézet virtuális gépek méretezési csoportban lévő
+## <a name="view-vms-in-a-scale-set"></a>Virtuális gépek megtekintése egy méretezési csoportban
 Méretezési csoportban lévő Virtuálisgép-példány listájának megtekintéséhez használja [Get-AzureRmVmssVM](/powershell/module/azurerm.compute/get-azurermvmssvm). Az alábbi példa listában az összes Virtuálisgép-példány a méretezési készletben elnevezett *myScaleSet* és a *myResourceGroup* erőforráscsoport. Adja meg ezeket a neveket a saját értékeit:
 
 ```powershell

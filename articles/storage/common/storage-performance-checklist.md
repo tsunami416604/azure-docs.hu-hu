@@ -1,10 +1,10 @@
 ---
-title: "Az Azure Storage teljesítményére és méretezhetőségére ellenőrzőlista |} Microsoft Docs"
-description: "Egy ellenőrzőlista használható az Azure Storage performant-alkalmazások fejlesztésével bevált gyakorlatát."
+title: Az Azure Storage teljesítményére és méretezhetőségére ellenőrzőlista |} Microsoft Docs
+description: Egy ellenőrzőlista használható az Azure Storage performant-alkalmazások fejlesztésével bevált gyakorlatát.
 services: storage
-documentationcenter: 
-author: tamram
-manager: timlt
+documentationcenter: ''
+author: roygara
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 959d831b-a4fd-4634-a646-0d2c0c462ef8
 ms.service: storage
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2016
-ms.author: tamram
-ms.openlocfilehash: 6f5a136d1be7a4bb4093baad820271770305b718
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: rogarana
+ms.openlocfilehash: 945289a172270eea56625287baf437fd4b70c7f3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>A Microsoft Azure Storage teljesítmény- és méretezhetőségi ellenőrzőlistája
 ## <a name="overview"></a>Áttekintés
@@ -45,9 +45,9 @@ Ez a cikk a bevált gyakorlat a következő csoportokba rendezi. Bevált gyakorl
 | &nbsp; | All Services (Minden szolgáltatás) |Közvetlen ügyfélhozzáférés |[Használnak, a SAS, valamint a CORS engedélyezése helyett proxy-tárhely eléréséhez közvetlen hozzáférést?](#subheading6) |
 | &nbsp; | All Services (Minden szolgáltatás) |Gyorsítótárazás |[A gyorsítótárazási alkalmazásadatok ismételten használt és módosítások ritkán van?](#subheading7) |
 | &nbsp; | All Services (Minden szolgáltatás) |Gyorsítótárazás |[Az alkalmazás kötegelés van a frissítések (ügyféloldali gyorsítótárazás őket, és majd töltse fel a nagyobb készletek)?](#subheading8) |
-| &nbsp; | All Services (Minden szolgáltatás) |.NET-konfiguráció |[Rendelkezik-e konfigurálva az ügyfél számára elegendő az egyidejű kapcsolatok használatát?](#subheading9) |
-| &nbsp; | All Services (Minden szolgáltatás) |.NET-konfiguráció |[Állított .NET szálak elegendő számú használni?](#subheading10) |
-| &nbsp; | All Services (Minden szolgáltatás) |.NET-konfiguráció |[.NET 4.5-ös verziójának használatával, vagy később, amely javult a szemétgyűjtés?](#subheading11) |
+| &nbsp; | All Services (Minden szolgáltatás) |.NET Configuration |[Rendelkezik-e konfigurálva az ügyfél számára elegendő az egyidejű kapcsolatok használatát?](#subheading9) |
+| &nbsp; | All Services (Minden szolgáltatás) |.NET Configuration |[Állított .NET szálak elegendő számú használni?](#subheading10) |
+| &nbsp; | All Services (Minden szolgáltatás) |.NET Configuration |[.NET 4.5-ös verziójának használatával, vagy később, amely javult a szemétgyűjtés?](#subheading11) |
 | &nbsp; | All Services (Minden szolgáltatás) |Párhuzamos végrehajtás |[Biztosították, hogy párhuzamossági korlátozódik megfelelően, hogy nem túlterhelés, vagy az ügyfél lehetőségek körét, vagy a méretezhetőségi célok?](#subheading12) |
 | &nbsp; | All Services (Minden szolgáltatás) |Eszközök |[Vannak a legújabb verzió Microsoft megadott ügyfél-kódtárak és eszközök?](#subheading13) |
 | &nbsp; | All Services (Minden szolgáltatás) |Újrapróbálkozások |[Azok az exponenciális leállítási használatával újra hibák és időtúllépéseket okoz szabályozás házirend?](#subheading14) |
@@ -60,7 +60,7 @@ Ez a cikk a bevált gyakorlat a következő csoportokba rendezi. Bevált gyakorl
 | &nbsp; | Blobok |Metaadatok |[Akkor tárolja a gyakran használt BLOB metaadatait a metaadatok?](#subheading20) |
 | &nbsp; | Blobok |Gyors feltöltése |[Gyorsan egy blob feltöltése közben meg feltölteni, párhuzamos blokkok?](#subheading21) |
 | &nbsp; | Blobok |Gyors feltöltése |[Feltöltése közben számos blobok gyorsan, akkor feltölteni párhuzamosan blobok?](#subheading22) |
-| &nbsp; | Blobok |Javítsa ki a Blob típushoz |[Használ lapblobokat vagy adott esetben a blokkblobok?](#subheading23) |
+| &nbsp; | Blobok |Correct Blob Type |[Használ lapblobokat vagy adott esetben a blokkblobok?](#subheading23) |
 | &nbsp; | Táblák |Méretezhetőségi célok |[A másodpercenként entitásokra vonatkozó méretezhetőségi célok megközelítő?](#subheading24) |
 | &nbsp; | Táblák |Konfiguráció |[Használ JSON-ban a tábla kérelmek?](#subheading25) |
 | &nbsp; | Táblák |Konfiguráció |[Ön kikapcsolta Nagle kis kérelmek a teljesítmény javítása érdekében?](#subheading26) |
@@ -84,7 +84,7 @@ Ez a cikk a bevált gyakorlat a következő csoportokba rendezi. Bevált gyakorl
 | &nbsp; | Üzenetsorok |Üzenet frissítése |[Használ UpdateMessage kerülése újból feldolgozza az egész üzenetet, ha hiba lép fel, az üzenetek feldolgozása folyamatban tárolására?](#subheading44) |
 | &nbsp; | Üzenetsorok |Architektúra |[Használja a várólisták a teljes alkalmazás több méretezhető hosszan futó munkaterhelések kívül a kritikus út tartja és méretezését majd?](#subheading45) |
 
-## <a name="allservices"></a>Minden szolgáltatás
+## <a name="allservices"></a>All Services
 Ez a rész felsorolja a bevált gyakorlat, amelyek az Azure Storage szolgáltatás (BLOB, táblák, üzenetsorok vagy fájlok) használatával alkalmazhatók.  
 
 ### <a name="subheading1"></a>Méretezhetőségi célok
@@ -169,7 +169,7 @@ Hogyan kérhet egy blob tulajdonságai .NET használatával utolsó módosítás
 #### <a name="subheading8"></a>Adatok kötegelt feltöltése
 Néhány alkalmazás esetben összesíteni az adatokat helyileg, és majd rendszeres időközönként töltse fel egy kötegben minden adat azonnal feltöltése helyett. Például egy webes alkalmazás előfordulhat, hogy tartsa a tevékenységek naplófájl: az alkalmazás vagy sikerült feltölteni minden tevékenység részleteinek, akkor fordul elő, a tábla egységként (amelyhez szükséges számos tárolási műveletek), vagy azt sikerült tevékenység részletei a helyi fájlba mentése, majd rendszeresen töltse fel az összes tevékenység részletei tagolt blob-fájlként. Ha minden naplóbejegyzés 1KB-nál, feltöltheti a több ezer (legfeljebb 64 MB-nál egy tranzakción belül blob is feltölthet) egy "Put Blob" tranzakción belül. Természetesen a helyi gép a feltöltés előtt omlik össze, potenciálisan elvész néhány naplóadatok: az alkalmazás fejlesztőjének kell ügyféleszköz lehetőségét tervezi vagy annak feltöltése sikertelen.  Ha a tevékenységek adatai a timespans (csak egyetlen tevékenység) le kell tölteni, majd blobok javasoltak táblák keresztül.
 
-### <a name="net-configuration"></a>.NET-konfiguráció
+### <a name="net-configuration"></a>.NET Configuration
 Ha a .NET keretrendszert használja, ez a szakasz számos gyors konfigurációs beállítások segítségével ellenőrizze az jelentős teljesítményjavulást eredményezhet.  Ha használ egyéb nyelvek, ellenőrizze, hogy ha hasonló fogalmak alkalmazza a kiválasztott nyelven.  
 
 #### <a name="subheading9"></a>Alapértelmezett korlát növelése
@@ -206,7 +206,7 @@ Párhuzamossági kiváló teljesítmény lehetnek, ügyeljen arra, unbounded pá
 Mindig legyen a legújabb Microsoft által biztosított ügyfél kódtárak és eszközök. Írásának időpontjában nincsenek .NET, Windows Phone, Windows-Futtatókörnyezetű, Java és C++ elérhető klienskódtárait, valamint más nyelvekre preview szalagtárak. Ezenkívül a Microsoft közzétette PowerShell-parancsmagok és az Azure Storage használatához Azure parancssori felület parancsait. Microsoft aktívan házon belül fejlesztett alkalmazásokra teljesítménnyel szem előtt ezeket az eszközöket, a legújabb verziót a naprakészen tartása, és biztosítja a belsőleg azok kezelni a teljesítmény bevált gyakorlatát.  
 
 ### <a name="retries"></a>Újrapróbálkozások
-#### <a name="subheading14"></a>Sávszélesség-szabályozás/ServerBusy
+#### <a name="subheading14"></a>Throttling/ServerBusy
 Bizonyos esetekben a társzolgáltatás előfordulhat, hogy szabályozni az alkalmazáshoz, vagy egyszerűen esetleg nem tudja teljesíteni a kérést néhány átmeneti miatt, és térjen vissza a "503-as kiszolgáló elfoglalt" üzenetet, vagy az "500 időtúllépése".  Ez akkor fordulhat elő, ha az alkalmazás közeledik, a méretezhetőségi célok bármelyikét, vagy ha a rendszer az újraelosztás particionált adatait, hogy nagyobb átviteli sebesség eléréséhez.  Az ügyfélalkalmazás általában újra kell próbálkoznia ilyen hibát okoz, művelet: a kérésben újabb kísérlet sikeres lehet. Ha a társzolgáltatás van az alkalmazás szabályozását, mert a méretezhetőségi célok túllépte, vagy akkor is, ha a szolgáltatás nem tudta teljesíteni a kérést valamilyen más okból, az agresszív újrapróbálkozások általában teszik a probléma ami még rosszabb. Emiatt az exponenciális vissza (az ügyfél szalagtárak alapértelmezett Ez a viselkedés) ki kell használnia. Például az alkalmazás előfordulhat, hogy 2 másodperc, majd 4 másodperc 10 másodpercet, majd a 30 másodperc után próbálkozzon újra, és majd teljesen feladták. Ezt a viselkedést eredményezi, az alkalmazás jelentősen csökkenti annak terhelésétől, a szolgáltatás helyett súlyosbodott problémákat.  
 
 Vegye figyelembe, hogy kapcsolódási hibák követően újra megkísérelhető azonnal, mivel nincsenek-e a sávszélesség-szabályozás eredményét, illetve átmeneti várhatók.  
@@ -234,7 +234,7 @@ Olvassa el, vagy írhat egy blob, legfeljebb 60 MB/s (Ez a körülbelül 480 MB/
 A blobok cél átviteli kapcsolatos további információkért lásd: [Azure Storage méretezhetőségi és teljesítménycéloknak](storage-scalability-targets.md).  
 
 ### <a name="copying-and-moving-blobs"></a>Másolásának és áthelyezésének Blobok
-#### <a name="subheading17"></a>A Blob másolása
+#### <a name="subheading17"></a>Copy Blob
 A storage REST API 2012-02-12-es verzió bevezetett hasznos azon fiókok blobot másolni: ügyfélalkalmazás kérje meg a tároló szolgáltatást a blob másolása egy másik adatforrás (esetleg egy másik tárolási fiókot), és engedélyezze a szolgáltatást a árnyékmásolata aszinkron módon. Ez jelentősen csökkenti a sávszélesség alkalmazásához szükséges, ha telepít adatok más tárfiókok mert letöltéséhez, és töltse fel az adatokat nem szükséges.  
 
 Egy figyelembe azonban, hogy másolás storage-fiókok között, ha nincs idő garancia a példány befejeződik, ha a. Ha az alkalmazásnak egy blob másolási saját felügyeletű gyorsan befejeződik, jobb megoldás lehet a blob másolása letöltése a egy virtuális géphez, majd ismét feltölteni a cél.  A teljes kiszámíthatóságot ebben a helyzetben győződjön meg arról, hogy a másolat végzi el a virtuális gépek azonos Azure-régióban fut, vagy pedig hálózati körülmények lehet (és valószínűleg fog) hatással a másolási teljesítményére.  Ezenkívül programozott módon figyelheti egy aszinkron másolatot előrehaladását.  
@@ -261,7 +261,7 @@ A gyors feltöltése a BLOB, az első kérdést megválaszolásához:: Ön egy b
 Blobok feltöltése egyetlen nagy gyorsan, az ügyfélalkalmazás kell feltöltése, a blokkok vagy lapok párhuzamos (az egyes blobok és a tárfiók egészére vonatkozó méretezhetőségi célok szem előtt tartva alatt).  Ne feledje, hogy a hivatalos Microsoft által biztosított RTM Storage ügyfélkódtáraival (.NET, Java) ennek a lehetősége.  Az egyes könyvtárak, használja a megadott objektum/tulajdonság egyidejű szintjének beállítása az alábbi:  
 
 * .NET: Set ParallelOperationThreadCount BlobRequestOptions-objektum használható.
-* Java/Android: BlobRequestOptions.setConcurrentRequestCount() használata
+* Java/Android: Use BlobRequestOptions.setConcurrentRequestCount()
 * NODE.js: ParallelOperationThreadCount használja, vagy a beállításokat, vagy a blob szolgáltatás.
 * C++: Blob_request_options::set_parallelism_factor módszert.
 
@@ -349,7 +349,7 @@ Egy másik lekérdezés hatékonyságát kulcsfontosságú tényező a visszaado
 ###### <a name="subheading32"></a>Szűrés
 Ha tudja, hogy a lekérdezés entitásokat, nem kell az ügyfélalkalmazás visszatér, érdemes lehet egy szűrőt a visszaadott készlet méretének csökkentése érdekében. Az entitások nem küld válaszként az ügyfél továbbra is a méretezhetőségi korlátok felé száma, amíg az alkalmazás teljesítményének javítja a kisebb hálózati terhelés méretének és entitások is fel kell dolgoznia az ügyfélalkalmazást korlátozott száma miatt.  A Megjegyzés fent látható [lekérdezés sűrűség](#subheading31), azonban – a méretezhetőségi célok számához kapcsolódnak, az entitások vizsgálja, így egy lekérdezést, amely a számos entitás továbbra is eredményezhet sávszélesség-szabályozás, még akkor is, ha néhány entitásokat ad vissza.  
 
-###### <a name="subheading33"></a>Leképezése
+###### <a name="subheading33"></a>Projection
 Ha az ügyfélalkalmazást igényel, a tábla az entitások tulajdonságok csak korlátozott számú, használhatja a leképezés a visszaadott adathalmaz méretének korlátozására. Csakúgy, mint a szűrés, ez segít csökkenti a hálózati terhelést és az ügyfél feldolgozása.  
 
 ##### <a name="subheading34"></a>Denormalization

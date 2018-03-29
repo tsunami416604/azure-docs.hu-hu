@@ -1,9 +1,9 @@
 ---
-title: "A kiszolgálóoldali JavaScript programozás Azure Cosmos DB |} Microsoft Docs"
-description: "Útmutató: Azure Cosmos-Adatbázist kíván használni a tárolt eljárások, eseményindítók adatbázis és a felhasználó által megadott funkciókat (UDF) írását a JavaScript. Adatbázis programing tippeket és több kapják meg."
-keywords: "Adatbázis-eseményindítók, tárolt eljárás, tárolt eljárás, adatbázis program, sproc, azure, a Microsoft azure"
+title: A kiszolgálóoldali JavaScript programozás Azure Cosmos DB |} Microsoft Docs
+description: 'Útmutató: Azure Cosmos-Adatbázist kíván használni a tárolt eljárások, eseményindítók adatbázis és a felhasználó által megadott funkciókat (UDF) írását a JavaScript. Adatbázis programing tippeket és több kapják meg.'
+keywords: Adatbázis-eseményindítók, tárolt eljárás, tárolt eljárás, adatbázis program, sproc, azure, a Microsoft azure
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: aliuy
 manager: jhubbard
 editor: mimig
@@ -13,29 +13,27 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: d8438d126c1f994e51871e80bb11610ec95b0814
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 2b55307c3122513b414c3f90a6a36d230f3459c2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Az Azure Cosmos DB kiszolgálóoldali programozása: tárolt eljárások, eseményindítók adatbázis és a felhasználó által megadott függvények
 
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
+Ismerje meg, hogyan Azure Cosmos DB nyelvintegrált, a tranzakciós végrehajtását a JavaScript lehetővé teszi, hogy a fejlesztők írási **tárolt eljárások**, **eseményindítók**, és **felhasználói függvény (UDF)**  a natív módon egy [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/) JavaScript. Ez Javascript lehetővé teszi az alkalmazáslogikák adatbázis program szállított, és közvetlenül az adatbázis tárolási partíciókon végre. 
 
-Ismerje meg, hogy Azure Cosmos DB nyelvi integrálva, a tranzakciós végrehajtását a JavaScript lehetővé teszi, hogy a fejlesztők írási **tárolt eljárások**, **eseményindítók** és **felhasználó által definiált funkciókat (UDF)** a natív módon egy [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/) JavaScript. Ez lehetővé teszi az alkalmazáslogikák adatbázis program szállított és végre közvetlenül az adatbázis adattárolási partíciókat. 
+Azt javasoljuk, hogy Kezdésként tekintse meg az alábbi videót, ahol Andrew Liu mutatja be Azure Cosmos DB kiszolgálóoldali adatbázis programozási modellt. 
 
-Azt javasoljuk, hogy Kezdésként tekintse meg az alábbi videót, amelyben Andrew Liu Cosmos DB kiszolgálóoldali adatbázis programozási modell rövid áttekintést nyújt. 
-
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Demo-A-Quick-Intro-to-Azure-DocumentDBs-Server-Side-Javascript/player]
-> 
+> [!VIDEO https://www.youtube.com/embed/s0cXdHNlVI0]
+>
 > 
 
 Ezt követően térjen vissza a cikkhez, ahol megtudhatja, a következő kérdések megválaszolásához:  
 
-* Hogyan írni egy tárolt eljárás, eseményindító vagy használatával JavaScript UDF?
+* Hogyan írni egy tárolt eljárás, eseményindító vagy használja a JavaScript UDF?
 * Hogyan Cosmos DB sav garantálni?
 * Hogyan működik a Cosmos DB tranzakciók?
 * Mik azok a előre elindítja és utáni indítása, és hogyan hajtsa végre írási egy?
@@ -46,17 +44,17 @@ Ezt követően térjen vissza a cikkhez, ahol megtudhatja, a következő kérdé
 Ez a megközelítés a *"JavaScript egy T-SQL modern napot"* felszabadítja a rendszer típuseltérést és objektum-relációs leképezés technológiák bonyolultságára alkalmazásfejlesztők. Azt is számos belső előnyt, sokoldalú alkalmazásokat hozhatnak létre állítható be:  
 
 * **Eljárási logika:** JavaScript egy magas szintű programozási nyelv, üzleti logika express gazdag és ismerős felületet biztosít. Az adatok műveletek közelebb összetett sorozatát végezheti el.
-* **Az atomi tranzakciók:** Cosmos DB biztosítja, hogy az adatbázis-műveletet hajtott végre egy tárolt eljárás vagy eseményindító belül atomi. Ez lehetővé teszi, hogy egy alkalmazás egyesítése egyetlen kötegben kapcsolódó műveleteket, hogy az összes sikeres legyen, vagy egyiket sem sikerült. 
+* **Az atomi tranzakciók:** Cosmos DB biztosítja, hogy az adatbázis-műveletet hajtott végre egy tárolt eljárás vagy eseményindító belül atomi. A atomi funkció lehetővé teszi, hogy egy alkalmazás egyesítése egyetlen kötegben kapcsolódó műveleteket, hogy az összes sikeres legyen, vagy egyiket sem sikerült. 
 * **Teljesítmény:** , hogy a JSON alapvetően a Javascript nyelv típusrendszernek van leképezve, és egyben a alapvető egysége a Cosmos DB tárolási lehetővé teszi, hogy optimalizálásokat Lusta materialization pufferkészletben JSON-dokumentumok például számos és minősítené igény végrehajtás alatt álló kódot. Nincsenek további teljesítménybeli előnyökben szállítási üzleti logika az adatbázishoz tartozó:
   
   * Kötegelés – fejlesztők csoport műveletek tartoznak, mint a beszúrások, és a tömeges küldheti el ezeket. A hálózati forgalom késés költségeket, és a tároló terhelése hozzon létre külön tranzakciók jelentősen csökkent. 
-  * A fordítás előtti – Cosmos DB precompiles tárolt eljárások, eseményindítók és felhasználó által megadott funkciókat (UDF) JavaScript fordítási költség egyes elindításaihoz elkerülése érdekében. A terhelés létrehozásának eljárási logika bájt kódjának van amortized minimális értéket.
+  * A fordítás előtti – Cosmos DB precompiles tárolt eljárások, eseményindítók és felhasználói függvény (UDF) JavaScript fordítási költség egyes elindításaihoz elkerülése érdekében. A terhelés létrehozásának eljárási logika bájt kódjának van amortized minimális értéket.
   * Alkalmazás-előkészítés – sok műveleteket kell egy mellékhatása ("eseményindító"), amely potenciálisan magában foglalja a egy vagy több másodlagos tároló műveleteket. Vezérelt atomicity Ez a további performant, amikor a kiszolgáló kerül. 
-* **Beágyazás:** a tárolt eljárások üzleti logika egy helyen csoportosításához használható. Ez a két előnnyel rendelkezik:
-  * Hozzáadja a nyers adatokat, amely lehetővé teszi az adatok fejlesztők azt fejleszteni az alkalmazásaikat, függetlenül az adatokból fölött egy absztrakciós réteget. Ez különösen hasznos, amikor az adatok séma nélküli, miatt a rideg feltételek, amelyek esetleg bővíthetőség az alkalmazásba, ha közvetlenül az adatok kezelésére.  
+* **Beágyazás:** a tárolt eljárások segítségével csoport üzleti logika egy helyen, amely két előnyökkel jár:
+  * Hozzáadja a nyers adatokat, amely lehetővé teszi az adatok fejlesztők azt fejleszteni az alkalmazásaikat, függetlenül az adatokból fölött egy absztrakciós réteget. Absztrakciós réteg előnyös, amikor az adatok séma nélküli, miatt a rideg feltételek, amelyek esetleg bővíthetőség az alkalmazásba, ha közvetlenül az adatok kezelésére.  
   * Ez az absztrakció lehetővé teszi, hogy a vállalatok számára az adatokat a hozzáférést a parancsfájlok a egyszerűsítése biztonsága.  
 
-A létrehozási és az adatbázis eseményindítók, tárolt eljárás és egyéni lekérdezési operátorok végrehajtási keresztül támogatja a [Azure-portálon](https://portal.azure.com), a [REST API](/rest/api/documentdb/), [Azure DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases), és [ügyfél SDK-k](sql-api-sdk-dotnet.md) például .NET, Node.js és JavaScript számos platformon.
+A létrehozás és egyéni lekérdezési operátorok, adatbázis eseményindítók és tárolt eljárások végrehajtása keresztül támogatja a [Azure-portálon](https://portal.azure.com), a [REST API](/rest/api/documentdb/), [Azure DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases), és [ügyfél SDK-k](sql-api-sdk-dotnet.md) például .NET, Node.js és JavaScript számos platformon.
 
 Ez az oktatóanyag használja a [Node.js SDK-val Q tett](http://azure.github.io/azure-documentdb-node-q/) szintaxis és a tárolt eljárások, eseményindítók és felhasználó által megadott függvények használatát mutatja be.   
 
@@ -88,7 +86,7 @@ Tárolt eljárások gyűjteményenként regisztrálva van, és a dokumentum és 
         });
 
 
-Regisztrálva van a következő tárolt eljárást, ha azt végre gyűjteményre, és olvassa el az eredmények vissza az ügyfélen. 
+A tárolt eljárás regisztrálva van, ha végrehajtja a gyűjteményre, és olvassa el az eredmények vissza az ügyfélen. 
 
     // execute the stored procedure
     client.executeStoredProcedureAsync('dbs/testdb/colls/testColl/sprocs/helloWorld')
@@ -99,9 +97,9 @@ Regisztrálva van a következő tárolt eljárást, ha azt végre gyűjteményre
         });
 
 
-A környezeti objektumot biztosít az összes művelet végrehajtható Cosmos DB tároló elérésére, valamint a hozzáférési kérelem-válasz objektumokhoz. A válasz objektum ebben az esetben állítsa be a választörzs az ügyfélnek küldött használtuk. További részletekért tekintse meg a [Azure Cosmos DB JavaScript server SDK-dokumentáció](http://azure.github.io/azure-documentdb-js-server/).  
+A környezeti objektumot biztosít az összes művelet végrehajtható Cosmos DB tároló elérésére, valamint a hozzáférési kérelem-válasz objektumokhoz. A válasz objektum ebben az esetben állítsa be a választörzs az ügyfélnek küldött használtuk. További információkért lásd: a [Azure Cosmos DB JavaScript server SDK-dokumentáció](http://azure.github.io/azure-documentdb-js-server/).  
 
-Ossza meg velünk bontsa ki az ebben a példában, és adja hozzá a további adatbázis-funkciók a tárolt eljárás. Tárolt eljárások létrehozása, frissítése, olvassa el, lekérdezheti és dokumentumok és mellékletek belül a gyűjtemény törlése.    
+Ossza meg velünk bontsa ki az ebben a példában, és további adatbázissal kapcsolatos funkciókat adnak hozzá a következő tárolt eljárást. Tárolt eljárások is létrehozása, frissítése, olvassa el, lekérdezéséhez és dokumentumok és mellékletek belül a gyűjtemény törlése.    
 
 ### <a name="example-write-a-stored-procedure-to-create-a-document"></a>Példa: Hozzon létre egy dokumentumot egy tárolt eljárás írása
 A következő kódrészletet bemutatja, hogyan használhatja a környezeti objektumot Cosmos DB erőforrásokat.
@@ -153,7 +151,7 @@ A fenti példában a visszahívás hibát jelez, ha a művelet sikertelen volt. 
 
 Vegye figyelembe, hogy ez a tárolt eljárás bemeneti dokumentum szervek tömbje eltarthat, és hozza létre a címzetteket a azonos tárolt eljárás végrehajtása több hálózati kérelmek, mindegyikhez külön-külön létrehozása helyett az összes kell módosítani. Ez egy hatékony tömeges importáló végrehajtása Cosmos DB (Ez az oktatóanyag későbbi részében bemutatása) is használható.   
 
-A bemutatott példában bemutatott tárolt eljárások használatával. Bemutatjuk, eseményindítók és felhasználó által megadott funkciókat (UDF) az oktatóanyag későbbi részében.
+A bemutatott példában bemutatott tárolt eljárások használatával. Bemutatjuk, eseményindítók és felhasználói függvény (UDF) az oktatóanyag későbbi részében.
 
 ## <a name="database-program-transactions"></a>Adatbázis-program tranzakciók
 Egy tipikus adatbázisban tranzakció munka egyetlen logikai egységként végrehajtott műveletek sorozata adható meg. Minden tranzakció biztosít **ACID garanciák**. SAV egy jól ismert mozaikszó négy tulajdonságai – Atomicity, konzisztencia, elkülönítési és tartósságot jelző.  
@@ -227,7 +225,7 @@ A Cosmos DB JavaScript tárolva az adatbázisban memóriaterületén. Emiatt ké
 
 Ez a tárolt eljárás kereskedelmi elemek között két játékosok egyetlen művelettel játék alkalmazásokban tranzakciók használja. A tárolt eljárás megkísérli argumentumként átadott a player azonosítók megfelelő két dokumentumok olvasását. Ha mindkét player dokumentum található, majd a tárolt eljárás frissíti a dokumentumok csere az elemeket. Ha a hibák elérhesse ezt a hibát, azt, amely implicit módon megszakítja a tranzakciót JavaScript kivételt okoz.
 
-Ha a gyűjteményhez a következő tárolt eljárás regisztrálva van-e elleni egypartíciós gyűjtemény, akkor a tranzakció hatókörét a gyűjteményben lévő összes dokumentumot. Ha a gyűjtemény particionálva van, majd tárolt eljárások a tranzakció hatókörében egypartíciós kulcs lesznek végrehajtva. Minden egyes tárolt eljárás végrehajtása majd tartalmaznia kell egy megfelelő kell futnia a tranzakció hatókörében a partíciós kulcs értéke. További részletekért lásd: [Azure Cosmos DB particionálás](partition-data.md).
+Ha a gyűjteményhez a következő tárolt eljárás regisztrálva van-e elleni egypartíciós gyűjtemény, akkor a tranzakció hatókörét a gyűjteményben lévő összes dokumentumot. Ha a gyűjtemény particionálva van, majd tárolt eljárások a tranzakció hatókörében egypartíciós kulcs lesznek végrehajtva. Minden egyes tárolt eljárás végrehajtása majd tartalmaznia kell egy megfelelő kell futnia a tranzakció hatókörében a partíciós kulcs értéke. További információkért lásd: [Azure Cosmos DB particionálás](partition-data.md).
 
 ### <a name="commit-and-rollback"></a>Érvényesítés és visszaállítás
 Tranzakciók mélyen és natív módon integrálva vannak Cosmos DB JavaScript programozási modellt. A JavaScript függvényen belül minden műveletet vannak automatikusan végett az egyetlen tranzakció alatt. Ha a JavaScript kivételen nélkül befejeződött, a műveleteket, így az adatbázis lépnek. Érvényben van a "BEGIN TRANSACTION" és "COMMIT TRANSACTION" utasítások a relációs adatbázisok implicit Cosmos DB-ben.  
@@ -238,11 +236,11 @@ Ha minden kivételt, amely a parancsfájlból propagálja, Cosmos DB a JavaScrip
 Tárolt eljárások és eseményindítók mindig végrehajtása az Azure Cosmos DB tároló az elsődleges replikán. Ez biztosítja, hogy az olvasások belül tárolt eljárások ajánlat az erős konzisztencia. Lekérdezések felhasználó által definiált függvények használatával hajtható végre az elsődleges vagy a másodlagos másodpéldány, de gondoskodunk róla, hogy megfeleljen a kért konzisztenciaszint válassza ki a megfelelő replika.
 
 ## <a name="bounded-execution"></a>A kötött végrehajtása
-Minden Cosmos DB műveletet kell végeznie a megadott kiszolgálón belül kérelmek időtúllépési időtartama. Ez a korlátozás vonatkozik JavaScript-funkcióként (tárolt eljárások, eseményindítók és felhasználó által definiált függvények) is. Ha egy művelet nem fejeződött be az ezt az időkorlátot, a tranzakció vissza lesz állítva. JavaScript-funkcióként kell befejezni az időkorláton belül vagy egy kötegelt/Folytatás végrehajtási alapú folytatási modellt.  
+Minden Cosmos DB műveletet kell végeznie a megadott kiszolgálón belül kérelmek időtúllépési időtartama. Ez a korlátozás vonatkozik JavaScript-funkcióként (tárolt eljárások, eseményindítók és felhasználó által definiált függvények) is. Ha egy művelet nem fejeződött be az ezt az időkorlátot, a tranzakció vissza lesz állítva. JavaScript-funkcióként kell befejezni az időkorláton belül vagy egy kötegelt/Folytatás végrehajtási folytatási alapú modellt.  
 
 Tárolt eljárások és eseményindítók időkorlátokat, a gyűjtemény objektumra (létrehozása, olvasása, cserélje le és törölje a dokumentumok és mellékletek) alatti összes funkciójának kezeléséhez egyszerűsítése érdekében visszatérési egy logikai értéket képviselő e művelet befejeződik. Ha ez az érték hamis, akkor arra utal, hogy az időkorlát lejár, és, hogy az eljárás végrehajtása be burkolnia kell.  Az első elfogadhatatlan adattárolási művelet műveletek aszinkron előtti garantáltan befejeződik, ha a tárolt eljárás idő alatt fejeződik be, és nem várólistára további kérelmeket.  
 
-JavaScript-funkcióként is kötve van a hálózatierőforrás-fogyasztás. Cosmos DB fenntart egy adatbázis-fiók kiosztott mérete alapján gyűjteményenként átviteli sebesség. Átviteli sebesség a CPU, a memória és a kérelemegység vagy RUs IO fogyasztás normalizált egységben van kifejezve. JavaScript-funkcióként is használhat egy nagy számú RUs rövid időn belül, és előfordulhat, hogy olvasson sebessége korlátozott, ha a gyűjtemény határértékét. Erőforrás intenzív tárolt eljárások is előfordulhat, hogy karanténba egyszerű adatbázis-művelet rendelkezésre állásának biztosításához.  
+JavaScript-funkcióként is kötve van a hálózatierőforrás-fogyasztás. Cosmos DB fenntart egy adatbázis-fiók kiosztott mérete alapján gyűjteményenként átviteli sebesség. Átviteli sebesség a CPU, a memória és a kérelemegység vagy RUs IO fogyasztás normalizált egységben van kifejezve. JavaScript-funkcióként is használhat egy nagy számú RUs rövid időn belül, és előfordulhat, hogy olvasson sebessége korlátozott, ha a gyűjtemény határértékét. Erőforrás-igényes tárolt eljárások is előfordulhat, hogy karanténba egyszerű adatbázis-művelet rendelkezésre állásának biztosításához.  
 
 ### <a name="example-bulk-importing-data-into-a-database-program"></a>Példa: Tömeges adatok importálása egy adatbázis-program
 Alább példája tömeges importálással dokumentumok gyűjteménybe írt tárolt eljárást. Vegye figyelembe a következő tárolt eljárás kezelésének kötött végrehajtási logikai ellenőrzésével visszatérési érték a Documentclient, és egyes elindításaihoz a tárolt eljárás a dokumentumok számát a nyomon követése és a folyamat folytatásához kötegek között.
@@ -296,9 +294,9 @@ Alább példája tömeges importálással dokumentumok gyűjteménybe írt táro
         }
     }
 
-## <a id="trigger"></a>Adatbázis-eseményindítók
+## <a id="trigger"></a> Adatbázis-eseményindítók
 ### <a name="database-pre-triggers"></a>Adatbázis előtti eseményindítók
-Cosmos DB biztosít, amelyek végrehajtása, vagy egy műveletet a dokumentum által indított eseményindítók. Például lehetőségeiről előtti eseményindítót hoz létre egy dokumentumot – az előzetes eseményindító fog futni, a dokumentum létrehozása előtt. A következő egy példa hogyan előtti eseményindítók kerül létrehozásra dokumentumok tulajdonságainak érvényesítéséhez használható:
+Cosmos DB biztosít, amelyek végrehajtása, vagy egy műveletet a dokumentum által indított eseményindítók. Például lehetőségeiről előtti eseményindítót hoz létre egy dokumentumot – az előzetes eseményindító fog futni, a dokumentum létrehozása előtt. A következő példa bemutatja, hogyan előtti eseményindítók kerül létrehozásra dokumentumok tulajdonságainak érvényesítéséhez használható:
 
     var validateDocumentContentsTrigger = {
         id: "validateDocumentContents",
@@ -485,7 +483,7 @@ Az UDF ezt követően használható lekérdezésekben például a következő mi
 Mellett a kiállító lekérdezések Azure Cosmos adatbázis SQL-szintaxis használatával, a kiszolgálóoldali SDK teszi lehetővé az SQL ismeretek nélkül Folyékonyan beszél JavaScript-illesztő segítségével optimalizált lekérdezések végrehajtásához. A JavaScript-lekérdezés API lehetővé teszi programozott módon hozhatók létre olyan lekérdezések úgy, hogy a predikátum függvény chainable függvénynek hívások, a megszokott ECMAScript5 tartozó tömb built-ins és népszerű JavaScript szalagtárak például lodash szintaxissal. Lekérdezések hajthatnak végre hatékonyan Azure Cosmos DB indexet a JavaScript futásidejű rendszer elemzi.
 
 > [!NOTE]
-> `__`(kettős-aláhúzásjel) aliasként `getContext().getCollection()`.
+> `__` (kettős-aláhúzásjel) aliasként `getContext().getCollection()`.
 > <br/>
 > Más szóval használhatja `__` vagy `getContext().getCollection()` a JavaScript lekérdezés API eléréséhez.
 > 
@@ -498,7 +496,7 @@ Támogatott funkciók a következők:
 <b>CHAIN().... érték ([visszahívási] [, beállítások])</b>
 <ul>
 <li>
-Value() – amely kell lezárni láncolt hívás kezdődik.
+Value() – kell lezárni láncolt hívás kezdődik.
 </li>
 </ul>
 </li>
@@ -506,7 +504,7 @@ Value() – amely kell lezárni láncolt hívás kezdődik.
 <b>szűrő (predicateFunction [, beállítások] [, visszahívási])</b>
 <ul>
 <li>
-Szűrők használata a predikátum függvény, amely ahhoz, hogy a kimeneti/bemeneti dokumentumok szűrése az eredő igaz vagy hamis értéket ad vissza a bemeneti. Ez úgy viselkedik, hasonló SQL WHERE záradék.
+A bemeneti igaz/hamis ahhoz, hogy a kimeneti/bemeneti dokumentumok szűrése eredő a predikátum függvény használatával szűrők. Ez úgy viselkedik, hasonló SQL WHERE záradék.
 </li>
 </ul>
 </li>
@@ -514,7 +512,7 @@ Szűrők használata a predikátum függvény, amely ahhoz, hogy a kimeneti/beme
 <b>térkép (transformationFunction [, beállítások] [, visszahívási])</b>
 <ul>
 <li>
-Vonatkozik a leképezés egy átalakítási függvénynek, amely minden egyes bemeneti elem van leképezve a JavaScript vagy értéket kap. Ez úgy viselkedik, a SELECT záradékban az SQL hasonló.
+Vonatkozik a leképezés egy transzformációs függvény, amely minden egyes bemeneti elem van leképezve a JavaScript vagy értéket kap. Ez úgy viselkedik, a SELECT záradékban az SQL hasonló.
 </li>
 </ul>
 </li>
@@ -522,7 +520,7 @@ Vonatkozik a leképezés egy átalakítási függvénynek, amely minden egyes be
 <b>pluck ([propertyName] [, beállítások] [, visszahívási])</b>
 <ul>
 <li>
-Ez egy olyan térképet, amely egyetlen tulajdonság értékének összes beviteli elemet a parancsikont.
+Ez az látható, hogy egy-egy tulajdonság értékének kiolvassa összes beviteli elemet a parancsikont.
 </li>
 </ul>
 </li>
@@ -538,7 +536,7 @@ Egyesíti, és egyetlen tömb minden egyes bemeneti eleménél-tömbök simítja
 <b>a sortBy ([predicate] [, beállítások] [, visszahívási])</b>
 <ul>
 <li>
-Létrehoznak egy új dokumentumot a bemeneti dokumentum-adatfolyamra növekvő sorrendben az adott predikátum használata a dokumentumok rendezésével. Ez úgy viselkedik, egy ORDER BY záradékban az SQL hasonló.
+Létrehoznak egy új dokumentumot a bemeneti dokumentum-adatfolyamra növekvő sorrendben az adott predikátum használata a dokumentumok rendezésével. Ez úgy viselkedik, hasonló SQL ORDER BY záradék.
 </li>
 </ul>
 </li>
@@ -546,7 +544,7 @@ Létrehoznak egy új dokumentumot a bemeneti dokumentum-adatfolyamra növekvő s
 <b>sortByDescending ([predicate] [, beállítások] [, visszahívási])</b>
 <ul>
 <li>
-Létrehoznak egy új dokumentumot a bemeneti dokumentum-adatfolyamra csökkenő sorrendben az adott predikátum használata a dokumentumok rendezésével. Ez úgy viselkedik, egy x DESC ORDER BY záradékban az SQL hasonló.
+Létrehoznak egy új dokumentumot a bemeneti dokumentum-adatfolyamra csökkenő sorrendben az adott predikátum használata a dokumentumok rendezésével. Ez úgy viselkedik, hasonló az SQL-x DESC ORDER BY záradék.
 </li>
 </ul>
 </li>
@@ -561,7 +559,7 @@ Predikátum és/vagy választó funkciók bekerüljön, amikor a következő Jav
 
 A következő JavaScript-szerkezet nem Azure Cosmos DB indexet az beszerzése optimalizált:
 
-* Szabályozhatja a folyamat (pl. Ha, közben)
+* Szabályozza a folyamat (például, ha, amíg)
 * Függvényhívások
 
 További információkért lásd: a [kiszolgálóoldali JSDocs](http://azure.github.io/azure-documentdb-js-server/).
@@ -624,16 +622,16 @@ A következő példakód példája a JavaScript lekérdezés API hogyan használ
 ## <a name="sql-to-javascript-cheat-sheet"></a>A Javascript-Adatlap SQL
 Az alábbi táblázat mutatja be a különböző SQL-lekérdezések és a kapcsolódó JavaScript-lekérdezéseket.
 
-Az SQL-lekérdezések, a dokumentum tulajdonság kulcsok, (pl. `doc.id`)-és nagybetűk.
+Az SQL-lekérdezések, a dokumentum tulajdonság kulcsok, (például `doc.id`)-és nagybetűk.
 
-|SQL| JavaScript lekérdezés API|Az alábbi leírása|
+|SQL| JavaScript Query API|Az alábbi leírása|
 |---|---|---|
-|VÁLASSZA KI *<br>A dokumentumok| __.Map(Function(doc) { <br>&nbsp;&nbsp;&nbsp;&nbsp;térjen vissza a doc;<br>});|1|
-|Jelölje be docs.id, mint docs.message adatköltségek, docs.actions <br>A dokumentumok|__.Map(Function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;{visszaadása<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;azonosító: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;üzenet: doc.message,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;actions:doc.Actions<br>&nbsp;&nbsp;&nbsp;&nbsp;};<br>});|2|
-|VÁLASSZA KI *<br>A dokumentumok<br>HOL docs.id="X998_Y998"|__.Filter(Function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;térjen vissza a doc.id === "X998_Y998";<br>});|3|
-|VÁLASSZA KI *<br>A dokumentumok<br>HOL ARRAY_CONTAINS (dokumentumok. Címkék, 123)|__.Filter(Function(x) {<br>&nbsp;&nbsp;&nbsp;&nbsp;térjen vissza a x.Tags & & x.Tags.indexOf(123) > -1;<br>});|4|
-|Jelölje be docs.id, docs.message adatköltségek,<br>A dokumentumok<br>HOL docs.id="X998_Y998"|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.Filter(Function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;térjen vissza a doc.id === "X998_Y998";<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.Map(Function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{visszaadása<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;azonosító: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;üzenet: doc.message<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>.Value();|5|
-|A SELECT VALUE címke<br>A dokumentumok<br>CSATLAKOZTASSA a docs címke. Címkék<br>ORDER BY docs._ts|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.Filter(Function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;térjen vissza a dokumentumot. Címkék & & Array.isArray (doc. Címkék);<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.sortBy(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;térjen vissza a doc._ts;<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.pluck("tags")<br>&nbsp;&nbsp;&nbsp;&nbsp;.flatten()<br>&nbsp;&nbsp;&nbsp;&nbsp;.Value()|6|
+|VÁLASSZA KI *<br>A dokumentumok| __.map(function(doc) { <br>&nbsp;&nbsp;&nbsp;&nbsp;térjen vissza a doc;<br>});|1|
+|Jelölje be docs.id, mint docs.message adatköltségek, docs.actions <br>A dokumentumok|__.map(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;{visszaadása<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;azonosító: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;üzenet: doc.message,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;actions:doc.actions<br>&nbsp;&nbsp;&nbsp;&nbsp;};<br>});|2|
+|VÁLASSZA KI *<br>A dokumentumok<br>WHERE docs.id="X998_Y998"|__.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;térjen vissza a doc.id === "X998_Y998";<br>});|3|
+|VÁLASSZA KI *<br>A dokumentumok<br>HOL ARRAY_CONTAINS (dokumentumok. Címkék, 123)|__.filter(function(x) {<br>&nbsp;&nbsp;&nbsp;&nbsp;térjen vissza a x.Tags & & x.Tags.indexOf(123) > -1;<br>});|4|
+|Jelölje be docs.id, docs.message adatköltségek,<br>A dokumentumok<br>WHERE docs.id="X998_Y998"|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;térjen vissza a doc.id === "X998_Y998";<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.map(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{visszaadása<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;azonosító: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;üzenet: doc.message<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>.value();|5|
+|A SELECT VALUE címke<br>A dokumentumok<br>CSATLAKOZTASSA a docs címke. Címkék<br>ORDER BY docs._ts|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;térjen vissza a dokumentumot. Címkék & & Array.isArray (doc. Címkék);<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.sortBy(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;térjen vissza a doc._ts;<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.pluck("Tags")<br>&nbsp;&nbsp;&nbsp;&nbsp;.flatten()<br>&nbsp;&nbsp;&nbsp;&nbsp;.value()|6|
 
 Az alábbi leírásokat ismertetik a fenti táblázatban minden egyes lekérdezés.
 1. Az összes dokumentumok (a folytatási kód paginated) eredményez.
@@ -641,7 +639,7 @@ Az alábbi leírásokat ismertetik a fenti táblázatban minden egyes lekérdez�
 3. A predikátum dokumentumok ideális: azonosító = "X998_Y998".
 4. A lekérdezések, amelyek a Tags tulajdonság és címkék dokumentumok 123 értéket tartalmazó tömb.
 5. Lekérdezések dokumentumok predikátumával, azonosító = "X998_Y998", és ezután projektek azonosítója és üzenet (aliassal való adatköltségek).
-6. A dokumentumok, amely egy tömb tulajdonságát, a címkéket, és az így kapott dokumentumokat rendezése _ts időbélyeg rendszer tulajdonság, majd projektek + a címkék tömb simítja szűrők.
+6. Dokumentumok, amelyek rendelkeznek egy tömb típusú tulajdonság, a címkéket, szűrők és az eredményül kapott dokumentumokat a _ts időbélyeg-rendszer tulajdonság, majd a projektek + simítja a címkék tömb.
 
 
 ## <a name="runtime-support"></a>Futásidejű támogatása
@@ -776,7 +774,7 @@ Itt a tárolt eljárás bemeneti lett átadva a kérés törzsében. Vegye figye
     }
 
 
-Ellentétben a tárolt eljárások, eseményindítók közvetlenül nem hajtható végre. Ehelyett végrehajtás egy dokumentumot egy művelet részeként. A kérelem HTTP-fejlécek használatával futtatásához eseményindítók adható meg. A dokumentum létrehozására vonatkozó kérelem a következő:
+Ellentétben a tárolt eljárások, eseményindítók közvetlenül nem hajtható végre. Ehelyett végrehajtás egy dokumentumot egy művelet részeként. A kérelem HTTP-fejlécek használatával futtatásához eseményindítók adható meg. A következő kód bemutatja a kérelem egy dokumentumot létrehozni.
 
     POST https://<url>/docs/ HTTP/1.1
     authorization: <<auth>>
@@ -793,20 +791,20 @@ Ellentétben a tárolt eljárások, eseményindítók közvetlenül nem hajthat�
     }
 
 
-A kérelem futtatásához előtti eseményindító Itt a x-ms-documentdb-pre-trigger-include fejlécben megadott. Ennek megfelelően a utáni eseményindítókat kap a x-ms-documentdb-post-trigger-include fejlécben. Vegye figyelembe, hogy mindkét előtti és utáni eseményindítók adható meg egy adott kérés esetében.
+A kérelem futtatásához előtti eseményindító Itt a x-ms-documentdb-pre-trigger-include fejlécben megadott. Ennek megfelelően a utáni eseményindítókat kap a x-ms-documentdb-post-trigger-include fejlécben. Mindkét előtti és utáni eseményindítók adható meg egy adott kérés esetében.
 
 ## <a name="sample-code"></a>Mintakód
 További példákat kiszolgálóoldali található (beleértve a [tömeges törlési](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/bulkDelete.js), és [frissítése](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/update.js)) a a [GitHub-tárházban](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples).
 
-Meg szeretné osztani a Soft tárolt eljárás? Kérjük küldjön egy lekérést! 
+Meg szeretné osztani a Soft tárolt eljárás? A lekérési kérelmet küldjön! 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Miután egy vagy több tárolt eljárások, eseményindítók és felhasználó által definiált függvények létrehozott, betöltve helyezheti, és megtekintheti az Azure-portálon az Intéző segítségével.
 
 Előfordulhat, hogy is megtalálhatja a következő hivatkozások és erőforrások hasznos az elérési úthoz Azure Cosmos dB kiszolgálóoldali programozása tájékozódhat:
 
-* [Az Azure Cosmos DB SDK-k](sql-api-sdk-dotnet.md)
-* [A DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases)
+* [Azure Cosmos DB SDKs](sql-api-sdk-dotnet.md)
+* [DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases)
 * [JSON](http://www.json.org/) 
 * [JavaScript ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm)
 * [Biztonságos és hordozható adatbázis bővíthetőség](http://dl.acm.org/citation.cfm?id=276339) 

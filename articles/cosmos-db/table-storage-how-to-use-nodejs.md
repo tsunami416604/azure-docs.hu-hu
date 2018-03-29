@@ -1,6 +1,6 @@
 ---
-title: "Azure Table storage vagy a Node.js-ből a Azure Cosmos DB használatával |} Microsoft Docs"
-description: "Strukturált adat tárolása a felhőben Azure Table storage vagy Azure Cosmos DB használatával."
+title: Azure Table storage vagy a Node.js-ből a Azure Cosmos DB használatával |} Microsoft Docs
+description: Strukturált adat tárolása a felhőben Azure Table storage vagy Azure Cosmos DB használatával.
 services: cosmos-db
 documentationcenter: nodejs
 author: mimig1
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 03/23/2018
 ms.author: mimig
-ms.openlocfilehash: dcd729da0b9e913046da1ad5619594f5ce485bdb
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: fc6e3ca079b4d1edefa82e06dbe63b393ab2fbb3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-use-azure-table-storage-from-nodejs"></a>Node.js-ből a Azure Table storage használata
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -361,8 +361,6 @@ dc.table.queryEntities(tableName,
 ```
 
 Ha nézze meg a `continuationToken` objektum található tulajdonságok például `nextPartitionKey`, `nextRowKey` és `targetLocation`, amelyek segítségével az eredményeket iterációt.
-
-Van még (continuationsample.js) folytatási minta a [azure-storage-csomópont tárház](https://github.com/Azure/azure-storage-node/tree/master/examples/samples) a Githubon. 
 
 ## <a name="work-with-shared-access-signatures"></a>Megosztott hozzáférési aláírásokkal működik
 Közös hozzáférésű jogosultságkód (SAS), amelyek egy biztonságos táblák részletes hozzáférést biztosítanak a Tárfiók neve vagy a kulcsok megadása nélkül. SAS gyakran használják korlátozott hozzáférést biztosít az adatok, például egy mobil alkalmazás lekérdezést rögzíti.

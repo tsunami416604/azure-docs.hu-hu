@@ -1,11 +1,11 @@
 ---
-title: "Tábla növekményes másolása az Azure Data Factory használatával | Microsoft Docs"
-description: "Az oktatóanyag során egy Azure Data Factory-folyamatot hoz majd létre, amely adatokat másol be növekményesen egy Azure SQL-adatbázisból egy Azure Blob Storage-tárolóba."
+title: Tábla növekményes másolása az Azure Data Factory használatával | Microsoft Docs
+description: Az oktatóanyag során egy Azure Data Factory-folyamatot hoz majd létre, amely adatokat másol be növekményesen egy Azure SQL-adatbázisból egy Azure Blob Storage-tárolóba.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: edde9d8c6fe070e5323cf63d222c7cd6a8983e8a
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 17ea97e34deb375123de12508c2c0845cd25c27a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Adatok növekményes betöltése egy Azure SQL Database-adatbázisból egy Azure Blob Storage-tárolóba
 Az oktatóanyag során egy Azure adat-előállítót hoz majd létre egy olyan folyamattal, amely módosított adatokat tölt be egy Azure SQL-adatbázisban lévő táblából egy Azure Blob Storage-tárolóba. 
@@ -310,7 +310,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
     1. A **tárolt eljárás neveként** válassza az **sp_write_watermark** lehetőséget. 
     2. A tárolt eljárás paraméterértékeinek megadásához kattintson a **Paraméter importálása** gombra, és adja meg az alábbi értékeket a paraméterekhez: 
 
-        | Név | Típus | Érték | 
+        | Name (Név) | Típus | Érték | 
         | ---- | ---- | ----- | 
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | Karakterlánc | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |

@@ -1,8 +1,8 @@
 ---
-title: "Biztonsági a Data Lake Store áttekintése |} Microsoft Docs"
-description: "Megértse, hogyan Azure Data Lake Store egy biztonságosabb big Data típusú adatok tárolási"
+title: Biztonsági a Data Lake Store áttekintése |} Microsoft Docs
+description: Megértse, hogyan Azure Data Lake Store egy biztonságosabb big Data típusú adatok tárolási
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/21/2018
+ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: e3df23e8803d8b34cc4178f8047d0fe2172d04be
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 65319df8db339b1c124be47f27a841bbd7141921
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="security-in-azure-data-lake-store"></a>Az Azure Data Lake Store biztonsági
 Sok vállalat vannak kihasználja a big data elemzésre szolgáló üzleti elemzéseket felhasználóinál intelligens döntéseket. Egy szervezet előfordulhat, hogy rendelkezik egy összetett és szabályozott környezetben, a különböző felhasználók növekvő számú. Győződjön meg arról, hogy kritikus fontosságú üzleti adatokat tárolja a rendszer biztonsága érdekében együtt a megfelelő szintű hozzáférést biztosít az egyéni felhasználók számára a vállalati létfontosságú. Azure Data Lake Store célja e biztonsági követelményeknek. Ebből a cikkből megtudhatja, Data Lake Store biztonsági képességeivel kapcsolatos többek között:
@@ -46,7 +46,7 @@ Azure Active Directory hitelesíti a felhasználót, hogy a felhasználó hozzá
 * A tárolóban lévő adatok eléréséhez POSIX ACL
 
 ### <a name="rbac-for-account-management"></a>Az RBAC felhasználóifiók-kezelés
-Négy alapvető szerepkörök alapértelmezett Data Lake Store vannak definiálva. A szerepkörök lehetővé teszik a különböző műveleteket egy Data Lake Store-fiókot az Azure-portálon, a PowerShell-parancsmagok és a REST API-k használatával. A tulajdonos és közreműködő szerepkört a fiókhoz számos felügyeleti feladatot hajthat végre. Az olvasó szerepkört hozzárendelheti a felhasználók számára csak végezhet az adatokkal.
+Négy alapvető szerepkörök alapértelmezett Data Lake Store vannak definiálva. A szerepkörök lehetővé teszik a különböző műveleteket egy Data Lake Store-fiókot az Azure-portálon, a PowerShell-parancsmagok és a REST API-k használatával. A tulajdonos és közreműködő szerepkört a fiókhoz számos felügyeleti feladatot hajthat végre. Az olvasó szerepkört hozzárendelheti a felhasználók számára csak a fiók felügyeleti adatainak megtekintéséhez.
 
 ![Az RBAC-szerepkörök](./media/data-lake-store-security-overview/rbac-roles.png "RBAC-szerepkörök")
 
@@ -65,9 +65,9 @@ Vegye figyelembe, hogy bár szerepkörök fiókkezelés vannak hozzárendelve, a
 ### <a name="using-acls-for-operations-on-file-systems"></a>Hozzáférés-vezérlési listák segítségével a fájlrendszerek műveleteihez
 Data Lake Store hierarchikus fájlrendszer például a Hadoop elosztott fájlrendszerrel (HDFS), és támogatja [POSIX hozzáférés-vezérlési listák](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists). Azt szabályozza, hogy olvasási (r), (w) írási és végrehajtási (x) erőforrásokra a tulajdonosi szerepkört, a tulajdonosok csoport és más felhasználók és csoportok engedélyeit. A Data Lake Store a hozzáférés-vezérlési listák engedélyezhető a legfelső szintű mappa, almappák és a fájlokat. További információkat a hozzáférés-vezérlési listák Data Lake Store-környezetben való működéséről a következő témakörben talál: [Hozzáférés-vezérlés a Data Lake Store-ban](data-lake-store-access-control.md).
 
-Azt javasoljuk, hogy Ön hozzáférés-vezérlési listák többfelhasználós segítségével meghatározhatók [biztonsági csoportok](../active-directory/active-directory-groups-create-azure-portal.md). Felhasználók hozzáadása az egy biztonsági csoportot, és hozzárendelheti a hozzáférés-vezérlési listákat, a fájl vagy mappa biztonsági csoportba. Ez akkor hasznos, ha lehetővé szeretné tenni egyéni hozzáférési, mert egy legfeljebb kilenc egyéni hozzáférés hozzáadása. Azure Active Directory biztonsági csoportok használatával a Data Lake Store-ban tárolt adatok védelmét kapcsolatos további információkért lásd: [felhasználók vagy biztonsági csoport hozzárendelése az Azure Data Lake Store-fájlrendszer hozzáférés-vezérlési listákat,](data-lake-store-secure-data.md#filepermissions).
+Azt javasoljuk, hogy Ön hozzáférés-vezérlési listák többfelhasználós segítségével meghatározhatók [biztonsági csoportok](../active-directory/active-directory-groups-create-azure-portal.md). Felhasználók hozzáadása az egy biztonsági csoportot, és hozzárendelheti a hozzáférés-vezérlési listákat, a fájl vagy mappa biztonsági csoportba. Ez akkor hasznos, ha lehetővé szeretné tenni hozzárendelt engedélyek, mert a hozzárendelt engedélyek 28 bejegyzések maximális. Azure Active Directory biztonsági csoportok használatával a Data Lake Store-ban tárolt adatok védelmét kapcsolatos további információkért lásd: [felhasználók vagy biztonsági csoport hozzárendelése az Azure Data Lake Store-fájlrendszer hozzáférés-vezérlési listákat,](data-lake-store-secure-data.md#filepermissions).
 
-![Normál és egyéni hozzáférési listában](./media/data-lake-store-security-overview/adl.acl.2.png "normál és egyéni hozzáférési listában")
+![Hozzáférési engedélyek listában](./media/data-lake-store-security-overview/adl.acl.2.png "lista hozzáférési engedélyek")
 
 ## <a name="network-isolation"></a>Hálózatelkülönítés
 A hálózati szintű adattár állítsunk a Data Lake Store. Állítson be tűzfalak, és az IP-címtartományok definiálása a megbízható ügyfeleket. Az IP-címtartományok csak a definiált tartományon belüli IP-cím ügyfelek csatlakozhatnak Data Lake Store.
@@ -83,30 +83,30 @@ A Data Lake Store biztosítja a fiókban tárolt adatok titkosítását. Dönthe
 
 Kulcskezelés a Data Lake Store két üzemmódot biztosít a fő titkosítási kulcsok (MEKs), amelyek szükségesek a Data Lake Store-ban tárolt adatokat visszafejtése kezeléséhez. Vagy engedélyezheti a Data Lake Store a MEKs kezeléséhez, vagy válassza a tartsa meg az Azure Key Vault fiókkal MEKs tulajdonjogát. Kulcskezelés módját közben az Data Lake Store-fiók létrehozása közben adja meg. További információkat a titkosítással kapcsolatos konfigurációról a következő témakörben talál: [Az Azure Data Lake Store használatának első lépései az Azure Portal használatával](data-lake-store-get-started-portal.md).
 
-## <a name="auditing-and-diagnostic-logs"></a>Naplózási és diagnosztikai naplókat
-Naplózási és diagnosztikai naplók, attól függően, hogy Ön által keresett naplókat a további tevékenységek kezelésével kapcsolatos vagy adatok kapcsolatos tevékenységeket is használhatja.
+## <a name="activity-and-diagnostic-logs"></a>Tevékenység és a diagnosztikai naplók
+Tevékenység vagy diagnosztikai naplók, attól függően, hogy keres naplókat a fiók-felügyelettel kapcsolatos tevékenységek vagy adatok kapcsolatos tevékenységeket is használhatja.
 
-* Kezelésével kapcsolatos tevékenységeket Azure Resource Manager API-k, és az Azure portálon keresztül naplók illesztett.
+* Fiók kezelésével kapcsolatos tevékenységeket Azure Resource Manager API-k, és az Azure portálon keresztül tevékenységi naplóit illesztett.
 * Tevékenységek kapcsolódó adatok WebHDFS REST API-k, és az Azure portálon keresztül diagnosztikai naplók illesztett.
 
-### <a name="auditing-logs"></a>Naplófájlok
-Szabályozásoknak kell megfelelnie, egy szervezet lehet szükség megfelelő napló ellenőrzését, ha a meghatározott incidenseket a dig. Data Lake Store rendelkezik beépített figyelés és naplózás, és minden fiók felügyeleti tevékenységeket naplózza.
+### <a name="activity-log"></a>Tevékenységnapló
+Szabályozásoknak kell megfelelnie, egy szervezet lehet szükség megfelelő elkérése fiók felügyeleti tevékenységek, ha a meghatározott incidenseket a dig. Data Lake Store rendelkezik beépített figyelést, és minden fiók felügyeleti tevékenységeket naplózza.
 
-A fióknak felügyeleti napló ellenőrzését megtekintése, és válassza ki a naplózni kívánt oszlopokat. Vizsgálati naplóit Azure Storage is exportálhatja.
+A fióknak felügyeleti napló ellenőrzését megtekintése, és válassza ki a naplózni kívánt oszlopokat. Is exportálhatók tevékenységi naplóit Azure Storage.
 
-![Naplók](./media/data-lake-store-security-overview/audit-logs.png "Naplók")
+![Tevékenységnapló](./media/data-lake-store-security-overview/activity-logs.png "műveletnapló")
 
-### <a name="diagnostic-logs"></a>Diagnosztikai naplók
-Adat-hozzáférési napló ellenőrzését beállítása az Azure portálon (a diagnosztikai beállítások), és hozzon létre egy Azure Blob storage-fiókot, a naplófájlok tárolási helyét.
+Tevékenységi naplóit munkavégzés további információkért lásd: [tevékenységi naplóit rendszervizsgálati műveleteket az egyes erőforrások megtekintése](../azure-resource-manager/resource-group-audit.md).
+
+### <a name="diagnostics-logs"></a>Diagnosztikai naplók
+Adatok hozzáférés naplózása és az Azure portálon diagnosztikai naplózás engedélyezése, és az Azure Blob storage-fiók, az eseményközpontok vagy Naplóelemzési küldeni a naplókat.
 
 ![Diagnosztikai naplók](./media/data-lake-store-security-overview/diagnostic-logs.png "diagnosztikai naplók")
 
-Diagnosztikai beállítások konfigurálása után megtekintheti a naplók a **diagnosztikai naplók** fülre.
-
-Diagnosztikai naplók az Azure Data Lake Store munkavégzés további információkért lásd: [hozzáférni a diagnosztikai naplókat a Data Lake Store](data-lake-store-diagnostic-logs.md).
+Diagnosztikai naplók az Azure Data Lake Store munkavégzés további információkért lásd: [diagnosztikai naplókat a Data Lake Store elérése](data-lake-store-diagnostic-logs.md).
 
 ## <a name="summary"></a>Összegzés
-A vállalati ügyfelek igény egy analytics felhőalapú adatplatform, amely biztonságos, könnyen használható. Azure Data Lake Store az célja, hogy ezek a követelmények, az Identitáskezelés és a hitelesítési keresztül Azure Active Directory-integráció, az ACL-alapú hitelesítési, a hálózati elkülönítési, az átvitel során, és az adatok titkosítása rest-(a továbbiakban hamarosan segítse ), és a naplózás.
+A vállalati ügyfelek igény egy analytics felhőalapú adatplatform, amely biztonságos, könnyen használható. Azure Data Lake Store tervezett segítségével ezeket a követelményeket, az Identitáskezelés és keresztül Azure Active Directory-integráció, ACL-alapú engedélyezési, a hálózati elkülönítés, adattitkosítás átvitel közben, és a hitelesítési és naplózási.
 
 Ha meg szeretné tekinteni a Data Lake Store új funkcióiról, küldjön visszajelzést a [Data Lake Store UserVoice fórum](https://feedback.azure.com/forums/327234-data-lake).
 

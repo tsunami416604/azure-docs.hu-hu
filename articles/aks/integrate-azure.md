@@ -1,6 +1,6 @@
 ---
-title: "Integrálás az Azure által kezelt szolgáltatásokkal az Open Service Broker for Azure (OSBA) használatával"
-description: "Integrálás az Azure által kezelt szolgáltatásokkal az Open Service Broker for Azure (OSBA) használatával"
+title: Integrálás az Azure által kezelt szolgáltatásokkal az Open Service Broker for Azure (OSBA) használatával
+description: Integrálás az Azure által kezelt szolgáltatásokkal az Open Service Broker for Azure (OSBA) használatával
 services: container-service
 author: sozercan
 manager: timlt
@@ -8,11 +8,11 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: seozerca
-ms.openlocfilehash: 594cb0afbdb0a44e9f092b9afc5af13b21e763a4
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: b1b51b6c36143747a81d1c1fc035ee6d54d34076
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Integrálás az Azure által kezelt szolgáltatásokkal az Open Service Broker for Azure (OSBA) használatával
 
@@ -76,17 +76,45 @@ Kezdésnek adja hozzá az Open Service Broker for Azure Helm-adattárát:
 helm repo add azure https://kubernetescharts.blob.core.windows.net/azure
 ```
 
-Ezután a következő szkripttel hozzon létre egy [egyszerű szolgáltatást][create-service-principal], és töltse fel értékkel a változókat. A rendszer ezeket a változókat használja, amikor a Helm-diagram használatával telepíti a Service Brokert.
+Hozzon létre egy [egyszerű szolgáltatást][create-service-principal] az alábbi Azure CLI-paranccsal:
 
 ```azurecli-interactive
-SERVICE_PRINCIPAL=$(az ad sp create-for-rbac)
-AZURE_CLIENT_ID=$(echo $SERVICE_PRINCIPAL | cut -d '"' -f 4)
-AZURE_CLIENT_SECRET=$(echo $SERVICE_PRINCIPAL | cut -d '"' -f 16)
-AZURE_TENANT_ID=$(echo $SERVICE_PRINCIPAL | cut -d '"' -f 20)
-AZURE_SUBSCRIPTION_ID=$(az account show --query id --output tsv)
+az ad sp create-for-rbac
 ```
 
-Miután feltöltötte értékkel ezeket a környezeti változókat, hajtsa végre a következő parancsot a Service Broker telepítéséhez.
+A kimenet az alábbihoz hasonló lesz. Jegyezze fel az `appId`, a `password`, és a `tenant` értékét, mert a következő lépésben használni fogja őket.
+
+```JSON
+{
+  "appId": "7248f250-0000-0000-0000-dbdeb8400d85",
+  "displayName": "azure-cli-2017-10-15-02-20-15",
+  "name": "http://azure-cli-2017-10-15-02-20-15",
+  "password": "77851d2c-0000-0000-0000-cb3ebc97975a",
+  "tenant": "72f988bf-0000-0000-0000-2d7cd011db47"
+}
+```
+
+Állítsa be az alábbi környezeti változókat az előbbi értékekkel:
+
+```azurecli-interactive
+AZURE_CLIENT_ID=<appId>
+AZURE_CLIENT_SECRET=<password>
+AZURE_TENANT_ID=<tenant>
+```
+
+Most vegye elő Azure-előfizetési azonosítóját:
+
+```azurecli-interactive
+az account show --query id --output tsv
+```
+
+Majd állítsa be az alábbi környezeti változót az előbbi értékkel:
+
+```azurecli-interactive
+AZURE_SUBSCRIPTION_ID=[your Azure subscription ID from above]
+```
+
+Miután feltöltötte értékkel ezeket a környezeti változókat, hajtsa végre az alábbi parancsot az Open Service Broker for Azure a Helm-diagram használatával történő telepítéséhez:
 
 ```azurecli-interactive
 helm install azure/open-service-broker-azure --name osba --namespace osba \
