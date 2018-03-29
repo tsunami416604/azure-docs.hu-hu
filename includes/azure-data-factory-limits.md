@@ -1,3 +1,19 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: data-factory
+author: linda33wj
+ms.service: data-factory
+ms.topic: include
+ms.date: 03/27/2018
+ms.author: jingwang
+ms.custom: include file
+ms.openlocfilehash: e68e87bb19b8c64cf06c03831b22cf43d773efde
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/29/2018
+---
 Adat-előállító egy több-bérlős szolgáltatást a következő alapértelmezett korlátokat érdekében győződjön meg arról, hogy az ügyfél-előfizetések védettek, a másik fél munkaterhelések érvényben. A korlátok számos könnyen emelhető az előfizetéséhez, a maximális határértéket akár lépjen kapcsolatba az ügyfélszolgálattal.
 
 ### <a name="version-2"></a>2-es verzió
@@ -13,9 +29,9 @@ Adat-előállító egy több-bérlős szolgáltatást a következő alapértelme
 | Folyamat fut egyidejűleg folyamat | 20 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Feldolgozási sor / maximális tevékenységek | 20 | 30 |
 | Feldolgozási sor / maximális paraméterek | 20 | 30 |
-| adatcsatorna objektumok objektumonként bájt <sup>1</sup> | 200 KB | 200 KB |
-| bájt / adatkészlet-objektumot, és a társított szolgáltatás objektumok <sup>1</sup> | 100 KB | 2000 KB |
-| A felhő adatok adatátviteli egység <sup>3</sup> | 32 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Adatcsatorna objektumok objektumonként bájt <sup>1</sup> | 200 KB | 200 KB |
+| Bájt / adatkészlet-objektumot, és a társított szolgáltatás objektumok <sup>1</sup> | 100 KB | 2000 KB |
+| A felhő adatok adatátviteli egység <sup>3</sup> | 256 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Újbóli próbálkozások száma az adatcsatorna tevékenység fut | 1 day(timeout) | 1 nap (timeout) |
 | Az API-hívásokban írása | 2500/hr<br/><br/> Ez korlátozva által Azure erőforrás-kezelő nem az Azure Data Factory. | [Forduljon a támogatási szolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Olvassa el az API-hívásokban | 12 500/hr<br/><br/> Ez korlátozva által Azure erőforrás-kezelő nem az Azure Data Factory. | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
@@ -29,8 +45,8 @@ Adat-előállító egy több-bérlős szolgáltatást a következő alapértelme
 | belül egy adat-előállító adatcsatornák |2500 |[Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | egy adat-előállító belül adatkészletek |5000 |[Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | adatkészlet száma párhuzamos szeletek |10 |10 |
-| adatcsatorna objektumok objektumonként bájt <sup>1</sup> |200 KB |200 KB |
-| bájt / adatkészlet-objektumot, és a társított szolgáltatás objektumok <sup>1</sup> |100 KB |2000 KB |
+| Adatcsatorna objektumok objektumonként bájt <sup>1</sup> |200 KB |200 KB |
+| Bájt / adatkészlet-objektumot, és a társított szolgáltatás objektumok <sup>1</sup> |100 KB |2000 KB |
 | A HDInsight fürt igény szerinti magok előfizetésen belül <sup>2</sup> |60 |[Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | A felhő adatok adatátviteli egység <sup>3</sup> |32 |[Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Újbóli próbálkozások száma az adatcsatorna tevékenység fut |1000 |MaxInt (32 bites) |
@@ -39,7 +55,7 @@ Adat-előállító egy több-bérlős szolgáltatást a következő alapértelme
 
 <sup>2</sup> igény szerinti HDInsight magok kívül az előfizetést, amely tartalmazza az adat-előállítóban foglal le. Ennek eredményeképpen a fenti határértéke a Data Factory igény szerinti HDInsight magok core korlát érvényes, és eltér a fő korlát az Azure-előfizetéshez társított.
 
-<sup>3</sup> felhő adatok adatátviteli egység (DMU) használja a felhő-felhő másolási műveletek. Egy mérték, amely jelöli az (a Processzor, memória és a hálózatierőforrás-lefoglalás kombinációja) adat-előállítóban egyetlen egységben. Nagyobb másolási átviteli teljesítményt érhet el, további DMUs használó egyes forgatókönyvek esetén. Tekintse meg [adatátviteli adategységek Cloud](../articles/data-factory/v1/data-factory-copy-activity-performance.md#cloud-data-movement-units) részletei szakaszban.
+<sup>3</sup> felhő adatok adatátviteli egység (DMU) használja a felhő-felhő másolási műveletek. Egy mérték, amely jelöli az (a Processzor, memória és a hálózatierőforrás-lefoglalás kombinációja) adat-előállítóban egyetlen egységben. Nagyobb másolási átviteli teljesítményt érhet el, további DMUs használó egyes forgatókönyvek esetén. Tekintse meg [adatok adatátviteli egység (V2) a felhő](../articles/data-factory/copy-activity-performance.md#cloud-data-movement-units) és [adatok adatátviteli egység (V1) a felhő](../articles/data-factory/v1/data-factory-copy-activity-performance.md#cloud-data-movement-units) részletei szakaszban.
 
 <sup>4</sup> az integrációs futásidejű (IR) a számítási infrastruktúrát a következő adatok integrációs képességeket biztosítják a különböző hálózati környezetek között Azure Data Factory használatával: adatátvitelt jelölik a tevékenységeket érdemes olyan szolgáltatások, számítási terjesztéséhez SSIS-csomagok végrehajtását. További információkért lásd: [integrációs futásidejű áttekintése](../articles/data-factory/concepts-integration-runtime.md).
 

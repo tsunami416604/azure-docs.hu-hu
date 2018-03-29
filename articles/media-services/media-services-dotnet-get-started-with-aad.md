@@ -1,23 +1,23 @@
 ---
-title: "Azure Media Services API a .NET eléréséhez használja az Azure AD hitelesítési |} Microsoft Docs"
-description: "Ez a témakör bemutatja, hogyan Azure Media Services (AMS) API-t .NET eléréséhez Azure Active Directory (Azure AD-) hitelesítés használatára."
+title: Azure Media Services API a .NET eléréséhez használja az Azure AD hitelesítési |} Microsoft Docs
+description: Ez a témakör bemutatja, hogyan Azure Media Services (AMS) API-t .NET eléréséhez Azure Active Directory (Azure AD-) hitelesítés használatára.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/17/2017
+ms.date: 03/27/2018
 ms.author: juliako
-ms.openlocfilehash: a9355200a05a3aa1b494b76977d38ddc42bfe179
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8817bb0da526769470e96b63b9c80620309757bf
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>Azure Media Services API a .NET eléréséhez használja az Azure AD-alapú hitelesítés
 
@@ -36,7 +36,7 @@ Ha az Azure AD-alapú hitelesítés az Azure Media Services használata esetén 
 - **Szolgáltatás egyszerű hitelesítési** szolgáltatás hitelesíti. Alkalmazásokat, amelyek általában arra használják ezt a hitelesítési módszert démon szolgáltatások, a középső rétegbeli szolgáltatások vagy az ütemezett feladatok, például webalkalmazások, függvény alkalmazások, a logic apps, API-k vagy mikroszolgáltatások futó alkalmazások.
 
 >[!IMPORTANT]
->Az Azure Media Services jelenleg olyan Azure Access Control Service hitelesítési modellt. Azonban a hozzáférés-vezérlés engedélyezési érintetlen 2018. június 1. a elavulttá válik. Azt javasoljuk, hogy telepítse át az Azure Active Directory hitelesítési modell lehető legrövidebb időn belül.
+>Az Azure Media Services jelenleg olyan Azure Access Control Service hitelesítési modellt. Azonban a hozzáférés-vezérlés engedélyezési érintetlen a 2018. június 22 elavulttá válik. Azt javasoljuk, hogy telepítse át az Azure Active Directory hitelesítési modell lehető legrövidebb időn belül.
 
 ## <a name="get-an-azure-ad-access-token"></a>Az Azure AD hozzáférési jogkivonat beszerzése
 
@@ -185,6 +185,6 @@ A következő példa bemutatja, hogyan hozzon létre az Azure AD és a környeze
         }
     }
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerkedés a [fájlok feltöltése a fiókjához](media-services-dotnet-upload-files.md).

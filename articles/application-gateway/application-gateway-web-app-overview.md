@@ -1,11 +1,11 @@
 ---
-title: "Több-bérlős háttérrendszerek áttekintése az Azure Application Gatewayjel | Microsoft Docs"
-description: "Ez az oldal áttekintést nyújt az Application Gateway több-bérlős háttérrendszerekhez elérhető támogatásáról."
+title: Több-bérlős háttérrendszerek áttekintése az Azure Application Gatewayjel | Microsoft Docs
+description: Ez az oldal áttekintést nyújt az Application Gateway több-bérlős háttérrendszerekhez elérhető támogatásáról.
 documentationcenter: na
 services: application-gateway
 author: davidmu1
 manager: timlt
-editor: 
+editor: ''
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: hero-article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2017
 ms.author: davidmu
-ms.openlocfilehash: d093af064bca46aa1f454b61b1099f47f61ccd33
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: f5ec916fcf45734ab85751e749bd6bb312f05b1a
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends"></a>Az Application Gateway támogatása több-bérlős háttérrendszerekhez
 
@@ -32,7 +32,7 @@ A gazdagép-felülbírálás meghatározása a HTTP-beállítások megadása sor
 2. A gazdanév származtatása a háttérkészlettagok IP-címéből vagy teljes tartománynevéből. A HTTP-beállítások megadása során lehetőség van a gazdanév egy háttérkészlettag teljes tartománynevéből való kiválasztására, ha az úgy lett konfigurálva, hogy a gazdanév származtatása egy egyedi háttérkészlettagból történjen. Végpontok közötti SSL alkalmazása esetén az SNI-bővítményben a rendszer a teljes tartománynévből származtatott gazdanevet használja. Ez a képesség lehetővé teszi olyan forgatókönyvek megvalósítását, ahol a háttérkészlet kettő vagy több több-bérlős PaaS szolgáltatással is rendelkezhet. Ilyenek például az Azure Web Apps és a teljes tartománynévből származtatott gazdanevet tartalmazó tagokra irányuló kérések állomásfejlécei.
 
 > [!NOTE]
-> Mindkét előző esetben a beállítások csak az élő adatforgalomra vannak hatással, az állapotminta viselkedésére nem. Az egyéni minták már korábban is támogatták az állomásfejléc megadásának lehetőségét a mintavételi konfigurációban. Az egyéni minták mostantól támogatják az állomásfejléc viselkedésének az aktuálisan konfigurált HTTP-beállításokból történő származtatását is. Ezt a konfigurációt a mintavételi konfigurációban a `PickHostNameFromback endAddress` paraméterrel is megadhatjuk. A végpontok közötti funkciók működéséhez a mintavételi és a HTTP-beállításokat is úgy kell módosítani, hogy azok a megfelelő konfigurációt tükrözzék.
+> Mindkét előző esetben a beállítások csak az élő adatforgalomra vannak hatással, az állapotminta viselkedésére nem. Az egyéni minták már korábban is támogatták az állomásfejléc megadásának lehetőségét a mintavételi konfigurációban. Az egyéni minták mostantól támogatják az állomásfejléc viselkedésének az aktuálisan konfigurált HTTP-beállításokból történő származtatását is. Ezt a konfigurációt a mintavételi konfigurációban a `PickHostNameFromBackendHttpSettings` paraméterrel is megadhatjuk. A végpontok közötti funkciók működéséhez a mintavételi és a HTTP-beállításokat is úgy kell módosítani, hogy azok a megfelelő konfigurációt tükrözzék.
 
 Ezzel a képességgel az ügyfelek megadhatják a HTTP-beállítások és az egyéni mintavételek beállítási lehetőségeit a megfelelő konfigurációhoz. Ezt a beállítást ezután a rendszer egy szabállyal egy adott figyelőhöz és háttérkészlethez köti.
 

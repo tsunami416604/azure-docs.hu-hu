@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: fe79c6e6344bef8f25ae2e343e3301959c4e0ae5
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 915f36678b8515c5f4a6bd367843255865f4b34d
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Konfigurálás mindig a rendelkezésre állási csoport az Azure virtuális gép manuálisan
 
@@ -374,22 +374,14 @@ A terheléselosztó konfigurálásához szüksége a háttérkészlet, a mintav�
 
    ![Terheléselosztó erőforráscsoportban található](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/86-findloadbalancer.png)
 
-1. Kattintson a terheléselosztóhoz, majd **háttérkészletek**, és kattintson a **+ Hozzáadás**. Az alábbiak szerint állíthatja háttérkészlet:
+1. Kattintson a terheléselosztóhoz, majd **háttérkészletek**, és kattintson a **+ Hozzáadás**. 
 
-   | Beállítás | Leírás | Példa
-   | --- | --- |---
-   | **Name (Név)** | Adjon meg egy szöveges nevet | SQLLBBE
-   | **Társított** | Válassza ki a listából | Rendelkezésre állási csoport
-   | **A rendelkezésre állási csoport** | Adjon nevet a rendelkezésre állási csoport, amelyek az SQL Server virtuális gépen | sqlAvailabilitySet |
-   | **Virtuális gépek** |A két Azure SQL Server virtuális gép neve | sqlserver-0, sqlserver-1
+1. A háttérkészlet társítani a rendelkezésre állási csoportot, amely a virtuális gépeket tartalmaz.
 
-1. Írja be a háttérkészlethez nevét.
+1. Alatt **céloz hálózati IP-konfigurációk**, ellenőrizze **virtuális gép** , és válassza a virtuális gépek rendelkezésre állási csoport replikái futtató mindkét. A tanúsító fájlmegosztás kiszolgálója nem tartalmaznak.
 
-1. Kattintson a **+ adja hozzá a virtuális gépek**.
-
-1. A rendelkezésre állási készletbe adja meg a rendelkezésre állási csoport, hogy az SQL Server-kiszolgálók szerepelnek.
-
-1. A virtuális gépek tartalmazzák mind az SQL Server-kiszolgálók. A tanúsító fájlmegosztás kiszolgálója nem tartalmaznak.
+   >[!NOTE]
+   >Ha mindkét virtuális gépek nincsenek megadva, a kapcsolatok csak az elsődleges másodpéldányhoz lesz sikeres.
 
 1. Kattintson a **OK** háttérkészlet létrehozásához.
 

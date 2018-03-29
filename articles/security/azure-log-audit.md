@@ -1,12 +1,12 @@
 ---
-title: "Azure-naplózás és a naplózás |} Microsoft Docs"
-description: "További tudnivalók arról, hogyan használja a naplózási adatokat az alkalmazással kapcsolatos részletes dcu."
+title: Azure-naplózás és a naplózás |} Microsoft Docs
+description: További tudnivalók arról, hogyan használja a naplózási adatokat az alkalmazással kapcsolatos részletes dcu.
 services: security
 documentationcenter: na
 author: UnifyCloud
 manager: swadhwa
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: 032aa4a6cedd49ff9c3b4803561b8b187e8f9af5
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-logging-and-auditing"></a>Az Azure naplózása és naplózás
 ## <a name="introduction"></a>Bevezetés
 ### <a name="overview"></a>Áttekintés
 Segít a jelenlegi és jövőbeli Azure-ügyfél megismeréséhez és a különböző biztonsági képességeivel érhető el, és az Azure platformra körülvevő, Microsoft fejlesztett ki több tanulmányok, biztonsági áttekintése, ajánlott eljárások és Ellenőrzőlisták. A témakörök között körének és mélysége, és rendszeresen frissülnek. Ez a dokumentum a sorozat része a következő absztrakt szakaszban foglaltak szerint.
-### <a name="azure-platform"></a>Az Azure Platform
+### <a name="azure-platform"></a>Azure Platform
 Azure olyan nyitott és rugalmas felhőszolgáltatási platform, amely támogatja a operációs rendszerek, programozási nyelvek, keretrendszerek, eszközök, adatbázisok és eszközök legszélesebb kiválasztása.
 
 Megteheti például a következőt:
@@ -68,12 +68,12 @@ A következő táblázat felsorolja az Azure-ban elérhető naplók legfontosabb
 | Napló kategória | Napló típusa | A tanúsítványalgoritmusok | Integráció |
 | ------------ | -------- | ------ | ----------- |
 |[Tevékenység-naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|Az Azure Resource Manager-erőforrás vezérlő-vezérlősík események|   Adja meg az erőforrást az előfizetésében a végrehajtott műveletek betekintést.| REST-API & [Azure figyelője](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|
-|[Az Azure diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|a következő előfizetés erőforrásait Azure Resource Manager működésével kapcsolatos gyakori adatok| Adja meg, hogy az erőforrás maga végrehajtott műveletek betekintést| Az Azure figyelő [adatfolyam](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|
+|[Az Azure diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|a következő előfizetés erőforrásait Azure Resource Manager működésével kapcsolatos gyakori adatok| Adja meg, hogy az erőforrás maga végrehajtott műveletek betekintést| Azure Monitor, [Stream](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|
 |[Az AAD-jelentés](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal)|Naplók és jelentések|Felhasználói bejelentkezési tevékenységek & rendszer tevékenység szereplő felhasználók és csoportok kezelése|[Graph API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api-quickstart)|
 |[Virtuális gép & Cloud Services csomag](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics-storage)|Windows-Eseménynapló és a Linux rendszernaplójába bejegyzett|    Rendszeradatok és a virtuális gépek a naplózási adatokat rögzíti, és átviszi az adatok az Ön által választott tárolási figyelembe.|   Windows használatával [ÜVEGVATTA](https://docs.microsoft.com/azure/azure-diagnostics) (a Windows Azure diagnosztikai tárolási) és a Linux Azure a Teljesítményfigyelőben|
 |[Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|Tárolási naplózási és mérőszámok-adatokat biztosít a storage-fiók|Betekintést nyújt tárolni kívánt nyomkövetési kérelmek elemezheti a használati trendeket, és a storage-fiók problémák elemzéséhez.|    REST API-t vagy a [ügyféloldali kódtár](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
 |[NSG-t (hálózati biztonsági csoport) folyamat Naplók](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)|JSON formátumban jeleníti meg a bejövő és kimenő forgalom / szabály alapon és|IP-bemenő és kimenő forgalom keresztül a hálózati biztonsági csoportok adatainak megtekintése|[Hálózati figyelőt](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)|
-|[Application insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview)|Naplók, kivételeket és egyéni diagnosztika|    Alkalmazásteljesítmény-felügyeleti (APM) alkalmazásszolgáltatás webfejlesztőknek, több platformon.| REST API-t [a Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|
+|[Application insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview)|Naplók, kivételeket és egyéni diagnosztika|    Alkalmazásteljesítmény-felügyeleti (APM) alkalmazásszolgáltatás webfejlesztőknek, több platformon.| REST API, [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|
 |Adatok feldolgozása / biztonsági riasztás| Az Azure Security Center riasztást, OMS-riasztás| Biztonsági adatokat és a riasztásokat.|   REST API-k, JSON|
 
 ### <a name="activity-log"></a>Tevékenységnapló
@@ -141,7 +141,7 @@ Az Azure diagnosztikai naplókat kínál több konfigurációs beállítások, a
 |||Microsoft.Automation/automationAccounts|JobStreams|
 |Event Hubs|[Az Azure Event Hubs diagnosztikai naplók](https://docs.microsoft.com/azure/event-hubs/event-hubs-diagnostic-logs)|Microsoft.EventHub/namespaces|ArchiveLogs|
 |||Microsoft.EventHub/namespaces|OperationalLogs|
-|Stream Analytics|[Diagnosztikai naplók feladat](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-job-diagnostic-logs)|Microsoft.StreamAnalytics/streamingjobs|Végrehajtás|
+|Stream Analytics|[Diagnosztikai naplók feladat](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-job-diagnostic-logs)|Microsoft.StreamAnalytics/streamingjobs|Futtatási|
 |||Microsoft.StreamAnalytics/streamingjobs|Szerzői műveletek|
 |Service Bus|[Az Azure Service Bus diagnosztikai naplók](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-diagnostic-logs)|Microsoft.ServiceBus/namespaces|OperationalLogs|
 
@@ -304,7 +304,7 @@ A fejlesztőcsapatoknak készült Application Insights segít az adott alkalmaz�
 |[Diagnosztikai keresési például adatok](https://docs.microsoft.com/azure/application-insights/app-insights-diagnostic-search)| Események keresése és szűrése, például kérések, kivételek, függőségi hívások, naplókivonatok és lapmegtekintések.||
 |[Összesített adatai a Metrikaböngészőben](https://docs.microsoft.com/azure/application-insights/app-insights-metrics-explorer)|Összesített adatok – például kérés- és hibaarányok, valamint kivételek, válaszidők és lapbetöltési idők – böngészése, szűrése és szegmentálása.||
 |[Irányítópultok](https://docs.microsoft.com/azure/application-insights/app-insights-dashboards#dashboards)|Különböző erőforrásokból származó adatokat fűzhet össze és oszthat meg másokkal. Kiváló megoldás több összetevőből álló alkalmazások, valamint csoportszobában való folyamatos megjelenítés esetén.||
-|[Élő Stream metrikák](https://docs.microsoft.com/azure/application-insights/app-insights-live-stream)|Új buildverzió telepítésekor közel valós idejű teljesítménymutatókat figyelhet, és meggyőződhet arról, hogy minden megfelelő módon működik-e.||
+|[Live Metrics Stream](https://docs.microsoft.com/azure/application-insights/app-insights-live-stream)|Új buildverzió telepítésekor közel valós idejű teljesítménymutatókat figyelhet, és meggyőződhet arról, hogy minden megfelelő módon működik-e.||
 |[Elemzés](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)|A hatékony lekérdezési nyelvnek köszönhetően válaszokat kaphat az alkalmazás teljesítményére és használatára vonatkozó legégetőbb kérdésekre.||
 |[Automatikus és manuális riasztások](https://docs.microsoft.com/azure/application-insights/app-insights-alerts)|Az automatikus riasztások alkalmazkodnak az alkalmazás normál telemetriai mintáihoz, és a riasztásokat a szokásos mintán kívüli események váltják ki. Riasztásokat állíthat be az egyéni vagy normál metrikák adott szintjeire is.||
 |[Visual Studio](https://docs.microsoft.com/azure/application-insights/app-insights-visual-studio)|A kódban tekintheti meg a teljesítményadatokat. A hívásláncokból a kódba ugorhat.||
@@ -355,16 +355,16 @@ A négy különböző módon [naplókat és az Azure-szolgáltatások metrikáj�
 | Szolgáltatás | Erőforrás típusa | Logs | Mérőszámok | Megoldás |
 | :------ | :------------ | :--- | :------ | :------- |
 |Alkalmazásátjárók|  Microsoft.Network/<br>applicationGateways|  Diagnosztika|Diagnosztika|    [Az Azure alkalmazás](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics) [átjáró elemzés](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics)|
-|Az Application insights||     Összekötő|  Összekötő|  [Az Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) [Connector (előzetes verzió)](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)|
+|Application Insights||     Összekötő|  Összekötő|  [Az Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) [Connector (előzetes verzió)](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)|
 |Automation-fiókok|   Microsoft.Automation/<br>AutomationAccounts|    Diagnosztika||       [További információ](https://docs.microsoft.com/azure/automation/automation-manage-send-joblogs-log-analytics)|
 |Batch-fiókok|    Microsoft.Batch/<br>batchAccounts|  Diagnosztika|    Diagnosztika||
 |Klasszikus cloud services csomag||       Tárolás||       [További információ](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage-iis-table)|
-|Cognitive Services|    Microsoft.CognitiveServices/<br>fiókok|       Diagnosztika|||
+|Kognitív szolgáltatások|    Microsoft.CognitiveServices/<br>fiókok|       Diagnosztika|||
 |A Data Lake analytics|   Microsoft.DataLakeAnalytics/<br>fiókok|   Diagnosztika|||
 |A Data Lake store|   Microsoft.DataLakeStore/<br>fiókok|   Diagnosztika|||
 |Eseményközpont-névtér|   Microsoft.EventHub/<br>Névterek|  Diagnosztika|    Diagnosztika||
 |IoT Hubok|  Microsoft.Devices/<br>IotHubs||     Diagnosztika||
-|Key Vault| Microsoft.KeyVault/<br>Tárolók|  Diagnosztika  || [KeyVault elemzés](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault)|
+|Key Vault| Microsoft.KeyVault/<br>Tárolók|  Diagnosztika  || [KeyVault Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault)|
 |Terheléselosztók|    Microsoft.Network/<br>loadBalancers|    Diagnosztika|||
 |Logic Apps|    Microsoft.Logic/<br>Munkafolyamatok|  Diagnosztika|    Diagnosztika||
 ||Microsoft.Logic/<br>integrationAccounts||||
@@ -373,14 +373,14 @@ A négy különböző módon [naplókat és az Azure-szolgáltatások metrikáj�
 |Szolgáltatások keresése|   Microsoft.Search/<br>searchServices|    Diagnosztika|    Diagnosztika||
 |Service Bus-névtér| Microsoft.ServiceBus/<br>Névterek|    Diagnosztika|Diagnosztika|    [Service Bus Analytics (előzetes verzió)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
 |Service Fabric||       Tárolás||    [Service Fabric Analytics (előzetes verzió)](https://docs.microsoft.com/azure/log-analytics/log-analytics-service-fabric)|
-|SQL (12-es verzió)| Microsoft.Sql/<br>kiszolgálók /<br>adatbázisok||       Diagnosztika||
-||Microsoft.Sql/<br>kiszolgálók /<br>elasticPools||||
+|SQL (v12)| Microsoft.Sql/<br>servers/<br>adatbázisok||       Diagnosztika||
+||Microsoft.Sql/<br>servers/<br>elasticPools||||
 |Tárolás|||         Szkript| [Az Azure Storage Analytics (előzetes verzió)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution)|
 |Virtuális gépek|  Microsoft.Compute/<br>virtuális gép|  Mellék|  Mellék||
 ||||Diagnosztika||
 |Virtuális gépek méretezési csoportok|   Microsoft.Compute/<br>virtuális gép    ||Diagnosztika||
-||Microsoft.Compute/<br>virtualMachineScaleSets /<br>virtuális gép||||
-|Kiszolgáló-webfarmok|Microsoft.Web/<br>serverfarms||   Diagnosztika
+||Microsoft.Compute/<br>virtualMachineScaleSets/<br>virtuális gép||||
+|Web Server farms|Microsoft.Web/<br>serverfarms||   Diagnosztika
 |Webhelyek| Microsoft.Web/<br>webhelyek ||      Diagnosztika|    [További információ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webappazure-oms-monitoring)|
 ||Microsoft.Web/<br>helyek /<br>tárolóhelyek|||||
 
@@ -415,7 +415,7 @@ Integrációs feladatokhoz
 
 -   [Gyakori kérdések (GYIK) integrációs Azure naplóelemzés](https://docs.microsoft.com/azure/security/security-azure-log-integration-faq) -Ez gyakran ismételt kérdések Azure naplóelemzés integrációs kapcsolatos kérdésekre ad választ.
 
--   [A Security Center integrálása az Azure-ral riasztások jelentkezzen integrációs](https://docs.microsoft.com/azure/security-center/security-center-integrating-alerts-with-log-integration) – Ez a dokumentum ismerteti a Security Center riasztásait, valamint virtuális gép biztonsági események log analyticshez vagy SIEM-megoldás az Azure Diagnostics és az Azure-beli Auditnaplók által gyűjtött szinkronizálására.
+-   [A Security Center integrálása az Azure-ral riasztások jelentkezzen integrációs](https://docs.microsoft.com/azure/security-center/security-center-integrating-alerts-with-log-integration) – Ez a dokumentum azt ismerteti, hogyan szinkronizálása a Security Center riasztásait, együtt a virtuális gép biztonsági eseményeket a naplóelemzési az Azure Diagnostics és az Azure-beli Auditnaplók által gyűjtött vagy SIEM-megoldás.
 
 ## <a name="next-steps"></a>További lépések
 

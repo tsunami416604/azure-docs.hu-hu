@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 03/12/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 1b8a6079a68c50f80b593a1f56bc5256047ef31c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3d3a271bcdd5c507125b8b1a5482f833607a5a78
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Azure Machine Learning egy IoT peremhálózati modulként telepítése – előzetes
 
@@ -35,6 +35,8 @@ Az Azure Machine Learning modul, amely ebben az oktatóanyagban létrehozhat az 
 * Az IoT hub, amely az IoT-peremhálózati eszköz csatlakozik az IoT-központ kapcsolati karakterláncát.
 * Egy Azure Machine Learning-fiók. Fiók létrehozásához kövesse a [létrehozása az Azure Machine Learning fiókok, és telepítse az Azure Machine Learning-munkaterület](../machine-learning/preview/quickstart-installation.md#create-azure-machine-learning-services-accounts). Nem kell telepíteni a munkaterületet üzemeltető alkalmazás ehhez az oktatóanyaghoz. 
 * Modul kezelése az Azure ML a számítógépen. Állítsa be a környezetet, és hozzon létre egy fiókot, kövesse az utasításokat a [modell kezelésének beállítása](https://docs.microsoft.com/azure/machine-learning/preview/deployment-setup-configuration).
+
+Az Azure Machine Learning modul nem támogatja a ARM processzor. 
 
 ## <a name="create-the-azure-ml-container"></a>Az Azure ML-tároló létrehozása
 Ebben a szakaszban a betanított modell fájlok letöltéséhez, és alakíthatja át őket az Azure ML-tárolóba.  

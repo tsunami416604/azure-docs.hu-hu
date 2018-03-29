@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/23/2018
 ms.author: amitsriva
-ms.openlocfilehash: dfa451a06fbadbb63c83f800ac164db399efd583
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 885ae8b97175cac4cd29793eb0a935e81d54d0e4
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Háttér-állapot, a diagnosztikai naplók és a metrikák az Alkalmazásátjáró
 
@@ -27,7 +27,7 @@ Azure Application Gateway használatával figyelheti erőforrások a következő
 
 * [Háttér-állapotfigyelő](#back-end-health): Application Gateway biztosítja a kiszolgálók az Azure portálon keresztül, és a PowerShell segítségével a háttér-készletek állapotának figyelésére. A háttér-készletek a diagnosztikai Teljesítménynaplók keresztül állapotát is tájékozódhat.
 
-* [Naplók](#diagnostic-logs): a teljesítmény, hozzáférési és egyéb adatok mentése vagy egy erőforráshoz, ellenőrzési célból felhasznált naplóihoz.
+* [Naplók](#diagnostic-logging): a teljesítmény, hozzáférési és egyéb adatok mentése vagy egy erőforráshoz, ellenőrzési célból felhasznált naplóihoz.
 
 * [Metrikák](#metrics): Application Gateway még egy metrika van. Ez a metrika az átviteli sebessége bájt / s az Alkalmazásátjáró méri.
 

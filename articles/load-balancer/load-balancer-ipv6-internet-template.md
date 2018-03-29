@@ -1,13 +1,13 @@
 ---
-title: "Helyez üzembe egy internetre irányuló terheléselosztót IPv6 - Azure-sablon alapján |} Microsoft Docs"
-description: "Ügyfélszoftverek központi telepítése az Azure terheléselosztó és a virtuális gépek elosztott terhelésű IPv6 támogatása."
+title: Helyez üzembe egy internetre irányuló terheléselosztót IPv6 - Azure-sablon alapján |} Microsoft Docs
+description: Ügyfélszoftverek központi telepítése az Azure terheléselosztó és a virtuális gépek elosztott terhelésű IPv6 támogatása.
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: "IPv6-alapú, azure load balancer, kettős verem, nyilvános IP-cím, natív ipv6, mobil, iot"
+keywords: IPv6-alapú, azure load balancer, kettős verem, nyilvános IP-cím, natív ipv6, mobil, iot
 ms.assetid: 2998e943-13fc-4ea9-a68c-875e53a08db3
 ms.service: load-balancer
 ms.devlang: na
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 90439d792eac618671a9de9938302d8930c986d8
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 431b43979ac364d943c58c40b4199b7f30f9acf6
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Megoldás üzembe helyezéséhez egy internetre irányuló terheléselosztót IPv6-sablon használatával
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/21/2017
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [Sablon](load-balancer-ipv6-internet-template.md)
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+
 
 Az Azure Load Balancer 4. szintű (TCP, UDP) terheléselosztónak minősül. A terheléselosztó a felhőszolgáltatások vagy virtuális gépek kifogástalan állapotú szolgáltatási példányai között osztja meg a bejövő forgalmat egy terheléselosztói készletben, és ezáltal biztosítja a magas rendelkezésre állást. Az Azure Load Balancer a szolgáltatásokat több portra vagy több IP-címre, illetve portokra és IP-címekre egyaránt továbbíthatja.
 
@@ -54,43 +54,43 @@ Ez a cikk hivatkozik a sablont, amely a közzé van téve a [Azure gyors üzembe
 1. Nyissa meg az Azure portál, és jelentkezzen be egy virtuális gépek és a hálózati erőforrások az Azure-előfizetés létrehozásához engedéllyel rendelkező fiók. Is kivéve, ha meglévő erőforrásokat használ, a fiók beleegyezését kéri az erőforráscsoportot és a storage-fiók létrehozásához.
 2. Kattintson a "+ új" az a menü, majd a keresőmezőbe a "sablon" típus. A keresési eredmények közül válassza ki a "Sablon-üzembehelyezés".
 
-    ![LB-ipv6-portál – 2. lépés](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
+    ![lb-ipv6-portal-step2](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
 
 3. A teljes tartalmának a panelen, kattintson a "Sablon-üzembehelyezés."
 
-    ![LB-ipv6-portál – 3. lépés](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step3.png)
+    ![lb-ipv6-portal-step3](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step3.png)
 
 4. Kattintson a "Create".
 
-    ![LB-ipv6-portal-step4](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
+    ![lb-ipv6-portal-step4](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
 
 5. Kattintson a "Sablon szerkesztése." Törölje a meglévő tartalmat másolja és illessze be a sablonfájl (a kezdő és végződhet {}) teljes tartalmát, majd kattintson a "Mentés."
 
     > [!NOTE]
     > Használata a Microsoft Internet Explorer, illessze be, amikor megjelenik egy párbeszédpanel, engedélyezi a hozzáférést a Windows vágólapra kéri. Kattintson a "Hozzá lehessen férni."
 
-    ![LB-ipv6-portal-step5](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
+    ![lb-ipv6-portal-step5](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
 
 6. Kattintson a "Paraméterek szerkesztése." A (paraméterek) panelen a sablon paraméterek szakaszban határozza meg az értékeket a útmutatásának, majd kattintson a "Mentés" gombra a paraméterek panel. Az egyéni telepítés panelen jelölje ki az előfizetését, egy meglévő erőforráscsoportot, vagy hozzon létre egyet. Ha egy erőforráscsoportot hoz létre, majd válassza ki az erőforrásnak a helyét. Ezután kattintson **jogi feltételeket**, majd kattintson a **beszerzési** a jogi feltételek. Azure kezdődik, az erőforrásokat üzembe helyezi. Az erőforrások telepítése több percet vesz igénybe.
 
-    ![LB-ipv6-portal-step6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
+    ![lb-ipv6-portal-step6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
 
     Ezek a paraméterek kapcsolatos további információkért tekintse meg a [sablon paraméterek és változók](#template-parameters-and-variables) szakasz a cikk későbbi részében.
 
 7. A sablon által létrehozott erőforrások megtekintéséhez kattintson a Tallózás gombra, görgessen lefelé a listában, amíg tekintse meg a "Erőforráscsoportok", majd kattintson rá.
 
-    ![LB-ipv6-portal-step7](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
+    ![lb-ipv6-portal-step7](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
 
 8. Az erőforrás-csoportok panel kattintson a 6. lépésben megadott erőforráscsoport nevét. Láthatja, hogy telepítve vannak-e az összes erőforrás listáját. Összes hiba is, ha az üzenetnek kell megjelennie "Succeeded" a "Legutóbbi telepítés." Ha nem, akkor győződjön meg arról, hogy a használt fiók rendelkezik-e a szükséges erőforrások létrehozásához szükséges engedélyek.
 
-    ![LB-ipv6-portal-step8](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
+    ![lb-ipv6-portal-step8](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
 
     > [!NOTE]
     > Ha közvetlenül a 6. lépés befejezése után az erőforráscsoportokat tallózással, "Utolsó telepítés" közben az erőforrások telepítése alatt álló "A" állapotát megjeleníti.
 
 9. Kattintson az erőforrások listájához a "myIPv6PublicIP". Láthatja, hogy rendelkezik-e az IP-cím IPv6-címet, és hogy a DNS-névvel a 6. lépésben a dnsNameforIPv6LbIP paraméterhez megadott érték. Ehhez az erőforráshoz esetén nyilvános IPv6 cím és az Internet-ügyfelek által elérhető.
 
-    ![LB-ipv6-portal-step9](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
+    ![lb-ipv6-portal-step9](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
 
 ## <a name="validate-connectivity"></a>Kapcsolat ellenőrzése
 

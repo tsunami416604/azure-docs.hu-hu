@@ -1,6 +1,6 @@
 ---
-title: "Terheléselosztó támogatása az Azure Resource Manager |} Microsoft Docs"
-description: "Az Azure Resource Manager terheléselosztóhoz powershell használatával. Terheléselosztó sablonok használata"
+title: Terheléselosztó támogatása az Azure Resource Manager |} Microsoft Docs
+description: Az Azure Resource Manager terheléselosztóhoz powershell használatával. Terheléselosztó sablonok használata
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 6ba329e55f03cf984ae795c1d3a509e196064e2a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d1d098f45c391363523b6a56ec0c6fdb40e64d68
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="using-azure-resource-manager-support-with-azure-load-balancer"></a>Az Azure erőforrás-kezelő támogatási használata az Azure terheléselosztó
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+
 
 Az Azure Resource Manager az előnyben részesített felügyeleti keretet biztosít az Azure-szolgáltatások. Az Azure Load Balancer Azure Resource Manager-alapú API-k és eszközök használatával kezelhetők.
 
@@ -65,7 +65,7 @@ Ismerkedés az Azure Resource Manager parancsmagok, a parancssori eszköz és a 
 * [Az Azure erőforrás-kezelés az Azure parancssori felület használatával](../xplat-cli-azure-resource-manager.md)
 * [Terheléselosztó REST API-k](https://msdn.microsoft.com/library/azure/mt163651.aspx)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Is [Internet felé néző terheléselosztó létrehozásához](load-balancer-get-started-internet-arm-ps.md) és konfigurálása, hogy milyen típusú [mód](load-balancer-distribution-mode.md) egy meghatározott típusú terheléselosztó hálózati forgalom viselkedését.
 

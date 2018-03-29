@@ -1,11 +1,11 @@
 ---
-title: "Az Azure App Service szolgáltatásban a Visual Studio használatával webes alkalmazás hibaelhárítása"
-description: "Megtudhatja, hogyan hibáinak elhárítása az Azure-webalkalmazás távoli hibakeresés, a nyomkövetés és a Visual Studio 2013-bA beépített naplózási eszközök segítségével."
+title: Az Azure App Service szolgáltatásban a Visual Studio használatával webes alkalmazás hibaelhárítása
+description: Megtudhatja, hogyan hibáinak elhárítása az Azure-webalkalmazás távoli hibakeresés, a nyomkövetés és a Visual Studio 2013-bA beépített naplózási eszközök segítségével.
 services: app-service
 documentationcenter: .net
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: def8e481-7803-4371-aa55-64025d116c97
 ms.service: app-service
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
-ms.openlocfilehash: 6b1d5694c4d80a4db584b0c76a044dd596c5d553
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 7973f4311095b7c87ccd2394b048ec92c50f32a9
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>Az Azure App Service szolgáltatásban a Visual Studio használatával webes alkalmazás hibaelhárítása
 ## <a name="overview"></a>Áttekintés
@@ -125,12 +125,14 @@ Ez a szakasz bemutatja, hogyan segítségével távolról hoz létre a projekt h
 
 3. Törölje a `About()` metódus és a beszúrás helyére az alábbi kódot.
 
-        public ActionResult About()
-        {
-            string currentTime = DateTime.Now.ToLongTimeString();
-            ViewBag.Message = "The current time is " + currentTime;
-            return View();
-        }
+``` c#
+public ActionResult About()
+{
+    string currentTime = DateTime.Now.ToLongTimeString();
+    ViewBag.Message = "The current time is " + currentTime;
+    return View();
+}
+```
 4. [Állítson be egy töréspontot](http://www.visualstudio.com/get-started/debug-your-app-vs.aspx) a a `ViewBag.Message` sor.
 
 5. A **Megoldáskezelőben**, kattintson jobb gombbal a projektre, majd kattintson **közzététel**.
@@ -171,7 +173,7 @@ Ez a szakasz bemutatja, hogyan segítségével távolról hoz létre a projekt h
 
      ![Új értékkel rendelkező oldalról](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugchangeinwa.png)
 
-## <a name="remotedebugwj"></a>Távoli hibakeresési webjobs-feladatok
+## <a name="remotedebugwj"></a> Távoli hibakeresési webjobs-feladatok
 Ez a szakasz bemutatja, hogyan segítségével távolról hoz létre a projekt és a webes alkalmazás hibakeresése [Ismerkedés az Azure WebJobs SDK-val](https://github.com/Azure/azure-webjobs-sdk/wiki).
 
 Az itt látható szolgáltatások váltak elérhetővé, csak a Visual Studio 2013 Update 4 vagy újabb.
@@ -241,10 +243,12 @@ Ha a függvény [naplók megírt](https://github.com/Azure/azure-webjobs-sdk/wik
 * Hibakeresése, közben a kiszolgáló küld adatokat a Visual Studio, amelyek hatással lehetnek a sávszélesség-költségek. Sávszélesség díjszabás kapcsolatos információkért lásd: [Azure díjszabása](https://azure.microsoft.com/pricing/calculator/).
 * Győződjön meg arról, hogy a `debug` attribútuma a `compilation` eleme a *Web.config* fájl értéke TRUE. Az értéke igaz, ha hibakeresési buildet konfiguráció közzéteszi alapértelmezés szerint.
 
-        <system.web>
-          <compilation debug="true" targetFramework="4.5" />
-          <httpRuntime targetFramework="4.5" />
-        </system.web>
+``` xml
+<system.web>
+  <compilation debug="true" targetFramework="4.5" />
+  <httpRuntime targetFramework="4.5" />
+</system.web>
+```
 * Ha talál meg, hogy a hibakereső a kódot, amelyet szeretne debug nem lép, lehetséges, hogy a csak saját kód beállítását.  További információkért lásd: [korlátozása csak saját kód léptetési](http://msdn.microsoft.com/library/vstudio/y740d9d3.aspx#BKMK_Restrict_stepping_to_Just_My_Code).
 * Egy felszabadításakor kezdődik a kiszolgálón, ha engedélyezi a távoli hibakeresési szolgáltatást, és 48 óra elteltével a szolgáltatás automatikusan ki van kapcsolva. Ezt a határt 48 órán biztonsági és teljesítménynövelő okokból kell elvégezni. Könnyen bekapcsolása a szolgáltatás ismét annyi alkalommal. Azt javasoljuk, hogy le van tiltva, akkor nem aktívan hibakeresése esetén hagyja.
 * A hibakereső semmilyen teendője, nem csak a webes alkalmazás folyamat (w3wp.exe) manuális csatolása. A Visual Studio hibakeresési mód használatával kapcsolatos további információkért lásd: [a Visual Studio hibakeresési](http://msdn.microsoft.com/library/vstudio/sc65sadd.aspx).
@@ -277,32 +281,35 @@ Alkalmazás létrehozásával kapcsolatos információkat naplózza a webjobs-fe
 ### <a name="add-tracing-statements-to-the-application"></a>Nyomkövetési utasítások hozzáadni az alkalmazáshoz
 1. Nyissa meg *Controllers\HomeController.cs*, és cserélje le a `Index`, `About`, és `Contact` kódot hozzáadásához a következő módszerek `Trace` utasítások és egy `using` nyilatkozata `System.Diagnostics`:
 
-        public ActionResult Index()
-        {
-            Trace.WriteLine("Entering Index method");
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-            Trace.TraceInformation("Displaying the Index page at " + DateTime.Now.ToLongTimeString());
-            Trace.WriteLine("Leaving Index method");
-            return View();
-        }
+```c#
+public ActionResult Index()
+{
+    Trace.WriteLine("Entering Index method");
+    ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+    Trace.TraceInformation("Displaying the Index page at " + DateTime.Now.ToLongTimeString());
+    Trace.WriteLine("Leaving Index method");
+    return View();
+}
 
-        public ActionResult About()
-        {
-            Trace.WriteLine("Entering About method");
-            ViewBag.Message = "Your app description page.";
-            Trace.TraceWarning("Transient error on the About page at " + DateTime.Now.ToShortTimeString());
-            Trace.WriteLine("Leaving About method");
-            return View();
-        }
+public ActionResult About()
+{
+    Trace.WriteLine("Entering About method");
+    ViewBag.Message = "Your app description page.";
+    Trace.TraceWarning("Transient error on the About page at " + DateTime.Now.ToShortTimeString());
+    Trace.WriteLine("Leaving About method");
+    return View();
+}
 
-        public ActionResult Contact()
-        {
-            Trace.WriteLine("Entering Contact method");
-            ViewBag.Message = "Your contact page.";
-            Trace.TraceError("Fatal error on the Contact page at " + DateTime.Now.ToLongTimeString());
-            Trace.WriteLine("Leaving Contact method");
-            return View();
-        }        
+public ActionResult Contact()
+{
+    Trace.WriteLine("Entering Contact method");
+    ViewBag.Message = "Your contact page.";
+    Trace.TraceError("Fatal error on the Contact page at " + DateTime.Now.ToLongTimeString());
+    Trace.WriteLine("Leaving Contact method");
+    return View();
+}        
+```
+
 2. Adja hozzá a `using System.Diagnostics;` nyilatkozatot, így a fájl elejéhez.
 
 ### <a name="view-the-tracing-output-locally"></a>A nyomkövetési kimeneti helyileg megtekintése
@@ -315,23 +322,28 @@ Alkalmazás létrehozásával kapcsolatos információkat naplózza a webjobs-fe
     A következő lépések bemutatják a nyomkövetési kimeneti megtekintése egy weblapon hibakeresési módban fordítása nélkül.
 2. Nyissa meg az alkalmazás Web.config fájljában (a egy, a projekt mappában található), és adja hozzá a `<system.diagnostics>` elem csak a Bezárás előtt a fájl végén `</configuration>` elem:
 
-          <system.diagnostics>
-            <trace>
-              <listeners>
-                <add name="WebPageTraceListener"
-                    type="System.Web.WebPageTraceListener,
-                    System.Web,
-                    Version=4.0.0.0,
-                    Culture=neutral,
-                    PublicKeyToken=b03f5f7f11d50a3a" />
-              </listeners>
-            </trace>
-          </system.diagnostics>
+``` xml
+<system.diagnostics>
+<trace>
+  <listeners>
+    <add name="WebPageTraceListener"
+        type="System.Web.WebPageTraceListener,
+        System.Web,
+        Version=4.0.0.0,
+        Culture=neutral,
+        PublicKeyToken=b03f5f7f11d50a3a" />
+  </listeners>
+</trace>
+</system.diagnostics>
+```
 
-    A `WebPageTraceListener` lehetővé megtekintését megkeresésével nyomon követése kimeneti `/trace.axd`.
+A `WebPageTraceListener` lehetővé megtekintését megkeresésével nyomon követése kimeneti `/trace.axd`.
 3. Adja hozzá a <a href="http://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">nyomkövetési elem</a> alatt `<system.web>` a Web.config fájlban, például az alábbi példa:
 
-        <trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
+``` xml
+<trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
+```       
+
 4. Az alkalmazás futtatásához nyomja le a Ctrl+F5 billentyűkombinációt.
 5. Adja hozzá a böngészőablak címsorában, *trace.axd* az URL-címet, és nyomja le az Enter (az URL-cím hasonlít http://localhost:53370/trace.axd).
 6. Az a **alkalmazás nyomkövetési** kattintson **részleteinek megtekintése** az első sorban (nem a BrowserLink).
@@ -646,15 +658,18 @@ Nincsenek nem alapos, naprakész állapotban Bevezetés az ASP.NET nyomkövetés
 * [Az ASP.NET MVC Razor nézetekben nyomkövetése](http://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
   Nyomkövetés Razor nézetekben, mellett a feladás egy vagy több is bemutatja, hogyan ahhoz, hogy az összes nem kezelt kivétel jelentkezzen be egy MVC alkalmazás egy hiba-szűrő létrehozásához. Összes kezelt kivételek jelentkezzen be egy webes űrlapalkalmazás kapcsolatos információkért lásd: a Global.asax példát [hibakezelők teljes példa](http://msdn.microsoft.com/library/bb397417.aspx) az MSDN Webhelyén. MVC, vagy a Web Forms keretrendszerre Ha azt szeretné, hogy bizonyos kivételeket, de az alapértelmezett keretrendszer hatását kezelése, lehetővé lehet catch és újrakiváltható kivétel a következő példában látható módon:
 
-        try
-        {
-           // Your code that might cause an exception to be thrown.
-        }
-        catch (Exception ex)
-        {
-            Trace.TraceError("Exception: " + ex.ToString());
-            throw;
-        }
+``` c#
+try
+{
+   // Your code that might cause an exception to be thrown.
+}
+catch (Exception ex)
+{
+    Trace.TraceError("Exception: " + ex.ToString());
+    throw;
+}
+```
+
 * [Adatfolyam-továbbítási diagnosztikai nyomkövetési naplózása az Azure parancssori (plusz futó!)](http://www.hanselman.com/blog/StreamingDiagnosticsTraceLoggingFromTheAzureCommandLinePlusGlimpse.aspx)<br/>
   A parancssor használatával milyen Ez az oktatóanyag elvégzéséhez a Visual Studio feladatok végrehajtását ismerteti. [Futó](http://www.hanselman.com/blog/IfYoureNotUsingGlimpseWithASPNETForDebuggingAndProfilingYoureMissingOut.aspx) ASP.NET-alkalmazások hibakereséshez eszköz.
 * [Webalkalmazások naplózás és diagnosztika - használata a David Ebbo](/documentation/videos/azure-web-site-logging-and-diagnostics/) és [a folyamatos átviteli naplók, a webalkalmazások - David Ebbo](/documentation/videos/log-streaming-with-azure-web-sites/)<br>
@@ -669,7 +684,7 @@ A webkiszolgáló naplóinak elemzésével kapcsolatos további információkér
 
 * [LogParser](http://www.microsoft.com/download/details.aspx?id=24659)<br/>
   Egy eszköz a adatok megtekintése a webkiszolgáló naplóinak (*.log* fájlok).
-* [IIS teljesítményproblémák vagy LogParser használó alkalmazás-hibák elhárítása](http://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
+* [IIS teljesítményproblémák vagy LogParser használó alkalmazás-hibák elhárítása ](http://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   A napló-elemző eszköz, amely segítségével elemezheti a webkiszolgáló naplóinak bemutatása.
 * [Blogbejegyzéseket által Robert McMurray LogParser használatával](http://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
 * [Az IIS 7.0, IIS 7.5 és IIS 8.0-s HTTP-állapotkód:](http://support.microsoft.com/kb/943891)

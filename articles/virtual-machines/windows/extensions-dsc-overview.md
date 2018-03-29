@@ -1,11 +1,11 @@
 ---
-title: "Állapotkonfiguráció szükséges Azure áttekintés |} Microsoft Docs"
-description: "Ismerje meg, hogyan használhatja a Microsoft Azure-kiterjesztés kezelője a PowerShell szükséges konfiguráló (DSC). A cikk Előfeltételek, architektúrájának és parancsmagokat tartalmazza."
+title: Állapotkonfiguráció szükséges Azure áttekintés |} Microsoft Docs
+description: Ismerje meg, hogyan használhatja a Microsoft Azure-kiterjesztés kezelője a PowerShell szükséges konfiguráló (DSC). A cikk Előfeltételek, architektúrájának és parancsmagokat tartalmazza.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: mgreenegit
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 keywords: dsc
 ms.assetid: bbacbc93-1e7b-4611-a3ec-e3320641f9ba
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: migreene
-ms.openlocfilehash: 14d29223435e9a133b112a61f2ecdde0aad581a2
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 5b16261c9a9f046b7bc55a06dd71aa154a0cec27
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Az Azure célállapot-konfiguráció kiterjesztés kezelőjének bemutatása
 
@@ -71,7 +71,7 @@ A legtöbb esetben a Resource Manager központi telepítési sablonok a várt m�
 
 A PowerShell-parancsmagok használatával kezelheti a DSC-bővítményt az interaktív hibaelhárítási és információgyűjtési forgatókönyvek legérdemesebb használni. A parancsmagok segítségével csomag közzététele és DSC-bővítmény telepítésének figyelése. Vegye figyelembe, hogy a DSC-bővítmény parancsmagok még nem frissített történő együttműködésre a [konfigurációs parancsfájl alapértelmezett](#default-configuration-script).
 
-A **Publish-AzureRMVMDscConfiguration** parancsmag időt vesz igénybe, a konfigurációs fájlban, keres a DSC tőle függő erőforrások, és létrehoz egy .zip fájlt. A zip-fájlt a konfigurációs és a DSC-erőforrások, amelyek szükségesek ahhoz, hogy a konfigurációs kihirdeti tartalmazza. A parancsmag használatával helyben is létrehozhat a csomag a *- ConfigurationArchivePath* paraméter. Ellenkező esetben a parancsmag közzéteszi a blob-tároló zip-fájlt, és majd biztonságossá tételére egy SAS-tokennel rendelkező.
+A **Publish-AzureRMVMDscConfiguration** parancsmag időt vesz igénybe, a konfigurációs fájlban, keres a DSC tőle függő erőforrások, és létrehoz egy .zip fájlt. A zip-fájlt a konfigurációs és a DSC-erőforrások, amelyek szükségesek ahhoz, hogy a konfigurációs kihirdeti tartalmazza. A parancsmag használatával helyben is létrehozhat a csomag a *- OutputArchivePath* paraméter. Ellenkező esetben a parancsmag közzéteszi a blob-tároló zip-fájlt, és majd biztonságossá tételére egy SAS-tokennel rendelkező.
 
 A .ps1 konfigurációs parancsfájl, amely a parancsmag létrehozza a .zip-fájlt az archív mappa gyökerében van. A modul mappába kerül erőforrások archív mappájában.
 
@@ -133,7 +133,7 @@ A portál beállítása DSC:
 
 A portál a következő beavatkozást igényel:
 
-* **Modulok vagy parancsfájl**: Ez a mező megadása kötelező (az űrlap nem lett frissítve a [konfigurációs parancsfájl alapértelmezett](#default-configuration-script)). Konfigurációs modulok és a parancsfájlokat egy konfigurációs parancsfájl .ps1 fájlt vagy a meghajtó gyökérkönyvtárát .ps1 konfigurációs parancsfájl .zip fájl szükséges. Egy .zip fájl használatakor tőle függő összes erőforrásról szerepelnie kell a .zip modul mappákat. A .zip fájl segítségével létrehozható a **Publish-AzureVMDscConfiguration - ConfigurationArchivePath** parancsmag, amely az Azure PowerShell SDK megtalálható. A zip-fájlt a felhasználó blobtárolóba feltöltött, és egy SAS-jogkivonat által védett.
+* **Modulok vagy parancsfájl**: Ez a mező megadása kötelező (az űrlap nem lett frissítve a [konfigurációs parancsfájl alapértelmezett](#default-configuration-script)). Konfigurációs modulok és a parancsfájlokat egy konfigurációs parancsfájl .ps1 fájlt vagy a meghajtó gyökérkönyvtárát .ps1 konfigurációs parancsfájl .zip fájl szükséges. Egy .zip fájl használatakor tőle függő összes erőforrásról szerepelnie kell a .zip modul mappákat. A .zip fájl segítségével létrehozható a **Publish-AzureVMDscConfiguration - OutputArchivePath** parancsmag, amely az Azure PowerShell SDK megtalálható. A zip-fájlt a felhasználó blobtárolóba feltöltött, és egy SAS-jogkivonat által védett.
 
 * **Konfigurációs adatok psd1 kiterjesztésű fájl**: Ez a mező nem kötelező megadni. Ha a konfiguráció szükséges .psd1 a konfigurációs adatfájlt, használja a ebben a mezőben jelölje ki az adatok mezőt, és töltse fel azt a felhasználói blob-tároló. A konfigurációs adatfájlt védi-e egy SAS-jogkivonat a blob Storage tárolóban.
 

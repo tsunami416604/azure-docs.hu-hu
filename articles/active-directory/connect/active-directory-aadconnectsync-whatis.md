@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect szinkronizálása: megértéséhez, valamint a szinkronizálás testreszabása |} Microsoft Docs"
-description: "Azt ismerteti, hogyan az Azure AD Connect szinkronizálása akkor működik, és hogyan szabható testre."
+title: 'Azure AD Connect szinkronizálása: megértéséhez, valamint a szinkronizálás testreszabása |} Microsoft Docs'
+description: Azt ismerteti, hogyan az Azure AD Connect szinkronizálása akkor működik, és hogyan szabható testre.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ee4bf802-045b-4da0-986e-90aba2de58d6
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
-ms.openlocfilehash: d58baa89c9d11b6b7a6bbb3b53974184ef1903b5
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: a808f929dcd27b53821f59ed8fd3ab67af81a273
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect szinkronizálása: megértéséhez, valamint a szinkronizálás testreszabása
 Az Azure Active Directory Connect szinkronizálási szolgáltatások (az Azure AD Connect szinkronizálása) az Azure AD Connect fő összetevője. Ez gondoskodik az identitás a helyszíni környezetben és az Azure AD közti adatszinkronizálást kapcsolatos műveleteket. Azure AD Connect szinkronizálása a követő DirSync, az Azure AD Sync és a Forefront Identity Manager az az Azure Active Directory Connector konfigurálva.
@@ -46,7 +46,7 @@ A helyszíni két összetevőből áll: a szinkronizálási szolgáltatás **az 
 | **Szolgáltatások és forgatókönyvek** | |
 | [Véletlen törlések megakadályozása](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md) |Ismerteti a *véletlen törlések megakadályozása* szolgáltatásról és konfigurálását. |
 | [Scheduler](active-directory-aadconnectsync-feature-scheduler.md) |A beépített ütemezési, amely importálása, szinkronizálását, és az adatok exportálása ismerteti. |
-| [Jelszó-szinkronizálás megvalósítása](active-directory-aadconnectsync-implement-password-synchronization.md) |Jelszó-szinkronizálás, végrehajtásához, és ismerteti és hibaelhárításához. |
+| [Jelszókivonat-szinkronizálást megvalósítása](active-directory-aadconnectsync-implement-password-hash-synchronization.md) |Jelszó-szinkronizálás, végrehajtásához, és ismerteti és hibaelhárításához. |
 | [Eszközök visszaírásához.](active-directory-aadconnect-feature-device-writeback.md) |Az Azure AD Connectben eszközvisszaíró működését ismerteti. |
 | [Címtárbővítmények](active-directory-aadconnectsync-feature-directory-extensions.md) |Ismerteti, hogyan lehet a saját egyéni attribútumokkal rendelkező Azure AD-séma kiterjesztése. |
 | [Az Office 365 PreferredDataLocation](active-directory-aadconnectsync-feature-preferreddatalocation.md) |Ismerteti, hogyan kell állítania a felhasználó Office 365-erőforrások ugyanabban a régióban, mint a felhasználó. |

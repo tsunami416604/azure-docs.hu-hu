@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/19/2018
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 87a24ae9b620557e3106eb7f51b3f002cd76dd03
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 241f872b3069a58a35df7104f3335964298c7a20
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="authorize-access-to-web-applications-using-oauth-20-and-azure-active-directory"></a>Hozzáférés engedélyezése webalkalmazásoknak OAuth 2.0 és az Azure Active Directory használatával
 Az Azure Active Directory (Azure AD) által használt OAuth 2.0 ahhoz, hogy engedélyezi a hozzáférést a webalkalmazások és webes API-knak az Azure AD-bérlőben. Ez az útmutató nyelvfüggetlen, és ismerteti, hogyan lehet üzeneteket küldjön és fogadjon HTTP a nyílt forráskódú kódtárai bármelyikét használata nélkül.
@@ -138,9 +138,9 @@ grant_type=authorization_code
 | grant_type |Szükséges |Kell `authorization_code` a a hitelesítésikód-folyamata. |
 | Kód |Szükséges |A `authorization_code` az előző szakaszban beszerzett |
 | redirect_uri |Szükséges |Azonos `redirect_uri` megszerzésére használt érték a `authorization_code`. |
-| client_secret |a web Apps szükséges |Az alkalmazás az app-regisztrációs portálon létrehozott alkalmazáskulcsot.  Akkor kell nem használható natív alkalmazás, mert client_secrets megbízhatóan nem tárolható az eszközökön.  Szükséges, hogy az webalkalmazások és webes API-k, amelyek tárolása a `client_secret` biztonságos helyen a kiszolgálói oldalon. |
+| client_secret |a web Apps, nem engedélyezett a következő nyilvános ügyfelek szükséges |Az alkalmazás az app-regisztrációs portálon létrehozott alkalmazáskulcsot.  Ez nem használható natív alkalmazásban (nyilvános ügyfél), mert client_secrets megbízhatóan nem tárolható az eszközökön.  Szükséges, hogy az webalkalmazások és webes API-k (összes bizalmas ügyfelek), amelyek tárolása a `client_secret` biztonságos helyen a kiszolgálói oldalon. |
 | erőforrás |szükséges, ha a kérelemben megadott engedélyezési kódot, ellenkező esetben nem kötelező |A webes API-k (védett erőforrás) App ID URI. |
-| code_verifier | választható              | Az beszerzése a authorization_code használt azonos code_verifier.  Szükséges, ha az engedélyezési kód támogatási kérelmet PKCE használta.  További információkért lásd: a [PKCE RFC](https://tools.ietf.org/html/rfc7636)                                                                                                                                                                                                                                                                                             |
+| code_verifier | választható              | Az beszerzése a authorization_code használt azonos code_verifier.  Szükséges, ha az engedélyezési kód támogatási kérelmet PKCE használta.  További információkért lásd: a [PKCE RFC](https://tools.ietf.org/html/rfc7636)   |
 
 Az Azure felügyeleti portálon App ID URI megkereséséhez kattintson **Active Directory**, kattintson arra a címtárra, kattintson az alkalmazást, majd **konfigurálása**.
 

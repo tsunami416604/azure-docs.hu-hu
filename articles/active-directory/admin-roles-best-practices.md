@@ -1,8 +1,8 @@
 ---
-title: "Ajánlott eljárások az Azure AD rendszergazdai hozzáférés biztosítása érdekében |} Microsoft Docs"
-description: "Győződjön meg arról, hogy a szervezet rendszergazdai hozzáférést és rendszergazdai fiókok biztonságos. A rendszer fejlesztők és informatikai szakemberek számára az Azure AD konfigurálása Azure és a Microsoft Online Services."
+title: Ajánlott eljárások az Azure AD rendszergazdai hozzáférés biztosítása érdekében |} Microsoft Docs
+description: Győződjön meg arról, hogy a szervezet rendszergazdai hozzáférést és rendszergazdai fiókok biztonságos. A rendszer fejlesztők és informatikai szakemberek számára az Azure AD konfigurálása Azure és a Microsoft Online Services.
 services: active-directory
-keywords: 
+keywords: ''
 author: curtand
 ms.author: curtand
 ms.date: 03/09/2018
@@ -11,11 +11,11 @@ ms.service: active-directory
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 166171dc8d8d694ef253ed6809c53b54577535e2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 98665ab215c98ea60273ce3aae2757cf20817a90
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Biztonságossá tétele a felhőalapú és hibrid telepítések privileged access Azure AD-ben
 
@@ -156,7 +156,7 @@ Győződjön meg arról, hogy minden felhasználó a rendszergazdai fiókok be v
 
 #### <a name="turn-on-password-synchronization"></a>Kapcsolja be a jelszó-szinkronizálás
 
-A jelszó-szinkronizálás lehetővé teszi az használt szinkronizálni a kivonatokat a felhasználói jelszó-kivonatok a helyszíni Active Directory-példányról egy felhőalapú Azure AD-példányban. Még akkor is, ha az Active Directory összevonási szolgáltatások (AD FS) vagy az egyéb identitás-szolgáltatóktól összevonási használata mellett dönt, akkor opcionálisan beállítása a jelszó-szinkronizálás biztonsági esetében a helyszíni infrastruktúrát, például AD vagy AD FS-kiszolgáló sikertelen vagy válik átmenetileg nem érhető el. Ez lehetővé teszi, hogy a felhasználók jelentkezhetnek be a szolgáltatás által ugyanazzal a jelszóval, amelyekkel jelentkezzen be a helyszíni AD-példányban. Emellett lehetővé teszi Identity Protection hitelesítő adatokkal való visszaélés észlelése ezen jelszókivonatait összehasonlítva az ismert megsértik, ha a felhasználó rendelkezik kihasználhatók a ugyanazt az e-mail címet és más szolgáltatások nem csatlakozott az Azure AD-jelszó jelszavakat.  További információkért lásd: [és az Azure AD Connect-szinkronizálás jelszó-szinkronizálás megvalósítása](./connect/active-directory-aadconnectsync-implement-password-synchronization.md).
+A jelszó-szinkronizálás lehetővé teszi az használt szinkronizálni a kivonatokat a felhasználói jelszó-kivonatok a helyszíni Active Directory-példányról egy felhőalapú Azure AD-példányban. Még akkor is, ha az Active Directory összevonási szolgáltatások (AD FS) vagy az egyéb identitás-szolgáltatóktól összevonási használata mellett dönt, akkor opcionálisan beállítása a jelszó-szinkronizálás biztonsági esetében a helyszíni infrastruktúrát, például AD vagy AD FS-kiszolgáló sikertelen vagy válik átmenetileg nem érhető el. Ez lehetővé teszi, hogy a felhasználók jelentkezhetnek be a szolgáltatás által ugyanazzal a jelszóval, amelyekkel jelentkezzen be a helyszíni AD-példányban. Emellett lehetővé teszi Identity Protection hitelesítő adatokkal való visszaélés észlelése ezen jelszókivonatait összehasonlítva az ismert megsértik, ha a felhasználó rendelkezik kihasználhatók a ugyanazt az e-mail címet és más szolgáltatások nem csatlakozott az Azure AD-jelszó jelszavakat.  További információkért lásd: [Jelszókivonat-szinkronizálást és az Azure AD Connect-szinkronizálás megvalósítása](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md).
 
 #### <a name="require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users"></a>Többtényezős hitelesítés (MFA) igényelnek a felhasználók minden kiemelt szerepkört és a kitett felhasználók
 

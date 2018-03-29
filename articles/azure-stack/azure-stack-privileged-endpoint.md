@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: mabrigg
-ms.openlocfilehash: fb4dea9832e781b2ec9f4cfa573b5a4f630188db
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f786d99718b82dba052909e566f1b0571701127e
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Használatával a privilegizált végpont Azure verem
 
@@ -76,6 +76,8 @@ Azt javasoljuk, hogy csatlakozni az EGP csak a hardver életciklus gazdagépről
 
       - **Felhasználónév**: formátumban adja meg a CloudAdmin fiók  **&lt; *Azure verem tartomány*&gt;\accountname**. (ASDK, a felhasználónév nem **azurestack\accountname**.) 
       - **Jelszó**: Adja meg ugyanazt a jelszót a AzureStackAdmin tartományi rendszergazdai fiók a telepítés során megadott.
+    > [!NOTE]
+    > Ha nem lehet kapcsolódni a ERCS végpont, próbáljon a első és második lépést újra az IP-címével egy ERCS virtuális Gépre, amelyre még nem már próbált kapcsolódni.
     
 3.  Miután csatlakozott, a kérdés módosul **[*IP-cím vagy ERCS virtuális gép neve*]: PS >** vagy **[azs-ercs01]: PS >**, attól függően, a környezet. Itt futtatása `Get-Command` elérhető parancsmagok listájának megtekintéséhez.
 

@@ -1,11 +1,11 @@
 ---
-title: "Virtuálisgép-bővítmény OMS Azure Linux |} Microsoft Docs"
-description: "A Linux virtuális gépet egy virtuálisgép-bővítmény használatával az OMS-ügynök telepítése."
+title: Virtuálisgép-bővítmény OMS Azure Linux |} Microsoft Docs
+description: A Linux virtuális gépet egy virtuálisgép-bővítmény használatával az OMS-ügynök telepítése.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: danielsollondon
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: c7bbf210-7d71-4a37-ba47-9c74567a9ea6
 ms.service: virtual-machines-linux
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/12/2018
+ms.date: 03/27/2018
 ms.author: danis
-ms.openlocfilehash: 5174e599f12314a657d142304ffec18fbff847b1
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5c0b7224d0f534661950117813e1a4f348810853
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="oms-virtual-machine-extension-for-linux"></a>Linux OMS virtuálisgép-bővítmény
 
@@ -195,10 +195,11 @@ A következő fájl kerül a bővítmény végrehajtás kimenetének:
 
 | Hibakód | Jelentés | Lehetséges művelet |
 | :---: | --- | --- |
+| 9 | Túl korán nevű engedélyezése | [Az Azure Linux ügynök frissítése](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) az elérhető legújabb verzióra. |
 | 10 | Virtuális gép már csatlakoztatva van a Naplóelemzési munkaterület | A virtuális gép csatlakozik a bővítmény sémában megadott munkaterület, stopOnMultipleConnections értéke HAMIS, a nyilvános beállításai, vagy távolítsa el ezt a tulajdonságot. Ez a virtuális gép lekérdezi számlázva után az egyes munkaterületeken van csatlakoztatva. |
 | 11 | A bővítmény megadott Érvénytelen konfiguráció | Kövesse a fenti példákban beállítása a telepítéshez szükséges minden tulajdonság értékével. |
 | 12 | A dpkg package manager zárolva van | Győződjön meg arról, hogy minden dpkg frissítési műveletek a számítógépen végzett, és próbálkozzon újra. |
-| 20 | Túl korán nevű engedélyezése | [Az Azure Linux ügynök frissítése](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) az elérhető legújabb verzióra. |
+| 20 | Az SCX csomag telepítési hiba |
 | 51 | Ezt a bővítményt a virtuális gép operációs rendszer nem támogatott | |
 | 55 | Nem lehet kapcsolódni a Microsoft Operations Management Suite szolgáltatással | Ellenőrizze, hogy a rendszernek van-e Internet-hozzáféréssel, vagy adtak meg, hogy érvényes HTTP-proxy. Ezenkívül ellenőrizze a helyességét a munkaterület azonosítóját. |
 

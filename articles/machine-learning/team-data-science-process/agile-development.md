@@ -1,23 +1,23 @@
 ---
-title: "Gyors fejlesztési tudományos adatok - projektek Azure Machine Learning |} Microsoft Docs"
-description: "Hogyan fejlesztők hajthat végre egy tudományos adatprojekthez egy rendszeres, a szabályozott verzióját és az együttműködési módot a projektcsapattal az Team tudományos folyamat használatával."
-documentationcenter: 
+title: Gyors fejlesztési tudományos adatok - projektek Azure Machine Learning |} Microsoft Docs
+description: Hogyan fejlesztők hajthat végre egy tudományos adatprojekthez egy rendszeres, a szabályozott verzióját és az együttműködési módot a projektcsapattal az Team tudományos folyamat használatával.
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: bradsev;
-ms.openlocfilehash: 686f751b241d49d116948711c683f4b504d5d5f9
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.author: bradsev
+ms.openlocfilehash: dbaf2df0f5572c9b269000c741f1d736a7521d73
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="agile-development-of-data-science-projects"></a>Az adatok tudományos projektek gyors fejlesztés
 
@@ -89,7 +89,7 @@ Ez a funkció a projekt tárház is társíthatja. Kattintson a **hivatkozás ho
 
 ## 4. <a name='AddStoryunderfeature-4'></a>A szolgáltatás szövegegység hozzáadása 
 
-A funkció a szövegek megadásával írhatja le a (szolgáltatás) projekt befejezéséhez szükséges fő lépéseken lehet hozzáadni. Egy új szövegegység hozzáadásához kattintson a  **+**  jelre a szolgáltatás várakozó nézetben.  
+A funkció a szövegek megadásával írhatja le a (szolgáltatás) projekt befejezéséhez szükséges fő lépéseken lehet hozzáadni. Egy új szövegegység hozzáadásához kattintson a **+** jelre a szolgáltatás várakozó nézetben.  
 
 ![4](./media/agile-development/4-sprint-add-story.png)
 
@@ -106,7 +106,7 @@ Egy meglévő tárház Ez a cikk a kattintva csatolhatja **+ Hozzáadás hivatko
 
 Feladatokat is, amely minden szövegegység szükséges részletes lépéseit. Miután egy szövegegység minden feladat befejeződött, a szöveg túl kell végrehajtani. 
 
-Adja hozzá a feladatot egy története, kattintson a  **+**  mellett a Szövegegység elem, jelölje be a bejelentkezési **feladat**, majd adja meg a részletes információkat, ennek a feladatnak az előugró ablakban.
+Adja hozzá a feladatot egy története, kattintson a **+** mellett a Szövegegység elem, jelölje be a bejelentkezési **feladat**, majd adja meg a részletes információkat, ennek a feladatnak az előugró ablakban.
 
 ![7](./media/agile-development/7-sprint-add-task.png)
 
@@ -117,11 +117,11 @@ A szolgáltatások, a szövegek és a feladatok létrehozását követően megte
 ![9](./media/agile-development/9-link-to-a-new-branch.png)
 
 
-## 6. <a name='set-up-agile-dsp-6'></a>Állítson be egy gyors TDSP munkahelyi sablont a Visual Studio Online-ban
+## 6. <a name='set-up-agile-dsp-6'></a> Állítson be egy gyors TDSP munkahelyi sablont a Visual Studio Online-ban
 
 Ez a cikk ismerteti, hogyan állíthat be egy gyors adatok tudományos folyamatsablont használ a TDSP adatok tudományos életciklusának szakaszait, és nyomon követi a Visual Studio Online (vso) munkaelemek. Az alábbi lépésein végighaladva beállítása az adatok tudományos-specifikus gyors példát lépéseket feldolgozni sablon *AgileDataScienceProcess* és tudományos munkaelemek a sablon alapján létrehozását mutatják be.
 
-### <a name="agile-data-science-process-template-setup"></a>Agilis adatok tudományos folyamat sablon beállítása
+### <a name="agile-data-science-process-template-setup"></a>Agile Data Science Process Template Setup
 
 1. Navigáljon a kiszolgálón-kezdőlap, **konfigurálása** -> **folyamat**.
 
@@ -178,14 +178,14 @@ Az adatok tudományos folyamat sablon létrehozása után hozhat létre és az a
     ![18](./media/agile-development/18-workitems.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A Git együttműködési kódolási](collaborative-coding-with-git.md) hajtsa végre az adatok tudományos projektek Git használatával, a megosztott kód fejlesztési keretrendszer együttműködési kód fejlesztésére és csatolása ezeket kódolás tevékenységekhez, hogy a gyors folyamattal tervezett munka ismerteti.
 
 Az alábbiakban további, a gyors folyamatokon forrásanyagokra mutató hivatkozásokat tartalmaz.
 
-- Agilis folyamat [https://www.visualstudio.com/en-us/docs/work/guidance/agile-process](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process)
-- Agilis folyamat munkaelem-típusok és a munkafolyamat [https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow)
+- Agilis folyamat   [https://www.visualstudio.com/en-us/docs/work/guidance/agile-process](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process)
+- Agilis folyamat munkaelem-típusok és a munkafolyamat   [https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow)
 
 
 Forgatókönyvek, amelyek azt mutatják, a folyamat lépései **meghatározott forgatókönyvek** is rendelkezésre állnak. Szerepel a listában, és kapcsolódik a miniatűr leírásokat a [példa forgatókönyvek](walkthroughs.md) cikk. Ezek bemutatják, hogyan lehet felhő, a helyszíni eszközök és szolgáltatások egyesítése munkafolyamat vagy csővezeték intelligens alkalmazás létrehozása. 

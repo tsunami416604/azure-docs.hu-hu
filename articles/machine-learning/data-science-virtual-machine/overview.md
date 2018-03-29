@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2017
 ms.author: gokuma
-ms.openlocfilehash: f62f6c4b2679457e8aaddb81e8a37622ca878ffc
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 8ee4af162ddaa64d4dbe83bebbb93e22409f041d
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>A Linux és a Windows Azure adatok tudományos virtuális gép bemutatása
 
@@ -29,7 +29,7 @@ Ez a témakör ismerteti, mire képes az adatok tudományos VM a, néhány fonto
 
 
 ## <a name="what-can-i-do-with-the-data-science-virtual-machine"></a>Milyen feladatokat lehet elvégezni az adatok tudományos virtuálisgép?
-Az adatok tudományos virtuális gép célja szakértelem szintek és a szerepkörök adatok szakemberei adja meg a tudományos adatok súrlódás szabad környezetben. Ez a virtuális gép, ha Ön volt összehasonlítható környezet saját töltött idő jelentős menti. Ehelyett a tudományos adatprojekthez azonnal elindítani az újonnan létrehozott Virtuálisgép-példány. 
+A cél az adatok tudományos virtuális gép (DSVM), hogy adja meg az adatok szakemberek minden szakértelem szinten, és minden szerepkör súrlódás ingyenes, előre konfigurált, és teljesen integrált adatok tudományos környezetben. Helyett egy hasonló munkaterület terítésével saját, megadhat egy DSVM - így meg lehet spórolni nap vagy akár _hét_ meg a telepítéshez, konfiguráláshoz és csomag kezelésével kapcsolatos folyamatokat. Miután a DSVM van rendelve, a tudományos adatok projektre azonnal megkezdheti a munkát.
 
 Az adatok tudományos virtuális gép tervezett és használati forgatókönyvek széles körének való munkához konfigurálva van. Méretezheti a környezet felfelé vagy lefelé, a projekt igényeinek változását. Biztosan tudni használni a választott nyelv a program tudományos feladatok. Más eszközök telepítése, és testre szabhatja a rendszer pontos igényeinek.
 

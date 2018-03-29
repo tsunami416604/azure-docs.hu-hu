@@ -1,6 +1,6 @@
 ---
-title: "Az Azure belső terheléselosztó áttekintése |} Microsoft Docs"
-description: "A belső terheléselosztók működéséről az Azure és a belső végpontok konfigurálásakor forgatókönyvek."
+title: Az Azure belső terheléselosztó áttekintése |} Microsoft Docs
+description: A belső terheléselosztók működéséről az Azure és a belső végpontok konfigurálásakor forgatókönyvek.
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 54e390dbdb07cb4c45c801b638099aa0dcc6db1a
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 0511165225f5a336291e86e0c504e60989933f3c
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="overview-of-azure-internal-load-balancer"></a>Az Azure belső terheléselosztó áttekintése
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+
 
 Az Azure belső Load Balancer (ILB) csak arra utasítja a erőforrásokat, amelyek belül egy felhőalapú szolgáltatás, vagy Azure-infrastruktúra eléréséhez használja, amely a VPN-forgalom. Ebben a tekintetben ILB eltér az internetre irányuló terheléselosztót. Azure-infrastruktúra korlátozza a hozzáférést, az elosztott terhelésű virtuális IP-cím (VIP) címét egy felhőalapú szolgáltatás vagy egy virtuális hálózathoz. Virtuális IP-címeket és a virtuális hálózatok soha nem érhetők el közvetlenül egy internet-végponthoz. Belső üzleti alkalmazások futtatása az Azure-ban, és Azure-ban vagy a helyszíni erőforrások érhetők el.
 
@@ -74,7 +74,7 @@ Az üzletági alkalmazások egy másik helyzet lehet egy--webhelyek közötti VP
 
 Belső terheléselosztó nem támogatja a SNAT. Ebben a cikkben SNAT port színleg forrás hálózati címfordítás forgatókönyveit hivatkozik. A load balancer készlet egy virtuális Gépet el kell érnie a megfelelő belső terheléselosztó előtér-IP-címét. Kapcsolódási hibák akkor történik, ha a folyamat az elosztott terhelésű a virtuális géphez, amelyből származik a folyamatot. Ezek a forgatókönyvek nem támogatottak a Példánynak. A proxy-stílusú terheléselosztó használandók.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Load Balancer Azure Resource Manager támogatása](load-balancer-arm.md)
 * [Első lépések egy internetre irányuló terheléselosztót konfigurálása](load-balancer-get-started-internet-arm-ps.md)

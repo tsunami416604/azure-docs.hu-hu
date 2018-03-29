@@ -1,23 +1,23 @@
 ---
-title: "Vonja össze az adatokat tudományos folyamat szerepköröket és feladatokat - Azure |} Microsoft Docs"
-description: "A legfontosabb összetevők, a személyzet szerepkörök és a kapcsolódó feladatok egy adatok tudományos csapatprojekthez áttekintését."
-documentationcenter: 
+title: Vonja össze az adatokat tudományos folyamat szerepköröket és feladatokat - Azure |} Microsoft Docs
+description: A legfontosabb összetevők, a személyzet szerepkörök és a kapcsolódó feladatok egy adatok tudományos csapatprojekthez áttekintését.
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: bradsev;
-ms.openlocfilehash: b502a586cdb7351d5b22c6b0db966723b8ebb7b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: bradsev
+ms.openlocfilehash: b92bb8e633aa859324f2ff46f5d76a5934007ccf
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Adatok tudományos folyamat szerepköröket és feladatokat
 
@@ -82,7 +82,7 @@ A következő műveleteket foglalja a csapat vezethet (vagy egy kijelölt team p
 - Ha VSTS kijelölt versioning és együttműködés a kód a gazdaplatform, hozzon létre egy **csapatprojekt** a csoport VSTS-kiszolgálón. Ellenkező esetben ez a feladat kimarad is.
 - Hozzon létre a **team projekt sablon tárház** csapatprojekt, és ez a csoport projekt sablon tárházból az a csoport kezelőjének vagy a meghatalmazott, és a kezelő által létrehozott kezdőérték alatt. 
 - Hozzon létre a **team segédprogram tárház**, és a csoport-specifikus segédprogramok felvétele a tárházba. 
-- (Választható) Hozzon létre  **[az Azure file storage](https://azure.microsoft.com/services/storage/files/)**  adategységeiről, amelyeket a teljes csoport számára hasznos lehet tárolására használható. Más csoport tagjai a felhő megosztott fájltároló lehet csatlakoztatni az analytics Asztalukat.
+- (Választható) Hozzon létre **[az Azure file storage](https://azure.microsoft.com/services/storage/files/)** adategységeiről, amelyeket a teljes csoport számára hasznos lehet tárolására használható. Más csoport tagjai a felhő megosztott fájltároló lehet csatlakoztatni az analytics Asztalukat.
 - (Választható) Az az Azure file storage való csatlakoztatása a **adatok tudományos virtuális gép** (DSVM) a csapat vezethet, és adja hozzá az adategységek rajta.
 - Állítsa be a **biztonsági ellenőrzést** a csoport tagjainak hozzáadása és konfigurálása a jogosultságait. 
 
@@ -130,7 +130,7 @@ A munkafolyamat lépésekből áll, amely három tevékenységek sorolhatók:
 
 A projekt végrehajtási munkafolyamat részletes lépéseit lásd: [végrehajtási adatok tudományos projektek](project-execution.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbiakban a szerepkörök és az adatok tudományos eljárással meghatározott feladatok részletes leírását mutató hivatkozásokat:
 

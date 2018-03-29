@@ -1,25 +1,25 @@
 ---
-title: "Azure Cosmos DB Gremlin-támogatás |} Microsoft Docs"
-description: "További információk az Apache TinkerPop, amely szolgáltatásairól, és lépések Gremlin nyelv és elérhető az Azure Cosmos DB"
+title: Azure Cosmos DB Gremlin-támogatás |} Microsoft Docs
+description: További tudnivalók az Apache TinkerPop Gremlin nyelvet. Ismerje meg, mely szolgáltatásait és lépéseket érhetők el az Azure Cosmos-Adatbázisba
 services: cosmos-db
-documentationcenter: 
-author: luisbosquez
+documentationcenter: ''
+author: LuisBosquez
 manager: jhubbard
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 6016ccba-0fb9-4218-892e-8f32a1bcc590
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: 
+ms.workload: ''
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: b32838dfaf83ea3acfb7125322bb99124370bd8e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 453e11c31a01b6ce8e77deda89725ecd53fd2db9
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB Gremlin graph-támogatás
 Azure Cosmos-adatbázis támogatja [Apache Tinkerpop](http://tinkerpop.apache.org) átjárás nyelvi diagramot [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps), vagyis egy grafikonon API graph entitások létrehozására és a graph lekérdezés műveletet hajt végre. A Gremlin nyelv segítségével (csúcsban és szélek) graph entitásokat hozhatnak létre, belül entitásokból tulajdonságainak módosítása, hajtsa végre a lekérdezéseket és traversals és entitások törlésére. 
@@ -35,10 +35,10 @@ Egy minta graph használatával megérteni, hogyan lekérdezések Gremlin lehet 
 
 Ehhez a diagramhoz tartozik a következő csúcspont ("címke" elnevezésű Gremlin):
 
-- Személyek: a diagramnak van három személyek, multiplexelés Thomas és Ben
-- Érdeklődési: az érdeklődési, ebben a példában bemutatjuk a játék
-- Eszközök: az eszközöket, amelyek személyek használata
-- Operációs rendszerek esetén: az operációs rendszerek, amelyek az eszközök futnak
+- Személyek: A diagramnak van három személyek, multiplexelés Thomas és Ben
+- Érdeklődési: Az érdeklődési, ebben a példában bemutatjuk a játék
+- Eszközök: Az eszközöket, amelyek személyek használata
+- Operációs rendszerek esetén: Az operációs rendszerek, amelyek az eszközök futnak
 
 Ezen keresztül a következő biztonsági típusok és címkéket entitások közötti kapcsolatok azt mutatják be:
 
@@ -165,45 +165,45 @@ Gremlin műveletek problémamentesen működik, amelyek több partíciót az Azu
 ## <a name="gremlin-steps"></a>Gremlin lépéseket
 Mostantól az Azure Cosmos DB által támogatott Gremlin lépéseket vizsgáljuk meg. A Gremlin teljes referenciáért lásd: [TinkerPop hivatkozás](http://tinkerpop.apache.org/docs/current/reference).
 
-| Lépés | Leírás | TinkerPop 3.2 dokumentáció | Megjegyzések |
-| --- | --- | --- | --- |
-| `addE` | Két csúcsban közötti él hozzáadása | [addE lépés](http://tinkerpop.apache.org/docs/current/reference/#addedge-step) | |
-| `addV` | Egy csúcsának hozzáadja a diagramhoz | [addV lépés](http://tinkerpop.apache.org/docs/current/reference/#addvertex-step) | |
-| `and` | Biztosítja, hogy a traversals ad vissza értéket | [lépés](http://tinkerpop.apache.org/docs/current/reference/#and-step) | |
-| `as` | A lépés modulátor változó hozzárendelése a kimenet egy lépés | [lépéseként](http://tinkerpop.apache.org/docs/current/reference/#as-step) | |
-| `by` | A lépés modulátor használt `group` és `order` | [lépés](http://tinkerpop.apache.org/docs/current/reference/#by-step) | |
-| `coalesce` | Az első átjárás, amely visszaadja az eredményt adja vissza | [a Coalesce lépés](http://tinkerpop.apache.org/docs/current/reference/#coalesce-step) | |
-| `constant` | Konstans értéket ad vissza. Együtt `coalesce`| [állandó lépés](http://tinkerpop.apache.org/docs/current/reference/#constant-step) | |
-| `count` | A count ad vissza a átjárás | [Count lépés](http://tinkerpop.apache.org/docs/current/reference/#count-step) | |
-| `dedup` | Az értékeket ad vissza, amelyben az ismétlődő értékek eltávolításával | [a deduplikáció lépés](http://tinkerpop.apache.org/docs/current/reference/#dedup-step) | |
-| `drop` | Elutasítja azokat az értékeket (csúcspont/oldal) | [közvetlen lépés](http://tinkerpop.apache.org/docs/current/reference/#drop-step) | |
-| `fold` | A korlát, amely kiszámítja a összesítés eredmények sújtó| [modellrészek lépés](http://tinkerpop.apache.org/docs/current/reference/#fold-step) | |
-| `group` | Csoportok az értékeket a megadott címkék alapján| [a csoport lépés](http://tinkerpop.apache.org/docs/current/reference/#group-step) | |
-| `has` | Tulajdonságok csúcsban és szélek szűrésére használatos. Támogatja a `hasLabel`, `hasId`, `hasNot`, és `has` Variant adattípusban. | [lépés rendelkezik](http://tinkerpop.apache.org/docs/current/reference/#has-step) | |
-| `inject` | Értékek behelyezése adatfolyam| [lépés beszúrása](http://tinkerpop.apache.org/docs/current/reference/#inject-step) | |
-| `is` | Egy logikai kifejezés használatával szűrő végrehajtásához használt | [lépés](http://tinkerpop.apache.org/docs/current/reference/#is-step) | |
-| `limit` | Használható korlátozására a átjárás elemek száma| [korlát lépés](http://tinkerpop.apache.org/docs/current/reference/#limit-step) | |
-| `local` | Helyi becsomagolja a segédlekérdezés hasonló átjárás szakasza | [helyi lépés](http://tinkerpop.apache.org/docs/current/reference/#local-step) | |
-| `not` | A negálás egy szűrő létrehozásához használt | [nem lépés](http://tinkerpop.apache.org/docs/current/reference/#not-step) | |
-| `optional` | A megadott átjárás eredményét adja vissza, ha az eredményt adja eredményül ellenkező esetben a hívó elemet adja vissza | [nem kötelező lépés](http://tinkerpop.apache.org/docs/current/reference/#optional-step) | |
-| `or` | Biztosítja a traversals közül legalább egy értéket ad vissza | [vagy lépés](http://tinkerpop.apache.org/docs/current/reference/#or-step) | |
-| `order` | A megadott rendezési sorrend eredményez értéket ad vissza | [rendelés lépés](http://tinkerpop.apache.org/docs/current/reference/#order-step) | |
-| `path` | A átjárás elérési útját adja vissza | [elérési út lépés](http://tinkerpop.apache.org/docs/current/reference/#path-step) | |
-| `project` | A tulajdonságokat a térkép projektek | [Projekt lépés](http://tinkerpop.apache.org/docs/current/reference/#project-step) | |
-| `properties` | A megadott címkék tulajdonságainak beolvasása | [Tulajdonságok lépés](http://tinkerpop.apache.org/docs/current/reference/#properties-step) | |
-| `range` | Úgy, hogy az adott értéktartományhoz| [tartomány lépés](http://tinkerpop.apache.org/docs/current/reference/#range-step) | |
-| `repeat` | A megadott számú alkalommal megismétel egy a lépést. Ismétlési használt | [Ismételje meg a](http://tinkerpop.apache.org/docs/current/reference/#repeat-step) | |
-| `sample` | A átjárás való minta eredmények használt | [a minta lépés](http://tinkerpop.apache.org/docs/current/reference/#sample-step) | |
+| Lépés | Leírás | TinkerPop 3.2 dokumentáció |
+| --- | --- | --- |
+| `addE` | Két csúcsban közötti él hozzáadása | [addE lépés](http://tinkerpop.apache.org/docs/current/reference/#addedge-step) |
+| `addV` | Egy csúcsának hozzáadja a diagramhoz | [addV lépés](http://tinkerpop.apache.org/docs/current/reference/#addvertex-step) |
+| `and` | Biztosítja, hogy a traversals ad vissza értéket | [lépés](http://tinkerpop.apache.org/docs/current/reference/#and-step) |
+| `as` | A lépés modulátor változó hozzárendelése a kimenet egy lépés | [lépéseként](http://tinkerpop.apache.org/docs/current/reference/#as-step) |
+| `by` | A lépés modulátor használt `group` és `order` | [lépés](http://tinkerpop.apache.org/docs/current/reference/#by-step) |
+| `coalesce` | Az első átjárás, amely visszaadja az eredményt adja vissza | [a Coalesce lépés](http://tinkerpop.apache.org/docs/current/reference/#coalesce-step) |
+| `constant` | Konstans értéket ad vissza. Együtt `coalesce`| [állandó lépés](http://tinkerpop.apache.org/docs/current/reference/#constant-step) |
+| `count` | A count ad vissza a átjárás | [Count lépés](http://tinkerpop.apache.org/docs/current/reference/#count-step) |
+| `dedup` | Az értékeket ad vissza, amelyben az ismétlődő értékek eltávolításával | [a deduplikáció lépés](http://tinkerpop.apache.org/docs/current/reference/#dedup-step) |
+| `drop` | Elutasítja azokat az értékeket (csúcspont/oldal) | [közvetlen lépés](http://tinkerpop.apache.org/docs/current/reference/#drop-step) |
+| `fold` | A korlát, amely kiszámítja a összesítés eredmények sújtó| [modellrészek lépés](http://tinkerpop.apache.org/docs/current/reference/#fold-step) |
+| `group` | Csoportok az értékeket a megadott címkék alapján| [a csoport lépés](http://tinkerpop.apache.org/docs/current/reference/#group-step) |
+| `has` | Tulajdonságok csúcsban és szélek szűrésére használatos. Támogatja a `hasLabel`, `hasId`, `hasNot`, és `has` Variant adattípusban. | [lépés rendelkezik](http://tinkerpop.apache.org/docs/current/reference/#has-step) |
+| `inject` | Értékek behelyezése adatfolyam| [lépés beszúrása](http://tinkerpop.apache.org/docs/current/reference/#inject-step) |
+| `is` | Egy logikai kifejezés használatával szűrő végrehajtásához használt | [lépés](http://tinkerpop.apache.org/docs/current/reference/#is-step) |
+| `limit` | Használható korlátozására a átjárás elemek száma| [korlát lépés](http://tinkerpop.apache.org/docs/current/reference/#limit-step) |
+| `local` | Helyi becsomagolja a segédlekérdezés hasonló átjárás szakasza | [helyi lépés](http://tinkerpop.apache.org/docs/current/reference/#local-step) |
+| `not` | A negálás egy szűrő létrehozásához használt | [nem lépés](http://tinkerpop.apache.org/docs/current/reference/#not-step) |
+| `optional` | A megadott átjárás eredményét adja vissza, ha az eredményt adja eredményül ellenkező esetben a hívó elemet adja vissza | [nem kötelező lépés](http://tinkerpop.apache.org/docs/current/reference/#optional-step) |
+| `or` | Biztosítja a traversals közül legalább egy értéket ad vissza | [vagy lépés](http://tinkerpop.apache.org/docs/current/reference/#or-step) |
+| `order` | A megadott rendezési sorrend eredményez értéket ad vissza | [rendelés lépés](http://tinkerpop.apache.org/docs/current/reference/#order-step) |
+| `path` | A átjárás elérési útját adja vissza | [elérési út lépés](http://tinkerpop.apache.org/docs/current/reference/#path-step) |
+| `project` | A tulajdonságokat a térkép projektek | [Projekt lépés](http://tinkerpop.apache.org/docs/current/reference/#project-step) |
+| `properties` | A megadott címkék tulajdonságainak beolvasása | [Tulajdonságok lépés](http://tinkerpop.apache.org/docs/current/reference/#properties-step) |
+| `range` | Úgy, hogy az adott értéktartományhoz| [tartomány lépés](http://tinkerpop.apache.org/docs/current/reference/#range-step) |
+| `repeat` | A megadott számú alkalommal megismétel egy a lépést. Ismétlési használt | [Ismételje meg a](http://tinkerpop.apache.org/docs/current/reference/#repeat-step) |
+| `sample` | A átjárás való minta eredmények használt | [a minta lépés](http://tinkerpop.apache.org/docs/current/reference/#sample-step) |
 | `select` | A átjárás el a projekt használt |  [Válassza ki a lépés](http://tinkerpop.apache.org/docs/current/reference/#select-step) | |
-| `store` | Összesítések nem blokkoló a átjárás a használt | [tároló lépés](http://tinkerpop.apache.org/docs/current/reference/#store-step) | |
-| `tree` | Egy fába csúcspont összesített görbék | [fa lépés](http://tinkerpop.apache.org/docs/current/reference/#tree-step) | |
-| `unfold` | Az iterátor unroll lépésként| [unfold lépés](http://tinkerpop.apache.org/docs/current/reference/#unfold-step) | |
-| `union` | Több traversals eredményeinek egyesítése| [a UNION lépés](http://tinkerpop.apache.org/docs/current/reference/#union-step) | |
-| `V` | A csúcsban és szélek közötti traversals szükséges lépéseket `V`, `E`, `out`, `in`, `both`, `outE`, `inE`, `bothE`, `outV`, `inV` , `bothV`, és `otherV` számára | [csúcspont lépései](http://tinkerpop.apache.org/docs/current/reference/#vertex-steps) | |
-| `where` | A átjárás származó eredmények szűrésére használatos. Támogatja a `eq`, `neq`, `lt`, `lte`, `gt`, `gte`, és `between` operátorok  | [Ha a lépés](http://tinkerpop.apache.org/docs/current/reference/#where-step) | |
+| `store` | Összesítések nem blokkoló a átjárás a használt | [tároló lépés](http://tinkerpop.apache.org/docs/current/reference/#store-step) |
+| `tree` | Egy fába csúcspont összesített görbék | [fa lépés](http://tinkerpop.apache.org/docs/current/reference/#tree-step) |
+| `unfold` | Az iterátor unroll lépésként| [unfold lépés](http://tinkerpop.apache.org/docs/current/reference/#unfold-step) |
+| `union` | Több traversals eredményeinek egyesítése| [a UNION lépés](http://tinkerpop.apache.org/docs/current/reference/#union-step) |
+| `V` | A csúcsban és szélek közötti traversals szükséges lépéseket `V`, `E`, `out`, `in`, `both`, `outE`, `inE`, `bothE`, `outV`, `inV` , `bothV`, és `otherV` számára | [csúcspont lépései](http://tinkerpop.apache.org/docs/current/reference/#vertex-steps) |
+| `where` | A átjárás származó eredmények szűrésére használatos. Támogatja a `eq`, `neq`, `lt`, `lte`, `gt`, `gte`, és `between` operátorok  | [Ha a lépés](http://tinkerpop.apache.org/docs/current/reference/#where-step) |
 
-Azure Cosmos adatbázis-írási optimalizált kezelő támogatja az automatikus indexeléshez levő összes tulajdonság belül és a csúcsban alapértelmezés szerint. Ezért lekérdezi tartománnyal lekérdezések rendezésére, szűrők, vagy bármely tulajdonság összesíti az index a feldolgozott és hatékony és kiszolgálása között. További információ a hogyan indexelési működéséről az Azure Cosmos Adatbázisba, lásd a dokumentum [séma-független indexelő](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf).
+Azure Cosmos DB által biztosított írási optimalizált motor támogatja az automatikus indexeléshez levő összes tulajdonság belül és a csúcsban alapértelmezés szerint. Ezért lekérdezi tartománnyal lekérdezések rendezésére, szűrők, vagy bármely tulajdonság összesíti az index a feldolgozott és hatékony és kiszolgálása között. További információ a hogyan indexelési működéséről az Azure Cosmos Adatbázisba, lásd a dokumentum [séma-független indexelő](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf).
 
 ## <a name="next-steps"></a>További lépések
 * Első lépések egy grafikonon alkalmazás felépítése [az SDK-k használatával](create-graph-dotnet.md) 
-* További információ [Azure Cosmos DB graph-támogatás](graph-introduction.md)
+* További információ [támogatási diagramot](graph-introduction.md) az Azure Cosmos-Adatbázisba

@@ -1,8 +1,8 @@
 ---
-title: "Index a következő cikket: az Azure Active Directoryban Alkalmazáskezelés |} A Microsoft Azure"
-description: "Ismerje meg, hogyan szabhatja testre a összevonási tanúsítványok lejárati dátuma és rövidesen lejáró tanúsítvány megújítása."
+title: 'Index a következő cikket: az Azure Active Directoryban Alkalmazáskezelés |} A Microsoft Azure'
+description: Ismerje meg, hogyan szabhatja testre a összevonási tanúsítványok lejárati dátuma és rövidesen lejáró tanúsítvány megújítása.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 5321b8e4-2afa-4dfe-8d53-4add7abb5ec8
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: ccbe48e4c7fdb25e003aedc048194e041865710e
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: ffb8e822644ba8f0bccc3e81edc4da6085ff3ec7
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Article Index for Application Management in Azure Active Directory (Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke)
 Ezen a lapon minden egyes dokumentum írása az alkalmazással kapcsolatos szolgáltatásokra vonatkozó az Azure Active Directory (Azure AD) átfogó listáját tartalmazza.
@@ -43,7 +43,7 @@ Ez a szakasz vonatkozó hibaelhárítási útmutatók gyors hozzáférést bizto
 | Összevont egyszeri bejelentkezést. |[Hibaelhárítási SAML-alapú egyszeri bejelentkezést.](active-directory-saml-debugging.md) |
 | Jelszó-alapú egyszeri bejelentkezést. |[A hozzáférési Panel bővítményét az Internet Explorer hibaelhárítása](active-directory-saas-ie-troubleshooting.md) |
 | Application Proxy |[Alkalmazás Proxy hibaelhárítási útmutatója](active-directory-application-proxy-troubleshoot.md) |
-| Egyszeri bejelentkezés közötti helyszíni AD és az Azure AD |[A jelszó-szinkronizálás hibaelhárítása](connect/active-directory-aadconnectsync-implement-password-synchronization.md#troubleshoot-password-synchronization)<br /><br />[A Jelszóvisszaírás hibaelhárítása](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
+| Egyszeri bejelentkezés közötti helyszíni AD és az Azure AD |[Hibaelhárítási Jelszókivonat-szinkronizálást](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md#troubleshoot-password-hash-synchronization)<br /><br />[A Jelszóvisszaírás hibaelhárítása](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | Dinamikus csoporttagság |[Dinamikus csoporttagság hibaelhárítása](active-directory-accessmanagement-troubleshooting.md) |
 
 ## <a name="single-sign-on-sso"></a>Egyszeri bejelentkezés (SSO)
@@ -95,7 +95,7 @@ Ha a szervezet egy Windows Server Active Directory a helyszíni és a felhőben 
 |:---:| --- |
 | Az egyszeri bejelentkezésre vonatkozó beállításokat a áttekintése érhető el az Azure AD Connect, valamint a hibrid környezetek kezeléséről |[A felhasználói bejelentkezési beállítások az Azure AD Connect](active-directory-aadconnect-user-signin.md) |
 | Általános útmutatást mindkét környezetek kezelése a helyszíni Active Directory és az Azure Active Directory |[Az Azure AD hibrid identitáskezelési elrendezésével kapcsolatos szempontok](active-directory-hybrid-identity-design-considerations-overview.md)<br /><br />[A helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md) |
-| Útmutatás a jelszó-szinkronizálás engedélyezése az egyszeri bejelentkezés használatával |[Jelszó-szinkronizálás megvalósítása az Azure AD Connect](active-directory-aadconnectsync-implement-password-synchronization.md)<br /><br />[Jelszó-szinkronizálás hibaelhárítása](https://support.microsoft.com/en-us/kb/2855271) |
+| Útmutatás a jelszó-szinkronizálás engedélyezése az egyszeri bejelentkezés használatával |[Jelszó-szinkronizálás megvalósítása az Azure AD Connect](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)<br /><br />[Jelszó-szinkronizálás hibaelhárítása](https://support.microsoft.com/en-us/kb/2855271) |
 | Útmutatás a Jelszóvisszaírás engedélyezése az egyszeri bejelentkezés használatával |[Az Azure AD-jelszókezelés első lépések](active-directory-passwords-getting-started.md)<br /><br />[A jelszóvisszaíró hibaelhárítása](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | Útmutatás az egyszeri bejelentkezés engedélyezése harmadik fél Identitásszolgáltatók használatával |[Kompatibilis harmadik fél Identitásszolgáltatók engedélyezése egyszeri bejelentkezéshez használható listája](https://aka.ms/ssoproviders) |
 | Hogyan Windows 10-felhasználók számára is teszik az egyszeri bejelentkezés az Azure AD Join keresztül |[Csatlakozás a felhő szolgáltatásainak kiterjesztése Windows 10 eszközökön az Azure Active Directory használatával](active-directory-azureadjoin-overview.md) |

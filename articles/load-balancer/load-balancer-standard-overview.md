@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/21/2018
+ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: d7ee74a19f806faed0bcfcfa5f1c5de3937d9f31
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 15bbd32d982bdefc5665421b828ce0c8234b7257
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Az Azure Load Balancer szabványos áttekintése
 
@@ -30,7 +30,7 @@ Ez a cikk szabványos terheléselosztó összpontosít.  Azure Load Balancer ál
 
 Standard terheléselosztó egy új terheléselosztó termék összes TCP és UDP-alkalmazások egy bővített és részletesebb szolgáltatás alapvető terheléselosztó beállításához.  Miközben sok a hasonlóság, fontos Ismerkedjen meg a különbségek ebben a cikkben leírt módon.
 
-Használhat szabványos terhelés terheléselosztó szabványos nyilvános vagy belső terheléselosztó. És egy virtuális gépet egy nyilvános és egy belső terheléselosztó erőforrás lehet csatlakoztatni.
+Standard terheléselosztó nyilvános vagy belső terheléselosztó használható. És egy virtuális gépet egy nyilvános és egy belső terheléselosztó erőforrás lehet csatlakoztatni.
 
 A Load Balancer erőforrás funkciók mindig egész időtúllépést, egy szabályt, a állapotmintáihoz és a háttér-készlet definíciójának beolvasása.  Egy erőforrás több szabály is tartalmazhat. A háttérkészlet virtuális gépek elhelyezheti a háttérkészlet, a virtuális gép hálózati erőforrás megadásával.  A virtuálisgép-méretezési csoport esetén ez a paraméter továbbítja a hálózati profil, és kibontva.
 
@@ -175,6 +175,9 @@ Standard terheléselosztó erőforrások módosítja, és a szabványos nyilván
 ## <a name="migration-between-skus"></a>SKU közötti áttelepítés
 
 Termékváltozat nem változtatható. Kövesse az ebben a szakaszban található áthelyezése egy erőforrás SKU másik.
+
+>[!IMPORTANT]
+>Tekintse át a termékváltozatok közötti különbségek megismeréséhez, és gondosan kell vizsgálni a forgatókönyv a teljes dokumentumot.  Szükség lehet további módosításokat a forgatókönyv igazíthatók.
 
 ### <a name="migrate-from-basic-to-standard-sku"></a>Az alapvető át Standard Termékváltozat
 

@@ -1,11 +1,11 @@
 ---
-title: "A Service Fabric az alkalmazásfrissítés |} Microsoft Docs"
-description: "Ez a cikk bemutatja azokat a Service Fabric-alkalmazás, beleértve a választhatja frissítési módok és teljesítő állapot-ellenőrzést frissítése."
+title: A Service Fabric az alkalmazásfrissítés |} Microsoft Docs
+description: Ez a cikk bemutatja azokat a Service Fabric-alkalmazás, beleértve a választhatja frissítési módok és teljesítő állapot-ellenőrzést frissítése.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 803c9c63-373a-4d6a-8ef2-ea97e16e88dd
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 765931d8a888432e0cc77ff86d597b6e2a029a2a
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 60bbd75496b6e835a76edb4251aac6ea249187b3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric-alkalmazás frissítése
 Az Azure Service Fabric-alkalmazás szolgáltatások gyűjteménye. A frissítés során a Service Fabric összehasonlítja az új [alkalmazásjegyzék](service-fabric-application-and-service-manifests.md) korábbi verziójával, és meghatározza, hogy az alkalmazás igényelnek frissítést szolgáltatások. A Service Fabric a verziója, a szolgáltatás szereplő számok akkor jelentkezik, az előző verziójában a verziószámok hasonlítja össze. Ha a szolgáltatás nem változott, hogy a szolgáltatás nincs frissítve.
@@ -57,6 +57,13 @@ Az alkalmazásfrissítés vissza lesz állítva, alapértelmezett paramétereket
 
 > [!TIP]
 > A [EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md) kell lennie a fürt konfigurációs beállítás *igaz* szabályok 2 engedélyezése) és 3) (alapértelmezett frissítési és törlési) felett. Ez a funkció a Service Fabric 5.5-ös verzió kezdve támogatott.
+
+## <a name="upgrading-multiple-applications-with-https-endpoints"></a>A HTTPS-végpontnak több alkalmazás frissítése
+Ügyeljen arra, hogy használni szeretné a **ugyanazt a portot** HTTP használata esetén egy alkalmazás különböző példányai**S**. A hiba oka, hogy a Service Fabric nem lehet frissíteni a tanúsítvány az alkalmazás példányai közül. Ha például 1 vagy alkalmazás 2 mindkét alkalmazás szeretné, hogy az 1. tanúsítvány frissítése a cert 2. Ha a frissítés történik, a Service Fabric előfordulhat, hogy rendelkezik kiüríti az 1. tanúsítvány regisztrálása a következőben: http.sys annak ellenére, hogy a többi alkalmazás továbbra is használja. Ennek megelőzése érdekében a Service Fabric észleli, hogy már egy másik alkalmazáspéldány regisztrálva a porton (mert a http.sys) a tanúsítványhoz, és a művelet sikertelen lesz.
+
+Ezért a Service Fabric nem támogatja a frissítést két különböző szolgáltatásokat **ugyanazt a portot** másik alkalmazási esetekben. Ez azt jelenti ugyanazt a tanúsítványt nem használhat a különböző szolgáltatások ugyanazt a portot. Ha egy megosztott tanúsítvány rendelkezik ugyanazon a porton van szüksége, győződjön meg arról, hogy a szolgáltatások egy elhelyezési korlátozás rendelkező különböző gépeken kerülnek szeretné. Vagy fontolja meg a Service Fabric dinamikus portok lehetőség szerint minden egyes szolgáltatás minden egyes alkalmazás-példányban. 
+
+Ha megjelenik egy frissítés sikertelen lesz, a https, hiba, figyelmeztetés, amely szerint "A Windows HTTP-kiszolgáló API nem támogatja több tanúsítvány egy portot használó alkalmazásokhoz."
 
 ## <a name="application-upgrade-flowchart"></a>Alkalmazás frissítési folyamatábra
 Az alábbi folyamatábra azt segítenek megérteni a frissítési folyamat Service Fabric-alkalmazás. A folyamatot ismerteti, hogyan az időtúllépéseket, beleértve a *HealthCheckStableDuration*, *HealthCheckRetryTimeout*, és *UpgradeHealthCheckInterval*, Súgó Ha a frissítés egy frissítési tartomány tekinthető sikeres vagy hibát vezérlő.

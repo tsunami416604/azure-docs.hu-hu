@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: b4c977b54c87276bd4b168bc56e70f3b918e6634
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 983c2c8aeb4c9d37213061dd70d6d64bae3de9d7
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health – gyakori kérdések
 Ez a cikk kapcsolatos gyakori kérdések (GYIK) Azure Active Directory (Azure AD) Connect Health rájuk adott válaszokat tartalmazza. Ezeket a gyakori kérdések a szolgáltatás, amely tartalmazza a számlázási modell, képességek, korlátozások és támogatás használatával kapcsolatos kérdésekre foglalkozik.
@@ -178,6 +178,10 @@ CheckForMS17-010
 **K: Miért does a PowerShell-parancsmag <i>Get-MsolDirSyncProvisioningError</i> kevesebb szinkronizálási hibák megjelenítése az eredményben?**
 
 <i>Get-MsolDirSyncProvisioningError</i> kiépítési hibák DirSync csak adja vissza. Amellett, hogy a Connect Health portálon is látható más szinkronizálási exportálási hibák például típusok. Ez megfelel az Azure AD Connect különbözeti eredménye. Tudjon meg többet az [Azure AD Connect szinkronizálási hibák](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors).
+
+**K: Miért van az AD FS naplózás nem generált?**
+
+Használjon PowerShell-parancsmag <i>Get-AdfsProperties - AuditLevel</i> ellenőrizze a naplókat a rendszer nem letiltott állapot. Tudjon meg többet az [az AD FS-naplók](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)
 
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások

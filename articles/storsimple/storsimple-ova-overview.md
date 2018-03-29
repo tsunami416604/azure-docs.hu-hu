@@ -1,24 +1,24 @@
 ---
-title: "A Microsoft Azure StorSimple virtuális tömb áttekintése |} Microsoft Docs"
-description: "A StorSimple virtuális tömb, egy integrált tárolási megoldás, amely kezeli a Microsoft Azure felhőalapú tárolást és a helyszíni virtuális tömb közötti tárolási feladatok elvégzéséről ismerteti."
+title: A Microsoft Azure StorSimple virtuális tömb áttekintése |} Microsoft Docs
+description: A StorSimple virtuális tömb, egy integrált tárolási megoldás, amely kezeli a Microsoft Azure felhőalapú tárolást és a helyszíni virtuális tömb közötti tárolási feladatok elvégzéséről ismerteti.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 169c639b-1124-46a5-ae69-ba9695525b77
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 10/16/2017
+ms.date: 03/28/2018
 ms.author: alkohli
-ms.openlocfilehash: b9a5797751fa970c569c93e5efe300d4d74319ce
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: db06614ebd7dee4b0a320737ea8f575b3a3be70f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>A StorSimple virtuális tömb bemutatása
 
@@ -52,7 +52,7 @@ A következő táblázat összefoglalja a StorSimple virtuális tömb fontos szo
 | A tárolási rétegek |Helyi hipervizor tárolás és a felhő |
 | A fájlmegosztás méretének |Szintezett: legfeljebb 20 TB; helyileg rögzített: legfeljebb 2 TB |
 | Kötet mérete |Rétegzett: 500 GB-tól 5 TB; helyileg rögzített: 50 GB-os 200 GB <br> A rétegzett kötetek maximális helyi lefoglalás 200 GB-os. |
-| A pillanatképek |Összeomlás-konzisztens |
+| Pillanatképek |Összeomlás-konzisztens |
 | Elemszintű helyreállítás |Igen; felhasználók visszaállíthatják a megosztások |
 
 ## <a name="why-use-storsimple"></a>StorSimple miért érdemes használni?
@@ -90,7 +90,7 @@ A StorSimple virtuális tömb a magas rendelkezésre állást igénylő munkater
 
 A StorSimple virtuális tömbjének értéke a következő munkafolyamatok különösen alkalmas:
 
-* [Felhőalapú tárolók kezelése](#cloud-based-storage-management)
+* [felhőalapú tárolók kezelése](#cloud-based-storage-management)
 * [Független hely biztonsági mentése](#location-independent-backup)
 * [Adatok védelme és katasztrófa-helyreállítás](#data-protection-and-disaster-recovery)
 
@@ -136,7 +136,7 @@ A virtuális tömb a következő funkciókkal rendelkezik:
 > [!NOTE]
 > Egy virtuális tömb nem bonthatók ki. Ezért fontos a megfelelő tárolót létesíteni, a virtuális tömb létrehozásakor.
 
-### <a name="storsimple-device-manager-service"></a>A StorSimple eszköz kezelő szolgáltatás
+### <a name="storsimple-device-manager-service"></a>StorSimple-eszközkezelő szolgáltatás
 
 Microsoft Azure StorSimple webes felhasználói felületet, a StorSimple eszköz kezelő szolgáltatás, amelynek segítségével központilag kezelheti a StorSimple tárolási biztosít. A StorSimple Device Manager szolgáltatás segítségével a következő feladatokat:
 
@@ -206,6 +206,15 @@ StorSimple deduplikációs és az adatok tömörítésének használatával tov�
 
 StorSimple adatbiztonsági funkciók lehetővé teszik a igény szerinti biztonsági mentések létrehozását. Emellett egy alapértelmezett biztonsági mentés ütemezése biztosítja, hogy az adatokról napi fel. Biztonsági mentés készül növekményes pillanatképet, amely a felhőben vannak tárolva formájában. Jegyezze fel a módosítások csak az utolsó biztonsági mentés óta, pillanatképeket hozható létre és gyorsan visszaállítva. Ezeket a pillanatképeket különösen fontos a vész-helyreállítási eljárással lehet, mert cserélje le a másodlagos tárterületre rendszerek (például a szalagos biztonsági mentés), és lehetővé teszik az adatok helyreállítását a datacenter vagy a másodlagos helyek szükség esetén.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="gdpr-compliance"></a>GDPR megfelelőségi
+[Általános Data Protection szabályozás (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) Európai Unió adatok védelmét és adatvédelmi törvény van. A GDPR arról, hogyan gyűjtésére, tárolására és személyes adatok sok követelményeket tartalmaz. A GDPR szabályok írnak a vállalatok, állami intézményekhez és más szervezetek, amelyek EU működik és gyűjtése, Európa lakosai kötött adatok elemzése.
+
+A StorSimple Device Manager virtuális adatsorozathoz megfelelő GDPR. Ha személyes adatok gyűjtése történik, és jelennek meg a szolgáltatás két fő példány van:
+ - Riasztás, ha vannak konfigurálva a felhasználók e-mail címét, a felhasználói beállítások. Ezt az információt a rendszergazda által törölhető. 
+ - A fájlmegosztásokon tárolt adatok elérő felhasználókat. Azoknak a felhasználóknak, akik hozzáférhetnek a megosztott adatok jelenik meg, és exportálhatja. Ez a lista is törlődik. a megosztások törlésekor.
+
+További információkért tekintse át a [Microsoft Privacy Policy házirend adatvédelmi központ](https://www.microsoft.com/trustcenter).
+
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan [készítse elő a virtuális tömb portal](storsimple-virtual-array-deploy1-portal-prep.md).

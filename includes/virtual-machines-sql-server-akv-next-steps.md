@@ -1,10 +1,10 @@
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután engedélyezte az Azure Key Vault-integráció, az SQL virtuális gép az SQL Server titkosítási engedélyezhető. Először akkor a virtuális gépen belül a kulcstartót aszimmetrikus kulcsok és az SQL Serverben a szimmetrikus kulcs létrehozásához. Ezután lesz T-SQL utasítást, hogy engedélyezze a titkosítást az adatbázisok és a biztonsági mentések végrehajtásához.
 
 Kihasználhatja a titkosítási több űrlap van:
 
-* [Az átlátható adattitkosítás (TDE)](https://msdn.microsoft.com/library/bb934049.aspx)
+* [Transparent Data Encryption (TDE)](https://msdn.microsoft.com/library/bb934049.aspx)
 * [Titkosított biztonsági mentések](https://msdn.microsoft.com/library/dn449489.aspx)
 * [Oszlop a blokkszintű titkosítás (törlése)](https://msdn.microsoft.com/library/ms173744.aspx)
 
@@ -18,40 +18,26 @@ Minden egyes példa alapján a két Előfeltételek: a key vaultban aszimmetriku
 USE master;
 GO
 
-sp_configure [show advanced options], 1;
-GO
-RECONFIGURE;
-GO
-
--- Enable EKM provider
-sp_configure [EKM provider enabled], 1;
-GO
-RECONFIGURE;
-
---create provider
-CREATE CRYPTOGRAPHIC PROVIDER AzureKeyVault_EKM_Prov
-FROM FILE = 'C:\Program Files\SQL Server Connector for Microsoft Azure Key Vault\Microsoft.AzureKeyVaultService.EKM.dll';
-GO
-
 --create credential
+--The <<SECRET>> here requires the <Application ID> (without hyphens) and <Secret> to be passed together without a space between them.
 CREATE CREDENTIAL sysadmin_ekm_cred
     WITH IDENTITY = 'keytestvault', --keyvault
     SECRET = '<<SECRET>>'
 FOR CRYPTOGRAPHIC PROVIDER AzureKeyVault_EKM_Prov;
 
 
---must have sysadmin
-ALTER LOGIN [TDE_Login]
+--Map the credential to a SQL login that have sysadmin permissions, this will allows the SQL login to access the key vault when creating the asymmetric key in the next step.
+ALTER LOGIN [SQL_Login]
 ADD CREDENTIAL sysadmin_ekm_cred;
 
 
 CREATE ASYMMETRIC KEY CONTOSO_KEY
 FROM PROVIDER [AzureKeyVault_EKM_Prov]
-WITH PROVIDER_KEY_NAME = 'keytestvault',  --key name
+WITH PROVIDER_KEY_NAME = 'KeyName_in_KeyVault',  --The key name here requires the key we created in the key vault
 CREATION_DISPOSITION = OPEN_EXISTING;
 ```
 
-### <a name="transparent-data-encryption-tde"></a>Az átlátható adattitkosítás (TDE)
+### <a name="transparent-data-encryption-tde"></a>Transparent Data Encryption (TDE)
 
 1. TDE az adatbázismotor által használandó SQL Server-bejelentkezés létrehozásával, majd a hitelesítő adatok hozzáadása.
 
@@ -60,14 +46,14 @@ CREATION_DISPOSITION = OPEN_EXISTING;
    -- Create a SQL Server login associated with the asymmetric key
    -- for the Database engine to use when it loads a database
    -- encrypted by TDE.
-   CREATE LOGIN TDE_Login
+   CREATE LOGIN EKM_Login
    FROM ASYMMETRIC KEY CONTOSO_KEY;
    GO
 
    -- Alter the TDE Login to add the credential for use by the
    -- Database Engine to access the key vault
-   ALTER LOGIN TDE_Login
-   ADD CREDENTIAL Azure_EKM_TDE_cred;
+   ALTER LOGIN EKM_Login
+   ADD CREDENTIAL Azure_EKM_cred;
    GO
    ```
 
@@ -96,14 +82,14 @@ CREATION_DISPOSITION = OPEN_EXISTING;
    USE master;
    -- Create a SQL Server login associated with the asymmetric key
    -- for the Database engine to use when it is encrypting the backup.
-   CREATE LOGIN Backup_Login
+   CREATE LOGIN EKM_Login
    FROM ASYMMETRIC KEY CONTOSO_KEY;
    GO
 
    -- Alter the Encrypted Backup Login to add the credential for use by
    -- the Database Engine to access the key vault
-   ALTER LOGIN Backup_Login
-   ADD CREDENTIAL Azure_EKM_Backup_cred ;
+   ALTER LOGIN EKM_Login
+   ADD CREDENTIAL Azure_EKM_cred ;
    GO
    ```
 

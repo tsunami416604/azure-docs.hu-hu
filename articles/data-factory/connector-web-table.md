@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: jingwang
-ms.openlocfilehash: f4755d6cce0787a411fee7d32c887ae71c134c94
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f1fa79ed32969f5087107d6105fd2f4baf7640e3
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával webes táblából
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -143,6 +143,8 @@ Adatok másolása webes tábla, állítsa be a forrás típusa a másolási tev�
 ```
 
 ## <a name="get-index-of-a-table-in-an-html-page"></a>Egy tábla indexének lekérése egy HTML-weblap
+
+Az index egy tábla, amelyen konfigurálnia kell a beolvasandó [adatkészlet tulajdonságai](#dataset-properties), pl. Excel 2016 pontként használható az eszköz az alábbiak szerint:
 
 1. Indítsa el **Excel 2016** majd átváltása a **adatok** fülre.
 2. Kattintson a **új lekérdezés** eszköztárán mutasson **egyéb forrásokból származó** kattintson **a webes**.

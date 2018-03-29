@@ -1,6 +1,6 @@
 ---
-title: "Névkeresési DNS az Azure-szolgáltatásokhoz |} Microsoft Docs"
-description: "Az Azure-ban tárolt szolgáltatások DNS-névlekérdezés konfigurálása"
+title: Névkeresési DNS az Azure-szolgáltatásokhoz |} Microsoft Docs
+description: Az Azure-ban tárolt szolgáltatások DNS-névlekérdezés konfigurálása
 services: dns
 documentationcenter: na
 author: KumudD
@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: kumud
-ms.openlocfilehash: 0c5d12e9d6b5ddbee2a930e4e537b8180b7a9c7b
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: bba2d75ed760a6e4eef2caacb0bb5924680b1f4b
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Az Azure-ban tárolt szolgáltatások címfeloldási DNS konfigurálása
 
@@ -245,9 +245,9 @@ Nem. Az Azure jelenleg támogatja a fordított DNS csak az IPv4-alapú PublicIpA
 
 ### <a name="can-i-send-emails-to-external-domains-from-my-azure-compute-services"></a>Lehet küldeni e-mailek külső tartományokhoz a saját Azure számítási szolgáltatások?
 
-Nem. [Az Azure Compute szolgáltatások nem támogatják a külső tartományokkal az e-maileket küldő](https://blogs.msdn.microsoft.com/mast/2016/04/04/sending-e-mail-from-azure-compute-resource-to-external-domains/)
+A technikai e-mailek küldése közvetlenül egy Azure-telepítés a függ előfizetés-típus. Előfizetés típusa, függetlenül a Microsoft azt javasolja, megbízható mail relay-szolgáltatások segítségével a kimenő e-mailek küldését. További részletekért lásd: [fokozott Azure biztonsági az e-mailt küld – November 2017 frissítés](https://blogs.msdn.microsoft.com/mast/2017/11/15/enhanced-azure-security-for-sending-emails-november-2017-update/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A címfeloldási DNS-további információkért lásd: [Wikipedia névkeresési DNS](http://en.wikipedia.org/wiki/Reverse_DNS_lookup).
 <br>

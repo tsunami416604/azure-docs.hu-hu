@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/04/2017
 ms.author: renash
-ms.openlocfilehash: cb44f1d456ec12b7fd21e397b749117942560f05
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e203787bffa80b324508f7df8f8e7a8c62355695
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="frequently-asked-questions-about-azure-files"></a>Azure-fájlok kapcsolatos gyakori kérdések
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló a felhőben, amelyek elérhetők a szabványos [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (más néven Common Internet File System vagy CIFS). Akkor is csatlakoztathatja az Azure fájlmegosztások egyidejűleg felhőalapú vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. Azure fájlmegosztásokat Windows kiszolgáló gépen a gyors hozzáférés megközelíti az adatok helyének Azure fájlszinkronizálás (előzetes verzió) segítségével képes gyorsítótárazni.
@@ -232,7 +232,7 @@ Ebben a cikkben megválaszolunk Azure fájlok szolgáltatásokat és funkciókat
 ## <a name="backup"></a>Biztonsági mentés
 * <a id="backup-share"></a>
 **Készítsen biztonsági másolatot az Azure-fájl megosztása?**  
-    Rendszeres használható [pillanatképek megosztása](storage-how-to-use-files-snapshots.md) véletlen törlés elleni védelem. Is használhatja AzCopy, Robocopy, vagy egy külső biztonsági mentési eszköz képes biztonsági mentést egy csatlakoztatott fájlmegosztást. 
+    Rendszeres használható [pillanatképek megosztása](storage-snapshots-files.md) véletlen törlés elleni védelem. Is használhatja AzCopy, Robocopy, vagy egy külső biztonsági mentési eszköz képes biztonsági mentést egy csatlakoztatott fájlmegosztást. 
 
 ## <a name="share-snapshots"></a>A pillanatképek megosztása
 ### <a name="share-snapshots-general"></a>Pillanatképek megosztása: általános

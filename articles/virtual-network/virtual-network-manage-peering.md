@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: f42a23a8d4e6a90f104c97d4a1cbdef5343e585e
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 5cd486d9953979fe8aa9c8354c5fad5a9e11af1e
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Létrehozása, módosítása vagy törlése a virtuális hálózati társviszony-létesítés
 
@@ -144,7 +144,7 @@ Ha azt szeretné, hogy a virtuális hálózatok néha kommunikációra, de nem m
 - Mindkét virtuális hálózat társviszony-létesítés erőforrásokat is kommunikálhatnak egymással sávszélesség és a késés, mintha ugyanahhoz a virtuális hálózatban. Minden virtuális gép méretét azonban rendelkezik saját maximális hálózati sávszélesség. Ha többet szeretne megtudni a különböző méretű virtuális gépek maximális hálózati sávszélességével kapcsolatban, olvassa el a [windowsos](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy a [linuxos](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépek méretéről szóló cikkeket.
 - Virtuális hálózatok Resource Manager használatával telepített az ugyanazon vagy másik előfizetések is partnert.
 - Különböző üzembe helyezési modellel, amelyek az ugyanazon vagy másik előfizetésekhez keresztül telepített virtuális hálózatot is partnert. 
-- Az előfizetések, amelyek mindkét virtuális hálózat az azonos Azure Active Directory-bérlő társítva kell lennie. Ha még nem rendelkezik az AD-bérlő, akkor gyorsan [hozzon létre egyet](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#start-from-scratch). Használhatja a [VPN-átjáró](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) két virtuális hálózatokat társított Active Directory különböző bérlők különböző előfizetésekhez csatlakozni.
+- Az előfizetések, amelyek mindkét virtuális hálózat az azonos Azure Active Directory-bérlő társítva kell lennie. Ha még nem rendelkezik az AD-bérlő, akkor gyorsan [hozzon létre egyet](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json##create-a-new-azure-ad-tenant). Használhatja a [VPN-átjáró](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) két virtuális hálózatokat társított Active Directory különböző bérlők különböző előfizetésekhez csatlakozni.
 - Egy virtuális hálózatot is társítottak, egy másik virtuális hálózathoz, és is csatlakoztatható egy Azure virtuális hálózati átjárót egy másik virtuális hálózathoz. Ha a virtuális hálózatok társviszony-létesítés és egy átjárón keresztül csatlakoznak, a virtuális hálózatok közötti forgalom áthaladó a társviszony-létesítési konfiguráció ahelyett, hogy az átjáró.
 - Egy névleges díj vonatkozik a társhálózati viszonyt használó bejövő és kimenő forgalomra. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/virtual-network) olvasható.
 

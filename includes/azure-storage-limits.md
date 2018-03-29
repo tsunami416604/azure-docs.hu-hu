@@ -4,9 +4,9 @@
 | A maximális tárolókapacitás fiók | 500 TiB<sup>2</sup> |
 | Blob tárolók, blobok, fájlmegosztások, táblák, üzenetsorok, entitásokat vagy tárfiók üzenetek maximális száma | Korlátlan |
 | A tárfiók / maximális lekérdezési gyakorisága | 20 000 kérelmek / másodperc<sup>2</sup> |
-| Maximális érkező<sup>3</sup> tárolási fiókonként (US régió) | Ha a Georedundáns/ZRS 10 GB/s<sup>4</sup> engedélyezve van, az LRS 20 GB/s<sup>2</sup> |
+| Maximális érkező<sup>3</sup> tárolási fiókonként (US régió) | Ha a ZRS/RA-GRS 10 GB/s<sup>4</sup> engedélyezve van, az LRS 20 GB/s<sup>2</sup> |
 | Maximális kilépő<sup>3</sup> tárolási fiókonként (US régió) | Ha a ZRS RA-GRS vagy GRS 20 GB/s<sup>4</sup> engedélyezve van, az LRS 30 GB/s<sup>2</sup> |
-| Maximális érkező<sup>3</sup> tárolási fiókonként (Amerikai Egyesült régiókban) | Ha a Georedundáns/ZRS 5 GB/s<sup>4</sup> engedélyezve van, az LRS 10 GB/s<sup>2</sup> |
+| Maximális érkező<sup>3</sup> tárolási fiókonként (Amerikai Egyesült régiókban) | Ha a ZRS/RA-GRS 5 GB/s<sup>4</sup> engedélyezve van, az LRS 10 GB/s<sup>2</sup> |
 | Maximális kilépő<sup>3</sup> tárolási fiókonként (Amerikai Egyesült régiókban) | Ha a ZRS RA-GRS vagy GRS 10 GB/s<sup>4</sup> engedélyezve van, az LRS 15 GB/s<sup>2</sup> |
 
 <sup>1</sup>magában foglalja a Standard és prémium szintű storage-fiókok. Ha több mint 200 tárfiókra van szüksége, nyújtson be egy kérést az [Azure ügyfélszolgálatán](https://azure.microsoft.com/support/faq/) keresztül. Az Azure Storage csapata kiértékeli az Ön vállalkozását, és jóváhagyhat legfeljebb 250 tárfiókot. 

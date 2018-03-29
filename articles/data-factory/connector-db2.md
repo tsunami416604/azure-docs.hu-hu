@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 0ef1ce8b4949c908595473f0183f585a6fd3da80
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7713e1b6a74fd099206804133d2dc8140fe83a8d
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Adatok másolása az DB2 Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -67,7 +67,6 @@ A következő tulajdonságok DB2 kapcsolódó szolgáltatás támogatottak:
 | type | A type tulajdonságot kell beállítani: **Db2** | Igen |
 | kiszolgáló |A DB2-kiszolgáló neve. |Igen |
 | adatbázis |Neve a DB2-adatbázishoz. |Igen |
-| Séma |Az adatbázisban séma neve. A séma neve a kis-és nagybetűket. |Nem |
 | authenticationType |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Az érték engedélyezett: **alapvető**. |Igen |
 | felhasználónév |Adja meg a felhasználónevet a DB2-adatbázishoz való kapcsolódáshoz. |Igen |
 | jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). |Igen |

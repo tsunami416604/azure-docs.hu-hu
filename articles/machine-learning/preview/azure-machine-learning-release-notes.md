@@ -9,18 +9,72 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: reference
 ms.date: 03/28/2018
-ms.openlocfilehash: ac08baa6f478926a2c8dadd366049e9506272366
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 9d16606665bf043e094bebdfbbce973910135f1a
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="whats-new-in-azure-machine-learning"></a>Az Azure Machine Learning újdonságai
 
-Ebből a cikkből megtudhatja, új funkcióit és az ismert problémákkal kapcsolatos [Azure Machine Learning szolgáltatás](overview-what-is-azure-ml.md). 
+Ebből a cikkből megtudhatja, az új verziókról [Azure Machine Learning szolgáltatás](overview-what-is-azure-ml.md). 
+
+## <a name="2018-03-sprint-4"></a>2018-03 (sprint 4)
+**Verziószám**: 0.1.1801.24353 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([találnia, amelynek a](known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
+
+
+Üdvözli az Azure Machine Learning-munkaterület ötödik frissítést. A következő frissítéseket számos visszajelzése közvetlen eredményeként történik. Adjon válaszadás hamarosan!
+
+**Fontos új funkciók és módosítások**
+
+- A parancsfájlok virtuális gépeken futó távoli Ubuntu natív módon a saját környezete mellett távoli-docker támogatása végrehajtási alapján.
+- Új környezet munkaterület alkalmazásban lehetővé teszi a számítási céljainak létrehozása, és futtassa a konfiguráció a CLI-alapú felhasználói élmény mellett.
+![Környezetek lap](media/azure-machine-learning-release-notes/environment-page.png)
+- Testre szabható futtatása előzmények jelentések ![új futtatása jelentések képe](media/azure-machine-learning-release-notes/new-run-history-reports.png)
+
+**Részletes frissítések**
+
+Az alábbiakban az Azure Machine Learning a sprint a minden összetevő területén részletes frissítések listáját.
+
+### <a name="workbench-ui"></a>Felhasználói felület munkaterület
+- Testre szabható futtatása jelentések
+  - Jelentések futtatása előzmények továbbfejlesztett diagram konfigurációjának
+    - A használt entrypoints módosítható.
+    - Legfelső szintű szűrők felvehető és módosított ![szűrők hozzáadása](media/azure-machine-learning-release-notes/add-filters.jpg)
+    - A diagramok és a statisztikák hozzá vagy módosították (és fogd és vidd nem rendezhetők át).
+    ![Új diagramok létrehozása](media/azure-machine-learning-release-notes/configure-charts.png)
+
+  - Jelentések futtatása előzmények CRUD
+  - Az összes meglévő futtatási előzményei listanézet configs kiszolgálóoldali jelentések, amely a folyamatok egyfajta futtatja a kijelölt belépési pontok áthelyezték.
+
+- Környezetek lap
+  - Egyszerűen adja hozzá az új számítási cél, és futtassa a konfigurációs fájlokat a projekthez ![új számítási cél](media/azure-machine-learning-release-notes/add-new-environments.png)
+  - Kezelése és egy egyszerű, űrlapalapú UX segítségével konfigurációs fájljainak frissítése
+  - A végrehajtási környezetet előkészítéséhez új gomb
+
+- Teljesítménnyel kapcsolatos fejlesztések a lista az oldalsávon fájlok
+
+### <a name="data-preparation"></a>Adatok előkészítése 
+- Az Azure Machine Learning-munkaterület mostantól lehetővé teszi egy ismert oszlopnév használatával oszlop megkereshetik.
+
+
+### <a name="experimentation"></a>Kísérletezés
+- Az Azure Machine Learning-munkaterület mostantól támogatja a natív módon fut a parancsfájlokat a saját python vagy pyspark környezetben. Ez a funkció a felhasználó hoz létre, és kezeli a saját környezet a távoli virtuális Gépre, és Azure Machine Learning-munkaterület segítségével hajtható végre a parancsfájlok, hogy a célkiszolgáló olyan. Ellenőrizze a [Azure Machine Learning kísérletezhet szolgáltatás konfigurálása](experimentation-service-configuration.md) 
+
+### <a name="model-management"></a>Modellkezelés
+- A telepített tárolók testreszabása támogatása: lehetővé teszi, hogy a tároló lemezkép testreszabása tételével telepítési külső szalagtárak használatával apt get, stb. Már nem korlátozódik a pip telepíthető könyvtárak. Tekintse meg a [dokumentáció](model-management-custom-container.md) vonatkozó információ.
+  - Használja a `--docker-file myDockerStepsFilename` a jegyzék, a lemezkép vagy a szolgáltatás létrehozása parancsok jelzőt és a fájl nevét.
+  - Vegye figyelembe, hogy az alapjául szolgáló lemezképhez Ubuntu-e, és nem módosítható.
+  - Példa parancs: 
+  
+      ```shell
+      $ az ml image create -n myimage -m mymodel.pkl -f score.py --docker-file mydockerstepsfile
+      ```
+
+
 
 ## <a name="2018-01-sprint-3"></a>2018-01 (sprint 3) 
-**Verziószám**: 0.1.1712.18263 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([találnia, amelynek a](known-issues-and-troubleshooting-guide.md))
+**Verziószám**: 0.1.1712.18263 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([találnia, amelynek a](known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
 
 Az alábbi táblázat a frissítéseket és a sprint javítását. Ezek a frissítések számos felhasználói visszajelzés közvetlen következményeként történik. 
 
@@ -55,7 +109,7 @@ Az alábbiakban az Azure Machine Learning a sprint a minden összetevő terület
   - Engedélyezett a helyi környezet beállítása az ingyenes előfizetések 
 
 ## <a name="2017-12-sprint-2-qfe"></a>2017 12 (2 QFE súlyadatainak nyomtatása) 
-**Verziószám**: 0.1.1711.15323 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([találnia, amelynek a](known-issues-and-troubleshooting-guide.md))
+**Verziószám**: 0.1.1711.15323 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([találnia, amelynek a](known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
 
 Ez az a QFE (gyorsjavítást mérnöki) kiadási kisebb kiadási. Több telemetriai problémákat, és segít a termékért felelős csoport jobb megértése érdekében a termék felhasználási módjának. A Tudásbázis későbbi próbálkozások a termék felhasználói élmény javítására is kísérhet. 
 
@@ -65,8 +119,7 @@ Emellett nincsenek két fontos frissítések:
 - A parancssori eszköz már nem kell lennie egy Azure-előfizetés tulajdonos Machine Learning számítási ACS-fürtök kiépítéséhez. 
 
 ## <a name="2017-12-sprint-2"></a>2017 – 12 (sprint 2)
-**Verziószám**: 0.1.1711.15263 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([találnia, amelynek a](known-issues-and-troubleshooting-guide.md))
-
+**Verziószám**: 0.1.1711.15263 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([találnia, amelynek a](known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
 
 Üdvözli az Azure Machine Learning harmadik frissítése. A frissítés a munkaterület-alkalmazást, a parancssori felület (CLI) és a háttér-szolgáltatásaihoz tartalmaz fejlesztéseket. Köszönjük, hogy túlságosan azok küldését a smiles és frowns. A következő frissítéseket számos visszajelzése közvetlen eredményeként történik. 
 
@@ -165,7 +218,7 @@ Számítási célok létrehozásáról további információk: [Azure Machine Le
     - `az ml computetarget attach --type cluster` most már `az ml computetarget attach cluster`
 
 ## <a name="2017-11-sprint-1"></a>2017-11 (sprint 1) 
-**Verziószám**: 0.1.1710.31013 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([találnia, amelynek a](known-issues-and-troubleshooting-guide.md))
+**Verziószám**: 0.1.1710.31013 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([találnia, amelynek a](known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
 
 Ebben a kiadásban biztonság, a stabilitás és a karbantartási követelmények a munkaterület-alkalmazást, a parancssori felület és a háttér-szolgáltatásaihoz réteg fejlesztéseket hajtottunk. Köszönjük, hogy nagyon küld nekünk smiles és frowns. Hány a frissítések alatt végrehajtott visszajelzése közvetlen eredményeként. Válaszadás hamarosan!
 
@@ -287,7 +340,7 @@ Alább a sprint az Azure gépi tanulás összetevő területenként részletes f
 
 
 ## <a name="2017-10-sprint-0"></a>2017 10-es (sprint 0) 
-**Verziószám**: 0.1.1710.31013 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([találnia, amelynek a](known-issues-and-troubleshooting-guide.md))
+**Verziószám**: 0.1.1710.31013 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([találnia, amelynek a](known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
 
 Üdvözli az Azure Machine Learning munkaterület kezdeti nyilvános előzetes verzióban ezek a Microsoft ignite-on 2017 konferencián követő első frissítésére. A fő ebben a kiadásban frissítései megbízhatóság és a stabilitás javítja.  A kritikus problémákra azt többek között:
 

@@ -1,12 +1,12 @@
 ---
-title: "Hozzon létre egy nyilvános terheléselosztó IPv6 - Azure parancssori Felülettel |} Microsoft Docs"
-description: "Útmutató: Azure parancssori felület használatával hozzon létre egy nyilvános terheléselosztó IPv6 az Azure Resource Manager."
+title: Hozzon létre egy nyilvános terheléselosztó IPv6 - Azure parancssori Felülettel |} Microsoft Docs
+description: 'Útmutató: Azure parancssori felület használatával hozzon létre egy nyilvános terheléselosztó IPv6 az Azure Resource Manager.'
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: timlt
 tags: azure-resource-manager
-keywords: "IPv6-alapú, azure load balancer, kettős verem, nyilvános IP-cím, natív ipv6, mobil, iot"
+keywords: IPv6-alapú, azure load balancer, kettős verem, nyilvános IP-cím, natív ipv6, mobil, iot
 ms.assetid: a1957c9c-9c1d-423e-9d5c-d71449bc1f37
 ms.service: load-balancer
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 3abd47460999f7b059469a58a59a3e297e88effb
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 62f22ccadfabd2f3d6906beb3c241703d4e6383f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-in-azure-resource-manager-by-using-azure-cli"></a>Hozzon létre egy nyilvános terheléselosztó IPv6 az Azure Resource Manager Azure parancssori felület használatával
 
@@ -28,7 +28,6 @@ ms.lasthandoff: 12/18/2017
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [Sablon](load-balancer-ipv6-internet-template.md)
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Az Azure Load Balancer 4. szintű (TCP, UDP) terheléselosztónak minősül. Terheléselosztó bejövő forgalmat a felhőszolgáltatások kifogástalan szolgáltatáspéldány vagy a load balancer csoportban lévő virtuális gépek között elosztásával magas rendelkezésre állás biztosításához. A terheléselosztók is jelenthet, ezek a szolgáltatások több portot vagy több IP-cím, vagy mindkettőt.
 
@@ -187,7 +186,7 @@ Ez a példa a következő elemeket hozza létre:
 * NAT-szabály lefordítani az összes porton érkező forgalom 3391 3389-es port a távoli asztal protokoll (RDP).\*
 * olyan terheléselosztó szabályhoz minden bejövő forgalom 80-as porton a címkészletben levő a háttér-80-as portjához egyensúlyba.
 
-\*NAT-szabályok társítva a terheléselosztó mögött egy adott virtuális gép példányt. A 3389-es port érkező hálózati forgalom érkezik, az adott virtuális gép és a portot, amelyet a NAT-szabály van társítva. A NAT-szabályhoz meg kell adnia egy protokollt (UDP vagy TCP). Mindkét protokollt nem lehet hozzárendelni ugyanazt a portot.
+\* NAT-szabályok társítva a terheléselosztó mögött egy adott virtuális gép példányt. A 3389-es port érkező hálózati forgalom érkezik, az adott virtuális gép és a portot, amelyet a NAT-szabály van társítva. A NAT-szabályhoz meg kell adnia egy protokollt (UDP vagy TCP). Mindkét protokollt nem lehet hozzárendelni ugyanazt a portot.
 
 1. A PowerShell-változó beállítása:
 
@@ -341,7 +340,7 @@ Virtuális gépek létrehozására, rendelkeznie kell egy tárfiókot. A terhel�
     $vm2 = azure vm create --resource-group $rgname --location $location --availset-name $availabilitySetName --name $vm2Name --nic-id $nic2Id --os-disk-vhd $osDisk2Uri --os-type "Windows" --admin-username $vmUserName --admin-password $mySecurePassword --vm-size "Standard_A1" --image-urn $imageurn --storage-account-name $storageAccountName --disable-bginfo-extension
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Bevezetés a belső terheléselosztók konfigurálásába](load-balancer-get-started-ilb-arm-cli.md)  
 [A terheléselosztó elosztási módjának konfigurálása](load-balancer-distribution-mode.md)  

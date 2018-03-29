@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: c39a8fafef9a45f5e80d00f8cbc75833201df150
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8dc955b3556477e04e6ef3e92b1c7dbe82ac7f35
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Az Azure App Service web Apps diagnosztikai naplózás engedélyezése
 ## <a name="overview"></a>Áttekintés
@@ -120,7 +120,7 @@ Ez a parancs menti a webalkalmazást, amelyet a naplókat a **-név** nevű fáj
 ### <a name="download-with-azure-command-line-interface"></a>Töltse le az Azure parancssori felülettel
 Töltse le a naplófájlok az Azure parancssori felület használatával, nyissa meg egy új parancssor, PowerShell, Bash vagy terminál-munkamenetet, és adja meg a következő parancsot:
 
-    az webapp log download --name webappname
+    az webapp log download --resource-group resourcegroupname --name webappname
 
 Ez a parancs a keresse meg a webes alkalmazás, neve "webappname" nevű fájlba menti **diagnostics.zip** az aktuális könyvtárban található.
 

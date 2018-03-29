@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 0092564dce9424b445240ebd2c3247e763a237e9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3aca66d6922273e78b5100948f1b868c6c9b56af
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="copy-data-from-http-endpoint-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával HTTP-végpont
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -40,6 +40,9 @@ Pontosabban a HTTP-összekötő támogatja:
 - A HTTP-válasz, mint a Másolás- vagy elemzés azt a [támogatott formátumok és a tömörítési kodek](supported-file-formats-and-compression-codecs.md).
 
 Ez az összekötő különbségének és a [webes tábla összekötő](connector-web-table.md) a, hogy az utóbbi használt tábla tartalom kibontása HTML weblapot.
+
+>[!TIP]
+>Adatok beolvasása az ADF HTTP-összekötő konfigurálása előtt a HTTP-kérelem teszteléséhez megtudjuk az API-specifikáció fejléc és a szervezet követelményeinek, és például a Postman vagy böngészőt eszközök segítségével ellenőrizheti azokat.
 
 ## <a name="getting-started"></a>Első lépések
 

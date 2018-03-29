@@ -1,6 +1,6 @@
 ---
-title: Majdnem valós idejű metrika riasztások az Azure-figyelő |} Microsoft Docs
-description: Megtudhatja, hogyan közel valós idejű metrika riasztások a figyelheti az Azure-erőforrás metrikáit mérete legyen 1 perces gyakorisággal.
+title: Újabb metrika riasztásait az Azure-figyelő támogatott források |} Microsoft Docs
+description: A támogatási metrikák és a naplókat a közel valós idejű metrika riasztásokat az újabb Azure hivatkozás.
 author: snehithm
 manager: kmadnani1
 editor: ''
@@ -12,32 +12,35 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 03/26/2018
 ms.author: snmuvva, vinagara
 ms.custom: ''
-ms.openlocfilehash: 15b9b0b69f3805b3e3af1d3973fd3a77bea62ab9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6ccb095f3739a90bdab2408965a742f9cbc19359
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="use-the-newer-metric-alerts-for-azure-services-in-azure-portal"></a>Az újabb metrika riasztások használni az Azure-portálon az Azure szolgáltatáshoz
-Az Azure használatát támogatja közel valós idejű metrika riasztások nevű új riasztási típus. 
+# <a name="newer-metric-alerts-for-azure-services-in-the-azure-portal"></a>Azure-szolgáltatásokat az Azure portálon újabb metrika riasztásai
+Azure figyelő mostantól támogatja az Új riasztási típust. Az újabb riasztások Miben különböznek a [klasszikus metrika riasztások](insights-alerts-portal.md) néhány módon:
 
-Közel valós idejű metrika riasztások Miben különböznek a [klasszikus metrika riasztások](insights-alerts-portal.md) néhány módon:
+- **Továbbfejlesztett késés**: újabb metrika riasztások egy percenként gyakorisággal futtatható. Régebbi metrika riasztások, 5 perces gyakorisággal végezni. Napló riasztásokat továbbra is fennáll a hosszabb, mint 1 perces késleltetési idő miatt tölti be a naplók vesz igénybe. 
+- **A többdimenziós metrikák támogatása**: figyelmeztetik a dimenzionális mérőszámokat, hogy lehetővé teszi a figyelheti egy csak a metrika az érdekes szegmens. 
+- **Metrika feltételek teljesebb körű vezérlése**: gazdagabb riasztási szabályokat adhat meg. Az újabb riasztások a maximális, minimális, átlagos, és az összes érték a mérőszámok figyelésére alkalmas. 
+- **Egyszerre több metrikák figyelését**: figyelheti a (jelenleg legfeljebb két metrikák) kezelhető egyetlen szabállyal több metrikákat. Riasztást vált ki, ha mindkét metrikák megsértik a megfelelő küszöbértéket a megadott időszakban. 
+- **Értesítési rendszer jobb**: minden újabb riasztás használja [művelet csoportok](monitoring-action-groups.md), amely megnevezett értesítések és a műveletek a több riasztás is használhatnak. Klasszikus metrika riasztások és értesítések. Naplóelemzési régebbi. ne használjon művelet csoportok. 
+- **A naplók metrikák** (korlátozott nyilvános előzetes verzió): adatok, amelyek Log Analytics mostantól napló kicsomagolja és Azure figyelő metrikák alakítja át és más metrikákkal hasonlóan a majd riasztást. 
 
-- **Továbbfejlesztett késés**: közel valós idejű metrika riasztások egy percenként gyakorisággal futtatható. Régebbi metrika riasztások, 5 perces gyakorisággal végezni.
-- **A többdimenziós metrikák támogatása**: figyelmeztetik a dimenzionális mérőszámokat, lehetővé téve a metrika az érdekes szegmens figyelése.
-- **Metrika feltételek teljesebb körű vezérlése**: gazdagabb riasztási szabályok a közel valós idejű metrika riasztásokat definiálhat. A riasztások a maximális, minimális, átlagos, és az összes érték a mérőszámok figyelésére alkalmas.
-- **Egyszerre több metrikák figyelését**: közel valós idejű metrika riasztások több metrikák (jelenleg legfeljebb két metrikák) kezelhető egyetlen szabállyal képes figyelni. Riasztást vált ki, ha mindkét metrikák számítógépeinek a megadott időszakra vonatkozó megsértik a a vonatkozó küszöbértéket.
-- **Moduláris értesítési rendszer**: közel valós idejű metrika riasztások használata [művelet csoportok](monitoring-action-groups.md). Művelet csoportokat hozhat létre moduláris műveletek. A riasztási szabályok több művelet csoportok is felhasználhatja.
-- **Metrikák naplókból**: A beérkező népszerű naplóadatok [Naplóelemzési](../log-analytics/log-analytics-overview.md), metrikák Azure monitorra kinyerhetők, és a közel valós időben értesítést.
+Az Azure portál egy újabb metrika riasztás létrehozása, lásd: [riasztási szabályt létrehozni az Azure portálon](monitor-alerts-unified-usage.md#create-an-alert-rule-with-the-azure-portal). A létrehozás után kezelheti a riasztás ismertetett lépések segítségével [a riasztásokat az Azure portálon](monitor-alerts-unified-usage.md#managing-your-alerts-in-azure-portal).
 
+
+## <a name="portal-powershell-cli-rest-support"></a>Portál, PowerShell, a parancssori felület, a többi támogatja
+Jelenleg csak az Azure-portálon vagy REST API újabb metrika riasztásokat hozhat létre. PowerShell-lel újabb riasztások konfigurálásának a támogatását, és az az Azure parancssori felület (Azure CLI 2.0) hamarosan.
 
 ## <a name="metrics-and-dimensions-supported"></a>Metrikák és a támogatott méretek
-Közel valós idejű metrika riasztások támogatja a dimenziók metrikák vonatkozó riasztások elküldésére. A metrika a megfelelő szintre szűréséhez használja a dimenziók is. Az összes támogatott metrikák mellett alkalmazható dimenziók felfedezte, és a ábrázolt [Azure figyelője – Metrikaböngésző (előzetes verzió)](monitoring-metric-charts.md).
+Újabb metrika riasztások támogatja a dimenziók metrikák vonatkozó riasztások elküldésére. A metrika a megfelelő szintre szűréséhez használja a dimenziók is. Az összes támogatott metrikák mellett alkalmazható dimenziók felfedezte, és a ábrázolt [Azure figyelője – Metrikaböngésző (előzetes verzió)](monitoring-metric-charts.md).
 
-Az Azure-alapú figyelőt metrika adatforrások által támogatott közel valós idejű metrika riasztások teljes listája itt található:
+Az Azure figyelő metrika források támogatja az újabb riasztások teljes listája itt található:
 
 |Erőforrás típusa  |Támogatott méretek  | Voltak elérhetők metrikák|
 |---------|---------|----------------|
@@ -60,25 +63,20 @@ Az Azure-alapú figyelőt metrika adatforrások által támogatott közel valós
 |Microsoft.Storage/storageAccounts/services     |     Igen    | [BLOB-szolgáltatások](monitoring-supported-metrics.md#microsoftstoragestorageaccountsblobservices), [Fájlszolgáltatások](monitoring-supported-metrics.md#microsoftstoragestorageaccountsfileservices), [szolgáltatások várólistára](monitoring-supported-metrics.md#microsoftstoragestorageaccountsqueueservices) és [Table szolgáltatások](monitoring-supported-metrics.md#microsoftstoragestorageaccountstableservices)|
 |Microsoft.StreamAnalytics/streamingjobs     |  –       | [Stream Analytics](monitoring-supported-metrics.md#microsoftstreamanalyticsstreamingjobs)|
 |Microsoft.CognitiveServices/accounts     |    –     | [Cognitive Services](monitoring-supported-metrics.md#microsoftcognitiveservicesaccounts)|
-|Microsoft.OperationalInsights/workspaces (előzetes verzió) | Igen|[Napló Analytics munkaterületek](#support-for-oms-logs-as-metrics-for-alerting)|
+|Microsoft.OperationalInsights/workspaces (előzetes verzió) | Igen|[Napló Analytics munkaterületek](#log-analytics-logs-as-metrics-for-alerting)|
 
 
-## <a name="create-a-newer-metric-alert"></a>Egy újabb metrika riasztás létrehozása
-Jelenleg csak az Azure-portálon vagy REST API újabb metrika riasztásokat hozhat létre. PowerShell, az Azure parancssori felület (CLI) használatával közel valós idejű metrika riasztások konfigurálásának a támogatását hamarosan elérhető.
+## <a name="log-analytics-logs-as-metrics-for-alerting"></a>Napló Analytics naplók és riasztások metrikák 
 
-Az Azure portál egy újabb metrika riasztás létrehozása, lásd: [riasztási szabályt létrehozni az Azure portálon](monitor-alerts-unified-usage.md#create-an-alert-rule-with-the-azure-portal).
-
-## <a name="manage-newer-metric-alerts"></a>Újabb metrika riasztások kezelése
-Miután létrehozta a közel valós idejű metrika riasztások, a riasztás ismertetett lépések segítségével kezelheti [a riasztásokat az Azure portálon](monitor-alerts-unified-usage.md#managing-your-alerts-in-azure-portal).
-
-## <a name="support-for-oms-logs-as-metrics-for-alerting"></a>OMS naplók, mert így metrikák és támogatása
-
-Közel valós idejű metrika riasztások a népszerű OMS-naplók metrikák naplók Preview metrikák részeként, kibontott is használható.  
+Is használhatja, naplók Preview metrikák részeként metrikák kibontott népszerű Naplóelemzési naplók újabb metrika riasztások.  
 - [Teljesítményszámlálók](../log-analytics/log-analytics-data-sources-performance-counters.md) Windows és Linux-gépekhez
 - [Szívverés-rekordok az ügynök állapota](../operations-management-suite/oms-solution-agenthealth.md)
 - [Frissítéskezelés](../operations-management-suite/oms-solution-update-management.md) rekordok
+ 
+> [!NOTE]
+> Adott metrika és/vagy a dimenzió csak akkor jelenik meg van-e az adatok választott időszak. USA keleti régiója, Nyugat középső Régiójában és Nyugat-Európában munkaterületeket az ügyfelek, akik az előzetes feliratkozott a fenti metrikák érhetők el. Ha azt szeretné, ez az előzetes kiadás egy részét, jelentkezzen [a felmérés](https://aka.ms/MetricLogPreview).
 
-Ez a teljes OMS naplóalapú indexeltnézet metrika olyan adatforrások listáját, amelyek közel valós idejű metrika riasztások támogatottak:
+Az alábbi lista a Naplóelemzési napló alapú metrika források támogatott:
 
 Metrika neve/részletei  |Támogatott méretek  | Napló típusa  |
 |---------|---------|---------|
@@ -151,13 +149,11 @@ Metrika neve/részletei  |Támogatott méretek  | Napló típusa  |
 |    Szívverés  |     Igen – számítógép, OSType, verziót és SourceComputerId    |   Szívverés-rekordok |
 |    Frissítés |     Igen – számítógép, a termék, a besorolás, a UpdateState, nem kötelező & jóváhagyott    |   Frissítéskezelés |
 
-> [!NOTE]
-> Adott metrika és/vagy a dimenzió csak akkor jelenik meg van-e az adatok választott időszak. USA keleti régiója, Nyugat középső Régiójában és Nyugat-Európában munkaterületeket az ügyfelek, akik az előzetes feliratkozott a fenti metrikák érhetők el. Ha azt szeretné, ez az előzetes kiadás egy részét, jelentkezzen [a felmérés](https://aka.ms/MetricLogPreview).
 
 
 ## <a name="payload-schema"></a>Hasznos séma
 
-A POST műveletet tartalmazza a következő JSON-adattartalmat és a séma összes közel valós idejű metrika riasztást küld, ha megfelelően konfigurált [művelet csoport](monitoring-action-groups.md) szolgál:
+A POST műveletet tartalmaz a következő JSON-adattartalmat és séma közelében újabb metrika riasztást küld, ha egy megfelelően konfigurált összes [művelet csoport](monitoring-action-groups.md) szolgál:
 
 ```json
 {"schemaId":"AzureMonitorMetricAlert","data":

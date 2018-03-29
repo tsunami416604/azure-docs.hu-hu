@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: negat
-ms.openlocfilehash: 91eccd2b4587d7cb926ca506ae2f2e5b91ea1f3e
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: cbd5b57d0cde3743c7ef70437f702536c27ac999
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Módosítsa a virtuálisgép-méretezési csoport
 Az alkalmazások életciklusa során szükség lehet módosítani, vagy a virtuálisgép-méretezési csoport frissítése. Ezeket a frissítéseket is venni, hogyan lehet frissíteni a beállításait, a méretezési, vagy módosítsa az alkalmazás konfigurációját. A cikkből megtudhatja, hogyan lehet módosítani egy meglévő méretezési a REST API-k, az Azure PowerShell vagy Azure CLI 2.0 készletben.
@@ -35,7 +35,7 @@ A méretezési rendelkezik egy "méretezési modellel", amely rögzíti a *kív�
     GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet?api-version={apiVersion}
     ```
 
-- Az Azure Powershell [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss):
+- Az Azure PowerShell [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss):
 
     ```powershell
     Get-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
@@ -79,7 +79,7 @@ A méretezési készletben is megtalálható a "méretezési készlet példánya
     GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/instanceView?api-version={apiVersion}
     ```
 
-- Az Azure Powershell [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss):
+- Az Azure PowerShell [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss):
 
     ```powershell
     Get-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceView
@@ -133,7 +133,7 @@ Hasonló hogyan egy méretezési csoport rendelkezik a modell nézet, a méretez
     GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/virtualmachines/instanceId?api-version={apiVersion}
     ```
 
-- Az Azure Powershell [Get-AzureRmVmssVm](/powershell/module/azurerm.compute/get-azurermvmssvm):
+- Az Azure PowerShell [Get-AzureRmVmssVm](/powershell/module/azurerm.compute/get-azurermvmssvm):
 
     ```powershell
     Get-AzureRmVmssVm -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId
@@ -173,7 +173,7 @@ Hasonló hogyan rendelkezik, egy méretezési csoport példányait tartalmazó n
     GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/virtualmachines/instanceId/instanceView?api-version={apiVersion}
     ```
 
-- Az Azure Powershell [Get-AzureRmVmssVm](/powershell/module/azurerm.compute/get-azurermvmssvm):
+- Az Azure PowerShell [Get-AzureRmVmssVm](/powershell/module/azurerm.compute/get-azurermvmssvm):
 
     ```powershell
     Get-AzureRmVmssVm -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId -InstanceView
@@ -252,7 +252,7 @@ A globális méretű tulajdonságbeállító frissítéséhez frissítenie kell 
 
 - A Resource Manager-sablon a tulajdonságokkal a REST API, globális méretű készlet tulajdonságainak frissítésére való telepítése.
 
-- Az Azure Powershell [frissítés-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss):
+- Az Azure PowerShell [frissítés-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss):
 
     ```powershell
     Update-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -VirtualMachineScaleSet {scaleSetConfigPowershellObject}
@@ -299,7 +299,7 @@ Meglévő virtuális gépek frissítéséhez tegye minden meglévő virtuális g
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/manualupgrade?api-version={apiVersion}
     ```
 
-- Az Azure Powershell [frissítés-AzureRmVmssInstance](/powershell/module/azurerm.compute/update-azurermvmssinstance):
+- Az Azure PowerShell [frissítés-AzureRmVmssInstance](/powershell/module/azurerm.compute/update-azurermvmssinstance):
     
     ```powershell
     Update-AzureRmVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId
@@ -324,7 +324,7 @@ Nincs a globális méretű tulajdonságainak beállítása, amely nem követi a 
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/reimage?api-version={apiVersion}
     ```
 
-- Az Azure Powershell [Set-AzureRmVmssVm](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmssvm):
+- Az Azure PowerShell [Set-AzureRmVmssVm](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmssvm):
 
     ```powershell
     Set-AzureRmVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId -Reimage
@@ -384,7 +384,7 @@ Egyéni lemezképek használatakor a lemezkép frissítéséhez frissítheti a *
 ### <a name="update-the-os-image-for-your-scale-set"></a>Az operációs rendszer lemezképét a méretezési készlet
 Előfordulhat, hogy egy méretezési csoport, amely az Ubuntu LTS 16.04 régebbi verzióját futtatja. Egy újabb verzióra az Ubuntu LTS 16.04, például a verziót frissíti *16.04.201801090*. A lemezkép referencia version tulajdonság nem része a listáját, és így közvetlenül módosíthatja ezeket a tulajdonságokat, a következő parancsok egyikét:
 
-- Az Azure Powershell [frissítés-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss) az alábbiak szerint:
+- Az Azure PowerShell [frissítés-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss) az alábbiak szerint:
 
     ```powershell
     Update-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -ImageReferenceVersion 16.04.201801090
@@ -403,16 +403,16 @@ Tegyük fel, a méretezési Azure terheléselosztással készletben rendelkezik,
 - Az Azure Powershell:
 
     ```powershell
-    # Get the current model of the scale set and store it in a local powershell object named $vmss
+    # Get the current model of the scale set and store it in a local PowerShell object named $vmss
     $vmss=Get-AzureRmVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet"
     
-    # Create a local powershell object for the new desired IP configuration, which includes the referencerence to the application gateway
+    # Create a local PowerShell object for the new desired IP configuration, which includes the referencerence to the application gateway
     $ipconf = New-AzureRmVmssIPConfig "myNic" -ApplicationGatewayBackendAddressPoolsId /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/backendAddressPools/{applicationGatewayBackendAddressPoolName} -SubnetId $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet.Id –Name $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Name
     
-    # Replace the existing IP configuration in the local powershell object (which contains the references to the current Azure Load Balancer) with the new IP configuration
+    # Replace the existing IP configuration in the local PowerShell object (which contains the references to the current Azure Load Balancer) with the new IP configuration
     $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0] = $ipconf
     
-    # Update the model of the scale set with the new configuration in the local powershell object
+    # Update the model of the scale set with the new configuration in the local PowerShell object
     Update-AzureRmVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet" -virtualMachineScaleSet $vmss
     ```
 

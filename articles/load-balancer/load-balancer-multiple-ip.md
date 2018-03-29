@@ -1,6 +1,6 @@
 ---
-title: "Több IP-konfigurációk az Azure-ban a terheléselosztási |} Microsoft Docs"
-description: "Terheléselosztás elsődleges és másodlagos IP-konfiguráció között."
+title: Több IP-konfigurációk az Azure-ban a terheléselosztási |} Microsoft Docs
+description: Terheléselosztás elsődleges és másodlagos IP-konfiguráció között.
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 02388162ac4d2d86255c0a65d8b94253047f3983
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: fcd9ff8b726b5dc3e0d447bc384dbcc7cc1a4e88
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Terheléselosztás több IP-konfigurációk az Azure portál használatával
 
@@ -27,7 +27,6 @@ ms.lasthandoff: 02/21/2018
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
 > * [Parancssori felület](load-balancer-multiple-ip-cli.md)
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Ebben a cikkben az oktatóanyagban módosítjuk mutatjuk be Azure Load Balancer használata a másodlagos hálózati illesztő tartományvezérlőre (NIC) több IP-címmel. Az alábbi ábrán a mi esetünkben látható:
 
