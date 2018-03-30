@@ -39,7 +39,7 @@
       href: monitor-alerts-unified-log.md
     - name: Tevékenységnapló-riasztások (előnézet)
       href: monitoring-activity-log-alerts-new-experience.md
-    - name: Riasztások kiterjesztése az OMS-ből az Azure-ba
+    - name: Riasztások kiterjesztése a Log Analyticsből az Azure-ba
       href: monitoring-alerts-extend.md
     - name: Műveletcsoportok
       href: monitoring-action-groups.md
@@ -53,44 +53,44 @@
   items:
     - name: Az Azure Monitor bemutatása
       href: monitoring-get-started.md
+    - name: Metrikadiagramok létrehozása a Metrikaböngészőben
+      href: monitoring-metric-charts.md
     - name: Riasztások használata
       items:
-        - name: Új riasztások beállítása az Azure Portalon
-          href: monitoring-near-real-time-metric-alerts.md
+        - name: Új metrika- vagy naplóriasztások beállítása az Azure Portalon
+          href: monitor-alerts-unified-usage.md
         - name: Klasszikus riasztások beállítása az Azure Portalon
           href: insights-alerts-portal.md
-        - name: Metrika- vagy naplóriasztások beállítása az Azure Portalon
-          href: monitor-alerts-unified-usage.md
-        - name: Riasztások beállítása a parancssori felületről
+        - name: Klasszikus riasztások beállítása a parancssori felületen
           href: insights-alerts-command-line-interface.md
-        - name: Riasztások beállítása az Azure PowerShell-lel
+        - name: Klasszikus riasztások beállítása az Azure PowerShell-lel
           href: insights-alerts-powershell.md
         - name: Naplóriasztásokra vonatkozó webhook-műveletek
           href: monitor-alerts-unified-log-webhook.md
-        - name: Metrikariasztás létrehozása Resource Manager-sablonnal
+        - name: Klasszikus metrikariasztás létrehozása Resource Manager-sablonnal
           href: monitoring-enable-alerts-using-template.md
-        - name: Riasztások kiterjesztésének kezdeményezése az OMS-ből az Azure-ba
+        - name: Riasztások másolása az OMS-portálról az Azure Portalba
           href: monitoring-alerts-extend-tool.md
-    - name: Automatikus méretezés használata
+    - name: Műveletcsoportok használata riasztásokkal
       items:
-        - name: Az automatikus méretezés bemutatása
-          href: monitoring-autoscale-get-started.md
-        - name: Ismerkedés az automatikus méretezési beállításokkal
-          href: monitoring-understanding-autoscale-settings.md
-        - name: Ajánlott eljárások
-          href: insights-autoscale-best-practices.md
-        - name: Gyakori metrikák
-          href: insights-autoscale-common-metrics.md
-        - name: Gyakori minták
-          href: monitoring-autoscale-common-scale-patterns.md
-        - name: Automatikus méretezés egyéni metrikával
-          href: monitoring-autoscale-scale-by-custom-metric.md
-        - name: Virtuálisgép-méretezési csoportok automatikus méretezése Resource Manager-sablonok használatával
-          href: insights-advanced-autoscale-virtual-machine-scale-sets.md
-        - name: Virtuálisgép-méretezési csoport gépeinek automatikus méretezése
-          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json
-        - name: Webhookok és e-mailes értesítések beállítása az automatikus méretezésben
-          href: insights-autoscale-to-webhook-email.md
+        - name: Információ a webhook sémáról
+          href: monitoring-activity-log-alerts-webhook.md
+        - name: Az SMS-riasztás viselkedése
+          href: monitoring-sms-alert-behavior.md
+        - name: A riasztási arány korlátozása
+          href: monitoring-alerts-rate-limiting.md
+        - name: Műveletcsoportok létrehozása a Resource Managerrel
+          href: monitoring-create-action-group-with-resource-manager-template.md
+    - name: Diagnosztikai naplók használata
+      items:
+        - name: Archívum
+          href: monitoring-archive-diagnostic-logs.md
+        - name: Küldés a Log Analyticsnek
+          href: monitor-stream-diagnostic-logs-log-analytics.md
+        - name: Streamelés az Event Hubsra
+          href: monitoring-stream-diagnostic-logs-to-event-hubs.md
+        - name: Diagnosztikai beállítások engedélyezése Resource Manager-sablonokkal
+          href: monitoring-enable-diagnostic-logs-using-template.md
     - name: A tevékenységnapló használata
       items:
         - name: Események megtekintése a tevékenységnaplóban
@@ -113,27 +113,13 @@
           href: monitoring-service-notifications.md
         - name: Riasztások beállítása szolgáltatási értesítésekhez
           href: monitoring-activity-log-alerts-on-service-notifications.md
-    - name: Műveletcsoportok használata
+    - name: Szoftveres hozzáférés
       items:
-        - name: Információ a webhook sémáról
-          href: monitoring-activity-log-alerts-webhook.md
-        - name: Az SMS-riasztás viselkedése
-          href: monitoring-sms-alert-behavior.md
-        - name: A riasztási arány korlátozása
-          href: monitoring-alerts-rate-limiting.md
-        - name: Műveletcsoportok létrehozása a Resource Managerrel
-          href: monitoring-create-action-group-with-resource-manager-template.md
-    - name: Diagnosztikai naplók használata
-      items:
-        - name: Archívum
-          href: monitoring-archive-diagnostic-logs.md
-        - name: Küldés a Log Analyticsnek
-          href: monitor-stream-diagnostic-logs-log-analytics.md
-        - name: Streamelés az Event Hubsra
-          href: monitoring-stream-diagnostic-logs-to-event-hubs.md
-        - name: Diagnosztikai beállítások engedélyezése Resource Manager-sablonok használatával
-          href: monitoring-enable-diagnostic-logs-using-template.md
-    - name: A REST API használata
+        - name: A REST API használatának bemutatója
+          href: monitoring-rest-api-walkthrough.md
+        - name: Azure PowerShell-minták
+          href: insights-powershell-samples.md
+    - name: Az Azure Diagnostics bővítmény használata
       items:
         - name: Küldés az Application Insightsba
           href: azure-diagnostics-configure-application-insights.md
@@ -141,12 +127,32 @@
           href: azure-diagnostics-streaming-event-hubs.md
         - name: Hibaelhárítás
           href: azure-diagnostics-troubleshooting.md
-    - name: Mérőszámdiagramok létrehozása a Metrikaböngészőben
-      href: monitoring-metric-charts.md
-    - name: Mérőszámok küldése a Grafana számára
-      href: monitor-send-to-grafana.md
-    - name: Monitorozási adatok küldése egy eseményközpontba
-      href: monitor-stream-monitoring-data-event-hubs.md
+    - name: Automatikus méretezés használata
+      items:
+        - name: Az automatikus méretezés bemutatása
+          href: monitoring-autoscale-get-started.md
+        - name: Ismerkedés az automatikus méretezési beállításokkal
+          href: monitoring-understanding-autoscale-settings.md
+        - name: Ajánlott eljárások
+          href: insights-autoscale-best-practices.md
+        - name: Gyakori metrikák
+          href: insights-autoscale-common-metrics.md
+        - name: Gyakori minták
+          href: monitoring-autoscale-common-scale-patterns.md
+        - name: Automatikus méretezés egyéni metrikával
+          href: monitoring-autoscale-scale-by-custom-metric.md
+        - name: Virtuálisgép-méretezési csoportok automatikus méretezése Resource Manager-sablonok használatával
+          href: insights-advanced-autoscale-virtual-machine-scale-sets.md
+        - name: Virtuálisgép-méretezési csoport gépeinek automatikus méretezése
+          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json
+        - name: Webhookok és e-mailes értesítések beállítása az automatikus méretezésben
+          href: insights-autoscale-to-webhook-email.md
+    - name: Átirányítás más helyekre
+      items:
+        - name: Mérőszámok küldése a Grafana számára
+          href: monitor-send-to-grafana.md
+        - name: Monitorozási adatok küldése egy eseményközpontba
+          href: monitor-stream-monitoring-data-event-hubs.md
 - name: Referencia
   items:
     - name: Azure CLI
@@ -155,8 +161,10 @@
       href: /powershell/module/azurerm.insights
     - name: REST
       href: /rest/api/monitor/
-    - name: Támogatott mérőszámok
+    - name: Támogatott metrikák
       href: monitoring-supported-metrics.md
+    - name: Újabb riasztások támogatott metrikái
+      href: monitoring-near-real-time-metric-alerts.md
     - name: 'Diagnosztikai naplókkal kapcsolatos szolgáltatások, kategóriák és sémák'
       href: monitoring-diagnostic-logs-schema.md
     - name: Tevékenységnapló eseménysémája

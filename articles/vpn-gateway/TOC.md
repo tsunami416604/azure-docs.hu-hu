@@ -6,6 +6,10 @@
 ## [Előfizetés- és szolgáltatáskorlátok](../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 
 # Első lépések
+## [Útvonalalapú VPN-átjáró létrehozása – Azure Portal](create-routebased-vpn-gateway-portal.md)
+## [Útvonalalapú VPN-átjáró létrehozása – PowerShell](create-routebased-vpn-gateway-powershell.md)
+
+# Alapelvek
 ## [A VPN Gateway tervezése és kialakítása](vpn-gateway-plan-design.md)
 ## [Tudnivalók a VPN Gateway beállításairól](vpn-gateway-about-vpn-gateway-settings.md)
 ## [Tudnivalók a VPN-eszközökről](vpn-gateway-about-vpn-devices.md)
