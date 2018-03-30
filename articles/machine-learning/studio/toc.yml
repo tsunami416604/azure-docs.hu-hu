@@ -3,8 +3,6 @@
 - name: Áttekintés
   expanded: true
   items:
-    - name: Mi a Machine Learning?
-      href: what-is-machine-learning.md
     - name: Machine Learning Studio
       href: what-is-ml-studio.md
     - name: Az ML Studio képességei

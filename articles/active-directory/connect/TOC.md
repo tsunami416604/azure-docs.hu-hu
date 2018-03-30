@@ -56,7 +56,7 @@
 ## Azure AD Connect-szinkronizálás kezelése
 ### [GDPR-megfelelőség és az Azure AD Connect](active-directory-aadconnect-gdpr.md)
 ### [Véletlen törlések megakadályozása](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)
-### [Jelszó-szinkronizálás](active-directory-aadconnectsync-implement-password-synchronization.md)
+### [Jelszókivonat szinkronizálása](active-directory-aadconnectsync-implement-password-hash-synchronization.md)
 ### [Azure AD-szolgáltatásfiók](active-directory-aadconnectsync-howto-azureadaccount.md)
 ### [Telepítő varázsló](active-directory-aadconnectsync-installation-wizard.md)
 ### [A UserPrincipalName feltöltésének menete](active-directory-aadconnect-userprincipalname.md)
@@ -86,7 +86,7 @@
 ### [Hibák a szinkronizálás során](active-directory-aadconnect-troubleshoot-sync-errors.md)
 ### [Az objektum nincs szinkronizálva](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)
 ### [Objektum szinkronizálása a hibaelhárítási feladat használatával](active-directory-aadconnect-troubleshoot-objectsync.md)
-### [Jelszó-szinkronizálás](active-directory-aadconnectsync-troubleshoot-password-synchronization.md)
+### [Jelszókivonat szinkronizálása](active-directory-aadconnectsync-troubleshoot-password-hash-synchronization.md)
 ### [userCertificate által okozott LargeObject hiba](active-directory-aadconnectsync-largeobjecterror-usercertificate.md)
 ### [Helyreállítás 10 GB-ra korlátozott LocalDB adatbázisból](active-directory-aadconnect-recover-from-localdb-10gb-limit.md)
 
