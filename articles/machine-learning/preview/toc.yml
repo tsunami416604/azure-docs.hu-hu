@@ -197,7 +197,7 @@
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Díjszabás
-      href: aml-services-pricing.md
+      href: aml-pricing.md
     - name: Régiónkénti elérhetőség
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Csoportos adatelemzési folyamat
