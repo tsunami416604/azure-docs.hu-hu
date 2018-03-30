@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 03/27/2018
 ms.author: mabrigg
-ms.openlocfilehash: f786d99718b82dba052909e566f1b0571701127e
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.reviewer: fiseraci
+ms.openlocfilehash: f176e0689c630a406ab6e2f82e9320a214ff8a1a
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Használatával a privilegizált végpont Azure verem
 
@@ -43,18 +44,20 @@ A távoli PowerShell-munkamenetet a virtuális gépen, amelyen az EGP keresztül
 
 Ezt az eljárást egy integrált rendszer megkezdése előtt győződjön meg arról végezheti el az EGP, IP-címe vagy DNS-en keresztül. Azure-vermet, a kezdeti telepítés után hozzáférhet az EGP csak IP-cím szerint, mert a DNS-integráció van még nem állította be. OEM hardvergyártójához nevű JSON-fájlt biztosít **AzureStackStampDeploymentInfo** , amely tartalmazza a EGP IP-címeket.
 
-Azt javasoljuk, hogy csatlakozni az EGP csak a hardver életciklus gazdagépről vagy egy dedikált, biztonságos számítógép, például egy [Privileged Access munkaállomás](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations).
 
-1. Az emelt szintű hozzáférés munkaállomás eléréséhez.
+> [!NOTE]
+> Biztonsági okokból szükséges, hogy csatlakozni az EGP csak a hardver életciklus fogadó platformra megerősített virtuális gép futó, vagy egy olyan dedikált, biztonságos számítógépen, mint például egy [Privileged Access munkaállomás](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations). Az eredeti konfigurációt a hardver életciklus fogadó nem módosítani kell az eredeti konfigurációját, beleértve az új szoftverek telepítése, sem az EGP való kapcsolódáshoz használandó.
 
-    - Az integrált rendszeren futtassa a következő parancs futtatásával adja hozzá az EGP a hardver életciklus gazdagép vagy a Privileged Access munkaállomás megbízható gazdagépként.
+1. A megbízhatósági kapcsolat létrehozása.
+
+    - Az integrált rendszerben, a következő parancsot egy rendszergazda jogú Windows PowerShell-munkamenetet a EGP a megerősített virtuális gépen futó a hardver életciklus gazdagép vagy a Privileged Access munkaállomás megbízható gazdagépként hozzáadni a.
 
       ````PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ````
     - Ha a ADSK fut, jelentkezzen be a fejlesztési kit állomás.
 
-2. A hardver életciklus gazdagép vagy a Privileged Access munkaállomás nyisson meg egy rendszergazda jogú Windows PowerShell-munkamenetben. A következő parancsokat a virtuális gépen, amelyen az EGP távoli munkamenetet hozhat létre:
+2. Nyissa meg a hardver életciklus gazdagép vagy a Privileged Access munkaállomás futó megerősített virtuális gép, egy Windows PowerShell-munkamenetben. A következő parancsokat a virtuális gépen, amelyen az EGP távoli munkamenetet hozhat létre:
  
     - Az integrált rendszeren:
       ````PowerShell
@@ -74,11 +77,12 @@ Azt javasoljuk, hogy csatlakozni az EGP csak a hardver életciklus gazdagépről
       ```` 
    Amikor a rendszer kéri, a következő hitelesítő adatok használata:
 
-      - **Felhasználónév**: formátumban adja meg a CloudAdmin fiók  **&lt; *Azure verem tartomány*&gt;\accountname**. (ASDK, a felhasználónév nem **azurestack\accountname**.) 
+      - **Felhasználónév**: formátumban adja meg a CloudAdmin fiók  **&lt; *Azure verem tartomány*&gt;\cloudadmin**. (ASDK, a felhasználónév nem **azurestack\cloudadmin**.)
       - **Jelszó**: Adja meg ugyanazt a jelszót a AzureStackAdmin tartományi rendszergazdai fiók a telepítés során megadott.
+
     > [!NOTE]
     > Ha nem lehet kapcsolódni a ERCS végpont, próbáljon a első és második lépést újra az IP-címével egy ERCS virtuális Gépre, amelyre még nem már próbált kapcsolódni.
-    
+
 3.  Miután csatlakozott, a kérdés módosul **[*IP-cím vagy ERCS virtuális gép neve*]: PS >** vagy **[azs-ercs01]: PS >**, attól függően, a környezet. Itt futtatása `Get-Command` elérhető parancsmagok listájának megtekintéséhez.
 
     Ezek a parancsmagok számos szánt csak integrált rendszer környezetekben (például a datacenter-integrációhoz kapcsolódó parancsmagok). Az a ASDK érvényesítése a következő parancsmagokat:
@@ -116,16 +120,16 @@ Másik lehetőségként használhatja a [Import-PSSession](https://docs.microsof
 
 Importálja a EGP munkamenet a helyi gépén, tegye a következőket:
 
-1. Az emelt szintű hozzáférés munkaállomás eléréséhez.
+1. A megbízhatósági kapcsolat létrehozása.
 
-    - Az integrált rendszeren futtassa a következő parancs futtatásával adja hozzá az EGP a hardver életciklus gazdagép vagy a Privileged Access munkaállomás megbízható gazdagépként.
+    -A integrált rendszer, a következő parancsot egy rendszergazda jogú Windows PowerShell-munkamenetet a EGP a megerősített virtuális gépen futó a hardver életciklus gazdagép vagy a Privileged Access munkaállomás megbízható gazdagépként hozzáadni a.
 
       ````PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ````
     - Ha a ADSK fut, jelentkezzen be a fejlesztési kit állomás.
 
-2. A hardver életciklus gazdagép vagy a Privileged Access munkaállomás nyisson meg egy rendszergazda jogú Windows PowerShell-munkamenetben. A következő parancsokat a virtuális gépen, amelyen az EGP távoli munkamenetet hozhat létre:
+2. Nyissa meg a hardver életciklus gazdagép vagy a Privileged Access munkaállomás futó megerősített virtuális gép, egy Windows PowerShell-munkamenetben. A következő parancsokat a virtuális gépen, amelyen az EGP távoli munkamenetet hozhat létre:
  
     - Az integrált rendszeren:
       ````PowerShell
@@ -145,7 +149,7 @@ Importálja a EGP munkamenet a helyi gépén, tegye a következőket:
       ```` 
    Amikor a rendszer kéri, a következő hitelesítő adatok használata:
 
-      - **Felhasználónév**: formátumban adja meg a CloudAdmin fiók  **&lt; *Azure verem tartomány*&gt;\accountname**. (ASDK, a felhasználónév nem **azurestack\accountname**.) 
+      - **Felhasználónév**: formátumban adja meg a CloudAdmin fiók  **&lt; *Azure verem tartomány*&gt;\cloudadmin**. (ASDK, a felhasználónév nem **azurestack\cloudadmin**.)
       - **Jelszó**: Adja meg ugyanazt a jelszót a AzureStackAdmin tartományi rendszergazdai fiók a telepítés során megadott.
 
 3. A EGP munkamenet importálja a helyi számítógép
@@ -157,7 +161,7 @@ Importálja a EGP munkamenet a helyi gépén, tegye a következőket:
 
 ## <a name="close-the-privileged-endpoint-session"></a>Zárja be a kiemelt végpont munkamenet
 
- Amint azt korábban említettük, az EGP naplózza minden művelet (és a megfelelő kimeneti) a PowerShell-munkamenetben végre. Akkor zárja be a munkamenet használatával a `Close-PrivilegedEndpoint` parancsmag. Ez a parancsmag megfelelően bezárása után a végpont, és egy külső fájlmegosztás meg, megőrzés adja át a rendszernapló fájljaiban.
+ Amint azt korábban említettük, az EGP naplózza minden művelet (és a megfelelő kimeneti) a PowerShell-munkamenetben végre. Zárja be a munkamenet használatával a `Close-PrivilegedEndpoint` parancsmag. Ez a parancsmag megfelelően bezárása után a végpont, és egy külső fájlmegosztás meg, megőrzés adja át a rendszernapló fájljaiban.
 
 A végpont munkamenet lezárása:
 
@@ -167,7 +171,11 @@ A végpont munkamenet lezárása:
 
     ![Zárja be-PrivilegedEndpoint parancsmag kimenetében, amely mutatja, amelyben meg kell határoznia a Beszélgetés szövegének cél elérési útja](media/azure-stack-privileged-endpoint/closeendpoint.png)
 
-A Beszélgetés szövegének naplófájlok sikeresen átkerülnek a fájlmegosztáshoz, miután azok még automatikusan törli a az EGP. Ha a EGP munkamenet bezárásakor a parancsmagok használatával `Exit-PSSession` vagy `Exit`, vagy csak zárja be a PowerShell-konzolt, a Beszélgetés szövegének naplók nem átvitele egy fájlmegosztást. Az EGP maradjanak. A következő futtatásakor `Close-PrivilegedEndpoint` egy fájlmegosztást, és a Beszélgetés szövegének naplók az előző munkamenet is át.
+A Beszélgetés szövegének naplófájlok sikeresen átkerülnek a fájlmegosztáshoz, miután azok még automatikusan törli a az EGP. 
+
+> [!NOTE]
+> Ha a EGP munkamenet bezárásakor a parancsmagok használatával `Exit-PSSession` vagy `Exit`, vagy csak zárja be a PowerShell-konzolt, a Beszélgetés szövegének naplók nem átvitele egy fájlmegosztást. Az EGP maradjanak. A következő futtatásakor `Close-PrivilegedEndpoint` egy fájlmegosztást, és a Beszélgetés szövegének naplók az előző munkamenet is át. Ne használjon `Exit-PSSession` vagy `Exit` zárja be a EGP munkamenetét; használja `Close-PrivilegedEndpoint` helyette.
+
 
 ## <a name="next-steps"></a>További lépések
 [Azure-verem diagnosztikai eszközök](azure-stack-diagnostics.md)

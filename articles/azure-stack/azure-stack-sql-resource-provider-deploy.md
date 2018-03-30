@@ -1,11 +1,11 @@
 ---
-title: "SQL-adatbázisok használata Azure veremben |} Microsoft Docs"
-description: "Ismerje meg, hogyan telepítheti az SQL-adatbázisok Azure verem és a Gyorsműveletek központi telepítése az SQL Server erőforrás-szolgáltató adapter szolgáltatásként."
+title: SQL-adatbázisok használata Azure veremben |} Microsoft Docs
+description: Ismerje meg, hogyan telepítheti az SQL-adatbázisok Azure verem és a Gyorsműveletek központi telepítése az SQL Server erőforrás-szolgáltató adapter szolgáltatásként.
 services: azure-stack
-documentationCenter: 
+documentationCenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/07/2018
 ms.author: mabrigg
 ms.reviewer: jeffgo
-ms.openlocfilehash: 4d2a00f04e5b07aeb3585fb3ab6c8966e0de7e19
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 1754d4b121fdaf4f7b8e4c1954dfd4202ba344b1
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>SQL-adatbázis használata a Microsoft Azure veremben
 
@@ -71,7 +71,7 @@ Meg kell hozzon létre egy (vagy több) az SQL Server példányai és/vagy a kü
     | 1710: 1.0.171028.1 | [SQL RP 1.1.8.0 verziója](https://aka.ms/azurestacksqlrp1710) |
   
 
-4. Az Azure-verem legfelső szintű tanúsítvány veszi át a kiemelt végpont. Az Azure verem SDK-ban önaláírt tanúsítvány jön létre a folyamat során. Integrált rendszerek esetén meg kell adnia a megfelelő tanúsítványt.
+4. Adja meg a szükséges tanúsítványt. Az Azure-verem SDK önaláírt tanúsítvány jön létre a folyamat részeként, nincs további tanúsítványra szükség. Integrált rendszerek esetén meg kell adnia a megfelelő tanúsítványt.
 
    Adja meg a tanúsítvány, tegyen egy .pfx-fájlra a **DependencyFilesLocalPath** az alábbiak szerint:
 
@@ -307,7 +307,7 @@ Kövesse az alábbi lépéseket a Defender definícióinak frissítéséhez:
 
     Ez az oldal "Manuálisan töltse le és telepítse a definíciók" le "Windows Defender víruskereső Windows 10 és Windows 8.1" 64 bites fájlrendszer. 
     
-    A közvetlen hivatkozás: https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64
+    Közvetlen kapcsolat: https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64
 
 2. Hozzon létre egy PowerShell-munkamenetben virtuális gép SQL RP adapter karbantartási végponthoz
 3. A definíciók frissítési fájlok másolása a DB adapter a gépet, a karbantartási végpont munkamenet használatával
