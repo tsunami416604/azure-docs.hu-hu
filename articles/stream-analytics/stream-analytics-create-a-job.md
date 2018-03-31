@@ -1,12 +1,11 @@
 ---
-title: "A Stream Analytics egy analytics feldolgozási feladatot létrehozása |} Microsoft Docs"
-description: "Hozzon létre egy analytics feldolgozási feladatot a Stream Analytics |} tanulási elérésiút-szegmens."
-keywords: "az elemzés adatfeldolgozás"
-documentationcenter: 
+title: A Stream Analytics egy analytics feldolgozási feladatot létrehozása |} Microsoft Docs
+description: Hozzon létre egy analytics feldolgozási feladatot a Stream Analytics |} tanulási elérésiút-szegmens.
+keywords: az elemzés adatfeldolgozás
+documentationcenter: ''
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: cgronlun
+author: jseb225
+manager: ryanw
 ms.assetid: e825fbcf-69e9-443f-b402-3b7a4568f415
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: 98784783beccc19df916920fc41364a23e6bae11
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: jeanb
+ms.openlocfilehash: 03f21c076624ee758d313c4f58e29c616226de57
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-create-a-data-analytics-processing-job-for-stream-analytics"></a>A Stream Analytics egy analytics feldolgozási feladatot létrehozása
 A legfelső szintű erőforrás Azure Stream Analytics egy Stream Analytics-feladat.  Egy vagy több bemeneti adatforrások, a lekérdezés megadása a data transformation, és legalább egy kimeneti tárolókat eredmények írt áll. Együtt ezek lehetővé teszik a felhasználónak az adatfolyamként történő adatáttelepítések esetében feldolgozása adatelemzés végrehajtása.
@@ -44,7 +43,7 @@ A Stream Analytics-feladat, létre kell néhány percet is igénybe vehet. A ál
    
    ![Feladatállapot feldolgozása az Azure portál adatelemzés](./media/stream-analytics-create-a-job/6-stream-analytics-create-a-job.png)  
 
-## <a name="get-help"></a>Segítségkérés
+## <a name="get-help"></a>Segítség kérése
 További támogatásért keresse fel az [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>További lépések

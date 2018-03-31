@@ -1,12 +1,11 @@
 ---
-title: "Hivatkozási adatokat és a keresési táblák használja a Stream Analytics |} Microsoft Docs"
-description: "Referenciaadatok használja a Stream Analytics-lekérdezés"
-keywords: "keresési tábla, referenciaadatok"
+title: Hivatkozási adatokat és a keresési táblák használja a Stream Analytics |} Microsoft Docs
+description: Referenciaadatok használja a Stream Analytics-lekérdezés
+keywords: keresési tábla, referenciaadatok
 services: stream-analytics
-documentationcenter: 
+documentationcenter: ''
 author: jseb225
-manager: jhubbard
-editor: cgronlun
+manager: ryanw
 ms.assetid: 06103be5-553a-4da1-8a8d-3be9ca2aff54
 ms.service: stream-analytics
 ms.devlang: na
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: f7366b4b7d78add47ebab4a6fc72717107814f1f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 77a4a9a28060206a30c658216156d7339bddc398
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="using-reference-data-or-lookup-tables-in-a-stream-analytics-input-stream"></a>A Stream Analytics bemeneti adatfolyam hivatkozási adatokat vagy keresési táblák használata
 Referenciaadatok (más néven keresési tábla), amely statikus véges adatkészlet vagy lelassulnak, ami módosítása ideiglenesek, keresés végrehajtásához, vagy az adatfolyam függ. Annak hivatkozás adatok az Azure Stream Analytics-feladat, általában fogja használni a [hivatkozás adatok csatlakozás](https://msdn.microsoft.com/library/azure/dn949258.aspx) a lekérdezésben. A Stream Analytics használ a tárolási réteg a Referenciaadatoknál Azure Blob Storage tárolót, és az Azure Data Factory hivatkozás adatokat át legyenek-e vagy átmásolva az Azure Blob storage referenciaadatok, használni [tetszőleges számú felhőalapú és a helyszíni adattárolókhoz](../data-factory/copy-activity-overview.md). Referenciaadatok növekvő sorrendben az a dátum/idő, a blob neve (a bemeneti konfigurációs meghatározott) blobok sorozataként van modellezve. Az **csak** támogatja a sorozat végére hozzáadása egy dátum/idő használatával **nagyobb** a sorban utolsó blob a megadottól.
@@ -42,7 +41,7 @@ A referenciaadatok konfigurálásához először szeretne létrehozni, amely tí
 <td>Egy rövid nevet használt a feladat lekérdezésben a bemeneti hivatkozást.</td>
 </tr>
 <tr>
-<td>Tárfiók</td>
+<td>Tárolási fiók</td>
 <td>Hol találhatók a BLOB storage-fiók neve. Ha ugyanazt az előfizetést, a Stream Analytics-feladat, válassza ki azt a a legördülő listán.</td>
 </tr>
 <tr>
@@ -70,7 +69,7 @@ A referenciaadatok konfigurálásához először szeretne létrehozni, amely tí
 <td>Annak érdekében, hogy a lekérdezések a várt módon működjenek, a Stream Analyticsnek tudnia kell, melyik szerializálási formátumot használja a bejövő adatfolyamokhoz. A Referenciaadatoknál, a támogatott formátumok a következők CSV és JSON-NÁ.</td>
 </tr>
 <tr>
-<td>Encoding</td>
+<td>Kódolás</td>
 <td>Az UTF-8 jelenleg az egyetlen támogatott kódolási formátum</td>
 </tr>
 </tbody>
@@ -97,7 +96,7 @@ A lassan változó adatkészletet a referenciaadatok esetén majd adatok engedé
 2. A BLOB-adatobjektumok hivatkozás vannak **nem** a blob "Utolsó módosítás" idő szerint, de csak a blob megadott dátumát és időpontját segítségével a {date} és {time} helyettesítések szempontjából.
 3. Kívánja kerülni a listáról a nagy számú blobot, fontolja meg, amelynek feldolgozása már nem kerül sor nagyon régi blobok törlése. Vegye figyelembe, hogy ASA mehet kell újból feldolgozza a kis méretű bizonyos esetekben, például a számítógép újraindítását.
 
-## <a name="get-help"></a>Segítségkérés
+## <a name="get-help"></a>Segítség kérése
 További támogatásért keresse fel az [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>További lépések

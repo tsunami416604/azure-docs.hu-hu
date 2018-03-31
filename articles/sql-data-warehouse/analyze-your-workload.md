@@ -1,25 +1,19 @@
 ---
-title: "A munkaterhelés - Azure SQL Data Warehouse elemzése |} Microsoft Docs"
-description: "Az Azure SQL Data Warehouse a munkaterheléshez lekérdezés rangsorolási elemzése technikákat."
+title: A munkaterhelés - Azure SQL Data Warehouse elemzése |} Microsoft Docs
+description: Az Azure SQL Data Warehouse a munkaterheléshez lekérdezés rangsorolási elemzése technikákat.
 services: sql-data-warehouse
-documentationcenter: NA
 author: sqlmojo
 manager: jhubbard
-editor: 
-ms.assetid: ef170f39-ae24-4b04-af76-53bb4c4d16d3
-ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: performance
-ms.date: 10/23/2017
-ms.author: joeyong;barbkess;kavithaj
-ms.openlocfilehash: 98617f6b8366662e52d00420adc4c81abffc598d
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.topic: conceptual
+ms.component: manage
+ms.date: 03/28/2018
+ms.author: joeyong
+ms.reviewer: jrj
+ms.openlocfilehash: 7fa5bbd8d9a50bb1dcd1ab5be73f4e248cbbf8fc
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="analyze-your-workload"></a>A számítási feladatok elemzése
 Az Azure SQL Data Warehouse a munkaterheléshez lekérdezés rangsorolási elemzése technikákat.
@@ -33,34 +27,34 @@ Az alábbi táblázat az egyes tevékenységprofil-csoport fontosság leképezé
 
 | Munkaterhelés-csoport | Párhuzamossági tárolóhely leképezése | MB / terjesztési (rugalmasság) | MB / terjesztési (számítást) | Fontos leképezése |
 |:---------------:|:------------------------:|:------------------------------:|:---------------------------:|:------------------:|
-| SloDWGroupC00   | 1                        |    100                         | 250                         | Közepes             |
-| SloDWGroupC01   | 2                        |    200                         | 500                         | Közepes             |
-| SloDWGroupC02   | 4                        |    400                         | 1000                        | Közepes             |
-| SloDWGroupC03   | 8                        |    800                         | 2000                        | Közepes             |
-| SloDWGroupC04   | 16                       |  1,600                         | 4000                        | Magas               |
-| SloDWGroupC05   | 32                       |  3,200                         | 8000                        | Magas               |
-| SloDWGroupC06   | 64                       |  6,400                         | 16,000                      | Magas               |
-| SloDWGroupC07   | 128                      | 12,800                         | 32,000                      | Magas               |
-| SloDWGroupC08   | 256                      | 25,600                         | 64,000                      | Magas               |
+| SloDWGroupC00   | 1                        |    100                         | 250                         | Közepesen súlyos             |
+| SloDWGroupC01   | 2.                        |    200                         | 500                         | Közepesen súlyos             |
+| SloDWGroupC02   | 4                        |    400                         | 1000                        | Közepesen súlyos             |
+| SloDWGroupC03   | 8                        |    800                         | 2000                        | Közepesen súlyos             |
+| SloDWGroupC04   | 16                       |  1,600                         | 4000                        | Súlyos               |
+| SloDWGroupC05   | 32                       |  3,200                         | 8000                        | Súlyos               |
+| SloDWGroupC06   | 64                       |  6,400                         | 16,000                      | Súlyos               |
+| SloDWGroupC07   | 128                      | 12,800                         | 32,000                      | Súlyos               |
+| SloDWGroupC08   | 256                      | 25,600                         | 64,000                      | Súlyos               |
 
 <!-- where are the allocation and consumption of concurrency slots charts? -->
 Az a **foglalási és felhasználási párhuzamossági tárolóhelyek** diagram, ellenőrizheti, hogy egy DW500 használ 1, 4, 8, vagy 16 párhuzamossági üzembe helyezési ponti smallrc, mediumrc, largerc és xlargerc, illetve. Megtekintheti ezeket az értékeket az előző táblázat az egyes erőforrás fontossága kereséséhez.
 
 ### <a name="dw500-mapping-of-resource-classes-to-importance"></a>Az erőforrás fontossága osztályok DW500 leképezése
-| Erőforrásosztály | A tevékenységprofil-csoport | Párhuzamossági tárhelyek használt | MB / terjesztési | Fontos |
+| Erőforrásosztály | A tevékenységprofil-csoport | Párhuzamossági tárhelyek használt | MB / terjesztési | Fontosság |
 |:-------------- |:-------------- |:----------------------:|:-----------------:|:---------- |
-| smallrc        | SloDWGroupC00  | 1                      | 100               | Közepes     |
-| mediumrc       | SloDWGroupC02  | 4                      | 400               | Közepes     |
-| largerc        | SloDWGroupC03  | 8                      | 800               | Közepes     |
-| xlargerc       | SloDWGroupC04  | 16                     | 1,600             | Magas       |
-| staticrc10     | SloDWGroupC00  | 1                      | 100               | Közepes     |
-| staticrc20     | SloDWGroupC01  | 2                      | 200               | Közepes     |
-| staticrc30     | SloDWGroupC02  | 4                      | 400               | Közepes     |
-| staticrc40     | SloDWGroupC03  | 8                      | 800               | Közepes     |
-| staticrc50     | SloDWGroupC03  | 16                     | 1,600             | Magas       |
-| staticrc60     | SloDWGroupC03  | 16                     | 1,600             | Magas       |
-| staticrc70     | SloDWGroupC03  | 16                     | 1,600             | Magas       |
-| staticrc80     | SloDWGroupC03  | 16                     | 1,600             | Magas       |
+| smallrc        | SloDWGroupC00  | 1                      | 100               | Közepesen súlyos     |
+| mediumrc       | SloDWGroupC02  | 4                      | 400               | Közepesen súlyos     |
+| largerc        | SloDWGroupC03  | 8                      | 800               | Közepesen súlyos     |
+| xlargerc       | SloDWGroupC04  | 16                     | 1,600             | Súlyos       |
+| staticrc10     | SloDWGroupC00  | 1                      | 100               | Közepesen súlyos     |
+| staticrc20     | SloDWGroupC01  | 2.                      | 200               | Közepesen súlyos     |
+| staticrc30     | SloDWGroupC02  | 4                      | 400               | Közepesen súlyos     |
+| staticrc40     | SloDWGroupC03  | 8                      | 800               | Közepesen súlyos     |
+| staticrc50     | SloDWGroupC03  | 16                     | 1,600             | Súlyos       |
+| staticrc60     | SloDWGroupC03  | 16                     | 1,600             | Súlyos       |
+| staticrc70     | SloDWGroupC03  | 16                     | 1,600             | Súlyos       |
+| staticrc80     | SloDWGroupC03  | 16                     | 1,600             | Súlyos       |
 
 ## <a name="view-workload-groups"></a>Munkaterhelés-csoportok megtekintése
 A következő DMV-lekérdezés is használhatja, nézze meg a memória erőforrás-elosztás részletesen különbségek szempontjából az erőforrás-vezérlő, illetve elemzése a munkaterhelés-csoport aktív és előzménynaplók használata esetén végzett hibaelhárításhoz.
@@ -234,7 +228,7 @@ FROM    sys.dm_pdw_wait_stats w
 ;
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Adatbázis-felhasználók és biztonsági kezelésével kapcsolatos további információkért lásd: [az SQL Data Warehouse adatbázis védelme][Secure a database in SQL Data Warehouse]. További információ a hogyan nagyobb erőforrás osztályok javíthatja a fürtözött oszlopcentrikus index minőségének, lásd: [szegmens minőségének javítására indexek újraépítése].
 
 <!--Image references-->

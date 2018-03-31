@@ -1,11 +1,11 @@
 ---
-title: "A szerepkörök az Azure-felhőszolgáltatás konfigurálása a Visual Studio |} Microsoft Docs"
-description: "Megtudhatja, hogyan beállítása és konfigurálása a szerepkörök az Azure felhőszolgáltatások Visual Studio használatával."
+title: A szerepkörök az Azure-felhőszolgáltatás konfigurálása a Visual Studio |} Microsoft Docs
+description: Megtudhatja, hogyan beállítása és konfigurálása a szerepkörök az Azure felhőszolgáltatások Visual Studio használatával.
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: d397ef87-64e5-401a-aad5-7f83f1022e16
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 03/21/2017
-ms.author: kraigb
-ms.openlocfilehash: 17da71ac0c5ab9330b9244c0354e4d161d98229e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 8a1eb75e9f38aae29cbb0012e5f15404299d011d
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="configure-azure-cloud-service-roles-with-visual-studio"></a>A Visual Studio Azure cloud service szerepkörök konfigurálása
 Azure-felhőszolgáltatás rendelkezhet egy vagy több munkavégző vagy a webes szerepkörök. Az egyes szerepkörökhöz szükség határozza meg, akkor az a szerepkör beállítására és is konfigurálhatja, hogyan fut a szerepkörhöz. A felhőszolgáltatások szerepkörök kapcsolatos további információkért lásd: a videó [Bevezetés az Azure Felhőszolgáltatások](https://channel9.msdn.com/Series/Windows-Azure-Cloud-Services-Tutorials/Introduction-to-Windows-Azure-Cloud-Services). 
@@ -102,7 +102,7 @@ Minden szolgáltatás konfigurációját egy másik értéket használ, nincs k�
 
 1. Az a **szolgáltatáskonfiguráció** listára, válassza ki a frissíteni kívánt szolgáltatás konfigurációját.
 
-    ![Szolgáltatás konfigurációja](./media/vs-azure-tools-configure-roles-for-cloud-service/project-properties-settings-tab-select-configuration.png)
+    ![Service Configuration](./media/vs-azure-tools-configure-roles-for-cloud-service/project-properties-settings-tab-select-configuration.png)
 
 1. A kapcsolati karakterlánc hozzáadásához válassza **beállítás hozzáadása**.
 
@@ -120,7 +120,7 @@ Minden szolgáltatás konfigurációját egy másik értéket használ, nincs k�
 
     - **A Microsoft Azure storage emulator** – Ha ezt a lehetőséget választja, a többi beállítást a párbeszédpanelen le vannak tiltva megfelelően csak az Azure-bA. Kattintson az **OK** gombra.
     - **Az előfizetés** – Ha ezt a beállítást, a legördülő lista segítségével válassza ki, és jelentkezzen be Microsoft-fiókkal, vagy vegye fel a Microsoft-fiókkal. Válassza ki az Azure-előfizetés és a tárolási fiók. Kattintson az **OK** gombra.
-    - **Manuálisan kell megadni a hitelesítő adatok** -adja meg a tárfiók nevét és a második vagy elsődleges kulcs. Válassza ki a **kapcsolat** (HTTPS ajánlott a legtöbb esetben.) Kattintson az **OK** gombra.
+    - **Manuálisan kell megadni a hitelesítő adatok** -adja meg a tárfiók nevét és a második vagy elsődleges kulcs. Válassza ki a **kapcsolat** (HTTPS ajánlott a legtöbb esetben.) Válassza ki **OK**.
 
 1. A kapcsolati karakterlánc törléséhez válassza ki a kapcsolati karakterláncot, majd válassza ki **eltávolítása beállítás**.
 
@@ -275,6 +275,6 @@ A kódot az előző szakaszban létrehozott fájl megtekintéséhez kövesse az 
 
 1. Amikor megnyílik a Windows Intéző ablakot, írja be a "MyLocalStorageTest.txt" be a **keresési** szövegmezőbe, majd válassza ki **Enter** a keresés indításához. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További tudnivalók a Visual Studio Azure projektek olvasásával [konfigurálása az Azure-projekt](vs-azure-tools-configuring-an-azure-project.md). További információ a felhőalapú szolgáltatás séma olvasásával [Sémareferenciája](https://msdn.microsoft.com/library/azure/dd179398).
 

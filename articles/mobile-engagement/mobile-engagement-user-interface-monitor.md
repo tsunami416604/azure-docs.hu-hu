@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Mobile Engagement felhasználói felület - figyelő"
-description: "További tudnivalók az Azure Mobile Engagement segítségével alkalmazással kapcsolatos valós idejű adatok figyelése"
+title: Az Azure Mobile Engagement felhasználói felület - figyelő
+description: További tudnivalók az Azure Mobile Engagement segítségével alkalmazással kapcsolatos valós idejű adatok figyelése
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: b91ad89a-b89d-4377-abb0-cc2d16a2836d
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 5f8a02e35db93585e0fe46d77b3ad18b94c99597
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b370a5db1acee37ce234f5ec3f004be20719cfea
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-monitor-real-time-data-about-your-application"></a>Az alkalmazással kapcsolatos valós idejű adatok figyelése
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 Ez a cikk ismerteti a **FIGYELŐ** lapján a **a Mobile Engagement** portálon. Használja a **a Mobile Engagement** portal felügyeletét és kezelését a mobile apps szolgáltatásban. Vegye figyelembe, hogy a portál használatának megkezdéséhez először hozzon létre egy **Azure Mobile Engagement** fiók. 
 
 A figyelő a szakasz a felhasználói felület valós idejű elemzési információkat nyújt, és lehetővé teszi riasztások beállítása a küszöbértékek elérésekor a legtöbb pedig ugyanazok az adatok rendelkezésre álló korábban az a [ANALYTICS](mobile-engagement-user-interface-analytics.md) szakasza a felhasználói felületen. Tekintse meg a **szószedet** szakasz a [fogalmak](http://go.microsoft.com/fwlink/?LinkId=525555) definíciójának kifejezések és rövidítések elemzés és -figyelő a témakör (például a következő: aktív felhasználói, új felhasználó, a felhasználó őrzi meg, a munkamenet, a felhasználói elérési útja Graph, felhasználók térkép, követési URL-címek, trendeket, tevékenység, esemény, feladat, hiba, további információ, összeomlási és App-info).
@@ -56,7 +60,7 @@ A minimális azonosítási időköz, amely beállítás perc alatt, győződjön
 
 ![Monitor4][17]
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Alapfogalmak][Link 6]
 * [Hibaelhárítási útmutató szolgáltatás][Link 24]
 

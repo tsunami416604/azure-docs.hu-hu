@@ -1,12 +1,11 @@
 ---
-title: "A Stream Analytics-feladatok kimenete adatok konfigurálása |} Microsoft Docs"
-description: "A Stream Analytics-feladatok kimenetének konfigurálása |} tanulási elérésiút-szegmens."
-keywords: "kimeneti, adatok adatátvitel"
-documentationcenter: 
+title: A Stream Analytics-feladatok kimenete adatok konfigurálása |} Microsoft Docs
+description: A Stream Analytics-feladatok kimenetének konfigurálása |} tanulási elérésiút-szegmens.
+keywords: kimeneti, adatok adatátvitel
+documentationcenter: ''
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: cgronlun
+author: jseb225
+manager: ryanw
 ms.assetid: 3bbea3da-bfce-4af1-a15e-d4b23874034f
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/26/2017
-ms.author: samacha
-ms.openlocfilehash: 1ffa517469da1a8d79917b9747abc97ca3bef463
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: 9e1a8640421c4232cf4abc09794ca584995906f9
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-configure-data-outputs-for-stream-analytics-jobs"></a>A Stream Analytics-feladatok kimenete adatok konfigurálása
 
@@ -49,10 +48,10 @@ A Stream Analytics-feladat kimenetnek hozzáadása:
 > 
  
 
-## <a name="get-help"></a>Segítségkérés
+## <a name="get-help"></a>Segítség kérése
 További támogatásért keresse fel az [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)

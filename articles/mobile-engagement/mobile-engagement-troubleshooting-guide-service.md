@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Mobile Engagement hibaelhárítási útmutatója - szolgáltatás"
-description: "Hibaelhárítás az Azure Mobile Engagement útmutatók"
+title: Az Azure Mobile Engagement hibaelhárítási útmutatója - szolgáltatás
+description: Hibaelhárítás az Azure Mobile Engagement útmutatók
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 8b4275da-c0b4-4690-824a-48e9d7a1fc6e
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: f13fd0540b783120014b3a8d4e41f78808c7fade
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 64bd4849e3bb9a37fb32940548d5ecf01fffe0ca
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshooting-guide-for-service-issues"></a>A szolgáltatásokkal kapcsolatos problémákról hibaelhárítási útmutatója
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 A következőkben lehetséges problémák merülhetnek fel az Azure Mobile Engagement működésével.
 
 ## <a name="service-outages"></a>Szolgáltatás-kimaradások számát
@@ -44,7 +48,7 @@ A következőkben lehetséges problémák merülhetnek fel az Azure Mobile Engag
 * Kampány
 * Rendszergazdai felhasználói fiókkal
 * Böngésző (IE, Firefox Chrome, stb.)
-* Computer
+* Számítógép
 
 2) Ha a probléma csak hatással van a felhasználói felületén vagy a API tesztelése:
 

@@ -1,11 +1,11 @@
 ---
-title: "Telepítse át, és a webalkalmazások Azure-Felhőszolgáltatás a Visual Studio eszközből közzététele |} Microsoft Docs"
-description: "Megtudhatja, hogyan telepítse át, és az Azure felhőszolgáltatásban a webes alkalmazás közzététele a Visual Studio használatával"
+title: Telepítse át, és a webalkalmazások Azure-Felhőszolgáltatás a Visual Studio eszközből közzététele |} Microsoft Docs
+description: Megtudhatja, hogyan telepítse át, és az Azure felhőszolgáltatásban a webes alkalmazás közzététele a Visual Studio használatával
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 9394adfd-a645-4664-9354-dd5df08e8c91
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/10/2017
-ms.author: kraigb
-ms.openlocfilehash: 1ced364bed821a9391f8ffd049f61ac236d98309
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.author: ghogen
+ms.openlocfilehash: 682be267bbb1cf495d85af5786309a98f885fc23
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-migrate-and-publish-a-web-application-to-an-azure-cloud-service-from-visual-studio"></a>Hogyan: át, és tegye közzé a Visual Studio egy Azure-Felhőszolgáltatásban a webes alkalmazás
 
@@ -82,10 +82,10 @@ A következő táblázat ismerteti, az alkalmazás elindítása az Azure-ban:
    | Webes alkalmazás típusa | Azure-beli |
    | --- | --- | --- |
    | ASP.NET-webalkalmazás<br/>(beleértve az MVC-2, MVC 3, MVC 4) | Válassza ki az URL-címet a **telepítési** lapján a **Azure tevékenységnapló**. |
-   | Üres ASP.NET-webalkalmazás | Ha egy alapértelmezett `.aspx` az alkalmazás lapját, válassza ki az URL-címet a **telepítési** lapján a **Azure tevékenységnapló**. Egy másik lapra lép, adja meg a böngészőben egy URL-cím a következő:`<deployment_url>/<page_name>.aspx` |
-   | A Silverlight alkalmazás<br/>A Silverlight üzleti alkalmazás<br/>A Silverlight navigációs alkalmazás | Keresse meg az alkalmazás a következő URL-formátum használatával az adott lapon:`<deployment_url>/<page_name>.aspx` |
-    WCF-alkalmazás<br/>Munkafolyamat-szolgáltatás WCF-alkalmazás | Állítsa be a `.svc` fájl a kezdőlapot, a WCF-szolgáltatások projekthez. Majd keresse meg a`<deployment_url>/<service_file>.svc` |
-   | Az ASP.NET dinamikus entitások<br/>Az ASP.NET dinamikus adatok Linq to SQL | Frissítse a kapcsolati karakterlánc a következő szakaszban leírtak szerint. Majd keresse meg a `<deployment_url>/<page_name>.aspx`. A "LINQ to SQL" egy Azure SQL Database adatbázist kell használnia. |
+   | Üres ASP.NET-webalkalmazás | Ha egy alapértelmezett `.aspx` az alkalmazás lapját, válassza ki az URL-címet a **telepítési** lapján a **Azure tevékenységnapló**. Egy másik lapra lép, adja meg a böngészőben egy URL-cím a következő: `<deployment_url>/<page_name>.aspx` |
+   | A Silverlight alkalmazás<br/>A Silverlight üzleti alkalmazás<br/>A Silverlight navigációs alkalmazás | Keresse meg az alkalmazás a következő URL-formátum használatával az adott lapon: `<deployment_url>/<page_name>.aspx` |
+    WCF-alkalmazás<br/>Munkafolyamat-szolgáltatás WCF-alkalmazás | Állítsa be a `.svc` fájl a kezdőlapot, a WCF-szolgáltatások projekthez. Majd keresse meg a `<deployment_url>/<service_file>.svc` |
+   | ASP.NET Dynamic Entities<br/>Az ASP.NET dinamikus adatok Linq to SQL | Frissítse a kapcsolati karakterlánc a következő szakaszban leírtak szerint. Majd keresse meg a `<deployment_url>/<page_name>.aspx`. A "LINQ to SQL" egy Azure SQL Database adatbázist kell használnia. |
 
 ## <a name="update-a-connection-string-for-aspnet-dynamic-entities"></a>Frissítse a kapcsolati karakterláncot az ASP.NET dinamikus entitások
 
@@ -117,9 +117,9 @@ A következő táblázat ismerteti, az alkalmazás elindítása az Azure-ban:
 | Web | ASP.NET MVC 2 üres webalkalmazás |
 | Web | Az ASP.NET dinamikus adatok entitások webes alkalmazás |
 | Web | Az ASP.NET dinamikus adatok Linq to SQL webes alkalmazás |
-| A Silverlight | A Silverlight alkalmazás |
-| A Silverlight | A Silverlight üzleti alkalmazás |
-| A Silverlight | A Silverlight navigációs alkalmazás |
+| Silverlight | A Silverlight alkalmazás |
+| Silverlight | A Silverlight üzleti alkalmazás |
+| Silverlight | A Silverlight navigációs alkalmazás |
 | WCF | WCF-alkalmazás |
 | WCF | Munkafolyamat-szolgáltatás WCF-alkalmazás |
 | Munkafolyamat | Munkafolyamat-szolgáltatás WCF-alkalmazás |

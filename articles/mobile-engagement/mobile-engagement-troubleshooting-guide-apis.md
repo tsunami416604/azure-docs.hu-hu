@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Mobile Engagement hibaelhárítási útmutatója - API-k"
-description: "Hibaelhárítás az Azure Mobile Engagement - API-k útmutatók"
+title: Az Azure Mobile Engagement hibaelhárítási útmutatója - API-k
+description: Hibaelhárítás az Azure Mobile Engagement - API-k útmutatók
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 3efc8a52-2b74-4917-b887-815ae8277474
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 10/04/2016
 ms.author: piyushjo
-ms.openlocfilehash: a7ae0a83046f2d67b790f672dcd3ae261987357a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cda11c8d2f1d147a807083c5479d2b2cda65462c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshooting-guide-for-api-issues"></a>Az API-problémák hibaelhárítási útmutató
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 A következőkben lehetséges problémák merülhetnek fel a rendszergazdák hogyan működnek együtt az Azure Mobile Engagement az API-k használatával.
 
 ## <a name="syntax-issues"></a>Szintaxis problémák
@@ -34,7 +38,7 @@ A következőkben lehetséges problémák merülhetnek fel a rendszergazdák hog
   * SDK-integrációval és API-használati egy másik gyakori probléma, hogy megzavarják a SDK és az API-kulcs.
   * Parancsfájlok, amelyek kapcsolódnak az API-kat kell adatküldés legalább 10 percenként, vagy a kapcsolat időtúllépés (különösen a figyelő API parancsfájlok figyeli az adatokat a közös) lesz. Időtúllépések megelőzése érdekében a parancsfájl egy XMPP ping 10 percenként küld a munkamenet életben a kiszolgálóval rendelkezik.
 
-### <a name="see-also"></a>Lásd még:
+### <a name="see-also"></a>Lásd még
 * [API-JÁNAK dokumentációja][Link 4]
 * [XMPP protokoll adatai](http://xmpp.org/extensions/xep-0199.html)
 
@@ -45,7 +49,7 @@ A következőkben lehetséges problémák merülhetnek fel a rendszergazdák hog
 ### <a name="causes"></a>Okok
 * Erősítse meg, hogy elvégezhető ugyanaz a művelet az Azure Mobile Engagement felhasználói felület jeleníti meg, hogy helyesen integrálva van a szolgáltatás az Azure Mobile Engagement az SDK-t.
 
-### <a name="see-also"></a>Lásd még:
+### <a name="see-also"></a>Lásd még
 * [Felhasználói felületének dokumentációja][Link 1]
 
 ## <a name="error-messages"></a>Hibaüzenetek
@@ -75,7 +79,7 @@ A következőkben lehetséges problémák merülhetnek fel a rendszergazdák hog
         503        Analytics not available yet (the requested information is not computed yet for an application).
         504        The server was not able to handle your request in a reasonable time (if you make multiple calls to an API very quickly, try to make one call at a time and spread the calls out over time).
 
-### <a name="see-also"></a>Lásd még:
+### <a name="see-also"></a>Lásd még
 * [Részletes hibaüzenetek az egyes adott API - API dokumentációját][Link 4]
 
 ## <a name="silent-failures"></a>Csendes hibák
@@ -86,7 +90,7 @@ A következőkben lehetséges problémák merülhetnek fel a rendszergazdák hog
 * Sok elem a rendszer letiltja az Azure Mobile Engagement felhasználói felületén, ha azok nincsenek megfelelően, integrált, de fog csendes az API-n, a, ne felejtse el tesztelni ugyanazokat a funkció a megjelenítéséhez, ha működik a felhasználói Felületről.
 * Az Azure Mobile Engagement és az Azure Mobile Engagement próbál használni, számos további beállításokat kell külön-külön integrálni az alkalmazás az SDK-val külön lépéseket, mielőtt azokat.
 
-### <a name="see-also"></a>Lásd még:
+### <a name="see-also"></a>Lásd még
 * [Hibaelhárítási útmutató - SDK][Link 25]
 
 <!--Link references-->

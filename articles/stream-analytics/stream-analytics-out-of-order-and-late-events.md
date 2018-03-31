@@ -1,13 +1,12 @@
 ---
-title: "Esemény sorrendjét és az Azure Stream Analytics késedelmesség kezelése |} Microsoft Docs"
-description: "Tudnivalók a Stream Analytics-soron vagy késői események adatfolyamban működéséről."
-keywords: "nem megfelelő sorrendben, késői, események"
-documentationcenter: 
+title: Esemény sorrendjét és az Azure Stream Analytics késedelmesség kezelése |} Microsoft Docs
+description: Tudnivalók a Stream Analytics-soron vagy késői események adatfolyamban működéséről.
+keywords: nem megfelelő sorrendben, késői, események
+documentationcenter: ''
 services: stream-analytics
 author: jseb225
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: 6478d577c52ffa23c3149c8213f182eaa1e466bd
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3c1924ad87715f7a44c3666991e792adc3a20af9
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-stream-analytics-event-order-considerations"></a>Az Azure Stream Analytics esemény rendelés kapcsolatos szempontok
 
@@ -127,12 +126,12 @@ Természetesen ez azt jelenti, hogy a kimeneti eseményekben maguk nem megfelel�
 
 Az Azure Stream Analytics segítségével valósítja meg ezt a funkciót a [TIMESTAMP BY OVER](https://msdn.microsoft.com/library/azure/mt573293.aspx) záradékban.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 * Késő érkezés tűréshatár és a helyességét, és késésre vonatkozó követelmény alapján soron ablak konfigurálása. Is figyelembe venni, hogyan kerülnek az eseményeket.
 * Azt javasoljuk, hogy soron tolerancia értéke kisebb a késő érkezés tolerancia.
 * Több ütemtervet egyesítésekor éppen adatokat az adatforrások és a partíciók az egyik hiánya késleltetheti-e a kimenet egy további késő érkezés tűrési által.
 
-## <a name="get-help"></a>Segítségkérés
+## <a name="get-help"></a>Segítség kérése
 Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>További lépések

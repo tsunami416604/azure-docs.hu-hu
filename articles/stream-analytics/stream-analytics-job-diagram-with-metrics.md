@@ -1,25 +1,24 @@
 ---
-title: "Az Azure Stream Analytics adatvezérelt hibakeresést a feladat ábra keresztül |} Microsoft Docs"
-description: "A Stream Analytics-feladat hibaelhárítása a feladat ábra és metrikák használatával."
-keywords: 
-documentationcenter: 
+title: Az Azure Stream Analytics adatvezérelt hibakeresést a feladat ábra keresztül |} Microsoft Docs
+description: A Stream Analytics-feladat hibaelhárítása a feladat ábra és metrikák használatával.
+keywords: ''
+documentationcenter: ''
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+author: jseb225
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 05/01/2017
-ms.author: samacha
-ms.openlocfilehash: 5b689c07bf8baa531c7a50ca50ed5140c1787e7b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: 65eeeee7daa22b94074f55defdfd1219049774c9
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>Adatalapú hibakeresést keresztül a feladat ábra
 
@@ -85,10 +84,10 @@ Ha az előző lekérdezés lépés egy bemeneti processzor, használja a bemenet
 *   **InputEventsSourcesBackloggedTotal** jelzi, hogy hány több üzenetet kell az Event Hubs és Azure IoT Hub bemeneti adatok olvasását.
 
 
-## <a name="get-help"></a>Segítségkérés
+## <a name="get-help"></a>Segítség kérése
 Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [A Stream Analytics használatába](stream-analytics-real-time-fraud-detection.md)
 * [Stream Analytics-feladatok méretezése](stream-analytics-scale-jobs.md)

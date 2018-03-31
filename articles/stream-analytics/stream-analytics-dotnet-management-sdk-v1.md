@@ -1,12 +1,11 @@
 ---
-title: "Felügyeleti .NET SDK v1.x az Azure Stream Analytics |} Microsoft Docs"
-description: "Első lépések a Stream Analytics felügyeleti .NET SDK-val. Megtudhatja, hogyan állítson be és az analytics-feladatok futtatásához. Hozzon létre egy projekt, bemenetek, kimenetek és átalakításához."
+title: Felügyeleti .NET SDK v1.x az Azure Stream Analytics |} Microsoft Docs
+description: Első lépések a Stream Analytics felügyeleti .NET SDK-val. Megtudhatja, hogyan állítson be és az analytics-feladatok futtatásához. Hozzon létre egy projekt, bemenetek, kimenetek és átalakításához.
 keywords: .NET SDK-val analytics API
 services: stream-analytics
-documentationcenter: 
-author: samacha
-manager: jhubbard
-editor: cgronlun
+documentationcenter: ''
+author: jseb225
+manager: ryanw
 ms.assetid: 5e93de87-0c6f-4f4b-be98-08d63f832897
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/06/2017
-ms.author: samacha
-ms.openlocfilehash: 7f434f1fe600877d1a12174ae84aaa47e878a055
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: jeanb
+ms.openlocfilehash: acda06ae2d0eea4b3352870bd6e1f4410ad05b17
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="management-net-sdk-v1x-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Felügyeleti .NET SDK v1.x: állítsa össze, és az Azure Stream Analytics API használatával a .NET-hez analytics-feladatok futtatása
 Megtudhatja, hogyan állítson be és használja a Stream Analytics API Management .NET SDK használatával .NET analytics-feladatok futtatása. Projekt beállítása, hozzon létre a bemeneti és kimeneti adatforrások, átalakítások, és úgy indítsa és feladatok. Az analytics-feladatok adatok Blob-tároló vagy az eseményközpont folyamatos átviteléhez.
@@ -303,7 +302,7 @@ A **törlése** metódus törli a feladatot, valamint az alapul szolgáló alár
 ## <a name="get-support"></a>Támogatás kérése
 Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Hogy megismerte a .NET SDK használatával hozhat létre és futtathat analytics-feladatok alapjait. További információ:
 
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)

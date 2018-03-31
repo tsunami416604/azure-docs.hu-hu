@@ -1,11 +1,11 @@
 ---
-title: "Ismerkedés az Azure várólista-tároló és a Visual Studio kapcsolódó szolgáltatások (ASP.NET) |} Microsoft Docs"
-description: "Ismerkedés az Azure üzenetsorának tárhelyet használ egy ASP.NET-projekt, a Visual Studio egy tárfiókot, a Visual Studio kapcsolódó szolgáltatások használatával történő kapcsolódás után"
+title: Ismerkedés az Azure várólista-tároló és a Visual Studio kapcsolódó szolgáltatások (ASP.NET) |} Microsoft Docs
+description: Ismerkedés az Azure üzenetsorának tárhelyet használ egy ASP.NET-projekt, a Visual Studio egy tárfiókot, a Visual Studio kapcsolódó szolgáltatások használatával történő kapcsolódás után
 services: storage
-documentationcenter: 
-author: kraigb
-manager: ghogen
-editor: 
+documentationcenter: ''
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 94ca3413-5497-433f-abbe-836f83a9de72
 ms.service: storage
 ms.workload: web
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 12/23/2016
-ms.author: kraigb
-ms.openlocfilehash: 4687e5dfce72583728068c176d86d100313badf6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 89baa741dcd916b70514f9703255b9e6d01c689b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>Ismerkedés az Azure várólista-tároló és a Visual Studio kapcsolódó szolgáltatások (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -139,7 +139,7 @@ A következő lépések bemutatják, hogyan várólista létrehozása:
 
 1. Futtassa az alkalmazást, és válassza ki **létrehozás várólista** az alábbi képernyőfelvételhez hasonló eredmények megtekintése érdekében:
   
-    ![Várólista létrehozása](./media/vs-storage-aspnet-getting-started-queues/create-queue-results.png)
+    ![Üzenetsor létrehozása](./media/vs-storage-aspnet-getting-started-queues/create-queue-results.png)
 
     Ahogy korábban említettük a **CloudQueue.CreateIfNotExists** metódus beolvasása **igaz** csak a várólista nem létezik és jön létre. Ezért amikor a várólista létezik-e, futtassa az alkalmazást, ha a metódus visszaadja **hamis**. Az alkalmazás többször is lefuthat, az alkalmazás ismételt futtatása előtt kell törölnie a várólistát. A sor törlése megteheti a **CloudQueue.Delete** metódust. A várólista használatával is törölheti a [Azure-portálon](http://go.microsoft.com/fwlink/p/?LinkID=525040) vagy a [Microsoft Azure Tártallózó](../vs-azure-tools-storage-manage-with-storage-explorer.md).  
 
@@ -572,9 +572,9 @@ Ez a szakasz bemutatja, hogyan várólista törlése.
 
 1. Futtassa az alkalmazást, és válassza ki **várólista hosszának lekérése** az alábbi képernyőfelvételhez hasonló eredmények megtekintése érdekében:
   
-    ![Várólista törlése](./media/vs-storage-aspnet-getting-started-queues/delete-queue-results.png)
+    ![Üzenetsor törlése](./media/vs-storage-aspnet-getting-started-queues/delete-queue-results.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az Azure-ban való adattárolás további lehetőségeiről tekintse meg a többi szolgáltatás-útmutatót.
 
   * [Ismerkedés az Azure blob storage és a Visual Studio kapcsolódó szolgáltatások (ASP.NET)](../storage/vs-storage-aspnet-getting-started-blobs.md)

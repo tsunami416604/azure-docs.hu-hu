@@ -1,10 +1,10 @@
 ---
-title: "Anomáliadetektálás Azure használati útmutatójában (előzetes verzió) |} Microsoft Docs"
-description: "Használja a stream analytics és a gépi tanulási rendellenességek észlelését."
+title: Anomáliadetektálás Azure használati útmutatójában (előzetes verzió) |} Microsoft Docs
+description: Használja a stream analytics és a gépi tanulási rendellenességek észlelését.
 services: stream-analytics
-documentationcenter: 
+documentationcenter: ''
 author: dubansal
-manager: jhubbard
+manager: katicad
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 02/12/2018
 ms.author: dubansal
-ms.openlocfilehash: d8762ea608afed707d41a3c0a1a8725457a0e4dc
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 9d301f8586038f635ee97a3acdc9c4dc8a2bbcc6
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Az Azure Stream Analytics Anomáliadetektálás
 
@@ -45,7 +45,7 @@ A AnomalyDetection operátor használata esetén meg kell adnia a **Limit Durati
 
 ### <a name="arguments"></a>Argumentumok
 
-* **scalar_expression** -a skaláris kifejezés, amely alatt az anomáliadetektálás történik. Megengedett értékek, ez a paraméter tartalmazza a lebegőpontos vagy Bigint adattípus, amely visszatérési egyetlen (skaláris) értéket. A helyettesítő karakteres kifejezést  **\***  nem engedélyezett. Skaláris kifejezés nem tartalmazhat más analitikai függvények vagy külső funkciók. 
+* **scalar_expression** -a skaláris kifejezés, amely alatt az anomáliadetektálás történik. Megengedett értékek, ez a paraméter tartalmazza a lebegőpontos vagy Bigint adattípus, amely visszatérési egyetlen (skaláris) értéket. A helyettesítő karakteres kifejezést **\*** nem engedélyezett. Skaláris kifejezés nem tartalmazhat más analitikai függvények vagy külső funkciók. 
 
 * **partition_by_clause** – a `PARTITION BY <partition key>` záradék osztja a tanulási és a képzési külön partíciók között. Más szóval egy külön modell használni / értékének `<partition key>` és tanulási és, hogy a modell a tanítási használják ezt az értéket csak eseményeket. Például a következő lekérdezés szerelvények és egy olvasási szemben a más értékek csak az azonos érzékelő pontszámok:
 
@@ -97,7 +97,7 @@ Diagramja a lépések keresse meg az alábbiak szerint:
 
 ![Képzési modellek](media/stream-analytics-machine-learning-anomaly-detection/training_model.png)
 
-|Modell | **Képzési kezdési ideje** | **A pontszám használatának ideje** |
+|**Modell** | **Képzési kezdési ideje** | **A pontszám használatának ideje** |
 |---------|---------|---------|
 |M1     | 11:20   | 11:33   |
 |M2     | 11:30   | 11:40   |

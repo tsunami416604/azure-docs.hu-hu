@@ -1,25 +1,24 @@
 ---
-title: "Az event hubs érzékelőinek Azure Stream Analytics Debug |} Microsoft Docs"
-description: "A lekérdezés ajánlott eljárások az Event Hubs fogyasztói csoportok a Stream Analytics-feladatok figyelembe véve."
-keywords: "Event hub határt, a fogyasztói csoportot"
+title: Az event hubs érzékelőinek Azure Stream Analytics Debug |} Microsoft Docs
+description: A lekérdezés ajánlott eljárások az Event Hubs fogyasztói csoportok a Stream Analytics-feladatok figyelembe véve.
+keywords: Event hub határt, a fogyasztói csoportot
 services: stream-analytics
-documentationcenter: 
-author: samacha
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+documentationcenter: ''
+author: jseb225
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
-ms.author: samacha
-ms.openlocfilehash: ede3137de92e251f4ad020bc1ce3f041918242b2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: ba54e4c0146e797e300579415db170fd6d290034
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="debug-azure-stream-analytics-with-event-hub-receivers"></a>Azure Stream Analytics a hibakereséshez event hubs érzékelőinek száma
 
@@ -79,10 +78,10 @@ FROM data
 A lekérdezések, amelyben legalább három bemeneti adatokat a ugyanazt az Event Hubs fogyasztói csoportot csatlakozik külön felhasználói csoportok létrehozása. Ehhez szükséges további Stream Analytics bemenetek létrehozását.
 
 
-## <a name="get-help"></a>Segítségkérés
+## <a name="get-help"></a>Segítség kérése
 Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [A Stream Analytics használatába](stream-analytics-real-time-fraud-detection.md)
 * [Stream Analytics-feladatok méretezése](stream-analytics-scale-jobs.md)

@@ -1,12 +1,11 @@
 ---
-title: "Átviteli sebesség növelése Stream Analytics-feladatok méretezése |} Microsoft Docs"
-description: "Ismerje meg a Stream Analytics-feladatok méretezése bemeneti partíciók konfigurálása, a lekérdezés definíciója hangolása és adatfolyam-egységek feladat beállítása."
-keywords: "adatfolyam, az adatfeldolgozás streaming hangolására analytics"
+title: Átviteli sebesség növelése Stream Analytics-feladatok méretezése |} Microsoft Docs
+description: Ismerje meg a Stream Analytics-feladatok méretezése bemeneti partíciók konfigurálása, a lekérdezés definíciója hangolása és adatfolyam-egységek feladat beállítása.
+keywords: adatfolyam, az adatfeldolgozás streaming hangolására analytics
 services: stream-analytics
-documentationcenter: 
+documentationcenter: ''
 author: JSeb225
-manager: jhubbard
-editor: cgronlun
+manager: ryanw
 ms.assetid: 7e857ddb-71dd-4537-b7ab-4524335d7b35
 ms.service: stream-analytics
 ms.devlang: na
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/22/2017
 ms.author: jeanb
-ms.openlocfilehash: 781a3b71c35cb48e40202e3b1acc8edbbaf865c4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2e0487a9e4cd6346312c6817ef2768556cba72ba
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="scale-azure-stream-analytics-jobs-to-increase--throughput"></a>Átviteli sebesség növelése az Azure Stream Analytics-feladatok méretezése
 Ez a cikk bemutatja, hogyan finomhangolhatják a Stream Analytics lekérdezési Streaming Analytics-feladatok átviteli sebesség növelése. Ez az útmutató segítségével méretezni a feladat magasabb terhelés kezelésére, és több rendszererőforrást (például a nagyobb sávszélességet, több Processzor-erőforrások, több memória) előnyeit.
@@ -50,7 +49,7 @@ Ha a lekérdezés nem embarrassingly párhuzamos, követheti az alábbi lépése
 2.  Ha a kifejezés átviteli érhető el a várható terhelést, akkor elkészült. Másik lehetőségként választhatja, hogy mérésére SU és 1 SU tudja meg, amely a forgatókönyvnek SU minimális száma 3 futó ugyanazt a feladatot.
 3.  Ha nem érhetők el a kívánt teljesítményt, próbálja meg a lekérdezés felosztása több lépést, ha lehetséges, ha nem rendelkezik már több lépést, és akár 6 SU lefoglalni az egyes lépések a lekérdezésben. Például, ha 3 lépést, a "Méretezése" beállítás 18 SU lefoglalni.
 4.  E feladat futtatásakor a Stream Analytics minden lépés dedikált 6 SU erőforrásokkal saját csomóponton helyezi. 
-5.  Ha Ön továbbra is még nem érhető el a terhelés célként, megkísérli használni **PARTITION BY** kiindulva lépések közelebb a bemeneti. A **GROUP BY** operátor szerinti szűrése, amely nem feltétlenül természetes particionálható, használhatja a helyi/globális összesített mintát végrehajtásához egy particionált **GROUP BY** követ egy másik **csoportosítás** . Például ha azt szeretné, ha a hány autók áthaladás minden téren kiállítási át 3 percenként, és az adatok mennyisége túl mi van kezelhetik 6 SU.
+5.  Ha Ön továbbra is még nem érhető el a terhelés célként, megkísérli használni **PARTITION BY** kiindulva lépések közelebb a bemeneti. A **GROUP BY** operátor szerinti szűrése, amely nem feltétlenül természetes particionálható, használhatja a helyi/globális összesített mintát végrehajtásához egy particionált **GROUP BY** követ egy másik **csoportosítás **. Például ha azt szeretné, ha a hány autók áthaladás minden téren kiállítási át 3 percenként, és az adatok mennyisége túl mi van kezelhetik 6 SU.
 
 Lekérdezés:
 
@@ -148,12 +147,12 @@ A következő táblázat a streamelési egységek számának növekedését azt,
 
 És a következő diagram megjeleníti a képi megjelenítés SUS-t és az átvitel közötti kapcsolat.
 
-![img.Stream.Analytics.perfgraph][img.stream.analytics.perfgraph]
+![img.stream.analytics.perfgraph][img.stream.analytics.perfgraph]
 
-## <a name="get-help"></a>Segítségkérés
+## <a name="get-help"></a>Segítség kérése
 Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)

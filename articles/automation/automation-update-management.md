@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: e426f2b90e3ac3ac6bcb9825c7848c76e52a1021
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a7891e5bedb6e2ad3cba4780d38fc479d7b0bf4e
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítse a felügyeleti megoldás az Azure-ban
 
@@ -64,7 +64,7 @@ A következő táblázat az operációs rendszereket, amelyek nem támogatottak.
 |Operációs rendszer  |Megjegyzések  |
 |---------|---------|
 |Windows-ügyfél     | Ügyféloldali operációs rendszerek (a Windows 7, Windows 10 stb.) nem támogatottak.        |
-|Windows Server 2016 Nano Server     | Nem támogatott       |
+|Windows Server 2016 Nano Server     | Érvénytelen érték       |
 
 ### <a name="client-requirements"></a>Ügyfélkövetelmények
 
@@ -119,7 +119,7 @@ Heartbeat
 
 A Windows-számítógépen a következő ügynök ellenőrzésére a Log Analyticshez tekinthetők át:
 
-1.  Nyissa meg a Microsoft Monitoring Agentet a Vezérlőpulton. Az **Azure Log Analytics (OMS)** fülön az ügynök megjeleníti a következő üzenetet: **A Microsoft Monitoring Agent sikeresen csatlakozott a Microsoft Operations Management Suite szolgáltatáshoz**.   
+1.  Nyissa meg a Microsoft Monitoring Agent, a Vezérlőpulton, és az a **Azure Naplóelemzés** lapon, az ügynök jeleníti meg a következő üzenet: **Naplóelemzési sikeresen csatlakozott a Microsoft Monitoring Agent** .   
 2.  Nyissa meg a Windows Eseménynaplóját, lépjen az **Alkalmazás- és szolgáltatásnaplók\Operations Manager** részhez, és keresse meg a 3000-es, illetve az 5002-es eseményazonosítót a forrás szolgáltatás-összekötőből. Ezek az események azt jelzik, a számítógép regisztrálva van a Naplóelemzési munkaterület, és konfigurációs fogadja.  
 
 Ha az ügynök nem tud kommunikálni a Naplóelemzési, és a tűzfalon vagy proxykiszolgálón keresztül az internettel történő kommunikációra van konfigurálva, győződjön meg arról, a tűzfal vagy a proxy kiszolgáló megfelelően konfigurálva megtekintésével [hálózati konfigurációja Windows-ügynök](../log-analytics/log-analytics-agent-windows.md) vagy [hálózati konfigurációt a Linux-ügynök](../log-analytics/log-analytics-agent-linux.md).
@@ -131,7 +131,7 @@ Ha az ügynök nem tud kommunikálni a Naplóelemzési, és a tűzfalon vagy pro
 
 Az újonnan hozzáadott Linux-ügynökök **Frissítve** állapotúak, miután a rendszer végrehajt egy elemzést. A folyamat akár hat órát is igénybe vehet.
 
-Ellenőrizheti, hogy az Operations Manager felügyeleti csoport Naplóelemzési kommunikál, [ellenőrzése az Operations Manager integrációja OMS](../log-analytics/log-analytics-om-agents.md#validate-operations-manager-integration-with-oms).
+Ellenőrizheti, hogy az Operations Manager felügyeleti csoport Naplóelemzési kommunikál, [ellenőrzése az Operations Manager integrációja Naplóelemzési](../log-analytics/log-analytics-om-agents.md#validate-operations-manager-integration-with-oms).
 
 ## <a name="data-collection"></a>Adatgyűjtés
 
@@ -173,7 +173,7 @@ Kattintson a **hiányzó frissítések** hiányzik a gépeknek a frissítések l
 
 ## <a name="viewing-update-deployments"></a>Frissítéstelepítések megtekintése
 
-Kattintson a **szoftverfrissítés-telepítések** meglévő központi telepítések listájának megtekintéséhez. Bármelyik frissítés a központi telepítések a lista kattintva megnyílik a **központi telepítés futtatása frissítés** adott központi telepítési oldal.
+Kattintson a **szoftverfrissítés-telepítések** lap választásával tudja megtekinteni a meglévő központi telepítések listáját. Bármelyik frissítés a központi telepítések a tábla kattintva megnyílik a **központi telepítés futtatása frissítés** adott központi telepítési oldal.
 
 ![Frissítéstelepítési eredmények áttekintése](./media/automation-update-management/update-deployment-run.png)
 
@@ -183,10 +183,10 @@ Hozzon létre egy új központi telepítésének kattintva a **ütemezés közpo
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Name (Név) |A frissítéstelepítést beazonosító egyedi név. |
+| Név |A frissítéstelepítést beazonosító egyedi név. |
 |Operációs rendszer| Linux- vagy Windows|
 | Gépek frissítése |Válasszon ki egy mentett keresést vagy gép válasszon címet a legördülő listán, és válassza ki az egyes gépek |
-|Frissítési besorolás|Válassza ki a szükséges összes frissítési besorolások|
+|Frissítési besorolások|Válassza ki a szükséges összes frissítési besorolások|
 |Frissítések kizárása|Adja meg a "KB" előtag nélkül kizárandó összes KB|
 |Ütemezési beállítások|Válassza ki a dátumot, és válassza ki az egyszer, vagy az ismétlődés ismétlődő|
 | Karbantartási időszak |Állítsa be a frissítéseket percek számát. Az érték lehet nem lehet kisebb, mint 30 perc és legfeljebb 6 óra |
@@ -213,7 +213,7 @@ A következő táblázat a megoldás által gyűjtött frissítési rekordok min
 
 Azok a felhasználók, akik befektettek a System Center Configuration Managerbe a számítógépek, kiszolgálók és mobileszközök kezelése érdekében, a teljesítményét és fejlettségét a szoftverfrissítések kezelése során, a szoftverfrissítés-kezelési (SUM) ciklus részeként is kihasználják.
 
-Az OMS frissítés megoldás integrálása a System Center Configuration Managerrel kapcsolatban a [integrálni System Center Configuration Manager az OMS frissítéskezelés](oms-solution-updatemgmt-sccmintegration.md).
+A felügyeleti megoldás integrálása a System Center Configuration Managerrel kapcsolatban a [integrálni System Center Configuration Manager frissítési felügyeleti](oms-solution-updatemgmt-sccmintegration.md).
 
 ## <a name="patching-linux-machines"></a>Linux-gépek javítását
 
@@ -246,7 +246,7 @@ Ha problémák merülnek fel a megoldás vagy virtuális gépek bevezetése sor�
 | A gép nem regisztrálható a javításkezelőhöz,<br>A regisztráció kivétel miatt meghiúsult<br>System.InvalidOperationException: {„Üzenet”:„A gép már<br>regisztrálva van egy másik fiókhoz. "} | A gép már be lett vezetve egy másik munkaterületre a frissítéskezeléshez | Végezze el a régi összetevők tisztítását [a hibrid runbook-csoport törlésével](automation-hybrid-runbook-worker.md#remove-hybrid-worker-groups)|  
 | A gép nem regisztrálható a javításkezelőhöz,<br>A regisztráció kivétel miatt meghiúsult<br>System.Net.Http.HttpRequestException: Hiba történt a kérés küldése során. ---><br>System.Net.WebException: Az alapul szolgáló kapcsolat<br>megszakadt: Váratlan hiba<br>történt a fogadó oldalon. ---> System.ComponentModel.Win32Exception:<br>Az ügyfél és a kiszolgáló nem képes kommunikálni,<br>mert nem rendelkeznek közös algoritmussal | A proxy/átjáró/tűzfal blokkolja a kommunikációt | [A rendszerkövetelmények áttekintése](automation-offering-get-started.md#network-planning)|  
 | A gép nem regisztrálható a javításkezelőhöz,<br>A regisztráció kivétel miatt meghiúsult<br>Newtonsoft.Json.JsonReaderException: Hiba történt a pozitív végtelen érték elemzése közben. | A proxy/átjáró/tűzfal blokkolja a kommunikációt | [A rendszerkövetelmények áttekintése](automation-offering-get-started.md#network-planning)| 
-| Az <wsid>.oms.opinsights.azure.com szolgáltatás által bemutatott tanúsítványt<br>nem a Microsoft szolgáltatásaihoz használt<br>hitelesítésszolgáltató bocsátotta ki. Kapcsolatfelvétel<br>a hálózati rendszergazdánál, hogy futtat-e olyan proxyt, amely elfogja a<br>TLS/SSL-kommunikációt. |A proxy/átjáró/tűzfal blokkolja a kommunikációt | [A rendszerkövetelmények áttekintése](automation-offering-get-started.md#network-planning)|  
+| Az <wsid>.oms.opinsights.azure.com szolgáltatás által bemutatott tanúsítványt<br>nem a Microsoft szolgáltatásaihoz használt<br>hitelesítésszolgáltató bocsátotta ki. Kapcsolattartó<br>a hálózati rendszergazdánál, hogy futtat-e olyan proxyt, amely elfogja a<br>TLS/SSL-kommunikációt. |A proxy/átjáró/tűzfal blokkolja a kommunikációt | [A rendszerkövetelmények áttekintése](automation-offering-get-started.md#network-planning)|  
 | A gép nem regisztrálható a javításkezelőhöz,<br>A regisztráció kivétel miatt meghiúsult<br>AgentService.HybridRegistration.<br>PowerShell.Certificates.CertificateCreationException:<br>Nem sikerült önaláírt tanúsítványt létrehozni. ---><br>System.UnauthorizedAccessException: A hozzáférés megtagadva. | Hiba az önaláírt tanúsítvány létrehozásakor | Ellenőrizze, hogy a rendszerfióknak<br>van-e olvasási hozzáférése a következő mappához:<br>**C:\ProgramData\Microsoft\**<br>**Crypto\RSA**|  
 
 ## <a name="next-steps"></a>További lépések

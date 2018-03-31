@@ -1,11 +1,11 @@
 ---
-title: "Unity összegző golyó oktatóanyag"
-description: "Lépések végrehajtásával hozza létre a Unity klasszikus Roll egy golyó játék, amely előzetesen szükséges összes Mobile Engagement Unity-oktatóanyag"
+title: Unity összegző golyó oktatóanyag
+description: Lépések végrehajtásával hozza létre a Unity klasszikus Roll egy golyó játék, amely előzetesen szükséges összes Mobile Engagement Unity-oktatóanyag
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 0afd0eca-f74a-43aa-bba8-436a0265c312
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 6392d1f780b1bc2348fee5947550b05e86ea4de2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 52d5962645b1408fdba61ec1bf4e4f682b80905b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a id="unity-roll-a-ball"></a>Hozzon létre Unity Roll golyó játék
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 Ez az oktatóanyag végigvezeti egy kis mértékben módosított fő lépései [Unity visszaállítani egy golyó oktatóanyag](http://unity3d.com/learn/tutorials/projects/roll-ball-tutorial). Ez a minta játék egy gömb "player" objektumon, amelynek az alkalmazás felhasználói által szabályozott áll, és a játék célja, hogy a "collect" memóriából kiüríthető objektumok által a memóriából kiüríthető objektumok player objektum ütközés. Ez azt feltételezi, hogy a Unity-szerkesztő környezet alapszintű ismeretét. Ha probléma merül fel, majd tekintse át a teljes útmutató. 
 
 ### <a name="setting-up-the-game"></a>A game beállítása

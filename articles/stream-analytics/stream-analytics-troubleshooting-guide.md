@@ -1,25 +1,24 @@
 ---
-title: "Azure Stream Analytics a hibaelhárítási útmutatója |} Microsoft Docs"
-description: "A Stream Analytics-feladat hibaelhárítása"
-keywords: "az útmutató hibaelhárítása"
-documentationcenter: 
+title: Azure Stream Analytics a hibaelhárítási útmutatója |} Microsoft Docs
+description: A Stream Analytics-feladat hibaelhárítása
+keywords: az útmutató hibaelhárítása
+documentationcenter: ''
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+author: jseb225
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
-ms.author: samacha
-ms.openlocfilehash: dcff312e4a282b15e76ea32aadb1981a496a2446
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: 87e8b99cb2774966ce22c76e1afed6a754749e9d
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshooting-guide-for-azure-stream-analytics"></a>Azure Stream Analytics a hibaelhárítási útmutatója
 
@@ -86,11 +85,11 @@ A legjobb eredmény érdekében a Stream Analytics-feladat hibaelhárítása kö
 11. Nyissa meg a támogatási esetet:
     - Végül, ha minden más meghiúsul, nyissa meg a Microsoft támogatási esetet, az előfizetés-azonosító használatával, amely tartalmazza a feladatot.
 
-## <a name="get-help"></a>Segítségkérés
+## <a name="get-help"></a>Segítség kérése
 
 Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)

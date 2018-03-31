@@ -1,12 +1,11 @@
 ---
-title: "A Power BI-irányítópultot az Azure Stream Analytics |} Microsoft Docs"
-description: "A valós idejű streamelési Power BI-Irányítópult segítségével gyűjtse össze az üzleti intelligencia, és a Stream Analytics-feladat nagy mennyiségű adatok elemzését."
-keywords: "elemzések irányítópultján, valós idejű irányítópulton"
+title: A Power BI-irányítópultot az Azure Stream Analytics |} Microsoft Docs
+description: A valós idejű streamelési Power BI-Irányítópult segítségével gyűjtse össze az üzleti intelligencia, és a Stream Analytics-feladat nagy mennyiségű adatok elemzését.
+keywords: elemzések irányítópultján, valós idejű irányítópulton
 services: stream-analytics
-documentationcenter: 
-author: samacha
-manager: jhubbard
-editor: cgronlun
+documentationcenter: ''
+author: jseb225
+manager: ryanw
 ms.assetid: fe8db732-4397-4e58-9313-fec9537aa2ad
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/27/2017
-ms.author: samacha
-ms.openlocfilehash: b446e2296f2747012849936b994c4a4a2044869e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: e1f1d960c312362e0e0cd6d2f83599c28c8c3f05
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>A Stream Analytics és a Power BI: az adatfolyamként történő adatok valós idejű elemzési irányítópult
 Az Azure Stream Analytics lehetővé teszi, hogy a vezető üzleti intelligencia eszközök közül az egyik kihasználhatja [Microsoft Power BI](https://powerbi.com/). Ebből a cikkből megismerheti, hogyan üzleti intelligencia eszközök használatával létrehozni a Power BI kimenetként az Azure Stream Analytics-feladatok. Azt is megtudhatja, hogyan történő létrehozásáról és használatáról a valós idejű irányítópulton.
@@ -242,17 +241,17 @@ Ebben a konfigurációban módosíthatja az eredeti lekérdezést a következőh
         dspl
 
 
-### <a name="renew-authorization"></a>Újítsa meg az engedélyt
+### <a name="renew-authorization"></a>Engedély megújítása
 Ha a jelszó megváltozott a feladat meg lett létrehozva, vagy utolsó hitelesített, akkor újból hitelesítésre a Power BI-fiókjába. Ha Azure multi-factor Authentication az Azure Active Directory (Azure AD) bérlő van beállítva, akkor is meg kell újítsa meg a Power BI engedélyezési kéthetente. Ha nem újítja meg, például a feladat kimenetére hiánya probléma volt megjelenik vagy egy `Authenticate user error` műveletet rögzít.
 
 Hasonlóképpen ha egy feladat indítása után a jogkivonat lejárt, hiba történik, és a feladat sikertelen. A probléma megoldásához, hogy fut a feladat leállítása, majd lépjen a Power BI-kimenet. Adatvesztés elkerülése érdekében válassza ki a **újra a portálon** hivatkozásra, és indítsa újra a feladatot a **feladat utolsó befejezési időpontja**.
 
 Az engedélyezési frissítése a Power BI, után egy zöld riasztás jelenik meg megfelelően, hogy a probléma megoldódott-e az engedélyezési területen.
 
-## <a name="get-help"></a>Segítségkérés
+## <a name="get-help"></a>Segítség kérése
 Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)

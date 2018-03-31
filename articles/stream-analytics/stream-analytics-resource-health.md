@@ -1,25 +1,24 @@
 ---
-title: "Az erőforrás állapotát panel használja az Azure Stream Analytics |} Microsoft Docs"
-description: "Hogyan rögzítési ponthoz problémák Stream Analytics-feladatok hibaelhárítása során."
-keywords: "folyamatábra, erőforráspanelen hibaelhárítása"
-documentationcenter: 
+title: Az erőforrás állapotát panel használja az Azure Stream Analytics |} Microsoft Docs
+description: Hogyan rögzítési ponthoz problémák Stream Analytics-feladatok hibaelhárítása során.
+keywords: folyamatábra, erőforráspanelen hibaelhárítása
+documentationcenter: ''
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+author: jseb225
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 05/01/2017
-ms.author: samacha
-ms.openlocfilehash: 554dec5fbbe5c98585f8be58f5d4e8203d788a00
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: 598f858c22494bc511ef0e2f04f3c3a6baad1ae8
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="stream-analytics-resource-health-blade"></a>Stream Analytics állapotfigyelő erőforráspanelen
 
@@ -37,10 +36,10 @@ A következő folyamatábra segítségével milyen bejegyzésekre kell keresni, 
 
 ![A Stream Analytics hibaelhárítási folyamat - leképezés](media/stream-analytics-resource-health/stream-analytics-troubleshooting-map.png)
 
-## <a name="get-help"></a>Segítségkérés
+## <a name="get-help"></a>Segítség kérése
 Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [A Stream Analytics használatába](stream-analytics-real-time-fraud-detection.md)
 * [Stream Analytics-feladatok méretezése](stream-analytics-scale-jobs.md)

@@ -1,11 +1,11 @@
 ---
-title: "Univerzális Windows-alkalmazások Reach SDK-integráció"
-description: "Az Azure Mobile Engagement Reach integrálása univerzális Windows-alkalmazások"
+title: Univerzális Windows-alkalmazások Reach SDK-integráció
+description: Az Azure Mobile Engagement Reach integrálása univerzális Windows-alkalmazások
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a31ca1d6-856f-4aec-898a-07969ae5f7ec
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,17 +14,21 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 9311e998e67d8d0d56da68fc9460df32ce7ce5a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8472af2ac72a1976871970963851be775b19859b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="windows-universal-apps-reach-sdk-integration"></a>Univerzális Windows-alkalmazások Reach SDK-integráció
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 Az integráció az ismertetett eljárást kell követni a [Windows Universal Engagement SDK-integráció](mobile-engagement-windows-store-integrate-engagement.md) Ez az útmutató követése előtt.
 
 ## <a name="embed-the-engagement-reach-sdk-into-your-windows-universal-project"></a>Az Engagement Reach SDK beágyazása a univerzális Windows-projekt
-Nincs olyan hozzáadása. `EngagementReach`hivatkozások és erőforrások még a projektben.
+Nincs olyan hozzáadása. `EngagementReach` hivatkozások és erőforrások még a projektben.
 
 > [!TIP]
 > Lemezképek található, testreszabhatja a `Resources` mappa a projekt, különösen a márka ikon (hogy az Engagement ikonra az alapértelmezett). Univerzális alkalmazások át is helyezheti a `Resources` közötti alkalmazásokat, de a tartalmak megosztása a megosztott projekt mappájába kell tartani a `Resources\EngagementConfiguration.xml` alapértelmezett helyére, a fájlt, mert függő platformra.
@@ -67,7 +71,7 @@ A két integrációs közötti választás sikerült összesíthető ily módon:
 ### <a name="overlay-integration"></a>Átfedéses integráció
 Az Engagement átfedés dinamikusan kerülnek be a Reach-kampányokat a lapon való megjelenítéséhez használt felhasználói felületi elemeket. Ha az átmeneti területre nem felelnek meg az elrendezésben vegye figyelembe a webes nézetek manuális integrációs helyette.
 
-A .xaml fájlban változásával `EngagementPage` hivatkozás`EngagementPageOverlay`
+A .xaml fájlban változásával `EngagementPage` hivatkozás `EngagementPageOverlay`
 
 * Adja hozzá a következőt a névtér-deklarációkhoz:
   
@@ -82,7 +86,7 @@ A .xaml fájlban változásával `EngagementPage` hivatkozás`EngagementPageOver
             <!-- Your layout -->
         </engagement:EngagementPage>
 
-**A EngagementPageOverlay:**
+**With EngagementPageOverlay:**
 
         <engagement:EngagementPageOverlay 
             xmlns:engagement="using:Microsoft.Azure.Engagement.Overlay">
@@ -108,7 +112,7 @@ Ezután a .cs fájlban a lap a címke `EngagementPageOverlay` helyett `Engagemen
               }
             }
 
-**A EngagementPageOverlay:**
+**With EngagementPageOverlay:**
 
             using Microsoft.Azure.Engagement.Overlay;
 
@@ -279,7 +283,7 @@ A visszahívási állíthatja be a "Nyilvános App() {}" metódusában a `App.xa
 > 
 > 
 
-## <a id="push-channel-sharing"></a>Leküldéses csatorna megosztása
+## <a id="push-channel-sharing"></a> Leküldéses csatorna megosztása
 Ha használ a leküldéses értesítések más célra az alkalmazás akkor rendelkezik a leküldéses csatorna megosztása Engagement SDK-szolgáltatás használatára. Ez a kihagyott leküldéses elkerülése érdekében.
 
 * Megadhatja a saját az Engagement Reach inicializálás leküldéses csatornát. Az SDK helyett egy új kérő használja.

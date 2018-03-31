@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/23/2018
 ms.author: mamit
 ms.custom: ''
-ms.openlocfilehash: 356988e8ae743d73c8e2cc7cc106cbc5b0d1a423
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: c6252ab063ee074951f098e7814ea1cfec68a8b9
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="the-new-alerts-experience-in-azure-monitor"></a>Az Azure-figyelő tapasztal az új riasztások
 
@@ -62,12 +62,12 @@ A riasztások élmény célja a egyetlen hely, az összes Azure-riasztások megt
 > [!NOTE]
 > Riasztások látható égetett riasztások korlátozódnak támogatott metrika és napló tevékenységriasztásokat; Az Azure figyelő áttekintése látható égetett, beleértve a korábbi Azure riasztásokat a riasztások száma
 
- ![riasztások – áttekintés](./media/monitoring-overview-unified/alerts-preview-overview.png) 
+ ![riasztások – áttekintés](./media/monitoring-overview-unified-alerts/alerts-preview-overview2.png) 
 
 ### <a name="alert-rules-management"></a>A riasztási szabályok kezelése
 **Monitor - riasztás > szabályok** egy egyetlen lap minden riasztási szabályok kezelése az Azure-előfizetések között. Felsorolja az összes riasztási szabályok (engedélyezett vagy tiltott) és a tároló erőforrásait, az erőforráscsoportok, a szabály neve vagy a állapota alapján rendezhető. A riasztási szabályok is le van tiltva vagy engedélyezhető vagy szerkeszteni ezen a lapon.  
 
- ![riasztások-szabályok](./media/monitoring-overview-unified/alerts-preview-rules.png)
+ ![riasztások-szabályok](./media/monitoring-overview-unified-alerts/alerts-preview-rules.png)
 
 
 ## <a name="one-alert-authoring-experience-across-all-monitoring-sources"></a>Jelentéskészítő környezetét minden figyelési forrás egy riasztás
@@ -89,10 +89,10 @@ További létrehozásával, a következő riasztástípusok [Itt](monitor-alerts
 | **Jel típusa** | **Forrás figyelése** | **Leírás** | 
 |-------------|----------------|-------------|
 | Metrika | Az Azure-figyelő | Más néven [ **közel valós idejű metrika riasztások**](monitoring-near-real-time-metric-alerts.md), ezek a riasztások metrika metrika feltételek kiértékelése 1 perces gyakorisággal támogatja, és lehetővé teszik a több metrika szabályok. A támogatott erőforrástípusai listáját [Itt](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported). Régebbi metrika riasztások meghatározott [Itt](monitoring-overview-alerts.md#alerts-in-different-azure-services) nem támogatottak az új riasztások élmény. Megtalálja azokat a riasztásokat (klasszikus)|
-| Logs  | Log Analytics | Értesítéseket, illetve automatikus műveleteket futtatott metrika és/vagy esemény adatok napló keresési lekérdezés meghatározott feltételeknek eleget.|
+| Naplók  | Log Analytics | Értesítéseket, illetve automatikus műveleteket futtatott metrika és/vagy esemény adatok napló keresési lekérdezés meghatározott feltételeknek eleget.|
 | Tevékenységnapló | Tevékenységnaplók | Ez a kategória tartalmazza a rekordok összes Create, frissítés, és törli a kiválasztott célkiszolgáló (erőforrás és az erőforrások csoport/előfizetést) keresztül végrehajtott műveleteket. |
-| Logs  | Állapotfigyelő szolgáltatás naplók | Nem támogatott a riasztások élményt nyújt.   |
-| Logs  | Application Insights | Ez a kategória naplók és az alkalmazás teljesítményének részleteit tartalmazza. Analytics query használatával végrehajtott – az alkalmazásadatok alapján műveletek feltételeinek megadása. |
+| Naplók  | Állapotfigyelő szolgáltatás naplók | Nem támogatott a riasztások élményt nyújt.   |
+| Naplók  | Application Insights | Ez a kategória naplók és az alkalmazás teljesítményének részleteit tartalmazza. Analytics query használatával végrehajtott – az alkalmazásadatok alapján műveletek feltételeinek megadása. |
 | Metrika | Application Insights | Nem támogatott a riasztások élményt nyújt. Megkeresi azokat a riasztásokat (klasszikus) |
 | Rendelkezésreállás figyelésére szolgáló tesztek | Application Insights | Nem támogatott a riasztások élményt nyújt. Megkeresi azokat a riasztásokat (klasszikus) |
 

@@ -1,12 +1,11 @@
 ---
-title: "Az Azure Stream Analytics és a gépi tanulás integrációs |} Microsoft Docs"
-description: "A felhasználó által definiált függvény és a Machine Learning használatáról a Stream Analytics-feladatok"
-keywords: 
-documentationcenter: 
+title: Az Azure Stream Analytics és a gépi tanulás integrációs |} Microsoft Docs
+description: A felhasználó által definiált függvény és a Machine Learning használatáról a Stream Analytics-feladatok
+keywords: ''
+documentationcenter: ''
 services: stream-analytics
 author: SnehaGunda
-manager: jhubbard
-editor: cgronlun
+manager: kfile
 ms.assetid: cfced01f-ccaa-4bc6-81e2-c03d1470a7a2
 ms.service: stream-analytics
 ms.devlang: na
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/01/2018
 ms.author: sngun
-ms.openlocfilehash: 10d514aeb50dcd24f28ed879875b23b25578cebb
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: e5661f9f3871619201ff9106e87785de802e8933
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Azure Stream Analytics és az Azure Machine Learning segítségével véleményeket elemzések végrehajtását
 Ez a cikk ismerteti, hogyan gyorsan beállíthat egy egyszerű Azure Stream Analytics-feladat, amely az Azure Machine Learning. Akkor használhatja Machine Learning véleményeket analytics a Cortana Intelligence Gallery a streamadatok szöveg elemzésére és valós időben a céggel kapcsolatos véleményeket pontszám meghatározásához. A Cortana Intelligence Suite használata lehetővé teszi ennek a feladatnak anélkül, hogy a menő a céggel kapcsolatos véleményeket elemzési modell létrehozásának bemutatása.
@@ -187,7 +186,7 @@ Az oktatóanyag ezen részében adja meg az adatfolyam állapotelemzési feladat
    |Mező  |Érték  |
    |---------|---------|
    | **Függvény aliasa** | A nevet használja `sentiment` válassza **adja meg Azure Machine Learning-függvény beállítások manuálisan** amely felkínálja az URL-címet és egy kulcs.      |
-   | **URL-cím**| Illessze be a webalkalmazás URL-címe.|
+   | **URL**| Illessze be a webalkalmazás URL-címe.|
    |**Kulcs** | Illessze be az API-kulcsot. |
   
    ![A Machine Learning-függvény hozzáadása a Stream Analytics-feladat beállításai](./media/stream-analytics-machine-learning-integration-tutorial/add-function.png)  

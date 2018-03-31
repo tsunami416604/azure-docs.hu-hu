@@ -1,11 +1,11 @@
 ---
-title: "A közzétett Hibakeresés az Azure felhőalapú szolgáltatás a Visual Studio és az IntelliTrace |} Microsoft Docs"
-description: "Ismerje meg, egy felhőalapú szolgáltatás, a Visual Studio és az IntelliTrace hibakeresése"
+title: A közzétett Hibakeresés az Azure felhőalapú szolgáltatás a Visual Studio és az IntelliTrace |} Microsoft Docs
+description: Ismerje meg, egy felhőalapú szolgáltatás, a Visual Studio és az IntelliTrace hibakeresése
 services: visual-studio-online
 documentationcenter: n/a
 author: mikejo
-manager: ghogen
-editor: 
+manager: douge
+editor: ''
 ms.assetid: 5e6662fc-b917-43ea-bf2b-4f2fc3d213dc
 ms.service: visual-studio-online
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/21/2017
 ms.author: mikejo
-ms.openlocfilehash: d33a8338b37f7479196449238388c7dbf391bbb6
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 2ca15bd5ffa88d2e8053decf5b81c265b1d9c6e1
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="debugging-a-published-azure-cloud-service-with-visual-studio-and-intellitrace"></a>A közzétett Azure-felhőszolgáltatásban a Visual Studio és az IntelliTrace-hibakeresés
 Intellitrace bejelentkezhet a szerepkör példánya nagy mennyiségű hibakeresési adatok az Azure-ban futtatott. Ha a probléma okát van szüksége, az IntelliTrace-naplók segítségével végighaladhat a kódot a Visual Studio eszközből, mintha csak az Azure-ban futna. Gyakorlatilag IntelliTrace kulccsal rekordok programkód és környezeti adatok az Azure alkalmazás az Azure-ban felhőszolgáltatásként fut, és beállíthatja, a Visual Studio eszközből a rögzített adatokat. 
@@ -78,6 +78,6 @@ Továbbra is az IntelliTrace-naplók letöltése a Visual Studio működne. Ha a
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Azure felhőszolgáltatások hibakeresési lehetőségek](vs-azure-tools-debugging-cloud-services-overview.md)
 - [Egy Visual Studio használatával Azure-felhőszolgáltatásban közzététele](vs-azure-tools-publishing-a-cloud-service.md)

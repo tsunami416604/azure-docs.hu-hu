@@ -1,8 +1,8 @@
 ---
-title: "Nézetek az Operations Management Suite (OMS) megoldások |} Microsoft Docs"
-description: "Az Operations Management Suite (OMS) megoldások rendszerint tartalmazza egy vagy több nézetet, amelyen az adatok megjelenítése.  Ez a cikk ismerteti, hogyan hozta létre az adatforrásnézet-tervezőből nézet exportálása és megoldásra. "
+title: A kezelési megoldásokba nézetek |} Microsoft Docs
+description: 'Megoldások rendszerint tartalmazza egy vagy több nézetet, amelyen az adatok megjelenítése.  Ez a cikk ismerteti, hogyan hozta létre az adatforrásnézet-tervezőből nézet exportálása és megoldásra. '
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -14,22 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
-ms.openlocfilehash: c103ee748446c4819b7925af04d90c22225a21a3
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: b44763fe67b1c70c0b6ecdff73c32d8bb4fab3a4
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="views-in-operations-management-suite-oms-management-solutions-preview"></a>Nézetek az Operations Management Suite (OMS) megoldások (előzetes verzió)
+# <a name="views-in-management-solutions-preview"></a>Nézetek kezelési megoldásokban (előzetes verzió)
 > [!NOTE]
-> Ez az előzetes dokumentum megoldások létrehozásához az OMS Szolgáltatáshoz, amely jelenleg előzetes verziójúak. Az alábbiakban a séma van változhat.    
->
->
+> Ez az előzetes dokumentációjában létrehozása kezelési megoldást, amely jelenleg előzetes verziójúak. Az alábbiakban a séma van változhat.    
 
-[Az Operations Management Suite (OMS) megoldások](operations-management-suite-solutions.md) rendszerint tartalmazza egy vagy több nézetet, amelyen az adatok megjelenítése.  Ez a cikk ismerteti, hogyan által létrehozott nézetre exportálása a [adatforrásnézet-tervezőből](../log-analytics/log-analytics-view-designer.md) adja hozzá a megoldásra.  
+
+[Megoldások](operations-management-suite-solutions.md) rendszerint tartalmazza egy vagy több nézetet, amelyen az adatok megjelenítése.  Ez a cikk ismerteti, hogyan által létrehozott nézetre exportálása a [adatforrásnézet-tervezőből](../log-analytics/log-analytics-view-designer.md) adja hozzá a megoldásra.  
 
 > [!NOTE]
-> Ebben a cikkben a minták használható paramétereket és változókat, amelyek a szükséges vagy közös felügyeleti megoldás és a [létrehozása kezelési megoldásai Operations Management Suite (OMS)](operations-management-suite-solutions-creating.md)
+> Ebben a cikkben a minták használható paramétereket és változókat, amelyek a szükséges vagy közös felügyeleti megoldás és a [tervezési és -buildek olyan felügyeleti megoldást az Azure-ban](operations-management-suite-solutions-creating.md)
 >
 >
 
@@ -48,7 +47,7 @@ Az alapvető lépéseken nézet hozzáadása a megoldás a következők:  Az al�
 ## <a name="export-the-view-to-a-file"></a>A nézet exportálja egy fájlba
 Kövesse az utasításokat, [napló Analytics adatforrásnézet-tervezőből](../log-analytics/log-analytics-view-designer.md) nézet exportálja egy fájlba.  Az exportált fájl JSON formátumú azonos lesz [a fájl az elemek](operations-management-suite-solutions-solution-file.md).  
 
-A **erőforrások** nézet fájl elem típussal rendelkező erőforrás lesz **Microsoft.OperationalInsights/workspaces** , amely az OMS-munkaterület jelöli.  Ez az elem lesz a subelement típussal rendelkező **nézetek** , amely jelenti. a nézet és a részletes konfigurációs adatokat tartalmaz.  Ez az elem részleteinek másolása lesz, és átmásolja a megoldás.
+A **erőforrások** nézet fájl elem típussal rendelkező erőforrás lesz **Microsoft.OperationalInsights/workspaces** , amely a Naplóelemzési munkaterület jelöli.  Ez az elem lesz a subelement típussal rendelkező **nézetek** , amely jelenti. a nézet és a részletes konfigurációs adatokat tartalmaz.  Ez az elem részleteinek másolása lesz, és átmásolja a megoldás.
 
 ## <a name="create-the-view-resource-in-the-solution"></a>A megoldásban a nézet létrehozása
 Adja hozzá a következő nézet erőforrást a **erőforrások** a megoldásfájlt eleme.  Ez a változókat, amelyek az alábbiakban található, hogy hozzá kell adnia is használja.  Vegye figyelembe, hogy a **irányítópult** és **OverviewTile** tulajdonságainak helyőrzők, amely felülírja az exportált nézet fájlból a megfelelő tulajdonságokkal.
@@ -97,8 +96,8 @@ A Resource Manager-sablon definiált összes Naplóelemzési erőforrás rendelk
 | Munkaterület-verzió | API-verzió | Lekérdezés |
 |:---|:---|:---|
 | 1-es verzió (örökölt)   | 2015 11-01. dátumú előnézeti | A hagyományos formátumú.<br> Példa: Írja be az esemény EventLevelName = hiba =  |
-| v2 (frissítése) | 2015 11-01. dátumú előnézeti | A hagyományos formátumú.  Telepítse a frissített formátumra alakítja át.<br> Példa: Írja be az esemény EventLevelName = hiba =<br>Konvertálva: esemény &#124; Ha EventLevelName == "Error"  |
-| v2 (frissítése) | 2017-03-03 – előzetes | Frissítési formátumban. <br>Példa: Az esemény &#124; Ha EventLevelName == "Error"  |
+| v2 (frissítése) | 2015 11-01. dátumú előnézeti | A hagyományos formátumú.  Telepítse a frissített formátumra alakítja át.<br> Példa: Írja be az esemény EventLevelName = hiba =<br>Konvertálva: esemény &#124; ahol EventLevelName == "Error"  |
+| v2 (frissítése) | 2017-03-03 – előzetes | Frissítési formátumban. <br>Példa: Az esemény &#124; ahol EventLevelName == "Error"  |
 
 
 ## <a name="add-the-view-details"></a>A nézet részletek megadása

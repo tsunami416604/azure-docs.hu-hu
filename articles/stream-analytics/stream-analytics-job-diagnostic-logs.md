@@ -1,25 +1,24 @@
 ---
-title: "Diagnosztikai naplók az Azure Stream Analytics hibaelhárítása |} Microsoft Docs"
-description: "Útmutató a Microsoft Azure Stream Analytics-feladatok diagnosztikai naplók elemzése."
-keywords: 
-documentationcenter: 
+title: Diagnosztikai naplók az Azure Stream Analytics hibaelhárítása |} Microsoft Docs
+description: Útmutató a Microsoft Azure Stream Analytics-feladatok diagnosztikai naplók elemzése.
+keywords: ''
+documentationcenter: ''
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+author: jseb225
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
-ms.author: samacha
-ms.openlocfilehash: c9772df2c216d465ca6e90e69bce011969dd4f02
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: 164d522d7beaea222dbc408765877fa67a34c203
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Azure Stream Analytics hibaelhárítás diagnosztikai naplók segítségével
 
@@ -79,11 +78,11 @@ Jelenleg nem rögzíteni diagnosztikai naplók két csoportja:
 
 Név | Leírás
 ------- | -------
-time | Időbélyeg (UTC szerint) a napló.
+idő- | Időbélyeg (UTC szerint) a napló.
 resourceId | Az, hogy a művelet került sor, nagybetűvel erőforrás-azonosítója. Ez magában foglalja az előfizetés-azonosító, az erőforráscsoport és a feladat nevét. Például   **/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT. STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**.
 category | Kategória, vagy jelentkezzen **végrehajtási** vagy **szerzői műveletek**.
 operationName | A művelet naplózott neve. Például **események küldése: SQL kimeneti hiba írni mysqloutput**.
-status | A művelet állapotát. Például **sikertelen** vagy **sikeres**.
+állapot | A művelet állapotát. Például **sikertelen** vagy **sikeres**.
 szint | Naplózási szint. Például **hiba**, **figyelmeztetés**, vagy **tájékoztató**.
 properties | Napló bejegyzés-specifikus részletei, szerializálható kézjegyként JSON karakterláncnak. További információ a következő szakaszban talál.
 
@@ -97,7 +96,7 @@ A feladat adatainak feldolgozása során előforduló hiba van a kategória a na
 
 Név | Leírás
 ------- | -------
-Forrás | A feladat neve bemeneti vagy kimeneti, ahol a hiba történt.
+Adatforrás | A feladat neve bemeneti vagy kimeneti, ahol a hiba történt.
 Üzenet | A hibával kapcsolatos üzenet.
 Típus | Hiba típusa. Például **DataConversionError**, **CsvParserError**, vagy **ServiceBusPropertyColumnMissingError**.
 Adatok | Pontosan keresse meg a hiba okáról hasznos adatot tartalmaz. Hatálya csonkolása méretétől függően.
@@ -119,7 +118,7 @@ Hiba | (választható) Hiba adatok. Általában ami kivételek adatai, amennyibe
 Típus | Üzenet típusa. A hibák belső kategorizálási leképezések. Például **JobValidationError** vagy **BlobOutputAdapterInitializationFailure**.
 Korrelációs azonosító | [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) , amely egyedileg azonosítja a feladat végrehajtása. Az összes végrehajtási naplóbejegyzések abból az időből, amikor a feladat elindul mindaddig, amíg a feladat már van azonos **korrelációs azonosító** érték.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [A Stream Analytics használatába](stream-analytics-real-time-fraud-detection.md)

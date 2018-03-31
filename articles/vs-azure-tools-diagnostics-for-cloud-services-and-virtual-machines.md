@@ -1,11 +1,11 @@
 ---
-title: "Azure Cloud Services és a virtuális gépek diagnosztika beállítva |} Microsoft Docs"
-description: "Ismerje meg, hogyan állíthat be Azure cloude szolgáltatások és virtuális gépek (VM) a Visual Studio hibakeresési diagnosztika."
+title: Azure Cloud Services és a virtuális gépek diagnosztika beállítva |} Microsoft Docs
+description: Ismerje meg, hogyan állíthat be Azure cloude szolgáltatások és virtuális gépek (VM) a Visual Studio hibakeresési diagnosztika.
 services: visual-studio-online
 documentationcenter: na
 author: mikejo
-manager: ghogen
-editor: 
+manager: douge
+editor: ''
 ms.assetid: e70cd7b4-6298-43aa-adea-6fd618414c26
 ms.service: multiple
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: mikejo
-ms.openlocfilehash: f00771d89749e7507d7f303f366fe63f537900ff
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 34c667b0a594682e4d099e7bff64bfdb336b850b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="set-up-diagnostics-for-azure-cloud-services-and-virtual-machines"></a>Azure Cloud Services és a virtuális gépek diagnosztika beállítása
 Egy Azure-felhőszolgáltatásban és a virtuális gép van szüksége, amikor a Visual Studio segítségével könnyebben beállítása az Azure diagnosztikai. Diagnosztika rendszeradatok és a virtuális gépek és a virtuálisgép-példánya, amely a felhőalapú szolgáltatás futtatásához a naplózási adatokat rögzíti. Diagnosztikai adatok átvitele történik meg a választott tárfiók. Diagnosztika további információ az Azure-naplózás: [az Azure App Service Web Apps diagnosztikai naplózás engedélyezése](app-service/web-sites-enable-diagnostic-log.md).
@@ -30,7 +30,7 @@ Azure Diagnostics beállításához használhatja az alábbi lehetőségek köz�
 * A diagnosztikai beállítások módosítása a **diagnosztikai konfigurációja** párbeszédpanel a Visual Studióban. A beállítások lesznek mentve (az Azure SDK 2.4 és korábbi verzióiban, a fájl neve diagnostics.wadcfg) diagnostics.wadcfgx nevű fájlban. Akkor is közvetlenül tudja módosítani a konfigurációs fájlt. Ha a felhasználó a fájl, a konfigurációs módosítások érvénybe telepít, a felhő legközelebb az Azure szolgáltatás, vagy a szolgáltatás futtatásához az emulátorban.
 * Használja a Cloud Explorer vagy a Visual Studio Server Explorer egy felhőalapú szolgáltatás vagy a virtuális gépen, amelyen fut a diagnosztikai beállítások módosításához.
 
-## <a name="azure-sdk-26-diagnostics-changes"></a>Az Azure SDK 2.6 diagnosztika változások
+## <a name="azure-sdk-26-diagnostics-changes"></a>Azure SDK 2.6 diagnostics changes
 A következő módosításokat az Azure SDK 2.6 és a későbbi projekteket a Visual Studio vonatkoznak:
 
 * A helyi emulátor mostantól támogatja a diagnosztika. Ez azt jelenti, hogy diagnosztikai adatok gyűjtésére, és győződjön meg arról, hogy az alkalmazás hozza létre a megfelelő nyomkövetések míg fejlesztése és tesztelése a Visual Studio. A kapcsolati karakterlánc `UseDevelopmentStorage=true` diagnosztikai adatok gyűjtésének bekapcsolása a futtatása során a felhőszolgáltatási projektet a Visual Studio az Azure storage emulator használatával. Minden diagnosztikai adatgyűjtés fejlesztési tárolási tárfiókban.
@@ -133,19 +133,19 @@ A Visual Studio diagnosztikai adatokat az Azure virtuális gépek hozhatja létr
 ## <a name="set-up-diagnostics-data-sources"></a>Diagnosztika adatforrás létrehozása
 Diagnosztikai adatok gyűjtésének engedélyezése után dönthet úgy, pontosan milyen adatforrásokat szeretne gyűjteni, és az összegyűjtött információkról. A következő szakaszok ismertetik a lapfülek a **diagnosztikai konfigurációja** párbeszédpanel megnyitásához, és azt jelenti, hogy minden egyes konfigurációs beállítást.
 
-### <a name="application-logs"></a>Alkalmazás-naplók
+### <a name="application-logs"></a>Alkalmazásnaplók
 Alkalmazásnaplók rendelkezik egy webes alkalmazás által létrehozott diagnosztikai információkat. Ha szeretné rögzíteni az alkalmazásnaplókat, jelölje be a **alkalmazásnaplók adatátvitel engedélyezése** jelölőnégyzetet. Növelje, vagy csökkentse a tárfiók a alkalmazásnaplók átvitelét között, módosítsa a **átviteli időtartam (perc)** érték. Úgy, hogy a naplóban rögzített adatmennyiség is módosíthatja a **naplózási szintjének** érték. Válassza például **részletes** további információért, vagy válasszon **kritikus** csak kritikus hibák rögzítéséhez. Ha egy adott diagnosztika szolgáltatót, amelyet alkalmazásnaplók bocsát ki, a szolgáltató GUID hozzáadásával a naplók rögzítése a **szolgáltató GUID** mezőbe.
 
-  ![Alkalmazás-naplók](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC758145.png)
+  ![Alkalmazásnaplók](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC758145.png)
 
 Az alkalmazás naplóiban kapcsolatos további információkért lásd: [az Azure App Service Web Apps diagnosztikai naplózás engedélyezése](app-service/web-sites-enable-diagnostic-log.md).
 
-### <a name="windows-event-logs"></a>Windows-Eseménynapló
+### <a name="windows-event-logs"></a>Windows-eseménynaplók,
 Rögzíti a Windows eseménynaplóiban keresse meg, válassza ki a **engedélyezése a Windows-Eseménynapló átviteli** jelölőnégyzetet. Növelje, vagy csökkentse a tárfiók az Eseménynapló átvitelét között, módosítsa a **átviteli időtartam (perc)** érték. Jelölje be a jelölőnégyzetet, a követni kívánt események típusú.
 
 ![Eseménynaplók](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC796664.png)
 
-Ha szeretne megtudni az Azure SDK 2.6-os vagy újabb verzióját, és meg szeretné adni az egyik egyéni adatforrás, akkor adja meg a a  **\<adatforrás neve\>**  szövegmezőbe, majd válassza ki azt **Hozzáadás**. Az adatforrás a diagnostics.cfcfg fájl kerül.
+Ha szeretne megtudni az Azure SDK 2.6-os vagy újabb verzióját, és meg szeretné adni az egyik egyéni adatforrás, akkor adja meg a a **\<adatforrás neve\>** szövegmezőbe, majd válassza ki azt **Hozzáadás**. Az adatforrás a diagnostics.cfcfg fájl kerül.
 
 Ha az Azure SDK 2.5 használja, és adjon meg egyéni adatforrást kíván, hozzáadhat úgy, hogy a `WindowsEventLog` a diagnostics.wadcfgx szakasza fájlba, például a következő példa:
 
@@ -187,12 +187,12 @@ Az események eseményforrások és a megadott eseményjegyzékfájlok kerülnek
 
 Az ETW-keretrendszer támogatott ASP.NET keresztül az osztályokat a [System.Diagnostics.aspx](https://msdn.microsoft.com/library/system.diagnostics(v=vs.110)) névtér. A Microsoft.WindowsAzure.Diagnostics névtér, amely örökli, és kiterjeszti a standard [System.Diagnostics.aspx](https://msdn.microsoft.com/library/system.diagnostics(v=vs.110)) osztályokat, lehetővé teszi a [System.Diagnostics.aspx](https://msdn.microsoft.com/library/system.diagnostics(v=vs.110)) , a naplózás az Azure környezetben keretrendszer. További információkért lásd: [átvenni az irányítást a naplózás és nyomkövetés a Microsoft Azure-ban](https://msdn.microsoft.com/magazine/ff714589.aspx) és [Azure Cloud Services és a virtuális gépek diagnosztika engedélyezése](cloud-services/cloud-services-dotnet-diagnostics.md).
 
-### <a name="crash-dumps"></a>Összeomlási memóriaképek
+### <a name="crash-dumps"></a>összeomlási memóriaképek,
 Rögzíteni az információt, amikor a szerepkör példánya összeomlik, válassza ki a **összeomlási memóriaképek adatátvitel engedélyezése** jelölőnégyzetet. (Az ASP.NET kezeli a legtöbb kivételeket, mert azt csak a feldolgozói szerepkörök számára általában hasznos.) Növelje, vagy csökkentse a tárolóhely számára a összeomlási memóriaképek aránya, módosítsa a **kvóta (%)** érték. Módosíthatja a tárolót, ha a összeomlási memóriaképek tárolják, és válassza ki, hogy szeretné rögzíteni egy **teljes** vagy **Mini** biztonsági másolat.
 
 A következő képernyőkép jelenleg nyomon követik a folyamatok listáját. Jelölje be a jelölőnégyzetet, a rögzíteni kívánt folyamatok. Egy másik folyamat felvenni a listára, írja be a folyamat neve, és válassza ki **hozzáadása folyamat**.
 
-![Összeomlási memóriaképek](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC766026.png)
+![összeomlási memóriaképek,](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC766026.png)
 
 További információkért lásd: [átvenni az irányítást a naplózás és nyomkövetés a Microsoft Azure-ban](https://msdn.microsoft.com/magazine/ff714589.aspx) és [Microsoft Azure Diagnostics rész 4: egyéni naplózási összetevők és az Azure Diagnostics 1.3 módosítások](http://justazure.com/microsoft-azure-diagnostics-part-4-custom-logging-components-azure-diagnostics-1-3-changes/).
 
@@ -216,14 +216,14 @@ Egy felhőalapú szolgáltatás, vagy a virtuális gép diagnosztikai adatok beg
     Cloud Explorer vagy a Server Explorer nyissa meg a tárfiókot, amely a központi telepítés van társítva.
 3. Nyissa meg a tábla megjelenítő a diagnosztika táblákat, és tekintse át az összegyűjtött adatokat. Az IIS-naplókba és egyéni naplókat nyissa meg a blob-tároló. Az alábbi táblázat a táblák vagy a blob tárolók, amely tartalmazza az adatokat a különböző naplófájlokat. Az adatokat, hogy a naplófájl, a táblamódosítási bejegyzéseket tartalmaz **EventTickCount**, **DeploymentId**, **szerepkör**, és **RoleInstance** , mely virtuális gépek és a szerepkör jön létre az adatok azonosítása és mikor. 
    
-   | Diagnosztikai adatok | Leírás | Hely |
+   | Diagnosztikai adatok | Leírás | Tartózkodási hely |
    | --- | --- | --- |
-   | Alkalmazás-naplók |A kódot állít elő, módszerek meghívásával-naplók a **System.Diagnostics.Trace** osztály. |WADLogsTable |
+   | Alkalmazásnaplók |A kódot állít elő, módszerek meghívásával-naplók a **System.Diagnostics.Trace** osztály. |WADLogsTable |
    | Eseménynaplók |A Windows eseménynaplóiban keresse meg a virtuális gépek adatait. Windows ezek a naplók információkat tárol, de alkalmazásokhoz és szolgáltatásokhoz is a naplók hibákat, és naplózza az adatokat. |WADWindowsEventLogsTable |
    | Teljesítményszámlálók |Bármilyen teljesítményszámláló, amely elérhető a virtuális gépen Ön is gyűjti az adatokat. Az operációs rendszer biztosít teljesítményszámlálókat, többek között számos statisztika, például a memória kihasználtsága és a processzoridő tekintetében. |WADPerformanceCountersTable |
    | Infrastruktúra-naplók |A diagnosztika infrastruktúrától maga létrehozott naplók. |WADDiagnosticInfrastructureLogsTable |
    | IIS-naplók |Jegyezze fel a webes kérések naplók. A felhőalapú szolgáltatás lekérdezi a jelentős mennyiségű forgalom, ha ezek a naplók hosszadalmas lehet. Célszerű gyűjt, és ezek az adatok csak akkor, ha esetleg szükség lenne rá. |Sikertelen kérelem naplózza a blob-tárolóban alatt üvegvatta-az iis-failedreqlogs, egy adott központi telepítés, a szerepkör és a példány elérési úton található. Teljes naplók üvegvatta-az iis-naplófájlok alatt található. A fájl tételek a WADDirectories táblában. |
-   | Összeomlási memóriaképek |A felhőalapú szolgáltatás folyamat (általában a feldolgozói szerepkör) bináris lemezképet biztosít. |üvegvatta-crush-memóriaképek blob tároló |
+   | összeomlási memóriaképek, |A felhőalapú szolgáltatás folyamat (általában a feldolgozói szerepkör) bináris lemezképet biztosít. |üvegvatta-crush-memóriaképek blob tároló |
    | Egyéni naplófájlok |Naplók meg az előre megadott adatok. |Megadhatja a kódban az egyéni naplófájlok helyét a tárfiókban lévő. Például egy egyéni blob tároló is megadhat. |
 4. Ha bármilyen típusú adatok csonkolva van, próbálja meg növelni a puffer az adatok típus vagy lerövidíteni adatok továbbítása a virtuális gépről a tárfiók között.
 5. (Választható) A tárfiók alkalmanként általános tárolási költségek csökkentése a véglegesen törlendő adatokat törölni.
@@ -301,6 +301,6 @@ A módszerek **RoleEntryPoint** WAIISHost.exe, nem az IIS-ben környezetében ne
 
 Az a **tulajdonságok** ablakban a **másolása a kimeneti könyvtárba** tulajdonságot **mindig másolása**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Bejelentkezés az Azure diagnostics kapcsolatos további információkért lásd: [Azure Cloud Services és a virtuális gépek diagnosztika engedélyezése](cloud-services/cloud-services-dotnet-diagnostics.md) és [az Azure App Service Web Apps diagnosztikai naplózás engedélyezése](app-service/web-sites-enable-diagnostic-log.md).
 

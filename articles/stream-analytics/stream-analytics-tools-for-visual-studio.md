@@ -1,12 +1,11 @@
 ---
-title: "Azure Stream Analytics-eszközök használata a Visual Studio |} Microsoft Docs"
-description: "Első lépések útmutató az Azure Stream Analytics Tools for Visual Studio"
+title: Azure Stream Analytics-eszközök használata a Visual Studio |} Microsoft Docs
+description: Első lépések útmutató az Azure Stream Analytics Tools for Visual Studio
 keywords: A Visual studio
-documentationcenter: 
+documentationcenter: ''
 services: stream-analytics
 author: su-jie
-manager: jhubbard
-editor: cgronlun
+manager: ryanw
 ms.assetid: a473ea0a-3eaa-4e5b-aaa1-fec7e9069f20
 ms.service: stream-analytics
 ms.devlang: na
@@ -15,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/05/2018
 ms.author: sujie
-ms.openlocfilehash: 71e7247226f9432b3f9590ca87ac33883ea576ce
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 23c4d058a1b045b0d66d8526a94e22774e6e6519
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="use-azure-stream-analytics-tools-for-visual-studio"></a>A Visual Studio Azure Stream Analytics-eszközök használata
 A Visual Studio Azure Stream Analytics-eszközökkel is általánosan elérhető. Ezek az eszközök a Stream Analytics-felhasználók a hibaelhárítás, valamint összetett lekérdezéseket írhat gazdagabb élmény engedélyezése, és akár a helyi lekérdezéseket írhat. A Stream Analytics-feladat a Visual Studio-projekt is exportálhatja.
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Bemutatás
 Ebben az oktatóanyagban elsajátíthatja létrehozására, szerzői, helyi tesztelése, kezelésére és a Stream Analytics-feladatok debug Stream Analytics tools for Visual Studio használatával. A feladat létrehozása után állíthatja be a folyamatos integrációt és a telepítési folyamatot, az Azure-bA a CI/CD Nuget-csomagot a tudnivalókat a további több [Stream Analytics Visual STUDIO eszközök beállításához CI/CD adatcsatorna](stream-analytics-tools-for-visual-studio-cicd.md) cikk.
 
 Ez az oktatóanyag befejezése után fogja tudni:

@@ -1,6 +1,6 @@
 ---
-title: "Ismert problémák és hibaelhárítási útmutató |} Microsoft Docs"
-description: "Ismert problémák listája és a hibaelhárítás elősegítése érdekében az útmutató"
+title: Ismert problémák és hibaelhárítási útmutató |} Microsoft Docs
+description: Ismert problémák listája és a hibaelhárítás elősegítése érdekében az útmutató
 services: machine-learning
 author: svankam
 ms.author: svankam
@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/12/2018
-ms.openlocfilehash: 62207fa20c4660d1e828053ee73953cb68af1b9d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3699e2a59061d8a2870a263588917268ca504866
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Az Azure Machine Learning munkaterület - ismert problémák és hibaelhárítási útmutatója 
 Ez a cikk segít keresés és javítsa ki a hibákat, vagy sikertelen műveletek használata az Azure Machine Learning-munkaterület alkalmazás részeként. 
@@ -231,13 +231,21 @@ A megosztási problémát, a kis teljesítményt, úgy, hogy a is elkerülheti `
 ## <a name="wipe-clean-workbench-installation"></a>Tisztán munkaterület törlése
 Általában nem kell ehhez. De ha Ön kitakarítása tiszta telepítés, a lépések a következők:
 
-- On Windows:
+- Windows rendszeren:
   - Először ellenőrizze, hogy használja _programok telepítése és törlése_ kisalkalmazást a _Vezérlőpult_ eltávolítása a _Azure Machine Learning-munkaterület_ alkalmazás bejegyzést.  
   - Ezután töltse le és futtassa az alábbi parancsfájlok egyikét:
     - [Windows parancssori parancsfájl](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_win.cmd).
     - [A Windows PowerShell-parancsfájl](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_win.ps1). (Futtatásához szükséges `Set-ExecutionPolicy Unrestricted` egy emelt jogosultsági szintű PowerShell ablakban, a parancsfájl futtatása előtt.)
 - A macOS:
   - Most töltse le és futtassa a [macOS bash héjparancsfájlt](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_mac.sh).
+
+## <a name="azure-ml-using-a-different-python-location-than-the-azure-ml-installed-python-environment"></a>Egy másik python hely, mint az Azure ML használata az Azure ML telepítve python-környezetben
+Azure Machine Learning munkaterület legutóbbi módosítása miatt a felhasználók tapasztalhatja, hogy helyi futtatása a python-környezetben telepítette az Azure ML-munkaterület többé nem mutat. Ez akkor fordulhat elő, ha a felhasználó rendelkezik a számítógépen egy másik python-környezetben, és a "Python" elérési út értéke környezet mutassanak. Azure ML munkaterület használatához telepítve a Python-környezetben, kövesse az alábbi lépéseket:
+- Keresse meg a aml_config mappában a projekt legfelső szintű local.compute fájlját.
+- Módosítsa a "pythonLocation" változó, úgy, hogy a fizikai elérési út Azure ML-munkaterület mutasson telepítve python-környezetben. Az elérési út kétféleképpen szerezheti be:
+    - Az Azure ML python hely található a %localappdata%\AmlWorkbench\python\python.exe
+    - Nyissa meg a következő parancsot az Azure ML munkaterület, a parancssorba írja be a python, sys.exe importálása, sys.executable futtatásához és az elérési út beolvasása innen. 
+
 
 
 ## <a name="some-useful-docker-commands"></a>Néhány hasznos Docker-parancsok

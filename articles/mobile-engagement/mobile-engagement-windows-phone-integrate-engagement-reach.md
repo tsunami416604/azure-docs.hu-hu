@@ -1,11 +1,11 @@
 ---
-title: "Windows Phone Silverlight Reach SDK-integráció"
-description: "Windows Phone Silverlight-alkalmazásokhoz az Azure Mobile Engagement Reach integrálása"
+title: Windows Phone Silverlight Reach SDK-integráció
+description: Windows Phone Silverlight-alkalmazásokhoz az Azure Mobile Engagement Reach integrálása
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: d3516a6b-db9f-4cdb-a475-4148edf81af1
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,17 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 0738f33df94d14fbb393bfaaf09e94c6560213cc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 34e5ce414ebf72fbecef6c921e57128e2658c921
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="windows-phone-silverlight-reach-sdk-integration"></a>Windows Phone Silverlight Reach SDK-integráció
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 Az integráció az ismertetett eljárást kell követni a [Windows Phone Silverlight Engagement SDK-integráció](mobile-engagement-windows-phone-integrate-engagement.md) Ez az útmutató követése előtt.
 
 ## <a name="embed-the-engagement-reach-sdk-into-your-windows-phone-silverlight-project"></a>Az Engagement Reach SDK beágyazása a Windows Phone Silverlight-projekt
-Nincs olyan hozzáadása. `EngagementReach`hivatkozások és erőforrások még a projektben.
+Nincs olyan hozzáadása. `EngagementReach` hivatkozások és erőforrások még a projektben.
 
 > [!TIP]
 > Lemezképek található, testreszabhatja a `Resources` mappa a projekt, különösen a márka ikon (hogy az Engagement ikonra az alapértelmezett).

@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Mobile Engagement webes SDK-integráció |} Microsoft Docs"
-description: "A legújabb frissítéseket és az Azure Mobile Engagement webes SDK eljárásai"
+title: Az Azure Mobile Engagement webes SDK-integráció |} Microsoft Docs
+description: A legújabb frissítéseket és az Azure Mobile Engagement webes SDK eljárásai
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: b5daa2a2-942b-489d-aa1d-568c3b25e56f
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: js
 ms.topic: article
 ms.date: 02/29/2016
 ms.author: piyushjo
-ms.openlocfilehash: 7d8eaa180e277741a583522ee62d68f5247b92bb
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: bccfbdfe9d99900f58d5dbfa44183146c79b9c88
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="integrate-azure-mobile-engagement-in-a-web-application"></a>Integrálása az Azure Mobile Engagement egy webalkalmazásban
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 > [!div class="op_single_selector"]
 > * [Windows Universal](mobile-engagement-windows-store-integrate-engagement.md)
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
@@ -33,7 +37,7 @@ Az ebben a cikkben szereplő eljárásokat a legegyszerűbben úgy, hogy aktivá
 
 Kövesse a jelentések, amelyek szükségesek ahhoz, hogy a felhasználók, munkamenetek, tevékenységekhez, összeomlik és technicals összes statisztikája számítási aktiválásához. Az alkalmazás-függő statisztikákat, pl.: eseményeket, hibákat és feladatokat aktiválnia kell a jelentések manuálisan az Azure Mobile Engagement API használatával. További információt a további [használata a speciális API webalkalmazás szerinti címkézését a Mobile Engagement](mobile-engagement-web-use-engagement-api.md).
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Bemutatás
 [Töltse le az Azure Mobile Engagement SDK webes](http://aka.ms/P7b453).
 A Mobile Engagement webes SDK egyetlen JavaScript fájlként van kiadva, hogy a hely vagy a webes alkalmazás egyes lapján szerepeljenek azure-engagement.js.
 
@@ -45,9 +49,9 @@ A Mobile Engagement webes SDK egyetlen JavaScript fájlként van kiadva, hogy a 
 ## <a name="browser-compatibility"></a>Böngészőkompatibilitás
 A Mobile Engagement webes SDK-t használ a natív JSON kódolási és dekódolási, tartományokon átívelő AJAX-kérelmek (a W3C CORS megadását hagyatkoznia) mellett. Az alábbi böngészők kompatibilis:
 
-* A Microsoft Edge 12 +
-* Az Internet Explorer 10 +
-* Firefox 3.5 +
+* Microsoft Edge 12+
+* Internet Explorer 10+
+* Firefox 3.5+
 * Chrome 4 +
 * Safari 6 +
 * Opera 12 +
@@ -64,7 +68,7 @@ A Mobile Engagement webes SDK-t használ a natív JSON kódolási és dekódolá
 A `connectionString` érték, az alkalmazás az Azure-portálon jelenik meg.
 
 > [!NOTE]
-> `appVersionName`és `appVersionCode` megadása nem kötelező. Azt javasoljuk azonban, hogy konfigurálja azokat, hogy analytics képes a fájlverzió-információkat.
+> `appVersionName` és `appVersionCode` megadása nem kötelező. Azt javasoljuk azonban, hogy konfigurálja azokat, hogy analytics képes a fájlverzió-információkat.
 > 
 > 
 
@@ -87,7 +91,7 @@ Vagy ezt:
       ...
     </body>
 
-## <a name="alias"></a>Alias
+## <a name="alias"></a>Aliasnév
 Miután a Mobile Engagement webes SDK-parancsprogramot be van töltve, létrehozza a **engagement** alias az SDK API-k elérésére. Az alias nem használható SDK konfigurációjának meghatározása. Ez az alias lesz a jelen dokumentációban lévő hivatkozás.
 
 Vegye figyelembe, hogy ha az alapértelmezett alias ütközik egy másik globális változó a lapról, akkor újra meg lehet adni azt a konfigurációban az alábbiak szerint ahhoz, hogy betöltve a Mobile Engagement webes SDK:

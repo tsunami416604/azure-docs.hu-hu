@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/03/2018
 ms.author: joflore
 ms.reviewer: richagi
-ms.openlocfilehash: e2b6651f0d341567f1d02d0ca16b8f445e3d26f4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4259715fbb062bfb170509c928b5a1ad898ea394
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure multi-factor Authentication beállításainak konfigurálása
 
@@ -56,7 +56,7 @@ Használja a _blokkolnia és feloldania felhasználók_ szolgáltatás megakadá
 4. Adja meg a megjegyzéseit a **vonatkozó tiltás feloldásának okból** mező.
 5. Válassza ki **Unblock** a felhasználó blokkolásának feloldása befejezéséhez.
 
-## <a name="fraud-alert"></a>Csalási riasztás
+## <a name="fraud-alert"></a>Visszaélési riasztás
 
 Konfigurálja a _csalási riasztás_ a beállítást, így a felhasználók jelenthetik-e rosszindulatú megpróbál hozzáférni az erőforrásokhoz. A mobilalkalmazás vagy a telefont keresztül a felhasználók jelenthetik csalás kísérletek.
 
@@ -152,7 +152,7 @@ A _megbízható IP-címek_ a felügyelt vagy összevont bérlők rendszergazdái
 
 | Az Azure AD bérlő típusa | Megbízható IP-címek szolgáltatás beállításai |
 |:--- |:--- |
-| Managed |**Egyedi IP-címek**: a rendszergazdák, adjon meg egy adott IP-címek, amelyek jogosultak a felhasználók számára a vállalati intraneten jelentkezzen be a kétlépéses ellenőrzést.|
+| Felügyelt |**Egyedi IP-címek**: a rendszergazdák, adjon meg egy adott IP-címek, amelyek jogosultak a felhasználók számára a vállalati intraneten jelentkezzen be a kétlépéses ellenőrzést.|
 | Összevont |**Minden összevont felhasználók**: Jelentkezzen be a a szervezeten belüli összes összevont felhasználók jogosultak a kétlépéses ellenőrzést. A felhasználók Active Directory összevonási szolgáltatások (AD FS) által kiadott jogcím használatával ellenőrzés kihagyása.<br/>**Egyedi IP-címek**: a rendszergazdák, adjon meg egy adott IP-címek, amelyek jogosultak a felhasználók számára a vállalati intraneten jelentkezzen be a kétlépéses ellenőrzést. |
 
 A megbízható IP-címek megkerülése a vállalati intraneten belül csak akkor működik. Ha bejelöli a **minden összevont felhasználók** beállítás és a felhasználó bejelentkezik a vállalati intraneten kívül a felhasználó rendelkezik-e a hitelesítéshez használja a kétlépéses ellenőrzést. A folyamat megegyezik akkor is, ha a felhasználó megadja egy AD FS jogcímet. 
@@ -224,15 +224,11 @@ Függetlenül attól, hogy a megbízható IP-címek szolgáltatás engedélyezve
 
 ![A Szolgáltatásbeállítások megbízható IP-címek engedélyezése](./media/multi-factor-authentication-whats-next/trustedips3.png)
 
-## <a name="app-passwords"></a>Alkalmazásjelszók
+## <a name="app-passwords"></a>Alkalmazásjelszavak
 
 Egyes alkalmazások, például az Office 2010 vagy korábbi és az Apple Mail nem támogatják a kétlépéses ellenőrzést. Az alkalmazások nincs konfigurálva. a második ellenőrzési fogadásához. Ezek az alkalmazások használatához előnyeit a _alkalmazásjelszók_ szolgáltatás. A hagyományos jelszó helyett egy alkalmazásjelszót segítségével az alkalmazás figyelmen kívül hagyása a kétlépéses ellenőrzést, és folytathatja a munkát.
 
->[!NOTE]
->Modern hitelesítést a Microsoft Office 2013-ügyfelek és újabb verziók
-> 
->Az Office 2013-ügyfelek és az újabb (például az Outlook), támogatja a modern hitelesítési protokollok megvalósítását végzi, és a kétlépéses ellenőrzéshez használttal működéséhez engedélyezni kell. Miután az ügyfél engedélyezve van, alkalmazásjelszók nem lesz szükség az ügyfél számára. További információkért lásd: a [Office 2013 modern hitelesítés nyilvános előzetes kiadásának bejelentésében](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
->
+A modern hitelesítést is támogatja, a Microsoft Office 2013-ügyfelek és újabb verziók. Office 2013 Outlook, beleértve az ügyfelek támogatják a modern hitelesítési protokollok megvalósítását végzi, és a kétlépéses ellenőrzéshez használttal működéséhez engedélyezni kell. Miután az ügyfél engedélyezve van, alkalmazásjelszók nem lesz szükség az ügyfél számára.
 
 ### <a name="considerations-about-app-passwords"></a>Tudnivalók az alkalmazásjelszókról kapcsolatos szempontok
 

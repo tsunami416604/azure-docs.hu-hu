@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement belül Emoji hangulatjelek segítségével"
-description: "A leküldéses értesítések belül Emoji Hangulatjelek használata"
+title: Azure Mobile Engagement belül Emoji hangulatjelek segítségével
+description: A leküldéses értesítések belül Emoji Hangulatjelek használata
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 663317d7-3c93-4e8f-b13d-c6fb342124ee
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: bbb7ce5e95b229a7505c5e97b6866d5a302a1d27
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b5b0e7bfe07054d093dc164cb5f72bde4ba28170
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="use-emoji-emoticon-within-push-notifications"></a>Leküldéses értesítések belül Emoji hangulatjel használata
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 Megadhat Emoji hangulatjelek a leküldéses értesítési néhány egyszerű lépésben: 
 
 1. Először meg kell találnia az Emoji is szeretne küldeni az üzenetben. Győződjön meg arról, hogy a Emoji kiválasztja a támogat a céleszközt, az eszköz megjelenítse némi időt újonnan jóváhagyott Emojis hozzáadása a kiválasztott platformokon. 
