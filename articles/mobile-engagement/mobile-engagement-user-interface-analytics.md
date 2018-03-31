@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Mobile Engagement felhasználói felület - elemzés"
-description: "Útmutató: Azure Mobile Engagement segítségével az alkalmazás előzményadatainak elemzése"
+title: Az Azure Mobile Engagement felhasználói felület - elemzés
+description: 'Útmutató: Azure Mobile Engagement segítségével az alkalmazás előzményadatainak elemzése'
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 6b2533ac-b8ec-4e35-872c-d563895bdc0c
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: ad05676919d6c254d60fd010c3f589f663c4745d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fceae1ffff40fc525170121181e21726fe2bd3f7
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-analyze-historical-data-about-your-application"></a>Az alkalmazás előzményadatainak elemzése
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 Ez a cikk ismerteti a **ANALYTICS** lapján a **a Mobile Engagement** portálon. Használja a **a Mobile Engagement** portal felügyeletét és kezelését a mobile apps szolgáltatásban. Vegye figyelembe, hogy a portál használatának megkezdéséhez először hozzon létre egy **Azure Mobile Engagement** fiók.
 
 A felhasználói felület Analytics szakaszból összesített információkat az alkalmazásról, 24 óránként frissül történelmi adatokon alapulnak. Az információk megjelennek a különböző irányítópultok vonal vagy sáv/tortadiagramok, hálózatok és a maps állnak. Az adatok CSV-fájlok formájában is letölthetők. Ezt az információt a legtöbb valós időben a felhasználói felület figyelő szakaszában érhető el, és azt is elérhetők az Analytics API-t.
@@ -41,7 +45,7 @@ Az Azure Mobile Engagement biztosít alapszintű, standard TénylegesKöltség, 
 * Megőrzési: A felhasználó akkor tekinthető megtartottnak egy adott időintervallumban, ha az első munkamenete az adott időszakban történt. Az időközök megtartott felhasználók (és az új felhasználók) számlálási időintervalluma módosítható óra, nap, hét és hónap. A felhasználó megőrzési analytics cohorts épül. Egy kohorszok az új felhasználók észlelt egy adott időszakra (azaz a végrehajtása az első munkamenete az ebben az időszakban felhasználók csoportja). Az 1 napos, 2 napos, 4 napos, 7 napos és 1 hónapos cohorts használjuk. Egy kohorszok megadott, minden 1 napos, 2 napos, 4 napos, 7 napos és 1 hónapos, az Azure Mobile Engagement kiszámítja a kohorszok és azok tartozó összes felhasználó készletét még aktívak (azaz a felhasználók, akik az időszak alatt legalább egy munkamenetet elvégzett beállítása). A felhasználók egy kohorszok verzió nevezzük. (Az azure Mobile Engagement láthatja, hogy hány felhasználó használják az alkalmazást, de csak a platform adott tároló segítségével megállapíthatja, hogy hány felhasználó eltávolítva az alkalmazás – például GooglePlay, iTunes, a Windows áruház, stb.).
 * Munkamenetek: Az alkalmazás a felhasználó használja. Munkamenetek jönnek létre a felhasználó által végrehajtott műveletek sorozata (tevékenység általában társítva a következőhöz: az alkalmazás egy képernyőt használatát, de ez a módszer az alkalmazásba integrálva van az SDK függően változhat). A felhasználó egyszerre csak hajthat végre egy tevékenység: a munkamenet akkor kezdődik, amint a felhasználó elindítja az első tevékenységet, és befejezésével ér véget, hogy az utolsó tevékenység. Ha a felhasználó csak néhány másodpercig marad, a tevékenység végrehajtása nélkül, majd a tevékenységek sorrendjét két különböző munkamenetek egy van osztva.
 * Tevékenységek: A következő képernyőkön minden képernyőn, az alkalmazás nevét, és amikor a felhasználók mennyi töltött. Tevékenységek egy egyéni analitikus beállítást, amely a saját alkalmazás beállítása "alkalmazásadatok" címkék felel meg a következők:
-* Felhasználói elérési út: Mutatja, hogy a felhasználók hogyan navigálnak az alkalmazás tevékenységei (képernyői). A részletességi szint a csúszkával módosítható. Kék csomópontok jelölik a tevékenységeket az alkalmazásban. A méretük azzal arányos, hogy az idő felhasználók mennyi töltöttek velük. A fehér csomópontok a munkamenetek kezdetét és végét jelölik. Piros csomópontok jelölik a összeomlik. A nyilak az alkalmazás tevékenységei (vagy a tevékenységek és az összeomlások) közötti váltásokat jelölik. Kattintson a kívánt csomópontra vagy összekötőelemre kattintva megjelenik egy elemleírás, amely további információkkal szolgál az adatokról: a képernyőn töltött időről egy adott, a váltások számáról, valamint a forrástevékenység a céltevékenységre való váltás százalékos. (A---60 %---> B azt jelenti, hogy a B tevékenységre kerül a tevékenységről a felhasználók 60 %-ában.) A grafikon átrendezéséhez kívánt egyértelművé; minden alkalommal, amikor módosítja a rendszer menti a pozícióját. Az összeomlások (crash) elrejtésével áttekinthetőbbé teheti a grafikont.
+* Felhasználói elérési út: Mutatja, hogy a felhasználók hogyan navigálnak az alkalmazás tevékenységei (képernyői). A részletességi szint a csúszkával módosítható. Kék csomópontok jelölik a tevékenységeket az alkalmazásban. A méretük azzal arányos, hogy az idő felhasználók mennyi töltöttek velük. A fehér csomópontok a munkamenetek kezdetét és végét jelölik. A piros csomópontok az összeomlásokat (crash) jelzik. A nyilak az alkalmazás tevékenységei (vagy a tevékenységek és az összeomlások) közötti váltásokat jelölik. Kattintson a kívánt csomópontra vagy összekötőelemre kattintva megjelenik egy elemleírás, amely további információkkal szolgál az adatokról: a képernyőn töltött időről egy adott, a váltások számáról, valamint a forrástevékenység a céltevékenységre való váltás százalékos. (A---60 %---> B azt jelenti, hogy a B tevékenységre kerül a tevékenységről a felhasználók 60 %-ában.) A grafikon átrendezéséhez kívánt egyértelművé; minden alkalommal, amikor módosítja a rendszer menti a pozícióját. Az összeomlások (crash) elrejtésével áttekinthetőbbé teheti a grafikont.
 * Események: A az alkalmazás a felhasználó által végrehajtott műveleteket adott. A terjesztési események munkamenetenként felhasználónként események száma jelenik meg. Egy esemény valamilyen azonnali műveletet, például egy gombra való kattintást vagy egy értesítés fogadását a jelöli. (Az esemény pontos jelentése függ az SDK hogyan lett integrálva az alkalmazásban.) Egy esemény egy munkamenet vagy feladat során fordulhatnak elő, vagy önállóan.
 * Feladatok: Hasonló események, kivéve azokat a művelet mennyi összpontosítanak. Például feladatok volt meg, mennyi ideig tart a tartalom betöltése vagy webes szolgáltatás hívása technikai információkat. Azt is megjelenítése sikertelen, hogy mennyi ideig tart a felhasználót, hogy az űrlap kitöltése, hozzon létre egy fiókot, vagy a vásárlás. Egy feladatot a feladatok, időtartamát például egy letöltési művelet vagy időtartama a fejléc megjelenik a képernyőn. (A jelentése függ az SDK hogyan lett integrálva az alkalmazásban.) Feladatok általában olyan kapcsolódnak háttér feladatok végrehajtására kerül sor a hatókör (azaz felhasználói tevékenység nélkül) a munkameneten kívül.
 * Technicals: Technikai információkat az eszközöket a felhasználók az alkalmazás követheti nyomon, például a nyelv, vivőjel, hálózati, eszköz, belső vezérlőprogramok, és képernyőn mérete a felhasználói eszközökön, és a az alkalmazás és az alkalmazásban használt SDK-verziója is.
@@ -70,7 +74,7 @@ A megőrzési áttekintése oszlanak meg a középső több kártyával, az egye
 4. Ez azt jelzi, hogy a számításhoz használt értékek.
 5. Ez az értékgörbe az előzmények megőrzési értéket. Lehetővé teszi a múltban szeretné, hogy hogyan továbbfejlődtek széleskörű nézetét értékeinek megtekintéséhez.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Alapfogalmak][Link 6]
 * [Hibaelhárítási útmutató szolgáltatás][Link 24]
 

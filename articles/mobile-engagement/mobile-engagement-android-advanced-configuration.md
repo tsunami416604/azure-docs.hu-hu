@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Mobile Engagement Android SDK speciális konfiguráció"
-description: "Ismerteti, beleértve az Azure Mobile Engagement Android SDK-val Android Manifest speciális konfigurációs beállítás"
+title: Az Azure Mobile Engagement Android SDK speciális konfiguráció
+description: Ismerteti, beleértve az Azure Mobile Engagement Android SDK-val Android Manifest speciális konfigurációs beállítás
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 37d2c09a-86fa-473d-8987-c7e35a0eb3e8
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: piyushjo;ricksal
-ms.openlocfilehash: 0301f71c76872714aa1bf727a6c21dd7a63db036
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 29a7bb7daae59e2034504ce27c9ba66755b11e4b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="advanced-configuration-for-azure-mobile-engagement-android-sdk"></a>Az Azure Mobile Engagement Android SDK speciális konfiguráció
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 > [!div class="op_single_selector"]
 > * [Univerzális Windows](mobile-engagement-windows-store-advanced-configuration.md)
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
@@ -48,7 +52,7 @@ Az engedély kódot kell tűnik a következőt, ahol ki a megfelelő engedélyek
 | ACCESS_NETWORK_STATE |Kötelező. Alapszintű jelentéskészítéshez |
 | RECEIVE_BOOT_COMPLETED |Kötelező. Az értesítések központ megjelennek az eszköz újraindítását követően. |
 | WAKE_LOCK |Ajánlott. Lehetővé teszi, hogy Wi-Fi használata esetén, vagy ha a képernyőn a rendszer nem végez adatgyűjtést |
-| MOZOG |Választható. Lehetővé teszi, hogy vibráció értesítések fogadásakor. |
+| VIBRATE |Választható. Lehetővé teszi, hogy vibráció értesítések fogadásakor. |
 | DOWNLOAD_WITHOUT_NOTIFICATION |Választható. Lehetővé teszi, hogy Android nagy vonalakban tekinti értesítés |
 | WRITE_EXTERNAL_STORAGE |Választható. Lehetővé teszi, hogy Android nagy vonalakban tekinti értesítés |
 | ACCESS_COARSE_LOCATION |Választható. Lehetővé teszi a valós idejű hely jelentéskészítési |
@@ -88,7 +92,7 @@ Ha Engagement aktív Ez a függvény hívásakor, a szolgáltatás leállítása
 
 Engedélyezheti a reporting újra működik meghívásával napló `true`.
 
-### <a name="integration-in-your-own-preferenceactivity"></a>Integráció saját`PreferenceActivity`
+### <a name="integration-in-your-own-preferenceactivity"></a>Integráció saját `PreferenceActivity`
 Helyett ezt a funkciót, integrálhatja ezt a beállítást a közvetlenül a meglévő `PreferenceActivity`.
 
 Konfigurálhatja a bevonási a beállításokat tartalmazó fájlt (a kívánt mód) a használatára a `AndroidManifest.xml` fájlt `application meta-data`:

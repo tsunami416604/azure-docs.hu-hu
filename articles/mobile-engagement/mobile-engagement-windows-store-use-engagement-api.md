@@ -1,11 +1,11 @@
 ---
-title: "A bevonási API használata a Windows Universal"
-description: "A bevonási API használata a Windows Universal"
+title: A bevonási API használata a Windows Universal
+description: A bevonási API használata a Windows Universal
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: bb501fca-9cfe-4495-81df-b5efd6e0137b
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 75fc134a5535e6113331470cf61df9c06eb8e2ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f8f211764646bc53319f435d74a16a026329039
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-use-the-engagement-api-on-windows-universal"></a>A bevonási API használata a Windows Universal
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 Ez a dokumentum az bővítménye a dokumentum [hogyan integrálhatja Engagement az univerzális Windows-](mobile-engagement-windows-store-integrate-engagement.md): a mélység részletei jelentés az alkalmazás statisztikái az Engagement API használatával biztosít.
 
 Ne feledje, hogy ha Engagement jelenti a munkamenetek, a tevékenységek, a összeomlásokat és a technikai információkat az alkalmazás csak szeretne, majd a legegyszerűbb módja a rendszer minden ahhoz a `Page` alosztályokat örökli a `EngagementPage` osztály.
@@ -41,7 +45,7 @@ De *tevékenységek* is szabályozhatja manuálisan az Engagement API használat
 
 ## <a name="reporting-activities"></a>Jelentéskészítési tevékenység
 ### <a name="user-starts-a-new-activity"></a>Felhasználó elindítja az új tevékenység
-#### <a name="reference"></a>Referencia
+#### <a name="reference"></a>Leírások
             void StartActivity(string name, Dictionary<object, object> extras = null)
 
 Meg kell hívnia `StartActivity()` minden egyes alkalommal, amikor a felhasználói tevékenység módosul. Ez a függvény az első hívás új felhasználói munkamenet indítása.
@@ -55,7 +59,7 @@ Meg kell hívnia `StartActivity()` minden egyes alkalommal, amikor a felhasznál
             EngagementAgent.Instance.StartActivity("main", new Dictionary<object, object>() {{"example", "data"}});
 
 ### <a name="user-ends-his-current-activity"></a>Felhasználói karakterlánccal végződik-e aktuális tevékenysége
-#### <a name="reference"></a>Referencia
+#### <a name="reference"></a>Leírások
             void EndActivity()
 
 Ez karakterlánccal végződik-e a tevékenység és a munkamenet. Ez a módszer nem célszerű hívni, csak ha valóban tudja, milyen végzett.
@@ -65,7 +69,7 @@ Ez karakterlánccal végződik-e a tevékenység és a munkamenet. Ez a módszer
 
 ## <a name="reporting-jobs"></a>Feladatok jelentése
 ### <a name="start-a-job"></a>Feladat indítása
-#### <a name="reference"></a>Referencia
+#### <a name="reference"></a>Leírások
             void StartJob(string name, Dictionary<object, object> extras = null)
 
 A feladatot használhatja egy meghatározott időtartamra vonatkozóan: bizonyos feladatok követése céljából.
@@ -81,7 +85,7 @@ A feladatot használhatja egy meghatározott időtartamra vonatkozóan: bizonyos
             EngagementAgent.Instance.StartJob("uploadData", extras);
 
 ### <a name="end-a-job"></a>Egy feladat vége
-#### <a name="reference"></a>Referencia
+#### <a name="reference"></a>Leírások
             void EndJob(string name)
 
 Amint egy tevékenység követi nyomon a feladat le lett állítva, meg kell a EndJob metódus hívható meg a feladat úgy, hogy megadja a feladat neve.
@@ -100,7 +104,7 @@ A következő három típusú eseményeket:
 * Feladat-események
 
 ### <a name="standalone-events"></a>Önálló események
-#### <a name="reference"></a>Referencia
+#### <a name="reference"></a>Leírások
             void SendEvent(string name, Dictionary<object, object> extras = null)
 
 Önálló események is előfordulhatnak kívül egy munkamenet környezetében.
@@ -109,7 +113,7 @@ A következő három típusú eseményeket:
             EngagementAgent.Instance.SendEvent("event", extra);
 
 ### <a name="session-events"></a>Munkamenet-események
-#### <a name="reference"></a>Referencia
+#### <a name="reference"></a>Leírások
             void SendSessionEvent(string name, Dictionary<object, object> extras = null)
 
 A munkamenet során a felhasználó által végrehajtott műveletek jelentésére általában használhatók munkamenet események.
@@ -130,7 +134,7 @@ A munkamenet során a felhasználó által végrehajtott műveletek jelentésér
             EngagementAgent.Instance.SendSessionEvent("sessionEvent", extras);
 
 ### <a name="job-events"></a>Feladat-események
-#### <a name="reference"></a>Referencia
+#### <a name="reference"></a>Leírások
             void SendJobEvent(string eventName, string jobName, Dictionary<object, object> extras = null)
 
 Feladat események általában a felhasználó által a feldolgozás során végrehajtott műveletek jelentésére használt.
@@ -146,7 +150,7 @@ Hibák három típusa van:
 * Hibák: feladathiba
 
 ### <a name="standalone-errors"></a>Önálló hibák
-#### <a name="reference"></a>Referencia
+#### <a name="reference"></a>Leírások
             void SendError(string name, Dictionary<object, object> extras = null)
 
 Munkamenet hibák ellentétesen önálló felléphetnek a kívül egy munkamenet környezetében.
@@ -155,7 +159,7 @@ Munkamenet hibák ellentétesen önálló felléphetnek a kívül egy munkamenet
             EngagementAgent.Instance.SendError("errorName", extras);
 
 ### <a name="session-errors"></a>Munkamenet-hibák
-#### <a name="reference"></a>Referencia
+#### <a name="reference"></a>Leírások
             void SendSessionError(string name, Dictionary<object, object> extras = null)
 
 Munkamenet a hibák általában használhatók a a munkamenet során a felhasználót érintő hibák jelentését.
@@ -164,7 +168,7 @@ Munkamenet a hibák általában használhatók a a munkamenet során a felhaszn�
             EngagementAgent.Instance.SendSessionError("errorName", extra);
 
 ### <a name="job-errors"></a>Hibák: feladathiba
-#### <a name="reference"></a>Referencia
+#### <a name="reference"></a>Leírások
             void SendJobError(string errorName, string jobName, Dictionary<object, object> extras = null)
 
 Hibák a jelenlegi felhasználói munkamenet való helyett egy futó feladat kapcsolódhat.
@@ -176,7 +180,7 @@ Hibák a jelenlegi felhasználói munkamenet való helyett egy futó feladat kap
 Az ügynök az összeomlások kezelésére két módszert biztosít.
 
 ### <a name="send-an-exception"></a>Kivétel küldése
-#### <a name="reference"></a>Referencia
+#### <a name="reference"></a>Leírások
             void SendCrash(Exception e, bool terminateSession = false)
 
 #### <a name="example"></a>Példa
@@ -191,7 +195,7 @@ Egy nem kötelező paraméter segítségével állítsa le a engagement munkamen
 Ha így tesz, a munkamenet és feladatok csak az összeomlás elküldése után megszűnik.
 
 ### <a name="send-an-unhandled-exception"></a>Nem kezelt kivétel küldése
-#### <a name="reference"></a>Referencia
+#### <a name="reference"></a>Leírások
             void SendCrash(Exception e)
 
 Engagement is biztosít a metódus nem kezelt kivételek küldése, ha **LETILTOTT** Engagement automatikus **összeomlási** reporting. Ez különösen akkor hasznos, ha az alkalmazás UnhandledException eseménykezelő használni.
@@ -282,7 +286,7 @@ Ez azt jelenti, hogy kulcsok betűk, számok és aláhúzásjelek követ legalá
 Kiegészítő funkciók korlátozva **1024** hívás karakteres.
 
 ## <a name="reporting-application-information"></a>Jelentéskészítési alkalmazással kapcsolatos adatok
-### <a name="reference"></a>Referencia
+### <a name="reference"></a>Leírások
             void SendAppInfo(Dictionary<object, object> appInfos)
 
 A SendAppInfo() használatával információkat (vagy más alkalmazás egyedi információt) követési függvény manuálisan jelentést.

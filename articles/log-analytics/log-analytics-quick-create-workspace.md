@@ -1,24 +1,24 @@
 ---
-title: "Az Azure Log Analytics-munkaterület létrehozása |} Microsoft Docs"
-description: "Útmutató felügyeleti megoldások és az adatgyűjtésről a felhőalapú és helyszíni környezetben való engedélyezéséhez a Naplóelemzési munkaterület létrehozása."
+title: Az Azure Log Analytics-munkaterület létrehozása |} Microsoft Docs
+description: Útmutató felügyeleti megoldások és az adatgyűjtésről a felhőalapú és helyszíni környezetben való engedélyezéséhez a Naplóelemzési munkaterület létrehozása.
 services: log-analytics
 documentationcenter: log-analytics
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2017
+ms.date: 03/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 5d8b20d5da442aa1f37eb7e2b2cb8049031e7a24
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8ac3d2d90909d740d28eb05396b915280f58c8ba
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>A Naplóelemzési munkaterület létrehozása az Azure-portálon
 Az Azure-portálon állíthatja be a Naplóelemzési munkaterület, amely olyan saját adattárház, az adatforrások és a megoldások egyedi Naplóelemzési környezet.  Ebben a cikkben ismertetett lépések szükségesek, ha azt tervezi, a következő forrásokból származó adatok gyűjtése a:
@@ -40,16 +40,17 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) címen. 
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
-1. Az Azure portálon kattintson **minden szolgáltatás**. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.<br><br> ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+1. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.<br><br> ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
 2. Kattintson a **Létrehozás** parancsra, majd válassza ki a következő elemek beállításait:
 
   * Adja meg az új **OMS-munkaterület** nevét, például: *DefaultLAWorkspace*. 
   * A legördülő listából válassza ki azt az **előfizetést**, amelyikhez kapcsolódni szeretne, ha az alapértelmezett kiválasztás nem megfelelő.
   * A **erőforráscsoport**, meglévő erőforrás használandó kiválasztott csoport már telepítő, vagy hozzon létre egy újat.  
   * Válasszon ki egy használható **hely**.  További információkért tekintse meg [a Log Analytics által támogatott régiókat](https://azure.microsoft.com/regions/services/).
-  * A Log Analytics szolgáltatásban három különböző **tarifacsomag** közül választhat. A jelen rövid útmutató esetében válassza az **ingyenes** szintet.  További információt az elérhető csomagokról [a Log Analytics részletes díjszabásában](https://azure.microsoft.com/pricing/details/log-analytics/) találhat.
+  * Ha egy új előfizetés 2018. április 2. után létrehozott egy munkaterület hoz létre automatikusan használja a */ GB* árképzési terv és kiválaszthatja azokat a tarifacsomag nem lesz elérhető.  Ha egy meglévő előfizetéshez. április 2 előtt létrehozott egy munkaterület létrehozásakor, vagy volt kötve a meglévő EA beléptetési-előfizetéshez, lehetősége van a három tarifacsomagok választhat.  A gyors üzembe helyezés, a fog ingyenes szint kiválasztásához.  További információt az elérhető csomagokról [a Log Analytics részletes díjszabásában](https://azure.microsoft.com/pricing/details/log-analytics/) találhat.
 
-        ![Create Log Analytics resource blade](media/log-analytics-quick-collect-azurevm/create-loganalytics-workspace-01.png)<br>  
+        ![Create Log Analytics resource blade](media/log-analytics-quick-collect-azurevm/create-loganalytics-workspace-02.png)<br>  
+
 3. Miután az **OMS-munkaterület** panelen megadta a szükséges adatokat, kattintson az **OK** gombra.  
 
 Az **Értesítések** menüpontot kiválasztva nyomon követheti, hogyan ellenőrzi a rendszer az adatokat, és hogyan hozza létre a munkaterületet. 

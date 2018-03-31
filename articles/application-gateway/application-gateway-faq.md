@@ -1,28 +1,23 @@
 ---
-title: Gyakori kérdések az Azure Application Gateway |} Microsoft Docs
+title: Gyakori kérdések az Azure Application Gateway
 description: Ezen a lapon biztosít Azure Application Gateway gyakran feltett kérdésekre adott válaszok
-documentationcenter: na
 services: application-gateway
-author: davidmu1
-manager: timlt
-editor: tysonn
-ms.assetid: d54ee7ec-4d6b-4db7-8a17-6513fda7e392
+author: vhorne
+manager: jpconnock
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/19/2017
-ms.author: davidmu
-ms.openlocfilehash: 5b400b373577fc38fe108a74eb8bad936a82be0c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.date: 3/29/2018
+ms.author: victorh
+ms.openlocfilehash: b4b627d16414ea7e4553a18e6620fba60e95ec91
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Az Alkalmazásátjáró gyakori kérdések
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 **Q. Mi az Application Gateway?**
 
@@ -38,7 +33,19 @@ Alkalmazásátjáró 7 réteg terheléselosztó, amely azt jelenti, hogy működ
 
 **Q. Milyen protokollokat támogatja az Alkalmazásátjáró?**
 
-Alkalmazás-átjáró támogatja a HTTP, HTTPS és WebSocket.
+Alkalmazás-átjáró támogatja a HTTP, HTTPS, HTTP/2 és WebSocket.
+
+**Q. Hogyan támogatja az Alkalmazásátjáró HTTP/2?**
+
+A HTTP/2 protokoll támogatása csak az Application Gateway figyelői csatlakozó ügyfeleket érhető el. A háttérkészlet kiszolgáló kommunikációt HTTP/1.1 felett van. 
+
+Alapértelmezés szerint a HTTP/2 támogatása le van tiltva. A következő Azure PowerShell-kód részlet példa bemutatja, hogyan engedélyezheti azt:
+
+```
+$gw = Get-AzureRmApplicationGateway -Name test -ResourceGroupName hm
+$gw.EnableHttp2 = $true
+Set-AzureRmApplicationGateway -ApplicationGateway $gw
+```
 
 **Q. Által támogatott ma háttérkészlet részeként?**
 
@@ -104,7 +111,7 @@ Hálózati biztonsági csoportok az Alkalmazásátjáró alhálózat, a követke
 
 * Kivételek kell elhelyezni, a bejövő forgalmat portokon 65503-65534 az háttér health megfelelő működéséhez.
 
-* Nem blokkolható a kimenő internetkapcsolat.
+* Kimenő internetkapcsolat nem tiltható le.
 
 * Engedélyezni kell az AzureLoadBalancer címke forgalmát.
 
@@ -314,12 +321,12 @@ Az Alkalmazásátjáró naplók érhetők el. Kattintson a portál **tevékenys�
 
 **Q. Beállíthatja a Alkalmazásátjáró riasztások?**
 
-Igen, Alkalmazásátjáró támogatja a riasztások, értesítések metrikák ki vannak konfigurálva.  Alkalmazásátjáró "átviteli", amely konfigurálható egy metrika van riasztást. Riasztások kapcsolatos további információkért látogasson el a [riasztási értesítéseket](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
+Igen, Alkalmazásátjáró támogatja a riasztások, értesítések metrikák ki vannak konfigurálva. Alkalmazásátjáró "átviteli", amely konfigurálható egy metrika van riasztást. Riasztások kapcsolatos további információkért látogasson el a [riasztási értesítéseket](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
 
 **Q. Háttér állapotfigyelő adja vissza állapota ismeretlen, mi okozza ezt az állapotot?**
 
 A leggyakoribb oka a háttérkiszolgálón a hozzáférést egy NSG-t vagy egyéni DNS-megjelenítését blokkolják. Látogasson el [háttér állapot, a diagnosztikai naplózás és a metrikák az Alkalmazásátjáró](application-gateway-diagnostics.md) további.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információt az Alkalmazásátjáró látogasson el [Alkalmazásátjáró bemutatása](application-gateway-introduction.md).

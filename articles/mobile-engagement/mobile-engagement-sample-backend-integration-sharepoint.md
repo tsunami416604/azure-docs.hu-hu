@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Mobile Engagement - háttér-integráció"
-description: "Csatlakozás az Azure Mobile Engagement egy SharePoint-háttérrendszerrel SharePoint kampányok létrehozásához"
+title: Az Azure Mobile Engagement - háttér-integráció
+description: Csatlakozás az Azure Mobile Engagement egy SharePoint-háttérrendszerrel SharePoint kampányok létrehozásához
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 06297b43-579f-46e6-8a58-961a68f9aa09
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: d49f1094f4c3f170f3618f3e19e42266f9ae8858
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf530ca6dce32050487f367aa80b10bf7f20b7e7
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-mobile-engagement---api-integration"></a>Az Azure Mobile Engagement - API-integráció
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 Egy automatizált marketing rendszerben létrehozása és aktiválása, a marketingkampányok is automatikusan történik. Erre a célra - Azure Mobile Engagement lehetővé teszi, hogy az ilyen API-k használatával is automatizált marketingkampányok létrehozása. 
 
 Általában az ügyfelek a Mobile Engagement előtér illesztő segítségével a marketingkampányok részeként hozza létre a közlemények/szavazások stb. Azonban a marketingkampányok egyre érett, szükség van az adatokat, hogy egy teljesen automatizált folyamat is létrehozható, amely kampányok hoz létre a Mobile Engagement zárolva van (például a CRM vagy CMS rendszer például SharePoint) a háttérrendszerek ki dinamikusan áramlanak a háttérrendszerek adatok alapján. 
@@ -155,7 +159,7 @@ Ez az oktatóanyag egy olyan forgatókönyvet, ahol a SharePoint üzleti felhasz
 4. Ha már létrehozott bejelentés, megjelenik a következőhöz a Mobile Engagement portál (vegye figyelembe, hogy az állapot = Vázlat és aktív = N/A)
    
     ![][3]
-5. `CreateAzMECampaign`létrehoz egy bejelentési kampányt, és visszaadja az azonosítója a hívó. `ActivateAzMECampaign`Ez az azonosító szükséges aktiválja a kampányt paraméterként. 
+5. `CreateAzMECampaign` létrehoz egy bejelentési kampányt, és visszaadja az azonosítója a hívó. `ActivateAzMECampaign` Ez az azonosító szükséges aktiválja a kampányt paraméterként. 
    
         static async Task<bool> ActivateAzMECampaign(int campaignId)
         {

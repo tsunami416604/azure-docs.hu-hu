@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: 3a5d1e897d8ffe063ecf9277bef346c8b7c5092b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f4410932f00f8505ae5a894caa002e1223196d95
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-load-balancer-overview"></a>Az Azure Load Balancer áttekintése
 
@@ -128,7 +128,7 @@ _Ajánlott eljárás, explicit módon, adja meg a SKU annak ellenére, hogy még
 | Több frontends | Bejövő és kimenő | Csak bejövő |
 | Felügyeleti műveletek | A legtöbb műveletek < 30 másodperc | 60-90 másodpercet tipikus |
 | SLA | a két kifogástalan állapotú virtuális gép elérési útja 99,99 %-os | A virtuális gép SLA implicit | 
-| Díjszabás | A szabályok száma alapján, adatfeldolgozási bejövő vagy kimenő társított erőforrás  | Nem kell fizetni |
+| Árképzés | A szabályok száma alapján, adatfeldolgozási bejövő vagy kimenő társított erőforrás  | Nem kell fizetni |
 
 Felülvizsgálati [szolgáltatási korlátait terheléselosztóhoz](https://aka.ms/lblimits).  Standard terheléselosztóhoz is tekintse át a részletes [áttekintése](load-balancer-standard-overview.md), [árképzési](https://aka.ms/lbpricing), és [SLA](https://aka.ms/lbsla).
 
@@ -142,7 +142,7 @@ Az alábbi ábrán egy elosztott terhelésű végpont a webes forgalomban, amely
 
 ![Példa nyilvános terheléselosztóra](./media/load-balancer-overview/IC727496.png)
 
-**1. ábra: Terheléselosztási egy nyilvános terheléselosztó használatával webes forgalom**
+*Ábra: Terheléselosztási egy nyilvános terheléselosztó használatával webes forgalom*
 
 Internetes ügyfelek weblap-kérelmeket küldjön a webes alkalmazás 80-as TCP-porton a nyilvános IP-címe, ha az Azure terheléselosztó a kérelmeket az elosztott terhelésű készlet a három virtuális gépek között osztja el. A load balancer algoritmusok kapcsolatos további információkért lásd: a [load balancer áttekintése lapon](load-balancer-overview.md#load-balancer-features).
 
@@ -161,9 +161,9 @@ Belső terheléselosztó lehetővé teszi, hogy a következő típusú terhelés
 
 ![Példa belső terheléselosztóra](./media/load-balancer-overview/IC744147.png)
 
-**2. ábra – terheléselosztási Többrétegű alkalmazások mindkét nyilvános és a belső terheléselosztók használatával**
+*Ábra - terheléselosztási Többrétegű alkalmazások mindkét nyilvános és a belső terheléselosztók használatával*
 
-## <a name="pricing"></a>Díjszabás
+## <a name="pricing"></a>Árképzés
 Standard terheléselosztó terheléselosztási szabályok konfigurálva és az összes bejövő és kimenő adatfeldolgozási száma alapján megterhelni termék. Standard terheléselosztóhoz árakról, látogasson el a [Load Balancer árképzési](https://azure.microsoft.com/pricing/details/load-balancer/) lap.
 
 Alapszintű terheléselosztó tartományregisztráció ingyenesen.

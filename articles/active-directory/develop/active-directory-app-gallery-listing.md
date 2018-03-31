@@ -1,32 +1,32 @@
 ---
-title: "Az alkalmazást az Azure Active Directory alkalmazáskatalógusában felsoroló |} Microsoft Docs"
-description: "Hogyan lehet egy alkalmazás, amely támogatja az egyszeri bejelentkezés az Azure Active Directory-alkalmazásgyűjtemény listájára"
+title: Az alkalmazást az Azure Active Directory alkalmazáskatalógusában felsoroló |} Microsoft Docs
+description: Hogyan lehet egy alkalmazás, amely támogatja az egyszeri bejelentkezés az Azure Active Directory-alkalmazásgyűjtemény listájára
 services: active-directory
 documentationcenter: dev-center-name
 author: bryanla
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/09/2018
+ms.date: 03/20/2018
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 502fb555bd3b381c9be0ff04e210cc07f9bf6cd8
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: e02c60d46fe709c8d418ea4743ba383147e9ddac
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában
 
 
 ##  <a name="what-is-the-azure-ad-application-gallery"></a>Mi az az Azure AD application gallery?
 
-Azure Active Directory (Azure AD) egy olyan felhőalapú identitás-szolgáltatás. A [az Azure AD application gallery](https://azure.microsoft.com/marketplace/active-directory/all/) a Azure piactér app Store-ból, ahol egyszeri bejelentkezést és a felhasználók átadása közzétett összes alkalmazás-összekötő. Az ügyfelek, akik használhatja az Azure Active Directory identitás-szolgáltatóként a különböző SaaS alkalmazás összekötők közzétett itt találja. A rendszergazdák adja hozzá az alkalmazásgyűjtemény összekötők konfigurálása és az összekötők használata egyszeri bejelentkezést és üzembe helyezését. Az Azure AD az egyszeri bejelentkezést, beleértve a SAML 2.0, az OpenID Connect, a OAuth és a WS-Fed összes fő összevonási protokollt támogatja. 
+Azure Active Directory (Azure AD) egy olyan felhőalapú identitás-szolgáltatás. A [az Azure AD application gallery](https://azure.microsoft.com/marketplace/active-directory/all/) a Azure piactér app Store-ból, ahol egyszeri bejelentkezést és a felhasználók átadása közzétett összes alkalmazás-összekötő. Az ügyfelek, akik használhatja az Azure Active Directory identitás-szolgáltatóként a különböző SaaS alkalmazás összekötők közzétett itt találja. A rendszergazdák adja hozzá az alkalmazásgyűjtemény összekötők konfigurálása és az összekötők használata egyszeri bejelentkezést és üzembe helyezését. Az Azure AD az egyszeri bejelentkezést, beleértve a SAML 2.0, az OpenID Connect, a OAuth és a WS-Fed összes fő összevonási protokollt támogatja.
 
 ## <a name="what-are-the-benefits-of-listing-an-application-in-the-gallery"></a>Milyen előnyökkel listázása egy alkalmazás a katalógusban?
 
@@ -51,7 +51,21 @@ Az alkalmazás az Azure AD-alkalmazásgyűjtemény listázásához, először ke
 
 *   **SAML 2.0** vagy **WS-Fed**: a funkció a teendő az SAML/WS-Fed SSO integráció SP vagy a kiállító terjesztési hely módban rendelkeznie kell az alkalmazást. Ha az alkalmazás támogatja az SAML 2.0, integrálva közvetlenül az Azure AD-bérlő segítségével a [egyéni alkalmazás hozzáadása utasításokat](../active-directory-saas-custom-apps.md).
 
-*   **Egyszeri jelszó**: hozzon létre egy webalkalmazást, amely rendelkezik egy lap HTML-bejelentkezés konfigurálása [jelszó-alapú egyszeri bejelentkezést](../active-directory-appssoaccess-whatis.md). Egyszeri jelszó alapú is hívják jelszó vaulting, lehetővé teszi a felhasználói hozzáférés és a webes alkalmazásokhoz, amelyek nem támogatják az identitás-összevonási jelszavak kezeléséhez. Akkor célszerű is forgatókönyvek, amelyben több felhasználó meg szeretné osztani ugyanazt a fiókot, például a szervezet közösségi app fiókokhoz. 
+*   **Egyszeri jelszó**: hozzon létre egy webalkalmazást, amely rendelkezik egy lap HTML-bejelentkezés konfigurálása [jelszó-alapú egyszeri bejelentkezést](../active-directory-appssoaccess-whatis.md). Egyszeri jelszó alapú is hívják jelszó vaulting, lehetővé teszi a felhasználói hozzáférés és a webes alkalmazásokhoz, amelyek nem támogatják az identitás-összevonási jelszavak kezeléséhez. Akkor célszerű is forgatókönyvek, amelyben több felhasználó meg szeretné osztani ugyanazt a fiókot, például a szervezet közösségi app fiókokhoz.
+
+##  <a name="updateremove-existing-listing"></a>Meglévő listaelem frissítése és törlése
+
+Frissítéséhez, vagy távolítsa el az Azure AD-alkalmazásgyűjtemény egy meglévő alkalmazást, először kell elküldeni a kérést a [alkalmazás hálózati Portal](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Ha rendelkezik Office 365-fiókkal, használja a portálhoz való bejelentkezéshez. Ha nem, jelentkezzen be Microsoft-fiókját (például az Outlook vagy a Hotmail) segítségével.
+
+* Válassza ki a megfelelő beállítást az alábbi kép
+
+    ![Ütemterv a gyűjtemény SAML-alapú alkalmazást listázása](./media/active-directory-app-gallery-listing/updateorremove.png)
+
+    * Ha egy meglévő alkalmazás frissítésére, jelölje be **frissíteni a meglévő alkalmazás listaelem**.
+
+    * Ha szeretné eltávolítani egy meglévő alkalmazást az Azure AD-gyűjteményből, válassza ki a **távolítsa el a meglévő alkalmazás listázása**
+
+    * Ha hozzáférés probléma merül fel, lépjen kapcsolatba a [Azure AD SSO integrációs csoport](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
 
 ## <a name="submit-the-request-in-the-portal"></a>Küldje el a kérést a portálon
 
@@ -75,5 +89,4 @@ A folyamat a katalógusban OpenID Connect alkalmazás listázása ütemtervét 2
 
 ## <a name="escalations"></a>Azok következményeinek
 
-Bármely olyan, az e-mail küldése a [Azure AD SSO integrációs csoport](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) és a lehető leghamarabb lesz válaszolunk.
-
+Bármely olyan, az e-mail küldése a [Azure AD SSO integrációs csoport](mailto:SaaSApplicationIntegrations@service.microsoft.com) amely SaaSApplicationIntegrations@service.microsoft.com és a lehető leghamarabb lesz válaszolunk.

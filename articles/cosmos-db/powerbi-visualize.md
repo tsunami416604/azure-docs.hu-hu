@@ -1,35 +1,35 @@
 ---
-title: "A Power BI oktatóanyag Azure Cosmos DB összekötő |} Microsoft Docs"
-description: "A Power BI-oktatóanyag segítségével importálása JSON, osztályon jelentések létrehozása és az Azure Cosmos DB és a Power BI-összekötővel adatainak megjelenítése."
-keywords: "üzleti intelligencia oktatóanyag Power, az adatok, a kiemelt üzleti intelligencia összekötő megjelenítése"
+title: A Power BI oktatóanyag Azure Cosmos DB összekötő |} Microsoft Docs
+description: A Power BI-oktatóanyag segítségével importálása JSON, osztályon jelentések létrehozása és az Azure Cosmos DB és a Power BI-összekötővel adatainak megjelenítése.
+keywords: üzleti intelligencia oktatóanyag Power, az adatok, a kiemelt üzleti intelligencia összekötő megjelenítése
 services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: mimig
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: cd1b7f70-ef99-40b7-ab1c-f5f3e97641f7
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2017
+ms.date: 03/29/2018
 ms.author: mimig
-ms.openlocfilehash: 6414cdc942c43f6eb13ca8f050d6503bdd3e0b42
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 74be3e5b25401a7811c1af23a0a7e2887f9055c1
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>A Power BI oktatóanyag az Azure Cosmos DB: a Power BI-összekötővel adatok megjelenítése
-[Powerbi.com webhelyen](https://powerbi.microsoft.com/) egy olyan online szolgáltatás, ahol létrehozása és megosztása irányítópultokat és jelentéseket, és a szervezet számára fontos adatokkal.  A Power BI Desktop egy dedikált jelentéskészítési eszköz, amely lehetővé teszi a különféle adatforrásokból származó adatok beolvasása egyesítése és a átalakíthatja az adatokat, hatékony képi megjelenítések létrehozásához, és tegye közzé a jelentéseket a Power bi-bA.  A Power BI Desktop legújabb verziójával most csatlakozhat a Cosmos DB összekötőn keresztül Cosmos DB fiókját Power bi.   
+[Powerbi.com webhelyen](https://powerbi.microsoft.com/) egy olyan online szolgáltatás, ahol létrehozása és megosztása irányítópultokat és jelentéseket, és a szervezet számára fontos adatokkal.  A Power BI Desktop egy dedikált jelentéskészítési eszköz, amely lehetővé teszi a különféle adatforrásokból származó adatok beolvasása egyesítése és a átalakíthatja az adatokat, hatékony képi megjelenítések létrehozásához, és tegye közzé a jelentéseket a Power bi-bA.  A Power BI Desktop legújabb verziójával most csatlakozhat az Azure Cosmos DB összekötőn keresztül Azure Cosmos DB fiókját Power bi.   
 
-A Power bi-ban az oktatóanyagban azt lépésről lépésre bemutatjuk, csatlakozás a Power BI Desktop Cosmos DB fiókhoz, nyissa meg egy gyűjteményt, amelyben szeretnénk bontsa ki az adatokat a Navigátor, JSON adatok átalakítása a Power BI Desktop lekérdezés-szerkesztő használatával táblázatos formátumban , és build és a jelentés közzététele a powerbi.com webhelyen.
+A Power bi-ban az oktatóanyagban azt lépésről lépésre bemutatjuk, csatlakoztathatja egy Azure Cosmos DB-fiókhoz a Power BI Desktop, nyissa meg egy gyűjteményt, amelyben szeretnénk bontsa ki az adatokat a Navigátor, JSON adatok átalakítása a Power BI Desktop lekérdezés-szerkesztő használatával táblázatos formátumban , és build és a jelentés közzététele a powerbi.com webhelyen.
 
 A Power BI-oktatóanyag befejezése után képes lesz a következő kérdések megválaszolásához:  
 
-* Hogyan készíthető jelentések adatokkal a Cosmos-Adatbázisból a Power BI Desktop használatával?
-* Hogyan lehet egy Cosmos DB fiókot a Power BI Desktop csatlakozni?
+* Hogyan készíthető jelentések adatokkal az Azure Cosmos Adatbázisból Power BI Desktop használatával?
+* Hogyan lehet a Power BI Desktop Azure Cosmos DB fiók csatlakozni?
 * Hogyan lehet lekérni a Power BI Desktop egy gyűjteményből adatok?
 * Hogyan alakíthatja át a beágyazott JSON-adatokat a Power BI Desktop?
 * Hogyan közzététele és megosztása a jelentést a powerbi.com webhelyen?
@@ -44,16 +44,16 @@ A Power BI-oktatóanyag befejezése után képes lesz a következő kérdések m
 Előtt a Power BI-oktatóanyag utasításainak követése, győződjön meg arról, hogy rendelkezik-e a következő erőforrások elérése:
 
 * [A Power BI Desktop legújabb verziójának](https://powerbi.microsoft.com/desktop).
-* A bemutató fiók vagy a Cosmos DB fiókban tárolt adatok elérésére.
+* A bemutató fiók vagy Azure Cosmos DB fiókban tárolt adatok elérésére.
   * A bemutató fiók fel van töltve, ebben az oktatóanyagban szereplő mexikói adatokkal. Ez a bemutató fiók bármely SLA-k nem kötődik, és csak bemutató célokra tervezték.  Azt fenntartja a jogot arra a bemutató fiók beleértve módosításokat, de nem korlátozódik, leállítja a fiókot, módosítja azt a kulcsot, történő hozzáférés, módosítása, és az adatok törléséhez bármikor előzetes közlemény, illetve ok nélkül.
-    * URL-cím: https://analytics.documents.azure.com
-    * Csak olvasható kulcs: MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR + YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw ==
+    * URL: https://analytics.documents.azure.com
+    * Read-only key: MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==
   * Vagy a saját fiók létrehozásához lásd: [hozzon létre egy Azure Cosmos DB adatbázisfiókot az Azure-portálon](https://azure.microsoft.com/documentation/articles/create-account/). Ezt követően minta mexikói beolvasandó adatok hasonló ahhoz, ami ebben az oktatóanyagban használt (de nem tartalmaz a GeoJSON blokkok), lásd: a [NOAA hely](https://www.ngdc.noaa.gov/nndc/struts/form?t=102557&s=5&d=5) , majd importálja az adatok használata a [Azure Cosmos DB adatáttelepítési eszköz](import-data.md).
 
-A jelentést a powerbi.com webhelyen megosztásához fiókkal kell rendelkeznie a powerbi.com webhelyen.  További információ a Power BI szabad és a Power BI Pro, látogasson el [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing).
+A jelentést a powerbi.com webhelyen megosztásához fiókkal kell rendelkeznie a powerbi.com webhelyen.  További információ a Power BI szabad és a Power BI Pro, látogasson el [ https://powerbi.microsoft.com/pricing ](https://powerbi.microsoft.com/pricing).
 
 ## <a name="lets-get-started"></a>Első lépések
-Ebben az oktatóanyagban most tegyük fel, hogy Ön egy tanulmányozza a világ különböző vulkánok alakították geologist.  A Mexikói adatai egy Cosmos-DB-fiókot, és a JSON-dokumentumokat az alábbi minta dokumentum tűnik.
+Ebben az oktatóanyagban most tegyük fel, hogy Ön egy tanulmányozza a világ különböző vulkánok alakították geologist.  Mexikói adatok Azure Cosmos DB fiók tárolva van, és a JSON-dokumentumokat az alábbi minta dokumentum tűnik.
 
     {
         "Volcano Name": "Rainier",
@@ -72,7 +72,7 @@ Ebben az oktatóanyagban most tegyük fel, hogy Ön egy tanulmányozza a világ 
           "Last Known Eruption": "Last known eruption from 1800-1899, inclusive"
     }
 
-Szeretné a Mexikói adatainak lekérése a Cosmos DB fiók és a például a következő jelentés interaktív Power BI-jelentés adatainak megjelenítése.
+Szeretné a Mexikói adatainak lekérése az Azure Cosmos DB fiók és a például a következő jelentés interaktív Power BI-jelentés adatainak megjelenítése.
 
 ![Az oktatóprogram a Power BI a Power BI-összekötőjével, akkor képes lesz az adatok ábrázolása a Power BI Desktop mexikói jelentés a](./media/powerbi-visualize/power_bi_connector_pbireportfinal.png)
 
@@ -86,16 +86,16 @@ Most próbálja ki! Lássunk neki.
    
     ![A Power BI Desktop jelentés nézet – Power BI connector](./media/powerbi-visualize/power_bi_connector_pbireportview.png)
 4. Válassza ki a **Home** menüszalag, majd kattintson a **adatok beolvasása**.  A **adatok beolvasása** ablak meg kell jelennie.
-5. Kattintson a **Azure**, jelölje be **Microsoft Azure DocumentDB (béta)**, és kattintson a **Connect**. 
+5. Kattintson a **Azure**, jelölje be **Azure Cosmos DB (béta)**, és kattintson a **Connect**. 
 
     ![A Power BI Desktop - adatok beolvasása a Power BI connector](./media/powerbi-visualize/power_bi_connector_pbigetdata.png)   
-6. Az a **Preview összekötő** kattintson **Folytatás**. A **Microsoft Azure DocumentDB Connect** ablak jelenik meg.
-7. Adja meg a Cosmos DB fiók végponti URL-cím kívánja az adatokat lekérdezni a lent látható módon, majd kattintson a **OK**. Saját fiók használatára, URI listájából kérheti le az URL-címet a  **[kulcsok](manage-account.md#keys)**  panel az Azure portálról. A bemutató a fiókot használja, írja be a következőt `https://analytics.documents.azure.com` URL-címe. 
+6. Az a **Preview összekötő** kattintson **Folytatás**. A **Azure Cosmos DB** ablak jelenik meg.
+7. Az Azure Cosmos DB fiók végpont URL-cím kívánja az adatokat lekérdezni a lent látható módon, majd kattintson a **OK**. Saját fiók használatára, URI listájából kérheti le az URL-címet a **[kulcsok](manage-account.md#keys)** panel az Azure portálról. A bemutató a fiókot használja, írja be a következőt `https://analytics.documents.azure.com` URL-címe. 
    
     Az adatbázis neve, a gyűjtemény nevét és a SQL-utasítás üresen hagyja, a mezők kitöltése nem kötelező.  A Navigátor használjuk Ehelyett válassza ki az adatbázis és gyűjtemény azonosítására, ha az adatok származik.
    
     ![A Power BI oktatóanyag Azure Cosmos DB Power BI Connector - asztali csatlakozás ablak](./media/powerbi-visualize/power_bi_connector_pbiconnectwindow.png)
-8. Ha első alkalommal csatlakozik ehhez a végponthoz, a fiókjához tartozó kéri. A saját fiókját a kulcs lekérését a **elsődleges kulcs** párbeszédpanel a  **[írásvédett kulcsok](manage-account.md#keys)**  panel az Azure portálról. A bemutató fiók a kulcsot meg kell `MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==`. Adja meg a megfelelő kulcsot, és kattintson a **Connect**.
+8. Ha első alkalommal csatlakozik ehhez a végponthoz, a fiókjához tartozó kéri. A saját fiókját a kulcs lekérését a **elsődleges kulcs** párbeszédpanel a **[írásvédett kulcsok](manage-account.md#keys)** panel az Azure portálról. A bemutató fiók a kulcsot meg kell `MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==`. Adja meg a megfelelő kulcsot, és kattintson a **Connect**.
    
     Azt javasoljuk, hogy a csak olvasható-kulcsot használ, jelentések készítésekor.  Ez megakadályozza, hogy a főkulcs szükségtelen kitettségtől biztonsági kockázatok. A csak olvasható kulcs érhető el a [kulcsok](manage-account.md#keys) panel az Azure-portálon, vagy használhatja a fenti bemutató fiók adatait.
    
@@ -218,11 +218,11 @@ Egy ütemezett frissítés tegye a következőket.
 3. Kattintson a **hitelesítő adatok szerkesztése**. 
    
     A konfigurálás előugró ablak akkor jelenik meg. 
-4. Adja meg az adott adatkészlet Cosmos DB fiók kapcsolódni, majd kattintson a kulcs **bejelentkezés**. 
+4. Adja meg az adott adatkészlet Azure Cosmos DB fiók kapcsolódni, majd kattintson a kulcs **bejelentkezés**. 
 5. Bontsa ki a **ütemezés frissítése** és frissítse az adatkészletet kívánt ütemezést beállítani. 
 6. Kattintson a **alkalmaz** és befejezte az ütemezett frissítés beállítása.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a Power BI, [első lépések a Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/).
-* Cosmos DB kapcsolatos további tudnivalókért tekintse meg a [Azure Cosmos DB dokumentációjának kezdőlapján](https://azure.microsoft.com/documentation/services/cosmos-db/).
+* Azure Cosmos DB kapcsolatos további tudnivalókért tekintse meg a [Azure Cosmos DB dokumentációjának kezdőlapján](https://azure.microsoft.com/documentation/services/cosmos-db/).
 

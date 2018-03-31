@@ -1,11 +1,11 @@
 ---
-title: Az Azure Mobile Engagement iOS SDK tartalom
-description: "Legújabb frissítések és az Azure Mobile Engagement SDK iOS eljárásai"
+title: Azure Mobile Engagement iOS SDK Content
+description: Legújabb frissítések és az Azure Mobile Engagement SDK iOS eljárásai
 services: mobile-engagement
 documentationcenter: mobile
 author: MehrdadMzfr
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 2566eeb6-be82-4d83-aaf6-ebdcb8841189
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: bdc96cd47ece6054184d167192ebec4cd4bd081c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cbb783b7b1a23cc62a7e214ce90374ba8c84b5d8
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="sdk-content"></a>Az SDK-tartalom
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 Ez a dokumentum, és a tartalom az SDK-archívum ismerteti.
 
 ## <a name="engagement-sdk"></a>Engagement SDK
@@ -38,13 +42,13 @@ Ez a dokumentum, és a tartalom az SDK-archívum ismerteti.
 > 
 
 ## <a name="additional-files"></a>További fájlok
-`doc/index.html`(a `doc` mappa)
+`doc/index.html` (a `doc` mappa)
 
 > Engagement SDK és az Reach SDK Objective-C dokumentációját.
 > 
 > 
 
-`src`mappa
+`src` Mappa
 
 > Bevonási view vezérlők és a Reach SDK forráskódja (kiemelt felhasználók, akik Engagement osztályok igényeiknek módosítják).
 > 

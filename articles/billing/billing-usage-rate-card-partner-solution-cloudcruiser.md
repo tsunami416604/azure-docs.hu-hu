@@ -1,11 +1,11 @@
 ---
-title: "A felhő Cruiser és számlázási API-integráció a Microsoft Azure |} Microsoft Docs"
-description: "Egy egyedi terv biztosít a Microsoft Azure számlázási partner felhő Cruiser, az Azure számlázási API integrálása a termék tapasztalataikat.  Ez különösen fontos az Azure és a felhő Cruiser ügyfelek, amelyek segítségével/próbált felhő Cruiser a Microsoft Azure Pack érdekelt."
-services: 
-documentationcenter: 
-author: BryanLa
+title: A felhő Cruiser és számlázási API-integráció a Microsoft Azure |} Microsoft Docs
+description: Egy egyedi terv biztosít a Microsoft Azure számlázási partner felhő Cruiser, az Azure számlázási API integrálása a termék tapasztalataikat.  Ez különösen fontos az Azure és a felhő Cruiser ügyfelek, amelyek segítségével/próbált felhő Cruiser a Microsoft Azure Pack érdekelt.
+services: ''
+documentationcenter: ''
+author: tonguyen
 manager: tonguyen
-editor: 
+editor: ''
 tags: billing
 ms.assetid: b65128cf-5d4d-4cbd-b81e-d3dceab44271
 ms.service: billing
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/09/2017
 ms.author: mobandyo;sirishap;bryanla
-ms.openlocfilehash: 7d66cac98afa72c807f597403b1e2bd278e45cec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8ddb81078e8019284c0481d4ea8d72253d3f0a5a
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="cloud-cruiser-and-microsoft-azure-billing-api-integration"></a>Felhő Cruiser és a Microsoft Azure számlázási API-integráció
 Ez a cikk ismerteti, hogyan az új Microsoft Azure számlázási API-k összegyűjtött adatok használható felhőalapú Cruiser munkafolyamat költség szimuláció és elemzésére.
@@ -112,7 +112,7 @@ A felső graph költség összehasonlítása szolgáltatások, a munkaterhelés 
 Az alsó grafikon azt ábrázolja, ugyanazokat az adatokat, de részleg által lebontva. Minden részleg futtatni WAP és az Azure, a munkaterhelés és a különbség a kettő között a költségek (zöld) a megtakarítások sáv jelenik meg.
 
 ## <a name="azure-usage-api"></a>Az Azure használati API
-### <a name="introduction"></a>Bevezetés
+### <a name="introduction"></a>Bemutatás
 A Microsoft nemrég vezette be az Azure használati API, lehetővé téve a használati adatokat betekintést nyerhet a fogyasztás programozott módon le tudja előfizetők. Felhő Cruiser ügyfelek kihasználhatja az API-n keresztül elérhető gazdagabb DataSet.
 
 Felhő Cruiser használhatja az integráció többféle módon használati API-val. A granularitási (óránkénti használati adatai) és erőforrás-metaadatait az API-n keresztül elérhető rugalmas visszajelzés vagy jóváírási modell támogatásához szükséges dataset biztosít. 
@@ -204,7 +204,7 @@ A legjobb része, hogy csak akkor kell egyszer végrehajtania ezt a folyamatot. 
 * Tekintse meg a [Azure számlázási REST API-referencia](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) mindkét API-k bővebben, az Azure Resource Manager által nyújtott API-kat készletét részét képező.
 * Ha szeretné jobb alaposabban tanulmányozhatja a mintakódot, tekintse meg a Microsoft Azure számlázási API Kódminták a [Azure mintakódok](https://azure.microsoft.com/documentation/samples/?term=billing).
 
-### <a name="learn-more"></a>További információ
+### <a name="learn-more"></a>További tudnivalók
 * Az Azure Resource Managerrel kapcsolatos további információkért lásd: a [Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md) cikk.
 
 <!--Image references-->

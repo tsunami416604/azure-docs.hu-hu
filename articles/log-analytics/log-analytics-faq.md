@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 03/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 398a62cbba952f35f29c1b1f411a6d5b901d2973
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 22da58df653b31c46145ebbbd1f6f6a26b0e9f29
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="log-analytics-faq"></a>Log Analytics – gyakori kérdések
 A Microsoft FAQ a Microsoft Azure Naplóelemzés gyakran feltett kérdésekre listáját. Amennyiben a Naplóelemzési kapcsolatos további kérdése van, a [vitafóruma](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) és kérdéseit. Ha kérdése van gyakori, azt adja hozzá a cikkben, hogy gyorsan és könnyen megtalálhatók.
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="q-does-log-analytics-use-the-same-agent-as-azure-security-center"></a>Q. Log Analytics használata ugyanaz az ügynök, az Azure Security Center?
 
@@ -51,7 +51,7 @@ V: nem. A Naplóelemzési egy méretezhető felhőalapú szolgáltatás, amely f
 
 ### <a name="q-how-do-i-troubleshoot-if-log-analytics-is-no-longer-collecting-data"></a>Q. Hogyan hibaelhárítása Ha Log Analyticshez már nem gyűjt adatokat?
 
-A:, ha vannak a az ingyenes tarifacsomag, és naponta elküldött 500 MB-nál több adat, adatgyűjtés leáll, a többi nap. Napi korlát elérése gyakori oka, hogy Naplóelemzési leállítja az adatgyűjtést, vagy az adatok akkor jelenik meg, hogy hiányzik.  
+V: az előfizetés és 2018. április 2. előtt létrehozott munkaterületen lévő a *szabad* adatgyűjtés leáll IP-címek, ha 500 MB-nál több adat küldése naponta, a többi nap. Napi korlát elérése gyakori oka, hogy Naplóelemzési leállítja az adatgyűjtést, vagy az adatok akkor jelenik meg, hogy hiányzik.  
 
 Naplóelemzési hoz létre eseményt, típusú *szívverés* és segítségével határozza meg, ha az adatgyűjtés leáll. 
 
@@ -68,7 +68,7 @@ A következő táblázat ismerteti az oka, hogy leállítja az adatgyűjtést, �
 | Az ingyenes adatok határértékét<sup>1</sup>       | Várja meg, amíg a következő hónap gyűjtemény automatikus újraindítása, vagy<br> A fizetős tarifacsomag módosítása |
 | Azure-előfizetés miatt felfüggesztett állapotban van: <br> Ingyenes próbaverzió befejeződött <br> Az Azure hozzáférési lejárt <br> Havi költségkeret érhető el (például a az MSDN webhelyen vagy a Visual Studio előfizetői)                          | A szolgáltatás fizetős átalakítása <br> A szolgáltatás fizetős átalakítása <br> Távolítsa el a korlátot, vagy várjon, amíg a korlát alaphelyzetbe állítása |
 
-<sup>1</sup> Ha a munkaterületet az ingyenes tarifacsomag, tehát legfeljebb 500 MB naponkénti adat küldése a szolgáltatást. Ha eléri a napi korlátot, adatgyűjtés leáll, a következő napig. Adatgyűjtés leállítása küldött adatok nem indexelt, és nem érhető el a kereséshez. Adatok gyűjtése folytatódik, ha csak az új adatok feldolgozása következik be. 
+<sup>1</sup> Ha a munkaterületet a *szabad* IP-címek, tehát legfeljebb 500 MB naponkénti adat küldése a szolgáltatást. Ha eléri a napi korlátot, adatgyűjtés leáll, a következő napig. Adatgyűjtés leállítása küldött adatok nem indexelt, és nem érhető el a kereséshez. Adatok gyűjtése folytatódik, ha csak az új adatok feldolgozása következik be. 
 
 A Naplóelemzési UTC időt használja, és minden nap UTC idő szerint éjfélkor kezdődik. Ha a munkaterületet eléri a napi korlátot, a feldolgozási folytatja a következő UTC nap első órában.
 
@@ -96,7 +96,7 @@ A. Nem, lehetetlen jelenleg tetszőleges táblák vagy a tárolókat az Azure st
 
 A. A Naplóelemzési szolgáltatás Azure épül. Napló Analytics IP-címek szerepelnek a [Microsoft Azure Datacenter IP-címtartományok](http://www.microsoft.com/download/details.aspx?id=41653).
 
-Mivel szolgáltatástelepítések történik, megváltozik a Naplóelemzés szolgáltatás a tényleges IP-címe. A tűzfalon keresztül engedélyezi a DNS-nevek szerepelnek [proxy és tűzfal beállításainak konfigurálása a Naplóelemzési](log-analytics-proxy-firewall.md).
+Mivel szolgáltatástelepítések történik, megváltozik a Naplóelemzés szolgáltatás a tényleges IP-címe. A tűzfalon keresztül engedélyezi a DNS-nevek szerepelnek a [rendszerkövetelmények](log-analytics-concept-hybrid.md#prerequisites).
 
 ### <a name="q-i-use-expressroute-for-connecting-to-azure-does-my-log-analytics-traffic-use-my-expressroute-connection"></a>Q. Kapcsolódás Azure ExpressRoute használatával. A Naplóelemzési forgalom használ a saját ExpressRoute-kapcsolatot?
 
@@ -144,7 +144,7 @@ A. Az ingyenes csomagban egy napi cap 500 MB / munkaterület állítja be. A sta
 
 A Naplóelemzési ügynök úgy lett kialakítva, annak érdekében, hogy kevés erőforrást tartalmaz. Engedélyezi a megoldások adatmennyiség függ. Részletes információk a adatmennyiség, és tekintse meg a részletes információkat a megoldás a [használati](log-analytics-usage.md) lap.
 
-További információkért olvassa a [ügyfél blog](http://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html) kapcsolatos az OMS-ügynök kevés erőforrást.
+További információk olvashatók a [ügyfél blog](http://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html) az erőforrás-használat (tárhely) az OMS-ügynök kiértékelése után az eredményeket megjelenítő.
 
 ### <a name="q-how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-log-analytics"></a>Q. Mekkora hálózati sávszélességet a Microsoft Management Agent (MMA) használatos, ha a Log Analyticshez való adatküldés?
 

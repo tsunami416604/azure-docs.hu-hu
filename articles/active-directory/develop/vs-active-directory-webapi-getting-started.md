@@ -1,11 +1,11 @@
 ---
-title: "Ismerkedés az Azure AD-t a Visual Studio WebApi projektek |} Microsoft Docs"
-description: "Ismerkedés az Azure Active Directoryval WebApi projektek, miután csatlakozik, vagy hozzon létre egy Visual Studio használatával Azure AD kapcsolódó szolgáltatások"
+title: Ismerkedés az Azure AD-t a Visual Studio WebApi projektek |} Microsoft Docs
+description: Ismerkedés az Azure Active Directoryval WebApi projektek, miután csatlakozik, vagy hozzon létre egy Visual Studio használatával Azure AD kapcsolódó szolgáltatások
 services: active-directory
-documentationcenter: 
-author: kraigb
-manager: ghogen
-editor: 
+documentationcenter: ''
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: bf1eb32d-25cd-4abf-8679-2ead299fedaa
 ms.service: active-directory
 ms.workload: web
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
-ms.author: kraigb
+ms.author: ghogen
 ms.custom: aaddev
-ms.openlocfilehash: a5953a8ae4ef3fc221c984cc7520422251ef2c82
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f44c60cc02ef93fb8bd08954d8b059889eb82df1
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="get-started-with-azure-active-directory-webapi-projects"></a>Ismerkedés az Azure Active Directoryban (WebApi projektek)
 

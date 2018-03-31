@@ -1,12 +1,12 @@
 ---
-title: "A Felhőszolgáltatás helyi a Compute Emulator profilkészítési |} Microsoft Docs"
+title: A Felhőszolgáltatás helyi a Compute Emulator profilkészítési |} Microsoft Docs
 services: cloud-services
-description: "A Visual Studio profilkészítőhöz tartozó vizsgálja meg a teljesítménnyel kapcsolatos problémák, a cloud services csomag"
-documentationcenter: 
+description: A Visual Studio profilkészítőhöz tartozó vizsgálja meg a teljesítménnyel kapcsolatos problémák, a cloud services csomag
+documentationcenter: ''
 author: mikejo
-manager: ghogen
-editor: 
-tags: 
+manager: douge
+editor: ''
+tags: ''
 ms.assetid: 25e40bf3-eea0-4b0b-9f4a-91ffe797f6c3
 ms.service: cloud-services
 ms.workload: na
@@ -15,11 +15,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
-ms.openlocfilehash: ee7febeb04d3a956b4a0a11b69f8f34acee23067
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8ff7b88a3086488ab669288687c274237ca30b47
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Az Azure Compute Emulator használatával a Visual Studio Profilkészítő helyileg egy felhőalapú szolgáltatás teljesítményének tesztelése
 Számos különféle eszközöket és technikákat tesztelési felhőalapú szolgáltatások érhetők el.
@@ -30,7 +30,7 @@ Használhatja diagnostics teljesítményszámlálók, számos nyomon leírtak sz
 Ez a cikk a profilkészítés CPU-mintavételezési módszerét ismerteti, amely helyben végezhető el az emulátorral. CPU mintavételi egy metódust, amely profilkészítési nem nagyon zavaró. A kijelölt mintavételi történik a Profilkészítő pillanatképet készít a a hívási verem. Az adatok gyűjtése egy meghatározott időtartamra vonatkozóan, és a jelentésben látható. Ez a módszer a profilkészítési általában azt jelzi, ha egy számításilag intenzív alkalmazásban a CPU munka nagyobb része történik-e.  Ez lehetőséget ad a "gyors path" összpontosíthat ahol az alkalmazás a legtöbb időt tölt.
 
 ## <a name="1-configure-visual-studio-for-profiling"></a>1: profilkészítési a Visual Studio konfigurálása
-Először néhány Visual Studio konfigurálására lehetőség áll rendelkezésre, előfordulhat, hogy lehet hasznos, amikor a profilkészítési. A profilkészítési jelentések értelme, szüksége lesz szimbólumok (.pdb fájlok) az alkalmazás és a is rendszer könyvtárak szimbólumait. Érdemes, győződjön meg arról, hogy a rendelkezésre álló szimbólum kiszolgálók hivatkozik. Ehhez a a **eszközök** Visual Studio menüjében válassza a **beállítások**, majd válassza a **hibakeresés**, majd **szimbólumok**. Győződjön meg arról, hogy a Microsoft szimbólum kiszolgálók megtalálható-e **szimbólum (.pdb) fájlhelyek**.  Http://referencesource.microsoft.com/symbols, amely lehet További szimbólumfájlok is hivatkozhat.
+Először néhány Visual Studio konfigurálására lehetőség áll rendelkezésre, előfordulhat, hogy lehet hasznos, amikor a profilkészítési. A profilkészítési jelentések értelme, szüksége lesz szimbólumok (.pdb fájlok) az alkalmazás és a is rendszer könyvtárak szimbólumait. Érdemes, győződjön meg arról, hogy a rendelkezésre álló szimbólum kiszolgálók hivatkozik. Ehhez a a **eszközök** Visual Studio menüjében válassza a **beállítások**, majd válassza a **hibakeresés**, majd **szimbólumok**. Győződjön meg arról, hogy a Microsoft szimbólum kiszolgálók megtalálható-e **szimbólum (.pdb) fájlhelyek**.  Is hivatkozhat http://referencesource.microsoft.com/symbols, amely előfordulhat, hogy További szimbólumfájlok.
 
 ![Szimbólum beállításai][4]
 
@@ -163,7 +163,7 @@ Gratulálunk! Ön a profilkészítőhöz tartozó megtette az első lépéseket.
 * Ha a parancssorból, különösen a globális beállítások profilkészítési parancsok használt győződjön meg arról, hogy VSPerfClrEnv /globaloff meghívása és, hogy VsPerfMon.exe le lett állítva.
 * Ha az üzenet jelenik meg, amikor a mintavételi, "PRF0025: nem történt adatgyűjtés," Ellenőrizze, hogy a csatolt folyamat CPU-tevékenység van-e. Előfordulhat, hogy alkalmazásokat, amelyek nem tűnik, hogy minden számítási munka tudott mintavételi adatokat.  Lehetőség arra is, hogy a folyamat kilépett a előtt minden olyan végezhető el. Ellenőrizze, hogy, hogy a Run metódus egy szerepkörhöz vannak profilkészítési nem ér véget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Visual Studio Profilkészítő nem támogatja az Azure bináris fájljai az emulátorban tagolása, de ha memóriafoglalás vizsgálni kívánt, ez a lehetőség választhatja, ha profilkészítési. Dönthet úgy is párhuzamossági profilkészítési, segítségével határozza meg, hogy szálak jelentős időt használják a zárolások vannak, vagy profilkészítési interakció, réteg segítségével nyomon követésük Ez teljesítményproblémákat okozhat, ha a fizetősökbe, az alkalmazások közötti kommunikáció során leggyakrabban gyakran között az adatszint és egy feldolgozói szerepkört.  Lehet, amely az alkalmazás létrehozza az adatbázis-lekérdezések megtekintése és a profilkészítési adatokat használni a használatára az adatbázis javítása érdekében. Réteg interakció profilkészítési kapcsolatos információkért lásd a következő blogbejegyzésben [forgatókönyv: a réteg interakció Profiler használatával a Visual Studio Team System 2010][3].
 
 [1]: http://msdn.microsoft.com/library/azure/hh369930.aspx

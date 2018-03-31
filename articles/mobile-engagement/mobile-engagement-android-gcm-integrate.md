@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Mobile Engagement Android SDK-integráció"
-description: "Legújabb frissítések és az Azure Mobile Engagement Android SDK eljárásai"
+title: Az Azure Mobile Engagement Android SDK-integráció
+description: Legújabb frissítések és az Azure Mobile Engagement Android SDK eljárásai
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: d72b5014-a22b-4a7f-a470-d2b8145b5b86
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: piyushjo
-ms.openlocfilehash: 0282abbf44406cac89c13520bc2a4e375817ed1f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 21f9c1007c6b7dabc625555c66f267b2b7c579f8
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-integrate-gcm-with-mobile-engagement"></a>GCM integrálása Mobilmarketing
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 > [!IMPORTANT]
 > Meg kell követnie a integrációs ismertetett a hogyan integrálhatja Engagement Android dokumentumon Ez az útmutató követése előtt.
 > 
@@ -28,7 +32,7 @@ ms.lasthandoff: 10/11/2017
 > 
 > 
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Bemutatás
 GCM integrálása lehetővé teszi, hogy az alkalmazás leküldött értesítést.
 
 GCM vonatkozó Payload van jelen az SDK leküldött mindig tartalmazza a `azme` adatobjektum kulcsban. Így GCM más célra, az alkalmazás használatakor, leküldéses értesítések kulcs alapján szűrheti.

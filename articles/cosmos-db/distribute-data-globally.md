@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2018
 ms.author: arramac
-ms.openlocfilehash: e31b66f20c51e95dbc2d8285bb5602590abd4f4f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 567f035bdb293353090ee107f8d24da845e15154
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>Globális adatok Azure Cosmos DB terjesztése
 Azure a széles körű – folyamatosan bővülő, és egy globális erőforrásigényét tért 30 + földrajzi régiók között. A globális jelenlét, az Azure felajánlja, hogy a fejlesztők differenciált képességeit egyik létre, telepíthetnek és könnyen globálisan elosztott alkalmazások kezelésére képes. 
@@ -36,7 +36,7 @@ Azure Cosmos DB kulcsrakész globális terjesztési, a fejlesztőknek nem kell h
 Ebben a cikkben nyújtunk Azure Cosmos DB globális terjesztési funkcióiról. Azt is ismertetik Azure Cosmos DB egyedi megközelítése átfogó SLA-kat biztosít. 
 
 ## <a id="EnableGlobalDistribution"></a>Kulcsrakész globális terjesztési engedélyezése
-Azure Cosmos-adatbázis egyszerű megírásához bolygónk méretű alkalmazások engedélyezéséhez a következő lehetőségeket biztosítja. Ezek a képességek érhetők el az Azure Cosmos DB erőforrás-szolgáltató alapú [REST API-k](https://docs.microsoft.com/rest/api/documentdbresourceprovider/) továbbá az Azure-portálon.
+Azure Cosmos-adatbázis egyszerű megírásához bolygónk méretű alkalmazások engedélyezéséhez a következő lehetőségeket biztosítja. Ezek a képességek érhetők el az Azure Cosmos DB erőforrás-szolgáltató alapú [REST API-k](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/) továbbá az Azure-portálon.
 
 Az alábbi videó az Azure Cosmos DB Programvezető Andrew Liu a kulcsrakész globális terjesztési funkciókat mutatja be.
 

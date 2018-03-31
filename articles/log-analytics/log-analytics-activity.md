@@ -1,24 +1,24 @@
 ---
-title: "Összegyűjti és elemzi az Azure tevékenységi naplóit a Log Analyticshez |} Microsoft Docs"
-description: "Az Azure tevékenységi naplóit megoldás segítségével elemezheti és az összes Azure-előfizetések az Azure tevékenységnapló keresést."
+title: Összegyűjti és elemzi az Azure tevékenységi naplóit a Log Analyticshez |} Microsoft Docs
+description: Az Azure tevékenységi naplóit megoldás segítségével elemezheti és az összes Azure-előfizetések az Azure tevékenységnapló keresést.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: dbac4c73-0058-4191-a906-e59aca8e2ee0
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2018
+ms.date: 03/26/2018
 ms.author: magoedte
-ms.openlocfilehash: c13890862c058701268c07d032d6d990c659287a
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: b6e823d9338d76a350569091d6794e3ac4a2eae9
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Összegyűjti és elemzi az Azure tevékenység Log Analytics-naplók
 
@@ -40,7 +40,7 @@ Log Analyticshez való csatlakozáskor az Azure tevékenységi naplóit teheti:
 - Az erőforrások érintő vagy szolgáltatáskimaradás esetén egészségügyi problémák azonosításához
 - Napló kereséssel összefüggéseket felhasználói tevékenységet, automatikus méretezése műveletek, engedélyezési módosítások és a környezetéből más naplók vagy metrikák szolgáltatásának állapota
 
-<sup>1</sup>alapértelmezés szerint a Naplóelemzési tartja az Azure tevékenységi naplóit 90 napra vonatkozó akkor is, ha az ingyenes szint van. Vagy, ha egy munkaterület megőrzési beállítása legalább 90 nappal lehet. Ha a munkaterületet 90 napnál hosszabb megőrzési, a tevékenységi naplóit a megőrzési időtartam, a munkaterület tartanak.
+<sup>1</sup>alapértelmezés szerint a Naplóelemzési tartja az Azure tevékenységi naplóit 90 napra vonatkozó akkor is, ha az ingyenes szint van. Vagy, ha egy munkaterület megőrzési beállítása legalább 90 nappal lehet. Ha a munkaterületet 90 napnál hosszabb megőrzési, a tevékenységi naplóit nyilvántartását alapján a megőrzési időtartam a munkaterületet.
 
 Naplóelemzési tevékenységi naplóit ingyenesen gyűjt, és a naplók ingyenesen 90 napig tárolja. Ha a naplófájlok 90 napnál hosszabb ideig tárolja, az adatok 90 napnál hosszabb megőrzési díjai adatok gyakorisága.
 

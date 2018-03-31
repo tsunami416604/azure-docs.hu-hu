@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2018
+ms.date: 03/29/2018
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 1d4151d6c00da618cc008257bcdad4607f8fec49
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1fc4b64a879f090955a5611672acb6b58eb19d73
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="group-based-licensing-basics-in-azure-active-directory"></a>Csoportalapú licencelés alapjai az Azure Active Directoryban
 
@@ -31,7 +31,10 @@ Eddig licencek csak rendelhető, amely tesz, a felügyeleti teendők központjak
 
 Ezek a kihívások megoldására mostantól az Azure AD tartalmazza a licencelési biztonságicsoport-alapú. Egy vagy több termék licenceket rendelhet egy csoportot. Az Azure AD gondoskodik arról, hogy a licenceket rendelt-e a csoport összes tagja számára. Új tagokat, akik csatlakozzon a csoporthoz rendeli hozzá a szükséges licencekkel. Ha elhagyják a csoport, ezeket a licencek eltávolítását. Ez szükségtelenné teszi a licenckezelést a PowerShell automatizálása a szervezet és a részlegszintű struktúra változásaihoz igazodva felhasználónkénti alapon.
 
-## <a name="features"></a>Szolgáltatások
+>[!NOTE]
+>Ez a funkció jelenleg nyilvános előzetes verziójához. Készüljön visszaállítja, vagy távolítsa el a módosításokat. A szolgáltatás bármely Azure Active Directory (Azure AD) előfizetés nyilvános előzetes érhető el. Amikor a szolgáltatás általánosan elérhetővé válik, azonban a funkció az egyes funkcióit szükség lehet egy vagy több Azure Active Directory Premium licenc.
+
+## <a name="features"></a>Funkciók
 
 Az alábbiakban a fő funkcióinak Csoportalapú Licencelés:
 

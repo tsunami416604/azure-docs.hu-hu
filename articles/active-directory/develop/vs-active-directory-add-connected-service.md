@@ -1,11 +1,11 @@
 ---
-title: "Egy Azure Active Directory hozzáadása a kapcsolódó szolgáltatások a Visual Studio használatával |} Microsoft Docs"
-description: "Egy Azure Active Directory hozzáadása a Visual Studio kapcsolódó szolgáltatások hozzáadása párbeszédpanelen"
+title: Egy Azure Active Directory hozzáadása a kapcsolódó szolgáltatások a Visual Studio használatával |} Microsoft Docs
+description: Egy Azure Active Directory hozzáadása a Visual Studio kapcsolódó szolgáltatások hozzáadása párbeszédpanelen
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: f599de6b-e369-436f-9cdc-48a0165684cb
 ms.service: active-directory
 ms.devlang: multiple
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/12/2018
-ms.author: kraigb
-ms.openlocfilehash: b21761b6fc166ecbb2fec9c13e5e207481fa9a39
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.author: ghogen
+ms.openlocfilehash: 882ba1c7ea8ef6889bc9ad20031070cd54100026
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Egy Azure Active Directory hozzáadása a kapcsolódó szolgáltatások a Visual Studio használatával
 
@@ -60,8 +60,8 @@ Az Active Directory kapcsolódó szolgáltatás jelenleg nem támogatja az ASP.N
 
 1. A folyamat be nem fejeződik, megnyílik a Visual Studio és az a böngészőt, hogy a projekt típusától függően az alábbi cikkekben:
 
-    - [Ismerkedés a .NET MVC-projektek](vs-active-directory-dotnet-getting-started.md)
-    - [Ismerkedés a WebAPI projektek](vs-active-directory-webapi-getting-started.md)
+    - [Bevezetés a .NET MVC-projektek használatába](vs-active-directory-dotnet-getting-started.md)
+    - [Bevezetés a WebAPI-projektek használatába](vs-active-directory-webapi-getting-started.md)
 
 1. Azt is láthatja az Active Directory-tartomány, a a [Azure-portálon](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 
@@ -69,7 +69,7 @@ Az Active Directory kapcsolódó szolgáltatás jelenleg nem támogatja az ASP.N
 
 A csatlakoztatott szolgáltatás a varázsló hozzáadásakor a Visual Studio Azure Active Directory és a projekthez kapcsolódó hivatkozások hozzáadása. A konfigurációs fájlok és a projekt kódfájlok támogatásához az Azure AD is módosítani. A megadott módosításokat, amelynek eredményeképpen a Visual Studio projekt-típustól függnek. További részletek a következő cikkekben talál:
 
-- [Mi történt a .NET MVC projekt?](vs-active-directory-dotnet-what-happened.md)
+- [Mi történt a .NET MVC-projektemmel?](vs-active-directory-dotnet-what-happened.md)
 - [Mi történt a Web API-projektet?](vs-active-directory-webapi-what-happened.md)
 
 ## <a name="next-steps"></a>További lépések

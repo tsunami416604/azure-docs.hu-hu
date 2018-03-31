@@ -1,6 +1,6 @@
 ---
-title: ".NET nyomkövetési naplók megtekintése az Application Insights felfedezése"
-description: "Keresse meg a nyomkövetési, NLog és Log4Net létrehozott naplók."
+title: .NET nyomkövetési naplók megtekintése az Application Insights felfedezése
+description: Keresse meg a nyomkövetési, NLog és Log4Net létrehozott naplók.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 6da0bf009fa71885d7d8e3bd5376c5a7c9d4a344
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 574b11f9ba38bda775610f2f9e90fbb2d2b05868
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="explore-net-trace-logs-in-application-insights"></a>.NET nyomkövetési naplók megtekintése az Application Insights felfedezése
 Ha NLog, a log4Net, vagy a System.Diagnostics.Trace a diagnosztikai nyomkövetés az ASP.NET-alkalmazás lehet küldeni a naplókat [Azure Application Insights][start], ahol vizsgálatát, és keresse meg őket. A naplók az alkalmazásból érkező, hogy azonosítsa a nyomkövetési adatokat társított minden egyes felhasználói kérelem karbantartás, és a kivizsgált más események és a kivétel jelentések más telemetriai adatok egyesül.
@@ -91,15 +91,15 @@ Konfigurálható [System.Diagnostics.Tracing.EventSource](https://msdn.microsoft
 ```
 
 Az egyes források állíthatók be a következő paraméterekkel:
- * `Name`Adja meg a gyűjtendő EventSource neve.
- * `Level`Adja meg a naplózási szint gyűjtéséhez. Egyike lehet `Critical`, `Error`, `Informational`, `LogAlways`, `Verbose`, `Warning`.
- * `Keywords`(Nem kötelező) adja meg a kulcsszavak kombinációk használni az egész értéket.
+ * `Name` Adja meg a gyűjtendő EventSource neve.
+ * `Level` Adja meg a naplózási szint gyűjtéséhez. Egyike lehet `Critical`, `Error`, `Informational`, `LogAlways`, `Verbose`, `Warning`.
+ * `Keywords` (Nem kötelező) adja meg a kulcsszavak kombinációk használni az egész értéket.
 
 ## <a name="using-diagnosticsource-events"></a>DiagnosticSource eseményeket használ
 Konfigurálható [System.Diagnostics.DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) eseményeket az Application Insights nyomkövetési adatokat, küldendő. Először telepítse a [ `Microsoft.ApplicationInsights.DiagnosticSourceListener` ](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener) NuGet-csomagot. Szerkessze a `TelemetryModules` szakasza a [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) fájlt.
 
 ```xml
-    <Add Type="Microsoft.ApplicationInsights.DiagnsoticSourceListener.DiagnosticSourceTelemetryModule, Microsoft.ApplicationInsights.DiagnosticSourceListener">
+    <Add Type="Microsoft.ApplicationInsights.DiagnosticSourceListener.DiagnosticSourceTelemetryModule, Microsoft.ApplicationInsights.DiagnosticSourceListener">
       <Sources>
         <Add Name="MyDiagnosticSourceName" />
       </Sources>
@@ -123,10 +123,10 @@ Application Insights nyomkövetési adatokat, küldendő ETW-események konfigur
 ```
 
 Az egyes források állíthatók be a következő paraméterekkel:
- * `ProviderName`a gyűjtendő ETW-szolgáltató neve van.
- * `ProviderGuid`Adja meg a gyűjteni kívánt ETW-szolgáltató GUID helyett használható `ProviderName`.
- * `Level`Beállítja a naplózási szint gyűjtéséhez. Egyike lehet `Critical`, `Error`, `Informational`, `LogAlways`, `Verbose`, `Warning`.
- * `Keywords`(Nem kötelező) kulcsszó kombinációk használni az egész értéket állítja be.
+ * `ProviderName` a gyűjtendő ETW-szolgáltató neve van.
+ * `ProviderGuid` Adja meg a gyűjteni kívánt ETW-szolgáltató GUID helyett használható `ProviderName`.
+ * `Level` Beállítja a naplózási szint gyűjtéséhez. Egyike lehet `Critical`, `Error`, `Informational`, `LogAlways`, `Verbose`, `Warning`.
+ * `Keywords` (Nem kötelező) kulcsszó kombinációk használni az egész értéket állítja be.
 
 ## <a name="using-the-trace-api-directly"></a>A nyomkövetés API közvetlen használatával
 Hívása az Application Insights nyomkövetési API közvetlenül. A naplózási adapterek Ez az API használnak.
@@ -168,7 +168,7 @@ Akkor is, például:
 >
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Diagnosztizálja a hibákat és kivételeket az ASP.NET][exceptions]
 
 [További információ a keresési][diagnostic].

@@ -1,13 +1,13 @@
 ---
-title: "Azure Table storage kötései Azure Functions"
-description: "Az Azure Functions az Azure Table storage kötések használatának megismerése."
+title: Azure Table storage kötései Azure Functions
+description: Az Azure Functions az Azure Table storage kötések használatának megismerése.
 services: functions
 documentationcenter: na
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure functions, Funkciók, Eseményfeldolgozási, dinamikus számítási kiszolgáló nélküli architektúrája"
+editor: ''
+tags: ''
+keywords: Azure functions, Funkciók, Eseményfeldolgozási, dinamikus számítási kiszolgáló nélküli architektúrája
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: 8c028bd20518a07a5fb35e36d0819c001eb2a7d5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: e6d2891a8ea531bf5c7cc7e1c74b890e01f2b56b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table storage kötései Azure Functions
 
@@ -33,7 +33,7 @@ A Table storage kötések szerepelnek a [Microsoft.Azure.WebJobs](http://www.nug
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-## <a name="input"></a>Input (Bemenet)
+## <a name="input"></a>Bevitel
 
 Az Azure Table storage bemeneti kötése segítségével olvasni egy táblát az Azure Storage-fiók.
 
@@ -354,9 +354,9 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**Típusa** | n/a | meg kell `table`. Ez a tulajdonság értéke automatikusan kötésének létrehozásakor az Azure portálon.|
-|**direction** | n/a | meg kell `in`. Ez a tulajdonság értéke automatikusan kötésének létrehozásakor az Azure portálon. |
-|**name** | n/a | A tábla vagy a funkciókódot entitás jelölő neve. | 
+|**Típusa** | - | meg kell `table`. Ez a tulajdonság értéke automatikusan kötésének létrehozásakor az Azure portálon.|
+|**direction** | - | meg kell `in`. Ez a tulajdonság értéke automatikusan kötésének létrehozásakor az Azure portálon. |
+|**name** | - | A tábla vagy a funkciókódot entitás jelölő neve. | 
 |**Táblanév** | **TableName** | A tábla neve.| 
 |**partitionKey** | **PartitionKey** |Választható. A partíciókulcs a tábla entitás olvasni. Tekintse meg a [használati](#input---usage) a szakaszban a tulajdonság használatával.| 
 |**rowKey** |**RowKey** | Választható. Olvassa el a tábla entitás sorkulcsa. Tekintse meg a [használati](#input---usage) a szakaszban a tulajdonság használatával.| 
@@ -385,9 +385,12 @@ A Table storage bemeneti kötése a következő szituációkat ismerteti:
 
   Állítsa be a `filter` és `take` tulajdonságok. Nincs beállítva `partitionKey` vagy `rowKey`. A bemeneti tábla entitás (vagy entitások) használatával `context.bindings.<name>`. A deszerializált objektum rendelkezik `RowKey` és `PartitionKey` tulajdonságok.
 
-## <a name="output"></a>Kimenet
+## <a name="output"></a>Kimeneti
 
 Egy Azure Table storage kimeneti entitások írni egy Azure Storage-fiókban lévő táblázat kötés használja.
+
+> [!NOTE]
+> A kimeneti kötés nem támogatja a meglévő entitások. Használja a `TableOperation.Replace` művelet [az Azure Storage SDK-ból](https://docs.microsoft.com/en-us/azure/cosmos-db/table-storage-how-to-use-dotnet#replace-an-entity) meglévő entitás frissítése.   
 
 ## <a name="output---example"></a>Kimeneti – példa
 
@@ -611,9 +614,9 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**Típusa** | n/a | meg kell `table`. Ez a tulajdonság értéke automatikusan kötésének létrehozásakor az Azure portálon.|
-|**direction** | n/a | meg kell `out`. Ez a tulajdonság értéke automatikusan kötésének létrehozásakor az Azure portálon. |
-|**name** | n/a | A változó nevét, amely a tábla vagy entitás függvény kódban használt. Beállítása `$return` hivatkozni, a függvény visszatérési értéke.| 
+|**Típusa** | - | meg kell `table`. Ez a tulajdonság értéke automatikusan kötésének létrehozásakor az Azure portálon.|
+|**direction** | - | meg kell `out`. Ez a tulajdonság értéke automatikusan kötésének létrehozásakor az Azure portálon. |
+|**name** | - | A változó nevét, amely a tábla vagy entitás függvény kódban használt. Beállítása `$return` hivatkozni, a függvény visszatérési értéke.| 
 |**Táblanév** |**TableName** | A tábla neve.| 
 |**partitionKey** |**PartitionKey** | A partíciókulcs a tábla entitás írni. Tekintse meg a [használati adatai](#output---usage) kapcsolatos útmutatás a tulajdonságot használni.| 
 |**rowKey** |**RowKey** | A tábla entitás írni a sorkulcs. Tekintse meg a [használati adatai](#output---usage) kapcsolatos útmutatás a tulajdonságot használni.| 

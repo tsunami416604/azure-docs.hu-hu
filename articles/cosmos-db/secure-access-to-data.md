@@ -1,11 +1,11 @@
 ---
-title: "Megtudhatja, hogyan biztosíthat biztonságos hozzáférést a adatokat az Adatbázisba az Azure Cosmos |} Microsoft Docs"
-description: "További tudnivalók access control jellemzői Azure Cosmos DB, beleértve a főkulcs, csak olvasható kulcsok, felhasználók és engedélyek."
+title: Megtudhatja, hogyan biztosíthat biztonságos hozzáférést a adatokat az Adatbázisba az Azure Cosmos |} Microsoft Docs
+description: További tudnivalók access control jellemzői Azure Cosmos DB, beleértve a főkulcs, csak olvasható kulcsok, felhasználók és engedélyek.
 services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: monicar
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 8641225d-e839-4ba6-a6fd-d6314ae3a51c
 ms.service: cosmos-db
 ms.workload: data-services
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2017
 ms.author: mimig
-ms.openlocfilehash: 383e04f91eec2f465b381ce30f2d6d24c488b731
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 771c4a539d240a6bfdc9770adc7cfada01571939
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Azure Cosmos DB adatokhoz való hozzáférés biztonságossá tétele
 Ez a cikk áttekintést a adataihoz való hozzáférés biztosítása [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
 
 Azure Cosmos-adatbázis kétféle kulcsok segítségével hitelesíti a felhasználókat, és az adatok és erőforrások eléréséhez. 
 
-|kulcs típusa|Erőforrások|
+|Kulcstípus|Erőforrások|
 |---|---|
 |[Főkulcsok](#master-keys) |Felügyeleti erőforrások használt: adatbázis-fiókok, adatbázisok, felhasználók és engedélyek|
 |[Erőforrás-tokenek](#resource-tokens)|Alkalmazás-erőforrásokat használt: gyűjtemények, dokumentumok, a mellékletek, tárolt eljárások, eseményindítók és felhasználó által megadott függvények|
@@ -104,13 +104,13 @@ Cosmos DB erőforrás jogkivonatokat adjon meg egy biztonságos megoldás, amely
 
     ![Az Azure Cosmos DB erőforrás jogkivonatok munkafolyamat](./media/secure-access-to-data/resourcekeyworkflow.png)
 
-Erőforrás-token létrehozása és kezelése végzi el a natív Cosmos DB ügyfél könyvtárakat. REST használatakor a kérelem/hitelesítési fejlécek kell létrehozni. A többi hitelesítési fejlécek létrehozásáról további információk: [Cosmos DB erőforrások hozzáférés-vezérlés](https://docs.microsoft.com/rest/api/documentdb/access-control-on-documentdb-resources) vagy a [forráskód az SDK-k](https://github.com/Azure/azure-documentdb-node/blob/master/source/lib/auth.js).
+Erőforrás-token létrehozása és kezelése végzi el a natív Cosmos DB ügyfél könyvtárakat. REST használatakor a kérelem/hitelesítési fejlécek kell létrehozni. A többi hitelesítési fejlécek létrehozásáról további információk: [Cosmos DB erőforrások hozzáférés-vezérlés](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources) vagy a [forráskód az SDK-k](https://github.com/Azure/azure-documentdb-node/blob/master/source/lib/auth.js).
 
 A középső réteg szolgáltatás létrehozásához vagy replikaszervező erőforrás jogkivonatok használt példáért lásd: a [ResourceTokenBroker app](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers).
 
 <a id="users"></a>
 
-## <a name="users"></a>Felhasználók
+## <a name="users"></a>fő
 Cosmos DB felhasználók hozzárendelve egy Cosmos DB adatbázisban.  Az egyes adatbázisok nulla vagy több Cosmos DB felhasználókat is tartalmazhat.  A következő példakód bemutatja, hogyan hozzon létre egy Cosmos DB felhasználói erőforrást.
 
 ```csharp
@@ -179,7 +179,7 @@ foreach (Permission perm in permFeed)
 DocumentClient userClient = new DocumentClient(new Uri(endpointUrl), permList);
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Cosmos-adatbázis adatbázis-biztonsággal kapcsolatos további tudnivalókért lásd: [Cosmos DB: adatbázis-biztonsági](database-security.md).
 * Fő és a csak olvasható kezelésével kapcsolatos információkért lásd: [Azure Cosmos DB fiók kezelése](manage-account.md#keys).
-* Azure Cosmos DB engedélyezési jogkivonatok létrehozásához, lásd: [Azure Cosmos DB erőforrások hozzáférés-vezérlés](https://docs.microsoft.com/rest/api/documentdb/access-control-on-documentdb-resources).
+* Azure Cosmos DB engedélyezési jogkivonatok létrehozásához, lásd: [Azure Cosmos DB erőforrások hozzáférés-vezérlés](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources).

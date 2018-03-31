@@ -1,32 +1,32 @@
 ---
-title: "Az Office 365-csoportok az Azure Active Directoryban (előzetes verzió) neve csoportházirend-beállítások |} Microsoft Docs"
-description: "Az Office 365-csoportok az Azure Active Directoryban (előzetes verzió) lejárati beállítása"
+title: Az Office 365-csoportok az Azure Active Directoryban (előzetes verzió) neve csoportházirend-beállítások |} Microsoft Docs
+description: Az Office 365-csoportok az Azure Active Directoryban (előzetes verzió) lejárati beállítása
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: michael.tillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/29/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: cc3ea7f81a924f3f4baa6fd2866c4e552b7c160e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: c21706a591d0e1aa00279edf7a5534ada95fd8c1
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Az Office 365-csoportok az Azure Active Directoryban (előzetes verzió) elnevezési vonatkozó szabályzat alkalmazása
 
 Office 365-csoportok a felhasználók által létrehozott vagy módosított egységes elnevezési szabályai kényszerítéséhez állítsa be a csoportot névadási a bérlők számára az Azure Active Directory (Azure AD). Például az elnevezési házirend segítségével kommunikálnak a függvény egy csoport, a tagság, a földrajzi régióban, vagy ki hozta létre a csoport. A címjegyzék csoportok kategorizálása segítségével is használhat az elnevezési házirendet. A házirendek segítségével a használatban lévő csoporthoz tartozó nevek és aliasok szavak blokkolása.
 
 > [!IMPORTANT]
-> Az Office 365 csoportok elnevezési házirend előzetes a használatához az Azure Active Directory Premium P1 licencek minden egyedi felhasználóhoz, amely tagja egy vagy több Office 365-csoportokat.
+> Az Office 365 csoportok elnevezési házirend előzetes használatához Azure Active Directory Premium P1 licenccel, illetve az Azure AD alapvető oktatási licencek minden egyedi felhasználóhoz, amely tagja egy vagy több Office 365-csoportokat.
 
 Az elnevezési házirend létrehozásával vagy szerkesztésével között (például az Outlook, a Microsoft Teams, SharePoint, Exchange vagy Planner) munkaterhelések létrehozott csoportok vonatkozik. A csoport nevét és a csoport alias alkalmazva. Ha az Azure ad-ben a elnevezési házirend beállításához és névadási meglévő Exchange csoport, az Azure AD elnevezési házirend érvényesül.
 

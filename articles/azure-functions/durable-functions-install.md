@@ -14,18 +14,18 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3451f268e78df6efa5e3fc489b88415349efe169
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3a83ed5f7dba3e4d68204a2c9dffb4459cadfef9
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>Telepítse a tartós funkciók bővítményt, és minták (az Azure Functions)
 
 A [tartós funkciók](durable-functions-overview.md) Azure Functions kiterjesztése a NuGet-csomag megadott [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask). Ez a cikk bemutatja, hogyan telepíthetik a csomagot és minták a következő fejlesztési környezetben:
 
 * A Visual Studio 2017 (ajánlott) 
-
+* Visual Studio Code
 * Azure Portal
 
 ## <a name="visual-studio-2017"></a>Visual Studio 2017
@@ -48,11 +48,7 @@ A Visual Studio jelenleg a legjobb élményt nyújt a tartós funkciók használ
 Mint a minta kezdve azonos útmutatásait, de a következő lépések letöltésük helyett a *.zip* fájlt:
 
 1. Hozzon létre egy függvény App projektet.
-2. Adjon hozzá a következő NuGet csomag hivatkozást, a *.csproj* fájlt:
-
-   ```xml
-   <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.DurableTask" Version="1.0.0-beta" />
-   ```
+2. Keresse meg a következő NuGet csomag hivatkozás segítségével *Nuget-csomagok kezelése* és adja hozzá a projekthez: Microsoft.Azure.WebJobs.Extensions.DurableTask v1.1.0 beta2 (ellenőrzése *közé tartoznak az előzetes* Ez a csomag keresése)
    
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
@@ -129,6 +125,8 @@ Tetszés szerint használhatja az Azure-portálon a tartós funkciók fejleszté
 1. Hozzon létre egy új funkció alkalmazást [functions.azure.com](https://functions.azure.com/signin).
 
 2. A függvény alkalmazás konfigurálása [futtatókörnyezet 2.0-s verzióját használja a](set-runtime-version.md).
+
+   A tartós funkciók bővítmény a 1.X futásidejű és a 2.0-s futásidejű is működik, de az Azure-portál sablonok csak érhetők el, ha a 2.0-s futásidejű célzó.
 
 3. Hozzon létre egy új függvényt kiválasztásával **"létrehozása a saját egyéni függvény."** .
 

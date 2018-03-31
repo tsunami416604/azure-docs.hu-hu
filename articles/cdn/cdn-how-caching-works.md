@@ -1,12 +1,12 @@
 ---
-title: "A gyorsítótárazás működése |} Microsoft Docs"
-description: "Gyorsítótárazás adatok helyi tárolása, hogy a jövőben kéri az adatok elérése gyorsabban során a rendszer."
+title: A gyorsítótárazás működése |} Microsoft Docs
+description: Gyorsítótárazás adatok helyi tárolása, hogy a jövőben kéri az adatok elérése gyorsabban során a rendszer.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: dksimpson
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/23/2017
 ms.author: v-deasim
-ms.openlocfilehash: 284b4bcbeafc422a2ed91cec00a5b5b83bb37b7b
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: da43e122c3e7d5e852107d4e4cca237ce4824267
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-caching-works"></a>A gyorsítótárazás működése
 
@@ -45,7 +45,7 @@ Minden egyes gyorsítótár általában kezeli a saját erőforrás frissesség 
 
 A gyorsítótárazott erőforrás elavult, vagy elavult (mint a forrás kiszolgálón a megfelelő erőforrás) is lehet, mert fontos bármely gyorsítótárazást szabályozhatja a tartalom frissítésekor. Idő és a sávszélesség-felhasználás mentéséhez egy gyorsítótárazott erőforrás nem összeveti a verziót a forrás kiszolgálón minden alkalommal, amikor érhető el. Ehelyett mindaddig, amíg egy gyorsítótárazott erőforrás friss tekinthető, feltételezett, hogy a legújabb verziójú és közvetlenül az ügyfélnek küldött. A gyorsítótárazott erőforrás friss minősül, ha korát kisebb, mint a kora vagy egy gyorsítótár-beállításban megadott időtartam. Például ha egy böngészőben egy weblapot Újratölti, azt ellenőrzi, hogy a merevlemez-meghajtóról minden gyorsítótárazott erőforrás friss és betölti azt. Ha az erőforrás nem friss (elavult), egy friss másolatot be van töltve a kiszolgálóról.
 
-### <a name="validation"></a>Ellenőrzés
+### <a name="validation"></a>Érvényesítés
 
 Ha egy erőforrás elavult tekinthető, az eredeti kiszolgálóra kapcsolatba kell érvényesíti, ez azt jelenti, határozza meg, hogy a gyorsítótárban lévő adatok továbbra is megegyezik az eredeti kiszolgálón. Ha a fájl módosult a forrás kiszolgálón, a gyorsítótár frissíti a verziót az erőforrás. Ellenkező esetben ha az erőforrás friss, a kerülnek az adatok közvetlenül a gyorsítótárból érvényességének ellenőrzése először nélkül.
 
@@ -59,51 +59,50 @@ Gyorsítótárazás szerves ahhoz, ahogy a CDN kézbesítési felgyorsítása é
 
 Hogyan gyorsítótárazás van megvalósítva hasonló webböngészőben, szabályozhatja hogyan gyorsítótárazását végzi el a CDN a gyorsítótár-irányelv fejlécek küldését. Gyorsítótár-irányelv fejlécek olyan HTTP-fejlécek, amely az eredeti kiszolgálóra általában adhatók hozzá. Bár ezek a fejlécek a legtöbb eredetileg is cím gyorsítótárazása az ügyfélböngészők, most is használják az összes köztes gyorsítótárak, például a tartalomtovábbító. 
 
-Két fejléc segítségével határozza meg a gyorsítótár frissesség: `Cache-Control` és `Expires`. `Cache-Control`több naprakész, és elsőbbséget élvez `Expires`, ha teljesül. Is két típusa van (más néven érvényesség-ellenőrzők) érvényesítéséhez használt fejlécek: `ETag` és `Last-Modified`. `ETag`több naprakész, és elsőbbséget élvez `Last-Modified`, ha mindkét vannak meghatározva.  
+Két fejléc segítségével határozza meg a gyorsítótár frissesség: `Cache-Control` és `Expires`. `Cache-Control` több naprakész, és elsőbbséget élvez `Expires`, ha teljesül. Is két típusa van (más néven érvényesség-ellenőrzők) érvényesítéséhez használt fejlécek: `ETag` és `Last-Modified`. `ETag` több naprakész, és elsőbbséget élvez `Last-Modified`, ha mindkét vannak meghatározva.  
 
 ## <a name="cache-directive-headers"></a>Gyorsítótár-irányelv fejlécek
 
 > [!IMPORTANT]
-> Alapértelmezés szerint az Azure CDN-végpont DSA optimalizált figyelmen kívül hagyja a gyorsítótár-irányelv fejlécek és megkerüli a gyorsítótárazást. Beállíthatja, hogyan Azure CDN-végpont értékként kezelje-e ezek a fejlécek gyorsítótárazása szabályok gyorsítótárazás CDN használatával. További információkért lásd: [vezérlő Azure CDN szolgáltatás használata a szabályok gyorsítótárazással gyorsítótárazásának](cdn-caching-rules.md).
+> Alapértelmezés szerint az Azure CDN-végpont DSA optimalizált figyelmen kívül hagyja a gyorsítótár-irányelv fejlécek és megkerüli a gyorsítótárazást. A **Verizon Standard Azure CDN** és **Akamai Standard Azure CDN** profilok, beállíthatja, hogyan Azure CDN-végpont értékként kezelje-e ezek a fejlécek használatával [CDN-szabályra érvényesek](cdn-caching-rules.md)gyorsítótárazás engedélyezéséhez. A **Azure CDN Verizon** -profilok csak akkor használja a [szabálymotor](cdn-rules-engine.md) gyorsítótárazás engedélyezéséhez.
 
-Az Azure CDN támogatja a következő HTTP-gyorsítótár-irányelv fejlécek, gyorsítótárazás időtartama és a gyorsítótár megosztása meghatározó: 
+Az Azure CDN támogatja a következő HTTP-gyorsítótár-irányelv fejlécek, gyorsítótárazás időtartama és a gyorsítótár megosztása meghatározó.
 
-`Cache-Control`
+**A Cache-Control:**
 - A HTTP 1.1 webes közzétevők tartalmuk teljesebb körű vezérlése és vonatkozó korlátozások elhárítása bevezetett a `Expires` fejléc.
 - Felülbírálja a `Expires` fejléc, ha mindkét azt és `Cache-Control` vannak definiálva.
-- A kérelem fejlécében használatakor `Cache-Control` figyelmen kívül hagyják Azure CDN alapértelmezés szerint.
-- Ha egy válaszfejléc használják, Azure CDN támogatja-e a következő `Cache-Control` irányelveknek megfelelően termék: 
-   - **Verizon Azure CDN**: összes támogatja `Cache-Control` irányelvek. 
-   - **Akamai Azure CDN**: csak a következő támogatja `Cache-Control` irányelvek; minden más a rendszer nem veszi figyelembe: 
-      - `max-age`: A gyorsítótár másodpercben megadott tud tárolni a tartalmat. Például: `Cache-Control: max-age=5`. Ez a direktíva meghatározza a maximális időt a tartalom friss tekinthető.
-      - `no-cache`: A tartalom gyorsítótárazása, de a tartalom ellenőrzésének, minden alkalommal, mielőtt továbbítása a gyorsítótárból. Egyenértékű `Cache-Control: max-age=0`.
-      - `no-store`: Soha ne gyorsítótár tartalma. Távolítsa el a tartalmat, ha korábban már tárolták.
+- HTTP-kérelem, használatakor `Cache-Control` figyelmen kívül hagyják Azure CDN alapértelmezés szerint.
+- **Verizon Azure CDN** profilok támogatja az összes `Cache-Control` irányelvek, egy HTTP-válasz való használata esetén.
+- **Akamai Azure CDN** profilok csak a következő irányelvek támogatja a HTTP-válasz való használata esetén; összes többit figyelmen kívül hagyja:
+   - `max-age`: A gyorsítótár másodpercben megadott tud tárolni a tartalmat. Például: `Cache-Control: max-age=5`. Ez a direktíva meghatározza a maximális időt a tartalom friss tekinthető.
+   - `no-cache`: A tartalom gyorsítótárazása, de a tartalom ellenőrzésének, minden alkalommal, mielőtt továbbítása a gyorsítótárból. Egyenértékű `Cache-Control: max-age=0`.
+   - `no-store`: Soha ne gyorsítótár tartalma. Távolítsa el a tartalmat, ha korábban már tárolták.
 
-`Expires`
+**Expires:**
 - A HTTP 1.0; bevezetett örökölt fejléc támogatott a visszamenőleges kompatibilitás.
 - A dátum-alapú időkorlátját pontossága protokollt használja. 
 - Hasonló `Cache-Control: max-age`.
 - Ha `Cache-Control` nem létezik.
 
-`Pragma`
+**Pragma:**
    - Nem fogadja el a Azure CDN alapértelmezés szerint.
    - A HTTP 1.0; bevezetett örökölt fejléc támogatott a visszamenőleges kompatibilitás.
    - Használja a következő irányelvnek ügyfél fejléc: `no-cache`. Ez a direktíva arra utasítja a kiszolgálót az erőforrás egy frissen telepített verzióját.
-   - `Pragma: no-cache`egyenértékű `Cache-Control: no-cache`.
+   - `Pragma: no-cache` egyenértékű `Cache-Control: no-cache`.
 
 ## <a name="validators"></a>Érvényesség-ellenőrzők
 
-Ha a gyorsítótár elavult, HTTP-gyorsítótár érvényesítők segítségével a gyorsítótárazott egy fájl és összehasonlítása a verziót a forrás-kiszolgálón. **Verizon Azure CDN** alapértelmezés szerint támogatja az ETag és Last-Modified érvényesség-ellenőrzők közben **Akamai Azure CDN** csak Last-Modified alapértelmezés szerint támogatja.
+Ha a gyorsítótár elavult, HTTP-gyorsítótár érvényesítők segítségével a gyorsítótárazott egy fájl és összehasonlítása a verziót a forrás-kiszolgálón. **Verizon Azure CDN** egyaránt támogat `ETag` és `Last-Modified` alapértelmezés szerint az érvényesség-ellenőrzők közben **Akamai Azure CDN** csak támogatja `Last-Modified` alapértelmezés szerint.
 
-`ETag`
+**ETag:**
 - **Verizon Azure CDN** használ `ETag` során alapértelmezés szerint **Akamai Azure CDN** viszont nem.
-- `ETag`karakterlánc, amely egyedi a minden fájl- és a fájl verziója határozza meg. Például: `ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"`.
+- `ETag` karakterlánc, amely egyedi a minden fájl- és a fájl verziója határozza meg. Például: `ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"`.
 - A HTTP 1.1-ben bevezetett, és több mint aktuális `Last-Modified`. Akkor hasznos, ha az utolsó módosítási dátumának nehéz lenne meghatározni.
 - Támogatja az erős érvényesítése és a gyenge érvényesítési; Azure CDN azonban csak az erős érvényesítési támogatja. Erős ellenőrzése, a két erőforrás felelősséget kell bájt a byte azonos. 
 - A gyorsítótár ellenőrzi a fájl által használt `ETag` küldésével egy `If-None-Match` egy vagy több fejlécet `ETag` érvényesség-ellenőrzők a kérelemben. Például: `If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"`. Ha a kiszolgáló verziója megegyezik egy `ETag` érvényesítő szerepel a listán, elküldi állapotkódot (nem módosított) 304 válaszában. Ha másik verziószáma, a kiszolgáló válaszol állapotkód 200 (OK) és a frissített erőforrása.
 
-`Last-Modified`
-- A **csak Verizon Azure CDN**Last-Modified, akkor használatos, ha az ETag nem része a HTTP-válasz. 
+**Last-Modified:**
+- A **csak Verizon Azure CDN**, `Last-Modified` akkor használatos, ha `ETag` nem része a HTTP-válasz. 
 - A dátum és idő, a forráskiszolgáló által meghatározott, az erőforrás utolsó módosításának határozza meg. Például: `Last-Modified: Thu, 19 Oct 2017 09:28:00 GMT`.
 - A gyorsítótár ellenőrzi, hogy egy fájl segítségével `Last-Modified` küldésével egy `If-Modified-Since` fejléc a dátumot és időpontot a kérelemben. A forráskiszolgáló hasonlítja össze, hogy a dátum a `Last-Modified` a legújabb erőforrás fejléc. Ha az erőforrás a megadott idő óta nem módosult, a kiszolgáló válaszában visszaküldi állapotkód 304 (nem módosított). Ha az erőforrás módosítva lett, a kiszolgáló visszaadja-e az állapot kód 200 (OK) és a frissített erőforrása.
 
@@ -121,10 +120,10 @@ Nem minden erőforrások gyorsítótárazható. Az alábbi táblázat bemutatja,
 
 A következő táblázat ismerteti az alapértelmezett gyorsítótárazásának az Azure CDN-termékek és az optimalizálás.
 
-|                    | Verizon - általános webes kézbesítés | Verizon – DSA | Akamai - általános webes kézbesítés | Akamai - DSA | Akamai - nagy méretű fájl letöltése | Akamai - általános vagy VOD médiaadatfolyam |
+|                    | Verizon: általános webes kézbesítés | Verizon: DSA | Akamai: általános webes kézbesítés | Akamai: DSA | Akamai: nagy méretű fájl letöltése | Akamai: általános, vagy amelyek médiaadatfolyam |
 |--------------------|--------|------|-----|----|-----|-----|
 | **Tiszteletben forrása**   | Igen    | Nem   | Igen | Nem | Igen | Igen |
-| **CDN-gyorsítótárazás időtartama** | 7 nap | Nincs | 7 nap | Nincs | 1 nap | 1 év |
+| **CDN-gyorsítótárazás időtartama** | 7 nap | Egyik sem | 7 nap | Egyik sem | 1 nap | 1 év |
 
 **Forrás tiszteletben**: Megadja, hogy elfogadja a [gyorsítótár-irányelv fejlécek támogatott](#http-cache-directive-headers) Ha léteznek az a HTTP-válasz a forráskiszolgálóról.
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement összehasonlításával más hasonló Azure-szolgáltatásokkal"
-description: "Azure Mobile Engagement összehasonlítva az egyéb hasonló Azure-szolgáltatások - Hockeyappra, az appinsights által biztosított, a Notification Hubs"
+title: Azure Mobile Engagement összehasonlításával más hasonló Azure-szolgáltatásokkal
+description: Azure Mobile Engagement összehasonlítva az egyéb hasonló Azure-szolgáltatások - Hockeyappra, az appinsights által biztosított, a Notification Hubs
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 1f114775-3a9a-4dd4-8d59-b10d1da9a68b
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 7df2eb9ecebe3313dad9c15171552a084787f6b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 57be3b235c5f439741155a70df7ddbe8a80906f2
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="comparing-azure-mobile-engagement-with-other-similar-azure-services"></a>Azure Mobile Engagement összehasonlításával más hasonló Azure-szolgáltatásokkal
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 A Microsoft Azure által kínált szolgáltatások listája egyre növekszik, és esetenként Felvetődik hogyan eltér Azure Mobile Engagement a szolgáltatás, amely csak olvasható vagy szóló értesítésekre. Ez a cikk megpróbálja törölni a félreértések, és arra utasítja az Azure Mobile Engagement kiválaszthatja, ha a legmegfelelőbb a használatra. 
 
 Az Azure Mobile Engagement egy olyan szolgáltatás, kifejezetten megcélzott **a digitális forgalmazók/CMOs** bármelyik használható, de **mobilalkalmazás tulajdonos vagy a közzétevő** ki szeretné javítja a használati, megőrzés jeleníthetnek azok mobilalkalmazásából. 
@@ -38,7 +42,7 @@ Ez a definíció bontásához, a következő kulcs jellemzők, amely az egyedi �
 3. **Valós idejű felhasználói szegmentálást**
    
    Miután összegyűjtötte alkalmazás felhasználói viselkedés elemzéséhez adatait, azt teszik lehetővé a célközönséget különböző paraméterek alapján, és az összegyűjtött adatok lehetővé teszik a megcélzott ügyfélleküldéses kampányok szegmenshez. 
-4. **Szoftverek,--szolgáltatás (SaaS):**
+4. **Software-as-a-service (SaaS):**
    
    Az Azure felügyeleti portálján, amely interakciót és gazdag viselkedés elemzéséhez az alkalmazás felhasználók megtekintése és futtatása a leküldéses marketingkampányok optimalizált elkülönül a portál van. A termék kövesse az első címen nem található!   
 

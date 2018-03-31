@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Mobile Engagement Android SDK-integráció"
-description: "Legújabb frissítések és az Azure Mobile Engagement Android SDK eljárásai"
+title: Az Azure Mobile Engagement Android SDK-integráció
+description: Legújabb frissítések és az Azure Mobile Engagement Android SDK eljárásai
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 6e71afc6-b3ed-4b39-8cf1-c8024454d579
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 27190b54fc2b3b5c77b5f0a02273883e36ceaf1d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 70c9da9fbd4709fb01d45e7e39dbe83f579106c7
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="sdk-content"></a>Az SDK-tartalom
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 Ez a dokumentum, és a tartalom az SDK-archívum ismerteti.
 
 `mobile-engagement-VERSION.jar`
@@ -29,13 +33,13 @@ Ez a dokumentum, és a tartalom az SDK-archívum ismerteti.
 > 
 > 
 
-`res`mappa
+`res` Mappa
 
 > Engagement Reach SDK-erőforrások (rajzolható és az alkalmazások szerepeltetendő fájlokat elrendezés).
 > 
 > 
 
-`src`mappa
+`src` Mappa
 
 > Engagement SDK forráskódot.
 > 
