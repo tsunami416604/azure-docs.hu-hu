@@ -59,6 +59,8 @@
       items:
         - name: Statikus IP-cím
           href: static-ip.md
+        - name: Belső terheléselosztó
+          href: internal-lb.md
         - name: Bejövő forgalom és TLS
           href: ingress.md
     - name: Biztonság és hitelesítés

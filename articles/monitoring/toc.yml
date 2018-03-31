@@ -1,5 +1,5 @@
 - name: Az Azure-alapú figyelés dokumentációja
-  href: management-overview-monitoring.md
+  href: index.md
 - name: Áttekintés
   items:
     - name: Monitorozás az Azure-ban
