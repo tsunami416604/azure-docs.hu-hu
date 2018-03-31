@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8da3e2c970ab1e60e3396cb0aaeaba64dba1713c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 5a4bdc49c5ab36a5026095b5d7b6f9856b020e1b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="automatic-regional-failover-for-business-continuity-in-azure-cosmos-db"></a>Az üzletmenet folytonossága érdekében az Azure Cosmos Adatbázisba automatikus regionális feladatátvétel
 Azure Cosmos DB egyszerűbbé teszi a globális adatok terjesztési felajánlásával teljes körűen felügyelt, [több területi adatbázis fiókok](distribute-data-globally.md) biztosító egyértelmű mellékhatásokkal konzisztencia, a rendelkezésre állás és a teljesítmény, az összes megfelelő garanciák között. Cosmos DB fiókok kínálnak a magas rendelkezésre állású, egyetlen számjegy ms késések, [jól meghatározott konzisztenciaszintek](consistency-levels.md), többhelyű API-khoz transzparens regionális feladatátvétel és rugalmasan méretezhető átviteli sebesség és tárterület világszerte képességét. 
@@ -86,7 +86,7 @@ Az érintett régió helyreállít a a leállás, miután a rendszer automatikus
 
 **Mi történik, ha egy írási régió kimaradás?**
 
-Ha az érintett régió az aktuális írási régió, és automatikus feladatátvételt az Azure Cosmos DB fiók engedélyezve van, majd a régió automatikusan jelölése offline állapotúként. Egy másik régióban majd, mint a írási terület, az érintett Azure Cosmos DB fiók van előléptetve. Automatikus feladatátvétel és a teljes irányítása a régió kijelölés ahhoz, hogy az Azure Cosmos DB fiókok az Azure-portálon vagy [programozott módon](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_FailoverPriorityChange). 
+Ha az érintett régió az aktuális írási régió, és automatikus feladatátvételt az Azure Cosmos DB fiók engedélyezve van, majd a régió automatikusan jelölése offline állapotúként. Egy másik régióban majd, mint a írási terület, az érintett Azure Cosmos DB fiók van előléptetve. Automatikus feladatátvétel és a teljes irányítása a régió kijelölés ahhoz, hogy az Azure Cosmos DB fiókok az Azure-portálon vagy [programozott módon](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/databaseaccounts#DatabaseAccounts_FailoverPriorityChange). 
 
 ![Azure Cosmos DB feladatátvételi prioritásait](./media/regional-failover/failover-priorities.png)
 
@@ -98,7 +98,7 @@ Az érintett régió helyreállít a a leállás, miután a rendszer automatikus
 
 * Az előző írási régióban, amely a rendszer nem replikálja a rendszer régiók olvasása során a szolgáltatáskimaradás adatok hírcsatorna ütközés van közzé. Alkalmazások olvassa el az ütköző adatcsatorna, hárítsa el a problémákat, alkalmazás-specifikus logika alapján, és a frissített adatokat írhat vissza a Azure Cosmos DB account. 
 * Az előző írási régió újból egy olvasási területet, és automatikusan automatikusan visszaáll online állapotba. 
-* Olyan módon konfigurálhatja újra lett válik újra online állapotúvá automatikusan az írási régió, egy manuális feladatátvételt az Azure-portálon elvégzésével olvasási régiót vagy [programozott módon](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_CreateOrUpdate).
+* Olyan módon konfigurálhatja újra lett válik újra online állapotúvá automatikusan az írási régió, egy manuális feladatátvételt az Azure-portálon elvégzésével olvasási régiót vagy [programozott módon](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/databaseaccounts#DatabaseAccounts_CreateOrUpdate).
 
 A következő kódrészletet szemlélteti, hogyan kell feldolgozni ütközések, az érintett régió helyreállít a a szolgáltatáskimaradás elhárítása után.
 
@@ -123,7 +123,7 @@ do
 
 ## <a id="ManualFailovers"></a>Manuális feladatátvétel
 
-Automatikus feladatátvétel mellett az aktuális írási terület a megadott Cosmos DB fiók manuálisan módosítható dinamikusan a meglévő olvasási régiók egyikéhez sem. Kézi feladatátvételt is kezdeményezhető az Azure-portálon vagy [programozott módon](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_CreateOrUpdate). 
+Automatikus feladatátvétel mellett az aktuális írási terület a megadott Cosmos DB fiók manuálisan módosítható dinamikusan a meglévő olvasási régiók egyikéhez sem. Kézi feladatátvételt is kezdeményezhető az Azure-portálon vagy [programozott módon](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/databaseaccounts#DatabaseAccounts_CreateOrUpdate). 
 
 Manuális feladatátvétel biztosítására **adatvesztés nulla** és **nulla rendelkezésre állási** adatvesztéssel és szabályosan átviteli írási állapotát a régi régió írni a megadott Cosmos adatbázis fiók egy. Például az Automatikus feladatátvétel, a Cosmos DB SDK automatikusan kezeli az írási régió módosítások manuális feladatátvételek során és biztosítja, hogy a rendszer automatikusan átirányítja hívások az új írási terület. Az alkalmazása kezelje a feladatátvételek kód vagy a konfigurációs módosítások nélküli kell megadni. 
 

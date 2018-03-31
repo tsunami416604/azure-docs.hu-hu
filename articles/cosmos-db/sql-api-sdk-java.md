@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/14/2017
 ms.author: khdang
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a8917e85ce5fb0e43593c34fc83046ec727e4aac
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 547bc8933d8afc593db7620b2e610d50d6e22cdf
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API-t Azure Cosmos DB Java SDK: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -30,8 +30,8 @@ ms.lasthandoff: 03/28/2018
 > * [Aszinkron Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [REST](https://docs.microsoft.com/rest/api/documentdb/)
-> * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/documentdbresourceprovider/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 > 
 > 
@@ -44,7 +44,7 @@ Az SQL API Java SDK támogatja a szinkron műveleteket. Az aszinkron támogatás
 
 <tr><td>**API-JÁNAK dokumentációja**</td><td>[Java API-referenciadokumentáció](/java/api/com.microsoft.azure.documentdb)</td></tr>
 
-<tr><td>**Hozzájárul az SDK**</td><td>[GitHubon](https://github.com/Azure/azure-documentdb-java/)</td></tr>
+<tr><td>**Hozzájárul az SDK**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-java/)</td></tr>
 
 <tr><td>**Első lépések**</td><td>[Ismerkedés a Java SDK-val](sql-api-java-get-started.md)</td></tr>
 
@@ -217,7 +217,7 @@ A Cosmos DB kivont SDK használatával fog kell elutasította a szolgáltatás.
 | 0.9.1-prelease |2014. decemberi 19 |2016. február 29. |
 | 0.9.0-prelease |2014. december 10. |2016. február 29. |
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>Gyakori kérdések
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Lásd még

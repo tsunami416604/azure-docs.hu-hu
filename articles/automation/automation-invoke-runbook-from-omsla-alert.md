@@ -1,6 +1,6 @@
 ---
 title: Azure Automation-runbook hívása Log Analytics-riasztásból
-description: Ez a cikk az Operations Management Suite szolgáltatásban az Automation-runbookok Log Analytics-riasztásokból való meghívásának áttekintését tartalmazza.
+description: A cikkben megtudhatja, hogyan lehet meghívni egy Automation-runbook egy Azure Log Analytics-riasztás alapján.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 3f95d6b9385b252bce05f19b38ae38f11e88a88c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2a0e497535f783cbffc21004331ccd2a50ab8eef
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="call-an-azure-automation-runbook-from-a-log-analytics-alert"></a>Azure Automation-runbook hívása Log Analytics-riasztásból
 
@@ -23,11 +23,11 @@ Egy riasztás például hosszabb ideig megnövekedett processzorhasználatot jel
 A riasztás konfigurálásakor a runbookok meghívásának következő két alternatívája közül választhat:
 
 * Egy webhook használata.
-   * Ha az Operations Management Suite munkaterület nincs Automation-fiókhoz társítva, csak ez a lehetőség áll rendelkezésre.
-   * Azonban akkor is elérhető, ha már csatlakoztatta az Operations Management Suite munkaterületet egy Automation-fiókhoz.  
+   * Ez az egyetlen elérhető, ha a Naplóelemzési munkaterület nem kapcsolódik az Automation-fiók.
+   * Ha már rendelkezik a Naplóelemzési munkaterület kapcsolódó Automation-fiók, a beállítás akkor továbbra is elérhető.  
 
 * A runbook közvetlen kiválasztása.
-   * Ez a lehetőség csak akkor áll rendelkezésre, ha az Operations Management Suite munkaterület csatlakoztatva van egy Automation-fiókhoz.
+   * Ez a beállítás csak akkor, ha a munkaterületet csatolva van egy Automation-fiók érhető el.
 
 ## <a name="calling-a-runbook-by-using-a-webhook"></a>Runbook meghívása webhook használatával
 
@@ -35,7 +35,7 @@ Egy webhook használatával egyetlen HTTP-kérés kiadásával indíthat adott r
 
 ## <a name="calling-a-runbook-directly"></a>Runbookok közvetlen meghívása
 
-Telepítheti és konfigurálhatja az Automation and Control ajánlatot az Operations Management Suite munkaterületen. A riasztás runbook-műveletek beállításának konfigurálásakor a **Runbook kiválasztása** legördülő menüben láthatja az összes runbookot, és kiválaszthatja közülük azt, amelyiket a riasztásra válaszként futtatni kíván. A kiválasztott runbook futtatható Azure-munkaterületen vagy egy hibrid runbook-feldolgozón. 
+Telepítse, és az automatizálás és a Naplóelemzési munkaterület ajánlat vezérlő konfigurálása. A riasztás runbook-műveletek beállításának konfigurálásakor a **Runbook kiválasztása** legördülő menüben láthatja az összes runbookot, és kiválaszthatja közülük azt, amelyiket a riasztásra válaszként futtatni kíván. A kiválasztott runbook futtatható Azure-munkaterületen vagy egy hibrid runbook-feldolgozón. 
 
 Ha a riasztást a runbook beállítás használatával hozta létre, a rendszer létre fog hozni egy webhookot a runbookhoz. A webhookot az Automation-fiókban a kiválasztott runbook webhook panelének megnyitásával tekintheti meg. 
 
@@ -90,7 +90,7 @@ $SearchResult.SvcDisplayName_CF
 
 Ha a szolgáltatás leáll, a Log Analyticsben lévő riasztási szabály egyezést észlel, aktiválja a runbookot, és továbbítja neki a riasztás környezetét. A runbook megkísérli ellenőrizni, hogy a szolgáltatás valóban leállt-e. Ha leállt, megkísérli újraindítani a szolgáltatást, ellenőrzi, hogy megfelelően elindult-e, és megjeleníti az eredményeket.     
 
-Ha az Automation-fiók nincs az Operations Management Suite munkaterülethez társítva, alternatív megoldásként a riasztási szabályt egy webhook művelettel is beállíthatja. A webhook aktiválja a runbookot. Továbbá konfigurálja a runbookot, hogy az konvertálja a JSON-formátumú karakterláncot, és a **SearchResult** tömbre szűrjön a fenti útmutatásoknak megfelelően.    
+Azt is megteheti a Naplóelemzési munkaterület csatolva az Automation-fiók nem rendelkezik, a riasztási szabály a webhook művelettel is konfigurálnia. A webhook aktiválja a runbookot. Továbbá konfigurálja a runbookot, hogy az konvertálja a JSON-formátumú karakterláncot, és a **SearchResult** tömbre szűrjön a fenti útmutatásoknak megfelelően.    
 
 >[!NOTE]
 > Ha a munkaterülete frissítve lett az [új Log Analytics lekérdezési nyelvre](../log-analytics/log-analytics-log-search-upgrade.md), akkor a webhook hasznos adatai módosultak. A formátum részletei: [Azure Log Analytics REST API](https://aka.ms/loganalyticsapiresponse).

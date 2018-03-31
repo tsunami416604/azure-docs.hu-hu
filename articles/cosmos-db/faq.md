@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Cosmos DB kapcsolatos gyakori kérdések |} Microsoft Docs"
-description: "Azure Cosmos DB, egy globálisan elosztott, több modellre adatbázis szolgáltatás gyakran feltett kérdésekre adott válaszok. További tudnivalók a kapacitás, a teljesítményszintet és a méretezés."
-keywords: "Az adatbázisra vonatkozó kérdések, gyakran ismételt kérdéseket, a documentdb, az azure, a Microsoft azure"
+title: Az Azure Cosmos DB kapcsolatos gyakori kérdések |} Microsoft Docs
+description: Azure Cosmos DB, egy globálisan elosztott, több modellre adatbázis szolgáltatás gyakran feltett kérdésekre adott válaszok. További tudnivalók a kapacitás, a teljesítményszintet és a méretezés.
+keywords: Az adatbázisra vonatkozó kérdések, gyakran ismételt kérdéseket, a documentdb, az azure, a Microsoft azure
 services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: monicar
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: b68d1831-35f9-443d-a0ac-dad0c89f245b
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: mimig
-ms.openlocfilehash: 466abbffd250685baf886b7fc7cc772ee9e327f2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 946d0f6456ce27931c91066d63c028388ecec84c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-cosmos-db-faq"></a>Az Azure Cosmos DB – gyakori kérdések
 ## <a name="azure-cosmos-db-fundamentals"></a>Az Azure Cosmos DB – alapok
@@ -76,7 +76,7 @@ Használhatja a [Azure Cosmos DB emulátor](local-emulator.md) fejlesztéséhez 
 ### <a name="how-can-i-get-additional-help-with-azure-cosmos-db"></a>Hogyan kaphatok további segítséget a Azure Cosmos DB?
 
 Műszaki kérdés felvetéséhez, továbbá hogy egyik ezek két kérdést, és fórumok választ:
-* [MSDN-fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureDocumentDB)
+* [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
 * [A verem túlcsordulás](http://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack overflow webhelyre esetén ajánlott programozási kérdéseket. Győződjön meg arról, hogy a megadott kérdés [-témakör](https://stackoverflow.com/help/on-topic) és [annyi részletesen lehetséges, így a kérdést, törölje és megválaszolható](https://stackoverflow.com/help/how-to-ask). 
 
 Kérjen új funkciókat, hozzon létre egy új kérést a [Uservoice](https://feedback.azure.com/forums/263030-azure-cosmos-db).
@@ -244,7 +244,7 @@ Ha ezek a különbségek bármelyike a projekthez probléma forduljon [ askcosmo
 Visszajelzése megoszthatja a következő módokon:
 
 * [Uservoice](https://feedback.azure.com/forums/599062-azure-cosmos-db-table-api)
-* [MSDN-fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureDocumentDB)
+* [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
 * [A verem túlcsordulás](http://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack overflow webhelyre esetén ajánlott programozási kérdéseket. Győződjön meg arról, hogy a megadott kérdés [-témakör](https://stackoverflow.com/help/on-topic) és [annyi részletesen lehetséges, így a kérdést, törölje és megválaszolható](https://stackoverflow.com/help/how-to-ask).
 
 ### <a name="what-is-the-connection-string-that-i-need-to-use-to-connect-to-the-table-api"></a>Mi az a kapcsolati karakterláncot, amely a tábla API-val való csatlakozáskor használandó kell?

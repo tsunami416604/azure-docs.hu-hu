@@ -1,24 +1,23 @@
 ---
-title: "Az Azure Stream Analytics JavaScript felhasználó által definiált függvények |} Microsoft Docs"
-description: "Hajtsa végre a felhasználó által definiált függvények JavaScript speciális lekérdezési mechanika"
-keywords: "JavaScript, felhasználó által definiált feladatokat az UDF-ben"
+title: Az Azure Stream Analytics JavaScript felhasználó által definiált függvények |} Microsoft Docs
+description: Hajtsa végre a felhasználó által definiált függvények JavaScript speciális lekérdezési mechanika
+keywords: JavaScript, felhasználó által definiált feladatokat az UDF-ben
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+author: jseb225
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: e8c1c784a598416b478d1430258201053185fdee
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: f2b14029ebea7f9cf1fa74a384ecbb72b08b7ad6
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-functions"></a>Az Azure Stream Analytics JavaScript felhasználó által definiált függvények
 Az Azure Stream Analytics a felhasználó által definiált függvények JavaScript nyelven írt támogatja. A gazdag készlete **karakterlánc**, **RegExp szolgáltatást**, **matematikai**, **tömb**, és **dátum** módszerek a JavaScript a Stream Analytics-feladatok úgy válnak egyre könnyebben létrehozása összetett adatátalakítást biztosít.
@@ -87,12 +86,12 @@ A típusokat, hogy a Stream Analytics lekérdezési nyelv és a JavaScript-támo
 Stream Analytics | JavaScript
 --- | ---
 bigint | Szám (JavaScript csak jelenthet egész számok legfeljebb pontosan 2 ^ 53)
-Dátum és idő | Dátum (JavaScript csak támogatja ezredmásodperc)
+DateTime | Dátum (JavaScript csak támogatja ezredmásodperc)
 Dupla | Szám
-típus: nvarchar(max) | Karakterlánc
-rekord | Objektum
+nvarchar(MAX) | Karakterlánc
+Rögzítés | Objektum
 Tömb | Tömb
-NULL ÉRTÉKŰ | NULL értékű
+NULL | NULL értékű
 
 
 Az alábbiakban a JavaScript-Stream Analytics-átalakításhoz:
@@ -101,11 +100,11 @@ Az alábbiakban a JavaScript-Stream Analytics-átalakításhoz:
 JavaScript | Stream Analytics
 --- | ---
 Szám | Bigint (Ha a szám kerek és a hosszú között. A MinValue és a hosszú. MaxValue; Ellenkező esetben dupla)
-Dátum | Dátum és idő
-Karakterlánc | típus: nvarchar(max)
-Objektum | rekord
+Dátum | DateTime
+Karakterlánc | nvarchar(MAX)
+Objektum | Rögzítés
 Tömb | Tömb
-NULL, nem definiált | NULL ÉRTÉKŰ
+NULL, nem definiált | NULL
 Bármely más típusból (például egy függvény vagy hiba) | Nem támogatott (futásidejű hibát eredményez)
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
@@ -138,10 +137,10 @@ FROM
     input PARTITION BY PARTITIONID
 ```
 
-## <a name="get-help"></a>Segítségkérés
+## <a name="get-help"></a>Segítség kérése
 Segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)

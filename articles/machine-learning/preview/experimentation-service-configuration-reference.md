@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Machine Learning kísérletezhet szolgáltatás konfigurációs fájlok"
-description: "Ez a dokumentum az Azure ML kísérletezhet szolgáltatás konfigurációs beállításait részletezi."
+title: Az Azure Machine Learning kísérletezhet szolgáltatás konfigurációs fájlok
+description: Ez a dokumentum az Azure ML kísérletezhet szolgáltatás konfigurációs beállításait részletezi.
 services: machine-learning
 author: gokhanuluderya-msft
 ms.author: gokhanu
@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 75b55b45c355f585fd73bdc1d97bc6adbbc4e9a0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6cec039034f0650d017eb14de584939bb3191223
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-machine-learning-experimentation-service-configuration-files"></a>Az Azure Machine Learning kísérletezhet szolgáltatás konfigurációs fájlok
 
@@ -149,6 +149,8 @@ _\<számítási cél neve > .compute_ fájl határozza meg a számítási cél a
 **nativeSharedDirectory**: Ez a tulajdonság meghatározza a alapkönyvtárának (például: _~/.azureml/share/_) számítási egyazon célobjektum futó fájlok is menteni ahhoz, hogy oszthatók meg. Ha ezt a beállítást használják egy Docker-tároló használatakor _sharedVolumes_ , meg kell igaz értékre. Ellenkező esetben végrehajtása meghiúsul.
 
 **userManagedEnvironment**: Ez a tulajdonság meghatározza, hogy a számítási cél közvetlenül kezeli a felhasználó vagy kísérleti szolgáltatáson keresztül felügyelt.  
+
+**pythonLocation**: Ez a tulajdonság meghatározza a python-futtatókörnyezet használatát a számítási célszámítógépen felhasználó program végrehajtásához helyét. 
 
 ### <a name="run-configuration-namerunconfig"></a>\<Futtassa a konfiguráció neve > .runconfig
 _\<Futtassa a konfiguráció neve > .runconfig_ határozza meg, az Azure ML végrehajtási viselkedésének kipróbálásához. Konfigurálhatja a végrehajtási működését, például a nyomon követési futtatási előzményei, vagy mi számítási cél-és sok más használhatja. A végrehajtási környezet legördülő lista az Azure ML munkaterület asztali alkalmazás feltöltésére használatos olyan futtatási konfigurációs fájl nevét.

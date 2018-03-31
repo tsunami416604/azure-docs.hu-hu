@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Mobile Engagement Android SDK-integráció"
-description: "Legújabb frissítések és az Azure Mobile Engagement Android SDK eljárásai"
+title: Az Azure Mobile Engagement Android SDK-integráció
+description: Legújabb frissítések és az Azure Mobile Engagement Android SDK eljárásai
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 11618586-c709-49ca-bcd8-745323ff1af6
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 1f047f93fa8bc852b28c86e91d0c007a94fb4299
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 77047cb1dc39fa3c05f58550ceea74e78396157f
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="upgrade-procedures"></a>Frissítési eljárások
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 Ha Ön már rendelkezik integrált egy régebbi verzióját az SDK az alkalmazásba, hogy az SDK-val történő frissítése során, vegye figyelembe a következő szempontokat.
 
 Előfordulhat, hogy kell eljárnia számos eljárást, ha nem fogadta az SDK a különböző verzióiban. Például ha áttelepít 1.4.0 1.6.0 először hajtsa végre a "from a 1.5.0 1.4.0" eljárást kell majd a "from a 1.6.0 1.5.0" eljárást.
@@ -109,7 +113,7 @@ Cserélje le ezt:
       </intent-filter>
     </receiver>
 
-–
+Gyártó:
 
     <receiver
       android:name="com.microsoft.azure.engagement.reach.EngagementReachReceiver"
@@ -155,12 +159,12 @@ A következő ismerteti, hogyan telepíthetők át az SDK-integráció az alkalm
 ### <a name="jar-file"></a>JAR-fájlra
 Cserélje le `capptain.jar` által `mobile-engagement-VERSION.jar` a a `libs` mappát.
 
-### <a name="resource-files"></a>Erőforrás-fájlok
+### <a name="resource-files"></a>Erőforrásfájlok
 A Microsoft által biztosított minden erőforrásfájl (előtagjaként `capptain_`) helyébe a újakat kell (előtagként `engagement_`).
 
 Ha testreszabta azokat a fájlokat, rendelkezik-e alkalmazza újra az új fájlok, a testreszabást **az erőforrás-fájlokban szereplő összes azonosító is át lett nevezve**.
 
-### <a name="application-id"></a>Alkalmazásazonosító
+### <a name="application-id"></a>Alkalmazás azonosítója
 Most Engagement használ egy kapcsolati karakterlánc konfigurálásához, az SDK-azonosítókat, például az alkalmazás azonosítója.
 
 Szükség van `EngagementAgent.init` módszer a indítója tevékenységi ehhez hasonló:

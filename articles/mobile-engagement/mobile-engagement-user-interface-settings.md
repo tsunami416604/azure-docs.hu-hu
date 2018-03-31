@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Mobile Engagement felhasználói felület – beállítások"
-description: "A globális beállítások használata az Azure Mobile Engagement az alkalmazás kezelése"
+title: Az Azure Mobile Engagement felhasználói felület – beállítások
+description: A globális beállítások használata az Azure Mobile Engagement az alkalmazás kezelése
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 858f4cb4-14de-4bb5-826f-28cadbfc928b
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: af5c81df2b9f288161b38625d3ac2adde8fb195d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 31df9f151febcb7e5f0f2cd4a83053b3aac416a3
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-manage-the-global-settings-of-your-application"></a>Az alkalmazás a globális beállítások kezelése
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 A **beállítások** menüpontok egy alkalmazás vary, az alkalmazás és az engedélyek, az alkalmazás rendelkezik platformtól függően érhető el. A beállítások a következőket tartalmazzák: részletek, projektek, natív leküldés, leküldési sebességét, Tag (app-info) és a kereskedelmi nyomás. A beállítások szakasz Tag (app-info) menüpont kezelheti az alkalmazás (az SDK használatával) vagy a kiszolgáló (az eszköz API-val). 
 
 > [!NOTE]
@@ -44,7 +48,7 @@ További információkért lásd: [felhasználói felületének dokumentációja
 
   ![settings3][48]
 
-## <a name="native-push"></a>Natív leküldéssel
+## <a name="native-push"></a>Natív leküldés
 Lehetővé teszi a natív leküldéses regisztrálni egy új tanúsítványt vagy a delete és a meglévő tanúsítványt. Natív leküldéses lehetővé teszi, hogy az Azure Mobile Engagement leküldéses az alkalmazáshoz, tetszőleges időpontban, még ha az nem futna. 
 
 Miután megadta a hitelesítő adatokat vagy tanúsítványokat legalább egy natív leküldés szolgáltatáshoz, kiválaszthatja a "Minden alkalommal" a LEKÜLDÉSES API elérését a kampányok, és használja a "bejelentő" paraméter létrehozásakor.
@@ -90,7 +94,7 @@ Az alkalmazás aktuális leküldési sebességét jeleníti meg, és megadhatja 
 ## <a name="commercial-pressure"></a>A kereskedelmi nyomás
 ![settings12][57]
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Alapfogalmak][Link 6]
 * [Hibaelhárítási útmutató szolgáltatás][Link 24]
 

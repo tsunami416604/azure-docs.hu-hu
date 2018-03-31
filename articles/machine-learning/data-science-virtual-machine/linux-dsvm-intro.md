@@ -1,8 +1,8 @@
 ---
-title: "Rendszerű Linux CentOS adatok tudományos virtuális gép az Azure-on |} Microsoft Docs"
-description: "Konfigurálja és Linux adatok tudományos virtuális gép létrehozása Azure-elemzés és gépi tanulás."
+title: Rendszerű Linux CentOS adatok tudományos virtuális gép az Azure-on |} Microsoft Docs
+description: Konfigurálja és Linux adatok tudományos virtuális gép létrehozása Azure-elemzés és gépi tanulás.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: bradsev
-ms.openlocfilehash: 550d49e3d6007c6b494deec95b785ea9bc214f3a
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 7f683fff142a3654249560ed5299ed3cd7cb9cce
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>A Linux CentOS adatok tudományos virtuális gépet az Azure telepítéséhez
 
@@ -153,14 +153,16 @@ A Python interaktív munkamenet meghívni, csak gépelje **python** a rendszerh�
 
 További Python-könyvtárak telepítéséhez futtatnia kell ```conda``` vagy ````pip```` a sudo parancsot, és adja meg a teljes elérési útja a Python package Manager (conda vagy pip) a megfelelő Python-környezetben való telepítéséhez. Példa:
 
-    sudo /anaconda/bin/pip install -n <package> #for Python 2.7 environment
-    sudo /anaconda/envs/py35/bin/pip install -n <package> # for Python 3.5 environment
+    sudo /anaconda/bin/pip install <package> #pip for Python 2.7
+    sudo /anaconda/envs/py35/bin/pip install <package> #pip for Python 3.5
+    sudo /anaconda/bin/conda install [-n py27] <package> #conda for Python 2.7, default behavior
+    sudo /anaconda/bin/conda install -n py35 <package> #conda for Python 3.5
 
 
 ### <a name="jupyter-notebook"></a>Jupyter notebook
 A Anaconda terjesztési Jupyter notebook, egy környezet kóddal és elemzési is tartalmaz. A Jupyter notebook JupyterHub keresztül érhető el. A helyi Linux-felhasználónév és jelszó használatával bejelentkezik.
 
-A Jupyter notebook kiszolgáló előre beállított Python 2, a Python 3 és az R kernelek. Nincs "Jupyter Notebook" Indítsa el a böngészőt a notebook kiszolgálóhoz való hozzáféréshez nevű asztali ikon. Ha a virtuális gépről SSH vagy X2Go ügyfél, meglátogathatja [https://localhost:8000 /](https://localhost:8000/) a Jupyter notebook kiszolgálóhoz való hozzáféréshez.
+A Jupyter notebook kiszolgáló előre beállított Python 2, a Python 3 és az R kernelek. Nincs "Jupyter Notebook" Indítsa el a böngészőt a notebook kiszolgálóhoz való hozzáféréshez nevű asztali ikon. Ha a virtuális gépről SSH vagy X2Go ügyfél, meglátogathatja [ https://localhost:8000/ ](https://localhost:8000/) a Jupyter notebook kiszolgálóhoz való hozzáféréshez.
 
 > [!NOTE]
 > Folytassa, ha kapott tanúsítványt figyelmeztetéseket.
@@ -361,7 +363,7 @@ Most már egy grafikus felület megnyílik lapok vannak beállítva. Az első l�
 7. Kattintson a **Evaluate** fülre.
 8. Kattintson a **kockázati** választógomb, és kattintson a **Execute** két kockázat (eloszlásfv) teljesítmény előkészítésére megjelenítéséhez.
 9. Kattintson a **napló** lapon, a fenti műveletekre vonatkozó generate R kód megjelenítése.
-   (Az aktuális kiadás Rattle egy hiba miatt be kell helyezni egy  *#*  karakter elé *... Ez a napló exportálása*  a szöveges napló.)
+   (Az aktuális kiadás Rattle egy hiba miatt be kell helyezni egy *#* karakter elé *... Ez a napló exportálása*  a szöveges napló.)
 10. Kattintson a **exportálása** gombra kattintva mentse az R-parancsfájl nevű *weather_script. R* az otthoni mappába.
 
 Kiléphet Rattle és R. Most módosítja a generált R-parancsfájl, vagy használja, mert az ismétlődő minden, ami a Rattle felhasználói felületen belül lett elvégezve bármikor futtatásához. Különösen az R kezdők, ez pedig egyszerűen gyorsan elemzést és a gépi tanulás egyszerű grafikus felületen, automatikusan az R módosítása és/vagy ismerje meg, a kód létrehozása közben.

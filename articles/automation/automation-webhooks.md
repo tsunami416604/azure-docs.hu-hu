@@ -1,6 +1,6 @@
 ---
-title: "Egy Azure Automation-runbook kezdődő, és olyan webhook"
-description: "A webhook, amely lehetővé teszi az ügyfél elindít egy forgatókönyvet az Azure Automation egy HTTP-hívás.  Ez a cikk ismerteti a webhook létrehozása, és hogyan hívhatja meg egy runbook indítása."
+title: Egy Azure Automation-runbook kezdődő, és olyan webhook
+description: A webhook, amely lehetővé teszi az ügyfél elindít egy forgatókönyvet az Azure Automation egy HTTP-hívás.  Ez a cikk ismerteti a webhook létrehozása, és hogyan hívhatja meg egy runbook indítása.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,14 +8,14 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: b3e8e489ef4b79a89facb2395543743c427b0310
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 4ea7366a02dd95fac5c1a7307e6156a0481fa16d
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Egy Azure Automation-runbook kezdődő, és olyan webhook
-A *webhook* lehetővé teszi az adott forgatókönyv indítása az Azure Automationben egyetlen HTTP-kérelem keresztül. Ez lehetővé teszi, hogy a külső szolgáltatások, például a Visual Studio Team Services, GitHub, a Microsoft Operations Management Suite Naplóelemzési vagy egy Azure Automation API használatával teljes megoldás megvalósításának nélküli runbookok elindítását egyéni alkalmazások.  
+A *webhook* lehetővé teszi az adott forgatókönyv indítása az Azure Automationben egyetlen HTTP-kérelem keresztül. Ez lehetővé teszi, hogy a külső szolgáltatások, például a Visual Studio Team Services, GitHub, Azure Naplóelemzés vagy egy Azure Automation API használatával teljes megoldás megvalósításának nélküli runbookok elindítását egyéni alkalmazások.  
 ![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
 
 Összehasonlíthatja az egyéb módszerek runbook indítása webhook [runbook elindítása az Azure Automationben](automation-starting-a-runbook.md)
@@ -25,10 +25,10 @@ A következő táblázat ismerteti a tulajdonságokat, amelyeket konfigurálnia 
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Name (Név) |Megadhat egy nevet, egy webhook óta ez nincs felfedve, az ügyfélnek.  Azt csak az Ön azonosítására szolgál a runbook az Azure Automationben. <br>  Ajánlott eljárásként adjon a webhook kapcsolódik az ügyfél által használt nevet. |
+| Név |Megadhat egy nevet, egy webhook óta ez nincs felfedve, az ügyfélnek.  Azt csak az Ön azonosítására szolgál a runbook az Azure Automationben. <br>  Ajánlott eljárásként adjon a webhook kapcsolódik az ügyfél által használt nevet. |
 | URL-cím |A webhook URL-címe az ügyfelek egy HTTP POST a webhook csatolva a runbook elindításához hívja a egyedi cím.  A webhook létrehozásakor automatikusan történik.  Egy egyéni URL-címe nem adható meg. <br> <br>  Az URL-cím egy biztonsági jogkivonatot, amely lehetővé teszi a forgatókönyv további hitelesítés nélküli külső rendszer által meghívandó tartalmaz. Ezért azt kell kezelni, például a jelszó.  Biztonsági okokból csak megtekintheti az URL-cím az Azure portálon, a rendszer a webhook létrehozása során. Vegye figyelembe a jövőbeli használatra egy biztonságos helyre az URL-címet. |
 | Lejárati dátum |Például egy tanúsítványt egyes webhook van ekkor már nem használható lejárati dátuma.  A lejárati dátumot a webhook létrehozása után módosítható. |
-| Engedélyezve |A webhook alapértelmezés szerint engedélyezve van, ha létrehozták.  Ha beállította azt le van tiltva, akkor nincs ügyfél lesz használni tudja.  Beállíthatja a **engedélyezve** tulajdonság a webhook, vagy bármikor egyszer létrehozásakor jön létre. |
+| Be |A webhook alapértelmezés szerint engedélyezve van, ha létrehozták.  Ha beállította azt le van tiltva, akkor nincs ügyfél lesz használni tudja.  Beállíthatja a **engedélyezve** tulajdonság a webhook, vagy bármikor egyszer létrehozásakor jön létre. |
 
 ### <a name="parameters"></a>Paraméterek
 A webhook runbook paramétereket, illetve ha a runbook indítja el, hogy a webhook értékeket határozhat meg. A webhook tartalmaznia kell a runbook minden kötelező paraméter értékét, és nem kötelező paraméter értékét is járhatott. A paraméter értékét, úgy konfigurálva, hogy a webhook webhook létrehozása után is módosíthatja. Kapcsolódó egyetlen runbook több webhook egyes eltérő értékek használhatók.
@@ -96,7 +96,7 @@ A webhook létrehozása után használatához az ügyfélalkalmazás egy HTTP PO
 
 Az ügyfél kap a következő visszatérési kódok a POST-kérelmet.  
 
-| Kód | Szöveg | Leírás |
+| Kód | SMS | Leírás |
 |:--- |:--- |:--- |
 | 202 |Elfogadva |Elfogadta a kérést, és a runbook sikeresen várólistára került. |
 | 400 |Hibás kérelem |A kérelem nem fogadták a következő okok valamelyike miatt. <ul> <li>A webhook érvényessége lejárt.</li> <li>A webhook le van tiltva.</li> <li>A lexikális elem szerepel az URL-cím érvénytelen.</li>  </ul> |

@@ -1,11 +1,11 @@
 ---
 title: Azokkal a Mobilmarketing REST API-k
-description: "Ismerteti, hogyan hitelesítheti az Azure Mobile Engagement REST API-k"
+description: Ismerteti, hogyan hitelesítheti az Azure Mobile Engagement REST API-k
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: da82cb36-957a-4e19-a805-b44733cf6597
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,16 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 10/05/2016
 ms.author: wesmc;ricksal
-ms.openlocfilehash: 574e699a1cfca2caef0cf20872570bbb8650117b
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 5979ded9afaa31054f835b5f16fe525809f5730d
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="authenticate-with-mobile-engagement-rest-apis"></a>Azokkal a Mobilmarketing REST API-k
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
 
 ## <a name="overview"></a>Áttekintés
 
@@ -102,11 +105,11 @@ Szükség esetén is követheti utasításait a [manuális telepítési módra](
 
 1. Hívja az API-t a következő paraméterekkel. Győződjön meg arról, hogy **BÉRLŐI\_azonosító**, **ügyfél\_azonosító**, és **ügyfél\_titkos**:
    
-   * **Kérelem URL-CÍMÉT** ,`https://login.microsoftonline.com/{TENANT_ID}/oauth2/token`
+   * **Kérelem URL-CÍMÉT** , `https://login.microsoftonline.com/{TENANT_ID}/oauth2/token`
 
-   * **HTTP Content-Type fejléc** ,`application/x-www-form-urlencoded`
+   * **HTTP Content-Type fejléc** , `application/x-www-form-urlencoded`
    
-   * **HTTP-kérelem törzse** ,`grant_type=client\_credentials&client_id={CLIENT_ID}&client_secret={CLIENT_SECRET}&resource=https%3A%2F%2Fmanagement.core.windows.net%2F`
+   * **HTTP-kérelem törzse** , `grant_type=client\_credentials&client_id={CLIENT_ID}&client_secret={CLIENT_SECRET}&resource=https%3A%2F%2Fmanagement.core.windows.net%2F`
      
     Az alábbiakban látható egy példa egy kérelem:
     ```

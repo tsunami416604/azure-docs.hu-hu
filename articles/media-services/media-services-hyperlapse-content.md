@@ -1,36 +1,34 @@
 ---
-title: "Médiafájlok feldolgozása az Azure Media hyperlapse használatával |} Microsoft Docs"
-description: "Az Azure Media Hyperlapse zökkenőmentes idő letelt videók első, aki vagy művelet – kamera tartalmat hoz létre. Ez a témakör bemutatja, hogyan Media Indexer használatára."
+title: Médiafájlok feldolgozása az Azure Media hyperlapse használatával |} Microsoft Docs
+description: Az Azure Media Hyperlapse zökkenőmentes idő letelt videók első, aki vagy művelet – kamera tartalmat hoz létre. Ez a témakör bemutatja, hogyan Media Indexer használatára.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: asolanki
 manager: johndeu
-editor: 
+editor: ''
 ms.assetid: 37d54db6-9cf3-4ae9-b3c6-0d29c744e965
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/02/2017
+ms.date: 03/28/2018
 ms.author: adsolank
-ms.openlocfilehash: b3163454213db0afb94e668e4c56924d7833d769
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 86a9d44a93d7717d2ed949db2b1d1e94963781d0
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="hyperlapse-media-files-with-azure-media-hyperlapse"></a>Médiafájlok feldolgozása az Azure Media hyperlapse használatával
 Az Azure Media Hyperlapse egy Media processzor (MP), amely zökkenőmentes idő letelt videók hoz első, aki vagy művelet – kamera tartalomról.  A felhő alapú testvérének [Microsoft Research asztali Hyperlapse Pro és Hyperlapse Mobile phone-alapú](http://aka.ms/hyperlapse), az Azure Media Services Microsoft Hyperlapse használja az Azure Media Services Media feldolgozása a jelentős mértékű vízszintes skálázása és parallelize platform tömeges Hyperlapse feldolgozása.
 
 > [!IMPORTANT]
-> Microsoft Hyperlapse legmegfelelőbb első, aki a tartalomhoz a mozgóátlag fényképezőgép célja.  Bár továbbra is-kamerák felvételei is működik, a teljesítmény és az Azure Media Hyperlapse Media processzor-minőségi nem garantálható tartalmat más típusú.  További információk a Microsoft Hyperlapse az Azure Media Services, és tekintse meg néhány Mintavideók, tekintse meg a [bevezető blogbejegyzés](http://aka.ms/azurehyperlapseblog) a nyilvános előzetes verziójához.
+> Microsoft Hyperlapse legmegfelelőbb első, aki a tartalomhoz a mozgóátlag fényképezőgép célja. Bár továbbra is-kamerák felvételei is működik, a teljesítmény és az Azure Media Hyperlapse Media processzor-minőségi nem garantálható tartalmat más típusú.
 > 
 > 
 
 Egy Azure Media Hyperlapse feladat végrehajtásához szükséges, adjon meg egy MP4, MOV vagy WMV objektumfájlt együtt, amely meghatározza, melyik keretek videó idő letelt konfigurációs fájlt, és milyen sebességgel (pl. első 10 000 keretet 2 x).  Az eredménye egy stabil és az idő letelt verzióinak a bemeneti videó.
-
-A legújabb Azure Media Hyperlapse frissítéseket, lásd: [Media Services blogok](https://azure.microsoft.com/blog/topics/media-services/).
 
 ## <a name="hyperlapse-an-asset"></a>Hyperlapse egy eszköz
 Először szüksége lesz Azure Media Services töltse fel a kívánt bemeneti fájl.  Adminisztrációjával kapcsolatos feltöltését és kielégíteni tartalomkezelési fogalmak kapcsolatos további tudnivalókért olvassa el a [tartalomkezelési cikk](media-services-portal-vod-get-started.md).
@@ -42,7 +40,7 @@ Ha a tartalom a Media Services-fiókját, szüksége lesz a konfigurációs kés
 | --- | --- |
 | StartFrame |A keret, amelyre a Microsoft Hyperlapse feldolgozási el kell kezdődnie. |
 | NumFrames |Keretek feldolgozni száma |
-| Gyorsaság |A tényező, amellyel a bemeneti videó felgyorsítása érdekében. |
+| Sebesség |A tényező, amellyel a bemeneti videó felgyorsítása érdekében. |
 
 A következő egy példa egy szabványos konfigurációs fájl XML- és a JSON:
 

@@ -1,12 +1,12 @@
 ---
-title: "Azure gyorsítótárazásának szabályok gyorsítótárazása a Content Delivery Network szabályozása |} Microsoft Docs"
-description: "Gyorsítótárazás szabályok CDN vagy módosíthatja a gyorsítótár lejárati alapértelmezés, globális és a feltételek, például az egy URL-elérési út és fájlnév-kiterjesztések használhatja."
+title: Szabályozhatja az Azure CDN szolgáltatás használata a szabályok gyorsítótárazással gyorsítótárazásának |} Microsoft Docs
+description: Gyorsítótárazás szabályok CDN vagy módosíthatja a gyorsítótár lejárati alapértelmezés, globális és a feltételek, például az egy URL-elérési út és fájlnév-kiterjesztések használhatja.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: dksimpson
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/23/2017
 ms.author: v-deasim
-ms.openlocfilehash: 2a94ba5cb9f026f66bc1f3b379f00b291a2299c9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 735978a0986b2b16b4f96faca78c06d798915002
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="control-azure-content-delivery-network-caching-behavior-with-caching-rules"></a>Vezérlő Azure Content Delivery Network a szabályok gyorsítótárazással gyorsítótárazásának működése
+# <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>Vezérlő Azure CDN szolgáltatás használata a szabályok gyorsítótárazással gyorsítótárazásának működése
 
 > [!NOTE] 
 > Gyorsítótárazás szabályok csak esetén érhetők el **Verizon Standard Azure CDN** és **Akamai Standard Azure CDN**. A **Verizon Premium Azure CDN**, használhatja a [Azure CDN szabálymotor](cdn-rules-engine.md) a a **kezelése** hasonló funkciókat a portálon.
  
-Az Azure Content Delivery Network kétféleképpen szabályozhatja, hogy a gyorsítótárba: 
+Az Azure Content Delivery Network (CDN) kétféleképpen szabályozhatja, hogy a gyorsítótárba: 
 
 - Szabályok gyorsítótárazása: Ez a cikk ismerteti, hogyan használható tartalomkézbesítési hálózat (CDN) gyorsítótárazás szabályok beállítása vagy módosítása a gyorsítótár lejárati alapértelmezés globálisan és egyéni feltételeknek, például az egy URL-cím elérési út és fájlnév kiterjesztése. Az Azure CDN kétféle típusú szabályok gyorsítótárazás biztosítja:
    - Globális szabályok gyorsítótárazása: a profilban, amely hatással van a végpont összes kérelmet, beállíthatja a végpontok egy globális gyorsítótárszabályt. A globális gyorsítótárszabály felülbírálja a gyorsítótár-irányelv HTTP-fejlécek, ha beállítása.
@@ -40,11 +40,11 @@ További információ az alapértelmezett viselkedést és a gyorsítótárazás
 Gyorsítótár-CDN hogyan szabályok:
 
 1. Nyissa meg az Azure-portálon, válassza ki a CDN-profilt, majd válasszon ki egy végpontot.
-2. A beállítások a bal oldali ablaktáblában kattintson **szabályok gyorsítótárazás**.
+2. A beállítások a bal oldali ablaktáblában jelölje ki a **szabályok gyorsítótárazás**.
 
    ![CDN-gyorsítótárazás szabályok gomb](./media/cdn-caching-rules/cdn-caching-rules-btn.png)
 
-1. Hozzon létre egy globális gyorsítótárszabályt az alábbiak szerint:
+3. Hozzon létre egy globális gyorsítótárszabályt az alábbiak szerint:
    1. A **szabályok gyorsítótárazás globális**, beállíthatja **lekérdezési sztringek gyorsítótárazásának** való **lekérdezési karakterláncok figyelmen kívül**.
    2. Állítsa be **gyorsítótárazásának** való **állítja be, ha a hiányzó**.
        
@@ -62,10 +62,11 @@ Gyorsítótár-CDN hogyan szabályok:
 
     ![Egyéni gyorsítótárszabályok](./media/cdn-caching-rules/cdn-custom-caching-rules.png)
 
+    
 > [!NOTE] 
 > A szabály módosítása előtt gyorsítótárba helyezett fájlok karbantartása az eredeti gyorsítótár időtartama beállítás. A gyorsítótár időtartamok alaphelyzetbe állításához kell [a fájl törlése](cdn-purge-endpoint.md). A **Azure CDN Verizon** végpontok, az akár 90 percig is tarthat a gyorsítótárazáshoz szabályok érvénybe léptetéséhez.
 
-## <a name="reference"></a>Referencia
+## <a name="reference"></a>Leírások
 
 ### <a name="caching-behavior-settings"></a>Viselkedés beállítások gyorsítótárazása
 A globális és egyéni gyorsítótárazási szabályok, adja meg a következő **gyorsítótárazásának** beállítások:
@@ -102,13 +103,13 @@ A globális és egyéni gyorsítótárazási szabályok feldolgozása a követke
 
 - Egyéni szabály #1 gyorsítótárazása:
    - Feltételének: **elérési útja**
-   - Más értékkel egyezik:`/home/*`
+   - Más értékkel egyezik: `/home/*`
    - Gyorsítótárazásának: **felülbírálása**
    - Gyorsítótár lejárati időtartam: 2 nap
 
 - Egyéni gyorsítótárazás #2. szabály:
    - Feltételének: **bővítmény**
-   - Más értékkel egyezik:`.html`
+   - Más értékkel egyezik: `.html`
    - Gyorsítótárazásának: **állítja be, ha hiányzik**
    - Gyorsítótár lejárati időtartam: 3 nap
 

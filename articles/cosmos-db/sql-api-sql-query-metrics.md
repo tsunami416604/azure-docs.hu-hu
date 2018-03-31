@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: arramac
-ms.openlocfilehash: a92d2ed1686765a54812ff82066bc30c1d48848d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: c0ba9934afef6cb4d546e315c271cc19b6d3fa02
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Az Azure Cosmos DB lekérdezési teljesítmény hangolása
 
@@ -138,7 +138,7 @@ A kulcs válaszfejlécek a lekérdezés által visszaadott közé tartoznak a k�
 | `x-ms-documentdb-query-metrics` | A lekérdezés végrehajtása statisztikája. Ez a lekérdezés-végrehajtás különböző szakaszainak töltött időt a statisztikai adatait tartalmazó tagolt karakterláncot. Visszaadott if `x-ms-documentdb-populatequerymetrics` értéke `True`. | 
 | `x-ms-request-charge` | Hány [egységek kérelem](request-units.md) a lekérdezés által felhasznált. | 
 
-A REST API kérelemfejléc és a beállítások a részletekért lásd: [erőforrásokat a REST API használatával](https://docs.microsoft.com/rest/api/documentdb/querying-documentdb-resources-using-the-rest-api).
+A REST API kérelemfejléc és a beállítások a részletekért lásd: [erőforrásokat a REST API használatával](https://docs.microsoft.com/rest/api/cosmos-db/querying-cosmosdb-resources-using-the-rest-api).
 
 ## <a name="best-practices-for-query-performance"></a>Gyakorlati tanácsok a lekérdezési teljesítmény
 Leggyakoribb Azure Cosmos DB lekérdezések teljesítményét befolyásoló tényezők a következők: A Microsoft feltárva minden, az alábbi témakörökben találja ebben a cikkben.
@@ -242,7 +242,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 ```
 
-| Metrika | Unit (Egység) | Leírás | 
+| Metrika | Egység | Leírás | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | ezredmásodperc | Lekérdezés-végrehajtási idő | 
 | `queryCompileTimeInMs` | ezredmásodperc | Lekérdezés fordítás során  | 

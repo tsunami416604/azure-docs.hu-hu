@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 983c2c8aeb4c9d37213061dd70d6d64bae3de9d7
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 05720e6c290b0b54e5b6d5170a6eb22306e9cb04
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health – gyakori kérdések
 Ez a cikk kapcsolatos gyakori kérdések (GYIK) Azure Active Directory (Azure AD) Connect Health rájuk adott válaszokat tartalmazza. Ezeket a gyakori kérdések a szolgáltatás, amely tartalmazza a számlázási modell, képességek, korlátozások és támogatás használatával kapcsolatos kérdésekre foglalkozik.
@@ -34,9 +34,9 @@ A következő táblázat felsorolja azokat a szerepköröket, és a támogatott 
 
 |Szerepkör| Operációs rendszer / verziója|
 |--|--|
-|Active Directory összevonási szolgáltatások (AD FS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
+|Active Directory összevonási szolgáltatások (AD FS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
 |Azure AD Connect | 1.0.9125 verzió vagy újabb|
-|Active Directory Domain Services (AD DS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
+|Active Directory Domain Services (AD DS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
 
 Vegye figyelembe, hogy a szolgáltatás által nyújtott szolgáltatásokat eltérőek lehetnek a szerepkör és az operációs rendszer alapján. Ez azt jelenti a szolgáltatások nem érhetők el az összes operációs rendszer verzió. Tekintse meg a részleteket a szolgáltatások leírása.
 
@@ -54,7 +54,7 @@ Példa:
 | Regisztrált ügynökök | Szükséges licencek | Példa figyelési konfiguráció |
 | ------ | --------------- | --- |
 | 1 | 1 | 1 az azure AD Connect-kiszolgáló |
-| 2 | 26| Kiszolgáló. az azure AD Connect 1. és 1 tartományvezérlő |
+| 2. | 26| Kiszolgáló. az azure AD Connect 1. és 1 tartományvezérlő |
 | 3 | 51 | 1 active Directory összevonási szolgáltatások (AD FS) kiszolgálót, 1 AD FS proxy és 1 tartományvezérlő |
 | 4 | 76 | 1 AD FS-kiszolgáló, az 1 AD FS proxy és a 2 tartományvezérlők |
 | 5 | 101 | 1 az azure AD Connect-kiszolgáló, 1 AD FS-kiszolgáló, 1 AD FS proxy és 2 tartományvezérlők |
@@ -181,7 +181,7 @@ CheckForMS17-010
 
 **K: Miért van az AD FS naplózás nem generált?**
 
-Használjon PowerShell-parancsmag <i>Get-AdfsProperties - AuditLevel</i> ellenőrizze a naplókat a rendszer nem letiltott állapot. Tudjon meg többet az [az AD FS-naplók](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)
+Használjon PowerShell-parancsmag <i>Get-AdfsProperties - AuditLevel</i> ellenőrizze a naplókat a rendszer nem letiltott állapot. Tudjon meg többet az [az AD FS-naplók](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016). Figyelje meg a rendszer speciális leküldeni az ADFS-kiszolgáló naplózási beállításait, ha az auditpol.exe módosításokat kell-e a felülírt (esemény Ha alkalmazások által létrehozott nincs konfigurálva). Ebben az esetben állítsa be a helyi biztonsági házirendet, a hibák alkalmazások által létrehozott és sikeres. 
 
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások

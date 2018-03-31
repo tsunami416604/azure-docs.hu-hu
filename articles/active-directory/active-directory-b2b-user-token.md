@@ -1,13 +1,13 @@
 ---
-title: "Az Azure AD B2B együttműködés felhasználói jogkivonatokhoz megértése |} Microsoft Docs"
-description: "Felhasználói jogkivonat-hivatkozást az Azure Active Directory B2B együttműködés"
+title: Az Azure AD B2B együttműködés felhasználói jogkivonatokhoz megértése |} Microsoft Docs
+description: Felhasználói jogkivonat-hivatkozást az Azure Active Directory B2B együttműködés
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: twooley
 manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: NA
 ms.topic: article
@@ -16,15 +16,15 @@ ms.workload: identity
 ms.date: 05/25/2017
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 6afa7d01282d6c35b042ad69fcdcb5714c92de10
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: c4f152aa4da9fcbe07179414aa8dc69f8633bb6b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="understand-user-tokens-in-azure-ad-b2b-collaboration"></a>Az Azure AD B2B együttműködés felhasználói jogkivonatokhoz ismertetése
 
-Ha szeretné tudni, hogy a jogkivonat néz B2B együttműködés felhasználó számára, az alábbiakban a tulajdonosi token adatai és az Azure Active Directory (Azure AD) Vendég és a Microsoft-fiók Vendég (a tenantid 04dcc6ab-388a-4559-b527-fbec656300ea) erőforrás-bérlőben jogkivonat tartalmának. A JSON webes jogkivonat (JWT) tartalmát, használja a [https://jwt.io/](https://jwt.io/) vagy [http://calebb.net](http://calebb.net/).
+Ha szeretné tudni, hogy a jogkivonat néz B2B együttműködés felhasználó számára, az alábbiakban a tulajdonosi token adatai és az Azure Active Directory (Azure AD) Vendég és a Microsoft-fiók Vendég (a tenantid 04dcc6ab-388a-4559-b527-fbec656300ea) erőforrás-bérlőben jogkivonat tartalmának. A JSON webes jogkivonat (JWT) tartalmát, használja a [ https://jwt.io/ ](https://jwt.io/) vagy [ https://jwt.ms/ ](https://jwt.ms/).
 
 ## <a name="azure-ad-guest-token"></a>Az Azure AD Vendég jogkivonat
 ```

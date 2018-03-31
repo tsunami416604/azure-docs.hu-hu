@@ -1,11 +1,11 @@
 ---
-title: "A bevonási API használata IOS rendszerű eszközökön"
-description: "Legújabb iOS SDK - IOS rendszerű eszközökön a bevonási API használatával"
+title: A bevonási API használata IOS rendszerű eszközökön
+description: Legújabb iOS SDK - IOS rendszerű eszközökön a bevonási API használatával
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 1fb4509e-3804-46c1-949f-1cf727f91f9f
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: a31424da98205e97bdf57010cccfd044360f03dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 189a3029449a3161da2a20f940b77a5bb63bd1ef
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-use-the-engagement-api-on-ios"></a>A bevonási API használata IOS rendszerű eszközökön
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 Ez a dokumentum az bővítménye a dokumentum hogyan integrálhatja Engagement IOS: a mélység részletei jelentés az alkalmazás statisztikái az Engagement API használatával biztosít.
 
 Ne feledje, hogy ha Engagement jelenti a munkamenetek, a tevékenységek, a összeomlásokat és a technikai információkat az alkalmazás csak szeretne, majd a legegyszerűbb módja annak, hogy az egyéni `UIViewController` objektumok öröklik a megfelelő `EngagementViewController` osztály.
@@ -29,7 +33,7 @@ Ha szeretne többet, például ha adott eseményeket, hibákat és feladatok, je
 
 A bevonási API által biztosított a `EngagementAgent` osztály. Ez az osztály példánya meghívásával lehet beolvasni a `[EngagementAgent shared]` statikus metódus (vegye figyelembe, hogy a `EngagementAgent` objektumot adott vissza az Egypéldányos).
 
-Minden API-hívások előtt az `EngagementAgent` objektumot inicializálni kell a metódus meghívásával.`[EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];`
+Minden API-hívások előtt az `EngagementAgent` objektumot inicializálni kell a metódus meghívásával. `[EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];`
 
 ## <a name="engagement-concepts"></a>Engagement – fogalmak
 A következő részekből finomíthatja a közös [Mobile Engagement fogalmait](mobile-engagement-concepts.md) az iOS platformra.
@@ -212,7 +216,7 @@ Vegye figyelembe, hogy a kiegészítő funkciók tartalmazhatnak `arrays(NSArray
 > [!NOTE]
 > A kiegészítő paraméterrel szerializált a JSON-ban. Ha a különböző objektumok, mint a fent leírt átadni kívánt, meg kell valósítani a következő metódust az osztályban:
 > 
-> -(NSString*) JSONRepresentation;
+> -(NSString*)JSONRepresentation;
 > 
 > A módszer az objektum JSON-ábrázolását kell visszaadnia.
 > 

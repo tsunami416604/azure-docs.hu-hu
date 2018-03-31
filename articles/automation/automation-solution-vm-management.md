@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/20/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: da2d95bc100a6160282c93682ad76f7ee881e105
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 2838d8fd53d4e2e564bb7784cb5489e9a167d5bb
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="startstop-vms-during-off-hours-solution-preview-in-azure-automation"></a>Indítása/leállítása virtuális gépek során munkaidőn kívüli megoldás (előzetes verzió) az Azure Automationben
 
@@ -55,7 +55,7 @@ Hajtsa végre a következő lépések végrehajtásával adja hozzá a indítás
 
 1. A **megoldás hozzáadása** lap jelenik meg. A megoldás konfigurálása előtt importálhatja az Automation előfizetés kéri.
    ![Virtuális gép felügyeleti megoldás hozzáadása lap](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
-1. Az a **megoldás hozzáadása** lapon jelölje be **munkaterület**. Az azonos Azure-előfizetés, amely az Automation-fiókhoz kapcsolódó OMS-munkaterület kiválasztása Ha nem rendelkezik a munkaterületen, válassza ki a **új munkaterület létrehozása**. Az a **OMS-munkaterület** lapján tegye a következőket:
+1. Az a **megoldás hozzáadása** lapon jelölje be **munkaterület**. Válassza ki, amely azonos Azure-előfizetést, amely az Automation-fiókhoz csatolva van a Naplóelemzési munkaterület. Ha nem rendelkezik a munkaterületen, válassza ki a **új munkaterület létrehozása**. Az a **OMS-munkaterület** lapján tegye a következőket:
    * Adja meg az új **OMS-munkaterület** nevét.
    * Válassza ki a **előfizetés** csatolása; ehhez válassza a legördülő listából, hogy az alapértelmezett beállítás nem megfelelő.
    * A **erőforráscsoport**, hozzon létre egy új erőforráscsoportot, vagy válasszon egy meglévőt.
@@ -63,13 +63,13 @@ Hajtsa végre a következő lépések végrehajtásával adja hozzá a indítás
    * Válasszon egy tarifacsomagot a **Tarifacsomag** területen. A megoldást kínál a két réteg: **szabad** és **/ csomópont (OMS)**. Ingyenes szint van korlátozva a gyűjtött adatok mennyiségét, naponta, a megőrzési időtartam és a runbook-feladat futásidejű perc. A csomópont / réteg nincs maximális naponta gyűjtött adatok mennyiségét.
 
         > [!NOTE]
-        > Bár a / GB (önálló) fizetett réteg lehetőség jelenik meg, továbbra is nem alkalmazható. Válassza ki azt, és folytassa a megoldás létrehozása a az előfizetésében, ha sikertelen. Csak akkor lesz választható, ha ezt a megoldást hivatalosan is kiadják. A megoldás csak használ automation feladat (perc) és a napló feldolgozási. Azt nem további OMS csomópontokat hozzáadni a környezetben.
+        > Bár a / GB (önálló) fizetett réteg lehetőség jelenik meg, továbbra is nem alkalmazható. Válassza ki azt, és folytassa a megoldás létrehozása a az előfizetésében, ha sikertelen. Csak akkor lesz választható, ha ezt a megoldást hivatalosan is kiadják. A megoldás csak használ automation feladat (perc) és a napló feldolgozási. Azt nem további csomópontokat hozzáadni a környezetben.
 
 1. Miután megadta a szükséges adatokat a a **OMS-munkaterület** kattintson **létrehozása**. A folyamat állapotát nyomon követheti **értesítések** a menüből, amely adja vissza, hogy a **megoldás hozzáadása** végzett lapon.
-1. Az a **megoldás hozzáadása** lapon jelölje be **Automation-fiók**. Ha egy új OMS-munkaterület hoz létre, szüksége is létrehozhat egy új Automation-fiók, társítani kell. Válassza ki **Automation-fiók létrehozása**, majd a a **hozzáadása Automation-fiók** lapján adja meg a következőket:
+1. Az a **megoldás hozzáadása** lapon jelölje be **Automation-fiók**. Ha egy új Naplóelemzési munkaterület hoz létre, szüksége is létrehozhat egy új Automation-fiók, társítani kell. Válassza ki **Automation-fiók létrehozása**, majd a a **hozzáadása Automation-fiók** lapján adja meg a következőket:
    * A **Név** mezőbe írja be az Automation-fiók nevét.
 
-    Egyéb beállítások automatikusan fel van töltve, a kiválasztott OMS-munkaterület alapján. Ezek a beállítások nem módosíthatók. A megoldásban szereplő runbookok alapértelmezett hitelesítési módszere egy Azure-futtatófiók. Miután rákattintott **OK**, a konfigurációs beállításokat érvényesíti, és az Automation-fiók létrehozása. Az **Értesítések** menüpont alatt nyomon követheti a folyamat előrehaladását.
+    Egyéb beállítások automatikusan fel van töltve, a kiválasztott Naplóelemzési munkaterület alapján. Ezek a beállítások nem módosíthatók. A megoldásban szereplő runbookok alapértelmezett hitelesítési módszere egy Azure-futtatófiók. Miután rákattintott **OK**, a konfigurációs beállításokat érvényesíti, és az Automation-fiók létrehozása. Az **Értesítések** menüpont alatt nyomon követheti a folyamat előrehaladását.
 
 1. Végül, az a **megoldás hozzáadása** lapon jelölje be **konfigurációs**. A **paraméterek** lap jelenik meg.
 
@@ -83,7 +83,7 @@ Hajtsa végre a következő lépések végrehajtásával adja hozzá a indítás
 
 1. Miután konfigurálta a kezdeti a megoldáshoz szükséges beállításokat, kattintson a **OK** bezárásához a **paraméterek** lapon, és válassza **létrehozása**. Minden beállítás ellenőrzését követően a megoldást már telepítették az előfizetéséhez. A folyamat eltarthat néhány másodpercig befejezéséhez, és nyomon követheti a folyamat állapotát **értesítések** a menüből.
 
-## <a name="scenarios"></a>Forgatókönyvek
+## <a name="scenarios"></a>Alkalmazási helyzetek
 
 A megoldás három különböző forgatókönyveket tartalmaz. Ezek a forgatókönyvek a következők:
 
@@ -230,7 +230,7 @@ Az ütemezést, mert ez előfordulhat, hogy létre átfedő ütemezés művelete
 
 ## <a name="log-analytics-records"></a>Log Analytics-rekordok
 
-Automatizálás az OMS-tárházban hoz létre két típusú rekordok: sikertelen feladat-naplók és a feladat-adatfolyamokat.
+Automatizálási kétféle típusú rekordot hoz létre a Naplóelemzési munkaterület: sikertelen feladat-naplók és a feladat-adatfolyamokat.
 
 ### <a name="job-logs"></a>Feladatnaplók
 
@@ -261,7 +261,7 @@ Hívó |  A művelet kezdeményezője. Lehetséges értékek: egy e-mail-cím va
 Kategória | Az adattípus besorolása. Az Automation esetében az érték JobStreams.|
 JobId | A runbook feladatának azonosítója GUID.|
 operationName | Meghatározza az Azure-ban végrehajtott művelet típusát. Az automatizáláshoz értéke feladat.|
-ResourceGroup | Meghatározza a runbook-feladat erőforráscsoportjának nevét.|
+Erőforráscsoport | Meghatározza a runbook-feladat erőforráscsoportjának nevét.|
 resourceId | Adja meg az erőforrás-azonosítója az Azure-ban. Az Automation esetében az érték a runbookhoz társított Automation-fiók.|
 ResourceProvider | Meghatározza, hogy melyik Azure-szolgáltatás biztosítja az üzembe helyezhető és kezelhető erőforrásokat. Az Automation esetében az érték Azure Automation.|
 ResourceType | Meghatározza az Azure-ban szereplő erőforrás típusát. Az Automation esetében az érték a runbookhoz társított Automation-fiók.|
@@ -270,7 +270,7 @@ resultDescription | A runbook kimeneti streamjét tartalmazza.|
 RunbookName | A runbook neve.|
 SourceSystem | Megadja az elküldött adatok forrásrendszerét. Az automatizáláshoz értéke OpsManager.|
 StreamType | A feladatstream típusa. Lehetséges értékek:<br>-Folyamat<br>- Kimenet<br>- Figyelmeztetés<br>- Hiba<br>- Hibakeresés<br>- Részletes|
-Time | A runbook-feladat végrehajtásának dátuma és időpontja.|
+Idő | A runbook-feladat végrehajtásának dátuma és időpontja.|
 
 A napló keresési kategória rekordjának visszaadó végrehajtásakor **JobLogs** vagy **JobStreams**, kiválaszthatja a **JobLogs** vagy **JobStreams**nézetet, amely a frissítéseket, a keresés által visszaadott összefoglalójához csempék megjelenítése.
 

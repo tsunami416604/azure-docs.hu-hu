@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Functions monitorozása"
-description: "Útmutató az Azure Functions Azure Application Insights használhatók függvény végrehajtása."
+title: Az Azure Functions monitorozása
+description: Útmutató az Azure Functions Azure Application Insights használhatók függvény végrehajtása.
 services: functions
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: "azure-függvények, függvények, eseményfeldolgozás, webhookok, dinamikus számítás, kiszolgáló nélküli architektúra"
+editor: ''
+tags: ''
+keywords: azure-függvények, függvények, eseményfeldolgozás, webhookok, dinamikus számítás, kiszolgáló nélküli architektúra
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.service: functions
 ms.devlang: multiple
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
-ms.openlocfilehash: d2a61f5f51e3c4a1de6baa79493cb2c7380c76b6
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 5b141924266630bfd3b63ec5129f9f225da3170b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions monitorozása
 
@@ -155,13 +155,13 @@ Az az Azure functions naplózó is magában foglalja a *naplózási szintjének*
 
 |LogLevel    |Kód|
 |------------|---|
-|Nyomkövetés       | 0 |
+|Profilelemzés       | 0 |
 |Hibakeresés       | 1 |
-|Információ | 2 |
+|Tájékoztatás | 2. |
 |Figyelmeztetés     | 3 |
 |Hiba       | 4 |
 |Kritikus    | 5 |
-|None        | 6 |
+|Egyik sem        | 6 |
 
 Naplózási szintjének `None` esetén, tekintse meg a következő szakaszban. 
 
@@ -493,7 +493,7 @@ Az Application Insights monitorozási funkciók, ez ugyanis további adatok és 
 
 ### <a name="logging-to-storage"></a>A naplózás tárolási
 
-Beépített naplózást a kapcsolati karakterlánc által meghatározott tárolási fiókját használja a `AzureWebJobsDashboard` Alkalmazásbeállítás. Ha az adott Alkalmazásbeállítás van konfigurálva, megtekintheti a naplózási adatokat az Azure portálon. Függvény app lapon, a függvény, és válassza ki a **figyelő** fülre, és függvény végrehajtások listájának lekérése. Válassza ki a függvény végrehajtása az időtartam, a bemeneti adatok, a hibák és a kapcsolódó naplófájlok áttekintéséhez.
+Beépített naplózást a kapcsolati karakterlánc által meghatározott tárolási fiókját használja a `AzureWebJobsDashboard` Alkalmazásbeállítás. Ha az adott Alkalmazásbeállítás van konfigurálva, megtekintheti a naplózási adatokat az Azure portálon. A tárolási erőforrások keresse meg fájlokat, jelölje be a szolgáltatás a függvény, és folytassa a `LogFiles > Application > Functions > Function > your_function` megtekintéséhez a naplófájlba írást. Függvény app lapon, a függvény, és válassza ki a **figyelő** fülre, és függvény végrehajtások listájának lekérése. Válassza ki a függvény végrehajtása az időtartam, a bemeneti adatok, a hibák és a kapcsolódó naplófájlok áttekintéséhez.
 
 Ha az Application Insights használ, és rendelkezik [beépített naplózás le van tiltva](#disable-built-in-logging), a **figyelő** lapon viszi Application insights szolgáltatással.
 

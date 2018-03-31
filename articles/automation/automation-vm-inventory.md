@@ -1,18 +1,18 @@
 ---
-title: "Azure-beli virtuális gépek kezelése leltár használatával | Microsoft Docs"
-description: "Virtuális gép kezelése leltár használatával"
+title: Azure-beli virtuális gépek kezelése leltár használatával | Microsoft Docs
+description: Virtuális gép kezelése leltár használatával
 services: automation
-keywords: "leltár, automatizálás, változás, követés"
+keywords: leltár, automatizálás, változás, követés
 author: jennyhunter-msft
 ms.author: jehunte
 ms.date: 09/13/2017
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 7b0e39e98a81231b68414f36ac5c1fc0897304a1
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: b23132f6e5693f5d731bf044ac5c2544a9308ee1
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Azure-beli virtuális gépek kezelése leltár használatával
 
@@ -22,7 +22,7 @@ A leltár nyomon követése az egyes Azure-beli virtuális gépeken a gép erőf
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/).
 Ha nem rendelkezik Azure-virtuális géppel, [hozzon létre egy virtuális gépet](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal).
 
-## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
+## <a name="sign-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portal webhelyre
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="enable-inventory-collection-from-the-virtual-machine-resource-page"></a>Leltározás engedélyezése a virtuális gép erőforrásainak lapjáról
@@ -66,4 +66,4 @@ A virtuális gép eltávolítása a leltárkezelésből:
 ## <a name="next-steps"></a>További lépések
 
 * A virtuális gépek fájl- és beállításjegyzék-beállításainak módosításával kapcsolatos információkért lásd: [A szoftvermódosítások nyomon követése saját környezetében a Change Tracking megoldás használatával](../log-analytics/log-analytics-change-tracking.md).
-* A virtuális gépek Windows- és csomagfrissítéseinek kezelésével kapcsolatos információkért lásd [az OMS-beli Update Management megoldást](../operations-management-suite/oms-solution-update-management.md).
+* A Windows és a csomag frissítéseit, a virtuális gépek kezelésével kapcsolatos információkért lásd: [a frissítés felügyeleti megoldás az Azure-ban](../operations-management-suite/oms-solution-update-management.md).

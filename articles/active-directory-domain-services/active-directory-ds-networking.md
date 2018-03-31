@@ -1,8 +1,8 @@
 ---
-title: "Azure AD tartományi szolgáltatások: Hálózat irányelvek |} Microsoft Docs"
-description: "Azure Active Directory tartományi szolgáltatások hálózati szempontjai"
+title: 'Azure AD tartományi szolgáltatások: Hálózat irányelvek |} Microsoft Docs'
+description: Azure Active Directory tartományi szolgáltatások hálózati szempontjai
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2018
 ms.author: maheshu
-ms.openlocfilehash: eee7905db4faedef3217118e8d491e2cb019fa30
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: a56413490decc928ff2643213084155ae469871c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Azure AD tartományi szolgáltatások hálózati szempontjai
 ## <a name="how-to-select-an-azure-virtual-network"></a>Egy Azure virtuális hálózat kiválasztása
@@ -67,13 +67,13 @@ A következő portokat Azure AD tartományi szolgáltatások szolgáltatáshoz s
 | --- | --- | --- |
 | 443 | Kötelező |Az Azure AD-bérlő-szinkronizálás |
 | 5986 | Kötelező | Management of your domain |
-| 3389 | Optional | Management of your domain |
-| 636 | Optional | Biztonságos LDAP (LDAPS) hozzáféréssel a felügyelt tartományhoz |
+| 3389 | Nem kötelező | Management of your domain |
+| 636 | Nem kötelező | Biztonságos LDAP (LDAPS) hozzáféréssel a felügyelt tartományhoz |
 
 **Port 443-as (szinkronizálási Azure AD-val)**
 * Az Azure AD-címtár szinkronizálja a felügyelt tartományok szolgál.
 * Akkor kötelező, hogy férjen hozzá az NSG-t a porton. Ehhez a porthoz való hozzáférés, nélkül a felügyelt tartomány nincs szinkronban vannak az Azure AD-címtár. Lehet, hogy felhasználók nem jelentkezhetnek be, mivel a jelszavuk módosításai nincsenek szinkronizálva. a felügyelt tartományra.
-* Ezt a portot a Azure IP-címtartományba tartozó IP-címek befelé korlátozhatja.
+* Ezt a portot a Azure IP-címtartományba tartozó IP-címek befelé korlátozhatja. Vegye figyelembe, hogy az Azure IP-címtartomány különböző széles, mint a PowerShell-tartomány, az alábbi szabály látható.
 
 **Port 5986-os (PowerShell-távelérés)**
 * PowerShell távoli eljáráshívás segítségével a felügyelt tartományok felügyeleti feladatok elvégzésére szolgál.

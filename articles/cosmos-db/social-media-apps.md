@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Cosmos DB kialakítási mintában: közösségi alkalmazások |} Microsoft Docs"
-description: "További tudnivalók a kialakítási mintában a közösségi hálózatokkal, ami a tárolás rugalmasságát Azure Cosmos adatbázis és az egyéb Azure-szolgáltatásokhoz."
-keywords: "Közösségi alkalmazások"
+title: 'Az Azure Cosmos DB kialakítási mintában: közösségi alkalmazások |} Microsoft Docs'
+description: További tudnivalók a kialakítási mintában a közösségi hálózatokkal, ami a tárolás rugalmasságát Azure Cosmos adatbázis és az egyéb Azure-szolgáltatásokhoz.
+keywords: Közösségi alkalmazások
 services: cosmos-db
 author: ealsur
 manager: jhubbard
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: 2dbf83a7-512a-4993-bf1b-ea7d72e095d9
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2017
 ms.author: mimig
-ms.openlocfilehash: c89b2db6d5a80f184ca98ef757605272d385a81c
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: d223187ab1f8338c57e6aa32903ea9b762393ab5
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Az Azure Cosmos DB közösségi címen
 A nagymértékben összekapcsolt társadalom élő azt jelenti, hogy a életben bármikor lesz része egy **közösségi hálózati**. Közösségi hálózatokkal való kapcsolattartásra ismerősök, munkatársakat, termékcsalád vagy néha nekünk kihívás megosztása élők közös érdekében használjuk.
@@ -229,7 +229,7 @@ Cosmos DB támogatja [dinamikus particionálást](https://azure.microsoft.com/bl
 
 Érdemes megemlíteni érdekes pont, hogy a Cosmos DB futtatja-e a lekérdezések egy (beleértve a [összesítések](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)) a partíciók közötti transzparens módon, akkor nem kell hozzáadnia bármely logika az adatok növekedésével.
 
-Idővel, végül nőhet a forgalom és a hálózatierőforrás-fogyasztás (mért [RUs](request-units.md), vagy kérjen egységek) növeli. Lesz olvasási és írási gyakrabban, ha a userbase növekszik, és akkor indul, létrehozása és további tartalmat; olvasása képességét **az átviteli sebesség skálázás** nélkülözhetetlen. A RUs növelése nagyon egyszerű, azt megteheti az Azure portálon mindössze néhány kattintással vagy a [az API-n keresztül parancsok kiadása](https://docs.microsoft.com/rest/api/documentdb/replace-an-offer).
+Idővel, végül nőhet a forgalom és a hálózatierőforrás-fogyasztás (mért [RUs](request-units.md), vagy kérjen egységek) növeli. Lesz olvasási és írási gyakrabban, ha a userbase növekszik, és akkor indul, létrehozása és további tartalmat; olvasása képességét **az átviteli sebesség skálázás** nélkülözhetetlen. A RUs növelése nagyon egyszerű, azt megteheti az Azure portálon mindössze néhány kattintással vagy a [az API-n keresztül parancsok kiadása](https://docs.microsoft.com/rest/api/cosmos-db/replace-an-offer).
 
 ![Vertikális felskálázásával és a partíciókulcs meghatározása](./media/social-media-apps/social-media-apps-scaling.png)
 
@@ -250,5 +250,5 @@ Ez a cikk megpróbálja tisztázása néhány történő létrehozásának köz�
 
 A valóságnak, hogy az ilyen típusú forgatókönyvek nem ezüst listajele van, a hozta létre nagyszerű szolgáltatások, amelyek lehetővé teszik a számunkra hozhat létre nagyszerű lép kombinációja együttműködést: a sebesség és Azure Cosmos DB szabad kiváló közösségi alkalmazás, így a az eszközintelligencia mögött, például az Azure Search üzemeltetéséhez nem még nyelvtől független alkalmazások, de hatékony háttérfolyamatot és a bővíthető Azure Storage Azure App Service szolgáltatások és az Azure SQL Database rugalmasan tárolásához kiváló keresési megoldás nagy mennyiségű adatot és elemzési hatványra emelésének Azure Machine Learning Tudásbázis és az eszközintelligencia, amely visszajelzést a folyamatok és segítsen létrehozásához kézbesítése az arra jogosult felhasználók a megfelelő tartalom.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információk a használati esetek Cosmos DB, lásd: [közös Cosmos DB használati esetekben](use-cases.md).

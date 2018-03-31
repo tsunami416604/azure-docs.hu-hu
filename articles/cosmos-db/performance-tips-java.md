@@ -1,12 +1,12 @@
 ---
-title: "Javához készült Azure Cosmos DB teljesítmény tippek |} Microsoft Docs"
-description: "Ismerje meg az ügyfél-konfigurációs beállítások Azure Cosmos DB adatbázis teljesítményének javítása érdekében"
-keywords: "adatbázis teljesítményének javításával"
+title: Javához készült Azure Cosmos DB teljesítmény tippek |} Microsoft Docs
+description: Ismerje meg az ügyfél-konfigurációs beállítások Azure Cosmos DB adatbázis teljesítményének javítása érdekében
+keywords: adatbázis teljesítményének javításával
 services: cosmos-db
 author: mimig1
 manager: jhubbard
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: dfe8f426-3c98-4edc-8094-092d41f2795e
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: mimig
-ms.openlocfilehash: fef5ed126575727c23cdff496c6684b9bf3192cf
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 3a6c7c51810375574895643cea2e0e24508fa382
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/30/2018
 ---
 > [!div class="op_single_selector"]
 > * [Java](performance-tips-java.md)
@@ -110,7 +110,7 @@ Ezért ha még kérése "Hogyan javítható az adatbázis teljesítménye?" Vegy
 
     Tömeges végrehajtása olvasás esetén a dokumentumok olvassa el a hírcsatorna funkciók (például [readDocuments]( https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client.readdocuments#com_microsoft_azure_documentdb__document_client_readDocuments_String_FeedOptions_c) vagy egy SQL-lekérdezést kiadásakor eredményeinek szegmentált módon ha eredménykészlet túl nagy. Alapértelmezés szerint eredményeinek 100 elemet vagy 1 MB adattömböket, bármelyik korlát találati első.
 
-    Adjon meg kevesebb hálózati kerekíteni összes vonatkozó eredmények beolvasásához szükséges való adatváltások számát, az oldal méretét használatával növelheti a [x-ms-maximális elem-darabszám](https://docs.microsoft.com/rest/api/documentdb/common-documentdb-rest-request-headers) legfeljebb 1000 kérelemfejlécet. Azokban az esetekben, ahol csak néhány eredmények megtekintése céljából kell például a felhasználói felület vagy a kérelem API visszatérési értéke csak 10 egyszerre annak az eredménye, csökkentheti a 10-re csökkenteni a teljesítményt, Olvasás, mind a lekérdezések felhasznált mérete.
+    Adjon meg kevesebb hálózati kerekíteni összes vonatkozó eredmények beolvasásához szükséges való adatváltások számát, az oldal méretét használatával növelheti a [x-ms-maximális elem-darabszám](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) legfeljebb 1000 kérelemfejlécet. Azokban az esetekben, ahol csak néhány eredmények megtekintése céljából kell például a felhasználói felület vagy a kérelem API visszatérési értéke csak 10 egyszerre annak az eredménye, csökkentheti a 10-re csökkenteni a teljesítményt, Olvasás, mind a lekérdezések felhasznált mérete.
 
     A lap méret használatával is megadhat a [setPageSize metódus](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._feed_options_base.setpagesize#com_microsoft_azure_documentdb__feed_options_base_setPageSize_Integer).
 
@@ -143,7 +143,7 @@ Ezért ha még kérése "Hogyan javítható az adatbázis teljesítménye?" Vegy
 
     A lekérdezés összetettsége hatással van a kérelem egységek művelet végrehajtásánál. Predikátumok a száma, a predikátum, felhasználó által megadott függvények száma és a forrás adatkészlet összes mérete befolyásolja a lekérdezési műveletek költségét.
 
-    A terhelést növelni az összes műveletet mérésére (létrehozása, frissítése vagy törlése), vizsgálja meg a [x-ms-kérelem-kell fizetni](https://docs.microsoft.com/rest/api/documentdb/common-documentdb-rest-response-headers) fejléc (vagy a megfelelő RequestCharge tulajdonságot az [ResourceResponse<T> ](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._resource_response) vagy [FeedResponse<T> ](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._feed_response) ezeket a műveleteket által felhasznált kérelem egységek számának mérésére.
+    A terhelést növelni az összes műveletet mérésére (létrehozása, frissítése vagy törlése), vizsgálja meg a [x-ms-kérelem-kell fizetni](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) fejléc (vagy a megfelelő RequestCharge tulajdonságot az [ResourceResponse<T> ](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._resource_response) vagy [FeedResponse<T> ](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._feed_response) ezeket a műveleteket által felhasznált kérelem egységek számának mérésére.
 
     ```Java
     ResourceResponse<Document> response = client.createDocument(collectionLink, documentDefinition, null, false);
@@ -155,7 +155,7 @@ Ezért ha még kérése "Hogyan javítható az adatbázis teljesítménye?" Vegy
 <a id="429"></a>
 2. **Kezeli a sebesség korlátozása/kérelmek aránya túl nagy**
 
-    Amikor az ügyfél meghaladja a fenntartott átviteli sebesség egy olyan fiók, nincs teljesítmény csökkenése nélkül működhet a kiszolgálón, és felül a fenntartott átviteli sebesség nincs használatban. A kiszolgáló megelőző jelleggel a RequestRateTooLarge (HTTP-állapotkód: 429) kérelem befejezése és térjen vissza a [x-ms-újrapróbálkozási-után-ms](https://docs.microsoft.com/rest/api/documentdb/common-documentdb-rest-response-headers) idő ezredmásodpercben, amely a felhasználó kell várnia, mielőtt megoldódhat jelző fejléc a kérelmet.
+    Amikor az ügyfél meghaladja a fenntartott átviteli sebesség egy olyan fiók, nincs teljesítmény csökkenése nélkül működhet a kiszolgálón, és felül a fenntartott átviteli sebesség nincs használatban. A kiszolgáló megelőző jelleggel a RequestRateTooLarge (HTTP-állapotkód: 429) kérelem befejezése és térjen vissza a [x-ms-újrapróbálkozási-után-ms](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) idő ezredmásodpercben, amely a felhasználó kell várnia, mielőtt megoldódhat jelző fejléc a kérelmet.
 
         HTTP Status 429,
         Status Line: RequestRateTooLarge

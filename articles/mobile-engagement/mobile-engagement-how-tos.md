@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Mobile Engagement felhasználói felület - a Reach hogyan"
-description: "Felhasználói felület és Azure Mobile Engagement áttekintése"
+title: Az Azure Mobile Engagement felhasználói felület - a Reach hogyan
+description: Felhasználói felület és Azure Mobile Engagement áttekintése
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 30af87e6-c816-4cce-8609-6cbd3e83de14
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 33a0a9d0c399cb7f0a791c4c16dde2e2d62364ca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0c536d378023ee4a9675bb2d67262fb485c8052b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-get-started-using-and-managing-pushes-to-reach-out-to-your-end-users"></a>Első lépések, használata és kezelése a végfelhasználók számára elérhetők a leküldéses értesítések
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 Ha az SDK az alkalmazás teljesen integrálva van, is használatának megkezdésében a leküldéses értesítések küldéséhez a felhasználók számára az alkalmazás a felhasználói felület Reach szakasza.  
 
 ## <a name="do-your-first-push-notification-campaign"></a>Hajtsa végre az első leküldéses Értesítéses kampány
@@ -64,7 +68,7 @@ Ha az SDK az alkalmazás teljesen integrálva van, is használatának megkezdés
 * Kattintson az eszköz kíván leküldeni a jelölőnégyzetet.
 * Kattintson a "Test" gombra a leküldéses küldeni az eszközön.
 
-![Teszt2][9]
+![Test2][9]
 
 * Aktiválja a kampányt.
 
@@ -83,7 +87,7 @@ Ahogy fent látni a leküldéses értesítési tartalom a jelölő ${rebate_code
 > [!WARNING]
 > Ha a felhasználó nincs definiálva a app-info címke, a felhasználó nem kap a leküldéses.
 
-* eredménye
+* Eredmény
 
 ![Personalize2][12]
 
@@ -114,7 +118,7 @@ Ahogy fent látni a leküldéses értesítési tartalom a jelölő ${rebate_code
 "Csak az alkalmazáson kívül" kézbesítési módot biztosít a leküldéses értesítést, ha az alkalmazáshoz be van zárva. Ez az a szabványos leküldéses értesítést.
 Kiválasztásakor "csak az alkalmazáson kívül" kell már megadta a platform, amely az alkalmazás (APNS vagy GCM) van építve a tanúsítványokat.
 
-### <a name="see-also"></a>Lásd még:
+### <a name="see-also"></a>Lásd még
 * [Apple Push Notification szolgáltatás – tanúsítványok](http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9), [Google Cloud Messaging – tanúsítvány](http://developer.android.com/google/gcm/index.html) 
 
 ### <a name="in-app-only-delivery-mode"></a>"az alkalmazáson belüli csak" szállítási mód
@@ -192,7 +196,7 @@ A szöveges nézet lehetővé teszi a végfelhasználó használni tudja a tová
 
 ![TextView6][26]
 
-* eredménye
+* Eredmény
 
 ![TextView7][27]
 
@@ -235,7 +239,7 @@ Ez az App Store áruházból, például az átirányítási teendő bevezetésé
 * Kattintson a Szerkesztés módban gombra kattintva edition váltson, és megjelenését például a forrás.
 * Írjon a tartalmat, amely megjelenik majd az akciógombra kattinthat (Akciógomb lehetővé teszi, hogy az alkalmazás megfelelően egy adott művelet, például az alkalmazás-Áruházbeli vagy bármilyen típusú adatforrások biztosíthat egy lap megnyitása).
 * Írás a tartalmat, amely megjelenik majd a Kilépés gombra (a Kilépés gombra kattintva, a webes nézet eltűnik).
-* eredménye
+* Eredmény
 
 ![WebView5][32]
 

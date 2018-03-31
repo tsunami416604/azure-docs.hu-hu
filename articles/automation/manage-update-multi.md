@@ -1,6 +1,6 @@
 ---
-title: "Több Azure-beli virtuális gép frissítéseinek kezelése"
-description: "Ez a témakör az Azure-beli virtuális gépek frissítéseinek kezelését mutatja be."
+title: Több Azure-beli virtuális gép frissítéseinek kezelése
+description: Ez a témakör az Azure-beli virtuális gépek frissítéseinek kezelését mutatja be.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 29ab87b6afe31b7bbb40ef7d743e209f86811c9d
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: c227af1afa95243390152918a6b81015dbaceaeb
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Frissítések kezelése több gép esetén
 
@@ -61,7 +61,7 @@ A Windows rendszerű ügynökszámítógépeket vagy a Windows Server Update Ser
 
 A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.
 
-Ez a megoldás nem támogatja az olyan Linuxhoz készült OMS-ügynököket, amelyek több Operations Management Suite-munkaterületnek való jelentésre vannak konfigurálva.
+Ez a megoldás úgy konfigurálva, hogy több Naplóelemzési munkaterület jelentés Linux OMS-ügynököt nem támogatja.
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>Frissítéskezelés engedélyezése Azure-beli virtuális gépeken
 
@@ -176,5 +176,5 @@ A telepítés közben felmerülő hibák részletes információinak megtekinté
 
 ## <a name="next-steps"></a>További lépések
 
-* A frissítéskezelésről (beleértve a naplókat, kimenetet és a hibákat) további információt a [Frissítéskezelési megoldás az OMS-ben](../operations-management-suite/oms-solution-update-management.md) című cikkben talál.
+* További információt a frissítéskezelés – többek között a következőket naplók, kimeneti és hibák: [frissítése felügyeleti megoldás az Azure-ban](../operations-management-suite/oms-solution-update-management.md).
 

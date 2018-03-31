@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/21/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 157db4a9de41c9895d39469d3d42a45c1a929649
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b317a2d9241016b66651af4659c7daf2e8d8f2cc
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="automate-resources-in-your-data-center-or-cloud-with-hybrid-runbook-worker"></a>A saját adatközpont vagy a felhőbe a hibrid forgatókönyv-feldolgozó erőforrások automatizálásának
 
@@ -38,7 +38,7 @@ Ha egy meglévő felhasználó SMA, áthelyezheti a runbookok Azure Automation s
 
 Az alábbi feltételek segítségével megállapításához, hogy hibrid forgatókönyv-feldolgozó vagy a Service Management Automation Azure Automation igényeinek jobban megfelelő.
 
-* SMA egy Windows Azure Pack csatlakoznak, ha egy grafikus felügyeleti felületet szükséges összetevők helyi telepítése szükséges. Helyi erőforrások több mint Azure Automation, amelyet csak egy helyi forgatókönyv-feldolgozók telepített ügynök újabb karbantartási költségekkel van szükség. Az Operations Management Suite további csökkentése a karbantartási költségeket az ügynökök felügyeletét.
+* SMA egy Windows Azure Pack csatlakoznak, ha egy grafikus felügyeleti felületet szükséges összetevők helyi telepítése szükséges. Helyi erőforrások több mint Azure Automation, amelyet csak egy helyi forgatókönyv-feldolgozók telepített ügynök újabb karbantartási költségekkel van szükség. Az ügynökök Azure, a karbantartási költségek további csökkentése kezeli.
 * Azure Automation a runbookok tárolja a felhőben, és továbbítja őket a helyszíni hibrid forgatókönyv-feldolgozók. Ha a biztonsági házirend nem engedélyezi ezt a viselkedést, akkor SMA kell használnia.
 * SMA megtalálható a System Center; és így a System Center 2012 R2 licenc szükséges. Azure Automation szolgáltatásbeli egy rétegzett előfizetés modellen alapul.
 * Azure Automation szolgáltatásbeli fejlett szolgáltatások, mint a grafikus forgatókönyvek, amelyek nem érhetők el az SMA.
@@ -92,27 +92,25 @@ A következő lépésekkel automatizálhatja a telepítése és konfigurálása 
 
 Hajtsa végre az első két lépés egyszer Automation környezetét, majd ismételje meg a fennmaradó munkavégző számítógépenként.
 
-#### <a name="1-create-operations-management-suite-workspace"></a>1. Az Operations Management Suite-munkaterület létrehozása
+#### <a name="1-create-log-analytics-workspace"></a>1. Log Analytics-munkaterület létrehozása
+Ha még nem rendelkezik a Naplóelemzési munkaterület, majd hozzon létre egyet a következő útmutatást [kezelése a munkaterület](../log-analytics/log-analytics-manage-access.md). Ha már rendelkezik egy meglévő munkaterülethez használhatja.
 
-Ha még nem rendelkezik az Operations Management Suite-munkaterülethez, majd hozzon létre egyet a következő útmutatást [kezelése a munkaterület](../log-analytics/log-analytics-manage-access.md). Ha már rendelkezik egy meglévő munkaterülethez használhatja.
+#### <a name="2-add-automation-solution-to-log-analytics-workspace"></a>2. Automation-megoldás hozzáadni a Naplóelemzési munkaterület
 
-#### <a name="2-add-automation-solution-to-operations-management-suite-workspace"></a>2. Automation-megoldás hozzáadása az Operations Management Suite-munkaterülettel
+A megoldások funkciókkal bővítik ki a Log Analytics szolgáltatást. Az Automation-megoldás bővíti olyan funkciókkal, az Azure Automation, beleértve a hibrid forgatókönyv-feldolgozó támogatását. A megoldás a munkaterület hozzáadásakor automatikusan leküldi munkavégző összetevők az ügynök számítógépre, amelyen telepíteni fogja a következő lépéssel.
 
-Megoldások funkciókat adnak hozzá az Operations Management Suite. Az Automation-megoldás bővíti olyan funkciókkal, az Azure Automation, beleértve a hibrid forgatókönyv-feldolgozó támogatását. A megoldás a munkaterület hozzáadásakor automatikusan leküldi munkavégző összetevők az ügynök számítógépre, amelyen telepíteni fogja a következő lépéssel.
-
-Kövesse az utasításokat, [hozzáadása a megoldások végzi megoldás](../log-analytics/log-analytics-add-solutions.md) hozzáadása a **Automation** megoldást jelent az Operations Management Suite-munkaterülettel.
+Kövesse [hozzáadása a megoldások végzi megoldás](../log-analytics/log-analytics-add-solutions.md) hozzáadása a **Automation** a Naplóelemzési munkaterület megoldást.
 
 #### <a name="3-install-the-microsoft-monitoring-agent"></a>3. A Microsoft Monitoring Agent telepítése
-
-A Microsoft Monitoring Agent a számítógépek Operations Management Suite kapcsolatot. Telepítse az ügynököt a helyi számítógépen, és csatlakoztassa a munkaterületen, a hibrid forgatókönyv-feldolgozó szükséges összetevőket letölti.
+A Microsoft Monitoring Agent számítógépek szolgáltatáshoz csatlakozik. Telepítse az ügynököt a helyi számítógépen, és csatlakoztassa a munkaterület, automatikusan letölti a hibrid forgatókönyv-feldolgozó szükséges összetevőket.
 
 Kövesse az utasításokat, [Log Analyticshez való csatlakozás Windows számítógépek](../log-analytics/log-analytics-windows-agent.md) az ügynök telepítéséhez a helyi számítógépen. Megismételheti a folyamatot a több számítógép számára több Worker hozzá a környezethez.
 
-Ha az ügynök sikeresen csatlakozott-e az Operations Management Suite, megkeresni a **csatlakoztatott források** az Operations Management Suite lapján **beállítások** ablaktáblán. Ellenőrizheti, hogy az ügynök megfelelően sikeresen letöltötte az Automation-megoldást, ha egy nevű mappát **AzureAutomationFiles** a C:\Program Files\Microsoft figyelési Agent\Agent. A hibrid forgatókönyv-feldolgozó verziójával megerősítéséhez lépjen C:\Program Files\Microsoft figyelési Agent\Agent\AzureAutomation\, majd jegyezze fel a \\ *verzió* almappájában.
+Ellenőrizheti, hogy az ügynök megfelelően sikeresen letöltötte az Automation-megoldást, ha egy nevű mappát **AzureAutomationFiles** a C:\Program Files\Microsoft figyelési Agent\Agent. A hibrid forgatókönyv-feldolgozó verziójával megerősítéséhez lépjen C:\Program Files\Microsoft figyelési Agent\Agent\AzureAutomation\, majd jegyezze fel a \\ *verzió* almappájában.  
 
 #### <a name="4-install-the-runbook-environment-and-connect-to-azure-automation"></a>4. Telepítheti a forgatókönyvek környezetét, és csatlakozzon az Azure Automation
 
-Amikor hozzáad egy ügynök Operations Management Suite, az Automation-megoldás leküldi a **HybridRegistration** PowerShell-modult, amely tartalmazza a **Add-HybridRunbookWorker** parancsmag. Ez a parancsmag segítségével telepítheti a forgatókönyvek környezetét a számítógépen, és regisztrálhatja azt az Azure Automation.
+Az ügynök Log Analyticshez való hozzáadásakor az Automation-megoldás leküldi a **HybridRegistration** PowerShell-modult, amely tartalmazza a **Add-HybridRunbookWorker** parancsmag. Ez a parancsmag segítségével telepítheti a forgatókönyvek környezetét a számítógépen, és regisztrálhatja azt az Azure Automation.
 
 A modul importálásához nyisson meg egy PowerShell-munkamenetet rendszergazdai módban, és futtassa a következő parancsokat:
 

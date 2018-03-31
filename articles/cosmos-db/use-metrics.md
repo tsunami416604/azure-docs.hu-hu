@@ -1,13 +1,13 @@
 ---
-title: "Figyelés és az Azure Cosmos DB a metrikák hibakeresés |} Microsoft Docs"
-description: "Az Azure Cosmos Adatbázisba mérőszámok segítségével gyakori problémák hibakeresését, és figyelheti az adatbázis."
-keywords: metrics
+title: Figyelés és az Azure Cosmos DB a metrikák hibakeresés |} Microsoft Docs
+description: Az Azure Cosmos Adatbázisba mérőszámok segítségével gyakori problémák hibakeresését, és figyelheti az adatbázis.
+keywords: metrikák
 services: cosmos-db
 author: gnot
 manager: jhubbard
-editor: 
-documentationcenter: 
-ms.assetid: 
+editor: ''
+documentationcenter: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: govindk
-ms.openlocfilehash: 3b3de91c3850071d7c3fbff1faccde6c17a606e3
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 37ef1bc01bd3679e664e71e6a6e3bede84615305
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="monitoring-and-debugging-with-metrics-in-azure-cosmos-db"></a>Figyelés és az Azure Cosmos DB a metrikák hibakeresés
 
@@ -34,7 +34,7 @@ Ez a cikk végigvezeti a gyakori használati esetek és hogyan Azure Cosmos DB m
 
 ## <a name="understanding-how-many-requests-are-succeeding-or-causing-errors"></a>Az ismertetése, hogy hány kérésnek sikeresen lezajlottak vagy okozó hibák
 
-A kezdéshez keressen fel a [Azure-portálon](https://portal.azure.com) , és keresse meg a **metrikák** panelen. A panelen keresse meg a **kérések száma meghaladja a kapacitását / 1 perc** diagram. Ezen a diagramon látható egy perc által perc összes kérelem szegmentált által az állapotkód. További információ a HTTP-állapotkódok: [HTTP-állapotkódok Azure Cosmos DB](https://docs.microsoft.com/rest/api/documentdb/http-status-codes-for-documentdb).
+A kezdéshez keressen fel a [Azure-portálon](https://portal.azure.com) , és keresse meg a **metrikák** panelen. A panelen keresse meg a **kérések száma meghaladja a kapacitását / 1 perc** diagram. Ezen a diagramon látható egy perc által perc összes kérelem szegmentált által az állapotkód. További információ a HTTP-állapotkódok: [HTTP-állapotkódok Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
 
 A leggyakoribb állapot hibakód 429 (sávszélesség-szabályozás), ami azt jelenti, hogy az Azure Cosmos Adatbázishoz kérelmek túllépte a létesített átviteli sebesség. Ez a leggyakrabban használt megoldás [növelheti a RUs](./set-throughput.md) az adott gyűjtemény.
 
@@ -93,7 +93,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 *QueryMetrics* részleteit mennyi ideig a lekérdezés minden összetevő-tartott a végrehajtása. A leggyakrabban használt alapvető ok hosszú futtatásához lekérdezések vizsgálatok (a lekérdezés nem tudta használni a indexek), amely lehet oldott fel egy jobb szűrési feltételt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte figyelése és az Azure-portálon a metrikák hibakeresési a hibákat, érdemes lehet tudhat meg többet a következő cikkekben olvasásával adatbázis teljesítményének növelése:
 

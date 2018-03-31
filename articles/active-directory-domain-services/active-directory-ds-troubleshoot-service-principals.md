@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: d1a605ae5c0ea598ba507de0b21a841333df79ef
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7cd16d64d18b4cdcb710f68c55a8251904acda86
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>A felügyelt tartományok érvénytelen egyszerű konfiguráció hibaelhárítása
 
@@ -38,7 +38,7 @@ Az alábbi lépések segítségével határozza meg, melyik szolgáltatás rends
 2. Az a **megjelenítése** legördülő menüből válassza **összes alkalmazás** kattintson **alkalmaz**.
 3. Az alábbi táblázatban keresse meg a azonosító beillesztése a keresési mezőbe, majd nyomja le az egyes Alkalmazásazonosító adja meg. Ha a keresési eredmények üres, újra létre kell hoznia a "megoldási" oszlopban szereplő lépések a szolgáltatásnevet.
 
-| Alkalmazásazonosító | Megoldás: |
+| Alkalmazás azonosítója | Felbontás |
 | :--- | :--- | :--- |
 | 2565bd9d-da50-47d4-8b85-4c97f669dc36 | [Hozza létre újra a hiányzó egyszerű PowerShell használatával](#recreate-a-missing-service-principal-with-powershell) |
 | 443155a6-77f3-45e3-882b-22b3a8d431fb | [Regisztrálja újra a Microsoft.AAD névtérhez](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |
@@ -93,7 +93,7 @@ Kövesse az alábbi lépéseket, ha a szolgáltatás egyszerű azonosítójú ``
 
 ## <a name="alert-aadds105-password-synchronization-application-is-out-of-date"></a>Riasztási AADDS105: A jelszó-szinkronizálás alkalmazás elavultak
 
-**Figyelmeztető üzenet:** az alkalmazás azonosítójával "d87dcbc6-a371-462e-88e3-28ad15ec4e64" a szolgáltatás egyszerű lett törölve, és majd újra létrehozza. Ez a szolgáltatás egyszerű kezeli, egy másik szolgáltatás egyszerű és a jelszó-szinkronizáláshoz használt alkalmazás. A felügyelt szolgáltatásnevet, illetve az alkalmazás nem volt engedélyezve a az újonnan létrehozott egyszerű, akkor a szolgáltatás nem tudja kezelni. Ez azt jelenti, hogy az újonnan létrehozott egyszerű, nem lehet frissíteni a régi kezelt alkalmazások és a jelszavak szinkronizálása az hatással lesz.
+**Figyelmeztető üzenet:** az alkalmazás azonosítójával "d87dcbc6-a371-462e-88e3-28ad15ec4e64" a szolgáltatás egyszerű lett törölve, és majd újra létrehozza. Az újbóli mögött inkonzisztens engedélyek hagyja el a felügyelt tartományok kiszolgálásához szükséges az Azure AD tartományi szolgáltatások erőforrásait. A felügyelt tartományra jelszavak szinkronizálása az hatással lehet.
 
 
 **Megoldás:** Azure AD PowerShell lépések elvégzéséhez szüksége. Azure AD PowerShell telepítésével kapcsolatos információkért lásd: [Ez a cikk](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0.).
@@ -116,5 +116,5 @@ A probléma megoldására PowerShell ablakban írja be a következő parancsokat
 3. A törölt is, a rendszer magának kijavítani, és hozza létre újra az alkalmazásokat, a jelszó-szinkronizálás szükséges. Annak érdekében, hogy a riasztás sikeresen szervizelve lett, két óra várakozás után ellenőrizze a tartomány állapotát.
 
 
-## <a name="contact-us"></a>Kapcsolat
+## <a name="contact-us"></a>Kapcsolatfelvétel
 Lépjen kapcsolatba az Azure Active Directory tartományi szolgáltatások termékért felelős csoport a [visszajelzés fájlmegosztás vagy a támogatáshoz](active-directory-ds-contact-us.md).
