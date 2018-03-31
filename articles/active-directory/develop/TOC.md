@@ -45,7 +45,7 @@
 ### [SAML-alapú SSO hibakeresése](active-directory-saml-debugging.md)
 ### [Egyszeri bejelentkezéses SAML-protokoll](active-directory-single-sign-on-protocol-reference.md)
 ### [Egyszeri kijelentkezéses SAML-protokoll](active-directory-single-sign-out-protocol-reference.md)
-### [Bérlő létrehozása](active-directory-howto-tenant.md)
+## [Bérlő létrehozása](active-directory-howto-tenant.md)
 ## [Védjegyzési útmutató](active-directory-branding-guidelines.md)
 ## Mobil és asztali egyszeri bejelentkezés
 ### [Egyszeri bejelentkezés engedélyezése Android rendszeren](active-directory-sso-android.md)
