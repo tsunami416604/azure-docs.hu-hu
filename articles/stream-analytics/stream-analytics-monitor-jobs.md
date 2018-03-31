@@ -1,12 +1,11 @@
 ---
-title: "Programozott módon a Stream Analytics-feladatok figyelése |} Microsoft Docs"
-description: "Ismerje meg, programozott módon a REST API-k, az Azure SDK-t vagy a PowerShell segítségével létrehozott Stream Analytics-feladatok figyelése."
-keywords: ".NET-figyelő, feladat figyelője alkalmazás figyelése"
+title: Programozott módon a Stream Analytics-feladatok figyelése |} Microsoft Docs
+description: Ismerje meg, programozott módon a REST API-k, az Azure SDK-t vagy a PowerShell segítségével létrehozott Stream Analytics-feladatok figyelése.
+keywords: .NET-figyelő, feladat figyelője alkalmazás figyelése
 services: stream-analytics
-documentationcenter: 
-author: samacha
-manager: jhubbard
-editor: cgronlun
+documentationcenter: ''
+author: jseb225
+manager: ryanw
 ms.assetid: 2ec02cc9-4ca5-4a25-ae60-c44be9ad4835
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
-ms.author: samacha
-ms.openlocfilehash: 7e9d2f6f03fd539c59b105108fb46697bcd60f1c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: a619120b2d30284633ba5248edd0b82bb1bf656b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>A Stream Analytics-feladat figyelő létrehozása programmal.
 
@@ -29,11 +28,11 @@ Ez a cikk bemutatja, hogyan használatával engedélyezi a Stream Analytics-fela
 
 Ez a folyamat elkezdéséhez az alábbiakkal kell rendelkeznie:
 
-* A Visual Studio 2017 vagy 2015
+* Visual Studio 2017 or 2015
 * [Az Azure .NET SDK](https://azure.microsoft.com/downloads/) letöltése és telepítése
 * Egy meglévő Stream Analytics-feladatban kell tartoznia a figyelő engedélyezve
 
-## <a name="create-a-project"></a>A projekt létrehozása
+## <a name="create-a-project"></a>Projekt létrehozása
 
 1. Hozzon létre egy Visual Studio C# .NET konzolalkalmazást.
 2. A Package Manager-konzolon, a következő parancsokat a NuGet-csomagok. Az első címtárra az Azure Stream Analytics felügyeleti .NET SDK. A második érték az Azure-figyelő SDK használatával engedélyezi a használandó. Legutóbb az Azure Active Directory-ügyfél-hitelesítéshez használandó.
@@ -144,7 +143,7 @@ A következő kódot a szükséges változók és a felügyeleti ügyfeleket be�
 Az alábbi kód lehetővé teszi, hogy a figyelés egy **meglévő** Stream Analytics-feladat. A kód első része egy a Stream Analytics szolgáltatás GET kérelmet az adott Stream Analytics-feladat adatainak lekérésére hajt végre. Használja a *azonosító* tulajdonság (beolvasva a GET kérelmet a) a Put metódust a második fele a kódot, PUT, amely a Insights szolgáltatás kérése használatával engedélyezi a Stream Analytics-feladat paramétereként.
 
 >[!WARNING]
->Ha már engedélyezte különböző Stream Analytics-feladat, az Azure-portálon vagy programozottan keresztül figyelés az alábbi kód, **azt javasoljuk, hogy megadja a ugyanazon tárfiók neve, amely akkor használható, ha azt korábban figyelése.**
+>Ha már engedélyezte különböző Stream Analytics-feladat, az Azure-portálon vagy programozottan keresztül figyelés az alábbi kód, **azt javasoljuk, hogy megadja a ugyanazon tárfiók neve, amely akkor használhatók, ha korábban engedélyezve van a figyelést.**
 > 
 > A tárfiók kapcsolódik a régióban létrehozott a Stream Analytics-feladat, nem kifejezetten az maga a feladat.
 > 
@@ -177,7 +176,7 @@ Az alábbi kód lehetővé teszi, hogy a figyelés egy **meglévő** Stream Anal
 
 Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)

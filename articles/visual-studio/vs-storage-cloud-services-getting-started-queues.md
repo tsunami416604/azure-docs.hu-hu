@@ -1,11 +1,11 @@
 ---
-title: "Ismerkedjen meg a queue storage és a Visual Studio services (felhőszolgáltatások) kapcsolódó |} Microsoft Docs"
-description: "Ismerkedés az Azure Queue storage használata a Visual Studio felhőszolgáltatás-projekt egy tárfiókot, a Visual Studio használatával történő kapcsolódás után kapcsolódó szolgáltatások"
+title: Ismerkedjen meg a queue storage és a Visual Studio services (felhőszolgáltatások) kapcsolódó |} Microsoft Docs
+description: Ismerkedés az Azure Queue storage használata a Visual Studio felhőszolgáltatás-projekt egy tárfiókot, a Visual Studio használatával történő kapcsolódás után kapcsolódó szolgáltatások
 services: storage
-documentationcenter: 
-author: kraigb
-manager: ghogen
-editor: 
+documentationcenter: ''
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: da587aac-5e64-4e9a-8405-44cc1924881d
 ms.service: storage
 ms.workload: web
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
-ms.author: kraigb
-ms.openlocfilehash: 7a6e58a62b4cfbf99641559363dd0c860cdf8af2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: ee4228db093b840940152fcad6dfba793dbc4772
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Ismerkedés az Azure Queue storage és a Visual Studio kapcsolódó szolgáltatások (felhőalapú szolgáltatások projektek)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -106,7 +106,7 @@ Két módon szabhatja testre az üzenetek lekérését egy üzenetsorból.
 * Az üzenetkötegek (legfeljebb 32) kérheti le.
 * Beállíthat egy hosszabb vagy rövidebb láthatatlansági időkorlátot, így a kódnak hosszabb vagy rövidebb idő teljesen feldolgozni az egyes üzeneteket. Az alábbi példakód a **GetMessages** módszer segítségével egyszerre 20 üzenetet kér le. Ezután minden üzenetet feldolgoz egy **foreach** hurok segítségével. Mindemellett a láthatatlansági időkorlátot minden üzenethez öt percre állítja be. Vegye figyelembe, hogy az 5 perc minden üzenetnél ugyanakkor kezdődik, tehát 5 perccel a **GetMessages** hívása után a nem törölt üzenetek újra láthatóvá válnak.
 
-Íme egy példa:
+Például:
 
     foreach (CloudQueueMessage message in messageQueue.GetMessages(20, TimeSpan.FromMinutes(5)))
     {
@@ -153,6 +153,6 @@ Egy üzenetsor és az összes benne foglalt üzenet törléséhez hívja meg a *
     // Delete the queue.
     messageQueue.Delete();
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [!INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
 

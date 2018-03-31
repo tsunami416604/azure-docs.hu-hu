@@ -1,11 +1,11 @@
 ---
-title: "Windows PowerShell-parancsfájlok használatával történő közzétételéhez fejlesztési és tesztkörnyezetek |} Microsoft Docs"
-description: "Útmutató a Windows PowerShell-parancsfájlokat a Visual Studio használatával közzétegyék a fejlesztési és tesztelési környezetben."
+title: Windows PowerShell-parancsfájlok használatával történő közzétételéhez fejlesztési és tesztkörnyezetek |} Microsoft Docs
+description: Útmutató a Windows PowerShell-parancsfájlokat a Visual Studio használatával közzétegyék a fejlesztési és tesztelési környezetben.
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 5fff1301-5469-4d97-be88-c85c30f837c1
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
-ms.author: kraigb
-ms.openlocfilehash: 4e9409aac836a60e7ea01261840c084ff09e954e
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.author: ghogen
+ms.openlocfilehash: 58d1c8398e626544a7b02198ec0431203aedcc81
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="using-windows-powershell-scripts-to-publish-to-dev-and-test-environments"></a>Windows PowerShell-parancsprogramok használata a fejlesztési és tesztelési környezetben való közzétételhez
 
@@ -313,40 +313,40 @@ Ha segítséget szeretne kérni a funkciók elvégzésére is használhatja a Wi
 
 | Függvény neve | Leírás |
 | --- | --- |
-| Adja hozzá AzureSQLDatabase |Létrehoz egy új Azure SQL-adatbázist. |
-| Adja hozzá AzureSQLDatabases |Az értékek a JSON-konfigurációs fájlt, amely a Visual Studio létrehozza az Azure SQL adatbázisokat hoz létre. |
-| Adja hozzá AzureVM |Egy Azure virtuális gépet hoz létre, és a központilag telepített virtuális gép URL-CÍMÉT adja vissza. A függvény állít be az Előfeltételek, és ekkor meghívja a **New-AzureVM** (Azure modul) működnek, hozzon létre egy új virtuális gépet. |
-| Adja hozzá AzureVMEndpoints |Új bemeneti végpont ad hozzá egy virtuális gépet, és visszahelyezi a virtuális gépet az új végponttal. |
-| Adja hozzá AzureVMStorage |A jelenlegi előfizetés hoz létre egy új Azure storage-fiók. A fiók neve kezdődik "devtest" egyedi alfanumerikus karakterlánc követ. A funkció az új tárfiók a nevét adja vissza. Adja meg egy helyet vagy az új tárfiók affinitáscsoport. |
-| Adja hozzá AzureWebsite |A megadott név és hely egy webhelyet hoz létre. Ez a funkció meghívja a **New-AzureWebsite** függvény a Azure modulban. Ha az előfizetés már nem tartalmazza a megadott névvel rendelkező webhely, ez a funkció a webhelyet hoz létre, és egy webhely objektumot ad vissza. Ellenkező esetben az eredmény `$null`. |
-| Backup-előfizetés |A jelenlegi Azure-előfizetést a menti a `$Script:originalSubscription` változó parancsfájl hatókörében. Ez a funkció menti az aktuális Azure-előfizetés (módon nyert `Get-AzureSubscription -Current`) és a tárfiók, és az előfizetés módosítja ezt a parancsfájlt (a változó tárolja `$UserSpecifiedSubscription`) és a tárfiókot, a parancsfájl hatókörében. Úgy, hogy elmenti az értékeket, a függvény használható, például a `Restore-Subscription`, állítsa vissza az eredeti aktuális előfizetés és a storage-fiók aktuális állapotát, ha a jelenlegi állapota megváltozott. |
-| Keresés – AzureVM |Lekérdezi a megadott Azure virtuális géphez. |
-| Formátum-DevTestMessageWithTime |A dátum és idő üzenetre lefoglalja. Ez a funkció a hiba- és részletes adatfolyamok üzenetek tervezték. |
+| Add-AzureSQLDatabase |Létrehoz egy új Azure SQL-adatbázist. |
+| Add-AzureSQLDatabases |Az értékek a JSON-konfigurációs fájlt, amely a Visual Studio létrehozza az Azure SQL adatbázisokat hoz létre. |
+| Add-AzureVM |Egy Azure virtuális gépet hoz létre, és a központilag telepített virtuális gép URL-CÍMÉT adja vissza. A függvény állít be az Előfeltételek, és ekkor meghívja a **New-AzureVM** (Azure modul) működnek, hozzon létre egy új virtuális gépet. |
+| Add-AzureVMEndpoints |Új bemeneti végpont ad hozzá egy virtuális gépet, és visszahelyezi a virtuális gépet az új végponttal. |
+| Add-AzureVMStorage |A jelenlegi előfizetés hoz létre egy új Azure storage-fiók. A fiók neve kezdődik "devtest" egyedi alfanumerikus karakterlánc követ. A funkció az új tárfiók a nevét adja vissza. Adja meg egy helyet vagy az új tárfiók affinitáscsoport. |
+| Add-AzureWebsite |A megadott név és hely egy webhelyet hoz létre. Ez a funkció meghívja a **New-AzureWebsite** függvény a Azure modulban. Ha az előfizetés már nem tartalmazza a megadott névvel rendelkező webhely, ez a funkció a webhelyet hoz létre, és egy webhely objektumot ad vissza. Ellenkező esetben az eredmény `$null`. |
+| Backup-Subscription |A jelenlegi Azure-előfizetést a menti a `$Script:originalSubscription` változó parancsfájl hatókörében. Ez a funkció menti az aktuális Azure-előfizetés (módon nyert `Get-AzureSubscription -Current`) és a tárfiók, és az előfizetés módosítja ezt a parancsfájlt (a változó tárolja `$UserSpecifiedSubscription`) és a tárfiókot, a parancsfájl hatókörében. Úgy, hogy elmenti az értékeket, a függvény használható, például a `Restore-Subscription`, állítsa vissza az eredeti aktuális előfizetés és a storage-fiók aktuális állapotát, ha a jelenlegi állapota megváltozott. |
+| Find-AzureVM |Lekérdezi a megadott Azure virtuális géphez. |
+| Format-DevTestMessageWithTime |A dátum és idő üzenetre lefoglalja. Ez a funkció a hiba- és részletes adatfolyamok üzenetek tervezték. |
 | Get-AzureSQLDatabaseConnectionString |Állítja össze a kapcsolati karakterláncot egy Azure SQL adatbázishoz való kapcsolódáshoz. |
 | Get-AzureVMStorage |A minta első tárfiók a nevét adja vissza "devtest*" (kis-és nagybetűket) a megadott helyre vagy az affinitáscsoport. Ha a "devtest*" tárfiók helye vagy affinitáscsoportja nem egyezik a, a függvény figyelmen kívül hagyja azt. Adja meg egy helyet vagy affinitáscsoport. |
 | Get-MSDeployCmd |A MsDeploy.exe eszköz futtatni kívánt parancs adja vissza. |
-| Új AzureVMEnvironment |Megállapítja, vagy létrehoz egy virtuális gépet, amely megfelel a JSON-konfigurációs fájlban lévő értékeket az előfizetést. |
-| Közzététel WebPackage |Felhasználási MsDeploy.exe és a webes közzétenni a csomagot. A zip-fájl erőforrások telepítése a webhelyen. Ez a függvény nem ad kimenetet. Ha MSDeploy.exe hívása sikertelen, a függvény kivételt vált. Részletesebb kimenet használatához a **-Verbose** lehetőséget. |
-| Közzététel WebPackageToVM |A paraméterértékek ellenőrzi, és ekkor meghívja a **Publish-WebPackage** függvény. |
-| Olvasási-ConfigFile |A JSON-konfigurációs fájl ellenőrzi, és egy kivonattáblát a kijelölt értékeket adja vissza. |
-| Visszaállítás-előfizetés |A jelenlegi előfizetés visszaállítása az eredeti előfizetés. |
-| Teszt-AzureModule |Beolvasása `$true` Ha telepített Azure modul verziószáma 0.7.4 vagy újabb. Beolvasása `$false` , ha a modul nincs telepítve, vagy korábbi verziójú. Ez a funkció nem paraméterrel rendelkezik. |
-| Teszt-AzureModuleVersion |Beolvasása `$true` Ha Azure-moduljának verziószáma 0.7.4 vagy újabb. Beolvasása `$false` , ha a modul nincs telepítve, vagy korábbi verziójú. Ez a funkció nem paraméterrel rendelkezik. |
-| Teszt-HttpsUrl |A megadott URL-cím konvertál egy System.Uri objektumnak. Beolvasása `$True` Ha abszolút URL-CÍMÉT és az sémát használja https. Beolvasása `$false` Ha az URL-cím relatív, a rendszer nem HTTPS, vagy a bemeneti karakterlánc nem alakítható át egy URL-címet. |
+| New-AzureVMEnvironment |Megállapítja, vagy létrehoz egy virtuális gépet, amely megfelel a JSON-konfigurációs fájlban lévő értékeket az előfizetést. |
+| Publish-WebPackage |Felhasználási MsDeploy.exe és a webes közzétenni a csomagot. A zip-fájl erőforrások telepítése a webhelyen. Ez a függvény nem ad kimenetet. Ha MSDeploy.exe hívása sikertelen, a függvény kivételt vált. Részletesebb kimenet használatához a **-Verbose** lehetőséget. |
+| Publish-WebPackageToVM |A paraméterértékek ellenőrzi, és ekkor meghívja a **Publish-WebPackage** függvény. |
+| Read-ConfigFile |A JSON-konfigurációs fájl ellenőrzi, és egy kivonattáblát a kijelölt értékeket adja vissza. |
+| Restore-Subscription |A jelenlegi előfizetés visszaállítása az eredeti előfizetés. |
+| Test-AzureModule |Beolvasása `$true` Ha telepített Azure modul verziószáma 0.7.4 vagy újabb. Beolvasása `$false` , ha a modul nincs telepítve, vagy korábbi verziójú. Ez a funkció nem paraméterrel rendelkezik. |
+| Test-AzureModuleVersion |Beolvasása `$true` Ha Azure-moduljának verziószáma 0.7.4 vagy újabb. Beolvasása `$false` , ha a modul nincs telepítve, vagy korábbi verziójú. Ez a funkció nem paraméterrel rendelkezik. |
+| Test-HttpsUrl |A megadott URL-cím konvertál egy System.Uri objektumnak. Beolvasása `$True` Ha abszolút URL-CÍMÉT és az sémát használja https. Beolvasása `$false` Ha az URL-cím relatív, a rendszer nem HTTPS, vagy a bemeneti karakterlánc nem alakítható át egy URL-címet. |
 | Teszt-tag |Beolvasása `$true` Ha egy tulajdonság vagy metódus tagja az objektum. Ellenkező esetben adja vissza `$false`. |
-| Írási-ErrorWithTime |Az aktuális idő előtagként hibaüzenetet ír. Ez a funkció meghívja a **formátum-DevTestMessageWithTime** függvény illesztenie az idő az üzenetet a hibafolyam írása előtt. |
-| Írási-HostWithTime |A gazdagép program üzenetet ír (**Write-Host**) az aktuális idő előtagként. A hatását, hogy a gazdagép program írásakor függ. A legtöbb üzemeltető Windows PowerShell írási ezek az üzenetek normál a kimenetbe. |
-| Írási-VerboseWithTime |Az aktuális idő előtagként egy részletes üzenetet ír. Mert meghívja **Write-Verbose**, az üzenet jelenik meg, csak ha a parancsfájl futtatása a a **részletes** paraméter, vagy ha a **VerbosePreference** beállítás értéke **Folytatás**. |
+| Write-ErrorWithTime |Az aktuális idő előtagként hibaüzenetet ír. Ez a funkció meghívja a **formátum-DevTestMessageWithTime** függvény illesztenie az idő az üzenetet a hibafolyam írása előtt. |
+| Write-HostWithTime |A gazdagép program üzenetet ír (**Write-Host**) az aktuális idő előtagként. A hatását, hogy a gazdagép program írásakor függ. A legtöbb üzemeltető Windows PowerShell írási ezek az üzenetek normál a kimenetbe. |
+| Write-VerboseWithTime |Az aktuális idő előtagként egy részletes üzenetet ír. Mert meghívja **Write-Verbose**, az üzenet jelenik meg, csak ha a parancsfájl futtatása a a **részletes** paraméter, vagy ha a **VerbosePreference** beállítás értéke **Folytatás**. |
 
-**Közzététele: webalkalmazás**
+**Publish-WebApplication**
 
 | Függvény neve | Leírás |
 | --- | --- |
-| Új AzureWebApplicationEnvironment |Azure-erőforrások, például a webhelyek vagy virtuális gépet hoz létre. |
-| Új WebDeployPackage |Ez a funkció nincs megvalósítva. Ez a funkció a projekt felépítéséhez parancsok adhat hozzá. |
-| Közzététel AzureWebApplication |A webalkalmazások Azure közzéteszi. |
-| Közzététele: webalkalmazás |Hoz létre, és a Web Apps, a virtuális gépek, a SQL-adatbázisok és a storage-fiókok a Visual Studio webes projektet telepít. |
-| Teszt:-webalkalmazás |Ez a funkció nincs megvalósítva. Ez a függvény az alkalmazás teszteléséhez parancsok adhat hozzá. |
+| New-AzureWebApplicationEnvironment |Azure-erőforrások, például a webhelyek vagy virtuális gépet hoz létre. |
+| New-WebDeployPackage |Ez a funkció nincs megvalósítva. Ez a funkció a projekt felépítéséhez parancsok adhat hozzá. |
+| Publish-AzureWebApplication |A webalkalmazások Azure közzéteszi. |
+| Publish-WebApplication |Hoz létre, és a Web Apps, a virtuális gépek, a SQL-adatbázisok és a storage-fiókok a Visual Studio webes projektet telepít. |
+| Test-WebApplication |Ez a funkció nincs megvalósítva. Ez a függvény az alkalmazás teszteléséhez parancsok adhat hozzá. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 PowerShell parancsfájl-kezelési beolvasásával kapcsolatos további [a Windows PowerShell parancsfájlok](https://technet.microsoft.com/library/bb978526.aspx) és egyéb Azure PowerShell-parancsfájlok, tekintse meg a [Script Center](https://azure.microsoft.com/documentation/scripts/).

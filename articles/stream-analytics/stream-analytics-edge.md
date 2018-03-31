@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Stream Analytics IoT oldal (előzetes verzió)"
-description: "Peremhálózati feladatok létrehozása az Azure Stream Analytics, és telepítheti őket az eszközök fut. Azure IoT peremhálózati."
-keywords: "adatfolyam esetében iot, él"
+title: Az Azure Stream Analytics IoT oldal (előzetes verzió)
+description: Peremhálózati feladatok létrehozása az Azure Stream Analytics, és telepítheti őket az eszközök fut. Azure IoT peremhálózati.
+keywords: adatfolyam esetében iot, él
 services: stream-analytics
-documentationcenter: 
+documentationcenter: ''
 author: jseb225
-manager: jhubbard
-ms.assetid: 
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 01/16/2017
 ms.author: jeanb
-ms.openlocfilehash: f1ff8d6f64a04ab03c8170fd2b6a7c881227da2e
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 475ca357c8445e8a7c672406f919af1d99a0933b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-stream-analytics-on-iot-edge-preview"></a>Az Azure Stream Analytics IoT oldal (előzetes verzió)
 
@@ -29,7 +29,7 @@ Az Azure Stream Analytics (ASA) IoT oldal lehetővé teszi a fejlesztők számá
 Az Azure Stream Analytics IoT oldal belül fut a [Azure IoT peremhálózati](https://azure.microsoft.com/campaigns/iot-edge/) keretrendszer. Ha a feladat az ASA, deploym jön létre, és az IoT-központ használatával ASA feladatok kezelése.
 Ez a funkció jelenleg előzetes verzióban érhető, ha bármilyen kérdése vagy visszajelzést szeretne küldeni használja [felmérés](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u) a termékért felelős csoport kapcsolódni. 
 
-## <a name="scenarios"></a>Forgatókönyvek
+## <a name="scenarios"></a>Alkalmazási helyzetek
 ![Magas szintű diagramját](media/stream-analytics-edge/ASAedge_highlevel.png)
 
 * **Kis késleltetésű parancs és a vezérlő**: például biztonsági rendszerek gyártási kell válaszolnia a működési adatok egészen kis késleltetésű. Az IoT-oldal ASA elemezheti érzékelő adatokat majdnem valós időben, és parancsok kibocsátani, ha Ön a gépek leállítása vagy aktiváltak riasztásokat rendellenességek észlelését.
@@ -54,7 +54,7 @@ A következő táblázat ismerteti a magas szintű lépéseket. További részle
 |      |Lépés   | Hely     | Megjegyzések   |
 | ---   | ---   | ---       |  ---      |
 | 1   | **ASA peremhálózati feladat létrehozása**   | Azure Portal      |  Hozzon létre egy új feladatot, jelölje be **peremhálózati** , **üzemeltetési környezet**. <br> Ezek a feladatok létrehozott vagy kezelt a felhőből, és futtassa a saját IoT peremhálózati eszközön.     |
-| 2   | **A tároló létrehozása**   | Azure Portal       | A tároló használt menteni a feladat definíciójához ha azok elérhetők az IoT-eszközök által. <br>  A meglévő tárolót is felhasználhatja.     |
+| 2.   | **A tároló létrehozása**   | Azure Portal       | A tároló használt menteni a feladat definíciójához ha azok elérhetők az IoT-eszközök által. <br>  A meglévő tárolót is felhasználhatja.     |
 | 3   | **Az IoT-Edge tesztkörnyezetben, a forráseszköz(ök) beállítása**   | Eszköz(ök)      | Az utasítások [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) vagy [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux).          |
 | 4   | **Az IoT-Edge eszköz(ök) ASA telepített**   | Azure Portal      |  A korábban létrehozott tároló ASA feladatdefiníció exportálja.       |
 Követésével [részletes oktatóanyag](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics) központi telepítése az első ASA munkahelye IoT oldal. A következő videó segítenek megérteni a a folyamat egy Stream Analytics-feladat az IoT-peremhálózati eszközön:  
@@ -108,7 +108,7 @@ Ezeket a lépéseket az IoT-Edge dokumentációjában ismertetett [Windows](http
 ##### <a name="add-asa-to-your-deployment"></a>A központi telepítés ASA hozzáadása
 - Az Azure portálon nyissa meg az IoT-központ IoT peremhálózati Explorer váltson, és az eszköz panel megnyitásához.
 - Válassza ki **modulok beállítása**, majd jelölje be **importálási Azure szolgáltatás IoT peremhálózati modul**.
-- Válassza ki az előfizetés és a ASA peremhálózati feladatot, amely létrehozta. Ezután válassza ki a tárfiók. Kattintson a Mentés gombra.
+- Válassza ki az előfizetés és a ASA peremhálózati feladatot, amely létrehozta. Ezután válassza ki a tárfiókot. Kattintson a Mentés gombra.
 ![ASA modul hozzá lesz adva a központi telepítésben](media/stream-analytics-edge/set_module.png)
 
 
@@ -206,7 +206,7 @@ További információkért lásd: [Docker dokumentációja a Windows itt](https:
 * [Az IoT peremhálózati preview licencet az Azure Stream Analytics](https://go.microsoft.com/fwlink/?linkid=862827). 
 * [Külső értesítés az Azure Stream Analytics a IoT peremhálózati Preview-ban](https://go.microsoft.com/fwlink/?linkid=862828).
 
-## <a name="get-help"></a>Segítségkérés
+## <a name="get-help"></a>Segítség kérése
 Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics).
 
 

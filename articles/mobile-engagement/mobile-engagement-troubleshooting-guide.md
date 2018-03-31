@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Mobile Engagement hibaelhárítási útmutatók"
-description: "Az Azure Mobile Engagement a hibaelhárítási útmutatója"
+title: Az Azure Mobile Engagement hibaelhárítási útmutatók
+description: Az Azure Mobile Engagement a hibaelhárítási útmutatója
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 31134a29-a513-4e5e-b626-f6cf6fe04769
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,17 +14,21 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 93b5e3f4892f974bf9df28955956136528470e03
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1242b2b796821856561a82d4a585b26693aadadd
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-mobile-engagement---troubleshooting-guide"></a>Azure Mobile Engagement – hibaelhárítási útmutató
-## <a name="introduction"></a>Bevezetés
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
+## <a name="introduction"></a>Bemutatás
 A következő hibaelhárítási útmutató segítségével megtudhatja, hogy az alapvető okok néhány gyakran látható problémákat és a rendszer engedélyezi, hogy a saját. 
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 Általánosságban elmondható mindig ellenőrizze a következőket:
 
 1. Győződjön meg arról, hogy lezajlott leírtak szerint az integrációhoz szükséges összes lépést a [bevezető oktatóanyagok](mobile-engagement-windows-store-dotnet-get-started.md)
@@ -107,7 +111,7 @@ Ha nem sikerül, a probléma megoldásához saját kezűleg akkor is:
 1. Keresse meg a problémát a StackOverflow fórumon meglévő szálak és [MSDN fórum](https://social.msdn.microsoft.com/Forums/windows/en-US/home?forum=azuremobileengagement) , és ha nem, majd kérdése van. 
 2. Ha megtalálta egy szolgáltatást, majd adja hozzá vagy szavazás a kérés található meg a [UserVoice fórum](https://feedback.azure.com/forums/285737-mobile-engagement/)
 3. Ha rendelkezik a Microsoft támogatja a nyissa meg a támogatási incidensek azáltal, hogy a következő adatokat: 
-   * Az Azure előfizetés-azonosító
+   * Azure Subscription ID
    * Platform (pl. iOS, Android stb.)
    * Alkalmazásazonosító
    * A kampány Azonosítóját (a leküldéses értesítési problémák)

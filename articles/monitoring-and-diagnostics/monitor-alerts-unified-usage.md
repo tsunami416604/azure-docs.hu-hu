@@ -1,9 +1,9 @@
 ---
-title: "Hozzon létre, riasztások megtekintése és kezelése riasztások használata Azure figyelője – (előzetes verzió) |} Microsoft Docs"
-description: "Használja az új Azure riasztások egységes felületet, megtekintése és kezelése a metrika és riasztási szabályok jelentkezzen egyetlen helyről."
+title: Hozzon létre, riasztások megtekintése és kezelése riasztások használata Azure figyelője – (előzetes verzió) |} Microsoft Docs
+description: Használja az új Azure riasztások egységes felületet, megtekintése és kezelése a metrika és riasztási szabályok jelentkezzen egyetlen helyről.
 author: msvijayn
 manager: kmadnani1
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 36729da3-e002-4a64-86b2-2513ca2cbb58
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: vinagara
-ms.openlocfilehash: b6b6bfee5b9e9036a6d7ff17ff1a8d4de542bbd3
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 6bd2c452059950f714de304cc30c7b4bd023fd86
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="create-view-and-manage-alerts-using-azure-monitor---alerts-preview"></a>Hozzon létre, megtekintheti és kezelheti a riasztásokat figyelővel Azure - riasztások (előzetes verzió)
 
@@ -136,7 +136,7 @@ A **napló riasztások** riasztások alapulhat:
 
 1. Az a [portal](https://portal.azure.com/), jelölje be **figyelő** és - FIGYELŐ szakaszban válasszon **riasztások (előzetes verzió)**.  
 
-2. A **(előzetes verzió) irányítópult riasztások** megjelenik - az összes Azure-riasztás egyesített és megjelenő egyes board amelynek ![riasztási irányítópult](./media/monitoring-overview-unified/alerts-preview-overview.png)
+2. A **(előzetes verzió) irányítópult riasztások** megjelenik - az összes Azure-riasztás egyesített és megjelenő egyes board amelynek ![riasztási irányítópult](./media/monitoring-alerts-unified-usage/alerts-preview-overview.png)
 3. Az irányítópult felső balról jobbra, egy pillanat alatt az alábbi - jelenítse meg a részletes rákattintva jeleníti meg:
     - *Riasztások indította*: A riasztások számát jelenleg logika teljesül, és a indította állapota
     - *A riasztási szabályok teljes*: A szám létre riasztási szabályok és az alatta szöveggel, a szám, amellyel jelenleg engedélyezve vannak
@@ -147,7 +147,7 @@ A **napló riasztások** riasztások alapulhat:
 1. Az a [portal](https://portal.azure.com/), jelölje be **figyelő** és - FIGYELŐ szakaszban válasszon **riasztások (előzetes verzió)**.  
 2. Válassza ki a **szabályok kezelése** gombra kattint a felső sávon, navigáljon a szabály felügyeleti szakasz - létrehozott összes riasztási szabályok listázó; többek között a riasztásokat, amelyek le vannak tiltva.
 3. Adott riasztási szabályok megkereséséhez egy használható a legördülő lista szűrők felül, amelyek lehetővé teszik a shortlist riasztási szabályok adott *előfizetés, csoportok és/vagy erőforrás*. Azt is megteheti a keresési ablaktáblán a riasztási szabály lista fölött jelölték meg *riasztások szűrése*, egy biztosíthat kulcsszóval, amely szerepel *riasztás nevét, a feltétel és a cél erőforráson*; csak megjelenítése a megfeleltetési szabályokról.
-   ![Riasztás szabályok kezelése](./media/monitoring-overview-unified/alerts-preview-rules.png)
+   ![Riasztás szabályok kezelése](./media/monitoring-alerts-unified-usage/alerts-preview-rules.png)
 4. Megtekintéséhez, vagy módosíthatja az adott riasztási szabályokat, kattintson a nevére, amelyek akkor jelennek meg egy kattintható hivatkozássá.
 5. Riasztás definiált látható - három fázis szerkezete: 1.) a riasztás 3) művelet feltétel 2) a riasztás Részletcsoport. **Cél feltételek** rákattintva módosítsa a riasztás logika vagy egy új feltétel az ikon használata a korábbi logika törlése után lehet hozzáadni. Hasonlóképpen, a riasztás részletes adatait tartalmazó részben - **leírás** és **súlyossági** módosítható. És a művelet csoport módosítható, vagy egy új kialakított is létrehozhatja, ha a riasztás történő a **új művelet csoport** gombra.
 

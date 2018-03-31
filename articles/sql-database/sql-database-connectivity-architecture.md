@@ -1,6 +1,6 @@
 ---
-title: "Az Azure SQL adatbázis-kapcsolat architektúra |} Microsoft Docs"
-description: "Ez a dokumentum ismerteti a Azure SQLDB kapcsolat architektúrát Azure-ban vagy az Azure-on kívüli."
+title: Az Azure SQL adatbázis-kapcsolat architektúra |} Microsoft Docs
+description: Ez a dokumentum ismerteti a Azure SQLDB kapcsolat architektúrát Azure-ban vagy az Azure-on kívüli.
 services: sql-database
 author: CarlRabeler
 manager: craigg
@@ -9,11 +9,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: carlrab
-ms.openlocfilehash: 98784b2d1ede5354c965e483b34b5fcb323394aa
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f7dc584c8fa9f4452b2bd9288df86492399c036c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Az Azure SQL Database kapcsolat architektúrája 
 
@@ -66,9 +66,9 @@ A következő táblázat az elsődleges és másodlagos IP-címek az Azure SQL D
 | Kelet-Ázsia | 191.234.2.139 | 52.175.33.150 |
 | 1 USA keleti régiója | 191.238.6.43 | 40.121.158.30 |
 | USA 2. keleti régiója | 191.239.224.107 | 40.79.84.180 * |
-| Közép-India | 104.211.96.159  | |
-| Dél-India | 104.211.224.146  | |
-| Nyugat-India | 104.211.160.80 | |
+| India középső régiója | 104.211.96.159  | |
+| India déli régiója | 104.211.224.146  | |
+| India nyugati régiója | 104.211.160.80 | |
 | Kelet-Japán | 191.237.240.43 | 13.78.61.196 |
 | Nyugat-Japán | 191.238.68.11 | 104.214.148.156 |
 | Korea középső régiója | 52.231.32.42 | |
@@ -80,18 +80,18 @@ A következő táblázat az elsődleges és másodlagos IP-címek az Azure SQL D
 | Egyesült Királyság északi régiója | 13.87.97.210 | |
 | Egyesült Királyság déli régiója 1 | 51.140.184.11 | |
 | Egyesült Királyság 2. déli régiója | 13.87.34.7 | |
-| Az Egyesült Királyság nyugati régiója | 51.141.8.11  | |
-| USA nyugati középső régiója | 13.78.145.25 | |
+| Egyesült Királyság nyugati régiója | 51.141.8.11  | |
+| Egyesült Államok nyugati középső régiója | 13.78.145.25 | |
 | Nyugat-Európa | 191.237.232.75 | 40.68.37.158 |
 | 1 USA nyugati régiója | 23.99.34.75 | 104.42.238.205 |
-| USA nyugati régiója, 2. | 13.66.226.202  | |
+| Egyesült Államok 2. nyugati régiója | 13.66.226.202  | |
 ||||
 
 \* **Megjegyzés:** *USA keleti régiója 2* rendelkezik is egy harmadlagos IP-címe `52.167.104.0`.
 
 ## <a name="change-azure-sql-database-connection-policy"></a>Módosítsa a kapcsolatkezelési házirendet az Azure SQL Database
 
-Az Azure SQL Database kapcsolatkezelési házirendet az Azure SQL Database-kiszolgáló módosításához használja a [REST API](https://msdn.microsoft.com/library/azure/mt604439.aspx).
+Az Azure SQL Database kapcsolatkezelési házirendet az Azure SQL Database-kiszolgáló módosításához használja a [kapcs-házirend](https://docs.microsoft.com/cli/azure/sql/server/conn-policy) parancsot.
 
 - Ha a kapcsolat-házirend **Proxy**, az összes hálózati csomagok folyamata az Azure SQL Database-átjárón keresztül. Ehhez a beállításhoz szeretné engedélyezni a kimenő csak az Azure SQL Database átjáró IP-címhez. Beállítás használatával **Proxy** rendelkezik további késést biztosít beállítását **átirányítási**.
 - Ha a kapcsolat szabályzatot állítja **átirányítási**, az összes hálózati csomagok folyamat közvetlenül a köztes proxy felé. Ehhez a beállításhoz több IP-cím a kimenő forgalom engedélyezése kell.
@@ -181,6 +181,6 @@ az resource update --ids $id --set properties.connectionType=Proxy
 
 ## <a name="next-steps"></a>További lépések
 
-- Az Azure SQL Database kapcsolatkezelési házirendet az Azure SQL Database-kiszolgáló módosításának módjával kapcsolatos információkért lásd: [létrehozási vagy frissítési kiszolgáló kapcsolatkezelési házirendet a REST API használatával](https://msdn.microsoft.com/library/azure/mt604439.aspx).
+- Az Azure SQL Database kapcsolatkezelési házirendet az Azure SQL Database-kiszolgáló módosításának módjával kapcsolatos információkért lásd: [kapcs-házirend](https://docs.microsoft.com/cli/azure/sql/server/conn-policy).
 - Információ az Azure SQL Database kapcsolat viselkedésről ADO.NET 4.5 vagy újabb verzióját használó ügyfelek számára, lásd: [kívüli ADO.NET 4.5 1433-as portokon](sql-database-develop-direct-route-ports-adonet-v12.md).
 - Általános alkalmazás fejlesztési, témakör [SQL adatbázis alkalmazás fejlesztői áttekintés](sql-database-develop-overview.md).

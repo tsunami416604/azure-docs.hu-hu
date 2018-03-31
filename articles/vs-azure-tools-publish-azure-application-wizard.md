@@ -1,11 +1,11 @@
 ---
-title: "A Visual Studio használatával Azure varázsló közzététele |} Microsoft Docs"
-description: "Megtudhatja, hogyan lehet megadni a különböző beállításokat a Visual Studio Azure alkalmazás közzététele varázsló"
+title: A Visual Studio használatával Azure varázsló közzététele |} Microsoft Docs
+description: Megtudhatja, hogyan lehet megadni a különböző beállításokat a Visual Studio Azure alkalmazás közzététele varázsló
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 7d8f1ac9-e439-47e0-a183-0642c4ea1920
 ms.service: multiple
 ms.devlang: multiple
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/21/2017
-ms.author: kraigb
-ms.openlocfilehash: d29cae9710cc9c01dae09e8fd8273ac30dd61827
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.author: ghogen
+ms.openlocfilehash: 980809bc62f7766971ea4753e1cfb165aa1cffc2
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="using-the-visual-studio-publish-azure-application-wizard"></a>A Visual Studio használatával Azure varázsló közzététele
 
@@ -101,7 +101,7 @@ Diagnosztika lehetővé teszi egy Azure-felhőszolgáltatásban (vagy Azure virt
 
 ## <a name="summary-page"></a>Összefoglaló lap
 
-![Összegzés](./media/vs-azure-tools-publish-azure-application-wizard/summary.png)
+![Összefoglalás](./media/vs-azure-tools-publish-azure-application-wizard/summary.png)
 
 **Cél profil** -választhatja a közzétételi profil létrehozása a kiválasztott beállításokkal. Létrehozhat például egy tesztkörnyezetben egy profilt és egy másikat a termelési. Ez a profil mentéséhez válassza a **mentése** ikonra. A varázsló hozza létre a profilt, és menti a Visual Studio-projektet. Módosítsa a profil nevét, nyissa meg a **céloz profil** listában, és válassza  **&lt;kezelése... &gt;**.
 

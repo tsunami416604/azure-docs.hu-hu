@@ -1,11 +1,11 @@
 ---
-title: "Windows univerzális alkalmazások Engagement SDK-integráció"
-description: "Az Azure Mobile Engagement integrálása univerzális Windows-alkalmazások"
+title: Windows univerzális alkalmazások Engagement SDK-integráció
+description: Az Azure Mobile Engagement integrálása univerzális Windows-alkalmazások
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 71236b68-5ebd-44aa-8c82-c7ca8098ea05
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 56a382a348609df1d1d308aeac39f47ca82ac4c8
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: dc075ffe6565b4ef60e77f74ba4f065629c99952
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="windows-universal-apps-engagement-sdk-integration"></a>Windows univerzális alkalmazások Engagement SDK-integráció
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 > [!div class="op_single_selector"]
 > * [Univerzális Windows](mobile-engagement-windows-store-integrate-engagement.md) 
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md) 
@@ -57,7 +61,7 @@ NuGet automatikusan telepíti az SDK-erőforrások a `Resources` mappa a projekt
 NuGet nem automatikus központi telepítése még az UWP-alkalmazás az SDK-erőforrások. Meg kell azt manuálisan mindaddig, amíg az erőforrások telepítése a NuGet bevezetik:
 
 1. Nyissa meg a Fájlkezelőben.
-2. Nyissa meg azt a következő (**x.x.x** telepíti Engagement verziója): *% USERPROFILE %\\.nuget\packages\MicrosoftAzure.MobileEngagement\\*  *x.x.x**\\content\win81*
+2. Nyissa meg azt a következő (**x.x.x** telepíti Engagement verziója): *% USERPROFILE %\\.nuget\packages\MicrosoftAzure.MobileEngagement\\  **x.x.x**\\content\win81*
 3. Húzza a **erőforrások** a Fájlkezelőben a Visual Studio projekt gyökerében mappát.
 4. A Visual Studióban válassza ki a projektet, és aktiválja a **megjelenítése minden fájl** a ikon a **Megoldáskezelőben**.
 5. Egyes fájlok nem szerepelnek a projektet. Importálandó őket egyszerre kattintson a jobb gombbal a **erőforrások** mappa, **zárja ki a projekt** egy másikra a kattintson a jobb gombbal, majd a **erőforrások** mappa, **szerepeljenek projekt** újból felvenni az egész mappa. Az összes fájlt a **erőforrások** mappa mostantól beletartoznak a projekthez.

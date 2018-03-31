@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Mobile Engagement hibaelhárítási útmutatója - SDK"
-description: "Az Azure Mobile Engagement SDK-integráció problémák elhárítása"
+title: Az Azure Mobile Engagement hibaelhárítási útmutatója - SDK
+description: Az Azure Mobile Engagement SDK-integráció problémák elhárítása
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: de265cf1-2f88-43ef-8616-156ada5be7b6
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 4d9d6165deb4bd0c65f1841aa7c457363a1f2865
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1f617b3c3b221a38b63be6f61f7553b390cf2f7c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshooting-guide-for-sdk-integration-issues"></a>Az SDK-integráció problémák hibaelhárítási útmutató
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 A következőkben lehetséges problémák merülhetnek fel az, hogy hogyan integrálja az Azure Mobile Engagement az alkalmazás.
 
 ## <a name="sdk-issues-discovered-by-a-failure-in-another-area-of-your-application"></a>Az alkalmazás egy másik olyan területen meghibásodása felfedezett SDK
@@ -78,7 +82,7 @@ A következőkben lehetséges problémák merülhetnek fel az, hogy hogyan integ
 * Bizonyos korlátozások is egy platform, amely az Azure Mobile Engagement vezérlésére nem képes (ilyen például a system center működéséről az alkalmazásból leküldéses értesítések Android és iOS) beépített szolgáltatásai.
 * Az Azure Mobile Engagement teszi közzé a belső csomagok által használt Azure Mobile Engagement az iOS és Android hivatkozás teljes listáját. Ne feledje, hogy az Azure Mobile Engagement néhány szolgáltatása a platformon (Android, iOS, webalkalmazás, Windows és Windows Phone).
 
-### <a name="see-also"></a>Lásd még:
+### <a name="see-also"></a>Lásd még
 * [Hibaelhárítási útmutató - leküldéses][Link 23] 
 * [SDK-dokumentáció – kibocsátási megjegyzések][Link 5]
 * [SDK-dokumentáció - frissítési útmutatók][Link 5]
@@ -92,7 +96,7 @@ A következőkben lehetséges problémák merülhetnek fel az, hogy hogyan integ
 * Keresse meg az Eszközazonosítót a vizsgálati eszköz, és hajtsa végre a azonos műveletet, ami miatt a végfelhasználó számára az összeomlások okának azonosításához összeomlását az alkalmazás.
 * Az Azure Mobile Engagement SDK ismert problémái miatt az alkalmazások összeomlási néha megoldó az SDK legújabb verziójára. Ellenőrizze, hogy a kibocsátási megjegyzések a platformra vonatkozó összeomlások vizsgálatakor.
 
-### <a name="see-also"></a>Lásd még:
+### <a name="see-also"></a>Lásd még
 * [SDK-dokumentáció – kibocsátási megjegyzések][Link 5]
 * [SDK-dokumentáció - frissítési útmutatók][Link 5]
 

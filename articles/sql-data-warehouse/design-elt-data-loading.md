@@ -1,29 +1,24 @@
 ---
-title: "Az Azure SQL Data Warehouse ELT kialakítása |} Microsoft Docs"
-description: "Adatok áthelyezése az Azure-bA és az adatok betöltése az SQL Data Warehouse egy kivonatot, betöltés és átalakítás (ELT) folyamat megtervezéséhez az Azure SQL Data Warehouse technológiák együttesen."
+title: ETL, helyett Azure SQL Data Warehouse ELT kialakítása |} Microsoft Docs
+description: Helyett ETL alakítson ki az adatok vagy az Azure SQL Data Warehouse feltöltését egy kivonatot, betöltés és átalakítás (ELT) folyamatot.
 services: sql-data-warehouse
-documentationcenter: NA
 author: ckarst
 manager: jhubbard
-editor: 
-ms.assetid: 2253bf46-cf72-4de7-85ce-f267494d55fa
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: loading
-ms.date: 12/12/2017
-ms.author: cakarst;barbkess
-ms.openlocfilehash: e94dca69c77c46034e318205279be5188e1371f5
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.topic: conceptual
+ms.component: design
+ms.date: 03/28/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: c27ad843c9ee9beed871dcc03254cb1266f6ebe2
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="designing-extract-load-and-transform-elt-for-azure-sql-data-warehouse"></a>Kinyerési, betöltés és átalakítás (ELT) az Azure SQL Data Warehouse tervezése
 
-Követően adatainak Azure storage és az adatok betöltése az SQL Data Warehouse egy kivonatot, betöltés és átalakítás (ELT) folyamat megtervezéséhez az Azure SQL Data Warehouse technológiák együttesen. Ez a cikk a technológiákat, amelyek betöltése a polybase-zel támogatják, és ezután összpontosít, amely a PolyBase szolgáltatással T-SQL adatok betöltése az Azure Storage-ból az SQL Data Warehouse egy ELT folyamat tervezése be.
+Helyett a kinyerési, átalakítási és betöltési (ETL) tervezze meg az adatok betöltése az Azure SQL Data Warehouse egy kivonatot, betöltés és átalakítás (ELT) folyamat. Ez a cikk be módjai alakítson ki egy ELT folyamatot, amely az Azure data warehouse-bA helyezi át az adatokat.
 
 ## <a name="what-is-elt"></a>Mi az az ELT?
 
@@ -63,7 +58,7 @@ A PolyBase adatokat tölt az UTF-8 és UTF-16 kódolású tagolt szövegfájlok.
 Ha az adatok nem kompatibilis a PolyBase, használhatja [bcp](sql-data-warehouse-load-with-bcp.md) vagy a [SQLBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx). BCP Azure Blob Storage tárolóban keresztül közvetlenül az SQL Data Warehouse betölti, és csak kis terhelések számára készült. Vegye figyelembe, ezek a beállítások betöltése teljesítménye jelentősen lassabb, mint a PolyBase. 
 
 
-## <a name="extract-source-data"></a>Bontsa ki a forrásadatok
+## <a name="extract-source-data"></a>Forrásadatok kinyerése
 
 A forrásrendszerben kívüli adatok attól függ, hogy a forrás.  A cél, hogy az adatok áthelyezése a tagolt szövegfájlok rendszerbe. Ha SQL Server használ, akkor használhatja [bcp parancssori eszköz](/sql/tools/bcp-utility) exportálja az adatokat.  
 
@@ -104,7 +99,7 @@ A szöveg fájlok:
 - A szöveges fájlt való megfelelés érdekében az SQL Data Warehouse céltábla oszlopok és adattípusok formázása. A külső szövegfájlok adattípusok és a data warehouse tábla között a hibás illesztés hibákat okoz a sorokat a rendszer elutasítja a betöltése közben.
 - A szövegfájl, amelynek a lezáró külön mezőket.  Győződjön meg arról, egy karakter vagy egy karaktersorozat, amely nem található a forrásban lévő használatára. A megadott lezáró használja [külső FÁJLFORMÁTUM létrehozása](/sql/t-sql/statements/create-external-file-format-transact-sql).
 
-## <a name="load-to-a-staging-table"></a>Az átmeneti tárolási tábla betöltése
+## <a name="load-to-a-staging-table"></a>Betöltés előkészítési táblába
 Adatok lekérése az adatraktárba, az jól használható első betöltés az adatok egy átmeneti táblába. Az átmeneti táblázat segítségével hibák kezelheti a termelési táblák zavarása nélkül, és visszaállítási műveletek az éles táblán küszöbölhető. Az átmeneti táblázat is biztosít arra, hogy az SQL Data Warehouse átalakítások futtatása előtt az adatok beszúrása éles táblákat.
 
 Betöltése a következő T-SQL, futtassa a [létrehozása TABLE AS kiválasztása (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse.md) T-SQL-utasításban. Ez a parancs eredménye egy olyan select utasításon szúr be egy új tábla. Az utasítás kiválaszt egy külső táblát, importálja a külső adatokat. 
@@ -124,7 +119,7 @@ AS SELECT * FROM [ext].[Date]
 ## <a name="transform-the-data"></a>Az adatok átalakítása
 Közben az átmeneti tárolási tábla, hajtsa végre, amely a számítási feladat által igényelt átalakításokat. Ezután lépjen az adatok egy éles táblába.
 
-## <a name="insert-data-into-production-table"></a>Adatok beszúrása éles tábla
+## <a name="insert-data-into-production-table"></a>Adatok beszúrása a termelési táblába
 
 AZ INSERT... SELECT utasításban az átmeneti tárolási tábla az adatok áthelyezése az állandó tábla. 
 
@@ -133,7 +128,7 @@ Az ETL-folyamat tervezéséhez, futtassa a folyamat kis teszt mintán. Próbálj
 ## <a name="partner-loading-solutions"></a>Partnermegoldások betöltése
 Partnereink számos rendelkezik megoldások betöltésekor. További tudnivalókért lásd: listáját a [megoldási partnerek](sql-data-warehouse-partner-business-intelligence.md). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Útmutatás feltöltését, lásd: [útmutató adatok betöltése a](guidance-for-loading-data.md).
 
 

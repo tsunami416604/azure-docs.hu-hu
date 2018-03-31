@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: douglasl
-ms.openlocfilehash: e2ebb3db4d51bf4ec1dea4f2f5cc4cc9dcb2ad70
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: db757c5a8a1b51278ada24a5ff50a2da1b357397
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Hozzon létre, és Azure integrációs futásidejű konfigurálása
 Az integrációs futásidejű (IR) a számítási infrastruktúrától által használt Azure Data Factory adatok integrációs funkciók különböző hálózati környezetek között. Infravörös kapcsolatos további információkért lásd: [integrációs futásidejű](concepts-integration-runtime.md).
@@ -29,7 +29,7 @@ Az Azure IR natív módon tevékenységeket elvégezzen az adatok mozgás és a 
 Ez a dokumentum bemutatja, hogyan hozhat létre, és konfigurálja az Azure integrációs futásidejű. 
 
 ## <a name="default-azure-ir"></a>Alapértelmezett Azure IR
-Alapértelmezés szerint minden adat-előállító rendelkezik egy Azure-IR a háttérben, amely támogatja a felhő adatokat tárolja, és a nyilvános hálózati szolgáltatások számítási műveleteket. Az adott Azure IR helye automatikus feloldása. Ha **connectVia** tulajdonság nincs megadva a kapcsolódószolgáltatás-definícióban a megadott Azure-IR szolgál. Csak létrehozásához szükséges kifejezetten az Azure-IR szeretné definiálhat explicit módon az infravörös helyét, vagy ha szeretné a tevékenység végrehajtások a különböző felügyeleti célú IRs gyakorlatilag csoportban. 
+Alapértelmezés szerint minden adat-előállító rendelkezik egy Azure-IR a háttérben, amely támogatja a felhő adatokat tárolja, és a nyilvános hálózati szolgáltatások számítási műveleteket. Az adott Azure IR helye automatikus feloldása. Ha **connectVia** tulajdonság nincs megadva a kapcsolódószolgáltatás-definícióban az alapértelmezett Azure IR szolgál. Csak létrehozásához szükséges kifejezetten az Azure-IR szeretné definiálhat explicit módon az infravörös helyét, vagy ha szeretné a tevékenység végrehajtások a különböző felügyeleti célú IRs gyakorlatilag csoportban. 
 
 ## <a name="create-azure-ir"></a>Az Azure IR létrehozása
 Integrációs futásidejű segítségével hozhatók létre a **Set-AzureRmDataFactoryV2IntegrationRuntime** PowerShell-parancsmagot. Hozzon létre egy Azure-IR, meg kell adnia nevét, helyét és típusát. a parancshoz. Íme egy példa a parancsra hozzon létre egy Azure-IR "Nyugat-Európa" értékűre helye:

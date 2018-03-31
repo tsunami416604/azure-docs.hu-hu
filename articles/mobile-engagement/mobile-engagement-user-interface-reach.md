@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Mobile Engagement felhasználói felület - a Reach"
-description: "Megtudhatja, hogyan érheti el az alkalmazás a felhasználók az Azure Mobile Engagement leküldéses értesítéseket"
+title: Az Azure Mobile Engagement felhasználói felület - a Reach
+description: Megtudhatja, hogyan érheti el az alkalmazás a felhasználók az Azure Mobile Engagement leküldéses értesítéseket
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: d96e2590-08dd-4481-a352-2c18f26a1643
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: ce30456e41ff1a2f4824bcb64246ee115fdd1ef7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d999b83df7d9d467f08ce8ec72468c738e8acfa5
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-reach-out-to-the-users-of-your-application-with-push-notifications"></a>Hogyan érheti el a felhasználókkal leküldéses értesítések
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 Ez a cikk ismerteti a **ELÉRNI** lapján a **a Mobile Engagement** portálon. Használja a **a Mobile Engagement** portal felügyeletét és kezelését a mobile apps szolgáltatásban. Vegye figyelembe, hogy a portál használatának megkezdéséhez először hozzon létre egy **Azure Mobile Engagement** fiók. További információkért lásd: [Azure Mobile Engagement-fiók létrehozása](mobile-engagement-create.md).
 
 A felhasználói felület Reach szakasza a leküldéses kampány felügyeleti eszköz, ahol létrehozása/szerkesztése/aktiválása/Befejezés/figyelő, a következőket teheti, és megtekintheti a statisztikákat a leküldéses értesítési kampányt, és a Reach API (és néhány eleme az alacsony szintű Push API) keresztül is elérhető szolgáltatások . Ne feledje, hogy függetlenül attól, hogy az API-k vagy a felhasználói felület, szüksége lesz integrálni Azure Mobile Engagement és a használata előtt az SDK-val az alkalmazásba, az egyes platformokon Reach elérését a kampányok.
@@ -80,7 +84,7 @@ Kattintson a **statisztika** a Reach-kampány a részletek megtekintéséhez. A 
 
 ![Reach2][19]
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Alapfogalmak][Link 6]
 * [Hibaelhárítási útmutató szolgáltatás][Link 24]
 

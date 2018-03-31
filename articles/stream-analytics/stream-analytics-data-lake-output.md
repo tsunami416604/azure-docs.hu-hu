@@ -1,12 +1,11 @@
 ---
 title: Stream Analytics Data Lake Store kimeneti |} Microsoft Docs
-description: "Hitelesítési és engedélyezési egy Azure Data Lake store a Stream Analytics-feladatok konfigurálása"
-keywords: 
+description: Hitelesítési és engedélyezési egy Azure Data Lake store a Stream Analytics-feladatok konfigurálása
+keywords: ''
 services: stream-analytics
-documentationcenter: 
-author: samacha
-manager: jhubbard
-editor: cgronlun
+documentationcenter: ''
+author: jseb225
+manager: ryanw
 ms.assetid: ea5baafa-0054-4c70-973a-6a3a8c6eaffc
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: e2010e86e56c1ce7a98fae97a8f6f00c30b61035
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: jeanb
+ms.openlocfilehash: 802193b9f15cbc35bec32191ccc63df3329b96f9
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="stream-analytics-data-lake-store-output"></a>Stream Analytics Data Lake Store kimeneti
 Stream Analytics-feladatok támogatja több kimeneti módszerek közül az egyik egy [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/). Az Azure Data Lake Store egy vállalati szintű, nagy kapacitású adattár a big data koncepción alapuló adatelemzési célokra. Data Lake Store lehetővé teszi, hogy a műveleti és felderítési jellegű bármilyen méretű, típusú és feldolgozási sebességű adatok.
@@ -40,7 +39,7 @@ Miután a Data Lake Store-fiók hitelesítését, a Data Lake Store kimeneti meg
 <tbody>
 <tr>
 <td><B>TULAJDONSÁG NEVE</B></td>
-<td><B>LEÍRÁS</B></td>
+<td><B>DESCRIPTION</B></td>
 </tr>
 <tr>
 <td>A kimeneti Alias</td>
@@ -52,7 +51,7 @@ Miután a Data Lake Store-fiók hitelesítését, a Data Lake Store kimeneti meg
 </tr>
 <tr>
 <td>Elérési út előtag mintája [<I>választható</I>]</td>
-<td>A megadott Data Lake Store-fiók található a fájl írásához használt elérési. <BR>a {date}, {time}<BR>1. példa: mappa1/logs / {date} / {time}<BR>2. példa: mappa1/logs / {date}</td>
+<td>A megadott Data Lake Store-fiók található a fájl írásához használt elérési. <BR>{date}, {time}<BR>1. példa: mappa1/logs / {date} / {time}<BR>2. példa: mappa1/logs / {date}</td>
 </tr>
 <tr>
 <td>Dátum formátumban [<I>választható</I>]</td>
@@ -67,11 +66,11 @@ Miután a Data Lake Store-fiók hitelesítését, a Data Lake Store kimeneti meg
 <td>A kimeneti adatok szerializálási formátum. JSON, CSV és az avro-hoz támogatott.</td>
 </tr>
 <tr>
-<td>Encoding</td>
-<td>Ha a fürt megosztott kötetei szolgáltatás- vagy JSON formátumú, kódolással meg kell adni. Az UTF-8 jelenleg az egyetlen támogatott kódolási formátum.</td>
+<td>Kódolás</td>
+<td>Ha a fürt megosztott kötetei szolgáltatás- vagy JSON formátumú, kódolással meg kell adni. Jelenleg az UTF-8 az egyetlen támogatott kódolási formátum.</td>
 </tr>
 <tr>
-<td>Elválasztó</td>
+<td>Elválasztó karakter</td>
 <td>Csak a fürt megosztott kötetei szolgáltatás szerializálási alkalmazható. A Stream Analytics számos általánosan használt elválasztó karaktert támogatja a CSV-adatok szerializálása során. Támogatott értékei vesszővel, a pontosvesszővel válassza el, a terület, a lapon és a függőleges vonal.</td>
 </tr>
 <tr>

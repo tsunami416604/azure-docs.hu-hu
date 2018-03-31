@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: vinagara
-ms.openlocfilehash: 76b7481223566f16a5da8c08d9d76f2bdb6b542a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 5e8a66214efc27e8e59da354e54d68bb48d274cc
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="initiate-extending-alerts-from-oms-into-azure"></a>Az OMS kibővítése riasztásait az Azure kezdeményezése
 Verziótól **2018. április 23.**, a konfigurált riasztások minden felhasználója [a Microsoft Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md), az Azure kiterjesztése. Riasztásokat, amelyek az Azure-bA bővítve lettek OMS a megszokott módon működik. Megfigyelési lehetőségek változatlanok maradnak. Az Azure-bA OMS létrehozott riasztások kiterjesztése számos előnyt kínál. Az előnyei és a folyamat, amely a riasztásokat az OMS Szolgáltatáshoz Azure kapcsolatos további információkért lásd: [terjessze ki a riasztások az OMS Szolgáltatáshoz Azure](monitoring-alerts-extend.md).
@@ -155,7 +155,7 @@ Ha a FELADÁS egy vagy több sikeres, valamint 200 OK választ térhet vissza:
     "version": 2
 }
 ```
-Jelzi, hogy a riasztások fut az Azure, 2-es verzióját jelöli. Ezen verziója csak a ellenőrizni, hogy a riasztásokat az Azure fut, és nincs hatással a felhasználást a [napló Analytics Search API](../log-analytics/log-analytics-api-alerts.md). A riasztások kiterjeszthetőek az Azure sikeresen, ha a munkaterület Rendszergazda és a közreműködői szerepkör társított összes felhasználó kap e-mailben található végrehajtott változtatások részleteit.
+Jelzi, hogy a riasztások fut az Azure, 2-es verzióját jelöli. Ezen verziója csak a ellenőrizni, hogy a riasztásokat az Azure fut, és nincs hatással a felhasználást a [napló Analytics Search API](../log-analytics/log-analytics-api-alerts.md). A riasztások kiterjeszthetőek az Azure sikeresen, miután az összes e-mail során megadott címek GET küld egy jelentés ezzel a végrehajtott változtatások részleteit.
 
 
 És végül, ha a megadott munkaterület minden riasztás már ütemezett ki kell terjeszteni az Azure - POST válasz 403 Tiltott.

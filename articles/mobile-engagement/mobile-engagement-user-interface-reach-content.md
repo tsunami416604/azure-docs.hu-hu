@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Mobile Engagement felhasználói felület - a Reach-tartalom"
-description: "Az Azure Mobile Engagement leküldéses értesítéses kampányokkal különböző típusú egyedi tartalom kezelése"
+title: Az Azure Mobile Engagement felhasználói felület - a Reach-tartalom
+description: Az Azure Mobile Engagement leküldéses értesítéses kampányokkal különböző típusú egyedi tartalom kezelése
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: add64f06-43c9-475c-8722-51cd00bb844b
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 3741a43b74af5846e95e42d8a7b533621e780f2d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 982cc66ffe98aa6dff8fe290cc1c2d4bad03c9ac
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-manage-the-unique-content-of-the-different-types-of-push-notification-campaigns"></a>A különböző típusú leküldéses értesítéses kampányokkal egyedi tartalmának kezelése
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 Egy új reach-kampány tartalomszakasz segítségével módosíthatja a közlemények, szavazások, Adatleküldések és Csempék (csak Windows Phone) tartalmát. A tartalom leküldéses kampányokra lehet kampány típusának. 
 
 ### <a name="content-types"></a>Tartalom típusa:
@@ -37,7 +41,7 @@ Egy új reach-kampány tartalomszakasz segítségével módosíthatja a közlem�
 * Szöveg közlemény: egy értesítés, amely kapcsolatba lép a felhasználó számára a szöveges nézet, tekintse meg a legyen.
 * Webes hirdetmény: egy értesítés, amely kapcsolatba lép a felhasználó számára, tekintse meg a következő a webes nézet.
 
-### <a name="see-also"></a>Lásd még:
+### <a name="see-also"></a>Lásd még
 * [A reach - hogyan Tos - közlemények][Link 3] 
 
 ### <a name="about-web-view-announcements"></a>Vonatkozó webes nézetre mutató hirdetmények:
@@ -50,16 +54,16 @@ Ha teljes képernyős webes nézetet szeretne létrehozni (az alapértelmezett a
 ### <a name="choose-your-action"></a>Válassza ki a műveletet:
 ### <a name="about-action-urls"></a>Kapcsolatos művelet URL-címek:
 A megcélzott eszköz operációs rendszere által értelmezhető valamennyi URL-cím használható műveleti URL-címként.
-Az alkalmazása által támogatott dedikált URL-címek (köztük azok, amelyek egy adott képernyőre irányítják a felhasználót) szintén használhatók műveleti URL-címként.
+URL-címet, az alkalmazása által támogatott dedikált (pl. az egy adott képernyőre irányítják a felhasználót) szintén használható műveleti URL-címként.
 A {deviceid} minta összes előfordulásának automatikusan cseréli le a műveletet végrehajtó eszköz azonosítója. Ez egyszerűen beolvashatók az Azure Mobile Engagement-eszközazonosítók a üzemeltetett külső webszolgáltatáson keresztül is használható.
 
 * **Android + iOS műveletek**
-  * Weblap megnyitása
-  * http://\[web-site-tartomány\] 
-  * Példa: http://www.azure.com
+  * Nyissa meg a weblap
+  * http://\[web-site-domain\] 
+  * Példa:http://www.azure.com
   * E-mail küldése
-  * mailto:\[-címzett\]? tulajdonos =\[tulajdonos\]& body =\[üzenet\] 
-  * Example:mailto:foo@example.com? tulajdonos = a hónap % 20from % 20Azure % 20Mobile % 20Engagement! & body = jó % 20stuff!
+  * mailto:\[e-mail-recipient\]?subject=\[subject\]&body=\[message\] 
+  * Example:mailto:foo@example.com?subject=Greetings%20from%20Azure%20Mobile%20Engagement!&body=Good%20stuff!
   * SMS küldése
   * SMS:\[-telefonszám\] 
   * Példa: sms:2125551212
@@ -67,36 +71,36 @@ A {deviceid} minta összes előfordulásának automatikusan cseréli le a művel
   * Tel:\[-telefonszám\] 
   * Példa: tel:2125551212
 * **Android csak műveletek**
-  * Alkalmazás letöltése a Play Áruházból
+  * A Play áruház alkalmazás letöltése
   * Market://details?ID=\[alkalmazáscsomag\] 
-  * Példa: market://details?id=com.microsoft.office.word
-  * Geolokációs keresés indítása
+  * Example:market://details?id=com.microsoft.office.word
+  * A földrajzi helyét keresés indításához
   * GEO:0, 0? q =\[keresési lekérdezés\] 
   * Példa: geo:0, 0? q = starbucks, Párizsi
 * **csak iOS-műveletek**
-  * Alkalmazás letöltése az App Store-ból
-  * http://iTunes.apple.com/ [Ország] /app/ [alkalmazás neve] /id [alkalmazás azonosítója]? mt = 8 
-  * Példa: http://itunes.apple.com/fr/app/briquet-virtuel/id430154748?mt=8
-  * Windows-műveletek
-  * Weblap megnyitása
-  * http://\[web-site-tartomány\] 
-  * Példa: http://www.azure.com
+  * Az App Store alkalmazás letöltése
+  * http://itunes.apple.com/[Ország] /app/ [alkalmazás neve] /id [alkalmazás azonosítója]? mt = 8 
+  * Példa:http://itunes.apple.com/fr/app/briquet-virtuel/id430154748?mt=8
+  * Windows Actions
+  * Nyissa meg a weblap
+  * http://\[web-site-domain\] 
+  * Példa:http://www.azure.com
   * E-mail küldése
-  * mailto:\[-címzett\]? tulajdonos =\[tulajdonos\]& body =\[üzenet\] 
-  * Example:mailto:foo@example.com? tulajdonos = a hónap % 20from % 20Azure % 20Mobile % 20Engagement! & body = jó % 20stuff!
-  * SMS küldése (az Áruházból letölthető Skype alkalmazás szükséges hozzá)
+  * mailto:\[e-mail-recipient\]?subject=\[subject\]&body=\[message\] 
+  * Example:mailto:foo@example.com?subject=Greetings%20from%20Azure%20Mobile%20Engagement!&body=Good%20stuff!
+  * Küldjön SMS (áruházból letölthető Skype alkalmazás szükséges)
   * SMS:\[-telefonszám\] 
   * Példa: sms:2125551212
-  * Telefonszám tárcsázása (az Áruházból letölthető Skype alkalmazás szükséges hozzá)
+  * Telefonszám tárcsázása (áruházból letölthető Skype alkalmazás szükséges)
   * Tel:\[-telefonszám\] 
   * Példa: tel:2125551212
-  * Alkalmazás letöltése a Play Áruházból
+  * A Play áruház alkalmazás letöltése
   * MS-windows-tároló: PDP? PFN =\[app Csomagazonosító\] 
-  * Példa: ms-windows-tároló: PDP? PFN 4d91298a-07cb-40fb-aecc-4cb5615d53c1 =
-  * Keresés a Bing Térképek szolgáltatásban
+  * Example:ms-windows-store:PDP?PFN=4d91298a-07cb-40fb-aecc-4cb5615d53c1
+  * Indítsa el a bingmaps keresés
   * bingmaps:? q =\[keresési lekérdezés\] 
   * Példa: bingmaps:? q = starbucks, Párizsi
-  * Egyéni séma használata
+  * Egy egyéni séma használata
   * \[egyéni séma\]://\[egyéni séma paraméterei\] 
   * Példa: myCustomProtocol://myCustomParams
   * Csomagadatok (tárolóalkalmazás olvassa el a kiterjesztés kötelező) használata
@@ -109,7 +113,7 @@ A {deviceid} minta összes előfordulásának automatikusan cseréli le a művel
 ### <a name="define-the-texts-of-your-announcement"></a>Hirdetmény szövegeinek kiválasztása
 Adja meg a cím, a tartalom és a hirdetmény szövegeinek kiválasztása gombra. A felhasználók hogyan válaszolt a kampány reach visszajelzések alapján jövőbeli kampány közönség célba. Célközönség kiválasztását, hogy a kampány lett csak leküldött, megválaszolt, műveletet kiváltó, illetve amelyekből kiléptek visszajelzést is alapulhat.
 
-### <a name="see-also"></a>Lásd még:
+### <a name="see-also"></a>Lásd még
 * [Felhasználói felület - a Reach - dokumentáció új leküldéses feltétel][Link 28]
 
 ## <a name="content-of-polls"></a>Szavazások tartalma
@@ -118,14 +122,14 @@ Adja meg a cím, a tartalom és a hirdetmény szövegeinek kiválasztása gombra
 Töltse ki a címét, leírását és hirdetmény szövegeinek kiválasztása gombra. Adja hozzá a kérdések és a kérdésekre adott válaszokat lehetőségeit.
 A felhasználók hogyan válaszolt a kampány reach visszajelzések alapján jövőbeli kampány közönség célba. Célközönség-e a kampány lett csak leküldött, megválaszolt, műveletet kiváltó, illetve amelyekből kiléptek is alapulhat. A lekérdezési válasz visszajelzést, ahol a kérdés és válasz választott használt feltételként is alapulhat célközönség kiválasztását.
 
-### <a name="see-also"></a>Lásd még:
+### <a name="see-also"></a>Lásd még
 * [Felhasználói felület - a Reach - dokumentáció új leküldéses feltétel][Link 28]
 
 ## <a name="content-of-data-pushes"></a>Adatleküldések tartalma
 ![Reach-Content3][32] 
 
 ### <a name="choose-the-type-of-your-data"></a>Az adatok típusának kiválasztása:
-* Szöveg
+* SMS
 * Bináris adatok
 * A Base64 adatok
 
@@ -134,7 +138,7 @@ A felhasználók hogyan válaszolt a kampány reach visszajelzések alapján jö
 * Ha bináris vagy base64 adatok leküldéses választotta, a "a fájl feltöltése" gomb segítségével feltölteni a fájlt.
 * A felhasználók hogyan válaszolt a kampány reach visszajelzések alapján jövőbeli kampány közönség célba. Célközönség-e a kampány lett csak leküldött, megválaszolt, műveletet kiváltó, illetve amelyekből kiléptek is alapulhat.
 
-### <a name="see-also"></a>Lásd még:
+### <a name="see-also"></a>Lásd még
 * [Felhasználói felület - a Reach - dokumentáció új leküldéses feltétel][Link 28]
 
 ## <a name="content-of-tiles-windows-phone-only"></a>Tartalom csempék (csak Windows Phone)
@@ -144,7 +148,7 @@ A felhasználók hogyan válaszolt a kampány reach visszajelzések alapján jö
 A csempe payload az alkalmazás a Windows Phone-eszközökön a csempén megjelenő szöveg.
 Egy mozaik leküldéses a Windows Phone natív leküldéses a Microsoft leküldéses értesítési szolgáltatásának (MPNS) verziója telepítve. A csempe leküldéses típus csak akkor leküldéses, amelynek nincs választ, és így jövőbeli kampányok célközönségét nem hozható létre, az eredmények a csempe leküldéses kampány. 
 
-### <a name="see-also"></a>Lásd még:
+### <a name="see-also"></a>Lásd még
 * [API - a Reach API - dokumentáció natív leküldéssel][Link 4]
 
 <!--Image references-->

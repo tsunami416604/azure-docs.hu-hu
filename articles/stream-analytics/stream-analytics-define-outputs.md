@@ -1,12 +1,11 @@
 ---
-title: "A Stream Analytics kimenetek: tárolási, elemzés lehetőségei |} Microsoft Docs"
-description: "További információk a Stream Analytics-adatok kimenetek beállításai, többek között a Power BI analysis eredmények célzó."
-keywords: "adatok átalakítása, az elemzés eredményeinek, adatok tárolási lehetőségek"
+title: 'A Stream Analytics kimenetek: tárolási, elemzés lehetőségei |} Microsoft Docs'
+description: További információk a Stream Analytics-adatok kimenetek beállításai, többek között a Power BI analysis eredmények célzó.
+keywords: adatok átalakítása, az elemzés eredményeinek, adatok tárolási lehetőségek
 services: stream-analytics,documentdb,sql-database,event-hubs,service-bus,storage
-documentationcenter: 
+documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-editor: cgronlun
 ms.assetid: ba6697ac-e90f-4be3-bafd-5cfcf4bd8f1f
 ms.service: stream-analytics
 ms.devlang: na
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 02/18/2017
 ms.author: sngun
-ms.openlocfilehash: 6df9a3fafea97638d63c0dc4601c5ced357c410d
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: a641c7e5e792b020be54a2ebc4bac63b545ce71e
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="stream-analytics-outputs-options-for-storage-analysis"></a>A Stream Analytics kimenetek: tárolási, elemzés lehetőségei
 A Stream Analytics-feladat szerzői, vegye figyelembe a kapott adatokban felhasznált hogyan. Hogyan, az eredmények megtekinthetők a Stream Analytics-feladat, és képes tárolására?
@@ -71,7 +70,7 @@ Az alábbi táblázat felsorolja a tulajdonság nevét és a leírás, egy Data 
 <td>A kimeneti adatok szerializálási formátum. JSON, CSV és az avro-hoz támogatott.</td>
 </tr>
 <tr>
-<td>Encoding</td>
+<td>Kódolás</td>
 <td>Ha a fürt megosztott kötetei szolgáltatás- vagy JSON formátumban, kódolással meg kell adni. Jelenleg az UTF-8 az egyetlen támogatott kódolási formátum.</td>
 </tr>
 <tr>
@@ -90,7 +89,7 @@ Az alábbi táblázat felsorolja a tulajdonság nevét és a leírás, egy Data 
 
 ![Data Lake Store engedélyezése](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
 
-## <a name="sql-database"></a>SQL Database
+## <a name="sql-database"></a>SQL-adatbázis
 [Az Azure SQL Database](https://azure.microsoft.com/services/sql-database/) használható kimenetként a relációs jellegű adatokhoz, vagy olyan alkalmazásnál, amely egy relációs adatbázisban szolgáltatott tartalmaktól függnek. Stream Analytics-feladatok írni a meglévő tábla Azure SQL-adatbázisban.  A következő tábla sémáját pontosan meg kell egyeznie a mezők és azok típusát, a feladat kimenete alatt. Egy [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) az SQL-adatbázis output paraméter is (Ez egy előzetes verziójú funkciók) keresztül kimenetként is megadható. Az alábbi táblázat felsorolja a tulajdonság nevét és egy SQL-adatbázis kimenet létrehozása leírását.
 
 | Tulajdonság neve | Leírás |
@@ -123,7 +122,7 @@ Az alábbi táblázat felsorolja a tulajdonságnevek és azok leírását a blob
 <td>Egy rövid nevet a blob storage a lekérdezés kimenete a lekérdezésekben használt.</td>
 </tr>
 <tr>
-<td>Tárfiók</td>
+<td>Tárolási fiók</td>
 <td>A tárfiók, ahol küldendő a kimeneti neve.</td>
 </tr>
 <tr>
@@ -151,7 +150,7 @@ Az alábbi táblázat felsorolja a tulajdonságnevek és azok leírását a blob
 <td>A kimeneti adatok szerializálási formátum.  JSON, CSV és az avro-hoz támogatott.</td>
 </tr>
 <tr>
-<td>Encoding</td>
+<td>Kódolás</td>
 <td>Ha a fürt megosztott kötetei szolgáltatás- vagy JSON formátumban, kódolással meg kell adni. Jelenleg az UTF-8 az egyetlen támogatott kódolási formátum.</td>
 </tr>
 <tr>
@@ -188,7 +187,7 @@ Nincsenek, amelyek szükségesek ahhoz, hogy konfigurálta az Event Hubs adatfol
 | Event Hub házirend kulcs |A megosztott elérési kulcsot a Service Bus-névtér való hozzáférés hitelesítéséhez használt |
 | [Választható] partíciós kulcs típusú oszlop |Ez az oszlop a partíciókulcs az Event Hubs a kimenet tartalmazza. |
 | Esemény szerializálási formátum |A kimeneti adatok szerializálási formátum.  JSON, CSV és az avro-hoz támogatott. |
-| Encoding |A fürt megosztott kötetei szolgáltatás és a JSON UTF-8 jelenleg az egyetlen támogatott kódolási formátum |
+| Kódolás |A fürt megosztott kötetei szolgáltatás és a JSON UTF-8 jelenleg az egyetlen támogatott kódolási formátum |
 | Elválasztó karakter |Csak a fürt megosztott kötetei szolgáltatás szerializálási alkalmazható. A Stream Analytics számos általánosan használt elválasztó karaktert támogat az adatok CSV formátumban történő szerializálásához. Támogatott értékei vesszővel, pontosvesszővel válassza el, hely, lap és függőleges vonal. |
 | Formátum |Csak a JSON-szerializálás alkalmazható. Sorral elválasztott beállítás megadja, hogy a formázott azzal, hogy minden JSON-objektum sortöréssel elválasztva. A tömb határozza meg, hogy a formázott JSON-objektumokat tömbként. A tömb csak akkor, ha a feladat leáll vagy a Stream Analytics rendelkezik áthelyezni a következő alkalommal ablakra van zárva. Általában célszerű sor használandó elválasztott JSON, mivel nem igényel semmilyen különleges kezelést való továbbra is van a kimeneti fájl írása közben. |
 
@@ -269,7 +268,7 @@ Az alábbi táblázat felsorolja a tulajdonságnevek és azok leírását a táb
 | Tulajdonság neve | Leírás |
 | --- | --- |
 | A kimeneti Alias |Egy rövid nevet a lekérdezés kimenete az a table storage a lekérdezésekben használt. |
-| Tárfiók |A tárfiók, ahol küldendő a kimeneti neve. |
+| Tárolási fiók |A tárfiók, ahol küldendő a kimeneti neve. |
 | Tárfiók kulcsa |A tárfiók tartozó hozzáférési kulcsot. |
 | Táblanév |A tábla neve. A tábla lekérdezi jön létre, ha nem létezik. |
 | Partíciókulcs |A partíciókulcsot tartalmazó kimeneti oszlop neve. A partíciós kulcs egy egyedi azonosítót a partíció egy entitás elsődleges kulcsának első részét egy adott táblán belül. Egy lehet, hogy legfeljebb 1 KB méretű karakterláncérték. |
@@ -289,7 +288,7 @@ Az alábbi táblázat felsorolja a tulajdonságnevek és azok leírását a vár
 | Várólista házirend neve |Amikor létrehoz egy sort, a sor konfigurálása lapon is létrehozhat a megosztott elérési házirendeket. Minden megosztott elérési házirend rendelkezik egy nevet, hogy Ön meghatározott engedélyekkel és hozzáférési kulcsokkal. |
 | Várólista házirend kulcs |A megosztott elérési kulcsot a Service Bus-névtér való hozzáférés hitelesítéséhez használt |
 | Esemény szerializálási formátum |A kimeneti adatok szerializálási formátum.  JSON, CSV és az avro-hoz támogatott. |
-| Encoding |A fürt megosztott kötetei szolgáltatás és a JSON UTF-8 jelenleg az egyetlen támogatott kódolási formátum |
+| Kódolás |A fürt megosztott kötetei szolgáltatás és a JSON UTF-8 jelenleg az egyetlen támogatott kódolási formátum |
 | Elválasztó karakter |Csak a fürt megosztott kötetei szolgáltatás szerializálási alkalmazható. A Stream Analytics számos általánosan használt elválasztó karaktert támogat az adatok CSV formátumban történő szerializálásához. Támogatott értékei vesszővel, pontosvesszővel válassza el, hely, lap és függőleges vonal. |
 | Formátum |Csak érvényes JSON-típus. Sorral elválasztott beállítás megadja, hogy a formázott azzal, hogy minden JSON-objektum sortöréssel elválasztva. A tömb határozza meg, hogy a formázott JSON-objektumokat tömbként. |
 
@@ -306,7 +305,7 @@ Az alábbi táblázat felsorolja a tulajdonságnevek és azok leírását a táb
 | A témakör házirend neve |Amikor létrehoz egy témát, a témakör konfigurálása lapon is létrehozhat a megosztott elérési házirendeket. Minden megosztott elérési házirend neve, hogy Ön meghatározott engedélyekkel és hozzáférési kulcsokkal van |
 | A témakör házirend kulcs |A megosztott elérési kulcsot a Service Bus-névtér való hozzáférés hitelesítéséhez használt |
 | Esemény szerializálási formátum |A kimeneti adatok szerializálási formátum.  JSON, CSV és az avro-hoz támogatott. |
- | Encoding |Ha a fürt megosztott kötetei szolgáltatás- vagy JSON formátumban, kódolással meg kell adni. Az UTF-8 jelenleg az egyetlen támogatott kódolási formátum |
+ | Kódolás |Ha a fürt megosztott kötetei szolgáltatás- vagy JSON formátumban, kódolással meg kell adni. Az UTF-8 jelenleg az egyetlen támogatott kódolási formátum |
 | Elválasztó karakter |Csak a fürt megosztott kötetei szolgáltatás szerializálási alkalmazható. A Stream Analytics számos általánosan használt elválasztó karaktert támogat az adatok CSV formátumban történő szerializálásához. Támogatott értékei vesszővel, pontosvesszővel válassza el, hely, lap és függőleges vonal. |
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
@@ -342,7 +341,7 @@ Vegye figyelembe, hogy Azure Stream Analytics 413 (http-kérelmek entitás túl 
 Emellett helyzetben fennáll semmilyen esetben egy olyan időkeretet üzenetsorokra, nincs kimenet jön létre. Ennek eredményeképpen computeResult függvény nem hívják meg. Ez a viselkedés a beépített ablakos összesítő függvényekben összhangban.
 
 
-## <a name="get-help"></a>Segítségkérés
+## <a name="get-help"></a>Segítség kérése
 További támogatásért keresse fel az [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>További lépések

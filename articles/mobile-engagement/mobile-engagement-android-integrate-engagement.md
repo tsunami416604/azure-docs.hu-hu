@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Mobile Engagement Android SDK-integráció"
-description: "Legújabb frissítések és az Azure Mobile Engagement Android SDK eljárásai"
+title: Az Azure Mobile Engagement Android SDK-integráció
+description: Legújabb frissítések és az Azure Mobile Engagement Android SDK eljárásai
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a5487793-1a12-4f6c-a1cf-587c5a671e6b
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 35bd92e52b7a02f58620a03156902f9f91be57ae
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: fffff6de996b8295639b3d595c5f778de8a0f74f
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-integrate-engagement-on-android"></a>Hogyan integrálható az Engagement Android rendszeren
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 > [!div class="op_single_selector"]
 > * [Windows Universal](mobile-engagement-windows-store-integrate-engagement.md)
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
@@ -267,7 +271,7 @@ A Mobile Engagement keretében a futási időben jóváhagyás szükséges enged
 
 * `ACCESS_COARSE_LOCATION`
 * `ACCESS_FINE_LOCATION`
-* `WRITE_EXTERNAL_STORAGE`(csak akkor, ha ez egy 23 Android API-szintet célzó)
+* `WRITE_EXTERNAL_STORAGE` (csak akkor, ha ez egy 23 Android API-szintet célzó)
 
 A külső tárolóeszközről csak Reach nagy vonalakban tekinti a szolgáltatás használatos. Ha talál kérni a felhasználókat, amely zavart, eltávolíthatja, ha azt csak a Mobile Engagement de nagy vonalakban tekinti funkció letiltása.
 
@@ -352,7 +356,7 @@ Ha Engagement aktív Ez a függvény hívásakor, 1 perc, a szolgáltatás leál
 
 Engedélyezheti a reporting újra működik meghívásával napló `true`.
 
-### <a name="integration-in-your-own-preferenceactivity"></a>Integráció saját`PreferenceActivity`
+### <a name="integration-in-your-own-preferenceactivity"></a>Integráció saját `PreferenceActivity`
 Helyett ezt a funkciót, integrálhatja ezt a beállítást a közvetlenül a meglévő `PreferenceActivity`.
 
 Konfigurálhatja a bevonási a beállításokat tartalmazó fájlt (a kívánt mód) a használatára a `AndroidManifest.xml` fájlt `application meta-data`:

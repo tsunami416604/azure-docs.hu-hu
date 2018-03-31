@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Mobile Engagement megvalósítási Media alkalmazás"
-description: "Media app forgatókönyv végrehajtásához az Azure Mobile Engagement"
+title: Az Azure Mobile Engagement megvalósítási Media alkalmazás
+description: Media app forgatókönyv végrehajtásához az Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 48201cc8-4e04-485c-a8dc-d6406d23f3ed
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: c1591c3e436981e621830916cf0cdc4b7f395d7b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8e5d4585b47a4ca26b81b7168aa499f25722415a
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="implement-mobile-engagement-with-media-app"></a>Mobile Engagement az Médiaalkalmazással megvalósítása
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 ## <a name="overview"></a>Áttekintés
 John egy mobil projektmenedzsert nagy adathordozó számára. Ezután egy új alkalmazást, amely rendelkezik egy nagyon magas letöltési száma nemrég indul el. Ezután elérte a letöltési a célokat, de továbbra is a térjen vissza a Investment(ROI) felhasználónként nem felel meg a követelményeknek. 
 
@@ -56,7 +60,7 @@ Az informatikai csapat javaslatai alapján, a következő műszaki KPI-k lettek 
 Az egyes KPI-KET ő osztályozza a szükséges adatokat, és megfelelő helyét, a forgatókönyv a azt rögzíti.
 
 ## <a name="engagement-program-and-integration"></a>Bevonási program és az integráció
-Most, hogy John befejezte a KPI-k meghatározása, a bevonási stratégia fázis először 4 bevonási programok és a célok meghatározása:![][1]
+Most, hogy John befejezte a KPI-k meghatározása, a bevonási stratégia fázis először 4 bevonási programok és a célok meghatározása: ![][1]
 
 John megnyitja mélyebb és részletesen leírja a leküldéses értesítések minden program által. Leküldéses értesítési öt elem határozzák meg:
 

@@ -1,12 +1,11 @@
 ---
-title: "Elemzés platformok: Stream Analytics alatt futó Apache Storm összehasonlítása |} Microsoft Docs"
-description: "Útmutató a felhőalapú analytics platform kiválasztása az Apache Storm összehasonlítás Stream Analytics segítségével beolvasása. Szolgáltatások és különbségek megértése."
-keywords: "elemzési platformot, analytics platform, elemzés felhőplatform, storm összehasonlítása"
+title: 'Elemzés platformok: Stream Analytics alatt futó Apache Storm összehasonlítása |} Microsoft Docs'
+description: Útmutató a felhőalapú analytics platform kiválasztása az Apache Storm összehasonlítás Stream Analytics segítségével beolvasása. Szolgáltatások és különbségek megértése.
+keywords: elemzési platformot, analytics platform, elemzés felhőplatform, storm összehasonlítása
 services: stream-analytics
-documentationcenter: 
-author: samacha
-manager: jhubbard
-editor: cgronlun
+documentationcenter: ''
+author: jseb225
+manager: ryanw
 ms.assetid: b9aac017-9866-4d0a-b98f-6f03881e9339
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/27/2017
-ms.author: samacha
-ms.openlocfilehash: 97044cb5d7b0b3fcb3b85328df618a265bc59b61
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: 48599c362c5db50ebec3acd0aaa4359439edb00b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="choosing-a-streaming-analytics-platform-comparing-apache-storm-and-azure-stream-analytics"></a>A folyamatos átviteli analytics platform kiválasztása: az Apache Storm és az Azure Stream Analytics összehasonlítása
 Azure adatfolyam-továbbítási adatok elemzése több megoldást nyújt: [Azure Streaming Analytics](https://docs.microsoft.com/azure/stream-analytics/) és [Azure HDInsight alatt futó Apache Storm](https://azure.microsoft.com/services/hdinsight/apache-storm/). Mindkét analytics platform előnyei a PaaS megoldást. Azonban a platformok jelentős eltérések képességeit, valamint hogyan konfigurálhatja és kezelheti azokat. 
@@ -87,12 +86,12 @@ Igen </p>
             </td>
             <td width="204" valign="top">
                 <p>
-nincs. Az Azure Stream Analytics egy olyan Azure-szolgáltatás.
+Nincs. Az Azure Stream Analytics egy olyan Azure-szolgáltatás.
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-nincs. Apache Storm egy olyan Azure-szolgáltatás.
+Nincs. Apache Storm egy olyan Azure-szolgáltatás.
                 </p>
             </td>
         </tr>
@@ -138,7 +137,7 @@ További információkért lásd: <a href="http://azure.microsoft.com/pricing/de
     </tbody>
 </table>
 
-## <a name="authoring"></a>Szerzői
+## <a name="authoring"></a>Szerzői műveletek
 
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
@@ -292,7 +291,7 @@ Igen. Felhasználók is egyéni kód írását, a C#, Java, vagy bármely más, 
             </td>
             <td width="204" valign="top">
                 <p>
-Az Avro, JSON, CSV </p>
+Avro, JSON, CSV </p>
             </td>
             <td width="246" valign="top">
                 <p>
@@ -303,7 +302,7 @@ Tetszőleges méretű egyéni kód használatával a felhasználók is végrehaj
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong>Kimenetek</strong>
+                    <strong>kimenetek</strong>
                 </p>
             </td>
             <td width="204" valign="top">

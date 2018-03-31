@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Mobile Engagement webes SDK frissítési eljárásait |} Microsoft Docs"
-description: "A legújabb frissítéseket és a webszolgáltatási SDK az Azure Mobile Engagement eljárásai"
+title: Az Azure Mobile Engagement webes SDK frissítési eljárásait |} Microsoft Docs
+description: A legújabb frissítéseket és a webszolgáltatási SDK az Azure Mobile Engagement eljárásai
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a20529b4-ec8d-4503-8ae9-09b5f0846d5b
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: js
 ms.topic: article
 ms.date: 06/07/2016
 ms.author: piyushjo
-ms.openlocfilehash: afa8037dcb7a53042fa606e2c4014b442d4be326
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 42f78b5e6bfa028f3a798f6cb6c0dee3f17b3ebe
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-mobile-engagement-web-sdk-upgrade-procedures"></a>Az Azure Mobile Engagement webes SDK frissítési eljárások
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 Ha az Azure Mobile Engagement webszolgáltatási SDK egy korábbi verzióját már a webes alkalmazás van integrálva, vegye figyelembe a következő szempontokat, amikor frissít, az SDK-t szeretné.
 
 Ha kihagyja a Mobile Engagement webes SDK több verziója, szükség lehet a frissítési folyamat során számos műveletek végrehajtásához. Például ha áttelepít 1.4.0 1.6.0, először eljárások a 1.5.0 1.4.0 frissítésével. Ezután kövesse 1.6.0 1.5.0 frissítésével.
@@ -37,7 +41,7 @@ A Mobile Engagement webes SDK ezen verziója nem támogatja a Samsung intelligen
 > 
 > 
 
-### <a name="javascript-files"></a>JavaScript-fájlok
+### <a name="javascript-files"></a>JavaScript files
 A fájl capptain sdk.js cserélje le az azure-engagement.js fájlt, és ennek megfelelően módosítsa a parancsfájl importálja.
 
 ### <a name="remove-capptain-reach"></a>Capptain Reach eltávolítása
@@ -116,7 +120,7 @@ Mielőtt áttelepítése:
 
 A kapcsolati karakterlánc az alkalmazás az Azure-portálon jelenik meg.
 
-### <a name="javascript-apis"></a>JavaScript API-k
+### <a name="javascript-apis"></a>JavaScript APIs
 A globális JavaScript objektum `window.capptain` át lett nevezve `window.azureEngagement` is használhat, de a `window.engagement` alias az API-hívásokhoz. Az alias nem használható az SDK-konfiguráció.
 
 Például `capptain.deviceId` válik `engagement.deviceId`, `capptain.agent.startActivity` válik `engagement.agent.startActivity`, és így tovább.

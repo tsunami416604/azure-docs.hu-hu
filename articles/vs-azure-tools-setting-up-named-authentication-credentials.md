@@ -1,11 +1,11 @@
 ---
-title: "Nevű hitelesítő adatok beállítása |} Microsoft Docs"
-description: "Megtudhatja, hogyan kell adnia hitelesítő adatait, amely a Visual Studio használatával kérések hitelesítése az Azure-ra, így közzétenni egy alkalmazást az Azure-bA a Visual Studio vagy egy meglévő felhőszolgáltatáshoz figyelése."
+title: Nevű hitelesítő adatok beállítása |} Microsoft Docs
+description: Megtudhatja, hogyan kell adnia hitelesítő adatait, amely a Visual Studio használatával kérések hitelesítése az Azure-ra, így közzétenni egy alkalmazást az Azure-bA a Visual Studio vagy egy meglévő felhőszolgáltatáshoz figyelése.
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 61570907-42a1-40e8-bcd6-952b21a55786
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2017
-ms.author: kraigb
-ms.openlocfilehash: fc6f88ee3b808e46e693de7c31b836be86728cd5
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: ghogen
+ms.openlocfilehash: d63da89d3842b7fd6bc320ff4eedd2a0132cee71
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="set-up-named-authentication-credentials"></a>Nevű hitelesítő adatok beállítása
 
@@ -39,7 +39,7 @@ A Server Explorer eszközben kattintson a jobb gombbal a **Azure** csomópont, �
 
 Ha azt szeretné, létrehozhat egy tanúsítványt, hivatkozhat utasításait [létrehozása és feltöltése az Azure-tanúsítvány felügyeleti](https://msdn.microsoft.com/library/windowsazure/gg551722.aspx) , majd töltse fel manuálisan a tanúsítványt a [Azure-portálon](https://portal.azure.com/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Webalkalmazások általános áttekintése](https://docs.microsoft.com/azure/app-service/)
 - [Az alkalmazás telepítése az Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-deploy-local-git) 

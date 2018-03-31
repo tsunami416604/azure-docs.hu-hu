@@ -1,8 +1,8 @@
 ---
-title: "A mentett keresések riasztások az OMS-megoldások |} Microsoft Docs"
-description: "Az OMS megoldások rendszerint mentett keresések a Log Analytics-megoldás által gyűjtött adatok elemzésére.  Akkor is határozza meg a figyelmeztetéseket, hogy értesítse a felhasználót, vagy automatikusan hajtsa végre a műveletet egy kritikus problémát válaszul.  A cikkből megtudhatja, hogyan adhat meg a mentett keresések és a riasztások a Resource Manager-sablon, azok megoldások tartalmazhat Naplóelemzési."
+title: A mentett keresések riasztások kezelési megoldásokban |} Microsoft Docs
+description: Megoldások mentett keresések rendszerint tartalmazza a Log Analytics-megoldás által gyűjtött adatok elemzésére.  Akkor is határozza meg a figyelmeztetéseket, hogy értesítse a felhasználót, vagy automatikusan hajtsa végre a műveletet egy kritikus problémát válaszul.  A cikkből megtudhatja, hogyan adhat meg a mentett keresések és a riasztások a Resource Manager-sablon, azok megoldások tartalmazhat Naplóelemzési.
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
@@ -14,29 +14,29 @@ ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9e25ad9b9be6d02550b4be9c09496021cd7fe2d2
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: cb787de23022cd7a48ec476968e05dec6560b419
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="adding-log-analytics-saved-searches-and-alerts-to-oms-management-solution-preview"></a>Naplóelemzési hozzáadása a mentett keresések riasztások OMS-kezelési megoldással (előzetes verzió)
+# <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Naplóelemzési hozzáadása a mentett keresések riasztások kezelési megoldással (előzetes verzió)
 
 > [!NOTE]
-> Ez az előzetes dokumentum megoldások létrehozásához az OMS Szolgáltatáshoz, amely jelenleg előzetes verziójúak. Az alábbiakban a séma van változhat.   
+> Ez az előzetes dokumentációjában létrehozása kezelési megoldást, amely jelenleg előzetes verziójúak. Az alábbiakban a séma van változhat.   
 
 
-[Az OMS megoldások](operations-management-suite-solutions.md) rendszerint tartalmazza [mentett keresések](../log-analytics/log-analytics-log-searches.md) a Log Analytics-megoldás által gyűjtött adatok elemzésére.  Előfordulhat, hogy is definiálhat [riasztások](../log-analytics/log-analytics-alerts.md) értesítse a felhasználót, vagy automatikusan hajtsa végre a műveletet egy kritikus problémát adott válaszként.  Ez a cikk ismerteti, hogyan határozza meg a mentett keresések Naplóelemzési és riasztások egy [erőforrás-kezelés sablon](../resource-manager-template-walkthrough.md) , azok tartalmazhat [megoldások](operations-management-suite-solutions-creating.md).
+[Megoldások](operations-management-suite-solutions.md) rendszerint tartalmazza [mentett keresések](../log-analytics/log-analytics-log-searches.md) a Log Analytics-megoldás által gyűjtött adatok elemzésére.  Előfordulhat, hogy is definiálhat [riasztások](../log-analytics/log-analytics-alerts.md) értesítse a felhasználót, vagy automatikusan hajtsa végre a műveletet egy kritikus problémát adott válaszként.  Ez a cikk ismerteti, hogyan határozza meg a mentett keresések Naplóelemzési és riasztások egy [erőforrás-kezelés sablon](../resource-manager-template-walkthrough.md) , azok tartalmazhat [megoldások](operations-management-suite-solutions-creating.md).
 
 > [!NOTE]
-> Ebben a cikkben a minták használható paramétereket és változókat, amelyek a szükséges vagy közös felügyeleti megoldás és a [létrehozása kezelési megoldásai Operations Management Suite (OMS)](operations-management-suite-solutions-creating.md)  
+> Ebben a cikkben a minták használható paramétereket és változókat, amelyek a szükséges vagy közös felügyeleti megoldás és a [tervezési és -buildek olyan felügyeleti megoldást az Azure-ban](operations-management-suite-solutions-creating.md)  
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez a cikk feltételezi, hogy most már tudja, hogyan [felügyeleti megoldás létrehozása](operations-management-suite-solutions-creating.md) és felépítése egy [Resource Manager-sablon](../resource-group-authoring-templates.md) és megoldásfájlt.
 
 
 ## <a name="log-analytics-workspace"></a>Log Analytics Workspace
-Összes erőforrása Naplóelemzési találhatók egy [munkaterület](../log-analytics/log-analytics-manage-access.md).  A [OMS munkaterületet, és az Automation-fiók](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account), a munkaterület nem található meg a felügyeleti megoldás, de már léteznie kell a megoldás telepítve van.  Ha nem érhető el, akkor a megoldás telepítése sikertelen lesz.
+Összes erőforrása Naplóelemzési találhatók egy [munkaterület](../log-analytics/log-analytics-manage-access.md).  A [Naplóelemzési munkaterületet, és az Automation-fiók](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account), a munkaterület nem található meg a felügyeleti megoldás, de már léteznie kell a megoldás telepítve van.  Ha nem érhető el, akkor a megoldás telepítése sikertelen lesz.
 
 A munkaterület neve nem minden Naplóelemzési erőforrás nevében.  Ezt a megoldást a **munkaterület** paraméter savedsearch erőforrás az alábbi példában látható módon.
 
@@ -50,8 +50,8 @@ A Resource Manager-sablon definiált összes Naplóelemzési erőforrás rendelk
 | Munkaterület-verzió | API-verzió | Lekérdezés |
 |:---|:---|:---|
 | 1-es verzió (örökölt)   | 2015 11-01. dátumú előnézeti | A hagyományos formátumú.<br> Példa: Írja be az esemény EventLevelName = hiba =  |
-| v2 (frissítése) | 2015 11-01. dátumú előnézeti | A hagyományos formátumú.  Telepítse a frissített formátumra alakítja át.<br> Példa: Írja be az esemény EventLevelName = hiba =<br>Konvertálva: esemény &#124; Ha EventLevelName == "Error"  |
-| v2 (frissítése) | 2017-03-03 – előzetes | Frissítési formátumban. <br>Példa: Az esemény &#124; Ha EventLevelName == "Error"  |
+| v2 (frissítése) | 2015 11-01. dátumú előnézeti | A hagyományos formátumú.  Telepítse a frissített formátumra alakítja át.<br> Példa: Írja be az esemény EventLevelName = hiba =<br>Konvertálva: esemény &#124; ahol EventLevelName == "Error"  |
+| v2 (frissítése) | 2017-03-03 – előzetes | Frissítési formátumban. <br>Példa: Az esemény &#124; ahol EventLevelName == "Error"  |
 
 
 
@@ -83,7 +83,7 @@ A mentett kereséseket minden egyes tulajdonsága a következő táblázat ismer
 |:--- |:--- |
 | category | A kategória a mentett keresés.  A mentett keresések megoldáskezelőben gyakran fogja osztani egyetlen kategória, így azok vannak elhelyezve, a konzol. |
 | DisplayName | A mentett keresés a portálon megjelenítendő nevét. |
-| lekérdezés | A lekérdezés futtatásához. |
+| query | A lekérdezés futtatásához. |
 
 > [!NOTE]
 > Előfordulhat, hogy szeretné használni a lekérdezésben szereplő escape-karakter, ha JSON-ként értelmezhetők karaktereket tartalmaz.  Például, ha a lekérdezés **típusa: AzureActivity OperationName:"Microsoft.Compute/virtualMachines/write"**, azt kell megírni, a fájl **típusa: AzureActivity OperationName:\"Microsoft.Compute/virtualMachines/write\"**.
@@ -128,7 +128,7 @@ Az ütemezés erőforrás tulajdonságait az alábbi táblázat ismerteti.
 | Elem neve | Szükséges | Leírás |
 |:--|:--|:--|
 | engedélyezve       | Igen | Adja meg a riasztás engedélyezve van-e létrehozásakor. |
-| interval      | Igen | A lekérdezés gyakoriságát percben futtatja. |
+| tartam      | Igen | A lekérdezés gyakoriságát percben futtatja. |
 | queryTimeSpan | Igen | Idő (percben) keresztül, amelynél az eredmények hosszát. |
 
 Az ütemezés erőforrás a mentett keresés függ, hogy az ütemezés előtt létrehozták.
@@ -187,7 +187,7 @@ A riasztási művelet erőforrás tulajdonságait az alábbi táblázatok ismert
 | Elem neve | Szükséges | Leírás |
 |:--|:--|:--|
 | Típus | Igen | A művelet típusát.  Ez az **riasztás** riasztási műveletekhez. |
-| Name (Név) | Igen | Megjelenítési nevet a riasztáshoz.  Ez az a riasztási szabály a konzolon megjelenített neve. |
+| Név | Igen | Megjelenítési nevet a riasztáshoz.  Ez az a riasztási szabály a konzolon megjelenített neve. |
 | Leírás | Nem | A riasztás nem kötelező leírása. |
 | Súlyosság | Igen | A riasztási rekord a következő értékek közül súlyossága:<br><br> **Critical**<br>**Warning**<br>**Tájékoztató** |
 
@@ -226,7 +226,7 @@ Ez a szakasz nem kötelező megadni.  Ebben a szakaszban tartalmazza, ha azt sze
 | Elem neve | Szükséges | Leírás |
 |:--|:--|:--|
 | Címzettek | Igen | Értesítést küldeni, ha riasztás jön létre, mint az alábbi példában az e-mail címeket vesszővel tagolt listája.<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
-| Tárgy | Igen | Az e-mail tárgysora. |
+| Tulajdonos | Igen | Az e-mail tárgysora. |
 | Melléklet | Nem | Jelenleg nem támogatja a mellékleteket.  Ha ez az elem megtalálható, meg kell **nincs**. |
 
 
@@ -265,7 +265,7 @@ A Webhook művelet erőforrás tulajdonságait az alábbi táblázatok ismerteti
 
 | Elem neve | Szükséges | Leírás |
 |:--|:--|:--|
-| type | Igen | A művelet típusát.  Ez az **Webhook** webhook műveletekhez. |
+| típus | Igen | A művelet típusát.  Ez az **Webhook** webhook műveletekhez. |
 | név | Igen | A művelet megjelenítendő nevét.  Ez a konzol nem jelenik meg. |
 | wehookUri | Igen | A webhook URI. |
 | customPayload | Nem | A webhook küldendő egyéni hasznos. A formátum a tartalma a webhook megfelelő függ. |
@@ -273,7 +273,7 @@ A Webhook művelet erőforrás tulajdonságait az alábbi táblázatok ismerteti
 
 
 
-## <a name="sample"></a>Sample
+## <a name="sample"></a>Minta
 
 Az alábbiakban látható egy minta a megoldás, amely tartalmazza, amely a következőket tartalmazza:
 

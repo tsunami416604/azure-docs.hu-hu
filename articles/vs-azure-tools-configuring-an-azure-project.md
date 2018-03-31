@@ -1,11 +1,11 @@
 ---
-title: "A Visual Studio egy Azure-felhőszolgáltatás-projekt konfigurálása |} Microsoft Docs"
-description: "További tudnivalók az Azure-felhőszolgáltatás-projekt konfigurálása a Visual Studio, a projekt követelményeitől függően."
+title: A Visual Studio egy Azure-felhőszolgáltatás-projekt konfigurálása |} Microsoft Docs
+description: További tudnivalók az Azure-felhőszolgáltatás-projekt konfigurálása a Visual Studio, a projekt követelményeitől függően.
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 609d6965-05cc-47b1-82dc-c76a92d4f295
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 03/06/2017
-ms.author: kraigb
-ms.openlocfilehash: 799715093bd1a8c8e77e6cdb7168670dc263dfa5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 1afab86e920c66459e08190f922d9439c2310aef
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="configure-an-azure-cloud-service-project-with-visual-studio"></a>A Visual Studio egy Azure-felhőszolgáltatás-projekt konfigurálása
 Egy Azure-felhőszolgáltatás-projekt, beállíthatja a projekt követelményeitől függően. Beállítható a projekthez az alábbi kategóriákban:
@@ -48,6 +48,6 @@ Egy Azure-felhőszolgáltatás-projekt, beállíthatja a projekt követelményei
 
 1. Válassza ki a Visual Studio eszköztár **mentése**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Több szolgáltatáskonfiguráció használata Azure-projekt konfigurálása](vs-azure-tools-multiple-services-project-configurations.md)
 

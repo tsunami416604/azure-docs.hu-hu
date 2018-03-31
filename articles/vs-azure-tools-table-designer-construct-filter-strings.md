@@ -1,11 +1,11 @@
 ---
-title: "A tábla Designer szűrőkarakterláncokban létrehozása |} Microsoft Docs"
-description: "A tábla Designer szűrőkarakterláncokban létrehozása"
+title: A tábla Designer szűrőkarakterláncokban létrehozása |} Microsoft Docs
+description: A tábla Designer szűrőkarakterláncokban létrehozása
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: a1a10ea1-687a-4ee1-a952-6b24c2fe1a22
 ms.service: storage
 ms.devlang: multiple
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
-ms.author: kraigb
-ms.openlocfilehash: 069224d84462b4955912ce1462a65298a5acc04a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 722052e351062efba85eb143b2ea7bd0136002a0
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="constructing-filter-strings-for-the-table-designer"></a>A tábla Designer Szűrőkarakterláncokban létrehozása
 ## <a name="overview"></a>Áttekintés
@@ -31,10 +31,10 @@ A következő logikai operátorok az összes tulajdonság esetében támogatotta
 
 | Logikai operátor | Leírás | Példa szűrési karakterláncot |
 | --- | --- | --- |
-| EQ |Egyenlő |Város eq "Redmond" |
-| gt |Nagyobb mint |Árlista gt 20 |
+| eq |Egyenlő |Város eq "Redmond" |
+| gt |Nagyobb, mint |Árlista gt 20 |
 | GE |Nagyobb vagy egyenlő |Árlista ge 10 |
-| lt |Kisebb mint |Árlista lt 20 |
+| lt |Kisebb, mint |Árlista lt 20 |
 | le |Kisebb vagy egyenlő |Árlista le 100 |
 | Ne |Nem egyenlő |Város ne "London" |
 | és |És |Árlista le 200 és ár gt 3.5 |
@@ -44,8 +44,8 @@ A következő logikai operátorok az összes tulajdonság esetében támogatotta
 Amikor hozhat létre egy szűrési karakterláncot, a következő szabályok fontosak:
 
 * A logikai operátorok segítségével összehasonlíthatja a tulajdonság értéke. Ne feledje, hogy nem lehetséges az összehasonlítandó dinamikus értékre; tulajdonság a kifejezés egy oldalán állandónak kell lennie.
-* Minden a szűrési karakterláncot részei kis-és nagybetűket.
-* Ugyanannál az adattípusnál a tulajdonság ahhoz, hogy a szűrő érvényes találatot, az állandó értéknek kell lennie. További információ a támogatott tulajdonságtípus: [ismertetése a Table szolgáltatás adatmodell](http://go.microsoft.com/fwlink/p/?LinkId=400448).
+* A szűrési karakterlánc minden része megkülönbözteti a kis- és nagybetűket.
+* Az állandó érték adattípusának meg kell egyeznie a tulajdonságéval ahhoz, hogy a szűrő érvényes eredményeket adjon vissza. További információ a támogatott tulajdonságtípusokról: [A Table szolgáltatás adatmodelljének ismertetése](http://go.microsoft.com/fwlink/p/?LinkId=400448).
 
 ## <a name="filtering-on-string-properties"></a>Szűrés karakterlánc tulajdonságai
 Szűrésekor meg kapcsolatikarakterlánc-tulajdonságokat, tegye a karakterlánc-konstansra szimpla idézőjelek között szerepel.

@@ -1,11 +1,11 @@
 ---
-title: "Felkészülés az közzététele, vagy telepítse a Visual Studio Felhőszolgáltatás |} Microsoft Docs"
-description: "Ismerje meg, az eljárások a felhő- és tárolási fiók szolgáltatások beállítása és konfigurálása az Azure-alkalmazásában."
+title: Felkészülés az közzététele, vagy telepítse a Visual Studio Felhőszolgáltatás |} Microsoft Docs
+description: Ismerje meg, az eljárások a felhő- és tárolási fiók szolgáltatások beállítása és konfigurálása az Azure-alkalmazásában.
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 92ee2f9e-ec49-4c7a-900d-620abe5e9d8a
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/10/2017
-ms.author: kraigb
-ms.openlocfilehash: 5b2043ada193e5a08957656e153b58a61e7eba9e
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.author: ghogen
+ms.openlocfilehash: 8a7d6f114bfa10170cdfe7126e01a35b02affd20
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="prepare-to-publish-or-deploy-a-cloud-service-from-visual-studio"></a>Felkészülés az közzététele, vagy egy felhőalapú szolgáltatás, a Visual Studio telepítése
 
@@ -81,6 +81,6 @@ Az Azure-portálon jeleníti meg az URL-címek használható az Azure storage sz
 
 A másodlagos elérési kulcsát hozzáférést biztosít a azonos a tárfiók elsődleges elérési kulcsát, és jön létre biztonsági az elsődleges elérési kulcsát utaló jeleket. Emellett ajánlott, hogy a tárelérési kulcsok rendszeresen újragenerálja. Módosíthatja a kapcsolati karakterlánc beállítása használható a másodlagos kulcs újragenerálja az elsődleges kulcsot úgy, hogy használja a rendszer újragenerálta elsődleges kulcs, miközben a másodlagos kulcs újragenerálása módosíthatja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tudjon meg többet a közzétételi alkalmazások az Azure-bA a Visual Studio eszközből, lásd: [közzététele a felhőalapú szolgáltatás, az Azure-eszközökkel](vs-azure-tools-publishing-a-cloud-service.md).

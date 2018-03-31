@@ -1,11 +1,11 @@
 ---
-title: "Mobile Engagement exportálási API áttekintése"
-description: "Alapvető tudnivalók a felhasználói eszközök kihasználja azt a saját eszközök által létrehozott nyers adatok exportálása"
+title: Mobile Engagement exportálási API áttekintése
+description: Alapvető tudnivalók a felhasználói eszközök kihasználja azt a saját eszközök által létrehozott nyers adatok exportálása
 services: mobile-engagement
 documentationcenter: mobile
 author: kpiteira
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 9380d47b-d7fa-4d4c-888f-97e6482196bb
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,14 +14,18 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 04/26/2016
 ms.author: kapiteir
-ms.openlocfilehash: 346e0e480ff84ee849f135a7605d27df9e32f966
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c1dc8a34abf84be3d7f59d41c36d90c2a67e5d32
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="mobile-engagement-export-api-overview"></a>Mobile Engagement exportálási API áttekintése
-## <a name="introduction"></a>Bevezetés
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
+## <a name="introduction"></a>Bemutatás
 Ebből a dokumentumból megtudhatja, a nyers adatok a felhasználói eszközök kihasználja azt a saját eszközök által létrehozott exportálása alapjait.
 
 ## <a name="pre-requisites"></a>Előfeltételek
@@ -29,7 +33,7 @@ A nyers adatok exportálása a Mobile Engagement van szükség:
 
 * API authentication telepítő fogja tudni használni az API-k (lásd: [hitelesítési manuális telepítési módra](mobile-engagement-api-authentication-manual.md)),
 * Vagy a REST API-k vagy a [.net SDK](mobile-engagement-dotnet-sdk-service-api.md),
-* Egy Azure Storage-fiókot.
+* Egy Azure Storage-fiók.
 
 > [!NOTE]
 > Szintén javasoljuk a kiváló [Microsoft Azure Tártallózó](http://storageexplorer.com/), legalább a fejlesztési fázisban, mert egy könnyen használható felhasználói Felületet biztosít az Azure Storage használják.
@@ -47,10 +51,10 @@ Az alábbi táblázat körűen minden lehetséges export ismerteti:
 
 | Exportálás típusa | Adattípus | Leírás |
 | --- | --- | --- |
-| Pillanatkép |Leküldéses értesítések |Állít elő, leküldéses kampányokra visszajelzések deviceid/userid / alapon exportálása |
+| Pillanatkép |Letöltés és telepítés |Állít elő, leküldéses kampányokra visszajelzések deviceid/userid / alapon exportálása |
 | Pillanatkép |Címke |Állít elő, az egyes eszközökre társított címkék (app-info) exportálása |
 | Pillanatkép |Eszköz |Állít elő, például a technicals (modell, területi beállítás, az időzónát,...), a címkéket, először látott eszközökkel kapcsolatos adatok exportálása... |
-| Pillanatkép |Token |Létrehozza a érvényes jogkivonatok exportálása |
+| Pillanatkép |Jogkivonat |Létrehozza a érvényes jogkivonatok exportálása |
 | Korábbi |Tevékenység |Létrehoz egy adott időszakban az egyes eszközök az összes tevékenység exportálása |
 | Korábbi |Esemény |Létrehoz egy adott időszakban az egyes eszközök az összes tevékenység exportálása |
 | Korábbi |Feladat |Létrehoz egy adott időszakban az egyes eszközök a feladatok exportálása |
@@ -65,7 +69,7 @@ Ahhoz, hogy az adatok exportálása a Mobile Engagement, meg kell hoznia egy **e
 * A **Azure-tárolót** (beleértve az írási hozzáférés egy érvényes SAS) ahová kerülnek az Exportálás eredményét.
 * pl. példa tároló URL-paramétert lenne https://[StorageAccountName].blob.core.windows.net/[ContainerName]? [SASWritePermissionsToken]  
 
-Itt látható a valós életben példa. https://testazmeexport.BLOB.Core.Windows.NET/test1234azme?SV=2015-12-11&SS=b&SRT=SCO&SP=rwdlac&se=2016-12-17T04:59:26Z & st = 2016-12-16T20:59:26Z & spr = https & sig = KRF3aVWjp2NEJDzjlmoplmu0M9HHlLdkBWRPAFmw90Q % 3D
+Itt látható a valós életben példa. https://testazmeexport.blob.core.windows.net/test1234azme?sv=2015-12-11&ss=b&srt=sco&sp=rwdlac&se=2016-12-17T04:59:26Z&st=2016-12-16T20:59:26Z&spr=https&sig=KRF3aVWjp2NEJDzjlmoplmu0M9HHlLdkBWRPAFmw90Q%3D
 
 Vegye figyelembe, hogy a feladat indítható néhány percig is eltarthat, és majd előfordulhat, hogy fut, nagyon kicsi alkalmazások néhány másodperc több óráig alkalmazásokkal rendelkező felhasználók vagy a tevékenység.
 

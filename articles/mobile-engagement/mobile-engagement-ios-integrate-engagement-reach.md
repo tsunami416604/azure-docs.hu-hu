@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Mobile Engagement iOS SDK-integráció elérni |} Microsoft Docs"
-description: "Legújabb frissítések és az Azure Mobile Engagement SDK iOS eljárásai"
+title: Az Azure Mobile Engagement iOS SDK-integráció elérni |} Microsoft Docs
+description: Legújabb frissítések és az Azure Mobile Engagement SDK iOS eljárásai
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 1f5f5857-867c-40c5-9d76-675a343a0296
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 12/13/2016
 ms.author: piyushjo
-ms.openlocfilehash: ba74e0c442ac10f096d465f989e03d2ceae8cd88
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8d531f5850e8f7f352774f5894285402bd4cc53e
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-integrate-engagement-reach-on-ios"></a>Hogyan kell integrálni Engagement Reach IOS rendszerű eszközökön
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 Az integráció az ismertetett eljárást kell követni a [hogyan integrálhatja Engagement iOS dokumentumon](mobile-engagement-ios-integrate-engagement.md) Ez az útmutató követése előtt.
 
 Ebben a dokumentációban XCode 8 igényel. Ha valóban függenek XCode 7, akkor előfordulhat, hogy használja a [iOS Engagement SDK v3.2.4](https://aka.ms/r6oouh). Nincs egy ismert hiba az előző verzió iOS 10-eszközök futtatása közben: nincsenek műveletet kiváltó rendszerértesítéseket. A javítás kell megvalósítani a elavult API `application:didReceiveRemoteNotification:` az alkalmazás delegálása az alábbiak szerint:
@@ -267,7 +271,7 @@ Az értesítések kategória leíró regisztrálásához kell hozzáadnia hívá
     [reach registerNotifier:myNotifier forCategory:@"my_category"];
     ...
 
-`myNotifier`olyan objektum, amely megfelel-e a protokoll egy példányának kell lennie `AENotifier`.
+`myNotifier` olyan objektum, amely megfelel-e a protokoll egy példányának kell lennie `AENotifier`.
 
 A protokoll módszerek önállóan is alkalmazható, vagy dönthet úgy, hogy a meglévő osztály reimplement `AEDefaultNotifier` melyik már teljesít a munka nagyobb része.
 
@@ -292,8 +296,8 @@ Egyszerű példa a kategória azt feltételezik, hogy rendelkezik-e egy fájlt `
 A megadott nib fájl tiszteletben kell tartania a következő szabályokat:
 
 * Csak egy nézetet kell tartalmaznia.
-* Subviews nevet kell adni a azonos típusú, a megadott nib fájl megfelelően`AENotificationView.xib`
-* Subviews kell rendelkeznie a azonos címkéket, mint a belsejében a megadott nevű nib-fájl`AENotificationView.xib`
+* Subviews nevet kell adni a azonos típusú, a megadott nib fájl megfelelően `AENotificationView.xib`
+* Subviews kell rendelkeznie a azonos címkéket, mint a belsejében a megadott nevű nib-fájl `AENotificationView.xib`
 
 > [!TIP]
 > Csak a megadott nib nevű fájlban található, másolja `AENotificationView.xib`, és ott munka megkezdéséhez. De legyen óvatos, a nézet a nib fájlban társítva az osztály `AENotificationView`. Ez az osztály a metódus újradefiniálása `layoutSubViews` áthelyezni, és annak megfelelően környezetben subviews átméretezése. Érdemes lehet cserélje le egy `UIView` vagy egyéni nézet osztály.
@@ -344,7 +348,7 @@ Eldöntheti, hogy az értesítési elrendezés szerepeljenek a meglévő nézete
        notificationView.tag = NOTIFICATION_AREA_VIEW_TAG;
        [self.view addSubview:notificationView];
 
-`NOTIFICATION_AREA_VIEW_TAG`makró található `AEDefaultNotifier.h`.
+`NOTIFICATION_AREA_VIEW_TAG` makró található `AEDefaultNotifier.h`.
 
 > [!NOTE]
 > Az alapértelmezett bejelentő automatikusan észleli, hogy az értesítési elrendezés szerepel ebben a nézetben, és nem adja hozzá egy átmeneti területre az.

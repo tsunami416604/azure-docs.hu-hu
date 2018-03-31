@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement Service API-k elérésére .NET SDK használatával"
-description: "A Mobile Engagement .NET SDK használata az Azure Mobile Engagement Service API-k elérésére"
+title: Azure Mobile Engagement Service API-k elérésére .NET SDK használatával
+description: A Mobile Engagement .NET SDK használata az Azure Mobile Engagement Service API-k elérésére
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: c07728aa-43f2-4238-8b4a-c9eddf9d838b
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 6a497189268c5a1b7e269cc57904ebc77c1906fd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 99595eb1f9a1eab1db51796632d58df35bf45be6
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="using-net-sdk-to-access-azure-mobile-engagement-service-apis"></a>Azure Mobile Engagement Service API-k elérésére .NET SDK használatával
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 Az Azure Mobile Engagement tesz elérhetővé, kezelheti az eszközöket, az API-k Reach/leküldéses kampányokra stb. Ezen API-k kommunikál, azt is adja meg, egy [Swagger-fájl](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-mobileengagement/2014-12-01/swagger/mobile-engagement.json) használható az eszközök SDK-k létrehozására az a kívánt nyelvet. Azt javasoljuk, a [AutoRest](https://github.com/Azure/AutoRest) eszköz használatával hozzon létre az SDK a Swagger-fájl.
 
 > [!NOTE]

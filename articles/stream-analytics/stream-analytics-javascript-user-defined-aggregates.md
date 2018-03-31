@@ -1,12 +1,11 @@
 ---
-title: "Az Azure Stream Analytics JavaScript felhasználó által definiált összesítések |} Microsoft Docs"
-description: "Hajtsa végre a felhasználó által definiált összesítések JavaScript speciális lekérdezési mechanika"
-keywords: "JavaScript, felhasználó által definiált összesítések, uda-értékét"
+title: Az Azure Stream Analytics JavaScript felhasználó által definiált összesítések |} Microsoft Docs
+description: Hajtsa végre a felhasználó által definiált összesítések JavaScript speciális lekérdezési mechanika
+keywords: JavaScript, felhasználó által definiált összesítések, uda-értékét
 services: stream-analytics
 author: minhe-msft
 manager: santoshb
-editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
@@ -14,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 10/28/2017
 ms.author: minhe
-ms.openlocfilehash: b3863a34ed146e54c6d60e035957b942a1976ff9
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 9f9a2e33f97fc90265933ee9941f2d02a92cbc4c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates-preview"></a>Az Azure Stream Analytics JavaScript felhasználó által definiált összesítések (előzetes verzió)
 
@@ -82,15 +81,15 @@ function main() {
 
 Minden JavaScript uda-Értékeket egy függvény objektum deklarációnak van definiálva. Az alábbiakban a fő elemet UDA-definícióban.
 
-### <a name="function-alias"></a>Függvény aliasa
+### <a name="function-alias"></a>Függvényalias
 
-Függvény alias az adott uda-Értékeket azonosítója. A Stream Analytics query meghívásakor mindig használjon uda-Értékeket alias együtt a "uda-értékeket." előtag.
+Függvény alias az adott uda-Értékeket azonosítója. A Stream Analytics query meghívásakor mindig használjon uda-Értékeket alias együtt a "uda-értékeket." prefix.
 
-### <a name="function-type"></a>Függvénytípus
+### <a name="function-type"></a>Függvény típusa
 
 Az uda-Értékeket, a függvény típusnak kell lennie **Javascript uda-Értékeket**.
 
-### <a name="output-type"></a>Kimeneti típust
+### <a name="output-type"></a>Kimenet típusa
 
 Egy adott, írja be a Stream Analytics-feladat támogatott, vagy a "Bármely" if szeretné kezelni a lekérdezés a típus.
 
@@ -229,11 +228,11 @@ Hozzon létre egy helyi JSON-fájlt az alábbi tartalmat feltölteni a fájlt az
 ]
 ````
 
-## <a name="get-help"></a>Segítségkérés
+## <a name="get-help"></a>Segítség kérése
 
 Segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)

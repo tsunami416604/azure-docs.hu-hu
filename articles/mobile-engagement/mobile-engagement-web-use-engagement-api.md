@@ -1,11 +1,11 @@
 ---
 title: Az Azure Mobile Engagement webes SDK API-k |} Microsoft Docs
-description: "A legújabb frissítéseket és a webszolgáltatási SDK az Azure Mobile Engagement eljárásai"
+description: A legújabb frissítéseket és a webszolgáltatási SDK az Azure Mobile Engagement eljárásai
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 8a87d5ac-d8b7-4a0d-bdee-414dbcc561b2
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: js
 ms.topic: article
 ms.date: 06/07/2016
 ms.author: piyushjo
-ms.openlocfilehash: 54c22ce6a03e382b1bbde102bccc97deec249b30
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6d2ae75b384b60d0383c1682a00a4fc0d19d0f43
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="use-the-azure-mobile-engagement-api-in-a-web-application"></a>A webalkalmazás az Azure Mobile Engagement API használata
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 Ez a dokumentum kiegészítése, a dokumentumot, amely azt ismerteti, hogyan a [integrálja a Mobile Engagement egy webalkalmazásban](mobile-engagement-web-integrate-engagement.md). Azt ismerteti, hogyan használható az Azure Mobile Engagement API jelentést az alkalmazás statisztikái részletes részleteit.
 
 A Mobile Engagement API által biztosított a `engagement.agent` objektum. Az Azure Mobile Engagement webes SDK alias van alapértelmezett `engagement`. Ez az alias az SDK-konfigurációból is definiálja újra.

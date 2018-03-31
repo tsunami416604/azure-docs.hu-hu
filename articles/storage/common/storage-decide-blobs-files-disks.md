@@ -1,30 +1,24 @@
 ---
-title: "Azure BLOB, az Azure fájlok vagy az Azure-lemezek használatára való"
-description: "Ismerje meg a különböző módszereket tárolhatja és érheti el az Azure segítségével adatokat úgy dönt, hogy melyik technológiát használja."
+title: Azure BLOB, az Azure fájlok vagy az Azure-lemezek használatára való
+description: Ismerje meg a különböző módszereket tárolhatja és érheti el az Azure segítségével adatokat úgy dönt, hogy melyik technológiát használja.
 services: storage
-documentationcenter: 
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: 
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2017
+ms.date: 03/28/2018
 ms.author: tamram
-ms.openlocfilehash: b9c7913d1e95693a5ec72b24cf020928d67f0133
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: ded0884ff83cc214d78f65fed8cefa646f11d952
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Azure BLOB, az Azure fájlok vagy az Azure-lemezek használatára való
 
 A Microsoft Azure számos szolgáltatást biztosít az Azure Storage tárolja, és a felhőben tárolt adatainak eléréséhez. Ez a cikk ismerteti az Azure-fájlok, Blobok és lemezek, és célja, hogy ezek a funkciók választás.
 
-## <a name="scenarios"></a>Forgatókönyvek
+## <a name="scenarios"></a>Alkalmazási helyzetek
 
 Az alábbi táblázat összehasonlítja a fájlok, Blobok és lemezek, és az egyes megfelelő példaforgatókönyvek jeleníti meg.
 
@@ -43,15 +37,15 @@ Az alábbi táblázat összehasonlítja a Azure BLOB Azure fájlokat.
 |**Attribútum**|**Azure Blobs**|**Az Azure Files**|  
 |Tartóssági beállítások|LRS, ZRS, GRS, RA-GRS|LRS, ZRS, GRS|  
 |Kisegítő lehetőségek|REST API-k|REST API-k<br /><br /> SMB 2.1 és az SMB 3.0 (szabványos fájlrendszere API-k)|  
-|Kapcsolatok|REST API-k – világszerte|REST API-k - világszerte<br /><br /> SMB 2.1--régión belül<br /><br /> Az SMB 3.0--világszerte|  
+|Hálózati kapcsolat|REST API-k – világszerte|REST API-k - világszerte<br /><br /> SMB 2.1--régión belül<br /><br /> Az SMB 3.0--világszerte|  
 |Végpontok|`http://myaccount.blob.core.windows.net/mycontainer/myblob`|`\\myaccount.file.core.windows.net\myshare\myfile.txt`<br /><br /> `http://myaccount.file.core.windows.net/myshare/myfile.txt`|  
 |Könyvtárak|Egyszerű névtér|Igaz címtárobjektumok|  
 |A nevek nagybetűk|Kis- és nagybetűk megkülönböztetése|Kis-és nagybetűk megkülönböztetése nélkül, de megőrzi az eset|  
-|Kapacitás|Legfeljebb 500 TB tárolók|5 TB fájlmegosztások|  
-|Teljesítmény|Legfeljebb 60 MB/s sebességet blokkblob|Az egy legfeljebb 60 MB/s|  
-|Objektum mérete|200 GB/blokkblob|Legfeljebb 1 TB-os vagy fájlrendszer|  
+|Kapacitás|Legfeljebb 500 TiB tárolók|5 TiB fájlmegosztások|  
+|Teljesítmény|Legfeljebb 60 MiB/s sebességet blokkblob|Az egy legfeljebb 60 MiB/s|  
+|Objektum mérete|Legfeljebb körülbelül 4.75 TiB blokkblob száma|Legfeljebb 1 TiB fájlonként|  
 |Számlázott kapacitás|Írt bájtok alapján|A fájl mérete alapján|  
-|Klienskódtárak|Több nyelv|Több nyelv|  
+|Ügyfélkódtárak|Több nyelv|Több nyelv|  
   
 ## <a name="comparison-files-and-disks"></a>Összehasonlítás: Fájlok és lemezek
 
@@ -66,11 +60,11 @@ Az alábbi táblázat összehasonlítja az Azure-fájlok az Azure-lemezeket.
 |A pillanatképek és másolása|Igen|Nem|  
 |Konfiguráció|A virtuális gép indításakor csatlakoztatva|A virtuális gép megkezdése után csatlakoztatva|  
 |Hitelesítés|Beépített|Net use beállítása|  
-|Tisztítás|Automatikus|Manuális|  
+|Felesleges tartalmak törlése|Automatikus|Manuális|  
 |REST-hozzáférés|A virtuális Merevlemezen található fájl nem érhető el|A megosztáson található fájlok is elérhetők.|  
-|Maximális méret|4 TB-os lemezre|5 TB fájlmegosztási és 1 TB-os fájl megosztáson belüli|  
+|Maximális méret|4 TiB lemez|5 TiB fájlmegosztás és a megosztáson belüli 1 TiB fájl|  
 |Maximális iops-érték 8 KB-os|500 IOps|1000 IOps|  
-|Teljesítmény|Lemezenként legfeljebb 60 MB/s|Legfeljebb 60 MB/s sebességet fájlmegosztás|  
+|Teljesítmény|Lemezenként legfeljebb 60 MiB/s|Egy fájl akár 60 MiB/s|  
 
 ## <a name="next-steps"></a>További lépések
 

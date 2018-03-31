@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 1/4/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0be360b5fdc6b562dc7aa6af2b8395b0f910c2d0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: dbc23dda366e38bda20010576c3258f0fd6e656b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB Python SDK API-SQL: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -30,8 +30,8 @@ ms.lasthandoff: 03/28/2018
 > * [Aszinkron Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [REST](https://docs.microsoft.com/rest/api/documentdb/)
-> * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/documentdbresourceprovider/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 > 
 > 
@@ -44,7 +44,7 @@ ms.lasthandoff: 03/28/2018
 
 <tr><td>**SDK telepítési utasításokat**</td><td>[Python SDK telepítési utasításokat](http://azure.github.io/azure-documentdb-python/)</td></tr>
 
-<tr><td>**Hozzájárul az SDK**</td><td>[GitHubon](https://github.com/Azure/azure-documentdb-python)</td></tr>
+<tr><td>**Hozzájárul az SDK**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-python)</td></tr>
 
 <tr><td>**Első lépések**</td><td>[Ismerkedés a Python SDK-val](sql-api-python-application.md)</td></tr>
 
@@ -163,7 +163,7 @@ A Cosmos DB kivont SDK használatával a szolgáltatás vannak elutasította.
 | 0.9.1-prelease |2014. szeptember 23. |2016. február 29. |
 | 0.9.0-prelease |2014. augusztus 21. |2016. február 29. |
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>Gyakori kérdések
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Lásd még

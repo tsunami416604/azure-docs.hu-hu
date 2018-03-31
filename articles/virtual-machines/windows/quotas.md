@@ -1,12 +1,12 @@
 ---
-title: "Azure vCPU kvótái |} Microsoft Docs"
-description: "További információk a vCPU kvóták az Azure-bA."
-keywords: 
+title: Azure vCPU kvótái |} Microsoft Docs
+description: További információk a vCPU kvóták az Azure-bA.
+keywords: ''
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: Drewm3
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2016
 ms.author: drewm
-ms.openlocfilehash: b481299b62d452bc306c1f9c1fa2cdccd49b818e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 05d84e4b8c0ac84db5d0784e64071931408ec1d6
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>Virtuális gép vCPU kvóták
 
@@ -81,8 +81,8 @@ Premium Storage Managed Disks                1 10000 Count
 ## <a name="reserved-vm-instances"></a>Reserved VM Instances
 Fenntartott virtuális gép olyan példányt, amelyek egy-egy előfizetéshez hatóköre, egy új aspektus adja hozzá a vCPU kvótákat. Ezeket az értékeket a megadott méret kell lennie az előfizetéshez telepíthető példányok száma ismertetik. A kvóta rendszer annak érdekében, hogy a kvóta van fenntartva, győződjön meg róla, fenntartott példányai is telepíthető az előfizetésben való használhatók helyőrzőként. Például egy adott előfizetésnek 10 standard szintű, D1 fenntartott standard szintű, D1 fenntartott példányok korlátozza a tanúsítványalgoritmusok példányok 10 lesz. Ez azt eredményezi, annak érdekében, hogy nincsenek mindig legalább 10 Vcpu elérhető a teljes regionális Vcpu kvótájának standard szintű, D1-példányok használható, és nincsenek elérhető, a Standard D termékcsalád vCPU kvótájának standard szintű, D1-példányok használandó legalább 10 Vcpu Azure.
 
-Ha a kvóta növelését vagy vásároljon egy egyetlen előfizetés RI szükséges, akkor [a kvóta növelését](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) előfizetéséhez.
+Ha egy egyetlen előfizetés RI megvásárlásához a kvóta növelését szükséges, akkor [a kvóta növelését](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) előfizetéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Számlázási és a kvóták kapcsolatos további információkért lásd: [Azure-előfizetés és szolgáltatási korlátok, kvóták és megkötések](https://docs.microsoft.com/azure/azure-subscription-service-limits?toc=/azure/billing/TOC.json).

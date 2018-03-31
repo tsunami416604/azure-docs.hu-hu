@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Mobile Engagement megvalósítási játék alkalmazás"
-description: "Azure Mobile Engagement végrehajtásához szóló forgatókönyvet játékok"
+title: Az Azure Mobile Engagement megvalósítási játék alkalmazás
+description: Azure Mobile Engagement végrehajtásához szóló forgatókönyvet játékok
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 2cafc044-4902-4058-8037-49399bf6bf7f
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,14 +14,18 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 0ca35a3d634db8eb5c63afacba046a35b8a3e7ed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96e827b57e804cc91798859bc906e49046decede
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="implement-mobile-engagement-with-gaming-app"></a>Mobile Engagement az Játékalkalmazásról megvalósítása
 ## <a name="overview"></a>Áttekintés
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 Egy játék kezdeti elindította az új alapú halászati role-play/stratégia játék alkalmazás. A game már működik, és 6 hónapig. A game hatalmas sikeres, és több millió letöltések rendelkezik pedig a megőrzési nagyon magas kezdeti játék alkalmazások képest. A negyedéves felülvizsgálati értekezleten érdekelt felek elfogadja átlagos bevétel felhasználónként (ARPU) növelnie kell azokat. Prémium szintű a játékbeli csomagok elérhetők, különleges ajánlatokat. Ezek a csomagok játék engedélyezése a felhasználók számára a Megjelenés és a teljesítmény halászati sorok és lures vagy a játék tackles frissítése. Azonban a csomag értékesítési nem nagyon alacsony. Úgy döntenek, először a felhasználói élmény analytics eszközzel elemzése, és majd fejlesztése az engagement program értékesítési használatával növelje speciális Szegmentálás.
 
 Alapján a [Azure Mobile Engagement – első lépések útmutató ajánlott eljárásoknak megfelelő beállításában](mobile-engagement-getting-started-best-practices.md) engagement-stratégia kialakítása.
@@ -61,7 +65,7 @@ Egy speciális bevonási program létrehozása, előtt a mobileszköz projekt ig
 * A szint 20, akik elindíthatók egy több mint 10 $vagy hét.
 * Prémium szintű csomagok szinten 16, 24 és 32 megvásárlása a felhasználók általában.
 
-Az elemzés környezetnek köszönhetően a mobilalkalmazás-projekt igazgató úgy dönt, hogy létrehozása adott leküldéses értesítési sorozatok app Sales növelése érdekében. Három leküldéses folyamatok, amelyek ezután meghívja hoz: üdvözli a program, értékesítési Program és inaktív Program. További információ a [Playbooks](https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks)![][1]
+Az elemzés környezetnek köszönhetően a mobilalkalmazás-projekt igazgató úgy dönt, hogy létrehozása adott leküldéses értesítési sorozatok app Sales növelése érdekében. Három leküldéses folyamatok, amelyek ezután meghívja hoz: üdvözli a program, értékesítési Program és inaktív Program. További információ a [Playbooks](https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks) ![][1]
 
 <!--Image references-->
 

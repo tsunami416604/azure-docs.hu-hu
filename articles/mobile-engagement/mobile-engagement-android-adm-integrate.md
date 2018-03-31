@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Mobile Engagement Android SDK-integráció"
-description: "Legújabb frissítések és az Azure Mobile Engagement Android SDK eljárásai"
+title: Az Azure Mobile Engagement Android SDK-integráció
+description: Legújabb frissítések és az Azure Mobile Engagement Android SDK eljárásai
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a7d719ec-67b3-4be3-9d7f-0b61a57fe978
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 43987962ea2b7b825b88643d18b4db65f1f1670e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4c3b8f60333e6096411aad8499bb4bfc36e53f3c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-integrate-adm-with-engagement"></a>ADM integrálása Engagement
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 > [!IMPORTANT]
 > Meg kell követnie a integrációs ismertetett a hogyan integrálhatja Engagement Android dokumentumon Ez az útmutató követése előtt.
 > 
@@ -28,7 +32,7 @@ ms.lasthandoff: 10/11/2017
 > 
 > 
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Bemutatás
 ADM integrációja lehetővé teszi, hogy az alkalmazás leküldött a célcsoport-kezelési Amazon Android-eszközök számára.
 
 ADM vonatkozó Payload van jelen az SDK leküldött mindig tartalmazza a `azme` adatobjektum kulcsban. Így ADM más célra, az alkalmazás használatakor, leküldéses értesítések kulcs alapján szűrheti.
@@ -41,7 +45,7 @@ ADM vonatkozó Payload van jelen az SDK leküldött mindig tartalmazza a `azme` 
 ## <a name="sign-up-to-adm"></a>Regisztráljon az ADM
 Ha nem tette meg, engedélyeznie kell ADM a Amazon-fiókjában.
 
-Az eljárás részletes: [ <https://developer.amazon.com/sdk/adm/credentials.html>].
+Az eljárás részletes: [ <https://developer.amazon.com/sdk/adm/credentials.html> ].
 
 Az eljárás befejezése után kap:
 
@@ -104,7 +108,7 @@ Ellenőrizze, hogy a következő engedélyeket a `AndroidManifest.xml` (előtt a
 ## <a name="grant-engagement-oauth-credentials"></a>Támogatás Engagement OAuth-hitelesítőadatok
 Küldje el az OAuth-hitelesítőadatok (ügyfél-azonosító és a titkos ügyfélkódot) Engagement portálon.
 
-[< https://developer.amazon.com/sdk/adm/credentials.html>]:https://developer.amazon.com/sdk/adm/credentials.html
+[<https://developer.amazon.com/sdk/adm/credentials.html>]:https://developer.amazon.com/sdk/adm/credentials.html
 [ADM ügyféloldali kódtár]:https://developer.amazon.com/sdk/adm/setup.html
 [ADM integrált]:https://developer.amazon.com/sdk/adm/integrating-app.html
 [ezzel az eljárással]:https://developer.amazon.com/sdk/adm/integrating-app.html#Asset

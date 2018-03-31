@@ -1,11 +1,11 @@
 ---
-title: "A több szolgáltatáskonfiguráció használata Azure-projekt konfigurálása |} Microsoft Docs"
-description: "Útmutató az Azure-felhőszolgáltatás-projekt konfigurálása a ServiceDefinition.csdef ServiceConfiguration.Local.cscfg és ServiceConfiguration.Cloud.cscfg fájlok módosításával."
+title: A több szolgáltatáskonfiguráció használata Azure-projekt konfigurálása |} Microsoft Docs
+description: Útmutató az Azure-felhőszolgáltatás-projekt konfigurálása a ServiceDefinition.csdef ServiceConfiguration.Local.cscfg és ServiceConfiguration.Cloud.cscfg fájlok módosításával.
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: a4fb79ed-384f-4183-9f74-5cac257206b9
 ms.service: multiple
 ms.devlang: multiple
@@ -13,19 +13,19 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2017
-ms.author: kraigb
-ms.openlocfilehash: 8125ef36f730b745d63c39493f48d14a5a33d76c
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.author: ghogen
+ms.openlocfilehash: 919568922ada2d842233ade029a54d474b4a1a0e
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="configuring-your-azure-project-in-visual-studio-to-use-multiple-service-configurations"></a>A Visual Studio több szolgáltatáskonfiguráció használata az Azure-projekt konfigurálása
 
 A Visual Studio egy Azure-felhőszolgáltatás-projekt tartalmazza mindhárom konfigurációs fájlt: `ServiceDefinition.csdef`, `ServiceConfiguration.Local.cscfg`, és `ServiceConfiguration.Cloud.cscfg`:
 
-- `ServiceDefinition.csdef`a rendszer az Azure-ba, és a felhőszolgáltatás és a szerepkörök követelményeinek leírására, és beállítások megadását összes példányára vonatkoznak. Az Azure szolgáltatást üzemeltető futásidejű API-val futásidőben beállítások olvasható. Ez a fájl frissíthető Azure csak akkor, ha a felhőalapú szolgáltatás le van állítva.
-- `ServiceConfiguration.Local.cscfg`és `ServiceConfiguration.Cloud.cscfg` adjon meg értékeket, a beállítások a definícióban fájlt, és adja meg az egyes szerepkörökhöz futtatásához példányainak száma. A "Helyi" fájlt a helyi hibakeresés; használt értékeket tartalmaz a "Cloud" fájlt a rendszer Azure-bA `ServiceConfiguration.cscfg` és a kiszolgáló környezetre vonatkozó beállításokat tartalmaz. Ez a fájl frissíthető az Azure-ban a felhőalapú szolgáltatás futása közben.
+- `ServiceDefinition.csdef` a rendszer az Azure-ba, és a felhőszolgáltatás és a szerepkörök követelményeinek leírására, és beállítások megadását összes példányára vonatkoznak. Az Azure szolgáltatást üzemeltető futásidejű API-val futásidőben beállítások olvasható. Ez a fájl frissíthető Azure csak akkor, ha a felhőalapú szolgáltatás le van állítva.
+- `ServiceConfiguration.Local.cscfg` és `ServiceConfiguration.Cloud.cscfg` adjon meg értékeket, a beállítások a definícióban fájlt, és adja meg az egyes szerepkörökhöz futtatásához példányainak száma. A "Helyi" fájlt a helyi hibakeresés; használt értékeket tartalmaz a "Cloud" fájlt a rendszer Azure-bA `ServiceConfiguration.cscfg` és a kiszolgáló környezetre vonatkozó beállításokat tartalmaz. Ez a fájl frissíthető az Azure-ban a felhőalapú szolgáltatás futása közben.
 
 Konfigurációs beállítások felügyelete, a Visual Studio használatával tulajdonságlapokat a megfelelő szerepkör módosításukra (kattintson a jobb gombbal a szerepkört, és válassza ki **tulajdonságok**, vagy kattintson duplán a szerepkör). Módosítások hatóköre beállítható úgy, hogy bármelyik konfigurációs van kiválasztva a a **szolgáltatáskonfiguráció** legördülő listán. A webes és feldolgozói szerepkörök tulajdonságainak hasonló, kivéve, ha az alábbi szakaszok ismertetik.
 
@@ -36,7 +36,7 @@ A szolgáltatásdefiníció és a szolgáltatás konfigurációs fájljait az al
 
 ## <a name="configuration-page"></a>Konfiguráció lap
 
-### <a name="service-configuration"></a>Szolgáltatás konfigurációja
+### <a name="service-configuration"></a>Service Configuration
 
 Kiválasztása `ServiceConfiguration.*.cscfg` változások által érintett fájl. Alapértelmezés szerint nincsenek helyi és Felhőbeli használata, és használhatja a **kezelése...**  parancs, nevezze át, és távolítsa el a konfigurációs fájlok. Ezeket a fájlokat a felhőszolgáltatás-projekt adnak, és megjelennek **Megoldáskezelőben**. Azonban átnevezése vagy konfigurációk eltávolítása végezhető csak a vezérlőről.
 

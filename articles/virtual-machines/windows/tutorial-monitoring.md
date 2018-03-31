@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: fdb8009e3dbca1037cae61ec8627f73190a8263d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b908e8877162a6a1d9292616a1704c1c528e1725
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="monitor-and-update-a-windows-virtual-machine-with-azure-powershell"></a>Figyelheti és frissítheti a Windows virtuális gépként az Azure PowerShell
 
@@ -36,6 +36,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Virtuálisgép-metrikák megtekintése
 > * Riasztás létrehozása
 > * Windows-frissítések kezelése
+> * A figyelő módosítások és a készlet
 > * Speciális monitorozás beállítása
 
 Az oktatóanyaghoz az Azure PowerShell-modul 3.6-os vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
@@ -274,6 +275,7 @@ Ebben az oktatóanyagban konfigurálva, és tekintse át a virtuális gépek az 
 > * Virtuálisgép-metrikák megtekintése
 > * Riasztás létrehozása
 > * Windows-frissítések kezelése
+> * A figyelő módosítások és a készlet
 > * Speciális monitorozás beállítása
 
 A következő oktatóanyag az Azure security Centerrel kapcsolatos további továbblépés.

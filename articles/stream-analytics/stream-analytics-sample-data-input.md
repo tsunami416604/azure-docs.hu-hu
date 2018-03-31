@@ -1,13 +1,12 @@
 ---
-title: "Tesztelés Azure Stream Analytics lekérdezési |} Microsoft Docs"
-description: "Meghatározhatja problémák elhárításakor Stream Analytics-feladatok."
-keywords: "bemeneti, bemeneti mintavételi hibaelhárítása"
-documentationcenter: 
+title: Tesztelés Azure Stream Analytics lekérdezési |} Microsoft Docs
+description: Meghatározhatja problémák elhárításakor Stream Analytics-feladatok.
+keywords: bemeneti, bemeneti mintavételi hibaelhárítása
+documentationcenter: ''
 services: stream-analytics
 author: jseb225
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: e2636b8b89b86bbb2a2991972386462535d5a10f
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 99c9f7f2dc84f53d09b7aee1916c5532427de692
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-stream-analytics-query-testing-and-input-stream-sampling"></a>Az Azure Stream Analytics lekérdezési tesztelése és az adatfolyam-bemenet mintavétel
 
@@ -55,11 +54,11 @@ Ha több kimenet a lekérdezésben, külön-külön minden kimeneti eredmények 
 
 Miután elégedett az eredményeket, mentheti a lekérdezés, indítsa el a feladat, elhelyezkedik vissza, és tekintse meg a Stream Analytics magic.
 
-## <a name="get-help"></a>Segítségkérés
+## <a name="get-help"></a>Segítség kérése
 
 Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)

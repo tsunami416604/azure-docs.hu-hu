@@ -1,11 +1,11 @@
 ---
-title: "Ismerkedés a queue storage és a Visual Studio a kapcsolódó szolgáltatások (webjobs-feladat projektek) |} Microsoft Docs"
-description: "Ismerkedés az Azure Queue storage segítségével webjobs-feladat projektben egy tárfiókot, a Visual Studio használatával történő kapcsolódás után kapcsolódó szolgáltatások."
+title: Ismerkedés a queue storage és a Visual Studio a kapcsolódó szolgáltatások (webjobs-feladat projektek) |} Microsoft Docs
+description: Ismerkedés az Azure Queue storage segítségével webjobs-feladat projektben egy tárfiókot, a Visual Studio használatával történő kapcsolódás után kapcsolódó szolgáltatások.
 services: storage
-documentationcenter: 
-author: kraigb
-manager: ghogen
-editor: 
+documentationcenter: ''
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 5c3ef267-2a67-44e9-ab4a-1edd7015034f
 ms.service: storage
 ms.workload: web
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
-ms.author: kraigb
-ms.openlocfilehash: efd2f1e471f67396d35f11f2eb1044a8afa469af
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 52c089d2657d61ee42730a00def060dec74439fc
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Ismerkedés az Azure Queue storage és a Visual Studio csatlakoztatva (webjobs-feladat projektek) szolgáltatások
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -79,9 +79,9 @@ Aszinkron funkciók is igénybe vehet egy [cancellation token](http://www.asp.ne
 ## <a name="types-the-queuetrigger-attribute-works-with"></a>Együttműködve biztosítja a QueueTrigger attribútum típusa
 Használhat **QueueTrigger** a következő típusú:
 
-* **karakterlánc**
+* **string**
 * A JSON-ként szerializált POCO típus
-* **byte]**
+* **byte[]**
 * **CloudQueueMessage**
 
 ## <a name="polling-algorithm"></a>Lekérdezési algoritmus
@@ -300,9 +300,9 @@ A **Blob** attribútum a következő típusú használható:
 * **TextWriter**
 * **karakterlánc** (olvasni.)
 * **kimenő karakterlánc** (írási; hoz létre egy blobot, csak akkor, ha a karakterlánc-paraméter null értékű akkor, ha a függvény)
-* POCO (olvasás)
+* POCO (read)
 * kimenő POCO (írás; mindig létrehoz egy blobot, mint null objektumot hoz létre, ha POCO paraméter értéke null, ha a függvény)
-* **CloudBlobStream** (írás)
+* **CloudBlobStream** (write)
 * **ICloudBlob** (olvasása vagy írása)
 * **CloudBlockBlob** (olvasása vagy írása)
 * **CloudPageBlob** (olvasása vagy írása)
@@ -511,6 +511,6 @@ Az Azure tábla és a **Console.Out** és **Console.Error** naplók néznek ki:
 
 ![Hibanapló tábla](./media/vs-storage-webjobs-getting-started-queues/tableerror.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez a cikk nyújtott mintakódok, amelyek bemutatják, hogyan kezeli az Azure-üzenetsorok használata gyakori forgatókönyvei. Azure webjobs-feladatok és a WebJobs SDK használatával kapcsolatos további információkért lásd: [Azure WebJobs-dokumentáció erőforrások](http://go.microsoft.com/fwlink/?linkid=390226).
 

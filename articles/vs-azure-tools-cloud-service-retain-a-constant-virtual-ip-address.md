@@ -1,11 +1,11 @@
 ---
-title: "Hogyan szeretné megőrizni az Azure-felhőszolgáltatás állandó virtuális IP-cím |} Microsoft Docs"
-description: "Útmutató: Győződjön meg arról, hogy a virtuális IP-cím (VIP) az Azure felhőalapú szolgáltatás nem változik."
+title: Hogyan szeretné megőrizni az Azure-felhőszolgáltatás állandó virtuális IP-cím |} Microsoft Docs
+description: 'Útmutató: Győződjön meg arról, hogy a virtuális IP-cím (VIP) az Azure felhőalapú szolgáltatás nem változik.'
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 4a58e2c6-7a79-4051-8a2c-99182ff8b881
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 03/21/2017
-ms.author: kraigb
-ms.openlocfilehash: 96c4ed88db5e24f439825aee5afe457a1e8c81d7
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.author: ghogen
+ms.openlocfilehash: 6d81e68552b023f2c30e4fc4616d6fa52831c451
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="retain-a-constant-virtual-ip-address-for-an-azure-cloud-service"></a>Tartsa meg az Azure-felhőszolgáltatás állandó virtuális IP-cím
 Amikor frissíti egy felhőszolgáltatás, amely az Azure szolgáltatásban üzemeltetett, szükség lehet győződjön meg arról, hogy a virtuális IP-cím (VIP) a szolgáltatás nem változik. Sok tartományi szolgáltatások a tartománynévrendszer (DNS) tartománynevek a regisztrációhoz használja. DNS működését csak akkor, ha a VIP változatlan marad. Használhatja a **közzététele varázsló** Azure eszközök annak érdekében, hogy a felhőszolgáltatás VIP nem változik mikor végezzen frissítést. A felhőszolgáltatások DNS-tartományok használatával kapcsolatos további információkért lásd: [egy egyéni tartománynevet, az Azure-felhőszolgáltatás konfigurálása](cloud-services/cloud-services-custom-domain-name-portal.md).
@@ -55,6 +55,6 @@ A központi telepítési beállításokat adhat meg a **közzététele varázsl�
    
     ![Azure alkalmazáshoz összegzése lap közzététele](./media/vs-azure-tools-cloud-service-retain-a-constant-virtual-ip-address/azure-publish-summary.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [A Visual Studio használatával Azure varázsló közzététele](vs-azure-tools-publish-azure-application-wizard.md)
 

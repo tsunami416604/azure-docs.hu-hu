@@ -1,12 +1,11 @@
 ---
-title: "Az Azure Stream Analytics & AzureML functions méretezése feladat |} Microsoft Docs"
-description: "Ismerje meg a megfelelő méretezése a Stream Analytics-feladatok (particionálás, SU mennyiség és egyebek) használata az Azure Machine Learning funkciók."
-keywords: 
-documentationcenter: 
+title: Az Azure Stream Analytics & AzureML functions méretezése feladat |} Microsoft Docs
+description: Ismerje meg a megfelelő méretezése a Stream Analytics-feladatok (particionálás, SU mennyiség és egyebek) használata az Azure Machine Learning funkciók.
+keywords: ''
+documentationcenter: ''
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: cgronlun
+author: jseb225
+manager: ryanw
 ms.assetid: 47ce7c5e-1de1-41ca-9a26-b5ecce814743
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: 1e1c3724462a4d2a67eab3ef42867d2aeb5d3fa1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: dd6effab3ba0b411131414bd757ffe8cc54e49d2
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>A Stream Analytics-feladat az Azure Machine Learning functions méretezése
 Legtöbbször könnyen állítson be egy Stream Analytics-feladat, és néhány adatot végigfuttatása. Mit kell végezzük, amikor nagyobb adatmennyiség futtassa ugyanazt a feladatot? Szükséges, hogy ismerje meg, hogyan konfigurálhatja a Stream Analytics-feladat, úgy, hogy a méretezés. Ebben a dokumentumban azt összpontosítani a Machine Learning függvényekkel Stream Analytics-feladatok méretezése különleges szempontjait is. A Stream Analytics-feladatok méretezése általános információ: a cikk [feladatok skálázás](stream-analytics-scale-jobs.md).
@@ -77,7 +76,7 @@ Feltételezik, a várakozási a céggel kapcsolatos véleményeket elemzési Mac
 
 Az alábbiakban a táblát, az átviteli sebessége a Stream Analytics-feladat van különböző SUS-t és a Köteg mérete (az események másodpercenkénti számát).
 
-| Köteg mérete (a gépi tanulás összetevő várakozási ideje) | 500 (200 ms) | 1000 (200 ms) | 5000 (250 ms) | 10 000-re (300 ms) | 25 000 (500 ms) |
+| Köteg mérete (a gépi tanulás összetevő várakozási ideje) | 500 (200 ms) | 1,000 (200 ms) | 5,000 (250 ms) | 10,000 (300 ms) | 25,000 (500 ms) |
 | --- | --- | --- | --- | --- | --- |
 | **1 SU** |2,500 |5,000 |20,000 |30,000 |50,000 |
 | **3 SUS-t** |2,500 |5,000 |20,000 |30,000 |50,000 |
@@ -86,7 +85,7 @@ Az alábbiakban a táblát, az átviteli sebessége a Stream Analytics-feladat v
 | **18 SUS-t** |7,500 |15,000 |60,000 |90,000 |150,000 |
 | **24 SUS-t** |10,000 |20,000 |80,000 |120,000 |200,000 |
 | **…** |… |… |… |… |… |
-| **60 SUS-t** |25,000 |50,000 |200,000 |300,000 |500,000 |
+| **60 SUs** |25,000 |50,000 |200,000 |300,000 |500,000 |
 
 Mostanra akkor már rendelkezik Stream Analytics a Machine Learning funkciók működése beható ismerete. Valószínűleg is tudomásul veszi, hogy a Stream Analytics-feladatok "pull" adatokat adatforrásokból és minden egyes "pull" egy események feldolgozását a Stream Analytics-feladat kötegelt adja vissza. Hogyan a lekéréses modell hatás a Machine Learning szolgáltatáskérések webes?
 
@@ -114,7 +113,7 @@ Az elem az alábbiak szerint definiáltuk:
 
 Egy teljesen particionált Stream Analytics lekérdezési példaként használt. Egy összetettebb lekérdezés van szüksége a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics) kiváló forrást biztosítanak a további kapcsolatos segítség kérése a Stream Analytics csapat van.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Stream Analytics kapcsolatos további információkért lásd:
 
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)

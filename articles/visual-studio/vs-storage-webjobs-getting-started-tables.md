@@ -1,11 +1,11 @@
 ---
-title: "Ismerkedés az Azure storage és a Visual Studio csatlakoztatva (webjobs-feladat projektek) szolgáltatások"
-description: "Ismerkedés az Azure Table storage használata az Azure webjobs-feladatok projekt, a Visual Studio egy tárfiókot, a Visual Studio használatával történő kapcsolódás után kapcsolódó szolgáltatások"
+title: Ismerkedés az Azure storage és a Visual Studio csatlakoztatva (webjobs-feladat projektek) szolgáltatások
+description: Ismerkedés az Azure Table storage használata az Azure webjobs-feladatok projekt, a Visual Studio egy tárfiókot, a Visual Studio használatával történő kapcsolódás után kapcsolódó szolgáltatások
 services: storage
-documentationcenter: 
-author: kraigb
-manager: ghogen
-editor: 
+documentationcenter: ''
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 061a6c46-0592-4e5d-aced-ab7498481cde
 ms.service: storage
 ms.workload: web
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
-ms.author: kraigb
-ms.openlocfilehash: 4e0c77e08bff971277a09d6066f259db84617616
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 75ca4914fe60ec6f5c50e4942ad6d5cc7a6fe98b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Ismerkedés az Azure Storage (az Azure webjobs-feladat projektek)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -145,6 +145,6 @@ Használatáról további információt a **CloudTable** objektumazonosító, l�
 ## <a name="related-topics-covered-by-the-queues-how-to-article"></a>Az útmutató a várólisták a cikkben említett kapcsolódó témakörök
 Információ a tábla feldolgozási sor üzenetet által indított kezelésének módját, vagy nem kizárólag a tábla feldolgozásra WebJobs SDK-forgatókönyvek esetén lásd: [Ismerkedés az Azure Queue storage és a Visual Studio csatlakoztatva (webjobs-feladat projektek) szolgáltatások](../storage/vs-storage-webjobs-getting-started-queues.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez a cikk nyújtott mintakódok, amelyek bemutatják, hogyan kezeli az Azure-táblákban használata gyakori forgatókönyvei. Azure webjobs-feladatok és a WebJobs SDK használatával kapcsolatos további információkért lásd: [Azure WebJobs-dokumentáció erőforrások](http://go.microsoft.com/fwlink/?linkid=390226).
 

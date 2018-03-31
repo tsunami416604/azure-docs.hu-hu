@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Mobile Engagement Android SDK-integráció"
-description: "Legújabb frissítések és az Azure Mobile Engagement Android SDK eljárásai"
+title: Az Azure Mobile Engagement Android SDK-integráció
+description: Legújabb frissítések és az Azure Mobile Engagement Android SDK eljárásai
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 9ec3fab3-35ec-458e-bf41-6cdd69e3fa44
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 06/27/2016
 ms.author: piyushjo
-ms.openlocfilehash: 26ba47b19f3a503693d60d344ad39b9eba74fe99
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 15e71d8aeb8c8060161ade4262e0be0a093b5650
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-integrate-engagement-reach-on-android"></a>Hogyan integrálható az Engagement Reach Android rendszeren
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 > [!IMPORTANT]
 > Meg kell követnie a integrációs ismertetett a hogyan integrálhatja Engagement Android dokumentumon Ez az útmutató követése előtt.
 > 
@@ -102,7 +106,7 @@ Szerkessze a `AndroidManifest.xml` fájlt:
   
   Ez az engedély nélkül Android megakadályozza, hogy a rendszer értesítéseket nem látható, ha bejelölte a gyűrű vagy a vibrate beállítás a Reach-kampány-kezelőben.
 
-## <a name="native-push"></a>Natív leküldéssel
+## <a name="native-push"></a>Natív leküldés
 Most, hogy konfigurálta a Reach-modul, fogadhat az eszközön a kampányok natív leküldéssel konfigurálni kell.
 
 Az Android két szolgáltatás támogatott:
@@ -160,8 +164,8 @@ Az alábbiakban néhány irányelvek megfelelően kezelje a paraméternek `onDat
 
 A visszatérési típusa csak a Reach-statisztikák esetén használja:
 
-* `Replied`értéke akkor növekszik, ha a szóró fogadók egyik adott vissza, vagy `true` vagy `false`.
-* `Actioned`értéke akkor nő, csak akkor, ha a szóró fogadók egyik adott vissza `true`.
+* `Replied` értéke akkor növekszik, ha a szóró fogadók egyik adott vissza, vagy `true` vagy `false`.
+* `Actioned` értéke akkor nő, csak akkor, ha a szóró fogadók egyik adott vissza `true`.
 
 ## <a name="how-to-customize-campaigns"></a>A kampányok testreszabása
 Kampányok testreszabásához módosíthatja az elrendezés a Reach SDK-ban megadva.
@@ -233,7 +237,7 @@ Ha nem szeretné, hogy az átmeneti területre, fel kell venni a tevékenységek
               <meta-data android:name="engagement:notification:overlay" android:value="false"/>
             </activity>
 
-#### <a name="categories"></a>Kategóriák
+#### <a name="categories"></a> Kategóriák
 Ha módosítja a megadott elrendezések, az értesítések megjelenésének módosítása. Kategóriák lehetővé teszik a különböző megcélzott keres (valószínűleg viselkedések) megadása az értesítések. A kategória a Reach-kampány létrehozásakor adható meg. Ne feledje, hogy kategóriák is segítségével testre szabható mutató hirdetmények és szavazások, a dokumentum későbbi szakaszában ismertetett.
 
 Az értesítések kategória leíró regisztrálásához kell hozzáadnia a hívás az alkalmazás inicializálásakor.

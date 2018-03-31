@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Mobile Engagement felhasználói felület - a Reach-kampány"
-description: "Laern hogyan hozhatja létre és kezelheti a leküldéses értesítési kampányokra, Azure Mobile Engagement segítségével"
+title: Az Azure Mobile Engagement felhasználói felület - a Reach-kampány
+description: Laern hogyan hozhatja létre és kezelheti a leküldéses értesítési kampányokra, Azure Mobile Engagement segítségével
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 2fe124a2-a86f-4136-81ba-a9d298ec798a
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: fc88db8db11d1ed12fa95c2087c9a32b21bf4de5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9d457a8d5f68f70f6bf7a5f086b5e1d65bd1ea95
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-create-and-manage-push-notification-campaigns"></a>Hozzon létre, és leküldéses értesítéses kampányokkal kezelése
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 A Reach szakasza a felhasználói felület segítségével hozzon létre egy új leküldéses kampány egy összetett képlettel minden küldött leküldéses értesítés szükséges információ megadásával. A beállítások a leküldéses kampány kis mértékben változhat a négy típusok: közlemények, szavazások, Adatleküldések és Csempék (csak Windows Phone).
 
 ### <a name="option-applies-to"></a>A beállítás a következőkre vonatkozik:
@@ -56,14 +60,14 @@ A nyelvek legördülő menü segítségével egy másik verziója a leküldéses
 * Horvát (hr) 
 * Czech (CS) 
 * Dán (da) 
-* Holland (Hollandia) 
+* Dutch (nl) 
 * Angol (en) 
 * Finn (fi) 
 * Francia (fr) 
 * Német (de) 
 * Görög (el) 
 * Héber (ő) 
-* Hindi (nagy) 
+* Hindi (hi) 
 * Magyar (hu) 
 * Indonéziai (id) 
 * Olasz () 
@@ -81,7 +85,7 @@ A nyelvek legördülő menü segítségével egy másik verziója a leküldéses
 * Szlovák (sk) 
 * Szlovén (SA) 
 * Spanyol (es) 
-* Svéd (sv) 
+* Swedish (sv) 
 * Tagalog (tl) 
 * Thai (CS) 
 * Török (m) 
@@ -119,7 +123,7 @@ Az értesítési szakaszban használhatja az egyszerű beállítások beállít�
 ## <a name="content"></a>Tartalom
 A tartalmi szakasz segítségével módosíthatja a közlemények, szavazások, Adatleküldések és Csempék (csak Windows Phone) tartalmát. A tartalom leküldéses kampányokra lehet kampány típusának. 
 
-### <a name="see-also"></a>Lásd még:
+### <a name="see-also"></a>Lásd még
 * [Felhasználói felületének dokumentációja – Reach - tartalom leküldéses][Link 29]
 
 ![Reach-Campaign5][24]
@@ -135,7 +139,7 @@ A célközönség szakasz segítségével határozza meg a kampány vagy -korlá
 * Csak az aktív felhasználókat leküldéssel ("Megszólítása csak olyan felhasználók, akik elérhetők natív leküldéssel használatával" jelölőnégyzet és a "Csak az aktív felhasználók megszólítása"), hogy csak azok a felhasználók, akik továbbra is a az alkalmazás telepítve van, és ezzel beolvasandó kell.
   Miután a célközönséget be van állítva, a szimulálás gomb segítségével megtudhatja, hogy hány felhasználó fog kapni a leküldéses. Ez fogja számítási potenciálisan célozza meg a célközönség (egy véletlenszerű felhasználói minta alapján becsült érték) ismert felhasználók száma. Vegye figyelembe, hogy azok a felhasználók, akik eltávolították az alkalmazást szintén részei a célközönségnek, de nem érhető el.
 
-### <a name="see-also"></a>Lásd még:
+### <a name="see-also"></a>Lásd még
 * [Felhasználói felület - a Reach - dokumentáció új leküldéses feltétel][Link 28]
 
 ![Reach-Campaign6][25]
@@ -157,7 +161,7 @@ Az időszak szakasz segítségével állítható be, ha a leküldéssel fogják 
 > [!NOTE]
 > Nélkül záródátumot gyorsítótárazásával kampányokra leküldéses értesítések helyileg és továbbra is megjelenítésükhöz követően manuálisan teljes kampányok. Ez a viselkedés jellemző a kampányok befejezési idő elkerülése érdekében.
 
-### <a name="see-also"></a>Lásd még:
+### <a name="see-also"></a>Lásd még
 * [A reach - hogyan Tos – ütemezése][Link 3] 
 
 ![Reach-Campaign8][27]
@@ -171,7 +175,7 @@ A vizsgálat szakasza segítségével a leküldéses küld a saját vizsgálati 
 > [!NOTE]
 > Nincs a kiszolgálóoldali adatok naplóz, amikor vissza gombját használja a "teszt" a leküldéses értesítések, az adatokat a valódi leküldéses kampányokra csak naplózza.
 
-### <a name="see-also"></a>Lásd még:
+### <a name="see-also"></a>Lásd még
 * [Felhasználói felület dokumentáció - fiókomat][Link 14]
 
 ![Reach-Campaign9][28]

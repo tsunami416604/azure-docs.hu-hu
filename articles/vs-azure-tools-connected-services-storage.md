@@ -1,11 +1,11 @@
 ---
-title: "Adja hozzá az Azure Storage szolgáltatások csatlakoztatva a Visual Studio használatával |} Microsoft Docs"
-description: "Azure Storage hozzáadása az alkalmazáshoz a Visual Studio kapcsolódó szolgáltatások hozzáadása párbeszédpanelen"
+title: Adja hozzá az Azure Storage szolgáltatások csatlakoztatva a Visual Studio használatával |} Microsoft Docs
+description: Azure Storage hozzáadása az alkalmazáshoz a Visual Studio kapcsolódó szolgáltatások hozzáadása párbeszédpanelen
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 521ec044-ad4b-4828-8864-01decde2e758
 ms.service: storage
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2017
-ms.author: kraigb
-ms.openlocfilehash: 35638083cd75e1b751d00a9c8163a3bc7480f0cd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 3252d022222e1c31491a6b111e5e96f8c62ca915
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="adding-azure-storage-by-using-visual-studio-connected-services"></a>Az Azure storage hozzáadása a Visual Studio kapcsolódó szolgáltatások használatával
 A Visual Studio kapcsolódás a következő Azure Storage használatával a **kapcsolódó szolgáltatások hozzáadása** párbeszédpanel:
@@ -27,7 +27,7 @@ A Visual Studio kapcsolódás a következő Azure Storage használatával a **ka
 - .NET-háttérrendszer mobilszolgáltatás
 - ASP.NET-webhely vagy szolgáltatás
 - Az ASP.NET Core szolgáltatás
-- Azure webjobs-feladat szolgáltatás 
+- Azure WebJob service 
 
 A csatlakoztatott szolgáltatás funkcióit a szükséges hivatkozásokat és a kapcsolat kód hozzáadása a projekthez, és megfelelően módosítja a konfigurációs fájlok. 
 
@@ -70,7 +70,7 @@ Ha befejezte a párbeszédpanelen, a Visual Studio hivatkozásokat ad, és módo
 - Felhőszolgáltatás-projekt (webes és feldolgozói szerepkörök) - [Mi történt – Cloud Service projektek](http://go.microsoft.com/fwlink/p/?LinkId=516965)
 - Webjobs-feladat projekt - [Mi történt – a webjobs-feladat projektek](visual-studio/vs-storage-webjobs-what-happened.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [MSDN fórum: Az Azure Storage](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)
 - [A Microsoft Azure tárolás fejlesztői Blog](http://blogs.msdn.com/b/windowsazurestorage/)
 - [Az Azure Storage-dokumentáció](https://docs.microsoft.com/azure/storage/)

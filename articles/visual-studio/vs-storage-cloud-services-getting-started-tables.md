@@ -1,11 +1,11 @@
 ---
-title: "Ismerkedjen meg a table storage és a Visual Studio services (felhőszolgáltatások) kapcsolódó |} Microsoft Docs"
-description: "Ismerkedés az Azure Table storage egy tárfiókot, a Visual Studio használatával csatlakozzon egy felhőszolgáltatás-projektet a Visual Studio használatával kapcsolódó szolgáltatások"
+title: Ismerkedjen meg a table storage és a Visual Studio services (felhőszolgáltatások) kapcsolódó |} Microsoft Docs
+description: Ismerkedés az Azure Table storage egy tárfiókot, a Visual Studio használatával csatlakozzon egy felhőszolgáltatás-projektet a Visual Studio használatával kapcsolódó szolgáltatások
 services: storage
-documentationcenter: 
-author: kraigb
-manager: ghogen
-editor: 
+documentationcenter: ''
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: a3a11ed8-ba7f-4193-912b-e555f5b72184
 ms.service: storage
 ms.workload: web
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
-ms.author: kraigb
-ms.openlocfilehash: 51b71d783806d9b0d58d4473b8c07f77441dadd8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 68ce9630c5224bd7d9bc4b093ce54dd94140f9e7
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Ismerkedés az Azure table storage és a Visual Studio kapcsolódó szolgáltatások (felhőalapú szolgáltatások projektek)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -104,7 +104,7 @@ Entitások érintő tábla műveletet végzett használatával a **CloudTable** 
 
 
 ## <a name="insert-a-batch-of-entities"></a>Entitásköteg beszúrása
-Több entitás egyetlen írási művelettel egy táblába beszúrásához. Az alábbi példakód létrehoz két entitásobjektumot ("Jeff Smith" és "Ben Smith"), hozzáadja őket egy **TableBatchOperation** objektumot, az Insert metódus használata, és ezután elindítja a művelet által hívott  **CloudTable.ExecuteBatchAsync**.
+Több entitás egyetlen írási művelettel egy táblába beszúrásához. Az alábbi példakód létrehoz két entitásobjektumot ("Jeff Smith" és "Ben Smith"), hozzáadja őket egy **TableBatchOperation** objektumot, az Insert metódus használata, és ezután elindítja a művelet által hívott ** CloudTable.ExecuteBatchAsync**.
 
     // Create the batch operation.
     TableBatchOperation batchOperation = new TableBatchOperation();
@@ -191,6 +191,6 @@ Miután megtalálta az entitás törölheti. A következő kód egy ügyfélenti
     else
        Console.WriteLine("Couldn't delete the entity.");
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [!INCLUDE [vs-storage-dotnet-tables-next-steps](../../includes/vs-storage-dotnet-tables-next-steps.md)]
 

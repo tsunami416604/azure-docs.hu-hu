@@ -29,7 +29,7 @@ Prémium szintű Storage a meglévő virtuális gépek áttelepítéssel kapcsol
 > Prémium szintű Storage a legtöbb régióban érhető el. Elérhető régiók listáját lásd: a sort **lemezegységet** a [régiónként rendelkezésre Azure termékek](https://azure.microsoft.com/regions/#services).
 > 
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 Az alábbiakban néhány, a prémium szintű Storage szolgáltatásait:
 
@@ -45,11 +45,11 @@ Az alábbiakban néhány, a prémium szintű Storage szolgáltatásait:
 
 * **Prémium szintű storage-fiók**
 
-    Prémium szintű Storage használatának megkezdéséhez a nem felügyelt lemezeket, prémium szintű storage-fiók létrehozása. Az a [Azure-portálon](https://portal.azure.com), a prémium szintű storage-fiók létrehozása, válassza ki a **prémium** teljesítményszinttel. Válassza ki a **helyileg redundáns tárolás (LRS)** replikációs beállítás. Is létrehozhat a prémium szintű tárfiók típusát értékre állításával **Premium_LRS** a következő helyek egyikére:
-    * [Storage REST API felülete](https://docs.microsoft.com/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference) (2014-02-14-es vagy újabb verziója)
-    * [Szolgáltatásfelügyelet REST API](http://msdn.microsoft.com/library/azure/ee460799.aspx) (2014-10-01 verzió vagy újabb verzióra, az Azure klasszikus üzembe helyezés)
-    * [Az Azure Storage erőforrás szolgáltató REST API](https://docs.microsoft.com/rest/api/storagerp) (az Azure Resource Manager üzembe helyezések)
-    * [Az Azure PowerShell](/powershell/azureps-cmdlets-docs.md) (0.8.10 verzió vagy újabb)
+    Prémium szintű Storage használatának megkezdéséhez a nem felügyelt lemezeket, prémium szintű storage-fiók létrehozása. Az a [Azure-portálon](https://portal.azure.com), a prémium szintű storage-fiók létrehozása, válassza ki a **prémium** teljesítményszinttel. Válassza ki a **helyileg redundáns tárolás (LRS)** replikációs beállítás. Is létrehozhat a prémium szintű tárfiók teljesítményszint értékre állításával **Premium_LRS**. A teljesítményszintet módosításához használja a következő módszerek egyikét:
+     
+    - [Az Azure Storage PowerShell](../articles/storage/common/storage-powershell-guide-full.md#manage-the-storage-account)
+    - [Az Azure-tárolás az Azure parancssori felület](../articles/storage/common/storage-azure-cli.md#manage-storage-accounts)
+    - [Az Azure Storage erőforrás szolgáltató REST API](https://docs.microsoft.com/rest/api/storagerp) (az Azure Resource Manager üzembe helyezések) vagy az Azure Storage erőforrás-szolgáltató ügyfélkódtáraival egyik
 
     További információ a prémium szintű tárfiókok korlátairól, lásd: [prémium szintű Storage méretezhetőségi és Teljesítménycélok](#premium-storage-scalability-and-performance-targets).
 
@@ -236,7 +236,7 @@ Prémium szintű Storage, a méretezhetőségi célok eléréséhez, az összes 
 
 A következő Linux terjesztésekről érvényesítése a prémium szintű Azure Storage. A jobb teljesítmény és stabilitását prémium szintű Storage azt javasoljuk, hogy verzió, legalább egy (vagy újabb verzióra) frissítése a virtuális gépek. A legújabb Linux integrációs szolgáltatások (LIS), v4.0, az Azure-szükséges néhány verziójára. Töltse le, és egy terjesztési telepítése, az alábbi táblázatban szereplő hivatkozásra. A Microsoft lemezképek hozzáadása a listához, azt végezze el az érvényesítés. Vegye figyelembe, hogy az érvényesítést megjelenítése, hogy a teljesítmény változhat az egyes lemezképek. Teljesítmény a munkaterhelés jellemzőit és a lemezkép beállításainak függ. Különböző képek hangolt különböző típusú munkaterhelések.
 
-| Disztribúció | Verzió | Támogatott kernel | Részletek |
+| Terjesztési | Verzió | Támogatott kernel | Részletek |
 | --- | --- | --- | --- |
 | Ubuntu | 12.04 | 3.2.0-75.110+ | Ubuntu-12_04_5-LTS-amd64-server-20150119-en-us-30GB |
 | Ubuntu | 14.04 | 3.13.0-44.73+ | Ubuntu-14_04_1-LTS-amd64-server-20150123-en-us-30GB |

@@ -1,12 +1,11 @@
 ---
-title: "Használja ki a lekérdezés párhuzamos folyamatkezelést biztosítja az Azure Stream Analytics |} Microsoft Docs"
-description: "Ismerje meg a Stream Analytics-feladatok méretezése bemeneti partíciók konfigurálása, a lekérdezés definíciója hangolása és adatfolyam-egységek feladat beállítása."
-keywords: "adatfolyam, az adatfeldolgozás streaming hangolására analytics"
+title: Használja ki a lekérdezés párhuzamos folyamatkezelést biztosítja az Azure Stream Analytics |} Microsoft Docs
+description: Ismerje meg a Stream Analytics-feladatok méretezése bemeneti partíciók konfigurálása, a lekérdezés definíciója hangolása és adatfolyam-egységek feladat beállítása.
+keywords: adatfolyam, az adatfeldolgozás streaming hangolására analytics
 services: stream-analytics
-documentationcenter: 
+documentationcenter: ''
 author: JSeb225
-manager: jhubbard
-editor: cgronlun
+manager: ryanw
 ms.assetid: 7e857ddb-71dd-4537-b7ab-4524335d7b35
 ms.service: stream-analytics
 ms.devlang: na
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/22/2017
 ms.author: jeanb
-ms.openlocfilehash: dd60026cad9246da8eba141125aebf061ecf7e9d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: eb19a9b4e92e7007f64ae7b593663be6a47a7a4b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Használja ki az Azure Stream Analytics lekérdezési párhuzamos folyamatkezelést biztosítja
 Ez a cikk bemutatja, hogyan Azure Stream Analytics párhuzamos folyamatkezelést biztosítja előnyeit. Megismerheti a Stream Analytics-feladatok méretezése bemeneti partíciók beállításával, és az elemzés Lekérdezésdefiníció hangolása.
@@ -42,7 +41,7 @@ Minden Azure Stream Analytics-bevitel kihasználhatják a particionálás:
 ### <a name="outputs"></a>Kimenetek
 
 A Stream Analytics használata, kihasználhatja a kimenetek a particionálás:
--   Az Azure Data Lake-tároló
+-   Azure Data Lake Storage
 -   Azure Functions
 -   Azure-tábla
 -   Blob Storage
@@ -221,10 +220,10 @@ Ez a lekérdezés 24 SUS-t is méretezhető.
 
 
 
-## <a name="get-help"></a>Segítségkérés
+## <a name="get-help"></a>Segítség kérése
 Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)

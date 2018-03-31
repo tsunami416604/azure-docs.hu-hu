@@ -1,12 +1,11 @@
 ---
-title: "A Stream Analytics: Valós idejű csalások felderítéséhez |} Microsoft Docs"
-description: "Útmutató a valós idejű csalások észlelése megoldás létrehozása a Stream Analytics. Egy eseményközpont használható a valós idejű esemény feldolgozása."
-keywords: "anomáliadetektálás, a csalások felderítéséhez, a valós idejű anomáliadetektálás"
+title: 'A Stream Analytics: Valós idejű csalások felderítéséhez |} Microsoft Docs'
+description: Útmutató a valós idejű csalások észlelése megoldás létrehozása a Stream Analytics. Egy eseményközpont használható a valós idejű esemény feldolgozása.
+keywords: anomáliadetektálás, a csalások felderítéséhez, a valós idejű anomáliadetektálás
 services: stream-analytics
-documentationcenter: 
+documentationcenter: ''
 author: SnehaGunda
-manager: jhubbard
-editor: cgronlun
+manager: kfile
 ms.assetid: c10dd53f-d17a-4268-a561-cb500a8c04eb
 ms.service: stream-analytics
 ms.devlang: na
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: sngun
-ms.openlocfilehash: a3b61b0eeef9ffc97b0cc06a8de44859e4d6db85
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a622b7851f52f65efe4450191c2cf65e73e816bc
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Az Azure Stream Analytics első lépéseiben: valós idejű csalások felderítése
 
@@ -149,7 +148,7 @@ Mielőtt elkezdené a TelcoGenerator alkalmazást, akkor konfigurálja úgy, hog
 
 A valós idejű csalások észlelése alkalmazásban használt kulcsmezők a következő:
 
-|**Record**|Meghatározása|
+|**Record**|**Meghatározása**|
 |----------|--------------|
 |`CallrecTime`|A hívás időbélyegzőjét kezdési időpontja. |
 |`SwitchNum`|A telefon kapcsoló használatával kapcsolódni a hívást. Az ebben a példában a kapcsolók a következők karakterláncok, amelyek megfelelnek a származási (Egyesült Államok, Kína, UK, Németország vagy Ausztrália). |

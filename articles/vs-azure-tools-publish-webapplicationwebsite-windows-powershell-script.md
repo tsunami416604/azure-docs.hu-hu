@@ -1,11 +1,11 @@
 ---
-title: "(A Windows PowerShell-parancsfájl) közzététele-WebApplicationWebSite |} Microsoft Docs"
-description: "Ismerje meg, hogy egy webes projekt közzététele egy Azure-webhelyen. Ezt a parancsfájlt a szükséges erőforrásokat az Azure-előfizetése hoz létre, ha azok még nem léteznek."
+title: (A Windows PowerShell-parancsfájl) közzététele-WebApplicationWebSite |} Microsoft Docs
+description: Ismerje meg, hogy egy webes projekt közzététele egy Azure-webhelyen. Ezt a parancsfájlt a szükséges erőforrásokat az Azure-előfizetése hoz létre, ha azok még nem léteznek.
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 63cfaa2d-f04d-40dc-8677-345385c278d5
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
-ms.author: kraigb
-ms.openlocfilehash: 07d21b7ce6cd8aee1cff704d316e7a2ca8c00437
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: aaa1f679b0368b0ca93305fe867a63f3971a788c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="publish-webapplicationwebsite-windows-powershell-script"></a>(A Windows PowerShell-parancsfájl) közzététele-WebApplicationWebSite
 ## <a name="syntax"></a>Szintaxis
@@ -38,22 +38,22 @@ A JSON-konfigurációs fájlt, amely leírja a központi telepítés részletein
 
 | Paraméter | Alapértelmezett érték |
 | --- | --- |
-| Aliasok |Egyik sem |
-| Kötelező? |Igaz |
+| Aliasnevek |nincs |
+| Kötelező? |igaz |
 | Beosztás |nevű |
-| Alapértelmezett érték |Egyik sem |
+| Alapértelmezett érték |nincs |
 | Fogadja el a feldolgozási sor beviteli? |hamis |
 | Helyettesítő karakterek elfogadása? |hamis |
 
-## <a name="subscriptionname"></a>SubscriptionName
+## <a name="subscriptionname"></a>Előfizetés neve
 Az Azure-előfizetés, amelyet a webhely neve.
 
 | Paraméter | Alapértelmezett érték |
 | --- | --- |
-| Aliasok |Egyik sem |
+| Aliasnevek |nincs |
 | Kötelező? |hamis |
 | Beosztás |nevű |
-| Alapértelmezett érték |Egyik sem |
+| Alapértelmezett érték |nincs |
 | Fogadja el a feldolgozási sor beviteli? |hamis |
 | Helyettesítő karakterek elfogadása? |hamis |
 
@@ -62,10 +62,10 @@ A webhelyen közzétenni a webes telepítési csomag elérési útja. Ezt a csom
 
 | Paraméter | Alapértelmezett érték |
 | --- | --- |
-| Aliasok |Egyik sem |
+| Aliasnevek |nincs |
 | Kötelező? |hamis |
 | Beosztás |nevű |
-| Alapértelmezett érték |Egyik sem |
+| Alapértelmezett érték |nincs |
 | Fogadja el a feldolgozási sor beviteli? |hamis |
 | Helyettesítő karakterek elfogadása? |hamis |
 
@@ -74,10 +74,10 @@ A felhasználónevet és jelszót az SQL-adatbázis, az Azure-ban.
 
 | Paraméter | Alapértelmezett érték |
 | --- | --- |
-| Aliasok |Egyik sem |
+| Aliasnevek |nincs |
 | Kötelező? |hamis |
 | Beosztás |nevű |
-| Alapértelmezett érték |Egyik sem |
+| Alapértelmezett érték |nincs |
 | Fogadja el a feldolgozási sor beviteli? |hamis |
 | Helyettesítő karakterek elfogadása? |hamis |
 
@@ -86,7 +86,7 @@ Amennyiben az értéke igaz, a nyomtató érkező üzenetek a parancsfájl a kim
 
 | Paraméter | Alapértelmezett érték |
 | --- | --- |
-| Aliasok |Egyik sem |
+| Aliasnevek |nincs |
 | Kötelező? |hamis |
 | Beosztás |nevű |
 | Alapértelmezett érték |hamis |
@@ -122,6 +122,6 @@ A JSON-konfigurációs fájl meghatározza, hogy mit telepítendő részletes ad
 
 Szerkesztheti a JSON-konfigurációs fájl módosítása, hogy telepítve van. A webhely szakaszban szükség, de az adatbázis szakaszban nem kötelező megadni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információkért lásd: [Publish-WebApplicationVM (a Windows PowerShell-parancsfájl)](vs-azure-tools-publish-webapplicationvm.md)
 

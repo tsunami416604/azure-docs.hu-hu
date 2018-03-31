@@ -1,24 +1,24 @@
 ---
-title: "Egy Azure-webhelyek VPN-kapcsolatot, amelyek nem kapcsolódnak hibaelhárítása |} Microsoft Docs"
-description: "Ismerje meg, amely hirtelen leáll, és nem kell csatlakoztatni a pont-pont VPN-kapcsolat hibaelhárítása."
+title: Egy Azure-webhelyek VPN-kapcsolatot, amelyek nem kapcsolódnak hibaelhárítása |} Microsoft Docs
+description: Ismerje meg, amely hirtelen leáll, és nem kell csatlakoztatni a pont-pont VPN-kapcsolat hibaelhárítása.
 services: vpn-gateway
 documentationcenter: na
 author: chadmath
 manager: cshepard
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/13/2017
+ms.date: 03/29/2018
 ms.author: genli
-ms.openlocfilehash: 96a1705d651b9a2d17a466b9c43721bec7b4972c
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 3e590df66f84cd88ba7ba251373c14a44a94ca77
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Hibáinak elhárítása: Egy Azure-webhelyek VPN-kapcsolatot nem lehet kapcsolódni, és nem működik
 
@@ -26,7 +26,7 @@ Miután konfigurált egy a helyszíni hálózat és az Azure virtuális hálóza
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="troubleshooting-steps"></a>Hibaelhárítási útmutató
+## <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
 
 A probléma megoldása érdekében először próbálja meg [alaphelyzetbe állítani az Azure VPN gateway](vpn-gateway-resetgw-classic.md) , és állítsa alaphelyzetbe az alagutat a helyszíni VPN-eszközön. Ha a probléma továbbra is fennáll, kövesse az alábbi lépéseket a probléma okának megállapításához.
 
@@ -92,14 +92,16 @@ Ellenőrizze a felhasználó által definiált útválasztási (UDR) vagy a hál
 
 ### <a name="step-7-verify-the-azure-gateway-health-probe"></a>7. lépés Az Azure átjáró állapotmintáihoz ellenőrzése
 
-1. Ugrás a állapotmintáihoz.
+1. Nyissa meg a állapotmintáihoz keresse meg a következő URL-cím:
+
+    `https://<YourVirtualNetworkGatewayIP>:8081/healthprobe`
 
 2. Kattintson a tanúsítványfigyelmeztetésre.
 3. Ha választ kap, a VPN-átjáró megfelelő minősül. Ha nem érkezik válasz, az átjáró nem lesz kifogástalan, vagy az átjáró-alhálózat egy NSG okozza a problémát. A következő mintát választ áll:
 
     &lt;? XML-verzió = "1.0"? > <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">elsődleges példány: GatewayTenantWorker_IN_1 GatewayTenantVersion: 14.7.24.6 < / karakterlánc&gt;
 
-### <a name="step-8-check-whether-the-on-premises-vpn-device-has-the-perfect-forward-secrecy-feature-enabled"></a>8. lépés. Ellenőrizze, hogy rendelkezik-e a PFS-szolgáltatás engedélyezve van a helyszíni VPN-eszköz
+### <a name="step-8-check-whether-the-on-premises-vpn-device-has-the-perfect-forward-secrecy-feature-enabled"></a>8. lépés Ellenőrizze, hogy rendelkezik-e a PFS-szolgáltatás engedélyezve van a helyszíni VPN-eszköz
 
 A PFS szolgáltatás kapcsolatbontás problémákat okozhat. Ha a VPN-eszköz PFS engedélyezve van, tiltsa le a szolgáltatást. Frissítse a VPN gateway IPSec-házirend.
 

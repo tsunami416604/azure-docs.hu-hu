@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Mobile Engagement felhasználói felület - szegmensek"
-description: "Útmutató: az Azure Mobile Engagement segítségével használati minták azonosításához felhasználók szegmenseinek létrehozása és kezelése"
+title: Az Azure Mobile Engagement felhasználói felület - szegmensek
+description: 'Útmutató: az Azure Mobile Engagement segítségével használati minták azonosításához felhasználók szegmenseinek létrehozása és kezelése'
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 6a4f2205-4a3c-406e-a04f-5e6f2a36653f
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 087f4a1fef420abe9669f8dfe2b84c7a847ce263
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 53c5b1b672a0d7212a3d298c3e411a9cc6ac0807
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-create-and-manage-segments-of-users-to-identify-usage-patterns"></a>Hogyan kell a használati minták azonosításához felhasználók szegmenseinek létrehozása és kezelése
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 Ez a cikk ismerteti a **SZEGMENSEK** lapján a **a Mobile Engagement** portálon. Használja a **a Mobile Engagement** portal felügyeletét és kezelését a mobile apps szolgáltatásban.
 
 A felhasználói felület szegmensek szakasza lehetővé teszi a felhasználók különböző viselkedését és érheti el az alkalmazást, és a szegmensek API-n keresztül is elérheti analytics alapján szegmentálja a. Szegmensek először vannak számított 24 órával azt követően hozza létre őket, és azok vannak recomputed 24 óránként legújabb analytics információk alapján. Miután egy szegmens kiszámítása, azt jeleníti meg a "Day nap előzményei" naponta.
@@ -107,7 +111,7 @@ Miután végzett a beállítás mentése a feltételnek, a szegmens tölcsérhez
 A szegmens analytics adatokon alapul, mert a szegmensek naponta egyszer kiszámítása a történik.
 Ebben a példában 47,7 a teljes végfelhasználók % megfelel a feltételnek. A felhasználók rendelkezésére állt-e a megfelelő környezet és várhatóan magasabb minősítést adja meg, ha a értékelje az áruházban az alkalmazás kéri a felhasználót értesítést leküldéses őket kell őket.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Alapfogalmak][Link 6]
 * [Hibaelhárítási útmutató szolgáltatás][Link 24]
 

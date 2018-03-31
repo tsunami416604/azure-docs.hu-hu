@@ -1,12 +1,12 @@
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-| Előfizetésenként storage-fiókok száma | 200<sup>1</sup> |
+| Régiónként storage-fiókok száma | 200<sup>1</sup> |
 | A maximális tárolókapacitás fiók | 500 TiB<sup>2</sup> |
 | Blob tárolók, blobok, fájlmegosztások, táblák, üzenetsorok, entitásokat vagy tárfiók üzenetek maximális száma | Korlátlan |
 | A tárfiók / maximális lekérdezési gyakorisága | 20 000 kérelmek / másodperc<sup>2</sup> |
-| Maximális érkező<sup>3</sup> tárolási fiókonként (US régió) | Ha a ZRS/RA-GRS 10 GB/s<sup>4</sup> engedélyezve van, az LRS 20 GB/s<sup>2</sup> |
+| Maximális érkező<sup>3</sup> tárolási fiókonként (US régió) | Ha a ZRS RA-GRS vagy GRS 10 GB/s<sup>4</sup> engedélyezve van, az LRS 20 GB/s<sup>2</sup> |
 | Maximális kilépő<sup>3</sup> tárolási fiókonként (US régió) | Ha a ZRS RA-GRS vagy GRS 20 GB/s<sup>4</sup> engedélyezve van, az LRS 30 GB/s<sup>2</sup> |
-| Maximális érkező<sup>3</sup> tárolási fiókonként (Amerikai Egyesült régiókban) | Ha a ZRS/RA-GRS 5 GB/s<sup>4</sup> engedélyezve van, az LRS 10 GB/s<sup>2</sup> |
+| Maximális érkező<sup>3</sup> tárolási fiókonként (Amerikai Egyesült régiókban) | Ha a ZRS RA-GRS vagy GRS 5 GB/s<sup>4</sup> engedélyezve van, az LRS 10 GB/s<sup>2</sup> |
 | Maximális kilépő<sup>3</sup> tárolási fiókonként (Amerikai Egyesült régiókban) | Ha a ZRS RA-GRS vagy GRS 10 GB/s<sup>4</sup> engedélyezve van, az LRS 15 GB/s<sup>2</sup> |
 
 <sup>1</sup>magában foglalja a Standard és prémium szintű storage-fiókok. Ha több mint 200 tárfiókra van szüksége, nyújtson be egy kérést az [Azure ügyfélszolgálatán](https://azure.microsoft.com/support/faq/) keresztül. Az Azure Storage csapata kiértékeli az Ön vállalkozását, és jóváhagyhat legfeljebb 250 tárfiókot. 
@@ -18,5 +18,5 @@
 <sup>4</sup>azure Storage redundancia lehetőségek a következők:
 * **RA-GRS**: írásvédett georedundáns tárolás. RA-GRS engedélyezve van, ha a másodlagos hely kimenő forgalom cél megegyeznek az elsődleges hely.
 * **Georedundáns**: georedundáns tárolást. 
-* **A ZRS**: zónaredundáns tárolás. Csak a blokkblobokhoz érhető el. 
+* **A ZRS**: zónaredundáns tárolás.
 * **LRS**: helyileg redundáns tárolás. 

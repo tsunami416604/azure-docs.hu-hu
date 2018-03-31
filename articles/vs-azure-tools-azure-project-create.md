@@ -1,11 +1,11 @@
 ---
-title: "Egy Azure-felhőszolgáltatás-projekt létrehozása a Visual Studio |} Microsoft Docs"
-description: "Ismerje meg, ha folytatni szeretné az Azure-felhőszolgáltatás-projekt létrehozása a Visual Studio"
+title: Egy Azure-felhőszolgáltatás-projekt létrehozása a Visual Studio |} Microsoft Docs
+description: Ismerje meg, ha folytatni szeretné az Azure-felhőszolgáltatás-projekt létrehozása a Visual Studio
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: ec580df7-3dcc-45a9-a1d9-8c110678dfb5
 ms.service: multiple
 ms.devlang: multiple
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/21/2017
-ms.author: kraigb
-ms.openlocfilehash: 1f6ded87b551f660853ea4eb0548f3d942e28fa8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 41c2bd0dc1f609b6b7b9cfda43c2378feb1c3b6c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="creating-an-azure-cloud-service-project-with-visual-studio"></a>Egy Azure-felhőszolgáltatás-projekt létrehozása a Visual Studio
 Az Azure Tools for Visual Studio biztosít a projekt sablont, amely lehetővé teszi, hogy hozzon létre egy Azure felhőszolgáltatást. A projekt létrehozása után a Visual Studio lehetővé teszi konfigurálásához, hibakeresését és a felhőalapú szolgáltatás üzembe helyezése az Azure-bA.
@@ -26,7 +26,7 @@ Az Azure Tools for Visual Studio biztosít a projekt sablont, amely lehetővé t
 ## <a name="steps-to-create-an-azure-cloud-service-project-in-visual-studio"></a>A Visual Studio egy Azure-felhőszolgáltatás-projekt létrehozásának lépései
 Ez a szakasz végigvezeti az Azure-felhőszolgáltatás-projekt létrehozása a Visual Studióban legalább egy webes szerepkörök.  
 
-1. Indítsa el a Visual Studio rendszergazdaként.
+1. Indítsa el a Visual Studiót rendszergazdaként.
 
 1. A főmenü, válassza ki a **fájl** > **új** > **projekt**.
 
@@ -55,5 +55,5 @@ A Visual Studio Azure projekt társítást a projektek már a megoldásban. A pr
 
 További információ ezen fájlokkal kapcsolatban, tekintse meg [az Azure-felhőszolgáltatás szerepkörök konfigurálásához a Visual Studio](vs-azure-tools-configure-roles-for-cloud-service.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Az Azure cloud service projektek a Visual Studio szerepkörök kezelése](./vs-azure-tools-cloud-service-project-managing-roles.md)

@@ -1,8 +1,8 @@
 ---
-title: "Azure Automation-erőforrások az OMS-megoldások |} Microsoft Docs"
-description: "Az OMS megoldások rendszerint tartalmazza a runbookok az Azure Automationben folyamatoknak, mint például a összegyűjtése és figyelési adatokat feldolgozó automatizálására.  Ez a cikk ismerteti a runbookok és a kapcsolódó erőforrások közé tartoznak a megoldásban."
+title: Azure Automation-erőforrások-kezelési megoldásokban |} Microsoft Docs
+description: Megoldások rendszerint tartalmazza a runbookok az Azure Automationben folyamatoknak, mint például a összegyűjtése és figyelési adatokat feldolgozó automatizálására.  Ez a cikk ismerteti a runbookok és a kapcsolódó erőforrások közé tartoznak a megoldásban.
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
@@ -15,21 +15,21 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1097b1ddd2e8f2fae0ffc809aee63be5c2ed4cb1
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5750cd1147ec861ea38ff2ebc9ce481d256c1959
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="adding-azure-automation-resources-to-an-oms-management-solution-preview"></a>Azure Automation-erőforrások hozzáadása egy OMS-felügyeleti megoldás (előzetes verzió)
+# <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Azure Automation-erőforrások hozzáadása a felügyeleti megoldás (előzetes verzió)
 > [!NOTE]
-> Ez az előzetes dokumentum megoldások létrehozásához az OMS Szolgáltatáshoz, amely jelenleg előzetes verziójúak. Az alábbiakban a séma van változhat.   
+> Ez az előzetes dokumentációjában létrehozása kezelési megoldást, amely jelenleg előzetes verziójúak. Az alábbiakban a séma van változhat.   
 
 
-[Az OMS megoldások](operations-management-suite-solutions.md) runbookok rendszerint tartalmazza az Azure Automationben folyamatoknak, mint például a összegyűjtése és figyelési adatokat feldolgozó automatizálására.  Mellett runbookok Automation-fiók erőforrásokat, például a változók és a megoldásban használt runbookok támogató ütemezéseket tartalmaz.  Ez a cikk ismerteti a runbookok és a kapcsolódó erőforrások közé tartoznak a megoldásban.
+[Megoldások](operations-management-suite-solutions.md) runbookok rendszerint tartalmazza az Azure Automationben folyamatoknak, mint például a összegyűjtése és figyelési adatokat feldolgozó automatizálására.  Mellett runbookok Automation-fiók erőforrásokat, például a változók és a megoldásban használt runbookok támogató ütemezéseket tartalmaz.  Ez a cikk ismerteti a runbookok és a kapcsolódó erőforrások közé tartoznak a megoldásban.
 
 > [!NOTE]
-> Ebben a cikkben a minták használható paramétereket és változókat, amelyek a szükséges vagy közös felügyeleti megoldás és a [létrehozása kezelési megoldásai Operations Management Suite (OMS)](operations-management-suite-solutions-creating.md) 
+> Ebben a cikkben a minták használható paramétereket és változókat, amelyek a szükséges vagy közös felügyeleti megoldás és a [tervezési és -buildek olyan felügyeleti megoldást az Azure-ban ](operations-management-suite-solutions-creating.md) 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -40,7 +40,7 @@ Ez a cikk feltételezi, hogy már ismeri a következő információkat.
 - Hogyan [Resource Manager-sablonok készítésének](../azure-resource-manager/resource-group-authoring-templates.md)
 
 ## <a name="automation-account"></a>Automation-fiók
-Az Azure Automationben összes erőforrás található egy [Automation-fiók](../automation/automation-security-overview.md#automation-account-overview).  A [OMS munkaterületet, és az Automation-fiók](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account) az Automation-fiók nem található meg a felügyeleti megoldás, de már léteznie kell a megoldás telepítve van.  Ha nem érhető el, akkor a megoldás telepítése sikertelen lesz.
+Az Azure Automationben összes erőforrás található egy [Automation-fiók](../automation/automation-security-overview.md#automation-account-overview).  A [og Naplóelemzési munkaterület és Automation-fiók](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account) az Automation-fiók nem található meg a felügyeleti megoldás, de már léteznie kell a megoldás telepítve van.  Ha nem érhető el, akkor a megoldás telepítése sikertelen lesz.
 
 Minden egyes Automation-erőforrás nevét tartalmazza az Automation-fiók nevét.  Ezt a megoldást a **accountName** paraméter egy runbook-erőforrást az alábbi példában látható módon.
 
@@ -118,7 +118,7 @@ Az automatizálási feladatok tulajdonságok az alábbi táblázat ismerteti.
 
 A feladat a runbook neve és a runbook küldendő paraméterértékeket tartalmaz.  A feladat-érdemes [függő](operations-management-suite-solutions-solution-file.md#resources) a runbook, mert a runbook indítása a feldolgozás előtt létre kell hozni.  Ha több runbook el kell indítani, megadhatja a sorrendjük azzal, hogy egy feladat minden más, fusson első feladat függ.
 
-Egy feladat erőforrás nevének tartalmaznia kell egy GUID, amely általában egy paraméter által hozzárendelt.  További a GUID-paraméterekkel kapcsolatos [megoldások létrehozása az Operations Management Suite (OMS)](operations-management-suite-solutions-solution-file.md#parameters).  
+Egy feladat erőforrás nevének tartalmaznia kell egy GUID, amely általában egy paraméter által hozzárendelt.  További a GUID-paraméterekkel kapcsolatos [felügyeleti megoldás fájl létrehozása az Azure-ban](operations-management-suite-solutions-solution-file.md#parameters).  
 
 
 ## <a name="certificates"></a>Tanúsítványok
@@ -202,7 +202,7 @@ Az ütemezés erőforrás tulajdonságait az alábbi táblázat ismerteti.
 | leírás |Az ütemezés nem kötelező leírása. |
 | startTime |Adja meg az ütemezés kezdő időpontjának DateTime objektumként. Egy karakterlánc biztosítható, hogy ha konvertálható érvényes DateTime értékként. |
 | IsEnabled |Meghatározza, hogy engedélyezve van-e az ütemezés. |
-| interval |Az ütemezés intervallumát típusa.<br><br>nap<br>óra |
+| tartam |Az ütemezés intervallumát típusa.<br><br>nap<br>óra |
 | frequency |Az ütemezés a napok vagy órák száma kell érvényesítést gyakorisága. |
 
 A kezdési idő nagyobb, mint az aktuális idő értékkel ütemezések.  Nem adja meg ezt az értéket egy változóhoz, mivel semmilyen módon nem tudhatja, hogy mikor fog telepíteni kellene lennie.
@@ -271,7 +271,7 @@ A változó erőforrás tulajdonságait az alábbi táblázat ismerteti.
 |:--- |:--- |
 | leírás | Választható módon leírás megadása a változót. |
 | isEncrypted | Adja meg a változó titkosítani kell-e. |
-| type | Ezt a tulajdonságot jelenleg nincs hatása.  A változó adattípusa a kezdeti érték határozza meg. |
+| típus | Ezt a tulajdonságot jelenleg nincs hatása.  A változó adattípusa a kezdeti érték határozza meg. |
 | érték | A változó értékét. |
 
 > [!NOTE]
@@ -322,7 +322,7 @@ Ha egy felügyeleti megoldás, amely tartalmazza a runbook által használt üte
 
 
 
-## <a name="sample"></a>Sample
+## <a name="sample"></a>Minta
 Az alábbiakban látható egy minta a megoldás, amely tartalmazza, amely a következőket tartalmazza:
 
 - Runbook.  Ez a példa runbook egy nyilvános GitHub-tárházban tárolt.

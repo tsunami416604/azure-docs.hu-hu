@@ -1,12 +1,11 @@
 ---
-title: "Példa a gyakori használati minták a Stream Analytics lekérdezési |} Microsoft Docs"
-description: "Gyakori Azure Stream Analytics lekérdezési minták"
-keywords: "lekérdezés példák"
+title: Példa a gyakori használati minták a Stream Analytics lekérdezési |} Microsoft Docs
+description: Gyakori Azure Stream Analytics lekérdezési minták
+keywords: lekérdezés példák
 services: stream-analytics
-documentationcenter: 
-author: samacha
-manager: jenniehubbard
-editor: cgronlun
+documentationcenter: ''
+author: jseb225
+manager: ryanw
 ms.assetid: 6b9a7d00-fbcc-42f6-9cbb-8bbf0bbd3d0e
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/08/2017
-ms.author: samacha
-ms.openlocfilehash: cb0a948416983f33a4ca8d9211a3a114ba011685
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.author: jeanb
+ms.openlocfilehash: 9632a77afff6ba47d6ce80457e02f1f6194362a1
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Példa a gyakori Stream Analytics használati minták lekérdezése
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Bemutatás
 Lekérdezések Azure Stream Analytics lekérdezési SQL-szerű nyelven van kifejezve. Ezeket a lekérdezéseket a rendszer részletes ismertetését lásd: a [Stream Analytics lekérdezési nyelvi referencia](https://msdn.microsoft.com/library/azure/dn834998.aspx) útmutató. Ez a cikk több közös lekérdezési kifejezések valós forgatókönyv alapuló megoldásokat ismerteti. Folyamatban lévő és továbbra is új mintákat folyamatosan frissül.
 
 ## <a name="query-example-convert-data-types"></a>Példa: adattípusok átalakítása
@@ -31,7 +30,7 @@ Például a car karakterláncként. a bemeneti adatfolyam hamarosan és alakíth
 
 **Bemeneti**:
 
-| Ellenőrizze | Time | Súlyozás |
+| Ellenőrizze | Idő | Súlyozás |
 | --- | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |"1000" |
 | Honda |2015-01-01T00:00:02.0000000Z |"2000" |
@@ -61,7 +60,7 @@ Ellenőrizze például, hogy az eredményt adja vissza, amely az A kezdődhet é
 
 **Bemeneti**:
 
-| Ellenőrizze | LicensePlate | Time |
+| Ellenőrizze | LicensePlate | Idő |
 | --- | --- | --- |
 | Honda |ABC-123 |2015-01-01T00:00:01.0000000Z |
 | Toyota |AAA-999 |2015-01-01T00:00:02.0000000Z |
@@ -69,7 +68,7 @@ Ellenőrizze például, hogy az eredményt adja vissza, amely az A kezdődhet é
 
 **Kimeneti**:
 
-| Ellenőrizze | LicensePlate | Time |
+| Ellenőrizze | LicensePlate | Idő |
 | --- | --- | --- |
 | Toyota |AAA-999 |2015-01-01T00:00:02.0000000Z |
 | Nissan |ABC-369 |2015-01-01T00:00:03.0000000Z |
@@ -91,7 +90,7 @@ Például adja meg, hány autók azonos ellenőrizze karakterlánc leírását �
 
 **Bemeneti**:
 
-| Ellenőrizze | Time |
+| Ellenőrizze | Idő |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Toyota |2015-01-01T00:00:02.0000000Z |
@@ -99,7 +98,7 @@ Például adja meg, hány autók azonos ellenőrizze karakterlánc leírását �
 
 **Kimeneti**:
 
-| CarsPassed | Time |
+| CarsPassed | Idő |
 | --- | --- | --- |
 | 1 Honda |2015-01-01T00:00:10.0000000Z |
 | 2 Toyotas |2015-01-01T00:00:10.0000000Z |
@@ -126,7 +125,7 @@ Például egy küszöbérték-alapú riasztás adatok elemzése, és archiválja
 
 **Bemeneti**:
 
-| Ellenőrizze | Time |
+| Ellenőrizze | Idő |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Honda |2015-01-01T00:00:02.0000000Z |
@@ -136,7 +135,7 @@ Például egy küszöbérték-alapú riasztás adatok elemzése, és archiválja
 
 **Output1**:
 
-| Ellenőrizze | Time |
+| Ellenőrizze | Idő |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Honda |2015-01-01T00:00:02.0000000Z |
@@ -146,7 +145,7 @@ Például egy küszöbérték-alapú riasztás adatok elemzése, és archiválja
 
 **Output2**:
 
-| Ellenőrizze | Time | Darabszám |
+| Ellenőrizze | Idő | Szám |
 | --- | --- | --- |
 | Toyota |2015-01-01T00:00:10.0000000Z |3 |
 
@@ -197,7 +196,7 @@ Például hogy hány egyedi lesz továbbítja a 2-második ablakban a téren ki�
 
 **Bemeneti**:
 
-| Ellenőrizze | Time |
+| Ellenőrizze | Idő |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Honda |2015-01-01T00:00:02.0000000Z |
@@ -207,9 +206,9 @@ Például hogy hány egyedi lesz továbbítja a 2-második ablakban a téren ki�
 
 **A kimenetre:**
 
-| CountMake | Time |
+| CountMake | Idő |
 | --- | --- |
-| 2 |2015-01-01T00:00:02.000Z |
+| 2. |2015-01-01T00:00:02.000Z |
 | 1 |2015-01-01T00:00:04.000Z |
 
 **Megoldás:**
@@ -233,14 +232,14 @@ Például az az előző autó téren útközben, az aktuális autó azonos ellen
 
 **Bemeneti**:
 
-| Ellenőrizze | Time |
+| Ellenőrizze | Idő |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Toyota |2015-01-01T00:00:02.0000000Z |
 
 **Kimeneti**:
 
-| Ellenőrizze | Time |
+| Ellenőrizze | Idő |
 | --- | --- |
 | Toyota |2015-01-01T00:00:02.0000000Z |
 
@@ -261,7 +260,7 @@ Például az az előző autó téren útközben, az aktuális autó azonos ellen
 
 **Bemeneti**:
 
-| LicensePlate | Ellenőrizze | Time |
+| LicensePlate | Ellenőrizze | Idő |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | YZK 5704 |Ford |2015-07-27T00:02:17.0000000Z |
@@ -273,7 +272,7 @@ Például az az előző autó téren útközben, az aktuális autó azonos ellen
 
 **Kimeneti**:
 
-| LicensePlate | Ellenőrizze | Time |
+| LicensePlate | Ellenőrizze | Idő |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | QYF 9358 |Honda |2015-07-27T00:12:02.0000000Z |
@@ -291,7 +290,7 @@ Például az az előző autó téren útközben, az aktuális autó azonos ellen
 
 Most tegyük módosítása a problémát, és keresse meg az első autója az egy adott győződjön minden 10 perces időközt.
 
-| LicensePlate | Ellenőrizze | Time |
+| LicensePlate | Ellenőrizze | Idő |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | YZK 5704 |Ford |2015-07-27T00:02:17.0000000Z |
@@ -315,7 +314,7 @@ Most tegyük módosítása a problémát, és keresse meg az első autója az eg
 
 **Bemeneti**:
 
-| LicensePlate | Ellenőrizze | Time |
+| LicensePlate | Ellenőrizze | Idő |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | YZK 5704 |Ford |2015-07-27T00:02:17.0000000Z |
@@ -327,7 +326,7 @@ Most tegyük módosítása a problémát, és keresse meg az első autója az eg
 
 **Kimeneti**:
 
-| LicensePlate | Ellenőrizze | Time |
+| LicensePlate | Ellenőrizze | Idő |
 | --- | --- | --- |
 | VFE 1616 |Toyota |2015-07-27T00:09:31.0000000Z |
 | MDR 6128 |BMW |2015-07-27T00:13:45.0000000Z |
@@ -361,7 +360,7 @@ Például 2 egymást követő autók azonos ellenőrizze a megadott téren köz�
 
 **Bemeneti**:
 
-| Ellenőrizze | LicensePlate | Time |
+| Ellenőrizze | LicensePlate | Idő |
 | --- | --- | --- |
 | Honda |ABC-123 |2015-01-01T00:00:01.0000000Z |
 | Honda |AAA-999 |2015-01-01T00:00:02.0000000Z |
@@ -370,7 +369,7 @@ Például 2 egymást követő autók azonos ellenőrizze a megadott téren köz�
 
 **Kimeneti**:
 
-| Ellenőrizze | Time | CurrentCarLicensePlate | FirstCarLicensePlate | FirstCarTime |
+| Ellenőrizze | Idő | CurrentCarLicensePlate | FirstCarLicensePlate | FirstCarTime |
 | --- | --- | --- | --- | --- |
 | Honda |2015-01-01T00:00:02.0000000Z |AAA-999 |ABC-123 |2015-01-01T00:00:01.0000000Z |
 
@@ -394,9 +393,9 @@ Például 2 egymást követő autók azonos ellenőrizze a megadott téren köz�
 
 **Bemeneti**:  
 
-| Felhasználó | Szolgáltatás | Esemény | Time |
+| Felhasználó | Szolgáltatás | Esemény | Idő |
 | --- | --- | --- | --- |
-| user@location.com |RightMenu |Indítás |2015-01-01T00:00:01.0000000Z |
+| user@location.com |RightMenu |Kezdés |2015-01-01T00:00:01.0000000Z |
 | user@location.com |RightMenu |Befejezés |2015-01-01T00:00:08.0000000Z |
 
 **Kimeneti**:  
@@ -423,7 +422,7 @@ Tegyük fel például, hogy programhiba eredményezett (fent 20 000 font) egy he
 
 **Bemeneti**:
 
-| Ellenőrizze | Time | Súlyozás |
+| Ellenőrizze | Idő | Súlyozás |
 | --- | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |2000 |
 | Toyota |2015-01-01T00:00:02.0000000Z |25000 |
@@ -472,7 +471,7 @@ Például generál egy eseményt 5 másodpercentként, az utoljára látott adat
 | t | érték |
 | --- | --- |
 | "2014-01-01T06:01:00" |1 |
-| "2014-01-01T06:01:05" |2 |
+| "2014-01-01T06:01:05" |2. |
 | "2014-01-01T06:01:10" |3 |
 | "2014-01-01T06:01:15" |4 |
 | "2014-01-01T06:01:30" |5 |
@@ -483,7 +482,7 @@ Például generál egy eseményt 5 másodpercentként, az utoljára látott adat
 | windowend | lastevent.t | lastevent.Value |
 | --- | --- | --- |
 | 2014-01-01T14:01:00.000Z |2014-01-01T14:01:00.000Z |1 |
-| 2014-01-01T14:01:05.000Z |2014-01-01T14:01:05.000Z |2 |
+| 2014-01-01T14:01:05.000Z |2014-01-01T14:01:05.000Z |2. |
 | 2014-01-01T14:01:10.000Z |2014-01-01T14:01:10.000Z |3 |
 | 2014-01-01T14:01:15.000Z |2014-01-01T14:01:15.000Z |4 |
 | 2014-01-01T14:01:20.000Z |2014-01-01T14:01:15.000Z |4 |
@@ -512,7 +511,7 @@ Például otthoni sütők IoT esetben szeretnénk hoz létre riasztást, ha vent
 
 **Bemeneti**:
 
-| time | deviceId | sensorName | érték |
+| idő- | deviceId | sensorName | érték |
 | --- | --- | --- | --- |
 | "2018-01-01T16:01:00" | "Oven1" | "temp" |120 |
 | "2018-01-01T16:01:00" | "Oven1" | "power" |15 |
@@ -580,7 +579,7 @@ WHERE
 **MAGYARÁZAT**: az első lekérdezés `max_power_during_last_3_mins`, használja a [csúszó ablak](https://msdn.microsoft.com/en-us/azure/stream-analytics/reference/sliding-window-azure-stream-analytics) az elmúlt 3 perc alatt a maximális érték az energiagazdálkodási érzékelő minden eszköz kereséséhez. A második lekérdezés az első lekérdezés az energiagazdálkodási értéket keresi a legújabb ablakban vonatkozó az aktuális esemény csatlakozik. És ezt követően megadott feltételek teljesülnek, riasztást küld az eszköz.
 
 
-## <a name="get-help"></a>Segítségkérés
+## <a name="get-help"></a>Segítség kérése
 Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>További lépések

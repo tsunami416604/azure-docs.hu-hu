@@ -1,21 +1,21 @@
 ---
-title: "Csatlakoztatott virtuális merevlemezek Azure Windows virtuális gépeken hibaelhárítása |} Microsoft Docs"
-description: "Például a Windows virtuális gépek vagy törölni, a tárolási fiók tartalmazó váratlan újraindítások kapcsolatos problémák elhárítása a virtuális merevlemezek csatolni."
-keywords: "ssh kapcsolat visszautasította, ssh hiba és az azure-ssh, SSH-kapcsolat sikertelen"
+title: Csatlakoztatott virtuális merevlemezek Azure Windows virtuális gépeken hibaelhárítása |} Microsoft Docs
+description: Például a Windows virtuális gépek vagy törölni, a tárolási fiók tartalmazó váratlan újraindítások kapcsolatos problémák elhárítása a virtuális merevlemezek csatolni.
+keywords: ssh kapcsolat visszautasította, ssh hiba és az azure-ssh, SSH-kapcsolat sikertelen
 services: virtual-machines-windows
-author: iainfoulds
+author: roygara
 manager: jeconnoc
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/28/2018
-ms.author: iainfou
-ms.openlocfilehash: b4f3382a070894647aa4294fc5b0b63c98eddaab
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.author: rogarana
+ms.openlocfilehash: d0103d8ea608014e53f70402220b302b6da445e9
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshoot-attached-vhds-on-azure-windows-virtual-machines"></a>A Azure Windows virtuális gépek csatlakoztatott virtuális merevlemezek hibaelhárítása
 
@@ -24,7 +24,7 @@ Azure virtuális gépekhez csatlakoztatott virtuális merevlemezek (VHD) az oper
   * [Váratlan újraindítások csatlakoztatott virtuális merevlemezek a virtuális gépek]
   * [A Resource Manager deployment tárolási tárfióktörlési hibák]
 
-## <a name="you-are-experiencing-unexpected-reboots">Váratlan újraindítások csatlakoztatott virtuális merevlemezek a virtuális gépek</a>
+## <a name="you-are-experiencing-unexpected-reboots"></a>Váratlan újraindítások csatlakoztatott virtuális merevlemezek a virtuális gépek
 
 Ha egy Azure virtuális gép (VM) ugyanabban a tárfiókban lévő csatlakoztatott virtuális merevlemezek nagy mennyiségű, haladhatja meg a méretezhetőségi célok, az egyes tárfiók a virtuális gép leállását okozza. Ellenőrizze a tárfiók percenkénti metrikákat (**TotalRequests**/**TotalIngress**/**TotalEgress**) a teljesítményt, amelyek mérete meghaladja a méretezhetőségi célok tárfiókok esetén. Ha segítségre van szüksége a meghatározhatja, hogy a sávszélesség-szabályozás történt a tárfiók "[metrikák megjelenítése egy PercentThrottlingError növekedése]" című szakaszában talál.
 
@@ -32,7 +32,7 @@ Ha egy Azure virtuális gép (VM) ugyanabban a tárfiókban lévő csatlakoztato
 
 Ha a tárfiók túllépte a vonatkozó méretezhetőségi célok, helyezze a virtuális merevlemezek több tárfiókot a tevékenység minden egyes számlára csökkentése érdekében.
 
-## <a name="storage-delete-errors-in-rm">A Resource Manager deployment tárolási tárfióktörlési hibák</a>
+## <a name="storage-delete-errors-in-rm"></a>A Resource Manager deployment tárolási tárfióktörlési hibák
 
 Ez a szakasz nyújt hibaelhárítási útmutatót, ha a hibák a következők egyikét végrehajthatók, miközben a kívánt Azure-tárfiókot, tároló, vagy Azure Resource Manager-telepítés blob törlése.
 

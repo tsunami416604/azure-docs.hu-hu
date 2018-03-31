@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Mobile Engagement iOS SDK-integráció |} Microsoft Docs"
-description: "Legújabb frissítések és az Azure Mobile Engagement SDK iOS eljárásai"
+title: Az Azure Mobile Engagement iOS SDK-integráció |} Microsoft Docs
+description: Legújabb frissítések és az Azure Mobile Engagement SDK iOS eljárásai
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 947ea44b-00c1-450f-9a3b-74437954dc56
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: piyushjo
-ms.openlocfilehash: 01fdbb43c21ac6932e8462f4a6507fc63e50542d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: f0d650205ca86205ad857003f892c1a60b3831bf
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-integrate-engagement-on-ios"></a>Hogyan integrálhatja Engagement IOS
+> [!IMPORTANT]
+> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> 
+
 > [!div class="op_single_selector"]
 > * [Windows Universal](mobile-engagement-windows-store-integrate-engagement.md)
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
@@ -45,8 +49,8 @@ Az alábbi lépéseket kell aktiválni a jelentés az összes statisztikai adato
 * Az iOS-projekthez adja hozzá az Engagement SDK: az Xcode-ban kattintson a jobb gombbal a projekt, és válassza ki **"A fájlok hozzáadása..."** , és válassza a `EngagementSDK` mappát.
 * Bevonási további keretrendszerek működéséhez szükséges: a project explorer nyissa meg a projekt ablaktáblán, és jelölje ki a megfelelő cél. Ezután nyissa meg a **"Összeállítási fázisok"** lapon és a a **"Bináris rendelkező Kódtárakon"** menüben adja hozzá a keretrendszereket:
 
-  * `UserNotifications.framework`-a hivatkozásokat beállítása`Optional`
-  * `AdSupport.framework`-a hivatkozásokat beállítása`Optional`
+  * `UserNotifications.framework` -a hivatkozásokat beállítása `Optional`
+  * `AdSupport.framework` -a hivatkozásokat beállítása `Optional`
   * `SystemConfiguration.framework`
   * `CoreTelephony.framework`
   * `CFNetwork.framework`
