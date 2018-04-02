@@ -1,0 +1,118 @@
+- name: Redis Cache – dokumentáció
+  href: index.md
+- name: Áttekintés
+  items:
+    - name: A Redis Cache használatának előnyei
+      href: 'https://azure.microsoft.com/services/cache/'
+    - name: Ismerkedés a prémiumszintű funkciókkal
+      href: cache-premium-tier-intro.md
+    - name: Forgatókönyvek
+      items:
+        - name: Gyorsítótár elemeinek elérése
+          href: 'cache-dotnet-how-to-use-azure-redis-cache.md#add-and-retrieve-objects-from-the-cache'
+        - name: Magas rendelkezésre állás konfigurálása
+          href: 'https://azure.microsoft.com/pricing/details/cache/'
+        - name: Biztonságos kapcsolódás az SSL-lel
+          href: 'cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache'
+        - name: Áttelepítés Managed Cache Service szolgáltatásból
+          href: cache-migrate-to-redis.md
+        - name: Minták és eljárások – gyorsítótárazási útmutató
+          href: ../best-practices-caching.md?toc=%2fazure%2fredis-cache%2ftoc.json
+- name: Bevezetés
+  items:
+    - name: ASP.NET
+      href: cache-web-app-howto.md
+    - name: .NET
+      href: cache-dotnet-how-to-use-azure-redis-cache.md
+    - name: Csomópont
+      href: cache-nodejs-get-started.md
+    - name: Java
+      href: cache-java-get-started.md
+    - name: Python
+      href: cache-python-get-started.md
+    - name: Redis Cache – gyakori kérdések
+      href: cache-faq.md
+- name: Útmutató
+  items:
+    - name: Felkészülés
+      items:
+        - name: Gyorsítótárszint kiválasztása
+          href: 'cache-faq.md#what-redis-cache-offering-and-size-should-i-use'
+        - name: A gyorsítótár megőrzése a Redis adatmegőrzési funkciójával
+          href: cache-how-to-premium-persistence.md
+        - name: A gyorsítótár védelme virtuális hálózattal
+          href: cache-how-to-premium-vnet.md
+        - name: A gyorsítótár elosztása klaszterezéssel
+          href: cache-how-to-premium-clustering.md
+    - name: Automatizálás
+      items:
+        - name: Üzembe helyezés és kezelés az Azure PowerShell használatával
+          href: cache-howto-manage-redis-cache-powershell.md
+        - name: Üzembe helyezés és kezelés az Azure CLI használatával
+          href: cli-samples.md
+        - name: Redis Cache gyorsítótár üzembe helyezése
+          href: cache-redis-cache-arm-provision.md
+        - name: Webalkalmazás üzembe helyezése a Redis Cache használatával
+          href: cache-web-app-arm-with-redis-cache-provision.md
+    - name: Integráció az ASP.NET-tel
+      items:
+        - name: Munkamenetállapot-szolgáltató
+          href: cache-aspnet-session-state-provider.md
+        - name: Kimeneti gyorsítótár-szolgáltató
+          href: cache-aspnet-output-cache-provider.md
+    - name: Kezelés
+      items:
+        - name: Konfigurálás az Azure Portalon
+          href: cache-configure.md
+        - name: Georeplikáció konfigurálása
+          href: cache-how-to-geo-replication.md
+        - name: Adatok importálása és exportálása
+          href: cache-how-to-import-export-data.md
+        - name: Újraindítás
+          href: 'cache-administration.md#reboot'
+        - name: Frissítések ütemezése
+          href: 'cache-administration.md#schedule-updates'
+    - name: Figyelés és hibaelhárítás
+      items:
+        - name: Monitorozás az Azure Portalon
+          href: cache-how-to-monitor.md
+        - name: Gyorsítótárral kapcsolatos problémák megoldása
+          href: cache-how-to-troubleshoot.md
+        - name: Riasztások beállítása kivételekhez
+          href: 'cache-how-to-monitor.md#operations-and-alerts'
+    - name: Méretezés
+      items:
+        - name: Módosítás más méretre és szintre
+          href: cache-how-to-scale.md
+        - name: Vertikális és horizontális leskálázás Redis-fürttel
+          href: cache-how-to-premium-clustering.md
+    - name: Integráció a Spring Boottal
+      items:
+        - name: Spring Boot inicializáló alkalmazás használata Redis Cache-sel
+          href: cache-java-spring-boot-initializer-with-redis-cache.md
+- name: Referencia
+  items:
+    - name: Kódminták
+      href: 'https://azure.microsoft.com/resources/samples/?service=redis-cache'
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.rediscache
+    - name: Azure CLI előzetes verzió
+      href: /cli/azure/redis
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.redis
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.redis._redis_cache
+    - name: Redis ügyfelek
+      href: 'http://redis.io/clients'
+    - name: Redis parancsok
+      href: 'http://redis.io/commands#'
+    - name: REST
+      href: 'https://docs.microsoft.com/rest/api/redis/'
+- name: További források
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=databases'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/cache/'
+    - name: Redis Cache-minták
+      href: cache-redis-samples.md

@@ -37,8 +37,6 @@
           href: log-analytics-log-search-faq.md
     - name: Log Analytics – gyakori kérdések
       href: log-analytics-faq.md
-    - name: Adathasználat
-      href: log-analytics-usage.md
     - name: Adatbiztonság
       href: log-analytics-data-security.md
     - name: Hozzáférés kezelése
@@ -156,7 +154,11 @@
         - name: Ügynökkezelés
           href: log-analytics-agent-manage.md
         - name: Munkaterületek kezelésének költségei
-          href: log-analytics-manage-cost-storage.md
+          items:
+            - name: Adatmennyiség és megőrzés
+              href: log-analytics-manage-cost-storage.md
+            - name: Használat monitorozása
+              href: log-analytics-usage.md
         - name: Munkaterület törlése
           href: log-analytics-manage-del-workspace.md
     - name: Hibaelhárítás

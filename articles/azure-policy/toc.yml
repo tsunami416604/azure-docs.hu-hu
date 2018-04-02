@@ -25,6 +25,10 @@
   items:
     - name: Azure szabályzatdefiníciók struktúrája
       href: policy-definition.md
+- name: Útmutatók
+  items:
+    - name: Szabályzatok létrehozása programozott módon
+      href: policy-insights.md
 - name: Referencia
   items:
     - name: Azure CLI
