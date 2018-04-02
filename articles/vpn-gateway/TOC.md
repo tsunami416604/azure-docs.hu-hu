@@ -8,6 +8,7 @@
 # Első lépések
 ## [Útvonalalapú VPN-átjáró létrehozása – Azure Portal](create-routebased-vpn-gateway-portal.md)
 ## [Útvonalalapú VPN-átjáró létrehozása – PowerShell](create-routebased-vpn-gateway-powershell.md)
+## [Útvonalalapú VPN-átjáró létrehozása – CLI](create-routebased-vpn-gateway-cli.md)
 
 # Alapelvek
 ## [A VPN Gateway tervezése és kialakítása](vpn-gateway-plan-design.md)

@@ -1,0 +1,158 @@
+- name: CDN – dokumentáció
+  href: index.md
+- name: Áttekintés
+  href: cdn-overview.md
+  items:
+    - name: Mi az Azure CDN?
+      href: ../best-practices-cdn.md?toc=%2fazure%2fcdn%2ftoc.json
+- name: Első lépések
+  items:
+    - name: Az Azure CDN engedélyezése
+      href: cdn-create-new-endpoint.md
+- name: Útmutató
+  items:
+    - name: Integrálás
+      items:
+        - name: Web Apps
+          href: ../app-service/app-service-web-tutorial-content-delivery-network.md?toc=%2fazure%2fcdn%2ftoc.json
+        - name: Cloud Services
+          href: cdn-cloud-service-with-cdn.md
+        - name: Tárolás
+          items:
+            - name: Tárfiók integrálása
+              href: cdn-create-a-storage-account-with-cdn.md
+            - name: SAS-tároló támogatása
+              href: cdn-sas-storage-support.md
+        - name: Eltérő eredetű erőforrások megosztása
+          href: cdn-cors.md
+        - name: Egyéni tartomány hozzáadása a CDN-végponthoz
+          href: cdn-map-content-to-custom-domain.md
+        - name: HTTPS konfigurálása egyéni tartományon
+          href: cdn-custom-ssl.md
+    - name: Tartalom optimalizálása
+      items:
+        - name: Optimalizálás áttekintése
+          href: cdn-optimization-overview.md
+          items:
+            - name: Nagyméretű fájlok optimalizálása
+              href: cdn-large-file-optimization.md
+            - name: Online médialejátszás optimalizálása
+              href: cdn-media-streaming-optimization.md
+            - name: Dinamikus helygyorsítás
+              href: cdn-dynamic-site-acceleration.md
+    - name: Kezelés
+      items:
+        - name: Kezelés az Azure PowerShell-lel
+          href: cdn-manage-powershell.md
+        - name: Elérés korlátozása ország szerint
+          href: cdn-restrict-access-by-country.md
+        - name: A teljesítmény javítása a fájlok tömörítésével
+          href: cdn-improve-performance.md
+        - name: A gyorsítótárazási viselkedés vezérlése
+          items:
+            - name: A gyorsítótárazás működése
+              href: cdn-how-caching-works.md
+            - name: A gyorsítótárazási viselkedés vezérlése gyorsítótár-szabályokkal
+              href: cdn-caching-rules.md
+            - name: Tartalom gyorsítótárazása lekérdezési karakterláncok szerint
+              items:
+                - name: Standard csomag
+                  href: cdn-query-string.md
+                - name: Premium szintű csomag
+                  href: cdn-query-string-premium.md
+            - name: Gyorsítótárazott eszközök végleges törlése
+              href: cdn-purge-endpoint.md
+            - name: Gyorsítótárazott eszközök előzetes betöltése
+              href: cdn-preload-endpoint.md
+        - name: Az élettartam konfigurálása
+          items:
+            - name: Azure webes tartalom
+              href: cdn-manage-expiration-of-cloud-service-content.md
+            - name: Azure Blob Storage
+              href: cdn-manage-expiration-of-blob-content.md
+        - name: Jogkivonat-hitelesítés
+          href: cdn-token-auth.md
+        - name: Erőforrások megfigyelése
+          href: cdn-resource-health.md
+        - name: A működés felülbírálása szabályokkal
+          href: cdn-rules-engine.md
+        - name: Valós idejű értesítéseket kaphat
+          href: cdn-real-time-alerts.md
+        - name: HTTP/2-támogatás
+          href: cdn-http2.md
+    - name: Elemzés
+      items:
+        - name: Az Azure CDN használati mintáinak elemzése
+          href: cdn-log-analysis.md
+          items:
+            - name: Azure-beli diagnosztikai naplók
+              href: cdn-azure-diagnostic-logs.md
+            - name: Elemzési eszközök az Azure CDN-hez a Verizontól
+              items:
+                - name: Alapvető jelentések a Verizontól
+                  href: cdn-analyze-usage-patterns.md
+                - name: Egyéni jelentések a Verizontól
+                  href: cdn-verizon-custom-reports.md
+            - name: Elemzési eszközök az Azure CDN Premiumhoz a Verizontól
+              items:
+                - name: Extra szintű HTTP-jelentések létrehozása
+                  href: cdn-advanced-http-reports.md
+                - name: Valós idejű statisztikák megjelenítése
+                  href: cdn-real-time-stats.md
+                - name: Élcsomópont teljesítményelemzése
+                  href: cdn-edge-performance.md
+    - name: Fejlesztés
+      items:
+        - name: .NET
+          href: cdn-app-dev-net.md
+        - name: Node.js
+          href: cdn-app-dev-node.md
+    - name: Hibaelhárítás
+      items:
+        - name: 404-es állapot
+          href: cdn-troubleshoot-endpoint.md
+        - name: Fájltömörítés
+          href: cdn-troubleshoot-compression.md
+- name: Referencia
+  items:
+    - name: Szabálymotor-referencia
+      href: cdn-rules-engine-reference.md
+      items:
+        - name: Szabálymotor feltételes kifejezései
+          href: cdn-rules-engine-reference-conditional-expressions.md
+        - name: Szabálymotor egyezési feltételei
+          href: cdn-rules-engine-reference-match-conditions.md
+        - name: Szabálymotor funkciói
+          href: cdn-rules-engine-reference-features.md
+    - name: Kódminták
+      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=cdn'
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.cdn
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.cdn
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.cdn
+    - name: REST
+      href: /rest/api/cdn/
+- name: További források
+  items:
+    - name: Azure CDN POP-helyek
+      items:
+        - name: POP-helyek régiónként
+          href: cdn-pop-locations.md
+        - name: POP-helyek rövidítés alapján
+          href: cdn-pop-abbreviations.md
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: MSDN-fórum
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecdn'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/cdn/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?product=cdn'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-cdn'
+    - name: Videók
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=cdn'

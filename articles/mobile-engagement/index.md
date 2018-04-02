@@ -1,24 +1,28 @@
 ---
-title: "Az Azure Mobile Engagement dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
-description: "Ismerje meg, hogyan nyerhet betekintést a mobilalkalmazások használatába és a valós idejű felhasználószegmentálásba, és hogyan engedélyezheti a környezetfüggő leküldéses értesítéseket és az alkalmazáson belüli üzenetküldést."
+title: Az Azure Mobile Engagement dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
+description: Ismerje meg, hogyan nyerhet betekintést a mobilalkalmazások használatába és a valós idejű felhasználószegmentálásba, és hogyan engedélyezheti a környezetfüggő leküldéses értesítéseket és az alkalmazáson belüli üzenetküldést.
 services: mobile-engagement
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: mobile-engagement
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 5f682ba16b52b9a084505b8212c4b6f043bb94c9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 874b40e0e1407be9f546c5a5f57cee2d1034a840
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="mobile-engagement-documentation"></a>Mobile Engagement – dokumentáció
+
+> [!IMPORTANT]
+> Az Azure Mobile Engagement támogatása 2018. március 31-én megszűnik. Az oldal nem sokkal ezután törlésre kerül.
+> 
 
 Ismerje meg, hogyan javíthatja a Mobile Engagement segítségével a mobilappok használati, felhasználómegtartási és bevételi arányait. Az oktatóanyagok, SDK-k és egyéb dokumentáció bemutatják, hogyan nyerhet betekintést az alkalmazáshasználatba és a valós idejű felhasználószegmentálásba, és hogyan engedélyezheti a környezetfüggő leküldéses értesítéseket és az alkalmazáson belüli üzenetküldést.
 
