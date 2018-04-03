@@ -1,24 +1,24 @@
 ---
-title: "MySQL-adatbázisok használata Azure veremben PaaS |} Microsoft Docs"
-description: "Ismerje meg, hogyan telepítheti a MySQL erőforrás-szolgáltató, és adja meg a MySQL-adatbázisok Azure veremben szolgáltatásként."
+title: MySQL-adatbázisok használata Azure veremben PaaS |} Microsoft Docs
+description: Ismerje meg, hogyan telepítheti a MySQL erőforrás-szolgáltató, és adja meg a MySQL-adatbázisok Azure veremben szolgáltatásként.
 services: azure-stack
-documentationCenter: 
+documentationCenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/27/2018
 ms.author: mabrigg
 ms.reviewer: jeffgo
-ms.openlocfilehash: 15a1648193555ecc5847170ab65f48dfa4f6417b
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 66e1d5691b431be0c3d040570b13e8d16b1669ef
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>A Microsoft Azure verem használható MySQL-adatbázisok
 
@@ -80,7 +80,7 @@ A system fiók következő jogosultságokkal kell rendelkeznie:
     | 1711: 1.0.171122.1 | [MySQL RP 1.1.12.0 verziója](https://aka.ms/azurestackmysqlrp1711) |
     | 1710: 1.0.171028.1 | [MySQL RP 1.1.8.0 verziója](https://aka.ms/azurestackmysqlrp1710) |
 
-4.  Az Azure-verem legfelső szintű tanúsítvány veszi át a kiemelt végpont. Az Azure SDK-ban önaláírt tanúsítvány jön létre a folyamat során. Több csomópontos meg kell adnia egy megfelelő tanúsítványt.
+4.  Az Azure SDK-ban önaláírt tanúsítvány jön létre a folyamat során. Több csomópontos meg kell adnia egy megfelelő tanúsítványt.
 
     Ha saját van szüksége, helyezze el egy .pfx-fájlra a **DependencyFilesLocalPath** , amely megfelel a következő:
 
@@ -399,7 +399,7 @@ Kövesse az alábbi lépéseket a Defender definícióinak frissítéséhez:
 
     Ez az oldal "Manuálisan töltse le és telepítse a definíciók" le "Windows Defender víruskereső Windows 10 és Windows 8.1" 64 bites fájlrendszer. 
     
-    A közvetlen hivatkozás: https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64
+    Közvetlen kapcsolat: https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64
 
 2. Hozzon létre egy PowerShell-munkamenetet a MySQL RP adapter virtuális gép karbantartási végponthoz
 3. A definíciók frissítési fájlok másolása a DB adapter a gépet, a karbantartási végpont munkamenet használatával

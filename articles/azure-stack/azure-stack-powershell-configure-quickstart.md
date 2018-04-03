@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 03/30/2018
 ms.author: mabrigg
-ms.openlocfilehash: 2b306cc9dc9bbf435eb70315cc46e7faf4268b47
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 55fd212a895ed861cb5a9be0e4dae283e3cb5cfd
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="get-up-and-running-with-powershell-in-azure-stack"></a>Amelyekből megismerheti a verem Azure PowerShell használatával
 
@@ -32,9 +32,6 @@ Ebben a cikkben ismertetett lépéseit tömörített verziója telepítve a [Pow
 ## <a name="set-up-powershell-for-azure-active-directory-based-deployments"></a>Azure Active Directory-alapú telepítések PowerShell beállítása
 
 Jelentkezzen be a Azure verem szoftverfejlesztői készlet, vagy a Windows-alapú külső ügyfél Ha VPN-en keresztül kapcsolódik. Nyisson meg egy emelt szintű PowerShell ISE-munkamenetet, és futtassa az alábbi parancsfájlt. Ne felejtse el frissíteni a **TenantName**, **ArmEndpoint**, és **GraphAudience** a környezet konfigurálása a megfelelő változók:
-
-> [!IMPORTANT]
-> A kiadási AzureRM 1.2.11 PowerShell modul megtörje a változások listájának tartalmaz. A 1.2.10 rendszerről verzióját, tekintse meg a [áttelepítési útmutató](https://aka.ms/azspowershellmigration).
 
 ```powershell
 # Specify Azure Active Directory tenant name.

@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/26/2018
+ms.date: 04/02/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: cdce5ad971e345971aa5de9a9bb79379fb1ead48
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b91cfdfe89f1f15354595400ed9547496fdcd796
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure verem használható az Azure piactéren elemek
 
@@ -220,4 +220,5 @@ A Microsoft Azure verem támogatja a következő Azure piactér virtuális gépe
 | ![PT tűzfal](media/azure-stack-marketplace-azure-items/pt.png) | [PT tűzfal](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.ptaf) | PT tűzfal ismeretlen & ismert biztonsági rések észleli, és megakadályozza, hogy a támadások-webalkalmazásokban. <b>Töltse le mindkét PT Piactéri elemek.</b> | Pozitív technológiák |
 | ![Puppet Enterprise](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet vállalati segítségével automatizálhatja az Azure-verem infrastruktúra teljes életciklusát. <b>Töltse le mindkét Puppet Piactéri elemek.</b> | Puppet |
 | ![SUSE Manager 3.0 Proxy (saját)](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.0 Proxy (saját) ](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSEManager30ProxyBringYourOwnSubscription) | Legjobb minőségű nyílt forráskódú infrastruktúra kezelését. | SUSE |
+| ![Veeam biztonsági mentési és a replikáció](media/azure-stack-marketplace-azure-items/veeam.png) | [Veeam biztonsági mentési és a replikáció ](https://azuremarketplace.microsoft.com/marketplace/apps/veeam.veeam-backup-replication) | Veeam biztonsági mentés és a replikációs 9,5. | Veeam |
 | ![ZeroDown szoftvereket eszköz](media/azure-stack-marketplace-azure-items/zerodown.png) | [ZeroDown szoftvereket eszköz ](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.zerodown-software-tool-7_1) | ZeroDown szoftver eszköz v7.1 - áttelepítése + magas rendelkezésre ÁLLÁSÚ. | ZeroDown szoftver |

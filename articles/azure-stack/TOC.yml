@@ -6,14 +6,14 @@
       href: azure-stack-poc.md
     - name: Kibocsátási megjegyzések
       items:
+        - name: 1803 frissítés
+          href: azure-stack-update-1803.md
         - name: 1802 frissítés
           href: azure-stack-update-1802.md
         - name: 1712 frissítés
           href: azure-stack-update-1712.md
         - name: 1711 frissítés
           href: azure-stack-update-1711.md
-        - name: 1710 frissítés
-          href: azure-stack-update-1710.md
 - name: Gyors útmutatók
   expanded: true
   items:
@@ -58,9 +58,9 @@
             - name: Azure verem PKI-tanúsítványok beszerzése
               href: azure-stack-get-pki-certs.md
             - name: Azure verem PKI-tanúsítványok előkészítése
-              href: prepare-pki-certs.md
+              href: azure-stack-prepare-pki-certs.md
             - name: Azure verem PKI-tanúsítványok ellenőrzése
-              href: validate-pki-certs.md
+              href: azure-stack-validate-pki-certs.md
         - name: Identitásintegráció
           href: azure-stack-integrate-identity.md
         - name: Külső figyelése
