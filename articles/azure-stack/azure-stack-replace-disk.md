@@ -1,24 +1,24 @@
 ---
-title: "Cserélje le a fizikai lemez Azure verem |} Microsoft Docs"
-description: "Azure-készletben a fizikai lemez cseréje folyamatának ismertetése."
+title: Cserélje le a fizikai lemez Azure verem |} Microsoft Docs
+description: Azure-készletben a fizikai lemez cseréje folyamatának ismertetése.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 449ae53e-b951-401a-b2c9-17fee2f491f1
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 03/30/2018
 ms.author: mabrigg
-ms.openlocfilehash: a95617a8dd2a8f296164c672e2b4b2628574ce5a
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: f168c005c729ae75a5369b80b3dc5eab03ee0243
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="replace-a-physical-disk-in-azure-stack"></a>Egy Azure verem fizikai lemezének cseréje
 
@@ -40,6 +40,9 @@ Megnyitja a riasztás, ha a riasztás leírásában a skálázási egység csom�
  ## <a name="replace-the-disk"></a>A rendszerlemez cseréje
 
 Kövesse a OEM hardver gyártója által biztosított FRU tényleges lemezcsere utasításokat.
+
+> [!note]
+> Cserélje le a lemezeket a skálázási egység egy csomópont egyszerre. Várjon, amíg véget ér, csak a következő méretezési egység csomópontba helyezze át a virtuális lemezek javítási feladat
 
 Letilthatja az egy nem támogatott lemezt egy integrált rendszerben, a rendszer blokkolja a lemezek, a szállító által nem támogatott. Nem támogatott lemez használata kísérli meg, ha új riasztás tájékoztat, hogy az egy lemezt egy nem támogatott modell vagy a belső vezérlőprogram miatt karanténba-e.
 

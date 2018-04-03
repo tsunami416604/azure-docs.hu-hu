@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 03/30/2018
 ms.author: mabrigg
-ms.openlocfilehash: 799651caf937ca2bafc79dc76f99ae43e700673a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: df4a5a17ad034ae5d6ab82791c020634a8758b71
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-stack-administration-basics"></a>Az Azure verem Adminisztráció alapjai
 Számos szempontot Ha most ismerkedik az Azure-verem felügyeleti tudnia kell. Ez az útmutató az Azure-verem kezelőként szerepkör áttekintése és a felhasználóknak a számukra gyorsan eredményesebbé kell biztosít.
@@ -31,9 +31,9 @@ Az Azure-verem integrált rendszert használ, ha Azure verem frissített verzió
  
 ### <a name="development-kit"></a>Szoftverfejlesztői készlet
 
-Ha a csomag Azure verem használata esetén tekintse át a [Mi az Azure-verem?](azure-stack-poc.md) tudja a csomagot, és a korlátozások célja, hogy a cikk. A csomag "védőfalat," ahol Azure verem, értékelje ki és fejlesztéséhez és tesztelni az alkalmazások nem éles környezetben célszerű használni. (Központi telepítési információk: a [Azure verem szoftverfejlesztői készlet telepítési](azure-stack-deploy-overview.md) gyors üzembe helyezés.)
+Ha a csomag Azure verem használata esetén tekintse át a [Mi az Azure-verem?](.\asdk\asdk-what-is.md) tudja a csomagot, és a korlátozások célja, hogy a cikk. A csomag "védőfalat," ahol Azure verem, értékelje ki és fejlesztéséhez és tesztelni az alkalmazások nem éles környezetben célszerű használni. (Központi telepítési információk: a [Azure verem szoftverfejlesztői készlet telepítési](.\asdk\asdk-deploy.md) oktatóanyag.)
 
-Azure, például azt innovációját annak gyorsan. Azt fogja kiadás új buildek rendszeresen. Ha a csomagot futtatja, és szeretné helyezni a legújabb buildre kell [újratelepítése veremmel Azure](azure-stack-redeploy.md). Nem alkalmazhat a frissítési csomagok. Ez a folyamat időt vesz igénybe, de az az előnye, hogy a legújabb szolgáltatásokhoz kipróbálhatja. A fejlesztői csomag dokumentációjában találhatók a webhelyen tükrözi a legfrissebb kiadott buildjét.
+Azure, például azt innovációját annak gyorsan. Azt fogja kiadás új buildek rendszeresen. Ha a csomagot futtatja, és szeretné helyezni a legújabb buildre kell [újratelepítése veremmel Azure](.\asdk\asdk-redeploy.md). Nem alkalmazhat a frissítési csomagok. Ez a folyamat időt vesz igénybe, de az az előnye, hogy a legújabb szolgáltatásokhoz kipróbálhatja. A fejlesztői csomag dokumentációjában találhatók a webhelyen tükrözi a legfrissebb kiadott buildjét.
 
 ## <a name="learn-about-available-services"></a>További információk az elérhető szolgáltatások
 
@@ -63,6 +63,18 @@ Ezek a szolgáltatások további beállításokra van szükség, mielőtt akkor 
 **Szolgáltatás terv**
 
 Az Azure verem továbbra is az Azure-szolgáltatások támogatását. A tervezett terv, tekintse meg a [Azure verem: Azure kiterjesztése](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409) tanulmány. Ugyanígy figyelheti a [Azure verem blogbejegyzések](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview) új hirdetmények.
+
+## <a name="what-account-should-i-use"></a>Milyen fiókot érdemes használni?
+Nincsenek néhány fiókokkal kapcsolatos megfontolások kell ügyelnie, ha az Azure-verem kezelése. Különösen a központi telepítések segítségével a Windows Server Active Directory összevonási szolgáltatások (AD FS) helyett az Azure Active Directory (Azure AD) identitás-szolgáltatóként. A következő fiókokkal kapcsolatos megfontolások integrált Azure verem rendszerek és ASDK központi telepítéseket is vonatkozik:
+
+
+|Fiók|Azure AD|AD FS|
+|-----|-----|-----|
+|Helyi rendszergazdai (. \Administrator)|ASDK állomás rendszergazda|ASDK állomás rendszergazda|
+|AzureStack\AzureStackAdmin|ASDK állomás rendszergazda<br><br>Jelentkezzen be a verem Azure felügyeleti portálján is használható<br><br>Olvashatják és felügyelheti a Service Fabric körök|ASDK állomás rendszergazda<br><br>Nem lehet hozzáférni a verem Azure felügyeleti portálon<br><br>Olvashatják és felügyelheti a Service Fabric körök<br><br>Már nem tulajdonosa annak az alapértelmezett szolgáltató előfizetés (terjesztési pontok)|
+|AzureStack\CloudAdmin|Majd futtassa a Rendszerjogosultságú végpont belül engedélyezett parancsok is|Majd futtassa a Rendszerjogosultságú végpont belül engedélyezett parancsok is<br><br>Nem jelentkezhetnek be a ASDK állomás<br><br>Az alapértelmezett szolgáltató előfizetés (terjesztési pontok) tulajdonosa|
+|Azure AD globális rendszergazda|Telepítés során használt<br><br>Az alapértelmezett szolgáltató előfizetés (terjesztési pontok) tulajdonosa|Nem alkalmazható|
+|
 
 ## <a name="what-tools-do-i-use-to-manage"></a>Milyen eszközök használható kezeléséhez?
  
