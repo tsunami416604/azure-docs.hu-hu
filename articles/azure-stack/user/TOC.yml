@@ -99,12 +99,19 @@
               href: azure-stack-powershell-download.md
             - name: A PowerShell konfigurálása – Felhasználó
               href: azure-stack-powershell-configure-user.md
-            - name: Az Azure Stack parancssori felület telepítése és konfigurálása
-              href: azure-stack-connect-cli.md
             - name: A Visual Studio telepítése
               href: azure-stack-install-visual-studio.md
-            - name: API-verzióprofilok kezelése
+            - name: API-verzió profilok használatával
               href: azure-stack-version-profiles.md
+              items:
+                - name: PowerShell
+                  href: azure-stack-version-profiles-powershell.md
+                - name: Azure CLI 2.0
+                  href: azure-stack-version-profiles-azurecli2.md
+                - name: NYISSA MEG
+                  href: azure-stack-version-profiles-go.md
+                - name: Erőforrás-szolgáltató profilok által támogatott API-k
+                  href: azure-stack-profiles-azure-resource-manager-versions.md
         - name: Szabályzatmodul használata
           href: azure-stack-policy-module.md
         - name: Sablonok használata

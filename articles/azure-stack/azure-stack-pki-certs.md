@@ -3,7 +3,7 @@ title: Az Azure verem nyilvános kulcsokra épülő infrastruktúrát tanúsítv
 description: Az Azure verem nyilvános kulcsokra épülő infrastruktúra központi telepítési tanúsítványkövetelmények integrált Azure verem rendszerekhez ismerteti.
 services: azure-stack
 documentationcenter: ''
-author: mabriggs
+author: jeffgilb
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,16 +12,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/20/2018
-ms.author: mabrigg
+ms.date: 03/29/2018
+ms.author: jeffgilb
 ms.reviewer: ppacent
-ms.openlocfilehash: a5712e556d7b3bdcce38b8b8d39a08414ce0fd2f
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 583f827fe77ef7721b3098dee01c418c9e5cccd8
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Az Azure verem nyilvános kulcsokra épülő infrastruktúrát tanúsítványkövetelmények
+
 Azure verem van egy nyilvános infrastruktúra-hálózaton kívülről hozzáférhető nyilvános IP-címtartományból egy kis készletét a verem Azure-szolgáltatások, és esetleg a bérlői virtuális gépek használatával. Azure verem központi telepítése során a megfelelő DNS-neveit Azure verem nyilvános infrastruktúra végpontokkal PKI-tanúsítványok szükségesek. Ez a cikk nyújt tájékoztatást:
 
 - Milyen tanúsítványokra szükség Azure verem telepítése
@@ -37,7 +38,7 @@ Az alábbi lista a tanúsítvány Azure verem telepítéséhez szükséges köve
 - Az Azure-verem infrastruktúra a tanúsítványok aláírására használt hitelesítésszolgáltató hálózati hozzáféréssel kell rendelkeznie.
 - Váltás tanúsítványokat, amikor tanúsítványokat kell lennie, vagy a központi telepítés vagy a nyilvános hitelesítésszolgáltatótól származó fent megadott tanúsítványok aláírására használt azonos belső hitelesítésszolgáltatótól származó kiadott
 - Az önaláírt tanúsítványok nem támogatottak.
-- A tanúsítványt a tulajdonos alternatív nevére (SAN) mezőben minden neve szóközt kiterjedő egyetlen helyettesítő tanúsítvány lehet. Azt is megteheti például acs és a kulcstároló, amennyiben azok szükségesek végpontok helyettesítő karakterek használatával az egyes tanúsítványokat is használhat. 
+- A tanúsítványt a tulajdonos alternatív nevére (SAN) mezőben minden neve szóközt kiterjedő egyetlen helyettesítő tanúsítvány lehet. Azt is megteheti, például az végpontok helyettesítő karakterek használatával az egyes tanúsítványokat is használhat **acs** és a kulcstároló, amennyiben azok szükségesek. 
 - A tanúsítvány-aláírási algoritmus nem lehet SHA1, erősebb kell lennie. 
 - A tanúsítvány formátumban kell lennie PFX, mint a nyilvános és titkos kulcsok szükségesek az Azure-verem telepítéséhez. 
 - A tanúsítvány pfx-fájlok rendelkeznie érték "Digitális aláírás" és "KeyEncipherment" a "Kulcshasználat" mezőben.
@@ -58,6 +59,23 @@ Ez a szakasz a táblázat az Azure-verem nyilvános végpontot PKI-tanúsítván
 Minden Azure verem nyilvános infrastruktúra végpont a megfelelő DNS-névvel rendelkező tanúsítványokra szükség. Minden egyes végpont DNS-név formátumban van megadva:  *&lt;előtag >.&lt; régió >. &lt;teljesen minősített tartományneve >*. 
 
 A telepítéshez, a [régió] és [externalfqdn] az értékeknek egyezniük kell a terület és a külső tartományneveket, amelyekben az Azure-verem rendszer számára is választott. Tegyük fel, ha a terület neve *Redmond* és a külső tartománynév *contoso.com*, a DNS-nevek lenne a formátum *&lt;előtag >. redmond.contoso.com*. A  *&lt;előtag >* értékek vannak predesignated megadásával írhatja le a végpontot a tanúsítvány által védett Microsoft által. Emellett a  *&lt;előtag >* értékek a külső infrastruktúra végpontok függ az adott végponti használó Azure verem-szolgáltatás. 
+
+> [!note]  
+> Tanúsítványok csak megadott összes névtér a tulajdonos és a tulajdonos alternatív nevére (SAN) mezőben, átmásolja az összes könyvtár kiterjedő egyetlen helyettesítő tanúsítvány, vagy minden egyes tanúsítványok végpont másolni a megfelelő könyvtárba. Ne feledje, hogy mindkét lehetőség használatát írják elő helyettesítő tanúsítványokat végpontok például **acs** és a kulcstároló, amennyiben azok szükségesek. 
+
+| Telepítési mappa | Szükséges tanúsítvány tulajdonosára és alternatív tulajdonosnevekkel (SAN) | Hatókör (régiónként) | SubDomain namespace |
+|-------------------------------|------------------------------------------------------------------|----------------------------------|-----------------------------|
+| Nyilvános portál | portal.&lt;region>.&lt;fqdn> | Portálok | &lt;region>.&lt;fqdn> |
+| Felügyeleti portál | adminportal.&lt;region>.&lt;fqdn> | Portálok | &lt;region>.&lt;fqdn> |
+| Az Azure erőforrás-kezelő nyilvános | management.&lt;region>.&lt;fqdn> | Azure Resource Manager | &lt;region>.&lt;fqdn> |
+| Az Azure Resource Manager-rendszergazda | adminmanagement.&lt;region>.&lt;fqdn> | Azure Resource Manager | &lt;region>.&lt;fqdn> |
+| ACSBlob | *.blob.&lt;region>.&lt;fqdn><br>(Wildcard SSL Certificate) | Blob Storage | blob.&lt;region>.&lt;fqdn> |
+| ACSTable | *.table.&lt;region>.&lt;fqdn><br>(Wildcard SSL Certificate) | Table Storage | table.&lt;region>.&lt;fqdn> |
+| ACSQueue | *.queue.&lt;region>.&lt;fqdn><br>(Wildcard SSL Certificate) | Queue Storage | queue.&lt;region>.&lt;fqdn> |
+| KeyVault | *.vault.&lt;region>.&lt;fqdn><br>(Wildcard SSL Certificate) | Key Vault | vault.&lt;region>.&lt;fqdn> |
+| KeyVaultInternal | *.adminvault.&lt;region>.&lt;fqdn><br>(Wildcard SSL Certificate) |  Belső Keyvault |  adminvault.&lt;region>.&lt;fqdn> |
+
+### <a name="for-azure-stack-environment-on-pre-1803-versions"></a>Azure verem környezet előtti-1803 verzióin
 
 |Telepítési mappa|Szükséges tanúsítvány tulajdonosára és alternatív tulajdonosnevekkel (SAN)|Hatókör (régiónként)|SubDomain namespace|
 |-----|-----|-----|-----|
@@ -93,7 +111,7 @@ A következő táblázat ismerteti a végpontok és az SQL és MySQL adapterek �
 |Hatókör (régiónként)|Tanúsítvány|Szükséges tanúsítvány tulajdonosára és alternatív tulajdonosnevek (SAN)|SubDomain namespace|
 |-----|-----|-----|-----|
 |SQL, MySQL|Az SQL és MySQL|&#42;.dbadapter.*&lt;region>.&lt;fqdn>*<br>(Wildcard SSL Certificate)|dbadapter.*&lt;region>.&lt;fqdn>*|
-|App Service|Webes forgalom alapértelmezett SSL-tanúsítványt|&#42;.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.scm.appservice.*&lt;region>.&lt;fqdn>*<br>(Altartományokra is kibővített SSL-tanúsítvány több tartomány<sup>1</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
+|App Service|Webes forgalom alapértelmezett SSL-tanúsítványt|&#42;.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.scm.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.sso.appservice.*&lt;region>.&lt;fqdn>*<br>(Altartományokra is kibővített SSL-tanúsítvány több tartomány<sup>1</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|API|api.appservice.*&lt;region>.&lt;fqdn>*<br>(SSL-tanúsítvány<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|FTP|ftp.appservice.*&lt;region>.&lt;fqdn>*<br>(SSL-tanúsítvány<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|EGYSZERI BEJELENTKEZÉS|sso.appservice.*&lt;region>.&lt;fqdn>*<br>(SSL-tanúsítvány<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|

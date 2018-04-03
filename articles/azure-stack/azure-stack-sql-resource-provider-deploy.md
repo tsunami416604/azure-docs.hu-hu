@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/27/2018
 ms.author: mabrigg
 ms.reviewer: jeffgo
-ms.openlocfilehash: 1754d4b121fdaf4f7b8e4c1954dfd4202ba344b1
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: d0b287eb61087e90c898aad5273ab5be8c1f98b2
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>SQL-adatbázis használata a Microsoft Azure veremben
 
@@ -71,7 +71,7 @@ Meg kell hozzon létre egy (vagy több) az SQL Server példányai és/vagy a kü
     | 1710: 1.0.171028.1 | [SQL RP 1.1.8.0 verziója](https://aka.ms/azurestacksqlrp1710) |
   
 
-4. Adja meg a szükséges tanúsítványt. Az Azure-verem SDK önaláírt tanúsítvány jön létre a folyamat részeként, nincs további tanúsítványra szükség. Integrált rendszerek esetén meg kell adnia a megfelelő tanúsítványt.
+4. Az Azure verem SDK-ban önaláírt tanúsítvány jön létre a folyamat során. Integrált rendszerek esetén meg kell adnia a megfelelő tanúsítványt.
 
    Adja meg a tanúsítvány, tegyen egy .pfx-fájlra a **DependencyFilesLocalPath** az alábbiak szerint:
 

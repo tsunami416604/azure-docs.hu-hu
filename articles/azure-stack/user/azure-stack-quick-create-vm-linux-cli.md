@@ -1,11 +1,11 @@
 ---
-title: "Linux virtuális gép létrehozása Azure-készletben Azure parancssori felület használatával |} Microsoft Docs"
-description: "Hozzon létre egy Linux virtuális gép CLI Azure-készletben."
+title: Linux virtuális gép létrehozása Azure-készletben Azure parancssori felület használatával |} Microsoft Docs
+description: Hozzon létre egy Linux virtuális gép CLI Azure-készletben.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 21F7D599-1FEC-4827-A5C3-06495C5F53A4
 ms.service: azure-stack
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 160893f5b2e9c78bd62355782c279fb08f7f6b48
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 69036b522b375eced604256340b532ad14a8708e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-a-linux-virtual-machine-by-using-azure-cli-in-azure-stack"></a>Linux virtuális gép létrehozása Azure-készletben Azure parancssori felület használatával
 
@@ -31,7 +31,7 @@ Az Azure CLI segítségével létrehozása és kezelése az Azure-verem erőforr
 
 * Győződjön meg arról, hogy az Azure-verem operátor hozzá van adva a "Ubuntu Server 16.04 LTS" kép a verem Azure piactéren. 
 
-* Az Azure verem hozhatja létre és kezelheti az erőforrásokat az Azure parancssori felület adott verziója szükséges. Ha még nem rendelkezik Azure CLI Azure verem konfigurált, jelentkezzen be a [szoftverfejlesztői készlet](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), vagy egy Windows-alapú külső ügyfél Ha [VPN-en keresztül csatlakozó](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) és kövesse a lépéseket a [telepítése és konfigurálja az Azure parancssori felület](azure-stack-connect-cli.md).
+* Az Azure verem hozhatja létre és kezelheti az erőforrásokat az Azure parancssori felület adott verziója szükséges. Ha még nem rendelkezik Azure CLI Azure verem konfigurált, jelentkezzen be a [szoftverfejlesztői készlet](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), vagy egy Windows-alapú külső ügyfél Ha [VPN-en keresztül csatlakozó](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) és kövesse a lépéseket a [telepítése és konfigurálja az Azure parancssori felület](azure-stack-version-profiles-azurecli2.md).
 
 * A név id_rsa.pub a nyilvános SSH-kulcs a Windows-felhasználói profil .ssh könyvtárban kell létrehozni. Az SSH-kulcsok létrehozásának részletes információkért lásd: [létrehozása SSH kulcsok Windows](../../virtual-machines/linux/ssh-from-windows.md). 
 

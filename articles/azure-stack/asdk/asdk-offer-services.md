@@ -1,26 +1,26 @@
 ---
-title: "Ebben az oktatóanyagban létrehoz egy Azure verem ajánlat |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozzon létre egy Azure verem ajánlatot, beleértve a csomagok és a kvóták."
+title: Ebben az oktatóanyagban létrehoz egy Azure verem ajánlat |} Microsoft Docs
+description: Megtudhatja, hogyan hozzon létre egy Azure verem ajánlatot, beleértve a csomagok és a kvóták.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 03/16/2018
+ms.date: 03/27/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 083b5e20b89f22cb8e523926858fe9ffb1441319
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 8bcc2f3077e79ff83ac2e90db0bb0fa53ae83adc
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tutorial-offer-azure-stack-iaas-services"></a>Oktatóanyag: Azure verem IaaS szolgáltatást kínál.
 Rendszergazdaként Azure verem felhő ajánlatokat, amelyek a (más néven bérlői) felhasználók előfizethetnek is létrehozhat. Használja az előfizetését, felhasználók tudják felhasználni Azure verem szolgáltatások.
@@ -112,14 +112,24 @@ Ajánlatok lehet:
 > Az ajánlat módosításai nincsenek közvetlenül a felhasználók számára látható. A módosítások megtekintéséhez a felhasználóknak problémájuk jelentkezzen ki, és jelentkezzen be újra a [felhasználói portál](https://portal.local.azurestack.external) az új ajánlat megjelenítéséhez.
 
 Az új ajánlat beállítása a nyilvánosság számára: 
+   - 1803 vagy újabb verziója: 
+     1. Az irányítópult menüben kattintson **kínál** és kattintson a létrehozott ajánlatot.
 
-1. Az irányítópult menüben kattintson **kínál** és kattintson a létrehozott ajánlatot.
+     2. Kattintson a **kisegítő állapot**, és kattintson a **nyilvános**.
 
-2. Kattintson az **Állapot módosítása**, majd a **Nyilvános** elemre.
+        ![Állapot módosítása](media/asdk-offer-services/change-state.png)
 
-   ![Nyilvános állapota](media/asdk-offer-services/set-public.png)
+     3. Az ajánlat lesz elérhető az Azure-verem felhasználói portálon.
 
-3. Az ajánlat lesz elérhető az Azure-verem felhasználói portálon.
+
+   - A verzió 1803 előtt:  
+     1. Az irányítópult menüben kattintson **kínál** és kattintson a létrehozott ajánlatot.
+
+     2. Kattintson az **Állapot módosítása**, majd a **Nyilvános** elemre.
+
+        ![Nyilvános állapota](media/asdk-offer-services/set-public.png)
+
+     3. Az ajánlat lesz elérhető az Azure-verem felhasználói portálon.
 
 ## <a name="next-steps"></a>További lépések
 

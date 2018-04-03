@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: vinagara
-ms.openlocfilehash: 045a7f97d9c4d380e83325c04c209a6afcc761a7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.openlocfilehash: abab73a047fb923fa2cd57a1c7194e440697bf64
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="extend-alerts-from-oms-into-azure"></a>Terjessze ki a riasztások a OMS az Azure
 Az új riasztások felületet most integrálva van a riasztási élmény különböző szolgáltatások és a Microsoft Azure-része. Az új felület érhető el, **riasztások** Azure figyelő portálon, a indított együtt közös helyen - napló tevékenységriasztásokat, a metrika riasztások és a napló Naplóelemzési, valamint az Application Insights-riasztások. 
@@ -27,9 +27,9 @@ De az egyes felhasználók Naplóelemzési és allied funkciók, például a ria
 ## <a name="benefits-of-extending-your-alerts"></a>A riasztások kiterjesztése előnyei
 Nem rendelkezik Azure-portálon kívül megnyitása a elhatárolt juttatásra, leszámítva szempontból is más mintájára riasztások bővíteni az OMS Szolgáltatáshoz az Azure
 
-- Eltérően az OMS-ben, ahol csak 250 riasztások nem sikerült létrehozni és várólistákból. az Azure riasztásokat Ez a korlátozás nincs jelen
-- Az Azure riasztásokból minden riasztást típusok kezelhető, előnyeiről, és megtekinthetők; nem csak az adott esetben az OMS Naplóelemzési riasztások
-- Az Azure riasztások használatára [művelet csoportok](monitoring-action-groups.md), ez lehetővé teszi rendelkezik minden riasztás például SMS, hang-hívás, Automation-Runbook, Webhook, ITSM összekötő és egyéb csak egy művelet. Ha az OMS riasztások korlátozott, mind a számát, valamint műveletek lehetséges típusa
+- Eltérően az OMS-ben, ahol csak 250 riasztások nem sikerült létrehozni és várólistákból. az Azure-riasztások Ez a korlátozás nincs jelen
+- Az Azure riasztásokból a riasztási típusokat kezelhető, előnyeiről, és megtekinthetők; nem csak a Naplóelemzési riasztást küld, mint az OMS esetében
+- Az Azure riasztások használatára [művelet csoportok](monitoring-action-groups.md), amelyek lehetővé teszik, hogy az egyes riasztások, például SMS, hang-hívás, Automation-Runbook, Webhook, ITSM összekötő és egyéb egynél több művelettel rendelkezik. Mivel az OMS-riasztások mindkét a számát, valamint korlátozott, mivel a(z) típusú műveletek lehetséges
 
 ## <a name="process-of-extending-your-alerts"></a>A folyamat, amely a figyelmeztetéseket
 A riasztások kiterjesztésének az OMS Szolgáltatáshoz az Azure, a folyamat nem **nem** a riasztás definíciója, lekérdezés vagy konfiguráció az bármely módon módosítani. Mindössze annyi a változás, szükség, hogy az Azure, az összes műveleteket végez, például e-mail-értesítések webhook hívás, automation-runbook fut, vagy ITSM eszköz csatlakozik végzett művelet csoport keresztül. Ezért ha a megfelelő lépéseket csoporthoz társítva a riasztás - azok lesz lesz kiterjeszthetőek az Azure.

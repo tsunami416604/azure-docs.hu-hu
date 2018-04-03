@@ -1,24 +1,24 @@
 ---
-title: "Eszközök Azure verem tárolás"
-description: "Tudnivalók a verem Azure storage-adatokkal átviteli eszközök"
+title: Eszközök Azure verem tárolás
+description: Tudnivalók a verem Azure storage-adatokkal átviteli eszközök
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/21/2018
+ms.date: 03/30/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 9318b7af3c3dd545207f1896c9008207f562b735
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: e26a38b8fd7d008a46eba2c41075c5af09a6616a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tools-for-azure-stack-storage"></a>Eszközök Azure verem tárolás
 
@@ -181,7 +181,7 @@ Az Azure parancssori felület található az Azure parancssori Azure-erőforrás
 
 Az Azure CLI megfelelően lett optimalizálva, kezelése és felügyelete az Azure-erőforrások a parancssorból, és automatizálási parancsfájlokat, szemben az Azure Resource Managerrel működő készítéséhez. Nagy része megtalálható a verem Azure portál, beleértve a funkciógazdag adatelérési ugyanazokat a funkciókat biztosít.
 
-Az Azure verem Azure CLI 2.0-s verziója szükséges. Azure CLI-t az Azure veremnek megfelelő konfigurálásával kapcsolatos további információkért lásd: [telepítése és konfigurálása az Azure CLI-verem](azure-stack-connect-cli.md). Több feladatait a Azure verem tárfiókban lévő erőforrások használata az Azure CLI 2.0 használatával kapcsolatos további információkért lásd: [az Azure CLI2.0 az Azure Storage használata](../../storage/storage-azure-cli.md)
+Az Azure verem Azure CLI 2.0-s verziója szükséges. Azure CLI-t az Azure veremnek megfelelő konfigurálásával kapcsolatos további információkért lásd: [telepítése és konfigurálása az Azure CLI-verem](azure-stack-version-profiles-azurecli2.md). Több feladatait a Azure verem tárfiókban lévő erőforrások használata az Azure CLI 2.0 használatával kapcsolatos további információkért lásd: [az Azure CLI2.0 az Azure Storage használata](../../storage/storage-azure-cli.md)
 
 ### <a name="azure-cli-sample-script-for-azure-stack"></a>Az Azure CLI mintaparancsfájl Azure verem 
 Ha befejezte a parancssori felület telepítése és konfigurálása, megpróbálhatja dolgozhat Azure verem tárolási erőforrások együttműködhet egy kis rendszerhéj parancsfájlt az alábbi lépéseket. A parancsfájl először létrehoz egy új tároló a tárfiókban lévő majd feltölt egy már létező fájlt (a blob) tároló, felsorolja az összes BLOB a tárolóban, és végül letölti a fájlt a helyi számítógépen, amely megadja egy célra. Ez a parancsfájl futtatása előtt győződjön meg arról, sikeresen csatlakozni, és jelentkezzen be a cél Azure-verem. 
