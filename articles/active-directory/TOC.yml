@@ -5,12 +5,18 @@
 - name: Szerepköralapú hozzáférés-vezérlés (RBAC)
   href: role-based-access-control-what-is.md
   items:
-    - name: Hozzáférés-hozzárendelések kezelése
+    - name: Szerepkör-hozzárendelések kezelése
       items:
         - name: Felhasználó szerint
           href: role-based-access-control-manage-assignments.md
         - name: Erőforrás szerint
           href: role-based-access-control-configure.md
+        - name: Az Azure CLI-vel
+          href: role-based-access-control-manage-access-azure-cli.md
+        - name: A PowerShell-lel
+          href: role-based-access-control-manage-access-powershell.md
+        - name: A REST-tel
+          href: role-based-access-control-manage-access-rest.md
     - name: Beépített szerepkörök
       href: role-based-access-built-in-roles.md
     - name: Egyéni szerepkörök
@@ -19,14 +25,6 @@
       href: role-based-access-control-create-custom-roles-for-internal-external-users.md
     - name: Jelentéskészítés
       href: role-based-access-control-access-change-history-report.md
-    - name: Szerepkörök kezelésének további módjai
-      items:
-        - name: Az Azure CLI-vel
-          href: role-based-access-control-manage-access-azure-cli.md
-        - name: A PowerShell-lel
-          href: role-based-access-control-manage-access-powershell.md
-        - name: A REST-tel
-          href: role-based-access-control-manage-access-rest.md
     - name: Bérlői rendszergazda hozzáférési szintjének emelése
       href: role-based-access-control-tenant-admin-access.md
     - name: Hibaelhárítás
