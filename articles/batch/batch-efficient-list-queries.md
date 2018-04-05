@@ -1,25 +1,25 @@
 ---
-title: "Hatékony lista lekérdezések - Azure Batch kialakítása |} Microsoft Docs"
-description: "Teljesítmény növeléséhez a lekérdezések szűrést, ha a kért információ kötegelt erőforrásokhoz, mint a gyűjtők, feladatok, feladatok, és a számítási csomópontok."
+title: Hatékony lista lekérdezések - Azure Batch kialakítása |} Microsoft Docs
+description: Teljesítmény növeléséhez a lekérdezések szűrést, ha a kért információ kötegelt erőforrásokhoz, mint a gyűjtők, feladatok, feladatok, és a számítási csomópontok.
 services: batch
 documentationcenter: .net
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 031fefeb-248e-4d5a-9bc2-f07e46ddd30d
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 08/02/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a80b207f591bd888d4749287527013c5e554fb6e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 330350d6ac6838ea5b09763fe1f73fab1934710c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Létrehozhat olyan lekérdezéseket, a lista kötegelt erőforrásokhoz hatékonyan
 
@@ -100,8 +100,8 @@ A kibontott karakterlánc csökkenti a szükséges bizonyos adatok beszerzése A
 * Minden tulajdonságnevek megkülönböztetik a kis-és nagybetűket, de a tulajdonságértékek-és nagybetűket.
 * Dátum és idő karakterláncok lehet két formátumok egyikét, és utasítás előtt szerepelnie kell a `DateTime`.
   
-  * W3C-DTF formátum példa:`creationTime gt DateTime'2011-05-08T08:49:37Z'`
-  * RFC 1123 formátum példa:`creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
+  * W3C-DTF formátum példa: `creationTime gt DateTime'2011-05-08T08:49:37Z'`
+  * RFC 1123 formátum példa: `creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
 * Logikai értékek a következők: vagy `true` vagy `false`.
 * Ha egy tulajdonság érvénytelen vagy operátor van megadva, a `400 (Bad Request)` hibát fog okozni.
 
@@ -171,7 +171,7 @@ Tulajdonságnevek szűrő, válassza ki, és bontsa ki a karakterláncok *kell* 
 
 | Batch .NET típusok | REST API entitások |
 | --- | --- |
-| [Tanúsítvány][net_cert] |[A tanúsítvány adatainak beolvasása][rest_get_cert] |
+| [tanúsítvány][net_cert] |[A tanúsítvány adatainak beolvasása][rest_get_cert] |
 | [CloudJob][net_job] |[A feladat adatainak beolvasása][rest_get_job] |
 | [CloudJobSchedule][net_schedule] |[A feladatütemezés adatainak beolvasása][rest_get_schedule] |
 | [Átjárócsomópontján][net_node] |[A csomópont adatainak beolvasása][rest_get_node] |
@@ -243,7 +243,7 @@ internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 ### <a name="parallel-node-tasks"></a>Párhuzamos csomópont feladatok
 [Azure Batch számítási erőforrás-használat csomópont egyidejű feladatok maximális](batch-parallel-node-tasks.md) egy másik cikkben kapcsolódó Batch-alkalmazások teljesítményének. Bizonyos típusú munkaterheléseket is kihasználhatja a párhuzamos tevékenységek feldolgozás alatt álló nagyobb – de--kevesebb számítási csomópontot. Tekintse meg a [példa](batch-parallel-node-tasks.md#example-scenario) a cikkben talál részletes információt ilyen esetben.
 

@@ -1,11 +1,11 @@
 ---
-title: "Az Azure IoT-eszközök SDK c - IoTHubClient |} Microsoft Docs"
-description: "Hogyan használható a IoTHubClient könyvtár, az Azure IoT eszközben C-hez készült SDK kommunikáló eszközön futó alkalmazások létrehozásához az IoT-központ számára."
+title: Az Azure IoT-eszközök SDK c - IoTHubClient |} Microsoft Docs
+description: Hogyan használható a IoTHubClient könyvtár, az Azure IoT eszközben C-hez készült SDK kommunikáló eszközön futó alkalmazások létrehozásához az IoT-központ számára.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: yzhong94
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 828cf2bf-999d-4b8a-8a28-c7c901629600
 ms.service: iot-hub
 ms.devlang: cpp
@@ -14,14 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
 ms.author: yizhon
-ms.openlocfilehash: 6efd2980ce4dde99d934b3fe174d341fb68fac03
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 0fa07b2a785bd7d1a26924918e4428fd420e1547
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>Az Azure IoT-eszközök SDK c – további információ az IoTHubClient
 A [először a következő cikket:](iot-hub-device-sdk-c-intro.md) a sorozat bevezette a **C-hez készült SDK Azure IoT-eszközök**. A cikk alapján, hogy nincsenek-e két architekturális rétegek SDK. Az alap van a **IoTHubClient** könyvtárban, amely közvetlenül kezeli az IoT-központ folytatott kommunikáció. Szerepel továbbá a **szerializáló** könyvtár épülő a szerializálási szolgáltatások biztosításához. Ebben a cikkben a következőkhöz nyújtunk további részletek a a **IoTHubClient** könyvtárban.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 Az előző cikkben leírt használata a **IoTHubClient** könyvtár események küldése az IoT-központ és az üzenetek fogadásához. Ez a cikk e kiterjeszti pontosabban kezelése ismertető *amikor* küldött és fogadott adatok bemutatása, hogy a **alacsonyabb szintű API-k**. Azt is ismertetjük tulajdonságok csatolható események (és üzenetek lekérése őket) szolgáltatások kezelése tulajdonság használatával a **IoTHubClient** könyvtárban. Végül az IoT-központ fogadott üzenetek kezelésének különböző módjai további magyarázata a következőkhöz nyújtunk.
 

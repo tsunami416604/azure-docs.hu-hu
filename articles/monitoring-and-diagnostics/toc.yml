@@ -187,3 +187,5 @@
       href: 'https://stackoverflow.com/search?q=monitoring'
     - name: Kódminták
       href: 'https://azure.microsoft.com/resources/samples/?service=monitor'
+    - name: Használat és becsült költségek
+      href: monitoring-usage-and-estimated-costs.md

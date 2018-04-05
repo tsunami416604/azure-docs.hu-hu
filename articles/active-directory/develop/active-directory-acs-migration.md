@@ -1,11 +1,11 @@
 ---
-title: "A hozzáférés-vezérlés Azure-szolgáltatás áttelepítésére |} Microsoft Docs"
-description: "Az alkalmazások és szolgáltatások áthelyezésére a hozzáférés-vezérlés Azure szolgáltatás beállításai"
+title: A hozzáférés-vezérlés Azure-szolgáltatás áttelepítésére |} Microsoft Docs
+description: Az alkalmazások és szolgáltatások áthelyezésére a hozzáférés-vezérlés Azure szolgáltatás beállításai
 services: active-directory
 documentationcenter: dev-center-name
 author: dstrockis
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/14/2017
 ms.author: dastrock
-ms.openlocfilehash: f634adbacc8e1fc128ecef15ad38f2f8b28eb25d
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 6c22f85d3e76a005c45a4679ddfd8948a46acffc
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="migrate-from-the-azure-access-control-service"></a>A hozzáférés-vezérlés Azure-szolgáltatás áttelepítése
 
-Az Azure hozzáférés-vezérlés, a szolgáltatás az Azure Active Directory (Azure AD), a November 2018 rendszerből. Alkalmazások és szolgáltatások, amelyek jelenleg használják a hozzáférés-vezérlés kell teljesen áttelepíteni egy másik hitelesítési módszert, majd által. Ez a cikk ismerteti a javaslatok a jelenlegi felhasználó esetén, mivel azt tervezi, hogy Ön miként használja a hozzáférés-vezérlés érvényteleníthető. Ha hozzáférés-vezérlés jelenleg nem használ, nem kell tennie semmit.
+Az Azure hozzáférés-vezérlést, az Azure Active Directory (Azure AD), a szolgáltatás 2018. November 7. a rendszerből. Alkalmazások és szolgáltatások, amelyek jelenleg használják a hozzáférés-vezérlés kell teljesen áttelepíteni egy másik hitelesítési módszert, majd által. Ez a cikk ismerteti a javaslatok a jelenlegi felhasználó esetén, mivel azt tervezi, hogy Ön miként használja a hozzáférés-vezérlés érvényteleníthető. Ha hozzáférés-vezérlés jelenleg nem használ, nem kell tennie semmit.
 
 
 ## <a name="overview"></a>Áttekintés
@@ -54,11 +54,9 @@ Ezeket az összetevőket használatához létre kell hoznia egy vagy több hozz�
 https://<mynamespace>.accesscontrol.windows.net
 ```
 
-Az összes kommunikáció a STS és felügyeleti műveletek végzett az URL-címen. Elérési útja eltér más célra használhatja. Határozza meg, hogy az alkalmazások vagy szolgáltatások hozzáférés-vezérlés, megfigyeli https:// forgalom számára\<névtér\>. accesscontrol.windows.net. Ezen URL-adatforgalmat hozzáférés-vezérlés kezeli, és megszűnik a kell. 
+Az összes kommunikáció a STS és felügyeleti műveletek végzett az URL-címen. Elérési útja eltér más célra használhatja. Határozza meg, hogy az alkalmazások vagy szolgáltatások hozzáférés-vezérlés, megfigyeli https:// forgalom számára<namespace>. accesscontrol.windows.net. Ezen URL-adatforgalmat hozzáférés-vezérlés kezeli, és megszűnik a kell. 
 
-Ez a kivétel, https://accounts.accesscontrol.windows.net az összes bejövő forgalom. Az URL-cím felé irányuló forgalom már kezeli egy másik szolgáltatást, és nem érinti a hozzáférés-vezérlés érvénytelenítése. 
-
-Meg kell is jelentkezzen be a klasszikus Azure portálon és a hozzáférés-vezérlés névterek a saját előfizetések. Hozzáférés-vezérlési névterek szerepel a **hozzáférés-vezérlési névterek** lap a **Active Directory** szolgáltatás.
+A kivételt a rendszer az összes bejövő forgalom `https://accounts.accesscontrol.windows.net`. Ezen URL-forgalmat már kezeli egy másik szolgáltatás és **nem** hatással a hozzáférés-vezérlés érvénytelenítése. 
 
 Hozzáférés-vezérléssel kapcsolatos további információkért lásd: [Access Control Service 2.0 (archivált)](https://msdn.microsoft.com/library/hh147631.aspx).
 
@@ -68,9 +66,9 @@ Től November 2017 minden hozzáférés-vezérlés összetevői teljes mértékb
 
 Ez a hozzáférés-vezérlés összetevői elavulttá ütemezése:
 
-- **2017. november**: az Azure AD rendszergazdai élmény a klasszikus Azure portálon [kivonják](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). Ezen a ponton névtér felügyeleti hozzáférés-vezérlési érhető el egy új, dedikált URL-címen: http://manage.windowsazure.com?restoreClassic=true. Használja a meglévő névterek megtekintéséhez, engedélyezése, és tiltsa le a névterek, és törli a névterek, ha úgy dönt, hogy.
-- **Április 2018**: hozzáférés-vezérlés névtér felügyeleti már nem érhető el a dedikált http://manage.windowsazure.com?restoreClassic=true URL-címen. Ezen a ponton nem letiltja vagy engedélyezi, törlése vagy a hozzáférés-vezérlés névterek számbavétele. Azonban a hozzáférés-vezérlés kezelési portál lesz teljesen működőképes és https:// helye\<névtér\>. accesscontrol.windows.net. A hozzáférés-vezérlés összes többi összetevő továbbra is megfelelően működik.
-- **November 2018**: hozzáférés-vezérlés összetevői véglegesen állnak le. Ez magában foglalja a hozzáférés-vezérlés kezelési portálon, a felügyeleti szolgáltatás, STS és a token átalakítási jogcímszabály-motor. Ezen a ponton minden küldött kérelmeket a hozzáférés-vezérlés (helye: \<névtér\>. accesscontrol.windows.net) sikertelen. Kell áttelepített meglévő alkalmazások és szolgáltatások más technológiákat is a megadott idő előtti.
+- **2017. november**: az Azure AD rendszergazdai élmény a klasszikus Azure portálon [kivonják](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). Ezen a ponton névtér felügyeleti hozzáférés-vezérlési érhető el egy új, dedikált URL-címen: `http://manage.windowsazure.com?restoreClassic=true`. Használja a meglévő névterek megtekintéséhez, engedélyezése, és tiltsa le a névterek, és törli a névterek, ha úgy dönt, hogy.
+- **2018. április 2**: az Azure klasszikus portál teljesen kivonják, ami azt jelenti, hozzáférés-vezérlés névtér felügyeleti bármely URL-CÍMEN keresztül már nem érhető el. Ezen a ponton nem letiltja vagy engedélyezi, törlése vagy a hozzáférés-vezérlés névterek számbavétele. Azonban a hozzáférés-vezérlés kezelési portál lesz teljesen működőképes és helye `https://\<namespace\>.accesscontrol.windows.net`. A hozzáférés-vezérlés összes többi összetevő továbbra is megfelelően működik.
+- **November 7 2018**: hozzáférés-vezérlés összetevői véglegesen állnak le. Ez magában foglalja a hozzáférés-vezérlés kezelési portálon, a felügyeleti szolgáltatás, STS és a token átalakítási jogcímszabály-motor. Ezen a ponton minden küldött kérelmeket a hozzáférés-vezérlés (helye: \<névtér\>. accesscontrol.windows.net) sikertelen. Kell áttelepített meglévő alkalmazások és szolgáltatások más technológiákat is a megadott idő előtti.
 
 
 ## <a name="migration-strategies"></a>Áttelepítési stratégiák
@@ -98,6 +96,17 @@ Minden Microsoft felhőszolgáltatás, amely fogadja a hozzáférés-vezérlés 
 <!-- Azure StorSimple: TODO -->
 <!-- Azure SiteRecovery: TODO -->
 
+
+### <a name="sharepoint-customers"></a>SharePoint-ügyfelek
+
+A SharePoint 2013, 2016 és SharePoint Online ügyfelek hosszú használta ACS-felhő, helyszíni és hibrid forgatókönyvekben hitelesítési célokra. Egyes SharePoint-szolgáltatások és a használati esetek érinti ACS kivonása, míg mások számára nem lesz. Az alábbi táblázat foglalja össze az áttelepítési útmutató, a legnépszerűbb SharePoint némelyike szolgáltatással, hogy használja ki az ACS:
+
+| Szolgáltatás | Útmutatás |
+| ------- | -------- |
+| Azure ad-felhasználók hitelesítéséhez | Korábban az Azure AD SAML 1.1 jogkivonatokat a hitelesítéshez szükséges SharePoint nem támogat, és ACS lett megadva, az Azure ad-val SharePoint compatibile token végrehajtott köztes formázza. Most, akkor [SharePoint közvetlen csatlakoztatása az Azure AD hitelesítési karakterlánc-kiállítási házirendek segítségével](https://docs.microsoft.com/Office365/Enterprise/using-azure-ad-for-sharepoint-server-authentication). |
+| [Alkalmazás hitelesítési & kiszolgáló kiszolgáló hitelesítés a helyszíni SharePoint](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | Nem érinti az ACS használatból való kivonást; nem szükséges módosításokat. | 
+| [SharePoint-bővítmények (üzemeltetett szolgáltató és üzemeltetett SharePoint) alacsony megbízhatósági-engedélyezés](https://docs.microsoft.com/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | Nem érinti az ACS használatból való kivonást; nem szükséges módosításokat. |
+| [A SharePoint felhő hibrid keresési](https://blogs.msdn.microsoft.com/spses/2015/09/15/cloud-hybrid-search-service-application/) | Nem érinti az ACS használatból való kivonást; nem szükséges módosításokat. |
 
 ### <a name="web-applications-that-use-passive-authentication"></a>Passzív hitelesítést használó webalkalmazások
 
@@ -243,7 +252,7 @@ Ebben az esetben érdemes esetleg térjen át a webes alkalmazás egy másik hit
 |     |     | 
 | --- | --- |
 | ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) egy rugalmas felhőalapú identitás-szolgáltatás által létrehozott [magas szintű áttelepítési útmutatója a hozzáférés-vezérlés ügyfeleknek](https://auth0.com/acs), és támogatja szinte minden, amelyet az ACS szolgáltatást. |
-| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping identitás](https://www.pingidentity.com) ACS hasonló két megoldásokat kínál. PingOne, amely támogatja a számos olyan funkciót ACS identitás felhőszolgáltatás, PingFederate pedig egy hasonló helyszíni identitás-terméket, amely nagyobb rugalmasságot biztosít. Tekintse meg [Ping tartozó ACS használatból való kivonást útmutatást](https://www.pingidentity.com/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) kapcsolatban további részleteket a ezeket a termékeket.  |
+| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping identitás](https://www.pingidentity.com) ACS hasonló két megoldásokat kínál. PingOne, amely támogatja a számos olyan funkciót ACS identitás felhőszolgáltatás, PingFederate pedig egy hasonló helyszíni identitás-terméket, amely nagyobb rugalmasságot biztosít. Tekintse meg [Ping tartozó ACS használatból való kivonást útmutatást](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) kapcsolatban további részleteket a ezeket a termékeket.  |
 
 A végzett munka során Ping identitás- és Auth0 célja, hogy biztosítsa, hogy minden hozzáférés-vezérlés az ügyfelek áttelepítési elérési azok az alkalmazások és szolgáltatások számára való hozzáférés-vezérlés áthelyezése minimálisra csökkentse.
 
@@ -305,7 +314,7 @@ Ebben az esetben érdemes a webalkalmazást egy másik felhőalapú hitelesíté
 |     |     | 
 | --- | --- |
 | ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) egy rugalmas felhőalapú identitás-szolgáltatás által létrehozott [magas szintű áttelepítési útmutatója a hozzáférés-vezérlés ügyfeleknek](https://auth0.com/acs), és támogatja szinte minden, amelyet az ACS szolgáltatást. |
-| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping identitás](https://www.pingidentity.com) ACS hasonló két megoldásokat kínál. PingOne, amely támogatja a számos olyan funkciót ACS identitás felhőszolgáltatás, PingFederate pedig egy hasonló helyszíni identitás-terméket, amely nagyobb rugalmasságot biztosít. Tekintse meg [Ping tartozó ACS használatból való kivonást útmutatást](https://www.pingidentity.com/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) kapcsolatban további részleteket a ezeket a termékeket.  |
+| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping identitás](https://www.pingidentity.com) ACS hasonló két megoldásokat kínál. PingOne, amely támogatja a számos olyan funkciót ACS identitás felhőszolgáltatás, PingFederate pedig egy hasonló helyszíni identitás-terméket, amely nagyobb rugalmasságot biztosít. Tekintse meg [Ping tartozó ACS használatból való kivonást útmutatást](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) kapcsolatban további részleteket a ezeket a termékeket.  |
 
 A végzett munka során Ping identitás- és Auth0 célja, hogy biztosítsa, hogy minden hozzáférés-vezérlés az ügyfelek áttelepítési elérési azok az alkalmazások és szolgáltatások számára való hozzáférés-vezérlés áthelyezése minimálisra csökkentse.
 

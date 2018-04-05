@@ -1,12 +1,12 @@
 ---
-title: "Diagnosztika a tartós funkciók – Azure"
-description: "Útmutató az Azure Functions a tartós funkciók kiterjesztésű problémák diagnosztizálásához."
+title: Diagnosztika a tartós funkciók – Azure
+description: Útmutató az Azure Functions a tartós funkciók kiterjesztésű problémák diagnosztizálásához.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 5ebab8660dfe21984e1a7f9a1cb925aea60de213
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f2fc1c87a0eee9e822ffc997f67320ed23dd5916
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="diagnostics-in-durable-functions-azure-functions"></a>Diagnosztika a tartós funkciók (az Azure Functions)
 
@@ -50,6 +50,7 @@ Vezénylési példány életciklus eseményeket hatására egy nyomkövetési es
 * **OK**: a nyomkövetési esemény társított további adatokat. Például ha egy példányát arra vár, hogy egy külső eseményértesítés, ez a mező vár az esemény nevét jelöli. Ha a függvény nem sikerült, ez a hiba részletes adatait tartalmazza.
 * **isReplay**: a rendszer logikai érték azt jelzi, hogy e a nyomkövetési esemény játssza végrehajtása.
 * **extensionVersion**: a tartós feladatkiterjesztés verzióját. Ez akkor különösen fontos adatokat, ha a bővítménybeli lehetséges hibát. Hosszan futó példányok előfordulhat, hogy több verzió jelentést, egy frissítés futtatása esetén. 
+* **sequenceNumber**: az esemény végrehajtása sorszámát. Az időbélyeg segít az események rendezése végrehajtási idő szerint együtt. *Vegye figyelembe, hogy ez az érték nulla, ha a gazdagép újraindul a példány futása közben, ezért fontos, hogy mindig rendezéshez először időbélyeg alaphelyzetbe állítása, majd sequenceNumber.*
 
 Az Application Insights részére kibocsátott adatokról nyilvántartásával részletességi konfigurálható a `logger` szakasza a `host.json` fájlt.
 
@@ -72,11 +73,11 @@ Alapértelmezés szerint minden nyomkövetési események kibocsátott. Az adato
 
 ### <a name="single-instance-query"></a>Egypéldányos lekérdezés
 
-A következő lekérdezés korábbi nyomon követési adatok egyetlen példányának jeleníti meg a [Hello feladatütemezési](durable-functions-sequence.md) vezénylési működik. Az oktatóprogram használatával a [Application Insights Query Language (AIQL)](https://docs.loganalytics.io/docs/Language-Reference). Azt, hogy csak a visszajátszás-végrehajtási kiszűri a *logikai* végrehajtási elérési látható.
+A következő lekérdezés korábbi nyomon követési adatok egyetlen példányának jeleníti meg a [Hello feladatütemezési](durable-functions-sequence.md) vezénylési működik. Az oktatóprogram használatával a [Application Insights Query Language (AIQL)](https://docs.loganalytics.io/docs/Language-Reference). Azt, hogy csak a visszajátszás-végrehajtási kiszűri a *logikai* végrehajtási elérési látható. Események is rendezve szerint rendezve `timestamp` és `sequenceNumber` ahogy az az alábbi lekérdezést: 
 
 ```AIQL
-let targetInstanceId = "bf71335b26564016a93860491aa50c7f";
-let start = datetime(2017-09-29T00:00:00);
+let targetInstanceId = "ddd1aaa685034059b545eb004b15d4eb";
+let start = datetime(2018-03-25T09:20:00);
 traces
 | where timestamp > start and timestamp < start + 30m
 | where customDimensions.Category == "Host.Triggers.DurableTask"
@@ -84,16 +85,17 @@ traces
 | extend instanceId = customDimensions["prop__instanceId"]
 | extend state = customDimensions["prop__state"]
 | extend isReplay = tobool(tolower(customDimensions["prop__isReplay"]))
+| extend sequenceNumber = tolong(customDimensions["prop__sequenceNumber"]) 
 | where isReplay == false
 | where instanceId == targetInstanceId
-| project timestamp, functionName, state, instanceId, appName = cloud_RoleName
+| sort by timestamp asc, sequenceNumber asc
+| project timestamp, functionName, state, instanceId, sequenceNumber, appName = cloud_RoleName
 ```
-Az eredménye, amelyek megjelenítik a vezénylési, beleértve a tevékenység függvényeket végrehajtási elérési útjának nyomon követés listáját.
 
-![Application Insights-lekérdezés](media/durable-functions-diagnostics/app-insights-single-instance-query.png)
+Eredménye nyomon követés lista tartalmazza a vezénylési, többek között a végrehajtás ideje, növekvő sorrendben rendezve függvényeket tevékenység végrehajtási elérési útját jeleníti meg.
 
-> [!NOTE]
-> Ezek az események követése néhány nem megfelelő sorrendben a pontosságnak hiánya miatt lehet a `timestamp` oszlop. Ez a Githubon, mint a követett [#71 ki](https://github.com/Azure/azure-functions-durable-extension/issues/71).
+![Application Insights-lekérdezés](media/durable-functions-diagnostics/app-insights-single-instance-ordered-query.png)
+
 
 ### <a name="instance-summary-query"></a>Példányok összefoglaló lekérdezés
 
@@ -191,7 +193,7 @@ Függvény kód hibakereséséhez közvetlenül az Azure Functions támogatja, �
 > [!TIP]
 > Beállításakor töréspontok, ha azt szeretné, csak hibájához nem ismétlési végrehajtásakor, beállíthat feltételes töréspont adott oldaltörések csak akkor, ha `IsReplaying` van `false`.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
 Alapértelmezés szerint a tartós funkciók tárolja az Azure Storage állapotát. Ez azt jelenti, hogy a álló eszközökkel, például a üzenettípusok összehangolását állapotának vizsgálhatja [Microsoft Azure Tártallózó](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
 
@@ -202,7 +204,7 @@ Ez akkor hasznos, láthatja, hogy pontosan milyen állapotban az orchestration l
 > [!WARNING]
 > Célszerű a table storage-ban végrehajtási előzményei között találja, amíg elkerülése érdekében ebben a táblázatban minden függőségi véve. A tartós funkciók bővítmény fejlődésének meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Tartós időzítők használata](durable-functions-timers.md)

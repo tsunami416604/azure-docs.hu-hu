@@ -1,49 +1,49 @@
 ---
-title: "Hozzon létre egy Linux virtuális Gépet az Azure-ban a verem |} Microsoft Docs"
-description: "Ismerje meg, hogyan lehet létrehozni a MongoDB, az Express, az AngularJS és a Node.js (átlag) verem egy Linux virtuális Gépet az Azure-ban."
+title: MEAN-készlet létrehozása Linux rendszerű virtuális gépeken az Azure-ban | Microsoft Docs
+description: Megismerheti, hogyan hozható létre MongoDB, Express, AngularJS és Node.js (MEAN) készlet egy Linux rendszerű virtuális gépen az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: davidmu1
-manager: timlt
-editor: tysonn
+author: iainfoulds
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/08/2017
-ms.author: davidmu
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 1d74ead08dfb63276afb08bdcb7f4e3e3db5bfd3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: 2bd89bf25f619caef07ae099232add55dbe0cda7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-vm-in-azure"></a>A MongoDB, az Express, az AngularJS és a Node.js (átlag) verem létrehozni a Linux virtuális gép az Azure-ban
+# <a name="create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-vm-in-azure"></a>MongoDB, Express, AngularJS és Node.js (MEAN) készlet létrehozása egy Linux rendszerű virtuális gépen az Azure-ban
 
-Az oktatóanyag bemutatja, hogyan kell beállítani a MongoDB, az Express, az AngularJS és a Node.js (átlag) verem egy Linux virtuális Gépet az Azure-ban. Az Ön által létrehozott átlagos verem lehetővé teszi, hogy hozzáadásával, törlésével és egy adatbázisban könyvek listázása. Az alábbiak végrehajtásának módját ismerheti meg:
+Ez az oktatóanyag bemutatja, hogyan valósítható meg MongoDB, Express, AngularJS és Node.js (MEAN) készlet egy Linux rendszerű virtuális gépen az Azure-ban. A létrehozott MEAN-készlet lehetővé teszi a könyvek hozzáadását, törlését és felsorolását egy adatbázison belül. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
 > * Linux rendszerű virtuális gép létrehozása
 > * A Node.js telepítése
 > * A MongoDB telepítése és a kiszolgáló beállítása
-> * Express telepítése és a kiszolgáló-útvonalak beállítása
-> * Hozzáférés a AngularJS rendelkező útvonalak
+> * Az Express telepítése és útvonalak beállítása a kiszolgálóhoz
+> * Az útvonalak elérése AngularJS segítségével
 > * Az alkalmazás futtatása
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Telepítése és a parancssori felület helyileg használata mellett dönt, ha ez az oktatóanyag van szükség, hogy futnak-e az Azure parancssori felület 2.0.4 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
 
 
 ## <a name="create-a-linux-vm"></a>Linux rendszerű virtuális gép létrehozása
 
-Hozzon létre egy erőforráscsoportot a a [az csoport létrehozása](https://docs.microsoft.com/cli/azure/group#az_group_create) parancsot, és a Linux virtuális gép létrehozása a [az virtuális gép létrehozása](https://docs.microsoft.com/cli/azure/vm#az_vm_create) parancsot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
+Hozzon létre egy erőforráscsoportot az [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create), illetve egy Linux rendszerű virtuális gépet az [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
-Az alábbi példában az Azure parancssori felület nevű erőforráscsoport létrehozása *myResourceGroupMEAN* a a *eastus* helyét. A virtuális gép kerül létrehozásra elnevezett *myVM* az SSH-kulcsok, ha még nem léteznek a kulcs alapértelmezett helye. Egy adott készletét kulcsok használatához a--ssh-kulcs-érték lehetőséget.
+A következő példában egy *myResourceGroupMEAN* nevű erőforráscsoportot hozunk létre az *eastus* helyen az Azure CLI használatával. Ekkor létrejön egy *myVM* nevű virtuális gép SSH-kulcsokkal, ha azok még nem léteznek a kulcsok alapértelmezett helyén. Ha konkrét kulcsokat szeretné használni, használja az --ssh-key-value beállítást.
 
 ```azurecli-interactive
 az group create --name myResourceGroupMEAN --location eastus
@@ -57,7 +57,7 @@ az vm create \
 az vm open-port --port 3300 --resource-group myResourceGroupMEAN --name myVM
 ```
 
-A virtuális gép létrehozásakor az Azure parancssori felület információkat jeleníti meg az alábbi példához hasonló: 
+A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg: 
 
 ```azurecli-interactive
 {
@@ -73,7 +73,7 @@ A virtuális gép létrehozásakor az Azure parancssori felület információkat
 ```
 Jegyezze fel a `publicIpAddress` értékét. Ez a cím használható a virtuális gép eléréséhez.
 
-A következő parancs segítségével a virtuális gép SSH-munkamenetet létrehozni. Győződjön meg arról, hogy a megfelelő nyilvános IP-cím használatára. Ebben a példában a fenti az IP cím volt 13.72.77.9.
+Használja az alábbi parancsot egy SSH-munkamenet létrehozásához a virtuális géphez. Győződjön meg arról, hogy a megfelelő nyilvános IP-címet használja. A fenti példában az IP-cím a következő volt: 13.72.77.9.
 
 ```bash
 ssh azureuser@13.72.77.9
@@ -81,57 +81,57 @@ ssh azureuser@13.72.77.9
 
 ## <a name="install-nodejs"></a>A Node.js telepítése
 
-[NODE.js](https://nodejs.org/en/) a JavaScript futásidejű Chrome tartozó V8 JavaScript motor épül. NODE.js szolgál ebben az oktatóanyagban az Express útvonalak és AngularJS vezérlők beállítása.
+A [Node.js](https://nodejs.org/en/) egy JavaScript futtatókörnyezet, amely a Chrome 8-as verziójú JavaScript-motorján alapul. Ebben az oktatóanyagban a Node.js használatával állíthat be Express-útvonalakat és AngularJS-vezérlőket.
 
-A virtuális gépet a rendszerhéjakba az SSH-megnyitott telepítse a Node.js.
+Telepítse a Node.js futtatókörnyezetet a virtuális gépen az SSH-val megnyitott bash-felületen.
 
 ```bash
 sudo apt-get install -y nodejs
 ```
 
 ## <a name="install-mongodb-and-set-up-the-server"></a>A MongoDB telepítése és a kiszolgáló beállítása
-[MongoDB](http://www.mongodb.com) rugalmas, JSON-jellegű dokumentumok tárolja az adatokat. Az adatbázis mezőit eltérőek lehetnek a dokumentum dokumentum, és adatszerkezet időbeli módosíthatók. Például az alkalmazás azt hozzá rendszertöltő rekord MongoDB, amelyek tartalmazzák a neve, isbn számát, Szerző és lapok száma. 
+A [MongoDB](http://www.mongodb.com) rugalmas, JSON-szerű dokumentumokban tárolja az adatokat. Az adatbázisok mezői dokumentumtól függően eltérőek lehetnek, az adatstruktúra pedig idővel változhat. A példaalkalmazás esetében könyvbejegyzéseket fogunk hozzáadni a MongoDB-hez, amelyek tartalmazzák a könyv nevét, ISBN-számát, szerzőjét és az oldalszámot. 
 
-1. A virtuális Gépre használja a rendszerhéjakba megnyitott az SSH-kulcsát állítsa a mongodb-Protokolltámogatással.
+1. A virtuális gépen állítsa be a MongoDB-kulcsot az SSH-val megnyitott bash-felületen.
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
     echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
     ```
 
-2. A csomag kezelőt frissíti, a kulccsal.
+2. Frissítse a csomagkezelőt a kulccsal.
   
     ```bash
     sudo apt-get update
     ```
 
-3. A MongoDB telepítése.
+3. Telepítse a MongoDB-t.
 
     ```bash
     sudo apt-get install -y mongodb
     ```
 
-4. A kiszolgáló elindítására.
+4. Indítsa el a kiszolgálót.
 
     ```bash
     sudo service mongodb start
     ```
 
-5. Azt is telepítenie kell a [törzs-elemző](https://www.npmjs.com/package/body-parser-json) segítsen feldolgozni a kéréseket a kiszolgáló továbbított JSON-csomagot.
+5. Emellett a [body-parser](https://www.npmjs.com/package/body-parser-json) csomagot is telepíteni kell, amely segít a kiszolgálóhoz továbbított kérésekben szereplő JSON feldolgozásában.
 
-    A npm package manager telepítéséhez.
+    Telepítse az npm csomagkezelőt.
 
     ```bash
     sudo apt-get install npm
     ```
 
-    A szervezet elemző telepítéséhez.
+    Telepítse a body-parser csomagot.
     
     ```bash
     sudo npm install body-parser
     ```
 
-6. Hozza létre a *könyvek* és felvétele a fájlt nevű *server.js* , amely tartalmazza a konfiguráció a webkiszolgálón.
+6. Hozzon létre egy *Books* (Könyvek) nevű mappát, és adjon hozzá egy a webkiszolgáló konfigurációját tartalmazó, *server.js* nevű fájlt.
 
     ```node.js
     var express = require('express');
@@ -146,17 +146,17 @@ sudo apt-get install -y nodejs
     });
     ```
 
-## <a name="install-express-and-set-up-routes-to-the-server"></a>Express telepítése és a kiszolgáló-útvonalak beállítása
+## <a name="install-express-and-set-up-routes-to-the-server"></a>Az Express telepítése és útvonalak beállítása a kiszolgálóhoz
 
-[Express](https://expressjs.com) van egy minimális igényű és rugalmas Node.js webes alkalmazás-keretrendszer, amely funkciókat biztosít a webes és mobilalkalmazásokhoz. Express ebben az oktatóanyagban használt továbbítani felé és felől a MongoDB adatbázis foglalható le. [Mongoose](http://mongoosejs.com) az alkalmazás adatok egyszerű feladat, a séma-alapú megoldást kínál. Mongoose segítségével ebben az oktatóanyagban biztosítsa a könyv sémát az adatbázisban.
+Az [Express](https://expressjs.com) egy minimális igényű és rugalmas Node.js webalkalmazási keretrendszer, amely különféle funkciókat biztosít a web- és mobilalkalmazások számára. Ebben az oktatóanyagban az Express használatával fogjuk továbbítani a könyvadatokat a MongoDB adatbázisból, illetve az adatbázis felé. A [Mongoose](http://mongoosejs.com) magától értetődő, sémaalapú megoldást biztosít az alkalmazásadatok modellezéséhez. Ebben az oktatóanyagban a Mongoose használatával fogjuk megadni a könyv sémáját az adatbázis számára.
 
-1. Telepítse az Express és a mongoose bővítményt.
+1. Telepítse az Express és Mongoose szolgáltatásokat.
 
     ```bash
     sudo npm install express mongoose
     ```
 
-2. A a *könyvek* mappában hozza létre a *alkalmazások* és nevű fájl hozzáadása *routes.js* meghatározott expressz felé mutató útvonalakat.
+2. A *Books* mappában hozzon létre egy *apps* (alkalmazások) nevű mappát, és adjon hozzá egy *routes.js* nevű fájlt, amelyben meg vannak határozva az Express-útvonalak.
 
     ```node.js
     var Book = require('./models/book');
@@ -198,7 +198,7 @@ sudo apt-get install -y nodejs
     };
     ```
 
-3. A a *alkalmazások* mappában hozza létre a *modellek* , és adja hozzá a nevű fájl *book.js* definiált könyv modell beállítások használatával.  
+3. Az *apps* mappában hozzon létre egy *models* (modellek) nevű mappát, és adjon hozzá egy *book.js* nevű fájlt, amelyben meg van határozva a könyvmodell.  
 
     ```node.js
     var mongoose = require('mongoose');
@@ -216,11 +216,11 @@ sudo apt-get install -y nodejs
     module.exports = mongoose.model('Book', bookSchema); 
     ```
 
-## <a name="access-the-routes-with-angularjs"></a>Hozzáférés a AngularJS rendelkező útvonalak
+## <a name="access-the-routes-with-angularjs"></a>Az útvonalak elérése AngularJS segítségével
 
-[AngularJS](https://angularjs.org) webes keretet biztosít a dinamikus nézetek létrehozása a webes alkalmazások. Ebben az oktatóanyagban a AngularJS csatlakozzanak a weblap expressz, és elvégezheti a kapcsolódó műveleteket a könyv adatbázis használjuk.
+Az [AngularJS](https://angularjs.org) egy webes keretrendszert biztosít a dinamikus nézetek létrehozásához a webalkalmazáson belül. Ebben az oktatóanyagban az AngularJS használatával csatlakoztatjuk a weboldalt az Express szolgáltatáshoz, és műveleteket hajtunk végre a könyvadatbázison.
 
-1. A könyvtár biztonsági másolatot a módosítás *könyvek* (`cd ../..`), és ezután hozza létre a *nyilvános* , és adja hozzá a nevű fájl *script.js* definiált vezérlő beállítások használatával.
+1. Módosítsa a könyvtár biztonsági mentésének helyét a *Books* (`cd ../..`) mappára, majd hozzon létre egy *public* (nyilvános) nevű mappát, és adjon hozzá egy *script.js* nevű fájlt, amelyben meg van határozva a vezérlő konfigurációja.
 
     ```node.js
     var app = angular.module('myApp', []);
@@ -262,7 +262,7 @@ sudo apt-get install -y nodejs
     });
     ```
     
-2. Az a *nyilvános* mappa, hozzon létre egy fájlt *index.html* definiált weblapon.
+2. A *public* mappában hozzon létre egy *index.html* nevű fájlt, amelyben meg van határozva a weboldal.
 
     ```html
     <!doctype html>
@@ -317,39 +317,39 @@ sudo apt-get install -y nodejs
 
 ##  <a name="run-the-application"></a>Az alkalmazás futtatása
 
-1. A könyvtár biztonsági másolatot a módosítás *könyvek* (`cd ..`) és a kiszolgáló elindítására a következő parancs futtatásával:
+1. Módosítsa a könyvtár biztonsági mentésének helyét a *Books* (`cd ..`) mappára, és indítsa el a kiszolgálót az alábbi parancs futtatásával:
 
     ```bash
     nodejs server.js
     ```
 
-2. Nyissa meg a címet, amely a virtuális gép rögzített egy webböngészőben. Például *http://13.72.77.9:3300*. A következő lap hasonlót kell megjelennie:
+2. Nyisson meg egy webböngészőt, és ugorjon a virtuális géphez rögzített címre. Például: *http://13.72.77.9:3300*. Az alábbihoz hasonló oldalt kell látnia:
 
-    ![Rendszertöltő rekord](media/tutorial-mean/meanstack-init.png)
+    ![Könyvrekord](media/tutorial-mean/meanstack-init.png)
 
-3. Adja meg az adatokat a szövegmezőből, majd kattintson a **Hozzáadás**. Példa:
+3. Adjon meg adatokat a szöveges mezőkben, és kattintson az **Add** (Hozzáadás) elemre. Például:
 
-    ![Rendszertöltő rekord hozzáadása](media/tutorial-mean/meanstack-add.png)
+    ![Könyvrekord hozzáadása](media/tutorial-mean/meanstack-add.png)
 
-4. A lap frissítésével, megtekintheti az ezen a lapon hasonlót:
+4. Az oldal frissítése után az alábbihoz hasonló oldalt kell látnia:
 
-    ![Lista könyv rekordok](media/tutorial-mean/meanstack-list.png)
+    ![Könyvrekordok listája](media/tutorial-mean/meanstack-list.png)
 
-5. Sikerült kattintson **törlése** és a rendszertöltő rekord eltávolítja az adatbázisból.
+5. A **Delete** (Törlés) gombra kattintva eltávolíthatja a könyvrekordot az adatbázisból.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy webes alkalmazás, amely nyomon követi a rekordok könyv egy létrehozott egy Linux virtuális Gépet a verem. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban létrehozott egy webalkalmazást, amely nyomon követi a könyvrekordokat egy MEAN-készlet használatával egy Linux rendszerű virtuális gépen. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Linux rendszerű virtuális gép létrehozása
 > * A Node.js telepítése
 > * A MongoDB telepítése és a kiszolgáló beállítása
-> * Express telepítése és a kiszolgáló-útvonalak beállítása
-> * Hozzáférés a AngularJS rendelkező útvonalak
+> * Az Express telepítése és útvonalak beállítása a kiszolgálóhoz
+> * Az útvonalak elérése AngularJS segítségével
 > * Az alkalmazás futtatása
 
-A következő oktatóanyag megtudhatja, mennyire biztonságos SSL-tanúsítványokkal webkiszolgálók továbblépés.
+Folytassa a következő oktatóanyaggal, amelyből megismerheti, hogyan tehetők biztonságossá a webkiszolgálók SSL-tanúsítványok használatával.
 
 > [!div class="nextstepaction"]
-> [Biztonságos webkiszolgáló SSL](tutorial-secure-web-server.md)
+> [Webkiszolgáló biztonságossá tétele SSL használatával](tutorial-secure-web-server.md)

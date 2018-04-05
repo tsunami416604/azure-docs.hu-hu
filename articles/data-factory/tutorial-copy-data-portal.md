@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Portal használata Data Factory-folyamatok létrehozására | Microsoft Docs"
-description: "Az oktatóanyag részletes útmutatását követve létrehozhat egy adat-előállítót egy folyamat és az Azure Portal használatával. A folyamat egy másolási tevékenységgel másol adatokat egy Azure Blob Storage-ból egy SQL Database-be."
+title: Az Azure Portal használata Data Factory-folyamatok létrehozására | Microsoft Docs
+description: Az oktatóanyag részletes útmutatását követve létrehozhat egy adat-előállítót egy folyamat és az Azure Portal használatával. A folyamat egy másolási tevékenységgel másol adatokat egy Azure Blob Storage-ból egy SQL Database-be.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 116832175a4b7e4497c9005be7841cb56c1d235b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 34c78a114c1d106c400a94941aa113153383e206
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Adatok másolása az Azure Blob Storage-ból egy SQL Database-be az Azure Data Factory segítségével
 Ebben az oktatóanyagban az Azure Data Factory felhasználói felületének használatával hoz létre egy adat-előállítót. Az adat-előállító folyamata adatokat másol az Azure Blob Storage-ból egy SQL Database-be. Az oktatóanyagban szereplő konfigurációs minta fájlalapú adattárból relációs adattárba való másolásra vonatkozik. A forrásként és fogadóként támogatott adattárak listája a [támogatott adattárakat tartalmazó](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban található.
@@ -303,7 +303,7 @@ Elvégezheti a folyamat próbafuttatását, mielőtt összetevőket (társított
     ![Értesítések megjelenítése](./media/tutorial-copy-data-portal/show-notifications.png)
 
 ## <a name="configure-code-repository"></a>A kódtár konfigurálása
-Az adat-előállító összetevőkhöz társított kódot közzéteheti egy Visual Studio Team Services-kódtárban. Ebben a lépésben a kódtárat fogja létrehozni. 
+Az adat-előállító összetevőkhöz társított kódot közzéteheti egy Visual Studio Team Services-kódtárban. Ebben a lépésben a kódtárat fogja létrehozni.  További információkat a VSTS-integrációval történő vizuális tartalomkészítésről a [VSTS Git-integrációval történő tartalomkészítést](author-visually.md#author-with-vsts-git-integration) ismertető cikkben olvashat.
 
 Ha nem szeretné használni a Visual Studio Team Services-kódtárat, ezt a lépést kihagyhatja. Folytathatja a Data Factoryban történő közzétételt, ahogyan azt az előző lépésben tette. 
 

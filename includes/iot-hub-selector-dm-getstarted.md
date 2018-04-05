@@ -7,6 +7,8 @@
 
 Háttér-alkalmazások használhatják Azure IoT Hub primitívek, például a [eszköz iker] [ lnk-devtwin] és [módszerek közvetlen][lnk-c2dmethod], a távolról start és eszköz figyelése felügyeleti műveleteket. Az oktatóanyag bemutatja, hogyan egy háttér-alkalmazást és egy eszköz alkalmazásának együttműködése hogyan kezdeményezésére és figyelésére a távoli eszköz IoT-központ használatával újra kell indítani.
 
+[!INCLUDE [iot-hub-basic](iot-hub-basic-whole.md)]
+
 A közvetlen módszer segítségével eszköz felügyeleti műveletek (például újraindítás, a gyári beállítások visszaállítása és a belső vezérlőprogram frissítése) kezdeményez egy háttér-alkalmazást a felhőben. Az eszköz felelős:
 
 * A metódus kérelmet küldött az IoT-központ kezelő.

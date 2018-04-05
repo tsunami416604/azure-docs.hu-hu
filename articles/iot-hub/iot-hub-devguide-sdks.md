@@ -1,11 +1,11 @@
 ---
-title: "Az Azure IoT SDK-k ismertetése |} Microsoft Docs"
-description: "Fejlesztői útmutató - információk és hivatkozások a különböző Azure IoT eszköz és a szolgáltatás SDK-k, amelyek segítségével eszközön futó alkalmazások és a háttér-alkalmazásokat hozhat létre."
+title: Az Azure IoT SDK-k ismertetése |} Microsoft Docs
+description: Fejlesztői útmutató - információk és hivatkozások a különböző Azure IoT eszköz és a szolgáltatás SDK-k, amelyek segítségével eszközön futó alkalmazások és a háttér-alkalmazásokat hozhat létre.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c5c9a497-bb03-4301-be2d-00edfb7d308f
 ms.service: iot-hub
 ms.devlang: multiple
@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/12/2018
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c77812db85c3b6730fce9af3f634821b44508687
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: aec2126369f45a89050dbd8b2d3cae7e00ccb8ed
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="understand-and-use-azure-iot-sdks"></a>Megismeréséhez és használatához Azure IoT SDK-k
 
@@ -32,6 +32,8 @@ Az IoT-központ való munkához software development Kit (SDK) három kategóri�
 * **Az Azure IoT peremhálózati** lehetővé teszi az eszközök, amelyek nem használják a támogatott protokollok átjárók összeállítását. Átjárók is a peremhálózaton lévő üzenetek feldolgozásához.
 
 SDK-k több programozási nyelv támogatása biztosított.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 ## <a name="azure-iot-device-sdks"></a>Azure IoT device SDKs
 

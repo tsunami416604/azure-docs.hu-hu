@@ -1,10 +1,14 @@
-Hogy továbbra is használhatja az alkalmazás nem lesz, ha törli az összes erőforrást jött létre a gyors üzembe helyezés, a következő lépések által, ezért nem számítunk fel díjakat:
+Ha nem használja tovább az alkalmazást, akkor a következő lépésekkel a mintaalkalmazás által létrehozott összes erőforrást törölheti a költségek elkerülése érdekében:
 
-1. Válassza ki az Azure-portálon **erőforráscsoportok** bal.  
+1. Az Azure Portalon válassza az **Erőforráscsoportok** lehetőséget a bal szélen, majd a létrehozott erőforráscsoport.  
 
-   ![Az Azure-portálon a metrikák](./media/cosmos-db-delete-resource-group/delete-resources.png)
+    Ha a bal oldali menü összecsukódott, kattintson a ![Kibontás gombra](./media/cosmos-db-delete-resource-group/expand.png) a kinyitásához.
 
-2. Az erőforráscsoportok listájából válassza ki az erőforráscsoport hozott létre, és kattintson a **erőforrás csoport törlése**.
+   ![Mérőszámok az Azure Portalon](./media/cosmos-db-delete-resource-group/delete-resources-select.png)
 
-3. Írja be a nevét, törlése, és kattintson az erőforráscsoport **törlése**.
+2. Az új ablakban válassza ki az erőforráscsoportot, és kattintson az **Erőforráscsoport törlése** elemre.
+
+   ![Mérőszámok az Azure Portalon](./media/cosmos-db-delete-resource-group/delete-resources.png)   
+
+3. Az új ablakban írja be a törölni kívánt erőforráscsoport nevét, majd kattintson a **Törlés**  elemre.
 

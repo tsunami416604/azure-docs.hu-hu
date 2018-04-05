@@ -10,15 +10,15 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.date: 12/23/2017
 ms.author: tamram
-ms.openlocfilehash: 57296d828156184aa36532cd649fbec0c81b5e27
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 0e7ab68075fbce729d3905375acce0dace22c483
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="simulate-a-failure-in-accessing-read-access-redundant-storage"></a>Írásvédett redundáns tárolók elérése során fellépő hiba szimulálása
 
-Ez az oktatóanyag egy sorozat második része.  Ebben az oktatóanyagban [Fiddlert](#simulate-a-failure-with-fiddler) vagy [statikus útválasztást](#simulate-a-failure-with-an-invalid-static-route) használhat az [írásvédett georedundáns](../common/storage-redundancy.md#read-access-geo-redundant-storage) (RA-GRS) tárfiók elsődleges végpontjába érkező kérések hibájának szimulálásához, hogy az alkalmazás a másodlagos végpontból végezzen beolvasást.
+Ez az oktatóanyag egy sorozat második része.  Ebben az oktatóanyagban [Fiddlert](#simulate-a-failure-with-fiddler) vagy [statikus útválasztást](#simulate-a-failure-with-an-invalid-static-route) használhat az [írásvédett georedundáns](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) tárfiók elsődleges végpontjába érkező kérések hibájának szimulálásához, hogy az alkalmazás a másodlagos végpontból végezzen beolvasást.
 
 ![Forgatókönyv alkalmazása](media/storage-simulate-failure-ragrs-account-app/scenario.png)
 
@@ -117,7 +117,7 @@ Amikor végzett, nyomja le az **egyik billentyűt** az alkalmazás folytatásáh
 
 
 ## <a name="simulate-a-failure-with-an-invalid-static-route"></a>Hiba szimulálása érvénytelen statikus útvonallal 
-Létrehozhatja az [írásvédett georedundáns](../common/storage-redundancy.md#read-access-geo-redundant-storage) (RA-GRS) tárfiók elsődleges végpontjába érkező összes kérés egy érvénytelen statikus útvonalát. Ebben az oktatóanyagban a helyi gazdagép a tárfiókba érkező kérések útválasztására szolgáló átjáró. Ha a helyi gazdagépet használja átjáróként, a tárfiók elsődleges végpontjára érkező összes kérés visszatér a gazdagépre, ami hibához vezet. Kövesse az alábbi lépéseket, ha az érvénytelen statikus útvonal használatával szeretné a hibát szimulálni, és az elsődleges végpontot visszaállítani. 
+Létrehozhatja az [írásvédett georedundáns](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) tárfiók elsődleges végpontjába érkező összes kérés egy érvénytelen statikus útvonalát. Ebben az oktatóanyagban a helyi gazdagép a tárfiókba érkező kérések útválasztására szolgáló átjáró. Ha a helyi gazdagépet használja átjáróként, a tárfiók elsődleges végpontjára érkező összes kérés visszatér a gazdagépre, ami hibához vezet. Kövesse az alábbi lépéseket, ha az érvénytelen statikus útvonal használatával szeretné a hibát szimulálni, és az elsődleges végpontot visszaállítani. 
 
 ### <a name="start-and-pause-the-application"></a>Az alkalmazás elindítása és szüneteltetése
 

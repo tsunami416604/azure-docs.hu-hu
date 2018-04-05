@@ -1,25 +1,25 @@
 ---
-title: "Futtatási Linux virtuális gép számítási csomópontok - Azure Batch |} Microsoft Docs"
-description: "Útmutató: a Linux virtuális gépek az Azure Batch készleteinek a párhuzamos számítási feladatok feldolgozásához."
+title: Futtatási Linux virtuális gép számítási csomópontok - Azure Batch |} Microsoft Docs
+description: 'Útmutató: a Linux virtuális gépek az Azure Batch készleteinek a párhuzamos számítási feladatok feldolgozásához.'
 services: batch
 documentationcenter: python
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
+ms.tgt_pltfrm: ''
 ms.workload: na
 ms.date: 05/22/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9b2257917e2368478beb75957677de23d4157865
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a9aa896bfc4c860c87757f9379fc44cc5ee8d18a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Linux számítási csomópontok kötegelt készletek kiépítése
 
@@ -58,8 +58,8 @@ A virtuális gép Képhivatkozás konfigurálásakor adja meg a virtuálisgép-l
 A kötegelt csomópont ügynök egy olyan program, a készlet minden egyes csomópontján fut, és a parancs-és-ellenőrzés felületet, a csomópont és a Batch szolgáltatás között. Nincsenek a csomópont ügynök SKU, úgynevezett különböző operációs rendszerek különböző implementációja. Alapvetően egy virtuálisgép-konfiguráció létrehozásakor először adja meg a virtuális gép képhivatkozás, és adja a csomópont ügynök, a lemezkép telepítéséhez. Minden csomópont ügynök SKU általában több virtuálisgép-lemezkép kompatibilis. Íme néhány példa a csomópont ügynök SKU:
 
 * 14.04 Batch.node.ubuntu
-* Batch.node.centos 7
-* Batch.node.Windows amd64
+* batch.node.centos 7
+* batch.node.windows amd64
 
 > [!IMPORTANT]
 > Nem minden virtuálisgép-rendszerképek a piactéren rendelkezésre álló kompatibilisek a jelenleg rendelkezésre álló kötegben csomópontjainak ügynökeit. A kötegelt SDK-k segítségével kilistázhatja a rendelkezésre álló csomópont ügynök SKU és a virtuálisgép-lemezképeket, amelyekhez kompatibilis. Tekintse meg a [lista a virtuálisgép-rendszerképek](#list-of-virtual-machine-images) további információt és példákat a futási időben érvényes képek listájának beolvasása az ebben a cikkben később.
@@ -213,28 +213,28 @@ A következő táblázat a piactér virtuálisgép-lemezképeket, amelyek kompat
 >
 >
 
-| **Közzétevő** | **Az ajánlat** | **Kép Termékváltozat** | **Verzió** | **Csomópont ügynök SKU-azonosítója** |
+| **Közzétevő** | **Ajánlat** | **Kép Termékváltozat** | **Verzió** | **Csomópont ügynök SKU-azonosítója** |
 | ------------- | --------- | ------------- | ----------- | --------------------- |
 | Canonical | UbuntuServer | 14.04.5-LTS | legújabb | 14.04 Batch.node.ubuntu |
 | Canonical | UbuntuServer | 16.04.0-LTS | legújabb | Batch.node.ubuntu 16.04 |
 | Credativ | Debian | 8 | legújabb | 8 Batch.node.debian |
-| OpenLogic | CentOS | 7.0 | legújabb | Batch.node.centos 7 |
-| OpenLogic | CentOS | 7.1 | legújabb | Batch.node.centos 7 |
-| OpenLogic | A HPC-centOS | 7.1 | legújabb | Batch.node.centos 7 |
-| OpenLogic | CentOS | 7.2 | legújabb | Batch.node.centos 7 |
-| Oracle | Oracle Linux | 7.0 | legújabb | Batch.node.centos 7 |
-| Oracle | Oracle Linux | 7.2 | legújabb | Batch.node.centos 7 |
+| OpenLogic | CentOS | 7.0 | legújabb | batch.node.centos 7 |
+| OpenLogic | CentOS | 7.1 | legújabb | batch.node.centos 7 |
+| OpenLogic | CentOS-HPC | 7.1 | legújabb | batch.node.centos 7 |
+| OpenLogic | CentOS | 7.2 | legújabb | batch.node.centos 7 |
+| Oracle | Oracle Linux | 7.0 | legújabb | batch.node.centos 7 |
+| Oracle | Oracle Linux | 7.2 | legújabb | batch.node.centos 7 |
 | SUSE | openSUSE | 13.2 | legújabb | Batch.node.opensuse 13.2 |
-| SUSE | openSUSE-termékek | 42.1 | legújabb | Batch.node.opensuse 42.1 |
-| SUSE | SLES | 12-SP1 | legújabb | Batch.node.opensuse 42.1 |
-| SUSE | SLES HPC | 12-SP1 | legújabb | Batch.node.opensuse 42.1 |
-| Microsoft-ads | Linux-adatok-tudományos-vm | linuxdsvm | legújabb | Batch.node.centos 7 |
-| Microsoft-ads | Standard-adatok-tudományos-vm | Standard-adatok-tudományos-vm | legújabb | Batch.node.Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2008 R2 SP1 CSOMAG | legújabb | Batch.node.Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2012-Datacenter | legújabb | Batch.node.Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter | legújabb | Batch.node.Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2016-Datacenter | legújabb | Batch.node.Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2016-adatközpont-az-tárolók | legújabb | Batch.node.Windows amd64 |
+| SUSE | openSUSE-Leap | 42.1 | legújabb | batch.node.opensuse 42.1 |
+| SUSE | SLES | 12-SP1 | legújabb | batch.node.opensuse 42.1 |
+| SUSE | SLES-HPC | 12-SP1 | legújabb | batch.node.opensuse 42.1 |
+| microsoft-ads | Linux-adatok-tudományos-vm | linuxdsvm | legújabb | batch.node.centos 7 |
+| microsoft-ads | Standard-adatok-tudományos-vm | Standard-adatok-tudományos-vm | legújabb | batch.node.windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2008-R2-SP1 | legújabb | batch.node.windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2012-Datacenter | legújabb | batch.node.windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter | legújabb | batch.node.windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2016-Datacenter | legújabb | batch.node.windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2016-adatközpont-az-tárolók | legújabb | batch.node.windows amd64 |
 
 ## <a name="connect-to-linux-nodes-using-ssh"></a>Csatlakozzon SSH használt Linux-csomópontok
 A fejlesztés során, vagy a hibaelhárítás során szükség lehet arra a készlet csomópontjain bejelentkezéshez szükséges. Windows számítási csomópontokat, eltérően Remote Desktop Protocol (RDP) nem használható Linux csomópontok való kapcsolódáshoz. Ehelyett a Batch szolgáltatás lehetővé teszi, hogy a távoli kapcsolat minden egyes csomóponton SSH-elérést.
@@ -315,7 +315,7 @@ Az Azure Batch Azure felhőalapú szolgáltatásairól és az Azure virtuális g
 
 Ha a központi telepítés a Batch-csomópontokat használja [alkalmazáscsomagok](batch-application-packages.md), van is szó, az Azure Storage-erőforrások, hogy az alkalmazáscsomagok felhasználását. Általában az Azure Storage-költségeket minimálisak. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 ### <a name="batch-python-tutorial"></a>Python-útmutató a Batchhez
 Részletesebb oktatóanyag használatával kötegelt Python használatával kapcsolatban, tekintse meg [Ismerkedés az Azure Batch Python-ügyfél a](batch-python-tutorial.md). A kiegészítő [kódminta] [ github_samples_pyclient] egy segítő függvényt tartalmaz `get_vm_config_for_distro`, amely bemutatja, hogy egy másik módszer a virtuális gép konfigurációjának.
 

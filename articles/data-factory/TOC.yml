@@ -118,6 +118,8 @@
   items:
     - name: Adat-előállítók vizuális létrehozása
       href: author-visually.md
+    - name: Folyamatos integráció és üzembe helyezés
+      href: continuous-integration-deployment.md
     - name: Adatok másolása
       items:
         - name: Adatok másolása Másolási tevékenységgel

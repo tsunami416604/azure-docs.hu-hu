@@ -1,6 +1,6 @@
 ---
-title: "Java webalkalmazás elemzése az Azure Application Insights használatával | Microsoft Docs"
-description: "Alkalmazásteljesítmény-figyelés Java-webalkalmazásokhoz az Application Insights használatával. "
+title: Java webalkalmazás elemzése az Azure Application Insights használatával | Microsoft Docs
+description: 'Alkalmazásteljesítmény-figyelés Java-webalkalmazásokhoz az Application Insights használatával. '
 services: application-insights
 documentationcenter: java
 author: harelbr
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 1ec845a6491b406c1aef34609b155a9c3d087427
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 227ca3533c7a06b726c758be931df8ec0314e90f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Ismerkedés az Application Insights szolgáltatással Java webes projektben
 
@@ -30,7 +30,7 @@ Az Application Insights a Linux, Unix vagy Windows rendszeren futó Java alkalma
 
 A következők szükségesek:
 
-* Oracle JRE 1.6 vagy újabb, vagy Zulu JRE 1.6 vagy újabb
+* Az Oracle vagy a Zulu JRE 1.7-es vagy 1.8-as verziója
 * Egy [Microsoft Azure](https://azure.microsoft.com/)-előfizetés.
 
 *Ha már élő webalkalmazása van, az alternatív eljárást követve [hozzáadhatja az SDK-t a futásidőben a webkiszolgálón](app-insights-java-live.md). Ezzel az alternatívával nem kell újraépítenie a kódot, de nem tud kódot írni a felhasználói tevékenységek követése érdekében.*
@@ -169,8 +169,7 @@ Az Application Insights SDK ebben a sorrendben keresi a kulcsot:
 [Beállíthatja a programkódban](app-insights-api-custom-events-metrics.md#ikey) is:
 
 ```Java
-
-    telemetryClient.InstrumentationKey = "...";
+    TelemetryConfiguration.getActive().setInstrumentationKey(iKey);
 ```
 
 ## <a name="4-add-an-http-filter"></a>4. HTTP-szűrő hozzáadása

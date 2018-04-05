@@ -1,11 +1,11 @@
 ---
-title: "Rögzítsen egy rendszerképet a Linux virtuális gépek az Azure-ban a parancssori felület 2.0 |} Microsoft Docs"
-description: "Rögzítsen egy rendszerképet az Azure virtuális gép tömeges üzembe helyezése az Azure CLI 2.0 használandó."
+title: Rögzítsen egy rendszerképet a Linux virtuális gépek az Azure-ban a parancssori felület 2.0 |} Microsoft Docs
+description: Rögzítsen egy rendszerképet az Azure virtuális gép tömeges üzembe helyezése az Azure CLI 2.0 használandó.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: e608116f-f478-41be-b787-c2ad91b5a802
 ms.service: virtual-machines-linux
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 08/22/2018
 ms.author: cynthn
-ms.openlocfilehash: 15ad240ea9b635cd7995bfae403a93e0b392850a
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
-ms.translationtype: MT
+ms.openlocfilehash: e83319b8b4ace495a4301dd850cea27633115426
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Egy képet egy virtuális géphez vagy virtuális merevlemez létrehozása
 
@@ -89,6 +89,8 @@ Az Azure CLI 2.0 segítségével a virtuális gép megjelölése általánosítv
    
    > [!NOTE]
    > A kép mint a forrás virtuális gép ugyanabban az erőforráscsoportban jön létre. Bármely erőforráscsoport virtuális gépeket hozhat létre a lemezképből az előfizetésen belül. Felügyeleti szempontból Kezdésként hozzon létre egy adott erőforráscsoportot a Virtuálisgép-erőforrások és a képeket.
+   >
+   > Ha szeretné a zóna rugalmas tárolás tárolják, egy régióban található, amely támogatja a létrehozásához szükséges [rendelkezésre állási zónák](../../availability-zones/az-overview.md) , és tartalmazzák a `--zone-resilient true` paraméter.
 
 ## <a name="step-3-create-a-vm-from-the-captured-image"></a>3. lépés: Virtuális gép létrehozása a rögzített lemezképből
 A lemezkép segítségével létrehozott virtuális gép létrehozása [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create). Az alábbi példakód létrehozza a virtuális gépek nevű *myVMDeployed* nevű lemezkép alapján *myImage*:

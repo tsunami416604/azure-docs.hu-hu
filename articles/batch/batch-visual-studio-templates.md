@@ -1,25 +1,25 @@
 ---
-title: "Indítsa el a Visual Studio projektsablonjai - Azure Batch megoldások készítésével |} Microsoft Docs"
-description: "Ismerje meg, hogyan Visual Studio projektsablonjai segítségével valósítja meg, és futtassa a számítási-igényes munkaterhelések Azure Batch."
+title: A Visual Studio sablonokkal - Azure Batch megoldások |} Microsoft Docs
+description: Ismerje meg, hogyan Visual Studio projektsablonjai segítségével valósítja meg, és futtassa a számítási-igényes munkaterhelések Azure Batch.
 services: batch
 documentationcenter: .net
-author: fayora
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 5e041ae2-25af-4882-a79e-3aa63c4bfb20
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: da77ce827c65deb18d9d84ce5cf768d89788e205
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5241c62e8b423b20477fc72c87303daf3d4ab43c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Visual Studio projektsablonjai segítségével jump-start kötegelt megoldások
 
@@ -434,7 +434,7 @@ Parameters.JSON, és ha úgy találta, a paraméterek szótár betölti azt. Tö
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 ### <a name="persist-job-and-task-output-to-azure-storage"></a>Feladat- és kimeneti Azure Storage megőrzése
 Egy másik hasznos eszköz a kötegelt megoldás fejlesztési [Azure Batch fájl egyezmények][nuget_package]. A .NET osztálykönyvtár (jelenleg előzetes verzió) az Ön Batch .NET-alkalmazások segítségével könnyen tárolja, és Azure Storage érkező vagy oda irányuló feladat kimenetének beolvasása. [Azure Batch feladat- és kimeneti megőrzéséhez](batch-task-output.md) a szalagtár és a használati ismertetését tartalmazza.
 

@@ -1,6 +1,6 @@
 ---
-title: "Bevezetés az Azure Application Gateway webalkalmazási tűzfalának (WAF) használatába | Microsoft Docs"
-description: "Ez az oldal áttekintést nyújt az Application Gateway webalkalmazási tűzfalának (WAF) működéséről"
+title: Bevezetés az Azure Application Gateway webalkalmazási tűzfalának (WAF) használatába | Microsoft Docs
+description: Ez az oldal áttekintést nyújt az Application Gateway webalkalmazási tűzfalának (WAF) működéséről
 documentationcenter: na
 services: application-gateway
 author: amsriva
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: amsriva
-ms.openlocfilehash: 50863b60f2843f033bdb07f4564d937cd6f0b7be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d3945436a369f624ccb1d862b9623b8cfb1ed376
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="web-application-firewall-waf"></a>Webalkalmazási tűzfal (WAF)
 
@@ -44,7 +44,7 @@ Az alábbiak az Application Gateway és a webalkalmazási tűzfal használatána
 
 * Valós idejű WAF-naplók segítségével követheti nyomon a webalkalmazást fenyegető támadásokat. A WAF-riasztások és -naplók nyomon követése, illetve a tendenciák kimutatása érdekében ezek a naplók integrálva vannak az [Azure Monitorral](../monitoring-and-diagnostics/monitoring-overview.md).
 
-* A WAF hamarosan az Azure Security Centerrel is integrálva lesz. Az Azure Security Center egyetlen központi helyen jeleníti meg minden Azure-erőforrás biztonsági állapotát.
+* A WAF integrálható az Azure Security Centerrel. Az Azure Security Center egyetlen központi helyen jeleníti meg minden Azure-erőforrás biztonsági állapotát.
 
 ### <a name="customization"></a>Testreszabás
 
@@ -114,7 +114,7 @@ Az Application Gateway WAF az alábbi két üzemmódban való futtatásra konfig
 
 ### <a name="application-gateway-waf-reports"></a>WAF-figyelés
 
-Fontos az alkalmazásátjáró állapotának folyamatos figyelése. A webalkalmazási tűzfal és az általa védett alkalmazások állapotát az Azure Monitorral, az Azure Security Centerrel (hamarosan elérhető) és a Log Analytics naplózási és integrációs szolgáltatásaival figyelheti meg.
+Fontos az alkalmazásátjáró állapotának folyamatos figyelése. A webalkalmazás-tűzfal és az általa védett alkalmazások állapotát az Azure Monitorral, az Azure Security Centerrel és a Log Analytics naplózási és integrációs szolgáltatásaival monitorozhatja.
 
 ![diagnosztika](./media/application-gateway-web-application-firewall-overview/diagnostics.png)
 
@@ -124,7 +124,7 @@ Az Application Gateway-naplók integrálva vannak az [Azure Monitorral](../monit
 
 #### <a name="azure-security-center"></a>Azure Security Center
 
-[Az Azure Security Center](../security-center/security-center-intro.md) az Azure-erőforrások biztonsági felügyeletének átláthatóbbá és szabályozhatóbbá tételével megkönnyíti a fenyegetések megelőzését, észlelését és elhárítását. Az alkalmazásátjáró most már [integrálható az Azure Security Centerbe](application-gateway-integration-security-center.md). Az Azure Security Center átvizsgálja a környezetet védelem nélküli webalkalmazásokat keresve. Ezek után javasolhatja az alkalmazásátjáró WAF-nak a sebezhető erőforrások védelmét. Közvetlenül létrehozhat alkalmazásátjáró WAF-ot az Azure Security Centerből.  Ezek a WAF-példányok az Azure Security Centerbe integrálódnak, és a jelentésekhez használható riasztásokat, valamint állapotinformációkat fognak visszaküldeni az Azure Security Centerbe.
+[Az Azure Security Center](../security-center/security-center-intro.md) az Azure-erőforrások biztonsági felügyeletének átláthatóbbá és szabályozhatóbbá tételével megkönnyíti a fenyegetések megelőzését, észlelését és elhárítását. Az alkalmazásátjáró [integrálható az Azure Security Centerrel](application-gateway-integration-security-center.md). Az Azure Security Center átvizsgálja a környezetet védelem nélküli webalkalmazásokat keresve. Ezek után javasolhatja az alkalmazásátjáró WAF-nak a sebezhető erőforrások védelmét. Közvetlenül létrehozhat alkalmazásátjáró WAF-ot az Azure Security Centerből.  Ezek a WAF-példányok az Azure Security Centerbe integrálódnak, és a jelentésekhez használható riasztásokat, valamint állapotinformációkat fognak visszaküldeni az Azure Security Centerbe.
 
 ![1. ábra](./media/application-gateway-web-application-firewall-overview/figure1.png)
 
@@ -168,7 +168,7 @@ A webalkalmazási tűzfal az új WAF termékváltozatban érhető el. Ez a term�
 
 A WAF számlázási időszaka 2017. május 5-től indul, addig a WAF termékváltozathoz tartozó átjárók esetében is a normál díjszabás lesz érvényben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután részletesebben megismerkedett a WAF képességeivel, tekintse meg a [webalkalmazási tűzfal Application Gatewayen történő konfigurálását](application-gateway-web-application-firewall-portal.md) ismertető cikket.
 

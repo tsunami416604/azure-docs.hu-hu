@@ -1,24 +1,24 @@
 ---
-title: "Azure Batch-készlet törlése befejeződésének eseményét. |} Microsoft Docs"
-description: "Útmutató a Batch-készlet törlése befejeződésének eseményét."
+title: Azure Batch-készlet törlése befejeződésének eseményét. |} Microsoft Docs
+description: Útmutató a Batch-készlet törlése befejeződésének eseményét.
 services: batch
-author: tamram
-manager: timlt
-ms.assetid: 
+author: dlepow
+manager: jeconnoc
+ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: tamram
-ms.openlocfilehash: 890f2ba7fda37060c56177868d6214d517d91831
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: danlep
+ms.openlocfilehash: bfcbcf40efc64ab1c79ee1a86e02502c68ad6d47
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="pool-delete-complete-event"></a>Készlet törlés befejeződésének eseményét.
+# <a name="pool-delete-complete-event"></a>Készlet törlése kész esemény
 
  Ez az esemény is ki lesz adva a készlet törlési művelet befejeződésekor.
 
@@ -35,8 +35,8 @@ ms.lasthandoff: 10/11/2017
 |Elem|Típus|Megjegyzések|
 |-------------|----------|-----------|
 |id|Karakterlánc|A készlet azonosítóját.|
-|startTime|Dátum és idő|A készlet törlése indulásakor.|
-|endTime|Dátum és idő|Az az idő a készlet törlése befejeződött.|
+|startTime|DateTime|A készlet törlése indulásakor.|
+|endTime|DateTime|Az az idő a készlet törlése befejeződött.|
 
 ## <a name="remarks"></a>Megjegyzések
 Állapotok és hibakódok készlet átméretezés kapcsolatos további információkért lásd: [címkészlet törlése fiókból](https://docs.microsoft.com/rest/api/batchservice/delete-a-pool-from-an-account).

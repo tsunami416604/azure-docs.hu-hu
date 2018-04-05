@@ -1,6 +1,6 @@
 ---
-title: "Azure-tárolót példányok hibaelhárítása"
-description: "Ismerje meg az Azure-tároló példányaival kapcsolatos problémák elhárítása"
+title: Azure-tárolót példányok hibaelhárítása
+description: Ismerje meg az Azure-tároló példányaival kapcsolatos problémák elhárítása
 services: container-instances
 author: seanmck
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 03/14/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: a527939d6bc73e3dee5701bc53ef8312e68d2953
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ac7ddbccdef736bce941716883cf821a0f5c1f34
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="troubleshoot-deployment-issues-with-azure-container-instances"></a>Azure-tároló példányaival telepítési problémák elhárításához
+# <a name="troubleshoot-container-and-deployment-issues-in-azure-container-instances"></a>Azure-tároló példányát tároló és a telepítési problémák elhárításához
 
 Ez a cikk bemutatja, hogyan kapcsolatos problémák elhárítása az Azure-tároló példányokhoz tárolók telepítése során. Ismerteti az egyes a gyakori problémákat mutatjuk be.
 
@@ -51,7 +51,7 @@ Traceback (most recent call last):
 urllib.error.HTTPError: HTTP Error 404: Not Found
 ```
 
-### <a name="attach-output-streams"></a>Kimeneti folyamok csatolása
+### <a name="attach-output-streams"></a>Kimeneti stream csatolása
 
 A [az tároló csatlakoztatása] [ az-container-attach] parancs tároló indításakor diagnosztikai információkat nyújt. Miután elindult a tárolóhoz, akkor az adatfolyamokat, STDOUT és az STDERR helyi konzolra.
 

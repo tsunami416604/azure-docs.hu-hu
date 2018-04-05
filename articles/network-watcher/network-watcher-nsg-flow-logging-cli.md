@@ -1,11 +1,11 @@
 ---
-title: "Hálózati biztonsági csoport Flow naplók Azure hálózati figyelőt - Azure CLI és kezelése |} Microsoft Docs"
-description: "Ezen a lapon ismerteti, hogyan kezelheti a hálózati biztonsági csoport Flow-naplók az Azure CLI Azure hálózati figyelőt"
+title: Hálózati biztonsági csoport Flow naplók Azure hálózati figyelőt - Azure CLI és kezelése |} Microsoft Docs
+description: Ezen a lapon ismerteti, hogyan kezelheti a hálózati biztonsági csoport Flow-naplók az Azure CLI Azure hálózati figyelőt
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 2dfc3112-8294-4357-b2f8-f81840da67d3
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 51683e937b7985bb61671645f3e2e1be6d786201
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: b8c2ff527328fe5f486362db416a99a1c711c9c2
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="configuring-network-security-group-flow-logs-with-azure-cli"></a>Hálózati biztonsági csoport Flow naplók konfigurálása az Azure parancssori felület
 
@@ -51,6 +51,8 @@ A parancsot a folyamat naplók engedélyezéséhez az alábbi példában láthat
 az network watcher flow-log configure --resource-group resourceGroupName --enabled true --nsg nsgName --storage-account storageAccountName
 ```
 
+A storage-fiók, melyet nem lehet a hálózati hozzáférés korlátozása csak a Microsoft-szolgáltatások vagy az adott virtuális hálózatok beállított hálózati szabályokat.
+
 ## <a name="disable-network-security-group-flow-logs"></a>Tiltsa le a hálózati biztonsági csoport folyamata naplók
 
 Az alábbi példa használatával tiltsa le a naplók folyamata:
@@ -61,7 +63,7 @@ az network watcher flow-log configure --resource-group resourceGroupName --enabl
 
 ## <a name="download-a-flow-log"></a>A folyamat napló letöltése
 
-A folyamat napló tárolási helye a létrehozásakor van definiálva. A folyamat naplók tárfiókba menti eléréséhez eszköz a Microsoft Azure Tártallózó, amely innen tölthető le: http://storageexplorer.com/
+A folyamat napló tárolási helye a létrehozásakor van definiálva. A folyamat naplók tárfiókba menti eléréséhez eszköz a Microsoft Azure Tártallózó, amely innen tölthető le:  http://storageexplorer.com/
 
 Ha egy tárfiókot meg van adva, csomag rögzítési fájlok kerülnek a storage-fiókok a következő helyen:
 

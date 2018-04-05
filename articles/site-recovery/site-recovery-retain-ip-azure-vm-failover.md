@@ -1,12 +1,12 @@
 ---
-title: "Egy másik Azure-régió, az Azure virtuális gépek feladatátvétele IP-címek megtartására |} Microsoft Docs"
-description: "Ismerteti, hogyan szeretné megőrizni az IP-címek az Azure Site Recovery Azure az Azure-bA feladatátvételi forgatókönyvek"
+title: Egy másik Azure-régió, az Azure virtuális gépek feladatátvétele IP-címek megtartására |} Microsoft Docs
+description: Ismerteti, hogyan szeretné megőrizni az IP-címek az Azure Site Recovery Azure az Azure-bA feladatátvételi forgatókönyvek
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: mayanknayar
 manager: rochakm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2018
 ms.author: manayar
-ms.openlocfilehash: 15f87ba87d90cee765f52d3188796bc1ff7b8a35
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 8e128e057e45f6966067ebaaf039d9b14349d926
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="ip-address-retention-for-azure-virtual-machine-failover"></a>Azure virtuális gép feladatátvételi IP-cím megőrzési
 
@@ -84,11 +84,7 @@ A fenti elkülönített feladatátvételi példa bővíthető további alkalmaz�
 
 ### <a name="further-considerations"></a>További szempontok
 
-VPN-átjárók használata a nyilvános IP-címek és az átjáró ugrások kapcsolatok létrehozásához. Ha nem szeretné, hogy a nyilvános IP-címet használ, és/vagy el szeretné kerülni az extra ugrások, használhatja globális Vnetben társviszony-létesítés virtuális hálózatok egyenrangú Azure-régiók között.
-
-Ez a funkció jelenleg nyilvános előzetes verziójában, és további támogatási régiók bővíteni – közvetlen VM-VM kapcsolat nélkül bármely nyilvános internet beavatkozás vagy bármely extra ugrások engedélyezése.
-
-További információkért tekintse meg a [társviszony-létesítési dokumentáció](../virtual-network/tutorial-connect-virtual-networks-portal.md#register) és [árképzési](https://azure.microsoft.com/pricing/details/virtual-network/).
+VPN-átjárók használata a nyilvános IP-címek és az átjáró ugrások kapcsolatok létrehozásához. Ha nem szeretné, hogy a nyilvános IP-címet használ, és/vagy el szeretné kerülni az extra ugrások, használhatja az Azure [virtuális hálózati társviszony-létesítés](../virtual-network/virtual-network-peering-overview.md) virtuális hálózatok közötti egyenrangú [támogatott Azure-régiók](../virtual-network/virtual-network-manage-peering.md#cross-region).
 
 ## <a name="on-premises-to-azure-connectivity"></a>A helyszíni-az-Azure-kapcsolat
 

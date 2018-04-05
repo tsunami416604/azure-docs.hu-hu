@@ -1,11 +1,10 @@
 ---
-title: "Az Azure Data Factory 1. és 2. verziójának összehasonlítása | Microsoft Docs"
-description: "Ez a cikk az Azure Data Factory V1 verzióját hasonlítja össze az Azure Data Factory V2 verziójával."
+title: Az Azure Data Factory 1. és 2. verziójának összehasonlítása | Microsoft Docs
+description: Ez a cikk az Azure Data Factory V1 verzióját hasonlítja össze az Azure Data Factory V2 verziójával.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: kromerm
-manager: jhubbard
-editor: spelluru
+manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/24/2018
 ms.author: makromer
-ms.openlocfilehash: 673bc4e0d1609e445e3d18e7cf516ad532be4bc2
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 9aed1e903b5af3e5bcf53987ba80c1dcdb06f202
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="compare-azure-data-factory-v1-and-v2"></a>Az Azure Data Factory V1 és V2 verziójának összehasonlítása
 Ez a cikk az Azure Data Factory V2 és V1 verzióját hasonlítja össze. Ha szeretné megismerni a V1 verziót, tekintse meg [Az Azure Data Factory bemutatását](v1/data-factory-introduction.md). Ha szeretné megismerni a V2 verziót, tekintse meg [A Data Factory bemutatását (V2 – előzetes verzió)](introduction.md).
@@ -112,7 +111,7 @@ A V1-ben úgy valósíthat meg (egyéni) DotNet tevékenységi kódokat, hogy l�
 
 A V2 egyéni tevékenységei esetében nem kell .NET felületet megvalósítani. Közvetlenül futtathat parancsokat és szkripteket, valamint végrehajtható fájlként összesítheti egyéni kódjait. 
 
-További információ: [Az egyéni tevékenységek közötti különbségek a V1-ben és a V2-ben](transform-data-using-dotnet-custom-activity.md#difference-between-custom-activity-in-azure-data-factory-v2-and-custom-dotnet-activity-in-azure-data-factory-v1).
+További információ: [Az egyéni tevékenységek közötti különbségek a V1-ben és a V2-ben](transform-data-using-dotnet-custom-activity.md#compare-v2-v1).
 
 ## <a name="sdks"></a>SDK-k
  A Data Factory V2 verziója az SDK-k szélesebb választékát biztosítja, amelyeket folyamatok létrehozásához, kezeléséhez és monitorozásához használhat.
@@ -138,6 +137,13 @@ A V2-ben frissített SDK-k visszamenőlegesen nem kompatibilisek a V1 verzió ü
 | Python SDK | [Igen](quickstart-create-data-factory-python.md) | Nem |
 | Resource Manager-sablon | [Igen](quickstart-create-data-factory-resource-manager-template.md) | [Igen](data-factory-build-your-first-pipeline-using-arm.md) | 
 
+## <a name="roles-and-permissions"></a>Szerepkörök és engedélyek
+
+2-es verziójú Data Factory gyermekerőforrásainak létrehozása és kezelése:
+
+-   Az 1-es verziójú Data Factory közreműködői szerepkörével nem lehet 2-es verziójú erőforrásokat létrehozni és kezelni.
+-   A Data Factory-erőforráson létrehozott normál ARM-közreműködői szerepkör használható egy PowerShell-lel vagy SDK-kkal üzembe helyezett, 2-es verziójú Data Factory gyermekerőforrásainak létrehozásához és kezeléséhez. Ez a szerepkör azonban nem használható az Azure Portalról vagy ARM-sablonalapú telepítéssel üzembe helyezett, 2-es verziójú Data Factory gyermekerőforrásainak létrehozásához és kezeléséhez.
+-   Az Azure Portalról vagy ARM-sablonalapú telepítéssel üzembe helyezett, 2-es verziójú Data Factory gyermekerőforrásainak létrehozásához és kezeléséhez az „Automation-feladat operátor” szerepkör tagjának kell lennie az erőforráscsoport vagy az előfizetés szintjén. A vállalat létrehozhat egy egyéni szerepkört is, amelynek „Műveletek” listája tartalmazza a „Microsoft.Resources/deployments/*” elemet az [egyéni szerepkörök az Azure szerepköralapú hozzáférés-vezérléséhez való létrehozását](../active-directory/role-based-access-control-custom-roles.md) ismertető cikkben leírtak szerint.
 
 ## <a name="monitoring-experience"></a>Monitorozási feladatok
 A V2-ben a data factorykat az [Azure Monitor](monitor-using-azure-monitor.md) segítségével is monitorozhatja. Az új PowerShell-parancsmagok támogatják az [integrációs modulok](monitor-integration-runtime.md) monitorozását. A V1 és a V2 is támogatja a vizuális monitorozást egy monitorozási alkalmazáson keresztül, amely az Azure Portalról indítható el.

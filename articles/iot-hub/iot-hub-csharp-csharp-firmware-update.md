@@ -1,12 +1,12 @@
 ---
-title: "Eszköz belső vezérlőprogram frissítési Azure IoT Hub (.NET/.NET) |} Microsoft Docs"
-description: "Hogyan használható az eszközkezelés Azure IoT hub eszköz vezérlőprogram-frissítés kezdeményezése. Az Azure IoT-eszközök a .NET SDK használatával valósítja meg a szimulált eszköz alkalmazások és az Azure IoT szolgáltatás SDK for .NET egy service-alkalmazást, amely elindítja a belső vezérlőprogram-frissítés végrehajtásához."
+title: Eszköz belső vezérlőprogram frissítési Azure IoT Hub (.NET/.NET) |} Microsoft Docs
+description: Hogyan használható az eszközkezelés Azure IoT hub eszköz vezérlőprogram-frissítés kezdeményezése. Az Azure IoT-eszközök a .NET SDK használatával valósítja meg a szimulált eszköz alkalmazások és az Azure IoT szolgáltatás SDK for .NET egy service-alkalmazást, amely elindítja a belső vezérlőprogram-frissítés végrehajtásához.
 services: iot-hub
 documentationcenter: .net
 author: JimacoMS2
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
@@ -14,17 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/19/2017
 ms.author: v-jamebr
-ms.openlocfilehash: bd0a227861d75dc66af8fb4865a17a3b6d0f70ba
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
-ms.translationtype: MT
+ms.openlocfilehash: 984fd7516b5c05973c45891f4eda31c41a5a2be5
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-device-management-to-initiate-a-device-firmware-update-netnet"></a>Egy eszköz belső vezérlőprogram-frissítés (.NET/.NET) kezdeményezésére történő Eszközkezelés használata
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
 
 ## <a name="introduction"></a>Bevezetés
 Az a [Ismerkedés az eszközkezelés] [ lnk-dm-getstarted] oktatóanyag, megtudhatta, hogyan használható a [eszköz iker] [ lnk-devtwin] és [közvetlen módszerek ] [ lnk-c2dmethod] primitívek távolról az eszköz újraindítását. Ez az oktatóanyag az ugyanazon az IoT-központ primitívek használ, és bemutatja, hogyan hajtsa végre egy végpontok közötti szimulált belső vezérlőprogram-frissítés.  A belső vezérlőprogram frissítési implementációja szerepel ebben a mintában a [málna Pi eszköz megvalósítási minta][lnk-rpi-implementation].
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Ez az oktatóanyag a következőket mutatja be:
 
@@ -75,7 +77,7 @@ Ebben a szakaszban egy .NET-Konzolalkalmazás (használatával C#), amely indít
     static string targetDevice = "{deviceIdForTargetDevice}";
     ```
         
-6. Adja hozzá a következő metódust a **Program** osztály. Ez a módszer kérdezze le a frissített állapota az eszköz a két minden 500 ezredmásodpercben. Ír a konzol csak akkor, ha az állapot ténylegesen változott. Leállítja az ebben a példában az előfizetéséhez, a felesleges IoT-központ üzenetek fel megelőzése érdekében lekérdezési, amikor az eszköz jelzi a **applyComplete** vagy hiba történt.  
+6. Adja hozzá a **Program** osztályhoz a következő metódust. Ez a módszer kérdezze le a frissített állapota az eszköz a két minden 500 ezredmásodpercben. Ír a konzol csak akkor, ha az állapot ténylegesen változott. Leállítja az ebben a példában az előfizetéséhez, a felesleges IoT-központ üzenetek fel megelőzése érdekében lekérdezési, amikor az eszköz jelzi a **applyComplete** vagy hiba történt.  
    
     ```csharp   
     public static async Task QueryTwinFWUpdateReported(DateTime startTime)
@@ -134,7 +136,7 @@ Ebben a szakaszban egy .NET-Konzolalkalmazás (használatával C#), amely indít
     Console.ReadLine();
     ```
         
-9. A megoldás felépítéséhez.
+9. Hozza létre a megoldást.
 
 ## <a name="create-a-simulated-device-app"></a>Szimulált eszközalkalmazás létrehozása
 Ebben a szakaszban:
@@ -371,7 +373,7 @@ Ebben a szakaszban:
     }
     ```
         
-15. A megoldás felépítéséhez.       
+15. Hozza létre a megoldást.       
 
 > [!NOTE]
 > Az egyszerűség kedvéért ez az oktatóanyag nem valósít meg semmilyen újrapróbálkozási házirendet. Az éles kódban újrapróbálkozási házirendeket is meg kell valósítania (például egy exponenciális leállítást) a [tranziens hibakezelést][lnk-transient-faults] ismertető MSDN-cikkben leírtak szerint.
@@ -386,7 +388,7 @@ Most már készen áll az alkalmazások futtatására.
     ![Szolgáltatás és az eszköz alkalmazás futtatása][img-combinedrun]
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag elindítása egy távoli belső vezérlőprogram frissítése egy eszközön a közvetlen módszer használatával, és a jelentésben szereplő tulajdonságok segítségével nyomon követheti a belső vezérlőprogram frissítése.
 
 Megtudhatja, hogyan terjeszthető ki az IoT-megoldás és az ütemezések metódushívások több eszközön, tekintse meg a [ütemezés és a szórásos feladatok] [ lnk-tutorial-jobs] oktatóanyag.

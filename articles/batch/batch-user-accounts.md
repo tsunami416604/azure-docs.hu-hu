@@ -1,24 +1,24 @@
 ---
-title: "A felhasználói fiókok feladatok futtatása az Azure Batch |} Microsoft Docs"
-description: "Feladatok futtatása az Azure Batch felhasználói fiókok konfigurálása"
+title: A felhasználói fiókok feladatok futtatása az Azure Batch |} Microsoft Docs
+description: Feladatok futtatása az Azure Batch felhasználói fiókok konfigurálása
 services: batch
-author: tamram
-manager: timlt
-editor: 
-tags: 
-ms.assetid: 
+author: dlepow
+manager: jeconnoc
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 05/22/2017
-ms.author: tamram
-ms.openlocfilehash: d408c0565c0ed81fc97cc2b3976a4fc233e31302
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: danlep
+ms.openlocfilehash: 1b9c0514e93fa89f8776d830ef242fc4963a6f7b
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Kötegelt a felhasználói fiókok feladatok futtatása
 
@@ -312,7 +312,7 @@ A Batch szolgáltatás 2017-01-01.4.0 tartalmazza az használhatatlanná tévő 
 |---------------------------------------|------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.RunElevated = true;`       | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.Admin));`    |
 | `CloudTask.RunElevated = false;`      | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.NonAdmin));` |
-| `CloudTask.RunElevated`Nincs megadva | Nincs frissítés szükséges                                                                                               |
+| `CloudTask.RunElevated` Nincs megadva | Nincs frissítés szükséges                                                                                               |
 
 ### <a name="batch-java"></a>Kötegelt Java
 
@@ -320,7 +320,7 @@ A Batch szolgáltatás 2017-01-01.4.0 tartalmazza az használhatatlanná tévő 
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.withRunElevated(true);`        | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.ADMIN));`    |
 | `CloudTask.withRunElevated(false);`       | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.NONADMIN));` |
-| `CloudTask.withRunElevated`Nincs megadva | Nincs frissítés szükséges                                                                                                                     |
+| `CloudTask.withRunElevated` Nincs megadva | Nincs frissítés szükséges                                                                                                                     |
 
 ### <a name="batch-python"></a>Batch Python
 
@@ -328,10 +328,10 @@ A Batch szolgáltatás 2017-01-01.4.0 tartalmazza az használhatatlanná tévő 
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `run_elevated=True`                       | `user_identity=user`, ahol <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.admin)) `                |
 | `run_elevated=False`                      | `user_identity=user`, ahol <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.nonadmin)) `             |
-| `run_elevated`Nincs megadva | Nincs frissítés szükséges                                                                                                                                  |
+| `run_elevated` Nincs megadva | Nincs frissítés szükséges                                                                                                                                  |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 ### <a name="batch-forum"></a>Batch fórum
 

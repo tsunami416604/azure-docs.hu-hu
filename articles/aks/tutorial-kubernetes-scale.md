@@ -1,6 +1,6 @@
 ---
-title: "Azure-on futó Kubernetes oktatóanyag – Alkalmazások skálázása"
-description: "AKS-oktatóanyag – Alkalmazások skálázása"
+title: Azure-on futó Kubernetes oktatóanyag – Alkalmazások skálázása
+description: AKS-oktatóanyag – Alkalmazások skálázása
 services: container-service
 author: dlepow
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 556f4bfb204504de55c41da9615e61d5a88c75b2
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 5e35be84df53386398deaca19d60d4a93f53e541
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="scale-application-in-azure-container-service-aks"></a>Alkalmazások skálázása az Azure Container Service (AKS) szolgáltatásban
+# <a name="tutorial-scale-application-in-azure-container-service-aks"></a>Oktatóanyag: Alkalmazások skálázása az Azure Container Service (AKS) szolgáltatásban
 
 Ha eddig követte az oktatóanyagokat, rendelkezik egy működő Kubernetes-fürttel az AKS-ben, és üzembe helyezte az Azure-szavazóalkalmazást.
 
@@ -26,7 +26,7 @@ Ebben az oktatóanyagban, amely egy nyolcrészes sorozat ötödik része, horizo
 > * Kubernetes-podok manuális méretezése
 > * Az alkalmazás előtérrendszerét futtató podok automatikus méretezésének konfigurálása
 
-Az ezt követő oktatóanyagokban frissítjük majd az Azure Vote alkalmazást, és az Operations Management Suite szolgáltatást konfiguráljuk a Kubernetes fürt monitorozására.
+Az ezt követő oktatóanyagokban frissítjük az Azure Vote alkalmazást, és a Log Analyticst a Kubernetes-fürt monitorozására konfiguráljuk.
 
 ## <a name="before-you-begin"></a>Előkészületek
 

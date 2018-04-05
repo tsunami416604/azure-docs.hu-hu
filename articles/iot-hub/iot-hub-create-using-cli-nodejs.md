@@ -1,24 +1,24 @@
 ---
-title: "Létrehoz egy IoT-központot Azure CLI-vel (azure.js) |} Microsoft Docs"
-description: "Tudnivalók az Azure IoT-központ a platformok közötti Azure parancssori felület (azure.js) használatával."
+title: Létrehoz egy IoT-központot Azure CLI-vel (azure.js) |} Microsoft Docs
+description: Tudnivalók az Azure IoT-központ a platformok közötti Azure parancssori felület (azure.js) használatával.
 services: iot-hub
 documentationcenter: .net
-author: BeatriceOltean
+author: kgremban
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 46a17831-650c-41d9-b228-445c5bb423d3
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/04/2017
-ms.author: boltean
-ms.openlocfilehash: 7ad0efeeacbdb5dd0185c6336e9bf0e4d7937c99
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.date: 04/01/2018
+ms.author: kgremban
+ms.openlocfilehash: 7e761ba66f4b28dd7cc59dc8998c23810dd2b7d1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>Létrehoz egy IoT-központot, az Azure parancssori felület használatával
 
@@ -90,8 +90,8 @@ azure iothub create -g <resource-group> -n <name> -l <location> -s <sku-name> -u
 * **resource-group**. Az erőforráscsoport neve. A kis-és nagybetűket alfanumerikus, aláhúzásjelet, és kötőjelet tartalmazhat, 1-64 hossza érvénytelen.
 * **Név** Az IoT hub létrehozni neve. A kis-és nagybetűket formátuma alfanumerikus és kötőjelet tartalmazhat, 3 – 50 hossza.
 * **Hely**. A hely (azure régió/adatközpont) az IoT-központ telepítéséhez.
-* **Termékváltozat**. A termékváltozat, egyik neve: [F1, S1, S2, S3]. A legújabb teljes listája tekintse meg a tarifákat tartalmazó oldalt az IoT-központot.
-* **egységek**. A kiépített egységek száma. Tartományon: [1-1] F1: S1, S2 [1-200]: [1 – 10] S3. IoT Hub-egységek az összes üzenet számán és a, amelyhez csatlakozni eszközök számán alapulnak.
+* **Termékváltozat**. A termékváltozat, egyik neve: [F1, S1, S2, S3]. Minden egyes sku kapcsolatos részletekért lásd: [Azure IoT Hub árképzési](https://azure.microsoft.com/pricing/details/iot-hub/). Alapszintű rétegek jelenleg csak a portálon keresztül érhető el. 
+* **egységek**. A kiépített egységek száma. Egység-korlátok, lásd: [Azure IoT Hub árképzési](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 

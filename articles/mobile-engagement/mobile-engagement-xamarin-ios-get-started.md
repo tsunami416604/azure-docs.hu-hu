@@ -1,11 +1,11 @@
 ---
-title: "Ismerkedés az Azure Mobile Engagement Xamarin.iOS-alkalmazásokkal való használatával"
-description: "Ismerje meg, hogyan használható az Azure Mobile Engagement a Xamarin.iOS-alkalmazásokhoz kapcsolódó elemzésekkel és leküldéses értesítésekkel."
+title: Ismerkedés az Azure Mobile Engagement Xamarin.iOS-alkalmazásokkal való használatával
+description: Ismerje meg, hogyan használható az Azure Mobile Engagement a Xamarin.iOS-alkalmazásokhoz kapcsolódó elemzésekkel és leküldéses értesítésekkel.
 services: mobile-engagement
 documentationcenter: xamarin
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 0448209e-fff6-47bd-985c-2cf074bac12f
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 9938c3e994acf31244825b1afb347f8c9f90ebe3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 78ba376eb4552468810a1de72d53ceb59ec9d395
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-xamarinios-apps"></a>Ismerkedés az Azure Mobile Engagement Xamarin.iOS-alkalmazásokkal való használatával
+> [!IMPORTANT]
+> Az Azure Mobile Engagement támogatása 2018. március 31-én megszűnik. Az oldal nem sokkal ezután törlésre kerül.
+> 
+
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
 Ebben a témakörben elsajátíthatja, hogy miként használható az Azure Mobile Engagement az alkalmazáshasználat megértéséhez, valamint leküldéses értesítések Xamarin.iOS-alkalmazásba történő küldéséhez szegmentált felhasználók számára.

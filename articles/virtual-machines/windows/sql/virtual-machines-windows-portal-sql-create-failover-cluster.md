@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 13/22/2018
 ms.author: mikeray
-ms.openlocfilehash: faa849fc53aa15a47e850a20531c4fa30544f750
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 425310f50cebc920a71090d2017dca2a6c135991
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure virtuális gépeken futó SQL Server-példány feladatátvevő fürt konfigurálása
 
@@ -375,27 +375,13 @@ A terheléselosztó létrehozása:
 
 1. Térjen vissza az Azure-erőforráscsoportot a virtuális gépekkel, és keresse meg az új terheléselosztó. Előfordulhat, hogy az erőforráscsoport a nézet frissítéséhez. Kattintson a terheléselosztó hasonló adataival.
 
-1. A load balancer paneljén kattintson **háttérkészletek**.
+1. Kattintson a **háttérkészletek** kattintson **+ Hozzáadás** a háttérkészlet hozzáadásával.
 
-1. Kattintson a **+ Hozzáadás** a háttérkészlet hozzáadásával.
+1. A háttérkészlet társítani a rendelkezésre állási csoportot, amely a virtuális gépeket tartalmaz.
 
-1. Adjon meg egy nevet a háttérkészlet.
+1. Alatt **céloz hálózati IP-konfigurációk**, ellenőrizze **virtuális gép** , és válassza ki a virtuális gépek fürtcsomópontokként részt fog venni. Győződjön meg arról, hogy tartalmazzák az összes virtuális gépet futtató kiszolgálón az FCI. 
 
-1. Kattintson a **adja hozzá a virtuális gépek**.
-
-1. Az a **válassza ki a virtuális gépek** panelen kattintson a **rendelkezésre állási csoport kiválasztása**.
-
-1. Válassza ki a rendelkezésre állási csoport, hogy az SQL Server virtuális gépek helyezte-e.
-
-1. Az a **válassza ki a virtuális gépek** panelen kattintson a **válassza ki a virtuális gépek**.
-
-   Az Azure-portálon az alábbi képen hasonlóan kell kinéznie:
-
-   ![CreateLoadBalancerBackEnd](./media/virtual-machines-windows-portal-sql-create-failover-cluster/33-load-balancer-back-end.png)
-
-1. Kattintson a **válasszon** a a **válassza ki a virtuális gépek** panelen.
-
-1. Kattintson a **OK** kétszer.
+1. Kattintson a **OK** háttérkészlet létrehozásához.
 
 ### <a name="configure-a-load-balancer-health-probe"></a>Terheléselosztói állapotfigyelő mintavétel konfigurálása
 

@@ -1,25 +1,25 @@
 ---
-title: "Feladat- és kimeneti, a fájl egyezmények könyvtárhoz Azure Storage .NET - Azure Batch fennállnak |} Microsoft Docs"
-description: "Útmutató Azure Batch fájl egyezmények .NET-keretrendszerhez készült Azure Storage feladat és a feladat kimenete kötegelt, és a megőrzött eredményének megtekintéséhez az Azure portálon."
+title: Feladat- és kimeneti, a fájl egyezmények könyvtárhoz Azure Storage .NET - Azure Batch fennállnak |} Microsoft Docs
+description: Útmutató Azure Batch fájl egyezmények .NET-keretrendszerhez készült Azure Storage feladat és a feladat kimenete kötegelt, és a megőrzött eredményének megtekintéséhez az Azure portálon.
 services: batch
 documentationcenter: .net
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 06/16/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a9de327c20463469bc91d9720aa17333a36f919e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bbfb40b3740f9ea43df327a01ba6f4cf52d80457
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net-to-persist"></a>A kötegelt fájl egyezmények könyvtárhoz megőrizni a .NET-keretrendszerhez készült Azure Storage feladat- és adatok megőrzése 
 
@@ -222,7 +222,7 @@ A [PersistOutputs] [ github_persistoutputs] mintaprojektet egyike a [Azure Batch
 5. **Start** (Futtatás) a **PersistOutputs** projekt.
 6. Amikor a rendszer kéri a minta futtatásához használni, adja meg a adatmegőrzési technológiát válasszon **1** megőrizni a feladat kimenete a fájl egyezmények könyvtár használata a minta futtatásához. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 ### <a name="get-the-batch-file-conventions-library-for-net"></a>A kötegelt fájl egyezmények könyvtár beolvasása a .NET-hez
 

@@ -1,13 +1,13 @@
 ---
-title: "Az Azure ExpressRoute-kapcsolatcsoportot útválasztás konfigurálása: CLI |} Microsoft Docs"
-description: "Ez a cikk segítséget nyújt a létrehozása, és helyezze üzembe a magánfelhő, nyilvános és a Microsoft társviszony-létesítést az ExpressRoute-kapcsolatcsoportot. A cikk azt is bemutatja, hogyan ellenőrizheti a kapcsolatcsoport társviszonyainak állapotát, illetve hogyan frissítheti vagy törölheti őket."
+title: 'Az Azure ExpressRoute-kapcsolatcsoportot útválasztás konfigurálása: CLI |} Microsoft Docs'
+description: Ez a cikk segítséget nyújt a létrehozása, és helyezze üzembe a magánfelhő, nyilvános és a Microsoft társviszony-létesítést az ExpressRoute-kapcsolatcsoportot. A cikk azt is bemutatja, hogyan ellenőrizheti a kapcsolatcsoport társviszonyainak állapotát, illetve hogyan frissítheti vagy törölheti őket.
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2017
 ms.author: cherylmc
-ms.openlocfilehash: b54f7768e64e1689e5b25b94905beea6bd5471df
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: f4ad959de1425e828ce11fb658f8b5304e9d8775
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-and-modify-routing-for-an-expressroute-circuit-using-cli"></a>Létrehozásához és módosításához útválasztás az ExpressRoute-kapcsolatcsoportot parancssori felület használatával
 
@@ -55,8 +55,6 @@ Ez a szakasz segítséget nyújt a létrehozása, beolvasása, frissítése és 
 > 
 
 ### <a name="to-create-microsoft-peering"></a>Microsoft társviszony-létesítés létrehozása
-
-[!INCLUDE [Premium](../../includes/expressroute-mspeering-premium-include.md)]
 
 1. Az Azure parancssori felület legújabb verziójának telepítéséhez. Az az Azure parancssori felület (CLI) legújabb verzióját használja. * tekintse át a [Előfeltételek](expressroute-prerequisites.md) és [munkafolyamatok](expressroute-workflows.md) konfigurálás elkezdése előtt.
 

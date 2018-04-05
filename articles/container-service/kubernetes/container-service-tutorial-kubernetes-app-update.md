@@ -1,6 +1,6 @@
 ---
-title: "Azure Container Service-oktatóanyag – Alkalmazás frissítése"
-description: "Azure Container Service-oktatóanyag – Alkalmazás frissítése"
+title: Azure Container Service-oktatóanyag – Alkalmazás frissítése
+description: Azure Container Service-oktatóanyag – Alkalmazás frissítése
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 5f22bb3ac378bc9b1ff94db486d6ea6053c64514
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 87de0f23a00b035b12bac6cf655781961b1fb9e5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="update-an-application-in-kubernetes"></a>Alkalmazások frissítése a Kubernetesben
 
@@ -29,7 +29,7 @@ Ebben az oktatóanyagban, amely egy hétrészes sorozat hatodik része, az Azure
 > * A tárolórendszerkép leküldése az Azure Container Registrybe
 > * A frissített tárolórendszerkép üzembe helyezése
 
-Az ezt követő oktatóanyagokban az Operations Management Suite csomagot fogjuk konfigurálni a Kubernetes-fürt monitorozására.
+Az ezt követő oktatóanyagokban a Log Analytics szolgáltatást fogjuk konfigurálni a Kubernetes-fürt monitorozására.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -166,7 +166,7 @@ Az oktatóanyagban frissítettünk egy alkalmazást, és a frissítést kivezett
 > * Leküldtük a tárolórendszerképet az Azure Container Registrybe
 > * Üzembe helyeztük a frissített alkalmazást
 
-Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan monitorozható a Kubernetes az Operations Management Suite segítségével.
+Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan monitorozható a Kubernetes a Log Analytics segítségével.
 
 > [!div class="nextstepaction"]
-> [A Kubernetes monitorozása az OMS használatával](./container-service-tutorial-kubernetes-monitor.md)
+> [A Kubernetes monitorozása a Log Analytics használatával](./container-service-tutorial-kubernetes-monitor.md)

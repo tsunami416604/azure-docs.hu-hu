@@ -1,6 +1,6 @@
 ---
-title: "A konzol alkalmazások Azure Application Insights |} Microsoft Docs"
-description: "Webalkalmazások rendelkezésre állását, teljesítményét és használatának a figyelheti."
+title: A konzol alkalmazások Azure Application Insights |} Microsoft Docs
+description: Webalkalmazások rendelkezésre állását, teljesítményét és használatának a figyelheti.
 services: application-insights
 documentationcenter: .net
 author: lmolkova
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.author: lmolkova
-ms.openlocfilehash: 57f5670eec36ff2c4332da592dd2a3eef73fdefc
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: lmolkova; mbullwin
+ms.openlocfilehash: f9d734abeb644fc865d5dc86afc8ad0e586bfc0a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="application-insights-for-net-console-applications"></a>.NET-keretrendszerhez készült Application Insights konzolon alkalmazások
 [Az Application Insights](app-insights-overview.md) lehetővé teszi, hogy a webalkalmazás rendelkezésre állását, teljesítményét és használatát a figyelésére.
@@ -26,8 +26,8 @@ Az előfizetés kell [Microsoft Azure](http://azure.com). Jelentkezzen be Micros
 
 ## <a name="getting-started"></a>Első lépések
 
-* [Hozzon létre egy Application Insights-erőforrást](app-insights-create-new-resource.md) az [Azure Portalon](https://portal.azure.com). Az alkalmazás típusánál válassza az ASP.NET-alkalmazás lehetőséget.
-* Végezze el a kialakítási kulcs másolását. A kulcs található az Essentials legördülő a létrehozott új erőforrás. 
+* [Hozzon létre egy Application Insights-erőforrást](app-insights-create-new-resource.md) az [Azure Portalon](https://portal.azure.com). Alkalmazás típusának kiválasztása **általános**.
+* Végezze el a kialakítási kulcs másolását. Keresse meg a kulcsot a **Essentials** legördülő lista az új erőforrás létrehozása. 
 * Telepítse a legújabb [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) csomag.
 * Állítsa be a instrumentation kulcs a kódban, mielőtt bármely telemetriai nyomon követése (vagy set APPINSIGHTS_INSTRUMENTATIONKEY környezeti változó). Ezt követően meg kell manuálisan nyomon követhető a telemetriai adatok és megtekintéséhez az Azure-portálon
 
@@ -39,7 +39,10 @@ telemetryClient.TrackTrace("Hello World!");
 
 * Telepítse a legújabb változatát [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) - csomag automatikusan azt követi nyomon, HTTP, SQL vagy valamilyen más külső függőségi hívások esetében.
 
-Előfordulhat, hogy inicializálni és konfigurálhatja az Application Insights kód használata vagy `ApplicationInsights.config` fájlt. Győződjön meg arról, hogy a lehető leghamarabb történik, az inicializálás.
+Előfordulhat, hogy inicializálni és konfigurálhatja az Application Insights kód használata vagy `ApplicationInsights.config` fájlt. Győződjön meg arról, hogy a lehető leghamarabb történik, az inicializálás. 
+
+> [!NOTE]
+> Hivatkozó utasításokat **ApplicationInsights.config** alkalmazásokat .NET-szabvány céloz meg, és nem vonatkoznak a .NET Core alkalmazások csak vonatkoznak. 
 
 ### <a name="using-config-file"></a>A konfigurációs fájl használatával
 

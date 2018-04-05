@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 03/29/2018
 ms.author: byvinyal
-ms.openlocfilehash: 3218778640acc5d08cef94849e25323650c42c6c
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: f8b97aeb4c37578b884c924bd1919a59fa0f1cf8
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum mutatja a leggyakrabban használt Microsoft Azure korlátok, kvóták néven is ismert. Ez a dokumentum jelenleg nem fedi le az összes Azure-szolgáltatásokhoz. Adott idő alatt a lista lesz kibontható vagy frissíteni, amelyek több, a platform.
@@ -71,7 +71,7 @@ Az alábbi korlátok új tábla összes különbséget korlátok megfelelően az
 * [IoT Hub](#iot-hub-limits)
 * [IoT Hub eszköz kiépítése szolgáltatáshoz](#iot-hub-device-provisioning-service-limits)
 * [Key Vault](#key-vault-limits)
-* [Naplófájl Analytics / Operational Insights](#log-analytics-limits)
+* [Log Analytics](#log-analytics-limits)
 * [Médiaszolgáltatások](#media-services-limits)
 * [Mobilmarketing](#mobile-engagement-limits)
 * [Mobile Services](#mobile-services-limits)

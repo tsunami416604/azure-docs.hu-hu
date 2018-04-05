@@ -1,11 +1,11 @@
 ---
-title: "Azure IoT Hub eszközre cloud messaging megértése |} Microsoft Docs"
-description: "Fejlesztői útmutató - felhő eszközre üzenetküldés az IoT-központ használatával. Az üzenet életciklusát, és a konfigurációs beállítások kapcsolatos adatokat tartalmaz."
+title: Azure IoT Hub eszközre cloud messaging megértése |} Microsoft Docs
+description: Fejlesztői útmutató - felhő eszközre üzenetküldés az IoT-központ használatával. Az üzenet életciklusát, és a konfigurációs beállítások kapcsolatos adatokat tartalmaz.
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
@@ -13,15 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2018
 ms.author: dobett
-ms.openlocfilehash: d265d35c7d5a394afa0e59f40ff1a5741e0ec35c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 670cf45a48ca4b72576cedddd4678c0d569401cd
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="send-cloud-to-device-messages-from-iot-hub"></a>Felhő-eszközre küldött üzenetek küldése az IoT-központ
 
 Az eszköz alkalmazásának a megoldás háttérből egyirányú értesítések küldésére, felhő-eszközök üzenetek küldése az IoT hub az eszközét. Más felhőalapú-eszközök beállításai, IoT-központ által támogatott tárgyalását lásd: [felhő eszközre kommunikációs útmutatást][lnk-c2d-guidance].
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 A szolgáltatás felé néző végpont keresztül felhő eszközre üzeneteket küld (**/üzenetek/devicebound**). Egy eszköz majd fogadja az üzeneteket egy eszközspecifikus végpontot keresztül (**/devices/ {deviceId} / üzenetek/devicebound**).
 

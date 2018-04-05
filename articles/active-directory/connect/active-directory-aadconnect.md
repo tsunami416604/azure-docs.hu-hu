@@ -1,33 +1,35 @@
 ---
-title: "Az Active Directory csatlakoztatása az Azure Active Directoryhoz | Microsoft Docs"
-description: "Az Azure AD Connect integrálja a helyszíni címtárakat az Azure Active Directoryval. Így közös identitást biztosíthat az Azure AD-vel integrált Office 365-, Azure- és SaaS-alkalmazásokhoz."
-keywords: "az Azure AD Connect bemutatása, az Azure AD Connect áttekintése, mi az Azure AD Connect, az Active Directory telepítése"
+title: Az Active Directory csatlakoztatása az Azure Active Directoryhoz | Microsoft Docs
+description: Az Azure AD Connect integrálja a helyszíni címtárakat az Azure Active Directoryval. Így közös identitást biztosíthat az Azure AD-vel integrált Office 365-, Azure- és SaaS-alkalmazásokhoz.
+keywords: az Azure AD Connect bemutatása, az Azure AD Connect áttekintése, mi az Azure AD Connect, az Active Directory telepítése
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 59bd209e-30d7-4a89-ae7a-e415969825ea
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/02/2017
+ms.date: 03/19/2018
 ms.author: billmath
-ms.openlocfilehash: 83654a406019c4ac3837a3e961a6de640c98f31c
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 6f0b5cd7b981cddeda7e5630967f5f8dba18bb98
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="integrate-your-on-premises-directories-with-azure-active-directory"></a>A helyszíni címtárak integrálása az Azure Active Directoryval
 Az Azure AD Connect integrálja a helyszíni címtárakat az Azure Active Directoryval. Így közös identitást biztosíthat a felhasználóinak az Azure AD-vel integrált Office 365-, Azure- és SaaS-alkalmazásokhoz. Ez a témakör végigvezeti a tervezéshez, üzembe helyezéshez és működtetéshez szükséges lépéseken. Az anyag a jelen témakörhöz kapcsolódó hivatkozások gyűjteményét is tartalmazza.
 
 > [!IMPORTANT]
-> [Az Azure AD Connect a legjobb megoldás, ha a helyszíni címtárat az Azure AD-hez és az Office 365-höz szeretné csatlakoztatni. Itt az ideje, hogy Azure AD Connectre frissítsen a Microsoft Azure Active Directory Sync (DirSync) vagy az Azure AD Sync eszközről, mivel ezek elavultak, és a támogatásuk 2017. április 13-ától megszűnt.](active-directory-aadconnect-dirsync-deprecated.md)
+> [Az Azure AD Connect a legjobb megoldás, ha a helyszíni címtárat az Azure AD-hez és az Office 365-höz szeretné csatlakoztatni. Itt az ideje, hogy Azure AD Connectre frissítsen a Microsoft Azure Active Directory Sync (DirSync) vagy az Azure AD Sync eszközről, mivel ezek elavultak, és a támogatásuk 2017. április 13-ától megszűnt.](active-directory-aadconnect-dirsync-deprecated.md)  Lásd még:
 > 
-> 
+> - A felhasználók szinkronizálása az Azure AD-ra **ingyenes szolgáltatás**, az ügyfeleknek nem kell fizetett előfizetéssel rendelkezniük.
+>- A szinkronizált felhasználók **nem kapnak automatikusan** *semmilyen* licencet. A licencek hozzárendelése továbbra is teljes mértékben a rendszergazdák feladata. 
+> - A Microsoft azt javasolja az informatikai rendszergazdáknak, hogy szinkronizálják az összes felhasználójukat. Ezzel egyrészt elérhetővé teszik a felhasználók számára az integrált Azure AD-erőforrásokat, másrészt szélesebb körű rálátást kapnak arra, hogy a felhasználók milyen alkalmazásokat nyitnak meg. 
 
 ![Mi az az Azure AD Connect?](media/active-directory-aadconnect/arch.png)
 

@@ -10,15 +10,15 @@ ms.custom: mvc,DBs & servers
 ms.topic: quickstart
 ms.date: 01/10/2018
 ms.author: ayolubek
-ms.openlocfilehash: e5c1a5a991284fcbeac53d2ce35be4e2634514fa
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 97b14de64c4aa6bf134f2c293e4bb8b5725810d3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-portal-use-the-sql-query-editor-to-connect-and-query-data"></a>Azure Portal: Csatlakozás és az adatok lekérdezése az SQL-lekérdezésszerkesztő használatával
 
-Az SQL-lekérdezésszerkesztő egy böngészőből elérhető lekérdezési eszköz, amellyel hatékonyan és egyszerűen hajthat végre SQL-lekérdezéseket az Azure-beli SQL-adatbázison vagy az Azure-beli SQL-adattárházon az Azure Portal elhagyása nélkül. Ez a rövid útmutató ismerteti, hogyan használható a Lekérdezésszerkesztő az SQL-adatbázisokhoz való csatlakozáshoz, majd hogyan lehet Transact-SQL-utasításokkal adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban.
+Az SQL-lekérdezésszerkesztő egy böngészőből elérhető lekérdezési eszköz, amellyel hatékonyan és egyszerűen hajthat végre SQL-lekérdezéseket az Azure-beli SQL-adatbázison vagy az Azure-beli SQL-adattárházon az Azure Portal elhagyása nélkül. Ez a gyors útmutató ismerteti, hogyan használható a Lekérdezésszerkesztő az SQL-adatbázisokhoz való csatlakozáshoz, majd hogyan lehet Transact-SQL-utasításokkal adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -142,19 +142,25 @@ A következő kód használatával törölheti az előzőleg hozzáadott új ter
 
 ## <a name="query-editor-considerations"></a>Lekérdezésszerkesztési szempontok
 
-Néhány szempontot fontos szem előtt tartani a Lekérdezésszerkesztő előzetes verziójának használatakor:
+Néhány szempontot fontos szem előtt tartani a Lekérdezésszerkesztő használata során:
 
-1. Győződjön meg arról, hogy az Azure SQL Server tűzfalbeállításaiban az „Azure-szolgáltatásokhoz való hozzáférés engedélyezése” beállítást „BE” értékre állította. Ez a beállítás hozzáférést biztosít az SQL-lekérdezésszerkesztőnek az SQL-adatbázisokhoz és -adattárházakhoz.
+1. Győződjön meg arról, hogy az Azure SQL Server tűzfalbeállításaiban az „Azure-szolgáltatásokhoz való hozzáférés engedélyezése” beállítást „BE” értékre állította. Ez a beállítás hozzáférést biztosít az SQL-lekérdezésszerkesztőnek az SQL-adatbázisokhoz és az adattárházakhoz.
 
-2. Az Azure Active Directory rendszergazdai bejelentkezése nem működik olyan fiókokkal, amelyeken engedélyezve van a kéttényezős hitelesítés.
+2. Ha az SQL-kiszolgáló egy virtuális hálózatban van, akkor a Lekéredzésszerkesztővel nem kérdezhetők le a kiszolgálóban lévő adatbázisok.
 
-3. Az e-mail-fiókok (például az outlook.com, hotmail.com, live.com, gmail.com, yahoo.com) Active Directory-rendszergazdaként való használata még nem támogatott. Győződjön meg arról, hogy olyan felhasználót használ, amelyet az Azure Active Directoryban hoztak létre natív módon, vagy összevonták az Azure Active Directoryval
+3. Az F5 billentyű lenyomásával frissíti a Lekérdezésszerkesztő lapját, és elveszti a jelenleg szerkesztett lekérdezést. A lekérdezések végrehajtásához használja az eszköztár Futtatás gombját.
 
-4. A Lekérdezésszerkesztő egyelőre nem támogatja a térbeli adattípusok lekérdezését. A térbeli oszlopok lekérdezése „System.IO.FileNotFoundException” hibát eredményez.
+4. A Lekérdezésszerkesztő nem támogatja a főadatbázishoz való csatlakozást
 
-5. Az adatbázistáblákhoz és -nézetekhez tartozó IntelliSense nem támogatott. A szerkesztő azonban támogatja a korábban már beírt nevek automatikus kiegészítését.
+5. A lekérdezés végrehajtására 5 perces időkorlát vonatkozik.
 
-6. Az F5 billentyű lenyomásával frissíti a Lekérdezésszerkesztő lapját, és elveszti a jelenleg szerkesztett lekérdezést. A lekérdezések végrehajtásához használja az eszköztár Futtatás gombját.
+6. Az Azure Active Directory rendszergazdai bejelentkezése nem működik olyan fiókokkal, amelyeken engedélyezve van a kéttényezős hitelesítés.
+
+7. Az e-mail-fiókok (például az outlook.com, hotmail.com, live.com, gmail.com, yahoo.com) Active Directory-rendszergazdaként való használata még nem támogatott. Győződjön meg arról, hogy olyan felhasználót használ, amelyet az Azure Active Directoryban hoztak létre natív módon, vagy összevonták az Azure Active Directoryval
+
+8. A Lekérdezésszerkesztő kizárólag a geográfiai adattípusokhoz tartozó hengervetületet támogatja.
+
+9. Az adatbázistáblákhoz és -nézetekhez tartozó IntelliSense nem támogatott. A szerkesztő azonban támogatja a korábban már beírt nevek automatikus kiegészítését.
 
 
 ## <a name="next-steps"></a>További lépések

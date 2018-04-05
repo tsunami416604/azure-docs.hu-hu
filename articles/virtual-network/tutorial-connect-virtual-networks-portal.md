@@ -1,26 +1,27 @@
 ---
-title: "Virtuális hálózatok csatlakoztatása a virtuális hálózati társviszony - Azure-portál |} Microsoft Docs"
-description: "Útmutató: virtuális hálózatok csatlakoztatása a virtuális hálózati társviszony-létesítés."
+title: Virtuális hálózatok csatlakoztatása a virtuális hálózati társviszony - Azure-portál |} Microsoft Docs
+description: Ebből a cikkből megtanulhatja a virtuális hálózatok kapcsolódni a virtuális hálózati társviszony-létesítést, az Azure portál használatával.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+Customer intent: I want to connect two virtual networks so that virtual machines in one virtual network can communicate with virtual machines in the other virtual network.
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: 
+ms.topic: article
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
-ms.custom: 
-ms.openlocfilehash: 0962a917186277a34abbda17b8fea87bcf4ad1e9
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.custom: ''
+ms.openlocfilehash: b864c71a62289b3abef13a98b52683f7d928b8e1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Virtuális hálózatok csatlakoztatása a virtuális hálózati társviszony-létesítést az Azure portál használatával
 
@@ -32,11 +33,13 @@ Kapcsolódás virtuális hálózatok egymástól a virtuális hálózati társvi
 > * Virtuális gép (VM) telepítése minden virtuális hálózathoz
 > * Virtuális gépek közötti kommunikáció
 
+Tetszés szerint ez a cikk segítségével befejezheti a [Azure CLI](tutorial-connect-virtual-networks-cli.md) vagy [Azure PowerShell](tutorial-connect-virtual-networks-powershell.md).
+
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba 
 
-Jelentkezzen be az Azure portálon, a https://portal.azure.com.
+Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
 
 ## <a name="create-virtual-networks"></a>Virtuális hálózatok létrehozása
 
@@ -147,7 +150,7 @@ A virtuális gépek létrehozása több percig is tarthat. Ne folytassa a hátra
 3. Csatlakoztassa a virtuális Gépet, nyissa meg a letöltött RDP-fájlt. Ha a rendszer kéri, válassza ki a **Connect**.
 4. Adja meg a felhasználónevet és a virtuális gép létrehozásakor a megadott jelszó (válassza ki szeretne **több lehetőséget**, majd **használjon más fiókot**, hogy a virtuális gép létrehozása után a megadott hitelesítő adatok megadása), Válassza ki **OK**.
 5. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Válassza ki **Igen** gombra a kapcsolat.
-6. Egy későbbi lépésben ping folytatott kommunikációhoz használandó a *myVm2* virtuális gép a *myVm1* virtuális gép. Ping használja az Internet Control üzenet Protocol (ICMP), amely alapértelmezés szerint a Windows tűzfalon keresztül megtagadva. Az a *myVm1* VM engedélyezése az Internet Control Message Protocol (ICMP) keresztül a Windows tűzfal, akkor a ping paranccsal elérhető virtuális gép *myVm2* egy későbbi lépésben, a PowerShell használatával:
+6. Egy későbbi lépésben ping folytatott kommunikációhoz használandó a *myVm2* virtuális gép a *myVm1* virtuális gép. Ping használja az Internet Control üzenet Protocol (ICMP), amely alapértelmezés szerint a Windows tűzfalon keresztül megtagadva. Az a *myVm1* VM, engedélyezze az ICMP Protokollt a Windows tűzfalon keresztül, hogy a virtuális gép pingelhető *myVm2* egy későbbi lépésben, a PowerShell használatával:
 
     ```powershell
     New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
@@ -177,15 +180,8 @@ Már nincs szükség, ha az erőforráscsoport és a benne található összes e
 2. Válassza az **Erőforráscsoport törlése** elemet.
 3. Adja meg *myResourceGroup* a **típus az ERŐFORRÁSCSOPORT-név:** válassza **törlése**.
 
-**<a name="register"></a>A globális virtuális hálózati társviszony-létesítési Preview regisztrálása**
-
-Az azonos régiókban lévő virtuális hálózatok közötti társviszony kialakítása általánosan elérhető. Virtuális hálózatok különböző régiókban jelenleg előzetes verzióban érhetők társviszony. Lásd: [virtuális hálózati frissítések](https://azure.microsoft.com/updates/?product=virtual-network) az elérhető régiók. Virtuális hálózatok egyenrangú régiók között, először regisztrálnia kell az előzetes verziójára. A portál használatával nem regisztrálható, de használatával regisztrálhatja [PowerShell](tutorial-connect-virtual-networks-powershell.md#register) vagy a [Azure CLI](tutorial-connect-virtual-networks-cli.md#register). Ha megkísérli különböző régiókban lévő virtuális hálózatok a képességhez regisztrálása előtt partnert, társviszony-létesítés meghiúsul.
-
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, ugyanazon a helyen az Azure, a két hálózat kapcsolódás a virtuális hálózati társviszony-létesítés. Akkor is a virtuális hálózatok is partnert [különböző régiókban](#register), a [különböző Azure-előfizetések](create-peering-different-subscriptions.md#portal) hozhat létre és [küllős hálózati kialakításokat](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) a társviszony-létesítés. Társviszony-létesítés előtt éles virtuális hálózatok, javasoljuk, hogy alaposan feltérképezése a [társviszony-létesítési áttekintése](virtual-network-peering-overview.md), [kezelése a társviszony-létesítés](virtual-network-manage-peering.md), és [virtuális hálózati korlátok](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). 
+Ebben a cikkben megtanulta, azonos Azure-régióban, két hálózat kapcsolódás a virtuális hálózati társviszony-létesítés. Virtuális hálózatok, a másik partnert is meg is [támogató régiók](virtual-network-manage-peering.md#cross-region) és a [különböző Azure-előfizetések](create-peering-different-subscriptions.md#portal), valamint létrehozása [küllős hálózati kialakításokat](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) rendelkező társviszony-létesítés. Virtuális hálózati társviszony-létesítés kapcsolatos további információkért lásd: [virtuális hálózati társviszony-létesítési áttekintése](virtual-network-peering-overview.md) és [kezelheti a virtuális hálózati társviszony](virtual-network-manage-peering.md).
 
-Saját számítógép csatlakoztatása egy virtuális hálózathoz egy VPN-en keresztül, és egy virtuális hálózatot, vagy nincsenek társviszonyban, virtuális hálózatok erőforrások módosításának továbbra is.
-
-> [!div class="nextstepaction"]
-> [A számítógép csatlakoztatása egy virtuális hálózatot](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+Saját számítógép csatlakoztatása egy virtuális hálózathoz egy VPN-en keresztül, és az erőforrások egy virtuális hálózatot, vagy nincsenek társviszonyban, virtuális hálózatok interakciót [a számítógép csatlakoztatása egy virtuális hálózati](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json).

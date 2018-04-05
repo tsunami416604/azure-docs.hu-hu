@@ -1,31 +1,46 @@
+---
+title: Az Azure Cosmos DB globális terjesztése
+description: Megtudhatja, hogyan replikálhat adatokat globálisan az Azure Cosmos DB használatával az Azure Portalon
+services: cosmos-db
+author: mimig1
+ms.service: cosmos-db
+ms.topic: include
+ms.date: 03/26/2018
+ms.author: mimig
+ms.custom: include file
+ms.openlocfilehash: b62d1cc3b7ea79adbf24f214ba3bb9e92c3a1f0c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/28/2018
+---
+Az Azure Cosmos DB globális terjesztését az alábbi videóból ismerheti meg, amelyben Andrew Liu, az Azure Cosmos DB programigazgatója mutatja be a globális terjesztés funkciót.
 
-Azure Cosmos DB globális terjesztési az Azure-ban videó péntek Scott Hanselman és egyszerű mérnöki Manager Karthik Raman olvashat.
+>[!VIDEO https://www.youtube.com/embed/1D06yjTVxt8]
 
->[!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Planet-Scale-NoSQL-with-DocumentDB/player]  
+További információ a globális adatbázis-replikáció működéséről az Azure Cosmos DB szolgáltatásban: [Globális adatterjesztés a Cosmos DB-vel](../articles/cosmos-db/distribute-data-globally.md).
 
-Hogyan globális adatbázis-replikációval kapcsolatos további információk az Azure Cosmos Adatbázisba működik, a következő témakörben: [adatok globálisan Cosmos DB terjesztése](../articles/cosmos-db/distribute-data-globally.md).
+## <a id="addregion"></a>Globális adatbázis-régiók hozzáadása az Azure Portal használatával
+Az Azure Cosmos DB világszerte minden [Azure-régióban][azureregions] elérhető. Miután kiválasztotta az adatbázisfiók alapértelmezett konzisztenciaszintjét, egy vagy több régiót társíthat hozzá (a választott alapértelmezett konzisztenciaszinttől és a globális terjesztés szükségleteitől függően).
 
-## <a id="addregion"></a>Adja hozzá az Azure portál használatával globális adatbázis területek
-Az Azure Cosmos DB érhető el az összes [Azure-régiók] [ azureregions] világszerte. Miután kijelölte az alapértelmezett konzisztencia szint adatbázis fiókjához, társíthatja egy vagy több régióban (attól függően, hogy a választott alapértelmezett konzisztencia szintre, valamint globális terjesztési kell).
-
-1. Az a [Azure-portálon](https://portal.azure.com/), a bal oldali sávon kattintson **Azure Cosmos DB**.
-2. Az a **Azure Cosmos DB** panelen válassza az adatbázis-fiók módosítása.
-3. A fiók paneljén kattintson **replikálja az adatokat globális** a menüből.
-4. Az a **replikálja az adatokat globális** panelen válassza ki a régiók hozzáadása vagy eltávolítása a térkép régiók kattintva, és kattintson **mentése**. A régiók hozzáadása egy költsége van, tekintse meg a [árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/cosmos-db/) vagy a [adatok globálisan Azure Cosmos DB terjesztése](../articles/cosmos-db/distribute-data-globally.md) cikkében találja.
+1. Az [Azure Portalon](https://portal.azure.com/) a bal oldali sávon kattintson az **Azure Cosmos DB** lehetőségre.
+2. Az **Azure Cosmos DB** oldalon válassza ki a módosítandó adatbázis-fiókot.
+3. A fiók lapon kattintson az **Adatok globális replikálása** lehetőségre a menüben.
+4. A térkép régióira, majd a **Mentés** gombra kattintva választhatja ki a hozzáadni vagy eltávolítani kívánt régiókat az **Adatok globális replikálása** lapon. A régiók hozzáadásának költsége van, további információkat az [árképzést ismertető oldalon](https://azure.microsoft.com/pricing/details/cosmos-db/) vagy a [Globális adatterjesztés az Azure Cosmos DB-vel](../articles/cosmos-db/distribute-data-globally.md) című cikkben talál.
    
-    ![Kattintson a régiók hozzáadásához, vagy távolítsa el őket a térképen][1]
+    ![Kattintson a térkép régióira azok hozzáadásához vagy eltávolításához][1]
     
-Miután hozzáadta a második terület a **kézi feladatátvételt** beállítás engedélyezve van a **replikálja az adatokat globális** a portálon. Ez a beállítás használatával a feladatátvételi folyamat tesztelhet, illetve az elsődleges írási régió módosítása. Miután hozzáadta a harmadik terület a **feladatátvételi prioritások** engedélyezve van a azonos panelen, hogy bármikor módosíthatja a feladatátvételi sorrendnek olvasása.  
+Ha hozzáadta a második régiót, elérhetővé válik a **Manuális feladatátvétel** funkció a Portal **Adatok globális replikálása** oldalán. Ezzel a funkcióval tesztelhető a feladatátvételi folyamat vagy módosítható az elsődleges írási régió. Miután hozzáadta a harmadik régiót, ugyanazon az oldalon elérhetővé válik a **Feladatátvételi prioritások** funkció, így módosíthatja az olvasások feladatátvételi sorrendjét.  
 
-### <a name="selecting-global-database-regions"></a>Globális adatbázis területek kiválasztása
-Két vagy több régió konfigurálása két gyakori forgatókönyvei van:
+### <a name="selecting-global-database-regions"></a>Globális adatbázis-régiók kiválasztása
+Két vagy több régió konfigurálására két gyakori forgatókönyv áll rendelkezésre:
 
-1. Alacsony késésű hozzáférést kézbesíti a végfelhasználók számára, függetlenül attól, hol találhatók a világ minden táján adatok
-2. Üzleti folytonossági és vészhelyreállítási (BCDR) regionális rugalmassági hozzáadása
+1. Kis késleltetésű adathozzáférés biztosítása a végfelhasználóknak, legyenek bárhol a világon
+2. Regionális rugalmasság hozzáadása az üzletmenet-folytonosság és a vészhelyreállítás (BCDR) érdekében
 
-Kis késleltetésű kézbesítéséhez legyenek a végfelhasználók számára, ajánlott, mind az alkalmazás központi telepítése és a régiókban, amelyek megfelelnek az Azure Cosmos-adatbázis hozzáadása hol találhatók az alkalmazás felhasználóinak.
+Ha kis késleltetést szeretne biztosítani a végfelhasználók számára, javasolt, hogy az alkalmazást és az Azure Cosmos DB-t is abban a régióban való helyezze üzembe, amelyben az alkalmazások felhasználói találhatók.
 
-A BCDR, javasoljuk, hogy a régió párok leírtak alapján régiók hozzáadása a [üzleti folytonossági és vészhelyreállítási helyreállítási (BCDR): Azure-régiókat párosítva] [ bcdr] cikk.
+A BCDR esetén javasolt az [Üzletmenet-folytonosság és vészhelyreállítás (BCDR): Az Azure párosított régiói][bcdr] című cikkben leírt régiópárok alapján hozzáadni a régiókat.
 
 <!--
 

@@ -1,36 +1,34 @@
 ---
-title: "Kérelem egységek & átviteli - Azure Cosmos DB becslése |} Microsoft Docs"
-description: "További tudnivalók ismertetése, adja meg, és az Azure Cosmos Adatbázisba kérelem egység követelményeinek becslése."
+title: Kérelem egységek & átviteli - Azure Cosmos DB becslése |} Microsoft Docs
+description: További tudnivalók ismertetése, adja meg, és az Azure Cosmos Adatbázisba kérelem egység követelményeinek becslése.
 services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: mimig
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: d0a3c310-eb63-4e45-8122-b7724095c32f
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/30/2018
 ms.author: mimig
-ms.openlocfilehash: 3679aa76d4a6b9fd6335371e1639f1f246867fa5
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 5f733e9cbd90829eded80b1401093e2331a1eb16
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Az Azure Cosmos DB egység kérése
-Most már hozzáférhető: Azure Cosmos DB [kérelem egység Számológép](https://www.documentdb.com/capacityplanner). További információ: [megbecsülheti, az átviteli sebesség kell](request-units.md#estimating-throughput-needs).
 
-![Átviteli sebesség Számológép][5]
-
-## <a name="introduction"></a>Bevezetés
 [Az Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) Microsoft globálisan elosztott több modellre adatbázis. Az Azure Cosmos DB nem kell virtuális gépek kölcsönbe, szoftver központi telepítése vagy adatbázisok figyelése. Azure Cosmos DB üzemeltetett, és képes biztosítani a világ osztály rendelkezésre állását, teljesítményét és adatok védelme a Microsoft felső mérnökök folyamatosan figyeli. Az adatok API-k egy szerkesztőprogramban, például használatával végezheti el a [SQL API](documentdb-introduction.md), [MongoDB API](mongodb-introduction.md), [tábla API](table-introduction.md), és Gremlin keresztül a [Graph API](graph-introduction.md) - minden natív módon támogatottak. Azure Cosmos DB pénzneme kérelem egység (RU). A RUs nem kell olvasási/írási kapacitások vagy rendelkezés Processzor, memória és iops-érték.
 
 Azure Cosmos DB alkalmazásprogramozási támogatja a különböző műveletekkel, egyszerű olvasási műveletek közötti, és összetett graph lekérdezések írja. Mivel nem minden kérelemre egyenlő, hozzárendeli egy normalizált mennyisége **egységek kérelem** a kérelem kiszolgálásához szükséges számítási mennyisége alapján. A száma kérelem művelet nem determinisztikus, és nyomon követheti a válasz fejléce Azure Cosmos DB bármely művelet által felhasznált kérelem egységek száma. 
 
-Kiszámítható teljesítmény elérése érdekében kell lefoglalni átviteli egységekben 100 RU/másodperc. 
+Kiszámítható teljesítmény elérése érdekében kell lefoglalni átviteli egységekben 100 RU/másodperc. Is [az átviteli sebesség meg kell becsülni](request-units.md#estimating-throughput-needs) az Azure Cosmos DB használatával [kérelem egység Számológép](https://www.documentdb.com/capacityplanner).
+
+![Átviteli sebesség Számológép][5]
 
 A cikk elolvasása után képes lesz a következő kérdések megválaszolásához:  
 
@@ -46,9 +44,9 @@ Azure Cosmos-adatbázis által gyors és kiszámítható teljesítményt nyújt 
 
 Az Azure Cosmos DB fenntartott átviteli kérelem egység / másodperc feldolgozása tekintetében van megadva. Az eltolásokat tekintheti kérelemegység átviteli pénznemként, amellyel meg *lefoglalni* az alkalmazás számára elérhető garantált kérelemegység másodpercenként egy mennyisége.  Minden Azure Cosmos DB - dokumentum írása, frissítése egy dokumentumot a lekérdezés végrehajtása - műveletet igényel, Processzor, memória és iops-érték.  Ez azt jelenti, hogy minden egyes művelet azt eredményezi azok háromszorosa egy *kell fizetni kérelem*, amelyhez van megadva *egységek kérelem*.  A kérelem egység díjak, az alkalmazás átviteli követelményeket, valamint befolyásoló tényezők megértéséhez lehetővé teszi az alkalmazás futtatása a lehető leghatékonyabban költség. Az adatkezelő az Azure portálon is a core lekérdezés teszteléséhez csodálatos eszköz.
 
-Azt javasoljuk, hogy Kezdésként tekintse meg az alábbi videót, ahol Aravind Ramachandran kérelemegység és a kiszámítható teljesítmény Azure Cosmos DB mutatja.
+Azt javasoljuk, hogy Kezdésként tekintse meg az alábbi videót, amelyben Azure Cosmos DB Programvezető Andrew Liu ismerteti, amelyek kérelemegység.
 
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Predictable-Performance-with-DocumentDB/player]
+> [!VIDEO https://www.youtube.com/embed/stk5WSp5uX0]
 > 
 > 
 

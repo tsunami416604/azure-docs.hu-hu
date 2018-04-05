@@ -1,25 +1,25 @@
 ---
-title: "Keresse meg és nem csatolt Azure kezelt és nem kezelt lemezek törlése |} Microsoft Docs"
-description: "Hogyan keresse meg és nem csatolt Azure kezelt és kezeletlen (VHD-k/lapblobokat) lemezek törlése az Azure parancssori felület használatával."
+title: Keresse meg és nem csatolt Azure kezelt és nem kezelt lemezek törlése |} Microsoft Docs
+description: Hogyan keresse meg és nem csatolt Azure kezelt és kezeletlen (VHD-k/lapblobokat) lemezek törlése az Azure parancssori felület használatával.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: ramankumarlive
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 03/30/2018
 ms.author: ramankum
-ms.openlocfilehash: 281e51783af05e02346b537f0abccdb2def38b31
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1718b35aa68937cad4b3ae7e677e300506820bd0
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Keresse meg és nem csatolt Azure kezelt és nem kezelt lemezek törlése
 Ha töröl egy virtuális gép (VM), az Azure-ban alapértelmezés szerint a rendszer nem törli a virtuális géphez csatlakoztatott lemezzel. Ez a szolgáltatás segít megelőzni a véletlen törlés virtuális gépek okozta adatvesztés. A virtuális gép törlését követően továbbra is által nem csatlakoztatott lemezek díj ellenében. Ez a cikk bemutatja, hogyan található és a felesleges költségek csökkentéséhez és nem csatlakoztatott lemezek törlése. 

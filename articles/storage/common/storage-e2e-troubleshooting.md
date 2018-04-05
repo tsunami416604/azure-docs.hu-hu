@@ -1,6 +1,6 @@
 ---
-title: "A diagnosztika & Message Analyzer Azure Storage hibaelhárítása |} Microsoft Docs"
-description: "A végpont hibaelhárítás az Azure Storage Analytics, az AzCopy és a Microsoft Message Analyzert, amely tartalmazza az oktatóanyag"
+title: A diagnosztika & Message Analyzer Azure Storage hibaelhárítása |} Microsoft Docs
+description: A végpont hibaelhárítás az Azure Storage Analytics, az AzCopy és a Microsoft Message Analyzert, amely tartalmazza az oktatóanyag
 services: storage
 documentationcenter: dotnet
 author: tamram
@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
-ms.openlocfilehash: ee0e4671c31e97816576735b7bd2ee2f1629323e
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 324370ae18627a1985e6a40aec11ee2fa871e93b
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Végpontok közötti hibaelhárítás, Azure Storage mérőszámainak és a naplózást, az AzCopy és a Message Analyzer segítségével
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -35,9 +35,6 @@ Microsoft Azure Storage használó ügyfélalkalmazások elhárításához eszk�
   
   * **Storage mérőszámainak** nyomon követi a tranzakció metrikák és a teljesítmény-mérőszámait a tárfiók. Használja a metrikákat, meghatározhatja, hogyan az alkalmazás számos különböző intézkedések megfelelően működik-e. Lásd: [Storage Analytics metrikák táblaséma](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema) további információt a tárolási analitika követik metrikák típusú.
   * **Tárolási naplózási** kéréseknek jelentkezik, az Azure Storage szolgáltatás kiszolgálóoldali naplóba. A napló részletes adatok az egyes kérelmek, beleértve a végre műveletet, a művelet, és a késési adatok állapotának nyomon követi. Lásd: [Storage Analytics naplóformátumban](/rest/api/storageservices/Storage-Analytics-Log-Format) írja be a naplók tárolási analitika kérelem-válasz adatokról további információt.
-
-> [!NOTE]
-> Zónaredundáns tárolás (ZRS) replikációs típussal rendelkező tárfiókok támogatják, metrikákat és naplózási. A ZRS klasszikus fiókok nem támogatják az metrikákat és naplózási. A ZRS további információkért lásd: [zónaredundáns tárolás](storage-redundancy.md#zone-redundant-storage). 
 
 * **Azure-portálon**. A tárfiók a metrikákat és naplózási konfigurálható a [Azure-portálon](https://portal.azure.com). Akkor is diagramok és hogyan működik az alkalmazás időbeli megjelenítő diagramok megtekintése, és beállíthatja a értesítéseket arról, ha az alkalmazás az adott mérőszám várt módon hajt végre.
   
@@ -366,7 +363,7 @@ Most, hogy ismeri a Message Analyzer segítségével elemezheti a naplózási ad
 ## <a name="next-steps"></a>További lépések
 Az Azure Storage hibaelhárítási végpont forgatókönyvekkel kapcsolatos további információkért lásd: ezeket az erőforrásokat:
 
-* [Figyelése, diagnosztizálása és elhárítása a Microsoft Azure tárolás](storage-monitoring-diagnosing-troubleshooting.md)
+* [Microsoft Azure Storage felügyelete, diagnosztizálása és hibaelhárítása](storage-monitoring-diagnosing-troubleshooting.md)
 * [Storage Analytics](http://msdn.microsoft.com/library/azure/hh343270.aspx)
 * [A figyelő egy tárfiókot, Azure-portálon](storage-monitor-storage-account.md)
 * [Adatátvitel az AzCopy parancssori segédprogrammal](storage-use-azcopy.md)

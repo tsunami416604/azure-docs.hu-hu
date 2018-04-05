@@ -1,11 +1,11 @@
 ---
-title: "Az Azure blobtárolási rétege gyakran és ritkán használt, valamint archivált adatokhoz | Microsoft Docs"
-description: "A gyakran és a ritkán használt, valamint az archivált adatok tárolása Azure Storage-fiókok esetében."
+title: Az Azure blobtárolási rétege gyakran és ritkán használt, valamint archivált adatokhoz | Microsoft Docs
+description: A gyakran és a ritkán használt, valamint az archivált adatok tárolása Azure Storage-fiókok esetében.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: kuhussai
 manager: jwillis
-editor: 
+editor: ''
 ms.assetid: eb33ed4f-1b17-4fd6-82e2-8d5372800eef
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/11/2017
 ms.author: kuhussai
-ms.openlocfilehash: 2adb301f1d047c7762a35880da6e6094a5afbd75
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: c62f3a92e6199f6467556054c9f58c20b6ceba2c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob Storage: A gyakori és ritka elérésű, valamint az archív tárolási szintek
 
@@ -79,7 +79,7 @@ Egy adott fiók tartalmazhat blobokat egyszerre akár mindhárom szinten is. Azo
 
 ### <a name="blob-level-tiering-billing"></a>Blobszintű rétegezési számlázás
 
-Ha egy blob egy ritkábban használt szintre kerül (Gyakori elérésű->Ritka elérésű, Gyakori elérésű->Archív vagy Ritka elérésű->Archív), a műveletet a rendszer a célszintre írásként számlázza, és a célszintű írási műveleteire (10 000 műveletenként) és adatírásaira (GB-onként) vonatkozó díjak érvényesek. Ha egy blob egy gyakrabban használt szintre kerül (archív->ritka elérésű, archív->gyakori elérésű vagy ritka elérésű->gyakori elérésű), a műveletet a rendszer a forrásszintről olvasásként számlázza, és a forrásszint olvasási műveleteire (10.000 műveletenként) és adatlekéréseire (GB-onként) vonatkozó díjak érvényesek.
+Ha egy blob egy ritkább elérésű szintre kerül (Gyakori elérésű->Ritka elérésű, Gyakori elérésű->Archív vagy Ritka elérésű->Archív), a műveletet a rendszer a célszintű írásként számlázza, amely esetében a célszintű írási műveleteire (10 000 műveletenként) és adatírásaira (GB-onként) vonatkozó díjak érvényesek. Ha egy blob egy gyakrabban használt szintre kerül (Archív->Ritka elérésű, Archív->Gyakori elérésű vagy Ritka elérésű->Gyakori elérésű), a műveletet a rendszer a forrásszintről olvasásként számlázza, amely esetében a forrásszint olvasási műveleteire (10 000 műveletenként) és adatlekéréseire (GB-onként) vonatkozó díjak érvényesek.
 
 Ha átváltja a fiókszintet gyakori elérésűről ritka elérésűre, csak a GPv2-fiókok esetében lesznek díjkötelesek a beállított szinttel nem rendelkező blobok esetében végrehajtott írási műveletek (10.000 műveletenként). Ez a Blob Storage-fiókok esetében díjmentes. Ha Blob Storage- vagy GPv2-fiókját ritka elérésűről gyakori elérésűre módosítja, az olvasási műveletek (10.000 műveletenként) és adatlekérések (GB-onként) esetében díjat számolunk fel. A ritka elérésű vagy archív szintről áthelyezett blobok esetében korai törlésre vonatkozó díjak lehetnek érvényesek.
 

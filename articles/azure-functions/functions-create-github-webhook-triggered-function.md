@@ -1,26 +1,26 @@
 ---
-title: "GitHub-webhookok által meghívott függvények létrehozása az Azure-ban | Microsoft Docs"
-description: "Használja az Azure Functions szolgáltatást olyan kiszolgáló nélküli függvények létrehozására, amelyeket GitHub-webhook hív meg."
+title: GitHub-webhookok által meghívott függvények létrehozása az Azure-ban | Microsoft Docs
+description: Használja az Azure Functions szolgáltatást olyan kiszolgáló nélküli függvények létrehozására, amelyeket GitHub-webhook hív meg.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 36ef34b8-3729-4940-86d2-cb8e176fcc06
 ms.service: functions
 ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/31/2017
+ms.date: 03/28/2018
 ms.author: glenga
-ms.custom: mvc
-ms.openlocfilehash: 98632c3276e7d9cccf29d05b903c2fac62a7d68e
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.custom: mvc, cc996988-fb4f-47
+ms.openlocfilehash: 05ad567e407a6506222acdb66ab38c4cfab76e4b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="create-a-function-triggered-by-a-github-webhook"></a>GitHub-webhookok által meghívott függvények létrehozása
 
@@ -32,8 +32,6 @@ Ismerje meg, hogyan hozhat létre HTTP-webhookkérelem által meghívott függv�
 
 + Legalább egy projekttel rendelkező GitHub-fiók.
 + Azure-előfizetés. Ha még nincs előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
-
-[!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
 ## <a name="create-an-azure-function-app"></a>Azure-függvényalkalmazás létrehozása
 
@@ -69,11 +67,15 @@ A következő lépésben egy webhookot hoz létre a GitHub-tárban.
 
 1. A GitHubban lépjen a tulajdonában álló adattárra. Használhat bármely elágaztatott adattárat is. Ha egy tárház esetében elágazásra van szüksége, használja a következőt: <https://github.com/Azure-Samples/functions-quickstart>.
 
-1. Kattintson a **Settings** (Beállítások), majd a **Webhooks** (Webhookok) és végül az **Add webhook** (Webhook hozzáadása) elemre.
+2. Válassza a **Beállítások** > **Lehetőségek** elemet, és győződjön meg arról, hogy a **Hibák** lehetőség engedélyezve van a **Szolgáltatások** területen.
+
+   ![Hibák engedélyezése](./media/functions-create-github-webhook-triggered-function/functions-create-new-github-webhook.png)
+
+1. A **Beállítások** területen válassza a **Webhookok** > **Webhook hozzáadása** elemet.
 
     ![GitHub-webhook hozzáadása](./media/functions-create-github-webhook-triggered-function/functions-create-new-github-webhook-2.png)
 
-1. Használja a táblázatban megadott beállításokat, majd kattintson az **Add webhook** (Webhook hozzáadása) elemre.
+1. Használja a táblázatban megadott beállításokat, majd kattintson a **Webhook hozzáadása**elemre:
 
     ![A webhook URL-címének és titkos kulcsának beállítása](./media/functions-create-github-webhook-triggered-function/functions-create-new-github-webhook-3.png)
 

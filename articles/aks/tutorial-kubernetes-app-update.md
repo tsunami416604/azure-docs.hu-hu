@@ -1,6 +1,6 @@
 ---
-title: "Azure-on futó Kubernetes oktatóanyag – Alkalmazás frissítése"
-description: "AKS-oktatóanyag – Alkalmazás frissítése"
+title: Azure-on futó Kubernetes oktatóanyag – Alkalmazás frissítése
+description: AKS-oktatóanyag – Alkalmazás frissítése
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 82a6b6580fbe69b11fdb8a47e2ca09c19b341bbc
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 97a7e0b8e33042739ccea9a086642d9019c15e5b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="update-an-application-in-azure-container-service-aks"></a>Alkalmazás frissítése az Azure Container Service (AKS) szolgáltatásban
+# <a name="tutorial-update-an-application-in-azure-container-service-aks"></a>Oktatóanyag: Alkalmazás frissítése az Azure Container Service (AKS) szolgáltatásban
 
 A Kubernetesben való telepítésüket követően az alkalmazások egy új tárolórendszerkép- vagy rendszerképverzió megadásával frissíthetőek. Ilyen esetben a frissítés úgy lesz ütemezve, hogy egy adott pillanatban az üzemelő példánynak csak egy része legyen frissítve. Ennek az eltolásos frissítésnek köszönhetően az alkalmazás a frissítés során is tovább fut. Ezen kívül visszaállítási mechanizmust is biztosít az üzembe helyezés során fellépő hibák esetére. 
 
@@ -27,7 +27,7 @@ Ebben az oktatóanyagban, amely egy nyolcrészes sorozat hatodik része, az Azur
 > * A tárolórendszerkép leküldése az Azure Container Registrybe
 > * A frissített tárolórendszerkép üzembe helyezése
 
-Az ezt követő oktatóanyagokban az Operations Management Suite csomagot fogjuk konfigurálni a Kubernetes-fürt monitorozására.
+Az ezt követő oktatóanyagokban a Log Analytics szolgáltatást fogjuk konfigurálni a Kubernetes-fürt monitorozására.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -89,7 +89,7 @@ A [docker tag][docker-tag] paranccsal címkézze fel a rendszerképet. Az `<acrL
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v2
 ```
 
-A [docker push][docker-push] paranccsal töltse fel a rendszerképet a beállításjegyzékbe. Az `<acrLoginServer>` helyére az Azure Container Registry bejelentkezési kiszolgálójának nevét írja be.
+A [docker push][docker-push] paranccsal töltse fel a rendszerképet a beállításjegyzékbe. Az `<acrLoginServer>` helyére az Azure Container Registry bejelentkezési kiszolgálójának nevét írja be. Ha problémákat tapasztal az ACR-beállításjegyzékbe való leküldés során, győződjön meg arról, hogy futtatta az [az acr login][az-acr-login] parancsot.
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v2
@@ -164,7 +164,7 @@ Az oktatóanyagban frissítettünk egy alkalmazást, és a frissítést kivezett
 > * Leküldtük a tárolórendszerképet az Azure Container Registrybe
 > * Üzembe helyeztük a frissített alkalmazást
 
-Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan monitorozható a Kubernetes az Operations Management Suite segítségével.
+Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan monitorozható a Kubernetes a Log Analytics segítségével.
 
 > [!div class="nextstepaction"]
 > [A Kubernetes monitorozása a Log Analytics használatával][aks-tutorial-monitor]
@@ -179,3 +179,4 @@ Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan monitorozha
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
 [aks-tutorial-monitor]: ./tutorial-kubernetes-monitor.md
+[az-acr-login]: https://docs.microsoft.com/cli/azure/acr#az_acr_login

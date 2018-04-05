@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement-alkalmazás létrehozása | Microsoft Docs"
-description: "Ez a cikk egy új Mobile Engagement-alkalmazásgyűjteménynek az Azure-ban való létrehozását, valamint azt ismerteti, hogy hogyan kezdheti meg az alkalmazások kezelését a Mobile Engagement portál használatával."
+title: Azure Mobile Engagement-alkalmazás létrehozása | Microsoft Docs
+description: Ez a cikk egy új Mobile Engagement-alkalmazásgyűjteménynek az Azure-ban való létrehozását, valamint azt ismerteti, hogy hogyan kezdheti meg az alkalmazások kezelését a Mobile Engagement portál használatával.
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: b8aa1798-28c6-424c-a5b5-8a264d5a0ff0
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/10/2016
 ms.author: piyushjo
-ms.openlocfilehash: 47c1e122f6f38654cd63bb59e50e68803f76c83d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0f47133a466f00de43ebfb2652eaf9058899f140
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="create-an-azure-mobile-engagement-app"></a>Azure Mobile Engagement-alkalmazás létrehozása
+> [!IMPORTANT]
+> Az Azure Mobile Engagement támogatása 2018. március 31-én megszűnik. Az oldal nem sokkal ezután törlésre kerül.
+> 
+
 Ez a cikk bemutatja, hogyan használható a **Gyors létrehozás** módszer új **Azure Mobile Engagement**-alkalmazás létrehozására. A cikk azt is ismerteti, hogyan nyithatja meg a **Mobile Engagement** portált az alkalmazások figyelésének és kezelésének megkezdéséhez. 
 
 Fontos, hogy legalább „alapszintű integrációt” hozzá kell adnia ahhoz, hogy adatokat gyűjthessen az alkalmazásban, valamint leküldéses értesítéseket küldhessen. A teljes integrációs dokumentáció itt található: [Mobile Engagement-integráció](mobile-engagement-windows-store-integrate-engagement.md).

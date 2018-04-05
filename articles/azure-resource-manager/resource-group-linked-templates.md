@@ -1,6 +1,6 @@
 ---
-title: "Hivatkozás a sablonokat az Azure-telepítés |} Microsoft Docs"
-description: "Ismerteti az Azure Resource Manager sablon kapcsolt sablonok segítségével moduláris sablon megoldás létrehozása. Bemutatja, hogyan továbbítsa a paraméterértéket, adja meg a paraméter fájlt, és dinamikusan létrehozott URL-címeket."
+title: Hivatkozás a sablonokat az Azure-telepítés |} Microsoft Docs
+description: Ismerteti az Azure Resource Manager sablon kapcsolt sablonok segítségével moduláris sablon megoldás létrehozása. Bemutatja, hogyan továbbítsa a paraméterértéket, adja meg a paraméter fájlt, és dinamikusan létrehozott URL-címeket.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: c9a7fc0025e6f4f2b793f0616b4bc41c22c2a498
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 326d6873ae78c5f712832c4cfce9c793f1dfbf37
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Csatolt és beágyazott sablonok Azure-erőforrások telepítése során
 
@@ -446,7 +446,7 @@ A következő példa bemutatja, hogyan egy SAS-jogkivonat felelt meg a sablonok 
 }
 ```
 
-PowerShell, a szolgáltatáshitelesítést egy token ahhoz a tárolóhoz, és telepítse központilag a sablon is van:
+PowerShell, a szolgáltatáshitelesítést egy token ahhoz a tárolóhoz, és az alábbi parancsokkal sablonok telepítése. Figyelje meg, hogy a **containerSasToken** paraméter van definiálva a sablonban. Nem az egyik paraméter a **New-AzureRmResourceGroupDeployment** parancsot.
 
 ```powershell
 Set-AzureRmCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates

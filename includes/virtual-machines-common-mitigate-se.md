@@ -1,27 +1,29 @@
 ---
-title: "fájl belefoglalása"
-description: "fájl belefoglalása"
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/09/2018
-ms.author: cynthn
+ms.date: 04/02/2018
+ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: bf4adf075842effeb26aa5a600c09f7bd1866264
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
-ms.translationtype: MT
+ms.openlocfilehash: 6ad9c365894feed61fa4f55d442194d1cf996889
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
-**Utolsó dokumentálja a frissítés**: március 6 10:00 AM csendes-óceáni TÉLI.
+**Utolsó dokumentálja a frissítés**: április 2, 10:00 AM csendes-óceáni TÉLI.
 
 A legutóbbi közzétételének egy [CPU biztonsági rések új osztály](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002) néven ismert spekulatív végrehajtási ügyféloldali csatorna támadások, így további egyértelműség kérő ügyfelek kérdéseket.  
 
-Az infrastruktúra, amely Azure elkülöníti egymástól ügyfél munkaterheléseinek védett.  Ez azt jelenti, hogy más Azure-on futó ügyfelek nem támadható meg az alkalmazás biztonsági rések használatával.
+A Microsoft a felhőszolgáltatás megoldást alkalmazva van. Az infrastruktúra, amely Azure elkülöníti egymástól ügyfél munkaterheléseinek védett.  Ez azt jelenti, hogy más Azure-on futó ügyfelek nem támadható meg az alkalmazás biztonsági rések használatával.
+
+Emellett Azure használatát bővíti [megőrzi az karbantartási memória](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#memory-preserving-maintenance) amikor csak lehetséges, a virtuális Gépet, miközben a rendszer frissíti a gazdagép legfeljebb 30 másodpercig vagy a virtuális gép felfüggesztése kerül egy már frissített gazdagépet.  Megőrzi az karbantartási további memória minimalizálja ügyfél, és nem kell az újraindítások.  Azure felhasznál ezeket a módszereket, rendszerszintű frissítések a gazdagép meghozásakor.
 
 > [!NOTE] 
-> Késedelmes. február 2018 Intel Corporation közzétett frissített [mikrokód változat útmutatást](https://newsroom.intel.com/wp-content/uploads/sites/11/2018/03/microcode-update-guidance.pdf) azok mikrokód kiadások, amely stabilitást és nyilvánosságralegutóbbibiztonságirésekelleniállapotának[Google projekt nulla](https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html). Az Azure-beli függeszthetők a megoldást [2018. január 3](https://azure.microsoft.com/en-us/blog/securing-azure-customers-from-cpu-vulnerability/) Intel mikrokód frissítés nem érinti. Microsoft erős megoldást már vezetnek be Azure-ügyfél más Azure-bérlőt elleni védelméhez.  
+> Késedelmes. február 2018 Intel Corporation közzétett frissített [mikrokód változat útmutatást](https://newsroom.intel.com/wp-content/uploads/sites/11/2018/03/microcode-update-guidance.pdf) azok mikrokód kiadások, amely stabilitást és nyilvánosságralegutóbbibiztonságirésekelleniállapotának[Google projekt nulla](https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html). Az Azure-beli függeszthetők a megoldást [2018. január 3](https://azure.microsoft.com/en-us/blog/securing-azure-customers-from-cpu-vulnerability/) Intel mikrokód frissítés nem érinti. Microsoft erős megoldást már vezetnek be Azure-ügyfél más Azure virtuális gépek elleni védelméhez.  
 >
 > Intel mikrokód címek variant 2 színkép ([CVE-2017-5715](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5715)), amely csak akkor alkalmazható futtató megosztott vagy nem megbízható munkaterhelések belül a virtuális gépek Azure-on lánctámadások elleni védelem érdekében. A mérnökök teszteli a stabilitás minimalizálása érdekében a mikrokód, mielőtt elérhetővé tétele az Azure-ügyfél számára a részeinek teljesítményére.  Kevés ügyfelet a virtuális gépeken nem megbízható alkalmazásokat és szolgáltatásokat futtathatnak, mivel a legtöbb ügyfél nem kell ahhoz, hogy ez a funkció egyszer kiadott. 
 >
@@ -34,7 +36,7 @@ Az infrastruktúra, amely Azure elkülöníti egymástól ügyfél munkaterhelé
 
 ## <a name="keeping-your-operating-systems-up-to-date"></a>Az operációs rendszer frissítése
 
-Bár egy operációsrendszer-frissítést nem szükséges a más felhasználóktól Azure-on futó Azure-on futó alkalmazások elkülönítése, ez a beállítás mindig ajánlott eljárás az operációsrendszer-verziók naprakész állapotban tartása érdekében. 
+Bár egy operációsrendszer-frissítést nem szükséges a más felhasználóktól Azure-on futó Azure-on futó alkalmazások elkülönítése, ez a beállítás mindig ajánlott eljárás az operációsrendszer-verziók naprakész állapotban tartása érdekében. 2018 és újabb verziók. január [biztonsági frissítésekben](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002) azok mérséklési lehetőségeit a biztonsági rések tartalmaz.
 
 Az a következő ajánlatok az alábbiakban az operációs rendszer frissítésére a javasolt művelet: 
 
@@ -62,7 +64,7 @@ Nincsenek további felhasználói beavatkozásra van szükség, kivéve, ha futt
 
 
 ### <a name="windows"></a>Windows 
-Ha Windows használ, és nem megbízható kód üzemeltet, is ki kell jelölni egy Windows-szolgáltatás néven Kernel virtuális cím (KVA) Shadowing, így további védelmet spekulatív végrehajtási ügyféloldali csatorna sebezhetőségekkel szemben. Ez a funkció alapértelmezés szerint ki van kapcsolva, és befolyásolhatja a teljesítményt, ha engedélyezve van. Hajtsa végre a [Windows Server KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) utasításokat a védelem engedélyezése a kiszolgálón. Ha Azure Felhőszolgáltatások futtat, győződjön meg arról, hogy futnak-e WA-VENDÉG-operációsrendszer-5.15_201801-01 vagy WA-VENDÉG-OS-4.50_201801-01 (rendszertől érhető el a 2018 január 10) vagy a engedélyezése a beállításjegyzék-kulcs egy indítási feladattal.
+Ha a Windows és nem megbízható kód üzemeltető, is ki kell jelölni egy Kernel virtuális cím (KVA) Shadowing, így további védelmet biztosít a spekulatív végrehajtási ügyféloldali csatorna biztonsági rés (kifejezetten variant nevű Windows-szolgáltatással 3 meltdown [CVE-2017-5754](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5754)). Ez a funkció alapértelmezés szerint ki van kapcsolva, és befolyásolhatja a teljesítményt, ha engedélyezve van. Hajtsa végre a [Windows Server KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) utasításokat a védelem engedélyezése a kiszolgálón. Ha Azure Felhőszolgáltatások futtat, győződjön meg arról, hogy futnak-e WA-VENDÉG-operációsrendszer-5.15_201801-01 vagy WA-VENDÉG-OS-4.50_201801-01 (rendszertől érhető el a 2018 január 10) vagy a engedélyezése a beállításjegyzék-kulcs egy indítási feladattal.
 
 
 ### <a name="linux"></a>Linux

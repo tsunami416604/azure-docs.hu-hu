@@ -1,24 +1,24 @@
 ---
-title: "Tárolóban lévő .NET-alkalmazás telepítése Azure Service Fabricre | Microsoft Docs"
-description: "A cikk bemutatja, hogyan lehet egy Visual Studióban lévő .NET-alkalmazást egy Docker-tárolóba csomagolni. Ezt az új tárolóalkalmazást a rendszer ezután egy Service Fabric-fürtre telepíti."
+title: Tárolóban lévő .NET-alkalmazás telepítése Azure Service Fabricre | Microsoft Docs
+description: A cikk bemutatja, hogyan lehet egy Visual Studióban lévő .NET-alkalmazást egy Docker-tárolóba csomagolni. Ezt az új tárolóalkalmazást a rendszer ezután egy Service Fabric-fürtre telepíti.
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/19/2017
+ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: cd1c3b063132ae549bfbf1e059667c5056c91046
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 11bb34939e5fa3699973051664e85f9ef2147ff7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Windows-tárolóban lévő .NET-alkalmazás telepítése Azure Service Fabricre
 
@@ -49,13 +49,6 @@ A Service Fabric-alkalmazások egy fürtön, azaz virtuális vagy fizikai gépek
 Most, hogy már rendelkezik egy Azure-ban futó Service Fabric-fürttel, létrehozhat és üzembe helyezhet tárolóba helyezett alkalmazásokat. Ahhoz, hogy elindíthassuk az alkalmazásunkat egy tárolóban, hozzá kell adnunk a **Docker-támogatást** a Visual Studióban a projekthez. Amikor **Docker-támogatást** adunk az alkalmazáshoz, két dolog történik. Először is a rendszer hozzáad egy _Dockerfile_-t a projekthez. Ez az új fájl leírja, hogyan kell létrehozni a tároló rendszerképét. Ezután a rendszer hozzáad egy új _docker-compose_ projektet a megoldáshoz. Az új projekt tartalmaz néhány docker-compose-fájlt. A docker-compose-fájlok segítségével leírhatja a tárolók futtatásának módját.
 
 További információ a [Visual Studio tárolóeszközeinek][link-visualstudio-container-tools] használatáról.
-
->[!NOTE]
->Ha az első alkalommal futtatja a Windows-tárolórendszerképeket a számítógépen, a Docker CE-nek le kell kérnie a tárolók alaprendszerképeit. A jelen oktatóanyagban használt rendszerképek mérete 14 GB. Lépjen tovább, és futtassa a következő terminálparancsot az alaprendszerképek lekéréshez:
->```cmd
->docker pull microsoft/mssql-server-windows-developer
->docker pull microsoft/aspnet:4.6.2
->```
 
 ### <a name="add-docker-support"></a>Docker-támogatás hozzáadása
 

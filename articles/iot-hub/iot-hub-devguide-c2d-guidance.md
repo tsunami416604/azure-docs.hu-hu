@@ -1,11 +1,11 @@
 ---
-title: "Az Azure IoT Hub felhő eszköz beállítások |} Microsoft Docs"
-description: "Fejlesztői útmutató - közvetlen módszerek, eszköz iker kívánt tulajdonságokkal vagy felhő-eszközre küldött üzenetek használata a felhőből eszközre kommunikációhoz útmutatást."
+title: Az Azure IoT Hub felhő eszköz beállítások |} Microsoft Docs
+description: Fejlesztői útmutató - közvetlen módszerek, eszköz iker kívánt tulajdonságokkal vagy felhő-eszközre küldött üzenetek használata a felhőből eszközre kommunikációhoz útmutatást.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: fsautomata
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 1ac90923-1edf-4134-bbd4-77fee9b68d24
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: elioda
-ms.openlocfilehash: dc8256022aca37823245ecb9a9326240f1c449c2
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 144bd8e0a954e54cf17fb88105759d0e000454fb
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="cloud-to-device-communications-guidance"></a>Útmutatás felhő eszközre kommunikáció
 IoT Hub eszköz alkalmazások teszi közzé a funkciót látja el egy háttér-alkalmazás három lehetőséget kínál:
@@ -26,6 +26,8 @@ IoT Hub eszköz alkalmazások teszi közzé a funkciót látja el egy háttér-a
 * [Közvetlen módszerek] [ lnk-methods] kommunikációhoz, az eredmény azonnali jóváhagyás szükséges. Közvetlen módszereket gyakran használják az eszközök, például egy ventilátor bekapcsolása az interaktív vezérléshez.
 * [Kettős a szükséges tulajdonságok] [ lnk-twins] a hosszan futó parancsokat kell helyezni az eszközt be egy bizonyos szánt szükséges állapotát. Például állítsa be a telemetriai adatok küldése intervallumát és 30 perc.
 * [Felhő-eszközre küldött üzenetek] [ lnk-c2d] egyirányú értesítéseket csak az eszköz alkalmazás.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Ez a felhő-és eszköz közötti kommunikációt különböző lehetőségek részletes összehasonlítása.
 

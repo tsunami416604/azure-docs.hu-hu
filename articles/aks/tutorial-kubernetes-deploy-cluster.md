@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 6ea26a2d4214c41faa5d63b7c72667955a43d6a2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1f31af4fcc7ef70889ad8bc021bea0796721e5f5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="deploy-an-azure-container-service-aks-cluster"></a>Azure Container Service- (AKS-) fürt üzembe helyezése
+# <a name="tutorial-deploy-an-azure-container-service-aks-cluster"></a>Oktatóanyag: Azure Container Service- (AKS-) fürt üzembe helyezése
 
 A Kubernetes tárolóalapú alkalmazásokhoz kínál elosztott platformot. Az AKS-sel egyszerűen és gyorsan építhető ki egy éles üzemre kész Kubernetes-fürt. Ebben az oktatóanyagban, amely egy nyolcrészes sorozat harmadik része, egy Kubernetes-fürtöt helyezünk üzembe az AKS-ben. Ennek lépései az alábbiak:
 
@@ -24,7 +24,7 @@ A Kubernetes tárolóalapú alkalmazásokhoz kínál elosztott platformot. Az AK
 > * A Kubernetes parancssori felület (kubectl) telepítése
 > * A kubectl konfigurálása
 
-Az ezt követő oktatóanyagokban üzembe helyezzük majd az Azure Vote alkalmazást a fürtön, méretezzük, frissítjük, majd konfiguráljuk az Operations Management Suite szolgáltatást a Kubernetes-fürt monitorozására.
+Az ezt követő oktatóanyagokban üzembe helyezzük az Azure Vote alkalmazást a fürtön, skálázzuk, frissítjük, majd a Log Analyticst a Kubernetes-fürt monitorozására konfiguráljuk.
 
 ## <a name="before-you-begin"></a>Előkészületek
 

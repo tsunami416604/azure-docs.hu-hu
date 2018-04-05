@@ -1,3 +1,19 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: virtual-machines
+author: iainfoulds
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 03/27/2018
+ms.author: iainfou
+ms.custom: include file
+ms.openlocfilehash: a6b75b3804e7736fe5203caecb8c6badcfbf9ab4
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 04/03/2018
+---
 # <a name="regions-and-availability-for-virtual-machines-in-azure"></a>Az Azure-beli virtuális gépek régiók szerinti csoportosítása és rendelkezésre állása
 Az Azure világszerte számos adatközpontban működik. Ezek az adatközpontok földrajzi régiók szerint vannak csoportosítva, ami kellő mozgásteret biztosít az alkalmazások létrehozási helyének megválasztásához. Fontos átlátni, hogy a virtuális gépek hol és hogyan működnek az Azure-ban, illetve hogy a teljesítmény, a rendelkezésre állás és a redundancia maximalizálása terén milyen lehetőségek vannak. Ez a cikk az Azure rendelkezésre állással és redundanciával kapcsolatos szolgáltatásairól nyújt áttekintést.
 
@@ -90,11 +106,9 @@ Az [Azure Managed Disks](../articles/virtual-machines/windows/faq-for-disks.md) 
 
 ## <a name="availability-zones"></a>Rendelkezésre állási zónák
 
-[Rendelkezésre állási zónák](../articles/availability-zones/az-overview.md) (előzetes verzió), ahelyett, hogy a rendelkezésre állási állítja be, bontsa ki a felügyeleti, hogy az alkalmazások és a virtuális gépeken adatok rendelkezésre állását fenntartásához. A rendelkezésre állási zónák egy Azure-régió fizikailag elkülönített zónáit jelentik. Három rendelkezésre állási zónák / támogatott Azure-régióban van. Egyes rendelkezésre állási zóna rendelkezik különálló kapcsolja a forrás-, hálózati és hűtési, és logikailag elkülönül a többi rendelkezésre állási zóna belül az Azure-régió. Újratervezni a megoldások replikált virtuális gépek használata a zónák, megvédheti az alkalmazások és adatok származó az adatközpontban. Ha egy zóna biztonsága sérül, majd replikált alkalmazások és adatok érhetők el azonnal egy másik zónában. 
+[Rendelkezésre állási zónák](../articles/availability-zones/az-overview.md), ahelyett, hogy a rendelkezésre állási állítja be, bontsa ki a felügyeleti, hogy az alkalmazások és a virtuális gépeken adatok rendelkezésre állását fenntartásához. A rendelkezésre állási zónák egy Azure-régió fizikailag elkülönített zónáit jelentik. Három rendelkezésre állási zónák / támogatott Azure-régióban van. Egyes rendelkezésre állási zóna rendelkezik különálló kapcsolja a forrás-, hálózati és hűtési, és logikailag elkülönül a többi rendelkezésre állási zóna belül az Azure-régió. Újratervezni a megoldások replikált virtuális gépek használata a zónák, megvédheti az alkalmazások és adatok származó az adatközpontban. Ha egy zóna biztonsága sérül, majd replikált alkalmazások és adatok érhetők el azonnal egy másik zónában. 
 
 ![Rendelkezésre állási zónák](./media/virtual-machines-common-regions-and-availability/three-zones-per-region.png)
-
-[!INCLUDE [availability-zones-preview-statement.md](availability-zones-preview-statement.md)]
 
 Telepítésével kapcsolatban a [Windows](../articles/virtual-machines/windows/create-powershell-availability-zone.md) vagy [Linux](../articles/virtual-machines/linux/create-cli-availability-zone.md) VM egy rendelkezésre állási zónában.
 

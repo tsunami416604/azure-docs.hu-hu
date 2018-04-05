@@ -14,21 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: dobett
-ms.openlocfilehash: 74645f3fdece14790311592a0fdd4ce6570a5bae
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 97b0e4c4dd8c67fdcd422fb04b7c32815b6c3fdb
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="manage-your-iot-hub-device-identities-in-bulk"></a>Az IoT Hub eszköz identitásai tömeges kezelése
 
 Minden egyes IoT-központ rendelkezik egy identitásjegyzékhez eszközönkénti erőforrásokat létrehozni a szolgáltatás segítségével. Az identitásjegyzékhez is lehetővé teszi az eszköz felé néző végpontok való hozzáférés vezérlése érdekében. Ez a cikk ismerteti, hogyan importálhat és exportálhat eszköz identitások tömeges irányuló és onnan az identitásjegyzékhez.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Importálás és exportálás zajlanak környezetében *feladatok* , amelyek lehetővé teszik az IoT-központ szolgáltatás tömeges műveleteket végrehajtani.
 
 A **RegistryManager** osztály tartalmazza a **ExportDevicesAsync** és **ImportDevicesAsync** módszereket, amelyek a **feladat** keretrendszer. Ezek a módszerek lehetővé teszik a exportálása, importálása és az IoT hub identitásjegyzékhez a a teljes szinkronizálás.
 
 Ez a témakör ismerteti, amelyek használatával a **RegistryManager** osztály és **feladat** rendszer tömeges és -eszközökhöz, illetve onnan az IoT-központ identitásjegyzékhez exportot végrehajtásához. Az Azure IoT Hub eszköz kiépítése szolgáltatás segítségével is nulla-érintés, közvetlenül az időponthoz kötött emberi beavatkozás nélkül egy vagy több IoT-központok kiépítés engedélyezése. További tudnivalókért tekintse meg a [szolgáltatás dokumentációja kiépítés][lnk-dps].
+
 
 ## <a name="what-are-jobs"></a>Mik azok a feladatok?
 

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a48c1bb246e3e8659aada614d39fdc608e5bc8d8
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: fe78289938e752731ff2e830fb62ad210e12111e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="partitioning-in-azure-cosmos-db-using-the-sql-api"></a>Az Azure Cosmos-Adatbázisba az SQL API-val particionálás
 
@@ -78,7 +78,7 @@ Az SQL API-t a partíciós kulcs definíciójában egy JSON-útvonal formájába
 Nézzük milyen hatással van a partíciós kulcs kiválasztásakor az alkalmazás teljesítményét.
 
 ## <a name="working-with-the-azure-cosmos-db-sdks"></a>Az Azure Cosmos DB SDK-k használata
-Az Azure Cosmos DB támogatása az automatikus particionálási [REST API verziója 2015-12-16](/rest/api/documentdb/). Particionált tárolók létrehozásához le kell töltenie 1.6.0 SDK verzió vagy újabb valamelyik támogatott SDK platformon (.NET, Node.js, Java, Python, MongoDB). 
+Az Azure Cosmos DB támogatása az automatikus particionálási [REST API verziója 2015-12-16](/rest/api/cosmos-db/). Particionált tárolók létrehozásához le kell töltenie 1.6.0 SDK verzió vagy újabb valamelyik támogatott SDK platformon (.NET, Node.js, Java, Python, MongoDB). 
 
 ### <a name="creating-containers"></a>Tárolók létrehozása
 A következő példában egy .NET-részlet létrehozni egy tárolót a 20 000 kérelemegység / s átviteli eszköz telemetriai adatainak tárolásához. Az SDK-t állítja be a OfferThroughput (amelyek viszont beállítja a `x-ms-offer-throughput` kérelem fejléce a REST API-ban). Itt be van állítva a `/deviceId` partíciókulcsnak. A partíciós kulcs választott mentett a tároló metaadatait, például a nevét, és az indexelési házirendet a többi mellett.
@@ -225,6 +225,6 @@ A következő szakaszban úgy tekintünk, hogyan viheti át a particionált tár
 Ebben a cikkben azt használata Azure Cosmos DB tároló SQL API-val particionálás áttekintését biztosítja. Lásd még: [particionálás és horizontális skálázás](../cosmos-db/partition-data.md) fogalmakat és ajánlott eljárások az Azure Cosmos DB API-k a particionálás áttekintését. 
 
 * Hajtsa végre a méretezés és teljesítmény Azure Cosmos DB tesztelték. Lásd: [teljesítmény- és Mérettesztelés az Azure Cosmos DB](performance-testing.md) egy minta.
-* Ismerkedés a kódolási a [SDK-k](sql-api-sdk-dotnet.md) vagy a [REST API-n](/rest/api/documentdb/)
+* Ismerkedés a kódolási a [SDK-k](sql-api-sdk-dotnet.md) vagy a [REST API-n](/rest/api/cosmos-db/)
 * További tudnivalók [Azure Cosmos DB a létesített átviteli sebesség](request-units.md)
 

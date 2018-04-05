@@ -1,11 +1,11 @@
 ---
-title: "Az átalakítási és az Azure API Management az API védelme |} Microsoft Docs"
-description: "Megtudhatja, hogyan védheti meg az API-kat kvótákkal és szabályozási (sebességhatároló) házirendekkel."
+title: Az API-k átalakítása és védelme az Azure API Management szolgáltatással | Microsoft Docs
+description: Megtudhatja, hogyan védheti meg az API-kat kvótákkal és szabályozási (sebességhatároló) házirendekkel.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -14,129 +14,129 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 772f3828d85c54e7b8bb44c857e555175b7444cc
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
-ms.translationtype: MT
+ms.openlocfilehash: fb56b8489b086b724df9f3c9179f2c3265cd05a7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="transform-and-protect-your-api"></a>Az átalakítási és az API védelme 
+# <a name="transform-and-protect-your-api"></a>Az API-k átalakítása és védelme 
 
-Az oktatóanyag bemutatja, hogyan az API-átalakítására, így nem fedi fel egy titkos háttér adatait. Például előfordulhat, hogy szeretné, hogy fut a háttérkiszolgálón technológiai területekre további információ elrejtése. Érdemes azt is, az eredeti URL-címek, amelyek API HTTP-válasz törzsében szerepelnek, és ehelyett átirányítja őket az APIM átjáró elrejtése.
+Az oktatóanyag bemutatja, hogyan alakíthatja át úgy az API-kat, hogy azok ne fedjenek fel privát háttérinformációkat. Előfordulhat például, hogy szeretné elrejteni a háttérrendszeren futó technológiával kapcsolatos információkat. Vagy az is lehet, hogy el kívánja rejteni az API-k HTTP-válaszának szövegtörzsében megjelenő URL-címeket, és átirányítani azokat az APIM-átjáróhoz.
 
-Ez az oktatóanyag azt is bemutatja, milyen egyszerűen sávszélesség-korlátjának beállítása az Azure API Management hozzáadása a háttér-API védelmét. Érdemes lehet például egy nevezik, hogy az API-t, akkor az nem színvonalát fejlesztők hívások száma korlátozható. További információkért lásd: [API-felügyeleti házirendek](api-management-policies.md)
+Ez az oktatóanyag továbbá ismerteti, milyen könnyű védelmet biztosítani a háttérbeli API-k számára a hívásszám korlátjának konfigurálásával az Azure API Management segítségével. Korlátozhatja például az API hívásainak számát, hogy a fejlesztők ne vegyék túlzottan igénybe. További információt az [API Management-szabályzatokkal kapcsolatos](api-management-policies.md) cikkben olvashat.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Távolítsa el a válaszfejlécek API átalakítása
-> * Cserélje le a választörzs API eredeti URL-címek APIM átjáró URL-címek
-> * Az API-k (sávszélesség-szabályozás) arány korlát házirend hozzáadásával védelme
-> * Az átalakítás tesztelése
+> * Az API átalakítása a válaszfejlécek eltávolításához
+> * Az API-válasz szövegtörzsében szereplő eredeti URL-címek lecserélése az APIM-átjáró URL-címeire
+> * API-k védelme hívásszám-korlátozási szabályzat (szabályozás) hozzáadásával
+> * Az átalakítások tesztelése
 
 ![Házirendek](./media/transform-api/api-management-management-console.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ Fejezze be a következő gyorsindítási: [hozzon létre egy Azure API Management példányt](get-started-create-service-instance.md).
-+ Is, végezze el a következő oktatóanyagot: [importálása és az első API-t közzétenni](import-and-publish.md).
++ Tekintse át a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
++ Végezze el a következő oktatóanyagot is: [Az első API importálása és közzététele](import-and-publish.md).
  
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="transform-an-api-to-strip-response-headers"></a>Távolítsa el a válaszfejlécek API átalakítása
+## <a name="transform-an-api-to-strip-response-headers"></a>Az API átalakítása a válaszfejlécek eltávolításához
 
-Ez a szakasz bemutatja, hogyan elrejtése a HTTP-fejlécek nem kívánja megjeleníteni a felhasználók számára. Ebben a példában a következő fejléceket a HTTP-válasz törlődnek:
+Ez a szakasz azt mutatja be, hogyan rejtheti el a HTTP-fejléceket, amelyeket nem kíván megjeleníteni a felhasználók számára. Ebben a példában a következő fejlécek lesznek törölve a HTTP-válaszból:
 
-* **X-regisztráló-által**
-* **X-AspNet-verzió**
+* **X-Powered-By**
+* **X-AspNet-Version**
 
 ### <a name="test-the-original-response"></a>Az eredeti válasz tesztelése
 
-Az eredeti válasz megtekintéséhez:
+Az eredeti válasz megtekintése:
 
-1. Válassza ki a **API** fülre.
-2. Kattintson a **bemutató konferencia API** az API listájában.
-3. Válassza ki a **GetSpeakers** műveletet.
-4. Kattintson a **teszt** lapon, a képernyő felső részén található.
-5. Nyomja meg a **küldése** gomb a képernyő alján. 
+1. Válassza az **API** lapot.
+2. Kattintson a **Demo Conference API** elemre az API-k listájában.
+3. Válassza a **GetSpeakers** műveletet.
+4. A képernyő felső részén kattintson a **Teszt** fülre.
+5. A képernyő alján kattintson a **Küldés** gombra. 
 
-    Ahogy látja, hogy az eredeti válasz néz ki:
+    Az eredeti válasz a következőhöz hasonló:
 
     ![Házirendek](./media/transform-api/original-response.png)
 
-### <a name="set-the-transformation-policy"></a>Az átalakítási házirendjének beállítása
+### <a name="set-the-transformation-policy"></a>Az átalakítási szabályzat beállítása
 
-1. Keresse meg a APIM példányt.
-2. Válassza ki a **API** fülre.
-3. Kattintson a **bemutató konferencia API** az API listájában.
-4. Válassza ki **összes művelet**.
-5. Válassza ki a képernyő felső részén található **tervezési** fülre.
-6. Az a **kimenő feldolgozási** ablak, kattintson a háromszög (mellett a Ceruza).
-7. Válassza ki **kód szerkesztése**.
+1. Tallózzon az APIM-példányra.
+2. Válassza az **API** lapot.
+3. Kattintson a **Demo Conference API** elemre az API-k listájában.
+4. Válassza a **Minden művelet** lehetőséget.
+5. A képernyő felső részén válassza a **Tervezés** lapot.
+6. A **Kimenő feldolgozás** ablakban kattintson a háromszögre (a ceruza mellett).
+7. Válassza a **Kódszerkesztő** lehetőséget.
     
-     ![Házirend szerkesztése](./media/set-edit-policies/set-edit-policies01.png)
-9. A kurzor belül a ** <outbound> ** elemet.
-10. A jobb oldali ablakban a **átalakítási csoportházirendek**, kattintson a **+ beállított HTTP-fejléc** kétszer (beszúrandó két házirend kódtöredékek).
+     ![A szabályzat szerkesztése](./media/set-edit-policies/set-edit-policies01.png)
+9. Vigye a kurzort a **&lt;kimenő&gt;** elemen belülre.
+10. A jobb oldali ablak **Átalakítási szabályzatok** területén kattintson kétszer a **+ HTTP-fejléc beállítása** elemre (két szabályzatkódrészlet beszúrásához).
 
     ![Házirendek](./media/transform-api/transform-api.png)
-11. Módosítsa a ** <outbound> ** kódot a következőképpen néznek ki:
+11. Módosítsa **<outbound>** kódját a következő módon:
 
         <set-header name="X-Powered-By" exists-action="delete" />
         <set-header name="X-AspNet-Version" exists-action="delete" />
                 
-## <a name="replace-original-urls-in-the-body-of-the-api-response-with-apim-gateway-urls"></a>Cserélje le a választörzs API eredeti URL-címek APIM átjáró URL-címek
+## <a name="replace-original-urls-in-the-body-of-the-api-response-with-apim-gateway-urls"></a>Az API-válasz szövegtörzsében szereplő eredeti URL-címek lecserélése az APIM-átjáró URL-címeire
 
-Ez a szakasz bemutatja, hogyan eredeti URL-címek, amelyek API HTTP-válasz törzsében szerepelnek, és ehelyett átirányítja őket az APIM átjáró elrejtése.
+Ez a szakasz bemutatja, hogy az API HTTP-válaszának szövegtörzsében megjelenő URL-címek hogyan rejthetőek el és irányíthatóak át az APIM-átjáróhoz.
 
 ### <a name="test-the-original-response"></a>Az eredeti válasz tesztelése
 
-Az eredeti válasz megtekintéséhez:
+Az eredeti válasz megtekintése:
 
-1. Válassza ki a **API** fülre.
-2. Kattintson a **bemutató konferencia API** az API listájában.
-3. Válassza ki a **GetSpeakers** műveletet.
-4. Kattintson a **teszt** lapon, a képernyő felső részén található.
-5. Nyomja meg a **küldése** gomb a képernyő alján. 
+1. Válassza az **API** lapot.
+2. Kattintson a **Demo Conference API** elemre az API-k listájában.
+3. Válassza a **GetSpeakers** műveletet.
+4. A képernyő felső részén kattintson a **Teszt** fülre.
+5. A képernyő alján kattintson a **Küldés** gombra. 
 
-    Ahogy látja, hogy az eredeti válasz néz ki:
+    Az eredeti válasz a következőhöz hasonló:
 
     ![Házirendek](./media/transform-api/original-response2.png)
 
-### <a name="set-the-transformation-policy"></a>Az átalakítási házirendjének beállítása
+### <a name="set-the-transformation-policy"></a>Az átalakítási szabályzat beállítása
 
-1. Keresse meg a APIM példányt.
-2. Válassza ki a **API** fülre.
-3. Kattintson a **bemutató konferencia API** az API listájában.
-4. Válassza ki **összes művelet**.
-5. Válassza ki a képernyő felső részén található **tervezési** fülre.
-6. Az a **kimenő feldolgozási** ablak, kattintson a háromszög (mellett a Ceruza).
-7. Válassza ki **kód szerkesztése**.
-8. A kurzor belül a ** <outbound> ** elemet.
-9. A jobb oldali ablakban a **átalakítási csoportházirendek**, kattintson a **+ található, és cserélje le a karakterlánc a szervezet**.
-10. Módosítsa a **< kereshet és cserélhet** kódot (a a ** <outbound> ** elem) lecseréli a APIM átjáró megfelelő URL-CÍMÉT. Példa:
+1. Tallózzon az APIM-példányra.
+2. Válassza az **API** lapot.
+3. Kattintson a **Demo Conference API** elemre az API-k listájában.
+4. Válassza a **Minden művelet** lehetőséget.
+5. A képernyő felső részén válassza a **Tervezés** lapot.
+6. A **Kimenő feldolgozás** ablakban kattintson a háromszögre (a ceruza mellett).
+7. Válassza a **Kódszerkesztő** lehetőséget.
+8. Vigye a kurzort a **&lt;kimenő&gt;** elemen belülre.
+9. A jobb oldali ablak **Átalakítási szabályzatok** területén kattintson a **+ Karakterlánc keresése és cseréje a szövegtörzsben** elemre.
+10. A **<find-and-replace** kódban (a(z) **<outbound>** elemben) cserélje le az URL-címet az APIM-átjáróéra. Például:
 
         <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
 
-## <a name="protect-an-api-by-adding-rate-limit-policy-throttling"></a>Az API-k (sávszélesség-szabályozás) arány korlát házirend hozzáadásával védelme
+## <a name="protect-an-api-by-adding-rate-limit-policy-throttling"></a>API-k védelme hívásszám-korlátozási szabályzat (szabályozás) hozzáadásával
 
-Ez a szakasz bemutatja, hogyan adhat hozzá a háttér-API védelmet a sebességhatár beállításával. Érdemes lehet például egy nevezik, hogy az API-t, akkor az nem színvonalát fejlesztők hívások száma korlátozható. Ebben a példában az érték 3 hívásszám 15 másodpercre minden előfizetés-azonosítót. 15 másodperc után egy fejlesztő újra az API felület meghívásakor.
+Ez a szakasz bemutatja, hogyan lehet védelmet biztosítani a háttérbeli API-k számára a hívásszám korlátjának konfigurálásával. Korlátozhatja például az API hívásainak számát, hogy a fejlesztők ne vegyék túlzottan igénybe. Ebben a példában a korlát minden előfizetési azonosító esetében 15 másodpercenként 3 hívás. 15 másodperc elteltével a fejlesztő újrapróbálhatja az API hívását.
 
-1. Keresse meg a APIM példányt.
-2. Válassza ki a **API** fülre.
-3. Kattintson a **bemutató konferencia API** az API listájában.
-4. Válassza ki **összes művelet**.
-5. Válassza ki a képernyő felső részén található **tervezési** fülre.
-6. Az a **bejövő feldolgozási** ablak, kattintson a háromszög (mellett a Ceruza).
-7. Válassza ki **kód szerkesztése**.
-8. A kurzor belül a ** <inbound> ** elemet.
-9. A jobb oldali ablakban a **hozzáférési szoftverkorlátozó házirendek**, kattintson a **+ korlát hívás arányt kulcs**.
-10. Módosítsa a **< arány-korlát-által-kulcs** kódot (a a ** <inbound> ** elem) a következő kód:
+1. Tallózzon az APIM-példányra.
+2. Válassza az **API** lapot.
+3. Kattintson a **Demo Conference API** elemre az API-k listájában.
+4. Válassza a **Minden művelet** lehetőséget.
+5. A képernyő felső részén válassza a **Tervezés** lapot.
+6. A **Bejövő feldolgozás** ablakban kattintson a háromszögre (a ceruza mellett).
+7. Válassza a **Kódszerkesztő** lehetőséget.
+8. Vigye a kurzort a **&lt;bejövő&gt;** elemen belülre.
+9. A jobb oldali ablak **Hozzáférés-korlátozási szabályzatok** területén kattintson a **+ Hívások számának korlátozása kulcsonként** elemre.
+10. Módosítsa a **<rate-limit-by-key** kódot (a(z) **<inbound>** elemben) a következőre:
 
         <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
 
-## <a name="test-the-transformations"></a>Az átalakítás tesztelése
+## <a name="test-the-transformations"></a>Az átalakítások tesztelése
         
-Ezen a ponton a kód néz házirendeket:
+Ekkor a szabályzat kódjának így kellene kinéznie:
 
     <policies>
         <inbound>
@@ -157,45 +157,45 @@ Ezen a ponton a kód néz házirendeket:
         </on-error>
     </policies>
 
-Ez a szakasz a többi teszteli, ez a cikk a megadott házirend átalakítások.
+A szakasz további részében teszteljük a szabályzatátalakításokat, amelyeket beállítottunk.
 
-### <a name="test-the-stripped-response-headers"></a>Tesztelje a erezett válaszfejlécek
+### <a name="test-the-stripped-response-headers"></a>Az eltávolított válaszfejlécek tesztelése
 
-1. Keresse meg a APIM példányt.
-2. Válassza ki a **API** fülre.
-3. Kattintson a **bemutató konferencia API** az API listájában.
-4. Kattintson a **GetSpeakers** műveletet.
-5. Válassza ki a **teszt** fülre.
-6. Nyomja le az **küldése**.
+1. Tallózzon az APIM-példányra.
+2. Válassza az **API** lapot.
+3. Kattintson a **Demo Conference API** elemre az API-k listájában.
+4. Kattintson a **GetSpeakers** műveletre.
+5. Kattintson a **Teszt** fülre.
+6. Kattintson a **Küldés** gombra.
 
-    A fejlécek rendelkezik lett tisztító látható:
+    Láthatja, hogy a fejlécek el lettek távolítva:
 
     ![Házirendek](./media/transform-api/final-response1.png)
 
-### <a name="test-the-replaced-url"></a>A kicserélt URL-cím tesztelése
+### <a name="test-the-replaced-url"></a>A lecserélt URL-cím tesztelése
 
-1. Keresse meg a APIM példányt.
-2. Válassza ki a **API** fülre.
-3. Kattintson a **bemutató konferencia API** az API listájában.
-4. Kattintson a **GetSpeakers** műveletet.
-5. Válassza ki a **teszt** fülre.
-6. Nyomja le az **küldése**.
+1. Tallózzon az APIM-példányra.
+2. Válassza az **API** lapot.
+3. Kattintson a **Demo Conference API** elemre az API-k listájában.
+4. Kattintson a **GetSpeakers** műveletre.
+5. Kattintson a **Teszt** fülre.
+6. Kattintson a **Küldés** gombra.
 
-    Látható az URL-cím helyett.
+    Láthatja, hogy az URL-cím le lett cserélve.
 
     ![Házirendek](./media/transform-api/final-response2.png)
 
-### <a name="test-the-rate-limit-throttling"></a>A sávszélesség-korlátjának (sávszélesség-szabályozás) tesztelése
+### <a name="test-the-rate-limit-throttling"></a>Hívásszám-korlát (szabályozás) tesztelése
 
-1. Keresse meg a APIM példányt.
-2. Válassza ki a **API** fülre.
-3. Kattintson a **bemutató konferencia API** az API listájában.
-4. Kattintson a **GetSpeakers** műveletet.
-5. Válassza ki a **teszt** fülre.
-6. Nyomja le az **küldése** háromszor a sor.
+1. Tallózzon az APIM-példányra.
+2. Válassza az **API** lapot.
+3. Kattintson a **Demo Conference API** elemre az API-k listájában.
+4. Kattintson a **GetSpeakers** műveletre.
+5. Kattintson a **Teszt** fülre.
+6. Kattintson a **Küldés** gombra háromszor egymás után.
 
-    3-szor vonatkozó kérelem küldése után kapott **429-es jelű túl sok kérelem** választ.
-7. Várjon, amíg a 15 másodperces vagy, és nyomja le az ENTER **küldése** újra. Szerezheti be most egy **200 OK** választ.
+    Miután 3 alkalommal elküldte a kérelmet, a **429 Túl sok kérelem** választ kapja.
+7. Várjon 15 másodpercet, majd kattintson ismét a **Küldés** gombra. Ezúttal a **200 OK** választ kapja.
 
     ![Szabályozás](./media/transform-api/test-throttling.png)
 
@@ -205,17 +205,17 @@ Ez a szakasz a többi teszteli, ez a cikk a megadott házirend átalakítások.
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Távolítsa el a válaszfejlécek API átalakítása
-> * Cserélje le a választörzs API eredeti URL-címek APIM átjáró URL-címek
-> * Az API-k (sávszélesség-szabályozás) arány korlát házirend hozzáadásával védelme
-> * Az átalakítás tesztelése
+> * Az API átalakítása a válaszfejlécek eltávolításához
+> * Az API-válasz szövegtörzsében szereplő eredeti URL-címek lecserélése az APIM-átjáró URL-címeire
+> * API-k védelme hívásszám-korlátozási szabályzat (szabályozás) hozzáadásával
+> * Az átalakítások tesztelése
 
-Előzetes következő oktatóanyagot:
+Folytassa a következő oktatóanyaggal:
 
 > [!div class="nextstepaction"]
-> [Az API-figyelése](api-management-howto-use-azure-monitor.md)
+> [Az API monitorozása](api-management-howto-use-azure-monitor.md)

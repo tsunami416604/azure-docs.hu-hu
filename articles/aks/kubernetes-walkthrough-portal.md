@@ -1,6 +1,6 @@
 ---
-title: "Rövid útmutató – Rövid útmutató az Azure Kubernetes fürtportáljához"
-description: "Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre az AKS segítségével Kubernetes-fürtöt Linux-tárolók esetén az Azure Portallal."
+title: Rövid útmutató – Rövid útmutató az Azure Kubernetes fürtportáljához
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre az AKS segítségével Kubernetes-fürtöt Linux-tárolók esetén az Azure Portallal.
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 35886217328d35229a59b9713f5bb4bf0244569a
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 4aad45559d167e6c046822200c9bbb98113d463b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="deploy-an-azure-container-service-aks-cluster"></a>Azure Container Service- (AKS-) fürt üzembe helyezése
+# <a name="quickstart-deploy-an-azure-container-service-aks-cluster"></a>Rövid útmutató: Azure Container Service- (AKS-) fürt üzembe helyezése
 
 Ebben a rövid útmutatóban egy AKS-fürtöt helyezünk üzembe az Azure Portal használatával. Ezután egy webes előtérrendszert és egy Redis-példányt magában foglaló többtárolós alkalmazást futtatunk a fürtön. Miután végeztünk ezzel, az alkalmazás elérhető lesz az interneten.
 
@@ -25,7 +25,7 @@ A rövid útmutató feltételezi, hogy rendelkezik a Kubernetes használatára v
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure Portalra a http://portal.azure.com. webhelyen.
+Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
 
 ## <a name="create-service-principal"></a>Egyszerű szolgáltatás létrehozása
 

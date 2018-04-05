@@ -1,3 +1,4 @@
+
 # [Az Azure Billing dokumentációja](index.md)
 
 # Bevezetés
@@ -41,6 +42,7 @@
 ### [Profil szerkesztése](billing-how-to-change-azure-account-profile.md)
 ### [Fizetési információk frissítése](billing-how-to-change-credit-card.md)
 ### [Előfizetések fizetése számla alapján](billing-how-to-pay-by-invoice.md)
+### [Hivatkozás partnerazonosítóra](billing-partner-admin-link-started.md)
 ## [Fenntartott VM-példányok felügyelete](billing-manage-reserved-vm-instance.md)
 ## Hibaelhárítás
 ### [Regisztrálással kapcsolatos problémák](https://support.microsoft.com/en-us/help/4042959)

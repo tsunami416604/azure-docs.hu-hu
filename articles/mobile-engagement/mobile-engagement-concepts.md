@@ -1,11 +1,11 @@
 ---
-title: "Mobile Engagement – fogalmak | Microsoft Docs"
-description: "Azure Mobile Engagement – fogalmak"
+title: Mobile Engagement – fogalmak | Microsoft Docs
+description: Azure Mobile Engagement – fogalmak
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 8d19abd1-0a6c-4772-9fa5-5e99980ac5da
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 8450651528007b4527366b89a6ad7615169f93c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1bc09de37c1b2aca35ef1ea74227df770f15baf5
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-mobile-engagement-concepts"></a>Azure Mobile Engagement – fogalmak
+> [!IMPORTANT]
+> Az Azure Mobile Engagement támogatása 2018. március 31-én megszűnik. Az oldal nem sokkal ezután törlésre kerül.
+> 
+
 A Mobile Engagement néhány általános, minden támogatott platform esetén érvényes fogalmat használ. Ez a cikk röviden ismerteti ezen fogalmakat.
 
 A cikk remek kezdőpont, ha a Mobile Engagement új felhasználója. Emellett mindenképpen olvassa el a használt platformra vonatkozó dokumentációt, mert az pontosítja az ebben a cikkben ismertetett fogalmakat további információval, példákkal és lehetséges korlátozásokkal.
@@ -81,7 +85,7 @@ A további adatok szerkezete hasonlít a JSON-objektumokhoz: a kulcs/érték pá
 
 A kulcs/érték párok teljes fájának tárolása JSON-objektumként történik. A kulcs/érték pároknak azonban csupán az első szintjét bontja fel a rendszer, hogy közvetlenül elérhetők legyenek néhány olyan fejlett funkció számára, amilyen például a Segments (Szegmensek) (egyszerűen definiálhat például egy „Sci-Fi-rajongók” szegmenset, amely az összes olyan felhasználót tartalmazza, akik legalább 10 alkalommal küldték el a „content_viewed” eseményt az elmúlt hónapban a „scifi” értékű „content_type” további kulccsal kiegészítve). Ezért erősen ajánlott csak olyan egyszerű listákból álló további adatokat elküldeni, amelyekben a kulcs/érték párok skaláris értékek (például karakterláncok, dátumok, egész számok és logikai értékek).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Windows Universal SDK és Azure Mobile Engagement – áttekintés](mobile-engagement-windows-store-sdk-overview.md)
 * [Windows Phone Silverlight SDK és Azure Mobile Engagement – áttekintés](mobile-engagement-windows-phone-sdk-overview.md)
 * [iOS SDK és Azure Mobile Engagement](mobile-engagement-ios-sdk-overview.md)

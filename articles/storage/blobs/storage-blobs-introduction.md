@@ -1,30 +1,31 @@
 ---
-title: "Bevezetés az Azure Blob Storage használatába | Microsoft Docs"
-description: "Az Azure Blob Storage bemutatása"
+title: A Blob Storage bemutatása – Objektumtárolás az Azure-ban | Microsoft Docs
+description: Az Azure Blob Storage nagy mennyiségű strukturálatlan objektumadat, például szöveg vagy bináris adatok tárolására szolgál. Az alkalmazások a PowerShellből vagy az Azure CLI-ből érhetik el a Blob Storage tárolóban lévő objektumokat, vagy egy kódból az Azure Storage ügyfélkódtárakon vagy REST-kódon keresztül.
 services: storage
 author: tamram
 manager: jeconnoc
 ms.service: storage
 ms.topic: overview
-ms.date: 09/28/2017
+ms.date: 03/27/2018
 ms.author: tamram
-ms.openlocfilehash: aabc10b1c1c501e4fa0eb31835c2818cfb8942c6
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 0fff0032ec2452413bcd1df3175634b14a64208f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="introduction-to-blob-storage"></a>A Blob Storage bemutatása
 
-Az Azure Blob Storage szolgáltatás strukturálatlan adatok, például szövegek vagy bináris adatok nagy mennyiségben történő tárolására szolgál, amelyek HTTP- vagy HTTPS-kapcsolaton keresztül a világon bárhonnan elérhetők. A Blob Storage segítségével bárki számára nyilvánosan elérhetővé tehet adatokat, vagy privát módon tárolhat alkalmazásadatokat.
+Az Azure Blob Storage a Microsoft felhőalapú tárolási megoldása az adatobjektumokhoz. A Blob Storage nagy mennyiségű strukturálatlan objektumadat, például szöveg vagy bináris adatok tárolására szolgál. A Blob Storage tárolóban lévő adatok a világon bárhonnan elérhetők HTTP- vagy HTTPS-kapcsolaton keresztül. A Blob Storage segítségével bárki számára nyilvánosan elérhetővé tehet adatokat, vagy privát módon tárolhat alkalmazásadatokat.
 
 A Blob Storage gyakori használati módjai többek között:
 
 * Képek vagy dokumentumok közvetlen szolgáltatása a böngésző számára
 * Fájlok tárolása megosztott hozzáférésre
 * Video- és hangtartalom online továbbítása
-* Adattárolás biztonsági mentésekhez és helyreállításhoz, vészhelyreállításhoz és archiváláshoz
+* Tárolás biztonsági mentésekhez és helyreállításhoz, vészhelyreállításhoz és archiváláshoz
 * Adattárolás egy helyszíni vagy egy Azure által üzemeltetett szolgáltatás elemzéseihez
+* Virtuális merevlemezek tárolása Azure-beli virtuális gépekhez
 
 ## <a name="blob-service-concepts"></a>A Blob szolgáltatással kapcsolatos fogalmak
 

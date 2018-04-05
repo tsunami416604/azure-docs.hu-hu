@@ -1,18 +1,18 @@
 ---
-title: "A feladatok előrehaladásának figyeléséhez állam - Azure kötegelt feladatok leltár szerint |} Microsoft Docs"
-description: "A feladatok előrehaladásának figyeléséhez az beszerzése feladat száma művelet feladat feladatok száma meghívásával. Egy aktív, futó, és befejezett feladatok, és rendelkezik a sikeres és sikertelen feladatok száma kérheti le."
+title: A feladatok előrehaladásának figyeléséhez állam - Azure kötegelt feladatok leltár szerint |} Microsoft Docs
+description: A feladatok előrehaladásának figyeléséhez az beszerzése feladat száma művelet feladat feladatok száma meghívásával. Egy aktív, futó, és befejezett feladatok, és rendelkezik a sikeres és sikertelen feladatok száma kérheti le.
 services: batch
-author: tamram
-manager: timlt
+author: dlepow
+manager: jeconnoc
 ms.service: batch
 ms.topic: article
 ms.date: 08/02/2017
-ms.author: tamram
-ms.openlocfilehash: ceff59d7063b60a1344a47489d3d73e0e8ee07df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: danlep
+ms.openlocfilehash: bc112ed5b481560362962d6b550d336de6b3d9b4
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="count-tasks-by-state-to-monitor-a-jobs-progress-preview"></a>Egy feladat előrehaladást (előzetes verzió) állapota alapján feladatok száma
 
@@ -31,7 +31,7 @@ A feladat száma beolvasása művelet visszajelzését feladatok állam, az alá
 - A feladatütemezés akkor számít **futtató** mikor van rendelve egy számítási csomópont, de még nem fejeződött be. A feladatütemezés akkor számít **futtató** állapotában esetén vagy `preparing` vagy `running`, ahogy azt a [feladat adatainak beolvasása] [ rest_get_task] műveletet.
 - A feladatütemezés akkor számít **befejeződött** már nem futtatására alkalmas. Egy feladat számít **befejeződött** még általában fejeződött be sikeresen, vagy sikertelenül befejeződött, és a is kimerítette az Újrapróbálkozási korlát. 
 
-A feladat száma beolvasása műveletet is jelent, hány feladatok sikeres vagy sikertelen volt. Kötegelt határozza meg, hogy a feladat végrehajtása sikeres vagy ellenőrzése sikertelen a **eredmény** tulajdonság a [executionInfo] [https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task#executionInfo] tulajdonság:
+A feladat száma beolvasása műveletet is jelent, hány feladatok sikeres vagy sikertelen volt. Kötegelt határozza meg, hogy a feladat végrehajtása sikeres vagy ellenőrzése sikertelen a **eredmény** tulajdonsága [executionInfo] [https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task#executionInfo] tulajdonság:
 
     - A feladatütemezés akkor számít **sikeres** Ha a feladat a végrehajtás eredménye `success`.
     - A feladatütemezés akkor számít **sikertelen** Ha a feladat a végrehajtás eredménye `failure`.
@@ -70,7 +70,7 @@ A feladat száma beolvasása művelet hívása módja a leghatékonyabb állapot
 
 Az beszerzése feladat száma művelet nem érhető el a Batch szolgáltatás verziókban rendszernél korábbi 2017-06-01.5.1. Ha a szolgáltatás egy régebbi verzióját használja, majd lekérdezéssel lista egy feladatot a feladatok száma helyette. További információkért lásd: [létrehozás lekérdezések listáját a Batch-erőforrások hatékony](batch-efficient-list-queries.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Batch szolgáltatás fogalmairól és funkcióiról további információt [a Batch funkcióinak áttekintésében](batch-api-basics.md) talál. A cikk ismerteti az elsődleges kötegelt erőforrások, például készletek, a számítási csomópontokat, a feladatok és a feladatokat, és a szolgáltatások áttekintését.
 * Megismerheti a Batch-kompatibilis alkalmazások [Batch .NET ügyfélkönyvtárral](batch-dotnet-get-started.md) vagy [Python](batch-python-tutorial.md) segítségével való fejlesztésének alapjait. A bevezető cikkeiben végigvezeti egy működő alkalmazást, amely a Batch szolgáltatás használ a munkaterhelés több számítási csomóponton.

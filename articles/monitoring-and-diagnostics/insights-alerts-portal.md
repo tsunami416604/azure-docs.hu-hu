@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2016
 ms.author: robb
-ms.openlocfilehash: 4acf1f549a6c901fb0b772c4591f1f35d61365ad
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b0d938112aaea4d86dd539b53a1749cc800607a7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---azure-portal"></a>Hozzon létre klasszikus metrika riasztások Azure figyelése az Azure-szolgáltatások - Azure-portálon
 > [!div class="op_single_selector"]
@@ -31,25 +31,25 @@ ms.lasthandoff: 03/23/2018
 ## <a name="overview"></a>Áttekintés
 
 > [!NOTE]
-> Ez a cikk ismerteti, hogyan régebbi metrika riasztások létrehozásához. Az Azure figyelő most már támogatja az újabb, jobb metrika riasztásokat. Ezek a riasztások több metrikát, és lehetővé teszik a dimenzionális metrikák riasztást küld. További információ [közel valós idejű metrika riasztások](monitoring-near-real-time-metric-alerts.md).
+> Ez a cikk ismerteti, hogyan régebbi klasszikus metrika riasztások létrehozásához. Az Azure figyelő most támogatja [újabb metrika riasztások](monitoring-near-real-time-metric-alerts.md). 
 >
 >
 
-Ez a cikk bemutatja, hogyan használja az Azure-portált Azure metrika riasztások beállítása. 
+Ez a cikk bemutatja, hogyan állíthat be a klasszikus Azure metrika értesítések az Azure portál használatával. 
 
 A figyelési metrikákat, vagy események, az Azure-szolgáltatások alapuló riasztást kaphat.
 
 * **Metrika értékek** -a riasztás elindítja a megadott metrika értékét ebbe a küszöbérték mindkét irányban rendel. Ez azt jelenti, hogy elindítja a mindkét Ha először a feltétel teljesül, és majd ezt követően, hogy a feltétel mikor van már nem teljesül.    
 * **Tevékenység naplóeseményeket** -riasztást aktiválhatók *minden* esemény, vagy csak akkor, ha bizonyos események megtörténtekor. További információ [napló tevékenységriasztásokat](monitoring-activity-log-alerts.md).
 
-A metrika riasztások tegye a következőket, amikor elindítja a konfigurálhatja:
+A klasszikus metrika riasztások tegye a következőket, amikor elindítja a konfigurálhatja:
 
 * e-mail értesítések küldéséhez a szolgáltatás-rendszergazda és a társadminisztrátorok
 * e-mail küldéséhez megadott további e-maileket.
 * A webhook hívása
 * egy Azure-runbook (csak az Azure portálról) végrehajtásának elindítása
 
-Konfigurálhatja és metrika riasztási szabályok adatainak beolvasása
+Beállíthatja, klasszikus metrika riasztási szabályok használatával adatainak beolvasása
 
 * [Azure Portal](insights-alerts-portal.md)
 * [PowerShell](insights-alerts-powershell.md)
@@ -63,7 +63,7 @@ Konfigurálhatja és metrika riasztási szabályok adatainak beolvasása
 
     ![Figyelés](./media/insights-alerts-portal/AlertRulesButton.png)
 
-3. Válassza ki a **metrika riasztás hozzáadása** parancsot, és töltse ki a mezőket.
+3. Válassza ki a **metrika riasztás hozzáadása (klasszikus)** parancsot, és töltse ki a mezőket.
 
     ![Riasztás beállítása](./media/insights-alerts-portal/AddAlertOnlyParamsPage.png)
 

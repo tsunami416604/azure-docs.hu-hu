@@ -1,6 +1,6 @@
 ---
-title: "Azure rövid útmutató – Blobok feltöltése, letöltése és listázása az Azure Storage-ban a Go használatával | Microsoft Docs"
-description: "Ebben a rövid útmutatóban egy tárfiókot és egy tárolót hoz létre. Majd a Storage Góhoz készült ügyféloldali kódtára segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat."
+title: Azure rövid útmutató – Blobok feltöltése, letöltése és listázása az Azure Storage-ban a Go használatával | Microsoft Docs
+description: Ebben a rövid útmutatóban egy tárfiókot és egy tárolót hoz létre. Majd a Storage Góhoz készült ügyféloldali kódtára segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat.
 services: storage
 author: seguler
 manager: jeconnoc
@@ -9,11 +9,11 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/22/2018
 ms.author: seguler
-ms.openlocfilehash: a30d012ea663b04028a4b0ebb2880532a596500b
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 5572eaafa49200be0b2a8156dbc96bffd48be925
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása a Go használatával
 
@@ -211,6 +211,13 @@ containerURL.Delete(ctx, azblob.ContainerAccessConditions{})
 file.Close()
 os.Remove(fileName)
 ```
+
+## <a name="resources-for-developing-go-applications-with-blobs"></a>Blobokkal rendelkező Go-alkalmazások fejlesztéséhez használható forrásanyagok
+
+Blob Storage-tárolókat alkalmazó Go-alkalmazások fejlesztéséhez tekintse át az alábbi további forrásanyagokat is:
+
+- Az Azure Storage-hoz készült [Go ügyféloldali kódtár forráskódját](https://github.com/Azure/azure-storage-blob-go) megtekintheti és telepítheti a GitHubról.
+- Tekintse át a Go ügyféloldali kódtár használatával írt [Blob Storage-mintákat](https://godoc.org/github.com/Azure/azure-storage-blob-go/2016-05-31/azblob#pkg-examples).
 
 ## <a name="next-steps"></a>További lépések
  

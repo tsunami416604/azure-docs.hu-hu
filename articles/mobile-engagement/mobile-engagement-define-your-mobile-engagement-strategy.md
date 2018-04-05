@@ -1,11 +1,11 @@
 ---
-title: "A Mobile Engagement-stratégia kidolgozása | Microsoft Docs"
-description: "Ismerje meg, hogyan vezethető be és optimalizálható a Mobile Engagement az elemzések és leküldéses értesítések tekintetében."
+title: A Mobile Engagement-stratégia kidolgozása | Microsoft Docs
+description: Ismerje meg, hogyan vezethető be és optimalizálható a Mobile Engagement az elemzések és leküldéses értesítések tekintetében.
 services: mobile-engagement
 documentationcenter: Mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 7533e318-81b9-4360-aace-b7be8225985b
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: db68bd3ebf7efde1d23820445f07c83c8c27dc20
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 494dd27acfd59eb79da13dae9bbbe0f80ee41370
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="define-your-mobile-engagement-strategy"></a>A Mobile Engagement-stratégia kidolgozása
+> [!IMPORTANT]
+> Az Azure Mobile Engagement támogatása 2018. március 31-én megszűnik. Az oldal nem sokkal ezután törlésre kerül.
+> 
+
 *Alkalmazását okkal készítette el: azért, hogy felhasználói használhassák azt!*
 
 Biztosak vagyunk abban, hogy rengeteg energiát fektetett abba, hogy nagyszerű alkalmazás legyen, amelyet a felhasználók szeretni fognak. Valószínűleg jelentős összeget költött marketingre is, hogy felhasználókat szerezzen. A felhasználók kezdeti szívderítő áradata után azonban esetleg azt látja, hogy a felhasználók lassan abbahagyják az alkalmazás használatát. *Erről szól az Azure Mobile Engagement*: rávenni a felhasználókat a maradásra, és fokozatosan fejleszteni az alkalmazást tesztelés és tanulás útján.
@@ -115,7 +119,7 @@ Az *alkalmazásadatok* olyan adatok, amelyek lehetővé teszik az alkalmazás va
 2. A célközönség szegmentálása a bejelentkezési állapot alapján. Gyűjtsön adatokat annak meghatározására, hogy egy felhasználó csatlakozott-e vagy létrehozott-e fiókot. Ez segítséget nyújt azon végfelhasználókat megcélzásában, akik még nem jelentkeztek be, és leküldéses értesítést küld, amellyel a csatlakozásra bátorítja őket.
    ![][2]
 
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 * A Mobile Engagement fogalmait a [Mobile Engagement fogalmait] ismertető cikkben ismerheti meg bővebben.
 * Keresse fel a [Mobile Engagement-alkalmazás létrehozását](mobile-engagement-create.md) ismertető cikket, amely egy új Mobile Engagement-alkalmazásgyűjteménynek az Azure-ban való létrehozását, valamint azt ismerteti, hogy hogyan kezdheti meg az alkalmazások kezelését a Mobile Engagement portál használatával.
 * A részletekkel kapcsolatban keresse fel az [ajánlott eljárásokkal](mobile-engagement-getting-started-best-practices.md) foglalkozó cikket.

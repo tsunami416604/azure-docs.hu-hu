@@ -1,24 +1,24 @@
 ---
-title: "Továbbra is fennáll, eredményeit, illetve a befejezett feladatokhoz és a feladatok egy adattár - Azure Batch-naplókat |} Microsoft Docs"
-description: "Ismerje meg a kötegelt feladatok és munkák kimeneti adatait különböző lehetőségek közül. Az adatok Azure Storage, vagy hogy egy másik adattárhoz is megmaradnak."
+title: Továbbra is fennáll, eredményeit, illetve a befejezett feladatokhoz és a feladatok egy adattár - Azure Batch-naplókat |} Microsoft Docs
+description: Ismerje meg a kötegelt feladatok és munkák kimeneti adatait különböző lehetőségek közül. Az adatok Azure Storage, vagy hogy egy másik adattárhoz is megmaradnak.
 services: batch
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 06/16/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3ca93e823f02b1483ed290cf89de191937d1e2c3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cb8b1ca3514e27221e95cb2def823c8f89d151e5
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="persist-job-and-task-output"></a>Feladatok és tevékenységek kimenetének megőrzése
 
@@ -79,7 +79,7 @@ A Batch szolgáltatás API-t használ a tartós feladatot, kimeneti ha:
 - Szeretné megőrizni az adatokat a következők szerint az Azure Storage tárolót a [kötegelt fájl egyezmények standard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions). 
 
 > [!NOTE]
-> A Batch szolgáltatás API nem támogatja a készletek a felhőalapú szolgáltatás konfigurációja létre futó feladatok adatait. A felhő konfigurálása futtató készletek kimenetét tárolásakor feladattal kapcsolatos információkért lásd: [a kötegelt fájl egyezmények könyvtárhoz megőrizni a .NET-keretrendszerhez készült Azure Storage feladat- és adatok megőrzése](batch-task-output-file-conventions.md)
+> A Batch szolgáltatás API nem támogatja a készletek a felhőalapú szolgáltatás konfigurációja létre futó feladatok adatait. A felhő konfigurálása futtató készletek kimenetét tárolásakor feladattal kapcsolatos információkért lásd: [a kötegelt fájl egyezmények könyvtárhoz megőrizni a .NET-keretrendszerhez készült Azure Storage feladat- és adatok megőrzése ](batch-task-output-file-conventions.md)
 > 
 > 
 
@@ -113,11 +113,11 @@ Előfordulhat, hogy szeretné végrehajtani a fájl egyezmények elnevezési sza
 
 A saját teljes fájl adatátviteli megoldás is megvalósíthatja. Ez készíthető elő, amikor használja:
 
-- Szeretné megőrizni a feladat adatok Azure Storage eltérő adattárat. Fájlok feltöltése az Azure SQL-vagy Azure DataLake adattárat, létrehozhat egy egyéni parancsfájl vagy végrehajtható fájlt tölthet fel erre a helyre. Majd hívása, a parancssorban az elsődleges végrehajtható fájl futtatása után. Például egy Windows-csomóponton, előfordulhat, hogy meghívja a két parancsokkal:`doMyWork.exe && uploadMyFilesToSql.exe`
+- Szeretné megőrizni a feladat adatok Azure Storage eltérő adattárat. Fájlok feltöltése az Azure SQL-vagy Azure DataLake adattárat, létrehozhat egy egyéni parancsfájl vagy végrehajtható fájlt tölthet fel erre a helyre. Majd hívása, a parancssorban az elsődleges végrehajtható fájl futtatása után. Például egy Windows-csomóponton, előfordulhat, hogy meghívja a két parancsokkal: `doMyWork.exe && uploadMyFilesToSql.exe`
 - Szeretne végezni az eredmények ellenőrzés mutató vagy korai feltöltése.
 - Meg szeretné tartani a hibakezelés részletes szabályozását. Érdemes lehet például a saját megoldás megvalósításának, ha használandó függőségi Feladatműveletek bizonyos feltöltés műveletekre, a megadott kilépési kód alapján. A feladatütemezés-függőség műveletek további információkért lásd: [feladat függőségek más feladatok függő feladatok futtatásához létrehozása](batch-task-dependencies.md). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Fedezze fel az új funkciók használatához a Batch szolgáltatás API-ban megőrizni a tevékenységek adatai [megőrző feladat adatok Azure Storage a kötegelt API szolgáltatás](batch-task-output-files.md).
 - További tudnivalók a kötegelt fájl egyezmények könyvtár használata a .NET-keretrendszerhez készült [megőrizni a feladat- és adatok Azure Storage a kötegelt fájl egyezmények .NET-keretrendszerhez készült megőrizni ](batch-task-output-file-conventions.md).

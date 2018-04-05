@@ -1,131 +1,146 @@
 ---
-title: "Az Azure Container Instances oktatóanyaga – Az Azure Container Registry előkészítése"
-description: "Az Azure Container Instances oktatóanyaga, 2/3. rész – Az Azure Container Registry előkészítése"
+title: Az Azure Container Instances oktatóanyaga – Az Azure Container Registry előkészítése
+description: Az Azure Container Instances oktatóanyaga, 2/3. rész – Az Azure Container Registry előkészítése
 services: container-instances
-author: neilpeterson
+author: mmacy
 manager: timlt
 ms.service: container-instances
 ms.topic: tutorial
-ms.date: 01/02/2018
-ms.author: seanmck
+ms.date: 03/21/2018
+ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 94ecba44b8281460da4518c146aab814d2eaa850
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 6e5a6a64e6d7c53bb4ea84de646812c962469d4f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="deploy-and-use-azure-container-registry"></a>Az Azure Container Registry üzembe helyezése és használata
+# <a name="tutorial-deploy-and-use-azure-container-registry"></a>Oktatóanyag: Az Azure Container Registry üzembe helyezése és használata
 
-Ez az oktatóanyag egy háromrészes sorozat második része. Az [előző lépésben](container-instances-tutorial-prepare-app.md) létrehoztunk egy tárolórendszerképet egy [Node.js][nodejs]-ben írt egyszerű webalkalmazáshoz. Ebben az oktatóanyagban leküldéssel továbbítjuk a rendszerképet egy Azure Container Registry tárolóregisztrációs adatbázisba. Ha még nem hozta létre a tárolórendszerképet, lépjen vissza az [1. oktatóanyag – Tárolórendszerkép létrehozása](container-instances-tutorial-prepare-app.md) részhez.
+Ez az oktatóanyag egy háromrészes sorozat második része. Az oktatóanyag [első részében](container-instances-tutorial-prepare-app.md) egy Docker-tároló rendszerképét hoztuk létre egy Node.js-webalkalmazáshoz. Ebben az oktatóanyagban leküldéssel továbbítjuk a rendszerképet az Azure Container Registrybe. Ha még nem hozta létre a tárolórendszerképet, lépjen vissza az [1. oktatóanyag – Tárolórendszerképek létrehozása](container-instances-tutorial-prepare-app.md) részhez.
 
-Az Azure Container Registry egy Azure-alapú privát regisztrációs adatbázis Docker-tárolórendszerképekhez. Ez az oktatóanyag azt ismerteti, hogyan lehet üzembe helyezni egy Azure Container Registry-példányt, és hogyan lehet továbbítani rá egy tárolórendszerképet.
-
-A cikk, amely a sorozat második része, a következő lépésekből áll:
+Az Azure Container Registry az Ön privát Docker-tárolójegyzéke az Azure-ban. Ebben az oktatóanyagban létrehoz egy Azure Container Registry-példányt az előfizetésében, majd leküldi rá a korábban létrehozott tárolórendszerképet. A cikk, amely a sorozat második része, a következő lépésekből áll:
 
 > [!div class="checklist"]
-> * Egy Azure Container Registry-példány üzembe helyezése
+> * Azure Container Registry-példány létrehozása
 > * Egy tárolórendszerkép címkézése az Azure Container Registry-példányhoz
-> * A rendszerkép feltöltése az adatbázisba
+> * A rendszerkép feltöltése a tárolójegyzékbe
 
-A következő cikkben, amely a sorozat utolsó oktatóanyaga, telepítjük a tárolót a privát regisztrációs adatbázisból az Azure Container Instances rendszerébe.
+A következő cikkben, amely a sorozat utolsó oktatóanyaga, üzembe helyezzük a tárolót a privát tárolójegyzékből az Azure Container Instancesbe.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az oktatóanyaghoz az Azure CLI 2.0.23-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése][azure-cli-install].
+[!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 
-Az oktatóanyag elvégzéséhez szüksége lesz egy helyileg telepített Docker-fejlesztési környezetre. A Docker csomagokat biztosít, amelyekkel a Docker egyszerűen konfigurálható bármely [Mac][docker-mac], [Windows][docker-windows] vagy [Linux][docker-linux] rendszeren.
+## <a name="create-azure-container-registry"></a>Azure Container Registry létrehozása
 
-Az Azure Cloud Shell nem tartalmazza a jelen oktatóanyag lépéseinek elvégzéséhez szükséges Docker-összetevőket, ezért az oktatóanyag teljesítéséhez telepítenie kell a számítógépén az Azure CLI-t és a Docker-fejlesztési környezetet.
+A tárolójegyzék létrehozásához szüksége lesz egy *erőforráscsoportra*, amelyben üzembe helyezheti azt. Az erőforráscsoport egy olyan logikai gyűjtemény, amelyben a rendszer üzembe helyezi és kezeli az összes Azure-erőforrást.
 
-## <a name="deploy-azure-container-registry"></a>Azure Container Registry üzembe helyezése
-
-Az Azure Container Registry üzembe helyezéséhez először is szükség van egy erőforráscsoportra. Az Azure-erőforráscsoport egy olyan logikai gyűjtemény, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
-
-Hozzon létre egy erőforráscsoportot az [az group create][az-group-create] paranccsal. Ebben a példában egy *myResourceGroup* nevű erőforráscsoportot hozunk létre az *eastus* régióban.
+Hozzon létre egy erőforráscsoportot az [az group create][az-group-create] paranccsal. A következő példában egy *myResourceGroup* nevű erőforráscsoportot hozunk létre az *eastus* régióban:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Hozzon létre egy Azure tárolóregisztrációs adatbázist az [az acr create][az-acr-create] paranccsal. A tárolóregisztrációs adatbázis nevének egyedinek kell lennie az Azure rendszerében, és 5–50 alfanumerikus karakterből kell állnia. Cserélje le az `<acrName>` elemet az adatbázis egyedi nevére:
+Az erőforráscsoport létrehozása után hozzon létre egy Azure Container Registryt az [az acr create][az-acr-create] paranccsal. A tárolóregisztrációs adatbázis nevének egyedinek kell lennie az Azure rendszerében, és 5–50 alfanumerikus karakterből kell állnia. Cserélje le az `<acrName>` elemet az adatbázis egyedi nevére:
 
 ```azurecli
-az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
+az acr create --resource-group myResourceGroup --name <acrName> --sku Basic --admin-enabled true
 ```
 
-Példa egy *mycontainerregistry082* nevű Azure tárolóregisztrációs adatbázis létrehozására:
+Íme egy példa kimenet a *mycontainerregistry082* nevű új Azure Container Registryhez (itt csonkolva látható):
 
-```azurecli
-az acr create --resource-group myResourceGroup --name mycontainerregistry082 --sku Basic --admin-enabled true
+```console
+$ az acr create --resource-group myResourceGroup --name mycontainerregistry082 --sku Basic --admin-enabled true
+...
+{
+  "adminUserEnabled": true,
+  "creationDate": "2018-03-16T21:54:47.297875+00:00",
+  "id": "/subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/mycontainerregistry082",
+  "location": "eastus",
+  "loginServer": "mycontainerregistry082.azurecr.io",
+  "name": "mycontainerregistry082",
+  "provisioningState": "Succeeded",
+  "resourceGroup": "myResourceGroup",
+  "sku": {
+    "name": "Basic",
+    "tier": "Basic"
+  },
+  "status": null,
+  "storageAccount": null,
+  "tags": {},
+  "type": "Microsoft.ContainerRegistry/registries"
+}
 ```
 
-Az oktatóanyag hátralevő részében az `<acrName>` elem helyettesíti a tárolóregisztrációs adatbázis választott nevét.
+Az oktatóanyag hátralevő részében az `<acrName>` helyettesíti a tárolójegyzék ebben a lépésben választott nevét.
 
-## <a name="container-registry-login"></a>Bejelentkezés a tárolóregisztrációs adatbázisba
+## <a name="log-in-to-container-registry"></a>Bejelentkezés a tárolójegyzékbe
 
-Először be kell jelentkeznie az Azure Container Registrybe, mielőtt rendszerképeket küldhetne a tárolóregisztrációs adatbázisba. Ehhez a művelethez használja az [az acr login][az-acr-login] parancsot. Meg kell adnia a tárolóregisztrációs adatbázis egyedi nevét, amelyet az adatbázis létrehozásakor adott meg.
+Először be kell jelentkeznie az Azure Container Registrybe, mielőtt rendszerképeket küldhetne a tárolóregisztrációs adatbázisba. Ehhez a művelethez használja az [az acr login][az-acr-login] parancsot. Meg kell adnia a tárolójegyzék egyedi nevét, amelyet az adatbázis létrehozásakor választott.
 
 ```azurecli
 az acr login --name <acrName>
 ```
 
-A parancs a `Login Succeeded` üzenetet adja vissza, ha befejeződött.
+A parancs a `Login Succeeded` üzenetet adja vissza, ha befejeződött:
+
+```console
+$ az acr login --name mycontainerregistry082
+Login Succeeded
+```
 
 ## <a name="tag-container-image"></a>Tárolórendszerkép címkézése
 
-Ha egy privát regisztrációs adatbázisban található tárolórendszerképet kíván telepíteni, akkor fel kell címkéznie a rendszerképet a regisztrációs adatbázis `loginServer` nevével.
+Ha a tárolójegyzék-rendszerképet egy privát tárolójegyzékbe kívánja leküldeni, mint az Azure Container Registry, akkor először fel kell címkéznie a rendszerképet a tárolójegyzék bejelentkezési kiszolgálójának teljes nevével.
 
-A meglévő rendszerképek listájának megtekintéséhez használja a [docker images][docker-images] parancsot.
-
-```bash
-docker images
-```
-
-Kimenet:
-
-```bash
-REPOSITORY                   TAG                 IMAGE ID            CREATED              SIZE
-aci-tutorial-app             latest              5c745774dfa9        39 seconds ago       68.1 MB
-```
-
-A bejelentkezési kiszolgáló nevének lekéréséhez futtassa az [az acr show][az-acr-show] parancsot. Cserélje le az `<acrName>` kifejezést a tárolóregisztrációs adatbázis nevére.
+Először is szerezze be az Azure Container Registry bejelentkezési kiszolgálójának teljes nevét. Futtassa a következő [az acr show][az-acr-show] parancsot, majd az `<acrName>` elemet cserélje az imént létrehozott tárolójegyzék nevére:
 
 ```azurecli
 az acr show --name <acrName> --query loginServer --output table
 ```
 
-Példa a kimenetre:
+Tehát ha a tárolójegyzék neve *mycontainerregistry082*:
 
-```
+```console
+$ az acr show --name mycontainerregistry082 --query loginServer --output table
 Result
 ------------------------
 mycontainerregistry082.azurecr.io
 ```
 
-Címkézze fel az *aci-tutorial-app* rendszerképet a tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának nevével. Adja hozzá a `:v1` kifejezést a rendszerkép nevének végéhez. Ez a címke a rendszerkép verziószámát jelöli. Helyettesítse be az `<acrLoginServer>` helyére az imént futtatott [az acr show][az-acr-show] parancs eredményét.
-
-```bash
-docker tag aci-tutorial-app <acrLoginServer>/aci-tutorial-app:v1
-```
-
-Ha elkészült a címkézéssel, futtassa a `docker images` parancsot a művelet ellenőrzéséhez.
+Ezután jelenítse meg a helyi rendszerképek listáját a [docker images][docker-images] paranccsal:
 
 ```bash
 docker images
 ```
 
-Kimenet:
+A gépen található többi rendszerkép mellett szerepelnie kell az *aci-tutorial-app* rendszerképnek is, amelyet [az előző oktatóanyagban](container-instances-tutorial-prepare-app.md) hozott létre:
+
+```console
+$ docker images
+REPOSITORY          TAG       IMAGE ID        CREATED           SIZE
+aci-tutorial-app    latest    5c745774dfa9    39 minutes ago    68.1 MB
+```
+
+Címkézze fel az *aci-tutorial-app* rendszerképet a tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának nevével. Adja hozzá a `:v1` címkét a rendszerkép nevének végéhez, ami jelzi a rendszerkép verziószámát. Helyettesítse be az `<acrLoginServer>` helyére a korábban futtatott [az acr show][az-acr-show] parancs eredményét.
 
 ```bash
-REPOSITORY                                                TAG                 IMAGE ID            CREATED             SIZE
-aci-tutorial-app                                          latest              5c745774dfa9        39 seconds ago      68.1 MB
-mycontainerregistry082.azurecr.io/aci-tutorial-app        v1                  a9dace4e1a17        7 minutes ago       68.1 MB
+docker tag aci-tutorial-app <acrLoginServer>/aci-tutorial-app:v1
+```
+
+Futtassa ismét a `docker images` parancsot a címkézési művelet ellenőrzéséhez:
+
+```console
+$ docker images
+REPOSITORY                                            TAG       IMAGE ID        CREATED           SIZE
+aci-tutorial-app                                      latest    5c745774dfa9    39 minutes ago    68.1 MB
+mycontainerregistry082.azurecr.io/aci-tutorial-app    v1        5c745774dfa9    7 minutes ago     68.1 MB
 ```
 
 ## <a name="push-image-to-azure-container-registry"></a>Rendszerkép leküldése az Azure Container Registrybe
 
-Küldje el az *aci-tutorial-app* rendszerképet a regisztrációs adatbázisba a [docker push][docker-push] paranccsal. Helyettesítse be az `<acrLoginServer>` helyére a bejelentkezési kiszolgáló teljes nevét, amelyet az előző lépésben kért le.
+Miután ellátta az *aci-tutorial-app* rendszerképet a privát tárolójegyzék bejelentkezési kiszolgálójának teljes nevét tartalmazó címkével, leküldheti a tárolójegyzékbe a [docker push][docker-push] paranccsal. Helyettesítse be az `<acrLoginServer>` helyére a bejelentkezési kiszolgáló teljes nevét, amelyet az előző lépésben kért le.
 
 ```bash
 docker push <acrLoginServer>/aci-tutorial-app:v1
@@ -133,7 +148,8 @@ docker push <acrLoginServer>/aci-tutorial-app:v1
 
 A `push` művelet az internetkapcsolat sebességétől függően néhány másodperctől kezdve néhány percig is eltarthat, a kimenete pedig a következőhöz hasonló lesz:
 
-```bash
+```console
+$ docker push mycontainerregistry082.azurecr.io/aci-tutorial-app:v1
 The push refers to a repository [mycontainerregistry082.azurecr.io/aci-tutorial-app]
 3db9cac20d49: Pushed
 13f653351004: Pushed
@@ -146,29 +162,31 @@ v1: digest: sha256:ed67fff971da47175856505585dcd92d1270c3b37543e8afd46014d328f05
 
 ## <a name="list-images-in-azure-container-registry"></a>Az Azure Container Registryben található rendszerképek felsorolása
 
-Az Azure Container Registrybe leküldött rendszerképek listájának lekéréséhez használja az [az acr repository list][az-acr-repository-list] parancsot. Frissítse a parancsot a tárolóregisztrációs adatbázis nevével.
+Annak ellenőrzésére, hogy az imént leküldött rendszerkép valóban az Ön Azure Container Registryjében található-e, jelenítse meg a tárolójegyzékben található rendszerképek listáját az [az acr repository list][az-acr-repository-list] paranccsal. Cserélje le az `<acrName>` kifejezést a tárolóregisztrációs adatbázis nevére.
 
 ```azurecli
 az acr repository list --name <acrName> --output table
 ```
 
-Kimenet:
+Például:
 
-```azurecli
+```console
+$ az acr repository list --name mycontainerregistry082 --output table
 Result
 ----------------
 aci-tutorial-app
 ```
 
-Ezután egy adott rendszerkép címkéinek megtekintéséhez használja az [az acr repository show-tags][az-acr-repository-show-tags] parancsot.
+Egy adott rendszerkép *címkéinek* megtekintéséhez használja az [az acr repository show-tags][az-acr-repository-show-tags] parancsot.
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository aci-tutorial-app --output table
 ```
 
-Kimenet:
+A következőhöz hasonló kimenetnek kell megjelennie:
 
-```azurecli
+```console
+$ az acr repository show-tags --name mycontainerregistry082 --repository aci-tutorial-app --output table
 Result
 --------
 v1
@@ -176,17 +194,17 @@ v1
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban előkészítettünk egy Azure Container Registry tárolóregisztrációs adatbázist az Azure Container Instances szolgáltatásban való használatra, és leküldtünk bele egy tárolórendszerképet. A következő lépéseket hajtotta végre:
+Ebben az oktatóanyagban előkészítettünk egy Azure Container Registryt az Azure Container Instancesben való használatra, és leküldtünk bele egy tárolórendszerképet. A következő lépéseket hajtotta végre:
 
 > [!div class="checklist"]
 > * Telepített egy Azure Container Registry-példányt
 > * Címkézett egy tárolórendszerképet az Azure Container Registryhez
 > * Feltöltött egy rendszerképet az Azure Container Registrybe
 
-Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan helyezhető üzembe a tároló az Azure-ban az Azure Container Instances használatával.
+Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan helyezhető üzembe a tároló az Azure-ban az Azure Container Instances használatával:
 
 > [!div class="nextstepaction"]
-> [Tárolók üzembe helyezése az Azure Container Instances szolgáltatásban](./container-instances-tutorial-deploy-app.md)
+> [Tárolók üzembe helyezése az Azure Container Instances szolgáltatásban](container-instances-tutorial-deploy-app.md)
 
 <!-- LINKS - External -->
 [docker-build]: https://docs.docker.com/engine/reference/commandline/build/

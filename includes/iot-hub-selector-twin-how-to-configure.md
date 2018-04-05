@@ -9,18 +9,18 @@
 
 ## <a name="introduction"></a>Bevezetés
 
-A [Ismerkedés az IoT Hub eszköz twins][lnk-twin-tutorial], megtudta, hogyan állítható be az eszköz metaadatait a megoldás háttér használata *címkék*, egy eszköz alkalmazásból eszköz feltételek jelentés használatával *tulajdonságok jelentett*, és lekérdezheti az SQL-szerű nyelv használatával adatokat.
+A [Ismerkedés az IoT Hub eszköz twins][lnk-twin-tutorial], megtudta, hogyan kell beállítani, az eszköz metaadatokat használ *címkék*. Eszköz feltételek kapott egy eszköz alkalmazás használt *tulajdonságok jelentett*, és majd lekérdezett ezt az információt az SQL-szerű nyelv használatával.
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan használja a két eszköz *szükséges tulajdonságok* együtt *tulajdonságok jelentett*, és így távolról konfigurálhat az eszközön futó alkalmazások. Pontosabban Ez az oktatóanyag bemutatja, hogyan egy eszköz iker jelentett és kívánt tulajdonságokkal engedélyezze a többlépéses konfigurálása egy alkalmazást, és adja meg a válnak láthatóvá, a megoldás háttérrendszeréhez, ez a művelet állapotát az összes eszközön. Az eszköz-konfigurációk a szerepkör további információhoz található [IoT-központ az eszközkezelés áttekintése][lnk-dm-overview].
+Ez az oktatóanyag leírja, hogyan használható a két eszköz *szükséges tulajdonságok* és *tulajdonságok jelentett* és így távolról konfigurálhat az eszközön futó alkalmazások. Jelentette, és egy eszköz iker kívánt tulajdonságokat engedélyezése egy többlépéses konfigurációja, amely egy alkalmazást, és adja meg a látható-e a művelet állapotát az összes eszközön. Az eszköz-konfigurációk a szerepkör további információhoz található [IoT-központ az eszközkezelés áttekintése][lnk-dm-overview].
 
-Magas szinten eszköz twins használata lehetővé teszi, hogy a megoldás háttérrendszeréhez, adja meg a kívánt konfigurációs parancsok küldése helyett a kezelt eszközök. Ez az eszköz feladata frissíti a konfigurációját (IoT forgatókönyvekben, ahol adott eszközhöz feltételek azonnal a parancsok végrehajtására hatással fontos), a legjobb módszer beállítása helyezi a megoldás háttérrendszeréhez folyamatosan jelentéskészítés közben az aktuális állapot és a lehetséges hibaállapotok, a frissítési folyamat. Ez a minta nem műszeres felügyeleti eszközöket, a nagy, mert lehetővé teszi, hogy a megoldás háttérrendszeréhez, hogy a teljes látható-e a konfigurációs folyamat állapotát az összes eszközön.
+[!INCLUDE [iot-hub-basic](iot-hub-basic-whole.md)]
 
-> [!NOTE]
-> Olyan esetekben, ahol vezérelt eszközök több interaktív módon (egy felhasználó által felügyelt alkalmazásból ventilátor bekapcsolása), érdemes lehet [módszerek közvetlen][lnk-methods].
-> 
-> 
+Magas szinten eszköz twins használata lehetővé teszi, hogy a megoldás háttérrendszeréhez, adja meg a kívánt konfigurációs parancsok küldése helyett a kezelt eszközök. Az eszköz nem frissíti a konfigurációját (IoT forgatókönyvekben, ahol adott eszközhöz feltételek azonnal a parancsok végrehajtására hatással fontos), a legjobb módszer beállítása feladata az aktuális állapot és a lehetséges folyamatosan reporting közben a frissítési folyamat hibaállapotok. Zárolás műszeres felügyeleti eszközöket, a nagy, az összes eszközön nyújtja a megoldás háttér-teljes látható-e a konfigurációs folyamat állapotát.
 
-Ebben az oktatóanyagban a megoldás háttérrendszeréhez a céleszközön telemetriai konfigurációját módosítja, és emiatt az adott, az eszköz alkalmazás a többlépéses folyamatot követi egy konfigurációs frissítés (például a számítógép újraindítására szoftver modul, amely ezt az oktatóanyag szimulálja egyszerű késéssel).
+> [!TIP]
+> Olyan esetekben, ahol eszközök (például egy felhasználó által felügyelt alkalmazásból ventilátor bekapcsolása) több interaktív módon szabályozhatók, érdemes lehet [módszerek közvetlen][lnk-methods].
+
+Ebben az oktatóanyagban a megoldás háttérrendszeréhez a célként megadott eszköz telemetriai konfigurációját módosítja, úgy, hogy az eszköz alkalmazás a konfigurációs frissítés vonatkozik. Például egy konfigurációs frissítés volna kell a számítógép újraindítására szoftver modul, ebben az oktatóanyagban egy egyszerű késéssel szimulálja.
 
 A megoldás háttérrendszeréhez tárolja a konfiguráció a két eszköz kívánt tulajdonságok az alábbi módon:
 
@@ -39,10 +39,8 @@ A megoldás háttérrendszeréhez tárolja a konfiguráció a két eszköz kív�
             ...
         }
 
-> [!NOTE]
-> Konfigurációk lehetnek összetett objektumra, mert rendelt egyedi azonosítók (kivonatok vagy [GUID][lnk-guid]) egyszerűbbé teheti az összehasonlítást.
-> 
-> 
+Konfigurációk lehetnek összetett objektumra, mert rendelt egyedi azonosítók (kivonatok vagy [GUID][lnk-guid]).
+
 
 Az eszköz alkalmazás jelent a kívánt tulajdonságot tükrözés aktuális konfigurációja **telemetryConfig** jelentett tulajdonságai:
 
@@ -62,7 +60,7 @@ Az eszköz alkalmazás jelent a kívánt tulajdonságot tükrözés aktuális ko
 
 Megjegyzés: hogyan a jelentett **telemetryConfig** további tulajdonsága **állapot**, a konfiguráció frissítési folyamat állapotának jelentésére használt.
 
-Amikor egy új szükségeskonfiguráció érkezik, az eszköz alkalmazás egy függőben lévő konfigurációs adatok módosításával jelentések:
+Amikor egy új szükségeskonfiguráció érkezik, az eszköz alkalmazás egy függőben lévő konfigurációs állapotát módosításával jelentések:
 
         {
             "properties": {
@@ -82,8 +80,7 @@ Amikor egy új szükségeskonfiguráció érkezik, az eszköz alkalmazás egy f�
             }
         }
 
-Majd egy későbbi időpontban, az eszköz alkalmazás jelentést készít a sikeres vagy sikertelen volt, a művelet által a fenti tulajdonság.
-Vegye figyelembe, hogy a megoldás háttérrendszeréhez Mitől képes, tetszőleges időpontban, a konfigurációs folyamat állapotának lekérdezése az eszközön.
+Ezt követően egy későbbi időpontban az eszköz alkalmazás jelentést készít a sikeres vagy sikertelen volt, a művelet a tulajdonság által. A megoldás háttérrendszeréhez lekérdezheti a konfigurációs folyamat állapotát az összes eszközön bármikor.
 
 Ez az oktatóanyag a következőket mutatja be:
 

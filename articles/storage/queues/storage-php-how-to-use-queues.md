@@ -1,10 +1,10 @@
 ---
-title: "Php-ből a Queue storage használata |} Microsoft Docs"
-description: "Útmutató: az Azure Queue storage szolgáltatás segítségével hozza létre, és törli az üzenetsorok, és helyezze, get, és törli az üzenetet. Minták PHP nyelven íródtak."
+title: Php-ből a Queue storage használata |} Microsoft Docs
+description: 'Útmutató: az Azure Queue storage szolgáltatás segítségével hozza létre, és törli az üzenetsorok, és helyezze, get, és törli az üzenetet. Minták PHP nyelven íródtak.'
 documentationcenter: php
 services: storage
-author: tamram
-manager: timlt
+author: roygara
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 7582b208-4851-4489-a74a-bb952569f55b
 ms.service: storage
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
 ms.date: 01/11/2018
-ms.author: tamram
-ms.openlocfilehash: 02ffd817f34ae7d5fa1557db0a74e8ff06ab69fc
-ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
+ms.author: rogarana
+ms.openlocfilehash: ec0c6e22919e84bbaed284e16211ef52e526991d
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>How to use Queue storage from PHP (A Queue Storage használata PHP-val)
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -48,7 +48,7 @@ Ebben az útmutatóban használja a várólista tárolási szolgáltatásainak, 
       }
     }
     ```
-2. Töltse le  **[composer.phar] [ composer-phar]**  a projekt gyökérkönyvtárában.
+2. Töltse le **[composer.phar] [ composer-phar]** a projekt gyökérkönyvtárában.
 3. Nyisson meg egy parancssort, és hajtsa végre a következő parancsot a projekt gyökérkönyvtárában
    
     ```
@@ -261,7 +261,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="change-the-contents-of-a-queued-message"></a>Üzenetsorban található üzenet tartalmának módosítása
-Módosíthatja a tartalmát egy üzenet helyben a várólistán lévő meghívásával **QueueRestProxy -> updateMessage**. Ha az üzenet munkafeladatot jelöl, ezzel a funkcióval frissítheti a munkafeladat állapotát. Az alábbi kód frissíti az üzenetsorban található üzenetet az új tartalommal, és meghatározza a láthatósági időkorlátot további 60 másodperccel bővíti. Ez az üzenet társított feladat állapotát menti, és az ügyfél folytathatja a munkát az üzenetben további egy percet biztosít. Ezzel a technikával többlépéses munkafolyamatokat is nyomon követhet az üzenetsor üzenetein anélkül, hogy újra kéne kezdenie, ha a folyamat valamelyik lépése hardver- vagy szoftverhiba miatt meghiúsul. A rendszer általában nyilvántartja az újrapróbálkozások számát, és ha az üzenettel *n* alkalomnál többször próbálkoznak, akkor törlődik. Ez védelmet biztosít az ellen, hogy egy üzenetet minden feldolgozásakor kiváltson egy alkalmazáshibát.
+Módosíthatja a tartalmát egy üzenet helyben a várólistán lévő meghívásával **QueueRestProxy -> updateMessage**. Ha az üzenet munkafeladatot jelöl, ezzel a funkcióval frissítheti a munkafeladat állapotát. Az alábbi kód frissíti az üzenetsorban található üzenetet az új tartalommal, és meghatározza a láthatósági időkorlátot további 60 másodperccel bővíti. Ez az üzenet társított feladat állapotát menti, és az ügyfél folytathatja a munkát az üzenetben további egy percet biztosít. Ezzel a technikával többlépéses munkafolyamatokat is nyomon követhet az üzenetsor üzenetein anélkül, hogy újra kéne kezdenie, ha a folyamat valamelyik lépése hardver- vagy szoftverhiba miatt meghiúsul. A rendszer általában nyilván tartja az újrapróbálkozások számát, és ha az üzenettel *n* alkalomnál többször próbálkoznak, akkor törlődik. Ez védelmet biztosít az ellen, hogy egy üzenetet minden feldolgozásakor kiváltson egy alkalmazáshibát.
 
 ```php
 require_once 'vendor/autoload.php';

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: 4dd908908877a222c708c9b2ab6255ab9a4b414a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e7fc12c9b4cc79109975e34f64f236394c33af25
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Az Azure virtuálisgép-skálázási készletekben – gyakori kérdések
 
@@ -63,7 +63,11 @@ Válaszok virtuálisgép-méretezési csoportok kapcsolatos gyakori kérdések a
 
 **K.** Használhatok virtuálisgép-méretezési csoportokat Azure rendelkezésre állási csoportokkal?
 
-**V.** Igen. A méretezési csoport egy implicit rendelkezésre állási csoport öt tartalék és öt frissítési tartománnyal. A 100-nál több virtuális gépet tartalmazó méretezési csoportok több *elhelyezési csoportra* is kiterjednek, amelyek több rendelkezésre állási csoportnak felelnek meg. További információ az elhelyezési csoportokról: [Nagyméretű virtuálisgép-méretezési csoportok használata](virtual-machine-scale-sets-placement-groups.md). A virtuális gépek rendelkezésre állási csoportja létrejöhet ugyanabban a virtuális hálózatban, mint a virtuálisgép-méretezési csoport. Az egyik gyakran alkalmazott konfiguráció egy rendelkezésre állási csoportba helyezi a vezérlő csomópont virtuális gépeit (ezek gyakran igényelnek egyéni konfigurálást), és a méretezési csoportba helyezi az adatcsomópontokat.
+**V.** A regionális (nem zonal) méretezési használ *elhelyezési csoportok*, amelyek beállítható úgy, hogy működjön, és állítsa be az öt tartalék tartományok implicit rendelkezésre állási és öt tartományok frissítése. 100-nál több virtuális gépek méretezési csoportok span több elhelyezési csoportot. További információ az elhelyezési csoportokról: [Nagyméretű virtuálisgép-méretezési csoportok használata](virtual-machine-scale-sets-placement-groups.md). A virtuális gépek rendelkezésre állási csoportja létrejöhet ugyanabban a virtuális hálózatban, mint a virtuálisgép-méretezési csoport. Az egyik gyakran alkalmazott konfiguráció egy rendelkezésre állási csoportba helyezi a vezérlő csomópont virtuális gépeit (ezek gyakran igényelnek egyéni konfigurálást), és a méretezési csoportba helyezi az adatcsomópontokat.
+
+**K.** Tegye méretezni a zónákat az Azure rendelkezésre állási készletek használata?
+
+**V.** Igen! További információkért lásd: a [méretezési zóna doc](./virtual-machine-scale-sets-use-availability-zones.md).
 
 
 ## <a name="autoscale"></a>Automatikus méretezés

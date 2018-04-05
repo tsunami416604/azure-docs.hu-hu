@@ -1,24 +1,24 @@
 ---
-title: "IoT Hub létrehozása az Azure-portál használatával |} Microsoft Docs"
-description: "Hogyan létrehozására, kezelésére és törlése az Azure IoT hub az Azure portálon keresztül. Tarifacsomagok, a méretezés, a biztonsági, és a konfigurációs üzenetküldésre kapcsolatos adatokat tartalmaz."
+title: IoT Hub létrehozása az Azure-portál használatával |} Microsoft Docs
+description: Hogyan létrehozására, kezelésére és törlése az Azure IoT hub az Azure portálon keresztül. Tarifacsomagok, a méretezés, a biztonsági, és a konfigurációs üzenetküldésre kapcsolatos adatokat tartalmaz.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0909cd2b-4c1e-49e0-b68a-75532caf0a6a
 ms.service: iot-hub
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2017
+ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: ac1a52355ffa5354bebe3b98fdb75783bcd57697
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 6ffde076caff6217bf6255c9294eca63d3e39b85
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Létrehoz egy IoT-központot, az Azure portál használatával
 
@@ -53,18 +53,9 @@ Létrehoz egy IoT-központot, adjon nevet az IoT-központot. Ez a név minden Io
 
 ### <a name="choose-the-pricing-tier"></a>A tarifacsomag választható
 
-Négy szintek közül választhat: **szabad**, **szabványos 1** és **szabványos 2**, és **Standard S3**. Ingyenes szint lehetővé teszi, hogy a csatlakoztatva kell lennie az IoT-központot, és legfeljebb 8000 üzenet naponta csak 500 eszközök.
+Választhatja ki több rétegek szolgáltatások attól függően, hogy hány kívánt és hány üzenetek küldése az / nap-megoldáson keresztül. Ingyenes szint készült tesztelésében és értékelésében. Ez lehetővé teszi, hogy a csatlakoztatva kell lennie az IoT hub és 8000 üzenet naponta legfeljebb 500 eszközök. Minden Azure-előfizetést hozhat létre egy IoT-központ ingyenes szint. 
 
-**Standard szintű, S1**: S1 kiadás nagyszámú eszközöket, hogy mindegyik generál kis mennyiségű adatokat az IoT-megoldások használata. Az S1 kiadás minden egységével naponta 400 ezer üzenetet lehet továbbítani az összes csatlakoztatott eszközön.
-
-**Standard S2**: S2 verzióját használja, amelyben eszközök nagy mennyiségű adat készítése az IoT-megoldások. S2 kiadás tárolóegységekhez lehetővé teszi, hogy minden csatlakoztatott eszközön közötti naponta 6 millió üzeneteket.
-
-**Standard S3**: S3 verzióját használja, amely nagy mennyiségű adat az IoT-megoldások. S3 kiadás tárolóegységekhez lehetővé teszi, hogy akár 300 millió üzenetek / nap közötti minden csatlakoztatott eszközön.
-
-![][4]
-
-> [!NOTE]
-> Az IoT-központ csak egy ingyenes hub / Azure-előfizetés teszi lehetővé.
+Réteg beállításokkal kapcsolatos részletekért lásd: [kiválasztása a megfelelő IoT-központ réteg](iot-hub-scaling.md).
 
 ### <a name="iot-hub-units"></a>IoT hub-egységek
 
@@ -100,7 +91,7 @@ Módosíthatja egy meglévő IoT-központ beállításait az IoT Hub panel a lé
 
 **Megosztott hozzáférési házirendek**: ezek a házirendek meghatározása csatlakozni az IoT Hub eszközöket és szolgáltatásokat engedélyeit. Ezek a házirendek eléréséhez kattintson **megosztott elérési házirendek** alatt **általános**. Ezen a panelen módosíthatja a meglévő házirendeket, vagy adjon hozzá egy új házirendet.
 
-### <a name="create-a-policy"></a>Házirend létrehozása
+### <a name="create-a-policy"></a>Szabályzat létrehozása
 
 * Kattintson a **Hozzáadás** egy panel megnyitásához. Itt adhatja meg az új házirend nevét és a kívánt engedélyek társítása a házirend, az alábbi ábrán látható módon:
 
@@ -136,7 +127,7 @@ Nincsenek a két beépített végpont: **eszköz visszajelzéseire felhő** és 
   > [!NOTE]
   > Az alapértelmezett felhasználói csoport nem szerkeszthető, és nem törölhető.
 
-### <a name="custom-endpoints"></a>Egyéni végpontokat
+### <a name="custom-endpoints"></a>Egyéni végpontok
 
 Egyéni végpontokat az IoT hub, a portál használatával is hozzáadhat. Az a **végpontok** panelen kattintson **Hozzáadás** megnyitásához tetején a **végpont hozzáadása** panel. Adja meg a szükséges adatokat, majd kattintson a **OK**. Az egyéni végpontjának mostantól szerepel a fő **végpontok** panelen.
 
@@ -154,22 +145,11 @@ Hozzáadhat útvonalak az IoT hub kattintva **Hozzáadás** tetején a **útvona
 
 ![][15]
 
-## <a name="pricing-and-scale"></a>Tarifa- és
-
-Egy meglévő IoT-központot árképzési keresztül módosítható a **árazás** beállításait, a következő kivételekkel:
-
-* Az aktuális megvalósításában egy IoT hubot szabad SKU nem rétegek egy olyan címre változtassák a fizetős SKU, vagy fordítva.
-* Csak lehet egy ingyenes szint IoT-központ az Azure-előfizetésben.
-
-![][12]
-
-Áthelyezheti egy magasabb az alacsonyabb szint csak akkor, ha adott napon küldött üzenetek száma túllépi a kvótát, az alacsonyabb szinten. Például ha naponta üzenetek száma meghaladja a 400000, majd az IoT hub rétegét módosíthatja. Azonban ha megváltoztatja az S1 réteghez majd az IoT hub folyamatban van az adott nap.
-
 ## <a name="delete-the-iot-hub"></a>Az IoT hub törlése
 
 Az IoT hub törli kattintva tallózással is **Tallózás**, majd kiválasztja a megfelelő hub törlése. Az IoT hub törléséhez kattintson a **törlése** az IoT-központnév gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbi hivatkozásokból tudhat meg többet az Azure IoT Hub kezelése:
 
@@ -180,7 +160,7 @@ Az alábbi hivatkozásokból tudhat meg többet az Azure IoT Hub kezelése:
 Az IoT-központ képességeit további megismeréséhez lásd:
 
 * [IoT Hub fejlesztői útmutató][lnk-devguide]
-* [Az Azure IoT peremhálózati peremeszközök AI központi telepítése][lnk-iotedge]
+* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással][lnk-iotedge]
 * [Az IoT-megoldásból az alapoktól biztonságos mentése][lnk-securing]
 
 [4]: ./media/iot-hub-create-through-portal/create-iothub.png

@@ -1,21 +1,21 @@
 ---
-title: Az első Azure SQL-adatbázis megtervezése | Microsoft Docs
-description: Ismerje meg, hogyan tervezheti meg első Azure SQL-adatbázisát az Azure Portalon az SQL Server Management Studióval.
+title: Az első Azure SQL-adatbázis megtervezése SSMS használatával | Microsoft Docs
+description: Ismerje meg, hogyan tervezheti meg első Azure SQL-adatbázisát az SQL Server Management Studióval.
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: mvc,develop databases
 ms.topic: tutorial
-ms.date: 03/15/2018
+ms.date: 03/23/2018
 ms.author: carlrab
-ms.openlocfilehash: 12301d46b497b49032b1b8bdefe2056a7df143d1
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 40da83c0214e3c493fdb72504753b5b59ea20b3e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="design-your-first-azure-sql-database"></a>Az első Azure SQL-adatbázis megtervezése
+# <a name="design-your-first-azure-sql-database-using-ssms"></a>Az első Azure SQL-adatbázis megtervezése SSMS használatával
 
 Az Azure SQL Database a Microsoft Cloudon (Azure) alapuló, szolgáltatásként nyújtott relációs adatbázis (DBaaS). Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket az Azure Portal és az [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) használatával: 
 

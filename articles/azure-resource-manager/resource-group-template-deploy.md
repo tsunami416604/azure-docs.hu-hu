@@ -1,6 +1,6 @@
 ---
-title: "Erőforrások az PowerShell és a sablon telepítése |} Microsoft Docs"
-description: "Azure Resource Manager és az Azure PowerShell használatával telepítse a erőforrások az Azure. Az erőforrások egy Resource Manager-sablonban vannak meghatározva."
+title: Erőforrások az PowerShell és a sablon telepítése |} Microsoft Docs
+description: Azure Resource Manager és az Azure PowerShell használatával telepítse a erőforrások az Azure. Az erőforrások egy Resource Manager-sablonban vannak meghatározva.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2017
 ms.author: tomfitz
-ms.openlocfilehash: 3378c13934a5a0743aa40ebb19940f1afa71fc71
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: eb4ebe0b1c0e4799aea6401b068d881e5aa47026
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel
 
@@ -34,7 +34,7 @@ Szükség esetén telepítse az Azure PowerShell-modult a található utasítás
 
 Ha erőforrásokat üzembe helyezi az Azure-ba, hogy:
 
-1. Jelentkezzen be az Azure-fiókjával
+1. Jelentkezzen be az Azure-fiókjába.
 2. Hozzon létre egy erőforráscsoportot, amely a telepített erőforrások tárolójaként szolgál. Az erőforráscsoport neve csak tartalmazhatnak alfanumerikus karaktereket, pontokat, aláhúzásjeleket, kötőjeleket és zárójeleket tartalmazhat. Legfeljebb 90 karakter lehet. Nem végződhet ponttal.
 3. Telepítse az erőforráscsoport a sablon, amely meghatározza az erőforrás létrehozásához.
 
@@ -78,7 +78,9 @@ A felhő rendszerhéj az alábbi parancsokat használja:
 
 ```powershell
 New-AzureRmResourceGroup -Name ExampleResourceGroup -Location "South Central US"
-New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile "C:\users\ContainerAdministrator\CloudDrive\templates\azuredeploy.json" -storageAccountType Standard_GRS
+New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleResourceGroup `
+  -TemplateUri <copied URL> `
+  -storageAccountType Standard_GRS
 ```
 
 ## <a name="deploy-to-more-than-one-resource-group-or-subscription"></a>Egynél több erőforráscsoportba vagy előfizetésbe történő központi telepítése
@@ -134,7 +136,7 @@ Ha a sablon szerepel a PowerShell-parancs olyan paraméterre, amelynek a neve me
 Minden olyan erőforrásnál tényleges telepítése nélkül a sablonnal és paraméterfájlokkal értékek teszteléséhez [teszt-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/test-azurermresourcegroupdeployment). 
 
 ```powershell
-Test-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
+Test-AzureRmResourceGroupDeployment -ResourceGroupName ExampleResourceGroup `
   -TemplateFile c:\MyTemplates\storage.json -storageAccountType Standard_GRS
 ```
 

@@ -1,10 +1,10 @@
 ---
-title: Rendelkezésre állási zónák áttekintése |} Microsoft Docs
-description: Ez a cikk áttekintést nyújt a rendelkezésre állási zónák az Azure-ban.
+title: Azure rendelkezésre állási zónák áttekintése |} Microsoft Docs
+description: Ez a cikk áttekintést rendelkezésre állási zónák használata magas rendelkezésre állású és rugalmas alkalmazások létrehozása az Azure-ban
 services: ''
 documentationcenter: ''
-author: markgalioto
-manager: carmonm
+author: iainfoulds
+manager: jeconnoc
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -13,31 +13,37 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/19/2018
-ms.author: markgal
+ms.date: 03/21/2018
+ms.author: iainfou
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
-ms.openlocfilehash: b4db442a54b4360b75df40156ca0d4e4ee1eb0d1
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a4133779538e412a19a11de678b1527fb8023a87
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="overview-of-availability-zones-in-azure-preview"></a>A rendelkezésre állási zónák (előzetes verzió) Azure-ban – áttekintés
+# <a name="overview-of-availability-zones-in-azure"></a>A rendelkezésre állási zónák az Azure-ban – áttekintés
+Rendelkezésre állási zónák magas rendelkezésre állású ajánlat, amely megakadályozza az alkalmazások és adatok datacenter hiba. Rendelkezésre állási zónák egyedi fizikai helyen belül egy Azure-régióban. Az egyes zónák felszerelt független power hűtési, és a hálózat egy vagy több adatközpontok épül fel. Rugalmasság biztosítása érdekében legalább három különálló zónákra minden engedélyezett régióban van. A fizikailag szét van választva a rendelkezésre állási zónák régión belül alkalmazások és adatok datacenter hibák védelmet nyújt. Zónaredundáns szolgáltatások rendelkezésre állásának zónák nyújt védelmet a single-pontok-az-szemben az alkalmazások és adatok replikálásához. A rendelkezésre állási zónák Azure iparág ajánlott 99,99 % VM hasznos üzemidő SLA-t kínál. Az Azure egészére vonatkozó rendelkezésre állási garancia magyarázata a teljes [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)-ban található.
 
-Rendelkezésre állási zónák a Súgó gombra a datacenter-szintű hibák elleni védelemben. Egy Azure-régiót belül találhatók, és mindegyiket egy rendelkezik, saját független forrás-, hálózati és hűtési kapcsolja. Rugalmasság biztosítása érdekében legalább három különálló zónákra minden engedélyezett régióban van. A fizikai és logikai elkülönítése a rendelkezésre állási zónák régión belül alkalmazások és adatok zónaszintű hibák védelmet nyújt. 
+Kibővített kialakítást hozhat létre magas rendelkezésre állású be az alkalmazás architektúrák együttes elhelyezésével a zónán belül a számítási, tárolási, hálózatkezelési és adatok erőforrások és a többi replikálásához. Azure-szolgáltatásokat, amely támogatja a rendelkezésre állási zónák két kategóriába sorolhatók:
 
+- **Zonal szolgáltatások** – rögzíti a megadott zónában (például virtuális gépek, kezelt lemezeken, IP-címek), az erőforrás vagy
+- **Zónaredundáns szolgáltatások** – platform automatikusan zónák (például zónaredundáns tárolás, az SQL-adatbázis) keresztül replikálásra.
+
+Átfogó üzleti folytonosságot az Azure-on, hogy a rendelkezésre állási zónák használatával az Azure-régió párokkal alkalmazásarchitektúra felépítéséhez. Szinkron replikálása az alkalmazásokat és adatokat, rendelkezésre állási zónák belül egy Azure-régió, magas rendelkezésre állású, és aszinkron módon vész-helyreállítási védelem Azure-régiók közötti replikáció.
+ 
 ![egy zóna régióban fog konceptuális ábrázolása](./media/az-overview/az-graphic-two.png)
 
 ## <a name="regions-that-support-availability-zones"></a>Rendelkezésre állási zónák támogató régiók
 
-- USA 2. keleti régiója
 - USA középső régiója
-- Nyugat-Európa
 - Közép-Franciaország
-- Délkelet-Ázsia
+- USA keleti régiója 2 (előzetes verzió)
+- Nyugat-Európában (előzetes verzió)
+- Délkelet-Ázsia (előzetes verzió)
+
 
 ## <a name="services-that-support-availability-zones"></a>Rendelkezésre állási zónák támogató szolgáltatások
-
 Azure-szolgáltatás, amely támogatja a rendelkezésre állási zónák a következők:
 
 - Linux rendszerű virtuális gépek
@@ -46,21 +52,23 @@ Azure-szolgáltatás, amely támogatja a rendelkezésre állási zónák a köve
 - Felügyelt lemezek
 - Load Balancer
 - Nyilvános IP-cím
-- Zone-Redundant Storage
+- Zónaredundáns tárolás
 - SQL Database
 
-## <a name="get-started-with-the-availability-zones-preview"></a>Ismerkedjen meg a rendelkezésre állási zónák előzetes verzió
 
-A rendelkezésre állási zónák preview elérhető az USA keleti régiója 2, Velünk központi, Nyugat-Európa, és az adott Azure-szolgáltatásokhoz központi Franciaország régiók. 
+## <a name="pricing"></a>Díjszabás
+Nincs további költség nélkül üzembe helyezett egy rendelkezésre állási zóna virtuális gépekhez. Ha két vagy több virtuális gépet egy Azure-régiót belül két vagy több rendelkezésre állási zónák telepített 99,99 % VM hasznos üzemidő SLA kínálják. További nagyfokú rendelkezésre állás zóna VM-VM adatok adatátviteli díjakkal lesz. További információkért tekintse át a [sávszélesség árképzési](https://azure.microsoft.com/pricing/details/bandwidth/) lap.
 
-1. [Bejelentkezés a rendelkezésre állási zónák előzetes](http://aka.ms/azenroll). 
-2. Jelentkezzen be az Azure-előfizetéshez.
-3. Válasszon egy régiót, amely támogatja a rendelkezésre állási zónák.
-4. Az alábbi hivatkozások valamelyikével indíthatja a rendelkezésre állási zónák a szolgáltatással. 
-    - [Virtuális gép létrehozása](../virtual-machines/windows/create-portal-availability-zone.md)
-    - [Virtuálisgép-méretezési csoport létrehozása](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-    - [Adjon hozzá egy felügyelt lemezt PowerShell használatával](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
-    - [Terheléselosztó](../load-balancer/load-balancer-standard-overview.md)
+
+## <a name="get-started-with-availability-zones"></a>Ismerkedés a rendelkezésre állási zónák
+- [Virtuális gép létrehozása](../virtual-machines/windows/create-portal-availability-zone.md)
+- [Adjon hozzá egy felügyelt lemezt PowerShell használatával](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
+- [Egy zóna redundáns virtuálisgép-méretezési csoport létrehozása](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
+- [Terheléselosztás virtuális gépek a szabványos terheléselosztó zónaredundáns időtúllépést a zónák között](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
+- [Terheléselosztás virtuális gépek a szabványos terheléselosztó zonal időtúllépést a zónában](../load-balancer/load-balancer-standard-public-zonal-cli.md)
+- [Zónaredundáns tárolás](../storage/common/storage-redundancy-zrs.md)
+- [SQL Database](../sql-database/sql-database-high-availability.md#zone-redundant-configuration-preview)
+
 
 ## <a name="next-steps"></a>További lépések
 - [Gyorsindítási sablonok](http://aka.ms/azqs)

@@ -1,11 +1,11 @@
 ---
-title: "Telepítéséhez és kezeléséhez biztonsági mentések erőforrás-kezelő telepített virtuális gépek PowerShell használatával |} Microsoft Docs"
-description: "Használja a PowerShell telepítése és kezelése az Azure biztonsági mentések erőforrás-kezelő telepített virtuális gépekhez"
+title: Telepítéséhez és kezeléséhez biztonsági mentések erőforrás-kezelő telepített virtuális gépek PowerShell használatával |} Microsoft Docs
+description: Használja a PowerShell telepítése és kezelése az Azure biztonsági mentések erőforrás-kezelő telepített virtuális gépekhez
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 68606e4f-536d-4eac-9f80-8a198ea94d52
 ms.service: backup
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 12/20/2017
 ms.author: markgal;trinadhk;pullabhk
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ab75c88409c6e20f9bc46ad3b4336da150abd52c
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: bac1e679aa46b280596ab09ba40da780c81cac5d
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>Készítsen biztonsági másolatot a virtuális gépek AzureRM.RecoveryServices.Backup-parancsmagok használatával
 
@@ -88,7 +88,7 @@ Megkezdéséhez:
     PS C:\> Select-AzureRmSubscription -SubscriptionName $SubscriptionName
     ```
 
-5. Ha az Azure biztonsági mentés először használ, kell használnia a  **[Register-AzureRmResourceProvider](http://docs.microsoft.com/powershell/module/azurerm.resources/register-azurermresourceprovider)**  parancsmag futtatásával regisztrálja az Azure Recovery szolgáltató az előfizetéshez.
+5. Ha az Azure biztonsági mentés először használ, kell használnia a **[Register-AzureRmResourceProvider](http://docs.microsoft.com/powershell/module/azurerm.resources/register-azurermresourceprovider)** parancsmag futtatásával regisztrálja az Azure Recovery szolgáltató az előfizetéshez.
 
     ```PS
     PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
@@ -100,7 +100,7 @@ Megkezdéséhez:
     PS C:\> Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     PS C:\> Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Backup"
     ``` 
-A parancs kimenetében a **RegistrationState** be kell állítania, **regisztrált**. Ha nem, most futtassa újra a  **[Register-AzureRmResourceProvider](http://docs.microsoft.com/powershell/module/azurerm.resources/register-azurermresourceprovider)**  parancsmag fent látható.
+A parancs kimenetében a **RegistrationState** be kell állítania, **regisztrált**. Ha nem, most futtassa újra a **[Register-AzureRmResourceProvider](http://docs.microsoft.com/powershell/module/azurerm.resources/register-azurermresourceprovider)** parancsmag fent látható.
 
 A PowerShell segítségével automatizálhatók a következő feladatokat:
 
@@ -114,17 +114,17 @@ A PowerShell segítségével automatizálhatók a következő feladatokat:
 
 A következő lépések alapján a Recovery Services-tároló létrehozása. Recovery Services-tároló nem egyezik egy biztonsági mentési tárolót.
 
-1. A Recovery Services-tároló egy Resource Manager szerinti erőforrás,, ezért el kell helyezni az erőforráscsoporton belül. Használjon egy meglévő erőforráscsoportot, vagy hozzon létre egy erőforráscsoportot a a  **[New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup)**  parancsmag. Erőforráscsoport létrehozásakor meg nevét és helyét, ahhoz az erőforráscsoporthoz.  
+1. A Recovery Services-tároló egy Resource Manager szerinti erőforrás,, ezért el kell helyezni az erőforráscsoporton belül. Használjon egy meglévő erőforráscsoportot, vagy hozzon létre egy erőforráscsoportot a a **[New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup)** parancsmag. Erőforráscsoport létrehozásakor meg nevét és helyét, ahhoz az erőforráscsoporthoz.  
 
     ```PS
     PS C:\> New-AzureRmResourceGroup -Name "test-rg" -Location "West US"
     ```
-2. Használja a  **[New-AzureRmRecoveryServicesVault](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault)**  parancsmaggal hozhat létre a Recovery Services-tároló. Ne felejtse el ugyanazon a helyen, a tároló adja meg, mint az erőforráscsoport használt.
+2. Használja a **[New-AzureRmRecoveryServicesVault](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault)** parancsmaggal hozhat létre a Recovery Services-tároló. Ne felejtse el ugyanazon a helyen, a tároló adja meg, mint az erőforráscsoport használt.
 
     ```PS
     PS C:\> New-AzureRmRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
-3. Megadhatja a használandó; adattároló redundanciája, amely használhat [helyileg redundáns tárolás (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) vagy [földrajzi redundáns tárolás (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage). A következő példa bemutatja a - BackupStorageRedundancy beállítás a testvault GeoRedundant értékre van állítva.
+3. Megadhatja a használandó; adattároló redundanciája, amely használhat [helyileg redundáns tárolás (LRS)](../storage/common/storage-redundancy-lrs.md) vagy [földrajzi redundáns tárolás (GRS)](../storage/common/storage-redundancy-grs.md). A következő példa bemutatja a - BackupStorageRedundancy beállítás a testvault GeoRedundant értékre van állítva.
 
     ```PS
     PS C:\> $vault1 = Get-AzureRmRecoveryServicesVault -Name "testvault"
@@ -137,7 +137,7 @@ A következő lépések alapján a Recovery Services-tároló létrehozása. Rec
    >
 
 ## <a name="view-the-vaults-in-a-subscription"></a>A tárolók előfizetés megtekintése
-Használjon  **[Get-AzureRmRecoveryServicesVault](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/get-azurermrecoveryservicesvault)**  megtekintéséhez az összes tárolók listája az aktuális előfizetésben. Ezt a parancsot használhatja, ellenőrizze, hogy létrejött-e egy új tárolót, vagy az előfizetést az elérhető tárolók megtekintéséhez.
+Használjon **[Get-AzureRmRecoveryServicesVault](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/get-azurermrecoveryservicesvault)** megtekintéséhez az összes tárolók listája az aktuális előfizetésben. Ezt a parancsot használhatja, ellenőrizze, hogy létrejött-e egy új tárolót, vagy az előfizetést az elérhető tárolók megtekintéséhez.
 
 Futtassa a parancsot, Get-AzureRmRecoveryServicesVault, az előfizetés összes tárolók megtekintéséhez. A következő példa bemutatja a minden egyes tároló megjelenő adatokat.
 
@@ -157,7 +157,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 Recovery Services-tároló segítségével a virtuális gépek védelmére. Alkalmazza a védelmet, mielőtt a tárolóban (a tárolóban lévő védett adatok típusától) környezetben, és a védelmi házirend ellenőrzése. A védelmi házirend az ütemezés a biztonsági mentési feladatok futtatásakor, és mennyi ideig őrzi meg minden egyes biztonsági mentési pillanatképet.
 
 ### <a name="set-vault-context"></a>Tároló környezet beállítása
-Ahhoz, hogy a virtuális gép védelme, használjon  **[Set-AzureRmRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)**  beállítani a tároló a környezetben. A tároló-környezet van beállítva, ha az összes későbbi parancsmag vonatkozik. Az alábbi példa megállapítja a tárolóban, a tároló *testvault*.
+Ahhoz, hogy a virtuális gép védelme, használjon **[Set-AzureRmRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)** beállítani a tároló a környezetben. A tároló-környezet van beállítva, ha az összes későbbi parancsmag vonatkozik. Az alábbi példa megállapítja a tárolóban, a tároló *testvault*.
 
 ```
 PS C:\> Get-AzureRmRecoveryServicesVault -Name "testvault" | Set-AzureRmRecoveryServicesVaultContext
@@ -166,7 +166,7 @@ PS C:\> Get-AzureRmRecoveryServicesVault -Name "testvault" | Set-AzureRmRecovery
 ### <a name="create-a-protection-policy"></a>Védelmi házirend létrehozása
 Recovery Services-tároló létrehozásakor az alapértelmezett védelem és adatmegőrzési ismét. Az alapértelmezett védelmi házirendet a biztonsági mentési feladatot, a megadott időpontban naponta váltja ki. Az alapértelmezett megőrzési házirend 30 napig őrzi meg a napi helyreállítási pont. Az alapértelmezett házirend segítségével gyorsan védelme a virtuális Gépet, és később különböző adatokkal házirend szerkesztése.
 
-Használjon  **[Get-AzureRmRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupprotectionpolicy)**  az adatvédelmi szabályzatok megtekintéséhez a tárolóban lévő állapottal. Ez a parancsmag is használhatja, egy adott házirend segítségével, vagy egy munkaterhelés-típushoz tartozó házirendek megtekintéséhez. Az alábbi példa-házirendet munkaterhelés, AzureVM lekérdezi.
+Használjon **[Get-AzureRmRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupprotectionpolicy)** az adatvédelmi szabályzatok megtekintéséhez a tárolóban lévő állapottal. Ez a parancsmag is használhatja, egy adott házirend segítségével, vagy egy munkaterhelés-típushoz tartozó házirendek megtekintéséhez. Az alábbi példa-házirendet munkaterhelés, AzureVM lekérdezi.
 
 ```
 PS C:\> Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
@@ -180,7 +180,7 @@ DefaultPolicy        AzureVM            AzureVM              4/14/2016 5:00:00 P
 >
 >
 
-A biztonsági mentési házirenddel legalább egy megőrzési házirend társítva. Adatmegőrzési házirend határozza meg, hány helyreállítási pont tartják után törli a rendszer. Használjon  **[Get-AzureRmRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupretentionpolicyobject)**  megtekintéséhez az alapértelmezett megőrzési házirend.  Hasonló módon használhatja  **[Get-AzureRmRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupschedulepolicyobject)**  az alapértelmezett ütemezés házirend beszerzéséhez. A  **[New-AzureRmRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy)**  parancsmag létrehoz egy PowerShell-objektum, amely tartalmazza a biztonsági mentési házirend. Az ütemezés és a megőrzési csoportházirend-objektumok bemeneteként szolgálnak a  **[New-AzureRmRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy)**  parancsmag. A következő példa az ütemezési házirend és az adatmegőrzési változók tárolja. A példában ezeket a változókat paraméterek megadásához a védelmi házirend létrehozásakor *NewPolicy*.
+A biztonsági mentési házirenddel legalább egy megőrzési házirend társítva. Adatmegőrzési házirend határozza meg, hány helyreállítási pont tartják után törli a rendszer. Használjon **[Get-AzureRmRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupretentionpolicyobject)** megtekintéséhez az alapértelmezett megőrzési házirend.  Hasonló módon használhatja **[Get-AzureRmRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupschedulepolicyobject)** az alapértelmezett ütemezés házirend beszerzéséhez. A **[New-AzureRmRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy)** parancsmag létrehoz egy PowerShell-objektum, amely tartalmazza a biztonsági mentési házirend. Az ütemezés és a megőrzési csoportházirend-objektumok bemeneteként szolgálnak a **[New-AzureRmRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy)** parancsmag. A következő példa az ütemezési házirend és az adatmegőrzési változók tárolja. A példában ezeket a változókat paraméterek megadásához a védelmi házirend létrehozásakor *NewPolicy*.
 
 ```
 PS C:\> $schPol = Get-AzureRmRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
@@ -193,7 +193,7 @@ NewPolicy           AzureVM            AzureVM              4/24/2016 1:30:00 AM
 
 
 ### <a name="enable-protection"></a>Védelem engedélyezése
-Miután meghatározta a biztonsági mentési házirenddel, továbbra is engedélyeznie kell egy elem a házirendet. Használjon  **[Enable-AzureRmRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/enable-azurermrecoveryservicesbackupprotection)**  kívánja engedélyezni a védelmet. Két objektum – az elemet, és a házirend-alapú védelem engedélyezését igényli. Ha a házirend már társítva van a tárolóban, a biztonsági mentési munkafolyamat kiváltásakor a házirend-ütemezést meghatározott időpontban.
+Miután meghatározta a biztonsági mentési házirenddel, továbbra is engedélyeznie kell egy elem a házirendet. Használjon **[Enable-AzureRmRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/enable-azurermrecoveryservicesbackupprotection)** kívánja engedélyezni a védelmet. Két objektum – az elemet, és a házirend-alapú védelem engedélyezését igényli. Ha a házirend már társítva van a tárolóban, a biztonsági mentési munkafolyamat kiváltásakor a házirend-ütemezést meghatározott időpontban.
 
 A következő példa engedélyezi a védelmet a cikkhez V2VM, a házirend, NewPolicy. Engedélyezze a védelmet a nem titkosított erőforrás-kezelő virtuális gépeken
 
@@ -243,7 +243,7 @@ PS C:\> Set-AzureRmRecoveryServicesBackupProtectionPolicy -Policy $pol  -Retenti
 ```
 
 ## <a name="trigger-a-backup"></a>A biztonsági mentés
-Használhat  **[Backup-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/backup-azurermrecoveryservicesbackupitem)**  a biztonsági mentési feladatot indít. Ha a kezdeti biztonsági másolatot, akkor egy teljes biztonsági mentés. Azt követő biztonsági mentéseket egy növekményes másolatot igénybe vehet. Használjon  **[Set-AzureRmRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)**  időt. a biztonsági mentési feladat előtt állítsa be a tároló környezetében. Az alábbi példa azt feltételezi, hogy a tároló környezet beállítása történt.
+Használhat **[Backup-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/backup-azurermrecoveryservicesbackupitem)** a biztonsági mentési feladatot indít. Ha a kezdeti biztonsági másolatot, akkor egy teljes biztonsági mentés. Azt követő biztonsági mentéseket egy növekményes másolatot igénybe vehet. Használjon **[Set-AzureRmRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)** időt. a biztonsági mentési feladat előtt állítsa be a tároló környezetében. Az alábbi példa azt feltételezi, hogy a tároló környezet beállítása történt.
 
 ```
 PS C:\> $namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM"
@@ -260,7 +260,7 @@ V2VM              Backup               InProgress            4/23/2016 5:00:30 P
 >
 
 ## <a name="monitoring-a-backup-job"></a>A biztonsági mentési feladatot figyelése
-Hosszú ideig futó műveletek, például a biztonsági mentési feladatok segítségével figyelheti az Azure portál használata nélkül. Ahhoz, hogy az egy folyamatban lévő feladat állapotát, használja a  **[Get-AzureRmRecoveryservicesBackupJob](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupjob)**  parancsmag. Ez a parancsmag lekérdezi a biztonsági mentési feladatok számára egy adott tárolóban, és adott tárolóhoz van megadva a tároló a környezetben. A következő példa egy folyamatban lévő feladat tömbként állapotát olvassa be, és a $joblist változó állapotát tárolja.
+Hosszú ideig futó műveletek, például a biztonsági mentési feladatok segítségével figyelheti az Azure portál használata nélkül. Ahhoz, hogy az egy folyamatban lévő feladat állapotát, használja a **[Get-AzureRmRecoveryservicesBackupJob](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupjob)** parancsmag. Ez a parancsmag lekérdezi a biztonsági mentési feladatok számára egy adott tárolóban, és adott tárolóhoz van megadva a tároló a környezetben. A következő példa egy folyamatban lévő feladat tömbként állapotát olvassa be, és a $joblist változó állapotát tárolja.
 
 ```
 PS C:\> $joblist = Get-AzureRmRecoveryservicesBackupJob –Status "InProgress"
@@ -270,7 +270,7 @@ WorkloadName     Operation            Status               StartTime            
 V2VM             Backup               InProgress            4/23/2016 5:00:30 PM           cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
 ```
 
-Ezek a feladatok befejezésére – ami szükségtelen kód - lekérdezési helyett használja a  **[várakozási-AzureRmRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/wait-azurermrecoveryservicesbackupjob)**  parancsmag. Ez a parancsmag végrehajtása felfüggesztése, addig, amíg a feladat befejeződik, vagy a megadott időtúllépési érték elérésekor.
+Ezek a feladatok befejezésére – ami szükségtelen kód - lekérdezési helyett használja a **[várakozási-AzureRmRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/wait-azurermrecoveryservicesbackupjob)** parancsmag. Ez a parancsmag végrehajtása felfüggesztése, addig, amíg a feladat befejeződik, vagy a megadott időtúllépési érték elérésekor.
 
 ```
 PS C:\> Wait-AzureRmRecoveryServicesBackupJob -Job $joblist[0] -Timeout 43200
@@ -295,10 +295,10 @@ A következő ábra a eltér az objektumhierarchia le a BackupRecoveryPoint Reco
 
 ![Helyreállítási szolgáltatások eltér az objektumhierarchia BackupContainer megjelenítése](./media/backup-azure-vms-arm-automation/backuprecoverypoint-only.png)
 
-Biztonsági mentési adatok helyreállítását, a biztonsági másolat elem és a helyreállítási pont a időpontban adatokat tartalmazó azonosítása. Használja a  **[visszaállítási-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/restore-azurermrecoveryservicesbackupitem)**  parancsmagot, hogy a tároló vissza adatokat a felhasználói fiókhoz.
+Biztonsági mentési adatok helyreállítását, a biztonsági másolat elem és a helyreállítási pont a időpontban adatokat tartalmazó azonosítása. Használja a **[visszaállítási-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/restore-azurermrecoveryservicesbackupitem)** parancsmagot, hogy a tároló vissza adatokat a felhasználói fiókhoz.
 
 ### <a name="select-the-vm"></a>Válassza ki a virtuális gép
-Ahhoz, hogy a PowerShell-objektum, amely a helyes biztonságimásolat-elem azonosítja, indítsa el a tárolóban lévő-tárolójából, és az objektum egy hierarchiában lejjebb lévő módon működnek. Válassza ki a tárolóhoz, amelybe a virtuális Gépet jelöl, használja a  **[Get-AzureRmRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer)**  parancsmag és a csövön keresztüli, hogy a  **[ Get-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupitem)**  parancsmag.
+Ahhoz, hogy a PowerShell-objektum, amely a helyes biztonságimásolat-elem azonosítja, indítsa el a tárolóban lévő-tárolójából, és az objektum egy hierarchiában lejjebb lévő módon működnek. Válassza ki a tárolóhoz, amelybe a virtuális Gépet jelöl, használja a **[Get-AzureRmRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer)** parancsmag és a csövön keresztüli, hogy a **[ Get-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupitem)** parancsmag.
 
 ```
 PS C:\> $namedContainer = Get-AzureRmRecoveryServicesBackupContainer  -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM"
@@ -306,7 +306,7 @@ PS C:\> $backupitem = Get-AzureRmRecoveryServicesBackupItem -Container $namedCon
 ```
 
 ### <a name="choose-a-recovery-point"></a>A helyreállítási pont kiválasztása
-Használja a  **[Get-AzureRmRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackuprecoverypoint)**  parancsmagot, hogy az összes helyreállítási pontról biztonsági mentési elem listán. Válassza ki a visszaállítani kívánt helyreállítási pontot. Ha biztos abban, hogy melyik helyreállítási pontot szeretné használni, ajánlott válassza ki a legutóbbi RecoveryPointType = AppConsistent pontot a listában.
+Használja a **[Get-AzureRmRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackuprecoverypoint)** parancsmagot, hogy az összes helyreállítási pontról biztonsági mentési elem listán. Válassza ki a visszaállítani kívánt helyreállítási pontot. Ha biztos abban, hogy melyik helyreállítási pontot szeretné használni, ajánlott válassza ki a legutóbbi RecoveryPointType = AppConsistent pontot a listában.
 
 A következő parancsfájlt, a változó a **$rp**, helyreállítási pontot készíteni a kijelölt biztonsági mentési elemet, az elmúlt hét napban tömbje. A tömb fordított sorrendben rendezve idő 0 indexnél a legújabb helyreállítási pontot. Standard PowerShell tömb indexelő segítségével válassza ki a helyreállítási pont. A példában $rp [0] választja ki a legutóbbi helyreállítási pontot.
 
@@ -331,7 +331,7 @@ BackupManagementType        : AzureVM
 
 
 ### <a name="restore-the-disks"></a>A lemezek visszaállítása
-Használja a  **[visszaállítási-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/restore-azurermrecoveryservicesbackupitem)**  parancsmag történő visszaállításához, egy biztonsági mentési elem adatot és konfigurációs egy helyreállítási pontot. Ha azonosított egy helyreállítási pontot, az legyen értékét a **- RecoveryPoint** paraméter. Előző példakód **$rp [0]** volt a helyreállítási pontot szeretné használni. Az alábbi példakód a **$rp [0]** van a lemez helyreállításához használni kívánt helyreállítási pontot.
+Használja a **[visszaállítási-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/restore-azurermrecoveryservicesbackupitem)** parancsmag történő visszaállításához, egy biztonsági mentési elem adatot és konfigurációs egy helyreállítási pontot. Ha azonosított egy helyreállítási pontot, az legyen értékét a **- RecoveryPoint** paraméter. Előző példakód **$rp [0]** volt a helyreállítási pontot szeretné használni. Az alábbi példakód a **$rp [0]** van a lemez helyreállításához használni kívánt helyreállítási pontot.
 
 A lemezek és a konfigurációs adatok visszaállítása:
 
@@ -343,13 +343,13 @@ WorkloadName     Operation          Status               StartTime              
 V2VM              Restore           InProgress           4/23/2016 5:00:30 PM                        cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
 ```
 
-Használja a  **[várakozási-AzureRmRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/wait-azurermrecoveryservicesbackupjob)**  parancsmag a visszaállítási feladat befejeződésére vár.
+Használja a **[várakozási-AzureRmRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/wait-azurermrecoveryservicesbackupjob)** parancsmag a visszaállítási feladat befejeződésére vár.
 
 ```
 PS C:\> Wait-AzureRmRecoveryServicesBackupJob -Job $restorejob -Timeout 43200
 ```
 
-A visszaállítási feladat befejezése után használja a  **[Get-AzureRmRecoveryServicesBackupJobDetails](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupjobdetails)**  parancsmagot, hogy megkapja a visszaállítás részleteit. A JobDetails tulajdonsághoz nem tartozik az információk szükségesek ahhoz, hogy a virtuális Gépet.
+A visszaállítási feladat befejezése után használja a **[Get-AzureRmRecoveryServicesBackupJobDetails](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupjobdetails)** parancsmagot, hogy megkapja a visszaállítás részleteit. A JobDetails tulajdonsághoz nem tartozik az információk szükségesek ahhoz, hogy a virtuális Gépet.
 
 ```
 PS C:\> $restorejob = Get-AzureRmRecoveryServicesBackupJob -Job $restorejob
@@ -533,7 +533,7 @@ A fájl biztonsági másolatból történő visszaállítását Azure virtuális
 
 
 ### <a name="select-the-vm"></a>Válassza ki a virtuális gép
-Ahhoz, hogy a PowerShell-objektum, amely a helyes biztonságimásolat-elem azonosítja, indítsa el a tárolóban lévő-tárolójából, és az objektum egy hierarchiában lejjebb lévő módon működnek. Válassza ki a tárolóhoz, amelybe a virtuális Gépet jelöl, használja a  **[Get-AzureRmRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer)**  parancsmag és a csövön keresztüli, hogy a  **[ Get-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupitem)**  parancsmag.
+Ahhoz, hogy a PowerShell-objektum, amely a helyes biztonságimásolat-elem azonosítja, indítsa el a tárolóban lévő-tárolójából, és az objektum egy hierarchiában lejjebb lévő módon működnek. Válassza ki a tárolóhoz, amelybe a virtuális Gépet jelöl, használja a **[Get-AzureRmRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer)** parancsmag és a csövön keresztüli, hogy a **[ Get-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupitem)** parancsmag.
 
 ```
 PS C:\> $namedContainer = Get-AzureRmRecoveryServicesBackupContainer  -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM"
@@ -541,7 +541,7 @@ PS C:\> $backupitem = Get-AzureRmRecoveryServicesBackupItem -Container $namedCon
 ```
 
 ### <a name="choose-a-recovery-point"></a>A helyreállítási pont kiválasztása
-Használja a  **[Get-AzureRmRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackuprecoverypoint)**  parancsmagot, hogy az összes helyreállítási pontról biztonsági mentési elem listán. Válassza ki a visszaállítani kívánt helyreállítási pontot. Ha biztos abban, hogy melyik helyreállítási pontot szeretné használni, ajánlott válassza ki a legutóbbi RecoveryPointType = AppConsistent pontot a listában.
+Használja a **[Get-AzureRmRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackuprecoverypoint)** parancsmagot, hogy az összes helyreállítási pontról biztonsági mentési elem listán. Válassza ki a visszaállítani kívánt helyreállítási pontot. Ha biztos abban, hogy melyik helyreállítási pontot szeretné használni, ajánlott válassza ki a legutóbbi RecoveryPointType = AppConsistent pontot a listában.
 
 A következő parancsfájlt, a változó a **$rp**, helyreállítási pontot készíteni a kijelölt biztonsági mentési elemet, az elmúlt hét napban tömbje. A tömb fordított sorrendben rendezve idő 0 indexnél a legújabb helyreállítási pontot. Standard PowerShell tömb indexelő segítségével válassza ki a helyreállítási pont. A példában $rp [0] választja ki a legutóbbi helyreállítási pontot.
 
@@ -565,7 +565,7 @@ BackupManagementType        : AzureVM
 
 ### <a name="mount-the-disks-of-recovery-point"></a>Csatlakoztassa a lemezeket a helyreállítási pont
 
-Használja a  **[Get-AzureRmRecoveryServicesBackupRPMountScript](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackuprpmountscript)**  parancsmagot, hogy megkapja a parancsfájl a helyreállítási pont az összes lemez csatlakoztatásához.
+Használja a **[Get-AzureRmRecoveryServicesBackupRPMountScript](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackuprpmountscript)** parancsmagot, hogy megkapja a parancsfájl a helyreállítási pont az összes lemez csatlakoztatásához.
 
 > [!NOTE]
 > A lemezek csatlakoztatva vannak a számítógépre, amelyen fut a parancsfájl iSCSI csatolt lemeznek. Ezért szinte azonnali van, és nem jár bármilyen díj
@@ -582,7 +582,7 @@ Windows e3632984e51f496 V2VM_wus2_8287309959960546283_451516692429_cbd6061f7fc54
 Futtassa a parancsfájlt a számítógépen, ahol szeretné helyreállítani a fájlt. Meg kell adnia a jelszót, a parancsfájl végrehajtása a fent látható. Miután a lemezek vannak csatolva hozzá, a Windows Fájlkezelőben segítségével tallózzon az új kötetekre és a fájlok. További információ a [helyreállítási dokumentumok fájl](backup-azure-restore-files-from-vm.md)
 
 ### <a name="unmount-the-disks"></a>A lemez leválasztása
-Miután a szükséges fájlok másolása, válassza le a lemezek használatával a  **[Disable-AzureRmRecoveryServicesBackupRPMountScript](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/disable-azurermrecoveryservicesbackuprpmountscript?view=azurermps-5.0.0)**  parancsmag. Az erősen ajánlott, azt gondoskodik arról, hogy hozzáférést a fájlokat a helyreállítási pont eltávolítása
+Miután a szükséges fájlok másolása, válassza le a lemezek használatával a **[Disable-AzureRmRecoveryServicesBackupRPMountScript](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/disable-azurermrecoveryservicesbackuprpmountscript?view=azurermps-5.0.0)** parancsmag. Az erősen ajánlott, azt gondoskodik arról, hogy hozzáférést a fájlokat a helyreállítási pont eltávolítása
 
 ```
 PS C:\> Disable-AzureRmRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0]

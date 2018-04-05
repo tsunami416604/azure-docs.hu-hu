@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 01/22/2018
+ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 7e3fd12b2157d28c5d61bfa8d5fb69a00557a1f9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c5b7af290a5e5c45d3f64ccb50586db0811dd592
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>Adat-előállító és folyamat létrehozása a .NET SDK használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -102,12 +102,12 @@ A jelen cikkben található útmutató a Visual Studio 2017-et használja. A Vis
 Töltse le és telepítse az [Azure .NET SDK](http://azure.microsoft.com/downloads/)-t a gépen.
 
 ### <a name="create-an-application-in-azure-active-directory"></a>Alkalmazás létrehozása az Azure Active Directoryban
-[A cikkben](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application) lévő utasításokkal a következő feladatokat végezheti el: 
+[A cikk](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application) szakaszainak utasításaival a következő feladatokat végezheti el: 
 
 1. **Egy Azure Active Directory-alkalmazás létrehozása**. Olyan alkalmazást hozhat létre az Azure Active Directoryban, amely az oktatóanyagban létrehozott .NET-alkalmazást képviseli. A bejelentkezési URL-hez megadhat egy hamis URL-t, a cikkben láthatóak szerint (`https://contoso.org/exampleapp`).
-2. Szerezze be az **alkalmazásazonosítót** és a **hitelesítési kulcsot**** a cikk **Alkalmazásazonosító és hitelesítési kulcs beszerzése** szakaszának utasításai alapján. Jegyezze fel ezeket az értékeket, mert később használni fogja őket az oktatóanyagban. 
-3. Szerezze be a **bérlőazonosítót** a cikk **Bérlőazonosító beszerzése** szakaszának utasításait követve. Jegyezze fel az értékét. 
-4. Rendelje az alkalmazást a **Közreműködő** szerepkörhöz az előfizetés szintjén, hogy az alkalmazás adat-előállítókat hozhasson létre az előfizetésben. Ehhez kövesse a cikk **Alkalmazás hozzárendelése szerepkörhöz** szakaszát. 
+2. Lekérheti az **alkalmazás azonosítóját** és a **hitelesítési kulcsot**. Jegyezze fel ezeket az értékeket, mert később használni fogja őket az oktatóanyagban. 
+3. Lekérheti a **bérlő azonosítóját**. Jegyezze fel ezt az értéket, mert később használni fogja az oktatóanyagban.
+4. Rendelje az alkalmazást a **Közreműködő** szerepkörhöz az előfizetés szintjén, hogy az alkalmazás adat-előállítókat hozhasson létre az előfizetésben.
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 

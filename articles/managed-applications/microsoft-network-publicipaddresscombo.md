@@ -1,6 +1,6 @@
 ---
-title: "Az Azure által felügyelt alkalmazás PublicIpAddressCombo felhasználói felületi elem |} Microsoft Docs"
-description: "A témakör ismerteti a Microsoft.Network.PublicIpAddressCombo felhasználói felületi elem Azure által felügyelt alkalmazások"
+title: Az Azure PublicIpAddressCombo felhasználói felületi elem |} Microsoft Docs
+description: Azure-portálon a Microsoft.Network.PublicIpAddressCombo felhasználói felületi elem ismerteti.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 03/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 990b84cf0df74b7b08a5fa105c2c2213aa251f9d
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: bced85abaf24beb0997ec906a68e5947f0e67cca
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft.Network.PublicIpAddressCombo felhasználói felületi elem
-Egy új vagy meglévő nyilvános IP-cím kiválasztásához vezérlők egy csoportja. Ez az elem használata során [Azure által felügyelt alkalmazások létrehozására](publish-service-catalog-app.md).
+# <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft.Network.PublicIpAddressCombo UI element
+Egy új vagy meglévő nyilvános IP-cím kiválasztásához vezérlők egy csoportja.
 
 ## <a name="ui-sample"></a>Felhasználói felület minta
 ![Microsoft.Network.PublicIpAddressCombo](./media/managed-application-elements/microsoft.network.publicipaddresscombo.png)
@@ -44,7 +44,7 @@ Egy új vagy meglévő nyilvános IP-cím kiválasztásához vezérlők egy csop
   },
   "defaultValue": {
     "publicIpAddressName": "ip01",
-    "domainNameLabel": "foobar"
+    "domainNameLabel": "mydomain"
   },
   "constraints": {
     "required": {
@@ -79,7 +79,7 @@ Ha a felhasználó kiválaszt egy új vagy meglévő IP-címet, a következő ki
 {
   "name": "ip01",
   "resourceGroup": "rg01",
-  "domainNameLabel": "foobar",
+  "domainNameLabel": "mydomain",
   "publicIPAllocationMethod": "Dynamic",
   "newOrExistingOrNone": "new"
 }
@@ -88,6 +88,5 @@ Ha a felhasználó kiválaszt egy új vagy meglévő IP-címet, a következő ki
 - Ha `options.hideDomainNameLabel` megadott **igaz**, `domainNameLabel` nincs deklarálva.
 
 ## <a name="next-steps"></a>További lépések
-* Felügyelt alkalmazások bemutatása, lásd: [Azure kezelt alkalmazás – áttekintés](overview.md).
 * A bevezetést UI-definíciók létrehozásáról lásd: [Ismerkedés a CreateUiDefinition](create-uidefinition-overview.md).
 * Általános tulajdonságok felhasználói felületi elemei ismertetését lásd: [CreateUiDefinition elemek](create-uidefinition-elements.md).

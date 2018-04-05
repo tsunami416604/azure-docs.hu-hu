@@ -7,6 +7,8 @@
 
 Az ikereszközök JSON-dokumentumok, amelyek az eszközök állapotinformációit (metaadatokat, konfigurációkat és állapotokat) tárolják. Az IoT-központ továbbra is fennáll, egy eszköz iker az egyes eszközök ahhoz csatlakozó ügyfélnél.
 
+[!INCLUDE [iot-hub-basic](iot-hub-basic-whole.md)]
+
 Az eszköz twins használja:
 
 * A megoldás háttérből eszköz metaadatait tárolja.
@@ -14,8 +16,7 @@ Az eszköz twins használja:
 * Egy eszköz alkalmazás és a háttér-alkalmazások között (például a belső vezérlőprogram és konfigurációja frissítések) hosszan futó munkafolyamatok állapotának szinkronizálása.
 * Az eszköz metaadatait, konfigurációs vagy az állapot lekérdezése.
 
-> [!NOTE]
-> Eszköz twins úgy tervezték, a szinkronizálás és eszköz-konfigurációk és a kikötések lekérdezése. További információ a használati eszköz twins található [eszköz twins megértéséhez][lnk-twins].
+Eszköz twins úgy tervezték, a szinkronizálás és eszköz-konfigurációk és a kikötések lekérdezése. További információ a használati eszköz twins található [eszköz twins megértéséhez][lnk-twins].
 
 Eszköz twins az IoT-központ tárolódnak, és tartalmazza:
 

@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Application insights szolgáltatással a PowerShell használatával automatizálhatja |} Microsoft Docs"
-description: "A PowerShell használata Azure Resource Manager-sablon létrehozása erőforrás, a riasztás és a rendelkezésre állási tesztek automatizálásához."
+title: Az Azure Application insights szolgáltatással a PowerShell használatával automatizálhatja |} Microsoft Docs
+description: A PowerShell használata Azure Resource Manager-sablon létrehozása erőforrás, a riasztás és a rendelkezésre állási tesztek automatizálásához.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 9f73b87f-be63-4847-88c8-368543acad8b
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: f4f9d1558d2ef9dc5e1b7b248ad5bc8753f59cf9
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 46ba4ce992640e8a6d171ab839dd7cdb24e0b404
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/03/2018
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>Hozzon létre egy Application Insights-erőforrást PowerShell használatával
 Ez a cikk bemutatja, hogyan létrehozása és frissítése [Application Insights](app-insights-overview.md) erőforrások automatikusan az Azure Resource Manager használatával. Akkor lehet hasznos, például így a felépítési folyamat részeként. Alapszintű Application Insights-erőforrások, valamint létrehozhat [webteszt rendelkezésre állási](app-insights-monitor-web-app-availability.md), állítsa be a következőt [riasztások](app-insights-alerts.md), beállíthatja a [séma árképzési](app-insights-pricing.md), és más Azure-erőforrások létrehozása .
@@ -166,9 +166,9 @@ Hozzon létre egy új .JSON kiterjesztésű fájlt – tegyük neki `template1.j
 
     ``` 
    
-   * `-ResourceGroupName`a csoport van, hol szeretné létrehozni az új erőforrásokat.
-   * `-TemplateFile`az egyéni paraméterek előfordulása esetén.
-   * `-appName`A létrehozni kívánt erőforrás neve.
+   * `-ResourceGroupName` a csoport van, hol szeretné létrehozni az új erőforrásokat.
+   * `-TemplateFile` az egyéni paraméterek előfordulása esetén.
+   * `-appName` A létrehozni kívánt erőforrás neve.
 
 Más paramétereket adhat hozzá, mert a azok leírásait tartalmazza a sablon a Paraméterek szakaszban találhat.
 
@@ -196,15 +196,15 @@ Az alkalmazás erőforrás létrehozása a vállalati ár csomagot, a fenti sabl
                -appName myNewApp
 ```
 
-|priceCode|Terv|
+|priceCode|csomag|
 |---|---|
-|1|Basic|
+|1|Alapszintű|
 |2|Enterprise|
 
 * Ha szeretné az alapértelmezett alapár csomag használata, kihagyhatja a CurrentBillingFeatures erőforrás a sablonból.
 * Ha szeretné módosítani a ár terv, az összetevő-erőforrás létrehozása után, használhatja a sablont, amely kihagyja a "microsoft.insights/components" erőforrás. Emellett nincs megadva a `dependsOn` a számlázási erőforrás csomópontot. 
 
-A frissített ár terv ellenőrzéséhez tekintse meg a "Szolgáltatások + díjszabás" panel a böngészőben. **Frissítse a böngészőt nézetet** való ellenőrizze, hogy az aktuális állapotát.
+A frissített ár terv ellenőrzéséhez tekintse meg a **használati és a becsült költség lap** panel a böngészőben. **Frissítse a böngészőt nézetet** való ellenőrizze, hogy az aktuális állapotát.
 
 
 
@@ -426,7 +426,7 @@ Itt példák kell, hogy a helyettesítést. Nincsenek minden helyettesítés tö
 | `"myWebTest-myAppName"` |`"[variables(testName)]"'` |
 | `"myTestName-myAppName-subsId"` |`"[variables('alertRuleName')]"` |
 | `"myAppName"` |`"[parameters('appName')]"` |
-| `"myappname"`(nagybetűs) |`"[toLower(parameters('appName'))]"` |
+| `"myappname"` (nagybetűs) |`"[toLower(parameters('appName'))]"` |
 | `"<WebTest Name=\"myWebTest\" ...`<br/>` Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`<br/>Törölje a GUID azonosítót és azonosítóját. |
 
 ### <a name="set-dependencies-between-the-resources"></a>Az erőforrások közti függőségeket beállítása
@@ -441,7 +441,7 @@ Azure az erőforrások szigorú sorrendben kell beállítani. Győződjön meg a
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Más automatizálási cikkek:
 
 * [Az Application Insights-erőforrás létrehozása](app-insights-powershell-script-create-resource.md) -nélkül sablon használatával gyorsan elvégezhető.

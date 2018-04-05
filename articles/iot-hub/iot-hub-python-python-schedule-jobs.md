@@ -1,11 +1,11 @@
 ---
-title: "Az Azure IoT Hub (Python) feladatok ütemezése |} Microsoft Docs"
-description: "How to Schedule a több eszközre közvetlen metódus egy Azure IoT Hub-feladat ütemezése. Az Azure IoT Python SDK segítségével valósítja meg a szimulált eszköz alkalmazások és a service-alkalmazást, a feladat futtatásához."
+title: Az Azure IoT Hub (Python) feladatok ütemezése |} Microsoft Docs
+description: How to Schedule a több eszközre közvetlen metódus egy Azure IoT Hub-feladat ütemezése. Az Azure IoT Python SDK segítségével valósítja meg a szimulált eszköz alkalmazások és a service-alkalmazást, a feladat futtatásához.
 services: iot-hub
 documentationcenter: .net
 author: msebolt
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 2233356e-b005-4765-ae41-3a4872bda943
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/16/2018
 ms.author: v-masebo
-ms.openlocfilehash: 3b6daf1ce1116ea3787550f9dac8d90b3751f9af
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 632e1788f614b0a57d631759d1638027e1d0118a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>Ütemezés és a feladatok (Python)
 
@@ -36,6 +36,8 @@ További információ az egyes képességek a cikkeiben:
 
 * A két eszköz és a tulajdonságok: [Ismerkedés az eszköz twins] [ lnk-get-started-twin] és [oktatóanyag: kettős eszköztulajdonságok használata][lnk-twin-props]
 * Közvetlen módszerek: [IoT Hub fejlesztői útmutató - közvetlen módszerek] [ lnk-dev-methods] és [oktatóanyag: közvetlen módszer][lnk-c2d-methods]
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Ez az oktatóanyag a következőket mutatja be:
 

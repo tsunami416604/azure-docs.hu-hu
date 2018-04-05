@@ -1,25 +1,25 @@
 ---
-title: "Automatikus méretezési számítási csomópontok az Azure Batch-készlet |} Microsoft Docs"
-description: "A felhő készlet dinamikusan úgy, hogy a készlet számítási csomópontok száma automatikus skálázás engedélyezése."
+title: Automatikus méretezési számítási csomópontok az Azure Batch-készlet |} Microsoft Docs
+description: A felhő készlet dinamikusan úgy, hogy a készlet számítási csomópontok száma automatikus skálázás engedélyezése.
 services: batch
-documentationcenter: 
-author: tamram
-manager: timlt
-editor: tysonn
+documentationcenter: ''
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: c624cdfc-c5f2-4d13-a7d7-ae080833b779
 ms.service: batch
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: multiple
 ms.date: 06/20/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f0e49cd8a64a48c53f5b6104703164a597c797f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1114ea90ae6976a3bc3580ebae5fd853de0274a1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Hozzon létre egy méretezhetővé válik a Batch-készlet számítási csomópontjainak automatikus méretezési képlet
 
@@ -125,10 +125,10 @@ Ezek a típusok támogatottak a képlet:
 * Dupla
 * doubleVec
 * doubleVecList
-* Karakterlánc
+* karakterlánc
 * Timestamp típusú--időbélyeg olyan összetett struktúra, amely a következő tagot tartalmaz:
 
-  * Év
+  * év
   * a hónap (1-12)
   * a nap (1-31)
   * milyen napra esik (a kell száma; például hétfő 1)
@@ -163,7 +163,7 @@ Ezeket a műveleteket az előző szakaszban felsorolt típusok engedélyezettek.
 | Timestamp típusú *operátor* timeinterval |+ |időbélyeg |
 | Timestamp típusú *operátor* időbélyeg |- |TimeInterval |
 | *operátor*dupla |-, ! |Dupla |
-| *operátor*timeinterval |- |TimeInterval |
+| *operator*timeinterval |- |TimeInterval |
 | kettős *operátor* dupla |<, <=, ==, >=, >, != |Dupla |
 | karakterlánc *operátor* karakterlánc |<, <=, ==, >=, >, != |Dupla |
 | Timestamp típusú *operátor* időbélyeg |<, <=, ==, >=, >, != |Dupla |
@@ -177,23 +177,23 @@ Ezek előre definiált **funkciók** érhetők el, hogy az automatikus méretez�
 
 | Függvény | Visszatérési típusa | Leírás |
 | --- | --- | --- |
-| AVG(doubleVecList) |Dupla |A doubleVecList átlagértékét összes értékét adja vissza. |
+| avg(doubleVecList) |Dupla |A doubleVecList átlagértékét összes értékét adja vissza. |
 | len(doubleVecList) |Dupla |A a doubleVecList létrehozott vektor hosszának beolvasása. |
 | LG(Double) |Dupla |A napló alap 2. a dupla adja vissza. |
-| LG(doubleVecList) |doubleVec |A component-wise napló alap 2. a doubleVecList adja vissza. Egy vec(double) paraméter explicit módon kell átadni. Ellenkező esetben a dupla lg(double) verzió feltételezi. |
+| lg(doubleVecList) |doubleVec |A component-wise napló alap 2. a doubleVecList adja vissza. Egy vec(double) paraméter explicit módon kell átadni. Ellenkező esetben a dupla lg(double) verzió feltételezi. |
 | ln(Double) |Dupla |A kettős természetes naplójának adja vissza. |
 | ln(doubleVecList) |doubleVec |A component-wise napló alap 2. a doubleVecList adja vissza. Egy vec(double) paraméter explicit módon kell átadni. Ellenkező esetben a dupla lg(double) verzió feltételezi. |
 | log(Double) |Dupla |A napló a kettős 10 alap adja vissza. |
 | log(doubleVecList) |doubleVec |A component-wise napló a doubleVecList alap 10 adja vissza. Egy vec(double) explicit módon kell átadni a egyetlen dupla paramétert. Ellenkező esetben a dupla log(double) verzió feltételezi. |
-| Max(doubleVecList) |Dupla |A doubleVecList maximális értékét adja vissza. |
-| Min(doubleVecList) |Dupla |A doubleVecList minimális értékét adja vissza. |
-| NORM(doubleVecList) |Dupla |A két-alapértelmezetté a doubleVecList létrehozott vektor adja vissza. |
+| max(doubleVecList) |Dupla |A doubleVecList maximális értékét adja vissza. |
+| min(doubleVecList) |Dupla |A doubleVecList minimális értékét adja vissza. |
+| norm(doubleVecList) |Dupla |A két-alapértelmezetté a doubleVecList létrehozott vektor adja vissza. |
 | a PERCENTILIS (doubleVec v, dupla p) |Dupla |A PERCENTILIS elem a v vektor beolvasása. |
 | rand() |Dupla |Egy véletlenszerű értéke 0,0 és 1,0 között. |
-| Range(doubleVecList) |Dupla |A doubleVecList a minimális és maximális értékek különbségét adja vissza. |
-| STD(doubleVecList) |Dupla |A doubleVecList értékek minta szórását adja vissza. |
-| Stop() | |Leállítja az automatikus skálázás kifejezés kiértékelése. |
-| Sum(doubleVecList) |Dupla |A doubleVecList összetevőit összegét adja vissza. |
+| range(doubleVecList) |Dupla |A doubleVecList a minimális és maximális értékek különbségét adja vissza. |
+| std(doubleVecList) |Dupla |A doubleVecList értékek minta szórását adja vissza. |
+| stop() | |Leállítja az automatikus skálázás kifejezés kiértékelése. |
+| sum(doubleVecList) |Dupla |A doubleVecList összetevőit összegét adja vissza. |
 | idő (dateTime karakterlánc = "") |időbélyeg |Ha átadva adja vissza a jelenlegi időpontnál, ha nincs átadott paraméter van, vagy a dátum/idő karakterlánc időbélyegzőjét. Támogatott dátum és idő formátumok a következők: W3C-DTF és RFC 1123. |
 | val (doubleVec v, dupla i) |Dupla |Az elem, helyén i vektoros v, a nulla kezdődő indexű értékét adja vissza. |
 
@@ -212,7 +212,7 @@ $CPUPercent.GetSample(TimeInterval_Minute * 5)
 
 | Módszer | Leírás |
 | --- | --- |
-| GetSample() |A `GetSample()` metódus egy adatok minták-vektorát adja vissza.<br/><br/>Egy minta érték metrikák adatok érdemes 30 másodperc. Más szóval minták akkor kapja meg, 30 másodperces. Azonban az alábbi esetekben, amikor egy minta gyűjt, és elérhető képlet késleltetés van. Mint ilyen nem minden mintákat egy adott időszakra vonatkozóan egy képlettel értékelésre érhetők el.<ul><li>`doubleVec GetSample(double count)`<br/>Adja meg a legutóbbi minták összegyűjtött beszerezni minták számát.<br/><br/>`GetSample(1)`a legutóbbi elérhető minta adja vissza. A metrikák, például `$CPUPercent`, azonban ez nem használható, mert nem lehet tudni, hogy *amikor* gyűjtötte a program a minta. Előfordulhat, hogy friss, vagy a rendszer problémák miatt előfordulhat, hogy sokkal régebbi. Érdemes ebben az esetben egy adott időintervallumban alább látható módon használatára.<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`<br/>Adja meg vagy időszakon minta adatgyűjtést. Szükség esetén azt is a százalékos értékét határozza meg, hogy a kért időkereten belül el kell érnie minták.<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10)`20 minták alakítanák vissza, ha az elmúlt 10 perc minden minták léteznek CPUPercent előzményeit. Ha az elmúlt percben az előzményeket nem volt elérhető, azonban csak 18 minták akkor adja vissza. Ebben az esetben:<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)`fognak működni, mert a minták csak 90 %-át érhetők el.<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)`járnak.<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`<br/>Adatgyűjtés a kezdési idő és a befejezési idő időkeretet határozza meg.<br/><br/>Fent említett nincs amikor minta gyűjt, és elérhető képlet késleltetés. Ez a késés használatakor vegye figyelembe a `GetSample` metódust. Lásd: `GetSamplePercent` alatt. |
+| GetSample() |A `GetSample()` metódus egy adatok minták-vektorát adja vissza.<br/><br/>Egy minta érték metrikák adatok érdemes 30 másodperc. Más szóval minták akkor kapja meg, 30 másodperces. Azonban az alábbi esetekben, amikor egy minta gyűjt, és elérhető képlet késleltetés van. Mint ilyen nem minden mintákat egy adott időszakra vonatkozóan egy képlettel értékelésre érhetők el.<ul><li>`doubleVec GetSample(double count)`<br/>Adja meg a legutóbbi minták összegyűjtött beszerezni minták számát.<br/><br/>`GetSample(1)` a legutóbbi elérhető minta adja vissza. A metrikák, például `$CPUPercent`, azonban ez nem használható, mert nem lehet tudni, hogy *amikor* gyűjtötte a program a minta. Előfordulhat, hogy friss, vagy a rendszer problémák miatt előfordulhat, hogy sokkal régebbi. Érdemes ebben az esetben egy adott időintervallumban alább látható módon használatára.<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`<br/>Adja meg vagy időszakon minta adatgyűjtést. Szükség esetén azt is a százalékos értékét határozza meg, hogy a kért időkereten belül el kell érnie minták.<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10)` 20 minták alakítanák vissza, ha az elmúlt 10 perc minden minták léteznek CPUPercent előzményeit. Ha az elmúlt percben az előzményeket nem volt elérhető, azonban csak 18 minták akkor adja vissza. Ebben az esetben:<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` fognak működni, mert a minták csak 90 %-át érhetők el.<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` járnak.<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`<br/>Adatgyűjtés a kezdési idő és a befejezési idő időkeretet határozza meg.<br/><br/>Fent említett nincs amikor minta gyűjt, és elérhető képlet késleltetés. Ez a késés használatakor vegye figyelembe a `GetSample` metódust. Lásd: `GetSamplePercent` alatt. |
 | GetSamplePeriod() |Egy korábbi minta adathalmaz végrehajtott minták a dátumtartományt ad vissza. |
 | Count() |A metrika előzmények minták teljes számát adja vissza. |
 | HistoryBeginTime() |A metrika a legrégebbi rendelkezésre álló adatok minta időbélyegzőjét adja vissza. |
@@ -221,7 +221,7 @@ $CPUPercent.GetSample(TimeInterval_Minute * 5)
 ### <a name="samples-sample-percentage-and-the-getsample-method"></a>Minták, a minta százalék, és a *GetSample()* módszer
 Az automatikus skálázás képlet alapvető működéséhez szerezze be a tevékenység- és metrika értékét, és majd módosítsa a készlet mérete az adatok alapján. Fontos, hogy az automatikus skálázás képletek hogyan működnek együtt a metrikai adatok (minták).
 
-**Példák**
+**Minták**
 
 A Batch szolgáltatás rendszeres időközönként tevékenység- és metrikákat mintát vesz igénybe, és elérhetővé válnak az automatikus skálázás képletek. Ezeket a mintákat a Batch szolgáltatás 30 másodpercenként rögzítését. Van azonban általában a késleltetés között, ha ezek a minták rögzítve, és amikor a rendelkezésre álló (és tudja olvasni.) az automatikus skálázás formulákat. Továbbá például hálózati vagy egyéb infrastrukturális problémára különböző tényezők miatt minták előfordulhat, hogy nem rögzíti egy adott időszakban.
 
@@ -375,7 +375,7 @@ await pool.CommitAsync();
 ```
 
 > [!IMPORTANT]
-> Az automatikus skálázás engedélyezve készletet hoz létre, ha nem adja meg a _targetDedicatedComputeNodes_ paraméter vagy a _targetLowPriorityComputeNodes_ hívásakor paraméter **CreatePool **. Ehelyett adja meg a **AutoScaleEnabled** és **AutoScaleFormula** a készlet tulajdonságai. Ezek a tulajdonságok értékeit minden típusú csomópont target számának meghatározásához. Manuálisan méretezze át az automatikus skálázás-kompatibilis készlet is, a (például a [BatchClient.PoolOperations.ResizePoolAsync][net_poolops_resizepoolasync]), első **letiltása** automatikus méretezésének a tárolókészlet, majd méretezze át.
+> Az automatikus skálázás engedélyezve készletet hoz létre, ha nem adja meg a _targetDedicatedComputeNodes_ paraméter vagy a _targetLowPriorityComputeNodes_ hívásakor paraméter **CreatePool** . Ehelyett adja meg a **AutoScaleEnabled** és **AutoScaleFormula** a készlet tulajdonságai. Ezek a tulajdonságok értékeit minden típusú csomópont target számának meghatározásához. Manuálisan méretezze át az automatikus skálázás-kompatibilis készlet is, a (például a [BatchClient.PoolOperations.ResizePoolAsync][net_poolops_resizepoolasync]), első **letiltása** automatikus méretezésének a tárolókészlet, majd méretezze át.
 >
 >
 
@@ -385,8 +385,8 @@ Mellett Batch .NET, használhatja a másik [kötegelt SDK-k](batch-apis-tools.md
 ### <a name="automatic-scaling-interval"></a>Automatikus méretezési időköz
 Alapértelmezés szerint a Batch szolgáltatás 15 percenként állítja be a készlet méretét az automatikus skálázási képletnek megfelelően. Ez az időtartam alatt a következő alkalmazáskészlet tulajdonságaiban használatával konfigurálható:
 
-* [CloudPool.AutoScaleEvaluationInterval] [ net_cloudpool_autoscaleevalinterval] (kötegelt .NET)
-* [autoScaleEvaluationInterval] [ rest_autoscaleinterval] (REST API-t)
+* [CloudPool.AutoScaleEvaluationInterval][net_cloudpool_autoscaleevalinterval] (Batch .NET)
+* [autoScaleEvaluationInterval][rest_autoscaleinterval] (REST API)
 
 A minimális időköze öt perc, a maximális 168 óra. Ha az időközönkénti ezen a tartományon kívül van megadva, a Batch szolgáltatás egy hibás kérés (400) hibaüzenetet adja vissza.
 
@@ -399,7 +399,7 @@ A minimális időköze öt perc, a maximális 168 óra. Ha az időközönkénti 
 
 Minden egyes kötegelt SDK biztosítja az automatikus skálázás engedélyezéséhez. Példa:
 
-* [BatchClient.PoolOperations.EnableAutoScaleAsync] [ net_enableautoscaleasync] (kötegelt .NET)
+* [BatchClient.PoolOperations.EnableAutoScaleAsync][net_enableautoscaleasync] (Batch .NET)
 * [A készlet automatikus skálázás engedélyezése] [ rest_enableautoscale] (REST API-t)
 
 Ha engedélyezi az automatikus skálázás meglévő címkészlet, vegye figyelembe a következő szempontokat:
@@ -454,7 +454,7 @@ Mielőtt telepítené azt a készlethez kiértékelheti az képletet. Ezzel a m�
 
 Az automatikus skálázás képlet kiértékeléséhez, először engedélyeznie kell a készlet egy érvényes képletet az automatikus skálázást. Egy készlet, amely még nem rendelkezik engedélyezett automatikus skálázás képlet teszteléséhez használja a egysoros `$TargetDedicatedNodes = 0` Ha először engedélyezi az automatikus skálázást. Ezután segítségével a következők egyikét értékelje ki a vizsgálni kívánt képlet:
 
-* [BatchClient.PoolOperations.EvaluateAutoScale](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscale) vagy [EvaluateAutoScaleAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscaleasync)
+* [BatchClient.PoolOperations.EvaluateAutoScale](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscale) or [EvaluateAutoScaleAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscaleasync)
 
     A Batch .NET módszerekhez kiértékelése egy meglévő készlet és az automatikus skálázás képletet tartalmazó karakterlánc Azonosítóját.
 
@@ -655,7 +655,7 @@ string formula = string.Format(@"
     ", now, 4);
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Azure Batch számítási erőforrás-használat csomópont egyidejű feladatok maximális](batch-parallel-node-tasks.md) részletesen ismerteti, hogyan hajthat végre több feladat egyidejű a készlet számítási csomópontjain. Mellett automatikus skálázást Ez a szolgáltatás segíthet feladat időtartama bizonyos munkaterhelések esetén, így pénzt takaríthat csökkenthető.
 * Egy másik hatékonyságát gyorsító győződjön meg arról, hogy a kötegelt kérelem a Batch szolgáltatás lekérdezi a legoptimálisabb módon. Lásd: [hatékonyan lekérdezése az Azure Batch szolgáltatás](batch-efficient-list-queries.md) megtudhatja, hogyan átmenő a hálózaton, amikor több ezer számítási csomópontok és a feladatok állapotának lekérdezése adatok korlátozásához.
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 8dc955b3556477e04e6ef3e92b1c7dbe82ac7f35
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 27c4a169a906f8e53a5548a38e3f680fd38155b3
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Az Azure App Service web Apps diagnosztikai naplózás engedélyezése
 ## <a name="overview"></a>Áttekintés
@@ -84,7 +84,7 @@ Minden három tárolóhelyek naplózott események az ugyanazon alapvető adatok
 > A tárolt információk **table storage** vagy **blob-tároló** csak segítségével férhetők el egy tárolási ügyfél vagy egy alkalmazás, amely közvetlenül a tárolórendszerek használható. Például a Visual Studio 2013 tartalmazza, amelyek segítségével megismerheti a tábla vagy a blob storage Tártallózóval, és HDInsight férhetnek hozzá a blob storage-ban tárolt adataihoz. Egy alkalmazás, aki hozzáfér az Azure Storage használatával is kiírhatja a [Azure SDK-k](/downloads/#).
 >
 > [!NOTE]
-> Diagnosztika is engedélyezhető az Azure PowerShell használatával a **Set-AzureWebsite** parancsmag. Ha nem telepítette az Azure PowerShell, vagy nem konfigurálta az Azure-előfizetés használatára, lásd: [hogyan használható az Azure PowerShell](/develop/nodejs/how-to-guides/powershell-cmdlets/).
+> Diagnosztika is engedélyezhető az Azure PowerShell használatával a **Set-AzureWebsite** parancsmag. Ha nem telepítette az Azure PowerShell, vagy nem konfigurálta az Azure-előfizetés használatára, lásd: [telepítse és konfigurálja az Azure Powershellt](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0).
 >
 >
 
@@ -113,7 +113,7 @@ Töltse le a naplófájlok, indítsa el az Azure PowerShell egy új példányát
 Ez a parancs menti a webalkalmazást, amelyet a naplókat a **-név** nevű fájlba paraméter **logs.zip** az aktuális könyvtárban található.
 
 > [!NOTE]
-> Ha nem telepítette az Azure PowerShell, vagy nem konfigurálta az Azure-előfizetés használatára, lásd: [hogyan használható az Azure PowerShell](/develop/nodejs/how-to-guides/powershell-cmdlets/).
+> Ha nem telepítette az Azure PowerShell, vagy nem konfigurálta az Azure-előfizetés használatára, lásd: [telepítse és konfigurálja az Azure Powershellt](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0).
 >
 >
 
@@ -125,7 +125,7 @@ Töltse le a naplófájlok az Azure parancssori felület használatával, nyissa
 Ez a parancs a keresse meg a webes alkalmazás, neve "webappname" nevű fájlba menti **diagnostics.zip** az aktuális könyvtárban található.
 
 > [!NOTE]
-> Ha nem telepítette az Azure parancssori felület (CLI), vagy nem konfigurálta az Azure-előfizetés használatára, lásd: [hogyan használható az Azure parancssori felület](../cli-install-nodejs.md).
+> Ha nem telepítette az Azure parancssori felület (CLI), vagy nem konfigurálta az Azure-előfizetés használatára, lásd: [hogyan használható az Azure parancssori felület](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
 >
 >
 

@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2018
 ms.author: rithorn
-ms.openlocfilehash: db472345bacda916f1b1664ed7803978ab235a2a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 911043c8fda985f25023dc1224d8e67b283f4d6c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Az Azure felügyeleti csoportok-erőforrások rendszerezése 
 
@@ -42,11 +42,15 @@ Hozzon létre egy hierarchiát, amely a szervezeti egységek szerint vannak csop
 - Minden felügyeleti csoportban több gyermeke lehet. 
 
 ### <a name="preview-subscription-visibility-limitation"></a>Előzetes előfizetés látható korlátozása 
-Jelenleg a korlátozás az előzetes belül hol áll nem tudja megtekinteni az előfizetések, amelyek elérésére örökölt vannak. A hozzáférés örökli az előfizetéshez, de az Azure erőforrás-kezelő nem tudja az öröklési hozzáférés még tiszteletben.  
+Jelenleg az előzetes kiadásban, ha még nem tudja megtekinteni az előfizetések, amelyek elérésére örökölt vannak belül korlátozása. A hozzáférés öröklik az előfizetéshez, de az Azure erőforrás-kezelő nem tudta tiszteletben még az öröklési hozzáférést.  
 
-Az előfizetés információkat beolvasni a REST API használatával adatait adja vissza, rendelkezik hozzáféréssel, de az Azure portál és az Azure Powershell belül az előfizetések ne jelenjen meg. 
+Az előfizetés információkat beolvasni a REST API használatával adatait adja vissza, rendelkezik hozzáféréssel, de az Azure portál és az Azure Powershell belül az előfizetések többé ne jelenjen meg. 
 
-Ezt az elemet van végzett, és fel fogja oldani az előtt felügyeleti csoportok alatt bejelentette, mint a "Általánosan rendelkezésre álló."  
+Ez az elem van végzett, és megszűnik, mielőtt a felügyeleti csoportok is megjelenik az összefoglalójuk mint "Általánosan rendelkezésre álló."  
+
+### <a name="cloud-solution-providercsp-limitation-during-preview"></a>A felhőalapú megoldás Provider(CSP) korlátozás előzetes 
+Nincs a jelenlegi korlátozás felhőalapú megoldás Provider(CSP) partnerek ahol nem hozhat létre, és az ügyfél címtáron belül az ügyfél felügyeleti csoportok kezelése.  
+Ez az elem van végzett, és megszűnik, mielőtt a felügyeleti csoportok is megjelenik az összefoglalójuk mint "Általánosan rendelkezésre álló."
 
 
 ## <a name="root-management-group-for-each-directory"></a>Gyökérszintű felügyeleti csoport minden könyvtár

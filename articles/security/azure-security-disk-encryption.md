@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2018
 ms.author: devtiw;ejarvi;mayank88mahajan;vermashi;sudhakarareddyevuri;aravindthoram
-ms.openlocfilehash: 73212a231d11136854115922df423a7cb5b08f05
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5219ebc22e56ad4b5cdfc125f7fa5882c61adb9f
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Windows és Linux IaaS virtuális gépeket az Azure Disk Encryption
 A Microsoft Azure elkötelezett a kifejezetten a adatvédelem, az adatok közös joghatóság alá és a lehetővé teszi, hogy az Azure tárolt adatok végig a vezérlő speciális technológiák titkosításához, szabályozása és titkosítási kulcsok kezeléséhez az adatok vezérlő & naplózási hozzáférést. Ez rugalmasságot biztosít, Azure-ügyfél és válassza ki a saját üzleti igényeinek leginkább megfelelő megoldást. A dokumentum azt kódelemeit egy új technológia megoldás "Azure Disk Encryption for Windows és Linux infrastruktúra-szolgáltatási virtuális gép által" és az adatokat, hogy megfeleljen a szervezeti biztonsági és megfelelőségi kötelezettségvállalások megvédeni segítségével. A dokumentum biztosít részletes útmutatás a lemezt Azure titkosítási szolgáltatásai, beleértve a támogatott forgatókönyveket, és a felhasználói élmény.
@@ -780,14 +780,10 @@ Használja a [ `manage-bde` ](https://technet.microsoft.com/library/ff829849.asp
 > Készítse elő a virtuális Géphez egy külön adatok és az erőforrások virtuális Merevlemezt a BitLocker használatával a külső kulcs beolvasása.
 
 #### <a name="encrypting-an-os-drive-on-a-running-linux-vm"></a>Az operációs rendszer meghajtóján futó Linux virtuális gép titkosítása
-Egy futó Linux virtuális gép operációs rendszer meghajtójának titkosítás funkciót támogatja, a következő terjesztéseket:
-
-* 7.2 RHEL
-* 7.2 centOS
-* Ubuntu 16.04
 
 ##### <a name="prerequisites-for-os-disk-encryption"></a>Az operációs rendszer lemeztitkosítás előfeltételei
 
+* A virtuális Gépet kell használnia egy kompatibilis operációs rendszer lemeztitkosítás terjesztési céljuk a [Azure lemez titkosítási – gyakori kérdések](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption-faq#what-linux-distributions-does-azure-disk-encryption-support) 
 * A virtuális gép kell létrehozni a Piactéri lemezképből az Azure Resource Manager.
 * Az Azure virtuális gép, és legalább 4 GB RAM (mérete 7 GB ajánlott).
 * (Az RHEL és CentOS) Tiltsa le a SELinux. Tiltsa le a SELinux, lásd a "4.4.2. SELinux "található letiltásával a [SELinux felhasználói és rendszergazdai útmutató](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux) a virtuális Gépen.

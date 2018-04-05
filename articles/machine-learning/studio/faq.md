@@ -1,11 +1,12 @@
 ---
-title: "Azure Machine Learning – gyakori kérdések (GYIK) | Microsoft Docs"
-description: "Azure Machine Learning bevezetés: a zökkenőmentes prediktív modellezést támogató felhőalapú szolgáltatással kapcsolatos számlázásra, képességekre és korlátozásokra vonatkozó GYIK."
-keywords: "bevezetés a gépi tanulásba, prediktív modellezés, mi az a gépi tanulás"
+title: Azure Machine Learning – gyakori kérdések (GYIK) | Microsoft Docs
+description: 'Azure Machine Learning bevezetés: a zökkenőmentes prediktív modellezést támogató felhőalapú szolgáltatással kapcsolatos számlázásra, képességekre és korlátozásokra vonatkozó GYIK.'
+keywords: bevezetés a gépi tanulásba, prediktív modellezés, mi az a gépi tanulás
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: paulettm
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: a4a32a06-dbed-4727-a857-c10da774ce66
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/02/2017
-ms.author: garye
-ms.openlocfilehash: b162d7534eff0d1f79808fc86bacf92dbfc2f84a
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: ceec69ee822e118adfa3825620a31575109894ea
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Az Azure Machine Learning szolgáltatásra vonatkozó gyakori kérdések (GYIK): Számlázás, képességek, korlátozások és támogatás
 Az alábbiakban néhány gyakori kérdést (GYIK) és azok válaszait olvashatja az Azure Machine Learning szolgáltatással kapcsolatban, amely egy, a webszolgáltatásokon keresztül végrehajtott prediktív modellezést és a megoldások üzembe helyezését célzó felhőalapú szolgáltatás. Ezek a gyakori kérdések a szolgáltatás használatával kapcsolatos kérdéseket fedik le, beleértve a számlázási modell, a képességek, a korlátozások és a támogatás témaköreit.
@@ -285,7 +285,7 @@ Nem.
 ## <a name="security-and-availability"></a>Biztonság és elérhetőség
 **Alapértelmezés szerint kiknek van hozzáférése a webszolgáltatások HTTP-végpontjához? Hogyan korlátozhatom a végponthoz való hozzáférést?**
 
-A webszolgáltatások telepítése után egy alapértelmezett végpont kerül létrehozásra az adott szolgáltatáshoz. Az alapértelmezett végpont az API-kulcs használatával hívható meg. Saját kulcsukat használva további végpontokat adhat hozzá a Web Services portálon keresztül vagy a webszolgáltatás-felügyeleti API-k programozott használatával. A webszolgáltatásokhoz való meghíváshoz hívóbetűk szükségesek. További információ: [Az Azure Machine Learning webszolgáltatásainak használata](consume-web-services.md).
+A webszolgáltatások telepítése után egy alapértelmezett végpont kerül létrehozásra az adott szolgáltatáshoz. Az alapértelmezett végpont az API-kulcs használatával hívható meg. Saját kulcsukat használva további végpontokat adhat hozzá a Web Services portálon keresztül vagy a Web Service Management API-k programozott használatával. A webszolgáltatásokhoz való meghíváshoz hívóbetűk szükségesek. További információ: [Az Azure Machine Learning webszolgáltatásainak használata](consume-web-services.md).
 
 **Mit kell tenni, ha nem találom az Azure Storage-fiókomat?**
 
@@ -548,7 +548,7 @@ A Machine Learning szolgáltatás egy több-bérlős szolgáltatás. A háttérr
 ### <a name="guest-access"></a>Vendéghozzáférés
 **Mit jelent a vendéghozzáférés az Azure Machine Learning Studióban?**
 
-A vendéghozzáférés a szolgáltatás korlátozott kipróbálására nyújt lehetőséget. Ingyenesen, hitelesítő adatok megadása nélkül hozhat létre és futtathat kísérleteket az Azure Machine Learning Studióban. A vendégként végzett munkamenetek nem perzisztensek (nem lehet őket menteni), maximális időtartamuk pedig nyolc óra. További korlátozások: nincs R- és Python-támogatás, nincs lehetőség átmeneti API-k használatára, illetve az adatkészletek mérete és a tárolókapacitás is korlátozott. Ezzel szemben a Microsoft-fiókkal bejelentkező felhasználók teljes hozzáférést kapnak a Machine Learning Studio korábban leírt Ingyenes szintjéhez, amely egy perzisztens munkaterületet és átfogóbb képességeket tartalmaz. Az ingyenes Machine Learning szolgáltatást a következőképpen veheti igénybe: kattintson az **Első lépések** elemre a [https://studio.azureml.net](https://studio.azureml.net) webhelyen, majd válassza a **Vendéghozzáférés** lehetőséget, vagy jelentkezzen be egy Microsoft-fiókkal.
+A vendéghozzáférés a szolgáltatás korlátozott kipróbálására nyújt lehetőséget. Ingyenesen, hitelesítő adatok megadása nélkül hozhat létre és futtathat kísérleteket az Azure Machine Learning Studióban. A vendégként végzett munkamenetek nem perzisztensek (nem lehet őket menteni), maximális időtartamuk pedig nyolc óra. További korlátozások: nincs R- és Python-támogatás, nincs lehetőség átmeneti API-k használatára, illetve az adatkészletek mérete és a tárolókapacitás is korlátozott. Ezzel szemben a Microsoft-fiókkal bejelentkező felhasználók teljes hozzáférést kapnak a Machine Learning Studio korábban leírt Ingyenes szintjéhez, amely egy perzisztens munkaterületet és átfogóbb képességeket tartalmaz. Az ingyenes Machine Learning szolgáltatást a következőképpen veheti igénybe: kattintson a **Get started** (Első lépések) elemre a [https://studio.azureml.net](https://studio.azureml.net) webhelyen, majd válassza a **Guest Access** (Vendéghozzáférés) lehetőséget, vagy jelentkezzen be egy Microsoft-fiókkal.
 
 <!-- Module References -->
 [image-reader]: https://msdn.microsoft.com/library/azure/893f8c57-1d36-456d-a47b-d29ae67f5d84/

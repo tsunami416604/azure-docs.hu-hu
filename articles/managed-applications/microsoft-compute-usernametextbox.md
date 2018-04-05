@@ -1,6 +1,6 @@
 ---
-title: "Az Azure által felügyelt alkalmazás UserNameTextBox felhasználói felületi elem |} Microsoft Docs"
-description: "A témakör ismerteti a Microsoft.Compute.UserNameTextBox felhasználói felületi elem Azure által felügyelt alkalmazások"
+title: Az Azure UserNameTextBox felhasználói felületi elem |} Microsoft Docs
+description: Azure-portálon a Microsoft.Compute.UserNameTextBox felhasználói felületi elem ismerteti.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2017
 ms.author: tomfitz
-ms.openlocfilehash: 6a395915af274750eb57a085ee51b55fdd392615
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 4c8f62784b563bd8d39ccc763598b73b9b5d7195
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="microsoftcomputeusernametextbox-ui-element"></a>Microsoft.Compute.UserNameTextBox felhasználói felületi elem
-A szövegmező-vezérlőt a Windows és Linux-felhasználónevek beépített érvényesítéssel. Ez az elem használata során [Azure által felügyelt alkalmazások létrehozására](publish-service-catalog-app.md).
+A szövegmező-vezérlőt a Windows és Linux-felhasználónevek beépített érvényesítéssel.
 
 ## <a name="ui-sample"></a>Felhasználói felület minta
 ![Microsoft.Compute.UserNameTextBox](./media/managed-application-elements/microsoft.compute.usernametextbox.png)
@@ -45,9 +45,9 @@ A szövegmező-vezérlőt a Windows és Linux-felhasználónevek beépített ér
 
 ## <a name="remarks"></a>Megjegyzések
 - Ha `constraints.required` értéke **igaz**, majd a szövegmező sikeresen érvényesíthető értéket kell tartalmaznia. Az alapértelmezett érték **igaz**.
-- `osPlatform`meg kell adni, és lehet **Windows** vagy **Linux**.
-- `constraints.regex`a JavaScript reguláris kifejezési minta van. Ha meg van adva, majd a szövegmező értékét kell megfelel a mintának sikeresen érvényesíthető. Az alapértelmezett érték **null**.
-- `constraints.validationMessage`Ha a szövegmező értékét nem sikerült a megadott érvényesítési megjelenítendő karakterlánc `constraints.regex`. Ha nincs megadva, akkor a szövegmező beépített ellenőrzési üzenetek használja. Az alapértelmezett érték **null**.
+- `osPlatform` meg kell adni, és lehet **Windows** vagy **Linux**.
+- `constraints.regex` a JavaScript reguláris kifejezési minta van. Ha meg van adva, majd a szövegmező értékét kell megfelel a mintának sikeresen érvényesíthető. Az alapértelmezett érték **null**.
+- `constraints.validationMessage` Ha a szövegmező értékét nem sikerült a megadott érvényesítési megjelenítendő karakterlánc `constraints.regex`. Ha nincs megadva, akkor a szövegmező beépített ellenőrzési üzenetek használja. Az alapértelmezett érték **null**.
 - Ez az elem van a megadott alapuló beépített ellenőrzési `osPlatform`. A beépített ellenőrzési együtt egy egyéni reguláris kifejezést is használható.
 Ha értéket `constraints.regex` van megadva, a beépített és egyéni ellenőrzések aktiválódnak.
 
@@ -56,7 +56,6 @@ Ha értéket `constraints.regex` van megadva, a beépített és egyéni ellenőr
 "tabrezm"
 ```
 
-## <a name="next-steps"></a>Következő lépések
-* Felügyelt alkalmazások bemutatása, lásd: [Azure kezelt alkalmazás – áttekintés](overview.md).
+## <a name="next-steps"></a>További lépések
 * A bevezetést UI-definíciók létrehozásáról lásd: [Ismerkedés a CreateUiDefinition](create-uidefinition-overview.md).
 * Általános tulajdonságok felhasználói felületi elemei ismertetését lásd: [CreateUiDefinition elemek](create-uidefinition-elements.md).

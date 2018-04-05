@@ -1,19 +1,19 @@
 ---
-title: "Azure IoT oldala az Azure Stream Analytics telepítése |} Microsoft Docs"
-description: "Azure Stream Analytics peremhálózati eszköz egy modul telepítése"
+title: Azure IoT oldala az Azure Stream Analytics telepítése |} Microsoft Docs
+description: Azure Stream Analytics peremhálózati eszköz egy modul telepítése
 services: iot-edge
-keywords: 
-author: msebolt
+keywords: ''
+author: kgremban
 manager: timlt
-ms.author: v-masebo
+ms.author: kgremban
 ms.date: 11/28/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: f40fb81fc03e796b906db12bf3bf6904b27b46eb
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: c94652017216bd9c8ff319e0b19fa3597c75e81c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>Azure Stream Analytics egy IoT peremhálózati modulként telepítése – előzetes
 
@@ -132,7 +132,7 @@ Most már készen áll az Azure Stream Analytics-feladat az IoT-peremhálózati 
 
 1. Az Azure portálon az IoT hub az Ugrás **IoT peremhálózati (előzetes verzió)**, majd nyissa meg az IoT-peremhálózati eszköz részleteit megjelenítő oldalon.
 
-2. Válassza ki **modulok beállítása**.  
+2. Válassza a **Set modules** (Modulok beállítása) lehetőséget.  
     Ha korábban telepítette a tempSensor modul ezen az eszközön, akkor előfordulhat, hogy adatokkal való automatikus feltöltés. Ha nem, a modul hozzá a következő módon:
 
    a. Válassza ki **IoT peremhálózati modul hozzá lesz adva**.
@@ -172,9 +172,9 @@ Most már készen áll az Azure Stream Analytics-feladat az IoT-peremhálózati 
     }
     ```
 
-9. Válassza ki **következő**.
+9. Kattintson a **Tovább** gombra.
 
-10. Az a **felülvizsgálati sablonja** lépésben jelölje be **Submit**.
+10. A **Sablon áttekintése** lépésben válassza a **Küldés** lehetőséget.
 
 11. Térjen vissza az eszköz részleteit megjelenítő oldalra, és válassza ki **frissítése**.  
     Az új Stream Analytics modul fut, valamint az IoT-Edge ügynök modul és a peremhálózati IoT hub kell megjelennie.

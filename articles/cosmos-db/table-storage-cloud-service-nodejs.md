@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Table storage: Node.js webalkalmazás létrehozása |} Microsoft Docs"
-description: "Ez az oktatóanyag Azure Storage szolgáltatás és az Azure-modul hozzáadásával a webalkalmazás az Express oktatóanyag épül."
+title: 'Az Azure Table storage: Node.js webalkalmazás létrehozása |} Microsoft Docs'
+description: Ez az oktatóanyag Azure Storage szolgáltatás és az Azure-modul hozzáadásával a webalkalmazás az Express oktatóanyag épül.
 services: cosmos-db
 documentationcenter: nodejs
 author: mimig1
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 03/29/2018
 ms.author: mimig
-ms.openlocfilehash: 9acd197c26e6365e396fd8f6321d764bba7bbb6c
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: b63f6b3be2e4576b304c1a73ff326a937815b27e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-table-storage-nodejs-web-application"></a>Az Azure Table storage: Node.js-webalkalmazás
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -26,7 +26,7 @@ ms.lasthandoff: 01/18/2018
 ## <a name="overview"></a>Áttekintés
 Ebben az oktatóanyagban az alkalmazás létrehozott a [Express használata Node.js-webalkalmazás] oktatóanyag ki van bővítve használata a Microsoft Azure Klienskódtárak segítségével a Node.js adatok szolgáltatások. Hozzon létre egy webalapú feladatlista alkalmazás, amely központilag telepíthető a Azure terjesztheti ki az alkalmazást. A feladatok lista lehetővé teszi a felhasználóknak feladatokat beolvasni, adja hozzá az új feladatok és feladatok megjelölése befejezettként.
 
-A feladat tárolódnak az Azure Storage. Az Azure Storage biztosítja a hibatűrő és magas rendelkezésre állású strukturálatlan adatok tárhelyet. Az Azure Storage számos adatszerkezetek, ahol tárolhatja és érheti adatait tartalmazza. A tárolási szolgáltatások az API-szerepel az Azure SDK for Node.js vagy a REST API-kon keresztül is használhatja. További információkért lásd: [tárolása és az adatok elérése az Azure-ban].
+A feladat elemek Azure Storage- vagy Azure Cosmos DB vannak tárolva. Az Azure Storage és Azure Cosmos DB tárolás strukturálatlan adatok hibatűrő és magas rendelkezésre állású. Az Azure Storage és Azure Cosmos DB tartalmaznak több adatszerkezetek, amelyben tárolni, és adatok eléréséhez. Tárolási és az Azure Cosmos DB szolgáltatások az API-k szerepel az Azure SDK for Node.js vagy a REST API-kon keresztül is használhatja. További információkért lásd: [tárolása és az adatok elérése az Azure-ban].
 
 Ez az oktatóanyag feltételezi, hogy végrehajtotta a [Node.js-webalkalmazás] és [expressz Node.js][Express használata Node.js-webalkalmazás] oktatóanyagok.
 
@@ -40,7 +40,7 @@ Az alábbi képernyőfelvételen a kész alkalmazás látható:
 ![A befejezett weblap az internet Explorerben](./media/table-storage-cloud-service-nodejs/getting-started-1.png)
 
 ## <a name="setting-storage-credentials-in-webconfig"></a>Tárolási hitelesítő adatok beállítása a Web.config fájlban
-Át kell adnia a tároló hitelesítő adatok Azure Storage eléréséhez. Ez a web.config Alkalmazásbeállítások felügyelniük történik.
+Át kell adnia a tároló hitelesítő adatok Azure Storage- vagy Azure Cosmos adatbázis eléréséhez. Ez a web.config Alkalmazásbeállítások felügyelniük történik.
 A web.config beállítások átadása pedig a környezeti változók csomópontra, amely majd beolvassa vannak az Azure SDK.
 
 > [!NOTE]
@@ -144,7 +144,7 @@ Ebben a szakaszban az alapvető alkalmazás hozta létre a **expressz** parancs 
     Task.prototype = {
       find: function(query, callback) {
         self = this;
-        self.storageClient.queryEntities(query, function entitiesQueried(error, result) {
+        self.storageClient.queryEntities(this.tablename, query, null, null, function entitiesQueried(error, result) {
           if(error) {
             callback(error);
           } else {
@@ -181,7 +181,7 @@ Ebben a szakaszban az alapvető alkalmazás hozta létre a **expressz** parancs 
             callback(error);
           }
           entity.completed._ = true;
-          self.storageClient.updateEntity(self.tableName, entity, function entityUpdated(error) {
+          self.storageClient.replaceEntity(self.tableName, entity, function entityUpdated(error) {
             if(error) {
               callback(error);
             }
@@ -215,7 +215,7 @@ Ebben a szakaszban az alapvető alkalmazás hozta létre a **expressz** parancs 
     TaskList.prototype = {
       showTasks: function(req, res) {
         self = this;
-        var query = azure.TableQuery()
+        var query = new azure.TableQuery()
           .where('completed eq ?', false);
         self.task.find(query, function itemsFound(error, items) {
           res.render('index',{title: 'My ToDo List ', tasks: items});
@@ -224,7 +224,10 @@ Ebben a szakaszban az alapvető alkalmazás hozta létre a **expressz** parancs 
 
       addTask: function(req,res) {
         var self = this
-        var item = req.body.item;
+        var item = {
+            name: req.body.name, 
+            category: req.body.category
+        };
         self.task.addItem(item, function itemAdded(error) {
           if(error) {
             throw error;
@@ -307,7 +310,7 @@ Ebben a szakaszban az alapvető alkalmazás hozta létre a **expressz** parancs 
             td Category
             td Date
             td Complete
-          if tasks != []
+          if tasks == []
             tr
               td
           else
@@ -325,9 +328,9 @@ Ebben a szakaszban az alapvető alkalmazás hozta létre a **expressz** parancs 
       hr
       form.well(action="/addtask", method="post")
         label Item Name:
-        input(name="item[name]", type="textbox")
+        input(name="name", type="textbox")
         label Item Category:
-        input(name="item[category]", type="textbox")
+        input(name="category", type="textbox")
         br
         button.btn(type="submit") Add item
     ```
@@ -414,7 +417,7 @@ A következő lépések bemutatják a állítsa le és törölje az alkalmazást
    A szolgáltatás törlése eltarthat néhány percig. A szolgáltatás törlését követően kapni fog egy üzenet, amely azt jelzi, hogy törölve lett-e a szolgáltatás.
 
 [Express használata Node.js-webalkalmazás]: http://azure.microsoft.com/develop/nodejs/tutorials/web-app-with-express/
-[tárolása és az adatok elérése az Azure-ban]: http://msdn.microsoft.com/library/azure/gg433040.aspx
+[tárolása és az adatok elérése az Azure-ban]: https://docs.microsoft.com/azure/storage/
 [Node.js-webalkalmazás]: http://azure.microsoft.com/develop/nodejs/tutorials/getting-started/
 
 

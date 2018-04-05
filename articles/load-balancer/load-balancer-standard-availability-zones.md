@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/26/2018
+ms.date: 03/29/2018
 ms.author: kumud
-ms.openlocfilehash: 9f5a68972015f54e2333199652075cda2535a3c8
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f5d46fda6bdb32c1a5000883c6aedb2da15e796a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Standard terheléselosztó és a rendelkezésre állási zónák
 
 Támogatja az Azure Load Balancer Standard Termékváltozat [rendelkezésre állási zónák](../availability-zones/az-overview.md) forgatókönyvek. Néhány új fogalom érhetők el Standard terheléselosztással, amelyek lehetővé teszik a végpont forgatókönyv a rendelkezésre állási optimalizálhatja a zónák erőforrások igazítása, valamint a szét azokat a zónákat.  Felülvizsgálati [rendelkezésre állási zónák](../availability-zones/az-overview.md) régiók jelenleg támogatja a rendelkezésre állási zónák és más Mik azok a rendelkezésre állási zónák útmutatást, fogalmak és a termékek kapcsolatos. Rendelkezésre állási zónák együtt szabványos terheléselosztással egy kiterjedtnek és rugalmas készlet, amely számos különböző alkalmazási helyzetek hozhat létre.  Tekintse át a jelen dokumentum értenek [fogalmak](#concepts) és alapvető forgatókönyv [tervezési útmutató](#design).
 
 >[!NOTE]
->Felülvizsgálati [rendelkezésre állási zónák Preview](https://aka.ms/availabilityzones) az egyéb kapcsolódó témakörök. 
+>Felülvizsgálati [rendelkezésre állási zónák](https://aka.ms/availabilityzones) az egyéb kapcsolódó témakörök. 
 
 ## <a name="concepts"></a> Terheléselosztó alkalmazott rendelkezésre állási zónák fogalmak
 
@@ -43,7 +43,7 @@ A Load Balancer erőforrás maga regionális és soha nem zonal.  És egy VNet �
 
 A terheléselosztó előtérbeli egy előtér-IP-konfiguráció hivatkozik egy nyilvános IP-cím erőforrás vagy a magánhálózati IP-címet a virtuális hálózati erőforrás alhálózatban.  Ha a szolgáltatás fel van fedve az elosztott terhelésű végpont ez képezi.
 
-A Load Balancer erőforrás egyidejűleg zonal és a zónaredundáns frontends is tartalmazhat.
+A Load Balancer erőforrás egyidejűleg zonal és a zónaredundáns frontends is tartalmazhat. 
 
 Egy nyilvános IP-erőforrás nincs garanciát zónához, a zonality (vagy annak hiányát) esetén nem változtatható.  Ha szeretne módosítani, vagy hagyja el a nyilvános IP-időtúllépést zonality, akkor hozza létre újra a megfelelő zónához a nyilvános IP-Címmel.  
 
@@ -219,3 +219,5 @@ Nincs, hogy még jobb megoldás, mint a másikra anélkül, hogy tudnák a servi
 ## <a name="next-steps"></a>További lépések
 - További információ [rendelkezésre állási zónák](../availability-zones/az-overview.md)
 - További információ [szabványos terheléselosztó](load-balancer-standard-overview.md)
+- Megtudhatja, hogyan [terhelésének elosztása a virtuális gépeket egy Standard terheléselosztó használata zonal időtúllépést zónában](load-balancer-standard-public-zonal-cli.md)
+- Megtudhatja, hogyan [terhelésének elosztása a virtuális gépek között egy szabványos terheléselosztó használata zónaredundáns időtúllépést zónák](load-balancer-standard-public-zone-redundant-cli.md)

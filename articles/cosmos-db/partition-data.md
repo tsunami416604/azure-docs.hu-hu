@@ -1,33 +1,33 @@
 ---
-title: "Particionálás és Azure Cosmos DB horizontális skálázás |} Microsoft Docs"
-description: "Ismerje meg, hogyan particionálási működését Azure Cosmos DB, hogyan lehet konfigurálni a particionálás és kulcsok partícióazonosító és hogyan válassza ki a megfelelő partíciókulcs az alkalmazáshoz."
+title: Particionálás és Azure Cosmos DB horizontális skálázás |} Microsoft Docs
+description: Ismerje meg, hogyan particionálási működését Azure Cosmos DB, hogyan lehet konfigurálni a particionálás és kulcsok partícióazonosító és hogyan válassza ki a megfelelő partíciókulcs az alkalmazáshoz.
 services: cosmos-db
 author: arramac
 manager: jhubbard
 editor: monicar
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: cac9a8cd-b5a3-4827-8505-d40bb61b2416
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 03/30/2018
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0032a00883cedfe754e14293dc13a1009f6dd3a0
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 149d2ba5108fb49741203fbe5c50add6c0d523ae
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Partíció és a skála Azure Cosmos DB
 
 [Az Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) egy globálisan elosztott, multimodel adatbázis szolgáltatás célja, hogy gyors és kiszámítható teljesítmény érdekében. Méretezés zökkenőmentesen együtt az alkalmazás növekedésével azt. Ez a cikk áttekintést az Azure Cosmos Adatbázisba hogyan működik az adatok particionálása modellek. Azt is bemutatja, hogyan konfigurálhatja a hatékony méretezést az alkalmazások Azure Cosmos DB tárolók.
 
-Particionálás és partíciókulcsok ismertetése az Azure-ban a Scott Hanselman és Azure Cosmos DB egyszerű mérnöki Manager, Shireesh Thota videó péntek:
+Particionálás és partíciókulcsok Ez a videó az Azure Cosmos DB Programvezető, Andrew Liu esik szó:
 
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Azure-DocumentDB-Elastic-Scale-Partitioning/player]
+> [!VIDEO https://www.youtube.com/embed/SS6WrQ-HJ30]
 > 
 
 ## <a name="partitioning-in-azure-cosmos-db"></a>Az Azure Cosmos DB particionálás
@@ -53,11 +53,11 @@ Röviden itt található particionálási hogyan működik az Azure Cosmos DB:
 * A háttérben Azure Cosmos DB kiépítését kiszolgálásához szükséges partíciókat **T** kérések száma másodpercenként. Ha **T** magasabb, mint a maximális átviteli sebesség partíciónként **t**, majd az Azure Cosmos DB rendelkezések **N = T/t** partíciókat.
 * Azure Cosmos DB foglal le a kulcsfontosságú terület partíció kulcs kivonatok egyenlő vízszintes a **N** partíciókat. Így minden partíció (fizikai partíció) állomások **1/N** partícióazonosító kulcsértékei (logikai partíciót).
 * Ha egy fizikai partíció **p** eléri a tárolási korlátját, Azure Cosmos DB zökkenőmentesen felosztja **p** két új partíciókra **p1** és **p2** . Az egyes partíciók körülbelül fél kulcsainak megfelelő értékeket továbbítja. Ez a művelet vágási nem látható, hogy az alkalmazást. Ha egy fizikai partíció eléri a tárolási korlátját, és az összes adat a fizikai partíción az azonos logikai partíciós kulcs tartozik, a felosztás művelet nem történik meg. Ennek az az oka egy egyetlen logikai partíciókulcs tartozó összes adatot ugyanazon fizikai partícióján kell lennie, és így a fizikai partíció nem bontható p1 és p2. Ebben az esetben egy másik partíció kulcs stratégia kell alkalmazni.
-* Ha nagyobb átviteli sebesség kiépítése  **t*N**, Azure Cosmos DB felosztja a nagyobb átviteli sebesség támogatásához a partíciók közül legalább egyet.
+* Ha nagyobb átviteli sebesség kiépítése **t * N**, Azure Cosmos DB felosztja a nagyobb átviteli sebesség támogatásához a partíciók közül legalább egyet.
 
 A partíciós kulcsok szemantikája némileg eltérő minden API szemantikáját megfelelően, az alábbi táblázatban látható módon:
 
-| API | Partíciókulcs | Sorkulcsa |
+| API | Partíciókulcs | Sorkulcs |
 | --- | --- | --- |
 | Azure Cosmos DB | egyéni partíciós kulcs elérési útja | `id` kijavítva | 
 | MongoDB | Egyéni megosztott kulcs  | `_id` kijavítva | 
@@ -70,7 +70,7 @@ Azure Cosmos-adatbázis használja a particionálás kivonat-alapú. Egy cikk í
 > Ajánlott eljárás, számos eltérő érték (minimum több ezer több száz) tartalmazó partíció kulcsa.
 >
 
-Az Azure Cosmos DB tárolók hozhatók létre *rögzített* vagy *korlátlan* az Azure portálon. Rögzített méretű tárolók rendelkezik egy legfeljebb 10 GB és 10000 RU/s átviteli sebesség. Egy tároló korlátlan, létrehozásához, meg kell adnia egy minimális átviteli sebességgel 1000 RU/mp, és meg kell adnia egy partíciókulcsot.
+Az Azure Cosmos DB tárolók hozhatók létre *rögzített* vagy *korlátlan* az Azure portálon. A rögzített méretű tárolók mérete legfeljebb 10 GB, feldolgozási sebessége legfeljebb 10000 RU/s lehet. Egy tároló korlátlan, létrehozásához, meg kell adnia egy minimális átviteli sebességgel 1000 RU/mp, és meg kell adnia egy partíciókulcsot.
 
 Célszerű ellenőrizze, hogy az adatok hogyan oszlik meg a partíciók. Portál ennek ellenőrzéséhez nyissa meg a Azure Cosmos DB-fiókjába, majd kattintson a **metrikák** a **figyelés** szakaszt, és a jobb oldali ablaktáblában kattintson a **tárolási** meg, hogy az adatok lap a particionált különböző fizikai partícióján.
 
@@ -99,7 +99,7 @@ Kiszámítható teljesítmény készült Azure Cosmos-adatbázis. Amikor létreh
 ## <a name="work-with-the-azure-cosmos-db-apis"></a>Az Azure Cosmos DB API-k használata
 Az Azure portálon vagy az Azure CLI segítségével tárolók létrehozása, és bármikor skálázni őket. Ez a szakasz bemutatja, hogyan tárolók létrehozása, és adja meg az átviteli sebesség és a partíciós kulcs definíciójában minden támogatott API-k.
 
-### <a name="azure-cosmos-db-api"></a>Az Azure Cosmos DB API
+### <a name="azure-cosmos-db-api"></a>Azure Cosmos DB API
 A következő példa bemutatja, hogyan hozhat létre a tárolót (gyűjtemény) az Azure Cosmos DB API használatával. 
 
 ```csharp

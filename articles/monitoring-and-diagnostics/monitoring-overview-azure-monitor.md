@@ -1,25 +1,25 @@
 ---
-title: "Az Azure áttekintés |} Microsoft Docs"
-description: "Az Azure adatokat gyűjt a riasztások, webhookokkal, automatikus skálázás és automatizálás statisztikák. A cikk is kilistázza más Microsoft-figyelési lehetőségek."
+title: Az Azure áttekintés |} Microsoft Docs
+description: Az Azure adatokat gyűjt a riasztások, webhookokkal, automatikus skálázás és automatizálás statisztikák. A cikk is kilistázza más Microsoft-figyelési lehetőségek.
 author: rboucher
 manager: carmonm
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/23/2017
+ms.date: 03/28/2018
 ms.author: robb
 ms.custom: mvc
-ms.openlocfilehash: ed9ace24778f000b42013cc0ce4d7dacf4a1d4fb
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 448711b7b2e102662bc157485561c33bf7f5fba1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="overview-of-azure-monitor"></a>Az Azure figyelő áttekintése
 Ez a cikk áttekintést nyújt az Azure-figyelő szolgáltatás a Microsoft Azure-ban. Azt ismerteti, milyen Azure figyelő nem, és ez a témakör további információkra mutató hivatkozások használata az Azure-figyelő.  Videó tetszés szerint tekintse meg a következő lépéseket hivatkozások Ez a cikk alján. 
@@ -35,15 +35,13 @@ Az Azure figyelőknek a kezdőlapja, amelyek segítségével a felhasználók:
 - Ismerje meg az Azure által kínált figyelési lehetőségek körét.
 - Felderíteni, konfigurálásához és a helyi Azure platform és a prémium figyelési képességek.
 
-Az Azure-figyelő szolgáltatás megjelenik, amíg áttekintése kezdőlapja előzetes verzió van. 
-
 A lap navigációs, beleértve a előkészítésének kiindulási alapként. A különböző szolgáltatások válogatott jelentős problémák jeleníti meg, és lehetővé teszi a felhasználó navigáljon a környezetben.
  
 ![Figyelés és a diagnosztika nem számítási erőforrások modellje](./media/monitoring-overview-azure-monitor/monitor-overview-ux2.png)
 
 A lap megnyitásakor olvasási hozzáféréssel rendelkezik az előfizetések közül választhat. A kijelölt előfizetés látható:
 
-- **Riasztások és a riasztási források indított** – az alábbi táblázatban összefoglaló számát, a riasztás adatforrások, és hány alkalommal riasztások a kiválasztott időtartamig használatos. Vonatkozik, mind a metrika, és a tevékenység napló riasztásokat. *< szerkesztése: egységes felhasználói élmény is látható az összes riasztás - eseményeket, metrikákat és naplókat (Preview) riasztások >*
+- **Riasztások és a riasztási források indított** – az alábbi táblázatban összefoglaló számát, a riasztás adatforrások, és hány alkalommal riasztások a kiválasztott időtartamig használatos. Régebbi és az újabb riasztások vonatkozik. További információ a [újabb Azure-riasztások](monitoring-overview-unified-alerts.md). 
 - **Tevékenység hibák naplózása** -hiba szintű eseményeket az Azure-erőforrások bármelyike jelentkezni, ha a magas szintű száma tekintheti meg és vizsgálja meg minden esemény a tevékenységnapló oldalon keresztül kattintva.
 - **Az Azure szolgáltatás állapota** -láthatja, hogy az állapotfigyelő tanácsadók, a szolgáltatás állapotát szolgáltatásokkal kapcsolatos problémákról és a tervezett karbantartási események száma. Az Azure szolgáltatás állapota személyre szabott információkat nyújt, ha az Azure-infrastruktúra hibáinak hatással van a szolgáltatások.  Lásd: [Azure szolgáltatás állapota](../service-health/service-health-overview.md) további információt.  
 - **Az Application Insights** -KPI-k tekintse meg az egyes appinsights által biztosított erőforrásokhoz az aktuális előfizetésben. A KPI-k kiszolgálóoldali alkalmazásfigyelési ASP.NET-webalkalmazások, a Java, a csomópont és az általános típusok vannak optimalizálva. A KPI-k lekérdezési gyakorisága, válaszideje, hibaaránya és % rendelkezésre állási metrikák tartalmazza. 
@@ -143,12 +141,12 @@ Néhány képi megjelenítés módszerek a következők:
 
 ### <a name="automate"></a>Automatizálás
 > [!NOTE]
-> Értesítések a Microsoft Azure folyamatos fejlődésének részeként most egy egységes élmény riasztások megtekintési. További részleteket a [Azure riasztások (előzetes verzió)](monitoring-overview-unified-alerts.md)
+> Értesítések a Microsoft Azure folyamatos fejlődésének részeként most egy egységes élmény riasztások érhető el. További részleteket a [új Azure riasztások](monitoring-overview-unified-alerts.md)
 
-A standard Azure-riasztások eseményindító riasztások vagy akár egész folyamatok figyelési adatait is használhatja. Példák erre vonatkozóan:
+Az Azure riasztások eseményindító riasztások vagy akár egész folyamatok figyelési adatait is használhatja. Példák erre vonatkozóan:
 
 * Használja az automatikus skálázás számítási példányokért adatok felfelé vagy lefelé a alkalmazásterhelés alapján.
-* E-mailek küldése metrika ebbe a előre meghatározott küszöbértéket.
+* A metrika- vagy naplófájl feltételek alapján e-mailek küldése. 
 * Hívja a webalkalmazás URL-CÍMÉT (webhook) egy művelet végrehajtása egy Azure-on kívüli rendszerben
 * Elindít egy forgatókönyvet az Azure Automation szolgáltatásbeli bármely különböző feladatok végrehajtásához
 

@@ -1,11 +1,11 @@
 ---
-title: "Felhő eszközre üzenetek Azure IoT Hub (.NET) |} Microsoft Docs"
-description: "Hogyan küldhetők felhő-eszközre küldött üzenetek eszközökre az Azure IoT-központ az Azure IoT SDK-k használata a .NET-hez. Módosítja egy eszköz alkalmazásnak, hogy a felhő eszközre üzeneteket fogadni, és módosítsa a háttér-alkalmazásnak, hogy a felhő eszközre üzeneteket küldeni."
+title: Felhő eszközre üzenetek Azure IoT Hub (.NET) |} Microsoft Docs
+description: Hogyan küldhetők felhő-eszközre küldött üzenetek eszközökre az Azure IoT-központ az Azure IoT SDK-k használata a .NET-hez. Módosítja egy eszköz alkalmazásnak, hogy a felhő eszközre üzeneteket fogadni, és módosítsa a háttér-alkalmazásnak, hogy a felhő eszközre üzeneteket küldeni.
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: a31c05ed-6ec0-40f3-99ab-8fdd28b1a89a
 ms.service: iot-hub
 ms.devlang: dotnet
@@ -14,17 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: elioda
-ms.openlocfilehash: df0a319cdeabef8c854d7c60c7b90ef775be3ce1
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f3110e81a7229f8f279609a64949c7f0ce78d338
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>Üzenetek küldése a felhőből az eszközre az IoT Hub (.NET)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
 ## <a name="introduction"></a>Bevezetés
 Az Azure IoT Hub egy teljes körűen felügyelt szolgáltatás, amellyel eszközök millióira közötti megbízható és biztonságos kétirányú kommunikáció engedélyezése és a megoldás háttérrendszere. A [Ismerkedés az IoT-központ] oktatóanyag bemutatja, hogyan létrehoz egy IoT-központot, azt egy eszközidentitás kiépítéséhez és kód egy eszköz-alkalmazást, amelyet az eszköz a felhőbe küldött üzeneteket küld.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Ez az oktatóanyag épül [Ismerkedés az IoT-központ]. Megmutatja, hogyan számára:
 
@@ -171,7 +173,7 @@ Ebben a szakaszban módosítsa a **SendCloudToDevice** alkalmazásnak, hogy a vi
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóprogramban megismerte felhő eszközre üzeneteket küldjön és fogadjon. 
 
 Példák teljes végpontok közötti megoldások, amelyek használják az IoT-központot, lásd: [Azure IoT Suite].

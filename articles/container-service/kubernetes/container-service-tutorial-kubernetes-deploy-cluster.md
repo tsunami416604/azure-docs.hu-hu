@@ -1,6 +1,6 @@
 ---
-title: "Azure Container Service-oktatóanyag – Fürt üzembe helyezése"
-description: "Azure Container Service-oktatóanyag – Fürt üzembe helyezése"
+title: Azure Container Service-oktatóanyag – Fürt üzembe helyezése
+description: Azure Container Service-oktatóanyag – Fürt üzembe helyezése
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 6ef789bc017e670566d25dd9d167698515e88349
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: cb7bdbaf095cefa72d1de302d90afeebbdb9d027
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="deploy-a-kubernetes-cluster-in-azure-container-service"></a>Kubernetes-fürt üzembe helyezése az Azure Container Service-ben
 
@@ -26,7 +26,7 @@ A Kubernetes tárolóalapú alkalmazásokhoz kínál elosztott platformot. Az Az
 > * A Kubernetes parancssori felület (kubectl) telepítése
 > * A kubectl konfigurálása
 
-Az ezt követő oktatóanyagokban üzembe helyezzük majd az Azure Vote alkalmazást a fürtön, méretezzük, frissítjük, majd konfiguráljuk az Operations Management Suite szolgáltatást a Kubernetes-fürt monitorozására.
+Az ezt követő oktatóanyagokban üzembe helyezzük az Azure Vote alkalmazást a fürtön, skálázzuk, frissítjük, majd a Log Analyticst a Kubernetes-fürt monitorozására konfiguráljuk.
 
 ## <a name="before-you-begin"></a>Előkészületek
 

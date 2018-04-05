@@ -1,26 +1,26 @@
 ---
-title: "Windows rendszerű virtuális gépek létrehozása és felügyelete az Azure PowerShell-modullal | Microsoft Docs"
-description: "Oktatóanyag – Windows rendszerű virtuális gépek létrehozása és felügyelete az Azure PowerShell-modullal"
+title: Windows rendszerű virtuális gépek létrehozása és felügyelete az Azure PowerShell-modullal | Microsoft Docs
+description: Oktatóanyag – Windows rendszerű virtuális gépek létrehozása és felügyelete az Azure PowerShell-modullal
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 02/09/2018
+ms.date: 03/23/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4cf406dfbab40631c99da70085e99ba90f563411
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 9bc5154486bf09072bdf3da6bbeb05407a140354
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-and-manage-windows-vms-with-the-azure-powershell-module"></a>Windows rendszerű virtuális gépek létrehozása és felügyelete az Azure PowerShell-modullal
 
@@ -90,9 +90,11 @@ Használja az alábbi parancsot a helyi gépén, ha egy távoli asztali kapcsola
 mstsc /v:<publicIpAddress>
 ```
 
+A **Windows rendszerbiztonság** ablakban válassza a **További lehetőségek**, majd a **Másik fiók használata** elemet. Írja be a virtuális géphez létrehozott felhasználónevet és jelszót, majd kattintson az **OK** gombra.
+
 ## <a name="understand-vm-images"></a>Virtuálisgép-rendszerképek ismertetése
 
-Az Azure Marketplace-en számos virtuálisgép-rendszerkép található, amelyekkel új virtuális gépeket lehet létrehozni. Az előző lépések során a virtuális gépet a Windows Server 2016 Datacenter rendszerképének használatával hoztuk létre. Ebben a lépésben a PowerShell-modul segítségével további Windows-rendszerképeket keresünk a piactéren, amelyek az új virtuális gépek alapjául szolgálhatnak. Ez a folyamat a közzétevő, az ajánlat és a rendszerkép nevének (termékváltozat) a megkereséséből áll. 
+Az Azure Marketplace-en számos virtuálisgép-rendszerkép található, amelyekkel új virtuális gépeket lehet létrehozni. Az előző lépések során a virtuális gépet a Windows Server 2016 Datacenter rendszerképének használatával hoztuk létre. Ebben a lépésben a PowerShell-modul segítségével további Windows-rendszerképeket keresünk a piactéren, amelyek az új virtuális gépek alapjául szolgálhatnak. Ez a folyamat a rendszerkép [azonosításához](cli-ps-findimage.md#terminology) szükséges közzétevő, ajánlat, termékváltozat és esetleg verziószám megkereséséből áll. 
 
 Használja a [Get-AzureRmVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher) parancsot a rendszerkép-közzétevők listájának lekéréséhez:
 
@@ -139,7 +141,7 @@ Skus                                      Offer         PublisherName          L
 2016-Nano-Server                          WindowsServer MicrosoftWindowsServer EastUS
 ```
 
-Ezek az adatok egy virtuális gép adott rendszerképpel történő üzembe helyezéséhez használhatók. A lenti példa egy virtuális gépet helyez üzembe tárolói rendszerképpel rendelkező Windows Server 2016 használatával.
+Ezek az adatok egy virtuális gép adott rendszerképpel történő üzembe helyezéséhez használhatók. A lenti példa egy virtuális gépet helyez üzembe a tárolói rendszerképpel rendelkező Windows Server 2016 legfrissebb verziójának használatával.
 
 ```azurepowershell-interactive
 New-AzureRmVm `

@@ -1,9 +1,9 @@
 ---
-title: "Az Azure tevékenységnapló áttekintése |} Microsoft Docs"
-description: "Megtudhatja, mi az Azure tevékenységnapló és hogyan használhatja az Azure-előfizetése belül bekövetkező események megértéséhez."
+title: Az Azure tevékenységnapló áttekintése |} Microsoft Docs
+description: Megtudhatja, mi az Azure tevékenységnapló és hogyan használhatja az Azure-előfizetése belül bekövetkező események megértéséhez.
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: c274782f-039d-4c28-9ddb-f89ce21052c7
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: johnkem
-ms.openlocfilehash: aef427483d647c53ba45688ce33a75f876115d08
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 6e373740d6b5af4b3b7d3dca8877c952d79f8b20
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Az Azure tevékenységnapló figyelő előfizetés tevékenység
 A **Azure tevékenységnapló** van egy előfizetési napló, amely történt az Azure-előfizetés szintű események betekintést nyújt. Ez magában foglalja az Azure Resource Manager működési adatokat a frissítésekre a szolgáltatás állapotával kapcsolatos események adatait számos. A műveletnapló korábban hívták "Naplófájlok" vagy "Működési Logs", a felügyeleti kategória jelentések vezérlő-vezérlősík eseményeket az előfizetések óta. A tevékenység-naplót használó, meghatározhatja a "mi, ki, és mikor" az esetleges írási műveleteket (PUT, POST, Törlés) végzett az erőforrást az előfizetésében. A művelet és az egyéb kapcsolódó tulajdonságainak állapotának értelmezni is lehet. A műveletnapló nem tartalmaz olvasható (GET) vagy a klasszikus használó erőforrások / "RDFE" modell.
@@ -38,7 +38,7 @@ Az Azure portál, CLI, PowerShell-parancsmagok használatával tevékenységnapl
 
 > [!NOTE]
 
->  [Riasztások (előzetes verzió)](monitoring-overview-unified-alerts.md) jelenleg a tevékenység napló riasztási szabályok létrehozását és kezelését a bővített megoldást kínál.  [További információk](monitoring-activity-log-alerts-new-experience.md).
+>  [Az újabb riasztások)](monitoring-overview-unified-alerts.md) továbbfejlesztett megoldást nyújt, ha jelentkeznek be riasztási szabályok létrehozását és kezelését a tevékenység.  [További információk](monitoring-activity-log-alerts-new-experience.md).
 
 
 Tekintse meg a következő videót a műveletnapló bemutatása.
@@ -126,7 +126,7 @@ A műveletnapló az Eseményközpontba adatfolyam, vagy az Azure-portálon a "Ex
   * a Service Bus Namespace, amelyben szeretné létrehozni az adatfolyamként történő ezeket az eseményeket egy Eseményközpontba.
 
      ![Exportálás tevékenységnapló panel](./media/monitoring-overview-activity-logs/activity-logs-portal-export-blade.png)
-4. Kattintson a **mentése** ezek a beállítások mentéséhez. A beállítások azonnal érvényesek az előfizetéséhez.
+4. Kattintson a **mentése** ezek a beállítások mentéséhez. A rendszer azonnal alkalmazni fogja a beállításokat az előfizetésére.
 
 ### <a name="configure-log-profiles-using-the-azure-powershell-cmdlets"></a>Az Azure PowerShell-parancsmagok használatával napló profilok konfigurálása
 #### <a name="get-existing-log-profile"></a>Meglévő napló profil beolvasása

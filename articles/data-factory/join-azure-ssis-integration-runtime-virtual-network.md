@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: douglasl
-ms.openlocfilehash: cdda3fbe2aff40e26c6086e87ef3e05670c3419f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2372b6bd91dfb1c33456b42e91aa2496532796ef
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Egy Azure-SSIS-integrációs futásidejű csatlakoztatása egy virtuális hálózatot
 Az Azure-SSIS-integrációs futásidejű (IR) csatlakoztassa egy Azure virtuális hálózatra, a következő esetekben: 
 
-- Az SQL Server Integration Services (SSIS) katalógus adatbázis, az Azure SQL Database felügyelt-példányt (magán előnézetben) virtuális hálózatban üzemeltet.
+- Az SQL Server Integration Services (SSIS) katalógus adatbázis, az Azure SQL Database felügyelt-példányt (előzetes verzió) virtuális hálózatban üzemeltet.
 - Az Azure SSIS integrációs modulon futó SSIS-csomagokkal helyszíni adattárakhoz szeretne csatlakozni.
 
  Az Azure Data Factory (előzetes verzió) 2-es lehetővé teszi az Azure-SSIS-integrációs futásidejű csatlakoztatása a klasszikus üzembe helyezési modellt vagy az Azure Resource Manager telepítési modell használatával létrehozott virtuális hálózatban. 
@@ -34,12 +34,12 @@ Ha SSIS-csomagok hozzáférést, csak a nyilvános felhő, nem kell az Azure-SSI
 
 Ha a SSIS katalógus egy Azure SQL Database-példány, amely nincs a virtuális hálózatban helyezkedik el, akkor nyissa meg a megfelelő portokat. 
 
-Ha az SSIS-katalógus SQL felügyelt adatbázispéldány virtuális hálózatban, csatlakozhat egy Azure-SSIS-IR számára:
+Ha az SSIS-katalógus SQL felügyelt adatbázispéldány (előzetes verzió) egy virtuális hálózatban, csatlakozhat egy Azure-SSIS-IR számára:
 
 - Az azonos virtuális hálózatban.
-- Hálózatok közötti kapcsolattal rendelkezik, amely rendelkezik az SQL-adatbázis felügyelt példány egy másik virtuális hálózat. 
+- Hálózatok közötti kapcsolattal rendelkezik, amely rendelkezik az SQL Database-felügyelt példányt (előzetes verzió) egy másik virtuális hálózat. 
 
-A virtuális hálózat a klasszikus üzembe helyezési modellt vagy az Azure Resource Manager telepítési modell telepíthető. Ha Ön készül, hogy csatlakozott az Azure-SSIS-IR a *azonos virtuális hálózatban* , amely rendelkezik az SQL-adatbázis felügyelt példány, ügyeljen arra, hogy az Azure-SSIS infravörös egy *másik alhálózat* tartozó rendelkezik az SQL-adatbázishoz Felügyelt példány.   
+A virtuális hálózat a klasszikus üzembe helyezési modellt vagy az Azure Resource Manager telepítési modell telepíthető. Ha Ön készül, hogy csatlakozott az Azure-SSIS-IR a *azonos virtuális hálózatban* , amely SQL adatbázis felügyelt példány (előzetes verzió), akkor ügyeljen arra, hogy az Azure-SSIS infravörös egy *másik alhálózat* az SQL rendelkező Felügyelt adatbázispéldány (előzetes verzió).   
 
 Az alábbi szakaszokban további részleteket.
 
@@ -60,7 +60,7 @@ Ha kell megvalósítani a hálózati biztonsági csoport (NSG) segítségével a
 | ---- | --------- | ------------------ | ------- | ----------------------------------- |
 | 10100, 20100, 30100 (ha az infravörös csatlakoztatása a klasszikus virtuális hálózatot)<br/><br/>29876, 29877 (ha az infravörös csatlakoztatása az Azure Resource Manager virtuális hálózat) | Bejövő | TCP | Azure-szolgáltatásokkal kommunikálni a csomópontok a virtuális hálózat az Azure-SSIS integrációs futtatókörnyezet ezeket a portokat használja. | Internet | 
 | 443 | Kimenő | TCP | A virtuális hálózat az Azure-SSIS integrációs futásidejű csomópontjai Azure-szolgáltatásokkal, mint az Azure Storage és az Azure Event Hubs eléréséhez használja ezt a portot. | Internet | 
-| 1433<br/>11000-11999<br/>14000-14999  | Kimenő | TCP | A virtuális hálózat az Azure-SSIS integrációs futásidejű csomópont (erre a célra nincs SQL adatbázis felügyelt példány által üzemeltetett SSISDB vonatkozik.) az Azure SQL Database-kiszolgáló által üzemeltetett SSISDB eléréséhez ezeket a portokat használja | Internet | 
+| 1433<br/>11000-11999<br/>14000-14999  | Kimenő | TCP | A virtuális hálózat az Azure-SSIS integrációs futásidejű csomópont (erre a célra nincs SQL adatbázis felügyelt példány (előzetes verzió) által üzemeltetett SSISDB vonatkozik.) az Azure SQL Database-kiszolgáló által üzemeltetett SSISDB eléréséhez ezeket a portokat használja | Internet | 
 
 ## <a name="azure-portal-data-factory-ui"></a>Azure-portálon (Data Factory UI)
 Ez a szakasz bemutatja, hogyan lehet egy meglévő Azure-SSIS-futtatókörnyezet egy virtuális hálózat (klasszikus vagy az Azure Resource Manager) az Azure portál és a Data Factory felhasználói felület használatával. Először meg kell a virtuális hálózat megfelelő konfigurálása az Azure-SSIS-IR csatlakoztatása előtt. Nyissa meg a virtuális hálózat (klasszikus vagy az Azure Resource Manager) típusa a következő két szakasz egyikével. Ezt követően a harmadik szakasz az Azure-SSIS-IR csatlakoztatása a virtuális hálózat. 
@@ -207,7 +207,7 @@ A parancsfájl a [hozzon létre egy Azure-SSIS-integrációs futásidejű](creat
 $ResourceGroupName = "<Azure resource group name>"
 $DataFactoryName = "<Data factory name>" 
 $AzureSSISName = "<Specify Azure-SSIS IR name>"
-## These two parameters apply if you are using a virtual network and Azure SQL Database Managed Instance (private preview) 
+## These two parameters apply if you are using a virtual network and Azure SQL Database Managed Instance (Preview) 
 # Specify information about your classic or Azure Resource Manager virtual network.
 $VnetId = "<Name of your Azure virtual network>"
 $SubnetName = "<Name of the subnet in the virtual network>"
@@ -292,6 +292,6 @@ Az Azure-SSIS futásidejű kapcsolatos további információkért lásd a követ
 
 - [Azure-SSIS integrációs futásidejű](concepts-integration-runtime.md#azure-ssis-integration-runtime). Ez a cikk tájékoztatást integrációs futtatókörnyezetek általában, beleértve az Azure-SSIS infravörös 
 - [Oktatóanyag: SSIS-csomagok üzembe helyezése az Azure-ban](tutorial-create-azure-ssis-runtime-portal.md). Ez a cikk részletesen hozzon létre egy Azure-SSIS infravörös Az Azure SQL-adatbázis segítségével a SSIS-katalógust. 
-- [Azure-SSIS integrációs modul létrehozása](create-azure-ssis-integration-runtime.md). Ez a cikk kibővíti az oktatóanyag, és utasításokkal szolgál az Azure SQL adatbázis felügyelt példány (magán előnézetben) használatával, és az infravörös csatlakoztatása egy virtuális hálózatot. 
+- [Azure-SSIS integrációs modul létrehozása](create-azure-ssis-integration-runtime.md). Ez a cikk kibővíti az oktatóanyag, és utasításokkal szolgál az Azure SQL adatbázis felügyelt példány (előzetes verzió) használatával, és az infravörös csatlakoztatása egy virtuális hálózatot. 
 - [Azure-SSIS integrációs modul monitorozása](monitor-integration-runtime.md#azure-ssis-integration-runtime). Ez a cikk bemutatja, hogyan kérhet le információkat egy Azure-SSIS integrációs modulról, és ismerteti a visszaadott információkban található állapotok leírását. 
 - [Azure-SSIS integrációs modul kezelése](manage-azure-ssis-integration-runtime.md). Ez a cikk bemutatja, hogyan lehet leállítani, elindítani vagy eltávolítani egy Azure-SSIS integrációs modult. Azt is bemutatja, hogyan horizontális felskálázás az Azure-SSIS-IR csomópontok hozzáadásával. 

@@ -1,12 +1,12 @@
 ---
-title: "Windows 10 Azure több-Bérlős üzemeltető jogosultságokkal a központi telepítése"
-description: "Útmutató a Windows Software Assurance előnyeit, hogy helyszíni licencek Azure maximalizálása"
+title: Windows 10 Azure több-Bérlős üzemeltető jogosultságokkal a központi telepítése
+description: Útmutató a Windows Software Assurance előnyeit, hogy helyszíni licencek Azure maximalizálása
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: xujing
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: 6ad3b294e1d53d03f6ceb61048c8f657d8b471c0
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: c157fd8fded40f08c997c29ef6761f3c09dbd282
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Windows 10 Azure több-Bérlős üzemeltető jogosultságokkal a központi telepítése 
 Az ügyfelek a Windows 10 nagyvállalati E3/E5 egyes felhasználókra vagy a Windows virtuális asztal eléréséhez (bővítmény felhasználói előfizetési licencet vagy előfizetési licenceket) felhasználónként több-Bérlős üzemeltető Rights for Windows 10 lehetővé teszi a Windows 10 licencek kerüljön a felhőben és futtassa a Windows 10-alapú virtuális gépek Azure-on fizető egy másik licenc nélkül. További információkért lásd: [több-Bérlős üzemeltető Windows 10 rendszerhez készült](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
@@ -107,7 +107,7 @@ LicenseType              :
 
 ## <a name="additional-information-about-joining-azure-ad"></a>További információk az Azure AD illesztése
 >[!NOTE]
->Azure látja el az összes Windows virtuális gépek beépített rendszergazdai fiók, amely nem csatlakozik az aad-ben használható. Például *beállítások > fiók > hozzáférési munkahelyi vagy iskolai > + Connect* nem fog működni. Kell létrehozni, és jelentkezzen be az Azure AD mannually csatlakozni egy második rendszergazdai fiók. Beállíthatja úgy is üzembe helyezési csomag használata az Azure AD, a hivatkozás használata a *lépések* további szakasz.
+>Azure látja el az összes Windows virtuális gépek beépített rendszergazdai fiók, amely nem csatlakozik az aad-ben használható. Például *beállítások > fiók > hozzáférési munkahelyi vagy iskolai > + Connect* nem fog működni. Kell létrehozni, és jelentkezzen be az Azure AD manuálisan csatlakozni egy második rendszergazdai fiók. Beállíthatja úgy is üzembe helyezési csomag használata az Azure AD, a hivatkozás használata a *lépések* további szakasz.
 >
 >
 

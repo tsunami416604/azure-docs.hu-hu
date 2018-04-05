@@ -1,8 +1,8 @@
 ---
-title: "A Data Lake Store szolgáltatásban található hozzáférés-vezérlés áttekintése | Microsoft Docs"
-description: "A hozzáférés-vezérlés működésének megismerése az Azure Data Lake Store szolgáltatásban"
+title: A Data Lake Store szolgáltatásban található hozzáférés-vezérlés áttekintése | Microsoft Docs
+description: A hozzáférés-vezérlés működésének megismerése az Azure Data Lake Store szolgáltatásban
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/09/2018
+ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: ec0d1fa9c422dbe4958c5d5f0b7a6e093aeb32da
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: a2e29fd6f2dbd4bd573b780a14bd09c0cd03395f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="access-control-in-azure-data-lake-store"></a>Az Azure Data Lake Store szolgáltatásban található hozzáférés-vezérlés
 
@@ -124,15 +124,15 @@ Az alábbiakban néhány gyakori alkalmazási helyzet szerepel, amelyekkel megis
 
 ## <a name="viewing-permissions-in-the-azure-portal"></a>Engedélyek megtekintése az Azure Portalon
 
-A Data Lake Store-fiók **Adatkezelő** panelén kattintson a **Hozzáférés** elemre az egyes fájlokhoz vagy mappákhoz tartozó ACL-ek megtekintéséhez. Kattintson a **Hozzáférés** lehetőségre a **mydatastore** fiókban lévő **catalog** mappához tartozó ACL-ek megtekintéséhez.
+A Data Lake Store-fiók **Adatkezelő** panelén kattintson a **Hozzáférés** elemre az Adatkezelőben megtekintett fájlhoz vagy mappához tartozó ACL-ek megtekintéséhez. Kattintson a **Hozzáférés** lehetőségre a **mydatastore** fiókban lévő **catalog** mappához tartozó ACL-ek megtekintéséhez.
 
 ![Data Lake Store ACL-ek](./media/data-lake-store-access-control/data-lake-store-show-acls-1.png)
 
-Ezen panel felső részén áttekintés látható arról, hogy milyen engedélyekkel rendelkezik. (A képernyőképen a felhasználó Bob.) Alatta a hozzáférési engedélyek láthatók. Ezután a **Hozzáférés** panelen kattintson az **Egyszerű nézet** lehetőségre az egyszerűbb nézet megtekintéséhez.
+E panel felső részén a tulajdonos engedélyei láthatók. (A képernyőképen a tulajdonos felhasználó Bob.) Alatta a hozzárendelt hozzáférési ACL-ek láthatók. 
 
 ![Data Lake Store ACL-ek](./media/data-lake-store-access-control/data-lake-store-show-acls-simple-view.png)
 
-Kattintson az **Advanced View** (Speciális nézet) elemre a speciálisabb nézet megtekintéséhez, ahol az alapértelmezett ACL-ek, a maszk és a felügyelő koncepciója látható.
+Kattintson a **Speciális nézet** elemre egy részletesebb nézet megtekintéséhez, ahol az alapértelmezett ACL-ek, a maszk és a felügyelők leírása látható.  A panel ezen kívül lehetőséget biztosít a gyermekfájlokhoz és mappákhoz tartozó hozzáférési és alapértelmezett ACL-ek rekurzív módon történő beállításához az aktuális mappa engedélyei alapján.
 
 ![Data Lake Store ACL-ek](./media/data-lake-store-access-control/data-lake-store-show-acls-advance-view.png)
 
@@ -164,7 +164,7 @@ Automatikusan az elem tulajdonosa lesz az a felhasználó, aki létrehozta az el
 * megváltoztathatja a tulajdonában lévő fájl tulajdonos csoportját, ha a tulajdonos felhasználó szintén tagja ennek a csoportnak.
 
 > [!NOTE]
-> A tulajdonos *nem* változtathatja meg a tulajdonában lévő fájl tulajdonos felhasználóját. Csak a felügyelők változtathatják meg egy fájl vagy mappa tulajdonosát vagy tulajdonoscsoportját.
+> A tulajdonos *nem* változtathatja meg egy fájl vagy mappa tulajdonos felhasználóját. Csak a felügyelők változtathatják meg egy fájl vagy mappa tulajdonosát vagy tulajdonoscsoportját.
 >
 >
 
@@ -177,9 +177,14 @@ Egy új fájlrendszerbeli elem létrehozásakor a Data Lake Store értéket rend
 * **1. eset**: A gyökérmappa „/”. A mappa a Data Lake Store-fiók létrehozásakor jön létre. Ebben az esetben a tulajdonoscsoport azon felhasználó szerint lesz beállítva, aki létrehozta a fiókot.
 * **2. eset** (minden egyéb eset): Egy új elem létrehozásakor a tulajdonoscsoport a szülőmappából másolódik át.
 
+A tulajdonos csoport egyéb esetben egyéb felhasználókhoz/csoportokhoz hozzárendelt engedélyekhez hasonlóan viselkedik.
+
 A tulajdonoscsoportot megváltoztathatja:
 * Bármely felügyelő.
 * a tulajdonos, ha szintén tagja ennek a csoportnak.
+
+> [!NOTE]
+> A tulajdonoscsoport *nem* változtathatja meg egy fájl vagy mappa ACL-eit.
 
 ## <a name="access-check-algorithm"></a>Hozzáférés-ellenőrzési algoritmus
 
@@ -209,7 +214,7 @@ Hivatkozásként itt megtalálja, hogy hol jelenik meg egy fájlhoz vagy mappáh
 ![Data Lake Store ACL-ek](./media/data-lake-store-access-control/data-lake-store-show-acls-mask-view.png)
 
 > [!NOTE]
-> Az új Data Lake Store-fiókoknál a gyökérmappa („/”) hozzáférési ACL-jéhez és alapértelmezett ACL-jéhez tartozó maszk alapértelmezés szerint RWX-re van állítva.
+> Az új Data Lake Store-fiókoknál a gyökérmappa („/”) hozzáférési ACL-jéhez tartozó maszk alapértelmezés szerint RWX-re van állítva.
 >
 >
 
@@ -308,7 +313,7 @@ Ha a felhasználó már nem létezik az Azure AD-ben, egy GUID lesz látható. E
 
 ### <a name="does-data-lake-store-support-inheritance-of-acls"></a>Támogatja a Data Lake Store az ACL-ek öröklését?
 
-Nem.
+Nem, az alapértelmezett ACL-ek azonban használhatók a szülő mappán belül újonnan létrehozott gyermekfájlok és mappák ACL-jeinek beállításához.  
 
 ### <a name="what-is-the-difference-between-mask-and-umask"></a>Mi a különbség a mask és az umask között?
 
@@ -317,7 +322,7 @@ Nem.
 | A **mask** tulajdonság minden fájl és mappa esetében elérhető. | Az **umask** a Data Lake Store-fiók egyik tulajdonsága. Tehát a Data Lake Store csak egyetlen umask tulajdonságot tartalmaz.    |
 | Egy fájl vagy mappa mask tulajdonságát a fájl tulajdonosa vagy tulajdonoscsoportja, illetve egy felügyelő változtathatja meg. | Az umask tulajdonságot semmilyen felhasználó nem módosíthatja, még a felügyelők sem. Ez egy megváltoztathatatlan, állandó érték.|
 | A mask tulajdonság a hozzáférés-ellenőrzési algoritmus futásakor használható annak megállapítására, hogy egy felhasználó jogosult-e műveletek elvégzésére egy fájlon vagy mappán. A mask szerepe a „hatályos engedélyek létrehozása” a hozzáférés-ellenőrzés során. | Az umask a hozzáférés-ellenőrzés során egyáltalán nincs használatban. Az umask egy mappa új gyermekelemei hozzáférési ACL-jeinek meghatározására használható. |
-| A mask egy 3 bites RWX-érték, amely a nevesített felhasználóra, nevesített csoportra és a tulajdonosra lesz alkalmazva a hozzáférés-ellenőrzés időpontjában.| Az umask egy 9 bites érték, amely egy új gyermek tulajdonosára, tulajdonoscsoportjára vagy **egyéb** jellemzőjére lesz alkalmazva.|
+| A mask egy 3 bites RWX-érték, amely a nevesített felhasználóra, a tulajdonoscsoportra és a nevesített csoportra lesz alkalmazva a hozzáférés-ellenőrzés időpontjában.| Az umask egy 9 bites érték, amely egy új gyermek tulajdonosára, tulajdonoscsoportjára vagy **egyéb** jellemzőjére lesz alkalmazva.|
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>Hol tudhatok meg többet a POSIX hozzáférés-vezérlési modellről?
 

@@ -1,5 +1,5 @@
 --cím: "az oktatóanyag: Azure parancssori felület használatával PostgreSQL kialakítása a egy Azure-adatbázis" leírása: Ez az oktatóanyag bemutatja, hogyan létrehozása, konfigurálása és az első Azure-adatbázis Azure parancssori felület használatával PostgreSQL-kiszolgáló lekérdezéséhez.
-services: postgresql author: rachel-msft ms.author: raagyema manager: kfile editor: jasonwhowell ms.service: postgresql ms.custom: mvc ms.devlang: azure-cli ms.topic: tutorial ms.date: 03/20/2018
+services: postgresql author: rachel-msft ms.author: raagyema manager: kfile editor: jasonwhowell ms.service: postgresql ms.custom: mvc ms.devlang: azure-cli ms.topic: tutorial ms.date: 04/01/2018
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-azure-cli"></a>Oktatóanyag: Azure Database for PostgreSQL tervezése az Azure CLI használatával 
 Ebben az oktatóanyagban az Azure CLI (parancssori felület) és egyéb segédprogramok segítségével a következőket sajátíthatja el:
@@ -45,11 +45,11 @@ A visszaküldött JSON-fájlnak a következőket kell tartalmaznia:
 {
     "extensionType": "whl",
     "name": "rdbms",
-    "version": "0.0.4"
+    "version": "0.0.5"
 }
 ```
 
-Ha 0.0.4 verziója nem ad vissza, futtassa a következő a bővítmény frissítése: 
+Ha 0.0.5 verziója nem ad vissza, futtassa a következő a bővítmény frissítése: 
 ```azurecli-interactive
 az extension update --name rdbms
 ```

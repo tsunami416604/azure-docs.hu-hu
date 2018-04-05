@@ -1,11 +1,11 @@
 ---
-title: "Az első függvény létrehozása az Azure-ban a Java és a Maven használatával | Microsoft Docs"
-description: "Hozzon létre és tegyen közzé egy egyszerű, HTTP-triggert használó függvényt az Azure-ban a Java és a Maven használatával."
+title: Az első függvény létrehozása az Azure-ban a Java és a Maven használatával | Microsoft Docs
+description: Hozzon létre és tegyen közzé egy egyszerű, HTTP-triggert használó függvényt az Azure-ban a Java és a Maven használatával.
 services: functions
 documentationcenter: na
 author: rloutlaw
 manager: justhe
-keywords: "azure functions, függvények, eseményfeldolgozás, számítás, kiszolgáló nélküli architektúra"
+keywords: azure functions, függvények, eseményfeldolgozás, számítás, kiszolgáló nélküli architektúra
 ms.service: functions
 ms.devlang: java
 ms.topic: quickstart
@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 11/07/2017
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c0984075cd8e372cce09ea100378dcd4e8cddabe
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 81d9d8790a750f34133f3f00dafc15c56185d7b1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-your-first-function-with-java-and-maven-preview"></a>Az első függvény létrehozása a Java és a Maven használatával (előzetes verzió)
 
@@ -34,18 +34,25 @@ Ez a rövid útmutató végigvezeti a [kiszolgáló nélküli](https://azure.mic
 ## <a name="prerequisites"></a>Előfeltételek
 Ha függvényalkalmazást szeretne létrehozni a Java használatával, akkor a számítógépre a következőket kell telepíteni:
 
--  A [.NET Core](https://www.microsoft.com/net/core) legújabb verziója.
 -  A [Java Developer Kit](https://www.azul.com/downloads/zulu/) 8-as verziója.
--  [Azure CLI](https://docs.microsoft.com/cli/azure)
 -  Az [Apache Maven](https://maven.apache.org) 3.0-s vagy újabb verziója.
--  A [Node.js](https://nodejs.org/download/) 8.6-os vagy újabb verziója.
+-  [Azure CLI](https://docs.microsoft.com/cli/azure)
 
 > [!IMPORTANT] 
 > A rövid útmutató befejezéséhez a JAVA_HOME környezeti változót a JDK telepítési helyére kell beállítani.
 
 ## <a name="install-the-azure-functions-core-tools"></a>Az Azure Functions Core Tools telepítése
 
-Az [Azure Functions Core Tools 2.0](https://www.npmjs.com/package/azure-functions-core-tools) helyi fejlesztési környezetet biztosít az Azure-függvények írásához, futtatásához és a hibakereséshez. Telepítse az eszközöket az [npm](https://www.npmjs.com/) használatával, amely a [Node.js](https://nodejs.org/) részét képezi.
+Az [Azure Functions Core Tools 2.0](https://www.npmjs.com/package/azure-functions-core-tools) helyi fejlesztési környezetet biztosít az Azure-függvények írásához, futtatásához és a hibakereséshez. 
+
+A telepítéshez nyissa meg a [Telepítés](https://github.com/azure/azure-functions-core-tools#installing) szakaszt, és keresse meg az operációs rendszeréhez (Windows, Linux, Mac) tartozó utasításokat.
+
+Manuálisan is telepítheti az [npm](https://www.npmjs.com/) használatával, amely a [Node.js](https://nodejs.org/) részét képezi, miután telepítette az alábbiakat:
+
+-  A [.NET Core](https://www.microsoft.com/net/core) legújabb verziója.
+-  A [Node.js](https://nodejs.org/download/) 8.6-os vagy újabb verziója.
+
+Az npm-alapú telepítés folytatásához futtassa a következőt:
 
 ```
 npm install -g azure-functions-core-tools@core
@@ -185,6 +192,4 @@ Létrehozott egy Java-függvényalkalmazást egy egyszerű HTTP-triggerrel, és 
 - Ha további információra van szüksége a Java-függvények létrehozásával kapcsolatban, tekintse át a [Java-függvények fejlesztői útmutatóját](functions-reference-java.md).
 - Adjon hozzá különböző triggereket használó további funkciókat a projekthez az `azure-functions:add` Maven-cél használatával.
 - Végezze el a függvények helyi hibakeresését a Visual Studio Code-dal. Ha elkészült a [Java-bővítménycsomag](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack) telepítésével, és a Functions-projekt meg van nyitva a Visual Studio Code-ban, [társítsa a hibakeresőt](https://code.visualstudio.com/Docs/editor/debugging#_launch-configurations) az 5005-ös számú porthoz. Ezt követően állítson be egy töréspontot a szerkesztőben, és aktiválja a függvényt, miközben az helyileg fut: ![Függvények hibakeresése a Visual Studio Code-ban](media/functions-create-java-maven/vscode-debug.png)
-
-
-
+- Végezze el a függvények távoli hibakeresését a Visual Studio Code-dal. Tekintse meg az utasításokat a [kiszolgáló nélküli Java-alkalmazások írásáról](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud) szóló dokumentációban.

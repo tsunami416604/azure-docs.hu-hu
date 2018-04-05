@@ -1,23 +1,23 @@
 ---
-title: "AKS és az Azure-tárolót beállításjegyzék vázlat használata"
-description: "AKS és az Azure-tárolót beállításjegyzék vázlat használata"
+title: AKS és az Azure-tárolót beállításjegyzék vázlat használata
+description: AKS és az Azure-tárolót beállításjegyzék vázlat használata
 services: container-service
 author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 03/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 803d9e9ea7411c6de4dd15670f495fa8e169a989
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 2ab79e3a6308d01d836a82f356f43eccb6af9791
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-draft-with-azure-container-service-aks"></a>Az Azure Tárolószolgáltatás (AKS) vázlat használata
 
-Vázlat egy nyílt forráskódú eszköz, amely segít a csomag és a kódra Kubernetes fürtben. Vázlat célja a fejlesztési iterációs ciklus; mivel a kód még fejlesztés alatt, de előtt véglegesítése verziókövetésbe. Vázlat gyorsan központilag telepítheti az alkalmazás Kubernetes kód változás. Kapcsolatos további információkért lásd: a [dokumentációnkat a Githubon vázlatszintű][draft-documentation].
+Vázlat egy nyílt forráskódú eszköz, amely segít tartalmazhat, és ezek Kubernetes fürtben, így a fejlesztési ciklus – a "belső hurkot" koncentrált fejlesztési összpontosíthat szabadon tároló üzembe helyezése. Vázlat működik, a kód még fejlesztés alatt, de előtt véglegesítése verziókövetésbe. Vázlat gyorsan központilag telepítheti az alkalmazás Kubernetes kód változás. Kapcsolatos további információkért lásd: a [dokumentációnkat a Githubon vázlatszintű][draft-documentation].
 
 Ez a dokumentum adatokat AKS Kubernetes fürtben, vázlat használata.
 
@@ -29,64 +29,51 @@ Meg kell egy titkos Docker beállításjegyzék Azure tároló beállításjegyz
 
 Helm is telepíteni kell a AKS fürtben. Helm telepítésével kapcsolatos további információkért lásd: [használata Helm Azure tároló szolgáltatás (AKS)][aks-helm].
 
+Végül, telepítenie kell a [Docker](https://www.docker.com).
+
 ## <a name="install-draft"></a>Vázlat telepítése
 
-A Vázlat CLI egy ügyfelet, amelyben a fejlesztői rendszeren fut, és lehetővé teszi, hogy quicky kód telepítése Kubernetes fürtbe.
+A Vázlat CLI egy ügyfelet, amelyben a fejlesztői rendszeren fut, és lehetővé teszi, hogy quicky kód telepítése Kubernetes fürtbe. 
+
+> [!NOTE] 
+> Ha telepítette a vázlatként megjelölt verziót 0.12 előtt, kell először törölnie vázlat a fürt használt `helm delete --purge draft` , és távolítsa el a helyi konfigurációs futtatásával `rm -rf ~/.draft`. Ha a MacOS, futtathatja `brew upgrade draft`.
 
 A Vázlat parancssori felület telepítése egy Mac használata `brew`. További telepítési beállítások talál, a [vázlat telepítése útmutató][install-draft].
 
 ```console
+brew tap azure/draft
 brew install draft
 ```
 
-Kimenet:
-
-```
-==> Installing draft from azure/draft
-==> Downloading https://azuredraft.blob.core.windows.net/draft/draft-v0.7.0-darwin-amd64.tar.gz
-Already downloaded: /Users/neilpeterson/Library/Caches/Homebrew/draft-0.7.0.tar.gz
-==> /usr/local/Cellar/draft/0.7.0/bin/draft init --client-only
-🍺  /usr/local/Cellar/draft/0.7.0: 6 files, 61.2MB, built in 1 second
-```
-
-## <a name="configure-draft"></a>Vázlat konfigurálása
-
-Vázlat konfigurálásakor tároló beállításjegyzékbeli kell megadni. Ebben a példában az Azure-tároló beállításjegyzék szolgál.
-
-A következő parancsot a neve és a ACR példány bejelentkezési kiszolgáló nevét. A parancs frissíti a ACR példányát tartalmazó erőforráscsoport nevét.
-
-```console
-az acr list --resource-group <resource group> --query "[].{Name:name,LoginServer:loginServer}" --output table
-```
-
-A ACR példány jelszó is szükséges.
-
-A következő parancsot a ACR jelszó vissza. A parancs frissíti az ACR-példány nevét.
-
-```console
-az acr credential show --name <acr name> --query "passwords[0].value" --output table
-```
-
-A Vázlat inicializálni a `draft init` parancsot.
+Most már a piszkozat a inicializálni a `draft init` parancsot.
 
 ```console
 draft init
 ```
 
-A folyamat során kér a tároló beállításjegyzék hitelesítő adatokat. Egy Azure-tároló beállításjegyzék használata esetén a beállításjegyzék URL ACR bejelentkezési kiszolgálónév, a felhasználónév az ACR példány nevét, és a jelszó pedig a ACR jelszót.
+## <a name="configure-draft"></a>Vázlat konfigurálása
+
+Vázlat helyileg a tároló lemezképet állít össze, és ezután vagy telepíti őket (esetén Minikube) a helyi beállításjegyzékből, vagy meg kell adnia a kép beállításjegyzék használatára. Ez a példa az Azure tároló beállításjegyzék (ACR), így a AKS fürt és a ACR beállításjegyzék közötti megbízhatósági kapcsolat létrehozása és a tároló leküldése ACR tervezet konfigurálnia kell.
+
+### <a name="create-trust-between-aks-cluster-and-acr"></a>AKS fürt és ACR közötti megbízhatósági kapcsolat létrehozása
+
+Egy AKS fürt és az ACR beállításjegyzék közötti megbízhatósági kapcsolatot létesíteni az Azure Active Directory szolgáltatás egyszerű használt AKS ACR tárház hatókörű hozzáadva a közreműködői szerepkör módosítása. Ehhez futtassa a következő parancsokat, cseréje _&lt;aks-rg-neve&gt;_ és _&lt;aks fürtnév&gt;_ erőforráscsoport és annak nevét a AKS fürt, és _&lt;acr-rg-név&gt;_ és _&lt;acr-tárház-neve&gt;_ az ACR erőforrás csoport és a tárház nevét a tárház kívánt megbízhatósági kapcsolat létrehozása.
 
 ```console
-1. Enter your Docker registry URL (e.g. docker.io/myuser, quay.io/myuser, myregistry.azurecr.io): <ACR Login Server>
-2. Enter your username: <ACR Name>
-3. Enter your password: <ACR Password>
+export AKS_SP_ID=$(az aks show -g <aks-rg-name> -n <aks-cluster-name> --query "servicePrincipalProfile.clientId" -o tsv)
+export ACR_RESOURCE_ID=$(az acr show -g <acr-rg-name> -n <acr-repo-name> --query "id" -o tsv)
+az role assignment create --assignee $AKS_SP_ID --scope $ACR_RESOURCE_ID --role contributor
 ```
 
-Művelet befejeződése után a vázlat a Kubernetes fürtben lett konfigurálva, és használatra kész.
+(Ezeket a lépéseket és más hitelesítési mechanizmusok ACR eléréséhez [hitelesítése az ACR](../container-registry/container-registry-auth-aks.md).)
 
-```
-Draft has been installed into your Kubernetes Cluster.
-Happy Sailing!
-```
+### <a name="configure-draft-to-push-to-and-deploy-from-acr"></a>Vázlat leküldése és telepítése az ACR konfigurálása
+
+Most, hogy AKS és ACR közötti megbízhatósági kapcsolat áll fenn, akkor a következő lépéseket a AKS fürtről ACR használatának engedélyezése.
+1. A tervezett konfiguráció `registry` futtatásával érték `draft config set registry <registry name>.azurecr.io`, ahol _&lt;beállításjegyzék neve&lt;_ a ACR beállításjegyzék neve.
+2. Jelentkezzen be a ACR beállításjegyzék futtatásával `az acr login -n <registry name>`. 
+
+Mivel most jelentkezett be helyileg történő ACR és AKS és ACR megbízhatósági kapcsolatot létrehozott, nincs jelszó vagy titkos kulcsok szükségesek leküldése vagy lekérés ACR a AKS be. Hitelesítés az Azure Resource Manager szintjén, Azure Active Directory használatával történik. 
 
 ## <a name="run-an-application"></a>Alkalmazás futtatása
 
@@ -99,7 +86,7 @@ git clone https://github.com/Azure/draft
 Módosítsa a Java-példák könyvtárában.
 
 ```console
-cd draft/examples/java/
+cd draft/examples/example-java/
 ```
 
 Használja a `draft create` parancsot a folyamat elindításához. Ezzel a paranccsal létrejön az összetevőket, futtassa az alkalmazást egy Kubernetes fürtben használt. Ezek az elemek közé tartozik egy Dockerfile Helm diagramot, és egy `draft.toml` fájl, amely a Vázlat konfigurációs fájl.
@@ -110,12 +97,14 @@ draft create
 
 Kimenet:
 
-```
+```console
 --> Draft detected the primary language as Java with 92.205567% certainty.
 --> Ready to sail
 ```
 
-Az alkalmazás futtatásához Kubernetes fürtön, használja a `draft up` parancsot. Ez a parancs az alkalmazás kódja és konfigurációs fájljait a Kubernetes fürt feltölt. Azután tároló lemezkép létrehozása Dockerfile fut, leküldéses értesítések a lemezképet a tároló beállításjegyzék, és végül futtatja a Helm diagram az alkalmazás indításához.
+Az alkalmazás futtatásához Kubernetes fürtön, használja a `draft up` parancsot. A parancs létrehozza a Dockerfile tároló lemezkép létrehozása, leküldi a kép ACR, és végül telepíti a Helm diagram AKS a az alkalmazás indításához.
+
+Az első alkalommal fut, kérdez le, és húzza a tároló kép hosszabb időt vehet igénybe; Ha az alap rétegek gyorsítótárba kerüljenek-e, igénybe vett idő jelentős mértékben csökken.
 
 ```console
 draft up
@@ -123,12 +112,13 @@ draft up
 
 Kimenet:
 
-```
-Draft Up Started: 'open-jaguar'
-open-jaguar: Building Docker Image: SUCCESS ⚓  (28.0342s)
-open-jaguar: Pushing Docker Image: SUCCESS ⚓  (7.0647s)
-open-jaguar: Releasing Application: SUCCESS ⚓  (4.5056s)
-open-jaguar: Build ID: 01BW3VVNZYQ5NQ8V1QSDGNVD0S
+```console
+Draft Up Started: 'example-java'
+example-java: Building Docker Image: SUCCESS ⚓  (1.0003s)
+example-java: Pushing Docker Image: SUCCESS ⚓  (3.0007s)
+example-java: Releasing Application: SUCCESS ⚓  (0.9322s)
+example-java: Build ID: 01C9NPDYQQH2CZENDMZW7ESJAM
+Inspect the logs with `draft logs 01C9NPDYQQH2CZENDMZW7ESJAM`
 ```
 
 ## <a name="test-the-application"></a>Az alkalmazás tesztelése
@@ -143,7 +133,7 @@ draft connect
 
 Kimenet:
 
-```
+```console
 Connecting to your app...SUCCESS...Connect to your app on localhost:46143
 Starting log streaming...
 SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
@@ -153,7 +143,10 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 >> Listening on 0.0.0.0:4567
 ```
 
-Amikor befejeződött az alkalmazás használatát tesztelés `Control+C` leállítja a proxykapcsolatot.
+Az alkalmazás tallózással most tesztelheti http://localhost:46143 (az előző példában; az a port eltérő is lehet). Amikor befejeződött az alkalmazás használatát tesztelés `Control+C` leállítja a proxykapcsolatot.
+
+> [!NOTE]
+> Használhatja a `draft up --auto-connect` felépítéséhez és az alkalmazás központi telepítése, és azonnal csatlakozni az első futó tárolót, hogy ellenőrizze az iterációs parancs még gyorsabban ciklus.
 
 ## <a name="expose-application"></a>Teszi közzé az alkalmazást
 
@@ -163,7 +156,7 @@ Ha egy alkalmazás tesztelése a Kubernetes, érdemes lehet elérhetővé tenni 
 Először a Vázlat csomag annak meghatározása, hogy frissíteni kell a szolgáltatás olyan típusú `LoadBalancer` kell létrehozni. Ehhez az szükséges, frissítse a szolgáltatás típusa a `values.yaml` fájlt.
 
 ```console
-vi chart/java/values.yaml
+vi charts/java/values.yaml
 ```
 
 Keresse meg a `service.type` tulajdonság, és frissítse az értéket a `ClusterIP` való `LoadBalancer`.
@@ -203,13 +196,13 @@ kubectl get service -w
 Kezdetben a *külső IP-* megjelenik a szolgáltatás `pending`.
 
 ```
-deadly-squid-java   10.0.141.72   <pending>     80:32150/TCP   14m
+example-java-java   10.0.141.72   <pending>     80:32150/TCP   14m
 ```
 
 Miután az EXTERNAL-IP cím `pending` állapotról `IP address` állapotúra változik, a `Control+C` billentyűparanccsal állítsa le a kubectl figyelési folyamatát.
 
 ```
-deadly-squid-java   10.0.141.72   52.175.224.118   80:32150/TCP   17m
+example-java-java   10.0.141.72   52.175.224.118   80:32150/TCP   17m
 ```
 
 Az alkalmazás megtekintéséhez navigáljon a külső IP-címhez.
@@ -243,25 +236,35 @@ import static spark.Spark.*;
 
 public class Hello {
     public static void main(String[] args) {
-        get("/", (req, res) -> "Hello World, I'm Java - Draft Rocks!");
+        get("/", (req, res) -> "Hello World, I'm Java in AKS!");
     }
 }
 ```
 
-Futtassa a `draft up` parancs futtatásával telepítse újra az alkalmazást.
+Futtassa a `draft up --auto-connect` parancsot arra, amint egy pod válaszolni készen áll, telepítse újra az alkalmazást.
 
 ```console
-draft up
+draft up --auto-connect
 ```
 
 Kimenet
 
 ```
-Draft Up Started: 'deadly-squid'
-deadly-squid: Building Docker Image: SUCCESS ⚓  (18.0813s)
-deadly-squid: Pushing Docker Image: SUCCESS ⚓  (7.9394s)
-deadly-squid: Releasing Application: SUCCESS ⚓  (6.5005s)
-deadly-squid: Build ID: 01BWK8C8X922F5C0HCQ8FT12RR
+Draft Up Started: 'example-java'
+example-java: Building Docker Image: SUCCESS ⚓  (1.0003s)
+example-java: Pushing Docker Image: SUCCESS ⚓  (4.0010s)
+example-java: Releasing Application: SUCCESS ⚓  (1.1336s)
+example-java: Build ID: 01C9NPMJP6YM985GHKDR2J64KC
+Inspect the logs with `draft logs 01C9NPMJP6YM985GHKDR2J64KC`
+Connect to java:4567 on localhost:39249
+Your connection is still active.
+Connect to java:4567 on localhost:39249
+[java]: SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+[java]: SLF4J: Defaulting to no-operation (NOP) logger implementation
+[java]: SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+[java]: == Spark has ignited ...
+[java]: >> Listening on 0.0.0.0:4567
+
 ```
 
 Végül tekintse meg az alkalmazás a frissítéseket.
@@ -273,7 +276,7 @@ curl 52.175.224.118
 Kimenet:
 
 ```
-Hello World, I'm Java - Draft Rocks!
+Hello World, I'm Java in AKS!
 ```
 
 ## <a name="next-steps"></a>További lépések

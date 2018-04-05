@@ -1,5 +1,5 @@
 ---
-title: Hozzon létre egy rendelkezésre állási zónák (előzetes verzió) használó Azure méretezési |} Microsoft Docs
+title: Hozzon létre egy rendelkezésre állási zónák használó Azure méretezési |} Microsoft Docs
 description: Útmutató az Azure virtuális gép méretezési készlet, amely a rendelkezésre állási zónák használata elleni kimaradások nagyobb redundancia létrehozása
 services: virtual-machine-scale-sets
 documentationcenter: ''
@@ -13,18 +13,16 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2018
+ms.date: 03/07/2018
 ms.author: iainfou
-ms.openlocfilehash: 8b497af8bc7e3060e184dd6a029b23ccb2d2bbfb
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: dee06eee045bc24c2864333a66a6d145a771b3ad
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones-preview"></a>A rendelkezésre állási zónák (előzetes verzió) használó virtuálisgép-méretezési csoport létrehozása
+# <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>A rendelkezésre állási zónák használó virtuálisgép-méretezési csoport létrehozása
 A datacenter-szintű meghibásodásával szembeni védelemhez a virtuálisgép-méretezési csoportok, a méretezési készlet rendelkezésre állásának zónák is létrehozhat. Azure-régiók, amely támogatja a rendelkezésre állási zónák legalább három különálló zónákra, mindegyiket a saját független a forrás-, hálózati és hűtési kapcsolja. További információkért lásd: [rendelkezésre állási zónák áttekintése](../availability-zones/az-overview.md).
-
-[!INCLUDE [availability-zones-preview-statement.md](../../includes/availability-zones-preview-statement.md)]
 
 
 ## <a name="single-zone-and-zone-redundant-scale-sets"></a>Single-zóna és a zónaredundáns méretezési csoportok
@@ -32,13 +30,28 @@ Amikor telepít egy virtuálisgép-méretezési csoport, dönthet úgy, egy rend
 
 A skála egy ugyanabban a zónában, vezérelt melyik zónába e Virtuálisgép-példányok futnak, és a méretezési felügyelt és csak a zónán belül autoscales létrehozásakor. Zónaredundáns méretezési lehetővé teszi több zóna kiterjedő egyetlen méretezési készlet létrehozása. Virtuálisgép-példány létrehozásához szükségesek, alapértelmezés szerint ezek egyenletesen elosztását zónák között. Megzavarná a zónák telefonszámaira jöjjön létre, a méretezési készlet nem automatikusan horizontális felskálázás növelhető a kapacitása. Célszerű lehet a CPU és memória-használata alapján automatikus skálázási szabályok konfigurálása. Az automatikus skálázási szabályok lehetővé tenné a méretezési készletben válaszolni veszhetnek el, hogy egy zónát a Virtuálisgép-példány, a fennmaradó működési zónák új példányok kiterjesztése.
 
-Rendelkezésre állási zónák használatára, a méretezési létre kell hozni egy [támogatott Azure-régiót](../availability-zones/az-overview.md#regions-that-support-availability-zones). Szükség [tekintse meg a rendelkezésre állási zónák regisztrálható](http://aka.ms/azenroll). Létrehozhat egy méretezési csoport, amely a rendelkezésre állási zónák használja az alábbi módszerek egyikével:
+Rendelkezésre állási zónák használatára, a méretezési létre kell hozni egy [támogatott Azure-régiót](../availability-zones/az-overview.md#regions-that-support-availability-zones). Létrehozhat egy méretezési csoport, amely a rendelkezésre állási zónák használja az alábbi módszerek egyikével:
 
 - [Azure Portal](#use-the-azure-portal)
 - [Azure CLI 2.0](#use-the-azure-cli-20)
 - [Azure PowerShell](#use-azure-powershell)
 - [Az Azure Resource Manager-sablonok](#use-azure-resource-manager-templates)
 
+## <a name="availability-considerations"></a>Rendelkezésre állási szempontok
+API verziója 2017-12-01, kezdve a skála beállítani egy vagy több zónák telepítésekor, lehetősége van a "max terjednek" vagy "statikus 5 tartalék tartomány terjednek" központi telepítése. A maximális oszlik, a méretezési között osztja el a virtuális gépek között tetszőleges számú hiba tartományok lehető minden a zónán belül. Ez terjednek között lehet nagyobb, vagy kevesebb, mint öt fault zónánkénti tartományok. Másrészről a "statikus 5 tartalék tartomány terjednek", a méretezési között osztja el a virtuális gépek zónánkénti pontosan 5 tartalék tartományokban. A méretezési készlet nem található a foglalási kérelem teljesítéséhez zónánkénti 5 különböző tartalék tartományok, ha a kérelem sikertelen lesz.
+
+**Javasoljuk, hogy a munkaterhelések többségéhez maximális terjednek történő telepítése** mert maximális terjednek biztosítja a legjobb a legtöbb esetben terjednek. Ha szüksége lesz elosztva a különböző hardver elkülönítési egységek replikák, ajánlott rendelkezésre állási zónák keresztül terjednek és okhoz belül az egyes zónák maximális terjednek. Vegye figyelembe, hogy a maximális oszlik, csak akkor jelenik meg egy tartalék tartomány, a méretezési csoport virtuális gép példányait tartalmazó nézetet, és a példány metaadatai között, függetlenül attól, hogy hány tartalék tartomány a virtuális gépek vannak ténylegesen elosztva; minden zóna terjednek implicit módon.
+
+Maximális oszlik, állítsa "platformFaultDomainCount" 1. Statikus 5 tartalék tartomány oszlik, állítsa "platformFaultDomainCount" 5. Az API verzió 2017-12-01 "platformFaultDomainCount" alapértelmezés szerint az 1. egy- és zónát kereszt méretezési készlet. Jelenleg csak statikus 5 tartalék tartomány terjednek van támogatott regionális méretezési készlet.
+
+Emellett egy méretezési telepítésekor lehetősége van történő telepítésének egyetlen [elhelyezési csoport](./virtual-machine-scale-sets-placement-groups.md) rendelkezésre állási zónánkénti, vagy az egyes zónák több (regionális méretezési csoportok kiválasztása, hogy egyetlen elhelyezési csoport rendelkezik a a régióban, vagy több régióban). A munkaterhelések többségéhez azt javasoljuk, több elhelyezési csoportot, amely lehetővé teszi nagyobb skálázási. Az API verzió 2017-12-01 skálázási készletekben alapértelmezett egy- és zónát kereszt méretezési csoportok több elhelyezési csoportjai, de azok az alapértelmezett területi méretezési csoportok egyetlen elhelyezési csoportjának.
+
+>[!NOTE]
+> Maximális terjednek használatakor több elhelyezési csoportot kell használnia.
+
+Végezetül a méretezési készlet több zóna telepített, akkor is kiválasztható "legjobb elérhető zóna balance" vagy "strict zóna balance". A méretezési tekinteni "kiegyensúlyozott", ha a virtuális gépek minden egyes zónában számát a virtuális gépek méretezési készlet más zónákban számát egyikébe esik. A példány, a méretezési zónában 1, 3 virtuális gép zónában 2 és 3 virtuális gép zónában 3, 2 virtuális gép beállítása elosztott terhelésű minősül. Azonban a méretezési, állítsa be az 1 virtuális gép zónában 1, 2 és 3 virtuális gépek 3 zónában tekinthető zónában 3 virtuális gép tette. Akkor lehet, hogy a méretezési csoportban lévő virtuális gépek létrehozása sikeresen megtörtént, amíg a bővítményt a virtuális gépek sikertelen. Bővítmény hibákkal rendelkező virtuális gépeken továbbra is számítanak, ha egy méretezési kiegyensúlyozott meghatározásakor. Például egy méretezési beállítani 3 virtuális gép zónában 1, 3 virtuális gép zónában 2 és 3 virtuális gép zónában 3 elosztott terhelésű akkor is, ha az összes bővítmény zóna 1 nem tudott minősülnek, és az összes bővítmény zónákban sikeres volt, 2 és 3. A legjobb elérhető zóna egyensúlyt a méretezési megpróbálja vagy horizontális egyenleg megőrzésével. Azonban ha valamilyen okból ez nem lehetséges (például egy zóna leáll, így a méretezési készlet nem hozható létre egy új virtuális Gépet, hogy a zónában), majd a méretezési készlet lehetővé teszi a ideiglenes unbalance ahhoz, hogy a bejövő vagy kimenő sikeresen méretezni. Az ezt követő kísérletek bővített az a méretezési virtuális gépek hozzáadása további virtuális gépek kell a méretezési készletben egyenletesen eloszlik a zónákhoz. Ehhez hasonlóan skálán ezt követő kísérlet alatt, a méretezési eltávolítása virtuális gépek kevesebb virtuális gépek kell a méretezési készletben egyenletesen eloszlik a zónákhoz. "Szigorú zóna balance", a, másrészt a méretezési méretezése a bejövő vagy kimenő, ha ezzel kiegyensúlyozatlanság jellemzi okozna tett bármilyen kísérlet meghiúsul.
+
+Legjobb elérhető zóna egyensúlyt, állítsa hamis (az alapértelmezett API verziója 2017-12-01) "zoneBalance". Szigorú zóna egyenleg, állítsa igaz "zoneBalance".
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 A méretezési csoport egy rendelkezésre állási zóna használó létrehozásának folyamata megegyezik a részletes a [bevezető cikkben](quick-create-portal.md). Győződjön meg arról, hogy rendelkezik [tekintse meg a rendelkezésre állási zónák regisztrálva](http://aka.ms/azenroll). Amikor kiválaszt egy támogatott Azure-régió, terjedő skálán, állítsa be az egyik rendelkezésre álló zónában, a következő példában látható módon hozhat létre:
@@ -66,36 +79,7 @@ az vmss create \
 A single-zóna skála teljes például és hálózati erőforrásokat, olvassa el [a parancsfájlpéldát parancssori felület](https://github.com/Azure/azure-docs-cli-python-samples/blob/master/virtual-machine-scale-sets/create-single-availability-zone/create-single-availability-zone.sh.)
 
 ### <a name="zone-redundant-scale-set"></a>Zónaredundáns méretezési csoport
-Zónaredundáns méretezési létrehozásához állítsa be, használhatja a *szabványos* SKU nyilvános IP cím és a terheléselosztó. A továbbfejlesztett redundancia érdekében a *szabványos* SKU hoz létre a zónaredundáns hálózati erőforrásokat. További információkért lásd: [Azure Load Balancer szabványos áttekintése](../load-balancer/load-balancer-standard-overview.md). Az Ön által létrehozott zónaredundáns méretezési először állítsa be, vagy belső terheléselosztót, el kell végeznie a következő ezeket az előnézeti funkciókat a fiókot regisztrálni.
-
-1. A fiókjának a zónaredundáns méretezési és hálózati szolgáltatásokat a register [az szolgáltatás regisztrálása](/cli/azure/feature#az_feature_register) az alábbiak szerint:
-
-    ```azurecli
-    az feature register --name MultipleAvailabilityZones --namespace Microsoft.Compute
-    az feature register --name AllowLBPreview --namespace Microsoft.Network
-    ```
-    
-2. A regisztrációt a szolgáltatások néhány percig is eltarthat. A művelet állapotát ellenőrizheti [az szolgáltatás megjelenítése](/cli/azure/feature#az_feature_show):
-
-    ```azurecli
-    az feature show --name MultipleAvailabilityZones --namespace Microsoft.Compute
-    az feature show --name AllowLBPreview --namespace Microsoft.Network
-    ```
-
-    A következő példa bemutatja a megfelelő állapotot szolgáltatás *regisztrált*:
-    
-    ```json
-    "properties": {
-          "state": "Registered"
-       },
-    ```
-
-3. Ha mindkét a zónaredundáns skála állítsa be, és a hálózati erőforrások jelentés *regisztrált*, regisztrálja újra a *számítási* és *hálózati* a szolgáltatók [az szolgáltató regisztrálása](/cli/azure/provider#az_provider_register) az alábbiak szerint:
-
-    ```azurecli
-    az provider register --namespace Microsoft.Compute
-    az provider register --namespace Microsoft.Network
-    ```
+Zónaredundáns méretezési létrehozásához állítsa be, használhatja a *szabványos* SKU nyilvános IP cím és a terheléselosztó. A továbbfejlesztett redundancia érdekében a *szabványos* SKU hoz létre a zónaredundáns hálózati erőforrásokat. További információkért lásd: [Azure Load Balancer szabványos áttekintése](../load-balancer/load-balancer-standard-overview.md). 
 
 Zónaredundáns méretezési készlet létrehozásához adjon meg több zónákat a `--zones` paraméter. Az alábbi példakód létrehozza a zónaredundáns méretezési készletben elnevezett *myScaleSet* keresztül zónák *1,2,3*:
 
@@ -130,36 +114,7 @@ $vmssConfig = New-AzureRmVmssConfig `
 A single-zóna skála teljes például és hálózati erőforrásokat, olvassa el [a PowerShell-parancsfájlpélda](https://github.com/Azure/azure-docs-powershell-samples/blob/master/virtual-machine-scale-sets/create-single-availability-zone/create-single-availability-zone.ps1)
 
 ### <a name="zone-redundant-scale-set"></a>Zónaredundáns méretezési csoport
-Zónaredundáns méretezési létrehozásához állítsa be, használhatja a *szabványos* SKU nyilvános IP cím és a terheléselosztó. A továbbfejlesztett redundancia érdekében a *szabványos* SKU hoz létre a zónaredundáns hálózati erőforrásokat. További információkért lásd: [Azure Load Balancer szabványos áttekintése](../load-balancer/load-balancer-standard-overview.md). Az Ön által létrehozott zónaredundáns méretezési először állítsa be, vagy belső terheléselosztót, el kell végeznie a következő ezeket az előnézeti funkciókat a fiókot regisztrálni.
-
-1. A fiókjának a zónaredundáns méretezési és hálózati szolgáltatásokat a register [Register-AzureRmProviderFeature](/powershell/module/azurerm.resources/register-azurermproviderfeature) az alábbiak szerint:
-
-    ```powershell
-    Register-AzureRmProviderFeature -FeatureName MultipleAvailabilityZones -ProviderNamespace Microsoft.Compute
-    Register-AzureRmProviderFeature -FeatureName AllowLBPreview -ProviderNamespace Microsoft.Network
-    ```
-    
-2. A regisztrációt a szolgáltatások néhány percig is eltarthat. A művelet állapotát ellenőrizheti [Get-AzureRmProviderFeature](/powershell/module/AzureRM.Resources/Get-AzureRmProviderFeature):
-
-    ```powershell
-    Get-AzureRmProviderFeature -FeatureName MultipleAvailabilityZones -ProviderNamespace Microsoft.Compute 
-    Get-AzureRmProviderFeature -FeatureName AllowLBPreview -ProviderNamespace Microsoft.Network
-    ```
-
-    A következő példa bemutatja a megfelelő állapotot szolgáltatás *regisztrált*:
-    
-    ```powershell
-    RegistrationState
-    -----------------
-    Registered
-    ```
-
-3. Ha mindkét a zónaredundáns skála állítsa be, és a hálózati erőforrások jelentés *regisztrált*, regisztrálja újra a *számítási* és *hálózati* a szolgáltatók [ Register-AzureRmResourceProvider](/powershell/module/AzureRM.Resources/Register-AzureRmResourceProvider) az alábbiak szerint:
-
-    ```powershell
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
-    ```
+Zónaredundáns méretezési létrehozásához állítsa be, használhatja a *szabványos* SKU nyilvános IP cím és a terheléselosztó. A továbbfejlesztett redundancia érdekében a *szabványos* SKU hoz létre a zónaredundáns hálózati erőforrásokat. További információkért lásd: [Azure Load Balancer szabványos áttekintése](../load-balancer/load-balancer-standard-overview.md).
 
 Zónaredundáns méretezési készlet létrehozásához adjon meg több zónákat a `-Zone` paraméter. Az alábbi példakód létrehozza a zónaredundáns méretezési set config nevű *myScaleSet* keresztül *USA keleti régiója 2* zónák *1, 2, 3*:
 
@@ -220,7 +175,7 @@ Az alábbi példa létrehoz egy Linux single-zóna méretezési beállítása a 
 }
 ```
 
-A single-zóna skála teljes például és hálózati erőforrásokat, olvassa el [minta Resource Manager sablon](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/singlezone.json)
+A single-zóna skála teljes például és hálózati erőforrásokat, olvassa el [minta Resource Manager sablon](https://github.com/Azure/vm-scale-sets/blob/master/zones/singlezone.json)
 
 ### <a name="zone-redundant-scale-set"></a>Zónaredundáns méretezési csoport
 Zónaredundáns méretezési készlet létrehozásához adjon meg több értéket a `zones` tulajdonságát a *Microsoft.Compute/virtualMachineScaleSets* erőforrástípus. Az alábbi példakód létrehozza a zónaredundáns méretezési készletben elnevezett *myScaleSet* keresztül *USA keleti régiója 2* zónák *1,2,3*:
@@ -241,7 +196,7 @@ Zónaredundáns méretezési készlet létrehozásához adjon meg több értéke
 
 Ha létrehoz egy nyilvános IP-címet vagy egy adott terheléselosztóhoz, adja meg a *"sku": {"name": "Standard"} "* tulajdonság zónaredundáns hálózati erőforrások létrehozásához. Emellett a hálózati biztonsági csoport és a szabályok a forgalmat a létrehozásához szükséges. További információkért lásd: [Azure Load Balancer szabványos áttekintése](../load-balancer/load-balancer-standard-overview.md).
 
-Zónaredundáns méretezési kész példát és hálózati erőforrásokat, olvassa el [minta Resource Manager sablon](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)
+Zónaredundáns méretezési kész példát és hálózati erőforrásokat, olvassa el [minta Resource Manager sablon](https://github.com/Azure/vm-scale-sets/blob/master/zones/multizone.json)
 
 
 ## <a name="next-steps"></a>További lépések

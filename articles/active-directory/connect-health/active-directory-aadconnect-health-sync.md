@@ -1,8 +1,8 @@
 ---
-title: "Az Azure AD Connect Health használata a szinkronizálási szolgáltatással | Microsoft Docs"
-description: "Ez az Azure AD Connect Health-oldal bemutatja az Azure AD Connect szinkronizálási szolgáltatás megfigyelését."
+title: Az Azure AD Connect Health használata a szinkronizálási szolgáltatással | Microsoft Docs
+description: Ez az Azure AD Connect Health-oldal bemutatja az Azure AD Connect szinkronizálási szolgáltatás megfigyelését.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: karavar
 manager: mtillman
 ms.assetid: 1dfbeaba-bda2-4f68-ac89-1dbfaf5b4015
@@ -14,11 +14,11 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 821d4bd7e6b526ad826caf005456edf8235291b8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cff8be88e23d57545a9926df366289c6ba264886
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Az Azure AD Connect-szinkronizálás megfigyelése az Azure AD Connect Health szolgáltatással
 Az alábbi dokumentáció az Azure AD Connect (szinkronizálási) szolgáltatás Azure AD Connect Health szolgáltatással végzett megfigyelésére vonatkozik.  Az AD FS az Azure AD Connect Health használatával történő megfigyelésére vonatkozó információkat lásd: [Az Azure AD Connect Health használata az AD FS szolgáltatással](active-directory-aadconnect-health-adfs.md). Az Active Directory tartományi szolgáltatások az Azure AD Connect Health használatával történő megfigyelésével kapcsolatos információkat pedig a [Using Azure AD Connect Health with AD DS](active-directory-aadconnect-health-adds.md) (Az Azure AD Connect Health használata az AD DS szolgáltatással) című témakörben találja.
@@ -83,11 +83,12 @@ A jelentés az alábbi kategóriák szerint csoportosítja a jelentkező szinkro
 | Duplikált attribútum |Olyan hibák, amelyek akkor jelentkeznek, amikor az Azure AD Connect megpróbál olyan objektumokat létrehozni vagy frissíteni az Azure AD-ben, amelyek egy vagy több duplikált attribútummal rendelkeznek, noha az attribútumnak (például proxyAddresses vagy UserPrincipalName) egyedinek kell lennie a bérlőben. |
 | Eltérés az adatokban |Olyan hibák, amelyek akkor jelentkeznek, ha közeli egyezéssel nem azonosíthatók be a szinkronizálási hibát kiváltó objektumok. |
 | Sikertelen adatérvényesítés |Érvénytelen adatok miatt jelentkező hibák, például nem támogatott karakterek használata kritikus fontosságú attribútumnevekben (például UserPrincipalName), vagy formátumbeli hibák, amelyek sikertelen érvényesítést eredményeznek az Azure AD-be való írás előtt. |
+| Összevont tartomány módosítása | Hiba lép fel, ha a fiókok különböző összevont tartományt használnak. |
 | Túl nagy attribútum |A hiba akkor jelentkezik, ha egy vagy több attribútum mérete, hosszúsága vagy száma meghaladja a megengedett mértéket. |
 | Egyéb |A fenti kategóriákba nem illő bármely más hiba. A visszajelzések függvényében ez a kategória további alkategóriákra lesz bontva. |
 
 ![Szinkronizálási hibajelentés – összefoglalás](./media/active-directory-aadconnect-health-sync/errorreport01.png)
-![Szinkronizálási hiba – kategóriák](./media/active-directory-aadconnect-health-sync/errorreport02.png)
+![Szinkronizálási hiba – kategóriák](./media/active-directory-aadconnect-health-sync/SyncErrorByTypes.PNG)
 
 ### <a name="list-of-objects-with-error-per-category"></a>Objektumlista kategóriánként összesített hibákkal
 Az egyes kategóriák részletes nézetével megjeleníthető azoknak az objektumoknak a listája, amelyeket az adott hiba érint.

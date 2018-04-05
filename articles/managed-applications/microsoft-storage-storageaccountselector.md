@@ -1,6 +1,6 @@
 ---
-title: "Az Azure által felügyelt alkalmazás StorageAccountSelector felhasználói felületi elem |} Microsoft Docs"
-description: "A témakör ismerteti a Microsoft.Storage.StorageAccountSelector felhasználói felületi elem Azure által felügyelt alkalmazások"
+title: Az Azure StorageAccountSelector felhasználói felületi elem |} Microsoft Docs
+description: Azure-portálon a Microsoft.Storage.StorageAccountSelector felhasználói felületi elem ismerteti.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 03/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 366a862acc15decf6a8e19f875d5d052695f373c
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: ca66b788af68699b4750e1e2826b6a6b104c72c7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="microsoftstoragestorageaccountselector-ui-element"></a>Microsoft.Storage.StorageAccountSelector felhasználói felületi elem
-Válasszon egy új vagy meglévő tárfiókot tartozó vezérlőelem. Ez az elem használata során [Azure által felügyelt alkalmazások létrehozására](publish-service-catalog-app.md).
+# <a name="microsoftstoragestorageaccountselector-ui-element"></a>Microsoft.Storage.StorageAccountSelector UI element
+Válasszon egy új vagy meglévő tárfiókot tartozó vezérlőelem.
 
 ## <a name="ui-sample"></a>Felhasználói felület minta
 ![Microsoft.Storage.StorageAccountSelector](./media/managed-application-elements/microsoft.storage.storageaccountselector.png)
@@ -51,7 +51,7 @@ Válasszon egy új vagy meglévő tárfiókot tartozó vezérlőelem. Ez az elem
 - Ha meg van adva, `defaultValue.name` egyedi-e automatikusan érvényesítése. Ha a tárfiók neve nem egyedi, a felhasználó adjon meg egy másik nevet, vagy egy meglévő tárfiókot.
 - Az alapértelmezett érték `defaultValue.type` van **Premium_LRS**.
 - Nincs megadva a bármilyen `constraints.allowedTypes` rejtett, és nincs megadva a bármilyen `constraints.excludedTypes` jelenik meg.
-`constraints.allowedTypes`és `constraints.excludedTypes` mindkettő nem kötelező, de nem használható egyszerre.
+`constraints.allowedTypes` és `constraints.excludedTypes` mindkettő nem kötelező, de nem használható egyszerre.
 - Ha `options.hideExisting` van **igaz**, a felhasználó egy meglévő tárfiók nem választható. Az alapértelmezett érték **hamis**.
 
 
@@ -65,7 +65,6 @@ Válasszon egy új vagy meglévő tárfiókot tartozó vezérlőelem. Ez az elem
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
-* Felügyelt alkalmazások bemutatása, lásd: [Azure kezelt alkalmazás – áttekintés](overview.md).
+## <a name="next-steps"></a>További lépések
 * A bevezetést UI-definíciók létrehozásáról lásd: [Ismerkedés a CreateUiDefinition](create-uidefinition-overview.md).
 * Általános tulajdonságok felhasználói felületi elemei ismertetését lásd: [CreateUiDefinition elemek](create-uidefinition-elements.md).

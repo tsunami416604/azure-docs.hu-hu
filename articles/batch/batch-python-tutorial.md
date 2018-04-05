@@ -1,11 +1,11 @@
 ---
-title: "Oktatóanyag – A Pythonhoz készült Azure Batch SDK használata | Microsoft Docs"
-description: "Megismerheti az Azure Batch alapvető fogalmait és létrehozhat egy egyszerű megoldást a Python használatával."
+title: Oktatóanyag – A Pythonhoz készült Azure Batch SDK használata | Microsoft Docs
+description: Megismerheti az Azure Batch alapvető fogalmait és létrehozhat egy egyszerű megoldást a Python használatával.
 services: batch
 documentationcenter: python
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 42cae157-d43d-47f8-88f5-486ccfd334f4
 ms.service: batch
 ms.devlang: python
@@ -13,13 +13,13 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd5a977c10d3955639beb893cd7a37581b14f7c0
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: b620ff7d49b3e2712393de6124e31ff417220db2
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="get-started-with-the-batch-sdk-for-python"></a>Ismerkedés a Pythonhoz készült Batch SDK-val
 
@@ -644,7 +644,7 @@ Delete pool? [Y/n]
 Press ENTER to exit...
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Nyugodtan módosítsa a *python_tutorial_client.py* és a *python_tutorial_task.py* fájlt a különböző számítási forgatókönyvekkel való kísérletezéshez. Próbáljon meg például végrehajtási késleltetést adni a *python_tutorial_task.py* elemhez, így hosszan futó feladatokat szimulálhat, és megfigyelheti őket a portálon. Próbáljon meg több tevékenységet hozzáadni, vagy módosítani a számítási csomópontok számát. Adja hozzá az ellenőrizni kívánt logikát, és engedélyezze meglévő készlet használatát a futtatási idő csökkentéséhez.
 
 Most, hogy megismerte a Batch-megoldások alapvető munkafolyamatát, a Batch szolgáltatás további funkcióit is áttekintheti.

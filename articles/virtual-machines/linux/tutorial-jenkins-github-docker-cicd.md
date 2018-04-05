@@ -1,26 +1,26 @@
 ---
-title: "Fejlesztési folyamat létrehozása az Azure-ban a Jenkins használatával | Microsoft Docs"
-description: "Megtudhatja, hogyan hozhat létre egy Jenkins virtuális gépet az Azure-ban, amely a GitHubról hívja le a kódok véglegesítését, és létrehoz egy új Docker-tárolót az alkalmazása futtatásához"
+title: Fejlesztési folyamat létrehozása az Azure-ban a Jenkins használatával | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre egy Jenkins virtuális gépet az Azure-ban, amely a GitHubról hívja le a kódok véglegesítését, és létrehoz egy új Docker-tárolót az alkalmazása futtatásához
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/15/2017
+ms.date: 03/27/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 8a595ead7da8dfa5544903bd698bfdff40555eb9
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 9250e40c491257b554333f4606cbf0b476d8db21
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Fejlesztési infrastruktúra létrehozása egy Azure-beli Linux rendszerű virtuális gépen a Jenkins, a GitHub és a Docker használatával
 Az alkalmazás fejlesztésének létrehozási és tesztelési fázisának automatizálásához használhat egy folyamatos integrációs és fejlesztési (CI/CD) folyamatot. Ebben az oktatóanyagban létrehozhat egy CI/CD folyamatot egy Azure-beli virtuális gépen, továbbá megismerkedhet a következőkkel is:
@@ -64,7 +64,6 @@ runcmd:
   - curl -sSL https://get.docker.com/ | sh
   - usermod -aG docker azureuser
   - usermod -aG docker jenkins
-  - touch /var/lib/jenkins/jenkins.install.InstallUtil.lastExecVersion
   - service jenkins restart
 ```
 
@@ -118,10 +117,13 @@ Ha a fájl még nem elérhető, várjon néhány percet, hogy a cloud-init elké
 
 Ezután indítson el egy webböngészőt és lépjen a `http://<publicIps>:8080` webhelyre. Végezze el a Jenkins kezdeti beállítását az alábbiak szerint:
 
-- Adja meg az **admin** felhasználónevet, majd a kezdeti rendszergazdai jelszót (*initialAdminPassword*), amelyet az előző lépésben kért le a virtuális gépről.
-- Válassza a **Manage Jenkins** (Jenkins kezelése), majd a **Manage Plugins** (Beépülő modulok kezelése) lehetőséget.
-- Válassza az **Available** (Elérhető) lehetőséget, majd keressen a *GitHub* kifejezésre a fenti szövegmezőben. Jelölje be a *GitHub plugin* jelölőnégyzetét, majd válassza a **Download now and install after restart** (Letöltés most és telepítés újraindítás után) lehetőséget.
-- Jelölje be a **Restart Jenkins when installation is complete and no jobs are running** (A Jenkins újraindítása, ha a telepítés befejeződött és nincsenek futó feladatok) jelölőnégyzetet, majd várja meg a beépülő modul telepítési folyamatának végét.
+- Válassza a **Select plugins to install** (Válassza ki a telepíteni kívánt beépülő modulokat) lehetőséget
+- Keressen a *GitHub* kifejezésre a fenti szövegmezőben. Jelölje be a *GitHub* jelölőnégyzetét, majd válassza az **Install** (Telepítés) lehetőséget.
+- Hozza létre az első rendszergazdai felhasználót. Írjon be egy felhasználónevet, például **admin**, majd adja meg a saját biztonságos jelszavát. Végül gépelje be teljes nevét és e-mail-címét.
+- Válassza a **Save and Finish** (Mentés és befejezés) elemet
+- Amint Jenkins készen áll, kattintson a **Start using Jenkins** (Jenkins használatának megkezdése) elemre
+  - Ha a webböngésző Jenkins használatának megkezdésekor egy üres lapot jelenít meg, indítsa újra a Jenkins szolgáltatást. Az SSH-munkamenetben gépelje be a `sudo service jenkins restart` parancsot, majd frissítse a webböngészőt.
+- A létrehozott felhasználónév és jelszó segítségével jelentkezzen be a Jenkins szolgáltatásba.
 
 
 ## <a name="create-github-webhook"></a>GitHub-webhook létrehozása
@@ -139,13 +141,13 @@ Hozzon létre egy webhookot a létrehozott elágazásban:
 
 
 ## <a name="create-jenkins-job"></a>Jenkins-feladat létrehozása
-Ahhoz, hogy a Jenkins válaszoljon a GitHub eseményeire, például egy kód véglegesítésére, hozzon létre egy Jenkins-feladatot. 
+Ahhoz, hogy a Jenkins válaszoljon a GitHub eseményeire, például egy kód véglegesítésére, hozzon létre egy Jenkins-feladatot. Az URL-ek használata a saját GitHub-elágazásokhoz.
 
 A Jenkins webhely kezdőlapján válassza a **Create new jobs** (Új feladatok létrehozása) lehetőséget.
 
 - A feladatnak adja a *HelloWorld* nevet. Válassza a **Freestyle project** (Szabad stílusú projekt) lehetőséget, majd kattintson az **OK** gombra.
-- A **General** (Általános) szakaszban válassza ki a **GitHub**-projektet, majd adja meg az elágaztatott adattár URL-címét, például: *https://github.com/iainfoulds/nodejs-docs-hello-world*.
-- A **Source Code Management** (Forráskódkezelés) szakaszban válassza a **Git** elemet, majd adja meg az elágaztatott *.git*-adattár URL-címét, például: *https://github.com/iainfoulds/nodejs-docs-hello-world.git*.
+- A **General** (Általános) szakaszban válassza ki a **GitHub project** (GitHub-projekt) lehetőséget, majd adja meg az elágaztatott adattár URL-címét, például: *https://github.com/iainfoulds/nodejs-docs-hello-world*
+- A **Source code management** (Forráskódkezelés) szakaszban válassza a **Git** elemet, majd adja meg az elágaztatott *.git*-adattár URL-címét, például: *https://github.com/iainfoulds/nodejs-docs-hello-world.git*
 - A **Build Triggers** (Eseményindítók létrehozása) szakaszban válassza a **GitHub hook trigger for GITScm polling** (GitHub beavatkozási pont eseményindító GITScm lekérdezés esetén) lehetőséget.
 - A **Build** (Létrehozás) szakaszban válassza az **Add build step** (Létrehozási lépés hozzáadása) lehetőséget. Válassza az **Execute shell** (Felület futtatása) lehetőséget, majd a parancssori ablakba írja be a következőt: `echo "Testing"`.
 - Kattintson a feladatablak alján található **Save** (Mentés) gombra.

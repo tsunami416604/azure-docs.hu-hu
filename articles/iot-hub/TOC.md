@@ -43,11 +43,12 @@
 ## Az MXChip IoT DevKit használata
 ### [Hangüzenetek fordítása az Azure Cognitive Services használatával](iot-hub-arduino-iot-devkit-az3166-translator.md)
 ### [Twitter-üzenet lekérdezése az Azure Functions használatával](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
+### [A mágneses érzékelő monitorozása és e-mail-értesítések küldése az Azure Functions segítségével](iot-hub-arduino-iot-devkit-az3166-door-monitor.md)
 
 # Útmutatók
 ## Felkészülés
 ### [Az IoT Hub és az Event Hubs összehasonlítása](iot-hub-compare-event-hubs.md)
-### [A megoldás skálázása](iot-hub-scaling.md)
+### [A megfelelő szint kiválasztása](iot-hub-scaling.md)
 ### [Magas rendelkezésre állás és vészhelyreállítás](iot-hub-ha-dr.md)
 ### [További protokollok támogatása](iot-hub-protocol-gateway.md)
 ### [Üzenetek és események útválasztásának összehasonlítása](iot-hub-event-grid-routing-comparison.md)
@@ -147,6 +148,7 @@
 ### [Monitorozás a diagnosztikával](iot-hub-monitor-resource-health.md)
 #### [Migrálás a diagnosztikai beállításokba](iot-hub-migrate-to-diagnostics-settings.md)
 #### [Műveletek figyelése](iot-hub-operations-monitoring.md)
+### [IoT Hub frissítése](iot-hub-upgrade.md)
 ### [Használati metrikák](iot-hub-metrics.md)
 ### [IoT-eszközök tömeges felügyelete](iot-hub-bulk-identity-mgmt.md)
 ### [IP-szűrés konfigurálása](iot-hub-ip-filtering.md)

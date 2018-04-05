@@ -1,5 +1,5 @@
 ---
-title: Hozzon létre, riasztások megtekintése és kezelése riasztások használata Azure figyelője – (előzetes verzió) |} Microsoft Docs
+title: Létrehozása, megtekintése és kezelése használata Azure a figyelő riasztást |} Microsoft Docs
 description: Használja az új Azure riasztások egységes felületet, megtekintése és kezelése a metrika és riasztási szabályok jelentkezzen egyetlen helyről.
 author: msvijayn
 manager: kmadnani1
@@ -14,31 +14,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: vinagara
-ms.openlocfilehash: 6bd2c452059950f714de304cc30c7b4bd023fd86
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: fdb3ebe3820191a642c4503851b04dd5fc5e6048
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="create-view-and-manage-alerts-using-azure-monitor---alerts-preview"></a>Hozzon létre, megtekintheti és kezelheti a riasztásokat figyelővel Azure - riasztások (előzetes verzió)
+# <a name="create-view-and-manage-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése az Azure-figyelővel riasztások  
 
 ## <a name="overview"></a>Áttekintés
-Ez a cikk bemutatja, hogyan állíthat be riasztásokat a felületen új riasztások (előzetes verzió) Azure-portálon belül. Riasztási szabály definíciója van három részből áll:
+Ez a cikk bemutatja, hogyan állíthat be riasztásokat a felületen új riasztások Azure-portálon belül. Riasztási szabály definíciója van három részből áll:
 - Cél: Adott Azure-erőforrás, amelyet figyelni
 - Feltételek: Adott feltétel, vagy programot, amely jel látható, ha indíthat el művelet
 - Művelet: A fogadó egy értesítés - adott hívás küldött e-mailben, SMS, webhook stb.
 
-Riasztás (előzetes verzió) kifejezést használja **napló riasztások** megadásával írhatja le a riasztások alapján egyéni lekérdezés esetén a jel [Azure Naplóelemzés](../log-analytics/log-analytics-tutorial-viewdata.md) vagy [Azure Application Insights](../application-insights/app-insights-analytics.md). A metrika riasztási funkció hívása [közel valós idejű metrika riasztások](monitoring-near-real-time-metric-alerts.md) a meglévő riasztások a felhasználói élmény néven **metrika riasztások** riasztásokban (előzetes verzió). A *metrika riasztások*, egyes erőforrástípusok biztosítanak [többdimenziós metrikák](monitoring-metric-charts.md) az adott Azure-erőforrás és ilyen erőforrás pontosabb további szűrők használata a tehető ezért riasztásai Dimenziók; az ilyen riasztások nevezzük **Multi-Dimensional metrika riasztások**.
-Az Azure riasztások (előzetes verzió) is a riasztási szabályok és a segítségével felügyelheti azokat egy helyen; egyesített nézetét jeleníti meg beleértve az összes feloldatlan riasztások megtekintése. További tudnivalók funkciói [Azure Alerts(Preview) – áttekintés](monitoring-overview-unified-alerts.md).
+Az Azure riasztásokat is a riasztási szabályok és a segítségével felügyelheti azokat egy helyen; egyesített nézetét jeleníti meg beleértve az összes feloldatlan riasztások megtekintése. További tudnivalók funkciói [Azure riasztások – áttekintés](monitoring-overview-unified-alerts.md).
+
+Riasztás kifejezést használja **napló riasztások** megadásával írhatja le a riasztások alapján egyéni lekérdezés esetén a jel [Naplóelemzési](../log-analytics/log-analytics-tutorial-viewdata.md) vagy [Application Insights](../application-insights/app-insights-analytics.md). A [új metrika riasztási képességek](monitoring-near-real-time-metric-alerts.md) lehetővé teszi, hogy riasztást a [többdimenziós metrikák](monitoring-metric-charts.md) az adott Azure-erőforrások. A riasztások ilyen erőforrás további szűrők használatát a dimenziók létrehozása **Multi-Dimensional metrika riasztások**.
+
 
 > [!NOTE]
-> Amíg Azure riasztások (előzetes verzió) biztosít egy új és továbbfejlesztett élmény riasztásokat hoznak létre az Azure-ban. A meglévő [Azure riasztások](monitoring-overview-alerts.md) élmény továbbra is használható
+> Azure riasztások során egy új és továbbfejlesztett élmény riasztásokat hoznak létre az Azure biztosít. A meglévő [riasztások (klasszikus)](monitoring-overview-alerts.md) élmény továbbra is használható.
 >
 
-Részletes tovább részletes útmutató a Azure figyelmeztetések (előzetes verzió) használatával.
+Részletes tovább részletes útmutató az Azure figyelmeztetések használatával a rendszer.
 
 ## <a name="create-an-alert-rule-with-the-azure-portal"></a>Riasztási szabályt létrehozni és az Azure portál
-1. Az a [portal](https://portal.azure.com/), jelölje be **figyelő** és - FIGYELŐ szakaszban válasszon **riasztások (előzetes verzió)**.  
+1. Az a [portal](https://portal.azure.com/), jelölje be **figyelő** és - FIGYELŐ szakaszban válasszon **riasztások**.  
     ![Figyelés](./media/monitor-alerts-unified/AlertsPreviewMenu.png)
 
 2. Válassza ki a **új riasztást szabály** gombra kattintva új riasztás létrehozása, az Azure-ban.
@@ -48,7 +50,7 @@ Részletes tovább részletes útmutató a Azure figyelmeztetések (előzetes ve
 
     ![Szabály létrehozása](./media/monitor-alerts-unified/AlertsPreviewAdd.png)
 
-4.  A riasztási feltétel megadása segítségével a **válasszon erőforrás** hivatkozásra, és adja meg a célként megadott erőforrás kiválasztásával. Szűrő megfelelően kiválasztásával szükséges *előfizetés*, *erőforrástípus*, és végül kiválasztása szükséges *erőforrás*.
+4.  A riasztási feltétel megadása segítségével a **válasszon erőforrás** hivatkozásra, és adja meg a célként megadott erőforrás kiválasztásával. Válassza ki a szűrő a *előfizetés* , *erőforrástípus* , és végül kiválasztása szükséges *erőforrás*.
 
     >[!NOTE]
 
@@ -56,16 +58,16 @@ Részletes tovább részletes útmutató a Azure figyelmeztetések (előzetes ve
 
     ![Erőforrás kiválasztása](./media/monitor-alerts-unified/Alert-SelectResource.png)
 
- Azure riasztások (előzetes verzió) lehetővé teszi, hogy hozzon létre a különböző típusú riasztások egyes felhasználói felületen keresztüli; a szükségeskonfiguráció-riasztás alapján válassza ki a következő lépés szerint:
+ A felhasználói felület lehetővé teszi a különböző típusú riasztások létre egyetlen helyen. A szükségeskonfiguráció-riasztás alapján válassza ki a következő lépés szerint:
 
     - A **metrika riasztások**: lépésekkel 5-7; majd folytassa a 11
     - A **napló riasztások**, Ugrás a 8. lépés.
 
     > [!NOTE]
 
-    > Egyesített riasztások (előzetes verzió) támogatja a tevékenységnapló riasztásokat is. [További információk](monitoring-activity-log-alerts-new-experience.md).
+    > Napló tevékenységriasztásokat is támogatottak, de még csak előzetes verziójúak. [További információk](monitoring-activity-log-alerts-new-experience.md).
 
-5. *Metrika riasztások*: Győződjön meg arról **erőforrástípus** jel típusú, mint a kiválasztott **metrika**, majd egyszer megfelelő **erőforrás** van kiválasztva, kattintson  *Kész* gombra kattintva visszatérhet a riasztás létrehozása. Ezután használja a **adja meg a feltételeket** jel beállítások, az állapotfigyelő szolgáltatás és a felsorolt - típus közül az adott jel kiválasztása gomb, ami a korábban kiválasztott erőforrás érhetők el.
+5. *Metrika riasztások* : Győződjön meg arról **erőforrástípus** jel típusú, mint a kiválasztott **metrika**, majd egyszer megfelelő **erőforrás** van kiválasztva, kattintson  *Kész* gombra kattintva visszatérhet a riasztás létrehozása. Ezután használja a **adja meg a feltételeket** jel beállítások, az állapotfigyelő szolgáltatás és a felsorolt - típus közül az adott jel kiválasztása gomb, ami a korábban kiválasztott erőforrás érhetők el.
 
     ![Erőforrás kiválasztása](./media/monitor-alerts-unified/AlertsPreviewResourceSelection.png)
 
@@ -77,7 +79,13 @@ Részletes tovább részletes útmutató a Azure figyelmeztetések (előzetes ve
 
     ![A metrika jel logikát konfigurálása](./media/monitor-alerts-unified/AlertsPreviewCriteria.png)
 
-7. *Metrika riasztások*: Ha jel metrika, az értesítési ablakban szűrhetők adatpontok vagy a dimenziók használatával az említett az Azure erőforrás. Metrika riasztások hasonló, jel előzményeinek a képi megjelenítés választható ki időtartamot megállapításával **előzmények megjelenítése** legördülő menüből. Emellett a kiválasztott metrika dimenziók választható ki kiszűréséhez szükség idősor; a dimenziók kiválasztása nem kötelező, és felfelé történő öt dimenziók használhatók. **Riasztási logika** a megjelenített beállítások feltétel, a összesítési és végül küszöbérték lehet kiválasztani. A megadott logikai előnézete, mint a feltétel látható jel előzmények, valamint a képi megjelenítés lejátszásához, ha a riasztás az elmúlt elindítva lenne. Végül adja meg, milyen időtartamig, a riasztás kell keresnie a megadott feltétel kiválasztásával a **időszak** együtt, hogy a riasztás milyen gyakran fusson kiválasztásával beállítás **gyakoriság**.
+7. *Metrika riasztások*: Ha jel metrika, az értesítési ablakban szűrhetők adatpontok vagy a dimenziók használatával az említett az Azure erőforrás. 
+
+    a. Válasszon egy időtartamot a **előzmények megjelenítése** legördülő egy másik idő megjelenítéséhez. Kiválaszthatja a támogatott metrikáihoz idősor; szűréshez dimenziók a dimenziók kiválasztása nem kötelező, és felfelé történő öt dimenziók használhatók. 
+
+    b. **Riasztási logika** kiválasztható a megjelenített beállítások *feltétel*, *összesítési* és *küszöbérték*. A megadott logikai előnézete, mint a feltétel látható jel előzmények, valamint a képi megjelenítés lejátszásához, ha a riasztás az elmúlt elindítva lenne. 
+
+    c. Adja meg az időtartamot, a döntött, hogy **időszak** milyen gyakran együtt a riasztás kiválasztásával fusson **gyakoriság**.
 
     ![Többdimenziós metrika jel logikát konfigurálása](./media/monitor-alerts-unified/AlertsPreviewCriteriaMultiDim.png)
 
@@ -87,7 +95,7 @@ Részletes tovább részletes útmutató a Azure figyelmeztetések (előzetes ve
 
    > [!NOTE]
 
-   > (Előzetes verzió) listák importálhatja analytics lekérdezési jel típusként - riasztások **napló (mentett lekérdezés)**, a fenti ábrán látható módon. A felhasználók a lekérdezés Analytics tökéletes és mentheti későbbi használatra a riasztások – használatával érhető el lekérdezés mentése részletesebben [naplóelemzési napló kereséssel](../log-analytics/log-analytics-log-searches.md) vagy [megosztott lekérdezés az application insightsban elemzés](../log-analytics/log-analytics-overview.md). 
+   > Listák importálhatja analytics lekérdezési jel típusként - riasztások **napló (mentett lekérdezés)**, a fenti ábrán látható módon. A felhasználók a lekérdezés Analytics tökéletes és mentheti későbbi használatra a riasztások – használatával érhető el lekérdezés mentése részletesebben [naplóelemzési napló kereséssel](../log-analytics/log-analytics-log-searches.md) vagy [megosztott lekérdezés az application insightsban elemzés](../log-analytics/log-analytics-overview.md). 
 
 9.  *Riasztások jelentkezzen*: a kijelölt lekérdezés, mert így is fel kell tüntetni **keresési lekérdezés** mezőben; Ha a lekérdezés szintaxisa nem megfelelő a mező piros hibaüzenet jelenik meg. Ha a lekérdezés szintaxisát,-hivatkozás jelenik meg a megadott lekérdezés régebbi adatok végeznünk a időszak utolsó hat órán át az előző hét kapcsolóval grafikon.
 
@@ -107,7 +115,7 @@ A **napló riasztások** riasztások alapulhat:
    - *Metrika mérési*: egy riasztást hoz létre, ha minden *értéket összesítő* az eredmények között meghaladja a megadott küszöbértéknél, és *szerint csoportosítva* választott érték. A riasztás száma a küszöbérték elérése esetén a választott időszakban hányszor. Megadhatja a teljes megszegése behatolások tetszőleges kombinációja eredmények beállított vagy egymást követő megszegése megkövetelése, hogy a behatolás kell-e magukat az egymást követő minták között. További információ [napló riasztások és a típusukat](monitor-alerts-unified-log.md).
 
     > [!TIP]
-    > Jelenleg a riasztás (előzetes verzió) – napló keresési értesítések is igénybe vehet egyéni *időszak* és *gyakoriság* perc értéket. Érték 5 perc és 1440 perc 24 óra (vagyis) változhat. Ezért ha azt szeretné, hogy a riasztás időszak mondja ki a három óra, konvertálja a perc – 180 perc, a használat előtt
+    > Jelenleg a riasztás - naplófájl-keresési értesítések is igénybe vehet egyéni *időszak* és *gyakoriság* perc értéket. Érték 5 perc és 1440 perc 24 óra (vagyis) változhat. Ezért ha azt szeretné, hogy a riasztás időszak mondja ki a három óra, konvertálja a perc – 180 perc, a használat előtt
 
 11. A második lépésben adja meg a nevét a riasztásból a **riasztásiszabály-névnek** mezőjét, valamint egy **leírás** és részletesen leírja a részletekről a riasztás és **súlyossági** értéket a a megadott beállításokat. Ezek az adatok összes értesítő e-mailek, értesítések, és az Azure-figyelő által végzett leküldéses használja fel újra. Emellett felhasználó azonnal aktiválni a létrehozásakor a riasztási szabály megfelelően való átváltással választhat **engedélyezése a szabály létrehozásakor** lehetőséget.
 
@@ -126,7 +134,7 @@ A **napló riasztások** riasztások alapulhat:
 
         ![A művelet felülbírálásokat napló riasztások](./media/monitor-alerts-unified/AlertsPreviewOverrideLog.png)
 
-13. Ha a mezők egyike sem érvényes, és a zöld osztásjelek a **riasztási szabályt létrehozni** gombbal rákattintva és a riasztás jön létre az Azure-figyelő - riasztások (előzetes verzió). Az összes riasztás a riasztások (előzetes verzió) irányítópultján tekintheti meg.
+13. Ha a mezők egyike sem érvényes, és a zöld osztásjelek a **riasztási szabályt létrehozni** gombbal rákattintva és a riasztás jön létre az Azure Monitor - riasztás. Az összes riasztás a riasztások irányítópult is megtekinthetők.
 
     ![A szabály létrehozása](./media/monitor-alerts-unified/AlertsPreviewCreate.png)
 
@@ -134,9 +142,9 @@ A **napló riasztások** riasztások alapulhat:
 
 ## <a name="view-your-alerts-in-azure-portal"></a>A riasztás megtekintése az Azure-portálon
 
-1. Az a [portal](https://portal.azure.com/), jelölje be **figyelő** és - FIGYELŐ szakaszban válasszon **riasztások (előzetes verzió)**.  
+1. Az a [portal](https://portal.azure.com/), jelölje be **figyelő** és - FIGYELŐ szakaszban válasszon **riasztások**.  
 
-2. A **(előzetes verzió) irányítópult riasztások** megjelenik - az összes Azure-riasztás egyesített és megjelenő egyes board amelynek ![riasztási irányítópult](./media/monitoring-alerts-unified-usage/alerts-preview-overview.png)
+2. A **riasztások irányítópult** megjelenik - az összes Azure-riasztás egyesített és megjelenő egyes board amelynek ![riasztási irányítópult](./media/monitoring-alerts-unified-usage/alerts-preview-overview.png)
 3. Az irányítópult felső balról jobbra, egy pillanat alatt az alábbi - jelenítse meg a részletes rákattintva jeleníti meg:
     - *Riasztások indította*: A riasztások számát jelenleg logika teljesül, és a indította állapota
     - *A riasztási szabályok teljes*: A szám létre riasztási szabályok és az alatta szöveggel, a szám, amellyel jelenleg engedélyezve vannak
@@ -144,7 +152,7 @@ A **napló riasztások** riasztások alapulhat:
 5. A megállapítás specifikus segítségnyújtás a riasztások; egy beállításokkal a legördülő lista felül adott szűréshez *előfizetés, erőforráscsoport és/vagy az erőforrás*. További, az összes feloldatlan riasztási, használatát a *szűrő riasztás* beállítás található a megadott kulcsszó - adott megfelelő riasztások *neve, riasztás feltételek, az erőforráscsoportot, és tároló-erőforrás*
 
 ## <a name="managing-your-alerts-in-azure-portal"></a>Azure-portálon a riasztások kezelése
-1. Az a [portal](https://portal.azure.com/), jelölje be **figyelő** és - FIGYELŐ szakaszban válasszon **riasztások (előzetes verzió)**.  
+1. Az a [portal](https://portal.azure.com/), jelölje be **figyelő** és - FIGYELŐ szakaszban válasszon **riasztások**.  
 2. Válassza ki a **szabályok kezelése** gombra kattint a felső sávon, navigáljon a szabály felügyeleti szakasz - létrehozott összes riasztási szabályok listázó; többek között a riasztásokat, amelyek le vannak tiltva.
 3. Adott riasztási szabályok megkereséséhez egy használható a legördülő lista szűrők felül, amelyek lehetővé teszik a shortlist riasztási szabályok adott *előfizetés, csoportok és/vagy erőforrás*. Azt is megteheti a keresési ablaktáblán a riasztási szabály lista fölött jelölték meg *riasztások szűrése*, egy biztosíthat kulcsszóval, amely szerepel *riasztás nevét, a feltétel és a cél erőforráson*; csak megjelenítése a megfeleltetési szabályokról.
    ![Riasztás szabályok kezelése](./media/monitoring-alerts-unified-usage/alerts-preview-rules.png)
@@ -157,7 +165,7 @@ A **napló riasztások** riasztások alapulhat:
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ az új [majdnem valós idejű metrika riasztások (előzetes verzió)](monitoring-near-real-time-metric-alerts.md)
+- További információ az új [majdnem valós idejű metrika riasztások](monitoring-near-real-time-metric-alerts.md)
 - Első egy [metrikák gyűjtemény áttekintése](insights-how-to-customize-monitoring.md) ellenőrizze, hogy a szolgáltatás elérhető, és a gyors.
-- További tudnivalók [napló riasztásait az Azure-riasztások (előzetes verzió)](monitor-alerts-unified-log.md)
+- További tudnivalók [riasztások jelentkezzen be Azure riasztások](monitor-alerts-unified-log.md)
 - [További tudnivalók a tevékenység napló riasztásokat a riasztások (előzetes verzió) élmény](monitoring-activity-log-alerts-new-experience.md)

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: robb
-ms.openlocfilehash: cf93c95a37c9c32333727059317e05cfcc252905
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9ea7da35acefc139625e71904c8aa1b01b87e4df
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---cross-platform-cli"></a>Hozzon létre klasszikus metrika riasztások Azure figyelése az Azure-szolgáltatások - platformfüggetlen parancssori Felülettel
 > [!div class="op_single_selector"]
@@ -30,11 +30,11 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="overview"></a>Áttekintés
 > [!NOTE]
-> Ez a cikk ismerteti, hogyan régebbi metrika riasztások létrehozásához. Az Azure figyelő most támogatja [újabb, metrika riasztások jobb](monitoring-near-real-time-metric-alerts.md). Ezek a riasztások több metrikát, és lehetővé teszik a dimenzionális metrikák riasztást küld. Újabb metrika riasztások CLI támogatása hamarosan elérhető.
+> Ez a cikk ismerteti, hogyan régebbi klasszikus metrika riasztások létrehozásához. Az Azure figyelő most támogatja [újabb, metrika riasztások jobb](monitoring-near-real-time-metric-alerts.md). Ezek a riasztások több metrikát, és lehetővé teszik a dimenzionális metrikák riasztást küld. Újabb metrika riasztások CLI támogatása hamarosan elérhető.
 >
 >
 
-Ez a cikk bemutatja, hogyan állíthat be Azure metrika riasztások a platformfüggetlen parancssori felület (CLI) használatával.
+Ez a cikk bemutatja, hogyan állíthatja be az Azure klasszikus metrika riasztások a platformfüggetlen parancssori felület (CLI) használatával.
 
 > [!NOTE]
 > Az Azure figyelő csak 2016. Szeptembertől 25. az "Azure Insights" nevezett új neve. Azonban a névterek, ezért az alábbi parancsok továbbra is tartalmazza az "insights".
@@ -46,14 +46,14 @@ A figyelési metrikákat, vagy események, az Azure-szolgáltatások alapuló ri
 * **Metrika értékek** -a riasztás elindítja a megadott metrika értékét ebbe a küszöbérték mindkét irányban rendel. Ez azt jelenti, hogy elindítja a mindkét Ha először a feltétel teljesül, és majd ezt követően, hogy a feltétel mikor van már nem teljesül.    
 * **Tevékenység naplóeseményeket** -riasztást aktiválhatók *minden* esemény, vagy csak akkor, ha bizonyos események megtörténtekor. További információt a naplófájl tevékenységriasztásokat [kattintson ide](monitoring-activity-log-alerts.md)
 
-A metrika riasztások tegye a következőket, amikor elindítja a konfigurálhatja:
+A klasszikus metrika riasztások tegye a következőket, amikor elindítja a konfigurálhatja:
 
 * e-mail értesítések küldéséhez a szolgáltatás-rendszergazda és a társadminisztrátorok
 * e-mail küldéséhez megadott további e-maileket.
 * A webhook hívása
 * egy Azure-runbook (csak a jelenleg az Azure portálon) végrehajtásának elindítása
 
-Konfigurálhatja és metrika riasztási szabályok adatainak beolvasása
+Beállíthatja, klasszikus metrika riasztási szabályok használatával adatainak beolvasása
 
 * [Azure Portal](insights-alerts-portal.md)
 * [PowerShell](insights-alerts-powershell.md)
@@ -112,7 +112,7 @@ Mindig fogadhat parancsokhoz tartozó súgók parancs beírásával és üzembe 
     azure insights alerts rule metric set myrule eastus myreasourcegroup PT5M GreaterThan 2 /subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Web/sites/mywebsitename BytesReceived Total
 
     ```
-5. Webhook létrehozása vagy e-mailek küldése egy metrika riasztás aktiválódásakor, először létre kell hoznia az e-mailek és/vagy a webhook. Ezután hozzon létre azonnal a szabályt ezt követően. Nem társítható webhook vagy e-mailek már létrehozott szabályok a parancssori felület használatával.
+5. Webhook létrehozása vagy e-mailek küldése a klasszikus metrika riasztás aktiválódásakor, először létre kell hoznia az e-mailek és/vagy a webhook. Ezután hozzon létre azonnal a szabályt ezt követően. Nem társítható webhook vagy e-mailek már létrehozott szabályok a parancssori felület használatával.
 
     ```console
     azure insights alerts actions email create --customEmails myemail@contoso.com

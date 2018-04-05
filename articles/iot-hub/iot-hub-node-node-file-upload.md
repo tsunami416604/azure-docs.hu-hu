@@ -1,11 +1,11 @@
 ---
-title: "Az Azure IoT Hub csomóponttal eszközökről fájlok feltöltése |} Microsoft Docs"
-description: "Hogyan tölthet fel a fájlokat az eszközről a felhőbe Azure IoT-eszközök SDK for Node.js használatával. Egy Azure blob tároló feltöltött fájlok tárolják."
+title: Az Azure IoT Hub csomóponttal eszközökről fájlok feltöltése |} Microsoft Docs
+description: Hogyan tölthet fel a fájlokat az eszközről a felhőbe Azure IoT-eszközök SDK for Node.js használatával. Egy Azure blob tároló feltöltött fájlok tárolják.
 services: iot-hub
 documentationcenter: nodejs
 author: msebolt
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4759d229-f856-4526-abda-414f8b00a56d
 ms.service: iot-hub
 ms.devlang: node
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2017
 ms.author: v-masebo
-ms.openlocfilehash: cff0f2fc664e0c09bfa1f8f0e0d488a049a6f448
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
-ms.translationtype: MT
+ms.openlocfilehash: dd6f25173806d6e420bfeebaae3f81e39f8fd97f
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Az eszközről a felhőbe, IoT-központ fájlok feltöltése
 
@@ -29,7 +29,7 @@ Ez az oktatóanyag épít, a kód a [IoT Hub-felhő eszközre üzenetek](iot-hub
 - Biztonságosan adjon meg egy eszközt az Azure blob URI-fájl feltöltése.
 - Az IoT-központ fájl feltöltése értesítések használatával indul el, az alkalmazás háttérbeli fájl feldolgozása.
 
-A [Ismerkedés az IoT-központ](iot-hub-node-node-getstarted.md) és [IoT Hub-felhő eszközre üzenetek](iot-hub-node-node-c2d.md) oktatóanyagok alapvető eszköz-felhő és a felhő eszközre üzenetkezelési funkcióit az IoT-központ megjelenítése. Bizonyos esetekben azonban leképezése nem az eszközök elküldik üzenetbe a viszonylag kis eszközről a felhőbe, amely az IoT-központ fogadja az adatokat könnyen. Példa:
+A [Ismerkedés az IoT-központ](iot-hub-node-node-getstarted.md) oktatóanyag funkcióit mutatja be az alapvető eszköz-felhő üzenetkezelési az IoT-központ. Bizonyos esetekben azonban leképezése nem az eszközök elküldik üzenetbe a viszonylag kis eszközről a felhőbe, amely az IoT-központ fogadja az adatokat könnyen. Példa:
 
 * Nagy fájlok, amelyek képeket
 * Videók
@@ -219,7 +219,7 @@ Ebben az oktatóprogramban megismerte fájlfeltöltéseket eszközökről leegys
 
 * [Programozott módon létrehoz egy IoT-központot][lnk-create-hub]
 * [C SDK bemutatása][lnk-c-sdk]
-* [Az Azure IoT SDK-k][lnk-sdks]
+* [Azure IoT SDKs][lnk-sdks]
 
 <!-- Links -->
 [Azure IoT fejlesztői központ]: http://azure.microsoft.com/develop/iot

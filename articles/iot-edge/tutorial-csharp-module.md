@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 03/14/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 95ca66f34548f86e25c1e7af331fa88797847906
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 11c737adb6578437a3708bb97397a24114e39585
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="develop-and-deploy-a-c-iot-edge-module-to-your-simulated-device---preview"></a>Fejlesztés és a szimulált eszköz egy C# IoT peremhálózati modul telepítése – előzetes
 
@@ -223,6 +223,7 @@ A következő lépéseket megjelenítése, hogyan hozzon létre egy IoT peremhá
    ```csh/sh
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
+   A felhasználónév, jelszó és a bejelentkezési kiszolgáló, a parancs használatával megkereséséhez nyissa meg az [Azure portálra] (https://portal.azure.com). A **összes erőforrás**, kattintson az Azure-tárolót beállításjegyzék nyissa meg a tulajdonságait, majd kattintson a csempére **hívóbetűk**. Az értékek másolása a **felhasználónév**, **jelszó**, és **bejelentkezési kiszolgáló** mezőket. 
 
 2. A Visual STUDIO Code Explorerben (megoldáskezelőben) kattintson a jobb gombbal a **module.json** fájlt, és kattintson a **modul Docker kép összeállítása és leküldéses IoT peremhálózati**. A Visual STUDIO Code ablak tetején előugró legördülő mezőben válassza ki a tároló platform vagy **amd64** Linux tároló vagy **windows-amd64** Windows tároló. Visual STUDIO Code majd összeállít a kódot, containerize a `FilterModule.dll` , és hogy a megadott tároló beállításjegyzék.
 

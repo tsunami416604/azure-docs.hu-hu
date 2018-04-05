@@ -1,10 +1,10 @@
 ---
-title: "Azure Active Directory fejlesztők számára | Microsoft Docs"
-description: "Ez a cikk áttekintést ad a munkahelyi és iskolai Microsoft-fiókokba való, Azure Active Directory használatával végzett bejelentkezésről."
+title: Azure Active Directory fejlesztők számára | Microsoft Docs
+description: Ez a cikk áttekintést ad a munkahelyi és iskolai Microsoft-fiókokba való, Azure Active Directory használatával végzett bejelentkezésről.
 services: active-directory
 author: dstrockis
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 5c872c89-ef04-4f4c-98de-bc0c7460c7c2
 ms.service: active-directory
 ms.devlang: na
@@ -14,14 +14,17 @@ ms.workload: identity
 ms.date: 04/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: e1f9fbf6cb80065ea796e2d53d09f48fe57b207b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 8d70f36c5e434a26fce4d6b4bd1ddefc22234ab5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-active-directory-for-developers"></a>Azure Active Directory fejlesztők számára
-Az Azure Active Directory (Azure AD) egy olyan felhőalapú identitásszolgáltatás, amely lehetővé teszi a fejlesztők számára a munkahelyi vagy iskolai Microsoft-fiókkal rendelkező felhasználók biztonságos bejelentkeztetését. Ebben a dokumentációban megtekintheti, hogyan történik az Azure AD-támogatás hozzáadása az alkalmazásához iparági szabvány szerinti protokollok (OAuth2.0 és OpenID Connect) használatával.
+Az Azure Active Directory (Azure AD) egy olyan felhőalapú identitásszolgáltatás, amely lehetővé teszi a fejlesztők számára az olyan alkalmazások létrehozását, amelyek biztosítják a munkahelyi vagy iskolai Microsoft-fiókkal rendelkező felhasználók biztonságos bejelentkeztetését. Az Azure AD egyaránt támogatja egybérlős, üzletági (LOB) alkalmazások, illetve a több-bérlős alkalmazások fejlesztését. Az alapszintű bejelentkezés mellett az Azure AD lehetővé teszi az alkalmazások számára, hogy Microsoft API-kat (pl. [Microsoft Graph](https://developer.microsoft.com/en-us/graph/docs/concepts/overview)) és az Azure AD platformon alapuló egyéni API-kat egyaránt hívhassanak.  Ebben a dokumentációban megtekintheti, hogyan történik az Azure AD-támogatás hozzáadása az alkalmazásához iparági szabvány szerinti protokollok (pl. OAuth2.0 és OpenID Connect) használatával. 
+
+> [!NOTE]
+> Az oldal tartalmának nagy része az Azure AD v1-végpontra összpontosít, amely csak a Microsoft munkahelyi vagy iskolai fiókokat támogatja. Ha végfelhasználói és személyes Microsoft-fiókokat is be szeretne jelentkeztetni, tekintse meg az [Azure AD v2.0-végpontokra](active-directory-appmodel-v2-overview.md) vonatkozó további információkat. Az Azure AD v2.0-végpont egységesített fejlesztői élményt biztosít az alkalmazásokhoz, amelyek Azure AD- (munkahelyi és iskolai) és személyes Microsoft-fiókokat egyaránt be szeretnének jelentkeztetni. 
 
 | | |
 | --- | --- |
@@ -29,7 +32,7 @@ Az Azure Active Directory (Azure AD) egy olyan felhőalapú identitásszolgálta
 |[Alkalmazástípusok](active-directory-authentication-scenarios.md#application-types-and-scenarios) | Áttekintés az Azure AD által támogatott hitelesítési forgatókönyvekről. |                                
                                                                               
 ## <a name="get-started"></a>Bevezetés
-A következő irányított beállítási folyamatok végigvezetik az Azure AD-felhasználók Microsoft hitelesítési kódtárainak használatával történő bejelentkeztetési folyamatán.
+Az alábbi irányított beállítások végigvezetik az alkalmazásoknak a kívánt platformon, az Azure Active Directory Library (ADAL) SDK használatával történő létrehozásán. A Microsoft Authentication Libraryvel (MSAL) kapcsolatos további információért tekintse meg az [Azure AD v2.0-végpontra](active-directory-appmodel-v2-overview.md) vonatkozó dokumentációnkat.
 
 |  |  |  |  |
 | --- | --- | --- | --- |
@@ -40,7 +43,7 @@ A következő irányított beállítási folyamatok végigvezetik az Azure AD-fe
 | <center>![Szolgáltatások közötti](./media/active-directory-developers-guide/Service_App.png)<br />Szolgáltatások közötti</center> | [Áttekintés](active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api)<br /><br />[.NET](active-directory-code-samples.md#server-or-daemon-application-to-web-api)|  |
 
 ## <a name="how-to-guides"></a>Útmutatók
-A következő útmutatókból megtudhatja, hogyan hajthat végre gyakori feladatokat az Azure AD használatával.
+Az alábbi útmutatók végigvezetik az Azure AD néhány gyakori feladatán.
 
 |                                                                           |  |
 |---------------------------------------------------------------------------| --- |
@@ -58,10 +61,6 @@ A következő cikkekben az API-król, a protokollüzenetekről és az Azure AD �
 | [Kódminták](active-directory-code-samples.md)                                  | Az Azure AD összes kódmintáját tartalmazó lista. |
 | [Szószedet](active-directory-dev-glossary.md)                                      | A jelen dokumentációban használt fogalmak terminológiája és meghatározásai. |
 | [További referencia-témakörök](active-directory-developers-guide-index.md#reference)| Az Azure AD-hez elérhető referencia-témakörök listája.   |
-
-
-> [!NOTE]
-> Ha szeretne bejelentkezni a személyes Microsoft-fiókjaiba, érdemes megfontolnia az [Azure AD v2.0-végpont](active-directory-appmodel-v2-overview.md) használatát. Az Azure AD v2.0-végpont egyetlen hitelesítési rendszerben egyesíti a személyes és munkahelyi Microsoft-fiókjait (az Azure AD-ből).
 
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

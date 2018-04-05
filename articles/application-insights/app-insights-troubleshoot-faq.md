@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 721799703923339d397113fc278cdeb6c6dbb88f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 245bd348b9eb5b434360d734e219efd7c663a406
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Az Application Insights: Gyakran ismételt kérdések
 
@@ -60,7 +60,7 @@ A vállalati terv a azt eredményezi, amelyet minden webkiszolgáló csomópontj
 
 ## <a name="how-much-is-it-costing"></a>Mennyire van azt költségszámítás?
 
-* Nyissa meg a **szolgáltatások + díjszabás** lap az Application Insights-erőforrást. Legutóbbi használat diagram van. Egy adatok kötet kap, ha azt szeretné, állíthatja be.
+* Nyissa meg a **használati és a becsült költség lap** lap az Application Insights-erőforrást. Legutóbbi használat diagram van. Egy adatok kötet kap, ha azt szeretné, állíthatja be.
 * Nyissa meg a [panel Azure számlázási](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview) megtekintéséhez a váltók közötti összes erőforrást.
 
 ## <a name="q14"></a>Mi az Application Insights módosítja a projektben?

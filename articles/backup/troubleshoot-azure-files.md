@@ -1,30 +1,29 @@
 ---
-title: "Azure Files biztonsági mentésének hibaelhárítása"
-description: "A cikk olyan hibákkal kapcsolatos hibaelhárítási információkat tartalmaz, melyek az Azure Files (fájlmegosztások) Azure-ban való védelmekor következnek be."
+title: Azure Files biztonsági mentésének hibaelhárítása
+description: A cikk olyan hibákkal kapcsolatos hibaelhárítási információkat tartalmaz, amelyek az Azure fájlmegosztások védelmekor következnek be.
 services: backup
 ms.service: backup
-keywords: "Ne adjon hozzá kulcsszavakat és ne szerkessze azokat a keresőoptimalizálást végző szakemberrel való egyeztetés nélkül."
+keywords: Ne adjon hozzá kulcsszavakat és ne szerkessze azokat a keresőoptimalizálást végző szakemberrel való egyeztetés nélkül.
 author: markgalioto
 ms.author: markgal
 ms.date: 2/21/2018
 ms.topic: tutorial
 ms.workload: storage-backup-recovery
 manager: carmonm
-ms.openlocfilehash: 3bc259245df86406e23418bac598c8b1e062d512
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: c803118ccdafa8db0e8f8ddee608f60311f65e05
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="troubleshoot-problems-backing-up-azure-files"></a>Az Azure Files biztonsági mentésével kapcsolatos problémák elhárítása
-
 Az alábbi táblázatokban szereplő információk segítségével elháríthatja az Azure Files biztonsági mentése közben fellépő problémákat és hibákat.
 
 ## <a name="preview-boundaries"></a>Előzetes verzió határai
 Az Azure Files biztonsági mentése jelenleg előzetes verzióként érhető el. Az Azure-fájlmegosztások nem támogatják az alábbi biztonsági mentési forgatókönyveket:
-- Tárfiókokban lévő fájlmegosztások védelme [zónaredundáns tárolás](../storage/common/storage-redundancy.md#zone-redundant-storage) (ZRS), vagy [írásvédett georedundáns tárolás](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage) (RA-GRS) replikációval.
-- Fájlmegosztások védelme olyan tárfiókokban, amelyeken engedélyezve vannak a virtuális hálózatok.
-- Azure Files biztonsági mentése PowerShell vagy parancssori felület segítségével.
+- Tárfiókokban lévő Azure-fájlmegosztások védelme [zónaredundáns tárolás](../storage/common/storage-redundancy.md#zone-redundant-storage) (ZRS) vagy [írásvédett georedundáns tárolás](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage) (RA-GRS) replikációval.
+- Azure-fájlmegosztások védelme olyan tárfiókokban, amelyeken engedélyezve vannak a virtuális hálózatok.
+- Azure-fájlmegosztások biztonsági mentése PowerShell vagy parancssori felület használatával.
 
 ### <a name="limitations"></a>Korlátozások
 - Maximális #ütemezett biztonsági mentés naponta: 1.
