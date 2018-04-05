@@ -252,7 +252,7 @@ Az alábbi táblázatok bemutatják az adatokat a listában, térkép és String
 | --- | --- |
 | 1 |A |
 | 1 |B |
-| 1 |C# |
+| 1 |C |
 | 3 |A |
 | 3 |E |
 
