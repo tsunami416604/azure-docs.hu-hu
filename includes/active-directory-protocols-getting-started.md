@@ -1,11 +1,11 @@
 ---
-title: "Az Azure AD .NET protokolljának áttekintése | Microsoft Docs"
-description: "A HTTP-üzenetek használata a bérlőben található webalkalmazásokhoz és webes API-khoz való hozzáférés engedélyezéséhez az Azure AD-vel."
+title: Az Azure AD .NET protokolljának áttekintése | Microsoft Docs
+description: A HTTP-üzenetek használata a bérlőben található webalkalmazásokhoz és webes API-khoz való hozzáférés engedélyezéséhez az Azure AD-vel.
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
 manager: mbaldwin
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/21/2016
 ms.author: priyamo
 ms.openlocfilehash: 42ce8dfd30cda7d4085778954350550fd9fdf13d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 ## <a name="register-your-application-with-your-ad-tenant"></a>Alkalmazás regisztrálása az AD-bérlőben
 Először regisztrálnia kell az alkalmazást az Azure Active Directory- (Azure AD-) bérlőben. Ekkor kapni fog egy alkalmazásazonosítót az alkalmazáshoz, amely immár képes jogkivonatokat fogadni.

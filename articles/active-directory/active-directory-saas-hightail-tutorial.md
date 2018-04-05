@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Hightail |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Hightail között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Hightail |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Hightail között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/21/2017
 ms.author: jeedes
 ms.openlocfilehash: 2333a56cd9369cb66c4944304472462d2f2f7511
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hightail"></a>Oktatóanyag: Azure Active Directoryval integrált Hightail
 
@@ -110,7 +110,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_url.png)
 
-     Az a **válasz URL-CÍMEN** szövegmező, írja be az URL-címet:`https://www.hightail.com/samlLogin?phi_action=app/samlLogin&subAction=handleSamlResponse`
+     Az a **válasz URL-CÍMEN** szövegmező, írja be az URL-címet: `https://www.hightail.com/samlLogin?phi_action=app/samlLogin&subAction=handleSamlResponse`
 
     > [!NOTE] 
     > Az előző érték nincs valós értékének. Az érték a tényleges válasz URL-címet, az oktatóanyag későbbi részében ismertetett frissíti.
@@ -121,7 +121,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     a. Kattintson a **megjelenítése speciális URL-beállításainak**.
 
-    b. Az a **URL-cím bejelentkezési** szövegmező, írja be az URL-címet:`https://www.hightail.com/loginSSO`
+    b. Az a **URL-cím bejelentkezési** szövegmező, írja be az URL-címet: `https://www.hightail.com/loginSSO`
 
 4. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
@@ -135,10 +135,10 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     
     | Attribútum neve | Attribútum értéke |
     | ------------------- | -------------------- |
-    | Utónév | User.givenName |
-    | Vezetéknév | User.surname |
-    | E-mail-cím | User.mail |    
-    | UserIdentity | User.mail |
+    | Utónév | user.givenname |
+    | Vezetéknév | user.surname |
+    | E-mail | user.mail |    
+    | UserIdentity | user.mail |
     
     a. Kattintson a **Hozzáadás attribútum** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
 
@@ -231,7 +231,7 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
 Ez a szakasz célja Hightail Britta Simon nevű felhasználót létrehozni. 
 
-Nincs ebben a szakaszban az Ön művelet elem. Támogatja az egyéni igények alapján just-in-time felhasználólétesítés hightail. Ha konfigurálta az egyéni igények, ahogy az a szakasz  **[az Azure AD konfigurálása egyszeri bejelentkezéshez](#configuring-azure-ad-single-sign-on)**  újabb verziók esetén a felhasználók automatikusan létrejön az alkalmazás még nem létezik. 
+Nincs ebben a szakaszban az Ön művelet elem. Támogatja az egyéni igények alapján just-in-time felhasználólétesítés hightail. Ha konfigurálta az egyéni igények, ahogy az a szakasz **[az Azure AD konfigurálása egyszeri bejelentkezéshez](#configuring-azure-ad-single-sign-on)** újabb verziók esetén a felhasználók automatikusan létrejön az alkalmazás még nem létezik. 
 
 >[!NOTE]
 >Hozza létre a felhasználó manuálisan kell, ha szeretné-e lépjen kapcsolatba a [Hightail támogatási csoport](mailto:support@hightail.com). 

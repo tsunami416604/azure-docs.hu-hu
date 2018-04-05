@@ -1,12 +1,12 @@
 ---
-title: "StorSimple támogatási feltételek |} Microsoft Docs"
-description: "A StorSimple 8000 series vállalati tárolási ügyfelek támogatási lehetőségeket ismerteti."
+title: StorSimple támogatási feltételek |} Microsoft Docs
+description: A StorSimple 8000 series vállalati tárolási ügyfelek támogatási lehetőségeket ismerteti.
 services: storsimple
 documentationcenter: NA
 author: GabiSocoteanu
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 02/15/2018
 ms.author: alkohli
 ms.openlocfilehash: 6753b52b02373d03a9ed5fec775c899a806aff3e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="storsimple-solution-support"></a>A StorSimple megoldás támogatása
 
@@ -90,7 +90,7 @@ A számlázási és előfizetés-kezelési problémákhoz minden támogatási sz
 |----------|-----------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | A        | Üzletmenetre gyakorolt kritikus hatás: <ul> <br> <li> Az ügyfelek üzleti jelentős szintű kiesése vagy teljesítménycsökkenése szolgáltatások rendelkezik. <sup>1</sup> <br> <li> Azonnali figyelmet igényel.                          | A kezdeti válasz: <sup>1</sup> <ul><br> <li>1 óra vagy Premium kisebb. <br> <li> 2 óra vagy kevesebb, a standard. <br> <li> Folyamatosan elérhető összes minden nap. | <ul><li> A megfelelő erőforrások átcsoportosítása az egész napi, a hét minden napján tartó folyamatos erőfeszítés fenntartása érdekében. <br> <li> Nagybetűk tulajdonos pontos kapcsolattartási adatait.                                                |
 | B        | Üzletmenetre gyakorolt mérsékelt hatás: <ul><br> <li> Ügyfél vállalkozásának közepes szintű kiesése vagy teljesítménycsökkenése szolgáltatások rendelkezik, de a munkahelyi ésszerűen folytathatja a korlátozott módon. | A kezdeti válasz: <sup>1</sup><ul><br> <li> 2 óra vagy Premium kisebb. <br> <li> 4 óra vagy kevesebb, a standard.                                      | <ul><li> A munkaidő alatt folyamatos elérhető fenntartása, kivéve, ha az ügyfél kéri tilthatják le az 24 x 7 megfelelő erőforrások elosztását. <br> <li> Nagybetűk tulajdonos pontos kapcsolattartási adatait. |
-| C#        | Üzletmenetre gyakorolt minimális hatás: <ul><br> <li> Ügyfél vállalkozásának lényegesen kisebb vagy a szolgáltatások nem akadálya működik.                                 | A kezdeti válasz: <sup>1</sup><ul> <br> <li> 4 óra vagy Premium kisebb. <br> <li> 8 óra vagy kevesebb, a standard.                                      | <ul><li>Nagybetűk tulajdonos pontos kapcsolattartási adatai                                                                                                                                    |
+| C        | Üzletmenetre gyakorolt minimális hatás: <ul><br> <li> Ügyfél vállalkozásának lényegesen kisebb vagy a szolgáltatások nem akadálya működik.                                 | A kezdeti válasz: <sup>1</sup><ul> <br> <li> 4 óra vagy Premium kisebb. <br> <li> 8 óra vagy kevesebb, a standard.                                      | <ul><li>Nagybetűk tulajdonos pontos kapcsolattartási adatai                                                                                                                                    |
  
 <sup>1 </sup> Microsoft előfordulhat, hogy A súlyosság eset súlyosságának megállapításában, ha az ügyfél nem képes adja meg a megfelelő erőforrásokat és a válaszok engedélyezése a Microsoft probléma feloldási próbálkozások folytatásához.
 

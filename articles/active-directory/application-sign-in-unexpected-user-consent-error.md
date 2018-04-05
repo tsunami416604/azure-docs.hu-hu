@@ -1,11 +1,11 @@
 ---
-title: "Hozzájárul az alkalmazás végrehajtása során váratlan hiba |} Microsoft Docs"
-description: "Ismerteti, amelyek hozzájárul ahhoz, hogy az alkalmazások és a rájuk vonatkozó teendők során előforduló hibák"
+title: Hozzájárul az alkalmazás végrehajtása során váratlan hiba |} Microsoft Docs
+description: Ismerteti, amelyek hozzájárul ahhoz, hogy az alkalmazások és a rájuk vonatkozó teendők során előforduló hibák
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: bbc0cee8a44773c025c6174eaf7eccaba81b8d1b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Hozzájárul az alkalmazás végrehajtása során váratlan hiba
 
@@ -50,7 +50,7 @@ Ez a hiba azt jelzi, hogy az időszakos szolgáltatás kiszolgálóoldali hiba t
 Lépjen kapcsolatba az alkalmazás fejlesztőjének.
 
 ##  <a name="resource-not-available-in-tenant-error"></a>Az erőforrás nem érhető el a bérlői hiba
-* **AADSTS65005:** &lt;clientAppDisplayName&gt; kér az erőforráshoz való hozzáférés &lt;resourceAppDisplayName&gt; , amely nem érhető el a szervezet &lt; tenantDisplayName&gt;. 
+* **AADSTS65005:** &lt;clientAppDisplayName&gt; kér az erőforráshoz való hozzáférés &lt;resourceAppDisplayName&gt; , amely nem érhető el a szervezet &lt;tenantDisplayName &gt;. 
 
 Győződjön meg arról, hogy rendelkezésre áll-e ehhez az erőforráshoz, vagy forduljon a rendszergazdához &lt;tenantDisplayName&gt;.
 
@@ -71,7 +71,7 @@ Ezek a hibák összes fordulhat elő, ha a felhasználó megpróbálja járul ho
 
     -   Az alkalmazás hozzáadása az Azure AD alkalmazás gyűjteményből
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 [Alkalmazások, engedélyek és az Azure Active Directoryban (v1 végpont) hozzájárulás](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)<br>
 

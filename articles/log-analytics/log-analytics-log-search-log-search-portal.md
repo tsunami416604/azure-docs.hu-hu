@@ -1,11 +1,11 @@
 ---
-title: "A naplófájl-keresési portál használata az Azure Naplóelemzés |} Microsoft Docs"
-description: "A cikk azt ismerteti, hogyan napló keresések létrehozása és a keresési napló portálon Naplóelemzési munkaterületet tárolt adatok elemzése webalkalmazással tartalmaz.  Az oktatóanyag részeként néhány mintalekérdezést is futtatni fog különböző adattípusok visszaadásához és az eredmények elemzéséhez."
+title: A naplófájl-keresési portál használata az Azure Naplóelemzés |} Microsoft Docs
+description: A cikk azt ismerteti, hogyan napló keresések létrehozása és a keresési napló portálon Naplóelemzési munkaterületet tárolt adatok elemzése webalkalmazással tartalmaz.  Az oktatóanyag részeként néhány mintalekérdezést is futtatni fog különböző adattípusok visszaadásához és az eredmények elemzéséhez.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/19/2018
 ms.author: bwren
 ms.openlocfilehash: 37213012e817f0fae21a47a4334a519bbbca206b
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-log-searches-in-azure-log-analytics-using-the-log-search-portal"></a>Napló keresések létrehozása az Azure Naplóelemzés a naplófájl-keresési portál használatával
 
@@ -63,7 +63,7 @@ A rendszer az alapértelmezett listanézetben adja vissza az adatokat, és megje
 
 Az egyes rekordoknak csak az első néhány tulajdonsága jelenik meg.  Kattintson a **részletek megjelenítése** gombra egy adott rekord összes tulajdonságának megjelenítéséhez.
 
-![Rekord részletei](media/log-analytics-log-search-log-search-portal/log-search-portal-02.png)
+![Rekordok részletei](media/log-analytics-log-search-log-search-portal/log-search-portal-02.png)
 
 ## <a name="set-the-time-scope"></a>Az idő hatókör megadása
 Minden Naplóelemzési által gyűjtött rekord tartalmazza-e egy **TimeGenerated** tulajdonság, amely tartalmazza a dátum és idő, hogy a rekord létrejött.  A naplófájl-keresési portálon lekérdezés csak rekordokat adja vissza egy **TimeGenerated** a képernyő bal oldalán megjelenő idő hatókörén belül.  

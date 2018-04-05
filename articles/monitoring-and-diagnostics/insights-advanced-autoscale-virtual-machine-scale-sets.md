@@ -1,9 +1,9 @@
 ---
-title: "Speciális használó Azure virtuális gépek automatikus skálázás |} Microsoft Docs"
-description: "Erőforrás-kezelő és a Virtuálisgép-méretezési készlet használ, több szabályok és profilok, amely e-mailek küldése, és hívja meg a webhook URL-címet a skálázási művelet."
+title: Speciális használó Azure virtuális gépek automatikus skálázás |} Microsoft Docs
+description: Erőforrás-kezelő és a Virtuálisgép-méretezési készlet használ, több szabályok és profilok, amely e-mailek küldése, és hívja meg a webhook URL-címet a skálázási művelet.
 author: anirudhcavale
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 7e3576e2-4a2b-4736-b5ae-98c4689cdd2b
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/22/2016
 ms.author: ancav
 ms.openlocfilehash: 80955535c8d863cd3d8d1b77e2ab8bc016b6d9f3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Speciális automatikus skálázás konfigurációját a Resource Manager-sablonok segítségével a Virtuálisgép-méretezési készlet
 Méretezés és a virtuálisgép-méretezési csoportok alapján a teljesítmény-küszöbértékeinek metrika, ismétlődő ütemezés szerint, vagy egy adott dátumot kibővített is. A skálázási műveletek értesítések e-mailek és a webhook is konfigurálhatja. Ez a bemutató ismerteti egy példa a Resource Manager-sablon használatával egy Virtuálisgép-méretezési csoportban lévő összes objektum konfigurálására.
@@ -35,7 +35,7 @@ Ebben a bemutatóban használjuk [Azure erőforrás-kezelő](https://resources.a
 1. Telepítsen egy új méretezési készletben egy alapszintű automatikus skálázási beállítás. Ez a cikk az használja az Azure katalógusából gyors üzembe helyezés, amely rendelkezik egy Windows méretezési alapvető automatikus skálázás sablonnal. Linux-méretezési csoportok azonos módon működnek.
 2. A méretezési készlet létrehozása után nyissa meg a méretezési készlet erőforrást az Azure erőforrás-kezelővel. A következő Microsoft.Insights csomópont alatt megjelenik.
 
-    ![Az Azure Explorer](./media/insights-advanced-autoscale-vmss/azure_explorer_navigate.png)
+    ![Azure Explorer](./media/insights-advanced-autoscale-vmss/azure_explorer_navigate.png)
 
     A sablon végrehajtási hozott létre egy alapértelmezett automatikus skálázási beállítás nevű **"autoscalewad"**. A jobb oldalon megtekintheti az automatikus skálázási beállítás teljes definíciója. Ebben az esetben az alapértelmezett automatikus skálázási beállítás CPU-alapú % kibővített és skálázási szabály tartalmaz.  
 
@@ -47,7 +47,7 @@ Ebben a bemutatóban használjuk [Azure erőforrás-kezelő](https://resources.a
     | Szabály |Service Bus várólista-üzenetek száma > x |
     | Szabály |Service Bus várólista-üzenetek száma < y |
     | Szabály |CPU % > n |
-    | Szabály |CPU % < p |
+    | Szabály |CPU% < p |
     | **Profil** |**Milyen napra esik reggel óra (nincs szabály)** |
     | **Profil** |**A termék indítási nap (nincs szabály)** |
 
@@ -239,7 +239,7 @@ Ebben a bemutatóban használjuk [Azure erőforrás-kezelő](https://resources.a
 
 Az automatikus skálázási beállítás egy Virtuálisgép-méretezési több skálázási profil tartalmazza, a méretezés értesítések beállítása a frissítése befejeződött.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ezek a hivatkozások segítségével további információ az automatikus skálázást.
 
 [Virtuálisgép-méretezési csoportok automatikusan skálázva hibaelhárítása](../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)

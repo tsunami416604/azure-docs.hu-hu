@@ -1,11 +1,11 @@
 ---
-title: "StorSimple Snapshot Manager kötet csoportok |} Microsoft Docs"
-description: "Ismerteti a StorSimple Snapshot Manager MMC beépülő modul segítségével kötet csoportok létrehozásához és kezeléséhez."
+title: StorSimple Snapshot Manager kötet csoportok |} Microsoft Docs
+description: Ismerteti a StorSimple Snapshot Manager MMC beépülő modul segítségével kötet csoportok létrehozásához és kezeléséhez.
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 7a232414-6a28-4b81-bd7b-cf61e28b33d7
 ms.service: storsimple
 ms.devlang: NA
@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
 ms.openlocfilehash: 6067a88cd42d29c3d2f4b74580095424de77561e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>StorSimple Snapshot Manager segítségével kötet csoportok létrehozása és kezelése
 ## <a name="overview"></a>Áttekintés
@@ -49,10 +49,10 @@ Ha a **kötet csoportok** csomópont, a **eredmények** ablaktáblán minden kö
 
 | Eredmények oszlop | Leírás |
 |:--- |:--- |
-| Név |A **neve** oszlop a mennyiségi csoport nevét tartalmazza. |
+| Name (Név) |A **neve** oszlop a mennyiségi csoport nevét tartalmazza. |
 | Alkalmazás |A **alkalmazások** oszlopban látható a száma, a VSS-író jelenleg telepítve van és fut a Windows-gazdagépen. |
 | Kiválasztva |A **kijelölt** oszlop a mennyiségi csoport található kötetek számát jeleníti meg. A nulla (0) azt jelzi, hogy egyetlen alkalmazás a köteteket a kötet csoport társítva. |
-| Importált |A **importált** oszlop importált kötetek számát jeleníti meg. Ha beállítása **igaz**, ebben az oszlopban azt jelzi, hogy a kötet csoport az Azure-portálon lett importálva, és nem jött létre a StorSimple Snapshot Manager. |
+| Importálva |A **importált** oszlop importált kötetek számát jeleníti meg. Ha beállítása **igaz**, ebben az oszlopban azt jelzi, hogy a kötet csoport az Azure-portálon lett importálva, és nem jött létre a StorSimple Snapshot Manager. |
 
 > [!NOTE]
 > StorSimple Snapshot Manager kötet csoport is megjelenik a a **biztonsági mentési házirendek** fülre az Azure portálon.
@@ -124,7 +124,7 @@ A következő eljárással kötet csoport törlése.
    
     A törölt kötet csoport eltűnik a listából a **eredmények** ablaktábla és az adott kötet csoporthoz rendelt összes biztonsági mentés a biztonsági mentési katalógusból törlődnek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Megtudhatja, hogyan [StorSimple Snapshot Manager segítségével felügyelheti a StorSimple megoldásban](storsimple-snapshot-manager-admin.md).
 * Megtudhatja, hogyan [StorSimple Snapshot Manager segítségével biztonsági szabályzatok létrehozása és kezelése](storsimple-snapshot-manager-manage-backup-policies.md).
 

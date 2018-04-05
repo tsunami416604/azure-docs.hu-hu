@@ -1,10 +1,10 @@
 ---
-title: "Linux virtuális Gépet egy Virtuálisgép-bővítménnyel figyelése |} Microsoft Docs"
-description: "Útmutató: a Linux diagnosztikai bővítmény a figyelheti a teljesítmény- és a Linux virtuális gépek az Azure diagnosztikai adatokat."
+title: Linux virtuális Gépet egy Virtuálisgép-bővítménnyel figyelése |} Microsoft Docs
+description: 'Útmutató: a Linux diagnosztikai bővítmény a figyelheti a teljesítmény- és a Linux virtuális gépek az Azure diagnosztikai adatokat.'
 services: virtual-machines-linux
 author: NingKuang
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: f54a11c5-5a0e-40ff-af6c-e60bd464058b
 ms.service: virtual-machines-linux
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: Ning
-ms.openlocfilehash: b8c6e2e22d8478b6e92e7b7942f15d37a840fed3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cd22188042c60da7c761e1fa00a12921146caf25
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-the-linux-diagnostic-extension-to-monitor-the-performance-and-diagnostic-data-of-a-linux-vm"></a>Linuxos VM teljesítmény- és diagnosztikai adatainak monitorozása a linuxos diagnosztikai bővítménnyel
 
@@ -88,7 +88,7 @@ Vegye figyelembe, hogy az itt ismertetett konfiguráció módszerek az Azure por
         "storageAccountKey" : "the key of the account"
     }
 
-2. lépés Futtatás  **azure virtuálisgép-bővítmény beállítása vm_name LinuxDiagnostic Microsoft.OSTCExtensions 2.* --magánfelhő-config-path PrivateConfig.json**.
+2. lépés Futtatás **azure virtuálisgép-bővítmény beállítása vm_name LinuxDiagnostic Microsoft.OSTCExtensions 2.* --private-config-path PrivateConfig.json**.
 
 ### <a name="scenario-2-customize-the-performance-monitor-metrics"></a>2. forgatókönyv. A figyelő metrikák testreszabása
 
@@ -111,7 +111,7 @@ Alapértelmezés szerint a Rsyslog mindig adatgyűjtés.
     }
 
 
-2. lépés Futtatás  **azure virtuálisgép-bővítmény beállítása vm_name LinuxDiagnostic Microsoft.OSTCExtensions "2.*"--magánfelhő-config-path PrivateConfig.json – nyilvános-config-path PublicConfig.json**.
+2. lépés Futtatás **azure virtuálisgép-bővítmény beállítása vm_name LinuxDiagnostic Microsoft.OSTCExtensions "2.*"--magánfelhő-config-path PrivateConfig.json – nyilvános-config-path PublicConfig.json**.
 
 ### <a name="scenario-3-upload-your-own-log-files"></a>3. forgatókönyv. Töltse fel a saját naplófájlok
 
@@ -147,7 +147,7 @@ Ez a szakasz ismerteti, hogy a kiterjesztést a naplók gyűjtésére. Vegye fig
     }
 
 
-2. lépés Futtatás  **azure virtuálisgép-bővítmény beállítása vm_name LinuxDiagnostic Microsoft.OSTCExtensions "2.*"--magánfelhő-config-path PrivateConfig.json – nyilvános-config-path PublicConfig.json**.
+2. lépés Futtatás **azure virtuálisgép-bővítmény beállítása vm_name LinuxDiagnostic Microsoft.OSTCExtensions "2.*"--magánfelhő-config-path PrivateConfig.json – nyilvános-config-path PublicConfig.json**.
 
 ## <a name="review-your-data"></a>Tekintse át az adatokat
 
@@ -155,10 +155,10 @@ A teljesítmény- és diagnosztikai adatokat egy Azure Storage tábla vannak tá
 
 Ezenkívül segítségével következő felhasználói felületi eszközökkel érik el az adatokat:
 
-1. A Visual Studio Server Explorer. Lépjen a tárfiókhoz. Miután a virtuális gép fut, körülbelül 5 percig, látni fogja, a négy alapértelmezett táblák: "LinuxCpu", "LinuxDisk", "LinuxMemory" és "Linuxsyslog". Kattintson duplán a táblanevek, az adatok megtekintéséhez.
+1. Visual Studio Server Explorer. Lépjen a tárfiókhoz. Miután a virtuális gép fut, körülbelül 5 percig, látni fogja, a négy alapértelmezett táblák: "LinuxCpu", "LinuxDisk", "LinuxMemory" és "Linuxsyslog". Kattintson duplán a táblanevek, az adatok megtekintéséhez.
 1. [Az Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/ "Azure Tártallózó").
 
-![Kép](./media/diagnostic-extension/no1.png)
+![image](./media/diagnostic-extension/no1.png)
 
 Ha engedélyezte a fileCfg vagy perfCfg (leírt forgatókönyvek 2 és 3), a Visual Studio Server Explorer és az Azure Tártallózó használhatja nem alapértelmezett adatainak megtekintéséhez.
 

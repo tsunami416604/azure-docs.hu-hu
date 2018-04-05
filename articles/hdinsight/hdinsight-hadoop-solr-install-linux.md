@@ -1,8 +1,8 @@
 ---
-title: "Solr telepítése Linux-alapú hdinsight - Azure a parancsfájlművelet használatával |} Microsoft Docs"
-description: "Ismerje meg, Solr Parancsfájlműveletek Linux-alapú HDInsight Hadoop-fürtök telepítése."
+title: Solr telepítése Linux-alapú hdinsight - Azure a parancsfájlművelet használatával |} Microsoft Docs
+description: Ismerje meg, Solr Parancsfájlműveletek Linux-alapú HDInsight Hadoop-fürtök telepítése.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 02/20/2018
 ms.author: larryfr
 ms.openlocfilehash: f642a1f8060f566ec95b23995d0f82191b0c5315
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>Telepítheti és használhatja Solr HDInsight Hadoop-fürtök
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 02/21/2018
 > [!WARNING]
 > A HDInsight-fürt összetevői Microsoft teljes mértékben támogatja.
 >
-> Egyéni összetevők, például Solr, minden üzleti szempontból ésszerű terméktámogatási segítséget nyújtanak a probléma további hibaelhárításához. Előfordulhat, hogy a Microsoft támogatási nem egyéni összetevőkkel kapcsolatos problémák megoldásához. Szükség lehet a nyílt forráskódú Közösségek szólítsa meg, ha segítségre van szüksége. Például nincsenek sok közösségi webhelyek használható, például: [MSDN fórum hdinsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Is Apache projektek rendelkezik projekt helyek [http://apache.org](http://apache.org), például: [Hadoop](http://hadoop.apache.org/).
+> Egyéni összetevők, például Solr, minden üzleti szempontból ésszerű terméktámogatási segítséget nyújtanak a probléma további hibaelhárításához. Előfordulhat, hogy a Microsoft támogatási nem egyéni összetevőkkel kapcsolatos problémák megoldásához. Szükség lehet a nyílt forráskódú Közösségek szólítsa meg, ha segítségre van szüksége. Például nincsenek sok közösségi webhelyek használható, például: [MSDN fórum hdinsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Is Apache projektek rendelkezik projekt helyek [ http://apache.org ](http://apache.org), például: [Hadoop](http://hadoop.apache.org/).
 
 ## <a name="what-the-script-does"></a>A parancsfájl funkciója
 
@@ -61,7 +61,7 @@ Hozzon létre egy fürtöt, amely rendelkezik a telepített Solr, kövesse a lé
 1. Az a __fürt összefoglaló__ szakaszban, select__Advanced settings__, majd __parancsfájl-műveletek__. Az űrlap feltöltéséhez használja az alábbi információkat:
 
    * **NÉV**: Adja meg a parancsfájlművelet rövid nevét.
-   * **SCRIPT URI**: https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
+   * **PARANCSFÁJL URI AZONOSÍTÓJA**: https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
    * **HEAD**: ezt a beállítást
    * **MUNKAVÉGZŐ**: ezt a beállítást
    * **ZOOKEEPER**: ezt a beállítást a Zookeeper csomóponton telepítése
@@ -116,7 +116,7 @@ Az alábbi lépések segítségével Példa adatok hozzáadása a Solr, és majd
     curl "http://localhost:8983/solr/collection1/select?q=*%3A*&wt=json&indent=true"
     ```
 
-    Ez a parancs keres **collection1** megfelelő dokumentumokhoz ** \*:\* ** (kódolva \*% 3A\* a lekérdezési karakterláncban). A következő JSON-dokumentum a válasz példája:
+    Ez a parancs keres **collection1** megfelelő dokumentumokhoz **\*:\*** (kódolva \*% 3A\* a lekérdezési karakterláncban). A következő JSON-dokumentum a válasz példája:
 
             "response": {
                 "numFound": 2,
@@ -194,7 +194,7 @@ Az SSH-alagút létesítése, tegye a következőket a Solr irányítópult hasz
 
         Az érték lett visszaadva, akkor akkor menteni, mert a rendszer később.
 
-2. A böngészőben csatlakozzon a **http://HOSTNAME:8983/solr / #/**, ahol **ÁLLOMÁSNÉV** az előző lépésben maghatározott neve.
+2. A böngészőben csatlakozzon a **http://HOSTNAME:8983/solr/#/**, ahol **ÁLLOMÁSNÉV** az előző lépésben maghatározott neve.
 
     A kérelem az SSH-alagút, a fürt Solr webes felhasználói felületén keresztül történik. A lap jelenik meg az alábbi képen hasonlít:
 
@@ -204,7 +204,7 @@ Az SSH-alagút létesítése, tegye a következőket a Solr irányítópult hasz
 
 4. Az alábbi bejegyzései **collection1**, jelölje be **lekérdezés**. Töltse fel adatokkal a lapon a következő értékeket használja:
 
-   * Az a **q** szöveget adja meg a ** \*:**\*. Ez a lekérdezés a indexelt dokumentumok Solr adja vissza. Ha szeretne keresni egy adott karakterláncot belül a dokumentumokhoz, karakterláncokat Itt adhatja meg.
+   * Az a **q** szöveget adja meg a  **\*:**\*. Ez a lekérdezés a indexelt dokumentumok Solr adja vissza. Ha szeretne keresni egy adott karakterláncot belül a dokumentumokhoz, karakterláncokat Itt adhatja meg.
    * Az a **wt** szöveg mezőben adja meg a kimeneti formátum. Alapértelmezett érték a **json**.
 
      Végül válassza ki a **lekérdezés végrehajtása** gombra a keresési pate alján.
@@ -319,7 +319,7 @@ Adatok biztonsági mentésének Solr az alapértelmezett tárhelyre, a fürt teg
     hdfs dfs -put snapshot.20150806185338855.tgz /example/data
     ```
 
-Solr biztonsági mentés és visszaállítás használatához további információkért lásd: [https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups).
+Solr biztonsági mentés és visszaállítás használatához további információkért lásd: [ https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups ](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups).
 
 ## <a name="next-steps"></a>További lépések
 

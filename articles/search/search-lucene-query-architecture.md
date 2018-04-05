@@ -1,10 +1,10 @@
 ---
-title: "Teljes szöveges keresés (Lucene) motor architektúra az Azure Search |} Microsoft Docs"
-description: "Teljes szöveges keresés, mint a kapcsolódó Azure Search Lucene lekérdezés feldolgozása és dokumentum beolvasása fogalmakat ismerteti."
+title: Teljes szöveges keresés (Lucene) motor architektúra az Azure Search |} Microsoft Docs
+description: Teljes szöveges keresés, mint a kapcsolódó Azure Search Lucene lekérdezés feldolgozása és dokumentum beolvasása fogalmakat ismerteti.
 services: search
 manager: jhubbard
 author: yahnoosh
-documentationcenter: 
+documentationcenter: ''
 ms.service: search
 ms.devlang: NA
 ms.workload: search
@@ -13,10 +13,10 @@ ms.tgt_pltfrm: na
 ms.date: 04/06/2017
 ms.author: jlembicz
 ms.openlocfilehash: 0b2e66cd40c1b49832b865e5bf59edcf78996eb8
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Hogyan teljes szöveges keresés az Azure Search működik
 
@@ -261,7 +261,7 @@ A jelen példában visszatér a **cím** mezőt, a fordított index néz ki:
 | Szálloda | 1, 3 |
 | óceáni | 4  |
 | PlayA | 3 |
-| végső esetben | 3 |
+| resort | 3 |
 | Retreat | 4 |
 
 A cím mezőben csak *Szálloda* mutatja két dokumentumot: 1, 3.
@@ -282,7 +282,7 @@ Az a **leírás** mezőben az index a következőképpen történik:
 | északi régiója | 2
 | óceáni | 1, 2, 3
 | / | 2
-| a |2
+| bekapcsolva |2
 | Csendes | 4
 | helyiségekben  | 1, 3
 | secluded | 4
@@ -292,7 +292,7 @@ Az a **leírás** mezőben az index a következőképpen történik:
 | erre: | 1
 | megtekintés | 1, 2, 3
 | érdekében | 1
-| a | 3
+| együtt | 3
 
 
 **Egyező lekérdezési kifejezések indexelt feltételek ellen**
@@ -363,7 +363,7 @@ Egy példa azt mutatja be, ezért ez számít. Helyettesítő karakteres keresé
 Az Azure Search relevanciájának pontszámok hangolására két módja van:
 
 1. **A pontozási profil** lépteti elő a dokumentumokat a meghatározott szabályok alapján eredmények rangsorolt listáját. A fenti példában a dokumentumok, a Leírás mezőben egyező-nál több megfelelő cím mezőben egyező dokumentumok volt javasolt. Emellett az indexnek minden Szálloda ár mező volna, ha azt sikerült előléptetni alsó ár dokumentumok. További tudnivalók a [pontozási profil hozzáadása egy keresési indexszel.](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
-2. **Távon kiemelési** (csak a teljes Lucene lekérdezés szintaxisát elérhető) biztosít a kiemelési operátor `^` , amelyek alkalmazhatók a lekérdezés fa bármely részét. Ebben a példában az előtag alapján keres helyett *air-condition*\*, egy megkeresése, amelyek vagy a pontos kifejezés *air-condition* vagy az előtag, de a pontos kifejezés a megfelelő dokumentumok rendszer előrébb program alkalmaz a kifejezés lekérdezés: *vezeték nélkül-feltétel ^ 2. Air-condition**. További információ [távon kiemelési](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
+2. **Távon kiemelési** (csak a teljes Lucene lekérdezés szintaxisát elérhető) biztosít a kiemelési operátor `^` , amelyek alkalmazhatók a lekérdezés fa bármely részét. A fenti példában az előtag alapján keres helyett *air-condition*\*, egy megkeresése, amelyek vagy a pontos kifejezés *air-condition* vagy az előtag, de a pontos kifejezés a megfelelő dokumentumok előrébb a kifejezés lekérdezés program alkalmazásával: * vezeték nélkül-feltétel ^ 2. Air-condition **. További információ [távon kiemelési](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
 
 
 ### <a name="scoring-in-a-distributed-index"></a>Egy elosztott index pontozási
@@ -382,7 +382,7 @@ Technikai szempontból teljes szöveges keresés nagyon összetett, nyelvi kifin
 
 Ez a cikk felfedezte az Azure Search kontextusában a teljes szöveges keresés. Reméljük, biztosít elegendő háttér ismeri fel a lehetséges okokért és megoldásokért lekérdezés kapcsolatos gyakori problémák címzéshez. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + Az minta index létrehozása, próbálja ki a különböző lekérdezéseket, és tekintse át az eredményeket. Útmutatásért lásd: [hozza létre, és a portál egy index lekérdezése](search-get-started-portal.md#query-index).
 
@@ -396,7 +396,7 @@ Ez a cikk felfedezte az Azure Search kontextusában a teljes szöveges keresés.
 
 + [Hasonlítsa össze a szabványos és az angol nyelvű elemzőkkel](http://alice.unearth.ai/)) egymás mellett a bemutató webhelyen. 
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 [REST API-t dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 

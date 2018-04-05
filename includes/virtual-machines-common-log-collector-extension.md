@@ -2,7 +2,7 @@
 A Microsoft Azure felhőalapú szolgáltatással kapcsolatos problémák diagnosztizálása szükséges virtuális gépeken a szolgáltatás-naplófájl összegyűjtése, a hibák bekövetkezésekor. A AzureLogCollector bővítmény igény segítségével hajtsa végre a naplók egyszeri gyűjtemény egy vagy több felhőalapú szolgáltatás virtuális gépek (a egyaránt webes és feldolgozói szerepkörök), és az összegyűjtött fájlok átvitele az Azure storage-fiókok – bármely távoli bejelentkezés nélkül a virtuális gépek.
 
 > [!NOTE]
-> A naplózott információk többsége leírásainak http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.asp helyen találhatók meg.
+> A naplózott információk többsége leírása található http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.asp.
 > 
 > 
 
@@ -28,7 +28,7 @@ Mindkét gyűjtemény módban gyűjteménymappához további adatokat az alábbi
 * Rendelkezik egy tárfiókot a bővítmény létrehozott zip-fájlok mentéséhez.
 * Használja az Azure PowerShell-parancsmagok v0.8.0 vagy újabb. További információkért lásd: [Azure letölti](https://azure.microsoft.com/downloads/).
 
-## <a name="add-the-extension"></a>Adja hozzá a kiterjesztést
+## <a name="add-the-extension"></a>A bővítmény hozzáadása
 Használhat [Microsoft Azure PowerShell](https://msdn.microsoft.com/library/dn495240.aspx) parancsmagok vagy [Service Management REST API-k](https://msdn.microsoft.com/library/ee460799.aspx) AzureLogCollector kiterjesztéssel.
 
 A Felhőszolgáltatások, a meglévő Azure Powershell-parancsmag **Set-AzureServiceExtension**, engedélyezi a bővítményt a felhőalapú szolgáltatás szerepkörpéldányokat használható. Minden alkalommal, amikor a bővítmény engedélyezve van ez a parancsmag használatával, naplógyűjtést akkor váltódik ki, a kiválasztott szerepkörök a kijelölt szerepkör példányain.
@@ -124,7 +124,7 @@ A két következő lépések végrehajtásával adja hozzá a AzureLogCollector 
   $StorageAccountKey  = 'YourStorageAccountKey'
   ```
 
-5. A SetAzureServiceLogCollector.ps1 (a cikk végén található) az alábbiak szerint hívása a AzureLogCollector bővítmény engedélyezése egy felhőalapú szolgáltatás. Ha befejeződött a végrehajtás, a feltöltött fájl alatt található`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
+5. A SetAzureServiceLogCollector.ps1 (a cikk végén található) az alábbiak szerint hívása a AzureLogCollector bővítmény engedélyezése egy felhőalapú szolgáltatás. Ha befejeződött a végrehajtás, a feltöltött fájl alatt található `https://YourStorageAccountName.blob.core.windows.net/vmlogs`
 
   ```powershell
   .\SetAzureServiceLogCollector.ps1 -ServiceName YourCloudServiceName  -Roles $roles  -Instances $instances –Mode $mode -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -AdditionDataLocationList $AdditionalDataList
@@ -216,7 +216,7 @@ Az utasítások az Azure PowerShell csatlakozás az előfizetéshez.
   $StorageAccountKey  = 'YourStorageAccountKey'
   ```
 
-3. A SetAzureVMLogCollector.ps1 (a cikk végén található) az alábbiak szerint hívása a AzureLogCollector bővítmény engedélyezése egy felhőalapú szolgáltatás. Ha befejeződött a végrehajtás, a feltöltött fájl alatt található`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
+3. A SetAzureVMLogCollector.ps1 (a cikk végén található) az alábbiak szerint hívása a AzureLogCollector bővítmény engedélyezése egy felhőalapú szolgáltatás. Ha befejeződött a végrehajtás, a feltöltött fájl alatt található `https://YourStorageAccountName.blob.core.windows.net/vmlogs`
 
 Az a parancsfájlnak átadott paraméterek definícióját a következő: (Ez másolódik alatt is.)
 

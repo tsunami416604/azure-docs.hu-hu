@@ -16,6 +16,7 @@ Az alábbi táblázat az IoT Hub-erőforrásokra vonatkozó korlátokat tartalma
 | --- | --- |
 | Azure-előfizetésenkénti fizetős IoT Hubok maximális száma |10 |
 | Azure-előfizetésenkénti ingyenes IoT Hubok maximális száma |1 |
+| Eszközazonosítót karakterek maximális száma | 128 |
 | Eszközidentitások egyetlen hívásban visszaadott<br/> maximális száma |1000 |
 | Egy eszközről a felhőbe irányuló IoT Hub-üzenetek maximális megőrzési ideje |7 nap |
 | Egy eszközről a felhőbe irányuló üzenet maximális mérete |256 KB |

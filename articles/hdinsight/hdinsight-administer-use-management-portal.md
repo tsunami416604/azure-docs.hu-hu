@@ -1,8 +1,8 @@
 ---
-title: "A HDInsight az Azure portál használatával Windows-alapú Hadoop-fürtök kezelése |} Microsoft Docs"
-description: "Megtudhatja, hogyan felügyelheti a HDInsight-szolgáltatás. HDInsight-fürtök létrehozása, nyissa meg az interaktív JavaScript-konzolt, és nyissa meg a Hadoop parancskonzolról."
+title: A HDInsight az Azure portál használatával Windows-alapú Hadoop-fürtök kezelése |} Microsoft Docs
+description: Megtudhatja, hogyan felügyelheti a HDInsight-szolgáltatás. HDInsight-fürtök létrehozása, nyissa meg az interaktív JavaScript-konzolt, és nyissa meg a Hadoop parancskonzolról.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
@@ -17,10 +17,10 @@ ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
 ms.openlocfilehash: 0b34f861b306dc62cbdbf97378a1c370494bbb20
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>A HDInsight Windows-alapú Hadoop-fürtök kezelése az Azure portál használatával
 
@@ -40,7 +40,7 @@ A cikk elkezdéséhez az alábbiakkal kell rendelkeznie:
 * **Az Azure Storage-fiók** -egy HDInsight-fürthöz az Azure Blob storage tárolót használja, mint az alapértelmezett fájlrendszert. Hogyan nyújt az Azure Blob storage a HDInsight-fürtökkel zökkenőmentes élményt kapcsolatos további információkért lásd: [az Azure Blob Storage a hdinsight eszközzel](hdinsight-hadoop-use-blob-storage.md). Egy Azure Storage-fiók létrehozásával kapcsolatos részletekért lásd: [a Storage-fiók létrehozása](../storage/common/storage-create-storage-account.md).
 
 ## <a name="open-the-portal"></a>A portál megnyitása
-1. Jelentkezzen be [https://portal.azure.com](https://portal.azure.com).
+1. Jelentkezzen be [ https://portal.azure.com ](https://portal.azure.com).
 2. A portál megnyitása után végezhetők el:
 
    * Kattintson a **hozzon létre egy erőforrást** új fürt létrehozása a bal oldali menüből:
@@ -73,7 +73,7 @@ HDInsight Hadoop széles tartomány-összetevők működik. A ellenőrizni és a
 A fürt távoli asztali kapcsolat segítségével egyéni szoftver telepítése nem támogatott. Kerülje a meghajtókat, az átjárócsomópont lévő fájlok tárolásához, ezek elvesznek kell újból létrehozni a fürtöket. Javasoljuk, hogy az Azure Blob Storage tárolóban lévő fájlok tárolásához. A BLOB storage egy állandó.
 
 ## <a name="list-and-show-clusters"></a>Listában, és a fürt megjelenítése
-1. Jelentkezzen be [https://portal.azure.com](https://portal.azure.com).
+1. Jelentkezzen be [ https://portal.azure.com ](https://portal.azure.com).
 2. Kattintson a **a HDInsight-fürtök** a bal oldali menüből.
 3. Kattintson a fürt nevére. Ha a fürt lista hosszú, az oldal tetején a szűrő is használhatja.
 4. Kattintson duplán a fürt részleteinek megjelenítése a listáról.
@@ -283,7 +283,7 @@ A HDInsight lekérdezés konzol az alábbi szolgáltatásokat tartalmazza:
 
     ![HDInsight portál fájl böngésző Tallózás](./media/hdinsight-administer-use-management-portal/hdinsight-file-browser.png)
 
-    A képernyőképen látható a  **<Account>**  típus azt jelzi, hogy a cikk az Azure storage-fiók.  Kattintson a fiók nevére, a fájlok tallózásához.
+    A képernyőképen látható a **<Account>** típus azt jelzi, hogy a cikk az Azure storage-fiók.  Kattintson a fiók nevére, a fájlok tallózásához.
 * **Hadoop-UI**.
 
     ![HDInsight portal Hadoop felhasználói felület](./media/hdinsight-administer-use-management-portal/hdinsight-hadoop-ui.png)

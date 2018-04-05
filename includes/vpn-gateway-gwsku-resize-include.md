@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: c06e69dd9d1997500589659e936dc25ee01ed145
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 Az átjáró frissítése a hatékonyabb egy SKU átméretezése szeretné a jelenlegi termékváltozatok (VpnGw1 VpnGw2 és VPNGW3) is használhatja a `Resize-AzureRmVirtualNetworkGateway` PowerShell-parancsmagot. Az átjáró-Termékváltozat-méretét, ez a parancsmag segítségével is visszaminősítheti. Ha használja az alapszintű átjáró-Termékváltozat, [ehelyett kövesse ezeket az utasításokat](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md#resize) átméretezése az átjárót.
 

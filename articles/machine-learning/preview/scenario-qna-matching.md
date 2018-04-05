@@ -1,11 +1,11 @@
 ---
-title: "A Q & A egyező Azure Machine Learning-munkaterület használatával |} Microsoft Docs"
-description: "Hogyan egyeztetésére kell használni különböző életbelépési gépi tanulás módszer nyitott befejeződött a lekérdezéseket, amelyekkel már meglévő gyakran ismételt kérdések kérdés/válaszok párokat."
+title: A Q & A egyező Azure Machine Learning-munkaterület használatával |} Microsoft Docs
+description: Hogyan egyeztetésére kell használni különböző életbelépési gépi tanulás módszer nyitott befejeződött a lekérdezéseket, amelyekkel már meglévő gyakran ismételt kérdések kérdés/válaszok párokat.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: mezmicrosoft
 editor: mezmicrosoft
-ms.assetid: 
+ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
@@ -16,10 +16,10 @@ ms.date: 09/15/2017
 ms.author: mez
 manager: tihazen
 ms.openlocfilehash: 33f807a4a0bbc4afd1f2fbe017f8913eccacc34b
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/05/2018
 ---
 #  <a name="q--a-matching-using-azure-machine-learning-workbench"></a>A Q & A egyező Azure Machine Learning-munkaterület használatával
 Nyissa meg befejeződött a kérdések megválaszolásával nehéz feladat, és gyakran van szükség manuális adatfrissítésre az érintett témakör szakértőit (SME szól). Belső KKV iránti igény csökkentése érdekében a vállalatok gyakran létrehozása gyakran ismételt kérdések (GYIK) listája, amelyek segítik a felhasználókat. Ebben a példában a különböző hatékony machine learning módszer nyitott befejeződött a lekérdezéseket, amelyekkel korábban létező gyakran ismételt kérdések kérdés/válaszok párok megfelelően bővíthető. Ez a példa azt mutatja be, egy egyszerű fejlesztési megoldás az Azure Machine Learning-munkaterület használatával kiépítése során. 
@@ -51,7 +51,7 @@ Ez a példa futtatásához az Előfeltételek a következők:
 
 Hozzon létre egy új projektet, ebben a példában egy sablon használatával:
 1.  Nyissa meg az Azure Machine Learning-munkaterület
-2.  Az a **projektek** lapján kattintson a  **+**  aláírásához, és válassza ki **új projekt**
+2.  Az a **projektek** lapján kattintson a **+** aláírásához, és válassza ki **új projekt**
 3.  Az a **új projekt létrehozása** ablaktáblán, töltse ki az adatokat az új projekt
 4.  Az a **keresési Projektsablonjai** keresési mezőbe, írja be a "Q & A megfelelő", és válassza ki a sablont
 5.  Kattintson a **Create** (Létrehozás) gombra
@@ -82,15 +82,15 @@ Az adatok séma- és a három adatkészletek közvetlen letöltési hivatkozáso
 
 | Adathalmaz | Mező | Típus | Leírás
 | ----------|------------|------------|--------
-| [kérdések](https://bostondata.blob.core.windows.net/stackoverflow/orig-q.tsv.gz) | Azonosító | Karakterlánc | Az egyedi kérdést azonosítója (elsődleges kulcs)
+| [Kérdések](https://bostondata.blob.core.windows.net/stackoverflow/orig-q.tsv.gz) | Azonosító | Karakterlánc | Az egyedi kérdést azonosítója (elsődleges kulcs)
 |  | AnswerId | Karakterlánc | A kérdésre egyedi választ azonosítója
 |  | text0 | Karakterlánc | A nyers szöveg adatokat, többek között a kérdés cím és törzsét.
 |  | CreationDate | Időbélyeg | Ha a kérdés kérte időbélyegzője
-| [duplikátumok](https://bostondata.blob.core.windows.net/stackoverflow/dup-q.tsv.gz) | Azonosító | Karakterlánc | Az egyedi ismétlődést azonosítója (elsődleges kulcs)
+| [dupes](https://bostondata.blob.core.windows.net/stackoverflow/dup-q.tsv.gz) | Azonosító | Karakterlánc | Az egyedi ismétlődést azonosítója (elsődleges kulcs)
 |  | AnswerId | Karakterlánc | A válasz ismétlődést azonosítója
 |  | text0 | Karakterlánc | A nyers szöveg adatokat, többek között az ismétlődést cím és törzsét.
 |  | CreationDate | Időbélyeg | Ha az ismétlődést kérte időbélyegzője
-| [válaszok](https://bostondata.blob.core.windows.net/stackoverflow/ans.tsv.gz)  | Azonosító | Karakterlánc | A válasz egyedi azonosító (elsődleges kulcs)
+| [answers](https://bostondata.blob.core.windows.net/stackoverflow/ans.tsv.gz)  | Azonosító | Karakterlánc | A válasz egyedi azonosító (elsődleges kulcs)
 |  | text0 | Karakterlánc | A válasz a nyers adatokat
 
 
@@ -136,7 +136,7 @@ A besorolási modell egy ensemble metódus használatával három alapvető oszt
 
 A modell képzési folyamat mutatja be `Part_3_Model_Training_and_Evaluation.ipynb`.
 
-### <a name="evaluation"></a>Értékelés
+### <a name="evaluation"></a>Próbaverzió
 
 Két különböző értékelési-metrikák segítségével mérheti fel teljesítményét. 
 1. `Average Rank (AR)`: azt jelzi, ha helyes választ a (kívül 103 válasz osztályok teljes készletét) lekérdezése a Q & A párok listája megtalálható az átlagos pozícióját. 

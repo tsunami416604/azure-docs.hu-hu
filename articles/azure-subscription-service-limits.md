@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: byvinyal
 ms.openlocfilehash: f8b97aeb4c37578b884c924bd1919a59fa0f1cf8
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum mutatja a leggyakrabban használt Microsoft Azure korlátok, kvóták néven is ismert. Ez a dokumentum jelenleg nem fedi le az összes Azure-szolgáltatásokhoz. Adott idő alatt a lista lesz kibontható vagy frissíteni, amelyek több, a platform.
@@ -52,7 +52,7 @@ Az alábbi korlátok új tábla összes különbséget korlátok megfelelően az
 * [Application Insights](#application-insights-limits)
 * [Automatizálás](#automation-limits)
 * [Azure Cosmos DB](#azure-cosmos-db-limits)
-* [Az Azure Event rács](#azure-event-grid-limits)
+* [Azure Event Grid](#azure-event-grid-limits)
 * [Azure Redis Cache](#azure-redis-cache-limits)
 * [Biztonsági mentés](#backup-limits)
 * [Batch](#batch-limits)

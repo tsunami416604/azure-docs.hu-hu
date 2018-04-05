@@ -1,11 +1,11 @@
 ---
-title: "Az FTP-összekötő használata a logic apps |} Microsoft Docs"
-description: "Az Azure App service logic Apps alkalmazások létrehozása A fájlok kezelését FTP-kiszolgálóhoz csatlakozni. Például feltöltés különféle műveleteket hajtson végre, frissítése, lekérése és FTP-kiszolgáló fájlok törlése."
+title: Az FTP-összekötő használata a logic apps |} Microsoft Docs
+description: Az Azure App service logic Apps alkalmazások létrehozása A fájlok kezelését FTP-kiszolgálóhoz csatlakozni. Például feltöltés különféle műveleteket hajtson végre, frissítése, lekérése és FTP-kiszolgáló fájlok törlése.
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
 manager: erikre
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: d83c55fe-eb59-4b7b-a5ec-afac5c772616
 ms.service: logic-apps
@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 07/22/2016
 ms.author: mandia; ladocs
 ms.openlocfilehash: 7719e0e90df3a384e870e2e839cb77a27d95ada8
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="get-started-with-the-ftp-connector"></a>Az FTP-összekötő az első lépései
 Az FTP-összekötő segítségével figyeléséhez, kezeléséhez és az FTP-kiszolgálón-fájlok létrehozása. 
@@ -50,7 +50,7 @@ Ebben a példában I bemutatja, hogyan használható a **FTP - amikor egy fájl 
    ![FTP eseményindító kép 2](./media/connectors-create-api-ftp/ftp-trigger-2.png)  
 2. Válassza ki a **...**  a vezérlő jobb oldalán található. Ekkor megnyílik a mappa példányválasztó vezérlő  
    ![FTP eseményindító kép 3](./media/connectors-create-api-ftp/ftp-trigger-3.png)  
-3. Válassza ki a  **>**  (jobbra), és keresse meg a mappát, amely új vagy módosított fájlokat szeretné figyelni. Válassza ki a mappát és a mappa megjelenik a figyelmeztetés a **mappa** vezérlő.  
+3. Válassza ki a **>** (jobbra), és keresse meg a mappát, amely új vagy módosított fájlokat szeretné figyelni. Válassza ki a mappát és a mappa megjelenik a figyelmeztetés a **mappa** vezérlő.  
    ![FTP eseményindító kép 4](./media/connectors-create-api-ftp/ftp-trigger-4.png)   
 
 A Logic Apps alkalmazást ezen a ponton úgy van konfigurálva, az eseményindítók és műveletek a munkafolyamat futtató akkor kezdődik, amikor egy fájl módosított, vagy az adott FTP mappában létrehozott eseményindítót. 

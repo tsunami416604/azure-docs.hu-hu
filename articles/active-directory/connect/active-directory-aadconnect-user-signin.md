@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
 ms.openlocfilehash: 6a6e83ad73f561cd8aa4fc629fb9b48449af6d0a
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Az Azure AD Connect felhasználói bejelentkezés lehetőségei
 Az Azure Active Directory (Azure AD) Connect lehetővé teszi, hogy a felhasználókat, hogy jelentkezzen be a felhő- és a helyszíni erőforrásokhoz ugyanazt a jelszót. Ez a cikk ismerteti az alapvető fogalmakat minden identitás modell segítségével válassza ki az Azure AD bejelentkezés használni kívánt identitását.
@@ -47,12 +47,12 @@ A helyi multi-factor Authentication hitelesítés megoldások engedélyezése.||
 
 * Segítségével egy lightweight ügynök.
 
-### <a name="password-hash-synchronization"></a>Jelszókivonat-szinkronizálás
+### <a name="password-hash-synchronization"></a>Jelszókivonat szinkronizálása
 Jelszókivonat-szinkronizálást, a kivonatokat a felhasználói jelszavak rendszer szinkronizálja a helyszíni Active Directoryból az Azure AD. Jelszavak módosulnak, és az újraindítás a helyszíni, az új jelszó kivonatok szinkronizálva az Azure AD azonnal, hogy a felhasználók mindig használhatja ugyanazt a jelszót a felhőben található erőforrásokat és a helyszíni erőforrások. A jelszavak soha nem küld az Azure AD vagy az Azure AD-szövegként tárolt. Jelszókivonat-szinkronizálást együtt jelszóvisszaírás segítségével engedélyezheti az önkiszolgáló jelszó-változtatási Azure AD-ben.
 
 Emellett engedélyezheti [zökkenőmentes SSO](active-directory-aadconnect-sso.md) a tartományhoz csatlakoztatott számítógépeken, amelyek a vállalati hálózaton lévő felhasználók számára. Az engedélyezett felhasználók az egyszeri bejelentkezést, csak kell adjon meg egy felhasználónevet segítségével biztonságos hozzáférés felhőben található erőforrásokat.
 
-![Jelszókivonat-szinkronizálás](./media/active-directory-aadconnect-user-signin/passwordhash.png)
+![Jelszókivonat szinkronizálása](./media/active-directory-aadconnect-user-signin/passwordhash.png)
 
 További információkért lásd: a [Jelszókivonat-szinkronizálást](active-directory-aadconnectsync-implement-password-hash-synchronization.md) cikk.
 

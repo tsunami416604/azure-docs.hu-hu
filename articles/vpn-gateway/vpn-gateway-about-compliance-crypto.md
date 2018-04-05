@@ -1,11 +1,11 @@
 ---
-title: "Kriptográfiai követelményeiről és az Azure VPN gatewayek |} Microsoft Docs"
-description: "Ez a cikk ismerteti a titkosítási követelményeket és az Azure VPN gatewayek"
+title: Kriptográfiai követelményeiről és az Azure VPN gatewayek |} Microsoft Docs
+description: Ez a cikk ismerteti a titkosítási követelményeket és az Azure VPN gatewayek
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 238cd9b3-f1ce-4341-b18e-7390935604fa
 ms.service: vpn-gateway
@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/22/2017
 ms.author: yushwang
 ms.openlocfilehash: d2f3da47f1d4eebe1b81964790ff6612dd78155d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>Kriptográfiai követelményeiről és az Azure VPN gatewayek
 
@@ -38,7 +38,7 @@ Például az Azure VPN gatewayek IKEv2 alapmódú házirendeket használják-e c
 ## <a name="custom-ipsecike-policy-with-azure-vpn-gateways"></a>Az Azure VPN gatewayek egyéni IPsec/IKE-házirend
 Az Azure VPN gatewayek mostantól támogatják az kapcsolatonként, egyéni IPsec/IKE-házirendet. Hely-hely vagy VNet – VNet-kapcsolatot választhat titkosítási algoritmusok egyedi kombinációja IPsec és az internetes KULCSCSERE a kívánt kulcs erősségét és a következő példában látható módon:
 
-![IPSec-ike-házirend](./media/vpn-gateway-about-compliance-crypto/ipsecikepolicy.png)
+![ipsec-ike-policy](./media/vpn-gateway-about-compliance-crypto/ipsecikepolicy.png)
 
 IPsec/IKE-házirend létrehozása, és egy új vagy meglévő kapcsolat alkalmazható. 
 
@@ -55,7 +55,7 @@ IPsec/IKE-házirend létrehozása, és egy új vagy meglévő kapcsolat alkalmaz
 [!INCLUDE [vpn-gateway-ipsecikepolicy-faq-include](../../includes/vpn-gateway-faq-ipsecikepolicy-include.md)]
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Lásd: [konfigurálása IPsec/IKE házirend](vpn-gateway-ipsecikepolicy-rm-powershell.md) lépésenkénti egyéni IPsec/IKE-házirend konfigurálása a kapcsolatot.
 
 Lásd még: [csatlakozás több csoportházirend-alapú VPN-eszközök](vpn-gateway-connect-multiple-policybased-rm-ps.md) további információt a UsePolicyBasedTrafficSelectors lehetőséget.

@@ -1,8 +1,8 @@
 ---
-title: "Az OMS szolgáltatáshoz Linux-alkalmazás teljesítményének gyűjtése |} Microsoft Docs"
-description: "Ez a cikk részletes adatokat biztosít a teljesítményszámlálók adatainak összegyűjtése MySQL és az Apache HTTP Server Linux OMS-ügynök konfigurálása."
+title: Az OMS szolgáltatáshoz Linux-alkalmazás teljesítményének gyűjtése |} Microsoft Docs
+description: Ez a cikk részletes adatokat biztosít a teljesítményszámlálók adatainak összegyűjtése MySQL és az Apache HTTP Server Linux OMS-ügynök konfigurálása.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
 ms.openlocfilehash: 04ea6f728e59ec8b47e54fe45e1adc6cbbfb85ff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Linux Log Analytics-alkalmazások a teljesítményszámlálók adatainak összegyűjtése 
 Ez a cikk részletesen konfigurálásához a [Linux OMS-ügynököt](https://github.com/Microsoft/OMS-Agent-for-Linux) adott alkalmazásokra vonatkozó teljesítményszámlálók adatainak összegyűjtése.  A cikk tartalmazza azokat a következők:  
@@ -50,7 +50,7 @@ A bejegyzés a hitelesítés-fájl a következő táblázat ismerteti.
 | Tulajdonság | Leírás |
 |:--|:--|
 | Port | A MySQL-példány figyeli a jelenlegi portot jelenti. 0-s port határozza meg, hogy a következő tulajdonságok alapértelmezett példányát használja. |
-| A kötés-cím| Aktuális MySQL bind-cím. |
+| Bind-Address| Aktuális MySQL bind-cím. |
 | felhasználónév| MySQL-felhasználó a figyelheti a MySQL server-példány használja. |
 | A Base64 kódolású jelszó| A Base64 kódolású MySQL figyelési felhasználó jelszavát. |
 | Automatikus frissítés| Megadja, hogy megkeresheti a módosításokat a my.cnf fájlban, és felülírja a MySQL OMI hitelesítési fájlt, a MySQL OMI szolgáltató frissítésekor. |
@@ -78,10 +78,10 @@ Az alábbi táblázat részletesen szintaxis mycimprovauth használatához.
 
 | Művelet | Példa | Leírás
 |:--|:--|:--|
-| automatikus frissítés * false\|Igaz * | mycimprovauth autoupdate hamis | A készlet-e a hitelesítés fájl automatikusan frissíti a indítsa újra, vagy frissíteni. |
+| automatikus frissítés *hamis\|igaz* | mycimprovauth autoupdate hamis | A készlet-e a hitelesítés fájl automatikusan frissíti a indítsa újra, vagy frissíteni. |
 | alapértelmezett *bind-cím felhasználónév-jelszó* | mycimprovauth alapértelmezett 127.0.0.1 legfelső szintű pwd | Azt állítja be az alapértelmezett példányt a MySQL OMI hitelesítési fájlt.<br>A jelszó mező egyszerű szövegként kell megadni – – a MySQL OMI hitelesítési fájlban jelszó Base 64 kódolású. |
-| törlés * default\|port_num * | mycimprovauth 3308 | A megadott példány törlése, vagy alapértelmezett, vagy portszámot. |
-| segítség | mycimprov Súgó | Parancsok használatához felsorolása. |
+| Törlés *alapértelmezett\|port_num* | mycimprovauth 3308 | A megadott példány törlése, vagy alapértelmezett, vagy portszámot. |
+| súgó | mycimprov Súgó | Parancsok használatához felsorolása. |
 | Nyomtatás | nyomtatási mycimprov | Kinyomtatása egy könnyen áttekinthető MySQL OMI hitelesítési fájlt. |
 | Frissítse a port_num *bind-cím felhasználónév-jelszó* | mycimprov frissítés 3307 127.0.0.1 legfelső szintű pwd | A megadott példány frissít, vagy hozzáadja a példány, ha nem létezik. |
 
@@ -99,7 +99,7 @@ A MySQL-felhasználó a következő lekérdezések MySQL Server teljesítményad
 
 A MySQL-felhasználó is a következő alapértelmezett táblák VÁLASSZA hozzáférést igényel.
 
-- entitástulajdonos
+- information_schema
 - a MySQL. 
 
 Ezek a jogosultságok a következő grant-parancsok futtatásával kaphatja meg.
@@ -115,7 +115,7 @@ Ezek a jogosultságok a következő grant-parancsok futtatásával kaphatja meg.
 
 Ha megfelelően konfigurált Linux szeretnék adatokat küldeni a Naplóelemzési OMS-ügynököt, konfigurálnia kell a gyűjtendő kérelemteljesítmény-számlálókat.  Az eljárás a [Naplóelemzési a Windows és Linux teljesítmény adatforrások](log-analytics-data-sources-windows-events.md) az alábbi táblázat a számlálókat.
 
-| Objektum neve | Számláló neve |
+| Objektumnév | Számláló neve |
 |:--|:--|
 | MySQL-adatbázis | Szabad lemezterület (bájt) |
 | MySQL-adatbázis | Táblák |
@@ -151,20 +151,20 @@ sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 
 Ha megfelelően konfigurált Linux szeretnék adatokat küldeni a Naplóelemzési OMS-ügynököt, konfigurálnia kell a gyűjtendő kérelemteljesítmény-számlálókat.  Az eljárás a [Naplóelemzési a Windows és Linux teljesítmény adatforrások](log-analytics-data-sources-windows-events.md) az alábbi táblázat a számlálókat.
 
-| Objektum neve | Számláló neve |
+| Objektumnév | Számláló neve |
 |:--|:--|
 | Apache HTTP Server | Foglalt munkavállalók |
 | Apache HTTP Server | Üresjárati munkavállalók |
 | Apache HTTP Server | A PCT foglalt munkavállalók |
 | Apache HTTP Server | Teljes Pct Processzor |
-| Apache virtuális állomás | Hibák száma percenként - ügyfél |
-| Apache virtuális állomás | Hibák száma percenként - kiszolgáló |
-| Apache virtuális állomás | Kérelmenként KB |
-| Apache virtuális állomás | KB kérelmek / másodperc |
-| Apache virtuális állomás | Kérelmek / másodperc |
+| Apache Virtual Host | Hibák száma percenként - ügyfél |
+| Apache Virtual Host | Hibák száma percenként - kiszolgáló |
+| Apache Virtual Host | Kérelmenként KB |
+| Apache Virtual Host | KB kérelmek / másodperc |
+| Apache Virtual Host | Kérelmek / másodperc |
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A teljesítményszámlálók adatainak összegyűjtése](log-analytics-data-sources-performance-counters.md) a Linux-ügynököt.
 * További tudnivalók [keresések jelentkezzen](log-analytics-log-searches.md) az adatforrások és a megoldások gyűjtött adatok elemzésére. 

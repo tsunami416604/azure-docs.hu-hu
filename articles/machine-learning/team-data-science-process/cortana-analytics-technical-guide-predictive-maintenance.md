@@ -1,8 +1,8 @@
 ---
-title: "Az Azure - Cortana Intelligence megoldás műszaki útmutató űrtechnikai a prediktív karbantartási |} Microsoft Docs"
-description: "Egy technikai útmutató a Microsoft Cortana Intelligence a megoldás sablon űrtechnikai, segédprogramok vagy szállítására prediktív karbantartás."
+title: Az Azure - Cortana Intelligence megoldás műszaki útmutató űrtechnikai a prediktív karbantartási |} Microsoft Docs
+description: Egy technikai útmutató a Microsoft Cortana Intelligence a megoldás sablon űrtechnikai, segédprogramok vagy szállítására prediktív karbantartás.
 services: cortana-analytics
-documentationcenter: 
+documentationcenter: ''
 author: fboylu
 manager: jhubbard
 editor: cgronlun
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: fboylu
 ms.openlocfilehash: 080618b844669cbea29a6a48c32e937705b06e3f
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>A Cortana Intelligence megoldás sablont űrtechnikai és más vállalatok számára a prediktív karbantartási műszaki útmutatója
 
@@ -57,7 +57,7 @@ Található útmutatást követve töltse le és telepítse az alkalmazást, jel
 
 Az esemény generációs alkalmazás tölti fel az Azure Event Hubs csak, amíg a számítógép végrehajtása történik.
 
-### <a name="azure-event-hub"></a>Az Azure Event Hubs
+### <a name="azure-event-hub"></a>Azure Event Hub
 A [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) szolgáltatása címzettje a szintetikus adatforrás által megadott bemenetet.
 
 ## <a name="data-preparation-and-analysis"></a>Adatok előkészítése és elemzése
@@ -85,7 +85,7 @@ Nem valószínű, hogy az adatkészlet által használt adatkészlet megegyezik-
 
 Az alábbi szakaszok ismertetik a szükséges módosítani, ha új adatkészlet megjelent a sablon részeit.
 
-### <a name="azure-event-hub"></a>Az Azure Event Hubs
+### <a name="azure-event-hub"></a>Azure Event Hub
 Az Azure Event Hubs az általános; a központ JSON vagy CSV formátumú adatokat is közzé lehet tenni. Az Azure Event Hubs különleges feldolgozás nem történik, de fontos, hogy tudomásul veszi be táplált adatokat.
 
 Ez a dokumentum nem ismerteti az adatok, de használatával egyszerűen küldhet eseményeket vagy adatokat az Azure-Eseményközpontok felé az Event Hub API-k használatával.
@@ -134,7 +134,7 @@ Ez [csővezeték](../../data-factory/v1/data-factory-create-pipelines.md) több 
 
 Tevékenységek tartalmazza a következők:
 
-* [HDInsightHive](../../data-factory/v1/data-factory-hive-activity.md) tevékenység segítségével egy [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , amelyen fut a [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) összesítések elvégzéséhez és a szükséges jellemzőkiemelés parancsfájl a [Azure Gépi tanulás](https://azure.microsoft.com/services/machine-learning/) kipróbálásához.
+* [HDInsightHive](../../data-factory/v1/data-factory-hive-activity.md) tevékenység segítségével egy [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , amelyen fut a [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) összesítések elvégzéséhez és a szükséges jellemzőkiemelés parancsfájl a [Azure Machine Tanulási](https://azure.microsoft.com/services/machine-learning/) kipróbálásához.
   A [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) particionálási feladat érték parancsfájl ***PrepareMLInput.hql***.
 * [Másolás](https://msdn.microsoft.com/library/azure/dn835035.aspx) tevékenység, amely helyezi át az eredményeket a [HDInsightHive](../../data-factory/v1/data-factory-hive-activity.md) egyetlen tevékenységet [Azure Storage](https://azure.microsoft.com/services/storage/) által elért blob a [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) tevékenység.
 * [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) tevékenység hívások a [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) kísérletet, egyetlen be eredményekkel [Azure Storage](https://azure.microsoft.com/services/storage/) blob.
@@ -191,7 +191,7 @@ Az alábbi lépéseket a pbix-fájl csatlakoztatása az SQL-adatbázis, amely a 
 3. (Választható) A cold elérési irányítópultot közzététele [Power BI online](http://www.powerbi.com/). Vegye figyelembe, hogy ez a lépés a Power BI fiókot (vagy Office 365-fiókkal) kell-e.
    
    * Kattintson a **"Publish"** és néhány másodperc múlva megjelenik egy ablak megjelenítése a "Power BI sikeres közzététel!" a zöld pipa jelzi. Kattintson az alábbi "Megnyitás PredictiveMaintenanceAerospace.pbix a Power BI" hivatkozásra. Részletes utasításokat talál [a Power BI Desktop közzététele](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop).
-   * Új irányítópult létrehozása: kattintson a  **+**  jelentkezzen mellett a **irányítópultok** szakaszt, a bal oldali ablaktáblán. Adja meg az új irányítópult "Prediktív karbantartási bemutató" nevét.
+   * Új irányítópult létrehozása: kattintson a **+** jelentkezzen mellett a **irányítópultok** szakaszt, a bal oldali ablaktáblán. Adja meg az új irányítópult "Prediktív karbantartási bemutató" nevét.
    * Ha a jelentés megnyitásához kattintson ![RAJZSZÖG ikonra](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-pin.png) rögzítése az irányítópulton való rögzítéséhez képi megjelenítések. Részletes utasításokat talál [egy csempe rögzítése egy Power BI-irányítópult a jelentés](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report).
      Ugrás az irányítópult-oldalon, és méretének és a képi megjelenítések helyét és szerkessze a címben. Részletes utasításokat talál szerkesztése a csempéket a [Szerkesztés mozaik – átméretezési, move, nevezze át, PIN-kód, törlése, hivatkozás hozzáadása a](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename). Íme egy példa irányítópult néhány cold elérési megjelenítésekkel azt van rögzítve.  Attól függően, hogy mennyi ideig a adatgenerátor futtatja a vizuális a számok lehetnek.
      <br/>

@@ -1,12 +1,12 @@
 ---
-title: "A Mobile Apps használata a .NET-háttérrendszer server SDK |} Microsoft Docs"
-description: "Megtudhatja, hogyan használható a .NET-háttérrendszer server SDK az Azure App Service Mobile Apps a."
-keywords: "az App service, a azure app service, a mobilalkalmazás, a mobilszolgáltatást, a méretezési, méretezhető, központi telepítését, az azure app alkalmazástelepítés"
+title: A Mobile Apps használata a .NET-háttérrendszer server SDK |} Microsoft Docs
+description: Megtudhatja, hogyan használható a .NET-háttérrendszer server SDK az Azure App Service Mobile Apps a.
+keywords: az App service, a azure app service, a mobilalkalmazás, a mobilszolgáltatást, a méretezési, méretezhető, központi telepítését, az azure app alkalmazástelepítés
 services: app-service\mobile
-documentationcenter: 
+documentationcenter: ''
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 0620554f-9590-40a8-9f47-61c48c21076b
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: a1a29d87864bff8cb2ecda70d8a0a7833c70d481
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Az Azure Mobile Appshoz készült .NET háttérkiszolgáló-SDK használata
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -62,7 +62,7 @@ Az SDK nem érhető el a [NuGet.org]. Ez a csomag tartalmazza az SDK használat�
 ### <a name="install-the-sdk"></a>Az SDK telepítése
 Az SDK telepítéséhez kattintson a jobb gombbal a kiszolgáló projektre a Visual Studio, válassza ki a **NuGet-csomagok kezelése**, keresse meg a [Microsoft.Azure.Mobile.Server] csomagot, majd kattintson az **telepítése** .
 
-### <a name="server-project-setup"></a>A projekt inicializálása
+### <a name="server-project-setup"></a> A projekt inicializálása
 Egy .NET-háttérrendszer kiszolgálóprojektet inicializálva van más ASP.NET projektek hasonló OWIN indítási osztály-ot. Győződjön meg arról, hogy rendelkezik-e hivatkozott a NuGet-csomag `Microsoft.Owin.Host.SystemWeb`. Ez az osztály a Visual Studio hozzáadásához kattintson a jobb gombbal a kiszolgáló projektre, és válassza ki **Hozzáadás** >
 **új elem**, majd **webes**  >  ** Általános** > **OWIN indítási osztály**.  Egy osztály hoz létre a következő attribútumot:
 
@@ -105,12 +105,12 @@ A kiszolgáló gyors üzembe helyezés az Azure portál hívást **UseDefaultCon
 
 A bővítmény használt módszerek a következők:
 
-* `AddMobileAppHomeController()`az alapértelmezett Azure Mobile Apps kezdőlap biztosít.
-* `MapApiControllers()`WebAPI tartományvezérlők attribútummal rendelkező egyéni API képességeket nyújt a `[MobileAppController]` attribútum.
-* `AddTables()`egy táblázatot a biztosít a `/tables` tábla tartományvezérlők végpontok.
-* `AddTablesWithEntityFramework()`egy rövid az aktuális leképezés van a `/tables` használó Entity Framework végpontok alapú tartományvezérlők.
-* `AddPushNotifications()`eszközök regisztrálása a Notification Hubs egy egyszerű módszert kínál.
-* `MapLegacyCrossDomainController()`standard CORS fejlécek biztosít helyi fejlesztési.
+* `AddMobileAppHomeController()` az alapértelmezett Azure Mobile Apps kezdőlap biztosít.
+* `MapApiControllers()` WebAPI tartományvezérlők attribútummal rendelkező egyéni API képességeket nyújt a `[MobileAppController]` attribútum.
+* `AddTables()` egy táblázatot a biztosít a `/tables` tábla tartományvezérlők végpontok.
+* `AddTablesWithEntityFramework()` egy rövid az aktuális leképezés van a `/tables` használó Entity Framework végpontok alapú tartományvezérlők.
+* `AddPushNotifications()` eszközök regisztrálása a Notification Hubs egy egyszerű módszert kínál.
+* `MapLegacyCrossDomainController()` standard CORS fejlécek biztosít helyi fejlesztési.
 
 ### <a name="sdk-extensions"></a>SDK-bővítmények
 A következő NuGet-alapú bővítmény csomagok az alkalmazás által használható különböző mobil funkciókat biztosítanak. Bővítmények inicializálásakor használatával engedélyezheti a **MobileAppConfiguration** objektum.
@@ -144,7 +144,7 @@ Ez a szakasz bemutatja, hogyan tehet közzé a Visual Studio .NET-háttérprojek
 
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-success.png)
 
-## <a name="define-table-controller"></a>Útmutató: egy tábla vezérlő megadása
+## <a name="define-table-controller"></a> Útmutató: egy tábla vezérlő megadása
 Adja meg egy tábla vezérlő teszi közzé a mobil ügyfelek SQL tábla.  Egy tábla Controller konfigurálása három lépésből áll:
 
 1. Hozzon létre egy adatok átvitele objektum (DTO) osztályt.

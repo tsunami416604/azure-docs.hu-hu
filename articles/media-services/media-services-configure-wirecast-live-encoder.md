@@ -1,11 +1,11 @@
 ---
-title: "A Telestream Wirecast kódoló egyféle sávszélességű élő adatfolyamot küldeni |} Microsoft Docs"
-description: "Ez a témakör bemutatja, hogyan konfigurálhatja a Wirecast élő kódoló egy egyféle sávszélességű adatfolyamot küldeni AMS élő kódolásra képes csatornák. "
+title: A Telestream Wirecast kódoló egyféle sávszélességű élő adatfolyamot küldeni |} Microsoft Docs
+description: 'Ez a témakör bemutatja, hogyan konfigurálhatja a Wirecast élő kódoló egy egyféle sávszélességű adatfolyamot küldeni AMS élő kódolásra képes csatornák. '
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 0d2f1e81-51a6-4ca9-894a-6dfa51ce4c70
 ms.service: media-services
 ms.workload: media
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako;cenkdin;anilmur
 ms.openlocfilehash: 0e4fb0b7c915969da1760eaccc77aa399030752e
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Használja a Wirecast kódoló egyféle sávszélességű élő adatfolyamot küldeni
 > [!div class="op_single_selector"]
@@ -72,7 +72,7 @@ A csatorna indul, míg is [a kódoló](media-services-configure-wirecast-live-en
 ## <a id=configure_wirecast_rtmp></a>A Telestream Wirecast kódoló
 Ebben az oktatóanyagban a következő kimeneti beállításokat használják. Ez a szakasz a további konfigurációs lépések részletesebben ismerteti.
 
-**Videó**:
+**Video**:
 
 * Kodek: H.264
 * Profil: High (szint 4.0-s)
@@ -82,7 +82,7 @@ Ebben az oktatóanyagban a következő kimeneti beállításokat használják. E
 
 **Hang**:
 
-* A kodek: AAC (LC)
+* Codec: AAC (LC)
 * Átviteli sebesség: 192 Kbit/s
 * Mintavételi gyakoriság: 44,1 kHz
 
@@ -101,7 +101,7 @@ Ebben az oktatóanyagban a következő kimeneti beállításokat használják. E
 
     Nevezze el a készletet, és ellenőrizze a következőket ajánlott beállítások:
 
-    **Videó**
+    **Video**
 
    * Kódoló: MainConcept H.264
    * A képkockák másodpercenkénti: 30
@@ -109,7 +109,7 @@ Ebben az oktatóanyagban a következő kimeneti beállításokat használják. E
    * Profil: fő
    * Kulcskocka minden: 60 keretek
 
-    **Hang**
+    **Audio**
 
    * Cél: 192 Kbit/s
    * Mintavételi gyakoriság: 44.100 kHz

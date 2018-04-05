@@ -1,11 +1,11 @@
 ---
-title: "Az Azure AD-alkalmazásproxy összekötők megértése |} Microsoft Docs"
-description: "Alapvető tudnivalók az Azure AD-alkalmazásproxy összekötők ismerteti."
+title: Az Azure AD-alkalmazásproxy összekötők megértése |} Microsoft Docs
+description: Alapvető tudnivalók az Azure AD-alkalmazásproxy összekötők ismerteti.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -16,10 +16,10 @@ ms.author: billmath
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.openlocfilehash: fe8d5c40249431be60dc8844adf7efa1b8e87c5f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Az Azure AD-alkalmazásproxy összekötők ismertetése
 
@@ -72,13 +72,13 @@ A bérlők számára a több összekötők az automatikus frissítések célkén
 
 Összekötők lesz automatikusan terheléselosztásához összekötő csoporton belül, amíg fontos is győződjön meg arról, hogy elegendő kapacitással a várt forgalom mennyisége kezelésére összekötők közötti tervezett. Általában a több felhasználó van, a nagyobb gép szüksége lesz. Az alábbiakban egy táblázatot, amely megadja a kötet vázlat különböző gépek kezelheti. Ne feledje, az összes alapul a várt tranzakciók másodpercenkénti második (TP-k) helyett felhasználó óta használati minták eltérőek, ezért nem használható, terhelés előrejelzése céljából.  Ne feledje, hogy néhány különbség a visszajelzések és a háttérkiszolgáló alkalmazás válaszideje mérete alapján lesz - válasz nagyobb méretek és a lassabb válaszidejét eredményezi egy alacsonyabb maximális TP-k.
 
-|Processzormagok|RAM|Késés (MS) várt-P99|Maximális TP-k|
+|Processzormagok|RAM|Késés (MS) várt-P99|Max TPS|
 | ----- | ----- | ----- | ----- |
 |2|8|325|586|
 |4|16|320|1150|
 |8|32|270|1190|
 |16|64|245|1200*|
-\*Ezen a számítógépen rendelkezett 800 a kapcsolathoz megadott korlátot. Az összes többi gép használtuk az alapértelmezett 200 kapcsolathoz megadott korlátot.
+\* Ezen a számítógépen rendelkezett 800 a kapcsolathoz megadott korlátot. Az összes többi gép használtuk az alapértelmezett 200 kapcsolathoz megadott korlátot.
  
 >[!NOTE]
 >Nincs mekkora a legnagyobb TP-k 4, 8 és 16 mag gépek közötti különbség. A fő különbség a között, amelyek a várt késés van.  
@@ -113,7 +113,7 @@ Teljesítményét befolyásoló másik tényező az összekötők, beleértve a 
 
 A hálózati optimalizálás kapcsolatos további információkért lásd: [Azure Active Directory Application Proxy használata esetén a hálózati topológia szempontjai](application-proxy-network-topology-considerations.md).
 
-## <a name="domain-joining"></a>Tartományhoz való csatlakozás
+## <a name="domain-joining"></a>Tartománycsatlakoztatás
 
 Olyan számítógépen, amelyen a rendszer nem tartományhoz csatlakozó összekötők is futtathatók. Azonban ha szeretne egyszeri bejelentkezést (SSO) integrált Windows-hitelesítéssel (IWA) használó alkalmazásokhoz, akkor egy tartományhoz gép. Ebben az esetben az összekötő gépek csatlakoznia kell a tartomány által végrehajtható műveleteket [Kerberos](https://web.mit.edu/kerberos) által korlátozott delegálást a felhasználók számára a közzétett alkalmazások nevében.
 
@@ -157,9 +157,9 @@ A naplók megtekintéséhez nyissa meg az eseménynaplót, nyissa meg a **nézet
 
 A szolgáltatás a szolgáltatások ablakban ellenőrizheti. Az összekötő tartalmazza a két központi Windows-szolgáltatások: a tényleges összekötő, és megtekinti a. Mindkettő folyamatosan kell futtatni.
 
- ![AzureAD szolgáltatások helyi](./media/application-proxy-understand-connectors/aad-connector-services.png)
+ ![AzureAD Services Local](./media/application-proxy-understand-connectors/aad-connector-services.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 
 * [Külön hálózatok és helyek összekötő csoportokat használnak az alkalmazások közzététele](active-directory-application-proxy-connectors-azure-portal.md)

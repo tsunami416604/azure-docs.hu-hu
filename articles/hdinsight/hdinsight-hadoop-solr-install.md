@@ -1,8 +1,8 @@
 ---
-title: "Hadoop-fürt - Azure Solr telepítendő parancsfájl művelettel |} Microsoft Docs"
-description: "Megtudhatja, hogyan Solr parancsfájlművelet használata a HDInsight-fürtök testreszabása."
+title: Hadoop-fürt - Azure Solr telepítendő parancsfájl művelettel |} Microsoft Docs
+description: Megtudhatja, hogyan Solr parancsfájlművelet használata a HDInsight-fürtök testreszabása.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -17,10 +17,10 @@ ms.date: 02/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
 ms.openlocfilehash: 6efb7ea26c3cdf7748fff4b02b5810c85cc41e1a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="install-and-use-solr-on-windows-based-hdinsight-clusters"></a>Telepítheti és használhatja a Windows-alapú HDInsight-fürtök Solr
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 > A jelen dokumentumban leírt lépések csak a Windows-alapú HDInsight-fürtök dolgozhat. HDInsight csak érhető el a Windows korábbi, mint a HDInsight 3.4-es verziójához. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement). Egy Linux-alapú fürttel Solr használatáról információkért lásd: [telepítése és használata Solr a HDinsight Hadoop-fürtök (Linux)](hdinsight-hadoop-solr-install-linux.md).
 
 
-Telepíthető Solr bármilyen típusú on Azure HDInsight (Hadoop-, Storm, HBase, Spark) fürt segítségével *parancsfájlművelet*. Egy minta parancsfájlt a HDInsight-fürtök Solr telepítendő érhető el, csak olvasható az Azure storage-blobból [https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1).
+Telepíthető Solr bármilyen típusú on Azure HDInsight (Hadoop-, Storm, HBase, Spark) fürt segítségével *parancsfájlművelet*. Egy minta parancsfájlt a HDInsight-fürtök Solr telepítendő érhető el, csak olvasható az Azure storage-blobból [ https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1 ](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1).
 
 A parancsfájlpéldát csak HDInsight-fürt verziószáma 3.1-es verziójával működik. A HDInsight-fürt verziókról további információkért lásd: [HDInsight-fürt verziókról](hdinsight-component-versioning.md).
 
@@ -54,7 +54,7 @@ A jelen témakörben használt minta parancsfájlt hoz létre a Windows-alapú S
 
     <table border='1'>
         <tr><th>Tulajdonság</th><th>Érték</th></tr>
-        <tr><td>Név</td>
+        <tr><td>Name (Név)</td>
             <td>Adja meg a parancsfájlművelet nevét. Például <b>telepítése Solr</b>.</td></tr>
         <tr><td>A parancsfájl URI azonosítója</td>
             <td>Adja meg az egységes erőforrás-azonosító (URI) a parancsfájlt, amelyet a fürt testreszabásához. Például <i>https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1</i></td></tr>
@@ -83,7 +83,7 @@ Az indexelő Solr bizonyos adatok fájlokkal kell elindítani. Solr az indexelt 
         Time spent: 0:00:01.624
 
     A post.jar segédprogram Solr indexeli a két minta dokumentumok **solr.xml** és **monitor.xml**. A post.jar segédprogram és a minta dokumentumok Solr telepítés érhetők el.
-3. **Az indexelt dokumentumok keresni a Solr Irányítópult segítségével**. A HDInsight-fürthöz RDP-munkamenetet, nyissa meg az Internet Explorert, és indítsa el a következő Solr irányítópult **http://headnodehost:8983/solr / #/**. A bal oldali ablaktáblán az a **Core választó** legördülő listából válassza **collection1**, belül, amely, kattintson **lekérdezés**. Tegyük fel válassza ki, és adja vissza a dokumentumok Solr, adja meg a következő értékeket:
+3. **Az indexelt dokumentumok keresni a Solr Irányítópult segítségével**. A HDInsight-fürthöz RDP-munkamenetet, nyissa meg az Internet Explorert, és indítsa el a következő Solr irányítópult **http://headnodehost:8983/solr/#/**. A bal oldali ablaktáblán az a **Core választó** legördülő listából válassza **collection1**, belül, amely, kattintson **lekérdezés**. Tegyük fel válassza ki, és adja vissza a dokumentumok Solr, adja meg a következő értékeket:
 
    * Az a **q** szöveget adja meg a  **\*:**\*. Ezzel visszatér a indexelt dokumentumok a Solr. Ha szeretne keresni egy adott karakterláncot belül a dokumentumokhoz, karakterláncokat Itt adhatja meg.
    * Az a **wt** szöveg mezőben adja meg a kimeneti formátum. Alapértelmezett érték a **json**. Kattintson a **lekérdezés végrehajtása**.
@@ -159,7 +159,7 @@ Az indexelő Solr bizonyos adatok fájlokkal kell elindítani. Solr az indexelt 
              </lst>
              <str name="status">OK</str>
            </response>
-   2. A távoli munkamenet, lépjen a {SOLR_HOME}\{gyűjtemény} \data. A parancsfájlpéldát létrehozott fürt, amely legyen **C:\apps\dist\solr-4.7.2\example\solr\collection1\data**. Ezen a helyen kell megjelennie a pillanatkép mappája létrehozott hasonló nevű  **pillanatkép.* Timestamp típusú***.
+   2. A távoli munkamenet, lépjen a {SOLR_HOME}\{gyűjtemény} \data. A parancsfájlpéldát létrehozott fürt, amely legyen **C:\apps\dist\solr-4.7.2\example\solr\collection1\data**. Ezen a helyen kell megjelennie a pillanatkép mappája létrehozott hasonló nevű **pillanatkép.* Timestamp típusú x.
    3. A ZIP-a pillanatkép mappája, majd töltse fel az Azure Blob Storage tárolóban. A Hadoop parancssorból keresse meg a pillanatkép-mappa helye a következő paranccsal:
 
              hadoop fs -CopyFromLocal snapshot._timestamp_.zip /example/data
@@ -167,12 +167,12 @@ Az indexelő Solr bizonyos adatok fájlokkal kell elindítani. Solr az indexelt 
        Ez a parancs másolja át a pillanatkép /example/data/belül az alapértelmezett tárfiók a fürthöz tartozó tárolóban.
 
 ## <a name="install-solr-using-aure-powershell"></a>Telepítse a következőkre PowerShell-lel Solr
-Lásd: [testreszabása HDInsight-fürtök használata parancsfájlművelet](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell).  A Spark az Azure PowerShell telepítése mutatja be. Meg kell adnia, hogy a használandó parancsfájlt [https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1).
+Lásd: [testreszabása HDInsight-fürtök használata parancsfájlművelet](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell).  A Spark az Azure PowerShell telepítése mutatja be. Meg kell adnia, hogy a használandó parancsfájlt [ https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1 ](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1).
 
 ## <a name="install-solr-using-net-sdk"></a>Telepítse a .NET SDK használatával Solr
-Lásd: [testreszabása HDInsight-fürtök használata parancsfájlművelet](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell). A minta bemutatja, hogyan telepítse a .NET SDK használatával Spark. Meg kell adnia, hogy a használandó parancsfájlt [https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1).
+Lásd: [testreszabása HDInsight-fürtök használata parancsfájlművelet](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell). A minta bemutatja, hogyan telepítse a .NET SDK használatával Spark. Meg kell adnia, hogy a használandó parancsfájlt [ https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1 ](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1).
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Telepítheti és használhatja Solr HDinsight Hadoop-fürtök (Linux)](hdinsight-hadoop-solr-install-linux.md)
 * [Hdinsight Hadoop-fürtök létrehozása](hdinsight-provision-clusters.md): általános információk a HDInsight-fürtök létrehozása.
 * [Testre szabhatja a HDInsight-fürtjéhez parancsfájlművelet][hdinsight-cluster-customize]: parancsfájlművelet HDInsight-fürtök testreszabása általános tájékoztatást.

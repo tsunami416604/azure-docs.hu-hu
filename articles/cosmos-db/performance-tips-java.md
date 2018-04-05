@@ -15,13 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: mimig
-ms.openlocfilehash: 3a6c7c51810375574895643cea2e0e24508fa382
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 7aeb76f59b9489f7c930ef754ccbe6d3712e52a7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 > [!div class="op_single_selector"]
+> * [Aszinkron Java](performance-tips-async-java.md)
 > * [Java](performance-tips-java.md)
 > * [.NET](performance-tips.md)
 > 
@@ -80,7 +81,7 @@ Ezért ha még kérése "Hogyan javítható az adatbázis teljesítménye?" Vegy
    <a id="max-connection"></a>
 3. **Növelje az MaxPoolSize értékénél állomásonként átjáró üzemmódban**
 
-    Az Azure Cosmos DB kérelmek átjáró üzemmódban HTTPS/REST keresztül történik, és az alapértelmezett kapcsolati felső határ az egyes állomásnév vagy IP-cím kitéve. Szükség lehet ahhoz a MaxPoolSize értékénél (200-1000) magasabb értékre, hogy az ügyféloldali kódtár nyújthatnak Azure Cosmos DB több egyidejű kapcsolatok. A Java SDK-ban, az alapértelmezett érték [ConnectionPolicy.getMaxPoolSize](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_policy.gsetmaxpoolsize) 100. Használjon [setMaxPoolSize]( https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_policy.setmaxpoolsize) módosítsa az értéket.
+    Az Azure Cosmos DB kérelmek átjáró üzemmódban HTTPS/REST keresztül történik, és az alapértelmezett kapcsolati felső határ az egyes állomásnév vagy IP-cím kitéve. Szükség lehet ahhoz a MaxPoolSize értékénél (200-1000) magasabb értékre, hogy az ügyféloldali kódtár nyújthatnak Azure Cosmos DB több egyidejű kapcsolatok. A Java SDK-ban, az alapértelmezett érték [ConnectionPolicy.getMaxPoolSize](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_policy.getmaxpoolsize) 100. Használjon [setMaxPoolSize]( https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_policy.setmaxpoolsize) módosítsa az értéket.
 
 4. **A particionált gyűjtemények párhuzamos lekérdezések hangolása**
 
@@ -103,7 +104,7 @@ Ezért ha még kérése "Hogyan javítható az adatbázis teljesítménye?" Vegy
 
 7. **Használja a név alapján címzés**
 
-    Használja, névalapú címzés, ahol hivatkozások formátumuk `dbs/MyDatabaseId/colls/MyCollectionId/docs/MyDocumentId`, helyett SelfLinks (_self), amely rendelkezik a formátum `dbs/<database_rid>/colls/<collection_rid>/docs/<document_rid>` erőforrás-azonosítók segítségével hozza létre a kapcsolat összes erőforrás beolvasása elkerülése érdekében. Is ezeket az erőforrásokat (valószínűleg azonos nevű) lekérése újból, mert a gyorsítótár nem segíthet.
+    Használja, névalapú címzés, ahol hivatkozások formátuma a `dbs/MyDatabaseId/colls/MyCollectionId/docs/MyDocumentId`, SelfLinks helyett (\_önkiszolgáló), amely formátumuk `dbs/<database_rid>/colls/<collection_rid>/docs/<document_rid>` erőforrás-azonosítók segítségével hozza létre a kapcsolat összes erőforrás beolvasása elkerülése érdekében. Is ezeket az erőforrásokat (valószínűleg azonos nevű) lekérése újból, mert a gyorsítótár nem segíthet.
 
    <a id="tune-page-size"></a>
 8. **A jobb teljesítmény lekérdezések/olvasás hírcsatornák lapmérete hangolása**

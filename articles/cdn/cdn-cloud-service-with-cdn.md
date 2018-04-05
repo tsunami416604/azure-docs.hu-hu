@@ -1,6 +1,6 @@
 ---
-title: "Azure-felhőszolgáltatás integrálása az Azure CDN |} Microsoft Docs"
-description: "Egy felhőszolgáltatás, amely egy integrált Azure CDN-végpont a tartalmat szolgáltat telepítése"
+title: Azure-felhőszolgáltatás integrálása az Azure CDN |} Microsoft Docs
+description: Egy felhőszolgáltatás, amely egy integrált Azure CDN-végpont a tartalmat szolgáltat telepítése
 services: cdn, cloud-services
 documentationcenter: .net
 author: zhangmanling
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: f131eb021d85766f12b0fb6cb8b5a07f965f9c97
-ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="intro"></a>Egy felhőalapú szolgáltatás integrálása az Azure CDN szolgáltatás használata
+# <a name="intro"></a> Egy felhőalapú szolgáltatás integrálása az Azure CDN szolgáltatás használata
 Egy felhőalapú szolgáltatás Azure CDN-t, a tartalom a felhőszolgáltatás helyről integrálható. Ez a megközelítés lehetővé teszi a következő előnyökkel jár:
 
 * Egyszerűen regisztrálhat és lemezképek, parancsprogramok és a felhőszolgáltatás-projekt címtárakban stíluslapok frissítése
@@ -30,7 +30,7 @@ Egy felhőalapú szolgáltatás Azure CDN-t, a tartalom a felhőszolgáltatás h
 * ASP.NET kötegelése és minification integrálása az Azure CDN szolgáltatás használata
 
 ## <a name="what-you-will-learn"></a>Amiről tanulni fog
-Ebből az oktatóanyagból megtudhatja, hogyan:
+Az oktatóanyag során a következőket fogja elsajátítani:
 
 * [Az Azure CDN-végpont integrálható a felhőalapú szolgáltatás, és a statikus tartalmat szolgáltat a weblapok Azure CDN](#deploy)
 * [Adja meg a statikus tartalom gyorsítótár beállításait a felhőalapú szolgáltatás](#caching)
@@ -63,7 +63,7 @@ Ebben a szakaszban fogja telepíteni az alapértelmezett ASP.NET MVC alkalmazás
 1. A Visual Studio 2015, hozzon létre egy új Azure-felhőszolgáltatásban menü címen **fájl > Új > Projekt > felhő > Azure Cloud Service**. Adjon neki egy nevet, és kattintson a **OK**.
    
     ![](media/cdn-cloud-service-with-cdn/cdn-cs-1-new-project.PNG)
-2. Válassza ki **ASP.NET webes szerepkör** , és kattintson a  **>**  gombra. Kattintson az OK gombra.
+2. Válassza ki **ASP.NET webes szerepkör** , és kattintson a **>** gombra. Kattintson az OK gombra.
    
     ![](media/cdn-cloud-service-with-cdn/cdn-cs-2-select-role.PNG)
 3. Válassza ki **MVC** kattintson **OK**.
@@ -138,7 +138,7 @@ A CDN-profil CDN-végpontok gyűjteménye.  Minden profil egy vagy több CDN-vé
    > 
 
 ## <a name="test-the-cdn-endpoint"></a>A CDN-végpont tesztelése
-A közzétételi állapot esetén **befejezve**, nyisson meg egy böngészőablakot, és navigáljon a  **http://<cdnName>*.azureedge.net/Content/bootstrap.css**. A beállítás az URL-cím van:
+A közzétételi állapot esetén **befejezve**, nyisson meg egy böngészőablakot, és navigáljon a **http://<cdnName>*.azureedge.net/Content/bootstrap.css**. A beállítás az URL-cím van:
 
     http://camservice.azureedge.net/Content/bootstrap.css
 
@@ -146,18 +146,18 @@ A következő forrás URL-címet a CDN-végpontot, amely megfelel:
 
     http://camcdnservice.cloudapp.net/Content/bootstrap.css
 
-Kiválasztásakor  **http://*&lt;cdnName >*.azureedge.net/Content/bootstrap.css**, attól függően, a böngésző kérni fogja letölteni, vagy nyissa meg a bootstrap.css, amely innen származik: a közzétett webes alkalmazást.
+Kiválasztásakor **http://*&lt;cdnName >*.azureedge.net/Content/bootstrap.css**, attól függően, hogy a böngésző kérni fogja letölteni, vagy nyissa meg a kapott bootstrap.css a közzétett webes alkalmazás.
 
 ![](media/cdn-cloud-service-with-cdn/cdn-1-browser-access.PNG)
 
-Hasonló módon érheti el bármely nyilvánosan elérhető URL-  **http://*&lt;serviceName >*.cloudapp.net/** rögtön a CDN-végpont. Példa:
+Hasonló módon érheti el bármely nyilvánosan elérhető URL- **http://*&lt;serviceName >*.cloudapp.net/**, a CDN-végpont egyenes. Példa:
 
 * Egy .js fájlt a setup parancs/Script elérési útjáról
 * Minden tartalom fájlt a /Content elérési útja
 * Bármely tartományvezérlő/művelet
 * Ha a lekérdezési karakterlánc engedélyezve van a CDN-végpontot, a lekérdezési karakterláncot tartalmazó összes URL-címe:
 
-Valójában a fenti konfigurációjával tárolhatja a teljes körű felhőalapú szolgáltatás  **http://*&lt;cdnName >*.azureedge.net/**. Ha I navigáljon **http://camservice.azureedge.net/**, otthoni/Index jelenik meg a művelet eredménye.
+Valójában a fenti konfigurációjával tárolhatja a teljes körű felhőalapú szolgáltatás **http://*&lt;cdnName >*.azureedge.net/**. Ha I navigáljon **http://camservice.azureedge.net/**, otthoni/Index jelenik meg a művelet eredménye.
 
 ![](media/cdn-cloud-service-with-cdn/cdn-2-home-page.PNG)
 
@@ -325,7 +325,7 @@ Kövesse a fenti beállítása a tartományvezérlő műveleti lépéseket:
             <br />
             <input class="btn" type="submit" value="Generate meme" />
         </form>
-5. Tegye közzé újra a felhőalapú szolgáltatás, és keresse meg  **http://*&lt;serviceName >*.cloudapp.net/MemeGenerator/Index** a böngészőben.
+5. Tegye közzé újra a felhőalapú szolgáltatás, és keresse meg **http://*&lt;serviceName >*.cloudapp.net/MemeGenerator/Index** a böngészőben.
 
 Ha küldje el a képernyőn értékeket `/MemeGenerator/Index`, a `Index_Post` tartozó műveleti módszer mutató hivatkozást ad vissza a `Show` megfelelő bemeneti azonosítóval tartozó műveleti módszer. A hivatkozásra kattintva érhető el a következő kódot:  
 
@@ -527,10 +527,10 @@ A [köteg](http://msdn.microsoft.com/library/system.web.optimization.bundle.aspx
    
     Ha `CdnFallbackExpression` értéke nem null értékű, parancsfájl van be a nézetmodellbe, a HTML-e a csomag sikeresen betöltődött, és ha nem, a csomag közvetlenül elérje a származási webkiszolgáló. Ez a tulajdonság kell állítani a JavaScript kifejezéshez teszteli, hogy a megfelelő CDN csomagot megfelelően be van töltve. A kifejezés teszteléséhez minden csomag szükséges a tartalom szerint változik. A fenti alapértelmezett csomagokat:
    
-   * `window.jquery`jquery-{version} .js definiálva van
-   * `$.validator`jquery.validate.js definiálva van
-   * `window.Modernizr`modernizer-{version} .js definiálva van
-   * `$.fn.modal`bootstrap.js definiálva van
+   * `window.jquery` jquery-{version} .js definiálva van
+   * `$.validator` jquery.validate.js definiálva van
+   * `window.Modernizr` modernizer-{version} .js definiálva van
+   * `$.fn.modal` bootstrap.js definiálva van
      
      Észrevette, hogy, hogy adott nem állítható be a CdnFallbackExpression a `~/Cointent/css` csomagot. Ez azért, mert jelenleg nincs a [System.Web.Optimization hiba](https://aspnetoptimization.codeplex.com/workitem/104) , amelyek esetében a `<script>` helyett a várt tartalék CSS címkéjének `<link>` címke.
      

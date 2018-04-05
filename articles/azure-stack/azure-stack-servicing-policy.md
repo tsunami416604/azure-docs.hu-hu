@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2018
+ms.date: 04/03/2018
 ms.author: mabrigg
-ms.openlocfilehash: 2c10dcf185c62f3672be80ad2e3d049eae82fe6b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e37b63580d8cea4b5772bc54f7b2f79980afc0bc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-stack-servicing-policy"></a>Az Azure verem karbantartása házirend
 Ez a cikk ismerteti a karbantartási házirend integrált Azure verem rendszerekhez, és hogy a rendszer egy támogatott állapotban kell tennie. 
@@ -47,19 +47,6 @@ Például ha a rendelkezésre álló legfrissebb frissített verzióra 1805, és
 
 A Microsoft a szoftverfrissítési csomagokat nem összesítő és a korábbi csomag előfeltételként igényel. Ha úgy dönt, hogy egy vagy több frissítés késleltetésének, fontolja meg a teljes futásidejű, ha le szeretné kérdezni a legújabb verzióra. 
 
-A következő táblázatban példa frissítési csomag kiadások, az Előfeltételek és a támogatott legalacsonyabb verziójú, amely a rendszer el kell érnie támogatási fenntartásához. A tábla az eredeti kiadásának integrált Azure verem rendszerek (build 1708), szeptember 2017 első frissítési csomag kiadásban (1709) alapul. 
-
-| Legfrissebb csomagot (*példa*) | Előfeltétel | Legkisebb támogatott verzió |
-| -- | -- | -- |
-| 1710 | 1709 | – |
-| 1711 | 1710 | 1709 |
-| 1712 | 1711 | 1710 |
-| 1802 | 1712 | 1711 |
-| 1803 | 1802 | 1712 |
-| 1804 | 1803 | 1802 |
-| 1805 | 1804 | 1803 |
-| | | 
-Az előző táblázatban szereplő nincs nincs 1801-es verzió.
 
 ## <a name="next-steps"></a>További lépések
 

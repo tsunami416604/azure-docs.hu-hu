@@ -1,13 +1,13 @@
 ---
-title: "Azure virtuális gépek tervezési és megvalósítási az SAP NetWeaver |} Microsoft Docs"
-description: "Azure virtuális gépek tervezési és megvalósítási az SAP NetWeaver"
+title: Azure virtuális gépek tervezési és megvalósítási az SAP NetWeaver |} Microsoft Docs
+description: Azure virtuális gépek tervezési és megvalósítási az SAP NetWeaver
 services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: MSSedusch
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: d7c59cc1-b2d0-4d90-9126-628f9c7a5538
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -18,10 +18,10 @@ ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9cd12808f7e3bbb8a4edfe0d8de1e5b0a007770a
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure virtuális gépek tervezési és megvalósítási az SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -979,7 +979,7 @@ Ebben az esetben szeretnénk töltse fel a virtuális Merevlemezt, vagy anélkü
 * Jelentkezzen be előfizetés *az bejelentkezés*
 * Válassza ki az előfizetés *az fiók beállítása – előfizetés `<subscription name or id`>*
 * A virtuális merevlemez feltöltése *az tárolási blob feltöltése* -lásd [az Azure Storage az Azure parancssori felület használatával][storage-azure-cli]
-* (Választható) Hozhat létre egy felügyelt lemezt a virtuális Merevlemezt *az lemez létrehozása* -https://docs.microsoft.com/cli/azure/disk#az_disk_create lásd:
+* (Választható) Hozhat létre egy felügyelt lemezt a virtuális Merevlemezt *az lemez létrehozása* -lásd: https://docs.microsoft.com/cli/azure/disk#az_disk_create
 * Hozzon létre egy új virtuális Gépet, adja meg a feltöltött virtuális merevlemez vagy kezelt lemez az operációs rendszer lemezeként *az virtuális gép létrehozása* és paraméter *--csatolása operációsrendszer-lemez*
 * Adatlemez hozzáadása új virtuális gép és *az méretű lemez csatolása* és paraméter *– új*
 
@@ -1008,7 +1008,7 @@ Egy meglévő virtuális vagy virtuális merevlemez feltöltése a helyi hálóz
 * Jelentkezzen be előfizetés *az bejelentkezés*
 * Válassza ki az előfizetés *az fiók beállítása – előfizetés `<subscription name or id`>*
 * A virtuális merevlemez feltöltése *az tárolási blob feltöltése* -lásd [az Azure Storage az Azure parancssori felület használatával][storage-azure-cli]
-* (Választható) Hozzon létre egy felügyelt lemezképet a virtuális merevlemez *az lemezkép létrehozása* -https://docs.microsoft.com/cli/azure/image#az_image_create lásd:
+* (Választható) Hozzon létre egy felügyelt lemezképet a virtuális merevlemez *az lemezkép létrehozása* -lásd: https://docs.microsoft.com/cli/azure/image#az_image_create
 * Hozzon létre egy új virtuális Gépet a feltöltött virtuális Merevlemezt vagy lemezképet felügyelt megadása az operációs rendszer lemezeként *az virtuális gép létrehozása* és paraméter *– kép*
 
 **Sablon**
@@ -1420,7 +1420,7 @@ $pip = New-AzureRmPublicIpAddress -Name SAPERPDemoPIP -ResourceGroupName $rgName
 $nic = New-AzureRmNetworkInterface -Name SAPERPDemoNIC -ResourceGroupName $rgName -Location "North Europe" -Subnet $vnet.Subnets[0] -PublicIpAddress $pip
 ```
 
-* Hozzon létre egy virtuális gépet. A csak felhőalapú alkalmazás esetében minden virtuális gép lesz a néven. A virtuális gépek SAP NetWeaver példánya SAP SID ugyanaz lesz is. Az Azure erőforráscsoporton belül a virtuális gép nevének egyedinek kell lennie, de különböző Azure erőforráscsoportok futtatható virtuális gépek ugyanazzal a névvel. A Windows vagy Linux rendszeren a "Gyökér" alapértelmezett "Rendszergazda" fiók nem érvényesek. Ezért egy másik rendszergazda felhasználónevet kell definiálni és jelszóval. A virtuális gép méretétől is kell definiálni.
+* Virtuális gépet hoz létre. A csak felhőalapú alkalmazás esetében minden virtuális gép lesz a néven. A virtuális gépek SAP NetWeaver példánya SAP SID ugyanaz lesz is. Az Azure erőforráscsoporton belül a virtuális gép nevének egyedinek kell lennie, de különböző Azure erőforráscsoportok futtatható virtuális gépek ugyanazzal a névvel. A Windows vagy Linux rendszeren a "Gyökér" alapértelmezett "Rendszergazda" fiók nem érvényesek. Ezért egy másik rendszergazda felhasználónevet kell definiálni és jelszóval. A virtuális gép méretétől is kell definiálni.
 
 ```powershell
 #####
@@ -1534,7 +1534,7 @@ az network public-ip create --resource-group $rgName --name SAPERPDemoPIP --loca
 az network nic create --resource-group $rgName --location "North Europe" --name SAPERPDemoNIC --public-ip-address SAPERPDemoPIP --subnet Subnet1 --vnet-name SAPERPDemoVNet
 ```
 
-* Hozzon létre egy virtuális gépet. A csak felhőalapú alkalmazás esetében minden virtuális gép lesz a néven. A virtuális gépek SAP NetWeaver példánya SAP SID ugyanaz lesz is. Az Azure erőforráscsoporton belül a virtuális gép nevének egyedinek kell lennie, de különböző Azure erőforráscsoportok futtatható virtuális gépek ugyanazzal a névvel. A Windows vagy Linux rendszeren a "Gyökér" alapértelmezett "Rendszergazda" fiók nem érvényesek. Ezért egy másik rendszergazda felhasználónevet kell definiálni és jelszóval. A virtuális gép méretétől is kell definiálni.
+* Virtuális gépet hoz létre. A csak felhőalapú alkalmazás esetében minden virtuális gép lesz a néven. A virtuális gépek SAP NetWeaver példánya SAP SID ugyanaz lesz is. Az Azure erőforráscsoporton belül a virtuális gép nevének egyedinek kell lennie, de különböző Azure erőforráscsoportok futtatható virtuális gépek ugyanazzal a névvel. A Windows vagy Linux rendszeren a "Gyökér" alapértelmezett "Rendszergazda" fiók nem érvényesek. Ezért egy másik rendszergazda felhasználónevet kell definiálni és jelszóval. A virtuális gép méretétől is kell definiálni.
 
 ```
 #####

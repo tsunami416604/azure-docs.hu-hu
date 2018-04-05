@@ -1,11 +1,11 @@
 ---
-title: "Nyílt forráskódú technológiák gyakori kérdések az Azure web apps |} Microsoft Docs"
-description: "Adott válaszok nyílt forráskódú technológiákkal kapcsolatos gyakori kérdések az Azure App Service Web Apps szolgáltatása."
+title: Nyílt forráskódú technológiák gyakori kérdések az Azure web apps |} Microsoft Docs
+description: Adott válaszok nyílt forráskódú technológiákkal kapcsolatos gyakori kérdések az Azure App Service Web Apps szolgáltatása.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.service: app-service-web
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
 ms.openlocfilehash: 4fb443691e216169dd1322b96d77139ffde752d4
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Gyakori kérdések az Azure Web Apps nyílt forráskódú technológiák
 
@@ -49,10 +49,10 @@ PHP-naplózás bekapcsolása:
 2. A felső menüben válassza ki **Debug konzol** > **CMD**.
 3. Válassza ki a **hely** mappát.
 4. Válassza ki a **wwwroot** mappát.
-5. Válassza ki a  **+**  ikonra, és válassza **új fájl**.
+5. Válassza ki a **+** ikonra, és válassza **új fájl**.
 6. A fájl neve **. user.ini**.
 7. Jelölje be a ceruza ikonra a **. user.ini**.
-8. A fájlban adja hozzá ezt a kódot:`log_errors=on`
+8. A fájlban adja hozzá ezt a kódot: `log_errors=on`
 9. Kattintson a **Mentés** gombra.
 10. Jelölje be a ceruza ikonra a **wp-config.php**.
 11. Módosítsa a szöveg a következő kódot:
@@ -71,7 +71,7 @@ Rögzítheti a Python-alkalmazások hibáinak:
 1. Válassza ki az Azure portálon, a web app alkalmazásban **beállítások**.
 2. Az a **beállítások** lapon jelölje be **Alkalmazásbeállítások**.
 3. A **Alkalmazásbeállítások**, adja meg a következő kulcs/érték pár:
-    * Kulcs: WSGI_LOG
+    * Key : WSGI_LOG
     * Érték: D:\home\site\wwwroot\logs.txt (adja meg a kívánt fájlnevet)
 
 Meg kell jelennie a logs.txt fájlban a wwwroot hibáit.
@@ -100,7 +100,7 @@ Ha módosítani szeretné a Node.js-alkalmazás verziója, az alábbi lehetősé
     Az Azure forrás vezérlő telepítési folyamat a következő lépésekből áll:
     1. Tartalom áthelyezése az Azure-webalkalmazásban.
     2. Egy alapértelmezett telepítési parancsfájl hoz létre, ha nincs a webes alkalmazás gyökérmappájában (Deploy.cmd fájl, .deployment fájlok) ilyen.
-    3. A telepítési parancsfájlt, amelyben létrehoz egy iisnode.yml fájlt Ha, említse meg a package.json fájlban a Node.js-verzió fut > motor`"engines": {"node": "5.9.1","npm": "3.7.3"}`
+    3. A telepítési parancsfájlt, amelyben létrehoz egy iisnode.yml fájlt Ha, említse meg a package.json fájlban a Node.js-verzió fut > motor `"engines": {"node": "5.9.1","npm": "3.7.3"}`
     4. A iisnode.yml fájlt a következő kódsort rendelkezik:
         ```
         nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
@@ -137,22 +137,22 @@ Az Azure piactér és egyéni telepítésekhez:
 
 * Mappájának helye: D:\home\site\wwwroot\bin\apache-tomcat-8.0.33\logs
 * Fontos fájlok:
-    * catalina. *éééé-hh-nn*.log
-    * gazdagép-kezelő. *éééé-hh-nn*.log
+    * catalina.*yyyy-mm-dd*.log
+    * host-manager.*yyyy-mm-dd*.log
     * localhost. *éééé-hh-nn*.log
-    * a Manager objektum. *éééé-hh-nn*.log
-    * site_access_log. *éééé-hh-nn*.log
+    * manager.*yyyy-mm-dd*.log
+    * site_access_log.*yyyy-mm-dd*.log
 
 
 A portál **Alkalmazásbeállítások** központi telepítések:
 
 * Mappájának helye: D:\home\LogFiles
 * Fontos fájlok:
-    * catalina. *éééé-hh-nn*.log
-    * gazdagép-kezelő. *éééé-hh-nn*.log
+    * catalina.*yyyy-mm-dd*.log
+    * host-manager.*yyyy-mm-dd*.log
     * localhost. *éééé-hh-nn*.log
-    * a Manager objektum. *éééé-hh-nn*.log
-    * site_access_log. *éééé-hh-nn*.log
+    * manager.*yyyy-mm-dd*.log
+    * site_access_log.*yyyy-mm-dd*.log
 
 ## <a name="how-do-i-troubleshoot-jdbc-driver-connection-errors"></a>Hogyan hibáinak elhárítása JDBC kapcsolat hibái?
 

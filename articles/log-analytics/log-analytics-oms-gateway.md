@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/14/2018
 ms.author: magoedte
 ms.openlocfilehash: 66e5444f5346a44cfc8a43cf2b43dbaeacffedc9
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-oms-gateway"></a>Az OMS-átjáró használatával csatlakoznak az internetkapcsolattal nem rendelkező számítógépek
 Ez a dokumentum ismerteti a kommunikáció konfigurálása az Azure Automation szolgáltatásban, és az OMS-átjáró, ha közvetlenül a Naplóelemzési csatlakoztatott számítógépek, vagy az Operations Manager által felügyelt számítógépek nem rendelkeznek interneteléréssel. Az OMS-átjáró esetében egy HTTP-továbbító a proxy, amely támogatja a HTTP-csatlakozás paranccsal tunneling HTTP. Az adatok gyűjtéséhez, és elküldi a Azure Automation és Naplóelemzési internetkapcsolattal nem rendelkező számítógépek nevében.  

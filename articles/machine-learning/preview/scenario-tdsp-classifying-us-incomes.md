@@ -1,12 +1,12 @@
 ---
-title: "Bevétel osztályozási - csoport adatok tudományos folyamat - Azure Machine Learning |} Microsoft Docs"
-description: "Hogyan használható a csapat adatok tudományos folyamatsablont-projekt létrehozása az Azure Machine Learning USA bevételek osztályozó."
+title: Bevétel osztályozási - csoport adatok tudományos folyamat - Azure Machine Learning |} Microsoft Docs
+description: Hogyan használható a csapat adatok tudományos folyamatsablont-projekt létrehozása az Azure Machine Learning USA bevételek osztályozó.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 09/17/2017
 ms.author: bradsev
 ms.openlocfilehash: dc6279a1bac230146f4f0cebf2fbdbb6333cb7a1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="income-classification-with-team-data-science-process-tdsp-project"></a>Bevétel besorolás Team adatok tudományos folyamat (TDSP)-projekt
 
@@ -64,7 +64,7 @@ Ha menteni szeretné és verzió a projekt és annak tartalmát, szüksége van 
 * [Gyakori kérdések – első lépések](frequently-asked-questions.md)
 * [Áttekintés](overview-what-is-azure-ml.md)
 * [Telepítés](quickstart-installation.md)
-* [Végrehajtás](experimentation-service-configuration.md)
+* [Execution](experimentation-service-configuration.md)
 * [TDSP használatával](https://aka.ms/how-to-use-tdsp-in-aml)
 * [Fájlok olvasása és írása](how-to-read-write-files.md)
 * [Git használata az Azure Machine Learninggel](using-git-ml-project.md)
@@ -74,7 +74,7 @@ Ha menteni szeretné és verzió a projekt és annak tartalmát, szüksége van 
 
 Hozzon létre egy új projektet, ebben a példában egy sablon használatával:
 1.  Nyissa meg az Azure Machine Learning-munkaterület
-2.  Az a **projektek** lapján kattintson a  **+**  aláírásához, és válassza ki **új projekt**
+2.  Az a **projektek** lapján kattintson a **+** aláírásához, és válassza ki **új projekt**
 3.  Az a **új projekt létrehozása** ablaktáblán, töltse ki az adatokat az új projekt
 4.  Az a **keresési Projektsablonjai** keresési mezőbe, írja be az "USA besorolás bevételek - TDSP projekt", és válassza ki a sablont
 5.  Kattintson a **Create** (Létrehozás) gombra
@@ -108,7 +108,7 @@ Projekt kapott utasítások alapján jön létre [Itt](https://aka.ms/how-to-use
 
 <img src="./media/scenario-tdsp-classifying-us-incomes/instantiation-4.png" width="900" height="700">
 
-### <a name="execution"></a>Végrehajtás
+### <a name="execution"></a>Futtatási
 Ebben a példában a kód azt végrehajtását **helyi számítási környezet**. Az Azure Machine Learning dokumentumok további részletekért tekintse meg [végrehajtási beállítások](experimentation-service-configuration.md).
 
 A helyi Python-futtatókörnyezet egy Python-parancsfájl végrehajtása az egyszerű:
@@ -148,7 +148,7 @@ A szolgáltatás fontosságát (első 20) véletlenszerű erdőmodell alább lá
 
 ![](./media/scenario-tdsp-classifying-us-incomes/featImportance.png)
 
-* [**Központi telepítés**](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/tree/master/code/03_deployment)
+* [**központi telepítés**](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/tree/master/code/03_deployment)
 
 A véletlenszerű erdőmodell helyeztünk üzembe webszolgáltatásként – a fürt a [Azure tároló szolgáltatás (ACS)](https://azure.microsoft.com/services/container-service/). A operationalization környezet rendelkezések Docker és Kubernetes webszolgáltatás avatkozzon a fürtben. Tekinthet meg további információkat a operationalization folyamathoz [Itt](model-management-service-deploy.md). 
 

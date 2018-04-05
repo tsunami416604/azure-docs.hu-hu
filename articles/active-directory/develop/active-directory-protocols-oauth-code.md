@@ -15,10 +15,10 @@ ms.date: 03/19/2018
 ms.author: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 2ad995c4b48c2c298edd7c6b4da92ea8f3c4a060
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="authorize-access-to-web-applications-using-oauth-20-and-azure-active-directory"></a>Hozzáférés engedélyezése webalkalmazásoknak OAuth 2.0 és az Azure Active Directory használatával
 Az Azure Active Directory (Azure AD) által használt OAuth 2.0 ahhoz, hogy engedélyezi a hozzáférést a webalkalmazások és webes API-knak az Azure AD-bérlőben. Ez az útmutató nyelvfüggetlen, és ismerteti, hogyan lehet üzeneteket küldjön és fogadjon HTTP a nyílt forráskódú kódtárai bármelyikét használata nélkül.
