@@ -1,12 +1,12 @@
 ---
-title: "Hogyan kell áttelepíteni a Power BI-Munkaterületcsoport tartalom Power BI Embedded |} Microsoft Docs"
-description: "Megtudhatja, hogyan telepíthetők át a Power BI munkaterület gyűjtemények Power BI Embedded, és használja ki az alkalmazásokban monitorfelbontás kiadásokban."
+title: Hogyan kell áttelepíteni a Power BI-Munkaterületcsoport tartalom Power BI Embedded |} Microsoft Docs
+description: Megtudhatja, hogyan telepíthetők át a Power BI munkaterület gyűjtemények Power BI Embedded, és használja ki az alkalmazásokban monitorfelbontás kiadásokban.
 services: power-bi-embedded
-documentationcenter: 
+documentationcenter: ''
 author: guyinacube
 manager: erikre
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: powerbi
 ms.date: 09/28/2017
 ms.author: asaxton
 ms.openlocfilehash: 069f31c8213bd0d8586f7ca50e543acfdad8a2b3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-migrate-power-bi-workspace-collection-content-to-power-bi-embedded"></a>A Power BI-Munkaterületcsoport tartalom Power BI Embedded áttelepítése
 
@@ -107,7 +107,7 @@ Többféle jelentések, melyekhez a különböző áttelepítési folyamata.
 
 Gyorsítótárazott adatkészletek tekintse meg a pbix-fájlt fájlt, amely kellett importálta az adatokat a élő kapcsolattal vagy DirectQuery kapcsolat szemben.
 
-**Attribútumfolyam**
+**Flow**
 
 1. Töltse le a pbix-fájlt API-t hívja a Power BI-Munkaterületcsoport munkaterületről.
 2. Mentse a pbix-fájlt.
@@ -115,21 +115,21 @@ Gyorsítótárazott adatkészletek tekintse meg a pbix-fájlt fájlt, amely kell
 
 #### <a name="directquery-dataset-and-report"></a>DirectQuery adatkészlet és a jelentés
 
-**Attribútumfolyam**
+**Flow**
 
-1. GET https://api.powerbi.com/v1.0/collections/ hívás {collection_id}/workspaces/{wid}/datasets/{dataset_id}/Default.GetBoundGatewayDataSources, és mentse a kapcsolati karakterlánc érkezett.
+1. GET hívás https://api.powerbi.com/v1.0/collections/{collection_id}/workspaces/{wid}/datasets/{dataset_id}/Default.GetBoundGatewayDataSources , és mentse a kapcsolati karakterlánc érkezett.
 2. Töltse le a pbix-fájlt API-t hívja a Power BI-Munkaterületcsoport munkaterületről.
 3. Mentse a pbix-fájlt.
 4. A Power BI Embedded munkaterület hívható importálási pbix-fájlt.
-5. Frissítse a kapcsolati karakterlánc meghívásával - https://api.powerbi.com/v1.0/myorg/datasets/ {dataset_id}/Default.SetAllConnections utáni
-6. GW azonosító és az adatforrás azonosító beszerzése meghívásával - https://api.powerbi.com/v1.0/myorg/datasets/ {dataset_id}/Default.GetBoundGatewayDataSources beolvasása
-7. Felhasználó hitelesítő adatainak frissítése meghívásával,-javítás https://api.powerbi.com/v1.0/myorg/gateways/ {gateway_id} /datasources/ {datasource_id}
+5. Hívás - kapcsolati karakterlánc POST frissítése  https://api.powerbi.com/v1.0/myorg/datasets/{dataset_id}/Default.SetAllConnections
+6. GW azonosító és az adatforrás azonosító beszerzése meghívásával – LEKÉRDEZÉSE. https://api.powerbi.com/v1.0/myorg/datasets/{dataset_id}/Default.GetBoundGatewayDataSources
+7. Felhasználó hitelesítő adatainak frissítése meghívásával – javítás https://api.powerbi.com/v1.0/myorg/gateways/{gateway_id}/datasources/{datasource_id}
 
 #### <a name="old-dataset-and-reports"></a>Régi adatkészletet és jelentések
 
 A jelentések feltöltés előtt október 2016 nem támogatja a PBIX letöltése szolgáltatást.
 
-**Attribútumfolyam**
+**Flow**
 
 1. Pbix-fájlt a fejlesztési környezetet (a belső verziókezelő) beolvasása sikertelen.
 2. A Power BI Embedded munkaterület hívható importálási pbix-fájlt.
@@ -138,7 +138,7 @@ A jelentések feltöltés előtt október 2016 nem támogatja a PBIX letöltése
 
 Töltse le nem támogatja a pbix-fájlt *leküldéses API* adatkészletek. Leküldéses API dataset adatok nem használatát. a Power BI munkaterület Ügyfélgyűjteményekből Power BI Embedded.
 
-**Attribútumfolyam**
+**Flow**
 
 1. A dataset adatkészlet Power BI Embedded munkaterület létrehozásához Json "Adatkészlet létrehozása" API hívása.
 2. Építse újra a jelentést a létrehozott adatkészlet *.
@@ -189,7 +189,7 @@ Néhány tisztítás Power BI munkaterület gyűjtemények belül van szükség.
 - Távolítsa el az összes munkaterületek ki a központilag telepített megoldás a Power BI munkaterület gyűjtemények Azure szolgáltatáson belül.
 - Törölje a meglévő Azure-ban munkaterület gyűjtemények.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Gratulálunk! Az alkalmazás most át, a Power BI Embedded. A Power BI-irányítópultok, jelentések és adatkészletek beágyazásával kapcsolatos információkért lásd: [beágyazása a Power BI irányítópultok, jelentések és csempék](https://powerbi.microsoft.com/documentation/powerbi-developer-embedding-content/).
 

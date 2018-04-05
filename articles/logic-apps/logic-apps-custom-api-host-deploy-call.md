@@ -1,12 +1,12 @@
 ---
-title: "Központi telepítése, és a webes API-k & REST API-k hívja meg az Azure Logic Apps |} Microsoft Docs"
-description: "Központi telepítése, és hívja meg a webes API-k & REST API-k a rendszer az Azure Logic Apps integrációs munkafolyamatok"
-keywords: "webes API-k, a REST API-k, a összekötőket, a munkafolyamatok, a rendszer integrációja, hitelesítéshez"
+title: Központi telepítése, és a webes API-k & REST API-k hívja meg az Azure Logic Apps |} Microsoft Docs
+description: Központi telepítése, és hívja meg a webes API-k & REST API-k a rendszer az Azure Logic Apps integrációs munkafolyamatok
+keywords: webes API-k, a REST API-k, a összekötőket, a munkafolyamatok, a rendszer integrációja, hitelesítéshez
 services: logic-apps
 author: stepsic-microsoft-com
 manager: anneta
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: f113005d-0ba6-496b-8230-c1eadbd6dbb9
 ms.service: logic-apps
 ms.workload: integration
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/26/2017
 ms.author: LADocs; stepsic
 ms.openlocfilehash: c7a240bf5b7ed5e7780b90f438d2e336ee79f0b3
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="deploy-and-call-custom-apis-from-logic-app-workflows"></a>Központi telepítése, és hívja meg egyedi API-kat a logic app munkafolyamatok
 

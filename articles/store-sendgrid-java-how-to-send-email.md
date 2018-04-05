@@ -1,7 +1,7 @@
 ---
-title: "A SendGrid e-mail szolgáltatás (Java) használatával |} Microsoft Docs"
-description: "Megtudhatja, hogyan küldjön e-maileket a SendGrid e-mail szolgáltatás az Azure-on. A Kódminták Java nyelven."
-services: 
+title: A SendGrid e-mail szolgáltatás (Java) használatával |} Microsoft Docs
+description: Megtudhatja, hogyan küldjön e-maileket a SendGrid e-mail szolgáltatás az Azure-on. A Kódminták Java nyelven.
+services: ''
 documentationcenter: java
 author: thinkingserious
 manager: sendgrid
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
 ms.openlocfilehash: 85a0e302626ca14ac039ee6f662f372ddbeb62c5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>E-mailek Java a SendGrid küldése
 Ez az útmutató bemutatja, hogyan Azure a SendGrid e-mail szolgáltatás közös programozási feladatok elvégzéséhez. A minták Java nyelven íródtak. Az ismertetett forgatókönyvek **hozhat létre, e-mailek**, **e-mailek küldéséhez**, **mellékletek hozzáadása**, **szűrőkkel**, és **tulajdonságainak frissítése**. A SendGrid és e-mailek küldéséhez további információkért lásd: a [további lépések](#next-steps) szakasz.
@@ -158,7 +158,7 @@ SendGrid használatával további e-mail helyeire *szűrők*. Ezek a beállítá
           {\"enable\":1}}}}");
 
 ## <a name="how-to-update-email-properties"></a>Útmutató: frissítés e-mailes tulajdonságai
-Néhány e-mail tulajdonság használatával felülírható  **beállítása*tulajdonság***, illetve használatával  **hozzáadása*tulajdonság***.
+Néhány e-mail tulajdonság használatával felülírható **beállítása * tulajdonság***, illetve használatával **hozzáadása*tulajdonság x.
 
 Adja meg például **ReplyTo** címek, használja a következő:
 
@@ -176,13 +176,13 @@ Hozzáadása egy **Cc** címzett, használja a következő:
 ## <a name="how-to-use-additional-sendgrid-services"></a>Útmutató: további SendGrid szolgáltatás használata
 SendGrid webes API-k segítségével kihasználhatja az Azure alkalmazásról további SendGrid funkciókat kínál. Teljes részletekért lásd: a [SendGrid API-JÁNAK dokumentációja][SendGrid API documentation].
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy megismerte a SendGrid E-mail szolgáltatás alapjait, az alábbi hivatkozásokból további.
 
 * Minta azt mutatja be, az Azure-telepítés SendGrid használatával: [küldése az e-mailek SendGrid Java az Azure-telepítés](store-sendgrid-java-how-to-send-email-example.md)
 * SendGrid Java SDK: <https://sendgrid.com/docs/Code_Examples/java.html>
-* SendGrid API dokumentációjának: <https://sendgrid.com/docs/API_Reference/index.html>
-* SendGrid különleges ajánlat Azure ügyfeleknek: <https://sendgrid.com/windowsazure.html>
+* SendGrid API-dokumentáció: <https://sendgrid.com/docs/API_Reference/index.html>
+* SendGrid a különleges ajánlat Azure ügyfelek esetén: <https://sendgrid.com/windowsazure.html>
 
 [http://sendgrid.com]: https://sendgrid.com
 [http://sendgrid.com/pricing.html]: http://sendgrid.com/pricing.html

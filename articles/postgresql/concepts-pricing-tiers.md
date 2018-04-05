@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 03/20/2018
-ms.openlocfilehash: 8c8a2f6076c14dabe70f90538ca8c8b97fb93de0
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3ea7d09338d4d89030138b8c4dc4085a6cd8ccc5
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure tarifacsomagok PostgreSQL-adatbázishoz
 
@@ -24,7 +24,7 @@ Létrehozhat egy PostgreSQL-kiszolgálóhoz tartozó Azure-adatbázis az egyik h
 | Számítási létrehozása | 4, 5. generációból generációs | 4, 5. generációból generációs | Gen 5 |
 | vCores | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
 | Memória mennyisége vCore | Alapkonfiguráció | 2 x Basic | Általános célú x 2 |
-| Tároló mérete | 5 GB és 1 TB | 5 GB és 1 TB | 5 GB és 1 TB |
+| Tároló mérete | 5 GB és 1 TB | 5 GB és 2 TB | 5 GB és 2 TB |
 | Tárolási típus | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
 | Adatbázis biztonsági mentés megőrzési időtartam | 7-35 nap | 7-35 nap | 7-35 nap |
 
@@ -46,9 +46,9 @@ A számítási erőforrások vannak megadva, a vCores, amelyek tartalmazzák az 
 |:---|:----------:|:--------------------:|
 | USA középső régiója |  | X |
 | USA keleti régiója | X | X |
-| USA 2. keleti régiója | X |  |
+| USA 2. keleti régiója | X | X |
 | USA északi középső régiója | X |  |
-| USA déli középső régiója | X |  |
+| USA déli középső régiója | X | X |
 | USA nyugati régiója | X | X |
 | USA nyugati régiója, 2. |  | X |
 | Közép-Kanada | X | X |
@@ -63,8 +63,8 @@ A számítási erőforrások vannak megadva, a vCores, amelyek tartalmazzák az 
 | Kelet-Ausztrália |  | X |
 | Közép-India | X |  |
 | Nyugat-India | X |  |
-| Kelet-Japán | X |  |
-| Nyugat-Japán | X |  |
+| Kelet-Japán | X | X |
+| Nyugat-Japán | X | X |
 | Korea déli régiója |  | X |
 
 Attól függően, hogy ez a tarifacsomag minden vCore ki van építve a meghatározott RAM mennyiséggel. Növeléséhez vagy csökkentéséhez tegye a következőket vCores a kiszolgáló, a memória növeli vagy csökkenti arányosan. Az általános célú réteg biztosít kettős az alapszintű rétegben képest vCore memória mennyisége. A Memóriaoptimalizált réteget biztosít duplán az általános célú réteghez képest memória mennyisége.
@@ -76,7 +76,7 @@ A tároló, kiépítése nem PostgreSQL-kiszolgáló az Azure-adatbázishoz rend
 |    | **Basic** | **Általános célú** | **Memóriaoptimalizált** |
 |:---|:----------|:--------------------|:---------------------|
 | Tárolási típus | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
-| Tároló mérete | 5 GB és 1 TB | 5 GB és 1 TB | 5 GB és 1 TB |
+| Tároló mérete | 5 GB és 1 TB | 5 GB és 2 TB | 5 GB és 2 TB |
 | Tárolási növekmény mérete | 1 GB | 1 GB | 1 GB |
 | IO | Változó |3 IOPS/GB<br/>100 minimális IOPS | 3 IOPS/GB<br/>100 minimális IOPS |
 

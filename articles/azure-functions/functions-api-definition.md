@@ -1,12 +1,12 @@
 ---
 title: Az Azure Functions OpenAPI metaadatok |} Microsoft Docs
-description: "OpenAPI támogatása az Azure Functions áttekintése"
+description: OpenAPI támogatása az Azure Functions áttekintése
 services: functions
-documentationcenter: 
+documentationcenter: ''
 author: alexkarcher-msft
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/23/2017
 ms.author: alkarche
 ms.openlocfilehash: b6aacc536e589a2036aba5a0784a4ba71641a59e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>OpenAPI 2.0 metaadatok támogatása az Azure Functions (előzetes verzió)
 OpenAPI 2.0 (korábbi nevén Swagger) metaadat-támogatás az Azure Functions nem előzetes verziójú funkciók, melyekkel egy OpenAPI 2.0 definíciója belül egy függvény alkalmazás írása. Majd tárolhatja, hogy a fájl, a függvény alkalmazással.
@@ -42,7 +42,7 @@ Részletes útmutatásért lásd: a [használatába bevezető oktatóanyagot](./
 
 ### <a name="templates"></a>Az elérhető sablonok
 
-|Név| Leírás |
+|Name (Név)| Leírás |
 |:-----|:-----|
 |Generált meghatározása|A maximális méretű szükséges, amely meglévő dbfunctionexpression következtethető OpenAPI definíciója.|
 
@@ -50,13 +50,13 @@ Részletes útmutatásért lásd: a [használatába bevezető oktatóanyagot](./
 
 A következő táblázat az Azure portál beállításai és function.json megfelelő adatok jelöli, a generált Swagger vázat van leképezve.
 
-|Swagger.JSON|Portál felhasználói felület|Function.JSON|
+|Swagger.json|Portál felhasználói felület|Function.json|
 |:----|:-----|:-----|
-|[Állomás](http://swagger.io/specification/#fixed-fields-15)|**Alkalmazásbeállítások működéséhez** > **App Service-beállítások** > **áttekintése** > **URL-címe**|*Nem található*
-|[Elérési utak](http://swagger.io/specification/#paths-object-29)|**Integrálni** > **kijelölt HTTP-metódus**|Kötések: útvonal
+|[Gazdagép](http://swagger.io/specification/#fixed-fields-15)|**Alkalmazásbeállítások működéséhez** > **App Service-beállítások** > **áttekintése** > **URL-címe**|*Nem található*
+|[Paths](http://swagger.io/specification/#paths-object-29)|**Integrálni** > **kijelölt HTTP-metódus**|Kötések: útvonal
 |[Elérési út elem](http://swagger.io/specification/#path-item-object-32)|**Integrálni** > **útvonalsablonhoz**|Kötések: módszerek
 |[Biztonság](http://swagger.io/specification/#security-scheme-object-112)|**Kulcsok**|*Nem található*|
-|OperationID azonosítójú *|**Útvonal + engedélyezett műveletek**|Útvonal + engedélyezett műveletek|
+|operationID*|**Útvonal + engedélyezett műveletek**|Útvonal + engedélyezett műveletek|
 
 \*A művelet azonosító megadása kötelező, csak a PowerApps és Flow integrálásához.
 > [!NOTE]
@@ -77,7 +77,7 @@ A következő táblázat az Azure portál beállításai és function.json megfe
 
 Most, a tárházban swagger.json módosításai az függvény alkalmazást az API által üzemeltetett definíció URL-címe és a kulcs lépés 1.c.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Használatába bevezető oktatóanyagot](functions-api-definition-getting-started.md). Próbálja meg a bemutató lépéseit az egy OpenAPI lásd a műveletet.
 * [Az Azure Functions GitHub-tárházban](https://github.com/Azure/Azure-Functions/). Tekintse meg a funkciók tárház küldjön visszajelzést az API definition támogatási előzetes a. A GitHub probléma létrehozása semmit meg szeretné tekinteni frissített.
 * [Az Azure Functions fejlesztői segédanyagai](functions-reference.md). További tudnivalók a függvények kódolásához, valamint eseményindítók és kötések meghatározásához.

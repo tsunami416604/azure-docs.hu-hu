@@ -15,10 +15,10 @@ ms.workload: data-services
 ms.date: 03/01/2018
 ms.author: sngun
 ms.openlocfilehash: e5661f9f3871619201ff9106e87785de802e8933
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Azure Stream Analytics és az Azure Machine Learning segítségével véleményeket elemzések végrehajtását
 Ez a cikk ismerteti, hogyan gyorsan beállíthat egy egyszerű Azure Stream Analytics-feladat, amely az Azure Machine Learning. Akkor használhatja Machine Learning véleményeket analytics a Cortana Intelligence Gallery a streamadatok szöveg elemzésére és valós időben a céggel kapcsolatos véleményeket pontszám meghatározásához. A Cortana Intelligence Suite használata lehetővé teszi ennek a feladatnak anélkül, hogy a menő a céggel kapcsolatos véleményeket elemzési modell létrehozásának bemutatása.
@@ -186,7 +186,7 @@ Az oktatóanyag ezen részében adja meg az adatfolyam állapotelemzési feladat
    |Mező  |Érték  |
    |---------|---------|
    | **Függvény aliasa** | A nevet használja `sentiment` válassza **adja meg Azure Machine Learning-függvény beállítások manuálisan** amely felkínálja az URL-címet és egy kulcs.      |
-   | **URL**| Illessze be a webalkalmazás URL-címe.|
+   | **URL-cím**| Illessze be a webalkalmazás URL-címe.|
    |**Kulcs** | Illessze be az API-kulcsot. |
   
    ![A Machine Learning-függvény hozzáadása a Stream Analytics-feladat beállításai](./media/stream-analytics-machine-learning-integration-tutorial/add-function.png)  

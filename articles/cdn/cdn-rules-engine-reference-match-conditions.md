@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
 ms.openlocfilehash: f8dac5469e7160fae93e8251ab7f4195a383f8b4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Az Azure CDN szabálymotor feltételek egyeznek 
 Ez a cikk a rendelkezésre álló egyezés feltételek esetében az Azure Content Delivery Network (CDN) részletes leírását tartalmazza [szabálymotor](cdn-rules-engine.md).
@@ -783,7 +783,7 @@ Kapcsolatos információkat:
 
    Karakter | URL-kódolás
    ----------|---------
-   Szóköz     | %20
+   Űr     | %20
    &         | %25
 
 - Mely gyorsítótárában beállítások követi módon, mert ez egyeznek az állapot nem kompatibilis a következő szolgáltatásokat:
@@ -819,7 +819,7 @@ Kapcsolatos információkat:
 
        Karakter | URL-kódolás
        ----------|---------
-       Szóköz     | %20
+       Űr     | %20
        &         | %25
 
 - Adja meg a lekérdezési karakterlánc paraméter több értéket határoló mindegyiken akár egy szóköz. Az egyeztetés feltétel teljesül, amikor egy kérelem tartalmazza a megadott név-érték kombinációk egyikét.
@@ -871,7 +871,7 @@ Name (Név)  | Érték |  Eredmény
 ------|-------|--------
 Felhasználó  | Joe   | Ez a minta egyezik a kért URL-címhez tartozó lekérdezési karakterlánc esetén "? felhasználó = joe."
 Felhasználó  | *     | Ez a minta egyezik, amikor a kért URL-címhez tartozó lekérdezési karakterlánc egy felhasználó paramétert tartalmaz.
-E-mail cím | Joe\* | Ez a minta egyezik, amikor a kért URL-címhez tartozó lekérdezési karakterlánc a "Joe." kezdetű E-mail paramétert tartalmaz
+E-mail | Joe\* | Ez a minta egyezik, amikor a kért URL-címhez tartozó lekérdezési karakterlánc a "Joe." kezdetű E-mail paramétert tartalmaz
 
 [Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
 
@@ -896,7 +896,7 @@ Kapcsolatos információkat:
 
    Karakter | URL-kódolás | Érték
    ----------|--------------|------
-   Szóköz     | %20          | \%20
+   Űr     | %20          | \%20
    &         | %25          | \%25
 
    Vegye figyelembe, hogy százalékos szimbólumokat kell megjelölni.
@@ -938,7 +938,7 @@ Kapcsolatos információkat:
 
      Karakter | URL-kódolás
      ----------|---------
-     Szóköz     | %20
+     Űr     | %20
      &         | %25
 
 - Adjon meg több érték határoló mindegyiken akár egy szóköz.

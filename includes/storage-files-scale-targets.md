@@ -1,4 +1,4 @@
-| Erőforrás | cél |
+| Erőforrás | Cél |
 |----------|---------------|
 | A fájlmegosztás maximális mérete | 5 TiB |
 | A fájlmegosztás maximális fájlméret | 1 TiB |

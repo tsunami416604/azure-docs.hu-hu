@@ -26,7 +26,7 @@ Az eszközök metódusok meghívása, használja a **eszközök** lap a távoli 
 
 1. A metódusok hívása az eszközön listájának megjelenítéséhez kattintson **ütemezés**. Ütemezés módszerét több eszközön futtassa, jelölje ki több eszközre a listában. A **ütemezés** panelen láthatók metódus általános a kiválasztott eszközök.
 
-1. Válasszon **FirmwareUpdate**, a feladat neve **UpdatePhysicalChiller**. Állítsa be **belsővezérlőprogram-verziónként** való **2.0.0**, beállíthatja **belső vezérlőprogram URI** a **http://contoso.com/updates/firmware.bin**, és válassza a  **Alkalmazása**:
+1. Válasszon **FirmwareUpdate**, a feladat neve **UpdatePhysicalChiller**. Állítsa be **belsővezérlőprogram-verziónként** való **2.0.0**, beállíthatja **belső vezérlőprogram URI** való **http://contoso.com/updates/firmware.bin**, és válassza a **alkalmaz**:
 
     ![A belső vezérlőprogram-frissítés ütemezése](media/iot-suite-visualize-connecting/deviceschedule.png)
 

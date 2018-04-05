@@ -15,14 +15,14 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: 2adf473c6acea0f128eb14e2616748ff29d5d762
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-use-targeting-criteria-to-send-push-campaigns-to-a-select-subset-of-your-users"></a>A felhasználók egy kijelölt részét leküldéses kampányokra küldendő célcsoport-kezelési feltételek használata
 > [!IMPORTANT]
-> Az Azure Mobile Engagement kivonja a 3/31/2018. Ezen a lapon hamarosan után törlődni fog.
+> Az Azure Mobile Engagement támogatása 2018. március 31-én megszűnik. Az oldal nem sokkal ezután törlésre kerül.
 > 
 
 A célközönség által meghatározott feltételeket az "Új feltételek" gombbal célzó a egyik leghatékonyabb az Azure Mobile Engagement, hogy a megfelelő küldünk segít leküldéses értesítések, hogy az ügyfelek válaszol levélszeméttel mindenki helyett. Korlátozza a célközönséget, a szabványos feltételek alapján, és szimulálása a leküldéses értesítések annak meghatározásához, hányan a értesítést fog kapni.

@@ -17,10 +17,10 @@ ms.author: jeffgilb
 ms.reviewer: ''
 ms.custom: mvc
 ms.openlocfilehash: af97f32736959f8ebf8f3c4fbca400d6b0c41f3e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="make-virtual-machines-available-to-your-azure-stack-users"></a>Virtuális gépek Azure verem felhasználók számára történő elérhetővé
 Rendszergazdaként Azure verem felhő ajánlatokat, amelyek a (más néven bérlői) felhasználók előfizethetnek is létrehozhat. Használja az előfizetését, felhasználók tudják felhasználni Azure verem szolgáltatások.
@@ -113,7 +113,7 @@ Most, hogy létrehozta az ajánlatot, tesztelheti. Jelentkezzen be a felhasznál
    Most már bejelentkezhet a portálra ajánlatot előfizetni felhasználóként.
 
    a. Jelentkezzen be a felhasználói portálra, a felhasználó, és kattintson **egy előfizetés**.
-   - Integrált rendszert az URL-cím attól függően változik, az üzemeltető régió és külső tartomány nevét, és a formátum https://portal lesz. &lt; *régió*&gt;.&lt; *FQDN*&gt;.
+   - Egy integrált rendszer, az URL-cím attól függően változik, az üzemeltető régió és külső tartomány nevét, és formátumban lesz https://portal.&lt; *régió*&gt;.&lt; *FQDN*&gt;.
    - Az Azure verem szoftverfejlesztői készlet használata, a portál címe https://portal.local.azurestack.external.
 
    ![Előfizetés beszerzése](media/azure-stack-subscribe-plan-provision-vm/image01.png)
@@ -131,7 +131,7 @@ Most, hogy létrehozta az ajánlatot, tesztelheti. Jelentkezzen be a felhasznál
    Most már bejelentkezhet a portálra az előfizetés virtuális gép kiépítése felhasználóként. 
 
    a. Jelentkezzen be a felhasználói portál egy olyan felhasználó nevében.
-      - Integrált rendszert az URL-cím attól függően változik, az üzemeltető régió és külső tartomány nevét, és a formátum https://portal lesz. &lt; *régió*&gt;.&lt; *FQDN*&gt;.
+      - Egy integrált rendszer, az URL-cím attól függően változik, az üzemeltető régió és külső tartomány nevét, és formátumban lesz https://portal.&lt; *régió*&gt;.&lt; *FQDN*&gt;.
    - Az Azure verem szoftverfejlesztői készlet használata, a portál címe https://portal.local.azurestack.external.
 
    b.  Az irányítópulton kattintson **új** > **számítási** > **Windows Server 2016 Datacenter próbaverzió**, és kattintson a **létrehozása**.

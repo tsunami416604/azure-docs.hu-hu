@@ -1,8 +1,8 @@
 ---
-title: "Azure API Management használata a virtuális hálózatban az Alkalmazásátjáró |} Microsoft Docs"
-description: "Megtudhatja, hogyan telepítse és konfigurálja a belső virtuális hálózat az alkalmazás átjáró (waf-ot), amelynek az Azure API Management"
+title: Azure API Management használata a virtuális hálózatban az Alkalmazásátjáró |} Microsoft Docs
+description: Megtudhatja, hogyan telepítse és konfigurálja a belső virtuális hálózat az alkalmazás átjáró (waf-ot), amelynek az Azure API Management
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: solankisamir
 manager: kjoshi
 editor: antonba
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 09/19/2017
 ms.author: sasolank
 ms.openlocfilehash: f9bc3ffda9f943a37fd5aadf440abf7d33a6d1de
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Egy belső virtuális Hálózatot az API Management integrálása Alkalmazásátjáró 
 
-##<a name="overview"></a> – Áttekintés
+##<a name="overview"> </a> – Áttekintés
  
 Az API Management szolgáltatás konfigurálható egy virtuális hálózatot belső módban, így azokat csak a virtuális hálózaton belülről érhetők el. Az Azure Application Gateway egy olyan PAAS szolgáltatás, amely réteg-7 terheléselosztót biztosít. Fordított proxy szolgáltatásként működik, és biztosít ajánlat egy webes alkalmazás tűzfalat (WAF) között.
 
@@ -42,14 +42,14 @@ Ebben a cikkben leírt lépések végrehajtásához rendelkeznie kell:
 
 + APIM példánya. További információkért lásd: [hozzon létre egy Azure API Management példányt](get-started-create-service-instance.md).
 
-##<a name="scenario"></a> Forgatókönyv
+##<a name="scenario"> </a> A forgatókönyv
 Ez a cikk bemutatja, hogyan használja a külső és belső fogyasztók egyetlen API-kezelés szolgáltatás, és lehetővé teszi működjön, és egyetlen időtúllépést a két helyszíni és felhőalapú API-k. Hogyan teszi közzé az API-k (a példa zöld kijelölt) csak egy részét a PathBasedRouting funkció érhető el az alkalmazás átjáró használatával külső felhasználásra is megjelenik.
 
 Az első beállítás minden API felügyelt csak virtuális hálózaton belül. Belső fogyasztóknak (a kijelölt narancs) férhetnek hozzá a belső és külső API. Forgalom soha nem kerül ki egy nagy teljesítményű kerülnek az interneten keresztül Expressroute-Kapcsolatcsoportok.
 
 ![URL-cím útvonal](./media/api-management-howto-integrate-internal-vnet-appgateway/api-management-howto-integrate-internal-vnet-appgateway.png)
 
-## <a name="before-you-begin"></a> Megkezdése előtt
+## <a name="before-you-begin"> </a> Előkészületek
 
 1. Telepítse az Azure PowerShell-parancsmagok legújabb verzióját a Webplatform-telepítővel. A [Letöltések lap](https://azure.microsoft.com/downloads/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) **Windows PowerShell** szakaszából letöltheti és telepítheti a legújabb verziót.
 2. Hozzon létre egy virtuális hálózatot, és hozzon létre különálló alhálózatokat az API Management és az Alkalmazásátjáró. 
@@ -65,7 +65,7 @@ Az első beállítás minden API felügyelt csak virtuális hálózaton belül. 
 * **Egyéni Állapotmintáihoz:** Alkalmazásátjáró, alapértelmezés szerint a megadott IP-cím alapú mintavételt mérje fel, hogy mely kiszolgálók a BackendAddressPool aktívak. Az API Management szolgáltatást csak válaszol a kérelmekre, amelyek rendelkeznek a megfelelő állomásfejléc, ezért az alapértelmezett mintavételt sikertelen. Egy egyéni állapotmintáihoz kell segítségével határozza meg, hogy a szolgáltatás nem aktív, és továbbítsa a kérelmek Alkalmazásátjáró definiálni.
 * **Az egyéni tartomány tanúsítvány:** API Management kell létrehoznia egy CNAME-leképezés az állomásnév az Alkalmazásátjáró előtér-DNS-nevével, az internet eléréséhez. Ez biztosítja, hogy az állomásnév fejléc és a tanúsítvány, amely az API Management továbbíthatja a rendszer az Alkalmazásátjáró küldött egy APIM fel tudja ismerni, mint érvényes.
 
-## <a name="overview-steps"></a> API Management és az Application Gateway integrálásához szükséges lépések 
+## <a name="overview-steps"> </a> API Management és az Application Gateway integrálásához szükséges lépések 
 
 1. Egy erőforráscsoport létrehozása a Resource Manager számára.
 2. Hozzon létre egy virtuális hálózati alhálózat és nyilvános IP-cím az az Alkalmazásátjáró. Hozzon létre egy másik alhálózatot az API Management.
@@ -298,7 +298,7 @@ Az alábbi példa létrehoz egy egyszerű szabályt a "/ echo /" elérési út �
 $echoapiRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "externalapis" -Paths "/echo/*" -BackendAddressPool $apimProxyBackendPool -BackendHttpSettings $apimPoolSetting
 ```
 
-Ha az elérési út nem egyezik meg szeretnénk az API-kezelés engedélyezése az elérésiút-szabály, a szabály térkép konfiguráció is konfigurálja egy alapértelmezett háttér címkészletet nevű **dummyBackendPool**. Például http://api.contoso.net/calc/ * ugrik **dummyBackendPool** , mint az alapértelmezett alkalmazáskészlet nem egyező forgalom van definiálva.
+Ha az elérési út nem egyezik meg szeretnénk az API-kezelés engedélyezése az elérésiút-szabály, a szabály térkép konfiguráció is konfigurálja egy alapértelmezett háttér címkészletet nevű **dummyBackendPool**. Például http://api.contoso.net/calc/* ugrik **dummyBackendPool** , mint az alapértelmezett alkalmazáskészlet nem egyező forgalom van definiálva.
 
 ```powershell
 $urlPathMap = New-AzureRmApplicationGatewayUrlPathMapConfig -Name "urlpathmap" -PathRules $echoapiRule, $dummyPathRule -DefaultBackendAddressPool $dummyBackendPool -DefaultBackendHttpSettings $dummyBackendSetting
@@ -347,10 +347,10 @@ Az Alkalmazásátjáró DNS-nevét kell hozhatók létre egy CNAME rekordot, ame
 Get-AzureRmPublicIpAddress -ResourceGroupName "apim-appGw-RG" -Name "publicIP01"
 ```
 
-##<a name="summary"></a> Összegzése
+##<a name="summary"> </a> Összefoglalás
 Konfigurált egy VNETET az Azure API Management átjáró egyetlen felületet biztosít minden konfigurált API, legyenek azok helyszíni központi vagy a felhőben. Alkalmazásátjáró integrálása az API Management szelektív módon engedélyezi az adott API-k az interneten érhető el, valamint a webalkalmazási tűzfal biztosít egy háttértűzfal a API Management-példányra, a rugalmasságot biztosít.
 
-##<a name="next-steps"></a> További lépések
+##<a name="next-steps"> </a> További lépések
 * További tudnivalók az Azure Application Gateway
   * [Átjáró – áttekintés](../application-gateway/application-gateway-introduction.md)
   * [Alkalmazás átjáró webalkalmazási tűzfal](../application-gateway/application-gateway-webapplicationfirewall-overview.md)

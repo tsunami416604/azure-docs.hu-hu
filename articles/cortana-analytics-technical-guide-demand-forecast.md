@@ -1,8 +1,8 @@
 ---
-title: "Igény-előrejelzés energia műszaki útmutató |} Microsoft Docs"
-description: "Egy technikai útmutató a Microsoft a Cortana Intelligence megoldás-sablonnal a havi előrejelzési igény."
+title: Igény-előrejelzés energia műszaki útmutató |} Microsoft Docs
+description: Egy technikai útmutató a Microsoft a Cortana Intelligence megoldás-sablonnal a havi előrejelzési igény.
 services: cortana-analytics
-documentationcenter: 
+documentationcenter: ''
 author: yijichen
 manager: ilanr9
 editor: yijichen
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/16/2016
 ms.author: inqiu;yijichen;ilanr9
 ms.openlocfilehash: bb3520d36e4c34c752fe388f3126da285e2161cd
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>Műszaki útmutató a Cortana Intelligence megoldás sablont a havi előrejelzési igény szerint
 ## <a name="overview"></a>**Áttekintés**
@@ -42,7 +42,7 @@ Ehhez a sablonhoz használt adatforrás egy asztali alkalmazás letöltése és 
 
 Az esemény generációs alkalmazás tölti fel az Azure Event Hubs csak, amíg a számítógép végrehajtása történik.
 
-### <a name="azure-event-hub"></a>Az Azure Event Hubs
+### <a name="azure-event-hub"></a>Azure Event Hub
 A [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) szolgáltatása címzettje a szintetikus adatforrás leírt által megadott bemenetet.
 
 ## <a name="data-preparation-and-analysis"></a>**Adatok előkészítése és elemzése**
@@ -56,7 +56,7 @@ Az Azure HDInsight-szolgáltatás futtatásához használt [Hive](http://blogs.m
 A [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) szolgáltatás használható-e (Azure Data Factory által összehangolva.) egy adott régióban, a bemenetek kapott megadott jövőbeli energiafogyasztásának előrejelzési ellenőrzéséhez.
 
 ## <a name="data-publishing"></a>**Adatok közzététele**
-### <a name="azure-sql-database-service"></a>Az Azure SQL adatbázis-szolgáltatás
+### <a name="azure-sql-database-service"></a>Azure SQL Database Service
 A [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) szolgáltatás fogja tárolni (kezeli az Azure Data Factory) az Azure Machine Learning szolgáltatás a felhasznált az előrejelzés a [Power BI](https://powerbi.microsoft.com) irányítópult.
 
 ## <a name="data-consumption"></a>**Adatok felhasználásához**
@@ -70,7 +70,7 @@ Nem valószínű, hogy a dataset kapcsolása megfelelő megoldás sablon haszná
 
 Az alábbi szakaszok ismertetik a szakaszok kell módosítani a kiszolgálóalkalmazásokat, amikor új adatkészlet megjelent-sablon.
 
-### <a name="azure-event-hub"></a>Az Azure Event Hubs
+### <a name="azure-event-hub"></a>Azure Event Hub
 A [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) szolgáltatás általános,, úgy, hogy az adatok is közzé lehet tenni a központi vagy a fürt megosztott kötetei szolgáltatás, vagy a JSON formátumban. Az Azure Event Hubs különleges feldolgozás nem történik, de fontos tisztában bele táplált adatok.
 
 Ez a dokumentum nem ismerteti az adatok, de egy egyszerűen küldhet eseményeket vagy adatokat az Azure Event Hubs használatával a [Event Hub API](event-hubs/event-hubs-programming-guide.md).
@@ -180,9 +180,9 @@ Az alábbi lépéseket a megoldás üzembe helyezése során létrehozott Stream
    * Kattintson a "EnergyStreamData" **mezők** panel.
    * Kattintson a **"Időbélyeg"** , és győződjön meg arról, hogy a "Tengely" mutatja. Kattintson a **"Load"** , és győződjön meg arról, hogy a "Értékek" mutatja.
    * Kattintson a **mentése** az első és a "EnergyStreamDataReport" a jelentés neve. A bal oldali ablaktáblán Navigator jelentések szakaszban látható "EnergyStreamDataReport" nevű jelentés.
-   * Kattintson a **"PIN-kód Visual"** ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic6.png) jobb felső sarokban található a vonaldiagram ikonjára, "PIN-kód irányítópult" ablak lehet, hogy jelenik meg, hogy válasszon egy irányítópultot. Válassza a "EnergyStreamDataReport", majd kattintson a "Rögzítés".
+   * Kattintson a **"PIN-kód Visual"** ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic6.png) jobb felső sarokban található a vonaldiagram ikonjára, "PIN-kód irányítópult" ablak lehet, hogy jelenik meg, hogy válasszon egy irányítópultot. Select "EnergyStreamDataReport", then click "Pin".
    * Ez a csempe az irányítópulton keresztül kattintson "Szerkesztés" ikonra jobb felső sarokban található az "Igény szerint időbélyeg" címet módosíthatja az egérrel
-4. Hozzon létre másik irányítópult-csempéihez megfelelő adatkészletek alapján. A végső irányítópult-nézet:![](media/cortana-analytics-technical-guide-demand-forecast/PBIFullScreen.png)
+4. Hozzon létre másik irányítópult-csempéihez megfelelő adatkészletek alapján. A végső irányítópult-nézet: ![](media/cortana-analytics-technical-guide-demand-forecast/PBIFullScreen.png)
 
 ### <a name="setup-cold-path-dashboard"></a>A telepítő Cold elérési irányítópult
 Cold elérési adatok feldolgozási az alapvető célja az igény szerinti előrejelzés minden egyes régió beolvasása. A Power BI csatlakozik Azure SQL-adatbázis adatforrásként, az előrejelzési eredmények tárolásához.
@@ -213,7 +213,7 @@ Cold elérési adatok feldolgozási az alapvető célja az igény szerinti előr
 3. (Választható) A cold elérési irányítópultot közzététele [Power BI online](http://www.powerbi.com/). Vegye figyelembe, hogy ez a lépés a Power BI fiókot (vagy Office 365-fiókkal) kell-e.
 
    * Kattintson a **"Publish"** és néhány másodperc múlva megjelenik egy ablak megjelenítése a "Power BI sikeres közzététel!" a zöld pipa jelzi. A következő "Megnyitás demoprediction.pbix Power BI-ban" hivatkozásra kattintva. Részletes utasításokat talál [a Power BI Desktop közzététele](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop).
-   * Új irányítópult létrehozása: kattintson a  **+**  jelentkezzen mellett a **irányítópultok** szakaszt, a bal oldali ablaktáblán. Adja meg az új irányítópult "Igény szerinti előrejelzés bemutató" nevét.
+   * Új irányítópult létrehozása: kattintson a **+** jelentkezzen mellett a **irányítópultok** szakaszt, a bal oldali ablaktáblán. Adja meg az új irányítópult "Igény szerinti előrejelzés bemutató" nevét.
    * Ha a jelentés megnyitásához kattintson ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic6.png) rögzítése az irányítópulton való rögzítéséhez képi megjelenítések. Részletes utasításokat talál [egy csempe rögzítése egy Power BI-irányítópult a jelentés](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report).
      Ugrás az irányítópult-oldalon, és méretének és a képi megjelenítések helyét és szerkessze a címben. Részletes utasításokat talál szerkesztése a csempéket a [Szerkesztés mozaik – átméretezési, move, nevezze át, PIN-kód, törlése, hivatkozás hozzáadása a](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename). Íme egy példa irányítópult néhány cold elérési megjelenítésekkel azt van rögzítve.
 

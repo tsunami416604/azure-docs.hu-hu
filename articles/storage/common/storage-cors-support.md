@@ -1,6 +1,6 @@
 ---
-title: "Eltérő eredetű erőforrások megosztása (CORS) támogatást |} Microsoft Docs"
-description: "Ismerje meg a CORS-támogatás engedélyezése a Microsoft Azure tárolási szolgáltatásokhoz."
+title: Eltérő eredetű erőforrások megosztása (CORS) támogatást |} Microsoft Docs
+description: Ismerje meg a CORS-támogatás engedélyezése a Microsoft Azure tárolási szolgáltatásokhoz.
 services: storage
 documentationcenter: .net
 author: cbrooksmsft
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 2/22/2017
 ms.author: cbrooks
 ms.openlocfilehash: 8d189d3ec3e6081dd37b912824f287cd75f39b35
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Eltérő eredetű erőforrások megosztása (CORS) támogatása az Azure Storage szolgáltatások
 2013-08-15 verziójával kezdve az Azure storage szolgáltatások támogatja az eltérő eredetű erőforrások megosztása (CORS) a Blob, Table, várólista és fájl számára. A CORS az HTTP szolgáltatása: lehetővé teszi, hogy a webalkalmazás fut egy tartomány egy másik tartományban lévő erőforrások eléréséhez. Webböngészők néven ismert biztonsági korlátozások megvalósítása [azonos eredetű házirend](http://www.w3.org/Security/wiki/Same_Origin_Policy) , amely megakadályozza, hogy egy másik tartományban; hívási API-weblap A CORS engedélyezése tartománya (a forrástartomány) API-k hívására egy másik tartományban biztonságos lehetőséget biztosít. Tekintse meg a [CORS specification](http://www.w3.org/TR/cors/) CORS leírását.
@@ -71,7 +71,7 @@ Itt látható egy minta egy CORS szabályt, a szolgáltatás tulajdonságainak b
 
 A CORS szabályban foglalt egyes elemei az alábbiakban olvasható:
 
-* **AllowedOrigins**: A eredettartományból, szemben a társzolgáltatás keresztül CORS kérés számára. A forrástartomány a tartományhoz, ahonnan a kérés származik. Vegye figyelembe, hogy a forrás a forrás, amely a felhasználói kora küld a szolgáltatásnak a kis-és nagybetűket pontosan egyeznie kell lennie. A helyettesítő karakter is használható ' *' minden eredettartományból kéréseket a CORS segítségével történő engedélyezéséhez. A fenti példában, a tartományok [http://www.contoso.com](http://www.contoso.com) és [http://www.fabrikam.com](http://www.fabrikam.com) kéréseiket a CORS használatával szolgáltatásra.
+* **AllowedOrigins**: A eredettartományból, szemben a társzolgáltatás keresztül CORS kérés számára. A forrástartomány a tartományhoz, ahonnan a kérés származik. Vegye figyelembe, hogy a forrás a forrás, amely a felhasználói kora küld a szolgáltatásnak a kis-és nagybetűket pontosan egyeznie kell lennie. A helyettesítő karakter is használható ' *' minden eredettartományból kéréseket a CORS segítségével történő engedélyezéséhez. A fenti példában, a tartományok [ http://www.contoso.com ](http://www.contoso.com) és [ http://www.fabrikam.com ](http://www.fabrikam.com) kéréseiket a CORS használatával szolgáltatásra.
 * **AllowedMethods**: A (HTTP-kérelem műveletek) használó metódusok a forrástartomány előfordulhat, hogy a CORS-kérelemre. A fenti példában csak a PUT és a GET kérelmek engedélyezettek.
 * **AllowedHeaders**: A kérelem fejlécében, hogy a forrástartomány adhatnak meg a CORS kérésre. A fenti példában az x-ms-metaadatok, x-ms-metaadat-tároló és az x-ms-meta-abc kezdve minden metaadat fejléc engedélyezett. Vegye figyelembe, hogy a helyettesítő karakter "*" jelzi, hogy engedélyezve van-e a-tól kezdődően fejlécben megadott előtag.
 * **ExposedHeaders**: a CORS-kérelemre válaszként küldött és jelennek meg, ha a böngésző számára a kérelmet kibocsátó response fejlécekkel együtt. A fenti példában az a böngésző teszi közzé a-tól kezdődően fejléc x-ms-meta arra utasította.
@@ -86,7 +86,7 @@ CORS-szabályokat a következő korlátozások vonatkoznak:
 * Egy engedélyezett fejléc, kitett fejléc vagy eredet engedélyezett hosszát nem lehet hosszabb 256 karakternél.
 * Megengedett fejlécek és elérhetőségi fejlécek lehetnek:
   * Literális fejlécek, ahol a pontos fejlécnév valósul meg, például a **x-ms-meta-feldolgozott**. A kérésre egy legfeljebb 64 literális fejlécek adható meg.
-  * Fejlécek, ahol a fejléc előtag valósul meg, például a következő előtaggal **x-ms-metaadatok***. Adja meg a előtag ily módon lehetővé teszi, és elérhetővé teszi a fejlécet, amely a megadott előtaggal kezdődik. A kérésre legfeljebb két oszloplistájában fejléc adható meg.
+  * Fejlécek, ahol a fejléc előtag valósul meg, például a következő előtaggal ** x-ms-meta-data x. Adja meg a előtag ily módon lehetővé teszi, és elérhetővé teszi a fejlécet, amely a megadott előtaggal kezdődik. A kérésre legfeljebb két oszloplistájában fejléc adható meg.
 * A módszerek (vagy a HTTP-műveletek) szerepel a **AllowedMethods** elemet meg kell felelnie az Azure storage szolgáltatás API-k által támogatott módszerek. Támogatott módszereket törlése, GET, HEAD, egyesítési, POST, beállítások és a PUT.
 
 ## <a name="understanding-cors-rule-evaluation-logic"></a>CORS értékelési szabálylogikával ismertetése
@@ -133,9 +133,9 @@ Ezt követően vegye figyelembe a következő CORS kérelmeket:
 
 | Kérés |  |  | Válasz |  |
 | --- | --- | --- | --- | --- |
-| **Módszer** |**Forrás** |**Kérelem fejlécei** |**A szabály egyezés** |**Eredménye** |
-| **A PUT** |http://www.contoso.com |x-ms-blob-tartalomtípus |Első szabály |Sikeres |
-| **GET** |http://www.contoso.com |x-ms-blob-tartalomtípus |Második szabály |Sikeres |
+| **Módszer** |**Forrás** |**Kérelem fejlécei** |**A szabály egyezés** |**eredménye** |
+| **PUT** |http://www.contoso.com |x-ms-blob-content-type |Első szabály |Sikeres |
+| **GET** |http://www.contoso.com |x-ms-blob-content-type |Második szabály |Sikeres |
 | **GET** |http://www.contoso.com |x-ms-client-request-id |Második szabály |Hiba |
 
 Az első kérelem megfelel az első szabály – a forrástartomány megegyezik az engedélyezett eredetet, a metódus felel meg az engedélyezett metódusok és a fejléc megegyezik az engedélyezett fejlécek – és így sikeres lesz.
@@ -167,7 +167,7 @@ Az alábbi táblázat tartalmazza az Azure storage a korábban említett eset al
 
 | Kérés | Fiók beállítás és a szabály kiértékelés eredménye |  |  | Válasz |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| **Megtalálható a kérelem származási fejléc** |**Ez a szolgáltatás számára megadott CORS szabályok** |**Létezik egyező szabály, amely lehetővé teszi minden eredet (*)** |**Létezik egyező szabály forrás pontos egyezés** |**Válasz Vary fejléce forrás beállítása tartalmazza** |**Válasz tartalmazza a hozzáférés-vezérlési-engedélyezett-forrása: "*"** |**Válasz tartalmazza a hozzáférés-vezérlési-kitett-fejlécek** |
+| **Megtalálható a kérelem származási fejléc** |**Ez a szolgáltatás számára megadott CORS szabályok** |**Létezik egyező szabály, amely lehetővé teszi az összes origins(*)** |**Létezik egyező szabály forrás pontos egyezés** |**Válasz Vary fejléce forrás beállítása tartalmazza** |**Válasz tartalmazza a hozzáférés-vezérlési-engedélyezett-forrása: "*"** |**Válasz tartalmazza a hozzáférés-vezérlési-kitett-fejlécek** |
 | Nem |Nem |Nem |Nem |Nem |Nem |Nem |
 | Nem |Igen |Nem |Nem |Igen |Nem |Nem |
 | Nem |Igen |Igen |Nem |Nem |Igen |Igen |
@@ -181,7 +181,7 @@ Sikeres ellenőrzés kéri, ha engedélyezte a fiók a tárolási szolgáltatás
 
 Sikertelen ellenőrzés kérelmek nem lesz terhelve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Blob szolgáltatás tulajdonságainak beállítása](https://msdn.microsoft.com/library/hh452235.aspx)
 
 [Várólista-szolgáltatás tulajdonságainak beállítása](https://msdn.microsoft.com/library/hh452232.aspx)

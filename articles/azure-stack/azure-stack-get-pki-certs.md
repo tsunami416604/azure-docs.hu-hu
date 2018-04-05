@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/22/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 4a7432260167b8740567ad4308e102417abad82c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fc2ec96113310f54d32a67ea5fa31725600046c9
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="generate-pki-certificates-for-azure-stack-deployment"></a>Azure Alkalmazásveremben üzembe nyilvános kulcsú infrastruktúra tanúsítványainak előállításához
 Most, hogy tudja [a PKI-tanúsítványkövetelmények](azure-stack-pki-certs.md) Azure verem telepítések esetén be kell szereznie ezeknek a tanúsítványoknak a tanúsítvány hitelesítésszolgáltatói (CA) az Ön által választott. 
@@ -75,4 +75,4 @@ Az alábbi munkafolyamat ismerteti, hogyan testre szabhatja és a korábban lét
 5. **Exportálni, és másolja. A telepítési mappák PFX**. (A titkos kulcsot is beleértve) a tanúsítvány exportálása a. PFX fájlt, és másolja a. PFX-fájlt a telepítési mappák ismertetett [Azure verem PKI követelményektől](azure-stack-pki-certs.md).
 
 ## <a name="next-steps"></a>További lépések
-[Azure verem PKI-tanúsítványok előkészítése](prepare-pki-certs.md)
+[Azure verem PKI-tanúsítványok előkészítése](azure-stack-prepare-pki-certs.md)

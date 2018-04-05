@@ -54,9 +54,9 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | IP-konfiguráció / szabályok | 299 |299 |
 | Előtérbeli IP-konfigurációk, Basic | 10 | 200 |
 | Előtérbeli IP-konfigurációk, a Standard | 10 | 600 |
-| A háttérkészlet, Basic | 100, egy rendelkezésre állási csoport | - |
-| Háttérkészlet, a Standard | 1000, egyetlen virtuális hálózat | - |
-| Magas rendelkezésre ÁLLÁSÚ portok, a Standard | belső előtér / 1 | - |
+| A háttérkészlet, Basic | 100, egy rendelkezésre állási csoport | 100, egy rendelkezésre állási csoport |
+| Háttérkészlet, a Standard | 1000, egyetlen virtuális hálózat | 1000, egyetlen virtuális hálózat |
+| Magas rendelkezésre ÁLLÁSÚ portok, a Standard | belső előtér / 1 | belső előtér / 1 |
 
 Ha meg szeretné növelni a korlátozások alapértelmezett értékeit, [lépjen kapcsolatba az ügyfélszolgálattal](../articles/azure-supportability/resource-manager-core-quotas-request.md ).
 

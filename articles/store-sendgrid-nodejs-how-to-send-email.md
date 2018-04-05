@@ -1,11 +1,11 @@
 ---
-title: "A SendGrid e-mail szolgáltatás (Node.js) használatával |} Microsoft Docs"
-description: "Megtudhatja, hogyan küldjön e-maileket a SendGrid e-mail szolgáltatás az Azure-on. A Kódminták Node.js API használatával."
-services: 
+title: A SendGrid e-mail szolgáltatás (Node.js) használatával |} Microsoft Docs
+description: Megtudhatja, hogyan küldjön e-maileket a SendGrid e-mail szolgáltatás az Azure-on. A Kódminták Node.js API használatával.
+services: ''
 documentationcenter: nodejs
 author: erikre
 manager: wpickett
-editor: 
+editor: ''
 ms.assetid: cac444b4-26b0-45ea-9c3d-eca28d57dacb
 ms.service: multiple
 ms.workload: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
 ms.openlocfilehash: 327cea3a24cc47a9cc463b37cc2346ebc475ef7f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>Hogyan küldhet e-mailek SendGrid Node.js-ből
 Ez az útmutató bemutatja, hogyan Azure a SendGrid e-mail szolgáltatás közös programozási feladatok elvégzéséhez. A minták íródtak, a Node.js API használatával. Az ismertetett forgatókönyvek **hozhat létre, e-mailek**, **e-mailek küldéséhez**, **mellékletek hozzáadása**, **szűrőkkel**, és **tulajdonságainak frissítése**. A SendGrid és e-mailek küldéséhez további információkért lásd: a [lépések](#next-steps) szakasz.
@@ -33,7 +33,7 @@ SendGrid van egy [felhőalapú szolgáltatás] biztosít megbízható [tranzakci
 * Ügyfél-lekérdezések továbbítása
 * E-mail értesítések az alkalmazásról
 
-További információkért lásd: [https://sendgrid.com](https://sendgrid.com).
+Tovább információ: [https://sendgrid.com](https://sendgrid.com).
 
 ## <a name="create-a-sendgrid-account"></a>A SendGrid-fiók létrehozása
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
@@ -123,7 +123,7 @@ Szűrők használatával is alkalmazható egy üzenetet a **szűrők** tulajdons
 Minden egyes szűrő szűrő-specifikus beállításokat tartalmazó kivonat szerint van megadva.
 Az alábbi példák bemutatják, a láblécben, majd kattintson a szűrő nyomon követése:
 
-### <a name="footer"></a>Élőláb
+### <a name="footer"></a>Lábléc
     var email = new sendgrid.Email({
         to: 'john@contoso.com',
         from: 'anna@contoso.com',
@@ -161,7 +161,7 @@ Az alábbi példák bemutatják, a láblécben, majd kattintson a szűrő nyomon
     sendgrid.send(email);
 
 ## <a name="how-to-update-email-properties"></a>Útmutató: E-mail tulajdonságainak frissítése
-Néhány e-mail tulajdonság használatával felülírható  **beállítása*tulajdonság***, illetve használatával  **hozzáadása*tulajdonság***. Például hozzáadhat további címzetteket használatával
+Néhány e-mail tulajdonság használatával felülírható **beállítása * tulajdonság***, illetve használatával **hozzáadása*tulajdonság x. Például hozzáadhat további címzetteket használatával
 
     email.addTo('jeff@contoso.com');
 
@@ -175,12 +175,12 @@ További információkért lásd: [sendgrid-nodejs][sendgrid-nodejs].
 ## <a name="how-to-use-additional-sendgrid-services"></a>Útmutató: további SendGrid szolgáltatásokkal
 SendGrid webes API-k segítségével kihasználhatja az Azure alkalmazásról további SendGrid funkciókat kínál. Teljes részletekért lásd: a [SendGrid API-JÁNAK dokumentációja][SendGrid API documentation].
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy megismerte a SendGrid E-mail szolgáltatás alapjait, az alábbi hivatkozásokból további.
 
 * SendGrid Node.js modul tárház: [sendgrid-nodejs][sendgrid-nodejs]
-* SendGrid API dokumentációjának: <https://sendgrid.com/docs>
-* SendGrid különleges ajánlat Azure ügyfeleknek: [http://sendgrid.com/azure.html](https://sendgrid.com/windowsazure.html)
+* SendGrid API-dokumentáció: <https://sendgrid.com/docs>
+* SendGrid a különleges ajánlat Azure ügyfelek esetén: [http://sendgrid.com/azure.html](https://sendgrid.com/windowsazure.html)
 
 [special offer]: https://sendgrid.com/windowsazure.html
 [sendgrid-nodejs]: https://github.com/sendgrid/sendgrid-nodejs

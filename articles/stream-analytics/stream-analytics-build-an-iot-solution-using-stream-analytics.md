@@ -15,14 +15,14 @@ ms.workload: data-services
 ms.date: 03/21/2018
 ms.author: sngun
 ms.openlocfilehash: b36833a9fe35f14eba6d9e397eb0958b716b313b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Az IoT-megoldás létrehozása a Stream Analytics segítségével
 
-## <a name="introduction"></a>Bemutatás
+## <a name="introduction"></a>Bevezetés
 Ebben az oktatóanyagban megtudhatja hogyan Azure Stream Analytics segítségével valós idejű elemzések lekérése az adataiból. A fejlesztők könnyedén kombinálhatja adatstreamek, például kattintás-adatfolyamok, a naplókat és az eszköz által létrehozott események előzményrekordjaira vagy üzleti elemzéseket kapcsolattípusokból referenciaadatok. Teljes körűen felügyelt, valós idejű stream számítási szolgáltatás, amely a Microsoft Azure-ban Azure Stream Analytics biztosít, beépített hibatűrési, alacsony késéssel és méretezhetőség terén annak érdekében, hogy másolatot és futtató percben.
 
 Ez az oktatóanyag befejezése után fogja tudni:
@@ -58,9 +58,9 @@ A bejegyzés adatfolyam autók információkat tartalmaz, téren állomások kap
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
 | 3 |2014-09-10 12:02:00.000 |ABC 1004 |CT |Ford |Taurus |1 |0 |5 |456789123 |
-| 2. |2014-09-10 12:03:00.000 |XYZ 1003 |CT |Toyota |Corolla |1 |0 |4 | |
+| 2 |2014-09-10 12:03:00.000 |XYZ 1003 |CT |Toyota |Corolla |1 |0 |4 | |
 | 1 |2014-09-10 12:03:00.000 |BNJ 1007 |NY |Honda |CRV |1 |0 |5 |789123456 |
-| 2. |2014-09-10 12:05:00.000 |CDE 1007 |NJ |Toyota |4x4 |1 |0 |6 |321987654 |
+| 2 |2014-09-10 12:05:00.000 |CDE 1007 |NJ |Toyota |4x4 |1 |0 |6 |321987654 |
 
 Az oszlopok rövid leírása itt található:
 
@@ -85,9 +85,9 @@ A kilépési adatfolyam a téren állomás elhagyása autók információkat tar
 | 1 |2014-09-10T12:03:00.0000000Z |JNB 7001 |
 | 1 |2014-09-10T12:03:00.0000000Z |YXZ 1001 |
 | 3 |2014-09-10T12:04:00.0000000Z |ABC 1004 |
-| 2. |2014-09-10T12:07:00.0000000Z |XYZ 1003 |
+| 2 |2014-09-10T12:07:00.0000000Z |XYZ 1003 |
 | 1 |2014-09-10T12:08:00.0000000Z |BNJ 1007 |
-| 2. |2014-09-10T12:07:00.0000000Z |CDE 1007 |
+| 2 |2014-09-10T12:07:00.0000000Z |CDE 1007 |
 
 Az oszlopok rövid leírása itt található:
 

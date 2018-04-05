@@ -12,7 +12,7 @@
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
 | Lemezméret           | 32 GB | 64 GB | 128 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
 | IOPS-érték lemezenként       | 120   | 240   | 500   | 2300              | 5000              | 7500              | 7500              | 
-| Adattovábbítás lemezenként | 25 MB/s | 50 MB/s  | 100 MB/s | 150 MB/s | 200 MB/s | 250 MB/s | 250 MB/s |
+| Adattovábbítás lemezenként | 25 MB/s | 50 MB/s  | 100 MB/s | 150 MB/sec | 200 MB/s | 250 MB/s | 250 MB/s |
 
 **Prémium felügyelt virtuálisgép-lemezek: virtuális gépenkénti korlátok**
 

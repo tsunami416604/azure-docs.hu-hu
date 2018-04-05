@@ -1,11 +1,11 @@
 ---
-title: "A Mobile Apps és a Mobile Services SDK versioning ügyfél és kiszolgáló |} Microsoft Docs"
-description: "A Mobile Services és az Azure Mobile Apps server SDK verzióival való kompatibilitás és az ügyfél SDK-k listája"
+title: A Mobile Apps és a Mobile Services SDK versioning ügyfél és kiszolgáló |} Microsoft Docs
+description: A Mobile Services és az Azure Mobile Apps server SDK verzióival való kompatibilitás és az ügyfél SDK-k listája
 services: app-service\mobile
-documentationcenter: 
+documentationcenter: ''
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 35b19672-c9d6-49b5-b405-a6dcd1107cd5
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 37bf36af535eb9b5c8b0ba38434b71f1a6686811
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>A Mobile Apps és a Mobile Services ügyfél és kiszolgáló versioning
 Azure Mobile Services legújabb verziója a **Mobile Apps** az Azure App Service szolgáltatást.
@@ -35,7 +35,7 @@ A kulcs `ZUMO-API-VERSION` vagy a HTTP-fejléc, vagy a lekérdezési karakterlá
 
 Példa:
 
-Https://service.azurewebsites.net/tables/TodoItem beolvasása
+GET https://service.azurewebsites.net/tables/TodoItem
 
 FEJLÉCEK: ZUMO-API-VERZIÓ: 2.0.0
 
@@ -68,7 +68,7 @@ Az alábbi táblázat az ügyfél SDK-k kompatibilisek-e **Mobile Services**.
 
 Megjegyzés: a Mobile Services-ügyfél SDK-k *nem* fejléc értéke küldési `ZUMO-API-VERSION`. Ha a szolgáltatás a fejléc vagy a lekérdezési karakterláncokra vonatkozó értéket kap olyan hibaüzenetet küld, kivéve, ha rendelkezik explicit módon választotta ki a fent leírt módon.
 
-### <a name="MobileServicesClients"></a>Mobile *szolgáltatások* ügyfél SDK-k
+### <a name="MobileServicesClients"></a> Mobile *szolgáltatások* ügyfél SDK-k
 | Ügyfélplatform | Verzió | A verziófejléc-érték |
 | --- | --- | --- |
 | Felügyelt ügyfél (Windows, Xamarin) |[1.3.2](https://www.nuget.org/packages/WindowsAzure.MobileServices/1.3.2) |n/a |
@@ -79,20 +79,20 @@ Megjegyzés: a Mobile Services-ügyfél SDK-k *nem* fejléc értéke küldési `
 ### <a name="mobile-services-server-sdks"></a>Mobile *szolgáltatások* server SDK-k
 | Kiszolgáló platform | Verzió | Elfogadott verzió fejléc |
 | --- | --- | --- |
-| .NET |[WindowsAzure.MobileServices.Backend.* verzió 1.0.x](https://www.nuget.org/packages/WindowsAzure.MobileServices.Backend/) |** Nem verziófejléc ** |
+| .NET |[WindowsAzure.MobileServices.Backend.* Version 1.0.x](https://www.nuget.org/packages/WindowsAzure.MobileServices.Backend/) |** Nem verziófejléc ** |
 | Node.js |(hamarosan elérhető) |**Nincs verzió fejléc** |
 
 <!-- TODO: add Node npm version -->
 
 ### <a name="behavior-of-mobile-services-backends"></a>A Mobile Services háttérkiszolgálókon viselkedése
-| ZUMO-API-VERZIÓ | MS_SkipVersionCheck értéke | Válasz |
+| ZUMO-API-VERSION | MS_SkipVersionCheck értéke | Válasz |
 | --- | --- | --- |
 | Nincs megadva |Bármelyik |200 - OK |
 | Bármely érték |True (Igaz) |200 - OK |
 | Bármely érték |A megadott FALSE/nem |400 - Hibás kérés |
 
 ## <a name="2.0.0"></a>Az Azure Mobile Apps-ügyfél és kiszolgáló
-### <a name="MobileAppsClients"></a>Mobile *alkalmazások* ügyfél SDK-k
+### <a name="MobileAppsClients"></a> Mobile *alkalmazások* ügyfél SDK-k
 Az SDK-ügyfél a következő verziójú indítása verzióellenőrzés jelent a **Azure Mobile Apps**:
 
 | Ügyfélplatform | Verzió | A verziófejléc-érték |
@@ -109,10 +109,10 @@ Verzióellenőrzés szerepel a kiszolgáló SDK verzió a következő:
 | Kiszolgáló platform | SDK | Elfogadott verzió fejléc |
 | --- | --- | --- |
 | .NET |[Microsoft.Azure.Mobile.Server](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) |2.0.0 |
-| Node.js |[Azure-mobileszköz-alkalmazások)](https://www.npmjs.com/package/azure-mobile-apps) |2.0.0 |
+| Node.js |[azure-mobile-apps)](https://www.npmjs.com/package/azure-mobile-apps) |2.0.0 |
 
 ### <a name="behavior-of-mobile-apps-backends"></a>Mobile Apps háttérkiszolgálókon viselkedése
-| ZUMO-API-VERZIÓ | MS_SkipVersionCheck értéke | Válasz |
+| ZUMO-API-VERSION | MS_SkipVersionCheck értéke | Válasz |
 | --- | --- | --- |
 | NULL értékű vagy x.y.z |True (Igaz) |200 - OK |
 | NULL értékű |A megadott FALSE/nem |400 - Hibás kérés |

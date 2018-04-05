@@ -1,8 +1,8 @@
 ---
-title: "Azure Cosmos DB kérések és a tárolási figyelése |} Microsoft Docs"
-description: "Útmutató a teljesítménymutatók, például a kérelmek és a kiszolgáló hibát, és a szoftverhasználati mérési adatok, például a tároló fogyasztása Azure Cosmos DB fiókja."
+title: Azure Cosmos DB kérések és a tárolási figyelése |} Microsoft Docs
+description: Útmutató a teljesítménymutatók, például a kérelmek és a kiszolgáló hibát, és a szoftverhasználati mérési adatok, például a tároló fogyasztása Azure Cosmos DB fiókja.
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: mimig1
 manager: jhubbard
 editor: cgronlun
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/19/2017
 ms.author: mimig
 ms.openlocfilehash: 0e9a47e6a1a5c7a44c5553742d6c5c81f8ca7286
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitor-azure-cosmos-db"></a>Az Azure Cosmos DB figyelése
 A Azure Cosmos DB-fiókok a figyelheti a [Azure-portálon](https://portal.azure.com/). Minden Azure Cosmos DB fiók metrikák tartalmazó teljes csomag érhető el átviteli, a tároló, a rendelkezésre állási, a késés és a konzisztencia figyelése.
@@ -72,7 +72,7 @@ Metrikák áttekintheti a fiók lapon, az új mérőszámok lap vagy az Azure-fi
 A fiók szintű metrikák elérhető a portálon, például a fiók tárolási használati és a végösszeg kérelmeket, az SQL API-k segítségével nem érhetők el. Használati adatok, a gyűjtemény szintjén azonban az SQL API-k használatával kérheti le. Gyűjtemény szolgáltatásiszint-adatok beolvasása, tegye a következőket:
 
 * A REST API-t használandó [végezze el a gyűjtemény egy GET](https://msdn.microsoft.com/library/mt489073.aspx). A kvóta- és használati adatokat a gyűjtemény eredmény abban az esetben az x-ms-erőforráskvótát és az x-ms-erőforrás-használat fejlécek, a válaszban.
-* A .NET SDK használatához a [DocumentClient.ReadDocumentCollectionAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync.aspx) metódus, amely adja vissza egy [ResourceResponse](https://msdn.microsoft.com/library/dn799209.aspx) például tartalmazó használati tulajdonság ** CollectionSizeUsage**, **DatabaseUsage**, **DocumentUsage**, stb.
+* A .NET SDK használatához a [DocumentClient.ReadDocumentCollectionAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync.aspx) metódus, amely adja vissza egy [ResourceResponse](https://msdn.microsoft.com/library/dn799209.aspx) például tartalmazó használati tulajdonság  **CollectionSizeUsage**, **DatabaseUsage**, **DocumentUsage**, stb.
 
 További metrikák elérésére, a [Azure figyelő SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights). Elérhető metrikai meghatározásainak hívásával kérhető:
 

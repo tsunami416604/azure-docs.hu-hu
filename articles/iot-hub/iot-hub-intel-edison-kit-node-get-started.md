@@ -1,12 +1,12 @@
 ---
-title: "Intel Edison felhőbe (Node.js) - Intel Edison csatlakozzon az Azure IoT Hub |} Microsoft Docs"
-description: "Megtudhatja, hogyan kell beállítania, és Azure IoT-központ Intel Edison adatokat küldeni az Azure felhőalapú platform ebben az oktatóanyagban Intel Edison csatlakozni."
+title: Intel Edison felhőbe (Node.js) - Intel Edison csatlakozzon az Azure IoT Hub |} Microsoft Docs
+description: Megtudhatja, hogyan kell beállítania, és Azure IoT-központ Intel Edison adatokat küldeni az Azure felhőalapú platform ebben az oktatóanyagban Intel Edison csatlakozni.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: shizn
 manager: timlt
-tags: 
-keywords: "az Azure iot intel edison, intel edison iot-központot, intel edison adatküldés intel felhőbe edison felhőbe"
+tags: ''
+keywords: az Azure iot intel edison, intel edison iot-központot, intel edison adatküldés intel felhőbe edison felhőbe
 ms.assetid: a7c9cf2d-c102-41b0-aa45-41285c6877eb
 ms.service: iot-hub
 ms.devlang: nodejs
@@ -17,10 +17,10 @@ ms.date: 6/15/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5a31efba704045196b5563f7bc467c773bea7805
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="connect-intel-edison-to-azure-iot-hub-nodejs"></a>Intel Edison csatlakozni az Azure IoT Hub (Node.js)
 
@@ -57,7 +57,7 @@ Az IoT-központ az Ön által létrehozott Intel Edison csatlakozni. Majd futtas
 * Az internethez.
 * A típus egy USB-kábel Micro B
 * A közvetlen aktuális (DC) tápegység. A tápegység kell tekinthető meg az alábbiak szerint:
-  - 7-15V TARTOMÁNYVEZÉRLŐ
+  - 7-15V DC
   - Legalább 1500mA
   - A Központ/belső PIN-kódot kell lennie a pozitív sarkpontot az energiaellátás
 
@@ -204,7 +204,7 @@ Gratulálunk! Sikeresen konfigurálta az Edison.
    nano config.json
    ```
 
-   ![A konfigurációs fájl](media/iot-hub-intel-edison-kit-node-get-started/13_configure_file.png)
+   ![Konfigurációs fájl](media/iot-hub-intel-edison-kit-node-get-started/13_configure_file.png)
 
    Két makrók van ebben a fájlban configurate is. Az első egy `INTERVAL`, amely megadja, hogy két felhőbe küldött üzeneteket közötti időközt. A második érték `simulatedData`, vagyis az, hogy szimulált érzékelőadatait vagy nem logikai értéket.
 
@@ -226,7 +226,7 @@ A következő kimeneti bemutatja az érzékelő adatokat és az IoT hub küldöt
 
 ![Kimeneti - érzékelő adatokat küldött az Intel Edison az IoT hubhoz](media/iot-hub-intel-edison-kit-node-get-started/15_message_sent.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Egy mintaalkalmazás érzékelő adatokat gyűjteni, és küldje el az IoT hub futtatását.
 

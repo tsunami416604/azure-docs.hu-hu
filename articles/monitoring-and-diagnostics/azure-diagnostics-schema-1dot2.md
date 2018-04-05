@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Diagnostics 1.2-es konfigurációs séma |} Microsoft Docs"
-description: "CSAK akkor érvényes, ha Azure virtuális gépek, a virtuálisgép-méretezési csoportok, a Service Fabric vagy a Cloud Services Azure SDK 2.5 használ."
+title: Az Azure Diagnostics 1.2-es konfigurációs séma |} Microsoft Docs
+description: CSAK akkor érvényes, ha Azure virtuális gépek, a virtuálisgép-méretezési csoportok, a Service Fabric vagy a Cloud Services Azure SDK 2.5 használ.
 services: monitoring-and-diagnostics
 documentationcenter: .net
 author: rboucher
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: robb
 ms.openlocfilehash: 1e9cc6d0950945df8c4fba74d8e1f6196be224f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-diagnostics-12-configuration-schema"></a>Az Azure Diagnostics 1.2-es konfigurációs séma
 > [!NOTE]
@@ -104,7 +104,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |------------------|-----------------|  
 |**WadCfg**|Kötelező. Konfigurációs beállításait a telemetriai adatok összegyűjtésére.|  
 |**StorageAccount**|Az adatok tárolásához Azure Storage-fiók neve. Ez is adható meg paraméterként a Set-AzureServiceDiagnosticsExtension parancsmag végrehajtása közben.|  
-|**LocalResourceDirectory**|A könyvtár a figyelési ügynök eseményadatok tárolására használt virtuális gépen. Ha nem be van állítva, az alapértelmezett mappát használja:<br /><br /> A munkavégző vagy webes szerepkör:`C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> A virtuális gép:`C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Szükséges attribútumok pedig a következők:<br /><br /> -                      **elérési út** – a rendszer Azure Diagnostics által használandó könyvtárához.<br /><br /> -                      **expandEnvironment** -szabályozza, hogy az elérési útban környezeti változók bontva.|  
+|**LocalResourceDirectory**|A könyvtár a figyelési ügynök eseményadatok tárolására használt virtuális gépen. Ha nem be van állítva, az alapértelmezett mappát használja:<br /><br /> A munkavégző vagy webes szerepkör: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> A virtuális gép: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Szükséges attribútumok pedig a következők:<br /><br /> -                      **elérési út** – a rendszer Azure Diagnostics által használandó könyvtárához.<br /><br /> -                      **expandEnvironment** -szabályozza, hogy az elérési útban környezeti változók bontva.|  
 
 ## <a name="wadcfg-element"></a>WadCFG elem  
 A telemetriai adatok összegyűjtésére konfigurációs beállításokat határoz meg. A következő táblázat a gyermekelemek:  
@@ -117,10 +117,10 @@ A telemetriai adatok összegyűjtésére konfigurációs beállításokat határ
 |**Könyvtárak**|Lehetővé teszi, hogy egy könyvtárat, az IIS nem tudta belépési kérelem naplók és/vagy IIS-napló tartalmát gyűjteménye. Nem kötelező attribútum:<br /><br /> **scheduledTransferPeriod** -tároló ütemezett átvitelek között felfelé kerekítve a legközelebbi perc. Az érték egy [XML "Duration adattípusú."](http://www.w3schools.com/schema/schema_dtypes_date.asp)|  
 |**EtwProviders**|Konfigurálja az EventSource ETW-eseményeinek gyűjtése és/vagy a szolgáltatók ETW Manifest alapján.|  
 |**Metrikák**|Ez az elem lehetővé teszi a gyors lekérdezéseket optimalizált teljesítményt számláló tábla létrehozásához. Minden, a megadott teljesítményszámláló a **PerformanceCounters** elem a metrikák tábla mellett a teljesítményszámláló tábla tárolja. Kötelező attribútum:<br /><br /> **resourceId** -Ez az erőforrás-azonosítója, a virtuális gép Azure Diagnostics meg tudja telepít. Beolvasása a **resourceID** a a [Azure-portálon](https://portal.azure.com). Válassza ki **Tallózás** -> **erőforráscsoportok** -> **< név\>**. Kattintson a **tulajdonságok** csempére, majd másolja az értéket a **azonosító** mező.|  
-|**PerformanceCounters**|Lehetővé teszi, hogy a teljesítményszámlálók gyűjteményét. Nem kötelező attribútum:<br /><br /> **scheduledTransferPeriod** -tároló ütemezett átvitelek között felfelé kerekítve a legközelebbi perc. Az érték egy [XML "Duration adattípus".](http://www.w3schools.com/schema/schema_dtypes_date.asp)|  
+|**performanceCounters**|Lehetővé teszi, hogy a teljesítményszámlálók gyűjteményét. Nem kötelező attribútum:<br /><br /> **scheduledTransferPeriod** -tároló ütemezett átvitelek között felfelé kerekítve a legközelebbi perc. Az érték egy [XML "Duration adattípus".](http://www.w3schools.com/schema/schema_dtypes_date.asp)|  
 |**WindowsEventLog**|Lehetővé teszi a gyűjteményt, a Windows eseménynaplóiban keresse meg. Nem kötelező attribútum:<br /><br /> **scheduledTransferPeriod** -tároló ütemezett átvitelek között felfelé kerekítve a legközelebbi perc. Az érték egy [XML "Duration adattípus".](http://www.w3schools.com/schema/schema_dtypes_date.asp)|  
 
-## <a name="crashdumps-element"></a>CrashDumps elem  
+## <a name="crashdumps-element"></a>CrashDumps Element  
  Lehetővé teszi, hogy összeomlási memóriaképek gyűjteménye. A következő táblázat a gyermekelemek:  
 
 |Elem neve|Leírás|  
@@ -161,7 +161,7 @@ A telemetriai adatok összegyűjtésére konfigurációs beállításokat határ
 |**EtwEventSourceProviderConfiguration**|Konfigurálja az előállított eseményeinek gyűjtése [EventSource osztály](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). Kötelező attribútum:<br /><br /> **szolgáltató** -az EventSource esemény osztály neve.<br /><br /> Nem kötelező attribútumok pedig a következők:<br /><br /> -                     **scheduledTransferLogLevelFilter** – a minimális súlyossági szintet a tárfiók át.<br /><br /> -                     **scheduledTransferPeriod** -tároló ütemezett átvitelek között felfelé kerekítve a legközelebbi perc. Az érték egy [XML-időtartam adattípust](http://www.w3schools.com/schema/schema_dtypes_date.asp).|  
 |**EtwManifestProviderConfiguration**|Kötelező attribútum:<br /><br /> **szolgáltató** -esemény szolgáltatójának a GUID-azonosító<br /><br /> Nem kötelező attribútumok pedig a következők:<br /><br /> - **scheduledTransferLogLevelFilter** – a minimális súlyossági szintet a tárfiók át.<br /><br /> -                     **scheduledTransferPeriod** -tároló ütemezett átvitelek között felfelé kerekítve a legközelebbi perc. Az érték egy [XML-időtartam adattípust](http://www.w3schools.com/schema/schema_dtypes_date.asp).|  
 
-## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration elem  
+## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration Element  
  Konfigurálja az előállított eseményeinek gyűjtése [EventSource osztály](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). A következő táblázat a gyermekelemek:  
 
 |Elem neve|Leírás|  
@@ -169,7 +169,7 @@ A telemetriai adatok összegyűjtésére konfigurációs beállításokat határ
 |**DefaultEvents**|Nem kötelező attribútum:<br /><br /> **eventDestination** -tárolja az eseményeket az a táblázat neve|  
 |**Esemény**|Kötelező attribútum:<br /><br /> **azonosító** -esemény azonosítója.<br /><br /> Nem kötelező attribútum:<br /><br /> **eventDestination** -tárolja az eseményeket az a táblázat neve|  
 
-## <a name="etwmanifestproviderconfiguration-element"></a>EtwManifestProviderConfiguration elem  
+## <a name="etwmanifestproviderconfiguration-element"></a>EtwManifestProviderConfiguration Element  
  A következő táblázat a gyermekelemek:  
 
 |Elem neve|Leírás|  
@@ -191,16 +191,16 @@ A telemetriai adatok összegyűjtésére konfigurációs beállításokat határ
 |------------------|-----------------|  
 |**PerformanceCounterConfiguration**|A következő attribútumok szükségesek:<br /><br /> -                     **counterSpecifier** -teljesítményszámláló nevét. Például: `\Processor(_Total)\% Processor Time`. Teljesítmény listájának beolvasása a gazdagépen futó számlálók futtassa a parancsot `typeperf`.<br /><br /> -                     **sampleRate** -gyakoriságát. a számláló mintát venni.<br /><br /> Nem kötelező attribútum:<br /><br /> **egység** -számláló mértékegysége.|  
 
-## <a name="performancecounterconfiguration-element"></a>PerformanceCounterConfiguration elem  
+## <a name="performancecounterconfiguration-element"></a>PerformanceCounterConfiguration Element  
  A következő táblázat a gyermekelemek:  
 
 |Elem neve|Leírás|  
 |------------------|-----------------|  
-|**Megjegyzés**|Kötelező attribútum:<br /><br /> **displayName** -számláló megjelenített neve<br /><br /> Nem kötelező attribútum:<br /><br /> **területi beállítás** -a területi beállítás jelenjen meg a számláló neve|  
+|**annotation**|Kötelező attribútum:<br /><br /> **displayName** -számláló megjelenített neve<br /><br /> Nem kötelező attribútum:<br /><br /> **területi beállítás** -a területi beállítás jelenjen meg a számláló neve|  
 
 ## <a name="windowseventlog-element"></a>WindowsEventLog elem  
  A következő táblázat a gyermekelemek:  
 
 |Elem neve|Leírás|  
 |------------------|-----------------|  
-|**Adatforrás**|A Windows eseménynaplóiban gyűjtéséhez. Kötelező attribútum:<br /><br /> **név** – a windows-eseményeket tudjon gyűjteni leíró XPath-lekérdezést. Példa:<br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> Minden eseményt gyűjt, adja meg a "*".|
+|**DataSource**|A Windows eseménynaplóiban gyűjtéséhez. Kötelező attribútum:<br /><br /> **név** – a windows-eseményeket tudjon gyűjteni leíró XPath-lekérdezést. Példa:<br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> Minden eseményt gyűjt, adja meg a "*".|

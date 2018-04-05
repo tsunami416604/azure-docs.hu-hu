@@ -1,13 +1,29 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: storage
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 04/03/2018
+ms.author: tamram
+ms.custom: include file
+ms.openlocfilehash: 6381f8f0e68853183fc3e17e76b4ab93b152b48b
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 04/05/2018
+---
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
 | Régiónként storage-fiókok száma | 200<sup>1</sup> |
 | A maximális tárolókapacitás fiók | 500 TiB<sup>2</sup> |
 | Blob tárolók, blobok, fájlmegosztások, táblák, üzenetsorok, entitásokat vagy tárfiók üzenetek maximális száma | Korlátlan |
 | A tárfiók / maximális lekérdezési gyakorisága | 20 000 kérelmek / másodperc<sup>2</sup> |
-| Maximális érkező<sup>3</sup> tárolási fiókonként (US régió) | Ha a ZRS RA-GRS vagy GRS 10 GB/s<sup>4</sup> engedélyezve van, az LRS 20 GB/s<sup>2</sup> |
-| Maximális kilépő<sup>3</sup> tárolási fiókonként (US régió) | Ha a ZRS RA-GRS vagy GRS 20 GB/s<sup>4</sup> engedélyezve van, az LRS 30 GB/s<sup>2</sup> |
-| Maximális érkező<sup>3</sup> tárolási fiókonként (Amerikai Egyesült régiókban) | Ha a ZRS RA-GRS vagy GRS 5 GB/s<sup>4</sup> engedélyezve van, az LRS 10 GB/s<sup>2</sup> |
-| Maximális kilépő<sup>3</sup> tárolási fiókonként (Amerikai Egyesült régiókban) | Ha a ZRS RA-GRS vagy GRS 10 GB/s<sup>4</sup> engedélyezve van, az LRS 15 GB/s<sup>2</sup> |
+| Maximális érkező<sup>3</sup> tárolási fiókonként (US régió) | Ha az RA-GRS vagy GRS engedélyezve van, az LRS/ZRS 20 GB/s 10 GB/s<sup>4</sup> |
+| Maximális kilépő<sup>3</sup> tárolási fiókonként (US régió) | Ha az RA-GRS vagy GRS engedélyezve van, az LRS/ZRS 30 GB/s 20 GB/s<sup>4</sup> |
+| Maximális érkező<sup>3</sup> tárolási fiókonként (Amerikai Egyesült régiókban) | Ha az RA-GRS vagy GRS engedélyezve van, az LRS/ZRS 10 GB/s 5 GB/s<sup>4</sup> |
+| Maximális kilépő<sup>3</sup> tárolási fiókonként (Amerikai Egyesült régiókban) | Ha az RA-GRS vagy GRS engedélyezve van, az LRS/ZRS 15 GB/s 10 GB/s<sup>4</sup> |
 
 <sup>1</sup>magában foglalja a Standard és prémium szintű storage-fiókok. Ha több mint 200 tárfiókra van szüksége, nyújtson be egy kérést az [Azure ügyfélszolgálatán](https://azure.microsoft.com/support/faq/) keresztül. Az Azure Storage csapata kiértékeli az Ön vállalkozását, és jóváhagyhat legfeljebb 250 tárfiókot. 
 

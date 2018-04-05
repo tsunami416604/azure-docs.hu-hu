@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Diagnostics bővítmény 1.3 és későbbi konfigurációs séma |} Microsoft Docs"
-description: "1.3 sémaverzió és az újabb Azure diagnostics szállított részeként a Microsoft Azure SDK 2.4, később."
+title: Az Azure Diagnostics bővítmény 1.3 és későbbi konfigurációs séma |} Microsoft Docs
+description: 1.3 sémaverzió és az újabb Azure diagnostics szállított részeként a Microsoft Azure SDK 2.4, később.
 services: monitoring-and-diagnostics
 documentationcenter: .net
 author: rboucher
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: robb
 ms.openlocfilehash: 02656c5bb4d2acd944f565d1397984ce94ced0bd
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Az Azure Diagnostics 1.3 és későbbi konfigurációs séma
 > [!NOTE]
@@ -396,7 +396,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**WadCfg**|Kötelező. Ezen az oldalon máshol lásd a leírást.|  
 |**StorageAccount**|Az adatok tárolásához Azure Storage-fiók neve. Előfordulhat, hogy is meg kell adni egy paraméterként a Set-AzureServiceDiagnosticsExtension parancsmag végrehajtása közben.|  
 |**StorageType**|Lehet *tábla*, *Blob*, vagy *TableAndBlob*. Tábla alapértelmezett beállítás. Amikor a TableAndBlob van kiválasztva, diagnosztikai adatok bekerül kétszer – egyszer minden.|  
-|**LocalResourceDirectory**|A könyvtár a virtuális gépen, ahol a a Figyelőügynök események adatait tárolja. Ha nem, állítsa be, az alapértelmezett mappát használja:<br /><br /> A munkavégző vagy webes szerepkör:`C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> A virtuális gép:`C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Szükséges attribútumok pedig a következők:<br /><br /> - **elérési út** – a rendszer Azure Diagnostics által használandó könyvtárához.<br /><br /> - **expandEnvironment** -szabályozza, hogy az elérési útban környezeti változók bontva.|  
+|**LocalResourceDirectory**|A könyvtár a virtuális gépen, ahol a a Figyelőügynök események adatait tárolja. Ha nem, állítsa be, az alapértelmezett mappát használja:<br /><br /> A munkavégző vagy webes szerepkör: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> A virtuális gép: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Szükséges attribútumok pedig a következők:<br /><br /> - **elérési út** – a rendszer Azure Diagnostics által használandó könyvtárához.<br /><br /> - **expandEnvironment** -szabályozza, hogy az elérési útban környezeti változók bontva.|  
 
 ## <a name="wadcfg-element"></a>WadCFG elem  
  *Fa: A gyökérkönyvtár - DiagnosticsConfiguration - PublicConfig - WadCFG*
@@ -423,7 +423,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**Könyvtárak**|Ezen az oldalon máshol lásd a leírást.|  
 |**EtwProviders**|Ezen az oldalon máshol lásd a leírást.|  
 |**Metrikák**|Ezen az oldalon máshol lásd a leírást.|  
-|**PerformanceCounters**|Ezen az oldalon máshol lásd a leírást.|  
+|**performanceCounters**|Ezen az oldalon máshol lásd a leírást.|  
 |**WindowsEventLog**|Ezen az oldalon máshol lásd a leírást.| 
 |**DockerSources**|Ezen az oldalon máshol lásd a leírást. | 
 
@@ -573,7 +573,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|Választható. Meghatározza a maximális időt a rendszer fájltárolók érhetők el a megadott adatokat.<br /><br /> Az alapértelmezett érték 0.|  
 |**scheduledTransferLogLevelFilterr**|**string**|Választható. Meghatározza a naplóbejegyzéseket, amelyeket a minimális súlyossági szintet. Az alapértelmezett érték **meghatározatlan**, amely továbbítja az összes naplófájlt. Más lehetséges értékek (legalább információkat a legtöbb sorrendben): **részletes**, **információk**, **figyelmeztetés**, **hiba**, és **kritikus**.|  
-|**scheduledTransferPeriod**|**időtartam**|Választható. Az időköz ütemezett átvitelek adatok felfelé kerekítve a legközelebbi perc között.<br /><br /> Az alapértelmezett érték PT0S.|  
+|**scheduledTransferPeriod**|**Időtartam**|Választható. Az időköz ütemezett átvitelek adatok felfelé kerekítve a legközelebbi perc között.<br /><br /> Az alapértelmezett érték PT0S.|  
 |**fogadók esetében** 1.5-ös hozzáadva|**string**|Választható. A fogadó hely is a diagnosztikai adatok küldése mutat. Például az Application Insights.|  
 
 ## <a name="dockersources"></a>DockerSources
@@ -608,7 +608,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Elem|Típus|Leírás|  
 |-------------|----------|-----------------|  
 |**Application Insights**|karakterlánc|Csak akkor, amikor adatokat küld az Application Insights használt. Aktív Application Insights-fiók, amely rendelkezik hozzáféréssel a Instrumentation kulcsot tartalmaz.|  
-|**Csatornák**|karakterlánc|Minden további szűréséhez, hogy adatfolyamként küldje el, amikor egy|  
+|**csatornák**|karakterlánc|Minden további szűréséhez, hogy adatfolyamként küldje el, amikor egy|  
 
 ## <a name="channels-element"></a>Csatornák elem  
  *Fa: Gyökér - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - fogadó - csatornák*

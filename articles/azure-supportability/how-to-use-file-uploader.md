@@ -1,11 +1,11 @@
 ---
-title: "A Microsoft Azure új támogatási kérelem fájlfeltöltés segédprogram irányelvek |} Microsoft Docs"
-description: "Az útmutató ismerteti, Microsoft Azure új támogatási kérelem fájlfeltöltés segédprogram használata esetén"
-services: 
-documentationcenter: 
+title: A Microsoft Azure új támogatási kérelem fájlfeltöltés segédprogram irányelvek |} Microsoft Docs
+description: Az útmutató ismerteti, Microsoft Azure új támogatási kérelem fájlfeltöltés segédprogram használata esetén
+services: ''
+documentationcenter: ''
 author: genlin
 manager: mbaldwin
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
 ms.service: azure-supportability
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
 ms.openlocfilehash: eb13bc8012e2d58e1a9b68bb1cf2da11d65e8159
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>A Microsoft Azure új támogatási kérelem segédprogram irányelvek fájl feltöltése
 Ha Ön [hozzon létre egy támogatási kérést](https://portal.azure.com/#create/Microsoft.Support), a fájl feltöltése segédprogram segítségével könnyen feltöltés diagnosztikai fájloké vagy bármely más úgy gondolja, hogy az incidens kapcsolódik.  
@@ -37,33 +37,33 @@ Ha a fájl feltöltése segédprogramot használja, kövesse az alábbi irányel
 * Fájlok nem lehet nagyobb, mint 4 MB.
 
 ## <a name="table-of-the-allowed-file-name-extensions"></a>Az engedélyezett fájlnévkiterjesztések táblázata
-| 0-9, A-C    | D-G   | H-M         | N-P   | R-T      | U-W        | X-Z-IG     |
+| 0-9, A-C    | D-G   | H-M         | N-P   | R-T      | U-W        | X-Z     |
 |-------------|-------|-------------|-------|----------|------------|---------|
-| .7z         | .dat  | .hwl        | .odx  | .RAR     | .TDB       | .xlam   |
-| sémaszintjén          | .db   | .ics        | .oft  | .RDL     | .tdf       | .xlr    |
-| .ABC        | . ESZKÖZKEZELŐ PONT –  | .ini        | .old  | .RDLC    | .Text      | .xls    |
-| .adm        | .do_  | .Java       | .one  | .re_     | .thmx      | .xlsb   |
+| .7z         | .dat  | .hwl        | .odx  | .RAR     | .tdb       | .xlam   |
+| .a          | .db   | .ics        | .oft  | .RDL     | .tdf       | .xlr    |
+| .abc        | .DMP  | .ini        | .old  | .rdlc    | .Text      | .xls    |
+| .adm        | .do_  | .java       | .one  | .re_     | .thmx      | .xlsb   |
 | .aspx       | .doc  | .jpg        | .osd  | .reg     | .tif       | .xlsm   |
-| . ATF        | .docm | . LDF        | . KIMENŐ  | .Remove  | .TRC       | .xlsx   |
-| .b          | .docx | .Letterhead | .P1   | .ren     | . TTD       | .xlt    |
+| . ATF        | .docm | .LDF        | . KIMENŐ  | .remove  | .trc       | .xlsx   |
+| .b          | .docx | .Letterhead | .p1   | .ren     | .TTD       | .xlt    |
 | .ba_        | .dotm | .lnk        | .pcap | .rename  | .tx_       | .xltx   |
 | .bak        | .dotx | .lo_        | .pdb  | .RFT     | .txt       | .XML    |
-| .bat        | .dtsx | .log        | .PDF  | .rpt     | .uccapilog | .XMLA   |
+| .bat        | .dtsx | .log        | .pdf  | .rpt     | .uccapilog | .XMLA   |
 | .blg        | .eds  | .lpk        | .piz  | .RTE     | .uccplog   | .xps    |
 | .CA_        | .emf  | .manifest   | .pmls | .rtf     | .udcx      | .xsd    |
-| . CAB-FÁJL        | .eml  | .master     | .png  | .Run     | .vb_       | XSN    |
+| .CAB        | .eml  | .master     | .png  | .run     | .vb_       | .xsn    |
 | .cap        | .emz  | .mdmp       | .potx | .sAz     | .vbs_      | .xxx    |
-| .catx       | .err  | .MOF        | .ppt  | .SQL     | .vcf       | .z_     |
-| . CFG        | .etl  | .mp3        | .pptm | .sqlplan | .vsd       | .Z01    |
+| .catx       | .err  | .mof        | .ppt  | .sql     | .vcf       | .z_     |
+| .CFG        | .etl  | .mp3        | .pptm | .sqlplan | .vsd       | .z01    |
 | .Compressed | .evt  | .mpg        | .pptx | .stp     | .wdb       | .z02    |
-| . Config     | .evtx | .ms_        | .prn  | .svclog  | .wks       | .zi     |
-| .cpk        | . AZ EX   | .msg        | .PSF  |   -       | .wma       | .zi_    |
+| .Config     | .evtx | .ms_        | .prn  | .svclog  | .wks       | .zi     |
+| .cpk        | . AZ EX   | .msg        | .psf  |   -       | .wma       | .zi_    |
 | .cpp        | .ex_  | .msi        | .pst  |  -        | .wmv       | .zip    |
-| .cs         | .ex0  | .Mso        | .pub  | -         | .wmz       | .zip_   |
-| . FÜRT MEGOSZTOTT KÖTETEI SZOLGÁLTATÁS        | . FRD  | .msu        | -      |-          | .wps       | .zipp   |
-| .CVR        | .gif  | .nfo        | -      |-          | .wpt       | .zipped |
-| -            | .GUID | -            | -      | -         | .WSDL      | .zippy  |
-| -            | .GZ   | -            | -      | -         | .wsp       | .zipx   |
+| .cs         | .ex0  | .mso        | .pub  | -         | .wmz       | .zip_   |
+| .CSV        | .FRD  | .msu        | -      |-          | .wps       | .zipp   |
+| .cvr        | .gif  | .nfo        | -      |-          | .wpt       | .zipped |
+| -            | .guid | -            | -      | -         | .wsdl      | .zippy  |
+| -            | .gz   | -            | -      | -         | .wsp       | .zipx   |
 | -            | -      | -            | -      | -         | .wtl       | .zit    |
 | -            | -      | -            | -      | -         |     -       | .zix    |
 | -            | -      | -            | -      | -         |  -          | .zzz    |

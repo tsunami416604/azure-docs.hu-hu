@@ -9,10 +9,10 @@ ms.date: 03/29/2018
 ms.author: magoedte
 ms.custom: include file
 ms.openlocfilehash: 29256b3bcfedb7fe5045ff4c6c3842eb25e00a28
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 Az alábbi korlátok vonatkoznak az egyes Log Analytics-erőforrásokra előfizetésenként:
 
@@ -29,7 +29,7 @@ Az alábbi korlátok vonatkoznak az egyes Log Analytics-munkaterületekre:
 
 |  | Ingyenes | Standard | Prémium | Különálló | OMS | /GB |
 | --- | --- | --- | --- | --- | --- |--- |
-| Naponta összegyűjtött adatmennyiség |500 MB<sup>1</sup> |None |None | Nincs | None | Nincs
+| Naponta összegyűjtött adatmennyiség |500 MB<sup>1</sup> |Nincs |None | None | Nincs | Nincs
 | Adatmegőrzés időtartama |7 nap |1 hónap |12 hónap | 1 hónap<sup>2</sup> | 1 hónap<sup>2</sup>| 1 hónap<sup>2</sup>|
 
 <sup>1</sup> Ha az ügyfél eléri az 500 MB-os napi adatátviteli korlátot, az adatelemzés leáll, és a következő nap elején folytatódik. A napi elszámolás UTC-alapú.

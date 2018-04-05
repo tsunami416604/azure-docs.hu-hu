@@ -1,25 +1,25 @@
 ---
-title: "Egy egyéni Piactéri elemet közzététele az Azure-vermet (felhő üzemeltetője) |} Microsoft Docs"
-description: "Azure verem kezelőként útmutató egy egyéni Piactéri elemet közzététele az Azure-készletben."
+title: Egy egyéni Piactéri elemet közzététele az Azure-vermet (felhő üzemeltetője) |} Microsoft Docs
+description: Azure verem kezelőként útmutató egy egyéni Piactéri elemet közzététele az Azure-készletben.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 60871cbb-eed2-433c-a76d-d605c7aec06c
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/25/2017
+ms.date: 04/03/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: c791708e11b7e9e8bbe046f06233d948d4632c90
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 37587cf5f99ce105413382cbd5a0de9cacc76b7d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="the-azure-stack-marketplace-overview"></a>Az Azure verem piactér – áttekintés
 
@@ -43,6 +43,8 @@ Minden piactér elemnek:
 * A cikk a portálon megjelenítendő adatok formázása
 
 Minden elem a piactér közzétett használja az Azure Katalóguscsomagban (azpkg) formátumban. Központi telepítés, illetve runtime jelöléssel erőforrások hozzáadása (például a kódot, a szoftver- vagy virtuálisgép-rendszerképek zip-fájlok) Azure verem külön-külön, ne a Piactéri elemet részeként. 
+
+1803 kezdve képek alakulnak ritka fájlok az Azure-ból letöltése során, vagy az egyéni lemezképek feltöltésekor. Ez a folyamat egyre több idő lemezkép való hozzáadásakor, de helyet takarít meg, és felgyorsítja a képek telepítését. Új lemezképek csak érvényes átalakítás. Meglévő lemezképet, nem módosulnak. 
 
 ## <a name="next-steps"></a>További lépések
 [Hozzon létre, és tegye közzé a Piactéri elemet](azure-stack-create-and-publish-marketplace-item.md)

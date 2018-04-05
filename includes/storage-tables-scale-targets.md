@@ -1,4 +1,4 @@
-| Erőforrás | cél |
+| Erőforrás | Cél |
 |----------|---------------|
 | Egyetlen tábla maximális mérete | 500 TiB |
 | Egy tábla entitás maximális mérete | 1 MiB |

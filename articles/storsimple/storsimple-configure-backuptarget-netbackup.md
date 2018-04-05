@@ -1,12 +1,12 @@
 ---
-title: "A biztonsági mentés céljaként NetBackup a StorSimple 8000 sorozat |} Microsoft Docs"
-description: "A StorSimple biztonsági mentési cél konfiguráció Veritas NetBackup ismerteti."
+title: A biztonsági mentés céljaként NetBackup a StorSimple 8000 sorozat |} Microsoft Docs
+description: A StorSimple biztonsági mentési cél konfiguráció Veritas NetBackup ismerteti.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: harshakirank
 manager: matd
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/15/2017
 ms.author: hkanna
 ms.openlocfilehash: b1878c181a77ac6d54654fc55228907743243c45
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>Biztonsági mentési cél a NetBackup StorSimple
 
@@ -91,16 +91,16 @@ Az alábbi táblázatok bemutatják az eszköz kezdeti modell-architektúra-útm
 
 | Tárkapacitás       | 8100          | 8600            |
 |------------------------|---------------|-----------------|
-| Helyi tárolási kapacitás | &lt;10 TiB\*  | &lt;20 TiB\*  |
-| Felhőalapú tárolási kapacitás | &gt;200 TiB\* | &gt;500 TiB\* |
-\*Tárméret azt feltételezi, hogy nem a deduplikáció és a tömörítést.
+| Helyi tárolási kapacitás | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
+| Felhőalapú tárolási kapacitás | &gt; 200 TiB\* | &gt; 500 TiB\* |
+\* Tárméret azt feltételezi, hogy nem a deduplikáció és a tömörítést.
 
 **StorSimple kapacitások elsődleges és másodlagos biztonsági mentések tiltása**
 
 | Biztonsági mentési forgatókönyv  | Helyi tárolási kapacitás  | Felhőalapú tárolási kapacitás  |
 |---|---|---|
 | Elsődleges biztonsági mentése  | A gyors helyreállítás helyi tárolóban tárolt legutóbbi biztonsági felel meg a helyreállítási időkorlát (RPO) | Felhő kapacitása a megfelelő biztonsági mentési előzményeit (RPO) |
-| Másodlagos biztonsági mentése | Felhő kapacitása tárolható biztonsági mentési adatok másodlagos példányát  | N/A  |
+| Másodlagos biztonsági mentése | Felhő kapacitása tárolható biztonsági mentési adatok másodlagos példányát  | –  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>Elsődleges biztonsági mentési cél StorSimple
 
@@ -147,7 +147,7 @@ Fontos a nagy teljesítményű kötet méretének, hogy az adatmegőrzési házi
 2.  A biztonságimásolat-készítő ügynök az adatokat fogad a helykiszolgáló biztonsági mentése.
 3.  A helykiszolgáló biztonsági mentése a visszaállítási feladat befejeződik.
 
-## <a name="deploy-the-solution"></a>A megoldás üzembe helyezéséhez
+## <a name="deploy-the-solution"></a>A megoldás üzembe helyezése
 
 A megoldás három lépésből áll:
 1. A hálózati infrastruktúra előkészítése.
@@ -180,7 +180,7 @@ Ebben a szakaszban a bemutatjuk, konfigurációs példákat. A következő péld
 
 ### <a name="set-up-storsimple"></a>StorSimple beállítása
 
-| StorSimple telepítési feladatok  | További megjegyzéseket |
+| StorSimple telepítési feladatok  | További megjegyzések |
 |---|---|
 | A helyszíni StorSimple eszköz üzembe helyezése. | Támogatott verziók: 3 és újabb verziók frissítése. |
 | Kapcsolja be a biztonsági mentési cél. | Ezek a parancsok használata, kapcsolja be, vagy kapcsolja ki a biztonsági mentési cél módot, és állapotának beolvasása. További információkért lásd: [távolról csatlakozhat a StorSimple eszköz](storsimple-remote-connect.md).</br> Biztonsági mentés módja bekapcsolása: `Set-HCSBackupApplianceMode -enable`. </br> Biztonsági mentés módja kikapcsolása: `Set-HCSBackupApplianceMode -disable`. </br> A biztonsági mentés módja beállítások aktuális állapot: `Get-HCSBackupApplianceMode`. |
@@ -256,7 +256,7 @@ A fenti feltételek alapján, hozzon létre egy 26-TiB StorSimple rétegzett kö
 | Éves teljes | 1  | 10 | 10 |
 | GFS követelmény |   | 38 |   |
 | További kvótát  | 4  |   | 42 teljes GFS követelmény  |
-\*A GFS többszöröző példányszám történő védelmére, és a biztonsági mentési házirend követelményeinek megfelelően szüksége.
+\* A GFS többszöröző példányszám történő védelmére, és a biztonsági mentési házirend követelményeinek megfelelően szüksége.
 
 ## <a name="set-up-netbackup-storage"></a>NetBackup tárolás beállítása
 
@@ -299,9 +299,9 @@ Itt látható egy példa négy hét, a havi és éves GFS Elforgatás ütemezés
 
 | Gyakoriság vagy biztonsági mentés típusa | Korlátlan | Növekményes (1-5 nap)  |   
 |---|---|---|
-| Heti (1 – 4 hét) | Szombat | Hétfőtől péntekig |
+| Heti (1 – 4 hét) | Szombat | Monday-Friday |
 | Havi  | Szombat  |   |
-| Éves ütemezéshez | Szombat  |   |   |
+| Évente | Szombat  |   |   |
 
 ## <a name="assigning-storsimple-volumes-to-a-netbackup-backup-job"></a>StorSimple-köteteket hozzárendelése NetBackup biztonságimásolat-készítő feladat
 
@@ -325,7 +325,7 @@ Az alábbi sorrendben feltételezi, hogy megfelel-e a NetBackup ügynök iránye
 
     ![NetBackup felügyeleti konzolon válassza a házirend típusa](./media/storsimple-configure-backup-target-using-netbackup/nbimage9.png)
 
-5.  Válassza ki a gazdagép, válassza ki a **ügyfél operációs rendszer észlelése** jelölje be a jelölőnégyzetet, majd válassza ki **Hozzáadás**. Válassza ki **következő**.
+5.  Válassza ki a gazdagép, válassza ki a **ügyfél operációs rendszer észlelése** jelölje be a jelölőnégyzetet, majd válassza ki **Hozzáadás**. Kattintson a **Tovább** gombra.
 
     ![NetBackup felügyeleti konzolján, egy új házirendet a lista ügyfelek](./media/storsimple-configure-backup-target-using-netbackup/nbimage10.png)
 
@@ -399,7 +399,7 @@ Az alábbi táblázat bemutatja, hogyan állíthatja be biztonsági mentéseket 
 | Havi teljes |StorSimple lemez (hosszú távú) | 1 | 12 | 12 |
 | Éves teljes |StorSimple lemez (hosszú távú) | 1 | 1 | 1 |
 |GFS kötetek méretkövetelményt |  |  |  | 18*|
-\*Teljes kapacitás 17 TiB a StorSimple-lemezek és a helyi RAID kötetre 1 TiB tartalmaz.
+\* Teljes kapacitás 17 TiB a StorSimple-lemezek és a helyi RAID kötetre 1 TiB tartalmaz.
 
 
 ### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GFS példa ütemezés: GFS Elforgatás heti, havi és éves ütemezése
@@ -411,7 +411,7 @@ Az alábbi táblázat bemutatja, hogyan állíthatja be biztonsági mentéseket 
 | Hét 3 | StorSimple hét 2 – 4 |   |   |   |   |   |
 | 4 hét | StorSimple hét 2 – 4 |   |   |   |   |   |
 | Havi | StorSimple havonta |   |   |   |   |   |
-| Éves ütemezéshez | StorSimple évente  |   |   |   |   |   |   |
+| Évente | StorSimple évente  |   |   |   |   |   |   |
 
 
 ## <a name="assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>StorSimple-köteteket rendelhet egy NetBackup archiválási és a párhuzamos feladat
@@ -473,7 +473,7 @@ Miután meghatározta a kezdeti lemezkészleteket, meg kell határoznia a három
 | Éves teljes | 1  | 10 | 10 |
 | GFS követelmény  |     |     | 38 |
 | További kvótát  | 4  |    | 42 teljes GFS követelmény |
-\*A GFS többszöröző példányszám történő védelmére, és a biztonsági mentési házirend követelményeinek megfelelően szüksége.
+\* A GFS többszöröző példányszám történő védelmére, és a biztonsági mentési házirend követelményeinek megfelelően szüksége.
 
 ## <a name="storsimple-cloud-snapshots"></a>StorSimple felhőalapú pillanatfelvételek
 
@@ -524,7 +524,7 @@ Visszaállítja a StorSimple eszköz munkahelyi hasonlóan a bármely blokktáro
 
 Egy olyan vészhelyzet esetén számos tényező okozhatja. Az alábbi táblázat általános vész-helyreállítási eljárással.
 
-| Forgatókönyv | Gyakorolt hatás | Helyreállítása | Megjegyzések |
+| Forgatókönyv | Hatás | Helyreállítása | Megjegyzések |
 |---|---|---|---|
 | A StorSimple eszköz hibája | Biztonsági mentési és visszaállítási műveletek megszakadnak. | Cserélje le a hibás eszközt, és végezze el [StorSimple feladatátvétel és vész-helyreállítási](storsimple-device-failover-disaster-recovery.md). | Ha egy eszköz a helyreállítás után visszaállítást végezhet van szüksége, teljes adatkészletek működő lekért a felhőben az új eszköz. Minden olyan felhőalapú sebességgel. Az index és a katalógus újbóli vizsgálata folyamatban okozhat a vizsgált és a helyi eszközön réteghez, amely időigényes folyamat lehet, hogy a felhő szintjén lekért összes biztonsági mentés. |
 | NetBackup: kiszolgálóhiba | Biztonsági mentési és visszaállítási műveletek megszakadnak. | A biztonsági mentési kiszolgáló újraépítése, és végezze el az adatbázis visszaállítása. | Építse újra kell, vagy állítsa vissza a NetBackup kiszolgáló, a vész-helyreállítási helyen. Állítsa vissza az adatbázist a legutóbbi pontnak. A visszaállított NetBackup adatbázis nincs szinkronban vannak a legújabb biztonsági mentési feladatok, ha az indexelést és katalogizálni szükség. Az index és a katalógus újbóli vizsgálata folyamatban okozhat a vizsgált és a felhő szintjén a helyi eszközön réteghez lekért összes biztonsági mentés. Így további időigényes. |
@@ -539,7 +539,7 @@ Ez a cikk a hivatkozott a következő dokumentumokat:
 - [Meghajtók GPT használata](http://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
 - [Állítson be megosztott mappák árnyékmásolatai](http://technet.microsoft.com/library/cc771893.aspx)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További tudnivalók a [biztonságimásolat-készletből való visszaállítása](storsimple-restore-from-backup-set-u2.md).
 - További áttelepítésről [eszköz feladatátvételi és katasztrófa-helyreállítás](storsimple-device-failover-disaster-recovery.md).

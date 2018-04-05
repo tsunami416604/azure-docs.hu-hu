@@ -1,8 +1,8 @@
 ---
-title: "Megosztott hozzáférési aláírásokkal - Azure HDInsight-hozzáférés korlátozása |} Microsoft Docs"
-description: "Ismerje meg megosztott hozzáférési aláírásokkal használata a HDInsight-hozzáférés korlátozása az Azure storage blobs szolgáltatásban tárolt adatokat."
+title: Megosztott hozzáférési aláírásokkal - Azure HDInsight-hozzáférés korlátozása |} Microsoft Docs
+description: Ismerje meg megosztott hozzáférési aláírásokkal használata a HDInsight-hozzáférés korlátozása az Azure storage blobs szolgáltatásban tárolt adatokat.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: cgronlun
 editor: cgronlun
@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 01/25/2018
 ms.author: larryfr
 ms.openlocfilehash: d3e37ba0f590cf0572b84a53bdd407af63a19d36
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Storage megosztott hozzáférési aláírásokkal segítségével adatokat a hdinsight eszközben való hozzáférés korlátozása
 
@@ -44,7 +44,7 @@ HDInsight a fürthöz tartozó Azure Storage-fiókokat az adatok teljes hozzáf�
     > [!IMPORTANT]
     > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-* A példa fájljainak [https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature). A tárház a következő elemeket tartalmazza:
+* A példa fájljainak [ https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature ](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature). A tárház a következő elemeket tartalmazza:
 
   * Egy tároló, a tárolt házirend, és a SAS hozhat létre, és a HDInsight együttes használata a Visual Studio-projekt
   * Egy olyan tároló, a tárolt házirend és a SAS hozhat létre, és a HDInsight együttes használata a Python-parancsfájl
