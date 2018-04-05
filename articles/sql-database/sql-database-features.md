@@ -6,14 +6,14 @@ author: jovanpop-msft
 ms.reviewer: bonova, carlrab
 ms.service: sql-database
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 03/30/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 842c65987dc97872751071dbcf138794a14940e2
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d8adf097d6bee404cff8e7b15782c6c59531a897
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Szolgáltatások összehasonlítása: Azure SQL Database és SQL Server 
 
@@ -114,13 +114,13 @@ A következő táblázat az SQL Server főbb szolgáltatásokat sorolja fel, és
 | [Set utasítás](https://docs.microsoft.com/sql/t-sql/statements/set-statements-transact-sql) | Most – tekintse meg az egyes utasítások | Igen – lásd: [T-SQL különbségek](sql-database-managed-instance-transact-sql-information.md)|
 | [SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | Igen | Igen |
 | [Térbeli](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server) | Igen | Igen |
-| [SQL Data Sync](sql-database-get-started-sql-data-sync.md) | Igen | Igen |
+| [SQL Data Sync](sql-database-get-started-sql-data-sync.md) | Igen | Nem |
 | [SQL Operations Studio](https://docs.microsoft.com/sql/sql-operations-studio/what-is) | Igen | Igen |
 | [SQL Server Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) | Nem - látható [rugalmas feladatok](sql-database-elastic-jobs-getting-started.md) | Igen – lásd: [SQL Server Agent különbségek](sql-database-managed-instance-transact-sql-information.md#sql-server-agent) |
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Nem - látható [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) | Nem - látható [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) |
 | [SQL Server Auditing](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | Nem - látható [SQL Database auditing](sql-database-auditing.md) | Igen – lásd: [különbségek naplózás](sql-database-managed-instance-transact-sql-information.md#auditing) |
 | [SQL Server Data Tools (SSDT)] (https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) | Igen | Igen |
-| [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Részleges – az SQL Server Data Tools csomag fejlesztési nem támogatott. | Nem, nem a nyilvános előzetes kiadásában |
+| [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Igen, az Azure Data Factory (ADF) környezetben, az Azure SQL Database működteti, és végre SSISDB csomagok tárolására a felügyelt SSIS [Azure SSIS integrációs futásidejű](../data-factory/tutorial-deploy-ssis-packages-azure-powershell.md). | Igen, az Azure Data Factory (ADF) környezetben, az SSISDB felügyelt példány által birtokolt, és végre a csomagok tárolására a felügyelt SSIS [Azure SSIS integrációs futásidejű](../data-factory/tutorial-deploy-ssis-packages-azure-powershell.md). |
 | [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | Igen | Igen |
 | [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Igen | Igen |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Nem - látható [kiterjesztett események](sql-database-xevent-db-diff-from-svr.md) | Igen |

@@ -1,29 +1,27 @@
 ---
-title: "Egyéni események az Azure Event Gridhez a PowerShell használatával | Microsoft Docs"
-description: "Az Azure Event Grid és a PowerShell segítségével közzétehet egy témakört, és feliratkozhat a kapcsolódó eseményre."
+title: Egyéni események az Azure Event Gridhez a PowerShell használatával | Microsoft Docs
+description: Az Azure Event Grid és a PowerShell segítségével közzétehet egy témakört, és feliratkozhat a kapcsolódó eseményre.
 services: event-grid
-keywords: 
+keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 01/30/2018
+ms.date: 03/20/2018
 ms.topic: hero-article
 ms.service: event-grid
-ms.openlocfilehash: 24366df54fa4fc32ebbff7c1303183707dea17c6
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 183bafad9b38ccb0e7eaae222c5569e45b15ac21
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-and-route-custom-events-with-azure-powershell-and-event-grid"></a>Egyéni események létrehozása és átirányítása az Azure PowerShell-lel és az Event Griddel
 
-Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben létrehozunk egy egyéni témakört az Azure PowerShell-lel, feliratkozunk a témakörre, majd kiváltjuk az eseményt az eredmény megtekintéséhez. Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek reagálnak az eseményre, például egy webhooknak vagy egy Azure-függvénynek. A cikk egyszerűsítése érdekében azonban az eseményeket egy olyan URL-címnek küldjük el, amely pusztán üzenetek gyűjtésével foglalkozik. Az URL-címet a [RequestBin](https://requestb.in/) vagy a [Hookbin](https://hookbin.com/) külső fejlesztésű eszközeivel fogjuk létrehozni.
+Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben létrehozunk egy egyéni témakört az Azure PowerShell-lel, feliratkozunk a témakörre, majd kiváltjuk az eseményt az eredmény megtekintéséhez. Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek reagálnak az eseményre, például egy webhooknak vagy egy Azure-függvénynek. A cikk egyszerűsítése érdekében azonban az eseményeket egy olyan URL-címnek küldjük el, amely pusztán üzenetek gyűjtésével foglalkozik. Az URL-címet a [Hookbin](https://hookbin.com/) külső eszközével fogjuk létrehozni.
 
 >[!NOTE]
->A **RequestBin** és a **Hookbin** a nagy teljesítményt megkövetelő használati területekhez nem alkalmas. Az eszközök jelen használata kizárólag bemutató célt szolgál. Ha egyszerre több eseményt továbbít, lehetséges, hogy az eszközben nem fog megjelenni az összes esemény.
+>A **Hookbin** a nagy teljesítményt megkövetelő használati területekhez nem alkalmas. Az eszköz jelen használata kizárólag bemutató célt szolgál. Ha egyszerre több eseményt továbbít, lehetséges, hogy az eszközben nem fog megjelenni az összes esemény.
 
-A folyamat végén látni fogja, hogy az eseményadatokat egy végpontnak küldte el a rendszer.
-
-![Eseményadatok](./media/custom-event-quickstart-powershell/request-result.png)
+A folyamat végén látni fogja, hogy a rendszer elküldte az eseményadatokat egy végpontnak.
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
@@ -43,7 +41,7 @@ New-AzureRmResourceGroup -Name gridResourceGroup -Location westus2
 
 ## <a name="create-a-custom-topic"></a>Egyéni témakör létrehozása
 
-A témakör egy felhasználó által meghatározott végpontot biztosít, amelybe elküldheti az eseményeket. Az alábbi példa az erőforráscsoportban hozza létre a témakört. A `<topic_name>` elemet a témakör egyedi nevére cserélje le. A témakör nevének egyedinek kell lennie, mert a nevet egy DNS-bejegyzés képviseli.
+Az Event Grid-témakörök egy felhasználó által meghatározott végpontot biztosítanak, amelyben közzéteheti az eseményeket. Az alábbi példa az erőforráscsoportban létrehozza az egyéni témakört. A `<topic_name>` elemet a témakör egyedi nevére cserélje le. A témakör nevének egyedinek kell lennie, mert a nevet egy DNS-bejegyzés képviseli.
 
 ```powershell
 New-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Location westus2 -Name <topic_name>
@@ -51,11 +49,11 @@ New-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Location westus2
 
 ## <a name="create-a-message-endpoint"></a>Üzenetvégpont létrehozása
 
-A témakörre való feliratkozás előtt hozzuk létre az eseményüzenet végpontját. Az eseményre reagáló kód írása helyett egy olyan végpontot hozzunk létre, amely gyűjti az üzeneteket, hogy meg tudja őket tekinteni. A RequestBin és a Hookbin külső gyártótól származó eszközök, amelyek végpontok létrehozását és az azokra küldött kérések megtekintését teszik lehetővé. Nyissa meg a [RequestBin](https://requestb.in/) eszközt, és kattintson a **Create a RequestBin** (Kéréstár létrehozása) elemre, vagy nyissa meg a [Hookbin](https://hookbin.com/) eszközt, és kattintson a **Create New Endpoint** (Új végpont létrehozása) elemre.  Másolja ki a tár URL-címét, mert szüksége lesz rá, amikor feliratkozik a témakörre.
+Az egyéni témakörre való feliratkozás előtt hozzuk létre az eseményüzenet végpontját. Az eseményre reagáló kód írása helyett egy olyan végpontot hozzunk létre, amely gyűjti az üzeneteket, hogy meg tudja őket tekinteni. A Hookbin egy külső eszköz, amely lehetővé teszi egy végpont létrehozását és a neki küldött kérések megtekintését. Nyissa meg a [Hookbin](https://hookbin.com/) eszközt, és kattintson a **Create New Endpoint** (Új végpont létrehozása) elemre.  Másolja ki a tár URL-címét, mert szüksége lesz rá, amikor feliratkozik a témakörre.
 
 ## <a name="subscribe-to-a-topic"></a>Feliratkozás témakörre
 
-A témakörre való feliratkozással lehet tudatni az Event Griddel, hogy mely eseményeket kívánja nyomon követni. Az alábbi példa feliratkozik a létrehozott témakörre, és az eseményértesítés végpontjaként adja át a RequestBinből vagy a Hookbinből átemelt URL-címet. Az `<event_subscription_name>` elemet a feliratkozás egyedi nevére cserélje le, az `<endpoint_URL>` elemet pedig az előző szakaszból származó értékre. Ha megadja a végpontot a feliratkozáskor, az Event Grid az adott végpontra irányítja az eseményeket. A `<topic_name>` elemnél a korábban létrehozott értéket adja meg.
+A témakörre való feliratkozással lehet tudatni az Event Griddel, hogy mely eseményeket kívánja nyomon követni. Az alábbi példa feliratkozik a létrehozott egyéni témakörre, és az eseményértesítés végpontjaként átadja a Hookbinből származó URL-címet. Az `<event_subscription_name>` elemet a feliratkozás egyedi nevére cserélje le, az `<endpoint_URL>` elemet pedig az előző szakaszból származó értékre. Ha megadja a végpontot a feliratkozáskor, az Event Grid az adott végpontra irányítja az eseményeket. A `<topic_name>` elemnél a korábban létrehozott értéket adja meg.
 
 ```powershell
 New-AzureRmEventGridSubscription -EventSubscriptionName <event_subscription_name> -Endpoint <endpoint_URL> -ResourceGroupName gridResourceGroup -TopicName <topic_name>
@@ -63,14 +61,14 @@ New-AzureRmEventGridSubscription -EventSubscriptionName <event_subscription_name
 
 ## <a name="send-an-event-to-your-topic"></a>Esemény elküldése a témakörbe
 
-Most aktiváljunk egy eseményt, és lássuk, hogyan küldi el az üzenetet az Event Grid a végpontnak. Először szükségünk lesz a témakör URL-címére és kulcsára. A `<topic_name>` helyett használja ismét a témakör nevét.
+Aktiváljunk egy eseményt, és lássuk, hogyan küldi el az üzenetet az Event Grid a végpontnak. Először szükségünk lesz a témakör URL-címére és kulcsára. A `<topic_name>` helyett használja ismét a témakör nevét.
 
 ```powershell
 $endpoint = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name <topic-name>).Endpoint
 $keys = Get-AzureRmEventGridTopicKey -ResourceGroupName gridResourceGroup -Name <topic-name>
 ```
 
-A folyamat leegyszerűsítése érdekében hozzunk létre mintául szolgáló eseményadatokat, amelyeket elküldhetünk a témakörbe. Egy alkalmazás vagy Azure-szolgáltatás általában eseményadatokat küld el. Az alábbi példában az eseményadatok összeállítása egy kivonattáblával történik (`htbody`), majd megfelelően formázott JSON hasznosadat-objektumokká (`$body`) lesznek alakítva:
+A folyamat leegyszerűsítése érdekében hozzunk létre mintául szolgáló eseményadatokat, amelyeket elküldhetünk az egyéni témakörbe. Egy alkalmazás vagy Azure-szolgáltatás általában eseményadatokat küld el. Az alábbi példában az eseményadatok összeállítása egy kivonattáblával történik (`htbody`), majd megfelelően formázott JSON hasznosadat-objektumokká (`$body`) lesznek alakítva:
 
 ```powershell
 $eventID = Get-Random 99999
@@ -124,7 +122,7 @@ Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-ke
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha azt tervezi, hogy folytatja az esemény használatát, akkor ne törölje a cikkben létrehozott erőforrásokat. Ha nem folytatja a munkát, akkor a következő paranccsal törölheti a cikkben létrehozott erőforrásokat.
+Ha tovább kívánja használni az eseményt, akkor ne törölje a cikkben létrehozott erőforrásokat. Ellenkező esetben a következő paranccsal törölheti a cikkben létrehozott erőforrásokat.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name gridResourceGroup

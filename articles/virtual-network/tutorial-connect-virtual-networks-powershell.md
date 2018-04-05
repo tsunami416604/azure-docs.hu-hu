@@ -1,26 +1,27 @@
 ---
-title: "Virtuális hálózatok csatlakoztatása a virtuális hálózati társviszony - PowerShell |} Microsoft Docs"
-description: "Útmutató: virtuális hálózatok csatlakoztatása a virtuális hálózati társviszony-létesítés."
+title: Virtuális hálózatok csatlakoztatása a virtuális hálózati társviszony - PowerShell |} Microsoft Docs
+description: Ebből a cikkből megtanulhatja a virtuális hálózatok virtuális hálózati társviszony-létesítést, Azure PowerShell használatával kapcsolódni.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+Customer intent: I want to connect two virtual networks so that virtual machines in one virtual network can communicate with virtual machines in the other virtual network.
+ms.assetid: ''
 ms.service: virtual-network
-ms.devlang: 
-ms.topic: 
+ms.devlang: ''
+ms.topic: article
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
-ms.custom: 
-ms.openlocfilehash: b067dfd6d50b61614c2f3de2fa0e159cd645f9eb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
-ms.translationtype: MT
+ms.custom: ''
+ms.openlocfilehash: 445baa36f33cbe02b68bdb37406f842932089183
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-powershell"></a>Virtuális hálózatok csatlakoztatása a virtuális hálózati társviszony-létesítés PowerShell használatával
 
@@ -36,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Ha PowerShell telepítéséhez és használatához helyileg, ez a cikk igényel-e az Azure PowerShell modul verziója 5.4.1 vagy újabb. Futtatás ` Get-Module -ListAvailable AzureRM` telepített verziója található. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral. 
+Ha PowerShell telepítéséhez és használatához helyileg, ez a cikk igényel-e az Azure PowerShell modul verziója 5.4.1 vagy újabb. A telepített verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral. 
 
 ## <a name="create-virtual-networks"></a>Virtuális hálózatok létrehozása
 
@@ -203,35 +204,8 @@ Ha már nincs szükség, [Remove-AzureRmResourcegroup](/powershell/module/azurer
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 ```
 
-**<a name="register"></a>A globális virtuális hálózati társviszony-létesítési Preview regisztrálása**
-
-Az azonos régiókban lévő virtuális hálózatok közötti társviszony kialakítása általánosan elérhető. Virtuális hálózatok különböző régiókban jelenleg előzetes verzióban érhetők társviszony. Lásd: [virtuális hálózati frissítések](https://azure.microsoft.com/updates/?product=virtual-network) az elérhető régiók. Virtuális hálózatok egyenrangú régiók között, először regisztrálnia kell az előzetes (belül minden partnert kívánt virtuális hálózat szerepel az előfizetés) az alábbi lépések végrehajtásával:
-
-1. Regisztrálni az előfizetést, minden egyes virtuális hálózatot egyenrangú szeretné van a az előzetes kiadásban a következő parancsok beírásával:
-
-    ```powershell-interactive
-    Register-AzureRmProviderFeature `
-      -FeatureName AllowGlobalVnetPeering `
-      -ProviderNamespace Microsoft.Network
-    
-    Register-AzureRmResourceProvider `
-      -ProviderNamespace Microsoft.Network
-    ```
-2. Győződjön meg arról, hogy be vannak jegyezve a az előzetes a következő parancs beírásával:
-
-    ```powershell-interactive    
-    Get-AzureRmProviderFeature `
-      -FeatureName AllowGlobalVnetPeering `
-      -ProviderNamespace Microsoft.Network
-    ```
-
-    Virtuális hálózatok előtt különböző régiókban egyenrangú megkezdése a **RegistrationState** kimeneti kapja az előző parancs bevitele után **regisztrált** mindkét előfizetésekhez társviszony-létesítés sikertelen .
-
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, két hálózat kapcsolódás a virtuális hálózati társviszony-létesítés. Ebben a cikkben megtanulta, ugyanazon a helyen az Azure, a két hálózat kapcsolódás a virtuális hálózati társviszony-létesítés. Akkor is a virtuális hálózatok is partnert [különböző régiókban](#register), a [különböző Azure-előfizetések](create-peering-different-subscriptions.md#portal) hozhat létre és [küllős hálózati kialakításokat](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) a társviszony-létesítés. Társviszony-létesítés előtt éles virtuális hálózatok, javasoljuk, hogy alaposan feltérképezése a [társviszony-létesítési áttekintése](virtual-network-peering-overview.md), [kezelése a társviszony-létesítés](virtual-network-manage-peering.md), és [virtuális hálózati korlátok](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Ebben a cikkben megtanulta, azonos Azure-régióban, két hálózat kapcsolódás a virtuális hálózati társviszony-létesítés. Virtuális hálózatok, a másik partnert is meg is [támogató régiók](virtual-network-manage-peering.md#cross-region) és a [különböző Azure-előfizetések](create-peering-different-subscriptions.md#powershell), valamint létrehozása [küllős hálózati kialakításokat](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) rendelkező társviszony-létesítés. Virtuális hálózati társviszony-létesítés kapcsolatos további információkért lásd: [virtuális hálózati társviszony-létesítési áttekintése](virtual-network-peering-overview.md) és [kezelheti a virtuális hálózati társviszony](virtual-network-manage-peering.md).
 
-Is [saját számítógép csatlakoztatása egy virtuális hálózati](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) egy VPN-en keresztül és a virtuális hálózatot, vagy nincsenek társviszonyban, virtuális hálózatok erőforrások. Továbbra is a virtuális hálózati cikkekben ismertetett feladatok végrehajtásához újrafelhasználható parancsfájlok parancsfájl-példák.
-
-> [!div class="nextstepaction"]
-> [Virtuális hálózati parancsfájl minták](../networking/powershell-samples.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+Is [saját számítógép csatlakoztatása egy virtuális hálózati](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) egy VPN-en keresztül és a virtuális hálózatot, vagy nincsenek társviszonyban, virtuális hálózatok erőforrások. Tekintse meg a virtuális hálózati cikkekben ismertetett feladatok végrehajtásához, újrafelhasználható parancsfájlok [parancsfájl-mintában](powershell-samples.md).

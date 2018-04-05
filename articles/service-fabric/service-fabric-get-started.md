@@ -1,11 +1,11 @@
 ---
-title: "Az Azure mikroszolgáltatások Windows fejlesztési környezetének kialakítása | Microsoft Docs"
-description: "Telepítse a futtatókörnyezetet, az SDK-t és az eszközöket, majd hozzon létre egy helyi fejlesztési fürtöt. A beállítás befejezése után készen áll az alkalmazások létrehozására Windows rendszeren."
+title: Az Azure mikroszolgáltatások Windows fejlesztési környezetének kialakítása | Microsoft Docs
+description: Telepítse a futtatókörnyezetet, az SDK-t és az eszközöket, majd hozzon létre egy helyi fejlesztési fürtöt. A beállítás befejezése után készen áll az alkalmazások létrehozására Windows rendszeren.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: b94e2d2e-435c-474a-ae34-4adecd0e6f8f
 ms.service: service-fabric
 ms.devlang: dotNet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/20/2018
 ms.author: ryanwi, mikhegn
-ms.openlocfilehash: 730753efb6efaad659e1a713b0b68329032b3983
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 8e0898cf8046443728f92a8e05f17e51221fe60a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>A fejlesztőkörnyezet előkészítése Windowson
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.lasthandoff: 03/09/2018
 > 
 > 
 
- Az [Azure Service Fabric-alkalmazásoknak][1] a Windowsos rendszerű fejlesztői gépen való létrehozásához és futtatásához telepítse a futtatókörnyezetet, az SDK-t és az eszközöket. Továbbá engedélyeznie kell az SDK-ban található Windows PowerShell-parancsfájlok végrehajtását.
+Az [Azure Service Fabric-alkalmazásoknak][1] a Windows rendszerű fejlesztői gépen való létrehozásához és futtatásához telepítse a Service Fabric-futtatókörnyezetet, az SDK-t és az eszközöket. Továbbá [engedélyeznie kell az SDK-ban található Windows PowerShell-szkriptek](#enable-powershell-script-execution) végrehajtását.
 
 ## <a name="prerequisites"></a>Előfeltételek
 ### <a name="supported-operating-system-versions"></a>Támogatott operációsrendszer-verziók
@@ -49,12 +49,12 @@ A fejlesztéshez a következő operációsrendszer-verziók támogatottak:
 ## <a name="install-the-sdk-and-tools"></a>Az SDK és az eszközök telepítése
 ### <a name="to-use-visual-studio-2017"></a>A Visual Studio 2017 használata
 A Service Fabric-eszközök a Visual Studio 2017 Azure Development Workload munkafolyamatának részét képezik. A Visual Studio telepítésének részeként engedélyezze ezt a munkafolyamatot.
-Emellett telepítenie kell a Microsoft Azure Service Fabric SDK-t is a webplatform-telepítővel.
+Emellett telepítenie kell a Microsoft Azure Service Fabric SDK-t és futtatókörnyezetet is a webplatform-telepítővel.
 
 * [A Microsoft Azure Service Fabric SDK telepítése][core-sdk]
 
 ### <a name="to-use-visual-studio-2015-requires-visual-studio-2015-update-2-or-later"></a>A Visual Studio 2015 használata (Visual Studio 2015 2. frissítés vagy újabb szükséges)
-A Visual Studio 2015 esetében a Service Fabric-eszközök az SDK-val együtt települnek a webplatform-telepítő használatával:
+A Visual Studio 2015 esetében a Service Fabric-eszközök az SDK-val és a futtatókörnyezettel együtt települnek a webplatform-telepítő használatával:
 
 * [A Microsoft Azure Service Fabric SDK és eszközök telepítése][full-bundle-vs2015]
 

@@ -1,12 +1,12 @@
 ---
-title: "Az Azure-függvény és kognitív szolgáltatások használatával IoT DevKit fordító |} Microsoft Docs"
-description: "Az IoT-DevKit hangüzenet és Azure kognitív szolgáltatásainak lefordított szöveg angol nyelven történő feldolgozás mikrofon használatát."
+title: Az Azure-függvény és kognitív szolgáltatások használatával IoT DevKit fordító |} Microsoft Docs
+description: Az IoT-DevKit hangüzenet és Azure kognitív szolgáltatásainak lefordított szöveg angol nyelven történő feldolgozás mikrofon használatát.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: liydu
 manager: timlt
-tags: 
-keywords: 
+tags: ''
+keywords: ''
 ms.service: iot-hube
 ms.devlang: arduino
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2018
 ms.author: liydu
-ms.openlocfilehash: 5f74e43d20b5954ae4808f82a34372d1e2190481
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: d17f117d71eb0616201df18aea6dc48749ae24a8
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-iot-devkit-az3166-with-azure-function-and-cognitive-services-to-make-a-language-translator"></a>Az Azure-függvény és kognitív szolgáltatásokkal IoT DevKit AZ3166 használata nyelvi a fordító
 
@@ -35,7 +35,7 @@ Befejezés a [– első lépések útmutató](https://docs.microsoft.com/azure/i
 
 Aktív Azure-előfizetés. Ha még nem rendelkezik ilyennel, ezek két módszer használatával regisztrálhatja:
 
-* Aktiválja a [ingyenes 30 napos próbafiókot Microsoft Azure](https://azureinfo.microsoft.com/us-freetrial.html)
+* Aktiválja a [ingyenes 30 napos próbafiókot Microsoft Azure](https://azure.microsoft.com/en-us/free/)
 * Jogcím a [Azure-kreditjeinek](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) MSDN vagy a Visual Studio előfizetői esetén
 
 ## <a name="step-1-open-the-project-folder"></a>1. lépés Nyissa meg a projekt mappát

@@ -1,6 +1,6 @@
 ---
-title: "Erőforrások az Azure CLI és a sablon telepítése |} Microsoft Docs"
-description: "Azure Resource Manager és az Azure parancssori felület használatával egy erőforrások telepítése az Azure-bA. Az erőforrások egy Resource Manager-sablonban vannak meghatározva."
+title: Erőforrások az Azure CLI és a sablon telepítése |} Microsoft Docs
+description: Azure Resource Manager és az Azure parancssori felület használatával egy erőforrások telepítése az Azure-bA. Az erőforrások egy Resource Manager-sablonban vannak meghatározva.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: tomfitz
-ms.openlocfilehash: 9c8b352194e3a624097a48b5d312356a0ead4276
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: f920165448f4197778faec07c9d49e0bddf1b555
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure parancssori felületével
 
@@ -34,7 +34,7 @@ Ha nincs telepítve az Azure parancssori felület, használhatja a [felhő rends
 
 Ha erőforrásokat üzembe helyezi az Azure-ba, hogy:
 
-1. Jelentkezzen be az Azure-fiókjával
+1. Jelentkezzen be az Azure-fiókjába.
 2. Hozzon létre egy erőforráscsoportot, amely a telepített erőforrások tárolójaként szolgál. Az erőforráscsoport neve csak tartalmazhatnak alfanumerikus karaktereket, pontokat, aláhúzásjeleket, kötőjeleket és zárójeleket tartalmazhat. Legfeljebb 90 karakter lehet. Nem végződhet ponttal.
 3. Telepítse az erőforráscsoport a sablon, amely meghatározza az erőforrás létrehozásához.
 
@@ -82,10 +82,12 @@ Az előző példában a sablont, amely a legtöbb környezetben működik, mivel
 
 A felhő rendszerhéj az alábbi parancsokat használja:
 
-   ```azurecli-interactive
-   az group create --name examplegroup --location "South Central US"
-   az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageAccountType=Standard_GRS
-   ```
+```azurecli-interactive
+az group create --name examplegroup --location "South Central US"
+az group deployment create --resource-group examplegroup \
+  --template-uri <copied URL> \
+  --parameters storageAccountType=Standard_GRS
+```
 
 ## <a name="deploy-to-more-than-one-resource-group-or-subscription"></a>Egynél több erőforráscsoportba vagy előfizetésbe történő központi telepítése
 
@@ -185,7 +187,7 @@ az group deployment create \
     --parameters storageAccountType=Standard_GRS
 ```
 
-## <a name="sample-template"></a>Minta sablon
+## <a name="sample-template"></a>Példasablon
 
 Ebben a cikkben szereplő példák a következő sablon használható. Másolja ki és mentse azt egy storage.json nevű fájlba. Ez a sablon létrehozása ismertetése: [az első Azure Resource Manager-sablon létrehozása](resource-manager-create-first-template.md).  
 

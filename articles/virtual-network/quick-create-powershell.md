@@ -1,26 +1,26 @@
 ---
-title: "Hozzon létre egy Azure virtuális hálózatra - PowerShell |} Microsoft Docs"
-description: "Gyorsan bemutatják, hogyan hozzon létre egy virtuális hálózatot PowerShell használatával. A virtuális hálózati lehetővé teszi, hogy az Azure-erőforrások, például a virtuális gépeket, közvetlenül kommunikálnak egymással, és az internetes."
+title: Hozzon létre egy Azure virtuális hálózatra - PowerShell |} Microsoft Docs
+description: Gyorsan bemutatják, hogyan hozzon létre egy virtuális hálózatot PowerShell használatával. A virtuális hálózati lehetővé teszi, hogy az Azure-erőforrások, például a virtuális gépeket, közvetlenül kommunikálnak egymással, és az internetes.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
-ms.devlang: 
-ms.topic: 
+ms.devlang: ''
+ms.topic: ''
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/09/2018
 ms.author: jdial
-ms.custom: 
-ms.openlocfilehash: 13d36e6861a30473e6cb5d54d94a3c23a1e4cc59
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.custom: ''
+ms.openlocfilehash: fe171000f83c27f23972569b93e351340f4426ad
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-a-virtual-network-using-powershell"></a>Hozzon létre egy virtuális hálózatot PowerShell használatával
 
@@ -159,4 +159,4 @@ Ebben a cikkben létrehozott egy alapértelmezett virtuális hálózat és két 
 Alapértelmezés szerint az Azure lehetővé teszi, hogy a virtuális gépek korlátlan titkos kommunikációját, de csak lehetővé teszi a bejövő távoli asztali kapcsolatokhoz a Windows virtuális gépek az internetről. Annak megismerése, hogyan engedélyezésére vagy korlátozására a különböző hálózati kommunikációs felé és felől a virtuális gépek, a következő oktatóanyag továbblépés.
 
 > [!div class="nextstepaction"]
-> [Hálózati forgalom szűrésére](virtual-networks-create-nsg-arm-ps.md)
+> [Hálózati forgalom szűrésére](tutorial-filter-network-traffic.md)

@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement – Első lépések útmutató ajánlott eljárásokkal"
-description: "Első lépések útmutató az Azure Mobile Engagement használatának megkezdéséhez és ajánlott eljárások a bevezetéshez"
+title: Azure Mobile Engagement – Első lépések útmutató ajánlott eljárásokkal
+description: Első lépések útmutató az Azure Mobile Engagement használatának megkezdéséhez és ajánlott eljárások a bevezetéshez
 services: mobile-engagement
 documentationcenter: mobile
 author: wesmc7777
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: dfce1183-6398-466e-aa7e-ed702fb52818
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 10/04/2016
 ms.author: wesmc;ricksal
-ms.openlocfilehash: 0cb54f6c4b84597fbc21fa691f88f6f7a37beedd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf9dc5febeae27473d2adb8a024536b945bb9d13
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-mobile-engagement---getting-started-guide-with-best-practices"></a>Azure Mobile Engagement – Első lépések útmutató ajánlott eljárásokkal
+> [!IMPORTANT]
+> Az Azure Mobile Engagement támogatása 2018. március 31-én megszűnik. Az oldal nem sokkal ezután törlésre kerül.
+> 
+
 ## <a name="overview"></a>Áttekintés
 **A mobileszközök képernyője nagyon zsúfolt terület:** Egy tanulmány szerint 2013-ban 27 alkalmazást telepítettek egy átlagos mobileszközre. A felhasználók átlagosan havonta 30 órát foglalkoztak az alkalmazásaikkal. Ezen idő nagy részét a közösségi hálózatok és a játékok vitték el (mintegy 20 órát). 2014-re az Android piacterén a felhasználók körülbelül 1,5 millió alkalmazás közül választhattak. Az Apple áruházában hozzávetőlegesen 1,2 millió alkalmazás volt elérhető. A növekvő piacon versengő fejlesztőknek köszönhetően a mobilalkalmazások használata továbbra is növekvő tendenciát mutat. 
 
@@ -314,7 +318,7 @@ Miután szert tett némi tapasztalatra, vegye fontolóra a bevonási programok b
 * Földrajzi helymeghatározás: Ez nagy lehetőség a márkáknak. Ennek a szolgáltatásnak köszönhetően a megfelelő helyen és időben érhet el felhasználókat. Javasoljuk, hogy a földrajzi helymeghatározás használatának megkezdése előtt ellenőrizze, összegyűjtött-e elegendő adatot a végfelhasználók viselkedésével kapcsolatban.
 * Adatleküldés: Az adatleküldés láthatatlan leküldés. Az adatleküldés lehetővé teszi az alkalmazás testre szabását a végfelhasználói viselkedés alapján. Ha például egy felhasználói szegmens gyakran tekint meg csúcskategóriás műszaki termékeket, az alkalmazás tulajdonosa adatleküldés küldésével szabhatja testre a kezdőlapot csúcskategóriás műszaki termékekhez kapcsolódó tartalmakkal.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Azure Mobile Engagement-fiók létrehozása](mobile-engagement-create.md).
 * További információ a mobilmarketing-stratégiájának meghatározásával kapcsolatban: [A mobilmarketing stratégia meghatározása](mobile-engagement-define-your-mobile-engagement-strategy.md).
 

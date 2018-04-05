@@ -1,6 +1,6 @@
 ---
-title: "Az Azure tárterület-áttelepítés – gyakori kérdések |} Microsoft Docs"
-description: "Áttelepítése az Azure Storage gyakori kérdésekre adott válaszok"
+title: Az Azure tárterület-áttelepítés – gyakori kérdések |} Microsoft Docs
+description: Áttelepítése az Azure Storage gyakori kérdésekre adott válaszok
 services: storage
 documentationcenter: na
 author: genlin
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 11/16/2017
 ms.author: genli
-ms.openlocfilehash: 362614d28cf62bd288d8aff10539c81381474955
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 89d1a4767c240c7e4fedb9d7ac47d6d4fb0aa737
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Azure tárterület-áttelepítés kapcsolatos gyakori kérdések
 
@@ -168,7 +168,7 @@ AzCopy segítségével töltse le az adatokat. További információkért lásd:
 
 **A másodlagos hely módosítása a tárfiókon Európa régió**
 
-A storage-fiók létrehozásakor ki kell választania a fiók az elsődleges régióban. A másodlagos régióba kiválasztása az elsődleges régióban alapul, és nem módosítható. További információkért lásd: [Azure Storage replikációs](storage-redundancy.md).
+A storage-fiók létrehozásakor ki kell választania a fiók az elsődleges régióban. A másodlagos régióba kiválasztása az elsődleges régióban alapul, és nem módosítható. További információkért lásd: [georedundáns tárolás (GRS): az Azure Storage kereszt-területi replikációs](storage-redundancy.md).
 
 **Hol kaphatok további információt Azure Storage szolgáltatás titkosítási (SSE)?**  
   
@@ -284,7 +284,7 @@ A más felhasználók hozzáférésének a tárolási erőforrások:
 
     - **SAS-jogkivonat**: egy SAS-jogkivonat segítségével érheti el az adatait a végpontról. További információkért lásd: [használata közös hozzáférésű jogosultságkód](storage-dotnet-shared-access-signature-part-1.md).
 
-**Hogyan használható egy HTTPS egyéni tartomány a storage-fiókom? Például Hogyan tehetem "https://mystorageaccountname.blob.core.windows.net/images/image.gif" "https://www.contoso.com/images/image.gif" frissítésként jelenik meg?**
+**Hogyan használható egy HTTPS egyéni tartomány a storage-fiókom? Például Hogyan tehetem "https://mystorageaccountname.blob.core.windows.net/images/image.gif"tűnnek"https://www.contoso.com/images/image.gif"?**
 
 SSL jelenleg nem támogatott az egyéni tartomány tárfiókokban.
 De egyéni tartományok nem HTTPS. További információkért lásd: [állítson be egy egyéni tartománynevet a Blob storage-végponthoz](../blobs/storage-custom-domain-name.md).

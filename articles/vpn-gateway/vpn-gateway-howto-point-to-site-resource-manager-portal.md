@@ -1,11 +1,11 @@
 ---
-title: "Számítógép csatlakoztatása Azure-beli virtuális hálózathoz pont–hely kapcsolat és az Azure natív tanúsítványalapú hitelesítésének használatával: Azure Portal | Microsoft Docs"
-description: "Windows- vagy Mac OS X-ügyfelek biztonságos csatlakoztatása egy Azure-beli virtuális hálózathoz, a pont–hely kapcsolat és önaláírt vagy hitelesítésszolgáltató által kibocsátott tanúsítványok használatával. Ebben a cikkben az Azure Portalon fogunk dolgozni."
+title: 'Számítógép csatlakoztatása Azure-beli virtuális hálózathoz pont–hely kapcsolat és az Azure natív tanúsítványalapú hitelesítésének használatával: Azure Portal | Microsoft Docs'
+description: Windows- vagy Mac OS X-ügyfelek biztonságos csatlakoztatása egy Azure-beli virtuális hálózathoz, a pont–hely kapcsolat és önaláírt vagy hitelesítésszolgáltató által kibocsátott tanúsítványok használatával. Ebben a cikkben az Azure Portalon fogunk dolgozni.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: a15ad327-e236-461f-a18e-6dbedbf74943
 ms.service: vpn-gateway
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/27/2018
+ms.date: 03/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: 0a45430491e1e06080ae2eca2124088402c17f54
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 4603131c31ab3792efc1df504eb95dfde2eccb17
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Pont–hely kapcsolat konfigurálása virtuális hálózathoz az Azure natív tanúsítványalapú hitelesítésének használatával: Azure Portal
 
@@ -78,6 +78,10 @@ Miután létrehozta a virtuális hálózatot, hozzáadhatja a DNS-kiszolgáló I
 
 [!INCLUDE [create-gateway](../../includes/vpn-gateway-add-gw-p2s-rm-portal-include.md)]
 
+>[!NOTE]
+>Az alapszintű termékváltozat nem támogatja az IKEv2- vagy RADIUS-hitelesítést.
+>
+
 ## <a name="generatecert"></a>5. Tanúsítványok előállítása
 
 A tanúsítványokat az Azure a virtuális hálózathoz pont–hely VPN-kapcsolaton keresztül csatlakozó ügyfelek hitelesítésére használja. Amint beszerzett egy főtanúsítványt, a nyilvánoskulcs-adatait [feltölti](#uploadfile) az Azure-ba. Az Azure a főtanúsítványt ettől kezdve „megbízhatónak” tekinti a virtuális hálózathoz pont–hely kapcsolaton keresztüli csatlakozás esetén. Létrehoz ügyféltanúsítványokat is a megbízható főtanúsítványból, majd telepíti őket az összes ügyfélszámítógépeken. Az ügyféltanúsítványt a rendszer az ügyfél hitelesítésére használja, amikor az a VNethez próbál csatlakozni. 
@@ -103,6 +107,10 @@ Az ügyfélcímkészlet megadott magánhálózati IP-címek tartománya. A pont�
 3. A **Pont–hely** konfigurációs lapján írja be a **Címkészlet** mezőbe a magánhálózati IP-címtartományt, amelyet használni szeretne. A VPN-ügyfelek dinamikusan kapnak egy IP-címet a megadott tartományból. Kattintson a **Mentés** gombra a beállítás érvényesítéséhez és mentéséhez.
 
   ![Ügyfélcímkészlet](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/addresspool.png)
+
+  >[!NOTE]
+  >Ha a portál e lapján nem jelenik meg az Alagúttípus vagy a Hitelesítés típusa, akkor az átjáró az alapszintű termékváltozatot használja. Az alapszintű termékváltozat nem támogatja az IKEv2- vagy RADIUS-hitelesítést.
+  >
 
 ## <a name="tunneltype"></a>7. Alagúttípus konfigurálása
 

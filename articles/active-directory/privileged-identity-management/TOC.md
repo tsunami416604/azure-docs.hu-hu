@@ -2,7 +2,7 @@
 ## [Biztonságos emelt szintű hozzáférés](active-directory-securing-privileged-access.md)
 ## [Mi az Azure AD PIM?](../active-directory-privileged-identity-management-configure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [Szerepkörök](../active-directory-privileged-identity-management-roles.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-## [PIM az Azure-erőforrásokhoz (Előzetes verzió)](azure-pim-resource-rbac.md)
+## [PIM Azure-erőforrásokhoz](azure-pim-resource-rbac.md)
 ## [A Privileged Identity Management jóváhagyási munkafolyamatai](azure-ad-pim-approval-workflow.md)
 
 # Bevezetés
@@ -27,9 +27,9 @@
 # Referencia
 ## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
 
-# Kapcsolódó
+# Kapcsolódó témakörök
 ## [Azure Active Directory](/azure/active-directory/)
 ## [Szerepköralapú hozzáférés-vezérlés](../role-based-access-control-what-is.md)
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

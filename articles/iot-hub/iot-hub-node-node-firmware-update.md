@@ -1,11 +1,11 @@
 ---
-title: "Eszköz belső vezérlőprogram frissítése az Azure IoT Hub (csomópont) |} Microsoft Docs"
-description: "Hogyan használható az eszközkezelés Azure IoT hub eszköz vezérlőprogram-frissítés kezdeményezése. Az Azure IoT SDK for Node.js használatával valósítja meg a szimulált eszköz alkalmazásának és a service-alkalmazást, amely elindítja a frissítést."
+title: Eszköz belső vezérlőprogram frissítése az Azure IoT Hub (csomópont) |} Microsoft Docs
+description: Hogyan használható az eszközkezelés Azure IoT hub eszköz vezérlőprogram-frissítés kezdeményezése. Az Azure IoT SDK for Node.js használatával valósítja meg a szimulált eszköz alkalmazásának és a service-alkalmazást, amely elindítja a frissítést.
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 70b84258-bc9f-43b1-b7cf-de1bb715f2cf
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,16 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/07/2017
 ms.author: juanpere
-ms.openlocfilehash: e169367592b25ea45c3d1017937316a3b3b538b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e8ef556793534c9eb8300ee262a4b134960f862a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-device-management-to-initiate-a-device-firmware-update-nodenode"></a>Eszközkezelés használja indításához eszköz vezérlőprogram-frissítés (csomópontok /)
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
 
 Az a [Ismerkedés az eszközkezelés] [ lnk-dm-getstarted] oktatóanyag, megtudhatta, hogyan használható a [eszköz iker] [ lnk-devtwin] és [közvetlen módszerek ] [ lnk-c2dmethod] primitívek távolról az eszköz újraindítását. Ez az oktatóanyag használja az ugyanazon az IoT-központ primitívek és nyújt útmutatást, és bemutatja, hogyan hajtsa végre egy végpontok közötti szimulált belső vezérlőprogram-frissítés.  Ebben a mintában az Intel Edison eszköz minta szolgál a belső vezérlőprogram frissítési megvalósításához.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Ez az oktatóanyag a következőket mutatja be:
 
@@ -139,7 +141,7 @@ Most már készen áll az alkalmazások futtatására.
     ```
 3. A közvetlen módszer a konzolon eszköz válasz megjelenik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag elindítása egy távoli belső vezérlőprogram frissítése egy eszközön a közvetlen módszer használatával, és a jelentésben szereplő tulajdonságok segítségével nyomon követheti a belső vezérlőprogram frissítése.
 
 Megtudhatja, hogyan terjeszthető ki az IoT-megoldás és az ütemezések metódushívások több eszközön, tekintse meg a [ütemezés és a szórásos feladatok] [ lnk-tutorial-jobs] oktatóanyag.

@@ -1,25 +1,25 @@
 ---
-title: "P2S ügyféltanúsítvány telepítése |} Azure"
-description: "P2S tanúsítványhitelesítés Mac vagy Windows ügyfél tanúsítvány telepítéséhez."
+title: P2S ügyféltanúsítvány telepítése |} Azure
+description: P2S tanúsítványhitelesítés Mac vagy Windows ügyfél tanúsítvány telepítéséhez.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: jpconnock
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager, azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/12/2018
+ms.date: 04/02/2018
 ms.author: cherylmc
-ms.openlocfilehash: de98201b65f5531f334aded1056f622cecb6e190
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: bf2788fff64ab8b3a5ccf75b8a80f2bd5aba5151
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="install-a-client-certificate-for-point-to-site-azure-certificate-authentication-connections"></a>Pont-pont Azure tanúsítvány hitelesítési kapcsolatok ügyfél tanúsítvány telepítése
 
@@ -29,17 +29,13 @@ Pont-pont Azure-alapú hitelesítést használó virtuális hálózathoz csatlak
 
 Ügyfél-tanúsítvány generálása egy legfelső szintű tanúsítványt egy vállalati hitelesítésszolgáltató megoldás használatával lett létrehozva, vagy önaláírt legfelső szintű tanúsítvány. Tekintse meg a [PowerShell](vpn-gateway-certificates-point-to-site.md) vagy [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) lépések. Ügyféltanúsítványok generálása, után exportálhatja őket .pfx-fájlként. Győződjön meg arról, hogy tartalmazza a teljes tanúsítványlánc exportálásakor.
 
-## <a name="installwin"></a>Tanúsítvány telepítése Windows ügyfelek
+## <a name="installwin"></a>Tanúsítvány - Windows telepítése
 
 [!INCLUDE [Install on Windows](../../includes/vpn-gateway-certificates-install-client-cert-include.md)]
 
-## <a name="installmac"></a>Tanúsítvány telepítése Mac rendszerű ügyfelek
+## <a name="installmac"></a>Tanúsítvány - Mac telepítése
 
 A Resource Manager üzembe helyezési modellel csak Mac VPN-ügyfelek esetén támogatottak. A klasszikus üzembe helyezési modell azok nem támogatottak.
-
-> [!NOTE]
->  Az IKEv2 jelenleg előzetes verzióban érhető el.
->
 
 [!INCLUDE [Install on Mac](../../includes/vpn-gateway-certificates-install-mac-client-cert-include.md)]
 

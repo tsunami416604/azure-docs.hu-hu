@@ -1,8 +1,8 @@
 ---
-title: "Azure-erőforrások a Privileged Identity Management (PIM) való hozzáférés kezelése"
-description: "Ismerje meg a szerepköralapú hozzáférés-kezelés a PIM Azure-erőforrások eléréséhez használt."
+title: Azure-erőforrások a Privileged Identity Management (PIM) való hozzáférés kezelése
+description: Ismerje meg a szerepköralapú hozzáférés-kezelés a PIM Azure-erőforrások eléréséhez használt.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: skwan
 manager: mtillman
 editor: bryanla
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/22/2017
-ms.author: skwan
-ms.openlocfilehash: 1f31d8b76351ac8871f8a5b03d513f7b6704c709
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.date: 03/30/2018
+ms.author: billmath
+ms.openlocfilehash: 1e74579ef2f0e18f23a40dfc573177938b9b726f
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="manage-access-to-azure-resources-with-privileged-identity-management-preview"></a>Azure Privileged Identity Management (Preview) erőforrásokhoz való hozzáférés kezelése
+# <a name="manage-access-to-azure-resources-with-privileged-identity-management"></a>Azure Privileged Identity Management erőforrásokhoz való hozzáférés kezelése
 
 Kiemelt jogosultságú fiókok védelmét a rosszindulatú számítógépes-támadások ellen, Azure Active Directory Privileged Identity Management (PIM) segítségével alacsonyabb jogosultságokat a kitettség idő, és növelje a jelentések és értesítések használatukat láthatósága. A PIM ennek érdekében, hogy csak a jogosultságait az "igény szerint" felhasználók (JIT), vagy egy rövidített időtartam elteltével jogosultságokkal vissza lenne vonva, automatikusan jogosultságok hozzárendelésével. 
 

@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: douglasl
-ms.openlocfilehash: dc4c690633d14163eddfa70e8417a645f95a0861
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c8804dce7dd8291b65f704ba36aaa1cd05eb4518
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Egy Azure-SSIS-integrációs futásidejű létrehozása az Azure Data Factory
 Ez a cikk lépéseit egy Azure-SSIS-integráció futtatókörnyezetet, az Azure Data Factory történő üzembe helyezéséhez. Ezután az SQL Server Data Tools (SSDT) vagy az SQL Server Management Studio (SSMS) használatával üzembe helyezhet SQL Server Integration Services- (SSIS-) csomagokat ebben az Azure-beli modulban.
 
 Az oktatóanyag: [oktatóanyag: központilag telepíteni az SQL Server Integration Services (SSIS) Azure](tutorial-create-azure-ssis-runtime-portal.md) bemutatta, hogyan hozhat létre egy Azure-SSIS integrációs futásidejű (IR) használatával az Azure SQL Database a tároló SSIS-katalógus. Ez a cikk kibővíti az oktatóanyag, és bemutatja, hogyan tegye a következőket: 
 
-- Azure SQL felügyelt példány (magán előnézetben) használata egy SSIS katalógust (SSISDB adatbázis).
+- Azure SQL felügyelt példány (előzetes verzió) használata egy SSIS katalógust (SSISDB adatbázis).
 - Azure-SSIS-IR csatlakoztassa egy Azure virtuális hálózatot (VNet). Egy Azure-SSIS-IR csatlakoztatása egy virtuális hálózatot és egy virtuális hálózat konfigurálása az Azure-portálon kapcsolatos információkat lásd: [Azure-SSIS-IR csatlakoztassa a virtuális hálózatba](join-azure-ssis-integration-runtime-virtual-network.md). 
 
 > [!NOTE]
@@ -44,11 +44,11 @@ Amikor üzembe helyezi az Azure-SSIS IR egy példányát, az Azure Feature Pack 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - **Azure-előfizetés**. Ha nem rendelkezik előfizetéssel, létrehozhat egy [ingyenes próbafiókot](http://azure.microsoft.com/pricing/free-trial/).
-- **Azure SQL Database-kiszolgáló** vagy **felügyelt SQL Server-példány (privát előzetes verzió) (bővített privát előzetes verzió)**. Ha még nem rendelkezik adatbázis-kiszolgálóval, először hozzon létre egyet az Azure Portalon. Ez a kiszolgáló üzemelteti az SSIS-katalógusadatbázist (SSISDB-t). Javasoljuk, hogy az adatbáziskiszolgálót az integrációs modullal megegyező Azure-régióban hozza létre. Ez a konfiguráció lehetővé teszi, hogy az integrációs modul Azure-régiók határainak átlépése nélkül írjon végrehajtási naplókat a katalógusadatbázisba. Jegyezze fel az Azure SQL-kiszolgáló tarifacsomagját. Az Azure SQL Database támogatott tarifacsomagok listáját lásd: [SQL-adatbázis erőforrás korlátok](../sql-database/sql-database-resource-limits.md).
+- **Azure SQL adatbázis-kiszolgáló** vagy **SQL Server-felügyelt példány (Preview) (kiterjesztett magán előnézetben)**. Ha még nem rendelkezik adatbázis-kiszolgálóval, először hozzon létre egyet az Azure Portalon. Ez a kiszolgáló üzemelteti az SSIS-katalógusadatbázist (SSISDB-t). Javasoljuk, hogy az adatbáziskiszolgálót az integrációs modullal megegyező Azure-régióban hozza létre. Ez a konfiguráció lehetővé teszi, hogy az integrációs modul Azure-régiók határainak átlépése nélkül írjon végrehajtási naplókat a katalógusadatbázisba. Jegyezze fel az Azure SQL-kiszolgáló tarifacsomagját. Az Azure SQL Database támogatott tarifacsomagok listáját lásd: [SQL-adatbázis erőforrás korlátok](../sql-database/sql-database-resource-limits.md).
 
-    Győződjön meg arról, hogy az Azure SQL Database-kiszolgálóhoz vagy az SQL Server-felügyelt példány (kiterjesztett magán előnézetben) nem rendelkezik egy SSIS-katalógus (SSIDB adatbázis). Az Azure-SSIS IR üzembe helyezése nem támogatja a meglévő SSIS-katalógusok használatát.
+    Győződjön meg arról, hogy az Azure SQL Database-kiszolgálóhoz vagy az SQL Server-felügyelt példány (előzetes verzió) nem rendelkezik egy SSIS-katalógus (SSIDB adatbázis). Az Azure-SSIS IR üzembe helyezése nem támogatja a meglévő SSIS-katalógusok használatát.
 - **Klasszikus Azure Resource Manager virtuális Network(VNet) (nem kötelező), vagy**. Legalább egy Azure virtuális hálózat (VNet) szükséges, ha a következő feltételek bármelyike igaz:
-    - Az SSIS-katalógusadatbázis egy olyan felügyelt SQL Server-példányon (privát előzetes verzió) fut, amely egy virtuális hálózat része.
+    - A SSIS-katalógus-adatbázis SQL-példányon a kiszolgáló által felügyelt (előzetes verzió) egy virtuális hálózat részét képező üzemeltet.
     - Az Azure SSIS integrációs modulon futó SSIS-csomagokkal helyszíni adattárakhoz szeretne csatlakozni.
 - **Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-azurerm-ps) ismertető cikkben szereplő utasításokat. Egy PowerShell-lel futtatott szkripttel üzembe helyez egy Azure SSIS integrációs modult, amely a felhőben futtat SSIS-csomagokat. 
 
@@ -181,15 +181,15 @@ $AzureSSISNodeNumber = 2
 $AzureSSISMaxParallelExecutionsPerNode = 2 
 
 # SSISDB info
-$SSISDBServerEndpoint = "[your Azure SQL Database server name.database.windows.net or your Azure SQL Managed Instance (private preview) server endpoint]"
+$SSISDBServerEndpoint = "[your Azure SQL Database server name.database.windows.net or your Azure SQL Managed Instance (Preview) server endpoint]"
 $SSISDBServerAdminUserName = "[your server admin username]"
 $SSISDBServerAdminPassword = "[your server admin password]"
 
-# Remove the SSISDBPricingTier variable if you are using Azure SQL Managed Instance (private preview)
+# Remove the SSISDBPricingTier variable if you are using Azure SQL Managed Instance (Preview)
 # This parameter applies only to Azure SQL Database. For the basic pricing tier, specify "Basic", not "B". For standard tiers, specify "S0", "S1", "S2", 'S3", etc.
 $SSISDBPricingTier = "[your Azure SQL Database pricing tier. Examples: Basic, S0, S1, S2, S3, etc.]"
 
-## These two parameters apply if you are using a VNet and an Azure SQL Managed Instance (private preview) 
+## These two parameters apply if you are using a VNet and an Azure SQL Managed Instance (Preview) 
 # Specify information about your classic or Azure Resource Manager virtual network (VNet). 
 $VnetId = "[your VNet resource ID or leave it empty]" 
 $SubnetName = "[your subnet name or leave it empty]" 
@@ -204,7 +204,7 @@ Select-AzureRmSubscription -SubscriptionName $SubscriptionName
 ```
 
 ### <a name="validate-the-connection-to-database"></a>Az adatbázissal való kapcsolat ellenőrzése
-Adja hozzá a következő parancsfájl érvényesíteni az Azure SQL Database-kiszolgáló server.database.windows.net vagy az Azure SQL felügyelt példány (magán előnézetben) végpontját. 
+Adja hozzá a következő parancsfájl érvényesíteni az Azure SQL Database-kiszolgáló server.database.windows.net vagy az Azure SQL felügyelt példány (előzetes verzió) végpontját. 
 
 ```powershell
 $SSISDBConnectionString = "Data Source=" + $SSISDBServerEndpoint + ";User ID="+ $SSISDBServerAdminUserName +";Password="+ $SSISDBServerAdminPassword
@@ -263,7 +263,7 @@ Set-AzureRmDataFactoryV2 -ResourceGroupName $ResourceGroupName `
 ```
 
 ### <a name="create-an-integration-runtime"></a>Integrációs modul létrehozása
-Egy Azure-SSIS-integrációs futásidejű SSIS-csomagok az Azure-ban futó létrehozásához a következő parancsot: a parancsfájl használata a szakaszában az adatbázis (Azure SQL Database és alapján Az Azure SQL felügyelt példány (magán előnézetben)) használ. 
+Egy Azure-SSIS-integrációs futásidejű SSIS-csomagok az Azure-ban futó létrehozásához a következő parancsot: a parancsfájl használata a szakaszában az adatbázis (Azure SQL Database és alapján Az Azure SQL felügyelt példány (előzetes verzió)) használ. 
 
 #### <a name="azure-sql-database-to-host-the-ssisdb-database-ssis-catalog"></a>Az SSISDB adatbázist (SSIS-katalógussal) Azure SQL-adatbázis 
 
@@ -286,7 +286,7 @@ Set-AzureRmDataFactoryV2IntegrationRuntime  -ResourceGroupName $ResourceGroupNam
 
 Nem kell értéket átadni VNetId és alhálózathoz, ha nem kell a helyszíni adatok elérése, ez azt jelenti, hogy rendelkezik a helyszíni adatok források/célok a SSIS-csomagok. Át kell adnia a CatalogPricingTier paraméter értékét. Az Azure SQL Database támogatott tarifacsomagok listáját lásd: [SQL-adatbázis erőforrás korlátok](../sql-database/sql-database-resource-limits.md).
 
-#### <a name="azure-sql-managed-instance-private-preview-to-host-the-ssisdb-database"></a>Az Azure SQL felügyelt példány (magán előnézetben) az SSISDB adatbázis
+#### <a name="azure-sql-managed-instance-preview-to-host-the-ssisdb-database"></a>Az Azure SQL felügyelt példány (előzetes verzió) az SSISDB adatbázis
 
 ```powershell
 $secpasswd = ConvertTo-SecureString $SSISDBServerAdminPassword -AsPlainText -Force
@@ -306,7 +306,7 @@ Set-AzureRmDataFactoryV2IntegrationRuntime  -ResourceGroupName $ResourceGroupNam
                                             -Subnet $SubnetName
 ```
 
-Azure SQL felügyelt példánnyal (magán előnézetben), amelyhez csatlakozik egy Vnetet VnetId és alhálózati paraméterek értékeit továbbítani kell. A CatalogPricingTier paraméter nem érvényes az Azure SQL felügyelt példány. 
+Azure SQL felügyelt példánnyal (előzetes verzió), amelyhez csatlakozik egy Vnetet VnetId és alhálózati paraméterek értékeit továbbítani kell. A CatalogPricingTier paraméter nem érvényes az Azure SQL felügyelt példány (előzetes verzió). 
 
 ### <a name="start-integration-runtime"></a>Integrációs modul indítása
 Futtassa a következő parancsot az Azure SSIS integrációs modul indításához: 
@@ -325,7 +325,7 @@ A parancs végrehajtása **20–30 percig** is eltarthat.
 
 
 ### <a name="full-script"></a>Teljes szkript
-Ez a teljes parancsfájl, amely létrehoz egy Azure-SSIS-IR, és azt csatlakoztatja a virtuális hálózat. A parancsfájl feltételezi, hogy az Azure SQL felügyelt példány (MI) segítségével a SSIS-katalógust. 
+Ez a teljes parancsfájl, amely létrehoz egy Azure-SSIS-IR, és azt csatlakoztatja a virtuális hálózat. A parancsfájl feltételezi, hogy az Azure SQL felügyelt példány (előzetes verzió) segítségével a SSIS-katalógust. 
 
 ```powershell
 # Azure Data Factory version 2 information 
@@ -351,7 +351,7 @@ $AzureSSISMaxParallelExecutionsPerNode = 2
 $SSISDBServerEndpoint = "<Azure SQL server name>.database.windows.net"
 $SSISDBServerAdminUserName = "<Azure SQL server - user name>"
 $SSISDBServerAdminPassword = "<Azure SQL server - user password>"
-# Remove the SSISDBPricingTier variable if you are using Azure SQL Managed Instance (private preview)
+# Remove the SSISDBPricingTier variable if you are using Azure SQL Managed Instance (Preview)
 # This parameter applies only to Azure SQL Database. For the basic pricing tier, specify "Basic", not "B". For standard tiers, specify "S0", "S1", "S2", 'S3", etc.
 $SSISDBPricingTier = "<pricing tier of your Azure SQL server. Examples: Basic, S0, S1, S2, S3, etc.>" 
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: ancav
-ms.openlocfilehash: 88020b27403f06ab8f1c0a1c45b798db02f517f5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4598267e92716529774f42d22ab7c47d944d4495
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>A Microsoft Azure-ban mérőszámok áttekintése
 Ez a cikk ismerteti, hogy milyen adatok gyűjtése le van a Microsoft Azure-ban az előnyöket, és használatuk indítása.  
@@ -116,7 +116,7 @@ Metrika riasztások: is majd e-mailben értesítse arról, vagy egy egyéni para
 
  ![Metrikák és az Azure-figyelő riasztási szabályok](./media/monitoring-overview-metrics/MetricsOverview4.png)
 
-Majdnem valós idejű riasztások (előzetes verzió): ezek, hogy a számítógép több metrikákat, és a küszöbértékek erőforrás figyelése és majd értesítést kérhet a keresztül egy [művelet csoport](/monitoring-action-groups.md). További információ [közel valós idejű metrika riasztásokat Itt](https://aka.ms/azuremonitor/near-real-time-alerts).
+Újabb metrika riasztásokat is képes több metrikákat, és a küszöbértékek erőforrás figyelése és majd értesítést kérhet a keresztül egy [művelet csoport](/monitoring-action-groups.md). További információ [újabb riasztásokat Itt](https://aka.ms/azuremonitor/near-real-time-alerts).
 
 
 ### <a name="autoscale-your-azure-resources"></a>Automatikus skálázási az Azure erőforrások

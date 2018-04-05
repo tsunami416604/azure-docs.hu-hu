@@ -1,11 +1,11 @@
 ---
-title: "Azure virtuális hálózaton lévő adatok átalakítása a Hive segítségével | Microsoft Docs"
-description: "Ez az oktatóanyag részletes útmutatást nyújt az adatok Hive-tevékenységgel történő átalakításához az Azure Data Factoryben."
+title: Azure virtuális hálózaton lévő adatok átalakítása a Hive segítségével | Microsoft Docs
+description: Ez az oktatóanyag részletes útmutatást nyújt az adatok Hive-tevékenységgel történő átalakításához az Azure Data Factoryben.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: shengcmsft
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: shengc
-ms.openlocfilehash: 04323e5f6b729cdadf5ede748a1178dfa9460cd2
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: fda9cab53290d7af69e243ce47df702b25d1de67
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure virtuális hálózaton lévő adatok átalakítása Hive-tevékenység segítségével az Azure Data Factoryben
 Ebben az oktatóanyagban az Azure PowerShell-lel hoz létre egy Data Factory-folyamatot, amely egy Azure virtuális hálózaton (VNET) lévő HDInsight-fürtön futó Hive-tevékenységgel alakítja át az adatokat. Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
@@ -223,7 +223,7 @@ Frissítse a következő tulajdonságok értékeit a társított szolgáltatás 
 
 - **userName**. A fürt bejelentkezési felhasználójának neve, amely a fürt létrehozásakor lett megadva. 
 - **password**. A felhasználó jelszava.
-- **clusterUri**. A HDInsight-fürt URL-címét adja meg a következő formátumban: https://<clustername>.azurehdinsight.net.  A cikk azt feltételezi, hogy a fürtöt az interneten éri el. Például hogy a `https://clustername.azurehdinsight.net` címen tud csatlakozni a fürthöz. Ez a cím a nyilvános átjárót használja, amely nem érhető el, ha az internetes hozzáférés korlátozva lett hálózati biztonsági csoportokkal (NSG-kkel) vagy felhasználó által definiált útvonalakkal (UDR-ekkel). Ahhoz, hogy a Data Factory feladatokat küldhessen az Azure virtuális hálózaton található HDInsight-fürtre, az Azure virtuális hálózatot úgy kell konfigurálni, hogy az URL-cím feloldható legyen a HDInsight által használt átjáró magánhálózati IP-címére.
+- **clusterUri**. A HDInsight-fürt URL-címét a következő formátumban adja meg: https://<clustername>.azurehdinsight.net.  A cikk azt feltételezi, hogy a fürtöt az interneten éri el. A fürthöz például a `https://clustername.azurehdinsight.net` címen tud csatlakozni. Ez a cím a nyilvános átjárót használja, amely nem érhető el, ha az internetes hozzáférés korlátozva lett hálózati biztonsági csoportokkal (NSG-kkel) vagy felhasználó által definiált útvonalakkal (UDR-ekkel). Ahhoz, hogy a Data Factory feladatokat küldhessen az Azure-beli virtuális hálózaton található HDInsight-fürtre, az Azure-beli virtuális hálózatot úgy kell konfigurálni, hogy az URL-cím feloldható legyen a HDInsight által használt átjáró magánhálózati IP-címére.
 
   1. Az Azure Portalról nyissa meg a virtuális hálózatot, amelyen a HDInsight található. Nyissa meg a hálózati adaptert, amelynek a neve a következő karakterlánccal kezdődik: `nic-gateway-0`. Jegyezze fel a magánhálózati IP-címét. Például: 10.6.0.15. 
   2. Ha az Azure virtuális hálózaton van DNS-kiszolgáló, frissítse a DNS-rekordot, hogy a HDInsight-fürt URL-címe (`https://<clustername>.azurehdinsight.net`) feloldható legyen a `10.6.0.15` címre. Ez az ajánlott eljárás. Ha nincs DNS-kiszolgáló az Azure virtuális hálózaton, akkor átmeneti megoldást jelenthet, ha szerkeszti az összes saját üzemeltetésű integrációs modulként regisztrált virtuális gép listáját tartalmazó gazdafájlt (C:\Windows\System32\drivers\etc) egy, a következőhöz hasonló bejegyzés hozzáadásával: 

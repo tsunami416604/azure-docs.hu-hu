@@ -1,11 +1,11 @@
 ---
-title: "Bevezetés az Azure Data Factory használatába | Microsoft Docs"
-description: "A témakör ismerteti, hogy mi is az Azure Data Factory: egy felhőalapú adatintegrációs szolgáltatás, amellyel előkészíthető és automatizálható az adatok továbbítása és átalakítása."
+title: Bevezetés az Azure Data Factory használatába | Microsoft Docs
+description: 'A témakör ismerteti, hogy mi is az Azure Data Factory: egy felhőalapú adatintegrációs szolgáltatás, amellyel előkészíthető és automatizálható az adatok továbbítása és átalakítása.'
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: ac1ecf8ef9f1e30eb5bdd2fe86433a4981d73d8d
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 89f5391cfbfd85f9f0715a8c7d288cc3981cc618
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="introduction-to-azure-data-factory"></a>Az Azure Data Factory bemutatása 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -65,7 +65,7 @@ Ha az adatok már jelen vannak egy központi adattárban a felhőben, akkor olya
 Miután a nyers adatok át lettek alakítva üzleti használatra kész formába, feltöltheti azokat az Azure Data Warehouse-ba, az Azure SQL Database-be, az Azure CosmosDB-be vagy bármely olyan elemzési motorra, amelyre üzleti felhasználói intelligens üzleti eszközeikkel rámutathatnak.
 
 ### <a name="monitor"></a>Figyelés
-Miután sikeresen kiépítette és üzembe helyezte az adatintegrációs folyamatot, amely üzleti értéket állít elő a feldolgozott adatokból, kövesse figyelemmel az ütemezett tevékenységek és folyamatok sikerességi arányát. Az Azure Data Factory beépített folyamatfigyelési támogatással rendelkezik az Azure Monitor, az API, a PowerShell, a Microsoft Operations Management Suite, valamint az Azure Portal állapotpaneljei révén.
+Miután sikeresen kiépítette és üzembe helyezte az adatintegrációs folyamatot, amely üzleti értéket állít elő a feldolgozott adatokból, kövesse figyelemmel az ütemezett tevékenységek és folyamatok sikerességi arányát. Az Azure Data Factory beépített folyamatmonitorozási támogatással rendelkezik az Azure Monitor, az API, a PowerShell, a Log Analytics, valamint az Azure Portal állapotpaneljei révén.
 
 ## <a name="top-level-concepts"></a>Legfelső szintű fogalmak
 Az Azure-előfizetések több Azure Data Factory-példányt (más néven adat-előállítókat) is tartalmazhatnak. Az Azure Data Factory négy fő összetevőből áll. Ezek együtt alkotják azt a platformot, amelyen létrehozhatók olyan adatvezérelt munkafolyamatok, amelyeknek a lépései áthelyezik és átalakítják az adatokat.

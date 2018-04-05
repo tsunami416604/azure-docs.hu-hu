@@ -12,31 +12,27 @@ ms.workload: identity
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 03/23/2018
+ms.date: 03/30/2018
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 2b42840bc1053e9574e7c8ab1c68611c3b2bc7df
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a4ed9ddabe19406fa694992f29cf529b491438c0
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Dinamikus csoporttagság Attribútumalapú szabályok létrehozása az Azure Active Directoryban
-Az Azure Active Directory (Azure AD) összetett Attribútumalapú dinamikus csoporttagságok csoportok engedélyezése speciális szabályokat hozhat létre. Ez a cikk részletezi az attribútumokat és a felhasználók vagy eszközök dinamikus tagsági szabályok létrehozásához szintaxist.
+Az Azure Active Directory (Azure AD) összetett Attribútumalapú dinamikus csoporttagságok csoportok engedélyezése speciális szabályokat hozhat létre. Ez a cikk részletezi az attribútumokat és a felhasználók vagy eszközök dinamikus tagsági szabályok létrehozásához szintaxist. Biztonsági vagy Office 365-csoportok esetében dinamikustagság-szabály beállítására is lehetőség van.
 
 Ha módosítja egy felhasználó vagy eszköz attribútuma, a rendszer kiértékeli az összes dinamikus csoport szabályokat annak ellenőrzéséhez, hogy a módosítás kiváltották bármely csoport hozzáadása vagy eltávolítása a könyvtárban található. Ha egy felhasználó vagy az eszköz megfelel a csoporton szabály, azokat hozzá szeretné adni a csoport tagjai. A szabály már nem megfelelnek eltávolítja.
 
 > [!NOTE]
-> Biztonsági vagy Office 365-csoportok esetében dinamikustagság-szabály beállítására is lehetőség van.
->
 > Ez a szolgáltatás legalább egy dinamikus csoportba felvett felhasználói tagjaihoz tartozó Azure AD Premium P1-licencre van szükség. Nem kötelező ténylegesen licencek hozzárendelése dinamikus csoportok tagjainak kell azokat a felhasználókat, de kell rendelkeznie a licencek minimális számát, amelyek az ilyen felhasználók bérlő. Példa: Ha 1000 egyedi felhasználók teljes minden dinamikus csoport rendelkezik, ahol az Ön bérlőjében, szeretné-e legalább 1000 licenccel rendelkezik az Azure AD Premium P1, vagy a fenti licencszerződés követelménynek.
 >
 > Létrehozhat egy dinamikus csoportot eszközök vagy felhasználók számára, de nem hozható létre egy szabályt, amely a felhasználó és eszköz objektumokat is tartalmaz.
 > 
 > A jelenleg nincs lehetőség a tulajdonos felhasználói attribútumok alapján eszköz csoport létrehozásához. Eszköz tagsági szabályok csak az eszköz a címtárban található objektumokhoz azonnali attribútumok hivatkozhat.
-> 
-> Microsoft Teams egyelőre nem támogatják a dinamikus csoporttagság. A hiba a "Nem tudja áttelepíteni a dinamikus tagságot csoport" társított naplófájlokban ellenőrizheti
 
 ## <a name="to-create-an-advanced-rule"></a>Speciális szabály létrehozása
 1. Jelentkezzen be a [az Azure AD felügyeleti központban](https://aad.portal.azure.com) egy olyan fiókkal, amely egy globális rendszergazda vagy egy felhasználói fiók rendszergazdájához.
@@ -74,7 +70,7 @@ Támogatott paraméterek és kifejezés szabályoperátorokat teljes listájáé
 A speciális szabály törzsét teljes hossza legfeljebb 2048 karakter hosszú lehet.
 
 > [!NOTE]
-> Karakterlánc és regex műveletek még nem kis-és nagybetűket. Is végrehajtható null-ellenőrzések *null* konstansként, például felhasználó.részleg - eq *$null*.
+> Karakterlánc és regex műveletek még nem kis-és nagybetűket. Is végrehajtható, Null-ellenőrzések *null* konstansként, például felhasználó.részleg - eq *null*.
 > Idézőjeleket tartalmazó karakterláncok "használatával kell megjelölni" karakter, például felhasználó.részleg - eq \`"Értékesítési".
 
 ## <a name="supported-expression-rule-operators"></a>Támogatott kifejezés szabály operátorok
@@ -106,11 +102,11 @@ Minden operátorok részesíti a alacsonyabb magasabb / alább láthatók. Ugyan
 Minden műveleteivel végrehajtható vagy a kötőjel előtag nélkül. Kerek zárójeleket tartalmazhatnak van szükség, csak akkor, amikor sorrendje nem felel meg a követelményeknek.
 Példa:
 ```
-   user.department -eq "Marketing" -and user.country -eq "US"
+   user.department –eq "Marketing" –and user.country –eq "US"
 ```
 az egyenértékű:
 ```
-   (user.department -eq "Marketing") -and (user.country -eq "US")
+   (user.department –eq "Marketing") –and (user.country –eq "US")
 ```
 ## <a name="using-the--in-and--notin-operators"></a>Használja az - a és - notIn operátorok
 
@@ -160,32 +156,32 @@ Engedélyezett operátorok
 
 | Tulajdonságok | Megengedett értékek | Használat |
 | --- | --- | --- |
-| city |A karakterlánc értéke vagy *$null* |(user.city - eq "érték") |
-| Ország |A karakterlánc értéke vagy *$null* |(felhasználó.ország - eq "érték") |
-| Cégnév | A karakterlánc értéke vagy *$null* | (user.companyName - eq "érték") |
-| Szervezeti egység |A karakterlánc értéke vagy *$null* |(felhasználó.részleg - eq "érték") |
+| city |A karakterlánc értéke vagy *null értékű* |(user.city - eq "érték") |
+| Ország |A karakterlánc értéke vagy *null értékű* |(felhasználó.ország - eq "érték") |
+| Cégnév | A karakterlánc értéke vagy *null értékű* | (user.companyName - eq "érték") |
+| Szervezeti egység |A karakterlánc értéke vagy *null értékű* |(felhasználó.részleg - eq "érték") |
 | displayName |Bármilyen karakterlánc típusú értéket |(user.displayName - eq "érték") |
-| employeeId |Bármilyen karakterlánc típusú értéket |(user.employeeId -eq "value")<br>(user.employeeId - ne *$null*) |
-| facsimileTelephoneNumber |A karakterlánc értéke vagy *$null* |(user.facsimileTelephoneNumber - eq "érték") |
-| givenName |A karakterlánc értéke vagy *$null* |(user.givenName -eq "value") |
-| jobTitle |A karakterlánc értéke vagy *$null* |(user.jobTitle - eq "érték") |
-| mail |A karakterlánc értéke vagy *$null* (SMTP-cím felhasználó) |(user.mail - eq "érték") |
+| employeeId |Bármilyen karakterlánc típusú értéket |(user.employeeId -eq "value")<br>(user.employeeId - ne *null*) |
+| facsimileTelephoneNumber |A karakterlánc értéke vagy *null értékű* |(user.facsimileTelephoneNumber - eq "érték") |
+| givenName |A karakterlánc értéke vagy *null értékű* |(user.givenName -eq "value") |
+| jobTitle |A karakterlánc értéke vagy *null értékű* |(user.jobTitle - eq "érték") |
+| mail |A karakterlánc értéke vagy *null* (SMTP-cím felhasználó) |(user.mail - eq "érték") |
 | mailNickName |Bármilyen karakterlánc típusú értéket (mail alias a felhasználó) |(user.mailNickName - eq "érték") |
-| Mobileszköz |A karakterlánc értéke vagy *$null* |(user.mobile - eq "érték") |
+| Mobileszköz |A karakterlánc értéke vagy *null értékű* |(user.mobile - eq "érték") |
 | objectId |A user objektum GUID-azonosítója |(user.objectId - eq "1111111-1111-1111-1111-111111111111") |
 | onPremisesSecurityIdentifier | A helyi biztonsági azonosítóját (SID) a felhasználók számára a felhőbe a helyszíni szinkronizálva. |(user.onPremisesSecurityIdentifier -eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |None DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(user.passwordPolicies -eq "DisableStrongPassword") |
-| physicalDeliveryOfficeName |A karakterlánc értéke vagy *$null* |(user.physicalDeliveryOfficeName -eq "value") |
-| Irányítószám |A karakterlánc értéke vagy *$null* |(user.postalCode - eq "érték") |
+| physicalDeliveryOfficeName |A karakterlánc értéke vagy *null értékű* |(user.physicalDeliveryOfficeName -eq "value") |
+| Irányítószám |A karakterlánc értéke vagy *null értékű* |(user.postalCode - eq "érték") |
 | preferredLanguage |ISO 639-1 kódot |(user.preferredLanguage - eq "en-US") |
-| sipProxyAddress |A karakterlánc értéke vagy *$null* |(user.sipProxyAddress -eq "value") |
-| state |A karakterlánc értéke vagy *$null* |(user.state - eq "érték") |
-| streetAddress |A karakterlánc értéke vagy *$null* |(user.streetAddress -eq "value") |
-| Vezetéknév |A karakterlánc értéke vagy *$null* |(user.surname - eq "érték") |
-| TelephoneNumber |A karakterlánc értéke vagy *$null* |(user.telephoneNumber - eq "érték") |
+| sipProxyAddress |A karakterlánc értéke vagy *null értékű* |(user.sipProxyAddress -eq "value") |
+| state |A karakterlánc értéke vagy *null értékű* |(user.state - eq "érték") |
+| streetAddress |A karakterlánc értéke vagy *null értékű* |(user.streetAddress -eq "value") |
+| Vezetéknév |A karakterlánc értéke vagy *null értékű* |(user.surname - eq "érték") |
+| TelephoneNumber |A karakterlánc értéke vagy *null értékű* |(user.telephoneNumber - eq "érték") |
 | usageLocation |Két betűkkel országhívószám |(user.usageLocation - eq "US") |
 | userPrincipalName |Bármilyen karakterlánc típusú értéket |(user.userPrincipalName - eq "alias@domain") |
-| userType |tag vendég *$null* |(user.userType - eq "Tag") |
+| userType |tag vendég *null értékű* |(user.userType - eq "Tag") |
 
 ### <a name="properties-of-type-string-collection"></a>Típusú karakterlánc gyűjtemény tulajdonságai
 Engedélyezett operátorok
@@ -228,7 +224,7 @@ user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabi
 
 ## <a name="use-of-null-values"></a>Null értékek használatát
 
-A szabály a null érték megadásához használja a *null* érték. Ügyeljen arra, hogy nem használja a word idézőjelbe *null* -Ha így tesz, azt fogja értelmezni literál karakterlánc-érték. A megfelelő módon való hivatkozáshoz a null érték a következőképpen történik:
+A szabály a null érték megadásához használja a *null* érték. Ügyeljen arra, hogy nem használja a word idézőjelbe *null* -Ha így tesz, azt fogja értelmezni literál karakterlánc-érték. A - not operátor nem használható összehasonlító operátorként null. Ha használ, hibaüzenetet kap, hogy használ-e NULL értékű vagy $null. Ehelyett használja a - eq vagy - ne. A megfelelő módon való hivatkozáshoz a null érték a következőképpen történik:
 ```
    user.mail –ne $null
 ```
@@ -253,14 +249,15 @@ Létrehozhat egy Manager minden közvetlen beosztottai tartalmazó csoport. A ke
 
 > [!NOTE]
 > 1. A szabály érvényesítéséhez, ellenőrizze, hogy a **kezelő azonosítója** tulajdonság helyesen beállítva a felhasználók az Ön bérelt szolgáltatásának. Akkor is ellenőrizhesse a felhasználó aktuális értékét az **profil lapon**.
-> 2. Ez a szabály csak **közvetlen** jelentéseket. Jelenleg nem lehetséges egy beágyazott hierarchiához, pl. tartalmazó csoport közvetlen jelentések és a csoport létrehozásához.
+> 2. Ez a szabály csak **közvetlen** jelentéseket. Jelenleg nem lehetséges a beágyazott hierarchiában; a csoport létrehozása például egy csoport, amely közvetlen és a jelentéseket tartalmazza.
+> 3. Ez a szabály nem kombinálható más, speciális szabályok.
 
 **A csoport konfigurálása**
 
 1. Kövesse a 1-5 lépések szakaszából [a speciális szabály létrehozásához](#to-create-the-advanced-rule), és válassza ki egy **tagsági típusa** a **dinamikus felhasználói**.
 2. Az a **dinamikus tagsági szabályok** panelen adja meg a szabály a következő szintaxissal:
 
-    *A(z) "{obectID_of_manager}" közvetlen beosztottaik*
+    *A(z) "{objectID_of_manager}" közvetlen beosztottaik*
 
     Példa egy érvényes szabályt:
 ```
@@ -295,19 +292,43 @@ Olyan szabály, amely kijelöli a tagság eszközobjektumok egy csoportot is lé
 ## <a name="changing-dynamic-membership-to-static-and-vice-versa"></a>Dinamikus tagság módosítása a statikus, és ez fordítva is igaz
 Akkor lehet módosítani a módjára vonatkozik a csoport tagságát. Ez akkor hasznos, ha meg szeretné tartani a azonos csoport nevét és Azonosítóját a rendszer úgy, hogy minden meglévő csoporthoz továbbra is érvényes; Új csoport létrehozásakor igényelnének frissítése ezeket a hivatkozásokat.
 
-Az Azure-portál támogatja ezt a funkciót frissítése végezzük. Addig használható PowerShell-parancsmagok alább látható módon.
+Ez a funkció frissítettük az Azure AD felügyeleti központban támogatását. Most az ügyfelek konvertálhatja meglévő csoportok dinamikus tagságot a hozzárendelt tagságát, és fordítva vagy Azure AD felügyeleti központjába vagy a PowerShell-parancsmagok alább látható módon.
 
 > [!WARNING]
 > Egy létező statikus csoportot egy dinamikus csoport módosításakor a csoport összes meglévő tag törlődik, és ezután a tagsági szabály dolgoz fel új tagokat adhat. Ha a csoport használatával alkalmazásokhoz és erőforrásokhoz való hozzáférést, az eredeti tagok elveszthetik a hozzáférést a tagsági szabály teljesen feldolgozásáig.
 >
-> Javasolt tesztelni az új tagsági szabály előzetesen gondoskodjon arról, hogy az új a csoporttagságot a várt módon.
+> Azt javasoljuk, hogy tesztelje az új tagsági szabály előzetesen győződjön meg arról, hogy az új a csoporttagságot a várt módon van-e.
 
-**Egy csoport tagságát változáskezelés a PowerShell használatával**
+### <a name="using-azure-ad-admin-center-to-change-membership-management-on-a-group"></a>Az Azure AD felügyeleti központban használja a csoporton tagságkezelés 
+
+1. Jelentkezzen be a [az Azure AD felügyeleti központban](https://aad.portal.azure.com) egy olyan fiókkal, amely egy globális rendszergazdájának vagy felhasználói fiók az Ön bérelt szolgáltatásának.
+2. Válassza ki **csoportok**.
+3. Az a **összes csoport** listában, nyissa meg a módosítani kívánt csoportot.
+4. Válassza ki **tulajdonságok**.
+5. A a **tulajdonságok** a csoportban válassza a lap egy **tagságtípusának** hozzárendelt (statikus), a dinamikus felhasználói vagy a dinamikus eszköz, attól függően, hogy a kívánt tagsági típusa. Dinamikus tagságot a szabály szerkesztő segítségével válassza ki az egyszerű szabályt, vagy saját kezűleg speciális szabály írása. 
+
+Az alábbi lépéseket kell egy példa egy csoport módosítása az statikus dinamikus tagságot a felhasználók egy csoportjánál. 
+
+1. Az a **tulajdonságok** a kiválasztott csoportra, válassza a lap egy **tagsági típusa** a **dinamikus felhasználói**, majd válassza az Igen foglalja össze a módosításokat a csoporthoz párbeszédpanelen tagság a folytatáshoz. 
+  
+   ![Válassza ki a dinamikus felhasználói tagsági típusa](./media/active-directory-groups-dynamic-membership-azure-portal/select-group-to-convert.png)
+  
+2. Válassza ki **Hozzáadás dinamikus lekérdezés**, és adja meg a szabály.
+  
+   ![Adja meg a szabály](./media/active-directory-groups-dynamic-membership-azure-portal/enter-rule.png)
+  
+3. Válassza ki a szabály létrehozása után **Hozzáadás lekérdezés** az oldal alján.
+4. Válassza ki **mentése** a a **tulajdonságok** lapon a csoporthoz, a módosítások mentéséhez. A **tagságtípusának** a csoport azonnal frissül a listájából.
+
+> [!TIP]
+> A csoport konvertálása sikertelen lehet, ha a megadott speciális szabályt helytelen volt. Megjelenik egy értesítés a benne található annak magyarázatát, miért a szabály nem fogadja el a rendszer portál jobb felső sarokban. Olvassa el, hogy alaposan megérteni, hogyan módosíthatja a szabályt, hogy érvényes legyen.
+
+### <a name="using-powershell-to-change-membership-management-on-a-group"></a>Egy csoport tagságát változáskezelés a PowerShell használatával
 
 > [!NOTE]
-> Szüksége lesz a parancsmagok használatával dinamikus csoport tulajdonságainak módosításához **előzetes verziójában** [Azure AD PowerShell-verzió 2](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0). Az előzetes verzióját, a telepítése [Itt](https://www.powershellgallery.com/packages/AzureADPreview).
+> Szüksége lesz a parancsmagok használatával dinamikus csoport tulajdonságainak módosításához **előzetes verziójában** [Azure AD PowerShell-verzió 2](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0). Az előzetes verzióját, a telepítése a [PowerShell-galériában](https://www.powershellgallery.com/packages/AzureADPreview).
 
-Íme egy példa, függvények, amelyek tagságkezelés váltani egy meglévő csoporthoz. Vegye figyelembe, hogy van ügyelni megfelelően kezelheti a GroupTypes tulajdonság megőrzéséhez van, előfordulhat, hogy létezik értékek dinamikus tagságot egymástól független.
+Íme egy példa, függvények, amelyek tagságkezelés váltani egy meglévő csoporthoz. Ebben a példában az ügyelni megfelelően kezelheti a GroupTypes tulajdonság megőrzéséhez dinamikus tagságot nem kapcsolt értékeket.
 
 ```
 #The moniker for dynamic groups as used in the GroupTypes property of a group object

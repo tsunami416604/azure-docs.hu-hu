@@ -1,6 +1,6 @@
 ---
-title: "Az Azure által felügyelt alkalmazás szövegmező felhasználói felületi elem |} Microsoft Docs"
-description: "A témakör ismerteti a Microsoft.Common.TextBox felhasználói felületi elem Azure által felügyelt alkalmazások"
+title: Az Azure szövegmező felhasználói felületi elem |} Microsoft Docs
+description: Azure-portálon a Microsoft.Common.TextBox felhasználói felületi elem ismerteti.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 03/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: d3fae42ae202fe720761382e1020fa8bd8c62b44
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: daee95c177ecddfea1cf7d6d162906fcc86938b4
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="microsoftcommontextbox-ui-element"></a>Microsoft.Common.TextBox felhasználói felületi elem
-Segítségével szerkesztheti a formázatlan szöveges vezérlő. Ez az elem használata során [Azure által felügyelt alkalmazások létrehozására](publish-service-catalog-app.md).
+Segítségével szerkesztheti a formázatlan szöveges vezérlő.
 
 ## <a name="ui-sample"></a>Felhasználói felület minta
 ![Microsoft.Common.TextBox](./media/managed-application-elements/microsoft.common.textbox.png)
@@ -31,8 +31,8 @@ Segítségével szerkesztheti a formázatlan szöveges vezérlő. Ez az elem has
   "name": "element1",
   "type": "Microsoft.Common.TextBox",
   "label": "Some text box",
-  "defaultValue": "foobar",
-  "toolTip": "Halp!",
+  "defaultValue": "my value",
+  "toolTip": "Use only allowed characters",
   "constraints": {
     "required": true,
     "regex": "^[a-z0-9A-Z]{1,30}$",
@@ -44,8 +44,8 @@ Segítségével szerkesztheti a formázatlan szöveges vezérlő. Ez az elem has
 
 ## <a name="remarks"></a>Megjegyzések
 - Ha `constraints.required` értéke **igaz**, majd a szövegmező sikeresen érvényesíthető értéket kell tartalmaznia. Az alapértelmezett érték **hamis**.
-- `constraints.regex`a JavaScript reguláris kifejezési minta van. Ha meg van adva, majd a szövegmező értékét kell megfelel a mintának sikeresen érvényesíthető. Az alapértelmezett érték **null**.
-- `constraints.validationMessage`egy olyan karakterlánc jelenítsen meg, ha a szövegmező értékét érvényesítése sikertelen. Ha nincs megadva, akkor a szövegmező beépített ellenőrzési üzenetek használja. Az alapértelmezett érték **null**.
+- `constraints.regex` a JavaScript reguláris kifejezési minta van. Ha meg van adva, majd a szövegmező értékét kell megfelel a mintának sikeresen érvényesíthető. Az alapértelmezett érték **null**.
+- `constraints.validationMessage` egy olyan karakterlánc jelenítsen meg, ha a szövegmező értékét érvényesítése sikertelen. Ha nincs megadva, akkor a szövegmező beépített ellenőrzési üzenetek használja. Az alapértelmezett érték **null**.
 - Adjon meg egy értéket lehet `constraints.regex` amikor `constraints.required` értéke **hamis**. Ebben a forgatókönyvben egy érték nincs szükség a szövegmező sikeresen érvényesíthető. Ha egy meg van adva, akkor meg kell egyeznie a reguláris kifejezési minta.
 
 ## <a name="sample-output"></a>Példa kimenet
@@ -54,7 +54,6 @@ Segítségével szerkesztheti a formázatlan szöveges vezérlő. Ez az elem has
 "foobar"
 ```
 
-## <a name="next-steps"></a>Következő lépések
-* Felügyelt alkalmazások bemutatása, lásd: [Azure kezelt alkalmazás – áttekintés](overview.md).
+## <a name="next-steps"></a>További lépések
 * A bevezetést UI-definíciók létrehozásáról lásd: [Ismerkedés a CreateUiDefinition](create-uidefinition-overview.md).
 * Általános tulajdonságok felhasználói felületi elemei ismertetését lásd: [CreateUiDefinition elemek](create-uidefinition-elements.md).

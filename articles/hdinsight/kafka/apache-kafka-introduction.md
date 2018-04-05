@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 35dc83dea7dc1310852437cd7eede32cfa890e8f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4a4f2c6734de211cd20ee4b9f6815bdefefb25bc
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="introducing-apache-kafka-on-hdinsight"></a>A HDInsight alatt futó Apache Kafka bemutatása
 
@@ -31,7 +31,7 @@ A HDInsight alatt futó Kafka a következő szolgáltatásokat biztosítja:
 
 * __99,9%-os szolgáltatói szerződés (SLA) a Kafka üzemidejével kapcsolatban__: További információkért lásd [a HDInsight szolgáltatói szerződésével kapcsolatos információkat ismertető](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/) dokumentumot.
 
-* __Hibatűrés és állványfigyelés__: A Kafkát egy egydimenziós állványnézettel tervezték, amely jól működik bizonyos környezetekben. Viszont az olyan környezetek esetében, mint amilyen az Azure, az állvány két dimenzióra oszlik: a frissítési tartományokra (UD-k) és a tartalék tartományokra (FD-k). A Microsoft biztosítja azokat az eszközöket, amelyek kiegyenlítik a Kafka-partíciókat és -replikákat a frissítési és tartalék tartományok között. 
+* __Hibatűrés__: A Kafkát egy egydimenziós állványnézettel tervezték, amely jól működik bizonyos környezetekben. Viszont az olyan környezetek esetében, mint amilyen az Azure, az állvány két dimenzióra oszlik: a frissítési tartományokra (UD-k) és a tartalék tartományokra (FD-k). A Microsoft biztosítja azokat az eszközöket, amelyek kiegyenlíthetik a Kafka-partíciókat és -replikákat a frissítési és tartalék tartományok között. 
 
     További információ: [Magas rendelkezésre állás a HDInsight-alapú Kafkában](apache-kafka-high-availability.md).
 

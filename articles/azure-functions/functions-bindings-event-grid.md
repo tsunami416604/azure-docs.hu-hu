@@ -1,13 +1,13 @@
 ---
-title: "Az Azure Functions rács eseményindító"
-description: "Megtudhatja, hogyan kezelhet az Azure Functions esemény rács eseményeket."
+title: Az Azure Functions rács eseményindító
+description: Megtudhatja, hogyan kezelhet az Azure Functions esemény rács eseményeket.
 services: functions
 documentationcenter: na
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/26/2018
 ms.author: tdykstra
-ms.openlocfilehash: 5039798d76017d93b77d724b2e6bca6712af0370
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a2d8f66b0364535cbb7e8cadd8067dd8f7facb2c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Az Azure Functions rács eseményindító
 
 Ez a cikk azt ismerteti, hogyan legyen kezelve [esemény rács](../event-grid/overview.md) események az Azure Functions.
 
-Esemény rács az Azure-szolgáltatások HTTP-kéréseket bekövetkező eseményekről kaphat értesítést küldő *közzétevők*. A gyártót, de a szolgáltatás erőforrása, amely az esemény származik. Például egy Azure blob storage-fiók közzétevő, pedig egy blob feltöltése vagy törlése egy eseményt. Néhány [Azure-szolgáltatásokkal rendelkezik beépített támogatása az események közzétételének esemény rácshoz](../event-grid/overview.md#event-publishers). 
+Esemény rács az Azure-szolgáltatások HTTP-kéréseket bekövetkező eseményekről kaphat értesítést küldő *közzétevők*. A gyártót, de a szolgáltatás erőforrása, amely az esemény származik. Például egy Azure blob storage-fiók közzétevő, pedig egy blob feltöltése vagy törlése egy eseményt. Néhány [Azure-szolgáltatásokkal rendelkezik beépített támogatása az események közzétételének esemény rácshoz](../event-grid/overview.md#event-sources). 
 
 Esemény *kezelők* fogadni és feldolgozni az eseményeket. Az Azure Functions egyike több [Azure-szolgáltatásokat, amelyek esemény rács események kezelésére beépített támogatása](../event-grid/overview.md#event-handlers). Ebből a cikkből megismerheti, hogyan lehet meghívni a függvényt esemény rácsban fogadásakor. az esemény egy esemény rács eseményindító használandó.
 

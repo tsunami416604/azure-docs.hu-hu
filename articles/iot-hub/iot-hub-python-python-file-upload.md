@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/05/2018
 ms.author: kgremban
-ms.openlocfilehash: 6f1a40f254473ae7d02168f0cfd6ad5c0d461d82
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 7f64783f5e1c79436b671ef98f30f5e3594b94e6
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Az eszközről a felhőbe, IoT-központ fájlok feltöltése
 
@@ -29,7 +29,7 @@ Ez az oktatóanyag a következő használata a [fájl feltöltése képességeit
 - Biztonságosan adja meg a tároló feltölteni a fájlt.
 - A Python-ügyfél használatával keresztül az IoT hub-fájl feltöltése.
 
-A [Ismerkedés az IoT-központ](iot-hub-node-node-getstarted.md) és [IoT Hub-felhő eszközre üzenetek](iot-hub-node-node-c2d.md) oktatóanyagok alapvető eszköz-felhő és a felhő eszközre üzenetkezelési funkcióit az IoT-központ megjelenítése. Bizonyos esetekben azonban leképezése nem az eszközök elküldik üzenetbe a viszonylag kis eszközről a felhőbe, amely az IoT-központ fogadja az adatokat könnyen. Ha egy eszközről kell felvidéki fájlok, a biztonsága és megbízhatósága szempontjából az IoT-központ továbbra is használhatja.
+A [Ismerkedés az IoT-központ](iot-hub-node-node-getstarted.md) oktatóanyag funkcióit mutatja be az alapvető eszköz-felhő üzenetkezelési az IoT-központ. Bizonyos esetekben azonban leképezése nem az eszközök elküldik üzenetbe a viszonylag kis eszközről a felhőbe, amely az IoT-központ fogadja az adatokat könnyen. Ha egy eszközről kell felvidéki fájlok, a biztonsága és megbízhatósága szempontjából az IoT-központ továbbra is használhatja.
 
 > [!NOTE]
 > Az IoT Hub Python SDK jelenleg csak feltöltését támogatja a szöveges fájlok például **.txt** fájlokat.

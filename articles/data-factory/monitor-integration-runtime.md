@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Data Factory integrációs futásidejű figyelése |} Microsoft Docs"
-description: "Útmutató az Azure Data Factory integrációs futásidejű különböző típusú."
+title: Az Azure Data Factory integrációs futásidejű figyelése |} Microsoft Docs
+description: Útmutató az Azure Data Factory integrációs futásidejű különböző típusú.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: douglaslMS
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2017
 ms.author: douglasl
-ms.openlocfilehash: 74a4ad6438f9e66331f76e87d20d1eb8b29e8451
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 4c857af02e104940559cb86daa3ccd208d8e35a1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Az Azure Data Factoryben az integrációs futásidejű figyelése  
 **Integrációs futásidejű** a számítási infrastruktúrától által használt Azure Data Factory adatok integrációs szolgáltatásainak különböző hálózati környezetek között. Integráció futtatókörnyezetek adat-előállító által kínált három típusa van:
@@ -162,10 +162,10 @@ Azure-SSIS integrációs futásidejű rendszere egy teljes körűen felügyelt f
 | NodeSize | Az Azure-SSIS-integrációs futásidejű minden egyes csomópontjára mérete. |
 | NodeCount | Az Azure-SSIS-integrációs futásidejű csomópontok száma. |
 | MaxParallelExecutionsPerNode | Az Azure-SSIS-integrációs futásidejű csomópontonként párhuzamos végrehajtások száma. |
-| CatalogServerEndpoint | A meglévő Azure SQL adatbázis/felügyelt server-példány gazdagépre SSISDB végpontja. |
-| CatalogAdminUserName | A rendszergazda felhasználóneve a meglévő Azure SQL adatbázis/felügyelt példány kiszolgáló. Data Factory szolgáltatásnak kell előkészíteni és az Ön nevében SSISDB kezelni ezt az információt használja. |
-| CatalogAdminPassword | A a meglévő Azure SQL adatbázis/felügyelt példány kiszolgáló rendszergazdai jelszavát. |
-| CatalogPricingTier | A meglévő Azure SQL Database-kiszolgáló által üzemeltetett SSISDB tarifacsomag.  Azure által felügyelt tároló SQL példány SSISDB nem alkalmazható. |
+| CatalogServerEndpoint | A végpont a meglévő Azure SQL adatbázis/felügyelt példány (előzetes verzió) kiszolgáló SSISDB gazdagépre. |
+| CatalogAdminUserName | A rendszergazda felhasználóneve a meglévő Azure SQL adatbázis/felügyelt példány (előzetes verzió) kiszolgáló. Data Factory szolgáltatásnak kell előkészíteni és az Ön nevében SSISDB kezelni ezt az információt használja. |
+| CatalogAdminPassword | A meglévő Azure SQL adatbázis/felügyelt példány (előzetes verzió) kiszolgáló rendszergazdai jelszavát. |
+| CatalogPricingTier | A meglévő Azure SQL Database-kiszolgáló által üzemeltetett SSISDB tarifacsomag.  Azure által felügyelt tartalmazó SQL-példány (előzetes verzió) SSISDB nem alkalmazható. |
 | VNetId | A virtuális hálózathoz (VNet) erőforrás-azonosító az Azure-SSIS-integráció futási időben való csatlakozáshoz. |
 | Alhálózat | Az Azure-SSIS integrációs futásidejű csatlakozni alhálózat neve. |
 | ID (Azonosító) | Az Azure-SSIS-integrációs futásidejű erőforrás-azonosító. |
@@ -199,7 +199,7 @@ További Azure-SSIS integrációs futásidejű információt a következő cikke
 
 - [Azure-SSIS integrációs futásidejű](concepts-integration-runtime.md#azure-ssis-integration-runtime). Ez a cikk tájékoztatást általában többek között az Azure-SSIS infravörös integrációs futtatókörnyezetek 
 - [Oktatóanyag: SSIS-csomagok üzembe helyezése az Azure-ban](tutorial-create-azure-ssis-runtime-portal.md). Ez a cikk lépésenként mutatja be egy Azure-SSIS integrációs modul létrehozását, és egy Azure SQL-adatbázist használ az SSIS-katalógus futtatására. 
-- [Útmutató: Azure-SSIS integrációs modul létrehozása](create-azure-ssis-integration-runtime.md). Ez a cikk az oktatóanyagon alapul, és útmutatóul szolgál a felügyelt Azure SQL-példány (privát előzetes verzió) használatához, illetve az integrációs modul virtuális hálózathoz történő csatlakoztatásához. 
+- [Útmutató: Azure-SSIS integrációs modul létrehozása](create-azure-ssis-integration-runtime.md). Ez a cikk kibővíti az oktatóanyag, és utasításokkal szolgál az Azure SQL felügyelt példány (előzetes verzió) használatával, és az infravörös csatlakoztatása egy virtuális hálózatot. 
 - [Azure-SSIS integrációs modul kezelése](manage-azure-ssis-integration-runtime.md). Ez a cikk bemutatja, hogyan lehet leállítani, elindítani vagy eltávolítani egy Azure-SSIS integrációs modult. Azt is bemutathatja, hogyan skálázhatja fel horizontálisan az Azure-SSIS integrációs modult úgy, hogy további csomópontokat ad hozzá. 
 - [Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz](join-azure-ssis-integration-runtime-virtual-network.md). Ez a cikk egy Azure-SSIS integrációs modul Azure virtuális hálózathoz (VNethez) való csatlakoztatásával kapcsolatos elméleti információkat tartalmaz. Azt is ismerteti, hogyan használható az Azure Portal a VNet oly módon való konfigurálására, hogy az Azure-SSIS integrációs modul csatlakozhasson a virtuális hálózathoz. 
 

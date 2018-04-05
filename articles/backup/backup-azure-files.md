@@ -1,23 +1,23 @@
 ---
-title: "Azure-fájlok biztonsági mentése az Azure-ba"
-description: "Ez a cikk ismerteti az Azure-fájlmegosztások biztonsági mentésének és visszaállításának módját, valamint a felügyeleti feladatokat."
+title: Azure-fájlok biztonsági mentése az Azure-ba
+description: Ez a cikk ismerteti az Azure-fájlmegosztások biztonsági mentésének és visszaállításának módját, valamint a felügyeleti feladatokat.
 services: backup
-keywords: "Ne adjon hozzá kulcsszavakat és ne szerkessze azokat a keresőoptimalizálást végző szakemberrel való egyeztetés nélkül."
+keywords: Ne adjon hozzá kulcsszavakat és ne szerkessze azokat a keresőoptimalizálást végző szakemberrel való egyeztetés nélkül.
 author: markgalioto
 ms.author: markgal
-ms.date: 2/21/2018
+ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: b9bf1582aa1c1b8878b8426f60a18282598eb2b9
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: ba457daca030d3219fe32177b0b5f8b5565ff544
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="back-up-azure-file-shares"></a>Azure-fájlmegosztások biztonsági mentése
+# <a name="back-up-azure-file-shares-preview"></a>Azure-fájlmegosztások biztonsági mentése (előzetes verzió)
 
-Ez a cikk részletesen bemutatja az [Azure-fájlmegosztások](../storage/files/storage-files-introduction.md) biztonsági mentését.
+Ez a cikk azt ismerteti, hogyan használhatja az Azure Portalt az [Azure-fájlmegosztások](../storage/files/storage-files-introduction.md) biztonsági mentésére és visszaállítására.
 
 Ebből az útmutatóból a következőket tanulhatja meg:
 > [!div class="checklist"]
@@ -30,6 +30,16 @@ Ebből az útmutatóból a következőket tanulhatja meg:
 
 ## <a name="prerequisites"></a>Előfeltételek
 Mielőtt biztonsági mentést készít egy Azure-fájlmegosztásról, győződjön meg arról, hogy az a [támogatott tárfióktípusok](troubleshoot-azure-files.md#preview-boundaries) közé tartozik. Ennek ellenőrzését követően biztosíthatja a fájlmegosztások védelmét.
+
+## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Az Azure-fájlmegosztás biztonsági mentésének korlátozásai az előzetes verzióban
+Az Azure Files biztonsági mentése jelenleg előzetes verzióként érhető el. Vegye figyelembe a következő korlátozásokat az előzetes verzió használatakor:
+- Nem lehet a tárfiókokban lévő fájlmegosztásokat [zónaredundáns tárolási (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) vagy [írásvédett georedundáns tárolási (RA-GRS)](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage) replikációval védeni.
+- Nem lehet a fájlmegosztásokat védeni olyan tárfiókokban, amelyeken engedélyezve vannak a virtuális hálózatok.
+- Az Azure Files védelméhez nem áll rendelkezésre PowerShell vagy parancssori felület.
+- Az ütemezett biztonsági mentések maximális száma naponta egy.
+- Az igény szerinti biztonsági mentések maximális száma naponta négy.
+- Használjon [erőforrászárat](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) a tárfiókon, hogy megelőzze a helyreállítási tárban lévő biztonsági másolatok véletlen törlését.
+- Ne törölje az Azure Backuppal létrehozott pillanatképeket. A pillanatképek törlése helyreállítási pontok elvesztését és/vagy visszaállítási hibákat eredményezhet. 
 
 ## <a name="configuring-azure-file-shares-backup"></a>Azure-fájlmegosztások biztonsági mentésének konfigurálása
 

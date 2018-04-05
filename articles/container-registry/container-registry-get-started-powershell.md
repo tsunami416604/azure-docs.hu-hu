@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 03/03/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 2bae45955cf3c2b157acce2544b1f35fbddd0170
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9603ac779c7dbc640a7c24856c32f04edbac849d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="create-an-azure-container-registry-using-powershell"></a>Azure Container Registry létrehozása a PowerShell-lel
+# <a name="quickstart-create-an-azure-container-registry-using-powershell"></a>Rövid útmutató: Azure Container Registry létrehozása a PowerShell-lel
 
 Az Azure Container Registry egy felügyelt Docker-tárolóregisztrációs adatbázis-szolgáltatás, amely a privát Docker-tárolók rendszerképeinek tárolására szolgál. Ez az útmutató a következőket ismerteti: Azure Container Registry-példány létrehozása a PowerShell használatával, tárolórendszerkép továbbítása a regisztrációs adatbázisba, végül a tároló üzembe helyezése a regisztrációs adatbázisból az Azure Container Instances (ACI) szolgáltatásban.
 
@@ -73,7 +73,7 @@ Ahhoz, hogy rendszerképet tudjon küldeni egy Azure Container Registry tároló
 docker pull microsoft/aci-helloworld
 ```
 
-A rendszerképet fel kell címkézni az ACR bejelentkezési kiszolgálójának nevével. Ehhez használja a [docker tag][docker-tag] parancsot. 
+A rendszerképet fel kell címkézni az ACR bejelentkezési kiszolgálójának nevével. Ehhez használja a [docker tag][docker-tag] parancsot.
 
 ```powershell
 $image = $registry.LoginServer + "/aci-helloworld:v1"

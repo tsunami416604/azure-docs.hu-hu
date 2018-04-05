@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 5ade9eca4b16e4864ec4e9d7bc6977c1e8322daa
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b73379baa2b0b73fb1501a4356db10279ac41185
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Szimulált TPM-eszköz létrehozása és kiépítése az IoT Hub Device Provisioning Service-hez készült Node.js eszközoldali SDK-val
 
@@ -26,6 +26,7 @@ Ezek a lépések bemutatják, hogyan hozhat létre szimulált eszközt egy Windo
 
 A folytatás előtt végezze el az [IoT Hub eszközkiépítési szolgáltatás beállítása az Azure Portallal](./quick-setup-auto-provision.md) szakasz lépéseit.
 
+[!INCLUDE [IoT DPS basic](../../includes/iot-dps-basic.md)]
 
 ## <a name="prepare-the-environment"></a>A környezet előkészítése 
 

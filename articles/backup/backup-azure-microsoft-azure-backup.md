@@ -1,12 +1,12 @@
 ---
-title: "-Munkaterhelések biztonsági mentése az Azure-bA az Azure Backup Server használatával |} Microsoft Docs"
-description: "Azure Backup Server használatával védeni, vagy a munkaterhelések biztonsági mentése az Azure portálon."
+title: -Munkaterhelések biztonsági mentése az Azure-bA az Azure Backup Server használatával |} Microsoft Docs
+description: Azure Backup Server használatával védeni, vagy a munkaterhelések biztonsági mentése az Azure portálon.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: PVRK
 manager: shivamg
-editor: 
-keywords: "az Azure biztonsági mentési kiszolgáló; munkaterhelések; védelme -munkaterhelések biztonsági mentése"
+editor: ''
+keywords: az Azure biztonsági mentési kiszolgáló; munkaterhelések; védelme -munkaterhelések biztonsági mentése
 ms.assetid: e7fb1907-9dc1-4ca1-8c61-50423d86540c
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/5/2018
 ms.author: masaran;trinadhk;pullabhk;markgal;adigan
-ms.openlocfilehash: c33cea62dac1c06dd1cb4031897af8c822e61661
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
-ms.translationtype: MT
+ms.openlocfilehash: 95c11de3a1aed680d37dd86c1783ac8bee7ffec3
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="preparing-to-back-up-workloads-using-azure-backup-server"></a>Számítási feladatok biztonsági mentésének előkészítése az Azure Backup Serverrel
 > [!div class="op_single_selector"]
@@ -67,11 +67,11 @@ A DPM-tároló, a Windows Server deduplikálásával is deduplikálása. Tovább
 
 > [!NOTE]
 > Az Azure Backup Server futtatásra tervezték, egy dedikált, meghatározott célú kiszolgálón. Az Azure Backup Server nem telepíthető:
-> - Tartományvezérlőként futtató számítógép
-> - Egy számítógép, amelyen telepítve van az alkalmazáskiszolgálói szerepkör
-> - Olyan számítógépre, amely a System Center Operations Manager felügyeleti kiszolgáló
-> - Egy számítógép, amelyen az Exchange Server fut.
-> - Olyan számítógépre, amely egy fürt csomópontja
+> - Tartományvezérlőként futó számítógépre
+> - Olyan számítógépre, amelyen telepítve van az Alkalmazáskiszolgáló szerepkör
+> - Olyan számítógépre, amely System Center Operations Manager felügyeleti kiszolgálóként működik
+> - Olyan számítógépre, amelyen az Exchange Server fut
+> - Olyan számítógépre, amely fürtcsomópontként működik
 
 Azure Backup Server mindig csatlakoztatása a tartományhoz. Ha a kiszolgáló egy másik tartományba helyezi át, javasoljuk, hogy csatlakoztassa a kiszolgálót az új tartomány Azure Backup Server telepítése előtt. Egy meglévő Azure Backup Server gépet áthelyezése egy új tartományba, telepítés *nem támogatott*.
 
@@ -101,7 +101,7 @@ Egy Recovery Services-tároló létrehozásához:
    A tároló létrehozása után megjelenik a portálon.
 
 ### <a name="set-storage-replication"></a>Tárreplikáció beállítása
-A tárreplikáció lehetősége lehetővé teszi, hogy georedundáns tárolás és helyileg redundáns tárolás között válasszon. Alapértelmezés szerint a tárolója georedundáns tárolással rendelkezik. Ha ebben a tárolóban a elsődleges tároló, hagyja a tárolási beállítást, a georedundáns tárolást. Ha egy olcsóbb, rövidebb élettartamú megoldást szeretne, válassza a helyileg redundáns tárolást. A [georedundáns](../storage/common/storage-redundancy.md#geo-redundant-storage) és a [helyileg redundáns](../storage/common/storage-redundancy.md#locally-redundant-storage) tárolási lehetőségekről többet olvashat az [Azure tárreplikáció áttekintése](../storage/common/storage-redundancy.md) című cikkben.
+A tárreplikáció lehetősége lehetővé teszi, hogy georedundáns tárolás és helyileg redundáns tárolás között válasszon. Alapértelmezés szerint a tárolója georedundáns tárolással rendelkezik. Ha ebben a tárolóban a elsődleges tároló, hagyja a tárolási beállítást, a georedundáns tárolást. Ha egy olcsóbb, rövidebb élettartamú megoldást szeretne, válassza a helyileg redundáns tárolást. A [georedundáns](../storage/common/storage-redundancy-grs.md) és a [helyileg redundáns](../storage/common/storage-redundancy-lrs.md) tárolási lehetőségekről többet olvashat az [Azure tárreplikáció áttekintése](../storage/common/storage-redundancy.md) című cikkben.
 
 A tárreplikációs beállítás szerkesztése:
 

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2016
+ms.date: 03/28/2018
 ms.author: robb
-ms.openlocfilehash: 03026ee8bedd5277b2bb6cf28dabafabf207b0ae
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8f7df424b27e6899821a9bdd2f1d8397a0de35a7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---powershell"></a>Hozzon létre klasszikus metrika riasztások Azure figyelése az Azure-szolgáltatások - PowerShell
 > [!div class="op_single_selector"]
@@ -31,18 +31,18 @@ ms.lasthandoff: 03/23/2018
 ## <a name="overview"></a>Áttekintés
 
 > [!NOTE]
-> Ez a cikk ismerteti, hogyan régebbi metrika riasztások létrehozásához. Az Azure figyelő most támogatja [újabb, metrika riasztások jobb](monitoring-near-real-time-metric-alerts.md). Ezek a riasztások több metrikát, és lehetővé teszik a dimenzionális metrikák riasztást küld. Újabb metrika riasztások PowerShell támogatása hamarosan elérhető.
+> Ez a cikk ismerteti, hogyan régebbi klasszikus metrika riasztások létrehozásához. Az Azure figyelő most támogatja [újabb, metrika riasztások jobb](monitoring-near-real-time-metric-alerts.md). Ezek a riasztások több metrikát, és lehetővé teszik a dimenzionális metrikák riasztást küld. Újabb metrika riasztások PowerShell támogatása hamarosan elérhető.
 >
 >
 
-Ez a cikk bemutatja, hogyan PowerShell használata Azure metrika riasztások beállítása.  
+Ez a cikk bemutatja, hogyan állíthatja be az Azure klasszikus metrika riasztások PowerShell használatával.  
 
 A figyelési metrikákat, vagy események, az Azure-szolgáltatások alapuló riasztást kaphat.
 
 * **Metrika értékek** -a riasztás elindítja a megadott metrika értékét ebbe a küszöbérték mindkét irányban rendel. Ez azt jelenti, hogy elindítja a mindkét Ha először a feltétel teljesül, és majd ezt követően, hogy a feltétel mikor van már nem teljesül.    
 * **Tevékenység naplóeseményeket** -riasztást aktiválhatók *minden* esemény, vagy csak akkor, ha bizonyos események megtörténtekor. További információt a naplófájl tevékenységriasztásokat [kattintson ide](monitoring-activity-log-alerts.md)
 
-A metrika riasztások tegye a következőket, amikor elindítja a konfigurálhatja:
+A klasszikus metrika riasztások tegye a következőket, amikor elindítja a konfigurálhatja:
 
 * e-mail értesítések küldéséhez a szolgáltatás-rendszergazda és a társadminisztrátorok
 * e-mail küldéséhez megadott további e-maileket.
@@ -135,8 +135,8 @@ További információkért mindig beírhatja ```Get-Help``` és majd a keresett 
 
 ## <a name="next-steps"></a>További lépések
 * [Az Azure Figyelés áttekintése](monitoring-overview.md) többek között a adattípusok összegyűjtheti, és figyelje.
-* További információ [konfigurálása webhookokkal a riasztások](insights-webhooks-alerts.md).
-* További információ [riasztások konfigurálása a naplózási eseményeket](monitoring-activity-log-alerts.md).
+* Ismerje meg, hogy [riasztások konfigurálása webhookokkal](insights-webhooks-alerts.md).
+* Ismerje meg, hogy [állítsa be a riasztásokat tevékenység naplóeseményeket](monitoring-activity-log-alerts.md).
 * További információ [Azure Automation-forgatókönyveket](../automation/automation-starting-a-runbook.md).
 * Első egy [diagnosztikai naplók gyűjtésére áttekintése](monitoring-overview-of-diagnostic-logs.md) nagyon gyakori gyűjtéséhez részletes a a szolgáltatásban.
 * Első egy [metrikák gyűjtemény áttekintése](insights-how-to-customize-monitoring.md) ellenőrizze, hogy a szolgáltatás elérhető, és a gyors.

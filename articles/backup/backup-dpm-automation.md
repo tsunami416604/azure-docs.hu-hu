@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Backup - a PowerShell szolgáltatás használatával a DPM-munkaterhelések biztonsági mentése |} Microsoft Docs"
-description: "Megtudhatja, hogyan telepíthetnek és kezelhetnek az Azure Backup a Data Protection Manager (DPM) PowerShell használatával"
+title: Az Azure Backup - a PowerShell szolgáltatás használatával a DPM-munkaterhelések biztonsági mentése |} Microsoft Docs
+description: Megtudhatja, hogyan telepíthetnek és kezelhetnek az Azure Backup a Data Protection Manager (DPM) PowerShell használatával
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: NKolli1
 manager: shreeshd
-editor: 
+editor: ''
 ms.assetid: e9bd223c-2398-4eb1-9bf3-50e08970fea7
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/23/2017
 ms.author: adigan;anuragm;trinadhk;markgal
-ms.openlocfilehash: 9322037427c84f0b8a91cc76f5c0fed52167bc3c
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 89dd965208cd473e47de9e0c9bdbfa3ab986c3d5
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Az Azure-ba történő biztonsági mentés üzembe helyezése és kezelése DPM-kiszolgálókon a PowerShell-lel
 Ez a cikk bemutatja, hogyan PowerShell használatával történő telepítés Azure biztonsági mentés DPM-kiszolgálón, és kezelheti a biztonsági mentés és helyreállítás.
@@ -77,7 +77,7 @@ A következő lépések alapján a Recovery Services-tároló létrehozása. Rec
     ```
     PS C:\> New-AzureRmRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
     ```
-4. Megadhatja a használandó; adattároló redundanciája, amely használhat [helyileg redundáns tárolás (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) vagy [földrajzi redundáns tárolás (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage). A következő példa bemutatja a - BackupStorageRedundancy beállítás a testVault GeoRedundant értékre van állítva.
+4. Megadhatja a használandó; adattároló redundanciája, amely használhat [helyileg redundáns tárolás (LRS)](../storage/common/storage-redundancy-lrs.md) vagy [földrajzi redundáns tárolás (GRS)](../storage/common/storage-redundancy-grs.md). A következő példa bemutatja a - BackupStorageRedundancy beállítás a testVault GeoRedundant értékre van állítva.
 
    > [!TIP]
    > Sok Azure biztonsági mentést készítő parancsmagok bemeneti adatokként a Recovery Services-tároló objektum szükséges. Emiatt célszerű a Recovery Services biztonsági másolat tároló objektum tárolható egy változóban.
@@ -133,14 +133,14 @@ Az elérhető lehetőségek a következők:
 | Beállítás | Részletek | Alapértelmezett |
 | --- | --- | --- |
 | /q |Csendes telepítés |- |
-| / p: "hely" |Az Azure Backup szolgáltatás ügynökének a telepítési mappa elérési útja. |C:\Program Files\Microsoft Azure Recovery Services Agent ügynök |
+| / p: "hely" |Az Azure Backup szolgáltatás ügynökének a telepítési mappa elérési útja. |C:\Program Files\Microsoft Azure Recovery Services Agent |
 | / s: "hely" |Az Azure Backup szolgáltatás ügynökének a gyorsítótár mappájának elérési útja. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
 | /m |Részvétel a Microsoft Update |- |
-| /Nu |Ne keressen frissítéseket telepítésének befejezése után |- |
+| /nu |Ne keressen frissítéseket telepítésének befejezése után |- |
 | /d |Eltávolítja a Microsoft Azure Recovery Services Agent ügynök |- |
 | /pH |Állomás proxycím |- |
 | /po |Proxy Host Port száma |- |
-| /Pu |Proxy-állomás felhasználónév |- |
+| /pu |Proxy Host UserName |- |
 | /pW |Proxy jelszava |- |
 
 ## <a name="registering-dpm-to-a-recovery-services-vault"></a>Egy helyreállítási regisztrálásakor DPM szolgáltatások tároló
@@ -309,10 +309,10 @@ PS C:\> Set-DPMProtectionGroup -ProtectionGroup $MPG
 
 A fenti példában ```$onlineSch``` tömb négy elemekkel, amely tartalmazza a meglévő online védelmi ütemterv a védelmi csoport GFS sémában:
 
-1. ```$onlineSch[0]```napi ütemezés tartalmazza
-2. ```$onlineSch[1]```a heti ütemezés tartalmazza
-3. ```$onlineSch[2]```a havi ütemezések tartalmazza
-4. ```$onlineSch[3]```éves ütemezés tartalmazza
+1. ```$onlineSch[0]``` napi ütemezés tartalmazza
+2. ```$onlineSch[1]``` a heti ütemezés tartalmazza
+3. ```$onlineSch[2]``` a havi ütemezések tartalmazza
+4. ```$onlineSch[3]``` éves ütemezés tartalmazza
 
 Így ha módosítania kell a heti ütemezés, akkor tekintse meg a ```$onlineSch[1]```.
 
@@ -334,8 +334,8 @@ PS C:\> Set-DPMProtectionGroup -ProtectionGroup $MPG
 ## <a name="view-the-backup-points"></a>A biztonsági mentési pontok megtekintése
 Használhatja a [Get-DPMRecoveryPoint](https://technet.microsoft.com/library/hh881746) parancsmag listájának összes helyreállítási pont egy adatforrás. Ebben a példában a következő történik:
 
-* a PGs beolvasni a DPM-kiszolgálón, és egy tömbben található```$PG```
-* a megfelelő adatforrások beolvasása az```$PG[0]```
+* a PGs beolvasni a DPM-kiszolgálón, és egy tömbben található ```$PG```
+* a megfelelő adatforrások beolvasása az ```$PG[0]```
 * a helyreállítási pontok lekérése egy adatforrás.
 
 ```

@@ -1,12 +1,12 @@
 ---
-title: "Az IOT hubbal-explorer üzenetküldési Azure IoT Hub felhőalapú eszközök felügyelete |} Microsoft Docs"
-description: "Megtudhatja, hogyan eszközzel az IOT hubbal-explorer CLI figyelő eszközre cloud (D2C) üzenetek és felhő küldeni az Azure IoT Hub eszköz (C2D) üzeneteket."
+title: Az IOT hubbal-explorer üzenetküldési Azure IoT Hub felhőalapú eszközök felügyelete |} Microsoft Docs
+description: Megtudhatja, hogyan eszközzel az IOT hubbal-explorer CLI figyelő eszközre cloud (D2C) üzenetek és felhő küldeni az Azure IoT Hub eszköz (C2D) üzeneteket.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: shizn
 manager: timlt
-tags: 
-keywords: "IOT hubbal explorer, üzenetküldés, iot hub felhő eszközre, az eszköz üzenetkezelés felhő felhőalapú eszköz"
+tags: ''
+keywords: IOT hubbal explorer, üzenetküldés, iot hub felhő eszközre, az eszköz üzenetkezelés felhő felhőalapú eszköz
 ms.assetid: 04521658-35d3-4503-ae48-51d6ad3c62cc
 ms.service: iot-hub
 ms.devlang: arduino
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: xshi
-ms.openlocfilehash: 30151b7bdc544bc36e959cc3528d37897198fc7e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7e74c08849ae2f98d3189c0cd3d340874ea085ff
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-iothub-explorer-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Az eszköz és az IoT-központ között üzeneteket küldjön és fogadjon IOT hubbal-kezelő használatával
 
@@ -28,6 +28,8 @@ ms.lasthandoff: 10/11/2017
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
 [IOT hubbal-explorer](https://github.com/azure/iothub-explorer) rendelkezik, amely egyszerűbbé teszi az IoT-központ felügyeleti néhány olyan parancsok. Ez az oktatóanyag az IOT hubbal-kezelő használata az eszköz és az IoT hub között üzeneteket küldjön és fogadjon összpontosít.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 ## <a name="what-you-will-learn"></a>Amiről tanulni fog
 
@@ -44,7 +46,7 @@ Megismerheti, hogyan kezelővel IOT hubbal-eszköz a felhőbe küldött üzenete
   - Aktív Azure-előfizetés.
   - Az előfizetéshez tartozó Azure IoT hub.
   - Egy ügyfélalkalmazást, amely üzeneteket küld az Azure IoT hub.
-- IOT hubbal-explorer. ([Telepítse az IOT hubbal-explorer](https://github.com/azure/iothub-explorer))
+- iothub-explorer. ([Telepítse az IOT hubbal-explorer](https://github.com/azure/iothub-explorer))
 
 ## <a name="monitor-device-to-cloud-messages"></a>Eszköz a felhőbe küldött üzeneteket figyelése
 
@@ -82,7 +84,7 @@ A parancs villogjon, amely az eszköz csatlakozik, és az üzenetet küld az esz
 > [!Note]
 > Nincs szükség az eszköz egy külön ack parancs küldése a az IoT hub, az üzenet fogadásakor.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Hogy megismerte az eszköz a felhőbe küldött üzeneteket figyelése, és az IoT-eszközök és az Azure IoT-központ között felhő eszközre üzeneteket küldeni.
 

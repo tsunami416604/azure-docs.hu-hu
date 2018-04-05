@@ -1,6 +1,6 @@
 ---
-title: "Az Azure által felügyelt alkalmazás FileUpload felhasználói felületi elem |} Microsoft Docs"
-description: "A témakör ismerteti a Microsoft.Common.FileUpload felhasználói felületi elem Azure által felügyelt alkalmazások"
+title: Az Azure FileUpload felhasználói felületi elem |} Microsoft Docs
+description: Azure-portálon a Microsoft.Common.FileUpload felhasználói felületi elem ismerteti.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 03/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 095880322ba801895a22efcf3476fa37d9e2ac3c
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: bfde11a189348472942248a6b90fd5ef1b5a1c89
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>Microsoft.Common.FileUpload felhasználói felületi elem
-Lehetővé teszi a felhasználóknak adjon meg egy vagy több fájl feltöltése vezérlő. Ez az elem használata során [Azure által felügyelt alkalmazások létrehozására](publish-service-catalog-app.md).
+Lehetővé teszi a felhasználóknak adjon meg egy vagy több fájl feltöltése vezérlő.
 
 ## <a name="ui-sample"></a>Felhasználói felület minta
 ![Microsoft.Common.FileUpload](./media/managed-application-elements/microsoft.common.fileupload.png)
@@ -47,12 +47,12 @@ Lehetővé teszi a felhasználóknak adjon meg egy vagy több fájl feltöltése
 ```
 
 ## <a name="remarks"></a>Megjegyzések
-- `constraints.accept`Adja meg a fájlokat, amelyek megjelennek a böngésző fájlpárbeszédpanelt típusú. Tekintse meg a [HTML5-specifikációt](http://www.w3.org/TR/html5/forms.html#attr-input-accept) az engedélyezett értékek. Az alapértelmezett érték **null**.
+- `constraints.accept` Adja meg a fájlokat, amelyek megjelennek a böngésző fájlpárbeszédpanelt típusú. Tekintse meg a [HTML5-specifikációt](http://www.w3.org/TR/html5/forms.html#attr-input-accept) az engedélyezett értékek. Az alapértelmezett érték **null**.
 - Ha `options.multiple` értéke **igaz**, a felhasználó által megadható egynél több fájl a böngésző fájl párbeszédpanelen. Az alapértelmezett érték **hamis**.
 - Ez az elem feltöltése fájlokat támogatja a két mód értéke alapján `options.uploadMode`. Ha **fájl** van megadva, a kimenet tartalmazza a fájlt egy blobba tartalmát. Ha **URL-cím** van megadva, akkor a fájl feltöltése egy ideiglenes helyre, és a kimenet tartalmazza a blob URL-CÍMÉT. Ideiglenes blobok kiürítendő 24 óra múlva. Az alapértelmezett érték **fájl**.
 - Értékének `options.openMode` határozza meg, hogy a fájl írásvédett. Ha a fájl várt egyszerű szövegként, adja meg **szöveg**; más, adja meg **bináris**. Az alapértelmezett érték **szöveg**.
 - Ha `options.uploadMode` értéke **fájl** és `options.openMode` értéke **bináris**, a base64-kódolású kimenete.
-- `options.encoding`Meghatározza, hogy a fájl olvasásánál használandó kódolás. Az alapértelmezett érték **UTF-8**, és csak akkor, ha `options.openMode` értéke **szöveg**.
+- `options.encoding` Meghatározza, hogy a fájl olvasásánál használandó kódolás. Az alapértelmezett érték **UTF-8**, és csak akkor, ha `options.openMode` értéke **szöveg**.
 
 ## <a name="sample-output"></a>Példa kimenet
 Ha options.multiple értéke false, és options.uploadMode fájlt, majd a kimenet tartalmazza a fájl tartalmát egy JSON-karakterlánc:
@@ -90,7 +90,6 @@ Ha options.multiple értéke true, és options.uploadMode URL-címet, majd a kim
 Egy CreateUiDefinition tesztelésekor (például a Google Chrome) egyes böngészők csonkolja a böngészőbeli konzolon a Microsoft.Common.FileUpload eleme által generált URL-címeket. Kattintson a jobb gombbal az egyes hivatkozások másolása a teljes URL-címeket szeretne.
 
 
-## <a name="next-steps"></a>Következő lépések
-* Felügyelt alkalmazások bemutatása, lásd: [Azure kezelt alkalmazás – áttekintés](overview.md).
+## <a name="next-steps"></a>További lépések
 * A bevezetést UI-definíciók létrehozásáról lásd: [Ismerkedés a CreateUiDefinition](create-uidefinition-overview.md).
 * Általános tulajdonságok felhasználói felületi elemei ismertetését lásd: [CreateUiDefinition elemek](create-uidefinition-elements.md).

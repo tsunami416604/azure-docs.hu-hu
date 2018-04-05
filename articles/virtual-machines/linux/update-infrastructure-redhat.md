@@ -1,11 +1,11 @@
 ---
-title: "Red Hat frissítési infrastruktúra |} Microsoft Docs"
-description: "További tudnivalók Red Hat frissítési infrastruktúra igény Red Hat Enterprise Linux-példányok a Microsoft Azure-ban"
+title: Red Hat frissítési infrastruktúra |} Microsoft Docs
+description: További tudnivalók Red Hat frissítési infrastruktúra igény Red Hat Enterprise Linux-példányok a Microsoft Azure-ban
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: BorisB2015
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f495f1b4-ae24-46b9-8d26-c617ce3daf3a
 ms.service: virtual-machines-linux
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/10/2017
 ms.author: borisb
-ms.openlocfilehash: ea9a5cbd9b9b7b67ceb131cb8ba1d2476dbd5f72
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: fe354c6c9415c1525527dd6b95d1b3a481b5a2de
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat frissítési infrastruktúra az igény szerinti Red Hat Enterprise Linux virtuális gépek Azure-ban
  [Red Hat frissítési infrastruktúra](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) lehetővé teszi, hogy a szolgáltatók, például az Azure-tárház Red Hat által szolgáltatott tartalom tükrözik, hozzon létre egyéni adattárak Azure-specifikus tartalom és végfelhasználói virtuális gépek számára elérhető legyen.
@@ -50,6 +50,7 @@ Tovább korlátozhatja a hozzáférést az RHEL PAYG virtuális gépek használa
 40.85.190.91
 52.187.75.218
 52.174.163.213
+52.237.203.198
 
 # Azure US Government
 13.72.186.193
@@ -165,5 +166,5 @@ Ez az eljárás csak referenciaként valósul meg. RHEL PAYG képek már rendelk
 
 6. Befejezése után ellenőrizze, hogy elérhető Azure RHUI a virtuális gépről.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Red Hat Enterprise Linux virtuális gép létrehozása Azure piactér PAYG lemezképből és Azure által üzemeltetett RHUI használatára, lépjen a [Azure piactér](https://azure.microsoft.com/marketplace/partners/redhat/). 

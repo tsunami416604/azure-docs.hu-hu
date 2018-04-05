@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Data Lake Store áttekintése | Microsoft Docs"
-description: "Megtudhatja, mi az Azure Data Lake Store, és milyen értékeket nyújt az egyéb adattárakhoz képest"
+title: Az Azure Data Lake Store áttekintése | Microsoft Docs
+description: Megtudhatja, mi az Azure Data Lake Store, és milyen értékeket nyújt az egyéb adattárakhoz képest
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/09/2018
+ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 88c44f2e47562f9992e7c6e228b9a4c917f806ba
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 111906bc9e7e85e30a879d7bacff37edb4b204ac
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="overview-of-azure-data-lake-store"></a>Az Azure Data Lake Store áttekintése
 Az Azure Data Lake Store egy vállalati szintű, nagy kapacitású adattár a big data koncepción alapuló adatelemzési célokra. Az Azure Data Lake lehetővé teszi mindenféle méretű, típusú és feldolgozási sebességű adatok egy helyen történő műveleti és felderítési jellegű feldolgozását.
@@ -61,7 +61,7 @@ Az Azure Data Lake Store az Azure Active Directory a hitelesítésével és hozz
 | Szolgáltatás | Leírás |
 | --- | --- |
 | Hitelesítés |Az Azure Data Lake Store integrálható az Azure Active Directory-val (AAD) az Azure Data Lake Store-ban tárolt összes adat identitás- és hozzáférés-kezelés érdekében. Az integrációnak köszönhetően az Azure Data Lake az AAD összes funkcióját használni tudja, többek között a többtényezős hitelesítést, a feltételes hozzáférést, a szerepköralapú hozzáférés-vezérlést, az alkalmazás-használat figyelését, a biztonsági figyelést és riasztást stb. Az Azure Data Lake Store támogatja az OAuth 2.0 protokollt a REST-felületen belüli hitelesítéshez. Lásd: [Data Lake Store-hitelesítés](data-lakes-store-authentication-using-azure-active-directory.md)|
-| Hozzáférés-vezérlés |Az Azure Data Lake Store a WebHDFS protokoll által elérhetővé tett POSIX-stílusú engedélyek támogatásával biztosítja a hozzáférés-vezérlést. A Data Lake Store nyilvános előzetes verziójában (a jelenlegi kiadásban) a hozzáférés-vezérlési listákat a legfelső szintű mappához, az almappákhoz vagy egyes fájlokhoz lehet engedélyezni. További információkat a hozzáférés-vezérlési listák Data Lake Store-környezetben való működéséről a következő témakörben talál: [Hozzáférés-vezérlés a Data Lake Store-ban](data-lake-store-access-control.md). |
+| Hozzáférés-vezérlés |Az Azure Data Lake Store a WebHDFS protokoll által elérhetővé tett POSIX-stílusú engedélyek támogatásával biztosítja a hozzáférés-vezérlést. A hozzáférés-vezérlési listák a gyökérkönyvtáron, az alkönyvtárakon és az egyes fájlokon is engedélyezhetők. További információkat a hozzáférés-vezérlési listák Data Lake Store-környezetben való működéséről a következő témakörben talál: [Hozzáférés-vezérlés a Data Lake Store-ban](data-lake-store-access-control.md). |
 | Titkosítás |A Data Lake Store biztosítja a fiókban tárolt adatok titkosítását. A Data Lake Store-fiók létrehozásakor megadhatja a titkosítási beállításokat. Dönthet úgy, hogy titkosítja az adatokat, vagy választhatja a titkosítás nélküli lehetőséget. További információkat [a Data Lake Store-ban történő titkosítást](data-lake-store-encryption.md) ismertető cikkben talál. A titkosítással kapcsolatos konfigurációk megadására vonatkozó utasításokért lásd: [Az Azure Data Lake Store használatának első lépései az Azure Portal használatával](data-lake-store-get-started-portal.md). |
 
 Többet szeretne megtudni az adatok védelméről a Data Lake Store-ban? Kövesse az alábbi hivatkozásokat.

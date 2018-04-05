@@ -1,11 +1,11 @@
 ---
-title: "Az Azure IoT-eszközök SDK C-hez |} Microsoft Docs"
-description: "Ismerkedés az Azure IoT-eszközök SDK C-hez, és megtudhatja, hogyan hozzon létre egy IoT-központot kommunikáló eszközön futó alkalmazások."
+title: Az Azure IoT-eszközök SDK C-hez |} Microsoft Docs
+description: Ismerkedés az Azure IoT-eszközök SDK C-hez, és megtudhatja, hogyan hozzon létre egy IoT-központot kommunikáló eszközön futó alkalmazások.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: yzhong94
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e448b061-6bdd-470a-a527-15ec03cca7b9
 ms.service: iot-hub
 ms.devlang: cpp
@@ -14,15 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: cc559a19f6d7c31b3bc00a74851f4d42719832de
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 6a85ae65a0f20892b3a20656abac05e90538a1bd
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Az Azure IoT-eszközök SDK C-hez
 
 A **Azure IoT-eszközök SDK** úgy tervezték, hogy az üzenetek üzenetek küldése és fogadása egyszerűbbé szalagtárak készlete a **Azure IoT Hub** szolgáltatás. Az SDK-t és egy adott platform célzó eltérő változata van, de ez a cikk ismerteti a **C-hez készült SDK Azure IoT-eszközök**.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 Az Azure IoT-eszközök SDK c ANSI C maximalizálása hordozhatóságát (C99) nyelven van megírva. A szolgáltatás elérhetővé teszi a könyvtárak az való működésre több platformokon és eszközökön, különösen akkor, ha a lemez minimalizálja a szolgáltatást, és memóriaigény prioritását.
 

@@ -1,18 +1,18 @@
 ---
-title: "Az Azure Event rács áttekintése"
-description: "Azure Event rács és a fogalmakat ismerteti."
+title: Az Azure Event rács áttekintése
+description: Azure Event rács és a fogalmakat ismerteti.
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/30/2018
 ms.author: babanisa
-ms.openlocfilehash: 5e700e3e9d17e790083facf00c7f4b8decf9037a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 335d6aba3a3d2098fa64aeda8c58c8dd7f4e6776
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Azure Event rács bemutatása
 
@@ -33,25 +33,26 @@ Esemény rács jelenleg a következő régióban:
 *   USA nyugati régiója
 *   USA nyugati régiója, 2.
 
-Ez a cikk áttekintést Azure esemény rács. Ha azt szeretné, esemény rács használatába, lásd: [Azure esemény rácshoz hozza létre és útvonal egyéni események](custom-event-quickstart.md). A következő kép bemutatja, hogyan csatlakozzon az esemény rács a közzétevők és kezelők, de nem biztosít a támogatott beállítások átfogó listáját.
+Ez a cikk áttekintést Azure esemény rács. Ha azt szeretné, esemény rács használatába, lásd: [Azure esemény rácshoz hozza létre és útvonal egyéni események](custom-event-quickstart.md). A következő kép bemutatja, hogyan csatlakozzon az esemény rács a források és kezelők, de nem biztosít a támogatott beállítások átfogó listáját.
 
 ![Esemény rács működési modell](./media/overview/functional-model.png)
 
-## <a name="event-publishers"></a>Esemény-közzétevők
+## <a name="event-sources"></a>Eseményforrások
 
-Jelenleg az Azure-szolgáltatásokat kell beépített publisher az esemény rács:
+Jelenleg az Azure-szolgáltatásokat esemény rácshoz küldő események támogatják:
 
 * Azure-előfizetések (műveletek)
 * Egyéni kapcsolatos témakörök
 * Event Hubs
 * IoT Hub
 * Erőforráscsoportok (műveletek)
+* Service Bus
 * Storage Blob
 * Tárolási célú v2 (GPv2)
 
 ## <a name="event-handlers"></a>Az eseménykezelők
 
-Jelenleg az Azure-szolgáltatásokat kell beépített kezelő az esemény rács: 
+Jelenleg az Azure-szolgáltatásokat kezelési események esemény rácsban támogatják: 
 
 * Azure Automation
 * Azure Functions
@@ -60,7 +61,7 @@ Jelenleg az Azure-szolgáltatásokat kell beépített kezelő az esemény rács:
 * Microsoft Flow
 * Webhookok
 
-Az Azure Functions kezelőként használjon az esemény rács eseményindító általános HTTP-eseményindítók helyett. Esemény rács automatikusan ellenőrzi az esemény rácsos függvényt eseményindítók. Az általános HTTP-eseményindítók, meg kell valósítani a [érvényesítési válasz](security-authentication.md#webhook-event-delivery).
+Az Azure Functions kezelőként használjon az esemény rács eseményindító általános HTTP-eseményindítók helyett. Az Event Grid automatikusan érvényesíti az Event Grid függvény eseményindítóit. Általános HTTP-eseményindítók esetén meg kell valósítani az [érvényesítési választ](security-authentication.md#webhook-event-delivery).
 
 ## <a name="concepts"></a>Alapelvek
 

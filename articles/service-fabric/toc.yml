@@ -317,10 +317,6 @@
               href: service-fabric-deploy-multiple-apps.md
         - name: Tárolószolgáltatás készítése
           items:
-            - name: Tanúsítvány használata tárolóban
-              href: service-fabric-securing-containers.md
-            - name: Csoportosan felügyelt szolgáltatásfiók beállítása Windows-tárolókhoz
-              href: service-fabric-setup-gmsa-for-windows-containers.md
             - name: Docker Compose (előzetes verzió)
               href: service-fabric-docker-compose.md
             - name: Tárolók és szolgáltatások erőforrás-szabályozása
@@ -383,22 +379,30 @@
               href: service-fabric-reliable-actors-fabrictransportsettings.md
             - name: Configure ReliableDictionaryActorStateProvider
               href: service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md
-        - name: Régi Java-alkalmazás migrálása a Maven támogatására
-          href: service-fabric-migrate-old-javaapp-to-use-maven.md
-        - name: Fordított proxy konfigurálása biztonságos kommunikációhoz
-          href: service-fabric-reverseproxy-configure-secure-communication.md
         - name: ASP.NET Core-szolgáltatás összeállítása
           href: service-fabric-add-a-web-frontend.md
         - name: Biztonság konfigurálása
           items:
             - name: Titkos alkalmazáskulcsok kezelése
               href: service-fabric-application-secret-management.md
+            - name: Fordított proxy konfigurálása biztonságos kommunikációhoz
+              href: service-fabric-reverseproxy-configure-secure-communication.md
             - name: Szolgáltatásindítási szkript futtatása helyi felhasználóként vagy rendszerfiókként
               href: service-fabric-run-script-at-service-startup.md
             - name: Szolgáltatás futtatása helyi felhasználóként vagy rendszerfiókként
               href: service-fabric-application-runas-security.md
             - name: Biztonsági hozzáférési szabályzat hozzárendelése a végpontokhoz
               href: service-fabric-assign-policy-to-endpoint.md
+            - name: Szolgáltatás futtatása AD-felhasználóként vagy -csoportként
+              href: service-fabric-run-service-as-ad-user-or-group.md
+            - name: Szolgáltatás futtatása csoportosan felügyelt szolgáltatásfiókként
+              href: service-fabric-run-service-as-gmsa.md
+            - name: Tanúsítvány használata tárolóban
+              href: service-fabric-securing-containers.md
+            - name: Csoportosan felügyelt szolgáltatásfiók beállítása Windows-tárolókhoz
+              href: service-fabric-setup-gmsa-for-windows-containers.md
+        - name: Régi Java-alkalmazás migrálása a Maven támogatására
+          href: service-fabric-migrate-old-javaapp-to-use-maven.md
     - name: Munka a Windows/VS fejlesztői környezetében
       items:
         - name: Alkalmazások kezelése a Visual Studióban
@@ -501,8 +505,6 @@
               href: service-fabric-cluster-upgrade.md
             - name: Hozzáférés-vezérlés beállítása
               href: service-fabric-cluster-security-roles.md
-            - name: Konfigurálás
-              href: service-fabric-cluster-fabric-settings.md
             - name: Port megnyitása a terheléselosztóban
               href: create-load-balancer-rule.md
             - name: Fürttanúsítványok kezelése
@@ -525,14 +527,8 @@
                   href: service-fabric-cluster-standalone-package-contents.md
             - name: Méretezés
               href: service-fabric-cluster-windows-server-add-remove-nodes.md
-            - name: Biztonság konfigurálása
-              items:
-                - name: Hozzáférés-vezérlés beállítása
-                  href: service-fabric-cluster-security-roles.md
-                - name: Szolgáltatás futtatása AD-felhasználóként vagy -csoportként
-                  href: service-fabric-run-service-as-ad-user-or-group.md
-                - name: Szolgáltatás futtatása csoportosan felügyelt szolgáltatásfiókként
-                  href: service-fabric-run-service-as-gmsa.md
+            - name: Hozzáférés-vezérlés beállítása
+              href: service-fabric-cluster-security-roles.md
             - name: Konfigurálás
               href: service-fabric-cluster-manifest.md
             - name: Frissítés
@@ -614,6 +610,8 @@
       href: /dotnet/api/overview/azure/service-fabric?view=azure-dotnet
     - name: REST
       href: /rest/api/servicefabric
+    - name: Fürtbeállítások és a Fabric frissítési szabályzatának konfigurálása
+      href: service-fabric-cluster-fabric-settings.md
     - name: Szolgáltatásmodell XML-sémája
       href: service-fabric-service-model-schema.md
     - name: Környezeti változók

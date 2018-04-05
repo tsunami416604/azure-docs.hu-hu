@@ -1,11 +1,11 @@
 ---
-title: "Ismerkedés az Azure Mobile Engagement Android-alkalmazásokkal való használatával"
-description: "Ismerje meg, hogyan használható az Azure Mobile Engagement az Android-alkalmazásokhoz kapcsolódó elemzések és leküldéses értesítések tekintetében."
+title: Ismerkedés az Azure Mobile Engagement Android-alkalmazásokkal való használatával
+description: Ismerje meg, hogyan használható az Azure Mobile Engagement az Android-alkalmazásokhoz kapcsolódó elemzések és leküldéses értesítések tekintetében.
 services: mobile-engagement
 documentationcenter: android
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 3c286c6d-cfef-4e3e-9b2c-715429fe82db
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,18 @@ ms.devlang: Java
 ms.topic: hero-article
 ms.date: 08/10/2016
 ms.author: piyushjo;ricksal
-ms.openlocfilehash: 2c5d9c5458b77263a5d1da93e5305e61999f229f
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 4eda8129e03e4880e168f7c154c7236da028e81e
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-android-apps"></a>Ismerkedés az Azure Mobile Engagement Android-alkalmazásokkal való használatával
+> [!IMPORTANT]
+> Az Azure Mobile Engagement támogatása 2018. március 31-én megszűnik. Az oldal nem sokkal ezután törlésre kerül.
+> 
+
+
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
 Ebben a témakörben elsajátíthatja, hogy miként használható az Azure Mobile Engagement az alkalmazás használatának megértéséhez, valamint leküldéses értesítések Android-alkalmazásba történő küldéséhez a szegmentált felhasználók számára.

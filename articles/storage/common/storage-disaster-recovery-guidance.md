@@ -1,6 +1,6 @@
 ---
-title: "Mi a teendő az Azure Storage kimaradás esetén |} Microsoft Docs"
-description: "Mi a teendő az Azure Storage kimaradás esetén"
+title: Mi a teendő az Azure Storage kimaradás esetén |} Microsoft Docs
+description: Mi a teendő az Azure Storage kimaradás esetén
 services: storage
 documentationcenter: .net
 author: tamram
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 1/19/2017
 ms.author: tamram
-ms.openlocfilehash: 66406ed327f496dce7e77bb9ff650e0eec44bbdd
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3c313025917bba06675d3b2d844a6740fab89fbc
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Mi a teendő az Azure Storage leállása esetén?
 A Microsoft dolgozunk merevlemez annak biztosítását, hogy a szolgáltatások mindig elérhető. Egyes esetekben kényszeríti a vezérlő hatás túl velünk, melyek következtében a nem tervezett szolgáltatáskimaradások egy vagy több régióban. Segítséget az ilyen ritka események kezelésére, az Azure Storage szolgáltatás a következő magas szintű útmutatást nyújtunk.
@@ -42,10 +42,10 @@ Ha egy vagy több tároló szolgáltatás átmenetileg nem érhető el egy vagy 
 Ebben az esetben a letöltés intézkedés nem szükséges. Jelenleg dolgozunk gondossággal visszaállítása az Azure szolgáltatás rendelkezésre állása. A szolgáltatás állapotát a figyelheti a [Azure az állapotjelző irányítópulthoz](https://azure.microsoft.com/status/).
 
 ### <a name="option-2-copy-data-from-secondary"></a>2. lehetőség: Adatok másolása a másodlagos kiszolgálóról
-Ha úgy döntött, hogy [írásvédett georedundáns tárolás (RA-GRS)](storage-redundancy.md#read-access-geo-redundant-storage) (ajánlott) a storage-fiókok, akkor olvasási hozzáféréssel az adatokat másodlagos régióban. Használhatja például a [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md), és a [Azure adatok adatátviteli könyvtár](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) használatával adatait átmásolhatja a másodlagos régióban lévő másik tárolási fiókot egy unimpacted régió, és jelzi az alkalmazások tárolási fiók mindkét és olvasási rendelkezésre állását.
+Ha úgy döntött, hogy [írásvédett georedundáns tárolás (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage) (ajánlott) a storage-fiókok, akkor olvasási hozzáféréssel az adatokat másodlagos régióban. Használhatja például a [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md), és a [Azure adatok adatátviteli könyvtár](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) használatával adatait átmásolhatja a másodlagos régióban lévő másik tárolási fiókot egy unimpacted régió, és jelzi az alkalmazások tárolási fiók mindkét és olvasási rendelkezésre állását.
 
 ## <a name="what-to-expect-if-a-storage-failover-occurs"></a>Mi történik, ha egy Storage feladatátvételt hajt végre
-Ha úgy döntött, hogy [georedundáns tárolás (GRS)](storage-redundancy.md#geo-redundant-storage) vagy [írásvédett georedundáns tárolás (RA-GRS)](storage-redundancy.md#read-access-geo-redundant-storage) (ajánlott), Azure Storage akkor is megtartja az adatok tartósságát két régió (elsődleges és másodlagos). Azure Storage mindkét régió folyamatosan több replika adatait is kezeli.
+Ha úgy döntött, hogy [georedundáns tárolás (GRS)](storage-redundancy-grs.md) vagy [írásvédett georedundáns tárolás (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage) (ajánlott), Azure Storage akkor is megtartja az adatok tartósságát két régió (elsődleges és másodlagos). Azure Storage mindkét régió folyamatosan több replika adatait is kezeli.
 
 Ha egy regionális katasztrófa érinti az elsődleges régióban, először megpróbáljuk a szolgáltatást az adott régióban. A vészhelyreállítás és annak hatások, az egyes ritka esetekben jellegétől függ jelenleg nem lehet visszaállítani az elsődleges régióban. A földrajzi feladatátvétel ezen a ponton végezzük el. A kereszt-régió adatreplikáció egy aszinkron folyamattal, amely magába foglaló késleltetés, ezért lehetséges, hogy még nem replikálódott a másodlagos régióba módosítások elveszhetnek. Lekérheti a ["Utolsó szinkronizálásának időpontja". a tárfiók](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/) a replikációs állapot kapcsolatban.
 

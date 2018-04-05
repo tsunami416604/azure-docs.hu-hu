@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: mvc,DBs & servers
 ms.topic: quickstart
-ms.date: 03/15/2018
+ms.date: 03/23/2018
 ms.author: carlrab
-ms.openlocfilehash: 2c1e8d8f59e42e75a5895b58e4e7500a2fa2c9a2
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: b02c69f34c72fc89a4ae81fc1feb3641a7c8b06d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>Azure SQL Database létrehozása az Azure Portalon
 
@@ -163,13 +163,7 @@ Mentse ezeket az erőforrásokat, ha a [Következő lépésekre](#next-steps) sz
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy rendelkezik egy adatbázissal, csatlakoztathatja a kedvenc eszközeit, és lekérdezéseket hajthat végre velük. További információkért válassza ki az eszközt az alábbiak közül:
-
-- [SQL Server Management Studio](sql-database-connect-query-ssms.md)
-- [Visual Studio Code](sql-database-connect-query-vscode.md)
-- [.NET](sql-database-connect-query-dotnet.md)
-- [PHP](sql-database-connect-query-php.md)
-- [Node.js](sql-database-connect-query-nodejs.md)
-- [Java](sql-database-connect-query-java.md)
-- [Python](sql-database-connect-query-python.md)
-- [Ruby](sql-database-connect-query-ruby.md)
+- Most, hogy rendelkezik egy adatbázissal, [csatlakoztathatja a kedvenc eszközeinek vagy nyelveinek egyikét, és lekérdezéseket hajthat végre velük](sql-database-connect-query.md). 
+- Az első adatbázis megtervezésével, a táblák létrehozásával és az adatok beszúrásával kapcsolatos információkért tekintse meg az alábbi oktatóanyagok egyikét:
+ - [Az első Azure SQL-adatbázis megtervezése SSMS használatával](sql-database-design-first-database.md)
+  - [Azure SQL-adatbázis megtervezése, és kapcsolódás C# és ADO.NET használatával](sql-database-design-first-database-csharp.md)

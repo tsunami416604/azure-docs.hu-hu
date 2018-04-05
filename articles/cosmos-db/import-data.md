@@ -13,24 +13,24 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 03/30/2018
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: 1276fb119199b9dbb9b50bed8ac12cff0a55d2dd
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 317e5f2696635d28b5dbab302e45960af9c8aee2
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB: Az adatáttelepítési eszköz
 
 Ez az oktatóanyag útmutatás a Azure Cosmos DB adatáttelepítési eszköz, amelyet importálhat adatokat különböző forrásokból Azure Cosmos DB gyűjtemények és táblákat. JSON fájlok, CSV fájlok, SQL, MongoDB, Azure Table storage, Amazon DynamoDB és még akkor is, Azure Cosmos DB SQL API-gyűjtemények importálhatja, és telepíti át, gyűjtemények és táblák az adatokat használó Azure Cosmos DB használja-e. Az adatok áttelepítési eszköz is használható, áttelepítésekor az egypartíciós gyűjtemény több partíció-gyűjteményhez az SQL API-hoz.
 
 Mely API lesz a Azure Cosmos DB használni? 
-* **[Az SQL API](documentdb-introduction.md) ** -segítségével az adatok áttelepítési eszköz szerepel a forrás-beállításokat importálhat adatokat.
-* **[Tábla API](table-introduction.md) ** -adatok importálásához használhatja az adatáttelepítés eszközzel vagy az AzCopy. Lásd: [importálhat adatokat az Azure Cosmos DB tábla API való használatra](table-import.md) további információt.
-* **[MongoDB API](mongodb-introduction.md) ** -az adatok áttelepítési eszköz jelenleg nem támogatja a Azure Cosmos DB MongoDB API forrásként és célként. Ha azt szeretné, kívül MongoDB API gyűjtemények az Azure Cosmos Adatbázisba vagy az adatok áttelepítéséhez, tekintse meg a [Azure Cosmos DB: adatok áttelepítése a MongoDB API](mongodb-migrate.md) utasításokat. Az adatok áttelepítési eszköz segítségével exportál adatokat az MongoDB Azure Cosmos DB SQL API gyűjteményekre való használathoz az SQL API-t továbbra is használhatja. 
-* **[Graph API](graph-introduction.md) ** -az adatok áttelepítési eszköz jelenleg nem egy támogatott import eszközt, a Graph API-fiókok. 
+* **[Az SQL API](documentdb-introduction.md)**  -segítségével az adatok áttelepítési eszköz szerepel a forrás-beállításokat importálhat adatokat.
+* **[Tábla API](table-introduction.md)**  -adatok importálásához használhatja az adatáttelepítés eszközzel vagy az AzCopy. Lásd: [importálhat adatokat az Azure Cosmos DB tábla API való használatra](table-import.md) további információt.
+* **[MongoDB API](mongodb-introduction.md)**  -az adatok áttelepítési eszköz jelenleg nem támogatja a Azure Cosmos DB MongoDB API forrásként és célként. Ha azt szeretné, kívül MongoDB API gyűjtemények az Azure Cosmos Adatbázisba vagy az adatok áttelepítéséhez, tekintse meg a [Azure Cosmos DB: adatok áttelepítése a MongoDB API](mongodb-migrate.md) utasításokat. Az adatok áttelepítési eszköz segítségével exportál adatokat az MongoDB Azure Cosmos DB SQL API gyűjteményekre való használathoz az SQL API-t továbbra is használhatja. 
+* **[Graph API](graph-introduction.md)**  -az adatok áttelepítési eszköz jelenleg nem egy támogatott import eszközt, a Graph API-fiókok. 
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -59,7 +59,7 @@ Az adatok áttelepítési eszköz egy nyílt forráskódú megoldás, amellyel k
 Amíg az importálási eszköz tartalmazza a grafikus felhasználói felületen (dtui.exe), azt is is vezeti a parancssorból (dt.exe). Valójában nincs lehetősége van arra beállítása a felhasználói felületen az importálás után a hozzárendelt parancs kimenetét. Táblázatos forrásadatok (pl. az SQL Server vagy CSV-fájlokban) is kell alakítani, úgy, hogy az importálás során hozható létre a is a hierarchikus kapcsolat (aldokumentumok). Adatforrás-beállításokkal kapcsolatos további, a minta parancssor minden forrás, a cél lehetőségekkel, valamint a Megtekintés importálási eredmények importálása olvasási megtartása.
 
 ## <a id="Install"></a>Telepítés
-Az áttelepítési eszköz a forráskód nem elérhető a Githubon található [ebben a tárházban](https://github.com/azure/azure-documentdb-datamigrationtool). Töltse le és helyileg a megoldás összeállításához, majd futtassa vagy:
+Az áttelepítési eszköz a forráskód nem elérhető a Githubon található [ebben a tárházban](https://github.com/azure/azure-documentdb-datamigrationtool). Töltse le, és helyileg, a megoldás összeállításához vagy [előre lefordított bináris letöltése](https://cosmosdbportalstorage.blob.core.windows.net/datamigrationtool/2018.02.28-1.8.1/dt-1.8.1.zip), majd futtassa:
 
 * **Dtui.exe**: az eszköz grafikus felület verziója
 * **DT.exe**: az eszköz parancssori verziója
@@ -173,7 +173,7 @@ Amely a következő (részleges) eredményeket ad vissza:
 
 Vegye figyelembe például Address.AddressType és Address.Location.StateProvinceName aliasok. A beágyazási elválasztó megadásával ".", az importálási eszköz cím és Address.Location aldokumentumok létrehozza az importálás során. Íme egy példa az Azure Cosmos Adatbázisba az eredményül kapott dokumentum:
 
-*{"id": "956", "Name": "Egyeztetését értékesítés és a szolgáltatás", "Cím": {"AddressType": "Main Office", "AddressLine1": "#500-75 O'Connor utca", "Hely": {"Város": "Ottawai", "StateProvinceName": "Ontario"}, "Irányítószám": "K4B 1S2", "CountryRegionName": " [[[Kanada"}}*
+*{"id": "956", "Name": "Egyeztetését értékesítés és a szolgáltatás", "Cím": {"AddressType": "Main Office", "AddressLine1": "#500-75 O'Connor utca", "Hely": {"Város": "Ottawai", "StateProvinceName": "Ontario"}, "Irányítószám": "K4B 1S2", "CountryRegionName": " Kanada"}}*
 
 Az alábbiakban néhány importálása az SQL Server parancssori minták:
 

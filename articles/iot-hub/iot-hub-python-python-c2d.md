@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/22/2018
 ms.author: v-masebo
-ms.openlocfilehash: 9a669bda2a41ea6aa474549ee9798889523a27f8
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: MT
+ms.openlocfilehash: 7fd8bd87a4b7cf5a0f55b9fa7b5ab2ed43083d2c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>Az IoT-központ (Python) felhő eszközre-üzenetek
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -26,6 +26,8 @@ ms.lasthandoff: 03/28/2018
 
 ## <a name="introduction"></a>Bevezetés
 Az Azure IoT Hub egy teljes körűen felügyelt szolgáltatás, amellyel eszközök millióira közötti megbízható és biztonságos kétirányú kommunikáció engedélyezése és a megoldás háttérrendszere. A [Ismerkedés az IoT-központ] oktatóanyag bemutatja, hogyan létrehoz egy IoT-központot, azt egy eszközidentitás kiépítéséhez és kód egy szimulált eszköz alkalmazást, amelyet az eszköz a felhőbe küldött üzeneteket küld.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Ez az oktatóanyag épül [Ismerkedés az IoT-központ]. Megmutatja, hogyan számára:
 

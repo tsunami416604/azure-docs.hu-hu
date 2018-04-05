@@ -1,24 +1,24 @@
 ---
-title: "Azure Batch-készlet átméretezése befejeződésének eseményét. |} Microsoft Docs"
-description: "Útmutató a Batch-készlet átméretezése befejeződésének eseményét."
+title: Azure Batch-készlet átméretezése befejeződésének eseményét. |} Microsoft Docs
+description: Útmutató a Batch-készlet átméretezése befejeződésének eseményét.
 services: batch
-author: tamram
-manager: timlt
-ms.assetid: 
+author: dlepow
+manager: jeconnoc
+ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: tamram
-ms.openlocfilehash: 7072293d98526812cb42ce9c2f8e33bfcafaa149
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: danlep
+ms.openlocfilehash: e91ba664a69d28cae1f82710d427bd2a391305a2
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="pool-resize-complete-event"></a>Készlet átméretezési befejeződésének eseményét.
+# <a name="pool-resize-complete-event"></a>Készlet átméretezése kész esemény
 
  Ez az esemény is ki lesz adva a készlet átméretezési rendelkezik befejezése után, illetve nem sikerült.
 
@@ -45,9 +45,9 @@ ms.lasthandoff: 10/11/2017
 |nodeDeallocationOption|Karakterlánc|Itt adhatja meg, ha lehetséges, hogy lehet csomópontokat eltávolítani a készletből, ha a készlet méretének csökkentése.<br /><br /> Lehetséges értékek:<br /><br /> **requeue** – leállítja a futó tevékenységeket, és újra a várólistába helyezi őket. A feladatok a feladat engedélyezésekor fognak újra futni. Tevékenységek leállítása után rögtön csomópontjának eltávolítására.<br /><br /> **Állítsa le** – az éppen futó feladatok megszakítását. A tevékenységeket nem futtatja újra. Tevékenységek leállítása után rögtön csomópontjának eltávolítására.<br /><br /> **taskcompletion** – engedélyezése jelenleg futó feladatok elvégzéséhez. Nem ütemez újabb tevékenységeket való várakozás során. Távolítsa el a csomópontok, ha minden feladat befejeződött.<br /><br /> **Retaineddata** -lehetővé teszi a futó feladatok befejeződését, majd várja meg, hogy minden tevékenység adatmegőrzés időszakait lejár. Nem ütemez újabb tevékenységeket való várakozás során. Csomópontjának eltávolítására, ha az összes feladat megőrzési időszak lejárt.<br /><br /> Az alapértelmezett érték: requeue.<br /><br /> Ha a készlet mérete növekszik, akkor a változó értéke **érvénytelen**.|
 |currentDedicated|Int32|A számítási csomópontok a készlethez rendelt száma.|
 |targetDedicated|Int32|A kért a készlet számítási csomópontok száma.|
-|enableAutoScale|logikai érték|Meghatározza, hogy a készlet mérete automatikusan igazodni adott idő alatt.|
-|isAutoPool|logikai érték|Meghatározza, hogy a készlet egy feladat AutoPool mechanizmus révén hozott-e.|
-|startTime|Dátum és idő|A készlet átméretezése indulásakor.|
-|endTime|Dátum és idő|Az az idő a készlet átméretezése befejeződött.|
-|ResultCode|Karakterlánc|Az átméretezés eredményét.|
+|enableAutoScale|Logikai|Meghatározza, hogy a készlet mérete automatikusan igazodni adott idő alatt.|
+|isAutoPool|Logikai|Meghatározza, hogy a készlet egy feladat AutoPool mechanizmus révén hozott-e.|
+|startTime|DateTime|A készlet átméretezése indulásakor.|
+|endTime|DateTime|Az az idő a készlet átméretezése befejeződött.|
+|resultCode|Karakterlánc|Az átméretezés eredményét.|
 |resultMessage|Karakterlánc|Az átméretezés hiba a az eredmény tartalmazza.<br /><br /> Ha az átméretezés sikeresen befejeződött, hogy a művelet sikeresen befejeződött.|

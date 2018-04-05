@@ -1,6 +1,6 @@
 ---
-title: "Azure rövid útmutató – Blobok feltöltése, letöltése és listázása az Azure Storage-ban az Azure Storage Explorer használatával | Microsoft Docs"
-description: "Ebben a rövid útmutatóban egy tárfiókot és egy tárolót hoz létre az Azure Storage Explorer használatával. Majd a Storage Explorer segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat."
+title: Azure rövid útmutató – Blobok feltöltése, letöltése és listázása az Azure Storage-ban az Azure Storage Explorer használatával | Microsoft Docs
+description: Ebben a rövid útmutatóban egy tárfiókot és egy tárolót hoz létre az Azure Storage Explorer használatával. Majd a Storage Explorer segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat.
 services: storage
 author: tamram
 manager: jeconnoc
@@ -9,11 +9,11 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/22/2018
 ms.author: tamram
-ms.openlocfilehash: 72503dd0216d9d987d1222491c6e11d46a4d38a3
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: f44d42b949eae0d017e3bba218234fd1e2ead78e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-azure-storage-explorer"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása az Azure Storage Explorer használatával
 
@@ -47,7 +47,7 @@ A csatlakozás befejeztével az Azure Storage Explorer betöltést követően me
 
 A blobok minden esetben egy tárolóba lesznek feltöltve. Így a blobok csoportjait ugyanúgy rendszerezheti, ahogy a fájlokat a számítógép mappáiban.
 
-Tároló létrehozásához bontsa ki az előző lépésben létrehozott tárfiókot. Válassza a **Blobtárolók** lehetőséget, kattintson a jobb gombbal, majd válassza a **Blobtároló létrehozása** lehetőséget. Adja meg a blobtároló nevét. A blobtárolók elnevezésére vonatkozó szabályokat és korlátozásokat a [tároló elnevezési szabályait](storage-dotnet-how-to-use-blobs.md#create-a-container) ismertető szakaszban találja. Ha végzett, nyomja le az **Enter** billentyűt a blobtároló létrehozásához. A sikeresen létrehozott blobtároló megjelenik a kiválasztott tárfiókhoz tartozó **Blobtárolók** mappában.
+Tároló létrehozásához bontsa ki az előző lépésben létrehozott tárfiókot. Válassza a **Blobtárolók** lehetőséget, kattintson a jobb gombbal, majd válassza a **Blobtároló létrehozása** lehetőséget. Adja meg a blobtároló nevét. A blobtárolók elnevezésére vonatkozó szabályokat és korlátozásokat a [tárolók létrehozását és engedélyek beállítását](storage-quickstart-blobs-dotnet.md#create-the-container-and-set-permissions) ismertető szakaszban találja. Ha végzett, nyomja le az **Enter** billentyűt a blobtároló létrehozásához. A sikeresen létrehozott blobtároló megjelenik a kiválasztott tárfiókhoz tartozó **Blobtárolók** mappában.
 
 ## <a name="upload-blobs-to-the-container"></a>Blobok feltöltése a tárolóba
 

@@ -6,9 +6,10 @@
 ## [Előfizetés- és szolgáltatáskorlátok](../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 
 # Első lépések
-## [Útvonalalapú VPN-átjáró létrehozása – Azure Portal](create-routebased-vpn-gateway-portal.md)
-## [Útvonalalapú VPN-átjáró létrehozása – PowerShell](create-routebased-vpn-gateway-powershell.md)
-## [Útvonalalapú VPN-átjáró létrehozása – CLI](create-routebased-vpn-gateway-cli.md)
+## Útvonalalapú VPN-átjáró létrehozása
+### [Azure Portal](create-routebased-vpn-gateway-portal.md)
+### [Azure PowerShell](create-routebased-vpn-gateway-powershell.md)
+### [Azure CLI](create-routebased-vpn-gateway-cli.md)
 
 # Alapelvek
 ## [A VPN Gateway tervezése és kialakítása](vpn-gateway-plan-design.md)
@@ -87,13 +88,16 @@
 ### [Minta: Cisco ASA-eszköz (IKEv2/nincs BGP)](vpn-gateway-3rdparty-device-config-cisco-asa.md)
 ## [Áttelepítés klasszikusról Resource Manager-alapú környezetbe](vpn-gateway-classic-resource-manager-migration.md)
 ## [Hibaelhárítás](vpn-gateway-troubleshoot.md)
-### [VPN teljesítményének érvényesítése VNeten](vpn-gateway-validate-throughput-to-vnet.md)
 ### [Közösség által javasolt VPN- vagy tűzfaleszköz-beállítások](vpn-gateway-third-party-settings.md)
-### [Pont–hely kapcsolati problémák](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
-#### [Pont–hely kapcsolati problémák – Mac OS X VPN-ügyfél](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)
-### [Helyek közötti kapcsolati problémák](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md)
-#### [A helyek közötti kapcsolat időnként megszakad](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
 ### [VNet- vagy VPN-kapcsolatok konfigurálása és érvényesítése](https://support.microsoft.com/help/4032151/configuring-and-validating-vnet-or-vpn-connections)
+### [VPN teljesítményének érvényesítése VNeten](vpn-gateway-validate-throughput-to-vnet.md)
+### Pont–hely kapcsolatok problémái
+#### [Pont–hely kapcsolati problémák](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
+#### [Pont–hely kapcsolati problémák – Mac OS X VPN-ügyfél](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)
+### Helyek közötti kapcsolatok problémái
+#### [Helyek közötti kapcsolati problémák](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md)
+#### [A helyek közötti kapcsolat időnként megszakad](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
+
 
 # Referencia
 ## [Azure PowerShell](/powershell/module/azurerm.network/?view=azurermps-4.0.0#vpn)

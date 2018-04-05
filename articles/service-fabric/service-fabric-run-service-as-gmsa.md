@@ -12,16 +12,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/21/2018
+ms.date: 03/29/2018
 ms.author: mfussell
-ms.openlocfilehash: cd36d52df24610af1d2cb2d9e6e41f33bb7ea5fe
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e22c656218abcd0564faec6fae6d6979f09b386a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="run-a-service-as-a-group-managed-service-account"></a>A szolgáltatás futtatásához a csoportosan felügyelt szolgáltatásfiók
-Azure Service Fabric használatával biztonságossá teheti a különböző felhasználói fiókok a fürtben futó alkalmazás számára. Futó alkalmazások eltérő fiókkal, még akkor is, a megosztott üzemeltetési környezetben révén azokat egymástól biztonságosabb. Alapértelmezés szerint a Service Fabric alkalmazások futnak, a fiók, amely alatt futó a Fabric.exe folyamatban. A Windows Server önálló fürt, a csoportosan felügyelt szolgáltatásfiókok (gMSA) futtathatja, egy szolgáltatás vagy egy [Active Directory-felhasználó vagy csoport](service-fabric-run-service-as-ad-user-or-group.md) RunAs házirend segítségével. Vegye figyelembe, hogy ez az Active Directory helyszíni belül a tartomány és a nem Azure Active Directory (Azure AD) használ. A csoportosan felügyelt szolgáltatásfiókot használ, nem kell jelszót vagy a titkosított jelszót a `Application Manifest`.
+# <a name="run-a-service-as-a-group-managed-service-account"></a>Szolgáltatás futtatása csoportosan felügyelt szolgáltatásfiókként
+Egy Windows Server önálló fürtön a szolgáltatás csoportos felügyelt szolgáltatásfiókok (gMSA) futtató házirend segítségével is futtathatja.  Alapértelmezés szerint a Service Fabric alkalmazások futnak, a fiók, amely alatt futó a Fabric.exe folyamatban. Futó alkalmazások eltérő fiókkal, még akkor is, a megosztott üzemeltetési környezetben révén azokat egymástól biztonságosabb. Vegye figyelembe, hogy ez az Active Directory helyszíni belül a tartomány és a nem Azure Active Directory (Azure AD) használ. A csoportosan felügyelt szolgáltatásfiókot használ, nincs jelszót vagy az alkalmazás jegyzékében tárolt titkosított jelszót.  A szolgáltatás is futtathatja egy [Active Directory-felhasználó vagy csoport](service-fabric-run-service-as-ad-user-or-group.md).
 
 A következő példa bemutatja, hogyan nevű csoportosan felügyelt szolgáltatásfiókok létrehozása *svc-teszt$*; központi telepítése a fürt csomópontjai; a felügyelt szolgáltatásfiók és a konfigurálása egyszerű felhasználónév.
 

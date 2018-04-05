@@ -1,11 +1,11 @@
 ---
-title: "A fejlesztési környezet beállítása Linuxon | Microsoft Docs"
-description: "Telepítse a futtatókörnyezetet és az SDK-t, majd hozzon létre egy helyi fejlesztési fürtöt Linuxon. A beállítás befejezése után készen áll az alkalmazások létrehozására."
+title: A fejlesztési környezet beállítása Linuxon | Microsoft Docs
+description: Telepítse a futtatókörnyezetet és az SDK-t, majd hozzon létre egy helyi fejlesztési fürtöt Linuxon. A beállítás befejezése után készen áll az alkalmazások létrehozására.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
 ms.service: service-fabric
 ms.devlang: dotNet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 20239acba46996ed7ec84a2fbaf300190deebc7f
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: c98a5e742356e24cee9e9d1414121faabac03084
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>A fejlesztőkörnyezet előkészítése Linuxon
 > [!div class="op_single_selector"]
@@ -29,6 +29,10 @@ ms.lasthandoff: 02/24/2018
 >  
 
 Az [Azure Service Fabric-alkalmazásoknak](service-fabric-application-model.md) a linuxos fejlesztői gépen való üzembe helyezéséhez és futtatásához telepítse a futtatókörnyezetet és az általános SDK-t. A Javához és a .NET Core-fejlesztéshez készült opcionális SDK-kat is telepítheti.
+
+> [!NOTE]
+> A Service Fabric-futtatókörnyezet és az SDK telepítése nem támogatott a Linuxra készült Windows alrendszeren. A felhőben máshol vagy a helyszínen üzemeltetett Service Fabric-entitások kezelését lehetővé tévő Azure Service Fabric parancssori felület azonban támogatott. A parancssori felület telepítési módját a [Service Fabric parancssori felület telepítését](./service-fabric-cli.md) ismertető témakörben találja.
+>
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -107,6 +111,12 @@ sudo apt-get install servicefabricsdkcommon
 >   echo "servicefabric servicefabric/accepted-eula-ga select true" | sudo debconf-set-selections
 >   echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-ga select true" | sudo debconf-set-selections
 >   ```
+
+A fenti telepítéssel együtt érkező Service Fabric-futtatókörnyezet az alábbi táblázatban szereplő csomagokat tartalmazza. 
+
+ | | DotNetCore | Java | Python | NodeJS | 
+--- | --- | --- | --- |---
+Ubuntu | 2.0.0 | OpenJDK 1.8 | Implicit módon az npm-ből | legújabb |
 
 ## <a name="set-up-a-local-cluster"></a>Helyi fürt beállítása
   Ha a telepítés befejeződött, elindíthatja a helyi fürtöt.

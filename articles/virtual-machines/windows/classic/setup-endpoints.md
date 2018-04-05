@@ -1,11 +1,11 @@
 ---
-title: "Állítsa be a klasszikus windowsos virtuális gép végpontja |} Microsoft Docs"
-description: "Ismerje meg, hozzon létre végpontok a klasszikus Windows virtuális gépek Azure-portálon az Azure-ban és Windows rendszerű virtuális gép közötti kommunikáció biztosítása."
+title: Állítsa be a klasszikus windowsos virtuális gép végpontja |} Microsoft Docs
+description: Ismerje meg, hozzon létre végpontok a klasszikus Windows virtuális gépek Azure-portálon az Azure-ban és Windows rendszerű virtuális gép közötti kommunikáció biztosítása.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 8afc21c2-d3fb-43a3-acce-aa06be448bb6
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: cynthn
-ms.openlocfilehash: 34bfad1e41037f38e950db085c0c13b7066b3e96
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: d64feff341e389df4079c0603a414f0d40b754e7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="how-to-set-up-endpoints-on-a-classic-windows-virtual-machine-in-azure"></a>A klasszikus Azure-ban Windows rendszerű virtuális gép végpontja beállítása
 Minden Windows virtuális gépek az Azure klasszikus telepítési modellel létrehozott képes automatikusan egy olyan magánhálózat protokollt használó kommunikációra hálózati csatornát a felhőalapú szolgáltatás- vagy virtuális hálózati más virtuális gépekkel. Azonban a számítógépek az interneten vagy más virtuális hálózatok végpontok át tudja irányítani a bejövő hálózati forgalmat a virtuális gép szükséges. Ez a cikk érhető el is [Linux virtuális gépek](../../linux/classic/setup-endpoints.md).
@@ -34,7 +34,7 @@ Amikor egy Windows virtuális gép létrehozása az Azure portálon, például a
 
 [!INCLUDE [virtual-machines-common-classic-setup-endpoints](../../../../includes/virtual-machines-common-classic-setup-endpoints.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Az Azure PowerShell parancsmag használatával állítson be egy virtuális gép végpontjának, lásd: [Add-AzureEndpoint](https://msdn.microsoft.com/library/azure/dn495300.aspx).
 * Az Azure PowerShell-parancsmag használatával felügyeli a végponti ACL, lásd: [kezelése hozzáférés listák (ACL) végpontok PowerShell használatával](../../../virtual-network/virtual-networks-acl-powershell.md).
-* Ha egy virtuális gépet a Resource Manager üzembe helyezési modellel létrehozott, használhatja az Azure PowerShell [hálózati biztonsági csoportok létrehozása](../../../virtual-network/virtual-networks-create-nsg-arm-ps.md) a virtuális gép forgalmának ellenőrzésére.
+* Ha egy virtuális gépet a Resource Manager üzembe helyezési modellel létrehozott, használhatja az Azure PowerShell [hálózati biztonsági csoportok létrehozása](../../../virtual-network/tutorial-filter-network-traffic.md) a virtuális gép forgalmának ellenőrzésére.

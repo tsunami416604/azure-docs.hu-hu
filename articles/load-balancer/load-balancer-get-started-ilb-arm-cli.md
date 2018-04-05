@@ -1,216 +1,266 @@
 ---
-title: "Belső terheléselosztó létrehozása – Azure CLI | Microsoft Docs"
-description: "Ismerje meg, hogyan hozható létre belső terheléselosztó az Azure parancssori felület használatával a Resource Managerben"
+title: Belső alapszintű terheléselosztó létrehozása – Azure CLI 2.0 | Microsoft Docs
+description: Ismerje meg, hogyan hozható létre belső terheléselosztó az Azure CLI 2.0 használatával
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: c7a24e92-b4da-43c0-90f2-841c1b7ce489
+ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 03/27/2017
 ms.author: kumud
-ms.openlocfilehash: 920ddecbf81296fd83606f2908e432f5327d4b7e
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: d90a4e74b6ad3bb95e91ad3a5327c887a87784bd
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="create-an-internal-load-balancer-by-using-the-azure-cli"></a>Belső terheléselosztó létrehozása az Azure parancssori felület használatával
+# <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli-20"></a>Belső terheléselosztó létrehozása a virtuális gépek terhelésének elosztásához az Azure CLI 2.0 használatával
 
-> [!div class="op_single_selector"]
-> * [Azure Portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
-> * [PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
-> * [Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
-> * [Sablon](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
+Ebből a cikkből megtudhatja, hogyan hozhat létre belső terheléselosztót a virtuális gépek terhelésének elosztása érdekében. A terheléselosztó teszteléséhez két, Ubuntu kiszolgálót futtató virtuális gépet helyez üzembe a webalkalmazások terhelésének elosztása érdekében.
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-[!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
-
-[!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
-
-## <a name="deploy-the-solution-by-using-the-azure-cli"></a>A megoldás üzembe helyezése az Azure parancssori felület használatával
-
-A következő lépések bemutatják, hogyan lehet internetes elérésű terheléselosztót létrehozni az Azure Resource Manager és a parancssori felület használatával. Az Azure Resource Manager lehetővé teszi, hogy az egyes erőforrások konfigurálása egyenként történjen, majd az összerakásukkal jöjjön létre egy erőforrás.
-
-A terheléselosztó üzembe helyezéséhez a következő objektumokat kell létrehozni és konfigurálni:
-
-* **Előtérbeli IP-konfiguráció**: a nyilvános IP-címeket tartalmazza a bejövő hálózati forgalomhoz
-* **Háttércímkészlet**: hálózati adaptereket (NIC) tartalmaz, amelyek lehetővé teszik a virtuális gépek számára a terheléselosztóról érkező hálózati forgalom fogadását
-* **Terheléselosztási szabályok**: olyan szabályokat tartalmaz, amelyek a terheléselosztó nyilvános portját rendelik hozzá a háttér címkészletben levő porthoz
-* **Bejövő NAT-szabályok**: olyan szabályokat tartalmaz, amelyek a terheléselosztó nyilvános portjait rendelik hozzá egy adott virtuális gép portjához a háttércímkészletben
-* **Mintavételezők**: állapotfigyelő mintavételezőket tartalmaz, amelyek a virtuálisgép-példányok rendelkezésre állását ellenőrzik a háttércímkészletben
-
-A további információkat az [Azure Resource Manager support for Load Balancer](load-balancer-arm.md) (Azure Resource Manager-támogatás a terheléselosztóhoz) című rész tartalmazza.
-
-## <a name="set-up-cli-to-use-resource-manager"></a>A parancssori felület beállítása a Resource Manager használatához
-
-1. Ha még soha nem használta az Azure parancssori felületét, lásd: [Install and configure the Azure CLI](../cli-install-nodejs.md) (Azure parancssori felület (CLI) telepítése és konfigurálása). Kövesse az utasításokat az Azure-fiók és -előfizetés kiválasztásáig.
-2. Az **azure config mode** parancs futtatásával váltson Resource Manager módra, a következők szerint:
-
-    ```azurecli
-    azure config mode arm
-    ```
-
-    Várt kimenet:
-
-        info:    New mode is arm
-
-## <a name="create-an-internal-load-balancer-step-by-step"></a>Belső terheléselosztó létrehozásának lépései
-
-1. Jelentkezzen be az Azure-ba.
-
-    ```azurecli
-    azure login
-    ```
-
-    Amikor a rendszer erre kéri, adja meg Azure rendszerbeli hitelesítő adatait.
-
-2. Módosítsa a parancssori eszközöket az Azure Resource Manager módra.
-
-    ```azurecli
-    azure config mode arm
-    ```
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.28-as vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Az Azure Resource Managerben minden erőforrás egy erőforráscsoporthoz van társítva. Ha még nem tette meg, hozzon létre egy erőforráscsoportot.
+Hozzon létre egy erőforráscsoportot az [az group create](https://docs.microsoft.com/cli/azure/group#create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
-```azurecli
-azure group create <resource group name> <location>
+A következő példa létrehoz egy *myResourceGroupILB* nevű erőforráscsoportot az *eastus* helyen:
+
+```azurecli-interactive
+  az group create \
+    --name myResourceGroupILB \
+    --location eastus
+```
+## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
+
+Az [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#create) paranccsal hozzon létre a *myResourceGroup* erőforráscsoportban egy *myVnet* nevű virtuális hálózatot egy *mySubnet* nevű alhálózattal.
+
+```azurecli-interactive
+  az network vnet create \
+    --name myVnet
+    --resource-group myResourceGroupILB \
+    --location eastus \
+    --subnet-name mySubnet
+```
+## <a name="create-basic-load-balancer"></a>Alapszintű Load Balancer létrehozása
+
+Ez a szakasz részletesen ismerteti a terheléselosztó következő összetevőinek létrehozását és konfigurálását:
+  - a terheléselosztón a bejövő hálózati forgalmat fogadó előtérbeli IP-konfiguráció.
+  - a háttér-IP-címkészlet, ahová az előtérkészlet küldi az elosztott terhelésű hálózati forgalmat;
+  - állapot-mintavétel, amely a háttérbeli virtuálisgép-példányok állapotát határozza meg;
+  - terheléselosztási szabály, amely megadja, hogy a rendszer hogyan ossza el a forgalmat a virtuális gépek között.
+
+### <a name="create-the-load-balancer"></a>A terheléselosztó létrehozása
+
+Hozzon létre egy **myLoadBalancer** nevű nyilvános alapszintű terheléselosztót az [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#create) paranccsal, amely tartalmaz egy **myFrontEnd** nevű előtérbeli IP-konfigurációt, egy **myBackEndPool** nevű háttérbeli készletet, és a **10.0.0.7 magánhálózati IP-címmel van társítva.
+
+```azurecli-interactive
+  az network lb create \
+    --resource-group myResourceGroupILB \
+    --name myLoadBalancer \
+    --frontend-ip-name myFrontEnd \
+    --private-ip-address 10.0.0.7 \
+    --backend-pool-name myBackEndPool \
+    --vnet-name myVnet \
+    --subnet mySubnet      
+  ```
+### <a name="create-the-health-probe"></a>Az állapotminta létrehozása
+
+Az állapotfigyelő mintavételező az összes virtuálisgép-példányt ellenőrzi, hogy biztosan képesek legyenek hálózati forgalom fogadására. A mintavételező tesztjén elbukó virtuálisgép-példányokat a rendszer eltávolítja a terheléselosztóból, és így is maradnak, amíg ismét online állapotúak nem lesznek, és a mintavételező tesztje azt nem jelzi, hogy megfelelő az állapotuk. Hozzon létre egy állapotmintát az [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#create) paranccsal a virtuális gépek állapotának monitorozásához. 
+
+```azurecli-interactive
+  az network lb probe create \
+    --resource-group myResourceGroupILB \
+    --lb-name myLoadBalancer \
+    --name myHealthProbe \
+    --protocol tcp \
+    --port 80   
 ```
 
-## <a name="create-an-internal-load-balancer-set"></a>Hozzon létre egy belső terheléselosztó készletet
+### <a name="create-the-load-balancer-rule"></a>A terheléselosztási szabály létrehozása
 
-1. Hozzon létre egy belső terheléselosztót
+A terheléselosztási szabályok meghatározzák az előtérbeli IP-konfigurációt a bejövő forgalomhoz és a háttérbeli IP-készletet a forgalom fogadásához, valamint a szükséges forrás- és célportot. Hozzon létre egy *myLoadBalancerRuleWeb* nevű terheléselosztási szabályt az [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#create) paranccsal a *myFrontEndPool* nevű előtérbeli címkészlet 80-as portjának figyeléséhez és az elosztott terhelésű hálózati forgalomnak a *myBackEndPool* nevű háttércímkészletre való küldéséhez, amely a 80-as portot használja. 
 
-    A következő forgatókönyv esetében az nrprg nevű erőforráscsoportot hozzuk létre az Egyesült Államok keleti régiójában.
-
-    ```azurecli
-    azure network lb create --name nrprg --location eastus
-    ```
-
-   > [!NOTE]
-   > A belső terheléselosztók összes erőforrásának (például virtuális hálózatok és virtuális alhálózatok) ugyanabban az erőforráscsoportban és ugyanabban a régióban kell lennie.
-
-2. Hozzon létre egy előtérbeli IP-címet a belső terheléselosztó számára.
-
-    Az IP-címnek kötelező a virtuális hálózat alhálózati tartományában lennie.
-
-    ```azurecli
-    azure network lb frontend-ip create --resource-group nrprg --lb-name ilbset --name feilb --private-ip-address 10.0.0.7 --subnet-name nrpvnetsubnet --subnet-vnet-name nrpvnet
-    ```
-
-3. Hozza létre a háttércímkészletet.
-
-    ```azurecli
-    azure network lb address-pool create --resource-group nrprg --lb-name ilbset --name beilb
-    ```
-
-    Miután megtörtént az előtérbeli IP-cím, valamint a háttércímkészlet definiálása, létre lehet hozni a terheléselosztási szabályokat, a bejövő NAT-szabályokat, valamint a testre szabott állapotfigyelő mintavételezőket.
-
-4. Hozzon létre egy terheléselosztási szabályt a belső terheléselosztóhoz.
-
-    Az előző lépések végrehajtásakor a parancs olyan terheléselosztási szabályt hoz létre, amelyik az 1433-as portot figyeli az előtérkészletben, és a háttér címkészletre szintén az 1433-as port használatával küldi az elosztott terhelésű hálózati forgalmat.
-
-    ```azurecli
-    azure network lb rule create --resource-group nrprg --lb-name ilbset --name ilbrule --protocol tcp --frontend-port 1433 --backend-port 1433 --frontend-ip-name feilb --backend-address-pool-name beilb
-    ```
-
-5. Hozza létre a bejövő NAT-szabályokat.
-
-    A bejövő NAT-szabályok olyan végpontok létrehozásához használhatók a terheléselosztóban, amelyek egy adott virtuálisgép-példányhoz tartoznak. Az előző lépések két NAT-szabályt hoztak létre a távoli asztalhoz.
-
-    ```azurecli
-    azure network lb inbound-nat-rule create --resource-group nrprg --lb-name ilbset --name NATrule1 --protocol TCP --frontend-port 5432 --backend-port 3389
-
-    azure network lb inbound-nat-rule create --resource-group nrprg --lb-name ilbset --name NATrule2 --protocol TCP --frontend-port 5433 --backend-port 3389
-    ```
-
-6. Hozzon létre állapotfigyelő mintavételezőket a terheléselosztóhoz.
-
-    Az állapotfigyelő mintavételező az összes virtuálisgép-példányt ellenőrzi, hogy biztosan képesek legyenek hálózati forgalom küldésére. A mintavételező tesztjén elbukó virtuálisgép-példányokat a rendszer eltávolítja a terheléselosztóból, és így is maradnak, amíg ismét online állapotúak nem lesznek, és a mintavételező tesztje azt nem jelzi, hogy megfelelő az állapotuk.
-
-    ```azurecli
-    azure network lb probe create --resource-group nrprg --lb-name ilbset --name ilbprobe --protocol tcp --interval 300 --count 4
-    ```
-
-    > [!NOTE]
-    > A Microsoft Azure platform egy statikus, nyilvánosan irányítható IPv4-címet használ számos különböző felügyeleti forgatókönyvhöz. Az IP-cím a 168.63.129.16. Ezt az IP-címet nem blokkolhatja egy tűzfal sem, mert ez nem várt viselkedést okozhat.
-    > Az Azure belső terheléselosztás esetében ezt az IP-címet használják a terheléselosztó figyelési mintavételezői az elosztott terhelésű készlet virtuális gépeinek állapotmeghatározásához. Ha egy belső elosztott terhelésű készletben hálózati biztonsági csoportot használnak az Azure virtuális gépekre irányuló forgalom korlátozásához, vagy egy virtuális alhálózaton alkalmazzák, győződjön meg arról, hogy a 168.63.129.16 címről érkező adatforgalom engedélyezéséhez felvettek egy hálózati biztonsági szabályt.
-
-## <a name="create-nics"></a>Hálózati adapterek létrehozása
-
-Hálózati adaptereket kell létrehoznia (vagy a meglévőket is módosíthatja), és hozzá kell rendelnie őket a NAT-szabályokhoz, a terheléselosztási szabályokhoz és a mintavételezőkhöz.
-
-1. Hozzon létre egy hálózati adaptert *lb-nic1-be* néven, majd társítsa az *rdp1* NAT-szabályhoz és a *beilb* háttércímkészlethez.
-
-    ```azurecli
-    azure network nic create --resource-group nrprg --name lb-nic1-be --subnet-name nrpvnetsubnet --subnet-vnet-name nrpvnet --lb-address-pool-ids "/subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/backendAddressPools/beilb" --lb-inbound-nat-rule-ids "/subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/inboundNatRules/rdp1" --location eastus
-    ```
-
-    Várt kimenet:
-
-        info:    Executing command network nic create
-        + Looking up the network interface "lb-nic1-be"
-        + Looking up the subnet "nrpvnetsubnet"
-        + Creating network interface "lb-nic1-be"
-        + Looking up the network interface "lb-nic1-be"
-        data:    Id                              : /subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/networkInterfaces/lb-nic1-be
-        data:    Name                            : lb-nic1-be
-        data:    Type                            : Microsoft.Network/networkInterfaces
-        data:    Location                        : eastus
-        data:    Provisioning state              : Succeeded
-        data:    Enable IP forwarding            : false
-        data:    IP configurations:
-        data:      Name                          : NIC-config
-        data:      Provisioning state            : Succeeded
-        data:      Private IP address            : 10.0.0.4
-        data:      Private IP Allocation Method  : Dynamic
-        data:      Subnet                        : /subscriptions/####################################/resourceGroups/NRPRG/providers/Microsoft.Network/virtualNetworks/NRPVnet/subnets/NRPVnetSubnet
-        data:      Load balancer backend address pools
-        data:        Id                          : /subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/backendAddressPools/NRPbackendpool
-        data:      Load balancer inbound NAT rules:
-        data:        Id                          : /subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/inboundNatRules/rdp1
-        data:
-        info:    network nic create command OK
-
-2. Hozzon létre egy hálózati adaptert *lb-nic2-be* néven, majd társítsa az *rdp2* NAT-szabályhoz és a *beilb* háttércímkészlethez.
-
-    ```azurecli
-    azure network nic create --resource-group nrprg --name lb-nic2-be --subnet-name nrpvnetsubnet --subnet-vnet-name nrpvnet --lb-address-pool-ids "/subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/backendAddressPools/beilb" --lb-inbound-nat-rule-ids "/subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/inboundNatRules/rdp2" --location eastus
-    ```
-
-3. Hozzon létre egy virtuális gépet *DB1* néven, és társítsa az *lb-nic1-be* nevű hálózati adapterrel. A következő parancs futtatása előtt létrejön a *web1nrp* nevű tárfiók:
-
-    ```azurecli
-    azure vm create --resource--resource-grouproup nrprg --name DB1 --location eastus --vnet-name nrpvnet --vnet-subnet-name nrpvnetsubnet --nic-name lb-nic1-be --availset-name nrp-avset --storage-account-name web1nrp --os-type Windows --image-urn MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:4.0.20150825
-    ```
-    > [!IMPORTANT]
-    > A terheléselosztó virtuális gépeinek ugyanabban a rendelkezésre állási készletben kell lenniük. Használja az `azure availset create` parancsot a rendelkezésre állási készlet létrehozásához.
-
-4. Hozzon létre egy virtuális gépet (VM) *DB2* néven, és társítsa az *lb-nic2-be* nevű hálózati adapterhez. A következő parancs futtatása előtt létrejön a *web1nrp* nevű tárfiók.
-
-    ```azurecli
-    azure vm create --resource--resource-grouproup nrprg --name DB2 --location eastus --vnet-name nrpvnet --vnet-subnet-name nrpvnetsubnet --nic-name lb-nic2-be --availset-name nrp-avset --storage-account-name web2nrp --os-type Windows --image-urn MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:4.0.20150825
-    ```
-
-## <a name="delete-a-load-balancer"></a>Terheléselosztó törlése
-
-A terheléselosztó eltávolításához használja a következő parancsot:
-
-```azurecli
-azure network lb delete --resource-group nrprg --name ilbset
+```azurecli-interactive
+  az network lb rule create \
+    --resource-group myResourceGroupILB \
+    --lb-name myLoadBalancer \
+    --name myHTTPRule \
+    --protocol tcp \
+    --frontend-port 80 \
+    --backend-port 80 \
+    --frontend-ip-name myFrontEnd \
+    --backend-pool-name myBackEndPool \
+    --probe-name myHealthProbe  
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="create-servers-for-the-backend-address-pool"></a>Kiszolgálók létrehozása a háttércímkészlethez
 
-[A terheléselosztó elosztási módjának konfigurálása forrás IP-affinitás használatával](load-balancer-distribution-mode.md)
+Mielőtt üzembe helyezné a virtuális gépeket, és tesztelné a terheléselosztót, hozza létre a támogató virtuális hálózati erőforrásokat.
 
-[A terheléselosztó üresjárati TCP-időtúllépési beállításainak konfigurálása](load-balancer-tcp-idle-timeout.md)
+###  <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
+Hozzon létre hálózati biztonsági csoportot a virtuális hálózat bejövő kapcsolatainak meghatározásához.
 
+```azurecli-interactive
+  az network nsg create \
+    --resource-group myResourceGroupILB \
+    --name myNetworkSecurityGroup
+```
+
+### <a name="create-a-network-security-group-rule"></a>Biztonságicsoport-szabály létrehozása
+
+Hozzon létre biztonságicsoport-szabályt a 80-as porton keresztül érkező bejövő kapcsolatok engedélyezéséhez.
+
+```azurecli-interactive
+  az network nsg rule create \
+    --resource-group myResourceGroupILB \
+    --nsg-name myNetworkSecurityGroup \
+    --name myNetworkSecurityGroupRuleHTTP \
+    --protocol tcp \
+    --direction inbound \
+    --source-address-prefix '*' \
+    --source-port-range '*' \
+    --destination-address-prefix '*' \
+    --destination-port-range 22 \
+    --access allow \
+    --priority 300
+```
+### <a name="create-nics"></a>Hálózati adapterek létrehozása
+
+Hozzon létre két hálózati adaptert az [az network nic create](/cli/azure/network/nic#az_network_nic_create) paranccsal, és rendelje azokat a magánhálózati IP-címhez és a hálózati biztonsági csoporthoz. 
+
+```azurecli-interactive
+for i in `seq 1 2`; do
+  az network nic create \
+    --resource-group myResourceGroupILB \
+    --name myNic$i \
+    --vnet-name myVnet \
+    --subnet mySubnet \
+    --network-security-group myNetworkSecurityGroup \
+    --lb-name myLoadBalancer \
+    --lb-address-pools myBackEndPool
+done
+```
+
+## <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
+
+Ebben a példában két virtuális gépet hoz létre, amelyeket a terheléselosztó háttérkiszolgálóiként fog használni. A terheléselosztó sikeres létrehozásának ellenőrzéséhez az NGINX-et is telepíti a virtuális gépekre.
+
+### <a name="create-an-availability-set"></a>Rendelkezésre állási csoport létrehozása
+
+Hozzon létre egy rendelkezésre állási csoportot az [az vm availabilityset create](/cli/azure/network/nic#az_network_availabilityset_create) paranccsal.
+
+ ```azurecli-interactive
+  az vm availability-set create \
+    --resource-group myResourceGroupILB \
+    --name myAvailabilitySet
+```
+
+### <a name="create-two-virtual-machines"></a>Két virtuális gép létrehozása
+
+Egy cloud-init konfigurációs fájllal telepítheti az NGINX-et, és futtathat egy „Hello World” Node.js-alkalmazást a Linux rendszerű virtuális gépeken. Az aktuális parancshéjban hozzon létre egy cloud-init.txt nevű fájlt, majd másolja és illessze be a következő konfigurációt a parancshéjba. Ügyeljen arra, hogy megfelelően másolja ki a teljes cloud-init-fájlt, különösen az első sort:
+
+```yaml
+#cloud-config
+package_upgrade: true
+packages:
+  - nginx
+  - nodejs
+  - npm
+write_files:
+  - owner: www-data:www-data
+  - path: /etc/nginx/sites-available/default
+    content: |
+      server {
+        listen 80;
+        location / {
+          proxy_pass http://localhost:3000;
+          proxy_http_version 1.1;
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection keep-alive;
+          proxy_set_header Host $host;
+          proxy_cache_bypass $http_upgrade;
+        }
+      }
+  - owner: azureuser:azureuser
+  - path: /home/azureuser/myapp/index.js
+    content: |
+      var express = require('express')
+      var app = express()
+      var os = require('os');
+      app.get('/', function (req, res) {
+        res.send('Hello World from host ' + os.hostname() + '!')
+      })
+      app.listen(3000, function () {
+        console.log('Hello world app listening on port 3000!')
+      })
+runcmd:
+  - service nginx restart
+  - cd "/home/azureuser/myapp"
+  - npm init
+  - npm install express -y
+  - nodejs index.js
+``` 
+ 
+Hozza létre a virtuális gépeket az [az vm create](/cli/azure/vm#az_vm_create) paranccsal.
+
+ ```azurecli-interactive
+for i in `seq 1 2`; do
+  az vm create \
+    --resource-group myResourceGroupILB \
+    --name myVM$i \
+    --availability-set myAvailabilitySet \
+    --nics myNic$i \
+    --image UbuntuLTS \
+    --generate-ssh-keys \
+    --custom-data cloud-init.txt
+    done
+```
+A virtuális gépek üzembe helyezése eltarthat néhány percig.
+
+### <a name="create-a-vm-for-testing-the-load-balancer"></a>Virtuális gép létrehozása a terheléselosztó teszteléséhez
+
+A terheléselosztó teszteléséhez hozzon létre egy *myVMTest* nevű virtuális gépet, és társítsa a *myNic3* nevű hálózati adapterrel.
+
+```azurecli-interactive
+ az vm create \
+    --resource-group myResourceGroupILB \
+    --name myVMTest \
+    --image win2016datacenter \
+    --admin-username azureuser \
+    --admin-password myPassword123456!
+```
+
+## <a name="test-the-internal-load-balancer"></a>A belső terheléselosztó tesztelése
+
+A terheléselosztó teszteléséhez először be kell szereznie a terheléselosztó magánhálózati IP-címét. Ezután jelentkezzen be a myVMTest nevű virtuális gépre, és írja be a magánhálózati IP-címet a webböngésző címsorába.
+
+A terheléselosztó magánhálózati IP-címének lekéréséhez használja az [az network lb show](/cli/azure/network/public-ip##az-network-lb-show) parancsot. Másolja a magánhálózati IP-címet, majd illessze be azt a *myVMTest* nevű virtuális gép egy webböngészőjének címsorába.
+
+```azurecli-interactive
+  az network lb show \
+    --name myLoadBalancer
+    --resource-group myResourceGroupILB
+``` 
+![Terheléselosztó tesztelése](./media/load-balancer-get-started-ilb-arm-cli/load-balancer-test.png)
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha már nincs rá szükség, az [az group delete](/cli/azure/group#az_group_delete) paranccsal eltávolítható az erőforráscsoport, a terheléselosztó és az összes kapcsolódó erőforrás.
+
+```azurecli-interactive 
+  az group delete --name myResourceGroupILB
+```
+
+
+## <a name="next-steps"></a>További lépések
+Ebben a cikkben létrehozott egy belső alapszintű terheléselosztót, virtuális gépeket csatolt hozzá, konfigurálta a terheléselosztó forgalmának szabályát, az állapotmintát, majd tesztelte a terheléselosztót. Ha további információra van szüksége a terheléselosztókkal és a kapcsolódó erőforrásokkal kapcsolatban, lépjen tovább az útmutató cikkekre.

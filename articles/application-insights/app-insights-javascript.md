@@ -1,8 +1,8 @@
 ---
 title: Application Insights JavaScript-webappokhoz | Microsoft Docs
-description: "Lekérheti a lapmegtekintések és a munkamenetek számát, a webes ügyfél adatait, és nyomon követheti a használati mintákat. Kivételeket és teljesítményproblémákat észlelhet a JavaScript weblapokon."
+description: Lekérheti a lapmegtekintések és a munkamenetek számát, a webes ügyfél adatait, és nyomon követheti a használati mintákat. Kivételeket és teljesítményproblémákat észlelhet a JavaScript weblapokon.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 3b710d09-6ab4-4004-b26a-4fa840039500
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 7cc061b921109f173837352199ff64f055ae2483
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 0887c50ea7da00859e370f60626eabb03fcc1f4b
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 Megismerheti a weblap vagy alkalmazás teljesítményét és használatát. Ha a Visual Studio [Application Insightst](app-insights-overview.md) a lap szkriptjeihez adja, megkapja az oldalbetöltések és AJAX-hívások időzítését, a böngészőkivételek és az AJAX-hibák számát és részleteit, valamint a felhasználók és munkamenetek számát. Ezek mindegyike szegmentálható lap, ügyfél operációs rendszere és böngészőverziója, földrajzi hely és más dimenziók alapján. Beállíthat riasztásokat a hibaszámokról és a lassú lapbetöltésekről. Ha nyomkövetési hívásokat szúr be a JavaScript-kódba, nyomon követheti a webalkalmazás különböző szolgáltatásainak használati módját is.
@@ -51,7 +51,29 @@ A Gyors üzembe helyezés területen kérje le a weblapok szkriptjét:
 
 ![Az alkalmazás áttekintési panelén válassza a Gyors üzembe helyezés, Kód letöltése a weblapok figyeléséhez lehetőséget. Másolja a szkriptet.](./media/app-insights-javascript/02-monitor-web-page.png)
 
-Szúrja be a szkriptet minden olyan lap `</head>` címkéje elé, amelyet nyomon szeretne követni. Ha a webhelye mesterlappal rendelkezik, ide helyezheti a szkriptet. Példa:
+> [!NOTE]
+> Az *első lépések* az Application Insights-erőforrás létrehozásakor kiválasztott alkalmazástípustól függően eltérőek lehetnek. Ha az alkalmazás nem tartalmaz szkriptet az előző képernyőképen láthatóhoz hasonló alkalmazásszkriptet, akkor használja a következő szkriptet.
+
+```HTML
+<!-- 
+To collect end-user usage analytics about your application, 
+insert the following script into each page you want to track.
+Place this code immediately before the closing </head> tag,
+and before any other scripts. Your first data will appear 
+automatically in just a few seconds.
+-->
+<script type="text/javascript">
+var appInsights=window.appInsights||function(a){
+  function b(a){c[a]=function(){var b=arguments;c.queue.push(function(){c[a].apply(c,b)})}}var c={config:a},d=document,e=window;setTimeout(function(){var b=d.createElement("script");b.src=a.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js",d.getElementsByTagName("script")[0].parentNode.appendChild(b)});try{c.cookie=d.cookie}catch(a){}c.queue=[];for(var f=["Event","Exception","Metric","PageView","Trace","Dependency"];f.length;)b("track"+f.pop());if(b("setAuthenticatedUserContext"),b("clearAuthenticatedUserContext"),b("startTrackEvent"),b("stopTrackEvent"),b("startTrackPage"),b("stopTrackPage"),b("flush"),!a.disableExceptionTracking){f="onerror",b("_"+f);var g=e[f];e[f]=function(a,b,d,e,h){var i=g&&g(a,b,d,e,h);return!0!==i&&c["_"+f](a,b,d,e,h),i}}return c
+  }({
+      instrumentationKey:"<your instrumentation key>"
+  });
+  
+window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
+</script>
+```
+
+Szúrja be a szkriptet minden olyan lap `</head>` címkéje elé, amelyet nyomon szeretne követni. Ha a webhelye mesterlappal rendelkezik, ide helyezheti a szkriptet. Például:
 
 * Egy ASP.NET MVC-projektben a következő helyre helyezné a szkriptet: `View\Shared\_Layout.cshtml`
 * Egy SharePoint-helyen, a vezérlőpulton nyissa meg a [Hely beállításai / Mesterlap](app-insights-sharepoint.md) elemet.

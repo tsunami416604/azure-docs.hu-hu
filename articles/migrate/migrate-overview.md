@@ -1,21 +1,21 @@
 ---
-title: "Az Azure Migrate bemutatása | Microsoft Docs"
-description: "A cikk áttekintést nyújt az Azure Migrate szolgáltatásról."
+title: Az Azure Migrate bemutatása | Microsoft Docs
+description: A cikk áttekintést nyújt az Azure Migrate szolgáltatásról.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 02/26/2018
+ms.date: 03/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 45eac1d1ecb173ba0a62ab13f47b7ee6e12f7af3
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 857dab5474cba24445daf7d139ae49d923038196
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
-Az Azure Migrate szolgáltatás a helyszíni számítási feladatokat értékeli ki az Azure-ra történő migráláshoz. A szolgáltatás felméri a helyszíni gépek Azure-ra végzett migrálásra való alkalmasságát, lehetővé teszi a teljesítményalapú méretezést, illetve költségbecslést ad a helyi számítógépek Azure-ral történő futtatásával kapcsolatban. Ha átemeléses migráláson gondolkodik, vagy épp a migrálási szakaszok felmérésének elején jár, hasznát veheti ennek a szolgáltatásnak. Az értékelés után olyan szolgáltatásokat használhat a számítógépek Azure-ra történő migrálásához, mint az [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) vagy az [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview).
+Az Azure Migrate szolgáltatás a helyszíni számítási feladatokat értékeli ki az Azure-ra történő migráláshoz. A szolgáltatás felméri a helyszíni gépek migrálásra való alkalmasságát, lehetővé teszi a teljesítményalapú méretezést, illetve költségbecslést ad a helyi számítógépek Azure-ban történő futtatásával kapcsolatban. Ha átemeléses migráláson gondolkodik, vagy épp a migrálási szakaszok felmérésének elején jár, hasznát veheti ennek a szolgáltatásnak. Az értékelés után olyan szolgáltatásokat használhat a számítógépek Azure-ra történő migrálásához, mint az [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) vagy az [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview).
 
 ## <a name="why-use-azure-migrate"></a>Miért javasolt az Azure Migrate használata?
 
@@ -29,13 +29,11 @@ Az Azure Migrate az alábbiakban nyújt segítséget:
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
 - Jelenleg csak a helyszíni VMware virtuális gépek Azure-beli virtuális gépekre való migrálásának lehetőségeit értékelheti ki. A VMware virtuális gépeket egy 5.5-ös, 6.0-s vagy 6.5-ös verziójú vCenter Servernek kell felügyelnie.
-
-> [!NOTE]
-> A Hyper-V támogatása tervbe van véve, és hamarosan megvalósul. Addig is az [Azure Site Recovery Deployment Planner](http://aka.ms/asr-dp-hyperv-doc) használatát javasoljuk a Hyper-V-alapú számítási feladatok migrálásának megtervezéséhez. 
-
+- A Hyper-V támogatása tervbe van véve. Addig is az [Azure Site Recovery Deployment Planner](http://aka.ms/asr-dp-hyperv-doc) használatát javasoljuk a Hyper-V-alapú számítási feladatok migrálásának megtervezéséhez. 
 - Egyetlen felderítéssel akár 1000 virtuális gépet, egyetlen projekt részeként pedig akár 1500 virtuális gépet is felderíthet. Ezenkívül egyetlen értékeléssel akár 400 virtuális gépet is értékelhet. Ha ennél többet kell felderítenie vagy értékelnie, növelheti a felderítések vagy az értékelések számát. [További információk](how-to-scale-assessment.md).
 - Azure Migrate-projektet csak az USA középnyugati régiójában és keleti régiójában lehet létrehozni. Ez azonban nem befolyásolja a migrálás megtervezését egy másik Azure-beli célhelyre. A migrálási projekt helyét a rendszer csak a helyszíni környezetből felderített metaadatok tárolására használja.
 - Az Azure Migrate kizárólag a felügyelt lemezek migrálásfelmérését támogatja.
+
 
 ## <a name="what-do-i-need-to-pay-for"></a>Mi az, amiért fizetnem kell?
 

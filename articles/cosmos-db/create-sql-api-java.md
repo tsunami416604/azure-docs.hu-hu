@@ -1,29 +1,27 @@
 ---
-title: "Azure Cosmos DB dokumentum-adatbázis létrehozása Javával | Microsoft Docs | Microsoft Docs'"
-description: "Egy Java-kódmintát mutat be, amellyel csatlakozni lehet az Azure Cosmos DB SQL API-hoz, és lekérdezést lehet végezni vele"
+title: Azure Cosmos DB dokumentum-adatbázis létrehozása Javával | Microsoft Docs | Microsoft Docs'
+description: Egy Java-kódmintát mutat be, amellyel csatlakozni lehet az Azure Cosmos DB SQL API-hoz, és lekérdezést lehet végezni vele
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: mimig1
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 89ea62bb-c620-46d5-baa0-eefd9888557c
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc, devcenter
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 12/15/2017
+ms.date: 03/26/2018
 ms.author: mimig
-ms.openlocfilehash: 85f8310235e0f5b038f2b55c94fe044d1a9d9719
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 669a11368ed6ccec041701e691323a2bb2cac56a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-create-a-document-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: Dokumentum-adatbázis létrehozása a Java és az Azure Portal használatával
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)] 
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Az Azure Cosmos DB segítségével gyorsan létrehozhat és lekérdezhet felügyelt dokumentum, tábla, kulcs-érték és gráf típusú adatbázisokat.
 
@@ -46,7 +44,7 @@ Továbbá:
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
 
-A dokumentum-adatbázis létrehozásához először létre kell hoznia egy SQL-adatbázisfiókot az Azure Cosmos DB segítségével.
+A dokumentum-adatbázis létrehozásához először létre kell hoznia egy SQL API-fiókot az Azure Cosmos DB segítségével.
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -63,7 +61,7 @@ Az Adatkezelő segítségével adatokat adhat hozzá az új gyűjteményhez.
 
    ![Új dokumentumok létrehozása az Azure Portal Adatkezelőjében](./media/create-sql-api-java/azure-cosmosdb-data-explorer-new-document.png)
   
-2. Adjon hozzá egy dokumentumot a gyűjteményhez az alábbi struktúrával, majd kattintson a **Mentés**lehetőségre.
+2. Adjon hozzá egy dokumentumot a gyűjteményhez az alábbi struktúrával, majd kattintson a **Mentés**lehetőségre. A json másolásához használja a kódmezőben lévő **Másolás** gombot.
 
      ```json
      {
@@ -87,7 +85,7 @@ Az Adatkezelővel így már lekérdezések használatával lekérheti és szűrh
 
     ![Az alapértelmezett lekérdezés az Adatkezelőben a `SELECT * FROM c`](./media/create-sql-api-java/azure-cosmosdb-data-explorer-query.png)
 
-2. Módosítsa a lekérdezést a **Szűrő szerkesztése** gombra kattintva, a lekérdezési predikátumhoz adja hozzá az `ORDER BY c._ts DESC` elemet, végül pedig kattintson a **Szűrő alkalmazása** lehetőségre.
+2. Maradjon a **Dokumentumok** lapon és módosítsa a lekérdezést a **Szűrő szerkesztése** gombra kattintva, a lekérdezési predikátumhoz adja hozzá az `ORDER BY c._ts DESC` elemet, végül pedig kattintson a **Szűrő alkalmazása** elemre.
 
     ![Az alapértelmezett lekérdezés módosítása az ORDER BY c._ts DESC hozzáadásával és a Szűrő alkalmazása lehetőségre való kattintással](./media/create-sql-api-java/azure-cosmosdb-data-explorer-edit-query.png)
 
@@ -119,9 +117,11 @@ Most pedig váltsunk át kódok használatára. Klónozunk egy SQL API-alkalmaz�
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. A kódrészletek mind a `Program.java` fájlból származnak, amely a C:\git-samples\azure-cosmos-db-documentdb-java-getting-started\src\GetStarted mappában található. Egyéb esetben áttérhet [A kapcsolati karakterlánc frissítése](#update-your-connection-string) szakaszra. 
+Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. Egyéb esetben áttérhet [A kapcsolati karakterlánc frissítése](#update-your-connection-string) szakaszra. 
 
-* `DocumentClient` inicializálás. A [DocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client) ügyféloldali logikai leképezést biztosít az Azure Cosmos DB adatbázis-szolgáltatáshoz. Ezzel az ügyféllel a szolgáltatásra irányuló kérések konfigurálhatók és hajthatók végre.
+A következő kódrészletek mind a C:\git-samples\azure-cosmos-db-documentdb-java-getting-started\src\GetStarted\Program.java fájlból származnak.
+
+* `DocumentClient` inicializálás. A [DocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client) ügyféloldali logikai leképezést biztosít az Azure Cosmos DB adatbázis-szolgáltatáshoz. Ezzel az ügyféllel a szolgáltatásra irányuló kérések konfigurálhatók és hajthatók végre. A kód `FILLME` részletei később, a rövid útmutatóban lesznek frissítve.
 
     ```java
     this.client = new DocumentClient("https://FILLME.documents.azure.com",
@@ -231,13 +231,15 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
     A terminálablakban értesítést kap a FamilyDB adatbázis létrejöttéről. 
     
-4. Nyomjon le egy billentyűt a gyűjtemény létrehozásához. 
+4. Nyomjon le egy billentyűt az adatbázis létrehozásához, majd nyomjon le egy másikat a gyűjtemény létrehozásához. 
 
-5. Váltson át az Adatkezelőre, ahol láthatja, hogy az már tartalmazza a FamilyDB adatbázist.
-    
-6. Nyomjon le további billentyűket a konzolablakban, amelynek hatására a kód dokumentumokat hoz létre, valamint végrehajt egy lekérdezést.
-    
-    A program futását követően az alkalmazás minden erőforrása törlődni fog a fiókjából, így nem kell többletköltségre számítania. 
+    A program futását követően minden erőforrás törlődni fog, ezért váltson át az Adatkezelőre, ahol láthatja, hogy az már tartalmazza a FamilyDB adatbázist és a FamilyCollection gyűjteményt.
+
+5. Váltson a konzolablakra, és nyomjon le egy billentyűt az első dokumentum létrehozásához, majd egy másikat a második dokumentum létrehozásához. Ezután váltson vissza az Adatkezelőre, hogy megtekintse őket. 
+
+6. Nyomjon le egy billentyűt a lekérdezés indításához. A kimenetet a konzolablakban láthatja. 
+
+7. A következő billentyű lenyomása törli az erőforrásokat. Ha meg szeretné tartani az erőforrásokat, nyomja le a CTRL+C billentyűkombinációt a konzolablakban a program leállításához. Ellenkező esetben nyomja le bármelyik billentyűt az erőforrások a fiókjából való törléséhez a költségek elkerülése érdekében. 
 
     ![Konzolkimenet](./media/create-sql-api-java/console-output.png)
 

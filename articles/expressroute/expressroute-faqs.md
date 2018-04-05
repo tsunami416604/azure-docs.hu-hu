@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/28/2018
+ms.date: 03/29/2018
 ms.author: cherylmc
-ms.openlocfilehash: 1893601f9fe9018cb51e6e31b6f9c397a0da38da
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 557c6a75140f399f74d77543de834af086871032
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -70,11 +70,12 @@ Támogatja az ExpressRoute [három útválasztási tartományok](expressroute-ci
 
 * Power BI
 * Dynamics 365 pénzügyi és műveletek (korábbi nevén Dynamics AX Online)
-* Az Azure-szolgáltatáshoz, a következő legtöbb néhány kivétel:
-  * CDN
-  * Visual Studio Team Services Load Testing
-  * Multi-Factor Authentication
-  * Traffic Manager
+* Az Azure-szolgáltatások legtöbb támogatottak. Ellenőrizze, közvetlenül a támogatási ellenőrzésére használt kívánt szolgáltatással.<br>
+  A következő szolgáltatások nem támogatottak:
+    * Tartalomkézbesítési hálózat (CDN)
+    * Visual Studio Team Services Load Testing
+    * Multi-Factor Authentication
+    * Traffic Manager
 
 ### <a name="microsoft-peering"></a>Microsoft társviszony-létesítés
 
@@ -87,8 +88,9 @@ Támogatja az ExpressRoute [három útválasztási tartományok](expressroute-ci
 * Használatával [útválasztási szűrők](#route-filters-for-microsoft-peering), a Microsoft társviszony-létesítést az azonos nyilvános-szolgáltatásokhoz való hozzáférés elérhetővé:
   * Power BI
   * Dynamics 365 a pénzügyi és műveletek
-  * Az Azure-szolgáltatáshoz, a következő legtöbb néhány kivétel:
-    * CDN
+  * Az Azure-szolgáltatások legtöbb támogatottak. Ellenőrizze, közvetlenül a támogatási ellenőrzésére használt kívánt szolgáltatással.<br>
+  A következő szolgáltatások nem támogatottak:
+    * Tartalomkézbesítési hálózat (CDN)
     * Visual Studio Team Services Load Testing
     * Multi-Factor Authentication
     * Traffic Manager

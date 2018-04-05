@@ -1,8 +1,8 @@
 ---
-title: "Python: Fiókkezelési műveletek az Azure Data Lake Store-ban | Microsoft Docs"
-description: "Ebből a cikkből megtudhatja, hogyan használhatja a Python SDK-t a Data Lake Store-fiókkezelési műveletekhez."
+title: 'Python: Fiókkezelési műveletek az Azure Data Lake Store-ban | Microsoft Docs'
+description: Ebből a cikkből megtudhatja, hogyan használhatja a Python SDK-t a Data Lake Store-fiókkezelési műveletekhez.
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 834dbc93348e00b0a0821bcbca989b0c2d539056
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 5f060dfd061af07f220576f17110afccd01fdae5
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="account-management-operations-on-azure-data-lake-store-using-python"></a>Fiókkezelési műveletek az Azure Data Lake Store-ban a Python használatával
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ A cikkből megtudhatja, hogyan végezhet el olyan alapszintű fiókkezelési mű
 A Data Lake Store a Pythonnal való használatához három modult kell telepítenie.
 
 * Az `azure-mgmt-resource` modult, amely további Azure-modulokat tartalmaz az Active Directoryhoz és más eszközökhöz.
-* Az `azure-mgmt-datalake-store` modult, amely az Azure Data Lake Store fiókkezelési műveleteit tartalmazza. További információkat erről a modulról [az Azure Data Lake Store kezelési moduljához készült referenciaanyagban](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-store.html) talál.
+* Az `azure-mgmt-datalake-store` modult, amely az Azure Data Lake Store fiókkezelési műveleteit tartalmazza. További információkat erről a modulról [az Azure Data Lake Store kezelési moduljához készült referenciaanyagban](http://azure-sdk-for-python.readthedocs.io/sample_azure-mgmt-datalake-store.html) talál.
 * Az `azure-datalake-store` modult, amely az Azure Data Lake Store fájlrendszerműveleteit tartalmazza. További információkat erről a modulról [az Azure Data Lake Store fájlrendszermoduljához készült referenciaanyagban](http://azure-datalake-store.readthedocs.io/en/latest/) talál.
 
 A modulok telepítéséhez használja a következő parancsokat.

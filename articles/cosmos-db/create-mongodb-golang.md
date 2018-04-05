@@ -1,6 +1,6 @@
 ---
-title: "Azure Cosmos DB: MongoDB API konzolalkalmazás létrehozása a Golang és az Azure Portal használatával | Microsoft Docs"
-description: "Egy Golang-kódmintát mutat be, amellyel Azure Cosmos DB-adatbázishoz csatlakozhat, és lekérdezéseket hajthat végre"
+title: 'Azure Cosmos DB: MongoDB API konzolalkalmazás létrehozása a Golang és az Azure Portal használatával | Microsoft Docs'
+description: Egy Golang-kódmintát mutat be, amellyel Azure Cosmos DB-adatbázishoz csatlakozhat, és lekérdezéseket hajthat végre
 services: cosmos-db
 author: Durgaprasad-Budhwani
 manager: jhubbard
@@ -10,17 +10,17 @@ ms.topic: quickstart
 ms.date: 07/21/2017
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: 29a47646074819492e2c5179276a0c4de7f0d2d9
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 49bf6aed5a8daa482be9d22ecd97b6ab43cae5fe
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB: MongoDB API konzolalkalmazás létrehozása a Golang és az Azure Portal használatával
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum-, kulcs/érték és gráf típusú adatbázisokat, melyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket.
+Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket.
 
-Ez a bevezető ismerteti a [Golang](https://golang.org/) nyelven írt, meglévő [MongoDB](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)-alkalmazások használatát, valamint azok összekapcsolásának menetét a MongoDB-ügyfélkapcsolatokat támogató Azure Cosmos DB-adatbázissal.
+Ez a rövid útmutató ismerteti a [Golang](https://golang.org/) nyelven írt, meglévő MongoDB-alkalmazások használatát, valamint azok [MongoDB API](mongodb-introduction.md)-val való összekapcsolásának menetét a MongoDB-ügyfélkapcsolatokat támogató Azure Cosmos DB-adatbázissal.
 
 Más szóval a Golang-alkalmazás csak azt tudja, hogy a MongoDB API-k használatával csatlakozott egy adatbázishoz. Az alkalmazás nem látja, hogy az adatokat az Azure Cosmos DB tárolja.
 
@@ -229,7 +229,7 @@ Lépjen vissza az Azure portálon, ha az Adatkezelőben szeretné megjeleníteni
     
 2. Ezután dolgozzon a dokumentumban, majd kattintson a **Frissítés** elemre a mentéshez. Törölheti is a dokumentumot, vagy létrehozhat új dokumentumokat és lekérdezéseket is.
 
-## <a name="review-slas-in-the-azure-portal"></a>Tekintse át az SLA-kat az Azure Portalon
+## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
@@ -240,9 +240,9 @@ Ha az alkalmazást már nem használja, akkor a következő lépésekkel a minta
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a létrehozott erőforrás nevére. 
 2. Az erőforráscsoport lapján kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, és a MongoDB-hez tartozó API használatával Golang-alkalmazást futtatni. Most további adatokat importálhat a Cosmos DB-fiókba. 
+Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, és a MongoDB-hez tartozó API használatával Golang-alkalmazást futtatni. Így már további adatokat importálhat a Cosmos DB-fiókba. 
 
 > [!div class="nextstepaction"]
 > [Adatok importálása az Azure Cosmos DB-be a MongoDB API-hoz](mongodb-migrate.md)

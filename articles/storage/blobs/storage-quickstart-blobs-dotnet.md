@@ -9,11 +9,11 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 03/15/2018
 ms.author: tamram
-ms.openlocfilehash: 716e61840f4bfb5a68a995683e67dae0b43d3854
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: b84a56996a335f8a137c4219c55b9878e39b5a3b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-net"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása a .NET használatával
 
@@ -25,21 +25,23 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A rövid útmutató elvégzéséhez előbb hozzon létre egy Azure-tárfiókot az [Azure Portalon](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM). A fiók létrehozásával kapcsolatos útmutatóért lásd a [tárfiók létrehozását](../common/storage-quickstart-create-account.md) ismertető szakaszt.
 
-Ezután töltse le és telepítse a .NET Core 2.0 az operációs rendszernek megfelelő verzióját. Emellett telepíthet egy, az operációs rendszerrel használható szerkesztőprogramot is.
+Ezután töltse le és telepítse a .NET Core 2.0 az operációs rendszernek megfelelő verzióját. Ha Windows rendszert használ, igény szerint telepítheti a Visual Studiót és használhatja a .NET-keretrendszert is. Emellett telepíthet egy, az operációs rendszerrel használható szerkesztőprogramot is.
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
-- Telepítse a [.NET Core for Windows keretrendszert](https://www.microsoft.com/net/download/windows/build). 
-- Emellett telepítheti [a Visual Studio for Windows programot](https://www.visualstudio.com/) is. 
+- A [.NET Core for Windows](https://www.microsoft.com/net/download/windows) vagy a [.NET-keretrendszer](https://www.microsoft.com/net/download/windows) telepítése (a Windows rendszerhez készült Visual Studio része)
+- Telepítse [a Windowshoz készült Visual Studio programot](https://www.visualstudio.com/). Ha .NET Core keretrendszert használ, a Visual Studio telepítése nem kötelező.  
+
+A .NET Core és a .NET-keretrendszer közötti választással kapcsolatos további információért lásd a [.NET Core és a .NET-keretrendszer közötti, kiszolgálóalkalmazások esetén való választásról](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server) szóló részt.
 
 # <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
-- Telepítse a [.NET Core for Linux keretrendszert](https://www.microsoft.com/net/download/linux/build).
+- Telepítse a [.NET Core for Linux keretrendszert](https://www.microsoft.com/net/download/linux).
 - Emellett telepítheti [a Visual Studio Code programot](https://www.visualstudio.com/) és a [C#-bővítményt](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp&dotnetid=963890049.1518206068) is.
 
 # <a name="macostabmacos"></a>[macOS](#tab/macos)
 
-- Telepítse a [.NET Core for macOS keretrendszert](https://www.microsoft.com/net/download/macos/build).
+- Telepítse a [.NET Core for macOS keretrendszert](https://www.microsoft.com/net/download/macos).
 - Emellett telepítheti [a Visual Studio for Mac programot](https://www.visualstudio.com/vs/visual-studio-mac/) is.
 
 ---
@@ -58,7 +60,22 @@ Ez a parancs a helyi git mappába klónozza az adattárat. A Visual Studio-megol
 
 ## <a name="configure-your-storage-connection-string"></a>A tárolási kapcsolati karakterlánc konfigurálása
 
-Az alkalmazás futtatásához meg kell adnia a tárfiókjához tartozó kapcsolati karakterláncot. Ezt a kapcsolati karakterláncot tárolhatja egy környezeti változóban az alkalmazást futtató helyi gépen. A környezeti változót a következő parancsok közül az operációs rendszerének megfelelővel hozhatja létre. A `<yourconnectionstring>` helyére illessze be a tényleges kapcsolati karakterláncot.
+Az alkalmazás futtatásához meg kell adnia a tárfiókjához tartozó kapcsolati karakterláncot. Másolja a kapcsolati karakterláncát az Azure Portalról, és írja be egy új környezeti változóba. A minta beolvassa a kapcsolati karakterláncot a környezeti változóból, és annak használatával hitelesíti az Azure Storage felé intézett kéréseit.
+
+### <a name="copy-your-connection-string-from-the-azure-portal"></a>A kapcsolati karakterlánc másolása az Azure Portalról
+
+A kapcsolati karakterlánc másolása:
+
+1. Lépjen az [Azure Portalra](https://portal.azure.com).
+2. Keresse meg a Storage-fiókját.
+3. A tárfiók áttekintésének **Beállítások** szakaszában válassza a **Hozzáférési kulcsok** elemet.
+4. Keresse meg a **Kapcsolati karakterlánc** értéket a **key1** területen, és kattintson a **Másolás** gombra a kapcsolati karakterlánc másolásához.  
+
+    ![A kapcsolati karakterlánc az Azure Portalról történő másolását bemutató képernyőkép](media/storage-quickstart-blobs-dotnet/portal-connection-string.png)
+
+## <a name="write-your-connection-string-to-an-environment-variable"></a>A kapcsolati karakterlánc írása egy környezeti változóba
+
+Ezt követően írja az új környezeti változót az alkalmazást futtató helyi gépre. A környezeti változó megadásához nyisson meg egy konzolablakot, és kövesse az operációs rendszerének megfelelő utasításokat. Cserélje le a `<yourconnectionstring>` kifejezést a tényleges kapcsolati karakterláncra:
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
@@ -66,21 +83,25 @@ Az alkalmazás futtatásához meg kell adnia a tárfiókjához tartozó kapcsola
 setx storageconnectionstring "<yourconnectionstring>"
 ```
 
+Miután hozzáadta a környezeti változót, előfordulhat, hogy újra kell indítania minden futó programot, amelynek szüksége lehet a környezeti változó beolvasására, beleértve a konzolablakot is. Ha például Visual Studiót használt szerkesztőként, indítsa újra a minta futtatása előtt. 
+
 # <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
 ```bash
 export storageconnectionstring=<yourconnectionstring>
 ```
 
+A környezeti változó hozzáadását követően futtassa a `source ~/.bashrc` parancsot a konzolablakban a módosítások érvénybe léptetéséhez.
+
 # <a name="macostabmacos"></a>[macOS](#tab/macos)
 
 Módosítsa a .bash_profile fájlt, és adja hozzá a környezeti változót:
 
-```
-export STORAGE_CONNECTION_STRING=
+```bash
+export STORAGE_CONNECTION_STRING=<yourconnectionstring>
 ```
 
-A környezeti változó hozzáadását követően jelentkezzen ki, majd vissza módosítások érvénybe léptetéséhez. Másik lehetőségként beírhatja a „source .bash_profile” parancsot a terminálba.
+A környezeti változó hozzáadását követően futtassa a `source .bash_profile` parancsot a konzolablakban a módosítások érvénybe léptetéséhez.
 
 ---
 
@@ -88,23 +109,50 @@ A környezeti változó hozzáadását követően jelentkezzen ki, majd vissza m
 
 Ez a minta egy tesztfájlt hoz létre a helyi **MyDocuments** mappában, és feltölti a Blob Storage-ba. A minta ezután kilistázza a tárolóban található blobokat, majd letölti a fájlt egy új néven, hogy össze lehessen hasonlítani a régi és az új fájlt. 
 
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+
+Ha Visual Studiót használt szerkesztőként, a futtatáshoz nyomja le az **F5** billentyűt. 
+
+Máskülönben lépjen az alkalmazás könyvtárába, majd futtassa az alkalmazást a `dotnet run` paranccsal.
+
+```
+dotnet run
+```
+
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+
 Lépjen az alkalmazás könyvtárába, majd futtassa az alkalmazást a `dotnet run` paranccsal.
 
 ```
 dotnet run
 ```
 
-A megjelenő kimenet a következő példához hasonló:
+# <a name="macostabmacos"></a>[macOS](#tab/macos)
+
+Lépjen az alkalmazás könyvtárába, majd futtassa az alkalmazást a `dotnet run` paranccsal.
 
 ```
-Azure Blob storage quick start sample
-Temp file = /home/admin/QuickStart_b73f2550-bf20-4b3b-92ec-b9b31c56b374.txt
-Uploading to Blob storage as blob 'QuickStart_b73f2550-bf20-4b3b-92ec-b9b31c56b374.txt'
-List blobs in container.
-https://mystorageaccount.blob.core.windows.net/quickstartblobs/QuickStart_b73f2550-bf20-4b3b-92ec-b9b31c56b374.txt
-Downloading blob to /home/admin/QuickStart_b73f2550-bf20-4b3b-92ec-b9b31c56b374_DOWNLOADED.txt
-The program has completed successfully.
-Press the 'Enter' key while in the console to delete the sample files, example container, and exit the application.
+dotnet run
+```
+
+---
+
+A mintaalkalmazás kimenete az alábbihoz hasonló lesz:
+
+```
+Azure Blob storage - .NET Quickstart sample
+
+Created container 'quickstartblobs33c90d2a-eabd-4236-958b-5cc5949e731f'
+
+Temp file = C:\Users\myusername\Documents\QuickStart_c5e7f24f-a7f8-4926-a9da-9697c748f4db.txt
+Uploading to Blob storage as blob 'QuickStart_c5e7f24f-a7f8-4926-a9da-9697c748f4db.txt'
+
+Listing blobs in container.
+https://storagesamples.blob.core.windows.net/quickstartblobs33c90d2a-eabd-4236-958b-5cc5949e731f/QuickStart_c5e7f24f-a7f8-4926-a9da-9697c748f4db.txt
+
+Downloading blob to C:\Users\myusername\Documents\QuickStart_c5e7f24f-a7f8-4926-a9da-9697c748f4db_DOWNLOADED.txt
+
+Press any key to delete the sample files and example container.
 ```
 
 Az **Enter** billentyű lenyomása után az alkalmazás törli a Storage-tárolót és a fájlokat. Mielőtt törölné ezeket, ellenőrizze a két fájlt a **MyDocuments** mappában. Ha megnyitja őket, láthatja, hogy megegyeznek. Másolja ki a blob URL-címét a konzolablakból, és másolja be egy böngészőbe a blob tartalmának a megtekintéséhez.
@@ -123,8 +171,8 @@ A minta az első lépésben ellenőrzi, hogy a környezeti változó tartalmaz-e
 // Retrieve the connection string for use with the application. The storage connection string is stored
 // in an environment variable on the machine running the application called storageconnectionstring.
 // If the environment variable is created after the application is launched in a console or with Visual
-// Studio, the shell needs to be closed and reloaded to take the environment variable into account.
-string storageConnectionString = Environment.GetEnvironmentVariable("storageconnectionstring", EnvironmentVariableTarget.User);
+// Studio, the shell or application needs to be closed and reloaded to take the environment variable into account.
+string storageConnectionString = Environment.GetEnvironmentVariable("storageconnectionstring");
 
 // Check whether the connection string can be parsed.
 if (CloudStorageAccount.TryParse(storageConnectionString, out storageAccount))

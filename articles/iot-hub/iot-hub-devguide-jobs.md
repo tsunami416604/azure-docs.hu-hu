@@ -1,11 +1,11 @@
 ---
-title: "Azure IoT Hub feladatok ismertetése |} Microsoft Docs"
-description: "Az IoT hub fejlesztői útmutató - feladatütemezés több eszközökön való futtatására csatlakoztatva. Feladatok címkék és a kívánt tulajdonságok frissítése, és több eszközön közvetlen metódusok."
+title: Azure IoT Hub feladatok ismertetése |} Microsoft Docs
+description: Az IoT hub fejlesztői útmutató - feladatütemezés több eszközökön való futtatására csatlakoztatva. Feladatok címkék és a kívánt tulajdonságok frissítése, és több eszközön közvetlen metódusok.
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: fe78458f-4f14-4358-ac83-4f7bd14ee8da
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,15 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 7e0af40b2fd5bbb12d5565765aae4026922aec5c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 367eb703465b2fbc6f1e06a383bc9df709cabe78
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Feladatok ütemezése több eszközön
 
 Az Azure IoT-központ lehetővé teszi, hogy a építőelemek, például számos [iker eszköztulajdonságok és címkék] [ lnk-twin-devguide] és [módszerek közvetlen][lnk-dev-methods].  Háttér-alkalmazások általában eszközadminisztrátorok és operátorok frissítése, és az IoT-eszközök tömeges és ütemezett időpontban interaktívan tesznek lehetővé.  Feladatok végrehajtási iker eszközfrissítésekhez és a közvetlen módszer alapján az eszközök egy megadott időpontban.  Például egy olyan operátort használja egy háttér-alkalmazást, amely kezdeményezi és követi nyomon a feladat újraindítja az eszközök nem lenne az épület műveletekre zavaró egyszerre 43 és emelet 3 fejlesztése során.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Feladatok esetekben érdemes kell ütemezni, és nyomon követni a következő tevékenységek bármelyike meg az eszközök:
 
@@ -106,7 +108,7 @@ Az alábbi lista a tulajdonságait és a használható lekérdezésekor feladat 
 | **jobId** |Alkalmazás azonosítója megadva a feladathoz. |
 | **startTime** |Alkalmazás által biztosított a feladat kezdési időpontja (ISO 8601). |
 | **endTime** |Az IoT-központ dátuma (ISO 8601) Ha a feladat befejeződött-e megadva. Csak azt követően a feladat eléri a "kész" állapot érvényes. |
-| **típusa** |Feladatok típusai: |
+| **Típusa** |Feladatok típusai: |
 | | **scheduledUpdateTwin**: egy kívánt tulajdonságokkal vagy címkék frissítésére szolgáló feladatot. |
 | | **scheduledDeviceMethod**: egy eszköz twins a megfelelő eszköz metódus hívásához használt feladat. |
 | **status** |A feladat jelenlegi állapota. Az állapotot a lehetséges értékek: |

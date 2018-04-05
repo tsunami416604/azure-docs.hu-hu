@@ -1,11 +1,11 @@
 ---
-title: "Útválasztási (társviszony-létesítés) a egy ExpressRoute-áramkör konfigurálása: erőforrás-kezelő: PowerShell: Azure |} Microsoft Docs"
-description: "A cikk az ExpressRoute-kapcsolatcsoportok privát, nyilvános és Microsoft társviszony-létesítéses létrehozásának és kiépítésének lépéseit ismerteti. A cikk azt is bemutatja, hogyan ellenőrizheti a kapcsolatcsoport társviszonyainak állapotát, illetve hogyan frissítheti vagy törölheti őket."
+title: 'Útválasztási (társviszony-létesítés) a egy ExpressRoute-áramkör konfigurálása: erőforrás-kezelő: PowerShell: Azure |} Microsoft Docs'
+description: A cikk az ExpressRoute-kapcsolatcsoportok privát, nyilvános és Microsoft társviszony-létesítéses létrehozásának és kiépítésének lépéseit ismerteti. A cikk azt is bemutatja, hogyan ellenőrizheti a kapcsolatcsoport társviszonyainak állapotát, illetve hogyan frissítheti vagy törölheti őket.
 documentationcenter: na
 services: expressroute
 author: osamazia
 manager: jonor
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 0a036d51-77ae-4fee-9ddb-35f040fbdcdf
 ms.service: expressroute
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/3/2018
 ms.author: osamaz, jaredr80
-ms.openlocfilehash: 26165748c88629bacdaed6f12a540302ea12513b
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 8b16bb057da5aed6229d4228c87e7746ac029333
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>Létrehozása és módosítása a powershellel ExpressRoute-kör társviszony
 
@@ -60,8 +60,6 @@ Ez a szakasz segítséget nyújt a létrehozása, beolvasása, frissítése és 
 > 
 
 ### <a name="to-create-microsoft-peering"></a>Microsoft társviszony-létesítés létrehozása
-
-[!INCLUDE [Premium](../../includes/expressroute-mspeering-premium-include.md)]
 
 1. Importálja az ExpressRoute PowerShell-modulját.
 

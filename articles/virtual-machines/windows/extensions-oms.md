@@ -1,11 +1,11 @@
 ---
-title: "A Windows MOBILE Azure virtuálisgép-bővítmény |} Microsoft Docs"
-description: "Az OMS-ügynököt a Windows virtuális gépet egy virtuálisgép-bővítmény telepítése."
+title: A Windows MOBILE Azure virtuálisgép-bővítmény |} Microsoft Docs
+description: Az OMS-ügynököt a Windows virtuális gépet egy virtuálisgép-bővítmény telepítése.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: danielsollondon
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: feae6176-2373-4034-b5d9-a32c6b4e1f10
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: danis
-ms.openlocfilehash: 19f116470ac7a73daea6ad03699ef53d86cfb321
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 9b090029ade1cab1d0be17f7622ecf622521fc14
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="oms-virtual-machine-extension-for-windows"></a>A Windows MOBILE virtuálisgép-bővítmény
 
@@ -67,14 +67,14 @@ A következő JSON jeleníti meg az OMS-ügynököt bővítmény sémáját. A b
 ```
 ### <a name="property-values"></a>A tulajdonság értékek
 
-| Név | Érték / – példa |
+| Name (Név) | Érték / – példa |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
-| Közzétevő | Microsoft.EnterpriseCloud.Monitoring |
+| publisher | Microsoft.EnterpriseCloud.Monitoring |
 | type | MicrosoftMonitoringAgent |
 | typeHandlerVersion | 1.0 |
-| workspaceId (például) | 6f680a37-00c6-41C7-a93f-1437e3462574 |
-| workspaceKey (például) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI + rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ == |
+| workspaceId (e.g) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
+| workspaceKey (például) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
@@ -151,7 +151,7 @@ Set-AzureRmVMExtension -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
     -TypeHandlerVersion 1.0 `
     -Settings $PublicSettings `
     -ProtectedSettings $ProtectedSettings `
-    -Location WestUS ` 
+    -Location WestUS 
 ```
 
 ## <a name="troubleshoot-and-support"></a>Hibaelhárítás és támogatás

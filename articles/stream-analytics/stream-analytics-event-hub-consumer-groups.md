@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: ba54e4c0146e797e300579415db170fd6d290034
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
-ms.translationtype: MT
+ms.openlocfilehash: 48fa5d0274549aa35e67526a758eef1f34198a6a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="debug-azure-stream-analytics-with-event-hub-receivers"></a>Azure Stream Analytics a hibakereséshez event hubs érzékelőinek száma
 
@@ -59,9 +59,9 @@ FROM inputEventHub
 Használja ezt a lekérdezést:
 
 ```
-WITH input (
+WITH data AS (
    SELECT * FROM inputEventHub
-) as data
+)
 
 SELECT foo
 INTO output1
@@ -78,7 +78,7 @@ FROM data
 A lekérdezések, amelyben legalább három bemeneti adatokat a ugyanazt az Event Hubs fogyasztói csoportot csatlakozik külön felhasználói csoportok létrehozása. Ehhez szükséges további Stream Analytics bemenetek létrehozását.
 
 
-## <a name="get-help"></a>Segítség kérése
+## <a name="get-help"></a>Segítségkérés
 Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>További lépések

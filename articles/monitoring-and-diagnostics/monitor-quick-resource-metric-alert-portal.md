@@ -1,6 +1,6 @@
 ---
-title: "Értesítés kérése, ha egy metrikaérték megfelel egy feltételnek | Microsoft Docs"
-description: "Rövid útmutató, amely segítségével a felhasználók metrikát hozhatnak létre egy logikai alkalmazáshoz"
+title: Értesítés kérése, ha egy metrikaérték megfelel egy feltételnek | Microsoft Docs
+description: Rövid útmutató, amely segítségével a felhasználók metrikát hozhatnak létre egy logikai alkalmazáshoz
 author: anirudhcavale
 manager: orenr
 services: monitoring-and-diagnostics
@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 02/08/2018
 ms.author: ancav
 ms.custom: mvc
-ms.openlocfilehash: 3c1a6271d0cb2157cb23f1dd4193eadba2c1679b
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 0bbb7d7036c18675a64171a8bbf5c7fa46d53336
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="receive-a-notification-when-a-metric-value-meets-a-condition"></a>Értesítés kérése, ha egy metrikaérték megfelel egy feltételnek
 
@@ -34,20 +34,20 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 2. Keressen a „logikai alkalmazás” kifejezésre, majd válassza a **Logikai alkalmazás** lehetőséget. Kattintson a **Létrehozás** gombra.
 
-3. Adja meg a logikai alkalmazás adatait az alábbi ábrán látható módon.  Használja az alapértelmezett helyet. Jelölje be a **Rögzítés az irányítópulton** lehetőséget.  Amikor végzett, kattintson a **Létrehozás** gombra. 
+3. Adja meg a myLogicApp nevet és a myResourceGroup erőforráscsoportot. Használja az előfizetését.  Használja az alapértelmezett helyet. Jelölje be a **Rögzítés az irányítópulton** lehetőséget.  Amikor végzett, kattintson a **Létrehozás** gombra. 
 
-    ![Írja be a logikai alkalmazás alapvető adatait a portálon.](./media/monitoring-quick-resource-metric-alert-portal/create-logic-app-portal.png)  
+    ![Írja be a logikai alkalmazás alapvető adatait a portálon.](./media/monitor-quick-resource-metric-alert-portal/create-logic-app-portal.png)  
 
 
 4. A logikai alkalmazásnak az irányítópulton rögzítve kell megjelennie. Kattintson a logikai alkalmazásra a megnyitásához.
 
 5. A Logikai alkalmazás panelen válassza ki a **Logikaialkalmazás-tervező** elemet.
 
-     ![Hozzon létre egy ismétlődési eseményindítót a portálpanel Logikaialkalmazás-tervezőjében.](./media/monitoring-quick-resource-metric-alert-portal/logic-app-designer.png)  
+     ![Hozzon létre egy ismétlődési eseményindítót a portálpanel Logikaialkalmazás-tervezőjében.](./media/monitor-quick-resource-metric-alert-portal/logic-app-designer.png)  
 
 6. Állítsa be az értékeket az alábbi ábrán látható módon.
 
-    ![Állítsa be a logikai alkalmazás eseményindítóját a portálpanelen.](./media/monitoring-quick-resource-metric-alert-portal/create-logic-app-triggers.png). 
+    ![Állítsa be a logikai alkalmazás eseményindítóját a portálpanelen.](./media/monitor-quick-resource-metric-alert-portal/create-logic-app-triggers.png). 
 
 7. A tervezőben válassza ki az **Ismétlődés** eseményindítót.
 
@@ -75,7 +75,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 5. Ekkor egy diagramnak kell megjelennie, amely a logikai alkalmazás által az elmúlt órában elindított futtatásokat ábrázolja. Ha nem látja, akkor várjon legalább 5 percet az előző lépés után. Ezt követően frissítse a böngészőt. 
 
-    ![Metrikadiagram rajzolása a logikai alkalmazás erőforrásához](./media/monitoring-quick-resource-metric-alert-portal/logic-app-metric-chart.png)
+    ![Metrikadiagram rajzolása a logikai alkalmazás erőforrásához](./media/monitor-quick-resource-metric-alert-portal/logic-app-metric-chart.png)
 
 ## <a name="create-a-metric-alert-for-your-logic-app"></a>Metrikariasztás létrehozása a logikai alkalmazáshoz
 
@@ -87,7 +87,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 4. Végül a **További adminisztrátori e-mail-cím(ek)** mezőben adja meg az e-mail-címét. Ezzel a riasztással biztosíthatja, hogy minden alkalommal kapjon egy e-mailt, ha a rendszer a logikai alkalmazás több mint 10 sikertelen futtatását észleli 5 perces időtartamon belül.
 
-    ![Állítson be egy riasztást a logikai alkalmazáshoz a portálpanelen](./media/monitoring-quick-resource-metric-alert-portal/logic-app-metrics-alert-portal.png)
+    ![Állítson be egy riasztást a logikai alkalmazáshoz a portálpanelen](./media/monitor-quick-resource-metric-alert-portal/logic-app-metrics-alert-portal.png)
 
 ## <a name="receive-metric-alert-notifications-for-your-logic-app"></a>Fogadjon a logikai alkalmazással kapcsolatos metrikariasztási értesítéseket
 1. Kis idő elteltével egy e-mailt kell kapnia a „Microsoft Azure Alerts” szolgáltatástól, amely értesíti a riasztás „aktiválásáról”.

@@ -1,11 +1,11 @@
 ---
-title: "Eszköz belső vezérlőprogram frissítése az Azure IoT Hub (.NET/csomópont) |} Microsoft Docs"
-description: "Hogyan használható az eszközkezelés Azure IoT hub eszköz vezérlőprogram-frissítés kezdeményezése. Az Azure IoT-eszközök SDK for Node.js használatával valósítja meg a szimulált eszköz alkalmazások és az Azure IoT szolgáltatás SDK for .NET egy service-alkalmazást, amely elindítja a belső vezérlőprogram-frissítés végrehajtásához."
+title: Eszköz belső vezérlőprogram frissítése az Azure IoT Hub (.NET/csomópont) |} Microsoft Docs
+description: Hogyan használható az eszközkezelés Azure IoT hub eszköz vezérlőprogram-frissítés kezdeményezése. Az Azure IoT-eszközök SDK for Node.js használatával valósítja meg a szimulált eszköz alkalmazások és az Azure IoT szolgáltatás SDK for .NET egy service-alkalmazást, amely elindítja a belső vezérlőprogram-frissítés végrehajtásához.
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 70b84258-bc9f-43b1-b7cf-de1bb715f2cf
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,16 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2017
 ms.author: juanpere
-ms.openlocfilehash: 157f112869f0042e330e6b281367632ca015e890
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e54ba3e3015c7175814c7f4e3330ad2de3819136
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-device-management-to-initiate-a-device-firmware-update-netnode"></a>Eszközkezelés használja indításához eszköz vezérlőprogram-frissítés (.NET/csomópont)
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
 
 Az a [Ismerkedés az eszközkezelés] [ lnk-dm-getstarted] oktatóanyag, megtudhatta, hogyan használható a [eszköz iker] [ lnk-devtwin] és [közvetlen módszerek ] [ lnk-c2dmethod] primitívek távolról az eszköz újraindítását. Ez az oktatóanyag az ugyanazon az IoT-központ primitívek használ, és bemutatja, hogyan hajtsa végre egy végpontok közötti szimulált belső vezérlőprogram-frissítés.  A belső vezérlőprogram frissítési implementációja szerepel ebben a mintában a [málna Pi eszköz megvalósítási minta][lnk-rpi-implementation].
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Ez az oktatóanyag a következőket mutatja be:
 
@@ -107,7 +109,7 @@ Ebben a szakaszban egy .NET-Konzolalkalmazás (használatával C#), amely indít
         
 1. A Solution Explorerben nyissa meg a **állítsa be indítási projektek...**  , és győződjön meg arról, hogy a **művelet** a **TriggerFWUpdate** projekt **Start**.
 
-1. A megoldás felépítéséhez.
+1. Hozza létre a megoldást.
 
 [!INCLUDE [iot-hub-device-firmware-update](../../includes/iot-hub-device-firmware-update.md)]
 
@@ -125,7 +127,7 @@ Most már készen áll az alkalmazások futtatására.
 
     ![Belső vezérlőprogram frissítése sikeres volt][img-fwupdate]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag elindítása egy távoli belső vezérlőprogram frissítése egy eszközön a közvetlen módszer használatával, és a jelentésben szereplő tulajdonságok segítségével nyomon követheti a belső vezérlőprogram frissítése.
 
 Megtudhatja, hogyan terjeszthető ki az IoT-megoldás és az ütemezések metódushívások több eszközön, tekintse meg a [ütemezés és a szórásos feladatok] [ lnk-tutorial-jobs] oktatóanyag.

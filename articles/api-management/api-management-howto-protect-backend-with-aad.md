@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 3caa3d2b8640c83f1001aeac3b0a5e9ada143183
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2c05407d761a8848f9e032aa219960cd7ea6fa93
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="how-to-protect-an-api-using-oauth-20-with-azure-active-directory-and-api-management"></a>Hogyan védi meg az API-k és Azure Active Directory és az API Management OAuth 2.0 használatával
 
@@ -181,9 +181,9 @@ Kattintson a **küldése** és meg kell sikeresen hívja az API-t.
 
 ## <a name="configure-a-jwt-validation-policy-to-pre-authorize-requests"></a>Előre a kérések hitelesítése JWT érvényesítési házirend konfigurálása
 
-Ezen a ponton amikor egy felhasználó megpróbál egy hívás a fejlesztői konzolról, a felhasználót a rendszer kéri a bejelentkezéshez és a fejlesztői konzolján fog szerezzen be egy hozzáférési jogkivonat a felhasználó nevében. Minden az elvárások szerint működik. Azonban mi történik, ha valaki hívja az API-t a token nélküli vagy lexikális eleme érvénytelen? Például megpróbálhatja a `Authorization` fejlécet, és megkeresi az API továbbra is képes. A az oka, mert APIM nem ellenőrzi a hozzáférési jogkivonat ezen a ponton. Adja át a `Auhtorization` a háttér-API fejlécben.
+Ezen a ponton amikor egy felhasználó megpróbál egy hívás a fejlesztői konzolról, a felhasználót a rendszer kéri a bejelentkezéshez és a fejlesztői konzolján fog szerezzen be egy hozzáférési jogkivonat a felhasználó nevében. Minden az elvárások szerint működik. Azonban mi történik, ha valaki hívja az API-t a token nélküli vagy lexikális eleme érvénytelen? Például megpróbálhatja a `Authorization` fejlécet, és megkeresi az API továbbra is képes. A az oka, mert APIM nem ellenőrzi a hozzáférési jogkivonat ezen a ponton. Egyszerűen adja át a `Auhtorization` a háttér-API fejlécben.
 
-Használhatjuk a [érvényesítése JWT](api-management-access-restriction-policies.md#ValidateJWT) előre engedélyezésére APIM kérelmek érvényesítésével megjeleníthető az egyes bejövő kérelmek a hozzáférési jogkivonatok házirend. A kérelem nem rendelkezik érvényes tokent, ha API Management le van tiltva, és nem kerül át, mentén háttérkiszolgálóra. Azt is hozzáadhat a házirend számára, alá `Echo API`. 
+Használhatjuk a [érvényesítése JWT](api-management-access-restriction-policies.md#ValidateJWT) előre engedélyezésére APIM kérelmek érvényesítésével megjeleníthető az egyes bejövő kérelmek a hozzáférési jogkivonatok házirend. A kérelem nem rendelkezik érvényes tokent, ha API Management le van tiltva, és nem kerül át, mentén háttérkiszolgálóra. Például hozzá lehessen adni a házirendet alatt a `<inbound>` házirend szakasza a `Echo API`. Ellenőrzi a célközönség jogcím egy hozzáférési jogkivonatot, és hibaüzenetet ad vissza, ha a jogkivonat nem érvényes. Házirendek konfigurálásával kapcsolatos további információkért lásd: [beállítása vagy szerkesztheti a szabályzatokat](set-edit-policies.md).
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
@@ -196,7 +196,12 @@ Használhatjuk a [érvényesítése JWT](api-management-access-restriction-polic
 </validate-jwt>
 ```
 
+## <a name="build-an-application-to-call-the-api"></a>Az API hívása alkalmazás létrehozásához
+
+Ebben az útmutatóban azt szolgál a fejlesztői konzolján, a APIM, a mintaalkalmazást ügyfél hívja a `Echo API` OAuth 2.0 védi. Alkalmazás létrehozásához, és az OAuth 2.0 folyamat megvalósításával kapcsolatos további információkért lásd: [Azure Active Directory-Kódminták](../active-directory/develop/active-directory-code-samples.md).
+
 ## <a name="next-steps"></a>További lépések
+* További információ [Azure Active Directory és OAuth2.0](../active-directory/develop/active-directory-authentication-scenarios.md)
 * Tekintse meg több [videók](https://azure.microsoft.com/documentation/videos/index/?services=api-management) API-kezeléssel kapcsolatos.
 * Egyéb módjai a háttérszolgáltatás biztonságos, lásd: [kölcsönös tanúsítványhitelesítés](api-management-howto-mutual-certificates.md).
 

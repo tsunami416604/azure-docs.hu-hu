@@ -1,12 +1,11 @@
 ---
-title: "Nagy gyakoriságú kereskedelmi szimuláció a Stream Analyticsszel | Microsoft Docs"
-description: "Lineáris regressziós modellek tanítása és pontozása azonos Stream Analytics-feladatban"
-keywords: "gépi tanulás, továbbfejlesztett elemzések, lineáris regresszió, szimuláció, UDA, felhasználó által megadott függvények"
-documentationcenter: 
+title: Nagy gyakoriságú kereskedelmi szimuláció a Stream Analyticsszel | Microsoft Docs
+description: Lineáris regressziós modellek tanítása és pontozása azonos Stream Analytics-feladatban
+keywords: gépi tanulás, továbbfejlesztett elemzések, lineáris regresszió, szimuláció, UDA, felhasználó által megadott függvények
+documentationcenter: ''
 services: stream-analytics
 author: zhongc
-manager: jhubbard
-editor: cgronlun
+manager: ryanw
 ms.assetid: 997ccfc1-abaf-4c12-bef2-632481140f05
 ms.service: stream-analytics
 ms.devlang: na
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 11/05/2017
 ms.author: zhongc
-ms.openlocfilehash: f25a27a86b366b2302657c44108cd823b0384831
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 349dc5c5277260b664d7214979ef15d1689b2716
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Nagy gyakoriságú kereskedelmi szimuláció a Stream Analyticsszel
 Az Azure Stream Analyticsben az SQL-nyelv, illetve a felhasználó által definiált JavaScript-függvények (UDF-ek) és felhasználó által definiált összesítések (UDA-k) kombinációja lehetővé teszi, hogy a felhasználók fejlett elemzéseket végezzenek. A fejlett elemzések magukban foglalhatnak például online gépi tanulásra vonatkozó tanítási és pontozási, valamint állapotalapú folyamat-szimulációkat. Ez a cikk bemutatja, hogyan történik egy nagy gyakoriságú kereskedelmi forgatókönyvben a folyamatos tanítási és pontozási folyamatokat végrehajtó lineáris regressziós modell futtatása egy Azure Stream Analytics-feladatban.
@@ -446,7 +445,7 @@ Végül a képi megjelenítés a Power BI-irányítópulton történik.
 ![PNL](./media/stream-analytics-high-frequency-trading/pnl.png)
 
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Az Azure Stream Analyticsben valósághű nagy gyakoriságú kereskedelmi modellt hozhatunk létre egy közepesen összetett lekérdezéssel. A beépített lineáris regressziós funkció hiánya miatt le kell egyszerűsítenünk a modellt úgy, hogy öt bemeneti változó helyett csak kettőt használjon. Az eltökélt felhasználók számára azonban a több dimenzióval rendelkező és kifinomultabb algoritmusok implementálhatóak JavaScript UDA-ként is. 
 
 Érdemes megjegyezni, hogy a legtöbb lekérdezés (a JavaScript UDA kivételével) tesztelése és hibakeresése elvégezhető a [Visual Studióhoz készült Azure Stream Analytics](stream-analytics-tools-for-visual-studio.md) eszközökkel a Visual Studióban. A kezdeti lekérdezés megírását követően a szerző kevesebb mint 30 percet töltött teszteléssel és hibakereséssel a Visual Studióban. 

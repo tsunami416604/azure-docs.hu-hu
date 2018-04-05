@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/17/2017
 ms.author: saysa
-ms.openlocfilehash: bf0a03ace2f6b6e6b1c845785a452d0b75f35de8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 81265dd61faee38d578a380ca392e7851662329c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>A fejlesztési környezet beállítása Mac OS X-en
 > [!div class="op_single_selector"]
@@ -44,13 +44,7 @@ Az Azure Service Fabric nem fut natív módon a Mac OS X-en. A helyi Service Fab
 ## <a name="create-a-local-container-and-set-up-service-fabric"></a>Helyi tároló létrehozása és a Service Fabric beállítása
 Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt rajta való futtatásához hajtsa végre a következő lépéseket:
 
-1. Kérje le a Service Fabric-tároló beépített rendszerképét a Docker Hub adattárából. Alapértelmezés szerint ez a Service Fabric legújabb verziójával rendelkező rendszerképet kéri le. Adott változatokért látogasson el a [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) oldalára.
-
-    ```bash
-    docker pull microsoft/service-fabric-onebox
-    ```
-
-2. Frissítse a Docker-démon konfigurációját a gazdagépen a következő beállításokkal, és indítsa újra a Docker-démont: 
+1. Frissítse a Docker-démon konfigurációját a gazdagépen a következő beállításokkal, és indítsa újra a Docker-démont: 
 
     ```json
     {
@@ -66,12 +60,47 @@ Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt rajta v
     >
     >Az ajánlott módszer a démon konfigurációs beállításainak a Dockerben történő közvetlen módosítása. Válassza a **Docker ikonját**, majd válassza a **Preferences (Beállítások)** > **Daemon (Démon)** > **Advanced (Speciális)** lehetőséget.
     >
+    >Javasoljuk, hogy növelje a Docker számára lefoglalt erőforrásokat nagy méretű alkalmazások tesztelése esetén. Ehhez válassza a **Docker ikont**, majd a **Speciális** lehetőséget a magok és a memória számának módosításához.
 
-3. Indítsa el a Service Fabric beépített tárolójának egy példányát, majd használja az első lépésben lekért rendszerképet:
+2. Hozzon létre egy `.Dockerfile` nevű fájlt egy új könyvtárban a Service Fabric-rendszerkép létrehozásához:
 
-    ```bash
-    docker run -itd -p 19080:19080 --name sfonebox microsoft/service-fabric-onebox
+    ```dockerfile
+    FROM microsoft/service-fabric-onebox
+    WORKDIR /home/ClusterDeployer
+    RUN ./setup.sh
+    #Generate the local
+    RUN locale-gen en_US.UTF-8
+    #Set environment variables
+    ENV LANG=en_US.UTF-8
+    ENV LANGUAGE=en_US:en
+    ENV LC_ALL=en_US.UTF-8
+    EXPOSE 19080 19000 80 443
+    #Start SSH before running the cluster
+    CMD /etc/init.d/ssh start && ./run.sh
     ```
+
+    >[!NOTE]
+    >Módosíthatja úgy a fájlt, hogy az további programokat vagy függőségeket adjon hozzá a tárolóhoz.
+    >A `RUN apt-get install nodejs -y` részlet hozzáadása például lehetővé teszi a `nodejs`-alkalmazások vendég végrehajtható fájlokként való támogatását.
+    
+    >[!TIP]
+    > Alapértelmezés szerint ez a Service Fabric legújabb verziójával rendelkező rendszerképet kéri le. Adott változatokért látogasson el a [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) oldalára
+
+3. Az újrafelhasználható rendszerképnek a `.Dockerfile` fájlból történő létrehozásához nyissa meg a terminált, és használja a `cd` parancsot a `.Dockerfile` fájlt tartalmazó könyvtáron, majd futtassa az alábbi parancsot:
+
+    ```bash 
+    docker build -t mysfcluster .
+    ```
+    
+    >[!NOTE]
+    >Ez a művelet eltarthat egy ideig, de csak egyszer kell végrehajtani.
+
+4. Most már gyorsan hozzáadhatja a Service Fabric egy helyi másolatát, amikor csak szükség van rá, az alábbi parancs futtatásával:
+
+    ```bash 
+    docker run --name sftestcluster -d -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mysfcluster
+    ```
+
     >[!TIP]
     >Ha megad egy nevet a tárolópéldányhoz, átláthatóbb módon kezelheti. 
     >
@@ -80,20 +109,20 @@ Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt rajta v
     >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox`
     >
 
-4. Jelentkezzen be a Docker-tárolóba interaktív SSH-módban:
+5. A fürt elindulása eltart egy rövid ideig. A naplók megtekintéséhez vagy az irányítópultra való ugráshoz és a fürt állapotának [http://localhost:19080](http://localhost:19080) megtekintéséhez használja az alábbi parancsot:
 
-    ```bash
-    docker exec -it sfonebox bash
+    ```bash 
+    docker logs sftestcluster
     ```
 
-5. Futtassa a beállítási szkriptet a szükséges függőségek lehívásához és a fürt adott tárolón történő elindításához:
 
-    ```bash
-    ./setup.sh     # Fetches and installs the dependencies required for Service Fabric to run
-    ./run.sh       # Starts the local cluster
+
+6. Ha végzett, az alábbi paranccsal állíthatja le és tisztíthatja meg a tárolót:
+
+    ```bash 
+    docker rm -f sftestcluster
     ```
 
-6. Az 5. lépés sikeres befejezése után lépjen az alábbi helyre a Mac gépén: `http://localhost:19080`. Ekkor megjelenik a Service Fabric Explorer.
 
 ## <a name="set-up-the-service-fabric-cli-sfctl-on-your-mac"></a>A Service Fabric parancssori felület (sfctl) beállítása Mac gépen
 

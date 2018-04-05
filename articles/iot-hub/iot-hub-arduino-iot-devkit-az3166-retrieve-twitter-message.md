@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Functions Twitter üzenet beolvasása |} Microsoft Docs"
-description: "A mozgásérzékelő segítségével megrázása észleli és használja az Azure Functions egy véletlenszerű tweetet egy hashtaggel történő, melyet a megkereséséhez."
+title: Az Azure Functions Twitter üzenet beolvasása |} Microsoft Docs
+description: A mozgásérzékelő segítségével megrázása észleli és használja az Azure Functions egy véletlenszerű tweetet egy hashtaggel történő, melyet a megkereséséhez.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: liydu
 manager: timlt
-tags: 
-keywords: 
+tags: ''
+keywords: ''
 ms.service: iot-hub
 ms.devlang: arduino
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: d9d03d35aa5d78d83e0f195c804cfe09fece3c07
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: a84393c5c53b8f8e4a8b688a462f433b2d611b0e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Rázó, egy Tweetet a Shake – letölteni egy Twitter-üzenetet az Azure Functions!
 
@@ -33,7 +33,7 @@ Befejezés a [– első lépések útmutató](https://docs.microsoft.com/azure/i
 
 Aktív Azure-előfizetés. Ha még nincs fiókja, regisztrálni keresztül ezen módszerek egyikét:
 
-* Aktiválja a [ingyenes 30 napos próbafiókot Microsoft Azure](https://azureinfo.microsoft.com/us-freetrial.html)
+* Aktiválja a [ingyenes 30 napos próbafiókot Microsoft Azure](https://azure.microsoft.com/en-us/free/)
 * Jogcím a [Azure-kreditjeinek](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) MSDN vagy a Visual Studio előfizetői esetén
 
 ## <a name="open-the-project-folder"></a>Nyissa meg a projekt mappát

@@ -1,6 +1,6 @@
 ---
-title: "Az Azure által felügyelt alkalmazás VirtualNetworkCombo felhasználói felületi elem |} Microsoft Docs"
-description: "A témakör ismerteti a Microsoft.Network.VirtualNetworkCombo felhasználói felületi elem Azure által felügyelt alkalmazások"
+title: Az Azure VirtualNetworkCombo felhasználói felületi elem |} Microsoft Docs
+description: Azure-portálon a Microsoft.Network.VirtualNetworkCombo felhasználói felületi elem ismerteti.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 03/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: c17ef740dcc709b5b344c4e60ef997a948b2e5de
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 38202b3b669a162f1cdbe88663d050d8d791c964
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Microsoft.Network.VirtualNetworkCombo felhasználói felületi elem
-Egy új vagy meglévő virtuális hálózat kiválasztásához vezérlők egy csoportja. Ez az elem használata során [Azure által felügyelt alkalmazások létrehozására](publish-service-catalog-app.md).
+Egy új vagy meglévő virtuális hálózat kiválasztásához vezérlők egy csoportja.
 
 ## <a name="ui-sample"></a>Felhasználói felület minta
 ![Microsoft.Network.VirtualNetworkCombo](./media/managed-application-elements/microsoft.network.virtualnetworkcombo.png)
@@ -84,8 +84,8 @@ Egy új vagy meglévő virtuális hálózat kiválasztásához vezérlők egy cs
 ## <a name="remarks"></a>Megjegyzések
 - Ha meg van adva, az első mozaikként, átfedés nélkül cím előtag méretű `defaultValue.addressPrefixSize` a felhasználó az előfizetéshez létező virtuális hálózatok automatikusan alapján történik.
 - Az alapértelmezett érték `defaultValue.name` és `defaultValue.addressPrefixSize` van **null**.
-- `constraints.minAddressPrefixSize`meg kell adni. Meglévő virtuális hálózatok egy kisebb, mint a megadott érték címtartománnyal rendelkező kijelölésnél érhetők el.
-- `subnets`meg kell adni, és `constraints.minAddressPrefixSize` meg kell adni az egyes alhálózatokon.
+- `constraints.minAddressPrefixSize` meg kell adni. Meglévő virtuális hálózatok egy kisebb, mint a megadott érték címtartománnyal rendelkező kijelölésnél érhetők el.
+- `subnets` meg kell adni, és `constraints.minAddressPrefixSize` meg kell adni az egyes alhálózatokon.
 - Amikor új virtuális hálózat létrehozása minden alhálózati cím előtag alapján van kiszámítva automatikusan a virtuális hálózat címelőtagjához és a megfelelő `addressPrefixSize`.
 - Ha egy meglévő virtuális hálózat, kisebb, mint a megfelelő alhálózatok `constraints.minAddressPrefixSize` kijelölés nem érhetők el. Továbbá ha meg van adva, alhálózatok, amelyek nem tartalmaznak legalább `minAddressCount` elérhető címei nem lehet kiválasztani.
 Az alapértelmezett érték **0**. Győződjön meg arról, hogy a rendelkezésre álló címek összefüggő, adja meg a **igaz** a `requireContiguousAddresses`. Az alapértelmezett érték **igaz**.
@@ -114,7 +114,6 @@ Az alapértelmezett érték **0**. Győződjön meg arról, hogy a rendelkezésr
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
-* Felügyelt alkalmazások bemutatása, lásd: [Azure kezelt alkalmazás – áttekintés](overview.md).
+## <a name="next-steps"></a>További lépések
 * A bevezetést UI-definíciók létrehozásáról lásd: [Ismerkedés a CreateUiDefinition](create-uidefinition-overview.md).
 * Általános tulajdonságok felhasználói felületi elemei ismertetését lásd: [CreateUiDefinition elemek](create-uidefinition-elements.md).

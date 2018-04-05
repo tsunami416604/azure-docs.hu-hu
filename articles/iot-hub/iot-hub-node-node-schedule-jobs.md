@@ -1,11 +1,11 @@
 ---
-title: "Az Azure IoT Hub (csomópont) feladatok ütemezése |} Microsoft Docs"
-description: "How to Schedule a több eszközre közvetlen metódus egy Azure IoT Hub-feladat ütemezése. Az Azure IoT SDK for Node.js használatával megvalósítható a szimulált eszköz alkalmazások és a service-alkalmazást, a feladat futtatásához."
+title: Az Azure IoT Hub (csomópont) feladatok ütemezése |} Microsoft Docs
+description: How to Schedule a több eszközre közvetlen metódus egy Azure IoT Hub-feladat ütemezése. Az Azure IoT SDK for Node.js használatával megvalósítható a szimulált eszköz alkalmazások és a service-alkalmazást, a feladat futtatásához.
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 2233356e-b005-4765-ae41-3a4872bda943
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/06/2017
 ms.author: juanpere
-ms.openlocfilehash: e607f5db8b4f2a974cb172d4581dadefe7851275
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: e7e724de68e7078782e90a3f2eda9f7261638ea5
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="schedule-and-broadcast-jobs-node"></a>Ütemezés és a feladatok (csomópont)
 
@@ -35,7 +35,9 @@ Egy feladat fogalmilag, becsomagolja az alábbi műveletek egyikét, és nyomon 
 További információ az egyes képességek a cikkeiben:
 
 * A két eszköz és a tulajdonságok: [Ismerkedés az eszköz twins] [ lnk-get-started-twin] és [oktatóanyag: kettős eszköztulajdonságok használata][lnk-twin-props]
-* közvetlen módszerek: [IoT Hub fejlesztői útmutató - közvetlen módszerek] [ lnk-dev-methods] és [oktatóanyag: közvetlen módszer][lnk-c2d-methods]
+* Közvetlen módszerek: [IoT Hub fejlesztői útmutató - közvetlen módszerek] [ lnk-dev-methods] és [oktatóanyag: közvetlen módszer][lnk-c2d-methods]
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Ez az oktatóanyag a következőket mutatja be:
 
@@ -253,7 +255,7 @@ Most már készen áll az alkalmazások futtatására.
     ```
 3. A közvetlen módszer a konzolon eszköz válasz megjelenik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban egy feladat ütemezése a közvetlen módszer egy eszköz és a két eszköz tulajdonságok frissítése használt.
 
 A folytatáshoz, a légkondicionáló frissítést keresztül Ismerkedés az IoT-központ és az eszköz felügyeleti minták például távolról, lásd:

@@ -1,12 +1,12 @@
 ---
-title: "Azure Site Recovery Deployment Planner – VMware – Azure | Microsoft Docs"
-description: "Ez az Azure Site Recovery Deployment Planner felhasználói útmutatója"
+title: Azure Site Recovery Deployment Planner – VMware – Azure | Microsoft Docs
+description: Ez az Azure Site Recovery Deployment Planner felhasználói útmutatója
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: nsoneji
 manager: garavd
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 03/09/2018
 ms.author: nisoneji
-ms.openlocfilehash: 63963804b81aa57e914e18fa474963a3830d04d5
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 337217e66fe4d3780af197911a0e72c6f936e411
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="cost-estimation-report-of-azure-site-recovery-deployment-planner"></a>Az Azure Site Recovery Deployment Planner költségbecslési jelentése  
 
@@ -110,7 +110,7 @@ Virtuális gépek manuális hozzáadása:
 * Az egyes DR működések időtartama (nap) 
 * Operációs rendszer típusa
 * Adatredundancia 
-* Azure Hybrid Use Benefit
+* Azure Hybrid Benefit
 
 3.  Alkalmazhatja ugyanazokat az értékeket minden virtuális gépre a táblázatban az „Alkalmazás az összesre” gombra kattintva a következőknél: DR működéseinek száma évente, Az egyes DR működések időtartama (nap), Adatredundancia, és az Azure Hybrid Use Benefit.
 
@@ -136,7 +136,7 @@ Virtuális gépek manuális hozzáadása:
 
 **Adatredundancia**: A következők egyike lehet – Helyileg redundáns tárolás (LRS), Georedundáns tárolás (GRS) vagy Írásvédett georedundáns tárolás (RA-GRS). Az alapértelmezett érték LRS. Módosíthatja a típust adott virtuális gépek tárfiókja alapján, vagy alkalmazhatja az új típust minden virtuális gépre úgy, hogy módosítja a felső sor típusát, és az „Alkalmazás az összesre” gombra kattint.  A replikáció tárolási költsége a kiválasztott adatredundancia árának alapján lesz kiszámítva. 
 
-**Azure Hybrid Use Benefit**: Az Azure Hybrid Use Benefit Windows rendszerű virtuális gépekre alkalmazható, ha van.  Az alapértelmezett érték az Igen. Módosíthatja adott virtuális gépek beállításait, vagy frissítheti az összes virtuális gépet az „Alkalmazás az összesre” gombra kattintva.
+**Azure Hybrid Benefit**: Az Azure Hybrid Benefit az arra jogosult Windows rendszerű virtuális gépekre alkalmazható.  Az alapértelmezett érték az Igen. Módosíthatja adott virtuális gépek beállításait, vagy frissítheti az összes virtuális gépet az „Alkalmazás az összesre” gombra kattintva.
 
 **Teljes Azure-használat**: A számítás, a tárolás és az Azure Site Recovery-licenc költségeit tartalmazza a vészhelyreállításhoz. A választott beállítás alapján a költségeket havi vagy éves bontásban jeleníti meg.
 

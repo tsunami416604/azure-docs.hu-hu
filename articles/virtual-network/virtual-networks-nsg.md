@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
-ms.openlocfilehash: bd15b7786552d21c8791eeb307aa8c87066b2bcd
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: c38223674061aa8c257e47b6208f890b7aef378d
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="filter-network-traffic-with-network-security-groups"></a>Hálózati forgalom szűrése hálózati biztonsági csoportokkal
 
@@ -123,10 +123,10 @@ Az NSG-ket a klasszikus és a Resource Manager-alapú üzemi modellel is meg leh
 
 | Üzembe helyezési eszköz | Klasszikus | Resource Manager |
 | --- | --- | --- |
-| Azure Portal   | Nem | [Igen](virtual-networks-create-nsg-arm-pportal.md) |
-| PowerShell     | [Igen](virtual-networks-create-nsg-classic-ps.md) | [Igen](virtual-networks-create-nsg-arm-ps.md) |
-| Azure CLI **V1**   | [Igen](virtual-networks-create-nsg-classic-cli.md) | [Igen](virtual-networks-create-nsg-arm-cli.md) |
-| Azure CLI **V2**   | Nem | [Igen](virtual-networks-create-nsg-arm-cli.md) |
+| Azure Portal   | Igen | [Igen](virtual-networks-create-nsg-arm-pportal.md) |
+| PowerShell     | [Igen](virtual-networks-create-nsg-classic-ps.md) | [Igen](tutorial-filter-network-traffic.md) |
+| Azure CLI **V1**   | [Igen](virtual-networks-create-nsg-classic-cli.md) | [Igen](tutorial-filter-network-traffic-cli.md) |
+| Azure CLI **V2**   | Nem | [Igen](tutorial-filter-network-traffic-cli.md) |
 | Azure Resource Manager-sablon   | Nem  | [Igen](virtual-networks-create-nsg-arm-template.md) |
 
 ## <a name="planning"></a>Tervezés

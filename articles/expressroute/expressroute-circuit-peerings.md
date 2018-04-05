@@ -1,11 +1,11 @@
 ---
-title: "Az Azure ExpressRoute-Kapcsolatcsoportok és útválasztási tartományok |} Microsoft Docs"
-description: "Ezen a lapon egy áttekintést nyújt az ExpressRoute-Kapcsolatcsoportok és útválasztási tartományok."
+title: Az Azure ExpressRoute-Kapcsolatcsoportok és útválasztási tartományok |} Microsoft Docs
+description: Ezen a lapon egy áttekintést nyújt az ExpressRoute-Kapcsolatcsoportok és útválasztási tartományok.
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 6f0c5d8e-cc60-4a04-8641-2c211bda93d9
 ms.service: expressroute
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: ganesr,cherylmc
-ms.openlocfilehash: 943305c78a17031d647bf2fa0977d10c51213ef5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0e060e67d615f0d6aa8ca6cbe305670956ac3faf
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="expressroute-circuits-and-routing-domains"></a>ExpressRoute-Kapcsolatcsoportok és útválasztási tartományok
  Kell rendeznie egy *ExpressRoute-kapcsolatcsoportot* a helyszíni infrastruktúra csatlakozni a Microsoft a kapcsolat-szolgáltató használatával. Az alábbi ábrán a WAN és a Microsoft közötti kapcsolat egy logikai ábrázolását.
@@ -72,7 +72,7 @@ Tekintse meg a [gyakori kérdéseket tartalmazó oldal](expressroute-faqs.md) to
 ## <a name="routing-domain-comparison"></a>Útválasztási tartomány összehasonlítása
 Az alábbi táblázat összehasonlítja a három útválasztási tartományok:
 
-|  | **Magánhálózati társviszony-létesítés** | **Nyilvános társviszony-létesítés** | **A Microsoft társviszony-létesítés*** |
+|  | **Magánhálózati társviszony-létesítés** | **Nyilvános társviszony-létesítés** (az új és elavult) | **A Microsoft társviszony-létesítés** |
 | --- | --- | --- | --- |
 | **Max. támogatott társviszony-létesítés # előtagok** |Alapértelmezés szerint 10 000-re az ExpressRoute Premium 4000 |200 |200 |
 | **Az IP-címtartományok támogatott** |Bármilyen érvényes IP-címet a WAN hálózaton belül. |Nyilvános IP-címet, vagy a kapcsolat szolgáltatóját. |Nyilvános IP-címet, vagy a kapcsolat szolgáltatóját. |
@@ -81,7 +81,7 @@ Az alábbi táblázat összehasonlítja a három útválasztási tartományok:
 | **Útválasztó illesztő IP-címek** |RFC1918 és nyilvános IP-címek |Nyilvános IP-címeket az útválasztási nyilvántartó regisztrálva. |Nyilvános IP-címeket az útválasztási nyilvántartó regisztrálva. |
 | **Az MD5 kivonatoló támogatása** |Igen |Igen |Igen |
 
-(*) Csak a prémium szintű bővítmény SKU használható
+
 
 Ha szeretné, legalább egy, az útválasztási tartományok engedélyezéséhez az ExpressRoute-kapcsolatcsoportot részeként. Ha szeretné az útválasztási tartomány elhelyezése a azonos VPN, ha egyetlen útválasztási tartományról való egyesíthetők. Akkor helyezheti is őket másik útválasztási tartományok, a diagram hasonló. Az ajánlott konfiguráció a magánhálózati társviszony-létesítés közvetlenül kapcsolódik a központi hálózathoz, és a nyilvános és a Microsoft társviszony-létesítési hivatkozások csatlakoznak a Szegélyhálózaton.
 

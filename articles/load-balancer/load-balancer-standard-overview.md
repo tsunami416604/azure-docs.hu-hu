@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: 15bbd32d982bdefc5665421b828ce0c8234b7257
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
-ms.translationtype: MT
+ms.openlocfilehash: b5443cb1d883bd829a13b6d941d2c87c6205c64f
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Az Azure Load Balancer szabványos áttekintése
 
@@ -76,9 +76,6 @@ A háttérkészlet önálló virtuális gépek, a rendelkezésre állási készl
 Annak eldöntéséhez, hogy a háttérkészlet megtervezésére, megtervezheti a legkevésbé egyedi háttér címkészletet erőforrásokat tovább optimalizálhatja a kezelési műveletek időtartama száma.  Nincs különbség az adatok vezérlősík teljesítményt és a skála.
 
 ## <a name="az"></a>Rendelkezésre állási zónák
-
->[!NOTE]
-> Használandó [rendelkezésre állási zónák Preview](https://aka.ms/availabilityzones) szabványos terheléselosztót igényel a [előfizetési rendelkezésre állási zónák](https://aka.ms/availabilityzones).
 
 Standard terheléselosztó további képességek azokban a régiókban, ahol a rendelkezésre állási zónák elérhetők támogatja.  Ezek a szolgáltatások akkor növekményes összes szabványos terheléselosztóhoz biztosít.  Rendelkezésre állási zónák konfigurációk nyilvános és a belső szabványos terheléselosztó érhetők el.
 

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 03/30/2018
 ms.author: ancav
-ms.openlocfilehash: fc7a4062af9e73383af46f0c36eb22710ce9b6e1
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 68f5784f1724441ff6f18e2581c8e01d66c60c5e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure-figyelő támogatott metrikák
 Azure figyelő többféleképpen is kommunikál a metrikákat, többek között a diagramkészítési őket a portálon, a hozzájuk férni a REST API-n keresztül, vagy a őket lekérdezése a PowerShell vagy a parancssori felület. Alatt érhető el teljes listáját és az összes metrikák jelenleg Azure figyelő metrika folyamat.
@@ -811,11 +811,11 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |Teljesítmény|Teljesítmény|Bájt/s|Összes|Az Alkalmazásátjáró rendelkezik kiszolgált másodpercenként bájtok száma|Nincs dimenzió|
-|UnhealthyHostCount|A nem megfelelő gazdagép száma|Darabszám|Átlag|A nem megfelelő háttér gazdagépek száma|BackendSettingsPool|
-|HealthyHostCount|Kifogástalan állapotú gazdagép száma|Darabszám|Átlag|Kifogástalan háttér gazdagépek száma|BackendSettingsPool|
+|UnhealthyHostCount|A nem megfelelő gazdagép száma|Darabszám|Átlag|A nem megfelelő háttér gazdagépek száma. Végezhet egy háttér címkészletet alapján egy adott háttérkészlet megfelelő vagy nem megfelelő gazdagépek megjelenítendő száma.|BackendSettingsPool|
+|HealthyHostCount|Kifogástalan állapotú gazdagép száma|Darabszám|Átlag|Kifogástalan háttér gazdagépek száma. Végezhet egy háttér címkészletet alapján egy adott háttérkészlet megfelelő vagy nem megfelelő gazdagépek megjelenítendő száma.|BackendSettingsPool. |
 |TotalRequests|Összes kérelem|Darabszám|Összes|Alkalmazásátjáró rendelkezik szolgáltatott sikeres kérelmek száma|BackendSettingsPool|
 |FailedRequests|Sikertelen kérések|Darabszám|Összes|Alkalmazásátjáró szolgáltatott rendelkezik a sikertelen kérelmek száma|BackendSettingsPool|
-|ResponseStatus|Válaszállapot|Darabszám|Összes|Alkalmazásátjáró által visszaadott HTTP-válasz állapota|HttpStatusGroup|
+|ResponseStatus|Válaszállapot|Darabszám|Összes|Alkalmazásátjáró által visszaadott a HTTP-válasz állapota. A válasz állapot kód terjesztési további 2xx, 3xx, 4xx és 5xx kategóriák válaszok megjelenítendő categoized lehet.|HttpStatusGroup|
 |CurrentConnections|Jelenlegi kapcsolatok száma|Darabszám|Összes|Alkalmazásátjáró létesített jelenlegi kapcsolatok száma|Nincs dimenzió|
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.Network/virtualNetworkGateways

@@ -1,8 +1,8 @@
 ---
-title: "Élő metrikák adatfolyamot egyéni metrikákkal és diagnosztika a Azure Application Insights |} Microsoft Docs"
-description: "A webalkalmazás egyéni metrikák valós idejű figyelése és a hibák, a nyomkövetések és az események élő adatcsatornára eseményadatokat."
+title: Élő metrikák adatfolyamot egyéni metrikákkal és diagnosztika a Azure Application Insights |} Microsoft Docs
+description: A webalkalmazás egyéni metrikák valós idejű figyelése és a hibák, a nyomkövetések és az események élő adatcsatornára eseményadatokat.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: SoubhagyaDash
 manager: carmonm
 ms.assetid: 1f471176-38f3-40b3-bc6d-3f47d0cbaaa2
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2017
 ms.author: mbullwin
-ms.openlocfilehash: 866fc729b3167863c2d423d0e6ac0d7640e3425e
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: f0338642ab99af2fd5ec4f6432bbb8d626daea29
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Metrikák adatfolyamot: Figyelő & Diagnosztizálás és 1 másodperc késleltetés 
 
@@ -62,7 +62,7 @@ Ellenőrizze a [kimenő portok a metrikák adatfolyamot](app-insights-ip-address
 |---|---|---|
 |Késés|Egy második belül megjelenített adatok|Perc alatt összesített értéket|
 |Visszatartás nem|Adatok továbbra is fennáll, amíg ez a diagram, és utána eldobja|[Az adatok 90 napig őrzi meg](app-insights-data-retention-privacy.md#how-long-is-the-data-kept)|
-|Az igény szerinti|Amíg nyissa meg a metrikák élő adatok továbbítja adatfolyamként|Az adatokat küldi el, amikor az SDK telepítése és engedélyezése|
+|Igény szerinti|Amíg nyissa meg a metrikák élő adatok továbbítja adatfolyamként|Az adatokat küldi el, amikor az SDK telepítése és engedélyezése|
 |Ingyenes|Az élő adatfolyam adatok ingyenesek|Közölt [díjszabása](app-insights-pricing.md)
 |Mintavételezés|Az összes kijelölt metrikák és számlálók továbbít. Hibák és híváslánc megjelenik mintát. TelemetryProcessors nem érvényesek.|Lehet, hogy események [mintát](app-insights-api-filtering-sampling.md)|
 |Vezérlőcsatorna|Az SDK jelek küldött szűrővezérlés. Javasoljuk, hogy [a csatornát](#secure-channel).|Kommunikációs még csak egyirányú, a portálra|
@@ -115,12 +115,15 @@ A megadott egyéni szűrők feltételek rendszer küldi vissza az élő metriká
 ![Api-kulcs létrehozása](./media/app-insights-live-stream/live-metrics-apikeycreate.png)
 
 ### <a name="add-api-key-to-configuration"></a>A konfigurációs API-kulcs hozzáadása
+
+# <a name="net-standardtabnet-standard"></a>[.NET Standard](#tab/.net-standard)
+
 Az applicationinsights.config fájlban vegye fel a AuthenticationApiKey a QuickPulseTelemetryModule:
 ``` XML
 
 <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse.QuickPulseTelemetryModule, Microsoft.AI.PerfCounterCollector">
       <AuthenticationApiKey>YOUR-API-KEY-HERE</AuthenticationApiKey>
-</Add> 
+</Add>
 
 ```
 Vagy a kódban, állítsa be a QuickPulseTelemetryModule meg:
@@ -130,6 +133,34 @@ Vagy a kódban, állítsa be a QuickPulseTelemetryModule meg:
     module.AuthenticationApiKey = "YOUR-API-KEY-HERE";
 
 ```
+# <a name="net-core-tabnet-core"></a>[A .NET core] (lap/.net-core #)
+
+Az alábbiak szerint módosítsa a startup.cs fájlt:
+
+Először adjon hozzá
+
+``` C#
+using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
+using Microsoft.ApplicationInsights.Extensibility;
+```
+
+A konfigurálás módszer adja:
+
+``` C#
+  QuickPulseTelemetryModule dep;
+            var modules = app.ApplicationServices.GetServices<ITelemetryModule>();
+            foreach (var module in modules)
+            {
+                if (module is QuickPulseTelemetryModule)
+                {
+                    dep = module as QuickPulseTelemetryModule;
+                    dep.AuthenticationApiKey = "YOUR-API-KEY-HERE";
+                    dep.Initialize(TelemetryConfiguration.Active);
+                }
+            }
+```
+
+---
 
 Ha ismeri fel, és a csatlakoztatott kiszolgálókra megbízható, megpróbálhatja az egyéni szűrők a hitelesített csatornát nélkül. Ez a beállítás hat hónapig érhető el. Ez a felülbírálás kell egyszer minden új munkamenet, vagy ha új kiszolgáló online elérhető lesz.
 
@@ -154,7 +185,7 @@ Nincs adat? Ha az alkalmazás egy védett hálózati: metrikák élő adatfolyam
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az Application insights szolgáltatással megfigyelési kihasználtsága](app-insights-web-track-usage.md)
 * [Diagnosztikai keresés](app-insights-diagnostic-search.md)
 * [Profilkészítő](app-insights-profiler.md)

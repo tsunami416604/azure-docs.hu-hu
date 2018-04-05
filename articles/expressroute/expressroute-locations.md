@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/13/2018
+ms.date: 03/20/2018
 ms.author: pareshmu
-ms.openlocfilehash: 001dca30121d51cfdee5b26a431c7a3702024e5e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: bad06add368c42970d235b335d14185eb8abf3a6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
@@ -77,7 +77,7 @@ Az alábbi táblázat a szolgáltatók szerint jeleníti meg a helyeket. Ha az e
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |Támogatott |Támogatott |Montréal, Toronto, Québec város |
 | **[British Telecom](http://www.globalservices.bt.com/uk/en/news/bt_to_provide_connectivity_to_microsoft_azure)** |Támogatott |Támogatott |Amszterdam, Hongkong, London, Szilícium-völgy, Szingapúr, Sydney, Tokió, Washington, D.C. |
 | **[C3ntro](https://c3ntro.com/)** |Hamarosan elérhető |Hamarosan elérhető |Miami |
-| **[CenturyLink](http://www.centurylink.com/business/enterprise/services/data-network/mpls-vpn.html)** |Hamarosan elérhető |Hamarosan elérhető |Szilícium-völgy |
+| **[CenturyLink Cloud Connect](http://www.centurylink.com/cloudconnect)** |Támogatott |Támogatott |New York, San Antonio, Tokió, Toronto |
 | **China Telecom Global** |Támogatott |Nem támogatott |Hongkong |
 | **[Cologix](http://www.cologix.com/solutions/cloud-connect/public-clouds/microsoft-cloud/)** |Támogatott |Támogatott |Dallas, Montréal, Toronto |
 | **[Colt](http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |Támogatott |Támogatott |Amszterdam, Dublin, London, Párizs, Tokió |
@@ -98,7 +98,7 @@ Az alábbi táblázat a szolgáltatók szerint jeleníti meg a helyeket. Ha az e
 | **Jisc** |Támogatott |Támogatott |London |
 | **KINX** |Támogatott |Támogatott |Szöul |
 | **[KPN](http://www.kpn.com/cloudconnect)** | Támogatott | Támogatott | Amszterdam | 
-| **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Támogatott |Támogatott |Amszterdam, Chicago, Dallas, Las Vegas, London, Newport, New York, San Antonio, São Paulo, Seattle, Szilícium-völgy, Szingapúr, Tokió, Washington, D.C. |
+| **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Támogatott |Támogatott |Amszterdam, Chicago, Dallas, Las Vegas, London, Newport, São Paulo, Seattle, Szilícium-völgy, Szingapúr, Washington, D.C. |
 | **LG CNS** |Támogatott |Támogatott |Busan, Szöul |
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Támogatott |Támogatott |Amszterdam, Chicago, Dallas, Denver, Dublin, Hongkong, Las Vegas, London, Los Angeles, Melbourne, Miami, New York, Québec város, San Antonio, Seattle, Szilícium-völgy, Szingapúr, Szingapúr2, Sydney, Toronto, Washington, D.C. |
 | **MTN** |Támogatott |Támogatott |London |

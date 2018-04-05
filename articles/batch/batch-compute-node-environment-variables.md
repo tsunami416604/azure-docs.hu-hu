@@ -1,22 +1,22 @@
 ---
-title: "Az Azure Batch számítási csomópont környezeti változók |} Microsoft Docs"
-description: "Számítási csomópont környezeti változó hivatkozás az Azure Batch használatával."
+title: Az Azure Batch számítási csomópont környezeti változók |} Microsoft Docs
+description: Számítási csomópont környezeti változó hivatkozás az Azure Batch használatával.
 services: batch
-author: tamram
-manager: timlt
-ms.assetid: 
+author: dlepow
+manager: jeconnoc
+ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 05/05/2017
-ms.author: tamram
-ms.openlocfilehash: 29f642754430957e77ef68946f721f8e15dba065
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: danlep
+ms.openlocfilehash: ca8d6a6484cd1f145e7d807681bf2d012f2399e0
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-batch-compute-node-environment-variables"></a>Azure Batch számítási csomópont környezeti változók
 A [Azure Batch szolgáltatás](https://azure.microsoft.com/services/batch/) állítja be az alábbi környezeti változókat a számítási csomópontok. Ezek a feladat parancssori parancsokat, és a Programok telepítése és a környezeti változók is hivatkozni, és parancsfájlok futtatásához a parancssorok.
@@ -44,7 +44,7 @@ A parancssorok hajtja végre a feladatokat a számítási csomópontok tegye nem
 | AZ_BATCH_JOB_ID                 | Annak a fióknak az azonosítója, amelyhez a feladat tartozik. | Minden olyan feladat, kivéve a feladat indítása. | batchjob001 |
 | AZ_BATCH_JOB_PREP_DIR           | A teljes elérési útját a feladat előkészítése [feladat directory] [ files_dirs] a csomóponton. | Kezdő tevékenység és a feladat előkészítése tevékenységet kívül az összes feladatot. Csak akkor érhető el, ha a feladat a feladat előkészítése tevékenység van konfigurálva. | C:\user\tasks\workitems\jobprepreleasesamplejob\job-1\jobpreparation |
 | AZ_BATCH_JOB_PREP_WORKING_DIR   | A teljes elérési útját a feladat előkészítése [feladatütemezési munkakönyvtár] [ files_dirs] a csomóponton. | Kezdő tevékenység és a feladat előkészítése tevékenységet kívül az összes feladatot. Csak akkor érhető el, ha a feladat a feladat előkészítése tevékenység van konfigurálva. | C:\user\tasks\workitems\jobprepreleasesamplejob\job-1\jobpreparation\wd |
-| AZ_BATCH_NODE_ID                | A feladat be van-e rendelve csomópont azonosítója. | Minden feladat. | TVM-1219235766_3-20160919t172711z |
+| AZ_BATCH_NODE_ID                | A feladat be van-e rendelve csomópont azonosítója. | Minden feladat. | tvm-1219235766_3-20160919t172711z |
 | AZ_BATCH_NODE_ROOT_DIR          | A teljes elérési útját a legfelső szintű az összes [Batch-könyvtárak] [ files_dirs] a csomóponton. | Minden feladat. | C:\user\tasks |
 | AZ_BATCH_NODE_SHARED_DIR        | A teljes elérési útját a [megosztott könyvtár] [ files_dirs] a csomóponton. Minden olyan feladat, amely a csomóponton végre rendelkezik olvasási/írási hozzáférést a könyvtárhoz. Feladatokat, amelyek a többi csomóponton végre nem rendelkeznek táveléréssel (nincs olyan "megosztott" hálózati könyvtár) a könyvtárba. | Minden feladat. | C:\user\tasks\shared |
 | AZ_BATCH_NODE_STARTUP_DIR       | A teljes elérési útját a [indítsa el a feladat directory] [ files_dirs] a csomóponton. | Minden feladat. | C:\user\tasks\startup |
@@ -52,7 +52,7 @@ A parancssorok hajtja végre a feladatokat a számítási csomópontok tegye nem
 | AZ_BATCH_TASK_DIR               | A teljes elérési útját a [feladat directory] [ files_dirs] a csomóponton. Ez a könyvtár tartalmaz a `stdout.txt` és `stderr.txt` a tevékenységhez, és a AZ_BATCH_TASK_WORKING_DIR. | Minden feladat. | C:\user\tasks\workitems\batchjob001\job-1\task001 |
 | AZ_BATCH_TASK_ID                | Az aktuális tevékenység azonosítója. | Minden olyan feladat, kivéve a feladat indítása. | task001 |
 | AZ_BATCH_TASK_WORKING_DIR       | A teljes elérési útját a [feladatütemezési munkakönyvtár] [ files_dirs] a csomóponton. A jelenleg futó feladat rendelkezik olvasási/írási hozzáférést a könyvtárhoz. | Minden feladat. | C:\user\tasks\workitems\batchjob001\job-1\task001\wd |
-| CCP_NODES                       | Csomópont lefoglalt magok száma és csomópontok listáját egy [többpéldányos feladat][multi_instance]. Csomópontok és -magok felsorolt formátumban`numNodes<space>node1IP<space>node1Cores<space>`<br/>`node2IP<space>node2Cores<space> ...`, ahol a csomópontok számát követi egy vagy több csomópont IP-címek és az magok száma az egyes. |  Többpéldányos elsődleges és részfeladatok. |`2 10.0.0.4 1 10.0.0.5 1` |
+| CCP_NODES                       | Csomópont lefoglalt magok száma és csomópontok listáját egy [többpéldányos feladat][multi_instance]. Csomópontok és -magok felsorolt formátumban `numNodes<space>node1IP<space>node1Cores<space>`<br/>`node2IP<space>node2Cores<space> ...`, ahol a csomópontok számát követi egy vagy több csomópont IP-címek és az magok száma az egyes. |  Többpéldányos elsődleges és részfeladatok. |`2 10.0.0.4 1 10.0.0.5 1` |
 | AZ_BATCH_NODE_LIST              | A lefoglalt csomópontlista egy [többpéldányos feladat] [ multi_instance] formátumú `nodeIP;nodeIP`. | Többpéldányos elsődleges és részfeladatok. | `10.0.0.4;10.0.0.5` |
 | AZ_BATCH_HOST_LIST              | A lefoglalt csomópontlista egy [többpéldányos feladat] [ multi_instance] formátumú `nodeIP,nodeIP`. | Többpéldányos elsődleges és részfeladatok. | `10.0.0.4,10.0.0.5` |
 | AZ_BATCH_MASTER_NODE            | Az IP-cím és port a számítási csomópont, amelyen az elsődleges feladatát egy [többpéldányos feladat] [ multi_instance] futtatja. | Többpéldányos elsődleges és részfeladatok. | `10.0.0.4:6000`|

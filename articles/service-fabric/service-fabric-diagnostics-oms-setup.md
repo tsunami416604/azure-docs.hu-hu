@@ -1,24 +1,24 @@
 ---
-title: "Az OMS szolgáltatáshoz figyelés beállítása az Azure Service Fabric - |} Microsoft Docs"
-description: "Ismerje meg, hogyan állíthat be az Operations Management Suite megjelenítése és elemzésével események figyelése az Azure Service Fabric-fürtök."
+title: Az OMS szolgáltatáshoz figyelés beállítása az Azure Service Fabric - |} Microsoft Docs
+description: Ismerje meg, hogyan állíthat be az Operations Management Suite megjelenítése és elemzésével események figyelése az Azure Service Fabric-fürtök.
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
+author: srrengar
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 1/17/2017
-ms.author: dekapur
-ms.openlocfilehash: 98ac32b011744ce388762322edd538b467f93494
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.date: 3/30/2018
+ms.author: dekapur; srrengar
+ms.openlocfilehash: 2589efa1808a394f2e32b842efa2ee70809da232
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="set-up-operations-management-suite-log-analytics-for-a-cluster"></a>Operations Management Suite Naplóelemzési beállítása egy fürtben
 
@@ -75,7 +75,7 @@ A Service Fabric elemzési megoldás az OMS Naplóelemzési munkaterület, most 
 
 A Resource Manager-sablon használatával egy fürt üzembe helyezésekor a sablont hoz létre egy új OMS-munkaterület, a Service Fabric-megoldás hozzáadja a munkaterület, és konfigurálja úgy, hogy a megfelelő tárolási táblákból származó adatokat olvasni.
 
-Használ, és módosítsa [minta sablon](https://azure.microsoft.com/resources/templates/service-fabric-oms/) az igényeknek. Sablonok, amelyek különböző beállításokról az OMS-munkaterület beállítása helyen találhatók [Service Fabric-és OMS](https://azure.microsoft.com/resources/templates/?term=service+fabric+OMS).
+Használ, és módosítsa [minta sablon](https://github.com/krnese/azure-quickstart-templates/tree/master/service-fabric-oms) az igényeknek.
 
 A következő módosításokat:
 1. Adja hozzá `omsWorkspaceName` és `omsRegion` a paramétereire az alábbi kódrészletet a definiált paraméterek hozzáadásával a *template.json* fájlt. Nyugodtan módosíthatja az alapértelmezett értékeket, ahogyan szeretné. Továbbá adja hozzá a két új paramétereket tartalmaz a *parameters.json* megadhatók azok az erőforrások telepítése értékeinek fájlt:

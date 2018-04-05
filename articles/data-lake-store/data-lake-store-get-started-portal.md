@@ -1,8 +1,8 @@
 ---
-title: "A Data Lake Store használatának első lépései az Azure Portalon | Microsoft Docs"
-description: "Data Lake Store-fiók létrehozása és alapszintű műveletek végrehajtása a Data Lake Store-ban az Azure Portallal"
+title: A Data Lake Store használatának első lépései az Azure Portalon | Microsoft Docs
+description: Data Lake Store-fiók létrehozása és alapszintű műveletek végrehajtása a Data Lake Store-ban az Azure Portallal
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/09/2018
+ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: c5b0f5250a08915e987a1eb5229f2c4648e660fd
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 91ed55e5f12c10e67653bdadfca80bd072779711
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="get-started-with-azure-data-lake-store-using-the-azure-portal"></a>Az Azure Data Lake Store használatának első lépései az Azure Portal használatával
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 ## <a name="create-an-azure-data-lake-store-account"></a>Azure Data Lake Store-fiók létrehozása
 
 1. Jelentkezzen be az új [Azure Portalra](https://portal.azure.com).
-2. Kattintson az **Erőforrás létrehozása** elemre, kattintson az **Adatok + tárolás** elemre, majd az **Azure Data Lake Store** elemre. Olvassa el az **Azure Data Lake Store** panelen látható információkat, majd kattintson a panel bal alsó sarkában található **Create** (Létrehozás) elemre.
+2. Kattintson az **Erőforrás létrehozása > Storage > Data Lake Store** lehetőségre.
 3. Az **Új Data Lake Store** panelen adja meg az értékeket az alábbi képernyőfelvételen látható módon:
    
     ![Új Azure Data Lake Store-fiók létrehozása](./media/data-lake-store-get-started-portal/ADL.Create.New.Account.png "Új Azure Data Lake Store-fiók létrehozása")
@@ -50,7 +50,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
    * **Titkosítási beállítások**. Három beállítás érhető el:
      
      * **A titkosítás letiltása**.
-     * **Azure Data Lake által kezelt kulcsok használata**.  Ha azt szeretné, hogy az Azure Data Lake Store kezelje a titkosítási kulcsokat.
+     * **A Data Lake Store által kezelt kulcsok használata**.  Ha azt szeretné, hogy az Azure Data Lake Store kezelje a titkosítási kulcsokat.
      * **Saját tulajdonú Key Vault-kulcsok használata**. Kiválaszthat egy meglévő Azure Key Vault-tárolót, vagy létrehozhat egy újat. Az Azure Key Vaultban lévő kulcsok használatához engedélyeket kell rendelnie az Azure Data Lake Store-fiókhoz az Azure Key Vault elérése érdekében. Az utasításokért lásd [az engedélyek az Azure Key Vaulthoz történő hozzárendelését](#assign-permissions-to-azure-key-vault) ismertető cikket.
        
         ![Data Lake Store-titkosítás](./media/data-lake-store-get-started-portal/adls-encryption-2.png "Data Lake Store-titkosítás")
@@ -61,7 +61,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 4. Kattintson a **Create** (Létrehozás) gombra. Ha úgy döntött, hogy rögzíti a fiókot az irányítópulton, visszakerül az irányítópultra, ahol láthatja a Data Lake Store-fiók üzembe helyezésének folyamatát. A Data Lake Store-fiók üzembe helyezése után megjelenik a fiókpanel.
 
-### <a name="assign-permissions-to-azure-key-vault"></a>Engedélyek hozzárendelése az Azure Key Vaulthoz
+## <a name="assign-permissions-to-azure-key-vault"></a>Engedélyek hozzárendelése az Azure Key Vaulthoz
 Ha az Azure Key Vaultban lévő kulcsokkal konfigurálta a titkosítást a Data Lake Store-fiókban, konfigurálnia kell a Data Lake Store-fiók és az Azure Key Vault-fiók közötti hozzáférést. Ehhez kövesse az alábbi lépéseket.
 
 1. Ha az Azure Key Vault kulcsait használta, a Data Lake Store panele felül egy figyelmeztetést jelenít meg. Kattintson a figyelmeztetésre a **Titkosítás** panel megnyitásához.
@@ -87,7 +87,7 @@ Ha az Azure Key Vaultban lévő kulcsokkal konfigurálta a titkosítást a Data 
 ## <a name="createfolder"></a>Mappák létrehozása az Azure Data Lake Store-fiókban
 A Data Lake Store-fiókjában mappákat hozhat létre az adatok kezelésére és tárolására.
 
-1. Nyissa meg a létrehozott Data Lake Store-fiókot. A bal oldali ablaktáblában kattintson a **Browse** (Tallózás), **Data Lake Store** elemre, majd a Data Lake Store panelen kattintson a fiók nevére, amelyben mappákat kíván létrehozni. Ha rögzítette a fiókot a kezdőpulton, kattintson a fiók csempéjére.
+1. Nyissa meg a létrehozott Data Lake Store-fiókot. A bal oldali ablaktáblában kattintson az **Összes erőforrás** elemre, majd az Összes erőforrás panelen kattintson a fiók nevére, amelyben mappákat kíván létrehozni. Ha rögzítette a fiókot a kezdőpulton, kattintson a fiók csempéjére.
 2. A Data Lake Store-fiók panelén kattintson a **Data Explorer** (Adatkezelő) elemre.
    
     ![Mappák létrehozása a Data Lake Store-fiókban](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "Mappák létrehozása a Data Lake Store-fiókban")

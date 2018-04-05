@@ -1,62 +1,66 @@
 ---
-title: "Az Azure Container Instances oktatóanyaga – Alkalmazás üzembe helyezése"
-description: "Az Azure Container Instances oktatóanyaga, 3/3. rész – Alkalmazás üzembe helyezése"
+title: Az Azure Container Instances oktatóanyaga – Alkalmazás üzembe helyezése
+description: Az Azure Container Instances oktatóanyaga, 3/3. rész – Alkalmazás üzembe helyezése
 services: container-instances
-author: seanmck
+author: mmacy
 manager: timlt
 ms.service: container-instances
 ms.topic: tutorial
-ms.date: 02/22/2018
-ms.author: seanmck
+ms.date: 03/21/2018
+ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 0532d255b271b2155ae3115f8f96c4cbb53916e4
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 29d7114f288f7387d0c7cd5c6afe2eaaa7a8c560
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="deploy-a-container-to-azure-container-instances"></a>Tároló üzembe helyezése az Azure Container Instances szolgáltatásban
+# <a name="tutorial-deploy-a-container-to-azure-container-instances"></a>Oktatóanyag: Tároló üzembe helyezése az Azure Container Instancesben
 
-Ez az egy háromrészes sorozat utolsó oktatóanyaga. Az előző oktatóanyagokban [létrehozott egy tárolórendszerképet](container-instances-tutorial-prepare-app.md), és [elküldte azt egy Azure Container Registry-példányra](container-instances-tutorial-prepare-acr.md). Az oktatóanyag befejező cikke a tároló üzembe helyezését ismerteti az Azure Container Instances szolgáltatásban.
+Ez az egy háromrészes sorozat utolsó oktatóanyaga. Az előző oktatóanyagokban [létrehoztunk egy tárolórendszerképet](container-instances-tutorial-prepare-app.md), és [leküldtük az Azure Container Registrybe](container-instances-tutorial-prepare-acr.md). A sorozat befejező cikke a tároló üzembe helyezését ismerteti az Azure Container Instancesben.
 
 Ebben az oktatóanyagban az alábbiakat végezte el:
 
 > [!div class="checklist"]
-> * Üzembe helyezheti az Azure Container Registry-tárolót az Azure CLI használatával
-> * Megtekintheti az alkalmazást a böngészőben
-> * Megtekintheti a tároló naplóit
+> * A tároló üzembe helyezése az Azure Container Registryből az Azure Container Instancesbe
+> * A futó alkalmazás megtekintése a böngészőben
+> * A tároló naplóinak megjelenítése
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az oktatóanyag elvégzéséhez az Azure CLI 2.0.27-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése][azure-cli-install].
-
-Az oktatóanyag elvégzéséhez szüksége lesz egy helyileg telepített Docker-fejlesztési környezetre. A Docker csomagokat biztosít, amelyekkel a Docker egyszerűen konfigurálható bármely [Mac][docker-mac], [Windows][docker-windows] vagy [Linux][docker-linux] rendszeren.
-
-Az Azure Cloud Shell nem tartalmazza a jelen oktatóanyag lépéseinek elvégzéséhez szükséges Docker-összetevőket, ezért az oktatóanyag teljesítéséhez telepítenie kell a számítógépén az Azure CLI-t és a Docker-fejlesztési környezetet.
+[!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 
 ## <a name="deploy-the-container-using-the-azure-cli"></a>Tároló üzembe helyezése az Azure CLI használatával
 
-Az Azure CLI segítségével a tároló Azure Container Instances szolgáltatásban történő üzembe helyezése egyetlen paranccsal elvégezhető. Mivel a tároló rendszerképét a privát Azure Container Registry-példány kezeli, annak megnyitásához meg kell adnia a hitelesítő adatait. A hitelesítő adatok beszerzése az alábbi Azure CLI-parancsokkal történik.
+Ebben a szakaszban az Azure CLI használatával üzembe helyezi [az első oktatóanyagban](container-instances-tutorial-prepare-app.md) létrehozott rendszerképet, amelyet [a második oktatóanyagban](container-instances-tutorial-prepare-acr.md) leküldött az Azure Container Registrybe. Mielőtt folytatná, győződjön meg arról, hogy mindkét oktatóanyagot elvégezte.
 
-A tárolóregisztrációs adatbázis bejelentkezési kiszolgálója (frissítse a beállításjegyzék nevével):
+### <a name="get-registry-credentials"></a>A tárolójegyzék hitelesítő adatainak lekérése
+
+Amennyiben egy privát tárolójegyzékben (mint amelyet [a második oktatóanyagban létrehozott](container-instances-tutorial-prepare-acr.md)) üzemeltetett rendszerképet kíván üzembe helyezni, meg kell adnia a tárolójegyzék hitelesítő adatait.
+
+Először szerezze be a tárolójegyzék bejelentkezési kiszolgálójának teljes nevét (az `<acrName>` elemet cserélje le a tárolójegyzék nevére):
 
 ```azurecli
 az acr show --name <acrName> --query loginServer
 ```
 
-A tárolóregisztrációs adatbázis jelszava:
+Ezután kérdezze le a tárolójegyzék jelszavát:
 
 ```azurecli
 az acr credential show --name <acrName> --query "passwords[0].value"
 ```
 
-Az alkalmazást [előre elő kell készíteni][prepare-app]; futtassa az alábbi [az container create][az-container-create] parancsot a tároló rendszerképének üzembe helyezéséhez a tárolóregisztrációs adatbázisból egy 1 processzormagra és 1 GB memóriára vonatkozó erőforrás-kérelemmel. Cserélje le az `<acrLoginServer>` és `<acrPassword>` helyőrzőket az előző két parancs futtatásakor beszerzett értékekre. Az `<acrName>` helyére írja be a tárolóregisztrációs adatbázis nevét. Ha szeretné, az `aci-tutorial-app` értéket is lecserélheti arra a névre, amelyet az alkalmazásnak adni szeretne.
+### <a name="deploy-container"></a>A tároló üzembe helyezése
+
+Az [az container create][az-container-create] paranccsal helyezze üzembe a tárolót. Cserélje le az `<acrLoginServer>` és `<acrPassword>` helyőrzőket az előző két parancs futtatásakor beszerzett értékekre. Cserélje le az `<acrName>` kifejezést a tárolóregisztrációs adatbázis nevére.
 
 ```azurecli
 az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-username <acrName> --registry-password <acrPassword> --dns-name-label aci-demo --ports 80
 ```
 
-Néhány másodpercen belül meg kell kapnia az Azure Resource Manager kezdeti válaszát. A `--dns-name-label` értéknek egyedinek kell lennie abban az Azure-régióban, ahol a tárolópéldányt létrehozza. Frissítse az előző példában szereplő értéket, ha a parancs futtatásakor **DNS-név címke** hibaüzenetet kap.
+Néhány másodpercen belül meg kell kapnia az Azure kezdeti válaszát. A `--dns-name-label` értéknek egyedinek kell lennie abban az Azure-régióban, ahol a tárolópéldányt létrehozza. Módosítsa az előző parancsban szereplő értéket, ha a parancs futtatásakor **DNS-névcímke** hibaüzenetet kap.
+
+### <a name="verify-deployment-progress"></a>Üzembe helyezés állapotának ellenőrzése
 
 Az üzembe helyezés állapotának megtekintéséhez használja az [az container show][az-container-show] parancsot:
 
@@ -74,7 +78,11 @@ Ha az üzembe helyezés sikeresen megtörtént, az [az container show][az-contai
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 ```
 
-Példa a kimenetre: `"aci-demo.eastus.azurecontainer.io"`
+Például:
+```console
+$ az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
+"aci-demo.eastus.azurecontainer.io"
+```
 
 A futó alkalmazás megtekintéséhez keresse meg a megjelenített DNS-nevet kedvenc böngészőjében:
 
@@ -86,12 +94,13 @@ Megtekintheti a tároló naplókimenetét is:
 az container logs --resource-group myResourceGroup --name aci-tutorial-app
 ```
 
-Kimenet:
+Példa a kimenetre:
 
 ```bash
+$ az container logs --resource-group myResourceGroup --name aci-tutorial-app
 listening on port 80
 ::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET / HTTP/1.1" 200 1663 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
-::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://13.88.176.27/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
+::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://aci-demo.eastus.azurecontainer.io/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
 ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
@@ -104,12 +113,17 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban elvégezte a tárolók üzembe helyezését az Azure Container Instances szolgáltatásban. A következő lépéseket hajtotta végre:
+Ebben az oktatóanyagban elvégezte a tároló üzembe helyezését az Azure Container Instancesben. A következő lépéseket hajtotta végre:
 
 > [!div class="checklist"]
-> * Üzembe helyezte az Azure Container Registry-tárolót az Azure CLI használatával
+> * Üzembe helyezte az Azure Container Registryben található tárolót az Azure CLI használatával
 > * Megtekintette az alkalmazást a böngészőben
 > * Megtekintette a tároló naplóit
+
+Most, hogy megismerte az alapokat, többet is megtudhat az Azure Container Instancesről, például a tárolócsoportok működéséről:
+
+> [!div class="nextstepaction"]
+> [Tárolócsoportok az Azure Container Instancesben](container-instances-container-groups.md)
 
 <!-- IMAGES -->
 [aci-app-browser]: ./media/container-instances-quickstart/aci-app-browser.png

@@ -1,26 +1,26 @@
 ---
-title: "Hozzon létre egy Azure virtuális hálózatra – az Azure CLI |} Microsoft Docs"
-description: "Gyorsan bemutatják, hogyan hozzon létre egy virtuális hálózatot az Azure parancssori felület használatával. A virtuális hálózati lehetővé teszi, hogy az Azure-erőforrások, például a virtuális gépeket, közvetlenül kommunikálnak egymással, és az internetes."
+title: Hozzon létre egy Azure virtuális hálózatra – az Azure CLI |} Microsoft Docs
+description: Gyorsan bemutatják, hogyan hozzon létre egy virtuális hálózatot az Azure parancssori felület használatával. A virtuális hálózati lehetővé teszi, hogy az Azure-erőforrások, például a virtuális gépeket, közvetlenül kommunikálnak egymással, és az internetes.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: 
+ms.topic: ''
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/09/2018
 ms.author: jdial
-ms.custom: 
-ms.openlocfilehash: 46fec48720c817072ce838dd2e4c07725be5a7fe
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.custom: ''
+ms.openlocfilehash: d07f06a1a70c859544c3b1ceb6146dc11e4d10aa
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-a-virtual-network-using-the-azure-cli"></a>Hozzon létre egy virtuális hálózatot az Azure parancssori felület használatával
 
@@ -129,4 +129,4 @@ Ebben a cikkben létrehozott egy alapértelmezett virtuális hálózat és két 
 Alapértelmezés szerint az Azure lehetővé teszi, hogy a virtuális gépek korlátlan titkos kommunikációját, de csak lehetővé teszi a bejövő SSH-munkamenetet a Linux virtuális gépekhez az internetről. Annak megismerése, hogyan engedélyezésére vagy korlátozására a különböző hálózati kommunikációs felé és felől a virtuális gépek, a következő oktatóanyag továbblépés.
 
 > [!div class="nextstepaction"]
-> [Hálózati forgalom szűrésére](virtual-networks-create-nsg-arm-cli.md)
+> [Hálózati forgalom szűrésére](tutorial-filter-network-traffic-cli.md)

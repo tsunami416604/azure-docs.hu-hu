@@ -1,25 +1,25 @@
 ---
-title: "Feladatok futtatása az Azure Batch számítási erőforrások hatékony - használandó párhuzamos |} Microsoft Docs"
-description: "Növelje a hatékonyság és az alacsonyabb költségek Azure Batch-készlet minden egyes csomópontján kevesebb számítási csomópontok és futó egyidejű feladatok használatával"
+title: Feladatok futtatása az Azure Batch számítási erőforrások hatékony - használandó párhuzamos |} Microsoft Docs
+description: Növelje a hatékonyság és az alacsonyabb költségek Azure Batch-készlet minden egyes csomópontján kevesebb számítási csomópontok és futó egyidejű feladatok használatával
 services: batch
 documentationcenter: .net
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 538a067c-1f6e-44eb-a92b-8d51c33d3e1a
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 05/22/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eae6359b5fb36bd0317391ce2330afb7dd7bfe3b
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: 5106bbbb073908af7e7e8f045fa6fb60e8a306f4
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Egyidejűleg köteg használati maximalizálhatja a feladatokat futtató számítási csomópontjain 
 
@@ -32,7 +32,7 @@ Bizonyos esetekben kihasználhassa egyetlen feladat dedikálni minden csomópont
 * **Csomópont számú korlátok kiküszöböléséhez** csomópontok közötti kommunikáció esetén kötelező a készlet belül. Csomópontok közötti kommunikációra konfigurálva készletek jelenleg legfeljebb 50 számítási csomópontok. Ha ilyen készlet minden egyes csomópontja képes feladatok párhuzamos végrehajtására, nagyobb számos feladatot egyszerre hajtható végre.
 * **Egy a helyszíni számítási fürt replikálása**, például amikor először helyezi át a számítási környezet az Azure-bA. Ha a jelenlegi helyszíni megoldás egyes számítási csomópontjain több feladat végrehajtása során, növelheti az, hogy a konfigurálás történő jobban csomópont feladatok maximális száma.
 
-## <a name="example-scenario"></a>Példa
+## <a name="example-scenario"></a>Példaforgatókönyv
 Például a párhuzamos feladat a végrehajtás előnyeit mutatja be, tegyük fel, hogy a feladat alkalmazás rendelkezik-e a CPU és memória úgy, hogy [szabványos\_D1](../cloud-services/cloud-services-sizes-specs.md) elegendőek csomópontjai. De a feladat befejezéséhez szükséges időt, a csomópontok 1000 van szükség.
 
 A szabványos helyett\_D1 csomópontok 1 Processzormagok, használhat [szabványos\_D14](../cloud-services/cloud-services-sizes-specs.md) csomópontokat, amelyek 16 mag, és engedélyezze a párhuzamos feladat a végrehajtás. Ezért *16-szer kevesebb csomópontok* használható--1000 csomópont helyett csak 63 lenne szükséges. Emellett minden egyes csomópont nagy alkalmazásfájlok vagy referenciaadatok szükségesek, ha feladat időtartama és hatékonyságát újra növelése, mert a rendszer átmásolja az adatokat csak 63 csomópontokra.
@@ -123,7 +123,7 @@ A második, a minta azt mutatja be a Futtatás jelentősen csökkentheti a felad
 >
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 ### <a name="batchlabs-heat-map"></a>BatchLabs Hőtérkép
 A [BatchLabs][batch_labs] egy ingyenes, számos funkcióval ellátott, különálló ügyféleszköz Azure Batch-alkalmazások létrehozásához, hibakereséséhez és monitorozásához. BatchLabs tartalmaz egy *Hőtérkép* képi megjelenítés feladat végrehajtása a szolgáltatás. Ha végrehajtása a [ParallelTasks] [ parallel_tasks_sample] mintaalkalmazást, a Hőtérkép szolgáltatás használatával egyszerűen jelenítheti meg minden egyes csomóponton párhuzamos tevékenységek végrehajtása.
 

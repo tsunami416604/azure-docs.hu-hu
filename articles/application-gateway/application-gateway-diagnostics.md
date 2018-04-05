@@ -1,25 +1,22 @@
 ---
-title: Az Alkalmazásátjáró belépési naplók, a Teljesítménynaplók, a háttér-állapotának és a metrikák figyelése |} Microsoft Docs
+title: Az Alkalmazásátjáró belépési naplók, a Teljesítménynaplók, a háttér-állapotának és a metrikák figyelése
 description: Megtudhatja, hogyan engedélyezheti és kezelheti a belépési naplók és a Teljesítménynaplók az Alkalmazásátjáró
 services: application-gateway
-documentationcenter: na
 author: amitsriva
 manager: rossort
-editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 300628b8-8e3d-40ab-b294-3ecc5e48ef98
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 3/23/2018
+ms.date: 4/2/2018
 ms.author: amitsriva
-ms.openlocfilehash: 885ae8b97175cac4cd29793eb0a935e81d54d0e4
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 982ae712320cb390b1822de6a7a3980ebfb6251e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Háttér-állapot, a diagnosztikai naplók és a metrikák az Alkalmazásátjáró
 
@@ -29,7 +26,7 @@ Azure Application Gateway használatával figyelheti erőforrások a következő
 
 * [Naplók](#diagnostic-logging): a teljesítmény, hozzáférési és egyéb adatok mentése vagy egy erőforráshoz, ellenőrzési célból felhasznált naplóihoz.
 
-* [Metrikák](#metrics): Application Gateway még egy metrika van. Ez a metrika az átviteli sebessége bájt / s az Alkalmazásátjáró méri.
+* [Metrikák](#metrics): Application Gateway tartoznak a hét mérni kívánt teljesítményszámlálóinak megtekintése.
 
 ## <a name="back-end-health"></a>Háttér-állapota
 
@@ -318,13 +315,22 @@ Is csatlakozni a tárfiókhoz és a JSON naplóbejegyzéseket a hozzáférés é
 
 Metrikák egyik újdonsága az egyes Azure-erőforrások ahol teljesítményszámlálók megtekintheti a portálon. Az Alkalmazásátjáró a következő mérőszámokat érhetők el:
 
-- Jelenlegi kapcsolatok száma
-- Sikertelen kérések
-- Kifogástalan állapotú gazdagép száma
-- Válaszállapot
-- Teljesítmény
-- Összes kérelem
-- A nem megfelelő gazdagép száma
+- **Jelenlegi kapcsolatok száma**
+- **Sikertelen kérelmek**
+- **Kifogástalan állapotú gazdagép száma**
+
+   Végezhet egy háttér címkészletet alapján egy adott háttérkészlet megfelelő vagy nem megfelelő gazdagépek megjelenítendő száma.
+
+
+- **Válaszállapot**
+
+   A válasz állapot kód terjesztési 2xx, 3xx, 4xx és 5xx kategóriák válaszok megjelenítendő további csoportosíthatók.
+
+- **Átviteli sebesség**
+- **Kérelmek teljes száma**
+- **A nem megfelelő gazdagép száma**
+
+   Végezhet egy háttér címkészletet alapján egy adott háttérkészlet megfelelő vagy nem megfelelő gazdagépek megjelenítendő száma.
 
 Az Alkalmazásátjáró, tallózással **figyelés** kattintson **metrikák**. Válassza ki, ha az elérhető értékek a **METRIKA** legördülő listából.
 

@@ -1,6 +1,6 @@
 ---
-title: "Az Azure-előfizetés fontosabb műveleteivel kapcsolatos értesítések naplózása és fogadása | Microsoft Docs"
-description: "Megismerkedhet az erőforrás-kezelés előzményadataival, a szolgáltatás állapotával és a Tevékenységnaplóban található egyéb előfizetési tevékenységekkel, majd a tevékenységnapló-riasztások beállításával e-mailes értesítést kaphat, ha kiemelt jogosultságokat igénylő műveletet hajtanak végre az előfizetésén belül."
+title: Az Azure-előfizetés fontosabb műveleteivel kapcsolatos értesítések naplózása és fogadása | Microsoft Docs
+description: Megismerkedhet az erőforrás-kezelés előzményadataival, a szolgáltatás állapotával és a Tevékenységnaplóban található egyéb előfizetési tevékenységekkel, majd a tevékenységnapló-riasztások beállításával e-mailes értesítést kaphat, ha kiemelt jogosultságokat igénylő műveletet hajtanak végre az előfizetésén belül.
 author: johnkemnetz
 manager: orenr
 services: monitoring-and-diagnostics
@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
-ms.openlocfilehash: b0a79f46788dc7efb588110dc50805c45c373a49
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: dd04cd9c8074d49df168b32840d12901da83c834
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="audit-and-receive-notifications-about-important-actions-in-your-azure-subscription"></a>Az Azure-előfizetés fontosabb műveleteivel kapcsolatos értesítések naplózása és fogadása
 
@@ -74,7 +74,7 @@ Az esemény összes részletének megtekintéséhez kattintson a **JSON** lapra.
 
 5. A **Riasztás ezen keresztül:** területen válassza az **Új** műveletcsoportot, és adjon egy **nevet** és egy **rövid nevet** a műveletcsoportnak. A műveletcsoport határozza meg, milyen műveleteket kell elvégezni, ha a riasztás aktiválódik (azaz egy új esemény megfelel a feltételeknek).
 
-6. A **Műveletek** területen vegyen fel 1 vagy több műveletet. Ehhez adja meg a művelet **Nevét**, a **Művelet típusát** (például e-mail vagy SMS) és az adott művelettípus **Részleteit** (például egy webhook URL-jét, e-mail-címet vagy telefonszámot).
+6. A **Műveletek** területen adjon hozzá 1 vagy több műveletet. Ehhez adja meg a művelet **nevét**, a **művelet típusát** (például e-mail, SMS vagy webhook) és az adott művelettípus **részleteit** (például egy webhook URL-címét, az e-mail-címet vagy a telefonszámot).
 
     ![Hálózati biztonsági csoport létrehozása a portálon](./media/monitor-quick-audit-notify-action-in-subscription/activity-log-alert-actions.png)
 
@@ -83,7 +83,7 @@ Az esemény összes részletének megtekintéséhez kattintson a **JSON** lapra.
 ## <a name="test-the-activity-log-alert"></a>A tevékenységnapló-riasztás tesztelése
 
 > [!NOTE]
-> Egy tevékenységnapló-riasztás életbe léptetése körülbelül 10 percbe telik. Azok az események, amelyekre ennek letelte előtt kerül sor, nem váltanak ki értesítést.
+> Egy tevékenységnapló-riasztás életbe léptetése körülbelül 5 percbe telik. Azok az események, amelyekre ennek letelte előtt kerül sor, nem váltanak ki értesítést.
 >
 >
 

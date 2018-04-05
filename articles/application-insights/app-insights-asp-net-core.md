@@ -1,6 +1,6 @@
 ---
 title: Az Azure Application Insights for ASP.NET Core |} Microsoft Docs
-description: "Webalkalmazások rendelkezésre állását, teljesítményét és használatának a figyelheti."
+description: Webalkalmazások rendelkezésre állását, teljesítményét és használatának a figyelheti.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: 77c48a22f974e027b4e8858d5e38018bbf5bb54f
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 3f57eb3ede3b57e28c13e053b86ab022fdd21b7e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="application-insights-for-aspnet-core"></a>ASP.Net Core-hoz készült Application Insights
 
@@ -95,7 +95,7 @@ Elindítani az alkalmazást, és kattint körül hivatkozások manuálisan teszt
 
 1. Az alkalmazás futtatása az IIS Express kattintva ![Képernyőfelvétel a Visual Studio IIS Express ikon](./media/app-insights-asp-net-core/0012-iis-express.png)
 
-2. Másolja az URL-címet a webböngésző cím sorából. Az a formátum http://localhost: {véletlenszerű portszám}
+2. Másolja az URL-címet a webböngésző cím sorából. A formátumú http://localhost:{random portszámát}
 
    ![Képernyőkép a böngészőcímsorba URL-címe](./media/app-insights-asp-net-core/0013-copy-url.png)
 
@@ -159,7 +159,7 @@ Több megerősítést kér fordulhat elő, olvassa el és fogadja el, ha elfogad
    ```
      ![Képernyőkép a _ViewImports.cshtml kód módosítása](./media/app-insights-asp-net-core/00018-view-imports.png)
 
-3. A **Layout.cshtml** adja hozzá az alábbi előtt a ``</head>`` címke, de más parancsfájlokat előtt.
+3. A **_Layout.cshtml** adja hozzá az alábbi előtt a ``</head>`` címke, de más parancsfájlokat előtt.
 
     ```C#
     @Html.Raw(snippet.FullScript)

@@ -1,57 +1,57 @@
 ---
-title: "Azure Cosmos DB: Webalkalmazás létrehozása .NET-tel és MongoDB API-val | Microsoft Docs"
-description: "Egy .NET-es kódmintát mutat be, amellyel csatlakozni lehet az Azure Cosmos DB MongoDB API-hoz, és lekérdezést lehet végezni vele"
+title: 'Azure Cosmos DB: Webalkalmazás létrehozása .NET-tel és MongoDB API-val | Microsoft Docs'
+description: Egy .NET-es kódmintát mutat be, amellyel csatlakozni lehet az Azure Cosmos DB MongoDB API-hoz, és lekérdezést lehet végezni vele
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: mimig1
 manager: jhubbard
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/10/2017
+ms.date: 03/19/2018
 ms.author: mimig
-ms.openlocfilehash: c92d970783ae0fb36e5761e4f35af7d4d6718121
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 90b1ec66007302ed02032e04e7f3d771012ad02d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-web-app-with-net-and-the-azure-portal"></a>Azure Cosmos DB: MongoDB API Webalkalmazás létrehozása .NET-tel és az Azure Portallal
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum-, kulcs/érték és gráf típusú adatbázisokat, melyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
+Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
-A rövid útmutató bemutatja, hogyan hozhat létre az Azure Portal segítségével Azure Cosmos DB-fiókot, dokumentum-adatbázist, és gyűjteményt. Ezután létrehozhatja és üzembe helyezheti a [MongoDB .NET driver-re](https://docs.mongodb.com/ecosystem/drivers/csharp/) épülő feladatlista webalkalmazást. 
+Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre az Azure Portal segítségével Azure Cosmos DB-fiókot, dokumentum-adatbázist és gyűjteményt. Ezután létrehozhatja és üzembe helyezheti a [MongoDB .NET driver-re](https://docs.mongodb.com/ecosystem/drivers/csharp/) épülő feladatlista webalkalmazást.
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="prerequisites-to-run-the-sample-app"></a>A mintaalkalmazás futtatásának előfeltételei
 
-Ha nincs telepítve a Visual Studio 2017, letöltheti és használhatja az **ingyenes** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)t. Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
+A mintaalkalmazás futtatásához szüksége lesz a [Visual Studio](https://www.visualstudio.com/downloads/) alkalmazásra és egy érvényes Azure CosmosDB-fiókra.
+
+Ha még nem rendelkezik a Visual Studio alkalmazással, töltse le a [Visual Studio 2017 Community Edition kiadását](https://www.visualstudio.com/downloads/) az **ASP.NET és webfejlesztési** számítási feladattal együtt.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
-[!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
 <a id="create-account"></a>
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
-## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
+## <a name="clone-the-sample-app"></a>A mintaalkalmazás klónozása
 
-Klónozzunk egy MongoDB API-alkalmazást a GitHubról, állítsuk be a kapcsolati karakterláncot, és futtassuk. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
+Először töltse le a MongoDB API-mintaalkalmazást a GitHubról. Ez egy feladatlistát implementál a MongoDB dokumentumtároló modelljével.
 
-1. Nyisson meg egy git terminálablakot, például a git bash eszközt, és a `cd` paranccsal lépjen egy munkakönyvtárba.  
-
-2. Futtassa a következő parancsot a mintatárház klónozásához. 
+1. Nyisson meg egy git terminálablakot, például a git bash eszközt, és a `cd` paranccsal lépjen egy munkakönyvtárba.
+2. Futtassa a következő parancsot a minta tárház klónozásához. 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-getting-started.git
     ```
 
-3. Ezután nyissa meg a megoldásfájlt a Visual Studióban. 
+Ha nem szeretné a gitet használni, [letöltheti a projektet ZIP-fájlként](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-getting-started/archive/master.zip).
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
@@ -121,7 +121,7 @@ Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosm
 
 5. Kattintson a **Létrehozás** lehetőségre a böngészőben, és hozzon létre néhány új tevékenységet a tevékenységek lista alkalmazásban.
 
-## <a name="review-slas-in-the-azure-portal"></a>Tekintse át az SLA-kat az Azure Portalon
+## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
@@ -132,9 +132,9 @@ Ha az alkalmazást már nem használja, akkor a következő lépésekkel a minta
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a létrehozott erőforrás nevére. 
 2. Az erőforráscsoport lapján kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, és a MongoDB-hez tartozó API használatával webalkalmazást futtatni. Most további adatokat importálhat a Cosmos DB-fiókba. 
+Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, és a MongoDB-hez tartozó API használatával webalkalmazást futtatni. Így már további adatokat importálhat a Cosmos DB-fiókba. 
 
 > [!div class="nextstepaction"]
 > [Adatok importálása az Azure Cosmos DB-be a MongoDB API-hoz](mongodb-migrate.md)

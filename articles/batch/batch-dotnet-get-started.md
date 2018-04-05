@@ -1,11 +1,11 @@
 ---
-title: "Oktatóanyag – Az Azure Batch .NET-es ügyfélkódtárának használata | Microsoft Docs"
-description: "Megismerheti az Azure Batch alapvető fogalmait, és létrehozhat egy egyszerű megoldást a .NET használatával."
+title: Oktatóanyag – Az Azure Batch .NET-es ügyfélkódtárának használata | Microsoft Docs
+description: Megismerheti az Azure Batch alapvető fogalmait, és létrehozhat egy egyszerű megoldást a .NET használatával.
 services: batch
 documentationcenter: .net
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 76cb9807-cbc1-405a-8136-d1e53e66e82b
 ms.service: batch
 ms.devlang: dotnet
@@ -13,13 +13,13 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
 ms.date: 06/28/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83f751c6b5e44705509804e6872bb16d7c2e1d18
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 9968d18f9e27d7a138831394658b40a483b66709
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="get-started-building-solutions-with-the-batch-client-library-for-net"></a>Bevezetés a megoldások létrehozásába a Batch ügyfél .NET-es kódtárával
 
@@ -736,7 +736,7 @@ Delete pool? [yes] no: yes
 Sample complete, hit ENTER to exit...
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Nyugodtan módosítsa a *DotNetTutorial* és a *TaskApplication* elemeket a különböző számítási forgatókönyvekkel való kísérletezéshez. Próbáljon meg például végrehajtási késleltetést adni a *TaskApplication* elemhez, például a [Thread.Sleep][net_thread_sleep] paranccsal, így hosszan futó feladatokat szimulálhat, és megfigyelheti őket a portálon. Próbáljon meg több tevékenységet hozzáadni, vagy módosítani a számítási csomópontok számát. Adja hozzá az ellenőrizni kívánt logikát, és engedélyezze egy meglévő készlet használatát a futtatási idő csökkentéséhez (*tipp*: tekintse meg a [Microsoft.Azure.Batch.Samples.Common][github_samples_common] `ArticleHelpers.cs` elemét az [azure-batch-samples][github_samples] mintákban).
 
 Most, hogy megismerte a Batch-megoldások alapvető munkafolyamatát, a Batch szolgáltatás további funkcióit is áttekintheti.

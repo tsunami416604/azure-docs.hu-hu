@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: c36a3451dabbb0d08e5e475e0eec14f861bd41ce
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: efb24f5e55d7ba0077797d3f7d0f2177020f92b3
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Létrehozása, módosítása vagy a nyilvános IP-cím törlése
 
@@ -58,7 +58,7 @@ Nyilvános IP-címek rendelkezik egy névleges kell fizetni. Az árképzés megt
     |Előfizetés|Igen|Léteznie kell az azonos [előfizetés](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) a nyilvános IP-címet hozzárendelni kívánt erőforrásként.|
     |Erőforráscsoport|Igen|A azonos vagy eltérő, létezhet [erőforráscsoport](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) a nyilvános IP-címet hozzárendelni kívánt erőforrásként.|
     |Hely|Igen|Léteznie kell az azonos [hely](https://azure.microsoft.com/regions), régió, mint a nyilvános IP-címet hozzárendelni kívánt erőforrásként cím is hivatkozott.|
-    |Rendelkezésre állási zóna| Nem | Ez a beállítás csak akkor jelenik meg, ha egy támogatott helyre. Támogatott helyek listáját lásd: [rendelkezésre állási zónák áttekintése](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Rendelkezésre állási zónák jelenleg előzetes kiadásban. Mielőtt kiválasztja a zónához vagy zónaredundáns beállítást, akkor először el kell végeznie a lépéseket [regisztrálja a rendelkezésre állási zónák Preview](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#get-started-with-the-availability-zones-preview). Ha bejelölte a **alapvető** SKU, *nincs* automatikusan ki van jelölve meg. Ha inkább a megadott zónában garantálni, beállíthatja a megadott zónában. Vagy a rendszer nem zónaredundáns. Ha bejelölte a **szabványos** Termékváltozat: zónaredundáns automatikusan ki van jelölve, és lehetővé teszi az adatok elérési útja rugalmas zóna hiba esetén. Ha inkább garantálja a megadott zónában, amely nem esetén is lehetséges legyen zóna, beállíthatja a megadott zónában.
+    |Rendelkezésre állási zóna| Nem | Ez a beállítás csak akkor jelenik meg, ha egy támogatott helyre. Támogatott helyek listáját lásd: [rendelkezésre állási zónák áttekintése](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ha bejelölte a **alapvető** SKU, *nincs* automatikusan ki van jelölve meg. Ha inkább a megadott zónában garantálni, beállíthatja a megadott zónában. Vagy a rendszer nem zónaredundáns. Ha bejelölte a **szabványos** Termékváltozat: zónaredundáns automatikusan ki van jelölve, és lehetővé teszi az adatok elérési útja rugalmas zóna hiba esetén. Ha inkább garantálja a megadott zónában, amely nem esetén is lehetséges legyen zóna, beállíthatja a megadott zónában.
   
 
 **Parancsok**

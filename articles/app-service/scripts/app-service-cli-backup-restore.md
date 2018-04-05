@@ -14,11 +14,11 @@ ms.topic: sample
 ms.date: 12/07/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: c1b2a008a0b474630cba1d8eca479197cdeb9497
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: a7f292cfcfc90d3bacb245448b8e53d80488ebad
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="restore-a-web-app-from-a-backup"></a>Webalkalmazás visszaállítása biztonsági másolatból
 
@@ -42,8 +42,8 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Megjegyzések |
 |---|---|
-| [`az webapp config backup list`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az_webapp_config_backup_list) | Lekéri egy webalkalmazás biztonsági másolatainak listáját. |
-| [`az webapp config backup restore`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az_webapp_config_backup_restore) | Visszaállít egy webalkalmazást egy biztonsági másolatból. |
+| [`az webapp config backup list`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-list) | Lekéri egy webalkalmazás biztonsági másolatainak listáját. |
+| [`az webapp config backup restore`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-restore) | Visszaállít egy webalkalmazást egy biztonsági másolatból. |
 
 ## <a name="next-steps"></a>További lépések
 

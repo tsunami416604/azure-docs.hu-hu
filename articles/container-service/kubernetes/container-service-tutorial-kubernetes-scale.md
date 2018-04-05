@@ -1,6 +1,6 @@
 ---
-title: "Azure Container Service-oktatóanyag – Alkalmazás skálázása"
-description: "Azure Container Service-oktatóanyag – Alkalmazás skálázása"
+title: Azure Container Service-oktatóanyag – Alkalmazás skálázása
+description: Azure Container Service-oktatóanyag – Alkalmazás skálázása
 services: container-service
 author: dlepow
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 36c5586f79cf127ec069fd3c6ef95dd073fdbdb6
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: ea64f9c52dc89dc8eb75a39afbb087a5127505f1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="scale-kubernetes-pods-and-kubernetes-infrastructure"></a>Kubernetes-podok és -infrastruktúra skálázása
 
@@ -28,7 +28,7 @@ Ebben az oktatóanyagban, amely egy hétrészes sorozat ötödik része, horizon
 > * Az alkalmazás előtérrendszerét futtató podok automatikus méretezésének konfigurálása
 > * A Kubernetes Azure-ügynökcsomópontok méretezése
 
-Az ezt követő oktatóanyagokban frissítjük majd az Azure Vote alkalmazást, és az Operations Management Suite szolgáltatást konfiguráljuk a Kubernetes fürt monitorozására.
+Az ezt követő oktatóanyagokban frissítjük az Azure Vote alkalmazást, és a Log Analyticst a Kubernetes-fürt monitorozására konfiguráljuk.
 
 ## <a name="before-you-begin"></a>Előkészületek
 

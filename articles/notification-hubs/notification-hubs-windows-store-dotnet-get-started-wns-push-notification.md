@@ -1,11 +1,11 @@
 ---
-title: "Ismerkedés az Azure Notification Hubs Univerzális Windows-platformon futó alkalmazásokkal való használatával | Microsoft Docs"
-description: "Ebből az oktatóanyagból elsajátíthatja, hogyan használható az Azure Notification Hubs leküldéses értesítések univerzális platformon futó Windows-alkalmazásra történő küldéséhez."
+title: Ismerkedés az Azure Notification Hubs Univerzális Windows-platformon futó alkalmazásokkal való használatával | Microsoft Docs
+description: Ebből az oktatóanyagból elsajátíthatja, hogyan használható az Azure Notification Hubs leküldéses értesítések univerzális platformon futó Windows-alkalmazásra történő küldéséhez.
 services: notification-hubs
 documentationcenter: windows
 author: jwhitedev
 manager: kpiteira
-editor: 
+editor: ''
 ms.assetid: cf307cf3-8c58-4628-9c63-8751e6a0ef43
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 12/22/2017
 ms.author: jawh
-ms.openlocfilehash: c09621d1152aafbe15039130f6ca24082dc5bd21
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 8464a7e48a02be39fb624322fac6c26f4c6c6806
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="get-started-with-notification-hubs-for-universal-windows-platform-apps"></a>Ismerkedés a Notification Hubs Univerzális Windows-platformon futó alkalmazásokkal való használatával
 
@@ -94,11 +94,11 @@ Ezzel konfigurálta az értesítési központot a WNS-sel folytatott együttműk
 1. A Visual Studióban kattintson a jobb gombbal a megoldásra, majd válassza a **Manage NuGet Packages** (NuGet-csomagok kezelése) lehetőséget.  
     Megnyílik a **Manage NuGet Packages** (NuGet-csomagok kezelése) ablak.
 
-2. A keresőmezőben adja meg a **WindowsAzure.Messaging.Managed** kifejezést, válassza az **Install** (Telepítés) lehetőséget, és fogadja el a használati feltételeket.
+2. A keresőmezőben adja meg a **Microsoft.Azure.NotificationHubs** kifejezést, válassza az **Install** (Telepítés) lehetőséget, és fogadja el a használati feltételeket.
    
     ![A NuGet-csomagok kezelése ablak][20]
    
-    A művelet a [WindowsAzure.Messaging.Managed NuGet-csomag](http://nuget.org/packages/WindowsAzure.Messaging) használatával letölti és telepíti a Windows rendszerhez készült Azure üzenetküldési kódtárat, és hozzáad egy rá mutató hivatkozást is.
+    A művelet a [Microsoft.Azure.NotificationHubs NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs) használatával letölti és telepíti a Windows rendszerhez készült Azure Notification Hubs kódtárat, és hozzáad egy rá mutató referenciát is.
 
 3. Nyissa meg az App.xaml.cs projektfájlt, majd adja hozzá a következő `using` utasításokat: 
    

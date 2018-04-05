@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 04/02/2018
 ms.author: mbullwin
-ms.openlocfilehash: 894b2234074dcfb262de9033a7728cad3bef2248
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 6b3205603b91077ca2c3226dcb78589de37d15cf
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Hibaelhárítás, kérdések és válaszok: Application Insights Java-hoz
 Kérdések és problémák [Azure Application Insights Java nyelven][java]? Az alábbiakban néhány tipp.
@@ -48,7 +48,7 @@ Kérdések és problémák [Azure Application Insights Java nyelven][java]? Az a
 * Van szüksége, a megfelelő AI erőforrást? Adjon meg kell egyeznie az alkalmazás az erőforráshoz, amennyiben várt telemetriai iKey. Azonos szintűeknek kell lenniük.
 
 #### <a name="i-dont-see-all-the-data-im-expecting"></a>I vagyok várt adatok nem látható
-* Nyissa meg a kvóták és panel megnyitásához, és ellenőrizze e árképzési [mintavételi](app-insights-sampling.md) működik. (100 %-os átviteli azt jelenti, hogy a mintavételi műveletben nem.) Az Application Insights szolgáltatás csak a azon részét, az alkalmazásból érkező telemetriai adatok fogadásához állítható be. Ez segítséget nyújt tartásához telemetriai adatot a havi kvótán belül. 
+* Nyissa meg a használati és a becsült költség lap és ellenőrzés e [mintavételi](app-insights-sampling.md) működik. (100 %-os átviteli azt jelenti, hogy a mintavételi műveletben nem.) Az Application Insights szolgáltatás csak a azon részét, az alkalmazásból érkező telemetriai adatok fogadásához állítható be. Ez segítséget nyújt tartásához telemetriai adatot a havi kvótán belül. 
 * Rendelkezik-e kapcsolva SDK mintavételi? Ha igen, akkor az adatok, a megfelelő esetében kamatláb mintát venni.
 * A Java SDK régebbi verzióját futtató? 2.0.1 verziójától kezdve, azt vezettek tartalék tolerancia mechanizmus időszakos hálózati és a háttérkiszolgáló hibák, valamint a helyi meghajtón adatmegőrzés kezelésére.
 * Ön első szabályozott miatt túlzott telemetriai? Ha bekapcsolja a naplózási adatokat, jelenik meg a napló "App halmozódni" üzenet. Az aktuális határértéke 32 KB-os telemetriai elemek/mp.

@@ -141,13 +141,15 @@
       href: sql-data-warehouse-troubleshoot.md
 - name: Útmutatók
   items:
-    - name: Szolgáltatásjellemzők
+    - name: Frissítés
+      href: upgrade-to-latest-generation.md
+    - name: Visszaállítás
       items:
-        - name: Adattárház visszaállítása – portál
+        - name: Portál
           href: sql-data-warehouse-restore-database-portal.md
-        - name: Adattárház visszaállítása – PowerShell
+        - name: PowerShell
           href: sql-data-warehouse-restore-database-powershell.md
-        - name: Adattárház visszaállítása – REST API
+        - name: REST API
           href: sql-data-warehouse-restore-database-rest-api.md
     - name: Biztonság
       items:

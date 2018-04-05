@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/23/2017
 ms.author: v-deasim
-ms.openlocfilehash: da43e122c3e7d5e852107d4e4cca237ce4824267
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
-ms.translationtype: MT
+ms.openlocfilehash: 26a0478f8713cb3584045f59c181c0a38331ea97
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="how-caching-works"></a>A gyorsítótárazás működése
 
@@ -45,7 +45,7 @@ Minden egyes gyorsítótár általában kezeli a saját erőforrás frissesség 
 
 A gyorsítótárazott erőforrás elavult, vagy elavult (mint a forrás kiszolgálón a megfelelő erőforrás) is lehet, mert fontos bármely gyorsítótárazást szabályozhatja a tartalom frissítésekor. Idő és a sávszélesség-felhasználás mentéséhez egy gyorsítótárazott erőforrás nem összeveti a verziót a forrás kiszolgálón minden alkalommal, amikor érhető el. Ehelyett mindaddig, amíg egy gyorsítótárazott erőforrás friss tekinthető, feltételezett, hogy a legújabb verziójú és közvetlenül az ügyfélnek küldött. A gyorsítótárazott erőforrás friss minősül, ha korát kisebb, mint a kora vagy egy gyorsítótár-beállításban megadott időtartam. Például ha egy böngészőben egy weblapot Újratölti, azt ellenőrzi, hogy a merevlemez-meghajtóról minden gyorsítótárazott erőforrás friss és betölti azt. Ha az erőforrás nem friss (elavult), egy friss másolatot be van töltve a kiszolgálóról.
 
-### <a name="validation"></a>Érvényesítés
+### <a name="validation"></a>Ellenőrzés
 
 Ha egy erőforrás elavult tekinthető, az eredeti kiszolgálóra kapcsolatba kell érvényesíti, ez azt jelenti, határozza meg, hogy a gyorsítótárban lévő adatok továbbra is megegyezik az eredeti kiszolgálón. Ha a fájl módosult a forrás kiszolgálón, a gyorsítótár frissíti a verziót az erőforrás. Ellenkező esetben ha az erőforrás friss, a kerülnek az adatok közvetlenül a gyorsítótárból érvényességének ellenőrzése először nélkül.
 
@@ -64,7 +64,7 @@ Két fejléc segítségével határozza meg a gyorsítótár frissesség: `Cache
 ## <a name="cache-directive-headers"></a>Gyorsítótár-irányelv fejlécek
 
 > [!IMPORTANT]
-> Alapértelmezés szerint az Azure CDN-végpont DSA optimalizált figyelmen kívül hagyja a gyorsítótár-irányelv fejlécek és megkerüli a gyorsítótárazást. A **Verizon Standard Azure CDN** és **Akamai Standard Azure CDN** profilok, beállíthatja, hogyan Azure CDN-végpont értékként kezelje-e ezek a fejlécek használatával [CDN-szabályra érvényesek](cdn-caching-rules.md)gyorsítótárazás engedélyezéséhez. A **Azure CDN Verizon** -profilok csak akkor használja a [szabálymotor](cdn-rules-engine.md) gyorsítótárazás engedélyezéséhez.
+> Alapértelmezés szerint az Azure CDN-végpont DSA optimalizált figyelmen kívül hagyja a gyorsítótár-irányelv fejlécek és megkerüli a gyorsítótárazást. A **Verizon Standard Azure CDN** és **Akamai Standard Azure CDN** profilok, beállíthatja, hogyan Azure CDN-végpont értékként kezelje-e ezek a fejlécek használatával [CDN-szabályra érvényesek](cdn-caching-rules.md)gyorsítótárazás engedélyezéséhez. A **Verizon Premium Azure CDN** -profilok csak akkor használja a [szabálymotor](cdn-rules-engine.md) gyorsítótárazás engedélyezéséhez.
 
 Az Azure CDN támogatja a következő HTTP-gyorsítótár-irányelv fejlécek, gyorsítótárazás időtartama és a gyorsítótár megosztása meghatározó.
 
@@ -123,7 +123,7 @@ A következő táblázat ismerteti az alapértelmezett gyorsítótárazásának 
 |                    | Verizon: általános webes kézbesítés | Verizon: DSA | Akamai: általános webes kézbesítés | Akamai: DSA | Akamai: nagy méretű fájl letöltése | Akamai: általános, vagy amelyek médiaadatfolyam |
 |--------------------|--------|------|-----|----|-----|-----|
 | **Tiszteletben forrása**   | Igen    | Nem   | Igen | Nem | Igen | Igen |
-| **CDN-gyorsítótárazás időtartama** | 7 nap | Egyik sem | 7 nap | Egyik sem | 1 nap | 1 év |
+| **CDN-gyorsítótárazás időtartama** | 7 nap | None | 7 nap | None | 1 nap | 1 év |
 
 **Forrás tiszteletben**: Megadja, hogy elfogadja a [gyorsítótár-irányelv fejlécek támogatott](#http-cache-directive-headers) Ha léteznek az a HTTP-válasz a forráskiszolgálóról.
 

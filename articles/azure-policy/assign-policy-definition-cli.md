@@ -9,11 +9,11 @@ ms.date: 03/13/2018
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: f56f00aabbef2cfa86264d3e962af9a9c0bafa98
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1ff1240073e25bf406e7da6b79135264376a5b3f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment-with-the-azure-cli"></a>Szabályzat-hozzárendelés létrehozása Azure környezetben a nem megfelelő erőforrások azonosításához az Azure CLI használatával
 
@@ -46,7 +46,7 @@ Az előző parancs a következő információkat használja:
 - **Név** – A szabályzat-hozzárendeléshez tartozó megjelenített név. Ebben az esetben a *Felügyelt lemezeket nem használó virtuális gépek naplózása – hozzárendelés* nevet használja.
 - **Szabályzat** – A szabályzatdefiníció azonosítója, amely alapján létre fogja hozni a hozzárendelést. Ezúttal a *Felügyelt lemezeket nem használó virtuális gépek naplózása* szabályzatdefiníciót fogja használni. A szabályzatdefiníció azonosítójának lekéréséhez futtassa ezt a parancsot: `az policy definition show --name 'Audit Virtual Machines without Managed Disks Assignment'`
 - **Hatókör** – A hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrások vagy erőforráscsoportok esetében lesz kényszerítve. Ez egyetlen előfizetéstől teljes erőforráscsoportokig terjedhet. Győződjön meg arról, hogy a &lt;scope&gt; helyett az erőforráscsoport neve szerepel.
-- **Sku** – Ez a parancs standard szinten hoz létre szabályzat-hozzárendelést. A standard szinten tömeges felügyeletet, megfelelőségértékelést és kijavítást végezhet. Jelenleg a standard szint ingyenes. A jövőben a standard szint költségekkel fog járni. A díjszabás módosítása be lesz jelentve, a további részletek pedig az [Azure Policy díjszabás](https://azure.microsoft.com/pricing/details/azure-policy) című szakaszban lesznek megtekinthetők.
+- **Sku** – Ez a parancs standard szinten hoz létre szabályzat-hozzárendelést. A standard szinten tömeges felügyeletet, megfelelőségértékelést és kijavítást végezhet. A díjszabással kapcsolatos további részletek: [Azure Policy – díjszabás](https://azure.microsoft.com/pricing/details/azure-policy).
 
 
 ## <a name="identify-non-compliant-resources"></a>Nem megfelelő erőforrások azonosítása

@@ -1,12 +1,12 @@
 ---
 title: Mi az az Azure Backup? | Microsoft Docs
-description: "Az Azure Backup használatával biztonsági mentést végezhet, és visszaállíthatja az adatokat Windows Serverekről, Windows-munkaállomásokról, System Center DPM-kiszolgálókról, valamint az Azure-beli virtuális gépekről."
+description: Az Azure Backup használatával biztonsági mentést végezhet, és visszaállíthatja az adatokat Windows Serverekről, Windows-munkaállomásokról, System Center DPM-kiszolgálókról, valamint az Azure-beli virtuális gépekről.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
-keywords: "biztonsági mentés és visszaállítás; recovery services; biztonsági mentési megoldások"
+editor: ''
+keywords: biztonsági mentés és visszaállítás; recovery services; biztonsági mentési megoldások
 ms.assetid: 0d2a7f08-8ade-443a-93af-440cbf7c36c4
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -16,11 +16,11 @@ ms.topic: overview
 ms.date: 3/1/2018
 ms.author: markgal;trinadhk;anuragm
 ms.custom: mvc
-ms.openlocfilehash: 600c4a29d7d7daabbbf6d1825671d109ea499c4b
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 00ed2a64c672e1d2ae9a0037905a544b6c4424b7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Az Azure Backup szolgáltatásainak áttekintése
 Az Azure Backup olyan Azure-alapú szolgáltatás, amellyel biztonsági másolatot készíthet adatairól (vagy megvédheti adatait), és visszaállíthatja őket a Microsoft-felhőből. Az Azure Backup megbízható, biztonságos és költséghatékony felhőalapú megoldással váltja fel a meglévő helyszíni vagy külső helyszínen lévő biztonsági mentési megoldást. Az Azure Backup több összetevőjét letöltheti és telepítheti a megfelelő számítógépre, kiszolgálóra vagy a felhőbe. A telepítendő összetevő vagy ügynök attól függ, hogy mit szeretne megvédeni. Minden Azure Backup-összetevővel (függetlenül attól, hogy helyszíni vagy a felhőben tárolt adatokat kíván védeni) készíthetők biztonsági másolatok az Azure Recovery Services-tárolójába. Az [Azure Backup-összetevők táblázatában](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (a cikk későbbi részében) azzal kapcsolatban talál információkat, hogy mely összetevőt kell használnia adott adatok, alkalmazások és számítási feladatok védelmére.
@@ -34,7 +34,7 @@ A hagyományos biztonsági mentési megoldások úgy fejlődtek, hogy a felhőt 
 
 **Korlátlan méretezés** – Az Azure Backup az Azure-felhő mögöttes teljesítményét és korlátlan méretezhetőségét használja fel a magas rendelkezésre állás biztosításához – a karbantartás és a figyelés többletterhe nélkül. Beállíthat riasztásokat az egyes eseményekre vonatkozó információszolgáltatás céljából, de nem kell aggódnia a felhőben tárolt adatainak magas rendelkezésre állása miatt.
 
-**Többféle tárolási lehetőség** – A magas rendelkezésre állás egyik megoldása a tárolóreplikáció. Az Azure Backup két replikációtípust nyújt: [helyileg redundáns tárolást](../storage/common/storage-redundancy.md#locally-redundant-storage) és [georedundáns tárolást](../storage/common/storage-redundancy.md#geo-redundant-storage). A biztonságimásolat-tárolási lehetőségek közül válassza az Önnek megfelelőt:
+**Többféle tárolási lehetőség** – A magas rendelkezésre állás egyik megoldása a tárolóreplikáció. Az Azure Backup két replikációtípust nyújt: [helyileg redundáns tárolást](../storage/common/storage-redundancy-lrs.md) és [georedundáns tárolást](../storage/common/storage-redundancy-grs.md). A biztonságimásolat-tárolási lehetőségek közül válassza az Önnek megfelelőt:
 
 * A helyileg redundáns tárolás (LRS) háromszor replikálja az adatokat (az adatok három másolatát hozza létre) egy adatközpontban lévő tárolóskálázási egységben. Az adatok összes másolata ugyanabban a régióban található. Az LRS egy alacsony költségű megoldás az adatok védelmére a helyi hardveres hibák esetén.
 
@@ -219,7 +219,7 @@ Néhány gyakori példa védett példányokra: virtuális gépek, alkalmazáskis
 
 
 ## <a name="what-is-a-recovery-services-vault"></a>Mi az a Recovery Services-tároló?
-A Recovery Services-tároló olyan online tárolóentitás az Azure-ban, amely az adatok, például a biztonsági másolatok, a helyreállítási pontok és a biztonsági mentésre vonatkozó szabályzatok tárolására szolgál. A Recovery Services-tároló az Azure-szolgáltatások, valamint a helyszíni kiszolgálók és munkaállomások biztonsági mentési adatainak tárolására szolgál. A Recovery Services-tárolók leegyszerűsítik a biztonsági mentési adatok szervezését, miközben minimálisra csökkentik a munkaterhelést. Minden egyes Azure-előfizetésben legfeljebb 25 Recovery Services-tároló hozható létre Azure-régiónként. Az adatok tárolási helyének kiválasztásakor figyelembe kell venni, hogy nem minden régió azonos. A régiónkénti párosításról és a további tárolási szempontokkal kapcsolatos információkért lásd a [georedundáns tárolást](../storage/common/storage-redundancy.md#geo-redundant-storage) ismertető cikket.
+A Recovery Services-tároló olyan online tárolóentitás az Azure-ban, amely az adatok, például a biztonsági másolatok, a helyreállítási pontok és a biztonsági mentésre vonatkozó szabályzatok tárolására szolgál. A Recovery Services-tároló az Azure-szolgáltatások, valamint a helyszíni kiszolgálók és munkaállomások biztonsági mentési adatainak tárolására szolgál. A Recovery Services-tárolók leegyszerűsítik a biztonsági mentési adatok szervezését, miközben minimálisra csökkentik a munkaterhelést. Minden egyes Azure-előfizetésben legfeljebb 25 Recovery Services-tároló hozható létre Azure-régiónként. Az adatok tárolási helyének kiválasztásakor figyelembe kell venni, hogy nem minden régió azonos. A régiónkénti párosításról és a további tárolási szempontokkal kapcsolatos információkért lásd a [georedundáns tárolást](../storage/common/storage-redundancy-grs.md) ismertető cikket.
 
 Az Azure Service Manageren alapuló mentési tárolók voltak a tároló első verziói. Az Azure Resource Manager modelljellemzőit biztosító Recovery Services-tárolók képezték a tároló második verzióját. A szolgáltatások közötti különbségekről teljes leírást a [Recovery Services-tároló áttekintő cikkében](backup-azure-recovery-services-vault-overview.md) talál. Már nem hozhat létre Backup-tárolót, és minden meglévő Backup-tároló Recovery Services-tárolóra frissült. Az Azure Portalon kezelheti a Recovery Services-tárolóra frissített tárolókat.
 

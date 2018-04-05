@@ -1,6 +1,6 @@
 ---
-title: "fájl belefoglalása"
-description: "fájl belefoglalása"
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines-windows
 author: cynthn
 ms.service: virtual-machines-windows
@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/11/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 6729c4281f4aa10b653d1c4f29104fd10a08a96e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 14aa0002ff88678bb54a3abed8bf7eeed3b717f4
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 Azure virtuális gép létrehozásakor létre kell hoznia egy [virtuális hálózatot](../articles/virtual-network/virtual-networks-overview.md) (VNet), vagy egy meglévő VNetet kell használnia. Arról is döntenie kell, hogy a virtuális gépek milyen módon legyenek elérhetők a VNeten. Mindenképpen [készítsen tervet az erőforrások létrehozása előtt](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md), továbbá győződjön meg arról, hogy tisztában van a [hálózati erőforrások korlátaival](../articles/azure-subscription-service-limits.md#networking-limits).
 
@@ -110,8 +110,8 @@ Ez a táblázat egy hálózati biztonsági csoport létrehozásának lehetséges
 | Módszer | Leírás |
 | ------ | ----------- |
 | [Azure Portal](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md) | Amikor virtuális gépet hoz létre az Azure Portalon, automatikusan létrejön egy NSG is, amelyet a rendszer a portál által létrehozott hálózati adapterhez rendel. Az NSG neve a virtuális gép nevéből és az **-nsg** elemből tevődik össze. Az NSG egy 1000-es prioritású bejövő szabályt, egy RDP beállítású szolgáltatást, egy TCP beállítású protokollt, egy 3389 beállítású portot és egy Engedélyezés beállítású műveletet tartalmaz. Ha bármilyen egyéb bejövő forgalmat kíván engedélyezni a virtuális gépre, további szabályokat kell az NSG-hez adnia. |
-| [Azure PowerShell](../articles/virtual-network/virtual-networks-create-nsg-arm-ps.md) | Használja a [New-AzureRmNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Network/v1.0.13/New-AzureRmNetworkSecurityRuleConfig) parancsot, és adja meg a szükséges szabályra vonatkozó információkat. Az NSG létrehozásához használja a [New-AzureRmNetworkSecurityGroup](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Network/v1.0.13/New-AzureRmNetworkSecurityGroup) parancsot. Az alhálózathoz tartozó NSG konfigurálásához használja a [Set-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Network/v1.0.13/Set-AzureRmVirtualNetworkSubnetConfig) parancsot. Az NSG a VNethez történő hozzáadásához használja a [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork) parancsot. |
-| [Azure CLI](../articles/virtual-network/virtual-networks-create-nsg-arm-cli.md) | Az [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg#create) parancs használatával hozhatja létre először az NSG-t. Az [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule#create) parancs használatával adhat szabályokat az NSG-hez. Az [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet#update) parancs használatával adhatja az NSG-t az alhálózathoz. |
+| [Azure PowerShell](../articles/virtual-network/tutorial-filter-network-traffic.md) | Használja a [New-AzureRmNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Network/v1.0.13/New-AzureRmNetworkSecurityRuleConfig) parancsot, és adja meg a szükséges szabályra vonatkozó információkat. Az NSG létrehozásához használja a [New-AzureRmNetworkSecurityGroup](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Network/v1.0.13/New-AzureRmNetworkSecurityGroup) parancsot. Az alhálózathoz tartozó NSG konfigurálásához használja a [Set-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Network/v1.0.13/Set-AzureRmVirtualNetworkSubnetConfig) parancsot. Az NSG a VNethez történő hozzáadásához használja a [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork) parancsot. |
+| [Azure CLI](../articles/virtual-network/tutorial-filter-network-traffic-cli.md) | Az [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg#create) parancs használatával hozhatja létre először az NSG-t. Az [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule#create) parancs használatával adhat szabályokat az NSG-hez. Az [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet#update) parancs használatával adhatja az NSG-t az alhálózathoz. |
 | [Sablon](../articles/virtual-network/virtual-networks-create-nsg-arm-template.md) | Hálózati biztonsági csoport sablon használatával történő üzembe helyezéséhez segítségképp használja a [hálózati biztonsági csoport létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-security-group-create) sablont. |
 
 ## <a name="load-balancers"></a>Terheléselosztók

@@ -61,6 +61,10 @@
           items:
             - name: Windows-ügynökök
               href: log-analytics-agent-windows.md
+            - name: Virtuálisgép-bővítmény Windowshoz
+              href: ../virtual-machines/windows/extensions-oms.md
+            - name: Virtuálisgép-bővítmény Linuxhoz
+              href: ../virtual-machines/linux/extensions-oms.md
             - name: Azure-erőforrások
               href: log-analytics-azure-storage.md
             - name: Azure PaaS-erőforrások

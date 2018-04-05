@@ -1,11 +1,11 @@
 ---
-title: "Azure IoT Hub közvetlen módszerek megértése |} Microsoft Docs"
-description: "Fejlesztői útmutató - használjon közvetlen módszerek meghívni a kódot az eszközök egy szolgáltatás alkalmazásból."
+title: Azure IoT Hub közvetlen módszerek megértése |} Microsoft Docs
+description: Fejlesztői útmutató - használjon közvetlen módszerek meghívni a kódot az eszközök egy szolgáltatás alkalmazásból.
 services: iot-hub
 documentationcenter: .net
 author: nberdy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 9f0535f1-02e6-467a-9fc4-c0950702102d
 ms.service: iot-hub
 ms.devlang: multiple
@@ -15,14 +15,17 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: nberdy
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 003b3f6ef8a6fbc1c6fcdfc58f7d35bf6c42c9ee
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 47bf7437eda09a536aa2d960cf5ec474e23356a6
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Ismertetés és az IoT-központ közvetlen metódusok
-Az IoT-központ lehetővé teszi a felhőből eszközök közvetlen módszerek meghívására. Közvetlen módszerek határoz meg egy kérelem-válasz interakció egy HTTP-hívás hasonló eszközökkel abban, hogy sikeres legyen, vagy közvetlenül (felhasználó által meghatározott időtúllépési) után sikertelen. Ez a megközelítés forgatókönyvekben, ahol azonnali lépéseket, attól függően, hogy képesek válaszolni volt-e az eszköz különböző érdemes használni. Az SMS ébresztési például küld egy eszközt, ha kapcsolat nélküli (SMS drágább, mint egy metódus hívása folyamatban).
+Az IoT-központ lehetővé teszi az eszközök a felhőből közvetlen módszerek meghívására. Közvetlen módszerek határoz meg egy kérelem-válasz interakció egy HTTP-hívás hasonló eszközökkel abban, hogy sikeres legyen, vagy közvetlenül (felhasználó által meghatározott időtúllépési) után sikertelen. Ez a megközelítés forgatókönyvekben, ahol azonnali lépéseket, attól függően, hogy képesek válaszolni volt-e az eszköz különböző érdemes használni. Az SMS ébresztési például küld egy eszközt, ha kapcsolat nélküli (SMS drágább, mint egy metódus hívása folyamatban).
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
+
 Minden eszköz metódus egyetlen eszközt célozza. [Feladatok] [ lnk-devguide-jobs] nyújtanak olyan közvetlen metódusok több eszközön, és ütemezés szerinti metódushívás leválasztott eszközökhöz.
 
 Bárki, aki **service csatlakozás** IoT-központ engedélyeinek indít el egy metódust az eszközön.
@@ -86,7 +89,7 @@ A háttér-alkalmazást, amely magában választ kap:
 ## <a name="handle-a-direct-method-on-a-device"></a>Kezeli az eszközön a közvetlen módszer
 ### <a name="mqtt"></a>MQTT
 #### <a name="method-invocation"></a>A metódushívás
-Eszköz megkapja a MQTT témakör közvetlen metódusú kérelmeket:`$iothub/methods/POST/{method name}/?$rid={request id}`
+Eszköz megkapja a MQTT témakör közvetlen metódusú kérelmeket: `$iothub/methods/POST/{method name}/?$rid={request id}`
 
 A szervezet, amely az eszköz megkapja a következő formátumban kell megadni:
 
@@ -109,7 +112,7 @@ A szervezet az eszköz állítja be, és bármely állapota lehet.
 
 ### <a name="amqp"></a>AMQP
 #### <a name="method-invocation"></a>A metódushívás
-Az eszköz közvetlen módszer kéréseket fogad a címe receive hivatkozás létrehozásával`amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`
+Az eszköz közvetlen módszer kéréseket fogad a címe receive hivatkozás létrehozásával `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`
 
 Az AMQP üzenet érkezik a metódus kérelem jelölő receive hivatkozásra. A következőket tartalmazza:
 * A korrelációs azonosító tulajdonsággal, amely tartalmazza a kérelem azonosítója, amely a megfelelő módszer visszajelzéshez kell átadni
@@ -117,7 +120,7 @@ Az AMQP üzenet érkezik a metódus kérelem jelölő receive hivatkozásra. A k
 * Az AMQP üzenettörzs, a módszer hasznos adatok JSON-ként tartalmazó
 
 #### <a name="response"></a>Válasz
-Az eszköz létrehoz egy küldő hivatkozást a metódusra adott válasz visszaadandó cím`amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`
+Az eszköz létrehoz egy küldő hivatkozást a metódusra adott válasz visszaadandó cím `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`
 
 A metódusra adott válasz akkor adja vissza a küldő hivatkozásra, és a következőképpen épül:
 * A korrelációs azonosító tulajdonsággal, amely tartalmazza a kérelem azonosítója a kérelemüzenetben a metódus átadott

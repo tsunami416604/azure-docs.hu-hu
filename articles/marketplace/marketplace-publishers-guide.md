@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: 94bf1a8fd9ac37087862823317bde5f3d130a3d6
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: e9343b4a0049b2eea30f903159fdeff0ae7ff851
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Az Azure piactér és AppSource publisher útmutató
 
@@ -59,7 +59,7 @@ A Microsoft biztosít két különböző piactér kirakatokkal, amelyek lehetőv
 A piactér kirakatokkal célcsoportok és a Microsoft cloud termékek szükséges található ügyfelek igazodik. Minden egyes áruháznak speciális közzétételi beállítások segítségével maximalizálhatja a közzétételi befektetéseit. Az alábbi táblázat foglalja össze ezeket a beállításokat:
 
 
-|          |Azure Marketplace |AppSource  |
+|          |Azure Piactér |AppSource  |
 |---------|---------|---------|
 |Célközönség     |Informatikai szakemberek és fejlesztők (specialistája szerepkörök következők DBAs, SecOps, DevOps)    | Sor üzleti döntéshozók (specialistája szerepkörök következők beszerzési, gyártási, nyilvántartás)      |
 |A beépített vagy bővítése     |Azure         | Azure-ban Dynamics 365, az Office 365, a Power bi-ban, a powerapps segítségével       |
@@ -74,7 +74,7 @@ Minden egyes kirakat egyedi ügyfelek igényeinek megfelelően működik. Ez leh
 Az informatikusok és a felhő fejlesztők megkereshetők, próbálja meg, és IaaS, SaaS és PaaS megoldások vásárlása az Azure piactéren keresztül megszólítása:
 
 
-|Ügyfél szükséges  |Azure Marketplace |
+|Ügyfél szükséges  |Azure Piactér |
 |---------|---------|
 |**További felhőalapú platform funkcióinak technikai és üzleti igényeinek követelményeket**     |  Biztosít egy egyre bővülő portfóliót kiegészítő alkalmazások és szolgáltatások Azure optimalizálva       |
 |**A megfelelő alkalmazás vagy szolgáltatás felderítéséhez kihívást találja**    |  Biztosít egy lehetőségekkel megkereshetők, próbálja meg, és a megoldások és az Azure-szolgáltatások megvásárlása        |
@@ -98,7 +98,7 @@ Válassza a kirakat kezdődik, az előfizetéshez a célközönség azonosító.
  
 Vegye figyelembe az egyes kirakat további előnyei:
 
-|Storefront juttatás  |Azure Marketplace  |AppSource   |
+|Storefront juttatás  |Azure Piactér  |AppSource   |
 |---------|---------|---------|
 |**Számlázási rugalmasságot**    | A virtuális gépek használatalapú számlázási lehetőségek használja a Microsoft nagyvállalati szerződés (EA) vagy a webes közvetlen értékesítési modellek. Árképzési beállítások is, ahol egy ajánlatot az termékbevételezésekor szabad ingyenes szint előfizetés. Is próbálja azt most előfizetés, amely promotionally szabad korlátozott időtartamra, amely után a fizetős verzióra alakítja át. A beállítás a közzétevők támogató is betöltheti az aktiválás a saját licenc. <br><br>Mindkét számlázási lehetőség forgatókönyvekben, ahol virtuális gépek vannak telepítve (például egy megoldássablonban vagy felügyelt alkalmazást), az Azure apps via kiépített Azure-erőforrások számlázása közvetlenül az ügyfél számára. | AppSource tesz lehetővé a próbaverziója kiépítését, de jelenleg biztosít egy kereskedelmi engedélyezett közzétételi beállítást. Az aktuális rendezés és számlázási infrastruktúra invesztálni és módosítások nélkül használható.        |
 |**Kapcsolatok más partnerekkel folytatott együttműködés elősegítése**     |Az Azure piactéren jelenleg nem teszi lehetővé a közzétevőt úgy, hogy a szolgáltatás szolgáltató vagy a kézbesítési partnerek csatolása az ajánlat, de ez a funkció 2018 elindul.         |  Független szoftvergyártók rendszerintegrátoroktól és felügyelt szolgáltatók adott megvalósítása forgatókönyvek lehet társítani. Ez a lehetőség támogatja az új ügyfelek együttműködési értékesítő.      |
@@ -114,9 +114,9 @@ Minden egyes kirakat több közzétételi beállítások és ajánlat típusokat
 |---------|---------|---------|
 |**List**    |    Megkereshetnek, tanácsadás     |  Azure Marketplace, AppSource       |
 |**Próbaverzió**   |     Ingyenes próbaverzió, SaaS-próbaverzióra, interaktív bemutató, kipróbálása    |  Azure Marketplace, AppSource       |
-|**Transaction**     |   Virtuális gép, sablon megoldás, felügyelt alkalmazás      |    Azure Marketplace     |
+|**Transaction**     |   Virtuális gép, sablon megoldás, felügyelt alkalmazás      |    Azure Piactér     |
 
-### <a name="list"></a>Listázás
+### <a name="list"></a>Lista
 
 Használjon forduljon kérek a próba- vagy tranzakció-szintjén részvétel esetén nem valósítható meg. Ennek a megközelítésnek az az előnye, azonnali megkezdéséhez fogadására, amely képes elindítani az üzleti lendkerék eligazodást üzletek be kell nurtured érdeklődők piacra jutási megoldással közzétevők hasonlít. Azonban a hátránya, hogy az ügyfél engagement korlátozva, szemben a más típusú.
 
@@ -125,7 +125,7 @@ Használjon forduljon kérek a próba- vagy tranzakció-szintjén részvétel es
 
 Amikor az ajánlat elsősorban szakmai-szolgáltatásokból állnak (például felméréseket, megvalósításokhoz, műhelyek), használja a a Consulting Services tanácsadó szolgálat fel típusa. Ajánlat hatókör, időtartama és ár javítani kell, egyetlen ügyfél számára kell lennie, és a helyen kell elvégezni.
 
-### <a name="trial"></a>Próba
+### <a name="trial"></a>Próbaverzió
 
 Biztosít egy próbaverziója növeli az ügyfeleknek, és ezért egy gazdagabb elérhetővé tegyék a megoldást kínál engagement szintjét. A próbaverzió lehetővé teszi az ügyfelek a megoldás felfedezése megvásárlása előtt. Próbaverziója hogy magasabb veszélyét annak, hogy az előléptetés a kirakatokkal a, és az ügyfél kapcsolattartás során több és több funkcióval érdeklődők kell látnia.
  
@@ -141,7 +141,7 @@ Három jellemző próba forgatókönyvek van:
 |**Interaktív bemutató**    |  Lehetővé teszi az ügyfelek a a terméket telepítő összetettsége nélkül művelet megjelenítéséhez.       |    A megoldás, amely nehéz elérni a próbaidőszak lenne összetett telepítési igényel.     |
 
 
-#### <a name="free-trial"></a>Ingyenes próbaverzió
+#### <a name="free-trial"></a>Ingyenes próbalehetőség
 
 Egy ingyenes próbaverzióra használja, ha a megoldáshoz, vagy az alkalmazás által a ingyenes-az-próbálja meg, a Szolgáltatottszoftver-alapú próbaverziójának. Ez a beállítás kiváló minőségű érdeklődők meghajtók érdekelt ügyfél segítségével az üzleti lendkerék indíthat el. Ingyenes próbaverzió korlátozott használatú vagy korlátozott időtartamra próba fiókok jelenítheti meg. Tartalmazniuk kell a fizetős használja a szoftver átalakítás felgyorsítása művelet hívása.
 
@@ -253,10 +253,10 @@ Nagyvállalati ügyfeleink az Azure-ra vonatkozó előzetes pénzügyi köteleze
 
 |**Követelmény**  | **Részletek**  |**Közzétételi beállítás**  |
 |---------|---------|---------|
-|**Ingyenes próbaverzió lejárta és próbaverziója**     |  Az ügyfél az alkalmazás használhatja az ingyenes korlátozott ideig kell lennie.<br><br>Ez azt jelenti, hogy az ügyfél nem vesznek részt a terméket, és nem az alapul szolgáló Microsoft-k termék vagy szolgáltatás költségének licencek vagy előfizetések díjai. Mert mind a próbaverziós beállítást a közzétevő Microsoft termék-előfizetéshez vannak telepítve, a közzétevő kizárólag vezérli próba költség optimalizálása és kezelését.<br><br>Válassza ki a próba-előfizetésre, az interaktív bemutató, vagy kipróbálása. Beállításoktól függetlenül az ingyenes próbaverzióval kell nyújtania az ügyfél minimális idő kipróbálni az alkalmazás további költség nélkül.<br><br>A folyamat próbát létrehozásának megkezdéséhez elérhetők a cloudmarketplace@microsoft.com. <br><br>Vegye figyelembe, hogy az Azure piactér SaaS próba észlel kell engedélyezése a felhasználók számára az Active Directory munkahelyi hitelesítő adatokkal jelentkezhetnek be. [További információk](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences). |   Próba      | 
-| **Könnyen konfigurálható, azonnal használható megoldás**    |  Az alkalmazás könnyű és gyors konfigurálásához és állítson be kell lennie.       |  Próba       |
-|**Rendelkezésre állás/üzemideje**    |    A Szolgáltatottszoftver-alkalmazás vagy a platform legalább 99,9 %-os hasznos üzemidőt kell rendelkeznie.     |    Próba     |
-|**Azure Active Directory**    |    Az ajánlat lehetővé kell tenni, Azure Active Directory (Azure AD) összevont egyszeri bejelentkezést (SSO) hozzájárulási engedélyezve van.      |  Próba|
+|**Ingyenes próbaverzió lejárta és próbaverziója**     |  Az ügyfél az alkalmazás használhatja az ingyenes korlátozott ideig kell lennie.<br><br>Ez azt jelenti, hogy az ügyfél nem vesznek részt a terméket, és nem az alapul szolgáló Microsoft-k termék vagy szolgáltatás költségének licencek vagy előfizetések díjai. Mert mind a próbaverziós beállítást a közzétevő Microsoft termék-előfizetéshez vannak telepítve, a közzétevő kizárólag vezérli próba költség optimalizálása és kezelését.<br><br>Válassza ki a próba-előfizetésre, az interaktív bemutató, vagy kipróbálása. Beállításoktól függetlenül az ingyenes próbaverzióval kell nyújtania az ügyfél minimális idő kipróbálni az alkalmazás további költség nélkül.<br><br>A folyamat próbát létrehozásának megkezdéséhez elérhetők a cloudmarketplace@microsoft.com. <br><br>Vegye figyelembe, hogy az Azure piactér SaaS próba észlel kell engedélyezése a felhasználók számára az Active Directory munkahelyi hitelesítő adatokkal jelentkezhetnek be. [További információk](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences). |   Próbaverzió      | 
+| **Könnyen konfigurálható, azonnal használható megoldás**    |  Az alkalmazás könnyű és gyors konfigurálásához és állítson be kell lennie.       |  Próbaverzió       |
+|**Rendelkezésre állás/üzemideje**    |    A Szolgáltatottszoftver-alkalmazás vagy a platform legalább 99,9 %-os hasznos üzemidőt kell rendelkeznie.     |    Próbaverzió     |
+|**Azure Active Directory**    |    Az ajánlat lehetővé kell tenni, Azure Active Directory (Azure AD) összevont egyszeri bejelentkezést (SSO) hozzájárulási engedélyezve van.      |  Próbaverzió|
 
 ### <a name="prerequisites-specific-to-transaction-publishing"></a>Tranzakció közzététel adott előfeltételei
 
@@ -271,8 +271,8 @@ Nagyvállalati ügyfeleink az Azure-ra vonatkozó előzetes pénzügyi köteleze
 
 |**Követelmények** |**Részletek**  |**Közzétételi beállítás**  |
 |---------|---------|---------|
-|**Szolgáltatási ajánlat tulajdonságok**     | A tanácsadási szolgáltatást kell lennie: <br>-A meghatározott hatókör, rögzített időtartamú, rögzített ár (vagy szabad) engagement kézbesíteni. <br>-Elsősorban értékesítési célú. <br>-Korlátozott egyetlen ügyfél számára. <br>-Hely a lefolytatni.        |    Listázás     |
-|**Consulting Services tanácsadó szolgálat partner követelményei**    |   *Csak AppSource*:  <br>- **Az ügyfél Engagement Dynamics 365**: rendelkezik ezüst vagy arany [felhő Ügyfélkapcsolat-kezelés](https://partner.microsoft.com/en-us/membership/cloud-customer-relationship-management-competency) kompetencia. <br>- **A pénzügyi és műveletek Enterprise edition Dynamics 365**: rendelkezik ezüst vagy arany [vállalati erőforrás-tervezés](https://partner.microsoft.com/en-us/membership/enterprise-resource-planning-competency) kompetencia, és egy minimális bevétel $ 25 000 felhőalapú műveleteket a záró 12 hónapon belül. <br>- **A pénzügyi és a műveletek, Business edition Dynamics 365**: szolgálhat [felhőalapú szolgáltatások szolgáltató (CSP)](https://partner.microsoft.com/en-us/cloud-solution-provider) vagy [digitális Partner a rekord (DPOR)](https://partner.microsoft.com/en-us/membership/digital-partner-of-record) legalább egy ügyfél. <br>- **A Power BI**: a [megoldás Partner] (file:///C:/Users/ellacroi/Downloads/BI%20Partner%20Program%20Overview%20 & % 20Incentives.pdf) feltételeknek. <br>- **PowerApps**: rendelkezik egy [Partner Showcase](https://powerapps.microsoft.com/en-us/partner-showcase/) megoldás. |    Listázás     |
+|**Szolgáltatási ajánlat tulajdonságok**     | A tanácsadási szolgáltatást kell lennie: <br>-A meghatározott hatókör, rögzített időtartamú, rögzített ár (vagy szabad) engagement kézbesíteni. <br>-Elsősorban értékesítési célú. <br>-Korlátozott egyetlen ügyfél számára. <br>-Hely a lefolytatni.        |    Lista     |
+|**Consulting Services tanácsadó szolgálat partner követelményei**    |   *Csak AppSource*:  <br>- **Az ügyfél Engagement Dynamics 365**: rendelkezik ezüst vagy arany [felhő Ügyfélkapcsolat-kezelés](https://partner.microsoft.com/en-us/membership/cloud-customer-relationship-management-competency) kompetencia. <br>- **A pénzügyi és műveletek Enterprise edition Dynamics 365**: rendelkezik ezüst vagy arany [vállalati erőforrás-tervezés](https://partner.microsoft.com/en-us/membership/enterprise-resource-planning-competency) kompetencia, és egy minimális bevétel $ 25 000 felhőalapú műveleteket a záró 12 hónapon belül. <br>- **A pénzügyi és a műveletek, Business edition Dynamics 365**: szolgálhat [felhőalapú szolgáltatások szolgáltató (CSP)](https://partner.microsoft.com/en-us/cloud-solution-provider) vagy [digitális Partner a rekord (DPOR)](https://partner.microsoft.com/en-us/membership/digital-partner-of-record) legalább egy ügyfél. <br>- **A Power BI**: a [megoldás Partner] (file:///C:/Users/ellacroi/Downloads/BI%20Partner%20Program%20Overview%20 & % 20Incentives.pdf) feltételeknek. <br>- **PowerApps**: rendelkezik egy [Partner Showcase](https://powerapps.microsoft.com/en-us/partner-showcase/) megoldás. |    Lista     |
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>Az Azure Active Directoryval kísérletek engedélyezése
 Az Azure Active Directory egy identitás felhőszolgáltatás, amely lehetővé teszi a hitelesítést a Microsoft munkahelyi vagy iskolai fiók szabványos protokollok segítségével: OAuth és az OpenID Connect. További tudnivalók az Azure AD meg a [termék weblap](https://www.microsoft.com/en-us/cloud-platform/azure-active-directory-features). 
@@ -314,7 +314,7 @@ Single-bérlői alkalmazások több lehetőség áll rendelkezésre:
 Office-, Dynamics, és a Power BI AppSource alkalmazások esetén részletesebb kapcsolatos követelményekről az ebben a szakaszban a termékspecifikus dokumentációjában. 
 
 
-|Termék |Közzétételi információkat  |
+|Product |Közzétételi információkat  |
 |---------|---------|
 |Office 365     |    Tekintse át a [közzétételi folyamat és irányelveket]( https://docs.microsoft.com/en-us/office/dev/store/submit-to-the-office-store).     |
 |Dynamics 365 a pénzügyi és műveletek  |   Ön éppen való fejlesztéskor Enterprise Edition, tekintse át a [közzétételi folyamat és irányelveket](https://docs.microsoft.com/en-us/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source).      |
@@ -335,7 +335,7 @@ A közzétételi folyamat megkezdése előtt érdemes egy ajánlatot készítés
 |A közzétételi összetevő lesz szüksége  |Az ajánlattípus  |
 |---------|---------|
 |**Ajánlat (200 karakter) nevét és leírását (2000 karaktereket)**    |  Összes        |
-|**MPN azonosítója, valamint a**   |  Tanácsadási szolgáltatásokat       |
+|**Microsoft-partnernek (MPN) hálózati azonosító**   |  Összes       |
 |**Ország vagy régió rendelkezésre állása**   | Összes        |
 |**Bevonási időtartama**     |   Tanácsadási szolgáltatásokat      |
 |**Alkalmazandó iparágakban, a kategóriák és a keresési kulcsszavakat**     |  Összes       |
@@ -345,7 +345,7 @@ A közzétételi folyamat megkezdése előtt érdemes egy ajánlatot készítés
 |**Marketing dokumentumok (maximális 3)**    |  Összes       |
 |**Cél vezethet**    |   Összes      |
 
-### <a name="contacts"></a>Névjegyek
+### <a name="contacts"></a>Kapcsolatok
 
 
 |A közzétételi összetevő lesz szüksége  |Az ajánlattípus  |
@@ -389,7 +389,7 @@ A közzétételi folyamat megkezdése előtt érdemes egy ajánlatot készítés
 |**HTML-alapú leírása (legfeljebb 3000 olyan karakter)**    |  Tranzakció: virtuális gépek, az Azure apps (megoldás sablonok és a felügyelt alkalmazások)       |
 |**Vállalati emblémát (40 x 40, 90 x 90, 115 x 115, 255 x 115, 815 x 290)**    |  Tranzakció: virtuális gépek, az Azure apps (megoldás sablonok és a felügyelt alkalmazások)       |
 
-### <a name="sku"></a>Termékváltozat
+### <a name="sku"></a>SKU
 
 
 |A közzétételi összetevő lesz szüksége  |Az ajánlattípus  |
@@ -410,8 +410,9 @@ Ebben a szakaszban a lépések azt ismertetik:
 ### <a name="process-overview"></a>Folyamat áttekintése
 
 
-|Piactér-regisztrációs lépésében  |Idő  |Leírás  |
+|Piactér-regisztrációs lépésében  |Time  |Leírás  |
 |---------|---------|---------|
+| Regisztrálja a Microoft Partner hálózati | 15 perc | Közzétevők regisztrálva kell lennie a Microsoft Partner Network (MPN) első szintű fiók érvényesítése és kap további előnyökkel is jár, és az Azure piactér Publisher alatt támogatása |
 |Microsoft azonosító létrehozása     |   15 perc      |   Partnerek Microsoft ID. kell A Microsoft ID a Cloud Partner portálra eléréséhez használható.       |
 |A piactér jelölési űrlap elküldése     |  1-3 napos       |  Partnerek kell küldenie a jóváhagyási folyamat számára a piactér jelölési formájában. Az űrlap elküldése után a piactér bevezetési csapat tekintse át az alkalmazást, és a kérelem érvényesítése.       |
 |Regisztrálja a fejlesztői központban     |    5 – 10 nap     | Alkalmazás regisztrálása a Microsoft Developer Centerben, ellenőrizze, hogy a partner, az ország, amelyen regisztrálva érvényes adó azonosítója érvényes jogalany a Microsoft szükség. A fejlesztői központ lehetővé teszi egy regisztrált a Microsoft developer kell, és adja meg az Azure fejlesztőprogrambeli a hozzáférést a partnert. <br><br>Vegye figyelembe, hogy a piactér jelölési képernyő még nem fejeződött be, ha meg kell adnia $99 regisztrációs díjat kell fizetnie. Ahhoz, hogy ez a díj az elérhetővé tételt követően, a piactér jelölési űrlap kitöltése és kapni fog egy promóciós kódot e-mailben.  |
@@ -425,6 +426,9 @@ Csak egy Microsoft ID-fiókot az Azure piactér és AppSource ajánlatok szüks�
 
 A kijelölt e-mail cím lehetőleg kell a vállalati tartományhoz, és az informatikai csapat által vezérelt. Az útmutató egy azonosító létrehozása előtt tekintse át a részeket [irányelvek és használati útmutatók](#guidelines-and-how-tos). 
 
+#### <a name="register-in-microsoft-partner-network"></a>A Microsoft Partner Network regisztrálása 
+Az Azure piactér vagy AppSource Publisher a vállalat váljon a Microsoft fog kapcsolattal. A Microsoft Partner Network (MPN) való részvétellel meg fog kell fog hozzáférni az alapvető előnyt értékre segítenek a vállalat a műszaki megoldások kidolgozásában és cége (pl.: technikai támogatást). A piactér közzétevőként való részvétellel hozzájárulnak a előnye a Microsoft Partner Network. Regisztrálja a MPN, látogasson el [Microsoft Partner Network](https://partner.microsoft.com/en-us/membership/). Ha a vállalata már regisztrálva van az MPN kell érvényesíteni. Regisztrálás után a rendszer kéri a fiók érvényesítéséhez a MPN azonosító publisher profiljainak érvényesítéséhez [Cloud Partner portálra](https://cloudpartner.azure.com/). 
+
 #### <a name="submit-the-marketplace-nomination-form"></a>A piactér jelölési űrlap elküldése
 A piactér bevezetési folyamat részeként kell jelölési űrlapot elküldeni. Az űrlap az alkalmazás vagy szolgáltatás ajánlat, a vállalati információk és támogatás szolgáltatja majd szintjének kapcsolatos információkat tartalmaz. 
 
@@ -435,7 +439,7 @@ Az űrlap elküldése után a piactér team tekintse át az alkalmazást, és a 
 
 #### <a name="register-in-the-developer-center"></a>Regisztrálja a fejlesztői központban
 
-A [Microsoft Developer Center](https://developer.microsoft.com/) a vállalati információk regisztrálhatók. A bejegyzés a vállalat érvényes képviselője kell lennie, és biztosítania kell az identitásukat érvényesítéséhez személyes adataik. A bejegyzés kell használni a Microsoft ID, amelyet a vállalat számára, és ugyanazt a fiókot kell használni a [Cloud Partner portálra](https://cloudpartner.azure.com/). 
+A [Microsoft Developer Center](https://developer.microsoft.com/) szükség a közzététel az alkalmazásokat, amelyek transact képességei, például a virtuális gépek, a megoldás sablonok és az Azure által kezelt alkalmazások. Ez a követelmény lehetővé teszi a Microsoft vállalati információk vállalata jogi, az adó és a entitások banki érvényesítéséhez. A bejegyzés a vállalat érvényes képviselője kell lennie, és biztosítania kell az identitásukat érvényesítéséhez személyes adataik. A személy regisztrálása a Microsoft ID, amelyet a vállalat kell használnia, és ugyanazt a fiókot kell használni a [Cloud Partner portálra](https://cloudpartner.azure.com/). 
 
 >[!IMPORTANT]
 >Mielőtt Developer Center a Microsoft-fiók létrehozása, győződjön meg arról, hogy a vállalat még nem rendelkezik egy.
@@ -446,16 +450,16 @@ A folyamat során azt fogja információgyűjtés vállalati cím, banki adatoka
 |**A Publisher profil**  |**Profil elejéig**  |**Átmeneti**  |**Lista és a fiók létrehozása**  |**Transact**
 |---------|---------|---------|---------|---------|
 |**Vállalati eszközregisztrációs**     | Rendelkeznie kell        |  Rendelkeznie kell       | Rendelkeznie kell        |  Rendelkeznie kell       |
-|**Profil Adószám**   |    Nem kötelező     |    Nem kötelező     |  Nem kötelező       | Rendelkeznie kell      |
-|**Banki fiók**     |   Nem kötelező      |    Nem kötelező     |  Nem kötelező       |  Rendelkeznie kell      |
+|**Profil Adószám**   |    Optional     |    Optional     |  Optional       | Rendelkeznie kell      |
+|**Banki fiók**     |   Optional      |    Optional     |  Optional       |  Rendelkeznie kell      |
 
 Ez az eljárás részletes leírását, lásd: [regisztrálja a fejlesztői központban útmutatást](#instructions-on-how-to-register-in-the-developer-center). 
 
 #### <a name="sign-in-to-the-cloud-partner-portal"></a>Jelentkezzen be a Cloud Partner portálra
 
-Miután megkapta a jóváhagyást a piactér csapat, amely a jelölési jóváhagyják, és a regisztrált a [Microsoft Developer Center](https://dev.windows.com), fiók eléréséhez jön létre a [Cloud Partner portálra ](https://cloudpartner.azure.com). Első bejelentkezési hitelesítő adatok a jelölési jóváhagyási e-mail szerepelnek. 
+Miután megkapta a jóváhagyást a piactér csapat, amely a jelölési jóváhagyják, és a regisztrált a [Microsoft Partner Network](https://partner.microsoft.com/en-us/membership/) és a [Microsoft Developer Center](https://dev.windows.com) (Ha a szükséges), egy fiókot hoz létre, hozzáférhet a [Cloud Partner portálra](https://cloudpartner.azure.com). Első bejelentkezési hitelesítő adatok fognak szerepelni a jelölési jóváhagyása e-mailben. 
 
-A közzétevő profil eléréséhez a piactér fiókot (Microsoft ID) használja. Bejelentkezés a Cloud Partner portálra, az utolsó lépés esetén a fejlesztői központban regisztrált fiókjában hozzárendelheti a megfelelő piactér publisher profilhoz közzététele. Ezt a társítást a Cloud Partner portálra, a közzétevő profilban a gombra a képernyő alján keresztül tehet.
+A közzétevő profil eléréséhez a piactér fiókot (Microsoft ID) használja. Egyszer a Cloud Partner portálra, az utolsó lépése, hogy a Microsoft Partner Network és fejlesztői központ fiók társítása (ha szükséges) a megfelelő piactér Publisher profil közzététele. Ezt megteheti a felhő partnerportálon keresztül a gombra a képernyő alján, a közzétevő profilban.
 
 A Cloud Partner portálra használatáról további információkért látogasson el a [további](https://cloudpartner.azure.com/#Learn) menüjében a portálon, és nézze meg a **dokumentáció** szakasz. 
 
@@ -621,6 +625,5 @@ Ha problémába ütközik fejlesztői központ regisztrációját, naplózni egy
    !["Submit incidens" gomb](./media/marketplace-publishers-guide/devcentersubmitincident.png)
 
 3. Válassza ki **Dev Center webhely számára** , **problématípust**, és válassza ki **közzététel és kezeli az alkalmazásokat** , **kategória**. Ezután válassza ki a **indítsa el az e-mailek** gombra.   
-
 4. A bejelentkezési oldalon Microsoft-fiók használatával jelentkezzen be. Ha nincs Microsoft-fiókja, létrehozhat egy hivatkozásra kattint. 
 5. Adja meg a hiba részleteit, és küldje el a jegy kiválasztásával a **Submit** gombra.

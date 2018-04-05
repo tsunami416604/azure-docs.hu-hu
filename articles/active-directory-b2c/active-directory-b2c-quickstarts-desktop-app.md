@@ -1,22 +1,21 @@
 ---
-title: "Egy Azure AD B2C-kompatibilis asztali alkalmazás kipróbálása"
-description: "Minta ASP.NET asztali alkalmazás kipróbálására szolgáló gyors útmutató, amely az Azure Active Directory B2C segítségével biztosít felhasználói bejelentkezést."
+title: Egy Azure AD B2C-kompatibilis asztali alkalmazás kipróbálása
+description: Minta ASP.NET asztali alkalmazás kipróbálására szolgáló gyors útmutató, amely az Azure Active Directory B2C segítségével biztosít felhasználói bejelentkezést.
 services: active-directory-b2c
-author: PatAltimore
+author: davidmu1
 manager: mtillman
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 2/13/2018
-ms.author: patricka
-ms.openlocfilehash: 18c378f82255df3a999703bc319d551af4b2705c
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.author: davidmu
+ms.openlocfilehash: 8726a5816623d42deb495aa062ef82f1f95b76b7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-test-drive-an-azure-ad-b2c-enabled-desktop-app"></a>Gyors útmutató: Egy Azure AD B2C-kompatibilis asztali alkalmazás kipróbálása
 
@@ -87,11 +86,11 @@ Az Azure Active Directory B2C-funkcióival a felhasználók frissíthetik a prof
 
 3. Módosítsa a **Display name** (Megjelenített név) és a **City** (Város) mezőket, majd kattintson a **Continue** (Folytatás) gombra.
 
-    Ekkor a *Token info* (Jogkivonat adatai) szövegmezőben megjelenik egy új hozzáférési jogkivonat. Ha szeretné ellenőrizni a profilján esett módosításokat, másolja és illessze be a hozzáférési jogkivonatot a jogkivonat-dekóderbe (https://jwt.ms).
+    Ekkor a *Token info* (Jogkivonat adatai) szövegmezőben megjelenik egy új hozzáférési jogkivonat. Ha szeretné ellenőrizni a profilján végzett módosításokat, másolja és illessze be a hozzáférési jogkivonatot a https://jwt.ms jogkivonat-dekóderbe.
 
 ## <a name="access-a-protected-web-api-resource"></a>Védett webes API-erőforrás elérése
 
-Kattintson a **Call API** (API meghívása) elemre, amellyel kérést küldhet az Azure AD B2C által védett https://fabrikamb2chello.azurewebsites.net/hello erőforrásnak. 
+Kattintson az **API meghívása** elemre, amellyel kérést küldhet az Azure AD B2C által védett https://fabrikamb2chello.azurewebsites.net/hello erőforrásnak. 
 
 ![API meghívása](media/active-directory-b2c-quickstarts-desktop-app/call-api-wpf.png)
 

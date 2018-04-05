@@ -9,11 +9,11 @@ ms.date: 3/14/2018
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 9f7d32d3d1208b6fe6075f7dacdd6d350aee03e2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 45c5ccd0f891a5592eee7400de108c5097f75286
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-the-azure-rm-powershell-module"></a>Gyors útmutató: Szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához az Azure RM PowerShell modullal
 
@@ -48,7 +48,7 @@ Az előző parancsok a következő információkat használják:
 - **Név** – A szabályzat-hozzárendeléshez tartozó megjelenített név. Ebben az esetben a *Felügyelt lemezeket nem használó virtuális gépek naplózása – hozzárendelés* nevet használja.
 - **Definíció** – A szabályzatdefiníció, amely alapján létre fogja hozni a hozzárendelést. Ezúttal a *Felügyelt lemezeket nem használó virtuális gépek naplózása* szabályzatdefiníciót fogja használni.
 - **Hatókör** – A hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrások vagy erőforráscsoportok esetében lesz kényszerítve. Ez egyetlen előfizetéstől teljes erőforráscsoportokig terjedhet. Győződjön meg arról, hogy a &lt;scope&gt; helyett az erőforráscsoport neve szerepel.
-- **Sku** – Ez a parancs standard szinten hoz létre szabályzat-hozzárendelést. A standard szinten tömeges felügyeletet, megfelelőségértékelést és kijavítást végezhet. Jelenleg a standard szint ingyenes. A jövőben a standard szint költségekkel fog járni. A díjszabás módosítása be lesz jelentve, a további részletek pedig az [Azure Policy díjszabás](https://azure.microsoft.com/pricing/details/azure-policy) című szakaszban lesznek megtekinthetők.
+- **Sku** – Ez a parancs standard szinten hoz létre szabályzat-hozzárendelést. A standard szinten tömeges felügyeletet, megfelelőségértékelést és kijavítást végezhet. A díjszabással kapcsolatos további részletek: [Azure Policy – díjszabás](https://azure.microsoft.com/pricing/details/azure-policy).
 
 
 Most már készen áll a nem megfelelő erőforrások azonosítására a környezet megfelelési állapotának megismerése céljából.

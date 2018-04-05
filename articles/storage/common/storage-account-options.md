@@ -9,11 +9,11 @@ ms.workload: storage
 ms.topic: get-started-article
 ms.date: 01/17/2018
 ms.author: jirwin
-ms.openlocfilehash: 2c69519b865169b477950bc8fa659d5ad9081bbf
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 75d1580df5e36b2c88939fde9077c5a1948f6348
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-storage-account-options"></a>Az Azure Storage-fiók beállításai
 
@@ -218,7 +218,7 @@ A meglévő tárfiókok monitorozásához és az ezzel kapcsolatos adatgyűjtés
 További információért lásd [a Storage Analytics mérőszámainak áttekintését](https://msdn.microsoft.com/library/azure/hh343258.aspx) és [a Storage Analytics mérőszámainak táblasémáját](https://msdn.microsoft.com/library/azure/hh343264.aspx).
 
 > [!NOTE]
-> A Blob Storage-tárfiókok a tábla szolgáltatásvégpontját csak az adott fiók mérőszámadatainak tárolásához és eléréséhez jelenítik meg. A zónaredundáns tárfiókok (ZRS) támogatják a mérőszámok gyűjtését, míg a klasszikus ZRS-tárfiókok nem. További információt a [zónaredundáns tárolást](storage-redundancy.md#zone-redundant-storage) ismertető szakaszban talál. 
+> A Blob Storage-tárfiókok a tábla szolgáltatásvégpontját csak az adott fiók mérőszámadatainak tárolásához és eléréséhez jelenítik meg. 
 
 A Blob Storage tárolófelhasználásának figyeléséhez engedélyeznie kell a kapacitási mérőszámot.
 Ha ez a mérőszám engedélyezve van, a rendszer naponta rögzíti a tárfiók blobszolgáltatásának kapacitásadatait, és létrehoz egy táblabejegyzést az adott tárfiók *$MetricsCapacityBlob* táblájában.

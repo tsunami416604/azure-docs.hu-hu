@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált munkahelyi által Facebook-on |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a munkahely által Facebook között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált munkahelyi által Facebook-on |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a munkahely által Facebook között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 03/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 524319deea957809440436b3cac2b0256516923a
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: a1f4243eafc6a2d5c632220ec80b28b29f8ae985
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workplace-by-facebook"></a>Oktatóanyag: Azure Active Directoryval integrált munkahelyi által Facebook-on
 
@@ -45,6 +45,9 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 
 - Ne használja az éles környezetben, nem szükséges.
 - Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, egy hónapos próbaverzió kaphat [Itt](https://azure.microsoft.com/pricing/free-trial/).
+
+> [!NOTE]
+> Facebook-on két termékek, a szokásos munkahelyi (ingyenes) és a munkahelyi prémium (fizetős) rendelkezik. A munkahelyi Premium-bérlő nincs más megvalósítását költség vagy a szükséges licencek SCIM és az egyszeri bejelentkezés integrációs is konfigurálhatja. Egyszeri Bejelentkezéssel és SCIM a munkahelyi normál esetben nem érhetők el.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
@@ -111,9 +114,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-workplacebyfacebook-tutorial/tutorial_workplacebyfacebook_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<instancename>.facebook.com`
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<instancename>.facebook.com`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://www.facebook.com/company/<instanceID>`
+    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://www.facebook.com/company/<instanceID>`
 
     > [!NOTE] 
     > Ezek az értékek nincsenek tényleges. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Tekintse meg a hitelesítési lapon a megfelelő értékeket a munkahelyi vállalati irányítópult a munkahelyi Közösség számára. 
@@ -159,10 +162,6 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 15. **SAML kijelentkezési átirányítási (nem kötelező)** - 
 
     Ha szeretné, opcionálisan egy SAML kijelentkezési URL-címek konfigurálása, mutasson az Azure AD kijelentkezési oldalon használható. Ha ezt a beállítást engedélyezve és konfigurálva van, a felhasználó már nem jutnak a munkahelyi kijelentkezési lapra. Ehelyett a felhasználó hozzá lett adva a SAML kijelentkezési átirányítási beállítást a URL-címre irányítja.
-
-
-> [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="configuring-reauthentication-frequency"></a>Újrahitelesítés gyakoriság beállítása
 
@@ -271,4 +270,3 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 [201]: ./media/active-directory-saas-workplacebyfacebook-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-workplacebyfacebook-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-workplacebyfacebook-tutorial/tutorial_general_203.png
-

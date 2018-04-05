@@ -1,24 +1,24 @@
 ---
-title: "Hiba és kezelése az Azure Logic Apps a kivétel |} Microsoft Docs"
-description: "Hiba és a Logic Apps kivételkezelés kombinációját."
+title: Hiba és kezelése az Azure Logic Apps a kivétel |} Microsoft Docs
+description: Hiba és a Logic Apps kivételkezelés kombinációját.
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: dereklee
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: e50ab2f2-1fdc-4d2a-be40-995a6cc5a0d4
 ms.service: logic-apps
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: logic-apps
 ms.date: 01/31/2018
 ms.author: deli; LADocs
-ms.openlocfilehash: 2ae4f0ae9782ada23089d364e8a1700144ef5ff7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 70dd4e98dbffd9dac27752f0b4c2f5ce4ca70bdc
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="handle-errors-and-exceptions-in-logic-apps"></a>Hibákat és kivételeket a Logic Apps alkalmazásokat kezeléséhez
 
@@ -55,16 +55,16 @@ Az újrapróbálkozási házirendje nem definiált a **retryPolicy** szakaszban,
         "retryPolicy" : {
             "type": "exponential",
             "count": 4,
-            "interval": "PT7.5S",
+            "interval": "PT7S",
             "minimumInterval": "PT5S",
-            "maximumInterval": "PT45S"
+            "maximumInterval": "PT1H"
         }
     },
     "runAfter": {}
 }
 ```
 
-### <a name="none"></a>Nincs
+### <a name="none"></a>None
 
 Ha **retryPolicy** való **nincs**, ez a házirend nem próbálja meg újra a sikertelen kérelmek.
 
@@ -177,7 +177,7 @@ Bár a hatókörből hibák elfogja akkor hasznos, érdemes segít megérteni, h
 
 A  **@result()** függvény (a hatókör neve) egyetlen paramétert fogad, és minden művelet eredményeinek hatókörön belüli tömbjét adja vissza. E művelet objektumok például őket a  **@actions()** objektumot, például a művelet kezdési idő, befejezési időpontja, állapota, bemeneti adatokat, korrelációs azonosító és kimenetek. Egy hatókörön belüli bármely művelet, amelyet nem sikerült a környezet küldéséhez, könnyen összepárosíthassa egy  **@result()** működik egy **runAfter** tulajdonság.
 
-Egy művelet *minden* egy hatókör, amely rendelkezik a művelet egy **sikertelen** eredményt, és a tömb le a sikertelen műveletek eredmények szűréséhez párosítható  **@result()** az egy  **[szűrő tömb](../connectors/connectors-native-query.md)**  műveletet és egy  **[ForEach](../logic-apps/logic-apps-control-flow-loops.md)**  hurok. A szűrt eredmény tömb igénybe vehet, és egy műveletet minden egyes hiba használatára vonatkozó a **ForEach** hurok. 
+Egy művelet *minden* egy hatókör, amely rendelkezik a művelet egy **sikertelen** eredményt, és a tömb le a sikertelen műveletek eredmények szűréséhez párosítható  **@result()** az egy **[szűrő tömb](../connectors/connectors-native-query.md)** műveletet és egy **[ForEach](../logic-apps/logic-apps-control-flow-loops.md)** hurok. A szűrt eredmény tömb igénybe vehet, és egy műveletet minden egyes hiba használatára vonatkozó a **ForEach** hurok. 
 
 Íme egy példa, majd részletesen ismerteti, amelyet az adott válasz törzsének bármely művelet, amelyet nem sikerült a HTTP POST kérést küld "My_Scope" hatókörén belül:
 

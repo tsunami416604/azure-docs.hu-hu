@@ -1,25 +1,25 @@
 ---
-title: "Feladat függőségek befejezésekor, más feladatok – Azure Batch-alapú feladatok futtatásához használt |} Microsoft Docs"
-description: "Egyéb feladatok MapReduce stílus és hasonló big Data típusú adatok feldolgozása megvalósításának függő feladatok létrehozása az Azure Batch munkaterhelések."
+title: Feladat függőségek befejezésekor, más feladatok – Azure Batch-alapú feladatok futtatásához használt |} Microsoft Docs
+description: Egyéb feladatok MapReduce stílus és hasonló big Data típusú adatok feldolgozása megvalósításának függő feladatok létrehozása az Azure Batch munkaterhelések.
 services: batch
 documentationcenter: .net
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: b8d12db5-ca30-4c7d-993a-a05af9257210
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 05/22/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 465306d2de8d1dbe6ba1f0cd74be720b78a50de3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ba85e075c39251b0b3d7c4b8bc3f8d53a1afadf7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>A feladat függőségek más feladatok függő feladatok futtatásához létrehozása
 
@@ -76,8 +76,8 @@ Alapszintű feladat függőségi három forgatókönyv esetén használhatja az 
 
 | A forgatókönyv&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Példa |  |
 |:---:| --- | --- |
-|  [-Az-egyhez](#one-to-one) |*taskB* függ *taskA* <p/> *taskB* végrehajtásra, amíg nem ütemezi *taskA* sikeresen befejeződött |![Ábra: a feladat egy az egyhez típusú függőség][1] |
-|  [Egy-a-többhöz](#one-to-many) |A *taskC* a *taskA* és a *taskB* tevékenységtől is függ <p/> *taskC* végrehajtásra, amíg nem ütemezi *taskA* és *taskB* sikeresen befejeződött |![Ábra: egy-a-többhöz feladat függőség][2] |
+|  [One-to-one](#one-to-one) |*taskB* függ *taskA* <p/> *taskB* végrehajtásra, amíg nem ütemezi *taskA* sikeresen befejeződött |![Ábra: a feladat egy az egyhez típusú függőség][1] |
+|  [One-to-many](#one-to-many) |A *taskC* a *taskA* és a *taskB* tevékenységtől is függ <p/> *taskC* végrehajtásra, amíg nem ütemezi *taskA* és *taskB* sikeresen befejeződött |![Ábra: egy-a-többhöz feladat függőség][2] |
 |  [A feladat Azonosítótartományának kezdete](#task-id-range) |*taskD* feladatok számos függ <p/> *taskD* végrehajtásra, amíg a feladatok-azonosítók nem ütemezi *1* keresztül *10* sikeresen befejeződött |![Ábra: Feladat azonosítója tartomány függőség][3] |
 
 > [!TIP]
@@ -207,7 +207,7 @@ A [TaskDependencies] [ github_taskdependencies] mintaprojektet egyike a [Azure B
 - Egyéb feladatok függő feladatok létrehozása
 - Megtudhatja, hogyan hajtható végre ezeket a feladatokat a számítási csomópontok készlete.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 ### <a name="application-deployment"></a>Alkalmazás központi telepítése
 A [alkalmazáscsomagok](batch-application-packages.md) kötegelt funkciójával egyszerűen mindkét központi telepítése és az alkalmazásokat, amelyek a feladatok végrehajtása a számítási csomópontok verziója.
 

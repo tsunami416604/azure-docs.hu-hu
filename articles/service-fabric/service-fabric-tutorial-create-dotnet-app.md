@@ -1,12 +1,12 @@
 ---
-title: ".NET-alkalmazás létrehozása a Service Fabrichez | Microsoft Docs"
-description: "Ez az oktatóanyag azt ismerteti, hogyan hozhat létre egy alkalmazást az ASP.NET Core kezelőfelülete és egy megbízható állapotalapú háttérszolgáltatás segítségével, majd hogyan helyezheti üzembe az alkalmazást egy fürtön."
+title: .NET-alkalmazás létrehozása a Service Fabrichez | Microsoft Docs
+description: Ez az oktatóanyag azt ismerteti, hogyan hozhat létre egy alkalmazást az ASP.NET Core kezelőfelülete és egy megbízható állapotalapú háttérszolgáltatás segítségével, majd hogyan helyezheti üzembe az alkalmazást egy fürtön.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: tutorial
@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 01/29/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: f8d9733b7dad4c6beeed9bcc950910ed6b426585
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: cbaca20c5226cd38b11288738b40cf7bf280e849
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Oktatóanyag: Alkalmazás létrehozása és üzembe helyezése egy ASP.NET Core Web API kezelőfelületi szolgáltatás és egy állapotalapú háttérszolgáltatás segítségével
-Ez az oktatóanyag egy sorozat első része.  Megtudhatja, hogyan hozhat létre egy Azure Service Fabric-alkalmazást egy ASP.NET Core Web API kezelőfelületi és egy állapotalapú háttérszolgáltatás segítségével az adatok tárolásához. Az útmutató elvégzése után rendelkezni fog egy ASP.NET Core webes kezelőfelületes szavazóalkalmazással, amely egy, a fürtben található állapotalapú háttérszolgáltatásba menti a szavazati adatokat. Ha nem szeretné manuálisan létrehozni a szavazóalkalmazást, akkor [letöltheti a forráskódot](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) a kész alkalmazáshoz, és folytathatja a [mintául szolgáló szavazóalkalmazás bemutatásával](#walkthrough_anchor).
+Ez az oktatóanyag egy sorozat első része.  Megtudhatja, hogyan hozhat létre egy Azure Service Fabric-alkalmazást egy ASP.NET Core Web API kezelőfelületi és egy állapotalapú háttérszolgáltatás segítségével az adatok tárolásához. Az útmutató elvégzése után rendelkezni fog egy ASP.NET Core webes kezelőfelületes szavazóalkalmazással, amely egy, a fürtben található állapotalapú háttérszolgáltatásba menti a szavazati adatokat. Ha nem szeretné manuálisan létrehozni a szavazóalkalmazást, akkor [letöltheti a forráskódot](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) a kész alkalmazáshoz, és folytathatja a [mintául szolgáló szavazóalkalmazás bemutatásával](#walkthrough_anchor).  Ha szeretné, megtekintheti az oktatóanyag [útmutató videóját](https://channel9.msdn.com/Events/Connect/2017/E100).
 
 ![Alkalmazásdiagram](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
 

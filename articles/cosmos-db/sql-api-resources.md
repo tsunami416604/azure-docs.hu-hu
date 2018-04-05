@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f64d79cd3929a279c7e279e74b0b21d163c0fa45
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 948fc84db2fd2d6f2059f9807b84194ebac59472
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Az Azure Cosmos DB hierarchikus erőforrás-modellje és alapfogalmai
 
@@ -158,7 +158,7 @@ Kiépítése és kezelése az adatbázisfiók részeként konfigurálja, és olv
     </tbody>
 </table>
 
-Mellett kiépítés, konfigurálása és kezelése a adatbázisfiókot az Azure portálról programozott módon is létrehozhat és Cosmos DB adatbázis fiókok használatával kezelni a [Azure Cosmos DB REST API-k](/rest/api/documentdb/) valamint [ügyfél SDK-k](sql-api-sdk-dotnet.md).  
+Mellett kiépítés, konfigurálása és kezelése a adatbázisfiókot az Azure portálról programozott módon is létrehozhat és Cosmos DB adatbázis fiókok használatával kezelni a [Azure Cosmos DB REST API-k](/rest/api/cosmos-db/) valamint [ügyfél SDK-k](sql-api-sdk-dotnet.md).  
 
 ## <a name="databases"></a>Adatbázisok
 Egy Cosmos DB adatbázisa egy logikai tároló egy vagy több gyűjtemények és a felhasználók, az alábbi ábrán látható módon. Tetszőleges számú adatbázishoz egy Cosmos DB adatbázis fiókkal ajánlat korlátai hozhat létre.  
@@ -177,7 +177,7 @@ Az ajánlat függvényében adatbázisban lévő gyűjtemények tetszőleges sz�
 
 Egy Azure Cosmos DB adatbázis is egy olyan tároló, a felhasználók. Egy felhasználó, szolgálna, az engedélyek egy készletét, amely minden részletre kiterjedő engedélyezési és a gyűjtemények, dokumentumok és mellékletek eléréséhez logikai névterét.  
 
-Egyéb erőforrásokat az Azure Cosmos DB erőforrás-modellje, adatbázisokat hozhatja létre, cserélni, törlése, olvasása, vagy segítségével könnyen számba a [REST API-k](/rest/api/documentdb/) vagy annak bármelyik a [ügyfél SDK-k](sql-api-sdk-dotnet.md). Azure Cosmos-adatbázis vagy a metaadatok adatbázis erőforrás lekérdezése az erős konzisztencia biztosítja. Egy adatbázis törlése automatikusan biztosítja, hogy nem tud hozzáférni a gyűjtemények vagy az abban szereplő felhasználók.   
+Egyéb erőforrásokat az Azure Cosmos DB erőforrás-modellje, adatbázisokat hozhatja létre, cserélni, törlése, olvasása, vagy segítségével könnyen számba a [REST API-k](/rest/api/cosmos-db/) vagy annak bármelyik a [ügyfél SDK-k](sql-api-sdk-dotnet.md). Azure Cosmos-adatbázis vagy a metaadatok adatbázis erőforrás lekérdezése az erős konzisztencia biztosítja. Egy adatbázis törlése automatikusan biztosítja, hogy nem tud hozzáférni a gyűjtemények vagy az abban szereplő felhasználók.   
 
 ## <a name="collections"></a>Gyűjtemények
 A Cosmos DB gyűjtemény egy olyan tároló, a JSON-dokumentumok. 
@@ -195,7 +195,7 @@ Az indexelési házirendet az egyes gyűjtemények lehetővé teszi, hogy a telj
 * Válasszon, hogy vagy egyedi elérési utak vagy dokumentumok minták kizárja az indexből. Érhet el ez a beállítás includedPaths és a gyűjtemény indexingPolicy excludedPaths rendre. A tárterületi és teljesítménybeli kompromisszumot ideális tartomány- és kivonatoló a megadott elérési út minták is konfigurálhatja. 
 * Itt választhat szinkron (konzisztens) és aszinkron (lazy) index frissítéseket. Alapértelmezés szerint az index frissítése szinkron módon minden insert, replace vagy egy dokumentumot – így a gyűjtemény törlése. Ez lehetővé teszi, hogy a lekérdezések tiszteletben konzisztencia szintjét, a dokumentum olvasása. Míg Azure Cosmos DB írási optimalizált, és támogatja a szinkron index karbantartási és egységes lekérdezések szolgáltató együtt dokumentum írások tartós kötetek, egyes gyűjtemények indexét lazily frissítésére is konfigurálhat. A lusta indexelési a hanghatások írási további, és tömeges adatfeldolgozást forgatókönyvek elsősorban az olvasási műveleteket gyűjtemények ideális.
 
-Az indexelési házirendet a gyűjteményen hajtja végre a PUT módosítható. Ez lehet érhető el, vagy a [ügyfél SDK](sql-api-sdk-dotnet.md), a [Azure-portálon](https://portal.azure.com) vagy a [REST API-k](/rest/api/documentdb/).
+Az indexelési házirendet a gyűjteményen hajtja végre a PUT módosítható. Ez lehet érhető el, vagy a [ügyfél SDK](sql-api-sdk-dotnet.md), a [Azure-portálon](https://portal.azure.com) vagy a [REST API-k](/rest/api/cosmos-db/).
 
 ### <a name="querying-a-collection"></a>A gyűjtemény lekérdezése
 A dokumentumok a gyűjteményen belül lehet tetszőleges sémák és lekérdezheti a dokumentumok egy gyűjteményen belül anélkül, hogy semmilyen sémát, illetve másodlagos indexek előzetes megfizetése esetén. A gyűjtemény segítségével lekérheti a [Azure Cosmos adatbázis SQL-szintaxis hivatkozás](https://msdn.microsoft.com/library/azure/dn782250.aspx), pedig a gazdag hierarchikus, relációs és térbeli operátorokat és bővíthetőséget JavaScript-alapú felhasználó által megadott függvények biztosítja. A JSON-szintaxis lehetővé teszi, hogy a fa csomópontjai címkék JSON-dokumentumok fákként modellezési. Ez az SQL API automatikus indexelési technikái, valamint az Azure Cosmos DB SQL dialektusa szerint kihasználni. Az SQL lekérdező nyelve három fő szempontjait foglalja magában:   
@@ -204,7 +204,7 @@ A dokumentumok a gyűjteményen belül lehet tetszőleges sémák és lekérdezh
 2. Egy relációs műveleteket, köztük a összeállításban, szűrő, leképezések, összesítések és automatikus illesztések részét. 
 3. Tiszta JavaScript-alapú, amelyek használhatók a felhasználó által megadott függvények (1) és (2).  
 
-Az Azure Cosmos DB lekérdezési modelljét megkísérli egyensúlyt biztosítanak a funkciót, hatékonyságát és egyszerűség között. Az Azure Cosmos DB adatbázismotor natív módon lefordítja a, és az SQL lekérdezési utasítás végrehajtása. A gyűjtemény segítségével lekérheti a [REST API-k](/rest/api/documentdb/) vagy annak bármelyik a [ügyfél SDK-k](sql-api-sdk-dotnet.md). A .NET SDK tartalmaz egy LINQ szolgáltatónál.
+Az Azure Cosmos DB lekérdezési modelljét megkísérli egyensúlyt biztosítanak a funkciót, hatékonyságát és egyszerűség között. Az Azure Cosmos DB adatbázismotor natív módon lefordítja a, és az SQL lekérdezési utasítás végrehajtása. A gyűjtemény segítségével lekérheti a [REST API-k](/rest/api/cosmos-db/) vagy annak bármelyik a [ügyfél SDK-k](sql-api-sdk-dotnet.md). A .NET SDK tartalmaz egy LINQ szolgáltatónál.
 
 > [!TIP]
 > Próbálja ki az SQL API-t, és az adatkészletet az SQL-lekérdezések futtatásához a [Tesztlekérdezéseket](https://www.documentdb.com/sql/demo).
@@ -226,7 +226,7 @@ A JavaScript-logika regisztrálva, a gyűjtemény szintjén majd adhat ki az ado
 
 JavaScript végrehajtása közvetlenül az adatbázismotor ugyanazt a címtartományt, a pufferkészlet belül teszi lehetővé teszi, hogy performant és adatbázis-művelet a dokumentumokon végzett gyűjtemény tranzakciós végrehajtását. Cosmos-adatbázis adatbázis-kezelő lehetővé teszi a JSON mély kötelezettségvállalás továbbá JavaScript megszünteti az a típus rendszerek alkalmazás és az adatbázis bármely impedancia eltérő.   
 
-Gyűjtemény létrehozása után is regisztrált tárolt eljárások, eseményindítók és felhasználó által megadott függvények egy gyűjtemény használja a [REST API-k](/rest/api/documentdb/) vagy annak bármelyik a [ügyfél SDK-k](sql-api-sdk-dotnet.md). A regisztrációt követően hivatkoznak, és azokat hajtható végre. Vegye figyelembe a következő tárolt eljárás teljesen JavaScript nyelven írt, az alábbi kódot két argumentummal (könyv nevét és Szerző neve) és új dokumentum létrehozása, lekérdezi egy dokumentumot, és frissíti azt – összes egy implicit ACID-tranzakción belül. A végrehajtás során bármikor Ha a JavaScript kivételt vált ki, a teljes tranzakció megszakítása.
+Gyűjtemény létrehozása után is regisztrált tárolt eljárások, eseményindítók és felhasználó által megadott függvények egy gyűjtemény használja a [REST API-k](/rest/api/cosmos-db/) vagy annak bármelyik a [ügyfél SDK-k](sql-api-sdk-dotnet.md). A regisztrációt követően hivatkoznak, és azokat hajtható végre. Vegye figyelembe a következő tárolt eljárás teljesen JavaScript nyelven írt, az alábbi kódot két argumentummal (könyv nevét és Szerző neve) és új dokumentum létrehozása, lekérdezi egy dokumentumot, és frissíti azt – összes egy implicit ACID-tranzakción belül. A végrehajtás során bármikor Ha a JavaScript kivételt vált ki, a teljes tranzakció megszakítása.
 
     function businessLogic(name, author) {
         var context = getContext();
@@ -279,10 +279,10 @@ Figyelje meg, hogy az adatbázis natív módon együttműködik a JSON és a Jav
 
 Tárolt eljárások és eseményindítók kommunikálni egy gyűjtemény és a dokumentumok egy gyűjtemény egy jól meghatározott hálózatiobjektum-modellje, amely az aktuális gyűjtemény környezetben keresztül.  
 
-Az SQL API-gyűjteményére is létrehozható, törölt, olvassa el, vagy felsorolt segítségével egyszerűen a [REST API-k](/rest/api/documentdb/) vagy annak bármelyik a [ügyfél SDK-k](sql-api-sdk-dotnet.md). Az SQL API-t mindig vagy a metaadat-gyűjtemény lekérdezése az erős konzisztencia biztosítja. A gyűjtemény törlése automatikusan biztosítja, hogy a dokumentumok, a mellékleteket, a tárolt eljárások, eseményindítók sem tudja már használni, és az abban szereplő felhasználó által megadott függvények.   
+Az SQL API-gyűjteményére is létrehozható, törölt, olvassa el, vagy felsorolt segítségével egyszerűen a [REST API-k](/rest/api/cosmos-db/) vagy annak bármelyik a [ügyfél SDK-k](sql-api-sdk-dotnet.md). Az SQL API-t mindig vagy a metaadat-gyűjtemény lekérdezése az erős konzisztencia biztosítja. A gyűjtemény törlése automatikusan biztosítja, hogy a dokumentumok, a mellékleteket, a tárolt eljárások, eseményindítók sem tudja már használni, és az abban szereplő felhasználó által megadott függvények.   
 
 ## <a name="stored-procedures-triggers-and-user-defined-functions-udf"></a>Tárolt eljárások, eseményindítók és felhasználó definiált függvény (UDF)
-Az előző szakaszban leírtak írhat az alkalmazáslogikát, hogy közvetlenül az adatbázis motorján belül tranzakción belül futtatni. Az alkalmazáslogika teljes egészében a JavaScript írhatók, és a tárolt eljárás, eseményindító vagy egy UDF modellezhető. A tárolt eljárás vagy eseményindító JavaScript-kód beszúrása, cserélje le, olvassa el vagy lekérdezni a dokumentumok a gyűjteményen belül. Másrészről, egy UDF belül a JavaScript nem lehet beszúrni, cserélje le, vagy törölhetnek dokumentumokat. Felhasználó által megadott függvények számba venni a lekérdezés eredményhalmazából dokumentumok, és előállít egy másik eredményhalmaz. A több-bérlős Azure Cosmos DB kényszeríti a szigorú foglalásalapú erőforrás cégirányítási. Minden egyes tárolt eljárás, eseményindító vagy egy UDF lekérdezi a rögzített quantum az operációs rendszer-erőforrás a munkájuk elvégzéséhez. Továbbá a tárolt eljárások, eseményindítók és felhasználó által megadott függvények külső JavaScript szalagtárak szemben nem lehet csatolni, és is feketelistára teszi a számukra kiosztott erőforrás költségvetések túllépése esetén. Regisztrálja, a tárolt eljárások, eseményindítók és felhasználó által megadott függvények gyűjtemény regisztrációját a REST API-k használatával.  Regisztráláskor tárolt eljárás, eseményindító vagy egy UDF, előre összeállított és a rendszer bájt kódú, amelyek később hajtsa végre. A következő ssection illustrateshow az Azure Cosmos DB JavaScript SDK segítségével regisztrálja, végrehajtási és regisztrációjának törlése a tárolt eljárás, eseményindító és egy UDF. A JavaScript SDK egy egyszerű burkoló felett. a [REST API-k](/rest/api/documentdb/). 
+Az előző szakaszban leírtak írhat az alkalmazáslogikát, hogy közvetlenül az adatbázis motorján belül tranzakción belül futtatni. Az alkalmazáslogika teljes egészében a JavaScript írhatók, és a tárolt eljárás, eseményindító vagy egy UDF modellezhető. A tárolt eljárás vagy eseményindító JavaScript-kód beszúrása, cserélje le, olvassa el vagy lekérdezni a dokumentumok a gyűjteményen belül. Másrészről, egy UDF belül a JavaScript nem lehet beszúrni, cserélje le, vagy törölhetnek dokumentumokat. Felhasználó által megadott függvények számba venni a lekérdezés eredményhalmazából dokumentumok, és előállít egy másik eredményhalmaz. A több-bérlős Azure Cosmos DB kényszeríti a szigorú foglalásalapú erőforrás cégirányítási. Minden egyes tárolt eljárás, eseményindító vagy egy UDF lekérdezi a rögzített quantum az operációs rendszer-erőforrás a munkájuk elvégzéséhez. Továbbá a tárolt eljárások, eseményindítók és felhasználó által megadott függvények külső JavaScript szalagtárak szemben nem lehet csatolni, és is feketelistára teszi a számukra kiosztott erőforrás költségvetések túllépése esetén. Regisztrálja, a tárolt eljárások, eseményindítók és felhasználó által megadott függvények gyűjtemény regisztrációját a REST API-k használatával.  Regisztráláskor tárolt eljárás, eseményindító vagy egy UDF, előre összeállított és a rendszer bájt kódú, amelyek később hajtsa végre. A következő ssection illustrateshow az Azure Cosmos DB JavaScript SDK segítségével regisztrálja, végrehajtási és regisztrációjának törlése a tárolt eljárás, eseményindító és egy UDF. A JavaScript SDK egy egyszerű burkoló felett. a [REST API-k](/rest/api/cosmos-db/). 
 
 ### <a name="registering-a-stored-procedure"></a>A tárolt eljárás regisztrálása
 Regisztrációs tárolt eljárás egy új tárolt eljárás erőforrás egy gyűjtemény HTTP POST használatával hoz létre.  
@@ -410,7 +410,7 @@ Beállításjegyzékből való törlésekor a UDF egy HTTP DELETE elleni meglév
             console.log("Error");
         });
 
-Bár a fenti kódtöredékek bemutatta a regisztrációs (POST), (PUT) regisztrációjának, Olvasás/lista (GET) és végrehajtási (POST) keresztül a [JavaScript SDK](https://github.com/Azure/azure-documentdb-js), használhatja a [REST API-k](/rest/api/documentdb/) vagy más [ügyfél SDK-k](sql-api-sdk-dotnet.md). 
+Bár a fenti kódtöredékek bemutatta a regisztrációs (POST), (PUT) regisztrációjának, Olvasás/lista (GET) és végrehajtási (POST) keresztül a [JavaScript SDK](https://github.com/Azure/azure-documentdb-js), használhatja a [REST API-k](/rest/api/cosmos-db/) vagy más [ügyfél SDK-k](sql-api-sdk-dotnet.md). 
 
 ## <a name="documents"></a>Dokumentumok
 Akkor is beszúrása, cserélje le, törlése, olvasása, számbavétele és lekérdezni egy gyűjtemény tetszőleges JSON-dokumentumokat. Azure Cosmos-adatbázis nem határozza meg, semmilyen sémát, és nem igényel másodlagos indexek támogatása érdekében egy gyűjtemény dokumentumok lekérdezését. A dokumentum maximális mérete 2 MB.   

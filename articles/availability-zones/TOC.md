@@ -25,9 +25,15 @@
 ### Load Balancer
 #### [Mi az a Load Balancer?](../load-balancer/load-balancer-standard-overview.md)
 #### [A Load Balancer Standard és a rendelkezésre állási zónák](../load-balancer/load-balancer-standard-availability-zones.md)
-#### [Zónaredundáns nyilvános Load Balancer Standard létrehozása az Azure Portalon](../load-balancer/load-balancer-get-started-internet-az-portal.md)
-#### [Zónaredundáns Load Balancer Standard létrehozása a PowerShell-lel](../load-balancer/load-balancer-get-started-internet-az-powershell.md)
-#### [Zónaredundáns nyilvános Load Balancer Standard létrehozása a parancssori felület használatával](../load-balancer/load-balancer-get-started-internet-az-cli.md)
+
+#### [Zónaredundáns nyilvános Standard Load Balancer létrehozása](../load-balancer/load-balancer-get-started-internet-az-portal.md)
+##### [Zónaredundáns nyilvános Standard Load Balancer létrehozása (PowerShell)](../load-balancer/load-balancer-get-started-internet-az-powershell.md)
+##### [Zónaredundáns nyilvános Standard Load Balancer létrehozása (CLI)](../load-balancer/load-balancer-get-started-internet-az-cli.md)
+#### [Zónaszintű nyilvános Standard Load Balancer létrehozása](../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-portal.md)
+##### [Zónaszintű nyilvános Standard Load Balancer létrehozása (PowerShell)](../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-powershell.md)
+##### [Zónaszintű nyilvános Standard Load Balancer létrehozása (CLI)](../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-cli.md)
+#### [Virtuális gépek terheléselosztása rendelkezésre állási zónák között](../load-balancer/load-balancer-standard-public-availability-zones-portal.md)
+##### [Virtuális gépek terheléselosztása rendelkezésre állási zónák között az Azure-ral (CLI)](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
 
 ### [Nyilvános IP-cím](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
 
@@ -35,7 +41,7 @@
 #### [Rendelkezésre állási zónák és SQL Database](../sql-database/sql-database-high-availability.md#availability-zones)
 
 ### Tárolás
-#### [Zónaredundáns tárolás](../storage/common/storage-redundancy.md#zone-redundant-storage)
+#### [Zónaredundáns tárolás](../storage/common/storage-redundancy-zrs.md)
 
 # Vészhelyreállítás
 ## [Az Azure Site Recovery használata](https://docs.microsoft.com/azure/site-recovery/)

@@ -1,11 +1,11 @@
 ---
-title: "Adatok betöltése az SQL Data Warehouse-ba bcp segítségével | Microsoft Docs"
-description: "Megismerheti a bcp-t és az adatraktározási forgatókönyvekben való használatát."
+title: Adatok betöltése az SQL Data Warehouse-ba bcp segítségével | Microsoft Docs
+description: Megismerheti a bcp-t és az adatraktározási forgatókönyvekben való használatát.
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
 manager: barbkess
-editor: 
+editor: ''
 ms.assetid: f9467d11-fcd6-4131-a65a-2022d2c32d24
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 01/22/2018
 ms.author: cakarst;barbkess
-ms.openlocfilehash: 146c6fdada651551c05b2cbcadc3e1248a40b613
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 752a2f0d7b49f9e053788b26e3df389246c72a73
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="load-data-with-bcp"></a>Adatok betöltése bcp-vel
 
@@ -174,7 +174,7 @@ Az adatok helyes exportálását az új fájl megnyitásával ellenőrizheti. A 
 > 
 
 ## <a name="next-steps"></a>További lépések
-A betöltési folyamat megtervezéséről lásd [a betöltés áttekintését](sql-data-warehouse-design-elt-data-loading).  
+A betöltési folyamat megtervezéséről [az adatok Azure SQL Data Warehouse-ba való betöltésének ajánlott eljárásaiban](guidance-for-loading-data.md) olvashat.  
 
 
 

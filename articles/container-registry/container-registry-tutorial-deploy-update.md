@@ -1,6 +1,6 @@
 ---
-title: "Azure tároló beállításjegyzék útmutató - leküldéses frissített regionális használatával végzett központi telepítésekhez"
-description: "A módosított Docker-lemezkép leküldése a georeplikált Azure beállításjegyzék tartalmaz, majd a változtatások több régióba futó webalkalmazások automatikusan telepíti. A három részből sorozat három része."
+title: Azure Container Registry-oktatóanyag – Frissített rendszerkép leküldése a regionálisan üzemelő példányokba
+description: Küldjön le egy módosított Docker-rendszerképet a georeplikált Azure tárolóregisztrációs adatbázisba, majd tekintse meg a különféle régiókban futó webalkalmazásokon automatikusan végrehajtott módosításokat. Ez egy háromrészes sorozat harmadik része.
 services: container-registry
 author: mmacy
 manager: timlt
@@ -9,37 +9,37 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 359fdcabd579d277e40f02eba2d4603ebd9f5f1f
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
-ms.translationtype: MT
+ms.openlocfilehash: f8eab93d1e6633ae4f17c5bb4836d96629d55cd4
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="push-an-updated-image-to-regional-deployments"></a>Frissített leküldése regionális központi telepítések
+# <a name="tutorial-push-an-updated-image-to-regional-deployments"></a>Oktatóanyag: Egy frissített rendszerkép leküldése regionálisan üzemelő példányokba
 
-Ez a három részből útmutató azokat a három részt. Az a [az oktatóanyag előző](container-registry-tutorial-deploy-app.md), georeplikáció két különböző területi webalkalmazás központi telepítések konfigurálása. Ebben az oktatóanyagban először módosítja az alkalmazást, majd egy új tároló lemezkép, és hogy a georeplikált beállításjegyzék. Végül megtekintheti a módosítás Azure tároló beállításjegyzék webhookokkal, mindkét webalkalmazás példányát által automatikusan telepített.
+Ez egy háromrészes sorozat harmadik része. Az [előző oktatóanyagban](container-registry-tutorial-deploy-app.md) a georeplikációt két különböző régióban üzembe helyezett webalkalmazáshoz konfigurálta. Ebben az oktatóanyagban először az alkalmazást módosítjuk, majd egy új tárolórendszerképet hozunk létre, és leküldjük azt a georeplikált beállításjegyzékbe. Végül megtekintjük az Azure Container Registry webhookok által automatikusan üzembe helyezett módosításokat mind a két webalkalmazás esetében.
 
-Ebben az oktatóanyagban az adatsorozat utolsó része:
+Az oktatóanyag-sorozat utolsó része a következő lépésekből áll:
 
 > [!div class="checklist"]
-> * A webalkalmazás HTML módosítása
-> * Hozza létre, és a Docker kép címke
-> * A módosítás leküldése Azure tároló beállításjegyzék
-> * A frissített alkalmazás két különböző régiókban megtekintése
+> * A webalkalmazás HTML-címének módosítása
+> * A Docker-rendszerkép összeállítása és címkézése
+> * A módosítás leküldése az Azure Container Registrybe
+> * A frissített alkalmazás megtekintése két különböző régióban
 
-Ha még nem konfigurálta a két *Web App az tárolókat* regionális központi telepítések, térjen vissza a sorozat előző oktatóanyaghoz [telepítés webalkalmazást az Azure-tároló beállításjegyzék](container-registry-tutorial-deploy-app.md).
+Ha még nem konfigurálta a két regionális *Web App for Containers*-példányt, térjen vissza az előző oktatóanyag-sorozathoz, amely a [Webalkalmazás üzembe helyezése az Azure Container Registryből](container-registry-tutorial-deploy-app.md) címet viseli.
 
 ## <a name="modify-the-web-application"></a>A webalkalmazás módosítása
 
-Ebben a lépésben lehet módosítani a webes alkalmazás, amely után a frissített tároló kép leküldése Azure tároló beállításjegyzék jól látható lesz.
+Ebben a lépésben olyan módosítást végzünk a webalkalmazáson, amely jól látható lesz, amint leküldjük a frissített tárolórendszerképet az Azure Container Registrybe.
 
-Keresse a `AcrHelloworld/Views/Home/Index.cshtml` fájl az alkalmazás forrás [GitHub alapján klónozták](container-registry-tutorial-prepare-registry.md#get-application-code) egy előző oktatóprogram és nyissa meg a kedvenc szövegszerkesztőjével. Adja hozzá a következő sort a meglévő alatt `<h1>` sor:
+Keresse meg az `AcrHelloworld/Views/Home/Index.cshtml` fájlt abban az alkalmazásforrásban, amelyet a [GitHubból klónozott](container-registry-tutorial-prepare-registry.md#get-application-code) egy előző oktatóanyagban, és nyissa meg a kedvenc szövegszerkesztőjével. Adja hozzá a következő sort a már meglévő `<h1>` sor után:
 
 ```html
 <h1>MODIFIED</h1>
 ```
 
-A módosított `Index.cshtml` hasonlóan kell kinéznie:
+A módosított `Index.cshtml`-nek az alábbihoz hasonlónak kell lennie:
 
 ```html
 @{
@@ -68,23 +68,23 @@ A módosított `Index.cshtml` hasonlóan kell kinéznie:
 </div>
 ```
 
-## <a name="rebuild-the-image"></a>A lemezkép újbóli létrehozása
+## <a name="rebuild-the-image"></a>A rendszerkép újraépítése
 
-Most, hogy a webalkalmazás frissítése, építse újra a tároló kép. Mint korábban használja a teljesen minősített lemezképnév, beleértve a bejelentkezési URL-címe, a címke:
+Most, hogy frissítette a webalkalmazást, építse újra a tárolórendszerképét. Mint korábban, használja a teljes rendszerképnevet, beleértve a címke bejelentkezési URL-címét:
 
 ```bash
 docker build . -f ./AcrHelloworld/Dockerfile -t <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-## <a name="push-image-to-azure-container-registry"></a>Azure-tároló beállításjegyzék leküldéses kép
+## <a name="push-image-to-azure-container-registry"></a>Rendszerkép leküldése az Azure Container Registrybe
 
-Most, a frissített leküldéses *acr-helloworld* a georeplikált beállításjegyzék lemezképet tároló. Itt, egyetlen most végrehajtása `docker push` központi telepítése a frissített lemezképet a beállításjegyzék replikák mindkét parancs a *USA nyugati régiója* és *USA keleti régiója* régiók.
+Most küldje le a frissített *acr-helloworld* tárolórendszerképet a georeplikált beállításjegyzékbe. Itt egy `docker push` paranccsal üzembe helyezi a frissített tárolórendszerképet a beállításjegyzék replikációiban, az *USA nyugati régiójában* és az *USA keleti régiójában* is.
 
 ```bash
 docker push <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-Kimenet az alábbihoz hasonlóan kell megjelennie:
+A kimenet az alábbihoz hasonlóan néz ki:
 
 ```bash
 The push refers to a repository [uniqueregistryname.azurecr.io/acr-helloworld]
@@ -98,47 +98,47 @@ a75caa09eb1f: Layer already exists
 v1: digest: sha256:4c3f2211569346fbe2d1006c18cbea2a4a9dcc1eb3a078608cef70d3a186ec7a size: 1792
 ```
 
-## <a name="view-the-webhook-logs"></a>A webhook naplók megtekintése
+## <a name="view-the-webhook-logs"></a>A webhooknaplók megtekintése
 
-A replikált a lemezképet, amíg az Azure tároló beállításjegyzék webhookok indított alatt tekintheti meg.
+A rendszerkép replikálása során láthatja az aktiválódó Azure Container Registry webhookokat.
 
-A regionális webhookokkal, a tárolót, hogy üzembe helyezésekor létrehozott megjelenítéséhez *tárolók webalkalmazásait* előző oktatóanyagok esetén keresse meg a tároló beállításjegyzék, az Azure portálon, majd válassza ki **Webhookok**alatt **szolgáltatások**.
+Azon regionális webhookok megtekintéséhez, amelyek akkor jöttek létre, amikor az előző oktatóanyagban a *Web Apps for Containers* alkalmazásban üzembe helyezte a tárolót, lépjen az Azure Portalon a tárolóregisztrációs adatbázisára, majd válassza a **Webhookok** lehetőséget a **SZOLGÁLTATÁSOK** területen.
 
-![Tároló beállításjegyzék Webhookok az Azure-portálon][tutorial-portal-01]
+![A tárolóregisztrációs adatbázisokban található webhookok az Azure Portalon][tutorial-portal-01]
 
-Válassza ki az egyes Webhook a hívások és a válaszok előzményeinek megtekintéséhez. Egy sort kell megjelennie a **leküldéses** mindkét Webhookok a naplókban lévő művelettel. A Webhook a naplóban található itt, a *USA nyugati régiója* terület tartalmazza a **leküldéses** által indított művelet a `docker push` az előző lépésben:
+Az egyes webhookok kiválasztásával tekintheti meg a hívásaik és válaszaik előzményeit. Mindkét webhook naplójában látnia kell egy sort, amely a **leküldés** művelethez tartozik. Itt az *USA nyugati* régiójában található webhook naplójában a **leküldés** műveletet a `docker push` váltotta ki az előző lépésben:
 
-![Tároló beállításjegyzék Webhook bejelentkezés az Azure portálon (USA nyugati régiója)][tutorial-portal-02]
+![A tárolóregisztrációs adatbázisokban található webhooknaplók az Azure Portalon (az USA nyugati régiója)][tutorial-portal-02]
 
-## <a name="view-the-updated-web-app"></a>A frissített web app megtekintése
+## <a name="view-the-updated-web-app"></a>Az frissített webalkalmazás megtekintése
 
-A Webhook értesítse a Web Apps, hogy az új lemezképet a beállításjegyzéket, amely automatikusan telepíti a frissített tároló a két regionális webalkalmazások tolni-e.
+A webhookok értesítik a webalkalmazásokat, hogy egy új rendszerkép lett leküldve a beállításjegyzékbe, amely automatikusan üzembe helyezi a frissített tárlót a két regionális webalkalmazásban.
 
-Győződjön meg arról, hogy az alkalmazás frissültek-e mindkét központi telepítés mindkét regionális webalkalmazás központi telepítés a böngészőben navigáljon. Ne feledje találja a jobb felső részén minden App Service áttekintése lapon a telepített webalkalmazás URL-CÍMÉT.
+Győződjön meg arról, hogy az alkalmazás mindkét üzemelő példányon frissült. Ehhez nyissa meg mindkét regionális webalkalmazás üzemelő példányát a böngészőjében. Megjegyzés: Az üzembe helyezett webalkalmazás URL-címét az egyes App Service áttekintési lapok jobb felső sarkában találja.
 
-![App Service áttekintése az Azure-portálon][tutorial-portal-03]
+![Az App Service áttekintési lapja az Azure Portalon][tutorial-portal-03]
 
-A frissített alkalmazás megtekintéséhez jelölje ki a kapcsolat az App Service áttekintése. Íme egy példa nézetben a futó alkalmazás *USA nyugati régiója*:
+A frissített alkalmazás megtekintéséhez kattintson a hivatkozásra az App Service áttekintési lapján. Az alábbi kép az *USA nyugati régiójában*futó alkalmazásra mutat példát:
 
-![USA nyugati régiója a régióban fut módosított webalkalmazás böngésző nézet][deployed-app-westus-modified]
+![Egy, az USA nyugati régiójában futó módosított webalkalmazás böngészőnézete][deployed-app-westus-modified]
 
-Győződjön meg arról, hogy a frissített tároló lemezképet is állított be a *USA keleti régiója* telepítési a böngészőben megtekintésével.
+Győződjön meg arról, hogy a frissített tárolórendszerkép az *USA keleti régiójában* is üzembe lett helyezve. Ehhez tekintse meg a böngészőben.
 
-![USA keleti régiójában futó módosított webalkalmazás böngésző nézet][deployed-app-eastus-modified]
+![Egy, az USA keleti régiójában futó módosított webalkalmazás böngészőnézete][deployed-app-eastus-modified]
 
-Egyetlen `docker push`, mindkét regionális webalkalmazás központi telepítés frissítése és Azure tároló beállításjegyzék kiszolgált adattárak hálózati zárja be a tároló képek.
+Egyetlen `docker push` mindkét regionális webalkalmazás üzemelő példányát frissítette, és az Azure Container Registry szolgáltatta a tárolórendszerképeket a hálózatközeli adattárakból.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban frissítése, és a webes alkalmazás tároló új verziójának a georeplikált beállításjegyzék leküldve. Azure tároló beállításjegyzék Webhookok webalkalmazásait a frissítés, a beállításjegyzék replikák a helyi lekérési kiváltó tárolók értesítést kap.
+Ebben az oktatóanyagban frissítette és leküldte a webalkalmazás tárolójának egy új verzióját a georeplikált beállításjegyzékbe. Az Azure Container Registry webhookjai értesítették a Web Apps for Containers alkalmazást a frissítésről, amely egy helyi lekérést indított a beállításjegyzékek replikáiból.
 
-Az adatsorozat utolsó oktatóanyag ezen meg:
+Az oktatóanyag-sorozat utolsó része a következő lépésekből állt:
 
 > [!div class="checklist"]
-> * A webes alkalmazás HTML frissítése
-> * Épül, és a Docker kép címkézett
-> * A módosítás az Azure-tároló beállításjegyzék leküldött
-> * A frissített app megtekinthető két különböző régiókban
+> * A webalkalmazás HTML-címének frissítése
+> * A Docker-rendszerkép összeállítása és címkézése
+> * A módosítás leküldése az Azure Container Registrybe
+> * A frissített alkalmazás megtekintése két különböző régióban
 
 <!-- IMAGES -->
 [deployed-app-eastus-modified]: ./media/container-registry-tutorial-deploy-update/deployed-app-eastus-modified.png

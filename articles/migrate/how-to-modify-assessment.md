@@ -1,16 +1,16 @@
 ---
-title: "Azure áttelepítése assessment beállítások testreszabása |} Microsoft Docs"
-description: "Ismerteti, hogyan lehet beállítása és futtatása egy értékelési áttelepítése VMware virtuális gépek esetén az Azure-bA az Azure áttelepítési Planner segítségével"
+title: Azure áttelepítése assessment beállítások testreszabása |} Microsoft Docs
+description: Ismerteti, hogyan lehet beállítása és futtatása egy értékelési áttelepítése VMware virtuális gépek esetén az Azure-bA az Azure áttelepítési Planner segítségével
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: raynew
-ms.openlocfilehash: efb4ad59d25a0c1209e4f0f6cd406c2f0d48159c
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 459a29012ec879d4d4989e51b5688b9042adc1a1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="customize-an-assessment"></a>Értékelés testreszabása
 
@@ -24,8 +24,8 @@ ms.lasthandoff: 02/27/2018
 
     **Beállítás** | **Részletek** | **Alapértelmezett**
     --- | --- | ---
-    **Célhely** | Az Azure-beli hely, ahová a migrálást szeretné végezni.<br/><br/> Azure áttelepítése jelenleg 30, beleértve a Kelet-Ausztrália, Ausztrália délkeleti, Dél-Brazília, Kanada központi, Kanada keleti, közép-Indiában, USA középső RÉGIÓJA, Kína keleti, Kína északi, Kelet-Ázsia, USA keleti régiója, Németország központi, Németország szerepel, USA keleti régiója 2., japán régiók Keleti, Nyugat-japán, koreai központi koreai Dél, északi USA középső RÉGIÓJA, Észak-Európa, USA déli középső RÉGIÓJA, Délkelet-Ázsiában, Dél-India, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, központi USA nyugati régiója, Nyugat-Európa, Nyugat-Indiában, USA nyugati régiója és nyugati US2. |  USA 2. nyugati alapértelmezett helye.
-    **Tárhely-redundancia** | Az adattároló redundanciája, amely az Azure virtuális gépek által használt, az áttelepítés után típusa. | [Helyileg redundáns tárolás (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) az alapértelmezett érték. Azure áttelepítése csak támogatja felügyelt lemezek alapú értékelések és felügyelt lemezek csak az LRS támogatják, ezért a tulajdonságot jelenleg csak LRS lehetősége van. 
+    **Célhely** | Az Azure-beli hely, ahová a migrálást szeretné végezni.<br/><br/> Az Azure Migrate jelenleg 30 régiót támogat, beleértve a következőket: Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, Közép-India, USA középső régiója, Kelet-Kína, Észak-Kína, Kelet-Ázsia, USA keleti régiója, Közép-Németország, Északkelet-Németország, USA 2. keleti régiója, Kelet-Japán, Nyugat-Japán, Korea középső régiója, Korea déli régiója, USA északi középső régiója, Észak-Európa, USA déli középső régiója, Délkelet-Ázsia, Dél-India, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, USA nyugati középső régiója, Nyugat-Európa, Nyugat-India, USA nyugati régiója és USA 2. nyugati régiója. |  USA 2. nyugati alapértelmezett helye.
+    **Tárhely-redundancia** | Az adattároló redundanciája, amely az Azure virtuális gépek által használt, az áttelepítés után típusa. | [Helyileg redundáns tárolás (LRS)](../storage/common/storage-redundancy-lrs.md) az alapértelmezett érték. Azure áttelepítése csak támogatja felügyelt lemezek alapú értékelések és felügyelt lemezek csak az LRS támogatják, ezért a tulajdonságot jelenleg csak LRS lehetősége van. 
     **Méretezési kritériumot** | Az Azure Migrate által használt feltétel a virtuális gépek Azure-nak megfelelő méretezéséhez. Mindent vagy tegye *teljesítmény-alapú* méretezése vagy a virtuális gépek méretezés *, a helyszíni*, figyelembe véve a teljesítményelőzményei nélkül. | Teljesítmény-alapú méretezési beállítás az alapértelmezett.
     **Teljesítményelőzmények** | Fontolja meg a virtuális gépek teljesítményének értékeléséhez idejét. A tulajdonság csak akkor alkalmazható, ha méretezési kritériumot *teljesítmény-alapú méretezési*. | Alapértelmezett érték egy nap.
     **PERCENTILIS kihasználtsága** | A PERCENTILIS értékének a teljesítmény minta állítsa be a megfelelő méretének kiválasztását figyelembe kell venni. A tulajdonság csak akkor alkalmazható, ha méretezési kritériumot *teljesítmény-alapú méretezési*.  | Alapértelmezés szerint 95. percentilis visszaadása.

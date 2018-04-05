@@ -1,8 +1,8 @@
 ---
-title: "Azure Application Insights támogatja a több összetevőt, a mikroszolgáltatások létrehozására és a tárolók |} Microsoft Docs"
-description: "Figyelési alkalmazásokat, amelyek több összetevők vagy a teljesítmény- és használati szerepkörök állnak."
+title: Azure Application Insights támogatja a több összetevőt, a mikroszolgáltatások létrehozására és a tárolók |} Microsoft Docs
+description: Figyelési alkalmazásokat, amelyek több összetevők vagy a teljesítmény- és használati szerepkörök állnak.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: 046661bf7903b4e5ea528282ad5170901a45b35c
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 9b03aff140eec5b355383447f0a815220d6408e3
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="monitor-multi-component-applications-with-application-insights-preview"></a>Az Application Insights (előzetes verzió) több összetevőt alkalmazások figyelése
 
@@ -42,7 +42,7 @@ Ahhoz, hogy egy több összetevőt alkalmazás-hozzárendelés, szüksége ezen 
 
 * **Telepítse a legújabb előzetes** az alkalmazás minden összetevője az Application Insights-csomagot. 
 * **Egyetlen Application Insights-erőforrás megosztása** az alkalmazás valamennyi összetevőnél.
-* **Engedélyezze az alkalmazás több szerepkör-hozzárendelés** az előzetes verziójú funkciók a panelen.
+* **Engedélyezze az összetett alkalmazás-hozzárendelés** az előzetes verziójú funkciók a panelen.
 
 Minden ehhez a típushoz a megfelelő módszer segítségével az alkalmazás-összetevő konfigurálása. ([ASP.NET](app-insights-asp-net.md), [Java](app-insights-java-get-started.md), [Node.js](app-insights-nodejs.md), [JavaScript](app-insights-javascript.md).)
 
@@ -68,14 +68,14 @@ Frissítése, vagy telepítse az Application Insights csomagot a projektben, min
 
    1. A [Azure-portálon](https://portal,azure.com), nyissa meg az Application Insights-erőforrást egy másik összetevő már létrehozott.
    2. A panel áttekintése, nyissa meg az Essentials legördülő fülre, és másolja a **Instrumentation kulcs.**
-   3. A projektben nyissa meg az ApplicationInsights.config, és helyezze be:`<InstrumentationKey>your copied key</InstrumentationKey>`
+   3. A projektben nyissa meg az ApplicationInsights.config, és helyezze be: `<InstrumentationKey>your copied key</InstrumentationKey>`
 
 ![Instrumentation kulcsának az átmásolása a .config-fájlhoz](./media/app-insights-monitor-multi-role-apps/copy-instrumentation-key.png)
 
 
-### <a name="3-enable-multi-role-application-map"></a>3. Alkalmazás több szerepkör-hozzárendelés engedélyezése
+### <a name="3-enable-composite-application-map"></a>3. Engedélyezze az összetett alkalmazás-hozzárendelés
 
-Nyissa meg az alkalmazás erőforrást az Azure-portálon. Az előzetes verziójú funkciók panelen engedélyezése *alkalmazás több szerepkör-hozzárendelés*.
+Nyissa meg az alkalmazás erőforrást az Azure-portálon. KONFIGURÁLÁS alárendelt fejléc alatt kattintson a Preview előzetes verziójú funkciók panel megnyitásához. Az előzetes verziójú funkciók panelen engedélyezése *összetett alkalmazás-hozzárendelés*.
 
 ### <a name="4-enable-docker-metrics-optional"></a>4. Engedélyezze a Docker-metrikák (nem kötelező) 
 
@@ -125,6 +125,6 @@ Kattintson a telemetriai adat ehhez a művelethez kapcsolódó listáját az el�
 ![Keresés összetevői között](./media/app-insights-monitor-multi-role-apps/search-across-components.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A fejlesztői, tesztelési és éles külön telemetria](app-insights-separate-resources.md)

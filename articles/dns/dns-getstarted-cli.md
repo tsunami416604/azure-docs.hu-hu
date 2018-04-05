@@ -1,11 +1,11 @@
 ---
-title: "Az Azure DNS használatának első lépései az Azure CLI 2.0-val | Microsoft Docs"
-description: "A cikkből megtudhatja, hogyan hozhat létre DNS-zónát és -rekordot az Azure DNS-ben. Ez egy lépésenkénti útmutató, amellyel az Azure CLI 2.0 használatával létrehozhatja és kezelheti az első DNS-zónáját és -rekordját."
+title: Az Azure DNS használatának első lépései az Azure CLI 2.0-val | Microsoft Docs
+description: A cikkből megtudhatja, hogyan hozhat létre DNS-zónát és -rekordot az Azure DNS-ben. Ez egy lépésenkénti útmutató, amellyel az Azure CLI 2.0 használatával létrehozhatja és kezelheti az első DNS-zónáját és -rekordját.
 services: dns
 documentationcenter: na
 author: KumuD
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: fb0aa0a6-d096-4d6a-b2f6-eda1c64f6182
 ms.service: dns
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: kumud
-ms.openlocfilehash: 76782ac1e78cd0f7da4bc1aad8eff00d79865ed7
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: d24eaa4974f8bff09b337384e4fd139edb6ebd70
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="get-started-with-azure-dns-using-azure-cli-20"></a>Az Azure DNS használatának első lépései az Azure CLI 2.0-val
 
@@ -33,6 +33,8 @@ Ez a cikk bemutatja az első DNS-zóna és -rekord létrehozásának lépéseit 
 Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A tartománya Azure DNS-ben való üzemeltetésének megkezdéséhez létre kell hoznia egy DNS-zónát az adott tartománynévhez. Ezután a tartománya összes DNS-rekordja ebben a DNS-zónában jön létre. Végül a DNS-zóna interneten való közzétételéhez konfigurálnia kell a tartomány névkiszolgálóit. Az egyes lépéseket az alábbiakban ismertetjük.
 
 Ezek az utasítások feltételezik, hogy már telepítette az Azure CLI 2.0-t, és bejelentkezett. További segítségért lásd [a DNS-zónák az Azure CLI 2.0 használatával való kezelésével kapcsolatos](dns-operations-dnszones-cli.md) témakört.
+
+Az Azure DNS már támogatja a privát DNS-zónák használatát (jelenleg nyilvános előzetes verzióban érhető el). További információk a saját DNS-zónákról: [Az Azure DNS használata saját tartományok esetében](private-dns-overview.md). További információt a privát DNS-zónák létrehozásáról [az Azure DNS privát zónái CLI segítségével történő használatának első lépéseit](./private-dns-getstarted-cli.md) ismertető cikkben olvashat.
 
 ## <a name="create-the-resource-group"></a>Az erőforráscsoport létrehozása
 
@@ -52,7 +54,6 @@ Az alábbi példaparancs a *MyResourceGroup* nevű erőforráscsoportban létreh
 az network dns zone create -g MyResourceGroup -n contoso.com
 ```
 
-
 ## <a name="create-a-dns-record"></a>DNS-rekord létrehozása
 
 DNS-rekordokat az `az network dns record-set [record type] add-record` paranccsal lehet létrehozni. Az A-rekordokkal kapcsolatos segítségért például lásd: `azure network dns record-set A add-record -h`.
@@ -65,7 +66,6 @@ az network dns record-set a add-record -g MyResourceGroup -z contoso.com -n www 
 
 Más rekordtípusok, több rekordot tartalmazó rekordhalmazok, alternatív élettartam-értékek és meglévő rekordok módosítása esetén lásd: [DNS-rekordok és -rekordhalmazok kezelése az Azure CLI 2.0 használatával](dns-operations-recordsets-cli.md).
 
-
 ## <a name="view-records"></a>A rekordok megtekintése
 
 A zónájában lévő DNS-rekordokat a következő paranccsal listázhatja:
@@ -73,7 +73,6 @@ A zónájában lévő DNS-rekordokat a következő paranccsal listázhatja:
 ```azurecli
 az network dns record-set list -g MyResourceGroup -z contoso.com
 ```
-
 
 ## <a name="update-name-servers"></a>A névkiszolgálók frissítése
 
@@ -113,7 +112,7 @@ A jelen cikkben létrehozott összes erőforrás törléséhez hajtsa végre az 
 az group delete --name MyResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure DNS-sel kapcsolatos további információért lásd [az Azure DNS áttekintését biztosító](dns-overview.md) cikket.
 

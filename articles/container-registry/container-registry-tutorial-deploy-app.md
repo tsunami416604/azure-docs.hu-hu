@@ -1,6 +1,6 @@
 ---
-title: "Tároló beállításjegyzék oktatóanyag az Azure - webalkalmazást az Azure-tároló beállításjegyzék telepítése"
-description: "A Linux-alapú webalkalmazás telepítése egy Azure-tárolót georeplikált beállításjegyzékből tároló lemezkép használata. A három részből sorozat két része."
+title: Azure Container Registry – oktatóanyag – Webalkalmazás üzembe helyezése az Azure Container Registryből
+description: Linux-alapú webalkalmazás üzembe helyezése egy georeplikált Azure tárolóregisztrációs adatbázis tárolórendszerképével. Ez egy háromrészes sorozat második része.
 services: container-registry
 author: mmacy
 manager: timlt
@@ -9,110 +9,110 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: d775a17cb8069a7521788d850d7d52b92cc67526
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
-ms.translationtype: MT
+ms.openlocfilehash: 51aa3c6fc56e974fc1729a1d2fe35c889adf35e2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="deploy-web-app-from-azure-container-registry"></a>Azure-tároló beállításjegyzékből webalkalmazás telepítése
+# <a name="tutorial-deploy-web-app-from-azure-container-registry"></a>Oktatóanyag: Webalkalmazás üzembe helyezése az Azure Container Registryből
 
-Ez az egy háromrészes oktatóanyag sorozat két részre. A [rész](container-registry-tutorial-prepare-registry.md), egy saját, a georeplikált tároló beállításjegyzék lett létrehozva, és a tároló-lemezkép forrás tervezték és a beállításjegyzék leküldött. Ebben a cikkben a tároló be két különböző Azure-régiók előnyeit a hálózati bezárású szempontja, hogy a georeplikált beállításjegyzék két Web App-példány üzembe.
+Ez egy háromrészes oktatóanyag-sorozat második része. Az [első részben](container-registry-tutorial-prepare-registry.md) létrehozott egy privát, georeplikált tárolóregisztrációs adatbázist, valamint felépített egy tárolórendszerképet a forrásból, és leküldte a regisztrációs adatbázisba. Ebben a cikkben üzembe helyezi a tárolót két, különböző Azure-régiókban található webalkalmazás-példányban, hogy kihasználja a georeplikált regisztrációs adatbázis hálózatközeli aspektusát.
 
-Ebben az oktatóanyagban a második rész az adatsorozat:
+Az oktatóanyag-sorozat második része a következő lépésekből áll:
 
 > [!div class="checklist"]
-> * Tároló lemezkép telepítéséhez két *tárolók webalkalmazásait* példányok
-> * Ellenőrizze a központilag telepített alkalmazás
+> * Tárolórendszerkép üzembe helyezése két *Web Apps for Containers*-példányban
+> * Az üzembe helyezett alkalmazás ellenőrzése
 
-Ha még nem hozott létre a georeplikált beállításjegyzék és a beállításjegyzéket, a tárolóalapú mintaalkalmazás képe leküldött térjen vissza az előző oktatóanyag az adatsorozat [előkészítése az Azure-tárolót georeplikált beállításjegyzékbeli](container-registry-tutorial-prepare-registry.md).
+Ha még nem hozott létre a georeplikált regisztrációs adatbázist, és még nem küldte le a tárolóalapú mintaalkalmazás rendszerképét a regisztrációs adatbázisba, térjen vissza a sorozat előző, [Georeplikált Azure tárolóregisztrációs adatbázis előkészítése](container-registry-tutorial-prepare-registry.md) című oktatóanyagára.
 
-A sorozat következő része frissítse az alkalmazást, majd egy új tároló kép leküldése a beállításjegyzékben. Végezetül böngészéssel minden futó webalkalmazás-példány együtt, automatikusan megjelenik a módosítás megtekintéséhez Azure tároló beállításjegyzék georeplikáció és webhookokkal megjelenítő művelet.
+A sorozat következő részében frissíti az alkalmazást, majd leküldi az új tárolórendszerképet a regisztrációs adatbázisba. Végül pedig tallózással megkeresi a futó webalkalmazás-példányokat az automatikusan végrehajtott módosítások megtekintéséhez, így az Azure Container Registry georeplikációja és a webhookok is láthatók működés közben.
 
-## <a name="automatic-deployment-to-web-apps-for-containers"></a>A webalkalmazások tárolók az automatikus központi telepítési
+## <a name="automatic-deployment-to-web-apps-for-containers"></a>Automatikus üzembe helyezés a Web Apps for Containersben
 
-Azure tároló beállításjegyzék támogatást nyújt a tárolóalapú próbafiókokon közvetlenül [tárolók webalkalmazásait](../app-service/containers/index.yml). Az oktatóanyag segítségével az Azure-portálon az előző az oktatóanyag segítséget nyújt az Azure különböző régiókban található két webes alkalmazás tervek létrehozott tároló lemezkép központi telepítését.
+Az Azure Container Registry támogatja a tárolóalapú alkalmazások a [Web Apps for Containersben](../app-service/containers/index.yml) való közvetlen üzembe helyezését. Ebben az oktatóanyagban az Azure Portallal üzembe helyezi az előző oktatóanyagban létrehozott tárolórendszerképet két, különböző Azure-régiókban található webalkalmazás-csomagban.
 
-Egy tároló lemezképből webalkalmazás üzembe helyezése a beállításjegyzékben, és egy georeplikált beállításjegyzék ugyanabban a régióban van, Azure tároló beállításjegyzék létrehoz egy lemezkép-telepítés [webhook](container-registry-webhook.md) meg. A tároló tárház új lemezkép leküldése, amikor a webhook szerzi be a módosítást, és automatikusan telepíti az új tároló-lemezkép a webes alkalmazást.
+Ha üzembe helyez egy webalkalmazást a regisztrációs adatbázis egyik tárolórendszerképéből, és van egy georeplikált regisztrációs adatbázisa ugyanabban a régióban, az Azure Container Registry létrehoz Önnek egy [webhookot](container-registry-webhook.md) a rendszerkép üzembe helyezéséhez. Amikor leküld egy új rendszerképet a tárolóadattárba, a webhook észleli a módosítást, és automatikusan üzembe helyezi az új tárolórendszerképet a webalkalmazásban.
 
-## <a name="deploy-a-web-app-for-containers-instance"></a>Tárolók példány webalkalmazás üzembe helyezése
+## <a name="deploy-a-web-app-for-containers-instance"></a>Web Apps for Containers-példány üzembe helyezése
 
-Ebben a lépésben szereplő tárolókhoz példány a webalkalmazás létrehozása a *USA nyugati régiója* régióban.
+Ebben a lépésben létrehoz egy Web App for Containers-példányt az *USA nyugati régiójában*.
 
-Jelentkezzen be a [Azure-portálon](https://portal.azure.com) , és keresse meg a beállításjegyzéket, az előző oktatóanyag létrehozott.
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és lépjen az előző oktatóanyagban létrehozott regisztrációs adatbázisra.
 
-Válassza ki **adattárak** > **acr-helloworld**, majd kattintson a jobb gombbal a a **v1** címke alatt **címkék** ,majd**Központi telepítése a webes alkalmazás**.
+Válassza ki az **Adattárak** > **acr-helloworld** elemet, kattintson a jobb gombbal a **v1** címkére a **Címkék** területen, majd válassza az **Üzembe helyezés a webalkalmazásban** lehetőséget.
 
-![Telepítése az app service az Azure-portálon][deploy-app-portal-01]
+![Üzembe helyezés az App Service-ben az Azure Portalon][deploy-app-portal-01]
 
-A **Web App az tárolókat** , amely akkor jelenik meg, a következő értékek mindegyikéhez:
+A megjelenített **Web App for Containers** területen adja meg a következő értékeket a beállításokhoz:
 
 | Beállítás | Érték |
 |---|---|
-| **Hely neve** | A webes alkalmazás globálisan egyedi nevét. Ebben a példában a formátumot használjuk `<acrName>-westus` egyszerű azonosításában a beállításjegyzék és a webes alkalmazás telepítve van a régióban. |
-| **Erőforráscsoport** | **Meglévő** > `myResourceGroup` |
-| **App service-csomag/hely** | Hozzon létre egy új csomagot nevű `plan-westus` a a **USA nyugati régiója** régióban. |
-| **Kép** | `acr-helloworld:v1`
+| **Hely neve** | A webalkalmazás globálisan egyedi neve. Ebben a példában az `<acrName>-westus` formátumot használjuk, hogy könnyen azonosítani lehessen a regisztrációs adatbázist és a régiót, amelyből a webalkalmazás telepítve lesz. |
+| **Erőforráscsoport** | **Meglévő használata** > `myResourceGroup` |
+| **App Service-csomag/Hely** | Hozzon létre `plan-westus` nevű új csomagot az **USA nyugati régiójában**. |
+| **Rendszerkép** | `acr-helloworld:v1`
 
-Válassza ki **létrehozása** a webalkalmazás a kiépítése a *USA nyugati régiója* régióban.
+Válassza a **Létrehozás** lehetőséget a webalkalmazás az *USA nyugati régiójában* való üzembe helyezéséhez.
 
-![A webalkalmazás az Azure portálon Linux-konfiguráció][deploy-app-portal-02]
+![Linuxon futó webalkalmazás konfigurációja az Azure Portalon][deploy-app-portal-02]
 
-## <a name="view-the-deployed-web-app"></a>A telepített webalkalmazás megtekintése
+## <a name="view-the-deployed-web-app"></a>Az üzembe helyezett webalkalmazás megtekintése
 
-Központi telepítés befejeződése után megtekintheti a futó alkalmazások navigáljon a böngészőben az URL-CÍMÉT.
+Az üzembe helyezés befejezése után megtekintheti a futó alkalmazást, ha megnyitja az URL-címét a böngészőben.
 
-Válassza a portál **alkalmazásszolgáltatások**, akkor a webalkalmazás üzembe az előző lépésben. Ebben a példában a webes alkalmazás neve *uniqueregistryname-westus*.
+A Portalon válassza ki az **App Services** elemet, majd az előző lépésben üzembe helyezett webalkalmazást. Ebben a példában a webalkalmazás neve *uniqueregistryname-westus*.
 
-A jobb felső részén jelölje ki a hiperhivatkozással ellátott a webalkalmazás URL-CÍMÉT a **App Service** áttekintése a futó alkalmazás megtekintése a böngészőben.
+A futó alkalmazás böngészőben való megtekintéséhez kattintson a webalkalmazás hiperhivatkozással ellátott URL-címére az **App Service** áttekintésének jobb felső részén.
 
-![A webalkalmazás az Azure portálon Linux-konfiguráció][deploy-app-portal-04]
+![Linuxon futó webalkalmazás konfigurációja az Azure Portalon][deploy-app-portal-04]
 
-Miután a Docker-lemezkép központi telepítésekor a georeplikált tároló beállításjegyzékből, a webhely úgy jelenik meg az Azure-régió, a tároló beállításjegyzék üzemeltető jelölő kép.
+A Docker-rendszerkép georeplikált tárolóregisztrációs adatbázisból való üzembe helyezése után a webhely egy képet jelenít meg, amely a tárolóregisztrációs adatbázist üzemeltető Azure-régiót ábrázolja.
 
-![A webböngészőben üzembe helyezett webalkalmazás][deployed-app-westus]
+![Az üzembe helyezett webalkalmazás, egy böngészőben megtekintve][deployed-app-westus]
 
-## <a name="deploy-second-web-app-for-containers-instance"></a>Tárolók példány második webalkalmazás telepítése
+## <a name="deploy-second-web-app-for-containers-instance"></a>A második Web Apps for Containers-példány üzembe helyezése
 
-Az előző szakaszban leírt eljárás segítségével a második webalkalmazás üzembe helyezése a *USA keleti régiója* régióban. A **Web App az tárolókat**, adja meg a következő értékeket:
+Kövesse az előző szakaszban leírt eljárást egy második webalkalmazás az *USA keleti régiójában* való üzembe helyezéséhez. A **Web App for Containers** területen adja meg a következő értékeket:
 
 | Beállítás | Érték |
 |---|---|
-| **Hely neve** | A webes alkalmazás globálisan egyedi nevét. Ebben a példában a formátumot használjuk `<acrName>-eastus` egyszerű azonosításában a beállításjegyzék és a webes alkalmazás telepítve van a régióban. |
-| **Erőforráscsoport** | **Meglévő** > `myResourceGroup` |
-| **App service-csomag/hely** | Hozzon létre egy új csomagot nevű `plan-eastus` a a **USA keleti régiója** régióban. |
-| **Kép** | `acr-helloworld:v1`
+| **Hely neve** | A webalkalmazás globálisan egyedi neve. Ebben a példában az `<acrName>-eastus` formátumot használjuk, hogy könnyen azonosítani lehessen a regisztrációs adatbázist és a régiót, amelyből a webalkalmazás telepítve lesz. |
+| **Erőforráscsoport** | **Meglévő használata** > `myResourceGroup` |
+| **App Service-csomag/Hely** | Hozzon létre `plan-eastus` nevű új csomagot az **USA keleti régiójában**. |
+| **Rendszerkép** | `acr-helloworld:v1`
 
-Válassza ki **létrehozása** a webalkalmazás a kiépítése a *USA keleti régiója* régióban.
+Válassza a **Létrehozás** lehetőséget a webalkalmazás az *USA keleti régiójában* való üzembe helyezéséhez.
 
-![A webalkalmazás az Azure portálon Linux-konfiguráció][deploy-app-portal-06]
+![Linuxon futó webalkalmazás konfigurációja az Azure Portalon][deploy-app-portal-06]
 
-## <a name="view-the-deployed-web-app"></a>A telepített webalkalmazás megtekintése
+## <a name="view-the-deployed-web-app"></a>Az üzembe helyezett webalkalmazás megtekintése
 
-Mint előtt, megtekintheti a futó alkalmazások által a böngészőbe az URL-re navigáláskor.
+A korábbiakhoz hasonlóan megtekintheti a futó alkalmazást, ha megnyitja az URL-címét a böngészőben.
 
-Válassza a portál **alkalmazásszolgáltatások**, akkor a webalkalmazás üzembe az előző lépésben. Ebben a példában a webes alkalmazás neve *uniqueregistryname-eastus*.
+A Portalon válassza ki az **App Services** elemet, majd az előző lépésben üzembe helyezett webalkalmazást. Ebben a példában a webalkalmazás neve *uniqueregistryname-eastus*.
 
-A jobb felső részén jelölje ki a hiperhivatkozással ellátott a webalkalmazás URL-CÍMÉT a **App Service áttekintése** a futó alkalmazás megtekintése a böngészőben.
+A futó alkalmazás böngészőben való megtekintéséhez kattintson a webalkalmazás hiperhivatkozással ellátott URL-címére az **App Service áttekintésének** jobb felső részén.
 
-![A webalkalmazás az Azure portálon Linux-konfiguráció][deploy-app-portal-07]
+![Linuxon futó webalkalmazás konfigurációja az Azure Portalon][deploy-app-portal-07]
 
-Miután a Docker-lemezkép központi telepítésekor a georeplikált tároló beállításjegyzékből, a webhely úgy jelenik meg az Azure-régió, a tároló beállításjegyzék üzemeltető jelölő kép.
+A Docker-rendszerkép georeplikált tárolóregisztrációs adatbázisból való üzembe helyezése után a webhely egy képet jelenít meg, amely a tárolóregisztrációs adatbázist üzemeltető Azure-régiót ábrázolja.
 
-![A webböngészőben üzembe helyezett webalkalmazás][deployed-app-eastus]
+![Az üzembe helyezett webalkalmazás, egy böngészőben megtekintve][deployed-app-eastus]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy Azure-tárolót georeplikált beállításjegyzékből tárolók példányok két Web App telepítette. Ebben az oktatóanyagban szereplő lépések végrehajtásával meg:
+Ebben az oktatóanyagban üzembe helyezett két Web App for Containers-példányt egy georeplikált Azure tárolóregisztrációs adatbázisból. A jelen oktatóanyag lépéseit követve a következőket végezte el:
 
 > [!div class="checklist"]
-> * A tároló-lemezkép központi telepítése két *tárolók webalkalmazásait* példányok
-> * A telepített alkalmazás ellenőrzése
+> * Üzembe helyezett egy tárolórendszerképet két *Web Apps for Containers*-példányban
+> * Ellenőrizte az üzembe helyezett alkalmazást
 
-A következő oktatóanyag frissítse, majd egy új tároló-lemezkép központi telepítését, a tároló beállításjegyzék továbblépés, majd győződjön meg arról, hogy mindkét régiókban futó webalkalmazások automatikusan frissültek-e.
+Folytassa a következő oktatóanyaggal, amelyben frissít és üzembe helyez egy új tárolórendszerképet a tárolóregisztrációs adatbázisban, majd ellenőrzi, hogy a két régióban futó webalkalmazások automatikusan frissültek-e.
 
 > [!div class="nextstepaction"]
-> [Georeplikált tároló lemezkép frissítés telepítése](./container-registry-tutorial-deploy-update.md)
+> [Georeplikált tárolórendszerkép frissítésének központi telepítése](./container-registry-tutorial-deploy-update.md)
 
 <!-- IMAGES -->
 [deploy-app-portal-01]: ./media/container-registry-tutorial-deploy-app/deploy-app-portal-01.png

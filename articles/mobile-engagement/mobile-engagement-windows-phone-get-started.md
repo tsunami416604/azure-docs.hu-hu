@@ -1,11 +1,11 @@
 ---
-title: "Ismerkedés az Azure Mobile Engagement Windows Phone Silverlight-alkalmazásokkal való használatával"
-description: "Ismerje meg, hogyan használható az Azure Mobile Engagement a Windows Phone Silverlight-alkalmazásokhoz kapcsolódó elemzésekkel és leküldéses értesítésekkel."
+title: Ismerkedés az Azure Mobile Engagement Windows Phone Silverlight-alkalmazásokkal való használatával
+description: Ismerje meg, hogyan használható az Azure Mobile Engagement a Windows Phone Silverlight-alkalmazásokhoz kapcsolódó elemzésekkel és leküldéses értesítésekkel.
 services: mobile-engagement
 documentationcenter: windows
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: aa34692f-87f7-47c6-a20c-a1972750bc25
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: d2334a59d83c90bdd02c4fa29261d36aad292892
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9fb1426e66df6cd8085342743b7d045c297743e5
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-windows-phone-silverlight-apps"></a>Ismerkedés az Azure Mobile Engagement Windows Phone Silverlight-alkalmazásokkal való használatával
+> [!IMPORTANT]
+> Az Azure Mobile Engagement támogatása 2018. március 31-én megszűnik. Az oldal nem sokkal ezután törlésre kerül.
+> 
+
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
 Ebben a témakörben elsajátíthatja, hogy miként használható az Azure Mobile Engagement az alkalmazáshasználat megértéséhez, valamint leküldéses értesítések Windows Phone Silverlight-alkalmazások szegmentált felhasználói számára való küldéséhez.

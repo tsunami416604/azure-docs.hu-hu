@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Batch PowerShell használatának első lépései | Microsoft Docs"
-description: "Gyors bevezetés a Batch-erőforrások kezeléséhez használható Azure PowerShell-parancsmagok használatába."
+title: Az Azure Batch PowerShell használatának első lépései | Microsoft Docs
+description: Gyors bevezetés a Batch-erőforrások kezeléséhez használható Azure PowerShell-parancsmagok használatába.
 services: batch
-documentationcenter: 
-author: tamram
-manager: timlt
-editor: 
+documentationcenter: ''
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: f9ad62c5-27bf-4e6b-a5bf-c5f5914e6199
 ms.service: batch
 ms.devlang: NA
@@ -13,13 +13,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: powershell
 ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e33be6ed658e00250ea1e80cd7da4d348fb18296
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6767257a540e4f29bb5445a718ad65a31e1f373e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Batch-erőforrások kezelése PowerShell-parancsmagokkal
 
@@ -42,11 +42,11 @@ Az alábbi műveletek segítségével felügyelheti az Azure PowerShell-lel a Ba
 
 ## <a name="manage-batch-accounts-and-keys"></a>Batch-fiókok és kulcsok felügyelete
 ### <a name="create-a-batch-account"></a>Batch-fiók létrehozása
-A **New-AzureRmBatchAccount** parancs egy Batch-fiókot hoz létre a meghatározott erőforráscsoportban. Ha még nem rendelkezik erőforráscsoporttal, hozzon létre egyet a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) parancsmag futtatásával. A **Hely** paraméternél adjon meg egy Azure régiót, például az „USA középső régiója”. Példa:
+A **New-AzureRmBatchAccount** parancs egy Batch-fiókot hoz létre a meghatározott erőforráscsoportban. Ha még nem rendelkezik erőforráscsoporttal, hozzon létre egyet a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) parancsmag futtatásával. A **Hely** paraméternél adjon meg egy Azure régiót, például az „USA középső régiója”. Például:
 
     New-AzureRmResourceGroup –Name MyBatchResourceGroup –location "Central US"
 
-Ezután hozzon létre egy Batch-fiókot az erőforráscsoportban, adjon meg egy fióknevet az <*account_name*> helyőrző helyett, és adja meg az erőforráscsoport helyét és nevét. A Batch-fiókok létrehozása eltarthat egy ideig. Példa:
+Ezután hozzon létre egy Batch-fiókot az erőforráscsoportban, adjon meg egy fióknevet az <*account_name*> helyőrző helyett, és adja meg az erőforráscsoport helyét és nevét. A Batch-fiókok létrehozása eltarthat egy ideig. Például:
 
     New-AzureRmBatchAccount –AccountName <account_name> –Location "Central US" –ResourceGroupName <res_group_name>
 
@@ -75,7 +75,7 @@ A **New-AzureRmBatchAccountKey** új elsődleges vagy másodlagos hívóbetűt h
 > 
 
 ### <a name="delete-a-batch-account"></a>Batch-fiók törlése
-A **Remove-AzureRmBatchAccount** törli a Batch-fiókot. Példa:
+A **Remove-AzureRmBatchAccount** törli a Batch-fiókot. Például:
 
     Remove-AzureRmBatchAccount -AccountName <account_name>
 
@@ -134,7 +134,7 @@ Az OData-szűrő alternatívája az **Id** paraméter használata. Egy „myPool
 Az **ID** paraméter csak a teljes azonosítót használó kereséseket támogatja, a helyettesítő karaktereket és az OData stílusú szűrőket nem.
 
 ### <a name="use-the-maxcount-parameter"></a>A MaxCount paraméter használata
-Alapértelmezés szerint mindegyik parancsmag maximum 1000 objektumot ad vissza. Ha eléri ezt a korlátot, pontosítsa a szűrőt, hogy kevesebb objektumot adjon vissza, vagy explicit módon állítson be maximális értéket a **MaxCount** paraméterrel. Példa:
+Alapértelmezés szerint mindegyik parancsmag maximum 1000 objektumot ad vissza. Ha eléri ezt a korlátot, pontosítsa a szűrőt, hogy kevesebb objektumot adjon vissza, vagy explicit módon állítson be maximális értéket a **MaxCount** paraméterrel. Például:
 
     Get-AzureBatchTask -MaxCount 2500 -BatchContext $context
 
@@ -235,7 +235,7 @@ A készlet tulajdonságainak frissítése megtörtént a Batch-szolgáltatásban
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A parancsmag részletes szintaxisáért és példákért lásd: [Azure Batch-parancsmagok referenciája](/powershell/module/azurerm.batch/#batch).
 * A Batchben elérhető alkalmazásokkal és alkalmazáscsomagokkal kapcsolatban további információkat a [Batch-alkalmazáscsomagokkal számítási csomópontokra végzett alkalmazástelepítést](batch-application-packages.md) ismertető cikkben talál.
 

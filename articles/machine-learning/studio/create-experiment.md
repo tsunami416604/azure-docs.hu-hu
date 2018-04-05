@@ -1,11 +1,12 @@
 ---
-title: "Egy egyszerű kísérlet a Machine Learning Studióban | Microsoft Docs"
-description: "Ez a Machine Learning-oktatóanyag egy egyszerű adatelemezési kísérletet mutat be. Egy regressziós algoritmus használatával fogjuk előre megbecsülni egy autó árát."
-keywords: "kísérlet,lineáris regresszió,machine learning-algoritmusok,machine learning-oktatóanyag,prediktív modellezési technikák,adatelemzési kísérlet"
+title: Egy egyszerű kísérlet a Machine Learning Studióban | Microsoft Docs
+description: Ez a Machine Learning-oktatóanyag egy egyszerű adatelemezési kísérletet mutat be. Egy regressziós algoritmus használatával fogjuk előre megbecsülni egy autó árát.
+keywords: kísérlet,lineáris regresszió,machine learning-algoritmusok,machine learning-oktatóanyag,prediktív modellezési technikák,adatelemzési kísérlet
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: b6176bb2-3bb6-4ebf-84d1-3598ee6e01c6
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 03/20/2017
-ms.author: garye
-ms.openlocfilehash: 3cc4278ca7d4603f4bfb916885d44e6a85864b25
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 57461cf94898012619b865c455955f511e978995
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="machine-learning-tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Machine Learning-oktatóanyag: Az első adatelemzési kísérlet létrehozása az Azure Machine Learning Studióban
 
@@ -55,7 +55,7 @@ A újra és újra átdolgozhatja a modellt, módosíthatja és futtathatja a kí
 
 ## <a name="open-machine-learning-studio"></a>A Machine Learning Studio megnyitása
 
-A Studio használatának elkezdéséhez lépjen a [https://studio.azureml.net](https://studio.azureml.net) helyre. Ha korábban már bejelentkezett a Machine Learning Studióba, kattintson a **Sign in** (Bejelentkezés) lehetőségre. Ellenkező esetben kattintson a **Sign up here** (Regisztráció itt) lehetőségre, majd válasszon az ingyenes vagy a fizetős lehetőség használata közül.
+A Studio használatának megkezdéséhez lépjen a [https://studio.azureml.net](https://studio.azureml.net) helyre. Ha korábban már bejelentkezett a Machine Learning Studióba, kattintson a **Sign in** (Bejelentkezés) lehetőségre. Ellenkező esetben kattintson a **Sign up here** (Regisztráció itt) lehetőségre, majd válasszon az ingyenes vagy a fizetős lehetőség használata közül.
 
 ![Bejelentkezés a Machine Learning Studióba][sign-in-to-studio]
 <br/>

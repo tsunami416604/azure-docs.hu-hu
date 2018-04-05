@@ -1,21 +1,21 @@
 ---
-title: "Nagy mennyiségű véletlenszerű adat párhuzamos feltöltése az Azure Storage-ba | Microsoft Docs"
-description: "Ebből a cikkből megtudhatja, hogy az Azure SDK hogyan használható nagy mennyiségű véletlenszerű adat párhuzamos feltöltésére egy Azure Storage-fiókba"
+title: Nagy mennyiségű véletlenszerű adat párhuzamos feltöltése az Azure Storage-ba | Microsoft Docs
+description: Ebből a cikkből megtudhatja, hogy az Azure SDK hogyan használható nagy mennyiségű véletlenszerű adat párhuzamos feltöltésére egy Azure Storage-fiókba
 services: storage
-author: tamram
+author: roygara
 manager: jeconnoc
 ms.service: storage
 ms.workload: web
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 02/20/2018
-ms.author: tamram
+ms.author: rogarana
 ms.custom: mvc
-ms.openlocfilehash: 39a48007bdcd055df4529074a67b5b8a6db2d8b4
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 668700cf3ff3d1a90f9639129ef2953ddca016f1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Nagy mennyiségű véletlenszerű adat párhuzamos feltöltése az Azure Storage-ba
 
@@ -25,7 +25,7 @@ A sorozat második részében az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Kapcsolati karakterlánc konfigurálása
-> * Az alkalmazás buildelése
+> * Az alkalmazás létrehozása
 > * Az alkalmazás futtatása
 > * A kapcsolatok számának ellenőrzése
 
@@ -73,7 +73,7 @@ A szálkezelési és a kapcsolati korlátozások beállításán felül az [Uplo
 |---|---|---|
 |[ParallelOperationThreadCount](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.paralleloperationthreadcount?view=azure-dotnet)| 8| A beállítás feltöltéskor blokkokra töri a blobot. A legjobb teljesítmény érdekében ennek az értéknek a magok számának 8-szorosának kell lennie. |
 |[DisableContentMD5Validation](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.disablecontentmd5validation?view=azure-dotnet)| true| Ez a tulajdonság letiltja a feltöltött tartalom MD5-kivonat ellenőrzését. A gyorsabb átvitel érdekében tiltsa le az MD5-ellenőrzést. Így azonban nem biztosított a folyamatban lévő átvitelben érintett fájlok érvényessége vagy integritása.   |
-|[StorBlobContentMD5](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.storeblobcontentmd5?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_StoreBlobContentMD5)| false| Ez a tulajdonság határozza meg, hogy az MD5 kivonatoló kiszámítása és fájlban való tárolása megtörtént-e.   |
+|[StoreBlobContentMD5](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.storeblobcontentmd5?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_StoreBlobContentMD5)| false| Ez a tulajdonság határozza meg, hogy az MD5 kivonatoló kiszámítása és fájlban való tárolása megtörtént-e.   |
 | [RetryPolicy](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.retrypolicy?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_RetryPolicy)| 2-second backoff with 10 max retry |A kérések újrapróbálkozási szabályzatát határozza meg. Kapcsolódási hiba esetén a rendszer újra próbálkozik, ebben a példában az [ExponentialRetry](/dotnet/api/microsoft.windowsazure.storage.retrypolicies.exponentialretry?view=azure-dotnet) szabályzat 2 másodperces leállításra és legfeljebb 10 újrapróbálkozásra van konfigurálva. Ez a beállítás akkor fontos, ha az alkalmazás lassan eléri a [blob storage skálázhatósági célértékét](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets).  |
 
 A következő példában az `UploadFilesAsync` feladat látható:
@@ -189,7 +189,7 @@ A sorozat második részében megismerkedett a nagy mennyiségű véletlenszerű
 
 > [!div class="checklist"]
 > * Kapcsolati karakterlánc konfigurálása
-> * Az alkalmazás buildelése
+> * Az alkalmazás létrehozása
 > * Az alkalmazás futtatása
 > * A kapcsolatok számának ellenőrzése
 

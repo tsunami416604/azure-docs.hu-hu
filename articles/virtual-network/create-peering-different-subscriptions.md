@@ -4,7 +4,7 @@ description: Megtudhatja, hogyan hozzon létre egy virtuális hálózati társvi
 services: virtual-network
 documentationcenter: ''
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: e4ca1f62be8185dd7e0e45f6736bc0273b466309
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 92cbcad42508f2ae6113d13449aba7eed5acd251
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Hozzon létre egy virtuális hálózati társviszony - erőforrás-kezelő különböző előfizetésekhez 
 
@@ -35,7 +35,7 @@ Virtuális hálózati társviszony-létesítés létrehozásának lépései elt�
 
 Virtuális hálózati társviszony-létesítés nem hozható létre, a klasszikus üzembe helyezési modellben telepített virtuális hálózatok között. Ha mindkét létrehozott virtuális hálózatok csatlakozhat a klasszikus üzembe helyezési modellben van szüksége, használhatja az Azure [VPN-átjáró](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális hálózathoz csatlakozni. 
 
-Ez az oktatóanyag állomásokhoz virtuális hálózatok ugyanabban a régióban. Különböző régiókban lévő virtuális hálózatok egyenrangú lehetősége jelenleg előzetes verzió. Hajtsa végre a [regisztrálni a globális virtuális hálózati társviszony-létesítés](#register) különböző régiókban, vagy a társviszony-létesítési sikertelen a virtuális hálózatok egyenrangú megkísérlése előtt. Csatlakozás az Azure virtuális hálózatok különböző régiókban képes [VPN-átjáró](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) általánosan elérhető, és nincs szükség regisztrációra.
+Ez az oktatóanyag állomásokhoz virtuális hálózatok ugyanabban a régióban. Virtuális hálózatok, a másik partnert is meg is [támogató régiók](virtual-network-manage-peering.md#cross-region). 
 
 Használhatja a [Azure-portálon](#portal), az Azure [parancssori felület](#cli) (CLI), Azure [PowerShell](#powershell), vagy egy [Azure Resource Manager sablon](#template)létrehozni a virtuális hálózati társviszony-létesítés. Kattintson az előző eszköz hivatkozásokra kattintva közvetlenül Ugrás a virtuális hálózati társviszony-létesítés a eszközzel választott létrehozásához szükséges lépésekről.
 
@@ -43,7 +43,7 @@ Használhatja a [Azure-portálon](#portal), az Azure [parancssori felület](#cli
 
 Ez az oktatóanyag az egyes előfizetésekhez külön fiókot használja. Mindkét előfizetéshez engedéllyel rendelkező fiók használata, használja ugyanazt a fiókot az összes lépést, hagyja ki a lépéseket a naplózás a portálon kívül, és hagyja ki a lépéseket, a másik felhasználói engedélyek hozzárendelése a virtuális hálózatok.
 
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) , "a" felhasználó. A fiókkal jelentkezik be az virtuális hálózati társviszony-létesítés létrehozásához szükséges engedélyekkel kell rendelkeznie. Tekintse meg a [engedélyek](#permissions) jelen cikkben alább szakasza.
+1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) , "a" felhasználó. A fiókkal jelentkezik be az virtuális hálózati társviszony-létesítés létrehozásához szükséges engedélyekkel kell rendelkeznie. Az engedélyek listájáért lásd: [virtuális hálózati társviszony-létesítési engedélyek](virtual-network-manage-peering.md#permissions).
 2. Kattintson a **+ új**, kattintson a **hálózati**, majd kattintson a **virtuális hálózati**.
 3. Az a **virtuális hálózat létrehozása** panelen adja meg, vagy válassza ki a következő beállítások értékeit, majd kattintson **létrehozása**:
     - **Név**: *myVnetA*
@@ -106,7 +106,7 @@ A következő parancsfájlt:
 
 A parancssori felület és függőségeinek telepítése, helyett az Azure-felhő rendszerhéj is használhatja. Az Azure Cloud Shell olyan ingyenes Bash-felület, amelyet közvetlenül futtathat az Azure Portalon. A fiókjával való használat érdekében az Azure CLI már előre telepítve és konfigurálva van rajta. Kattintson a **kipróbálás** gombra a parancsfájl alábbi, amely meghívja a felhő rendszerhéjat, amely bejelentkezhet az Azure-fiókjába. 
 
-1. Nyisson meg egy parancssori munkamenetet, és jelentkezzen be az Azure-bA "a" felhasználó használja a `azure login` parancsot. A fiókkal jelentkezik be az virtuális hálózati társviszony-létesítés létrehozásához szükséges engedélyekkel kell rendelkeznie. Tekintse meg a [engedélyek](#permissions) jelen cikkben alább szakasza.
+1. Nyisson meg egy parancssori munkamenetet, és jelentkezzen be az Azure-bA "a" felhasználó használja a `azure login` parancsot. A fiókkal jelentkezik be az virtuális hálózati társviszony-létesítés létrehozásához szükséges engedélyekkel kell rendelkeznie. Az engedélyek listájáért lásd: [virtuális hálózati társviszony-létesítési engedélyek](virtual-network-manage-peering.md#permissions).
 2. Másolja a következő parancsfájl egy szövegszerkesztőben, a számítógépen, hogy lecseréli `<SubscriptionA-Id>` rendelkező SubscriptionA azonosítója, majd másolja a módosított parancsfájlt, majd illessze be a parancssori munkamenetet, és nyomja le az `Enter`. Ha az előfizetés-azonosítója nem ismeri, adja meg a "az fiók megjelenítése" parancsot. A következő **azonosító** kimenet az előfizetés azonosítóját.
 
     ```azurecli-interactive
@@ -129,7 +129,7 @@ A parancssori felület és függőségeinek telepítése, helyett az Azure-felh�
       --scope /subscriptions/<SubscriptionA-Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/VirtualNetworks/myVnetA
     ```
     
-3. Jelentkezzen az Azure-ból "a" felhasználó használja a `az logout` parancsot, majd jelentkezzen be Azure-bA "b" felhasználó. A fiókkal jelentkezik be az virtuális hálózati társviszony-létesítés létrehozásához szükséges engedélyekkel kell rendelkeznie. Tekintse meg a [engedélyek](#permissions) jelen cikkben alább szakasza.
+3. Jelentkezzen az Azure-ból "a" felhasználó használja a `az logout` parancsot, majd jelentkezzen be Azure-bA "b" felhasználó. A fiókkal jelentkezik be az virtuális hálózati társviszony-létesítés létrehozásához szükséges engedélyekkel kell rendelkeznie. Az engedélyek listájáért lásd: [virtuális hálózati társviszony-létesítési engedélyek](virtual-network-manage-peering.md#permissions).
 4. Hozzon létre myVnetB. Másolja a parancsfájl tartalmát a 2. lépésben a számítógépen egy szövegszerkesztőben. Cserélje le `<SubscriptionA-Id>` SubscriptionB azonosítójú. Változás 10.0.0.0/16 10.1.0.0/16, módosítsa az összes, a B és a módosított parancsfájl A. másolandó összes Bs illessze be a parancssori munkamenetet, és nyomja le az `Enter`. 
 5. Jelentkezzen ki az Azure-bA biztosít, és jelentkezzen be Azure-bA "a" felhasználó.
 6. Hozzon létre egy virtuális hálózati társviszony-létesítést az myVnetA úgy myVnetB. Másolja a következő parancsfájl tartalmát a számítógépen egy szövegszerkesztőben. Cserélje le `<SubscriptionB-Id>` SubscriptionB azonosítójú. Futtassa a parancsfájlt, másolja a módosított, illessze be a parancssori munkamenetet, és nyomja le az Enter.
@@ -179,7 +179,7 @@ Ez az oktatóanyag az egyes előfizetésekhez külön fiókot használja. Ha min
 
 1. Telepítse a PowerShell [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) moduljának legújabb verzióját. Ha először használja a PowerShellt, olvassa el az [Azure PowerShell áttekintését](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json).
 2. Indítson el egy PowerShell-munkamenetet.
-3. A PowerShellben, jelentkezzen be az Azure-bA "a" felhasználó írja be a `login-azurermaccount` parancsot. A fiókkal jelentkezik be az virtuális hálózati társviszony-létesítés létrehozásához szükséges engedélyekkel kell rendelkeznie. Tekintse meg a [engedélyek](#permissions) jelen cikkben alább szakasza.
+3. A PowerShellben, jelentkezzen be az Azure-bA "a" felhasználó írja be a `login-azurermaccount` parancsot. A fiókkal jelentkezik be az virtuális hálózati társviszony-létesítés létrehozásához szükséges engedélyekkel kell rendelkeznie. Az engedélyek listájáért lásd: [virtuális hálózati társviszony-létesítési engedélyek](virtual-network-manage-peering.md#permissions).
 4. Hozzon létre egy erőforráscsoportot és a virtuális hálózat A. másolása a következő parancsfájl egy szövegszerkesztőben a számítógépen. Cserélje le `<SubscriptionA-Id>` SubscriptionA azonosítójú. Ha az előfizetés-azonosítója nem ismeri, adja meg a `Get-AzureRmSubscription` parancs a megtekintéséhez. A következő **azonosító** visszaadott kimenet van az előfizetés-azonosító. A parancsfájl végrehajtása, másolja a módosított, illessze be a PowerShell, és nyomja le az `Enter`.
 
     ```powershell
@@ -202,7 +202,7 @@ Ez az oktatóanyag az egyes előfizetésekhez külön fiókot használja. Ha min
       -Scope /subscriptions/<SubscriptionA-Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/VirtualNetworks/myVnetA
     ```
 
-5. Jelentkezzen ki "a" felhasználó az Azure-ból, és jelentkezzen be a "b" felhasználó. A fiókkal jelentkezik be az virtuális hálózati társviszony-létesítés létrehozásához szükséges engedélyekkel kell rendelkeznie. Tekintse meg a [engedélyek](#permissions) jelen cikkben alább szakasza.
+5. Jelentkezzen ki "a" felhasználó az Azure-ból, és jelentkezzen be a "b" felhasználó. A fiókkal jelentkezik be az virtuális hálózati társviszony-létesítés létrehozásához szükséges engedélyekkel kell rendelkeznie. Az engedélyek listájáért lásd: [virtuális hálózati társviszony-létesítési engedélyek](virtual-network-manage-peering.md#permissions).
 6. Másolja a parancsfájl tartalmát a 4. lépésben a számítógépen egy szövegszerkesztőben. Cserélje le `<SubscriptionA-Id>` b módosítás 10.0.0.0/16 10.1.0.0/16 való előfizetés azonosítóval. Módosítsa az összes, a B és az összes Bs felé. A parancsfájl végrehajtása, másolja a módosított, illessze be a PowerShell, és nyomja le az `Enter`.
 7. Jelentkezzen ki a "b" felhasználó az Azure-ból, és jelentkezzen be a "a" felhasználó.
 8. A társviszony-létesítést az myVnetA úgy myVnetB létrehozása Másolja a következő parancsfájl egy szövegszerkesztőben, a számítógépen. Cserélje le `<SubscriptionB-Id>` előfizetés b azonosítójú A parancsfájl végrehajtása, másolja a módosított, illessze be a PowerShell, és nyomja le az `Enter`.
@@ -241,7 +241,7 @@ Ez az oktatóanyag az egyes előfizetésekhez külön fiókot használja. Ha min
 
 ## <a name="template"></a>Hozzon létre a társviszony - Resource Manager-sablon
 
-1. Hozzon létre egy virtuális hálózatot, és rendelje hozzá a megfelelő [engedélyek](#permissions) az egyes előfizetések fiókba, lépéseinek végrehajtásához a [Portal](#portal), [Azure CLI](#cli), vagy [PowerShell](#powershell) a cikk szakaszaiban.
+1. Hozzon létre egy virtuális hálózatot, és rendelje hozzá a megfelelő [engedélyek](virtual-network-manage-peering.md#permissions), hajtsa végre a a [Portal](#portal), [Azure CLI](#cli), vagy [PowerShell](#powershell)a cikk szakaszaiban.
 2. Mentse a fájlt a helyi számítógépen utáni szöveget. Cserélje le `<subscription ID>` az "a" felhasználó tartozó előfizetés-azonosító. Előfordulhat, hogy menti a fájlt vnetpeeringA.json, mint például.
 
     ```json
@@ -279,17 +279,6 @@ Ez az oktatóanyag az egyes előfizetésekhez külön fiókot használja. Ha min
 5. A Kész lépés 3 újra, rendszergazdaként az Azure biztosít.
 6. **Nem kötelező**: abban az esetben, ha ez az oktatóanyag nem vonatkozik a virtuális gépek létrehozását, hozzon létre egy virtuális gép minden egyes virtuális hálózati, és csatlakoztassa egy virtuális gépről a másikra, való kapcsolat ellenőrzésére.
 7. **Nem kötelező**: az erőforrásokat, amelyek ebben az oktatóanyagban létrehozhat törléséhez lépéseinek végrehajtásához a [törli az erőforrást](#delete) című szakaszát, az Azure-portálon, a PowerShell vagy az Azure parancssori felület használatával.
-
-## <a name="permissions"></a>Engedélyek
-
-A fiókokat hozhat létre a virtuális hálózati társviszony-létesítés a szükséges szerepkör vagy az engedélyekkel kell rendelkeznie. Ha Ön volt társviszony-létesítés két virtuális hálózat neve például **myVnetA** és **myVnetB**, Ön fiókjához társítva kell lennie, a következő minimális szerepkör vagy az engedélyekkel minden virtuális hálózathoz:
-    
-|Virtuális hálózat|Szerepkör|Engedélyek|
-|---|---|---|
-|myVnetA|[Hálózati közreműködő](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
-|myVnetB|[Hálózati közreműködő](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
-
-További információ [beépített szerepkörök](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) és rendelje hozzá adott engedélyeket [egyéni szerepkörök](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (csak Resource Manager).
 
 ## <a name="delete"></a>Erőforrások törlése
 Ez az oktatóanyag befejezése után, előfordulhat, hogy törölni kívánja az erőforrások létrehozta az oktatóanyagban, használati költségek. Erőforráscsoport törlésével, az erőforráscsoport összes erőforrást is törli.
@@ -331,54 +320,6 @@ Ez az oktatóanyag befejezése után, előfordulhat, hogy törölni kívánja az
     ```powershell
     Remove-AzureRmResourceGroup -Name myResourceGroupB -force
     ```
-
-## <a name="register"></a>A globális virtuális hálózati társviszony-létesítési Preview regisztrálása
-
-Az azonos régiókban lévő virtuális hálózatok közötti társviszony kialakítása általánosan elérhető. Virtuális hálózatok különböző régiókban jelenleg előzetes verzióban érhetők társviszony. Lásd: [virtuális hálózati frissítések](https://azure.microsoft.com/en-us/updates/?product=virtual-network) az elérhető régiók. Virtuális hálózatok egyenrangú régiók között, először regisztrálnia kell az előzetes (belül minden partnert kívánt virtuális hálózat szerepel az előfizetés) az alábbi lépések végrehajtásával Azure PowerShell vagy az Azure parancssori felület használatával:
-
-### <a name="powershell"></a>PowerShell
-
-1. Telepítse a PowerShell [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) moduljának legújabb verzióját. Ha először használja a PowerShellt, olvassa el az [Azure PowerShell áttekintését](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json).
-2. Indítson el egy PowerShell-munkamenetet, és jelentkezzen be az Azure használatával a `Login-AzureRmAccount` parancsot.
-3. Regisztrálni az előfizetést, minden egyes virtuális hálózatot egyenrangú szeretné van a az előzetes kiadásban a következő parancsok beírásával:
-
-    ```powershell
-    Register-AzureRmProviderFeature `
-      -FeatureName AllowGlobalVnetPeering `
-      -ProviderNamespace Microsoft.Network
-    
-    Register-AzureRmResourceProvider `
-      -ProviderNamespace Microsoft.Network
-    ```
-4. Győződjön meg arról, hogy be vannak jegyezve a az előzetes a következő parancs beírásával:
-
-    ```powershell    
-    Get-AzureRmProviderFeature `
-      -FeatureName AllowGlobalVnetPeering `
-      -ProviderNamespace Microsoft.Network
-    ```
-
-    Ne hajtsa végre a portál, az Azure parancssori felület, a PowerShell vagy a Resource Manager template szakaszokban, amíg ez a cikk lépéseit a **RegistrationState** kimeneti kapja az előző parancs bevitele után **regisztrált**  mindkét előfizetésekhez.
-
-### <a name="azure-cli"></a>Azure CLI
-
-1. [Telepítse és konfigurálja az Azure parancssori felület](/cli/azure/install-azure-cli?toc=%2Fazure%2Fvirtual-network%2Ftoc.json).
-2. Győződjön meg arról, 2.0.18 verzióját használja vagy újabb, írja be az Azure parancssori felület a `az --version` parancsot. Ha nem, telepítse a legújabb verziót.
-3. Jelentkezzen be Azure-bA a `az login` parancsot.
-4. Az előzetes rögzítése a következő parancsok beírásával:
-
-   ```azurecli-interactive
-   az feature register --name AllowGlobalVnetPeering --namespace Microsoft.Network
-   az provider register --name Microsoft.Network
-   ```
-
-5. Győződjön meg arról, hogy be vannak jegyezve a az előzetes a következő parancs beírásával:
-
-    ```azurecli-interactive
-    az feature show --name AllowGlobalVnetPeering --namespace Microsoft.Network
-    ```
-
-    Ne hajtsa végre a portál, az Azure parancssori felület, a PowerShell vagy a Resource Manager template szakaszokban, amíg ez a cikk lépéseit a **RegistrationState** kimeneti kapja az előző parancs bevitele után **regisztrált**  mindkét előfizetésekhez.
 
 ## <a name="next-steps"></a>További lépések
 

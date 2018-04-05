@@ -1,19 +1,19 @@
 ---
-title: "Több tároló csoportokat az Azure-tároló példányok telepítése"
-description: "Útmutató az Azure-tároló esetekben több tároló egy tároló-csoport központi telepítését."
+title: Több tároló csoportokat az Azure-tároló példányok telepítése
+description: Útmutató az Azure-tároló esetekben több tároló egy tároló-csoport központi telepítését.
 services: container-instances
 author: neilpeterson
 manager: timlt
 ms.service: container-instances
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 03/30/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 41a47adb1f1da417038757934f0a6cf7e11555da
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 58fd4c18df5ec0a5d02be0e6e89cb2b4af26b20e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="deploy-a-container-group"></a>A tároló csoport telepítése
 
@@ -22,7 +22,7 @@ Azure-tároló példányokon alakzatot használatával egyetlen állomásra töb
 Ez a dokumentum végigvezeti egy egyszerű több tároló oldalkocsi konfigurációs fut az Azure Resource Manager-sablon üzembe helyezésével.
 
 > [!NOTE]
-> Több tárolócsoportok jelenleg csak Linux tárolók. Dolgozunk ennek érdekében minden funkció Windows tárolók, amíg a jelenlegi platform különbségek található [kvótái és az Azure-tároló példányok régiónkénti elérhetőség](container-instances-quotas.md).
+> Több tárolócsoportok jelenleg csak Linux tárolók. Arra törekszünk, hogy idővel az összes funkció elérhető legyen a Windows-tárolókon is. Az egyes platformok közötti aktuális eltérésekről a [Azure Container Instances-kvóták és -régiók rendelkezésre állása](container-instances-quotas.md) részben tájékozódhat.
 
 ## <a name="configure-the-template"></a>A sablon konfigurálása
 
@@ -45,7 +45,7 @@ Ez a példa egy tárolócsoport két tárolókhoz, egy nyilvános IP-címet, ké
     {
       "name": "myContainerGroup",
       "type": "Microsoft.ContainerInstance/containerGroups",
-      "apiVersion": "2017-10-01-preview",
+      "apiVersion": "2018-04-01",
       "location": "[resourceGroup().location]",
       "properties": {
         "containers": [
@@ -202,7 +202,7 @@ Ahogy látja, a oldalkocsi HTTP-kérelem, hogy így rendszeres időközönként 
 Ez a cikk a több tároló Azure tároló példánya telepítéséhez szükséges lépéseket mutatja be. A végpont Azure tároló példányok élményt tekintse meg az Azure-tároló példányok.
 
 > [!div class="nextstepaction"]
-> [Azure tároló példányok útmutató][aci-tutorial]
+> [Az Azure Container Instances oktatóanyaga][aci-tutorial]
 
 <!-- LINKS - Internal -->
 [aci-tutorial]: ./container-instances-tutorial-prepare-app.md

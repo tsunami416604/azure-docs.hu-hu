@@ -1,25 +1,25 @@
 ---
-title: "Hozzon létre feladatokat, feladatok és a számítási csomópontok - Azure Batch egy teljes feladat előkészítése |} Microsoft Docs"
-description: "Feladat szintű előkészítő feladatok minimalizálása érdekében az adatok átvitele Azure Batch számítási csomópontok használja, és felszabadíthatja a csomópont karbantartási feladat befejezésére, a feladatok."
+title: Hozzon létre feladatokat, feladatok és a számítási csomópontok - Azure Batch egy teljes feladat előkészítése |} Microsoft Docs
+description: Feladat szintű előkészítő feladatok minimalizálása érdekében az adatok átvitele Azure Batch számítási csomópontok használja, és felszabadíthatja a csomópont karbantartási feladat befejezésére, a feladatok.
 services: batch
 documentationcenter: .net
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 63d9d4f1-8521-4bbb-b95a-c4cad73692d3
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aecce83b4d4444f2651f48475b596fa76cb5f44a
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 543c03c22b31389c3d6e048cc9f13c24add5aae7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Futtatási feladat előkészítése és a feladat kiadási tevékenységek a Batch számítási csomópontjain
 
@@ -57,13 +57,13 @@ Előfordulhat, hogy szeretné megőrizni a feladatok által létrehozott naplóf
 > 
 > 
 
-## <a name="job-preparation-task"></a>Feladat előkészítése tevékenységet
+## <a name="job-preparation-task"></a>Feladat előkészítése tevékenység
 Egy feladat feladatok végrehajtása, mielőtt kötegelt ütemezett feladat futtatása minden számítási csomóponton a feladat előkészítése tevékenység hajtja végre. Alapértelmezés szerint a Batch szolgáltatás megvárja, a feladat előkészítése tevékenység befejezésének végrehajtásához a csomóponton ütemezett feladatok futtatása előtt. Azonban a szolgáltatást, nem a Várakozás konfigurálhatja. Ha a csomópont újraindul, a feladat előkészítése tevékenység fut újra, de le is tilthatja ezt a viselkedést.
 
 A feladat előkészítése tevékenység csak a csomópontokra, amelyeket az ütemezett feladat végrehajtása. Ez megakadályozza, hogy a szükségtelen egy előkészítő feladat végrehajtása, ha egy csomópont nem hozzá van rendelve egy feladatot. Ez akkor fordulhat elő, ha a feladat feladatok száma nem éri el a készletben csomópontok száma. Akkor is érvényes, ha [egyidejű feladat a végrehajtás](batch-parallel-node-tasks.md) van engedélyezve, amely hagyja néhány csomópont tétlen if a feladatok száma nem éri el az összes lehetséges egyidejű feladatok. Nem fut a feladat előkészítése tevékenység üresjárati csomóponton, tölthet adatok adatátviteli költségek kevesebb pénz.
 
 > [!NOTE]
-> [JobPreparationTask] [ net_job_prep_cloudjob] eltér az [CloudPool.StartTask] [ pool_starttask] abban a JobPreparationTask elején minden feladatot hajt végre, mivel StartTask hajt végre, ha a számítási csomópont először csatlakozik egy készletet, vagy újraindul.
+> [JobPreparationTask] [ net_job_prep_cloudjob] eltér az [CloudPool.StartTask] [ pool_starttask] abban a JobPreparationTask elején minden feladatot hajt végre, mivel StartTask végrehajtja, csak ha a számítási csomópont először csatlakozik egy készletet vagy újraindul.
 > 
 > 
 
@@ -183,7 +183,7 @@ Az alábbi képernyőfelvételen a **előkészítő feladatok panel** a mintaalk
 
 ![Azure-portálon feladattulajdonság előkészítése][1]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 ### <a name="application-packages"></a>Alkalmazáscsomagok
 A feladat előkészítése tevékenység mellett is használhatja a [alkalmazáscsomagok](batch-application-packages.md) köteg számítási csomópontok előkészítése a feladat végrehajtása a szolgáltatás. Ez a szolgáltatás különösen fontos telepítőhöz, alkalmazásokat, amelyek számos fájljait (100 +) vagy szigorú verziókezelést igénylő alkalmazások nem igénylő alkalmazások központi telepítéséhez.
 

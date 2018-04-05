@@ -1,6 +1,6 @@
 ---
 title: Azure-on futó Kubernetes oktatóanyag – A Kubernetes monitorozása
-description: AKS oktatóanyag – A Kubernetes monitorozása a Microsoft Operations Management Suite (OMS) használatával
+description: AKS-oktatóanyag – A Kubernetes monitorozása az Azure Log Analytics használatával
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 227601858dbe07e6cb774a2d24878ddca05aaf56
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 86ae0c5ab302c49fa58df887d9dffef6cec31708
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="monitor-azure-container-service-aks"></a>Az Azure Container Service (AKS) monitorozása
+# <a name="tutorial-monitor-azure-container-service-aks"></a>Oktatóanyag: Az Azure Container Service (AKS) monitorozása
 
 A Kubernetes-fürt és -tárolók monitorozása kritikus fontosságú, különösen, ha egy éles fürtöt futtat skálázható módon, több alkalmazással.
 
@@ -40,11 +40,11 @@ Az Azure Portalon válassza az **Erőforrás létrehozása** lehetőséget, és 
 
 ![Megoldás hozzáadása](./media/container-service-tutorial-kubernetes-monitor/add-solution.png)
 
-Hozzon létre új OMS-munkaterületet, vagy válasszon ki egy meglévőt. Az OMS-munkaterület űrlapja végigvezeti a folyamaton.
+Hozzon létre új Log Analytics-munkaterületet, vagy válasszon ki egy meglévőt. A Log Analytics-munkaterület űrlapja végigvezeti a folyamaton.
 
 A könnyebb elérhetőség érdekében a munkaterület létrehozásakor jelölje be a **Rögzítés az irányítópulton** beállítást.
 
-![OMS-munkaterület](./media/container-service-tutorial-kubernetes-monitor/oms-workspace.png)
+![Log Analytics-munkaterület](./media/container-service-tutorial-kubernetes-monitor/oms-workspace.png)
 
 Ha elkészült, kattintson az **OK** gombra. Az ellenőrzés után kattintson a **Létrehozás** gombra a tárolómonitorozó megoldás létrehozásához.
 
@@ -58,7 +58,7 @@ Az értékek lekéréséhez válassza az **OMS-munkaterület** lehetőséget a t
 
 ## <a name="create-kubernetes-secret"></a>Kubernetes titkos kódjának létrehozása
 
-Tárolja az OMS-munkaterület beállításait egy `omsagent-secret` nevű Kubernetes titkos kulcsban a [kubectl create secret][kubectl-create-secret] paranccsal. A `WORKSPACE_ID` helyére írja be az OMS-munkaterület azonosítóját, a `WORKSPACE_KEY` helyére pedig a munkaterület kulcsát.
+Tárolja a Log Analytics-munkaterület beállításait egy `omsagent-secret` nevű Kubernetes titkos kulcsban a [kubectl create secret][kubectl-create-secret] paranccsal. A `WORKSPACE_ID` helyére írja be a Log Analytics-munkaterület azonosítóját, a `WORKSPACE_KEY` helyére pedig a munkaterület kulcsát.
 
 ```console
 kubectl create secret generic omsagent-secret --from-literal=WSID=WORKSPACE_ID --from-literal=KEY=WORKSPACE_KEY
@@ -154,7 +154,7 @@ NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE-SELECTOR 
 omsagent   3         3         3         3            3           beta.kubernetes.io/os=linux   8m
 ```
 
-Ha az ügynökök futnak, az OMS számára az adatok betöltése és feldolgozása több percet vesz igénybe.
+Ha az ügynökök futnak, a Log Analytics számára az adatok betöltése és feldolgozása néhány percet vesz igénybe.
 
 ## <a name="access-monitoring-data"></a>Monitorozási adatok elérése
 
@@ -166,7 +166,7 @@ A monitorozási adatok lekérdezésére és elemzésére vonatkozó részletes �
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban az OMS használatával monitorozta a Kubernetes-fürtöt. A következők feladatokat hajtottuk végre:
+Ebben az oktatóanyagban a Log Analytics használatával monitoroztuk a Kubernetes-fürtöt. A következők feladatokat hajtottuk végre:
 
 > [!div class="checklist"]
 > * A tároló monitorozására szolgáló megoldás konfigurálása

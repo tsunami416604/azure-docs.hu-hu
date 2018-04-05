@@ -1,6 +1,6 @@
 ---
-title: "Azure Container Service oktatóanyag – Alkalmazás üzembe helyezése"
-description: "Azure Container Service oktatóanyag – Alkalmazás üzembe helyezése"
+title: Azure Container Service oktatóanyag – Alkalmazás üzembe helyezése
+description: Azure Container Service oktatóanyag – Alkalmazás üzembe helyezése
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 02ec97fecd4759e9f35ab313ffe2d18fa076170a
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 7119976ada00e10ebeadf6fcff2daf125f439c17
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="run-applications-in-kubernetes"></a>Alkalmazások futtatása a Kubernetesben
 
@@ -26,7 +26,7 @@ Ebben az oktatóanyagban, amely egy hétrészes sorozat negyedik része, egy alk
 > * Alkalmazás futtatása a Kubernetesben
 > * Az alkalmazás tesztelése
 
-Az ezt követő oktatóanyagokban méretezzük és frissítjük majd az alkalmazást, és az Operations Management Suite szolgáltatást konfiguráljuk a Kubernetes-fürt monitorozására.
+Az ezt követő oktatóanyagokban horizontálisan felskálázzuk és frissítjük az alkalmazást, és a Log Analyticst a Kubernetes-fürt monitorozására konfiguráljuk.
 
 Ez az oktatóanyag feltételezi, hogy ismeri a Kubernetes alapvető fogalmait. A Kubernetesszel kapcsolatos részletes információkat a [Kubernetes dokumentációjában](https://kubernetes.io/docs/home/) találja.
 

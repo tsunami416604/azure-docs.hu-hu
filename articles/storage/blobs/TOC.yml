@@ -80,8 +80,16 @@
       items:
         - name: Tárfiók-beállítások
           href: ../common/storage-account-options.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Replikáció
-          href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Adatredundancia
+          items:
+            - name: Redundancia áttekintése
+              href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Helyileg redundáns tárolás
+              href: ../common/storage-redundancy-lrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Zónaredundáns tárolás
+              href: ../common/storage-redundancy-zrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Georedundáns tárolás
+              href: ../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 'A gyakran és a ritkán használt, valamint az archivált adatok rétege'
           href: storage-blob-storage-tiers.md
         - name: Reagálás az eseményekre
@@ -301,6 +309,8 @@
               href: ../common/storage-import-export-backing-up-drive-manifests.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Import/Export-feladatok diagnosztizálása és hiba utáni helyreállítása
               href: ../common/storage-import-export-diagnostics-and-error-recovery.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Importálás és exportálás ügyében lépjen kapcsolatba az ügyfélszolgálattal
+          href: ../common/storage-import-export-contact-microsoft-support.md
         - name: Tárolómigrálás – Gyakori kérdések
           href: ../common/storage-migration-faq.md
 - name: Referencia

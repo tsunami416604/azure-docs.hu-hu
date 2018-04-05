@@ -13,13 +13,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/15/2018
+ms.date: 03/27/2018
 ms.author: danoble
-ms.openlocfilehash: 4a393887d8e82e833b0c956666bf36e5adb19e70
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e0d23a163f16763dd4764eb7857dec8076f4754c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Az Azure Cosmos DB Emulator használja a helyi fejlesztéshez és teszteléshez
 
@@ -136,7 +136,7 @@ Az emulátor egy helyi hálózaton is futtathatja. Hálózati hozzáférés enge
 A hálózati hozzáférés engedélyezéséhez először a felhasználó az emulátor leállítási kell, és törölje az emulátor adatkönyvtára (C:\Users\user_name\AppData\Local\CosmosDBEmulator).
 
 ## <a name="developing-with-the-emulator"></a>A emulátorral fejlesztése
-Miután az Azure Cosmos DB-emulátort az asztalon, használata támogatott [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) vagy a [Azure Cosmos DB REST API](/rest/api/documentdb/) az emulátor kommunikál. Az Azure Cosmos DB Emulator egy beépített adatkezelő, amely lehetővé teszi az SQL- és MongoDB API-kat, és tekintse meg a gyűjtemények dokumentumok létrehozásához és szerkesztéséhez programozás nélkül is.   
+Miután az Azure Cosmos DB-emulátort az asztalon, használata támogatott [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) vagy a [Azure Cosmos DB REST API](/rest/api/cosmos-db/) az emulátor kommunikál. Az Azure Cosmos DB Emulator egy beépített adatkezelő, amely lehetővé teszi az SQL- és MongoDB API-kat, és tekintse meg a gyűjtemények dokumentumok létrehozásához és szerkesztéséhez programozás nélkül is.   
 
     // Connect to the Azure Cosmos DB Emulator running locally
     DocumentClient client = new DocumentClient(
@@ -342,17 +342,41 @@ Import-Module Microsoft.Azure.CosmosDB.Emulator
 
 ### `Get-CosmosDbEmulatorStatus`
 
+#### <a name="syntax"></a>Szintaxis
+
+`Get-CosmosDbEmulatorStatus`
+
+#### <a name="remarks"></a>Megjegyzések
+
 Ezek ServiceControllerStatus érték egyikét adja vissza: ServiceControllerStatus.StartPending, ServiceControllerStatus.Running vagy ServiceControllerStatus.Stopped.
 
-### `Start-CosmosDbEmulator [-NoWait]`
+### `Start-CosmosDbEmulator`
+
+#### <a name="syntax"></a>Szintaxis
+
+`Start-CosmosDbEmulator [-DataPath <string>] [-DefaultPartitionCount <uint16>] [-DirectPort <uint16[]>] [-MongoPort <uint16>] [-NoUI] [-NoWait] [-PartitionCount <uint16>] [-Port <uint16>]  [<CommonParameters>]`
+
+#### <a name="remarks"></a>Megjegyzések
 
 Elindul az emulátor. Alapértelmezés szerint a parancs megvárja, amíg az emulátor készen áll a kérelmek fogadására. A - NoWait beállítást használja, ha a parancsmagot, amint azt elindul az emulátor vissza.
 
-### `Stop-CosmosDbEmulator [-NoWait]`
+### `Stop-CosmosDbEmulator`
+
+#### <a name="syntax"></a>Szintaxis
+
+ `Stop-CosmosDbEmulator [-NoWait]`
+
+#### <a name="remarks"></a>Megjegyzések
 
 Az emulátor leáll. Alapértelmezés szerint ez a parancs megvárja, amíg az emulátor teljesen leáll. A - NoWait beállítást használja, ha a parancsmag segítségével adja vissza, amint az emulátor kezdődik, le kell állítania.
 
-### `Uninstall-CosmosDbEmulator [-RemoveData]`
+### `Uninstall-CosmosDbEmulator`
+
+#### <a name="syntax"></a>Szintaxis
+
+`Uninstall-CosmosDbEmulator [-RemoveData]`
+
+#### <a name="remarks"></a>Megjegyzések
 
 Eltávolítja az emulátor, és opcionálisan eltávolítja a $env teljes tartalmát: LOCALAPPDATA\CosmosDbEmulator.
 A parancsmag biztosítja, hogy az emulátor le van állítva, akkor az eltávolítás előtt.
@@ -454,6 +478,20 @@ Hibakeresési nyomkövetési adatokat gyűjteni a következő parancsokat egy re
 ## <a name="change-list"></a>A változások listája
 
 A verziószám ellenőrizheti a jobb gombbal a tálcán helyi emulátor ikonjára kattintva, majd kattintson a menüpont kapcsolatban.
+
+### <a name="12106-released-on-march-27-2018"></a>1.21.0.6 szabadítva 2018. március 27.
+
+Paritás-emulátor szolgáltatások frissítése a Cosmos DB felhőszolgáltatásokkal, mellett azt egy új funkció és szerepel két hibajavításokat tartalmaz ebben a kiadásban.
+
+#### <a name="features"></a>Szolgáltatások
+
+1. A Start-CosmosDbEmulator parancs mostantól tartalmazza az indítási beállításait.
+
+#### <a name="bug-fixes"></a>Hibajavítások
+
+1. A Microsoft.Azure.CosmosDB.Emulator PowerShell-modulja most már biztosítja, hogy a `ServiceControllerStatus` számbavételi be van töltve.
+
+2. A Microsoft.Azure.CosmosDB.Emulator PowerShell-modulja most már tartalmaz egy jegyzékfájl; az első kiadásáról hiányos.
 
 ### <a name="1201084-released-on-february-14-2018"></a>1.20.108.4 2018. február 14-én kiadott
 

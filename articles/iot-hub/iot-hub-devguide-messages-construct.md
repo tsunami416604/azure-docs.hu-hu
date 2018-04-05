@@ -14,15 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2018
 ms.author: dobett
-ms.openlocfilehash: 832010181059e2ec42834e54622f374c367c8d4f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5979c0d79a0abd9897fd3970ccea1d9ba07f9dfd
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Hozzon létre, és az IoT-központ üzenet olvasása
 
-Zökkenőmentes együttműködés támogatására biztosíthat a protokollokon, IoT-központ az összes eszköz számára is elérhető protokollhoz közös üzenetformátum határozza meg. Mindkét használt üzenetformátuma [eszközről a felhőbe] [ lnk-d2c] és [felhő eszközre] [ lnk-c2d] üzeneteket. Egy [IoT-központ üzenet] [ lnk-messaging] áll:
+Zökkenőmentes együttműködés támogatására biztosíthat a protokollokon, IoT-központ az összes eszköz számára is elérhető protokollhoz közös üzenetformátum határozza meg. Mindkét használt üzenetformátuma [eszközről a felhőbe] [ lnk-d2c] és [felhő eszközre] [ lnk-c2d] üzeneteket. 
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
+
+Egy [IoT-központ üzenet] [ lnk-messaging] áll:
 
 * Egy *Rendszertulajdonságok*. Az IoT-központ értelmezi, vagy beállítja a tulajdonságokat. A csoportok pedig előre meghatározott.
 * Egy *alkalmazástulajdonságok*. Az alkalmazás meghatározó karakterlánc-tulajdonságok és a hozzáférés, anélkül, hogy az üzenet törzsének deszerializálása dictionary. Az IoT-központ soha nem módosítja ezeket a tulajdonságokat.

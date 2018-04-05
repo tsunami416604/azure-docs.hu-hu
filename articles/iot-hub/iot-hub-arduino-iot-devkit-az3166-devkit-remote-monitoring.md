@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: 92efd0970bcf516c4210f831a0c2f23b3ee7b5d8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b288595ca06c3a3cccb72082658f1927f2ae558a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-suite-for-remote-monitoring"></a>Azure IoT Suite MXChip IoT DevKit csatlakoztatni a távoli figyelése
 
@@ -35,7 +35,7 @@ Befejezés a [– első lépések útmutató](https://docs.microsoft.com/azure/i
 
 Aktív Azure-előfizetés. Ha még nem rendelkezik ilyennel, ezek két módszer használatával regisztrálhatja:
 
-* Aktiválja a [ingyenes 30 napos próbafiókot Microsoft Azure](https://azureinfo.microsoft.com/us-freetrial.html)
+* Aktiválja a [ingyenes 30 napos próbafiókot Microsoft Azure](https://azure.microsoft.com/en-us/free/)
 * Jogcím a [Azure-kreditjeinek](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) MSDN vagy a Visual Studio előfizetői esetén
 
 ## <a name="create-an-azure-iot-suite"></a>Hozzon létre egy Azure IoT Suite

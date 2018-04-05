@@ -1,11 +1,11 @@
 ---
-title: "Nyissa meg a portokat a virtuális gép az Azure portál használatával |} Microsoft Docs"
-description: "Megtudhatja, hogyan nyisson meg egy portot / hozzon létre egy végpontot, a Windows virtuális gépre, a resource manager üzembe helyezési modellben az Azure portál használatával"
+title: Nyissa meg a portokat a virtuális gép az Azure portál használatával |} Microsoft Docs
+description: Megtudhatja, hogyan nyisson meg egy portot / hozzon létre egy végpontot, a Windows virtuális gépre, a resource manager üzembe helyezési modellben az Azure portál használatával
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: f7cf0319-5ee7-435e-8f94-c484bf5ee6f1
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 08f0af6ecdb45b263d39c3d2d6442f4ed555e3c3
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 8d564d59a2e20d1ccc35ba7801154a6dbcb9070d
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Egy virtuális géphez portok megnyitása és az Azure portál
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -58,7 +58,7 @@ Válassza ki a virtuális hálózatot, majd válassza ki a megfelelő alhálóza
 Hálózati biztonsági csoport, egy bejövő szabályt, amely lehetővé teszi a forgalom 80-as porton, és azt egy alhálózathoz társított létre most hozott létre. A virtuális gépek csatlakozhat az adott alhálózat 80-as porton érhetők el.
 
 ## <a name="more-information-on-network-security-groups"></a>További információ a hálózati biztonsági csoportok
-A gyors parancsok lehetővé teszik, amelyekből megismerheti a forgalom halad a virtuális Gépet. Hálózati biztonsági csoportok számos különleges szolgáltatásait és az erőforrásokhoz való hozzáférés szabályozása részletességgel adja meg. További tudnivalók [itt szabályok létrehozása a hálózati biztonsági csoport és a hozzáférés-vezérlési lista](../../virtual-network/virtual-networks-create-nsg-arm-ps.md).
+A gyors parancsok lehetővé teszik, amelyekből megismerheti a forgalom halad a virtuális Gépet. Hálózati biztonsági csoportok számos különleges szolgáltatásait és az erőforrásokhoz való hozzáférés szabályozása részletességgel adja meg. További tudnivalók [itt szabályok létrehozása a hálózati biztonsági csoport és a hozzáférés-vezérlési lista](../../virtual-network/tutorial-filter-network-traffic.md).
 
 Magas rendelkezésre állású webes alkalmazásokhoz helyezze a virtuális gépek az Azure terheléselosztó mögött. A load balancer osztja el a forgalmat a virtuális gépekhez, a hálózati biztonsági csoport, amely biztosítja a forgalomszűrést végez. További információkért lásd: [betöltése Linux virtuális gépek magas rendelkezésre állású alkalmazás létrehozása az Azure-ban egyenleg](tutorial-load-balancer.md).
 

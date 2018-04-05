@@ -1,22 +1,22 @@
 ---
-title: "Szimulált TPM-eszköz kiépítése Azure IoT Hubra C használatával | Microsoft Docs"
-description: "Azure rövid útmutató – Szimulált TPM-eszköz létrehozása és kiépítése az Azure IoT Hub Device Provisioning Service-hez készült C eszközoldali SDK-val"
+title: Szimulált TPM-eszköz kiépítése Azure IoT Hubra C használatával | Microsoft Docs
+description: Azure rövid útmutató – Szimulált TPM-eszköz létrehozása és kiépítése az Azure IoT Hub Device Provisioning Service-hez készült C eszközoldali SDK-val
 services: iot-dps
-keywords: 
+keywords: ''
 author: dsk-2015
 ms.author: dkshir
 ms.date: 12/20/2017
 ms.topic: hero-article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: d4abd68aa559540da3b735d7a583fc86107531f9
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 9187ce298071550a2af29cad28389b8d93ba802f
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Szimulált TPM-eszköz létrehozása és kiépítése az IoT Hub Device Provisioning Service-hez készült C eszközoldali SDK-val
 
@@ -25,6 +25,8 @@ ms.lasthandoff: 03/05/2018
 Ezek a lépések bemutatják, hogyan hozhat létre szimulált eszközt egy Windows operációs rendszert futtató fejlesztői gépen, hogyan futtathatja a Windows TPM szimulátort az eszköz [hardveres biztonsági moduljaként (HSM-jeként)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/), és hogyan használhatja a kódmintát, hogy ezt a szimulált eszközt összekösse az eszközkiépítési szolgáltatással és az IoT Hubbal. 
 
 A folytatás előtt végezze el az [IoT Hub eszközkiépítési szolgáltatás beállítása az Azure Portallal](./quick-setup-auto-provision.md) szakasz lépéseit.
+
+[!INCLUDE [IoT DPS basic](../../includes/iot-dps-basic.md)]
 
 <a id="setupdevbox"></a>
 

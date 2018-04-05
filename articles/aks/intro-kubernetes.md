@@ -1,6 +1,6 @@
 ---
-title: "Bevezetés az Azure Container Service for Kubernetes használatába"
-description: "Az Azure Container Service for Kubernetes használatával egyszerűen helyezhetőek üzembe és felügyelhetőek a tárolóalapú alkalmazások az Azure-ban."
+title: Bevezetés az Azure Container Service for Kubernetes használatába
+description: Az Azure Container Service for Kubernetes használatával egyszerűen helyezhetőek üzembe és felügyelhetőek a tárolóalapú alkalmazások az Azure-ban.
 services: container-service
 author: gabrtv
 manager: timlt
@@ -9,17 +9,21 @@ ms.topic: overview
 ms.date: 11/13/2017
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: 2980d4733dcf138c3a9aa1713cff994bbf5a296c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5bfa445eb11ed8be608278d0b95249372f9976ab
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="introduction-to-azure-container-service-aks"></a>Az Azure Container Service (AKS) bemutatása
+# <a name="introduction-to-azure-container-service-aks-preview"></a>Az Azure Container Service (AKS) előzetes verziójának bemutatása
 
 Az Azure Container Service (AKS) elősegíti a virtuális gépek egy olyan fürtjének egyszerűbb létrehozását, konfigurálását és kezelését, amely tárolóalapú alkalmazások futtatására lett konfigurálva. Így lehetővé válik, hogy a meglévő ismereteit használja, vagy egy nagy és egyre növekvő közösségi szakértelmet vegyen igénybe a tárolóalapú alkalmazások Microsoft Azure-on történő üzembe helyezéséhez és kezeléséhez.
 
 Az AKS használatával igénybe veheti az Azure nagyvállalati szintű funkcióit, miközben továbbra is fenntartja az alkalmazás-hordozhatóságot a Kubernetes és a Docker rendszerképformátuma révén.
+
+> [!IMPORTANT]
+> Az Azure Container Service (AKS) jelenleg **előzetes verzióban** érhető el. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
+>
 
 ## <a name="managed-kubernetes-in-azure"></a>Felügyelt Kubernetes az Azure-ban
 

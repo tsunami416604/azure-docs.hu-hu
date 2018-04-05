@@ -1,9 +1,9 @@
 ---
-title: "Az SQL API-t Azure Cosmos DB globális telepítési útmutató |} Microsoft Docs"
-description: "Útmutató: Azure Cosmos DB globális terjesztési az SQL API-val beállítása."
+title: Az Azure Cosmos DB globális terjesztési oktatóanyaga az SQL API-hoz | Microsoft Docs
+description: Ismerje meg, hogyan állíthatja be az Azure Cosmos DB globális terjesztését az SQL API használatával.
 services: cosmos-db
-keywords: "Globális terjesztési"
-documentationcenter: 
+keywords: globális terjesztés
+documentationcenter: ''
 author: rafats
 manager: jhubbard
 ms.assetid: 8b815047-2868-4b10-af1d-40a1af419a70
@@ -15,53 +15,51 @@ ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: rafats
 ms.custom: mvc
-ms.openlocfilehash: 0cee55673c8abca29b7e389fa4fd62a48566904b
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
-ms.translationtype: MT
+ms.openlocfilehash: 58cfa4f8898febf6d0bbe4c5a7a1dad4fcc6c854
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Hogyan lehet beállítani az Azure Cosmos DB globális terjesztési az SQL API-val
+# <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Az Azure Cosmos DB globális terjesztésének beállítása az SQL API használatával
 
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
+Ebben a cikkben bemutatjuk, hogyan állíthatja be az Azure Cosmos DB globális terjesztését az Azure Portallal, és hogyan csatlakozhat az SQL API használatával.
 
-Ebben a cikkben megmutatjuk, hogyan használható az Azure-portálon Azure Cosmos DB globális terjesztési beállításához, és csatlakozzon az SQL API-val.
-
-Ez a cikk ismerteti a következő feladatokat: 
+Ez a cikk a következő feladatokat mutatja be: 
 
 > [!div class="checklist"]
-> * Az Azure portál használatával globális terjesztési konfigurálása
-> * Globális terjesztési használatával konfigurálja a [SQL API-k](sql-api-introduction.md)
+> * Globális terjesztés konfigurálása az Azure Portallal
+> * Globális terjesztés konfigurálása az [SQL API-k](sql-api-introduction.md) használatával
 
 <a id="portal"></a>
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
 
-## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a>A preferált régió, az SQL API-val való kapcsolódás
+## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a>Csatlakozás egy kívánt régióhoz az SQL API használatával
 
-Kihasználása érdekében [globális terjesztési](distribute-data-globally.md), ügyfélalkalmazások is adja meg a dokumentum műveletek végrehajtásához használandó régiók rendezett beállítások listáját. Ezt megteheti a kapcsolat házirend beállításával. Az Azure Cosmos DB-fiók konfigurációja, az aktuális területi rendelkezésre állás és a megadott beállításokat szabályozó lista alapján, a legoptimálisabb végpont választja ki az SQL SDK írási és olvasási műveletek.
+A [globális terjesztés](distribute-data-globally.md) kihasználása érdekében az ügyfélalkalmazások megadhatják a preferált régiók sorrendbe rendezett listáját a dokumentumokkal kapcsolatos műveletek elvégzéséhez. Ezt a kapcsolódási szabályzat beállításával lehet megtenni. Az SQL SDK az Azure Cosmos DB-fiók konfigurációja, az aktuális régiónkénti rendelkezésre állás és a megadott preferencialista alapján fogja kiválasztani az optimális végpontot az írási és olvasási műveletek végrehajtásához.
 
-Ez a beállítás lista van megadva, az SQL SDK-k használata a kapcsolat inicializálása közben. Az SDK-k elfogadása "PreferredLocations" nem kötelező paraméter, amely egy Azure-régiók rendezett listáját.
+A preferencialista meghatározására akkor kerül sor, amikor kapcsolatot inicializál az SQL SDK-k használatával. Az SDK-k egy „PreferredLocations” nevű választható paramétert is elfogadnak, amely az Azure-régiók rendezett listája.
 
-Az SDK automatikusan elküld minden írási műveleteket ad ki az aktuális írási régió.
+Az SDK automatikusan elküldi az írásokat az aktuális írási régióba.
 
-Az összes olvasási kapnak a PreferredLocations lista első rendelkezésre álló terület. A kérés nem teljesíthető, ha az ügyfél lefelé a listában, a következő régióban sikertelen, és így tovább.
+Az olvasásokat a PreferredLocations lista első elérhető régiójába küldi. Ha a kérelem meghiúsul, az ügyfél továbbadja a listát a következő régiónak, és így tovább.
 
-Az SDK-k csak megpróbálja beolvasni a régió van megadva a PreferredLocations. Így például ha az adatbázis-fiókot négy régiókban, de az ügyfél PreferredLocations csak két read(non-write) régió meghatározza, majd nincs olvasási szolgáltató kívül a nem megadott PreferredLocations olvasási régió. Az olvasási régió van megadva a PreferredLocations a nem érhetők el, ha olvasási szolgáltató írási régió kívül.
+Az SDK-k csak a PreferredLocations listában szereplő régiókból próbálnak meg olvasni. Így ha például az adatbázisfiók négy régióban érhető el, de az ügyfél csak két olvasási (nem írási) régiót ad meg a PreferredLocations listában, akkor a PreferredLocations listán nem szereplő olvasási régiók nem szolgálnak ki olvasásokat. Ha a PreferredLocations listán szereplő olvasási régiók nem érhetők el, az olvasásokat is az írási régió szolgálja ki.
 
-Az alkalmazás a jelenlegi írási végpont ellenőrizheti és olvassa el a két tulajdonság, WriteEndpoint és ReadEndpoint, elérhető, a SDK 1.8-as verzióját és az újabb ellenőrzésével az SDK által választott végpont.
+Az alkalmazás az SDK 1.8-as vagy újabb verzióiban elérhető WriteEndpoint és a ReadEndpoint tulajdonságok megtekintésével ellenőrizni tudja az SDK által kiválasztott aktuális írási és olvasási végpontot.
 
-A PreferredLocations tulajdonsága nincs beállítva, ha minden kérésnél szolgáltató aktuális írási régióban.
+Ha a PreferredLocations tulajdonság nincs beállítva, a kérelmek az aktuális írási régióból lesznek teljesítve.
 
 ## <a name="net-sdk"></a>.NET SDK
-Az SDK kód módosítások nélkül használható. Az SDK ebben az esetben automatikusan arra utasítja, mind az Olvasás, és az aktuális írási területen írja.
+Az SDK a kód módosítása nélkül használható. Ebben az esetben az SDK automatikusan átirányítja az olvasásokat és az írásokat az aktuális írási régióba.
 
-A .NET SDK 1,8 és újabb verziójában a ConnectionPolicy paramétert a DocumentClient konstruktor Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations nevű tulajdonsággal rendelkezik. Ez a tulajdonság nem gyűjtemény típusú `<string>` és tartalmaznia kell a régió neveinek listáját. A karakterlánc-értékek az a régió nevét oszloponként formázott a [Azure-régiókat] [ regions] , szóközök nélkül előtt vagy után az első lap, és az utolsó karakter kulcsattribútumokkal.
+A .NET SDK 1.8-as és újabb verzióiban a DocumentClient konstruktor ConnectionPolicy paramétere rendelkezik egy Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations nevű tulajdonsággal. Ez a tulajdonság egy `<string>` típusú gyűjtemény, amelynek egy listát kell tartalmaznia a régiónevekkel. A szöveges értékek formázása [Az Azure régiói][regions] oldalon található Régiónév oszlop alapján történik, és az első karakter előtt, illetve az utolsó karakter után nincs szóköz.
 
-Az aktuális írási és olvasási végpontok találhatók DocumentClient.WriteEndpoint és DocumentClient.ReadEndpoint kulcsattribútumokkal.
+Az aktuális írási és olvasási végpontokat a DocumentClient.WriteEndpoint és a DocumentClient.ReadEndpoint tulajdonság tartalmazza.
 
 > [!NOTE]
-> Az URL-címeket a végpontok nem hosszú élettartamú állandók kell tekinteni. A szolgáltatás ezek bármikor előfordulhat, hogy frissíteni. Az SDK kezeli automatikusan ezt a módosítást.
+> A végpontok URL-címei nem tekinthetők hosszú élettartamú állandóknak. A szolgáltatás bármikor frissítheti őket. Az SDK automatikusan kezeli ezt a módosítást.
 >
 >
 
@@ -87,19 +85,19 @@ DocumentClient docClient = new DocumentClient(
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
 
-## <a name="nodejs-javascript-and-python-sdks"></a>NodeJS és a Python SDK-k
-Az SDK kód módosítások nélkül használható. Ebben az esetben az SDK automatikusan átirányítja a mind az Olvasás, mind az írás az aktuális írási régióban.
+## <a name="nodejs-javascript-and-python-sdks"></a>NodeJS, JavaScript és Python SDK-k
+Az SDK a kód módosítása nélkül használható. Ebben az esetben az SDK automatikusan átirányítja az olvasásokat és az írásokat az aktuális írási régióba.
 
-A 1,8 és minden SDK újabb verziója a ConnectionPolicy paramétert a DocumentClient konstruktor új tulajdonság neve DocumentClient.ConnectionPolicy.PreferredLocations. A paraméter karakterláncok tömbje, amely régió neveinek listáját. A nevek a régió nevét oszloponként vannak formázva a [Azure-régiókat] [ regions] lap. A kényelem objektumban AzureDocuments.Regions is használhatja az előre definiált állandók
+Az SDK-k 1.8-as és újabb verziójában a DocumentClient konstruktor ConnectionPolicy paramétere egy új DocumentClient.ConnectionPolicy.PreferredLocations nevű tulajdonsággal rendelkezik. Ez a paraméter egy karakterlánctömb, amely a régiónevek listáját használja. A nevek formázása [Az Azure régiói][regions] oldalon található Régiónév oszlop alapján történik. Az AzureDocuments.Regions objektumban található előre definiált konstansokat is használhatja
 
-Az aktuális írási és olvasási végpontok találhatók DocumentClient.getWriteEndpoint és DocumentClient.getReadEndpoint kulcsattribútumokkal.
+Az aktuális írási és olvasási végpontokat a DocumentClient.getWriteEndpoint és a DocumentClient.getReadEndpoint tulajdonság tartalmazza.
 
 > [!NOTE]
-> Az URL-címeket a végpontok nem hosszú élettartamú állandók kell tekinteni. A szolgáltatás ezek bármikor előfordulhat, hogy frissíteni. Az SDK automatikusan kezeli ezt a módosítást.
+> A végpontok URL-címei nem tekinthetők hosszú élettartamú állandóknak. A szolgáltatás bármikor frissítheti őket. Az SDK automatikusan kezeli ezt a módosítást.
 >
 >
 
-Az alábbiakban egy példa van NodeJS/Javascript. Python és a Java a rendszer ugyanazt a sablont követi.
+Az alábbiakban egy NodeJS-/Javascript-példakódot láthat. A Python és a Java ugyanezt a mintát követi.
 
 ```java
 // Creating a ConnectionPolicy object
@@ -116,13 +114,13 @@ var client = new DocumentDBClient(host, { masterKey: masterKey }, connectionPoli
 ```
 
 ## <a name="rest"></a>REST
-Az adatbázisfiók elérhetővé tett több régióba, ha az ügyfelek lekérhetnek által egy GET kérelem végrehajtása a következő URI-CÍMÉN elérhetőségét.
+Ha az adatbázisfiók több régióban is elérhetővé vált, az ügyfelek lekérdezhetik a rendelkezésre állását egy GET kéréssel, amely a következő URI-ra vonatkozik.
 
     https://{databaseaccount}.documents.azure.com/
 
-A szolgáltatás régiók és a replikák számára a megfelelő Azure Cosmos DB végpont URI-azonosítók listáját adja vissza. Az aktuális írási terület jelzik a válaszban. Az ügyfél kiválaszthatja a megfelelő végpont minden további REST API-kérelmek az alábbiak szerint.
+A szolgáltatás visszaadja a régiók listáját és a replikák régiókhoz tartozó Azure Cosmos-DB végpont URI-jait. A válasz az aktuális írási régiót is tartalmazni fogja. Az ügyfél ezután a következő módon választhatja ki a megfelelő végpontot a további REST API-kérésekhez.
 
-Példa egy válasz
+Példaválasz
 
     {
         "_dbs": "//dbs/",
@@ -155,27 +153,27 @@ Példa egy válasz
     }
 
 
-* Minden PUT, POST és DELETE kérelmek be kell lépnie a jelzett írási URI
-* Minden lekérdezi és egyéb olvasási kérések (például a lekérdezések) lehet, hogy nyissa meg az az ügyfél által választott bármely végponthoz
+* Az összes PUT, POST és DELETE kérelemnek a megadott írási URI-ra kell érkeznie
+* A GET-ek és más csak olvasási kérelmek (például a lekérdezések) az ügyfél által kiválasztott bármelyik végpontra érkezhetnek
 
-Az írási kérelmek írásvédett régiók sikertelen lesz, és HTTP-hibakódot 403 ("tiltott").
+A csak olvasási régiókba érkező írási kérelmek meghiúsulnak a 403-as HTTP-hibakóddal („Tiltott”).
 
-Ha az írási régió változik, az ügyfél kezdeti felderítés fázis után, a későbbi írási műveleteket ad ki az előző írási régió sikertelen lesz, és HTTP-hibakódot 403 ("tiltott"). Az ügyfél ezután SZEREZHETI be újra a frissített írási régió beolvasandó régiók listáját.
+Ha az írási régió az ügyfél kezdeti felderítési fázisa után módosul, az előző írási régióba érkező későbbi írások meghiúsulnak a 403-as HTTP-hibakóddal („Tiltott”). Az ügyfélnek ilyenkor ismét le kell kérnie a régiók listáját a GET metódussal a frissített írási régió beszerzéséhez.
 
-Ez azt, hogy ez az oktatóanyag befejezése. Megismerheti a globális replikált fiókja konzisztencia kezeléséhez olvasásával [Azure Cosmos DB-ben konzisztenciaszintek](consistency-levels.md). És hogyan globális adatbázis-replikációval kapcsolatos további információk az Azure Cosmos Adatbázisba működik, a következő témakörben: [adatok globálisan Azure Cosmos DB terjesztése](distribute-data-globally.md).
+Ezzel el is végezte az oktatóanyagot. Ha meg szeretné ismerni, hogyan kezelheti a globálisan replikált fiók konzisztenciáját, olvassa el a [Konzisztenciaszintek az Azure Cosmos DB-ben](consistency-levels.md) című cikket. További információ a globális adatbázis-replikáció működéséről az Azure Cosmos DB szolgáltatásban: [Globális adatterjesztés az Azure Cosmos DB-vel](distribute-data-globally.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban ezt a következők:
+Ebben az oktatóanyagban a következőket hajtotta végre:
 
 > [!div class="checklist"]
-> * Az Azure portál használatával globális terjesztési konfigurálása
-> * Az SQL API-kkal globális terjesztési konfigurálása
+> * Globális terjesztés konfigurálása az Azure Portallal
+> * Globális terjesztés konfigurálása az SQL API-k használatával
 
-Most már folytathatja a következő oktatóanyag megtudhatja, hogyan fejleszthet, helyileg emulátorral Azure Cosmos DB helyi.
+Továbbléphet a következő oktatóanyagra, amelyből megtudhatja, hogyan fejleszthet helyileg az Azure Cosmos DB helyi emulátorával.
 
 > [!div class="nextstepaction"]
-> [Helyileg emulátorral fejlesztése](local-emulator.md)
+> [Helyi fejlesztés az emulátorral](local-emulator.md)
 
 [regions]: https://azure.microsoft.com/regions/
 

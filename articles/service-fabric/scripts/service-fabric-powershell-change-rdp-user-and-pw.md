@@ -1,48 +1,48 @@
 ---
-title: "Az Azure PowerShell-parancsfájl minta - RDP-felhasználónevet és jelszót frissítése |} Microsoft Docs"
-description: "Az Azure PowerShell-parancsfájl minta - RDP-felhasználónevet és jelszót a Service Fabric fürt összes csomópontján, egy adott csomópont típusú frissítése."
+title: Azure PowerShell-példaszkript – Az RPD-felhasználónév és -jelszó frissítése | Microsoft Docs
+description: Azure PowerShell-példaszkript – Az RPD-felhasználónév és -jelszó frissítése az egy konkrét csomóponttípusba tartozó összes Service Fabric-fürtcsomópont esetében.
 services: service-fabric
-documentationcenter: 
+documentationcenter: ''
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
-ms.date: 11/17/2017
+ms.date: 03/19/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 3b97cee11c9a85cbd60a05bdbdcd010a0f0a106f
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
-ms.translationtype: MT
+ms.openlocfilehash: ff9cfabc4ac7b759a916ddaaeb3f4c95ceecd452
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="update-the-admin-username-and-password-of-the-vms-in-a-cluster"></a>A rendszergazda felhasználónevét és jelszavát, amely a virtuális gépeket a fürt frissítése
+# <a name="update-the-admin-username-and-password-of-the-vms-in-a-cluster"></a>Az egy fürtbe tartozó virtuális gépek rendszergazdai felhasználónevének és jelszavának frissítése
 
-A Service Fabric-fürt minden csomópont típusa a virtuálisgép-méretezési készlet. Ez a parancsfájlpélda frissíti, a rendszergazda felhasználónevét és jelszavát a fürt virtuális gépek az adott csomópont típusát.  Adja hozzá a VMAccessAgent kiterjesztést a méretezési, mivel a rendszergazdai jelszó nem módosítható méretezési tulajdonság állítható be.  A felhasználónév vagy a jelszó módosítása a méretezési csoportban lévő összes csomópontra érvényes. Szabja testre a paramétereket szükség szerint.
+A Service Fabric-fürtök mindegyik [csomóponttípusa](../service-fabric-cluster-nodetypes.md) egy virtuálisgép-méretezési csoportot jelent. Ez a példaszkript frissíti az egy konkrét csomóponttípusba tartozó fürtözött virtuális gépek rendszergazdai felhasználónevét és jelszavát.  Adja hozzá a VMAccessAgent bővítményt a méretezési csoporthoz, mert a rendszergazdai jelszó nem módosítható méretezésicsoport-tulajdonság.  A felhasználónév és jelszó módosításai a méretezési csoport összes csomópontjára érvényesek. Szabja testre a paramétereket szükség szerint.
 
-Szükség esetén telepítse az Azure PowerShell található utasítás használatával a [Azure PowerShell útmutató](/powershell/azure/overview). 
+Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutatójának](/powershell/azure/overview) utasításait követve. 
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
 [!code-powershell[main](../../../powershell_scripts/service-fabric/change-rdp-user-and-pw/change-rdp-user-and-pw.ps1 "Updates a RDP username and password for cluster nodes")]
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-Ezt a parancsfájlt az alábbi parancsokat használja: minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatkozásokat.
+A szkript a következő parancsokat használja: A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) | Fürt csomópont típusú (egy virtuális gép méretezési) tulajdonságait olvassa be.   |
-| [Adja hozzá AzureRmVmssExtension](/powershell/module/azurerm.compute/add-azurermvmssextension)| Egy bővítmény hozzáadása a virtuálisgép-méretezési készlet.|
-| [Frissítés-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss)|Frissíti a virtuálisgép-méretezési helyi VMSS objektum állapotának beállítása az állapotát.|
+| [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) | Lekéri egy fürtcsomóponttípus (egy virtuálisgép-méretezési csoport) tulajdonságait.   |
+| [Add-AzureRmVmssExtension](/powershell/module/azurerm.compute/add-azurermvmssextension)| Hozzáad egy bővítményt a virtuálisgép-méretezési csoporthoz.|
+| [Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss)|Frissíti a virtuálisgép-méretezési csoport állapotát a helyi VMSS-objektum állapotával megegyezőre.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az Azure PowerShell modul további információkért lásd: [Azure PowerShell dokumentációs](/powershell/azure/overview).
+Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/overview).
 
-Azure Service Fabric további Azure Powershell-példák találhatók a [Azure PowerShell-példák](../service-fabric-powershell-samples.md).
+További Azure Powershell-példákat az Azure Service Fabrichez az [Azure PowerShell-példák](../service-fabric-powershell-samples.md) között találhat.

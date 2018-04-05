@@ -1,25 +1,25 @@
 ---
-title: "Alkalmazáscsomagok telepítse a számítási csomópontok - Azure Batch |} Microsoft Docs"
-description: "Használja az alkalmazás csomagok szolgáltatása könnyedén kezelheti a több alkalmazás és a kötegelt telepítés verziók Azure Batch számítási csomópontjain."
+title: Alkalmazáscsomagok telepítse a számítási csomópontok - Azure Batch |} Microsoft Docs
+description: Használja az alkalmazás csomagok szolgáltatása könnyedén kezelheti a több alkalmazás és a kötegelt telepítés verziók Azure Batch számítási csomópontjain.
 services: batch
 documentationcenter: .net
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 3b6044b7-5f65-4a27-9d43-71e1863d16cf
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 07/20/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86b5f10cbd79227ccc6acb2004e449f426a6cbd8
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 440f7eba99e5fa02a597ae62d5d14329f5e50af7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>A számítási csomópontokat a kötegelt alkalmazáscsomagok alkalmazások központi telepítése
 
@@ -121,7 +121,7 @@ A **alkalmazások** panel megjeleníti minden egyes alkalmazás Azonosítójána
 
 * **Csomagok**: A jelen alkalmazáshoz rendelt verziók számát.
 * **Alapértelmezett verzió**: A telepített, ha nem jelzi azt egy verzió az alkalmazás egy készlet megadott verziója. Ez a beállítás nem kötelező.
-* **Frissítések engedélyezése**: az érték, amely meghatározza, hogy frissíti a csomagot, törléseket és kiegészítéseit engedélyezettek. Ha a beállított érték **nem**, csomag frissítések és törlések le van tiltva az alkalmazás. Csak új alkalmazáscsomag-verziók is hozzáadhatók. Az alapértelmezett érték **Igen**.
+* **Frissítések engedélyezése**: az érték, amely meghatározza, hogy frissíti a csomagot, törléseket és kiegészítéseit engedélyezettek. Ha a beállított érték **nem**, csomag frissítések és törlések le van tiltva az alkalmazás. Csak új alkalmazáscsomag-verziók is hozzáadhatók. Az alapértelmezett érték az **Igen**.
 
 ### <a name="view-application-details"></a>Az alkalmazás részleteinek megtekintése
 Az alkalmazás részleteit tartalmazó panel megnyitásához, válassza ki az alkalmazást a **alkalmazások** panelen.
@@ -194,7 +194,7 @@ Amikor rákattint **frissítés**, a *csomag* panel jelenik meg. Ezen a panelen 
 
 Amikor rákattint **törlése**, a rendszer felkéri a csomag verziószáma törlésének megerősítése és kötegelt törli a csomag az Azure Storage-ból. Ha törli egy alkalmazás alapértelmezett verziója a **alapértelmezett verzió** beállítást a rendszer eltávolítja az alkalmazáshoz.
 
-![Alkalmazás törlése][12]
+![Alkalmazás törlése ][12]
 
 ## <a name="install-applications-on-compute-nodes"></a>Alkalmazások telepítése a számítási csomópontok
 Most, hogy megismerte az Azure-portálon az alkalmazáscsomagok kezelése, hogyan telepheti őket a számítási csomópontok és kötegelt feladatok futtathatók is tárgyaljuk.
@@ -269,7 +269,7 @@ Linux:
 AZ_BATCH_APP_PACKAGE_applicationid_version
 ```
 
-`APPLICATIONID`és `version` olyan értékek, amelyek megfelelnek a telepítéshez megadott alkalmazás- és csomag verziója. Például, ha a megadott alkalmazás 2.7-es verzió *keverőgép* telepítendő Windows csomópont, a feladat parancssorokat használja ehhez a környezeti változóhoz a fájlok eléréséhez:
+`APPLICATIONID` és `version` olyan értékek, amelyek megfelelnek a telepítéshez megadott alkalmazás- és csomag verziója. Például, ha a megadott alkalmazás 2.7-es verzió *keverőgép* telepítendő Windows csomópont, a feladat parancssorokat használja ehhez a környezeti változóhoz a fájlok eléréséhez:
 
 ```
 Windows:
@@ -346,7 +346,7 @@ foreach (ApplicationSummary app in applications)
 ## <a name="wrap-up"></a>Burkolja
 Az alkalmazáscsomagok válassza ki arra, hogy az alkalmazásokat, és adja meg a pontos verziót kell használni, ha engedélyezve van a szolgáltatással a feladatok feldolgozásában, az ügyfelek segítségével. Meg lehet adni az feltöltése és nyomon követheti a szolgáltatás fel saját alkalmazásaikba az ügyfelek képesek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A [Batch REST API] [ api_rest] is támogatja az alkalmazás csomagokkal végzett munkához. Például tekintse meg a [applicationPackageReferences] [ rest_add_pool_with_packages] elemében [a készlet hozzáadása partner] [ rest_add_pool] további információkat tudhat meg csomagok telepítése a REST API használatával. Lásd: [alkalmazások] [ rest_applications] alkalmazással kapcsolatos adatok beszerzése a Batch REST API használatával kapcsolatban.
 * Megtudhatja, hogyan programozott módon [kezelése az Azure Batch fiókjainak és kvótáinak a Batch Management .NET kódtárral](batch-management-dotnet.md). A [Batch Management .NET kódtárral][api_net_mgmt] könyvtár engedélyezheti a fiók létrehozását és törlését funkciói a kötegelt alkalmazást vagy szolgáltatást.
 

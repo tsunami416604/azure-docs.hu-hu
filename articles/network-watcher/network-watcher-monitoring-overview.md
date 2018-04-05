@@ -1,11 +1,11 @@
 ---
-title: "Bevezetés az Azure hálózati figyelőt |} Microsoft Docs"
-description: "Ezen a lapon a hálózati figyelőt szolgáltatás Figyelés áttekintése és hálózati megjelenítése kapcsolódó erőforrások az Azure-ban"
+title: Bevezetés az Azure hálózati figyelőt |} Microsoft Docs
+description: Ezen a lapon a hálózati figyelőt szolgáltatás Figyelés áttekintése és hálózati megjelenítése kapcsolódó erőforrások az Azure-ban
 services: network-watcher
 documentationcenter: na
 author: jimdial
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 14bc2266-99e3-42a2-8d19-bd7257fec35e
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: b8a8e0653221af126ea137b1450ce27c29791ae3
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 792b96e4f5ba5dc0f2f943f099a2fee339407d66
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-network-monitoring-overview"></a>Azure-hálózat – áttekintés
 
@@ -47,6 +47,7 @@ Hálózati figyelőt jelenleg a következő képességekkel rendelkezik:
 * **[Előfizetési korlátozásait a hálózati](#network-subscription-limits)**  -lehetővé teszi a hálózati erőforrás-használati korlátozások megtekintéséhez.
 * **[Diagnosztikai naplófájl konfigurálása](#diagnostic-logs)**  – engedélyezheti vagy tilthatja le a diagnosztikai naplókat a hálózati erőforrások az erőforráscsoportban egytáblás biztosít.
 * **[Kapcsolat elhárítása](network-watcher-connectivity-overview.md)**  -egy közvetlen TCP-kapcsolatot a virtuális gép egy adott végpont Azure környezetben növelést létrehozásának lehetősége ellenőrzi.
+* **[Figyelő kapcsolat](connection-monitor.md)**  -figyelése Azure virtuális gép és egy IP-címe, a forrás és cél IP-cím és port használata között késleltetés és a konfigurációs problémákat.
 
 ### <a name="role-based-access-control-rbac-in-network-watcher"></a>Szerepköralapú hozzáférés-vezérlés (RBAC) hálózati figyelőt
 

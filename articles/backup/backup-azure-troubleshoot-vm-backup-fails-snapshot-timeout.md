@@ -1,12 +1,12 @@
 ---
-title: "Azure biztonsági mentési hiba elhárítása: Vendég ügynök állapota nem érhető el |} Microsoft Docs"
-description: "A jelenség okok és megoldások Azure biztonsági mentési hibák ügynök, a bővítmény és a lemezek."
+title: 'Azure biztonsági mentési hiba elhárítása: Vendég ügynök állapota nem érhető el |} Microsoft Docs'
+description: A jelenség okok és megoldások Azure biztonsági mentési hibák ügynök, a bővítmény és a lemezek.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
-keywords: "Az Azure backup; Virtuálisgép-ügynök; Hálózati kapcsolat;"
+editor: ''
+keywords: Az Azure backup; Virtuálisgép-ügynök; Hálózati kapcsolat;
 ms.assetid: 4b02ffa4-c48e-45f6-8363-73d536be4639
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: a18718aba3ef7f70caa541c6eb56311082d02bed
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 81678f6a8659ffb763ebfe418098e510c73f6ae0
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure biztonsági mentési hiba elhárítása: az ügynök vagy a bővítmény problémái
 
@@ -27,7 +27,7 @@ Ez a cikk ismerteti a hibaelhárítási lépéseket, amelyek segítségével jav
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="vm-agent-unable-to-communicate-with-azure-backup"></a>Virtuálisgép-ügynök nem tud kommunikálni az Azure Backup szolgáltatással
+## <a name="vm-agent-unable-to-communicate-with-azure-backup"></a>Nem lehet kommunikálni az Azure biztonsági mentés Virtuálisgép-ügynök
 
 Hibaüzenet: "Virtuálisgép-ügynök nem lehet kommunikálni az Azure Backup"
 
@@ -78,21 +78,6 @@ Miután regisztrálja, és egy virtuális Gépet az Azure Backup szolgáltatás 
 **4. ok: [pillanatkép állapota nem olvasható, vagy a pillanatkép nem végezhető](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **5. ok: [frissítése vagy nem tölthető be nem sikerül a tartalék mellék](#the-backup-extension-fails-to-update-or-load)**  
 **6. ok: [biztonsági mentési szolgáltatás nem rendelkezik megfelelő jogosultsággal a régi helyreállítási pontok egy erőforrás-csoport zárolás miatt törlése](#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock)**
-
-## <a name="disk-configuration-is-not-supported"></a>A lemezkonfiguráció nem támogatott.
-
-Hibaüzenet: "a megadott lemezkonfiguráció nem támogatott"
-
-> [!NOTE]
-> Van egy, a biztonsági mentések 1 TB-nál nagyobb lemezek rendelkező virtuális gépek támogatásához private Preview verziójára. További információkért lásd: [nagy virtuális gép biztonsági mentési támogatása a Private Preview verziójára](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a).
->
->
-
-Azure Backup szolgáltatás jelenleg nem támogatja, amelyek lemezek [1,023 GB-nál nagyobb](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#limitations-when-backing-up-and-restoring-a-vm). Ha 1 TB-nál nagyobb:  
-1. [Új lemez csatolása](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal) , amelyek 1 TB-nál kisebb.  
-2. Az adatok másolása az újonnan létrehozott lemezekre 1 TB-nál kisebb méretű 1 TB-nál nagyobb.  
-3. Győződjön meg arról, hogy minden adat másolta. Ezután távolítsa el a lemez 1 TB-nál nagyobb.  
-4. Indítsa el a biztonsági mentést.
 
 ## <a name="causes-and-solutions"></a>Okait és megoldásait
 

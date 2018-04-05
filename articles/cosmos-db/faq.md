@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: mimig
-ms.openlocfilehash: 946d0f6456ce27931c91066d63c028388ecec84c
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 7039b87c80aecb837059d80087c97e8691da2988
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-cosmos-db-faq"></a>Az Azure Cosmos DB – gyakori kérdések
 ## <a name="azure-cosmos-db-fundamentals"></a>Az Azure Cosmos DB – alapok
@@ -122,7 +122,7 @@ Ha úgy állítja be a régió, ne feledje, hogy Azure Cosmos DB tiszteletben ta
 ### <a name="how-do-i-start-developing-against-the-sql-api"></a>Hogyan kezdhetem meg, hogy az SQL API fejlesztésről?
 Először regisztrálnia kell az Azure-előfizetéssel. Regisztrálás után az Azure-előfizetéssel, adhat hozzá egy SQL API-tároló az Azure-előfizetéshez. Egy Azure Cosmos DB fiók hozzáadására vonatkozó utasításokért lásd: [Azure Cosmos-adatbázis adatbázis-fiók létrehozása](create-sql-api-dotnet.md#create-account). 
 
-[SDK-k](sql-api-sdk-dotnet.md) .NET, Python, Node.js, JavaScript és Java elérhető. A fejlesztők is használhatja a [RESTful HTTP API-k](/rest/api/documentdb/) kommunikál a különböző platformok és nyelvek Azure Cosmos DB erőforrásokat.
+[SDK-k](sql-api-sdk-dotnet.md) .NET, Python, Node.js, JavaScript és Java elérhető. A fejlesztők is használhatja a [RESTful HTTP API-k](/rest/api/cosmos-db/) kommunikál a különböző platformok és nyelvek Azure Cosmos DB erőforrásokat.
 
 ### <a name="can-i-access-some-ready-made-samples-to-get-a-head-start"></a>Tudok hozzáférni bizonyos előre elkészített minták segítséget?
 Az SQL API-példák [.NET](sql-api-dotnet-samples.md), [Java](https://github.com/Azure/azure-documentdb-java), [Node.js](sql-api-nodejs-samples.md), és [Python](sql-api-python-samples.md) SDK a Githubon érhetők el.
@@ -140,10 +140,10 @@ A gyűjtemény olyan dokumentumokat és a kapcsolódó JavaScript-alkalmazáslog
 Gyűjtemények egyaránt az Azure Cosmos DB számlázási egységei. Egyes gyűjtemények számlázása óránként történik, a létesített átviteli sebesség alapján, és tárolóhely használt. További információkért lásd: [Azure Cosmos DB árképzési](https://azure.microsoft.com/pricing/details/cosmos-db/). 
 
 ### <a name="how-do-i-create-a-database"></a>Hogyan hozható létre adatbázis?
-Adatbázisok segítségével létrehozható a [Azure-portálon](https://portal.azure.com)leírtak szerint [egy gyűjtemény hozzáadása](create-sql-api-dotnet.md#create-collection), egy, a [Azure Cosmos DB SDK-k](sql-api-sdk-dotnet.md), vagy a [REST API-k](/rest/api/documentdb/). 
+Adatbázisok segítségével létrehozható a [Azure-portálon](https://portal.azure.com)leírtak szerint [egy gyűjtemény hozzáadása](create-sql-api-dotnet.md#create-collection), egy, a [Azure Cosmos DB SDK-k](sql-api-sdk-dotnet.md), vagy a [REST API-k](/rest/api/cosmos-db/). 
 
 ### <a name="how-do-i-set-up-users-and-permissions"></a>Hogyan állíthatom be a felhasználókat és engedélyeket?
-Egyikének használatával hozhat létre felhasználókat és engedélyeket a [Cosmos DB API SDK-k](sql-api-sdk-dotnet.md) vagy a [REST API-k](/rest/api/documentdb/).  
+Egyikének használatával hozhat létre felhasználókat és engedélyeket a [Cosmos DB API SDK-k](sql-api-sdk-dotnet.md) vagy a [REST API-k](/rest/api/cosmos-db/).  
 
 ### <a name="does-the-sql-api-support-sql"></a>Támogatja az SQL API-t-SQL?
 Az SQL API-fiókok által támogatott SQL lekérdező nyelve az SQL Server által támogatott lekérdezési funkcionalitás továbbfejlesztett alkészlete. Az Azure Cosmos DB SQL lekérdező nyelve gazdag hierarchikus és relációs operátorokat és bővíthetőséget JavaScript-alapú, felhasználó által megadott funkciókat (UDF) biztosít. A JSON-szintaxis lehetővé teszi a modellezési JSON-dokumentumok fákként való címkézett csomópontok, amelyeket az Azure Cosmos DB automatikus indexelési technikái és Azure Cosmos-adatbázis SQL-lekérdezési dialektusa egyaránt használ. SQL-szintaxis használatával kapcsolatos információkért lásd: a [SQL-lekérdezés] [ query] cikk.

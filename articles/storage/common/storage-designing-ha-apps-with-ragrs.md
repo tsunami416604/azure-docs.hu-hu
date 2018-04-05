@@ -1,6 +1,6 @@
 ---
-title: "Azure-írásvédett Georedundáns tárolás (RA-GRS) használatával magas rendelkezésre álló alkalmazások megtervezése |} Microsoft Docs"
-description: "Hogyan lehet Azure-RA-GRS storage segítségével tervezővel vajon elég rugalmas az kimaradások kezelni a magas rendelkezésre állású alkalmazások."
+title: Azure-írásvédett Georedundáns tárolás (RA-GRS) használatával magas rendelkezésre álló alkalmazások megtervezése |} Microsoft Docs
+description: Hogyan lehet Azure-RA-GRS storage segítségével tervezővel vajon elég rugalmas az kimaradások kezelni a magas rendelkezésre állású alkalmazások.
 services: storage
 documentationcenter: .net
 author: tamram
@@ -12,28 +12,26 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/11/2017
+ms.date: 03/21/2018
 ms.author: tamram
-ms.openlocfilehash: fe7c6d1f2530b43ac7b10c5b6b0723452452a97a
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: f7f3f2d99e5582a1bcb672cc176258dfff9c3217
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>RA-GRS használatával magas rendelkezésre álló alkalmazások megtervezése
 
 Egy felhőalapú infrastruktúrák hasonlóan az Azure Storage közös szolgáltatása a magas rendelkezésre állású platform biztosítják az alkalmazások tárolására szolgáló. A felhőalapú alkalmazások fejlesztők kell alaposan fontolja meg, hogyan használhatók ki ezen a platformon, magas rendelkezésre állású alkalmazások a felhasználóknak való biztosítása érdekében. Ez a cikk foglalkozik a fejlesztők használatát írásvédett Georedundáns tárolás (RA-GRS) biztosításához az Azure Storage alkalmazásaikat képező magas rendelkezésre állású.
 
-Az Azure Storage a tárfiókban lévő adatokat a redundancia érdekében négy lehetőségeket kínál:
-
-- LRS (helyileg redundáns tárolás)
-- A ZRS (zóna redundáns tárolás) 
-- Georedundáns (Georedundáns tárolás)
-- RA-GRS (írásvédett Georedundáns tárolás). 
+[!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
 
 Ez a cikk a GRS és az RA-GRS összpontosít. A GRS az adatok három példányban tárolják a storage-fiók beállítása során kiválasztott elsődleges régióban. Három további másolatokat aszinkron módon karbantartása az Azure által megadott másodlagos régióba. RA-GRS ugyanaz, mint a Georedundáns, azzal a különbséggel, hogy rendelkezik olvasási hozzáféréssel a másodlagos példány. Azure Storage redundancia különböző beállításokkal kapcsolatos további információkért lásd: [Azure Storage replikációs](https://docs.microsoft.com/azure/storage/storage-redundancy). A replikációs cikk azt az elsődleges és másodlagos régiók párosítása is ismerteti.
 
 Nincsenek kódtöredékek szerepelni fog ebben a cikkben, és egy teljes mintát, töltse le, és futtassa a végén mutató hivatkozást.
+
+> [!NOTE]
+> Az Azure Storage zónaredundáns tárolás (ZRS) mostantól támogatja a magas rendelkezésre állású alkalmazások létrehozásához. A ZRS számos alkalmazás redundanciájának igényeinek egy egyszerű megoldást kínál. A ZRS a hardver meghibásodása vagy egy egyetlen datacenter érintő katasztrofális katasztrófák védelmet biztosít. További információkért lásd: [zónaredundáns tárolás (ZRS): Azure Storage magas rendelkezésre állású alkalmazások](storage-redundancy-zrs.md).
 
 ## <a name="key-features-of-ra-grs"></a>RA-GRS a kulcsfontosságú szolgáltatásokat
 
@@ -105,7 +103,7 @@ Számos módon frissítés-kérelmeket kezelnek, csak olvasható módban törté
 
 Hogyan tudja megállapítani, mely hibák Újrapróbálkozást lehetővé tevő? Ez határozza meg a storage ügyféloldali kódtára. Például a 404-es hiba (az erőforrás nem található) nincs Újrapróbálkozást lehetővé tevő mert az újrapróbálkozás nem valószínűleg sikeres. Másrészről 500 hiba nem Újrapróbálkozást lehetővé tevő, mert a kiszolgáló hibája, és egyszerűen lehet, hogy átmeneti jellegű probléma. További részletekért tekintse meg a [nyissa meg a ExponentialRetry osztály forráskódja](https://github.com/Azure/azure-storage-net/blob/87b84b3d5ee884c7adc10e494e2c7060956515d0/Lib/Common/RetryPolicies/ExponentialRetry.cs) a .NET a storage ügyféloldali kódtára a. (Keresse meg a ShouldRetry metódust.)
 
-### <a name="read-requests"></a>Olvasási kérések
+### <a name="read-requests"></a>Olvasási kérelmek
 
 Ha az elsődleges storage probléma van a olvasási kérelmek átirányíthatók a másodlagos tárterületre. Szerint azt a fentiekben leírtuk a [idővel azonos adatokat használó](#using-eventually-consistent-data), esetleg az elavult adatokat olvasni az alkalmazás elfogadható kell lennie. A storage ügyféloldali kódtár használatakor RA-GRS adatok eléréséhez egy olvasási kérést újrapróbálkozási viselkedését értékének beállításával megadhatja a **LocationMode** tulajdonságot a következők egyikét:
 
@@ -135,7 +133,7 @@ Ezek a forgatókönyvek esetén meg kell határoznia, hogy nincs folyamatban lé
 
 Az áramköri megszakító mintát frissítési kérelmek is alkalmazható. Azonban frissítési kérelmek nem irányítható át másodlagos tároló, amely csak olvasható. Az ilyen kérelmeket, akkor hagyja a **LocationMode** tulajdonsága **PrimaryOnly** (alapértelmezett). Kezelje ezeket a hibákat, metrika vonatkoznak ezek a kérelmek – például olyan sorok esetén – 10 hibák, és amikor teljesül a küszöbérték, váltson az alkalmazás csak olvasható módba. Ugyanazokat a módszereket visszaküldésére használatos segítségével frissítési mód, mint az áramköri megszakító mintát kapcsolatban a következő szakaszban az alábbiakban.
 
-## <a name="circuit-breaker-pattern"></a>Áramköri megszakító minta
+## <a name="circuit-breaker-pattern"></a>Áramkör-megszakító minta
 
 Az áramköri megszakító minta az alkalmazásban használt megakadályozhatja egy művelet, amely várhatóan többszöri sikertelen. Lehetővé teszi az alkalmazás tovább futni, hanem idő, amíg a művelet fel a rendszer ismét megkísérli exponenciálisan növekszik. Azt is észleli, ha a hiba kijavítása, amikor az alkalmazás képes próbálja megismételni a műveletet.
 
@@ -200,18 +198,18 @@ A harmadik eset, ha az elsődleges tárolási végpont pingelés sikeres ismét 
 
 ## <a name="handling-eventually-consistent-data"></a>Idővel konzisztenssé adatok kezelése
 
-RA-GRS működik az elsődleges tranzakciók replikálni a másodlagos régióba. A replikálási folyamat biztosítja, hogy az adatok a másodlagos régióban *idővel konzisztenssé*. Ez azt jelenti, hogy az elsődleges régióban lévő összes tranzakció végül megjelenik a másodlagos régióban, de lehet egy lag csak akkor jelennek meg, és, hogy nincs-e a tranzakciók érkeznek, ugyanabban a sorrendben, mint amelyben a másodlagos régióban garancia azok eredetileg volt alkalmazva az elsődleges régióban. Ha a tranzakciók sorrendje, nem a másodlagos régióban érkeznek meg *előfordulhat, hogy* fontolja meg az adatok inkonzisztens állapotban lesz, amíg a szolgáltatás ki, hogy a másodlagos régióban.
+Az RA-GRS úgy működik, hogy az elsődleges régióból a másodlagosba replikálja a tranzakciókat. A replikálási folyamat biztosítja, hogy az adatok a másodlagos régióban *idővel konzisztenssé*. Ez azt jelenti, hogy az elsődleges régióban lévő összes tranzakció végül megjelenik a másodlagos régióban, de lehet egy lag csak akkor jelennek meg, és, hogy nincs-e a tranzakciók érkeznek, ugyanabban a sorrendben, mint amelyben a másodlagos régióban garancia azok eredetileg volt alkalmazva az elsődleges régióban. Ha a tranzakciók sorrendje, nem a másodlagos régióban érkeznek meg *előfordulhat, hogy* fontolja meg az adatok inkonzisztens állapotban lesz, amíg a szolgáltatás ki, hogy a másodlagos régióban.
 
 Az alábbi táblázat egy példát, hogy mi történne, ügyeljen rá, hogy tagja alkalmazotti részletek frissítésekor a *rendszergazdák* szerepkör. Ebben a példában az ehhez szükséges frissítenie a **alkalmazott** entitás és a frissítés egy **rendszergazdai szerepkör** entitás a számával, a rendszergazdák teljes száma. Figyelje meg, hogy a frissítések alkalmazása nem megfelelő sorrendben másodlagos régióban.
 
-| **Idő** | **Tranzakció**                                            | **Replikáció**                       | **Utolsó szinkronizálás** | **Eredménye** |
+| **Idő** | **Transaction**                                            | **Replikáció**                       | **Utolsó szinkronizálás** | **eredménye** |
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | Tranzakció A: <br> Alkalmazott beszúrása <br> az elsődleges entitás |                                   |                    | Az elsődleges, szúrja be A tranzakció<br> még nem replikált. |
-| A T1       |                                                            | A tranzakció <br> replikált<br> másodlagos | A T1 | Tranzakció A másodlagos replikálja. <br>Utolsó szinkronizálás ideje frissíteni.    |
-| T2       | B tranzakció<br>Frissítés<br> alkalmazott entitás<br> az elsődleges  |                                | A T1                 | Tranzakció B elsődleges, írása<br> még nem replikált.  |
-| A T3       | Tranzakció C:<br> Frissítés <br>Rendszergazda<br>a szerepkör entitás<br>elsődleges |                    | A T1                 | Tranzakció elsődleges, írása C<br> még nem replikált.  |
-| *T4*     |                                                       | Tranzakció C <br>replikált<br> másodlagos | A T1         | C másodlagos replikált tranzakció.<br>Nincs frissítve, mert LastSyncTime <br>B tranzakció még nincs replikálva.|
-| *T5*     | Olvassa el az entitások <br>másodlagos                           |                                  | A T1                 | Alkalmazott elavult értékének beolvasása <br> entitás, mert a tranzakció B nem <br> még replikált. Az új értéket kap<br> rendszergazdai szerepkör entitás mert C<br> a rendszer replikálja. Utolsó szinkronizálás ideje még nem<br> lett frissítése, mert a tranzakció B<br> a rendszer nem replikálja. Beállíthatja a<br>rendszergazdai szerepkör entitás inkonzisztens. <br>mivel az entitás dátum/idő után <br>a legutóbbi szinkronizálás ideje. |
+| T1       |                                                            | A tranzakció <br> replikált<br> másodlagos | T1 | Tranzakció A másodlagos replikálja. <br>Utolsó szinkronizálás ideje frissíteni.    |
+| T2       | B tranzakció<br>Frissítés<br> alkalmazott entitás<br> az elsődleges  |                                | T1                 | Tranzakció B elsődleges, írása<br> még nem replikált.  |
+| T3       | Tranzakció C:<br> Frissítés <br>Rendszergazda<br>a szerepkör entitás<br>elsődleges |                    | T1                 | Tranzakció elsődleges, írása C<br> még nem replikált.  |
+| *T4*     |                                                       | Tranzakció C <br>replikált<br> másodlagos | T1         | C másodlagos replikált tranzakció.<br>Nincs frissítve, mert LastSyncTime <br>B tranzakció még nincs replikálva.|
+| *T5*     | Olvassa el az entitások <br>másodlagos                           |                                  | T1                 | Alkalmazott elavult értékének beolvasása <br> entitás, mert a tranzakció B nem <br> még replikált. Az új értéket kap<br> rendszergazdai szerepkör entitás mert C<br> a rendszer replikálja. Utolsó szinkronizálás ideje még nem<br> lett frissítése, mert a tranzakció B<br> a rendszer nem replikálja. Beállíthatja a<br>rendszergazdai szerepkör entitás inkonzisztens. <br>mivel az entitás dátum/idő után <br>a legutóbbi szinkronizálás ideje. |
 | *T6*     |                                                      | B tranzakció<br> replikált<br> másodlagos | T6                 | *T6* – C – az összes tranzakció van <br>van replikálva, a legutóbbi szinkronizálás ideje<br> frissül. |
 
 Ebben a példában feltételezzük, T5 másodlagos régióban olvasási vált az ügyfél. Sikeresen tudja olvasni a **rendszergazdai szerepkör** jelenleg entitás, de az entitást a rendszergazdák számát, amely nem megfelelő számú értéket tartalmaz **alkalmazott** , amelyek entitások a másodlagos régióban rendszergazdák jelölésű most. Az ügyfél az értéket, és annak kockázata, hogy a rendszer inkonzisztens adatokat egyszerűen jeleníti meg. Alternatív megoldásként az ügyfél kísérletet határozza meg, amely a **rendszergazdai szerepkör** a potenciálisan inkonzisztens állapotban van, mert a frissítések sorrendje nem történt, és ezután megadja az erről a felhasználó.

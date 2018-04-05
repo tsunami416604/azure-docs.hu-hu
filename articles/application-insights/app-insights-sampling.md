@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: mbullwin
-ms.openlocfilehash: 300b9b7786c17972c5c48df7e5b6d28491adc095
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: d0614e2eae0f60068e69b7a4687fc62fbe082c64
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights-mintavétel
 
@@ -30,7 +30,7 @@ Mintavételi csökkenti a forgalom és az adatok költségeket, és segít elker
 ## <a name="in-brief"></a>Röviden:
 * Mintavételi őrzi meg az 1 *n* rögzíti, és elveti a többi. Például akkor lehet, hogy továbbra is 1: 5 események, a mintavételi ráta 20 %-os. 
 * Mintavételi automatikusan történik, ha az alkalmazás nagy mennyiségű telemetriai adatokat küld az ASP.NET web server apps.
-* Azt is beállíthatja, hogy a mintavételi manuálisan, vagy a portál az árképzést ismertető oldalra; vagy az ASP.NET SDK-t a .config fájl; vagy a Java SDK ApplicationInsights.xml fájl is a a hálózati forgalom csökkentése érdekében.
+* Azt is beállíthatja, hogy mintavételi manuálisan, vagy a portál használatáról és becsült költségek oldalra. vagy az ASP.NET SDK-t a .config fájl; vagy a Java SDK ApplicationInsights.xml fájl is a a hálózati forgalom csökkentése érdekében.
 * Ha egyéni események naplózása, és győződjön meg arról, hogy egy megőrzött vagy elvetett együtt szeretné, győződjön meg arról, hogy rendelkeznek-e az azonos OperationID azonosítójú érték.
 * A mintavételi osztó *n* tulajdonságában rekordokban levő jelentett `itemCount`, amelyen a Keresés a rövid név "kérelem száma" vagy "események száma" alatt jelenik meg. Ha a mintavételi nincs a művelet, `itemCount==1`.
 * Írás Analytics lekérdezések, akkor [mintavételi figyelembe](app-insights-analytics-tour.md#counting-sampled-data). Különösen helyett egyszerűen számbavételi rekordok, használjon `summarize sum(itemCount)`.
@@ -49,7 +49,7 @@ Ezt az űrlapot mintavételi a pont, ahol a webkiszolgáló böngészők és esz
 
 Az ilyen mintavételi típusú, ha az alkalmazás gyakran kerül felett a havi kvótát, és nem kell a mintavételi SDK-alapú típusú bármelyikével lehetőséget. 
 
-A mintavételi ráta beállítását a kvóták és árképzési panel:
+A mintavételi ráta beállítását a használati és a becsült költség lapon:
 
 ![Alkalmazás – áttekintés paneljén kattintson a beállítások, a kvóta, a mintákat, majd válassza ki a mintavételi ráta, és kattintson a frissítés gombra.](./media/app-insights-sampling/04.png)
 

@@ -1,12 +1,12 @@
 ---
-title: "Élettartam Azure Cosmos DB az adatok lejárnak |} Microsoft Docs"
-description: "A TTL-t a Microsoft Azure Cosmos DB teszi lehetővé a dokumentumokat egy bizonyos idő eltelte után a rendszer automatikusan törlődnek."
+title: Élettartam Azure Cosmos DB az adatok lejárnak |} Microsoft Docs
+description: A TTL-t a Microsoft Azure Cosmos DB teszi lehetővé a dokumentumokat egy bizonyos idő eltelte után a rendszer automatikusan törlődnek.
 services: cosmos-db
-documentationcenter: 
-keywords: "élettartam"
+documentationcenter: ''
+keywords: élettartam
 author: arramac
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 25fcbbda-71f7-414a-bf57-d8671358ca3f
 ms.service: cosmos-db
 ms.devlang: multiple
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
 ms.author: arramac
-ms.openlocfilehash: 3737a240d92d9420bac7d42475622182fb425a2b
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: 6f8ce4e270b94bf1043c27ba879878e20372ffe7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>Azure Cosmos DB gyűjtemények automatikusan élettartama adatok lejár
 Alkalmazások létrehozására és hatalmas mennyiségű adat tárolására is használható. Az adatok egy részét, például generált gép esemény adatokat, a naplókat, és a felhasználói munkamenet az információ csak véges időn. Miután az adatok válnak az alkalmazás igényeinek felesleges ezek az adatok kiürítése és a tárolási igényeinek, az alkalmazások biztonságos.
@@ -49,7 +49,7 @@ A fenti logika mutatja be a következő mátrix:
 | --- |:--- |:--- |:--- |
 | A dokumentum hiányzó élettartam |Nem végezhető el a dokumentum szinten bírálja felül, mivel a dokumentum és a gyűjtemény nem ismerik a TTL-t. |Ebben a gyűjteményben nem dokumentumok lejárnak. |A gyűjtemény dokumentumok amikor időköz n lejárta lejár. |
 | Élettartam dokumentum -1 = |Nincs a szintjén bírálja felül, mert a gyűjtemény nem adja meg a dokumentum felülíró DefaultTTL tulajdonság. Egy dokumentumot a TTL-t a rendszer nem értelmezett. |Ebben a gyűjteményben nem dokumentumok lejárnak. |A dokumentum az élettartam =-1. a gyűjtemény nem jár. Minden más dokumentum "n" időszak után lejár. |
-| Élettartam dokumentumon n = |Nem végezhető el a felülírja a dokumentum szinten. A dokumentumban TTL nem értelmezett, a rendszer. |A dokumentum TTL = n időköz n másodperc után lejár. Egyéb dokumentumokat fog örökli időintervalluma -1, és nem jár le. |A dokumentum TTL = n időköz n másodperc után lejár. Egyéb dokumentumokat "n" időköz örökli a gyűjteményben. |
+| Élettartam dokumentumon n = |Nem végezhető el a felülírja a dokumentum szinten. Egy dokumentumot a TTL-t a rendszer nem értelmezett. |A dokumentum TTL = n időköz n másodperc után lejár. Egyéb dokumentumokat fog örökli időintervalluma -1, és nem jár le. |A dokumentum TTL = n időköz n másodperc után lejár. Egyéb dokumentumokat "n" időköz örökli a gyűjteményben. |
 
 ## <a name="configuring-ttl"></a>Élettartam konfigurálása
 Alapértelmezés szerint élettartama összes Cosmos DB gyűjtemények, valamint minden dokumentumok alapértelmezés szerint le van tiltva. Élettartam beállítható programozott módon, vagy az Azure portálon, a a **beállítások** szakasz a gyűjteményhez. 

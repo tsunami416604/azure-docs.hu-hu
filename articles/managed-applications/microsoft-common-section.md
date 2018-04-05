@@ -1,6 +1,6 @@
 ---
-title: "Az Azure által felügyelt alkalmazás szakasz felhasználói felületi elem |} Microsoft Docs"
-description: "A témakör ismerteti a Microsoft.Common.Section felhasználói felületi elem Azure által felügyelt alkalmazások"
+title: Az Azure szakasz felhasználói felületi elem |} Microsoft Docs
+description: Azure-portálon a Microsoft.Common.Section felhasználói felületi elem ismerteti.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 03/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5a460fde88982c53a7ef3a1ec444d50c1c482fc4
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 46ea2e3d404ac3ec9b7f909257451991dbb55f53
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="microsoftcommonsection-ui-element"></a>Microsoft.Common.Section felhasználói felületi elem
-A vezérlő, amely csoportosítja a fejléc alatt egy vagy több elemet. Ez az elem használata során [Azure által felügyelt alkalmazások létrehozására](publish-service-catalog-app.md).
+# <a name="microsoftcommonsection-ui-element"></a>Microsoft.Common.Section UI element
+A vezérlő, amely csoportosítja a fejléc alatt egy vagy több elemet.
 
 ## <a name="ui-sample"></a>Felhasználói felület minta
 ![Microsoft.Common.Section](./media/managed-application-elements/microsoft.common.section.png)
@@ -48,7 +48,7 @@ A vezérlő, amely csoportosítja a fejléc alatt egy vagy több elemet. Ez az e
 ```
 
 ## <a name="remarks"></a>Megjegyzések
-- `elements`legalább egy elemet kell tartalmaznia, és kivételével az összes elem típust is tartalmazhatnak `Microsoft.Common.Section`.
+- `elements` legalább egy elemet kell tartalmaznia, és kivételével az összes elem típust is tartalmazhatnak `Microsoft.Common.Section`.
 - Ez az elem nem támogatja a `toolTip` tulajdonság.
 
 ## <a name="sample-output"></a>Példa kimenet
@@ -60,7 +60,6 @@ basics('section1').element1
 
 Típusú elemek `Microsoft.Common.Section` nincs kimeneti értékűek magukat.
 
-## <a name="next-steps"></a>Következő lépések
-* Felügyelt alkalmazások bemutatása, lásd: [Azure kezelt alkalmazás – áttekintés](overview.md).
+## <a name="next-steps"></a>További lépések
 * A bevezetést UI-definíciók létrehozásáról lásd: [Ismerkedés a CreateUiDefinition](create-uidefinition-overview.md).
 * Általános tulajdonságok felhasználói felületi elemei ismertetését lásd: [CreateUiDefinition elemek](create-uidefinition-elements.md).

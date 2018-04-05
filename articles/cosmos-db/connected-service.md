@@ -1,26 +1,26 @@
 ---
-title: "A Visual Studio csatlakoztatott szolgáltatása az Azure Cosmos DB-hez"
-description: "Lehetővé teszi a fejlesztők számára az Azure Cosmos DB-fiókjuk egyszerű csatlakoztatását és az erőforrások kezelését a Visual Studio csatlakoztatott szolgáltatásain keresztül"
+title: A Visual Studio csatlakoztatott szolgáltatása az Azure Cosmos DB-hez
+description: Lehetővé teszi a fejlesztők számára az Azure Cosmos DB-fiókjuk egyszerű csatlakoztatását és az erőforrások kezelését a Visual Studio csatlakoztatott szolgáltatásain keresztül
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: jejiang
 manager: DJ
 +tags: cosmos-db
 editor: Jenny Jiang
-ms.assetid: 
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: Azure Cosmos DB
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 09/19/2017
 ms.author: jejiang
-ms.openlocfilehash: f63c20831a2700f1024507bef614a5a7cc87d00e
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 93be368d34f02e64d11abe9a04b11272ce18124d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-cosmos-db-visual-studio-connected-service-preview"></a>Azure Cosmos DB: a Visual Studio csatlakoztatott szolgáltatása (előzetes verzió)
 
@@ -36,11 +36,13 @@ Győződjön meg róla, hogy rendelkezik az alábbi elemekkel:
 * Azure Cosmos DB-fiók. Ha még nem rendelkezik ilyennel, kövesse az [Azure Cosmos DB-fiók létrehozása](create-sql-api-dotnet.md) című témakör lépéseit, és hozzon létre egyet az Azure Portalon, vagy tekintse meg az [Azure Cosmos DB-fiók csatlakoztatott szolgáltatás eszközben való létrehozását ismertető cikket](#Create-an-Azure-Cosmo-DB-account-in-Connected-Service-tool). 
 * Ha helyi környezetet szeretne használni fejlesztési célokra, használhatja az [Azure Cosmos DB Emulatort](local-emulator.md). A környezet emulálja az Azure Cosmos DB szolgáltatást.
 * [Visual Studio](http://www.visualstudio.com/).
-* Az Azure Cosmos DB csatlakoztatott szolgáltatás legújabb elemei. Az Azure Cosmos DB csatlakoztatott szolgáltatást az alábbi képernyőfelvételen láthatók szerint töltheti le a Visual Studio piacteréről. Nyissa meg a **Visual Studiót** a számítógépén. A **Tools** (Eszközök) menüben válassza az **Extensions and update...** (Bővítmények és frissítés) lehetőséget, majd válassza az **Online** / **Visual Studio Marketplace** (Visual Studio-piactér) elemet. Írja be a **cosmosdb** szöveget az eszköz megkereséséhez.
+* Az Azure Cosmos DB csatlakoztatott szolgáltatás legújabb elemei. Az Azure Cosmos DB csatlakoztatott szolgáltatást az alábbi képernyőfelvételen láthatók szerint töltheti le a Visual Studio piacteréről. Nyissa meg a **Visual Studiót** a számítógépén. A **Tools** (Eszközök) menüben válassza az **Extensions and Updates…** (Bővítmények és frissítések) lehetőséget, majd válassza az **Online** / **Visual Studio Marketplace** (Visual Studio-piactér) elemet. Írja be a **cosmosdb** szöveget az eszköz megkereséséhez.
 
     Az Azure Cosmos DB csatlakoztatott szolgáltatást a [Visual Studio piacteréről](https://go.microsoft.com/fwlink/?linkid=858709) is telepítheti.
 
     ![A csatlakoztatott szolgáltatások letöltésének képernyőképe.png](./media/connected-service/connected-service-downloadbits.png) 
+
+Az Azure Cosmos DB csatlakoztatott szolgáltatás bővítmény letöltése után zárja be a Visual Studiót a bővítmény telepítéséhez.
 
 ## <a id="SetupVS"></a>A Visual Studio-megoldás beállítása
 1. Nyissa meg a **Visual Studiót** a számítógépén.
@@ -108,7 +110,7 @@ Az Adatkezelő megnyitása után a következőket teheti:
 
 Tekintse meg a következő videót az Azure Cosmos DB csatlakoztatott szolgáltatás Visual Studióban való használatáról: [Use Azure Cosmos DB Connected Service in Visual Studio](https://go.microsoft.com/fwlink/?linkid=858711) (Az Azure Cosmos DB csatlakoztatott szolgáltatás használata a Visual Studióban)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a dokumentumban a következőket mutattuk be:
 
 > [!div class="checklist"]

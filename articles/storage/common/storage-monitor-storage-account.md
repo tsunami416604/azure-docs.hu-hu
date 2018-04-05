@@ -1,8 +1,8 @@
 ---
-title: "Egy Azure Storage-fiók figyelése |} Microsoft Docs"
-description: "Megtudhatja, hogyan figyelheti egy Azure storage-fiókot az Azure portál használatával."
+title: Egy Azure Storage-fiók figyelése |} Microsoft Docs
+description: Megtudhatja, hogyan figyelheti egy Azure storage-fiókot az Azure portál használatával.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: tamram
 manager: timlt
 editor: tysonn
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: tamram
-ms.openlocfilehash: 20cb425b64bfba06d64b3c6c41f9ef496395ad8e
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: ffc7d46bbfa4db47a47e416c395efdfc451cadc1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>A figyelő egy tárfiókot, Azure-portálon
 
@@ -28,8 +28,6 @@ ms.lasthandoff: 01/24/2018
 > Nincsenek figyelési adatok az Azure portálon vizsgálata kapcsolódó költségeket. További információkért lásd: [tárolási analitika és számlázási](/rest/api/storageservices/Storage-Analytics-and-Billing).
 >
 > Jelenleg az Azure Files Storage Analytics metrikák támogatja, de még nem támogatja a naplózást.
->
-> Zónaredundáns tárolás (ZRS) replikációs típussal rendelkező tárfiókok támogatják, metrikákat és naplózási. Az előző ZRS fiókokat, amelyek a ZRS klasszikus átnevezték, hajtson végre nem támogatja a mérőszámok vagy naplózás. A ZRS további információkért lásd: [zónaredundáns tárolás](storage-redundancy.md#zone-redundant-storage). 
 > 
 > A részletes útmutatót a tárolási analitika és más eszközök segítségével azonosíthatja, diagnosztizálása és Azure tárolással kapcsolatos problémák elhárításához, lásd: [figyelése, diagnosztizálása és elhárítása a Microsoft Azure Storage](../storage-monitoring-diagnosing-troubleshooting.md).
 >
@@ -47,7 +45,7 @@ ms.lasthandoff: 01/24/2018
 
    A mérőszámok engedélyezheti az egyes szolgáltatásokhoz, amelyek mindegyikét új storage-fiókok alapértelmezés szerint engedélyezve vannak két típusa van:
 
-   * **Összesített**: például be-és kilépési, a rendelkezésre állási, a késés és a sikeres százalékos metrikákat gyűjtő. A blob, a várólista, a tábla és a Fájlszolgáltatások a metrikák összesítése.
+   * **Összesített**: például be-és kilépési, a rendelkezésre állási, a késés és a sikeres százalékos metrikákat gyűjtő. A mérőszámok összesítése blobok, üzenetsorok, táblák és fájlszolgáltatások szerint történik.
    * **/ API**: mellett a összesített metrika, ugyanazokat az Azure Storage szolgáltatás API-ban minden tárolási műveletet metrikáját gyűjti.
 
    Az adatmegőrzési házirend beállítása, helyezze át a **megőrzés (nap)** csúszkát vagy adja meg az adatok megőrzése mellett, 1 és 365 közötti napok számát. Az új tárfiókok alapértelmezés hét nap. Ha nem szeretné, hogy egy megőrzési házirend, adja meg a nulla. Ha nincs megőrzési házirend, esetén a figyelési adatok törlését.

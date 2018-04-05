@@ -20,13 +20,19 @@
 
 # Útmutató
 
+## [Zónaredundáns nyilvános Standard Load Balancer létrehozása](load-balancer-get-started-internet-az-portal.md)
+### [Zónaredundáns nyilvános Standard Load Balancer létrehozása (PowerShell)](load-balancer-get-started-internet-az-powershell.md)
+### [Zónaredundáns nyilvános Standard Load Balancer létrehozása (CLI)](load-balancer-get-started-internet-az-cli.md)
+## [Zónaszintű nyilvános Standard Load Balancer létrehozása](load-balancer-get-started-internet-availability-zones-zonal-portal.md)
+### [Zónaszintű nyilvános Standard Load Balancer létrehozása (PowerShell)](load-balancer-get-started-internet-availability-zones-zonal-powershell.md)
+### [Zónaszintű nyilvános Standard Load Balancer létrehozása (CLI)](load-balancer-get-started-internet-availability-zones-zonal-cli.md)
+## [Virtuális gépek terheléselosztása rendelkezésre állási zónák között](load-balancer-standard-public-availability-zones-portal.md)
+###  [Virtuális gépek terheléselosztása rendelkezésre állási zónák között (CLI)](load-balancer-standard-public-zone-redundant-cli.md)
+##  [Virtuális gépek terheléselosztása zónán belül (CLI)](load-balancer-standard-public-zonal-cli.md)   
+## [Alapszintű Load Balancer létrehozása (sablon)](load-balancer-get-started-internet-arm-template.md)
 ## [Nyilvános Load Balancer létrehozása IPv6-tal](load-balancer-ipv6-internet-ps.md)
 ### [Nyilvános Load Balancer létrehozása IPv6-tal (parancssori felület)](load-balancer-ipv6-internet-cli.md)
 ### [Nyilvános Load Balancer létrehozása IPv6-tal (sablon)](load-balancer-ipv6-internet-template.md)
-## [Zónaredundáns nyilvános Load Balancer Standard létrehozása](load-balancer-get-started-internet-az-portal.md)
-### [Zónaredundáns nyilvános Load Balancer Standard létrehozása (PowerShell)](load-balancer-get-started-internet-az-powershell.md)
-### [Zónaredundáns nyilvános Load Balancer Standard létrehozása (parancssori felület)](load-balancer-get-started-internet-az-cli.md)
-## [Alapszintű Load Balancer létrehozása (sablon)](load-balancer-get-started-internet-arm-template.md)
 ## [Belső Load Balancer konfigurálása](load-balancer-get-started-ilb-arm-portal.md)
 ### [Belső Load Balancer konfigurálása (PowerShell)](load-balancer-get-started-ilb-arm-ps.md)
 ### [Belső Load Balancer konfigurálása (parancssori felület)](load-balancer-get-started-ilb-arm-cli.md)

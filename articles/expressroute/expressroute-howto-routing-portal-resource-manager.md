@@ -1,11 +1,11 @@
 ---
-title: "Útválasztási (társviszony-létesítés) a egy ExpressRoute-áramkör konfigurálása: erőforrás-kezelő: Azure |} Microsoft Docs"
-description: "A cikk az ExpressRoute-kapcsolatcsoportok privát, nyilvános és Microsoft társviszony-létesítéses létrehozásának és kiépítésének lépéseit ismerteti. A cikk azt is bemutatja, hogyan ellenőrizheti a kapcsolatcsoport társviszonyainak állapotát, illetve hogyan frissítheti vagy törölheti őket."
+title: 'Útválasztási (társviszony-létesítés) a egy ExpressRoute-áramkör konfigurálása: erőforrás-kezelő: Azure |} Microsoft Docs'
+description: A cikk az ExpressRoute-kapcsolatcsoportok privát, nyilvános és Microsoft társviszony-létesítéses létrehozásának és kiépítésének lépéseit ismerteti. A cikk azt is bemutatja, hogyan ellenőrizheti a kapcsolatcsoport társviszonyainak állapotát, illetve hogyan frissítheti vagy törölheti őket.
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 8c2a7ed2-ae5c-4e49-81f6-77cf9f2b2ac9
 ms.service: expressroute
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: 1ad6c62c3c5828143cb78f464fc1181bdf3b19f7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f0f0a31abc4e2d3114d71729c6c447c569295290
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>Létrehozásához és módosításához az ExpressRoute-kör társviszony
 
@@ -61,8 +61,6 @@ Ez a szakasz segítséget nyújt a létrehozása, beolvasása, frissítése és 
 > 
 
 ### <a name="to-create-microsoft-peering"></a>Microsoft társviszony-létesítés létrehozása
-
-[!INCLUDE [Premium](../../includes/expressroute-mspeering-premium-include.md)]
 
 1. Konfigurálja az ExpressRoute-kapcsolatcsoportot. A folytatás előtt győződjön meg róla, hogy a kapcsolatszolgáltató teljesen kiépítette a kapcsolatcsoportot. Ha a kapcsolat szolgáltatójánál felügyelt 3. rétegbeli szolgáltatásokat nyújt, kérje meg a kapcsolat szolgáltatójánál engedélyezése a Microsoft társviszony-létesítés meg. Ebben az esetben nem szükséges a következő szakaszokban foglalt lépéseket végrehajtania. Azonban ha a kapcsolat szolgáltatójánál nem kezeli az útválasztást, a kapcsolat létrehozása után továbbra is a konfiguráció a következő lépéseket.
 
