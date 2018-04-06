@@ -1,11 +1,11 @@
 ---
-title: "Hajtsa végre a behatolás-észlelés hálózati nyílt forráskódú eszközök és az Azure hálózati figyelőt |} Microsoft Docs"
-description: "Ez a cikk ismerteti, hogyan használja az Azure hálózati figyelőt, és nyissa meg a forrás eszközök hálózati behatolás-észlelés végrehajtására"
+title: Hajtsa végre a behatolás-észlelés hálózati nyílt forráskódú eszközök és az Azure hálózati figyelőt |} Microsoft Docs
+description: Ez a cikk ismerteti, hogyan használja az Azure hálózati figyelőt, és nyissa meg a forrás eszközök hálózati behatolás-észlelés végrehajtására
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0f043f08-19e1-4125-98b0-3e335ba69681
 ms.service: network-watcher
 ms.devlang: na
@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: aff1b5f9e8860d3b8dc09b37684bb8a4ac2bf134
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Hajtsa végre a behatolás-észlelés hálózati nyílt forráskódú eszközök és hálózati figyelőt
 
 Csomag rögzíti a végrehajtási hálózati behatolás rendszerek (Azonosítók) és a hálózati biztonsági figyelése (NSM) végrehajtása nyilvános kulcsokra épülő. Számos nyílt forráskódú Azonosítók eszköz, amely feldolgozza a csomag rögzíti, és keresse meg az esetleges hálózati behatolások és a rosszindulatú tevékenységhez van. A csomag használatával rögzíti a megadott hálózati figyelőt, a hálózati biztonsági rések vagy káros behatolások elemezheti.
 
-Egy ilyen nyílt forráskódú eszköz Suricata, egy Azonosítók motor, amely szabálykészletek használ a hálózati forgalom figyelésére, és elindítja a riasztásokat gyanús események előfordulásakor. Suricata kínál a többszálas motor, azaz a hálózati forgalom elemzése a nagyobb sebesség és a hatékonyság műveleteket hajthat végre. Suricata és platformképességei kapcsolatos további részletekért látogasson el a https://suricata-ids.org/ webhelyen.
+Egy ilyen nyílt forráskódú eszköz Suricata, egy Azonosítók motor, amely szabálykészletek használ a hálózati forgalom figyelésére, és elindítja a riasztásokat gyanús események előfordulásakor. Suricata kínál a többszálas motor, azaz a hálózati forgalom elemzése a nagyobb sebesség és a hatékonyság műveleteket hajthat végre. Suricata és platformképességei kapcsolatos további tudnivalókért keresse fel a webhelyen https://suricata-ids.org/.
 
 ## <a name="scenario"></a>Forgatókönyv
 
@@ -38,7 +38,7 @@ Mindkét nyílt forráskódú eszközök beállítható egy Azure virtuális gé
 
 ### <a name="install-suricata"></a>Suricata telepítése
 
-Minden egyéb módszer telepítés esetén keresse fel a http://suricata.readthedocs.io/en/latest/install.html
+Minden egyéb módszer telepítés esetén keresse fel http://suricata.readthedocs.io/en/latest/install.html
 
 1. A virtuális gép a kívánt parancssori terminált futtassa a következő parancsokat:
 
@@ -232,7 +232,7 @@ További telepítésével kapcsolatos utasításokat Logstash, tekintse meg a [d
     ./bin/kibana
     ```
 
-1. Lépjen a Kibana webes felület megtekintéséhez`http://localhost:5601`
+1. Lépjen a Kibana webes felület megtekintéséhez `http://localhost:5601`
 1. Ebben a forgatókönyvben a index minta a Suricata használható nem "logstash-*"
 
 1. Ha távolról Kibana irányítópultjának megjelenítése, hozzon létre egy bejövő NSG szabályt, amely engedélyezi webtartalmak elérését **port 5601**.
@@ -259,7 +259,7 @@ A minta-irányítópult a Suricata riasztási naplók több képi megjelenítés
 
 1. Felső 10 riasztások – a leggyakoribb 10 összegzését kiváltott riasztások és azok leírását. Egyéni riasztást kattintva szűrők le az irányítópulton, hogy az adott riasztásra vonatkozó információk.
 
-    ![Kép: 4][4]
+    ![image 4][4]
 
 1. Riasztások – száma a ruleset által kiváltott figyelmeztetések teljes száma
 
@@ -271,7 +271,7 @@ A minta-irányítópult a Suricata riasztási naplók több képi megjelenítés
 
 1. Riasztási összegzése – egy tábla minden egyes riasztás részletes összegzése. Ez a táblázat többi paraméter egyik fontos az egyes riasztások megjelenítése testre.
 
-    ![kép 7][7]
+    ![image 7][7]
 
 Egyéni képi megjelenítések és irányítópultokat hozhat létre további dokumentációiért lásd: [Kibana tartozó dokumentációs](https://www.elastic.co/guide/en/kibana/current/introduction.html).
 
@@ -279,7 +279,7 @@ Egyéni képi megjelenítések és irányítópultokat hozhat létre további do
 
 Csomag kombinálásával rögzíti a megadott hálózati figyelőt, és nyílt forráskódú Azonosítók eszközöket, például a Suricata, esetében fenyegetések számos hálózati behatolásérzékelési hajthat végre. Ezek az irányítópultok engedélyezi, hogy gyorsan direkt trendek és a hálózaton belüli rendellenességek észlelését, jól dig okait, például a rosszindulatú felhasználók ügynökök vagy sebezhető portok riasztások felderítésére adatokká. A kibontott adatok is legmegalapozottabb döntések reagálnak és megvédje a hálózatot káros behatolás kísérletek, és megakadályozza a hálózat jövőbeli behatolások szabályt hoz létre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan indítható el, látogasson el a riasztások alapján csomag rögzítésekre [csomagrögzítéssel segítségével hajtsa végre az Azure Functions proaktív Hálózatfigyelő](network-watcher-alert-triggered-packet-capture.md)
 

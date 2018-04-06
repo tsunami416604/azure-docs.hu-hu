@@ -1,11 +1,11 @@
 ---
-title: "Megtekintheti és kezelheti a StorSimple virtuális tömb feladatok |} Microsoft Docs"
-description: "A StorSimple Device Manager szolgáltatás feladatok lapján, és nyomon követheti a legutóbbi és a jelenlegi feladatok a StorSimple virtuális tömb ismerteti."
+title: Megtekintheti és kezelheti a StorSimple virtuális tömb feladatok |} Microsoft Docs
+description: A StorSimple Device Manager szolgáltatás feladatok lapján, és nyomon követheti a legutóbbi és a jelenlegi feladatok a StorSimple virtuális tömb ismerteti.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 31879821-b599-4609-a7f4-d4b0f658a933
 ms.service: storsimple
 ms.devlang: NA
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/11/2016
 ms.author: alkohli
 ms.openlocfilehash: 3fd1c262a8ce94d8e98f2b066a8028d974b15b1d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>A StorSimple Device Manager szolgáltatás használata a feladatok megtekintéséhez a StorSimple virtuális tömb
 ## <a name="overview"></a>Áttekintés
@@ -31,8 +31,8 @@ Gyorsan megtalálhatja a feladatok olyan mezőkön, például a szűréssel érd
 * **Időtartománynak** – feladatok a dátum és idő tartomány alapján szűrhetők.
 * **Eszközök** – feladatok kezdeményezett egy adott eszköz kapcsolódik a szolgáltatáshoz. A szűrt feladatok majd megjelennének a következő attribútumok alapján:
   
-  * **Név** – a feladat neve lehet **összes**, **biztonsági mentés**, **Klónozás**, **feladatátvételt**, **frissítések letöltése**, vagy **frissítések telepítése**.
-  * **Állapot** – feladatok lehetnek **összes**, **folyamatban**, **sikeres**, vagy **sikertelen**, vagy **visszavonva**.
+  * **Név** – a feladat neve lehet **minden**, **biztonsági mentés**, **Klónozás**, **feladatátvételt**, **frissítéseinekletöltése**, vagy **frissítések telepítése**.
+  * **Állapot** – feladatok lehetnek **összes**, **folyamatban**, **sikeres**, vagy **sikertelen**, vagy **megszakítva**.
   * **Entitás** – a feladat társíthatók a kötet, megosztás, vagy eszköz.
   * **Eszköz** – a név az eszköz, amelyen a feladat elindult.
   * **Megkezdődött a** – az idő, amikor a feladat elindult.
@@ -62,6 +62,6 @@ Látni fogja a következő hibával: "az eszköz ideje szinkronizálva a Microso
 
 Ezek a hibák biztonsági mentés, a visszaállítás, a frissítés és a feladatátvételi feladatok vonatkozik. Ha a virtuális gép a Hyper-v-ben lett beállítva, a számítógép idejét végül szinkronizálja a hipervizor. Ebben az esetben, ha a feladat indíthatja el.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [A helyi webes felhasználói felület használata a StorSimple virtuális tömb felügyeletéhez](storsimple-ova-web-ui-admin.md).
 

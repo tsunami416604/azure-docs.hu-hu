@@ -12,7 +12,7 @@
 
 | Premium Storage-lemez típusa | P10 | P20 | P30 | P40 | P50 |
 | --- | --- | --- | --- | --- | --- |
-| Lemezméret |128 GiB |512 GiB |1024 GiB (1 TB) |2048 giB (2 TB)|4095 giB (4 TB)|
+| Lemezméret |128 GiB |512 GiB |1024 GiB (1 TB) |2048 GiB (2 TB)|4095 GiB (4 TB)|
 | Lemezenkénti maximális IOPS-érték |500 |2300 |5000 |7500 |7500 |
 | Lemezenkénti maximális átviteli sebesség |100 MB/s | 150 MB/s |200 MB/s |250 MB/s |250 MB/s |
 | Lemezek tárfiókonkénti maximális száma |280 |70 |35 | 17 | 8 |

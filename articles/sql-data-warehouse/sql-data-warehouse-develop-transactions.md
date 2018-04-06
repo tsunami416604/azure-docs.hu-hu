@@ -1,11 +1,11 @@
 ---
-title: "Az SQL Data Warehouse tranzakciók |} Microsoft Docs"
-description: "Ötletek a tranzakciók az Azure SQL Data Warehouse adattárházzal történő, megoldások."
+title: Az SQL Data Warehouse tranzakciók |} Microsoft Docs
+description: Ötletek a tranzakciók az Azure SQL Data Warehouse adattárházzal történő, megoldások.
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: ae621788-e575-41f5-8bfe-fa04dc4b0b53
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 ms.openlocfilehash: 29d53e18539f2c24dd64090b2ac6f9dd4c783961
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="transactions-in-sql-data-warehouse"></a>Az SQL Data Warehouse-tranzakciók
 Módon teheti meg, az SQL Data Warehouse támogatja a tranzakciókat, az adatraktár-számítási feladat részeként. Azonban kell biztosítják az SQL Data Warehouse teljesítményét léptékű néhány funkció korlátozva az SQL Server képest. Ez a cikk kiemeli a különbségeket, és felsorolja a többi. 
@@ -153,7 +153,7 @@ Most már a várt működést követi. A hiba a tranzakció kezeli, és a ERROR_
 
 Összes megváltozott, hogy a `ROLLBACK` a tranzakció kellett az olvasás a hibaadatok előtt megtörténjen a `CATCH` blokkot.
 
-## <a name="errorline-function"></a>Error_Line() függvény
+## <a name="errorline-function"></a>Error_Line() function
 Akkor is érdemes megjegyezni, hogy az SQL Data Warehouse nem valósítja meg, és nem támogatja a ERROR_LINE() függvény. Ha ez a kódban, távolítsa el, hogy meg kell felelnie az SQL Data Warehouse kell. A kódban lekérdezés címkék inkább megfelelő funkciók végrehajtásához. Tekintse meg a [címke] [ LABEL] cikk további részleteket a szolgáltatást.
 
 ## <a name="using-throw-and-raiserror"></a>Segítségével THROW és RAISERROR
@@ -175,7 +175,7 @@ Ezek a következők:
 * Nem jelölt tranzakciók
 * Nem támogatott például DDL `CREATE TABLE` belül a felhasználó definiált tranzakció
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tranzakciók optimalizálása kapcsolatos további információkért lásd: [tranzakciók gyakorlati tanácsok][Transactions best practices].  Az SQL Data Warehouse gyakorlati tanácsokat kapcsolatban lásd: [gyakorlati tanácsok az SQL Data Warehouse][SQL Data Warehouse best practices].
 
 <!--Image references-->

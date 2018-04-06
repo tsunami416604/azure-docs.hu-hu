@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Service Fabric teljesítmény figyelése |} Microsoft Docs"
-description: "További információk a figyelési és az Azure Service Fabric-fürtök diagnostics teljesítményszámlálók."
+title: Az Azure Service Fabric teljesítmény figyelése |} Microsoft Docs
+description: További információk a figyelési és az Azure Service Fabric-fürtök diagnostics teljesítményszámlálók.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
 ms.openlocfilehash: b19a2db85b2e1cc4c5f79f6b0dee97965f40ef88
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="performance-metrics"></a>Teljesítménymértékeket
+# <a name="performance-metrics"></a>Teljesítmény-mérőszámok
 
 Metrikák be kell tudni, hogy a fürt, valamint azt a futó alkalmazások teljesítményére. A Service Fabric-fürtök esetén ajánlott, az alábbi teljesítményszámlálók gyűjtése.
 
@@ -30,17 +30,17 @@ A gépek a fürt érdemes lehet jobban megismerni a minden gép terhelését, é
 
 | Teljesítményszámláló-kategóriája | Számláló neve |
 | --- | --- |
-| Fizikai lemez (lemezenként) | Átlagos Olvasási Lemezvárólista hossza |
-| Fizikai lemez (lemezenként) | Átlagos Írási Lemezvárólista hossza |
-| Fizikai lemez (lemezenként) | Átlagos Lemez mp/Olvasás |
-| Fizikai lemez (lemezenként) | Átlagos Lemez mp/írás |
+| Fizikai lemez (lemezenként) | Avg. Olvasási Lemezvárólista hossza |
+| Fizikai lemez (lemezenként) | Avg. Írási Lemezvárólista hossza |
+| Fizikai lemez (lemezenként) | Avg. Lemez mp/Olvasás |
+| Fizikai lemez (lemezenként) | Avg. Lemez mp/írás |
 | Fizikai lemez (lemezenként) | Lemezolvasások/mp |
-| Fizikai lemez (lemezenként) | Lemez sebessége olvasott bájt/mp |
+| Fizikai lemez (lemezenként) | Lemezolvasási sebesség (bájt/s) |
 | Fizikai lemez (lemezenként) | Lemezírás/mp |
-| Fizikai lemez (lemezenként) | Lemez írási bájtok/s |
+| Fizikai lemez (lemezenként) | Lemezírási sebesség (bájt/s) |
 | Memory (Memória) | Rendelkezésre álló memória (MB) |
 | PagingFile | Kihasználtsága |
-| Processor(total) | Processzor kihasználtsága |
+| Processor(Total) | Processzor kihasználtsága |
 | Folyamat száma (szolgáltatás) | Processzor kihasználtsága |
 | Folyamat száma (szolgáltatás) | A folyamatot |
 | Folyamat száma (szolgáltatás) | A saját memória |
@@ -60,7 +60,7 @@ Be az alábbi számlálók értékét, ha a .NET-szolgáltatásokat telepít a f
 
 | Teljesítményszámláló-kategóriája | Számláló neve |
 | --- | --- |
-| .NET CLR memória (szolgáltatás) | Folyamatazonosító |
+| .NET CLR memória (szolgáltatás) | Folyamat azonosítója |
 | .NET CLR memória (szolgáltatás) | # Összesen előjegyzett memória kihasználtsága |
 | .NET CLR memória (szolgáltatás) | # Összesen fenntartott memória |
 | .NET CLR memória (szolgáltatás) | (Bájt) összes halommemória |
@@ -80,7 +80,7 @@ Ha Reliable Services használatához hasonló módon kell `Service Fabric Servic
 Megbízható gyűjtemények használatakor, azt javasoljuk, hogy a `Avg. Transaction ms/Commit` a a `Service Fabric Transactional Replicator` / tranzakció metrika az átlagos véglegesítési késés gyűjtéséhez.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ [platform szintjén az eseménygenerálás](service-fabric-diagnostics-event-generation-infra.md) a Service Fabric
 * Teljesítményadatok gyűjtéséhez keresztül [Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md)

@@ -1,8 +1,8 @@
 ---
-title: "Az Azure AD Connect: A szinkronizálás során hibák elhárítása |} Microsoft Docs"
-description: "Az Azure AD Connect-szinkronizálás során észlelt hibák elhárítását ismerteti."
+title: 'Az Azure AD Connect: A szinkronizálás során hibák elhárítása |} Microsoft Docs'
+description: Az Azure AD Connect-szinkronizálás során észlelt hibák elhárítását ismerteti.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
 editor: curtand
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: billmath
 ms.openlocfilehash: aaa374d5a11ef5b5860f83a87386ff981319189f
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>A szinkronizálás során hibák elhárítása
 Hibák fordulhatnak elő, amikor azonosító adataihoz az Azure Active Directory (Azure AD) szinkronizálása a Windows Server Active Directory (AD DS). Ez a cikk áttekintést nyújt a szinkronizálási hibák, a következő eljárások érintett hibák, lehetséges módjai a javítsa ki a hibákat okozó némelyike különböző típusú. Ez a cikk tartalmazza a hiba gyakori hibatípusokat, és nem vonatkozhat a lehetséges hibákat.
@@ -70,14 +70,14 @@ Az Azure Active Directory-séma nem engedélyezi két vagy több objektum ugyana
 
 #### <a name="example-case"></a>Példa eset:
 1. **Bob Smith** , a szinkronizált felhasználót az Azure Active Directoryban a helyszíni Active Directory *contoso.com*
-2. Bob Smith **UserPrincipalName** be van állítva az  **bobs@contoso.com** .
+2. Bob Smith **UserPrincipalName** be van állítva az **bobs@contoso.com**.
 3. **"abcdefghijklmnopqrstuv =="** van a **SourceAnchor** Bob Smith használata az Azure AD Connect számított **objectGUID** a helyszíni Active Directoryban, amely nem a  **immutableId** Bob Smith az Azure Active Directoryban.
 4. Bob is rendelkezik a következő értékeket a **proxyAddresses** attribútum:
    * smtp:bobs@contoso.com
    * smtp:bob.smith@contoso.com
    * **smtp:bob@contoso.com**
 5. Egy új felhasználóhoz **Bob Taylor**, a helyszíni Active Directory kerül.
-6. Bob Taylor **UserPrincipalName** be van állítva az  **bobt@contoso.com** .
+6. Bob Taylor **UserPrincipalName** be van állítva az **bobt@contoso.com**.
 7. **"abcdefghijkl0123456789 ==" "** van a **sourceAnchor** Bob Taylor használata az Azure AD Connect számított **objectGUID** a a helyszíni Active Directoryban. Bob Taylor objektum rendelkezik még nincs szinkronizálva az Azure Active Directoryhoz.
 8. Bob Taylor rendelkezik a következő értékeket a proxyAddresses attribútum
    * smtp:bobt@contoso.com
@@ -85,7 +85,7 @@ Az Azure Active Directory-séma nem engedélyezi két vagy több objektum ugyana
    * **smtp:bob@contoso.com**
 9. Szinkronizálás során az Azure AD Connect ismeri fel a helyszíni Active Directory a Bob Taylor hozzáadása, és kérje meg az Azure AD-be ezt a változtatást.
 10. Az Azure AD először hajt végre rögzített egyezés. Ez azt jelenti, hogy ha a immutableId bármely objektum egyenlő megkeresi "abcdefghijkl0123456789 ==". Rögzített egyeztetés sikertelen lesz, mivel nincs más objektumot az Azure ad-ben, hogy immutableId fog rendelkezni.
-11. Az Azure AD majd megpróbál Bob Taylor soft-találatra. Ez azt jelenti, hogy ha a proxyAddresses objektum a következő három érték, beleértve a egyenlő megkeresismtp:bob@contoso.com
+11. Az Azure AD majd megpróbál Bob Taylor soft-találatra. Ez azt jelenti, hogy ha a proxyAddresses objektum a következő három érték, beleértve a egyenlő megkeresi smtp:bob@contoso.com
 12. Az Azure AD megkeresi a soft-match feltételeknek Bob Smith objektumot. Azonban ez az objektum értéke immutableId = "abcdefghijklmnopqrstuv ==". ami azt jelenti, hogy ez az objektum a helyszíni Active Directory a másik objektum lett szinkronizálva. Így az Azure AD nem soft-match ezek az objektumok és az eredményeket egy **InvalidSoftMatch** szinkronizálási hiba.
 
 #### <a name="how-to-fix-invalidsoftmatch-error"></a>InvalidSoftMatch hiba megoldásával kapcsolatban
@@ -114,8 +114,8 @@ Az Azure AD megpróbálja világos felel meg a két objektum, esetén lehetsége
 * Engedélyezése levelezési biztonsági csoport jön létre az Office 365-ben. Felügyeleti a helyszíni AD (az Azure AD még nincs szinkronizálva) a ProxyAddresses attribútum azonos értékű legyen, mint az Office 365 csoport hozzáadja az új felhasználó vagy az ügyfélhez.
 
 #### <a name="example-case"></a>Példa eset
-1. Felügyelet engedélyezése levelezési új biztonsági csoportot hoz létre az Office 365-ben az adó részleg, és itt egy e-mail címet, tax@contoso.com. Ez a ProxyAddresses attribútum értékét ehhez a csoporthoz rendeli hozzá**smtp:tax@contoso.com**
-2. Új felhasználó csatlakozik a Contoso.com és a fiók jön létre a proxyAddress, mint a helyszínen a használatra**smtp:tax@contoso.com**
+1. Felügyelet engedélyezése levelezési új biztonsági csoportot hoz létre az Office 365-ben az adó részleg, és itt egy e-mail címet, tax@contoso.com. Ez a ProxyAddresses attribútum értékét ehhez a csoporthoz rendeli hozzá **smtp:tax@contoso.com**
+2. Új felhasználó csatlakozik a Contoso.com és a fiók jön létre a proxyAddress, mint a helyszínen a használatra **smtp:tax@contoso.com**
 3. Ha az Azure AD Connect szinkronizálja az új felhasználói fiók, akkor a "ObjectTypeMismatch" hiba jelenik meg.
 
 #### <a name="how-to-fix-objecttypemismatch-error"></a>ObjectTypeMismatch hiba megoldásával kapcsolatban
@@ -141,13 +141,13 @@ Ha az Azure AD Connect megkísérli egy új objektum hozzáadása vagy egy megl�
 
 #### <a name="example-case"></a>Példa eset:
 1. **Bob Smith** , a szinkronizált felhasználót az Azure Active Directoryban a contoso.com Active Directory helyszíni
-2. Bob Smith **UserPrincipalName** a helyszíni be van állítva az  **bobs@contoso.com** .
+2. Bob Smith **UserPrincipalName** a helyszíni be van állítva az **bobs@contoso.com**.
 3. Bob is rendelkezik a következő értékeket a **proxyAddresses** attribútum:
    * smtp:bobs@contoso.com
    * smtp:bob.smith@contoso.com
    * **smtp:bob@contoso.com**
 4. Egy új felhasználóhoz **Bob Taylor**, a helyszíni Active Directory kerül.
-5. Bob Taylor **UserPrincipalName** be van állítva az  **bobt@contoso.com** .
+5. Bob Taylor **UserPrincipalName** be van állítva az **bobt@contoso.com**.
 6. **Bob Taylor** a következő értékeket a **ProxyAddresses** i attribútum. smtp:bobt@contoso.com ii. smtp:bob.taylor@contoso.com
 7. Bob Taylor objektum sikeresen szinkronizált Azure AD-val.
 8. Rendszergazda úgy döntött, hogy Bálint Taylor frissítése **ProxyAddresses** attribútum a következő értékkel: i. **smtp:bob@contoso.com**
@@ -187,15 +187,15 @@ Ez az egy adott esetben az eredmények a **"FederatedDomainChangeError"** szinkr
 A szinkronizált felhasználó számára a UserPrincipalName utótag módosult a egy összevont tartományt a másik összevont tartományt a helyszínen. Például *UserPrincipalName = bob@contoso.com*  értékre változott az *UserPrincipalName = bob@fabrikam.com* .
 
 #### <a name="example"></a>Példa
-1. Bob Smith, egy fiókot a Contoso.com, az Active Directory a UserPrincipalName és az új felhasználói bekerülbob@contoso.com
-2. Bob áthelyezése egy másik osztás a Contoso.com, Fabrikam.com nevezik, és a UserPrincipalName változottbob@fabrikam.com
+1. Bob Smith, egy fiókot a Contoso.com, az Active Directory a UserPrincipalName és az új felhasználói bekerül bob@contoso.com
+2. Bob áthelyezése egy másik osztás a Contoso.com, Fabrikam.com nevezik, és a UserPrincipalName változott bob@fabrikam.com
 3. A contoso.com és fabrikam.com tartományai az Azure Active Directoryval összevont tartományt.
 4. Bob userPrincipalName nem frissül, és a "FederatedDomainChangeError" hibát eredményez.
 
 #### <a name="how-to-fix"></a>Megoldásával kapcsolatban
 Ha egy felhasználó UserPrincipalName utótagot a bob @ frissült**contoso.com** a Belinszky**fabrikam.com**, ahol mindkettő **contoso.com** és **fabrikam.com** vannak **tartományok összevont**, majd kövesse az alábbi lépéseket a hiba elhárításához
 
-1. Az Azure AD-ben a felhasználó UserPrincipalName frissítése bob@contoso.com való bob@contoso.onmicrosoft.com. A következő PowerShell-parancs használatával az Azure AD PowerShell modult:`Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
+1. Az Azure AD-ben a felhasználó UserPrincipalName frissítése bob@contoso.com való bob@contoso.onmicrosoft.com. A következő PowerShell-parancs használatával az Azure AD PowerShell modult: `Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
 2. Engedélyezze a következő szinkronizálási ciklusban szinkronizálási kísérletet. Az időszinkronizálást sikeres lesz, és frissíti a Bob UserPrincipalName való bob@fabrikam.com várt módon.
 
 #### <a name="related-articles"></a>Kapcsolódó cikkek

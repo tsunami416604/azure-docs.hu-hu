@@ -7,8 +7,8 @@
 | Kötetek maximális száma |255 | |
 | Ütemezésének per sávszélességsablon maximális száma |168 |Óránként, naponta, a hét (24 * 7) ütemezését. |
 | A rétegzett kötetek fizikai eszközök maximális mérete |A 8100 és 8600 64 TB |8100 és 8600 különböző fizikai eszközök. |
-| A virtuális eszközök, az Azure-ban a rétegzett kötetek maximális mérete |30 TB lehet a 8010-es <br></br> A 8020-as modell 64 TB |8010-es és a 8020-as modell olyan virtuális Azure használó eszközöket Standard és Premium tárolására kulcsattribútumokkal. |
-| Fizikai eszközön helyileg rögzített kötet maximális mérete |A 8100 9 TB <br></br> A 8600 24 TB |8100 és 8600 különböző fizikai eszközök. |
+| A virtuális eszközök, az Azure-ban a rétegzett kötetek maximális mérete |30 TB for 8010 <br></br> 64 TB for 8020 |8010-es és a 8020-as modell olyan virtuális Azure használó eszközöket Standard és Premium tárolására kulcsattribútumokkal. |
+| Fizikai eszközön helyileg rögzített kötet maximális mérete |A 8100 9 TB <br></br> 24 TB for 8600 |8100 és 8600 különböző fizikai eszközök. |
 | ISCSI-kapcsolatok maximális száma |512 | |
 | A kezdeményezők iSCSI-kapcsolatok maximális száma |512 | |
 | Hozzáférés-vezérlési rekordokat eszközönként maximális száma |64 | |
@@ -25,5 +25,5 @@
 | Maximális ügyfél olvasási/írási teljesítmény (Ha a HDD-réteget a kiszolgált) * |120/250 MB/s | |
 | Maximális ügyfél olvasási/írási teljesítmény (amikor a felhő rétegtől kiszolgált) * |11/41 MB/s |Olvasás átviteli ügyfelek létrehozása és fenntartása elegendő i/o-várólistamélység függ. |
 
-&#42; I/o-típusonkénti maximális átviteli sebesség és 100 százalék olvasási 100 százalék írási forgatókönyvek mérték. Tényleges átviteli alacsonyabb lehet, és attól függ, i/o kombinálhatók és a hálózati feltételek.
+&#42;I/o-típusonkénti maximális átviteli sebesség és 100 százalék olvasási 100 százalék írási forgatókönyvek mérték. Tényleges átviteli alacsonyabb lehet, és attól függ, i/o kombinálhatók és a hálózati feltételek.
 

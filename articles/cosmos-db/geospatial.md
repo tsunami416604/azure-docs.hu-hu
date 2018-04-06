@@ -1,8 +1,8 @@
 ---
-title: "A földrajzi adatok az Azure Cosmos DB |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozhat létre, index és az Azure Cosmos DB és az SQL API térbeli objektumok lekérdezése."
+title: A földrajzi adatok az Azure Cosmos DB |} Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre, index és az Azure Cosmos DB és az SQL API térbeli objektumok lekérdezése.
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: arramac
 manager: jhubbard
 editor: monicar
@@ -16,10 +16,10 @@ ms.date: 10/20/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3e778f4a9b7ec4935d53eb335462f3c414ff99cd
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>A földrajzi és GeoJSON helyre adatokat az Adatbázisba az Azure Cosmos használata
 Ez a cikk az a földrajzi funkcióinak bemutatása [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Ez elolvasása, után lesz a következő kérdések megválaszolásához:
@@ -192,7 +192,7 @@ Térbeli funkciók térbeli adatok közelségi kapcsolat lekérdezések végreha
     FROM Families f 
     WHERE ST_DISTANCE(f.location, {'type': 'Point', 'coordinates':[31.9, -4.8]}) < 30000
 
-**Eredmények**
+**Results**
 
     [{
       "id": "WakefieldFamily"
@@ -213,7 +213,7 @@ ST_WITHIN sokszög argumentumainak tartalmazhat csak csengetés, ez azt jelenti,
         'coordinates': [[[31.8, -5], [32, -5], [32, -4.7], [31.8, -4.7], [31.8, -5]]]
     })
 
-**Eredmények**
+**Results**
 
     [{
       "id": "WakefieldFamily",
@@ -233,7 +233,7 @@ Azure Cosmos-adatbázis is támogat más néven inverz lekérdezések végrehajt
     WHERE ST_WITHIN({'type': 'Point', 'coordinates':[31.9, -4.8]}, a.location)
 
 
-**Eredmények**
+**Results**
 
     [{
       "id": "MyDesignatedLocation",
@@ -249,7 +249,7 @@ ST_ISVALID és ST_ISVALIDDETAILED segítségével ellenőrizze, hogy egy térbel
 
     SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] })
 
-**Eredmények**
+**Results**
 
     [{
       "$1": false
@@ -263,7 +263,7 @@ Ezeket a funkciókat is sokszögek érvényesítéséhez használható. Példáu
         [ 31.8, -5 ], [ 31.8, -4.7 ], [ 32, -4.7 ], [ 32, -5 ] 
         ]]})
 
-**Eredmények**
+**Results**
 
     [{
        "$1": { 
@@ -391,7 +391,7 @@ Az alábbi JSON kódrészletben láthatja az indexelési házirendet a térbeli 
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ismerkedés az Azure Cosmos Adatbázisba földrajzi támogatásával kapcsolatos korábban szerzett tapasztalatok Nolearned, a következőket teheti:
 
 * A elkezdésére a [földrajzi .NET mintakódjainak megtekintése a Githubon](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs)

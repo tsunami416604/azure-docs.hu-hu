@@ -1,8 +1,8 @@
 ---
-title: "Az Team tudományos folyamat művelet:-1 TB-os dataset Azure HDInsight Hadoop-fürtök használata |} Microsoft Docs"
-description: "Az Team tudományos folyamat használ egy végpont forgatókönyv egy HDInsight Hadoop-fürt létrehozásához és telepítéséhez egy nagy méretű (1 TB) nyilvánosan elérhető adatkészlet modell alkalmazó"
+title: Az Team tudományos folyamat művelet:-1 TB-os dataset Azure HDInsight Hadoop-fürtök használata |} Microsoft Docs
+description: Az Team tudományos folyamat használ egy végpont forgatókönyv egy HDInsight Hadoop-fürt létrehozásához és telepítéséhez egy nagy méretű (1 TB) nyilvánosan elérhető adatkészlet modell alkalmazó
 services: machine-learning,hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: bradsev
 ms.openlocfilehash: 760e08643fb3e71478fc899278591569da1d515b
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>A művelet – 1 TB-os dataset Azure HDInsight Hadoop-fürtök használata az Team tudományos folyamat
 
@@ -98,7 +98,7 @@ A bal oldalon a "Hadoop parancssori", amely az adatok feltárási a workhorse va
 
 Most már be vannak állítva, és készen áll a forgatókönyv első része megkezdéséhez: Hive eszközzel és adatok Azure Machine Learning Felkészülés az adatok feltárása.
 
-## <a name="hive-db-tables"></a>Hive-adatbázis és tábla létrehozása
+## <a name="hive-db-tables"></a> Hive-adatbázis és tábla létrehozása
 Hive táblák a Criteo adatkészlet létrehozásához nyissa meg a ***Hadoop parancssori*** az átjárócsomóponthoz asztalán, és írja be a Hive directory parancs beírásával
 
     cd %hive_home%\bin
@@ -124,7 +124,7 @@ Az alábbi kód létrehoz egy adatbázis "criteo", és akkor hoz létre a 4 táb
 
 A tesztelési adatkészletnél felosztása két különböző tábla, mert a nap egyik szabadnap. A célja meghatározni, ha a modell észlelését szünnap és nem szünnap közötti különbségeket kattintások száma másodpercenként.
 
-A parancsfájl [minta &#95; hive &#95; hozzon létre &#95; criteo &#95; adatbázis &#95; és &#95;tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql) kényelmi itt jelenik meg:
+A parancsfájl [minta&#95;hive&#95;létrehozása&#95;criteo&#95;adatbázis&#95;és&#95;tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql) kényelmi itt jelenik meg:
 
     CREATE DATABASE IF NOT EXISTS criteo;
     DROP TABLE IF EXISTS criteo.criteo_count;
@@ -165,7 +165,7 @@ Ezek a táblázatok külső, így egyszerűen mutathat Azure Blob Storage (wasb)
         hive
    
      Most, parancssori REPL kivágja, és a lekérdezés Beillesztés hajtja végre azt.
-2. **Lekérdezések mentése fájlba, és a parancs végrehajtása**: A második pedig a lekérdezések .hql fájlba mentése ([minta &#95; hive &#95; hozzon létre &#95; criteo &#95; adatbázis &#95; és &#95;tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)), és hogyan adhat ki a lekérdezés végrehajtása a következő parancsot:
+2. **Lekérdezések mentése fájlba, és a parancs végrehajtása**: A második pedig a lekérdezések .hql fájlba mentése ([minta&#95;hive&#95;létrehozása&#95;criteo&#95;adatbázis&#95;és&#95;tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)) és hogyan adhat ki a lekérdezés végrehajtása a következő parancsot:
    
         hive -f C:\temp\sample_hive_create_criteo_database_and_tables.hql
 
@@ -194,11 +194,11 @@ Ekkor a következő az alábbiakat:
         criteo_train
         Time taken: 1.437 seconds, Fetched: 4 row(s)
 
-## <a name="exploration"></a>Az adatok feltárása a Hive
+## <a name="exploration"></a> Az adatok feltárása a Hive
 Most már áll készen a Hive néhány alapvető adatok feltárása. A szerelvény szereplő példák számával kezdődik, és adattáblák tesztelése.
 
 ### <a name="number-of-train-examples"></a>Vonat példák száma
-A tartalmát [minta &#95; hive &#95; száma &#95; vonat &#95; tábla &#95;examples.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_train_table_examples.hql) itt látható:
+A tartalmát [minta&#95;hive&#95;száma&#95;betanítása&#95;tábla&#95;examples.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_train_table_examples.hql) itt látható:
 
         SELECT COUNT(*) FROM criteo.criteo_train;
 
@@ -212,7 +212,7 @@ Azt is megteheti, egy is adhatnak ki a következő parancsot a Hive bin / direct
         hive -f C:\temp\sample_hive_count_criteo_train_table_examples.hql
 
 ### <a name="number-of-test-examples-in-the-two-test-datasets"></a>Tesztelési példák a két teszt adatkészletek száma
-Most számolja össze a két teszt adatkészletek példák. A tartalmát [minta &#95; hive &#95; száma &#95; criteo &#95; teszt &#95; nap &#95; 22 &#95; tábla &#95;examples.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_22_table_examples.hql) itt:
+Most számolja össze a két teszt adatkészletek példák. A tartalmát [minta&#95;hive&#95;száma&#95;criteo&#95;tesztelése&#95;nap&#95;22&#95;tábla&#95;examples.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_22_table_examples.hql) itt:
 
         SELECT COUNT(*) FROM criteo.criteo_test_day_22;
 
@@ -227,7 +227,7 @@ A szokásos módon, előfordulhat, hogy is hívja a parancsfájl a Hive bin / k�
 
 Végül, vizsgálja meg a tesztelési adatkészletnél nap alapján tesztelési példák száma\_23.
 
-Ehhez a parancs hasonlít a most látható (hivatkoznak [minta &#95; hive &#95; száma &#95; criteo &#95; teszt &#95; nap &#95; 23 &#95;examples.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_23_examples.hql)):
+Ehhez a parancs hasonlít a most látható (hivatkoznak [minta&#95;hive&#95;száma&#95;criteo&#95;tesztelése&#95;nap&#95;23&#95;examples.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_23_examples.hql)):
 
         SELECT COUNT(*) FROM criteo.criteo_test_day_23;
 
@@ -237,7 +237,7 @@ Ezen a következő:
         Time taken: 253.089 seconds, Fetched: 1 row(s)
 
 ### <a name="label-distribution-in-the-train-dataset"></a>Címke terjesztési vonat adatkészlet
-A címke terjesztési vonat adatkészlet jelentőséggel bír. Ez megtekintéséhez tartalmának megjelenítése [minta &#95; hive &#95; criteo &#95; címke &#95; terjesztési &#95; vonat &#95;table.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_label_distribution_train_table.hql):
+A címke terjesztési vonat adatkészlet jelentőséggel bír. Ez megtekintéséhez tartalmának megjelenítése [minta&#95;hive&#95;criteo&#95;címke&#95;terjesztési&#95;betanítása&#95;table.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_label_distribution_train_table.hql):
 
         SELECT Col1, COUNT(*) AS CT FROM criteo.criteo_train GROUP BY Col1;
 
@@ -250,7 +250,7 @@ Ezzel megkapják a címke terjesztési:
 Vegye figyelembe, hogy pozitív címkék százalékos készül 3.3 % (konzisztensek legyenek az eredeti adathalmazból).
 
 ### <a name="histogram-distributions-of-some-numeric-variables-in-the-train-dataset"></a>Hisztogram disztribúciók vonat adatkészlet egyes numerikus változók
-Használhatja a struktúrájának natív "hisztogram\_numerikus" függvényt, hogy a numerikus változók terjesztési néz ki. Az alábbiakban tartalmát [minta &#95; hive &#95; criteo &#95; hisztogram &#95;numeric.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_histogram_numeric.hql):
+Használhatja a struktúrájának natív "hisztogram\_numerikus" függvényt, hogy a numerikus változók terjesztési néz ki. Az alábbiakban tartalmát [minta&#95;hive&#95;criteo&#95;hisztogram&#95;numeric.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_histogram_numeric.hql):
 
         SELECT CAST(hist.x as int) as bin_center, CAST(hist.y as bigint) as bin_height FROM
             (SELECT
@@ -287,7 +287,7 @@ Ez adja eredményül a következő:
 NÉZET – OLDALIRÁNYÚ felbontása kombinációja a Hive szolgál a szokásos lista helyett egy SQL-szerű kimenet előállításához. Vegye figyelembe, hogy az ebben a táblában az első oszlop felel meg a bin center és a második, a bin gyakoriságát.
 
 ### <a name="approximate-percentiles-of-some-numeric-variables-in-the-train-dataset"></a>A vonat adatkészlet egyes numerikus változók hozzávetőleges százalékos érték
-A numerikus változókkal érdeklő is hozzávetőleges százalékos érték kiszámításakor. Hive tartozó natív "PERCENTILIS\_hozzávetőleges" ezt az USA végzi. A tartalmát [minta &#95; hive &#95; criteo &#95; hozzávetőleges &#95;percentiles.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_approximate_percentiles.hql) vannak:
+A numerikus változókkal érdeklő is hozzávetőleges százalékos érték kiszámításakor. Hive tartozó natív "PERCENTILIS\_hozzávetőleges" ezt az USA végzi. A tartalmát [minta&#95;hive&#95;criteo&#95;hozzávetőleges&#95;percentiles.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_approximate_percentiles.hql) vannak:
 
         SELECT MIN(Col2) AS Col2_min, PERCENTILE_APPROX(Col2, 0.1) AS Col2_01, PERCENTILE_APPROX(Col2, 0.3) AS Col2_03, PERCENTILE_APPROX(Col2, 0.5) AS Col2_median, PERCENTILE_APPROX(Col2, 0.8) AS Col2_08, MAX(Col2) AS Col2_max FROM criteo.criteo_train;
 
@@ -299,7 +299,7 @@ Ez eredményez:
 A százalékos érték a terjesztési szorosan kapcsolódik a hisztogram terjesztési bármely numerikus változó általában.         
 
 ### <a name="find-number-of-unique-values-for-some-categorical-columns-in-the-train-dataset"></a>A vonat adatkészlet egyes kategorikus oszlopok egyedi értékek számának keresése
-Az adatok feltárása a Folytatás található, néhány kategorikus oszlop tartanak egyedi értékek száma. Ehhez tartalmának megjelenítése [minta &#95; hive &#95; criteo &#95;egyedi; &#95; értékek &#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_categoricals.hql):
+Az adatok feltárása a Folytatás található, néhány kategorikus oszlop tartanak egyedi értékek száma. Ehhez tartalmának megjelenítése [minta&#95;hive&#95;criteo&#95;egyedi&#95;értékek&#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_categoricals.hql):
 
         SELECT COUNT(DISTINCT(Col15)) AS num_uniques FROM criteo.criteo_train;
 
@@ -310,7 +310,7 @@ Ez eredményez:
 
 Vegye figyelembe, hogy Col15 19M egyedi értékeket! Naïve módszerek, például a "egy közbeni kódolás" kódolni ilyen nagy dimenziós kategorikus változók használata nem megvalósítható. Különösen hatékony, hatékony módszer néven [tanulási a számlálás](http://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) probléma hatékonyan elleni alapján, és egy.
 
-Végül tekintse meg néhány kategorikus oszlopot, valamint az egyedi értékek száma. A tartalmát [minta &#95; hive &#95; criteo &#95;egyedi; &#95; értékek &#95; több &#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_multiple_categoricals.hql) vannak:
+Végül tekintse meg néhány kategorikus oszlopot, valamint az egyedi értékek száma. A tartalmát [minta&#95;hive&#95;criteo&#95;egyedi&#95;értékek&#95;több&#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_multiple_categoricals.hql) vannak:
 
         SELECT COUNT(DISTINCT(Col16)), COUNT(DISTINCT(Col17)),
         COUNT(DISTINCT(Col18), COUNT(DISTINCT(Col19), COUNT(DISTINCT(Col20))
@@ -325,7 +325,7 @@ Ebben az esetben ne feledje, hogy Col20, kivéve a többi oszlop sok egyedi ért
 
 ### <a name="co-occurrence-counts-of-pairs-of-categorical-variables-in-the-train-dataset"></a>Pár vonat adatkészlet kategorikus változók száma párhuzamos előfordulásainak kívánt számát
 
-Kategorikus változók párok közös előfordulási száma. az is fontos. Ez lehet meghatározni a kódot a [minta &#95; hive &#95; criteo &#95;párosított; &#95; kategorikus &#95;counts.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_paired_categorical_counts.hql):
+Kategorikus változók párok közös előfordulási száma. az is fontos. Ez lehet meghatározni a kódot a [minta&#95;hive&#95;criteo&#95;párosított&#95;kategorikus&#95;counts.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_paired_categorical_counts.hql):
 
         SELECT Col15, Col16, COUNT(*) AS paired_count FROM criteo.criteo_train GROUP BY Col15, Col16 ORDER BY paired_count DESC LIMIT 15;
 
@@ -348,10 +348,10 @@ Névkeresési rendezése a száma szerint a előfordulásainak kívánt számát
         265366bf        6f5c7c41        782142
         Time taken: 560.22 seconds, Fetched: 15 row(s)
 
-## <a name="downsample"></a>Az Azure Machine Learning adathalmaz minta le
+## <a name="downsample"></a> Az Azure Machine Learning adathalmaz minta le
 Az adatkészletek felfedezte és módjáról az ilyen típusú (beleértve a kombinációk), egyetlen változóra feltárása le minta adatkészletek, hogy az Azure Machine Learning modellek építhetők mutatja. Amely a probléma a fókusz visszaírási: Példa attribútumok (Col2 - Col40 szolgáltatás értékeit) megadott, előre jelezni, ha Oszlop1-e a 0 (nincs kattintson) vagy 1 (kattintson).
 
-Minta a tanítási és tesztelési adatkészletek az eredeti méret % 1, struktúrájának natív RAND() függvény használatát. A következő parancsfájl [minta &#95; hive &#95; criteo &#95; felbontásának &#95; vonat &#95;dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_train_dataset.hql) ezt a vonat adatkészlet végzi:
+Minta a tanítási és tesztelési adatkészletek az eredeti méret % 1, struktúrájának natív RAND() függvény használatát. A következő parancsfájl [minta&#95;hive&#95;criteo&#95;felbontásának&#95;betanítása&#95;dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_train_dataset.hql) ezt a vonat adatkészlet végzi:
 
         CREATE TABLE criteo.criteo_train_downsample_1perc (
         col1 string,col2 double,col3 double,col4 double,col5 double,col6 double,col7 double,col8 double,col9 double,col10 double,col11 double,col12 double,col13 double,col14 double,col15 string,col16 string,col17 string,col18 string,col19 string,col20 string,col21 string,col22 string,col23 string,col24 string,col25 string,col26 string,col27 string,col28 string,col29 string,col30 string,col31 string,col32 string,col33 string,col34 string,col35 string,col36 string,col37 string,col38 string,col39 string,col40 string)
@@ -368,7 +368,7 @@ Ez eredményez:
         Time taken: 12.22 seconds
         Time taken: 298.98 seconds
 
-A parancsfájl [minta &#95; hive &#95; criteo &#95; felbontásának &#95; teszt &#95; nap &#95; 22 &#95;dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_22_dataset.hql) minderre a tesztadatok, napi\_22:
+A parancsfájl [minta&#95;hive&#95;criteo&#95;felbontásának&#95;tesztelése&#95;nap&#95;22&#95;dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_22_dataset.hql) minderre a tesztadatok, napi\_22:
 
         --- Now for test data (day_22)
 
@@ -386,7 +386,7 @@ Ez eredményez:
         Time taken: 317.66 seconds
 
 
-Végezetül, a parancsfájl [minta &#95; hive &#95; criteo &#95; felbontásának &#95; teszt &#95; nap &#95; 23 &#95;dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_23_dataset.hql) minderre a tesztadatok, napi\_23:
+Végezetül, a parancsfájl [minta&#95;hive&#95;criteo&#95;felbontásának&#95;tesztelése&#95;nap&#95;23&#95;dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_23_dataset.hql) minderre a tesztadatok, napi\_23:
 
         --- Finally test data day_23
         CREATE TABLE criteo.criteo_test_day_23_downsample_1perc (
@@ -406,7 +406,7 @@ Ennek készen áll a mintában szereplő lefelé tanítási és felépítése az
 
 Összetevő végső fontos vonatkozik a count tábla Azure Machine Learning lépés előtt. A count tábla a következő alárendelt szakaszban tárgyalt részletesen bemutatható.
 
-## <a name="count"></a>A count tábla rövid döntéseken
+## <a name="count"></a> A count tábla rövid döntéseken
 Ahogy azt, több kategorikus változók nagyon magas granularitása adható meg. A forgatókönyv egy hatékony módszer néven [tanulási a számlálás](http://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) ezekre a változókra egy hatékony kódolására, hatékony módon számára jelenik meg. Ezzel a technikával további tájékoztatást a megadott hivatkozás van.
 
 [!NOTE]
@@ -415,7 +415,7 @@ Ahogy azt, több kategorikus változók nagyon magas granularitása adható meg.
 
 A count adatokon-összeállítási táblázatok száma, használja az adatok a mappa nyers és száma. A modellezési területen felhasználó megjelenik, hogyan hozhat létre a következő száma táblák kategorikus szolgáltatások teljesen új, vagy másik lehetőségként a explorations egy előre elkészített száma tábla használandó. A következőkben Ha a "előzetesen elkészített száma táblák" hivatkozunk, azt jelenti, hogy vannak-e megadva a szám táblák használata. Ezek a táblázatok eléréséhez részletes útmutatást a következő szakaszban találhatók.
 
-## <a name="aml"></a>A modell Azure Machine Learning segítségével létrehozása
+## <a name="aml"></a> A modell Azure Machine Learning segítségével létrehozása
 A modell létrehozása az Azure Machine Learning folyamatot követi ezeket a lépéseket:
 
 1. [Hive táblák az Azure Machine Learning az adatok beolvasása](#step1)
@@ -426,7 +426,7 @@ A modell létrehozása az Azure Machine Learning folyamatot követi ezeket a lé
 
 Most már készen áll az Azure Machine Learning studio modellek létrehozásához. A lefelé mintaadatokat Hive táblák a fürt értékként menti. Használja az Azure Machine Learning **és adatokat importálhat** modul ezeket az adatokat olvasni. A fürt a tárfiók eléréséhez szükséges hitelesítő adatokat a következő szerepelnek.
 
-### <a name="step1"></a>1. lépés: Adatokat lekérni a Hive táblák az Azure Machine Learning az adatok importálása modullal, és válassza ki azt a tartalmazó gépi tanulási kísérlet
+### <a name="step1"></a> 1. lépés: Adatokat lekérni a Hive táblák az Azure Machine Learning az adatok importálása modullal, és válassza ki azt a tartalmazó gépi tanulási kísérlet
 Kiválasztásával indítsa el a **+ új** -> **kísérlet** -> **üres kísérlet**. Ezt követően az a **keresési** mezőben keressen a "Importálási adatok" marad, felül. Húzza a **és adatokat importálhat** modul be a kísérlet vászonra (a képernyő középső része) a modul használandó adat-hozzáférési.
 
 Ez az, hogy mi a **és adatokat importálhat** tűnik a Hive tábla adatainak lekérése közben:
@@ -437,7 +437,7 @@ Az a **és adatokat importálhat** modul, a paraméterek, a kép által biztosí
 
 1. Válassza ki a "Hive-lekérdezések" a **adatforrás**
 2. Az a **adatbázis-lekérdezés Hive** mezőbe egy egyszerű jelöljön ki * FROM < a\_adatbázis\_name.your\_tábla\_neve >-elegendő.
-3. **Hcatalog kiszolgáló URI azonosítója**: Ha a fürt "abc", akkor ez az egyszerűen: https://abc.azurehdinsight.net
+3. **Hcatalog kiszolgáló URI azonosítója**: Ha a fürt "abc", akkor ez az egyszerű: https://abc.azurehdinsight.net
 4. **Hadoop felhasználói fiók nevét**: A felhasználó nevét, a fürthöz beüzemelési időpontjában választott. (Nem a távelérési felhasználónév!)
 5. **Hadoop felhasználói fiók jelszavát**: a felhasználó nevét, a fürthöz beüzemelési időpontjában kiválasztott jelszavát. (Nem a távelérési jelszó!)
 6. **Az kimeneti adatok**: válassza az "Azure"
@@ -460,7 +460,7 @@ Jelölje be a mentett dataset használható a machine learning kísérletben, ke
 > 
 > 
 
-### <a name="step2"></a>2. lépés: Egy egyszerű kísérlet létrehozása az Azure Machine Learning előre jelezni kattintással / egyetlen kattintással
+### <a name="step2"></a> 2. lépés: Egy egyszerű kísérlet létrehozása az Azure Machine Learning előre jelezni kattintással / egyetlen kattintással
 Az Azure ML kísérlet így néz ki:
 
 ![Machine Learning kísérlet](./media/hive-criteo-walkthrough/xRpVfrY.png)
@@ -537,7 +537,7 @@ A cikkből jeleníti meg, az oszlopok megszámlált, lekérése a számát, vala
 
 Most már készen áll az Azure Machine Learning modell ezen átalakított adatkészletek létrehozásához. A következő szakasz bemutatja, hogyan ehhez.
 
-### <a name="step3"></a>3. lépés: Build, betanítását és pontszámok számolása
+### <a name="step3"></a> 3. lépés: Build, betanítását és pontszámok számolása
 
 #### <a name="choice-of-learner"></a>Tanuló kiválasztása
 Először meg kell választania egy tanuló. A két osztályú súlyozott döntési fa használják a tanuló. Az alábbiakban a alapértelmezett beállításait a tanuló:
@@ -556,7 +556,7 @@ Ha elvégezte a modell betanítását, készen áll a tesztelési adathalmazon p
 
 ![A Score model (Modell montozása) modul](./media/hive-criteo-walkthrough/fydcv6u.png)
 
-### <a name="step4"></a>4. lépés: A modell kiértékelése
+### <a name="step4"></a> 4. lépés: A modell kiértékelése
 Végezetül elemezni kell a modell teljesítményét. A két osztály (bináris) besorolás problémákat általában jó mérték a AUC jelenti. Ez megjelenítéséhez, bekötése a **Score Model** modul egy **modell kiértékelése** a modul. Gombra kattintva **Visualize** a a **modell kiértékelése** modul a következő hasonló grafikus eredményez:
 
 ![A modul táblázatos adatbázisba kerülő modell kiértékelése](./media/hive-criteo-walkthrough/0Tl0cdg.png)
@@ -565,7 +565,7 @@ A bináris (vagy két osztály) besorolás problémák, az előrejelzés pontoss
 
 ![Modell kiértékelése modul megjelenítése](./media/hive-criteo-walkthrough/IRfc7fH.png)
 
-### <a name="step5"></a>5. lépés: A modell egy webszolgáltatás közzététele.
+### <a name="step5"></a> 5. lépés: A modell egy webszolgáltatás közzététele.
 Az Azure Machine Learning modell fuss legalább webszolgáltatásként közzétételére képes lehetővé teszi az értékes széles körben elérhető, hogy azok. Ezt követően, bárki is hívásokat a webszolgáltatással, hogy az előrejelzés van szükségük, és a webszolgáltatás a modellt használ, ezek előrejelzéseket vissza bemeneti adatokkal.
 
 Ehhez először mentse a betanított modell Trained Model-objektumként. Ehhez kattintson a jobb gombbal a **tanítási modell** modul, és használja a **Trained Model elmentse** lehetőséget.

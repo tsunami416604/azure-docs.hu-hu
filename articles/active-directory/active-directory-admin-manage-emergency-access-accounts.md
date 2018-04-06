@@ -1,8 +1,8 @@
 ---
-title: "Rendszergazdai fiókok sürgős-hozzáférés kezelése az Azure AD |} Microsoft Docs"
-description: "A cikkből megtudhatja, hogyan használható vészhelyzeti fiókok segítségével a szervezetek korlátozni a rendszerjogosultságú hozzáférést egy meglévő Azure Active Directory-környezeten belül."
+title: Rendszergazdai fiókok sürgős-hozzáférés kezelése az Azure AD |} Microsoft Docs
+description: A cikkből megtudhatja, hogyan használható vészhelyzeti fiókok segítségével a szervezetek korlátozni a rendszerjogosultságú hozzáférést egy meglévő Azure Active Directory-környezeten belül.
 services: active-directory
-keywords: "Nem adjon hozzá vagy kulcsszavak szerkesztése nélkül tanácsadás a Keresőmotor-optimalizálást végző szakemberrel."
+keywords: Ne adjon hozzá kulcsszavakat és ne szerkessze azokat a keresőoptimalizálást végző szakemberrel való egyeztetés nélkül.
 author: markwahl-msft
 ms.author: billmath
 ms.date: 12/13/2017
@@ -12,10 +12,10 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.openlocfilehash: 1545fb9a89794a74efbb855c4480040973c3308e
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-emergency-access-administrative-accounts-in-azure-ad"></a>Sürgős-hozzáférési rendszergazdai fiókok kezelése az Azure ad-ben 
 

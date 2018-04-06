@@ -1,11 +1,11 @@
 ---
-title: "A StorSimple 8000 series rendszer korlátok |} Microsoft Docs"
-description: "Ismerteti a rendszer korlátozásai és a StorSimple 8000 series összetevők és kapcsolatok az ajánlott méreteket."
+title: A StorSimple 8000 series rendszer korlátok |} Microsoft Docs
+description: Ismerteti a rendszer korlátozásai és a StorSimple 8000 series összetevők és kapcsolatok az ajánlott méreteket.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c7392678-0924-46c6-9c59-1665cb9b6586
 ms.service: storsimple
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.date: 03/28/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cc3c0ad193af7625c8c4c1c2e82b6bdc8be33310
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="what-are-storsimple-8000-series-system-limits"></a>A StorSimple 8000 series rendszer korlátai
 
@@ -35,7 +35,7 @@ A StorSimple méretezhető és rugalmas tárolási nyújt az adatközpontban. Va
 | Helyileg rögzített kötetek maximális száma |32 | |
 | Ütemezésének per sávszélességsablon maximális száma |168 |Óránként, naponta, a hét (24 * 7) ütemezését. |
 | A rétegzett kötetek fizikai eszközök maximális mérete |A 8100 és 8600 64 TB |8100 és 8600 különböző fizikai eszközök. |
-| A virtuális eszközök, az Azure-ban a rétegzett kötetek maximális mérete |30 TB lehet a 8010-es <br></br> A 8020-as modell 64 TB |8010-es és a 8020-as modell olyan virtuális Azure használó eszközöket Standard és Premium tárolására kulcsattribútumokkal. |
+| A virtuális eszközök, az Azure-ban a rétegzett kötetek maximális mérete |30 TB for 8010 <br></br> 64 TB for 8020 |8010-es és a 8020-as modell olyan virtuális Azure használó eszközöket Standard és Premium tárolására kulcsattribútumokkal. |
 | Fizikai eszközön helyileg rögzített kötet maximális mérete |A 8100 8.5 TB <br></br> A 8600 22.5 TB |8100 és 8600 különböző fizikai eszközök. |
 | ISCSI-kapcsolatok maximális száma |512 | |
 | A kezdeményezők iSCSI-kapcsolatok maximális száma |512 | |
@@ -53,10 +53,10 @@ A StorSimple méretezhető és rugalmas tárolási nyújt az adatközpontban. Va
 | Maximális ügyfél olvasási/írási teljesítmény (Ha a HDD-réteget a kiszolgált) * |120/250 MB/s | |
 | Maximális ügyfél olvasási/írási teljesítmény (amikor a felhő rétegtől kiszolgált) * Update 3 és újabb ** |40/60 MB/s, rétegzett kötet<br><br>60/80 MB/s, rétegzett kötet archiválási jelölőnégyzetet a kötet létrehozása során |Olvasás átviteli ügyfelek létrehozása és fenntartása elegendő i/o-várólistamélység függ. <br><br>Sebesség érhető el az alapul szolgáló használt tárfiók sebességétől függ. |
 
-&#42; I/o-típusonkénti maximális átviteli sebesség és 100 százalék olvasási 100 százalék írási forgatókönyvek mérték. Tényleges átviteli alacsonyabb lehet, és attól függ, i/o kombinálhatók és a hálózati feltételek.
+&#42;I/o-típusonkénti maximális átviteli sebesség és 100 százalék olvasási 100 százalék írási forgatókönyvek mérték. Tényleges átviteli alacsonyabb lehet, és attól függ, i/o kombinálhatók és a hálózati feltételek.
 
-&#42; &#42; 3. frissítés előtt számok alacsonyabb lehet.
+&#42;&#42;3. frissítés előtt számok alacsonyabb lehet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse át a [StorSimple rendszerkövetelmények](storsimple-8000-system-requirements.md).
 
