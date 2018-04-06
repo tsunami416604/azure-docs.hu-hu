@@ -1,13 +1,13 @@
 ---
-title: "Eseményindítók és kötések az Azure Functions"
-description: "Megtudhatja, hogyan csatlakozhat eseményindítók és kötések az Azure Functions a kód végrehajtása online események és a felhő alapú szolgáltatások."
+title: Eseményindítók és kötések az Azure Functions
+description: Megtudhatja, hogyan csatlakozhat eseményindítók és kötések az Azure Functions a kód végrehajtása online események és a felhő alapú szolgáltatások.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-keywords: "azure-függvények, függvények, eseményfeldolgozás, webhookok, dinamikus számítás, kiszolgáló nélküli architektúra"
+editor: ''
+tags: ''
+keywords: azure-függvények, függvények, eseményfeldolgozás, webhookok, dinamikus számítás, kiszolgáló nélküli architektúra
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/07/2018
 ms.author: glenga
-ms.openlocfilehash: 559cfee1a8116703371a5641cf4534b7ad6f7578
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: d008e94186dd3c5a18c92617ebddfffa966358d5
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Az Azure Functions eseményindítók és kötések fogalmak
 
@@ -49,7 +49,7 @@ Verziójában 2.x, az Azure Functions futtatókörnyezettel, explicit módon reg
 
 Bővítmények érkeznek NuGet csomag, amelyben a csomag általában kezdetű névvel rendelkező [microsoft.azure.webjobs.extensions](https://www.nuget.org/packages?q=microsoft.azure.webjobs.extensions).  Telepítése és regisztrálása kötés bővítmények módja attól függ, hogyan fejleszthet-e a funkciók: 
 
-+ [Helyileg a C# segítségével a Visual Studio vagy Visual STUDIO Code](#precompiled-functions-c)
++ [Helyileg a C# segítségével a Visual Studio vagy Visual STUDIO Code](#local-c-development-using-visual-studio-or-vs-code)
 + [Helyileg használata az Azure Functions Core eszközök](#local-development-azure-functions-core-tools)
 + [Az Azure-portálon](#azure-portal-development) 
 
@@ -635,7 +635,7 @@ C# és egyéb .NET-nyelveket, használhat egy imperatív kötés mintát, szembe
 
 ## <a name="functionjson-file-schema"></a>Function.JSON fájl séma
 
-A *function.json* fájl séma érhető el: [http://json.schemastore.org/function](http://json.schemastore.org/function).
+A *function.json* fájl séma érhető el: [ http://json.schemastore.org/function ](http://json.schemastore.org/function).
 
 ## <a name="handling-binding-errors"></a>Kötési hibák kezelése
 

@@ -1,6 +1,6 @@
 ---
-title: "Ajánlott eljárások a vállalatok áthelyezése az Azure-bA |} Microsoft Docs"
-description: "Egy, a vállalatok használatával biztosíthatja a biztonságos és kezelhető környezet scaffold ismerteti."
+title: Ajánlott eljárások a vállalatok áthelyezése az Azure-bA |} Microsoft Docs
+description: Egy, a vállalatok használatával biztosíthatja a biztonságos és kezelhető környezet scaffold ismerteti.
 services: azure-resource-manager
 documentationcenter: na
 author: rdendtler
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2017
 ms.author: rodend;karlku;tomfitz
-ms.openlocfilehash: 3b5087faaf3db087b15b77fedac8df0d7e4a899a
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 02553bb59cb37bab21d53adafc42fddcf08795a7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-enterprise-scaffold---prescriptive-subscription-governance"></a>Az Azure enterprise scaffold - részletes utasításokkal megadott előfizetés-irányítás
 A vállalatok egyre vannak bevezetése a nyilvános felhőben az agilitást és a rugalmasságot. A felhő szintjeiről bevételt, vagy a vállalati erőforrások optimalizálására azok vannak használatával. A Microsoft Azure kínál számos, hogy a vállalatok például építőelemeket munkaterheléseket és alkalmazásokat az széles köréről megoldására összeállíthat. 
@@ -135,7 +135,7 @@ A felhőalapú alkalmazások létrehozása részleg "Gyors" környezet
 > 
 
 ### <a name="audit---what-happened"></a>Naplózási – Mi történt?
-Megtekintheti, hogyan működik-e a környezetében, felhasználói tevékenységet naplózni kell. A legtöbb erőforrástípusok esetében az Azure diagnosztikai naplók, hogy a napló eszköz vagy az Azure Operations Management Suite szolgáltatásban is elemezheti létrehozása. Több előfizetések biztosításához egy részleg vagy vállalati nézet gyűjthet tevékenységi naplóit. Naplózási bejegyzések fontos diagnosztikai eszköz és a kritikus fontosságú eljárást, amely eseményindító eseményeket az Azure környezetben.
+Megtekintheti, hogyan működik-e a környezetében, felhasználói tevékenységet naplózni kell. A legtöbb erőforrástípusok esetében az Azure diagnosztikai naplók, amelyek a napló eszköz vagy az Azure Naplóelemzés létrehozása. Több előfizetések biztosításához egy részleg vagy vállalati nézet gyűjthet tevékenységi naplóit. Naplózási bejegyzések fontos diagnosztikai eszköz és a kritikus fontosságú eljárást, amely eseményindító eseményeket az Azure környezetben.
 
 A Resource Manager üzembe helyezések tevékenységi naplóit lehetővé teszik a határozza meg a **műveletek** , amely tartott helye és végző felhasználók listáját. Tevékenységi naplóit is, majd összesíti a Naplóelemzési hasonló eszközökkel.
 
@@ -159,7 +159,7 @@ Címkék további példákért lásd [Azure-erőforrások elnevezési szabályai
 > Vegye figyelembe, hogy így egy egykiszolgálós használatát írja elő, a címkézés házirendet:
 > 
 > * Erőforráscsoportok
-> * Storage
+> * Tárolás
 > * Virtuális gépek
 > * Alkalmazáskiszolgálók környezetek vagy webes szolgáltatás
 > 
@@ -252,6 +252,6 @@ A [az Azure Security Center](../security-center/security-center-intro.md) közpo
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Most, hogy az előfizetés irányítás megismerte felderítheti, hogy ezek az ajánlások a gyakorlatban is. Lásd: [Azure-előfizetés irányítás implementációi](resource-manager-subscription-examples.md).
 

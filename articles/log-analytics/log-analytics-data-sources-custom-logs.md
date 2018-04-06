@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Naplóelemzés egyéni naplógyűjtéshez |} Microsoft Docs"
-description: "A Naplóelemzési képes eseményeket gyűjteni szöveges fájlt a Windows és Linux rendszerű számítógépeken.  Ez a cikk ismerteti, hogyan adható meg egy új egyéni napló és a rekordok hoznak létre a Naplóelemzési munkaterület részleteit."
+title: Az Azure Naplóelemzés egyéni naplógyűjtéshez |} Microsoft Docs
+description: A Naplóelemzési képes eseményeket gyűjteni szöveges fájlt a Windows és Linux rendszerű számítógépeken.  Ez a cikk ismerteti, hogyan adható meg egy új egyéni napló és a rekordok hoznak létre a Naplóelemzési munkaterület részleteit.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/14/2017
+ms.date: 04/04/2018
 ms.author: bwren
-ms.openlocfilehash: 401fbb39194a24721274f55f0fc2a4cdc235a32b
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: bf9acd5d7130a5e35182271f07593adab19d448b
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="custom-logs-in-log-analytics"></a>A Naplóelemzési egyéni naplókat
 Az egyéni naplókat adatforrásra Naplóelemzési eseményeinek gyűjtése a Windows és Linux számítógépeken egyaránt szövegfájlból teszi lehetővé. Számos alkalmazás adatainak naplózása szöveges fájlok, például a Windows Eseménynapló vagy a Syslog szabványos naplózási szolgáltatások helyett.  Összegyűjtését követően elemezni a rekordokban a bejelentkezés használatával az egyes mezők a [egyéni mezők](log-analytics-custom-fields.md) Naplóelemzési szolgáltatása.
@@ -31,7 +31,7 @@ A naplófájlok kell gyűjteni a következő feltételeknek kell.
 
     ÉÉÉÉ-HH-NN ÓÓ: PP:<br>H/ÉÉÉÉ ÓÓ: PP: MP DE/DU <br>F nn, éééé óó: pp:
 
-- A naplófájl nem engedélyezheti a körkörös frissítések amennyiben a fájl új bejegyzések felülírja.
+- A naplófájl nem engedélyezheti a körkörös naplózás vagy naplóváltás, ha a fájl új bejegyzések felülírja.
 - A naplófájl ASCII vagy UTF-8 kódolást kell használnia.  Más például az UTF-16 formátum nem támogatott.
 
 >[!NOTE]
@@ -78,7 +78,7 @@ A következő táblázat érvényes minták adhatja meg a különböző naplóf�
 | Az összes fájl */var/log/audit* napló és a Linux-ügynök a .txt kiterjesztésű neve |/var/log/audit/log\*.txt |
 
 1. Jelölje be a Windows vagy Linux adja meg, melyik elérési út formátumot ad hozzá.
-2. Írja be a elérési utat, majd kattintson a  **+**  gombra.
+2. Írja be a elérési utat, majd kattintson a **+** gombra.
 3. Bármely további elérési utak ismételje meg a műveletet.
 
 ### <a name="step-4-provide-a-name-and-description-for-the-log"></a>4. lépés Adjon nevet és leírást a napló

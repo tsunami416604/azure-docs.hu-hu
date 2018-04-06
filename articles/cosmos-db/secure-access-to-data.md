@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2017
 ms.author: mimig
-ms.openlocfilehash: 771c4a539d240a6bfdc9770adc7cfada01571939
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 5ca2ea638dfa43b3b687ef65a420886f1ddf92f9
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Azure Cosmos DB adatokhoz való hozzáférés biztonságossá tétele
 Ez a cikk áttekintést a adataihoz való hozzáférés biztosítása [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
 
 Azure Cosmos-adatbázis kétféle kulcsok segítségével hitelesíti a felhasználókat, és az adatok és erőforrások eléréséhez. 
 
-|Kulcstípus|Erőforrások|
+|Kulcstípus|További források|
 |---|---|
 |[Főkulcsok](#master-keys) |Felügyeleti erőforrások használt: adatbázis-fiókok, adatbázisok, felhasználók és engedélyek|
 |[Erőforrás-tokenek](#resource-tokens)|Alkalmazás-erőforrásokat használt: gyűjtemények, dokumentumok, a mellékletek, tárolt eljárások, eseményindítók és felhasználó által megadott függvények|
@@ -110,7 +110,7 @@ A középső réteg szolgáltatás létrehozásához vagy replikaszervező erőf
 
 <a id="users"></a>
 
-## <a name="users"></a>fő
+## <a name="users"></a>Felhasználók
 Cosmos DB felhasználók hozzárendelve egy Cosmos DB adatbázisban.  Az egyes adatbázisok nulla vagy több Cosmos DB felhasználókat is tartalmazhat.  A következő példakód bemutatja, hogyan hozzon létre egy Cosmos DB felhasználói erőforrást.
 
 ```csharp
@@ -151,7 +151,7 @@ A következő példakód bemutatja, hogyan hozzon létre egy engedély erőforr�
 Permission docPermission = new Permission
 {
     PermissionMode = PermissionMode.Read,
-    ResourceLink = documentCollection.SelfLink,
+    ResourceLink = UriFactory.CreateDocumentCollectionUri("db", "collection"),
     Id = "readperm"
 };
   

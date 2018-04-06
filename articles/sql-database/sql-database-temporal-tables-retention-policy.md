@@ -1,6 +1,6 @@
 ---
-title: "Előzményadatokat az ideiglenes táblák megőrzési házirend kezelése |} Microsoft Docs"
-description: "Útmutató historikus adatmegőrzési előzményadatokat az ellenőrzése alatt tartani."
+title: Előzményadatokat az ideiglenes táblák megőrzési házirend kezelése |} Microsoft Docs
+description: Útmutató historikus adatmegőrzési előzményadatokat az ellenőrzése alatt tartani.
 services: sql-database
 author: bonova
 manager: craigg
@@ -9,11 +9,11 @@ ms.custom: develop databases
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: bonova
-ms.openlocfilehash: 36ce6889cccbf5ae7df519c5c73846f12eed4a08
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1ebfab93c94c27de8e765ac3f8278372c8f0690f
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>Előzményadatokat az ideiglenes táblák megőrzési házirend kezelése
 A historikus táblák növelheti reguláris táblák nagyobb adatbázisméret, különösen akkor, ha egy hosszabb ideig a korábbi adatok megőrzése mellett. Emiatt adatmegőrzési korábbi adatok tervezési és kezeléséért a minden historikus tábla fontos eleme. Az Azure SQL Database ideiglenes táblák megőrzési könnyen kezelhető mechanizmust, amely segít ennek a feladatnak rendelkeznek.
@@ -102,7 +102,7 @@ ON T1.history_table_id = T2.object_id WHERE T1.temporal_type = 2
 
 ## <a name="how-sql-database-deletes-aged-rows"></a>Hogyan SQL-adatbázis törli az elavult sorok?
 A kitakarítási folyamatot a előzménytábla index elrendezésének függ. Fontos, hogy figyelje meg, hogy *csak egy fürtözött index, (B-fa vagy oszlopcentrikus) előzmények táblákban lehet konfigurált véges adatmegőrzési*. Háttérfeladat jön létre, azokat az elavult adatokat karbantartást végez a historikus táblák véges adatmegőrzési időszaktól.
-Tisztítás logikát a sortárindex (B-fa) fürtözött index törli az elavult sorában kisebb csoportjai (legfeljebb 10 KB-os) minimalizálja az adatbázis naplója és I/O alrendszerbe terhelés. Bár a tisztítás logika szükséges B-fa indexszel, a régebbi, mint a megőrzési időtartam nem garantálható erősen sorok törlések sorrendjének használja. Emiatt *a tisztítás sorrendnek az alkalmazások bármely függőség nem hajtja végre*.
+Tisztítás logikát a sortárindex (B-fa) fürtözött index törli az elavult sorában kisebb csoportjai (legfeljebb 10 KB-os) minimalizálja az adatbázis naplója és IO alrendszer terhelés. Bár a tisztítás logika szükséges B-fa indexszel, a régebbi, mint a megőrzési időtartam nem garantálható erősen sorok törlések sorrendjének használja. Emiatt *a tisztítás sorrendnek az alkalmazások bármely függőség nem hajtja végre*.
 
 A karbantartási feladatot a fürtözött oszlopcentrikus eltávolítja teljes [csoportok sor](https://msdn.microsoft.com/library/gg492088.aspx) egyszerre (általában tartalmaz minden sorok 1 millió), ez nagyon hatékony, különösen akkor, ha előzményadatokat magas ütemben jön létre.
 

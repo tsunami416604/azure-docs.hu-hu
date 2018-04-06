@@ -1,11 +1,11 @@
 ---
-title: "A Linux virtuális gépek Apache Tomcat beállítása |} Microsoft Docs"
-description: "Útmutató Apache Tomcat7 beállítása a Linux operációs rendszert futtató Azure virtuális gépek használatával."
+title: A Linux virtuális gépek Apache Tomcat beállítása |} Microsoft Docs
+description: Útmutató Apache Tomcat7 beállítása a Linux operációs rendszert futtató Azure virtuális gépek használatával.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: NingKuang
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: 45ecc89c-1cb0-4e80-8944-bd0d0bbedfdc
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
-ms.openlocfilehash: f3bd3167c9a879a876774e5d91fbb10fd340c6a8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 161a56a019f8c2c8ce5e3890e73ad5c5710e7b82
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>A Linux virtuális gépek Azure-ral Tomcat7 beállítása
 Apache Tomcat (vagy egyszerűen Tomcat is korábban Dzsakarta Tomcat) egy nyílt forráskódú webkiszolgáló és a servlet tároló fejlesztett az Apache szoftver Foundation (ASP). Tomcat valósítja meg, a Java Servlet és a Sun Microsystems JavaServer lapok (JSP) előírásoknak. Tomcat Java kód futtatására tiszta Java HTTP-web server környezetet biztosít. A legegyszerűbb konfiguráció, a Tomcat egyetlen operációs rendszer folyamatban fut. Ez a folyamat fut, a Java virtuális gép (JVM). Minden HTTP-kérelem böngészőből Tomcat végzi a rendszer a Tomcat folyamat külön szálban.  
@@ -90,9 +90,9 @@ Az Azure-végpontok közé tartozik a TCP vagy UDP protokoll, valamint nyilváno
 
    1. A végpont, adjon meg egy nevet a következőben szereplő végpontnál **végpont**, és írja be a 80-as **nyilvános Port**.  
 
-      A 80-as értékre állítva, nem kell tartalmaznia a portszámot a Tomcat elérésére használt URL-címben. For example, http://tomcatdemo.cloudapp.net.    
+      A 80-as értékre állítva, nem kell tartalmaznia a portszámot a Tomcat elérésére használt URL-címben. Például: http://tomcatdemo.cloudapp.net.    
 
-      Ha beállította azt egy másik értékre, például a 81-es, akkor Tomcat elérésére az URL-címet adja meg a portszámot. Például http://tomcatdemo.cloudapp.net:81 /.
+      Ha beállította azt egy másik értékre, például a 81-es, akkor Tomcat elérésére az URL-címet adja meg a portszámot. Például:  http://tomcatdemo.cloudapp.net:81/.
    2. Adja meg a 8080-as **magánhálózati Port**. Alapértelmezés szerint a Tomcat a 8080-as TCP-portot figyeli. Ha módosította az alapértelmezett port a Tomcat figyelésére, frissítenie kell **magánhálózati Port** ugyanaz, mint a Tomcat port figyelésére kell.  
       ![Képernyőfelvétel a felhasználói felület Hozzáadás parancs, a nyilvános Port és a magánhálózati Port jeleníti meg][7]
 4. Kattintson a **OK** a végpont hozzáadása a virtuális gép.
@@ -231,7 +231,7 @@ Ez a fájl szerkesztése után újra kell indítania a Tomcat7 azokat a szolgál
 
     sudo /etc/init.d/tomcat7 restart  
 
-Nyissa meg a böngészőt, és írja be **http://<your tomcat server DNS name>/kezelő/html** az URL-címet. Ez a cikk például az URL-cím http://tomcatexample.cloudapp.net/manager/html.  
+Nyissa meg a böngészőt, és írja be **http://<your tomcat server DNS name>/kezelő/html** az URL-címet. Ez a cikk például az URL-címe: http://tomcatexample.cloudapp.net/manager/html.  
 
 A csatlakozás után kell megjelennie a következőhöz hasonló:  
 ![Képernyőfelvétel a Tomcat Web Application Manager][18]

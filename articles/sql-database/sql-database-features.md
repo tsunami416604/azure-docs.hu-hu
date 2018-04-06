@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: d8adf097d6bee404cff8e7b15782c6c59531a897
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: bca2629ea4a0c859e92d829b49072fbdf3f9ffe2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Szolgáltatások összehasonlítása: Azure SQL Database és SQL Server 
 
@@ -45,7 +45,7 @@ A következő táblázat az SQL Server főbb szolgáltatásokat sorolja fel, és
 | [Adatrögzítés módosítása](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | Nem | Igen |
 | [Változások követése](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) | Igen |Igen |
 | [Rendezés utasítások](https://docs.microsoft.com/sql/t-sql/statements/collations) | Igen | Igen |
-| [Oszlopcentrikus indexek](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | Igen – [prémium csomagban és a Standard szint - S3 vagy újabb verzió](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |Igen |
+| [Oszlopcentrikus indexek](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | Igen – [prémium csomagban, a Standard szint - S3 vagy újabb, az általános célú réteget, és a fontos üzleti rétegek](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |Igen |
 | [Közös nyelvi futtatókörnyezet (CLR)](https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | Nem | Igen – lásd: [CLR különbségek](sql-database-managed-instance-transact-sql-information.md#clr) |
 | [Tartalmazott adatbázisok](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | Igen | Igen |
 | [Tartalmazott felhasználók](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) | Igen | Igen |
@@ -82,7 +82,7 @@ A következő táblázat az SQL Server főbb szolgáltatásokat sorolja fel, és
 | [Geo-restore](sql-database-recovery-using-backups.md#geo-restore) | Igen | Nem – visszaállíthatja COPY_ONLY tekintse meg a teljes biztonsági mentés, amelyet rendszeres időközönként - [különbségek biztonsági mentését](sql-database-managed-instance-transact-sql-information.md#backup) és [különbségek visszaállítása](sql-database-managed-instance-transact-sql-information.md#restore-statement). |
 | [Georeplikáció](sql-database-geo-replication-overview.md) | Igen | Nem |
 | [Graph feldolgozása](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview) | Igen | Igen |
-| [Memóriabeli optimalizálás](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Igen – [csak a Premium edition](sql-database-in-memory.md) | Nem |
+| [Memóriabeli optimalizálás](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Igen – [csak a prémium és üzleti Critial rétegek](sql-database-in-memory.md) | Nem |
 | [JSON-adatok támogatása](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | Igen | Igen |
 | [Nyelvi elemei](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) | Most – tekintse meg az egyéni elemekké |  Igen – lásd: [T-SQL különbségek](sql-database-managed-instance-transact-sql-information.md) |
 | [Csatolt kiszolgálók](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nem - látható [rugalmas lekérdezés](sql-database-elastic-query-horizontal-partitioning.md) | Only to SQL Server |

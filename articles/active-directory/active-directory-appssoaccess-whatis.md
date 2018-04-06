@@ -1,11 +1,11 @@
 ---
-title: "Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban? | Microsoft Docs"
-description: "Egyszeri bejelentkezés az SaaS- és webes alkalmazásokat, amelyekre szüksége van a vállalati összes engedélyezése az Azure Active Directoryt."
+title: Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban? | Microsoft Docs
+description: Egyszeri bejelentkezés az SaaS- és webes alkalmazásokat, amelyekre szüksége van a vállalati összes engedélyezése az Azure Active Directoryt.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 75d1a3fd-b3c5-4495-a5c8-c4c24145ff00
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 09/11/2017
 ms.author: curtand
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: 42a24654eb059894a855474c922a4dd2da185149
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: f19d33c905d6153dffa1e7d5cdaea92ed1b94ff7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?
 Egyszeri bejelentkezés azt jelenti, hogy nem tudnak hozzáférni az összes alkalmazásokat és erőforrásokat, végre kell hajtani, üzleti által csak akkor, ha egyetlen felhasználói fiókkal jelentkezik be. Miután bejelentkezett, van-e hozzáférési összes szolgáltatásbeli hitelesítéshez szükséges nélkül kell alkalmazást (például adjon meg egy jelszót) még egyszer.
@@ -68,7 +68,7 @@ Jelszó-alapú egyszeri bejelentkezés beállítása lehetővé teszi, hogy a fe
 Az Azure AD bármely felhőalapú alkalmazás, amely rendelkezik egy HTML-alapú bejelentkezési oldal jelszó-alapú egyszeri bejelentkezést is támogatja. Egy egyéni böngésző beépülő modul használatával AAD automatizálja a felhasználói bejelentkezési folyamat segítségével biztonságosan beolvasása az alkalmazás hitelesítő adatait, például a felhasználónevét és jelszavát a könyvtárból, és megadja ezeket a hitelesítő adatokat az alkalmazás bejelentkezési lapot a következő nevében: a a felhasználó. Nincsenek két használati esetek:
 
 1. **Kezeli a rendszergazdai hitelesítő adatokat** – rendszergazdák hozzon létre és kezelheti az alkalmazás hitelesítő adatait, és ezen hitelesítő adatok hozzárendelése felhasználókhoz vagy csoportokhoz hozzáférni az alkalmazáshoz szükséges. Ezekben az esetekben a végfelhasználó nem kell tudni, hogy a hitelesítő adatokat, de továbbra is átveszi az egyszeri bejelentkezés hozzáférni az alkalmazáshoz a hozzáférési panel között, illetve a megadott hivatkozásra kattintva. Ez lehetővé teszi azon végfelhasználók számára, amellyel nincs szükségük megjegyzése vagy alkalmazás-specifikus jelszavak kezelése a hitelesítő adatok a rendszergazdák, valamint a kényelem által életciklus-felügyeletének is. A hitelesítő adatok vannak rejtjelezett a végfelhasználó az automatikus bejelentkezési folyamat során; azonban technikailag felderíthető, a felhasználó webes hibakeresés eszközökkel, és a felhasználók és rendszergazdák kell követnie a ugyanazt biztonsági házirendek, mintha közvetlenül a felhasználó által a hitelesítő adatok infrastruktúrakialakítás. Rendszergazda által megadott hitelesítő adatok hasznosak, ha sok felhasználó, például a közösségi média vagy dokumentumok megosztása az alkalmazások által közösen használt fiók számára hozzáférést biztosít.
-2. **Kezeli a felhasználói hitelesítő adatokat** – rendszergazdák alkalmazásokat a felhasználók vagy csoportok rendelhet, és a végfelhasználók számára, hogy adja meg a saját hitelesítő adatait, közvetlenül a hozzáférési panelen először az alkalmazás elérésének engedélyezése. A végfelhasználók számára, amelyek révén azokat nem kell folyamatosan írja be az alkalmazás-specifikus jelszavakat az alkalmazás minden alkalommal létrejön a könnyebb elérhetőség érdekében. A használati eset egy almodell köve rendszergazdai felügyelet a hitelesítő adatok, amelyek a rendszergazda beállíthatja az alkalmazás új hitelesítő adatait egy későbbi időpontban a felhasználói hozzáférés élményt a végfelhasználó módosítása nélkül is használható.
+2. **Kezeli a felhasználói hitelesítő adatokat** – rendszergazdák alkalmazásokat a felhasználók vagy csoportok rendelhet, és a végfelhasználók számára, hogy adja meg a saját hitelesítő adatait, közvetlenül a hozzáférési panelen először az alkalmazás elérésének engedélyezése. A végfelhasználók számára, amelyek révén azokat nem kell folyamatosan írja be az alkalmazás-specifikus jelszavakat az alkalmazás minden alkalommal létrejön a könnyebb elérhetőség érdekében. Felhasználók továbbra is kezelem a jelszavaikat frissítése vagy törléssel, igény szerint. A használati eset egy almodell köve rendszergazdai felügyelet a hitelesítő adatok, amelyek a rendszergazda beállíthatja az alkalmazás új hitelesítő adatait egy későbbi időpontban a felhasználói hozzáférés élményt a végfelhasználó módosítása nélkül is használható.
 
 Mindkét esetben a hitelesítő adatok titkosítására a könyvtárban van tárolva, és az automatikus bejelentkezési folyamat során csak átadott HTTPS-KAPCSOLATON keresztül. Jelszó-alapú egyszeri bejelentkezést használ, az Azure AD egy kényelmes identitáskezelési hozzáférési megoldás nem képes a összevonási protokollok alkalmazások kínál.
 
@@ -151,16 +151,16 @@ Az Azure AD többféleképpen testreszabható is telepíthet központilag alkalm
 Melyik úgy dönt, hogy központi telepítése a szervezetben metódussal közül.
 
 ### <a name="azure-ad-access-panel"></a>Az Azure AD hozzáférési panel
-A hozzáférési panelre a https://myapps.microsoft.com egy webes portál, amely lehetővé teszi a felhasználó Azure Active Directory megtekintéséhez és az indítási felhőalapú alkalmazások, amelyhez már hozzáféréssel rendelkeznek az Azure AD-rendszergazda által a szervezeti fiókkal. Ha a végfelhasználó [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/), az önkiszolgáló csoportkezelési képességeinek a hozzáférési Panel keresztül is használhatja.
+A hozzáférési panelre a https://myapps.microsoft.com egy webes portál, amely lehetővé teszi a felhasználó szervezeti fiókkal az Azure Active Directoryban megtekintése és indítása felhőalapú alkalmazások, amelyhez már rendelkezik hozzáféréssel az Azure AD-rendszergazda által. Ha a végfelhasználó [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/), az önkiszolgáló csoportkezelési képességeinek a hozzáférési Panel keresztül is használhatja.
 
-![Az Azure AD hozzáférési Panel](media/active-directory-appssoaccess-whatis/azure-ad-access-panel.png)
+![Azure AD Access Panel](media/active-directory-appssoaccess-whatis/azure-ad-access-panel.png)
 
 A hozzáférési Panel elkülönül az Azure-portálon, és nem igényli a felhasználók számára egy Azure-előfizetés vagy az Office 365-előfizetéssel rendelkezik.
 
 Az Azure AD hozzáférési panel további információkért tekintse meg a [a hozzáférési panel bemutatása](active-directory-saas-access-panel-introduction.md).
 
 ### <a name="office-365-application-launcher"></a>Az Office 365 alkalmazásindító
-A szervezet számára, amely az Office 365 telepített alkalmazások, felhasználókon az Azure AD kijelölt is megjelenik az Office 365 portál https://portal.office.com/myapps:. Segítségével egyszerűen és kényelmes, a felhasználók számára egy szervezet alkalmazások indítása a második portál használata nélkül, és az Office 365-tel szervezetek ajánlott alkalmazás indító megoldás.
+A szervezet számára, amely az Office 365 telepített alkalmazások, felhasználókon az Azure AD kijelölt is jelennek meg: az Office 365-portál https://portal.office.com/myapps. Segítségével egyszerűen és kényelmes, a felhasználók számára egy szervezet alkalmazások indítása a második portál használata nélkül, és az Office 365-tel szervezetek ajánlott alkalmazás indító megoldás.
 
 ![][4]
 

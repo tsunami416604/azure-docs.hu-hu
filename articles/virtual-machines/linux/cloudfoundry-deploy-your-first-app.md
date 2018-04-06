@@ -1,13 +1,13 @@
 ---
-title: "Az első alkalmazás telepítése a Microsoft Azure felhőbe Foundry |} Microsoft Docs"
-description: "Azure Cloud Foundry alkalmazás központi telepítése"
+title: Az első alkalmazás telepítése a Microsoft Azure felhőbe Foundry |} Microsoft Docs
+description: Azure Cloud Foundry alkalmazás központi telepítése
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: seanmck
-manager: timlt
-editor: 
-tags: 
-keywords: 
+manager: jeconnoc
+editor: ''
+tags: ''
+keywords: ''
 ms.assetid: 8fa04a58-56ad-4e6c-bef4-d02c80d4b60f
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: b617127fc0a3f8dcae293e356ea669edcfa5deff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5e7b321c9fc8f8568cd8109cea0ae877048d3663
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>A Microsoft Azure felhőbe Foundry az első alkalmazás üzembe helyezése
 
@@ -35,7 +35,7 @@ Nincsenek a felhő Foundry környezet létrehozása az Azure számos lehetőség
 - [Közvetlenül a nyílt forráskódú felhő Foundry csomagok központi telepítése] [ oss-cf-bosh] be kell állítania egy [BOSH](http://bosh.io) igazgató, amely koordinálja a felhő Foundry környezet központi telepítését.
 
 > [!IMPORTANT] 
-> Ha az Azure piactérről PCF telepíti, jegyezze fel a SYSTEMDOMAINURL és a rendszergazda eléréséhez szükséges hitelesítő adatokat a kulcsfontosságú alkalmazások Manager mindkettőnek a piactér telepítési útmutatóban leírt. Az oktatóanyag elvégzéséhez szükség. Piactér telepítések esetén a képernyő https://system a SYSTEMDOMAINURL van. *ip-cím*. cf.pcfazure.com.
+> Ha az Azure piactérről PCF telepíti, jegyezze fel a SYSTEMDOMAINURL és a rendszergazda eléréséhez szükséges hitelesítő adatokat a kulcsfontosságú alkalmazások Manager mindkettőnek a piactér telepítési útmutatóban leírt. Az oktatóanyag elvégzéséhez szükség. Piactér-telepítések esetén a SYSTEMDOMAINURL formájában van https://system. *IP-cím*. cf.pcfazure.com.
 
 ## <a name="connect-to-the-cloud-controller"></a>A felhő vezérlő kapcsolódni
 
@@ -141,7 +141,7 @@ cf scale -i 2 hello-spring-cloud
 Fut a `cf app` az alkalmazás a parancs megjeleníti, hogy felhőalapú Foundry hoz létre az alkalmazás egy másik példánya. Után az alkalmazás elindult, a felhő Foundry terheléselosztási hozzá forgalom automatikusan elindul.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Olvassa el a felhő Foundry dokumentációt][cloudfoundry-docs]
 - [Felhő Foundry a Visual Studio Team Services beépülő modul beállítása][vsts-plugin]

@@ -1,6 +1,6 @@
 ---
-title: "Ismerkedés a rugalmas feladatok |} Microsoft Docs"
-description: "A rugalmas adatbázis-feladatok segítségével hajtható végre T-SQL-parancsfájlok, amelyek több adatbázis több."
+title: Ismerkedés a rugalmas feladatok |} Microsoft Docs
+description: A rugalmas adatbázis-feladatok segítségével hajtható végre T-SQL-parancsfájlok, amelyek több adatbázis több.
 services: sql-database
 manager: craigg
 author: stevestein
@@ -9,11 +9,11 @@ ms.custom: scale out apps
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: sstein
-ms.openlocfilehash: 5d55ae225ca1b550bbf70314e2f48fc0161ad107
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 85fd04966822f8dd6a0c3086002e4388411d1051
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Ismerkedés a rugalmas adatbázis-feladatok
 A rugalmas adatbázis feladataihoz (előzetes verzió) Azure SQL Database megbízhatóan hajtható végre T-SQL-parancsfájlok, amelyek több adatbázis több során automatikusan újrapróbálkozás és a végleges befejezési garanciák teszi lehetővé. A rugalmas adatbázis feladat szolgáltatással kapcsolatos további információkért lásd: [rugalmas feladatok](sql-database-elastic-jobs-overview.md).
@@ -460,7 +460,7 @@ Távolítsa el a feladat eseményindító megfelelően egy ütemezés használat
 Most már használhatja az Excel adatok funkciók. A kapcsolati karakterláncot használ a kiszolgáló nevét, az adatbázisnév és a hitelesítő adatok adatbázishoz való kapcsolódáshoz a BI és az integráció eszközök a rugalmas lekérdezés. Győződjön meg arról, hogy az SQL Server támogatja-e az eszköz adatforrásként. Tekintse meg a lekérdezés rugalmas adatbázis és a külső táblák csakúgy, mint bármely más SQL Server-adatbázis és SQL Server-táblázatot, amely az eszköz kíván csatlakozni.
 
 ### <a name="cost"></a>Költségek
-Nem kell külön fizetni a rugalmas adatbázis-lekérdezés szolgáltatása van. Azonban jelenleg ez a funkció csak a premium adatbázisokat a rendelkezésre álló egy záró pontot, de a szilánkok lehet bármely szolgáltatásréteg.
+Nem kell külön fizetni a rugalmas adatbázis-lekérdezés szolgáltatása van. Jelenleg ez a szolgáltatás azonban csak a prémium szintű és kritikus üzleti (előzetes verzió) érhető el adatbázisokat és egy végpontot, de a szilánkok rugalmas készletek bármely szolgáltatásréteg lehet.
 
 Díjszabási információkért lásd: [SQL adatbázis díjszabás](https://azure.microsoft.com/pricing/details/sql-database/).
 

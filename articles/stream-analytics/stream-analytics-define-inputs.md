@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 12/11/2017
 ms.author: sngun
-ms.openlocfilehash: 0ddc3187e9fc0664838dd07f781f4d7e2e4a7fe0
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 405fcf190ab03b84ec463da8a1942adb8e326498
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="data-connection-learn-about-data-stream-inputs-from-events-to-stream-analytics"></a>Adatkapcsolat: data Stream Analytics az események adatfolyam-bemenet megismerése
 A Stream Analytics-feladat adatok kapcsolat nem olyan adatfolyamot kell megadni az adatforrás, amelynek a neve a feladat események *bemeneti*. A Stream Analytics rendelkezik első osztályú integráció az Azure data stream móddal, többek között a [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/), és [Azure Blob Storage tárolóban](https://azure.microsoft.com/services/storage/blobs/). A bemeneti források lehet az analytics-feladat az azonos Azure-előfizetés, vagy egy másik előfizetést.
@@ -46,7 +46,7 @@ Az Azure Event Hubs biztosít magas szinten méretezhető esemény ingestors kö
 
 Az Event Hubs a Stream Analytics érkező események alapértelmezett időbélyegzője az esemény érkező a központ, amely a timestamp `EventEnqueuedUtcTime`. Az adatok feldolgozására adatfolyamként időbélyeg használatával, abban az esetben hasznos kell használnia a [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) kulcsszó.
 
-### <a name="consumer-groups"></a>Fogyasztói csoportok
+### <a name="consumer-groups"></a>Felhasználói csoportok
 Minden Stream Analytics eseményközpont, adjon meg a saját fogyasztói csoportot rendelkeznie kell beállítani. Ha egy feladat tartalmaz önillesztés, vagy ha több adatbevitele, néhány bemeneti után a több olvasót olvashatják. Ez a helyzet hatással van az olvasók egyetlen felhasználói csoportokban számát. Az Event Hubs túllépő fogyasztói csoportot partíciónként / öt olvasók elkerüléséhez nem ajánlott eljárás a fogyasztói csoportot minden egyes Stream Analytics-feladat megadását. Maximális száma az eseményközpont / 20 felhasználói csoportot is van. További információkért lásd: [Event Hubs programozási útmutató](../event-hubs/event-hubs-programming-guide.md).
 
 ### <a name="configure-an-event-hub-as-a-data-stream-input"></a>Az eseményközpontok beállítása a bemeneti adatfolyam
@@ -95,7 +95,7 @@ Az IoT-központ a Stream Analytics érkező események alapértelmezett időbél
 > 
 > 
 
-### <a name="consumer-groups"></a>Fogyasztói csoportok
+### <a name="consumer-groups"></a>Felhasználói csoportok
 Minden Stream Analytics IoT-központ rendelkezik saját felhasználói csoportban megadott úgy kell konfigurálni. Ha egy feladat tartalmaz önillesztés, vagy ha több adatbevitele, néhány bemeneti után a több olvasót olvashatják. Ez a helyzet hatással van az olvasók egyetlen felhasználói csoportokban számát. Az Azure IoT Hub túllépő fogyasztói csoportot partíciónként / öt olvasók elkerüléséhez nem ajánlott eljárás a fogyasztói csoportot minden egyes Stream Analytics-feladat megadását.
 
 ### <a name="configure-an-iot-hub-as-a-data-stream-input"></a>A bemeneti adatfolyamban az IoT-központ konfigurálása
@@ -175,8 +175,8 @@ SELECT
 FROM Input
 ````
 
-## <a name="get-help"></a>Segítség kérése
-Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+## <a name="get-help"></a>Segítségkérés
+Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>További lépések
 Hogy megismerkedett adatok kapcsolat beállításai az Azure-ban a Stream Analytics-feladatok. A Stream Analytics kapcsolatos további információkért lásd:

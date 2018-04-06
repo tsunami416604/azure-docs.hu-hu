@@ -1,11 +1,11 @@
 ---
-title: "Azure hálózati figyelőt - Azure CLI 2.0-kapcsolatok hibáinak elhárítása |} Microsoft Docs"
-description: "Ismerje meg, hogyan használható a kapcsolati hibáinak elhárítása az Azure CLI 2.0 használatával Azure hálózati figyelőt képességét."
+title: Azure hálózati figyelőt - Azure CLI 2.0-kapcsolatok hibáinak elhárítása |} Microsoft Docs
+description: Ismerje meg, hogyan használható a kapcsolati hibáinak elhárítása az Azure CLI 2.0 használatával Azure hálózati figyelőt képességét.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: dfe77b0a9620ccb8ac91fa8843d01d1cb7bdc44f
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 9554c7f564836d9e7ac94367ade6719a1ee5b5c7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-cli-20"></a>Kapcsolatok hibaelhárítása az Azure hálózati figyelőt az Azure CLI 2.0 használatával
 
@@ -36,7 +36,7 @@ Ez a cikk feltételezi, hogy rendelkezik-e a következőket:
 * Virtuális gépek kapcsolatok hibaelhárításához.
 
 > [!IMPORTANT]
-> Csatlakozási hibáinak elhárítása van szükség a virtuálisgép-bővítmény `AzureNetworkWatcherExtension`. A bővítmény telepítése a Windows virtuális gép a Microsoft [a Windows Azure hálózati figyelő ügynök virtuálisgép-bővítmény](../virtual-machines/windows/extensions-nwa.md) és a Linux virtuális gép helyezést [Azure hálózati figyelő ügynök virtuálisgép-bővítmény Linux](../virtual-machines/linux/extensions-nwa.md).
+> Csatlakozási hibáinak elhárítása az szükséges, hogy a virtuális gép a hibaelhárítás a `AzureNetworkWatcherExtension` telepített virtuális gépi bővítményt. A bővítmény telepítése a Windows virtuális gép a Microsoft [a Windows Azure hálózati figyelő ügynök virtuálisgép-bővítmény](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) és a Linux virtuális gép helyezést [Azure hálózati figyelő ügynök virtuálisgép-bővítmény Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). A bővítmény nem szükséges a cél-végponthoz.
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>Ellenőrizze a kapcsolatot a virtuális géphez
 

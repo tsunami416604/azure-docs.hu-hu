@@ -1,28 +1,28 @@
 ---
-title: "Azure SQL Database használata magas rendelkezésre állású szolgáltatás kialakítása |} Microsoft Docs"
-description: "További tudnivalók az Azure SQL Database használata magas rendelkezésre állású szolgáltatások alkalmazás tervét."
-keywords: "a felhő vész-helyreállítási, a vész-helyreállítási megoldások, az alkalmazás az adatok biztonsági mentése, a georeplikáció, üzleti folytonossági tervezése"
+title: Azure SQL Database használata magas rendelkezésre állású szolgáltatás kialakítása |} Microsoft Docs
+description: További tudnivalók az Azure SQL Database használata magas rendelkezésre állású szolgáltatások alkalmazás tervét.
+keywords: a felhő vész-helyreállítási, a vész-helyreállítási megoldások, az alkalmazás az adatok biztonsági mentése, a georeplikáció, üzleti folytonossági tervezése
 services: sql-database
 author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: c596006e33c2c4f0228c14a65f58e82bcf300727
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d19087743740799ec9972bed7a602073afea9f26
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="designing-highly-available-services-using-azure-sql-database"></a>Azure SQL Database használata magas rendelkezésre állású szolgáltatások tervezése
 
 Összeállításakor, és az Azure SQL Database-magas rendelkezésre állású szolgáltatások telepítése, használata [feladatátvételi csoportok és aktív georeplikáció](sql-database-geo-replication-overview.md) regionális kimaradások és a végzetes hibák rugalmasság biztosításához. Azt is lehetővé teszi, hogy a másodlagos adatbázisok gyors helyreállítás. Ez a cikk általános alkalmazás-minták összpontosít, és az előnyöket és az egyes lehetőségek kompromisszumot ismerteti. Aktív georeplikáció a rugalmas készletek kapcsolatos információkért lásd: [rugalmas készlet vész-helyreállítási stratégiák](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
 
 > [!NOTE]
-> Premium adatbázisokat és a készletek használatakor tehet őket rugalmas regionális kimaradások alakítja át őket zóna redundáns központi telepítés konfigurálása (jelenleg az előzetes verzió). Lásd: [zónaredundáns adatbázisok](sql-database-high-availability.md).  
+> Prémium szintű használata vagy a fontos üzleti (előzetes verzió) adatbázisok és rugalmas készletek, akkor is használhatja őket a területi rugalmas kimaradások konvertálja azokat zóna redundáns központi telepítés konfigurálása (jelenleg az előzetes verzió). Lásd: [zónaredundáns adatbázisok](sql-database-high-availability.md).  
 
 ## <a name="scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime"></a>1. példa: A két Azure-régiók az üzletmenet folytonosságának minimális állásidővel használata
 Ebben a forgatókönyvben az alkalmazásokat az alábbi tulajdonságokkal rendelkeznek: 

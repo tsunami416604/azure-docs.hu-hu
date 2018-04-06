@@ -1,11 +1,11 @@
 ---
-title: "Linux virtuális gép jelszó és a parancssori SSH-kulcs visszaállítása |} Microsoft Docs"
-description: "Linux virtuális gép jelszó vagy SSH-kulcs visszaállítása, javítsa ki az SSH-konfigurációt és lemez konzisztenciájának ellenőrzése a VMAccess bővítmény a az Azure parancssori felület (CLI) használatával"
+title: Linux virtuális gép jelszó és a parancssori SSH-kulcs visszaállítása |} Microsoft Docs
+description: Linux virtuális gép jelszó vagy SSH-kulcs visszaállítása, javítsa ki az SSH-konfigurációt és lemez konzisztenciájának ellenőrzése a VMAccess bővítmény a az Azure parancssori felület (CLI) használatával
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ROBOTS: NOINDEX
 ms.assetid: d975eb70-5ff1-40d1-a634-8dd2646dcd17
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2016
 ms.author: cynthn
-ms.openlocfilehash: 4577b6b9656b6a1cf83e6f9a227526701ba297b4
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: c36498d2f4fef506dc7047fe91666aceec73c13d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-reset-a-linux-vm-password-or-ssh-key-fix-the-ssh-configuration-and-check-disk-consistency-using-the-vmaccess-extension"></a>Linux virtuális gép jelszó vagy SSH-kulcs visszaállítása, javítsa ki az SSH-konfigurációt, és a VMAccess bővítmény használatával lemez konzisztenciájának ellenőrzése
 Ha nem csatlakozik egy Linux virtuális gépet az Azure miatt elfelejtett jelszó, nem megfelelő Secure Shell (SSH) billentyűt, vagy az SSH-konfigurációt, a probléma a VMAccessForLinux bővítmény használni az Azure parancssori felület a jelszó vagy SSH-kulcs visszaállítása, javítsa ki az SSH konfiguráció, és a lemez-konzisztencia ellenőrzése. 
@@ -53,7 +53,7 @@ Szüksége lesz a következőkre:
 * Rendelkezik egy új jelszó vagy SSH-kulcsok, ha alaphelyzetbe állítja a vagy az egyik. Ezek nem szükséges, ha azt szeretné, hogy visszaállítja az SSH-konfigurációt.
 
 ## <a name="pwresetcli"></a>A jelszó alaphelyzetbe állítása
-1. A helyi számítógépen, ezek a sorok PrivateConf.json nevű fájl létrehozása. Cserélje le **sajátfelhasználónév** és  **myP@ssW0rd**  a saját felhasználói névvel és jelszóval és saját lejárati dátumának beállítása.
+1. A helyi számítógépen, ezek a sorok PrivateConf.json nevű fájl létrehozása. Cserélje le **sajátfelhasználónév** és **myP@ssW0rd** a saját felhasználói névvel és jelszóval és saját lejárati dátumának beállítása.
 
     ```   
         {
@@ -83,7 +83,7 @@ Szüksége lesz a következőkre:
         azure vm extension set myVM VMAccessForLinux Microsoft.OSTCExtensions 1.* --private-config-path PrivateConf.json
 
 ## <a name="resetbothcli"></a>A jelszó és az SSH-kulcs visszaállítása
-1. Ezek a tartalmak PrivateConf.json nevű fájl létrehozása. Cserélje le a **sajátfelhasználónév**, **mySSHKey** és  **myP@ssW0rd**  értékeket a saját adataival.
+1. Ezek a tartalmak PrivateConf.json nevű fájl létrehozása. Cserélje le a **sajátfelhasználónév**, **mySSHKey** és **myP@ssW0rd** értékeket a saját adataival.
 
     ``` 
         {

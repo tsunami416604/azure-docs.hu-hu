@@ -4,7 +4,7 @@ description: Gyorsítótárazás adatok helyi tárolása, hogy a jövőben kéri
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: ''
+manager: akucer
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/23/2017
-ms.author: v-deasim
-ms.openlocfilehash: 26a0478f8713cb3584045f59c181c0a38331ea97
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: HT
+ms.author: rli; v-deasim
+ms.openlocfilehash: 88c1b98a9dcaa1d22cdc1be3853b1fa7116c8a48
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-caching-works"></a>A gyorsítótárazás működése
 
@@ -64,7 +64,7 @@ Két fejléc segítségével határozza meg a gyorsítótár frissesség: `Cache
 ## <a name="cache-directive-headers"></a>Gyorsítótár-irányelv fejlécek
 
 > [!IMPORTANT]
-> Alapértelmezés szerint az Azure CDN-végpont DSA optimalizált figyelmen kívül hagyja a gyorsítótár-irányelv fejlécek és megkerüli a gyorsítótárazást. A **Verizon Standard Azure CDN** és **Akamai Standard Azure CDN** profilok, beállíthatja, hogyan Azure CDN-végpont értékként kezelje-e ezek a fejlécek használatával [CDN-szabályra érvényesek](cdn-caching-rules.md)gyorsítótárazás engedélyezéséhez. A **Verizon Premium Azure CDN** -profilok csak akkor használja a [szabálymotor](cdn-rules-engine.md) gyorsítótárazás engedélyezéséhez.
+> Alapértelmezés szerint az Azure CDN-végpont DSA optimalizált figyelmen kívül hagyja a gyorsítótár-irányelv fejlécek és megkerüli a gyorsítótárazást. A **Azure CDN Standard verizon** és **Azure CDN Standard Akamai** profilok, beállíthatja, hogyan Azure CDN-végpont értékként kezelje-e ezek a fejlécek használatával [CDN-szabályra érvényesek](cdn-caching-rules.md)gyorsítótárazás engedélyezéséhez. A **verizon Azure CDN Premium** -profilok csak akkor használja a [szabálymotor](cdn-rules-engine.md) gyorsítótárazás engedélyezéséhez.
 
 Az Azure CDN támogatja a következő HTTP-gyorsítótár-irányelv fejlécek, gyorsítótárazás időtartama és a gyorsítótár megosztása meghatározó.
 
@@ -95,14 +95,14 @@ Az Azure CDN támogatja a következő HTTP-gyorsítótár-irányelv fejlécek, g
 Ha a gyorsítótár elavult, HTTP-gyorsítótár érvényesítők segítségével a gyorsítótárazott egy fájl és összehasonlítása a verziót a forrás-kiszolgálón. **Verizon Azure CDN** egyaránt támogat `ETag` és `Last-Modified` alapértelmezés szerint az érvényesség-ellenőrzők közben **Akamai Azure CDN** csak támogatja `Last-Modified` alapértelmezés szerint.
 
 **ETag:**
-- **Verizon Azure CDN** használ `ETag` során alapértelmezés szerint **Akamai Azure CDN** viszont nem.
+- **Verizon Azure CDN** használ `ETag` alapértelmezés szerint közben **Akamai Azure CDN** viszont nem.
 - `ETag` karakterlánc, amely egyedi a minden fájl- és a fájl verziója határozza meg. Például: `ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"`.
 - A HTTP 1.1-ben bevezetett, és több mint aktuális `Last-Modified`. Akkor hasznos, ha az utolsó módosítási dátumának nehéz lenne meghatározni.
 - Támogatja az erős érvényesítése és a gyenge érvényesítési; Azure CDN azonban csak az erős érvényesítési támogatja. Erős ellenőrzése, a két erőforrás felelősséget kell bájt a byte azonos. 
 - A gyorsítótár ellenőrzi a fájl által használt `ETag` küldésével egy `If-None-Match` egy vagy több fejlécet `ETag` érvényesség-ellenőrzők a kérelemben. Például: `If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"`. Ha a kiszolgáló verziója megegyezik egy `ETag` érvényesítő szerepel a listán, elküldi állapotkódot (nem módosított) 304 válaszában. Ha másik verziószáma, a kiszolgáló válaszol állapotkód 200 (OK) és a frissített erőforrása.
 
 **Last-Modified:**
-- A **csak Verizon Azure CDN**, `Last-Modified` akkor használatos, ha `ETag` nem része a HTTP-válasz. 
+- A **Azure CDN Verizon** csak, `Last-Modified` akkor használatos, ha `ETag` nem része a HTTP-válasz. 
 - A dátum és idő, a forráskiszolgáló által meghatározott, az erőforrás utolsó módosításának határozza meg. Például: `Last-Modified: Thu, 19 Oct 2017 09:28:00 GMT`.
 - A gyorsítótár ellenőrzi, hogy egy fájl segítségével `Last-Modified` küldésével egy `If-Modified-Since` fejléc a dátumot és időpontot a kérelemben. A forráskiszolgáló hasonlítja össze, hogy a dátum a `Last-Modified` a legújabb erőforrás fejléc. Ha az erőforrás a megadott idő óta nem módosult, a kiszolgáló válaszában visszaküldi állapotkód 304 (nem módosított). Ha az erőforrás módosítva lett, a kiszolgáló visszaadja-e az állapot kód 200 (OK) és a frissített erőforrása.
 

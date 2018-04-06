@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: mazha
-ms.openlocfilehash: 87845df92c77ace484a7afdde3ee20b570cf9cbb
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 9d92602ef5071579e0c741dd24a4e3e9f7b2c747
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---premium-tier"></a>Vezérlő Azure CDN a lekérdezési karakterláncok - prémium csomagban gyorsítótárazásának
 > [!div class="op_single_selector"]
@@ -44,9 +44,10 @@ Lekérdezés-karakterlánc három módot érhetők el:
 
 - **no-cache**: Ebben a módban a lekérdezési karakterláncot tartalmazó kérelmek nem gyorsítótárazzák a CDN POP-ra a csomóponton. A POP-csomópont veszi át az objektumot közvetlenül a forráskiszolgálóról, és minden egyes kérelemmel a kérelmező számára továbbítja azokat.
 
-- **egyedi gyorsítótár**: Ebben a módban egy egyedi URL-cím, beleértve a lekérdezési karakterlánc minden kérelmet egy egyedi objektum saját gyorsítótár számít. Például az eredeti kiszolgálóra vonatkozó kérelmet kapott válasz `example.ashx?q=test1` gyorsítótárba helyezte a POP-csomópont, és későbbi gyorsítótárak az azonos lekérdezési karakterláncot adott vissza. A kérelem `example.ashx?q=test2` saját idő a működés közbeni beállítású külön eszközként gyorsítótárazza.
+- **egyedi gyorsítótár**: Ebben a módban egy egyedi URL-cím, beleértve a lekérdezési karakterlánc minden kérelmet egy egyedi objektum saját gyorsítótár számít. Például a forráskiszolgálóról example.ashx?q=test1 kérelmet a válaszban gyorsítótárba helyezte a POP-csomópont, és későbbi gyorsítótárak az azonos lekérdezési karakterláncot adott vissza. Saját idő a működés közbeni beállítású külön eszközként example.ashx?q=test2 kérelmet gyorsítótárazza.
    
-    Ne használja ezt a módot, ha a lekérdezési karakterlánc minden kérelemnél, például egy munkamenet-Azonosítót vagy egy felhasználónevet, változik paramétereket tartalmaz, mert egy kis gyorsítótár találati arány okoz.
+    >[!IMPORTANT] 
+    > Ne használja ezt a módot, ha a lekérdezési karakterlánc minden kérelemnél, például egy munkamenet-Azonosítót vagy egy felhasználónevet, változik paramétereket tartalmaz, mert egy kis gyorsítótár találati arány okoz.
 
 ## <a name="changing-query-string-caching-settings-for-premium-cdn-profiles"></a>Lekérdezési karakterláncok gyorsítótárazásának prémium szintű CDN-profil beállításainak módosítása
 1. Nyissa meg a CDN-profilt, majd kattintson a **kezelése**.

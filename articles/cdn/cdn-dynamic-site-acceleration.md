@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
-ms.author: rli
-ms.openlocfilehash: d105c88105512df4a9f8d999f64ad001b5d54917
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.author: rli; v-deasim
+ms.openlocfilehash: 2ffe547d1d1333a5469d313f9f9cc60f5118f814
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Dinamikus gyorsítás Azure CDN használatával
 
@@ -152,7 +152,7 @@ A DSA, gyorsítótárazás ki van kapcsolva a CDN-t, a szolgáltatást alapérte
 
 Ha rendelkezik statikus és dinamikus eszközök vegyesen webhellyel, célszerű egy hibrid megoldást a legjobb teljesítmény eléréséhez. 
 
-A **Verizon Standard Azure CDN** és **Akamai Standard Azure CDN** profilok, bekapcsolása a megadott DSA-végpontok gyorsítótárazás [szabályok gyorsítótárazás](cdn-caching-rules.md).
+A **Azure CDN Standard verizon** és **Azure CDN Standard Akamai** profilok, bekapcsolása a megadott DSA-végpontok gyorsítótárazás [szabályok gyorsítótárazás](cdn-caching-rules.md).
 
 Gyorsítótárazás szabályok eléréséhez:
 
@@ -164,7 +164,7 @@ Gyorsítótárazás szabályok eléréséhez:
 
 2. Szabály létrehozása a globális vagy egyéni gyorsítótárazási kapcsolja be a DSA-végpontot gyorsítótárazását. 
 
-A **Verizon Premium Azure CDN** csak profilok, kapcsolja be a megadott DSA-végpontok gyorsítótárazása a [szabálymotor](cdn-rules-engine.md). Minden létrehozott szabályok csak mindegyik végpont a profil DSA optimalizált hatással. 
+A **verizon Azure CDN Premium** csak profilok, kapcsolja be a megadott DSA-végpontok gyorsítótárazása a [szabálymotor](cdn-rules-engine.md). Minden létrehozott szabályok csak mindegyik végpont a profil DSA optimalizált hatással. 
 
 A szabályok motor eléréséhez:
     

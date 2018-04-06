@@ -1,8 +1,8 @@
 ---
-title: "Ajánlott eljárások az Azure Data Lake Store használatára vonatkozó |} Microsoft Docs"
-description: "Ismerje meg az ajánlott eljárásokat adatfeldolgozást, dátum biztonsági és az Azure Data Lake Store használatához kapcsolódó teljesítmény"
+title: Ajánlott eljárások az Azure Data Lake Store használatára vonatkozó |} Microsoft Docs
+description: Ismerje meg az ajánlott eljárásokat adatfeldolgozást, dátum biztonsági és az Azure Data Lake Store használatához kapcsolódó teljesítmény
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: sachinsbigdata
 manager: jhubbard
 editor: cgronlun
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/02/2018
 ms.author: sachins
-ms.openlocfilehash: c394142ba40fc580bdcec11430dcae2816fa9760
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: daa6a0fd6927a166ee4809dc1dc5df612765403a
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="best-practices-for-using-azure-data-lake-store"></a>Azure Data Lake Store használatának ajánlott eljárásai
 Ebből a cikkből megismerheti kapcsolatos ajánlott eljárásokról és az Azure Data Lake Store használata szempontjai. A cikkben információkat biztosít a biztonsági, a teljesítmény, a rugalmasság és a Data Lake Store figyelését. Data Lake Store, mielőtt Azure HDInsight hasonló szolgáltatások valóban nagy adatokkal végzett bonyolult volt. Kellett részekre bonthatók az adatok több Blob storage-fiókok között, hogy petabájtnyi tárolási és optimális teljesítményt, hogy biztosít. A Data Lake Store a szigorú korlátok mérete és a teljesítményt a legtöbb törlődnek. Van azonban továbbra is számításba kell, hogy ez a cikk ismerteti, hogy a legjobb teljesítmény érdekében a Data Lake Store kaphat. 
@@ -129,7 +129,7 @@ Data Lake Store biztosít részletes diagnosztikai naplók és a naplózás. Dat
 
 ### <a name="export-data-lake-store-diagnostics"></a>Exportálás Data Lake Store diagnosztika 
 
-A Data Lake Store kereshető naplók juthatnak leggyorsabb módjai egyik ahhoz, hogy naplóküldés **Operations Management Suite (OMS)** alatt a **diagnosztika** a Data Lake Store-fiók paneljén. Ez bejövő naplók közvetlen hozzáférést biztosít az idő és a tartalom szűrőket, és 15 percenként belül indított beállítások (e-mail/webhook) lehetőséget. Útmutatásért lásd: [diagnosztikai naplók az Azure Data Lake Store elérése](data-lake-store-diagnostic-logs.md). 
+Data Lake Store kereshető naplók férhetnek a leggyorsabb módon ahhoz, hogy naplóküldés **Naplóelemzési** alatt a **diagnosztika** a Data Lake Store-fiók paneljén. Ez bejövő naplók közvetlen hozzáférést biztosít az idő és a tartalom szűrőket, és 15 percenként belül indított beállítások (e-mail/webhook) lehetőséget. Útmutatásért lásd: [diagnosztikai naplók az Azure Data Lake Store elérése](data-lake-store-diagnostic-logs.md). 
 
 További valós idejű riasztásokhoz, és további vezérlési helyéről megnyílik a naplókat fontolja meg, ahol tartalom elemzése önállóan vagy egy olyan időkeretet ahhoz, hogy annak a várólistára valós idejű értesítések küldése az Azure EventHub naplók exportálása. Egy különálló alkalmazás, többek között a [logikai alkalmazás](../connectors/connectors-create-api-azure-event-hubs.md) is majd felhasználását és a riasztásokat a megfelelő csatorna kommunikációt, valamint küldje el a mérni kívánt figyelési eszközök NewRelic, Datadog vagy AppDynamics. Azt is megteheti, ha egy külső eszköz, például ElasticSearch használ, akkor exportálhatja a naplókat a Blob Storage és a [Azure Logstash beépülő modul](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob) az adatok felhasználását a Elasticsearch Kibana és Logstash (ELK) verembe.
 
@@ -139,7 +139,7 @@ Ha Data Lake Store naplóküldésben nincs bekapcsolva, Azure HDInsight is lehet
 
     log4j.logger.com.microsoft.azure.datalake.store=DEBUG 
 
-Miután a tulajdonság értéke, és újraindítja a csomópontot, Data Lake Store diagnosztika beíródik YARN naplóit a csomópontokon (/tmp/<user>/yarn.log), és fontos részleteket, például hibák, vagy a sávszélesség-szabályozás (HTTP 429 hibakód) felügyelni. Ezt az információt is figyelhetők OMS vagy mindig a naplók rendszerrel szállított a [diagnosztika](data-lake-store-diagnostic-logs.md) a Data Lake Store-fiók panelen. Javasoljuk, hogy legalább az ügyféloldali naplózás engedélyezve van, vagy a naplóküldés működési látható és egyszerűbb hibakeresés a Data Lake Store beállítást használják.
+Miután a tulajdonság értéke, és újraindítja a csomópontot, Data Lake Store diagnosztika beíródik YARN naplóit a csomópontokon (/tmp/<user>/yarn.log), és fontos részleteket, például hibák, vagy a sávszélesség-szabályozás (HTTP 429 hibakód) felügyelni. Ezt az információt is figyelhetők a Naplóelemzési vagy mindig a naplók rendszerrel szállított a [diagnosztika](data-lake-store-diagnostic-logs.md) a Data Lake Store-fiók panelen. Javasoljuk, hogy legalább az ügyféloldali naplózás engedélyezve van, vagy a naplóküldés működési látható és egyszerűbb hibakeresés a Data Lake Store beállítást használják.
 
 ### <a name="run-synthetic-transactions"></a>Szintetikus tranzakciók futtatása 
 

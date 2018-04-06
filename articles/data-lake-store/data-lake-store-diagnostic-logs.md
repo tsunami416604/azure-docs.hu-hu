@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 5f1fa378c8eea68181d4596700238d03f360c5d0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a5cdc67a138e2316c2e87a72371a6df527cc36ac
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Diagnosztikai naplók az Azure Data Lake Store elérése
 További diagnosztikai a Data Lake Store-fiók és a fiókja gyűjtött naplók megtekintéséhez a naplózás engedélyezéséhez.
@@ -47,7 +47,7 @@ A szervezetek diagnosztikai naplózását is az Azure Data Lake Store fiók gyű
         
         * Jelölje be a **adatfolyam egy eseményközpontba** adatfolyam napló adatokat az Azure-Eseményközpontok felé. Valószínűleg ezt a beállítást fogja használni, ha egy alárendelt feldolgozási folyamat bejövő naplók valós időben elemezni. Ha ezt a lehetőséget választja, meg kell adnia a használni kívánt Azure Event Hubs részleteit.
 
-        * Jelölje be a **küldeni a Naplóelemzési** használhatja az Azure Naplóelemzés szolgáltatást a előállított naplózási adatok elemzésére. Ha ezt a lehetőséget választja, meg kell adnia a részletek az Operations Management Suite-munkaterülettel a végezze el a webhelynapló elemzése használható. Lásd: [nézet vagy Naplóelemzési napló keresési gyűjtött adatok elemzése](../log-analytics/log-analytics-tutorial-viewdata.md) Naplóelemzési használatával.
+        * Jelölje be a **küldeni a Naplóelemzési** használhatja az Azure Naplóelemzés szolgáltatást a előállított naplózási adatok elemzésére. Ha ezt a lehetőséget választja, meg kell adnia a részletek a Naplóelemzési munkaterület a végezze el a webhelynapló elemzése használható. Lásd: [nézet vagy Naplóelemzési napló keresési gyűjtött adatok elemzése](../log-analytics/log-analytics-tutorial-viewdata.md) Naplóelemzési használatával.
      
    * Adja meg, hogy megkapják a naplók vagy kérelmek naplóit vagy mindkettőt.
    * Adja meg, hány nap, amelynek meg kell őrizni az adatokat. Megőrzési csak akkor alkalmazható, ha az Azure storage-fiók segítségével archiválja naplóadatokat.

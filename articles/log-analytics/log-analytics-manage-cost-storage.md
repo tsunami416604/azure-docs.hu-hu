@@ -1,6 +1,6 @@
 ---
 title: Az Azure Naplóelemzés adatok költség kezelése |} Microsoft Docs
-description: Ismerje meg, a tarifacsomag módosítása, és az Azure-portálon a Naplóelemzési munkaterület adatok mennyisége és az adatmegőrzési házirendjének kezeléséhez.
+description: Ismerje meg, a tarifacsomag módosítása, és az Azure-ban a Naplóelemzési munkaterület adatok mennyisége és az adatmegőrzési házirendjének kezeléséhez.
 services: log-analytics
 documentationcenter: log-analytics
 author: mgoedtel
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 629031310eba21bc3308754706bd7ba227009ac6
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 8fb20fc9e6249a2d19d62df1ce331ce873d5fd3d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="manage-cost-by-controlling-data-volume-and-retention-with-your-log-analytics-workspace"></a>Költség kezelése adatmennyiség és a Naplóelemzési munkaterület megőrzési vezérlése
+# <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>Költség kezelése adatmennyiség és a Naplóelemzési megőrzési vezérlése
 A Naplóelemzési úgy tervezték, hogy a skála és támogatási összegyűjtésének, indexelő és nagy mennyiségű adatot naponta forrásból tárolása a vállalati vagy Azure szolgáltatásba telepített.  Amikor ez lehet, hogy a szervezete elsődleges illesztőprogram, költséghatékonyságának végső soron az alapul szolgáló illesztőprogram. Ebből a célból, fontos ismerni, hogy a napló Analytisc munkaterület költségét nem csupán mennyisége alapján adatgyűjtés, azt is a kiválasztott csomag függ, és mennyi ideig úgy döntött, hogy a csatlakoztatott forrásból adatainak tárolásához.  
 
 Ez a cikk azt tekintse át, hogyan proaktív módon figyelheti kötet és a tárolási megfelelően, és azok a társított költségek szabályozásához vonatkozó korlátok beállításához. 

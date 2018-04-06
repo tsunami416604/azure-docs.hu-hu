@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: d4229a3ecbcf8aa044eb448290c243e9920bd5cb
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ab4bc4024248675c6325159b5507add1274addc9
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API-importálási korlátozások és ismert problémák
 ## <a name="about-this-list"></a>Ez a lista
@@ -27,9 +27,11 @@ Ha importál egy API-t, előfordulhat, hogy során bizonyos korlátozások vonat
 ## <a name="open-api"> </a>Open API/Swagger
 A nyílt API-t dokumentum importálása hibák fordulnak elő, ha győződjön meg arról,-, vagy a-tervező használata az Azure portálon (Tervező - előtér - API Specification szerkesztő megnyitása), ellenőrzése, vagy egy külső gyártótól származó eszközzel, mint <a href="http://www.swagger.io">Swagger Editor</a>.
 
-* **Állomásnév** APIM igényli, hogy a gazdagép neve attribútum.
-* **Elérési út kiinduló** APIM egy alap elérési útja attribútumot igényel.
-* **Sémák** APIM egy sémát tartalmazó tömb szükséges.
+* Csak a OpenAPI JSON formátum támogatott.
+* Használatával sémák **$ref** tulajdonságok nem tartalmazhat más **$ref** tulajdonságait.
+* **$ref** mutatók nem hivatkozhatnak külső fájlokat.
+* **x-ms-elérési utak** és **x-kiszolgálók** csak támogatott kiterjesztések az alábbiak.
+* Egyéni bővítmény importálási figyelmen kívül lesznek hagyva, és nem menti és nem őrződik meg az exportált.
 
 > [!IMPORTANT]
 > Ez [dokumentum](https://blogs.msdn.microsoft.com/apimanagement/2018/03/28/important-changes-to-openapi-import-and-export/) a fontos információkat és tippeket OpenAPI importálási kapcsolódik.

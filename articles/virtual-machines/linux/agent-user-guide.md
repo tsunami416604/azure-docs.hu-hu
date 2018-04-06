@@ -1,11 +1,11 @@
 ---
-title: "Azure Linux virtuális gép ügynök áttekintése |} Microsoft Docs"
-description: "Megtudhatja, hogyan telepítse és konfigurálja a Linux-ügynök (waagent) a virtuális gép az Azure Fabric Controller kezeléséhez."
+title: Azure Linux virtuális gép ügynök áttekintése |} Microsoft Docs
+description: Megtudhatja, hogyan telepítse és konfigurálja a Linux-ügynök (waagent) a virtuális gép az Azure Fabric Controller kezeléséhez.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: szarkos
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: e41de979-6d56-40b0-8916-895bf215ded6
 ms.service: virtual-machines-linux
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: szark
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 59266c6d6452eeff56b05e60389ac14f0b2c3f1f
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: be3955c670382af1a2b558e8e7d656ca5a1f353d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Megismeréséhez és használatához az Azure Linux ügynök
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -62,7 +62,7 @@ A Microsoft Azure Linux-ügynök (waagent) a Linux és freebsd rendszerű kiép�
 * **Virtuálisgép-bővítmény**
   
   * Linux virtuális gép (IaaS) szoftver engedélyezéséhez és a konfigurációs automation Microsoft és a partnerei által készített összetevő beszúrása
-  * Virtuálisgép-bővítmény hivatkozási megvalósítása a [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
+  * A Virtuálisgép-bővítmény hivatkozási végrehajtása [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
 
 ## <a name="communication"></a>Kommunikáció
 Az ügynöknek a platformról információáramlás két csatornákon keresztül történnek:
@@ -74,7 +74,7 @@ Az ügynöknek a platformról információáramlás két csatornákon keresztül
 A következő rendszerek lettek tesztelve, és ismert, hogy az Azure Linux ügynök használata:
 
 > [!NOTE]
-> Ebben a listában eltérhet a Microsoft Azure platformon támogatott rendszerek hivatalos listáját itt: [http://support.microsoft.com/kb/2805216](http://support.microsoft.com/kb/2805216)
+> Ebben a listában a Microsoft Azure platformon támogatott rendszerek hivatalos listája eltérhet a itt leírtak szerint: [http://support.microsoft.com/kb/2805216](http://support.microsoft.com/kb/2805216)
 > 
 > 
 
@@ -117,7 +117,7 @@ A dokumentációban találja a [Azure Linux ügynök-tárház a Githubon](https:
 * deprovision: próbálja meg törölni a rendszer, és lehetővé teszi a megfelelő ismételt üzembe helyezéséhez. Ez a művelet törli a következő:
   
   * Az összes SSH állomáskulcsai (ha Provisioning.RegenerateSshHostKeyPair "y", a konfigurációs fájlban)
-  * A /etc/resolv.conf névkiszolgáló-konfiguráció
+  * Nameserver configuration in /etc/resolv.conf
   * Gyökér szintű jelszavát a /etc/shadow (ha Provisioning.DeleteRootPassword "y", a konfigurációs fájlban)
   * Gyorsítótárazott DHCP-ügyfél bérletek
   * A localhost.localdomain állomásnév visszaállítása
@@ -273,13 +273,13 @@ Alapértelmezett: n
 
 Ha be van állítva, napló részletességi súlyozott van. Waagent /var/log/waagent.log jelentkezik, és kihasználja a rendszer logrotate elforgatása naplókat.
 
-**AZ OPERÁCIÓS RENDSZER. EnableRDMA**  
+**OS.EnableRDMA**  
 Típus: logikai  
 Alapértelmezett: n
 
 Ha állítsa be, az ügynök megpróbálja telepíteni, és töltsön be egy RDMA egy rendszermag-illesztőprogramot, amely ugyanolyan verziójúak, mint az alapul szolgáló hardverben belső vezérlőprogramját.
 
-**AZ OPERÁCIÓS RENDSZER. RootDeviceScsiTimeout:**  
+**OS.RootDeviceScsiTimeout:**  
 Típus: egész szám  
 Alapértelmezett: 300
 

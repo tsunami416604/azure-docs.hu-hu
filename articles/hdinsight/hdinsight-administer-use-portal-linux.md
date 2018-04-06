@@ -1,8 +1,8 @@
 ---
-title: "Azure-portál használatával hdinsight Hadoop-fürtök kezelése |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozhatja létre és kezelheti a HDInsight-fürtök az Azure portál használatával."
+title: Azure-portál használatával hdinsight Hadoop-fürtök kezelése |} Microsoft Docs
+description: Megtudhatja, hogyan hozhatja létre és kezelheti a HDInsight-fürtök az Azure portál használatával.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: b0a9b808f2c1a65d10c1c12500325a9b5a34bc5a
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 9b5df3d5e355fac0c0ea4203d28170a2d3c04ad9
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Hdinsight Hadoop-fürtök kezelése az Azure-portál használatával
 
@@ -33,7 +33,7 @@ Használja a [Azure-portálon][azure-portal], kezelheti az Azure HDInsight Hadoo
 Kövesse a cikkben, szüksége lesz egy **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
 ## <a name="open-the-azure-portal"></a>Nyissa meg az Azure-portálon
-1. Jelentkezzen be [https://portal.azure.com](https://portal.azure.com).
+1. Jelentkezzen be [ https://portal.azure.com ](https://portal.azure.com).
 2. A portál megnyitása után végezhetők el:
 
    * Kattintson a **hozzon létre egy erőforrást** új fürt létrehozása a bal oldali menüből:
@@ -75,7 +75,7 @@ HDInsight-fürtök létrehozásakor meg kell adnia egy Azure-előfizetés. A fü
 Ha a NoRegisteredProviderFound hiba vagy a MissingSubscriptionRegistration hiba, lásd: [hibaelhárítás általános az Azure-telepítés az Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md).
 
 ## <a name="list-and-show-clusters"></a>Listában, és a fürt megjelenítése
-1. Jelentkezzen be [https://portal.azure.com](https://portal.azure.com).
+1. Jelentkezzen be [ https://portal.azure.com ](https://portal.azure.com).
 2. Kattintson a **a HDInsight-fürtök** a meglévő fürtök elemet a bal oldali menüből. Ha nem lát **a HDInsight-fürtök**, kattintson a **minden szolgáltatás** első.
 3. Kattintson a fürt nevére. Ha a fürt lista hosszú, az oldal tetején a szűrő is használhatja.
 4. Kattintson a listában, a – áttekintés oldalra fürt:
@@ -103,7 +103,7 @@ Ha a NoRegisteredProviderFound hiba vagy a MissingSubscriptionRegistration hiba,
     * **Külső Metaadattárakat**: a Hive és az Oozie metastores megtekintése. A metaadattárakat csak konfigurálható úgy, hogy a fürt létrehozása során. Lásd: [használni a Hive/Oozie metaadattárhoz](hdinsight-hadoop-provision-linux-clusters.md#use-hiveoozie-metastore).
     * **Parancsfájl-műveletek**: futtassa a Bash parancsfájlok a fürtön. Lásd: [testreszabása Linux-alapú HDInsight-fürtök használata parancsfájlművelet](hdinsight-hadoop-customize-cluster-linux.md).
     * **Alkalmazások**: hozzáadása a HDInsight-alkalmazások.  Lásd: [egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md).
-    * **Figyelési**: a fürt Azure Operations Management Suite és az Azure Naplóelemzés figyelésére.
+    * **Figyelési**: a fürt az Azure Naplóelemzés figyelésére.
     * **Tulajdonságok**: a fürt tulajdonságainak megtekintése.
     * **Storage-fiókok**: a storage-fiókok és a kulcsok megtekintéséhez. A storage-fiókok vannak konfigurálva, a fürt létrehozása során.
     * **Data Lake Store hozzáférés**: konfigurálja a hozzáférést a Data Lake tárolja.  Lásd: [HDInsight-fürtök létrehozása a Data Lake Store az Azure portál használatával](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
@@ -345,7 +345,7 @@ Lásd: [kezelése HDInsight-fürtök az Ambari webes felhasználói felület has
 ## <a name="browse-files"></a>Fájlok tallózása
 Az Azure portál használatával megkeresheti az alapértelmezett tároló tartalmának.
 
-1. Jelentkezzen be [https://portal.azure.com](https://portal.azure.com).
+1. Jelentkezzen be [ https://portal.azure.com ](https://portal.azure.com).
 2. Kattintson a **a HDInsight-fürtök** a meglévő fürtök elemet a bal oldali menüből.
 3. Kattintson a fürt nevére. Ha a fürt lista hosszú, az oldal tetején a szűrő is használhatja.
 4. Kattintson a **Tárfiókok** a fürt bal oldali menüből.

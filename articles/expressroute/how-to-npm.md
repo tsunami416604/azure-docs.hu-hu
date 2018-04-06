@@ -1,13 +1,13 @@
 ---
-title: "Hálózati Teljesítményfigyelő konfigurálása az Azure ExpressRoute-Kapcsolatcsoportok |} Microsoft Docs"
-description: "Konfigurálja a felhő alapú hálózatfigyelési az Azure ExpressRoute-Kapcsolatcsoportok."
+title: Hálózati Teljesítményfigyelő konfigurálása az Azure ExpressRoute-Kapcsolatcsoportok |} Microsoft Docs
+description: Konfigurálja a felhő alapú hálózatfigyelési az Azure ExpressRoute-Kapcsolatcsoportok.
 documentationcenter: na
 services: expressroute
 author: ajaycode
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: agummadi
-ms.openlocfilehash: 586d78e29177dd4a627c94cd754c21cc2b6f37d4
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 7d6f064be21f717c825843780fac28bc874f46ce
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Az ExpressRoute hálózati Teljesítményfigyelő konfigurálása
 
-Hálózati teljesítmény figyelése (NPM) egy olyan felhőalapú hálózati felügyeleti megoldás, amely figyeli az Azure-alapú telepítések és (fiókirodákban, stb.) a helyszíni helyek közötti kapcsolatot. NPM része a Microsoft Operations Management Suite (OMS). NPM most kibővíti az ExpressRoute, amely lehetővé teszi a hálózati teljesítmény figyeléséhez használja a magánhálózati társviszony-létesítés ExpressRoute-Kapcsolatcsoportok keresztül. NPM az ExpressRoute konfigurálásakor hálózati problémák azonosításához, és kiszűri észlelését.
+Hálózati teljesítmény figyelése (NPM) egy olyan felhőalapú hálózati felügyeleti megoldás, amely figyeli az Azure-alapú telepítések és (fiókirodákban, stb.) a helyszíni helyek közötti kapcsolatot. NPM Naplóelemzési részét képezi. NPM most kibővíti az ExpressRoute, amely lehetővé teszi a hálózati teljesítmény figyeléséhez használja a magánhálózati társviszony-létesítés ExpressRoute-Kapcsolatcsoportok keresztül. NPM az ExpressRoute konfigurálásakor hálózati problémák azonosításához, és kiszűri észlelését.
 
 A következőket teheti:
 
@@ -72,11 +72,11 @@ Munkaterület létrehozása, amely rendelkezik az ExpressRoute circuit(s) Vnetek
 
 1. Az a [Azure-portálon](https://portal.azure.com), válassza ki az előfizetést, amely rendelkezik a Vnetek társítottak, az ExpressRoute-kapcsolatcsoportot. Majd keresse meg a szolgáltatások listájában a **piactér** "Hálózati Teljesítményfigyelő". Megnyitásához kattintson a vissza a **hálózati Teljesítményfigyelő** lap.
 
->[!NOTE]
->Előfordulhat, hogy hozzon létre egy új munkaterületet, vagy egy meglévő munkaterületen.  Ha szeretne egy meglévő munkaterületen, győződjön meg róla, hogy a munkaterület áttelepítése megtörtént-e az új lekérdezési nyelv. [További információ...](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-log-search-upgrade)
->
+   >[!NOTE]
+   >Előfordulhat, hogy hozzon létre egy új munkaterületet, vagy egy meglévő munkaterületen.  Ha szeretne egy meglévő munkaterületen, győződjön meg róla, hogy a munkaterület áttelepítése megtörtént-e az új lekérdezési nyelv. [További információ...](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-log-search-upgrade)
+   >
 
-  ![portal](.\media\how-to-npm\3.png)<br><br>
+   ![portal](.\media\how-to-npm\3.png)<br><br>
 2. A fő alján **hálózati Teljesítményfigyelő** kattintson **létrehozása** megnyitásához **hálózati Teljesítményfigyelő - hozzon létre új megoldás** lap. Kattintson a **OMS-munkaterület - ki kell jelölnie egy munkaterület** munkaterületek lapjának megnyitásához. Kattintson a **+ hozzon létre új munkaterület** munkaterület lapjának megnyitásához.
 3. Az a **OMS-munkaterület** lapon jelölje be **hozzon létre új** és a következő beállításokat:
 
@@ -86,15 +86,15 @@ Munkaterület létrehozása, amely rendelkezik az ExpressRoute circuit(s) Vnetek
   * Hely - ki kell választania egy [támogatott régióban](#regions).
   * Tarifacsomagra - válassza az "ingyenes"
   
-  >[!NOTE]
-  >Az ExpressRoute-kapcsolatcsoport a világon bárhol lehet, és nem rendelkezik a munkaterületen ugyanabban a régióban kell.
-  >
+    >[!NOTE]
+    >Az ExpressRoute-kapcsolatcsoport a világon bárhol lehet, és nem rendelkezik a munkaterületen ugyanabban a régióban kell.
+    >
   
-  ![Munkaterület](.\media\how-to-npm\4.png)<br><br>
+    ![Munkaterület](.\media\how-to-npm\4.png)<br><br>
 4. Kattintson a **OK** mentéséhez és a beállítások-sablon üzembe helyezése. Amikor érvényesíti a sablont, kattintson a **létrehozása** központi telepítése a munkaterületen.
 5. A munkaterület központi telepítése után nyissa meg a **NetworkMonitoring(name)** létrehozott erőforrás. Ellenőrizze a beállításokat, majd kattintson a **megoldás további konfigurálást igényel**.
 
-  ![további beállítások](.\media\how-to-npm\5.png)
+   ![további beállítások](.\media\how-to-npm\5.png)
 
 ## <a name="agents"></a>2. lépés: Telepítse és konfigurálja az ügynökök
 
@@ -126,9 +126,9 @@ Azt javasoljuk, hogy telepítse a redundancia érdekében legalább két ügynö
 2. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra.
 3. Az a **licencfeltételeket** lapon olvassa el a licencfeltételeket, és kattintson a **elfogadom**.
 4. Az a **célmappa** lapon módosítani vagy hagyja az alapértelmezett telepítési mappa, és kattintson a **következő**.
-5. Az a **ügynök telepítésének beállításai** lap, dönthet úgy, hogy az ügynök csatlakoztatása az Azure Naplóelemzés (OMS) vagy az Operations Manager. Vagy a választási lehetőségek üresen hagyhatja, ha az ügynök később konfigurálni szeretné. Miután kiválasztotta a selection(s), kattintson a **következő**.
+5. Az a **ügynök telepítésének beállításai** lap, dönthet úgy, hogy az ügynök csatlakoztatása az Azure Log Analytics vagy az Operations Manager. Vagy a választási lehetőségek üresen hagyhatja, ha az ügynök később konfigurálni szeretné. Miután kiválasztotta a selection(s), kattintson a **következő**.
 
-  * Ha úgy döntött, hogy csatlakozni **Azure Naplóelemzés (OMS)**, illessze be a **munkaterület azonosítója** és **Munkaterületkulcsot** (elsődleges kulcs), másolja a Jegyzettömbbe az előző szakaszban. Ezután kattintson a **Tovább** gombra.
+  * Ha úgy döntött, hogy csatlakozni **Azure Naplóelemzés**, illessze be a **munkaterület azonosítója** és **Munkaterületkulcsot** (elsődleges kulcs), másolja a Jegyzettömbbe az előző szakaszban. Ezután kattintson a **Tovább** gombra.
 
     ![Azonosítója és kulcsa](.\media\how-to-npm\8.png)
   * Ha úgy döntött, hogy csatlakozni **Operations Manager**, a **felügyeleti csoport konfigurációja** írja be a **felügyeleti csoport neve**, **felügyeleti kiszolgáló** , és a **felügyeleti kiszolgáló portszáma**. Ezután kattintson a **Tovább** gombra.
@@ -139,7 +139,7 @@ Azt javasoljuk, hogy telepítse a redundancia érdekében legalább két ügynö
     ![Fiók](.\media\how-to-npm\10.png)
 6. Az a **telepítésre kész** lapon ellenőrizze a megadott beállításokat, és kattintson a **telepítése**.
 7. **A konfigurálás sikeresen befejeződött** lapon kattintson a **Befejezés** gombra.
-8. Amikor végzett, a Microsoft Monitoring Agent jelenik meg a Vezérlőpultot. Tekintse át a hiba a konfiguráció, és ellenőrizze, hogy az ügynök csatlakozik-e az Operational Insights (OMS). Csatlakoztatva az OMS-be, amikor az ügynök jeleníti meg a következő üzenet: **a Microsoft Monitoring Agent sikeresen csatlakozott-e a Microsoft Operations Management Suite szolgáltatással**.
+8. Amikor végzett, a Microsoft Monitoring Agent jelenik meg a Vezérlőpultot. Tekintse át a hiba a konfiguráció, és ellenőrizze, hogy az ügynök csatlakozik-e az Azure Naplóelemzés (OMS). Csatlakozás, az ügynök jeleníti meg a következő üzenet: **a Microsoft Monitoring Agent sikeresen csatlakozott-e a Microsoft Operations Management Suite szolgáltatással**.
 
 9. Ismételje meg a figyelést igénylő minden vnet.
 
@@ -162,8 +162,8 @@ Könnyen ellenőrizheti, hogy az ügynökök megfelelően kommunikálnak.
 
 1. Az ügynök figyelését a kiszolgálón nyissa meg a **Vezérlőpult**.
 2. Nyissa meg a **Microsoft-Figyelőügynök**.
-3. Kattintson a **Azure Naplóelemzés (OMS)** fülre.
-4. Az a **állapot** oszlopban láthatja, hogy az ügynök sikeresen csatlakoztatva az Operations Management Suite szolgáltatással.
+3. Kattintson a **Azure Naplóelemzés** fülre.
+4. Az a **állapot** oszlopban láthatja, hogy az ügynök sikeresen csatlakoztatva Naplóelemzési.
 
   ![status](.\media\how-to-npm\12.png)
 

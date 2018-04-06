@@ -1,6 +1,6 @@
 ---
-title: "A memórián belüli online Tranzakciófeldolgozási javítja az SQL túlhasználat telj |} Microsoft Docs"
-description: "Fogadja el a memórián belüli online Tranzakciófeldolgozási egy meglévő SQL-adatbázis tranzakciós teljesítmény javítása érdekében."
+title: A memórián belüli online Tranzakciófeldolgozási javítja az SQL túlhasználat telj |} Microsoft Docs
+description: Fogadja el a memórián belüli online Tranzakciófeldolgozási egy meglévő SQL-adatbázis tranzakciós teljesítmény javítása érdekében.
 services: sql-database
 author: jodebrui
 manager: craigg
@@ -10,14 +10,14 @@ ms.custom: develop databases
 ms.topic: article
 ms.date: 11/22/2016
 ms.author: jodebrui
-ms.openlocfilehash: 77e73ec1004babb5fce1e293acfade9264cd6945
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 00823ca44ec7135a9937bb37dd4ed58ec996c89d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>Használja a memórián belüli online Tranzakciófeldolgozási, az alkalmazás SQL-adatbázis teljesítményének növelése
-[A memórián belüli online Tranzakciófeldolgozási](sql-database-in-memory.md) is használható a tranzakció-feldolgozást, adatfeldolgozást és átmeneti adatáttelepítések esetében teljesítményének javítása [prémium](sql-database-service-tiers.md) Azure SQL-adatbázisok növelése az árképzési szint nélkül. 
+[A memórián belüli online Tranzakciófeldolgozási](sql-database-in-memory.md) is használható a tranzakció-feldolgozást, adatfeldolgozást és átmeneti adatáttelepítések esetében teljesítményének javítása [Premium és fontos üzleti szint](sql-database-service-tiers.md) adatbázisok növelése az árképzési szint nélkül. 
 
 > [!NOTE] 
 > Megtudhatja, hogyan [kvórum kulcsának adatbázis munkaterhelés megduplázódik, miközben csökkenti a DTU az SQL Database 70 %-kal](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
@@ -25,8 +25,8 @@ ms.lasthandoff: 03/16/2018
 
 Kövesse az alábbi lépéseket a meglévő adatbázis memórián belüli online Tranzakciófeldolgozási elfogadására.
 
-## <a name="step-1-ensure-you-are-using-a-premium-database"></a>1. lépés: Győződjön meg arról, a prémium szintű adatbázist használ
-A memórián belüli online Tranzakciófeldolgozási csak Premium adatbázisokat támogatja. A memóriában támogatott, ha a visszaadott eredmény 1 (0):
+## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>1. lépés: Győződjön meg arról, a prémium szintű és kritikus fontosságú üzleti szint adatbázist használ
+A memórián belüli online Tranzakciófeldolgozási csak prémium szintű és kritikus fontosságú üzleti szint adatbázisok esetén támogatott. A memóriában támogatott, ha a visszaadott eredmény 1 (0):
 
 ```
 SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');

@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Által Facebook munkahelyi konfigurálása az automatikus felhasználó-átadási az Azure Active Directoryval |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a munkahely által Facebook között."
+title: 'Oktatóanyag: Által Facebook munkahelyi konfigurálása az automatikus felhasználó-átadási az Azure Active Directoryval |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a munkahely által Facebook között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 15cbaafcd86c576f4789a61ed80c526b6fe705ab
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: d42a6b63833bffc3cce1830a728ec21083b25dc9
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés által Facebook munkahelyi konfigurálása
 
@@ -57,7 +57,7 @@ A létesítési szolgáltatás engedélyezése és konfigurálása, mielőtt sz�
 Ez a szakasz végigvezeti az Azure AD munkahelyi csatlakozás Facebook a felhasználói fiók kiépítése API és a létesítési szolgáltatás létrehozása, konfigurálása frissítése, és tiltsa le a munkahelyi Facebook alapján a felhasználók és csoportok hozzárendelése az Azure AD által hozzárendelt felhasználói fiókok.
 
 >[!Tip]
->Is választhatja, hogy engedélyezze SAML-alapú egyszeri bejelentkezést a munkahely által Facebook, a következő utasításokat megadott [Azure-portálon](https://portal.azure.com). Egyszeri bejelentkezés konfigurálható függetlenül automatikus kiépítés, bár ez a két funkció egészítse ki egymást.
+>Is választhatja, hogy a munkahely által Facebook SAML-alapú egyszeri bejelentkezés engedélyezése, utasítások megadott [Azure-portálon](https://portal.azure.com). Egyszeri bejelentkezés konfigurálható függetlenül automatikus kiépítés, bár ez a két funkció egészítse ki egymást.
 
 ### <a name="to-configure-user-account-provisioning-to-workplace-by-facebook-in-azure-ad"></a>Konfigurálhatja a felhasználói fiók kiépítése munkahelyi Facebook által az Azure ad-ben:
 
@@ -75,7 +75,7 @@ Az Azure AD képes való automatikus szinkronizálása a munkahelyi Facebook ál
 
     ![kiépítés folyamatban](./media/active-directory-saas-workplacebyfacebook-provisioning-tutorial/provisioning.png)
 
-5. Az a **rendszergazdai hitelesítő adataival** szakaszt, adja meg a titkos kulcs Token Facebook-rendszergazda által a munkahelyen és a bérlői URL-cím értékét állítsa `https://www.facebook.com/scim/v1/` .
+5. Az a **rendszergazdai hitelesítő adataival** szakaszt, írja be a hozzáférési jogkivonat a Facebook-rendszergazda által a munkahelyhez, és adja meg a bérlői URL-cím értéket `https://www.facebook.com/scim/v1/` . Tapasztalja [utasításokat](https://developers.facebook.com/docs/workplace/integrations/custom-integrations/apps) munkahelyi fiókhoz egy hozzáférési jogkivonat létrehozásával. 
 
 6. Az Azure portálon kattintson **kapcsolat tesztelése** biztosításához az Azure AD csatlakozhat a munkahelyi Facebook-alkalmazást. Ha nem sikerül, győződjön meg arról, a Facebook-fiókkal munkahelyi Team rendszergazdai jogosultságokkal rendelkezik.
 

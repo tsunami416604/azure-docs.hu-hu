@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 3f3ed53e3c6606ca540cc2e760f2f6280ccf5cc2
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 9af1a82530d6e2d694f56322b7107796df73a2d5
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Egy Azure fájlszinkronizálás (előzetes verzió) telepítésének tervezése
 Sync szolgáltatás használatával Azure fájl (előzetes verzió) központosítása fájlmegosztások a szervezet Azure fájlokban, ugyanakkor változatlanul megőrizze a rugalmasság, a teljesítmény és a kompatibilitási egy helyszíni fájlkiszolgáló. Azure fájlszinkronizálás átalakítja a Windows Server az Azure fájlmegosztás gyors gyorsítótárába. Minden protokoll, amely a Windows Server helyileg, az adatok eléréséhez használhatja, többek között a ftps-t, SMB és NFS. Akkor is annyi gyorsítótárak világszerte szükség szerint.
@@ -173,6 +173,7 @@ Az Azure fájlszinkronizálás csak a következő régiókban Preview érhető e
 |--------|---------------------|
 | Kelet-Ausztrália | Új-Dél-Wales |
 | Közép-Kanada | Toronto |
+| Kelet-Kanada | Quebec City |
 | USA középső régiója | Iowa |
 | Kelet-Ázsia | Hongkong |
 | USA keleti régiója | Virginia |
@@ -180,7 +181,6 @@ Az Azure fájlszinkronizálás csak a következő régiókban Preview érhető e
 | Észak-Európa | Írország |
 | Délkelet-Ázsia | Szingapúr |
 | Az Egyesült Királyság déli régiója | London |
-| USA nyugati régiója Cental |
 | Nyugat-Európa | Hollandia |
 | USA nyugati régiója | Kalifornia |
 
@@ -191,6 +191,6 @@ A képen támogatjuk a szinkronizálás csak a az Azure fájlmegosztások, amely
 
 ## <a name="next-steps"></a>További lépések
 * [Fontolja meg a tűzfal és a proxykiszolgáló beállításait](storage-sync-files-firewall-and-proxy.md)
-* [Az Azure-fájlok központi telepítésének tervezése](storage-files-planning.md)
+* [Az Azure Files üzembe helyezésének megtervezése](storage-files-planning.md)
 * [Az Azure Files telepítése](storage-files-deployment-guide.md)
 * [Az Azure File-szinkronizálás telepítése](storage-sync-files-deployment-guide.md)

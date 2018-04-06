@@ -1,8 +1,8 @@
 ---
-title: "Azure HDInsight-fürtök figyelése az Azure Naplóelemzés lekérdezése |} Microsoft Docs"
-description: "Útmutató a HDInsight-fürtök a futó feladatok figyelése az Azure Naplóelemzés lekérdezések futtatása."
+title: Azure HDInsight-fürtök figyelése az Azure Naplóelemzés lekérdezése |} Microsoft Docs
+description: Útmutató a HDInsight-fürtök a futó feladatok figyelése az Azure Naplóelemzés lekérdezések futtatása.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: f9e023ae8d6c50049b588cf056629cd8d46ee603
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 1b2f5fc9bd4f8fc8cd70437e38831595d0a8a819
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="query-azure-log-analytics-to-monitor-hdinsight-clusters"></a>A HDInsight-fürtök figyelése az Azure Naplóelemzés lekérdezése
 
@@ -33,7 +33,7 @@ Megtudhatja, hogyan Azure Naplóelemzés a figyelheti az Azure HDInsight-fürtö
 
 * Konfigurálnia kell egy HDInsight-fürt használata az Azure Naplóelemzés. Útmutatásért lásd: [használata Azure Naplóelemzés HDInsight-fürtökkel](hdinsight-hadoop-oms-log-analytics-tutorial.md).
 
-* Hozzá kellett adnia a HDInsight fürt-specifikus felügyeleti megoldásokat a [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) a munkaterület [adja hozzá a HDInsight fürt megoldásokszolgáltatáshoz](hdinsight-hadoop-oms-log-analytics-management-solutions.md).
+* Hozzá kellett adnia a HDInsight fürt-specifikus felügyeleti megoldásokat a [Naplóelemzési](../operations-management-suite/operations-management-suite-overview.md) a munkaterület [adja hozzá a HDInsight fürt felügyeleti megoldásokat Naplóelemzési](hdinsight-hadoop-oms-log-analytics-management-solutions.md).
 
 ## <a name="analyze-hdinsight-cluster-metrics"></a>A HDInsight fürt metrikáinak elemzése
 
@@ -86,7 +86,7 @@ Megtudhatja, hogyan keresse meg a hibaüzeneteket adott időszak alatt történj
 
     ![Nyissa meg OMS irányítópult](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-open-oms-dashboard.png "nyitott OMS irányítópult")
 
-2. Az OMS-irányítópult, a kezdőképernyőn kattintson **naplófájl-keresési**.
+2. Kattintson az OMS-portálon, a kezdőképernyőn a **naplófájl-keresési**.
 
     ![Nyissa meg a keresési napló](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-click-log-search.png "nyissa meg a keresési napló")
 
@@ -126,7 +126,7 @@ Riasztás létrehozása kívánt lekérdezés is használhatja.
 
     ![Nyissa meg OMS irányítópult](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-open-oms-dashboard.png "nyitott OMS irányítópult")
 
-2. Az OMS-irányítópult, a kezdőképernyőn kattintson **naplófájl-keresési**.
+2. Kattintson az OMS-portálon, a kezdőképernyőn a **naplófájl-keresési**.
 
     ![Nyissa meg a keresési napló](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-click-log-search.png "nyissa meg a keresési napló")
 
@@ -152,5 +152,5 @@ Riasztás létrehozása kívánt lekérdezés is használhatja.
 
 ## <a name="see-also"></a>Lásd még
 
-* [Az Operations Management Suite Naplóelemzési használata](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
+* [A Naplóelemzési használata](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
 * [A Naplóelemzési riasztási szabályok létrehozása](../log-analytics/log-analytics-alerts-creating.md)

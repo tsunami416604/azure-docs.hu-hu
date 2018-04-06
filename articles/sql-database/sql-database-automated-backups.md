@@ -1,20 +1,21 @@
 ---
-title: "Azure SQL adatbázis automatikus, georedundáns biztonsági mentések |} Microsoft Docs"
-description: "SQL-adatbázis automatikusan létrehoz egy helyi adatbázis biztonsági másolatának néhány percenként és Azure írásvédett georedundáns tárolást használ georedundancia."
+title: Azure SQL adatbázis automatikus, georedundáns biztonsági mentések |} Microsoft Docs
+description: SQL-adatbázis automatikusan létrehoz egy helyi adatbázis biztonsági másolatának néhány percenként és Azure írásvédett georedundáns tárolást használ georedundancia.
 services: sql-database
-author: CarlRabeler
-manager: jhubbard
+author: anosov1960
+manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
 ms.workload: Active
-ms.date: 07/05/2017
-ms.author: carlrab
-ms.openlocfilehash: 053dd680af020aa05bc071c49f0f47ebe6a8f0da
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.date: 04/04/2018
+ms.author: sashan
+ms.reviewer: carlrab
+ms.openlocfilehash: ab1793621950fd57d3f0be545772d85b32f5d7b8
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>További tudnivalók az automatikus SQL-adatbázis biztonsági mentése
 
@@ -22,7 +23,7 @@ SQL-adatbázis automatikusan létrehozza és használ az Azure-írásvédett geo
 
 ## <a name="what-is-a-sql-database-backup"></a>Mi az az SQL-adatbázis biztonsági másolatának?
 
-SQL-adatbázis SQL Server technológiát használja, hozzon létre a [teljes](https://msdn.microsoft.com/library/ms186289.aspx), [különbözeti](https://msdn.microsoft.com/library/ms175526.aspx), és [tranzakciónapló](https://msdn.microsoft.com/library/ms191429.aspx) biztonsági mentéseket. A tranzakciónapló biztonsági mentései a teljesítményszintet és adatbázis-tevékenység gyakorisággal általában 5-10 percenként fordulhat elő. Tranzakciónapló biztonsági mentései, teljes és különbözeti biztonsági másolat, lehetővé teszi egy meghatározott-időpontban ugyanarra a kiszolgálóra, amelyen az adatbázis egy adatbázis visszaállítása. Ha egy adatbázis visszaállításához a szolgáltatás kimenő biztonsági mentések visszaállítandó teljes, különbségi és tranzakciós naplófájlokat számadatok.
+SQL-adatbázis SQL Server technológiát használja, hozzon létre a [teljes](https://msdn.microsoft.com/library/ms186289.aspx), [különbözeti](https://msdn.microsoft.com/library/ms175526.aspx), és [tranzakciónapló](https://msdn.microsoft.com/library/ms191429.aspx) időpontban alkalmazásában biztonsági másolatok visszaállítása (PITR). A tranzakciónapló biztonsági mentései a teljesítményszintet és adatbázis-tevékenység gyakorisággal általában 5-10 percenként fordulhat elő. Tranzakciónapló biztonsági mentései, teljes és különbözeti biztonsági másolat, lehetővé teszi egy meghatározott-időpontban ugyanarra a kiszolgálóra, amelyen az adatbázis egy adatbázis visszaállítása. Ha egy adatbázis visszaállításához a szolgáltatás kimenő biztonsági mentések visszaállítandó teljes, különbségi és tranzakciós naplófájlokat számadatok.
 
 
 A biztonsági mentések használhatók:
@@ -30,7 +31,7 @@ A biztonsági mentések használhatók:
 * Állítsa vissza egy adatbázist egy-időpontban a megőrzési időn belül. Ez a művelet egy új adatbázist fog létrehozni az eredeti adatbázist ugyanarra a kiszolgálóra.
 * A törölt adatbázisok visszaállítása az idő törölve lett vagy a megőrzési időn belül. A törölt adatbázis visszaállítása ugyanarra a kiszolgálóra, amelyen létrehozták az eredeti adatbázist csak végezhető el.
 * Állítsa vissza egy adatbázist egy másik földrajzi régióban. Ez lehetővé teszi, hogy ha a kiszolgáló és az adatbázis nem tud hozzáférni a földrajzi katasztrófa utáni helyreállítás. Minden meglévő kiszolgálóról a bárhol a világon hozna létre egy új adatbázist. 
-* Adatbázis visszaállítása egy adott biztonsági másolatból az Azure Recovery Services-tároló tárolja. Ez lehetővé teszi, hogy egy régi verziója megfelelőségi kérelem teljesítéséhez vagy egy régi verziója, az alkalmazás futtatásához az adatbázis visszaállításához. Lásd: [hosszú távú megőrzési](sql-database-long-term-retention.md).
+* Ha az adatbázis nincs konfigurálva a hosszú távú adatmegőrzési állítsa vissza egy adatbázist egy hosszú távú biztonsági másolat. Ez lehetővé teszi, hogy egy régi verziója megfelelőségi kérelem teljesítéséhez vagy egy régi verziója, az alkalmazás futtatásához az adatbázis visszaállításához. Lásd: [hosszú távú megőrzési](sql-database-long-term-retention.md).
 * A helyreállítás végrehajtásához tekintse meg [adatbázis visszaállítása biztonsági másolatból](sql-database-recovery-using-backups.md).
 
 > [!NOTE]
@@ -49,10 +50,14 @@ Minden egyes SQL-adatbázis biztonsági mentése van a megőrzési időtartam, a
 * Alapszintű service érvényben lévő korlát miatt 7 nap.
 * Standard szintű szolgáltatási rétegben 35 napon.
 * Prémium szolgáltatásszintet 35 napon.
+* Általános célú érvényben lévő korlát miatt konfigurálhatók maximális 35 nap (alapértelmezés szerint 7 nap) *
+* Üzleti kritikus szint (előzetes verzió) konfigurálhatók maximális 35 nap (alapértelmezés szerint 7 nap) *
 
-Ha használni az adatbázist a Standard vagy Premium szolgáltatásszintek a Basic, a biztonsági másolatok hét napja. Már nem érhetők el minden létező biztonsági másolatai, régebbi, mint hét nap. 
+\* Előzetes a biztonsági mentések megőrzési időtartam nem konfigurálható, 7 napra rögzített.
 
-Történő frissítés után az adatbázis alapszintű rétegben Standard vagy prémium, SQL-adatbázis meglévő biztonsági másolatok tartja, amíg azokat régi 35 napon. Új biztonsági másolatok 35 napon előforduló tartja.
+Egy adatbázis a biztonsági mentések hosszabb megőrzési rövidebb adatmegőrzési adatbázishoz át, a cél réteg megőrzési időnél régebbi összes létező biztonsági már nem érhetők el.
+
+Ha hosszabb időtartamra adatbázis egy adatbázis egy rövidebb adatmegőrzési időtartammal frissít, SQL-adatbázis meglévő biztonsági másolatok tartja, mindaddig, amíg a hosszabb megőrzési időtartamot. 
 
 Ha töröl egy adatbázist, SQL-adatbázis a biztonsági mentések tartja azt szeretné, online adatbázis azonos módon. Tegyük fel, hogy törli a hét napos megőrzési idővel rendelkező alapszintű adatbázis. Olyan biztonsági mentésből négy napos három további napig kerül.
 
@@ -61,17 +66,17 @@ Ha töröl egy adatbázist, SQL-adatbázis a biztonsági mentések tartja azt sz
 > 
 
 ## <a name="how-to-extend-the-backup-retention-period"></a>Hogyan terjeszthető ki a biztonsági mentés megőrzési időszakot?
-Ha az alkalmazás által igényelt, a biztonsági mentések érhetők el a hosszabb ideig kiterjesztheti a beépített megőrzési időszak úgy konfigurálja a hosszú távú biztonsági mentés megőrzési házirend az egyes adatbázisok (balról jobbra házirend). Ez lehetővé teszi, hogy terjessze ki a beépített informatikai megőrzési időtartam legfeljebb 10 év a 35 napon. További információkért lásd: [Hosszú távú megőrzés](sql-database-long-term-retention.md).
 
-Miután hozzáadta a balról jobbra házirend Azure-portálon vagy API-val egy adatbázist, a heti teljes adatbázis biztonsági mentései automatikusan kerülnek a saját Azure Backup szolgáltatás tárolóba. Ha az adatbázis TDE van titkosítva a rendszer automatikusan titkosítja a biztonsági mentések aktívan.  A Services-tárolónak automatikusan törli a lejárt biztonsági mentések időbélyegzőik és a balról jobbra házirend alapján.  Így nem kell a biztonsági mentés ütemezése kezeléséhez, vagy a karbantartás, régi fájlok foglalkoznia. A visszaállítási API támogatja a tárolóban található biztonsági másolataihoz, mindaddig, amíg a tárolóban van az SQL-adatbázis ugyanahhoz az előfizetéshez. Az Azure portálon vagy a PowerShell használatával is a biztonsági mentéseket hozzáférhetnek.
+Ha az alkalmazás által igényelt, hogy a biztonsági másolatok elérhetők a maximális PITR biztonsági mentés megőrzési időszaknál hosszabb ideig, konfigurálhatja az egyes adatbázisok (balról jobbra házirend) egy hosszú távú biztonsági mentés megőrzési házirend. Ez lehetővé teszi, hogy terjessze ki a beépített informatikai megőrzési időtartam legfeljebb 35 nappal a legfeljebb 10 év. További információkért lásd: [Hosszú távú megőrzés](sql-database-long-term-retention.md).
 
-> [!TIP]
-> Útmutató, váltásról [és az Azure SQL Database hosszú távú biztonsági mentés megőrzési visszaállítás konfigurálása](sql-database-long-term-backup-retention-configure.md)
->
+Miután hozzáadta a balról jobbra házirend Azure-portálon vagy API-val egy adatbázist, a heti teljes adatbázis biztonsági mentései automatikusan másolódnak RA-GRS külön tárolót a hosszú távú megőrzési (balról jobbra tároló). Ha az adatbázis TDE van titkosítva a rendszer automatikusan titkosítja a biztonsági mentések aktívan. SQL-adatbázis automatikusan törli a lejárt biztonsági mentések időbélyegzőik és a balról jobbra házirend alapján. A házirend telepítése után, nem kell kezelheti a biztonsági mentési ütemezést, vagy a karbantartás, régi fájlok foglalkoznia. Az Azure portálon vagy a PowerShell segítségével megtekintheti, vissza, vagy törölje a biztonsági mentéseket.
 
 ## <a name="are-backups-encrypted"></a>Biztonsági mentés titkosítása?
 
 Ha a TDE engedélyezve van az Azure SQL-adatbázis, a biztonsági mentések is titkosítást kapnak. Minden új Azure SQL-adatbázisok TDE alapértelmezés szerint engedélyezve vannak konfigurálva. A TDE további információkért lásd: [átlátható adattitkosítást az Azure SQL Database](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
+
+## <a name="are-the-automatic-backups-compliant-with-gdpr"></a>Az automatikus biztonsági mentésekhez GDPR megfelelő vannak?
+Ha a biztonsági mentés személyes adatokat tartalmaz, amely függvényében általános Data Protection szabályozás (GDPR), meg kell fokozott biztonsági intézkedéseket a jogosulatlan hozzáférés elleni védelméhez. Ahhoz, hogy megfeleljenek a GDPR, szükségük van egy módszerre, az adatok tulajdonosai a kérelmek kezelésére anélkül, hogy a biztonsági másolatok eléréséhez.  A rövid távú biztonsági mentéshez, egy megoldás lehet, hogy csökkentse a biztonsági mentés a 30 napos ablakban, amelyet az az idő engedélyezett az adatok hozzáférési kérelmek befejezéséhez.  Ha hosszabb távú biztonsági mentés szükség, javasoljuk, hogy csak a "álnevesített" adatok tárolása a biztonsági másolatok. Például ha egy személy kapcsolatos adatok törölve vagy frissítve van szüksége, akkor nem kell törlése vagy a meglévő biztonsági másolatok frissítése. További információ a GDPR a bevált gyakorlat található [Adatszabályozást GDPR megfelelőségi](https://info.microsoft.com/DataGovernanceforGDPRCompliancePrinciplesProcessesandPractices-Registration.html).
 
 ## <a name="next-steps"></a>További lépések
 

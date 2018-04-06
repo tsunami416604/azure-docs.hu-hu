@@ -1,13 +1,13 @@
 ---
-title: "Az Operations Management Suite (OMS) – az Azure HDInsight HBase figyelése |} Microsoft Docs"
-description: "Az Azure Naplóelemzés OMS használatával figyelheti a HDInsight HBase-fürtökkel."
+title: Az Azure Naplóelemzés – az Azure HDInsight HBase figyelése |} Microsoft Docs
+description: Azure Log Analytics segítségével figyelheti a HDInsight HBase-fürtökkel.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.workload: big-data
@@ -16,23 +16,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: f78d570cfa8b040cd7673a5e14e6a992511f60bb
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 3746713cdadff0a4c6f4fe25d278e8d78555f9d6
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="monitor-hbase-with-operations-management-suite-oms"></a>A figyelő HBase Operations Management Suite (OMS)
+# <a name="monitor-hbase-with-log-analytics"></a>A Naplóelemzési figyelő HBase
 
 HDInsight HBase figyelési használja az Azure Naplóelemzés HDInsight HBase teljesítményadatok gyűjtéséhez a HDInsight-fürt csomópontjának. A HBase-specifikus képi megjelenítések és irányítópultokat, a metrikákat, és képes létrehozni az egyéni ellenőrzési szabályok és értesítések eszközök biztosít. Hatékonyan nyomon követheti a metrikákat több HDInsight-HBase-fürtök több Azure-előfizetések között.
 
-A Naplóelemzési rendszer szolgáltatása [Operations Management Suite (OMS)](../../operations-management-suite/operations-management-suite-overview.md) , amely figyeli a felhőben és a helyszíni környezetek karbantartásához azok rendelkezésre állását és teljesítményét. A Naplóelemzési elő az erőforrások a felhőalapú és helyszíni környezetben és egyéb eszközök, így elemzési biztosít több forrásból származó adatokat gyűjt.
+A Naplóelemzési rendszer szolgáltatása [Azure](../../operations-management-suite/operations-management-suite-overview.md) , amely figyeli a felhőben és a helyszíni környezetek karbantartásához azok rendelkezésre állását és teljesítményét. A Naplóelemzési elő az erőforrások a felhőalapú és helyszíni környezetben és egyéb eszközök, így elemzési biztosít több forrásból származó adatokat gyűjt.
 
-[Elemzési megoldásokat jelentkezzen](../../log-analytics/log-analytics-add-solutions.md) funkciók hozzáadása az OMS-ben, további adatokat és elemzésére szolgáló eszközöket. Napló elemzési megoldásokat programot, a képi megjelenítés és az adatokat, amely a metrikákat biztosít egy adott területre beszerzési szabályok gyűjteménye. A megoldás is határozhatnak meg új rekordtípusokat gyűjtendő, és ezeket a rekordokat napló keresések vagy új felhasználó csatolófunkcióit elemzése.
+[Elemzési megoldásokat jelentkezzen](../../log-analytics/log-analytics-add-solutions.md) funkciókat adnak hozzá Naplóelemzési további adatokat és elemzésére szolgáló eszközöket. Napló elemzési megoldásokat programot, a képi megjelenítés és az adatokat, amely a metrikákat biztosít egy adott területre beszerzési szabályok gyűjteménye. A megoldás is határozhatnak meg új rekordtípusokat gyűjtendő, és ezeket a rekordokat napló keresések vagy új felhasználó csatolófunkcióit elemzése.
 
 [Betekintést & Analytics](https://azure.microsoft.com/pricing/details/insight-analytics/) a Naplóelemzési platformra épül. Naplóelemzési lehetőségeket, és fizessen / GB okozhatnak a szolgáltatásba, vagy váltson a munkaterület Insight & Analytics csomagra, és kell fizetnie a szolgáltatás által kezelt csomópontonként. Betekintést & Analytics kínál felülbírálja a Naplóelemzési által kínált lehetőségeket. A HBase figyelésére szolgáló megoldás Naplóelemzési vagy a betekintést, és az elemzés érhető el.
 
-Amikor egy HDInsight HBase figyelésére szolgáló megoldás, létre kell hoznia egy OMS-munkaterület. Egyes munkaterületeken, mint egy egyedi Naplóelemzési környezetben a saját adattárház, az adatforrások és a megoldások. Több munkaterületek hozhatja létre, az előfizetés támogatja a több környezetekben, például üzemi és teszteléséhez.
+Amikor egy HDInsight HBase figyelésére szolgáló megoldás, létre kell hoznia egy Naplóelemzési munkaterület. Egyes munkaterületeken, mint egy egyedi Naplóelemzési környezetben a saját adattárház, az adatforrások és a megoldások. Több munkaterületek hozhatja létre, az előfizetés támogatja a több környezetekben, például üzemi és teszteléséhez.
 
 ## <a name="provision-hdinsight-hbase-monitoring"></a>Provision HDInsight HBase figyelése
 
@@ -50,7 +50,7 @@ Amikor egy HDInsight HBase figyelésére szolgáló megoldás, létre kell hozni
 
     ![Felügyeleti megoldások ablaktábla](./media/apache-hbase-monitor-with-oms/hbase-solution.png)  
 6. A felügyeleti megoldás ablaktáblában tekintse át a a felügyeleti megoldás, és válassza **létrehozása**. 
-7. Az a *felügyeleti megoldás neve* ablaktáblában válasszon társítani a felügyeleti megoldás, vagy hozzon létre egy új OMS-munkaterület meglévő munkaterületet, és állítsa be azt.
+7. Az a *felügyeleti megoldás neve* ablaktáblában válasszon társítani a felügyeleti megoldás, vagy hozzon létre egy új Naplóelemzési munkaterület meglévő munkaterületet, és állítsa be azt.
 8. Az Azure-előfizetéssel, erőforráscsoport és és a megfelelő helyen munkaterület beállításainak módosítása. 
     ![megoldás munkaterület](./media/apache-hbase-monitor-with-oms/solution-workspace.png)  
 9. Kattintson a **Létrehozás** gombra.  
@@ -68,9 +68,9 @@ Amikor egy HDInsight HBase figyelésére szolgáló megoldás, létre kell hozni
 
 HDInsight HBase figyelési által biztosított eszközöket használja, szüksége a fürt konfigurálásához arra, hogy a metrikák a régió server átjárócsomópontokkal és ZooKeeper csomópontok szolgáltatáshoz továbbítja. Ez a konfiguráció végezhető el a parancsfájlművelet futtatott a HDInsight HBase-fürtöt.
 
-### <a name="get-oms-workspace-id-and-workspace-key"></a>OMS-munkaterület azonosítója és a munkaterület-kulcs beszerzése
+### <a name="get-log-analytics-workspace-id-and-workspace-key"></a>Napló Analytics munkaterület Azonosítóját és kulcsát beolvasása
 
-OMS munkaterületének Azonosítóját és kulcsát ahhoz, hogy a fürt csomópontja Naplóelemzés szolgáltatással való hitelesítésre van szüksége. Ezek az értékek beolvasása:
+Napló Analytics munkaterületének Azonosítóját és kulcsát ahhoz, hogy a fürt csomópontja Naplóelemzés szolgáltatással való hitelesítésre van szüksége. Ezek az értékek beolvasása:
 
 1. A HBase figyelés panel az Azure portálon válassza ki a áttekintése.
 
@@ -146,5 +146,5 @@ A parancsfájl művelet befejeződése után megtekintheti az adatokat a figyel�
 
 ## <a name="next-steps"></a>További lépések
 
-* [Riasztásokat hoznak létre az OMS szolgáltatáshoz](../../log-analytics/log-analytics-alerts-creating.md)
+* [A Naplóelemzési riasztásokat hoznak létre](../../log-analytics/log-analytics-alerts-creating.md)
 * [Napló keresések rendelkező adatok kereséséhez az Azure Naplóelemzés](../../log-analytics/log-analytics-log-searches.md).

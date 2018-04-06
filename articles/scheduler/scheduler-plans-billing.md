@@ -1,11 +1,11 @@
 ---
-title: "Csomagok és a számlázás az Azure Schedulerrel"
-description: "Csomagok és a számlázás az Azure Schedulerrel"
+title: Csomagok és a számlázás az Azure Schedulerrel
+description: Csomagok és a számlázás az Azure Schedulerrel
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: 
+editor: ''
 ms.assetid: 13a2be8c-dc14-46cc-ab7d-5075bfd4d724
 ms.service: scheduler
 ms.workload: infrastructure-services
@@ -14,33 +14,27 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
-ms.openlocfilehash: f0662230c5d1663e37ee2be58f234934ec3d55dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b25e97b0f0d0b6f63134a774856eb7ec8f77b679
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="plans-and-billing-in-azure-scheduler"></a>Csomagok és a számlázás az Azure Schedulerrel
 ## <a name="job-collection-plans"></a>Feladat gyűjtési terveket
-Feladatgyűjtemények az Azure Scheduler számlázható entitás. Feladatgyűjtemények feladatok száma tartalmazhat, és a három csomagokban – ingyenes, Standard és Premium –, az alábbiakban található származnak.
+Feladatgyűjtemények az Azure Scheduler számlázható entitás. Feladatgyűjtemények feladatok száma tartalmazhat, és a három csomagokban – Standard, P10 Premium és P20 prémium –, amelyek folyamata az alábbiakban olvasható származnak.
 
 | **Feladat gyűjtési terv** | **Feladat gyűjteményenként feladatok maximális száma** | **Maximális ismétlődésére** | **Maximális Feladatgyűjteményei előfizetésenként** | **Korlátok** |
 |:--- |:--- |:--- |:--- |:--- |
-| **Ingyenes** |5 feladatok feladat gyűjteményenként |Óránként egyszer. Óránként többször nem hajtható végre feladatok |Egy előfizetés engedélyezett legfeljebb 1 szabad feladatgyűjteményt |Nem használható [HTTP kimenő engedélyezési objektum](scheduler-outbound-authentication.md) |
 | **Standard** |50 feladatok feladat gyűjteményenként |Percenkénti. Percenként egyszer többször nem hajtható végre feladatok |Egy előfizetés legfeljebb 100 szabványos feladatgyűjteményei engedélyezett |A Feladatütemező szolgáltatás teljes készletét a hozzáférést |
 | **P10 Premium** |50 feladatok feladat gyűjteményenként |Percenkénti. Percenként egyszer többször nem hajtható végre feladatok |Egy előfizetés legfeljebb 10 000 P10 prémium feladatgyűjteményei engedélyezett. <a href="mailto:wapteams@microsoft.com">Kapcsolatfelvétel</a> több. |A Feladatütemező szolgáltatás teljes készletét a hozzáférést |
 | **P20 prémium** |1000 feladatok feladat gyűjteményenként |Percenkénti. Percenként egyszer többször nem hajtható végre feladatok |Egy előfizetés legfeljebb 10 000 P20 prémium feladatgyűjteményei engedélyezett. <a href="mailto:wapteams@microsoft.com">Kapcsolatfelvétel</a> több. |A Feladatütemező szolgáltatás teljes készletét a hozzáférést |
 
 ## <a name="upgrades-and-downgrades-of-job-collection-plans"></a>Frissítések és a feladat gyűjtési terveket Downgrades
-Előfordulhat, hogy frissítse vagy visszaminősítését egy feladat gyűjtési terv bármikor elérheti az ingyenes, a Standard és Premium csomagok között. Azonban ha visszaminősítése való tartalmaz szabad feladatgyűjteményt, az alacsonyabb szintre való visszalépést sikertelenek lehetnek a következő okok egyikéből adódóan:
-
-* Az előfizetés már tartalmaz szabad feladatgyűjteményt létezik
-* A feladat, a feladatgyűjteményben rendelkezik egy magasabb ismétlődési, mint a feladatok az ingyenes feladatgyűjtemények megengedett. A maximális engedélyezett tartalmaz szabad feladatgyűjteményt ismétlődési van óránként egyszer
-* A feladatgyűjtemény tartoznak 5-nél több feladatok
-* A feladat a feladatgyűjteményben rendelkezik HTTP vagy HTTPS PROTOKOLLT használó művelet egy [HTTP kimenő engedélyezési objektum](scheduler-outbound-authentication.md)
+Előfordulhat, hogy frissítse vagy visszaminősítését egy feladat gyűjtési terv bármikor a Standard, P10 Premium és P20 prémium csomagok között.
 
 ## <a name="billing-and-azure-plans"></a>Számlázási és az Azure-csomagok
-Előfizetések nem szabad felszámított feladatgyűjteményei. Ha több mint 100 szabványos feladatgyűjteményei (szabványos 10 számlázási egységek), majd egy jobb üzletet, hogy minden feladat gyűjtemény a prémium tervének.
+Ha több mint 100 szabványos feladatgyűjteményei (szabványos 10 számlázási egységek), majd egy jobb üzletet, hogy minden feladat gyűjtemény a prémium tervének.
 
 Ha egy szabványos feladatgyűjtemény és egy prémium szintű feladatgyűjtemény,-e számlázott egy standard számlázási egység *és* egy prémium szintű számlázási egységet. A Feladatütemező szolgáltatás váltók standard vagy prémium; beállított aktív feladat gyűjtemények száma alapján Ennek a magyarázatát a következő két szakaszokban további.
 

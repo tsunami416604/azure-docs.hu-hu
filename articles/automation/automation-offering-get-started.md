@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 961b783b44b95a871c98f96d3783f3429636f295
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2fcbbc2532e5cb9963922b4987ba0c7080fdb170
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="get-started-with-azure-automation"></a>Ismerkedés az Azure Automation szolgáltatással
 
@@ -33,11 +33,11 @@ A központi telepítési és a helyi adatközpontban, illetve más felhőszolgá
 
 Telepíthet több hibrid forgatókönyv-feldolgozók. Hibrid forgatókönyv-feldolgozók segítségével magas rendelkezésre állás biztosításához a runbookok és a terheléselosztás runbook-feladatok. Bizonyos esetekben használhat a runbook-feladatok az adott munkaterhelés konkrét vagy környezetben. A hibrid forgatókönyv-feldolgozót a Microsoft Monitoring Agent kezdeményezi a kommunikációt az Automation szolgáltatás a 443-as TCP-porton keresztül. Hibrid forgatókönyv-feldolgozók nincs bejövő tűzfal követelményekkel rendelkezik.  
 
-Érdemes lehet a hibrid forgatókönyv-feldolgozók kezelési feladatok szemben a más gépeket vagy szolgáltatásokat az adott környezetben futó runbook. Adott esetben a runbook valószínűleg is hozzá kell más portok. Ha az IT-biztonsági házirendeknek nem engedélyezi a számítógépek, a hálózat csatlakozik az internethez, tekintse át a [OMS átjáró](../log-analytics/log-analytics-oms-gateway.md). Az Operations Management Suite (OMS) átjáró proxyként viselkedik, a hibrid forgatókönyv-feldolgozót a. Gyűjti a feladat állapotát, és konfigurációs adatokat fogad az Automation-fiók.
+Érdemes lehet a hibrid forgatókönyv-feldolgozók kezelési feladatok szemben a más gépeket vagy szolgáltatásokat az adott környezetben futó runbook. Adott esetben a runbook valószínűleg is hozzá kell más portok. Ha az IT-biztonsági házirendeknek nem engedélyezi a számítógépek, a hálózat csatlakozik az internethez, tekintse át a [OMS átjáró](../log-analytics/log-analytics-oms-gateway.md). Az OMS-átjáró proxyként viselkedik, a hibrid forgatókönyv-feldolgozót a. Gyűjti a feladat állapotát, és konfigurációs adatokat fogad az Automation-fiók.
 
 A hibrid forgatókönyv-feldolgozók a futó Runbookok a számítógépen futtassa a helyi rendszerfiók környezetében. Amikor felügyeleti műveleteket hajt végre, a helyi számítógépen a Windows biztonsági környezetben ajánlott. Ha azt szeretné, hogy a runbook feladatok futtatását, amelyek túlmutatnak a helyi számítógép erőforrásokon, szükség lehet a biztonságos hitelesítő eszközök az Automation-fiókot ad meg. Biztonságos hitelesítő eszközök elérje a runbookot, és segítségével a külső forrásnak a hitelesítést. Használhat [Credential](automation-credentials.md), [tanúsítvány](automation-certificates.md), és [kapcsolat](automation-connections.md) eszközök a runbookban. Az eszközök használata a parancsmagok, amelyekkel adja meg a hitelesítő adataival őket.
 
-Azure Automation tárolt virtuális gépek DSC-konfigurációk is alkalmazhatja. Egyéb fizikai és virtuális gépek konfigurációi kérhetnek az Automation DSC lekérési kiszolgálójáról. Nem kell telepítenie minden infrastruktúra az Automation DSC lekérési kiszolgálójával való kezelését a helyszíni fizikai vagy virtuális Windows és Linux rendszerek támogatásához. Csak akkor kell minden egyes rendszerből Automation DSC használatával felügyelni kívánt kimenő internet-hozzáféréssel. Kommunikáció az OMS szolgáltatáshoz a 443-as TCP-porton keresztül történik.   
+Azure Automation tárolt virtuális gépek DSC-konfigurációk is alkalmazhatja. Egyéb fizikai és virtuális gépek konfigurációi kérhetnek az Automation DSC lekérési kiszolgálójáról. Nem kell telepítenie minden infrastruktúra az Automation DSC lekérési kiszolgálójával való kezelését a helyszíni fizikai vagy virtuális Windows és Linux rendszerek támogatásához. Csak akkor kell minden egyes rendszerből Automation DSC használatával felügyelni kívánt kimenő internet-hozzáféréssel. Kommunikáció a Log Analytics szolgáltatáshoz a 443-as TCP-porton keresztül történik.   
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -125,9 +125,9 @@ A következő cikkekben e környezetek hitelesítés konfigurálása – átteki
 Az Azure-beli futtató és a klasszikus futtató fiókokhoz tartozó [frissítése Automation Futtatás mint fiók](automation-create-runas-account.md) ismerteti, hogyan lehet frissíteni a meglévő Automation-fiók a futtató fiókokat a portálról. Azt is bemutatja, hogyan használhatja a Powershellt, ha az Automation-fiók eredetileg nem volt konfigurálva futtató vagy a klasszikus futtató fiókkal. Létrehozhat egy futtató fiókot és egy klasszikus futtató fiókot a vállalati hitelesítésszolgáltatót (CA) által kiadott tanúsítvánnyal. Felülvizsgálati [frissítés Automation Futtatás mint fiók](automation-create-runas-account.md) megtudhatja, hogyan hozhat létre a fiókokat a konfiguráció használatával.     
  
 ## <a name="network-planning"></a>A hálózat megtervezése
-A hibrid forgatókönyv-feldolgozó csatlakozni, és regisztrálhatja az OMS Szolgáltatáshoz a port számát és az URL-címeket ebben a szakaszban ismertetett elérésére kell legyen. Ez az kívül a [portok és a Microsoft Monitoring Agent szükséges URL-címek](../log-analytics/log-analytics-windows-agent.md) OMS Szolgáltatáshoz való kapcsolódáshoz. 
+A hibrid forgatókönyv-feldolgozó csatlakozni, és regisztrálhatja az Naplóelemzési a port számát és az URL-címeket ebben a szakaszban ismertetett elérésére kell legyen. Ez az kívül a [portok és a Microsoft Monitoring Agent szükséges URL-címek](../log-analytics/log-analytics-windows-agent.md) Log Analyticshez való csatlakozáshoz. 
 
-Ha az ügynök és az OMS közötti kommunikáció proxykiszolgálót használ, ellenőrizze, hogy a megfelelő erőforrásokon elérhető. Ha tűzfal használata az internetről való hozzáférésének korlátozásához, konfigurálnia kell a tűzfalat, hogy lehetővé teszik a hozzáférést.
+Ha az ügynök és a Naplóelemzés szolgáltatás közötti kommunikációhoz proxykiszolgálót használ, ellenőrizze, hogy a megfelelő erőforrásokon elérhető. Ha tűzfal használata az internetről való hozzáférésének korlátozásához, konfigurálnia kell a tűzfalat, hogy lehetővé teszik a hozzáférést.
 
 A következő port és URL-címeket a hibrid forgatókönyv-feldolgozói szerepkör Automation folytatott kommunikációhoz szükségesek:
 
@@ -167,36 +167,36 @@ Az alábbi táblázatban bemutat módszerek az Automation-fiók létrehozása az
 
 |Módszer | Leírás |
 |-------|-------------|
-| Válassza ki **Automation & vezérlő** az Azure piactéren | Az Azure piactéren elérhető létrehoz egy Automation-fiók és -OMS-munkaterület csatolt, és ugyanazt az erőforráscsoportot és régióban. Integráció a OMS is Log Analytics segítségével figyelheti és elemezheti a runbook feladat állapotát és a feladat adatfolyamok időbeli előnyeit. Használhatja a speciális funkciókat is Naplóelemzési eszkalálása vagy vizsgálja meg a problémákat. Az elérhető telepíti a **változások követése** és **frissítéskezelés** megoldások, amelyek alapértelmezés szerint engedélyezve vannak. |
-| Válassza ki **Automation** a piactéren | Ez a módszer egy Automation-fiók egy új vagy meglévő erőforráscsoportot, amely nem kapcsolódik az OMS-munkaterület hoz létre. A rendelkezésre álló megoldások nem tartoznak bele a **Automation & vezérlő** kínál. Ez a módszer, amely bemutatja az Automation alapkonfigurációt. Útmutató runbookok és a DSC-konfigurációk írni, és a szolgáltatás funkcióinak használata segíthet. |
-| Válassza ki **felügyeleti** megoldások | Ha egy **felügyeleti** megoldás, beleértve a [frissítéskezelés](../operations-management-suite/oms-solution-update-management.md), [indítása/leállítása virtuális gépek során munkaidőn kívüli](automation-solution-vm-management.md), vagy [változások követése](../log-analytics/log-analytics-change-tracking.md), a megoldás kéri, hogy válasszon ki egy meglévő Automation-fiókot és az OMS-munkaterület. A megoldást kínál az Automation-fiók és az OMS-munkaterület pedig ez szükséges lenne a megoldás az előfizetésében üzembe létrehozására. |
+| Válassza ki **Automation & vezérlő** az Azure piactéren | Az Azure piactéren elérhető egy Automation-fiók és a Naplóelemzési munkaterület csatolt, és ugyanazt az erőforráscsoportot és régió hoz létre. Log Analyticshez való integráció az az előnye, hogy segítségével figyelheti és elemezheti a runbook feladat állapotát és a feladat adatfolyamok adott idő alatt is tartalmaz. Használhatja a speciális funkciókat is Naplóelemzési eszkalálása vagy vizsgálja meg a problémákat. Az elérhető telepíti a **változások követése** és **frissítéskezelés** megoldások, amelyek alapértelmezés szerint engedélyezve vannak. |
+| Válassza ki **Automation** a piactéren | Ez a módszer egy Automation-fiók egy új vagy meglévő erőforráscsoportot, amely nem kapcsolódik a Naplóelemzési munkaterület hoz létre. A rendelkezésre álló megoldások nem tartoznak bele a **Automation & vezérlő** kínál. Ez a módszer, amely bemutatja az Automation alapkonfigurációt. Útmutató runbookok és a DSC-konfigurációk írni, és a szolgáltatás funkcióinak használata segíthet. |
+| Válassza ki **felügyeleti** megoldások | Ha egy **felügyeleti** megoldás, beleértve a [frissítéskezelés](../operations-management-suite/oms-solution-update-management.md), [indítása/leállítása virtuális gépek során munkaidőn kívüli](automation-solution-vm-management.md), vagy [változások követése](../log-analytics/log-analytics-change-tracking.md), a megoldás kéri, hogy válasszon ki egy meglévő Automation-fiók és a Naplóelemzési munkaterület. A megoldás kínál az Automation-fiók és a Naplóelemzési munkaterület pedig ez szükséges lenne a megoldás az előfizetésében üzembe létrehozására. |
 
-### <a name="create-an-automation-account-thats-integrated-with-oms"></a>Az OMS-integrációval Automation-fiók létrehozása
-Az automatizálás bevezetésében, azt javasoljuk, hogy kiválassza a **Automation & vezérlő** kínál a piactéren. Ezzel a módszerrel automatizálási fiókot hoz létre, és létrejön egy OMS-munkaterület való integráció. Ha ezt a módszert használja, akkor is, hogy az elérhető felügyeleti megoldások telepítésére.  
+### <a name="create-an-automation-account-thats-integrated-with-log-analytics"></a>Amely integrálva van a Naplóelemzési Automation-fiók létrehozása
+Az automatizálás bevezetésében, azt javasoljuk, hogy kiválassza a **Automation & vezérlő** kínál a piactéren. Ezzel a módszerrel hoz létre az Automation-fiók, és létrehozza a Naplóelemzési munkaterület való integráció. Ha ezt a módszert használja, akkor is, hogy az elérhető felügyeleti megoldások telepítésére.  
 
-[Önálló Automation-fiók létrehozása](automation-create-standalone-account.md) végigvezeti a bevezetése az Automation-fiók és az OMS-munkaterület létrehozása a **Automation & vezérlő** kínál. Megismerheti önálló tesztelési Automation-fiók létrehozásához, vagy tekintse meg a szolgáltatás.  
+[Önálló Automation-fiók létrehozása](automation-create-standalone-account.md) végigvezeti Önt az Automation-fiók és a Naplóelemzési munkaterület által bevezetési létrehozásának folyamatán a **Automation & vezérlő** kínál. Megismerheti önálló tesztelési Automation-fiók létrehozásához, vagy tekintse meg a szolgáltatás.  
 
-Az Automation-fiók és az OMS-munkaterület létrehozása használatával a **Automation & vezérlő** Piactéri ajánlat:
+Automation-fiók és a Naplóelemzési munkaterület létrehozása használatával a **Automation & vezérlő** Piactéri ajánlat:
 
 1. Jelentkezzen be egy olyan fiókkal, amely az előfizetés-Rendszergazdák szerepkör tagja, és az előfizetés egy coadministrator az Azure portálon.
 2. Válassza ki **új**.<br><br> ![Válassza az új Azure-portálon](media/automation-offering-get-started/automation-portal-martketplacestart.png)<br>  
 3. Keresse meg **Automation**. A keresési eredmények között, válassza ki a **Automation & vezérlő**.<br><br> ![Jelölje ki az Automation & vezérlés az Azure piactéren](media/automation-offering-get-started/automation-portal-martketplace-select-automationandcontrol.png).<br>   
 4. Tekintse át az elérhető leírását, majd válassza ki **létrehozása**.  
-5. A **Automation & vezérlő**, jelölje be **OMS-munkaterület**. A **OMS-munkaterület**, jelölje be az OMS-munkaterület, amely az Azure-előfizetés, amely az Automation-fiókhoz csatolva van. Ha egy OMS-munkaterület nem rendelkezik, válassza ki a **új munkaterület létrehozása**. A **OMS-munkaterület**: 
+5. A **Automation & vezérlő**, jelölje be **OMS-munkaterület**. A **OMS-munkaterület**, válassza ki, amely az Azure-előfizetés, amely az Automation-fiókhoz csatolva van a Naplóelemzési munkaterület. Ha a munkaterületet nem rendelkezik, válassza ki a **új munkaterület létrehozása**. A **OMS-munkaterület**: 
   1. A **OMS-munkaterület**, adjon meg egy nevet az új munkaterületet.
   2. A **előfizetés**, válasszon ki egy előfizetést kapcsolódik. Ha az alapértelmezés szerinti kiválasztás nem használni kívánt előfizetést, a legördülő listából válassza ki az előfizetést.
   3. A **erőforráscsoport**, hozzon létre egy erőforráscsoportot, vagy válasszon ki egy meglévő erőforráscsoportot.  
   4. A **hely**, válasszon ki egy régiót. További információkért lásd: [Azure Automation is elérhető régiók](https://azure.microsoft.com/regions/services/). Két érhető el megoldások: réteg szabad és csomópontonként (OMS). Ingyenes szint van korlátozva, a megőrzési időtartam és a runbook-feladat futásidejű perc naponta, gyűjtött adatmennyiséget. Az egyes csomópontok (OMS) réteg nem rendelkezik maximális naponta gyűjtött adatok mennyisége.  
-  5. Válassza az **Automation-fiók** elemet.  Ha létrehoz egy új OMS-munkaterület, az új OMS-munkaterület társított Automation-fiók is kell létrehoznia. Az Azure-előfizetéssel, erőforráscsoport és terület tartalmazza. 
+  5. Válassza az **Automation-fiók** elemet.  Új Naplóelemzési munkaterület létrehozása, ha az új Naplóelemzési munkaterület társított Automation-fiók is kell létrehoznia. Az Azure-előfizetéssel, erőforráscsoport és terület tartalmazza. 
     1. Válassza ki **Automation-fiók létrehozása**.
     2. A **Automation-fiók**, a a **neve** mezőbe írja be az Automation-fiók nevét.
-    Egyéb beállítások automatikusan fel van töltve, a kiválasztott OMS-munkaterület alapján. Ezek a beállítások nem módosíthatók. 
+    Egyéb beállítások automatikusan fel van töltve, a kiválasztott Naplóelemzési munkaterület alapján. Ezek a beállítások nem módosíthatók. 
     3. Az ajánlat alapértelmezett hitelesítési módszere egy Azure futtató fiók. Miután kiválasztotta a **OK**, a konfigurációs beállításokat érvényesíti, és az Automation-fiók létrehozása. Nyomon követéséhez a telepítés előrehaladását, a menüben válassza ki a **értesítések**. 
-    4. Ellenkező esetben válasszon egy meglévő Automation futtató fiókot. A kiválasztott fiók egy másik OMS-munkaterület már nem csatolható. Ha van, egy értesítés jelenik meg. Ha a fiók már csatolva van egy OMS-munkaterület, jelöljön ki egy másik Automation futtató fiókot, vagy hozzon létre egyet.
+    4. Ellenkező esetben válasszon egy meglévő Automation futtató fiókot. A kiválasztott fiók egy másik Naplóelemzési munkaterület már nem csatolható. Ha van, egy értesítés jelenik meg. Ha a fiók már csatolva van a Naplóelemzési munkaterület, jelöljön ki egy másik Automation futtató fiókot, vagy hozzon létre egyet.
     5. Azt követően adja meg vagy válassza ki a szükséges adatokat, válassza ki a **létrehozása**. Az adatokat a rendszer ellenőrzi, és az Automation-fiókot és futtató fiókok létrehozásához szükségesek. Automatikusan visszatér a **OMS-munkaterület** ablaktáblán.  
 6. Adja meg vagy válassza ki a szükséges adatokat a után a **OMS-munkaterület** ablaktáblában válassza **létrehozása**.  Az adatokat a rendszer ellenőrzi, és a munkaterület létrehozását. Nyomon követéséhez a telepítés előrehaladását, a menüben válassza ki a **értesítések**. A rendszer visszairányítja a **megoldás hozzáadása** ablaktáblán.  
 7. A **Automation & vezérlő** beállításokat, győződjön meg arról, hogy szeretné-e telepíteni az ajánlott előre kiválasztott megoldásokat. Ha megváltoztatja az alapértelmezett beállításokat, a megoldások külön-külön később is telepítheti.  
-8. Bevezetési automatizálási és az OMS-munkaterület folytatásához válasszon **létrehozása**. Minden beállítás ellenőrzését, és Azure megpróbálja telepíteni az elérhető az előfizetésében. Ez a folyamat eltarthat néhány másodpercig. Nyomon követéséhez a telepítés előrehaladását, a menüben válassza ki a **értesítések**. 
+8. Bevezetési automatizálás és a Naplóelemzési munkaterület folytatásához válasszon **létrehozása**. Minden beállítás ellenőrzését, és Azure megpróbálja telepíteni az elérhető az előfizetésében. Ez a folyamat eltarthat néhány másodpercig. Nyomon követéséhez a telepítés előrehaladását, a menüben válassza ki a **értesítések**. 
 
 Miután az elérhető előkészítve, tegye a következő feladatokat:
 * Runbookok létrehozásának megkezdéséhez.

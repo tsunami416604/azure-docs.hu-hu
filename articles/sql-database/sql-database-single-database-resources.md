@@ -1,19 +1,19 @@
 ---
-title: "Az Azure SQL-adatbázis egy adatbázis |} Microsoft Docs"
-description: "A szolgáltatási rétegben, teljesítményszintet és egyetlen Azure SQL-adatbázis storagea mennyisége kezelésére."
+title: Az Azure SQL-adatbázis egy adatbázis |} Microsoft Docs
+description: A szolgáltatási rétegben, teljesítményszintet és egyetlen Azure SQL-adatbázis storagea mennyisége kezelésére.
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 04/04/2018
 ms.author: carlrab
-ms.openlocfilehash: 167a72ae55052b8ac1dfe8f032f136a9bf8bcedf
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 87cd4c565a7429ffb7096034823a1f5ff49df195
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-resources-for-a-single-database-in-azure-sql-database"></a>Az Azure SQL-adatbázis egy adatbázis-erőforrások kezelése
 
@@ -34,7 +34,7 @@ Kattintson a **áttekintése** figyelése és/vagy egy folyamatban lévő művel
 ![A művelet megszakítása](./media/sql-database-single-database-resources/cancel-operation.png)
 
 > [!IMPORTANT]
-> Felülvizsgálati [P11 és P15 adatbázisok maximális mérete 4 TB méretű a jelenlegi korlátozások](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb) P11 vagy P15 szolgáltatásréteg kiválasztásakor.
+> Felülvizsgálati [P11 és P15 adatbázisok maximális mérete 4 TB méretű a jelenlegi korlátozások](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb) P11 vagy P15 szolgáltatásréteg kiválasztásakor.
 >
 
 ## <a name="manage-single-database-resources-using-powershell"></a>PowerShell-lel egy adatbázis-erőforrások kezelése

@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Linux virtuális gép sablonként rögzítése |} Microsoft Docs"
-description: "Megtudhatja, hogyan rögzítése és a Linux-alapú Azure virtuális gépek (VM) az Azure Resource Manager telepítési modellel létrehozott kép generalize."
+title: Az Azure Linux virtuális gép sablonként rögzítése |} Microsoft Docs
+description: Megtudhatja, hogyan rögzítése és a Linux-alapú Azure virtuális gépek (VM) az Azure Resource Manager telepítési modellel létrehozott kép generalize.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: e608116f-f478-41be-b787-c2ad91b5a802
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
-ms.openlocfilehash: f990a0da0be7f10dc16aa2e5a6320b456cfffed1
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 71c60c8d29e4db8aab1932a1bece03396a12e4da
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="capture-a-linux-virtual-machine-running-on-azure"></a>Azure-on futó Linux virtuális gép rögzítése
 Kövesse a cikk generalize és rögzítheti az Azure Linux virtuális gép (VM) a Resource Manager üzembe helyezési modellben. Generalize a virtuális Géphez, amikor eltávolítja a személyes fiók adatait, és készítse elő a virtuális gép képként használni. Ekkor egy általánosított virtuális merevlemezt (VHD) az operációs rendszer, a virtuális merevlemezek, a mellékelt adatok lemez, a lemezkép rögzítése és egy [Resource Manager-sablon](../../azure-resource-manager/resource-group-overview.md) új virtuális gép központi telepítéséhez. Ez a cikk részletezi az Azure CLI 1.0 rendelkező Virtuálisgép-lemezkép rögzítése a virtuális gépek nem felügyelt lemezekkel. Emellett [rögzíteni a virtuális gépek Azure felügyelt lemezt az Azure CLI 2.0](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Felügyelt lemezek kezeli az Azure platformon, és nem igényelnek azokról az előkészítő vagy helyen tárolja azokat. További információ: [Azure Managed Disks – áttekintés](../windows/managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
@@ -86,7 +86,7 @@ Az Azure parancssori felület használatával generalize és a virtuális gép r
    > [!IMPORTANT]
    > A kép VHD-fájlok létrehozása alapértelmezés szerint a ugyanazt a tárfiókot, amely az eredeti virtuális gép használja. Használja a *ugyanazt a tárfiókot* bármely új virtuális gépek lemezkép alapján hoz létre a virtuális merevlemezek tárolásához. 
 
-6. A rögzített lemezkép helyének megkereséséhez nyissa meg a JSON-sablon egy szövegszerkesztőben. Az a **storageProfile**, található a **uri** , a **kép** található, a **rendszer** tároló. Például az operációs rendszer lemezképe URI hasonlít`https://xxxxxxxxxxxxxx.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/MyVHDNamePrefix-osDisk.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`
+6. A rögzített lemezkép helyének megkereséséhez nyissa meg a JSON-sablon egy szövegszerkesztőben. Az a **storageProfile**, található a **uri** , a **kép** található, a **rendszer** tároló. Például az operációs rendszer lemezképe URI hasonlít `https://xxxxxxxxxxxxxx.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/MyVHDNamePrefix-osDisk.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`
 
 ## <a name="step-3-create-a-vm-from-the-captured-image"></a>3. lépés: Virtuális gép létrehozása a rögzített lemezképből
 Mostantól a sablon a lemezkép használatával hozzon létre egy Linux virtuális Gépet. Ezeket a lépéseket mutatja be az Azure parancssori felület és a virtuális gép létrehozása egy új virtuális hálózat rögzített JSON-fájl sablon használatát.
@@ -113,7 +113,7 @@ A rögzítés során mentett JSON használatával egy virtuális Gépet a lemezk
 azure network nic show myResourceGroup1 myNIC
 ```
 
-A **azonosító** kimenet hasonlít`/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup1/providers/Microsoft.Network/networkInterfaces/myNic`
+A **azonosító** kimenet hasonlít `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup1/providers/Microsoft.Network/networkInterfaces/myNic`
 
 ### <a name="create-a-vm"></a>Virtuális gép létrehozása
 Most futtassa a következő parancsot a virtuális gép létrehozása a rögzített méretű kép. Használja a **-f** paraméterrel adhatja meg a mentett sablon JSON-fájl elérési útját.
@@ -177,7 +177,7 @@ A rögzített lemezkép és a sablon segítségével telepítheti további virtu
 A rögzített lemezkép és a sablon használatához kövesse az alábbi lépéseket, (az előző szakaszban ismertetett):
 
 * Ügyeljen arra, hogy a Virtuálisgép-lemezkép ugyanazt a tárfiókot, amelyen a virtuális gép virtuális merevlemez.
-* Másolja ki a sablon JSON-fájlt, és adjon meg egy egyedi nevet az operációsrendszer-lemezképet, az új virtuális gép virtuális merevlemez (vagy VHD-k). Például a **storageProfile**a **vhd**, a **uri**, adjon meg egy egyedi nevet a **osDisk** VHD, hasonló`https://xxxxxxxxxxxxxx.blob.core.windows.net/vhds/MyNewVHDNamePrefix-osDisk.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`
+* Másolja ki a sablon JSON-fájlt, és adjon meg egy egyedi nevet az operációsrendszer-lemezképet, az új virtuális gép virtuális merevlemez (vagy VHD-k). Például a **storageProfile**a **vhd**, a **uri**, adjon meg egy egyedi nevet a **osDisk** VHD, hasonló `https://xxxxxxxxxxxxxx.blob.core.windows.net/vhds/MyNewVHDNamePrefix-osDisk.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`
 * Hozzon létre egy hálózati adapter azonos, vagy egy másik virtuális hálózatot.
 * A központi telepítés a módosított sablon JSON-fájl használatával hozhat létre az erőforráscsoportban, amelyben állítsa be a virtuális hálózat.
 
@@ -203,6 +203,6 @@ azure vm create -g myResourceGroup1 -n myNewVM -l eastus -y Linux \
 
 A további parancssori kapcsolók, futtassa a `azure help vm create`.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A parancssori felület a virtuális gépek kezeléséhez, tekintse meg a feladatokat a [központi telepítése és kezelése a virtuális gépek Azure Resource Manager-sablonok és az Azure parancssori felület használatával](create-ssh-secured-vm-from-template.md).
 

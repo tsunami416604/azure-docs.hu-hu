@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 6cec039034f0650d017eb14de584939bb3191223
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 0bd9786d0c6a6e6ba571c58e7fdc4ad86cc20024
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-machine-learning-experimentation-service-configuration-files"></a>Az Azure Machine Learning kísérletezhet szolgáltatás konfigurációs fájlok
 
@@ -190,7 +190,7 @@ print(os.environ.get("EXAMPLE_ENV_VAR1"))
 
 **TrackedRun**: Ez a jelző jelzi a kísérleti szolgáltatás Azure ML munkaterület előzmények infrastruktúra futtassa a Futtatás nyomon kell-e. Az alapértelmezett érték _igaz_. 
 
-**UseSampling**: _UseSampling_ meghatározza, hogy használja-e az aktív mintaként használható adathalmazt adatforrások futtatáshoz. Ha beállítása _hamis_, adatforrások betöltési, és használja a teljes adatokat olvasni az adattárból. Ha beállítása _igaz_, aktív minták szolgálnak. A felhasználók használhatják a ** DataSourceSettings "adhatja meg, mely adott mintaként használható adathalmazt Ha bírálja felül az aktív minta szeretnék használni. 
+**UseSampling**: _UseSampling_ meghatározza, hogy használja-e az aktív mintaként használható adathalmazt adatforrások futtatáshoz. Ha beállítása _hamis_, adatforrások betöltési, és használja a teljes adatokat olvasni az adattárból. Ha beállítása _igaz_, aktív minták szolgálnak. A felhasználók használhatják a **DataSourceSettings** adhatja meg, mely adott mintaként használható adathalmazt Ha bírálja felül az aktív minta szeretnék használni. 
 
 **DataSourceSettings**: Ez a konfigurációs szakasz megadja az adatforrás-beállítások. Ebben a szakaszban a felhasználó határozza meg, melyik meglévő adatok mintát eredményez, amely egy adott adatforrást a Futtatás részeként használatos. 
 

@@ -1,20 +1,20 @@
 ---
-title: "SQL-adatbázis vészhelyreállítás |} Microsoft Docs"
-description: "Megtudhatja, hogyan regionális adatközpontban szolgáltatáskimaradás vagy az Azure SQL Database aktív georeplikáció, georedundáns helyreállítás képességek sikertelen egy adatbázis helyreállítása."
+title: SQL-adatbázis vészhelyreállítás |} Microsoft Docs
+description: Megtudhatja, hogyan regionális adatközpontban szolgáltatáskimaradás vagy az Azure SQL Database aktív georeplikáció, georedundáns helyreállítás képességek sikertelen egy adatbázis helyreállítása.
 services: sql-database
 author: anosov1960
 manager: jhubbard
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: e9ec0a0a602965561b77619123588db57c59993c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: dc97c0703150df9773427b13fc07371c3593ce9f
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Egy Azure SQL Database vagy feladatátvételi visszaállításához a másodlagos
 Az Azure SQL-adatbázis helyreállításához a kimaradás a következő szolgáltatásokat biztosítja:
@@ -26,7 +26,7 @@ Az Azure SQL-adatbázis helyreállításához a kimaradás a következő szolgá
 Üzleti folytonossági forgatókönyvek és a szolgáltatások, ezek a forgatókönyvek támogatása, lásd: [az üzletmenet folytonossága](sql-database-business-continuity.md).
 
 > [!NOTE]
-> Zónaredundáns Premium adatbázisok vagy készleteket használ, ha a helyreállítási folyamat automatikus, és a többi az anyag nem érvényes. 
+> Zónaredundáns Premium vagy a fontos üzleti adatbázisok vagy készletek (előzetes verzió) használ, ha a helyreállítási folyamat automatikus, és a többi az anyag nem érvényes. 
 
 ### <a name="prepare-for-the-event-of-an-outage"></a>Az esemény a nem tervezett kimaradás előkészítése
 A sikeres a helyreállítás egy másik adatterülethez feladatátvételi csoportok vagy georedundáns biztonsági mentések használatával, elő kell készíteni egy kiszolgáló egy másik adatközpontban szolgáltatáskimaradás új elsődleges kiszolgálóként való amennyiben szükséges, valamint rendelkezik, jól meghatározott lépéseit felmerülő és a tesztek alapján zökkenőmentes helyreállítás. Előkészítő lépések a következők:

@@ -1,11 +1,11 @@
 ---
-title: "Linux MySQL teljesítményének optimalizálásához |} Microsoft Docs"
-description: "Ismerje meg, hogyan optimalizálható a Linux operációs rendszert futtató Azure virtuális géphez (VM) futtató MySQL."
+title: Linux MySQL teljesítményének optimalizálásához |} Microsoft Docs
+description: Ismerje meg, hogyan optimalizálható a Linux operációs rendszert futtató Azure virtuális géphez (VM) futtató MySQL.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: NingKuang
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: 0c1c7fc5-a528-4d84-b65d-2df225f2233f
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: ningk
-ms.openlocfilehash: 7e7582a31cb3e74fd8c3cd0dd54961392d9c53bb
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 447532452a848c88fd927f42e4263cef4742dd89
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="optimize-mysql-performance-on-azure-linux-vms"></a>Az Azure Linux virtuális gépeken futó MySQL teljesítményének optimalizálása
 Nincsenek számos tényező befolyásolja az Azure, mind a virtuális hardver kiválasztása és szoftverkonfigurációt MySQL teljesítményére. Ez a cikk foglalkozik, a tárolás, a rendszer és a Helyadatbázis-konfigurációk keresztül optimalizálás teljesítményét.
@@ -187,7 +187,7 @@ Növeli a maximális megengedett egyidejű kezeli, vegye fel a következő négy
 
     * a 65536 értékű enyhe nofile
     * a 65536 értékű rögzített nofile
-    * a 65536 értékű enyhe nproc
+    * soft nproc 65536
     * a 65536 értékű rögzített nproc
 
 ### <a name="update-the-system-for-the-new-limits"></a>A rendszer az új korlátok frissítésére
@@ -298,7 +298,7 @@ A fájl a teszteléshez használt értékek 30 és 1 GB-os, illetve, XFS fájlre
 
 ### <a name="AppendixD"></a>D függelék:  
 **MySQL teljesítmény (teljesítmény) összehasonlítás előtt és után optimalizálása**  
-(XFS fájlrendszer)
+(XFS File System)
 
 ![MySQL teljesítmény (teljesítmény) összehasonlítás előtt és után optimalizálása][14]
 

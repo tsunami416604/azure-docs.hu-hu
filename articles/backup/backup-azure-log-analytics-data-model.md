@@ -1,11 +1,11 @@
 ---
 title: Log Analytics-adatmodell az Azure Backuphoz
-description: "Ez a cikk beszél Naplóelemzési az modell adatait az Azure biztonságimásolat-adatok."
+description: Ez a cikk beszél Naplóelemzési az modell adatait az Azure biztonságimásolat-adatok.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: JPallavi
 manager: vijayts
-editor: 
+editor: ''
 ms.assetid: dfd5c73d-0d34-4d48-959e-1936986f9fc0
 ms.service: backup
 ms.devlang: na
@@ -15,14 +15,14 @@ ms.workload: storage-backup-recovery
 ms.date: 07/24/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 041a8835a1dd185739b23d4073fd5811bb4490b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d55ec8ac4416fe0a082812584552462292b6dbb7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Napló Analytics adatmodell Azure biztonságimásolat-adatok
-Ez a cikk ismerteti a tárházat a jelentésadatok szolgáltatáshoz használt adatmodell. A adatok modell segítségével hozhat létre egyéni lekérdezéseket, irányítópultok, és az OMS felhasználható az. 
+Ez a cikk ismerteti a tárházat a jelentésadatok szolgáltatáshoz használt adatmodell. A adatok modell segítségével hozhat létre egyéni lekérdezéseket, irányítópultok, és a Naplóelemzési felhasználható az. 
 
 ## <a name="using-azure-backup-data-model"></a>Azure biztonsági mentési adatok modell segítségével
 Az adatmodell részeként a következő mezők hozhat létre a látványelemek, egyéni lekérdezések és irányítópult a követelményeknek.
@@ -35,7 +35,7 @@ Ez a táblázat ismerteti a riasztási kapcsolódó mezők.
 | AlertUniqueId_s |Szöveg |A generált riasztások egyedi azonosítója |
 | AlertType_s |Szöveg |A generált riasztások, például biztonsági mentés típusa |
 | AlertStatus_s |Szöveg |A riasztásra, például aktív állapota |
-| AlertOccurenceDateTime_s |Dátum és idő |Dátum és a riasztás létrehozásának időpontja |
+| AlertOccurenceDateTime_s |Dátum/idő |Dátum és a riasztás létrehozásának időpontja |
 | AlertSeverity_s |Szöveg |A riasztás súlyossága, például kritikus |
 | EventName_s |Szöveg |Ez a mező képviseli az esemény nevét, a rendszer mindig AzureBackupCentralReport |
 | BackupItemUniqueId_s |Szöveg |A biztonsági mentési, amelyhez ez a riasztás tartozik elem egyedi azonosítója |
@@ -121,7 +121,7 @@ Ez a táblázat ismerteti a feladathoz kapcsolódó mezőket.
 | JobOperation_s |Szöveg |A művelet, amelynek feladat futtatásakor például biztonsági mentése, visszaállítása, Backup konfigurálása |
 | JobStatus_s |Szöveg |A befejezett feladatának állapotát, például befejezve, sikertelen |
 | JobFailureCode_s |Szöveg |Hiba a kód karakterlánc miatt, amelyet feladat hiba történt |
-| JobStartDateTime_s |Dátum és idő |Dátum és idő elindított futó feladat |
+| JobStartDateTime_s |Dátum/idő |Dátum és idő elindított futó feladat |
 | BackupStorageDestination_s |Szöveg |Biztonsági másolatok tárolásának, például felhő, lemez és  |
 | JobDurationInSecs_s | Szám |Feladatok teljes időtartama másodpercben |
 | DataTransferredInMB_s | Szám |A feladat MB-ban átvitt adatok|
@@ -240,7 +240,7 @@ A táblázat tartalmazza a védett kiszolgáló társítások más entitásokkal
 | ResourceProvider |Szöveg |Ez a mező képviseli az erőforrás-szolgáltató, amelynek folyik adatgyűjtés - Microsoft.RecoveryServices |
 | ResourceType |Szöveg |Ez a mező képviseli az erőforrást, amelyre folyik adatgyűjtés - tárolók típusú |
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Tárolás
 Ez a táblázat ismerteti a tárolással kapcsolatos mezők.
 
 | Mező | Adattípus | Leírás |
@@ -285,5 +285,5 @@ Ez a táblázat ismerteti a tárolóval kapcsolatos mezők.
 | ResourceProvider |Szöveg |Ez a mező képviseli az erőforrás-szolgáltató, amelynek folyik adatgyűjtés - Microsoft.RecoveryServices |
 | ResourceType |Szöveg |Ez a mező képviseli az erőforrást, amelyre folyik adatgyűjtés - tárolók típusú |
 
-## <a name="next-steps"></a>Következő lépések
-Tekintse át az adatokat az adatmodellbe az Azure Backup-jelentések készítéséhez, után megkezdheti [irányítópult létrehozása](../log-analytics/log-analytics-dashboards.md) Naplóelemzés és az OMS Szolgáltatáshoz.
+## <a name="next-steps"></a>További lépések
+Tekintse át az adatokat az adatmodellbe az Azure Backup-jelentések készítéséhez, után megkezdheti [irányítópult létrehozása](../log-analytics/log-analytics-dashboards.md) a Naplóelemzési.

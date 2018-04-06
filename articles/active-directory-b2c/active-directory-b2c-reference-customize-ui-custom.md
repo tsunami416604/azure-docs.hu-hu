@@ -1,8 +1,7 @@
 ---
-title: 'Az Azure Active Directory B2C: Hivatkozni: egy felhasználó út egyéni házirendek felhasználói felület testreszabása |} Microsoft Docs'
-description: 'Témakör: Azure Active Directory B2C egyéni házirendek'
+title: Az egyéni házirendek felhasználói utazás a felhasználói felület testreszabása |} Microsoft Docs
+description: További tudnivalók az Azure Active Directory B2C egyéni házirendek
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
 editor: ''
@@ -11,31 +10,31 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: davidmu
-ms.openlocfilehash: b0f68f76bfb746b91cb82b2b7e9e750f15f14253
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4fe9e90996c56773480eb147e5aef7475453fe43
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Egy felhasználó út egyéni házirendek felhasználói felület testreszabása
+# <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Az egyéni házirendek felhasználói utazás a felhasználói felület testreszabása
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
 > [!NOTE]
-> Ez a cikk a felhasználói felület testreszabásával működése és a B2C egyéni házirendek, az identitás élmény keretrendszerrel engedélyezése speciális leírása
+> Ez a cikk egy speciális leírása, hogyan működik a felhasználói felület testreszabása és az Azure AD B2C egyéni házirendekkel, identitás-élmény keretrendszerrel engedélyezése.
 
 
 Zökkenőmentes felhasználói élményt az kulcs minden üzleti egyéni megoldás. Zökkenőmentes felhasználói élményt található az adott egy, az eszköz vagy a böngésző, ahol a szolgáltatás egy felhasználói út az szabad különböznie az ügyfélszolgálat használják.
 
 ## <a name="understand-the-cors-way-for-ui-customization"></a>A CORS módját a felhasználói felület testreszabásával ismertetése
 
-Az Azure AD B2C segítségével testre szabhatja a-és-érzetéhez, felhasználói élmény (UX), amelyek a kiszolgált és keresztül az egyéni házirendeket az Azure AD B2C által megjelenített különféle oldalakat a.
+Az Azure AD B2C segítségével a-és-érzetéhez, felhasználói élmény (UX), amelyek a kiszolgált és az Azure AD B2C által megjelenített különféle oldalakat a testreszabhatja az egyéni házirendekkel.
 
 Erre a célra az Azure AD B2C kód futtatása a felhasználó böngészőben, és használja a modern és szabványos megközelítés [Cross-Origin Resource Sharing (CORS)](http://www.w3.org/TR/cors/) egyéni tartalom betöltése a HTML5 vagy CSS-sablonok mutasson egyéni házirendjében megadott konkrét URL-címről. A CORS egy olyan mechanizmus, amely lehetővé teszi a korlátozott erőforrásokat, például a betűtípust, a weblapra egy másik tartomány kívül az erőforrás eredeti tartományának meg kell adniuk.
 
 A régi hagyományos módon, ahol a megoldás, ha korlátozott szöveg megadott és a képek, ahol elrendezés és érzetéhez korlátozott irányítást felkínált zökkenőmentes eléréséhez több mint nehézségek vezető észlel, a CORS módon támogatja a HTML5-ös és a CSS, és lehetővé teszik a sablon lapok tulajdonosa képest:
 
-- A tartalom tárolására, és a megoldás esetében az ügyféloldali parancsfájl használatával szabályozza.
+- A tartalom tárolására, és a megoldás esetében az ügyféloldali parancsprogram segítségével szabályozza.
 - Minden képpont elrendezés és a kezelőfelület teljes hozzáféréssel rendelkeznek.
 
 Megadhatja, hogy megfelelő HTML5/CSS fájlok létrehozásával tetszés szerinti számú tartalom oldal.
@@ -66,7 +65,7 @@ Győződjön meg arról, hogy minden megfelelően működik-e, a következőket 
 - Győződjön meg arról, a tartalma HTML5 a szabályzatnak megfelelő és érhető el
 - Győződjön meg arról, a tartalomkiszolgáló CORS engedélyezve van.
 - HTTPS-KAPCSOLATON keresztül tartalmat szolgáltat.
-- Használjon abszolút URL-CÍMEI, például a https://yourdomain/content hivatkozások és a CSS-tartalom.
+- Abszolút URL-CÍMEKET használnak, mint https://yourdomain/content a hivatkozások és a CSS-tartalom.
 
 > [!TIP]
 > Ellenőrizze, hogy a hely, a tartalom üzemeltet a CORS engedélyezése mellett, és tesztelése a CORS-kérelmeket, használhatja a hely http://test-cors.org/. Ez a hely környezetnek köszönhetően a CORS kérés küldése egy távoli kiszolgálóra (tesztelje, hogy a CORS támogatott), vagy a CORS kérés küldése egy tesztkiszolgálón (alapján megismerheti a CORS bizonyos funkcióinak).
@@ -115,7 +114,7 @@ Ha követte a fenti lépéseket, a HTML5-ös és CSS fájlok a *UI-testreszabás
 
 ## <a name="ensure-the-storage-account-has-cors-enabled"></a>Ellenőrizze a tárolási fiók rendelkezik-e CORS engedélyezése
 
-A végponthoz, a tartalom betölteni, mert a tartalmak tárolása egy tartományból az Azure AD B2C prémium van szolgál az oldal az Azure AD B2C Premium engedélyezni kell a CORS (eltérő eredetű erőforrások megosztása).
+A végponthoz tartozó tartalom betöltése az Azure AD B2C engedélyezni kell a CORS (eltérő eredetű erőforrások megosztása). Ennek oka az, a tartalom a tartományból az Azure AD B2C fog szolgál az oldal üzemelteti.
 
 Annak ellenőrzéséhez, hogy rendelkezik-e a tárolási üzemeltet a tartalmat a CORS engedélyezése mellett, folytassa a következő lépéseket:
 
@@ -161,11 +160,11 @@ A következő táblázat ismerteti a definíció azonosítók ismeri fel az Azur
 | *api.idpselections.signup* | **Identity provider adatgyűjtésre vonatkozó felhasználói előfizetési**. Ezen a lapon a regisztráció során a felhasználó választhat az identitás-szolgáltatóktól listáját tartalmazza. Ezek a szolgáltatók a következők: vállalati identitás-szolgáltatóktól, például a Facebookhoz és a Google + közösségi Identitásszolgáltatók, vagy helyi fiókok (e-mail cím vagy a felhasználó neve alapján). |
 | *api.localaccountpasswordreset* | **Elfelejtett jelszó lap**. Ez a lap tartalmaz, amely a felhasználó rendelkezik-e kezdeményezheti a jelszó alaphelyzetbe állítása kitöltésének űrlap.  |
 | *api.localaccountsignin* | **Helyi fiók bejelentkezési oldalának**. Ez a lap tartalmaz egy bejelentkezési képernyő, amely a felhasználó rendelkezik-e a adja meg, amikor bejelentkezik egy helyi fiók, amely egy e-mail címet vagy egy felhasználónevet alapul. Az űrlap egy bemeneti szövegmező és a jelszó mező tartalmazhat. |
-| *api.localaccountsignup* | **Helyi fiók előfizetéshez**. Ez a lap tartalmaz egy bejelentkezési képernyő, amely a felhasználó rendelkezik-e a adja meg, amikor regisztrál a helyi fiók, amely egy e-mail címet vagy egy felhasználónevet alapul. Az űrlap szöveg beviteli mezőt, a jelszó beviteli mezője, a választógomb, a egyetlen legördülő listák és a többszörös kiválasztási jelölőnégyzetet például különböző bemeneti vezérlőket tartalmazhat. |
-| *api.phonefactor* | **Többtényezős hitelesítés lap**. Ezen a lapon felhasználók ellenőrizni tudja a telefonszámok (szöveges vagy hangos használatával) bejelentkezéshez regisztrálnia vagy bejelentkeznie. |
-| *api.selfasserted* | **Közösségi fiók bejelentkezési oldalának**. Ez a lap tartalmaz egy bejelentkezési képernyő, amely a felhasználó adja meg, amikor regisztrál a Facebook-on vagy a Google + például közösségi identitásszolgáltató egy meglévő fiókkal rendelkezik. Ezen a lapon hasonlít az előző közösségi fiók bejelentkezési oldal a jelszó számbeviteli mezők kivételével. |
-| *api.selfasserted.profileupdate* | **Profil update lapon**. Ez a lap tartalmaz, amely a felhasználó használhatja-e frissíteni a profilját űrlap. Ezen a lapon hasonlít az előző közösségi fiók bejelentkezési oldal a jelszó számbeviteli mezők kivételével. |
-| *api.signuporsignin* | **Egyesített előfizetési vagy a bejelentkezési oldal**.  Ezen a lapon fel mindkét bejelentkezési kezeli, és a felhasználók, akik vállalati identitás-szolgáltatóktól, például a Facebook-on vagy a Google + és helyi fiókok közösségi Identitásszolgáltatók bejelentkezés.
+| *api.localaccountsignup* | **Helyi fiók előfizetéshez**. Ez a lap tartalmaz egy bejelentkezési űrlap kitöltése a felhasználó által történő adja meg, amikor regisztrál a helyi fiók, amely egy e-mail címet vagy egy felhasználónevet alapul. Az űrlap szöveg beviteli mezőt, a jelszó beviteli mezője, a választógomb, a egyetlen legördülő listák és a többszörös kiválasztási jelölőnégyzetet például különböző bemeneti vezérlőket tartalmazhat. |
+| *api.phonefactor* | **Többtényezős hitelesítés lap**. Ezen a lapon felhasználók regisztráció vagy bejelentkezés során ellenőrizheti a telefonszámok (szöveges vagy hangos használatával). |
+| *api.selfasserted* | **Közösségi fiók bejelentkezési oldalának**. Ez a lap tartalmaz egy bejelentkezési űrlap kitöltése a felhasználó által történő adja meg, amikor regisztrál a Facebook-on vagy a Google + például közösségi identitásszolgáltató egy meglévő fiókkal. Ezen a lapon hasonlít az előző közösségi fiók regisztrációs oldalon a jelszó számbeviteli mezők kivételével. |
+| *api.selfasserted.profileupdate* | **Profil update lapon**. Ez a lap tartalmaz, amely a felhasználó használhatja-e frissíteni a profilját űrlap. Ezen a lapon hasonlít az előző közösségi fiók regisztrációs oldalon a jelszó számbeviteli mezők kivételével. |
+| *api.signuporsignin* | **Egyesített előfizetési vagy a bejelentkezési oldal**.  Ezen a lapon mindkét regisztrációs kezeli, és a felhasználók, akik vállalati identitás-szolgáltatóktól, például a Facebook-on vagy a Google + és helyi fiókok közösségi Identitásszolgáltatók bejelentkezés.
 
 ## <a name="next-steps"></a>További lépések
 [Hivatkozás: Megérteni, hogyan egyéni házirendek a B2C az identitás élmény keretrendszere](active-directory-b2c-reference-custom-policies-understanding-contents.md)

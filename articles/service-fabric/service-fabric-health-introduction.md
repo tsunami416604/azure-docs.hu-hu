@@ -1,11 +1,11 @@
 ---
-title: "A Service Fabric állapotfigyelésének |} Microsoft Docs"
-description: "Bevezetés az Azure Service Fabric állapotfigyelési modell, amely a fürt és az alkalmazások és szolgáltatások felügyelete."
+title: A Service Fabric állapotfigyelésének |} Microsoft Docs
+description: Bevezetés az Azure Service Fabric állapotfigyelési modell, amely a fürt és az alkalmazások és szolgáltatások felügyelete.
 services: service-fabric
 documentationcenter: .net
 author: oanapl
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 1d979210-b1eb-4022-be24-799fd9d8e003
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: d226b8f8b3252fe82cd5077d235f301cfaa83654
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: c5ce0a765451171f7cbd6d875d4302d1e406b4f6
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>A Service Fabric állapotmonitorozásának bemutatása
 Az Azure Service Fabric egy állapotmodell sokoldalú, rugalmasan és bővíthető állapotának kiértékelését és a jelentéskészítés biztosító vezet be. A modell lehetővé teszi, hogy a fürt és a benne a szolgáltatás állapotának közel valós idejű figyelését. Egyszerűen állapottal kapcsolatos adatok beszerzéséhez, és kijavíthatja az esetleges problémák ahhoz, hogy kaszkádolt és okozhat nagy kimaradások esetén. A tipikus modell szolgáltatások küldjön jelentést a helyi nézetek alapján, és, hogy arra, hogy általános információkat összesíti fürt szintű nézet.
@@ -211,7 +211,7 @@ A [állapotjelentések](https://docs.microsoft.com/dotnet/api/system.fabric.heal
 * **Leírás**. Egy karakterlánc, amely lehetővé teszi, hogy a jelentési a állapotesemény kapcsolatos részletes információk. **SourceId**, **tulajdonság**, és **HealthState** teljesen le kell írnia a jelentést. A leírás ad emberek számára olvasható jelentés adatai. A szöveg egyszerűbbé teszi a rendszergazdák és felhasználók számára az állapotjelentést ismertetése.
 * **HealthState**. Egy [számbavételi](service-fabric-health-introduction.md#health-states) , amely leírja, hogy a jelentés állapotának. Az elfogadott értékei OK, figyelmeztetés és hiba.
 * **A TimeToLive tulajdonság**. Timespan érték, amely azt jelzi, hogy mennyi ideig az állapotjelentést érvényes. Alapján kialakulhat **RemoveWhenExpired**, ez lehetővé teszi, hogy a health Store adatbázisban ismernie a lejárt események kiértékelni. Alapértelmezés szerint az érték a végtelen, és a jelentés érvényes tartja.
-* **RemoveWhenExpired**. A Boolean. Ha true értéke esetén a lejárt állapotjelentése automatikusan eltávolítja a health Store adatbázisban, és a jelentés nem befolyásolja a entitás állapotának kiértékelését. A jelentés egy megadott időszak alatt csak érvényes, és a jelentéskészítő nem kell explicit módon ürítse használt. Jelentések törlése a health Store adatbázisban is használható (például egy figyelő módosul, és leállítja az előző és tulajdonság jelentéseinek). Egy jelentés ezzel a rövid TimeToLive együtt RemoveWhenExpired törli az összes előző állapotát, a health store-ból is küldheti. Ha a beállítás értéke FALSE, az állapot kiértékelésekor a hiba a lejárt jelentés kell kezelni. A hamis értéket jelzi a health Store adatbázisban számára, hogy a forrás jelentést kell rendszeresen ezt a tulajdonságot. Ha nem, majd kell van a figyelő kódjával. A figyelő állapotát annak eldöntéséhez, hogy az eseményt, amely során rögzített.
+* **RemoveWhenExpired**. Olyan logikai érték. Ha true értéke esetén a lejárt állapotjelentése automatikusan eltávolítja a health Store adatbázisban, és a jelentés nem befolyásolja a entitás állapotának kiértékelését. A jelentés egy megadott időszak alatt csak érvényes, és a jelentéskészítő nem kell explicit módon ürítse használt. Jelentések törlése a health Store adatbázisban is használható (például egy figyelő módosul, és leállítja az előző és tulajdonság jelentéseinek). Egy jelentés ezzel a rövid TimeToLive együtt RemoveWhenExpired törli az összes előző állapotát, a health store-ból is küldheti. Ha a beállítás értéke FALSE, az állapot kiértékelésekor a hiba a lejárt jelentés kell kezelni. A hamis értéket jelzi a health Store adatbázisban számára, hogy a forrás jelentést kell rendszeresen ezt a tulajdonságot. Ha nem, majd kell van a figyelő kódjával. A figyelő állapotát annak eldöntéséhez, hogy az eseményt, amely során rögzített.
 * **SequenceNumber**. Pozitív egésznek kell lennie a egyre növekvő, a jelentések sorrendet jelöli. Elavult jelentések hálózati késések vagy más olyan problémák miatt késői kapott észlelésére szolgál által a health Store adatbázisban. Kisebb vagy egyenlő, mint a legtöbb legutóbb alkalmazott számát a ugyanaz az entitás, a forrás és a tulajdonság a sorszám esetén jelentést elutasítva. Ha nincs megadva, a sorszám automatikusan létrejön. Fontos a sorszám helyezése csak állapotváltozáskor jelentésekor. Ebben az esetben a forrás megjegyezhető akkor küldi el a jelentéseket, és biztosíthatja az adatok helyreállítás feladatátvétel van szüksége.
 
 Négy darabot információk – SourceId, entitás azonosítója, Property és HealthState--szükségesek a minden jelentés. A SourceId karakterlánc nem engedélyezett a előtaggal kezdődik "**System.**", amely rendszer jelentések számára van fenntartva. Ugyanaz az entitás nincs az azonos forrásból és a tulajdonság csak egy jelentés. A forrás és a tulajdonsághoz több jelentések fedjék át egymást, egészségügyi ügyféloldali (ha ezek vannak kötegelni) vagy az egészségügyi ügyféloldali tárolja. A csere alapul sorszámok; újabb jelentéskészítés (a magasabb sorszámok) cserélje le a régebbi jelentéseket.

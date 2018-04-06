@@ -1,8 +1,8 @@
 ---
-title: "Log Analytics segítségével figyelheti az Azure HDInsight-fürtök |} Microsoft Docs"
-description: "Útmutató: Azure Naplóelemzés a figyelheti a HDInsight-fürtök a futó feladatok."
+title: Log Analytics segítségével figyelheti az Azure HDInsight-fürtök |} Microsoft Docs
+description: 'Útmutató: Azure Naplóelemzés a figyelheti a HDInsight-fürtök a futó feladatok.'
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 2c43b9aabda56e1204870575e86934bf93d05882
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: be71b065999c30546432895804df8633da21b43e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters"></a>A HDInsight-fürtök figyelése Azure Log Analytics segítségével
 
 Útmutató: Azure Naplóelemzés a figyelheti a HDInsight Hadoop-fürt működését.
 
-[Naplófájl Analytics](../log-analytics/log-analytics-overview.md) szolgáltatás a [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) , amely figyeli a felhőben és a helyszíni környezetek karbantartásához azok rendelkezésre állását és teljesítményét. A felhőben és a helyszíni környezetben található erőforrások által létrehozott, valamint egyéb figyelési eszközök által biztosított adatokat gyűjtésével biztosítsa elemzést több forráson. 
+[Naplófájl Analytics](../log-analytics/log-analytics-overview.md) egy szolgáltatás, amely figyeli a felhőalapú és helyszíni környezetek karbantartásához azok rendelkezésre állását és teljesítményét. A felhőben és a helyszíni környezetben található erőforrások által létrehozott, valamint egyéb figyelési eszközök által biztosított adatokat gyűjtésével biztosítsa elemzést több forráson. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés**. Az oktatóanyag elindításához Azure-előfizetéssel kell rendelkeznie. Lásd: [Ingyenes Azure-fiók létrehozása még ma](https://azure.microsoft.com/free).
 
-* **Egy Azure HDInsight fürt**. Jelenleg a következő HDInsight-fürt típusú Azure Operations Management Suite is használhatja:
+* **Egy Azure HDInsight fürt**. Jelenleg a következő HDInsight-fürt típusú Naplóelemzési is használhatja:
 
     * Hadoop
     * HBase

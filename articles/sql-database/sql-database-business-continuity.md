@@ -1,23 +1,22 @@
 ---
-title: "Felhőalapú üzletmenet-folytonosság – adatbázis-helyreállítás – SQL Database | Microsoft Docs"
-description: "Ismerje meg, hogyan támogatja az Azure SQL Database a felhőalapú üzletmenet-folytonosságot és az adatbázis-helyreállítást, és hogyan segít az üzletmenet szempontjából kritikus fontosságú felhőalapú alkalmazások folyamatos működésének biztosításában."
-keywords: "üzletmenet-folytonosság,felhőalapú üzletmenet-folytonosság,adatbázis-vészhelyreállítás,adatbázis-helyreállítás"
+title: Felhőalapú üzletmenet-folytonosság – adatbázis-helyreállítás – SQL Database | Microsoft Docs
+description: Ismerje meg, hogyan támogatja az Azure SQL Database a felhőalapú üzletmenet-folytonosságot és az adatbázis-helyreállítást, és hogyan segít az üzletmenet szempontjából kritikus fontosságú felhőalapú alkalmazások folyamatos működésének biztosításában.
+keywords: üzletmenet-folytonosság,felhőalapú üzletmenet-folytonosság,adatbázis-vészhelyreállítás,adatbázis-helyreállítás
 services: sql-database
 author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.devlang: 
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: On Demand
-ms.date: 08/25/2017
+ms.date: 04/04/2018
 ms.author: sashan
-ms.openlocfilehash: 160e65130efc78bc1a98a0feceb1c824cf226156
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: carlrab
+ms.openlocfilehash: 1f125596a6cc874f285611290d5c42700009afbe
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése
 
@@ -27,20 +26,20 @@ Az áttekintés az Azure SQL Database az üzletmenet-folytonosság és a vészhe
 
 Az SQL Database számos üzletmenet-folytonossági funkciót nyújt, többek között az automatikus biztonsági mentést és a választható adatbázis-replikációt. Minden egyes funkció más paraméterekkel rendelkezik a becsült helyreállítási idő (ERT) és a legutóbbi tranzakciók során előforduló esetleges adatvesztés tekintetében. Miután megismerkedett ezekkel a lehetőségekkel, szabadon válogathat közülük, és egyes forgatókönyvekben együtt is alkalmazhatja őket. Az üzletmenet-folytonossági terv kidolgozása során meg kell állapítania az alkalmazás a zavaró eseményeket követő teljes helyreállításának maximális elfogadható időkorlátját – ez lesz ugyanis a helyreállítási időre vonatkozó célkitűzés (RTO). A legfrissebb adatok maximális mennyisége ismernie kell frissítések (alatt az időtartam alatt) az alkalmazás működését zavaró esemény után helyreállításakor elvesztését – Ez a helyreállítási időkorlát (RPO).
 
-Az alábbi táblázat a három leggyakoribb forgatókönyv ERT és RPO értékeit hasonlítja össze.
+Az alábbi táblázat összehasonlítja a Beszúrása és a helyreállítási Időkorlát három leggyakoribb forgatókönyve az egyes szolgáltatási szinthez.
 
-| Képesség | Alapszintű csomag | Standard csomag | Premium szintű csomag |
-| --- | --- | --- | --- |
-| Időponthoz kötött visszaállítás biztonsági másolatból |Bármely visszaállítási pont 7 napon belül |Bármely visszaállítási pont 35 napon belül |Bármely visszaállítási pont 35 napon belül |
-| Georedundáns helyreállítás georeplikált biztonsági másolatból |ERT < 12 óra, RPO < 1 óra |ERT < 12 óra, RPO < 1 óra |ERT < 12 óra, RPO < 1 óra |
-| Visszaállítás Azure Backup-tárolóból |ERT < 12 óra, RPO < 1 hét |ERT < 12 óra, RPO < 1 hét |ERT < 12 óra, RPO < 1 hét |
-| Aktív georeplikáció |ERT < 30 másodperc, RPO < 5 másodperc |ERT < 30 másodperc, RPO < 5 másodperc |ERT < 30 másodperc, RPO < 5 másodperc |
+| Képesség | Alapszintű | Standard | Prémium  | Általános rendeltetés | Üzletileg kritikus
+| --- | --- | --- | --- |--- |--- |
+| Időponthoz kötött visszaállítás biztonsági másolatból |Bármely visszaállítási pont 7 napon belül |Bármely visszaállítási pont 35 napon belül |Bármely visszaállítási pont 35 napon belül |A visszaállítási pont (legfeljebb 35 napon) beállított időn belül|A visszaállítási pont (legfeljebb 35 napon) beállított időn belül|
+| Georedundáns helyreállítás georeplikált biztonsági másolatból |ERT < 12 óra, RPO < 1 óra |ERT < 12 óra, RPO < 1 óra |ERT < 12 óra, RPO < 1 óra |ERT < 12 óra, RPO < 1 óra|ERT < 12 óra, RPO < 1 óra|
+| Visszaállítás Azure Backup-tárolóból |ERT < 12 óra, RPO < 1 hét |ERT < 12 óra, RPO < 1 hét |ERT < 12 óra, RPO < 1 hét |ERT < 12 óra, RPO < 1 hét|ERT < 12 óra, RPO < 1 hét|
+| Aktív georeplikáció |ERT < 30 másodperc, RPO < 5 másodperc |ERT < 30 másodperc, RPO < 5 másodperc |ERT < 30 másodperc, RPO < 5 másodperc |ERT < 30 másodperc, RPO < 5 másodperc|ERT < 30 másodperc, RPO < 5 másodperc|
 
-### <a name="use-database-backups-to-recover-a-database"></a>Adatbázis helyreállítása az adatbázis biztonsági másolataiból
+### <a name="use-point-in-time-restore-to-recover-a-database"></a>Adatbázis helyreállítása pont időponthoz kötött visszaállítás segítségével
 
-SQL-adatbázis automatikusan elvégzi az adatbázis teljes biztonsági mentés hetente kombinációja, a különbözeti adatbázis óránkénti, és a tranzakció jelentkezhetnek biztonsági mentések minden öt - tíz perc az üzleti adatvesztés elleni védelméhez. A biztonsági mentése az a Standard és prémium szolgáltatáscsomagja és az adatbázisok alapszintű rétegben 7 nap-adatbázisok 35 napon georedundáns tárolás vannak tárolva. További információkért lásd: [szolgáltatásszintek](sql-database-service-tiers.md). Ha a szolgáltatásszint megőrzési időszaka nem felel meg az üzleti igényeinek, a megőrzési időszak növelése érdekében [váltson szolgáltatásszintet](sql-database-service-tiers.md). Az adatbázis teljes és különbségi biztonsági másolatai emellett replikálva vannak egy [párosított adatközpontba](../best-practices-availability-paired-regions.md) az adatközpont-leállás hatásaival szembeni védelem érdekében. További információkért lásd: [automatikus mentését](sql-database-automated-backups.md).
+SQL-adatbázis automatikusan elvégzi az adatbázis teljes biztonsági mentés hetente kombinációja, a különbözeti adatbázis óránkénti, és a tranzakció jelentkezhetnek biztonsági mentések minden öt - tíz perc az üzleti adatvesztés elleni védelméhez. A biztonsági mentése az a Standard és prémium szolgáltatáscsomagja és az adatbázisok alapszintű rétegben 7 nap-adatbázisok 35 napon RA-GRS tárolási tárolódnak. Az általános célú és üzleti kritikus szolgáltatási szinteket (előzetes verzió) a biztonsági mentések megőrzési 35 nap mentése konfigurálható. További információkért lásd: [szolgáltatásszintek](sql-database-service-tiers.md). Ha a szolgáltatásszint megőrzési időszaka nem felel meg az üzleti igényeinek, a megőrzési időszak növelése érdekében [váltson szolgáltatásszintet](sql-database-service-tiers.md). Az adatbázis teljes és különbségi biztonsági másolatai emellett replikálva vannak egy [párosított adatközpontba](../best-practices-availability-paired-regions.md) az adatközpont-leállás hatásaival szembeni védelem érdekében. További információkért lásd: [automatikus mentését](sql-database-automated-backups.md).
 
-Ha a beépített megőrzési időtartam nem elegendő az alkalmazáshoz, konfigurálásával adatbázis hosszú távú adatmegőrzési bővítheti. További információkért lásd: [hosszú távú megőrzési](sql-database-long-term-retention.md).
+Ha a maximális támogatott PITR megőrzési időtartam nem elegendő az alkalmazáshoz, a hosszú távú megőrzési (LTR) házirendet az adatbázis(ok) konfigurálásával bővítheti. További információkért lásd: [Hosszú távú megőrzés](sql-database-long-term-retention.md).
 
 Az adatbázis automatikus biztonsági másolataiból helyreállíthatja az adatbázist a különféle zavaró eseményeket követően, akár az adatközponton belül, akár egy másik adatközpontba. Az adatbázis automatikus biztonsági másolatai használatakor a becsült helyreállítási idő több tényezőtől függ, többek között attól, hogy hány adatbázis helyreállítása zajlik egyidejűleg a régióban, az adatbázis méretétől, a tranzakciós napló méretétől, és a hálózati sávszélességtől. A helyreállítási idő az általában 12 óránál kevesebb. Ha egy másik adatrégióba végzi a helyreállítást, az esetleges adatvesztés legfeljebb 1 óra lehet az adatbázis óránkénti különbségi biztonsági másolatai georedundáns tárolásának köszönhetően.
 
@@ -55,7 +54,7 @@ Akkor használja az automatikus biztonsági másolatokat üzletmenet-folytonoss�
 * Kis mértékű adatmódosításra lehet számítani (alacsony óránkénti tranzakciószám), és egy órányi adatmódosítás elvesztése elfogadható.
 * Költségérzékeny.
 
-Ha a gyorsabb helyreállítás van szüksége, [aktív georeplikáció](sql-database-geo-replication-overview.md) (tárgyalt mellett). Ha szeretné tudni időtartamra 35 napnál régebbi adatokat helyreállítani, használja [hosszú távú biztonsági másolatok megőrzésének](sql-database-long-term-retention.md). 
+Ha a gyorsabb helyreállítás van szüksége, [aktív georeplikáció](sql-database-geo-replication-overview.md) (tárgyalt mellett). Ha szeretné tudni időtartamra 35 napnál régebbi adatokat helyreállítani, használja [hosszú távú megőrzési](sql-database-long-term-retention.md). 
 
 ### <a name="use-active-geo-replication-and-auto-failover-groups-in-preview-to-reduce-recovery-time-and-limit-data-loss-associated-with-a-recovery"></a>Aktív georeplikáció és automatikus feladatátvételt csoportok (az előzetes verzió) segítségével a helyreállítási idő csökkentésére, valamint a társított helyreállítási adatvesztés korlátozása
 
@@ -77,12 +76,12 @@ Aktív georeplikáció és automatikus feladatátvételt csoportokat használhat
 * Nagy mértékű adatváltozásokra lehet számítani, és egy órányi adat elvesztése nem elfogadható.
 * Az aktív georeplikáció többletköltsége alacsonyabb, mint a potenciális pénzbeli kötelezettség és a kapcsolódó üzletvesztés összege.
 
->
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-protecting-important-DBs-from-regional-disasters-is-easy/player]
 >
 
 ## <a name="recover-a-database-after-a-user-or-application-error"></a>Adatbázis helyreállítása felhasználói vagy alkalmazáshiba után
-*Senki sem tökéletes. Egy felhasználó véletlenül törölhet néhány adatot, egy fontos adattáblát, vagy akár a teljes adatbázist is. Vagy előfordulhat, hogy egy alkalmazás valamilyen alkalmazáshiba miatt felülírja a helyes adatokat rossz adatokkal.
+
+Senki tökéletes! Egy felhasználó véletlenül törölhet néhány adatot, egy fontos adattáblát, vagy akár a teljes adatbázist is. Vagy előfordulhat, hogy egy alkalmazás valamilyen alkalmazáshiba miatt felülírja a helyes adatokat rossz adatokkal.
 
 Ebben a forgatókönyvben ezek közül a helyreállítási lehetőségek közül választhat.
 
@@ -101,8 +100,9 @@ A törölt adatbázisok az Azure Portalon vagy a PowerShell-lel végzett vissza�
 >
 >
 
-### <a name="restore-from-azure-backup-vault"></a>Visszaállítás Azure Backup-tárolóból
-Ha az adatvesztés automatikus biztonsági mentés az aktuális megőrzési időszak kívül történt, és az adatbázis hosszú távú megőrzési van konfigurálva, visszaállíthatja egy biztonsági másolatból heti Azure biztonságimásolat-tárolóban egy új adatbázist. Ekkor lecserélheti az eredeti adatbázist a visszaállítottra, vagy átmásolhatja a szükséges adatokat a visszaállított adatbázisból az eredetibe. Ha beolvasni egy fő alkalmazás frissítés előtt az adatbázis egy régi verziója van szüksége, kérelem teljesítéséhez ellenőrök vagy a jogi sorrendet, létrehozhat egy adatbázist egy teljes biztonsági mentése az Azure biztonsági mentési tároló.  További információkért lásd: [Hosszú távú megőrzés](sql-database-long-term-retention.md).
+### <a name="restore-backups-from-long-term-retention"></a>Hosszú távú megőrzési alapján állítsa helyre a biztonsági másolatok
+
+Ha az adatvesztés automatikus biztonsági mentés az aktuális megőrzési időszak kívül történt, és az adatbázis hosszú távú megőrzési van konfigurálva, visszaállíthatja a balról jobbra tárolóban egy teljes biztonsági másolatból egy új adatbázist. Ekkor lecserélheti az eredeti adatbázist a visszaállítottra, vagy átmásolhatja a szükséges adatokat a visszaállított adatbázisból az eredetibe. Ha beolvasni egy fő alkalmazás frissítés előtt az adatbázis egy régi verziója van szüksége, kérelem teljesítéséhez ellenőrök vagy a jogi sorrendet, létrehozhat egy adatbázist egy teljes biztonsági mentése az Azure biztonsági mentési tároló.  További információkért lásd: [Hosszú távú megőrzés](sql-database-long-term-retention.md).
 
 ## <a name="recover-a-database-to-another-region-from-an-azure-regional-data-center-outage"></a>Adatbázis helyreállítása egy másik régióba az Azure regionális adatközpontjának leállása esetén
 <!-- Explain this scenario -->

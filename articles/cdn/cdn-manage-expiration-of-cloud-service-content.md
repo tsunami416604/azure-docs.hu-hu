@@ -1,11 +1,11 @@
 ---
-title: "Azure tartalom Delivery Network webes tartalom lejáratának kezelése |} Microsoft Docs"
-description: "Útmutató az Azure CDN Azure Web Apps/Cloud Services, az ASP.NET, vagy az IIS tartalom lejáratának kezelése."
+title: Azure tartalom Delivery Network webes tartalom lejáratának kezelése |} Microsoft Docs
+description: Útmutató az Azure CDN Azure Web Apps/Cloud Services, az ASP.NET, vagy az IIS tartalom lejáratának kezelése.
 services: cdn
 documentationcenter: .NET
 author: dksimpson
 manager: akucer
-editor: 
+editor: ''
 ms.assetid: bef53fcc-bb13-4002-9324-9edee9da8288
 ms.service: cdn
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: mazha
-ms.openlocfilehash: db7b5053cb926d2ec86c7feea4ac411acbeb1ae2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d1a12e0d5bd5852cf8de3d5fec93f2bfdd3ab257
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-expiration-of-web-content-in-azure-content-delivery-network"></a>Azure tartalom Delivery Network webes tartalom lejáratának kezelése
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ Azt is meghatározhatja, Azure-portálról gyorsítótár beállításait úgy, 
 A webalkalmazás-kiszolgáló beállítása az előnyben részesített módszere `Cache-Control` fejléc, hogy gyorsítótárazási szabályokat használja az Azure portálon. Gyorsítótárazás szabályok CDN kapcsolatos további információkért lásd: [vezérlő Azure CDN szolgáltatás használata a szabályok gyorsítótárazással gyorsítótárazásának](cdn-caching-rules.md).
 
 > [!NOTE] 
-> Gyorsítótárazás szabályok csak esetén érhetők el **Verizon Standard Azure CDN** és **Akamai Standard Azure CDN** profilok. A **Verizon Premium Azure CDN** -profilok kell használnia a [Azure CDN szabálymotor](cdn-rules-engine.md) a a **kezelése** hasonló funkciókat a portál.
+> Gyorsítótárazás szabályok csak esetén érhetők el **Azure CDN Standard verizon** és **Azure CDN Standard Akamai** profilok. A **verizon Azure CDN Premium** -profilok kell használnia a [Azure CDN szabálymotor](cdn-rules-engine.md) a a **kezelése** hasonló funkciókat a portálon.
 
 **Nyissa meg a CDN gyorsítótárazási szabályok lapot a**:
 
