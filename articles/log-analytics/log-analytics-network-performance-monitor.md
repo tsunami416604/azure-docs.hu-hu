@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 9b3c4efc712ebe9c0fe209d2ca0478367872d3b7
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
-ms.translationtype: MT
+ms.openlocfilehash: 9d5e189720a92ca17289d0c9717e9e10bf8691d1
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Hálózati Teljesítményfigyelő megoldás az Azure-ban
 
@@ -44,7 +44,7 @@ További információ a különböző képességeket által támogatott [hálóz
 ## <a name="supported-regions"></a>Régiók
 NPM figyelhető a hálózatok és az alkalmazások bármely részén a világ, egy olyan munkaterületről, amely egy, a következő régiók közötti kapcsolat:
 * Nyugat-Európa
-* Egyesült Államok nyugati középső régiója
+* USA nyugati középső régiója
 * USA keleti régiója
 * Délkelet-Ázsia
 * Dél-kelet-Ausztrália
@@ -250,7 +250,9 @@ A topológia látható módon a térkép 3 rétegbeli topológia, és nem tartal
 
 Minden adat, amely grafikusan elérhetővé a hálózati Teljesítményfigyelő irányítópulton keresztül történő és leásási oldalon érhető el natív módon [Naplóelemzési keresési](log-analytics-log-search-new.md). Hajtsa végre az adatok interaktív elemzések elvégzéséhez a tárházban, és a különböző forrásokból származó adatok összefüggéseket. Is hozhat létre egyéni riasztások és a nézetek és az adatok exportálása az Excel, a Power bi-ban vagy a megosztható hivatkozást. A **közös lekérdezések** az irányítópult tartalmaz néhány hasznos lekérdezések, amelyek a saját lekérdezések és jelentések használhatja kiindulási pontként. 
 
- 
+##<a name="pricing"></a>Díjszabás
+
+Az árakkal kapcsolatos információkat [online](log-analytics-network-performance-monitor-pricing-faq.md).
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése 
 

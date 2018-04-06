@@ -64,9 +64,9 @@ Be az alábbi számlálók értékét, ha a .NET-szolgáltatásokat telepít a f
 | .NET CLR memória (szolgáltatás) | # Összesen előjegyzett memória kihasználtsága |
 | .NET CLR memória (szolgáltatás) | # Összesen fenntartott memória |
 | .NET CLR memória (szolgáltatás) | (Bájt) összes halommemória |
-| .NET CLR memória (szolgáltatás) | # 0. generációs gyűjtemények |
-| .NET CLR memória (szolgáltatás) | # 1. generációból gyűjtemények |
-| .NET CLR memória (szolgáltatás) | # Generációból 2 gyűjtemények |
+| .NET CLR memória (szolgáltatás) | # Generációs gyűjtemények 0 |
+| .NET CLR memória (szolgáltatás) | # Generációs gyűjtemények 1 |
+| .NET CLR memória (szolgáltatás) | # Generációs gyűjtemények 2 |
 | .NET CLR memória (szolgáltatás) | % Töltött idő |
 
 ### <a name="service-fabrics-custom-performance-counters"></a>A Service Fabric egyéni teljesítményszámlálói

@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 04/03/2018
 ms.author: bonova
-ms.openlocfilehash: 2d07d58114a4d89f40a4ea9e388c58f58494766c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ffe25e911273b93f1c16224d30fea5c920425f03
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Mi az a felügyelt példánya (előzetes verzió)?
 
@@ -69,6 +69,23 @@ Az alábbi táblázat néhány tulajdonságok, Transact SQL keresztül érhető 
 
 ![Egyszeri bejelentkezés](./media/sql-database-managed-instance/sso.png) 
 
+## <a name="vcore-based-purchasing-model"></a>alapjául szolgáló vásárlási modell vCore-alapú
+
+A vCore-alapú alapjául szolgáló vásárlási modell biztosítja, a rugalmasságot, vezérlő, átláthatóság és egy egyszerű módon lefordítani a helyszíni munkaterhelési követelményeinek a felhőbe. Ez a modell méretezési számítási, memória és az alkalmazások és szolgáltatások igényeik alapján tároló lehetővé teszi. A vCore modell nem is jogosult fel a 30 százalékos megtakarítások a [Azure hibrid használja az SQL Server juttatása](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
+
+Egy virtuális core jelenti. a logikai Processzor érhető el, hogy a hardver generációja közül választhat.
+- A Gen 4 logikai CPU-k Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorokon alapulnak.
+- 5 logikai processzorok Intel E5-2673 v4 alapulnak. generációból (Broadwell) 2.3 GHz órajelű.
+
+Az alábbi táblázat segít megérteni a kiválasztása a számítási, memória, tárolási és i/o-erőforrások optimális konfigurációját.
+
+||Gen 4|Gen 5|
+|----|------|-----|
+|Hardver|Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzor, kapcsolt SSD vCore = 1 PP (fizikai mag)|Intel E5-2673 v4 (Broadwell) 2.3 GHz-es processzor, gyors eNVM SSD, vCore = 1. LP (hyper-szál)|
+|Teljesítményszintek|8, 16, 24 vCores|8, 16, 24, 32, 40 vCores|
+|Memory (Memória)|7GB-ot vCore|5.5GB-ot vCore|
+||||
+
 ## <a name="managed-instance-service-tier"></a>Felügyelt példány szolgáltatási rétegben
 
 Felügyelt példány tipikus rendelkezésre állás és a közös IO késésre vonatkozó követelmény az alkalmazások tervezett egyetlen szolgáltatásréteg - általános célú - kezdetben érhető el.
@@ -89,11 +106,11 @@ A következőkben olvashat az általános célú szolgáltatásréteg a legfonto
 
 |Szolgáltatás | Leírás|
 |---|---|
-| VCores * száma | 8, 16, 24|
+| VCores * száma | 8, 16, 24 (4. generációból)<br>8, 16, 24, 32, 40 (Gen5)|
 | SQL Server-verzió / összeállítása | SQL Server legújabb (elérhető) |
 | Minimális mérete | 32 GB |
 | Maximális tárolómérete | 8 TB |
-| Adatbázisonként maximális tárolási | 4 TB |
+| Adatbázisonként maximális tárolási | 8 TB |
 | Várt tárolási iops-érték | Az adatfájl (adatfájl függ) 500-7500 iops-értéket. Lásd: [prémium szintű Storage](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes) |
 | Adatfájlok (sorok) az adatbázis másodpercenkénti száma | Többszörös | 
 | Adatbázisonként (napló) fájlok száma | 1 | 
@@ -106,7 +123,7 @@ A következőkben olvashat az általános célú szolgáltatásréteg a legfonto
 | Portál támogatása | Igen|
 |||
 
-\* Egy virtuális core jelenti. a logikai Processzor érhető el, hogy a hardver generációja közül választhat. 4 logikai processzorok Intel E5-2673 v3 alapulnak. generációból (Haswell) 2,4 GHz órajelű és generációs 5 logikai processzorok Intel E5-2673 v4 alapul (Broadwell) 2.3 GHz órajelű.  
+\* Egy virtuális core jelenti. a logikai Processzor érhető el, hogy a hardver generációja közül választhat. 4 logikai processzorok Intel E5-2673 v3 alapulnak. generációból (Haswell) 2,4 GHz órajelű és generációs 5 logikai processzorok Intel E5-2673 v4 alapul (Broadwell) 2.3 GHz órajelű. 
 
 ## <a name="advanced-security-and-compliance"></a>Magas szintű biztonság és megfelelőség 
 
@@ -152,7 +169,7 @@ Az SQL Database az [Azure Active Directory-integráció](sql-database-aad-authen
 SQL-adatbázis hitelesítési módját felhasználók azok identitásának igazolásához az adatbázishoz való kapcsolódáskor hivatkozik. Az SQL Database két hitelesítési típust támogat:  
 
 - SQL-hitelesítés, amely felhasználónevet és jelszót használja.
-- Az Azure Active Directory-hitelesítéssel, amely Azure Active Directory által kezelt identitások használ, és a felügyelt és integrált tartományok használata támogatott.  
+- Az Azure Active Directory-hitelesítéssel, amely Azure Active Directory által kezelt identitások használ, és a felügyelt és integrált tartományok használata támogatott. 
 
 ### <a name="authorization"></a>Engedélyezés
 
@@ -160,11 +177,11 @@ Engedélyezési milyen felhasználói teheti meg egy Azure SQL Database belül, 
 
 ## <a name="database-migration"></a>Adatbázis-áttelepítés 
 
-Felügyelt példány célok felhasználói esetek tömeges adatbázis áttelepítéssel helyszíni vagy infrastruktúra-szolgáltatási adatbázis hitelesítés megvalósításához.  Felügyelt példányát támogatja több adatbázis áttelepítési lehetőségek: 
+Felügyelt példány célok felhasználói esetek tömeges adatbázis áttelepítéssel helyszíni vagy infrastruktúra-szolgáltatási adatbázis hitelesítés megvalósításához. Felügyelt példányát támogatja több adatbázis áttelepítési lehetőségek: 
 
 ### <a name="data-migration-service"></a>Áttelepítési adatszolgáltatás
 
-Az Azure-adatbázis áttelepítési szolgáltatás egy olyan teljes körűen felügyelt szolgáltatás lehetővé minimális állásidővel adatok Azure platformon több adatbázis forrásból zökkenőmentes áttelepítés.   Ez a szolgáltatás leegyszerűsíti a meglévő harmadik féltől származó és az SQL Server-adatbázisok áthelyezése az Azure-bA szükséges feladatok. Központi telepítési beállítások közé tartoznak az Azure SQL Database, a példány által felügyelt és az SQL Server Azure virtuális gép nyilvános előzetes verzió: Lásd: [hogyan telepítheti át a helyi adatbázis felügyelt példányhoz DMS használatával](https://aka.ms/migratetoMIusingDMS).  
+Az Azure-adatbázis áttelepítési szolgáltatás egy olyan teljes körűen felügyelt szolgáltatás lehetővé minimális állásidővel adatok Azure platformon több adatbázis forrásból zökkenőmentes áttelepítés. Ez a szolgáltatás leegyszerűsíti a meglévő harmadik féltől származó és az SQL Server-adatbázisok áthelyezése az Azure-bA szükséges feladatok. Központi telepítési beállítások közé tartoznak az Azure SQL Database, a példány által felügyelt és az SQL Server Azure virtuális gép nyilvános előzetes verzió: Lásd: [hogyan telepítheti át a helyi adatbázis felügyelt példányhoz DMS használatával](https://aka.ms/migratetoMIusingDMS). 
 
 ### <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás  
 
@@ -174,7 +191,7 @@ Az áttelepítési módszer SQL biztonsági mentés az Azure blob storage kihasz
 
 A felügyelt példány célok megközelíti a 100 %-os támadási felületét is kompatibilisek a helyszíni SQL Server szolgáltatás általános rendelkezésre állása csak szakaszaiban hamarosan képes biztosítani. A szolgáltatások és összehasonlító listáját lásd: [általános SQL-szolgáltatások](sql-database-features.md).
  
-A felügyelt példány támogatja az előző verziókkal való kompatibilitás SQL 2008-adatbázishoz.  Az SQL 2005 adatbázis-kiszolgálók közvetlen áttelepítése támogatott, az áttelepített SQL 2005-adatbázisok kompatibilitási szintje nem frissítették, hogy az SQL 2008. 
+A felügyelt példány támogatja az előző verziókkal való kompatibilitás SQL 2008-adatbázishoz. Az SQL 2005 adatbázis-kiszolgálók közvetlen áttelepítése támogatott, az áttelepített SQL 2005-adatbázisok kompatibilitási szintje nem frissítették, hogy az SQL 2008. 
  
 A következő ábra bemutatja azokat a támadási felületét kompatibilitási felügyelt példányban:  
 
@@ -182,7 +199,7 @@ A következő ábra bemutatja azokat a támadási felületét kompatibilitási f
 
 ### <a name="key-differences-between-sql-server-on-premises-and-managed-instance"></a>Helyszíni SQL Server és a felügyelt példány közötti legfőbb különbségek 
 
-Felügyelt példány előnyöket nem mindig naprakészen-dátumig a felhőben, ami azt jelenti, hogy egyes funkciók a helyszíni SQL Server lehet akár elavult, már nincs, vagy valamilyen alternatívával szolgálni rendelkezik.  Ha az eszközök ismeri fel, hogy egy adott szolgáltatással némileg eltérő módon működik-e, vagy hogy a szolgáltatás nem fut egy olyan környezetben, nem teljes mértékben szabályozhatja, vannak bizonyos esetekben: 
+Felügyelt példány előnyöket nem mindig naprakészen-dátumig a felhőben, ami azt jelenti, hogy egyes funkciók a helyszíni SQL Server lehet akár elavult, már nincs, vagy valamilyen alternatívával szolgálni rendelkezik. Ha az eszközök ismeri fel, hogy egy adott szolgáltatással némileg eltérő módon működik-e, vagy hogy a szolgáltatás nem fut egy olyan környezetben, nem teljes mértékben szabályozhatja, vannak bizonyos esetekben: 
 
 - Magas rendelkezésre állású beépített és előre konfigurálva van. Mindig a magas rendelkezésre állású szolgáltatások nem érhetők egy ugyanúgy, mint az SQL IaaS-megvalósítások 
 - Az automatikus biztonsági mentés és időponthoz kötött visszaállításra. Ügyfél kezdeményezhet `copy-only` biztonsági mentések, amelyek nem zavarják a automatikus biztonsági mentési láncolatát. 
@@ -192,7 +209,7 @@ Felügyelt példány előnyöket nem mindig naprakészen-dátumig a felhőben, a
  
 ### <a name="managed-instance-administration-features"></a>Felügyelt példány felügyeleti funkciók  
 
-A felügyelt példány lehetővé teszik a rendszergazdának a legtöbb vállalati lényegre összpontosíthat. Sok rendszergazda/DBA rendszertevékenységét nem szükségesek, vagy egyszerű. Például az operációs rendszer / RDBMS telepítési és javítását, dinamikus példány átméretezése és a konfiguráció, a biztonsági mentések, a adatbázis-replikáció (rendszeradatbázisok), a magas rendelkezésre állású konfiguráció és a állapotának és teljesítményének a figyelési adatok konfigurálása adatfolyamokat.  
+A felügyelt példány lehetővé teszik a rendszergazdának a legtöbb vállalati lényegre összpontosíthat. Sok rendszergazda/DBA rendszertevékenységét nem szükségesek, vagy egyszerű. Például az operációs rendszer / RDBMS telepítési és javítását, dinamikus példány átméretezése és a konfiguráció, a biztonsági mentések, a adatbázis-replikáció (rendszeradatbázisok), a magas rendelkezésre állású konfiguráció és a állapotának és teljesítményének a figyelési adatok konfigurálása adatfolyamokat. 
 
 > [!IMPORTANT]
 > Támogatott, részben támogatott és nem támogatott funkciók listáját lásd: [SQL adatbázis-szolgáltatások](sql-database-features.md). Felügyelt példányok és SQL Server T-SQL különbségeit listájáért lásd: [példány T-SQL különbségek kezelt SQL Server kiszolgálóról](sql-database-managed-instance-transact-sql-information.md)
