@@ -1,11 +1,11 @@
 ---
-title: "Azure CDN-tartalom ország korlátozása |} Microsoft Docs"
-description: "Útmutató az Azure CDN-tartalom a földrajzi-szűrés szolgáltatás használatával korlátozza a hozzáférést."
+title: Azure CDN-tartalom ország korlátozása |} Microsoft Docs
+description: Útmutató az Azure CDN-tartalom a földrajzi-szűrés szolgáltatás használatával korlátozza a hozzáférést.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: lichard
 manager: akucer
-editor: 
+editor: ''
 ms.assetid: 12c17cc5-28ee-4b0b-ba22-2266be2e786a
 ms.service: cdn
 ms.workload: tbd
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
 ms.openlocfilehash: 30160088d9c770400f342e67527e1cf1cabc4f6b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="restrict-azure-cdn-content-by-country"></a>Ország Azure CDN-tartalom korlátozása
 
@@ -59,7 +59,7 @@ A szabály az blokkolás /Photos/Strasbourgban/például fájlok például szűr
     http://<endpoint>.azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg
 
 
-### <a name="country-codes"></a>Országkód
+### <a name="country-codes"></a>Országkódok
 A **földrajzi-szűrés** szolgáltatás országhívó számokat használ, amelyből a kérelem fogja engedélyezett vagy letiltott biztonságos könyvtár országok meghatározására. Megtalálja az ország kódok [Azure CDN országhívószámok](https://msdn.microsoft.com/library/mt761717.aspx). 
 
 ## <a id="considerations"></a>Szempontok

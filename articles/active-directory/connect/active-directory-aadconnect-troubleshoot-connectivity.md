@@ -1,11 +1,11 @@
 ---
-title: "Az Azure AD Connect: Csatlakozási problémák elhárítása |} Microsoft Docs"
-description: "Ismerteti az Azure AD Connect csatlakozási problémák."
+title: 'Az Azure AD Connect: Csatlakozási problémák elhárítása |} Microsoft Docs'
+description: Ismerteti az Azure AD Connect csatlakozási problémák.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 3aa41bb5-6fcb-49da-9747-e7a3bd780e64
 ms.service: active-directory
 ms.workload: identity
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
 ms.openlocfilehash: 1c8bbbde653ed8e927ab1550c32ae86a4dc2ffac
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Az Azure AD Connect csatlakozási problémák
 Ez a cikk ismerteti az Azure AD Connect és az Azure AD közötti kapcsolat megfelelő működésének és a problémák elhárításáról. A problémát valószínűleg a proxykiszolgálóval környezetben kell vizsgálni.
@@ -75,10 +75,10 @@ Ez a hiba akkor jelenik meg, ha a végpont **https://secure.aadcdn.microsoftonli
 Ha a telepítési varázsló az Azure AD-csatlakozás sikeres, de maga a jelszó nem ellenőrizhető, hogy ezt a hibaüzenetet látja:  
 ![badpassword](./media/active-directory-aadconnect-troubleshoot-connectivity/badpassword.png)
 
-* A jelszó ideiglenes jelszót és meg kell változtatni? Ennyi az egész ténylegesen a helyes jelszót? Próbálja meg jelentkezzen be a https://login.microsoftonline.com (azon a számítógépen egy másik az Azure AD Connect-kiszolgáló), és ellenőrizze, hogy a fiók nem használható.
+* A jelszó ideiglenes jelszót és meg kell változtatni? Ennyi az egész ténylegesen a helyes jelszót? Próbáljon újból bejelentkezni https://login.microsoftonline.com (azon a számítógépen egy másik az Azure AD Connect-kiszolgáló), és ellenőrizze, hogy a fiók nem használható.
 
 ### <a name="verify-proxy-connectivity"></a>Proxy-kapcsolat ellenőrzése
-Győződjön meg arról, hogy az Azure AD Connect-kiszolgáló rendelkezik-e a Proxy- és Internet tényleges kapcsolattal, tekintse meg, ha a proxy engedélyezi, hogy a webes kérések vagy nem egy PowerShell segítségével. A PowerShell-parancssorból, futtassa az `Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc`. (Technikailag az első tekintendő, amely a https://login.microsoftonline.com és ezt az URI is működik, de a más URI használata gyorsabb válaszolni.)
+Győződjön meg arról, hogy az Azure AD Connect-kiszolgáló rendelkezik-e a Proxy- és Internet tényleges kapcsolattal, tekintse meg, ha a proxy engedélyezi, hogy a webes kérések vagy nem egy PowerShell segítségével. A PowerShell-parancssorból, futtassa az `Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc`. (Technikailag az első hívás, hogy https://login.microsoftonline.com és ezt az URI is működik, de a többi URI gyorsabban válaszolni.)
 
 PowerShell Machine.config fájlban a konfigurációt használja a proxy kapcsolódni. A beállítások, a winhttp/netsh kell befolyásolja a parancsmagok használatával.
 
@@ -101,7 +101,7 @@ Az Azure AD Connect exportálási kérelmet küld az Azure AD, ha az Azure AD v�
 ## <a name="the-communication-pattern-between-azure-ad-connect-and-azure-ad"></a>Az Azure AD Connect és az Azure AD közötti kommunikáció minta
 Ha követte a fenti lépéseket, és továbbra sem sikerül kapcsolódni, akkor előfordulhat, hogy ezen a ponton start hálózati naplók megnézi. Ez a szakasz a normál és a sikeres kapcsolat minta van dokumentálása. Azt a közös piros hering figyelmen kívül hagyható a hálózati naplók olvasásakor listázása is van.
 
-* Nincsenek https://dc.services.visualstudio.com hívásokat. Nem kell az URL-címet a megnyitási engedélyek a proxy a telepítés sikeres, az adott hívások figyelmen kívül hagyható.
+* Nincsenek a hívások https://dc.services.visualstudio.com. Nem kell az URL-címet a megnyitási engedélyek a proxy a telepítés sikeres, az adott hívások figyelmen kívül hagyható.
 * Láthatja, hogy a DNS-feloldás sorolja fel a tényleges állomások a DNS-név terület nsatc.net és egyéb névterek nem microsoftonline.com alatt találhatók. Azonban nincsenek a webszolgáltatási kérelmeket a kiszolgáló tényleges nevét, és nem kell az alábbi URL-címek hozzáadása a proxy.
 * A végpontok adminwebservice provisioningapi felderítési végpontok és használandó tényleges végpontja kereséséhez használt. Ezeket a végpontokat a régiójától függően eltérőek.
 

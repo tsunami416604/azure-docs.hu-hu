@@ -1,11 +1,11 @@
 ---
-title: "Egy egyéni által fejlesztett alkalmazás adott mezők kitöltésére |} Microsoft Docs"
-description: "Útmutatás bizonyos mezők kitöltéséhez, amikor regisztrál egy egyéni fejlett alkalmazást az Azure ad szolgáltatással"
+title: Egy egyéni által fejlesztett alkalmazás adott mezők kitöltésére |} Microsoft Docs
+description: Útmutatás bizonyos mezők kitöltéséhez, amikor regisztrál egy egyéni fejlett alkalmazást az Azure ad szolgáltatással
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: cb85971d6d3d4dade69b9dc04e070c67341533a5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>Egy egyéni által fejlesztett alkalmazás adott mezők kitöltésére
 
@@ -38,7 +38,7 @@ Ez a cikk adjon egy rövid leírást a alkalmazás regisztráláshoz az összes 
 
 | Mező            | Leírás                                                                              |
 |------------------|------------------------------------------------------------------------------------------|
-| Név             | Az alkalmazás nevét. Ennek tartalmaznia kell legalább 4 karakter.                |
+| Name (Név)             | Az alkalmazás nevét. Ennek tartalmaznia kell legalább 4 karakter.                |
 | Alkalmazás típusa | **Webalkalmazást vagy webes API**: egy alkalmazás, amely egy webes alkalmazás, egy webes API vagy mindkettő 
 | |**Natív**: a felhasználói eszköz vagy a számítógépen telepített alkalmazás           |
 | Bejelentkezési URL      | Az URL-cím, ahol felhasználó tud egyszerre bejelentkezni az alkalmazás használatára                                  |
@@ -48,7 +48,7 @@ Miután megadta a fenti mezők, az alkalmazást regisztrálni Azure-portálon, �
 | Mező           | Leírás                                                                                                                                                                                                                                                                                                     |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Alkalmazásazonosító  | Ha egy alkalmazás regisztrálása az Azure AD hozzárendeli az alkalmazás egy azonosítót. Az azonosító az alkalmazást az Azure AD hitelesítési kérelmek egyedi azonosításához, valamint erőforrások eléréséhez használható alkalmazás, például a Graph API-val.                                                          |
-| App ID URI      | Egy egyedi URI Azonosítóját, általában az űrlap legyen **https://&lt;bérlői\_neve&gt;/&lt;alkalmazás\_neve&gt;.** Ez használható az engedélyezési grant folyamat során adhatja meg az erőforrást, amely a token számára kell kiadni, az egyedi azonosítóként. A "és" jogcím a kiállított jogkivonat is válik. |
+| Alkalmazásazonosító URI      | Egy egyedi URI Azonosítóját, általában az űrlap legyen **https://&lt;bérlői\_neve&gt;/&lt;alkalmazás\_neve&gt;.** Ez használható az engedélyezési grant folyamat során adhatja meg az erőforrást, amely a token számára kell kiadni, az egyedi azonosítóként. A "és" jogcím a kiállított jogkivonat is válik. |
 | Új embléma feltöltése | Ezzel az alkalmazás embléma feltöltéséhez. Az embléma .bmp, .jpg vagy .png formátumúnak kell lennie, és a fájlméret legfeljebb 100KB kell lennie. A kép méretei 215 x 215 képpont, központi lemezkép dimenziókkal 94 x 94 képpontban kell lennie.                                                       |
 | Kezdőlap URL-címe   | Ez az alkalmazás regisztrálása során megadott bejelentkezési URL.                                                                                                                                                                                                                                              |
 | Kijelentkezési URL      | Ez az egyetlen kijelentkezési kijelentkezési URL-címet. Az Azure AD kijelentkezési kérést küld az URL-cím, amikor a felhasználó törli a munkamenetet és az Azure AD más regisztrált alkalmazás használatával.                                                                                                                                       |
@@ -57,5 +57,5 @@ Miután megadta a fenti mezők, az alkalmazást regisztrálni Azure-portálon, �
 | Átirányítási URI azonosítók   | Natív alkalmazások, ez pedig ahol a felhasználó kell küldeni a következő a sikeres hitelesítést. Az Azure AD, ellenőrizze, hogy az OAuth 2.0 kérelemben megadja az átirányítási URI-t az alkalmazás megfelel a regisztrált értékeket a portálon.                                                            |
 | Kulcsok            | Programozott hozzáférés webes API-k, felhasználói beavatkozás nélkül az Azure AD által védett kulcsokat hozhat létre. Az a \* \*kulcsok\* \* lapon adja meg egy kulcs leírását és a lejárati dátum és a kulcs létrehozásához mentéséhez. Ügyeljen arra, hogy mentse a munkafüzetet valahol biztonságos, akkor nem fog tudni férni később.             |
 
-## <a name="next-steps"></a>Következő lépések
-[Alkalmazások kezelése az Azure Active Directoryban](active-directory-enable-sso-scenario.md)
+## <a name="next-steps"></a>További lépések
+[Alkalmazások kezelése az Azure Active Directoryval](active-directory-enable-sso-scenario.md)

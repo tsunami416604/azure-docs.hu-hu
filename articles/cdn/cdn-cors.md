@@ -1,11 +1,11 @@
 ---
-title: "Az Azure CDN használatával a CORS |} Microsoft Docs"
-description: "Ismerje meg, hogyan használható az Azure Content Delivery Network (CDN) számára az eltérő eredetű erőforrások megosztása (CORS)."
+title: Az Azure CDN használatával a CORS |} Microsoft Docs
+description: Ismerje meg, hogyan használható az Azure Content Delivery Network (CDN) számára az eltérő eredetű erőforrások megosztása (CORS).
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 86740a96-4269-4060-aba3-a69f00e6f14e
 ms.service: cdn
 ms.workload: tbd
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 7070397f6e69b21add75bad8220f0b8ebe36d266
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="using-azure-cdn-with-cors"></a>Az Azure CDN a CORS használatával
 ## <a name="what-is-cors"></a>Mi az a CORS?
@@ -29,7 +29,7 @@ A CORS kérelmek két különböző *egyszerű kérelmek* és *összetett kérel
 
 ### <a name="for-simple-requests"></a>Egyszerű kérelmeknél:
 
-1. A böngésző további a CORS kérelmet küld **származási** HTTP-kérés fejlécének. A fejléc értéke van definiálva, kombinációja szülőlap szolgáltatott eredeti *protokoll* *tartomány,* és *port.*  Egy lapot https://www.contoso.com megpróbál hozzáférni a felhasználó adatai, fabrikam.com származási, amikor a következő kérelemfejlécet küldendő fabrikam.com:
+1. A böngésző további a CORS kérelmet küld **származási** HTTP-kérés fejlécének. A fejléc értéke van definiálva, kombinációja szülőlap szolgáltatott eredeti *protokoll* *tartomány,* és *port.*  Ha egy lap https://www.contoso.com fabrikam.com küldheti megpróbál hozzáférni a felhasználó adatai, fabrikam.com származási, a következő kérelemfejlécet:
 
    `Origin: https://www.contoso.com`
 

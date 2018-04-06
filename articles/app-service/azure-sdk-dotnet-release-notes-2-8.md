@@ -1,10 +1,10 @@
 ---
-title: "Az Azure SDK for .NET 2,8 kibocsátási megjegyzései"
-description: "Az Azure SDK for .NET 2,8 kibocsátási megjegyzései"
+title: Az Azure SDK for .NET 2,8 kibocsátási megjegyzései
+description: Az Azure SDK for .NET 2,8 kibocsátási megjegyzései
 services: app-service\web
 documentationcenter: .net
 author: chrissfanos
-editor: 
+editor: ''
 ms.assetid: de7207ff-ba4f-4008-9141-8742fcaa3254
 ms.service: app-service
 ms.devlang: multiple
@@ -14,10 +14,10 @@ ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
 ms.openlocfilehash: 0b9f55d69c824e86245738a082f95fc529583f58
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-sdk-for-net-28-281-and-282"></a>2.8, 2.8.1-es verziójának és 2.8.2 .NET-keretrendszerhez készült Azure SDK
 ## <a name="overview"></a>Áttekintés
@@ -29,7 +29,7 @@ A cikkben a kibocsátási megjegyzéseket (ismert problémák és a jelentős v�
 ### <a name="download-azure-sdk-for-net-28"></a>2.8 .NET-keretrendszerhez készült Azure SDK letöltése
 [Az Azure SDK for .NET 2.8 a Visual Studio 2015](http://go.microsoft.com/fwlink/?LinkId=699285) 
 
-[Az Azure SDK for .NET 2.8 a Visual Studio 2013-hoz](http://go.microsoft.com/fwlink/?LinkId=699287)
+[Azure SDK for .NET 2.8 for Visual Studio 2013](http://go.microsoft.com/fwlink/?LinkId=699287)
 
 ### <a name="net-452-support"></a>Támogatja a .NET 4.5.2.
 #### <a name="known-issues"></a>Ismert problémák
@@ -69,7 +69,7 @@ További információ: [Azure SDK 2.8 a Visual Studio 2013 és a Visual Studio 2
 2. Python ügyfelek hibakereső problémákba ütközhetnek. Csoport folyamatban van egy javítsa ki a, de ha ügyfelet érintenének, kérjük, tájékoztasson Microsoft tudja a fórumokon vagy a hirdetmény blogon vagy a kibocsátási megjegyzések Megjegyzések szakasz. 
 3. Felhasználók (például a Dél-India) egyes régiókban fog tapasztalni App Service-kiépítési hibák. Ez megfelel a portálon, és az ügyfelek, akik a probléma az Azure-portál használatával kérjen hozzáférést a földrajzi régiók közzétételére. Amennyiben ezek régiókat hozzáférést kérnek az Azure portál kiépítés kell működnie. 
 
-## <a name="azure-sdk-for-net-282"></a>Az Azure SDK for .NET 2.8.2
+## <a name="azure-sdk-for-net-282"></a>Azure SDK for .NET 2.8.2
 Telepítését követően a 2.8.2 eszközök, az ügyfelek a következő problémákat tapasztalhat.         
 
 * Ha a Windows 10 használata nem telepítette az Internet Explorer, előfordulhat, hogy "Az Internet Explorer nem található" hibaüzenetet kap.

@@ -1,6 +1,6 @@
 ---
-title: "DNS-zóna létrehozása, és jegyezze fel beállítása az Azure DNS a .NET SDK használatával |} Microsoft Docs"
-description: "DNS-zónák és rekord létrehozása az Azure DNS-beállítja a .NET SDK használatával."
+title: DNS-zóna létrehozása, és jegyezze fel beállítása az Azure DNS a .NET SDK használatával |} Microsoft Docs
+description: DNS-zónák és rekord létrehozása az Azure DNS-beállítja a .NET SDK használatával.
 services: dns
 documentationcenter: na
 author: jtuliani
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: jonatul
 ms.openlocfilehash: c0fb0be8da1c0ca48a4d43ea027d30a0bc17fe30
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>Hozzon létre DNS-zónák és a .NET SDK használatával rekordhalmazok
 
@@ -41,7 +41,7 @@ Műveletek létrehozása, törlés vagy frissítés DNS zónák, rekordhalmazoka
 Az Azure DNS .NET SDK használatához telepíteni kell a **Azure DNS könyvtár** NuGet-csomagot, és más szükséges Azure csomagok.
 
 1. A **Visual Studio**, vagy egy új projekt megnyitása.
-2. Ugrás a **eszközök**  **>**  **NuGet-Csomagkezelő**  **>**  **megoldás NuGet-csomagok kezelése...** .
+2. Ugrás a **eszközök** **>** **NuGet-Csomagkezelő** **>** **megoldás NuGet-csomagok kezelése...** .
 3. Kattintson **Tallózás**, engedélyezze a **Include prerelease** jelölőnégyzetet, és írja be **Microsoft.Azure.Management.Dns** be a keresőmezőbe.
 4. Válassza ki a csomagot, és kattintson a **telepítése** veheti fel a Visual Studio-projektet.
 5. Ismételje meg a következő csomagok telepítése is a fenti folyamatot: **Microsoft.Rest.ClientRuntime.Azure.Authentication** és **Microsoft.Azure.Management.ResourceManager**.
@@ -162,6 +162,6 @@ while (page.NextPageLink != null)
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Töltse le a [Azure DNS .NET SDK mintaprojektet](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True), mely tartalmazza az Azure DNS .NET SDK-val, többek között például a más DNS-rekord típust további példákat.

@@ -1,9 +1,9 @@
 ---
-title: "Mi az Apache Hive és a HiveQL - Azure HDInsight |} Microsoft Docs"
-description: "A Hadoop adatraktárrendszer Apache Hive. A Hive használata a HiveQL, adataihoz lekérheti amely Transact-SQL hasonló. Ebből a dokumentumból megtudhatja, hogyan Azure HDInsight Hive és a HiveQL használandó."
-keywords: "hiveql, mi az hive, hadoop hiveql a hive használata kapcsolatos további tudnivalók a hive, mi az hive"
+title: Mi az Apache Hive és a HiveQL - Azure HDInsight |} Microsoft Docs
+description: A Hadoop adatraktárrendszer Apache Hive. A Hive használata a HiveQL, adataihoz lekérheti amely Transact-SQL hasonló. Ebből a dokumentumból megtudhatja, hogyan Azure HDInsight Hive és a HiveQL használandó.
+keywords: hiveql, mi az hive, hadoop hiveql a hive használata kapcsolatos további tudnivalók a hive, mi az hive
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -18,10 +18,10 @@ ms.workload: big-data
 ms.date: 01/26/2018
 ms.author: larryfr
 ms.openlocfilehash: afd2bc95beb2458ec149824723ec62381b31b2da
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Mi az Apache Hive és a Azure HDInsight HiveQL?
 
@@ -78,7 +78,7 @@ STORED AS TEXTFILE LOCATION '/example/data/';
 
 Hive is támogatja az egyéni **szerializáló/deserializers (SerDe)** túl összetett vagy szabálytalan strukturált adatok számára. További információkért lásd: a [egyéni JSON-SerDe használata a HDInsight](http://blogs.msdn.com/b/bigdatasupport/archive/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight.aspx) dokumentum.
 
-A Hive támogatott fájlformátumok további információkért lásd: a [nyelvi manuális (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
+A Hive támogatott fájlformátumok további információkért lásd: a [nyelvi manuális ()https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
 
 ### <a name="hive-internal-tables-vs-external-tables"></a>Belső tábla és a külső táblákra struktúra
 

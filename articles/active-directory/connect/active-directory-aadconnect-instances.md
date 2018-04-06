@@ -1,11 +1,11 @@
 ---
-title: "Az Azure AD Connect: Szolgáltatáspéldány szinkronizálása |} Microsoft Docs"
-description: "Ezen a lapon dokumentumokat az Azure AD-példányban szempontjai."
+title: 'Az Azure AD Connect: Szolgáltatáspéldány szinkronizálása |} Microsoft Docs'
+description: Ezen a lapon dokumentumokat az Azure AD-példányban szempontjai.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: f340ea11-8ff5-4ae6-b09d-e939c76355a3
 ms.service: active-directory
 ms.workload: identity
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/26/2017
 ms.author: billmath
 ms.openlocfilehash: 0b3f274c2bf457760a1d62d5cc369ebdb0c52c59
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Az Azure AD Connect: Különleges szempontok példányok
 Az Azure AD Connect leggyakrabban használt világszerte példányát az Azure AD és az Office 365. Emellett vannak más esetekben és ezeket az URL-címek és más szempontot különböző követelményekkel rendelkezik.

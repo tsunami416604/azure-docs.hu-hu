@@ -1,11 +1,11 @@
 ---
-title: "A StorSimple virtuális tömb frissítések kibocsátási megjegyzései |} Microsoft Docs"
-description: "A StorSimple virtuális tömb 0,2 és 0,1 Update futtatása kritikus megnyitott problémák és megoldásuk ismertetése"
+title: A StorSimple virtuális tömb frissítések kibocsátási megjegyzései |} Microsoft Docs
+description: A StorSimple virtuális tömb 0,2 és 0,1 Update futtatása kritikus megnyitott problémák és megoldásuk ismertetése
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 3993864d-2ddd-4302-a2f1-8d737fba6eab
 ms.service: storsimple
 ms.devlang: NA
@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/16/2016
 ms.author: alkohli
 ms.openlocfilehash: c4ccde9635b3874864baa9d4d262ff5ddcf2a425
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="storsimple-virtual-array-update-02-and-01-release-notes"></a>A StorSimple virtuális tömb frissítés 0,2 és 0,1 kibocsátási megjegyzései
 ## <a name="overview"></a>Áttekintés
@@ -55,8 +55,8 @@ A következő táblázat az ebben a kiadásban javított összegzését tartalma
 
 | Nem. | Szolgáltatás | Probléma |
 | --- | --- | --- |
-| 1 |VMDK-FÁJL |VMware verzióban az operációs rendszer lemezének ritka riasztásokat okozó és a normál működés megszakítása fordult elő. Ez volt a rögzített ebben a kiadásban. |
-| 2 |az iSCSI-kiszolgáló |A felhasználó legutóbbi kiadása szükséges megadni a StorSimple virtuális eszköz engedélyezett hálózati csatolóhoz átjárót. Ez a viselkedés ebben a kiadásban módosul, hogy a felhasználó rendelkezik-e az összes engedélyezett hálózati illesztő legalább egy átjáró konfigurálásához. |
+| 1 |VMDK |VMware verzióban az operációs rendszer lemezének ritka riasztásokat okozó és a normál működés megszakítása fordult elő. Ez volt a rögzített ebben a kiadásban. |
+| 2 |iSCSI server |A felhasználó legutóbbi kiadása szükséges megadni a StorSimple virtuális eszköz engedélyezett hálózati csatolóhoz átjárót. Ez a viselkedés ebben a kiadásban módosul, hogy a felhasználó rendelkezik-e az összes engedélyezett hálózati illesztő legalább egy átjáró konfigurálásához. |
 | 3 |Támogatási csomag |A szoftver verziója korábbi sikertelen, ha a csomag mérete 1 GB-nál nagyobb volt a csomag gyűjtemény támogatja. Ez a probléma fennáll ebben a kiadásban. |
 | 4 |Felhő hozzáférés |Az utolsó kiadásban a StorSimple virtuális tömb nem rendelkezett a hálózati kapcsolatot, és újra lett indítva, ha a helyi felhasználói felület kellene kapcsolódási problémák. Ez a probléma javítását az ebben a kiadásban. |
 | 5 |Figyelési diagramok |A korábbi változatban, a következő eszköz feladatátvétel a felhő kapacitás kihasználtságát diagramok helytelen értékeket a klasszikus Azure portálon jelenik meg. Ez a jelenlegi kiadásban rögzített. |
@@ -78,8 +78,8 @@ A következő táblázat összefoglalja az ismert problémákról a StorSimple v
 | **10.** |Azure PowerShell |A StorSimple virtuális eszköz az Azure PowerShell ebben a kiadásban nem kezelhetők. |A virtuális eszközök minden felügyeleti a klasszikus Azure portálra, és a helyi webes felhasználói felületen keresztül kell végezni. |
 | **11.** |A jelszó módosítása |A virtuális tömb eszköz konzol csak en-US billentyűzet formátumú bemenetet fogad el. | |
 | **12.** |CHAP |CHAP hitelesítő adatok létrehozása után nem lesznek eltávolítva. Továbbá ha módosítja a CHAP hitelesítő adatokat, szüksége lesz a kötetek offline állapotba, és hogy azok online, a változtatás érvénybe léptetéséhez. |Ezek kiiktatása a későbbi kiadásra. |
-| **13.** |az iSCSI-kiszolgáló |A "használt tárolási" az iSCSI-kötet jelenik meg a StorSimple Manager szolgáltatás és az iSCSI-gazdagép eltérőek lehetnek. |Az iSCSI-gazdagép a fájlrendszer nézet tartozik.<br></br>Az eszköz látja, ha a kötet maximális méret lefoglalt blokkok. |
-| **14.** |Fájl server * |Ha egy fájlt egy mappában van egy alternatív Data Stream (ADS) társítva, a HIRDETÉSEK nem biztonsági mentése vagy visszaállítása vész-helyreállítási, a Klónozás és az elem szintű helyreállítás. | |
+| **13.** |iSCSI server |A "használt tárolási" az iSCSI-kötet jelenik meg a StorSimple Manager szolgáltatás és az iSCSI-gazdagép eltérőek lehetnek. |Az iSCSI-gazdagép a fájlrendszer nézet tartozik.<br></br>Az eszköz látja, ha a kötet maximális méret lefoglalt blokkok. |
+| **14.** |File server* |Ha egy fájlt egy mappában van egy alternatív Data Stream (ADS) társítva, a HIRDETÉSEK nem biztonsági mentése vagy visszaállítása vész-helyreállítási, a Klónozás és az elem szintű helyreállítás. | |
 
 ## <a name="next-step"></a>Következő lépés
 [Frissítések telepítése](storsimple-ova-install-update-01.md) a StorSimple virtuális tömbben.

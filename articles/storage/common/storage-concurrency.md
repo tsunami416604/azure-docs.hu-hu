@@ -1,8 +1,8 @@
 ---
-title: "A párhuzamosság kezelése a Microsoft Azure Storage szolgáltatásban"
-description: "A Blob, a várólista, a tábla és a fájl szolgáltatások egyidejűségi kezelése"
+title: A párhuzamosság kezelése a Microsoft Azure Storage szolgáltatásban
+description: A Blob, a várólista, a tábla és a fájl szolgáltatások egyidejűségi kezelése
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: jasontang501
 manager: tadb
 editor: tysonn
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: jasontang501
 ms.openlocfilehash: 937cca66a0af0674b868e6a87681adbea330e91c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>A párhuzamosság kezelése a Microsoft Azure Storage szolgáltatásban
 ## <a name="overview"></a>Áttekintés
@@ -106,17 +106,17 @@ A következő táblázat összefoglalja a blob műveletek, például a feltétel
 
 | Művelet | ETag értéket ad vissza | Feltételes fejlécek fogad el |
 |:--- |:--- |:--- |
-| Helyezze a Blob |Igen |Igen |
-| A Blob beolvasása |Igen |Igen |
+| Put Blob |Igen |Igen |
+| Get Blob |Igen |Igen |
 | A Blob tulajdonságainak beolvasása |Igen |Igen |
 | A Blob tulajdonságainak beállítása |Igen |Igen |
 | A Blob metaadatot beszerezni |Igen |Igen |
 | Állítsa be a Blob metaadatai |Igen |Igen |
 | Címbérlet Blob (*) |Igen |Igen |
-| Pillanatkép Blob |Igen |Igen |
-| A Blob másolása |Igen |Igen (a forrás és cél blob) |
+| Snapshot Blob |Igen |Igen |
+| Copy Blob |Igen |Igen (a forrás és cél blob) |
 | A Blob másolási megszakítása |Nem |Nem |
-| A Blob törlése |Nem |Igen |
+| Delete Blob |Nem |Igen |
 | PUT letiltása |Nem |Nem |
 | PUT tiltólista |Igen |Igen |
 | Tiltólista beolvasása |Igen |Nem |
@@ -163,13 +163,13 @@ Bérelt blob egy írási művelet a címbérlet azonosító továbbításához n
 
 A következő blob műveletek címbérleteket segítségével pesszimista feldolgozási kezelheti:  
 
-* Helyezze a Blob
-* A Blob beolvasása
+* Put Blob
+* Get Blob
 * A Blob tulajdonságainak beolvasása
 * A Blob tulajdonságainak beállítása
 * A Blob metaadatot beszerezni
 * Állítsa be a Blob metaadatai
-* A Blob törlése
+* Delete Blob
 * PUT letiltása
 * PUT tiltólista
 * Tiltólista beolvasása
@@ -178,7 +178,7 @@ A következő blob műveletek címbérleteket segítségével pesszimista feldol
 * Pillanatkép a Blob - címbérlet azonosítója nem kötelező, ha a címbérlet létezik
 * A Blob - azonosító szükséges, ha a címbérlet megtalálható-e a cél blob bérleti másolása
 * Megszakítási másolási Blob - bérleti azonosító szükséges, ha egy végtelen címbérleti megtalálható-e a cél blob
-* Címbérlet Blob  
+* Lease Blob  
 
 ### <a name="pessimistic-concurrency-for-containers"></a>A tárolók pesszimista feldolgozási
 A tárolók címbérleteket engedélyezése blobok a támogatott szinkronizálási ugyanezen stratégiák (kizárólagos írási és olvasási, kizárólagos írási megosztott / kizárólagos olvasási és írási megosztott kizárólagos olvasási /) azonban blobok eltérően a társzolgáltatás csak kikényszeríti kizárólagosság a a törlési műveletek. Törli a tárolóhoz egy aktív bérleti jog vonatkozik, egy ügyfél a törlési kérelem aktív bérleti Azonosítójú tartalmaznia kell. Minden más tároló művelet sikerült bérelt tárolóba többek között a címbérleti azonosító nélkül megosztott ebben az esetben azok a műveletek. Ha szükség a frissítés (put vagy beállítása) vagy az olvasási műveletek kizárólagosság majd fejlesztők győződjön meg arról az összes ügyfél használni a címbérlet-Azonosítót, és hogy csak egy ügyfél egyszerre rendelkezik-e egy érvényes bérleti.  
@@ -197,7 +197,7 @@ További információkért lásd:
 
 * [A Blob szolgáltatás műveletek feltételes fejlécek megadása](http://msdn.microsoft.com/library/azure/dd179371.aspx)
 * [Címbérlet tároló](http://msdn.microsoft.com/library/azure/jj159103.aspx)
-* [Címbérlet Blob](http://msdn.microsoft.com/library/azure/ee691972.aspx)
+* [Címbérlet Blob ](http://msdn.microsoft.com/library/azure/ee691972.aspx)
 
 ## <a name="managing-concurrency-in-the-table-service"></a>A Table szolgáltatásban párhuzamossági kezelése
 A table szolgáltatás optimista párhuzamossági alapértelmezett viselkedésként ellenőrzi, amikor dolgozunk entitások, ellentétben a blob szolgáltatás, ha explicit módon választania kell az egyidejű hozzáférések optimista ellenőrzéséhez használ. A más a tábla és a blob szolgáltatás közötti különbség, hogy csak kezelheti az entitások viselkedésének párhuzamossági mivel a blob szolgáltatás segítségével kezelheti a tárolók és blobok CONCURRENCY paraméterének értékét.  
@@ -286,7 +286,7 @@ Ebben a blogban hivatkozik a teljes mintaalkalmazás:
 További információ az Azure Storage lásd:  
 
 * [A Microsoft Azure Storage kezdőlap](https://azure.microsoft.com/services/storage/)
-* [Az Azure Storage bemutatása](storage-introduction.md)
+* [A Microsoft Azure Storage bemutatása](storage-introduction.md)
 * Bevezetés a tárolás [Blob](../blobs/storage-dotnet-how-to-use-blobs.md), [tábla](../../cosmos-db/table-storage-how-to-use-dotnet.md), [várólisták](../storage-dotnet-how-to-use-queues.md), és [fájlok](../storage-dotnet-how-to-use-files.md)
 * Tároló-architektúra – [az Azure Storage: egy magas rendelkezésre állású felhőalapú tárolási szolgáltatásba erős konzisztencia](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 

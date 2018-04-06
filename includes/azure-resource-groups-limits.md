@@ -16,7 +16,7 @@
 | Paraméterek |256 |256 |
 | Változók |256 |256 |
 | Erőforrások (például a példányszám) |800 |800 |
-| kimenetek |64 |64 |
+| Kimenetek |64 |64 |
 | Sablon kifejezés |24,576 karakter |24,576 karakter |
 | Az exportált sablonok erőforrások |200 |200 | 
 | Sablonok mérete |1 MB |1 MB |

@@ -1,11 +1,11 @@
 ---
-title: "Az Azure AD Connect: Deklaratív kiépítés kifejezéseinek |} Microsoft Docs"
-description: "A deklaratív kiépítés kifejezéseinek ismerteti."
+title: 'Az Azure AD Connect: Deklaratív kiépítés kifejezéseinek |} Microsoft Docs'
+description: A deklaratív kiépítés kifejezéseinek ismerteti.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: e3ea53c8-3801-4acf-a297-0fb9bb1bf11d
 ms.service: active-directory
 ms.workload: identity
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.openlocfilehash: 797c0949aceea415652a72df5ee23ef9888ab975
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect szinkronizálása: deklaratív kiépítés kifejezések ismertetése
 Azure AD Connect szinkronizálása épít deklaratív kiépítés először a Forefront Identity Manager 2010 verzióban jelent. Lehetővé teszi a teljes identity integration üzleti logika lefordított kód írása nélkül végrehajtásához.
@@ -80,9 +80,9 @@ Operátorok értékeli ki a rendszer balról jobbra, és értékelési azonos pr
 A funkciók is egyértékű és többértékű attribútumok is működik. Többértékű attribútumok a függvény minden egyes értékhez keresztül működik, és ugyanazt a funkciót alkalmazza minden egyes értékhez.
 
 Példa:  
-`Trim([proxyAddresses])`Minden a proxyAddress attribútum értékének Trim tegye.  
-`Word([proxyAddresses],1,"@") & "@contoso.com"`Minden értékekre, egy @-sign, cserélje le a tartomány @contoso.com.  
-`IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])`Keresse meg a SIP-cím, és távolítsa el az értékeket.
+`Trim([proxyAddresses])` Minden a proxyAddress attribútum értékének Trim tegye.  
+`Word([proxyAddresses],1,"@") & "@contoso.com"` Minden értékekre, egy @-sign, cserélje le a tartomány @contoso.com.  
+`IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])` Keresse meg a SIP-cím, és távolítsa el az értékeket.
 
 ## <a name="next-steps"></a>További lépések
 * További információk a konfigurációs modell [ismertetése deklaratív kiépítés](active-directory-aadconnectsync-understanding-declarative-provisioning.md).

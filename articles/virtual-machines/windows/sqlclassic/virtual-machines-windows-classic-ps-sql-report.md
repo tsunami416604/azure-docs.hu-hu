@@ -1,6 +1,6 @@
 ---
-title: "Natív üzemmódú jelentéskészítő kiszolgálón hozzon létre egy virtuális Gépet a PowerShell használatával |} Microsoft Docs"
-description: "Ez a témakör ismerteti, és bemutatja, hogyan telepítését és konfigurálását az SQL Server Reporting Services natív üzemmódú jelentéskészítő kiszolgáló egy Azure virtuális gépen. "
+title: Natív üzemmódú jelentéskészítő kiszolgálón hozzon létre egy virtuális Gépet a PowerShell használatával |} Microsoft Docs
+description: 'Ez a témakör ismerteti, és bemutatja, hogyan telepítését és konfigurálását az SQL Server Reporting Services natív üzemmódú jelentéskészítő kiszolgáló egy Azure virtuális gépen. '
 services: virtual-machines-windows
 documentationcenter: na
 author: guyinacube
@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: asaxton
 ms.openlocfilehash: 0b9f12127276f5aa689c4a1d3a5bf9fe645a0fc7
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>Natív üzemmódú jelentéskészítő kiszolgálót futtató Azure-beli virtuális gép létrehozása a PowerShell-lel
 > [!IMPORTANT] 
@@ -55,7 +55,7 @@ Ez a témakör ismerteti, és bemutatja, hogyan telepítését és konfigurálá
     ![új virtuális gép gyűjteményből](./media/virtual-machines-windows-classic-ps-sql-report/IC692020.gif)
 5. Kattintson a **SQL Server 2014 RTM Standard – Windows Server 2012 R2** és kattintson a nyílra, a folytatáshoz.
    
-    ![következő](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
+    ![tovább](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
    
     Ha a Reporting Services adatvezérelt előfizetések funkció van szüksége, válassza a **SQL Server 2014 RTM vállalati – Windows Server 2012 R2**. SQL Server kiadása és által nyújtott szolgáltatások támogatásáról további információkért lásd: [SQL Server 2012 kiadásai által támogatott funkciók](https://msdn.microsoft.com/library/cc645993.aspx#Reporting).
 6. Az a **virtuálisgép-konfiguráció** lapon, módosítsa a következő mezőket:
@@ -66,7 +66,7 @@ Ez a témakör ismerteti, és bemutatja, hogyan telepítését és konfigurálá
    * **Méret: A3** van az SQL Server munkaterhelésekhez ajánlott Virtuálisgép-méretet. Ha egy virtuális gép csak egy jelentéskészítő kiszolgálón, a virtuális gép méretét A2 is használhatók, kivéve, ha a jelentéskészítő kiszolgáló során a nagy terhelés lép fel. A virtuális gép a díjszabásról, lásd: [Virtual Machines díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/).
    * **Új felhasználónevet**: a megadott jön létre a virtuális gép rendszergazdai jogosultságokkal.
    * **Új jelszó** és **megerősítése**. Ezt a jelszót az új rendszergazdafiókhoz szolgál, és erős jelszó használatát javasoljuk.
-   * Kattintson a **Tovább** gombra. ![következő](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
+   * Kattintson a **Tovább** gombra. ![next](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
 7. A következő lapon szerkessze a következő mezőket:
    
    * **A felhőalapú szolgáltatás**: válasszon **hozzon létre egy új felhőalapú szolgáltatás**.
@@ -78,9 +78,9 @@ Ez a témakör ismerteti, és bemutatja, hogyan telepítését és konfigurálá
      
      * **HTTP**: az alapértelmezett nyilvános és titkos portok: **80**. Vegye figyelembe, hogy ha egy magánhálózati port a 80-as, nem módosíthatja **$HTTPport = 80** a http-parancsfájl.
      * **HTTPS**: az alapértelmezett nyilvános és titkos portok: **443-as**. Biztonsági szempontból ajánlott, hogy módosítsa a magánhálózati port és a tűzfal és a jelentéskészítő kiszolgáló a magánhálózati port használatára. A végpontok további információkért lásd: [hogyan állítsa be kommunikáció a virtuális gép](../classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Vegye figyelembe, hogy egy 443,-astól eltérő port használata esetén módosítsa a paraméter **$HTTPsport = 443-as** a HTTPS-parancsfájl.
-   * Kattintson a Tovább gombra. ![következő](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
+   * Kattintson a Tovább gombra. ![tovább](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
 8. A varázsló utolsó oldalán, tartsa meg az alapértelmezett **a Virtuálisgép-ügynök telepítése** kijelölt. A témakörben ismertetett lépések nem használja a Virtuálisgép-ügynök, de ha le szeretné tartani a virtuális Gépet, a Virtuálisgép-ügynök és a bővítmények lehetővé teszi javítása érdekében, hogy CM.  A Virtuálisgép-ügynök további információkért lásd: [ügynök és Virtuálisgép-bővítmények – 1. rész](https://azure.microsoft.com/blog/2014/04/11/vm-agent-and-extensions-part-1/). Az alapértelmezett telepített kiterjesztéseket ad futó egyik a "BGINFO" bővítményt, amely a virtuális gép asztali, a rendszer-információkat, például a belső IP-cím és a szabad lemezterületet jeleníti meg.
-9. Kattintson a Kész gombra. ![ok](./media/virtual-machines-windows-classic-ps-sql-report/IC660122.gif)
+9. Kattintson a Kész gombra. ![oké](./media/virtual-machines-windows-classic-ps-sql-report/IC660122.gif)
 10. A **állapota** látható a virtuális gép **indítása (kiépítés)** a kiépítési folyamat során értékként jelenik majd meg **futtató** a virtuális gép esetén kiosztott és készen áll a használatra.
 
 ## <a name="step-2-create-a-server-certificate"></a>2. lépés: A kiszolgálói tanúsítvány létrehozása
@@ -546,7 +546,7 @@ Győződjön meg arról, hogy a port van megnyitva, nyisson meg egy Windows Powe
 
     get-netfirewallrule | where {$_.displayname -like "*report*"} | select displayname,enabled,action
 
-## <a name="verify-the-configuration"></a>Ellenőrizze
+## <a name="verify-the-configuration"></a>A konfiguráció ellenőrzése
 Győződjön meg arról, hogy a jelentés alapvető funkcióihoz most működik, nyissa meg a böngésző rendszergazdai jogosultságokkal, és tallózással keressen meg a következő jelentéskészítő kiszolgáló ad Jelentéskezelő URL-CÍMEK:
 
 * A virtuális Gépre keresse meg a jelentéskészítő kiszolgáló URL-címe:
@@ -596,7 +596,7 @@ A következő táblázat összefoglalja az egyes lehetőségekről a helyi szám
 > Költségek minimalizálása érdekében az az Azure virtuális gépek Ha nincsenek használatban, állítsa le a virtuális Gépet az Azure portálról. A Windows energiagazdálkodási beállításait használja a virtuális Gépen belül a virtuális gép leállítása, ha még mindig van szó akkora a virtuális gép számára. Költségek csökkentése érdekében le a virtuális Gépet az Azure portálon kell. Ha már nincs szüksége a virtuális Gépet, ne felejtse el a virtuális gép és a hozzárendelt .vhd fájlokat tároló díjak elkerülése érdekében törölje. További információkért lásd: a következő gyakran feltett [virtuális gépek díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/).
 
 ## <a name="more-information"></a>További információ
-### <a name="resources"></a>Erőforrások
+### <a name="resources"></a>További források
 * Az SQL Server Business Intelligence és a SharePoint 2013 egyetlen kiszolgáló telepítéséhez kapcsolódó hasonló tartalomhoz, lásd: [a Windows PowerShell szolgáltatás használatával hozzon létre egy Azure virtuális gép az SQL Server BI és a SharePoint 2013](https://msdn.microsoft.com/library/azure/dn385843.aspx).
 * A hasonló tartalomhoz kapcsolódó SQL Server Business Intelligence és a SharePoint 2013 többkiszolgálós telepítésben, lásd: [központi telepítése az SQL Server Business Intelligence Azure virtuális gépek](https://msdn.microsoft.com/library/dn321998.aspx).
 * A SQL Server Business Intelligence Azure virtuális gépek központi telepítéséhez kapcsolódó általános információkért lásd: [SQL Server Business Intelligence Azure virtuális gépek](virtual-machines-windows-classic-ps-sql-bi.md).

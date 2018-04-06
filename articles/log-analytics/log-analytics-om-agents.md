@@ -1,11 +1,11 @@
 ---
-title: "Az Operations Manager csatlakoztatása szolgáltatáshoz |} Microsoft Docs"
-description: "A meglévő befektetések a System Center Operations Manager karbantartása, és kiterjesztett képességek használata Naplóelemzési, integrálható az Operations Manager az OMS-munkaterület."
+title: Az Operations Manager csatlakoztatása szolgáltatáshoz |} Microsoft Docs
+description: A meglévő befektetések a System Center Operations Manager karbantartása, és kiterjesztett képességek használata Naplóelemzési, integrálható az Operations Manager az OMS-munkaterület.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 245ef71e-15a2-4be8-81a1-60101ee2f6e6
 ms.service: log-analytics
 ms.workload: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/10/2017
 ms.author: magoedte
 ms.openlocfilehash: 6db47c7baa0a345a32d26d56e843acd0204ae50b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Adatforrások csatlakoztatása az Operations Manager szolgáltatáshoz
 A meglévő befektetések a System Center Operations Manager karbantartása, és kiterjesztett képességek használata Naplóelemzési, integrálható az Operations Manager az OMS-munkaterület.  Ez lehetővé teszi, miközben továbbra is használja az Operations Manager OMS lehetőségek is használja:
@@ -101,7 +101,7 @@ Hajtsa végre az alábbi lépéseket, a felügyeleti csoport és az OMS-webszolg
 1. Nyissa meg az Operations Manager-konzolt, és válassza ki az **Administration** (Adminisztráció) munkaterületet.
 2. Bontsa ki az Operations Management Suite, majd a **kapcsolatok**.
 3. Az OMS Connection (OMS-kapcsolat) nézetben kattintson a **Configure Proxy Server** (Proxykiszolgáló konfigurálása) lehetőségre.
-4. A **Operations Management Suite varázslója: proxykiszolgáló** lapon jelölje be **proxykiszolgáló használata az Operations Management Suite eléréséhez**, majd írja be az URL-cím, egy portszám, például a http://corpproxy:80, és kattintson a **Befejezés**.
+4. A **Operations Management Suite varázslója: proxykiszolgáló** lapon jelölje be **proxykiszolgáló használata az Operations Management Suite eléréséhez**, és írja be az URL-cím, egy portszám, például http://corpproxy:80 majd **Befejezés**.
 
 Ha a proxykiszolgálóhoz hitelesítés szükséges, hajtsa végre a következő lépésekkel állíthatja be a hitelesítő adatok és beállítások propagálódik az OMS jelent a felügyeleti csoportban lévő felügyelt számítógépeket.
 
@@ -150,7 +150,7 @@ Azt is ellenőrizze, hogy az Operations Manager-integrálást az OMS sikeres né
 2. Válassza ki **csatlakoztatott adatforrások**.
 3. A tábla a System Center Operations Manager szakaszban meg kell jelennie az ügynökök és az állapot számú felsorolt adatok utolsó fogadásakor felügyeleti csoport neve.
    
-   ![OMS-beállítások-connectedsources](./media/log-analytics-om-agents/oms-settings-connectedsources.png)
+   ![oms-settings-connectedsources](./media/log-analytics-om-agents/oms-settings-connectedsources.png)
 4. Megjegyzés: a **munkaterület azonosítója** érték a bal oldali a beállítások lap.  Az Operations Manager felügyeleti csoportjának az alábbi szemben érvényesíti.  
 
 ### <a name="to-confirm-integration-from-the-operations-console"></a>Integráció az operatív konzolról megerősítéséhez
@@ -159,7 +159,7 @@ Azt is ellenőrizze, hogy az Operations Manager-integrálást az OMS sikeres né
 3. Attól függően, hogy engedélyezte a megoldások tekintse meg a megfelelő felügyeleti csomag szerepel a keresési eredmények között.  Például ha engedélyezte a riasztási felügyeleti megoldás, a felügyeleti csomag Microsoft System Center Advisor Riasztáskezelési szerepel a listában.
 4. Az a **figyelés** megtekintéséhez nyissa meg a **Operations Management Suite\Health állapot** nézet.  Jelöljön ki egy felügyeleti csoportban a **felügyeleti kiszolgáló állapota** ablaktáblán, és a a **részletes nézet** ablaktáblán, erősítse meg a tulajdonság értékét **hitelesítési szolgáltatás URI** megegyezik az OMS-munkaterület azonosítója.
    
-   ![OMS-opsmgr-mg-authsvcuri-Property-MS](./media/log-analytics-om-agents/oms-opsmgr-mg-authsvcuri-property-ms.png)
+   ![oms-opsmgr-mg-authsvcuri-property-ms](./media/log-analytics-om-agents/oms-opsmgr-mg-authsvcuri-property-ms.png)
 
 ## <a name="remove-integration-with-oms"></a>Távolítsa el az OMS integrációja
 Ha már nincs szükség az Operations Manager felügyeleti csoport és az OMS-munkaterület közötti integráció, nincs több lépésre van szükség a kapcsolat és a konfiguráció megfelelően eltávolítani a felügyeleti csoport. Az alábbi eljárást az OMS-munkaterület törölni kell a hivatkozás a felügyeleti csoport frissítése, törölje az OMS-összekötőt, és ezután törölje az OMS támogató felügyeleti csomagok rendelkezik.   
@@ -172,8 +172,8 @@ Felügyeleti csomagok megoldásainak engedélyezve van, amelyekbe beépül az Op
     > Ellenőrizze, nem rendelkezik a neve, a folytatás előtt a word Advisor vagy IntelligencePack bármilyen egyéni felügyeleti csomagok, ellenkező esetben a következő lépések törölje ezeket a felügyeleti csoportból.
     > 
 
-2. A parancs-rendszerhéj parancssorában gépelje be`Get-SCOMManagementPack -name "*Advisor*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
-3. Következő típusa`Get-SCOMManagementPack -name “*IntelligencePack*” | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
+2. A parancs-rendszerhéj parancssorában gépelje be `Get-SCOMManagementPack -name "*Advisor*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
+3. Következő típusa `Get-SCOMManagementPack -name “*IntelligencePack*” | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
 4. A felügyeleti csomagok fennmaradó, amely más System Center Advisor felügyeleti csomagoktól tartalmazhat függőség eltávolításához használja a parancsfájl *RecursiveRemove.ps1* korábban letöltött a TechNet Script Center.  
  
     > [!NOTE]
@@ -295,7 +295,7 @@ Törölje a két összekötőt - Microsoft.SystemCenter.Advisor.DataConnector é
 
 A jövőben Ha újracsatlakozni a felügyeleti csoport egy OMS-munkaterület tervezi, akkor importálja újra a `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` a felügyeleti csoportra alkalmazza a legújabb kumulatív frissítését a felügyeleticsomag-fájlt.  Ez a fájl a `%ProgramFiles%\Microsoft System Center 2012` vagy a `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups` mappát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Funkciók hozzáadása és az adatgyűjtésre [hozzáadni a Naplóelemzési megoldások a megoldások gyűjteményből](log-analytics-add-solutions.md).
 
 
