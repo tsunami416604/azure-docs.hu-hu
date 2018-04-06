@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: davidmu
-ms.openlocfilehash: 624a40b1e40db6ceac9c567926b3932449e7bf7e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 12f63bc42f8450f086ed9f0e8d598c9c91a0c3d4
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>Az Azure AD B2C egyéni házirend alapszintű csomag egyéni házirendjeinek ismertetése
 
@@ -39,7 +39,7 @@ A jogcím-sémák három részből áll:
 3.  És végül a harmadik szakasz további, opcionális jogcímeket a felhasználó a gyűjtendő felsoroló a könyvtárban tárolja, és a bejelentkezés során küldött jogkivonatokat. A felhasználó gyűjtött vagy a token küldött új jogcím típusa ebben a szakaszban lehet hozzáadni.
 
 > [!IMPORTANT]
-> A jogcímek séma egyes jogcímek, például a jelszavak és a felhasználónevek korlátozásokat tartalmaz. A megbízható keretrendszer (TF) házirend más jogcím-szolgáltató kezeli az Azure AD és a korlátozások vannak modellezni a prémium szintű házirendben. További korlátozások hozzáadása, vagy egy másik jogcím-szolgáltató használata a hitelesítő adatok tárolása, amelynek a saját korlátozások házirend volt módosítani.
+> A jogcímek séma egyes jogcímek, például a jelszavak és a felhasználónevek korlátozásokat tartalmaz. A megbízható keretrendszer (TF) házirend más jogcím-szolgáltató kezeli az Azure AD és a korlátozások vannak modellezni az egyéni házirendek. További korlátozások hozzáadása, vagy egy másik jogcím-szolgáltató használata a hitelesítő adatok tárolása, amelynek a saját korlátozások házirend volt módosítani.
 
 A rendelkezésre álló jogcím-típusok listája látható.
 
@@ -51,12 +51,12 @@ A következő jogcímek felhasználói utak helyes működéséhez szükségesek
 |-------------|-------------|
 | *UserId* | Felhasználónév |
 | *signInName* | Jelentkezzen be neve |
-| *tenantId* | Bérlő azonosítóját az Azure AD B2C-támogatás a felhasználói objektum |
-| *objectId* | Objektumazonosító (ID) az Azure AD B2C-támogatás a felhasználói objektum |
+| *tenantId* | A user objektum az Azure AD B2C-bérlő azonosítója (ID) |
+| *objectId* | A user objektum az Azure AD B2C objektumazonosítót (ID) |
 | *Jelszó* | Jelszó |
 | *newPassword* | |
 | *reenterPassword* | |
-| *passwordPolicies* | A jelszóházirendek az Azure AD B2C prémium alapján határozzák meg a jelszó erőssége, a lejárat, stb. |
+| *passwordPolicies* | A jelszóházirendek az Azure AD B2C alapján határozzák meg a jelszó erőssége, a lejárat, stb. |
 | *sub* | |
 | *alternativeSecurityId* | |
 | *identityProvider* | |
@@ -66,9 +66,9 @@ A következő jogcímek felhasználói utak helyes működéséhez szükségesek
 | *email* | Kapcsolattartás a felhasználókkal használható e-mail cím |
 | *signInNamesInfo.emailAddress* | A felhasználó használhatja-e bejelentkezni az e-mail címet |
 | *otherMails* | Kapcsolattartás a felhasználókkal használt e-mail címek |
-| *userPrincipalName* | Az Azure AD B2C prémium tárolt felhasználónév |
+| *userPrincipalName* | Az Azure AD B2C tárolt felhasználónév |
 | *upnUserName* | Egyszerű felhasználónév létrehozásához felhasználónév |
-| *mailNickName* | Mail nick felhasználónév tárolt az Azure AD B2C-támogatás |
+| *mailNickName* | Az Azure AD B2C tárolt felhasználó mail nick neve |
 | *newUser* | |
 | *executed-SelfAsserted-Input* | Amely meghatározza, hogy attribútumok gyűjtötte a program a felhasználói jogcímek |
 | *executed-PhoneFactor-Input* | Jogcímet, amely megadja, hogy egy új telefonszámot gyűjtötte a program a felhasználó részéről |

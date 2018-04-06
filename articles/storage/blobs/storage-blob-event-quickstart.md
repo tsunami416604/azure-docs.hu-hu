@@ -1,31 +1,29 @@
 ---
-title: "Azure Blob storage-események átirányítása egy egyéni webes végpontjának |} Microsoft Docs"
-description: "Az Azure Event Griddel előfizethet Blob Storage-eseményekre."
+title: Azure Blob storage-események átirányítása egy egyéni webes végpontjának |} Microsoft Docs
+description: Az Azure Event Griddel előfizethet Blob Storage-eseményekre.
 services: storage,event-grid
-keywords: 
+keywords: ''
 author: cbrooksmsft
 ms.author: cbrooks
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 4f10d9b26cb75bee8103d986b7fa1197168c692f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f0764ebc423cfb5323f2b634ce5a5ecbe075135c
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-azure-cli"></a>A Blob storage-események átirányítása egy egyéni webkiszolgáló-végpont Azure parancssori felülettel
 
 Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben előfizetünk a Blob Storage-eseményekre az Azure CLI-vel, majd elindítjuk az eseményt az eredmény megtekintéséhez. 
 
-Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek reagálnak az eseményre, például egy webhooknak vagy egy Azure-függvénynek. A cikkben bemutatott példa egyszerűsítése érdekében az eseményeket egy olyan URL-címnek küldjük el, amely pusztán üzenetek gyűjtésével foglalkozik. Az URL-cím vagy a külső eszközök használatával hoz létre [RequestBin](https://requestb.in/) vagy [Hookbin](https://hookbin.com/).
+Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek reagálnak az eseményre, például egy webhooknak vagy egy Azure-függvénynek. A cikkben bemutatott példa egyszerűsítése érdekében az eseményeket egy olyan URL-címnek küldjük el, amely pusztán üzenetek gyűjtésével foglalkozik. Az URL-címet a [Hookbin](https://hookbin.com/) külső eszközével fogjuk létrehozni.
 
 > [!NOTE]
-> **RequestBin** és **Hookbin** magas teljesítmény használati nem használhatók. Ezek az eszközök használata tisztán demonstrative. Ha egyszerre több eseményt továbbít, lehetséges, hogy az eszközben nem fog megjelenni az összes esemény.
+> **Hookbin** nem célja a magas teljesítmény-használatról. Az eszköz jelen használata kizárólag bemutató célt szolgál. Ha egyszerre több eseményt továbbít, lehetséges, hogy az eszközben nem fog megjelenni az összes esemény.
 
 A cikkben leírt lépések elvégzése után látni fogja, hogy az eseményadatokat egy végpontnak küldte el a rendszer.
-
-![Eseményadatok](./media/storage-blob-event-quickstart/request-result.png)
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -68,11 +66,11 @@ az storage account create \
 
 ## <a name="create-a-message-endpoint"></a>Üzenetvégpont létrehozása
 
-A témakörre való feliratkozás előtt hozzuk létre az eseményüzenet végpontját. Az eseményre reagáló kód írása helyett egy olyan végpontot hozzunk létre, amely gyűjti az üzeneteket, hogy meg tudja őket tekinteni. RequestBin és Hookbin külső eszközök, amelyek lehetővé teszik a hozzon létre egy végpontot, és a hozzá küldött kérelmekben megtekintése. Lépjen [RequestBin](https://requestb.in/), és kattintson **hozzon létre egy RequestBin**, vagy keresse fel [Hookbin](https://hookbin.com/) kattintson **új végpont létrehozásához**.  Másolja ki a tár URL-címét, mert szüksége lesz rá, amikor feliratkozik a témakörre.
+A témakörre való feliratkozás előtt hozzuk létre az eseményüzenet végpontját. Az eseményre reagáló kód írása helyett egy olyan végpontot hozzunk létre, amely gyűjti az üzeneteket, hogy meg tudja őket tekinteni. A Hookbin egy külső eszköz, amely lehetővé teszi egy végpont létrehozását és a neki küldött kérések megtekintését. Nyissa meg a [Hookbin](https://hookbin.com/) eszközt, és kattintson a **Create New Endpoint** (Új végpont létrehozása) elemre.  Másolja ki a tár URL-címét, mert szüksége lesz rá, amikor feliratkozik a témakörre.
 
 ## <a name="subscribe-to-your-storage-account"></a>A storage-fiók előfizetés
 
-A témakörre való feliratkozással lehet tudatni az Event Griddel, hogy mely eseményeket kívánja nyomon követni. A következő példa a tárfiókot hozott létre, és adja át az URL-cím RequestBin vagy Hookbin és a végpontnak a eseményértesítés számítógépcsoportra fizetett elő. Az `<event_subscription_name>` elemet az esemény-feliratkozás egyedi nevére cserélje le, az `<endpoint_URL>` elemet pedig az előző szakaszból származó értékre. Ha megadja a végpontot a feliratkozáskor, az Event Grid az adott végpontra irányítja az eseményeket. A `<resource_group_name>` és `<storage_account_name>` elemnél a korábban létrehozott értékeket adja meg.  
+A témakörre való feliratkozással lehet tudatni az Event Griddel, hogy mely eseményeket kívánja nyomon követni. A következő példa a tárfiókot hozott létre, és az URL-cím továbbítja a Hookbin és a végpontnak a eseményértesítés számítógépcsoportra fizetett elő. Az `<event_subscription_name>` elemet az esemény-feliratkozás egyedi nevére cserélje le, az `<endpoint_URL>` elemet pedig az előző szakaszból származó értékre. Ha megadja a végpontot a feliratkozáskor, az Event Grid az adott végpontra irányítja az eseményeket. A `<resource_group_name>` és `<storage_account_name>` elemnél a korábban létrehozott értékeket adja meg.  
 
 ```azurecli-interactive
 storageid=$(az storage account show --name <storage_account_name> --resource-group <resource_group_name> --query id --output tsv)
@@ -97,7 +95,7 @@ touch testfile.txt
 az storage blob upload --file testfile.txt --container-name testcontainer --name testfile.txt
 ```
 
-Ön kiváltotta az eseményt, az Event Grid pedig elküldte az üzenetet a feliratkozáskor konfigurált végpontnak. Tallózással keresse meg a végpont URL-címet, amelyet korábban hozott létre. Vagy kattintson a frissítés a nyissa meg böngészőben. Megjelenik az imént elküldött esemény. 
+Ön kiváltotta az eseményt, az Event Grid pedig elküldte az üzenetet a feliratkozáskor konfigurált végpontnak. Lépjen a végpont korábban létrehozott URL-címére, vagy kattintson a megnyitott böngésző frissítés gombjára. Megjelenik az imént elküldött esemény. 
 
 ```json
 [{

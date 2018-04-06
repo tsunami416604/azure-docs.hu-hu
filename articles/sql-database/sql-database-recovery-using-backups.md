@@ -1,19 +1,20 @@
 ---
-title: "Azure SQL-adatbázis visszaállítása biztonsági másolatból |} Microsoft Docs"
-description: "További információk a pont időponthoz kötött visszaállítás, amely lehetővé teszi, hogy visszaállítása egy Azure SQL-adatbázis egy korábbi időpontra idő (akár 35 nap)."
+title: Azure SQL-adatbázis visszaállítása biztonsági másolatból |} Microsoft Docs
+description: További információk a pont időponthoz kötött visszaállítás, amely lehetővé teszi, hogy visszaállítása egy Azure SQL-adatbázis egy korábbi időpontra idő (akár 35 nap).
 services: sql-database
-author: CarlRabeler
+author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 02/13/2018
-ms.author: carlrab
-ms.openlocfilehash: d2cc2e44c13750b654e2d6acf39d4f6a80cac98a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.date: 04/04/2018
+ms.author: sashan
+ms.reviewer: carlrab
+ms.openlocfilehash: afe06d6e61d4b2b99a47f3d3348299c61863fec3
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Automatikus adatbázis biztonsági mentését használó Azure SQL-adatbázis helyreállítása
 SQL-adatbázis biztosítja ezeket a beállításokat, az adatbázis helyreállítási használatával [adatbázis biztonsági másolatait automatikus](sql-database-automated-backups.md) és [hosszú távú megőrzési a biztonsági másolatok](sql-database-long-term-retention.md). Egy adatbázis biztonsági másolatát arra állíthatja vissza:
@@ -30,7 +31,7 @@ A visszaállított adatbázis költséget egy – megnövelt tárhely áll, az a
 - Ha az adatbázis maximális méretét 500 GB-nál nagyobb helyreállítása P11 – P15 S4-S12 vagy P1 – P6.
 - Ha az adatbázis maximális mérete 250 GB-nál nagyobb helyreállítása P1 – P6 S4-S12 számára.
 
-A felesleges költségek az az oka a visszaállított adatbázis maximális mérete nagyobb, mint a tárolókapacitást a teljesítményszintet része, és bármely fent a belefoglalt összeg kiépített – megnövelt tárhely extra fel van töltve.  Megnövelt tárhely díjszabása, tekintse meg a [árképzést ismertető oldalra SQL-adatbázis](https://azure.microsoft.com/pricing/details/sql-database/).  Ha a tényleges használt lemezterület mérete kisebb, mint a tároló tartalmazza, majd ez kapcsolódik további költség elkerülhető az adatbázis maximális méretét csökkentve a belefoglalt legkevesebb. További információ az adatbázis tárterületet, és az adatbázis maximális méretének módosítása: [egyetlen adatbázis erőforrás korlátok](sql-database-resource-limits.md#single-database-storage-sizes-and-performance-levels).  
+A felesleges költségek az az oka a visszaállított adatbázis maximális mérete nagyobb, mint a tárolókapacitást a teljesítményszintet része, és bármely fent a belefoglalt összeg kiépített – megnövelt tárhely extra fel van töltve.  Megnövelt tárhely díjszabása, tekintse meg a [árképzést ismertető oldalra SQL-adatbázis](https://azure.microsoft.com/pricing/details/sql-database/).  Ha a tényleges használt lemezterület mérete kisebb, mint a tároló tartalmazza, majd ez kapcsolódik további költség elkerülhető az adatbázis maximális méretét csökkentve a belefoglalt legkevesebb. Adatbázis tárterületet, és az adatbázis maximális méretének módosítása kapcsolatos további információkért lásd: [egyetlen adatbázis DTU-alapú erőforrás korlátok](sql-database-dtu-resource-limits.md#single-database-storage-sizes-and-performance-levels) és [egyetlen adatbázis vCore-alapú erőforrás korlátok](sql-database-vcore-resource-limits.md#single-database-storage-sizes-and-performance-levels).  
 
 > [!NOTE]
 > [Adatbázis biztonsági másolatait automatikus](sql-database-automated-backups.md) használják, amikor létrehoz egy [adatbázis másolása](sql-database-copy.md). 
@@ -117,7 +118,7 @@ Georedundáns helyreállítás beállítás az alapértelmezett helyreállítás
 Egy földrajzi másodlagos időpontban visszaállítás jelenleg nem támogatott. Csak az elsődleges adatbázis pont időponthoz kötött visszaállítás végezhető. Georedundáns helyreállítás kimaradás helyreállítás használatával kapcsolatos részletes információkért lásd: [kimaradás helyreállíthatók](sql-database-disaster-recovery.md).
 
 > [!IMPORTANT]
-> A biztonsági mentésekből helyreállítási a legalapvetőbb a leghosszabb helyreállítási-célkitűzés (RPO) és a becsült helyreállítási idő (Beszúrása) SQL-adatbázisban elérhető vész-helyreállítási megoldások. Alapszintű adatbázisok alkalmazó megoldások georedundáns helyreállítás esetén gyakran egy ésszerű vész-Helyreállítási megoldást egy Beszúrása 12 órát. A nagyobb Standard vagy prémium adatbázisok rövidebb helyreállítási időkről igénylő alkalmazó megoldások, érdemes lehet használni [aktív georeplikáció](sql-database-geo-replication-overview.md). Aktív georeplikáció sokkal rövidebb RPO és Beszúrása kínál csak szükséges, hogy kezdeményezze a feladatátvételt a folyamatosan replikált másodlagos. Üzleti folytonosság döntések további információkért lásd: [az üzletmenet folytonossága áttekintése](sql-database-business-continuity.md).
+> A biztonsági mentésekből helyreállítási a legalapvetőbb a leghosszabb helyreállítási-célkitűzés (RPO) és a becsült helyreállítási idő (Beszúrása) SQL-adatbázisban elérhető vész-helyreállítási megoldások. Kis méret adatbázisok (pl. Basic szolgáltatási rétegben vagy kis méretű adatbázisok rugalmas készletek bérlői) alkalmazó megoldások georedundáns helyreállítás esetén gyakran egy ésszerű vész-Helyreállítási megoldást egy Beszúrása 12 órát. A megoldások nagy adatbázisokhoz is használ, és rövidebb helyreállítási időpontokat, érdemes [feladatátvételi csoportok és aktív georeplikáció](sql-database-geo-replication-overview.md). Aktív georeplikáció sokkal rövidebb RPO és Beszúrása kínál csak szükséges, hogy kezdeményezze a feladatátvételt a folyamatosan replikált másodlagos. Üzleti folytonosság döntések további információkért lásd: [az üzletmenet folytonossága áttekintése](sql-database-business-continuity.md).
 > 
 
 ### <a name="azure-portal"></a>Azure Portal
@@ -149,6 +150,5 @@ Az automatikus biztonsági mentés az adatbázisok védelméhez a felhasználói
 ## <a name="next-steps"></a>További lépések
 * Egy üzleti folytonosság – áttekintés és forgatókönyvek: [üzleti folytonosság – áttekintés](sql-database-business-continuity.md).
 * További tudnivalók az Azure SQL adatbázis automatikus biztonsági mentés című [SQL-adatbázis biztonsági mentések automatikus](sql-database-automated-backups.md).
-* Hosszú távú biztonsági másolatok megőrzésének kapcsolatos további tudnivalókért lásd: [hosszú távú biztonsági másolatok megőrzésének](sql-database-long-term-retention.md).
-* Konfigurálásához, kezeléséhez, és állítsa vissza a hosszú távú megőrzési automatikus biztonsági mentés egy Azure Recovery Services-tárolóban az Azure portál használatával, lásd: [konfigurálása és használata a hosszú távú biztonsági mentés megőrzési](sql-database-long-term-backup-retention-configure.md). 
+* Hosszú távú megőrzési kapcsolatos további tudnivalókért lásd: [hosszú távú megőrzési](sql-database-long-term-retention.md).
 * Gyorsabb helyreállítási beállításokkal kapcsolatos további tudnivalókért lásd: [feladatátvételi csoportok és aktív georeplikáció](sql-database-geo-replication-overview.md).  

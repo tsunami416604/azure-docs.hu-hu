@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Event Hubs metrikát a Azure Monitor (előzetes verzió) |} Microsoft Docs"
-description: "Azure-figyelés használatával figyelheti az Event Hubs"
+title: Az Azure Event Hubs metrikát a Azure Monitor (előzetes verzió) |} Microsoft Docs
+description: Azure-figyelés használatával figyelheti az Event Hubs
 services: event-hubs
 documentationcenter: .NET
 author: ShubhaVijayasarathy
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/19/2017
 ms.author: sethm
-ms.openlocfilehash: c3ee6a87592145801167b35ff281c04062e525da
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 8ca00b234c00bfeb52a5b601e8780d56a0732dd9
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor-preview"></a>Az Azure Event Hubs metrikát a Azure Monitor (előzetes verzió)
 
@@ -46,7 +46,7 @@ A dimenziók támogató metrika a kívánt dimenzió értékű a következő pé
 
 ## <a name="billing"></a>Számlázás
 
-A metrikák Azure figyelőben használata jelenleg szabad, miközben a képen. Azonban további megoldások, amelyek a metrikai adatok betöltési használatakor, akkor előfordulhat, hogy számlázni ezek a megoldások. Például kell fizetni Azure Storage által archiválja metrikák egy Azure Storage-fiókhoz. Ha adatfolyam formájában a metrikai adatok az OMS Szolgáltatáshoz speciális elemzésekre szolgáló művelet felügyeleti csomag (OMS) által is kell fizetni.
+A metrikák Azure figyelőben használata jelenleg szabad, miközben a képen. Azonban további megoldások, amelyek a metrikai adatok betöltési használatakor, akkor előfordulhat, hogy számlázni ezek a megoldások. Például kell fizetni Azure Storage által archiválja metrikák egy Azure Storage-fiókhoz. Is meg számlázása az Azure-ban, ha adatfolyam formájában a speciális elemzésekre szolgáló metrikák Naplóelemzési adatokat.
 
 A következő mérőszámokat adhat a szolgáltatás állapotának áttekintése. 
 
@@ -109,7 +109,7 @@ Az Azure Event Hubs Azure a figyelő a metrikák a következő dimenziók támog
 | ------------------- | ----------------- |
 |entityName| Az Event Hubs az event hub entitásokat a wsrmp támogatja.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tekintse meg a [Azure Figyelés áttekintése](../monitoring-and-diagnostics/monitoring-overview.md).
 * [.NET Azure figyelő metrikák beolvasása](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) mintát a Githubon. 

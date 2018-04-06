@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: tdykstra
 ms.custom: ''
-ms.openlocfilehash: 89469af2b1d02ef00fc347e47719956885e7f142
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 2bc2559dc1cf737e018895ffae61d0da0e56fc85
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Az Azure Functions időzítő indítófeltételt 
 
@@ -168,11 +168,11 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**Típusa** | n/a | "TimerTrigger" értékre kell állítani. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon.|
+|**type** | n/a | "TimerTrigger" értékre kell állítani. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon.|
 |**direction** | n/a | "A" értékre kell állítani. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon. |
 |**name** | n/a | A függvény a kódban időzítő az objektumot határozza meg a változó neve. | 
-|**schedule**|**ScheduleExpression**|A [CRON-kifejezés](#cron-expressions) vagy egy [TimeSpan](#timespan) érték. A `TimeSpan` csak egy függvény alkalmazást az App Service-csomag futó használható. Az ütemezés kifejezés be Alkalmazásbeállítás, és állítsa be ezt a tulajdonságot a beállítás neve a becsomagolt alkalmazás **%** jelentkezik, például: "% NameOfAppSettingWithScheduleExpression %". |
-|**runOnStartup**|**RunOnStartup**|Ha `true`, a függvény meghívták a futtatókörnyezet indításakor. Például a futtatókörnyezet kezdődik, amikor a függvény app felébred üresjárati tétlenség miatt váltás után. Ha a függvény alkalmazás-újraindítások függvény-módosítások miatt, ha a függvény app méretezi ki. Ezért **runOnStartup** ritkán Ha valaha is meg `true`, mert a teszi, hogy kód magas előre nem látható időpontokban hajtható végre. Ha a funkció az időzítő ütemezés kívül van szüksége, hozzon létre egy második függvényt különböző eseményindító típusú, és a két funkciók között kóddal rendelkeznek. Például elindítható a központi telepítés akkor is [testre szabhatja a központi telepítés](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) azáltal, hogy a HTTP-kérelem a telepítés befejezésekor a második függvény meghívásához.|
+|**schedule**|**ScheduleExpression**|A [CRON-kifejezés](#cron-expressions) vagy egy [TimeSpan](#timespan) érték. A `TimeSpan` csak egy függvény alkalmazást az App Service-csomag futó használható. Az ütemezés kifejezés be Alkalmazásbeállítás, és állítsa be ezt a tulajdonságot a beállítás neve a becsomagolt alkalmazás **%** jelentkezik, például: "% ScheduleAppSetting %". |
+|**runOnStartup**|**RunOnStartup**|Ha `true`, a függvény meghívták a futtatókörnyezet indításakor. Például a futtatókörnyezet kezdődik, amikor a függvény app felébred üresjárati tétlenség miatt váltás után. Ha a függvény alkalmazás-újraindítások függvény-módosítások miatt, ha a függvény app méretezi ki. Ezért **runOnStartup** ritkán Ha valaha is meg `true`, mert a teszi, hogy kód magas előre nem látható időpontokban hajtható végre.|
 |**useMonitor**|**UseMonitor**|Beállítása `true` vagy `false` annak jelzésére, hogy az ütemezés kell figyelni. Figyelési ütemezés fenntartása ütemezés előfordulási biztosítása az ütemezés karban kell akkor is, ha a függvény app példányok indítsa újra a segítése érdekében. Ha nem állítja be, az alapértelmezett érték `true` az ütemezést, amelyekben egy nagyobb, mint 1 perces ismétlődési időköz. Percenként egynél többször kiváltó ütemezéseket, az alapértelmezett érték `false`.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

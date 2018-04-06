@@ -1,11 +1,11 @@
 ---
-title: "Windows virtuális gép létrehozása az Azure-sablon alapján |} Microsoft Docs"
-description: "A Resource Manager-sablon és a PowerShell segítségével egyszerűen hozzon létre egy új Windows virtuális Gépet."
+title: Windows virtuális gép létrehozása az Azure-sablon alapján |} Microsoft Docs
+description: A Resource Manager-sablon és a PowerShell segítségével egyszerűen hozzon létre egy új Windows virtuális Gépet.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: davidmu1
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 19129d61-8c04-4aa9-a01f-361a09466805
 ms.service: virtual-machines-windows
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: davidmu
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ddab80262fe27c1f5995858ec7de75d7c46df081
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b0b80c7016671c2d5c33fc5501bf50feaa4c5d7c
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Windows rendszerű virtuális gép létrehozása egy Resource Manager sablon
 
@@ -66,7 +66,7 @@ Ebben a lépésben létrehoz egy sablonfájlban, amely telepíti az erőforráso
       },
       "variables": {
         "vnetID": "[resourceId('Microsoft.Network/virtualNetworks','myVNet')]", 
-        "subnetRef": "[concat(variables('vnetID'),'/subnets/mySubnet')]", 
+        "subnetRef": "[concat(variables('vnetID'),'/subnets/mySubnet')]" 
       },
       "resources": [
         {
@@ -204,7 +204,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "myResourceGroup" -Name "m
 > [!NOTE]
 > Sablonok és a paraméterek a helyi fájlokból is telepítheti. További tudnivalókért lásd: [Azure PowerShell használata az Azure Storage](../../storage/common/storage-powershell-guide-full.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha problémák merültek fel a központi telepítést, előfordulhat, hogy vessen egy pillantást [hibaelhárítás általános az Azure-telepítés az Azure Resource Manager](../../resource-manager-common-deployment-errors.md).
 - Megtudhatja, hogyan hozhatja létre és kezelheti a virtuális gép [létrehozása és kezelése Windows virtuális gépek az Azure PowerShell modulra](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

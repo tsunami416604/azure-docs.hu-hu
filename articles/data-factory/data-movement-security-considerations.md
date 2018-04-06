@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: abnarain
-ms.openlocfilehash: 56602e269a441f9541314424190da04be2c4add5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 46d4962040a78942adbad443d5cbde64755ddadf
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Biztonsági szempontok az Azure Data Factory adatok áttelepítéséről –
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -136,7 +136,7 @@ A következő ábrákon az önálló üzemeltetett integrációs futásidejű ha
 
 ![IPSec VPN-átjáróval](media/data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
-### <a name="firewall-configurations-and-whitelisting-ip-addresses"></a>Tűzfal-konfiguráció, és az engedélyezett IP-címek
+### <a name="firewall-configurations-and-whitelisting-ip-address-of-gateway"></a> Tűzfal-konfiguráció, és az engedélyezett IP-címek
 
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>A helyi/InPrivate-hálózati tűzfal követelményei  
 Vállalati a vállalati tűzfal fut, a szervezet a központi útválasztón. A Windows tűzfal démonként fut, a helyi számítógépen, ahol az önálló üzemeltetett integrációs futásidejű telepítése. 

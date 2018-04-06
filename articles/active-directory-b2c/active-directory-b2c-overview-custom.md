@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: davidmu
-ms.openlocfilehash: 269b65662796c092190cd2622c240756f6bd1cf7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4c09fa5c454cee6ca9a0ed0d3fd4582b222c0c1a
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-active-directory-b2c-custom-policies"></a>Az Azure Active Directory B2C: Egyéni házirendek
 
@@ -48,7 +48,7 @@ Három típusú házirend fájlok használatát javasoljuk:
 - **a függő entitás (RP) fájl** Ez a feladat-arra irányul, hogy az egyetlen fájl, amelyet közvetlenül az alkalmazáshoz vagy szolgáltatáshoz (más néven függő entitás).  Olvassa el a házirend fájl definíciók további információt.  Minden egyedi feladathoz saját RP, és attól függően, hogy a követelmények branding száma "teljes kérelmek teljes száma a használati esetek x" lehet.
 
 
-Beépített házirendek az Azure AD B2C kövesse a fenti kitaláltak 3-fájl mintát, de a fejlesztői csak azokat a megbízható függő entitás (RP) fájlt, amíg a portál módosítást hajt végre a háttérben a EXTenstions fájl.
+Beépített házirendek az Azure AD B2C kövesse a fenti kitaláltak 3-fájl mintát, de a fejlesztői csak azokat a függő entitás (RP) fájlt, amíg a portál módosítást hajt végre a háttérben a bővítmények fájlt.
 
 ## <a name="core-concepts-you-should-know-when-using-custom-policies"></a>Ha egyéni házirendekkel tudnia kell alapvető jellemzői
 
@@ -89,7 +89,7 @@ Egyéni házirendet egy jelenik meg egy vagy több XML-formátumú fájlok, amel
 
 | Házirend fájl típusa | Példák fájl neve | Ajánlott használata | Örököl |
 |---------------------|--------------------|-----------------|---------------|
-| ALAPJA |TrustFrameworkBase.xml<br><br>Mytenant.onmicrosoft.com-B2C-1A_BASE1.xml | A core jogcímek séma, a jogcímek átalakítása, a Jogcímszolgáltatók és a felhasználó utak állította be a Microsoft tartalmazza<br><br>Minimális módosítja ezt a fájlt | Nincs |
+| ALAPJA |TrustFrameworkBase.xml<br><br>Mytenant.onmicrosoft.com-B2C-1A_BASE1.xml | A core jogcímek séma, a jogcímek átalakítása, a Jogcímszolgáltatók és a felhasználó utak állította be a Microsoft tartalmazza<br><br>Minimális módosítja ezt a fájlt | None |
 | A bővítmény (kiterjesztés) | TrustFrameworkExtensions.xml<br><br>Mytenant.onmicrosoft.com-B2C-1A_EXT.xml | A KIINDULÓ fájl módosításait összesítése<br><br>Módosított Jogcímszolgáltatók<br><br>Módosított felhasználói utak<br><br>A saját egyéni sémadefiníciók | Alap fájl |
 | Függő Entitásonkénti (RP) | B2C_1A_sign_up_sign_in.xml| Token alakzat és módosítása munkamenet Itt| Extensions(ext) fájl |
 

@@ -1,25 +1,25 @@
 ---
-title: "A helyszíni adatátjáró telepítése |} Microsoft Docs"
-description: "Megtudhatja, hogyan telepítse és konfigurálja az On-premises adatátjáró."
+title: A helyszíni adatátjáró telepítése |} Microsoft Docs
+description: Megtudhatja, hogyan telepítse és konfigurálja az On-premises adatátjáró.
 services: analysis-services
-documentationcenter: 
+documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: analysis-services
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 02/14/2018
+ms.date: 04/03/2018
 ms.author: owend
-ms.openlocfilehash: c2cbe1c60f67c689a38d1585245610a6fa73bff4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b57ee7d9617f8bf2e54122ac37f351ae0cf9db26
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Telepítse és konfigurálja a helyszíni adatátjáró
 Egy a helyszíni adatok átjáróra szükség, ha egy vagy több Azure Analysis Services kiszolgáló ugyanabban a régióban kapcsolódnak a helyszíni adatforrások. Az átjáró kapcsolatos további információkért lásd: [helyszíni adatátjáró](analysis-services-gateway.md).
@@ -44,6 +44,7 @@ Egy a helyszíni adatok átjáróra szükség, ha egy vagy több Azure Analysis 
 * Az átjáró telepítése egy számítógépre, továbbra is megtalálható, és nem alvó állapotba lép.
 * Az átjáró nem telepíthető olyan számítógépre, vezeték nélküli kapcsolódik a hálózathoz. Teljesítmény is lehet csökken.
 * Jelentkezzen be Azure-fiókkal azonos az Azure AD-ben [bérlői](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) az átjáró regisztrál, az előfizetés. Az Azure B2B (vendég) fiókok nem támogatottak, telepítése és az átjáró regisztrálása során.
+* Az itt leírt (egyesített) átjáró Azure Government (Fairfax) nem támogatott. A dedikált helyszíni átjáró használatához Azure Analysis Services. A dedikált átjáró nem támogatja a további szolgáltatásokat, mint a Power BI és a kiemelt alkalmazások. Dedikált átjáró telepítve van a kiszolgálókról, gyors üzembe helyezés, a portálon.
 
 
 ## <a name="download"></a>Letöltése

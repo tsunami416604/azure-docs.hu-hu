@@ -1,11 +1,11 @@
 ---
-title: "Vegyen fel egy lemezt Linux virtuális gép az Azure parancssori felülettel |} Microsoft Docs"
-description: "Ismerje meg, egy állandó lemez hozzáadása a Linux virtuális Gépet az Azure CLI 1.0-s és 2.0-s."
-keywords: "Linux virtuális gép, erőforrás lemez hozzáadása"
+title: Vegyen fel egy lemezt Linux virtuális gép az Azure parancssori felülettel |} Microsoft Docs
+description: Ismerje meg, egy állandó lemez hozzáadása a Linux virtuális Gépet az Azure CLI 1.0-s és 2.0-s.
+keywords: Linux virtuális gép, erőforrás lemez hozzáadása
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rickstercdn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 3005a066-7a84-4dc5-bdaa-574c75e6e411
@@ -17,18 +17,18 @@ ms.devlang: azurecli
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9db7d300b745001906bdc38769dcbe6e4d7c7b83
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c3d3e3468b491f366473899f5d073704ea9a95ea
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Add a disk to a Linux VM (Lemez hozzáadása Linux rendszerű virtuális géphez)
 Ez a cikk bemutatja, hogyan csatolni egy állandó lemezt a virtuális Gépet, hogy az adatok - megőrizhető akkor is, ha a virtuális gép van újra kiépíteni karbantartás vagy átméretezése miatt. 
 
 
 ## <a name="use-managed-disks"></a>Kezelt lemez használata
-Azure-lemezeket felügyelt Azure virtuális gépek Lemezkezelés leegyszerűsíti a virtuális gépek lemezei társított storage-fiókok kezelése. Csak akkor kell megadnia (Premium vagy Standard) típusú lemez mérete van szüksége, és Azure hoz létre, és az Ön kezeli a lemezt. További információkért lásd: [felügyelt lemezekhez – áttekintés](managed-disks-overview.md).
+Az Azure Managed Disks a virtuális gépekhez kapcsolódó tárfiókok kezelésével teszi egyszerűvé a lemezek kezelését az Azure-beli virtuális gépeknél. Csupán a típust (Prémium vagy Standard) és a kívánt lemezméretet kell megadnia, az Azure pedig létrehozza és kezeli a lemezeket. További információkért lásd: [felügyelt lemezekhez – áttekintés](managed-disks-overview.md).
 
 
 ### <a name="attach-a-new-disk-to-a-vm"></a>Új lemez csatolása a virtuális gépek
@@ -254,7 +254,7 @@ Két módon vágást engedélyezése támogatja a Linux virtuális gép van. A s
     sudo fstrim /datadrive
     ```
   
-    **RHEL vagy CentOS**
+    **RHEL/CentOS**
 
     ```bash
     sudo yum install util-linux
@@ -264,7 +264,7 @@ Két módon vágást engedélyezése támogatja a Linux virtuális gép van. A s
 ## <a name="troubleshooting"></a>Hibaelhárítás
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ne feledje, hogy az új lemez nem érhető el a virtuális gép ha újraindítja kivéve, ha ezt az információt írhat a [fstab](http://en.wikipedia.org/wiki/Fstab) fájlt.
 * Annak érdekében, hogy megfelelően van-e konfigurálva a Linux virtuális Gépre, tekintse át a [a Linux-gépek teljesítményének optimalizálásához](optimization.md) javaslatok.
 * Bontsa ki a tárolási kapacitás további lemezek felvételével és [RAID konfigurálása](configure-raid.md) további teljesítmény.

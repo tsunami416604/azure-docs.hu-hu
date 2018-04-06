@@ -1,38 +1,38 @@
 ---
 title: PaaS erőforrások – az Azure parancssori felület való hálózati hozzáférés korlátozása |} Microsoft Docs
-description: Megtudhatja, hogyan korlátjának növelését, és korlátozhatja a hálózati hozzáférést az Azure-erőforrások, például az Azure Storage és az Azure SQL Database, a virtuális hálózati szolgáltatás végpontokat az Azure parancssori felület használatával.
+description: Ebből a cikkből megismerheti, hogyan korlátozására és a hálózati hozzáférés korlátozása az Azure-erőforrások, például az Azure Storage és az Azure SQL Database, a virtuális hálózati szolgáltatás végpontokat az Azure parancssori felület használatával.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
+Customer intent: I want only resources in a virtual network subnet to access an Azure PaaS resource, such as an Azure Storage account.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: ''
+ms.topic: article
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 5c0c6a802c931b71f5be8b01c610cf0810b0b4d1
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f357861a7a44b249e06f091a8693b7f2d8dd5178
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Hálózati hozzáférés korlátozása PaaS erőforrások virtuális hálózati szolgáltatás végpontokon az Azure parancssori felület használatával
 
 Virtuális hálózati szolgáltatási végpont lehetővé teszik a virtuális hálózati alhálózat az Azure szolgáltatás erőforrásokhoz való hálózati hozzáférés korlátozásához. Eltávolíthatja az internet-hozzáférés az erőforrásokhoz is. Végpontok adja meg a közvetlen kapcsolat a virtuális hálózat és a támogatott Azure-szolgáltatásokat, hogy lehetővé teszi a virtuális hálózat titkos címterület használata az Azure-szolgáltatások eléréséhez. Azure-erőforrások Szolgáltatásvégpontok keresztül mindig irányuló forgalom a Microsoft Azure hálózat marad. Ebből a cikkből megismerheti, hogyan:
 
-> [!div class="checklist"]
-> * Hozzon létre egy virtuális hálózatot egyetlen alhálózattal
-> * Adjon hozzá egy alhálózatot és egy végpontot engedélyezése
-> * Hozzon létre egy Azure-erőforrás és a hálózati hozzáférés engedélyezése, hogy csak egy alhálózatból
-> * Virtuális gép (VM) telepítése minden egyes alhálózathoz
-> * Erősítse meg a hozzáférést egy erőforráshoz alhálózatból származó
-> * Győződjön meg arról, a hozzáférés megtagadva erőforrás alhálózat és az internetről
+* Hozzon létre egy virtuális hálózatot egyetlen alhálózattal
+* Adjon hozzá egy alhálózatot és egy végpontot engedélyezése
+* Hozzon létre egy Azure-erőforrás és a hálózati hozzáférés engedélyezése, hogy csak egy alhálózatból
+* Virtuális gép (VM) telepítése minden egyes alhálózathoz
+* Erősítse meg a hozzáférést egy erőforráshoz alhálózatból származó
+* Győződjön meg arról, a hozzáférés megtagadva erőforrás alhálózat és az internetről
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -82,7 +82,7 @@ az network vnet subnet create \
   --service-endpoints Microsoft.Storage
 ```
 
-## <a name="restrict-network-access-to-and-from-subnet"></a>Korlátozhatja a hálózati hozzáférést, és az alhálózatot
+## <a name="restrict-network-access-for-a-subnet"></a>Egy alhálózatot a hálózati hozzáférés korlátozása
 
 Hozzon létre egy hálózati biztonsági csoport [az hálózati nsg létrehozása](/cli/azure/network/nsg#az_network_nsg_create). Az alábbi példakód létrehozza a hálózati biztonsági csoport nevű *myNsgPrivate*.
 
@@ -311,7 +311,7 @@ Hozzon létre egy könyvtárat egy csatlakoztatási pontot:
 sudo mkdir /mnt/MyAzureFileShare
 ```
 
-Kísérlet történt a címtárban létrehozott Azure fájlmegosztás csatlakoztatásához. Ez az oktatóanyag azt feltételezi, hogy telepítette az Ubuntu legújabb verzióját. Ha a korábbi Ubuntu használ, tekintse meg [Linux csatlakoztatási](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a fájlmegosztások csatlakoztatása kapcsolatos további utasításokat. A következő parancs futtatása előtt cserélje le a `<storage-account-name>` a fióknévvel és `<storage-account-key>` olvassa be a kulccsal [hozzon létre egy tárfiókot](#create-a-storage-account):
+Kísérlet történt a címtárban létrehozott Azure fájlmegosztás csatlakoztatásához. Ez a cikk feltételezi, hogy telepítette az Ubuntu legújabb verzióját. Ha a korábbi Ubuntu használ, tekintse meg [Linux csatlakoztatási](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a fájlmegosztások csatlakoztatása kapcsolatos további utasításokat. A következő parancs futtatása előtt cserélje le a `<storage-account-name>` a fióknévvel és `<storage-account-key>` olvassa be a kulccsal [hozzon létre egy tárfiókot](#create-a-storage-account):
 
 ```bash
 sudo mount --types cifs //storage-account-name>.file.core.windows.net/my-file-share /mnt/MyAzureFileShare --options vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
@@ -341,9 +341,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy végpontot a virtuális hálózati alhálózat engedélyezve van. Megtudta, hogy engedélyezhető-e a végpontok a több Azure-szolgáltatásokkal üzembe helyezett erőforrás. Létrehozott egy Azure Storage-fiók és a tárolási fiók csak egy virtuális hálózati alhálózat erőforrásainak korlátozott hálózati hozzáférést. Létrehozása előtt Szolgáltatásvégpontok éles környezetben virtuális hálózatok, javasoljuk, hogy alaposan feltérképezése [szolgáltatás végpontjait](virtual-network-service-endpoints-overview.md).
+Ebben a cikkben egy végpontot a virtuális hálózati alhálózat engedélyezve van. Megtudta, hogy engedélyezhető-e a végpontok a több Azure-szolgáltatásokkal üzembe helyezett erőforrás. Létrehozott egy Azure Storage-fiók és a tárolási fiók csak egy virtuális hálózati alhálózat erőforrásainak korlátozott hálózati hozzáférést. Szolgáltatásvégpontok kapcsolatos további információkért lásd: [szolgáltatás végpontok áttekintése](virtual-network-service-endpoints-overview.md) és [alhálózatok kezelése](virtual-network-manage-subnet.md).
 
-Ha több virtuális hálózat már rendelkezik fiókjába, érdemes lehet összekapcsolni két virtuális hálózatok, az egyes virtuális hálózati erőforrások is kommunikálhatnak egymással. A következő oktatóanyag megtudhatja, hogyan csatlakozzon a virtuális hálózatok továbblépés.
-
-> [!div class="nextstepaction"]
-> [Virtuális hálózatok csatlakoztatása](./tutorial-connect-virtual-networks-cli.md)
+Ha több virtuális hálózat már rendelkezik fiókjába, érdemes lehet összekapcsolni két virtuális hálózatok, az egyes virtuális hálózati erőforrások is kommunikálhatnak egymással. Megtudhatja, hogyan: [virtuális hálózatok csatlakoztatása](tutorial-connect-virtual-networks-cli.md).

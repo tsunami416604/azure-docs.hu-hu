@@ -1,26 +1,26 @@
 ---
-title: "Hozzon létre egyéni szerepköralapú hozzáférés-vezérlés szerepköreinek, és rendelje hozzá a belső és külső felhasználók számára az Azure-ban |} Microsoft Docs"
-description: "PowerShell és a parancssori felület használatával a belső és külső felhasználók számára létrehozott egyéni RBAC-szerepkörök hozzárendelése"
+title: Hozzon létre egyéni szerepköralapú hozzáférés-vezérlés szerepköreinek, és rendelje hozzá a belső és külső felhasználók számára az Azure-ban |} Microsoft Docs
+description: PowerShell és a parancssori felület használatával a belső és külső felhasználók számára létrehozott egyéni RBAC-szerepkörök hozzárendelése
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: rolyon
 manager: mtillman
 editor: kgremban
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 12/06/2017
+ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 75a45b492c230b19d2f7237f8ea7fe2c49de29bf
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: b60b30e3a5a4f5adec4fbef8c4e981ad034a7f6c
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="intro-on-role-based-access-control"></a>A szerepköralapú hozzáférés-vezérlés – bevezetés
 
@@ -53,10 +53,10 @@ Nincsenek két gyakori példán RBAC használja (de nem kizárólagosan):
 * A felhasználók a szervezet (részét képezik a felhasználó Azure Active Directory-bérlő), de a különböző csapatok vagy csoportokat, amelyek a teljes előfizetés vagy egy bizonyos erőforráscsoportok vagy az erőforrás-hatókörök a környezetben a részletes hozzáférésre van szükségük belső használata
 
 ## <a name="grant-access-at-a-subscription-level-for-a-user-outside-of-azure-active-directory"></a>Hozzáférés egy felhasználó Azure Active Directory kívül egy előfizetés szintjén
-Az RBAC-szerepkörök csak akkor adhatók **tulajdonosok** az előfizetés ezért a rendszergazdai jogú felhasználó kell bejelentkeznie, amely rendelkezik-e előre szerepkörrel, vagy az Azure-előfizetés hozott létre egy felhasználónévvel.
+Az RBAC-szerepkörök csak akkor adhatók **tulajdonosok** az előfizetés. Ezért a rendszergazdának kell bejelentkeznie a felhasználót, hogy ehhez a szerepkörhöz előzetesen hozzárendelt vagy hozott létre az Azure-előfizetés.
 
-Az Azure-portálon után bejelentkezés rendszergazdaként, válassza ki "Előfizetések", és válassza a kívánt egy.
-![előfizetés panel az Azure-portálon](./media/role-based-access-control-create-custom-roles-for-internal-external-users/0.png) alapértelmezés szerint a rendszergazdai jogú felhasználó rendelkezik vásárolt Azure-előfizetést, ha a felhasználó fog megjelenni **Fiókadminisztrátor**, ez az előfizetés szerepkör alatt. Az Azure-előfizetés szerepkörök további részletekért lásd: [hozzáadása vagy módosítása, hogy az előfizetés vagy a szolgáltatások kezelése az Azure rendszergazdai szerepkörök](/billing/billing-add-change-azure-subscription-administrator.md).
+Az Azure-portálon után jelentkezzen be rendszergazdaként, válassza ki "Előfizetések", és válassza a kívánt egy.
+![előfizetés panel az Azure-portálon](./media/role-based-access-control-create-custom-roles-for-internal-external-users/0.png) alapértelmezés szerint a rendszergazdai jogú felhasználó rendelkezik vásárolt Azure-előfizetést, ha a felhasználó fog megjelenni **Fiókadminisztrátor**, ez az előfizetés szerepkör alatt. Azure-előfizetés szerepkörökkel kapcsolatos további információkért lásd: [hozzáadása vagy módosítása, hogy az előfizetés vagy a szolgáltatások kezelése az Azure rendszergazdai szerepkörök](/billing/billing-add-change-azure-subscription-administrator.md).
 
 Ebben a példában a felhasználó a "alflanigan@outlook.com" van a **tulajdonos** az "Ingyenes" az aad-ben az előfizetéshez bérlői "Alapértelmezett bérlőt Azure". Mivel ez a felhasználó hozta létre a kezdeti Microsoft Account "Outlook" az Azure-előfizetés (Microsoft Account = Outlook, a működés közbeni stb.) az alapértelmezett tartomány nevét ennél a bérlőnél a hozzáadott összes többi felhasználó számára lesz **"@alflaniganuoutlook.onmicrosoft.com"**. Úgy lett kialakítva, a szintaxist, az új tartomány formátuma kiépítésekor a bérlő létrehozó felhasználó felhasználónevét és tartományát nevét, és vegye fel a bővítmény **". onmicrosoft.com"**.
 Ezenkívül felhasználók bejelentkezhetnek a bérlő az egyéni tartománynév hozzáadása, és azt az új bérlő ellenőrzése után. Az Azure Active Directory-bérlő egyéni tartománynév ellenőrzése További információkért lásd: [egyéni tartománynév hozzáadása a címtárhoz](/active-directory/active-directory-add-domain).
@@ -185,154 +185,154 @@ Nagyobb szervezeteknek figyelembe véve, hogy a felhasználót a rendszergazda h
 Ezek a csoportok olyan biztonsági csoportok, ezek kiépített és felügyelt csak az Azure Active Directoryban.
 
 ## <a name="create-a-custom-rbac-role-to-open-support-requests-using-powershell"></a>Nyissa meg a támogatási kérelmek PowerShell használatával történő egyéni RBAC szerepkör létrehozása
-A beépített RBAC-szerepkörök az Azure-ban rendelkezésre álló gondoskodjon arról, hogy bizonyos jogosultsági szintek a környezetben elérhető erőforrások alapján. Azonban ezek a szerepkörök egyike a rendszergazdai jogú felhasználó saját igényeinek megfelelően, ha nincs a beállítás a egyéni RBAC-szerepkörök létrehozásával még jobban hozzáférés korlátozásához.
+A beépített szerepkörök az Azure-ban rendelkezésre álló gondoskodjon arról, hogy bizonyos jogosultsági szintek a környezetben elérhető erőforrások alapján. Ha a beépített szerepkörök nem felelnek meg az igényeinek, létrehozhat egyéni szerepkörök.
 
-Egyéni RBAC-szerepkörök létrehozásához egy beépített szerep, szerkesztheti, majd importálja vissza a környezetben. A letöltés és a szerepkör feltöltése felügyelt PowerShell vagy a parancssori felület használatával.
+Szeretne létrehozni egy egyéni biztonsági szerepkört, egy beépített szerepkör kezdődnie, szerkesztheti, és ezután hozzon létre egy új szerepkört. Az ebben a példában a beépített **olvasó** szerepkör engedélyezése a felhasználó a lehetőség a támogatási kérelmek megnyitása van szabva.
 
-Fontos megismerni az előfeltételeket, amely részletes hozzáférést biztosíthat az előfizetés szintjén és is lehetővé teszi a meghívott felhasználó rugalmasan megnyitása támogatási kérelmek létrehozása egy egyéni biztonsági szerepkört.
+A PowerShellben használja a [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) parancs használatával exportálja a **olvasó** szerepkör JSON formátumban.
 
-Az ebben a példában a beépített szerepkör **olvasó**, lehetővé teszi a felhasználók megtekinthetik az erőforrás-hatókörök, de nem szerkesztheti azokat, vagy hozzon létre újakat, hogy van szabva engedélyezése a felhasználó a lehetőség a támogatási kérelmek megnyitása.
-
-Az első műveletet exportáló a **olvasó** emelt jogosultsági szintű rendszergazdaként futtatott szerepkör kell PowerShell leforgása alatt elvégezhetők.
-
-```
-Login-AzureRMAccount
-
-Get-AzureRMRoleDefinition -Name "Reader"
-
-Get-AzureRMRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\rbacrole2.json
-
+```powershell
+Get-AzureRmRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\rbacrole2.json
 ```
 
+Az alábbiakban látható az olvasó szerepkört JSON-kimenetét.
 
+```json
+{
+    "Name":  "Reader",
+    "Id":  "acdd72a7-3385-48ef-bd42-f606fba81ae7",
+    "IsCustom":  false,
+    "Description":  "Lets you view everything, but not make any changes.",
+    "Actions":  [
+                    "*/read"
+                ],
+    "NotActions":  [
 
-
-
-![Az olvasó RBAC szerepkör PowerShell képernyőképe](./media/role-based-access-control-create-custom-roles-for-internal-external-users/15.png)
-
-Majd, vissza kell fejteni a JSON-sablon a szerepkör.
-
-
-
-
-
-![Egyéni olvasó RBAC szerepkör JSON-sablon](./media/role-based-access-control-create-custom-roles-for-internal-external-users/16.png)
-
-Egy tipikus RBAC szerepkör áll kívül három fő szakasz **műveletek**, **NotActions** és **AssignableScopes**.
-
-Az a **művelet** című szakaszában felsorolt összes engedélyezett műveletek ehhez a szerepkörhöz. Fontos megérteni, hogy minden műveletet olyan erőforrás-szolgáltató van hozzárendelve. Ebben az esetben a támogatási jegyek létrehozásának képességét a **Microsoft.Support** szerepelnie kell az erőforrás-szolgáltató.
-
-Ahhoz, hogy összes az erőforrás-szolgáltató elérhető és az előfizetéshez regisztrált, használhatja a PowerShell.
-```
-Get-AzureRMResourceProvider
-
-```
-Ezenkívül ellenőrizheti az összes elérhető PowerShell parancsmagjainak az erőforrás-szolgáltatók kezelése.
-    ![Az erőforrás-szolgáltató management PowerShell képernyőképe](./media/role-based-access-control-create-custom-roles-for-internal-external-users/17.png)
-
-Az adott RBAC-szerepkörök a műveletek korlátozása, erőforrás-szolgáltatók szakaszban felsorolt **NotActions**.
-Utolsó akkor kötelező, hogy a Szerepalapú szerepkör tartalmazza a explicit előfizetési azonosítók felhasználási. Az előfizetési azonosítók alatt a **AssignableScopes**, ellenkező esetben azt nem használhatók az előfizetésében szerepkört importálni.
-
-Után létrehozása és testreszabása az RBAC-szerepkör, importálandók kell biztonsági másolatot a környezet.
-
-```
-New-AzureRMRoleDefinition -InputFile "C:\rbacrole2.json"
-
+                   ],
+    "AssignableScopes":  [
+                             "/"
+                         ]
+}
 ```
 
-Ebben a példában a Szerepalapú szerepkörhöz tartozó egyéni neve "Olvasó támogatási jegyek hozzáférési szint" a felhasználó az előfizetéshez mindent megtekinthetnek és nyissa meg a támogatási kérelmek.
+A következő szerkeszti a JSON kimeneti az egyéni szerepkör létrehozásához.
+
+```json
+{
+    "Name":  "Reader support tickets access level",
+    "IsCustom":  true,
+    "Description":  "View everything in the subscription and also open support requests.",
+    "Actions":  [
+                    "*/read",
+                    "Microsoft.Support/*"
+                ],
+    "NotActions":  [
+
+                   ],
+    "AssignableScopes":  [
+                             "/subscriptions/11111111-1111-1111-1111-111111111111"
+                         ]
+}
+```
+
+Egy tipikus szerepkör áll három fő szakasz **műveletek**, **NotActions**, és **AssignableScopes**.
+
+A **művelet** a szakasz a megengedett műveletek a szerepkörhöz. Ebben az esetben létrehozása támogatási jegyek, a **Microsoft.Support/&ast;**  műveletet hozzá kell adni. Fontos tudni, hogy az egyes műveletek szeretné elérhetővé tenni egy erőforrás-szolgáltató. Ahhoz, hogy az erőforrás-szolgáltató műveletek listáját, használhatja a [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) parancsot, vagy tekintse meg [Azure Resource Manager erőforrás-szolgáltató műveletek](role-based-access-control-resource-provider-operations.md).
+
+Az adott szerepkörhöz tartozó összes műveletek korlátozásához erőforrás-szolgáltatók találhatók a **NotActions** szakasz.
+Fontos, hogy a szerepkör tartalmazza a explicit előfizetési azonosítók felhasználási kötelező. Az előfizetési azonosítók a **AssignableScopes**, ellenkező esetben Ön nem jogosult lesz importálnia kell a szerepkört az előfizetés.
+
+Az egyéni szerepkör létrehozásához használja a [New-AzureRmRoleDefinition](/powershell/module/azurerm.resources/new-azurermroledefinition) parancsot, és adja meg a JSON szerepkör frissített definíciós fájl.
+
+```powershell
+New-AzureRmRoleDefinition -InputFile "C:\rbacrole2.json"
+```
+
+Ebben a példában a nevet az egyéni szerepkör "olvasó támogatási jegyek hozzáférési szint". Ez lehetővé teszi a felhasználónak az előfizetés, valamint a Megnyitás támogatási kérelmek mindent megtekinthetnek.
 
 > [!NOTE]
-> A támogatási kérelmek nyitó művelet engedélyezése csak két beépített RBAC szerep **tulajdonos** és **közreműködő**. A felhasználó megnyithatja a támogatási kérelmek ő szerepkört kell hozzárendelni egy Szerepalapú csak az előfizetési hatókört, mert összes támogatási kérelmek létrehozása az Azure-előfizetés alapján.
+> A csak két beépített szerepkörök, amelyek lehetővé teszik a felhasználót, hogy nyissa meg a támogatási kérelmek **tulajdonos** és **közreműködő**. A felhasználó megnyithatja a támogatási kérelmek ő szerepkört kell hozzárendelni egy az előfizetési hatókört, mert összes támogatási kérelmek létrehozása az Azure-előfizetés alapján.
 
-Az új egyéni szerepkör van rendelve egy felhasználó, az ugyanabban a könyvtárban.
+Az új egyéni szerepkör érhető el az Azure-portálon, és a felhasználók számára is hozzárendelhető.
 
+![Képernyőkép a egyéni biztonsági szerepkört importálni az Azure-portálon](./media/role-based-access-control-create-custom-roles-for-internal-external-users/18.png)
 
+![Képernyőkép a egyéni importált szerepkör hozzárendelése felhasználóhoz ugyanabban a könyvtárban](./media/role-based-access-control-create-custom-roles-for-internal-external-users/19.png)
 
+![egyéni importált szerepkör engedélyeinek képernyőképe](./media/role-based-access-control-create-custom-roles-for-internal-external-users/20.png)
 
+Egyéni szerepkörrel rendelkező felhasználók mostantól létrehozhat új támogatási kérelmek.
 
-![az Azure portálon importálni egyéni RBAC szerepkör képernyőképe](./media/role-based-access-control-create-custom-roles-for-internal-external-users/18.png)
+![Képernyőkép a támogatási kérelmek létrehozása egyéni szerepkör](./media/role-based-access-control-create-custom-roles-for-internal-external-users/21.png)
 
+Egyéni szerepkörrel rendelkező felhasználók nem egyéb műveleteket hajthat végre, például a virtuális gépek létrehozása vagy erőforráscsoportokat létrehozni.
 
+![egyéni szerepkör nem sikerült létrehozni a virtuális gépek képernyőképe](./media/role-based-access-control-create-custom-roles-for-internal-external-users/22.png)
 
-
-
-![Képernyőkép a egyéni importált RBAC szerepkör hozzárendelése felhasználói ugyanabban a könyvtárban](./media/role-based-access-control-create-custom-roles-for-internal-external-users/19.png)
-
-
-
-
-
-![egyéni importált RBAC szerepkör engedélyeinek képernyőképe](./media/role-based-access-control-create-custom-roles-for-internal-external-users/20.png)
-
-A példa további részletes hogy az egyéni RBAC szerepkör határain hangsúlyozzák az alábbiak szerint:
-* Új támogatási kérelmek hozhat létre.
-* Nem hozható létre új erőforrás hatókörök (például: virtuális gép)
-* Nem hozható létre új erőforrás-csoportok
-
-
-
-
-
-![Képernyőkép a támogatási kérelmek létrehozása egyéni RBAC szerepkör](./media/role-based-access-control-create-custom-roles-for-internal-external-users/21.png)
-
-
-
-
-
-![nem sikerült létrehozni a virtuális gépek egyéni RBAC szerepkör képernyőképe](./media/role-based-access-control-create-custom-roles-for-internal-external-users/22.png)
-
-
-
-
-
-![nem sikerült létrehozni az új RGs egyéni RBAC szerepkör képernyőképe](./media/role-based-access-control-create-custom-roles-for-internal-external-users/23.png)
+![egyéni szerepkör nem hozhat létre új RGs képernyőképe](./media/role-based-access-control-create-custom-roles-for-internal-external-users/23.png)
 
 ## <a name="create-a-custom-rbac-role-to-open-support-requests-using-azure-cli"></a>Nyissa meg a támogatási kérelmek Azure parancssori felület használatával történő egyéni RBAC szerepkör létrehozása
-A Mac és a PowerShell való hozzáférés nélkül fut, az Azure parancssori felület módja a nyissa meg.
 
-Egy egyéni biztonsági szerepkört létrehozásának a lépései megegyeznek, CLI-vel a szerepkör nem tölti le a JSON-sablon, de a a parancssori Felülettel megtekinthetők kivételével.
+Azure parancssori felület használatával egyéni szerepkör létrehozásának lépései hasonlóak powershellel, azzal a különbséggel, hogy a JSON-kimenetét nem egyezik.
 
-Az ebben a példában a beépített szerepkör választotta I **biztonsági mentés olvasó**.
+Például elindíthatja a beépített **olvasó** szerepkör. Az olvasó szerepkört műveleteit kilistázhatja a [az szerepkör-definíció lista](/cli/azure/role/definition#az_role_definition_list) parancsot.
 
+```azurecli
+az role definition list --name "Reader" --output json
 ```
 
-azure role show "backup reader" --json
-
+```json
+[
+  {
+    "additionalProperties": {},
+    "assignableScopes": [
+      "/"
+    ],
+    "description": "Lets you view everything, but not make any changes.",
+    "id": "/subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7",
+    "name": "acdd72a7-3385-48ef-bd42-f606fba81ae7",
+    "permissions": [
+      {
+        "actions": [
+          "*/read"
+        ],
+        "additionalProperties": {},
+        "notActions": []
+      }
+    ],
+    "roleName": "Reader",
+    "roleType": "BuiltInRole",
+    "type": "Microsoft.Authorization/roleDefinitions"
+  }
+]
 ```
 
+Hozzon létre egy JSON-fájl a következő formátumban. A **Microsoft.Support/&ast;**  művelet hozzá lett adva a **műveletek** részek, hogy a felhasználói támogatási kérelmek is megnyithatja, miközben továbbra is egy olvasó lehet. Hozzá kell adni az előfizetés-azonosító, amelyeken ezt a szerepkört a kell használni a **AssignableScopes** szakasz.
 
+```json
+{
+    "Name":  "Reader support tickets access level",
+    "IsCustom":  true,
+    "Description":  "View everything in the subscription and also open support requests.",
+    "Actions":  [
+                    "*/read",
+                    "Microsoft.Support/*"
+                ],
+    "NotActions":  [
 
-
-
-![Parancssori felület Képernyőkép a biztonsági mentési olvasó szerepkört megjelenítése](./media/role-based-access-control-create-custom-roles-for-internal-external-users/24.png)
-
-A szerepkör a Visual Studio módosítása után a tulajdonságokat a JSON-sablon másolása a **Microsoft.Support** erőforrás-szolgáltató hozzá lett adva a **műveletek** részek, hogy a felhasználó megnyithatja támogatása kérelmek, miközben továbbra is a mentési tárolók olvasójának lehet. Újra kell hozzáadnia az előfizetés-azonosító, amelyeken ezt a szerepkört kell használni a rendszer a **AssignableScopes** szakasz.
-
+                   ],
+    "AssignableScopes": [
+                            "/subscriptions/11111111-1111-1111-1111-111111111111"
+                        ]
+}
 ```
 
-azure role create --inputfile <path>
+Az egyéni szerepkör létrehozásához használja a [az szerepkör-definíció létrehozása](/cli/azure/role/definition#az_role_definition_create) parancsot.
 
+```azurecli
+az role definition create --role-definition ~/roles/rbacrole1.json
 ```
 
+Az új egyéni szerepkör már elérhető az Azure portálon, és ez a szerepkör folyamata megegyezik az előző PowerShell szakaszban.
 
-
-
-
-![Egyéni RBAC szerepkör importálása CLI képernyőképe](./media/role-based-access-control-create-custom-roles-for-internal-external-users/25.png)
-
-Az új szerepkör már elérhető az Azure portálon, és a hozzárendeléseket folyamat megegyezik az előző példához hasonlóan.
-
-
-
-
-
-![Az Azure portál Képernyőkép a CLI 1.0 használatával létrehozott egyéni RBAC szerepkör](./media/role-based-access-control-create-custom-roles-for-internal-external-users/26.png)
-
-A legújabb Build 2017 frissítésétől az Azure-felhő rendszerhéj általánosan elérhető. Azure Cloud rendszerhéj egészíti ki IDE és az Azure-portálon. Ezzel a szolgáltatással hitelesítése és Azure-ban üzemeltetett egy webböngésző-alapú rendszerhéj kap, és használhatja a számítógépen telepített parancssori felület helyett.
-
-
-
-
-
-![Azure Cloud Shell](./media/role-based-access-control-create-custom-roles-for-internal-external-users/27.png)
+![Parancssori felület 1.0 használatával létrehozott egyéni biztonsági szerepkört az Azure portál képernyőképe](./media/role-based-access-control-create-custom-roles-for-internal-external-users/26.png)

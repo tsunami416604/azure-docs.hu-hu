@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2018
 ms.author: shlo
-ms.openlocfilehash: 977fd59b746d13e9bf331edc32c63dd5a21c69f7
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a226402f16f98c830c1e1cf34653b8f6513f06b4
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Az Azure Data Factory Visual készítése
 Az Azure Data Factory felhasználói felület élmény (UX) lehetővé teszi vizuálisan hozhatnak létre és telepítését erőforrások az a data factory kód írása nélkül. Húzzon tevékenységeket a feldolgozási sor vásznon, hajtsa végre a teszt futtatása, debug ismételt, és telepítheti és figyelheti a folyamat futtatása. Kétféleképpen használatához a UX visual szerzői műveletek végrehajtásához:

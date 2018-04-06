@@ -1,38 +1,38 @@
 ---
-title: "XTP memórián belüli tároló figyelése |} Microsoft Docs"
-description: "Becsült és a figyelő XTP memórián belüli tároló használatához kapacitás; Hárítsa el a kapacitás hiba 41823"
+title: XTP memórián belüli tároló figyelése |} Microsoft Docs
+description: Becsült és a figyelő XTP memórián belüli tároló használatához kapacitás; Hárítsa el a kapacitás hiba 41823
 services: sql-database
 author: jodebrui
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 04/04/2018
 ms.author: jodebrui
-ms.openlocfilehash: c1adc6e98f7d101a6e5f3227f44b0035d9b9d157
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0802a3b51847236efb64e628ed259dc7776bac4e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>A figyelő a memórián belüli online Tranzakciófeldolgozási tároló
-Használata esetén [memórián belüli online Tranzakciófeldolgozási](sql-database-in-memory.md), a memóriaoptimalizált táblák és Táblaváltozók adatainak memórián belüli online Tranzakciófeldolgozási tárolóban található. Minden prémium szolgáltatásszintet felső korlátja memórián belüli online Tranzakciófeldolgozási tároló, amely ismertetett [egyetlen adatbázis erőforrás korlátok](sql-database-resource-limits.md#single-database-storage-sizes-and-performance-levels) és [rugalmas készlet erőforrás korlátok](sql-database-resource-limits.md#elastic-pool-change-storage-size). Ha túllépi ezt a határt, beszúrási és a frissítési műveletek kezdheti el önálló adatbázisok 41823 hiba és a rugalmas 41840 hiba miatt sikertelenül működő. Ekkor meg kell memória felszabadításához adatok törlése, illetve a teljesítményszintet az adatbázis frissítéséhez.
+Használata esetén [memórián belüli online Tranzakciófeldolgozási](sql-database-in-memory.md), a memóriaoptimalizált táblák és Táblaváltozók adatainak memórián belüli online Tranzakciófeldolgozási tárolóban található. Minden prémium és fontos üzleti szolgáltatási szinthez tartozik memórián belüli online Tranzakciófeldolgozási tároló mérete, ami ismertetett [DTU-alapú erőforrás korlátok](sql-database-dtu-resource-limits.md) és [vCore-alapú erőforrás korlátok](sql-database-vcore-resource-limits.md). Ha túllépi ezt a határt, beszúrási és a frissítési műveletek kezdheti el önálló adatbázisok 41823 hiba és a rugalmas 41840 hiba miatt sikertelenül működő. Ekkor meg kell memória felszabadításához adatok törlése, illetve a teljesítményszintet az adatbázis frissítéséhez.
 
 ## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>Határozza meg, hogy adatok elférje a memórián belüli online Tranzakciófeldolgozási tárolási kap
-A tárolási biztosít, amelyet a különböző Premium szolgáltatásszintek határozza meg. Lásd: [egyetlen adatbázis erőforrás korlátok](sql-database-resource-limits.md#single-database-storage-sizes-and-performance-levels) és [rugalmas készlet erőforrás korlátok](sql-database-resource-limits.md#elastic-pool-change-storage-size).
+Határozza meg, hogy a tároló biztosít, amelyet a különböző szolgáltatásrétegeiben használt funkciókkal. Lásd: [DTU-alapú erőforrás korlátok](sql-database-dtu-resource-limits.md) és [vCore-alapú erőforrás korlátok](sql-database-vcore-resource-limits.md).
 
 Memóriakövetelményei memóriaoptimalizált táblák működik, mert az SQL Server ugyanúgy nem Azure SQL Database becslése. Tekintse át az előző cikket a néhány percet igénybe vehet [MSDN](https://msdn.microsoft.com/library/dn282389.aspx).
 
 Tábla és a tábla változó sorok, valamint az indexek, száma, a maximális felhasználói adatok mérete felé. Emellett az ALTER TABLE kell elég hely a teljes táblázat és az indexeket új verziót hoz létre.
 
 ## <a name="monitoring-and-alerting"></a>Figyelés és riasztás
-A tárolási kap százalékában memórián belüli tároló használata a teljesítmény szinthez a figyelheti a [Azure-portálon](https://portal.azure.com/): 
+A tárolási kap százalékában tárolóhely-használat memóriában a teljesítmény szinthez a figyelheti a [Azure-portálon](https://portal.azure.com/): 
 
 1. Az adatbázis panelen keresse meg az Erőforrás kihasználtsága mezőbe, majd kattintson a Szerkesztés.
 2. Válassza ki a `In-Memory OLTP Storage percentage`.
 3. Adja hozzá a riasztást, az erőforrás-használat párbeszédpanel megnyitásához a metrika panelen kattintson, majd kattintson a Hozzáadás riasztás.
 
-Vagy a memóriában lévő tárhely kihasználtságát megjelenítéséhez használja a következő lekérdezést:
+Vagy a memórián belüli tárhely kihasználtságát megjelenítéséhez használja a következő lekérdezést:
 
     SELECT xtp_storage_percent FROM sys.dm_db_resource_stats
 
@@ -48,7 +48,7 @@ Ez a hiba vagy megoldása:
 * A szolgáltatási rétegben váltson egy, az elegendő memórián belüli tároló memóriaoptimalizált táblák megtartja a szükséges adatok.
 
 > [!NOTE] 
-> Ritka esetekben hibák 41823 és 41840 átmeneti, ami azt jelenti, nincs elég tárterület a memórián belüli online Tranzakciófeldolgozási, és a művelet sikeres lehet. Ezért ajánlott mindkét figyelője az a teljes elérhető memórián belüli online Tranzakciófeldolgozási tárolót, és próbálja meg, amikor először észlelt a 41823 vagy 41840 hiba. Újrapróbálkozási logika kapcsolatos további információkért lásd: [előforduló ütközések észlelésére és logika ismételje meg a memórián belüli online Tranzakciófeldolgozási](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/transactions-with-memory-optimized-tables#conflict-detection-and-retry-logic).
+> Ritka esetekben hibák 41823 és 41840 átmeneti, ami azt jelenti, nincs elég tárterület a memórián belüli online Tranzakciófeldolgozási, és a művelet sikeres lehet. Ezért ajánlott mindkét figyelője az a teljes elérhető memórián belüli online Tranzakciófeldolgozási tárolót, és próbálja meg, amikor először észlelt a 41823 vagy 41840 hiba. Újrapróbálkozási logika kapcsolatos további információkért lásd: [előforduló ütközések észlelésére és logika ismételje meg a memórián belüli online Tranzakciófeldolgozási](https://docs.microsoft.com/sql/relational-databases/In-memory-oltp/transactions-with-memory-optimized-tables#conflict-detection-and-retry-logic).
 
 ## <a name="next-steps"></a>További lépések
 Figyelés útmutatást, lásd: [figyelése Azure SQL Database dinamikus felügyeleti nézetekkel](sql-database-monitoring-with-dmvs.md).

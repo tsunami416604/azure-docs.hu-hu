@@ -1,11 +1,11 @@
 ---
-title: "HPC Pack OpenFOAM futó Linux virtuális gépek |} Microsoft Docs"
-description: "Az Azure a Microsoft HPC Pack fürt központi telepítése, és egy OpenFOAM feladat futtatása több Linux számítási csomóponton az RDMA-hálózaton."
+title: HPC Pack OpenFOAM futó Linux virtuális gépek |} Microsoft Docs
+description: Az Azure a Microsoft HPC Pack fürt központi telepítése, és egy OpenFOAM feladat futtatása több Linux számítási csomóponton az RDMA-hálózaton.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager,hpc-pack
 ms.assetid: c0bb1637-bb19-48f1-adaa-491808d3441f
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 07/22/2016
 ms.author: danlep
-ms.openlocfilehash: ef124a8983fa112d499252460bff9ed2fcccc02b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f43790d3495e1c09730e90b5077ec840731a7d83
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="run-openfoam-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>Az OpenFoam futtatása a Microsoft HPC Packkal Azure-beli linuxos RDMA-fürtön
 Ez a cikk az Azure virtuális gépeken OpenFoam futtatásához egy módszert mutat. Itt, a Microsoft HPC Pack-fürt Linux számítási csomópontok az Azure és a Futtatás telepít egy [OpenFoam](http://openfoam.com/) Intel MPI feladatot. Az RDMA-kompatibilis Azure virtuális gépeken használhatja a számítási csomópontok, hogy a számítási csomópontok Azure RDMA hálózati kommunikációra. Más OpenFoam Azure rendszerben való futtatásra a választható lehetőségek teljesen konfigurált kereskedelmi képek elérhető a piactéren, például a UberCloud tartozó [OpenFoam 2.3 a CentOS 6](https://azure.microsoft.com/marketplace/partners/ubercloud/openfoam-v2dot3-centos-v6/), és futtatja a [Azure Batch](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/). 
@@ -267,9 +267,9 @@ Ebben a lépésben létrehozott állomás-fájlokat (számítási csomópontok l
    
    1. Beállítja a környezeti változók a **mpirun**, és néhány hozzáadása parancs paraméterei a MPI feladat futtatásához az RDMA a hálózaton keresztül. Ebben az esetben azt állítja be a következő változókat:
       
-      * I_MPI_FABRICS = shm:dapl
-      * I_MPI_DAPL_PROVIDER bájtméretét-v2-ib0 =
-      * I_MPI_DYNAMIC_CONNECTION = 0
+      * I_MPI_FABRICS=shm:dapl
+      * I_MPI_DAPL_PROVIDER=ofa-v2-ib0
+      * I_MPI_DYNAMIC_CONNECTION=0
    2. Létrehoz egy gazdagép megfelelően a környezeti változó $CCP_NODES_CORES, amely szerint a HPC átjárócsomópont van beállítva, a feladat aktiválásakor.
       
       $CCP_NODES_CORES formátuma ezt a mintát követi:
@@ -280,9 +280,9 @@ Ebben a lépésben létrehozott állomás-fájlokat (számítási csomópontok l
       
       Ha
       
-      * `<Number of nodes>`– a feladat számára lefoglalt csomópontok száma.  
-      * `<Name of node_n_...>`– a feladat rendelt minden csomópont neve.
-      * `<Cores of node_n_...>`-a csomóponton a feladat számára lefoglalt magok száma.
+      * `<Number of nodes>` – a feladat számára lefoglalt csomópontok száma.  
+      * `<Name of node_n_...>` – a feladat rendelt minden csomópont neve.
+      * `<Cores of node_n_...>` -a csomóponton a feladat számára lefoglalt magok száma.
       
       Például ha a feladat futtatásához két csomópont van szüksége, $CCP_NODES_CORES hasonlít
       
@@ -291,8 +291,8 @@ Ebben a lépésben létrehozott állomás-fájlokat (számítási csomópontok l
       ```
    3. Hívások a **mpirun** parancsot, és hozzáfűzi a két paraméter a parancssorban.
       
-      * `--hostfile <hostfilepath>: <hostfilepath>`-a parancsfájl létrehozza a gazdagép-fájl elérési útja
-      * `-np ${CCP_NUMCPUS}: ${CCP_NUMCPUS}`-olyan környezeti változó beállítása a HPC Pack központi csomópont, amely tárolja az összes, a feladat számára lefoglalt magok száma. Ebben az esetben adja meg a folyamatok száma **mpirun**.
+      * `--hostfile <hostfilepath>: <hostfilepath>` -a parancsfájl létrehozza a gazdagép-fájl elérési útja
+      * `-np ${CCP_NUMCPUS}: ${CCP_NUMCPUS}` -olyan környezeti változó beállítása a HPC Pack központi csomópont, amely tárolja az összes, a feladat számára lefoglalt magok száma. Ebben az esetben adja meg a folyamatok száma **mpirun**.
 
 ## <a name="submit-an-openfoam-job"></a>Egy OpenFOAM feladat elküldése
 Most elküldheti a HPC Cluster Manager feladat. A parancsfájl hpcimpirun.sh át a parancsokat a projekt feladatokat kell.
@@ -305,7 +305,7 @@ Most elküldheti a HPC Cluster Manager feladat. A parancsfájl hpcimpirun.sh át
    ![Feladat részletei][job_details]
 5. A **feladat-erőforrások**, válassza ki az erőforrás "Csomópont" típusú, és legalább a 2 értékűre állított. Ez a konfiguráció futó Linux két csomópont, amelyek mindegyikének nyolc processzormaggal ebben a példában a feladat.
    
-   ![Feladat erőforrások][job_resources]
+   ![Feladat-erőforrások][job_resources]
 6. Kattintson a **feladatok szerkesztése** a bal oldali navigációs, majd **Hozzáadás** feladat hozzáadása a feladatot. Négy feladatok hozzá a feladatot a következő parancssorok és beállítások.
    
    > [!NOTE]
@@ -364,7 +364,7 @@ Most elküldheti a HPC Cluster Manager feladat. A parancsfájl hpcimpirun.sh át
 Ezenkívül szükség [EnSight](https://www.ceisoftware.com/) megtekintheti és elemezheti a OpenFOAM feladat eredményeinek számára. További információt a képi megjelenítés és EnSight animációt megjelenik ez [videó útmutató](http://www.ceisoftware.com/wp-content/uploads/screencasts/vof_visualization/vof_visualization.html).
 
 1. Miután telepítette az átjárócsomópont EnSight, indítsa el.
-2. Nyissa meg a C:\OpenFoam\sloshingTank3D\EnSight\sloshingTank3D.case.
+2. Open C:\OpenFoam\sloshingTank3D\EnSight\sloshingTank3D.case.
    
    Megjelenik egy tartály a megjelenítőben.
    
@@ -511,7 +511,7 @@ ENVIRONMENT_LD_SO_CONF=no
 
 ```
 
-### <a name="sample-settingssh-script"></a>Mintaparancsfájl settings.sh
+### <a name="sample-settingssh-script"></a>Sample settings.sh script
 ```
 #!/bin/bash
 

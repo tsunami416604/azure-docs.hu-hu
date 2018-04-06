@@ -1,12 +1,12 @@
 ---
-title: "Az Azure IoT Hub állapotának figyelésére |} Microsoft Docs"
-description: "Azure figyelése és az Azure Resource Health használatával figyelheti az IoT Hub és a problémák diagnosztizálásához gyorsan"
+title: Az Azure IoT Hub állapotának figyelésére |} Microsoft Docs
+description: Azure figyelése és az Azure Resource Health használatával figyelheti az IoT Hub és a problémák diagnosztizálásához gyorsan
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-hub
 ms.devlang: na
 ms.topic: article
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/09/2017
 ms.author: kgremban
-ms.openlocfilehash: 3051af03d0c1433db98bcc674a072188e7ce80e0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 28903c4cc530937b4b39a5239d2a6d1ea6896924
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Azure IoT Hub állapotának figyelésére, és a problémák diagnosztizálásához gyorsan
 
 Vállalatok számára, amelyek megvalósítják az Azure IoT Hub erőforrásaik a megbízható teljesítménycsökkenés várható. Segíti a Bezárás tekintse meg a műveletek, az IoT-központ teljesen integrálva van a [Azure figyelő] [ lnk-AM] és [Azure Resource Health] [ lnk-ARH]. A két szolgáltatás használatával látják el az adatokat az IoT-megoldások fel, és megfelelő állapotban fut kell párhuzamosan működik. 
 
-Az Azure figyelőjének értéke a figyelés és naplózás minden Azure-szolgáltatások a egyetlen forrását. Elküldheti a naplófájlokat, amelyek alapján Azure figyelő állít elő, OMS szolgáltatáshoz, az Event Hubs vagy Azure Storage egyéni feldolgozásra. Azure metrikák és diagnosztikai beállításai az erőforrások teljesítményének valós idejű információkat nyújtanak. Ismerje meg, hogy a cikk elolvasása folytatni hogyan [használata Azure figyelő](#use-azure-monitor) az IoT hubbal. 
+Az Azure figyelőjének értéke a figyelés és naplózás minden Azure-szolgáltatások a egyetlen forrását. Elküldheti a naplófájlokat, amelyek alapján Azure figyelő állít elő, Naplóelemzési, az Event Hubs vagy az Azure Storage egyéni feldolgozásra. Azure metrikák és diagnosztikai beállításai az erőforrások teljesítményének valós idejű információkat nyújtanak. Ismerje meg, hogy a cikk elolvasása folytatni hogyan [használata Azure figyelő](#use-azure-monitor) az IoT hubbal. 
 
 Az Azure Resource Health segít diagnosztizálni és segítségre van szüksége, amikor egy Azure problémák hatással van az erőforrások. A személyre szabott irányítópultok biztosít az IoT-központok aktuális és korábbi állapotát. Ismerje meg, hogy a cikk elolvasása folytatni hogyan [használata Azure Resource Health](#use-azure-resource-health) az IoT hubbal. 
 
@@ -322,7 +322,7 @@ Az IoT-központok állapotának ellenőrzéséhez kövesse az alábbi lépéseke
 
 Adatok értelmezése kapcsolatos további információkért lásd: [Azure-erőforrás állapotának áttekintése][lnk-ARH]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az IoT-központ metrikák ismertetése][lnk-metrics]
 - [Az IoT távoli figyelés és az értesítések az Azure Logic Apps csatlakoztatása az IoT-központ és postaláda][lnk-monitoring-notifications]

@@ -1,6 +1,6 @@
 ---
-title: "Az Azure SQL Database automatikus hangolása engedélyezése |} Microsoft Docs"
-description: "Automatikus hangolása az Azure SQL adatbázis könnyen engedélyezheti."
+title: Az Azure SQL Database automatikus hangolása engedélyezése |} Microsoft Docs
+description: Automatikus hangolása az Azure SQL adatbázis könnyen engedélyezheti.
 services: sql-database
 author: veljko-msft
 manager: drasumic
@@ -9,11 +9,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 09/19/2016
 ms.author: vvasic
-ms.openlocfilehash: cfee95f5978073277a5351b976156cafefb87c16
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 2ea5c0e640ac7e635692dafac1f30f377aa79625
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="enable-automatic-tuning"></a>Automatikus hangolás engedélyezése
 
@@ -22,7 +22,7 @@ Az Azure SQL Database az automatikusan kezelt adatok szolgáltatása, amely foly
 ## <a name="enable-automatic-tuning-on-server"></a>Engedélyezze a kiszolgálón automatikus hangolása
 A kiszolgáló szintjén választhat öröklik az "Azure alapértelmezett értéke" automatikus hangolási beállítás, vagy nem az, hogy örökölje a konfigurációt. Az Azure alapértelmezett FORCE_LAST_GOOD_PLAN engedélyezve van, CREATE_INDEX engedélyezve van, és DROP_INDEX le van tiltva.
 
-## <a name="configure-automiatic-tuning-e-mail-notifications"></a>E-mail értesítések hangolása automiatic konfigurálása
+## <a name="configure-automatic-tuning-e-mail-notifications"></a>Automatikus hangolási e-mail értesítések konfigurálása
 
 Lásd: [automatikus e-mail értesítések beállítása](sql-database-automatic-tuning-email-notifications.md)
 

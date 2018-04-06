@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Active Directory csoportokat az Office 365 lejárati |} Microsoft Docs"
-description: "Az Office 365-csoportok az Azure Active Directoryban lejárati beállítása"
+title: Az Azure Active Directory csoportokat az Office 365 lejárati |} Microsoft Docs
+description: Az Office 365-csoportok az Azure Active Directoryban lejárati beállítása
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -16,11 +16,11 @@ ms.date: 03/09/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: 95593eaacd73316ab527ffda8f977fbf0eb15558
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: aa8551db8c3982fa61b3d4731a8aac3e2832f1b1
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Az Office 365-csoportok-elévülési szabályzatának konfigurálása
 
@@ -66,7 +66,7 @@ Erre például értesítő e-mailek küldése az Office 365 csoport tulajdonosai
 
 ![Lejárati értesítést](./media/active-directory-groups-lifecycle-azure-portal/expiration-notification.png)
 
-Az a **megújítási csoport** értesítő e-mailt, a csoportházirend-tulajdonosok is közvetlen hozzáférés t hegroup részletei oldalon a hozzáférési panelen. Van a felhasználók további információkat a csoport például annak leírását, ha az utolsó megújított, a lejárat idejét, valamint is újítsa meg a csoport olyan szeretne kapni. A csoport részleteit megjelenítő oldalon most is az Office 365 csoport forrásokra mutató hivatkozásokat, hogy a csoport tulajdonosa kényelmesen megtekintheti a tartalom és a tevékenység a csoportban.
+Az a **megújítási csoport** értesítő e-mailt, csoport tulajdonosainak közvetlenül is elérni a csoport részleteit megjelenítő oldalon a hozzáférési panelen. Van a felhasználók további információkat a csoport például annak leírását, ha az utolsó megújított, a lejárat idejét, valamint is újítsa meg a csoport olyan szeretne kapni. A csoport részleteit megjelenítő oldalon most is az Office 365 csoport forrásokra mutató hivatkozásokat, hogy a csoport tulajdonosa kényelmesen megtekintheti a tartalom és a tevékenység a csoportban.
 
 Amikor lejár egy csoportot, a csoport egy napot a lejárat után törlődik. Például az e-mailben értesítést kap az Office 365 csoportházirend-tulajdonosok értesítheti őket a lejárati és az Office 365 csoport későbbi törlését.
 

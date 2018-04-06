@@ -1,5 +1,5 @@
 ---
-title: A ILB App Service Environment-környezet integrálható a meglévő Alkalmazásátjáró
+title: Az ILB App Service-környezet integrálható az Azure-alkalmazásokban átjáró
 description: Az Alkalmazásátjáró a ILB App Service Environment-környezet az alkalmazások integrálása forgatókönyv
 services: app-service
 documentationcenter: na
@@ -11,21 +11,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 03/03/2018
 ms.author: ccompy
-ms.openlocfilehash: c64b686d7a9016b3834096ebc88179db8972098f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 31aea1d19ed6da856bb5fc634a919819513cb6b2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="integrate-your-ilb-app-service-environment-with-an-application-gateway"></a>A ILB App Service Environment-környezet integrálható a meglévő Alkalmazásátjáró #
+# <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Az ILB App Service-környezet integrálható az Azure-alkalmazásokban átjáró #
 
 A [App Service Environment-környezet](./intro.md) az alhálózat egy ügyfél az Azure virtuális hálózat az Azure App Service üzemelő példány. Központilag telepíthető egy nyilvános vagy privát végponttal az alkalmazás eléréséhez. A központi telepítés az App Service Environment-környezet egy titkos végponttal (Ez azt jelenti, hogy a belső terheléselosztók) ILB App Service-környezetek nevezik.  
 
-Az Azure Application Gateway egy virtuális készüléket, amely 7 réteg terheléselosztás, SSL-feladatkiszervezést és a webes alkalmazás tűzfalat (waf-ot). Ez a figyelheti egy nyilvános IP-cím- és útvonal forgalom az alkalmazás végpontjának. 
+Webalkalmazás tűzfalak segít biztonságos, a webalkalmazások, ellenőrizze a bejövő webes forgalomnak SQL alkalommal többhelyes parancsfájlok, kártevő szoftverek feltöltések letiltása & DDoS alkalmazás és más támadásoknak. Azt is ellenőrzi a válaszokat a háttérben futó webes-kiszolgálókról az adatok adatvesztés-megelőzési (DLP). Az Azure piactérről is ki lehet WAF eszköz, vagy használhatja a [Azure Application Gateway][appgw].
 
-A következő információkat ismerteti, hogyan WAF konfigurált Alkalmazásátjáró integrálható egy alkalmazás egy ILB App Service Environment-környezetben.  
+Az Azure Application Gateway egy virtuális készüléket, amely 7 réteg terheléselosztás, SSL-feladatkiszervezést és a webes alkalmazás tűzfalat (waf-ot). Ez a figyelheti egy nyilvános IP-cím- és útvonal forgalom az alkalmazás végpontjának. A következő információkat ismerteti, hogyan WAF konfigurált Alkalmazásátjáró integrálható egy alkalmazás egy ILB App Service Environment-környezetben.  
 
 Az Alkalmazásátjáró ILB App Service-környezetet a rendszer integrálása az alkalmazás szintjén van. Ha a ILB App Service Environment-környezet az Alkalmazásátjáró konfigurál, végzett az adott alkalmazásokhoz a ILB App Service Environment-környezetben. Ez a módszer lehetővé teszi, hogy üzemeltetéséhez biztonságos több-bérlős egy egyetlen ILB App Service Environment-környezetben.  
 
@@ -33,8 +33,8 @@ Az Alkalmazásátjáró ILB App Service-környezetet a rendszer integrálása az
 
 A bemutató keretében a következő lépéseket fogja végrehajtani:
 
-* Alkalmazásátjáró létrehozása.
-* Konfigurálja az Alkalmazásátjáró szeretne egy a ILB App Service Environment-környezetben.
+* Hozzon létre egy Azure-alkalmazásokban átjárót.
+* Konfigurálja az Application Gateway szeretne egy a ILB App Service Environment-környezetben.
 * Állítsa be alkalmazását az egyéni tartománynév tiszteletben.
 * Szerkessze a nyilvános DNS-állomásnevet, amely az Alkalmazásátjáró mutat.
 
@@ -53,7 +53,7 @@ Az Alkalmazásátjáró integrálása a ILB App Service Environment-környezet, 
 
 További ILB App Service-környezetek létrehozásával kapcsolatos további információkért lásd: [létrehozása és használata ILB App Service-környezetek][ilbase].
 
-Ez a cikk feltételezi, hogy az azonos Azure virtuális hálózat, amelyen az App Service Environment-környezet üzembe van helyezve az Alkalmazásátjáró. Az Alkalmazásátjáró létrehozása előtt alhálózat kiválasztása vagy létrehozása egy, az átjáró üzemeltetésére használhatja. 
+Ez a cikk feltételezi, hogy az azonos Azure virtuális hálózat, amelyen az App Service Environment-környezet üzembe van helyezve az Alkalmazásátjáró. Az Alkalmazásátjáró létrehozása, válassza ki vagy hozzon létre egy alhálózatot, amely megkezdése előtt szüksége lesz az átjáró üzemeltetéséhez. 
 
 Egy alhálózatot, amely nem a egy elnevezett GatewaySubnet kell használnia. Ha az Alkalmazásátjáró be GatewaySubnet, nem lehet létrehozni a virtuális hálózati átjáró később lesz. 
 
@@ -75,7 +75,7 @@ Az átjáró, amely a ILB App Service-környezetet használ az alhálózat nem h
 
    e. A **hely**, válassza ki az App Service Environment-környezet virtuális hálózat helyét.
 
-   ![Új alkalmazás átjáró létrehozása alapjai][2]
+   ![Új Alkalmazásátjáró létrehozása alapjai][2]
 
 3. Az a **beállítások** területen:
 
@@ -91,11 +91,11 @@ Az átjáró, amely a ILB App Service-környezetet használ az alhálózat nem h
 
    f. A **webalkalmazási tűzfal**, engedélyezze a tűzfalat, és is beállíthat két **észlelési** vagy **megelőzési** igényei szerint.
 
-   ![Új átjáró létrehozása Alkalmazásbeállítások][3]
+   ![Új Alkalmazásátjáró létrehozása beállítások][3]
     
-4. Az a **összegzés** szakaszt, tekintse át a beállításokat, és válassza ki **OK**. Az Alkalmazásátjáró eltarthat valamivel több mint 30 perc a telepítés befejezéséhez.  
+4. Az a **összegzés** szakaszt, tekintse át a beállításokat, és válassza ki **OK**. Az Alkalmazásátjáró beállításának befejezése valamivel több mint 30 percet is igénybe vehet.  
 
-5. Az Alkalmazásátjáró telepítő befejezése után nyissa meg az alkalmazás átjáró portálra. Válassza ki **háttérkészlet**. Vegye fel a Példánynak a ILB App Service Environment-környezet.
+5. Az Alkalmazásátjáró telepítő befejezése után nyissa meg az Application Gateway-portálra. Válassza ki **háttérkészlet**. Vegye fel a Példánynak a ILB App Service Environment-környezet.
 
    ![Háttérkészlet konfigurálása][4]
 

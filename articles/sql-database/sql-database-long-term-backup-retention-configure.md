@@ -1,261 +1,161 @@
 ---
-title: "Hosszú távú biztonsági másolatok megőrzésének - Azure SQL adatbázis konfigurálása |} Microsoft Docs"
-description: "Útmutató az Azure Recovery Services-tároló az automatikus biztonsági másolatok tárolására, vagy visszaállíthatja őket az Azure Recovery Services-tároló"
+title: Hosszú távú biztonsági másolatok megőrzésének & ARS tároló - Azure SQL Database |} Microsoft Docs
+description: 'Útmutató: az automatikus biztonsági mentés az SQL Azure storage tárolja, és hajtsa végre a visszaállítást'
 services: sql-database
-author: CarlRabeler
+author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 04/10/2017
-ms.author: carlrab
-ms.openlocfilehash: f6d32976cc4b9d669e629005be4d7aacebd62f9e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.date: 04/10/2018
+ms.author: sashan
+ms.reviewer: carlrab
+ms.openlocfilehash: 80dd58a9c0267975c9e4df74c77d60ac861a1fdb
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="configure-and-restore-from-azure-sql-database-long-term-backup-retention"></a>Konfigurálja és az Azure SQL Database hosszú távú biztonsági mentés megőrzési visszaállítás
+# <a name="configure-and-restore-backups-from-azure-sql-database-long-term-backup-retention-using-azure-sql-storage"></a>Konfigurálja, és állítsa vissza biztonsági másolatok hosszú távú biztonsági másolatok megőrzésének Azure SQL adatbázis Azure SQL-tárolót
 
-Konfigurálhatja az Azure Recovery Services-tároló, majd a biztonsági mentések őrzi meg a tárolónál az Azure portálon vagy a PowerShell használatával adatbázis helyreállítása és az Azure SQL database biztonsági másolatok tárolására.
+Konfigurálhatja az Azure SQL-adatbázis egy [hosszú távú biztonsági másolatok megőrzésének](sql-database-long-term-retention.md) (LTR) automatikusan legfeljebb tíz éve a az Azure blob storage biztonsági mentések megőrzési házirend. Ezt követően helyreállíthatja a biztonsági mentése az Azure-portálon vagy a PowerShell használatával egy adatbázist.
 
-## <a name="azure-portal"></a>Azure Portal
+> [!NOTE]
+> Ez a szolgáltatás a 2016. októberi előnézete eredeti kiadását részeként volt tárolja a biztonsági másolatokat az Azure helyreállítási szolgáltatások tárolóban lévő állapottal. A frissítés eltávolítja a függőséget, de a visszamenőleges kompatibilitás érdekében az eredeti API támogatott 2018 előfordulhat, hogy 31-ig. Ha az Azure szolgáltatások Recovery-tárolóban a biztonsági másolatok együttműködhet szüksége, tekintse meg [Azure helyreállítási szolgáltatások tárolót használó hosszú távú biztonsági másolatok megőrzésének](sql-database-long-term-backup-retention-configure-vault.md). 
 
-A következő szakaszok bemutatják, hogyan használható az Azure-portál konfigurálása az Azure Recovery Services-tároló, biztonsági másolatok megtekintése a tároló és a tárolóban való visszaállítása.
+## <a name="use-the-azure-portal-to-configure-long-term-retention-policies-and-restore-backups"></a>Az Azure portál segítségével hosszú távú adatmegőrzési házirendek konfigurálása és a biztonsági másolatok
 
-### <a name="configure-the-vault-register-the-server-and-select-databases"></a>A tároló konfigurálása, regisztrálja a kiszolgálót, és válassza ki az adatbázisok
+A következő szakaszok bemutatják a hosszú távú megőrzési konfigurálásához, tekintse meg a biztonsági másolatok hosszú távú megőrzési, és a hosszú távú megőrzési biztonsági másolat visszaállítása az Azure-portál használatával.
 
-Ön [konfigurálása az Azure Recovery Services-tároló automatikus biztonsági mentések megőrzési](sql-database-long-term-retention.md) a szolgáltatási rétegben megőrzési időtartama hosszabb időtartamra. 
+### <a name="configure-long-term-retention-policies"></a>Hosszú távú adatmegőrzési konfigurálása
 
-1. Nyissa meg a **SQL Server** a kiszolgálóhoz tartozó lapon.
+Konfigurálhatja az SQL-adatbázis [automatikus biztonsági mentések megőrzési](sql-database-long-term-retention.md) a szolgáltatási rétegben megőrzési időtartama hosszabb időtartamra. 
 
-   ![sql server page](./media/sql-database-get-started-portal/sql-server-blade.png)
+1. Az Azure portálon, válassza ki az SQL server, és kattintson a **hosszú távú biztonsági másolatok megőrzésének**.
 
-2. Kattintson a **Biztonsági másolat hosszú távú megőrzése** elemre.
+   ![biztonsági másolat hosszú távú megőrzése hivatkozás](./media/sql-database-long-term-retention/ltr-configure-ltr.png)
 
-   ![biztonsági másolat hosszú távú megőrzése hivatkozás](./media/sql-database-get-started-backup-recovery/long-term-backup-retention-link.png)
+2. Az a **-szabályzatok konfigurálása** lapra, válassza ki az adatbázist, amelyeken beállítása vagy módosítása a hosszú távú biztonsági mentési adatmegőrzési kívánja.
 
-3. Az a **hosszú távú biztonsági másolatok megőrzésének** a kiszolgáló lapon tekintse át és fogadja el az előzetes feltételeket (kivéve, ha Ön már megtette -, vagy ez a szolgáltatás már nincs az előzetes verzió).
+   ![Adatbázis kiválasztása](./media/sql-database-long-term-retention/ltr-configure-select-database.png)
 
-   ![előzetes verziójú szolgáltatás feltételeinek elfogadása](./media/sql-database-get-started-backup-recovery/accept-the-preview-terms.png)
+3. Az a **-szabályzatok konfigurálása** ablaktábla, válassza ki, ha heti, havi vagy éves biztonsági mentések megőrzési, és adja meg az egyes megőrzési időtartama. 
 
-4. Hosszú távú biztonsági másolatok megőrzésének konfigurálásához jelölje ki, hogy az adatbázis a rácsban, és kattintson **konfigurálása** az eszköztáron.
+   ![házirendek konfigurálása](./media/sql-database-long-term-retention/ltr-configure-policies.png)
 
-   ![adatbázis kijelölése biztonsági mentés hosszú távú megőrzéséhez](./media/sql-database-get-started-backup-recovery/select-database-for-long-term-backup-retention.png)
+4. Amikor végzett, kattintson **alkalmaz**.
 
-5. Az a **konfigurálása** kattintson **kötelező beállítások konfigurálása** alatt **helyreállítási szolgáltatás tároló**.
+### <a name="view-backups-and-restore-from-a-backup-using-azure-portal"></a>Biztonsági másolatok megtekintése, és állítsa vissza egy biztonsági másolatból, Azure-portál használatával
 
-   ![tároló konfigurálása hivatkozás](./media/sql-database-get-started-backup-recovery/configure-vault-link.png)
+Tekintse meg a biztonsági mentések, amelyek egy adott adatbázis egy balról jobbra házirend, és azokat a biztonsági mentések való visszaállítása megmaradnak. 
 
-6. Az a **Recovery services-tároló** lapon, válassza ki egy meglévő tárolóban, ha van ilyen. Ha nem találhatók helyreállítási tárak az előfizetésben, kattintással lépjen ki a folyamatból, és hozzon létre egyet.
+1. Az Azure portálon, válassza ki az SQL server, és kattintson a **hosszú távú biztonsági másolatok megőrzésének**.
 
-   ![tároló hivatkozás létrehozása](./media/sql-database-get-started-backup-recovery/create-new-vault-link.png)
+   ![biztonsági másolat hosszú távú megőrzése hivatkozás](./media/sql-database-long-term-retention/ltr-configure-ltr.png)
 
-7. Az a **Recovery Services-tárolók** kattintson **Hozzáadás**.
+2. Az a **elérhető biztonsági másolatok** lapra, válassza ki az adatbázist, amelynek meg szeretné tekinteni a rendelkezésre álló biztonsági mentéseket.
 
-   ![tároló hivatkozás hozzáadása](./media/sql-database-get-started-backup-recovery/add-new-vault-link.png)
-   
-8. Az a **Recovery Services-tároló** lapján adjon meg egy érvényes nevet a Recovery Services-tároló.
+   ![Adatbázis kiválasztása](./media/sql-database-long-term-retention/ltr-available-backups-select-database.png)
 
-   ![új tároló neve](./media/sql-database-get-started-backup-recovery/new-vault-name.png)
+3. Az a **elérhető biztonsági másolatok** ablaktáblában tekintse át az elérhető biztonsági másolatokat. 
 
-9. Válassza ki az előfizetést és az erőforráscsoportot, majd válassza ki a tároló helyét. Ha befejezte, kattintson a **Létrehozás** elemre.
+   ![biztonsági másolatok megtekintése](./media/sql-database-long-term-retention/ltr-available-backups.png)
 
-   ![tároló létrehozása](./media/sql-database-get-started-backup-recovery/create-new-vault.png)
+4. Válassza ki a visszaállítani kívánt biztonsági másolatot, és adja meg az új adatbázis nevét.
 
-   > [!IMPORTANT]
-   > A tárolónak ugyanabban a régióban kell lennie, mint az Azure SQL logikai kiszolgálónak, és ugyanazt az erőforráscsoportot kell használnia.
-   >
+   ![visszaállítás](./media/sql-database-long-term-retention/ltr-restore.png)
 
-10. Az új tároló létrehozása után hajtható végre a szükséges lépéseket térjen vissza a **Recovery services-tároló** lap.
+5. Kattintson a **OK** az adatbázis biztonsági másolatból történő visszaállítását a az Azure SQL-tárolót az új adatbázishoz.
 
-11. Az a **Recovery services-tároló** lapon, kattintson arra a tárolóra, és kattintson **válasszon**.
-
-   ![meglévő tároló kiválasztása](./media/sql-database-get-started-backup-recovery/select-existing-vault.png)
-
-12. Az a **konfigurálása** lapon adjon meg egy érvényes nevet az új megőrzési házirend, az alapértelmezett megőrzési házirendet szükség szerint módosíthatja, és kattintson a **OK**.
-
-   ![adatmegőrzési házirend definiálása](./media/sql-database-get-started-backup-recovery/define-retention-policy.png)
-   
-   >[!NOTE]
-   >Adatmegőrzési házirend nevek tiltása bizonyos karaktereket, szóközöket is beleértve.
-
-13. Az a **hosszú távú biztonsági másolatok megőrzésének** az adatbázis lapján kattintson **mentése** majd **OK** a hosszú távú biztonsági mentés megőrzési házirend alkalmazása az összes kijelölt adatbázisok.
-
-   ![adatmegőrzési házirend definiálása](./media/sql-database-get-started-backup-recovery/save-retention-policy.png)
-
-14. Kattintson a **Mentés** gombra a hosszú távú adatmegőrzés engedélyezéséhez az új házirend használatával a konfigurált Azure helyreállítási táron.
-
-   ![adatmegőrzési házirend definiálása](./media/sql-database-get-started-backup-recovery/enable-long-term-retention.png)
-
-> [!IMPORTANT]
-> A konfigurálást követően a biztonsági másolatok hét napon belül megjelennek a tárolóban. Ne folytassa az oktatóanyagot, amíg a biztonsági másolatok meg nem jelentek a tárolóban.
->
-
-### <a name="view-backups-in-long-term-retention-using-azure-portal"></a>Az Azure-portált használja, a hosszú távú megőrzési biztonsági másolatok megtekintése
-
-Tekintse meg az adatbázis a biztonsági másolatok [hosszú távú biztonsági másolatok megőrzésének](sql-database-long-term-retention.md). 
-
-1. Az Azure-portálon, nyissa meg az Azure Recovery Services-tároló az adatbázis biztonsági mentés (lépjen **összes erőforrás** , és válassza ki azt a listából az előfizetéshez tartozó erőforrások) az adatbázis biztonsági másolatait a tároló által használt tárolókapacitást megtekintéséhez.
-
-   ![biztonsági másolatokat tartalmazó helyreállítási tár megtekintése](./media/sql-database-get-started-backup-recovery/view-recovery-services-vault-with-data.png)
-
-2. Nyissa meg a **SQL-adatbázis** lap az adatbázis számára.
-
-   ![Új minta db lap](./media/sql-database-get-started-portal/new-sample-db-blade.png)
-
-3. Az eszköztáron kattintson a **Visszaállítás** elemre.
-
-   ![visszaállítási eszköztár](./media/sql-database-get-started-backup-recovery/restore-toolbar.png)
-
-4. Kattintson a visszaállítás lap **hosszú távú**.
-
-5. Az Azure-tárolók biztonsági másolatai alatt kattintson a **Biztonsági másolat kiválasztása** gombra az adatbázisok a biztonsági másolatok hosszú távú megőrzése alatt álló biztonsági másolatainak megtekintéséhez.
-
-   ![biztonsági másolatok a tárolóban](./media/sql-database-get-started-backup-recovery/view-backups-in-vault.png)
-
-### <a name="restore-a-database-from-a-backup-in-long-term-backup-retention-using-the-azure-portal"></a>Állítson vissza egy adatbázist egy biztonsági másolatból, a hosszú távú biztonsági másolatok megőrzésének az Azure portál használatával
-
-Az adatbázis egy új adatbázist visszaállíthatja egy biztonsági másolatból, az Azure Recovery Services-tárolóban.
-
-1. Az a **tárolóban az Azure biztonsági mentések** a biztonsági másolat visszaállítása, majd kattintson **válasszon**.
-
-   ![tárolóban lévő biztonsági másolat kiválasztása](./media/sql-database-get-started-backup-recovery/select-backup-in-vault.png)
-
-2. Az **Adatbázis neve** szövegmezőben adjon meg egy nevet a visszaállított adatbázis számára.
-
-   ![új adatbázis neve](./media/sql-database-get-started-backup-recovery/new-database-name.png)
-
-3. Kattintson az **OK** gombra az adatbázis visszaállításához a tárolóban lévő biztonsági másolatból az új adatbázisba.
-
-4. Az eszköztáron kattintson az értesítési ikonra a visszaállítási feladat állapotának megtekintéséhez.
+6. Az eszköztáron kattintson az értesítési ikonra a visszaállítási feladat állapotának megtekintéséhez.
 
    ![tárolóból való visszaállítási feladat állapota](./media/sql-database-get-started-backup-recovery/restore-job-progress-long-term.png)
 
 5. A visszaállítási feladat befejezése után nyissa meg a **SQL-adatbázisok** lap használatával jeleníthetők meg az újonnan visszaállított adatbázis.
 
-   ![tárolóból visszaállított adatbázis](./media/sql-database-get-started-backup-recovery/restored-database-from-vault.png)
-
 > [!NOTE]
 > Innen az SQL Server Management Studióval csatlakozhat a visszaállított adatbázishoz a szükséges feladatok végrehajtásához, például [egy adatelem kinyeréséhez a visszaállított adatbázisból a meglévő adatbázisba való beillesztés érdekében, vagy a meglévő adatbázis törléséhez és a visszaállított adatbázis átnevezéséhez a meglévő adatbázis nevére](sql-database-recovery-using-backups.md#point-in-time-restore).
 >
 
-## <a name="powershell"></a>PowerShell
+## <a name="use-powershell-to-configure-long-term-retention-policies-and-restore-backups"></a>Hosszú távú adatmegőrzési házirendek konfigurálása és a biztonsági másolatok a PowerShell használatával
 
-Az alábbi szakaszok bemutatják a PowerShell használatával konfigurálja az Azure Recovery Services-tároló, biztonsági másolatok megtekintése a tároló és a visszaállítási a tárolóból.
+Az alábbi szakaszok bemutatják a PowerShell segítségével konfigurálhatja a hosszú távú biztonsági másolatok megőrzésének, és tekintse meg az Azure SQL-tároló és az Azure SQL-tároló egy biztonsági másolatból való visszaállítása biztonsági másolatok.
 
-### <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
+### <a name="create-an-ltr-policy"></a>Balról jobbra házirend létrehozása
 
-Használja a [New-AzureRmRecoveryServicesVault](/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault) a recovery services-tároló létrehozásához.
+```powershell
+# Get the SQL server 
+# $subId = “{subscription-id}”
+# $serverName = “{server-name}”
+# $resourceGroup = “{resource-group-name}” 
+# $dbName = ”{database-name}”
 
-> [!IMPORTANT]
-> A tárolónak ugyanabban a régióban kell lennie, mint az Azure SQL logikai kiszolgálónak, és ugyanazt az erőforráscsoportot kell használnia.
+Login-AzureRmAccount
+Select-AzureRmSubscription -SubscriptionId $subId
 
-```PowerShell
-# Create a recovery services vault
+# get the server
+$server = Get-AzureRmSqlServer -ServerName $serverName -ResourceGroupName $resourceGroup
 
-#$resourceGroupName = "{resource-group-name}"
-#$serverName = "{server-name}"
-$serverLocation = (Get-AzureRmSqlServer -ServerName $serverName -ResourceGroupName $resourceGroupName).Location
-$recoveryServiceVaultName = "{new-vault-name}"
+# create LTR policy with WeeklyRetention = 12 weeks. MonthlyRetention and YearlyRetention = 0 by default.
+Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -DatabaseName $dbName -ResourceGroupName $resourceGroup -WeeklyRetention P12W 
 
-$vault = New-AzureRmRecoveryServicesVault -Name $recoveryServiceVaultName -ResourceGroupName $ResourceGroupName -Location $serverLocation 
-Set-AzureRmRecoveryServicesBackupProperties -BackupStorageRedundancy LocallyRedundant -Vault $vault
+# create LTR policy with WeeklyRetention = 12 weeks, YearlyRetetion = 5 years and WeekOfYear = 16 (week of April 15). MonthlyRetention = 0 by default.
+Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -DatabaseName $dbName -ResourceGroupName $resourceGroup -WeeklyRetention P12W -YearlyRetention P5Y -WeekOfYear 16
 ```
 
-### <a name="set-your-server-to-use-the-recovery-vault-for-its-long-term-retention-backups"></a>A kiszolgáló, a hosszú távú megőrzési biztonsági mentést a recovery-tároló használandó beállítása
+### <a name="view-ltr-policies"></a>Nézet balról jobbra házirendek
+A példa bemutatja, hogyan listázhat belül a kiszolgáló a balról jobbra házirendek
 
-Használja a [Set-AzureRmSqlServerBackupLongTermRetentionVault](/powershell/module/azurerm.sql/set-azurermsqlserverbackuplongtermretentionvault) parancsmag használatával rendelje hozzá a korábban létrehozott recovery services-tároló egy adott Azure SQL-kiszolgálóra.
+```powershell
+# Get all LTR policies within a server
+$ltrPolicies = Get-AzureRmSqlDatabase -ResourceGroupName Default-SQL-WestCentralUS -ServerName trgrie-ltr-server | Get-AzureRmSqlDatabaseLongTermRetentionPolicy -Current 
 
-```PowerShell
-# Set your server to use the vault to for long-term backup retention 
-
-Set-AzureRmSqlServerBackupLongTermRetentionVault -ResourceGroupName $resourceGroupName -ServerName $serverName -ResourceId $vault.Id
+# Get the LTR policy of a specific database 
+$ltrPolicies = Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -DatabaseName $dbName  -ResourceGroupName $resourceGroup -Current
 ```
 
-### <a name="create-a-retention-policy"></a>Adatmegőrzési házirend létrehozása
+### <a name="view-ltr-backups"></a>Biztonsági másolatok megtekintése balról jobbra
 
-Az adatmegőrzési házirendben állítható be, hogy milyen hosszan kívánja megtartani az adatbázis biztonsági másolatát. Használja a [Get-AzureRmRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/get-azurermrecoveryservicesbackupretentionpolicyobject) parancsmagot, hogy megkapja az alapértelmezett megőrzési házirend szabályzatok létrehozására a sablont használni. A sablonban a megőrzési időtartam 2 év van beállítva. Ezután futtassa a [New-AzureRmRecoveryServicesBackupProtectionPolicy](/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy) végül a szabályzat létrehozásához. 
+Ez a példa bemutatja, hogyan belül a kiszolgáló a balról jobbra biztonsági másolatok felsorolása. 
 
-> [!NOTE]
-> Néhány parancsmaggal szükséges, hogy megadta-e a tárolóban helyi futtatása előtt ([Set-AzureRmRecoveryServicesVaultContext](/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)), ez a parancsmag a néhány kapcsolódó kódtöredékek látja. A környezetben, be, mert a házirend a tároló része. Minden egyes tárolóhoz több adatmegőrzési házirendet is létrehozhat, majd az adott adatbázisokra a kívánt házirendet alkalmazhatja. 
+```powershell
+# Get the list of all LTR backups in a specific Azure region 
+# The backups are grouped by the logical database id.
+# Within each group they are ordered by the timestamp, the earliest
+# backup first.  
+$ltrBackups = Get-AzureRmSqlDatabaseLongTermRetentionBackup -LocationName $server.Location 
 
+# Get the list of LTR backups from the Azure region under 
+# the named server. 
+$ltrBackups = Get-AzureRmSqlDatabaseLongTermRetentionBackup -LocationName $server.Location -ServerName $serverName
 
-```PowerShell
-# Retrieve the default retention policy for the AzureSQLDatabase workload type
-$retentionPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureSQLDatabase
+# Get the LTR backups for a specific database from the Azure region under the named server 
+$ltrBackups = Get-AzureRmSqlDatabaseLongTermRetentionBackup -LocationName $server.Location -ServerName $serverName -DatabaseName $dbName
 
-# Set the retention value to two years (you can set to any time between 1 week and 10 years)
-$retentionPolicy.RetentionDurationType = "Years"
-$retentionPolicy.RetentionCount = 2
-$retentionPolicyName = "my2YearRetentionPolicy"
+# List LTR backups only from live databases (you have option to choose All/Live/Deleted)
+$ltrBackups = Get-AzureRmSqlDatabaseLongTermRetentionBackup -LocationName $server.Location -DatabaseState Live
 
-# Set the vault context to the vault you are creating the policy for
-Set-AzureRmRecoveryServicesVaultContext -Vault $vault
-
-# Create the new policy
-$policy = New-AzureRmRecoveryServicesBackupProtectionPolicy -name $retentionPolicyName -WorkloadType AzureSQLDatabase -retentionPolicy $retentionPolicy
-$policy
+# Only list the latest LTR backup for each database 
+$ltrBackups = Get-AzureRmSqlDatabaseLongTermRetentionBackup -LocationName $server.Location -ServerName $serverName -OnlyLatestPerDatabase
 ```
 
-### <a name="configure-a-database-to-use-the-previously-defined-retention-policy"></a>Adatbázis konfigurálása a korábban meghatározott adatmegőrzési házirend használatára
+### <a name="delete-ltr-backups"></a>Balról jobbra biztonsági másolatok törlése
 
-Használja a [Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy](/powershell/module/azurerm.sql/set-azurermsqldatabasebackuplongtermretentionpolicy) parancsmagot, hogy az új házirend vonatkozik egy adott adatbázist.
+Ez a példa bemutatja egy balról jobbra törlése a listából, a biztonsági mentések biztonsági mentés.
 
-```PowerShell
-# Enable long-term retention for a specific SQL database
-$policyState = "enabled"
-Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName -State $policyState -ResourceId $policy.Id
+```powershell
+# remove the earliest backup 
+$ltrBackup = $ltrBackups[0]
+Remove-AzureRmSqlDatabaseLongTermRetentionBackup -ResourceId $ltrBackup.ResourceId
 ```
 
-### <a name="view-backup-info-and-backups-in-long-term-retention"></a>Biztonsági másolatok és adataik megtekintése hosszú távú megőrzés alatt
+### <a name="restore-from-ltr-backups"></a>Állítsa vissza biztonsági másolatból balról jobbra
+Ez a példa bemutatja, hogyan egy balról jobbra biztonsági másolatból történő visszaállítását. Megjegyzés: Ez az interfész nem változott, de az erőforrás-azonosító paraméter megköveteli a balról jobbra biztonsági mentési erőforrás-azonosító. 
 
-Tekintse meg az adatbázis a biztonsági másolatok [hosszú távú biztonsági másolatok megőrzésének](sql-database-long-term-retention.md). 
-
-Biztonsági információk megtekintéséhez használja a következő parancsmagokat:
-
-- [Get-AzureRmRecoveryServicesBackupContainer](/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer)
-- [Get-AzureRmRecoveryServicesBackupItem](/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupitem)
-- [Get-AzureRmRecoveryServicesBackupRecoveryPoint](/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackuprecoverypoint)
-
-```PowerShell
-#$resourceGroupName = "{resource-group-name}"
-#$serverName = "{server-name}"
-$databaseNeedingRestore = $databaseName
-
-# Set the vault context to the vault we want to restore from
-#$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName
-Set-AzureRmRecoveryServicesVaultContext -Vault $vault
-
-# the following commands find the container associated with the server 'myserver' under resource group 'myresourcegroup'
-$container = Get-AzureRmRecoveryServicesBackupContainer -ContainerType AzureSQL -FriendlyName $vault.Name
-
-# Get the long-term retention metadata associated with a specific database
-$item = Get-AzureRmRecoveryServicesBackupItem -Container $container -WorkloadType AzureSQLDatabase -Name $databaseNeedingRestore
-
-# Get all available backups for the previously indicated database
-# Optionally, set the -StartDate and -EndDate parameters to return backups within a specific time period
-$availableBackups = Get-AzureRmRecoveryServicesBackupRecoveryPoint -Item $item
-$availableBackups
+```powershell
+# Restore LTR backup as an S3 database
+Restore-AzureRmSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.ResourceId -ServerName $serverName -ResourceGroupName $resourceGroup -TargetDatabaseName $dbName -ServiceObjectiveName S3
 ```
-
-### <a name="restore-a-database-from-a-backup-in-long-term-backup-retention"></a>Adatbázis visszaállítása hosszú távú megőrzés alatt álló biztonsági másolatból
-
-A hosszú távú biztonsági mentés megőrzési visszaállítás használja a [visszaállítási-AzureRmSqlDatabase](/powershell/module/azurerm.sql/restore-azurermsqldatabase) parancsmag.
-
-```PowerShell
-# Restore the most recent backup: $availableBackups[0]
-#$resourceGroupName = "{resource-group-name}"
-#$serverName = "{server-name}"
-$restoredDatabaseName = "{new-database-name}"
-$edition = "Basic"
-$performanceLevel = "Basic"
-
-$restoredDb = Restore-AzureRmSqlDatabase -FromLongTermRetentionBackup -ResourceId $availableBackups[0].Id -ResourceGroupName $resourceGroupName `
- -ServerName $serverName -TargetDatabaseName $restoredDatabaseName -Edition $edition -ServiceObjectiveName $performanceLevel
-$restoredDb
-```
-
 
 > [!NOTE]
 > Itt csatlakozhat a visszaállított adatbázis SQL Server Management Studio használatával szükséges feladatok végrehajtásához, például egy bit, az adatok kinyerése a visszaállított adatbázis másolja a már meglévő adatbázist, vagy törölje a meglévő adatbázis, és nevezze át a meglévő adatbázis nevének a visszaállított adatbázis. Lásd: [időponthoz kötött visszaállításra](sql-database-recovery-using-backups.md#point-in-time-restore).
@@ -264,4 +164,3 @@ $restoredDb
 
 - A szolgáltatás által létrehozott automatikus biztonsági másolatokkal kapcsolatos további információkért lásd az [automatikus biztonsági másolatokkal](sql-database-automated-backups.md) foglalkozó témakört.
 - A biztonsági másolatok hosszú távú megőrzésével kapcsolatos további információkért lásd: [biztonsági másolatok hosszú távú megőrzése](sql-database-long-term-retention.md)
-- A biztonsági másolatokból való visszaállítással kapcsolatos további információkért lásd: [visszaállítás biztonsági másolatból](sql-database-recovery-using-backups.md)

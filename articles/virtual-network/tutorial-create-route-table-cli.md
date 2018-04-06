@@ -1,12 +1,13 @@
 ---
 title: Hálózati forgalmat - az Azure parancssori felület |} Microsoft Docs
-description: Útmutató egy útválasztási táblázathoz, az Azure parancssori felület használatával irányítható a hálózati forgalom.
+description: Ebből a cikkből megtudhatja, hogyan hálózati forgalom irányítására egy útválasztási táblázathoz, az Azure parancssori felület használatával.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
+Customer intent: I want to route traffic from one subnet, to a different subnet, through a network virtual appliance.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
@@ -16,24 +17,23 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 871b562fa12b93d1b65e23ca58615d35ef6bb34b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: eb4a28b5a57d7e301e800cd4ad87c56b7c5df6d2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Hálózati forgalom egy útválasztási táblázathoz, az Azure parancssori felület használatával
 
-Az Azure automatikusan útvonalak forgalom alapértelmezés szerint egy virtuális hálózatban található alhálózatok között. A saját Azure felülbírálására útvonalak létrehozása alapértelmezett útválasztási. Képes létrehozni az egyéni útvonalak akkor hasznos, ha például azt szeretné, a hálózati virtuális készülék (NVA) keresztül alhálózatok közötti forgalom irányítására. A cikkben megismerheti, hogyan:
+Az Azure automatikusan útvonalak forgalom alapértelmezés szerint egy virtuális hálózatban található alhálózatok között. A saját Azure felülbírálására útvonalak létrehozása alapértelmezett útválasztási. Képes létrehozni az egyéni útvonalak akkor hasznos, ha például azt szeretné, a hálózati virtuális készülék (NVA) keresztül alhálózatok közötti forgalom irányítására. Ebből a cikkből megismerheti, hogyan:
 
-> [!div class="checklist"]
-> * Hozzon létre egy útválasztási táblázatot
-> * Útvonal létrehozása
-> * Hozzon létre egy virtuális hálózatot, több alhálózattal
-> * Társítson egy útválasztási táblázatot az alhálózathoz
-> * Hozzon létre, amely irányítja a forgalmat NVA
-> * Virtuális gépek (VM) üzembe helyezés különböző alhálózatokon
-> * Irányíthatja a forgalmat a egyik alhálózatról a másikra NVA keresztül
+* Hozzon létre egy útválasztási táblázatot
+* Útvonal létrehozása
+* Hozzon létre egy virtuális hálózatot, több alhálózattal
+* Társítson egy útválasztási táblázatot az alhálózathoz
+* Hozzon létre, amely irányítja a forgalmat NVA
+* Virtuális gépek (VM) üzembe helyezés különböző alhálózatokon
+* Irányíthatja a forgalmat a egyik alhálózatról a másikra NVA keresztül
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -215,7 +215,7 @@ ssh azureuser@<publicIpAddress>
 
 Amikor a rendszer kéri a jelszót, írja be a jelszót, a kiválasztott [virtuális gépek létrehozása](#create-virtual-machines).
 
-A következő paranccsal telepíthető traceroute a *myVmPrivate* VM:
+A következő paranccsal telepítse a nyomkövetést a *myVmPrivate* VM:
 
 ```bash 
 sudo apt-get install traceroute
@@ -242,7 +242,7 @@ A következő parancs segítségével SSH-kapcsolatot a *myVmPublic* virtuális 
 ssh azureuser@myVmPublic
 ```
 
-A következő paranccsal telepíthető traceroute a *myVmPublic* VM:
+A következő paranccsal telepítse a nyomkövetést a *myVmPublic* VM:
 
 ```bash 
 sudo apt-get install traceroute
@@ -275,9 +275,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben létrehozott egy útválasztási táblázatot, és az alhálózathoz társított. Létrehozott egy egyszerű NVA portleképezéseit titkos alhálózathoz nyilvános alhálózatból származó forgalmat. Számos előre konfigurált hálózati funkciókat, például a tűzfal és a WAN-optimalizálást végző NVAs telepítése a [Azure piactér](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking). Az útvonaltáblák üzemi használatra való telepítése előtt javasoljuk, hogy alaposan feltérképezése [az Azure útválasztási](virtual-networks-udr-overview.md), [kezelése az útvonaltáblák](manage-route-table.md), és [Azure korlátozza](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Ebben a cikkben létrehozott egy útválasztási táblázatot, és az alhálózathoz társított. Létrehozott egy egyszerű NVA portleképezéseit titkos alhálózathoz nyilvános alhálózatból származó forgalmat. Számos előre konfigurált hálózati funkciókat, például a tűzfal és a WAN-optimalizálást végző NVAs telepítése a [Azure piactér](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking). Útválasztás kapcsolatos további információkért lásd: [Útválasztás – áttekintés](virtual-networks-udr-overview.md) és [egy útválasztási táblázatot kezelése](manage-route-table.md).
 
-A virtuális hálózaton belül számos Azure-erőforrások telepítése során egyes Azure PaaS szolgáltatások erőforrás nem telepíthető virtuális hálózatba. Továbbra is korlátozzuk néhány Azure PaaS-szolgáltatást csak a virtuális hálózati alhálózat forgalom erőforrásaihoz, ha. A következő oktatóanyag áttekintésével megismerheti, hogyan Azure PaaS erőforrásokhoz való hálózati hozzáférés korlátozása továbblépés.
-
-> [!div class="nextstepaction"]
-> [Hálózati hozzáférés korlátozása PaaS erőforrások](tutorial-restrict-network-access-to-resources-cli.md)
+A virtuális hálózaton belül számos Azure-erőforrások telepítése során egyes Azure PaaS szolgáltatások erőforrás nem telepíthető virtuális hálózatba. Továbbra is korlátozzuk néhány Azure PaaS-szolgáltatást csak a virtuális hálózati alhálózat forgalom erőforrásaihoz, ha. Megtudhatja, hogyan, lásd: [hálózati hozzáférés korlátozása PaaS erőforrások](tutorial-restrict-network-access-to-resources-cli.md).

@@ -1,11 +1,11 @@
 ---
-title: "A Resource Manager módra az Azure parancssori felület parancsait |} Microsoft Docs"
-description: "Az Azure parancssori felület (CLI) parancsok a Resource Manager üzembe helyezési modellel-erőforrások kezeléséhez"
+title: A Resource Manager módra az Azure parancssori felület parancsait |} Microsoft Docs
+description: Az Azure parancssori felület (CLI) parancsok a Resource Manager üzembe helyezési modellel-erőforrások kezeléséhez
 services: virtual-machines-linux,virtual-machines-windows,virtual-network,mobile-services,cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: be37da5b-72fe-41a1-9fa0-8937b69464ec
 ms.service: multiple
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: danlep
-ms.openlocfilehash: 12835039478b71f86b68218442e321b1a5b404a1
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 8a2bae12fae6a1bf8f5ecbdb2ae01dea5260f3cb
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Az Azure parancssori felület parancsait erőforrás-kezelő módban
 Ez a cikk ismerteti a szintaxis és a beállítások létrehozását és kezelését az Azure Resource Manager üzembe helyezési modellel Azure-erőforrások használata általában az Azure parancssori felület (CLI) parancsok. Ezek a parancsok a parancssori felület futtatásával Resource Manager (arm) módban érhető el. Ez nem teljes, és CLI-verziónak előfordulhat, hogy megjelenítése némileg eltérő parancsok vagy paraméterek. Azure-erőforrások és csoportok általános áttekintést, lásd: [Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md).  
@@ -131,7 +131,7 @@ Az Azure-előfizetés adatok az eszköz által a fiókjához.
 
     config set <name> <value>
 
-**Az Azure parancssori felület használatának mód beállítása vagy `arm` vagy`asm`**
+**Az Azure parancssori felület használatának mód beállítása vagy `arm` vagy `asm`**
 
     config mode [options] <modename>
 
@@ -320,7 +320,7 @@ A paraméter beállítások:
 **Virtuális hálózatok kezeléséhez parancsok**
 
     network vnet create [options] <resource-group> <name> <location>
-Virtuális hálózat létrehozása. Az alábbi példa azt newvnet nevű erőforrás csoport myresourcegroup USA nyugati régiója régióban a virtuális hálózat létrehozása.
+Virtuális hálózatot hoz létre. Az alábbi példa azt newvnet nevű erőforrás csoport myresourcegroup USA nyugati régiója régióban a virtuális hálózat létrehozása.
 
     azure network vnet create myresourcegroup newvnet "west us"
     info:    Executing command network vnet create
@@ -968,7 +968,7 @@ A paraméter beállítások:
      -s, --subscription <subscription>      the subscription identifier
 
 <BR>
-    hálózati terheléselosztó-címkészlet törlése [kapcsolók] < erőforráscsoport >< lb-neve ><name>
+    hálózati terheléselosztó-címkészlet törlése [kapcsolók] < erőforráscsoport >< lb-neve > <name>
 
 Eltávolítja a háttér IP-címkészlet tartománya erőforrás terheléselosztóhoz.
 
@@ -1353,7 +1353,7 @@ A paraméter beállítások:
     -g, --resource-group <resource-group>  the name of the resource group
     -s, --subscription <subscription>      the subscription identifier
 <BR>
-    hálózati nyilvános ip-megjelenítése [kapcsolók] < erőforráscsoport ><name>
+    hálózati nyilvános ip-megjelenítése [kapcsolók] < erőforráscsoport > <name>
 
 A nyilvános IP-cím erőforrás egy erőforráscsoportban nyilvános IP-cím tulajdonságainak megjelenítése.
 

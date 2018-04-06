@@ -1,11 +1,11 @@
 ---
-title: "A Linux virtuális gépek Microsoft HPC Pack NAMD |} Microsoft Docs"
-description: "Azure a Microsoft HPC Pack fürt központi telepítése, és futtassa a NAMD szimuláció charmrun több Linux számítási csomóponton"
+title: A Linux virtuális gépek Microsoft HPC Pack NAMD |} Microsoft Docs
+description: Azure a Microsoft HPC Pack fürt központi telepítése, és futtassa a NAMD szimuláció charmrun több Linux számítási csomóponton
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager,hpc-pack
 ms.assetid: 76072c6b-ac35-4729-ba67-0d16f9443bd7
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 10/13/2016
 ms.author: danlep
-ms.openlocfilehash: 0c0b9875b4153edcc0ec0096577d041d394a842f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 61dd49d4bd3183b6b9a78036d6d7d01798e4dc89
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="run-namd-with-microsoft-hpc-pack-on-linux-compute-nodes-in-azure"></a>Az NAMD futtatása a Microsoft HPC Packkal Azure-beli linuxos számítási csomópontokon
 Ez a cikk az Azure virtuális gépeken a Linux nagy teljesítményű számítástechnikai rendszerek (HPC) munkaterhelések futtatásához egy módszert mutat. Itt, állítsa be a [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) -fürtöt az Azure-on Linux számítási csomópontokat, majd futtassa egy [NAMD](http://www.ks.uiuc.edu/Research/namd/) szimuláció alapján számítja ki és jelenítheti meg a nagy biomolekuláris rendszer szerkezetének.  
@@ -228,11 +228,11 @@ Most már készen áll a HPC Cluster Manager NAMD feladat elküldése.
    ![Új HPC-feladat][namd_job]
 5. Az a **feladat részletei** lap **feladat erőforrások**, adja meg, mint erőforrás **csomópont** és állítsa be a **minimális** 3. , három Linux csomópontján futtassa azt a feladatot, és minden fürtcsomópont négy magok.
    
-   ![Feladat erőforrások][job_resources]
+   ![Feladat-erőforrások][job_resources]
 6. Kattintson a **feladatok szerkesztése** a bal oldali navigációs, majd **Hozzáadás** feladat hozzáadása a feladatot.    
 7. Az a **feladat részleteinek és az i/o-átirányítás** lapján állítsa be a következő értékeket:
    
-   * **Parancssori**-
+   * **Parancssor** -
      `/namd2/hpccharmrun.sh ++remote-shell ssh /namd2/namd2 /namd2/namdsample/1-2-sphere/ubq_ws_eq.conf > /namd2/namd2_hpccharmrun.log`
      
      > [!TIP]

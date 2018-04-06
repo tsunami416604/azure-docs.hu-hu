@@ -1,34 +1,33 @@
 ---
-title: "A Power BI Desktop fájlt importálja az Azure Analysis Services |} Microsoft Docs"
-description: "Ismerteti, hogyan importálhatja a Power BI Desktop-fájl (pbix-fájlt) az Azure portál használatával."
+title: A Power BI Desktop fájlt importálja az Azure Analysis Services |} Microsoft Docs
+description: Ismerteti, hogyan importálhatja a Power BI Desktop-fájl (pbix-fájlt) az Azure portál használatával.
 services: analysis-services
-documentationcenter: 
+documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: analysis-services
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 02/26/2018
+ms.date: 04/03/2018
 ms.author: owend
-ms.openlocfilehash: e0be0c69b501d7e93c65bcf23d4dd1b6bfa89caf
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 2ba9bc0e4b9a55312875fe120ee179800aeefb23
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="import-a-power-bi-desktop-file"></a>A Power BI Desktop-fájl importálása
 
 Létrehozhat egy új modell az Azure-AS importálásával egy Power BI Desktop-fájl (pbix-fájlt). Modell metaadatait, a gyorsítótárazott adatokat és adatforrás-kapcsolatok importálása. Jelentések és a képi megjelenítések nincsenek importálva.
 
 **Korlátozások**   
-- A pbix-modell csatlakoztatni kell [Analysis Services támogatott adatforrások](analysis-services-datasource.md) csak. 
+- A pbix-fájlt modellt az Azure SQL Database és az Azure SQL Data Warehouse adatforrások csak csatlakozhat. 
 - A pbix-modell nem lehet élő vagy DirectQuery kapcsolatok. 
-- Ha a helyszíni adatforrások, csatlakozik a pbix-modell egy [helyszíni adatátjáró](analysis-services-gateway.md) az Analysis Services-kiszolgálónak kell konfigurálni.
 - Importálás sikertelen lehet, ha a pbix-fájlt adatmodell Analysis Services nem támogatja a metaadatokat tartalmaz.
 
 ## <a name="to-import-from-pbix"></a>Pbix-fájlt importálása

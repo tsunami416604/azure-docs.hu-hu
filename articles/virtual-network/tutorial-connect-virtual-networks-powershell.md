@@ -17,21 +17,20 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 445baa36f33cbe02b68bdb37406f842932089183
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: HT
+ms.openlocfilehash: 2490b96716519ef749dd1e3a1fbe6846c6b5d999
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-powershell"></a>Virtuális hálózatok csatlakoztatása a virtuális hálózati társviszony-létesítés PowerShell használatával
 
 Kapcsolódás virtuális hálózatok egymástól a virtuális hálózati társviszony-létesítés. Virtuális hálózatok vannak társviszonyban, ha mindkét virtuális hálózat erőforrásainak képesek kommunikálnak egymással, ugyanahhoz késés és a sávszélesség, mintha az erőforrásokat ugyanabban a virtuális hálózatban. Ebből a cikkből megismerheti, hogyan:
 
-> [!div class="checklist"]
-> * Két virtuális hálózatok létrehozása
-> * A virtuális hálózati társviszony-létesítés két virtuális hálózatok csatlakoztatása
-> * Virtuális gép (VM) telepítése minden virtuális hálózathoz
-> * Virtuális gépek közötti kommunikáció
+* Két virtuális hálózatok létrehozása
+* A virtuális hálózati társviszony-létesítés két virtuális hálózatok csatlakoztatása
+* Virtuális gép (VM) telepítése minden virtuális hálózathoz
+* Virtuális gépek közötti kommunikáció
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 

@@ -1,11 +1,11 @@
 ---
-title: "Az elosztott terhelésű készletek MySQL clusterize |} Microsoft Docs"
-description: "Állítson be egy elosztott terhelésű, a magas rendelkezésre állású, a klasszikus üzembe helyezési modellel, az Azure-on Linux MySQL-fürt létrehozása"
+title: Az elosztott terhelésű készletek MySQL clusterize |} Microsoft Docs
+description: Állítson be egy elosztott terhelésű, a magas rendelkezésre állású, a klasszikus üzembe helyezési modellel, az Azure-on Linux MySQL-fürt létrehozása
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: bureado
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: 6c413a16-e9b5-4ffe-a8a3-ae67046bbdf3
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2015
 ms.author: jparrel
-ms.openlocfilehash: 8b39da7b96002e14c7d9a567ddc4f1dbc9d45c60
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e2671def47879e3d4eae000c9084cd458e29b933
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-load-balanced-sets-to-clusterize-mysql-on-linux"></a>Elosztott terhelésű készletek segítségével clusterize MySQL Linux rendszeren
 > [!IMPORTANT]
@@ -335,7 +335,7 @@ A következő korlátozások vonatkoznak:
 
 * A linbit DRBD erőforrás parancsfájl, amely kezeli a DRBD erőforrásként támasztja használja a `drbdadm down` Ha egy csomópont leáll, akkor is, ha a csomópont csak készenléti van folyamatban. Ennek oka nem ideális megoldás az alárendelt fog nem lehet szinkronizálása a DRBD erőforrás fő lekérdezi az írási műveletek során. Ha a fő nem graciously sikertelen, az alárendelt átveheti egy régebbi fájlrendszer állapota. Ez megoldására két lehetséges módja van:
   * Érvényesítési egy `drbdadm up r0` a fürt összes csomópontján keresztül egy helyi (nem clusterized)-figyelő
-  * A linbit DRBD parancsfájl, ügyelve arra, hogy szerkesztési `down` nem hívják meg`/usr/lib/ocf/resource.d/linbit/drbd`
+  * A linbit DRBD parancsfájl, ügyelve arra, hogy szerkesztési `down` nem hívják meg `/usr/lib/ocf/resource.d/linbit/drbd`
 * A load balancer legalább öt másodpercenként kell válaszolnia, így az alkalmazások fürttámogató legyen, és jobban tűrik a timeout kell. Egyéb-architektúrák esetén az-app várólisták és a lekérdezés middlewares, például segíthet is.
 * MySQL hangolása győződjön meg arról, hogy írás kezelhető ütemben történik, és gyorsítótárak tartalmát lemezre memória veszteség minimalizálása érdekében a lehető gyakran szükség.
 * Az írási teljesítmény függő a virtuális gép kapcsolódnak össze a virtuális kapcsolón, mert ez a mechanizmus DRBD használja replikálja az eszközt.

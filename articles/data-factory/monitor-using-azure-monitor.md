@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: 8ab2e7cdc8472be9c0800eea5bef9322b0ed87f2
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 1399455fb727c27e22da8c5525eec87e343d46cc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitor-data-factories-using-azure-monitor"></a>Azure-figyelővel képernyő adat-előállítók  
 Sok áthelyezése alkotórészek összetettek a felhőalapú alkalmazásokhoz. Győződjön meg arról, hogy az alkalmazás marad be adatokat, és megfelelő állapotban fut figyelés nyújt. Emellett segít, hogy ki a lehetséges problémák stave és a múltbeli kiépítettektől eltérő hibakeresést. Figyelési adatok segítségével emellett az alkalmazással kapcsolatos átfogó megismerésében. Ennek az információnak a segítséget nyújtanak az alkalmazások teljesítményének vagy karbantartási követelmények, vagy a, amelyek egyébként kézi beavatkozás műveletek automatizálására.
@@ -31,7 +31,7 @@ Az Azure biztosít alapszintű infrastruktúra metrikák és a naplókat a legt�
 
 * Mentse azokat egy **Tárfiók** naplózási vagy manuális ellenőrzést. A diagnosztikai beállítások használatával megőrzési időtartama (napokban) is megadhat.
 * Adatfolyam-őket **Event Hubs** egy külső szolgáltatás vagy az egyéni elemzési megoldások, például a Power bi szempontjából.
-* Elemezheti őket a **Operations Management Suite (OMS) szolgáltatáshoz**
+* Elemezheti őket a **Naplóelemzési**
 
 A tárolási fiók vagy esemény hub névtér, amely nem ugyanahhoz az előfizetéshez van kibocsátó naplók erőforrásként is használhatja. Konfigurálja a beállítást a felhasználónak kell rendelkeznie mindkét előfizetéshez megfelelő szerepköralapú hozzáférés-vezérlést (RBAC) elérésére.
 
@@ -40,11 +40,11 @@ A tárolási fiók vagy esemény hub névtér, amely nem ugyanahhoz az előfizet
 ### <a name="diagnostic-settings"></a>Diagnosztikai beállítások
 Diagnosztikai naplók nem számítási erőforrások diagnosztikai beállítások használatával vannak konfigurálva. Egy erőforrás-vezérlő diagnosztikai beállításai:
 
-* Ha diagnosztikai naplók küldése (Storage-fiók, az Event Hubs, és/vagy az OMS szolgáltatáshoz).
+* Ha diagnosztikai naplók küldése (Storage-fiók, az Event Hubs, és/vagy Naplóelemzési).
 * Napló kategóriák küldése.
 * Mennyi ideig napló kategóriákhoz rendszer meddig őrizze meg a storage-fiók
 * Egy nulla napos megőrzési azt jelenti, hogy a naplók végtelen tartanak. Ellenkező esetben a értéke lehet bármely 1 és 2147483647 között eltelt napok számát.
-* Ha a megőrzési házirend-beállításokat, de a naplók tárolása a storage-fiók le van tiltva (például csak az Event Hubs vagy OMS vannak jelölve), az adatmegőrzési hatástalan.
+* Ha a megőrzési házirend-beállításokat, de naplók tárolása a storage-fiók le van tiltva (például csak az Event Hubs vagy Naplóelemzési vannak jelölve), az adatmegőrzési hatástalan.
 * Adatmegőrzési alkalmazott napi,, így napi (UTC) szerint naplókat, amelyik most már a megőrzési túl napjától végén házirend törlődnek. Például ha egy nap adatmegőrzési, mai nap kezdetén a napló, a nap előtt tegnap törlése akkor történik meg.
 
 ### <a name="enable-diagnostic-logs-via-rest-apis"></a>Diagnosztikai naplók keresztül REST API-k engedélyezése
@@ -69,7 +69,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
     "properties": {
         "storageAccountId": "/subscriptions/<subID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Storage/storageAccounts/<storageAccountName>",
         "serviceBusRuleId": "/subscriptions/<subID>/resourceGroups/<resourceGroupName>/providers/Microsoft.EventHub/namespaces/<eventHubName>/authorizationrules/RootManageSharedAccessKey",
-        "workspaceId": "/subscriptions/<subID>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<OMSName>",
+        "workspaceId": "/subscriptions/<subID>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<LogAnalyticsName>",
         "metrics": [
         ],
         "logs": [
@@ -123,7 +123,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 ```json
 {
-    "id": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourcegroups/adf/providers/microsoft.datafactory/factories/shloadobetest2/providers/microsoft.insights/diagnosticSettings/service",
+    "id": "/subscriptions/<subID>/resourcegroups/adf/providers/microsoft.datafactory/factories/shloadobetest2/providers/microsoft.insights/diagnosticSettings/service",
     "type": null,
     "name": "service",
     "location": null,
@@ -132,7 +132,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
     "properties": {
         "storageAccountId": "/subscriptions/<subID>/resourceGroups/<resourceGroupName>//providers/Microsoft.Storage/storageAccounts/<storageAccountName>",
         "serviceBusRuleId": "/subscriptions/<subID>/resourceGroups/<resourceGroupName>//providers/Microsoft.EventHub/namespaces/<eventHubName>/authorizationrules/RootManageSharedAccessKey",
-        "workspaceId": "/subscriptions/<subID>/resourceGroups/<resourceGroupName>//providers/Microsoft.OperationalInsights/workspaces/<OMSName>",
+        "workspaceId": "/subscriptions/<subID>/resourceGroups/<resourceGroupName>//providers/Microsoft.OperationalInsights/workspaces/<LogAnalyticsName>",
         "eventHubAuthorizationRuleId": null,
         "eventHubName": null,
         "metrics": [],
@@ -187,16 +187,16 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 ```json
 {
-    "id": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourcegroups/adf/providers/microsoft.datafactory/factories/shloadobetest2/providers/microsoft.insights/diagnosticSettings/service",
+    "id": "/subscriptions/<subID>/resourcegroups/adf/providers/microsoft.datafactory/factories/shloadobetest2/providers/microsoft.insights/diagnosticSettings/service",
     "type": null,
     "name": "service",
     "location": null,
     "kind": null,
     "tags": null,
     "properties": {
-        "storageAccountId": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/shloprivate/providers/Microsoft.Storage/storageAccounts/azmonlogs",
-        "serviceBusRuleId": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/shloprivate/providers/Microsoft.EventHub/namespaces/shloeventhub/authorizationrules/RootManageSharedAccessKey",
-        "workspaceId": "/subscriptions/0ee78edb-a0ad-456c-a0a2-901bf542c102/resourceGroups/ADF/providers/Microsoft.OperationalInsights/workspaces/mihaipie",
+        "storageAccountId": "/subscriptions/<subID>/resourceGroups/shloprivate/providers/Microsoft.Storage/storageAccounts/azmonlogs",
+        "serviceBusRuleId": "/subscriptions/<subID>/resourceGroups/shloprivate/providers/Microsoft.EventHub/namespaces/shloeventhub/authorizationrules/RootManageSharedAccessKey",
+        "workspaceId": "/subscriptions/<subID>/resourceGroups/ADF/providers/Microsoft.OperationalInsights/workspaces/mihaipie",
         "eventHubAuthorizationRuleId": null,
         "eventHubName": null,
         "metrics": [],
@@ -230,7 +230,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
     "identity": null
 }
 ```
-További információ az itt] ()https://msdn.microsoft.com/en-us/library/azure/dn931932.aspx)
+[További információk itt](https://msdn.microsoft.com/en-us/library/azure/dn931932.aspx)
 
 ## <a name="schema-of-logs--events"></a>A naplók és események séma
 

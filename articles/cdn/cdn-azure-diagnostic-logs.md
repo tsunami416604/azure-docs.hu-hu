@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: v-deasim
-ms.openlocfilehash: f9711f9cfaab1ef22da220a773689c95b1103970
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9c61fe7c62f0718d390509d3b0ff3327bd193f43
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-diagnostic-logs"></a>Azure diagnosztikai naplók
 
@@ -26,7 +26,7 @@ Az Azure diagnosztikai naplók egyszerűsített analitika tekintheti meg és men
 
  - Azure Storage-fiók
  - Azure Event Hubs
- - [A Naplóelemzési OMS-tárház](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
+ - [A Naplóelemzési munkaterület](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
  
 Ez a szolgáltatás az összes CDN-végpontok Verizon (Standard és prémium) és a CDN-profilra Akamai (általános) tartozó érhető el. 
 
@@ -34,7 +34,7 @@ Az Azure diagnosztikai naplóihoz alapvető a szoftverhasználati mérési adato
 
 - A blob-tároló, Exportálás CSV-FÁJLBA és diagramjait létrehozása az Excel adatok exportálása.
 - Adatok exportálása az Event Hubs, és más Azure-szolgáltatásokkal együtt összefüggéseket.
-- Exportálhatja az adatokat a analytics naplózása, és a saját OMS-munkaterület adatainak megtekintéséhez
+- Exportálhatja az adatokat a analytics naplózása, és a saját Naplóelemzési munkaterület adatainak megtekintéséhez
 
 Az alábbi ábrán egy tipikus CDN core analytics adatok nézetét.
 
@@ -68,9 +68,9 @@ Jelentkezzen be az [Azure Portalra](http://portal.azure.com). Ha már nincs enge
 
 *2. ábra – az Azure Storage-naplózás*
 
-### <a name="logging-with-oms-log-analytics"></a>Az OMS szolgáltatáshoz naplózása
+### <a name="logging-with-log-analytics"></a>A Naplóelemzési naplózás
 
-A naplók tárolásához OMS Naplóelemzési használatához kövesse az alábbi lépéseket:
+A naplók tárolásához Naplóelemzési használatához kövesse az alábbi lépéseket:
 
 1. Az a **diagnosztikai naplók** panelen válassza **küldeni a Naplóelemzési**. 
 
@@ -84,7 +84,7 @@ A naplók tárolásához OMS Naplóelemzési használatához kövesse az alábbi
 
     ![portál – diagnosztikai naplók](./media/cdn-diagnostics-log/07_Create-new.png)
 
-4. Adjon meg egy új OMS-munkaterület nevét. Az OMS-munkaterület nevét kell egyedinek lennie, és csak betűket, számokat és kötőjeleket tartalmazhat; szóközöket és aláhúzásjeleket tartalmazhat nem engedélyezettek. 
+4. Adjon meg egy új Naplóelemzési munkaterület nevet. A Naplóelemzési munkaterület nevét kell egyedinek lennie, és csak betűket, számokat és kötőjeleket tartalmazhat; szóközöket és aláhúzásjeleket tartalmazhat nem engedélyezettek. 
 5. Ezután válassza ki egy meglévő előfizetés, a erőforráscsoport (új vagy meglévő), a hely és a tarifacsomagot. Akkor is ezt a konfigurációt az irányítópulton való rögzítéshez lehetőséget. Kattintson a **OK** a konfigurálás befejezéséhez.
 
     ![portál – diagnosztikai naplók](./media/cdn-diagnostics-log/08_Workspace-resource.png)
@@ -97,11 +97,11 @@ A naplók tárolásához OMS Naplóelemzési használatához kövesse az alábbi
 
 6. Kattintson a **Save** (Mentés) gombra.
 
-7. Az új OMS-munkaterület megtekintéséhez nyissa meg az Azure portál Irányítópultjára, majd kattintson a naplóelemzési munkaterület nevét. Kattintson az OMS-portálon csempe a munkaterület megtekintése az OMS-tárházban. 
+7. Az új Naplóelemzési munkaterület megtekintéséhez nyissa meg az Azure portál Irányítópultjára, majd kattintson a naplóelemzési munkaterület nevét. Kattintson az OMS-portálon csempe a Naplóelemzési munkaterület megtekintéséhez. 
 
     ![portál – diagnosztikai naplók](./media/cdn-diagnostics-log/11_OMS-dashboard.png) 
 
-    Az OMS-tárház adatokat naplózhatnak készen áll. Adatok felhasználásához, használjon egy [OMS megoldás](#consuming-oms-log-analytics-data), az érintett a cikk későbbi részében.
+    A Naplóelemzési munkaterület adatokat naplózhatnak készen áll. Adatok felhasználásához, használjon egy [napló elemzési megoldások](#consuming-diagnostics-logs-from-a-log-analytics-workspace), az érintett a cikk későbbi részében.
 
 Naplózási adatok késések kapcsolatos további információkért lásd: [adatok késések jelentkezzen](#log-data-delays).
 
@@ -123,7 +123,7 @@ Engedélyezze a diagnosztikai naplók, a Tárfiók használja ezt a parancsot:
 ```powershell
     Set-AzureRmDiagnosticSetting -ResourceId "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}" -StorageAccountId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicStorage/storageAccounts/{storageAccountName}" -Enabled $true -Categories CoreAnalytics
 ```
-Engedélyezése diagnosztikai naplófájlok az OMS-munkaterület használja ezt a parancsot:
+Engedélyezése diagnosztikai naplókat a Naplóelemzési munkaterület használja ezt a parancsot:
 
 ```powershell
     Set-AzureRmDiagnosticSetting -ResourceId "/subscriptions/`{subscriptionId}<subscriptionId>
@@ -179,16 +179,16 @@ Ez az eszköz használatát:
 4.  Futtassa az eszközt.
 5.  Az eredményül kapott CSV-fájl egy egyszerű strukturálatlan hierarchia analytics adatainak megjelenítése.
 
-## <a name="consuming-diagnostics-logs-from-an-oms-log-analytics-repository"></a>Diagnosztikai naplók az OMS szolgáltatáshoz tárházból felhasználása
-A Naplóelemzési egy olyan szolgáltatás, az Operations Management Suite (OMS), amely figyeli a felhőalapú és helyszíni környezetek karbantartásához azok rendelkezésre állását és teljesítményét. A felhőben és a helyszíni környezetben található erőforrások által létrehozott, valamint egyéb figyelési eszközök által biztosított adatokat gyűjtésével biztosítsa elemzést több forráson. 
+## <a name="consuming-diagnostics-logs-from-a-log-analytics-workspace"></a>A Naplóelemzési munkaterület a diagnosztikai naplók felhasználása
+A Log Analytics az Azure egy szolgáltatása, amely figyeli a felhőbeli és helyszíni környezeteket a rendelkezésre állásuk és teljesítményük fenntartása érdekében. A felhőben és a helyszíni környezetben található erőforrások által létrehozott, valamint egyéb figyelési eszközök által biztosított adatokat gyűjtésével biztosítsa elemzést több forráson. 
 
-Naplóelemzési használandó kell [naplózását](#enable-logging-with-azure-storage) Azure OMS Log Analytics-tárházba, amely tárgyalt az ebben a cikkben.
+Naplóelemzési használandó kell [naplózását](#enable-logging-with-azure-storage) az Azure Naplóelemzés munkaterületet, amely tárgyalt az ebben a cikkben.
 
-### <a name="using-the-oms-repository"></a>Az OMS-tárház használatával
+### <a name="using-the-log-analytics-workspace"></a>A Naplóelemzési munkaterület használata
 
  Az alábbi ábrán látható, a tárház kimenetek és a bemenetek architektúrája:
 
-![OMS napló Analytics tárház](./media/cdn-diagnostics-log/12_Repo-overview.png)
+![Log Analytics-munkaterület](./media/cdn-diagnostics-log/12_Repo-overview.png)
 
 *3. ábra - napló Analytics tárház*
 
@@ -196,7 +196,7 @@ Az sokféleképpen megoldások használatával megjelenítheti az adatokat. Ezt 
 
 Telepíthető megoldások Azure piactérről kattintva a **most töltse le innen** hivatkozás az egyes megoldások alján.
 
-### <a name="adding-an-oms-cdn-management-solution"></a>Egy OMS CDN-felügyeleti megoldás hozzáadása
+### <a name="adding-a-log-analytics-cdn-management-solution"></a>A napló Analytics CDN-kezelési megoldás hozzáadása
 
 Kövesse az alábbi lépéseket a felügyeleti megoldás hozzáadása:
 
@@ -219,7 +219,7 @@ Kövesse az alábbi lépéseket a felügyeleti megoldás hozzáadása:
 
     ![Az összes megtekintése](./media/cdn-diagnostics-log/17_Core-analytics.png)
 
-6.  Miután rákattintott **létrehozása**, kérni fog egy új OMS-munkaterület létrehozása, vagy használjon egy meglévőt. 
+6.  Miután rákattintott **létrehozása**, kérni fogja az új Naplóelemzési munkaterület létrehozása, vagy használjon egy meglévőt. 
 
     ![Az összes megtekintése](./media/cdn-diagnostics-log/18_Adding-solution.png)
 
@@ -241,11 +241,11 @@ Kövesse az alábbi lépéseket a felügyeleti megoldás hozzáadása:
 
     Kattintson a Naplóelemzési munkaterület létrehozott nyissa meg a munkaterületet. 
 
-11. Kattintson a **OMS-portálon** csempe megtekintéséhez az új megoldás az OMS-portálon.
+11. Kattintson a **OMS-portálon** csempe az új megoldás megtekintéséhez.
 
     ![Az összes megtekintése](./media/cdn-diagnostics-log/23_workspace.png)
 
-12. Az OMS-portálon mostantól a következő képernyő hasonlóan kell kinéznie:
+12. A portál most már a következő képernyő hasonlóan kell kinéznie:
 
     ![Az összes megtekintése](./media/cdn-diagnostics-log/24_OMS-solution.png)
 
@@ -261,11 +261,11 @@ Kövesse az alábbi lépéseket a felügyeleti megoldás hozzáadása:
 
 ### <a name="offers-and-pricing-tiers"></a>Ajánlatok és tarifacsomagok
 
-Ajánlatok és az OMS-kezelési megoldások tarifacsomagok [Itt](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers).
+Ajánlatok és a felügyeleti megoldásokra tarifacsomagok [Itt](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers).
 
 ### <a name="customizing-views"></a>Nézetek testreszabása
 
-Testre szabhatja a nézet a adatokká használatával a **adatforrásnézet-tervezőből**. Megtervezésének első lépésként nyissa meg az OMS-munkaterület, és kattintson a **adatforrásnézet-tervezőből** csempére.
+Testre szabhatja a nézet a adatokká használatával a **adatforrásnézet-tervezőből**. Megtervezésének első lépésként nyissa meg a Naplóelemzési munkaterületet, és kattintson a **adatforrásnézet-tervezőből** csempére.
 
 ![Nézettervező](./media/cdn-diagnostics-log/27_Designer.png)
 
@@ -410,7 +410,7 @@ Példa tulajdonságai:
 
 * [Az Azure diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [Egyszerűsített analitika Azure CDN kiegészítő portálon keresztül](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
-* [Az Azure OMS szolgáltatáshoz](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
+* [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
 * [Az Azure Naplóelemzés REST API-n](https://docs.microsoft.com/rest/api/loganalytics)
 
 

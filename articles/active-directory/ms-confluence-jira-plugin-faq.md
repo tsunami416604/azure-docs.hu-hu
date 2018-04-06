@@ -1,6 +1,6 @@
 ---
-title: "A Microsoft Azure Active Directory egyszeri bejelentkezés beépülő modul – gyakori kérdések |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Microsoft Azure Active Directory egyszeri bejelentkezésre vonatkozó JIRA között."
+title: Gyakori kérdések az Azure Active Directory-alapú Egyszeri beépülő modul |} Microsoft Docs
+description: Egyszeri bejelentkezés Azure Active Directory és Jira/való összefolyás felett beállításával kapcsolatos gyakori kérdésekre adott válaszok.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,70 +14,68 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2018
 ms.author: jeedes
-ms.openlocfilehash: 571fbd5078f66375f6e81cba2a790121366f9d60
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b642d6de9fd9265d7f7ee11b827a36d20e5bcce7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="microsoft-azure-active-directory-single-sign-on-plugin-faq"></a>A Microsoft Azure Active Directory egyszeri bejelentkezés beépülő modul – gyakori kérdések 
+# <a name="faq-for-the-azure-active-directory-sso-plug-in"></a>Gyakori kérdések az Azure Active Directory-alapú Egyszeri beépülő modul 
 
-## <a name="1-whats-the-microsoft-sso-add-on"></a>1. Újdonságok a Microsoft SSO bővítményt?
+## <a name="what-does-the-plug-in-do"></a>A beépülő modul ne funkciója?
 
-Ez a bővítmény lehetővé teszi az egyszeri bejelentkezés Atlassian meg (beleértve a JIRA mag, JIRA szoftver, JIRA ügyfélszolgálatához) JIRA és való összefolyás felett helyi szoftverek. Azure AD szolgáltatásba IdP bővítmény működik.
+A beépülő modul lehetővé teszi az egyszeri bejelentkezés (SSO) (beleértve a Jira mag, Jira szoftver, Jira ügyfélszolgálatához) Atlassian Jira és való összefolyás felett helyszíni szoftver. Azure Active Directory (Azure AD), az identitásszolgáltató (IdP) beépülő modul együttműködik.
 
-## <a name="2-add-on-works-with-which-atlassian-products"></a>2. Bővítmény Atlassian termékek működik?
+## <a name="which-atlassian-products-does-the-plug-in-work-with"></a>Atlassian termékek használ a beépülő modul használata?
 
-Mostantól a bővítmény JIRA és való összefolyás felett helyi változatának működik.
+A beépülő modul működését Jira és való összefolyás felett helyszíni verzióival.
 
-## <a name="3-does-this-add-on-work-on-cloud-version"></a>3. Ez a bővítmény felhő verziójával működik?
+## <a name="does-the-plug-in-work-on-cloud-versions"></a>A beépülő modul munkahelyi felhő verzióin működik?
 
-Nem. Csak JIRA és való összefolyás felett helyi verziói támogatottak.
+Nem. A beépülő modul támogatja csak a helyszíni Jira és való összefolyás felett.
 
-## <a name="4-which-versions-of-jira-and-confluence-are-supported"></a>4. JIRA és való összefolyás felett mely verziói támogatottak?
+## <a name="which-versions-of-jira-and-confluence-does-the-plug-in-support"></a>Mely verzióit Jira és való összefolyás felett a beépülő modul támogatási használ?
 
-Az alábbiakban a támogatott verziók listáját a következő:
+A beépülő modul alábbi verzióit támogatja:
 
-* JIRA Core és a szoftver: 6.0 való 7.2.2. 
-* JIRA Service Desk: 3.0 to 3.2 
+* Jira Core és a szoftver: 6.0 való 7.2.2. 
+* Jira ügyfélszolgálatához: 3.0 3.2 
 * Való összefolyás felett: 5.0 5.10
 
-## <a name="5-is-this-add-on-free-or-paid"></a>5. A bővítmény ingyenes vagy fizetve van?
+## <a name="is-the-plug-in-free-or-paid"></a>A beépülő modult szabad vagy fizetős?
 
-Ez egy szabad bővítményt, és Atlassian piactéren is telepíthető.
+Egy ingyenes bővítmény. Telepítheti a Atlassian piactérről.
 
-## <a name="6-do-i-need-to-restart-jiraconfluence-once-i-deploy-the-add-on"></a>6. Kell JIRA/való összefolyás felett újraindítása után történik meg a bővítmény telepítése
+## <a name="do-i-need-to-restart-jira-or-confluence-after-i-deploy-the-plug-in"></a>Kell Jira vagy való összefolyás felett történik meg a beépülő modul telepítése után indítsa újra?
 
-Újraindítás nem szükséges post bővítmény telepítése. A bővítmény használatával a telepítés után azonnal elindíthatja.
+Nincs szükség újraindításra. A beépülő modult használó azonnal elindíthatja.
 
-## <a name="7-how-do-i-get-support-for-the-add-on"></a>7. Hogyan kérhet támogatást a bővítményhez?
+## <a name="how-do-i-get-support-for-the-plug-in"></a>Hogyan kérhet támogatást a beépülő modul?
 
-Kapcsolatba velünk a: <email> . A Microsoft <> órán belül válaszol. Az Azure portál csatornán keresztül a Microsoft támogatási jegy is is növelheti. Ön is meghívhatja nekünk a: <Number> közötti <> vagyok a <> létrehozását-kor.
+Kapcsolatfelvétel a [Azure AD SSO integrációs csoport](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). A csapat változásokhoz 24-48 üzleti órában. 
 
-## <a name="8-would-this-add-on-work-on-mac-or-ubuntu-installation-of-jira-and-confluence"></a>8. Ez a bővítmény JIRA és való összefolyás felett Mac vagy Ubuntu telepítése a csatlakoztatás működik?
+Az Azure portál csatornán keresztül a Microsoft támogatási jegy is is növelheti.
 
-Ez a bővítmény csak a 64 bites Windows server-telepítéseket JIRA és való összefolyás felett tesztelése.
+## <a name="would-the-plug-in-work-on-a-mac-or-ubuntu-installation-of-jira-and-confluence"></a>A beépülő modul munkahelyi Jira és való összefolyás felett Mac vagy Ubuntu telepítésen volna?
 
-## <a name="9-does-this-add-on-work-with-other-idps-than-azure-ad"></a>9. Nem használható a bővítmény egyéb IdPs, mint az Azure AD?
+A beépülő modul csak a 64 bites Windows Server-példányok Jira és való összefolyás felett tesztelése.
 
-Nem. Bővítmény csak az Azure ad szolgáltatással működik.
+## <a name="does-the-plug-in-work-with-idps-other-than-azure-ad"></a>Az Azure AD eltérő IdPs a beépülő modul használata nem?
 
-## <a name="10-what-version-of-saml-does-the-add-on-work-with"></a>10. SAML verziójának a bővítmény működik?
+Nem. Csak az Azure ad szolgáltatással működik.
 
-Bővítmény SAML 2.0 működik.
+## <a name="what-version-of-saml-does-the-plug-in-work-with"></a>Az SAML milyen verziója nem a beépülő modul használata?
 
-## <a name="11-does-the-add-on-do-use-provisioning-as-well"></a>11. A bővítmény is kiosztás használata biztosítja?
+A SAML 2.0 működik.
 
-Nem. Mostantól bővítményt biztosít, csak a SAML 2.0 SSO alapján. Felhasználó rendelkezik-e úgy kell létrehozni, az Egyszeri bejelentkezés előtt az alkalmazásban.
+## <a name="does-the-plug-in-do-user-provisioning"></a>A beépülő modul feladata a felhasználók átadása?
 
-## <a name="12-are-cluster-versions-of-jira-and-confluence-supported-by-add-on"></a>12. Fürt verziója JIRA és a bővítmény által támogatott való összefolyás felett van?
+Nem. A beépülő modul csak SAML 2.0-alapú egyszeri Bejelentkezést biztosít. A felhasználó rendelkezik-e úgy kell létrehozni, az Egyszeri bejelentkezés előtt az alkalmazásban.
 
-Nem. A bővítmény JIRA és való összefolyás felett helyi változatának működik.
+## <a name="does-the-plug-in-support-cluster-versions-of-jira-and-confluence"></a>A beépülő modul támogatási fürt Jira és verziói való összefolyás felett használ?
 
-## <a name="13-would-this-plugin-work-with-http-version-of-jira-and-confluence"></a>13. A beépülő modul JIRA és való összefolyás felett HTTP verziójával csatlakoztatás működik?
+Nem. A beépülő modul működését Jira és való összefolyás felett helyszíni verzióival.
 
-Nem. A bővítmény működik, a HTTPS csak telepítés engedélyezve van.
+## <a name="does-the-plug-in-work-with-http-versions-of-jira-and-confluence"></a>A beépülő modul használata Jira és való összefolyás felett HTTP verziója nem?
 
-## <a name="14-do-i-need-to-buy-license-of-the-add-on"></a>14. Kell vásárolnia a licencet a bővítmény?
-
-Egy ingyenes bővítmény.
+Nem. A beépülő modul csak a HTTPS használatára konfigurált rendszerek együttműködik.

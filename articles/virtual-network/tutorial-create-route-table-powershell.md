@@ -1,12 +1,13 @@
 ---
-title: Hálózati forgalmat - az Azure PowerShell |} Microsoft Docs
-description: Útmutató a hálózati forgalom irányításához egy PowerShell-lel útválasztási táblázathoz.
+title: Irányítható a hálózati forgalom Azure PowerShell |} Microsoft Docs
+description: Ebből a cikkből megtudhatja, hogyan hálózati forgalom irányítására egy PowerShell-lel útválasztási táblázathoz.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
+Customer intent: I want to route traffic from one subnet, to a different subnet, through a network virtual appliance.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
@@ -16,24 +17,23 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: f7be6aa58c6779150d3e79893e6e179d08611567
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f6f3bd2a9683daf5f523cc5cfe43e568fb508694
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="route-network-traffic-with-a-route-table-using-powershell"></a>Hálózati forgalom egy útválasztási táblázathoz PowerShell használatával
 
-Az Azure automatikusan útvonalak forgalom alapértelmezés szerint egy virtuális hálózatban található alhálózatok között. A saját Azure felülbírálására útvonalak létrehozása alapértelmezett útválasztási. Képes létrehozni az egyéni útvonalak akkor hasznos, ha például azt szeretné, a hálózati virtuális készülék (NVA) keresztül alhálózatok közötti forgalom irányítására. A cikkben megismerheti, hogyan:
+Az Azure automatikusan útvonalak forgalom alapértelmezés szerint egy virtuális hálózatban található alhálózatok között. A saját Azure felülbírálására útvonalak létrehozása alapértelmezett útválasztási. Képes létrehozni az egyéni útvonalak akkor hasznos, ha például azt szeretné, a hálózati virtuális készülék (NVA) keresztül alhálózatok közötti forgalom irányítására. Ebből a cikkből megismerheti, hogyan:
 
-> [!div class="checklist"]
-> * Hozzon létre egy útválasztási táblázatot
-> * Útvonal létrehozása
-> * Hozzon létre egy virtuális hálózatot, több alhálózattal
-> * Társítson egy útválasztási táblázatot az alhálózathoz
-> * Hozzon létre, amely irányítja a forgalmat NVA
-> * Virtuális gépek (VM) üzembe helyezés különböző alhálózatokon
-> * Irányíthatja a forgalmat a egyik alhálózatról a másikra NVA keresztül
+* Hozzon létre egy útválasztási táblázatot
+* Útvonal létrehozása
+* Hozzon létre egy virtuális hálózatot, több alhálózattal
+* Társítson egy útválasztási táblázatot az alhálózathoz
+* Hozzon létre, amely irányítja a forgalmat NVA
+* Virtuális gépek (VM) üzembe helyezés különböző alhálózatokon
+* Irányíthatja a forgalmat a egyik alhálózatról a másikra NVA keresztül
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -239,43 +239,43 @@ Nyissa meg a letöltött RDP-fájlt. Ha a rendszer kéri, válassza ki a **Conne
 
 Adja meg a felhasználónevet és a virtuális gép létrehozásakor a megadott jelszó (válassza ki szeretne **több lehetőséget**, majd **használjon más fiókot**, hogy a virtuális gép létrehozása után a megadott hitelesítő adatok megadása), Válassza ki **OK**. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Válassza ki **Igen** gombra a kapcsolat. 
 
-Egy későbbi lépésben a tracert.exe parancs segítségével útválasztási tesztelése. Tracert használja az Internet Control üzenet Protocol (ICMP), amely a Windows tűzfalon keresztül megtagadva. A következő parancs beírásával a Powershellből engedélyezze az ICMP Protokollt a Windows tűzfalon keresztül:
+Egy későbbi lépésben a tracert.exe parancs segítségével útválasztási tesztelése. Tracert használja az Internet Control üzenet Protocol (ICMP), amely a Windows tűzfalon keresztül megtagadva. A következő parancs beírásával a Powershellből engedélyezze az ICMP Protokollt a Windows tűzfalon keresztül a *myVmPrivate* VM:
 
 ```powershell
-New-NetFirewallRule ???DisplayName ???Allow ICMPv4-In??? ???Protocol ICMPv4
+New-NetFirewallRule -DisplayName "Allow ICMPv4-In" -Protocol ICMPv4
 ```
 
-Bár tracert ebben a cikkben útválasztási tesztelésére szolgál, lehetővé téve az ICMP az üzemi környezetek a Windows tűzfalon keresztül nem ajánlott.
+Bár a nyomkövetést ebben a cikkben útválasztási tesztelésére szolgál, lehetővé téve az ICMP az üzemi környezetek a Windows tűzfalon keresztül nem ajánlott.
 
-Az operációs rendszerben az IP-továbbítás engedélyezése a *myVmNva* a következő lépések végrehajtásával a *myVmPrivate* VM:
+A virtuális hálózati adapter az Azure-ban az IP-továbbítást engedélyezte [engedélyezése IP fowarding](#enable-ip-forwarding). A virtuális Gépen belül az operációs rendszer és az alkalmazások, a virtuális gépen belül is kell tudni továbbítja a hálózati forgalmat. Az operációs rendszerben az IP-továbbítás engedélyezése a *myVmNva*.
 
-A távoli asztal a *myVmNva* a következő parancsot a PowerShell rendelkező virtuális gépet:
+A parancssorból a *myVmPrivate* VM, a távoli asztal a *myVmNva*:
 
 ``` 
 mstsc /v:myvmnva
 ```
     
-Ahhoz, hogy az IP-továbbítás operációs rendszerből, a PowerShellben adja meg a következő parancsot:
+Ahhoz, hogy az IP-továbbítás operációs rendszerből, adja meg a következő parancsot a PowerShell a *myVmNva* VM:
 
 ```powershell
 Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters -Name IpEnableRouter -Value 1
 ```
     
-Indítsa újra a virtuális Gépet, amely a távoli asztali munkamenet is leválasztja.
+Indítsa újra a *myVmNva* is leválasztja a távoli asztali munkamenetben virtuális Gépet.
 
-Miközben továbbra is kapcsolódik a *myVmPrivate* VM, utána a *myVmNva* virtuális gép újraindul, hozzon létre egy távoli asztali munkamenetet a *myVmPublic* virtuális gép és a következő parancsot:
+Közben továbbra is kapcsolódik a *myVmPrivate* VM, hozzon létre egy távoli asztali munkamenetet a *myVmPublic* VM, utána a *myVmNva* virtuális gép újraindul:
 
 ``` 
 mstsc /v:myVmPublic
 ```
     
-A következő parancs beírásával a Powershellből engedélyezze az ICMP Protokollt a Windows tűzfalon keresztül:
+A következő parancs beírásával a Powershellből engedélyezze az ICMP Protokollt a Windows tűzfalon keresztül a *myVmPublic* VM:
 
 ```powershell
-New-NetFirewallRule ???DisplayName ???Allow ICMPv4-In??? ???Protocol ICMPv4
+New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
 ```
 
-A hálózati forgalom tesztelése a *myVmPrivate* virtuális gép a *myVmPublic* VM, adja meg a következő parancsot a PowerShell:
+A hálózati forgalom tesztelése a *myVmPrivate* virtuális gép a *myVmPublic* VM, adja meg a következő parancsot a PowerShell a a *myVmPublic* VM:
 
 ```
 tracert myVmPrivate
@@ -293,10 +293,11 @@ over a maximum of 30 hops:
 Trace complete.
 ```
       
-Láthatja, hogy az első ugrásnál 10.0.2.4, amely a hálózati virtuális készülék magánhálózati IP-cím-e. A kétugrásos 10.0.1.4, a magánhálózati IP-címe a *myVmPrivate* virtuális gép. Az útvonal hozzá a *myRouteTablePublic* útvonaltábla és társított a *nyilvános* alhálózati, hogy a forgalmat az NVA keresztül, és nem közvetlenül az Azure a *saját* alhálózat.
+Láthatja, hogy az első ugrásnál 10.0.2.4, amely az NVA magánhálózati IP-cím-e. A kétugrásos 10.0.1.4, a magánhálózati IP-címe a *myVmPrivate* virtuális gép. Az útvonal hozzá a *myRouteTablePublic* útvonaltábla és társított a *nyilvános* alhálózati, hogy a forgalmat az NVA keresztül, és nem közvetlenül az Azure a *saját* alhálózat.
 
 Zárja be a távoli asztali munkamenetet a *myVmPublic* VM, így Ön továbbra is kapcsolódik a *myVmPrivate* virtuális gép.
-A hálózati forgalom tesztelése a *myVmPublic* virtuális gép a *myVmPrivate* VM, adja meg a következő parancsot a parancssorba:
+
+A hálózati forgalom tesztelése a *myVmPublic* virtuális gép a *myVmPrivate* VM, adja meg a következő parancsot a parancssorba a a *myVmPrivate* VM:
 
 ```
 tracert myVmPublic
@@ -309,7 +310,7 @@ Tracing route to myVmPublic.vpgub4nqnocezhjgurw44dnxrc.bx.internal.cloudapp.net 
 over a maximum of 30 hops:
     
 1     1 ms     1 ms     1 ms  10.0.0.4
-    
+   
 Trace complete.
 ```
 
@@ -327,9 +328,6 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben létrehozott egy útválasztási táblázatot, és az alhálózathoz társított. Létrehozott egy egyszerű hálózati virtuális készülék portleképezéseit titkos alhálózathoz nyilvános alhálózatból származó forgalmat. Hálózati funkciókat, például a tűzfal és a WAN-optimalizálást végző előre konfigurált hálózati virtuális készülékeket különböző központi telepítése a [Azure piactér](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking). Az útvonaltáblák üzemi használatra való telepítése előtt javasoljuk, hogy alaposan feltérképezése [az Azure útválasztási](virtual-networks-udr-overview.md), [kezelése az útvonaltáblák](manage-route-table.md), és [Azure korlátozza](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Ebben a cikkben létrehozott egy útválasztási táblázatot, és az alhálózathoz társított. Létrehozott egy egyszerű hálózati virtuális készülék portleképezéseit titkos alhálózathoz nyilvános alhálózatból származó forgalmat. Hálózati funkciókat, például a tűzfal és a WAN-optimalizálást végző előre konfigurált hálózati virtuális készülékeket különböző központi telepítése a [Azure piactér](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking). Útválasztás kapcsolatos további információkért lásd: [Útválasztás – áttekintés](virtual-networks-udr-overview.md) és [egy útválasztási táblázatot kezelése](manage-route-table.md).
 
-A virtuális hálózaton belül számos Azure-erőforrások telepítése során egyes Azure PaaS szolgáltatások erőforrás nem telepíthető virtuális hálózatba. Továbbra is korlátozzuk néhány Azure PaaS-szolgáltatást csak a virtuális hálózati alhálózat forgalom erőforrásaihoz, ha. A következő oktatóanyag áttekintésével megismerheti, hogyan Azure PaaS erőforrásokhoz való hálózati hozzáférés korlátozása továbblépés.
-
-> [!div class="nextstepaction"]
-> [Hálózati hozzáférés korlátozása PaaS erőforrások](tutorial-restrict-network-access-to-resources-powershell.md)
+A virtuális hálózaton belül számos Azure-erőforrások telepítése során egyes Azure PaaS szolgáltatások erőforrás nem telepíthető virtuális hálózatba. Továbbra is korlátozzuk néhány Azure PaaS-szolgáltatást csak a virtuális hálózati alhálózat forgalom erőforrásaihoz, ha. Megtudhatja, hogyan, lásd: [hálózati hozzáférés korlátozása PaaS erőforrások](tutorial-restrict-network-access-to-resources-powershell.md).

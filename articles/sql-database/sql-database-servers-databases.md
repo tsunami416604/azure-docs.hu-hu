@@ -1,6 +1,6 @@
 ---
-title: "& Kezelése az Azure SQL-kiszolgálók és adatbázisok létrehozása |} Microsoft Docs"
-description: "Tudnivalók Azure SQL Database-kiszolgálóhoz és az adatbázis fogalmait, illetve kapcsolatos kiszolgálók és adatbázisok létrehozására és kezelésére."
+title: '& Kezelése az Azure SQL-kiszolgálók és adatbázisok létrehozása |} Microsoft Docs'
+description: Tudnivalók Azure SQL Database-kiszolgálóhoz és az adatbázis fogalmait, illetve kapcsolatos kiszolgálók és adatbázisok létrehozására és kezelésére.
 services: sql-database
 author: CarlRabeler
 manager: craigg
@@ -9,11 +9,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 2e05be2131ca89a084da5eeffc0b025b38432a8d
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 18f904a2bac70bce3e1208945a7b94b59f6225f7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>Azure SQL Database-kiszolgálók és adatbázisok létrehozása és kezelése
 
@@ -26,7 +26,7 @@ SQL-adatbázis három típusú adatbázisokból kínálja:
 Microsoft Azure SQL Database 7.3 vagy újabb tabulált adatfolyam (TDS) protokoll ügyfél verziója támogatja, és lehetővé teszi, hogy csak a titkosított TCP/IP-kapcsolatokat.
 
 > [!IMPORTANT]
-> SQL adatbázis-felügyelt példány jelenleg a nyilvános előzetes nyújt egy általános célú szolgáltatási rétegben. További információkért lásd: [SQL felügyelt adatbázispéldány](sql-database-managed-instance.md). Ez a cikk fennmaradó kezelt példány nem vonatkozik.
+> SQL adatbázis-felügyelt példány jelenleg a nyilvános előzetes nyújt egy általános célú szolgáltatási rétegben. További információért tekintse meg a [felügyelt SQL Database-példányt](sql-database-managed-instance.md) ismertető cikket. Ez a cikk fennmaradó kezelt példány nem vonatkozik.
 
 ## <a name="what-is-an-azure-sql-logical-server"></a>Mi az az Azure SQL logikai kiszolgálóra?
 
@@ -53,7 +53,7 @@ Az Azure Database logikai kiszolgáló:
 - Egy master adatbázishoz való kapcsolódással hozzáférést biztosít a tárolt erőforrásokra vonatkozó metaadatokhoz a DMV-ken keresztül 
 - Itt a hatókört felügyeleti házirendek, hogy az adatbázis - bejelentkezések vonatkozik, tűzfal, naplózni, a fenyegetés észlelési stb. 
 - A szülő előfizetésen belül a kvóta által korlátozott (alapértelmezés szerint - előfizetésenként hat kiszolgáló [lásd itt korlátozza előfizetés](../azure-subscription-service-limits.md))
-- A hatókör adatbázis kvóta és a DTU-kvótát biztosít az erőforrások (például 45 000 DTU) tartalmaz
+- A hatókör adatbázis kvóta és DTU vagy vCore kvóta biztosít az erőforrások (például 45 000 DTU) tartalmaz
 - Engedélyezve van az abban található erőforrás képességeinek versioning hatóköre 
 - Kiszolgálószintű rendszerbiztonsági tagként bejelentkezve a kiszolgáló minden adatbázisa felügyelhető.
 - Képes az olyan helyszíni SQL Server-példányokhoz hasonló bejelentkezések kezelésére, amelyek a kiszolgáló egy vagy több adatbázisához hozzáféréssel rendelkeznek, és korlátozott rendszergazdai jogosultságokkal ruházhatók fel. További információk: [Bejelentkezések](sql-database-manage-logins.md).
@@ -135,7 +135,7 @@ Létrehozásához és kezeléséhez az Azure SQL server, adatbázisok és a tűz
 |[az sql db lista-verziók](/cli/azure/sql/db#az_sql_db_list_editions)|Listák elérhető szolgáltatási célkitűzések és tárolási korlátai|
 |[az sql db lista-módjait](/cli/azure/sql/db#az_sql_db_list_usages)|Adatbázis-módjait beolvasása|
 |[az sql db megjelenítése](/cli/azure/sql/db#az_sql_db_show)|Egy adatbázis vagy adatraktár beolvasása|
-|[az sql-adatbázis frissítése](/cli/azure/sql/db#az_sql_db_update)|Frissíti az adatbázist|
+|[az sql db update](/cli/azure/sql/db#az_sql_db_update)|Frissíti az adatbázist|
 |[az sql-adatbázis törlése](/cli/azure/sql/db#az_sql_db_delete)|Egy adatbázis eltávolítása|
 |[az group create](/cli/azure/group#az_group_create)|Létrehoz egy erőforráscsoportot|
 |[az sql server create](/cli/azure/sql/server#az_sql_server_create)|A kiszolgáló létrehozása|
@@ -169,7 +169,7 @@ Létrehozása és kezelése az Azure SQL kiszolgáló, adatbázisok és tűzfala
 |[Az ALTER DATABASE (Azure SQL Data Warehouse)](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse)|Egy Azure SQL Data Warehouse módosítja.|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Adatbázis törlése.|
 |[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Egy Azure SQL database vagy az Azure SQL Data Warehouse esetében adja vissza a edition (szolgáltatási réteg), a szolgáltatási cél (IP-címek) és a rugalmas készlet nevét. Ha be van jelentkezve a főadatbázishoz egy Azure SQL adatbázis-kiszolgáló, az összes adatbázis ad vissza adatokat. Az Azure SQL Data Warehouse kell csatlakoznia a fő adatbázist.|
-|[sys.dm_db_resource_stats (az Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Az Azure SQL Database adatbázishoz CPU, a i/o és a memória-felhasználás adja vissza. Egy sor létezik 15 másodpercenként akkor is, ha nincs az adatbázisban nem tevékenység.|
+|[sys.dm_db_resource_stats (az Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Az Azure SQL Database adatbázishoz CPU IO és memória fogyasztás adja vissza. Egy sor létezik 15 másodpercenként akkor is, ha nincs az adatbázisban nem tevékenység.|
 |[sys.resource_stats (az Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|CPU használatát és a tároló adatait jeleníti meg az Azure SQL-adatbázis. Az adatok gyűjtése és 5 perces időközönként belül.|
 |[sys.database_connection_stats (az Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|SQL-adatbázis adatbázis csatlakozási eseményeket, és adatbázis-kapcsolat sikeres és sikertelen áttekintést nyújt a statisztikákat tartalmaz. |
 |[sys.event_log (az Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|Sikeres Azure SQL Database adatbázis-kapcsolatok, a csatlakozási hibák és a holtpontok adja vissza. Ezek az információk segítségével nyomon követése, vagy az adatbázis-tevékenység az SQL Database hibaelhárítása.|

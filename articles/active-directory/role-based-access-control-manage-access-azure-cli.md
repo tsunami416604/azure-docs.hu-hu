@@ -1,8 +1,8 @@
 ---
-title: "Az Azure CLI szerepköralapú hozzáférés-vezérlés (RBAC) kezelése |} Microsoft Docs"
-description: "Megtudhatja, hogyan kezelheti a szerepköralapú hozzáférés-vezérlést (RBAC) az Azure parancssori felületével, szerepkörök és a szerepkör műveletek listázása és szerepkörök hozzárendelése az előfizetés és az alkalmazás hatókörhöz."
+title: Az Azure CLI szerepköralapú hozzáférés-vezérlés (RBAC) kezelése |} Microsoft Docs
+description: Megtudhatja, hogyan kezelheti a szerepköralapú hozzáférés-vezérlést (RBAC) az Azure parancssori felületével, szerepkörök és a szerepkör műveletek listázása és szerepkörök hozzárendelése az előfizetés és az alkalmazás hatókörhöz.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.assetid: 3483ee01-8177-49e7-b337-4d5cb14f5e32
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/20/2018
+ms.date: 04/03/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
-ms.openlocfilehash: 6c9df11e528601d94cb72a8e3ef0868dc7781e12
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 4efae8aa8a016849193b67ea7481e18ee48811d0
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-role-based-access-control-with-the-azure-command-line-interface"></a>Szerepköralapú hozzáférés-vezérlés az Azure parancssori felületével kezelése
 
@@ -28,17 +28,15 @@ ms.lasthandoff: 03/09/2018
 > * [REST API](role-based-access-control-manage-access-rest.md)
 
 
-A szerepköralapú hozzáférés-vezérlés (RBAC), definiált felhasználók, csoportok és szolgáltatásnevekről hozzáférést egy adott hatókörhöz szerepkörök hozzárendelése. A cikkből megtudhatja, hogyan kezelheti a hozzáférést az Azure parancssori felület (CLI) használatával.
+Szerepköralapú hozzáférés-vezérléssel (RBAC) a felhasználók, csoportok és szolgáltatásnevekről hozzáférési által egy adott hatókörhöz szerepkörök hozzárendelése definiálni. A cikkből megtudhatja, hogyan kezelheti a szerepkör-hozzárendelések az Azure parancssori felület (CLI) használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure parancssori felület használatával RBAC felügyeli, a következő előfeltételeknek kell rendelkeznie:
+Az Azure parancssori felület használatával felügyeli a szerepkör-hozzárendelések, rendelkeznie kell a következő előfeltételek teljesülését:
 
 * [Azure CLI 2.0](/cli/azure). Használhatja a böngészőjében az [Azure Cloud Shell-lel](../cloud-shell/overview.md), vagy [telepítheti](/cli/azure/install-azure-cli) macOS, Linux és Windows rendszeren, és futtathatja a parancssorból.
 
-## <a name="list-roles"></a>Lista szerepkörök
-
-### <a name="list-role-definitions"></a>Szerepkör-definíciók listája
+## <a name="list-role-definitions"></a>Szerepkör-definíciók listája
 
 Kilistázhatja az összes rendelkezésre álló szerepkör-definíciók [az szerepkör-definíció lista](/cli/azure/role/definition#az_role_definition_list):
 
@@ -49,7 +47,7 @@ az role definition list
 Az alábbi példa felsorolja a nevét és az összes rendelkezésre álló szerepkör-definíciók leírása:
 
 ```azurecli
-az role definition list --output json | jq '.[] | {"roleName":.properties.roleName, "description":.properties.description}'
+az role definition list --output json | jq '.[] | {"roleName":.roleName, "description":.description}'
 ```
 
 ```Output
@@ -72,24 +70,24 @@ az role definition list --output json | jq '.[] | {"roleName":.properties.roleNa
 Az alábbi példa felsorolja a beépített szerepkör-definíciók mindegyikét:
 
 ```azurecli
-az role definition list --custom-role-only false --output json | jq '.[] | {"roleName":.properties.roleName, "description":.properties.description, "type":.properties.type}'
+az role definition list --custom-role-only false --output json | jq '.[] | {"roleName":.roleName, "description":.description, "roleType":.roleType}'
 ```
 
 ```Output
 {
   "roleName": "API Management Service Contributor",
   "description": "Can manage service and the APIs",
-  "type": "BuiltInRole"
+  "roleType": "BuiltInRole"
 }
 {
   "roleName": "API Management Service Operator Role",
   "description": "Can manage service but not the APIs",
-  "type": "BuiltInRole"
+  "roleType": "BuiltInRole"
 }
 {
   "roleName": "API Management Service Reader Role",
   "description": "Read-only access to service and APIs",
-  "type": "BuiltInRole"
+  "roleType": "BuiltInRole"
 }
 
 ...
@@ -110,36 +108,31 @@ az role definition list --name "Contributor"
 ```
 
 ```Output
-[
   {
+    "additionalProperties": {},
+    "assignableScopes": [
+      "/"
+    ],
+    "description": "Lets you manage everything except access to resources.",
     "id": "/subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
     "name": "b24988ac-6180-42a0-ab88-20f7382dd24c",
-    "properties": {
-      "additionalProperties": {
-        "createdBy": null,
-        "createdOn": "0001-01-01T08:00:00.0000000Z",
-        "updatedBy": null,
-        "updatedOn": "2016-12-14T02:04:45.1393855Z"
-      },
-      "assignableScopes": [
-        "/"
-      ],
-      "description": "Lets you manage everything except access to resources.",
-      "permissions": [
-        {
-          "actions": [
-            "*"
-          ],
-          "notActions": [
-            "Microsoft.Authorization/*/Delete",
-            "Microsoft.Authorization/*/Write",
-            "Microsoft.Authorization/elevateAccess/Action"
-          ]
-        }
-      ],
-      "roleName": "Contributor",
-      "type": "BuiltInRole"
-    },
+    "permissions": [
+      {
+        "actions": [
+          "*"
+        ],
+        "additionalProperties": {},
+        "dataActions": [],
+        "notActions": [
+          "Microsoft.Authorization/*/Delete",
+          "Microsoft.Authorization/*/Write",
+          "Microsoft.Authorization/elevateAccess/Action"
+        ],
+        "notDataActions": []
+      }
+    ],
+    "roleName": "Contributor",
+    "roleType": "BuiltInRole",
     "type": "Microsoft.Authorization/roleDefinitions"
   }
 ]
@@ -148,7 +141,7 @@ az role definition list --name "Contributor"
 A következő példa listákat a *műveletek* és *notActions* , a *közreműködő* szerepkör:
 
 ```azurecli
-az role definition list --name "Contributor" --output json | jq '.[] | {"actions":.properties.permissions[0].actions, "notActions":.properties.permissions[0].notActions}'
+az role definition list --name "Contributor" --output json | jq '.[] | {"actions":.permissions[0].actions, "notActions":.permissions[0].notActions}'
 ```
 
 ```Output
@@ -167,7 +160,7 @@ az role definition list --name "Contributor" --output json | jq '.[] | {"actions
 Az alábbi példa felsorolja a műveleteket a *virtuális gép közreműködő* szerepkör:
 
 ```azurecli
-az role definition list --name "Virtual Machine Contributor" --output json | jq '.[] | .properties.permissions[0].actions'
+az role definition list --name "Virtual Machine Contributor" --output json | jq '.[] | .permissions[0].actions'
 ```
 
 ```Output
@@ -188,7 +181,7 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
 ]
 ```
 
-## <a name="list-access"></a>A hozzáférési lista
+## <a name="list-role-assignments"></a>Szerepkör-hozzárendelések listáját
 
 ### <a name="list-role-assignments-for-a-user"></a>Szerepkör-hozzárendelések listáját egy felhasználó számára
 
@@ -200,10 +193,10 @@ az role assignment list --assignee <assignee>
 
 Alapértelmezés szerint csak az előfizetés hatóköre hozzárendelések jelenik meg. Az erőforrás vagy a csoport hatókörű hozzárendeléseinek megtekintéséhez használja a `--all`.
 
-Az alábbi példa felsorolja a közvetlenül hozzárendelt szerepkör-hozzárendelések a  *patlong@contoso.com*  felhasználó:
+Az alábbi példa felsorolja a közvetlenül hozzárendelt szerepkör-hozzárendelések a *patlong@contoso.com* felhasználó:
 
 ```azurecli
-az role assignment list --all --assignee patlong@contoso.com --output json | jq '.[] | {"principalName":.properties.principalName, "roleDefinitionName":.properties.roleDefinitionName, "scope":.properties.scope}'
+az role assignment list --all --assignee patlong@contoso.com --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
 ```
 
 ```Output
@@ -230,7 +223,7 @@ az role assignment list --resource-group <resource_group>
 Az alábbi példa felsorolja a szerepkör-hozzárendelések a *pharma-értékesítési-projectforecast* erőforráscsoport:
 
 ```azurecli
-az role assignment list --resource-group pharma-sales-projectforecast --output json | jq '.[] | {"roleDefinitionName":.properties.roleDefinitionName, "scope":.properties.scope}'
+az role assignment list --resource-group pharma-sales-projectforecast --output json | jq '.[] | {"roleDefinitionName":.roleDefinitionName, "scope":.scope}'
 ```
 
 ```Output
@@ -246,25 +239,25 @@ az role assignment list --resource-group pharma-sales-projectforecast --output j
 ...
 ```
 
-## <a name="assign-access"></a>Hozzáférés hozzárendelése
+## <a name="create-role-assignments"></a>Szerepkör-hozzárendelések létrehozása
 
-### <a name="assign-a-role-to-a-user"></a>A szerepkör hozzárendelése felhasználóhoz
+### <a name="create-a-role-assignment-for-a-user"></a>A felhasználói szerepkör-hozzárendelés létrehozása
 
-A szerepkör hozzárendelése egy felhasználóhoz a erőforrás csoport hatókörben, használja a [az szerepkör-hozzárendelés létrehozása](/cli/azure/role/assignment#az_role_assignment_create):
+Egy felhasználó szerepkör-hozzárendelés létrehozása a erőforrás hatóköréből, használja a [az szerepkör-hozzárendelés létrehozása](/cli/azure/role/assignment#az_role_assignment_create):
 
 ```azurecli
 az role assignment create --role <role> --assignee <assignee> --resource-group <resource_group>
 ```
 
-Az alábbi példa a *virtuális gép közreműködő* szerepkör  *patlong@contoso.com*  felhasználójának a *pharma-értékesítési-projectforecast* erőforrás csoport hatóköre:
+Az alábbi példa a *virtuális gép közreműködő* szerepkör *patlong@contoso.com* felhasználójának a *pharma-értékesítési-projectforecast* erőforrás csoport hatóköre:
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee patlong@contoso.com --resource-group pharma-sales-projectforecast
 ```
 
-### <a name="assign-a-role-to-a-group"></a>A szerepkör hozzárendelése egy csoporthoz
+### <a name="create-a-role-assignment-for-a-group"></a>Egy szerepkör-hozzárendelés létrehozása
 
-A szerepkör hozzárendelése egy csoporthoz, használja a [az szerepkör-hozzárendelés létrehozása](/cli/azure/role/assignment#az_role_assignment_create):
+Egy szerepkör-hozzárendelés a csoport létrehozásához használja [az szerepkör-hozzárendelés létrehozása](/cli/azure/role/assignment#az_role_assignment_create):
 
 ```azurecli
 az role assignment create --role <role> --assignee-object-id <assignee_object_id> --resource-group <resource_group> --scope </subscriptions/subscription_id>
@@ -282,9 +275,9 @@ Az alábbi példa a *virtuális gép közreműködő* szerepkört a *Reino Mack 
 az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 22222222-2222-2222-2222-222222222222 --scope /subscriptions/11111111-1111-1111-1111-111111111111/resourcegroups/pharma-sales-projectforecast/providers/Microsoft.Network/virtualNetworks/pharma-sales-project-network
 ```
 
-### <a name="assign-a-role-to-an-application"></a>Az alkalmazás szerepkör hozzárendelése
+### <a name="create-a-role-assignment-for-an-application"></a>Az alkalmazás szerepkör-hozzárendelés létrehozása
 
-Szerepkör hozzárendelése egy alkalmazást, használja a [az szerepkör-hozzárendelés létrehozása](/cli/azure/role/assignment#az_role_assignment_create):
+Az alkalmazás-szerepkör létrehozásához használja a [az szerepkör-hozzárendelés létrehozása](/cli/azure/role/assignment#az_role_assignment_create):
 
 ```azurecli
 az role assignment create --role <role> --assignee-object-id <assignee_object_id> --resource-group <resource_group> --scope </subscriptions/subscription_id>
@@ -296,9 +289,7 @@ Az alábbi példa a *virtuális gép közreműködő* alkalmazást objektum azon
 az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 44444444-4444-4444-4444-444444444444 --resource-group pharma-sales-projectforecast
 ```
 
-## <a name="remove-access"></a>Megszünteti a hozzáférést
-
-### <a name="remove-a-role-assignment"></a>Távolítsa el a szerepkör-hozzárendelés
+## <a name="remove-a-role-assignment"></a>Távolítsa el a szerepkör-hozzárendelés
 
 Szerepkör-hozzárendelés eltávolításához használja [az szerepkör-hozzárendelés törlése](/cli/azure/role/assignment#az_role_assignment_delete):
 
@@ -306,7 +297,7 @@ Szerepkör-hozzárendelés eltávolításához használja [az szerepkör-hozzár
 az role assignment delete --assignee <assignee> --role <role> --resource-group <resource_group>
 ```
 
-A következő példában eltávolítjuk a *virtuális gép közreműködő* a szerepkör-hozzárendelés a  *patlong@contoso.com*  felhasználó számára a *pharma-értékesítési-projectforecast* erőforrás csoport:
+A következő példában eltávolítjuk a *virtuális gép közreműködő* a szerepkör-hozzárendelés a *patlong@contoso.com* felhasználó számára a *pharma-értékesítési-projectforecast* erőforrás csoport:
 
 ```azurecli
 az role assignment delete --assignee patlong@contoso.com --role "Virtual Machine Contributor" --resource-group pharma-sales-projectforecast
@@ -327,11 +318,11 @@ A szerepkörök, amelyek rendelhető hozzá hatókör kilistázhatja [az szerepk
 Az alábbi példák mindegyikét listában a egyéni szerepkörök az aktuális előfizetésben:
 
 ```azurecli
-az role definition list --custom-role-only true --output json | jq '.[] | {"roleName":.properties.roleName, "type":.properties.type}'
+az role definition list --custom-role-only true --output json | jq '.[] | {"roleName":.roleName, "roleType":.roleType}'
 ```
 
 ```azurecli
-az role definition list --output json | jq '.[] | if .properties.type == "CustomRole" then {"roleName":.properties.roleName, "type":.properties.type} else empty end'
+az role definition list --output json | jq '.[] | if .roleType == "CustomRole" then {"roleName":.roleName, "roleType":.roleType} else empty end'
 ```
 
 ```Output

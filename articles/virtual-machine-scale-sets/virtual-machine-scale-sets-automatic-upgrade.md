@@ -1,13 +1,13 @@
 ---
-title: "Az Azure virtuális gép automatikus az operációs rendszer frissítései méretezési készletek |} Microsoft Docs"
-description: "Ismerje meg, az operációs rendszerben található egy méretezési csoportban lévő Virtuálisgép-példányok automatikus frissítése"
+title: Az Azure virtuális gép automatikus az operációs rendszer frissítései méretezési készletek |} Microsoft Docs
+description: Ismerje meg, az operációs rendszerben található egy méretezési csoportban lévő Virtuálisgép-példányok automatikus frissítése
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: negat
-ms.openlocfilehash: 59dad832977c4afc39db3773edf9789cd1a704e7
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 28a9b3d68037aac0c1198da4232c045487b01174
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-upgrades"></a>Azure virtuális gépek méretezési automatikus az operációs rendszer frissítései
 
@@ -93,9 +93,9 @@ A következő termékváltozatok jelenleg támogatott (több megkapja):
 > [!NOTE]
 > Ez a szakasz csak a Service Fabric nélkül méretezési készlet vonatkozik. A Service Fabric rendelkezik saját alkalmazás állapotának fogalmát. Az operációs rendszer automatikus frissítések szolgáltatás hálóval használatakor az új operációsrendszer-lemezképek frissítési tartományt a Service Fabric futó szolgáltatások magas rendelkezésre állás fenntartása frissítési tartomány által ki lesz állítva. A Service Fabric-fürtök tartóssági jellemzői további információkért lásd: [ebben a dokumentációban](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster).
 
-Az operációs rendszer a frissítés során megtörténik a Virtuálisgép-méretezési csoportban lévő példányok egyszerre csak egy köteg. A frissítés továbbra is csak ha az ügyfél alkalmazás állapota kifogástalan, a frissített Virtuálisgép-példányokon. Azt javasoljuk, hogy az alkalmazás maga biztosítja a méretezési készlet operációs rendszer frissítési motor állapotfigyelő jelek. Alapértelmezés szerint az operációs rendszer frissítéskor a platform úgy ítéli meg VM energiaállapot és üzembe helyezési állapota annak megállapításához, hogy a Virtuálisgép-példány megfelelő frissítés után bővítmény. Az operációs rendszer a frissítés során egy Virtuálisgép-példány az operációsrendszer-lemezképet, a Virtuálisgép-példány helyére egy új lemezt, a lemezkép legújabb verziója alapján. Miután az operációs rendszer frissítése befejeződött, a konfigurált extensions virtuális gépeken futnak. Csak akkor, ha a virtuális gép az összes bővítmény sikeresen telepített, akkor az alkalmazás tekinthető kifogástalan. 
+Az operációs rendszer a frissítés során megtörténik a Virtuálisgép-méretezési csoportban lévő példányok egyszerre csak egy köteg. A frissítés továbbra is csak ha az ügyfél alkalmazás állapota kifogástalan, a frissített Virtuálisgép-példányokon. Ezért kérjük, hogy az alkalmazás maga biztosítja a méretezési készlet operációs rendszer frissítési motor állapotfigyelő jelek. Az operációs rendszer frissítéskor a platform VM energiaállapot és üzembe helyezési állapota annak megállapításához, hogy a Virtuálisgép-példány megfelelő frissítés után bővítmény figyelembe veszi. Az operációs rendszer a frissítés során egy Virtuálisgép-példány az operációsrendszer-lemezképet, a Virtuálisgép-példány helyére egy új lemezt, a lemezkép legújabb verziója alapján. Miután az operációs rendszer frissítése befejeződött, a konfigurált extensions virtuális gépeken futnak. Csak akkor, ha a virtuális gép az összes bővítmény sikeresen telepített, akkor az alkalmazás tekinthető kifogástalan. 
 
-A méretezési igény szerint konfigurálható alkalmazás állapot-mintavételi csomagjai arra, hogy ellássa a platform pontos információkat az alkalmazás folyamatban lévő állapota. Egyéni betöltési terheléselosztó-vizsgálat állapotát jel használt alkalmazás állapot-mintavételi csomagjai. Méretezési készlet Virtuálisgép-példány fut az alkalmazás jelzi, hogy állapota kifogástalan külső HTTP vagy TCP-kérésekre is válaszol. Az egyéni betöltése Terheléselosztói mintavétel működéséről további információkért lásd: [megértése load balancer mintavételt](../load-balancer/load-balancer-custom-probe-overview.md). Az alkalmazás állapotának mintavételi esetében nincs szükség az operációs rendszer automatikus frissítéseket, de ajánlott.
+Emellett a méretezési *kell* alkalmazás állapot-mintavételi csomagjai pontos információkat az alkalmazás folyamatban lévő állapota a platform biztosítania kell konfigurálni. Egyéni betöltési terheléselosztó-vizsgálat állapotát jel használt alkalmazás állapot-mintavételi csomagjai. Méretezési készlet Virtuálisgép-példány fut az alkalmazás jelzi, hogy állapota kifogástalan külső HTTP vagy TCP-kérésekre is válaszol. Az egyéni betöltése Terheléselosztói mintavétel működéséről további információkért lásd: [megértése load balancer mintavételt](../load-balancer/load-balancer-custom-probe-overview.md).
 
 A méretezési több elhelyezési csoportok használatára van beállítva, ha vizsgálat használatával egy [szabványos terheléselosztó](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) kell használnia.
 
@@ -110,7 +110,7 @@ A virtuális gépek helyreállítása, és engedélyezze újra automatikus oper�
 * Telepítse a frissített méretezési készlet, amely frissíti az összes Virtuálisgép-példányok, többek között a sikertelen néhányat a meglévők közül. 
 
 ### <a name="configuring-a-custom-load-balancer-probe-as-application-health-probe-on-a-scale-set"></a>Konfigurálása egy egyéni Load Balancer mintavételi alkalmazás állapotának mintavételi méretű beállítása
-Ajánlott eljárásként létrehozni a terheléselosztói mintavétel explicit módon méretezési állapotát. Egy meglévő HTTP-vizsgálatot, vagy a TCP-Hálózatfigyelővel azonos végpontja is használható, de előfordulhat, hogy egy állapotmintáihoz hagyományos terheléselosztó-vizsgálatok különböző viselkedés. Például egy hagyományos terheléselosztói mintavétel térhetnek vissza nem kifogástalan, ha a példány terhelése túl nagy, mivel, amely nem lehet megfelelő, a példány állapotának meghatározása az operációs rendszer automatikus frissítés során. Konfigurálja a mintavétel a vizsgálathoz használt magas sebessége kisebb, mint két perc.
+Ön *kell* létrehozni a terheléselosztói mintavétel explicit módon méretezési állapotát. Egy meglévő HTTP-vizsgálatot, vagy a TCP-Hálózatfigyelővel azonos végpontja is használható, de előfordulhat, hogy egy állapotmintáihoz hagyományos terheléselosztó-vizsgálatok különböző viselkedés. Például egy hagyományos terheléselosztói mintavétel térhetnek vissza nem kifogástalan, ha a példány terhelése túl nagy, mivel, amely nem lehet megfelelő, a példány állapotának meghatározása az operációs rendszer automatikus frissítés során. Konfigurálja a mintavétel a vizsgálathoz használt magas sebessége kisebb, mint két perc.
 
 A terheléselosztó mintavételi lehet hivatkozni a *networkProfile* a skála beállítása és társítható vagy egy belső vagy nyilvános-terheléselosztót az alábbiak szerint:
 
@@ -227,7 +227,7 @@ Bontsa ki az alkalmazás állapotának Segéd-vizsgálatok használatát, méret
 2. Virtuálisgép-példányok frissítéséhez egy kötegben, amelyek legfeljebb 20 %-a teljes példányok száma a következő csoportjának azonosítása.
 3. Frissítse az operációs rendszer a következő köteg Virtuálisgép-példánya.
 4. Ha több mint 20 %-a frissített példányok nem kifogástalan állapotú, állítsa le a frissítést; Ellenkező esetben folytassa a műveletet.
-5. Ha az ügyfél állapot-mintavételi csomagjai alkalmazást konfigurált, a frissítés vár, legfeljebb 5 percenként mintavételt lesz kifogástalan, majd azonnal továbbra is fennáll, a következő kötegelt; Ellenkező esetben azt a következő mérési adatköteget lépés előtt 30 perc elteltével.
+5. A méretezési készlet, amely nem a Service Fabric-fürt részét képezik a frissítés vár, legfeljebb 5 percenként mintavételt lesz kifogástalan, majd azonnal folytatódik a következő batch-kiszolgálóra. A Service Fabric-fürt részét képező méretezési csoportok a méretezési vár 30 percet, mielőtt továbblép a következő mérési adatköteget.
 6. Ha vannak, hogy a frissítés hátralévő, goto 1. lépés) a következő köteg; Ellenkező esetben a frissítés befejeződött.
 
 A méretezési minden kötegelt frissítése előtt az operációs rendszer frissítése motor Virtuálisgép-példány általános állapotát ellenőrzi. A kötegelt frissítés során lehet más egyidejű tervezett vagy nem tervezett karbantartás történik az Azure Adatközpontjaiban, amely hatással lehet a virtuális gépek rendelkezésre állását. Ezért akkor lehetséges, hogy átmenetileg több mint 20 %-példányok le lehet-e. Ilyen esetben az aktuális köteg végén a méretezési frissítési leáll.
@@ -237,7 +237,8 @@ A méretezési minden kötegelt frissítése előtt az operációs rendszer fris
 
 Az alábbi sablon használatával egy méretezési csoport, amely használja az automatikus frissítések telepítése <a href='https://github.com/Azure/vm-scale-sets/blob/master/preview/upgrade/autoupdate.json'>automatikus működés közbeni frissítése – Ubuntu 16.04-es lts verzió</a>
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fvm-scale-sets%2Fmaster%2Fpreview%2Fupgrade%2Fautoupdate.json" target="_blank"> <img src="http://azuredeploy.net/deploybutton.png"/>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fvm-scale-sets%2Fmaster%2Fpreview%2Fupgrade%2Fautoupdate.json" target="_blank">
+    <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
 
 

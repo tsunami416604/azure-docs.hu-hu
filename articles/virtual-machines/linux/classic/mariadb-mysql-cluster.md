@@ -1,11 +1,11 @@
 ---
-title: "Egy MariaDB (MySQL) fürt futtatása az Azure-on |} Microsoft Docs"
-description: "Hozzon létre egy MariaDB + Galera MySQL az Azure virtuális gépek fürtön"
+title: Egy MariaDB (MySQL) fürt futtatása az Azure-on |} Microsoft Docs
+description: Hozzon létre egy MariaDB + Galera MySQL az Azure virtuális gépek fürtön
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: sabbour
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: d0d21937-7aac-4222-8255-2fdc4f2ea65b
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/15/2015
 ms.author: asabbour
-ms.openlocfilehash: 53e9bf18b26338212411ea7c4f260eb308486738
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5438bfb75abaac2bed55a76b38f69790f7fc87fa
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="mariadb-mysql-cluster-azure-tutorial"></a>MariaDB (MySQL) fürt: Azure útmutató
 > [!IMPORTANT]
@@ -163,10 +163,10 @@ Ez a cikk ismerteti, hogyan lehet elvégezni az alábbi lépéseket:
             service mysql stop
 7. Hozzon létre egy konfigurációs helyőrző.
 
-   a. A fürtbeállítások helyőrzője létrehozása a MySQL konfigurációjának a szerkesztésével. Cserélje le a  **`<Variables>`**  vagy állítsa vissza a most. Amely akkor után hozzon létre egy virtuális Gépet a sablon alapján történik.
+   a. A fürtbeállítások helyőrzője létrehozása a MySQL konfigurációjának a szerkesztésével. Cserélje le a **`<Variables>`** vagy állítsa vissza a most. Amely akkor után hozzon létre egy virtuális Gépet a sablon alapján történik.
 
             vi /etc/my.cnf.d/server.cnf
-   b. Szerkessze a  **[galera]**  szakaszt, és törölje a jelölést.
+   b. Szerkessze a **[galera]** szakaszt, és törölje a jelölést.
 
    c. Szerkessze a **[mariadb]** szakasz.
 
@@ -184,11 +184,11 @@ Ez a cikk ismerteti, hogyan lehet elvégezni az alábbi lépéseket:
            #wsrep_node_name='<NodeName>' # CHANGE: Uncomment and set the node name of this server
 8. Nyissa meg a szükséges portok a tűzfalon keresztül FirewallD CentOS 7.
 
-   * MySQL:`firewall-cmd --zone=public --add-port=3306/tcp --permanent`
-   * GALERA:`firewall-cmd --zone=public --add-port=4567/tcp --permanent`
-   * GALERA ITT:`firewall-cmd --zone=public --add-port=4568/tcp --permanent`
-   * RSYNC:`firewall-cmd --zone=public --add-port=4444/tcp --permanent`
-   * Töltse be újra a tűzfalon:`firewall-cmd --reload`
+   * MySQL: `firewall-cmd --zone=public --add-port=3306/tcp --permanent`
+   * GALERA: `firewall-cmd --zone=public --add-port=4567/tcp --permanent`
+   * GALERA ITT: `firewall-cmd --zone=public --add-port=4568/tcp --permanent`
+   * RSYNC: `firewall-cmd --zone=public --add-port=4444/tcp --permanent`
+   * Töltse be újra a tűzfalon: `firewall-cmd --reload`
 
 9. A rendszer a teljesítmény optimalizálása. További információkért lásd: [teljesítményének hangolása stratégia](optimize-mysql.md).
 
@@ -281,8 +281,8 @@ Hozzon létre három virtuális gépek sablonnal létrehozott, és ezután konfi
 
         sudo vi /etc/my.cnf.d/server.cnf
 
-    Állítsa vissza  **`wsrep_cluster_name`**  és  **`wsrep_cluster_address`**  eltávolításával a  **#**  a sor elején.
-    Továbbá cserélje le  **`<ServerIP>`**  a  **`wsrep_node_address`**  és  **`<NodeName>`**  a  **`wsrep_node_name`**  rendelkező a A virtuális gép IP cím és nevet, illetve kódrészig, és azokat a sorokat.
+    Állítsa vissza **`wsrep_cluster_name`** és **`wsrep_cluster_address`** eltávolításával a **#** a sor elején.
+    Továbbá cserélje le **`<ServerIP>`** a **`wsrep_node_address`** és **`<NodeName>`** a **`wsrep_node_name`** rendelkező a A virtuális gép IP cím és nevet, illetve kódrészig, és azokat a sorokat.
 5. Indítsa el a fürt a MariaDB1, és hagyja, hogy az indítási parancsot.
 
         sudo service mysql bootstrap
@@ -299,7 +299,7 @@ Azure Load Balancer segítségével kiegyenlítheti vonatkozó a három csomópo
 
 A következő parancsokat a számítógépen az Azure parancssori felület használatával.
 
-A parancs paraméterei struktúra a következő:`azure vm endpoint create-multiple <MachineName> <PublicPort>:<VMPort>:<Protocol>:<EnableDirectServerReturn>:<Load Balanced Set Name>:<ProbeProtocol>:<ProbePort>`
+A parancs paraméterei struktúra a következő: `azure vm endpoint create-multiple <MachineName> <PublicPort>:<VMPort>:<Protocol>:<EnableDirectServerReturn>:<Load Balanced Set Name>:<ProbeProtocol>:<ProbePort>`
 
     azure vm endpoint create-multiple mariadb1 3306:3306:tcp:false:MySQL:tcp:3306
     azure vm endpoint create-multiple mariadb2 3306:3306:tcp:false:MySQL:tcp:3306
@@ -344,7 +344,7 @@ A létrehozott adatbázis a következő táblázatot ad vissza:
     2 rows in set (0.00 sec)
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben egy három csomópontos MariaDB létrehozott + Galera magas rendelkezésre állású fürt Azure virtuális gépen futó CentOS 7. A virtuális gépek az elosztott terhelésű Azure terheléselosztó.
 
 Érdemes megtekinteni [MySQL-fürt Linux rendszeren másik módja](mysql-cluster.md) és módjai [optimalizálása és MySQL az Azure Linux virtuális gépeken futó teljesítménytesztelési](optimize-mysql.md).

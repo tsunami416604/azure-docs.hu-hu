@@ -1,7 +1,7 @@
 ---
-title: "Adatbázis teljesítményének figyelése Azure SQL Database adatbázisokban | Microsoft Docs"
-description: "Tudja meg, hogyan figyelheti az adatbázisokat Azure- eszközökkel és dinamikus felügyeleti nézetekkel."
-keywords: "adatbázis-megfigyelés, felhőalapú adatbázis teljesítménye"
+title: Adatbázis teljesítményének figyelése Azure SQL Database adatbázisokban | Microsoft Docs
+description: Tudja meg, hogyan figyelheti az adatbázisokat Azure- eszközökkel és dinamikus felügyeleti nézetekkel.
+keywords: adatbázis-megfigyelés, felhőalapú adatbázis teljesítménye
 services: sql-database
 author: CarlRabeler
 manager: craigg
@@ -10,11 +10,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 09/20/2017
 ms.author: carlrab
-ms.openlocfilehash: ba2239b1a4cd14f7723e88ee83f7ad93da717e0a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 4bc2c8578157bd29894bfee221174501c5003a42
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitoring-database-performance-in-azure-sql-database"></a>Adatbázis teljesítményének figyelése Azure SQL Database adatbázisokban
 Egy Azure SQL-adatbázis teljesítményének figyelése az erőforrás-használatnak a kiválasztott adatbázis teljesítményszintjéhez viszonyított figyelésével kezdődik. A figyelés segítségével megállapítható, ha az adatbázis többletkapacitással rendelkezik, vagy éppen elérte a maximumot az erőforrások kihasználtságában, és emiatt problémák jelentkezhetnek, így az is eldönthető, hogy módosítani kell-e az adatbázis teljesítményszintjét és [szolgáltatásszintjét](sql-database-service-tiers.md). Az adatbázist figyelheti grafikus eszközök használatával az [Azure Portalon](https://portal.azure.com) vagy SQL [dinamikus felügyeleti nézetek](https://msdn.microsoft.com/library/ms188754.aspx) használatával.
@@ -59,15 +59,15 @@ Használati használatával két nézetet is végezhet figyelést:
 * [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
 
 #### <a name="sysdmdbresourcestats"></a>sys.dm_db_resource_stats
-Használhatja a [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) nézetben minden SQL-adatbázis. A **sys.dm_db_resource_stats** a nézet jeleníti meg a legutóbbi erőforrás használata adatokat a szolgáltatási rétegben viszonyítva. Átlagos CPU, az adatok i/o, a napló írása és a memória százalékos 15 másodpercenként tárolja, és 1 óráig megmaradjanak.
+Használhatja a [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) nézetben minden SQL-adatbázis. A **sys.dm_db_resource_stats** a nézet jeleníti meg a legutóbbi erőforrás használata adatokat a szolgáltatási rétegben viszonyítva. A CPU, a adat IO, a memória és a napló írási átlagos százalékos 15 másodpercenként tárolja, és 1 óráig megmaradjanak.
 
 Mivel ez a nézet biztosít egy részletesebb erőforrás használata, **sys.dm_db_resource_stats** első bármely jelenlegi-állapot elemzéshez vagy hibaelhárítási. Ez a lekérdezés például keresztül az elmúlt egy órában az aktuális adatbázisra vonatkozó átlagos és maximális erőforrás használatát mutatja be:
 
     SELECT  
         AVG(avg_cpu_percent) AS 'Average CPU use in percent',
         MAX(avg_cpu_percent) AS 'Maximum CPU use in percent',
-        AVG(avg_data_io_percent) AS 'Average data I/O in percent',
-        MAX(avg_data_io_percent) AS 'Maximum data I/O in percent',
+        AVG(avg_data_io_percent) AS 'Average data IO in percent',
+        MAX(avg_data_io_percent) AS 'Maximum data IO in percent',
         AVG(avg_log_write_percent) AS 'Average log write use in percent',
         MAX(avg_log_write_percent) AS 'Maximum log write use in percent',
         AVG(avg_memory_usage_percent) AS 'Average memory use in percent',
@@ -117,8 +117,8 @@ A következő példa bemutatja, különböző módon használható a **sys.resou
         SELECT
             avg(avg_cpu_percent) AS 'Average CPU use in percent',
             max(avg_cpu_percent) AS 'Maximum CPU use in percent',
-            avg(avg_data_io_percent) AS 'Average physical data I/O use in percent',
-            max(avg_data_io_percent) AS 'Maximum physical data I/O use in percent',
+            avg(avg_data_io_percent) AS 'Average physical data IO use in percent',
+            max(avg_data_io_percent) AS 'Maximum physical data IO use in percent',
             avg(avg_log_write_percent) AS 'Average log write use in percent',
             max(avg_log_write_percent) AS 'Maximum log write use in percent',
             avg(max_session_percent) AS 'Average % of sessions',
@@ -127,7 +127,7 @@ A következő példa bemutatja, különböző módon használható a **sys.resou
             max(max_worker_percent) AS 'Maximum % of workers'
         FROM sys.resource_stats
         WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
-3. Ezen információk átlagos és maximális értékeiről minden erőforrás mérőszám felmérheti, milyen jól illeszkedik az a számítási feladatok a kiválasztott teljesítményszint szükséges. Általában a átlagérték **sys.resource_stats** jó alapterv használata elleni célméretét biztosítanak. Az elsődleges mérési memóriás kell lennie. Például előfordulhat, hogy használni a szabványos szolgáltatási rétegben a S2 teljesítményszint szükséges. Átlagos százalékos használata a Processzor- és i/o-olvasási és írási műveleteket a rendszer alatt 40 %-kal munkavállalók átlagos száma nem éri el 50 és a munkamenetek átlagos száma nem éri a 200-as. A számítási feladatok előfordulhat, hogy a S1 teljesítményszinttel illeszkedik. Könnyen látható, hogy megfelel-e az adatbázis a munkavégző és a munkamenet korlátok. Megtekintéséhez, hogy egy adatbázis illeszkedik CPU,-ben elérhető alacsonyabb teljesítményszintre beolvassa és írási műveletekről, a jelenlegi teljesítményszintje DTU száma szerint a alacsonyabb teljesítményszintre DTU száma felosztani és az eredmény megszorozza 100:
+3. Ezen információk átlagos és maximális értékeiről minden erőforrás mérőszám felmérheti, milyen jól illeszkedik az a számítási feladatok a kiválasztott teljesítményszint szükséges. Általában a átlagérték **sys.resource_stats** jó alapterv használata elleni célméretét biztosítanak. Az elsődleges mérési memóriás kell lennie. Például előfordulhat, hogy használni a szabványos szolgáltatási rétegben a S2 teljesítményszint szükséges. Processzor- és I/O olvasási műveletek átlagos használni százalékos írási műveletek 40 százalék alatti, munkavállalók átlagos száma nem éri el 50 és a munkamenetek átlagos száma nem éri a 200-as. A számítási feladatok előfordulhat, hogy a S1 teljesítményszinttel illeszkedik. Könnyen látható, hogy megfelel-e az adatbázis a munkavégző és a munkamenet korlátok. Megtekintéséhez, hogy egy adatbázis illeszkedik CPU,-ben elérhető alacsonyabb teljesítményszintre beolvassa és írási műveletekről, a jelenlegi teljesítményszintje DTU száma szerint a alacsonyabb teljesítményszintre DTU száma felosztani és az eredmény megszorozza 100:
    
     **S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40**
    
@@ -153,7 +153,7 @@ A következő példa bemutatja, különböző módon használható a **sys.resou
         SELECT
         (COUNT(database_name) - SUM(CASE WHEN avg_cpu_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'CPU fit percent'
         ,(COUNT(database_name) - SUM(CASE WHEN avg_log_write_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Log write fit percent'
-        ,(COUNT(database_name) - SUM(CASE WHEN avg_data_io_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Physical data I/O fit percent'
+        ,(COUNT(database_name) - SUM(CASE WHEN avg_data_io_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Physical data IO fit percent'
         FROM sys.resource_stats
         WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
    

@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: d49a1c97a578726c26f8533476042646b0b302d3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d8ed5747f29f969535bbafc1624d9d02e54c8418
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-active-directory-b2c-oauth-20-authorization-code-flow"></a>Az Azure Active Directory B2C: OAuth 2.0 hitelesítésikód-folyamata
 Az OAuth 2.0 hitelesítésengedélyezési kódot az eszközön telepített alkalmazások segítségével védett erőforrások, például webes API-k eléréséhez. Az Azure Active Directory B2C segítségével OAuth 2.0 (az Azure AD B2C) végrehajtásával, adhat hozzá a regisztráció, bejelentkezés és egyéb identitás-felügyeleti feladatokat a mobil- és asztali alkalmazásokhoz való. Ez a cikk nyelvfüggetlen. A cikk azt ismerteti, hogyan küldésére és fogadására a HTTP-üzenetek bármely nyílt forráskódú kódtárai használata nélkül.
@@ -195,7 +195,8 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
 | Paraméter | Kötelező? | Leírás |
 | --- | --- | --- |
 | p |Szükséges |A házirendet, amely az eredeti frissítési jogkivonat használatával. A kérelem nem használhatja másik szabályt. Vegye figyelembe, hogy hozzáadta a paraméter a *lekérdezési karakterlánc*, és nem a FELADÁS egy vagy több szervezet. |
-| client_id |Ajánlott |Az alkalmazást a hozzárendelt Alkalmazásazonosító a [Azure-portálon](https://portal.azure.com). |
+| client_id |Szükséges |Az alkalmazást a hozzárendelt Alkalmazásazonosító a [Azure-portálon](https://portal.azure.com). |
+| client_secret |Szükséges |A társított a client_id a client_secret a [Azure-portálon](https://portal.azure.com). |
 | grant_type |Szükséges |A támogatás típusát. A hitelesítésikód-folyamata ezen szakasza az engedélytípus kell `refresh_token`. |
 | Hatókör |Ajánlott |Hatókörök szóközökkel elválasztott listája. Egy hatókör érték azt jelzi, az Azure AD mindkét kérnek engedély. Használja az ügyfél-azonosító, a hatókör, az azt jelzi, hogy az alkalmazás egy hozzáférési jogkivonatot, amely használható a saját szolgáltatás vagy webes API-t kell-e, képviseli az azonos ügyfél-azonosítót.  A `offline_access` hatókör azt jelzi, hogy az alkalmazás egy frissítési jogkivonat kell hosszú élettartamú erőforrások elérése érdekében.  Is használhatja a `openid` egy azonosító jogkivonatot kérhet az Azure AD B2C hatókör. |
 | redirect_uri |Optional |Az átirányítási URI-t, az alkalmazás, ahol kapott engedélyezési kódot. |

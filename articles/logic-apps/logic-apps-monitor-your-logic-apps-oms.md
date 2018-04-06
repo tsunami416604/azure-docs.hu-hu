@@ -1,12 +1,12 @@
 ---
-title: "A logikai alkalmazás figyelése és a get észrevételeket fusson, OMS - Azure Logic Apps |} Microsoft Docs"
-description: "A logic app fut, Naplóelemzés és az Operations Management Suite (OMS) insights és gazdagabb hibakeresési adatainak lekérése – hibaelhárítás és diagnosztika figyelése"
+title: A logikai alkalmazás figyelése és a get észrevételeket fusson, Log Analytics - Azure Logic Apps |} Microsoft Docs
+description: A logic app futtatása az elemzések és gazdagabb hibakeresési adatainak lekérése – hibaelhárítás és diagnosztika Naplóelemzési figyelése
 author: divyaswarnkar
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: integration
 ms.tgt_pltfrm: na
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/9/2017
 ms.author: LADocs; divswa
-ms.openlocfilehash: 2f9f27dc74348909b89941c2bb17ccdf610dba33
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d484aaf7d7582bd474d7437a7a62f41880690dbc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="monitor-and-get-insights-about-logic-app-runs-with-operations-management-suite-oms-and-log-analytics"></a>Logikai alkalmazás figyelése és a get észrevételeket fut, az Operations Management Suite (OMS) és a Naplóelemzési
+# <a name="monitor-and-get-insights-about-logic-app-runs-with-log-analytics"></a>Logikai alkalmazás figyelése és a get észrevételeket Naplóelemzési fut
 
-Figyelési és gazdagabb hibakeresési információ bekapcsolása Naplóelemzési logikai alkalmazás létrehozásakor egy időben. A Naplóelemzési biztosít naplózásának és figyelésének a logikai alkalmazásnak diagnosztika futtatása az Operations Management Suite (OMS) portálon keresztül. A Logic Apps-kezelési megoldás az OMS-be való hozzáadásakor a logic app futtatása és a kívánt részletes adatok, például állapot, a végrehajtási idő, a ismételt továbbítása során állapot és a korrelációs azonosító lekérése összesített állapotát.
+Figyelési és gazdagabb hibakeresési információ bekapcsolása Naplóelemzési logikai alkalmazás létrehozásakor egy időben. A Naplóelemzési biztosít naplózásának és figyelésének a logikai alkalmazásnak diagnosztika futtatása az Azure portálon keresztül. A Logic Apps-kezelési megoldás hozzáadásakor összesített állapotának beolvasása a logic app futtatása és a kívánt részletes adatok, például állapot, a végrehajtási idő, a ismételt továbbítása során állapot és a korrelációs azonosító.
 
-Ez a témakör bemutatja, hogyan Naplóelemzési be-és a Logic Apps-kezelési megoldás telepítése OMS, tekintse meg a futtatókörnyezet események és az adatok a Logic Apps alkalmazást futtatni.
+Ez a témakör azt ismerteti, hogyan bekapcsolása Naplóelemzési futásidejű események és a logikai alkalmazásnak adatok futtassa.
 
  > [!TIP]
- > A meglévő logic Apps alkalmazások figyeléséhez, az alábbi lépéseket követve [diagnosztikai naplózás bekapcsolásához és a logic app futásidejű adatokat küldeni a OMS](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
+ > A meglévő logic Apps alkalmazások figyeléséhez, az alábbi lépéseket követve [diagnosztikai naplózás bekapcsolásához és a logic app futásidejű adatokat küldeni a Naplóelemzési](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
 ## <a name="requirements"></a>Követelmények
 
-Kezdés előtt kell az OMS-munkaterület rendelkezik. Ismerje meg, [OMS-munkaterület létrehozása](../log-analytics/log-analytics-get-started.md). 
+Mielőtt elkezdené, szükség van a Naplóelemzési munkaterület. Ismerje meg, [a Naplóelemzési munkaterület létrehozása](../log-analytics/log-analytics-quick-create-workspace.md). 
 
 ## <a name="turn-on-diagnostics-logging-when-creating-logic-apps"></a>A logic apps létrehozásakor diagnosztikai naplózás bekapcsolása
 
@@ -44,56 +44,47 @@ Kezdés előtt kell az OMS-munkaterület rendelkezik. Ismerje meg, [OMS-munkater
    1. Adjon meg egy nevet a Logic Apps alkalmazást, és válassza ki az Azure-előfizetéshez. 
    2. Hozzon létre vagy válasszon ki egy Azure-erőforráscsoportot.
    3. Állítsa be **Analytics jelentkezzen** való **a**. 
-   Válassza ki az OMS-munkaterület, ahol szeretné elküldeni a adatait a Logic Apps alkalmazást futtat. 
+   Válassza ki a Naplóelemzési munkaterület, ahol szeretné elküldeni a adatait a Logic Apps alkalmazást futtat. 
    4. Ha elkészült, válassza ki a **rögzítés az irányítópulton** > **létrehozása**.
 
       ![Logikai alkalmazás létrehozása](./media/logic-apps-monitor-your-logic-apps-oms/create-logic-app.png)
 
-      Ez a lépés befejezése után az Azure létrehoz a logikai alkalmazás, amely most már az OMS-munkaterület társított. 
-      Emellett ebben a lépésben is automatikusan telepíti a Logic Apps-kezelési megoldás az OMS-munkaterület.
+      Ez a lépés befejezése után az Azure létrehoz a logikai alkalmazás, amely mostantól a Naplóelemzési munkaterület társított. 
+      Is, ez a lépés is automatikusan telepíti a Logic Apps-kezelési megoldás a munkaterületen.
 
-3. Megtekintheti a logic app futó OMS-ben, [folytassa a következő lépéseket](#view-logic-app-runs-oms).
+3. Megtekintheti a Logic Apps alkalmazást futtat, [folytassa a következő lépéseket](#view-logic-app-runs-oms).
 
-## <a name="install-the-logic-apps-management-solution-in-oms"></a>Az OMS a Logic Apps-kezelési megoldás telepítése
+## <a name="install-the-logic-apps-management-solution"></a>A Logic Apps-kezelési megoldás telepítése
 
-Ha Ön már engedélyezve van a Naplóelemzési a logikai alkalmazás létrehozása után, kihagyhatja ezt a lépést. Már van a Logic Apps felügyeleti megoldás, OMS telepítve.
+Ha Ön már engedélyezve van a Naplóelemzési a logikai alkalmazás létrehozása után, kihagyhatja ezt a lépést. Már van a Logic Apps felügyeleti megoldás, telepítve.
 
 1. Az a [Azure-portálon](https://portal.azure.com), válassza a **több szolgáltatások**. Keresse meg a "naplóelemzési" szűrőként, és válassza a **Naplóelemzési** látható módon:
 
    ![Válassza ki a "Naplóelemzési"](media/logic-apps-monitor-your-logic-apps-oms/find-log-analytics.png)
 
-2. A **Naplóelemzési**, található, és válassza ki az OMS-munkaterület. 
+2. A **Naplóelemzési**, található, és válassza ki a Naplóelemzési munkaterület. 
 
-   ![Az OMS-munkaterület kiválasztása](media/logic-apps-monitor-your-logic-apps-oms/select-logic-app.png)
+   ![A Naplóelemzési munkaterület kiválasztása](media/logic-apps-monitor-your-logic-apps-oms/select-logic-app.png)
 
 3. A **felügyeleti**, válassza a **OMS-portálon**.
 
    ![Válassza ki a "OMS-portálon"](media/logic-apps-monitor-your-logic-apps-oms/oms-portal-page.png)
 
-4. A kezdőlapon OMS a frissítési szalagcím akkor jelenik meg, ha válassza ki a szalagcím, hogy az OMS-munkaterület először frissítenie. Válassza a **megoldások gyűjtemény**.
-
-   ![Válassza ki a "Megoldások gyűjtemény"](media/logic-apps-monitor-your-logic-apps-oms/solutions-gallery.png)
-
-5. A **minden megoldás**, található, és válassza ki a csempe a **Logic Apps felügyeleti** megoldás.
+4. A **minden megoldás**, található, és válassza ki a csempe a **Logic Apps felügyeleti** megoldás.
 
    ![Válassza ki a "Logic Apps kezelése"](media/logic-apps-monitor-your-logic-apps-oms/logic-apps-management-tile2.png)
 
-6. Az OMS-munkaterület a megoldás telepítéséhez válassza **Hozzáadás**.
+5. A Naplóelemzési munkaterület a megoldás telepítéséhez válassza **Hozzáadás**.
 
    ![Válassza a "Hozzáadás" a "Logic Apps kezelése"](media/logic-apps-monitor-your-logic-apps-oms/add-logic-apps-management-solution.png)
 
 <a name="view-logic-app-runs-oms"></a>
 
-## <a name="view-your-logic-app-runs-in-your-oms-workspace"></a>A Logic Apps alkalmazást futtat az OMS-munkaterület megjelenítése
+## <a name="view-your-logic-app-runs-in-your-log-analytics-workspace"></a>A Logic Apps alkalmazást futtat a Naplóelemzési munkaterület megjelenítése
 
-1. Számát és a logic app kísérletekhez állapotának megtekintéséhez nyissa meg a az OMS-munkaterület áttekintő lapja. Tekintse át a részleteket a a **Logic Apps felügyeleti** csempére.
+1. A szám és a logic app kísérletekhez állapotának megtekintéséhez nyissa meg a Naplóelemzési munkaterület áttekintő lapja. Tekintse át a részleteket a a **Logic Apps felügyeleti** csempére.
 
    ![Logic app futtatása száma és állapotát megjelenítő áttekintés csempe](media/logic-apps-monitor-your-logic-apps-oms/overview.png)
-
-   > [!Note]
-   > Ha a frissítési szalagcím akkor jelenik meg, a Logic Apps felügyeleti csempe helyett, válassza ki azt a transzparens, hogy az OMS-munkaterület először frissítenie.
-  
-   > ![A frissítés "OMS-munkaterület"](media/logic-apps-monitor-your-logic-apps-oms/oms-upgrade-banner.png)
 
 2. További információt a logic app futtatása az összefoglaló megtekintéséhez válassza a **Logic Apps felügyeleti** csempére.
 

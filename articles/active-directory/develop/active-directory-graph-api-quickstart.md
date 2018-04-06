@@ -3,7 +3,7 @@ title: Az Azure AD Graph API a gyors üzembe helyezés |} Microsoft Docs
 description: Az Azure Active Directory Graph API-val programozott hozzáférést biztosít az Azure AD-OData REST API-végpontokon keresztül. Alkalmazások az Azure AD Graph API használható létrehozása, olvasása, frissítése és Törlés (CRUD) típusú műveletek directory adatok és objektumok.
 services: active-directory
 documentationcenter: n/a
-author: viv-liu
+author: mtillman
 manager: mtillman
 editor: ''
 tags: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/28/2017
-ms.author: viviali
+ms.date: 04/02/2018
+ms.author: mtillman
 ms.custom: aaddev
-ms.openlocfilehash: 6869fc8ec582ea857128e91f1f127e9255e77865
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: d195d808e07b872c11379f13b6e89794da39f70e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="quickstart-for-the-azure-ad-graph-api"></a>Az Azure AD Graph API a gyors üzembe helyezés
 Az Azure Active Directory (AD) Graph API-val programozott hozzáférést biztosít az Azure AD-OData REST API-végpontokon keresztül. Alkalmazások az Azure AD Graph API használható létrehozása, olvasása, frissítése és Törlés (CRUD) típusú műveletek directory adatok és objektumok. Például használhatja az Azure AD Graph API új felhasználó létrehozása, megtekintése vagy felhasználó tulajdonságai, jelszó módosítása, ellenőrizze a szerepköralapú hozzáférési csoportok tagságát letiltja, vagy törölje a felhasználót. Azure AD Graph API-funkciókat és az alkalmazás-forgatókönyvek további információkért lásd: [Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) és [Azure AD Graph API Előfeltételek](https://msdn.microsoft.com/library/hh974476.aspx). 

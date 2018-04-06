@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: b845f3112d96838454653dcd742b950009206bf4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3da4b0286ddea88d8009757ea44797e4269140a2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Másolja az adatokat, és az SQL-kiszolgáló Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -404,7 +404,7 @@ Figyelje meg, hogy a céltábla rendelkezik-e az azonosító oszlop.
 
 Figyelje meg, hogy a forrás és cél táblázatként különböző sémája (cél rendelkezik egy olyan további oszlop identitású). Ilyen esetben meg kell adnia **struktúra** tulajdonság az a tároló adatkészlet-definícióban, amely nem tartalmazza az identitásoszlop.
 
-## <a name="invoke-stored-procedure-from-sql-sink"></a>A fogadó SQL tárolt eljárás meghívása
+## <a name="invoking-stored-procedure-for-sql-sink"></a> A fogadó SQL tárolt eljárás meghívása
 
 Adatok másolása az SQL Server-adatbázisba, amikor egy felhasználó által megadott tárolt eljárás nem sikerült konfigurálni és további paraméterek meghívva.
 
@@ -499,7 +499,7 @@ Ha másol adatokat az/SQL Server, a következő megfeleltetéseket segítségév
 | ntext |Karakterlánc, Char] |
 | Numerikus |Decimális |
 | nvarchar |Karakterlánc, Char] |
-| valós |Egyedülálló |
+| valós |Önálló |
 | ROWVERSION |Byte] |
 | smalldatetime |DateTime |
 | smallint |Int16 |

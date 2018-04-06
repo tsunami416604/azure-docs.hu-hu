@@ -1,13 +1,13 @@
 ---
-title: "SAP központi telepítések Azure írási gyorsító |} Microsoft Docs"
-description: "Üzemeltetési útmutató a SAP HANA-rendszerek üzembe helyezett Azure virtuális gépeken."
+title: SAP központi telepítések Azure írási gyorsító |} Microsoft Docs
+description: Üzemeltetési útmutató a SAP HANA-rendszerek üzembe helyezett Azure virtuális gépeken.
 services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: msjuergent
 manager: patfilot
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d1ca15028590824cef95e3e9c2d957f9883a0e3
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 177bc05eea3aa05231c71a42950fa622b68afc53
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-write-accelerator-for-sap-deployments"></a>Az Azure írási gyorsító SAP telepítésekhez
 Azure írási gyorsító az első megkezdődött M sorozatú virtuális gépek kizárólag funkcionalitást. Az Azure-írási gyorsító adatsorozattal bármely más Virtuálisgép-Azure, kivéve az M-sorozat nem érhető el. Állapota a neve, mint a funkció célja javítása a prémium szintű Azure Storage elleni írások késését i/o. 
@@ -28,10 +28,11 @@ Azure írási gyorsító az első megkezdődött M sorozatú virtuális gépek k
 >[!NOTE]
 > Ezen a ponton az Azure-írási gyorsító nyilvános előzetes verziójában, és megköveteli az Azure-előfizetése Azonosítóját fehér listája
 
-Az Azure írási gyorsító szolgáltatás működik, mint a nyilvános előzetes verzió:
+Az Azure írási gyorsító funkciók M-sorozat telepítési, mint a nyilvános előzetes verzió érhető el:
 
 - Nyugat-US2
 - Nyugat-Európa
+- Délkelet-Ázsia
 
 ## <a name="planning-for-using-azure-write-accelerator"></a>Azure írási gyorsító használatának megtervezése
 A kötetek, a tranzakciós napló tartalmaz, vagy rögzít egy adatbázis-kezelő visszaállítása Azure írási gyorsító használható. Egy adatbázis-kezelő adatkötetek Azure írási gyorsító használandó nem ajánlott. E korlátozás szükség, hogy Azure írási gyorsító igényel-e az Azure Premium Storage VHD-k csatlakoztatni kell a további olvasási gyorsítótárazása nélkül, amelyet a prémium szintű Storage. Az ilyen típusú gyorsítótár nagyobb előnyeit hagyományos adatbázisok figyelhető. Írási gyorsító csak írási tevékenységek érinti, és nem felgyorsíthatja az olvasási, a támogatott kialakítása SAP gyorsító írni a tranzakciós napló ellen, vagy napló meghajtók támogatott SAP-adatbázisok visszaállítása. 

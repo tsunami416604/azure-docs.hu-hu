@@ -1,8 +1,8 @@
 ---
-title: "Azure Data Lake Analytics használatának Python kezelése |} Microsoft Docs"
-description: "Ebből a cikkből megtudhatja, hogyan használhatja a Pythont Data Lake Store-fiók létrehozásához és feladatok elküldéséhez. "
+title: Azure Data Lake Analytics használatának Python kezelése |} Microsoft Docs
+description: 'Ebből a cikkből megtudhatja, hogyan használhatja a Pythont Data Lake Store-fiók létrehozásához és feladatok elküldéséhez. '
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: matt1883
 manager: jhubbard
 editor: cgronlun
@@ -15,11 +15,11 @@ ms.workload: big-data
 ms.date: 06/18/2017
 ms.author: saveenr
 ms.custom: devcenter
-ms.openlocfilehash: 22b56e9569ac1fd2afe2c91013fa5605f9f3ef99
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0182a14979550c880904ec829f6b59dee016cad2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-azure-data-lake-analytics-using-python"></a>Azure Data Lake Analytics használatának Python kezelése
 
@@ -95,7 +95,7 @@ import logging, getpass, pprint, uuid, time
 
 Győződjön meg arról, hogy a modulok importálása a parancsfájl futtatásához.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 ### <a name="interactive-user-authentication-with-a-pop-up"></a>Interaktív felhasználói hitelesítéssel egy előugró ablak
 
@@ -150,13 +150,11 @@ armGroupResult = resourceClient.resource_groups.create_or_update( rg, ResourceGr
 Először létre kell hoznia egy store-fiók.
 
 ```python
-adlaAcctResult = adlaAcctClient.account.create(
+adlsAcctResult = adlsAcctClient.account.create(
     rg,
-    adla,
-    DataLakeAnalyticsAccount(
-        location=location,
-        default_data_lake_store_account=adls,
-        data_lake_store_accounts=[DataLakeStoreAccountInfo(name=adls)]
+    adls,
+    DataLakeStoreAccount(
+        location=location)
     )
 ).wait()
 ```
@@ -251,7 +249,7 @@ newPolicyParams = ComputePolicyCreateOrUpdateParameters(userAadObjectId, "User",
 adlaAccountClient.computePolicies.createOrUpdate(rg, adla, "GaryMcDaniel", newPolicyParams)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha ugyanezt az oktatóanyagot más eszközök használatával szeretné megtekinteni, kattintson az oldal tetején található lapválasztókra.
 - A U-SQL nyelv megismerése: [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md) (Ismerkedés az Azure Data Lake Analytics U-SQL nyelvével).

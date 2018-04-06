@@ -1,24 +1,24 @@
 ---
-title: "Korlátozza, hogy a bérlők - Azure felhőalapú alkalmazásokba való hozzáférés kezelése |} Microsoft Docs"
-description: "Bérlői korlátozások segítségével kezelheti a felhasználók hogyan férhetnek hozzá az Azure AD-bérlő alapuló alkalmazásokat."
+title: Korlátozza, hogy a bérlők - Azure felhőalapú alkalmazásokba való hozzáférés kezelése |} Microsoft Docs
+description: Bérlői korlátozások segítségével kezelheti a felhasználók hogyan férhetnek hozzá az Azure AD-bérlő alapuló alkalmazásokat.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: mtillman
 editor: yossib
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 04/03/2018
 ms.author: kgremban
-ms.openlocfilehash: 63e0fa54433a60fe7384d21cf7d215cc8283afca
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a6b498b38e76dfa2553bf3a916b723cd774d950d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>A felhőalapú alkalmazások esetében használja bérlői korlátozások a Szolgáltatottszoftver-hozzáférés kezelése
 
@@ -71,8 +71,8 @@ A következő konfiguráció szükséges bérlői korlátozásának engedélyez�
 Az egyes bejövő kérelmek login.microsoftonline.com, login.microsoft.com és login.windows.net, két HTTP-fejléc insert: *korlátozása-Access-az-bérlők* és *korlátozása-Access-környezet*.
 
 A fejléc a következő elemeket kell tartalmaznia: 
-- A *korlátozása-Access-az-bérlők*, érték \<bérlői lista megengedett\>, amely, engedélyezi a felhasználók hozzáférhessenek a bérlők vesszővel tagolt listája. Bármely tartomány, amely regisztrálva van egy bérlő segítségével azonosíthatja a bérlő ezen a listán. Például hogy hozzáférést a Contoso és Fabrikam mind a bérlők számára, a név-érték pár néz ki:`Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com` 
-- A *korlátozása-Access-környezet*, egy egyetlen Azonosítót, mely bérlői beállítja a bérlő korlátozások deklaráló érték. Például Contoso deklarálnia eljárva, amely a bérlői korlátozások házirend beállítása, a név-érték pár néz ki:`Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
+- A *korlátozása-Access-az-bérlők*, érték \<bérlői lista megengedett\>, amely, engedélyezi a felhasználók hozzáférhessenek a bérlők vesszővel tagolt listája. Bármely tartomány, amely regisztrálva van egy bérlő segítségével azonosíthatja a bérlő ezen a listán. Például hogy hozzáférést a Contoso és Fabrikam mind a bérlők számára, a név-érték pár néz ki:  `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com` 
+- A *korlátozása-Access-környezet*, egy egyetlen Azonosítót, mely bérlői beállítja a bérlő korlátozások deklaráló érték. Például Contoso deklarálnia eljárva, amely a bérlői korlátozások házirend beállítása, a név-érték pár néz ki: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
 
 > [!TIP]
 > A könyvtár-azonosítója a található a [Azure-portálon](https://portal.azure.com). Jelentkezzen be rendszergazdaként, válassza **Azure Active Directory**, majd jelölje be **tulajdonságok**.
@@ -112,7 +112,9 @@ Tekintse meg [frissített Office 365 modern hitelesítést](https://blogs.office
 
 Bérlői korlátozások jelenleg az Office 365 webböngésző-alapú alkalmazások támogatják (az Office-portál Yammer, SharePoint webhelyek, az Outlook Web, stb.). Vastag ügyfelek (Outlook, a Skype vállalati, a Word, Excel, PowerPoint, stb.) Bérlői korlátozások csak kényszerítheti a modern hitelesítés használatakor.  
 
-Outlook és Skype a modern hitelesítést támogató üzleti ügyfelek továbbra is tudni használni a bérlők elleni régebbi protokollokra, ahol nincs engedélyezve a modern hitelesítést, hatékonyan kihagyásával bérlői korlátozások. Az Outlook, a Windows-ügyfelek dönthetnek úgy, hogy meggátolja, hogy a végfelhasználók számára nem engedélyezett levelezési fiók hozzáadása a profilok korlátozások megvalósítása. Például tekintse meg a [tiltása nem alapértelmezett Exchange-fiókok hozzáadása](http://gpsearch.azurewebsites.net/default.aspx?ref=1) csoportházirend-beállítás. Az Outlook, a nem Windows platformokon, és a Skype vállalati minden platformon bérlő korlátozások teljes körű támogatása jelenleg nem áll rendelkezésre.
+Outlook és Skype a modern hitelesítést támogató üzleti ügyfelek előfordulhat, hogy továbbra is tudni használni a bérlők elleni régebbi protokollokra, ahol nincs engedélyezve a modern hitelesítést, hatékonyan kihagyásával bérlői korlátozások. Alkalmazásokat, amelyek használják az örökölt protokollok bérlői korlátozások előfordulhat, hogy blokkolja, ha azok kapcsolatba login.microsoftonline.com, login.microsoft.com vagy login.windows.net hitelesítés során.
+
+Az Outlook, a Windows-ügyfelek dönthetnek úgy, hogy meggátolja, hogy a végfelhasználók számára nem engedélyezett levelezési fiók hozzáadása a profilok korlátozások megvalósítása. Például tekintse meg a [tiltása nem alapértelmezett Exchange-fiókok hozzáadása](http://gpsearch.azurewebsites.net/default.aspx?ref=1) csoportházirend-beállítás. Az Outlook, a nem Windows platformokon, és a Skype vállalati minden platformon bérlő korlátozások teljes körű támogatása jelenleg nem áll rendelkezésre.
 
 ## <a name="testing"></a>Tesztelés
 
@@ -151,7 +153,7 @@ Attól függően, hogy a proxy infrastruktúra szolgáltatásait akkor esetleg e
 
 Tekintse meg a proxy server dokumentációjában talál információt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [frissített Office 365 modern hitelesítést](https://blogs.office.com/2015/11/19/updated-office-365-modern-authentication-public-preview/)
 

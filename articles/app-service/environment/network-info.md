@@ -1,6 +1,6 @@
 ---
-title: "Hálózat az Azure App Service-környezetek megfontolások"
-description: "Ismerteti a ASE hálózati forgalom és az NSG-ket és a mértékéig udr-EK beállítása"
+title: Hálózat az Azure App Service-környezetek megfontolások
+description: Ismerteti a ASE hálózati forgalom és az NSG-ket és a mértékéig udr-EK beállítása
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2017
+ms.date: 03/20/2018
 ms.author: ccompy
-ms.openlocfilehash: c4779ada60fab2db5249a107abfc7ca6f80cb16f
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 54257ae3e02a00c5097aa7880fa356da3bc0ecce
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Az App Service-környezetek hálózati szempontjai #
 
@@ -163,7 +163,7 @@ A függvény ASE első két bejövő követelményei ebben a példában a lista 
 
 ![Bejövő biztonsági szabályok][4]
 
-Alapértelmezett szabály lehetővé teszi, hogy az IP-címek a ASE alhálózati felvegye a Vneten belül. Egy másik alapértelmezett szabály lehetővé teszi, hogy a terheléselosztó, más néven a nyilvános VIP, a mértékéig kommunikációhoz. Az alapértelmezett szabályok megtekintéséhez válasszon **alapértelmezett szabályok** mellett a **Hozzáadás** ikonra. Ha a Megtagadás, minden más szabály, miután az NSG-szabályok látható, hogy akadályozza meg a forgalmat a VIP és a ASE között. A virtuális hálózaton belül érkező forgalom elkerülése érdekében adja hozzá a saját szabály, amely engedélyezi a bejövő. A forrás AzureLoadBalancer egyenlőnek használata a cél **bármely** és egy porttartomány  **\*** . Az NSG-szabály ASE van alkalmazva, mert nem kell a cél adott lehet.
+Alapértelmezett szabály lehetővé teszi, hogy az IP-címek a ASE alhálózati felvegye a Vneten belül. Egy másik alapértelmezett szabály lehetővé teszi, hogy a terheléselosztó, más néven a nyilvános VIP, a mértékéig kommunikációhoz. Az alapértelmezett szabályok megtekintéséhez válasszon **alapértelmezett szabályok** mellett a **Hozzáadás** ikonra. Ha a Megtagadás, minden más szabály, miután az NSG-szabályok látható, hogy akadályozza meg a forgalmat a VIP és a ASE között. A virtuális hálózaton belül érkező forgalom elkerülése érdekében adja hozzá a saját szabály, amely engedélyezi a bejövő. A forrás AzureLoadBalancer egyenlőnek használata a cél **bármely** és egy porttartomány **\***. Az NSG-szabály ASE van alkalmazva, mert nem kell a cél adott lehet.
 
 Ha az alkalmazáshoz rendelt IP-címet, győződjön meg arról, hogy a portok nyitva tartása. A portok megtekintéséhez válasszon **App Service Environment-környezet** > **IP-címek**.  
 
@@ -175,31 +175,10 @@ Az NSG-k meghatározása után rendelje hozzá őket az alhálózatot, amely a A
 
 ## <a name="routes"></a>Útvonalak ##
 
-Az útvonalak a kényszerített bújtatás és a kényszerített bújtatással folytatott munka kulcsfontosságú elemei. Egy Azure-beli virtuális hálózatban az útválasztás a leghosszabb előtag-megfeleltetés (LPM) alapján történik. Ha egynél több útvonal rendelkezik ugyanazzal az LPM megfeleltetéssel, akkor a rendszer az útvonalat a kiindulás alapján választja ki, az alábbi sorrendben:
+A kényszerített bújtatás esetén beállítása útvonalak a virtuális hálózat, a kimenő forgalom nem lépjen közvetlenül az internethez, de a fürtnevek máshol, például egy ExpressRoute-átjárót vagy a virtuális készülék.  Ha konfigurálja a ASE oly módon, majd elolvasni a dokumentumot a kell [az App Service-környezet konfigurálása a kényszerített bújtatás][forcedtunnel].  Ez a dokumentum jelzi a beállítások körét az ExpressRoute és a kényszerített bújtatás használatát.
 
-- Felhasználó által meghatározott útvonal (UDR)
-- BGP-útvonal (ExpressRoute használatánál)
-- Rendszerútvonal
-
-Ha többet szeretne megtudni a virtuális hálózatokban történő útválasztásról, olvassa el a [felhasználó által megadott útvonalakat és IP-továbbítást][UDRs] ismertető cikket.
-
-Az Azure SQL-adatbázis, amely a ASE használja a rendszer egy tűzfal van. Kommunikáció a ASE nyilvános VIP oly módon, hogy ez igényli. Az SQL adatbázishoz a ASE kapcsolódásának elutasításra kerülne, ha elküldi őket egy másik IP-cím és az ExpressRoute-kapcsolatot.
-
-Ha a bejövő felügyeleti kérelmekre adott válaszokat le az ExpressRoute, a válaszcímet eltér az eredeti célra. Ez az eltérés megsérti a TCP-kommunikációt.
-
-A ASE működjön, miközben a virtuális hálózat egy ExpressRoute van konfigurálva a legegyszerűbb is van:
-
--   Konfigurálja az ExpressRoute hivatkozik _0.0.0.0/0_. Ez alapértelmezés szerint kényszerített bújtatás mellett irányít minden kimenő forgalmat a helyszíni hálózatba.
--   Hozzon létre egy UDR-t. Alkalmazza azt az alhálózatot, amely tartalmazza a egy címelőtagot ASE _0.0.0.0/0_ és következőugrás-típusú _Internet_.
-
-Ha a módosítások két, a ASE alhálózatról érkező forgalmat az internet felé nem működik az ExpressRoute- és a ASE le kényszerített. 
-
-> [!IMPORTANT]
-> Az UDR-ben meghatározott útvonalaknak annyira pontosnak kell lenniük, hogy prioritást kapjanak az ExpressRoute-konfiguráció által meghirdetett bármely útvonallal szemben. Az előző példa a széles 0.0.0.0/0 címtartományt használja. Ezt véletlenül felülírhatják olyan útvonalhirdetések, amelyek pontosabb címtartományokat használnak.
->
-> ASEs cross-hirdetményt a magánfelhő-társviszony létesítése – elérési utat a nyilvános társviszony elérési útvonalak ExpressRoute beállításokkal nem támogatottak. A konfigurált nyilvános társviszonyt létesítő ExpressRoute-konfigurációk útvonalhirdetéseket kapnak a Microsofttól. A meghirdetések Microsoft Azure IP-címtartományok nagy készletét tartalmazzák. Ha a címtartomány határokon meghirdetett privát társviszony elérési útján, minden kimenő hálózati csomagokat a ASE alhálózatból egy ügyfél a helyi hálózati infrastruktúra bújtatott hatályba. A hálózati folyamat jelenleg nem támogatott a ASEs. Egy megoldás erre a problémára az, ha leállítja az útvonalak keresztbe hirdetését a nyilvános társviszony-létesítési útvonalról a privát társviszony-létesítési útvonalra.
-
-Hozzon létre egy UDR, kövesse az alábbi lépéseket:
+Amikor létrehoz egy ASE a portálon azt is létrehozhat egy útválasztási táblázatban, amely a mértékéig jön létre az alhálózaton.  Útvonalak egyszerűen tegyük fel például, a kimenő forgalmat küldeni közvetlenül az internethez.  
+Az azonos útvonalak manuális létrehozásához kövesse az alábbi lépéseket:
 
 1. Ugrás az Azure-portálon. Válassza ki **hálózati** > **útvonaltáblát**.
 
@@ -217,17 +196,15 @@ Hozzon létre egy UDR, kövesse az alábbi lépéseket:
 
     ![Az NSG-k és útvonalak][7]
 
-### <a name="deploy-into-existing-azure-virtual-networks-that-are-integrated-with-expressroute"></a>Üzembe helyezés meglévő Azure virtuális hálózataihoz ExpressRoute integrált ###
+## <a name="service-endpoints"></a>Service Endpoints – szolgáltatásvégpont ##
 
-A ASE egy Vnetet, amely integrálva van a ExpressRoute történő központi telepítéséhez adja meg az alhálózatot, ha azt szeretné, hogy a telepített ASE előre. A Resource Manager-sablon segítségével telepítheti azt. Hozzon létre egy ASE a Vneten belül, amely már rendelkezik konfigurált ExpressRoute:
+A szolgáltatásvégpontokkal Azure-beli virtuális hálózatok és alhálózatok készletére korlátozhatja a több-bérlős szolgáltatásokhoz való hozzáférést. A szolgáltatásvégpontokról bővebben a [virtuális hálózatok szolgáltatásvégpontjaival][serviceendpoints] kapcsolatos dokumentációban olvashat. 
 
-- Hozzon létre egy alhálózatot a ASE üzemeltetéséhez.
+Amikor engedélyezi a szolgáltatásvégpontokat egy erőforráson, az összes többi útvonalhoz képest nagyobb prioritású útvonalak jönnek létre. Ha kényszerítetten bújtatott ASE-vel használ szolgáltatásvégpontokat, az Azure SQL és az Azure Storage felügyeleti forgalma nem kényszerítetten bújtatott. 
 
-    > [!NOTE]
-    > Nincs más lehet az alhálózat, de a ASE. Ne válasszon, amely lehetővé teszi a jövőbeli növekedésre címteret. Később Ez a beállítás nem módosítható. Azt javasoljuk, hogy a méretet `/25` 128-címekkel.
+Amikor a szolgáltatásvégpontok engedélyezettek egy Azure SQL-példánnyal rendelkező alhálózaton, akkor az erről az alhálózatról elért összes Azure SQL-példányhoz engedélyezve kell lennie a szolgáltatásvégpontoknak. Ha több Azure SQL-példányt szeretne elérni ugyanarról az alhálózatról, nem engedélyezheti a szolgáltatásvégpontokat csak az egyik Azure SQL-példányon, egy másikon pedig nem. Az Azure Storage nem úgy viselkedik, mint az Azure SQL. Amikor az Azure Storage szolgáltatáshoz engedélyezi a szolgáltatásvégpontokat, azzal zárolja az erőforráshoz való hozzáférést az alhálózatról, de továbbra is elérhet más Azure Storage-fiókokat, még akkor is, ha azokon nincsenek engedélyezve a szolgáltatásvégpontok.  
 
-- Hozzon létre udr-EK (például az útvonaltáblák), a fentebb leírt módon, és állítsa be, amely az alhálózaton.
-- A ASE létrehozása a Resource Manager sablonnal [egy ASE létrehozása egy Resource Manager-sablon használatával][MakeASEfromTemplate].
+![Service Endpoints – szolgáltatásvégpont][8]
 
 <!--Image references-->
 [1]: ./media/network_considerations_with_an_app_service_environment/networkase-overflow.png
@@ -237,6 +214,7 @@ A ASE egy Vnetet, amely integrálva van a ExpressRoute történő központi tele
 [5]: ./media/network_considerations_with_an_app_service_environment/networkase-outboundnsg.png
 [6]: ./media/network_considerations_with_an_app_service_environment/networkase-udr.png
 [7]: ./media/network_considerations_with_an_app_service_environment/networkase-subnet.png
+[8]: ./media/network_considerations_with_an_app_service_environment/serviceendpoint.png
 
 <!--Links-->
 [Intro]: ./intro.md
@@ -258,3 +236,6 @@ A ASE egy Vnetet, amely integrálva van a ExpressRoute történő központi tele
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
 [ASEManagement]: ./management-addresses.md
+[serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md
+[forcedtunnel]: ./forced-tunnel-support.md
+[serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md

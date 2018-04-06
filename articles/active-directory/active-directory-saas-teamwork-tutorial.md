@@ -1,10 +1,10 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Teamwork.com |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Teamwork.com között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Teamwork.com |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Teamwork.com között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: bd4413c2-0d7c-41a7-aba4-b7a7a28c9448
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/20/2017
+ms.date: 04/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 00292d0aed24ea034eba8686bcd9cbdd1ef676e3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 07b4be1256b77ac35efab9c6b2d593b4763cdf86
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="tutorial-azure-active-directory-integration-with-teamworkcomhttpswwwteamworkcomprojects"></a>Oktatóanyag: Azure Active Directoryval integrált [Teamwork.com](https://www.teamwork.com/projects)
+# <a name="tutorial-azure-active-directory-integration-with-teamworkcom"></a>Oktatóanyag: Azure Active Directoryval integrált Teamwork.com
 
 Ebben az oktatóanyagban elsajátíthatja Teamwork.com integrálása az Azure Active Directory (Azure AD).
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, t
 Konfigurálása az Azure AD-integrációs Teamwork.com, a következőkre van szükség:
 
 - Az Azure AD szolgáltatásra
-- A [Teamwork.com](https://www.teamwork.com/projects) előfizetés a Pro-terven vagy újabb rendszer
+- Egy Teamwork.com egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
 > Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
@@ -108,10 +108,17 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Az egyszeri bejelentkezés információk Teamwork.com tartomány és az URL-címek](./media/active-directory-saas-teamwork-tutorial/tutorial_teamwork_url.png)
 
-    Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<company name>.teamwork.com`
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<company name>.teamwork.com`
+
+    b. Az a **azonosító** szövegmező, írja be az URL-cím:
+
+    |||
+    |-|-|
+    | `https://teamwork.com/saml`|
+    | `https://eu.teamwork.com/saml`|
 
     > [!NOTE] 
-    > Ez az érték nincs valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címet. Ügyfél [Teamwork.com támogatási csoport](mailto:support@teamwork.com) lekérni ezt az értéket. 
+    > A bejelentkezési URL-cím értéke nincs valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címet. Ügyfél [Teamwork.com támogatási csoport](mailto:support@teamwork.com) lekérni ezt az értéket. 
 
 4. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
 
@@ -122,10 +129,6 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-teamwork-tutorial/tutorial_general_400.png)
 
 6. Egyszeri bejelentkezés konfigurálása **Teamwork.com** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja** való [Teamwork.com támogatási csoport](mailto:support@teamwork.com). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
-
-> [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
 
@@ -204,8 +207,6 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
-
-
 
 <!--Image references-->
 

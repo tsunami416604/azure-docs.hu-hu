@@ -1,18 +1,18 @@
 ---
-title: "Az Azure-modul és verzió mátrix Ansible"
-description: "Az Azure-modul és verzió mátrix Ansible"
+title: Az Azure-modul és verzió mátrix Ansible
+description: Az Azure-modul és verzió mátrix Ansible
 ms.service: ansible
-keywords: "ansible, a szerepkörök, a mátrix, a verzió, a azure, a devops"
+keywords: ansible, a szerepkörök, a mátrix, a verzió, a azure, a devops
 author: tomarcher
 manager: routlaw
 ms.author: tarcher
-ms.date: 01/19/2018
+ms.date: 03/25/2018
 ms.topic: article
-ms.openlocfilehash: f62cc2df9e4ce815c4427b80e271ddc672748e4f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 011cb173ffdecc7a22c2e470209719ccaf6bda58
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="ansible-module-and-version-matrix"></a>Ansible modul és verzió mátrix
 
@@ -20,7 +20,7 @@ ms.lasthandoff: 02/01/2018
 Ansible részét képező számos modult, amely közvetlenül a távoli állomáson, vagy playbooks keresztül hajtható végre.
 Ez a cikk az Azure-hoz, amely építhető ki az Azure felhőalapú erőforrásokat, például a virtuális gépet, a hálózat és tároló szolgáltatások Ansible modulok listája. Ezek a modulok Ansible hivatalos kiadása, illetve a következő forgatókönyv szerepkörök, Microsoft által kiadott kaphat.
 
-| Az Azure-Ansible modul                   |  Ansible 2.4 |  Alkalmazástervezési szerepkör [azure_module](#introduction-to-azuremodule) |  Playbook Role [azure_preview_module](#introduction-to-azurepreviewmodule) | 
+| Az Azure-Ansible modul                   |  Ansible 2.4 |  Ansible 2,5 |  Playbook Role [azure_preview_module](#introduction-to-azurepreviewmodule) | 
 |---------------------------------------------|--------------|-----------------------------|-------------------------------------| 
 | **Számítás**                    |           |                          |                                  | 
 | azure_rm_availabilityset                    | Igen          | Igen                         | Igen                                 | 
@@ -54,7 +54,7 @@ Ez a cikk az Azure-hoz, amely építhető ki az Azure felhőalapú erőforrások
 | azure_rm_appgwroute_facts                   | -            | -                           | Igen                                 |
 | azure_rm_appgwroutetable                    | -            | -                           | Igen                                 |
 | azure_rm_securitygroup                      | Igen          | Igen                         | Igen                                 | 
-| azure_rm_appgwroutetable_facts              | Igen          | Igen                         | Igen                                 | 
+| azure_rm_appgwroutetable_facts              | -            | -                           | Igen                                 | 
 | **Storage**                    |           |                          |                                  | 
 | azure_rm_storageaccount                     | Igen          | Igen                         | Igen                                 | 
 | azure_rm_storageaccount_facts               | Igen          | Igen                         | Igen                                 | 
@@ -76,7 +76,7 @@ Ez a cikk az Azure-hoz, amely építhető ki az Azure felhőalapú erőforrások
 | azure_rm_functionapp_facts                  | Igen          | Igen                         | Igen                                 | 
 | **Adatbázisok**                    |           |                          |                                  | 
 | azure_rm_sqlserver                          | -            | Igen                         | Igen                                 | 
-| azure_rm_sqlserver_facts                    | -            | -                           | Igen                                 | 
+| azure_rm_sqlserver_facts                    | -            | Igen                         | Igen                                 | 
 | azure_rm_sqldatabase                        | -            | Igen                         | Igen                                 | 
 | azure_rm_sqldatabase_facts                  | -            | -                           | Igen                                 | 
 | azure_rm_sqlelasticpool                     | -            | -                           | Igen                                 | 
@@ -100,17 +100,13 @@ Ez a cikk az Azure-hoz, amely építhető ki az Azure felhőalapú erőforrások
 | azure_rm_postgresqlconfiguration            | -            | -                           | Igen                                 | 
 | azure_rm_postgresqlconfiguration_facts      | -            | -                           | Igen                                 | 
 | **Key Vault**                    |           |                          |                                  | 
-| azure_rm_keyvault                           | -            | -                           | Igen                                 |
+| azure_rm_keyvault                           | -            | Igen                         | Igen                                 |
 | azure_rm_keyvault_facts                     | -            | -                           | Igen                                 |
-| azure_rm_keyvaultkey                        | -            | -                           | Igen                                 |
-| azure_rm_keyvaultsecret                     | -            | -                           | Igen                                 |
+| azure_rm_keyvaultkey                        | -            | Igen                         | Igen                                 |
+| azure_rm_keyvaultsecret                     | -            | Igen                         | Igen                                 |
 
-## <a name="introduction-to-azuremodule"></a>Azure_module bemutatása
-A [azure_module alkalmazástervezési szerepkör](https://galaxy.ansible.com/Azure/azure_modules/) tartalmazza a legújabb módosításait és az Azure modulok hibajavítások a [devel fiókirodai Ansible tárház](https://github.com/ansible/ansible/tree/devel). Ha nem várja meg a Ansible a következő verzióra, a azure_module szerepkör telepítése akkor hasznos.
 
-A azure_module alkalmazástervezési szerepkör minden három héttel megjelenik.
-
-## <a name="introduction-to-azurepreviewmodule"></a>Azure_preview_module bemutatása
+## <a name="introduction-to-playbook-role-for-azure"></a>Az Azure-forgatókönyv szerepkör bemutatása
 A [azure_preview_module alkalmazástervezési szerepkör](https://galaxy.ansible.com/Azure/azure_preview_modules/) olyan legteljesebb körű szerepkör és a legújabb Azure modulokat tartalmaz. A frissítések és hibajavítások a hivatalos Ansible kiadási-nál több időben történik. Ansible kiépítés célra az Azure erőforrás használja, ha Ön a azure_preview_module szerepkör telepítse.
 
 A azure_preview_module alkalmazástervezési szerepkör minden három héttel megjelenik.

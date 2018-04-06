@@ -1,6 +1,6 @@
 ---
-title: "Áttelepítés – az Azure SQL Database után kezelése |} Microsoft Docs"
-description: "Útmutató: az adatbázis kezelése az Azure SQL Database-áttelepítés után."
+title: Áttelepítés – az Azure SQL Database után kezelése |} Microsoft Docs
+description: 'Útmutató: az adatbázis kezelése az Azure SQL Database-áttelepítés után.'
 services: sql-database
 author: joesackmsft
 manager: craigg
@@ -12,15 +12,15 @@ ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: migration
-ms.openlocfilehash: 4e50a1be3437ab1b027c1ca0f160402239e13e92
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 96bc75e15c99897414fad8c138c8a34ef790af21
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>A felhőben – az Azure SQL Database adatbázis új DBA
 
-Átállás a hagyományos önállóan felügyelt, önálló ellenőrzött környezetben PaaS-környezethez is úgy tűnik, egy kicsit túlságosan először. Egy alkalmazást fejlesztői vagy a Kiszolgálóhoz célszerű mindig tudja, a platform, melyek segítenek megtartani az alkalmazás számára elérhető, performant, biztonságos és refs - legfontosabb funkcióit. Ez a cikk célja, hogy pontosan ez a szerepük. A cikk röviden rendezi az erőforrásokat, és lehetővé teszi az egyes útmutatást legjobb használatáról az SQL-adatbázis főbb képességei kezelése és az alkalmazás megfelelően fut és a felhőben optimális eredmények elérése. Ez a cikk tipikus célközönség lenne azokat, akik:-
+Átállás a hagyományos önállóan felügyelt, önálló ellenőrzött környezetben PaaS-környezethez is úgy tűnik, egy kicsit túlságosan először. Egy alkalmazást fejlesztői vagy a Kiszolgálóhoz célszerű mindig tudja, a platform, melyek segítenek megtartani az alkalmazás számára elérhető, performant, biztonságos és refs - legfontosabb funkcióit. Ez a cikk célja, hogy pontosan ez a szerepük. A cikk röviden rendezi az erőforrásokat, és lehetővé teszi az egyes útmutatást legjobb használatáról az SQL-adatbázis főbb képességei kezelése és az alkalmazás megfelelően fut és a felhőben optimális eredmények elérése. Ez a cikk tipikus célközönség lenne azokat, akik: 
 - A társított alkalmazásokban az Azure SQL Adatbázishoz – a alkalmazás(ok) korszerűsítésénél áttelepítését értékelése.
 - Van a migrálása folyamatban van a alkalmazás(ok) – folyamatos áttelepítési forgatókönyv szerint.
 - Az Azure SQL Database – új DBA a felhőben való áttelepítés nemrégiben fejeződtek be.
@@ -218,7 +218,7 @@ A teljesítménnyel kapcsolatos problémák elhárításakor megközelítését 
 
 A teljesítmény a hibaelhárításban, fontos annak megállapítására, hogy csak az alkalmazás, vagy az adatbázis biztonsági, amely van hatással az alkalmazások teljesítményéről. Gyakran a teljesítmény probléma van az alkalmazás rétegben. Az architektúra vagy az adathozzáférési minták lehet. Tegyük fel, hogy egy chatty alkalmazás, amely a hálózati késés-és nagybetűket. Ebben az esetben az alkalmazás szenved, mert oda-vissza fog sok rövid kérelem lenne ("chatty") az alkalmazás és a kiszolgáló között, és a túlterhelt hálózatra csatlakozik, a használatával egyezzen gyors. Ebben az esetben javíthatja a teljesítményt, használhatja a [kötegelt lekérdezések](sql-database-performance-guidance.md#batch-queries). Kötegek használata segít rendkívüli mértékben mivel most egy kötegben; a kérelmek feldolgozása így segít a körbejárási késés kevesebb és az alkalmazások teljesítményének növelésére. 
 
-Emellett ha azt tapasztalja, az általános teljesítményt, az adatbázis egy akár teljesítménycsökkenés, figyelheti a [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) és [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) dinamikus felügyeleti nézetek annak érdekében, hogy Ismerje meg a CPU, i/o és memória-felhasználás. A lehet a teljesítményre, mert az adatbázis-erőforrások van függeszteni. Lehet, hogy szükség lehet módosítani a teljesítményszintet és/vagy a növekvő és terheléshez zsugorítását alapján szolgáltatásréteget. 
+Emellett ha azt tapasztalja, az általános teljesítményt, az adatbázis egy akár teljesítménycsökkenés, figyelheti a [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) és [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) dinamikus felügyeleti nézetek annak érdekében, hogy CPU IO és memória-felhasználás ismertetése. A lehet a teljesítményre, mert az adatbázis-erőforrások van függeszteni. Lehet, hogy szükség lehet módosítani a teljesítményszintet és/vagy a növekvő és terheléshez zsugorítását alapján szolgáltatásréteget. 
 
 Teljesítményproblémák hangolással kapcsolatos ajánlások átfogó gyűjteményét, lásd: [hangolja az adatbázis](sql-database-performance-guidance.md#tune-your-database).
 

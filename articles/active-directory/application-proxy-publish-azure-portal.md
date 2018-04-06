@@ -1,8 +1,8 @@
 ---
-title: "Alkalmazások közzététele az Azure AD-alkalmazásproxyval | Microsoft Docs"
-description: "A helyszíni alkalmazások közzététele a felhőbe az Azure AD alkalmazásproxy az Azure portálon."
+title: Alkalmazások közzététele az Azure AD-alkalmazásproxyval | Microsoft Docs
+description: A helyszíni alkalmazások közzététele a felhőbe az Azure AD alkalmazásproxy az Azure portálon.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 ms.assetid: d94ac3f4-cd33-4c51-9d19-544a528637d4
@@ -15,11 +15,11 @@ ms.date: 12/06/2017
 ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 43cabb03a698dd87f12fef8e9a4dd54ee42c3ec9
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 1bf72b450747e98e254db77514fc7a902bbe70cc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>Alkalmazások közzététele az Azure AD-alkalmazásproxyval
 
@@ -53,7 +53,7 @@ Kövesse az alábbi lépéseket az alkalmazásproxy az alkalmazások közzétét
    - **Belső URL-cím**: az URL-cím a magánhálózaton belülről történő alkalmazás eléréséhez használt. Megadhat egyedi elérési utat a háttérkiszolgálón a közzétételhez, míg a kiszolgáló további része nem lesz közzétéve. Ezzel a módszerrel tegye közzé a ugyanarra a kiszolgálóra, mint a különböző alkalmazások különböző helyeket, és adjon minden egyes saját nevet és hozzáférési szabályokat.
 
      > [!TIP]
-     > Ha közzétesz egy útvonalat, győződjön meg róla, hogy az tartalmaz minden szükséges lemezképet, szkriptet és stíluslapot az alkalmazásához. Például ha az alkalmazása a https://yourapp/app helyen található, és a https://yourapp/media helyen található képeket használ, elérési útként a következőt javasolt közzétenni: https://yourapp/. A belső URL-cím nem jelennek meg a felhasználók kezdőlapja kell. További információkért lásd: [állítsa be a közzétett alkalmazások egyéni kezdőlapját](application-proxy-office365-app-launcher.md).
+     > Ha közzétesz egy útvonalat, győződjön meg róla, hogy az tartalmaz minden szükséges lemezképet, szkriptet és stíluslapot az alkalmazásához. Például, ha az alkalmazás jelenleg https://yourapp/app és lemezkép helyen https://yourapp/media, akkor kell közzé tenni https://yourapp/ útvonalaként. A belső URL-cím nem jelennek meg a felhasználók kezdőlapja kell. További információkért lásd: [állítsa be a közzétett alkalmazások egyéni kezdőlapját](application-proxy-office365-app-launcher.md).
 
    - **Külső URL-cím**: A címet a felhasználók halad át a alkalmazást a hálózaton kívüli eléréséhez. Ha nem szeretné, az alapértelmezett alkalmazásproxy tartományát szeretné használni, olvassa el [egyéni tartományok az Azure AD alkalmazásproxy](active-directory-application-proxy-custom-domains.md).
    - **Előzetes hitelesítésének**: hogyan alkalmazásproxy előtt adjon hozzáférést a az alkalmazás ellenőrzi a felhasználót. 
@@ -61,6 +61,9 @@ Kövesse az alábbi lépéseket az alkalmazásproxy az alkalmazások közzétét
      - Azure Active Directory: Az alkalmazásproxy átirányítja a felhasználókat az Azure AD bejelentkezési oldalára, ahol megtörténik a címtár és az alkalmazás használatára vonatkozó engedélyeik hitelesítése. Azt javasoljuk, hogy ez a beállítás az alapértelmezett, így például a feltételes hozzáférés és a többtényezős hitelesítés az Azure AD biztonsági funkciók előnyeit élvezheti.
      - Átengedés: A felhasználók hitelesítése az Azure Active Directory hozzáférni az alkalmazáshoz nem tartozik. Hitelesítési követelmények, a háttérkiszolgálón is állíthat be.
    - **Összekötő csoport**: összekötők feldolgozni a távoli elérés az alkalmazáshoz, és összekötő csoportok összekötők és a terület, a hálózati vagy a cél alkalmazások rendszerezése súgó. Ha nincs még létrehozva összekötő csoportok, az alkalmazás hozzá van rendelve **alapértelmezett**.
+
+>[!NOTE]
+>Ha az alkalmazás websocket elemek csatlakozni, győződjön meg arról, hogy rendelkezik-e connector ezen verziója 1.5.612.0 vagy magasabb websocket támogatása és a hozzárendelt összekötő csoport csak akkor használja az összekötők.
 
    ![Az alkalmazás konfigurálása](./media/application-proxy-publish-azure-portal/configure-app.png)
 5. Szükség esetén további beállításokat. A legtöbb alkalmazás esetén kell venni ezeket a beállításokat az alapértelmezett állapotra. 

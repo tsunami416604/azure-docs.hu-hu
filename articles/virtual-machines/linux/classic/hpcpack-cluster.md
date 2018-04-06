@@ -1,11 +1,11 @@
 ---
-title: "Linux virtuális gépek számítási HPC Pack-fürtben lévő |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozzon létre és HPC Pack-fürt használatára az Azure-ban a Linux nagy teljesítményű számítástechnikai (HPC) munkaterhelések"
+title: Linux virtuális gépek számítási HPC Pack-fürtben lévő |} Microsoft Docs
+description: Megtudhatja, hogyan hozzon létre és HPC Pack-fürt használatára az Azure-ban a Linux nagy teljesítményű számítástechnikai (HPC) munkaterhelések
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager,hpc-pack
 ms.assetid: 4d080fdd-5ffe-4f54-a78d-4c818f6eb3fb
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 10/12/2016
 ms.author: danlep
-ms.openlocfilehash: 809d3944311badf265117d353b65642e044d900c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 57ad5d5d2e7e068f47d51408527f1f7553917279
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="get-started-with-linux-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Az Azure-beli HPC Pack-fürtök linuxos számítási csomópontjaival kapcsolatos alapvető tudnivalók
 Állítson be egy [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029.aspx) Azure egy központi fut a Windows Server és több csomópontot tartalmazó fürt számítási csomópontjain futó támogatott Linux-disztribúció. Megismerkedhet a beállítások áthelyezni az adatokat a központi Windows-csomópont, a fürt és a Linux-csomópontok között. Útmutató a fürt Linux HPC feladatok elküldéséhez.
@@ -153,7 +153,7 @@ A környezet és a kívánt fürtkonfigurációt szükség szerint módosítsa a
    
     c. Érvényesítést átadni, miután a parancsfájl létrehozása a fürt erőforrásait sorolja fel. Adja meg *Y* folytatja.
    
-    ![Erőforrások][resources]
+    ![További források][resources]
    
     d. A parancsfájl a HPC Pack fürt telepítése elindul, és a konfiguráció további manuális lépések nélkül befejeződött. A parancsprogram futását néhány percig.
    
@@ -237,7 +237,7 @@ Az első parancs létrehoz egy /openfoam a LinuxNodes csoport minden csomópontj
 > 
 > 
 
-### <a name="nfs-server"></a>NFS-kiszolgáló
+### <a name="nfs-server"></a>NFS server
 Az NFS-szolgáltatás lehetővé teszi a megosztás és az SMB protokollt használó Windows Server 2012 operációs rendszert futtató számítógépekhez és az NFS-protokollt használó Linux-alapú számítógépek közötti áttelepítése. Az NFS-kiszolgáló és a többi csomópontnak kell ugyanabban a virtuális hálózatban üzembe helyezhető. Linux-csomópontokkal SMB-megosztáson képest jobb kompatibilitást biztosít. Például fájlhivatkozások támogatja.
 
 1. Telepítse és állítsa be az NFS-kiszolgáló, kövesse a lépéseket a [Server, a rendszer első Fájlmegosztására-végpontok](http://blogs.technet.com/b/filecab/archive/2012/10/08/server-for-network-file-system-first-share-end-to-end.aspx).
@@ -296,7 +296,7 @@ A HPC Pack [clusrun](https://technet.microsoft.com/library/cc947685.aspx) paranc
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Próbálkozzon a fürt a csomópontok nagyobb számot vertikális felskálázásával, vagy a Linux-munkaterhelések futtatásával a fürtön. Egy vonatkozó példáért lásd: [NAMD futtassa a Microsoft HPC Pack Linux számítási csomópontok az Azure-ban](hpcpack-cluster-namd.md).
 * Próbálja meg a fürt [RDMA-kompatibilisek-e, a számítási igényű virtuális gépek](../../windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) MPI munkaterhelések futtatásához. Egy vonatkozó példáért lásd: [OpenFOAM futtassa a Microsoft HPC Pack egy Linux RDMA a fürtön, az Azure-ban](hpcpack-cluster-openfoam.md).
 * Ha érdekli a helyszíni HPC Pack fürtben lévő Linux-csomópont működik, tekintse meg a [TechNet útmutatást](https://technet.microsoft.com/library/mt595803.aspx).

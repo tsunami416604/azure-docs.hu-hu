@@ -1,11 +1,11 @@
 ---
-title: "A több hálózati adapterrel rendelkező Azure Linux virtuális gép létrehozása |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozzon létre egy Linux virtuális gép több hálózati adapter nem csatlakoztatható az Azure CLI 2.0 vagy az erőforrás-kezelő sablonok használatával."
+title: A több hálózati adapterrel rendelkező Azure Linux virtuális gép létrehozása |} Microsoft Docs
+description: Megtudhatja, hogyan hozzon létre egy Linux virtuális gép több hálózati adapter nem csatlakoztatható az Azure CLI 2.0 vagy az erőforrás-kezelő sablonok használatával.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 5d2d04d0-fc62-45fa-88b1-61808a2bc691
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: iainfou
-ms.openlocfilehash: 635d1373a51f2f2e4d4f7ab5053e520f5b9363a6
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 79c5d70d201b54e7ca1c8d421a5f0dc5e6b53bcd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Hogyan Linux virtuális gép létrehozása az Azure-ban a több hálózati kártyák
 Létrehozhat egy virtuális gép (VM), amelyen több virtuális hálózati adapterek (NIC) nem csatlakoztatható az Azure-ban. Egy gyakori forgatókönyv, hogy az előtér- és kapcsolat, vagy a hálózaton, figyelési vagy biztonsági mentési megoldásra dedikált különböző alhálózatokon. Ez a cikk részletesen több hálózati adapter nem csatlakoztatható a virtuális gép létrehozása és hozzáadása vagy eltávolítása a hálózati adapter egy meglévő virtuális gépről. Különböző [Virtuálisgép-méretek](sizes.md) több hálózati adapter támogatja, így méretezés ennek megfelelően a virtuális Gépet.
@@ -190,7 +190,7 @@ echo "200 eth0-rt" >> /etc/iproute2/rt_tables
 echo "201 eth1-rt" >> /etc/iproute2/rt_tables
 ```
 
-A módosítás állandó és alkalmazott hálózati verem aktiválása során, szerkessze */etc/sysconfig/network-scipts/ifcfg-eth0* és */etc/sysconfig/network-scipts/ifcfg-eth1*. A sor ALTER *"NM_CONTROLLED = yes"* való *"NM_CONTROLLED nem ="*. Ebben a lépésben nélkül további szabályok/útválasztását nem automatikusan érvényesek.
+A módosítás állandó és alkalmazott hálózati verem aktiválása során, szerkessze */etc/sysconfig/network-scripts/ifcfg-eth0* és */etc/sysconfig/network-scripts/ifcfg-eth1*. A sor ALTER *"NM_CONTROLLED = yes"* való *"NM_CONTROLLED nem ="*. Ebben a lépésben nélkül további szabályok/útválasztását nem automatikusan érvényesek.
  
 A következő kiterjesztése a útvonaltáblát. Tegyük fel, a következő telepítő érvényben van:
 

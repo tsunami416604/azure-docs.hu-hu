@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: e9343b4a0049b2eea30f903159fdeff0ae7ff851
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 07fb601b2cf6e3fe3cc9bfb7bca3bdcbec7e9ca7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Az Azure piactér és AppSource publisher útmutató
 
@@ -121,7 +121,8 @@ Minden egyes kirakat több közzétételi beállítások és ajánlat típusokat
 Használjon forduljon kérek a próba- vagy tranzakció-szintjén részvétel esetén nem valósítható meg. Ennek a megközelítésnek az az előnye, azonnali megkezdéséhez fogadására, amely képes elindítani az üzleti lendkerék eligazodást üzletek be kell nurtured érdeklődők piacra jutási megoldással közzétevők hasonlít. Azonban a hátránya, hogy az ügyfél engagement korlátozva, szemben a más típusú.
 
 >[!IMPORTANT]
->Nem ajánlott az ügyfél Me listaelem típusát. Akkor használja, csak olyan esetekben fennáll semmilyen módon nem lehet létrehozni egy próbaverziója. Ügyfél engagement esetén ajánlott a próbaverzióval és a tranzakció-ajánlatokkal rendelkező. Ha bármilyen típusú próbaverziója, a bevezetési folyamat varázsló végigvezeti a forgatókönyvtől függően ezek a lehetőségek egyikére.
+<<<<<<< HEAD ügyfél engagement próbaverzió és a Transact-kínál. Me forduljon érték megkapja az érdeklődési, tehát ha úgy dönt, hogy a lista tartalmazza az ilyen típusú, győződjön meg arról, hogy a vezető cél van beállítva, és készen áll a átfutási maximalizálása. === Nem ajánlott az ügyfél Me listaelem típusát. Akkor használja, csak olyan esetekben fennáll semmilyen módon nem lehet létrehozni egy próbaverziója. Ügyfél engagement esetén ajánlott a próbaverzióval és a tranzakció-ajánlatokkal rendelkező. Ha bármilyen típusú próbaverziója, a bevezetési folyamat varázsló végigvezeti a forgatókönyvtől függően ezek a lehetőségek egyikére.
+>>>>>>> 2874631130f763b6e91e8725781400bcb76d6a62
 
 Amikor az ajánlat elsősorban szakmai-szolgáltatásokból állnak (például felméréseket, megvalósításokhoz, műhelyek), használja a a Consulting Services tanácsadó szolgálat fel típusa. Ajánlat hatókör, időtartama és ár javítani kell, egyetlen ügyfél számára kell lennie, és a helyen kell elvégezni.
 

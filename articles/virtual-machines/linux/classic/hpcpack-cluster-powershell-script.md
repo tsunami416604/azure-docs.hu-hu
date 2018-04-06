@@ -1,11 +1,11 @@
 ---
-title: "PowerShell parancsfájl központi telepítése Linux HPC-fürt |} Microsoft Docs"
-description: "Egy Azure virtuális gépeken Linux HPC Pack 2012 R2-fürt üzembe PowerShell parancsfájl futtatása"
+title: PowerShell parancsfájl központi telepítése Linux HPC-fürt |} Microsoft Docs
+description: Egy Azure virtuális gépeken Linux HPC Pack 2012 R2-fürt üzembe PowerShell parancsfájl futtatása
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,hpc-pack
 ms.assetid: 73041960-58d3-4ecf-9540-d7e1a612c467
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-ms.openlocfilehash: 477859db8c884714d9b5140483d300ebfe6c116a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 66affb47190ba0c6fccaae8e8267b310682aee46
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-a-linux-high-performance-computing-hpc-cluster-with-the-hpc-pack-iaas-deployment-script"></a>Hozzon létre egy Linux-fürt nagy teljesítményű számítástechnikai rendszerek (HPC) a HPC Pack IaaS telepítési parancsfájl
 A HPC Pack IaaS központi telepítés központi telepítése az Azure virtuális gépeken Linux munkaterhelések teljes HPC Pack 2012 R2 fürt PowerShell-parancsfájl futtatása. A fürt egy Active Directory-tartományhoz átjárócsomópont Windows Server és a Microsoft HPC Pack fut, és a Linux terjesztéseket HPC Pack által támogatott valamelyikét futtató számítási csomópontok áll. Ha szeretné HPC Pack-fürt üzembe helyezése a Azure Windows-munkaterhelések, lásd: [hozzon létre egy Windows HPC-fürtöt a HPC Pack IaaS telepítési parancsfájl](../../windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).

@@ -1,11 +1,11 @@
 ---
-title: "Futtassa a csillag-CCM + HPC Pack Linux virtuális gépeken |} Microsoft Docs"
-description: "Az Azure a Microsoft HPC Pack fürt központi telepítése és futtatása egy csillag-feladat CCM + több Linux a számítási csomópontok az RDMA-hálózaton."
+title: Futtassa a csillag-CCM + HPC Pack Linux virtuális gépeken |} Microsoft Docs
+description: Az Azure a Microsoft HPC Pack fürt központi telepítése és futtatása egy csillag-feladat CCM + több Linux a számítási csomópontok az RDMA-hálózaton.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: xpillons
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager,hpc-pack
 ms.assetid: 75523406-d268-4623-ac3e-811c7b74de4b
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 09/13/2016
 ms.author: xpillons
-ms.openlocfilehash: b45fcfb981287035da02fda62eaf5f9436ec2379
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8689d7abfd5ab45277df3b5672a1f6e7e874d88e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="run-star-ccm-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>Futtassa a csillag-CCM + Microsoft HPC Pack egy Linux RDMA a fürt az Azure-ban
 Ez a cikk bemutatja, hogyan Azure, és futtassa a Microsoft HPC Pack fürt központi telepítése egy [CD-adapco csillag-CCM +](http://www.cd-adapco.com/products/star-ccm%C2%AE) feladat több Linux számítási csomópontokra, amelyeket kötik össze, az InfiniBand.
@@ -284,7 +284,7 @@ Cserélje le **runner.java** az előnyben részesített csillag-CCM + Java model
     exit ${RTNSTS}
 ```
 
-Ebben a tesztben használtuk egy igény szerinti Power licenc token. A jogkivonatot, meg kell beállítani a **$CDLMD_LICENSE_FILE** környezeti változót  **1999@flex.cd-adapco.com**  és a kulcsot a **- podkey** beállítást a parancssor.
+Ebben a tesztben használtuk egy igény szerinti Power licenc token. A jogkivonatot, meg kell beállítani a **$CDLMD_LICENSE_FILE** környezeti változót **1999@flex.cd-adapco.com** és a kulcsot a **- podkey** beállítást a parancssor.
 
 Néhány inicializálás után a parancsfájl létrehoz – az a **$CCP_NODES_CORES** környezeti változókat, hogy HPC Pack beállítása – csomópontok hozhat létre egy hostfile, amely a MPI indítója használja listáját. A hostfile számítási csomópont a feladathoz, soronként egy név használt nevek listája fogja tartalmazni.
 
@@ -296,19 +296,19 @@ Formátuma **$CCP_NODES_CORES** ezt a mintát követi:
 
 Az elemek magyarázata:
 
-* `<Number of nodes>`Ez a feladat számára lefoglalt csomópontok száma van.
-* `<Name of node_n_...>`Ez a feladat rendelt minden csomópont neve van.
-* `<Cores of node_n_...>`van a csomópont, a feladat számára lefoglalt magok száma.
+* `<Number of nodes>` Ez a feladat számára lefoglalt csomópontok száma van.
+* `<Name of node_n_...>` Ez a feladat rendelt minden csomópont neve van.
+* `<Cores of node_n_...>` van a csomópont, a feladat számára lefoglalt magok száma.
 
 Magok száma (**$NBCORES**) is a csomópontok száma alapján számított (**$NBNODES**) és az egyes csomópontok magok száma (paraméterként megadott **$NBCORESPERNODE**).
 
 MPI beállítások Intel MPI Azure használt megfelelően a következők:
 
-* `-mpi intel`Adja meg az Intel MPI.
-* `-fabric UDAPL`Azure InfiniBand műveletek használata.
-* `-cpubind bandwidth,v`sávszélesség-optimalizálását a csillag MPI-CCM +.
-* `-mppflags "-ppn $NBCORESPERNODE -genv I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -genv I_MPI_DAPL_UD=0 -genv I_MPI_DYNAMIC_CONNECTION=0"`Intel MPI Azure InfiniBand dolgozni, és csomópontonként mag szükséges számának beállítása.
-* `-batch`CSILLAG elindításához-CCM + kötegelt módban nincs felhasználói felületén.
+* `-mpi intel` Adja meg az Intel MPI.
+* `-fabric UDAPL` Azure InfiniBand műveletek használata.
+* `-cpubind bandwidth,v` sávszélesség-optimalizálását a csillag MPI-CCM +.
+* `-mppflags "-ppn $NBCORESPERNODE -genv I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -genv I_MPI_DAPL_UD=0 -genv I_MPI_DYNAMIC_CONNECTION=0"` Intel MPI Azure InfiniBand dolgozni, és csomópontonként mag szükséges számának beállítása.
+* `-batch` CSILLAG elindításához-CCM + kötegelt módban nincs felhasználói felületén.
 
 Végezetül a feladat elindításához, győződjön meg arról, hogy a csomópontok megfelelően működik-e, és a kezelő online állapotban. A PowerShell-parancssorból futtassa ezt:
 
@@ -324,7 +324,7 @@ Meg Miután befejezte a teszteket, használhatja a következő HPC Pack PowerShe
     Start-HPCIaaSNode.ps1 -Name <prefix>-00*
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Próbálja más Linux feladatokat futtatni. Például lásd:
 
 * [A Microsoft HPC Pack NAMD futó Linux számítási csomópontok az Azure-ban](hpcpack-cluster-namd.md)

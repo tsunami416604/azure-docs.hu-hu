@@ -1,8 +1,8 @@
 ---
-title: "A HDInsight fürt megoldások hozzáadása az Azure Naplóelemzés szolgáltatáshoz |} Microsoft Docs"
-description: "Útmutató: Azure Log Analytics segítségével egyéni nézeteket a HDInsight-fürtök létrehozása."
+title: A HDInsight fürt megoldások hozzáadása az Azure Naplóelemzés szolgáltatáshoz |} Microsoft Docs
+description: 'Útmutató: Azure Log Analytics segítségével egyéni nézeteket a HDInsight-fürtök létrehozása.'
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: f8a073fbf40feaef97053bb1165d63bbca3e3feb
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: ab959d2cdaf840a1a88a71a0b8f29d84a8979330
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="add-hdinsight-cluster-management-solutions-to-log-analytics"></a>HDInsight-fürt felügyeleti megoldások hozzáadni a Naplóelemzési
 
-HDInsight fürt-specifikus felügyeleti megoldásokat az Azure Naplóelemzés adhat hozzá. [Megoldások](../log-analytics/log-analytics-add-solutions.md) hozzá a funkciót a [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md), további adatok és elemzésére szolgáló eszközöket biztosít a szolgáltatáshoz. Ezek a megoldások fontos teljesítménybeli a HDInsight-fürtök adatainak begyűjtése, és adja meg az eszközök a metrikák kereséséhez. Ezek a megoldások képi megjelenítések és irányítópultok is a Hdinsightban támogatott a legtöbb fürt típusok biztosítják. A metrikák gyűjtött megoldás segítségével létrehozhat egyéni ellenőrzési szabályok és értesítések. 
+HDInsight fürt-specifikus felügyeleti megoldásokat az Azure Naplóelemzés adhat hozzá. [Megoldások](../log-analytics/log-analytics-add-solutions.md) funkciókat adnak hozzá Naplóelemzési további adatokat és elemzésére szolgáló eszközöket. Ezek a megoldások fontos teljesítménybeli a HDInsight-fürtök adatainak begyűjtése, és adja meg az eszközök a metrikák kereséséhez. Ezek a megoldások képi megjelenítések és irányítópultok is a Hdinsightban támogatott a legtöbb fürt típusok biztosítják. A metrikák gyűjtött megoldás segítségével létrehozhat egyéni ellenőrzési szabályok és értesítések. 
 
-Ebből a cikkből megtanulhatja a fürtökkel kapcsolatos megoldások hozzáadása az Operations Management Suite-munkaterülethez.
+Ebből a cikkből megtanulhatja a fürtökkel kapcsolatos megoldások hozzáadni a Naplóelemzési munkaterület.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,15 +33,15 @@ Ebből a cikkből megtanulhatja a fürtökkel kapcsolatos megoldások hozzáadá
 
 ## <a name="add-cluster-specific-management-solutions"></a>Fürt-specifikus megoldások hozzáadása
 
-Ebben a szakaszban hozzáadja egy HBase-fürt felügyeleti megoldás egy meglévő Operations Management Suite-munkaterülettel.
+Ebben a szakaszban egy HBase-fürt felügyeleti megoldás egy meglévő Naplóelemzési munkaterület hozzáadhat.
 
-1. Nyissa meg az Azure-portálon HDInsigt fürtöt kattintson **figyelés**, és kattintson a **nyitott OMS irányítópult**.
+1. Nyissa meg az Azure-portálon a HDInsight-fürtök kattintson **figyelés**, és kattintson a **nyitott OMS irányítópult**.
 
     ![Nyissa meg az Operations Management Suite irányítópult](./media/hdinsight-hadoop-oms-log-analytics-management-solutions/hdinsight-log-analytics-open-oms-dashboard.png "nyitott OMS irányítópult")
 
-1. Az OMS-irányítópulton kattintson **megoldások gyűjtemény** vagy a **adatforrásnézet-tervezőből** ikonra a bal oldali ablaktáblán.
+1. Az irányítópulton kattintson **megoldások gyűjtemény** vagy a **adatforrásnézet-tervezőből** ikonra a bal oldali ablaktáblán.
 
-    ![Adja hozzá a felügyeleti megoldás az Operations Management Suite](./media/hdinsight-hadoop-oms-log-analytics-management-solutions/hdinsight-add-management-solution-oms-portal.png "adja hozzá a felügyeleti megoldás az Operations Management Suite szolgáltatásban")
+    ![Adja hozzá a felügyeleti megoldás a Naplóelemzési](./media/hdinsight-hadoop-oms-log-analytics-management-solutions/hdinsight-add-management-solution-oms-portal.png "adja hozzá a felügyeleti megoldás az Operations Management Suite szolgáltatásban")
 
 2. Az megoldások oldalon kattintson a következő csempék találhatók:
 
@@ -55,7 +55,7 @@ Ebben a szakaszban hozzáadja egy HBase-fürt felügyeleti megoldás egy meglév
 
      ![Adja hozzá a HBase-kezelési megoldás](./media/hdinsight-hadoop-oms-log-analytics-management-solutions/add-hbase-management-solution.png "adja hozzá a HBase-kezelési megoldás")
 
-4. Egy csempe a HBase-kezelési megoldás az OMS-irányítópulton látható. Ha a fürt (Ez a cikk előfeltételeivel részeként) Operations Management Suite társított HBase-fürtöt, a csempe a fürt nevét, valamint a fürt a csomópontok számát mutatja.
+4. Egy csempe az irányítópulton a HBase-kezelési megoldást tekintheti meg. Ha a fürt (Ez a cikk előfeltételeivel részeként) Operations Management Suite társított HBase-fürtöt, a csempe a fürt nevét, valamint a fürt a csomópontok számát mutatja.
 
     ![A HBase-kezelési megoldás hozzáadott](./media/hdinsight-hadoop-oms-log-analytics-management-solutions/added-hbase-management-solution.png "hozzáadott HBase-kezelési megoldás")
 
@@ -65,5 +65,5 @@ Ebben a szakaszban hozzáadja egy HBase-fürt felügyeleti megoldás egy meglév
 
 ## <a name="see-also"></a>Lásd még
 
-* [Az Operations Management Suite Naplóelemzési használata](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
+* [A Naplóelemzési használata](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
 * [A Naplóelemzési riasztási szabályok létrehozása](../log-analytics/log-analytics-alerts-creating.md)

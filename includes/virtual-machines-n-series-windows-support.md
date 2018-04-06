@@ -5,14 +5,14 @@ services: virtual-machines-windows
 author: dlepow
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 03/20/2018
+ms.date: 04/03/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 426340a5b452124dcba4f51f2ec2c1e2ec0f54b2
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 689e45f96ed5e7aaea3aecd1193e9cd58f10e80d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>Támogatott operációs rendszerek és illesztőprogramok
 
@@ -35,5 +35,5 @@ Microsoft újraterjeszti NVIDIA rács illesztőprogram telepítők Permanens vir
 
 | Operációs rendszer | Illesztőprogram |
 | -------- |------------- |
-| Windows Server 2016 | [5.2 (386.09) rács](https://go.microsoft.com/fwlink/?linkid=836843) (.exe) |
-| Windows Server 2012 R2 | [5.2 (386.09) rács](https://go.microsoft.com/fwlink/?linkid=836844) (.exe)  |
+| Windows Server 2016<br/><br/>Windows 10 | [RÁCS 6.0 (391.03)](https://go.microsoft.com/fwlink/?linkid=836843) (.exe) |
+| Windows Server 2012 R2 | [RÁCS 6.0 (391.03)](https://go.microsoft.com/fwlink/?linkid=836844) (.exe)  |

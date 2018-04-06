@@ -15,11 +15,11 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 09/28/2017
 ms.author: danlep
-ms.openlocfilehash: e2d97929ada820a1ce969c59fb69b3518fe2eb6c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: HT
+ms.openlocfilehash: 2479701174086ddf680e0ecb1da4a9d13b32b76e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Kötegelt szolgáltatási megoldások és az Active Directory hitelesítéséhez
 
@@ -312,13 +312,13 @@ public static async Task PerformBatchOperations()
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure AD kapcsolatos további tudnivalókért tekintse meg a [Azure Active Directory dokumentációjának](https://docs.microsoft.com/azure/active-directory/). Részletes példa bemutatja, hogyan adal-t használó érhetők el a [Azure mintakódok](https://azure.microsoft.com/resources/samples/?service=active-directory) könyvtár.
+* Az Azure AD kapcsolatos további tudnivalókért tekintse meg a [Azure Active Directory dokumentációjának](https://docs.microsoft.com/azure/active-directory/). Részletes példa bemutatja, hogyan adal-t használó érhetők el a [Azure mintakódok](https://azure.microsoft.com/resources/samples/?service=active-directory) könyvtár.
 
-Szolgáltatásnevekről kapcsolatos további információkért lásd: [alkalmazás és szolgáltatás egyszerű objektumok az Azure Active Directoryban](../active-directory/develop/active-directory-application-objects.md). Az Azure portál használatával egyszerű szolgáltatás létrehozása: [használata portal létrehozása az Active Directory erőforrásokat elérő alkalmazás és szolgáltatás egyszerű](../resource-group-create-service-principal-portal.md). A szolgáltatás egyszerű PowerShell vagy az Azure parancssori felület is létrehozhat.
+* Szolgáltatásnevekről kapcsolatos további információkért lásd: [alkalmazás és szolgáltatás egyszerű objektumok az Azure Active Directoryban](../active-directory/develop/active-directory-application-objects.md). Az Azure portál használatával egyszerű szolgáltatás létrehozása: [használata portal létrehozása az Active Directory erőforrásokat elérő alkalmazás és szolgáltatás egyszerű](../resource-group-create-service-principal-portal.md). A szolgáltatás egyszerű PowerShell vagy az Azure parancssori felület is létrehozhat.
 
-Kötegelt felügyeleti alkalmazások az Azure AD hitelesíti, lásd: [hitelesítéséhez kötegelt megoldásokat az Active Directory](batch-aad-auth-management.md).
+* Kötegelt felügyeleti alkalmazások az Azure AD hitelesíti, lásd: [hitelesítéséhez kötegelt megoldásokat az Active Directory](batch-aad-auth-management.md).
 
-A Python példa bemutatja, hogyan hozzon létre egy kötegelt ügyfél hitelesítése az Azure AD token használatával, tekintse meg a [Azure Active Directory-hitelesítéssel](http://azure-sdk-for-python.readthedocs.io/en/latest/batch.html#azure-active-directory-authentication) Python-dokumentáció az Azure SDK-minta.
+* A Python példa bemutatja, hogyan hozzon létre egy kötegelt ügyfél hitelesítése az Azure AD token használatával, tekintse meg a [telepítése Azure Batch egyéni lemezkép egy Python-parancsfájl](https://github.com/azurebigcompute/recipes/blob/master/Azure%20Batch/CustomImages/CustomImagePython.md) minta.
 
 [aad_about]: ../active-directory/active-directory-whatis.md "Mi az Azure Active Directory?"
 [aad_adal]: ../active-directory/active-directory-authentication-libraries.md

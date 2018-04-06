@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2018
 ms.author: jdial
-ms.openlocfilehash: 0d550d3bda119cfcb9ecc6f852006d5e325fdfa3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: HT
+ms.openlocfilehash: b0eb10d373f47191933eb1c3c22b779e9e8d6685
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitor-network-connections-with-azure-network-watcher-using-the-azure-portal"></a>Hálózati kapcsolatok figyelő Azure hálózati figyelőt az Azure portál használatával
 
@@ -29,7 +29,7 @@ Ebben a cikkben szereplő lépések végrehajtása előtt meg kell felelnie a k�
 
 * A kapcsolat a figyelni kívánt hálózati figyelőt régióban példánya. Ha még nem rendelkezik egy, létrehozhat egy, a lépések végrehajtásával [hozzon létre egy Azure hálózati figyelőt példányt](network-watcher-create.md).
 * A virtuális gépek a figyelheti. A virtuális gép létrehozásához, lásd: hozzon létre egy [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) vagy [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) virtuális gép.
-* Rendelkezik a `AzureNetworkWatcherExtension` a kapcsolatot a figyelni kívánt virtuális gépen telepítve. A bővítmény telepítéséhez egy Windows virtuális gépre, tekintse át [a Windows Azure hálózati figyelő ügynök virtuálisgép-bővítmény](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) és a bővítmény telepítéséhez egy Linux virtuális gép itt talál: [az Azure hálózati figyelő ügynök virtuálisgép-bővítmény Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+* Rendelkezik a `AzureNetworkWatcherExtension` a kapcsolatot a figyelni kívánt virtuális gépen telepítve. A bővítmény telepítéséhez egy Windows virtuális gépre, tekintse át [a Windows Azure hálózati figyelő ügynök virtuálisgép-bővítmény](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) és a bővítmény telepítéséhez egy Linux virtuális gép itt talál: [az Azure hálózati figyelő ügynök virtuálisgép-bővítmény Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). A bővítmény nem szükséges a figyelni kívánt cél végponton.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba 
 

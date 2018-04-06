@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/20/2018
 ms.author: dekapur
-ms.openlocfilehash: f3e7b9c7432538c0f78662213544d4d691652f13
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 7af0dd37b5c16e48ce4e504211e68a29cf8bce77
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="application-and-service-level-logging"></a>Alkalmazás és szolgáltatás webhelyszintű naplózás
 
@@ -36,10 +36,11 @@ A Service Fabric megoldást a Visual Studio sablonból létrehozásakor egy **Ev
 
 Fontos alapos megtervezéséről, hogyan fogja beállíthatják a kódot. A jobb oldali instrumentation terv segítséget nyújt a potenciálisan destabilizing kódbázis, és hogy a kód reinstrument majd kellene elkerülése érdekében. Kockázatok csökkentése érdekében dönthet úgy, mint egy rendszerállapot-tára [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/), amely Microsoft ASP.NET Core része. Az ASP.NET Core rendelkezik egy [ILogger](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.ilogger) felület, amely csak akkor használhatja a szolgáltató az Ön által választott, ugyanakkor minimalizálja a meglévő kódot hatással. Az ASP.NET Core Windows és Linux kódot is használhatja, és a teljes .NET-keretrendszer, ezért a rendszerállapot-kód szabványosított.
 
-## <a name="choosing-a-logging-provider"></a>Egy naplózási szolgáltató kiválasztása
+## <a name="application-insights-sdk"></a>Application Insights SDK letöltése
 
-Ha az alkalmazás nagy teljesítményű, **EventSource** van általában egy jó módszer. **EventSource** *általában* kevesebb erőforrást használ, és az ASP.NET Core naplózás, illetve a rendelkezésre álló külső megoldások jobb teljesítményt.  Ez számos szolgáltatás, de ha a szolgáltatás-e a teljesítmény-központú, használja a problémát nem **EventSource** megfelelőbb választás lehet. Azonban ezek előnyök a naplózás, strukturált **EventSource** egy nagyobb befektetési a mérnöki csapat igényel. Ha lehetséges néhány naplózási beállítások gyors prototípus tegye, és válassza ki azt, amelyik az igényeinek leginkább megfelelő.
+Az Application Insights gazdag integrációját a Service Fabric nem rendelkezik. Felhasználók hozzáadása a AI Service Fabric nuget-csomagok és adatok és a létrehozott naplók fogadásához, ezért az Azure-portálon megtekinthető. Emellett tanácsos hozzáadása a saját telemetriai ahhoz, hogy diagnosztizálhatja és elháríthatja a az alkalmazásaikat és nyomon követése, amelynek szolgáltatások és az alkalmazás részei a leggyakrabban használt. A [TelemetryClient](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient?view=azure-dotnet) osztályt az SDK számos módszert kínál az alkalmazások telemetriai nyomon követéséhez. Tekintse meg a példa bemutatja, hogyan állíthatnak be, és az application insights hozzáadása az alkalmazáshoz az oktatóanyagban a [figyelése és diagnosztizálása a .NET-alkalmazás](service-fabric-tutorial-monitoring-aspnet.md)
+
 
 ## <a name="next-steps"></a>További lépések
 
-Miután kiválasztotta a naplózás szolgáltató is beállíthatják az alkalmazások és szolgáltatások, a naplók és események összesíthető ahhoz, azok bármely analysis platform lehet küldeni kell. További információ a [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) és [ÜVEGVATTA](service-fabric-diagnostics-event-aggregation-wad.md) jobb megértése érdekében ajánlott beállítások egy része.
+Miután kiválasztotta a naplózás szolgáltató is beállíthatják az alkalmazások és szolgáltatások, a naplók és események összesíthető ahhoz, azok bármely analysis platform lehet küldeni kell. További információ a [Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md), [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md), és [ÜVEGVATTA](service-fabric-diagnostics-event-aggregation-wad.md) jobb megértése érdekében ajánlott beállítások egy része.

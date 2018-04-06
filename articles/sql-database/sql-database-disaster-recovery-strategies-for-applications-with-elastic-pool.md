@@ -1,20 +1,20 @@
 ---
-title: "Vész-helyreállítási megoldások – az Azure SQL Database kialakítása |} Microsoft Docs"
-description: "Útmutató a felhőalapú megoldás vész-helyreállítási terv válassza ki a megfelelő feladatátvételi mintát."
+title: Vész-helyreállítási megoldások – az Azure SQL Database kialakítása |} Microsoft Docs
+description: Útmutató a felhőalapú megoldás vész-helyreállítási terv válassza ki a megfelelő feladatátvételi mintát.
 services: sql-database
 author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 6ec202237a0b3fb1b7f0b7158c0aa454b4d65770
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1f2f0819f987bf389ff4b2816ad422fdd8a81f82
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>Vész helyreállítási stratégiát az SQL Database rugalmas készleteket használó alkalmazások
 Az évek azt megtanulhatta, győződjön meg arról, hogy felhőszolgáltatások nem biztos és katasztrofális incidensek olyan esetben fordulhat elő. SQL-adatbázis ezeket az incidensek előfordulásakor az üzletmenet folytonosságát, az alkalmazás így különböző képességeket biztosít. [Rugalmas készletek](sql-database-elastic-pool.md) és az önálló adatbázisok támogatja a vész-helyreállítási funkciók azonos típusú. Ez a cikk ismerteti a több vész-Helyreállítási stratégiát, a rugalmas készletbe, amely kihasználja ezeket az SQL-adatbázis üzleti folytonosságot biztosító szolgáltatásokat.
@@ -26,7 +26,7 @@ Ez a cikk a következő kanonikus SaaS ISV-alkalmazás mintát használ:
 A cikk ismerteti a lehetőségeket rendelkező szigorú rendelkezésre állási követelmények bizalmas indítási alkalmazások költség számos vész-Helyreállítási stratégiát.
 
 > [!NOTE]
-> Premium adatbázisokat és a készletek használatakor tehet őket rugalmas regionális kimaradások alakítja át őket zóna redundáns központi telepítés konfigurálása (jelenleg az előzetes verzió). Lásd: [zónaredundáns adatbázisok](sql-database-high-availability.md).
+> Prémium szintű használata vagy a fontos üzleti (előzetes verzió) adatbázisok és rugalmas készletek, akkor is használhatja őket a területi rugalmas kimaradások konvertálja azokat zóna redundáns központi telepítés konfigurálása (jelenleg az előzetes verzió). Lásd: [zónaredundáns adatbázisok](sql-database-high-availability.md).
 
 ## <a name="scenario-1-cost-sensitive-startup"></a>1. forgatókönyv. Költség-és nagybetűket indítása
 <i>I indítási üzleti vagyok, és rendkívül vagyok költség-és nagybetűket.  Egyszerűbb telepítés és az alkalmazás felügyelete szempontjából szeretnék, és egy korlátozott SLA-t az egyes ügyfelek is van. Azonban mivel a teljes soha nem offline állapotban, győződjön meg arról, hogy az alkalmazás kívánt.</i>
@@ -65,7 +65,7 @@ A kulcs **előnyeit** ezt a stratégiát az adatredundanciát réteg alacsony fo
 ## <a name="scenario-2-mature-application-with-tiered-service"></a>2. forgatókönyv. Érett alkalmazás rétegzett szolgáltatással
 <i>Én vagyok a rétegzett szolgáltatási ajánlatok és különböző SLA-k próba felhasználók és az ügyfelek fizető érett SaaS-alkalmazáshoz. A próba ügyfelek van lehetőség szerint a költségek csökkentése. Próbaverziós felhasználók is igénybe vehet az állásidőt, de annak valószínűsége csökkenteni szeretnék. A fizető vevők leállási esetén a felhőszolgáltató közötti átviteléhez kockázata. Győződjön meg arról, hogy fizető kívánt, az ügyfelek képesek mindig hozzáférjenek az adataikhoz.</i> 
 
-Ez a forgatókönyv támogatása érdekében a próbabérlőket eltérő, külön fizetős bérlők által külön rugalmas készletek üzembe őket. A próba alacsonyabb eDTU-bérlők és az alacsonyabb SLA-t és a hosszabb helyreállítási idő rendelkeznek. A fizető vevők egy magasabb eDTU-bérlő és a magasabb SLA-t a készletben vannak. A legalacsonyabb helyreállításkor biztosításához a fizető vevők bérlői adatbázisok a következők georeplikált. Ez a konfiguráció a következő diagramon látható. 
+Ez a forgatókönyv támogatása érdekében a próbabérlőket eltérő, külön fizetős bérlők által külön rugalmas készletek üzembe őket. A próba ügyfelek alacsonyabb edtu-ra vagy a bérlők és az alacsonyabb SLA-t és a hosszabb helyreállítási idő / vCores rendelkezik. A fizető vevők magasabb edtu-ra vagy a bérlők és az újabb SLA / vCores a készletben vannak. A legalacsonyabb helyreállításkor biztosításához a fizető vevők bérlői adatbázisok a következők georeplikált. Ez a konfiguráció a következő diagramon látható. 
 
 ![4. ábra](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-4.png)
 
@@ -80,7 +80,7 @@ Nem tervezett kimaradás esetén az elsődleges régióban, az alkalmazás onlin
 * A vész-Helyreállítási régióban (3) a felügyeleti adatbázisok azonnal feladatátvételt.
 * Módosítsa az alkalmazás kapcsolati karakterláncot a vész-Helyreállítási régió mutassanak. Most már minden új fiókokat és a bérlői adatbázisok a vész-Helyreállítási régióban jönnek létre. A meglévő próba felhasználók tekintse meg az adatok átmenetileg nem érhető el.
 * Feladatok átadása a fizetős bérlő adatbázisokat a készlethez, a vész-Helyreállítási régióban azonnal visszaállítása a rendelkezésre állásuk (4). Mivel a feladatátvételt a gyors metaadatok szint módosítása, fontolja meg az optimalizálás, ahol az egyes feladatátvételek lépésüket az igény szerinti a végfelhasználói kapcsolatok. 
-* Ha a másodlagos készlet edtu-k mérete alacsonyabb, mint az elsődleges volt, mert a másodlagos adatbázisok csak a módosítási napló feldolgozása, miközben a másodlagos adatbázisok voltak kapacitás szükséges, azonnal növelje a készlet kapacitásának most már egyetlen bérlő számára [5], a teljes munkaterhelés befogadásához. 
+* Ha a másodlagos készlet edtu-ra vagy a vCore érték volt alacsonyabb, mint az elsődleges, mert a másodlagos adatbázisok csak akkor szükséges, a kapacitás, a módosítási napló feldolgozása, miközben a másodlagos adatbázisok voltak, azonnal növelje a készlet kapacitásának mostantól a teljes munkaterhelés alkalmazásához az egyetlen bérlő számára [5]. 
 * Hozzon létre új rugalmas készlet ugyanazt a nevet és a próbaverziós felhasználók adatbázisok (6) a vész-Helyreállítási régióban azonos konfigurációval. 
 * A próba felhasználók készlet létrehozása után a georedundáns helyreállítás használatával állítsa vissza az egyes próbabérlet adatbázisokat az új készletbe (7). Vegye figyelembe, a végfelhasználói kapcsolatok által az egyes visszaállítások váltanak, vagy néhány más alkalmazás-specifikus prioritás sémát használja.
 
@@ -108,7 +108,7 @@ A kulcs **előnyeit** ezt a stratégiát arra, hogy a fizető vevők biztosít a
 ## <a name="scenario-3-geographically-distributed-application-with-tiered-service"></a>3. forgatókönyv. Földrajzilag elosztott alkalmazás rétegzett szolgáltatással
 <i>A rétegzett szolgáltatási ajánlatok érett SaaS-alkalmazás van. Szeretnék rendkívül agresszív SLA nyújtsanak a fizetős ügyfeleknek, és minimálisra csökkenthetők a járulékos hatással lehet az, ha valamilyen okból kimaradás fordul elő, mert még rövid megszakítás ügyfél kapcsolatos okozhat. Nagyon fontos, hogy a fizető vevők mindig is hozzáférjenek az adataikhoz. A próbaverzió szabad és a próbaidőszak alatt nem ajánlott a szolgáltatásiszint-szerződésben garantált. </i> 
 
-A forgatókönyv támogatása érdekében használjon három különálló rugalmas készletek. A magas edtu-k adatbázisonkénti magában foglalja a fizetős ügyfelek bérlői adatbázisok két különböző régiókban két egyenlő méretű rendelkezik kiépítéséhez. A próbabérlőket tartalmazó harmadik készlet lehet alacsonyabb edtu-k adatbázisonkénti és építhető ki a két régiók egyikéhez sem.
+A forgatókönyv támogatása érdekében használjon három különálló rugalmas készletek. Két egyenlő méretű rendelkezik magas edtu-k vagy magában foglalja a fizetős ügyfelek bérlői adatbázisok két különböző régiókban adatbázisonként vCores kiépítéséhez. A próbabérlőket tartalmazó harmadik készlet lehet alacsonyabb edtu-k vagy adatbázisonként vCores és építhető ki a két régiók egyikéhez sem.
 
 A legalacsonyabb helyreállítás ideje alatt kimaradások biztosításához a fizető vevők bérlői adatbázisok a következők georeplikált 50 %-a két régió elsődleges adatbázis. Hasonlóképpen minden egyes régió van 50 %-a másodlagos adatbázisok. Ezzel a módszerrel a régió nem érhető el, ha a fizetős ügyfelek adatbázisok csak 50 %-át érintett és kell feladatátadáshoz használhat. Az egyéb adatbázisok változatlanok maradnak. Ez a konfiguráció a következő ábrán látható:
 
@@ -125,7 +125,7 @@ A következő diagram azt ábrázolja, a helyreállítási lépésekkel régiób
 * Azonnal feladatátvételt a B régióban (3) a felügyeleti adatbázisok.
 * Módosítsa az alkalmazás kapcsolati karakterláncot, hogy az új fiókokat és a bérlői adatbázisok B régióban jönnek létre, és a meglévő bérlő adatbázisok találhatók van, valamint a felügyeleti adatbázisok régióban B. Módosítsa a felügyeleti adatbázisok mutasson. A meglévő próba felhasználók tekintse meg az adatok átmenetileg nem érhető el.
 * Feladatok átadása a fizetős bérlő adatbázisok készlethez régióban B azonnal visszaállítása a rendelkezésre állásuk (4) 2. Mivel a feladatátvételt a gyors metaadatok szint módosítása, akkor fontolja meg az optimalizálás, ahol az egyes feladatátvételek lépésüket az igény szerinti a végfelhasználói kapcsolatok. 
-* Most óta készlet 2 csak az elsődleges adatbázist, az alkalmazáskészlet növeli a teljes munkaterhelés tartalmaz, és azonnal növelheti a eDTU méretét (5). 
+* Most óta készlet 2 csak az elsődleges adatbázist, az alkalmazáskészlet növeli a teljes munkaterhelés tartalmaz, és azonnal megnövelheti az eDTU-méret (5) vagy vCores száma. 
 * Hozzon létre új rugalmas készlet neve és a próbaverziós felhasználók adatbázisok (6) a B régióban azonos konfigurációval. 
 * A készlet létrehozása után a georedundáns helyreállítás használatával állítsa vissza az egyes próbabérlet adatbázist (7) készletbe. Vegye figyelembe a végfelhasználói kapcsolatok által az egyes visszaállítások váltanak, vagy néhány más alkalmazás-specifikus prioritás sémát használja.
 
@@ -142,7 +142,7 @@ A régió helyreállításakor el kell döntenie, ha a próbaverziós felhaszná
 * Megszakítja a vész-Helyreállítási próbakészletbe tartozó összes függőben lévő georedundáns helyreállítás kérelem.   
 * Feladatok átadása a felügyeleti adatbázisban (8). A régió helyreállítása után a régi elsődleges automatikusan a másodlagos inaktívvá vált. Most újra lesz az elsődleges.  
 * Válassza ki, melyik fizetős bérlői adatbázisok visszaadják feladataikat készlet 1 – kezdeményezési feladatátvételt a másodlagos adatbázis (9). A régió helyreállítását követően 1 alkalmazáskészletben lévő összes adatbázis automatikusan másodlagos inaktívvá vált. Most 50 %-át őket elsődleges ismét válik. 
-* Az eredeti edtu-k (10) 2-készlet méretének csökkentése.
+* Az eredeti eDTU (10) vagy vCores száma 2 készlet méretének csökkentése.
 * Készlet összes B régióban próba adatbázisok visszaállítani, csak olvasható (11).
 * Az egyes adatbázisok a próba DR-készletben a helyreállítási óta megváltozott nevezze át vagy törölje a megfelelő adatbázist az elsődleges próbakészletben (12). 
 * Másolja a frissített adatbázisok a vész-Helyreállítási készlet az elsődleges készlet (13). 

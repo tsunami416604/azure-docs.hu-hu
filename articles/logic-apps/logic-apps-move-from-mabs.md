@@ -1,12 +1,12 @@
 ---
-title: "Alkalmazások áthelyezése az Azure Logic Apps BizTalk szolgáltatások |} Microsoft Docs"
-description: "Helyezze át vagy Azure BizTalk szolgáltatások (MABS) Azure Logic Apps alkalmazások áttelepítése"
+title: Alkalmazások áthelyezése az Azure Logic Apps BizTalk szolgáltatások |} Microsoft Docs
+description: Helyezze át vagy Azure BizTalk szolgáltatások (MABS) Azure Logic Apps alkalmazások áttelepítése
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: jonfancey
 manager: anneta
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: integration
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: jonfan; LADocs
-ms.openlocfilehash: 6e00e62e60c059a16731a77e529b4b93f50802e9
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: f5ad003189d70216198f2d5c7719a971c16d5479
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="move-from-biztalk-services-to-azure-logic-apps"></a>Az Azure Logic Apps BizTalk szolgáltatások áthelyezése
 
@@ -130,7 +130,7 @@ BizTalk szolgáltatások ellentétben ezek a műveletek az átviteli protokollok
 
 ## <a name="manage-and-monitor"></a>Kezelése és figyelése
 
-A BizTalk szolgáltatások egy dedikált portálon megadott nyomkövetési lehetőségeket biztosítanak a figyelheti és elhárítását. A Logic Apps gazdagabb nyomon követése és figyelési képességek keresztül biztosítja a [Azure-portálon](../logic-apps/logic-apps-monitor-your-logic-apps.md), és a [Operations Management Suite B2B megoldás](../logic-apps/logic-apps-monitor-b2b-message.md), magában foglalja a mobilalkalmazások való tartásának követheti a művelet Ha Ön úton.
+A BizTalk szolgáltatások egy dedikált portálon megadott nyomkövetési lehetőségeket biztosítanak a figyelheti és elhárítását. A Logic Apps gazdagabb nyomon követése és figyelési képességek keresztül biztosítja a [Azure-portálon](../logic-apps/logic-apps-monitor-your-logic-apps.md), és tartalmazza a mobilalkalmazások való tartásának követheti a művelet az áthelyezés közben.
 
 ## <a name="high-availability"></a>Magas rendelkezésre állás
 

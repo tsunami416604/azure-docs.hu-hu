@@ -1,12 +1,12 @@
 ---
-title: "Azure-kiszolgáló nélküli áttekintése |} Microsoft Docs"
-description: "Hatékony megoldások létrehozása a felhőben anélkül, hogy az infrastruktúra gondolniuk."
-keywords: 
+title: Azure-kiszolgáló nélküli áttekintése |} Microsoft Docs
+description: Hatékony megoldások létrehozása a felhőben anélkül, hogy az infrastruktúra gondolniuk.
+keywords: ''
 services: logic-apps
 author: jeffhollan
 manager: anneta
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 5cc6837ed0b0f4467e48c736f5d596a51a799fae
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 30c7dd36efca5ffcae770fe310a43a107d9136af
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="overview-of-azure-serverless-with-functions-and-logic-apps"></a>Azure-kiszolgáló nélküli funkciók és a Logic Apps áttekintése
 
@@ -45,7 +45,7 @@ Első lépések a Logic Apps, indítsa el a [az első logikai alkalmazás létre
 
 ## <a name="how-can-i-build-and-deploy-serverless-applications-in-azure"></a>Hogyan felépítéséhez és az Azure-ban kiszolgáló nélküli alkalmazások telepítéséhez?
 
-Azure fejlesztési, telepítési és felügyeleti kiszolgáló nélküli alkalmazások lehetővé teszi az eszközök széles skáláját.  Alkalmazások közvetlenül az Azure-portálon, vagy a építhetők [tooling eszköz, a Visual Studio eszközből](logic-apps-serverless-get-started-vs.md).  Ha egy alkalmazás lehet [azonnal telepített](logic-apps-create-deploy-template.md).  Azure is biztosít a kiszolgáló nélküli alkalmazások figyelését.  A figyelés érhetők el az Azure-portálon keresztül az API-t vagy az SDK-k, vagy integrált tooling OMS és az Application insights szolgáltatással.
+Azure fejlesztési, telepítési és felügyeleti kiszolgáló nélküli alkalmazások lehetővé teszi az eszközök széles skáláját.  Alkalmazások közvetlenül az Azure-portálon, vagy a építhetők [tooling eszköz, a Visual Studio eszközből](logic-apps-serverless-get-started-vs.md).  Ha egy alkalmazás lehet [azonnal telepített](logic-apps-create-deploy-template.md).  Azure is biztosít a kiszolgáló nélküli alkalmazások figyelését.  A figyelés érhetők el az Azure-portálon keresztül az API-t vagy az SDK-k, vagy integrált tooling Naplóelemzés és az Application insights szolgáltatással.
 
 ## <a name="next-steps"></a>További lépések
 

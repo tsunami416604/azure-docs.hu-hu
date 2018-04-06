@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: develop databases
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 04/04/2018
 ms.author: jodebrui
-ms.openlocfilehash: 442c860a13e2af1d5398fb30a6069a0e3764ee64
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 36a6b32851c4778db3405b6b9b35d9551181abf4
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>A memórián belüli technológiái az SQL-adatbázis teljesítményének optimalizálása
 
@@ -22,7 +22,7 @@ A memórián belüli technológiái az Azure SQL Database, a különböző munka
 Az alábbiakban a két példa hogyan segített a memórián belüli online Tranzakciófeldolgozási jelentősen fejleszti a teljesítményt:
 
 - A memórián belüli online Tranzakciófeldolgozási, [kvórum üzleti megoldások tudta 70 %-kal dtu-k fokozása mellett az alkalmazások és szolgáltatások duplán](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database).
-    - DTU azt jelenti, hogy *adatbázis-átviteli egység*, és egy az erőforrás-felhasználás mesurement tartalmazza.
+    - DTU azt jelenti, hogy *adatbázis tranzakciós egység*, és egy az erőforrás-felhasználás mesurement tartalmazza.
 - A következő videó bemutatja az erőforrás-felhasználást egy példa munkaterhelés jelentős fejlesztéseket: [memórián belüli online Tranzakciófeldolgozási az Azure SQL adatbázis Video](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB).
     - További információkért lásd a következő blogbejegyzésben: [memórián belüli online Tranzakciófeldolgozási az Azure SQL adatbázis Blog utáni](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
@@ -36,7 +36,7 @@ A következő videó ismerteti a lehetséges teljesítménynövekedést érhet e
 
 Az Azure SQL-adatbázis a következő memórián belüli technológiákat rendelkezik:
 
-- *A memórián belüli online Tranzakciófeldolgozási* növeli az adatátviteli sebességet, és csökkenti a késést tranzakció feldolgozásra. A memórián belüli online Tranzakciófeldolgozási előnyeit kihasználó forgatókönyvek a következők: nagy átviteli tranzakció, például kereskedelmi és játékokban, adatfeldolgozást események vagy az IoT-eszközök, gyorsítótárazás, az adatok betöltését, és az ideiglenes tábla és a tábla változó forgatókönyvek feldolgozása.
+- *A memórián belüli online Tranzakciófeldolgozási* tranzakció nő, és csökkenti a késést tranzakció feldolgozásra. A memórián belüli online Tranzakciófeldolgozási előnyeit kihasználó forgatókönyvek a következők: nagy átviteli tranzakció, például kereskedelmi és játékokban, adatfeldolgozást események vagy az IoT-eszközök, gyorsítótárazás, az adatok betöltését, és az ideiglenes tábla és a tábla változó forgatókönyvek feldolgozása.
 - *Fürtözött oszlopcentrikus indexek* csökkenti a tárolási erőforrásigényét (legfeljebb 10-szer) és a jelentéskészítési és elemzési lekérdezések teljesítményének javítása. Segítségével azt a ténytáblák az adatpiac jelenti az igényei több adatot az adatbázishoz, és javíthatja a teljesítményt. Is segítségével, és az előzmények az operatív adatbázis archivált, és akár 10-szer több adat lekérdezése.
 - *Nem fürtözött oszloptárindex* HTAP segítséget kaphat a valós idejű az operatív adatbázis közvetlen lekérdezése, olcsóbbá kivonatot futtatásának szükségessége nélkül a vállalatra vonatkozó átalakító, és (ETL) folyamat betölteni, és várja meg a az adatraktár kell feltöltenie. Nem fürtözött oszloptárindex OLTP adatbázis nagyon gyorsan elemzési lekérdezések végrehajtása közben csökkenti a működési munkaterhelés gyakorolt hatás engedélyezése.
 - A oszlopcentrikus indexszel rendelkező memóriaoptimalizált táblák kombinációja is lehet. Ez a kombináció lehetővé teszi a rendkívül gyors tranzakció-feldolgozást, és a *egyidejűleg* elemzési lekérdezések nagyon gyorsan futtatnak ugyanazokat az adatokat.
@@ -71,7 +71,7 @@ Részletes videók technológiákkal kapcsolatos:
 
 A memórián belüli online Tranzakciófeldolgozási memóriaoptimalizált táblákkal, felhasználói adatok tárolásához használt tartalmazza. Ezek a táblázatok memóriában szükségesek. Kezelheti a memória közvetlenül az SQL Database szolgáltatásban, mert a felhasználói adatok egy kvótát fogalmát van. Ezzel az ötlettel nevezzük *memórián belüli online Tranzakciófeldolgozási tárolási*.
 
-Minden tarifacsomag és minden rugalmas készlet árképzési szint támogatott önálló adatbázis bizonyos mennyiségű memórián belüli online Tranzakciófeldolgozási tárolási tartalmazza. Írásának időpontjában a tárolási gigabájt minden 125 adatbázis-tranzakciós egységek (dtu-i) vagy a rugalmas adatbázis-tranzakciós egységek (edtu-k) beolvasása. További információkért lásd: [erőforrás korlátok](sql-database-resource-limits.md).
+Minden tarifacsomag és minden rugalmas készlet árképzési szint támogatott önálló adatbázis bizonyos mennyiségű memórián belüli online Tranzakciófeldolgozási tárolási tartalmazza. Lásd: [DTU-alapú erőforrás korlátok](sql-database-dtu-resource-limits.md) és [vCore-alapú erőforrás korlátok](sql-database-vcore-resource-limits.md).
 
 A következő elemek felé a memórián belüli online Tranzakciófeldolgozási tároló maximális száma:
 
@@ -87,8 +87,8 @@ További információk a tárhely kihasználtságát a memórián belüli online
 
 A rugalmas készletek a memórián belüli online Tranzakciófeldolgozási tárolási a készletben lévő összes adatbázisok által megosztott. Ezért a használata egy adatbázis hatással lehet más adatbázisok. Ez a két megoldást a következők:
 
-- Állítsa a Max-edtu-k az adatbázisok, amely kisebb, mint egy teljes készlet edtu-k számát. A maximális caps a memórián belüli online Tranzakciófeldolgozási tárhely kihasználtságát, a készlet méretét, amely megfelel az edtu-k száma bármely adatbázisban.
-- Állítsa a Min-edtu-k, amely nagyobb, mint 0. Ez a minimum garantálja, hogy a készlet minden egyes adatbázis rendelkezik-e elérhető a memórián belüli online Tranzakciófeldolgozási tárolókapacitást, amely megfelel a konfigurált minimális eDTU.
+- Konfigurálja a `Max-eDTU` vagy `MaxvCore` adatbázisokhoz, amely kisebb, mint egy teljes készlet edtu-ra vagy vCore számát. A maximális caps a memórián belüli online Tranzakciófeldolgozási tárhely kihasználtságát, a készlet méretét, amely megfelel az edtu-k száma bármely adatbázisban.
+- Konfigurálja a `Min-eDTU` vagy `MinvCore` 0-nál nagyobb. Ez a minimum garantálja, hogy a készlet minden egyes adatbázis rendelkezik-e elérhető a memórián belüli online Tranzakciófeldolgozási tárolókapacitást, amely megfelel a konfigurált `Min-eDTU` vagy `vCore`.
 
 ### <a name="data-size-and-storage-for-columnstore-indexes"></a>Adatok mérete és az oszlopcentrikus indexek tároló
 
@@ -152,7 +152,7 @@ A több simplistic, de több tetszetős teljesítmény bemutató a memórián be
 
 #### <a name="installation-steps"></a>Telepítés lépései
 
-1. Az a [Azure-portálon](https://portal.azure.com/), Premium adatbázis létrehozása a kiszolgálón. Állítsa be a **forrás** AdventureWorksLT minta adatbázisba. Részletes útmutatásért lásd: [az első Azure SQL-adatbázis létrehozása](sql-database-get-started-portal.md).
+1. Az a [Azure-portálon](https://portal.azure.com/), létrehoz egy prémium szintű vagy fontos üzleti (előzetes verzió) adatbázis a kiszolgálón. Állítsa be a **forrás** AdventureWorksLT minta adatbázisba. Részletes útmutatásért lásd: [az első Azure SQL-adatbázis létrehozása](sql-database-get-started-portal.md).
 
 2. Kapcsolódni az adatbázishoz az SQL Server Management Studio [(SSMS.exe)](http://msdn.microsoft.com/library/mt238290.aspx).
 

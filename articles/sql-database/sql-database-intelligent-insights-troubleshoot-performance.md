@@ -1,6 +1,6 @@
 ---
-title: "Intelligens, amelyen az Azure SQL Database teljesítménnyel kapcsolatos problémák elhárítása |} Microsoft Docs"
-description: "Intelligens Insights segítséget nyújt az Azure SQL Database teljesítménnyel kapcsolatos problémák elhárítása."
+title: Intelligens, amelyen az Azure SQL Database teljesítménnyel kapcsolatos problémák elhárítása |} Microsoft Docs
+description: Intelligens Insights segítséget nyújt az Azure SQL Database teljesítménnyel kapcsolatos problémák elhárítása.
 services: sql-database
 author: danimir
 manager: craigg
@@ -8,13 +8,13 @@ ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 04/04/2018
 ms.author: v-daljep
-ms.openlocfilehash: 0f23a76506a6692dd907a0b9fc7cfadfe7cd8f40
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7830a8a4bfc43e158069cc7cdc186e289e166751
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Intelligens, amelyen az Azure SQL Database teljesítménnyel kapcsolatos problémák elhárítása
 
@@ -58,7 +58,7 @@ Az alábbi szakasz a fent felsorolt észlelhető teljesítmény minták részlet
 
 Ebben a mintában észlelhető teljesítmény érhető el erőforrás-korlátozások, a munkavégző vonatkozó korlátokat és a munkamenet korlátok elérése kapcsolatos teljesítményproblémák egyesíti. Ezen teljesítményprobléma észleli, miután a diagnosztikai naplófájl Leírás mezőt azt jelzi, hogy a teljesítménycsökkenés oka kapcsolatos erőforrás, a munkavégző vagy a munkamenet korlátok.
 
-SQL-adatbázis erőforrásainak általában nevezzük [DTU-erőforrásokat](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu). Processzor- és i/o-(adatok és a tranzakciós napló i/o) erőforrások kevert mérték állnak. A mintát erőforrás korlátok elérése a rendszer felismeri észlelésekor lekérdezési teljesítmény romlását okozzák bármelyik a mért erőforrás korlátok elérése.
+SQL-adatbázis erőforrásainak általában nevezzük [DTU-erőforrásokat](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu). A Processzor- és IO (adatok és a tranzakciós napló IO) erőforrások kevert mérték állnak. A mintát erőforrás korlátok elérése a rendszer felismeri észlelésekor lekérdezési teljesítmény romlását okozzák bármelyik a mért erőforrás korlátok elérése.
 
 A munkamenet-korlátok erőforrás azt jelzi, hogy az SQL-adatbázist a rendelkezésre álló egyidejű bejelentkezések száma. Ez a teljesítmény minta van ismer fel, ha az SQL-adatbázishoz kapcsolódó alkalmazások elérte az adatbázis elérhető egyidejű bejelentkezések száma. Ha alkalmazások próbálnak további munkamenetek, mint amennyi egy adatbázis elérhető, a lekérdezési teljesítményt befolyásolja.
 
@@ -152,9 +152,9 @@ Ez a teljesítmény minta azt jelzi, hogy az aktuális adatbázisban munkaterhel
 
 Zárolás van életben ahhoz, hogy SQL-adatbázis által használt egyszerűsített szinkronizálási mechanizmus többszálas. A memórián belüli struktúrák, amely tartalmazza az indexet, a lapok és a más belső struktúrákat konzisztencia garantálják.
 
-Nincsenek számos különböző típusú zárolás van életben elérhető az SQL-adatbázishoz. Egyszerűség érdekében puffer zárolás van életben védelmére használhatók a memóriában lapok pufferkészletben. I/o-zárolás van életben még nincs betöltve ebbe a pufferkészlet lapok védelmére használhatók. Adatok írni vagy olvasni a pufferkészlet oldal, amikor egy munkavégző szál kell először szerezzen be egy puffer zárolás a lap. Ha egy munkavégző szál megpróbál hozzáférni egy oldal, amely még nem érhető el a memóriában lévő pufferkészletben, az i/o kérelem betölteni a szükséges adatokat a tárolóból. Az események sorozatát teljesítménycsökkenés súlyosabb formája jelzi.
+Nincsenek számos különböző típusú zárolás van életben elérhető az SQL-adatbázishoz. Egyszerűség érdekében puffer zárolás van életben védelmére használhatók a memóriában lapok pufferkészletben. IO zárolás van életben még nincs betöltve ebbe a pufferkészlet lapok védelmére használhatók. Adatok írni vagy olvasni a pufferkészlet oldal, amikor egy munkavégző szál kell először szerezzen be egy puffer zárolás a lap. Ha egy munkavégző szál megpróbál hozzáférni egy oldal, amely még nem érhető el a memóriában lévő pufferkészletben, egy IO kérelem betölteni a szükséges adatokat a tárolóból. Az események sorozatát teljesítménycsökkenés súlyosabb formája jelzi.
 
-A lap zárolás van életben a versengés következik be, amikor több szál egyidejűleg próbál szerezni egy nagyobb várakozási idő bemutatja a lekérdezés-végrehajtás azonos memórián belüli struktúrán zárolás van életben. Esetén pagelatch i/o-versengés, ha adatokat érhető el a tárolóból, a várakozási idő az ennél nagyobb. Ez jelentősen csökkentheti alkalmazások és szolgáltatások teljesítményét. Pagelatch versengés a leggyakrabban használt szálak egymás vár, és több Processzor rendszeren erőforrások versengő a forgatókönyvet.
+A lap zárolás van életben a versengés következik be, amikor több szál egyidejűleg próbál szerezni egy nagyobb várakozási idő bemutatja a lekérdezés-végrehajtás azonos memórián belüli struktúrán zárolás van életben. Esetén pagelatch IO versengés, ha adatokat érhető el a tárolóból, a várakozási idő az ennél nagyobb. Ez jelentősen csökkentheti alkalmazások és szolgáltatások teljesítményét. Pagelatch versengés a leggyakrabban használt szálak egymás vár, és több Processzor rendszeren erőforrások versengő a forgatókönyvet.
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -162,7 +162,7 @@ A diagnosztikai naplófájl kimenete pagelatch versengés részleteit. Ezt az in
 
 Mivel a pagelatch SQL-adatbázis egy belső ellenőrzési mechanizmus, automatikusan meghatározza, hogy mikor érdemes használni azokat. Alkalmazás döntések, beleértve annak kialakítását séma, hatással lehet a zárolás van életben determinisztikus viselkedését miatt pagelatch viselkedését.
 
-Egy hatékony módszer a zárolási versenyt szekvenciális Indexkulcs cseréje a segítségével egyenlően osztható el a Beszúrás az index tartományon keresztül hálója kulcs. Általában a index kezdő oszlop osztja el a munkaterhelés arányosan. Fontolja meg a tábla particionáló egy másik módszer. A particionált tábla számított oszlop séma particionálás kivonatát létrehozása egy általánosan használt megközelítés kiküszöböléséhez versengés túlzott zárolás. Esetén pagelatch i/o-versengés indexek bevezetéséről megelőzheti a teljesítménycsökkenés oka. 
+Egy hatékony módszer a zárolási versenyt szekvenciális Indexkulcs cseréje a segítségével egyenlően osztható el a Beszúrás az index tartományon keresztül hálója kulcs. Általában a index kezdő oszlop osztja el a munkaterhelés arányosan. Fontolja meg a tábla particionáló egy másik módszer. A particionált tábla számított oszlop séma particionálás kivonatát létrehozása egy általánosan használt megközelítés kiküszöböléséhez versengés túlzott zárolás. Esetén pagelatch IO versengés indexek bevezetéséről megelőzheti a teljesítménycsökkenés oka. 
 
 További információkért lásd: [Diagnosztizálás és hárítsa el az SQL Server versengés zárolni](http://download.microsoft.com/download/B/9/E/B9EDF2CD-1DBF-4954-B81E-82522880A2DC/SQLServerLatchContention.pdf) (PDF-fájl letöltése).
 
@@ -220,7 +220,7 @@ További információ a lekérdezési teljesítmény optimalizálása: [lekérde
 
 ### <a name="what-is-happening"></a>mi történik
 
-Ez észlelhető teljesítmény minta, amelyben a szűk keresztmetszetek a tempDB erőforrások elérésére tett kísérlet szálak létezik adatbázis teljesítményének feltételt jelzi. (Ez az állapot nem kapcsolatos i/o.) Ezen teljesítményprobléma a jellemző forgatókönyv, hogy az összes létrehozása, használata és előfordulásoknál kis tempDB táblák egyidejű lekérdezések több száz. A rendszer azt észlelte, hogy a tempDB két tábla használatával párhuzamos lekérdezések száma az elmúlt hét nap teljesítménybeli alapértékek képest adatbázis teljesítményét befolyásoló elegendő statisztikai többszörösére növelhető.
+Ez észlelhető teljesítmény minta, amelyben a szűk keresztmetszetek a tempDB erőforrások elérésére tett kísérlet szálak létezik adatbázis teljesítményének feltételt jelzi. (Ez az állapot nem kapcsolódó IO.) Ezen teljesítményprobléma a jellemző forgatókönyv, hogy az összes létrehozása, használata és előfordulásoknál kis tempDB táblák egyidejű lekérdezések több száz. A rendszer azt észlelte, hogy a tempDB két tábla használatával párhuzamos lekérdezések száma az elmúlt hét nap teljesítménybeli alapértékek képest adatbázis teljesítményét befolyásoló elegendő statisztikai többszörösére növelhető.
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -234,7 +234,7 @@ További információkért lásd: [memóriaoptimalizált táblák bemutatása](h
 
 Ebben a mintában észlelhető teljesítmény azt jelzi, hogy egy akár teljesítménycsökkenés az aktuális adatbázis munkaterhelés az elmúlt hét nap alaptervhez képest. Az előfizetés a rugalmas készletben használható Dtu hiánya okozza. 
 
-SQL-adatbázis erőforrásainak általában nevezzük [DTU-erőforrásokat](sql-database-what-is-a-dtu.md), amelyek közé tartozik a Processzor- és i/o-(adatok és a tranzakciós napló i/o) erőforrások kevert mérték. [A rugalmas készlet Azure-erőforrások](sql-database-elastic-pool.md) célra méretezéshez több adatbázis közötti megosztott rendelkezésre álló eDTU-erőforrások készleteként szolgálnak. Ha a rugalmas készletben rendelkezésre álló eDTU-erőforrások nem elég nagy az adatbázisok támogatásához a készletben, a rendszer a rendszer észlelt egy rugalmas készlet DTU kevés teljesítményprobléma.
+SQL-adatbázis erőforrásainak általában nevezzük [DTU-erőforrásokat](sql-database-what-is-a-dtu.md), amely a Processzor- és IO (adatok és a tranzakciós napló IO) erőforrások kevert mérték áll. [A rugalmas készlet Azure-erőforrások](sql-database-elastic-pool.md) célra méretezéshez több adatbázis közötti megosztott rendelkezésre álló eDTU-erőforrások készleteként szolgálnak. Ha a rugalmas készletben rendelkezésre álló eDTU-erőforrások nem elég nagy az adatbázisok támogatásához a készletben, a rendszer a rendszer észlelt egy rugalmas készlet DTU kevés teljesítményprobléma.
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 

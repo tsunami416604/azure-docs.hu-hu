@@ -1,11 +1,11 @@
 ---
-title: "Hogyan kell delegálni a felhasználói regisztráció és a termék-előfizetéshez"
-description: "Tudnivalók a felhasználói regisztráció és a termék előfizetés harmadik félnek az Azure API Management delegálása."
+title: Hogyan kell delegálni a felhasználói regisztráció és a termék-előfizetéshez
+description: Tudnivalók a felhasználói regisztráció és a termék előfizetés harmadik félnek az Azure API Management delegálása.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: antonba
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 8b7ad5ee-a873-4966-a400-7e508bbbe158
 ms.service: api-management
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: fc8c5774eb616c33c00ecebeacd31e2a07b36e0c
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 8c19111ed966ff89a2934dd5232625aab1f8b28b
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Hogyan kell delegálni a felhasználói regisztráció és a termék-előfizetéshez
 Delegálás lehetővé teszi a meglévő webhely használatát fejlesztői bejelentkezési-a/regisztrációs és termékek a fejlesztői portálra beépített funkcióval szemben-előfizetés kezeléséhez. Ez lehetővé teszi, hogy a webhely tulajdonosai a felhasználó adatait, és hajtsa végre az alábbi lépéseket az érvényesítés egy egyedi módon.
@@ -173,7 +173,7 @@ Delegálás további információkért tekintse meg a következő videót:
 [Delegating developer sign-in and sign-up]: #delegate-signin-up
 [Delegating product subscription]: #delegate-product-subscription
 [egyszeri bejelentkezéses (SSO) jogkivonatot kérni]: https://docs.microsoft.com/rest/api/apimanagement/User/GenerateSsoUrl
-[Felhasználó létrehozása]: http://go.microsoft.com/fwlink/?LinkId=507655#CreateUser
+[Felhasználó létrehozása]: https://docs.microsoft.com/en-us/rest/api/apimanagement/user/createorupdate
 [termék-előfizetéshez tartozó REST API hívása]: http://go.microsoft.com/fwlink/?LinkId=507655#SSO
 [Next steps]: #next-steps
 [alábbi példakód]: #delegate-example-code

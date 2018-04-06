@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 04/02/2018
 ms.author: magoedte
-ms.openlocfilehash: 8ac3d2d90909d740d28eb05396b915280f58c8ba
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: e05d620a457edf427c946366a9caca471ac8531e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>A Naplóelemzési munkaterület létrehozása az Azure-portálon
 Az Azure-portálon állíthatja be a Naplóelemzési munkaterület, amely olyan saját adattárház, az adatforrások és a megoldások egyedi Naplóelemzési környezet.  Ebben a cikkben ismertetett lépések szükségesek, ha azt tervezi, a következő forrásokból származó adatok gyűjtése a:
@@ -47,7 +47,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
   * A legördülő listából válassza ki azt az **előfizetést**, amelyikhez kapcsolódni szeretne, ha az alapértelmezett kiválasztás nem megfelelő.
   * A **erőforráscsoport**, meglévő erőforrás használandó kiválasztott csoport már telepítő, vagy hozzon létre egy újat.  
   * Válasszon ki egy használható **hely**.  További információkért tekintse meg [a Log Analytics által támogatott régiókat](https://azure.microsoft.com/regions/services/).
-  * Ha egy új előfizetés 2018. április 2. után létrehozott egy munkaterület hoz létre automatikusan használja a */ GB* árképzési terv és kiválaszthatja azokat a tarifacsomag nem lesz elérhető.  Ha egy meglévő előfizetéshez. április 2 előtt létrehozott egy munkaterület létrehozásakor, vagy volt kötve a meglévő EA beléptetési-előfizetéshez, lehetősége van a három tarifacsomagok választhat.  A gyors üzembe helyezés, a fog ingyenes szint kiválasztásához.  További információt az elérhető csomagokról [a Log Analytics részletes díjszabásában](https://azure.microsoft.com/pricing/details/log-analytics/) találhat.
+  * Ha egy új előfizetés 2018. április 2. után létrehozott egy munkaterület hoz létre automatikusan használja a */ GB* árképzési terv és kiválaszthatja azokat a tarifacsomag nem lesz elérhető.  Egy meglévő előfizetéshez. április 2 előtt, vagy az előfizetést, amelyet volt kötve a meglévő EA beléptetési létrehozott egy munkaterület létrehozása, válassza ki a kívánt tarifacsomagot.  További információt az elérhető csomagokról [a Log Analytics részletes díjszabásában](https://azure.microsoft.com/pricing/details/log-analytics/) találhat.
 
         ![Create Log Analytics resource blade](media/log-analytics-quick-collect-azurevm/create-loganalytics-workspace-02.png)<br>  
 

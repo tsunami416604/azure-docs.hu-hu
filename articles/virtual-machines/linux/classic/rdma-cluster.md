@@ -1,11 +1,11 @@
 ---
-title: "MPI alkalmazások futtatásához hozzon létre egy Linux RDMA fürt |} Microsoft Docs"
-description: "Méretű H16r, H16mr, A8 vagy A9 virtuális gépeket az Azure RDMA hálózati MPI alkalmazások futtatásához használandó Linux-fürt létrehozása"
+title: MPI alkalmazások futtatásához hozzon létre egy Linux RDMA fürt |} Microsoft Docs
+description: Méretű H16r, H16mr, A8 vagy A9 virtuális gépeket az Azure RDMA hálózati MPI alkalmazások futtatásához használandó Linux-fürt létrehozása
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: 01834bad-c8e6-48a3-b066-7f1719047dd2
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: danlep
-ms.openlocfilehash: 428dc1e8ba03ba17e348a33a33b5cf5e6118a43c
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 18549a8606285238f26d2c8cec54793e26e3e8d1
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="set-up-a-linux-rdma-cluster-to-run-mpi-applications"></a>Linuxos RDMA-fürt beállítása MPI-alkalmazások futtatására
 Ismerje meg, hogyan állíthat be az Azure-ban Linux RDMA fürt [nagy teljesítményű számítási Virtuálisgép-méretek](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) párhuzamos Message Passing Interface (MPI) alkalmazások futtatásához. Ez a cikk lépéseit Intel MPI futhat egy fürt Linux HPC lemezkép előkészítése. Előkészítő, miután a virtuális gépek használata a lemezkép és az RDMA-kompatibilis Azure Virtuálisgép-méretek, (jelenleg H16r, H16mr, A8 és A9) egy fürt központi telepítése. A fürt használatával, amely a távoli közvetlen memória-hozzáférés (RDMA) technológián alapulnak, alacsony késésű, nagy átviteli hálózati hatékonyan kommunikációhoz MPI-alkalmazások futtatására.

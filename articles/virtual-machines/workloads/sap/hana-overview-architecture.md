@@ -1,11 +1,11 @@
 ---
-title: "Áttekintés és SAP HANA Azure (nagy példányok) architektúrájának |} Microsoft Docs"
-description: "Architektúra áttekintése, amelyekkel telepítheti az SAP HANA Azure (nagy példány)."
+title: Áttekintés és SAP HANA Azure (nagy példányok) architektúrájának |} Microsoft Docs
+description: Architektúra áttekintése, amelyekkel telepítheti az SAP HANA Azure (nagy példány).
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: RicksterCDN
 manager: timlt
-editor: 
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -14,125 +14,126 @@ ms.workload: infrastructure
 ms.date: 01/02/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4246ecfa50176400c54cd80857e25675290e7170
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ceeec6991aaac64211301313c1bb8dc5f5faa1c0
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>SAP HANA (nagy példányok) – áttekintés és az Azure-architektúra
 
 ## <a name="what-is-sap-hana-on-azure-large-instances"></a>Mi az Azure (nagy példányok) SAP HANA?
 
-SAP HANA Azure (nagy példány) egy olyan egyedi megoldás az Azure-bA. Azure virtuális gépeken történő központi telepítéséhez és futtatásához az SAP HANA biztosít, Azure lehetőséget biztosít, futtatása és az SAP HANA ügyfélként Önnek dedikált operációs rendszer nélküli a kiszolgálókra telepített lehetőségét. Az SAP HANA Azure (nagy példányok) megoldás, amely hozzá van rendelve, mint az ügyfél nem megosztott gazdakiszolgáló/operációs rendszer nélküli hardver építkezik. A Kiszolgálóhardver nagyobb számítási és a kiszolgáló, a hálózat és tároló-infrastruktúra tartalmazó bélyegzők van beágyazva. Amellyel kombinációja lesz hitelesített HANA TDI. A szolgáltatás ajánlat az SAP HANA Azure (nagy példányok) kínál különböző különböző kiszolgálótermékek vagy kezdve, amely 72 processzorok és 768 GB memória, amelyek 960 processzorok egységek és 20 TB memóriával rendelkeznek egység méretét.
+SAP HANA Azure (nagy példányok) egy olyan egyedi megoldás az Azure-bA. Biztosít a virtuális gépek üzembe helyezéséhez és futtatásához az SAP HANA, Azure lehetőséget biztosít, futtatása és az SAP HANA Önnek dedikált operációs rendszer nélküli a kiszolgálókra telepített lehetőségét. Az SAP HANA Azure (nagy példányok) megoldás nem megosztott gazdakiszolgáló/operációs rendszer nélküli hardver Önhöz rendelt építkezik. A Kiszolgálóhardver nagyobb számítási és a kiszolgáló, a hálózat és tároló-infrastruktúra tartalmazó bélyegzők van beágyazva. Kombinációját, mint a hitelesített igazított HANA data center integrációs (TDI). Az Azure (nagy példányok) SAP HANA kínál különböző kiszolgálótermékek vagy mérete. Egységek 72 processzorok és 768 GB memóriával rendelkeznek, és lépjen 960 rendelkező egységek processzorok és 20 TB memóriával.
 
-Az ügyfél elkülönítési az infrastruktúra stamp belül történik bérlők, amely részletesen a következőhöz hasonló:
+Az ügyfél elkülönítési az infrastruktúra stamp belül történik bérlők, amelyek a következőhöz hasonló:
 
-- Hálózatkezelés: Elkülönítési ügyfelek belül infrastruktúra verem hozzárendelt ügyfél bérlőnként virtuális hálózatokon keresztül. A bérlő egyetlen ügyfél hozzá van rendelve. Egy ügyfél rendelkezhet több bérlő. A hálózati elkülönítés a bérlő nem engedélyezi a hálózati kommunikáció a bérlők infrastruktúra stamp szint között. Akkor is, ha a bérlők számára az azonos ügyfél tartozik.
-- Tárolási összetevőinek: tároló virtuális gépek, amelyek rendelkeznek a hozzárendelt tárolókötetek elkülönítését. Tárolási köteteket rendelhet egy tárolási virtuális gépet. Egy tároló virtuális géphez van hozzárendelve, kizárólag a SAP HANA TDI hitelesített infrastruktúra verem egy egyetlen bérlő számára. Ennek eredményeképpen a tároló virtuális géphez rendelt tárolókötetek érhetők el egy adott és kapcsolódó bérlői csak. És nem látható a különböző telepített bérlők között.
-- Kiszolgáló vagy a gazdagép: A kiszolgáló vagy a gazdagép egység nem megosztott ügyfelei vagy a bérlők között. A kiszolgáló vagy a gazdagép egy ügyfél telepítve egy atomi operációs rendszer nélküli számítási egység, amely egy egybérlős hozzá van rendelve. **Nem** hardver particionálási vagy soft-particionálást használnak, amelyek eredményezheti, hogy ügyfélként, a gazdagépen vagy egy kiszolgáló megosztása egy másik ügyféllel. Tárolás az adott bérlő tároló virtuális géphez rendelt csatlakoztatva vannak ilyen kiszolgálóra. A bérlő rendelkezhetnek kizárólag hozzárendelt különböző Termékváltozatai sok kiszolgáló egységeire.
-- Egy SAP HANA (nagy példány) Azure infrastruktúra stamp, belül számos különböző bérlők telepített és egymással szembeni keresztül a bérlői fogalmak a hálózati, tárolási és számítási szint elkülönített. 
+- **Hálózati**: elkülönítési ügyfelek belül infrastruktúra verem hozzárendelt ügyfél bérlőnként virtuális hálózatokon keresztül. A bérlő egyetlen ügyfél hozzá van rendelve. Egy ügyfél rendelkezhet több bérlő. A hálózati elkülönítés a bérlő hálózati kommunikáció a infrastruktúra stamp szinten bérlők között nem engedélyezi, akkor is, ha a bérlők számára az azonos ügyfél tartozik.
+- **Tárolási összetevőinek**: tároló virtuális gépek, amelyeknek a hozzájuk rendelt tárolási kötetein elkülönítését. Tárolási köteteket rendelhet egy tárolási virtuális gépet. Egy tároló virtuális géphez van hozzárendelve, kizárólag a SAP HANA TDI hitelesített infrastruktúra verem egy egyetlen bérlő számára. Ennek eredményeképpen a tároló virtuális géphez rendelt tárolókötetek érhetők el egy adott és kapcsolódó bérlői csak. Nem látható a különböző telepített bérlők között.
+- **Kiszolgáló vagy a gazdagép**: A kiszolgáló vagy a gazdagép egység nem osztott ügyfelei vagy a bérlők között. A kiszolgáló vagy a gazdagép egy ügyfél telepítve egy atomi operációs rendszer nélküli számítási egység, amely egy egybérlős hozzá van rendelve. *Nem* hardver particionálás vagy enyhe particionálást használnak, amelyek eredményezhet a gazdagépen vagy egy kiszolgáló egy másik ügyféllel oszt meg. Tárolás az adott bérlő tároló virtuális géphez rendelt csatlakoztatva vannak ilyen kiszolgálóra. A bérlő rendelkezhetnek kizárólag hozzárendelt különböző Termékváltozatai sok kiszolgáló egységeire.
+- Egy SAP HANA (nagy példányok) Azure infrastruktúra stamp, belül számos különböző bérlők telepített és egymással szembeni keresztül a bérlői fogalmak a hálózati, tárolási és számítási szint elkülönített. 
 
 
-A kiszolgáló operációs rendszer nélküli egységeket SAP HANA csak futtatásához támogatottak. Az SAP alkalmazásréteg vagy munkaterhelés közel-vő réteg fut a Microsoft Azure virtuális gépeken. Az SAP HANA futó Azure (nagy példány) egységek infrastruktúra bélyegzők csatlakoznak a Azure hálózati csigolyákat, tehát, amely a kis késleltetésű kapcsolat az Azure (nagy példány) egységek SAP HANA és Azure virtuális gépek közötti valósul meg.
+A kiszolgáló operációs rendszer nélküli egységeket SAP HANA csak futtatásához támogatottak. Az SAP alkalmazásréteg vagy a munkaterhelés közel-vő réteg fut a virtuális gépeken. Az SAP HANA futó Azure (nagy példányok) egységek infrastruktúra bélyegzők a Azure hálózati szolgáltatások csigolyákat csatlakoznak. Ezzel a módszerrel kis késleltetésű kapcsolat SAP HANA Azure (nagy példányok) egységekről és a virtuális gépek közötti valósul meg.
 
-Ez a dokumentum több dokumentumot, amely magában foglalja az Azure (nagy példány) SAP HANA egyike. Ez a dokumentum azt keresse meg a alapvető architektúráját, feladatok, szolgáltatásait, és a magas szintű képességek a megoldás keresztül. A legtöbb területek, mint például a hálózati és a csatlakozási a más négy dokumentumok takarja el a részleteket, és elemezze időszakosan megszakadó. Az SAP HANA (nagy példány) Azure dokumentációjában nem fedi fel az SAP NetWeaver telepítési szempontok vagy SAP NetWeaver az Azure virtuális gépeken a központi telepítéséhez. SAP NetWeaver Azure ugyanabban az Azure dokumentációja a tárolóban található külön dokumentumokra vonatkozik. 
+Ez a dokumentum több dokumentumok, a SAP HANA Azure (nagy példányok) egyike. Ez a dokumentum bemutatja a alapvető architektúráját, feladatok és a megoldás által nyújtott szolgáltatások. A megoldás magas szintű képességeket is ismerteti. A legtöbb más területek, például a hálózati és a csatlakozási négy más dokumentumok közé tartozik a részletek és információkat. Az SAP HANA (nagy példányok) Azure dokumentációjában nem fedi le, a SAP NetWeaver telepítési szempontok vagy SAP NetWeaver a virtuális gépek központi telepítését. SAP NetWeaver Azure ugyanabban az Azure dokumentációja a tárolóban található külön dokumentumokra vonatkozik. 
 
 
 A különböző dokumentumok HANA nagy példány útmutatás terjed ki a következő területeken:
 
-- [SAP HANA (nagy példány) – áttekintés és az Azure-architektúra](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [SAP HANA (nagy példányok) – áttekintés és az Azure-architektúra](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [SAP HANA (nagy példányok) infrastruktúra és az Azure-kapcsolat](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Hogyan kell telepíteni, és az SAP HANA (nagy példányok) konfigurálása az Azure-on](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [SAP HANA (nagy példányok) magas rendelkezésre állás és vészhelyreállítás Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [SAP HANA (nagy példányok) hibaelhárítás és Azure figyelése](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Állítsa be a STONITH használatával SUSE a magas rendelkezésre állás](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/ha-setup-with-stonith)
+- [Telepítse és konfigurálja az SAP HANA (nagy példány) az Azure-on](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [SAP HANA (nagy példányok) magas rendelkezésre állási és vészhelyreállítási helyreállítási az Azure-on](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [SAP HANA (nagy példányok) hibaelhárítási és Azure figyelése](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Állítsa be a SUSE a STONITH használatával magas rendelkezésre állás](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/ha-setup-with-stonith)
 - [Az operációs rendszer biztonsági mentéséhez és visszaállításához a típus II termékváltozatok](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-backup-type-ii-skus)
 
 ## <a name="definitions"></a>Meghatározások
 
 Több, közös definíciók széles körben használt a architektúra és a műszaki üzembe helyezési útmutatójában. Vegye figyelembe a következő feltételek és azok jelentését:
 
-- **IaaS:** szolgáltatott infrastruktúra
-- **A PaaS:** platformok
-- **SaaS:** szolgáltatott szoftver
-- **SAP összetevő:** az egyes SAP-alkalmazások, például az ECC, BW, megoldás kezelő vagy EP SAP-összetevők a hagyományos ABAP vagy Java technológiák vagy egy nem NetWeaver alapú alkalmazás, például üzleti objektumok is alapulhat.
-- **SAP-környezetben:** egy vagy több SAP összetevők logikusan egy üzleti funkciót, például a fejlesztési, a QAS, a képzési, a vész-Helyreállítási vagy a termelési végrehajtásához.
-- **SAP fekvő:** az egész SAP eszközök az informatikai fekvő hivatkozik. Az SAP fekvő minden üzemi és nem éles környezetben tartalmaz.
-- **SAP-verzió:** DBMS réteg és az alkalmazási rétegre egy SAP ERP fejlesztőrendszer SAP BW gazdagépes tesztrendszer, SAP CRM éles rendszer, stb. Azure-környezetekhez nem támogatják ezeket a helyszíni és az Azure közötti két réteget elválasztó. Azt jelenti, hogy egy SAP rendszerben telepített helyi, illetve az Azure-ban telepítve van. Azonban telepítheti a másik egy SAP fekvő Azure vagy a helyszíni rendszeren. Például elvégezheti Azure, a SAP CRM fejlesztési és tesztelési rendszerek SAP CRM éles rendszer a helyi telepítése közben. SAP Hana Azure (nagy példányokat) az szolgál az SAP alkalmazásréteg SAP rendszerek az Azure virtuális gépeken és a kapcsolódó SAP HANA-példányhoz a HANA nagy példány bélyegző egység gazdagép.
-- **Nagy példány stamp:** hardver infrastruktúra verem egy SAP HANA TDI van hitelesített, és az Azure SAP HANA-példányok futtatásához dedikált.
-- **SAP HANA Azure (nagy példány):** az SAP HANA TDI hardver, amely telepítve van a különböző Azure-régiók nagy példány bélyegzők hitelesített példánya HANA futtassa az Azure-ajánlatot hivatalos nevét. A kapcsolódó kifejezés **HANA nagy példány** rövid a SAP HANA Azure (nagy példányokat), és széles körben használt műszaki telepítési útmutatóban.
-- **Létesítmények közötti:** ismerteti egy olyan forgatókönyvet, ahol a virtuális gépek Azure-előfizetéshez, amely rendelkezik pont-pont, többhelyes vagy a helyszíni datacenter(s) és az Azure között ExpressRoute kapcsolat van telepítve. Közös Azure dokumentációja, az ilyen típusú központi telepítések egyaránt létesítmények közötti forgatókönyv leírása. A kapcsolat oka, hogy a helyi tartomány, a helyszíni Active Directory/OpenLDAP és a helyi DNS kiterjeszti Azure. A helyszíni fekvő az időtartam, a társított Azure-előfizetéseit Azure eszközökre. Ha ezt a bővítményt, a virtuális gépek a helyi tartomány része lehet. A helyi tartomány tartományi felhasználók férhetnek hozzá a kiszolgálókat, és szolgáltatásokat futtathatja virtuális gépek (például adatbázis-kezelő szolgáltatás). Telepített virtuális gépek a helyszíni és az Azure telepített virtuális gépek közötti kommunikációt és a névfeloldás lehetőség. Például az a jellemző forgatókönyv, mely a legtöbb SAP eszközök vannak telepítve. Tekintse meg az útmutatók a [tervezése és kialakítása VPN-átjáró](../../../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) és [hozhat létre egy Vnetet az Azure portál használatával webhelyek kapcsolattal rendelkező](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) részletes információkat.
-- **Bérlői:** HANA nagy példányok stamp telepített ügyfél lekérdezi elkülönített be a "bérlő." A bérlő elkülönül a hálózati, tárolási és számítási rétegét a többi bérlőtől. Tehát, hogy a különböző bérlők rendelt tárolási és számítási egység nem egymással vagy látni a HANA nagy példány stamp szinten kommunikálnak egymással. Az ügyfél beállíthatja úgy a különböző bérlők történő központi telepítések. Nincs még akkor is ezt követően a HANA nagy stamp példányszintű a bérlők közötti kommunikáció.
-- **Termékváltozat-kategória:** a HANA nagy példányok, a következő két kategóriájához SKU érhető el.
-    - **Írja be az osztály:** S72, S72m, S144, S144m, S192 és S192m
-    - **II osztálya:** S384, S384m, S384xm, S576, S768 és S960
+- **Infrastruktúra-szolgáltatási**: szolgáltatott infrastruktúra.
+- **A PaaS**: Platformszolgáltatást.
+- **SaaS**: szolgáltatott szoftver.
+- **SAP összetevő**: az egyes SAP-alkalmazások, például ERP központi összetevő (ECC), a Business Warehouse (BW), a megoldás Manager vagy a vállalati portálon (EP). SAP-összetevők a hagyományos ABAP vagy Java technológiák vagy egy nem NetWeaver alapú alkalmazás, például üzleti objektumok is alapulhat.
+- **SAP környezet**: egy vagy több SAP összetevők logikusan egy üzleti funkció, például a fejlesztés, minőségi megbízhatósági, képzési, vész-helyreállítási vagy éles.
+- **SAP fekvő**: az informatikai fekvő az egész SAP eszközök hivatkozik. Az SAP fekvő minden üzemi és nem éles környezetben tartalmaz.
+- **SAP rendszer**: adatbázis-kezelő réteg és alkalmazás réteget, például egy SAP ERP fejlesztői rendszernek, az SAP BW teszt rendszer és az SAP CRM éles rendszerek kombinációja. Azure-környezetekhez nem támogatják a két réteg a helyszíni és az Azure közötti felosztásával. Egy SAP rendszer telepített helyszíni vagy az Azure szolgáltatásba telepített. Egy Azure vagy a helyszíni SAP fekvő a különböző rendszerek telepíthetők. Például telepítheti az SAP CRM fejlesztési és tesztrendszerek az Azure-ban, a SAP CRM éles rendszer helyszíni telepítése közben. SAP Hana (nagy példányok) Azure-on célja az SAP alkalmazásréteg SAP rendszerek a virtuális gépek és a kapcsolódó SAP HANA-példányhoz egy egység az Azure (nagy példányok) stamp az SAP HANA üzemeltetésére.
+- **Nagy példány stamp**: hardver infrastruktúra verem egy SAP HANA TDI hitelesített és dedikált SAP HANA-példányok Azure-ban futtatni.
+- **SAP HANA Azure (nagy példány):** , amely telepítve van a különböző Azure-régiók nagy példány bélyegzők SAP HANA TDI hitelesített hardveren példánya HANA futtassa az Azure-ajánlatot hivatalos nevét. A kapcsolódó kifejezés *HANA nagy példány* rövid a *SAP HANA Azure (nagy példányok)* és széles körben használja a műszaki telepítési útmutatóban.
+- **Létesítmények közötti**: egy olyan forgatókönyvet, ahol telepített virtuális gépek Azure-előfizetéssel, amely rendelkezik pont-pont, többhelyes vagy Azure ExpressRoute-kapcsolatot a helyszíni adatközpont és az Azure közötti ismertet. Közös Azure dokumentációja, az ilyen típusú központi telepítések egyaránt létesítmények közötti forgatókönyv leírása. A kapcsolat oka, hogy a helyi tartomány, a helyszíni Azure Active Directory/OpenLDAP és a helyszíni DNS kiterjeszti Azure. A helyszíni fekvő az időtartam, az Azure-előfizetések az Azure eszközökre. Ez a bővítmény a virtuális gépek a helyi tartomány része lehet. 
+
+   Tartományi felhasználók a helyi tartomány fér hozzá a kiszolgálóhoz, és szolgáltatásokat futtatnak a virtuális gépek (például adatbázis-kezelő szolgáltatás). Virtuális gépek közötti kommunikációt és a névfeloldás telepítve a helyi és virtuális gépek Azure-telepített lehet. Ebben a forgatókönyvben jellemző, amelyben a legtöbb SAP eszközök vannak telepítve módja. További információkért lásd: [megtervezése és kialakítása az Azure VPN Gateway](../../../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) és [webhelyek kapcsolattal rendelkező virtuális hálózat létrehozása az Azure portál használatával](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+- **Bérlői**: HANA nagy példány stamp telepített ügyfél lekérdezi elkülönített be egy *bérlő.* A bérlő elkülönül a hálózati, tárolási és számítási rétegét a többi bérlőtől. A különböző bérlők rendelt tárolási és számítási egység nem tekintse meg egymással, vagy a HANA nagy példány stamp szinten kommunikálnak egymással. Az ügyfél beállíthatja úgy a különböző bérlők történő központi telepítések. Nincs még akkor is ezt követően a HANA nagy stamp példányszintű a bérlők közötti kommunikáció.
+- **Termékváltozat-kategória**: A HANA nagy példány, a következő két kategóriájához SKU érhető el:
+    - **I. osztály típus**: S72, S72m, S144, S144m, S192 és S192m
+    - **Írja be a II osztály**: S384, S384m, S384xm, S576, S768 és S960
 
 
-Nincsenek további források a Microsoft Azure nyilvános felhőjében SAP alkalmazások és szolgáltatások telepítése a közzétett különböző. Erősen ajánlott, hogy bárki tervezési és egy SAP HANA központi telepítés végrehajtása az Azure-ban tapasztalt és tisztában legyen a rendszerbiztonsági tagoknak az Azure infrastruktúra-szolgáltatási és Azure infrastruktúra-szolgáltatási SAP munkaterhelését telepítését. A következő források nyújtanak további információt, és a folytatás előtt meg lehet hivatkozni:
-
-
-- [SAP megoldások segítségével a Microsoft Azure virtuális gépeken](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+A különböző további erőforrások állnak központi telepítése egy SAP munkaterhelés, a felhőben. Ha azt tervezi, egy SAP HANA központi telepítés végrehajtása az Azure-ban, kell lennie a jártasak és az Azure infrastruktúra-szolgáltatási és a központi telepítés SAP-munkaterhelések az Azure infrastruktúra-szolgáltatási tudomást. A folytatás előtt tekintse meg a [használata SAP megoldások Azure virtuális gépeken futó](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) további információt. 
 
 ## <a name="certification"></a>Tanúsítvány
 
 A NetWeaver hitelesítő mellett SAP egy SAP Hana SAP HANA támogatásához egyes infrastrukturális, például az Azure infrastruktúra-szolgáltatási speciális hitelesítő van szükség.
 
-A Core SAP Megjegyzés NetWeaver, valamint egy mértékben SAP HANA hitelesítő [SAP Megjegyzés #1928533 – Azure SAP-alkalmazásokból: támogatott termékek és az Azure virtuális gép típusok](https://launchpad.support.sap.com/#/notes/1928533).
+A Core SAP Megjegyzés NetWeaver, valamint egy mértékben SAP HANA hitelesítő [SAP Megjegyzés #1928533 – Azure SAP-alkalmazásokból: támogatott termékek és Azure Virtuálisgép-típusokon](https://launchpad.support.sap.com/#/notes/1928533).
 
-Ez [SAP Megjegyzés #2316233 - SAP HANA a Microsoft Azure (nagy példányok)](https://launchpad.support.sap.com/#/notes/2316233/E) is fontos. A megoldás a jelen útmutatóban ismertetett magában foglalja. Ezenkívül támogatottak az Azure GS5 VM típusú SAP HANA futtatásához. [Ebben az esetben az adatokat a SAP webhelyen van közzétéve](http://global.sap.com/community/ebook/2014-09-02-hana-hardware/enEN/iaas.html).
+A [SAP Megjegyzés #2316233 - SAP HANA a Microsoft Azure (nagy példányok)](https://launchpad.support.sap.com/#/notes/2316233/E) is fontos. A megoldás a jelen útmutatóban ismertetett magában foglalja. Ezenkívül támogatottak az Azure GS5 VM típusú SAP HANA futtatásához. Ebben az esetben információt teszi közzé a [az SAP-webhely](http://global.sap.com/community/ebook/2014-09-02-hana-hardware/enEN/iaas.html).
 
-Az SAP HANA SAP Megjegyzés #2316233 említett Azure (nagy példányok) megoldás teszi lehetővé Microsoft és az SAP-ügyfelek központi telepítése a nagy SAP Business Suite, SAP Business Warehouse (BW), S/4 HANA, BW/4HANA vagy más SAP HANA-munkaterhelések az Azure-ban. A megoldás az SAP-HANA jóváhagyott dedikált hardver stamp alapul ([SAP HANA igazított Datacenter integrációs – TDI](https://scn.sap.com/docs/DOC-63140)). Egy SAP HANA TDI futtató beállított megoldás lehetővé teszi az vetett bizalmat tudhatja, hogy, hogy minden SAP HANA-alapú alkalmazások (beleértve az SAP Business Suite az SAP HANA, SAP Business Warehouse (BW) SAP HANA, S4/HANA és BW4/HANA) működik a hardver infrastruktúra.
+Az SAP HANA SAP Megjegyzés #2316233 említett Azure (nagy példányok) megoldás teszi lehetővé Microsoft és az SAP-ügyfelek központi telepítése a nagy SAP Business Suite, SAP BW Programhoz, S/4 HANA, BW/4HANA vagy más SAP HANA-munkaterhelések az Azure-ban. A megoldás az SAP-HANA jóváhagyott dedikált hardver stamp alapul ([SAP HANA igazított center Adatintegráció – TDI](https://scn.sap.com/docs/DOC-63140)). Futtatja egy SAP HANA TDI beállított megoldás, ha a hardver infrastruktúra minden SAP HANA-alapú alkalmazások (például SAP Business Suite az SAP HANA, SAP BW SAP HANA, S4/HANA és BW4/HANA) működik.
 
-SAP HANA az Azure virtuális gépek futtatását a megoldás előnyt képest – sokkal nagyobb memória kötetek biztosít. Ez a megoldás engedélyezni szeretné, ha néhány fontos szempontot megértése:
+SAP HANA-beli virtuális gépek képest, ez a megoldás előnye van. Sokkal nagyobb memória kötetek biztosít. Ahhoz, hogy ez a megoldás, kell ismertetése a következő fő szempontjait:
 
-- Az SAP alkalmazás réteg és nem SAP alkalmazások az Azure virtuális gépek (VM), amelyek a szokásos Azure hardverkonfiguráción bélyegek futnak.
-- Ügyfél a helyszíni infrastruktúrát, adatközpontok és alkalmazások központi telepítéseit a Microsoft Azure cloud platform keresztül Azure ExpressRoute (ajánlott) vagy virtuális magánhálózati (VPN) csatlakoznak. Active Directory (AD) és a DNS is kiterjeszthetőek az Azure.
-- Az SAP HANA-adatbázispéldány HANA munkaterhelés SAP HANA (nagy példányok) Azure-on futtatja. A nagy példány stamp be Azure networking csatlakozik, ezért az Azure virtuális gépeken futó szoftver képes interakciót folytatni a HANA-példány futtatási HANA nagy példányát.
-- Hardver-vagy Azure (nagy példányok) SAP HANA megadott infrastruktúra (IaaS) szolgáltatás a SUSE Linux Enterprise Server dedikált hardver- vagy a Red Hat Enterprise Linux, előre telepítve. Mint az Azure virtuális gépek további frissítések és az operációs rendszer karbantartási feladata a.
-- HANA és esetleges HANA nagy példányok egységek SAP HANA futtatásához szükséges további összetevők telepítésének feladata a, az összes megfelelő folyamatban lévő műveletek és SAP HANA Azure számára.
-- Az itt leírt megoldásokkal, mellett más összetevők is telepíthető az Azure-előfizetéssel, amely kapcsolódik az Azure (nagy példányok) SAP HANA.  Például az és/vagy közvetlenül az SAP HANA-adatbázishoz való kommunikáció engedélyezése összetevőket (jump-kiszolgálók, RDP-kiszolgálók, SAP HANA Studio, a SAP Data Services SAP BI forgatókönyvek esetén, vagy hálózati figyelési megoldások).
-- Azure, mint HANA nagy példányok támogató magas rendelkezésre állású és vész-helyreállítási funkciókat kínál.
+- Az SAP alkalmazás réteg és nem SAP alkalmazások futnak a szokásos Azure hardverkonfiguráción bélyegek tárolt virtuális gépek.
+- Ügyfél a helyszíni infrastruktúrát, adatközpontok, és alkalmazások központi telepítésének a felhő platform keresztül az ExpressRoute (ajánlott) vagy virtuális magánhálózati (VPN) csatlakozik. Active Directory és a DNS is kiterjeszthetőek az Azure.
+- Az SAP HANA-adatbázispéldány HANA munkaterhelés SAP HANA (nagy példányok) Azure-on futtatja. A nagy példány stamp be Azure networking csatlakozik, ezért a virtuális gépeken futó szoftver képes interakciót folytatni a HANA-példány futtatási nagy HANA-példányban.
+- Hardver-vagy Azure (nagy példányok) SAP HANA egy infrastruktúra-szolgáltatási SUSE Linux Enterprise Server vagy a Red Hat Enterprise Linux előtelepített megadott dedikált hardvert. Csakúgy, mint a virtuális gépek további frissítések és az operációs rendszer karbantartási feladata a.
+- HANA vagy bármely SAP HANA egységek HANA nagy példány futtatásához szükséges további összetevők telepítését a feladata. Minden megfelelő folyamatban lévő műveletek és az SAP HANA Azure felügyeleti megtalálhatók a felelős.
+- Az itt leírt megoldásokkal, mellett más összetevők is telepíthető az Azure-előfizetéssel, amely kapcsolódik az Azure (nagy példányok) SAP HANA. Példák, amelyek lehetővé teszik a kommunikációt, vagy közvetlenül az SAP HANA összetevők, például a jump-kiszolgálók adatbázis-RDP kiszolgálók, SAP HANA Studio, SAP Data Services SAP BI forgatókönyvek esetén, vagy hálózati figyelési megoldások.
+- Azure, mint a HANA nagy példány magas rendelkezésre állású és vész-helyreállítási funkció támogatást nyújt.
 
 ## <a name="architecture"></a>Architektúra
 
-Egy magas szintű: Azure (nagy példányok) megoldás a SAP HANA rendelkezik az SAP alkalmazásréteg szereplő Azure virtuális gépek és az adatbázisrétegben levő egy nagy példány stamp Azure IaaS kapcsolódó egy Azure-régióban található SAP TDI konfigurált hardver .
+Magas szinten a SAP HANA Azure (nagy példányok) megoldás rendelkezik az SAP alkalmazásréteg elhelyezkedő virtuális gépeken. Az adatbázis réteg azonos Azure-régiót Azure IaaS csatlakozik egy nagy példány stamp található SAP TDI konfigurált hardveren helyezkedik el.
 
 > [!NOTE]
-> Az SAP alkalmazásréteg ugyanabban a régióban Azure SAP DBMS rétegként telepíteni kell. Ez a szabály szerepel a dokumentált Azure SAP munkaterhelés közzétett adatait. 
+> Telepítse az SAP alkalmazásréteg SAP DBMS rétegként Azure ugyanabban a régióban. Ez a szabály megfelelően legyen dokumentálva Azure SAP munkaterhelések közzétett adatait. 
 
-SAP HANA Azure (nagy példányok) átfogó architektúrája biztosít egy SAP TDI jóváhagyott hardver konfigurálása (nem virtualizált, operációs rendszer nélküli, a SAP HANA-adatbázishoz nagy teljesítményű kiszolgáló), és skálázási erőforrásokra vonatkozó Azure rugalmasságát és képessége az SAP alkalmazásréteg az igényeinek.
+SAP HANA (nagy példányok) Azure-architektúra általános egy SAP TDI hitelesített hardverkonfiguráció, amely a nem virtualizált, operációs rendszer nélküli, nagy teljesítményű kiszolgáló SAP HANA-adatbázisból. Skála erőforrásokra vonatkozó igényeinek az SAP alkalmazásréteg Azure rugalmasságát és képessége is tartalmazza.
 
 ![Az SAP HANA (nagy példányok) Azure-architektúra áttekintése](./media/hana-overview-architecture/image1-architecture.png)
 
 Az architektúra látható három részből áll:
 
-- **Jobb:** az adatközpontok különböző alkalmazások futtatása a végfelhasználók számára (például SAP) LOB-alkalmazásokhoz való hozzáférés a helyszíni infrastruktúrát. Ideális esetben ez a helyszíni infrastruktúra kapcsolódik az Azure-ral Azure [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
+- **Jobb**: egy a helyszíni infrastruktúra, amely adatokat a különböző alkalmazások futnak, hogy a végfelhasználók elérhessék a LOB-alkalmazások, például SAP adatközpontok jeleníti meg. Ideális esetben ez a helyszíni infrastruktúra kapcsolódik az Azure [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
 
-- **Központ:** Azure IaaS mutat be, és ebben az esetben használata Azure virtuális gépek SAP vagy más SAP HANA adatbázis-kezelő rendszert használó alkalmazások futtatásához. Azure virtuális gépek memória függvény biztosító kisebb HANA-példányok az alkalmazási rétegre együtt vannak telepítve az Azure virtuális gépeken. Bővebben [virtuális gépek](https://azure.microsoft.com/services/virtual-machines/).
-<br />Azure hálózatkezelés SAP rendszerek más alkalmazások az Azure virtuális hálózatokról (Vnetekről) együtt használható. A Vnetek csatlakozni a helyszíni rendszerekben SAP HANA Azure (nagy példány).
-<br />SAP NetWeaver alkalmazások és a Microsoft Azure rendszerben való futtatásra támogatott adatbázisok [SAP támogatási Megjegyzés #1928533 – Azure SAP-alkalmazásokból: támogatott termékek és az Azure virtuális gép típusok](https://launchpad.support.sap.com/#/notes/1928533). Üzembe helyezni az SAP-megoldások Azure dokumentációját lásd:
+- **Center**: Azure IaaS jeleníti meg, és ebben az esetben használata virtuális gépek SAP vagy más SAP HANA adatbázis-kezelő rendszert használó alkalmazások futtatásához. Virtuális gépek és a memória által a virtuális gépek kisebb HANA-példányok az alkalmazási rétegre együtt vannak telepítve. További információ a virtuális gépek: [virtuális gépek](https://azure.microsoft.com/services/virtual-machines/).
 
-  -  [A Windows virtuális gépek (VM) SAP használatával](../../virtual-machines-windows-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-  -  [SAP megoldások segítségével a Microsoft Azure virtuális gépeken](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+   Az Azure hálózati szolgáltatások SAP rendszerek más alkalmazások virtuális hálózatba együtt használhatók. Ezek a virtuális hálózatok csatlakozni a helyszíni rendszerekben SAP HANA Azure (nagy példány).
 
-- **Balra:** jeleníti meg az SAP HANA TDI hitelesített hardver az Azure nagy példány bélyegző. A nagy példány HANA egység az Azure Vnetekhez ugyanazt a technológiát használja, a helyi kapcsolat az Azure előfizetéséhez csatlakoznak.
+   SAP NetWeaver alkalmazások és a támogatott Azure rendszerben való futtatásra adatbázisok [SAP támogatási Megjegyzés #1928533 – Azure SAP-alkalmazásokból: támogatott termékek és Azure Virtuálisgép-típusokon](https://launchpad.support.sap.com/#/notes/1928533). Az SAP-megoldások Azure telepítéséről dokumentációjáért lásd:
+
+  -  [SAP használja a Windows virtuális gépek](../../virtual-machines-windows-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+  -  [SAP megoldások használata az Azure virtuális gépeken](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
+- **Balra**: az SAP HANA TDI hitelesített összes hardvere látható az Azure nagy példány bélyegző. A HANA nagy példány egységek ugyanazt a technológiát a helyi kapcsolat az Azure segítségével csatlakoznak az előfizetés virtuális hálózatok.
 
 Az Azure nagy példány stamp maga egyesíti a következő összetevőket:
 
-- **Számítások:** Intel Xeon E7-8890v3 vagy Intel Xeon E7-8890v4 processzorok szükséges számítási képességet biztosít, amelyek hitelesített SAP HANA alapuló kiszolgálók.
-- **Hálózati:** A nagy sebességű hálózati háló kapcsolja össze a számítási, tárolási és hálózati összetevők egységes.
-- **Tárolás:** olyan tárolási infrastruktúra, amely egy egységes hálózati háló keresztül érhető el. Attól függően, hogy az adott SAP HANA Azure (nagy példányok) konfigurációban telepített biztosított speciális tárolási kapacitás (további tárolási kapacitás érhető el további havi költségén).
+- **A számítástechnikai**: Intel Xeon E7-8890v3 vagy Intel Xeon E7-8890v4 processzorok szükséges számítási képességet biztosít, amelyek hitelesített SAP HANA alapuló kiszolgálók.
+- **Hálózati**: A nagy sebességű hálózati háló kapcsolja össze a számítási, tárolási és hálózati összetevők egységes.
+- **Tárolási**: olyan tárolási infrastruktúra, amely egy egységes hálózati háló keresztül érhető el. A megadott tárolási kapacitás biztosított attól függ, hogy az adott SAP HANA Azure (nagy példányok) konfigurációban telepített. További tárolási kapacitás további havi költségén érhető el.
 
-A több-bérlős infrastruktúrájában a nagy példány stamp az ügyfelek elkülönített bérlők üzemelnek. A bérlő központi telepítését akkor kell Azure-előfizetések az Azure regisztrációs belül neve. A topológiában az Azure-előfizetéssel, az nagy HANA-példányokat érintetlen alapján kell fizetni. Ezek a bérlők rendelkezik az Azure-előfizetés 1:1 kapcsolattal. Hálózati bölcs lehetséges HANA nagy példány egység telepítése egy Azure-régióban különböző Azure Vnetekhez, amelyek különböző Azure-előfizetések tartoznak a egy bérlő eléréséhez. Bár ezen Azure-előfizetések kell tartozniuk a azonos Azure regisztrációt. 
+A több-bérlős infrastruktúrájában a nagy példány stamp az ügyfelek elkülönített bérlők üzemelnek. A bérlő központi telepítését, a nevezze el az Azure-előfizetés az Azure regisztrációs belül. Az Azure-előfizetés, amely a HANA nagy példányhoz lesz számlázva ellen. Ezek a bérlők rendelkezik az Azure-előfizetés 1:1 kapcsolattal. A hálózat telepítve egy bérlőt egy Azure-régiót a különböző virtuális hálózatokon, különböző Azure-előfizetések tartoznak a HANA nagy példány egység eléréséhez. Adott Azure-előfizetések az azonos Azure regisztrációs kell tartoznia. 
 
-Azure virtuális gépeken, a több Azure-régiók a SAP HANA Azure (nagy példányok) kínálják. Annak érdekében, hogy vész-helyreállítási lehetőségeket, dönthet úgy elvégezni a beléptetést. Egy földrajzi politikai régión belül különböző nagy példány bélyegzők kapcsolódnak egymáshoz. Például a HANA nagy példány bélyegzők Velünk nyugati és amerikai keleti vész-Helyreállítási replikáció céljából a dedikált hálózati kapcsolaton keresztül csatlakoznak. 
+SAP HANA Azure (nagy példányok), mint a virtuális gépek, a több Azure-régiók kínálják. A vész helyreállítási lehetőségeket kínálnak, kiválaszthatja, elvégezni a beléptetést. Egy földrajzi politikai régión belül különböző nagy példány bélyegzők kapcsolódnak egymáshoz. Például a HANA nagy példány bélyegzők Velünk nyugati és amerikai keleti vész-helyreállítási replikációhoz a dedikált hálózati kapcsolaton keresztül csatlakoznak. 
 
-Ugyanúgy, mint a virtuális gép különböző Azure virtuális gépek közül választhat, SKU, HANA nagy példány, amely különböző alkalmazások és szolgáltatások típusú SAP HANA is lefednek közül választhat. SAP memória processzor szoftvercsatorna arányt tesz lehetővé az Intel processzorral generációja alapján különböző munkaterhelések vonatkozik. Az alábbi táblázat a Termékváltozat-típusok érhető el.
+Ugyanúgy, mint a virtuális gép különböző Azure virtuális gépek közül választhat, választhat másik termékváltozatok a HANA nagy példányt, amely különböző alkalmazások és szolgáltatások típusú SAP HANA is lefednek. SAP memória-processzor-szoftvercsatorna-arányt tesz lehetővé az Intel processzorral generációja alapján különböző munkaterhelések vonatkozik. Az alábbi táblázat a Termékváltozat-típusok érhető el.
 
-Től július 2017 SAP HANA Azure (nagy példányok) érhető el Azure régiók a US nyugati és amerikai keleti, Kelet-Ausztrália, Ausztrália délkeleti, Nyugat-Európa, és Észak-Európa alkalmazásban néhány konfigurálás:
+Től július 2017 SAP HANA Azure (nagy példányok) érhető el az Azure-régiókban több konfiguráció Velünk nyugati amerikai keleti, Kelet-Ausztrália, Ausztrália délkeleti, Nyugat-Európa és Észak-Európa.
 
-| SAP-megoldás | CPU | Memory (Memória) | Tárolás | Rendelkezésre állás |
+| SAP megoldás | CPU | Memory (Memória) | Tárolás | Rendelkezésre állás |
 | --- | --- | --- | --- | --- |
 | Az OLAP-re optimalizált: FF/4HANA, az SAP BW Programhoz<br /> vagy SAP HANA általános OLAP-munkaterhelés | Az Azure S72 SAP HANA<br /> – 2 x Intel® Xeon® Processor E7-8890 v3<br /> A Processzormagok 36 és 72 CPU szálak |  768 GB |  3 TB | Elérhető |
 | --- | Az Azure S144 SAP HANA<br /> – 4 x Intel® Xeon® Processor E7-8890 v3<br /> A Processzormagok 72 és 144 CPU szálak |  1,5 TB |  6 TB | Nem érhető el többé |
@@ -148,42 +149,43 @@ Től július 2017 SAP HANA Azure (nagy példányok) érhető el Azure régiók a
 |---| Az Azure S960 SAP HANA<br /> – 20 x Intel® Xeon® Processor E7-8890 v4<br /> 480 Processzormagok és 960 CPU szálak |  20.0 TB |  46 TB | Elérhető |
 
 - A Processzormagok = Processzormagok nem-többszálú a processzorok, a kiszolgáló egység összegére összege.
-- CPU szálak CPU-magokat többszálú a processzorok, a kiszolgáló egység összegére által biztosított számítási szálak számának összege, azaz =. Minden egység alapértelmezés szerint a Hyper-Threading használatára vannak konfigurálva.
+- CPU szálak CPU-magokat többszálú a processzorok, a kiszolgáló egység összegére által biztosított számítási szálak számának összege, azaz =. Minden egység alapértelmezés szerint a Hyper-Threading technológia használatára vannak konfigurálva.
 
 
-A kiválasztott konfigurációkkal munkaterhelés, a Processzor-erőforrások és a kívánt memória függenek. Az OLTP-munkaterhelés OLAP munkaterhelések az SKU optimalizált használandó lehetőség. 
+A kiválasztott konfigurációkkal munkaterhelés, a Processzor-erőforrások és a kívánt memória függenek. A használatára a termékváltozatok optimalizált az OLAP-munkaterhelés OLTP-munkaterhelés lehetőség. 
 
-Az ajánlatok hardver alapja SAP HANA TDI hitelesített. Azonban különböztetünk hardver, az SKU osztó két különböző osztály között:
+A rendszer a az ajánlatok alapszintű hardver SAP HANA TDI hitelesített. Hardver két különböző osztályú osztani az SKU:
 
-- S72, S72m, S144, S144m, S192 és S192m, amely a "Type i. osztály" lesz az SKU.
-- S384, S384m, S384xm, S576, S768 és S960, amely a "típusú class" SKU lesz az.
+- S72, S72m, S144, S144m, S192 és S192m, amely a "Type i. osztály" nevezik SKU.
+- S384, S384m, S384xm, S576, S768 és S960, amely nevezzük az "Típus II osztály" SKU.
 
-Fontos megjegyezni, hogy egy teljes HANA nagy példány stamp nem kizárólag számára kíván lefoglalni az egyetlen ügyfél &#39; s használja. Ezt a tényt a számítási és tárolási erőforrásokat egy Azure szolgáltatásba telepített, valamint hálózati háló összekapcsolt rackszekrények vonatkozik. HANA nagy példányok infrastruktúra, például Azure, telepíti a különböző ügyfél &quot;bérlők&quot; , amelyek elkülönülnek egymástól a következő három szintje:
+Egy teljes HANA nagy példány stamp kizárólag az egyetlen ügyfél nem lefoglalt&#39;s használja. Ezt a tényt a számítási és tárolási erőforrásokat egy Azure szolgáltatásba telepített, valamint hálózati háló összekapcsolt rackszekrények vonatkozik. HANA nagy példány infrastruktúra, például Azure, telepíti a különböző ügyfél &quot;bérlők&quot; , amelyek elkülönülnek egymástól a következő három szintje:
 
-- Hálózati: Virtuális hálózatok a HANA nagy példány stamp elkülönítését.
-- Tárolás: A tároló virtuális gépeken, amelyek tárolókötetek elkülönítését hozzárendelt, és tárolókötetek bérlők között elkülönítése.
-- Számítási: Dedikált hozzárendelés server egységek egyetlen bérlő számára. Nem rögzített vagy soft particionálási kiszolgáló egységek. Egyetlen kiszolgáló vagy a gazdagép egység bérlők között nincs megosztás. 
+- **Hálózati**: a HANA nagy példány stamp virtuális hálózatok elkülönítését.
+- **Tárolási**: tároló virtuális gépek, amelyek rendelt tárolási köteteket és elkülöníteni a bérlők közötti tárolókötetek elkülönítését.
+- **Számítási**: hozzárendelés server egységek dedikált egyetlen bérlő számára. Nem merevlemez vagy világos particionálás kiszolgáló egységek. Egyetlen kiszolgáló vagy a gazdagép egység bérlők között nincs megosztás. 
 
-A különböző bérlők között HANA nagy példányok egységek telepítéseit, egymással nem láthatók el. És HANA a különböző bérlők rendszerbe nagy példány egységek közvetlenül kommunikálhatnak egymással a HANA nagy példány stamp szintjén nem. Csak HANA nagy példány egységek belül egy bérlő HANA nagy példány stamp szint kommunikálhatnak egymással.
-A nagy példány stamp egy telepített tenant hozzá van rendelve, számlázási bölcs egy Azure-előfizetéshez. Azonban a hálózati bölcs belül az azonos Azure regisztrációs más Azure-előfizetések az Azure Vnetekhez tartalomtárban. Ha telepít egy másik Azure-előfizetés azonos Azure-régióban, is választhat egy elkülönített HANA nagy példány bérlő kérni.
+A központi telepítések HANA nagy példány egységek különböző bérlők között nem láthatók, egymással. A különböző bérlők rendszerbe HANA nagy példány egység nem közvetlenül egymással kommunikálnak a HANA nagy példány stamp szinten. Egy bérlőt csak HANA nagy példány egységében HANA nagy példány stamp szint is kommunikálhatnak egymással.
 
-SAP HANA futó HANA nagy példányok és az Azure szolgáltatásba telepített Azure virtuális gépeken futó SAP HANA között jelentős különbség van:
+A nagy példány stamp egy telepített tenant számlázási okokból van rendelve egy Azure-előfizetéssel. A hálózat akkor érhetők el más Azure-előfizetések belül az azonos Azure regisztrációs virtuális hálózatok. Ha telepít egy másik Azure-előfizetés azonos Azure-régióban, is választhat egy elkülönített HANA nagy példány bérlő kérni.
+
+SAP HANA HANA nagy példányon és az Azure szolgáltatásba telepített virtuális gépeken futó SAP HANA futó között jelentős különbség van:
 
 - Nincs nincs virtualizálási réteg SAP Hana Azure (nagy példány). Az alapul szolgáló operációs rendszer nélküli hardver teljesítményét kap.
-- Azure-ban eltérően az SAP HANA Azure (nagy példányok) kiszolgálón adott ügyfélhez van kijelölve. Nincs lehetőségét, hogy a kiszolgáló egység vagy a gazdagép nehéz vagy soft-particionálva van. Ennek eredményeképpen a HANA nagy példány egység használatos rendelt egész a bérlők és az, hogy az ügyfél. Újraindítás vagy a kiszolgáló leállása nem vezet automatikusan az operációs rendszer és az SAP HANA üzembe helyezéséhez egy másik kiszolgálón. (Típus i. osztály SKU, az egyetlen kivétel, ha egy kiszolgáló problémák léphetnek fel, és újbóli üzembe helyezése egy másik kiszolgálón végrehajtandó.)
+- Azure-ban eltérően az SAP HANA Azure (nagy példányok) kiszolgálón adott ügyfélhez van kijelölve. Nincs, hogy a kiszolgáló egység vagy a gazdagép merevlemez vagy világos particionálva van lehetőség. Ennek eredményeképpen a HANA nagy példány egység használatos egész a bérlők és az, hogy az Ön számára kiosztani. Újraindítás vagy a kiszolgáló leállása nem okozhat, automatikusan az operációs rendszer és az SAP HANA üzembe helyezéséhez egy másik kiszolgálón. (Típus i. osztály SKU, az egyetlen kivétel, ha egy kiszolgáló észlel problémák és újratelepítés hajtható végre egy másik kiszolgálón.)
 - Azure, ahol processzor állomástípusok választja ki a legjobb price/teljesítményesemények aránya, ellentétben a processzor típusok az SAP HANA Azure (nagy példányok) választott a következők az Intel E7v3 és E7v4 processzor sor legmagasabb hajt végre.
 
 
-### <a name="running-multiple-sap-hana-instances-on-one-hana-large-instance-unit"></a>Több SAP HANA-példány fut egy HANA nagy példány egység
-A nagy példány HANA egységek több aktív SAP HANA példány futtatására lehetőség. Ahhoz, hogy a Storage-pillanatfelvételekkel, valamint a vész-helyreállítási lehetőségeket nyújtanak, ilyen konfiguráció példányonként kötet van szükség. Mostantól a HANA nagy példány egység az alábbiak szerint lehet osztani:
+### <a name="run-multiple-sap-hana-instances-on-one-hana-large-instance-unit"></a>Több SAP HANA-példány futtatnak egy HANA nagy példány egység
+Akkor lehet HANA nagy példány egységek több aktív SAP HANA példány futtatására. A storage-pillanatfelvételekkel és vész-helyreállítási képességek biztosítása érdekében az ilyen konfiguráció egy példányonként beállítása kötettel kell rendelkeznie. Jelenleg HANA nagy példány egység az alábbiak szerint lehet osztani:
 
-- S72, S72m, S144, S192: lépésekben 256 GB a legkisebb kezdési egység 256 GB. Az egység a memória maximális össze lehet kombinálni különböző nagyobb, mint 256 GB, 512 GB és így tovább.
-- S144m és S192m: 512 GB legkisebb 256 GB-os lépésekben. Az egység a memória maximális össze lehet kombinálni különböző nagyobb, mint 512 GB, 768 GB és így tovább.
-- Írja be a II osztály: 2 TB-os a legkisebb kezdési egységgel 512 GB-os lépésekben. Az egység a memória maximális össze lehet kombinálni különböző nagyobb, mint 512 GB, 1 TB-os, 1,5 TB és stb.
+- **S72, S72m, S144, S192**: lépésekben 256 GB, a legkisebb kezdési egység 256 GB. Különböző nagyobb, mint 256 GB és 512 GB az egység a memória maximális egyesíthetők.
+- **S144m és S192m**: 256 GB legkisebb 512 GB-os lépésekben. Különböző nagyobb, mint 512 és 768 GB-os az egység a memória maximális egyesíthetők.
+- **Írja be a II osztály**: 512 GB-ot, a legkisebb kezdési egységgel 2 TB-os lépésekben. Az egység a memória maximális össze lehet kombinálni különböző nagyobb, mint 512 GB, 1 TB-os és 1,5 TB.
 
-Néhány példa a több SAP HANA-példányt futtató nézhet:
+Néhány példa a több SAP HANA-példányt futtató nézhet ki például a következő.
 
-| SKU | Memória mérete | Storage mérete | Több adatbázisból méretek |
+| SKU | Memória mérete | Tároló mérete | Több adatbázisból méretek |
 | --- | --- | --- | --- |
 | S72 | 768 GB | 3 TB | 1 x 768 GB HANA példány<br /> vagy példányt. 1 x 512 GB + 1 x 256 GB példány<br /> vagy 3 x 256 GB példányok | 
 | S72m | 1,5 TB | 6 TB | 3x512GB HANA példányok<br />vagy példányt. 1 x 512 GB + 1 darab 1 TB-példány<br />vagy 6 x 256 GB példányok<br />vagy 1x1.5 TB-példány | 
@@ -191,307 +193,323 @@ Néhány példa a több SAP HANA-példányt futtató nézhet:
 | S384xm | 8 TB | 22 TB | 4 x 2 TB-példányok<br />vagy 2 darab 4 TB-példányok<br />vagy példányok 2 x 3 TB + 1 x 2 TB-példányok<br />vagy példányok 2x2.5 TB + 1 x 3 TB-példányok<br />vagy 1 x 8 TB-példány |
 
 
-A képet kaphat. Biztosan más változatok vannak is. 
+Más változatok is vannak. 
 
-### <a name="using-sap-hana-data-tiering-and-extension-nodes"></a>SAP HANA-adatok rétegezéséhez és -kiterjesztést csomópontokból
-SAP SAP BW különböző SAP NetWeaver kiadásainak és az SAP BW/4HANA adatok rétegezéséhez modell támogatja. Részletek a modell a dokumentum és a jelen dokumentum SAP által hivatkozott blog található adatok rétegezéséhez vonatkozó: [SAP BW/4HANA és SAP BW ON HANA az SAP HANA BŐVÍTMÉNY csomópontok](https://www.sap.com/documents/2017/05/ac051285-bc7c-0010-82c7-eda71af511fa.html#).
-HANA nagy osztályt 1. lehetőség konfigurációs SAP HANA bővítmény csomópontok megadottaknak megfelelően ezt gyakran ismételt kérdések és SAP blog dokumentumok is használhatja. 2. lehetőség konfigurációk beállíthatja a következő nagy HANA-példány termékváltozatok rendelkező: S72m, S192, S192m, S384 és S384m.  
-Megnézi a dokumentáció a ki nem feltétlenül látható azonnal. Csak azokat az SAP méretezési útmutatást keresése, előnyös beállítás-1 és 2. lehetőség SAP HANA-bővítmény csomópontok használatával. Itt egy példát:
+### <a name="use-sap-hana-data-tiering-and-extension-nodes"></a>SAP HANA és a bővítmény adatdeduplikációval csomópontok használata
+SAP rétegezési adatmodell SAP BW különböző SAP NetWeaver kiadásainak és az SAP BW/4HANA támogatja. Az adatmodell rétegezési kapcsolatos további információkért lásd: a SAP dokumentum [SAP BW/4HANA és az SAP HANA-bővítmény csomópontokkal HANA SAP BW](https://www.sap.com/documents/2017/05/ac051285-bc7c-0010-82c7-eda71af511fa.html#).
+HANA nagy példánnyal, 1. lehetőség konfigurációt használhatja a SAP HANA-bővítmény csomópontok a gyakori kérdések és SAP blog dokumentumok leírtak szerint. 2. lehetőség konfigurációk beállíthatja a következő nagy HANA-példány termékváltozatok rendelkező: S72m, S192, S192m, S384 és S384m. 
 
-- SAP HANA méretezési irányelvek elvégzéséhez adatmennyiség összeg memória. Igen SAP HANA-példány futtatja a gyakran használt adatokkal, csak akkor kell 50 % vagy kevesebb, a memória megtelt adatokkal. A fennmaradó memória ideális tárolt SAP Hana végez a műveletet.
+Ha megnézi a dokumentációt, az előnyt látható nem feltétlenül közvetlenül. De ha megnézi a SAP méretezési irányelveket, előnyös beállítás-1 és 2. lehetőség SAP HANA-bővítmény csomópontok használatával megtekintheti. Az alábbiakban példákat:
+
+- SAP HANA méretezési irányelvek elvégzéséhez adatmennyiség összeg memória. Az SAP HANA-példányt a gyakran használt adatokkal rendelkező futtatásakor csak 50 százalékban van, vagy kevesebb, a memória megtelt adatokkal. A fennmaradó memória ideális tárolt SAP Hana végez a műveletet.
 - Ez azt jelenti, 2 TB memóriával, az SAP BW-adatbázisát futtató rendelkező HANA nagy példány S192 egységben csak akkor kell 1 TB-os adatok kötetként.
-- Egy további SAP HANA kiterjesztési csomópontnak az 1. lehetőség használatakor is egy S192 HANA nagy példány SKU, az ad meg egy további 2 TB kapacitást adatmennyiség. A meleg adatmennyiség 2. lehetőség konfigurációs még akkor is, és további 4 TB. A működés közbeni csomópont képest, a teljes memória kapacitását a "meleg" kiterjesztési csomópontnak az adatok tárolását az 1. lehetőség és dupla a memóriát használhat a 2. lehetőség SAP HANA bővítmény csomópont-konfiguráció adatmennyiség használható.
-- Emiatt, végül 3 TB kapacitású az adatok és az 1:1. lehetőség 2 közbeni-az-meleg arányú és 5 TB-nyi adat és a 2. lehetőség bővítmény csomópont-konfiguráció 1:4 aránya.
+- 1. lehetőség további SAP HANA kiterjesztési csomópontnak használatakor is egy S192 HANA nagy példány SKU, biztosít egy további 2-TB kapacitást adatmennyiség. A 2. lehetőség konfigurációban egy további 4 TB-os meleg adatmennyiség beolvasása. A működés közbeni csomópont képest, a teljes memória kapacitás, a "meleg" bővítmény csomópont adatok tárolására, az 1. lehetőség használható. 2. lehetőség SAP HANA bővítmény csomópont-konfiguráció adatmennyiség használható dupla a memória.
+- Végül 3 TB kapacitású az adatok és az 1:1. lehetőség 2 közbeni-az-meleg arány. Lehetősége van az adatok és a 2. lehetőség bővítmény konfigurálása 1:4 aránya 5 TB.
 
-Azonban minél nagyobb adatmennyiség képest a memória, annál nagyobb az esélye, hogy a meleg adatokat arra utasítja a lemezes tárolás is megtalálható.
+Minél nagyobb adatmennyiség képest a memória, annál magasabb a, hogy a meleg arra utasítja a tárolja a lemezegységen található.
 
 
 ## <a name="operations-model-and-responsibilities"></a>Operatív modell és felelősségek
 
-A megadott SAP HANA Azure (nagy példányok) szolgáltatás Azure IaaS szolgáltatások igazodik. Egy SAP HANA optimalizált telepített operációs rendszer HANA nagy példányok példány elérhetővé. Azure IaaS virtuális gépeket, az operációs rendszer korlátozására feladatainak többségét a további szoftver telepítése van szüksége, HANA telepítése, az operációs rendszer és a HANA, működő, és a feladata az operációs rendszer és a HANA frissítése. A Microsoft nem kényszeríti az operációs rendszer vagy HANA-frissítéseket, a.
+A megadott SAP HANA Azure (nagy példányok) szolgáltatás Azure IaaS szolgáltatások igazodik. Kapott egy példányának HANA nagy SAP HANA optimalizált telepített operációs rendszert egy példányát. Mint az Azure IaaS virtuális gépeket, az operációs rendszer korlátozására, további szoftverek telepítése, HANA telepítése, az operációs rendszer és a HANA operációs és frissíteni az operációs rendszer és a HANA feladatainak többségét feladata a. A Microsoft nem kényszerítheti az operációs rendszer vagy a HANA frissítéseket meg.
 
 ![SAP HANA Azure (nagy példányok) feladatai](./media/hana-overview-architecture/image2-responsibilities.png)
 
-Mint a fenti ábrán látható, az Azure (nagy példányok) SAP HANA egy több-bérlős infrastruktúra, mint a szolgáltatás ajánlat. És emiatt felelős az osztálynak a pontnál operációsrendszer-infrastruktúrát, részben. Microsoft felelős a sor az operációs rendszer alatt a szolgáltatás minden elemét, és az Ön felelőssége a sort, beleértve az operációs rendszer fent. Ezért legfrissebb helyszíni módszerek is alkalmazó megfelelőségi, biztonsági, alkalmazáskezelés, alapján, és az operációs rendszer felügyeleti továbbra is használható. A rendszer jelennek meg, ha a hálózat összes tanúsítványinformációit vannak.
+Ahogy az ábrán is látható, az Azure (nagy példányok) SAP HANA egy több-bérlős IaaS ajánlat. Az esetek többségében felelős az osztálynak a jelenleg az operációs rendszer – infrastruktúra-határ. Microsoft felelős a sor az operációs rendszer alatt a szolgáltatás minden elemét. Ön felelősséggel tartozik a sorban fölött a szolgáltatás minden elemét. Az operációs rendszer a felelős. Továbbra is módszerekkel legfrissebb helyszíni alkalmaz előfordulhat, hogy a megfelelőségi, biztonság, alkalmazáskezelés, alapján és az operációs rendszer felügyeleti. A rendszer jelennek meg, ha a hálózat összes tanúsítványinformációit vannak.
 
-Azonban ez a szolgáltatás megfelelően lett optimalizálva SAP Hana, ahol az Ön és a Microsoft kell együttműködése az alapul szolgáló infrastruktúra szolgáltatásokat használhatja a legjobb eredmények elérése érdekében területet.
+Ez a szolgáltatás SAP HANA van optimalizálva, így területet kell együttműködés a Microsofttal az alapul szolgáló infrastruktúra funkcióinak használatát a legjobb eredmények elérése érdekében.
 
 Az alábbi lista részletesen ismerteti a Rétegek és az Ön feladatkörei:
 
-**Hálózatkezelés:** a belső hálózatok, a SAP HANA, a tárolási, a a példányt (a kibővített és egyéb funkciók), a kapcsolat a fekvő közötti kapcsolat és a kapcsolatot az Azure-ba való hozzáférésének futtató nagy példány bélyegző ahol az SAP alkalmazásréteg tárolja az Azure virtuális gépeken. A vész-helyreállítási célokra replikáció Azure-adatközpontokban közötti WAN-kapcsolatra is tartalmaz. Az összes hálózatot a bérlő által particionáltak, és QOS alkalmazott.
+**Hálózati**: a belső hálózatok az SAP HANA futtató nagy példány stampet konfiguráljon. A felhasználó felelőssége tartoznak a tárolási, a példányok (a kibővített és egyéb funkciók), a kapcsolat a fekvő és a kapcsolatot az Azure-bA az SAP alkalmazásréteg ahol tárolása közötti kapcsolatot a virtuális gépek. Tartalmazza az Azure-adatközpontokban vész-helyreállítási célokra replikációhoz WAN összekapcsolását is. Minden hálózatok a bérlő által particionáltak, és alkalmazza a szolgáltatás-minőségi.
 
-**Tárolás:** a virtualizált particionálva az összes kötet az SAP HANA-kiszolgálók által igényelt, valamint a pillanatképek tárolási. 
+**Tárolási**: A virtualizált particionálva az összes kötet az SAP HANA-kiszolgálók által igényelt, valamint a pillanatképek tárolási. 
 
-**Kiszolgálók:** a dedikált fizikai kiszolgálók a bérlők rendelt SAP HANA-adatbázisok futtatásához. A kiszolgálók típusú i. osztály SKU hardver azért. Az ilyen kiszolgálók a kiszolgáló konfigurációs gyűjti és őrzi meg a profilok, amelyek egy másik fizikai hardver egy fizikai hardverek helyezheti át. Ilyen (manuális) áthelyezésre profil műveletek hasonlítható kicsit Azure szolgáltatásjavításnak. A kiszolgálók a típusú osztály SKU nem áll rendelkezésre egy ilyen képesség.
+**Kiszolgálók**: A dedikált fizikai kiszolgálók a bérlők rendelt SAP HANA-adatbázisok futtatásához. A kiszolgálók típusú i. osztály SKU hardver azért. Az ilyen kiszolgálók a kiszolgáló konfigurációs gyűjti és őrzi meg a profilok, amelyek egy másik fizikai hardver egy fizikai hardverek helyezheti át. Ilyen (manuális) áthelyezésre profil műveletek hasonlítható kicsit Azure szolgáltatásjavításnak. A típus II osztály SKU kiszolgálók ilyen funkció nem teszik lehetővé.
 
-**SDDC:** szoftveralapú entitásként adatközpontok a szoftver, amely adatok kezelésére szolgál. Microsoft lehetővé teszi a készlet erőforrásokhoz, a méretezés, a rendelkezésre állás és a teljesítmény szempontjából.
+**SDDC**: szoftveralapú entitásként adatközpontok a szoftver, amely adatok kezelésére szolgál. Microsoft lehetővé teszi a készlet erőforrásokhoz, a méretezés, a rendelkezésre állás és a teljesítmény szempontjából.
 
-**Rendszer:** az operációs rendszer választja (SUSE Linux vagy a Red Hat Linux) futtató kiszolgálókon. Az operációs rendszer lemezképeit rendelkezésre állnak a lemezképek az egyes Linux gyártója által biztosított Microsoft SAP HANA futtatása céljából. Meg kell a Linux gyártójával konkrét SAP HANA-re optimalizált kép előfizetéssel rendelkezik. Az Ön feladatkörei közé tartozik a képek regisztrálása az operációs rendszer szállítójához. A Microsoft által átadási pontról is való telepítésért felelős semmilyen további javítását a Linux operációs rendszer. A javítás is tartalmaz, amely egy SAP HANA sikeres telepítéséhez szükséges lehet további csomagokat (lásd a SAP HANA-dokumentáció és SAP megjegyzések) és amelyek nem szereplő az SAP HANA adott Linux szállító optimalizált az operációs rendszer képek. Az ezzel az ügyfél is, az operációs rendszer, az operációs rendszer és az adott kiszolgálói hardverekkel kapcsolatos illesztőprogramja hibásan működik/optimalizálása kapcsolódó javítását. Vagy semmilyen biztonsági vagy az operációs rendszer működési javítását. Az ügyfél felelőssége, valamint a figyelési- és a kapacitás-tervezési:
+**Rendszer**: (SUSE Linux vagy a Red Hat Linux) választja, az operációs rendszer futtató kiszolgálókon. Az operációs rendszer lemezképeit rel biztosított volt gyártója által biztosított az egyes Linux Microsoft SAP HANA futtatásához. A Linux gyártójával konkrét SAP HANA-re optimalizált kép előfizetéssel kell rendelkeznie. Ön felelősséggel tartozik a képek regisztrálása az operációs rendszer szállítójához. 
 
-- Processzor-erőforrás-felhasználás
-- Memória-felhasználás
-- Lemezkötetek kapcsolódik a szabad terület, az iops-érték és a késleltetés
-- Kötet forgalmat HANA nagy példány és az SAP alkalmazásréteg között
+A Microsoft által átadási pontról való telepítésért felelős semmilyen további javítását a Linux operációs rendszer. A javítás tartalmaz, amely szükséges a sikeres SAP HANA-telepítés lehet, és nem érhetők az SAP HANA adott Linux szállító további csomagokat optimalizált operációsrendszer-lemezképek. (További információkért lásd: a SAP HANA-dokumentáció és SAP megjegyzések.) 
 
-Az alkalmazás mögötti infrastruktúra HANA nagy példányok biztonsági mentéséhez és helyreállításához az operációs rendszer kötet funkciókat biztosít. Ez a funkció használata is a felelős.
+Ön felelőssége lesz az operációs rendszer meghibásodása vagy az operációs rendszer optimalizálása és viszonyítva az adott kiszolgálói hardver illesztőprogramja javítását. Akkor is felelősek biztonsági vagy az operációs rendszer működési javítását. 
 
-**Köztes:** az SAP HANA-példány, elsősorban. Felügyeleti műveletek és figyelési az Ön felelőssége. Nincs funkció megadott, amely lehetővé teszi a tárolási pillanatképek használja biztonsági mentés/visszaállítás és vész-helyreállítási célokra. Ezek a képességek a infrastruktúra által biztosított. Azonban az Ön feladatkörei is magas rendelkezésre állás és vészhelyreállítás tervezése ezekkel a lehetőségekkel, használhatja őket és megfigyelést a storage-pillanatfelvételekkel végrehajtása sikerült.
+A feladata a figyelés és a kapacitástervezés is tartalmazza:
 
-**Adatok:** az SAP HANA által kezelt adatok, és más adatok, például biztonsági másolatok köteteken található fájlok vagy a fájl megosztja. Szabad lemezterület ellenőrzése a tartalmat azokon a köteteken, és felügyelete a kötetek biztonsági mentése lemezre és storage-pillanatfelvételekkel sikeres végrehajtását közé tartoznak az Ön feladatkörei Vész-Helyreállítási hely replikálása sikeres végrehajtását azonban Microsoft felelőssége.
+- CPU hálózatierőforrás-fogyasztás.
+- Memória-felhasználás.
+- Lemezkötet szabad terület, az iops-érték és a késleltetés kapcsolódik.
+- Kötet közötti hálózati forgalom nagy HANA-példány és az SAP alkalmazásréteg.
 
-**Alkalmazások:** az SAP alkalmazáspéldányok, vagy nem SAP-alkalmazásokból, ezeknek az alkalmazásoknak az alkalmazási rétegre esetén. Az Ön feladatkörei közé tartoznak a telepítési, adminisztrációs, műveletek és ezeknek az alkalmazásoknak kapacitástervezés CPU erőforrás-felhasználás, memória-felhasználás, Azure-tároló fogyasztása és hálózati sávszélesség-használat belül kapcsolatos figyelési Az Azure Vnetekhez, és az Azure Vnetekhez az SAP HANA Azure (nagy példány).
+Az alkalmazás mögötti infrastruktúra HANA nagy példányának biztonsági mentése és visszaállítása a rendszerkötet a funkciókat biztosít. Ez a funkció használata is a felelős.
 
-**WAN:** a kapcsolatok létrehozása a helyszíni munkaterhelések Azure-környezetekhez. Ügyfeleink HANA nagy osztályt Azure ExpressRoute kapcsolatot használjon. Ez a kapcsolat nem részét képezi az Azure (nagy példányok) megoldás, a SAP HANA, Ön felelősséggel tartozik a kapcsolat beállítása.
+**Köztes**: az SAP HANA-példány, elsősorban. Felügyeleti műveletek és figyelési az Ön felelőssége. A megadott funkció segítségével storage-pillanatfelvételekkel biztonsági mentési és visszaállítási és vész helyreállítási célokra használja. Ezek a képességek a infrastruktúra által biztosított. Az Ön feladatkörei is magas rendelkezésre állású és vész-helyreállítási ezekkel a lehetőségekkel hasznosítja ki őket, és figyelési annak meghatározásához, hogy a storage-pillanatfelvételekkel sikeresen végrehajtva tervezése.
 
-**Archív:** előfordulhat, hogy inkább archiválja a saját módszerekkel tárfiókokban lévő adatok másolatát. Archiválás szükséges felügyeleti, a megfelelőségi, a költségek és a műveletek. Ön felelősséggel tartozik archív másolatok és az Azure biztonsági mentések létrehozásához, és tárolja őket a megfelelő módon.
+**Adatok**: az SAP HANA által kezelt adatok, és más adatok, például biztonsági másolatok köteteken található fájlok vagy a fájl megosztja. Szabad lemezterület megfigyelését és felügyeletét a tartalmat azokon a köteteken közé tartoznak az Ön feladatkörei Akkor is sikeres kötetek biztonsági mentése lemezre és storage-pillanatfelvételekkel felügyeletéért felelős. Microsoft feladata a vész-helyreállítási helyeken irányuló adatreplikációt sikeres végrehajtását.
+
+**Alkalmazások:** az SAP alkalmazáspéldányok, illetve nem SAP-alkalmazásokból, ezeknek az alkalmazásoknak az alkalmazási rétegre. Központi telepítés, a felügyeletet, a műveletek és a ezeknek az alkalmazásoknak megfigyelést közé tartoznak az Ön feladatkörei Ön felelősséggel tartozik a kapacitástervezés CPU erőforrás-felhasználás, memória-felhasználás, Azure-tároló fogyasztása és hálózati sávszélességet a virtuális hálózatokon belül. Akkor is felelősek kapacitásának tervezése az erőforrás-felhasználás a virtuális hálózatok az SAP HANA Azure (nagy példány).
+
+**WAN**: A kapcsolatok létrehozása a helyszíni munkaterhelések Azure-környezetekhez. Összes ügyfél számára, ha nagy példánya HANA Azure ExpressRoute kapcsolatot használjon. Ez a kapcsolat nem Azure (nagy példányok) megoldás a SAP HANA része. Ön felelőssége lesz a kapcsolat beállítása.
+
+**Archív**: Előfordulhat, hogy inkább archivált adatok másolatát a saját metódusokkal storage-fiókok. Archiválás szükséges felügyeleti, a megfelelőségi, a költségek és a műveletek. Ön felelősséggel tartozik előállítása archív példányszám és a biztonsági mentéseket a Azure és a megfelelő módon tárolja őket.
 
 Tekintse meg a [SAP Hana (nagy példányok) Azure SLA](https://azure.microsoft.com/support/legal/sla/sap-hana-large/v1_0/).
 
 ## <a name="sizing"></a>Méretezése
 
-Nagy HANA-példányok méretezési ugyanolyan helyzetet teremt, mint általában Hana méretezése. Meglévő telepített rendszereken, és át más RDBMS HANA, SAP számos a meglévő SAP rendszereken futó jelentéseket szeretne. Ha az adatbázis HANA helyezik át, ezek a jelentések ellenőrizze az adatokat, és számítja ki a memória a HANA-példány. Az alábbi SAP szerepelnek ezek a jelentések futtatása, és hogyan kell beszerezni a legújabb javítások verzióját további információért olvassa el:
+Méretezési HANA nagy példány eltér nem Hana általában méretezése. Meglévő és áthelyezése más RDBMS HANA, SAP biztosít számos olyan jelentést, a meglévő SAP rendszereken futó kívánt rendszerek telepíthetők. Ha az adatbázis HANA helyezik át, ezek a jelentések ellenőrizze az adatokat, és számítja ki a memória a HANA-példány. Ezek a jelentések futtatásához, és beszerezni a legújabb javítások vagy verzió kapcsolatos további információkért tekintse meg a következő SAP megjegyzéseket:
 
 - [SAP Megjegyzés #1793345 - HANA az SAP Suite méretezése](https://launchpad.support.sap.com/#/notes/1793345)
 - [Megjegyzés: #1872170 - csomag HANA és S/4 HANA méretezési jelentésre SAP](https://launchpad.support.sap.com/#/notes/1872170)
 - [SAP Megjegyzés #2121330 - gyakran ismételt kérdések: A jelentés méretezése HANA SAP BW Programhoz](https://launchpad.support.sap.com/#/notes/2121330)
-- [Megjegyzés: #1736976 - HANA méretezési BW jelentés SAP](https://launchpad.support.sap.com/#/notes/1736976)
-- [Megjegyzés: #2296290 - új méretezési jelentés SAP BW a HANA a](https://launchpad.support.sap.com/#/notes/2296290)
+- [SAP HANA méretezési BW jelentés #1736976 - Megjegyzés](https://launchpad.support.sap.com/#/notes/1736976)
+- [SAP #2296290 - új méretezése a jelentés a HANA BW Programhoz tartozó megjegyzés](https://launchpad.support.sap.com/#/notes/2296290)
 
 Zöld mező megvalósítások esetében gyors Szimbólumméretező SAP HANA fölött SAP szoftver végrehajtásának memóriaigényének kiszámításához rendelkezésére áll.
 
-Memóriára vonatkozó követelményeknek Hana növekednek adatmennyiség növekedésével, a memória-felhasználás most vegye figyelembe, és képes előre jelezni, Mi ez lesz a jövőben lehet. Memória követelményeinek megfelelően, majd leképezheti a igény szerint a HANA nagy példány termékváltozatok valamelyikére.
+Memóriára vonatkozó követelményeknek Hana növelje az adatmennyiség növekedésével. Vegye figyelembe a jelenlegi memóriahasználatának kívánja tudni, hogy mi ez lesz a jövőben. Memória követelmények alapján, majd leképezheti a igény szerint a HANA nagy példány termékváltozatok valamelyikére.
 
 ## <a name="requirements"></a>Követelmények
 
 Ez a lista állítja össze a SAP HANA futtatásához Azure (nagyobb példány).
 
-**Microsoft Azure:**
+**Microsoft Azure**
 
 - Azure-előfizetéssel, amely az Azure (nagy példányok) SAP HANA lehet társítani.
-- Microsoft Premier szintű támogatási szerződése. Lásd: [SAP támogatási Megjegyzés #2015553 – a Microsoft Azure SAP: támogatás Előfeltételek](https://launchpad.support.sap.com/#/notes/2015553) Azure-beli SAP kapcsolatos részletes információkat. HANA nagy példány egységek 384 és több processzort használ, ki is kell terjesztenie a Premier szintű támogatási szerződése Azure gyors válasz (ARR) tartalmazza.
-- Ezekre a műveletekre termékváltozatok meg kell a méretezési végrehajtása után gyakorolni az SAP HANA nagy példánya.
+- Microsoft Premier szintű támogatási szerződése. Azure-beli SAP kapcsolatos információkért lásd: [SAP támogatási Megjegyzés #2015553 – a Microsoft Azure SAP: Előfeltételek támogatja](https://launchpad.support.sap.com/#/notes/2015553). Ha HANA nagy példány egységek 384 és több processzort használ, is szeretné bővíteni a Premier szintű támogatási szerződése Azure gyors válasz tartalmazza.
+- A HANA nagy példány SKU egy méretezési a gyakorlatban az SAP végrehajtása után szüksége ezekre a műveletekre.
 
-**Hálózati kapcsolat:**
+**Hálózati kapcsolat**
 
-- Az Azure-bA helyszíni közötti Azure ExpressRoute: csatlakozni a helyszíni adatközpontját Azure, ügyeljen arra, hogy az internetszolgáltató által biztosított legalább 1 GB/s kapcsolat sorrendben. 
+- A helyszíni Azure között ExpressRoute: a helyszíni adatközpont csatlakozni az Azure-ba, ügyeljen arra, hogy az internetszolgáltató által biztosított legalább 1-GB/s kapcsolat sorrendben. 
 
-Operációs rendszer:
+**Operációs rendszer**
 
 - Licencek az SUSE Linux Enterprise Server 12 SAP-alkalmazásokból.
 
-> [!NOTE] 
-> A Microsoft által kiadott operációs rendszer nincs regisztrálva a SUSE, és nem kapcsolódik SMT példánya.
+   > [!NOTE] 
+   > Az operációs rendszer, amelyeket a Microsoft SUSE nincs regisztrálva. A előfizetés kezelőeszköz példánya nem kapcsolódik.
 
-- SUSE Linux előfizetés felügyeleti eszköz (SMT) üzembe helyezett Azure egy Azure virtuális gépen. Ezzel a megoldással SAP Hana Azure (nagy példányok) regisztrálni és rendre SUSE frissítette (mivel nincs internet-hozzáférés HANA nagy példányok adatközpont belül). 
+- SUSE Linux előfizetés felügyeleti eszköz a virtuális gép Azure szolgáltatásba telepített. Ez az eszköz az SAP Hana Azure regisztrálni és SUSE rendre frissítette (nagy példányok) lehetővé teszi. (Nincs nincs internet-hozzáférés a HANA nagy példány adatközpont belül.) 
 - Red Hat Enterprise Linux 6.7 vagy 7.2 SAP Hana licencet.
 
-> [!NOTE]
-> Red Hat nincs regisztrálva a Microsoft által kiadott operációs rendszer, és nem csatlakozik a Red Hat előfizetés Manager példánya.
+   > [!NOTE]
+   > Az operációs rendszer, amelyeket a Microsoft Red Hat nincs regisztrálva. A Red Hat előfizetés Manager példánya nem kapcsolódik.
 
-- Red Hat előfizetés kezelő üzembe helyezett Azure egy Azure virtuális gépen. A Red Hat előfizetés-kezelő lehetővé teszi a SAP Hana Azure (nagy példányok) regisztrálni és rendre Red Hat frissítette (mivel nincs közvetlen internet-hozzáférést a belül a bérlő az Azure nagy példány stamp telepítve van).
-- SAP szükséges hozzá egy támogatási szerződés, valamint a Linux-szolgáltatónál. Ez a követelmény nem törlődnek a megoldás HANA nagy példányok vagy azt a tényt, amely a futtatási Linux az Azure-ban. Eltérően az egyes Linux Azure gyűjtemény képek, a szolgáltatás díj nem szerepel a megoldás ajánlat HANA nagy példányok. Van, a követelményeit az SAP támogatási szerződések a Linux terjesztő teljesítéséhez ügyfélként.   
-   - SUSE Linux, keresse meg a támogatási szerződése követelményeinek [SAP Megjegyzés #1984787 - SUSE LINUX Enterprise Server 12: telepítési jegyzetek](https://launchpad.support.sap.com/#/notes/1984787) és [SAP Megjegyzés #1056161 - SUSE prioritás támogatása SAP-alkalmazásokból](https://launchpad.support.sap.com/#/notes/1056161).
-   - Red Hat Linux szüksége van a megfelelő előfizetés támogatja, és a szolgáltatási (az operációs rendszerek HANA nagy példányok frissítése. Red Hat azt javasolja, hogy első egy "az RHEL [SAP megoldások](https://access.redhat.com/solutions/3082481)" előfizetést. 
+- Red Hat előfizetés Manager a virtuális gép Azure szolgáltatásba telepített. A Red Hat előfizetés Manager SAP Hana Azure regisztrálni és rendre frissítette a Red Hat (nagy példányok) lehetővé teszi. (Nincs nincs közvetlen internet-hozzáférést a belül a bérlő az Azure nagy példány stamp telepítve.)
+- SAP szükséges hozzá egy támogatási szerződés, valamint a Linux-szolgáltatónál. Ez a követelmény HANA nagy példány vagy a Linux futtatja az Azure-ban tény-megoldás által nem eltávolítva. Ellentétben egyes Linux Azure gyűjtemény képek, a szolgáltatás díj van *nem* HANA nagy példány megoldás ajánlatban foglalt. A feladata a követelményeit az SAP támogatási szerződések a Linux terjesztő teljesítésére. 
+   - SUSE Linux támogatása a szerződések követelményeinek kereshető [SAP Megjegyzés #1984787 - SUSE Linux Enterprise Server 12: telepítési jegyzetek](https://launchpad.support.sap.com/#/notes/1984787) és [SAP Megjegyzés #1056161 - SUSE prioritás támogatása SAP-alkalmazásokból](https://launchpad.support.sap.com/#/notes/1056161).
+   - A Red Hat Linux szüksége van a megfelelő előfizetés, amely támogatja, és frissítheti az operációs rendszerek HANA nagy példány a szolgáltatást. Red Hat [SAP megoldások] azt javasolja a Red Hat Enterprise Linux (https://access.redhat.com/solutions/3082481 előfizetés. 
 
-Ellenőrizze a különböző SAP HANA-verzió-a különböző Linux-verziók támogatási mátrix, [SAP Megjegyzés #2235581](https://launchpad.support.sap.com/#/notes/2235581).
+A támogatási mátrix a különböző Linux verzióival SAP HANA verzióiról, lásd: [SAP Megjegyzés #2235581](https://launchpad.support.sap.com/#/notes/2235581).
 
 
-**Adatbázis:**
+**Adatbázis**
 
 - Licencek és a szoftver telepítési összetevők SAP Hana (platform vagy enterprise edition).
 
-**Alkalmazások:**
+**Alkalmazások**
 
-- Licencek és a szoftver telepítési összetevők SAP HANA csatlakozik, és a kapcsolódó SAP SAP alkalmazások támogatja a szerződéseket.
+- Licencek és a szoftver telepítési összetevők SAP HANA és a kapcsolódó SAP-hez SAP alkalmazások támogatja a szerződéseket.
 - Licencek és a szoftver telepítési összetevők nem SAP alkalmazások Azure (nagy példányok) környezetben található SAP HANA képest használt, és a kapcsolódó támogatási szerződés.
 
-**Képességek:**
+**Képességek**
 
-- Felhasználói élmény és az Azure infrastruktúra-szolgáltatási és az összetevőinek a Tudásbázis.
-- Felhasználói élmény és az Azure-ban SAP alkalmazások és szolgáltatások telepítése a Tudásbázis.
-- SAP HANA-telepítés hitelesített személyes.
-- SAP felelős mérnök ismereteikkel tervezési magas rendelkezésre állású és vész-helyreállítási SAP HANA körül.
+- És tapasztalattal az Azure infrastruktúra-szolgáltatási és összetevői.
+- A felhasználói élmény és központi telepítése az Azure-ban egy SAP munkaterhelés ismerete.
+- SAP HANA-telepítés hitelesített tanácsadási csoporthoz.
+- SAP felelős mérnök ismereteikkel körül SAP HANA magas rendelkezésre állási és vészhelyreállítási helyreállítási terv.
 
-**SAP:**
+**SAP**
 
-- Általános gyakorlat, hogy az ügyfél egy SAP, és rendelkezik a támogatási szolgálathoz, SAP szerződés
-- Különösen olyan a típusa II osztály HANA nagy példány SKU-implementációk esetén ajánlott hogy SAP SAP HANA és az esetleges nagy méretű méretezett hardver-konfigurációit verzióiban.
+- Általános gyakorlat, hogy egy SAP-ügyfél van, és rendelkezik a támogatási szolgálathoz, SAP szerződést.
+- Kifejezetten a HANA nagy példány SKU típusú osztály megvalósításokhoz vegye fel a kapcsolatot SAP SAP HANA és a végleges konfigurációit, nagy méretű méretezési hardverének verzióiban.
 
 
 ## <a name="storage"></a>Tárolás
 
-A tárolási elrendezés SAP Hana Azure (nagy példányok) be van állítva az Azure szolgáltatásfelügyeleti ajánlott irányelvek részletes ismertetését lásd: SAP keresztül SAP HANA a [SAP HANA tárhellyel kapcsolatos követelmények](http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) találhatók meg.
+A tárolási elrendezés SAP Hana Azure (nagy példányok) SAP HANA konfigurálható a klasszikus üzembe helyezési modellel irányelvek ajánlott SAP keresztül. Az irányelvek ismertetett a [SAP HANA tárhellyel kapcsolatos követelmények](http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) találhatók meg.
 
-Tárolási kötetként négyszer a memória kötet i. osztály típusú HANA nagy példányok rendelkeznek. A típus II osztály HANA nagy példány egységek a tárolási nem lesz négy alkalommal további. Az egységek rendelkeznek egy köteten, HANA tranzakciós napló biztonsági mentések tárolására számára készült. A további részletekért [telepítése és konfigurálása Azure SAP HANA (nagy példány)](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+A HANA nagy példány i. osztály típusú tárolási kötetként négyszer a memória kötet tartalmaz. A nagy példány HANA egységek típusú osztályához a tároló négy alkalommal több nem található. Az egységek rendelkeznek egy kötetet, amelyet HANA tranzakciós napló biztonsági mentések tárolására. További információkért lásd: [telepítése és konfigurálása a SAP HANA (nagy példány) az Azure](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Lásd az alábbi táblázatban a Foglalás tekintetében. A táblázat a különböző kötetek, a másik HANA nagy példány egységek biztosított kapacitás nagyjából.
+Lásd az alábbi táblázatban a Foglalás tekintetében. A táblázat a különböző kötetek, a másik HANA nagy példány egységek megadott nyers kapacitását.
 
 | HANA nagy példány Termékváltozat | Hana/adatok | Hana/napló | Hana/megosztott | Hana/naplómásolat |
 | --- | --- | --- | --- | --- |
-| S72 | 1280 GB | 512 GB | 768 GB | 512 GB |
-| S72m | 3328 GB | 768 GB |1280 GB | 768 GB |
-| S192 | 4608 GB | 1024 GB | 1536 GB | 1024 GB |
-| S192m | 11,520 GB | 1536 GB | 1792 GB | 1536 GB |
-| S384 | 11,520 GB | 1536 GB | 1792 GB | 1536 GB |
-| S384m | 12,000 GB | 2050 GB | 2050 GB | 2040 GB |
-| S384xm | 16,000 GB | 2050 GB | 2050 GB | 2040 GB |
-| S576 | 20,000 GB | 3100 GB | 2050 GB | 3100 GB |
-| S768 | 28 000 GB | 3100 GB | 2050 GB | 3100 GB |
-| S960 | 36,000 GB | 4100 GB | 2050 GB | 4100 GB |
+| S72 | MAXIMUM 1280 GB | 512 GB | 768 GB | 512 GB |
+| S72m | 3,328 GB | 768 GB |MAXIMUM 1280 GB | 768 GB |
+| S192 | 4,608 GB | 1,024 GB | 1 536 GB | 1,024 GB |
+| S192m | 11,520 GB | 1 536 GB | 1,792 GB | 1 536 GB |
+| S384 | 11,520 GB | 1 536 GB | 1,792 GB | 1 536 GB |
+| S384m | 12,000 GB | 2,050 GB | 2,050 GB | 2,040 GB |
+| S384xm | 16,000 GB | 2,050 GB | 2,050 GB | 2,040 GB |
+| S576 | 20,000 GB | 3,100 GB | 2,050 GB | 3,100 GB |
+| S768 | 28 000 GB | 3,100 GB | 2,050 GB | 3,100 GB |
+| S960 | 36,000 GB | 4,100 GB | 2,050 GB | 4,100 GB |
 
 
-Tényleges telepített kötetek üzembe helyezési és a kötet mérete megjelenítéséhez használt eszköz egy kicsit függően eltérhetnek.
+Tényleges telepített kötetek telepítése és az eszköz, amellyel jelenjen meg a kötet mérete alapján függően változhat.
 
-Ha tovább HANA nagy példány SKU, néhány példa a lehetséges osztás darab alábbihoz hasonlóan fog kinézni:
+Tovább HANA nagy példány SKU, ha lehetséges osztás darabok néhány példa látható:
 
 | Memória partíció GB-ban | Hana/adatok | Hana/napló | Hana/megosztott | Hana/naplómásolat |
 | --- | --- | --- | --- | --- |
 | 256 | 400 GB | 160 GB | 304 GB | 160 GB |
 | 512 | 768 GB | 384 GB | 512 GB | 384 GB |
-| 768 | 1280 GB | 512 GB | 768 GB | 512 GB |
-| 1024 | 1792 GB | 640 GB | 1024 GB | 640 GB |
-| 1536 | 3328 GB | 768 GB | 1280 GB | 768 GB |
+| 768 | MAXIMUM 1280 GB | 512 GB | 768 GB | 512 GB |
+| 1,024 | 1,792 GB | 640 GB | 1,024 GB | 640 GB |
+| 1,536 | 3,328 GB | 768 GB | MAXIMUM 1280 GB | 768 GB |
 
 
-Ezen értékek nyers mennyiségi számát, amelyek alapján némileg telepítése és eszközök használatával nézze meg a kötetek eltérőek lehetnek. Is vannak más partíció méretét thinkable, például a 2,5 TB. Ezen tárolási méretek volna számítható ki, egy hasonló képlettel használt a fenti partíciók számára. A partíciók kifejezés nem jelzi, hogy az operációs rendszer, a memória vagy a Processzor-erőforrások bármely módon particionálva van. Azt jelzi, érdemes egyetlen HANA nagy példány egységben a telepítendő különböző HANA-példányok adattárolási partíciókat csak. 
+Ezen értékek nyers mennyiségi számát, amelyek alapján némileg üzembe helyezési és nézze meg a kötetek használt eszközök eltérőek lehetnek. Nincsenek is a többi partíció méretét, például 2,5 TB. Ezen tárolási méretek egy hasonló a korábbi partíciók képlettel kiszámítása. A kifejezés "partíció" nem jelenti azt, hogy az operációs rendszer, a memória vagy a Processzor-erőforrások bármely olyan módon particionáltak. Azt jelzi, hogy a különböző HANA-példányok üzembe a HANA nagy példány egységben érdemes adattárolási partíciókat. 
 
-Az ügyfél lehet, hogy van szüksége további tárhelyet, lehetősége van 1 TB-os egységekben további tárterület vásárlása tár hozzáadása. A további tárhely további kötetként felveheti, vagy legalább egy, a meglévő kötetek kiterjeszteni használható. Nincs lehetőség a a kötetek méretének csökkentése eredetileg telepített, és főként a fenti táblák dokumentálnia. Lehetetlen is módosítható a köteteket a neve, vagy csatlakoztatási nevét. A fent ismertetett tárolási köteteket a HANA nagy példány mértékegységet NFS4 kötetek vannak csatolva.
+Szükség lehet további tárhelyet. 1 TB méretű egységekbe további tárterület megvásárlásával tárolási is hozzáadhat. A további tárhely további kötetként lehet hozzáadni. Azt is használható egy vagy több kötetnek a meglévő kiterjeszteni. Nem lehet a kötetek méretének csökkentése eredetileg telepített, és többnyire részletes ismertetését lásd az előző táblázatokban által. Még nem lehet módosítható a köteteket a neve, vagy csatlakoztassa a neveket. A korábban ismertetett tárolási köteteket a HANA nagy példány mértékegységet NFS4 kötetek vannak csatolva.
 
-Ügyfélként választhat storage-pillanatfelvételekkel biztonsági mentés/visszaállítás, valamint a vész helyreállítási célokra használni. További részletekért részletes leírást talál [SAP HANA (nagy példányok) magas rendelkezésre állás és vészhelyreállítás Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Biztonsági mentés és visszaállítás és vész helyreállítási célokra használható storage-pillanatfelvételekkel. További információkért lásd: [SAP HANA (nagy példányok) magas rendelkezésre állási és vészhelyreállítási helyreállítási Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ### <a name="encryption-of-data-at-rest"></a>A tárolt adatok titkosítása
-A nagy HANA-példányok használt tároló lehetővé teszi, hogy az adatok átlátható titkosítási a lemezen tárolt. A központi telepítéskor HANA nagy példány egység a beállítással engedélyezhető a titkosítás eredő rendelkezik. Tudja meg titkosított kötetek már a telepítés után módosítsa. Az áthelyezés nem titkosított a titkosított kötetekre átlátható, és nem igényli a leállás. 
+A HANA nagy példány használt tároló lehetővé teszi, hogy az adatok átlátható titkosítási a lemezen tárolt. Amikor telepít egy HANA nagy példány egység, engedélyezheti a titkosítás eredő. Is titkosított kötetek után módosíthatja a központi telepítés akkor történik meg. Áthelyezést nem titkosított titkosított kötetek átlátható, és nincs szükség az állásidő. 
 
-Azzal a típussal, i. osztály SKU, a logikai egység tárolják, a rendszerindító kötet titkosítva van. Esetén a típus II osztály példányainak termékváltozatok a HANA nagy az operációs rendszer módszerek a rendszerindítás LUN titkosítania kell. További információért forduljon a Microsoft szolgáltatás-felügyeleti csoport.
+I. osztály azzal a típussal, SKU, a logikai egység tárolt rendszerindító kötet titkosítva van. Az SKU a HANA nagy példány típusú osztály az operációs rendszer módszerek a rendszerindítás LUN titkosítania kell. További információért forduljon a Microsoft szolgáltatás-felügyeleti csoport.
 
 
 ## <a name="networking"></a>Hálózat
 
-Azure hálózati architektúra sikeres alkalmazások központi telepítését figyelemmel SAP HANA-példányokon nagy a nyilvános kulcsokra épülő. SAP HANA Azure (nagy példányok) üzemelő példányok esetében általában egy nagyobb SAP, számos különböző SAP-megoldások különböző méretű adatbázisok, a Processzor-erőforrás-felhasználás és a memóriahasználat a fekvő tájolás kell. Valószínűleg nem az összes az SAP rendszereket alapulnak SAP HANA, a SAP fekvő valószínűleg használó hibrid:
+Az Azure hálózati szolgáltatások architektúrája a sikeres alkalmazások központi telepítését figyelemmel SAP HANA-nagy példányon nyilvános kulcsokra épülő. SAP HANA Azure (nagy példányok) üzemelő példányok esetében általában egy nagyobb SAP, számos különböző SAP-megoldások különböző méretű adatbázisok, a Processzor-erőforrás-felhasználás és a memóriahasználat a fekvő tájolás kell. Valószínű, hogy nem minden említett SAP rendszereken SAP HANA alapulnak. Az SAP fekvő valószínűleg használó hibrid:
 
-- SAP rendszerek helyszíni üzembe. A mérete miatt ezek a rendszerek nem jelenleg Azure-ban üzemeltetett; a klasszikus példa erre egy éles SAP ERP rendszer fut a Microsoft SQL Server (adatbázisként) további Processzort igényel, amely vagy a memória-erőforrások Azure virtuális gépeket biztosíthatnak.
+- SAP rendszerek helyszíni üzembe. A mérete miatt ezek a rendszerek jelenleg nem lehet üzemeltetni az Azure-ban. Példa: egy üzemi (és az adatbázis) SQL-kiszolgálón fut, és további CPU és memória erőforrást, mint a virtuális gépeket biztosíthatnak SAP ERP rendszer.
 - SAP SAP HANA-alapú rendszerek helyszíni üzembe.
-- Azure virtuális gépeken telepített SAP rendszerek. Ezek a rendszerek fejlesztési, tesztelési, védőfal, vagy az SAP NetWeaver-alapú alkalmazások, amelyek az Azure-ban (a virtuális gépeken), erőforrás használat és a memória igény szerint sikeres telepítése éles példányának. Ezek a rendszerek is alapulhatnak például az SQL Server adatbázisok (lásd: [SAP támogatási Megjegyzés #1928533 – Azure SAP-alkalmazásokból: támogatott termékek és az Azure virtuális gép típusok](https://launchpad.support.sap.com/#/notes/1928533/E)) vagy SAP HANA (lásd: [SAP HANA hitelesített IaaS platformok](http://global.sap.com/community/ebook/2014-09-02-hana-hardware/enEN/iaas.html)).
-- Telepített SAP alkalmazáskiszolgálók (a virtuális gépeken) Azure-ban Azure (nagy példány) SAP HANA kihasználhatja az Azure nagy példány stampek.
+- SAP rendszerek központilag telepített virtuális gépeken. Ezek a rendszerek fejlesztési, tesztelési, védőfal, lehet, vagy az SAP NetWeaver-alapú alkalmazások, amelyek az Azure-ban (a virtuális gépeken), erőforrás használat és a memória igény szerint sikeres telepítése éles példányának. Ezek a rendszerek is alapulhat például az SQL Server adatbázisok. További információkért lásd: [SAP támogatási Megjegyzés #1928533 – Azure SAP-alkalmazásokból: támogatott termékek és Azure Virtuálisgép-típusokon](https://launchpad.support.sap.com/#/notes/1928533/E). És ezek a rendszerek adatbázisok például SAP HANA-alapú lehet. További információkért lásd: [SAP HANA hitelesített IaaS platformok](http://global.sap.com/community/ebook/2014-09-02-hana-hardware/enEN/iaas.html).
+- Telepített SAP alkalmazáskiszolgálók (a virtuális gépeken) Azure-ban Azure (nagy példányok) SAP HANA kihasználhatja az Azure nagy példány stampek.
 
-Míg egy hibrid SAP fekvő (a négy vagy több különböző központi telepítési forgatókönyv) jellemző, nincsenek Azure-beli teljes SAP fekvő eseteit sok ügyfél. A Microsoft Azure virtuális gépek egyre nagyobb teljesítményű, helyezze át az SAP-megoldások Azure ügyfelek száma növekszik.
+SAP fekvő négy vagy több különböző központi telepítési forgatókönyveket, hibrid jellemző. Nincsenek is az Azure-ban futó teljes SAP-tájak eseteit sok ügyfél. Virtuális gépek egyre nagyobb teljesítményű, helyezze át az SAP-megoldások Azure-ügyfelek számát növeli.
 
-Hálózat az Azure szolgáltatásba telepített SAP rendszerek környezetében Azure nincs bonyolult. A következő alapelveket alapul:
+Azure hálózatkezelés a SAP rendszerek Azure szolgáltatásba telepített környezet nem összetett. A következő alapelveket alapul:
 
-- Az Azure virtuális hálózatokról (Vnetekről) kell csatlakoztatni kell a helyszíni hálózathoz csatlakozó Azure ExpressRoute-kapcsolatcsoportot.
-- Általában a helyszíni csatlakozik Azure ExpressRoute-kapcsolatcsoportot rendelkeznie kell a sávszélesség 1 GB/s vagy újabb. A minimális sávszélesség lehetővé teszi a megfelelő sávszélesség az adatok átviteléhez a helyszíni és a futó Azure virtuális gépeken (valamint a helyszíni felhasználók Azure rendszerek kapcsolat) rendszerek között.
-- Az Azure-ban minden SAP rendszer kell lehet állítani az Azure Vnetekhez kommunikálnak egymással.
-- Active Directory és a DNS a helyben tárolt kiterjeszthetőek az Azure ExpressRoute segítségével a helyi.
+- Egy Azure virtuális hálózatot kapcsolódnia kell az ExpressRoute-kapcsolatcsoport, amely egy helyi hálózathoz csatlakozik.
+- Amely általában a helyszíni csatlakozik Azure ExpressRoute-kapcsolatcsoportot rendelkeznie kell a sávszélesség 1 GB/s vagy újabb. A minimális sávszélesség megfelelő sávszélesség a helyszíni és a virtuális gépeken futó rendszerek közötti adatátvitelt tesz lehetővé. Lehetővé teszi a kapcsolat megfelelő sávszélesség Azure rendszereken a helyszíni felhasználók.
+- Az Azure-ban minden SAP rendszer kell kell beállítani a virtuális hálózatokon, egymással kommunikálni.
+- Active Directory és a DNS a helyben tárolt kiterjeszthetőek az Azure ExpressRoute segítségével helyszíni.
 
 
 > [!NOTE] 
-> A számlázási szempontjából csak egy Azure-előfizetéssel csak az adott Azure-régió egy nagy példány stamp egy egybérlős lehet társítani, és ezzel szemben egy nagy példány stamp egybérlős kapcsolható csak egy Azure-előfizetéssel. Ez a tény nem eltér a más számlázható objektumok az Azure-ban
+> A számlázási szempontjából csak egy Azure-előfizetéssel csak egy bérlő által egy adott Azure-régió, egy nagy példány stamp lehet társítani. Ezzel ellentétben egy nagy példány stamp egybérlős csak egy Azure-előfizetés lehet társítani. Ez a követelmény az Azure-ban más számlázható objektumok összhangban.
 
-A nagy példány stamp telepítését külön bérlői eredményezi üzembe helyezése az Azure (nagy példányok) több különböző Azure-régiókban SAP HANA. Azonban futtathatja mindkét azonos Azure-előfizetést a mindaddig, amíg ezek a példányok az azonos SAP fekvő részét képezik. 
+Ha több különböző Azure-régiók SAP HANA Azure (nagy példányok) lett telepítve, egy külön bérlő a nagy példány stamp van telepítve. Mindaddig, amíg ezek a példányok az azonos SAP fekvő részét képezik az azonos Azure-előfizetés alapján is futtathatja. 
 
 > [!IMPORTANT] 
 > Csak az Azure Resource Manager deployment SAP HANA Azure (nagy példányok) használata támogatott.
 
  
 
-### <a name="additional-azure-vnet-information"></a>További Azure VNet-információk
+### <a name="additional-virtual-network-information"></a>További virtuális hálózati adatok
 
-Egy Azure virtuális hálózatot ExpressRoute való csatlakozáshoz, létre kell hozni egy Azure-átjáró (lásd: [kapcsolatos az ExpressRoute virtuális hálózati átjárók](../../../expressroute/expressroute-about-virtual-network-gateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). Egy Azure-átjáró vagy ExpressRoute az Azure-on kívüli infrastruktúrát (vagy egy Azure nagy példány stamp), vagy Azure Vnet közötti kapcsolat használható (lásd: [konfigurálja a VNet – VNet-kapcsolatot az erőforrás-kezelő PowerShellhasználatával](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). Legfeljebb négy különböző ExpressRoute-kapcsolatot az Azure-átjáró is elérheti, mindaddig, amíg másik MS vállalati szélek (MSEE) útválasztók érkező ezeket a kapcsolatokat.  További információkért lásd: [SAP HANA (nagy példányok) infrastruktúra és az Azure-kapcsolatokat](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+Szeretne csatlakozni a virtuális hálózati ExpressRoute, egy Azure-átjárót kell létrehozni. További információkért lásd: [kapcsolatos az ExpressRoute virtuális hálózati átjárók](../../../expressroute/expressroute-about-virtual-network-gateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). 
+
+Egy Azure-átjáró ExpressRoute egy Azure-on kívüli infrastruktúra vagy egy Azure nagy példány stamp használható. Egy Azure-átjárót is segítségével csatlakozzon a virtuális hálózatok között. További információkért lásd: [hálózatok közötti kapcsolatot az erőforrás-kezelő konfigurálása a PowerShell használatával](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Legfeljebb négy különböző ExpressRoute-kapcsolatot az Azure-átjáró is elérheti, mindaddig, amíg másik Microsoft vállalati peremhálózati útválasztók származhat ezeket a kapcsolatokat. További információkért lásd: [SAP HANA (nagy példányok) infrastruktúra és az Azure-kapcsolatokat](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 
 > [!NOTE] 
-> Egy Azure átjáró átirányítást biztosít a átviteli eltér mindkét esetben használja (lásd: [VPN-átjáró](../../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). A maximális átviteli sebesség azt érhető el a virtuális hálózat átjáróval 10 GB/s, egy ExpressRoute-kapcsolat használatával. Ne feledje, hogy egy Azure virtuális gép található egy Azure virtuális hálózatot és a rendszer között a fájlok másolása a helyszíni (adatfolyamként egyetlen másolatának), a teljes átviteli képessége – a különböző gateway SKU nem érhetik el. Ki a virtuális hálózat átjáró teljes sávszélességét, használjon több adatfolyam, vagy egyetlen fájl párhuzamos adatfolyamok különböző fájlok másolása.
+> Egy Azure átjáró átirányítást biztosít a átviteli eltér mindkét esetben használja. További információkért lásd: [VPN-átjáró](../../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). A maximális átviteli sebesség érhető el, ha egy virtuális hálózati átjáró 10 GB/s egy ExpressRoute-kapcsolat használatával. A virtuális hálózatban található virtuális gépek és a rendszer között a fájlok másolása a helyszíni (adatfolyamként egyetlen másolatának) nem érhetők el a teljes átviteli képessége – a különböző gateway SKU. Használja ki a virtuális hálózati átjáró teljes sávszélességét, használjon több adatfolyam. Vagy más fájlokat egyetlen fájl párhuzamos adatfolyamokat kell másolnia.
 
 
-### <a name="networking-architecture-for-hana-large-instances"></a>Hálózati architektúra nagy HANA-példányok
-A hálózati architektúra HANA nagy példányok az alábbi módon el lehet különíteni a négy részből:
+### <a name="networking-architecture-for-hana-large-instance"></a>Hálózati architektúra nagy HANA-példány
+A hálózati architektúra HANA nagy példány négy részből sorolhatók:
 
-- A helyszíni hálózat és az Azure ExpressRoute-kapcsolatot. Ez a rész az ügyfelek tartománya, és kapcsolódik az Azure ExpressRoute segítségével. Ez az a része, az alábbi ábrák jobb alsó sarkában.
-- Az Azure hálózatkezelés szerint röviden kapcsolatban a fentiekben ismertetett az Azure Vnetekhez, újra rendelkező átjárókat. Ez az egy olyan területre, ahol a megfelelő tervek keresése az alkalmazások követelményeinek, biztonsági és megfelelőségi követelményeknek kell. HANA nagy példányok használata egy másik virtuális hálózatokat és Azure gateway SKU választhat számát figyelembe pontját. Ez az a kijelző jobb felső sarkában a grafikus nyomtatást.
-- Nagy HANA-példányok keresztüli kapcsolat ExpressRoute technológia az Azure. Ez a kijelző telepített, és a Microsoft kezeli. Összes kell tennie, mivel az ügyfél arra, hogy bizonyos IP-címtartományok és a csatlakozás az ExpressRoute HANA nagy esetekben eszközök üzembe helyezése után áramkör az Azure VNet(s) (lásd: [(nagy példányok) SAP HANA-infrastruktúra és kapcsolat az Azure-on](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). 
-- Hálózati HANA nagy példányát, ez utóbbi érték többnyire átlátszó meg ügyfélként.
+- A helyszíni hálózat és az Azure ExpressRoute-kapcsolatot. Ez a rész a felhasználói tartomány és Azure ExpressRoute keresztül kapcsolódik. Tekintse meg az alábbi ábrán jobb alsó részen.
+- Az Azure hálózati szolgáltatások, előbb tárgyalt módon, a virtuális hálózatok, átjárók, újra kell. Ez a kijelző egy olyan területre, ahol kell a megfelelő tervek található az alkalmazás követelményeinek, biztonsági és megfelelőségi követelmények. Egy másik és megfontolandó szempont szempontjából a virtuális hálózatok és az Azure gateway SKU száma a választható HANA nagy példány használatát. Az ábrán jobb felső részén talál.
+- Nagy HANA-példány keresztüli kapcsolat ExpressRoute technológia az Azure. Ez a kijelző telepített, és a Microsoft kezeli. Adja meg az egyes IP-címtartományok HANA nagy példány az eszközök központi telepítése után a virtuális hálózatokhoz való kapcsolódásának az ExpressRoute-kapcsolatcsoport mindössze annyit kell tennie. További információkért lásd: [SAP HANA (nagy példányok) infrastruktúra és az Azure-kapcsolatokat](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+- Hálózati HANA nagy példányban, ez utóbbi érték többnyire átlátszó.
 
-![Az Azure virtuális hálózat csatlakozik az Azure (nagy példányok) és a helyszíni SAP HANA](./media/hana-overview-architecture/image3-on-premises-infrastructure.png)
+![Az Azure (nagy példányok) és a helyszíni SAP HANA csatlakozó virtuális hálózati](./media/hana-overview-architecture/image3-on-premises-infrastructure.png)
 
-Az a tény HANA nagy példányok használata nem változik a követelmény az Azure ExpressRoute keresztül csatlakoznak a helyszíni eszközök eléréséhez. Azt is nem módosítja egy vagy több Vnetek HANA nagy példány egység az Azure virtuális gépek melyik gazdagépre az alkalmazási rétegre, amely kapcsolódik a HANA példányok üzemeltetett futtató rendelkező vonatkozó követelmény. 
+A követelmény, hogy a helyszíni eszközök kapcsolódáshoz kell az Azure ExpressRoute nem módosítható, mivel a nagy HANA-példányt használ. Egy vagy több virtuális hálózatokhoz a virtuális gépek, amelyek az alkalmazási rétegre, amely kapcsolódik a HANA nagy példány egységekben üzemeltetett HANA példányok működteti, futtassa a követelménnyel is nem változik. 
 
-A különbség az SAP-központitelepítések csak Azure-ban a tények tartalmaz, amelyek:
+Az Azure-ban SAP-központitelepítések különbségek a következők:
 
-- Az ügyfél-bérlő HANA nagy példány egységei az Azure VNet(s) be egy másik ExpressRoute-kapcsolatcsoportot keresztül kapcsolódó. Ahhoz, hogy külön munkaterhelés esetére, a helyi az Azure Vnetekhez ExpressRoute- és hivatkozásokat Azure Vnet és HANA nagy példányok között nem osztható meg a azonos útválasztók.
-- A munkaterhelés profil az SAP alkalmazási rétegre és a HANA példány között a különböző jellegű a sok kisméretű kérelmek és kapacitásnövelés adatok például SAP HANA (eredményhalmazt) átviszi az alkalmazás rétegbe.
-- Az SAP alkalmazásarchitektúra érzékenyebb a hálózati késés, mint a jellemző forgatókönyvek, ahol lekérdezi adatcsere a helyszíni és az Azure között.
-- A virtuális hálózat átjáró rendelkezik, legalább két ExpressRoute-kapcsolatot, és mindkét kapcsolatok osztja meg a virtuális hálózat átjáró bejövő adatok maximális sávszélessége.
+- Az ügyfél-bérlő HANA nagy példány egységei egy másik ExpressRoute-kapcsolatcsoportot keresztül kapcsolódó a virtuális hálózatba. Külön munkaterhelés esetére, a helyszíni virtuális hálózatok ExpressRoute- és virtuális hálózatok és HANA nagy példány között hivatkozásokat ne ossza meg ugyanazt az útválasztók.
+- A munkaterhelés-profil az SAP alkalmazási rétegre és a HANA nagy példány között különböző jellegű, a sok kisméretű kérelem és felszakadásáig például adatok SAP HANA (eredményhalmazt) átviszi az alkalmazás rétegbe.
+- Az SAP alkalmazásarchitektúra érzékenyebb a hálózati késés, mint a jellemző forgatókönyvek, ahol adatcsere a helyszíni és az Azure között.
+- A virtuális hálózati átjáró legalább két ExpressRoute kapcsolat van. Mindkét kapcsolatok ossza meg a virtuális hálózati átjáró bejövő adatok maximális sávszélessége.
 
-Lehet, hogy a tapasztalt Azure virtuális gépek és HANA nagy példány egységek közötti hálózati késés nagyobb, mint egy tipikus VM-VM hálózati oda-vissza késés. Az Azure-régió függ, mért értékek lépheti túl a 0,7 körbejárási késése (ms) átlaga alá besorolt [SAP Megjegyzés #1100926 - gyakran ismételt kérdések: hálózati teljesítményt](https://launchpad.support.sap.com/#/notes/1100926/E). Az ügyfelek azonban SAP HANA-alapú üzemi SAP alkalmazások nagyon meg SAP HANA nagy példányok telepítését. Az ügyfelek, akik telepítették az SAP-alkalmazásokból futó HANA nagy példány egységek használatával SAP HANA jelentése nagy fejlesztései. Mindazonáltal tesztelni kell az üzleti folyamatok alaposan Azure HANA nagy példányát.
+A hálózat késését, hibát észlelt a virtuális gépek és HANA nagy példány között egység egy tipikus VM-VM hálózati oda-vissza késés nagyobb lehet. Az Azure-régió függ, mért értékek lépheti túl a 0,7-körbejárási késése (ms) átlaga alá besorolt [SAP Megjegyzés #1100926 - gyakran ismételt kérdések: hálózati teljesítményt](https://launchpad.support.sap.com/#/notes/1100926/E). Az ügyfelek azonban SAP HANA-alapú üzemi SAP-alkalmazásokból sikeresen példányon SAP HANA nagy telepíthetnek. Az ügyfelek, akik jelentés kiváló fejlesztései telepítették az SAP-alkalmazásokból futtatásával SAP HANA HANA nagy példány egységek használatával. Győződjön meg arról, hogy alaposan tesztelni az üzleti folyamatok Azure HANA nagy példányában.
  
-Így biztosíthatja az Azure virtuális gépek és HANA nagy példány között determinisztikus hálózati késés, választott Azure VNet átjáró-Termékváltozat nem lényeges. Ellentétben a helyszíni és az Azure virtuális gépek közötti forgalmat Azure virtuális gépek és nagy HANA-példányok közötti forgalom minta fejleszthet az átvitelre váró kérések- és adatkötetek kicsi, de nagy felszakadásáig. Ahhoz, hogy az ilyen felszakadásáig kezelt is rendelkezik, az átjáró-Termékváltozat UltraPerformance használatát erősen ajánlott. A típus II osztály HANA nagy példány SKU a UltraPerformance gateway SKU Azure VNet átjáróként használatát megadása kötelező.  
+Arra, hogy a virtuális gépek és HANA nagy példány között determinisztikus hálózati késés, a választott a virtuális hálózati átjáró Termékváltozat nem lényeges. Ellentétben a helyszíni és a virtuális gépek közötti forgalmat a virtuális gépek és HANA nagy példány között forgalmat minta fejleszthet az átvitelre váró kérések- és adatkötetek kicsi, de nagy felszakadásáig. Ilyen felszakadásáig is kezelni, a UltraPerformance gateway SKU használata erősen ajánlott. A HANA nagy példány termékváltozatok típusú osztályához SKU UltraPerformance átjáró virtuális hálózati átjáró használata kötelező.
 
 > [!IMPORTANT] 
-> A teljes hálózati forgalom az SAP-alkalmazások és adatbázis rétegek között megadott, csak a HighPerformance vagy UltraPerformance gateway SKU-n tartozó Vnetek esetében támogatott SAP HANA Azure (nagy példányok) való kapcsolódáshoz. Csak a UltraPerformance átjáró-Termékváltozat típus II termékváltozatok példány HANA nagy támogatott Azure VNet átjáróként.
+> A teljes hálózati forgalom az SAP-alkalmazások és adatbázis rétegek között megadott, csak a HighPerformance vagy UltraPerformance gateway SKU-n virtuális hálózatok támogatottak SAP HANA Azure (nagy példányok) való kapcsolódáshoz. Csak a UltraPerformance gateway SKU HANA nagy példány típus II SKU, mint a virtuális hálózati átjáró támogatott.
 
 
 
 ### <a name="single-sap-system"></a>Egyetlen SAP rendszer
 
-A fent látható a helyszíni infrastruktúra az Azure ExpressRoute keresztül csatlakozik, és az ExpressRoute-kapcsolatcsoport összekapcsolja azokat a Microsoft vállalati peremhálózati útválasztó (MSEE) (lásd: [ExpressRoute műszaki áttekintés](../../../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). Miután létrejött, adott útvonal csatlakozik a Microsoft Azure gerincét és, minden Azure-régió.
+A korábban látható a helyszíni infrastruktúra az Azure ExpressRoute csatlakozik. Az ExpressRoute-kapcsolatcsoport csatlakozik egy vállalati peremhálózati útválasztó be. További információkért lásd: [ExpressRoute műszaki áttekintés](../../../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Az útvonal létrejötte után az Azure gerincét csatlakozik, és minden Azure-régió érhetők el.
 
 > [!NOTE] 
-> Az Azure-beli SAP tájak, csatlakozzon az Azure-régió, a SAP tükrében megfigyelhető legközelebbi MSEE. Az Azure nagy példány bélyegzők dedikált MSEE eszközök az Azure infrastruktúra-szolgáltatási és nagy példány bélyegzők Azure virtuális gépek közötti hálózati késés csökkentése érdekében érdemes keresztül csatlakoznak.
+> SAP tájak futtassa az Azure-ban, csatlakoznia kell a vállalati peremhálózati útválasztó az Azure-régió, a SAP tükrében megfigyelhető legközelebbi. Az Azure nagy példány bélyegzők dedikált vállalati peremhálózati útválasztó eszközök Azure infrastruktúra-szolgáltatási és nagy példány bélyegzők a virtuális gépek közötti hálózati késés csökkentése érdekében érdemes keresztül csatlakoznak.
 
-Az Azure virtuális gépeken, SAP alkalmazáspéldányok, üzemeltető virtuális hálózat átjáróján adott ExpressRoute-kapcsolatcsoportot csatlakozik, és ugyanazt a virtuális hálózatot csatlakozik egy külön MSEE útválasztó átjárófelügyeleti feladatokat lát el nagy példány bélyegzők csatlakozik.
+Az SAP alkalmazás példányait futtató virtuális gépek virtuális hálózati átjáró csatlakozik-e az ExpressRoute-kapcsolatcsoportot. Az azonos virtuális hálózatban egy külön vállalati peremhálózati útválasztó dedikált nagy példány bélyegzők való csatlakozik.
 
-Ez az egyetlen SAP rendszer, ahol az SAP alkalmazásréteg van az Azure-ban és az SAP HANA Azure (nagy példányok) fut az SAP HANA-adatbázisból egy egyszerű példa. A rendszer azt feltételezi, hogy a virtuális hálózat átjáró sávszélesség 2 GB/s-vagy 10 GB/s átviteli sebesség nem felel meg a szűk keresztmetszetek.
+A rendszer egy egyszerű példa egy SAP rendszerrel. Az SAP alkalmazásréteg az Azure-ban tárolja. Az SAP HANA-adatbázisból SAP HANA (nagy példányok) Azure-on futtatja. A feltételezi, hogy a virtuális hálózati átjáró sávszélesség 2-kapcsolóport vagy 10-GB/s átviteli nem határoz meg a szűk keresztmetszetek.
 
 ### <a name="multiple-sap-systems-or-large-sap-systems"></a>Több SAP rendszerek vagy nagy számú SAP-rendszerek
 
-Ha több SAP rendszerek vagy nagy számú SAP-rendszerek van telepítve, kapcsolódik az Azure (nagy példányokat), akkor &#39; SAP HANA s, nagy valószínűséggel tegyük fel, az átviteli sebessége a VNet átjáró válhat a szűk keresztmetszetek. Ebben az esetben az alkalmazás rétegek felosztása több Azure Vnetekhez kell. Azt is lehet létrehozni olyan esetekben, például a nagy példányok HANA csatlakozó különleges Vnetek recommendable:
+Ha több SAP rendszerek vagy nagy számú SAP-rendszerek SAP HANA Azure (nagy példányok) való kapcsolódáshoz van telepítve, az átviteli sebessége a virtuális hálózati átjáró válhatnak a szűk keresztmetszetek. Ebben az esetben az alkalmazás rétegek felosztása több virtuális hálózat. Akkor is előfordulhat, hogy speciális virtuális hálózat létrehozása, amely összeköti HANA nagy példány olyan esetekben, mint:
 
-- Biztonsági másolatok HANA nagy példányok HANA példányokból egy virtuális géphez, amelyen az NFS-megosztásokat az Azure-ban
+- Biztonsági mentések végrehajtása HANA nagy példány HANA példányokból egy Azure-ban, amelyen az NFS-megosztásokat.
 - Másolás nagy biztonsági másolatait és egyéb fájlok HANA nagy példány egységekből az Azure-ban kezelt lemezterület.
 
-Használja a külön Vnetek, hogy a gazdagépen virtuális gépeket, hogy a tárterület kezelése elkerülhetők a nagy méretű fájlok hatás vagy adatátvitel HANA nagy példányokból az Azure-bA a VNet-átjárón, amely a virtuális gépeket futtató az SAP alkalmazásréteg szolgál. 
+A gazdagépen virtuális gépeket, hogy a tárterület kezelése külön virtuális hálózatot használ. Ezzel az elrendezéssel elkerülhetők a nagy méretű fájlok vagy az adatátvitel HANA nagy példányból az Azure-bA az SAP alkalmazásréteg futtató virtuális gépeken látja, hogy a virtuális hálózati átjárón hatásait. 
 
 Több méretezhető hálózati architektúra:
 
-- Használja ki az egyetlen, nagyobb SAP alkalmazásréteg több Azure Vnet.
-- Központi telepítése egy külön Azure virtuális hálózatot az egyes SAP rendszert telepíteni, ezeket külön alhálózatokon ugyanazt a virtuális hálózatot az SAP rendszerek kombinálásával képest.
+- Használja ki az egyetlen, nagyobb SAP alkalmazásréteg több virtuális hálózat.
+- Központi telepítése egy különálló virtuális hálózat minden egyes SAP rendszert telepíteni, ezeket külön alhálózatokon ugyanazt a virtuális hálózatot az SAP rendszerek kombinálásával képest.
 
  A több méretezhető hálózati architektúra SAP Hana Azure (nagy példány):
 
-![SAP alkalmazásréteg telepítését a több Azure Vnetekhez keresztül](./media/hana-overview-architecture/image4-networking-architecture.png)
+![SAP alkalmazásréteg telepítése több virtuális hálózaton keresztül](./media/hana-overview-architecture/image4-networking-architecture.png)
 
-Az SAP alkalmazásréteg vagy összetevők telepítését a fent látható több Azure Vnetekhez keresztül bevezetett elkerülhetetlen késés terhelést, hogy az adott Azure Vnetekhez üzemeltetett alkalmazások közötti kommunikáció során történt. Alapértelmezés szerint a más Vnetekről útvonal a MSEE útválasztók ebben a konfigurációban található, Azure virtuális gépek közötti hálózati forgalmat. Azonban óta 2016 szeptemberétől a útválasztási is lehet optimalizálni. Optimalizálás, és kevesebb két Vnetek közötti kommunikáció késését a úgy, hogy társviszony-létesítési Azure Vnetekhez belül ugyanabban a régióban. Akkor is, ha ezek Vnetekhez különböző előfizetésekhez. A társviszony-létesítés Azure VNet, két különböző Azure Vnetekhez a virtuális gépek közötti kommunikáció az Azure-hálózat gerincét történő használatával közvetlenül kommunikálhatnak egymással. Hasonló késéssel ezáltal jelenít meg, mintha a virtuális gépek ugyanazon virtuális lenne. Mivel, IP-címtartományokat, amelyek az Azure virtuális hálózat átjárón keresztül csatlakoznak címzéshez továbbítódik a vnet az egyedi hálózatok átjárón keresztül. Kaphat Azure virtuális hálózat adatait a cikkben társviszony [Vnetben társviszony-létesítés](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
+Az ábrán az látható, a SAP alkalmazásréteg vagy összetevők telepített több virtuális hálózaton keresztül. Ez a konfiguráció bevezetett elkerülhetetlen késés terhelést, hogy a virtuális hálózatok üzemeltetett alkalmazások közötti kommunikáció során történt. Alapértelmezés szerint ebben a konfigurációban a vállalati peremhálózati útválasztók útvonal különböző virtuális hálózatokon lévő virtuális gépek közötti hálózati forgalmat. 2016 szeptemberétől, mert ez az útválasztási is lehet optimalizálni. 
+
+A optimalizálása és a két virtuális hálózatok közötti kommunikációs késés kevesebb módja a társviszony-létesítési virtuális hálózatok a régión belül. Ez a módszer használható akkor is, ha virtuális hálózatok különböző előfizetésekhez. A virtuális hálózati társviszony-létesítést, két különböző virtuális hálózatokon lévő virtuális gépek közötti kommunikáció használhatja az Azure-hálózat gerincét közvetlenül kommunikálhatnak egymással. Késés jeleníti meg, ha a virtuális gépek ugyanazt a virtuális hálózatot. Az Azure virtuális hálózati átjárón keresztül csatlakozó IP-címtartományok orvosló továbbítódik a virtuális hálózat az egyes virtuális hálózati átjárón keresztül. 
+
+További információ a virtuális hálózati társviszony-létesítés: [virtuális hálózati társviszony-létesítés](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
 
 
 ### <a name="routing-in-azure"></a>Az Azure-Útválasztás
 
-Három dolgot fontos hálózati útválasztási SAP Hana Azure (nagy példány):
+Három, hálózati útválasztási szempontok fontosak SAP HANA Azure (nagy példány):
 
-1. Az Azure (nagy példányok) SAP HANA csak elérhető Azure virtuális gépeken, valamint dedikált ExpressRoute-kapcsolat; nem közvetlenül a helyszíni. Közvetlen hozzáférés a helyszíni HANA nagy példány egységnél, Microsoft által kiadott nincs lehetőség közvetlenül a jelenlegi Azure hálózati architektúra SAP HANA-nagy példányok használt tranzitív útválasztási korlátozások miatt. Egyes felügyeleti ügyfeleket és közvetlen hozzáférést, például SAP megoldás Manager fut a helyszíni igénylő alkalmazások nem tud kapcsolódni az SAP HANA-adatbázisból.
+* SAP HANA Azure (nagy példányok) csak a virtuális gépek és a dedikált ExpressRoute-kapcsolatot, nem közvetlenül a helyszíni keresztül elérhető. Közvetlen hozzáférést a helyszíni HANA nagy példány egység, Microsoft által kiadott nem lehetséges közvetlenül. A tranzitív útválasztási korlátozások vonatkoznak az SAP HANA nagy példány használt aktuális Azure hálózati architektúrája miatt. Egyes felügyeleti ügyfeleket és kell közvetlen hozzáférés, például SAP megoldás Manager fut a helyszíni alkalmazások nem tud kapcsolódni az SAP HANA-adatbázisból.
 
-2. Ha nagy példány HANA egységek két különböző Azure-régiók katasztrófa utáni helyreállítás céljából telepítve van, az azonos átmeneti útválasztási korlátozások érvényesek. Vagy más szóval egy régióban (pl. Velünk nyugati) HANA nagy példány egység IP-címek nem továbbítja a telepített meg egy másik régióban (pl. amerikai keleti) HANA nagy példány egység. Ez az az Azure-hálózat társviszony-létesítés régiók között, vagy az ExpressRoute-Kapcsolatcsoportok HANA nagy példány egységek Azure Vnet-hez csatlakozó közötti használatát független. Ahogy azt egy kicsit tovább le ezt a dokumentációt. Ezt a korlátozást, előre telepített architektúrával, vész-helyreállítási funkcióinak az azonnali használatát, HANA replikációs összetevő letiltása.
+* Ha két különböző régiókban Azure vész-helyreállítási telepített HANA nagy példány egység, az azonos átmeneti útválasztási korlátozások érvényesek. Más szóval egy régióban (például US nyugati) HANA nagy példány egység IP-címek nincs átirányítva telepített egy másik régióban (például amerikai keleti) HANA nagy példány egység. Ez a korlátozás nem függ a társviszony-létesítés régiók közötti vagy a virtuális hálózatokhoz való kapcsolódásának HANA nagy példány egységek ExpressRoute-Kapcsolatcsoportok cross-csatlakozás Azure-beli hálózat használatát. Egy grafikus megjelenítését lásd: az ábra a következő szakaszban: "Használata HANA nagy példány egységek több régióba." Ez a korlátozás, amely a telepített architektúrával, nem engedélyezi a vész-helyreállítási funkcióinak HANA replikációs azonnali használatát.
 
-3. SAP HANA Azure (nagy példányok) egységeken rendelkezik hozzárendelt IP-címnek a kiszolgáló IP-készlet címről benyújtott ügyfélként között meg (lásd: [SAP HANA (nagy példányok) infrastruktúra és az Azure-kapcsolatokat](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) részletekért).  Az IP-cím az Azure-előfizetések és az Azure Vnetekhez csatlakozó HANA (nagy példányok) Azure ExpressRoute keresztül érhető el. Az IP-cím kívül a kiszolgáló IP-készlet címtartománya közvetlenül a hardver egységhez van rendelve, és már nem NAT'ed, ez az eset az első telepítések esetén az ilyen típusú megoldásra. 
+* SAP HANA Azure (nagy példányok) egységeken rendelkezik a kiszolgáló IP-készlet címtartománya beküldött hozzárendelt IP-címeit. További információkért lásd: [SAP HANA (nagy példányok) infrastruktúra és az Azure-kapcsolatokat](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Az IP-cím az Azure-előfizetések és a virtuális hálózatok csatlakozó HANA (nagy példányok) Azure ExpressRoute keresztül érhető el. Az IP-cím hozzárendelése ki, hogy a kiszolgáló IP-készlet címtartománya közvetlenül hozzárendelve a hardver egységhez. Rendelkezik *nem* hozzárendelt hálózati többé, mint az első telepítések esetén az ilyen típusú megoldásra. 
 
 > [!NOTE] 
-> A korlátozásnak átmeneti útválasztási kapcsolatos, az első két listaelemek fenti leírtak szerint van szüksége, ha meg szeretné használni, további összetevők irányításához. A szoftverkorlátozó megoldásához használható összetevők lehetnek: útvonal adatai, és A fordított-proxyként. Ha például F5 BIG-IP, NGINX a Traffic Managerrel virtuális tűzfal/forgalom útválasztási megoldásként Azure szolgáltatásba telepített.
-> Használatával [IPTables szabályok](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ) egy Linux virtuális gépre, és különböző régiókban HANA nagy példány egységek között a helyi raktár és HANA nagy példány egység Útválasztás engedélyezése.
-> Vegye figyelembe, hogy végrehajtása és a harmadik féltől származó hálózati berendezések vagy IPTables egyéni megoldások támogatása nem a Microsoft biztosítja. Támogatási kell a használt komponens gyártójához vagy integráló meg kell adni. 
+> A korlátozásnak átmeneti útválasztási megoldásához, ahogy az első két listaelemek, használja a további összetevők irányításához. A szoftverkorlátozó megoldásához használható összetevők lehetnek:
 
-### <a name="internet-connectivity-of-hana-large-instances"></a>Internetkapcsolat nagy HANA-példányok
-Nagy HANA-példányok nem rendelkezik közvetlen internetkapcsolattal. Ez korlátozza a képességek rögzítéséhez, például az operációsrendszer-lemezképek közvetlenül az operációs rendszer szállítójához. Ezért előfordulhat, hogy szüksége SLES SMT helyi kiszolgáló vagy az RHEL előfizetés Manager
+> * A fordított proxy adatok továbbításához a. Ha például F5 BIG-IP, NGINX a Traffic Managerrel virtuális tűzfal/forgalom útválasztási megoldásként Azure szolgáltatásba telepített.
+> * Használatával [IPTables szabályok](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ) egy Linux virtuális gépre, a helyszíni helyek és HANA nagy példány egységek, vagy különböző régiókban HANA nagy példány egységek között Útválasztás engedélyezése.
 
-### <a name="data-encryption-between-azure-vms-and-hana-large-instances"></a>Azure virtuális gépek és nagy HANA-példányok közötti adattitkosítás
-Nagy HANA-példányok és az Azure virtuális gépek között továbbított adatok nincsenek titkosítva. Azonban csak az exchange között a HANA adatbázis-kezelő és az JDBC-/ ODBC-alapú alkalmazások engedélyezheti forgalom titkosítása. Hivatkozás [ebben a dokumentációban SAP által](http://help-legacy.sap.com/saphelp_hanaplatform/helpdata/en/db/d3d887bb571014bf05ca887f897b99/content.htm?frameset=/en/dd/a2ae94bb571014a48fc3b22f8e919e/frameset.htm&current_toc=/en/de/ec02ebbb57101483bdf3194c301d2e/plain.htm&node_id=20&show_children=false)
+> Vegye figyelembe, hogy végrehajtása, és támogatja az egyéni megoldások használata esetén a külső hálózati készülékek, vagy IPTables a Microsoft nem biztosítja. Támogatási összetevőt használja a szállítójával, vagy a integráló kell biztosítania. 
 
-### <a name="using-hana-large-instance-units-in-multiple-regions"></a>Több régióba HANA nagy példány egységek használatával
+### <a name="internet-connectivity-of-hana-large-instance"></a>Internetkapcsolat nagy HANA-példány
+HANA nagy példány does *nem* rendelkezik közvetlen internetkapcsolattal. Tegyük fel ez a korlátozás korlátozhatnak operációsrendszer-lemezképet közvetlenül az operációs rendszer szállító regisztrálni a képességére. Szükség lehet a helyi SUSE Linux Enterprise Server előfizetés kezelőeszköz kiszolgálóhoz vagy a Red Hat Enterprise Linux előfizetés Manager működéséhez.
 
-Lehetséges, hogy okokat, amelyek központi telepítése az Azure (nagy példányok) SAP HANA a több Azure-régiók vész-helyreállítási mellett. Lehet, hogy az elérni kívánt HANA nagy példányok az egyes régiókban különböző Vnetek a telepített virtuális gépek. A különböző HANA nagy példányok egységek hozzárendelt IP-címeket a rendszer nem propagálja meghaladja az Azure Vnetekhez (csatlakozó közvetlenül a példányok az átjárón keresztül), mert a virtuális hálózat terv fent bevezetett enyhe változás áll: egy Azure virtuális hálózatot átjáró kezelni tud a négy különböző ExpressRoute-Kapcsolatcsoportok különböző MSEEs kívül, és minden virtuális hálózat, amely egy nagy példány stampek kapcsolódik egy másik Azure-régió, a nagy példány stamp lehet csatlakoztatni.
+### <a name="data-encryption-between-vms-and-hana-large-instance"></a>Virtuális gépek és HANA nagy példány között adattitkosítás
+Nagy HANA-példány és a virtuális gépek között továbbított adatok nincsenek titkosítva. Azonban csak az exchange között a HANA adatbázis-kezelő és az alkalmazások JDBC/ODBC-alapú, engedélyezheti forgalom titkosítása. További információkért lásd: [ebben a dokumentációban SAP által](http://help-legacy.sap.com/saphelp_hanaplatform/helpdata/en/db/d3d887bb571014bf05ca887f897b99/content.htm?frameset=/en/dd/a2ae94bb571014a48fc3b22f8e919e/frameset.htm&current_toc=/en/de/ec02ebbb57101483bdf3194c301d2e/plain.htm&node_id=20&show_children=false).
 
-![Az Azure Vnetekhez csatlakozik a különböző Azure-régiók nagy példány Azure bélyegzők](./media/hana-overview-architecture/image8-multiple-regions.png)
+### <a name="use-hana-large-instance-units-in-multiple-regions"></a>Több régióba HANA nagy példány egységek használata
 
-A fenti ábrán bemutatja, hogyan csatlakozik a különböző Azure Vnetekhez mindkét régiókban két különböző ExpressRoute-Kapcsolatcsoportok SAP HANA Azure (nagy példányok) való kapcsolódáshoz használt mindkét Azure régióban. Az újonnan bevezetett kapcsolatok a téglalap alakú piros sorokat. Ezeket a kapcsolatokat, az Azure Vnetekhez kívül egy adott Vnetek futó virtuális gépeket érhetik el a különböző HANA nagy példányok egységek, a két régió telepített minden egyes. Ahogyan a képen látható, a fenti grafikus, feltételezzük, hogy rendelkezik-e a helyszíni az két ExpressRoute-kapcsolat a két Azure-régiók; Vész-helyreállítási okokból ajánlott.
+Lehetséges, hogy központi telepítése az Azure (nagy példányok) a több Azure-régiók feltételtag vész-helyreállítási SAP HANA okok miatt. Lehet, hogy az elérni kívánt HANA nagy példány az egyes régiókban különböző virtuális hálózatokon a telepített virtuális gépek. A különböző HANA nagy példány egységek hozzárendelt IP-címeket a virtuális hálózatok a példányok az átjárón keresztül közvetlenül csatlakozó túl nem kerülnek. Ennek eredményeképpen a enyhe módosítása megjelent a virtuális hálózati terv. A virtuális hálózati átjáró kezelni tud a négy különböző ExpressRoute-Kapcsolatcsoportok kívül más vállalati peremhálózati útválasztók. Minden egyes virtuális hálózat, amely egy nagy példány stampek kapcsolódik egy másik Azure-régió, a nagy példány stamp lehet csatlakoztatni.
+
+![Virtuális hálózat csatlakozik a különböző Azure-régiók nagy példány Azure bélyegzők](./media/hana-overview-architecture/image8-multiple-regions.png)
+
+Az ábrán látható, hogyan mindkét régiókban a különböző virtuális hálózatokhoz csatlakoznak két különböző ExpressRoute-Kapcsolatcsoportok SAP HANA Azure (nagy példányok) való kapcsolódáshoz használt mindkét Azure régióban. Az újonnan bevezetett kapcsolatok a téglalap alakú piros sorokat. Ezeket a kapcsolatokat, a virtuális hálózatokon kívül a virtuális hálózatok egyikére futó virtuális gépeket érhetik el a különböző HANA nagy példány egységek, a két régió telepített minden egyes. Az ábrán az látható, mivel feltételezzük, hogy rendelkezik-e a helyszíni az két ExpressRoute-kapcsolat a két Azure-régiók. Ezzel az elrendezéssel vész-helyreállítási okokból ajánlott.
 
 > [!IMPORTANT] 
-> Több ExpressRoute-Kapcsolatcsoportok használata esetén AS elérési fertőző és a helyi beállításokat szabályozó BGP-beállítások használatával győződjön meg arról, a forgalom megfelelő útválasztását.
+> Ha több ExpressRoute-Kapcsolatcsoportok, AS elérési fertőző és a helyi beállításokat szabályozó BGP-beállítások használatával győződjön meg arról, a forgalom megfelelő útválasztását.
 
 

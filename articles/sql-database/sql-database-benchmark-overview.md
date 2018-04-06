@@ -1,6 +1,6 @@
 ---
-title: "Az Azure SQL Database teljesítménytesztek áttekintése"
-description: "Ez a témakör ismerteti az Azure SQL adatbázis teljesítményteszt használni a Azure SQL adatbázis teljesítménye."
+title: Az Azure SQL Database DTU teljesítménytesztek áttekintése
+description: Ez a témakör ismerteti az Azure SQL adatbázis teljesítményteszt használni a Azure SQL adatbázis teljesítménye.
 services: sql-database
 author: jan-eng
 manager: jhubbard
@@ -9,15 +9,18 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 06/21/2016
 ms.author: janeng
-ms.openlocfilehash: 25685f663d976674ad877bcfa1409ef016dd02ae
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 684ae62400adbde6f0624b802b79a926c06961c8
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="azure-sql-database-benchmark-overview"></a>Az Azure SQL Database teljesítménytesztek áttekintése
+# <a name="azure-sql-database-dtu-benchmark-overview"></a>Az Azure SQL Database DTU teljesítménytesztek áttekintése
 ## <a name="overview"></a>Áttekintés
-A Microsoft Azure SQL Database nyújt három [szolgáltatásszintek](sql-database-service-tiers.md) különböző teljesítményszintek. Egyes tartalmaz egy növekvő erőforrásokhoz, vagy a "power", egyre nagyobb átviteli sebesség továbbít.
+A DTU-alapú alapjául szolgáló vásárlási modell, a Microsoft Azure SQL Database nyújt három [szolgáltatásszintek](sql-database-service-tiers.md) különböző teljesítményszintek. Egyes tartalmaz egy növekvő erőforrásokhoz, vagy a "power", egyre nagyobb átviteli sebesség továbbít.
+
+> [!IMPORTANT]
+> Az Azure SQL Database mostantól támogatja a vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió). További információ: [vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers.md#vcore-based-purchasing-model-preview).
 
 Fontos tudni számlálása hogyan fordítja le a növekvő hatványra emelésének egyes megnövekedett adatbázis teljesítménye. A Microsoft ehhez fejlesztett ki, az Azure SQL adatbázis Referenciaalap (ASDB). A javasolt gyakorolja vegyesen található összes OLTP-munkaterhelések az alapvető műveleteket. Az átviteli sebesség teljesíteni az egyes futó adatbázisok mérjük.
 

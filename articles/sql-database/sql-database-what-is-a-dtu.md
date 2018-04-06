@@ -1,7 +1,7 @@
 ---
 title: 'SQL Database: Mi a DTU? | Microsoft Docs'
-description: "Megismerheti az Azure SQL Database Transaction Unit egységek fogalmát."
-keywords: "adatbázis-beállítások, adatbázis-teljesítmény"
+description: Megismerheti az Azure SQL Database Transaction Unit egységek fogalmát.
+keywords: adatbázis-beállítások, adatbázis-teljesítmény
 services: sql-database
 author: CarlRabeler
 manager: craigg
@@ -10,17 +10,17 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: carlrab
-ms.openlocfilehash: 9d13541444f487ad6afb9f59c6c6ac646091d42c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b5d6ffc9aa13e6aaf948028fabe3087f8dea2a1d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="database-transaction-units-dtus-and-elastic-database-transaction-units-edtus"></a>Adatbázis-tranzakciós egységek (dtu-k) és a rugalmas adatbázis-tranzakciós egységek (edtu-k)
 Ez a cikk tartalmazza a Database Transaction Unitok (adatbázisok tranzakciós egységei, DTU-k) és a rugalmas Database Transaction Unitok (eDTU-k) ismertetését, valamint leírja, mi történik, ha a DTU-k vagy eDTU-k száma eléri a maximális értéket.  
 
 ## <a name="what-are-database-transaction-units-dtus"></a>Mik az adatbázis-tranzakciós egységek (dtu-k)?
-Egy adott szinten belül egyetlen Azure SQL-adatbázis egy [szolgáltatásréteg](sql-database-single-database-resources.md), a Microsoft biztosítja, hogy az erőforrásokhoz, hogy az adatbázis (független bármely más adatbázis Azure felhőben), és így a kiszámítható teljesítmény szintű bizonyos szintű. Ez a mennyiség-erőforrások akkor a program egy adatbázis-tranzakciós egységek vagy dtu-k számát, és kevert méri, Processzor, memória, i/o (adatok és a tranzakciós napló i/o). Ezek az erőforrások között arány eredetileg határozza egy [teljesítményteszt OLTP-munkaterhelés](sql-database-benchmark-overview.md) jellemző OLTP-munkaterhelések valós kialakítva. A terhelés meghaladja az bármely ezeket az erőforrásokat, az átviteli sebesség esetén az szabályozottan halmozott – így a lassabb teljesítmény és időtúllépéseket okoz. A számítási feladatok által használt erőforrások nincs hatással a többi SQL adatbázis Azure felhőben számára elérhető erőforrások, és más munkaterhelésekhez használt erőforrások nem érintik az SQL-adatbázis számára elérhető erőforrások.
+Egy adott szinten belül egyetlen Azure SQL-adatbázis egy [szolgáltatásréteg](sql-database-single-database-resources.md), a Microsoft biztosítja, hogy az erőforrásokhoz, hogy az adatbázis (független bármely más adatbázis Azure felhőben), és így a kiszámítható teljesítmény szintű bizonyos szintű. Ez a mennyiség-erőforrások adatbázis-tranzakciós egységek vagy dtu-inak számaként és, így egy csomagolt mérték számítási, tárolási és IO erőforrások. Ezek az erőforrások között arány eredetileg határozza egy [teljesítményteszt OLTP-munkaterhelés](sql-database-benchmark-overview.md) jellemző OLTP-munkaterhelések valós kialakítva. A terhelés meghaladja az bármely ezeket az erőforrásokat, az átviteli sebesség esetén az szabályozottan halmozott – így a lassabb teljesítmény és időtúllépéseket okoz. A számítási feladatok által használt erőforrások nincs hatással a többi SQL adatbázis Azure felhőben számára elérhető erőforrások, és más munkaterhelésekhez használt erőforrások nem érintik az SQL-adatbázis számára elérhető erőforrások.
 
 ![határolókeret](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
@@ -28,7 +28,7 @@ A relatív mennyiségű erőforrást más-más teljesítménybeli szinten Azure 
 
 Használja a munkaterhelésnek (DTU) erőforrás-felhasználásának mélyebb betekintést [Azure SQL adatbázis-lekérdezési Terheléselemző](sql-database-query-performance.md) számára:
 
-- A leggyakoribb lekérdezések azonosíthatja a CPU/időtartama/végrehajtási száma, amely potenciálisan a jobb teljesítmény kell beállítani. Például egy i/o-igényes lekérdezés előnye származhat használatát [memórián belüli optimalizálási technikákat](sql-database-in-memory.md) a rendelkezésre álló memória egy bizonyos szolgáltatás szintjén és teljesítményszintet jobb kihasználása érdekében.
+- A leggyakoribb lekérdezések azonosíthatja a CPU/időtartama/végrehajtási száma, amely potenciálisan a jobb teljesítmény kell beállítani. Például egy IO intenzív lekérdezés előnye származhat használatát [memórián belüli optimalizálási technikákat](sql-database-in-memory.md) a rendelkezésre álló memória egy bizonyos szolgáltatás szintjén és teljesítményszintet jobb kihasználása érdekében.
 - Részletekbe menően tárhatják fel a lekérdezés részleteit, és tekintse meg a szöveg- és erőforrás-használat előzményeit.
 - Hozzáférés teljesítményhangolás által végrehajtott műveletek megjelenítéséhez javaslatokat [SQL Database Advisor](sql-database-advisor.md).
 
@@ -52,9 +52,9 @@ Ha meglévő helyszíni vagy SQL-kiszolgálói virtuális gépeken futó számí
 A készleteket nagy számú, speciális felhasználási mintákkal rendelkező adatbázishoz tervezték. Az egyes adatbázisok mintáit átlagosan alacsony, és viszonylag rendszertelen időközönkénti hirtelen megugró kihasználtság jellemzi. Az SQL Database automatikusan kiértékeli az SQL Database-kiszolgálók adatbázisainak erőforrás-használati előzményeit, és felajánlja a megfelelő készletkonfigurációt az Azure Portalon. További információkért lásd: [Mikor érdemes rugalmas készletet használni?](sql-database-elastic-pool.md)
 
 ## <a name="what-happens-when-i-hit-my-maximum-dtus"></a>Mi történik, ha szeretnék elérte a maximális i?
-A teljesítményszintek arra vannak beállítva és utasítva, hogy biztosítsák az adatbázis futtatásához szükséges erőforrásokat a szolgáltatás-/teljesítményszint számára maximálisan megengedett korlátokon belül. Ha a számítási feladat eléri a processzor/adatátvitel/naplóátvitel számára beállított korlátok egyikét, az erőforrások továbbra is a maximálisan megengedett szinten állnak rendelkezésre, de a lekérések késleltetése valószínűleg megnövekszik. Ezek a korlátok nem okoznak hibákat, csak a számítási feladat elvégzésének lassulását. Egyes esetekben azonban a lassulás olyan jelentős lehet, hogy a lekérések időtúllépés miatt meghiúsulnak. Ha az egyidejű felhasználói munkamenetek/lekérések (munkaszálak) száma eléri a maximálisan engedélyezett korlátot, explicit hibaüzenetek jelennek meg. További információk a processzoron, a memórián, illetve az adat- és naplóátvitelen kívüli egyéb erőforrásokra vonatkozó korlátokkal kapcsolatban az [Azure SQL Database resource limits]( sql-database-resource-limits.md#what-happens-when-database-and-elastic-pool-resource-limits-are-reached) (Az Azure SQL Database erőforráskorlátai) cikk tartalmaz további információt.
+A teljesítményszintek arra vannak beállítva és utasítva, hogy biztosítsák az adatbázis futtatásához szükséges erőforrásokat a szolgáltatás-/teljesítményszint számára maximálisan megengedett korlátokon belül. Ha a számítási feladat eléri a processzor/adatátvitel/naplóátvitel számára beállított korlátok egyikét, az erőforrások továbbra is a maximálisan megengedett szinten állnak rendelkezésre, de a lekérések késleltetése valószínűleg megnövekszik. Ezek a korlátok nem okoznak hibákat, csak a számítási feladat elvégzésének lassulását. Egyes esetekben azonban a lassulás olyan jelentős lehet, hogy a lekérések időtúllépés miatt meghiúsulnak. Ha az egyidejű felhasználói munkamenetek/lekérések (munkaszálak) száma eléri a maximálisan engedélyezett korlátot, explicit hibaüzenetek jelennek meg. Lásd: [erőforrás-korlátozások az Azure SQL Database]( sql-database-dtu-resource-limits.md#what-happens-when-database-and-elastic-pool-resource-limits-are-reached) eltérő CPU erőforrások korlátozva információért memória, az adatok IO és a tranzakció jelentkezzen IO.
 
 ## <a name="next-steps"></a>További lépések
-* Lásd: [szolgáltatásréteg](sql-database-service-tiers.md) Dtu és edtu-k érhető el, az önálló adatbázisok és a rugalmas, valamint eltérő CPU erőforrások vonatkozó korlátozások, a memória, a adatok i/o és a tranzakciós napló i/o.
+* Lásd: [szolgáltatásréteg](sql-database-service-tiers.md) Dtu és edtu-k érhető el, az önálló adatbázisok és a rugalmas információkat, valamint eltérő CPU erőforrások használati korlátait, memória, az adatok IO és a tranzakció jelentkezzen IO.
 * A DTU-k felhasználásáról az [SQL Database lekérdezési terheléselemzőjének](sql-database-query-performance.md) leírásában talál további információt.
 * A DTU összetételének megállapításához használt OLTP számítási mintafeladat módszertanával kapcsolatos további információkat [az SQL Database mérési módszereinek áttekintése](sql-database-benchmark-overview.md) tartalmazza.

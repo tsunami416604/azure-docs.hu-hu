@@ -1,13 +1,13 @@
 ---
-title: "Az Azure CLI minták |} Microsoft Docs"
-description: "Az Azure CLI-minták"
+title: Az Azure CLI minták |} Microsoft Docs
+description: Az Azure CLI-minták
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 03/08/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: ec76e211062890b4325b5c2cb1cf186ac7b89c55
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 938e61a7ab831b6f0632d0426afe4d0f947af223
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-cli-samples-for-linux-virtual-machines"></a>A Linux virtuális gépek Azure CLI-minták
 
@@ -37,7 +37,7 @@ A következő táblázat az Azure CLI használatával létrehozott bash parancsf
 | [Hozzon létre egy virtuális gép WordPress telepítése](./../scripts/virtual-machines-linux-cli-sample-create-vm-wordpress.md?toc=%2fcli%2fazure%2ftoc.json) | Létrehoz egy virtuális gépet, és az Azure egyéni parancsprogramok futtatására szolgáló bővítmény segítségével WordPress telepítése. |
 | [A felügyelt operációsrendszer-lemez a virtuális gép létrehozása](./../scripts/virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fcli%2fmodule%2ftoc.json) | Létrehoz egy virtuális gépet egy meglévő kezelt lemez az operációs rendszer lemezeként csatolásával. |
 | [Hozzon létre egy virtuális Gépet egy pillanatképből](./../scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fcli%2fmodule%2ftoc.json) | Létrehoz egy virtuális gépet egy pillanatképből, először hoz létre egy felügyelt lemezes pillanatképből, és majd az operációs rendszer lemezeként az új kezelt lemez csatolása. |
-|**Tárterület kezelése**||
+|**Tárhely kezelése**||
 | [Felügyelt lemezes virtuális merevlemez létrehozása](../scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-vhd.md?toc=%2fcli%2fmodule%2ftoc.json) | Egy felügyelt lemezt hoz létre, egy speciális olyan operációs rendszert tartalmazó virtuális Merevlemezt vagy egy virtuális Merevlemezt adatlemez a.  |
 | [Hozzon létre egy felügyelt lemezes egy pillanatképből](../scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-snapshot.md?toc=%2fcli%2fmodule%2ftoc.json) | Felügyelt lemezes pillanatképet hoz létre. |
 | [Felügyelt lemezmásolás ugyanazon vagy másik előfizetésbe](../scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json) | Másolatot ugyanazon vagy másik előfizetés lemez felügyelt, de ugyanabban a régióban, mint a szülő kezelt lemezre. 

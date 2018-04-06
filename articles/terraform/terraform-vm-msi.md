@@ -1,88 +1,97 @@
 ---
-title: "Az Azure piactér lemezkép segítségével felügyelt szolgáltatás identitású Terraform Linux virtuális gép létrehozása"
-description: "Az erőforrások egyszerűen telepítse az Azure Managed Service identitás- és távoli állapotának felügyeleti Terraform Linux virtuális gép létrehozásához használja a Piactéri lemezképhez."
-keywords: "terraform, devops, MSI, virtuális gép, a távoli állapot, az azure"
+title: Az Azure piactér lemezkép segítségével felügyelt szolgáltatás identitású Terraform Linux virtuális gép létrehozása
+description: A Szolgáltatásidentitás felügyelt és a Távfelügyelet állapota, egyszerűen telepítse az Azure erőforrások Terraform Linux virtuális gép létrehozásához használja a Piactéri lemezképhez.
+keywords: terraform, devops, MSI, virtuális gép, a távoli állapot, az azure
 author: VaijanathB
 manager: rloutlaw
 ms.author: tarcher
 ms.date: 3/12/2018
 ms.topic: article
-ms.openlocfilehash: ce8a3e8b813bf4224a1fd77d60ec30f2f8e080a7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: db45e9fe1eb724e6404f5e83bbbe4f62ee32343d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-service-identity"></a>Az Azure piactér lemezkép segítségével felügyelt szolgáltatás identitású Terraform Linux virtuális gép létrehozása
 
-A cikkből megtudhatja, hogyan használható egy [Terraform Piactéri lemezképhez](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.terraform?tab=Overview) létrehozásához egy `Ubuntu Linux VM (16.04 LTS)` a legújabb [Terraform](https://www.terraform.io/intro/index.html) verziója telepítve, és segítségével konfigurálható: [felügyelt Szolgáltatásidentitás () MSI-fájl)](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview). Ez a rendszerkép is konfigurálja a távoli háttérkiszolgálón engedélyezése [távoli állapotának](https://www.terraform.io/docs/state/remote.html) felügyelet Terraform használatával. A Terraform Piactéri lemezképhez megkönnyíti, hogy az első lépéseiben Terraform Azure (percben), Terraform manuálisan telepíteni és konfigurálni hitelesítés nélkül. 
+Ez a cikk bemutatja, hogyan használható egy [Terraform Piactéri lemezképhez](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.terraform?tab=Overview) az Ubuntu Linux virtuális gép létrehozása (16.04 LTS) a legújabb [Terraform](https://www.terraform.io/intro/index.html) verziója telepítve, és segítségével konfigurálható: [felügyelt Identitás (MSI) szolgáltatás](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview). Ez a rendszerkép is konfigurálja a távoli háttérrendszeréhez [távoli állapot](https://www.terraform.io/docs/state/remote.html) felügyelet Terraform használatával. 
 
-Nincsenek a Terraform VM-lemezkép szoftver költségek. Csak az Azure hardver használati díjak értékelni a kiosztott virtuális gép mérete alapján kell fizetnie. A számítási díjakat további információkat itt talál a [Linux virtuális gépek árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
+A Terraform Piactéri lemezképhez egyszerűen Terraform az Azure, nem kell manuálisan telepíteni és konfigurálni Terraform első lépéseiben. 
+
+Nincsenek a Terraform VM-lemezkép szoftver költségek. Csak az Azure hardver használati díjak ellátott virtuális gép mérete alapján értékelni kell fizetnie. A számítási díjakat kapcsolatos további információkért tekintse meg a [Linux virtuális gépek díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
 ## <a name="prerequisites"></a>Előfeltételek
-Terraform Linux virtuális gép létrehozásához, Azure-előfizetéssel kell rendelkeznie. Ha még nem rendelkezik egy, lásd: [ma létrehozása az ingyenes Azure-fiókjával](https://azure.microsoft.com/free/).  
+Linux Terraform virtuális gép létrehozásához, Azure-előfizetéssel kell rendelkeznie. Ha még nem rendelkezik egy, lásd: [ma létrehozása az ingyenes Azure-fiókjával](https://azure.microsoft.com/free/).  
 
 ## <a name="create-your-terraform-virtual-machine"></a>A Terraform virtuális gép létrehozása 
 
-Az alábbiakban egy példányát a Linux Terraform virtuális gép létrehozásához szükséges lépéseket. 
+A lépések Linux Terraform virtuális gép példány létrehozásához a következők: 
 
-1. Navigáljon a [hozzon létre egy erőforrást](https://ms.portal.azure.com/#create/hub) listázása az Azure portálon.
-2. Keresse meg `Terraform` a a `Search the Marketplace` keresősáv. Válassza ki a `Terraform` sablont. Válassza ki a **létrehozása** a Terraform Részletek lap alsó jobb oldali gomb.
-![helyettesítő szöveg](media\terraformmsi.png)
-3. Az alábbi szakaszok nyújtanak bemenet minden egyes, a varázsló lépéseit (**a jobb oldali számba**) a Terraform Linux virtuális gép létrehozásához.  Az alábbiakban az egyes lépéseket konfigurálásához szükséges bemeneti adatok
+1. Az Azure-portálon lépjen a [hozzon létre egy erőforrást](https://ms.portal.azure.com/#create/hub) listázása.
 
-## <a name="details-in-create-terraform-tab"></a>A részletek Terraform lap létrehozása
+2. Az a **keresése a piactéren** keresősávban, keressen a **Terraform**. Válassza ki a **Terraform** sablont. 
 
-Az alábbiakban a részletes adatait, hozzon létre Terraform lapon kell megadni.
+3. A jobb alsó Terraform részleteket tartalmazó lapot, jelölje ki a **létrehozása** gombra.
 
-a. **Alapvető beállítások**
+    ![Terraform virtuális gép létrehozása](media\terraformmsi.png)
+
+4. A következő szakaszokban bemeneti adatokat az egyes a Terraform Linux virtuális gép létrehozása a varázsló lépéseit. A következő szakasz a bemeneti adatok, amelyek szükségesek ahhoz, hogy konfigurálja az egyes lépéseket sorolja fel.
+
+## <a name="details-on-the-create-terraform-tab"></a>A Terraform létrehozása lap részletei
+
+A következő adatokat adja meg a **létrehozása Terraform** lapon:
+
+1. **Alapvető beállítások**
     
-* **Név**: a Terraform virtuális gép nevét.
-* **Felhasználónév**: első fiók bejelentkezhet azonosítóját.
-* **Jelszó**: első fiók jelszavát (használható nyilvános SSH-kulcs jelszó helyett).
-* **Előfizetés**: Ha több előfizetéssel rendelkezik, válassza ki a amelyiken a gép létrehozását és számlázva van. Ehhez az előfizetéshez erőforrás-létrehozási jogosultsággal kell rendelkeznie.
-* **Erőforráscsoport**: hozhat létre egy új vagy meglévő csoport használata.
-* **Hely**: válassza ki a legjobban megfelelő adatközpont. Általában az adatközpont, amely rendelkezik az adatok, vagy a helynév leggyorsabb hálózati hozzáférési legközelebb.
+   * **Név**: a Terraform virtuális gép nevét.
+   * **Felhasználónév**: az első fiók bejelentkezhet azonosítóját.
+   * **Jelszó**: az első fiók jelszavát. (Használhat nyilvános SSH-kulcs jelszó helyett.)
+   * **Előfizetés**: az előfizetés, amelyre a gép létrehozását és számlázva van. Ehhez az előfizetéshez erőforrás-létrehozási jogosultsággal kell rendelkeznie.
+   * **Erőforráscsoport**: egy új vagy meglévő erőforráscsoportot.
+   * **Hely**: az adatközponthoz, amely a legjobban megfelelő. Általában az adatközpont, amelyen az adatok, vagy a másik pedig a fizikai hely leggyorsabb hálózati hozzáférési legközelebb.
 
-b. **További beállítások**
+2. **További beállítások**
 
-* Mérete: A virtuális gép mérete.
-* Virtuális gép lemeztípus: Válasszon az SSD és HDD
+   * **Méret**: a virtuális gép méretét. 
+   * **Virtuális gép lemeztípus**: SSD és HDD.
 
-c. **Összegző Terraform**
+3. **Összegző Terraform**
 
-* Győződjön meg arról, hogy az összes megadott adatok helyesek. 
+   * Győződjön meg arról, hogy az összes megadott adatok helyességét. 
 
-d. **Buy**
+4. **Buy**
 
-* A kiépítés elindításához kattintson a döntést. Hivatkozás a tranzakció feltételeit valósul meg. A virtuális gép nem rendelkezik a kiszolgáló méretét a mérete lépésben kiválasztott számítási túl a további díjakat.
+   * Válassza ki a telepítési folyamat elindításához **megvásárlása**. Hivatkozás a tranzakció feltételeit valósul meg. A virtuális gép nem rendelkezik a kiszolgáló méretét, amely a mérete lépésben kiválasztott számítási túl a további díjakat.
 
-A Terraform Virtuálisgép-lemezkép a következő lépéseket végzi el.
+A Terraform Virtuálisgép-lemezkép hajtja végre az alábbi lépéseket:
 
-* Hoz létre a virtuális gép identitása, az Ubuntu 16.04 LTS lemezképen alapuló hozzárendelt rendszer
-* Telepíti az MSI-bővítmény engedélyezéséhez OAuth-jogkivonat Azure-erőforrások adja ki a virtuális gépen
-* Az RBAC engedélyek hozzárendelése a felügyelt identitása, az erőforráscsoport tulajdonosi jogosultságok megadása
-* Létrehoz egy Terraform sablon mappát (tfTemplate)
-* Előre konfigurálja a Terraform távoli állapotát az Azure-háttérrendszerrel
+* Alapértelmezett identitás, az Ubuntu 16.04 LTS lemezkép alapján hoz létre egy virtuális Gépet.
+* Az MSI-bővítmény telepítése engedélyezéséhez OAuth-jogkivonat Azure-erőforrások adja ki a virtuális Gépet.
+* Az RBAC engedélyeket rendeli hozzá a felügyelt identitása, az erőforráscsoport tulajdonosi jogosultságok megadása.
+* Létrehoz egy Terraform sablon mappát (tfTemplate).
+* Előre konfigurálja az Azure biztonsági Terraform távoli államnak célból.
 
-## <a name="how-to-access-and-configure-linux-terraform-virtual-machine"></a>Eléréséről és Linux Terraform virtuális gép konfigurálása
+## <a name="access-and-configure-a-linux-terraform-virtual-machine"></a>Hozzáférés és a Linux Terraform virtuális gép konfigurálása
 
-A virtuális gép létrehozása után is bejelentkezik az ssh protokoll használatával. A 3. lépés a szöveg shell felületén alapjai szakaszában létrehozott fiók hitelesítő adatait használja. Windows, egy SSH-ügyfél eszköz, például letöltheti [Putty](http://www.putty.org/)
+A virtuális gép létrehozása után is bejelentkezik az ssh protokoll használatával. A 3. lépés a szöveg shell felületén "alapvető beállítások" szakaszban létrehozott fiók hitelesítő adatait használja. Windows, egy SSH-ügyfél eszköz, például letöltheti [Putty](http://www.putty.org/).
 
-Ha használta `SSH` szeretne csatlakozni a virtuális gép, hozzá kell rendelnie az egész előfizetésre közreműködői engedélyekkel szolgáltatás identitása kezeli a virtuális gépen. Közreműködő engedély segít MSI Terraform erőforrások kívül a Virtuálisgép-csoport létrehozásához használja a virtuális gépen. Ez a művelet könnyen érhet el, hogy a parancsfájl végrehajtása után. Ez a parancs ne.
+Miután SSH a virtuális géphez történő csatlakozáshoz, hozzá kell rendelnie a közreműködői engedélyekkel az egész előfizetésre hozzá felügyelt szolgáltatást a virtuális gépen. 
+
+Közreműködő engedély segít MSI Terraform erőforrások kívül a Virtuálisgép-csoport létrehozásához használja a virtuális gépen. Ez a művelet könnyen egyszer parancsfájl futtatásával érhet el. Használja az alábbi parancsot:
 
 `. ~/tfEnv.sh`
 
-Az előző parancsfájl [v 2.0 AZ CLI interaktív bejelentkezés](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#interactive-log-in) mechanizmus hitelesítéséhez az Azure-ral, és rendelje hozzá a virtuális gép felügyelt Szolgáltatásidentitás közreműködői engedélyt az egész előfizetésre. 
+Az előző parancsfájl használja a [v 2.0 AZ CLI interaktív bejelentkezés](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#interactive-log-in) mechanizmus hitelesítéséhez az Azure-ral, és rendelje hozzá a virtuális gépet felügyelt Szolgáltatásidentitás közreműködői engedélyt az egész előfizetésre. 
 
- A virtuális Gépnek legyen Terraform távoli állapotának háttér létrehozott, és engedélyezze a Terraform üzemelő példányon, remoteState.tf fájlt másolja a legfelső szintű Terraform parancsfájlok tfTemplate könyvtárból kell.  
+ A virtuális Gépnek legyen a Terraform távoli állapot háttérből. Engedélyezze a Terraform üzemelő példányon, másolja a remoteState.tf fájlt tfTemplate könyvtárból a legfelső szintű Terraform parancsfájlok.  
 
  `cp  ~/tfTemplate/remoteState.tf .`
 
- További állapot távfelügyelettel kapcsolatos [Itt](https://www.terraform.io/docs/state/remote.html). A tárelérési kulcs fel van fedve ebben a fájlban, és a forrás vezérlőbe alaposan ellenőrizni kell.  
+ Állapot távfelügyelettel kapcsolatos további információkért lásd: [ezen a lapon Terraform távoli állapotára vonatkozó](https://www.terraform.io/docs/state/remote.html). A tárelérési kulcs fel van fedve ebben a fájlban, és a forrás vezérlőbe alaposan ellenőrizni kell.  
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben megtanulta, hogyan állítható be Terraform Linux virtuális gépek Azure-on. Az alábbiakban néhány további erőforrások tudhat meg többet az Azure-on Terraform. 
+Ebben a cikkben megtanulta, hogyan állíthat be egy Terraform Linux virtuális gépet az Azure. Az alábbiakban néhány további források további tudnivalók az Azure-on Terraform: 
 
  [A Microsoft.com Terraform Hub](https://docs.microsoft.com/azure/terraform/)  
  [Terraform Azure-szolgáltató dokumentáció](http://aka.ms/terraform)  
