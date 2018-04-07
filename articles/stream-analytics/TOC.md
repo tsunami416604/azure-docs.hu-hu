@@ -94,7 +94,7 @@
 ## [Blog](http://blogs.msdn.com/b/streamanalytics/)
 ## [Videók](https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest)
 ## [Visszajelzési fórum](http://feedback.azure.com/forums/270577-azure-stream-analytics)
-## [Fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+## [Fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/stream-analytics/)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Kibocsátási megjegyzések](stream-analytics-release-notes.md)
