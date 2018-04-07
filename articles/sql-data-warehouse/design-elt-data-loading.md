@@ -10,11 +10,11 @@ ms.component: design
 ms.date: 03/28/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: c27ad843c9ee9beed871dcc03254cb1266f6ebe2
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 18d5f4131718021de82328719e0538db759dde9c
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="designing-extract-load-and-transform-elt-for-azure-sql-data-warehouse"></a>Kinyerési, betöltés és átalakítás (ELT) az Azure SQL Data Warehouse tervezése
 
@@ -47,8 +47,9 @@ A PolyBase olyan technológia, amely hozzáfér az adatok a T-SQL nyelv kereszt�
 Adatok betöltése a PolyBase, ezek betöltését beállításokat használhatja.
 
 - [PolyBase-T-SQL](load-data-from-azure-blob-storage-using-polybase.md) jól működik, ha az adatok Azure Blob-tároló vagy az Azure Data Lake Store van. A betöltés folyamat a legtöbb ellenőrzést ad meg, de rendelkeznie kell a külső objektumok adhatók meg. A többi módszer határozza meg ezeket az objektumokat a háttérben, a forrástábla leképezése céltábla.  Levezényelni a T-SQL terhelés, az Azure Data Factory, SSIS vagy az Azure functions is használhat. 
-- [PolyBase az SSIS](sql-data-warehouse-load-from-sql-server-with-integration-services.md) jól működik, ha a forrásadatok az SQL Server, SQL Server helyi, illetve a felhőben van-e. SSIS cél tábla leképezéseket a forrás definiálja, és is koordinálja a terhelés. Ha már rendelkezik SSIS-csomagok, módosíthatja a csomagokat az új adatok adatraktár cél együttműködni. 
-- [Azure Data Factory (ADF) PolyBase](sql-data-warehouse-load-with-data-factory.md) egy másik eszköz a vezénylési.  Meghatározza egy folyamatot, és feladatok ütemezi. 
+- [PolyBase az SSIS](/sql/integration-services/load-data-to-sql-data-warehouse) jól működik, ha a forrásadatok az SQL Server, SQL Server helyi, illetve a felhőben van-e. SSIS cél tábla leképezéseket a forrás definiálja, és is koordinálja a terhelés. Ha már rendelkezik SSIS-csomagok, módosíthatja a csomagokat az új adatok adatraktár cél együttműködni. 
+- [Azure Data Factory (ADF) PolyBase](sql-data-warehouse-load-with-data-factory.md) egy másik eszköz a vezénylési.  Meghatározza egy folyamatot, és feladatok ütemezi. ADF JSON-adatok elemezni és betölteni azt az SQL Data Warehouse használhatja.
+- [PolyBase az Azure DataBricks](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) továbbítja az adatokat az Azure Data Lake Store az SQL Data Warehouse. Azure DataBricks segítségével JSON-adatok elemzése és az SQL Data Warehouse az adatok betöltésére. 
 
 ### <a name="polybase-external-file-formats"></a>A PolyBase külső fájlformátum
 

@@ -1,6 +1,6 @@
 ---
-title: "Hogyan használható az Azure Storage Table szolgáltatás vagy az Azure Cosmos DB tábla API php-ből |} Microsoft Docs"
-description: "Használata php-ből a Table szolgáltatás API létrehozása, és törölni kívánja a táblázatot, és helyezze, törlése, és a tábla lekérdezése."
+title: Hogyan használható az Azure Storage Table szolgáltatás vagy az Azure Cosmos DB tábla API php-ből |} Microsoft Docs
+description: Használata php-ből a Table szolgáltatás API létrehozása, és törölni kívánja a táblázatot, és helyezze, törlése, és a tábla lekérdezése.
 services: cosmos-db
 documentationcenter: php
 author: mimig1
@@ -14,11 +14,11 @@ ms.devlang: php
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: mimig
-ms.openlocfilehash: 64ce8206b4b0ab3c831417d6e478f9c059188345
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 69fa1f8f9717d1ea4ca5081a45317cff8d752809
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-use-azure-storage-table-service-or-cosmos-db-table-api-from-php"></a>Hogyan használható az Azure Storage Table szolgáltatás vagy Cosmos DB tábla API php-ből
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -435,9 +435,6 @@ A **TableRestProxy -> kötegelt** módszer lehetővé teszi egyetlen kérelem t�
 * **addDeleteEntity** (hozzáad egy deleteEntity művelet)
 
 A következő példa bemutatja, hogyan hajthat végre **insertEntity** és **deleteEntity** egyetlen kérelem műveletei. 
-
-> [!NOTE]
-> Azure Cosmos DB egyelőre nem támogatják a kötegműveletek táblákhoz. 
 
 ```php
 require_once 'vendor/autoload.php';

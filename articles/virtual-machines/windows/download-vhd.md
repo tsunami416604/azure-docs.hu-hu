@@ -1,13 +1,13 @@
 ---
-title: "Töltse le a virtuális merevlemez Windows Azure-ból |} Microsoft Docs"
-description: "Töltse le az Azure portál használatával Windows virtuális Merevlemezt."
+title: Töltse le a virtuális merevlemez Windows Azure-ból |} Microsoft Docs
+description: Töltse le az Azure portál használatával Windows virtuális Merevlemezt.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: davidmu1
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: davidmu
-ms.openlocfilehash: d8bf89a4b7c2a158302f9ba09a182a3d8d062adc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c9a75890af86a5342debe1d6fdb18f5e9bd2b227
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Töltse le a virtuális merevlemez Windows Azure-ból
 
@@ -74,7 +74,7 @@ A VHD-fájl letöltésére, szeretne létrehozni egy [közös hozzáférésű jo
 
     ![Kattintson a Mentés gombra a böngészőben](./media/download-vhd/export-save.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan [VHD-fájl feltöltése az Azure-bA](upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 - [Hozzon létre felügyelt lemezek tárfiókokban nem felügyelt lemezekből](attach-disk-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

@@ -1,19 +1,19 @@
 ---
-title: "Az Azure SQL adatbázis Azure esettanulmány - Umbraco |} Microsoft Docs"
-description: "Megtudhatja, hogyan Umbraco használ történő gyors kiépítésére SQL-adatbázis és a bérlők a felhőben akár több ezer méretezési szolgáltatásaival kapcsolatban"
+title: Az Azure SQL adatbázis Azure esettanulmány - Umbraco |} Microsoft Docs
+description: Megtudhatja, hogyan Umbraco használ történő gyors kiépítésére SQL-adatbázis és a bérlők a felhőben akár több ezer méretezési szolgáltatásaival kapcsolatban
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: reference
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: af59c22279eeee4b3e5d699da4c98094df815c1f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1079adb6ef8a206506823fdee6721aabbf857b4d
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="umbraco-uses-azure-sql-database-to-quickly-provision-and-scale-services-for-thousands-of-tenants-in-the-cloud"></a>Umbraco használja az Azure SQL Database gyors kiépítése és a skála szolgáltatások a felhőben bérlők akár több ezer
 ![Umbraco embléma](./media/sql-database-implementation-umbraco/umbracologo.png)

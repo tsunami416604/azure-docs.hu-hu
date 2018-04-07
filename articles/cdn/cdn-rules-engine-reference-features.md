@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-ms.openlocfilehash: 9f1a9343a657e076e94f6aa59fd03128ef488ac9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 748cecbdf4c59469c9a56da03631dd04a819043b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Az Azure CDN szabályok motor-funkciók
 Ez a cikk részletes leírását tartalmazza az elérhető szolgáltatások az Azure Content Delivery Network (CDN) [szabálymotor](cdn-rules-engine.md).
@@ -28,7 +28,6 @@ A szabály harmadik része a szolgáltatást. A szolgáltatás feltételek egyez
 ## <a name="access-features"></a>Hozzáférési funkciókat
 
 Ezek a szolgáltatások célja, hogy a tartalomhoz való hozzáférés szabályozása.
-
 
 Name (Név) | Cél
 -----|--------
@@ -312,7 +311,7 @@ Eltávolítás| Ez a beállítás biztosítja, hogy egy `Cache-Control` fejléc 
 
 Kapcsolatos információkat:
 
-- Adjon meg egy vagy több lekérdezési karakterlánc paraméter neve. Deliminate minden paraméter egy szóköz nevével.
+- Adjon meg egy vagy több lekérdezési karakterlánc paraméter neve, és minden paraméternév külön az egy szóköz.
 - Ez a szolgáltatás határozza meg, hogy lekérdezési karakterlánc paraméterei vannak, illetve tiltani szeretné a gyorsítótár-kulcs. További információ az egyes lehetőségek az alábbi táblázatban.
 
 Típus|Leírás
@@ -325,6 +324,9 @@ Típus|Leírás
 A szabályok motor testreszabása, amelyben lekérdezési karakterláncok gyorsítótárazása megvalósítása módon teszi lehetővé. Megadhatja például, hogy csak az egyes helyek vagy fájltípusok lekérdezési karakterláncok gyorsítótárazása történik.
 
 A "no-cache" lekérdezési karakterláncot a lekérdezés-karakterlánc-gyorsítótár oldalon gyorsítótárazásának duplikálásához hozzon létre egy szabályt, amely egy URL-cím lekérdezés helyettesítő egyezés feltételt, valamint a Mellőzés gyorsítótár szolgáltatás tartalmaz. Állítsa be az URL-cím lekérdezés helyettesítő egyezés feltétel csillagot (*).
+
+>[!IMPORTANT] 
+> Token engedélyezési bármilyen útvonalat ehhez a fiókhoz engedélyezett, ha a standard-gyorsítótár üzemmódban az egyetlen mód a lekérdezési karakterláncok gyorsítótárazása használható. További információkért lásd: [Az Azure CDN gyorsítótárazási viselkedésének vezérlése lekérdezési karakterláncokkal](cdn-query-string-premium.md).
 
 #### <a name="sample-scenarios"></a>Mintaforgatókönyvek
 
@@ -1054,10 +1056,12 @@ Letiltva| Visszaállítja az alapértelmezett viselkedés. Az alapértelmezés l
 ### <a name="token-auth-denial-code"></a>Jogkivonat hitelesítési Megtagadás kódot
 **Cél:** határozza meg, amikor a jogkivonat-alapú hitelesítés miatt megtagadva a kérés egy felhasználó számára visszaadott válasz típusú.
 
-A rendelkezésre álló válaszkódot alább láthatók.
+Jogkivonat hitelesítési Megtagadás kód nem használható egy mindig egyezik a feltétellel. Ehelyett használja a **egyéni Megtagadás kezelése** szakasz a **jogkivonat hitelesítési** oldalán a **kezelése** portal. További információkért lásd: [tokent használó hitelesítés biztonságossá tétele az Azure CDN eszközök](cdn-token-auth.md).
+
+A rendelkezésre álló válaszkódot a következő táblázatban láthatók.
 
 Válaszkód|Válasz neve|Leírás
-----------------|-----------|--------
+-------------|-------------|--------
 301|Végleg áthelyezése|Ez az állapot kód jogosulatlan felhasználók hely fejlécben megadott URL-címre irányítja át.
 302|Sikeres keresés|Ez az állapot kód jogosulatlan felhasználók hely fejlécben megadott URL-címre irányítja át. Ezzel az állapotkóddal az iparági szabványos módjáról irányítja át a felhasználókat a rendszer.
 307|Temporary Redirect|Ez az állapot kód jogosulatlan felhasználók hely fejlécben megadott URL-címre irányítja át.

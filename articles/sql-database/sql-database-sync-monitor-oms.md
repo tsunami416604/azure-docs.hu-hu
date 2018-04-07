@@ -1,21 +1,21 @@
 ---
-title: Azure SQL Data szinkronban (előzetes verzió) OMS Naplóelemzési figyelése |} Microsoft Docs
-description: Megtudhatja, hogyan figyelheti az Azure SQL adatszinkronizálás (előzetes verzió) OMS naplóelemzési használatával
+title: Az Azure SQL Data szinkronban (előzetes verzió) Naplóelemzési figyelése |} Microsoft Docs
+description: Log Analytics segítségével megtudhatja, hogyan figyelése Azure SQL adatszinkronizálás (előzetes verzió)
 services: sql-database
-ms.date: 11/07/2017
+ms.date: 04/01/2018
 ms.topic: article
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: c106d5bbea118c9b78cbccee187b8eb5c347f232
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 1b22b4ddf9fa4880b814efc3f8c3f1fc6ec7d141
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="monitor-sql-data-sync-preview-with-oms-log-analytics"></a>A figyelő SQL adatszinkronizálás (előzetes verzió) az OMS szolgáltatáshoz 
+# <a name="monitor-sql-data-sync-preview-with-log-analytics"></a>A figyelő SQL adatok szinkronban (előzetes verzió) Naplóelemzési 
 
 Ellenőrizze az SQL adatszinkronizálás tevékenységnapló, és a hibák és figyelmeztetések észleléséhez, korábban kellett SQL adatszinkronizálás manuálisan ellenőrizze az Azure portálon, vagy PowerShell vagy a REST API-t használja. Kövesse a cikkben egy egyéni megoldás, amely javítja az adatok szinkronizálása figyelésének lehetőségével konfigurálásához. Ez a megoldás a forgatókönyvnek megfelelően testre.
 
@@ -23,27 +23,27 @@ Az SQL Data Sync áttekintéséhez tekintse meg a [több felhőalapú és helysz
 
 ## <a name="monitoring-dashboard-for-all-your-sync-groups"></a>A szinkronizálási csoportok a figyelési irányítópult 
 
-Már nincs szüksége a nézze át az egyes szinkronizálási csoportok külön-külön és azokban megkereshetik a problémák a naplókat. Egy egyéni OMS (Operations Management Suite) nézet használatával figyelheti a szinkronizálási csoportok bármelyik az előfizetések egy helyen. Ez a nézet a fontos információkat SQL adatszinkronizálás ügyfelek hibaelhárításra használható.
+Már nincs szüksége a nézze át az egyes szinkronizálási csoportok külön-külön és azokban megkereshetik a problémák a naplókat. Egy egyéni Naplóelemzési nézet használatával figyelheti a szinkronizálási csoportok bármelyik az előfizetések egy helyen. Ez a nézet a fontos információkat SQL adatszinkronizálás ügyfelek hibaelhárításra használható.
 
 ![Adatok szinkronizálása figyelési irányítópult](media/sql-database-sync-monitor-oms/sync-monitoring-dashboard.png)
 
 ## <a name="automated-email-notifications"></a>Az automatikus E-mail értesítések
 
-Már nincs szüksége a részletek a naplóban manuálisan az Azure portál vagy PowerShell vagy a REST API használatával. A [OMS Naplóelemzési](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), hozhat létre riasztásokat, amelyek közvetlenül Ugrás a hiba akkor fordul elő, amikor igénylő személyek e-mail címét.
+Már nincs szüksége a részletek a naplóban manuálisan az Azure portál vagy PowerShell vagy a REST API használatával. A [Naplóelemzési](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), hozhat létre riasztásokat, amelyek közvetlenül Ugrás a hiba akkor fordul elő, amikor igénylő személyek e-mail címét.
 
 ![Adatok szinkronizálása értesítő e-mailek](media/sql-database-sync-monitor-oms/sync-email-notifications.png)
 
 ## <a name="how-do-you-set-up-these-monitoring-features"></a>Hogyan állíthatja be ezeket a figyelési szolgáltatásokat? 
 
-A felügyeleti megoldás az SQL adatszinkronizálás kevesebb, mint egy óra alatt a következő művelet végrehajtásával egyéni OMS megvalósításához:
+A felügyeleti megoldás az SQL adatszinkronizálás kevesebb, mint egy óra alatt a következő művelet végrehajtásával egyéni Naplóelemzési megvalósításához:
 
 Kell konfigurálnia a három összetevővel:
 
--   Naplóadatok adatszinkronizálás SQL hírcsatornát, hogy OMS PowerShell runbook.
+-   Naplóadatok adatszinkronizálás SQL hírcsatornát, hogy Naplóelemzési PowerShell runbook.
 
--   Értesítő e-mailek OMS szolgáltatáshoz értesítést.
+-   A Naplóelemzési riasztások értesítő e-mailek.
 
--   Az OMS nézetben a figyelésre.
+-   A napló Analytics nézet figyelésre.
 
 ### <a name="samples-to-download"></a>Töltse le a minták
 
@@ -51,7 +51,7 @@ Töltse le a következő két minták:
 
 -   [Adatok szinkronizálási napló PowerShell-forgatókönyv](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogPowerShellRunbook.ps1)
 
--   [Adatok szinkronizálási napló OMS megtekintése](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
+-   [Adatok szinkronizálási napló Analytics megtekintése](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
 ### <a name="prerequisites"></a>Előfeltételek
 
@@ -59,11 +59,11 @@ Ellenőrizze, hogy meg van adva a következő műveleteket:
 
 -   Egy Azure Automation-fiók
 
--   A Naplóelemzési kapcsolódó OMS-munkaterület
+-   Log Analytics-munkaterület
 
 ## <a name="powershell-runbook-to-get-sql-data-sync-log"></a>PowerShell-forgatókönyv lekérni az SQL-adatok szinkronizálása naplója 
 
-Húzza az SQL adatszinkronizálás naplóadatokat, és elküldi a OMS található Azure Automation PowerShell-forgatókönyv használatával. Egy minta parancsfájlt része. Előfeltételként szükség van egy Azure Automation-fiókra. Akkor szükséges, hozzon létre egy runbookot, és az ütemezés futtatásához. 
+Húzza az SQL adatszinkronizálás naplóadatokat, és elküldi a Naplóelemzési található Azure Automation PowerShell-forgatókönyv használatával. Egy minta parancsfájlt része. Előfeltételként szükség van egy Azure Automation-fiókra. Akkor szükséges, hozzon létre egy runbookot, és az ütemezés futtatásához. 
 
 ### <a name="create-a-runbook"></a>Runbook létrehozása
 
@@ -121,9 +121,9 @@ A runbook ütemezése:
 
 Figyelheti, hogy a várt módon fut az automation **áttekintése** az automation-fiókban található a **Projekt statisztika** meg a **figyelés**. Ez a nézet egyszerűen megtekinthetők az irányítópulton rögzítheti. A runbook megjelenítése "Befejezettként" sikeres kísérletei és futtatása nem sikerült megjeleníteni "Sikertelen".
 
-## <a name="create-an-oms-log-reader-alert-for-email-notifications"></a>Értesítő e-mailek OMS napló olvasó riasztás létrehozása
+## <a name="create-a-log-analytics-reader-alert-for-email-notifications"></a>Riasztás létrehozása, a napló Analytics olvasó értesítő e-mailek
 
-Riasztás létrehozása, amely OMS Naplóelemzési használ, a következő lehetőségekkel. Előfeltételként kell egy OMS-munkaterület kapcsolódó Naplóelemzési rendelkezik.
+Riasztás létrehozása, amely használja a Naplóelemzési, tegye a következőket. Előfeltételként szüksége van a Naplóelemzési munkaterület kapcsolódó Naplóelemzési.
 
 1.  Válassza ki az OMS-portálon **naplófájl-keresési**.
 
@@ -179,7 +179,7 @@ A legtöbb esetben ez a megoldás felszabadul.
 
 **Azure Automation szolgáltatásbeli:** előfordulhat, hogy az Azure Automation-fiók, attól függően, hogy a használati költségeit. A feladat-futásidő havonta az első 500 perc szabadon. A legtöbb esetben ez a megoldás várható havi 500 percnél kevesebb használja. Díjak elkerülése érdekében a runbook futtatását, hogy legalább két órás ütemezni. További információk: [Automation árképzési](https://azure.microsoft.com/pricing/details/automation/).
 
-**OMS Naplóelemzési:** ingyenes OMS attól függően, hogy miképpen lehet. Ingyenes szint 500 MB naponkénti feldolgozott adatokat tartalmazza. A legtöbb esetben ez a megoldás várható betöltési naponta 500 MB-nál kevesebb. A használati csökkentéséhez a csak hiba szűrés használatához a runbookokban tartalmazott. Ha több mint 500 MB naponkénti használ, váltson annak elkerülése érdekében a korlátozás elérésekor leállítása Analytics fizetős csomagra. További információk: [Naplóelemzési árképzési](https://azure.microsoft.com/pricing/details/log-analytics/).
+**Naplóelemzési:** ingyenes Naplóelemzési attól függően, hogy a használati lehet. Ingyenes szint 500 MB naponkénti feldolgozott adatokat tartalmazza. A legtöbb esetben ez a megoldás várható betöltési naponta 500 MB-nál kevesebb. A használati csökkentéséhez a csak hiba szűrés használatához a runbookokban tartalmazott. Ha több mint 500 MB naponkénti használ, váltson annak elkerülése érdekében a korlátozás elérésekor leállítása Analytics fizetős csomagra. További információk: [Naplóelemzési árképzési](https://azure.microsoft.com/pricing/details/log-analytics/).
 
 ## <a name="code-samples"></a>Kódminták
 
@@ -187,7 +187,7 @@ Töltse le a következő helyekről cikkben leírt mintakódok:
 
 -   [Adatok szinkronizálási napló PowerShell-forgatókönyv](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogPowerShellRunbook.ps1)
 
--   [Adatok szinkronizálási napló OMS megtekintése](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
+-   [Adatok szinkronizálási napló Analytics megtekintése](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
 ## <a name="next-steps"></a>További lépések
 További információ az SQL Data Syncről:

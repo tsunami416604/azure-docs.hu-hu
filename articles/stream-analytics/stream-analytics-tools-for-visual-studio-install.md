@@ -1,34 +1,29 @@
 ---
-title: A Visual Studio Azure Stream Analytics eszközök telepítési utasításait |} Microsoft Docs
-description: A Visual Studio Azure Stream Analytics eszközök telepítési útmutatója
-keywords: A Visual studio
-documentationcenter: ''
+title: A Visual Studio Azure Stream Analytics eszközök telepítője
+description: Ez a cikk ismerteti a telepítési követelmények és az Azure Stream Analytics-eszközök Visual Studio beállításának módjáról.
 services: stream-analytics
 author: su-jie
-manager: ''
-ms.assetid: a473ea0a-3eaa-4e5b-aaa1-fec7e9069f20
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 9/19/2017
 ms.author: sujie
-ms.openlocfilehash: fe1f2158439b2c04e8232eb6fe3c9faf79641ffe
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 09/19/2017
+ms.openlocfilehash: 511658fc0e2b480987455007dac5f55cd7850feb
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="installation-instructions-for-stream-analytics-tools-for-visual-studio"></a>A Stream Analytics-eszközök Visual Studio telepítési útmutatója
-Azure Stream Analytics-eszközök mostantól támogatja a Visual Studio 2017, 2015 és 2013. Ebben a dokumentumban bemutatása után hogyan kell telepíteni, és távolítsa el az eszközöket.
+# <a name="install-azure-stream-analytics-tools-for-visual-studio"></a>Telepítheti az Azure Stream Analytics tools for Visual Studio
+Azure Stream Analytics-eszközök mostantól támogatja a Visual Studio 2017, 2015 és 2013. Ez a dokumentum ismerteti, hogyan kell telepíteni, és távolítsa el az eszközök.
 
-Ismerje meg, hogyan használható [Stream Analytics tools for Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
+Az eszközök további információkért lásd: [Stream Analytics tools for Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
 
 ## <a name="install"></a>Telepítés
 ### <a name="visual-studio-2017"></a>Visual Studio 2017
 * Töltse le [(15.3 vagy újabb) a Visual Studio 2017](https://www.visualstudio.com/). Enterprise (Ultimate/prémium), Professional és Community Edition kiadásai támogatottak. Express kiadás nem támogatott. 
-* Stream Analytics eszközök részét képezik a **Azure fejlesztési** és **adattárolás és feldolgozási** a Visual Studio 2017 munkaterhelések. Engedélyezi vagy az egyik ilyen két terhelések a Visual Studio-telepítés részeként.
+* Stream Analytics eszközök részét képezik a **Azure fejlesztési** és **adattárolás és feldolgozási** a Visual Studio 2017 munkaterhelések. A Visual Studio telepítésének részeként engedélyezze a két számítási feladat egyikét.
 
 Engedélyezze a **adattárolás és feldolgozási** munkaterhelés látható módon:
 

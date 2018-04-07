@@ -1,24 +1,19 @@
 ---
-title: Használja ki a lekérdezés párhuzamos folyamatkezelést biztosítja az Azure Stream Analytics |} Microsoft Docs
-description: Ismerje meg a Stream Analytics-feladatok méretezése bemeneti partíciók konfigurálása, a lekérdezés definíciója hangolása és adatfolyam-egységek feladat beállítása.
-keywords: adatfolyam, az adatfeldolgozás streaming hangolására analytics
+title: Azure Stream Analytics lekérdezési párhuzamos folyamatkezelést biztosítja, és a skála használata
+description: Ez a cikk ismerteti a Stream Analytics-feladatok méretezése bemeneti partíciók konfigurálása, a lekérdezés definíciója hangolása és adatfolyam-egységek feladat beállítása.
 services: stream-analytics
-documentationcenter: ''
 author: JSeb225
-manager: ryanw
-ms.assetid: 7e857ddb-71dd-4537-b7ab-4524335d7b35
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 06/22/2017
 ms.author: jeanb
-ms.openlocfilehash: eb19a9b4e92e7007f64ae7b593663be6a47a7a4b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 06/22/2017
+ms.openlocfilehash: 949806379891dbf5a7c145a14cae532104f51497
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Használja ki az Azure Stream Analytics lekérdezési párhuzamos folyamatkezelést biztosítja
 Ez a cikk bemutatja, hogyan Azure Stream Analytics párhuzamos folyamatkezelést biztosítja előnyeit. Megismerheti a Stream Analytics-feladatok méretezése bemeneti partíciók beállításával, és az elemzés Lekérdezésdefiníció hangolása.
@@ -50,7 +45,7 @@ A Stream Analytics használata, kihasználhatja a kimenetek a particionálás:
 -   Az IoT-központ (kell megadni, a partíciós kulcs explicit módon)
 -   Service Bus
 
-Power BI, az SQL és az SQL-adatraktár kimenetek nem támogatják a particionálást. Azonban Ön is továbbra is partícióazonosító a bemeneti leírtak [Ez a szakasz](#multi-step-query-with-a-grouping-key) 
+Power BI, az SQL és az SQL-adatraktár kimenetek nem támogatják a particionálást. Azonban Ön is továbbra is partícióazonosító a bemeneti leírtak [Ez a szakasz](#multi-step-query-with-different-partition-by-values) 
 
 Partíciók kapcsolatos további információkért tekintse meg a következő cikkeket:
 
@@ -65,7 +60,7 @@ Egy *embarrassingly párhuzamos* az Azure Stream Analytics tudunk legjobban mér
 
 2. Ha az adatokat a bemeneti oldalon elrendezését, meg kell győződnie arról, hogy a lekérdezés particionálva van. Ehhez szükséges, hogy használja **PARTITION BY** az összes lépését. Több lépést használhat, de mindegyikük ugyanazzal a kulccsal kell particionálható. Jelenleg a particionálási key értékre kell állítani **PartitionId** ahhoz, hogy a teljes párhuzamos feladat.  
 
-3. A kimenet a legtöbb kihasználhatják a particionálás, azonban egy kimeneti típus használata, amely nem támogatja a particionálás a feladat nem fogja teljesen párhuzamos. Tekintse meg a [szakasz kimeneti](#Outputs) további részleteket.
+3. A kimenet a legtöbb kihasználhatják a particionálás, azonban egy kimeneti típus használata, amely nem támogatja a particionálás a feladat nem fogja teljesen párhuzamos. Tekintse meg a [szakasz kimeneti](#outputs) további részleteket.
 
 4. A bemeneti partíciók számának egyenlőnek kell lennie a kimeneti partíciók számát. BLOB storage-kimenet jelenleg nem támogatja a partíciókat. Azonban ez nem probléma, mert a particionálási sémát a felsőbb rétegbeli lekérdezés örökli. Az alábbiakban néhány lehetséges, amelyek lehetővé teszik a teljes párhuzamos feladat partíció érték:  
 
@@ -220,8 +215,8 @@ Ez a lekérdezés 24 SUS-t is méretezhető.
 
 
 
-## <a name="get-help"></a>Segítség kérése
-Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+## <a name="get-help"></a>Segítségkérés
+Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>További lépések
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)

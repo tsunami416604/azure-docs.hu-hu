@@ -1,13 +1,13 @@
 ---
-title: "Létrehozása és kezelése az Azure virtuális gép Java használatával |} Microsoft Docs"
-description: "Java és az Azure Resource Manager segítségével telepítheti a virtuális gép és annak támogató erőforrásokat."
+title: Létrehozása és kezelése az Azure virtuális gép Java használatával |} Microsoft Docs
+description: Java és az Azure Resource Manager segítségével telepítheti a virtuális gép és annak támogató erőforrásokat.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: davidmu1
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: davidmu
-ms.openlocfilehash: b970b7a5e1db6d8580ede9699d4776a79e03c98f
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: da8f8b0e84a51683bd4f631832e1f319f3a9bbb0
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Létrehozása és kezelése Windows-alapú virtuális gépek az Azure-ban Java
 
@@ -133,7 +133,7 @@ Ez a lépés megkezdése előtt győződjön meg arról, hogy rendelkezik-e a ho
     graphURL=https://graph.windows.net/
     ```
 
-    Cserélje le  **&lt;előfizetés-azonosító&gt;**  az előfizetés-azonosítóval rendelkező  **&lt;alkalmazásazonosító&gt;**  való a Active Directory-azonosítót,  **&lt;hitelesítési kulcs&gt;**  az alkalmazás kulccsal és  **&lt;bérlőazonosító&gt;**  a bérlő azonosítója.
+    Cserélje le **&lt;előfizetés-azonosító&gt;** az előfizetés-azonosítóval rendelkező **&lt;alkalmazásazonosító&gt;** való a Active Directory-azonosítót, **&lt;hitelesítési kulcs&gt;** az alkalmazás kulccsal és **&lt;bérlőazonosító&gt;** a bérlő azonosítója.
 
 2. Mentse a fájlt.
 3. A fájl teljes elérési útját a hitelesítés a rendszerhéj AZURE_AUTH_LOCATION nevű környezeti változó értéke.
@@ -320,7 +320,7 @@ azure.virtualMachines.define("myVM")
 
 ## <a name="perform-management-tasks"></a>Felügyeleti feladatok végrehajtása
 
-A virtuális gépek életciklusa folyamán érdemes lehet indítása, leállítása vagy törlése a virtuális gépek például a felügyeleti feladatok futtatásához. Emellett érdemes bonyolult vagy ismétlődő feladatok automatizálásához kódot létrehozni.
+A virtuális gépek életciklusa során szükség lehet felügyeleti feladatok futtatására, például a virtuális gép indítására, leállítására vagy törlésére. Emellett érdemes bonyolult vagy ismétlődő feladatok automatizálásához kódot létrehozni.
 
 Ha semmit a a virtuális Géphez van szüksége, kell egy példányát. Ez a kód hozzáadása a try blokk a fő metódus:
 
@@ -470,6 +470,6 @@ azure.resourceGroups().deleteByName("myResourceGroup");
 2. Ahhoz, hogy nyomja le az ENTER **Enter** erőforrások törlése elindításához eltarthat néhány percig az Azure-portálon az erőforrások létrehozásának ellenőrzése. Kattintson a telepítés állapota a telepítéssel kapcsolatos információk megjelenítéséhez.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a [Azure Java-könyvtárakban](https://docs.microsoft.com/java/azure/java-sdk-azure-overview).
 

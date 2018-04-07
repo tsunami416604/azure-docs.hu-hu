@@ -1,11 +1,11 @@
 ---
-title: "Hozzon létre egy teljes körű Linux környezetet az Azure CLI 1.0 |} Microsoft Docs"
-description: "Tárolási, Linux virtuális gép, egy virtuális hálózati és alhálózati, egy adott terheléselosztóhoz, egy olyan hálózati adapter, egy nyilvános IP-cím és a hálózati biztonsági csoport, az Azure CLI 1.0 használatával alapoktól összes létrehozása."
+title: Hozzon létre egy teljes körű Linux környezetet az Azure CLI 1.0 |} Microsoft Docs
+description: Tárolási, Linux virtuális gép, egy virtuális hálózati és alhálózati, egy adott terheléselosztóhoz, egy olyan hálózati adapter, egy nyilvános IP-cím és a hálózati biztonsági csoport, az Azure CLI 1.0 használatával alapoktól összes létrehozása.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 4ba4060b-ce95-4747-a735-1d7c68597a1a
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: iainfou
-ms.openlocfilehash: 201ccd523e49d638ace50fbc0ffdceb705b35473
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4a43e138d3497e01fe9e0e5c55a4a66adac767c6
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-complete-linux-environment-with-the-azure-cli-10"></a>Hozzon létre egy teljes körű Linux környezetet az Azure CLI 1.0
 Ebben a cikkben azt a terheléselosztó és a virtuális gépek, amelyek hasznosak a fejlesztési és egyszerű számítástechnikai két egyszerű hálózat felépítéséhez. Azt ismerteti a folyamatot, a parancs által parancs, amíg a két üzemel, biztonságos Linux virtuális gép, amelyre lehet csatlakoztatni bárhol az interneten. Majd továbbléphet összetettebb hálózatokhoz és a környezetben.
@@ -53,7 +53,7 @@ azure config mode arm
 
 A következő példákban cserélje le a saját értékeit példa paraméterek nevei. Példa paraméter nevek a következők `myResourceGroup`, `mystorageaccount`, és `myVM`.
 
-Az erőforráscsoport létrehozásához. Az alábbi példa létrehoz egy erőforráscsoportot `myResourceGroup` a a `westeurope` helye:
+Hozza létre az erőforráscsoportot. Az alábbi példa létrehoz egy erőforráscsoportot `myResourceGroup` a a `westeurope` helye:
 
 ```azurecli
 azure group create -n myResourceGroup -l westeurope
@@ -382,7 +382,7 @@ data:    vhds  Off            Sun, 27 Sep 2015 19:03:54 GMT
 info:    storage container list command OK
 ```
 
-## <a name="create-a-virtual-network-and-subnet"></a>Hozzon létre egy virtuális hálózat és alhálózat
+## <a name="create-a-virtual-network-and-subnet"></a>Virtuális hálózat és alhálózat létrehozása
 Ezután fog létre kell hoznia az Azure-ban és a virtuális gépeket hozhat létre alhálózat futtató virtuális hálózaton. Az alábbi példa létrehoz egy virtuális hálózatot nevű `myVnet` rendelkező a `192.168.0.0/16` címelőtag:
 
 ```azurecli
@@ -795,7 +795,7 @@ data:    Backend address pool id         : /subscriptions/guid/resourceGroups/my
 info:    network lb rule create command OK
 ```
 
-## <a name="create-a-load-balancer-health-probe"></a>A health terheléselosztói mintavétel létrehozása
+## <a name="create-a-load-balancer-health-probe"></a>Terheléselosztó állapotmintájának létrehozása
 A health mintavételi rendszeresen ellenőrzi a ellenőrizze, hogy most működik és válaszol a kérelmekre, meghatározott a terheléselosztó mögötti virtuális gépeken. Ha nem, most eltávolítja a biztonsági művelet, győződjön meg arról, hogy felhasználók nem irányítja őket. Megadhatja a állapotmintáihoz, valamint időközök és az időkorlát-értékei egyéni keres. Állapotteljesítmény kapcsolatos további információkért lásd: [terheléselosztó vizsgálat](../../load-balancer/load-balancer-custom-probe-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Az alábbi példa létrehoz egy TCP állapotfigyelő megadott elnevezett `myHealthProbe`:
 
 ```azurecli
@@ -1287,5 +1287,5 @@ azure group deployment create --resource-group myNewResourceGroup \
 
 Előfordulhat, hogy szeretné olvasni [felügyeleticsomag-sablonok telepítésével kapcsolatos további](../../resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). További tudnivalók Növekményesen környezetek frissítése, használja a paraméterek fájlját, és egyetlen tárolási helyen sablonok elérésére.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most már készen áll a több hálózati összetevőkkel és virtuális gépek használatának megkezdése előtt. Ez a minta-környezet segítségével bevezetett alapösszetevőket itt használatával, az alkalmazás létrehozása.

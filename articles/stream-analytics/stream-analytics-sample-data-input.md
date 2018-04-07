@@ -1,26 +1,21 @@
 ---
-title: Tesztelés Azure Stream Analytics lekérdezési |} Microsoft Docs
-description: Meghatározhatja problémák elhárításakor Stream Analytics-feladatok.
-keywords: bemeneti, bemeneti mintavételi hibaelhárítása
-documentationcenter: ''
+title: Mintaadatokat használja az Azure Stream Analytics lekérdezés tesztelése
+description: Ez a cikk ismerteti, hogyan néhány minta bemeneti adatok használatának Azure Stream Analytics lekérdezés tesztelése.
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: ''
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: 99c9f7f2dc84f53d09b7aee1916c5532427de692
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 04/20/2017
+ms.openlocfilehash: 305b767ee86de6c8b04fed17514a9092afc2d735
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="azure-stream-analytics-query-testing-and-input-stream-sampling"></a>Az Azure Stream Analytics lekérdezési tesztelése és az adatfolyam-bemenet mintavétel
+# <a name="test-a-query-and-sample-input-in-azure-stream-analytics"></a>A lekérdezés és az Azure Stream Analytics bemeneti minta tesztelése 
 
 Azure Stream Analytics segítségével fájlból származnak, és tesztelje a lekérdezések a portálon anélkül, hogy indítása vagy leállítása feladat bemeneti események segítségével mintavételi.
 
@@ -52,11 +47,11 @@ Az előző ábrán egy második kimenet hozzáadva, úgynevezett **HighAvgTempOu
 
 Ha több kimenet a lekérdezésben, külön-külön minden kimeneti eredmények megjelenítéséhez, és könnyen váltása.
 
-Miután elégedett az eredményeket, mentheti a lekérdezés, indítsa el a feladat, elhelyezkedik vissza, és tekintse meg a Stream Analytics magic.
+Után elégedett az eredményeket, a lekérdezés mentéséhez, a feladat elindítása, elhelyezkedik vissza, és tekintse meg a Stream Analytics magic.
 
-## <a name="get-help"></a>Segítség kérése
+## <a name="get-help"></a>Segítségkérés
 
-Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>További lépések
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)

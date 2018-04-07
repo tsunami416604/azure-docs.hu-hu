@@ -1,12 +1,12 @@
 ---
-title: "A Windows-alapú virtuális gépek áttelepítése az Azure Site Recovery a prémium szintű Azure Storage |} Microsoft Docs"
-description: "A meglévő virtuális gépek áttelepítését a prémium szintű Azure Storage a Site Recovery segítségével. Prémium szintű Storage nagy teljesítményű, alacsony késésű támogatása az Azure virtuális gépeken futó I/O-igényes munkaterhelések kínál."
+title: A Windows-alapú virtuális gépek áttelepítése az Azure Site Recovery a prémium szintű Azure Storage |} Microsoft Docs
+description: A meglévő virtuális gépek áttelepítését a prémium szintű Azure Storage a Site Recovery segítségével. Prémium szintű Storage nagy teljesítményű, alacsony késésű támogatása az Azure virtuális gépeken futó I/O-igényes munkaterhelések kínál.
 services: virtual-machines-windows
 cloud: Azure
 documentationcenter: na
 author: luywang
 manager: jeconnoc
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
-ms.openlocfilehash: 15c9a6608421b3eeebe6fbe91a10a849bf36ed85
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 171b0f938e44218d11cfb001e3f58ebd0feb35fd
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Prémium szintű Storage telepítse át az Azure Site Recovery segítségével
 
@@ -80,7 +80,7 @@ A Site Recovery segítségével Azure IaaS virtuális gépeket áttelepíteni, r
 ### <a name="step-1-create-a-recovery-services-vault"></a>1. lépés: A Recovery Services-tároló létrehozása
 
 1. Nyissa meg az [Azure portált](https://portal.azure.com).
-2. Válassza ki **hozzon létre egy erőforrást** > **felügyeleti** > **biztonsági mentés** és **Site Recovery (OMS)**. Választhatja azt is megteheti, **Tallózás** > **Recovery Services-tároló** > **Hozzáadás**. 
+2. Válassza ki **hozzon létre egy erőforrást** > **felügyeleti** > **biztonsági mentési és hely helyreállítási (OMS)**. Választhatja azt is megteheti, **Tallózás** > **Recovery Services-tároló** > **Hozzáadás**. 
 3. Adjon meg egy régiót, amelyben a virtuális gépeket a rendszer replikálja. Ugyanabban a régióban áttelepítéshez válassza ki a régiót, amelyben a forrás virtuális gépeket és a forrás storage-fiókok is. 
 
 ### <a name="step-2-choose-your-protection-goals"></a>2. lépés: Jelölje ki a védelmi célok megválasztása 

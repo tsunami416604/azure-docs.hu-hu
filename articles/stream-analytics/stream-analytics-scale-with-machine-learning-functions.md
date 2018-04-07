@@ -1,27 +1,22 @@
 ---
-title: Az Azure Stream Analytics & AzureML functions méretezése feladat |} Microsoft Docs
-description: Ismerje meg a megfelelő méretezése a Stream Analytics-feladatok (particionálás, SU mennyiség és egyebek) használata az Azure Machine Learning funkciók.
-keywords: ''
-documentationcenter: ''
+title: Azure Stream Analytics a Machine Learning functions méretezése
+description: Ez a cikk ismerteti, amely gépi tanulás, úgy konfigurálja a particionálás és adatfolyam-egységek Stream Analytics-feladatok méretezése.
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: 47ce7c5e-1de1-41ca-9a26-b5ecce814743
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: dd6effab3ba0b411131414bd757ffe8cc54e49d2
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/28/2017
+ms.openlocfilehash: 015312ab95d6dd5615a5f5bc62d270d46b795ffa
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>A Stream Analytics-feladat az Azure Machine Learning functions méretezése
-Legtöbbször könnyen állítson be egy Stream Analytics-feladat, és néhány adatot végigfuttatása. Mit kell végezzük, amikor nagyobb adatmennyiség futtassa ugyanazt a feladatot? Szükséges, hogy ismerje meg, hogyan konfigurálhatja a Stream Analytics-feladat, úgy, hogy a méretezés. Ebben a dokumentumban azt összpontosítani a Machine Learning függvényekkel Stream Analytics-feladatok méretezése különleges szempontjait is. A Stream Analytics-feladatok méretezése általános információ: a cikk [feladatok skálázás](stream-analytics-scale-jobs.md).
+A Stream Analytics-feladat beállítását, és néhány adatot végigfuttatása közvetlen. Mit kell végezzük, amikor nagyobb adatmennyiség futtassa ugyanazt a feladatot? Szükséges, hogy ismerje meg, hogyan konfigurálhatja a Stream Analytics-feladat, úgy, hogy a méretezés. Ebben a dokumentumban azt összpontosítani a Machine Learning függvényekkel Stream Analytics-feladatok méretezése különleges szempontjait is. A Stream Analytics-feladatok méretezése általános információ: a cikk [feladatok skálázás](stream-analytics-scale-jobs.md).
 
 ## <a name="what-is-an-azure-machine-learning-function-in-stream-analytics"></a>Mi az az Azure Machine Learning függvény a Stream Analytics?
 A Stream Analytics a Machine Learning függvény használható például a Stream Analytics lekérdezési nyelv a rendszeres függvény hívásakor. Azonban a leképezni kívánt jelenetben mögött a függvényhívások ténylegesen Azure Machine Learning webszolgáltatás kérelmeket is. Machine Learning webszolgáltatások támogatja a "kötegelés" több sort minimális kötegelt, az azonos web service API-hívásban, teljes átviteli sebesség növelése érdekében nevezzük. A következő cikkekben talál további részleteit. [Azure Machine Learning funkciók a Stream Analytics](https://blogs.technet.microsoft.com/machinelearning/2015/12/10/azure-ml-now-available-as-a-function-in-azure-stream-analytics/) és [Azure Machine Learning webszolgáltatások](../machine-learning/studio/consume-web-services.md).
@@ -81,8 +76,8 @@ Az alábbiakban a táblát, az átviteli sebessége a Stream Analytics-feladat v
 | **1 SU** |2,500 |5,000 |20,000 |30,000 |50,000 |
 | **3 SUS-t** |2,500 |5,000 |20,000 |30,000 |50,000 |
 | **6 SUS-t** |2,500 |5,000 |20,000 |30,000 |50,000 |
-| **12 SUS-t** |5,000 |10,000 |40,000 |60,000 |100,000 |
-| **18 SUS-t** |7,500 |15,000 |60,000 |90,000 |150,000 |
+| **12 SUS-t** |5000 |10,000 |40,000 |60,000 |100,000 |
+| **18 SUS-t** |7500 |15,000 |60,000 |90,000 |150,000 |
 | **24 SUS-t** |10,000 |20,000 |80,000 |120,000 |200,000 |
 | **…** |… |… |… |… |… |
 | **60 SUs** |25,000 |50,000 |200,000 |300,000 |500,000 |
@@ -111,7 +106,7 @@ Az elem az alábbiak szerint definiáltuk:
 2. A megengedett várakozási futó Stream Analytics-feladat (és ezáltal a Köteg mérete, a Machine Learning web service kérelmek)
 3. A kiépített Stream Analytics SUS-t és a gépi tanulás webszolgáltatás-kérelmek (a további függvény kapcsolatos költségek) száma
 
-Egy teljesen particionált Stream Analytics lekérdezési példaként használt. Egy összetettebb lekérdezés van szüksége a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics) kiváló forrást biztosítanak a további kapcsolatos segítség kérése a Stream Analytics csapat van.
+Egy teljesen particionált Stream Analytics lekérdezési példaként használt. Egy összetettebb lekérdezés van szüksége a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics) kiváló forrást biztosítanak a további kapcsolatos segítség kérése a Stream Analytics csapat van.
 
 ## <a name="next-steps"></a>További lépések
 A Stream Analytics kapcsolatos további információkért lásd:

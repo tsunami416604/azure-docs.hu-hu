@@ -1,19 +1,19 @@
 ---
-title: "Ismerkedés a kereszt-adatbázis-lekérdezések (a vertikális particionálás) |} Microsoft Docs"
-description: "függőleges particionált adatbázisok rugalmas adatbázis-lekérdezés használata"
+title: Ismerkedés a kereszt-adatbázis-lekérdezések (a vertikális particionálás) |} Microsoft Docs
+description: függőleges particionált adatbázisok rugalmas adatbázis-lekérdezés használata
 services: sql-database
 manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 05/23/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 0731ddfea83d287c88118cf4b48e86427d8f520f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c7bf6816b457f7e193f53336c48f5e205722067e
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>Első lépések (a vertikális particionálás) közötti adatbázis-lekérdezések (előzetes verzió)
 A rugalmas adatbázis-lekérdezés (előzetes verzió) Azure SQL-adatbázis, amelyek több adatbázis egyetlen kapcsolódási pontot használ több T-SQL-lekérdezések futtatása teszi lehetővé. Ez a témakör vonatkozik [függőleges particionálva az adatbázisok](sql-database-elastic-query-vertical-partitioning.md).  

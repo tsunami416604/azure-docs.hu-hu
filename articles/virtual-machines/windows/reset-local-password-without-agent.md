@@ -1,11 +1,11 @@
 ---
-title: "Azure-ügynök nélkül helyi Windows-jelszó alaphelyzetbe állítása |} Microsoft Docs"
-description: "Visszaállítása egy helyi Windows felhasználói fiók jelszavát, amikor az Azure Vendég ügynök nincs telepítve vagy nem működik a virtuális gép"
+title: Azure-ügynök nélkül helyi Windows-jelszó alaphelyzetbe állítása |} Microsoft Docs
+description: Visszaállítása egy helyi Windows felhasználói fiók jelszavát, amikor az Azure Vendég ügynök nincs telepítve vagy nem működik a virtuális gép
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: cf353dd3-89c9-47f6-a449-f874f0957013
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
 ms.author: iainfou
-ms.openlocfilehash: 2f9efdbaf0ae79781d6f9c7dfa4c8317185be79e
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: ad892aee646b1a5f8c96d5bdeca24b7a0d88f38e
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Jelszó alaphelyzetbe állítása helyi Windows Azure virtuális gép kapcsolat nélküli módban
 A helyi Windows-jelszó a virtuális gépek az Azure használatával visszaállíthatja a [Azure-portálon vagy az Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) megadott Azure Vendég-ügynök telepítve van. Ez a módszer elsődleges módja a jelszó alaphelyzetbe állítása egy Azure virtuális gép. Ha problémák lépnek fel az Azure Vendég ügynöke a vendégügynök nem válaszol, vagy sikertelen egyéni lemezkép feltöltése után telepíteni, manuálisan állítsa vissza a Windows-jelszóval. Ez a cikk részletesen a forrás operációs rendszer virtuális lemez csatolása a másik virtuális gép által a helyi fiók jelszavának visszaállítása. Ebben a cikkben leírt lépéseket a Windows tartományvezérlők nem vonatkoznak. 

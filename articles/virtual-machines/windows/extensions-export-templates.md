@@ -1,11 +1,11 @@
 ---
-title: "Virtuálisgép-bővítmények tartalmazó Azure erőforráscsoportok exportálása |} Microsoft Docs"
-description: "Virtuálisgép-bővítmények tartalmazó Resource Manager-sablonok exportálása."
+title: Virtuálisgép-bővítmények tartalmazó Azure erőforráscsoportok exportálása |} Microsoft Docs
+description: Virtuálisgép-bővítmények tartalmazó Resource Manager-sablonok exportálása.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: danielsollondon
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 7f4e2ca6-f1c7-4f59-a2cc-8f63132de279
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: danis
-ms.openlocfilehash: 739ae7995fca41fe8abb7cd54ccb72ff3bc43854
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 2dc05fd21df3d408ed57badeec2b5c06e25bf50c
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Virtuálisgép-bővítmények tartalmazó erőforráscsoportok exportálása
 
@@ -38,13 +38,13 @@ A következő kiterjesztések exportálhatja az automatizálási parancsfájl sz
 | Acronis biztonsági mentése | Datadog Windows-ügynök | Javítás Linux operációs rendszer | Virtuális gép pillanatkép Linux
 | Linux Acronis biztonsági mentése | Docker-bővítmény | Puppet ügynök |
 | BG adatai | DSC-bővítmény | Hely 24 x 7 Apm felmérése |
-| BMC CTM ügynök Linux | Dynatrace Linux | 24 x 7 Linux helykiszolgáló |
-| BMC CTM ügynök Windows | Dynatrace Windows | Hely 24 x 7 a Windows Server |
+| BMC CTM ügynök Linux | Dynatrace Linux | Site 24x7 Linux Server |
+| BMC CTM ügynök Windows | Dynatrace Windows | Site 24x7 Windows Server |
 | Chef ügyfél | HPE biztonsági alkalmazás Defender | Trend Micro DSA |
 | Egyéni parancsfájl | Infrastruktúra-szolgáltatási kártevőirtó | Trend Micro DSA Linux |
 | Egyéni szkriptbővítmény | IaaS-diagnosztika | Linux virtuális gép hozzáférés |
 | Egyéni parancsfájl Linux | Linux-Chef ügyfél | Linux virtuális gép hozzáférés |
-| Datadog Linux-ügynök | Linux-diagnosztika | Virtuális gép pillanatkép |
+| Datadog Linux Agent | Linux-diagnosztika | Virtuális gép pillanatkép |
 
 ## <a name="export-the-resource-group"></a>Az erőforráscsoportok exportálása
 

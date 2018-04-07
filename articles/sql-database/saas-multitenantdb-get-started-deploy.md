@@ -9,13 +9,13 @@ ms.service: sql-database
 ms.custom: scale out apps
 ms.workload: data-management
 ms.topic: article
-ms.date: 12/18/2017
+ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: 3806b165e0124e979f59b51d5583cdbb1f949366
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4cbf758b82bccae8efe77e197d23a090d71fd7e5
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>Központi telepítése, és vizsgálja meg a szilánkos több-bérlős alkalmazás által használt Azure SQL adatbázis
 
@@ -57,7 +57,7 @@ Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételekne
 
 Ebben a szakaszban a lépések adjon meg egy *felhasználói* érték, amely gondoskodik arról, hogy erőforrásnevek megkülönböztetik a globálisan egyedi, és nevezze el a *erőforráscsoport* hozta létre a központi telepítés összes erőforrását tartalmazó az alkalmazás. A személy nevű *Reino Finley*, javasoljuk, hogy:
 - *Felhasználó:* **af1***(saját monogramja, valamint egy számjegy. Használjon egy másik értéket (pl. af2) Ha telepít központilag az alkalmazást még egyszer.)*
-- *Erőforráscsoport:* **wingtip-dpt-af1** *(wingtip-dpt azt jelzi, ez az adatbázis-/-bérlő alkalmazást. A felhasználó nevét af1 fűznek ad eredményül a benne található erőforrások nevét az erőforráscsoport neve.)*
+- *Erőforráscsoport:* **wingtip-mt-af1** *(wingtip-mt azt jelzi, ez a szilánkos több-bérlős alkalmazást. A felhasználó nevét af1 fűznek ad eredményül a benne található erőforrások nevét az erőforráscsoport neve.)*
 
 Most válassza ki a nevét, és írja le. 
 
@@ -123,7 +123,7 @@ Egyes helyszínekkel lekérdezi egy személyre szabott webalkalmazást a listáb
 Egy központi **események Hub** weblap mutató hivatkozásokat biztosít a bérlők számára az adott környezetben. Az alábbi lépések segítségével tapasztalhat a **események Hub** weblap és egy adott webalkalmazás:
 
 1. Nyissa meg a **események Hub** a böngészőben:
-    - http://events.Wingtip-MT.&lt;felhasználói&gt;. trafficmanager.net &nbsp; *(csere &lt;felhasználói&gt; a központi telepítés felhasználói értékkel.)*
+    - http://events.wingtip-mt. &lt;felhasználói&gt;. trafficmanager.net &nbsp; *(csere &lt;felhasználói&gt; a központi telepítés felhasználói értékkel.)*
 
     ![eseményközpont](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 

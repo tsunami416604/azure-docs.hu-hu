@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2016
 ms.author: johnkem
-ms.openlocfilehash: 1ee634b3acf0fa8815b69aef21e6213aee636ce1
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6020272d79ace55041da94ee45165e557e92b80f
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="archive-the-azure-activity-log"></a>Az Azure tevékenységnapló archiválása
 Ebben a cikkben megmutatjuk használatát az Azure portálon, a PowerShell-parancsmagokkal vagy a platformfüggetlen parancssori felület archiválására a [ **Azure tevékenységnapló** ](monitoring-overview-activity-logs.md) tárfiókokban. Ez a beállítás akkor hasznos, ha azt szeretné, hogy megőrzi a naplózási, statikus elemzési vagy biztonsági mentése (a teljes hozzáféréssel az adatmegőrzési) 90 napnál hosszabb tevékenységnapló. Ha csak szeretné megőrizni az események 90 napig, vagy kevesebb nem kell beállítása archiválási tárfiókba, mert tevékenységnapló események kerülnek be az Azure platformon 90 napig engedélyezése archiválás nélkül.
@@ -43,29 +43,43 @@ Az alábbi módszerekkel történő tevékenységnapló archiválására, állí
 5. Kattintson a **Save** (Mentés) gombra.
 
 ## <a name="archive-the-activity-log-via-powershell"></a>A műveletnapló PowerShell archiválása
-```
-Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Locations global,westus,eastus -RetentionInDays 180 -Categories Write,Delete,Action
-```
+
+   ```powershell
+   # Settings needed for the new log profile
+   $logProfileName = "default"
+   $locations = (Get-AzureRmLocation).Location
+   $locations += "global"
+   $subscriptionId = "<your Azure subscription Id>"
+   $resourceGroupName = "<resource group name your storage account belongs to>"
+   $storageAccountName = "<your storage account name>"
+
+   # Build the storage account Id from the settings above
+   $storageAccountId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
+
+   Add-AzureRmLogProfile -Name $logProfileName -Location $locations -StorageAccountId $storageAccountId
+   ```
 
 | Tulajdonság | Szükséges | Leírás |
 | --- | --- | --- |
-| StorageAccountId |Nem |Erőforrás-azonosító a tárfiók tevékenységi naplóit mentésére. |
-| Helyek |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeinek gyűjtése vesszővel tagolt listája. Megtekintheti az összes régiók listáját [ezen a lapon felkeresésével](https://azure.microsoft.com/en-us/regions) vagy használatával [az Azure felügyeleti REST API](https://msdn.microsoft.com/library/azure/gg441293.aspx). |
-| RetentionInDays |Igen |Az eseményeket meg kell őrizni, 1 és 2147483647 közötti napok számát. A nulla érték a naplók határozatlan ideig tárolja (végtelen). |
-| Kategóriák |Igen |Be kell esemény kategóriák vesszővel tagolt listája. Lehetséges értékek a következők: Olvasás, törlés és művelet. |
+| StorageAccountId |Igen |Erőforrás-azonosító a tárfiók tevékenységi naplóit mentésére. |
+| Helyek |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeinek gyűjtése vesszővel tagolt listája. Az összes régiók listáját megtekintheti a előfizetés a `(Get-AzureRmLocation).Location`. |
+| RetentionInDays |Nem |Az eseményeket meg kell őrizni, 1 és 2147483647 közötti napok számát. A nulla érték a naplók határozatlan ideig tárolja (végtelen). |
+| Kategóriák |Nem |Be kell esemény kategóriák vesszővel tagolt listája. Lehetséges értékek a következők: Olvasás, törlés és művelet.  Ha nem ad meg, majd az összes lehetséges értékek feltételezhetően |
 
 ## <a name="archive-the-activity-log-via-cli"></a>A tevékenység naplót parancssori felület használatával
-```
-azure insights logprofile add --name my_log_profile --storageId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/my_storage --locations global,westus,eastus,northeurope --retentionInDays 180 –categories Write,Delete,Action
-```
+
+   ```azurecli-interactive
+   az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --storage-account-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>"
+   ```
 
 | Tulajdonság | Szükséges | Leírás |
 | --- | --- | --- |
 | név |Igen |A napló profil neve. |
-| storageId |Nem |Erőforrás-azonosító a tárfiók tevékenységi naplóit mentésére. |
-| Helyek |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeinek gyűjtése vesszővel tagolt listája. Megtekintheti az összes régiók listáját [ezen a lapon felkeresésével](https://azure.microsoft.com/en-us/regions) vagy használatával [az Azure felügyeleti REST API](https://msdn.microsoft.com/library/azure/gg441293.aspx). |
-| retentionInDays |Igen |Az eseményeket meg kell őrizni, 1 és 2147483647 közötti napok számát. A nulla érték határozatlan ideig tárolja a naplók (végtelen). |
-| kategóriák |Igen |Be kell esemény kategóriák vesszővel tagolt listája. Lehetséges értékek a következők: Olvasás, törlés és művelet. |
+| storage-account-id |Igen |Erőforrás-azonosító a tárfiók tevékenységi naplóit mentésére. |
+| Helyek |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeinek gyűjtése szóközökkel elválasztott listáját. Az összes régiók listáját megtekintheti a előfizetés a `az account list-locations --query [].name`. |
+| nap |Igen |Az eseményeket meg kell őrizni, 1 és 2147483647 közötti napok számát. A nulla érték határozatlan ideig tárolja a naplók (végtelen).  Ha nulla, majd az engedélyezett paraméter kell állítható be igaz értékre. |
+|engedélyezve | Igen |IGAZ vagy hamis.  Engedélyezheti vagy tilthatja le a megőrzési házirend használatával.  Amennyiben az értéke igaz, a nap paraméter 0-nál nagyobb számnak kell lennie.
+| kategóriák |Igen |Be kell esemény kategóriákat szóközökkel elválasztott listáját. Lehetséges értékek a következők: Olvasás, törlés és művelet. |
 
 ## <a name="storage-schema-of-the-activity-log"></a>A műveletnapló tárolási séma
 Miután állított be archiválási, tárolót létrejön a tárfiók, amint tevékenységnapló esemény következik be. A tárolóban található blobok kövesse ugyanazt a formátumot minden tevékenységnapló és diagnosztikai naplókat. A blobok szerkezete van:

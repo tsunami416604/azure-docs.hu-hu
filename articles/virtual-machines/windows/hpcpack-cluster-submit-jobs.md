@@ -1,11 +1,11 @@
 ---
-title: "Küldje el a fürt egy HPC Pack feladatok az Azure-ban |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozzon létre egy helyi számítógép küldje el a feladatok HPC Pack fürthöz az Azure-ban"
+title: Küldje el a fürt egy HPC Pack feladatok az Azure-ban |} Microsoft Docs
+description: Megtudhatja, hogyan hozzon létre egy helyi számítógép küldje el a feladatok HPC Pack fürthöz az Azure-ban
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager,azure-service-management,hpc-pack
 ms.assetid: 78f6833c-4aa6-4b3e-be71-97201abb4721
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 10/14/2016
 ms.author: danlep
-ms.openlocfilehash: d5953f1e1dd2deb4d871bd67352a6a5b2ae13dbf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 263946c1a1bd792b2f23a55388b73a82ddad0000
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="submit-hpc-jobs-from-an-on-premises-computer-to-an-hpc-pack-cluster-deployed-in-azure"></a>HPC-feladatok elküldése helyi számítógépről Azure-ban üzembe helyezett HPC Pack-fürtnek
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -29,7 +29,7 @@ Egy helyszíni ügyfélszámítógép feladatok elküldéséhez konfigurálása 
 ![Az Azure-ban fürtre feladat elküldése][jobsubmit]
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Egy Azure virtuális Gépen telepített HPC Pack átjárócsomópont** -azt javasoljuk, hogy az automatikus eszközeit használja, mint egy [Azure gyors üzembe helyezés sablon](https://azure.microsoft.com/documentation/templates/) vagy egy [Azure PowerShell-parancsfájl](classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) az átjárócsomópont és a fürt telepítéséhez. Az átjárócsomópont DNS-nevét és a végrehajtásához a cikkben egy fürt rendszergazdájának hitelesítő adataira van szüksége.
+* **Egy Azure virtuális Gépen telepített HPC Pack átjárócsomópont** -azt javasoljuk, hogy az automatikus eszközeit használja, mint egy [Azure gyors üzembe helyezés sablon](https://azure.microsoft.com/documentation/templates/) vagy egy [Azure PowerShell-parancsfájl](classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) az átjárócsomópont és a fürt központi telepítése . Az átjárócsomópont DNS-nevét és a végrehajtásához a cikkben egy fürt rendszergazdájának hitelesítő adataira van szüksége.
 * **Ügyfélszámítógép** -HPC Pack ügyfél segédprogramok futtatható Windows vagy Windows Server ügyfél számítógépre van szüksége (lásd: [rendszerkövetelmények](https://technet.microsoft.com/library/dn535781.aspx)). Ha szeretné feladatok küldéséhez a HPC Pack webes portál vagy a REST API-t használja, minden ügyfélszámítógép az Ön által választott is használhatja.
 * **HPC Pack telepítési adathordozó** - HPC Pack (HPC Pack 2012 R2) legújabb verziója érhető el a HPC Pack ügyfél segédprogramok, a szabad telepítési csomag telepítéséhez a [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=328024). Győződjön meg arról, hogy töltse le a virtuális gép átjárócsomópont telepített HPC Pack ugyanazt a verzióját.
 
@@ -167,7 +167,7 @@ Ellenőrizze a konfigurációt, próbálja meg az Azure-ban a fürtön, a helyi 
 5. Kattintson a **nyújt**. Ha a rendszer kéri, adja meg a HPC-fürt rendszergazdája tartományi hitelesítő adatait. A feladat küldése, és a Feladatazonosítót jelenik meg a **saját feladatok** lap.
 6. A beküldött feladat eredményeinek megtekintéséhez kattintson a feladat azonosítója, majd **nézet feladatai** parancs eredményének megtekintéséhez (alatt **kimeneti**).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Feladatok az Azure fürtre is elküldheti a [HPC Pack REST API](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx).
 * Ha azt szeretné, a Linux-ügyfél a fürt feladatok küldéséhez, tekintse meg a Python minta a [HPC Pack 2012 R2 SDK és mintakód](https://www.microsoft.com/download/details.aspx?id=41633).
 

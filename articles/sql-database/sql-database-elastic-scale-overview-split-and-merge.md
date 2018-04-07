@@ -1,19 +1,19 @@
 ---
-title: "Adatok áthelyezése másik kiterjesztett felhő adatbázisok |} Microsoft Docs"
-description: "Ismerteti, hogyan kezelheti a szilánkok és áthelyezni az adatokat, a rugalmas adatbázis API-k használata önálló üzemeltetett szolgáltatáson keresztül."
+title: Adatok áthelyezése másik kiterjesztett felhő adatbázisok |} Microsoft Docs
+description: Ismerteti, hogyan kezelheti a szilánkok és áthelyezni az adatokat, a rugalmas adatbázis API-k használata önálló üzemeltetett szolgáltatáson keresztül.
 services: sql-database
 manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 9e2b231ad2e9fc5ab07532daef44da9870cef4ae
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c70279bd52f7b0b0e0cbc27742eca93d9af5e630
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Adatok mozgatása kiterjesztett felhőalapú adatbázisok között
 Ha egy szoftver szolgáltatás fejlesztőként, és hirtelen az alkalmazás megy keresztül rengeteg igény szerint, akkor a növekedési igazodniuk kell. Így adhat meg további adatbázisok (szilánkok). Hogyan az adatokat az új adatbázisok újraterjeszteni a adatok integritásának megszakítása nélkül Használja a **vegyes egyesítéses eszköz** korlátozott adatbázisból származó adatok áthelyezése az új adatbázisokat.  

@@ -1,18 +1,18 @@
 ---
-title: "Egyéni Azure esemény rács a témakör a feladás egy vagy több esemény"
-description: "Ismerteti, hogyan lehet egy adott esemény egy egyéni témakör utáni Azure esemény rács"
+title: Egyéni Azure esemény rács a témakör a feladás egy vagy több esemény
+description: Ismerteti, hogyan lehet egy adott esemény egy egyéni témakör utáni Azure esemény rács
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 04/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 43dcdf9ab0fee5f7e61ecdc42aaf40430e272d92
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 1c23aef0773ffddbc26e4090ecf137b632394ee3
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>Küldje el a témakör egyéni Azure esemény rács
 
@@ -91,8 +91,34 @@ Például egy érvényes esemény adatkulcsokat van:
 }]
 ```
 
+## <a name="response"></a>Válasz
+
+A témakör a végponthoz könyvelés után kapott választ. A rendszer egy szabványos HTTP-válaszkód a választ. Néhány gyakori válaszok a következők:
+
+|Eredmény  |Válasz  |
+|---------|---------|
+|Sikeres  | 200 OK  |
+|Helytelen végpont | 404 – Nem található |
+|Érvénytelen a hozzáférési kulcsot | 401 nem engedélyezett |
+|Eseményadatok formátuma nem megfelelő | 400 Hibás kérés |
+
+A hibákat az üzenet törzse formátuma a következő:
+
+```json
+{
+    "error": {
+        "code": "<HTTP status code>",
+        "message": "<description>",
+        "details": [{
+            "code": "<HTTP status code>",
+            "message": "<description>"
+    }]
+  }
+}
+```
+
 ## <a name="next-steps"></a>További lépések
 
-* Egyéni események útválasztási bemutatása, lásd: [az Azure CLI és az esemény rács létrehozása és útvonal egyéni események](custom-event-quickstart.md) vagy [Azure PowerShell és az esemény rács létrehozása és útvonal egyéni események](custom-event-quickstart-powershell.md).
+* Esemény kézbesítések figyelésével kapcsolatos további információkért lásd: [figyelő esemény rács üzenetkézbesítést](monitor-event-delivery.md).
 * A hitelesítési kulcs kapcsolatos további információkért lásd: [esemény rács biztonsági és hitelesítési](security-authentication.md).
 * Egy esemény rács Azure-előfizetés létrehozásával kapcsolatos további információkért lásd: [esemény rács előfizetés séma](subscription-creation-schema.md).

@@ -1,19 +1,18 @@
 ---
-title: "Azure-alapú helyszolgáltatás fiókja és -kulcsok kezelése |} Microsoft Docs"
-description: "Az Azure portál segítségével az Azure-alapú helyszolgáltatás fiók kezelése és a elérési kulcsok kezelése."
+title: Azure-alapú helyszolgáltatás fiókja és -kulcsok kezelése |} Microsoft Docs
+description: Az Azure portál segítségével az Azure-alapú helyszolgáltatás fiók kezelése és a elérési kulcsok kezelése.
 services: location-based-services
-keywords: "Ne adjon hozzá kulcsszavakat és ne szerkessze azokat a keresőoptimalizálást végző szakemberrel való egyeztetés nélkül."
 author: kgremban
 ms.author: kgremban
 ms.date: 11/14/2017
 ms.topic: article
 ms.service: location-based-services
 manager: timlt
-ms.openlocfilehash: 8ea7beae054157800ee404cf237772d0677574ca
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 38466a741bc836a6f13db83fd939d178fbbc1a7b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-manage-your-azure-location-based-services-account-and-keys"></a>Azure-alapú helyszolgáltatás fiókja és -kulcsok kezelése
 
@@ -23,7 +22,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba 
 
-Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
+Jelentkezzen be az Azure Portalra a http://portal.azure.com címen.
 
 ## <a name="create-a-new-account"></a>Új fiók létrehozása
 

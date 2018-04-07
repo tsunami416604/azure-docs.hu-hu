@@ -1,13 +1,13 @@
 ---
-title: "Az Azure DDoS védelem szabványos áttekintése |} Microsoft Docs"
-description: "További tudnivalók az Azure DDoS-védelem szolgáltatás."
+title: Az Azure DDoS védelem szabványos áttekintése |} Microsoft Docs
+description: További tudnivalók az Azure DDoS-védelem szolgáltatás.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: jdial
-ms.openlocfilehash: 6b15be022ba3b8373cfb852be8fc6915824801dc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: bb19baae1bc03633b7646fd2255ca910532595c5
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Az Azure szabványos DDoS-védelem áttekintése
 
@@ -65,7 +65,7 @@ DDoS védelem szabványos szolgáltatások a következők:
 - **3. rétegbeli réteg 7 védelem:** DDoS-védelem teljes verem biztosít olyan átjárót használva.
 - **Széles körű megoldás méretezési:** keresztül 60 különböző támadás típusok kivédhető, globális kapacitás, a legnagyobb ismert DDoS-támadások elleni védelem érdekében. 
 - **Támadás metrikák:** Summarized metrikák minden támadások elleni Azure figyelő keresztül érhetők el.
-- **Támadás riasztási:** riasztások konfigurálhatók a kezdő- és az olyan támadások, állítsa le és a támadás időtartama alatt használja a beépített támadás metrikákat. Riasztások integrálja a működési szoftverek, mint a Microsoft Operations Management Suite, Splunk, Azure Storage, e-mailek és az Azure-portálon.
+- **Támadás riasztási:** riasztások konfigurálhatók a kezdő- és az olyan támadások, állítsa le és a támadás időtartama alatt használja a beépített támadás metrikákat. Riasztások integrálja a működési szoftverek, mint a Microsoft Azure Naplóelemzés, Splunk, Azure Storage, e-mailek és az Azure-portálon.
 - **Költség garancia:** adatátvitelt és alkalmazás kibővített szolgáltatási jóváírások dokumentált DDoS-támadások.
 
 ## <a name="ddos-protection-standard-mitigation"></a>DDoS védelem szabványos megoldás
@@ -82,6 +82,6 @@ DDoS védelem blokkok támadásokkal és a fennmaradó forgalmat a kívánt rend
 
 Az ügyfelek számára a saját DDoS-támadások szimulálása használata nem ajánlott. Ehelyett felhasználók használhatják a támogatási csatornán keresztül egy DDoS kérelem végrehajtja az Azure-hálózat szimuláció támadásoknak. Egy mérnököt felveszi Önnel a DDoS-támadások (portok, protokollok, cél IP-címek) részleteit elrendezése és a vizsgálat ütemezése egyszerre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információk kezelése DDoS védelem szabványos használatával [Azure PowerShell](ddos-protection-manage-ps.md) vagy a [Azure-portálon](ddos-protection-manage-portal.md).

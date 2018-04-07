@@ -1,24 +1,19 @@
 ---
-title: 'A Stream Analytics: Elforgatása bejelentkezési hitelesítő adatok a be- és kimenetekkel |} Microsoft Docs'
-description: Útmutató a Stream Analytics bemenetekhez és kimenetekhez hitelesítő adatait.
-keywords: a bejelentkezési hitelesítő adatok
+title: Forgassa el az Azure Stream Analytics-feladatok bejelentkezési hitelesítő adatok
+description: Ez a cikk ismerteti, hogyan frissítenie kell a hitelesítő adatokat a bemeneti adatok, és kimeneti Azure Stream Analytics a fogadók esetében feladatok.
 services: stream-analytics
-documentationcenter: ''
-author: SnehaGunda
+author: jasonwhowell
+ms.author: jasonh
 manager: kfile
-ms.assetid: 42ae83e1-cd33-49bb-a455-a39a7c151ea4
+ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 01/11/2018
-ms.author: sngun
-ms.openlocfilehash: d01e5d9f0bbfe6ca3ef8511aeb813cead3809f04
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: b49b4fecb6be70987e7e6736d78f224c03f719bf
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Bejelentkezési hitelesítő adatait a be- és a Stream Analytics-feladat kimenetének elforgatása
 
@@ -52,7 +47,7 @@ Ez a szakasz azt haladhat végig újragenerálása hitelesítő adatokat a Blob 
 7. A kapcsolat tesztelése automatikusan elindul, amikor menti a módosításokat, győződjön meg arról, hogy azt sikeresen megfelelt.    
 8. Folytassa a [indítsa el a feladat leállt utoljára](#start-your-job-from-the-last-stopped-time) szakasz.
 
-### <a name="sql-database"></a>SQL-adatbázis
+### <a name="sql-database"></a>SQL Database
 
 Egy meglévő felhasználó bejelentkezési hitelesítő adatok frissítése az SQL-adatbázishoz való kapcsolódáshoz szükséges. Hitelesítő adatok Azure-portálon vagy a megfelelő ügyféloldali eszköz, például az SQL Server Management Studio használatával frissítheti. Ez a szakasz azt mutatja be hitelesítő adatok frissítését az Azure portál használatával.
 

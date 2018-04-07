@@ -1,11 +1,11 @@
 ---
-title: "IaaS-erőforrásokra a klasszikus Azure Resource Manager az áttelepítés tervezése |} Microsoft Docs"
-description: "IaaS-erőforrásokra a klasszikus Azure Resource Manager az áttelepítés tervezése"
+title: IaaS-erőforrásokra a klasszikus Azure Resource Manager az áttelepítés tervezése |} Microsoft Docs
+description: IaaS-erőforrásokra a klasszikus Azure Resource Manager az áttelepítés tervezése
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: singhkays
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 78492a2c-2694-4023-a7b8-c97d3708dcb7
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: b77000c2cf46b59b65c27c78182193624fd62062
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 32e595b6ae01e77289a81734f61b9036835dd2fd
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>IaaS-erőforrásokra a klasszikus Azure Resource Manager az áttelepítés tervezése
 Azure Resource Manager számos elképesztő funkciókat nyújtja, miközben nagyon fontos tervezze meg az áttelepítési út zökkenőmentesek sure művelet. Tervezési idő költségeik biztosítja, hogy nem tapasztal, az áttelepítési tevékenységek végrehajtása során.
@@ -211,7 +211,7 @@ Kell a mely szolgáltatásokat szeretné engedélyezni az Azure Resource Manager
 Ne feledje, hogy miért használatba a klasszikus – Azure Resource Manager áttelepítési út.  Mi volt az eredeti üzleti okokból? Sikerült elérni az üzleti okokból?
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [IaaS-erőforrásokra a klasszikus Azure Resource Manager platform által támogatott áttelepítésének áttekintése](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Műszaki részletes bemutatója a platform által támogatott áttelepítési a klasszikus Azure Resource Managerbe](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

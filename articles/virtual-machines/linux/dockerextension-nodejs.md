@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Docker Virtuálisgép-bővítmény használata az Azure CLI 1.0 |} Microsoft Docs"
-description: "Útmutató a Docker Virtuálisgép-bővítmény használatával gyorsan és biztonságosan központi telepítése egy Docker-környezethez az Azure Resource Manager-sablonok használatával."
+title: Az Azure Docker Virtuálisgép-bővítmény használata az Azure CLI 1.0 |} Microsoft Docs
+description: Útmutató a Docker Virtuálisgép-bővítmény használatával gyorsan és biztonságosan központi telepítése egy Docker-környezethez az Azure Resource Manager-sablonok használatával.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: a3cbcf63533f4042dcd695e141655c5814bd7068
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2f981a50887138660d26a9d011870a05f1270c94
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension-with-the-azure-cli-10"></a>Hozzon létre egy Docker-környezetet a Docker Virtuálisgép-bővítmény használata az Azure CLI 1.0 Azure-ban
 Docker egy népszerű tárolóinak kezelése és a lemezkép-készítési platform, amely lehetővé teszi, hogy gyorsan alkalmazásában tárolók Linux (és a Windows is). Az Azure különböző módja van Docker igény szerint telepítheti. Ez a cikk foglalkozik a Docker Virtuálisgép-bővítmény és az Azure Resource Manager-sablonok használatával. 
@@ -192,7 +192,7 @@ Az előző példában egy meglévő gyors üzembe helyezés sablont használja. 
 
 Részletes útmutató Resource Manager-sablonok használatával olvasásával található [Azure Resource Manager áttekintése](../../azure-resource-manager/resource-group-overview.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Kezdésként érdemes lehet [a Docker démon TCP-port konfigurálása](https://docs.docker.com/engine/reference/commandline/dockerd/#/bind-docker-to-another-hostport-or-a-unix-socket), megértéséhez [Docker biztonsági](https://docs.docker.com/engine/security/security/), vagy használatával tároló üzembe helyezése [Docker Compose](https://docs.docker.com/compose/overview/). Az Azure Docker Virtuálisgép-bővítmény maga további információkért tekintse meg a [GitHub-projekt](https://github.com/Azure/azure-docker-extension/).
 
 Az Azure-ban további Docker telepítési beállításokkal kapcsolatos további információkért olvassa el:

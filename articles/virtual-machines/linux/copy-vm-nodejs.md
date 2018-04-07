@@ -1,10 +1,10 @@
 ---
-title: "Hozzon létre egy másolatot a Linux virtuális Gépet az Azure CLI 1.0 |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozzon létre egy példányát az Azure Linux virtuális gép az Azure CLI 1.0 a Resource Manager üzembe helyezési modellel"
+title: Hozzon létre egy másolatot a Linux virtuális Gépet az Azure CLI 1.0 |} Microsoft Docs
+description: Megtudhatja, hogyan hozzon létre egy példányát az Azure Linux virtuális gép az Azure CLI 1.0 a Resource Manager üzembe helyezési modellel
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
+manager: jeconnoc
 tags: azure-resource-manager
 ms.assetid: 770569d2-23c1-4a5b-801e-cddcd1375164
 ms.service: virtual-machines-linux
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2017
 ms.author: cynthn
-ms.openlocfilehash: 62ae54f3596c9383cbf3b401fcfdb42ecfdee63c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bb350f8d14ad451ad3ff7cd617ca3f90967aaa4b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-copy-of-a-linux-virtual-machine-running-on-azure-with-the-azure-cli-10"></a>Az Azure CLI 1.0 az Azure-on futó Linux virtuális gépek másolatának létrehozása
 Ez a cikk bemutatja, hogyan hozzon létre egy másolatot Linux a Resource Manager üzembe helyezési modellel rendszert futtató Azure virtuális gép (VM). Először másolja át az operációs rendszer és az adatlemezek új tárolót, majd állítsa be a hálózati erőforrások, majd az új virtuális gép létrehozása.
@@ -46,7 +46,7 @@ Győződjön meg arról, hogy teljesülnek a következő előfeltételek teljes�
 | Tárolónév |`azure storage container list -a <sourcestorageaccountname>` |
 | Forrásfájl virtuális gép virtuális merevlemez neve |`azure storage blob list --container <containerName>` |
 
-* Néhány az új virtuális gép kapcsolatos beállítások lesz szüksége:   <br> -Tároló neve   <br> Virtuálisgép - nevet   <br> Virtuálisgép - méret   <br> -vNet neve   <br> -Alhálózat neve   <br> -IP név   <br> -Hálózati név
+* Néhány az új virtuális gép kapcsolatos beállítások lesz szüksége:    <br> -Tároló neve    <br> Virtuálisgép - nevet    <br> Virtuálisgép - méret    <br> -vNet neve    <br> -Alhálózat neve    <br> -IP név    <br> -Hálózati név
 
 ## <a name="login-and-set-your-subscription"></a>Bejelentkezés és az előfizetés beállítása
 1. A parancssori felület bejelentkezni.
@@ -110,6 +110,6 @@ azure vm create -n myVM -l myLocation -g myResourceGroup -f myNic \
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Azure CLI használata az új virtuális gép kezelése című témakörben talál [Azure parancssori felület parancsait az Azure Resource Manager](../azure-cli-arm-commands.md).
 

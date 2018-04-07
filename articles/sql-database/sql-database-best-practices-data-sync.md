@@ -1,18 +1,18 @@
 ---
-title: "Ajánlott eljárások az Azure SQL Data-szinkronizálás (előzetes verzió) |} Microsoft Docs"
-description: "További információk a gyakorlati tanácsok a konfigurálása és futtatása az Azure SQL adatszinkronizálás (előzetes verzió)."
+title: Ajánlott eljárások az Azure SQL Data-szinkronizálás (előzetes verzió) |} Microsoft Docs
+description: További információk a gyakorlati tanácsok a konfigurálása és futtatása az Azure SQL adatszinkronizálás (előzetes verzió).
 services: sql-database
-ms.date: 11/13/2017
+ms.date: 04/01/2018
 ms.topic: article
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: 1c8ad4b318d52b5cb6af284b3304cfa7ad35522b
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 7ce7830d853a77b54706201fa614e9f4bee637a4
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="best-practices-for-sql-data-sync-preview"></a>Ajánlott eljárások az SQL adatszinkronizálás (előzetes verzió) 
 
@@ -20,7 +20,7 @@ Ez a cikk ismerteti a gyakorlati tanácsok az Azure SQL Data-szinkronizálás (e
 
 SQL adatszinkronizálás (előzetes verzió) áttekintését lásd: [adatok szinkronizálásának több felhőalapú és helyszíni adatbázisokat az Azure SQL adatszinkronizálás (előzetes verzió)](sql-database-sync-data.md).
 
-## <a name="security-and-reliability"></a>Biztonsága és megbízhatósága
+## <a name="security-and-reliability"></a> Biztonsága és megbízhatósága
 
 ### <a name="client-agent"></a>Ügyfélügynök
 
@@ -45,7 +45,7 @@ Az Azure SQL adatbázis hitelesítő adatai csak egyetlen halmazába támogatja.
 
 ## <a name="setup"></a>Beállítás
 
-### <a name="database-considerations-and-constraints"></a>Adatbázis használata és korlátozások
+### <a name="database-considerations-and-constraints"></a> Adatbázis használata és korlátozások
 
 #### <a name="sql-database-instance-size"></a>SQL adatbázis-példány mérete
 
@@ -54,7 +54,7 @@ Amikor létrehoz egy új SQL Database-példányt, adja meg a maximális méreté
 > [!IMPORTANT]
 > SQL adatszinkronizálás (előzetes verzió) az egyes adatbázisok további metaadatokat tárol. Fontos számításba ehhez a metaadathoz helyigényt számításakor. Mennyisége hozzáadott terhelést a táblák szélességének kapcsolódik (például keskeny táblák szükséges további terhelés) és az adatforgalom mennyisége.
 
-### <a name="table-considerations-and-constraints"></a>Tábla szempontok és korlátozások
+### <a name="table-considerations-and-constraints"></a> Tábla szempontok és korlátozások
 
 #### <a name="selecting-tables"></a>Táblák kiválasztása
 
@@ -66,7 +66,7 @@ A szinkronizálás csoport minden tábla elsődleges kulccsal kell rendelkeznie.
 
 Mielőtt éles SQL adatszinkronizálás (előzetes verzió) használ, a kezdeti és folyamatos szinkronizálás teljesítményének ellenőrzése.
 
-### <a name="provisioning-destination-databases"></a>Cél adatbázisok kiépítése
+### <a name="provisioning-destination-databases"></a> Cél adatbázisok kiépítése
 
 SQL adatszinkronizálás (előzetes verzió) Preview alapszintű adatbázis autoprovisioning biztosít.
 
@@ -90,7 +90,7 @@ SQL adatszinkronizálás (előzetes verzió) autoprovisioning rendelkezik a köv
 -   Csak akkor, ha a szolgáltatás kimenő próbált, használja az SQL adatszinkronizálás (előzetes verzió) autoprovisioning szolgáltatását.  
 -   Termelési környezetben az adatbázisséma kiépítéséhez.
 
-### <a name="locate-hub"></a>Hol található a központi adatbázis
+### <a name="locate-hub"></a> Hol található a központi adatbázis
 
 #### <a name="enterprise-to-cloud-scenario"></a>Vállalati felhő forgatókönyv
 
@@ -107,7 +107,7 @@ A fenti útmutatás alkalmazása összetett szinkronizálási csoportok beállí
 
 ## <a name="sync"></a>Sync
 
-### <a name="avoid-a-slow-and-costly-initial-synchronization"></a>Kerülje a lassú és költséges kezdeti szinkronizálás
+### <a name="avoid-a-slow-and-costly-initial-synchronization"></a> Kerülje a lassú és költséges kezdeti szinkronizálás
 
 Ebben a szakaszban arról lesz szó a kezdeti szinkronizálás szinkronizálási csoport. Útmutató: a vártnál tovább tart, és költségesebb, mint a szükséges egy kezdeti szinkronizálást megelőzése érdekében.
 
@@ -121,13 +121,13 @@ Ha az adatbázisok különböző adatközpontokban, minden egyes sorára közöt
 
 Ha lehetséges indítsa el a szinkronizálási csoport adatbázisok csak az egyik az adatokkal.
 
-### <a name="design-to-avoid-synchronization-loops"></a>Tervezési szinkronizálási hurkok elkerülése érdekében
+### <a name="design-to-avoid-synchronization-loops"></a> Tervezési szinkronizálási hurkok elkerülése érdekében
 
 Szinkronizálási ciklust fordul elő, ha a szinkronizálás csoporton belül. a körkörös hivatkozás. Adott esetben egy adatbázis minden módosításakor feldolgozásával a végtelenségig és körkörösen replikálódik a szinkronizálási csoport adatbázisok keresztül.   
 
 Győződjön meg arról, hogy elkerülheti a szinkronizálási ciklusok, mert okozhat teljesítménycsökkenést, és jelentősen növeli a költségeket.
 
-### <a name="handling-changes-that-fail-to-propagate"></a>Propagálása eleget nem tevő változások
+### <a name="handling-changes-that-fail-to-propagate"></a> Propagálása eleget nem tevő változások
 
 #### <a name="reasons-that-changes-fail-to-propagate"></a>Módosítások propagálása eleget nem tevő okok
 
@@ -153,7 +153,7 @@ A szinkronizálási csoport és az adatbázis állapotának rendszeresen felüle
 
 ## <a name="maintenance"></a>Karbantartás
 
-### <a name="avoid-out-of-date-databases-and-sync-groups"></a>Elavult adatbázisok elkerülése és csoportok szinkronizálása
+### <a name="avoid-out-of-date-databases-and-sync-groups"></a> Elavult adatbázisok elkerülése és csoportok szinkronizálása
 
 A szinkronizálás vagy egy adatbázis szinkronizálási csoportban elavult válhat. A sync-csoport állapota esetén **elavult**, hogy nem működik. Ha egy adatbázis állapota van **elavult**, tárolt adatok elvesztésével járhat. A legcélszerűbb elkerülése érdekében ebben a forgatókönyvben helyett a helyreállítás közben.
 
@@ -178,7 +178,7 @@ Elavult szinkronizálási csoportok megelőzése érdekében:
 -   Frissítse az idegen kulcsok értékét nem sikerült sorokat szereplő értékek szerepeljenek.
 -   Frissítse a sikertelen sorban levő adatok értékeket, amelyek kompatibilisek a séma vagy a céladatbázis külső kulcsok.
 
-### <a name="avoid-deprovisioning-issues"></a>Kerülje a megszüntetés problémák
+### <a name="avoid-deprovisioning-issues"></a> Kerülje a megszüntetés problémák
 
 Bizonyos esetekben előfordulhat, hogy adatbázis regisztrációját a ügyfél ügynökkel okozhat szinkronizálása sikertelen.
 
@@ -199,7 +199,7 @@ Ebben a forgatókönyvben helyreállítás:
 2. Az adatbázis vissza minden, az eltávolított szinkronizálási csoporthoz hozzáadni.  
 3. Telepítse minden érintett szinkronizálású csoport (Ez a művelet látja el az adatbázis).  
 
-### <a name="modifying-your-sync-group"></a>A szinkronizálás csoport módosítása
+### <a name="modifying-your-sync-group"></a> A szinkronizálás csoport módosítása
 
 Ne kísérelje meg a adatbázis eltávolítása egy szinkronizálási csoportból, és módosítsa a szinkronizálás csoport első központi telepítése egy változtatás nélkül.
 
@@ -207,16 +207,16 @@ Ehelyett először távolítsa el a adatbázis szinkronizálási csoportból. Ez
 
 Ha egy adatbázis eltávolítása, és szerkessze a egy szinkronizálás csoport első központi telepítése egy változtatás nélkül kísérli meg, egy vagy a másik művelet sikertelen lesz. A portál felület inkonzisztens válhat. Ha ez történik, frissítse a lapot a helyes állapot visszaállításához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 SQL adatszinkronizálás (előzetes verzió) kapcsolatos további információkért lásd:
 
 -   [Szinkronizálja az adatokat több felhőalapú és helyszíni adatbázisokat az Azure SQL adatszinkronizálás (előzetes verzió)](sql-database-sync-data.md)
 -   [Azure SQL adatszinkronizálás (előzetes verzió) beállítása](sql-database-get-started-sql-data-sync.md)
--   [A figyelő az Azure SQL adatszinkronizálás (előzetes verzió) az OMS szolgáltatáshoz](sql-database-sync-monitor-oms.md)
+-   [A figyelő az Azure SQL Data szinkronban (előzetes verzió) Naplóelemzési](sql-database-sync-monitor-oms.md)
 -   [Problémák az Azure SQL adatszinkronizálás (előzetes verzió)](sql-database-troubleshoot-data-sync.md)  
 -   Teljes PowerShell-példák bemutatják, hogyan konfigurálja az SQL adatszinkronizálás (előzetes verzió):  
     -   [A PowerShell szolgáltatás használatával több Azure SQL-adatbázisok közötti szinkronizálása](scripts/sql-database-sync-data-between-sql-databases.md)  
-    -   [Egy Azure SQL-adatbázis és a helyszíni SQL Server-adatbázisok közötti szinkronizálása a PowerShell használatával](scripts/sql-database-sync-data-between-azure-onprem.md)  
+    -   [A PowerShell használata egy Azure-beli SQL Database-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-azure-onprem.md)  
 -   [Az SQL adatszinkronizálás (előzetes verzió) REST API-dokumentáció letöltése](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)  
 
 SQL-adatbázis kapcsolatos további információkért lásd:

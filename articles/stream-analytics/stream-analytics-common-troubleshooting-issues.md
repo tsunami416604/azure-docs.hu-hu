@@ -1,24 +1,19 @@
 ---
-title: "Az Azure Stream Analytics helytelen formátumú bemeneti eseményeket hibaelhárítása |} Microsoft Docs"
-description: "Honnan tudhatom, hogy melyik esemény szerepel a bemeneti adatok okozza a problémát a Stream Analytics-feladatok"
-keywords: 
-documentationcenter: 
+title: Az Azure Stream Analytics helytelen formátumú bemeneti eseményeket hibaelhárítása
+description: Honnan tudhatom, hogy melyik esemény szerepel a bemeneti adatok okozza a problémát a Stream Analytics-feladatok
 services: stream-analytics
-author: SnehaGunda
+author: jasonwhowell
 manager: Kfile
-ms.assetid: 
+ms.author: jasonh
+ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 03/05/2018
-ms.author: sngun
-ms.openlocfilehash: 6b6c154568fe97b7495ae70dc162dc475169afea
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: fcbb03b4d9aed797cf99c374661c743d39f81276
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="common-issues-in-stream-analytics-and-steps-to-troubleshoot"></a>Gyakori problémák hibaelhárítása a Stream Analytics és a lépéseket a
 
@@ -39,7 +34,7 @@ Engedélyezheti a diagnosztikai naplókat a figyelmeztetés részletes adatainak
 
 3. Ahhoz, hogy a JSON-adatokat, amelyek formátuma nem megfelelő, a CheckMalformedEvents.cs kódot futtatni, akkor létrehozhat az informatikai a [minták GitHub-tárházban](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH). Ezzel a kóddal olvassa be a partíció azonosítója, eltolás:, adott eltolás található adatok kinyomtatása. 
 
-4. Ha olvasni az adatokat, elemezheti és javítsa ki a szerializálási formátum. 
+4. Az adatok beolvasása után elemezheti és kijavíthatja a szerializáció formátumát. 
 
 ## <a name="handling-duplicate-records-when-using-azure-sql-database-as-output-for-a-stream-analytics-job"></a>Ismétlődő rekordok kezelése az Azure SQL Database használata kimenetként a Stream Analytics-feladat
 

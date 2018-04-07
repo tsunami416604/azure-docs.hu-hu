@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/03/2018
 ms.author: davidmu
-ms.openlocfilehash: 76ed4dac40872bf6db07b26c5805a4db62dc9dfc
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 80889ac29b6d92f17fb9c9c693fa733085ce7f1c
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Az Azure Active Directory B2C: Áttelepítheti a felhasználókat a közösségi identitások
 Ha Identitásszolgáltatóként az Azure AD B2C áttelepítését tervezi, is szükség lehet áttelepítheti a felhasználókat a közösségi identitásokat. Ez a cikk azt ismerteti, hogyan telepíthet át meglévő közösségi identitások fiókokat, például: az Azure AD B2C Facebook, a LinkedIn, a Microsoft és a Google fiókokat. Ez a cikk vonatkozik is összevont identitások kialakítása, azonban ezek áttelepítések amelyek kevésbé gyakran.
@@ -43,7 +43,7 @@ Ez a cikk a felhasználó áttelepítési cikk folytatása, és közösségi ide
     ]
     ```
 
-* Az identitásszolgáltatótól függően a **közösségi Felhasználóazonosító** egyedi érték a megadott felhasználó `per application` vagy fejlesztői fiók. Az Azure AD B2C házirend konfigurálása a közösségi szolgáltató korábban hozzárendelt azonos alkalmazás-azonosítóval. Vagy egy másik alkalmazás `within the same development account`.
+* Az identitásszolgáltatótól függően a **közösségi Felhasználóazonosító** egy egyedi érték, egy alkalmazás vagy a fejlesztői fiók az adott felhasználó számára. Az Azure AD B2C házirend konfigurálása a közösségi szolgáltató korábban hozzárendelt azonos alkalmazás-azonosítóval. Vagy a azonos fejlesztői fiókban egy másik alkalmazás.
 
 ## <a name="use-graph-api-to-migrate-users"></a>A Graph API segítségével áttelepítheti a felhasználókat
 Az Azure AD B2C felhasználói fiók segítségével létrehozhat [Graph API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet). A Graph API-val folytatott kommunikációhoz, először rendelkeznie kell egy szolgáltatás-rendszergazdai jogosultságokkal rendelkező fiók. Az Azure Active Directoryban regisztrálja a az alkalmazás és az Azure AD hitelesítési. Az alkalmazás hitelesítő adatok Alkalmazásazonosítót és az Alkalmazáskulcsot. Az alkalmazás maga nem felhasználóként, a Graph API hívása funkcionál. Kövesse az utasításokat az 1. lépésben a [felhasználóáttelepítés](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-user-migration#step-1-use-graph-api-to-migrate-users) cikk.

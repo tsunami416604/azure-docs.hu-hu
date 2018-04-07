@@ -1,6 +1,6 @@
 ---
-title: "Az Azure SQL Database-alapú alkalmazásfejlesztés áttekintése | Microsoft Docs"
-description: "Megismerheti az SQL Database-hez elérhető adatkapcsolattárakat és ajánlott eljárásokat az alkalmazások csatlakoztatásához."
+title: Az Azure SQL Database-alapú alkalmazásfejlesztés áttekintése | Microsoft Docs
+description: Megismerheti az SQL Database-hez elérhető adatkapcsolattárakat és ajánlott eljárásokat az alkalmazások csatlakoztatásához.
 services: sql-database
 author: stevestein
 manager: craigg
@@ -8,13 +8,13 @@ ms.reviewer: genemi
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: article
-ms.date: 08/17/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: ec3569d37d399590b0c306a85f199221e7812253
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: dc78a43fb99428eac921dd0cfffe5547f523a133
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="sql-database-application-development-overview"></a>SQL-adatbázis alkalmazások fejlesztői áttekintés
 Ez a cikk ismerteti az alapvető szempontokat, amelyeket a fejlesztőknek érdemes figyelembe venniük az Azure SQL Database-hez való csatlakozáshoz használt kód írásakor.
@@ -47,7 +47,7 @@ Az Azure SQL Database erőforrásokat biztosít a hozzáférés korlátozásáho
 * Az SQL Database-ben a **USE myDatabaseName;** Transact-SQL utasítással nem válthat másik adatbázisra.
 * További információ: [SQL-adatbázis biztonsági: adatbázis-hozzáférési és bejelentkezési biztonság kezeléséhez](sql-database-manage-logins.md).
 
-## <a name="resiliency"></a>Resiliency
+## <a name="resiliency"></a>Rugalmasság
 Ha átmeneti hiba történik az SQL Database-hez való kapcsolódáskor, akkor a kódnak újra kell próbálkoznia a hívással.  Ajánlott, hogy az újrapróbálkozási logika leállítási logikát használjon, hogy több ügyfél egyidejű újrapróbálkozási kísérlete ne terhelje túl az SQL Database-t.
 
 * Kódminták: mintakódok, mely újrapróbálkozási logika, lásd: a következő nyelvű-példák: [adatkapcsolattárak SQL Database és SQL Server](sql-database-libraries.md).

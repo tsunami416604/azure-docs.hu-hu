@@ -1,19 +1,19 @@
 ---
-title: "Az Azure használatával nyilvános adatkészletek |} Microsoft Docs"
-description: "Nyilvános adatkészletek ismerje meg, hogy prototípus segítségével, és Azure analytics szolgáltatások és -megoldások teszteléséhez."
+title: Az Azure használatával nyilvános adatkészletek |} Microsoft Docs
+description: Nyilvános adatkészletek ismerje meg, hogy prototípus segítségével, és Azure analytics szolgáltatások és -megoldások teszteléséhez.
 services: sql-database
 author: douglaslMS
 manager: craigg
 ms.custom: reference
 ms.service: sql-database
 ms.topic: article
-ms.date: 03/20/2017
+ms.date: 04/01/2018
 ms.author: douglasl
-ms.openlocfilehash: 34ff31c0542fba5fbd132c89c6bb028ba9ca6b88
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d6fd83f2a6648d3ba6c3ef55b832820d62ed5690
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>A teszteléshez és prototípusának nyilvános adatkészletek
 

@@ -1,13 +1,13 @@
 ---
-title: "Létrehozását és kezelését egy Windows virtuális Gépet az Azure-ban, Python |} Microsoft Docs"
-description: "További Python használandó létrehozása és kezelése a Windows Azure-ban."
+title: Létrehozását és kezelését egy Windows virtuális Gépet az Azure-ban, Python |} Microsoft Docs
+description: További Python használandó létrehozása és kezelése a Windows Azure-ban.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: davidmu1
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: davidmu
-ms.openlocfilehash: bb777d41570d7b1dc97402d532519488912948e3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d56143a470be4da1faaea949ea286fca1ffd319d
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Létrehozása és kezelése Windows-alapú virtuális gépek az Azure-ban, Python
 
@@ -363,7 +363,7 @@ Most, hogy létrehozta a támogató erőforrásokat, létrehozhat egy virtuális
 
 ## <a name="perform-management-tasks"></a>Felügyeleti feladatok végrehajtása
 
-A virtuális gépek életciklusa folyamán érdemes lehet indítása, leállítása vagy törlése a virtuális gépek például a felügyeleti feladatok futtatásához. Emellett érdemes bonyolult vagy ismétlődő feladatok automatizálásához kódot létrehozni.
+A virtuális gépek életciklusa során szükség lehet felügyeleti feladatok futtatására, például a virtuális gép indítására, leállítására vagy törlésére. Emellett érdemes bonyolult vagy ismétlődő feladatok automatizálásához kódot létrehozni.
 
 ### <a name="get-information-about-the-vm"></a>A virtuális gép adatainak beolvasása
 
@@ -570,7 +570,7 @@ Mivel az Azure-ban használt erőforrásokhoz van szó, ajánlott mindig egy tö
     Öt perc a konzol alkalmazás teljesen futtatásához indítás kell vennie a befejezéshez. Miután az alkalmazás összes erőforrását előtt befejeződött, és az erőforráscsoport törlődnek több percig is eltarthat.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha problémák merültek fel az üzembe helyezés során, a következő lépésről lásd: [Troubleshooting resource group deployments with Azure Portal](../../resource-manager-troubleshoot-deployments-portal.md) (Erőforráscsoportok üzemelő példányainak hibaelhárítása az Azure Portalon)
 - További információ a [Azure Python kódtár](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)

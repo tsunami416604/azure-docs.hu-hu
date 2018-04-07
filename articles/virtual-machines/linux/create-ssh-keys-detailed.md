@@ -1,13 +1,13 @@
 ---
-title: "SSH kulcspárok létrehozásának részletes lépései Linux rendszerű virtuális gépekhez az Azure-on | Microsoft Docs"
-description: "Ismerje meg a nyilvános és titkos SSH-kulcspárok létrehozásának a további lépéseit az Azure-ban futó Linux rendszerű virtuális gépek esetén a különböző használati esetekhez tartozó konkrét tanúsítványokkal együtt."
+title: SSH kulcspárok létrehozásának részletes lépései Linux rendszerű virtuális gépekhez az Azure-on | Microsoft Docs
+description: Ismerje meg a nyilvános és titkos SSH-kulcspárok létrehozásának a további lépéseit az Azure-ban futó Linux rendszerű virtuális gépek esetén a különböző használati esetekhez tartozó konkrét tanúsítványokkal együtt.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
-tags: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/28/2017
 ms.author: danlep
-ms.openlocfilehash: 1308812287fa4484e244c47497a7aef7aa994b14
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 20d36f5e377f2d5af588319cee2be1808571f905
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="detailed-walk-through-to-create-an-ssh-key-pair-and-additional-certificates-for-a-linux-vm-in-azure"></a>Részletes útmutató egy SSH-kulcspár és további tanúsítványok Linux virtuális géphez való létrehozásához az Azure-ban
 Egy SSH-kulcspárral létrehozhat olyan virtuális gépeket az Azure-ban, amelyek SSH-kulcsokat használnak a hitelesítéshez, aminek köszönhetően nincs szükség jelszavakra a bejelentkezéshez. A jelszavak kitalálhatók, és szüntelen találgatásos támadási kísérleteknek teszik ki a virtuális gépet a jelszó kiderítése céljából. Az Azure CLI vagy a Resource Manager-sablonok használatával létrehozott virtuális gépek az üzembe helyezés részeként tartalmazhatják a nyilvános SSH-kulcsot, így nincs szükség az SSH-hoz a jelszavas belépést letiltó, üzembe helyezés utáni konfigurálási lépésre. A cikkben részletes lépéseket és további példákat a tanúsítványok előállítása, például Linux virtuális gépekhez való használatra. Ha gyorsan szeretne létrehozni és használni egy SSH-kulcspárt, tekintse meg a következő szakaszt: [Nyilvános és titkos SSH-kulcspár létrehozása és használata az Azure-ban Linux rendszerű virtuális gépekhez](mac-create-ssh-keys.md).
@@ -55,7 +55,7 @@ ssh-keygen \
 
 `ssh-keygen` = a kulcsok létrehozásához használt program,
 
-`-t rsa`= a kulcs létrehozásához, amely típusa a [RSA formátum](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) 
+`-t rsa` = a kulcs létrehozásához, amely típusa a [RSA formátum](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) 
  `-b 2048` = a kulcs bitjeinek száma
 
 `-C "azureuser@myserver"` = a nyilvános kulcsfájl végéhez fűzött megjegyzés az egyszerű azonosítás érdekében.  Általában e-mailt használnak megjegyzésként, de használhat bármit, ami a leginkább megfelel az infrastruktúra szempontjából.
@@ -208,7 +208,7 @@ ssh fedora22
 
 Az `ssh fedora22` futtatásakor az SSH először megkeresi és betölti a `Host fedora22` blokk beállításait, majd betölti az összes többi beállítást az utolsó `Host *` blokkból.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezután létre kell hoznia az Azure Linux virtuális gépeket az új nyilvános SSH-kulcs használatával.  A bejelentkezéshez nyilvános SSH-kulccsal létrehozott Azure virtuális gépek biztonságosabbak, mint az alapértelmezett bejelentkezési módszer jelszavaival létrehozott virtuális gépek.  Az SSH-kulcsokkal létrehozott Azure virtuális gépek alapértelmezés szerint letiltott jelszavakkal vannak konfigurálva, ami megakadályozza a találgatásos támadásokat.
 

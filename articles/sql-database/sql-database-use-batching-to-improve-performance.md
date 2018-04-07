@@ -1,19 +1,19 @@
 ---
-title: "Az Azure SQL Database-alkalmazás teljesítményének javítása érdekében a kötegelés használata"
-description: "A témakör igazolja, hogy kötegelési adatbázis-műveletek sebessége nagy mértékben imroves és méretezhetőséget biztosít a az Azure SQL adatbázis-alkalmazások. Habár ezek a technológiák kötegelési bármely SQL Server-adatbázis is működik, a cikk célja az Azure-on."
+title: Az Azure SQL Database-alkalmazás teljesítményének javítása érdekében a kötegelés használata
+description: A témakör igazolja, hogy kötegelési adatbázis-műveletek sebessége nagy mértékben imroves és méretezhetőséget biztosít a az Azure SQL adatbázis-alkalmazások. Habár ezek a technológiák kötegelési bármely SQL Server-adatbázis is működik, a cikk célja az Azure-on.
 services: sql-database
 author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: article
-ms.date: 07/12/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 5c7846fdd8d6a7584cab2b4f3811151332171ba4
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3367ecc48ee8da7aaf657b5278acb19df5a96e75
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>SQL-adatbázis teljesítményének javítása érdekében a kötegelés használata
 Az Azure SQL Database-műveletek kötegelése jelentősen javítja a teljesítményét és méretezhetőségét, az alkalmazások. Előnyeinek megismerése, hogy ez a cikk első része ismertet néhány minta vizsgálati eredmények, hasonlítsa össze az SQL-adatbázis szekvenciális és kötegelt kérelmek. A cikk fennmaradó a technikák, a forgatókönyvek és a szempontokat tartalmaz, amelyek segítséget nyújtanak az Azure-alkalmazásokban sikeresen kötegelés használandó jeleníti meg.
@@ -154,7 +154,7 @@ A kódban, hozzon létre egy **DataTable** pontos azonos nevét és a táblatíp
         cmd.ExecuteNonQuery();
     }
 
-Az előző példában a **SqlCommand** objektum egy tábla értékű paraméter a sor beszúrása  **@TestTvp** . A korábban létrehozott **DataTable** objektum ezt a paramétert hozzá van rendelve a **SqlCommand.Parameters.Add** metódust. A teljesítmény egy hívásban Beszúrások kötegelés jelentősen növeli a szekvenciális Beszúrások keresztül.
+Az előző példában a **SqlCommand** objektum egy tábla értékű paraméter a sor beszúrása **@TestTvp**. A korábban létrehozott **DataTable** objektum ezt a paramétert hozzá van rendelve a **SqlCommand.Parameters.Add** metódust. A teljesítmény egy hívásban Beszúrások kötegelés jelentősen növeli a szekvenciális Beszúrások keresztül.
 
 Az előző példa folytatásaként javításához használja a tárolt eljárás egy szöveges parancs helyett. A következő Transact-SQL-parancs létrehoz egy tárolt eljárás, amely a **SimpleTestTableType** tábla értékű paraméter.
 

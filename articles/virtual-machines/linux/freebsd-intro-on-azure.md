@@ -1,11 +1,11 @@
 ---
-title: "Bevezetés az Azure freebsd rendszerű |} Microsoft Docs"
-description: "További információ az Azure-on freebsd rendszerű virtuális gépek használatáról"
+title: Bevezetés az Azure freebsd rendszerű |} Microsoft Docs
+description: További információ az Azure-on freebsd rendszerű virtuális gépek használatáról
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: thomas1206
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 32b87a5f-d024-4da0-8bf0-77e233d1422b
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: huishao
-ms.openlocfilehash: e47a00a8375659f9112da57f9e7a4747f10f8f16
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 9c7cf223eab3e989436e12c39b122f2aee7619a0
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Az Azure-on freebsd rendszerű bemutatása
 Ez a témakör az Azure-ban freebsd rendszerű virtuális gépet futtató áttekintését.
@@ -130,7 +130,7 @@ $ sudo <COMMAND>
 Opcionálisan beszerezhet egy legfelső szintű rendszerhéj használatával `sudo -s`.
 
 ## <a name="known-issues"></a>Ismert problémák
-A [Azure virtuális gép Vendégügynökének](https://github.com/Azure/WALinuxAgent/) 2.2.2 rendelkezik [ismert probléma] verziója (https://github.com/Azure/WALinuxAgent/pull/517), ami a kiépítés sikertelen freebsd rendszerű virtuális gép az Azure-on. A javítás által rögzített [Azure virtuális gép Vendégügynökének](https://github.com/Azure/WALinuxAgent/) 2.2.3 verziója és a későbbi kibocsátásokban megtörténik. 
+A [Azure virtuális gép Vendégügynökének](https://github.com/Azure/WALinuxAgent/) 2.2.2 rendelkezik [ismert probléma] verziója (https://github.com/Azure/WALinuxAgent/pull/517) , ami a kiépítés sikertelen freebsd rendszerű virtuális gép az Azure-on. A javítás által rögzített [Azure virtuális gép Vendégügynökének](https://github.com/Azure/WALinuxAgent/) 2.2.3 verziója és a későbbi kibocsátásokban megtörténik. 
 
 ## <a name="next-steps"></a>További lépések
 * Ugrás a [Azure piactér](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd110/) freebsd rendszerű virtuális gép létrehozása.

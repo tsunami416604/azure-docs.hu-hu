@@ -1,11 +1,11 @@
 ---
-title: "Az Azure CosmosDB Graph API a .NET SDK & erőforrások |} Microsoft Docs"
-description: "Tudnivalók az Azure CosmosDB Graph API, beleértve a kiadási dátum, a használatból való kivonást dátumot és az egyes verziók között végrehajtott módosításokat."
+title: Az Azure CosmosDB Graph API a .NET SDK & erőforrások |} Microsoft Docs
+description: Tudnivalók az Azure CosmosDB Graph API, beleértve a kiadási dátum, a használatból való kivonást dátumot és az egyes verziók között végrehajtott módosításokat.
 services: cosmos-db
 documentationcenter: .net
 author: luisbosquez
-manager: jhubbard
-ms.assetid: 
+manager: kfile
+ms.assetid: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: lbosq
-ms.openlocfilehash: 6bae97783b63b76d2de2dbcd5e618f75bc4d701d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 41608e76216f63ccf3165cc3959787c661d71fa0
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-graph-net-api-download-and-release-notes"></a>Az Azure Cosmos DB Graph API-val .NET: Töltse le és kibocsátási megjegyzések
 

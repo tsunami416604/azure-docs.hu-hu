@@ -1,20 +1,20 @@
 ---
-title: "Mindig titkosítja: Azure SQL Database - Windows-tanúsítványtároló |} Microsoft Docs"
-description: "Ez a cikk bemutatja, hogyan bizalmas adatok védelmének az adatbázis-titkosítás az SQL-adatbázisban az SQL Server Management Studio (SSMS) mindig titkosítja varázsló használatával. Azt is bemutatja, hogyan tárolja a titkosítási kulcsok a Windows tanúsítványtárolójában."
-keywords: "Mindig titkosítja adatok, sql-titkosítás, az adatbázis-titkosítás, bizalmas adatok titkosításához"
+title: 'Mindig titkosítja: Azure SQL Database - Windows-tanúsítványtároló |} Microsoft Docs'
+description: Ez a cikk bemutatja, hogyan bizalmas adatok védelmének az adatbázis-titkosítás az SQL-adatbázisban az SQL Server Management Studio (SSMS) mindig titkosítja varázsló használatával. Azt is bemutatja, hogyan tárolja a titkosítási kulcsok a Windows tanúsítványtárolójában.
+keywords: Mindig titkosítja adatok, sql-titkosítás, az adatbázis-titkosítás, bizalmas adatok titkosításához
 services: sql-database
 author: stevestein
 manager: jhubbard
 ms.service: sql-database
 ms.custom: security
 ms.topic: article
-ms.date: 03/02/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 1bb3f6bd3b4bfc1546e992734a85921248eff8fd
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 38c4a724cc963370e60ae796729476c3bbc0342a
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-the-windows-certificate-store"></a>Mindig titkosítja: Az SQL-adatbázis bizalmas adatok védelmét, és a titkosítási kulcsok tárolása a Windows tanúsítványtároló
 
@@ -57,7 +57,7 @@ Az oktatóanyag későbbi részében szüksége lesz a kapcsolati karakterlánco
 ## <a name="connect-to-the-database-with-ssms"></a>Kapcsolódás az adatbázishoz SSMS segítségével
 Nyissa meg a szolgáltatáshoz az SSMS, és csatlakozzon a kiszolgálóhoz, az egészségügyi ellátó intézmény adatbázissal.
 
-1. Nyissa meg a szolgáltatáshoz az SSMS. (Kattintson **Connect** > **adatbázismotor** megnyitásához a **kapcsolódás a kiszolgálóhoz** ablakot, ha még nincs nyitva).
+1. Nyissa meg az SSMS-t. (Kattintson **Connect** > **adatbázismotor** megnyitásához a **kapcsolódás a kiszolgálóhoz** ablakot, ha még nincs nyitva).
 2. Adja meg a kiszolgáló nevét és hitelesítő adatait. Az SQL-adatbázis paneljén található a kiszolgáló nevét, és a kapcsolati karakterláncban korábban kimásolt. Írja be a teljes kiszolgáló neve például *database.windows.net*.
    
     ![Másolja a kapcsolati karakterláncot](./media/sql-database-always-encrypted/ssms-connect.png)

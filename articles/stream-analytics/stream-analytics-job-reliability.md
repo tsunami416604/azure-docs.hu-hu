@@ -1,22 +1,19 @@
 ---
-title: Az Azure Stream Analytics-feladatok folyamatossága |} Microsoft Docs
-description: Így a Stream Analytics útmutatást frissítés rugalmas feladatok.
+title: Az Azure Stream Analytics-feladatok folyamatossága
+description: A cikk útmutatást az refs és a Stream Analytics-feladatok frissítése.
 services: stream-analytics
-documentationCenter: ''
 author: jseb225
-manager: ryanw
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/28/2017
+manager: kfile
 ms.author: jeanb
-ms.openlocfilehash: 9f5306e4cbcfc2b554a688e2d502cc4b40845d60
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/28/2017
+ms.openlocfilehash: 47ccfe99d2ee6576dbb70324eb383f52d2a1b2e7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="guarantee-stream-analytics-job-reliability-during-service-updates"></a>Stream Analytics-feladat megbízhatóságának biztosítása szolgáltatás frissítései során
 

@@ -1,11 +1,11 @@
 ---
-title: "Vendég kezelésére, az Azure ad-vel hozzáférni értékelést |} Microsoft Docs"
-description: "Vendégfelhasználók kezelése egy csoportba, vagy az alkalmazás Azure Active Directory hozzáférési értékelést rendelve"
+title: Vendég kezelésére, az Azure ad-vel hozzáférni értékelést |} Microsoft Docs
+description: Vendégfelhasználók kezelése egy csoportba, vagy az alkalmazás Azure Active Directory hozzáférési értékelést rendelve
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: markwahl-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.openlocfilehash: 8d5cc8035d085ac9c8fc46077376836726afbb1a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 564f4f4a3f7532a7419e15b91fdbae9ee12088fd
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Az Azure ad-val vendég-hozzáférés kezelése értékelést eléréséhez
 
@@ -105,17 +105,17 @@ Egyes szervezetekben vendégek nem feltétlenül csoporttagságok tudomást.
 > [!NOTE]
 > Az Azure-portálon korábbi verzióiban nem engedélyezi a Vendég UserType rendelkező felhasználók rendszergazdai hozzáféréssel. Néhány esetben a rendszergazda a címtárban módosulhatott egy Vendég UserType érték tagra PowerShell használatával. Ez a változás korábban történt a címtárban, ha az előző lekérdezés nem közé tartozik a Vendég felhasználó felhasználók hagyományosan kellett a felügyeleti hozzáférési jogosultsága. Ebben az esetben kell a Vendég UserType módosítsa, vagy manuálisan közé tartozik a Vendég a csoport tagságát.
 
-1. Biztonsági csoport létrehozása az Azure AD és a vendégek is, ha a megfelelő csoport nem létezik. Például a vendégek manuálisan karbantartott tagként egy csoportot is létrehozhat. Vagy dinamikus csoportot hozhat létre a Vendég UserType attribútuma értékkel rendelkező felhasználók a Contoso bérlő például "Contoso vendégek" nevére.
+1. Biztonsági csoport létrehozása az Azure AD és a vendégek is, ha a megfelelő csoport nem létezik. Például a vendégek manuálisan karbantartott tagként egy csoportot is létrehozhat. Vagy dinamikus csoportot hozhat létre a Vendég UserType attribútuma értékkel rendelkező felhasználók a Contoso bérlő például "Contoso vendégek" nevére.  A hatékonyság érdekében győződjön meg arról a csoport döntő többsége vendégek – ne válasszon ki egy csoportot, amelyen a felhasználók, akik nem kell vizsgálni.
 
 2. A csoport egy hozzáférés-ellenőrzés indítása, jelölje be a megtekinteni jogosultak a saját magukat. További információkért lásd: [Hozzáférési felülvizsgálat létrehozása](active-directory-azure-ad-controls-create-access-review.md).
 
-3. Kérje meg minden Vendég számára tekintse át a saját tagságát. Alapértelmezés szerint minden Vendég meghívót elfogadó kap egy e-mailt egy hivatkozás, az Azure AD számára a hozzáférési panelen a szervezet áttekintése. Azure AD is rendelkezik a vendégek utasításokat való [tekintse át a hozzáférésüket](active-directory-azure-ad-controls-perform-access-review.md).
+3. Kérje meg minden Vendég számára tekintse át a saját tagságát. Alapértelmezés szerint minden Vendég meghívót elfogadó kap egy e-mailt egy hivatkozás, az Azure AD számára a hozzáférési panelen a szervezet áttekintése. Azure AD is rendelkezik a vendégek utasításokat való [tekintse át a hozzáférésüket](active-directory-azure-ad-controls-perform-access-review.md).  E vendégek, akik a meghívott felhasználó nem fogadta el a felülvizsgálati eredményeinek mint "Nem kap értesítést" megjelenik.
 
 4. Felülvizsgáló, biztosítva a bevitel után állítsa le a áttekintése. További információkért lásd: [Hozzáférési felülvizsgálat befejezése](active-directory-azure-ad-controls-complete-access-review.md).
 
-5. Távolítsa el a vendég hozzáférés a Vendégek, akik megvonták, nem fejeződött be a felülvizsgálati vagy korábban nem fogadta el a meghívást. Ha a vendégek némelyike partnerek, akik a kiválasztott részt a tekintse át, mert azok nem korábban elfogadja a meghívót, letilthatja a fiókjukat az Azure-portálon vagy a PowerShell használatával. Ha a vendég nem engedéllyel kell rendelkeznie, és egy ügyfél nem, akkor eltávolíthatja a user objektum a címtár az Azure-portálon vagy a PowerShell használatával.
+5. Távolítsa el a vendég hozzáférés a Vendégek, akik megvonták, nem fejeződött be a felülvizsgálati vagy korábban nem fogadta el a meghívást. Ha a vendégek némelyike partnerek, akik a felülvizsgálati részt sincs kijelölve, vagy azokat korábban nem elfogadja a meghívót, letilthatja a fiókok az Azure-portálon vagy a PowerShell használatával. Ha a vendég nem engedéllyel kell rendelkeznie, és egy ügyfél nem, akkor eltávolíthatja a user objektum a címtárban a Vendég felhasználói objektum törlése az Azure portálon vagy a PowerShell használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Hozzáférési felülvizsgálat létrehozása egy csoport tagjai számára vagy egy alkalmazáshoz való hozzáférés céljából](active-directory-azure-ad-controls-create-access-review.md)
 

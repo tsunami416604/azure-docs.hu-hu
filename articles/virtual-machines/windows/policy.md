@@ -1,11 +1,11 @@
 ---
-title: "A házirendek a Windows-alapú virtuális gépek Azure-ban biztonság kényszerítése |} Microsoft Docs"
-description: "Egy házirend alkalmazása az Azure Resource Manager Windows virtuális gépeket"
+title: A házirendek a Windows-alapú virtuális gépek Azure-ban biztonság kényszerítése |} Microsoft Docs
+description: Egy házirend alkalmazása az Azure Resource Manager Windows virtuális gépeket
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: singhkays
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 0b71ba54-01db-43ad-9bca-8ab358ae141b
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: kasing
-ms.openlocfilehash: 4bb9a5087ead309ab24128594c53ae313cd4b63c
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 7ec348bbd75bfce268d1e3d7a46b79397ee39f98
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>Windows virtuális gépek az Azure Resource Manager-szabályzatok alkalmazása
 Házirendek segítségével a szervezetek kényszerítheti a különböző egyezmények és szabályok a vállalaton belül. A kívánt viselkedés végrehajtását segítségével mérsékelhetik a kockázatokat hozzájárul a szervezet sikeres. Ez a cikk azt ismerteti használatát Azure Resource Manager-házirendek megadhatók a kívánt viselkedés a szervezet virtuális gépekhez.
@@ -225,7 +225,7 @@ A következő példa meghatározza, hogy a jóváhagyott lemezkép-azonosítók:
 ```
 
 
-## <a name="azure-hybrid-use-benefit"></a>Azure hibrid használata juttatás
+## <a name="azure-hybrid-use-benefit"></a>Azure Hybrid Use Benefit
 
 Ha a helyszíni licenccel rendelkezik, a licenc díj is mentheti a virtuális gépek. A licenccel nem rendelkező, meg kell megtiltják a beállítást. A következő házirend tiltja a használati Azure hibrid használata juttatás (AHUB):
 
@@ -249,7 +249,7 @@ Ha a helyszíni licenccel rendelkezik, a licenc díj is mentheti a virtuális g�
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * (A fenti példákban szerint) házirend szabály megadása után kell a házirend-definíció létrehozása, és rendelje hozzá hatókör. A hatókör lehet egy előfizetés, az erőforráscsoportot, vagy az erőforrás. Házirendek rendeléséhez lásd: [hozzárendelésére és kezelésére erőforrás-házirendek használata Azure-portálon](../../azure-policy/assign-policy-definition.md), [házirendek rendelhetők a PowerShell](../../azure-policy/assign-policy-definition-ps.md), vagy [használja az Azure parancssori felület házirendek rendelhetők](../../azure-policy/assign-policy-definition-cli.md).
 * Megismerkedhet az erőforrás-házirendek, lásd: [Mi az Azure házirend?](../../azure-policy/azure-policy-introduction.md).
 * Nagyvállalatoknak az [Azure enterprise scaffold - prescriptive subscription governance](../../azure-resource-manager/resource-manager-subscription-governance.md) (Azure nagyvállalati struktúra - előíró előfizetés-irányítás) című cikk nyújt útmutatást az előfizetéseknek a Resource Managerrel való hatékony kezeléséről.

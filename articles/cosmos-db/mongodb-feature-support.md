@@ -3,8 +3,7 @@ title: Az Azure Cosmos DB által nyújtott szolgáltatások támogatásáról mo
 description: További tudnivalók a által nyújtott szolgáltatások támogatásáról az Azure Cosmos DB MongoDB API MongoDB 3.4 biztosít.
 services: cosmos-db
 author: alekseys
-manager: jhubbard
-editor: ''
+manager: kfile
 documentationcenter: ''
 ms.assetid: 29b6547c-3201-44b6-9e0b-e6f56e473e24
 ms.service: cosmos-db
@@ -14,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: alekseys
-ms.openlocfilehash: 22ae56d9ebb2ea39acbd9f4536ef9ea5508b9867
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: cadf637dd3a71e040fef8188f7290907659e5cdb
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="mongodb-api-support-for-mongodb-features-and-syntax"></a>MongoDB-szolgáltatások és szintaxis MongoDB API támogatása
+# <a name="mongodb-api-support-for-mongodb-features-and-syntax"></a>A MongoDB API támogatása a MongoDB funkcióihoz és szintaxisához
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Az adatbázis MongoDB API bármely, a nyílt forráskódú MongoDB ügyfél keresztül kommunikálhat [illesztőprogramok](https://docs.mongodb.org/ecosystem/drivers). A MongoDB API lehetővé teszi, hogy a meglévő ügyfél-illesztőprogramok használata a MongoDB való tartva [hozzá kell fűznie protokoll](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
 

@@ -1,10 +1,10 @@
 ---
-title: "Jelentkezzen be a klasszikus Azure virtuális gépek |} Microsoft Docs"
-description: "Az Azure portál használatával jelentkezzen be a klasszikus üzembe helyezési modellel létrehozott Windows virtuális gépek."
+title: Jelentkezzen be a klasszikus Azure virtuális gépek |} Microsoft Docs
+description: Az Azure portál használatával jelentkezzen be a klasszikus üzembe helyezési modellel létrehozott Windows virtuális gépek.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
 ROBOTS: NOINDEX
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
-ms.openlocfilehash: c35bfeaa81f89dc5a636d67ed9a2a930d689c54a
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: bcbebc216dbd63acfb33cf72ba774d088149a3a7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="log-on-to-a-windows-virtual-machine-using-the-azure-portal"></a>Bejelentkezés windowsos virtuális gépre az Azure Portal használatával
 Az Azure portálon, használja a **Connect** gombra kattintva indítsa el a távoli asztali munkamenet, és jelentkezzen be a Windows virtuális gépek.
@@ -60,10 +60,10 @@ Learn how to [perform these steps using new Azure portal](../connect-logon.md?to
 ## <a name="next-steps"></a>További lépések
 * Ha a **Connect** gomb inaktív vagy egyéb problémák a távoli asztali kapcsolattal, vagy próbálja meg visszaállítani a konfiguráció. Kattintson a **távelérés alaphelyzetbe állítása** a virtuális gép irányítópulton.
 
-    ![Távelérés alaphelyzetbe állítása](./media/connect-logon/virtualmachine_dashboard_reset_remote_access.png)
+    ![Reset-remote-access](./media/connect-logon/virtualmachine_dashboard_reset_remote_access.png)
 
 * A jelszó kapcsolatos problémák próbálkozzon a visszaállításával. Kattintson a **jelszó-átállítási** mentén a bal oldali széle virtuális gép irányítópult, a **támogatási + hibaelhárítás**.
 
-    ![Jelszó alaphelyzetbe állítása](./media/connect-logon/virtualmachine_dashboard_reset_password.png)
+    ![Reset-password](./media/connect-logon/virtualmachine_dashboard_reset_password.png)
 
 Ha ezek a tippek nem működnek, vagy nem kapcsolódnak, mire van szüksége, tekintse meg [távoli asztali kapcsolatainak hibaelhárítása a Windows-alapú Azure virtuális gép](../troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Ez a cikk útmutatást nyújt a gyakori problémák diagnosztizálásához és elhárításához.

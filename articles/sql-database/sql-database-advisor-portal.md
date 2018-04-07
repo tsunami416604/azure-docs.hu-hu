@@ -1,19 +1,19 @@
 ---
-title: "Teljesítmény ajánlásokkal – az Azure SQL Database alkalmazása |} Microsoft Docs"
-description: "Az Azure-portálon is az Azure SQL adatbázis teljesítményének optimalizálása teljesítmény javaslatokat kereséséhez használja."
+title: Teljesítmény ajánlásokkal – az Azure SQL Database alkalmazása |} Microsoft Docs
+description: Az Azure-portálon is az Azure SQL adatbázis teljesítményének optimalizálása teljesítmény javaslatokat kereséséhez használja.
 services: sql-database
 author: stevestein
 manager: jhubbard
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: a5772e67d5b91ff989ac6d049b14b1ccad5c952e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a9b9bec4fd48c44ece9d762b539cd3d6e10c1858
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Keresse meg és teljesítmény javaslatok alkalmazása
 

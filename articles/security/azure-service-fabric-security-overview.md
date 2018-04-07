@@ -1,12 +1,12 @@
 ---
-title: "Az Azure service fabric biztonsági áttekintése |} Microsoft Docs"
-description: "Ez a cikk áttekintést nyújt az Azure Service Fabric biztonsági."
+title: Az Azure service fabric biztonsági áttekintése |} Microsoft Docs
+description: Ez a cikk áttekintést nyújt az Azure Service Fabric biztonsági.
 services: security
 documentationcenter: na
 author: unifycloud
 manager: swadhwa
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: 64717da922701aabd27e15a67e8da1b0acb30b77
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 9b6c2463c2a782f463e64d6e350a565fa7898b63
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-service-fabric-security-overview"></a>Az Azure Service Fabric biztonsági áttekintése
 [Az Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) egy elosztott rendszerek platform, amely megkönnyíti a csomag, telepítése és kezelése, méretezhető és megbízható mikroszolgáltatások létrehozására. A Service Fabric fejlesztése és a felhőalapú alkalmazások kezelésének jelentős kihívásaira megoldást. A fejlesztők és a rendszergazdák elkerülhetik az infrastruktúrával kapcsolatos összetett problémákat, és a kritikus fontosságú, nagy erőforrás-igényű, skálázható, megbízható és felügyelhető számítási feladatok megvalósítására koncentrálhatnak.
@@ -104,7 +104,7 @@ Az általános munkafolyamat figyelési és diagnosztika három lépésből áll
 
 -   **Esemény összesítési:** létrehozott események összegyűjtésének és azok megjelenítése előtt összesítve kell. Általában javasoljuk [Azure Diagnostics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad) (ügynök-alapú naplógyűjtést hasonlóan) vagy [EventFlow](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-eventflow) (a folyamat naplógyűjtést).
 
--   **Elemzési:** események kell lenniük a feladatkonfigurációkat és néhány formátumban, elemzés és megjelenítési érhető el. Nincsenek elemzésére és figyelési és diagnosztikai adatok a képi megjelenítés számos platformra. Javasolt a két rendszer [Operations Management Suite](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) és [Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) miatt a Service Fabric jó integrációját.
+-   **Elemzési:** események kell lenniük a feladatkonfigurációkat és néhány formátumban, elemzés és megjelenítési érhető el. Nincsenek elemzésére és figyelési és diagnosztikai adatok a képi megjelenítés számos platformra. Javasolt a két rendszer [Naplóelemzési](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) és [Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) miatt a Service Fabric jó integrációját.
 
 Is [Azure figyelő](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) számos, amelyen a Service Fabric-fürt épül Azure-erőforrások figyelése.
 
@@ -189,6 +189,6 @@ A biztonság az egyik legfontosabb szempontja a kommunikáció. A Reliable Servi
 -   [Számítógépek biztonságossá tétele a szolgáltatás használatakor a távelérési szolgáltatás](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-secure-communication)
 -   [Számítógépek biztonságossá tétele a szolgáltatás egy WCF-alapú kommunikációs verem használatakor](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-secure-communication#help-secure-a-service-when-youre-using-a-wcf-based-communication-stack)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Fürt biztonsággal kapcsolatos általános információkért lásd: [a Service Fabric-fürt létrehozása az Azure Resource Manager használatával](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) és [Azure-portálon](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-portal).
 - A Service Fabric fürt biztonsággal kapcsolatos további tudnivalókért lásd: [Service Fabric-fürt biztonsági](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security).

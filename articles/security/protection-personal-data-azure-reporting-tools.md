@@ -1,12 +1,12 @@
 ---
-title: "Dokumentálja a személyes adatok védelme az Azure-ral Jelentéskészítő eszközök |} Microsoft Docs"
-description: "Azure kezdeményezések a személyes adatok védelme a reporting services segítségével felel meg az általános adatok védelmi szabályozás (GDPR)."
+title: Dokumentálja a személyes adatok védelme az Azure-ral Jelentéskészítő eszközök |} Microsoft Docs
+description: Azure kezdeményezések a személyes adatok védelme a reporting services segítségével felel meg az általános adatok védelmi szabályozás (GDPR).
 services: security
 documentationcenter: na
 author: barclayn
 manager: MBaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 2c677a1dea001c6a414304fbaa683c3787b355b1
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: fc859f3aa34531133b7a21e36591b011c63d511c
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="document-protection-of-personal-data-with-azure-reporting-tools"></a>Dokumentálja a személyes adatok védelme az Azure-ral Jelentéskészítő eszközök
 
@@ -95,13 +95,13 @@ Például a napló keresések, nézetek és megoldásokat a Naplóelemzési elem
 
 #### <a name="how-do-i-use-log-analytics"></a>Log Analytics használata?
 
-A Naplóelemzési az OMS-portálon vagy az Azure portálon, bármely webböngészőben keresztül érheti el. A Log Analyticsben található lekérdezési nyelv segítségével adatokat olvashat be és vonhat össze a tárházban. Hozzon létre, és közvetlenül a portálon adatelemzéshez napló keresések mentése.
+A Naplóelemzési az OMS-portálon vagy az Azure portálon, bármely webböngészőben keresztül érheti el. A Naplóelemzési gyorsan lekérdezéséhez és összevonni az adatokat a Naplóelemzési munkaterület lekérdezésnyelvet tartalmazza. Hozzon létre, és közvetlenül a portálon adatelemzéshez napló keresések mentése.
 
 A Naplóelemzési munkaterület létrehozása az Azure portálon, tegye a következőket:
 
 1. Válassza ki **Naplóelemzési** a piactéren szolgáltatások közül.
 
-2. Válassza ki **létrehozása,** majd adja meg az OMS-munkaterület nevét, válassza ki az előfizetés, az erőforráscsoport, a hely és IP-címek.
+2. Válassza ki **létrehozása,** majd adja meg a Naplóelemzési munkaterület nevét, válassza ki az előfizetés, az erőforráscsoport, a hely és IP-címek.
 
 3. Kattintson a **OK** a munkaterületek listájának megjelenítéséhez.
 

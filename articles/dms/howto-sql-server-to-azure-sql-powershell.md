@@ -1,21 +1,21 @@
 ---
-title: "SQL-kiszolgáló áttelepítése a Microsoft Azure PowerShell használata Azure adatbázis áttelepítési szolgáltatás modulja helyszíni az Azure SQL Adatbázishoz |} Microsoft Docs"
-description: "Ismerje meg, telepíthetők át a helyszíni SQL Server Azure SQL Azure PowerShell használatával."
+title: SQL-kiszolgáló áttelepítése a Microsoft Azure PowerShell használata Azure adatbázis áttelepítési szolgáltatás modulja helyszíni az Azure SQL Adatbázishoz |} Microsoft Docs
+description: Ismerje meg, telepíthetők át a helyszíni SQL Server Azure SQL Azure PowerShell használatával.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
-manager: 
-ms.reviewer: 
+manager: ''
+ms.reviewer: ''
 ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 01/24/2018
-ms.openlocfilehash: 8569bf65d04f677a45935284dc61d68879014c10
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.date: 04/05/2018
+ms.openlocfilehash: d70d39f027df1fba7934c4b752b1dd2100f2e8b9
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-db-using-azure-powershell"></a>Telepítse át a helyszíni SQL Server Azure SQL Database az Azure PowerShell
 Ebben a cikkben az áttelepítést a **Adventureworks2012** adatbázis visszaállítása egy helyszíni példányát az SQL Server 2016 vagy újabb Azure SQL adatbázis a Microsoft Azure PowerShell használatával. Telepíthet át adatbázisok a helyszíni SQL Server-példány az Azure SQL Database segítségével a `AzureRM.DataMigration` a Microsoft Azure PowerShell modul.
@@ -127,7 +127,7 @@ $project = New-AzureRmDataMigrationProject -ResourceGroupName myResourceGroup `
   -TargetType SQLDB `
   -SourceConnection $sourceConnInfo `
   -TargetConnection $targetConnInfo `
-  -DatabaseInfos $dbList
+  -DatabaseInfo $dbList
 ```
 
 ## <a name="create-and-start-a-migration-task"></a>Hozzon létre, és indítsa el az áttelepítési feladatok

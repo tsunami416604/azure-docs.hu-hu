@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: e0882a6c87454498d0d1370ee244bfffc137aafb
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ba02e877fe7152d759085e3d25090459cd2459fc
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="door-monitor"></a>Ajtó figyelője          
 
@@ -44,7 +44,7 @@ Befejezés a [– első lépések útmutató]({{"/docs/get-started/" | absolute_
 
 Aktív Azure-előfizetés. Ha még nem rendelkezik ilyennel, regisztrálni keresztül ezen módszerek egyikét:
 
-* Aktiválja a [ingyenes 30 napos próba Microsoft Azure-fiókot](https://azureinfo.microsoft.com/us-freetrial.html).
+* Aktiválja a [ingyenes 30 napos próba Microsoft Azure-fiókot](https://azure.microsoft.com/en-us/free/).
 * Jogcím a [Azure-kreditjeinek](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) az MSDN webhelyen vagy a Visual Studio előfizetői esetén.
 
 ## <a name="deploy-sendgrid-service-in-azure"></a>Az Azure-ban a SendGrid szolgáltatás üzembe helyezése

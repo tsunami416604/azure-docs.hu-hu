@@ -1,11 +1,11 @@
 ---
-title: "Csatlakozás a Microsoft Advanced Threat Analytics az Azure Security Centerben |} Microsoft Docs"
-description: "Ismerje meg, hogyan integrálható az Azure Security Center a Microsoft Advanced Threat Analytics."
+title: Csatlakozás a Microsoft Advanced Threat Analytics az Azure Security Centerben |} Microsoft Docs
+description: Ismerje meg, hogyan integrálható az Azure Security Center a Microsoft Advanced Threat Analytics.
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 5d80bf91-16c3-40b3-82fc-e0805e6708db
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/05/2018
 ms.author: yurid
-ms.openlocfilehash: 02e14315018f6586644eb560894785e6b6eb022e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: fb32fc55288229fb1d09dce98b6092d38c10abf2
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="connecting-microsoft-advanced-threat-analytics-to-azure-security-center"></a>Csatlakozás a Microsoft Advanced Threat Analytics az Azure Security Centerben
 Ez a dokumentum segítséget nyújt a Microsoft Advanced Threat Analytics és az Azure Security Center közötti integráció konfigurálásához.
@@ -58,7 +58,7 @@ Feltételezve, hogy már rendelkezik az ATA telepítve, és megfelelően működ
 
     ![Közvetlen ügynök](./media/security-center-ata-integration/security-center-ata-integration-fig6.png)
 
-12. Telepítse az ügynököt az ATA-központ. A telepítés során ügyeljen arra, hogy a beállításnak a **csatlakoztassa az ügynököt az Azure Naplóelemzés (OMS)**, és adja meg a *munkaterület azonosítója*, és *elsődleges kulcs* kérésekor .
+12. Telepítse az ügynököt az ATA-központ. A telepítés során ügyeljen arra, hogy a beállításnak a **az ügynök csatlakoztatása az Azure Naplóelemzés**, és adja meg a *munkaterület azonosítója*, és *elsődleges kulcs* kérésekor.
 
 
 Fejezze be a telepítést, az integráció befejeződött, és új riasztásokat a Security Center az ATA által küldött látni fogja a **keresési** eredménye. A megoldás megjelenik a **biztonsági megoldások** lap **kapcsolódó megoldások**. 

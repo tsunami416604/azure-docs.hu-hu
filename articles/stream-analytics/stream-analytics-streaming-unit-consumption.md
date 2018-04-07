@@ -1,24 +1,19 @@
 ---
-title: 'Az Azure Stream Analytics: Megértéséhez, és módosítsa a folyamatos átviteli egységek |} Microsoft Docs'
-description: Ismerje meg, milyen tényezők a teljesítményt az Azure Stream Analytics.
-keywords: streamelési egység, teljesítmény-küszöbérték
+title: Ismertetés és állítsa be az Azure Stream Analytics adatfolyam-egységek
+description: Ez a cikk ismerteti a Streaming Units beállítás és az egyéb Azure Stream Analytics a teljesítményt befolyásoló tényezők.
 services: stream-analytics
-documentationcenter: ''
 author: JSeb225
-manager: ryanw
-ms.assetid: ''
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: 4312b5f5a64048ad697ae398697da1c59a75e75c
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 04/20/2017
+ms.openlocfilehash: ede0c0aa7b0e795760123246366f947889224b2d
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Ismerje meg, és módosítsa a folyamatos átviteli egységek
 
@@ -120,8 +115,8 @@ Az ASA referenciaadatok gyors keresési a memóriába. Az aktuális megvalósít
 Amikor egy olyan UDF függvényt, Azure Stream Analytics a JavaScript futásidejű a memóriába tölti be. Ez milyen hatással van a SU %.
 
 
-## <a name="get-help"></a>Segítség kérése
-Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+## <a name="get-help"></a>Segítségkérés
+Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>További lépések
 * [Az Azure Stream Analytics párhuzamosítható lekérdezések létrehozása](stream-analytics-parallelization.md)

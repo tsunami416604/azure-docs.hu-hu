@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: ajaycode
-ms.openlocfilehash: 84a3834416c7d93ecb4f51fea9c7baed8af85db0
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5b2335ee2584af07ed23ce87be92a869f3a07ba1
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Az Azure-hálózat Teljesítményfigyelő módosítások díjszabása
 
-Azt Ön figyelt és nemrég vezettek be egy [új árképzési élmény](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/), különböző szolgáltatások figyelése Azure között.
+Azt visszajelzése van már figyel, és rendelkezik a közelmúltban bevezetett egy [új árképzési élmény](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/), különböző szolgáltatások figyelése Azure között.
 
 Ez a dokumentum rögzíti a árképzési Azure kapcsolódó [hálózati Teljesítményfigyelő](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM), sem könnyen olvasható formátumban kérdés és válasz.
 
@@ -32,11 +32,11 @@ Hálózati Teljesítményfigyelő három összetevőből áll:
 * [Végpont-figyelő szolgáltatás](https://docs.microsoft.com/azure/networking/network-monitoring-overview#service-endpoint-monitor) és
 * [ExpressRoute Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
 
-Az alábbi szakasz a Teljesítményfigyelőben, ExpressRoute-figyelő és végpont-figyelő szolgáltatás a árképzési történt változásokat mutatja be.
+Az alábbi szakasz ismerteti a árképzési módosításokat a fenti összetevők.
 
 ## <a name="performance-monitor-pm"></a>A Teljesítményfigyelő (óra)
 
-**Milyen volt a régi rendszerben számlázva Teljesítményfigyelő használatát?**
+**Milyen volt a régi modell számlázva Teljesítményfigyelő használatát?**
 
 A számlázás NPM a két összetevő használati/felhasznált alapjául szolgáló:
 * Csomópontok: Minden szintetikus tranzakciók származnak, és le, a csomópontok. Csomópontok ügynökök vagy MMA (Microsoft Kezelőügynökök) is hivatkozunk.
@@ -121,3 +121,8 @@ Egy kapcsolat reachability tesztjének egy végponthoz (URL-cím vagy a hálóza
 
 - Tekintse meg a [kapcsolat figyelési](https://azure.microsoft.com/pricing/details/network-watcher/) szakaszban, a végpont figyelést a teljes hónap költségét.
 - Az adatok az elsők között megtalálható a [árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/log-analytics/) tartozó Naplóelemzési.  (A szakasz: adatfeldolgozást).
+
+## <a name="references"></a>Referencia
+
+- [Naplófájl Analytics árképzési GYIK](https://azure.microsoft.com/pricing/details/log-analytics/) -a gyakran feltett tartalmaz információt a ingyenes szint, egyes csomópontok árképzési, stb.
+

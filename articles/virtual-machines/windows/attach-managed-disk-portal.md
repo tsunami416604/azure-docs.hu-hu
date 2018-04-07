@@ -1,13 +1,13 @@
 ---
-title: "Felügyelt adatlemezt csatolni egy Windows Virtuálisgép - Azure |} Microsoft Docs"
-description: "Hogyan lehet új felügyelt adatlemezt csatolni egy Windows virtuális Gépet az Azure portálon a Resource Manager üzembe helyezési modellben."
+title: Felügyelt adatlemezt csatolni egy Windows Virtuálisgép - Azure |} Microsoft Docs
+description: Hogyan lehet új felügyelt adatlemezt csatolni egy Windows virtuális Gépet az Azure portálon a Resource Manager üzembe helyezési modellben.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 603d1c423ff2039915bdd3d5ed4a79b78d491edc
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 14721b2f2bc7913c2b7eadfc5ee801a223201ea9
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-attach-a-managed-data-disk-to-a-windows-vm-in-the-azure-portal"></a>Hogyan felügyelt adatlemezt csatolni egy Windows virtuális Gépet az Azure-portálon
 
@@ -38,7 +38,7 @@ Emellett [powershellel adatlemezzel](attach-disk-ps.md).
 3. Kattintson a virtuális gép lap **lemezek**.
 4. Az a **lemezek** kattintson **+ Hozzáadás adatlemez**.
 5. Válassza ki a legördülő lista az új lemezhez, **létrehozása lemez**.
-6. Az a **létrehozás felügyelt lemezes** lapon adjon meg egy nevet, a lemez és a további beállításokat, szükség esetén. Amikor elkészült, kattintson a **létrehozása**.
+6. Az a **létrehozás felügyelt lemezes** lapon adjon meg egy nevet, a lemez és a további beállításokat, szükség esetén. Ha végzett, kattintson a **Létrehozás** gombra.
 7. Az a **lemezek** kattintson **mentése** az új lemez konfigurációját a virtuális gép mentéséhez.
 6. Után az Azure létrehozza a lemezt, és csatolja azt a virtuális gépet, az új lemez szerepel-e a virtuális gép lemezbeállításokat alatt **adatlemezek**.
 

@@ -1,13 +1,13 @@
 ---
-title: "Alaphelyzetbe állítja a jelszót egy Windows Azure-ban a távoli asztal konfigurálásának |} Microsoft Docs"
-description: "Útmutató: a fiók jelszavát, vagy a távoli asztali szolgáltatások a Windows virtuális gép létrehozása a klasszikus telepítési modellt az Azure-portálon vagy az Azure PowerShell használatával."
+title: Alaphelyzetbe állítja a jelszót egy Windows Azure-ban a távoli asztal konfigurálásának |} Microsoft Docs
+description: 'Útmutató: a fiók jelszavát, vagy a távoli asztali szolgáltatások a Windows virtuális gép létrehozása a klasszikus telepítési modellt az Azure-portálon vagy az Azure PowerShell használatával.'
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: iainfou
-ms.openlocfilehash: 200e5667f4bc2ca0b7dc041eef990b7aff0914ff
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 516cb740f9acad19dac77db0239341b42a2b27fe
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm-created-using-the-classic-deployment-model"></a>A távoli asztal szolgáltatás vagy egy Windows virtuális gépre, klasszikus telepítési modellel létrehozott bejelentkezési jelszava alaphelyzetbe állítása
 > [!IMPORTANT]
@@ -102,7 +102,7 @@ Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' 
 
 Ez a parancs beállítja a fDenyTSConnections beállításazonosítót 0, amely lehetővé teszi a távoli asztali kapcsolatok.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha az Azure virtuális gép hozzáférési bővítmény nem válaszol, és nem tudja alaphelyzetbe állítani a jelszót, akkor [a helyi Windows-jelszó alaphelyzetbe állítása offline](../reset-local-password-without-agent.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Ez a módszer egy speciális folyamat, és megköveteli, hogy a virtuális merevlemez a problematikus VM kapcsolódjon egy másik virtuális gép. Kövesse a jelen cikkben leírt első lépéseket, és csak kísérlet a kapcsolat nélküli jelszó alaphelyzetbe állítása módszer utolsó lehetőségként.
 
 [Az Azure Virtuálisgép-bővítmények és szolgáltatások](../extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

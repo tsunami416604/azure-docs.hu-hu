@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/2/2018
 ms.author: vinagara
-ms.openlocfilehash: 9d2bc934424ff7a31b65ad6c03624ff02ee2a6f3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: cd289d506cbe22e683392256cce14211a5db0729
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>A napló riasztási szabályok webhookműveletek
 Ha egy [riasztást hoz létre az Azure-ban ](monitor-alerts-unified-usage.md), lehetősége van a [konfigurálása művelet csoportok használatával](monitoring-action-groups.md) egy vagy több műveletek elvégzéséhez.  Ez a cikk ismerteti a rendelkezésre álló különböző webhookműveletek és a részletek a egyéni JSON-alapú webhook konfigurálásával.
@@ -54,7 +54,7 @@ Webhook URL-címet és a hasznos adatok között, amely a külső szolgáltatás
 | Keresési intervallum kezdő időpont |#searchintervalstarttimeutc |Indítsa el a lekérdezések ideje UTC formátumban. 
 | SearchQuery |#searchquery |Naplófájl-keresési lekérdezés a riasztási szabály által használt. |
 | SearchResults |"IncludeSearchResults": true|Táblaként JSON, csak az első 1000 rekord; a lekérdezés által visszaadott rekordok Ha "IncludeSearchResults": true egyéni JSON webhook definition legfelső szintű tulajdonságként fel van véve. |
-| WorkspaceID |#workspaceid |A Naplóelemzés (OMS) munkaterület azonosítója. |
+| WorkspaceID |#workspaceid |A Naplóelemzési munkaterület azonosítója. |
 | Alkalmazásazonosító |#applicationid |Az Application Insights azonosítója alkalmazást. |
 | Előfizetés azonosítója |#subscriptionid |Az Application insights szolgáltatással használt Azure-előfizetése Azonosítóját. 
 
@@ -77,7 +77,7 @@ Keresési eredmények belefoglalása az egyéni adattartalom, ügyeljen arra, ho
 Ez a szakasz bemutatja a webhook minta hasznos napló riasztások, beleértve a szabványos hasznos esetén, és ha az egyéni.
 
 > [!NOTE]
-> Előző verziókkal való kompatibilitás érdekében Azure Naplóelemzés riasztásokról szabványos webhook hasznos legyen, mint [OMS kezelési riasztási](../log-analytics/log-analytics-alerts-creating.md). De napló riasztásokhoz [Application Insights](../application-insights/app-insights-analytics.md), a standard webhook forgalma művelet csoport sémán alapul.
+> Előző verziókkal való kompatibilitás érdekében Azure Naplóelemzés riasztásokról szabványos webhook hasznos legyen, mint [Naplóelemzési kezelési riasztási](../log-analytics/log-analytics-alerts-creating.md). De napló riasztásokhoz [Application Insights](../application-insights/app-insights-analytics.md), a standard webhook forgalma művelet csoport sémán alapul.
 
 ### <a name="standard-webhook-for-log-alerts"></a>Standard Webhook napló riasztások 
 Mindkét ezekben a példákban csak két oszlopok és sorok két üres adattartalmat jeleztük.

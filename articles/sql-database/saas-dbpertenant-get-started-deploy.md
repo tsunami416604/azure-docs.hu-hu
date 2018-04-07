@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: c62817b6bb60d99a4762e433510cc54d15add35a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 84e6f2303bcfd6a2c91f29e9e9afdc2b84f990ca
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Központi telepítése, és vizsgálja meg a több-bérlős Szolgáltatottszoftver-alkalmazást, amely az adatbázis-/-bérlő mintát használ, az SQL Database szolgáltatással
 
@@ -108,7 +108,7 @@ Belső az alkalmazásban mindegyik bérlő lekérdezi a rugalmas SQL-készlet he
 
 Egy központi **események Hub** lapra mutató hivatkozásokat biztosít a környezetben a bérlők számára.
 
-1. Az URL-cím segítségével a böngészőben nyissa meg az események Hub: http://events.wingtip-dpt.&lt;felhasználói&gt;. trafficmanager.net. Helyettesítő &lt;felhasználói&gt; a központi telepítés felhasználói értékkel.
+1. Az URL-cím segítségével a böngészőben nyissa meg az események Hub: http://events.wingtip-dpt.&lt; felhasználói&gt;. trafficmanager.net. Helyettesítő &lt;felhasználói&gt; a központi telepítés felhasználói értékkel.
 
     ![Events Hub](media/saas-dbpertenant-get-started-deploy/events-hub.png)
 
@@ -214,14 +214,14 @@ Frissítse az események hubot ellenőrizze az új tenanthoz szerepelnek a list�
 
 Most, hogy egy futtatott bérlők gyűjteménye már elkezdte, vizsgáljuk meg a telepített erőforrások.
 
-1. Az a [Azure-portálon](http://portal.azure.com), keresse meg az SQL Server-kiszolgálók listáját. Nyissa meg a **katalógus-dpt -&lt;felhasználói&gt;**  kiszolgáló.
+1. Az a [Azure-portálon](http://portal.azure.com), keresse meg az SQL Server-kiszolgálók listáját. Nyissa meg a **katalógus-dpt -&lt;felhasználói&gt; ** kiszolgáló.
     - A kiszolgáló tartalmazza a két adatbázis **tenantcatalog** és **basetenantdb** (sablon adatbázis létrehozására az új bérlők másolt).
 
    ![Adatbázisok](./media/saas-dbpertenant-get-started-deploy/databases.png)
 
 2. Lépjen vissza, ha az SQL Server-kiszolgálók listáját.
 
-3. Nyissa meg a **tenants1-dpt -&lt;felhasználói&gt;**  kiszolgáló, amely a bérlői adatbázisok.
+3. Nyissa meg a **tenants1-dpt -&lt;felhasználói&gt; ** kiszolgáló, amely a bérlői adatbázisok.
 
 4. Tekintse meg a következő elemek:
 

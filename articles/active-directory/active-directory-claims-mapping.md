@@ -1,6 +1,6 @@
 ---
-title: "Jogcím-leképezés az Azure Active Directoryban (nyilvános előzetes verzió) |} Microsoft Docs"
-description: "Ez a lap leképezési Azure Active Directory jogcímszolgáltatói ismerteti."
+title: Jogcím-leképezés az Azure Active Directoryban (nyilvános előzetes verzió) |} Microsoft Docs
+description: Ez a lap leképezési Azure Active Directory jogcímszolgáltatói ismerteti.
 services: active-directory
 author: billmath
 manager: mtillman
@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: billmath
-ms.openlocfilehash: b0dae074734b13046fb0d90e178e05f81399b5c6
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: e35a33cbe77d9d29b975ede8535abbded2cde4c3
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="claims-mapping-in-azure-active-directory-public-preview"></a>A jogcímek hozzárendelése az Azure Active Directoryban (nyilvános előzetes verzió)
 
@@ -234,7 +234,7 @@ Korlátozott jogcímek házirend használatával nem módosítható. Az adatforr
 |http://schemas.microsoft.com/identity/claims/scope|
 
 ## <a name="claims-mapping-policy-properties"></a>A jogcímek leképezési házirend tulajdonságai
-Egy házirend hozzárendelése a vezérlő melyik kibocsátott jogcímeket tulajdonságait, és ha az adatok származik. Ha nincs házirend van beállítva, a rendszer a core jogcímek készletében, az egyszerű jogcímek készletében és az alkalmazást úgy döntött, hogy fogadni választható jogcímeket tartalmazó jogkivonatokat állít ki.
+Egy házirend hozzárendelése a vezérlő melyik kibocsátott jogcímeket tulajdonságait, és ha az adatok származik. Ha nincs házirend van beállítva, a rendszer problémák jogkivonatok tartalmazó központi jogcímek, az egyszerű jogcímek készletéhez és a bármely [választható jogcímek](develop/active-directory-optional-claims.md) , amely az alkalmazás úgy döntött, hogy fogadni.
 
 ### <a name="include-basic-claim-set"></a>Alapszintű jogcímkészlethez tartalmazza
 
@@ -403,7 +403,7 @@ Alapján kiválasztott módszert, amelynek bemenetekhez és kimenetekhez várt. 
 #### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>6. táblázat: Átalakítási metódusok SAML NameID engedélyezett
 |TransformationMethod|Korlátozások|
 | ----- | ----- |
-|ExtractMailPrefix|Nincs|
+|ExtractMailPrefix|None|
 |Csatlakozás|A csatlakoztatni kívánt utótagot az erőforrás-bérlő ellenőrzött tartományt kell lennie.|
 
 ### <a name="custom-signing-key"></a>Egyéni aláírási kulcs

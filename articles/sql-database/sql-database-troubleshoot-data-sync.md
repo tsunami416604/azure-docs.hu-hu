@@ -1,19 +1,19 @@
 ---
-title: "Az Azure SQL adatszinkronizálás (előzetes verzió) hibaelhárítása |} Microsoft Docs"
-description: "További tudnivalók az Azure SQL adatszinkronizálás (előzetes verzió) kapcsolatos gyakori hibák elhárítása."
+title: Az Azure SQL adatszinkronizálás (előzetes verzió) hibaelhárítása |} Microsoft Docs
+description: További tudnivalók az Azure SQL adatszinkronizálás (előzetes verzió) kapcsolatos gyakori hibák elhárítása.
 services: sql-database
-ms.date: 11/13/2017
+ms.date: 04/01/2018
 ms.topic: article
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: a24e16abd78a89d6143c00fc08a3ef91d7dd8202
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6e29c93f37017a88aa4b6d69168e649f7397d56b
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync-preview"></a>Problémák az SQL adatszinkronizálás (előzetes verzió)
 
@@ -442,13 +442,13 @@ SQL adatszinkronizálás (előzetes verzió) kapcsolatos további információk�
 -   [Szinkronizálja az adatokat több felhőalapú és helyszíni adatbázisokat az Azure SQL adatszinkronizálás (előzetes verzió)](sql-database-sync-data.md)  
 -   [Azure SQL adatszinkronizálás (előzetes verzió) beállítása](sql-database-get-started-sql-data-sync.md)  
 -   [Ajánlott eljárások az Azure SQL adatszinkronizálás (előzetes verzió)](sql-database-best-practices-data-sync.md)  
--   [A figyelő az Azure SQL adatszinkronizálás (előzetes verzió) az OMS szolgáltatáshoz](sql-database-sync-monitor-oms.md)  
+-   [A figyelő az Azure SQL Data szinkronban (előzetes verzió) Naplóelemzési](sql-database-sync-monitor-oms.md)  
 -   Teljes PowerShell-példák bemutatják, hogyan konfigurálja az SQL adatszinkronizálás (előzetes verzió):  
     -   [A PowerShell szolgáltatás használatával több Azure SQL-adatbázisok közötti szinkronizálása](scripts/sql-database-sync-data-between-sql-databases.md)  
-    -   [Egy Azure SQL-adatbázis és a helyszíni SQL Server-adatbázisok közötti szinkronizálása a PowerShell használatával](scripts/sql-database-sync-data-between-azure-onprem.md)  
+    -   [A PowerShell használata egy Azure-beli SQL Database-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-azure-onprem.md)  
 -   [Az SQL adatszinkronizálás (előzetes verzió) REST API-dokumentáció letöltése](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
 
 SQL-adatbázis kapcsolatos további információkért lásd:
 
--   [SQL-adatbázis – áttekintés](sql-database-technical-overview.md)
--   [Adatbázis életciklusának kezelésére](https://msdn.microsoft.com/library/jj907294.aspx)
+-   [Az SQL Database áttekintése](sql-database-technical-overview.md)
+-   [Az adatbázis életciklusának felügyelete](https://msdn.microsoft.com/library/jj907294.aspx)

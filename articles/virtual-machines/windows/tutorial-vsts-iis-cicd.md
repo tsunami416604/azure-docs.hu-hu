@@ -1,13 +1,13 @@
 ---
-title: "CI/CD folyamatokat létrehozni az Azure-ban Team Services |} Microsoft Docs"
-description: "Útmutató egy olyan Visual Studio Team Services folyamatot folyamatos integrációt és kézbesítését, hogy a webes alkalmazás telepíti az IIS-hez a Windows virtuális gép létrehozása"
+title: CI/CD folyamatokat létrehozni az Azure-ban Team Services |} Microsoft Docs
+description: Útmutató egy olyan Visual Studio Team Services folyamatot folyamatos integrációt és kézbesítését, hogy a webes alkalmazás telepíti az IIS-hez a Windows virtuális gép létrehozása
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/12/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 006cac5606c411c9d86b36d0069021094fcdb1db
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: cf6e3013d4dfc7e18d96a717a76b591cde939139
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-continuous-integration-pipeline-with-visual-studio-team-services-and-iis"></a>Visual Studio Team Services és az IIS egy folyamatos integrációt folyamat létrehozása
 A build, a vizsgálati és a telepítési fázisai alkalmazásfejlesztés automatizálását, használhatja a folyamatos integrációt és a központi telepítés (CI/CD) folyamat. Ebben az oktatóanyagban létrehoz egy Visual Studio Team Services és a Windows rendszerű virtuális gép (VM) használata az IIS-t futtató Azure CI/CD folyamat. Az alábbiak végrehajtásának módját ismerheti meg:
@@ -218,7 +218,7 @@ A webes alkalmazás IIS-kiszolgálón fut, és próbálja meg a teljes CI/CD-fel
     ![CI/CD láncból az IIS virtuális gépen futó ASP.NET-webalkalmazás](media/tutorial-vsts-iis-cicd/running_web_app_cicd.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy ASP.NET-webalkalmazás létrehozása a Team Services és build konfigurálása, és kiadás definícióit új webes telepítendő csomagok központi telepítése az IIS minden kód érvényesítéskor. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
@@ -230,7 +230,7 @@ Ebben az oktatóanyagban egy ASP.NET-webalkalmazás létrehozása a Team Service
 > * Hozzon létre egy kiadási közzététele az új webes API-definíciót az IIS-csomagok központi telepítése
 > * A CI/CD-feldolgozási folyamat tesztelése
 
-A következő oktatóanyag megtudhatja, hogyan telepíthet egy SQL &#92; IIS &#92; továbblépés. A Windows virtuális gépek két hálózati vermet.
+Megtudhatja, hogyan telepíthet egy SQL következő oktatóanyagot előzetes&#92;IIS&#92;Windows virtuális gépek két .NET tömbhöz.
 
 > [!div class="nextstepaction"]
-> [SQL &#92; IIS &#92;. HÁLÓZATI verem](tutorial-iis-sql.md)
+> [SQL&#92;IIS&#92;.NET stack](tutorial-iis-sql.md)

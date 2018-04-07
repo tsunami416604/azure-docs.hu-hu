@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 032aa4a6cedd49ff9c3b4803561b8b187e8f9af5
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: c82b56cdf0fc2cb288986cf8fbf43c2dab5eacb6
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-logging-and-auditing"></a>Az Azure naplózása és naplózás
 ## <a name="introduction"></a>Bevezetés
@@ -74,7 +74,7 @@ A következő táblázat felsorolja az Azure-ban elérhető naplók legfontosabb
 |[Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|Tárolási naplózási és mérőszámok-adatokat biztosít a storage-fiók|Betekintést nyújt tárolni kívánt nyomkövetési kérelmek elemezheti a használati trendeket, és a storage-fiók problémák elemzéséhez.|    REST API-t vagy a [ügyféloldali kódtár](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
 |[NSG-t (hálózati biztonsági csoport) folyamat Naplók](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)|JSON formátumban jeleníti meg a bejövő és kimenő forgalom / szabály alapon és|IP-bemenő és kimenő forgalom keresztül a hálózati biztonsági csoportok adatainak megtekintése|[Hálózati figyelőt](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)|
 |[Application insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview)|Naplók, kivételeket és egyéni diagnosztika|    Alkalmazásteljesítmény-felügyeleti (APM) alkalmazásszolgáltatás webfejlesztőknek, több platformon.| REST API, [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|
-|Adatok feldolgozása / biztonsági riasztás| Az Azure Security Center riasztást, OMS-riasztás| Biztonsági adatokat és a riasztásokat.|   REST API-k, JSON|
+|Adatok feldolgozása / biztonsági riasztás| Az Azure Security Center riasztást, a napló Analytics riasztás|   Biztonsági adatokat és a riasztásokat.|   REST API-k, JSON|
 
 ### <a name="activity-log"></a>Tevékenységnapló
 A [Azure tevékenységnapló](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs), az erőforrást az előfizetésében a végrehajtott műveletek betekintést nyújt. A műveletnapló korábban hívták "Naplófájlok" vagy "Működési Logs", mivel a rendszer jelzi [vezérlő-vezérlősík események](https://driftboatdave.com/2016/10/13/azure-auditing-options-for-your-custom-reporting-needs/) az előfizetésekhez. A tevékenység-naplót használó, meghatározhatja a "mi, ki, és mikor" az esetleges írási műveleteket (PUT, POST, Törlés) végzett az erőforrást az előfizetésében. A művelet és az egyéb kapcsolódó tulajdonságainak állapotának értelmezni is lehet. A műveletnapló nem tartalmaz (GET) olvasási műveletek.
@@ -114,7 +114,7 @@ Az Azure diagnosztikai naplókat kínál több konfigurációs beállítások, a
 
 -   [Az adatfolyamot őket a Event Hubs](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs) adatfeldolgozást egy külső szolgáltatás vagy az egyéni elemzési megoldások többek között a [Power bi.](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
--   Elemezheti őket a [OMS szolgáltatáshoz.](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
+-   Elemezheti őket a [Naplóelemzési](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
 
 **Támogatott szolgáltatások, a diagnosztikai naplók és a támogatott kategóriák erőforrás típusonkénti séma**
 
@@ -333,11 +333,11 @@ Számos biztonsági műveletek és incidensekre adott reakciók csapatok támasz
 
 ## <a name="log-analytics"></a>Log Analytics
 
-A Naplóelemzési rendszer szolgáltatása [Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) , amely segít összegyűjti és elemzi az adatok a felhőben lévő erőforrások által létrehozott és a helyszíni környezetben. Ez lehetővé teszi az integrált keresés és egyéni irányítópultok segítségével könnyen elemezni több millió rekordot a számítási feladatok és a kiszolgálók fizikai helytől függetlenül valós idejű elemzése.
+A Naplóelemzési egy olyan szolgáltatás, amely összegyűjti és elemzi az adatok a felhőben lévő erőforrások által generált segít az Azure-ban és a helyszíni környezetben. Ez lehetővé teszi az integrált keresés és egyéni irányítópultok segítségével könnyen elemezni több millió rekordot a számítási feladatok és a kiszolgálók fizikai helytől függetlenül valós idejű elemzése.
 
 ![Log Analytics](./media/azure-log-audit/azure-log-audit-fig8.png)
 
-Log Analytics center, az OMS-tárházban, amely Azure felhőben szolgáltatott van. Az adatok a csatlakozó forrásokból kerülnek be a tárházba az adatforrások konfigurálása és a megoldások előfizetésbe való felvétele révén. Az adatforrások és megoldások egyaránt különböző rekordtípusokat fognak létrehozni, amelyek saját tulajdonsághalmazzal rendelkeznek, de mégis elemezhetők együtt a tárházra irányuló lekérdezésekben. Ez lehetővé teszi, hogy ugyanazokat az eszközöket és módszereket használva dolgozzon a különböző források által gyűjtött különböző típusú adatokkal.
+A Log Analytics center van a Naplóelemzési munkaterület, amely az Azure felhőben szolgáltatott. Adatgyűjtés a munkaterületre csatlakoztatott adatforrások konfigurálása adatforrások és a megoldások hozzáadása az előfizetéséhez. Adatforrások és a megoldások egyes létrehozza a különböző típusok saját tulajdonságok rendelkeznie, de előfordulhat, hogy továbbra is elemezheti együtt lekérdezések a munkaterületre. Ez lehetővé teszi, hogy ugyanazokat az eszközöket és módszereket használva dolgozzon a különböző források által gyűjtött különböző típusú adatokkal.
 
 A csatlakoztatott források azok a számítógépek és egyéb erőforrások, amelyek Log Analytics által összegyűjtött adatokat generálnak. Ilyen lehet például a telepített ügynökök [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) és [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents) közvetlenül csatlakozó számítógépek vagy az ügynökök [System Center Operations Manager csatlakoztatott felügyeleti csoport.](https://docs.microsoft.com/azure/log-analytics/log-analytics-om-agents) A Naplóelemzési is gyűjthet adatokat [az Azure storage.](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage)
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: dekapur;srrengar
-ms.openlocfilehash: b7bd5ce879e5119417a24879c875915245f9070b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 03fa2862bbce39ac9ee6b7da02bd93b02b05f216
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Megfigyelési és diagnosztikai az Azure Service Fabric
 
@@ -68,7 +68,7 @@ A Service Fabric-platformról egy bővíthető állapotfigyelő reporting biztos
 
 ![SFX irányítópult](media/service-fabric-diagnostics-overview/sfx-healthstatus.png)
 
-SFX legújabb rendszerállapot-jelentések mellett, az egyes jelentések is rendelkezésre áll egy eseményként. Állapotával kapcsolatos események összegyűjthetők a működési csatornán keresztül (lásd: [az Azure Diagnostics esemény összesítési](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations)), és tárolja az OMS szolgáltatáshoz a riasztás és a jövőben lekérdezése. Ez segítséget nyújt az problémákat is hatással lehetnek az alkalmazás rendelkezésre állás érdekében, ezért azt javasoljuk, hogy beállította a riasztások megfelelő sikertelen forgatókönyvek esetén (OMS keresztül egyéni riasztások).
+SFX legújabb rendszerállapot-jelentések mellett, az egyes jelentések is rendelkezésre áll egy eseményként. Állapotával kapcsolatos események összegyűjthetők a működési csatornán keresztül (lásd: [az Azure Diagnostics esemény összesítési](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations)), és a riasztások, és a jövőben lekérdezéséhez Naplóelemzési tárolja. Ez segítséget nyújt az problémákat is hatással lehetnek az alkalmazás rendelkezésre állás érdekében, ezért azt javasoljuk, hogy beállította a riasztások megfelelő sikertelen forgatókönyvek esetén (egyéni riasztások Naplóelemzési keresztül).
 
 ## <a name="other-logging-solutions"></a>Egyéb naplózási megoldások
 

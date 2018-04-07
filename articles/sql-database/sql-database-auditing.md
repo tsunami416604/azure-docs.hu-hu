@@ -1,19 +1,19 @@
 ---
-title: "Ismerkedés az Azure SQL database naplózási |} Microsoft Docs"
-description: "Azure SQL database naplózási segítségével nyomon követheti az adatbázissal kapcsolatos eseményeket a naplók."
+title: Ismerkedés az Azure SQL database naplózási |} Microsoft Docs
+description: Azure SQL database naplózási segítségével nyomon követheti az adatbázissal kapcsolatos eseményeket a naplók.
 services: sql-database
 author: giladm
 manager: craigg
 ms.service: sql-database
 ms.custom: security
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 04/01/2018
 ms.author: giladm
-ms.openlocfilehash: 0339dc2ecc93fb9ec260ede9d3f2e9b7b1419b08
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 54cd9864f6ff4bd8234e8ec55e158f4213f9f11b
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 Az Azure SQL database naplózási nyomon követi az adatbázis-események, mind az írás őket naplózási jelentkezzen be az Azure storage-fiók. A naplózás is:
@@ -118,7 +118,7 @@ Többféleképpen segítségével blob naplófájlok megtekintése:
 
     4. Az egyesített fájl megnyitása SSMS, ahol Ön is megtekintése és elemezze, valamint exportálni kell egy xel-fájlt vagy a CSV-fájl vagy egy táblához.
 
-* Használja a [alkalmazás szinkronizálása](https://github.com/Microsoft/Azure-SQL-DB-auditing-OMS-integration) , hogy létrehoztunk. Az Azure-ban fut, és használja az Operations Management Suite (OMS) Naplóelemzési nyilvános API felületeket leküldéses SQL naplók az OMS Szolgáltatáshoz. A szinkronizálási kérelem leküldéses értesítések SQL naplók OMS Log Analyticshez való használathoz az OMS szolgáltatáshoz irányítópulton keresztül.
+* Használja a [alkalmazás szinkronizálása](https://github.com/Microsoft/Azure-SQL-DB-auditing-OMS-integration) , hogy létrehoztunk. Az Azure-ban fut, és használja az SQL naplók leküldéses Log Analyticshez való Naplóelemzési nyilvános API felületeket. A szinkronizálási kérelem leküldéses értesítések SQL naplók Log Analyticshez való használathoz a Naplóelemzési irányítópulton keresztül.
 
 * Használja a Power bi-ban. Megtekintheti és elemezheti a napló adatairól a Power bi-ban. További információ [Power bi-ban, és hozzáférést egy letölthető sablon](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/).
 

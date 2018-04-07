@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: iainfou
-ms.openlocfilehash: 79c5d70d201b54e7ca1c8d421a5f0dc5e6b53bcd
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: d981ffc9a0053ed8bf2d49f386f7c1c82d50c907
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Hogyan Linux virtuális gép létrehozása az Azure-ban a több hálózati kártyák
 Létrehozhat egy virtuális gép (VM), amelyen több virtuális hálózati adapterek (NIC) nem csatlakoztatható az Azure-ban. Egy gyakori forgatókönyv, hogy az előtér- és kapcsolat, vagy a hálózaton, figyelési vagy biztonsági mentési megoldásra dedikált különböző alhálózatokon. Ez a cikk részletesen több hálózati adapter nem csatlakoztatható a virtuális gép létrehozása és hozzáadása vagy eltávolítása a hálózati adapter egy meglévő virtuális gépről. Különböző [Virtuálisgép-méretek](sizes.md) több hálózati adapter támogatja, így méretezés ennek megfelelően a virtuális Gépet.
@@ -100,6 +100,8 @@ az vm create \
     --nics myNic1 myNic2
 ```
 
+A lépések végrehajtásával adja hozzá útválasztási táblázataiba a vendég operációs rendszer [a vendég operációs rendszer konfigurálása több hálózati adapter](#configure-guest-os-for- multiple-nics).
+
 ## <a name="add-a-nic-to-a-vm"></a>Adja hozzá egy hálózati Adaptert egy virtuális géphez
 Az előző lépésekben létrehozott egy virtuális gép több hálózati adapterrel rendelkező. Hálózati adapter egy meglévő virtuális gépre az Azure CLI 2.0 is hozzáadhat. Különböző [Virtuálisgép-méretek](sizes.md) több hálózati adapter támogatja, így méretezés ennek megfelelően a virtuális Gépet. Ha szükséges, akkor [méretezze át a virtuális gépek](change-vm-size.md).
 
@@ -135,6 +137,8 @@ Indítsa el a virtuális Géphez a [az vm indítása](/cli/azure/vm#az_vm_start)
 ```azurecli
 az vm start --resource-group myResourceGroup --name myVM
 ```
+
+A lépések végrehajtásával adja hozzá útválasztási táblázataiba a vendég operációs rendszer [a vendég operációs rendszer konfigurálása több hálózati adapter](#configure-guest-os-for- multiple-nics).
 
 ## <a name="remove-a-nic-from-a-vm"></a>A virtuális gép egy hálózati adapter eltávolítása
 Meglévő virtuális hálózati Adapterhez eltávolításához először a virtuális Géphez a felszabadítani [az virtuális gép felszabadítása](/cli/azure/vm#az_vm_deallocate). Az alábbi példa felszabadítja a nevű virtuális gép *myVM*:
@@ -179,6 +183,7 @@ Használhatja a `copyIndex()` majd hozzáfűzendő erőforrás nevét, amely leh
 
 Átfogó példát olvasható [létrehozása a Resource Manager-sablonok segítségével több hálózati adapter](../../virtual-network/virtual-network-deploy-multinic-arm-template.md).
 
+A lépések végrehajtásával adja hozzá útválasztási táblázataiba a vendég operációs rendszer [a vendég operációs rendszer konfigurálása több hálózati adapter](#configure-guest-os-for- multiple-nics).
 
 ## <a name="configure-guest-os-for-multiple-nics"></a>A vendég operációs rendszer konfigurálása több hálózati adapter
 Több hálózati adapter a Linux virtuális gépek hozzáadásakor útválasztási szabályok létrehozásához szükséges. Ezek a szabályok lehetővé teszik a virtuális Gépet, amelyhez tartozik egy adott hálózati adatforgalmat Ellenkező esetben a forgalom tartozó *eth1*, például nem tudja feldolgozni a helyes a beállított alapértelmezett útvonalat.

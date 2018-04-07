@@ -1,19 +1,19 @@
 ---
-title: "Helyreállítás-kezelő használatával shard térkép problémák elhárításának |} Microsoft Docs"
-description: "A RecoveryManager osztály használatával shard maps kapcsolatos problémák megoldásához"
+title: Helyreállítás-kezelő használatával shard térkép problémák elhárításának |} Microsoft Docs
+description: A RecoveryManager osztály használatával shard maps kapcsolatos problémák megoldásához
 services: sql-database
 manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 10/25/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 45dc16c7bf54f34c89f2e9208a7cee06de03c0da
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 350ea0d4b744467849916f2d958cc49fd72d3e4b
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>Horizontális skálázási térképek javítása a RecoveryManager osztállyal
 A [RecoveryManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.aspx) osztály teszi lehetővé az ADO.Net alkalmazások felismerését és javítsa ki a globális shard térkép (GSM) és a helyi shard térkép (LSM) szilánkos adatbázis környezetben közötti inkonzisztenciákat. 

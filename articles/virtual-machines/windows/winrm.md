@@ -1,11 +1,11 @@
 ---
-title: "Egy Azure virtuális Gépen a Rendszerfelügyeleti webszolgáltatások hozzáférési beállítása |} Microsoft Docs"
-description: "A telepítő a Rendszerfelügyeleti webszolgáltatások hozzáférési használatra a Resource Manager üzembe helyezési modellel létrehozott Azure virtuális gép a."
+title: Egy Azure virtuális Gépen a Rendszerfelügyeleti webszolgáltatások hozzáférési beállítása |} Microsoft Docs
+description: A telepítő a Rendszerfelügyeleti webszolgáltatások hozzáférési használatra a Resource Manager üzembe helyezési modellel létrehozott Azure virtuális gép a.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: singhkays
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 9718e85b-d360-4621-90b8-0b0b84a21208
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2016
 ms.author: kasing
-ms.openlocfilehash: 2d6533462400bc1d93d0d3b0227769784e2658a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5fa82dd4a85ff2e62848df0fdc6006922005a84b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>A Rendszerfelügyeleti webszolgáltatások hozzáférés beállítása az Azure Resource Manager virtuális gépekhez
 ## <a name="winrm-in-azure-service-management-vs-azure-resource-manager"></a>A Rendszerfelügyeleti webszolgáltatások az Azure szolgáltatásfelügyelet vs Azure Resource Manager
@@ -88,7 +88,7 @@ Set-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretV
 A Microsoft.Compute erőforrás-szolgáltató a titkos kulcsot belül a Key Vault URL-CÍMÉT kell a virtuális gép kiépítése során. Ez lehetővé teszi a Microsoft.Compute erőforrás-szolgáltató töltse le a titkos kulcsot, és hozzon létre a megfelelő tanúsítványt a virtuális Gépen.
 
 > [!NOTE]
-> Az URL-CÍMÉT a titkos kulcsot kell tartalmaznia, valamint a verzió. Egy példa URL-CÍMÉT a következőképpen néz https://contosovault.vault.azure.net:443/titkos kulcsok/contososecret/01h9db0df2cd4300a20ence585a6s7ve alatt
+> Az URL-CÍMÉT a titkos kulcsot kell tartalmaznia, valamint a verzió. Egy példa URL-CÍMÉT a következőképpen néz alatt https://contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
 > 
 > 
 
@@ -157,7 +157,7 @@ Mielőtt az csatlakozna a virtuális gépre lesz szüksége győződjön meg arr
     Enable-PSRemoting -Force
 
 > [!NOTE]
-> Szükség lehet győződjön meg arról, hogy a WinRM szolgáltatás fut, ha a fenti nem működik. Megteheti, hogy használatával`Get-Service WinRM`
+> Szükség lehet győződjön meg arról, hogy a WinRM szolgáltatás fut, ha a fenti nem működik. Megteheti, hogy használatával `Get-Service WinRM`
 > 
 > 
 

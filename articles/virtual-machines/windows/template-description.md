@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Resource Manager-sablonokban a virtuális gépek |} A Microsoft Azure"
-description: "További tudnivalók hogyan Azure Resource Manager-sablonokban a virtuális gép erőforrás van definiálva."
+title: Az Azure Resource Manager-sablonokban a virtuális gépek |} A Microsoft Azure
+description: További tudnivalók hogyan Azure Resource Manager-sablonokban a virtuális gép erőforrás van definiálva.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: davidmu1
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: f63ab5cc-45b8-43aa-a4e7-69dc42adbb99
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: davidmu
-ms.openlocfilehash: 9c0039987ec28601c9338d2b94633c38c31e01f8
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 43cd6322bb03b5c781a890c3280247cbb2d118f6
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Az Azure Resource Manager-sablonokban a virtuális gépek
 
@@ -278,10 +278,10 @@ Ez a tulajdonság beállításához a hálózati illesztő léteznie kell. Ezér
 
 Több profil elemek használt virtuálisgép-erőforrás definiálásakor. Néhány szükséges és választható. Például a hardwareProfile, osProfile, storageProfile és networkProfile elemek szükségesek, de a diagnosticsProfile nem kötelező megadni. Ezeket a profilokat, mint beállításainak megadása:
    
-- [méret](sizes.md)
+- [size](sizes.md)
 - [név](/architecture/best-practices/naming-conventions) és hitelesítő adatait.
 - lemez és [operációsrendszer-beállításokat](cli-ps-findimage.md)
-- [hálózati adapter](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
+- [Hálózati adapter](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
 - Rendszerindítási diagnosztika
 
 ## <a name="disks-and-images"></a>A lemezek és lemezképek
@@ -453,7 +453,7 @@ Ha a központi telepítésben lévő erőforrások állapotával fejezetét, has
     
 Azt nem ugyanazt a sablont használni erőforrásokat létrehozni vagy frissíteni a meglévő erőforrásokat probléma. Parancsok használatával történő telepítése a sablonok, lehetősége van a tegyük fel például, amely [mód](../../resource-group-template-deploy.md) szeretne használni. A módot is megadni **Complete** vagy **növekményes**. Az alapértelmezett érték a növekményes frissítések végrehajtásához. Használata esetén ügyeljen a **Complete** módban, mert előfordulhat, hogy véletlenül törli az erőforrásokat. Ha a mód beállítása legyen **Complete**, erőforrás-kezelő törlése az erőforráscsoporthoz tartozik, amelyek nincsenek a sablonban lévő erőforrásokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Hozzon létre egy saját sablon használatával [Azure Resource Manager-sablonok készítése](../../resource-group-authoring-templates.md).
 - A létrehozott sablon üzembe helyezése [Windows virtuális gép létrehozása egy Resource Manager sablonnal](ps-template.md).

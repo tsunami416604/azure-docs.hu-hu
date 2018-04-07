@@ -1,95 +1,77 @@
 ---
-title: "SSH-ból fürtcsomópontok Azure tároló szolgáltatás (AKS)"
-description: "Az SSH-kapcsolat létrehozása az Azure-tároló szolgáltatás (AKS) fürt a csomópontok"
+title: SSH-ból fürtcsomópontok Azure tároló szolgáltatás (AKS)
+description: Az SSH-kapcsolat létrehozása az Azure-tároló szolgáltatás (AKS) fürt a csomópontok
 services: container-service
 author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: article
-ms.date: 2/28/2018
+ms.date: 04/06/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 00affc3d1c02c477826261aeac6e092934037e81
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 085a2976443db8ece7a36dbfc133b173432ce4c8
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="ssh-into-azure-container-service-aks-cluster-nodes"></a>SSH-ból fürtcsomópontok Azure tároló szolgáltatás (AKS)
 
 Alkalmanként szükség lehet egy Azure tároló szolgáltatás (AKS) csomópont karbantartási, naplógyűjtést vagy egyéb hibaelhárítási műveletek eléréséhez. Azure-tároló szolgáltatás (AKS) csomópontok nem érhetők el az internethez. Az jelen dokumentumban szereplő lépések segítségével hozzon létre egy SSH-kapcsolat egy AKS csomóponttal.
 
-## <a name="configure-ssh-access"></a>SSH-hozzáférés konfigurálása
+## <a name="get-aks-node-address"></a>AKS címe beolvasása
 
- SSH-ból egy konkrét csomóponton, hogy egy pod jön létre a `hostNetwork` hozzáférést. A szolgáltatás pod hozzáférés is létrejön. Ez a konfiguráció kiemelt jogosultságokkal rendelkezik, és használat után el kell távolítani.
+Az IP-cím használatával AKS fürt csomópont beolvasása a `az vm list-ip-addresses` parancsot. Az erőforráscsoport neve cserélje le a AKS erőforráscsoport nevét.
 
-Hozzon létre egy fájlt `aks-ssh.yaml` , és másolja a jegyzékfájlban. Frissítse a cél AKS csomópont neve a csomópont neve.
+```console
+$ az vm list-ip-addresses --resource-group MC_myAKSCluster_myAKSCluster_eastus -o table
 
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: aks-ssh
-spec:
-  selector:
-    app: aks-ssh
-  type: LoadBalancer
-  ports:
-  - protocol: TCP
-    port: 22
-    targetPort: 22
----
-apiVersion: extensions/v1beta1
-kind: Deployment
-metadata:
-  name: aks-ssh
-  labels:
-    app: aks-ssh
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: aks-ssh
-  template:
-    metadata:
-      labels:
-        app: aks-ssh
-    spec:
-      containers:
-      - name: alpine
-        image: alpine:latest
-        ports:
-        - containerPort: 22
-        command: ["/bin/sh", "-c", "--"]
-        args: ["while true; do sleep 30; done;"]
-      hostNetwork: true
-      nodeName: aks-nodepool1-42032720-0
+VirtualMachine            PrivateIPAddresses
+------------------------  --------------------
+aks-nodepool1-42032720-0  10.240.0.6
+aks-nodepool1-42032720-1  10.240.0.5
+aks-nodepool1-42032720-2  10.240.0.4
 ```
 
-A jegyzékfájl létrehozása a tok- és szolgáltatás fut.
+## <a name="create-ssh-connection"></a>SSH-kapcsolat létrehozása
 
-```azurecli-interactive
-$ kubectl apply -f aks-ssh.yaml
+Futtassa a `debian` tároló rendszerképet, csatlakoztassa azt egy terminál-munkamenetet. A tároló majd segítségével hozzon létre egy SSH-munkamenetet a AKS fürt bármely csomópontjára.
+
+```console
+kubectl run -it --rm aks-ssh --image=debian
 ```
 
-A külső IP-cím elérhetőségi szolgáltatás beolvasása. IP-címének konfigurációja befejezéséhez percet is igénybe vehet. 
+Egy SSH-ügyfél telepítése a tárolóban.
 
-```azurecli-interactive
-$ kubectl get service
-
-NAME               TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)        AGE
-kubernetes         ClusterIP      10.0.0.1      <none>          443/TCP        1d
-aks-ssh            LoadBalancer   10.0.51.173   13.92.154.191   22:31898/TCP   17m
+```console
+apt-get update && apt-get install openssh-client -y
 ```
 
-Hozzon létre a ssh kapcsolat. 
+Nyissa meg a második terminált, és minden három munkaállomás-csoporttal az újonnan létrehozott pod nevét listája.
 
-Az alapértelmezett felhasználónév egy AKS fürt `azureuser`. Ez a fiók megváltozott, a fürt létrehozásának idejét, helyettesítse be a megfelelő rendszergazdai felhasználónév. 
+```console
+$ kubectl get pods
 
-Ha a kulcs jelenleg nem `~/ssh/id_rsa`, adja meg a megfelelő helyen történő a `ssh -i` argumentum.
+NAME                       READY     STATUS    RESTARTS   AGE
+aks-ssh-554b746bcf-kbwvf   1/1       Running   0          1m
+```
 
-```azurecli-interactive
-$ ssh azureuser@13.92.154.191
+Az SSH-kulcs másolása fogyasztanak, pod neve cserélje le a megfelelő értéket.
+
+```console
+kubectl cp ~/.ssh/id_rsa aks-ssh-554b746bcf-kbwvf:/id_rsa
+```
+
+Frissítés a `id_rsa` fájlt úgy, hogy a felhasználó csak olvasható legyen.
+
+```console
+chmod 0600 id_rsa
+```
+
+Most hozzon létre egy SSH-kapcsolat a AKS csomópontra. Az alapértelmezett felhasználónév egy AKS fürt `azureuser`. Ez a fiók megváltozott, a fürt létrehozásának idejét, helyettesítse be a megfelelő rendszergazdai felhasználónév.
+
+```console
+$ ssh -i id_rsa azureuser@10.240.0.6
 
 Welcome to Ubuntu 16.04.3 LTS (GNU/Linux 4.11.0-1016-azure x86_64)
 
@@ -114,8 +96,4 @@ azureuser@aks-nodepool1-42032720-0:~$
 
 ## <a name="remove-ssh-access"></a>SSH-hozzáférés
 
-Ha befejezte, törölje a hozzáférési tok SSH- és service.
-
-```azurecli-interactive
-kubectl delete -f aks-ssh.yaml
-```
+Ha befejezte, lépjen ki az SSH-munkamenetet, és majd a tároló interaktív munkamenet. Ez a művelet törli a AKS fürtről SSH hozzáféréshez használt fogyasztanak.

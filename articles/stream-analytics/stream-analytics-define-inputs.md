@@ -1,24 +1,19 @@
 ---
-title: 'Adatkapcsolat: adatfolyam-bemenet egy esemény adatfolyamból |} Microsoft Docs'
-description: Ismerje meg a Stream Analytics "bemenetek" nevű adatkapcsolatot beállítása. Bemenetek adatok adatfolyamot az események, és is adatokra hivatkoztak.
-keywords: az adatfolyam, adatkapcsolat, eseményfelhasználó
+title: Adatfolyam-bemenet Azure Stream Analytics egy esemény adatfolyamokból
+description: További tudnivalók az Azure Stream Analytics adatkapcsolat beállítása. Bemenetek adatok adatfolyamot az események, és is adatokra hivatkoztak.
 services: stream-analytics
-documentationcenter: ''
-author: SnehaGunda
+author: jasonwhowell
+ms.author: jasonh
 manager: kfile
-ms.assetid: 8155823c-9dd8-4a6b-8393-34452d299b68
+ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 12/11/2017
-ms.author: sngun
-ms.openlocfilehash: 405fcf190ab03b84ec463da8a1942adb8e326498
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0a90e97779416db7b7244cce9d6bdad740161051
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="data-connection-learn-about-data-stream-inputs-from-events-to-stream-analytics"></a>Adatkapcsolat: data Stream Analytics az események adatfolyam-bemenet megismerése
 A Stream Analytics-feladat adatok kapcsolat nem olyan adatfolyamot kell megadni az adatforrás, amelynek a neve a feladat események *bemeneti*. A Stream Analytics rendelkezik első osztályú integráció az Azure data stream móddal, többek között a [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/), és [Azure Blob Storage tárolóban](https://azure.microsoft.com/services/storage/blobs/). A bemeneti források lehet az analytics-feladat az azonos Azure-előfizetés, vagy egy másik előfizetést.

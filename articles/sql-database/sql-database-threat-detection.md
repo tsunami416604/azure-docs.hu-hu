@@ -1,19 +1,19 @@
 ---
-title: "Veszélyforrások Detektálása - Azure SQL adatbázis |} Microsoft Docs"
-description: "A fenyegetésészlelés az adatbázist érintő rendellenes tevékenységeket észleli, amelyek esetleges biztonsági fenyegetéseket jelezhetnek."
+title: Veszélyforrások Detektálása - Azure SQL adatbázis |} Microsoft Docs
+description: A fenyegetésészlelés az adatbázist érintő rendellenes tevékenységeket észleli, amelyek esetleges biztonsági fenyegetéseket jelezhetnek.
 services: sql-database
 author: rmatchoro
 manager: craigg
 ms.service: sql-database
 ms.custom: security
 ms.topic: article
-ms.date: 06/19/2017
+ms.date: 04/01/2018
 ms.author: ronmat
-ms.openlocfilehash: 4cb31eef4ba4b85ea28a58bb9b947b4e07cb0b58
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c4a94ab9c7e0dab9e8c25e54fdd0a30b28b7a8a3
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="sql-database-threat-detection"></a>SQL adatbázis fenyegetések észlelése
 
@@ -21,7 +21,7 @@ SQL Fenyegetésészlelés észleli a rendellenes tevékenységek jelző szokatla
 
 ## <a name="overview"></a>Áttekintés
 
-A Fenyegetésészlelés SQL biztonsági, amelyek segítségével a felhasználók észlelése és azok bekövetkezésekor, adja meg a biztonsági riasztások a rendellenes tevékenységek reagáljon a lehetséges veszélyforrásokra egy új réteget biztosít.  Felhasználók a rendszer riasztást adatbázis gyanús tevékenységeket, a potenciális biztonsági réseket, és a SQL injektálási támadások, valamint rendellenes adatbázis memóriahozzáférési mintáitól. SQL Fenyegetésészlelés riasztásokat gyanús tevékenység részleteinek megadása, és vizsgálja meg, és a fenyegetések mérséklésére művelet javasolja. Felhasználók felfedezheti a gyanús eseményeket [SQL Database Auditing](sql-database-auditing.md) meghatározni, ha azok hozzáférést, megsértik a, vagy az adatbázis adatai kihasználásához kísérlet eredménye. A Fenyegetésészlelés egyszerűen potenciális fenyegetések ellen az adatbázisba történő szakértői biztonsági vagy speciális biztonsági rendszerek figyelése kezelése nélkül.
+A Fenyegetésészlelés SQL biztonsági, amelyek segítségével a felhasználók észlelése és azok bekövetkezésekor, adja meg a biztonsági riasztások a rendellenes tevékenységek reagáljon a lehetséges veszélyforrásokra egy új réteget biztosít.  Felhasználók a rendszer riasztást adatbázis gyanús tevékenységeket, a potenciális biztonsági réseket, és a SQL injektálási támadások, valamint rendellenes adatbázis memóriahozzáférési mintáitól. SQL Fenyegetésészlelés riasztásokat gyanús tevékenység részleteinek megadása, és vizsgálja meg, és a fenyegetések mérséklésére művelet javasolja. Felhasználók felfedezheti a gyanús eseményeket [SQL Database Auditing](sql-database-auditing.md) meghatározni, ha azok hozzáférést, megsértik a, vagy az adatbázis adatai kihasználásához kísérlet eredménye. A fenyegetésészlelés biztonsági szakértelem vagy fejlett biztonsági figyelőrendszerek üzemeltetése nélkül is egyszerűvé teszi az adatbázis elleni lehetséges fenyegetések elhárítását.
 
 Például SQL-injektálás az egyik a közös webes alkalmazás biztonsági problémák elleni támadásra adatvezérelt alkalmazások, az interneten. A támadók előnyeit alkalmazás biztonsági rések rosszindulatú SQL-utasítások alkalmazás mezőkbe szúrjon megsértése vagy módosítása az adatbázis adatai.
 

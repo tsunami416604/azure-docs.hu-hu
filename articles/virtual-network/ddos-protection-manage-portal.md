@@ -1,13 +1,13 @@
 ---
-title: "Kezelése Azure DDoS védelem szabványos az Azure portál használatával |} Microsoft Docs"
-description: "Útmutató: Azure figyelő Azure DDoS védelem szabványos telemetria segítségével a támadás elhárítása érdekében."
+title: Kezelése Azure DDoS védelem szabványos az Azure portál használatával |} Microsoft Docs
+description: 'Útmutató: Azure figyelő Azure DDoS védelem szabványos telemetria segítségével a támadás elhárítása érdekében.'
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: jdial
-ms.openlocfilehash: 6a5ab1ba44197c0103e1e7d353a116dc01dfc163
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 5cc03189124dbea56535af2fed84f5ca74aac6cd
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Kezelése Azure DDoS védelem szabványos az Azure portál használatával
 
@@ -30,7 +30,7 @@ Megtudhatja, hogyan engedélyezése és elosztott szolgáltatásmegtagadásos (D
 
 ## <a name="enable-ddos-protection-standard---new-virtual-network"></a>DDoS védelem szabványos – új virtuális hálózat engedélyezése
 
-1. Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+1. Jelentkezzen be az Azure Portalra a http://portal.azure.com címen. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 2. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
 3. Válassza ki **hálózati**, majd válassza ki **virtuális hálózati**.
 4. Virtuális hálózat létrehozása a kiválasztott beállításokkal. Virtuális hálózatok létrehozásával kapcsolatos további információkért lásd: [hozzon létre egy virtuális hálózatot](manage-virtual-network.md#create-a-virtual-network). A **DDoS-védelem**, kattintson a **engedélyezve**, és kattintson a **létrehozása**. Ha nem lát **DDoS-védelem**, ennek valószínű oka az, hogy az előfizetés nincs regisztrálva a szolgáltatást. Meg kell adnia a [regisztrációs](http://aka.ms/ddosprotection), és értesítést kap, hogy az előfizetés engedélyezve van a szolgáltatás számára, mielőtt **DDoS-védelem** jelenik meg.
@@ -84,7 +84,7 @@ Három lehetőség áll rendelkezésre a naplózás:
 
 - **Archív tárfiókba**: tárfiókba menti el a naplókat.
 - **Az eseményközpontok felé adatfolyam**: lehetővé teszi, hogy a napló fogadó átvételéhez eseményközpont használatával a naplókat. Ez lehetővé teszi az integrációt a Splunk vagy más SIEM-rendszerekről.
-- **Naplóelemzési küldése**: naplók ír az Azure MOBILE Naplóelemzés szolgáltatás.
+- **Naplóelemzési küldése**: menti el a naplókat az Azure Naplóelemzés szolgáltatáshoz.
 
 ## <a name="use-ddos-protection-telemetry"></a>DDoS-védelem telemetriai adatok használata
 

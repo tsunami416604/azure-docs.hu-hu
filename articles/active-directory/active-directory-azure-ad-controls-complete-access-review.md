@@ -1,11 +1,11 @@
 ---
-title: "Fejezze be a tagok egy csoport vagy egy alkalmazás az Azure ad-vel való hozzáférést egy áttekintése |} Microsoft Docs"
-description: "Ismerje meg, hogyan lehet elvégezni egy áttekintése egy csoport vagy az Azure Active Directoryban alkalmazáshoz való hozzáféréssel rendelkező felhasználók tagjai számára."
+title: Fejezze be a tagok egy csoport vagy egy alkalmazás az Azure ad-vel való hozzáférést egy áttekintése |} Microsoft Docs
+description: Ismerje meg, hogyan lehet elvégezni egy áttekintése egy csoport vagy az Azure Active Directoryban alkalmazáshoz való hozzáféréssel rendelkező felhasználók tagjai számára.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: markwahl-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.openlocfilehash: de853d633aa65c9f08f5e28088d5240c2e4d7fa6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c4efdbf5a355ddc9a31091517665f91dd8e68ec0
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="complete-an-access-review-of-members-of-a-group-or-users-access-to-an-application-in-azure-ad"></a>Fejezze be a tagok egy csoport vagy egy alkalmazás az Azure ad-ben való hozzáférést egy áttekintése
 
-Rendszergazdák segítségével Azure Active Directory (Azure AD) [hozzon létre egy áttekintése](active-directory-azure-ad-controls-create-access-review.md) csoport tagjainak vagy egy alkalmazás rendelt felhasználók. Az Azure AD nekik hozzáférést kérő e-mailt automatikusan elküldi a felülvizsgálók. Ha a felhasználó nem kap egy e-mailt, küldhet nekik az utasításokat [tekintse át a hozzáférés](active-directory-azure-ad-controls-perform-access-review.md). A áttekintése után időszak keresztül, vagy ha egy rendszergazda leállítja a áttekintése, kövesse a cikk megtekintéséhez és alkalmazásához az eredményeket.
+Rendszergazdák segítségével Azure Active Directory (Azure AD) [hozzon létre egy áttekintése](active-directory-azure-ad-controls-create-access-review.md) csoport tagjainak vagy egy alkalmazás rendelt felhasználók. Az Azure AD nekik hozzáférést kérő e-mailt automatikusan elküldi a felülvizsgálók. Ha a felhasználó nem kap egy e-mailt, küldhet nekik az utasításokat [tekintse át a hozzáférés](active-directory-azure-ad-controls-perform-access-review.md). (Vegye figyelembe, hogy ki, a felülvizsgálók hozzá vannak rendelve, de a meghívott felhasználó nem fogadta el a vendégek addig nem kap egy e-mailt hozzáférés értékelést, mint egy meghívása előtt tekintse át először el kell fogadniuk.) A áttekintése után időszak keresztül, vagy ha egy rendszergazda leállítja a áttekintése, kövesse a cikk megtekintéséhez és alkalmazásához az eredményeket.
 
 ## <a name="view-an-access-review-in-the-azure-portal"></a>Tekintse meg az Azure portál egy áttekintése
 
@@ -35,13 +35,15 @@ Ha a felülvizsgálati még nem érhető el az ütemezett befejezési dátum, v�
 
 ## <a name="apply-the-changes"></a>A módosítások életbe léptetéséhez 
 
-Egy áttekintése után, mert elérte a záró dátum vagy egy rendszergazda manuálisan, leállt kijelölhet **alkalmaz**. A felülvizsgálati eredményeit a csoport vagy az alkalmazás frissítése valósítják meg. Ha a felhasználói hozzáférés megtagadva a felülvizsgálat alatt, a rendszergazda ezt a lehetőséget választja, az Azure AD eltávolítja a tagság vagy alkalmazás-hozzárendelés. 
+Egy áttekintése után, vagy mert elérte a záró dátum, vagy egy rendszergazda megszakította manuálisan, és automatikus alkalmazása nem volt konfigurálva a felülvizsgálati kiválaszthatja **alkalmaz** manuálisan a módosítások életbe léptetéséhez. A felülvizsgálati eredményeit a csoport vagy az alkalmazás frissítése valósítják meg. Ha a felhasználói hozzáférés megtagadva a felülvizsgálat alatt, a rendszergazda ezt a lehetőséget választja, az Azure AD eltávolítja a tagság vagy alkalmazás-hozzárendelés. 
 
-Kiválasztása **alkalmaz** nincs hatással a egy helyszíni Directory származó vagy dinamikus csoportot. Ha szeretné módosítani egy csoportot, amely a helyszíni származik, töltse le az eredményeket, és ezeket a módosításokat alkalmazza a megjelenítésre, a csoport ebben a könyvtárban.
+Egy áttekintése után, és automatikus alkalmazása után lett konfigurálva, akkor a felülvizsgálat állapotának keresztül közbülső állapotok befejezve változik, és történt állapotra változik. Várható tekintse meg a letiltott felhasználók, ha vannak ilyenek, távolít el az erőforrás csoport tagsági vagy alkalmazás hozzárendelés néhány perc múlva.
+
+Felülvizsgálati alkalmazása, vagy jelöljön ki egy konfigurált automatikus **alkalmaz** nincs hatással a egy helyszíni Directory származó vagy dinamikus csoportot. Ha szeretné módosítani egy csoportot, amely a helyszíni származik, töltse le az eredményeket, és ezeket a módosításokat alkalmazza a megjelenítésre, a csoport ebben a könyvtárban.
 
 ## <a name="download-the-results-of-the-review"></a>Töltse le a felülvizsgálati eredményeit
 
-Válassza ki a felülvizsgálati eredményeinek lekéréséhez **jóváhagyások** , és válassza **letöltése**. Az eredményül kapott CSV-fájl az Excel vagy más programok, nyissa meg a CSV-fájlok is megtekinthetők.
+Válassza ki a felülvizsgálati eredményeinek lekéréséhez **jóváhagyások** , és válassza **letöltése**. Az eredményül kapott CSV-fájl megtekinthetők az Excel vagy más programok, amelyek nyitva voltak az UTF-8 kódolású CSV-fájl.
 
 ## <a name="optional-delete-a-review"></a>Választható lehetőség: Törlése áttekintése
 Ha már nem szeretné használni a felülvizsgálati, törölheti azt. Válassza ki **törlése** eltávolítása a tekintse át az Azure AD.
@@ -51,7 +53,7 @@ Ha már nem szeretné használni a felülvizsgálati, törölheti azt. Válassza
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Felhasználói hozzáférés felügyelete az Azure AD hozzáférési felülvizsgálatokkal](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md)
 - [Vendégfelhasználói hozzáférés felügyelete az Azure AD hozzáférési felülvizsgálatokkal](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md)

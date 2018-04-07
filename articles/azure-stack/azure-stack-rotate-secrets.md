@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: f3c6d50ac128cd766a1d22689b737da975922466
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 509570dfe0e3d4be2e589ac1958dd377dc4e8e03
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Forgassa el a titkos kulcsok Azure verem
 
@@ -69,7 +69,7 @@ Az alábbi utasításokat követve titkos Elforgatás futtató fogja szervizelni
 2.  Készítse el új helyettesítő külső tanúsítványok. Az új készlet megfelel az előírásoknak tanúsítványt a [Azure verem PKI-tanúsítványkövetelmények](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs).
 3.  A biztonsági mentés Elforgatás biztonsági mentési biztonságos helyen használt tanúsítványok tárolása. A forgatási fut, és akkor sikertelen lesz, ha cserélje le a tanúsítványokat a fájlmegosztás a biztonsági másolatok előtt futtassa újra a elforgatási. Jegyezze fel, a biztonsági mentési biztonságos helyre a biztonsági másolatok megőrzése.
 3.  Hozzon létre egy fájlmegosztás a ERCS virtuális gépek érhető el. A fájlmegosztás kell lennie az írható és olvasható a **CloudAdmin** identitás.
-4.  Nyissa meg a PowerShell ISE-konzolt, a a ERCS virtuális gépet a **CloudAdmin** fiók.  Nyissa meg a fájlmegosztás. 
+4.  Nyissa meg a PowerShell ISE konzoljába egy olyan számítógépről, melyekben a fájlmegosztáshoz való hozzáférést. Nyissa meg a fájlmegosztás. 
 5.  Futtatás **[CertDirectoryMaker.ps1](http://www.aka.ms/azssecretrotationhelper)** a külső tanúsítványok szükséges könyvtárak létrehozása.
 
 ## <a name="rotating-external-and-internal-secrets"></a>Belső és külső kulcsok elforgatása

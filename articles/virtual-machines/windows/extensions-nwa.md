@@ -1,11 +1,11 @@
 ---
-title: "Windows Azure hálózati figyelő ügynök virtuális gép bővítmény |} Microsoft Docs"
-description: "A Windows virtuális gépet egy virtuálisgép-bővítmény használatával a hálózati figyelő-ügynök telepítéséhez."
+title: Windows Azure hálózati figyelő ügynök virtuális gép bővítmény |} Microsoft Docs
+description: A Windows virtuális gépet egy virtuálisgép-bővítmény használatával a hálózati figyelő-ügynök telepítéséhez.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dennisg
 manager: amku
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 27e46af7-2150-45e8-b084-ba33de8c5e3f
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: 68855e0070916dc672914fbc8ca3587a5d3c25f6
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 84ac50ea555df538cc6347be58537e31b0f14611
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>Windows hálózati figyelő ügynök virtuálisgép-bővítmény
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 12/20/2017
 [Az Azure hálózati figyelőt](../../network-watcher/network-watcher-monitoring-overview.md) hálózati teljesítmény figyelési, diagnosztikai és elemzési szolgáltatás, amely lehetővé teszi, hogy az Azure-hálózatok figyelése. A hálózati figyelő ügynök virtuálisgép-bővítmény feltétele az igény szerinti hálózati forgalmat, és egyéb speciális funkció az Azure virtuális gépeken.
 
 
-Ez a dokumentum részletesen a támogatott platformokról és a Windows hálózati figyelő ügynök virtuálisgép-bővítmény vonatkozó telepítési lehetőségeket.
+Ez a dokumentum részletesen a támogatott platformokról és a Windows hálózati figyelő ügynök virtuálisgép-bővítmény vonatkozó telepítési lehetőségeket. Az ügynök nem zavarja, vagy újra kell indítani, a virtuális gép.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -67,7 +67,7 @@ A következő JSON jeleníti meg a hálózati figyelő ügynök bővítmény sé
 | Name (Név) | Érték / – példa |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
-| Közzétevő | Microsoft.Azure.NetworkWatcher |
+| publisher | Microsoft.Azure.NetworkWatcher |
 | type | NetworkWatcherAgentWindows |
 | typeHandlerVersion | 1.4 |
 

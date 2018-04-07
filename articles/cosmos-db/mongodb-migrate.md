@@ -1,12 +1,11 @@
 ---
-title: "Mongodb-protokolltámogatással az Azure Cosmos DB API mongoimport és mongorestore használata |} Microsoft Docs"
-description: "Adatok importálása egy API-t a MongoDB-fiók mongoimport és mongorestore használata"
+title: Mongodb-protokolltámogatással az Azure Cosmos DB API mongoimport és mongorestore használata |} Microsoft Docs
+description: Adatok importálása egy API-t a MongoDB-fiók mongoimport és mongorestore használata
 keywords: mongoimport, mongorestore
 services: cosmos-db
 author: AndrewHoh
-manager: jhubbard
-editor: 
-documentationcenter: 
+manager: kfile
+documentationcenter: ''
 ms.assetid: 352c5fb9-8772-4c5f-87ac-74885e63ecac
 ms.service: cosmos-db
 ms.workload: data-services
@@ -16,22 +15,22 @@ ms.topic: article
 ms.date: 06/12/2017
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: 1555f13c3ea88b61be0ea240b51218b83f6f9724
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5c87483e384a09591aca496292638d7b68476beb
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-import-mongodb-data"></a>Az Azure Cosmos DB: Import MongoDB adatok 
 
-Adatok áttelepítése az MongoDB egy Azure Cosmos DB fiókot használja az API-t a mongodb, a következőket kell tennie:
+Ha a MongoDB-ből a MongoDB API-val rendelkező Azure Cosmos DB-fiókba kívánja migrálni az adatokat, tegye a következőket:
 
 * Töltse le vagy *mongoimport.exe* vagy *mongorestore.exe* a a [MongoDB letöltőközpontból](https://www.mongodb.com/download-center).
-* Beolvasása a [API-t a MongoDB-kapcsolati karakterlánc](connect-mongodb-account.md).
+* Kérje le a [MongoDB API kapcsolati karakterláncát](connect-mongodb-account.md).
 
 Ha a MongoDB importál adatokat, és szeretne használni, az Azure Cosmos DB, használja a [adatáttelepítési eszközét](import-data.md) adatainak importálásához.
 
-Ez az oktatóanyag ismerteti a következő feladatokat:
+Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
 > * A kapcsolati karakterlánc beolvasása
@@ -110,7 +109,7 @@ Példa:
     
 3. Határozza meg a gép az Azure Cosmos DB felhőalapú szolgáltatás várakozási ideje:
     
-    a. A MongoDB-rendszerhéjból részletes naplózás engedélyezése a parancs segítségével:```setVerboseShell(true)```
+    a. A MongoDB-rendszerhéjból részletes naplózás engedélyezése a parancs segítségével: ```setVerboseShell(true)```
     
     b. Egy egyszerű lekérdezést futtassa az adatbázison: ```db.coll.find().limit(1)```. Az alábbihoz hasonló választ kap:
 
@@ -118,7 +117,7 @@ Példa:
         Fetched 1 record(s) in 100(ms)
         ```
         
-4. Távolítsa el a beszúrt dokumentum célja, hogy nincs duplikált dokumentumok az áttelepítés előtt. Dokumentumok eltávolításához használja a következő parancsot:```db.coll.remove({})```
+4. Távolítsa el a beszúrt dokumentum célja, hogy nincs duplikált dokumentumok az áttelepítés előtt. Dokumentumok eltávolításához használja a következő parancsot: ```db.coll.remove({})```
 
 5. Kiszámítja a hozzávetőleges *batchSize* és *numInsertionWorkers* értékeket:
 
@@ -146,7 +145,7 @@ Példa:
    mongoimport.exe --host anhoh-mongodb.documents.azure.com:10255 -u anhoh-mongodb -p wzRJCyjtLPNuhm53yTwaefawuiefhbauwebhfuabweifbiauweb2YVdl2ZFNZNv8IU89LqFVm5U0bw== --ssl --sslAllowInvalidCertificates --jsonArray --db dabasename --collection collectionName --file "C:\sample.json" --numInsertionWorkers 4 --batchSize 24
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Folytassa a következő oktatóanyagot, és megtudhatja, hogyan kérdezhet le a MongoDB adatokat Azure Cosmos DB használatával. 
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: ancav
-ms.openlocfilehash: 4598267e92716529774f42d22ab7c47d944d4495
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 537213fdf106da1c07d549d65b1d8cf71887db9f
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>A Microsoft Azure-ban mérőszámok áttekintése
 Ez a cikk ismerteti, hogy milyen adatok gyűjtése le van a Microsoft Azure-ban az előnyöket, és használatuk indítása.  
@@ -47,7 +47,7 @@ További lehetőségek:
 
 * Metrika konfigurálása **szabályt, amely értesítést küld vagy fogad automatikus művelet riasztás** amikor keverve használ a metrika a beállított küszöbértéket. Automatikus skálázás, amely lehetővé teszi a bejövő kérések teljesítéséhez erőforrás horizontális vagy tölti be a webhely vagy a számítási erőforrások további automatizált műveletet. Konfigurálhatja az automatikus skálázási beállítás szabály bejövő vagy kimenő méretezése a küszöbértéket meghaladó metrika alapján.
 
-* **Útvonal** összes metrikákat az Application Insights vagy Naplóelemzés (OMS) azonnali analytics, a Keresés és a egyéni riasztási metrikai adatok az erőforrások közül. Adatfolyam formájában a mérni kívánt Eseményközpontban, amely lehetővé teszi majd irányíthatja őket Azure Stream Analytics vagy egyéni alkalmazások, a közel valós idejű elemzési is. Beállíthatja az Event Hubs streaming a diagnosztikai beállítások használatával.
+* **Útvonal** összes metrikákat az Application Insights vagy Naplóelemzési azonnali analytics, a Keresés és a egyéni riasztási metrikai adatok az erőforrások közül. Adatfolyam formájában a mérni kívánt Eseményközpontban, amely lehetővé teszi majd irányíthatja őket Azure Stream Analytics vagy egyéni alkalmazások, a közel valós idejű elemzési is. Beállíthatja az Event Hubs streaming a diagnosztikai beállítások használatával.
 
 * **Archiválja a mérni kívánt tárolási** a hosszabb megőrzési vagy offline jelentéskészítésre használja őket. Az erőforrás diagnosztikai beállításainak konfigurálásakor irányítani tudja a metrikákat, az Azure Blob storage.
 
@@ -100,11 +100,18 @@ Azure metrikák az Azure-figyelő API-k keresztül érhetők el. Két API-k, ame
 Az Azure figyelő REST API-kkal részletes útmutatást lásd: [Azure figyelő REST API-forgatókönyv](monitoring-rest-api-walkthrough.md).
 
 ## <a name="export-metrics"></a>Exportálás metrikák
-Nyissa meg a **diagnosztikai beállítások** részen a **figyelő** lapra, és a metrikák exportálási beállítások megtekintéséhez. Választható ki metrikák (és diagnosztikai naplók) a Blob storage irányíthatja át Azure Event Hubs felé, vagy az OMS-be az ebben a cikkben korábban említett használati eseteket.
+Nyissa meg a **diagnosztikai beállítások** részen a **figyelő** lapra, és a metrikák exportálási beállítások megtekintéséhez. Választható ki metrikák (és diagnosztikai naplók) a Blob storage irányíthatja át az Azure Event Hubs, illetve a Naplóelemzési az ebben a cikkben korábban említett használati esetek.
 
  ![Exportálási beállítások a Azure figyelő metrikák](./media/monitoring-overview-metrics/MetricsOverview3.png)
 
 A Resource Manager-sablonok, konfigurálható [PowerShell](insights-powershell-samples.md), [Azure CLI](insights-cli-samples.md), vagy [REST API-k](https://msdn.microsoft.com/library/dn931943.aspx).
+
+> [!NOTE]
+> Diagnosztikai beállítások keresztül többdimenziós metrikák küldése jelenleg nem támogatott. Metrikák többdimenziósak, egybesimított egyetlen dimenzionális metrika, dimenzióértékek gyűjtődnek exportálja.
+>
+> *Például*: A "Bejövő üzenetek" metrika eseményközpontban felfedezte, és a forrásadatok egy várólista szintenként. Azonban a metrika fog megjelenni minden bejövő üzenet összes diagnosztikai beállítások keresztül exportálásakor várólisták a központ.
+>
+>
 
 ## <a name="take-action-on-metrics"></a>Művelet végrehajtása a metrikák
 Értesítéseket vagy automatikus műveletek végrehajtása a metrikaadatokat, konfigurálhatja a riasztási szabályok vagy az automatikus skálázási beállításokat.

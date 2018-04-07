@@ -9,20 +9,19 @@ ms.author: xshi
 ms.date: 03/18/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 0ea2dc723c674e7119b6ef38771a73ff4c11e98d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6c94701507f86f6ecab2875f952215cc3e4cc719
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="develop-an-iot-edge-solution-with-multiple-modules-in-visual-studio-code---preview"></a>Az IoT peremhálózati megoldást a Visual Studio Code több modulok – előzetes
-Használhatja a Visual Studio Code az IoT-peremhálózati megoldás több modulok fejlesztéséhez. Ez az oktatóanyag bemutatja, hogyan létrehozása, frissítése és telepítése egy IoT biztonsági megoldás, amely egyszerűen csövön keresztüli érzékelőadatait Visual Studio Code szimulált IoT peremhálózati eszközön keresztül. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Használhatja a Visual Studio Code az IoT-peremhálózati megoldás több modulok fejlesztéséhez. Ez a cikk bemutatja, hogyan létrehozása, frissítése és telepítése az IoT-peremhálózati megoldás, hogy csövek érzékelőadatait Visual Studio Code szimulált IoT peremhálózati eszközön keresztül. Ebből a cikkből megismerheti, hogyan:
 
-> [!div class="checklist"]
-> * Az IoT-peremhálózati megoldás létrehozása a Visual Studio Code segítségével
-> * Új modul hozzáadása a munkát a VS kód segítségével IoT peremhálózati megoldás. 
-> * Az IoT-peremhálózati eszköz a IoT peremhálózati megoldás (több modulok) telepítése
-> * Adatok generált megtekintése
+* Az IoT-peremhálózati megoldás létrehozása a Visual Studio Code segítségével
+* Új modul hozzáadása a munkát a VS kód segítségével IoT peremhálózati megoldás. 
+* Az IoT-peremhálózati eszköz a IoT peremhálózati megoldás (több modulok) telepítése
+* A létrejött adatok megtekintése
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Alább oktatóanyagok befejezése
@@ -60,15 +59,14 @@ Használhatja a Visual Studio Code az IoT-peremhálózati megoldás több modulo
 
 3. Ha Ön [IoT peremhálózati eszköz szimulálva](tutorial-simulate-device-linux.md) a fejlesztési számítógépén. Látni fogja, hogy a modul kép tárolók indul néhány perc múlva.
 
-## <a name="view-generated-data"></a>Adatok generált megtekintése
+## <a name="view-generated-data"></a>A létrejött adatok megtekintése
 
-1. Az IoT hub érkező adatok figyelésére, válassza ki a **nézet** > **parancs paletta...**  keresse meg a **IoT: D2C üzenet figyelni**. 
-2. Az adatok figyelésének leállításához, használja a **IoT: D2C üzenet figyelés leállításának** a parancs paletta parancsot. 
+1. Az IoT Hubra érkező adatok monitorozásához válassza a **Nézet** > **Parancskatalógus...**  elemet, és keressen rá az **IoT: D2C üzenet monitorozásának megkezdése** kifejezésre. 
+2. Az adatok monitorozásának leállításához használja a Parancskatalógus **IoT: D2C üzenet monitorozásának leállítása** parancsát. 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy IoT peremhálózati megoldás egy C# modulra, később, a függvénymodul hozzáadott, a megoldás az útvonalak frissítése, beépített és üzembe helyezve a szimulált IoT peremhálózati eszközön létrehozott. Be vagy egyéb forgatókönyvek tájékozódhat az Azure IoT peremhálózati Visual STUDIO Code fejlesztése során az alábbi oktatóanyagok tovább.
+Továbbra is be vagy egyéb forgatókönyvek tájékozódhat az Azure IoT szegélyt Visual Studio Code fejlesztése során a következő cikkeket:
 
-> [!div class="nextstepaction"]
-> [A C# modul Visual STUDIO Code Debug](how-to-vscode-debug-csharp-module.md)
-> [egy C# függvény Visual STUDIO Code hibakeresése](how-to-vscode-debug-azure-function.md)
+* [A C# modul Visual STUDIO Code hibakeresése](how-to-vscode-debug-csharp-module.md)
+* [A C# függvény Visual STUDIO Code hibakeresése](how-to-vscode-debug-azure-function.md)

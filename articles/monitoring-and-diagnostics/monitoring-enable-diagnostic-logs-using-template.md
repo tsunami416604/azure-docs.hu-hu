@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/26/2018
 ms.author: johnkem
-ms.openlocfilehash: 80f427d5acb884be1752f470e2a9d9d04eee5518
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f1e1c2aa447e35ea483665cc33e4eb6af7a41f51
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automatikus engedélyezés a Resource Manager-sablon használatával erőforrás létrehozásakor diagnosztikai beállítások
 Ebben a cikkben megmutatjuk, hogyan használható egy [Azure Resource Manager sablon](../azure-resource-manager/resource-group-authoring-templates.md) létrehozásakor erőforrás diagnosztikai beállításainak konfigurálására. Ez lehetővé teszi, hogy automatikusan elindítja a diagnosztikai naplók és a mérni kívánt Event Hubs tárfiókokban archiválás őket, vagy Naplóelemzési elküldi őket egy erőforrás létrehozásakor.
@@ -40,7 +40,7 @@ Az alábbiakban egy példa a sablon JSON-fájl generálása nem számítási és
 ## <a name="non-compute-resource-template"></a>Nem-számítási erőforrás sablon
 Nem számítási erőforrásokat akkor két műveletet kell végrehajtania:
 
-1. Paraméterek hozzáadása a paraméterek blob a tárfiók neve, az event hub engedélyezési szabály azonosítója, illetve a OMS Naplóelemzési munkaterület-Azonosítót (amely lehetővé teszi egy tárfiókot, adatfolyamként való küldése az Event Hubs-naplókat a, és/vagy a napló naplókat küld a diagnosztikai naplók archiválása Elemzés).
+1. Paraméterek hozzáadása a paraméterek blob a tárfiók neve, az event hub engedélyezési szabály azonosítója, illetve a Naplóelemzési munkaterület azonosítója (tárfiókokban, adatfolyamként való küldése a Event Hubs-naplókat, és/vagy naplók küldése Naplóelemzési archiválási diagnosztikai naplók engedélyezése).
    
     ```json
     "settingName": {

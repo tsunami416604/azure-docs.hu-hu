@@ -1,26 +1,21 @@
 ---
-title: 'A Stream Analytics kimenetek: tárolási, elemzés lehetőségei |} Microsoft Docs'
+title: Azure Stream Analytics-feladatok kimeneteinek típusai
 description: További információk a Stream Analytics-adatok kimenetek beállításai, többek között a Power BI analysis eredmények célzó.
-keywords: adatok átalakítása, az elemzés eredményeinek, adatok tárolási lehetőségek
-services: stream-analytics,documentdb,sql-database,event-hubs,service-bus,storage
-documentationcenter: ''
-author: SnehaGunda
+services: stream-analytics
+author: jasonwhowell
+ms.author: jasonh
 manager: kfile
-ms.assetid: ba6697ac-e90f-4be3-bafd-5cfcf4bd8f1f
+ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 02/18/2017
-ms.author: sngun
-ms.openlocfilehash: ae8c4daf6b4beff3b1baf7ef5a5f3b84d706401a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: afaadc12d056f42a75795073d480fe26757649d8
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="stream-analytics-outputs-options-for-storage-analysis"></a>A Stream Analytics kimenetek: tárolási, elemzés lehetőségei
+# <a name="stream-analytics-outputs-options-for-storage-and-analysis"></a>A Stream Analytics kimenetek: tárolási és elemzésére szolgáló beállítások
 A Stream Analytics-feladat szerzői, vegye figyelembe a kapott adatokban felhasznált hogyan. Hogyan, az eredmények megtekinthetők a Stream Analytics-feladat, és képes tárolására?
 
 Ahhoz, hogy az alkalmazás minták számos, az Azure Stream Analytics rendelkezik kimeneti tárolja, és az elemzés eredményeinek megtekintése különböző lehetőségek közül. Ez megkönnyíti a feladat kimenetére megtekintése és adatraktározási vagy más célból a használat és a feladat kimenete a rugalmasságot biztosít. Kimenetet a feldolgozás konfigurált már léteznie kell a feladat elindult és események start továbbítására. Például a Blob storage kimenetként használatakor a feladat nem hoz létre egy tárfiókot automatikusan. Hozzon létre egy tárfiókot, a Stream Analytics-feladat indítása előtt.

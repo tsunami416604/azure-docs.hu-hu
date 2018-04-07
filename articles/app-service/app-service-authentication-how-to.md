@@ -13,18 +13,19 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: cephalin
-ms.openlocfilehash: b7c641cebad5a3157808938040ea9309d2868896
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 10decbd5291e2054e373bfef266b64eae36ea1cf
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="customize-authentication-and-authorization-in-azure-app-service"></a>Hitelesítési és engedélyezési az Azure App Service testreszabása
 
-Ez a cikk bemutatja, hogyan testreszabható, hitelesítési és engedélyezési az App Service-ben, és identitás kezelése az alkalmazásból. 
+Ez a cikk bemutatja, hogyan szabhatja testre [hitelesítési és engedélyezési az App Service](app-service-authentication-overview.md), és az identitás kezelése az alkalmazásból. 
 
 Gyorsan használatba, tekintse meg az alábbi oktatóanyagok egyikét:
 
+* [Oktatóanyag: Helyszerepkörre, és felhasználók-végpont az Azure App Service-ben](app-service-web-tutorial-auth-aad.md)
 * [Az alkalmazás konfigurálása az Azure Active Directory-bejelentkezés használatára](app-service-mobile-how-to-configure-active-directory-authentication.md)
 * [Az alkalmazás konfigurálása a Facebook-bejelentkezés használatára](app-service-mobile-how-to-configure-facebook-authentication.md)
 * [Az alkalmazás konfigurálása a Google-bejelentkezés használatára](app-service-mobile-how-to-configure-google-authentication.md)
@@ -144,3 +145,7 @@ Kattintson a **szerkesztése**, módosítsa a következő tulajdonság, majd **P
 ```json
 "additionalLoginParams": ["domain_hint=<domain_name>"]
 ```
+## <a name="next-steps"></a>További lépések
+
+> [!div class="nextstepaction"]
+> [Oktatóanyag: Helyszerepkörre, és felhasználók-végpontok](app-service-web-tutorial-auth-aad.md)

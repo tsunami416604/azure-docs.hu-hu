@@ -5,14 +5,14 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 04/05/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: a7891e5bedb6e2ad3cba4780d38fc479d7b0bf4e
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: c9a546f82d3300b37f861fff53421ebbf9fe3804
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítse a felügyeleti megoldás az Azure-ban
 
@@ -30,7 +30,7 @@ Számítógépek frissítés használatával felügyelt értékelési és a fris
 * Automation hibrid runbook-feldolgozó
 * Microsoft Update vagy Windows Server Update Services Windows-számítógépekhez
 
-Az alábbi ábrán látható konceptuális ábrázolása viselkedését, és adatfolyam hogyan a megoldás értékelésére, és alkalmazza a biztonsági frissítéseket az összes kapcsolódó, Windows Server és Linux rendszerű számítógépek a munkaterületen.    
+Az alábbi ábrán látható konceptuális ábrázolása viselkedését, és adatfolyam hogyan a megoldás értékelésére, és alkalmazza a biztonsági frissítéseket az összes kapcsolódó, Windows Server és Linux rendszerű számítógépek a munkaterületen.
 
 ![Frissítse a felügyeleti folyamatot](media/automation-update-management/update-mgmt-updateworkflow.png)
 
@@ -64,27 +64,30 @@ A következő táblázat az operációs rendszereket, amelyek nem támogatottak.
 |Operációs rendszer  |Megjegyzések  |
 |---------|---------|
 |Windows-ügyfél     | Ügyféloldali operációs rendszerek (a Windows 7, Windows 10 stb.) nem támogatottak.        |
-|Windows Server 2016 Nano Server     | Érvénytelen érték       |
+|Windows Server 2016 Nano Server     | Nem támogatott       |
 
 ### <a name="client-requirements"></a>Ügyfélkövetelmények
 
 #### <a name="windows"></a>Windows
 
-Windows-ügynökök kommunikálni a Windows Server Update Services (WSUS) kiszolgáló, vagy van a Microsoft Update eléréséhez meg kell adni. Emellett a Windows-ügynök nem kezelhető egyidejűleg a System Center Configuration Manager által. A [Windows-ügynök](../log-analytics/log-analytics-agent-windows.md) szükséges. Ez az ügynök telepítése automatikusan történik, ha egy Azure virtuális gép.
+Windows-ügynökök kommunikálni a Windows Server Update Services (WSUS) kiszolgáló, vagy van a Microsoft Update eléréséhez meg kell adni. Frissítéskezelés a System Center Configuration Managerrel használható, ismerje meg, további információ az integrációs feladatokhoz látogasson el a [integrálni System Center Configuration Manager frissítési felügyeleti](oms-solution-updatemgmt-sccmintegration.md#configuration). A [Windows-ügynök](../log-analytics/log-analytics-agent-windows.md) szükséges. Ez az ügynök telepítése automatikusan történik, ha egy Azure virtuális gép.
 
 #### <a name="linux"></a>Linux
 
 A Linux a gép hozzáféréssel kell rendelkeznie egy frissítés tárházba, amely magán- vagy nyilvános lehet. Ezen megoldás nem támogatott Linux úgy konfigurálva, hogy több Naplóelemzési munkaterület jelentés OMS-ügynököt.
 
-Az OMS-ügynök telepítése Linux és a legújabb verzió letöltéséhez kapcsolatos további információkért lásd: [Operations Management Suite-ügynök Linux](https://github.com/microsoft/oms-agent-for-linux). További információért a Windowshoz készült OMS-ügynök telepítésével kapcsolatban tekintse meg a [Windowshoz készült Operations Management Suite-ügynökkel](../log-analytics/log-analytics-windows-agent.md) kapcsolatos részt.  
+Az OMS-ügynök telepítése Linux és a legújabb verzió letöltéséhez kapcsolatos további információkért lásd: [Operations Management Suite-ügynök Linux](https://github.com/microsoft/oms-agent-for-linux). További információért a Windowshoz készült OMS-ügynök telepítésével kapcsolatban tekintse meg a [Windowshoz készült Operations Management Suite-ügynökkel](../log-analytics/log-analytics-windows-agent.md) kapcsolatos részt.
 
 ## <a name="permissions"></a>Engedélyek
-Hozzon létre, és a frissítés központi telepítések felügyeletéhez szükséges, konkrét engedélyeket kell. Ezek az engedélyek olvashat további [szerepkör alapú hozzáférés - frissítéskezelés](automation-role-based-access-control.md#update-management) 
+
+Hozzon létre, és a frissítés központi telepítések felügyeletéhez szükséges, konkrét engedélyeket kell. Ezek az engedélyek olvashat további [szerepkör alapú hozzáférés - frissítéskezelés](automation-role-based-access-control.md#update-management)
 
 ## <a name="solution-components"></a>Megoldás-összetevők
+
 Ez a megoldás a következő erőforrásokból áll, amelyek az Automation-fiókjába lesznek felvéve, és ügynökökhöz vagy az Operations Managerhez kapcsolt felügyeleti csoporthoz lesznek közvetlenül hozzákapcsolva.
 
 ### <a name="hybrid-worker-groups"></a>Hibridfeldolgozó-csoportok
+
 Miután engedélyezte a megoldás, a Naplóelemzési munkaterület közvetlenül kapcsolódó minden Windows számítógép automatikusan van beállítva egy hibrid forgatókönyv-feldolgozót a megoldásban a runbookok támogatásához. A megoldás által kezelt Windows számítógépenként szerepel a hibrid dolgozó csoportok lapon alatt az Automation-fiókhoz, a következő elnevezési rendszer hibrid feldolgozócsoport *állomásnév FQDN_GUID*. Ezek a csoportok a runbookok nem tudja megcélozni a fiókjában, egyébként pedig és a sikertelen. Ezek a csoportok csak a felügyeleti megoldást támogatják.
 
 Azonban a Windows rendszerű számítógépek hozzáadhatóak egy hibrid runbook-feldolgozócsoporthoz az Automation-fiókban az Automation-runbookok támogatása érdekében, ha ugyanazon fiókot használja a megoldáshoz és a hibrid runbook-feldolgozócsoporttagsághoz. Ez a funkció a hibrid runbook-feldolgozó 7.2.12024.0-s verziójától érhető el.
@@ -119,14 +122,13 @@ Heartbeat
 
 A Windows-számítógépen a következő ügynök ellenőrzésére a Log Analyticshez tekinthetők át:
 
-1.  Nyissa meg a Microsoft Monitoring Agent, a Vezérlőpulton, és az a **Azure Naplóelemzés** lapon, az ügynök jeleníti meg a következő üzenet: **Naplóelemzési sikeresen csatlakozott a Microsoft Monitoring Agent** .   
-2.  Nyissa meg a Windows Eseménynaplóját, lépjen az **Alkalmazás- és szolgáltatásnaplók\Operations Manager** részhez, és keresse meg a 3000-es, illetve az 5002-es eseményazonosítót a forrás szolgáltatás-összekötőből. Ezek az események azt jelzik, a számítógép regisztrálva van a Naplóelemzési munkaterület, és konfigurációs fogadja.  
+1. Nyissa meg a Microsoft Monitoring Agent, a Vezérlőpulton, és az a **Azure Naplóelemzés** lapon, az ügynök jeleníti meg a következő üzenet: **Naplóelemzési sikeresen csatlakozott a Microsoft Monitoring Agent** .   
+2. Nyissa meg a Windows Eseménynaplóját, lépjen az **Alkalmazás- és szolgáltatásnaplók\Operations Manager** részhez, és keresse meg a 3000-es, illetve az 5002-es eseményazonosítót a forrás szolgáltatás-összekötőből. Ezek az események azt jelzik, a számítógép regisztrálva van a Naplóelemzési munkaterület, és konfigurációs fogadja.
 
 Ha az ügynök nem tud kommunikálni a Naplóelemzési, és a tűzfalon vagy proxykiszolgálón keresztül az internettel történő kommunikációra van konfigurálva, győződjön meg arról, a tűzfal vagy a proxy kiszolgáló megfelelően konfigurálva megtekintésével [hálózati konfigurációja Windows-ügynök](../log-analytics/log-analytics-agent-windows.md) vagy [hálózati konfigurációt a Linux-ügynök](../log-analytics/log-analytics-agent-linux.md).
 
 > [!NOTE]
-> Ha a Linux rendszerek kommunikálni a proxy vagy az OMS-átjáró vannak konfigurálva, és bevezetési ezt a megoldást, a frissítés a *proxy.conf* engedélyeket a omiuser csoport olvasási jogosultsággal a fájl a következő elvégzésével parancsok:  
-> `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf`  
+> Ha a Linux rendszerek kommunikálni a proxy vagy az OMS-átjáró vannak konfigurálva, és bevezetési ezt a megoldást, a frissítés a *proxy.conf* engedélyeket a omiuser csoport olvasási jogosultsággal a fájl a következő elvégzésével parancsok: `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf`
 > `sudo chmod 644 /etc/opt/microsoft/omsagent/proxy.conf`
 
 Az újonnan hozzáadott Linux-ügynökök **Frissítve** állapotúak, miután a rendszer végrehajt egy elemzést. A folyamat akár hat órát is igénybe vehet.
@@ -136,6 +138,7 @@ Ellenőrizheti, hogy az Operations Manager felügyeleti csoport Naplóelemzési 
 ## <a name="data-collection"></a>Adatgyűjtés
 
 ### <a name="supported-agents"></a>Támogatott ügynökök
+
 Az alábbi táblázat áttekintést nyújt az ebben a megoldásban támogatott összekapcsolt forrásokról.
 
 | Összekapcsolt forrás | Támogatott | Leírás |
@@ -145,11 +148,13 @@ Az alábbi táblázat áttekintést nyújt az ebben a megoldásban támogatott �
 | Az Operations Manager felügyeleti csoportja |Igen |A megoldás információt szerez be a csatlakoztatott felügyeleti csoportban lévő ügynököktől a rendszerfrissítésekről.<br>Ehhez nem szükséges, hogy közvetlen kapcsolat legyen az Operations Manager-ügynök és a Log Analytics között. A Naplóelemzési munkaterületet adat továbbítódik a felügyeleti csoportból. |
 
 ### <a name="collection-frequency"></a>A gyűjtés gyakorisága
+
 Minden felügyelt Windows-számítógép esetében naponta kétszer történik vizsgálat. A rendszer 15 percenként lekérdezi a Windows API utolsó frissítésének időpontját, hogy meghatározza, megváltozott-e az állapot, és ha igen, megfelelőségi vizsgálatot kezdeményez. Linux-számítógépek esetében a vizsgálat három óránként történik.
 
-30 perctől akár 6 óráig is eltarthat, amíg megjelennek a felügyelt számítógépekből származó frissített adatok az irányítópulton.   
+30 perctől akár 6 óráig is eltarthat, amíg megjelennek a felügyelt számítógépekből származó frissített adatok az irányítópulton.
 
 ## <a name="viewing-update-assessments"></a>A frissítési felmérések megtekintése
+
 Kattintson a a **frissítéskezelés** a az automation-fiók a gépek állapotának megtekintése.
 
 Ez a nézet a gépek hiányzó frissítések, a központi telepítést és az ütemezett frissítés központi telepítések tájékoztatást nyújt.
@@ -165,7 +170,7 @@ A munkaterületen található összes Linux- és Windows-számítógép frissít
 
 Ahhoz, hogy Ubuntu rendszeren elkerülje a karbantartási időszakon kívüli frissítéstelepítést, konfigurálja újra az Unattended-Upgrade csomagot az automatikus frissítések letiltásához. A konfigurációval kapcsolatos útmutatásért lásd [az Ubuntu Server útmutatójának automatikus frissítésekkel kapcsolatos témakörét](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
 
-Az Azure Marketplace-en elérhető, igény szerinti Red Hat Enterprise Linux- (RHEL-) rendszerképekből létrehozott virtuális gépek regisztrálva vannak az Azure-ban üzembe helyezett [Red Hat Update Infrastructure (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) eléréséhez. Minden más Linux-változatot a disztribúciók online fájltárolójából kell frissíteni, a támogatott eljárásokat követve.  
+Az Azure Marketplace-en elérhető, igény szerinti Red Hat Enterprise Linux- (RHEL-) rendszerképekből létrehozott virtuális gépek regisztrálva vannak az Azure-ban üzembe helyezett [Red Hat Update Infrastructure (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) eléréséhez. Minden más Linux-változatot a disztribúciók online fájltárolójából kell frissíteni, a támogatott eljárásokat követve.
 
 ## <a name="viewing-missing-updates"></a>Hiányzó frissítések megtekintése
 
@@ -183,7 +188,7 @@ Hozzon létre egy új központi telepítésének kattintva a **ütemezés közpo
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Név |A frissítéstelepítést beazonosító egyedi név. |
+| Name (Név) |A frissítéstelepítést beazonosító egyedi név. |
 |Operációs rendszer| Linux- vagy Windows|
 | Gépek frissítése |Válasszon ki egy mentett keresést vagy gép válasszon címet a legördülő listán, és válassza ki az egyes gépek |
 |Frissítési besorolások|Válassza ki a szükséges összes frissítési besorolások|
@@ -204,8 +209,8 @@ A következő táblázat a megoldás által gyűjtött frissítési rekordok min
 |Frissítés<br>&#124;Ha UpdateState == "Szükséges" és az opcionális == false<br>&#124;Számítógép, a cím, a KBID, a besorolás, a PublishedDate projekt |Minden számítógép, amelyről hiányzik frissítés<br>Adja hozzá az operációs rendszer korlátozni a következők egyikét:<br>OSType = "Windows"<br>OSType == "Linux" |
 | Frissítés<br>&#124;Ha UpdateState == "Szükséges" és az opcionális == false<br>&#124;Ha számítógép == "ContosoVM1.contoso.com"<br>&#124; project Computer, Title, KBID, Product, PublishedDate |Egy adott számítógépről hiányzó frissítések (cserélje le az értéket a saját számítógépnevére)|
 | Esemény<br>&#124;Ha EventLevelName == "error" és a számítógép ((frissítés &#124; where (besorolási == "Biztonsági frissítések" vagy a besorolási == "Kritikus frissítések")<br>&#124;Ha UpdateState == "Szükséges" és az opcionális == false <br>&#124;különálló számítógép)) |Olyan gépek hibaeseményei, amelyeknél kritikus vagy biztonsági szükséges frissítések hiányoznak |
-| Frissítés<br>&#124;Ha UpdateState == "Szükséges" és az opcionális == false<br>&#124;különböző cím |Egyedi frissítések minden számítógépnél | 
-| UpdateRunProgress<br>&#124;Ha InstallationStatus == "sikertelen" <br>&#124; summarize AggregatedValue = count() by Computer, Title, UpdateRunName |Futtassa egy frissítés sikertelen rendelkező számítógépek<br>Adja hozzá az operációs rendszer korlátozni a következők egyikét:<br>OSType = "Windows"<br>OSType == "Linux" | 
+| Frissítés<br>&#124;Ha UpdateState == "Szükséges" és az opcionális == false<br>&#124;különböző cím |Egyedi frissítések minden számítógépnél |
+| UpdateRunProgress<br>&#124;Ha InstallationStatus == "sikertelen" <br>&#124; summarize AggregatedValue = count() by Computer, Title, UpdateRunName |Futtassa egy frissítés sikertelen rendelkező számítógépek<br>Adja hozzá az operációs rendszer korlátozni a következők egyikét:<br>OSType = "Windows"<br>OSType == "Linux" |
 | Frissítés<br>&#124;Ha OSType == "Linux"<br>&#124;Ha UpdateState! = "Nem szükséges" és (besorolási == "Kritikus frissítések" vagy a besorolási == "Biztonsági frissítések")<br>&#124;AggregatedValue összefoglalója = count() számítógépenként |Linux gépeire, amelyeket a csomag frissítés érhető el, amely kritikus vagy biztonsági rést listája | 
 | UpdateRunProgress<br>&#124;Ha UpdateRunName == "DeploymentName"<br>&#124;AggregatedValue összefoglalója = count() számítógépenként|Az ebben a frissítésfuttatásban frissített számítógépek (cserélje le az értéket a saját frissítéstelepítésének nevére) | 
 
@@ -239,15 +244,15 @@ Frissítési besorolás frissítések telepítése a openSUSE Linux miatt a kül
 
 Ebben a szakaszban arról talál információkat, hogyan háríthatja el a frissítéskezelési megoldásban felmerülő hibákat.
 
-Ha problémák merülnek fel a megoldás vagy virtuális gépek bevezetése során, ellenőrizze az **Application and Services Logs\Operations Manager** (Alkalmazási és szolgáltatási naplók\Operations Manager) eseménynaplóban a 4502-es eseményazonosítóval ellátott eseményeket, valamint a következőt tartalmazó eseményüzeneteket: **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent**. Az alábbi táblázat konkrét hibaüzeneteket, illetve egy-egy lehetséges megoldásukat ismerteti.  
+Ha problémák merülnek fel a megoldás vagy virtuális gépek bevezetése során, ellenőrizze az **Application and Services Logs\Operations Manager** (Alkalmazási és szolgáltatási naplók\Operations Manager) eseménynaplóban a 4502-es eseményazonosítóval ellátott eseményeket, valamint a következőt tartalmazó eseményüzeneteket: **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent**. Az alábbi táblázat konkrét hibaüzeneteket, illetve egy-egy lehetséges megoldásukat ismerteti.
 
-| Üzenet | Ok | Megoldás |   
-|----------|----------|----------|  
-| A gép nem regisztrálható a javításkezelőhöz,<br>A regisztráció kivétel miatt meghiúsult<br>System.InvalidOperationException: {„Üzenet”:„A gép már<br>regisztrálva van egy másik fiókhoz. "} | A gép már be lett vezetve egy másik munkaterületre a frissítéskezeléshez | Végezze el a régi összetevők tisztítását [a hibrid runbook-csoport törlésével](automation-hybrid-runbook-worker.md#remove-hybrid-worker-groups)|  
-| A gép nem regisztrálható a javításkezelőhöz,<br>A regisztráció kivétel miatt meghiúsult<br>System.Net.Http.HttpRequestException: Hiba történt a kérés küldése során. ---><br>System.Net.WebException: Az alapul szolgáló kapcsolat<br>megszakadt: Váratlan hiba<br>történt a fogadó oldalon. ---> System.ComponentModel.Win32Exception:<br>Az ügyfél és a kiszolgáló nem képes kommunikálni,<br>mert nem rendelkeznek közös algoritmussal | A proxy/átjáró/tűzfal blokkolja a kommunikációt | [A rendszerkövetelmények áttekintése](automation-offering-get-started.md#network-planning)|  
-| A gép nem regisztrálható a javításkezelőhöz,<br>A regisztráció kivétel miatt meghiúsult<br>Newtonsoft.Json.JsonReaderException: Hiba történt a pozitív végtelen érték elemzése közben. | A proxy/átjáró/tűzfal blokkolja a kommunikációt | [A rendszerkövetelmények áttekintése](automation-offering-get-started.md#network-planning)| 
-| Az <wsid>.oms.opinsights.azure.com szolgáltatás által bemutatott tanúsítványt<br>nem a Microsoft szolgáltatásaihoz használt<br>hitelesítésszolgáltató bocsátotta ki. Kapcsolattartó<br>a hálózati rendszergazdánál, hogy futtat-e olyan proxyt, amely elfogja a<br>TLS/SSL-kommunikációt. |A proxy/átjáró/tűzfal blokkolja a kommunikációt | [A rendszerkövetelmények áttekintése](automation-offering-get-started.md#network-planning)|  
-| A gép nem regisztrálható a javításkezelőhöz,<br>A regisztráció kivétel miatt meghiúsult<br>AgentService.HybridRegistration.<br>PowerShell.Certificates.CertificateCreationException:<br>Nem sikerült önaláírt tanúsítványt létrehozni. ---><br>System.UnauthorizedAccessException: A hozzáférés megtagadva. | Hiba az önaláírt tanúsítvány létrehozásakor | Ellenőrizze, hogy a rendszerfióknak<br>van-e olvasási hozzáférése a következő mappához:<br>**C:\ProgramData\Microsoft\**<br>**Crypto\RSA**|  
+| Üzenet | Ok | Megoldás |
+|----------|----------|----------|
+| A gép nem regisztrálható a javításkezelőhöz,<br>A regisztráció kivétel miatt meghiúsult<br>System.InvalidOperationException: {„Üzenet”:„A gép már<br>regisztrálva van egy másik fiókhoz. "} | A gép már be lett vezetve egy másik munkaterületre a frissítéskezeléshez | Végezze el a régi összetevők tisztítását [a hibrid runbook-csoport törlésével](automation-hybrid-runbook-worker.md#remove-hybrid-worker-groups)|
+| A gép nem regisztrálható a javításkezelőhöz,<br>A regisztráció kivétel miatt meghiúsult<br>System.Net.Http.HttpRequestException: Hiba történt a kérés küldése során. ---><br>System.Net.WebException: Az alapul szolgáló kapcsolat<br>megszakadt: Váratlan hiba<br>történt a fogadó oldalon. ---> System.ComponentModel.Win32Exception:<br>Az ügyfél és a kiszolgáló nem képes kommunikálni,<br>mert nem rendelkeznek közös algoritmussal | A proxy/átjáró/tűzfal blokkolja a kommunikációt | [A rendszerkövetelmények áttekintése](automation-offering-get-started.md#network-planning)|
+| A gép nem regisztrálható a javításkezelőhöz,<br>A regisztráció kivétel miatt meghiúsult<br>Newtonsoft.Json.JsonReaderException: Hiba történt a pozitív végtelen érték elemzése közben. | A proxy/átjáró/tűzfal blokkolja a kommunikációt | [A rendszerkövetelmények áttekintése](automation-offering-get-started.md#network-planning)|
+| Az <wsid>.oms.opinsights.azure.com szolgáltatás által bemutatott tanúsítványt<br>nem a Microsoft szolgáltatásaihoz használt<br>hitelesítésszolgáltató bocsátotta ki. Kapcsolatfelvétel<br>a hálózati rendszergazdánál, hogy futtat-e olyan proxyt, amely elfogja a<br>TLS/SSL-kommunikációt. |A proxy/átjáró/tűzfal blokkolja a kommunikációt | [A rendszerkövetelmények áttekintése](automation-offering-get-started.md#network-planning)|
+| A gép nem regisztrálható a javításkezelőhöz,<br>A regisztráció kivétel miatt meghiúsult<br>AgentService.HybridRegistration.<br>PowerShell.Certificates.CertificateCreationException:<br>Nem sikerült önaláírt tanúsítványt létrehozni. ---><br>System.UnauthorizedAccessException: A hozzáférés megtagadva. | Hiba az önaláírt tanúsítvány létrehozásakor | Ellenőrizze, hogy a rendszerfióknak<br>van-e olvasási hozzáférése a következő mappához:<br>**C:\ProgramData\Microsoft\**<br>**Crypto\RSA**|
 
 ## <a name="next-steps"></a>További lépések
 

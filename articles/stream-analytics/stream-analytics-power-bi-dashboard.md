@@ -1,24 +1,19 @@
 ---
-title: A Power BI-irányítópultot az Azure Stream Analytics |} Microsoft Docs
-description: A valós idejű streamelési Power BI-Irányítópult segítségével gyűjtse össze az üzleti intelligencia, és a Stream Analytics-feladat nagy mennyiségű adatok elemzését.
-keywords: elemzések irányítópultján, valós idejű irányítópulton
+title: A Power BI irányítópult integráció az Azure Stream Analytics használ
+description: A cikkből megtudhatja, hogyan használható valós idejű Power BI-irányítópultot adato kívül egy Azure Stream Analytics-feladat.
 services: stream-analytics
-documentationcenter: ''
 author: jseb225
-manager: ryanw
-ms.assetid: fe8db732-4397-4e58-9313-fec9537aa2ad
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 06/27/2017
 ms.author: jeanb
-ms.openlocfilehash: e1f1d960c312362e0e0cd6d2f83599c28c8c3f05
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 06/27/2017
+ms.openlocfilehash: 15b8548e8b5b6ff8d2f5722d2a4031f8e52d044b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>A Stream Analytics és a Power BI: az adatfolyamként történő adatok valós idejű elemzési irányítópult
 Az Azure Stream Analytics lehetővé teszi, hogy a vezető üzleti intelligencia eszközök közül az egyik kihasználhatja [Microsoft Power BI](https://powerbi.com/). Ebből a cikkből megismerheti, hogyan üzleti intelligencia eszközök használatával létrehozni a Power BI kimenetként az Azure Stream Analytics-feladatok. Azt is megtudhatja, hogyan történő létrehozásáról és használatáról a valós idejű irányítópulton.
@@ -248,8 +243,8 @@ Hasonlóképpen ha egy feladat indítása után a jogkivonat lejárt, hiba tört
 
 Az engedélyezési frissítése a Power BI, után egy zöld riasztás jelenik meg megfelelően, hogy a probléma megoldódott-e az engedélyezési területen.
 
-## <a name="get-help"></a>Segítség kérése
-Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+## <a name="get-help"></a>Segítségkérés
+Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>További lépések
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)

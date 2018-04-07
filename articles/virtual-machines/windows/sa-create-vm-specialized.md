@@ -1,11 +1,11 @@
 ---
-title: "Virtuális gép létrehozása az Azure-ban speciális lemezről |} Microsoft Docs"
-description: "Hozzon létre egy új virtuális gép lemezcsatlakoztatás egy speciális nem felügyelt, a Resource Manager üzembe helyezési modellben."
+title: Virtuális gép létrehozása az Azure-ban speciális lemezről |} Microsoft Docs
+description: Hozzon létre egy új virtuális gép lemezcsatlakoztatás egy speciális nem felügyelt, a Resource Manager üzembe helyezési modellben.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 3b7d3cd5-e3d7-4041-a2a7-0290447458ea
 ms.service: virtual-machines-windows
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 811cc6cea80acbe6cbbf4533c1f9a8c9c7f53702
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ffa36967eb987f5e1b66f007ae60a63e640a609a
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Olyan virtuális merevlemezről speciális tárfiók a virtuális gép létrehozása
 
@@ -138,7 +138,7 @@ Az URL-címeket, a forrás és cél tárfiók van szüksége. Az URL-címek megj
 
 Az Azure portálon vagy az Azure Powershell használatával az URL-cím beszerzése:
 
-* **Portál**: kattintson a  **>**  a **minden szolgáltatás** > **tárfiókok** > *tároló fiók* > **Blobok** és a forrás VHD-fájl valószínűleg a **VHD-k** tároló. Kattintson a **tulajdonságok** a tárolót, és másolja a dokumentum szövegét, címkével **URL-cím**. A forrás- és tárolók URL-címei lesz szüksége. 
+* **Portál**: kattintson a **>** a **minden szolgáltatás** > **tárfiókok** > *tároló fiók* > **Blobok** és a forrás VHD-fájl valószínűleg a **VHD-k** tároló. Kattintson a **tulajdonságok** a tárolót, és másolja a dokumentum szövegét, címkével **URL-cím**. A forrás- és tárolók URL-címei lesz szüksége. 
 * **PowerShell**: használata [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) nevű virtuális gép adatainak megszerzése **myVM** erőforráscsoportban **myResourceGroup**. Az eredmények között, tekintse meg a **tárolási profilban** című rész a **virtuális merevlemez Uri**. Az Uri első része a tároló URL-CÍMÉT, és az utolsó része a virtuális gép operációs rendszer virtuális merevlemez nevét.
 
 ```powershell

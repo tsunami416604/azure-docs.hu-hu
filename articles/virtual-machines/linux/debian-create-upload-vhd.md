@@ -1,11 +1,11 @@
 ---
-title: "Az Azure-ban Debian Linux virtuális merevlemez előkészítése |} Microsoft Docs"
-description: "Útmutató a Debian 7 & központi telepítési 8 VHD-fájlok létrehozása az Azure-ban."
+title: Az Azure-ban Debian Linux virtuális merevlemez előkészítése |} Microsoft Docs
+description: Útmutató a Debian 7 & központi telepítési 8 VHD-fájlok létrehozása az Azure-ban.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: szarkos
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: a6de7a7c-cc70-44e7-aed0-2ae6884d401a
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 9b32b298f141e9ee54b4c42d3ee9c15174daf8b7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f8e98ae823d03dae475efca48a4ce32f27317882
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Debian-alapú VHD előkészítése Azure-beli használatra
 ## <a name="prerequisites"></a>Előfeltételek

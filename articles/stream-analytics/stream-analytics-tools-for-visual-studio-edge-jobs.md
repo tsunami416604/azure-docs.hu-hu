@@ -1,26 +1,21 @@
 ---
-title: A folyamatos integrációt és telepítést folyamat létrehozásához használja a Stream Analytics Visual Studio eszközök |} Microsoft Docs
-description: Az oktatóanyag segítséget nyújt a Stream Analytics fejleszthet, hibakeresés, és a Stream Analytics peremhálózati feladatok létrehozása a Visual Studio eszközök.
-keywords: a Visual studio NuGet, a DevOps, a peremhálózati feladatok, a Stream analytics
-documentationcenter: ''
+title: Azure Stream Analytics Tools for Visual Studio peremhálózati feladatok
+description: Ez a cikk ismerteti, hogyan, hibakeresés, és hozzon létre a Stream Analytics peremhálózati feladatokat, a Stream Analytics tools for Visual Studio használatával.
 services: stream-analytics
 author: su-jie
-manager: ''
-ms.assetid: ''
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/13/2018
 ms.author: sujie
-ms.openlocfilehash: c6e1d0693035ef343e20cee4b09f0669e089afee
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/13/2018
+ms.openlocfilehash: ec916ea2104df9d694aad2462df7ca5a487017f2
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="develop-stream-analytics-edge-jobs-by-using-visual-studio-tools"></a>Stream Analytics peremhálózati feladatok fejlesztéséhez a Visual Studio eszközök használatával
+# <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Visual Studio eszközök használatával Stream Analytics peremhálózati feladatok fejlesztése
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan használja a Stream Analytics tools for Visual Studio, hibakeresés, és a Stream Analytics peremhálózati feladatok létrehozása. Miután hoz létre, és tesztelje a feladat, lépjen az Azure portálra, telepíteni kell az eszközöket. 
 
