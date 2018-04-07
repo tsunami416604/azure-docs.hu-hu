@@ -1,24 +1,24 @@
 ---
-title: "A Virtuálisgép-lemezkép hozzáadása Azure verem |} Microsoft Docs"
-description: "A szervezete egyéni Windows vagy Linux virtuális gép lemezképének hozzáadása a bérlők számára."
+title: A Virtuálisgép-lemezkép hozzáadása Azure verem |} Microsoft Docs
+description: A szervezete egyéni Windows vagy Linux virtuális gép lemezképének hozzáadása a bérlők számára.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: e5a4236b-1b32-4ee6-9aaa-fcde297a020f
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/17/2018
+ms.date: 04/05/2018
 ms.author: mabrigg
-ms.openlocfilehash: 0ba0bc4e8350a65a95dc41788c93d5c89fc48334
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: eb2035f6e667a9b3ab642d42cb9bb5ecf5c86fb1
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="make-a-custom-virtual-machine-image-available-in-azure-stack"></a>Azure-készletben elérhetővé egy egyéni virtuálisgép-lemezkép
 
@@ -126,6 +126,7 @@ A kép verem Azure piactérről való hozzáadásához kövesse az alábbi lép�
     -osDiskLocalPath 'C:\Users\AzureStackAdmin\Desktop\UbuntuServer.vhd' `
   ```
 
+
 A parancs a következőket teszi:
 
 * Hitelesíti az Azure-verem környezetbe.
@@ -133,9 +134,9 @@ A parancs a következőket teszi:
 * A Virtuálisgép-lemezkép hozzáadása a virtuális gépek lemezképtára.
 * A Piactéri elemet hoz létre.
 
-Győződjön meg arról, hogy a parancs sikeresen lefutott, a portálon lépjen a piactéren. Győződjön meg arról, hogy a Virtuálisgép-lemezkép érhető el a **virtuális gépek** kategóriát.
+Győződjön meg arról, hogy a parancs sikeresen lefutott, a portálon lépjen a piactéren. Győződjön meg arról, hogy a Virtuálisgép-lemezkép érhető el a **számítási** kategóriát.
 
-![Sikerült hozzáadni a Virtuálisgép-lemezkép](./media/azure-stack-add-vm-image/image5.PNG)
+![Sikerült hozzáadni a Virtuálisgép-lemezkép](./media/azure-stack-add-vm-image/verify-vm.png)
 
 ## <a name="remove-a-vm-image-by-using-powershell"></a>Távolítsa el a Virtuálisgép-lemezkép PowerShell használatával
 
@@ -161,7 +162,7 @@ Remove-AzsVMImage `
 | **osDiskLocalPath** |Az operációs rendszer lemezének Azure verem VM lemezképként feltölteni kívánt virtuális merevlemez helyi elérési útja. |
 | **dataDiskLocalPaths** |A helyi elérési útja, amely a Virtuálisgép-lemezkép részeként is feltölthetők adatlemezek választható tömbjét. |
 | **CreateGalleryItem** |Egy logikai jelző, amely meghatározza, hogy hozzon létre egy elemet a piactér-e. Alapértelmezés szerint érték **igaz**. |
-| **cím** |A Piactéri elemet megjelenített neve. Alapértelmezés szerint van beállítva a `Publisher-Offer-Sku` a Virtuálisgép-lemezkép értékét. |
+| **Cím** |A Piactéri elemet megjelenített neve. Alapértelmezés szerint van beállítva a `Publisher-Offer-Sku` a Virtuálisgép-lemezkép értékét. |
 | **description** |A Piactéri elemet leírása. |
 | **hely** |A hely, ahol a Virtuálisgép-lemezkép közzé kell tenni. Alapértelmezés szerint ez az érték értéke **helyi**.|
 | **osDiskBlobURI** |(Választható) Ezt a parancsfájlt is fogad blobtárolók URI azonosítójához használandó a `osDisk`. |
@@ -185,7 +186,7 @@ Lemezképek kell tudni blobtárolók URI azonosítójához használandó lehet h
 
    * Feltöltése a [Windows Virtuálisgép-lemezkép](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/), ne felejtse el behelyettesíteni a **Azure bejelentkezési** a lépés a [konfigurálása az Azure-verem operátor PowerShell környezet](azure-stack-powershell-configure-admin.md) lépés.  
 
-   * Jegyezze fel a blobtárolók URI azonosítójához használandó, ha feltölti a lemezképet. A Blob storage URI formátuma a következő:  *&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;* .vhd.
+   * Jegyezze fel a blobtárolók URI azonosítójához használandó, ha feltölti a lemezképet. A Blob storage URI formátuma a következő: *&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;*.vhd.
 
    * Ahhoz, hogy a blob névtelenül elérhető, lépjen a tárolóra fiók ahol a Virtuálisgép-lemezkép VHD feltöltése. Válassza ki **Blob**, majd válassza ki **házirend**. Másik lehetőségként létrehozhat helyette egy közös hozzáférésű jogosultságkódot ahhoz a tárolóhoz, és adja hozzá a blob URI részeként.
 
