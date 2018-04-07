@@ -1,11 +1,11 @@
 ---
-title: "A MongoDB telepítése a Linux virtuális gépet az Azure CLI 1.0 |} Microsoft Docs"
-description: "Megtudhatja, hogyan telepítse és konfigurálja a MongoDB Linux virtuális gépre az Azure-ban a Resource Manager üzembe helyezési modellben."
+title: A MongoDB telepítése a Linux virtuális gépet az Azure CLI 1.0 |} Microsoft Docs
+description: Megtudhatja, hogyan telepítse és konfigurálja a MongoDB Linux virtuális gépre az Azure-ban a Resource Manager üzembe helyezési modellben.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 3f55b546-86df-4442-9ef4-8a25fae7b96e
 ms.service: virtual-machines-linux
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: ff9e23de41245ea21ba6e9c3efe13ca13b0b0ae1
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: a334a0b7b3b638229c61eef086b1919b4c303338
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm-using-the-azure-cli-10"></a>Hogyan kell telepíteni, és konfigurálja a MongoDB a Linux virtuális gépet az Azure CLI 1.0
 [MongoDB](http://www.mongodb.org) egy népszerű nyílt forráskódú, nagy teljesítményű NoSQL-adatbázis. Ez a cikk bemutatja, hogyan telepítse és konfigurálja a MongoDB a Linux virtuális gép az Azure erőforrás-kezelő telepítési modellel. Példák, amelyek részletesen hogyan számára:
@@ -113,7 +113,7 @@ sudo chkconfig mongod on
 ## <a name="create-basic-mongodb-instance-on-centos-using-a-template"></a>Alapszintű MongoDB-példány létrehozása sablon használatával CentOS
 Létrehozhat egy alapszintű MongoDB-példány egy CentOS virtuális a Githubról a következő Azure gyors üzembe helyezési sablonja segítségével. Ez a sablon használatával az egyéni parancsprogramok futtatására szolgáló bővítmény Linux adhat hozzá egy `yum` tárház az újonnan létrehozott CentOS virtuális gép és a MongoDB telepítse.
 
-* [Alapszintű MongoDB-példány a CentOS](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-on-centos) -https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
+* [Alapszintű MongoDB-példány a CentOS](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-on-centos) - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 
 Az alábbi példa létrehoz egy erőforráscsoport nevű `myResourceGroup` a a `eastus` régióban. Adja meg a saját értékek a következők szerint:
 
@@ -160,7 +160,7 @@ test
 ## <a name="create-a-complex-mongodb-sharded-cluster-on-centos-using-a-template"></a>A sablon használatával CentOS összetett MongoDB szilánkos fürt létrehozása
 Egy összetett MongoDB szilánkos fürtöt a következő Azure gyors üzembe helyezés sablont a Githubból is létrehozhat. Ez a sablon a következő a [MongoDB szilánkos fürt gyakorlati tanácsok](https://docs.mongodb.com/manual/core/sharded-cluster-components/) redundancia és a magas rendelkezésre állás biztosításához. A sablon két szilánkok, az egyes replika három csomópontot hoz létre. Egy konfigurációs kiszolgálót replikakészlethez három csomópontot is létrejön, és két **mongos** útválasztó kiszolgálók között a szilánkok származó alkalmazások konzisztencia biztosításához.
 
-* [MongoDB horizontális fürt a CentOS](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-sharding-centos) -https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-sharding-centos/azuredeploy.json
+* [MongoDB horizontális fürt a CentOS](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-sharding-centos) - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-sharding-centos/azuredeploy.json
 
 > [!WARNING]
 > Az összetett szilánkos MongoDB-fürt telepítése szükséges több mint 20 Vcpu, vagyis általában az alapértelmezett vCPU számának régiónként az előfizetéshez. Nyissa meg az Azure támogatási kérelmet a vCPU számának növeléséhez.
@@ -178,7 +178,7 @@ azure group create \
 > Az Azure parancssori felület visszatér a kérdés a központi telepítés létrehozása néhány másodpercen belül, de a telepítés és konfigurálás akár óráig is eltarthat egy befejezéséhez. A központi telepítés állapotának ellenőrzése `azure group deployment show myResourceGroup`, ennek megfelelően beállítja az erőforráscsoport nevét. Várjon, amíg a **ProvisioningState** látható *sikeres* lévő virtuális géphez való csatlakozás előtt.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ezekben a példákban csatlakozik a MongoDB-példány helyileg a virtuális gépről. Ha szeretné a MongoDB-példány egy másik virtuális gép vagy a hálózati csatlakozás, ellenőrizze a megfelelő [jönnek létre a hálózati biztonsági csoportszabályok](nsg-quickstart.md).
 
 Sablonok használata létrehozásával kapcsolatos további információkért lásd: a [Azure Resource Manager áttekintése](../../azure-resource-manager/resource-group-overview.md).

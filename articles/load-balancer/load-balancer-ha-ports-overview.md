@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: kumud
-ms.openlocfilehash: 09c51441d393de5d801e7a4c259b711a527349d8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f6e9dd09558a3485629d5b70dd8b68b292427b18
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="high-availability-ports-overview"></a>Magas rendelkezésre állású portok áttekintése
 
@@ -72,20 +72,20 @@ Ez a konfiguráció nem teszi lehetővé más terheléselosztási szabály beál
 
 Azonban a háttér-példányok mellett a magas rendelkezésre ÁLLÁSÚ portszabály nyilvános szabványos terheléselosztó konfigurálhatja.
 
-## <a name="one-single-floating-ip-direct-server-return-ha-ports-configuration-on-the-internal-standard-load-balancer"></a>Egy egyetlen fix IP-(közvetlen kiszolgálói válasz) magas rendelkezésre ÁLLÁSÚ portok konfigurációs szabványos belső terheléselosztón
+### <a name="one-single-floating-ip-direct-server-return-ha-ports-configuration-on-the-internal-standard-load-balancer"></a>Egy egyetlen fix IP-(közvetlen kiszolgálói válasz) magas rendelkezésre ÁLLÁSÚ portok konfigurációs szabványos belső terheléselosztón
 
 Hasonló módon konfigurálhatja a terheléselosztó terheléselosztási szabály használandó **magas rendelkezésre ÁLLÁSÚ Port** az egyetlen időtúllépést, és a **fix IP-Címek** beállítása **engedélyezve**. 
 
 Ez a konfiguráció lehetővé teszi több fix IP terheléselosztási szabályok, és / vagy egy nyilvános terheléselosztó. Azonban nem fix IP magas rendelkezésre ÁLLÁSÚ portszám nélküli boad terheléselosztási-konfiguráció használata ehhez a konfigurációhoz felett.
 
-## <a name="multiple-ha-ports-configurations-on-the-internal-standard-load-balancer"></a>A szabványos belső terheléselosztón több magas rendelkezésre ÁLLÁSÚ portok konfiguráció
+### <a name="multiple-ha-ports-configurations-on-the-internal-standard-load-balancer"></a>A szabványos belső terheléselosztón több magas rendelkezésre ÁLLÁSÚ portok konfiguráció
 
 Ha adott esetben meg kell adni a azonos háttérkészlet egynél több magas rendelkezésre ÁLLÁSÚ port frontends, ezt úgy érhet el: 
 - egynél több előtér konfigurálása magán az IP-címeket egyetlen belső szabványos terheléselosztó erőforrást.
 - több terheléselosztási szabályok, ahol minden egyes szabály rendelkezik egyetlen konfigurálása egyedi előtérbeli IP-cím van kiválasztva.
 - Válassza ki **magas rendelkezésre ÁLLÁSÚ portok** lehetőséget, és állítsa be **fix IP-Címek** való **engedélyezve** összes a terheléselosztási szabályok.
 
-## <a name="internal-load-balancer-with-ha-ports--public-load-balancer-on-the-same-backend-instances"></a>A magas rendelkezésre ÁLLÁSÚ portok & azonos háttéralkalmazás-példányokon nyilvános terheléselosztót belső terheléselosztó
+### <a name="internal-load-balancer-with-ha-ports--public-load-balancer-on-the-same-backend-instances"></a>A magas rendelkezésre ÁLLÁSÚ portok & azonos háttéralkalmazás-példányokon nyilvános terheléselosztót belső terheléselosztó
 
 Konfigurálható **egy** nyilvános szabványos terheléselosztó erőforrás a háttérrendszer erőforrások együtt egyetlen belső szabványos terheléselosztó magas rendelkezésre ÁLLÁSÚ porttal.
 

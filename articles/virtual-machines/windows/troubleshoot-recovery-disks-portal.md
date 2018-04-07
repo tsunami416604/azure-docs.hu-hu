@@ -1,11 +1,11 @@
 ---
-title: "Használjon egy Windows virtuális gép hibaelhárítása az Azure portálon |} Microsoft Docs"
-description: "Az operációs rendszer lemezének csatlakozva egy helyreállítási virtuális gépet az Azure-portálon hibaelhárítása a Windows virtuális gépekkel kapcsolatos problémákat, az Azure-ban"
+title: Használjon egy Windows virtuális gép hibaelhárítása az Azure portálon |} Microsoft Docs
+description: Az operációs rendszer lemezének csatlakozva egy helyreállítási virtuális gépet az Azure-portálon hibaelhárítása a Windows virtuális gépekkel kapcsolatos problémákat, az Azure-ban
 services: virtual-machines-windows
-documentationCenter: 
+documentationCenter: ''
 authors: genlin
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 0b6b2220f5b7287bae6bfd6e99390944b7a7578d
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 523bf4055b4181715efd2c2d67e4dde086e7540e
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>A Windows virtuális gépek hibaelhárításáról az operációsrendszer-lemez csatolása a helyreállítási virtuális gép az Azure portál használatával
 Ha a Windows rendszerű virtuális gép (VM) az Azure-ban rendszerindító vagy a lemez hibát tapasztal, szükség lehet végezze el a virtuális merevlemez hibaelhárítási lépéseket. Ilyenek például a sikertelen frissítés, amely megakadályozza a virtuális gép sikeresen rendszerindító lenne. Ez a cikk részletezi az Azure portál segítségével csatlakozzon a virtuális merevlemez egy másik Windows virtuális gépre, javítsa ki a hibákat, majd hozza létre újból az eredeti virtuális gép.

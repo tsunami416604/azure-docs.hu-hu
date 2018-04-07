@@ -1,11 +1,11 @@
 ---
-title: "Munkafolyamat definícióját nyelvi séma - Azure Logic Apps |} Microsoft Docs"
-description: "Az Azure Logic Apps a munkafolyamat-definíció séma alapján munkafolyamatokat meghatározása"
+title: Munkafolyamat definícióját nyelvi séma - Azure Logic Apps |} Microsoft Docs
+description: Az Azure Logic Apps a munkafolyamat-definíció séma alapján munkafolyamatokat meghatározása
 services: logic-apps
 author: jeffhollan
 manager: anneta
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: 26c94308-aa0d-4730-97b6-de848bffff91
 ms.service: logic-apps
 ms.workload: integration
@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 994b8946078ed9b4c8aa965a3bc0e117ba3185c0
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 42932e6d1727a1444c62f565ae3c48dc178aeb2b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="workflow-definition-language-schema-for-azure-logic-apps"></a>Az Azure Logic Apps munkafolyamat Definition Language séma
 
@@ -70,10 +70,10 @@ A következő példa egy paraméterdefiníció szerkezetét mutatja:
 
 |Elem neve|Szükséges|Leírás|  
 |------------------|--------------|-----------------|  
-|type|Igen|**Típus**: karakterlánc <p> **Deklaráció**: `"parameters": {"parameter1": {"type": "string"}` <p> **Specifikáció**: `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **Típus**: securestring <p> **Deklaráció**: `"parameters": {"parameter1": {"type": "securestring"}}` <p> **Specifikáció**: `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **Típus**: int <p> **Deklaráció**: `"parameters": {"parameter1": {"type": "int"}}` <p> **Specifikáció**: `"parameters": {"parameter1": {"value" : 5}}` <p> **Típus**: logikai <p> **Deklaráció**: `"parameters": {"parameter1": {"type": "bool"}}` <p> **Specifikáció**: `"parameters": {"parameter1": { "value": true }}` <p> **Típus**: tömb <p> **Deklaráció**: `"parameters": {"parameter1": {"type": "array"}}` <p> **Specifikáció**: `"parameters": {"parameter1": { "value": [ array-of-values ]}}` <p> **Típus**: objektum <p> **Deklaráció**: `"parameters": {"parameter1": {"type": "object"}}` <p> **Specifikáció**: `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **Típus**: secureobject <p> **Deklaráció**: `"parameters": {"parameter1": {"type": "object"}}` <p> **Specifikáció**: `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **Megjegyzés:** a `securestring` és `secureobject` típusok nem lehet megjeleníteni a `GET` műveletek. Jelszavak, kulcsok és titkos kulcsok ehhez a típushoz kell használnia.|  
+|type|Igen|**Típus**: karakterlánc <p> **Deklaráció**: `"parameters": {"parameter1": {"type": "string"}}` <p> **Specifikáció**: `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **Típus**: securestring <p> **Deklaráció**: `"parameters": {"parameter1": {"type": "securestring"}}` <p> **Specifikáció**: `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **Típus**: int <p> **Deklaráció**: `"parameters": {"parameter1": {"type": "int"}}` <p> **Specifikáció**: `"parameters": {"parameter1": {"value" : 5}}` <p> **Típus**: logikai <p> **Deklaráció**: `"parameters": {"parameter1": {"type": "bool"}}` <p> **Specifikáció**: `"parameters": {"parameter1": { "value": true }}` <p> **Típus**: tömb <p> **Deklaráció**: `"parameters": {"parameter1": {"type": "array"}}` <p> **Specifikáció**: `"parameters": {"parameter1": { "value": [ array-of-values ]}}` <p> **Típus**: objektum <p> **Deklaráció**: `"parameters": {"parameter1": {"type": "object"}}` <p> **Specifikáció**: `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **Típus**: secureobject <p> **Deklaráció**: `"parameters": {"parameter1": {"type": "object"}}` <p> **Specifikáció**: `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **Megjegyzés:** a `securestring` és `secureobject` típusok nem lehet megjeleníteni a `GET` műveletek. Jelszavak, kulcsok és titkos kulcsok ehhez a típushoz kell használnia.|  
 |defaultValue|Nem|Adja meg a paraméter alapértelmezett értéke, ha nincs érték megadva az erőforrás létrehozása idején.|  
 |allowedValues|Nem|A paraméter megengedett értékei tömbjét adja meg.|  
-|Metaadatok|Nem|Adja meg a paraméter, például a olvasható leírás vagy a Visual Studio vagy egyéb eszközök által használt tervezési idejű adatok további információt.|  
+|metaadatok|Nem|Adja meg a paraméter, például a olvasható leírás vagy a Visual Studio vagy egyéb eszközök által használt tervezési idejű adatok további információt.|  
   
 Ez a példa bemutatja, hogyan használhatja a paraméter a szervezet szakaszban egy művelet:  
   

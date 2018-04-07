@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Storage mérőszámainak Azure figyelőben |} Microsoft Docs"
-description: "Ismerje meg az új mérőszámok Azure figyelő kínál."
+title: Az Azure Storage mérőszámainak Azure figyelőben |} Microsoft Docs
+description: Ismerje meg az új mérőszámok Azure figyelő kínál.
 services: storage
 documentationcenter: na
 author: fhryo-msft
 manager: cbrooks
 editor: fhryo-msft
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 09/05/2017
 ms.author: fryu
-ms.openlocfilehash: d30a99044e335723e5d2c4bbd71fab7e4fd51145
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e8e9f9c0cbe044b2aa459898f2d3900db10d200a
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-storage-metrics-in-azure-monitor-preview"></a>Az Azure Storage mérőszámainak Azure figyelőben (előzetes verzió)
 
@@ -28,7 +28,7 @@ Az Azure biztosít, egységes felhasználói felületek keresztüli különböz�
 
 ## <a name="access-metrics"></a>Hozzáférés metrikák
 
-Az Azure hozzáférési metrikák több lehetőség is biztosít. Végezheti el azokat a [Azure-portálon](https://portal.azure.com), az Azure figyelő API-k (REST és .net) és elemzési megoldások, például művelet felügyeleti csomag és az Eseményközpontba. További információkért lásd: [Azure figyelő metrikák](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Az Azure hozzáférési metrikák több lehetőség is biztosít. Végezheti el azokat a [Azure-portálon](https://portal.azure.com), az Azure figyelő API-k (REST és .net) és elemzési megoldások, például Naplóelemzés és az Event Hubs. További információkért lásd: [Azure figyelő metrikák](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
 Alapértelmezés szerint engedélyezve vannak a metrikákat, és végezheti el az utolsó 30 napnyi adat. Ha szeretné megőrizni az adatokat egy hosszabb ideig, úgy archiválhatók metrikai adatok az Azure Storage-fiók. Ez úgy van konfigurálva a [diagnosztikai beállítások](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) Azure-figyelőben.
 
@@ -141,7 +141,7 @@ A következő válasz JSON formátumban metrika értéket tartalmaz:
 
 ## <a name="billing-for-metrics"></a>A metrikák számlázási
 
-A metrikák Azure figyelőben használata jelenleg szabad. Azonban ha használ további megoldásokat metrikák adatok bevitele, akkor előfordulhat, hogy számlázni ezek a megoldások. Például kell fizetni Azure Storage által archiválja metrikák egy Azure Storage-fiókhoz. Vagy ha adatfolyam formájában a metrikai adatok az OMS Szolgáltatáshoz speciális elemzésekre szolgáló művelet felügyeleti csomag (OMS) által kell fizetni.
+A metrikák Azure figyelőben használata jelenleg szabad. Azonban ha használ további megoldásokat metrikák adatok bevitele, akkor előfordulhat, hogy számlázni ezek a megoldások. Például kell fizetni Azure Storage által archiválja metrikák egy Azure Storage-fiókhoz. Vagy számlázva által Naplóelemzési Ha adatfolyam formájában a speciális elemzésekre szolgáló metrikák Naplóelemzési adatokat.
 
 ## <a name="understanding-resource-id-for-services-in-azure-storage"></a>Erőforrás-azonosító az Azure Storage szolgáltatások ismertetése
 
@@ -165,16 +165,16 @@ Az alábbiakban látható megadásával az erőforrás-azonosítója egy tárfi�
 
 Az alábbiakban látható ad meg az erőforrás-azonosítója a tárolási szolgáltatások formátumát.
 
-* BLOB szolgáltatás erőforrás-azonosító`
+* BLOB szolgáltatás erőforrás-azonosító `
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/blobServices/default
 `
-* TABLE szolgáltatás erőforrás-azonosító`
+* TABLE szolgáltatás erőforrás-azonosító `
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/tableServices/default
 `
-* Várólista szolgáltatás erőforrás-azonosító`
+* Várólista szolgáltatás erőforrás-azonosító `
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/queueServices/default
 `
-* Szolgáltatás erőforrás-azonosító`
+* Szolgáltatás erőforrás-azonosító `
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/fileServices/default
 `
 
@@ -203,7 +203,7 @@ Az Azure Storage Azure a figyelő a következő kapacitás mérőszámait jelen�
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
 | BlobCapacity | A teljes száma a tárfiókban lévő használt Blob-tároló. <br/><br/> Egység: bájtok <br/> Összesítési típusát: átlagos <br/> Példa érték: 1024 <br/> Dimenzió: BlobType ([Definition](#metrics-dimensions)) |
-| Blobok száma    | A storage-fiókban tárolt blob objektumok száma. <br/><br/> Egység: száma <br/> Összesítési típusát: átlagos <br/> Példa érték: 1024 <br/> Dimenzió: BlobType ([Definition](#metrics-dimensions)) |
+| BlobCount    | A storage-fiókban tárolt blob objektumok száma. <br/><br/> Egység: száma <br/> Összesítési típusát: átlagos <br/> Példa érték: 1024 <br/> Dimenzió: BlobType ([Definition](#metrics-dimensions)) |
 | ContainerCount    | A tárfiók a tárolók száma. <br/><br/> Egység: száma <br/> Összesítési típusát: átlagos <br/> Példa érték: 1024 |
 
 ### <a name="table-storage"></a>Table Storage
@@ -227,7 +227,7 @@ Az Azure Storage Azure a figyelő a következő kapacitás mérőszámait jelen�
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
 | FileCapacity | A tárfiók által használt fájltároló mennyisége. <br/><br/> Egység: bájtok <br/> Összesítési típusát: átlagos <br/> Példa érték: 1024 |
-| Filecount;/%totalfilecount   | A tárfiókban lévő fájlok száma. <br/><br/> Egység: száma <br/> Összesítési típusát: átlagos <br/> Példa érték: 1024 |
+| FileCount   | A tárfiókban lévő fájlok száma. <br/><br/> Egység: száma <br/> Összesítési típusát: átlagos <br/> Példa érték: 1024 |
 | FileShareCount | Hány fájl osztja meg a tárfiók. <br/><br/> Egység: száma <br/> Összesítési típusát: átlagos <br/> Példa érték: 1024 |
 
 ## <a name="transaction-metrics"></a>Tranzakció metrikák
@@ -238,11 +238,11 @@ Az Azure Storage Azure a figyelő a következő tranzakció mérőszámait jelen
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-| Tranzakciók | A társzolgáltatás vagy a megadott API-művelet felé intézett kérések száma. A sikeres és sikertelen kérelmeket, valamint a hibák előállított kérelmek tartozik. <br/><br/> Egység: száma <br/> Összesítési típusát: teljes <br/> Alkalmazható dimenziók: ResponseType, GeoType, APINÉV ([Definition](#metrics-dimensions))<br/> Példa érték: 1024 |
-| Belépő | A érkező adatok mennyisége. Ez a szám egy külső ügyféltől érkező tartalmazza az Azure Storage, valamint a bejövő adatok Azure-ban. <br/><br/> Egység: bájtok <br/> Összesítési típusát: teljes <br/> Alkalmazható dimenziók: GeoType, APINÉV ([Definition](#metrics-dimensions)) <br/> Példa érték: 1024 |
-| Kimenő forgalom | A kimenő adatok mennyisége. Ez a szám kilépő külső ügyfélről az Azure Storage, valamint az Azure virtuális tartalmazza. Ez a szám emiatt nem tükrözi számlázható kimenő forgalom. <br/><br/> Egység: bájtok <br/> Összesítési típusát: teljes <br/> Alkalmazható dimenziók: GeoType, APINÉV ([Definition](#metrics-dimensions)) <br/> Példa érték: 1024 |
-| SuccessServerLatency | Az Azure Storage által a sikeres kérelmek feldolgozásához használt átlagos ideje. Ez az érték nem tartalmazza a hálózati késés megadott SuccessE2ELatency. <br/><br/> Egység: ideje ezredmásodpercben <br/> Összesítési típusát: átlagos <br/> Alkalmazható dimenziók: GeoType, APINÉV ([Definition](#metrics-dimensions)) <br/> Példa érték: 1024 |
-| SuccessE2ELatency | A társzolgáltatás vagy a megadott API-művelet sikeres kérelmek átlagos végpontok közötti késését. Ezt az értéket tartalmazza a szükséges feldolgozási ideje az Azure Storage olvasni a kérelmet, küldés és a választ kap belül. <br/><br/> Egység: ideje ezredmásodpercben <br/> Összesítési típusát: átlagos <br/> Alkalmazható dimenziók: GeoType, APINÉV ([Definition](#metrics-dimensions)) <br/> Példa érték: 1024 |
+| Tranzakciók | Tárolási szolgáltatás vagy a megadott API-művelet számára elküldött kérések száma. Ez az érték a sikeres és sikertelen kérések, valamint a hibára futott kérések számát tartalmazza. <br/><br/> Egység: száma <br/> Összesítési típusát: teljes <br/> Alkalmazható dimenziók: ResponseType, GeoType, APINÉV ([Definition](#metrics-dimensions))<br/> Példa érték: 1024 |
+| Belépő | A bejövő adatok mennyisége. Ez a szám a külső ügyfél Azure Storage-ba irányuló bejövő adatait és az Azure-on belüli bejövő adatokat egyaránt magában foglalja. <br/><br/> Egység: bájtok <br/> Összesítési típusát: teljes <br/> Alkalmazható dimenziók: GeoType, APINÉV ([Definition](#metrics-dimensions)) <br/> Példa érték: 1024 |
+| Kimenő forgalom | A kimenő adatok mennyisége. Ez a szám a külső ügyfél Azure Storage-ba irányuló kimenő adatait és az Azure-on belüli kimenő adatokat egyaránt magában foglalja. Az eredményül kapott szám nem tükrözi a számlázható kimenő forgalmat. <br/><br/> Egység: bájtok <br/> Összesítési típusát: teljes <br/> Alkalmazható dimenziók: GeoType, APINÉV ([Definition](#metrics-dimensions)) <br/> Példa érték: 1024 |
+| SuccessServerLatency | Az Azure Storage által sikeresen feldolgozott kérések átlagos feldolgozási ideje. Ez az érték nem tartalmazza a SuccessE2ELatency paraméterben megadott hálózati késleltetést. <br/><br/> Egység: ideje ezredmásodpercben <br/> Összesítési típusát: átlagos <br/> Alkalmazható dimenziók: GeoType, APINÉV ([Definition](#metrics-dimensions)) <br/> Példa érték: 1024 |
+| SuccessE2ELatency | A tárolási szolgáltatás vagy a megadott API-művelet számára elküldött sikeres kérések végpontok közötti késésének átlaga. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt. <br/><br/> Egység: ideje ezredmásodpercben <br/> Összesítési típusát: átlagos <br/> Alkalmazható dimenziók: GeoType, APINÉV ([Definition](#metrics-dimensions)) <br/> Példa érték: 1024 |
 | Rendelkezésre állás | A százalékos aránya a társzolgáltatás vagy a megadott API-művelet rendelkezésre állása. Rendelkezésre állási kiszámítása a számlázható kérelmek teljes száma érték és elosztjuk, beleértve az ezeket a kérelmeket, amely a váratlan hibák előállított vonatkozó kérelmek száma. Váratlan hibákat eredményez romlik a rendelkezésre állás a társzolgáltatás vagy a megadott API-művelet. <br/><br/> Egység: százaléka <br/> Összesítési típusát: átlagos <br/> Alkalmazható dimenziók: GeoType, APINÉV ([Definition](#metrics-dimensions)) <br/> Érték példa: 99,99 |
 
 ## <a name="metrics-dimensions"></a>Metrikák dimenziók

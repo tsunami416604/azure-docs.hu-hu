@@ -1,5 +1,5 @@
 ---
-title: Hosszú távú biztonsági másolatok megőrzésének & ARS tároló - Azure SQL Database |} Microsoft Docs
+title: Az Azure SQL Database hosszú távú biztonsági másolatok megőrzésének kezelése |} Microsoft Docs
 description: 'Útmutató: az automatikus biztonsági mentés az SQL Azure storage tárolja, és hajtsa végre a visszaállítást'
 services: sql-database
 author: anosov1960
@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 04/10/2018
+ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 80dd58a9c0267975c9e4df74c77d60ac861a1fdb
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 29bfc914dd5c1f4c8b5405ff0e7202b767d032b8
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="configure-and-restore-backups-from-azure-sql-database-long-term-backup-retention-using-azure-sql-storage"></a>Konfigurálja, és állítsa vissza biztonsági másolatok hosszú távú biztonsági másolatok megőrzésének Azure SQL adatbázis Azure SQL-tárolót
+# <a name="manage-azure-sql-database-long-term-backup-retention"></a>Az Azure SQL Database hosszú távú biztonsági másolatok megőrzésének kezelése
 
 Konfigurálhatja az Azure SQL-adatbázis egy [hosszú távú biztonsági másolatok megőrzésének](sql-database-long-term-retention.md) (LTR) automatikusan legfeljebb tíz éve a az Azure blob storage biztonsági mentések megőrzési házirend. Ezt követően helyreállíthatja a biztonsági mentése az Azure-portálon vagy a PowerShell használatával egy adatbázist.
 
@@ -112,6 +112,12 @@ $ltrPolicies = Get-AzureRmSqlDatabase -ResourceGroupName Default-SQL-WestCentral
 
 # Get the LTR policy of a specific database 
 $ltrPolicies = Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -DatabaseName $dbName  -ResourceGroupName $resourceGroup -Current
+```
+### <a name="clear-an-ltr-policy"></a>Egy balról jobbra házirend törlése
+Ez a példa bemutatja, hogyan egy adatbázis balról jobbra házirend törlése
+
+```powershell
+Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -DatabaseName $dbName -ResourceGroupName $resourceGroup -RemovePolicy
 ```
 
 ### <a name="view-ltr-backups"></a>Biztonsági másolatok megtekintése balról jobbra

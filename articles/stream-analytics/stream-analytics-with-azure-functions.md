@@ -1,28 +1,23 @@
 ---
-title: Futtassa az Azure Functions az Azure Stream Analytics-feladatok |} Microsoft Docs
-description: "Megtudhatja, hogyan konfigurálhatja az Azure Functions szolgáltatást kimeneti fogadóként Stream Analytics-feladatok."
-keywords: "adatfolyam kimeneti, adatok, Azure-függvény"
-documentationcenter: 
+title: Az Azure Functions az Azure Stream Analytics-feladatok futtatása
+description: Ez a cikk ismerteti, hogyan konfigurálása az Azure Functions szolgáltatást kimeneti fogadóként a Stream Analytics-feladatok, esemény-meghajtó munkaterhelések.
 services: stream-analytics
-author: SnehaGunda
+author: jasonwhowell
+ms.author: jasonh
+ms.reviewer: jasonh
 manager: kfile
-ms.assetid: 
 ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 12/19/2017
-ms.author: sngun
-ms.openlocfilehash: f2f4a8d8cda752dc6ed197b8402119f7cbcaf58f
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: a8eebfa0c40caa455eb20431e5cf4acb8eeb248c
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="run-azure-functions-with-azure-stream-analytics-jobs"></a>Az Azure Functions az Azure Stream Analytics-feladatok futtatása 
+# <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Az Azure Functions az Azure Stream Analytics-feladatok futtatása 
 
-A kimeneti mosdók a Stream Analytics-feladathoz rendelkezésre álló funkciók konfigurálásával futtathatja az Azure Functions az Azure Stream Analytics használ. Funkciók található egy eseményvezérelt, számítási igény, amely lehetővé teszi, amely az Azure vagy harmadik féltől származó szolgáltatással téve események által kiváltott kód megvalósítását. E képesség funkciók eseményindítók természetes kimeneti teszi Stream Analytics-feladatok.
+Futtathatja az Azure Functions Azure Stream Analytics a kimeneti mosdók a Stream Analytics-feladathoz rendelkezésre álló funkciók konfigurálásával. Funkciók rejlik egy eseményvezérelt, számítási igény, amely lehetővé teszi, amely az Azure vagy harmadik féltől származó szolgáltatással téve események által kiváltott kód megvalósítását. E képesség funkciók eseményindítók természetes kimeneti teszi Stream Analytics-feladatok.
 
 A Stream Analytics funkciók meghívja a HTTP-eseményindítók keresztül. A funkciók a konzolkimeneti adapter úgy, hogy az eseményeket is elindítható a Stream Analytics lekérdezések alapján lehetővé teszi a felhasználóknak a Stream Analytics funkciók csatlakozni. 
 

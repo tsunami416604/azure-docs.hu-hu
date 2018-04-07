@@ -9,22 +9,19 @@ ms.author: xshi
 ms.date: 03/18/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: c2a1acd2c249bdbc92119bc92f055b095f318f00
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 65f2fb4526f1048ae88193f85a552a2202afa1d9
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-visual-studio-code-to-debug-a-c-module-with-azure-iot-edge"></a>Visual Studio Code használatát C# modul Azure IoT oldala
 Ez a cikk részletes utasításokat biztosít [Visual Studio Code](https://code.visualstudio.com/) hibakeresése az Azure IoT peremhálózati modulok fő fejlesztési eszközként.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez az oktatóanyag feltételezi, hogy egy számítógép vagy a fejlesztői számítógépén, a Windows vagy Linux rendszerű virtuális gép használ. Az IoT-peremhálózati eszköz egy másik fizikai eszköz lehet, vagy az IoT-peremhálózati eszköz szimulálhatja a fejlesztési számítógépén.
+Ez a cikk feltételezi, hogy egy számítógép vagy a fejlesztői számítógépén, a Windows vagy Linux rendszerű virtuális gép használja. Az IoT-peremhálózati eszköz egy másik fizikai eszköz lehet, vagy az IoT-peremhálózati eszköz szimulálhatja a fejlesztési számítógépén.
 
-Ez az útmutató megkezdése előtt hajtsa végre a következő oktatóanyagot:
-- [Az IoT peremhálózati megoldás több modulok a Visual Studio Code fejlesztése](tutorial-multiple-modules-in-vscode.md)
-
-Az előző oktatóanyag befejezése után készen áll a következő elemeket kell:
+Ez a cikk útmutatása, előtt hajtsa végre a [egy IoT peremhálózati megoldást a Visual Studio Code több modulok](tutorial-multiple-modules-in-vscode.md). Ezt követően készen áll a következő elemeket kell rendelkezniük:
 - A fejlesztői gépen futó helyi Docker beállításjegyzékbeli. Helyi Docker-beállításjegyzék prototípus és tesztelési célú használata javasolt. A tároló regisztrációs frissítheti a `module.json` minden modul fájlban.
 - Az IoT peremhálózati megoldás projekt munkaterület C# modul almappája azt.
 - A `Program.cs` fájl, a legújabb modul kóddal.
@@ -55,8 +52,5 @@ Az előző oktatóanyag befejezése után készen áll a következő elemeket ke
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy IoT-Edge-modul létrehozása, és telepítve lett a hibakereséshez. A Visual STUDIO Code hibakeresését azt fut. Más esetekben Azure IoT peremhálózati Visual STUDIO Code fejlesztésekor, című témakörben olvashat: 
-
-> [!div class="nextstepaction"]
-> [Az IoT peremhálózati megoldás több modulok a Visual Studio Code fejlesztése](tutorial-multiple-modules-in-vscode.md)
+[Visual Studio Code használata az Azure Functions Azure IoT oldala](how-to-vscode-debug-azure-function.md)
 

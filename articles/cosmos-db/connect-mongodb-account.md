@@ -1,12 +1,11 @@
 ---
-title: "Egy Azure Cosmos DB fiók MongoDB kapcsolati karakterlánc |} Microsoft Docs"
-description: "Útmutató a MongoDB alkalmazás csatlakoztatása az Azure Cosmos DB fiók MongoDB kapcsolati karakterlánc használatával."
-keywords: "mongodb-kapcsolati karakterlánc"
+title: Egy Azure Cosmos DB fiók MongoDB kapcsolati karakterlánc |} Microsoft Docs
+description: Útmutató a MongoDB alkalmazás csatlakoztatása az Azure Cosmos DB fiók MongoDB kapcsolati karakterlánc használatával.
+keywords: mongodb-kapcsolati karakterlánc
 services: cosmos-db
 author: AndrewHoh
-manager: jhubbard
-editor: 
-documentationcenter: 
+manager: kfile
+documentationcenter: ''
 ms.assetid: e36f7375-9329-403b-afd1-4ab49894f75e
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2017
 ms.author: anhoh
-ms.openlocfilehash: 41c0b360b54f9a9dcd2458ce5bdc05911c4f73a5
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: dfdcb458d0f81c0ddb9399ee8b89a52c4cbc6270
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Csatlakozás a MongoDB alkalmazás az Azure Cosmos-Adatbázishoz
 Útmutató a MongoDB alkalmazás csatlakoztatása az Azure Cosmos DB fiók MongoDB kapcsolati karakterlánc használatával. A Data ezután használhatja az Azure Cosmos DB adatbázis áruházban a MongoDB-alkalmazásra. 
@@ -43,7 +42,7 @@ Ez az oktatóanyag megszerezni a kapcsolati karakterlánc adatait két lehetős�
 
     ![Gyors indítás panel](./media/connect-mongodb-account/QuickStartBlade.png)
 
-## <a id="GetCustomConnection"></a>A MongoDB kapcsolati karakterláncot testreszabása
+## <a id="GetCustomConnection"></a> A MongoDB kapcsolati karakterláncot testreszabása
 1. Egy webböngészőben, jelentkezzen be a [Azure-portálon](https://portal.azure.com).
 2. Az a **Azure Cosmos DB** panelen válassza ki az API a MongoDB-fiók. 
 3. A fiók panel bal oldali ablaktáblában kattintson **kapcsolati karakterlánc**. 

@@ -1,20 +1,20 @@
 ---
-title: "A rugalmas adatbázis eszközök szószedet |} Microsoft Docs"
-description: "A rugalmas adatbáziseszközöket használt kifejezések magyarázatát"
+title: A rugalmas adatbázis eszközök szószedet |} Microsoft Docs
+description: A rugalmas adatbáziseszközöket használt kifejezések magyarázatát
 services: sql-database
-documentationcenter: 
+documentationcenter: ''
 manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 75abd818b29c78a4ae7499741904637e8ed6798c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 010d4f6d9f33b8fb6f1622321a3b566f68f28f5f
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="elastic-database-tools-glossary"></a>A rugalmas adatbázis eszközök szószedet
 A következő feltételek meghatározása a [skálázáshoz rugalmas adatbáziseszközöket](sql-database-elastic-scale-introduction.md), Azure SQL-adatbázis szolgáltatása. Az eszközök kezeléséhez használt [shard leképezhető](sql-database-elastic-scale-shard-map-management.md), és adja meg a [ügyféloldali kódtár](sql-database-elastic-database-client-library.md), a [vegyes egyesítéses eszköz](sql-database-elastic-scale-overview-split-and-merge.md), [rugalmas készletek](sql-database-elastic-pool.md), és [lekérdezések](sql-database-elastic-query-overview.md). 

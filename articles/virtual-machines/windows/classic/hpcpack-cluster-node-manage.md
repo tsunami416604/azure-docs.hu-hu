@@ -1,11 +1,11 @@
 ---
-title: "HPC Pack számítási fürtcsomópontok kezelése |} Microsoft Docs"
-description: "PowerShell parancsfájl eszközei hozzáadásához távolítsa el, indítsa el, és állítsa le a számítási fürtcsomópontok HPC Pack 2012 R2-ben az Azure-ban"
+title: HPC Pack számítási fürtcsomópontok kezelése |} Microsoft Docs
+description: PowerShell parancsfájl eszközei hozzáadásához távolítsa el, indítsa el, és állítsa le a számítási fürtcsomópontok HPC Pack 2012 R2-ben az Azure-ban
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,hpc-pack
 ms.assetid: 4193f03b-94e9-4704-a7ad-379abde063a9
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-ms.openlocfilehash: 2ad67efecf9a688ac3e7ccd7cc32576e9a46d1f5
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 453f53be15b24b96f183b4935cc45fc97ad058bd
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="manage-the-number-and-availability-of-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Az Azure-beli HPC Pack-fürtökben lévő számítási csomópontok számának és elérhetőségének kezelése
 Ha létrehozott egy HPC Pack 2012 R2-fürt az Azure virtuális gépeken, érdemes lehet könnyen hozzáadása, eltávolítása, (kiépíteni) indítása vagy leállítása (deprovision) módjai néhány számítási csomópont virtuális gépek a fürt. Ezek a feladatok elvégzéséhez az átjárócsomóponthoz VM telepített Azure PowerShell-parancsfájlok futtatása. Ezek a parancsfájlok segítségével szabályozhatja, számát és a HPC Pack fürterőforrások rendelkezésre állását, szabályozhatja költségeit.
@@ -147,6 +147,6 @@ Az alábbi példa arra kényszeríti a kapcsolat nélküli csomópontok kezdőd�
 Stop-HPCIaaSNode.ps1 –Name HPCNodeCN-* -Force
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Automatikusan nő, és a fürt csomópontjai az aktuális terhelést a feladatok és a feladatokat a fürt megfelelően csökkenhet, lásd: [automatikusan növelhető, vagy az Azure-ban a HPC Pack fürterőforrások csökkenthető a fürtmunkaterhelés megfelelően](hpcpack-cluster-node-autogrowshrink.md).
 

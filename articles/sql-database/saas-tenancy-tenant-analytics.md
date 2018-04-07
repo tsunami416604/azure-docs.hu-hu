@@ -1,21 +1,21 @@
 ---
-title: "Futtassa a kibontott adatok több-bérlős analytics |} Microsoft Docs"
-description: "Több-bérlős elemzési lekérdezések kibontani a több Azure SQL Database adatbázist adatokkal."
-keywords: "sql database-oktatóanyag"
+title: Futtassa a kibontott adatok több-bérlős analytics |} Microsoft Docs
+description: Több-bérlős elemzési lekérdezések kibontani a több Azure SQL Database adatbázist adatokkal.
+keywords: sql database-oktatóanyag
 services: sql-database
 author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 04/01/2018
 ms.author: sstein
 ms.reviewer: anjangsh; billgib; genemi
-ms.openlocfilehash: ff57bd054f3ff28662d3fd2eb46dca02e74af69b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ec54e68ee1d0b09b5fb34a2a11c331cb0d478326
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="cross-tenant-analytics-using-extracted-data"></a>Több-bérlős analytics kibontott adatok használata
 
@@ -91,21 +91,21 @@ A következő lépésekben az analytics tárolóba, melynek neve telepít **tena
     - Az oszlop store SQL-adatbázis használatához állítsa **$DemoScenario** = **3**  
 3. Nyomja le az **F5** a bemutató-parancsfájl futtatásához (meghív a *telepítés-TenantAnalytics<XX>.ps1* parancsfájl) amely hoz létre a bérlői analytics tároló. 
 
-Most, hogy az alkalmazás telepítve, és feltölti azt a bérlő érdekes adatokkal, használjon [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) csatlakozni **tenants1-dpt -&lt;felhasználói&gt;**  és **katalógus-dpt -&lt;felhasználói&gt;**  bejelentkezési kiszolgálók = *fejlesztői*, jelszó =  *P@ssword1* . Tekintse meg a [bevezető oktatóanyag](saas-dbpertenant-wingtip-app-overview.md) további útmutatást.
+Most, hogy az alkalmazás telepítve, és feltölti azt a bérlő érdekes adatokkal, használjon [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) csatlakozni **tenants1-dpt -&lt;felhasználói&gt; ** és **katalógus-dpt -&lt;felhasználói&gt; ** bejelentkezési kiszolgálók = *fejlesztői*, jelszó = * P@ssword1 *. Tekintse meg a [bevezető oktatóanyag](saas-dbpertenant-wingtip-app-overview.md) további útmutatást.
 
 ![architectureOverView](media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
 
 Az Object Explorer hajtsa végre a következő lépéseket:
 
-1. Bontsa ki a *tenants1-dpt -&lt;felhasználói&gt;*  kiszolgáló.
+1. Bontsa ki a *tenants1-dpt -&lt;felhasználói&gt; * kiszolgáló.
 2. Bontsa ki az adatbázisok csomópontot, és a bérlői adatbázisok listájának megtekintéséhez.
-3. Bontsa ki a *katalógus-dpt -&lt;felhasználói&gt;*  kiszolgáló.
+3. Bontsa ki a *katalógus-dpt -&lt;felhasználói&gt; * kiszolgáló.
 4. Győződjön meg arról, hogy látni az analytics-tároló és a jobaccount adatbázis.
 
 Tekintse meg a következő adatbázis elemek az SSMS Object Explorer az analytics tároló csomópont kibontásával:
 
 - Táblák **TicketsRawData** és **EventsRawData** a tenant adatbázisból származó nyers kinyert adat tárolására.
-- A csillag-séma táblák **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**, és **dim_Dates** .
+- A csillag-séma táblák **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**, és **dim_Dates **.
 - A következő tárolt eljárást a nyers adatok tábla a csillag-séma táblák feltöltésére használt eszköz.
 
 ![architectureOverView](media/saas-tenancy-tenant-analytics/tenantAnalytics.png)
@@ -173,7 +173,7 @@ A Power bi-ba, és importálhatja a korábban létrehozott nézeteket, tegye a k
 
     ![signinpowerbi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. Válassza ki **adatbázis** a bal oldali ablaktáblán, majd adjon meg felhasználónevet = *fejlesztői*, és írja be a jelszó =  *P@ssword1* . Kattintson a **Connect** (Csatlakozás) gombra.  
+5. Válassza ki **adatbázis** a bal oldali ablaktáblán, majd adjon meg felhasználónevet = *fejlesztői*, és írja be a jelszó = * P@ssword1 *. Kattintson a **Connect** (Csatlakozás) gombra.  
 
     ![databasesignin](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 

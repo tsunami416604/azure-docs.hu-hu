@@ -1,11 +1,11 @@
 ---
-title: "Windows Server az Azure hibrid juttatása |} Microsoft Docs"
-description: "Útmutató a Windows Software Assurance előnyeit, hogy helyszíni licencek Azure maximalizálása"
+title: Windows Server az Azure hibrid juttatása |} Microsoft Docs
+description: Útmutató a Windows Software Assurance előnyeit, hogy helyszíni licencek Azure maximalizálása
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: kmouss
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 332583b6-15a3-4efb-80c3-9082587828b0
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/22/2017
 ms.author: kmouss
-ms.openlocfilehash: 245bffbc208ce67d990a63e744c42dc671686b4b
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f445a2c77b14477ea2ef4ff7722183d641275f08
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure Hybrid Benefit Windows Serverhez
 Software Assurance rendelkező ügyfelek Azure hibrid juttatás for Windows Server lehetővé teszi a helyszíni Windows Server licencek használja, és futtassa a Windows virtuális gépek Azure költséghatékony. Azure hibrid juttatás for Windows Server bármelyik új virtuális gépek telepítéséhez használható Azure platform Windows Server-lemezképet Windows egyéni támogatott. Ez a cikk halad keresztül lépéseket, a új virtuális gépek Azure hibrid juttatás for Windows Server telepítése, és hogyan frissíthet meglévő futtató virtuális gépek. További információ az Azure hibrid juttatás for Windows Server licencelési és pluszköltséggel kevésbé kell kihasználni, tekintse meg a [Azure hibrid juttatás for Windows Server licencelési oldal](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -183,7 +183,7 @@ A virtuális gépen belüli virtuális gépek méretezési csoportjának Resourc
 ```
 Emellett [létrehozása és központi telepítése egy virtuálisgép-méretezési csoport](#https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-create) és a LicenseType tulajdonság
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tudjon meg többet az [Azure hibrid előnyökkel pénz mentése](https://azure.microsoft.com/pricing/hybrid-use-benefit/)
 
 További információ [Azure hibrid juttatás a Windows Server licencelési részletes útmutatást](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit)

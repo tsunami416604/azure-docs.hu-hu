@@ -3,9 +3,8 @@ title: Az Azure Cosmos Adatbázisba konzisztenciaszintek |} Microsoft Docs
 description: Azure Cosmos-adatbázis segítségével egyenleg végleges konzisztencia, a rendelkezésre állás és a késleltetés kompromisszumot öt konzisztenciaszintek rendelkezik.
 keywords: az azure végleges konzisztencia cosmos db, azure, a Microsoft azure
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-editor: cgronlun
+author: SnehaGunda
+manager: kfile
 documentationcenter: ''
 ms.assetid: 3fe51cfa-a889-4a4a-b320-16bf871fe74c
 ms.service: cosmos-db
@@ -14,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2018
-ms.author: mimig
+ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5b0e46eb001e0b100ad1e181b02c18cfe67648f9
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 512f9e22d01e3bdb90210402aaf123ac6326759a
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Az Azure Cosmos Adatbázisba hangolható konzisztencia szintek
 Azure Cosmos-adatbázis úgy van kialakítva egészen az alapoktól fel a globális terjesztési szem előtt az összes adatmodell. Előre jelezhető késés garanciák és több jól meghatározott laza konzisztencia modellek tervezték. Jelenleg az Azure Cosmos DB biztosít öt konzisztenciaszintek: erős, kötött elavulás, munkamenet, egységes előtag, és végleges. Kötött elavulás, munkamenet, egységes előtag és végleges biztosan néven "laza konzisztencia modellek" azok adjon meg kevesebb konzisztencia erős, mint amely a legtöbb rendelkezésre állású egységes modellje. 
@@ -109,7 +108,7 @@ A Cosmos DB fiókját az adatbázis-fiókra, amely az összes gyűjteményt (és
 
 ## <a name="configuring-the-default-consistency-level"></a>Az alapértelmezett konzisztencia szint konfigurálása
 1. Az a [Azure-portálon](https://portal.azure.com/), az ugrósávon kattintson **Azure Cosmos DB**.
-2. Az a **Azure Cosmos DB** lapon, válassza ki a következő adatbázisfiókot módosításához.
+2. Az **Azure Cosmos DB** oldalon válassza ki a módosítandó adatbázis-fiókot.
 3. Kattintson a fiók lapon **alapértelmezett konzisztencia**.
 4. Az a **alapértelmezett konzisztencia** lapon válassza ki az új konzisztencia szintet, majd kattintson **mentése**.
    
@@ -122,7 +121,7 @@ Alapértelmezés szerint a felhasználó által definiált erőforrások a leké
 | --- | --- | --- |
 | A CONSISTENT (alapértelmezett) |Válassza ki az erős, kötött elavulási, munkamenet, egységes előtag, vagy végleges |Válassza ki az erős, kötött elavulás, munkamenet, vagy végleges |
 | Lassú |Válassza ki az erős, kötött elavulási, munkamenet, egységes előtag, vagy végleges |Végleges |
-| None |Válassza ki az erős, kötött elavulási, munkamenet, egységes előtag, vagy végleges |Nem alkalmazható |
+| Nincs |Válassza ki az erős, kötött elavulási, munkamenet, egységes előtag, vagy végleges |Nem alkalmazható |
 
 Mint az olvasási kéréseket csökkenthető a konzisztenciaszint minden API-ban meghatározott lekérdezési kérelem.
 

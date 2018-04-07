@@ -1,12 +1,12 @@
 ---
-title: "Figyelési adatokat az Azure-ból |} Microsoft Docs"
-description: "Ismerje meg az összes figyelési adatforrások elérhető Azure ma."
+title: Figyelési adatokat az Azure-ból |} Microsoft Docs
+description: Ismerje meg az összes figyelési adatforrások elérhető Azure ma.
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/27/2017
 ms.author: johnkem
-ms.openlocfilehash: c7075c2e1a2500eca1d0aa9b3a797e8a0e903ede
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b10e95cd6b335468201b4cd123b3a29fb5d1bcdb
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Figyelési adatokat az Azure-ból
 
@@ -45,11 +45,11 @@ A Azure platformon azt is összegyűjtésével figyelési adatokat az Azure-megf
 | Az Azure metrika riasztások | Értesítések | [Itt listája](monitoring-supported-metrics.md) | <ul><li>**Webhook:** [Azure metrika riasztások](insights-webhooks-alerts.md)</li></ul> |
 | Azure tevékenységnapló figyelő riasztások | Értesítések | Az összes Azure-szolgáltatások | <ul><li>**Webhook:** Azure tevékenységnapló riasztások</li></ul> |
 | Automatikus skálázás értesítések | Értesítések | [Itt listája](monitoring-overview-autoscale.md#supported-services-for-autoscale) | <ul><li>**Webhook:** [automatikus skálázás értesítési webhook hasznos séma](insights-autoscale-to-webhook-email.md#autoscale-notification-webhook-payload-schema)</li></ul> |
-| Naplófájl-keresési lekérdezés OMS-riasztások | Értesítések | OMS szolgáltatáshoz | <ul><li>**Webhook:** [Naplóelemzési riasztások](../log-analytics/log-analytics-alerts-actions.md#webhook-actions)</li></ul> |
+| Keresési lekérdezés figyelmeztetések naplózása | Értesítések | Log Analytics | <ul><li>**Webhook:** [Naplóelemzési riasztások](../log-analytics/log-analytics-alerts-actions.md#webhook-actions)</li></ul> |
 | Application Insights-metrika riasztások | Értesítések | Application Insights | <ul><li>**Webhook:** [Application Insights-riasztások](../application-insights/app-insights-alerts.md)</li></ul> |
 | Application Insights webes tesztjeinek használatát | Értesítések | Application Insights | <ul><li>**Webhook:** [Application Insights-riasztások](../application-insights/app-insights-alerts.md)</li></ul> |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ [Azure figyelő metrikák](monitoring-overview-metrics.md)
 - További információ [az Azure tevékenységnapló](monitoring-overview-activity-logs.md)

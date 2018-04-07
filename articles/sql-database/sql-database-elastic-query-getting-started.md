@@ -1,19 +1,19 @@
 ---
-title: "A jelentés (vízszintes particionálás) kiterjesztett felhő az adatbázisok közötti |} Microsoft Docs"
-description: "Több adatbázis közötti adatbázis adatbázis-lekérdezéseinek jelentéshez használja."
+title: A jelentés (vízszintes particionálás) kiterjesztett felhő az adatbázisok közötti |} Microsoft Docs
+description: Több adatbázis közötti adatbázis adatbázis-lekérdezéseinek jelentéshez használja.
 services: sql-database
 manager: jhubbard
 author: MladjoA
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 05/23/2016
+ms.date: 04/01/2018
 ms.author: mlandzic
-ms.openlocfilehash: 29f1291f5c5d6023ca7bcd47fc2c0d9b69fd39fa
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: caf7fc8d69486e185fabd44d753471f40fda42a1
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Jelentés közötti kiterjesztett felhő (előzetes verzió)
 A több Azure SQL-adatbázisok egyetlen kapcsolódási pont használatával jelentéseket hozhat létre egy [rugalmas lekérdezési](sql-database-elastic-query-overview.md). Az adatbázisok vízszintesen kell particionálni (más néven "szilánkos").

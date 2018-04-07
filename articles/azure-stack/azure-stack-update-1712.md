@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2018
+ms.date: 04/06/2018
 ms.author: brenduns
-ms.openlocfilehash: c3cb8ab8a838a3f831ece617fcf3e218a9510ea5
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e9c39c374d7dfa6759da9f9b9a12816d77c647b1
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-stack-1712-update"></a>Az Azure verem 1712 frissítés
 
@@ -43,11 +43,14 @@ Az Azure verem 1712 frissítés buildszáma **180106.1**. Ha az ügyfél telepí
 Először telepítenie kell az Azure-verem [1711 frissítése](https://docs.microsoft.com/azure/azure-stack/azure-stack-update-1711) frissítés alkalmazása előtt.
 
 ### <a name="post-update-steps"></a>Frissítés utáni lépések
+- 1712 a telepítés után bármely alkalmazandó gyorsjavításainak telepítéséhez. További információ a következő tudásbáziscikkeiből, megtekintése, valamint a [karbantartása házirend](azure-stack-servicing-policy.md).  
+  - [KB 4103348 - az hálózati vezérlő API szolgáltatás leáll, ha egy Azure verem frissítés telepítésekor](https://support.microsoft.com/help/4103348)
 
-A frissítés is kell telepíteni belső vezérlőprogram-frissítésekre OEM partnertől a 1712 Azure verem frissítés telepítésének befejezése után.
 
-> [!NOTE]
-> Tekintse meg az OEM partner webhely töltheti le a frissítéseket.
+- Frissítés 1712 is kell telepíteni belső vezérlőprogram-frissítésekre OEM partnertől a 1712 Azure verem frissítés telepítésének befejezése után.
+
+  > [!NOTE]
+  > Tekintse meg az OEM partner webhely töltheti le a frissítéseket.
 
 ### <a name="new-features-and-fixes"></a>Új szolgáltatásokat és javításokat
 

@@ -1,12 +1,12 @@
 ---
-title: "Egy Azure virtuális gép SSH-kapcsolati problémák elhárítása |} Microsoft Docs"
-description: "Hibák elhárításához, például \"Az SSH-kapcsolat sikertelen\" vagy \"Az SSH-kapcsolat elutasítva\" egy Azure virtuális gép Linux operációs rendszert futtató módjáról."
-keywords: "ssh kapcsolat visszautasította, ssh hiba és az azure-ssh, SSH-kapcsolat sikertelen"
+title: Egy Azure virtuális gép SSH-kapcsolati problémák elhárítása |} Microsoft Docs
+description: Hibák elhárításához, például "Az SSH-kapcsolat sikertelen" vagy "Az SSH-kapcsolat elutasítva" egy Azure virtuális gép Linux operációs rendszert futtató módjáról.
+keywords: ssh kapcsolat visszautasította, ssh hiba és az azure-ssh, SSH-kapcsolat sikertelen
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: dcb82e19-29b2-47bb-99f2-900d4cfb5bbb
 ms.service: virtual-machines-linux
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: iainfou
-ms.openlocfilehash: 176477105e1f660b0bd22d95142b744ef17044ee
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 533a80edbb115dfd324db9e4488e5c66dc36667e
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Az Azure Linux virtuális gép, amely nem sikerül, hibák, vagy elutasítják SSH-kapcsolatok hibáinak elhárítása
 Oka lehet különböző, hogy Secure Shell (SSH) hibák, az SSH-kapcsolódási hibák, vagy az SSH a rendszer elutasította a rendszer, amikor egy Linux virtuális gép (VM) csatlakozni próbál. Ez a cikk segít keresse meg és javítsa ki a problémákat. Az Azure-portálon az Azure parancssori felület vagy a Linux virtuális gép hozzáférési bővítményével hibakeresésre és problémák megoldásához használható.
@@ -68,6 +68,14 @@ Első lépésként válassza ki a `Reset configuration only` a a **mód** legör
 Válassza a hitelesítő adatokat egy meglévő felhasználó alaphelyzetbe állításához `Reset SSH public key` vagy `Reset password` a a **mód** legördülő menü, ahogy az előző képernyőképet. Adja meg a felhasználónevet és egy SSH-kulcs vagy új jelszót, majd kattintson a **alaphelyzetbe** gombra.
 
 A felhasználó sudo jogosultsági szintű ebben a menüben a virtuális gép is létrehozhat. Adjon meg egy új felhasználónevet és a kapcsolódó jelszó vagy SSH-kulcs, és kattintson a **alaphelyzetbe** gombra.
+
+### <a name="check-security-rules"></a>Ellenőrizze a biztonsági szabályok
+
+Használja [IP folyamata ellenőrizze](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) alapján ellenőrizheti, ha egy szabály a hálózati biztonsági csoport blokkolja a bejövő és kimenő forgalmat a virtuális gép. Hatékony biztonsági csoport szabályokat, hogy biztosítsa a bejövő "Engedélyezés" NSG-t is felhasználhatja a szabály létezik-e, és az SSH-port (alapértelmezett 22-es) előrébb van. További információkért lásd: [Using hatékony biztonsági szabályok elhárítása a virtuális gép forgalom bonyolódjon](../../virtual-network/virtual-network-nsg-troubleshoot-portal.md#using-effective-security-rules-to-troubleshoot-vm-traffic-flow).
+
+### <a name="check-routing"></a>Ellenőrizze, hogy útválasztást
+
+Használja a hálózati figyelőt [a következő Ugrás](../../network-watcher/network-watcher-check-next-hop-portal.md) képességet, hogy ellenőrizze, hogy egy útvonal nem akadályozza meg, hogy forgalom való átirányítását, vagy egy virtuális gépről. Egy adott hálózati csatoló összes hatékony útvonalak hatékony útvonalakat is felhasználhatja. További információkért lásd: [hatékony használata az útvonalakat hibáinak elhárítása a virtuális gép forgalom bonyolódjon](../../virtual-network/virtual-network-routes-troubleshoot-portal.md#using-effective-routes-to-troubleshoot-vm-traffic-flow).
 
 ## <a name="use-the-azure-cli-20"></a>Az Azure parancssori felület használatával 2.0
 Ha még nem tette meg, telepítse a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) és való bejelentkezéshez az Azure fiók használatával [az bejelentkezési](/cli/azure/reference-index#az_login).

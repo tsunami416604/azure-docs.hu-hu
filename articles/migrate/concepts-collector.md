@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: ea2367a6e1facfbe6a36cb145e258491a1c99517
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 059f577c138847af04e92ce9ab12a8de88251c73
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="collector-appliance"></a>Adatgyűjtő-készülék
 
@@ -53,7 +53,7 @@ A gyűjtő készüléknek meg kell kapcsolódnia kell az internethez, hogy küld
 1. Beállíthatja, hogy a gyűjtő közvetlen internetkapcsolattal kell rendelkeznie.
 2. Beállíthatja, hogy a gyűjtő proxykiszolgálón keresztül csatlakozni.
     * Ha a proxykiszolgálóhoz hitelesítés szükséges, a felhasználónév és jelszó megadhatja a a kapcsolatbeállításokat.
-    * Az IP cím vagy FQDN a proxykiszolgáló az űrlap http://IPaddress vagy http://FQDN kell lennie. Csak a http-proxy használata támogatott.
+    * Az IP cím vagy FQDN a proxykiszolgáló kell lennie a képernyő http://IPaddress vagy http://FQDN. Csak a http-proxy használata támogatott.
 
 > [!NOTE]
 > A gyűjtő által a HTTPS-alapú proxykiszolgálókat nem támogatottak.
@@ -126,7 +126,7 @@ Miután csatlakozott a vCenter, kiválaszthatja a hatókör felderítéséhez. A
 
 1. A hatókör lehet egy adatközpontban, a mappa vagy ESXi-állomáson. 
 2. Egyszerre csak egy hatókör jelölhet ki. Válassza ki további virtuális gépek, végezze el az egyik felderítés, és indítsa újra a felderítési folyamatot az új hatókör.
-3. Jelölhet ki, amelynek hatókör *1000-nél kevesebb virtuális gépek*. Ha egy hatókör, amely 1000-nél több virtuális gépe van, a hatókör ossza fel kisebb egységekből mappák létrehozásával szeretné. Ezt követően kell futtassa a független kisebb mappa.
+3. Jelölhet ki, amelynek hatókör *kisebb, mint 1500 virtuális gépek*.
 
 ## <a name="specify-migration-project"></a>Adja meg az áttelepítési projekt
 
@@ -197,6 +197,16 @@ A gyűjtő a petesejtek ismét letöltése nélkül frissítheti a legújabb ver
 5. Kattintson a jobb gombbal a Setup.ps1, és válassza a Futtatás a PowerShell segítségével, és kövesse a képernyőn a frissítés telepítéséhez.
 
 ### <a name="list-of-updates"></a>Frissítések listája
+
+#### <a name="upgrade-to-version-1097"></a>Frissítés 1.0.9.7 verzióról
+
+Frissítés verzió 1.0.9.7 letöltési [csomag](https://aka.ms/migrate/col/upgrade_9_7)
+
+**Algoritmus** | **Kivonat értéke**
+--- | ---
+MD5 | 01ccd6bc0281f63f2a672952a2a25363
+SHA1 | 3e6c57523a30d5610acdaa14b833c070bffddbff
+SHA256 | e3ee031fb2d47b7881cc5b13750fc7df541028e0a1cc038c796789139aa8e1e6
 
 #### <a name="upgrade-to-version-1095"></a>Frissítés 1.0.9.5 verzióról
 

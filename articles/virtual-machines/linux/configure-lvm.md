@@ -1,10 +1,10 @@
 ---
-title: "LVM konfigurálása a Linux rendszerű virtuális gép |} Microsoft Docs"
-description: "Megtudhatja, hogyan LVM konfigurálása Linux az Azure-ban."
+title: LVM konfigurálása a Linux rendszerű virtuális gép |} Microsoft Docs
+description: Megtudhatja, hogyan LVM konfigurálása Linux az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: na
 author: szarkos
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tag: azure-service-management,azure-resource-manager
 ms.assetid: 7f533725-1484-479d-9472-6b3098d0aecc
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
-ms.openlocfilehash: 7926627aaa3f0da935131f491d927ab5cb4b35c9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9a22426d0422585714cb78d541a84d55d2fce6e0
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>A Linux virtuális gép az Azure-ban LVM konfigurálása
 Ez a dokumentum bemutatja az logikai kötet Manager (LVM) konfigurálása az Azure virtuális gépen. Is megvalósítható LVM konfigurálása a virtuális géphez csatolt lemezen, alapértelmezés szerint a legtöbb felhő lemezképek nem lesz konfigurálva az operációsrendszer-lemezképet a LVM. Ez a duplikált kötet csoportok problémák elkerülése érdekében, ha az operációs rendszer lemezének valaha is egy másik virtuális Géphez van csatolva az azonos terjesztési és típusa, azaz a helyreállítás során. Ezért ajánlott, csak az adatlemezek LVM használandó.
@@ -141,7 +141,7 @@ A jelen útmutató indulunk ki csatolt adatok három lemezt, amely lesz lesz az 
     /dev/mapper/data--vg01-data--lv01 on /data type ext4 (rw)
     ```
 
-5. (Választható) A FailSafe rendszerindító paraméterek`/etc/fstab`
+5. (Választható) A FailSafe rendszerindító paraméterek `/etc/fstab`
    
     Terjesztések valamelyikét tartalmazza a `nobootwait` vagy `nofail` csatlakoztatási fel paraméterek a `/etc/fstab` fájlt. Ezek a paraméterek hibák engedélyezése, ha egy adott fájlrendszer csatlakoztatása és a Linux rendszer akkor is, ha az nem csatolható fel a RAID fájlrendszer megfelelően elindulni. További információt ezekről a paraméterekről a terjesztési dokumentációjában tájékozódhat.
    
@@ -171,7 +171,7 @@ Két módon vágást engedélyezése támogatja a Linux virtuális gép van. A s
     # sudo fstrim /datadrive
     ```
 
-    **RHEL vagy CentOS**
+    **RHEL/CentOS**
 
     ```bash 
     # sudo yum install util-linux

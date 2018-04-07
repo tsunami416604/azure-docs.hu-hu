@@ -4,7 +4,7 @@ description: Hozzon létre egy Azure virtuális gépen futó Windows Server 2012
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
 ms.assetid: 98fa06d2-9b92-4d05-ac16-3f8e9fd4feaa
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: cynthn
-ms.openlocfilehash: e4135f96027cc25e1e0a149857ace1672570fc4b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: be2a4232fdb59deb87d6d9340fd22909707294b8
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="install-mysql-on-a-virtual-machine-created-with-the-classic-deployment-model-running-windows-server-2016"></a>MySQL telepíthető a Windows Server 2016 rendszerű klasszikus üzembe helyezési modellel létrehozott virtuális gépek
 [MySQL](https://www.mysql.com) egy népszerű nyílt forráskódú, akkor az SQL-adatbázis. Ez az oktatóanyag bemutatja, hogyan telepítheti és futtathatja a **MySQL 5.7.18 közösségi változata** egy futó virtuális géphez MySQL-kiszolgálóként **Windows Server 2016**. Lehet, hogy a felhasználói élmény némileg eltérő MySQL vagy Windows Server más verzióiban.

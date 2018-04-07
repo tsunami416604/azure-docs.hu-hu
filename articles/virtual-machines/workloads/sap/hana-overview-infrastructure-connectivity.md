@@ -1,11 +1,11 @@
 ---
-title: "Infrastruktúra és az SAP HANA Azure (nagy példányok) kapcsolat |} Microsoft Docs"
-description: "Az Azure (nagy példányok) SAP HANA használandó kapcsolat szükséges infrastruktúra konfigurálása."
+title: Infrastruktúra és az SAP HANA Azure (nagy példányok) kapcsolat |} Microsoft Docs
+description: Az Azure (nagy példányok) SAP HANA használandó kapcsolat szükséges infrastruktúra konfigurálása.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: RicksterCDN
 manager: timlt
-editor: 
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 10/31/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d94e491d12ac43a4d85a638c79bcd3b24a4bc0ef
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 43debeb710e5ab5112f9f0a85a76761cde3051a7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="sap-hana-large-instances-infrastructure-and-connectivity-on-azure"></a>SAP HANA (nagy példányok) infrastruktúra és az Azure-kapcsolat 
 
@@ -49,9 +49,9 @@ SAP HANA (nagy példányok) Azure megvásárlása le van zárva, és a vállalat
 - Az egyes HANA nagy példányok rendszer adatokat:
   - Kívánt gazdagépnévvel - ideális esetben a teljesen minősített tartománynevét.
   - A kiszolgáló IP-készlet címtartománya - kívül HANA nagy példány egységéhez kívánt IP-címet vegye figyelembe, hogy a kiszolgáló IP-készlet címtartománya első 30 IP-címek fenntartott HANA nagy példányok belüli belső használatra
-  - SAP HANA SID (a szükséges SAP HANA-kapcsolódó kötetek létrehozásához szükséges) SAP HANA-példány nevét. A HANA SID engedélyeinek létrehozásához szükség <sidadm> az NFS-köteteken, amely első csatolt a HANA nagy példány egység. Azt is szolgál az beszerzése a csatlakoztatott kötetek neve összetevői. Ha azt szeretné, egynél több HANA példány egységben futtatásához, szüksége több HANA SID listában. Mindegyik lekérdezi a hozzárendelt kötetek külön készletét.
-  - A csoportazonosító a hana-sidadm felhasználó rendelkezik-e a Linux operációs rendszer szükség a szükséges SAP HANA-kapcsolódó kötetek létrehozásához. A SAP HANA-telepítés egy csoport azonosítójú 1001, általában a sapsys csoportot hoz létre. A hana-sidadm felhasználói csoport része
-  - A felhasználói azonosítóját a hana-sidadm felhasználó rendelkezik-e a Linux operációs rendszer szükség a szükséges SAP HANA-kapcsolódó kötetek létrehozásához. Ha több HANA példány egységben futtat, akkor listázza az összes a <sid>adm-felhasználók 
+  - SAP HANA SID (a szükséges SAP HANA-kapcsolódó kötetek létrehozásához szükséges) SAP HANA-példány nevét. A HANA SID sidadm engedélyeit a HANA nagy példány egysége csatolt első NFS köteteknél létrehozásához szükség. Azt is szolgál az beszerzése a csatlakoztatott kötetek neve összetevői. Ha azt szeretné, egynél több HANA példány egységben futtatásához, szüksége több HANA SID listában. Mindegyik lekérdezi a hozzárendelt kötetek külön készletét.
+  - A csoportazonosító a sidadm felhasználó rendelkezik-e a Linux operációs rendszer a szükséges SAP HANA-kapcsolódó kötetek létrehozásához szükséges. A SAP HANA-telepítés egy csoport azonosítójú 1001, általában a sapsys csoportot hoz létre. A sidadm felhasználói csoport tagja
+  - A felhasználói azonosítóját a sidadm felhasználó rendelkezik-e a Linux operációs rendszer a szükséges SAP HANA-kapcsolódó kötetek létrehozásához szükséges. Ha több HANA példány egységben futtat, akkor listázza az összes a <sid>adm-felhasználók 
 - Az Azure-előfizetés számára melyik SAP HANA Azure HANA a nagy példányok tervezi, hogy közvetlenül az Azure-előfizetése Azonosítóját. Az előfizetés-azonosító az Azure-előfizetésre, és a HANA nagy példány egység(ek) engedélyezéséhez elemleírásként hivatkozik.
 
 Miután megadta az adatokat, a Microsoft Azure (nagy példányok) SAP HANA kiépítését, és ad meg az információkat az Azure Vnetekhez csatolása HANA nagy példányok és a HANA nagy példány egységek eléréséhez szükséges.
@@ -182,7 +182,7 @@ Ha már létezik egy átjáró, ellenőrizze, hogy azt egy ExpressRoute-átjár�
 
 - Használata vagy a (új) [Azure-portálon](https://portal.azure.com/), vagy a PowerShell segítségével hozzon létre egy ExpressRoute VPN-átjáró csatlakoztatva a virtuális hálózat.
   - Ha használja az Azure-portálon, adjon hozzá egy új **virtuális hálózati átjáró** majd **ExpressRoute** az átjáró típusa.
-  - Ha ehelyett PowerShell, először töltse le és használja a legújabb [Azure PowerShell SDK](https://azure.microsoft.com/downloads/) az optimális élmény biztosításához. A következő parancsokat egy ExpressRoute-átjáró létrehozásához. A szövegek utasításnak egy  _$_  frissítenie kell a konkrét információkat a felhasználó által definiált változót.
+  - Ha ehelyett PowerShell, először töltse le és használja a legújabb [Azure PowerShell SDK](https://azure.microsoft.com/downloads/) az optimális élmény biztosításához. A következő parancsokat egy ExpressRoute-átjáró létrehozásához. A szövegek utasításnak egy _$_ frissítenie kell a konkrét információkat a felhasználó által definiált változót.
 
 ```PowerShell
 # These Values should already exist, update to match your environment

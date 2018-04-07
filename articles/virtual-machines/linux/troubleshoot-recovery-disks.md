@@ -1,11 +1,11 @@
 ---
-title: "A Linux virtuális gép és az Azure CLI 2.0 hibaelhárítási használata |} Microsoft Docs"
-description: "Ismerje meg, az operációs rendszer lemezének csatlakozva egy helyreállítási virtuális gépet az Azure CLI 2.0 Linux virtuális gép kapcsolatos problémák elhárítása"
+title: A Linux virtuális gép és az Azure CLI 2.0 hibaelhárítási használata |} Microsoft Docs
+description: Ismerje meg, az operációs rendszer lemezének csatlakozva egy helyreállítási virtuális gépet az Azure CLI 2.0 Linux virtuális gép kapcsolatos problémák elhárítása
 services: virtual-machines-linux
-documentationCenter: 
+documentationCenter: ''
 authors: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: iainfou
-ms.openlocfilehash: 9f1ac319e87f321306a2239b2e17725d281fbf59
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: e96f31b3e91066bfc04af62c2bf82db200f35002
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli-20"></a>Linux virtuális gép által a operációsrendszer-lemez csatolása a helyreállítási virtuális Gépet az Azure CLI 2.0 hibaelhárítása
 Ha a Linux virtuális gép (VM) rendszerindító vagy a lemez hibát tapasztal, szükség lehet végezze el a virtuális merevlemez hibaelhárítási lépéseket. Ilyenek például a bejegyzés érvénytelen lenne `/etc/fstab` , amely megakadályozza a virtuális gép rendszerindító sikeresen megtörtént. Ez a cikk részletezi az Azure CLI 2.0 másik Linux virtuális gép, javítsa ki a hibákat, majd hozza létre újból az eredeti virtuális gép csatlakozni a virtuális merevlemez használata. Az [Azure CLI 1.0-s](troubleshoot-recovery-disks-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verziójával is elvégezheti ezeket a lépéseket.

@@ -1,20 +1,20 @@
 ---
-title: "Az Azure SQL rugalmas bővítést – gyakori kérdések |} Microsoft Docs"
-description: "Gyakori kérdések az Azure SQL Database rugalmas méretezést."
+title: Az Azure SQL rugalmas bővítést – gyakori kérdések |} Microsoft Docs
+description: Gyakori kérdések az Azure SQL Database rugalmas méretezést.
 services: sql-database
-documentationcenter: 
+documentationcenter: ''
 manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 575167293d9b4685ecc38303414b69074c366ab2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 57a5ef07aa8ca6d35085f9b2425cbc1c08c23b36
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="elastic-database-tools-faq"></a>Rugalmas adatbáziseszközöket – gyakori kérdések
 #### <a name="if-i-have-a-single-tenant-per-shard-and-no-sharding-key-how-do-i-populate-the-sharding-key-for-the-schema-info"></a>Ha egyetlen-bérlő minden shard, és nem horizontális kulcs, hogyan tegye I feltöltése a séma adatait a horizontális kulcsát?
@@ -30,7 +30,7 @@ A rugalmas adatbázis ügyféloldali kódtár használata nem jár költségeket
 Ne használja a hitelesítő adatok formájában "felhasználói azonosító =username@servername", ehelyett egyszerűen használja "Felhasználóazonosító felhasználónév =".  Arra is ügyeljen, hogy a "felhasználónév" bejelentkezés engedélyekkel rendelkezzen a szilánkcímtárban.
 
 #### <a name="do-i-need-to-create-a-shard-map-manager-and-populate-shards-every-time-i-start-my-applications"></a>Van egy Shard térkép Manager létrehozása és feltöltése szilánkok, az alkalmazás minden indításakor?
-Nem – a Shard térkép Manager létrehozása (például  **[ShardMapManagerFactory.CreateSqlShardMapManager](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx)**) műveletet egyszer kell elvégezni.  Az alkalmazást kell használnia a hívás  **[ShardMapManagerFactory.TryGetSqlShardMapManager()](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)**  alkalmazás indítási időpontban.  Nem kell ilyen alkalmazás tartományonként csak egyszer hívható.
+Nem – a Shard térkép Manager létrehozása (például  **[ShardMapManagerFactory.CreateSqlShardMapManager](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx)**) műveletet egyszer kell elvégezni.  Az alkalmazást kell használnia a hívás **[ShardMapManagerFactory.TryGetSqlShardMapManager()](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)** alkalmazás indítási időpontban.  Nem kell ilyen alkalmazás tartományonként csak egyszer hívható.
 
 #### <a name="i-have-questions-about-using-elastic-database-tools-how-do-i-get-them-answered"></a>A rugalmas adatbázis-eszközökkel kapcsolatos kérdéseket van, hogyan állíthatók válaszolni?
 Lépjen kapcsolatba velünk a a [Azure SQL Database fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted).

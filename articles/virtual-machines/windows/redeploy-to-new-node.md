@@ -1,10 +1,10 @@
 ---
-title: "Telepítse újra a Windows virtuális gépek Azure-ban |} Microsoft Docs"
-description: "Hogyan kell telepíteni a Windows virtuális gépek RDP kapcsolati problémák elhárítása érdekében az Azure-ban."
+title: Telepítse újra a Windows virtuális gépek Azure-ban |} Microsoft Docs
+description: Hogyan kell telepíteni a Windows virtuális gépek RDP kapcsolati problémák elhárítása érdekében az Azure-ban.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: genlin
-manager: timlt
+manager: jeconnoc
 tags: azure-resource-manager,top-support-issue
 ms.assetid: 0ee456ee-4595-4a14-8916-72c9110fc8bd
 ms.service: virtual-machines-windows
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 5002010e58a5d8e901770c780f07f9bd625d5eb4
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: c4115e82e4d5f1ed2b952d9fb8d8d820794133b2
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="redeploy-windows-virtual-machine-to-new-azure-node"></a>Új Azure csomópontra Windows virtuális gép újbóli üzembe helyezése
 Ha Ön rendelkezik lett nehézségekkel hibaelhárítás a távoli asztal (RDP) kapcsolat vagy alkalmazás elérésére Windows-alapú Azure virtuális gép (VM), a virtuális gép újbóli segíthet. A virtuális gép újbóli telepítésének, a virtuális gép áthelyezése az Azure-infrastruktúra belül egy másik csomópontra, és majd bekapcsolja azt vissza, a konfigurációs beállításokat és a kapcsolódó erőforrások megőrzése. Ez a cikk bemutatja, hogyan telepítse újra a virtuális gépek Azure PowerShell vagy az Azure-portál használatával.

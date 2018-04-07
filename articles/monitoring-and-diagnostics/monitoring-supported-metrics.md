@@ -14,17 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: ancav
-ms.openlocfilehash: 68f5784f1724441ff6f18e2581c8e01d66c60c5e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c9dab276b39b1ceb55851e865f9166e3e9e7fee8
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure-figyelő támogatott metrikák
-Azure figyelő többféleképpen is kommunikál a metrikákat, többek között a diagramkészítési őket a portálon, a hozzájuk férni a REST API-n keresztül, vagy a őket lekérdezése a PowerShell vagy a parancssori felület. Alatt érhető el teljes listáját és az összes metrikák jelenleg Azure figyelő metrika folyamat.
+Azure figyelő többféleképpen is kommunikál a metrikákat, többek között a diagramkészítési őket a portálon, a hozzájuk férni a REST API-n keresztül, vagy a őket lekérdezése a PowerShell vagy a parancssori felület. Alatt érhető el teljes listáját és az összes metrikák jelenleg Azure figyelő metrika folyamat. Más metrikákkal portálon vagy az örökölt API-k használatával érhetők el. Ez a lista alatt csak tartalmazza a metrikák érhető el a összevont Azure-figyelő metrika-feldolgozási folyamat használatával. A metrikák kereshet és eléréséhez kérjük, használja a [2018-01-01 api-verzió](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
 
 > [!NOTE]
-> Más metrikákkal portálon vagy az örökölt API-k használatával érhetők el. Ez a lista csak voltak elérhetők a összevont Azure-figyelő metrika kimenetátirányításának segítségével metrikák tartalmazza. A lekérdezés és eléréséhez metrikák többdimenziósak kérjük, használja a [2018-01-01 api-verzió](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
+> Diagnosztikai beállítások keresztül többdimenziós metrikák küldése jelenleg nem támogatott. Metrikák többdimenziósak, egybesimított egyetlen dimenzionális metrika, dimenzióértékek gyűjtődnek exportálja.
+>
+> *Például*: A "Bejövő üzenetek" metrika eseményközpontban felfedezte, és a forrásadatok egy várólista szintenként. Azonban a metrika fog megjelenni minden bejövő üzenet összes diagnosztikai beállítások keresztül exportálásakor várólisták a központ.
 >
 >
 

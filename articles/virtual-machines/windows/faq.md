@@ -4,7 +4,7 @@ description: Windows virtuális gépek létrehozása a Resource Manager modellt 
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-management
 ms.assetid: 757da816-a050-4889-a010-6f75d7978eb7
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: cynthn
-ms.openlocfilehash: e440385ca0f22dce8668fe73b91efe14e0c8a9b6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f427035f413dde304c2270006c6665120cb3e1e1
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Windows virtuális gépek kapcsolatos gyakran ismételt kérdések
 Ez a cikk foglalkozik Windows virtuális gépek létrehozása az Azure-ban a Resource Manager üzembe helyezési modellel kapcsolatos gyakori kérdésekre. Ez a témakör Linux verziója: [gyakran feltett kérdés kapcsolatos Linux virtuális gépek](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -99,7 +99,7 @@ A következő felhasználónevek nem engedélyezettek:
         <td style="text-align:center">actuser  </td><td style="text-align:center"> ADM </td><td style="text-align:center"> admin2 </td><td style="text-align:center"> aspnet</td>
     </tr>
     <tr>
-        <td style="text-align:center">biztonsági mentés </td><td style="text-align:center"> Konzol </td><td style="text-align:center"> David </td><td style="text-align:center"> Vendég</td>
+        <td style="text-align:center">biztonsági mentés </td><td style="text-align:center"> konzol </td><td style="text-align:center"> David </td><td style="text-align:center"> Vendég</td>
     </tr>
     <tr>
         <td style="text-align:center">John </td><td style="text-align:center"> tulajdonos </td><td style="text-align:center"> legfelső szintű </td><td style="text-align:center"> kiszolgáló</td>

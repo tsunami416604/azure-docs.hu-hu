@@ -1,11 +1,11 @@
 ---
-title: "Hozzon létre egy Azure virtuális gép egy HPC Pack átjárócsomópont |} Microsoft Docs"
-description: "Útmutató az Azure portál és a Resource Manager üzembe helyezési modellben a Microsoft HPC Pack 2012 R2 átjárócsomópont egy Azure virtuális gép létrehozásához."
+title: Hozzon létre egy Azure virtuális gép egy HPC Pack átjárócsomópont |} Microsoft Docs
+description: Útmutató az Azure portál és a Resource Manager üzembe helyezési modellben a Microsoft HPC Pack 2012 R2 átjárócsomópont egy Azure virtuális gép létrehozásához.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager,hpc-pack
 ms.assetid: e6a13eaf-9124-47b4-8d75-2bc4672b8f21
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-ms.openlocfilehash: b2bb9caf82a580dc5f67ea0b0b1c2e9a46363e9c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: acd4cd44dd35a5b1755d9456f683076567d62165
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-the-head-node-of-an-hpc-pack-cluster-in-an-azure-vm-with-a-marketplace-image"></a>HPC Pack-fürt fő csomópontjának létrehozása piactéri lemezképet használó Azure-beli virtuális gépen
 Használja a [Microsoft HPC Pack 2012 R2 virtuálisgép-lemezkép](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) átjárócsomópontjához HPC-fürt létrehozása az Azure piactéren és az Azure-portálon. A HPC Pack Virtuálisgép-lemezkép a Windows Server 2012 R2 Datacenter HPC Pack 2012 R2 Update 3 előtelepített alapul. Az átjárócsomópont használata az Azure-ban HPC csomag koncepció telepítését igazolása. Számítási csomópontok ezután hozzáadása a fürt HPC munkaterhelések futtatásához.
@@ -73,7 +73,7 @@ Az alábbiakban a magas szintű lépései az Azure-portál használatával hozzo
    
     Átjárócsomópont további konfigurációs beállítások, írja be a következőt `get-help HPCHNPrepare.ps1`.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A HPC Pack fürt átjárócsomópontjához mostantól együttműködik. Például, indítsa el a HPC Cluster Manager, és végezze el a [telepítési feladatlista](https://technet.microsoft.com/library/jj884141.aspx).
 * Ha azt szeretné, a fürt számítási kapacitás igény növelése érdekében adja [Azure-kapacitásnövelés csomópontok](classic/hpcpack-cluster-node-burst.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) felhőszolgáltatásban. 
 * Próbálja meg futtatni egy teszt munkaterhelés a fürtön. Egy vonatkozó példáért lásd: a HPC Pack [– első lépések útmutató](https://technet.microsoft.com/library/jj884144).

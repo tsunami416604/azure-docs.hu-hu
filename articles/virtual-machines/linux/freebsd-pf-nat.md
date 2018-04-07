@@ -1,13 +1,13 @@
 ---
-title: "Az Azure-ban hozzon létre egy tűzfal freebsd rendszerű számítógépén csomag szűrő használatával |} Microsoft Docs"
-description: "A NAT-tűzfalon freebsd rendszerű számítógépén használatával telepítése PF az Azure-ban."
+title: Az Azure-ban hozzon létre egy tűzfal freebsd rendszerű számítógépén csomag szűrő használatával |} Microsoft Docs
+description: A NAT-tűzfalon freebsd rendszerű számítógépén használatával telepítése PF az Azure-ban.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: KylieLiang
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
-ms.openlocfilehash: 0bed776526e3e2f3ee4cdce596c591d0b8419030
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 42312522381529075f544a6c277f66a4ef1982d2
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>Freebsd rendszerű számítógépén csomag szűrő használata biztonságos tűzfal létrehozása az Azure-ban
 Ez a cikk központi telepítése a NAT-tűzfalon freebsd rendszerű a csomagoló szűrő Azure Resource Manager sablon segítségével használatával általános web server helyzetre be.

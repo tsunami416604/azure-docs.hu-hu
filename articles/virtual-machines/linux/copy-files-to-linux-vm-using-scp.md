@@ -1,13 +1,13 @@
 ---
-title: "Helyezze át a fájlokat, és az SCP Azure Linux virtuális gépekről |} Microsoft Docs"
-description: "Biztonságosan helyezze a fájlokat, és onnan egy Linux virtuális Gépet az Azure-ban a szolgáltatáskapcsolódási pont és egy SSH-kulcspárral."
+title: Helyezze át a fájlokat, és az SCP Azure Linux virtuális gépekről |} Microsoft Docs
+description: Biztonságosan helyezze a fájlokat, és onnan egy Linux virtuális Gépet az Azure-ban a szolgáltatáskapcsolódási pont és egy SSH-kulcspárral.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure
 ms.tgt_pltfrm: vm-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: danlep
-ms.openlocfilehash: 736f7c11ec3de04f1ad52ee29d0a4c952c9b0545
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0231e402848e617a46ca70470ba4d3272ace59f7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>Helyezze át a fájlokat, és onnan Linux virtuális gépet a szolgáltatáskapcsolódási pont
 
@@ -73,6 +73,6 @@ scp -r azureuser@myserver.eastus.cloudapp.com:/home/azureuser/logs/. /tmp/
 
 A `-r` cli jelzőt a rekurzív módon másolása a fájlok és könyvtárak annak a könyvtárnak a ponttól, szerepel a parancs arra utasítja a szolgáltatáskapcsolódási pont.  Is láthatja, hogy a parancssori szintaxist hasonló egy `cp` -parancs másolásával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Kezelheti a felhasználókat, az SSH és az ellenőrzése vagy javítása Azure virtuális gépeken Linux a VMAccess bővítmény használatával lemezek](using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

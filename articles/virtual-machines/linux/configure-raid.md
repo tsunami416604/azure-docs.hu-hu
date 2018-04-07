@@ -1,10 +1,10 @@
 ---
-title: "Szoftveres RAID Linuxot futtató virtuális gépen konfigurálása |} Microsoft Docs"
-description: "Útmutató mdadm Linux RAID konfigurálása az Azure-ban."
+title: Szoftveres RAID Linuxot futtató virtuális gépen konfigurálása |} Microsoft Docs
+description: Útmutató mdadm Linux RAID konfigurálása az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: na
 author: rickstercdn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tag: azure-service-management,azure-resource-manager
 ms.assetid: f3cb2786-bda6-4d2c-9aaf-2db80f490feb
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
-ms.openlocfilehash: 12f540a700fbf85e579e8aadc9f6def039299ff7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d6e831692da37645e264c6674f1ba54bb16d25d4
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="configure-software-raid-on-linux"></a>Szoftveres RAID konfigurálása Linuxban
 Egy általános forgatókönyv szoftveres RAID Linux virtuális gépeken használatára az Azure-ban van több csatolt adatlemezek egyetlen RAID eszközként is. Általában ez is használható a teljesítmény javítása, és nagyobb átviteli sebesség eléréséhez csak egyetlen lemez használatával engedélyezheti.
@@ -61,7 +61,7 @@ Ebben a példában /dev/sdc egyetlen lemezt a partíciót létrehozni azt. Új t
                     sectors (command 'u').
     ```
 
-2. Nyomja meg az "n" létrehozásához a parancssorban a  **n** új partíció:
+2. Nyomja meg az "n" létrehozásához a parancssorban a **n**új partíció:
 
     ```bash
     Command (m for help): n
@@ -233,7 +233,7 @@ Két módon vágást engedélyezése támogatja a Linux virtuális gép van. A s
     # sudo fstrim /data
     ```
 
-    **RHEL vagy CentOS**
+    **RHEL/CentOS**
     ```bash
     # sudo yum install util-linux
     # sudo fstrim /data

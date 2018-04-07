@@ -1,11 +1,11 @@
 ---
-title: "Az Azure-bA feltölteni egy Windows virtuális merevlemez előkészítése |} Microsoft Docs"
-description: "A Windows VHD- vagy VHDX előkészítése az Azure-bA feltöltés előtt"
+title: Az Azure-bA feltölteni egy Windows virtuális merevlemez előkészítése |} Microsoft Docs
+description: A Windows VHD- vagy VHDX előkészítése az Azure-bA feltöltés előtt
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: glimoli
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 7802489d-33ec-4302-82a4-91463d03887a
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 67832fd20b758af6fd7a31c0099ce8019bb2442d
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 74c47907698e3365d093f0e17dba87b690406443
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Az Azure-bA feltöltendő Windows VHD vagy VHDX előkészítése
 A Windows virtuális gépek (VM) a helyszíni Microsoft Azure feltöltés előtt elő kell készítenie a virtuális merevlemez (VHD- vagy VHDX-). Azure csak 1. generációs virtuális gépek, amelyek a VHD formátumban és a rögzített méretű lemez támogatja. A VHD számára engedélyezett maximális mérete 1,023 GB. 1 virtuális gép a vhdx-fájl a fájlrendszerben VHD-t és a rögzített méretű dinamikusan bővülő lemezek generáció válthat. De nem módosíthatja a virtuális gép generációját. További információkért lásd: [érdemes létrehozni egy 1 vagy 2. generációs virtuális gép a Hyper-V](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
@@ -118,7 +118,7 @@ Set-Service -Name RemoteRegistry -StartupType Auto
 Győződjön meg arról, hogy a következő beállításai megfelelően vannak a távoli asztali kapcsolat:
 
 >[!Note] 
->Hibaüzenet jelenhet meg, ha futtatja a **Set-ItemProperty-elérési út "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal szolgáltatások – name &lt;objektumnév&gt; &lt;érték&gt;** az alábbi lépéseket. A hibaüzenet a következő biztonságosan figyelmen kívül hagyhatja. Ez azt jelenti, hogy csak, hogy a tartomány nem küldését, hogy a konfigurálás egy csoportházirend-objektumon keresztül.
+>Hibaüzenet jelenhet meg, ha futtatja a **Set-ItemProperty-elérési út "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal szolgáltatások – name &lt;objektumnév&gt; &lt;érték&gt; **az alábbi lépéseket. A hibaüzenet a következő biztonságosan figyelmen kívül hagyhatja. Ez azt jelenti, hogy csak, hogy a tartomány nem küldését, hogy a konfigurálás egy csoportházirend-objektumon keresztül.
 >
 >
 
@@ -188,7 +188,7 @@ Győződjön meg arról, hogy a következő beállításai megfelelően vannak a
 
     - NLA csoportházirend:
 
-        Settings\Administrative Templates\Components\Remote asztali szolgáltatások\Távoli asztali munkamenetgazda\Biztonság: 
+        Settings\Administrative Templates\Components\Remote Desktop Services\Remote Desktop Session Host\Security: 
         
         **Távoli kapcsolatok hálózati szintű hitelesítéssel felhasználói hitelesítés megkövetelése**
     
@@ -324,13 +324,13 @@ Az ideális konfigurálás az, hogy **a gép legkésőbb javítás szintű**. Ha
 |                       |                   |           |                                       Minimális verzió x64       |                                      |                                      |                            |
 |-------------------------|-------------------|------------------------------------|---------------------------------------------|--------------------------------------|--------------------------------------|----------------------------|
 | Összetevő               | Bináris            | Windows 7 és Windows Server 2008 R2 | Windows 8 és Windows Server 2012-ben             | Windows 8.1 és Windows Server 2012 R2 rendszerben | Windows 10 és Windows Server 2016 RS1 | Windows 10 RS2             |
-| Storage                 | a Disk.sys          | 6.1.7601.23403 - KB3125574         | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061           | -                                    | -                          |
+| Tárolás                 | a Disk.sys          | 6.1.7601.23403 - KB3125574         | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061           | -                                    | -                          |
 |                         | Storport.sys      | 6.1.7601.23403 - KB3125574         | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726           | 10.0.14393.1358 - KB4022715          | 10.0.15063.332             |
-|                         | NTFS.sys          | 6.1.7601.23403 - KB3125574         | 6.2.9200.17623 / 6.2.9200.21743 - KB3121255 | 6.3.9600.18654 - KB4022726           | 10.0.14393.1198 - KB4022715          | 10.0.15063.447             |
+|                         | ntfs.sys          | 6.1.7601.23403 - KB3125574         | 6.2.9200.17623 / 6.2.9200.21743 - KB3121255 | 6.3.9600.18654 - KB4022726           | 10.0.14393.1198 - KB4022715          | 10.0.15063.447             |
 |                         | Iologmsg.dll      | 6.1.7601.23403 - KB3125574         | 6.2.9200.16384 - KB2995387                  | -                                    | -                                    | -                          |
 |                         | Classpnp.sys      | 6.1.7601.23403 - KB3125574         | 6.2.9200.17061 / 6.2.9200.21180 - KB2995387 | 6.3.9600.18334 - KB3172614           | 10.0.14393.953 - KB4022715           | -                          |
 |                         | Volsnap.sys       | 6.1.7601.23403 - KB3125574         | 6.2.9200.17047 / 6.2.9200.21165 - KB2975331 | 6.3.9600.18265 - KB3145384           | -                                    | 10.0.15063.0               |
-|                         | PartMgr.sys       | 6.1.7601.23403 - KB3125574         | 6.2.9200.16681 - KB2877114                  | 6.3.9600.17401 - KB3000850           | 10.0.14393.953 - KB4022715           | 10.0.15063.0               |
+|                         | partmgr.sys       | 6.1.7601.23403 - KB3125574         | 6.2.9200.16681 - KB2877114                  | 6.3.9600.17401 - KB3000850           | 10.0.14393.953 - KB4022715           | 10.0.15063.0               |
 |                         | volmgr.sys        |                                    |                                             |                                      |                                      | 10.0.15063.0               |
 |                         | Volmgrx.sys       | 6.1.7601.23403 - KB3125574         | -                                           | -                                    | -                                    | 10.0.15063.0               |
 |                         | Msiscsi.sys       | 6.1.7601.23403 - KB3125574         | 6.2.9200.21006 - KB2955163                  | 6.3.9600.18624 - KB4022726           | 10.0.14393.1066 - KB4022715          | 10.0.15063.447             |
@@ -345,19 +345,19 @@ Az ideális konfigurálás az, hogy **a gép legkésőbb javítás szintű**. Ha
 |                         | Tcpip.sys         | 6.1.7601.23761 - KB4022722         | 6.2.9200.22070 - KB4022724                  | 6.3.9600.18478 - KB4022726           | 10.0.14393.1358 - KB4022715          | 10.0.15063.447             |
 |                         | a HTTP.sys          | 6.1.7601.23403 - KB3125574         | 6.2.9200.17285 - KB3042553                  | 6.3.9600.18574 - KB4022726           | 10.0.14393.251 - KB4022715           | 10.0.15063.483             |
 |                         | vmswitch.sys      | 6.1.7601.23727 - KB4022719         | 6.2.9200.22117 - KB4022724                  | 6.3.9600.18654 - KB4022726           | 10.0.14393.1358 - KB4022715          | 10.0.15063.138             |
-| Mag                    | Ntoskrnl.exe      | 6.1.7601.23807 - KB4022719         | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726           | 10.0.14393.1358 - KB4022715          | 10.0.15063.483             |
+| Mag                    | ntoskrnl.exe      | 6.1.7601.23807 - KB4022719         | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726           | 10.0.14393.1358 - KB4022715          | 10.0.15063.483             |
 | Távoli asztali szolgáltatások | rdpcorets.dll     | 6.2.9200.21506 - KB4022719         | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726           | 10.0.14393.1198 - KB4022715          | 10.0.15063.0               |
-|                         | TERMSRV.dll       | 6.1.7601.23403 - KB3125574         | 6.2.9200.17048 - KB2973501                  | 6.3.9600.17415 - KB3000850           | 10.0.14393.0 - KB4022715             | 10.0.15063.0               |
+|                         | termsrv.dll       | 6.1.7601.23403 - KB3125574         | 6.2.9200.17048 - KB2973501                  | 6.3.9600.17415 - KB3000850           | 10.0.14393.0 - KB4022715             | 10.0.15063.0               |
 |                         | Termdd.sys        | 6.1.7601.23403 - KB3125574         | -                                           | -                                    | -                                    | -                          |
 |                         | Win32k.sys        | 6.1.7601.23807 - KB4022719         | 6.2.9200.22168 - KB4022718                  | 6.3.9600.18698 - KB4022726           | 10.0.14393.594 - KB4022715           | -                          |
 |                         | rdpdd.dll         | 6.1.7601.23403 - KB3125574         | -                                           | -                                    | -                                    | -                          |
-|                         | Rdpwd.sys         | 6.1.7601.23403 - KB3125574         | -                                           | -                                    | -                                    | -                          |
+|                         | rdpwd.sys         | 6.1.7601.23403 - KB3125574         | -                                           | -                                    | -                                    | -                          |
 | Biztonság                | WannaCrypt miatt | KB4012212                          | KB4012213                                   | KB4012213                            | KB4012606                            | KB4012606                  |
 |                         |                   |                                    | KB4012216                                   |                                      | KB4013198                            | KB4013198                  |
 |                         |                   | KB4012215                          | KB4012214                                   | KB4012216                            | KB4013429                            | KB4013429                  |
 |                         |                   |                                    | KB4012217                                   |                                      | KB4013429                            | KB4013429                  |
        
-### A sysprep használatával<a id="step23"></a>    
+### A sysprep használatával <a id="step23"></a>    
 
 A Sysprep egy folyamat, amely alaphelyzetbe állítja a rendszer, és gondoskodik az "a kezdőélmény" eltávolíthatja személyes adatokat, és alaphelyzetbe állításával több összetevőt windows-telepítést történő futtatásával. Általában ehhez Ha azt szeretné, ahol központilag telepíthető a többi virtuális adott konfigurációval rendelkezik sablon létrehozása. Ez a lehetőség egy **kép általánosítva**.
 
@@ -425,7 +425,7 @@ A következő beállítások nem befolyásolják a virtuális merevlemez feltöl
     ```
 Ha bármely adatlemez, amely a virtuális Géphez van csatolva, az ideiglenes meghajtón kötet meghajtójának betűjelét általában-e "D" Lehet, hogy a kijelölés különböző, attól függően, hogy az elérhető meghajtók számát és a beállítások.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Windows Virtuálisgép-lemezkép feltöltése az Azure Resource Manager üzembe helyezések esetében](upload-generalized-managed.md)
 * [Azure Windows virtuális gép aktiválással kapcsolatos problémák elhárítása](troubleshoot-activation-problems.md)
 

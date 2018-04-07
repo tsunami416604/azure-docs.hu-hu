@@ -1,12 +1,12 @@
 ---
-title: "Módosítsa a virtuális gépek rendelkezésre állási csoport |} Microsoft Docs"
-description: "Megtudhatja, hogyan módosíthatja a rendelkezésre állási csoportot a virtuális gépek Azure PowerShell és a Resource Manager üzembe helyezési modellben."
-keywords: 
+title: Módosítsa a virtuális gépek rendelkezésre állási csoport |} Microsoft Docs
+description: Megtudhatja, hogyan módosíthatja a rendelkezésre állási csoportot a virtuális gépek Azure PowerShell és a Resource Manager üzembe helyezési modellben.
+keywords: ''
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: Drewm3
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 44c90f90-bc9a-4260-a36f-5465e2a1ef94
 ms.service: virtual-machines-windows
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2016
 ms.author: drewm
-ms.openlocfilehash: c10c947b6fc0737a7b9fba6b7f3efcae1f96638b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 938614d7427f691dcacbafa324694a9a7f37d3ca
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="change-the-availability-set-for-a-windows-vm"></a>A rendelkezésre állási csoportot a Windows virtuális gépek módosítása
 A következő lépések azt ismertetik, hogyan módosíthatja a rendelkezésre állási csoport a virtuális gépek Azure PowerShell használatával. A virtuális gépek csak rendelkezésre állási készlet létrehozásakor lehet hozzáadni. Ahhoz, hogy módosítsa a rendelkezésre állási beállítása, törölje és hozza létre a virtuális gép szükséges. 
@@ -35,7 +35,7 @@ A következő lépések azt ismertetik, hogyan módosíthatja a rendelkezésre �
     $vm.Name
     ```
    
-    Virtuálisgép-mérettel
+    Virtuális gép mérete
    
     ```powershell
     $vm.HardwareProfile.VmSize
@@ -154,6 +154,6 @@ A következő parancsfájl egy példát a szükséges információk összegyűjt
     New-AzureRmVM -ResourceGroupName $rg -Location $OriginalVM.Location -VM $NewVM -DisableBginfoExtension
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További tárhely hozzáadása a virtuális Gépet egy további hozzáadásával [adatlemez](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

@@ -1,11 +1,11 @@
 ---
-title: "Az Excel és SOA HPC Pack fürt |} Microsoft Docs"
-description: "Ismerkedés a nagyméretű Excel és a SOA munkaterhelések egy HPC Pack fürtben futó Azure-ban"
+title: Az Excel és SOA HPC Pack fürt |} Microsoft Docs
+description: Ismerkedés a nagyméretű Excel és a SOA munkaterhelések egy HPC Pack fürtben futó Azure-ban
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager,hpc-pack
 ms.assetid: cb6a9abe-caf3-44da-b911-849a50f6cfb3
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 06/01/2017
 ms.author: danlep
-ms.openlocfilehash: 63babd94fdab15217cfb0757e4cd6efe458a628d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aaf26e04fdb38fd76f4ab8211f9fdda8ebafd668
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="get-started-running-excel-and-soa-workloads-on-an-hpc-pack-cluster-in-azure"></a>Ismerkedés az Excel és a SOA munkaterhelések egy HPC Pack fürtben futó Azure-ban
 Ez a cikk bemutatja, hogyan Azure virtuális gépeken futó Microsoft HPC Pack 2012 R2 fürt központi telepítése egy Azure gyors üzembe helyezés sablont, vagy opcionálisan egy Azure PowerShell telepítési parancsfájlt. A fürt úgy tervezték, hogy a Microsoft Excel alkalmazást vagy szolgáltatásorientált architektúra (SOA) munkaterhelések futtatása HPC Pack Azure piactér Virtuálisgép-rendszerképekről használja. A fürt használhatja a helyszíni ügyfél-számítógépről Excel HPC és SOA szolgáltatások futtatásához. Excel-munkafüzet kiürítéséhez és a felhasználó által definiált függvények Excel vagy a felhasználó által megadott függvények közé tartoznak az Excelhez készült HPC-szolgáltatások
@@ -43,7 +43,7 @@ Magas szinten a következő ábrán a HPC Pack fürtöt hoz létre.
 ## <a name="step-1-set-up-an-hpc-pack-cluster-in-azure"></a>1. lépés Az Azure-ban egy HPC Pack fürt beállítása
 Megmutatjuk, két lehetőség közül választhat a HPC Pack 2012 R2-fürt beállításához: első, egy Azure gyors üzembe helyezés sablont és az Azure-portálon; és a második, az Azure PowerShell telepítési parancsfájlt használ.
 
-### <a name="option-1-use-a-quickstart-template"></a>1. lehetőség. A következő gyorsindítási sablonon használata
+### <a name="option-1-use-a-quickstart-template"></a>1. lehetőség: A következő gyorsindítási sablonon használata
 Egy Azure gyors üzembe helyezés sablon használatával gyorsan HPC Pack-fürt üzembe helyezése az Azure portálon. A sablon a portálon megnyitásakor egy egyszerű felhasználói felület, ahol a beállítások megadása a fürt kap. A lépések a következők. 
 
 > [!TIP]
@@ -59,7 +59,7 @@ Egy Azure gyors üzembe helyezés sablon használatával gyorsan HPC Pack-fürt 
    
    a. Az a **paraméterek** lapon adja meg, vagy módosítsa a sablon paraméter értékét. (Kattintson a beállítások mellett lévő ikonra súgójában talál.) A következő képernyő mintaértékek láthatók. Ez a példa egy nevű fürtöt hoz létre *hpc01* a a *hpc.local* tartomány egy átjárócsomóponttal és 2 álló számítási csomópontokat. A számítási csomópontok HPC Pack VM-lemezkép, amely tartalmazza a Microsoft Excel készített.
    
-   ![Adja meg a paraméterek][parameters-new-portal]
+   ![Paraméterek megadása][parameters-new-portal]
    
    > [!NOTE]
    > A virtuális gép alapján automatikusan létrehozott átjárócsomópont a [legújabb Piactéri lemezképhez](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) HPC Pack 2012 R2 Windows Server 2012 R2 rendszeren. Jelenleg a kép HPC Pack 2012 R2 Update 3 alapul.
@@ -85,7 +85,7 @@ Egy Azure gyors üzembe helyezés sablon használatával gyorsan HPC Pack-fürt 
    
    ![A tanúsítvány exportálása][cert]
 
-### <a name="option-2-use-the-hpc-pack-iaas-deployment-script"></a>2. lehetőség. A HPC Pack IaaS telepítési parancsfájl használata
+### <a name="option-2-use-the-hpc-pack-iaas-deployment-script"></a>2. lehetőség: A HPC Pack IaaS telepítési parancsfájl használata
 A HPC Pack IaaS telepítési parancsfájl segítségével egy másik sokoldalú HPC Pack-fürt üzembe helyezése. A fürt létrehoz a klasszikus üzembe helyezési modellel, mivel a sablon az Azure Resource Manager telepítési modellt használ. A parancsfájl is kompatibilis Azure globális vagy Azure Kína szolgáltatásban előfizetés.
 
 **További Előfeltételek**
@@ -337,11 +337,11 @@ NetTcp kötés használatához a konfigurációs hasonlít a csatlakozás a hely
 2. Adja hozzá a TCP-portok 9090, 9087, 9091, a munkamenet 9094 Replikaszervező, munkavégző és adatszolgáltatások, illetve Replikaszervező
    
     ![Végpontok konfigurálása][endpoint-new-portal]
-3. Indítsa el a virtuális Gépet.
+3. Indítsa el a virtuális gépet.
 
 A SOA ügyfélalkalmazás nem kell módosítani a módosítása a központi nevét az IaaS-fürt teljes név kivételével.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Lásd: [ezeket az erőforrásokat](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx) HPC Pack Excel munkaterhelések futtatásával kapcsolatos további információt.
 * Lásd: [SOA-szolgáltatások kezelése a Microsoft HPC Pack](https://technet.microsoft.com/library/ff919412.aspx) központi telepítésére és felügyeletére SOA szolgáltatások HPC Pack bővebben.
 

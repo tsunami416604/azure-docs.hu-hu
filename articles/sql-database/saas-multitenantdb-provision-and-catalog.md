@@ -1,7 +1,7 @@
 ---
-title: "SaaS több-bérlős Azure rendelkezése |} Microsoft Docs"
-description: "Megtudhatja, hogyan szeretnék telepíteni, és a katalógus egy Azure SQL Database több-bérlős SaaS-alkalmazás az új bérlők"
-keywords: "sql database-oktatóanyag"
+title: SaaS több-bérlős Azure rendelkezése |} Microsoft Docs
+description: Megtudhatja, hogyan szeretnék telepíteni, és a katalógus egy Azure SQL Database több-bérlős SaaS-alkalmazás az új bérlők
+keywords: sql database-oktatóanyag
 services: sql-database
 author: MightyPen
 manager: craigg
@@ -9,13 +9,13 @@ ms.reviewer: billgib;andrela;genemi
 ms.service: sql-database
 ms.custom: saas apps
 ms.topic: article
-ms.date: 12/19/2017
+ms.date: 04/01/2018
 ms.author: billgib
-ms.openlocfilehash: fb2f2bcbbc8b7f0b0012c4e7baf4a274671d4af0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: cb0229731d8fd1495173915b3bc95b48538f1e85
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Új bérlők biztosítása és a katalógus egy SaaS-alkalmazáshoz szilánkos több-bérlős Azure SQL-adatbázis használata
 
@@ -101,7 +101,7 @@ Bármely alkalmazás, például a Wingtip fog verzióinformációk. Időnként a
 
 A SaaS-alkalmazásokkal ezeket a módosításokat koordinált módon kell üzembe helyezni valószínűleg nagyszámú bérlői adatbázison. A módosítások lehet a jövőben bérlői adatbázisok van szükségük a kiépítési folyamat szóló. Ez a kérdés felfedezte van a további a [séma felügyeleti oktatóanyag](saas-tenancy-schema-management.md).
 
-#### <a name="scripts"></a>Parancsprogramok
+#### <a name="scripts"></a>Scripts
 
 Ebben az oktatóanyagban a bérlő üzembe helyezési parancsfájlok támogatja az alábbi esetekben:
 - A bérlő átadása egy meglévő megosztott a többi bérlő adatbázisba.
@@ -253,7 +253,7 @@ Ez a szakasz ismerteti, amelyek más létesítési érdekes szabályszerűségek
 
 Az előre üzembe helyezési minta arra, hogy rugalmas készletek használatakor számlázási a készlet nem az adatbázisok biztonsági réseket. Így adatbázisokat felveheti egy rugalmas készlethez előtt szükség van kapcsolódik további költség nélkül. Az előre visioning jelentősen csökkenti a bérlő adatbázisba történő telepítéséhez szükséges idő. Előzetes kiosztása adatbázisok száma puffer megfelelő-e a kiépítési várható sebesség tartása szükség szerint módosítható.
 
-#### <a name="auto-provisioning"></a>Automatikus kiépítés
+#### <a name="auto-provisioning"></a>Automatikus üzembe helyezés
 
 Az automatikus átadásának mintának kiszolgálók készletek és szükség szerint automatikusan adatbázisok kiépítése egy dedikált létesítési szolgáltatást használja. Ezt az automatizálást magában foglalja az adatbázisok rugalmas készletek előzetes kiépítését. És adatbázisok szerelni és törlése, ha létrejön a rugalmas készletek hézagok tetszés szerint a létesítési szolgáltatás is ki kell tölteni.
 

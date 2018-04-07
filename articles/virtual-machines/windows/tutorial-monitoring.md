@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: b908e8877162a6a1d9292616a1704c1c528e1725
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 9f8f8cb7fd267e25c83ecceb98b5faa8848fb126
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="monitor-and-update-a-windows-virtual-machine-with-azure-powershell"></a>Figyelheti és frissítheti a Windows virtuális gépként az Azure PowerShell
 
@@ -238,7 +238,7 @@ A diagram az eltelt idő alatt bekövetkezett változásokat mutatja. A Tevéken
 
 ## <a name="advanced-monitoring"></a>Speciális figyelés
 
-Fejlettebb, figyelés, a virtuális gép a megoldások, például a frissítéskezelés és változás- és Azure Automation által biztosított készlet segítségével teheti meg. [Az Operations Management Suite](../../automation/automation-intro.md).
+Mindent fejlettebb, például a frissítéskezelés és változás- és szoftverleltár által biztosított megoldások segítségével a virtuális gép figyelési [Azure Automation](../../automation/automation-intro.md).
 
 Amikor hozzáfér a Naplóelemzési munkaterület, megtalálhatja a kulcsát és a munkaterület azonosítója kiválasztásával **speciális beállítások** alatt **beállítások**. Használja a [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) parancs futtatásával adja hozzá a Microsoft Monitoring agent bővítményt a virtuális Gépet. A változók értékeinek frissítéséhez az alábbi minta megfelelően, akkor a Naplóelemzési munkaterület kulcs és a munkaterület azonosítóját.
 

@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 04/06/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: b3a3c07446ad04a58d5180793404fc04677749b2
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 6f654e7897a9a00b0e53849002d5d4b16eab2bd6
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-stack-1802-update"></a>Az Azure verem 1802 frissítés
 
@@ -56,7 +56,9 @@ Az Azure verem 1802 frissítés buildszáma **20180302.1**.
 
 
 ### <a name="post-update-steps"></a>Frissítés utáni lépések
-*Nincs frissítés utáni lépések frissítés 1802 van.*
+1802 a telepítés után bármely alkalmazandó gyorsjavításainak telepítéséhez. További információ a következő tudásbáziscikkeiből, megtekintése, valamint a [karbantartása házirend](azure-stack-servicing-policy.md).  
+- [KB 4103348 - az hálózati vezérlő API szolgáltatás leáll, ha egy Azure verem frissítés telepítésekor](https://support.microsoft.com/help/4103348)
+
 
 
 ### <a name="new-features-and-fixes"></a>Új szolgáltatásokat és javításokat
@@ -82,7 +84,7 @@ A frissítés tartalmazza a következő fejlesztéseket és javításokat Azure 
 
 - **Támogatja a több tartalék tartományok**.  További információkért lásd: [magas rendelkezésre állású Azure verem](azure-stack-key-features.md#high-availability-for-azure-stack).
 
-- **Különböző javítások** teljesítmény, stabilitásának, biztonsági és az operációs rendszer Azure verem által használt.
+- **Különböző javítások** teljesítmény, stabilitásának, biztonsági és az Azure-verem által használt operációs rendszer.
 
 <!--
 #### New features
@@ -141,6 +143,10 @@ Nincsenek ismert problémák 1802 történő frissítés után.
 
 #### <a name="compute"></a>Számítás
 - A virtuálisgép-méretezési csoportok skálázási beállításai nem érhetők el a portálon. Áthidaló megoldásként használja [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). PowerShell-verzió különbségek, miatt kell használnia a `-Name` paraméter helyett `-VMScaleSetName`.
+
+- <!-- 2290877  --> You cannot scale up a virtual machine scale set (VMSS) that was created when using Azure Stack prior to version 1802. This is due to the change in support for using availability sets with virtual machine scale sets. This support was added with version 1802.  When you attempt to add additional instances to scale a VMSS that was created prior to this support being added, the action fails with the message *Provisioning state failed*. 
+
+  A probléma megoldásához 1803 verzióban. 1802 verziójához a probléma megoldásához telepítse a Azure verem gyorsjavítást **1.0.180302.4**. További információkért lásd: [KB 4131152: meglévő virtuálisgép-méretezési csoportok használhatatlanná válhat]( https://support.microsoft.com/help/4131152). 
 
 - Az Azure verem támogatja a csak a rögzített típusúvá a VHD-k használatát. Néhány képet, a veremben Azure piactéren keresztül felajánlott használjon dinamikus virtuális merevlemezek, de amelyek el lettek távolítva. Dinamikus lemez nem csatlakoztatható a virtuális gép (VM) átméretezése hagyja el a virtuális gép hibás állapotban.
 

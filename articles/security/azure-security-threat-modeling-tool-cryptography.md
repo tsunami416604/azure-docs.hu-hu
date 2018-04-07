@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 96e74371fe51a8050a91c86215e3eefab07bbed8
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5e5d487c4c793a49ce1d4ac17f6fcd672e09bb90
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="security-frame-cryptography--mitigations"></a>Biztonsági keret: Titkosítás |} Megoldást 
 | A termék vagy szolgáltatás | Cikk |
@@ -73,7 +73,7 @@ ms.lasthandoff: 04/05/2018
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | <p>Termékek jóváhagyott véletlenszerű szám generátorokat kell használnia. Pseudorandom funkciókat, például a C futásidejű függvény VÉL, a .NET-keretrendszer osztály System.Random vagy a rendszer funkciókat, például a GetTickCount kell, ezért soha nem használhatók ilyen kódban. A kettős elliptikus görbéjű véletlenszerű szám generátor (DUAL_EC_DRBG) algoritmus használata nem engedélyezett</p><ul><li>**CNG -** BCryptGenRandom (az ajánlott, ha a hívó bármely IRQL [Ez azt jelenti, hogy PASSIVE_LEVEL] 0-nál nagyobb lehet, hogy futtassa BCRYPT_USE_SYSTEM_PREFERRED_RNG jelző használata)</li><li>**CAPI -** cryptGenRandom</li><li>**A Win32/64-** (új megvalósítások használja BCryptGenRandom vagy CryptGenRandom) RtlGenRandom * rand_s * SystemPrng (a kernel mód)</li><li>**. A NET -** RNGCryptoServiceProvider vagy RNGCng</li><li>**A Windows Store Apps -** Windows.Security.Cryptography.CryptographicBuffer.GenerateRandom vagy. GenerateRandomNumber</li><li>**Apple OS X (10.7+)/iOS(2.0+) -** int SecRandomCopyBytes (SecRandomRef véletlenszerű, size_t száma, uint8_t *bájt)</li><li>** Apple OS X (< 10.7)-** / dev/véletlenszerű lekéréséhez használja véletlenszerű számok</li><li>**Java(including Google Android Java Code) -** java.security.SecureRandom osztály. Vegye figyelembe, hogy az Android 4.3 (ún Bean), a fejlesztők kell hajtsa végre a javasolt megoldás Android rendelkező /dev/urandom vagy /dev/random entrópia PRNG explicit módon inicializálni az alkalmazások frissítése</li></ul>|
+| **Lépések** | <p>Termékek jóváhagyott véletlenszerű szám generátorokat kell használnia. Pseudorandom funkciókat, például a C futásidejű függvény VÉL, a .NET-keretrendszer osztály System.Random vagy a rendszer funkciókat, például a GetTickCount kell, ezért soha nem használhatók ilyen kódban. A kettős elliptikus görbéjű véletlenszerű szám generátor (DUAL_EC_DRBG) algoritmus használata nem engedélyezett</p><ul><li>**CNG -** BCryptGenRandom (az ajánlott, ha a hívó bármely IRQL [Ez azt jelenti, hogy PASSIVE_LEVEL] 0-nál nagyobb lehet, hogy futtassa BCRYPT_USE_SYSTEM_PREFERRED_RNG jelző használata)</li><li>**CAPI -** cryptGenRandom</li><li>**A Win32/64-** (új megvalósítások használja BCryptGenRandom vagy CryptGenRandom) RtlGenRandom * rand_s * SystemPrng (a kernel mód)</li><li>**. A NET -** RNGCryptoServiceProvider vagy RNGCng</li><li>**A Windows Store Apps -** Windows.Security.Cryptography.CryptographicBuffer.GenerateRandom vagy. GenerateRandomNumber</li><li>**Apple OS X (10.7+)/iOS(2.0+) -** int SecRandomCopyBytes (SecRandomRef véletlenszerű, size_t száma, uint8_t \*bájt)</li><li>**Apple OS X (< 10.7)-**  /dev/véletlenszerű lekéréséhez használja véletlenszerű számok</li><li>**Java(including Google Android Java Code) -** java.security.SecureRandom osztály. Vegye figyelembe, hogy az Android 4.3 (ún Bean), a fejlesztők kell hajtsa végre a javasolt megoldás Android rendelkező /dev/urandom vagy /dev/random entrópia PRNG explicit módon inicializálni az alkalmazások frissítése</li></ul>|
 
 ## <a id="stream-ciphers"></a>Ne használjon szimmetrikus adatfolyam rejtjel.
 

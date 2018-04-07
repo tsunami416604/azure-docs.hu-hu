@@ -1,6 +1,6 @@
 ---
-title: "Csatlakozás SQL Database adatbázishoz C és C++ |} Microsoft Docs"
-description: "A gyors üzembe helyezési példakód használatával a modern alkalmazás C++ és egy hatékony relációs adatbázis a felhőben az Azure SQL Database biztonsági mentés létrehozása."
+title: Csatlakozás SQL Database adatbázishoz C és C++ |} Microsoft Docs
+description: A gyors üzembe helyezési példakód használatával a modern alkalmazás C++ és egy hatékony relációs adatbázis a felhőben az Azure SQL Database biztonsági mentés létrehozása.
 services: sql-database
 author: edmacauley
 manager: craigg
@@ -8,13 +8,13 @@ ms.service: sql-database
 ms.custom: develop apps
 ms.devlang: cpp
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 04/01/2018
 ms.author: edmacauley
-ms.openlocfilehash: 659b413b2686a50a0681e7307b51188e6e6d0859
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 49cbed06d92843fcf0c444e7ef2bb42df2addf7e
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Csatlakozás SQL Database adatbázishoz C és C++ használatával
 A feladás egy vagy több fejlesztésére C és C++ fejlesztők számára az Azure SQL Adatbázishoz csatlakozni próbál. Az bontani szakaszok, akkor a, amely a legjobban rögzíti az érdeklődését szakaszra is ugorhat. 

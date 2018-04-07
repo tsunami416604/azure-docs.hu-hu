@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric CLI - sfctl alkalmazással |} Microsoft Docs"
-description: "Ismerteti a Service Fabric CLI sfctl alkalmazás parancsait."
+title: Azure Service Fabric CLI - sfctl alkalmazással |} Microsoft Docs
+description: Ismerteti a Service Fabric CLI sfctl alkalmazás parancsait.
 services: service-fabric
 documentationcenter: na
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: cli
 ms.topic: reference
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 02/23/2018
 ms.author: ryanwi
-ms.openlocfilehash: 3a10437d0a2d680e586ada6a87750a69453c1f0c
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: fe0ef5c81b1ef6bef298e65cde3649c9464089d8
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="sfctl-application"></a>sfctl-alkalmazás
 Létrehozása, törlése és alkalmazásokat és típusok.
@@ -46,7 +46,7 @@ Létrehozása, törlése és alkalmazásokat és típusok.
 | frissítés-folytatása  | Az alkalmazás a Service Fabric-fürt frissítése folytatása.|
 | frissítés-visszaállítás| Elindítja a Service Fabric-fürt visszaállítása az alkalmazás jelenleg folyamatban lévő frissítése folyamatban.|
 | frissítés-állapot  | Lekérdezi a részletek a legújabb frissítés végre ezt az alkalmazást.|
-| Feltöltése       | A Service Fabric-alkalmazás csomag másolása az image store.|
+| feltöltés       | A Service Fabric-alkalmazás csomag másolása az image store.|
 
 ## <a name="sfctl-application-create"></a>sfctl alkalmazás létrehozása
 A Service Fabric-alkalmazás a megadott leírás használatával hoz létre.
@@ -71,7 +71,7 @@ A Service Fabric-alkalmazás a megadott leírás használatával hoz létre.
 | --debug              | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h            | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o          | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett: JSON-ná.|
-| --lekérdezés              | JMESPath lekérdezési karakterlánc. További információt és példákat http://jmespath.org/ talál.|
+| --lekérdezés              | JMESPath lekérdezési karakterlánc. Lásd: http://jmespath.org/ további információt és példákat.|
 | – részletes            | Naplózási növelése. Használatát – a teljes hibakeresési naplók hibakeresési.|
 
 ## <a name="sfctl-application-delete"></a>sfctl alkalmazás törlése
@@ -94,7 +94,7 @@ Egy meglévő Service Fabric-alkalmazás törlése. Az alkalmazás azt törlése
 | --debug                 | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h               | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o             | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett: JSON-ná.|
-| --lekérdezés                 | JMESPath lekérdezési karakterlánc. További információt és példákat http://jmespath.org/ talál.|
+| --lekérdezés                 | JMESPath lekérdezési karakterlánc. Lásd: http://jmespath.org/ további információt és példákat.|
 | – részletes               | Naplózási növelése. Használatát – a teljes hibakeresési naplók hibakeresési.|
 
 ## <a name="sfctl-application-deployed"></a>sfctl alkalmazása telepítve van.
@@ -117,7 +117,7 @@ A Service Fabric-csomópont központi telepítésű alkalmazás információ lek
 | --debug                 | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h               | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o             | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett: JSON-ná.|
-| --lekérdezés                 | JMESPath lekérdezési karakterlánc. További információt és példákat http://jmespath.org/ talál.|
+| --lekérdezés                 | JMESPath lekérdezési karakterlánc. Lásd: http://jmespath.org/ további információt és példákat.|
 | – részletes               | Naplózási növelése. Használatát – a teljes hibakeresési naplók hibakeresési.|
 
 ## <a name="sfctl-application-health"></a>alkalmazás állapotának sfctl
@@ -192,7 +192,7 @@ A létrehozott vagy folyamatban van, a Service Fabric létrehozása a fürt és 
 | --debug                      | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h                    | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o                  | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.             Alapértelmezett: JSON-ná.|
-| --lekérdezés                      | JMESPath lekérdezési karakterlánc. További információt és példákat http://jmespath.org/ talál.|
+| --lekérdezés                      | JMESPath lekérdezési karakterlánc. Lásd: http://jmespath.org/ további információt és példákat.|
 | – részletes                    | Naplózási növelése. Használatát – a teljes hibakeresési naplók hibakeresési.|
 
 ## <a name="sfctl-application-load"></a>sfctl alkalmazásterhelés
@@ -241,9 +241,7 @@ A jegyzékfájl alkalmazástípust leíró lekérése. A válasz tartalmazza az 
 ## <a name="sfctl-application-provision"></a>sfctl alkalmazás kiépítése
 Rendelkezések vagy regiszterekben a Service Fabric-alkalmazás írja be a fürtöt a SFPKG csomag segítségével a külső áruházban, vagy pedig az alkalmazáscsomag az image store.
 
-A Service Fabric alkalmazástípus a fürttel látja el. Erre azért szükség, mielőtt példányosítható bármely új alkalmazások. A telepítési művelet végrehajtható, vagy egy megadott a relativePathInImageStore, vagy a külső SFPKG URI segítségével alkalmazáscsomagot. Ha – külső-provision be van állítva, ez a parancs vár lemezképtárolóhoz
-
-kiépítéséhez.
+A Service Fabric alkalmazástípus a fürttel látja el. Erre azért szükség, mielőtt példányosítható bármely új alkalmazások. A telepítési művelet végrehajtható, vagy egy megadott a relativePathInImageStore, vagy a külső SFPKG URI segítségével alkalmazáscsomagot. Ha – külső-provision be van állítva, ez a parancs a lemezképtárolóból alkalmazáscsomag látja el.
         
 
 
@@ -293,7 +291,7 @@ A kiépített típusok vagy a Service Fabric-fürt telepítése folyamatban van 
 | --debug                        | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h                      | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o                    | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.               Alapértelmezett: JSON-ná.|
-| --lekérdezés                        | JMESPath lekérdezési karakterlánc. További információt és példákat http://jmespath.org/ talál.|
+| --lekérdezés                        | JMESPath lekérdezési karakterlánc. Lásd: http://jmespath.org/ további információt és példákat.|
 | – részletes                      | Naplózási növelése. Használatát – a teljes hibakeresési naplók hibakeresési.|
 
 ## <a name="sfctl-application-unprovision"></a>sfctl alkalmazás unprovision
@@ -354,7 +352,7 @@ Ellenőrzi a megadott alkalmazás frissítési paramétereit, és elindítja a a
 | --debug                     | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h                   | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o                 | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.            Alapértelmezett: JSON-ná.|
-| --lekérdezés                     | JMESPath lekérdezési karakterlánc. További információt és példákat http://jmespath.org/ talál.|
+| --lekérdezés                     | JMESPath lekérdezési karakterlánc. Lásd: http://jmespath.org/ további információt és példákat.|
 | – részletes                   | Naplózási növelése. Használatát – a teljes hibakeresési naplók hibakeresési.|
 
 ## <a name="sfctl-application-upload"></a>sfctl alkalmazás feltöltése

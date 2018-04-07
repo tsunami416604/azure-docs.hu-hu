@@ -1,11 +1,11 @@
 ---
-title: "Fejlesztés és helyileg történő futtatása az Azure functions |} Microsoft Docs"
-description: "Megtudhatja, hogyan kód és a helyi számítógépen az Azure functions tesztelése az Azure Functions futtatása előtt."
+title: Fejlesztés és helyileg történő futtatása az Azure functions |} Microsoft Docs
+description: Megtudhatja, hogyan kód és a helyi számítógépen az Azure functions tesztelése az Azure Functions futtatása előtt.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.service: functions
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 59a15697641dd8e4bdfdb974436d46a34b47ffb5
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 1fe07790bd534cbe18c25cb5fb1e0634f54ac9e2
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Kód és az Azure Functions helyi tesztelése
 
@@ -110,7 +110,7 @@ A projekt nélkül egy helyi Git-tárház létrehozásához használja a `--no-s
 
 Verziójában 2.x, az Azure Functions futtatókörnyezettel, explicit módon regisztrálnia kell a [bővítmények kötés](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/README.md) , amelyekkel az függvény alkalmazásban. 
 
-[!INCLUDE [Full bindings table](../../includes/functions-core-tools-install-extension.md)]
+[!INCLUDE [Register extensions](../../includes/functions-core-tools-install-extension.md)]
 
 További információkért lásd: [Azure Functions eseményindítók és kötések fogalmak](functions-triggers-bindings.md#register-binding-extensions).
 
@@ -215,7 +215,7 @@ func host start
 | **`--nodeDebugPort -n`** | A csomópont hibakereső használandó portot. Alapértelmezett: Launch.json vagy 5858 egy értéket. |
 | **`--debugLevel -d`** | A konzol nyomkövetési szint (kikapcsolt, részletes, információ, figyelmeztetés vagy hiba). Alapértelmezett: adatait.|
 | **`--timeout -t`** | Az időtúllépés másodpercben elindításához a funkciók gazdagép. Alapértelmezett: 20 másodperc.|
-| **`--useHttps`** | Köthető https://localhost:{port} helyett a http://localhost:{port}. Ez a beállítás alapértelmezés szerint létrehoz megbízható tanúsítvány a számítógépen.|
+| **`--useHttps`** | A kötés https://localhost:{port} helyett a http://localhost:{port}. Ez a beállítás alapértelmezés szerint létrehoz megbízható tanúsítvány a számítógépen.|
 | **`--pause-on-error`** | A folyamat leállítása előtt szüneteltetése további adatokat. Akkor hasznos, ha az Azure Functions Core eszközök fókusza az integrált fejlesztési környezeti (IDE).|
 
 A funkciók gazdagép indításakor azt az URL-cím a HTTP-eseményindítókkal aktivált függvényeket kimenete:

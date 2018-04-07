@@ -1,23 +1,23 @@
 ---
-title: "Azure Cosmos DB követő 20 tippek |} Microsoft Docs"
-description: "Egy helyen található összes Simona Cotin 20 nap Azure Cosmos DB tippek sor tippek."
+title: Azure Cosmos DB követő 20 tippek |} Microsoft Docs
+description: Egy helyen található összes Simona Cotin 20 nap Azure Cosmos DB tippek sor tippek.
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-documentationcenter: 
+author: SnehaGunda
+manager: kfile
+documentationcenter: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2017
-ms.author: mimig
+ms.author: sngun
 ms.custom: cda
-ms.openlocfilehash: 976be65fc4668a911bfa93ef87a7f14686a79f31
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 79ef4a8c22143ed77535e1190b5f7e8eb5d17bb0
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="20-days-of-azure-cosmos-db-tips"></a>Azure Cosmos DB tippek 20 nap
 
@@ -29,7 +29,7 @@ Látogasson el ezt a lapot egy új tipp az 5. szeptember - szeptember 29 naponta
 
 ## <a name="tip-1-what-is-cosmos"></a>1. tipp: Mi az a Cosmos?
 
-Mi az a #cosmosdb? A legjobb NoSQL-adatbázis, amely nem használja! [https://aka.MS/ubw007](https://aka.ms/ubw007)
+Mi az a #cosmosdb? A legjobb NoSQL-adatbázis, amely nem használja! [https://aka.ms/ubw007](https://aka.ms/ubw007)
 
 > [!VIDEO https://www.youtube.com/embed/cGxO995iakM] 
 
@@ -37,7 +37,7 @@ Mi az a #cosmosdb? A legjobb NoSQL-adatbázis, amely nem használja! [https://ak
 
 ## <a name="tip-2-seeing-is-believing"></a>2. tipp: Jelent meg, akkor feltételezhető
 
-Feltételezhető a jelent meg. Az Azure portálon #cosmosDB visual illesztő segítségével vizsgálja meg, az adatbázis lekérdezése [https://aka.ms/jprf75](https://aka.ms/jprf75)
+Feltételezhető a jelent meg. Az Azure portálon #cosmosDB visual illesztő segítségével vizsgálja meg, az adatbázis lekérdezése  [https://aka.ms/jprf75](https://aka.ms/jprf75)
 
 > [!VIDEO https://www.youtube.com/embed/4aWL5p_SJDE]
 
@@ -45,7 +45,7 @@ Feltételezhető a jelent meg. Az Azure portálon #cosmosDB visual illesztő seg
 
 ## <a name="tip-3-replicate-data-globally"></a>3. tipp: Globálisan replikálja az adatokat
 
-3. tipp: Az alkalmazásnak, hogy a világon bárhol gyors blazing van szüksége? Az adatok #cosmosDB replikálása dead könnyen! [https://aka.MS/nimw2g](https://aka.ms/nimw2g)  
+3. tipp: Az alkalmazásnak, hogy a világon bárhol gyors blazing van szüksége? Az adatok #cosmosDB replikálása dead könnyen! [https://aka.ms/nimw2g](https://aka.ms/nimw2g)  
 
 > [!VIDEO https://www.youtube.com/embed/i22R7I_Rgdg]
 
@@ -53,7 +53,7 @@ Feltételezhető a jelent meg. Az Azure portálon #cosmosDB visual illesztő seg
 
 ## <a name="tip-4-gremlin-graph-support"></a>4. tipp: Gremlin graph-támogatás
 
-4. tipp: Az a probléma megoldásáig gremlins vannak? #cosmosdb túl loves Gremlin! Megtekintheti, lekérdezéséhez és szerkesztése a diagram az Azure portál használatával DB [https://aka.ms/tfmi37](https://aka.ms/tfmi37)  
+4. tipp: Az a probléma megoldásáig gremlins vannak? #cosmosdb túl loves Gremlin! Megtekintheti, lekérdezéséhez és a diagram az Azure portál használatával DB szerkesztése [https://aka.ms/tfmi37](https://aka.ms/tfmi37)  
 
 > [!VIDEO https://www.youtube.com/embed/oPUTZbiXffk]
 
@@ -61,7 +61,7 @@ Feltételezhető a jelent meg. Az Azure portálon #cosmosDB visual illesztő seg
 
 ## <a name="tip-5-try-azure-cosmos-db-free"></a>5. tipp: Próbálja Azure Cosmos DB szabad
 
-5. tipp: Azure #CosmosDB szabad próbálja szeretné? Nincs előfizetés vagy szükség hitelkártyára, Ugrás [https://aka.ms/d81vxr](https://aka.ms/d81vxr) és elkezdésére!  
+5. tipp: Azure #CosmosDB szabad próbálja szeretné? Nincs előfizetés vagy szükség hitelkártyára, Ugrás [ https://aka.ms/d81vxr ](https://aka.ms/d81vxr) és elkezdésére!  
 
 > [!VIDEO https://www.youtube.com/embed/Vf8iZCmoG2E]
 
@@ -69,7 +69,7 @@ Feltételezhető a jelent meg. Az Azure portálon #cosmosDB visual illesztő seg
 
 ## <a name="tip-6-migrate-your-mean-app"></a>6. tipp: Az átlagos alkalmazás áttelepítése
 
-6. tipp: Az a dolog jelenti? Megtudhatja, hogyan könnyen az alkalmazás át Azure #cosmosDB! https://aka.MS/gfh6i5 teljes videó: https://aka.ms/aoojih  
+6. tipp: Az a dolog jelenti? Megtudhatja, hogyan könnyen az alkalmazás át Azure #cosmosDB! https://aka.ms/gfh6i5 Teljes videó:  https://aka.ms/aoojih  
 
 > [!VIDEO https://www.youtube.com/embed/vlAUxc3d2ak]
 
@@ -77,7 +77,7 @@ Feltételezhető a jelent meg. Az Azure portálon #cosmosDB visual illesztő seg
 
 ## <a name="tip-8-build-a-nodejs-app-by-using-sql-api"></a>8 tipp: Az SQL API-val egy Node.js-alkalmazást hozhat létre
 
-8. tipp: Build a @nodejs alkalmazás SQL API-t és az Azure #CosmosDB használatával. További docs oldalon [https://aka.ms/Bd77a8](https://aka.ms/Bd77a8)  
+8. tipp: Build a @nodejs alkalmazás SQL API-t és az Azure #CosmosDB használatával. További docs az oldalon [https://aka.ms/Bd77a8](https://aka.ms/Bd77a8)  
 
 > [!VIDEO https://www.youtube.com/embed/_gd9ZY-rHtM]
 
@@ -85,7 +85,7 @@ Feltételezhető a jelent meg. Az Azure portálon #cosmosDB visual illesztő seg
 
 ## <a name="tip-9-query-using-mongodb-in-nodejs"></a>9. tipp: Lekérdezés MongoDB használatával a node.js
 
-9. tipp: A MongoDB API használata a node.js Azure #CosmosDB lekérdezése. További docs oldalon [https://aka.ms/Dert0r](https://aka.ms/Dert0r)  
+9. tipp: A MongoDB API használata a node.js Azure #CosmosDB lekérdezése. További docs az oldalon [https://aka.ms/Dert0r](https://aka.ms/Dert0r)  
 
 ![A lekérdezés a MongoDB-vel](./media/20-days-of-tips/cosmos-db-tip-9-mongodb-query.png)
 
@@ -93,7 +93,7 @@ Feltételezhető a jelent meg. Az Azure portálon #cosmosDB visual illesztő seg
 
 ## <a name="tip-10-copy-mongodb-data-using-studio-3t"></a>10. tipp: Másolás MongoDB adatok Studio 3T használatával
 
-10. tipp: Útmutató: a MongoDB-adatok másolása az Azure Cosmos Adatbázishoz Studio 3T használatával (MongoChef). A dokumentumok [https://aka.ms/apzhww](https://aka.ms/apzhww)
+10. tipp: Útmutató: a MongoDB-adatok másolása az Azure Cosmos Adatbázishoz Studio 3T használatával (MongoChef). Dokumentumok: [https://aka.ms/apzhww](https://aka.ms/apzhww)
 
 > [!VIDEO https://www.youtube.com/embed/Qa4YpShYEcI]
 
@@ -109,7 +109,7 @@ A cikk: [reagálni és Azure Cosmos DB a MongoDB-alkalmazás létrehozása](http
 
 ## <a name="tip-12-go-serverless"></a>A tipp 12: Kiszolgáló nélküli nyissa meg
 
-12. tipp: Nyissa meg az Azure #CosmosDB kiszolgáló nélküli és @AzureFunctions! A dokumentumok teljes [https://aka.ms/Pmic1j](https://aka.ms/Pmic1j)
+12. tipp: Nyissa meg az Azure #CosmosDB kiszolgáló nélküli és @AzureFunctions! A teljes docs [https://aka.ms/Pmic1j](https://aka.ms/Pmic1j)
 
 > [!VIDEO https://www.youtube.com/embed/U--3mfisNCs]
 
@@ -125,7 +125,7 @@ A cikk: [szögben kifejezett és Azure Cosmos DB a MongoDB-alkalmazás létrehoz
 
 ## <a name="tip-14-use-cases"></a>14. tipp: Használati esetekben
 
-14. tipp: Fejezetét kapcsolatos Azure #CosmosDB gyakori alkalmazási esetei? Tekintse meg a következő [https://aka.ms/Ihpf00](https://aka.ms/Ihpf00) tájékozódhat az IoT, játékokban és közösségi alkalmazások
+14. tipp: Fejezetét kapcsolatos Azure #CosmosDB gyakori alkalmazási esetei? Tekintse meg a következő [ https://aka.ms/Ihpf00 ](https://aka.ms/Ihpf00) tájékozódhat az IoT, játékokban és közösségi alkalmazások
 
 A cikk: [közös Azure Cosmos DB használati esetekben](https://aka.ms/Ihpf00)
 
@@ -151,7 +151,7 @@ A cikk: [közös Azure Cosmos DB használati esetekben](https://aka.ms/Ihpf00)
 
 ## <a name="tip-17-using-mongoose-discriminators"></a>17 tipp: Mongoose segítségével discriminators
 
-17. tipp: Költség optimalizálása Mongoose discriminators használatával több entitás egyetlen #CosmosDB gyűjtemény használatával [https://aka.ms/M488jm](https://aka.ms/M488jm)
+17. tipp: Optimalizálása költség Mongoose discriminators használatával több entitás egyetlen #CosmosDB gyűjtemény használatával [https://aka.ms/M488jm](https://aka.ms/M488jm)
 
 Blog: [Mongoose Discriminators használatával több entitás által Antal csú egyetlen Cosmos DB gyűjtemény használatával](https://aka.ms/M488jm)
 
@@ -159,7 +159,7 @@ Blog: [Mongoose Discriminators használatával több entitás által Antal csú 
 
 ## <a name="tip-18-request-units"></a>18. tipp: Kérelemegység
 
-18. tipp: Ismertetése kérelem egységek (RU) és az Azure #CosmosDB konfigurálásuk módját. Dokumentumok: a további [https://aka.ms/Kt2nbn](https://aka.ms/Kt2nbn) 
+18. tipp: Ismertetése kérelem egységek (RU) és az Azure #CosmosDB konfigurálásuk módját. További on docs: [https://aka.ms/Kt2nbn](https://aka.ms/Kt2nbn) 
 
 A cikk: [Azure Cosmos DB egység kérése](https://aka.ms/Kt2nbn)
 
@@ -167,7 +167,7 @@ A cikk: [Azure Cosmos DB egység kérése](https://aka.ms/Kt2nbn)
 
 ## <a name="tip-19-partition-partition-partition"></a>19 tipp: partíció! Partíció! Partíció! 
 
-19 tipp: partíció! Partíció! Partíció! A miért és hogyan az Azure #CosmosDB. A dokumentumok [https://aka.ms/Ts5pon](https://aka.ms/Ts5pon)  
+19 tipp: partíció! Partíció! Partíció! A miért és hogyan az Azure #CosmosDB. Dokumentumok: [https://aka.ms/Ts5pon](https://aka.ms/Ts5pon)  
 
 > [!VIDEO https://www.youtube.com/embed/I_tVk3hKvSI]
 
@@ -175,13 +175,13 @@ A cikk: [Azure Cosmos DB egység kérése](https://aka.ms/Kt2nbn)
 
 ## <a name="tip-20-cheatsheet"></a>20 tipp: puska
 
-20. tipp: Mindenki loves egy jó régi segédletét. Az Azure #CosmosDB van egy túl. Tekintse meg a [https://aka.ms/Nt01nl](https://aka.ms/Nt01nl)
+20. tipp: Mindenki loves egy jó régi segédletét. Az Azure #CosmosDB van egy túl. Tekintse meg: [https://aka.ms/Nt01nl](https://aka.ms/Nt01nl)
 
 – Áttekintés: [Azure Cosmos DB: SQL-lekérdezés Adatlap PDF](https://aka.ms/Nt01nl)
 
 [![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/913793292474732544)[![Könyvtármegosztáson található a LinkedIn   ](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6319559027986698241)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További tudnivalók Azure Cosmos DB olvasásával [Üdvözli az Azure Cosmos DB](introduction.md) és [műszaki áttekintése Azure Cosmos DB](https://azure.microsoft.com/blog/a-technical-overview-of-azure-cosmos-db/).
 

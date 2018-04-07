@@ -1,6 +1,6 @@
 ---
-title: "Vegyes egyesítéses biztonsági beállításai |} Microsoft Docs"
-description: "Állítson be x409 tanúsítványok titkosítási a vegyes/egyesítés szolgáltatással a rugalmas méretezést."
+title: Vegyes egyesítéses biztonsági beállításai |} Microsoft Docs
+description: Állítson be x409 tanúsítványok titkosítási a vegyes/egyesítés szolgáltatással a rugalmas méretezést.
 metakeywords: Elastic Database certificates security
 services: sql-database
 manager: craigg
@@ -8,13 +8,13 @@ author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 05/27/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: c07ba1e74daace546bae4f4209842312136914a3
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 694c1755b5263d48fdfa5cad3c0b13e42bfb8522
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="split-merge-security-configuration"></a>Vegyes egyesítéses biztonsági konfiguráció
 A felosztott/egyesítés szolgáltatással biztonsági megfelelően be kell állítania. A szolgáltatás a Microsoft Azure SQL Database a rugalmas bővítést szolgáltatás részét képezi. További információkért lásd: [rugalmas méretezési felosztása és egyesítése szolgáltatás oktatóanyag](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
@@ -111,7 +111,7 @@ Az alapértelmezett konfiguráció összes megtagadja végpontjához. Ez az ajá
 Az alapértelmezett konfiguráció lehetővé teszi, hogy a HTTPS-végpont az elérésére. Ezzel a beállítással korlátozható tovább.
 
 ### <a name="changing-the-configuration"></a>A konfiguráció módosítása
-A csoport vonatkozó hozzáférés-vezérlési szabályok és a végpont vannak konfigurálva a  **<EndpointAcls>**  szakasz a **szolgáltatás konfigurációs fájlja**.
+A csoport vonatkozó hozzáférés-vezérlési szabályok és a végpont vannak konfigurálva a **<EndpointAcls>** szakasz a **szolgáltatás konfigurációs fájlja**.
 
     <EndpointAcls>
       <EndpointAcl role="SplitMergeWeb" endPoint="HttpIn" accessControl="DenyAll" />
@@ -429,7 +429,7 @@ A Tanúsítványimportáló varázslóban:
 9. Kattintson a **OK** összes párbeszédpanel windows rendszeren.
 
 ## <a name="upload-certificate"></a>Tanúsítvány feltöltése
-Az a [Azure-portálon](https://portal.azure.com/)
+Az [Azure Portalon](https://portal.azure.com/)
 
 1. Válassza ki **a felhőalapú szolgáltatások**.
 2. Válassza ki a felhőszolgáltatást.

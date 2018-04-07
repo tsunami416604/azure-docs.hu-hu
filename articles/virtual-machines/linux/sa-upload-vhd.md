@@ -1,10 +1,10 @@
 ---
-title: "Töltse fel az Azure CLI 2.0 egyéni Linux lemezzel |} Microsoft Docs"
-description: "Hozzon létre, és töltse fel a virtuális merevlemez (VHD) a Resource Manager üzembe helyezési modellel és az Azure CLI 2.0 használatával"
+title: Töltse fel az Azure CLI 2.0 egyéni Linux lemezzel |} Microsoft Docs
+description: Hozzon létre, és töltse fel a virtuális merevlemez (VHD) a Resource Manager üzembe helyezési modellel és az Azure CLI 2.0 használatával
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: a8c7818f-eb65-409e-aa91-ce5ae975c564
@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 258c2a5bbce1f15c78690cb01dc9b66fef4bb8f5
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 5c5c9894127386a05da9825435cfe5ca07b01542
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli-20"></a>Töltse fel, és a Linux virtuális gép létrehozása az Azure CLI 2.0 egyéni lemezről
 Ez a cikk bemutatja, hogyan egy virtuális merevlemez (VHD) feltöltése az Azure CLI 2.0 Azure storage-fiók és a Linux virtuális gépek létrehozása a egyéni lemezt. Az [Azure CLI 1.0-s](upload-vhd-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verziójával is elvégezheti ezeket a lépéseket. Ez a funkció lehetővé teszi telepítése és konfigurálása a Linux distro az igényeinek megfelelően, valamint, hogy a virtuális merevlemez használatával gyorsan hozzon létre az Azure virtuális gépek (VM).
@@ -112,7 +112,7 @@ Azure támogatja a különböző Linux terjesztésekről (lásd: [támogatott Di
 * **[Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Egyéb - nem támogatott Disztribúciókkal](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 
-Lásd még: a  **[Linux telepítési jegyzetek](create-upload-generic.md#general-linux-installation-notes)**  kapcsolatos további általános tippek Linux lemezképek előkészítése az Azure-bA.
+Lásd még: a **[Linux telepítési jegyzetek](create-upload-generic.md#general-linux-installation-notes)** kapcsolatos további általános tippek Linux lemezképek előkészítése az Azure-bA.
 
 > [!NOTE]
 > A [Azure platformon SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) csak akkor, ha a konfigurációs részleteket a támogatott verziók használt egyik a hitelesített terjesztéseket Linuxot futtató virtuális gépek érvényes [az Azure által támogatott Linux Azokat a terjesztéseket](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

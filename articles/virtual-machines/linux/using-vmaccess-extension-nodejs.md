@@ -1,11 +1,11 @@
 ---
-title: "Alaphelyzetbe állítja a hozzáférés az Azure Linux virtuális gépeken futó a VMAccess bővítmény használatával |} Microsoft Docs"
-description: "Alaphelyzetbe állítja a hozzáférés az Azure Linux virtuális gépeken futó a VMAccess bővítmény használatával."
+title: Alaphelyzetbe állítja a hozzáférés az Azure Linux virtuális gépeken futó a VMAccess bővítmény használatával |} Microsoft Docs
+description: Alaphelyzetbe állítja a hozzáférés az Azure Linux virtuális gépeken futó a VMAccess bővítmény használatával.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: vlivech
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 261a9646-1f93-407e-951e-0be7226b3064
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2016
 ms.author: v-livech
-ms.openlocfilehash: 278bf1785aac71068ab94cf9916af69a204c44be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5fb130fc2e448f3cbc648991ea6bebd5795bc78b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="manage-users-ssh-and-check-or-repair-disks-on-azure-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-10"></a>Kezelheti a felhasználókat, az SSH és az ellenőrzése vagy javítása Azure virtuális gépeken Linux a VMAccess bővítmény használata az Azure CLI 1.0 lemezeket
 Ez a cikk bemutatja, hogyan használható az Azure-VMAcesss bővítmény ellenőrizze vagy javítsa ki a lemezt, alaphelyzetbe állítja a felhasználói hozzáférés, a felhasználói fiókok kezelése vagy a Linux SSHD konfigurációjának visszaállítása. A cikkben foglaltak végrehajtásához szükség van:
@@ -262,7 +262,7 @@ azure vm extension set \
   --private-config-path reset_sshd.json
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Frissítése Linux Azure VMAccess bővítmény használatával a módosításokat a futó Linux virtuális gép módszerrel.  Eszközök, például a felhő inicializálás és az Azure-sablonok segítségével módosíthatja a Linux virtuális gép rendszerindító.
 
 [Virtuálisgép-bővítmények és szolgáltatásokkal kapcsolatban](../windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

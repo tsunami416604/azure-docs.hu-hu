@@ -1,19 +1,19 @@
 ---
-title: "Feltételes hozzáférés – az Azure SQL adatbázishoz és Adatraktárhoz |} Microsoft Doc"
-description: "Megtudhatja, hogyan konfigurálja a feltételes hozzáférést az Azure SQL adatbázishoz és Adatraktárhoz."
+title: Feltételes hozzáférés – az Azure SQL adatbázishoz és Adatraktárhoz |} Microsoft Doc
+description: Megtudhatja, hogyan konfigurálja a feltételes hozzáférést az Azure SQL adatbázishoz és Adatraktárhoz.
 services: sql-database
 author: GithubMirek
 manager: johammer
 ms.custom: security
 ms.service: sql-database
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 04/01/2018
 ms.author: mireks
-ms.openlocfilehash: f32928805275c9d797c8cb15bb731fe172d5903f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f7f34bc7a28cdf3a23af54785002b12fba4baf1d
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Feltételes hozzáférés (MFA) az Azure SQL adatbázishoz és Adatraktárhoz  
 

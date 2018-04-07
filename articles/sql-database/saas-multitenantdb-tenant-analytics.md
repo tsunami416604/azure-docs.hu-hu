@@ -1,20 +1,20 @@
 ---
-title: "Azure SQL-adatbázisok analytics lekérdezéseinek futtatásához |} Microsoft Docs"
-description: "Több-bérlős elemzési lekérdezések kibontani a több Azure SQL Database adatbázist adatokkal."
-keywords: "SQL-oktatóanyag"
+title: Azure SQL-adatbázisok analytics lekérdezéseinek futtatásához |} Microsoft Docs
+description: Több-bérlős elemzési lekérdezések kibontani a több Azure SQL Database adatbázist adatokkal.
+keywords: SQL-oktatóanyag
 services: sql-database
 author: stevestein
 manager: jhubbard
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 04/01/2018
 ms.author: anjangsh; billgib; genemi
-ms.openlocfilehash: 7f04ca4bf324586e0cb34effa324b1703d92d065
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: fab5d893697a961ef588b0b26008fb27f92a5a18
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="cross-tenant-analytics-using-extracted-data"></a>Több-bérlős analytics kibontott adatok használata
 
@@ -91,7 +91,7 @@ A következő lépésekben az analytics tárolóba, melynek neve telepít **tena
     - SQL-adatbázis oszloptárindexekhez használatához állítsa **$DemoScenario** = **3**  
 3. Nyomja le az **F5** a bemutató-parancsfájl futtatásához (meghív a *telepítés-TenantAnalytics<XX>.ps1* parancsfájl) amely hoz létre a bérlői analytics tároló. 
 
-Most, hogy az alkalmazás telepítve, és feltölti azt a bérlő érdekes adatokkal, használjon [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) csatlakozni **tenants1-mt -\<felhasználói\>**  és **katalógus-mt -\<felhasználói\>**  bejelentkezési kiszolgálók = *fejlesztői*, jelszó =  *P@ssword1* .
+Most, hogy az alkalmazás telepítve, és feltölti azt a bérlő érdekes adatokkal, használjon [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) csatlakozni **tenants1-mt -\<felhasználói\>**  és **katalógus-mt -\<felhasználói\>**  bejelentkezési kiszolgálók = *fejlesztői*, jelszó = *P@ssword1*.
 
 ![architectureOverView](media/saas-multitenantdb-tenant-analytics/ssmsSignIn.png)
 
@@ -173,7 +173,7 @@ A Power bi-ba, és importálhatja a korábban létrehozott nézeteket, tegye a k
 
     ![powerBISignIn](media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
 
-5. Válassza ki **adatbázis** a bal oldali ablaktáblán, majd adjon meg felhasználónevet = *fejlesztői*, és írja be a jelszó =  *P@ssword1* . Kattintson a **Connect** (Csatlakozás) gombra.  
+5. Válassza ki **adatbázis** a bal oldali ablaktáblán, majd adjon meg felhasználónevet = *fejlesztői*, és írja be a jelszó = *P@ssword1*. Kattintson a **Connect** (Csatlakozás) gombra.  
 
     ![DatabaseSignIn](media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
 

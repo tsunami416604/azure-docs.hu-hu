@@ -1,11 +1,11 @@
 ---
-title: "Optimalizálhatja a Linux virtuális Gépet az Azure-on |} Microsoft Docs"
-description: "Ismerje meg, győződjön meg arról, hogy meg van adva a Linux virtuális Gépet az optimális teljesítmény érdekében az Azure Optimalizálási tippek"
-keywords: "Linux virtuális gépek, virtuális gép linux ubuntu virtuális gép"
+title: Optimalizálhatja a Linux virtuális Gépet az Azure-on |} Microsoft Docs
+description: Ismerje meg, győződjön meg arról, hogy meg van adva a Linux virtuális Gépet az optimális teljesítmény érdekében az Azure Optimalizálási tippek
+keywords: Linux virtuális gépek, virtuális gép linux ubuntu virtuális gép
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rickstercdn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 8baa30c8-d40e-41ac-93d0-74e96fe18d4c
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
-ms.openlocfilehash: d3ee98253a69580e5ecafb4e117ef93f7c981416
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 5b0d7eb0767bb18cd74c545dc386aa16be487dae
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Linuxos virtuális gép optimalizálása az Azure-ban
 A Linux virtuális gép (VM) létrehozása áll a parancssorból vagy a portálról. Ez az oktatóanyag bemutatja, hogyan annak beállítása, a Microsoft Azure platformon a teljesítmény optimalizálása érdekében. Ez a témakör az Ubuntu Server virtuális gép használja, de is létrehozhat Linux virtuális gép használt [a saját lemezképek sablonként](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
@@ -124,7 +124,7 @@ echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 ```
 
 ## <a name="using-software-raid-to-achieve-higher-iops"></a>Szoftver RAID használatával eléréséhez magasabb I / Ops
-Ha a munkaterhelések magasabb iops-értéket, mint egyetlen lemez biztosíthat igényelnek, több lemezt a szoftver RAID-konfigurációt használni szeretné. Azure már lemez rugalmasság a helyi háló rétegben hajt végre, mert a legmagasabb szintű RAID-0 csíkozást konfigurációról teljesítmény elérése érdekében.  Kiépítése és lemezek létrehozása az Azure környezetben, és csatolja őket a Linux virtuális gép particionálás, formázásával, és a meghajtó csatlakoztatása előtt.  További részleteket a RAID Szoftvertelepítés konfigurálása a Linux virtuális Gépet az azure-ban található a  **[szoftver RAID konfigurálása Linux](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**  dokumentum.
+Ha a munkaterhelések magasabb iops-értéket, mint egyetlen lemez biztosíthat igényelnek, több lemezt a szoftver RAID-konfigurációt használni szeretné. Azure már lemez rugalmasság a helyi háló rétegben hajt végre, mert a legmagasabb szintű RAID-0 csíkozást konfigurációról teljesítmény elérése érdekében.  Kiépítése és lemezek létrehozása az Azure környezetben, és csatolja őket a Linux virtuális gép particionálás, formázásával, és a meghajtó csatlakoztatása előtt.  További részleteket a RAID Szoftvertelepítés konfigurálása a Linux virtuális Gépet az azure-ban található a **[szoftver RAID konfigurálása Linux](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** dokumentum.
 
 ## <a name="next-steps"></a>További lépések
 Ne feledje, hogy minden optimalizálási vitafórum tesztek végrehajtása előtt, és a módosítás a hatás méréséhez minden módosítás után szükség szerint.  Optimalizálás rendkívül részletes folyamat, amely rendelkezik a különböző eredmények a környezetben az egyes számítógépek közötti.  Mi működik egy konfiguráció mások esetében nem használható.

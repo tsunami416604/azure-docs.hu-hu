@@ -1,20 +1,20 @@
 ---
-title: "Mindig titkosítja: SQL-adatbázishoz – az Azure Key Vault |} Microsoft Docs"
-description: "Ez a cikk bemutatja, hogyan bizalmas adatok védelmének SQL-adatbázisban a varázslóval mindig titkosítja az SQL Server Management Studio adatok titkosításával."
-keywords: "adatok titkosítását, a titkosítási kulcs, a felhő titkosítás"
+title: 'Mindig titkosítja: SQL-adatbázishoz – az Azure Key Vault |} Microsoft Docs'
+description: Ez a cikk bemutatja, hogyan bizalmas adatok védelmének SQL-adatbázisban a varázslóval mindig titkosítja az SQL Server Management Studio adatok titkosításával.
+keywords: adatok titkosítását, a titkosítási kulcs, a felhő titkosítás
 services: sql-database
 author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: security
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 3525355a7f997a5dcc54d14f216d0d647aef8407
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ee03ae8edf4402e64f6b671a478a357369e8780a
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-azure-key-vault"></a>Mindig titkosítja: Az SQL-adatbázis bizalmas adatok védelmét, és a titkosítási kulcsok tárolása az Azure Key Vault
 
@@ -89,7 +89,7 @@ Szüksége lesz a kapcsolati karakterlánc az oktatóanyag későbbi részében,
 ## <a name="connect-to-the-database-with-ssms"></a>Kapcsolódás az adatbázishoz SSMS segítségével
 Nyissa meg a szolgáltatáshoz az SSMS, és csatlakozzon a kiszolgálóhoz, az egészségügyi ellátó intézmény adatbázissal.
 
-1. Nyissa meg a szolgáltatáshoz az SSMS. (Ugrás **Connect** > **adatbázismotor** megnyitásához a **kapcsolódás a kiszolgálóhoz** ablakot, ha nem, akkor a megnyitott.)
+1. Nyissa meg az SSMS-t. (Ugrás **Connect** > **adatbázismotor** megnyitásához a **kapcsolódás a kiszolgálóhoz** ablakot, ha nem, akkor a megnyitott.)
 2. Adja meg a kiszolgáló nevét és hitelesítő adatait. Az SQL-adatbázis paneljén található a kiszolgáló nevét, és a kapcsolati karakterláncban korábban kimásolt. Adja meg a teljes kiszolgálónevet, beleértve a *database.windows.net*.
    
     ![Másolja a kapcsolati karakterláncot](./media/sql-database-always-encrypted-azure-key-vault/ssms-connect.png)

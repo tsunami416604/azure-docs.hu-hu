@@ -1,10 +1,10 @@
 ---
-title: "Útmutató a Windows virtuális gép erőforrásához címke az Azure-ban |} Microsoft Docs"
-description: "További tudnivalók az Azure-ban a Resource Manager üzembe helyezési modellel létrehozott Windows virtuális gépek címkézés"
+title: Útmutató a Windows virtuális gép erőforrásához címke az Azure-ban |} Microsoft Docs
+description: További tudnivalók az Azure-ban a Resource Manager üzembe helyezési modellel létrehozott Windows virtuális gépek címkézés
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: mmccrory
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 56d17f45-e4a7-4d84-8022-b40334ae49d2
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
-ms.openlocfilehash: 5f00c4265cea3db02dbb09a7f81be636a3fdd3d1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5044bda855b6ac88eb5784f257686bf8a1838222
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>Útmutató a Windows rendszerű virtuális gép címke az Azure-ban
 Ez a cikk ismerteti a Windows rendszerű virtuális gép címke az Azure-ban a Resource Manager üzembe helyezési modellel keresztül különböző módjai. Címke található a felhasználó által definiált kulcs/érték párok, amely lehet tenni közvetlenül egy erőforrás vagy egy erőforráscsoportot. Azure jelenleg legfeljebb 15 címkék erőforrás pedig erőforráscsoportban. Címkék erőforrás létrehozása idején helyezni vagy hozzáadni egy meglévő erőforrást. Vegye figyelembe, hogy csak a Resource Manager üzembe helyezési modellel létrehozott erőforrások címkék használhatók. Ha szeretne egy Linux virtuális gép címkét, lásd: [hogyan Linux virtuális gépek címke az Azure-ban](../linux/tag.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -63,7 +63,7 @@ A második parancs megjeleníti az adott változó címkék.
         Value        Production
         Name        Environment
 
-A harmadik parancs hozzáadja egy további címkét a *$tags* változó. Vegye figyelembe a használatát a  **+=**  fűzhető hozzá az új kulcs/érték pár, hogy a *$tags* listája.
+A harmadik parancs hozzáadja egy további címkét a *$tags* változó. Vegye figyelembe a használatát a **+=** fűzhető hozzá az új kulcs/érték pár, hogy a *$tags* listája.
 
         PS C:\> $tags += @{Name="Location";Value="MyLocation"}
 
@@ -92,7 +92,7 @@ A PowerShell segítségével címkézés kapcsolatos további tudnivalókért te
 
 [!INCLUDE [virtual-machines-common-tag-usage](../../../includes/virtual-machines-common-tag-usage.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Az Azure-erőforrások címkézés kapcsolatos további információkért lásd: [Azure Resource Manager áttekintése] [ Azure Resource Manager Overview] és [címkék használata az Azure-erőforrások rendszerezéséhez][Using Tags to organize your Azure Resources].
 * Hogyan címkék segíthetnek az Azure-erőforrások kezeléséhez, olvassa el [ismertetése a Azure számlázási] [ Understanding your Azure Bill] és [betekintést nyerhet a Microsoft Azure erőforrás-felhasználás][Gain insights into your Microsoft Azure resource consumption].
 

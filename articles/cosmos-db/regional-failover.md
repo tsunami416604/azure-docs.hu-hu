@@ -4,7 +4,7 @@ description: Tudnivalók Azure Cosmos DB hogyan manuális és automatikus felada
 services: cosmos-db
 documentationcenter: ''
 author: arramac
-manager: jhubbard
+manager: kfile
 editor: ''
 ms.assetid: 446e2580-ff49-4485-8e53-ae34e08d997f
 ms.service: cosmos-db
@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5a4bdc49c5ab36a5026095b5d7b6f9856b020e1b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 4a221a0d4f9ef6b6b32ed9b684939b9f277e2084
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="automatic-regional-failover-for-business-continuity-in-azure-cosmos-db"></a>Az üzletmenet folytonossága érdekében az Azure Cosmos Adatbázisba automatikus regionális feladatátvétel
 Azure Cosmos DB egyszerűbbé teszi a globális adatok terjesztési felajánlásával teljes körűen felügyelt, [több területi adatbázis fiókok](distribute-data-globally.md) biztosító egyértelmű mellékhatásokkal konzisztencia, a rendelkezésre állás és a teljesítmény, az összes megfelelő garanciák között. Cosmos DB fiókok kínálnak a magas rendelkezésre állású, egyetlen számjegy ms késések, [jól meghatározott konzisztenciaszintek](consistency-levels.md), többhelyű API-khoz transzparens regionális feladatátvétel és rugalmasan méretezhető átviteli sebesség és tárterület világszerte képességét. 

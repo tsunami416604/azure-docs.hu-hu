@@ -1,12 +1,12 @@
 ---
-title: "Azure virtuális gépek meghatározott RDP hibaüzenetek |} Microsoft Docs"
-description: "Megérteni a vonatkozó hibaüzeneteket, amelyek jelenhet meg tett kísérlet során használja Windows virtuális gépek távoli asztali kapcsolatot az Azure-ban"
-keywords: "Távoli asztali hiba, a távoli asztali kapcsolat hiba, nem lehet csatlakozni a virtuális gép, távoli asztal – hibaelhárítás"
+title: Azure virtuális gépek meghatározott RDP hibaüzenetek |} Microsoft Docs
+description: Megérteni a vonatkozó hibaüzeneteket, amelyek jelenhet meg tett kísérlet során használja Windows virtuális gépek távoli asztali kapcsolatot az Azure-ban
+keywords: Távoli asztali hiba, a távoli asztali kapcsolat hiba, nem lehet csatlakozni a virtuális gép, távoli asztal – hibaelhárítás
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: genlin
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: 5feb1d64-ee6f-4907-949a-a7cffcbc6153
 ms.service: virtual-machines-windows
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 199f8c62b7aa3310bebd33c88edf57ea3bce804b
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 4d13d32e0269be3715a18484157519e1a0556ade
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>A Windows Azure-ban az adott RDP hibaüzenetek hibaelhárítása
 Egy adott hibaüzenet jelenhet meg, az Azure-ban a távoli asztali kapcsolatot egy Windows rendszerű virtuális gép (VM) használatakor. Ez a cikk részletesen néhány, a hibát, és azok megoldását hibaelhárítási Gyakori hibaüzenetek. Ha csatlakozni a virtuális gép RDP Funkciót használnak a do azonban nem egy adott hibaüzenetet kapja, tekintse meg a [hibaelhárítási útmutatója a távoli asztal](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

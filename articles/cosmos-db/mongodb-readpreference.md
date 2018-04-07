@@ -1,25 +1,24 @@
 ---
-title: "MongoDB olvasható beállítás használata az Azure Cosmos DB MongoDB API |} Microsoft Docs"
-description: "Útmutató: Azure Cosmos DB MongoDB API-val MongoDB olvasási preferenciát kell használnia"
+title: MongoDB olvasható beállítás használata az Azure Cosmos DB MongoDB API |} Microsoft Docs
+description: 'Útmutató: Azure Cosmos DB MongoDB API-val MongoDB olvasási preferenciát kell használnia'
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: vidhoonv
-manager: jhubbard
-editor: 
-ms.assetid: 
+manager: kfile
+ms.assetid: ''
 ms.service: cosmos-db
-ms.custom: 
-ms.workload: 
+ms.custom: ''
+ms.workload: ''
 ms.tgt_pltfrm: na
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: viviswan
-ms.openlocfilehash: b28285695f52d6dbcc33d9fb0efe06b43cdf1cab
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: cc9f22bc5e7b54ed03fbf83b58dda0aff0114737
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-globally-distribute-reads-using-read-preference-with-the-azure-cosmos-db-mongodb-api"></a>Globálisan terjesztése beolvassa olvasható beállítás használata az Azure Cosmos DB MongoDB API 
 
@@ -156,4 +155,4 @@ Nem fog továbbra is használhatják az alkalmazást, ha törli a cikkben a köv
 
 * [MongoDB adatok importálása az Azure Cosmos DB-be](mongodb-migrate.md)
 * [Globálisan replikált Azure Cosmos DB fiók beállítása és használatához a MongoDB API](tutorial-global-distribution-mongodb.md)
-* [Helyileg emulátorral fejlesztése](local-emulator.md)
+* [Helyi fejlesztés az emulátorral](local-emulator.md)

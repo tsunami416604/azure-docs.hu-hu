@@ -1,24 +1,19 @@
 ---
-title: A Stream Analytics lekérdezések beállítása |} Microsoft Docs
-description: Riasztások ismertetése a Stream Analytics
-keywords: Riasztások beállítása
+title: Figyelési értesítések az Azure Stream Analytics-feladatok beállítása
+description: A cikkből megtudhatja, hogyan használható az Azure-portálon figyelése és Azure Stream Analytics-feladatok riasztásainak beállítása.
 services: stream-analytics
-documentationcenter: ''
 author: jseb225
-manager: ryanw
-ms.assetid: 9952e2cf-b335-4a5c-8f45-8d3e1eda2e20
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 06/26/2017
 ms.author: jeanb
-ms.openlocfilehash: b88d7e82ffcd2fab1845faf92f6d7a53b72cb54d
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 06/26/2017
+ms.openlocfilehash: 2498c0960ef8fd50064e40428f87d106abf10ecd
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics-feladatok beállítása
 ## <a name="introduction-monitor-page"></a>Bemutató: Figyelő lapja
@@ -48,8 +43,8 @@ Szabályok mérőszámokat a portálon keresztül is beállítható, vagy konfig
 Riasztások konfigurálása az Azure-portálon a további részletekért lásd: [riasztási értesítéseket](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).  
 
 
-## <a name="get-help"></a>Segítség kérése
-További támogatásért keresse fel az [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+## <a name="get-help"></a>Segítségkérés
+További támogatásért keresse fel az [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>További lépések
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)

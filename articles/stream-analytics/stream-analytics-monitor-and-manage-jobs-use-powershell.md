@@ -1,24 +1,19 @@
 ---
-title: Figyelheti és kezelheti a Stream Analytics-feladatok a PowerShell-lel |} Microsoft Docs
-description: Útmutató az Azure PowerShell és a parancsmagok segítségével figyelheti és kezelheti a Stream Analytics-feladatok.
-keywords: az Azure powershell, az azure powershell-parancsmagok, a powershell-paranccsal, powershell-parancsprogramok
+title: Megfigyelés és kezelés Azure Stream Analytics-feladatok PowerShell használatával
+description: Ez a cikk ismerteti az Azure PowerShell és a parancsmagok használata figyelésére és Azure Stream Analytics-feladatok kezelésére.
 services: stream-analytics
-documentationcenter: ''
 author: jseb225
-manager: ryanw
-ms.assetid: 514f454e-d18c-4081-8304-ab48577e15e8
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: 1dcb6f8fe9f2f26ea0bd6970134b0bec67a50aa5
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/28/2017
+ms.openlocfilehash: ed47141c46259007227ed391c1e114932153de38
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Figyelheti és kezelheti a Stream Analytics-feladatok Azure PowerShell-parancsmagokkal
 Megtudhatja, hogyan figyelheti és kezelheti a Stream Analytics erőforrásokat az Azure PowerShell-parancsmagok és a powershell-parancsprogramokról alapvető Stream Analytics-feladatok végrehajtása.
@@ -449,7 +444,7 @@ Azure PowerShell 1.0:
 A PowerShell parancsot tesztek StreamingJob a kimenetet a kimeneti létesített kapcsolat állapotát.  
 
 ## <a name="get-support"></a>Támogatás kérése
-Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics). 
+Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics). 
 
 ## <a name="next-steps"></a>További lépések
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)

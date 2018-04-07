@@ -1,12 +1,11 @@
 ---
-title: "Csatlakozás az Apache Spark on Azure Cosmos DB |} Microsoft Docs"
-description: "Ez az oktatóanyag segítségével további információkhoz az Azure Cosmos DB Spark-összekötő, amely lehetővé teszi a kapcsolódást az Apache Spark on Azure Cosmos DB elosztott összesítésekkel és adatokkal sciences végre a több-bérlős globálisan elosztott készült, a felhő Microsoft adatbázisrendszer."
+title: Csatlakozás az Apache Spark on Azure Cosmos DB |} Microsoft Docs
+description: Ez az oktatóanyag segítségével további információkhoz az Azure Cosmos DB Spark-összekötő, amely lehetővé teszi a kapcsolódást az Apache Spark on Azure Cosmos DB elosztott összesítésekkel és adatokkal sciences végre a több-bérlős globálisan elosztott készült, a felhő Microsoft adatbázisrendszer.
 keywords: az Apache Spark on
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: dennyglee
-manager: jhubbard
-editor: 
+manager: kfile
 ms.assetid: c4f46007-2606-4273-ab16-29d0e15c0736
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2018
 ms.author: denlee
-ms.openlocfilehash: 4ba8a53f2018727cc4fa225b2d4ce14d9f1d7467
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: e93148a8870a40dbe5d89a2364497c44096eef7c
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-the-spark-to-azure-cosmos-db-connector"></a>A Spark a valós idejű big data elemzések érdekében, és Azure Cosmos DB-összekötő
 
@@ -56,7 +55,7 @@ Hivatalos támogatott verziók:
 |---------|-------|
 |Apache Spark|2.0.2, 2.1.0, 2.2.0|
 | Scala| 2.10, 2.11|
-| Az Azure Cosmos DB SQL Java SDK | 1.14.0, 1.15.0 |
+| Azure Cosmos DB SQL Java SDK | 1.14.0, 1.15.0 |
 
 Ez a cikk segít néhány egyszerű példák futtatása Python (a pyDocumentDB) keresztül és a Scala-felületek használatával.
 

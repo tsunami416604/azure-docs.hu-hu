@@ -1,6 +1,6 @@
 ---
-title: "A Microsoft Azure virtuális Datacenter: A hálózati perspektíva |} Microsoft Docs"
-description: "Ismerje meg, hogyan hozhat létre a virtuális adatközpont az Azure-ban"
+title: 'A Microsoft Azure virtuális Datacenter: A hálózati perspektíva |} Microsoft Docs'
+description: Ismerje meg, hogyan hozhat létre a virtuális adatközpont az Azure-ban
 services: networking
 author: tracsman
 manager: rossort
@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: jonor
-ms.openlocfilehash: c4693d91fe81ce55c6faa6610ea19219ac5cfcb5
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 7fcd8e12a7109218387788e47eddad48e72797bb
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="microsoft-azure-virtual-datacenter-a-network-perspective"></a>A Microsoft Azure virtuális Datacenter: Egy hálózati terv
 **A Microsoft Azure**: gyorsabb, költségtakarékosabb munkavégzésben, integrálása a helyszíni alkalmazások és adatok
@@ -259,9 +259,9 @@ A virtualizált tartományvezérlő, a rendkívül fontos nyomon követéséhez 
 
 Összes naplófájlt is tárolható Azure Storage-fiókok, a naplózási, statikus elemzési vagy a biztonsági másolat létrehozása céljából. A naplók az Azure storage-fiókok vannak tárolva, amikor az ügyfelek segítségével keretrendszerek különböző típusú beolvasni, előkészítése, elemzése, és ezen adatok jelenti az állapot és a felhőben lévő erőforrások állapotának megjelenítése.
 
-A nagyobb vállalatok szabványos keretrendszere, amely a helyszíni rendszerek figyelése már szerezték, és kiterjesztheti a keretrendszer integrálható a felhőalapú telepítések által létrehozott naplók. Olyan szervezeteknek, amelyek a naplózási tartani a felhőben [a Microsoft Operations Management Suite (OMS)] [ OMS] kiváló választás. Mivel az OMS felhőalapú szolgáltatás, gyorsan és az infrastruktúra-szolgáltatásokra fordított minimális mértékű befektetéssel üzembe helyezhető. OMS is integrálható a System Center-összetevők, például a System Center Operations Manager kiterjesztése a meglévő felügyeleti beruházások kiterjeszti a felhőbe.
+A nagyobb vállalatok szabványos keretrendszere, amely a helyszíni rendszerek figyelése már szerezték, és kiterjesztheti a keretrendszer integrálható a felhőalapú telepítések által létrehozott naplók. Olyan szervezeteknek, amelyek a naplózási tartani a felhőben [Naplóelemzési] [ LogAnalytics] kiváló választás. Naplóelemzési felhőalapú szolgáltatásként valósul meg, mert akkor is, működik, és gyorsan az infrastruktúra-szolgáltatásokat a minimális befektetési. A Naplóelemzési is integrálható a System Center-összetevők, például a System Center Operations Manager kiterjesztése a meglévő felügyeleti beruházások kiterjeszti a felhőbe.
 
-OMS naplóelemzési összetevő az OMS-keretrendszer gyűjtése, összefüggéseket, keresése és operációs rendszerek, alkalmazások, a felhő infrastruktúra-összetevőihez által létrehozott napló és a teljesítmény adatok intézkedjen segítségével. Az ügyfelek biztosít az integrált keresés és az egyéni irányítópultok a rekordok elemezni egy virtualizált tartományvezérlő a munkaterhelés, a valós idejű operational insights szolgáltatással.
+A Naplóelemzési egy olyan szolgáltatás, amely segít gyűjtése, összefüggéseket, keresése és operációs rendszerek, alkalmazások és a felhő infrastruktúra-összetevőihez által létrehozott napló és a teljesítmény adatok intézkedjen Azure-ban. Az ügyfelek biztosít az integrált keresés és az egyéni irányítópultok a rekordok elemezni egy virtualizált tartományvezérlő a munkaterhelés, a valós idejű operational insights szolgáltatással.
 
 #### <a name="component-type-workloads"></a>Összetevő típusa: munkaterhelések
 Munkaterhelés-összetevők, ahol a tényleges alkalmazásokhoz és szolgáltatásokhoz találhatók. Akkor is ahol az alkalmazást a fejlesztési csapat legmagasabbak az időt.
@@ -332,7 +332,7 @@ A következő funkciókat a dokumentumban ismertetett volt. További hivatkozás
 |Hálózati szolgáltatások|Terheléselosztás|Kapcsolatok|
 |[Egy Azure virtuális hálózatot][VNet]</br>[Hálózati biztonsági csoportok][NSG]</br>[NSG-naplók][NSGLog]</br>[Felhasználó által definiált Útválasztás][UDR]</br>[Virtuális hálózati készülékek][NVA]</br>[Nyilvános IP-címek][PIP]|[Azure Load Balancer (3.) ][ALB]</br>[Az Alkalmazásátjáró (7.) ][AppGW]</br>[Webalkalmazási tűzfal][WAF]</br>[Az Azure Traffic Manager][TM] |[VNet-társviszony létesítése –][VNetPeering]</br>[Virtuális magánhálózat][VPN]</br>[ExpressRoute][ExR]
 |Identitás</br>|Figyelés</br>|Ajánlott eljárások</br>|
-|[Azure Active Directory][AAD]</br>[Többtényezős hitelesítés][MFA]</br>[Szerepkör alap hozzáférés-vezérlést][RBAC]</br>[Alapértelmezett AAD-szerepkörök][Roles] |[Tevékenység-naplók][ActLog]</br>[Diagnosztikai naplók][DiagLog]</br>[A Microsoft Operations Management Suite szolgáltatásban][OMS]</br> |[Külső hálózatok gyakorlati tanácsok][DMZ]</br>[Előfizetés-kezelés][SubMgmt]</br>[Erőforrás-csoportok kezelése][RGMgmt]</br>[Azure-előfizetésre vonatkozó korlátok][Limits] |
+|[Azure Active Directory][AAD]</br>[Többtényezős hitelesítés][MFA]</br>[Szerepkör alap hozzáférés-vezérlést][RBAC]</br>[Alapértelmezett AAD-szerepkörök][Roles] |[Tevékenység-naplók][ActLog]</br>[Diagnosztikai naplók][DiagLog]</br>[A Naplóelemzési][LogAnalytics]</br> |[Külső hálózatok gyakorlati tanácsok][DMZ]</br>[Előfizetés-kezelés][SubMgmt]</br>[Erőforrás-csoportok kezelése][RGMgmt]</br>[Azure-előfizetésre vonatkozó korlátok][Limits] |
 |Más Azure-szolgáltatásokkal|
 |[Azure Web Apps][WebApps]</br>[HDInsights (Hadoop) ][HDI]</br>[Event Hubs][EventHubs]</br>[Szolgáltatásbusz][ServiceBus]|
 
@@ -379,7 +379,7 @@ A következő funkciókat a dokumentumban ismertetett volt. További hivatkozás
 [ActLog]: https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs 
 [DiagLog]: https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs
 [NSGLog]: https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log
-[OMS]: https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview
+[LogAnalytics]: https://docs.microsoft.com/azure/log-analytics/log-analytics-overview
 [WebApps]: https://docs.microsoft.com/azure/app-service/
 [HDI]: https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-introduction
 [EventHubs]: https://docs.microsoft.com/azure/event-hubs/event-hubs-what-is-event-hubs 

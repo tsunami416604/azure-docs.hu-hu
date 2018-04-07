@@ -1,13 +1,13 @@
 ---
-title: "A klasszikus virtuális gépek áttelepítése egy ARM felügyelt lemezes virtuális gép |} Microsoft Docs"
-description: "Telepítse át egy Azure virtuális a klasszikus telepítési modellből felügyelt lemezeket a Resource Manager üzembe helyezési modellben."
+title: A klasszikus virtuális gépek áttelepítése egy ARM felügyelt lemezes virtuális gép |} Microsoft Docs
+description: Telepítse át egy Azure virtuális a klasszikus telepítési modellből felügyelt lemezeket a Resource Manager üzembe helyezési modellben.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 82389834d85981c0ed71bdcc891fbfdbe1377654
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1241f893ca69e3ddaf464e66943caa2697e6d8e7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="manually-migrate-a-classic-vm-to-a-new-arm-managed-disk-vm-from-the-vhd"></a>Manuális áttelepítésével egy klasszikus virtuális Gépet egy új ARM kezelt lemez virtuális géphez a virtuális merevlemezről 
 
@@ -170,7 +170,7 @@ Készítse elő az állásidő alkalmazását. Egy tiszta az áttelepítés vég
 >
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Csatlakozzon a virtuális géphez. Útmutatásért lásd: [csatlakoztatása, és jelentkezzen be a Windowst futtató Azure virtuális gép](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

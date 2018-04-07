@@ -1,11 +1,11 @@
 ---
-title: "Telepítse át az erőforrás-kezelő a PowerShell-lel |} Microsoft Docs"
-description: "Ez a cikk végigvezeti a platform által támogatott áttelepítési IaaS-erőforrások, például a virtuális gépek (VM), a virtuális hálózatokon (Vnetek) és a storage-fiókok a klasszikus Azure Resource Managerrel (ARM) Azure PowerShell-parancsok segítségével"
+title: Telepítse át az erőforrás-kezelő a PowerShell-lel |} Microsoft Docs
+description: Ez a cikk végigvezeti a platform által támogatott áttelepítési IaaS-erőforrások, például a virtuális gépek (VM), a virtuális hálózatokon (Vnetek) és a storage-fiókok a klasszikus Azure Resource Managerrel (ARM) Azure PowerShell-parancsok segítségével
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: singhkays
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 2b3dff9b-2e99-4556-acc5-d75ef234af9c
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 38bc949917f6bb56486ad6267044ef2f19e33fcb
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c184fa2aa3e8b09c798f3c1f007cad57891c413e
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-powershell"></a>Telepítse át IaaS-erőforrásokra a klasszikus Azure Resource Manager Azure PowerShell használatával
 Ezeket a lépéseket mutatja be Azure PowerShell-parancsok használatával telepítse át az infrastruktúra erőforrásként egy szolgáltatási (IaaS) a klasszikus telepítési modellből az Azure Resource Manager telepítési modellhez.

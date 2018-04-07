@@ -1,34 +1,29 @@
 ---
-title: Az erőforrás állapotát panel használja az Azure Stream Analytics |} Microsoft Docs
-description: Hogyan rögzítési ponthoz problémák Stream Analytics-feladatok hibaelhárítása során.
-keywords: folyamatábra, erőforráspanelen hibaelhárítása
-documentationcenter: ''
+title: A Resource health lapon Azure Stream Analytics
+description: Ez a cikk ismerteti az Azure Stream Analytics-feladatok kapcsolatos problémák elhárítása az Azure-portálon az erőforrás állapota használatával.
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: ''
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 05/01/2017
 ms.author: jeanb
-ms.openlocfilehash: 598f858c22494bc511ef0e2f04f3c3a6baad1ae8
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 05/01/2017
+ms.openlocfilehash: 27d9bd7ffd7088cbd67879e83176b66cdbbf471d
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="stream-analytics-resource-health-blade"></a>Stream Analytics állapotfigyelő erőforráspanelen
+# <a name="stream-analytics-resource-health-page-in-the-azure-portal"></a>Stream Analytics erőforrás állapota lapon az Azure portálon
 
-A **erőforrás állapota** panel az Azure-portálon az Azure Stream Analytics-feladatok állapotát jeleníti meg. Ezenfelül itt látható hajtható végre, amelyik segíthet a problémák megoldásához útmutatást. 
+A **erőforrás állapota** oldal az Azure portálon az Azure Stream Analytics-feladatok állapotát jeleníti meg. Ezenfelül itt látható hajtható végre, amelyik segíthet a problémák megoldásához útmutatást. 
 
-A **erőforrás állapota** panel készült gyorsabban meghatározásához, hogy egy probléma gyökere az alkalmazásban, vagy ha az Azure-ban esemény okozza. Segíthet tudja támogatásra támogatási esetet megnyitása.
+A **erőforrás állapota** lap készült gyorsabban meghatározásához, hogy egy probléma gyökere az alkalmazásban, vagy ha az Azure-ban esemény okozza. Segíthet tudja támogatásra támogatási esetet megnyitása.
 
 ## <a name="troubleshooting-workflow"></a>Hibaelhárítási munkafolyamat
 
-Az erőforrás állapota a Stream Analytics-feladatok megtekintéséhez válassza ki a **erőforrás állapota** panelen. 
+Az erőforrás állapota a Stream Analytics-feladatok megtekintéséhez válassza ki a **erőforrás állapota** lap. 
 
 ![A Stream Analytics folyamat - hozzáférés hibaelhárítása](media/stream-analytics-resource-health/stream-analytics-access-troubleshooting.png)
 
@@ -36,8 +31,8 @@ A következő folyamatábra segítségével milyen bejegyzésekre kell keresni, 
 
 ![A Stream Analytics hibaelhárítási folyamat - leképezés](media/stream-analytics-resource-health/stream-analytics-troubleshooting-map.png)
 
-## <a name="get-help"></a>Segítség kérése
-Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+## <a name="get-help"></a>Segítségkérés
+Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>További lépések
 * [A Stream Analytics bemutatása](stream-analytics-introduction.md)

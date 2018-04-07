@@ -1,29 +1,24 @@
 ---
-title: Azure Stream Analytics-eszközök használata a Visual Studio |} Microsoft Docs
-description: Első lépések útmutató az Azure Stream Analytics Tools for Visual Studio
-keywords: A Visual studio
-documentationcenter: ''
+title: A Visual Studio Azure Stream Analytics-eszközök használata
+description: Ez a cikk ismerteti az első lépések az Azure Stream Analytics Tools for Visual Studio használatával.
 services: stream-analytics
 author: su-jie
-manager: ryanw
-ms.assetid: a473ea0a-3eaa-4e5b-aaa1-fec7e9069f20
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/05/2018
 ms.author: sujie
-ms.openlocfilehash: 23c4d058a1b045b0d66d8526a94e22774e6e6519
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/05/2018
+ms.openlocfilehash: eaaee36a2f4dd5a313f8871cea5fd885812fe351
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-azure-stream-analytics-tools-for-visual-studio"></a>A Visual Studio Azure Stream Analytics-eszközök használata
 A Visual Studio Azure Stream Analytics-eszközökkel is általánosan elérhető. Ezek az eszközök a Stream Analytics-felhasználók a hibaelhárítás, valamint összetett lekérdezéseket írhat gazdagabb élmény engedélyezése, és akár a helyi lekérdezéseket írhat. A Stream Analytics-feladat a Visual Studio-projekt is exportálhatja.
 
-## <a name="introduction"></a>Bemutatás
+## <a name="introduction"></a>Bevezetés
 Ebben az oktatóanyagban elsajátíthatja létrehozására, szerzői, helyi tesztelése, kezelésére és a Stream Analytics-feladatok debug Stream Analytics tools for Visual Studio használatával. A feladat létrehozása után állíthatja be a folyamatos integrációt és a telepítési folyamatot, az Azure-bA a CI/CD Nuget-csomagot a tudnivalókat a további több [Stream Analytics Visual STUDIO eszközök beállításához CI/CD adatcsatorna](stream-analytics-tools-for-visual-studio-cicd.md) cikk.
 
 Ez az oktatóanyag befejezése után fogja tudni:

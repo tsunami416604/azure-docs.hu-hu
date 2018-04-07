@@ -1,19 +1,19 @@
 ---
-title: "A rugalmas adatbázis ügyféloldali kódtára a hitelesítő adatok kezelése |} Microsoft Docs"
-description: "A megfelelő szintű hitelesítő adatokat, csak olvasható, a rugalmas adatbázis-alkalmazások rendszergazdai beállítása"
+title: A rugalmas adatbázis ügyféloldali kódtára a hitelesítő adatok kezelése |} Microsoft Docs
+description: A megfelelő szintű hitelesítő adatokat, csak olvasható, a rugalmas adatbázis-alkalmazások rendszergazdai beállítása
 services: sql-database
 manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 26d83779b218f8c936c020d63651861f45bafa2f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c18e5da04fd92fed2cb9e93d13b5f3ecdeaac1a1
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="credentials-used-to-access-the-elastic-database-client-library"></a>Az Elastic Database ügyféloldali kódtár eléréséhez használt hitelesítő adatokat
 A [Elastic Database ügyféloldali kódtárának](sql-database-elastic-database-client-library.md) elérésére használt hitelesítő adatok három különböző típusú a [shard térkép manager](sql-database-elastic-scale-shard-map-management.md). Attól függően, hogy szükség van használja a legalacsonyabb szintű hozzáférés lehetséges a hitelesítő adatokat.

@@ -1,11 +1,11 @@
 ---
-title: "Függőleges skálázása az Azure virtuális gép az Azure Automation szolgáltatásban |} Microsoft Docs"
-description: "Függőleges méretezése a figyelési riasztásokhoz adható az Azure Automation szolgáltatásban válaszul egy Linux virtuális gép"
+title: Függőleges skálázása az Azure virtuális gép az Azure Automation szolgáltatásban |} Microsoft Docs
+description: Függőleges méretezése a figyelési riasztásokhoz adható az Azure Automation szolgáltatásban válaszul egy Linux virtuális gép
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: singhkays
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: dcee199e-fa25-44d5-9b25-df564cee9b45
 ms.service: virtual-machines-linux
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 03/29/2016
 ms.author: singhkay
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1ffcecf1e61fc0cd9ee668514fbb913dafe39bd8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 683348c907484ccd9394eb4aae18e9006ecb5c48
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="vertically-scale-azure-linux-virtual-machine-with-azure-automation"></a>Függőleges skálázása az Azure Linux virtuális gép az Azure Automation szolgáltatásban
 Függőleges skálázás bővítése vagy csökkentése az erőforrásokat, a munkaterhelés válaszul gép során a rendszer. Az Azure-ban ehhez a virtuális gép méretének módosításával. Ez segítheti a következő esetekben
@@ -73,7 +73,7 @@ A runbookokat, importálandók kell az alábbi képen látható
 ## <a name="add-a-webhook-to-your-runbook"></a>A webhook hozzáadása a runbookhoz
 Miután importált a runbookok kell hozzáadása egy webhook a runbookhoz úgy is elindítható a virtuális gép riasztások alapján. A webhook létrehozása a runbook részleteit itt olvasható
 
-* [Azure Automation-webhook](../../automation/automation-webhooks.md)
+* [Azure Automation webhooks](../../automation/automation-webhooks.md)
 
 Ellenőrizze, hogy a webhook másolja át a webhook párbeszédpanel bezárása, szüksége lesz a következő szakaszban előtt.
 

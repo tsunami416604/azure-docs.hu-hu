@@ -1,19 +1,19 @@
 ---
-title: "Az Azure SQL Database gyakori csatlakozási problémáinak hibaelhárítása"
-description: "Azonosítása és elhárítása közös kapcsolat az Azure SQL Database lépéseit."
+title: Az Azure SQL Database gyakori csatlakozási problémáinak hibaelhárítása
+description: Azonosítása és elhárítása közös kapcsolat az Azure SQL Database lépéseit.
 services: sql-database
 author: dalechen
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 04/01/2018
 ms.author: daleche
-ms.openlocfilehash: 56ebe6876d621e190b4e808804113ff80cb3f50c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 2737b641559b04d661db6ede0e487af30b36737a
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Az Azure SQL Database kapcsolati problémák elhárítása
 Ha az Azure SQL Database létesített kapcsolat megszakad, [hibaüzenetek](sql-database-develop-error-messages.md). Ez a cikk központi Ez a témakör segítséget nyújt az Azure SQL Database kapcsolódási problémáinak elhárítása. Okozna [gyakori okainak](#cause) kapcsolódási problémák javasolja [hibaelhárításhoz](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) , amely segít az identitás a problémát, és megoldásuk megoldására [átmeneti hibák](#troubleshoot-transient-errors) és [állandó vagy nem átmeneti hiba](#troubleshoot-persistent-errors). 

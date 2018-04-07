@@ -1,10 +1,10 @@
 ---
-title: "Töltse fel az egyéni Linux képet az Azure CLI 1.0 |} Microsoft Docs"
-description: "Hozzon létre, és egy virtuális merevlemez (VHD) feltöltése az Azure-bA a Resource Manager üzembe helyezési modellel és az Azure CLI 1.0 használatával egyéni Linux képének."
+title: Töltse fel az egyéni Linux képet az Azure CLI 1.0 |} Microsoft Docs
+description: Hozzon létre, és egy virtuális merevlemez (VHD) feltöltése az Azure-bA a Resource Manager üzembe helyezési modellel és az Azure CLI 1.0 használatával egyéni Linux képének.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: a8c7818f-eb65-409e-aa91-ce5ae975c564
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: iainfou
-ms.openlocfilehash: ca4c6cb9296028275b2b032af0c94baabeec1223
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6eb0cae2b70e0cbb9a4fb5fcab3a58d566d0f4d9
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-image-by-using-the-azure-cli-10"></a>Töltse fel, és az egyéni lemezképet Linux virtuális gép létrehozása az Azure CLI 1.0
 Ez a cikk bemutatja, hogyan egy virtuális merevlemez (VHD) feltöltése az Azure Resource Manager telepítési modellel, és a Linux virtuális gépek létrehozása az egyéni lemezképet. Ez a funkció lehetővé teszi telepítése és konfigurálása a Linux distro az igényeinek megfelelően, valamint, hogy a virtuális merevlemez használatával gyorsan hozzon létre az Azure virtuális gépek (VM).
@@ -88,7 +88,7 @@ A cél tárfiókkal nem lehet ugyanaz, mint ahol a virtuális lemez feltöltött
 ## <a name="requirements"></a>Követelmények
 A következő lépések elvégzéséhez szüksége:
 
-* **Linux operációs rendszer van telepítve, a .vhd-fájllá** -telepíteni egy [Azure által támogatott Linux-disztribúció](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (vagy lásd: [nem támogatott disztribúciókkal kapcsolatos információi](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) a virtuális merevlemez virtuális lemezre formátumban. Több különféle eszköz létezik a virtuális gép és a virtuális merevlemez létrehozásához:
+* **Linux operációs rendszer van telepítve, a .vhd-fájllá** -telepíteni egy [Azure által támogatott Linux-disztribúció](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (vagy lásd: [nem támogatott disztribúciókkal kapcsolatos információi](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) a VHD formátumú virtuális lemezre . Több különféle eszköz létezik a virtuális gép és a virtuális merevlemez létrehozásához:
   * Telepítse és konfigurálja [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) vagy [KVM](http://www.linux-kvm.org/page/RunningKVM), ügyelve arra, hogy a virtuális merevlemez használata a képformátum. Ha szükséges, akkor [lemezkép konvertálása](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) használatával `qemu-img convert`.
   * Is használhatja a Hyper-V [Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) vagy [Windows Server 2012 vagy 2012 R2](https://technet.microsoft.com/library/hh846766.aspx).
 
@@ -122,7 +122,7 @@ Azure támogatja a különböző Linux terjesztésekről (lásd: [támogatott Di
 * **[Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Egyéb - nem támogatott Disztribúciókkal](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 
-Lásd még: a  **[Linux telepítési jegyzetek](create-upload-generic.md#general-linux-installation-notes)**  kapcsolatos további általános tippek Linux lemezképek előkészítése az Azure-bA.
+Lásd még: a **[Linux telepítési jegyzetek](create-upload-generic.md#general-linux-installation-notes)** kapcsolatos további általános tippek Linux lemezképek előkészítése az Azure-bA.
 
 > [!NOTE]
 > A [Azure platformon SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) csak akkor, ha a konfigurációs részleteket a támogatott verziók használt egyik a hitelesített terjesztéseket Linuxot futtató virtuális gépek érvényes [az Azure által támogatott Linux Azokat a terjesztéseket](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -244,6 +244,6 @@ azure group deployment create --resource-group myResourceGroup
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Miután előkészített és feltöltése az egyéni virtuális lemez, akkor további információ [erőforrás-kezelő és a sablonok használatával](../../azure-resource-manager/resource-group-overview.md). Is érdemes lehet [hozzá adatlemezt](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) az új virtuális gépek. Ha fut a virtuális gépek elérését igénylő alkalmazások, ügyeljen arra, hogy [nyisson meg portokat és a végpontok](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

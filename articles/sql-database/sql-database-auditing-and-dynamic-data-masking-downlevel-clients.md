@@ -1,19 +1,19 @@
 ---
-title: "Naplózás, TDS átirányítás miatt a táblázat és az Azure SQL Database IP-végpontok |} Microsoft Docs"
-description: "További tudnivalók naplózását, TDS-átirányítási és IP-végpont módosításokat az Azure SQL Database naplózási táblázat végrehajtása során."
+title: Naplózás, TDS átirányítás miatt a táblázat és az Azure SQL Database IP-végpontok |} Microsoft Docs
+description: További tudnivalók naplózását, TDS-átirányítási és IP-végpont módosításokat az Azure SQL Database naplózási táblázat végrehajtása során.
 services: sql-database
 author: giladm
 manager: craigg
 ms.service: sql-database
 ms.custom: security
 ms.topic: article
-ms.date: 05/31/2017
+ms.date: 04/01/2018
 ms.author: giladm
-ms.openlocfilehash: 1053869ed26739463ab6035692052d7b6b34bff0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d1114d6c5073aa6e60d6fb700989fb3d205ee914
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>SQL adatbázis - a régebbi típusú ügyfeleknek támogatja, és IP-végponton megváltoztatja a táblázat naplózás
 

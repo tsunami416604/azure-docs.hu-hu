@@ -1,19 +1,19 @@
 ---
-title: "A rugalmas adatbázis-eszközökkel szilánkcímtárban hozzáadása |} Microsoft Docs"
-description: "Állítsa be a rugalmas, méretezhető API-k használata új szilánkok hozzáadása a szilánkcímtárban."
+title: A rugalmas adatbázis-eszközökkel szilánkcímtárban hozzáadása |} Microsoft Docs
+description: Állítsa be a rugalmas, méretezhető API-k használata új szilánkok hozzáadása a szilánkcímtárban.
 services: sql-database
 manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 7fd62fff5426dd6aaefaf6dc7d571ab4e7df9cc9
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b9cdfc492740a73d3181ea8c4265f6c7db80c5d2
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="adding-a-shard-using-elastic-database-tools"></a>A rugalmas adatbázis-eszközökkel szilánkcímtárban hozzáadása
 ## <a name="to-add-a-shard-for-a-new-range-or-key"></a>A szilánkok egy új tartományt vagy a kulcs hozzáadása

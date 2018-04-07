@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: negat
-ms.openlocfilehash: cbd5b57d0cde3743c7ef70437f702536c27ac999
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b1fdc364b903ed552f657fcabdadcf209d7c969e
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Módosítsa a virtuálisgép-méretezési csoport
 Az alkalmazások életciklusa során szükség lehet módosítani, vagy a virtuálisgép-méretezési csoport frissítése. Ezeket a frissítéseket is venni, hogyan lehet frissíteni a beállításait, a méretezési, vagy módosítsa az alkalmazás konfigurációját. A cikkből megtudhatja, hogyan lehet módosítani egy meglévő méretezési a REST API-k, az Azure PowerShell vagy Azure CLI 2.0 készletben.
@@ -367,7 +367,7 @@ Egyes módosítások alkalmazhatók az adott virtuális gépen a globális mére
 ## <a name="scenarios"></a>Forgatókönyvek
 
 ### <a name="application-updates"></a>Alkalmazás frissítései
-Ha egy alkalmazás központi telepítése egy méretezési extensions segítségével állíthatók be, a egy frissítést adunk ki a bővítmény konfigurációja hatására az alkalmazás a frissítési házirendjével összhangban frissíteni. Például ha egy parancsfájl futtatását egy egyéni parancsprogramok futtatására szolgáló bővítmény új verzióját, akkor sikerült frissíteni a *fileUris* tulajdonság úgy, hogy az új parancsfájl mutasson. Bizonyos esetekben érdemes lehet kényszeríteni a frissítést, annak ellenére, hogy a bővítmény konfigurációja nem változott (például a parancsfájl megváltoztatása nélkül történő frissítés a parancsfájl URI). Ezekben az esetekben, módosíthatja a *forceUpdateTag* frissítés kényszerítéséhez. Az Azure platformon értelmezi ezt a tulajdonságot. Ha az érték módosításához nincs nincs hatással a bővítmény működésével. Változás egyszerűen kényszeríti kattintva futtassa újra a bővítményt. További információ a *forceUpdateTag*, tekintse meg a [bővítmények REST API dokumentációja](/rest/api/compute/virtualmachineextensions/createorupdate).
+Ha egy alkalmazás központi telepítése egy méretezési extensions segítségével állíthatók be, a egy frissítést adunk ki a bővítmény konfigurációja hatására az alkalmazás a frissítési házirendjével összhangban frissíteni. Például ha egy parancsfájl futtatását egy egyéni parancsprogramok futtatására szolgáló bővítmény új verzióját, akkor sikerült frissíteni a *fileUris* tulajdonság úgy, hogy az új parancsfájl mutasson. Bizonyos esetekben érdemes lehet kényszeríteni a frissítést, annak ellenére, hogy a bővítmény konfigurációja nem változott (például a parancsfájl megváltoztatása nélkül történő frissítés a parancsfájl URI). Ezekben az esetekben, módosíthatja a *forceUpdateTag* frissítés kényszerítéséhez. Az Azure platformon értelmezi ezt a tulajdonságot. Ha az érték módosításához nincs nincs hatással a bővítmény működésével. Változás egyszerűen kényszeríti kattintva futtassa újra a bővítményt. További információ a *forceUpdateTag*, tekintse meg a [bővítmények REST API dokumentációja](/rest/api/compute/virtualmachineextensions/createorupdate). Vegye figyelembe, hogy a *forceUpdateTag* együtt az összes bővítmény, nem csak az egyéni parancsprogramok futtatására szolgáló bővítmény.
 
 Azt is alkalmazások esetében gyakori egyéni lemezkép keresztül telepíteni. Ebben a forgatókönyvben a következő szakasz foglalkozik.
 

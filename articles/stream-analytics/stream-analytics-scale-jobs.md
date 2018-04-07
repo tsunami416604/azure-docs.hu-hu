@@ -1,31 +1,25 @@
 ---
-title: Átviteli sebesség növelése Stream Analytics-feladatok méretezése |} Microsoft Docs
-description: Ismerje meg a Stream Analytics-feladatok méretezése bemeneti partíciók konfigurálása, a lekérdezés definíciója hangolása és adatfolyam-egységek feladat beállítása.
-keywords: adatfolyam, az adatfeldolgozás streaming hangolására analytics
+title: Skálázás be és ki az Azure Stream Analytics-feladatok
+description: Ez a cikk ismerteti a Stream Analytics-feladat bővítse a bemeneti adatok particionálás, a lekérdezés hangolása és adatfolyam-egységek feladat beállítása.
 services: stream-analytics
-documentationcenter: ''
 author: JSeb225
-manager: ryanw
-ms.assetid: 7e857ddb-71dd-4537-b7ab-4524335d7b35
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 06/22/2017
 ms.author: jeanb
-ms.openlocfilehash: 2e0487a9e4cd6346312c6817ef2768556cba72ba
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 06/22/2017
+ms.openlocfilehash: 1438ffa34652268572fe89dc63583cc25607d722
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="scale-azure-stream-analytics-jobs-to-increase--throughput"></a>Átviteli sebesség növelése az Azure Stream Analytics-feladatok méretezése
+# <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Egy Azure Stream Analytics-feladat átviteli sebesség növelése méretezése
 Ez a cikk bemutatja, hogyan finomhangolhatják a Stream Analytics lekérdezési Streaming Analytics-feladatok átviteli sebesség növelése. Ez az útmutató segítségével méretezni a feladat magasabb terhelés kezelésére, és több rendszererőforrást (például a nagyobb sávszélességet, több Processzor-erőforrások, több memória) előnyeit.
 Előfeltételként szükség lehet a következő cikkeket:
 -   [A streamelési egységek ismertetése és módosítása](stream-analytics-streaming-unit-consumption.md)
 -   [Párhuzamosítható feladatok létrehozása](stream-analytics-parallelization.md)
-
 
 ## <a name="case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions"></a>Bemeneti partíciók teljesen eredendően párhuzamosítható eset 1 – a lekérdezés nem
 Ha a lekérdezés nem teljesen eredendően párhuzamosítható bemeneti partíciók, kövesse az alábbi lépéseket:
@@ -42,14 +36,13 @@ Ha a lekérdezés nem teljesen eredendően párhuzamosítható bemeneti partíci
 > Például a 6 mért SU feladat érhető el a 4 MB/s feldolgozási sebesség és a bemeneti partíciók száma érték a 4. Ha szeretné, a feladat futtatásához 12 SU körülbelül 8 MB/s feldolgozási sebességét eléréséhez, vagy 24 SU 16 MB/s eléréséhez. Ezután eldöntheti, ha a feladat milyen értéket, és a bemeneti függvényében SU számának növeléséhez.
 
 
-
 ## <a name="case-2---if-your-query-is-not-embarrassingly-parallel"></a>2 – Ha a lekérdezés nem embarrassingly párhuzamos eset.
 Ha a lekérdezés nem embarrassingly párhuzamos, követheti az alábbi lépéseket.
 1.  Kezdő nélküli lekérdezéssel **PARTITION BY** először a elkerüléséhez a particionálás összetettségét, és futtassa a lekérdezést 6 SU méréséhez és a legnagyobb terhelést [1. eset](#case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions).
 2.  Ha a kifejezés átviteli érhető el a várható terhelést, akkor elkészült. Másik lehetőségként választhatja, hogy mérésére SU és 1 SU tudja meg, amely a forgatókönyvnek SU minimális száma 3 futó ugyanazt a feladatot.
 3.  Ha nem érhetők el a kívánt teljesítményt, próbálja meg a lekérdezés felosztása több lépést, ha lehetséges, ha nem rendelkezik már több lépést, és akár 6 SU lefoglalni az egyes lépések a lekérdezésben. Például, ha 3 lépést, a "Méretezése" beállítás 18 SU lefoglalni.
 4.  E feladat futtatásakor a Stream Analytics minden lépés dedikált 6 SU erőforrásokkal saját csomóponton helyezi. 
-5.  Ha Ön továbbra is még nem érhető el a terhelés célként, megkísérli használni **PARTITION BY** kiindulva lépések közelebb a bemeneti. A **GROUP BY** operátor szerinti szűrése, amely nem feltétlenül természetes particionálható, használhatja a helyi/globális összesített mintát végrehajtásához egy particionált **GROUP BY** követ egy másik **csoportosítás **. Például ha azt szeretné, ha a hány autók áthaladás minden téren kiállítási át 3 percenként, és az adatok mennyisége túl mi van kezelhetik 6 SU.
+5.  Ha Ön továbbra is még nem érhető el a terhelés célként, megkísérli használni **PARTITION BY** kiindulva lépések közelebb a bemeneti. A **GROUP BY** operátor szerinti szűrése, amely nem feltétlenül természetes particionálható, használhatja a helyi/globális összesített mintát végrehajtásához egy particionált **GROUP BY** követ egy másik **csoportosítás** . Például ha azt szeretné, ha a hány autók áthaladás minden téren kiállítási át 3 percenként, és az adatok mennyisége túl mi van kezelhetik 6 SU.
 
 Lekérdezés:
 
@@ -149,8 +142,8 @@ A következő táblázat a streamelési egységek számának növekedését azt,
 
 ![img.stream.analytics.perfgraph][img.stream.analytics.perfgraph]
 
-## <a name="get-help"></a>Segítség kérése
-Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+## <a name="get-help"></a>Segítségkérés
+Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>További lépések
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)

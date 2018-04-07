@@ -8,13 +8,13 @@ ms.reviewer: MightyPen
 ms.service: sql-database
 ms.custom: develop databases
 ms.topic: article
-ms.date: 11/22/2016
+ms.date: 04/01/2018
 ms.author: jodebrui
-ms.openlocfilehash: 00823ca44ec7135a9937bb37dd4ed58ec996c89d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: cd76f475f330c49dec737d2c4a25aa75a18b41a7
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>Használja a memórián belüli online Tranzakciófeldolgozási, az alkalmazás SQL-adatbázis teljesítményének növelése
 [A memórián belüli online Tranzakciófeldolgozási](sql-database-in-memory.md) is használható a tranzakció-feldolgozást, adatfeldolgozást és átmeneti adatáttelepítések esetében teljesítményének javítása [Premium és fontos üzleti szint](sql-database-service-tiers.md) adatbázisok növelése az árképzési szint nélkül. 

@@ -1,19 +1,19 @@
 ---
-title: "A rugalmas adatbázis-feladatok telepítése |} Microsoft Docs"
-description: "Végezze el a rugalmas feladat összetevő telepítése."
+title: A rugalmas adatbázis-feladatok telepítése |} Microsoft Docs
+description: Végezze el a rugalmas feladat összetevő telepítése.
 services: sql-database
 manager: craigg
 author: ddove
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 7e5258e0ccb88c8e2f3fe3277f69444ae5424cd0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 4aeb18a4cdd0fc115c0d604797cf60c867455337
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Telepítése rugalmas feladatok – áttekintés
 [**Rugalmas adatbázis-feladatok** ](sql-database-elastic-jobs-overview.md) PowerShell vagy az Azure portálon keresztül is telepíthető. Akkor is hozzáférhetnek a PowerShell API használata csak akkor, ha a PowerShell telepítéséhez feladatok létrehozásához és kezeléséhez. Emellett a PowerShell API-k jóval több funkciót kínál a portál mint ezen a ponton a időben.

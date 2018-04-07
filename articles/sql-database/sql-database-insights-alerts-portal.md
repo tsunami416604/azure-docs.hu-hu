@@ -1,19 +1,19 @@
 ---
-title: "SQL-adatbázis riasztások létrehozásához használja az Azure portálon |} Microsoft Docs"
-description: "Az Azure-portál használatával hozzon létre SQL adatbázis riasztást, amelyek elindítható értesítések vagy automation, ha a megadott feltételek teljesülnek."
+title: SQL-adatbázis riasztások létrehozásához használja az Azure portálon |} Microsoft Docs
+description: Az Azure-portál használatával hozzon létre SQL adatbázis riasztást, amelyek elindítható értesítések vagy automation, ha a megadott feltételek teljesülnek.
 author: aamalvea
 manager: craigg
 services: sql-database
 ms.service: sql-database
 ms.custom: monitor and tune
 ms.topic: article
-ms.date: 06/06/2017
+ms.date: 04/01/2018
 ms.author: aamalvea
-ms.openlocfilehash: 611b88c540902bc7a72d53671dacd098d9798b48
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0c543ccf1d2104a83f7610bc870334b460ec40fb
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Az Azure portál használatával riasztások létrehozása az Azure SQL adatbázishoz és Adatraktárhoz
 
@@ -55,8 +55,8 @@ Konfigurálhatja, és a riasztási szabályok használatával adatainak beolvas�
     ![Riasztás beállítása](../monitoring-and-diagnostics/media/insights-alerts-portal/AddDBAlertPage.png)
 4. **Név** a riasztás szabályt, majd válassza ki a **leírása**, amely értesítési e-mailt is mutatja.
 5. Válassza ki a **metrika** szeretne figyelni, majd kattintson egy **feltétel** és **küszöbérték** a mérték értékét. Is választhatja, a **időszak** idő a metrika szabály a riasztási eseményindítók előtt kell biztosítani. Így például, ha az időszakban "PT5M" használja, és 80 % fölötti CPU keresi a riasztás, a riasztás akkor váltja ki mikor a **átlagos** CPU 5 percig 80 % felett volt. Akkor következik be, az első eseményindító, amennyiben azt újra váltja ki, ha a átlagos CPU nem éri el 80 %-kal több mint 5 perc. A CPU-mérési 1 percenként történik. Tekintse át az alábbi táblázatban a windows támogatott indításakor, és az összesítés írja be, hogy minden egyes riasztás használ – nem minden riasztás átlagos érték legyen használva.   
-6. Ellenőrizze **E-mail-tulajdonosok...**  Ha azt szeretné, hogy a rendszergazdák és a társadminisztrátorok e-mailben a riasztás aktiválódásakor.
-7. Ha azt szeretné, hogy további az e-maileket kap értesítést, a riasztás aktiválódásakor, adja hozzá a a **további rendszergazda email(s)** mező. Több e-mailek külön és pontosvesszővel kell elválasztani -  *email@contoso.com;email2@contoso.com*
+6. Ellenőrizze **E-mail-tulajdonosok... ** Ha azt szeretné, hogy a rendszergazdák és a társadminisztrátorok e-mailben a riasztás aktiválódásakor.
+7. Ha azt szeretné, hogy további az e-maileket kap értesítést, a riasztás aktiválódásakor, adja hozzá a a **további rendszergazda email(s)** mező. Több e-mailek külön és pontosvesszővel kell elválasztani - * email@contoso.com;email2@contoso.com*
 8. Be egy érvényes URI-azonosító található a **Webhook** mezőben, ha azt szeretné, hogy a riasztás aktiválódásakor meghívta.
 9. Válassza ki **OK** végzett a riasztás létrehozása.   
 

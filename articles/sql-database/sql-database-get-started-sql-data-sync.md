@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: load & move data
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 04/01/2018
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: f9318b5baa46ab991b5e72e12a89a25e4f635db3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 72e0ed535139c088c4235b43a12ea96da080dc8a
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="set-up-sql-data-sync-preview"></a>SQL adatszinkronizálás (előzetes verzió) beállítása
 Ebben az oktatóanyagban elsajátíthatja, hogyan Azure SQL Data szinkronizálás beállítása az Azure SQL Database és az SQL Server-példányokat tartalmazó hibrid szinkronizálási csoportok létrehozásával. Az új szinkronizálási csoport teljes van konfigurálva, és a beállított ütemezés szerint szinkronizálja.
@@ -275,7 +275,7 @@ További információ az SQL Data Syncről:
 
 -   [Több felhőalapú és helyszíni adatbázis közötti adatszinkronizálás az Azure SQL Data Synckel](sql-database-sync-data.md)
 -   [Ajánlott eljárások az Azure SQL Data Synchez](sql-database-best-practices-data-sync.md)
--   [Az Azure SQL Data Sync monitorozása az OMS Log Analytics használatával](sql-database-sync-monitor-oms.md)
+-   [A figyelő az Azure SQL Data szinkronban Naplóelemzési](sql-database-sync-monitor-oms.md)
 -   [Az Azure SQL Data Synckel hibaelhárítása](sql-database-troubleshoot-data-sync.md)
 
 -   Teljes PowerShell-példák az SQL Data Sync konfigurálásáról:

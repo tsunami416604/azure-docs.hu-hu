@@ -1,11 +1,11 @@
 ---
-title: "Tokent használó hitelesítés az Azure CDN eszközök védelmének biztosítása |} Microsoft Docs"
-description: "Megtudhatja, hogyan használja a tokent használó hitelesítés az Azure CDN eszközökhöz való hozzáférést."
+title: Tokent használó hitelesítés az Azure CDN eszközök védelmének biztosítása |} Microsoft Docs
+description: Megtudhatja, hogyan használja a tokent használó hitelesítés az Azure CDN eszközökhöz való hozzáférést.
 services: cdn
 documentationcenter: .net
 author: zhangmanling
 manager: zhangmanling
-editor: 
+editor: ''
 ms.assetid: 837018e3-03e6-4f9c-a23e-4b63d5707a64
 ms.service: cdn
 ms.devlang: multiple
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mezha
-ms.openlocfilehash: f6d008a92677d28d0184e64637dcb2e093299519
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: aaec713a7680aeda8317f5af41b9b99bcbdca4b7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="securing-azure-content-delivery-network-assets-with-token-authentication"></a>Tokent használó hitelesítés az Azure Content Delivery Network eszközök védelme
+# <a name="securing-azure-cdn-assets-with-token-authentication"></a>Tokent használó hitelesítés az Azure CDN-eszközök védelme
 
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 ## <a name="overview"></a>Áttekintés
 
-Jogkivonat hitelesítési egy olyan mechanizmus, amely lehetővé teszi, hogy az Azure Content Delivery Network (CDN) megakadályozza a jogosulatlan ügyfelek szolgáló eszközök. Jogkivonat hitelesítési általában történik, amelyben egy másik webhelyre, egy üzenet üzenőfalon, például az eszközök engedélye nélkül használ a tartalom "hotlinking" megelőzése érdekében. Hotlinking hatással lehetnek a továbbítási költségeit. A CDN tokent használó hitelesítés engedélyezése esetén kérések hitelesítése CDN biztonsági kiszolgáló előtt a CDN továbbítja a tartalmat. 
+Jogkivonat hitelesítési egy olyan mechanizmus, amely lehetővé teszi, hogy az Azure Content Delivery Network (CDN) megakadályozza a jogosulatlan ügyfelek szolgáló eszközök. Jogkivonat hitelesítési általában szükség, hogy *hotlinking* , amelyben egy másik webhelyre, egy üzenet üzenőfalon, például az eszközök engedélye nélkül használ a tartalom. Hotlinking hatással lehetnek a továbbítási költségeit. A CDN tokent használó hitelesítés engedélyezése esetén kérések hitelesítése CDN biztonsági kiszolgáló előtt a CDN továbbítja a tartalmat. 
 
 ## <a name="how-it-works"></a>Működés
 
@@ -42,6 +42,9 @@ Jogkivonat hitelesítési ellenőrzi, hogy kérelmek által előállított megb�
 
 További információkért lásd: a részletes konfigurációs példák mindegyik paraméterére vonatkozóan [beállítása a tokent használó hitelesítés](#setting-up-token-authentication).
 
+>[!IMPORTANT] 
+> Token engedélyezési bármilyen útvonalat ehhez a fiókhoz engedélyezett, ha a standard-gyorsítótár üzemmódban az egyetlen mód a lekérdezési karakterláncok gyorsítótárazása használható. További információkért lásd: [Az Azure CDN gyorsítótárazási viselkedésének vezérlése lekérdezési karakterláncokkal](cdn-query-string-premium.md).
+
 ## <a name="reference-architecture"></a>Referenciaarchitektúra
 
 A következő munkafolyamat-ábra ismerteti, hogyan a CDN jogkivonat-hitelesítést használ a webes alkalmazás használata.
@@ -56,11 +59,11 @@ Az alábbi folyamatábra bemutatja, miként Azure CDN ellenőrzi az egyik ügyf�
 
 ## <a name="setting-up-token-authentication"></a>Token hitelesítés beállítása
 
-1. Az a [Azure-portálon](https://portal.azure.com), keresse meg a CDN-profilt, és kattintson a **kezelése** elindíthatja a kiegészítő portálon.
+1. Az a [Azure-portálon](https://portal.azure.com), keresse meg a CDN-profilt, majd válassza ki **kezelése** elindíthatja a kiegészítő portálon.
 
     ![CDN-profil Manage gomb](./media/cdn-token-auth/cdn-manage-btn.png)
 
-2. Vigye **HTTP nagy**, majd kattintson a **jogkivonat hitelesítési** az a menü. Majd állíthatja be a titkosítási kulcsot és a titkosítási paraméterek az alábbiak szerint:
+2. Vigye **HTTP nagy**, majd jelölje be **jogkivonat hitelesítési** az a menü. Majd állíthatja be a titkosítási kulcsot és a titkosítási paraméterek az alábbiak szerint:
 
     1. Hozzon létre egy vagy több titkosítási kulcsokat. A titkosítási kulcsot a kis-és nagybetűket, és az alfanumerikus karakterek tetszőleges kombinációját tartalmazhatja. Más típusú karaktereket, szóközöket is beleértve. nem engedélyezettek. A hossza legfeljebb 250 karakterből áll. Annak érdekében, hogy a titkosítási kulcsok véletlenszerű, ajánlott használatával létrehozni a [OpenSSL eszköz](https://www.openssl.org/). 
 
@@ -76,7 +79,7 @@ Az alábbi folyamatábra bemutatja, miként Azure CDN ellenőrzi az egyik ügyf�
     
     2. Adjon meg egy egyedi titkosítási kulcsot a a **elsődleges kulcs** mezőbe, majd adja meg a kulcsot egy biztonsági másolatból a **biztonsági mentési kulcs** mezőbe.
 
-    3. Válassza ki az egyes kulcsok minimális titkosítási verzióját a **minimális titkosítási verziója** listában, majd kattintson az **frissítés**:
+    3. Válassza ki az egyes kulcsok minimális titkosítási verzióját a **minimális titkosítási verziója** listában, majd válasszon **frissítés**:
        - **V2**: azt jelzi, hogy használható-e a kulcs 2.0 és 3.0 verziót jogkivonatok létrehozásához. Akkor használja ezt a beállítást, ha a 3.0-s verziója kulcs való váltás egy örökölt 2.0-s verziójának titkosítási kulcs.
        - **V3**: (ajánlott) azt jelzi, hogy a kulcsot csak használható 3.0-s verziója jogkivonatok létrehozásához.
 
@@ -130,7 +133,7 @@ Az alábbi folyamatábra bemutatja, miként Azure CDN ellenőrzi az egyik ügyf�
        >       <li>Egy állomásnevet vagy egy állomásnevet és egy elérési utat.</li>
        >       <li>Több hivatkozó kérelmei. Több hivatkozó kérelmei hozzáadásához külön minden hivatkozó vesszővel; Ne adjon hozzá egy szóközzel. Ha hivatkozó értéket adjon meg, de a hivatkozó adatokat, az nem küldi el a kérést, mert a böngésző konfigurációs, a rendszer megtagadja a kérelmet, alapértelmezés szerint.</li> 
        >       <li>Kérelmek hiányzik vagy üres hivatkozó adatokkal. Alapértelmezés szerint a <b>ec_ref_allow</b> paraméter blokkolja az ilyen típusú kérelmeket. Ahhoz, hogy ezeket a kérelmeket, vagy a szöveget, "Hiányzó", vagy adjon meg egy üres értéket (záró vesszővel válassza el).</li> 
-       >       <li>Altartományok. Altartományok engedélyezéséhez adja meg a csillag (\*). Ahhoz például, hogy engedélyezi az összes altartomány `contoso.com`, adja meg `*.contoso.com`.</li>
+       >       <li>Subdomains. Altartományok engedélyezéséhez adja meg a csillag (\*). Ahhoz például, hogy engedélyezi az összes altartomány `contoso.com`, adja meg `*.contoso.com`.</li>
        >    </ul>     
        >    Ahhoz például, hogy engedélyezze a hozzáférést a kérelmeinek `www.contoso.com`, az összes altartomány `contoso2.com`, üres vagy hiányzó hivatkozó kérelmei rendelkező kérelmek esetében adja meg, és `www.contoso.com,*.contoso.com,missing`.</td>
        > </tr>
@@ -156,27 +159,29 @@ Az alábbi folyamatábra bemutatja, miként Azure CDN ellenőrzi az egyik ügyf�
     
     6. Válassza ki a titkosítási verziójú a **titkosítási verziója** lista: **V2** 2-es verzió vagy **V3** verziójához 3 (ajánlott). 
 
-    7. Kattintson a **titkosítása** a jogkivonat létrehozásához.
+    7. Válassza ki **titkosítása** a jogkivonat létrehozásához.
 
     A jogkivonat előállítása, után megjelenik a **generált jogkivonat** mezőbe. A token használatához hozzáfűzése lekérdezési karakterláncként az URL-címe a fájl végére. Például: `http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`.
         
-    8. Lehetősége van ellenőrizni a jogkivonatot a visszafejtés eszközzel, így megtekintheti a token paraméterek. Illessze be a token értékét a **visszafejtése tokenjét** mezőbe. Válassza ki a titkosítási kulcsot használni a **kulcs visszafejtése** listában, majd kattintson az **visszafejtéséhez**.
+    8. Lehetősége van ellenőrizni a jogkivonatot a visszafejtés eszközzel, így megtekintheti a token paraméterek. Illessze be a token értékét a **visszafejtése tokenjét** mezőbe. Válassza ki a titkosítási kulcsot használni a **kulcs visszafejtése** listában, majd válasszon **visszafejtéséhez**.
 
     A token visszafejtése, miután a paraméterei megjelennek a **eredeti paraméterek** mezőbe.
 
-    9. Másik lehetőségként testreszabása eredményül, ha a rendszer megtagadja a kérelmet válaszkód típusú. Válassza ki **engedélyezve**, majd válassza ki a válaszkódot a **válaszkód** listája. **Fejlécnév** automatikusan **hely**. Kattintson a **mentése** az új válaszkód végrehajtásához. Az egyes válaszkódot, meg kell adnia a a hibalap URL-CÍMÉT a **Fejlécérték** mezőbe. A **403** válaszának kódja (tiltott) alapértelmezettként van beállítva. 
+    9. Másik lehetőségként testreszabása eredményül, ha a rendszer megtagadja a kérelmet válaszkód típusú. Válassza ki **engedélyezve**, majd válassza ki a válaszkódot a **válaszkód** listája. **Fejlécnév** automatikusan **hely**. Válassza ki **mentése** az új válaszkód végrehajtásához. Az egyes válaszkódot, meg kell adnia a a hibalap URL-CÍMÉT a **Fejlécérték** mezőbe. A **403** válaszának kódja (tiltott) alapértelmezettként van beállítva. 
 
-3. A **HTTP nagy**, kattintson a **szabálymotor**. A szabályok motor használatával alkalmazza a szolgáltatás, a jogkivonat hitelesítési szolgáltatás engedélyezése és hitelesítésre vonatkozó további token képességek engedélyezése elérési utak megadása. További információkért lásd: [szabályok motor hivatkozás](cdn-rules-engine-reference.md).
+3. A **HTTP nagy**, jelölje be **szabálymotor**. A szabályok motor használatával alkalmazza a szolgáltatás, a jogkivonat hitelesítési szolgáltatás engedélyezése és hitelesítésre vonatkozó további token képességek engedélyezése elérési utak megadása. További információkért lásd: [szabályok motor hivatkozás](cdn-rules-engine-reference.md).
 
     1. Jelöljön ki egy meglévő szabályt, vagy hozzon létre egy új szabályt, amely a token hitelesítést alkalmazni kívánt eszköz vagy elérési út megadása. 
-    2. Egy szabály tokent használó hitelesítés engedélyezéséhez jelölje be  **[jogkivonat hitelesítési](cdn-rules-engine-reference-features.md#token-auth)**  a a **szolgáltatások** listában, majd válassza a **engedélyezve**. Kattintson a **frissítés** szabály frissítésekor vagy **Hozzáadás** szabály létrehozásakor.
+    2. Egy szabály tokent használó hitelesítés engedélyezéséhez jelölje be **[jogkivonat hitelesítési](cdn-rules-engine-reference-features.md#token-auth)** a a **szolgáltatások** listában, majd válassza a **engedélyezve**. Válassza ki **frissítés** szabály frissítésekor vagy **Hozzáadás** szabály létrehozásakor.
         
     ![CDN szabályok motor tokent használó hitelesítés engedélyezése – példa](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
 
 4. A szabályok motor további jogkivonat hitelesítési szolgáltatásokkal is engedélyezheti. A következő funkciók engedélyezéséhez válassza ki azt a **szolgáltatások** listában, majd válasszon **engedélyezve**.
     
     - **[A token hitelesítés megtagadása kód](cdn-rules-engine-reference-features.md#token-auth-denial-code)**: határozza meg a választ a felhasználó eredményül, amikor a rendszer megtagadja a kérelmet. Az itt szabályok felülbírálása beállított válaszkód a **egyéni Megtagadás kezelése** szakasz a jogkivonat-alapú hitelesítés oldalon.
+
     - **[A token Auth figyelmen kívül hagyása URL-cím esetében](cdn-rules-engine-reference-features.md#token-auth-ignore-url-case)**: meghatározza, hogy a jogkivonat érvényesítésére használt URL-cím kis-és nagybetűket.
+
     - **[A token Auth paraméter](cdn-rules-engine-reference-features.md#token-auth-parameter)**: átnevezi a jogkivonat hitelesítési lekérdezési karakterláncot, amely a kért URL-cím jelenik meg. 
         
     ![CDN-szabályok motor-tokent használó hitelesítés beállításai – példa](./media/cdn-token-auth/cdn-rules-engine2.png)
@@ -184,7 +189,7 @@ Az alábbi folyamatábra bemutatja, miként Azure CDN ellenőrzi az egyik ügyf�
 5. Testre szabhatja a jogkivonatot a forráskód [GitHub](https://github.com/VerizonDigital/ectoken).
 Rendelkezésre álló nyelvek:
     
-   - C#
+   - C
    - C#
    - PHP
    - Perl
@@ -193,4 +198,4 @@ Rendelkezésre álló nyelvek:
 
 ## <a name="azure-cdn-features-and-provider-pricing"></a>Az Azure CDN szolgáltatásai és szolgáltató díjszabása
 
-Funkciókkal kapcsolatos információkért lásd: [CDN áttekintésével](cdn-overview.md). További információk a díjszabásról: [Content Delivery Network árképzési](https://azure.microsoft.com/pricing/details/cdn/).
+Funkciókkal kapcsolatos információkért lásd: [Azure CDN termék funkcióiról](cdn-features.md). További információk a díjszabásról: [Content Delivery Network árképzési](https://azure.microsoft.com/pricing/details/cdn/).

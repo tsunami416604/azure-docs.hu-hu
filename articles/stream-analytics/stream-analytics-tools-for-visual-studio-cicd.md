@@ -1,35 +1,30 @@
 ---
-title: A folyamatos integrációt és telepítést folyamat létrehozásához használja a Stream Analytics Visual Studio eszközök |} Microsoft Docs
-description: Az oktatóanyag a szolgáltatás folyamatos integrációt és telepítést folyamat beállításához használja a Stream Analytics Visual Studio eszközök
-keywords: a Visual studio NuGet, DevOps, CI/CD
-documentationcenter: ''
+title: Folyamatosan integrálása és a Stream Analytics eszközökkel fejleszthet
+description: A cikkből megtudhatja, hogyan használhatja a Visual Studio eszközök Azure Stream Analytics állíthat be egy folyamatos integrációt és a telepítési folyamat.
 services: stream-analytics
 author: su-jie
-manager: ''
-ms.assetid: a473ea0a-3eaa-4e5b-aaa1-fec7e9069f20
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 9/27/2017
 ms.author: sujie
-ms.openlocfilehash: 14bb15f19b517b55281959f0de970e3f5e0d360b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 9/27/2017
+ms.openlocfilehash: e4e831c602255df66f4c86ffa17336f51d2b52f7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="use-stream-analytics-visual-studio-tools-to-set-up-a-continuous-integration-and-deployment-process"></a>Állítsa be a folyamatos integrációt és a telepítési folyamatot a Stream Analytics Visual Studio eszközök segítségével
-Ebben az oktatóanyagban elsajátíthatja, hogyan használható az Azure Stream Analytics Visual Studio eszközök állíthat be egy folyamatos integrációt és a telepítési folyamat.
+# <a name="continuously-integrate-and-develop-with-stream-analytics-tools"></a>Folyamatosan integrálása és a Stream Analytics eszközökkel fejleszthet
+A cikkből megtudhatja, hogyan használható az Azure Stream Analytics-eszközök Visual Studio használatával állítsa be a folyamatos integrációt és a telepítési folyamatot.
 
-A legújabb verzióra (2.3.0000.0 vagy újabb) a [Stream Analytics tools for Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio) MSBuild támogatása.
+2.3.0000.0 használata verzió vagy újabb, [Stream Analytics tools for Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio) kérhet támogatást az MSBuild.
 
-Szerepel továbbá egy újonnan kiadott NuGet-csomag [Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/). Az MSBuild, a helyi Futtatás és a központi telepítési eszközöket, amelyek támogatják a folyamatos integrációt és a telepítési folyamatot a Stream Analytics Visual Studio-projektek biztosít. 
+A NuGet csomag érhető el: [Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/). Az MSBuild, a helyi Futtatás és a központi telepítési eszközöket, amelyek támogatják a folyamatos integrációt és a telepítési folyamatot a Stream Analytics Visual Studio-projektek biztosít. 
 > [!NOTE] 
 A NuGet-csomag használható a Visual Studio csak a 2.3.0000.0 vagy annál újabb Stream Analytics eszközök. Ha a Visual Studio eszközök korábbi verzióiban létrehozott projektek, nyissa meg őket a 2.3.0000.0 vagy annál újabb, és mentse. Majd az új képességek is engedélyezve vannak. 
 
-Ismerje meg, hogyan használható a [Stream Analytics tools for Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
+További információkért lásd: [Stream Analytics tools for Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
 
 ## <a name="msbuild"></a>MSBuild
 Például a standard Visual Studio MSBuild élmény, a projekt felépítéséhez két lehetőség van. Kattintson jobb gombbal a projektre, és válassza a **Build**. Is használhat, **MSBuild** a NuGet csomag a parancssorból.

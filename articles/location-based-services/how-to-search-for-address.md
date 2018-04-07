@@ -1,18 +1,17 @@
 ---
-title: "Az Azure-alapú helyszolgáltatás (előzetes verzió) keresési szolgáltatással cím keresése |} Microsoft Docs"
-description: "Megtudhatja, hogyan keresse meg az Azure-alapú helyszolgáltatás (előzetes verzió) – keresés szolgáltatást segítségével"
+title: Az Azure-alapú helyszolgáltatás (előzetes verzió) keresési szolgáltatással cím keresése |} Microsoft Docs
+description: Megtudhatja, hogyan keresse meg az Azure-alapú helyszolgáltatás (előzetes verzió) – keresés szolgáltatást segítségével
 services: location-based-services
-keywords: "Ne adjon hozzá kulcsszavakat és ne szerkessze azokat a keresőoptimalizálást végző szakemberrel való egyeztetés nélkül."
 author: kgremban
 ms.author: kgremban
 ms.date: 11/29/2017
 ms.topic: article
 ms.service: location-based-services
-ms.openlocfilehash: dd8026c55d71f6e421b976d8e7ae12f1cfd679a1
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f8b886607fe0915396a659593cd5910a271fca93
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-find-an-address-using-the-azure-location-based-services-preview-search-service"></a>Hol találhatók az Azure-alapú helyszolgáltatás (előzetes verzió) keresési szolgáltatás segítségével
 A keresési szolgáltatás egy egy RESTful API-k, címek, a helyek, a pontokat iránt érdeklődik, üzleti listák és egyéb földrajzi információk keresése fejlesztők számára készült. A keresési szolgáltatás a szélesség/hosszúsági egy adott cím, alhálózatok közötti utca, földrajzi funkció vagy információs jel (POI) rendeli. A keresési szolgáltatás API-k által visszaadott szélességi és hosszúsági értékeket más Azure-alapú helyszolgáltatás például az útvonal és a forgalom áramlását API-k paramétereiben használható.

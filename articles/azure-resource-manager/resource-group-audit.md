@@ -1,8 +1,8 @@
 ---
-title: "Azure tevékenységi naplóit figyelését erőforrások megtekintése |} Microsoft Docs"
-description: "Használja a tevékenységi naplóit felülvizsgálati felhasználói műveletek és a hibák. Az Azure portál PowerShell, az Azure CLI és REST jeleníti meg."
+title: Azure tevékenységi naplóit figyelését erőforrások megtekintése |} Microsoft Docs
+description: Használja a tevékenységi naplóit felülvizsgálati felhasználói műveletek és a hibák. Az Azure portál PowerShell, az Azure CLI és REST jeleníti meg.
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -12,15 +12,16 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 04/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: fb6fb3f7172673be70b1a6dcfd77e42cd982e248
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 990c3ed8c6fd79430b27c7c96673f7845e54b26f
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>Az erőforrás műveletek naplózása tevékenység naplók megtekintése
+
 Keresztül tevékenységi naplóit meghatározhatja:
 
 * milyen műveleteket az előfizetésében erőforrásokon elvégzett
@@ -38,6 +39,7 @@ Tevékenységi naplóit 90 napig megőrződnek. Bármely dátumtartomány alapj�
 Adatok lekérését a portálon, a PowerShell, az Azure parancssori felület, Insights REST API-t a tevékenységi naplóit vagy [Insights .NET kódtár](https://www.nuget.org/packages/Microsoft.Azure.Insights/).
 
 ## <a name="portal"></a>Portál
+
 1. Válassza ki, ha a tevékenység-naplókat a portálon keresztül **figyelő**.
    
     ![Válassza ki a tevékenységi naplóit](./media/resource-group-audit/select-monitor.png)
@@ -68,6 +70,7 @@ Adatok lekérését a portálon, a PowerShell, az Azure parancssori felület, In
     ![nézet művelet](./media/resource-group-audit/view-operation.png)  
 
 ## <a name="powershell"></a>PowerShell
+
 1. A naplóbejegyzések lekéréséhez futtassa a **Get-AzureRmLog** parancsot. A bejegyzések szűréséhez további paramétereket megadnia. Ha nem ad meg egy kezdő és záró idő, visszaadja a bejegyzéseket az elmúlt egy óra. Például beolvasni a művelet erőforráscsoport során az elmúlt egy órában fusson:
 
   ```powershell
@@ -136,17 +139,20 @@ Adatok lekérését a portálon, a PowerShell, az Azure parancssori felület, In
 
 
 ## <a name="azure-cli"></a>Azure CLI
-* Naplóbejegyzéseket lekéréséhez futtassa a **azure-csoportok napló megjelenítése** parancsot.
+
+A naplóbejegyzések lekéréséhez futtassa a [az figyelő tevékenységnapló lista](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) parancsot.
 
   ```azurecli
-  azure group log show ExampleGroup --json
+  az monitor activity-log list --resource-group <group name>
   ```
 
 
 ## <a name="rest-api"></a>REST API
+
 A REST műveleteinek használata a műveletnapló részét képezik a [Insights REST API](https://msdn.microsoft.com/library/azure/dn931943.aspx). Tevékenység naplóeseményeket lekéréséhez lásd: [listában szereplő előfizetés felügyeleti események](https://msdn.microsoft.com/library/azure/dn931934.aspx).
 
 ## <a name="next-steps"></a>További lépések
+
 * Az Azure tevékenységi naplóit segítségével a Power BI információt kaphat a nagyobb az előfizetésében szereplő műveleteket. Lásd: [megtekintése és elemzése a Power bi-ban és több Azure tevékenységi naplóit](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
 * Biztonsági házirendek beállításával kapcsolatos további tudnivalókért lásd: [Azure szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-configure.md).
 * Az üzembe helyezési műveleteinek megtekintése a parancsokkal kapcsolatban további tudnivalókért lásd: [üzembe helyezési műveleteinek megtekintése](resource-manager-deployment-operations.md).

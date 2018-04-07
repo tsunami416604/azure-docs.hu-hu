@@ -9,11 +9,11 @@ ms.date: 01/17/2018
 ms.topic: article
 ms.service: azure-policy
 ms.custom: ''
-ms.openlocfilehash: 50965010d821d4edf94e2f5727546cb56f61f5db
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 42fdfa2eb629351c38fb72c20a62cd7d78acf229
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -70,7 +70,7 @@ A **mód** határozza meg, milyen típusú erőforrások kiértékelendő tábla
 * `all`: erőforráscsoportok és az összes erőforrástípus kiértékelése 
 * `indexed`: csak értékelje ki, amely támogatja a címkék és a hely típusú erőforrások
 
-Azt javasoljuk, hogy állítsa **mód** való `all` a legtöbb esetben. Az összes házirend-definíciók létrehozása a portál használata révén a `all` mód. Ha a PowerShell vagy Azure CLI-t használ, meg kell adnia a **mód** paraméter manuálisan.
+Azt javasoljuk, hogy állítsa **mód** való `all` a legtöbb esetben. Az összes házirend-definíciók létrehozása a portál használata révén a `all` mód. Ha a PowerShell vagy Azure CLI-t használ, meg kell adnia a **mód** paraméter manuálisan. Ha a házirend-definíció nem tartalmaz egy **mód** érték azt az alapértelmezett érték a `indexed` a visszamenőleges kompatibilitás.
 
 `indexed` kell használni, amikor a házirendek létrehozásával kényszeríti ki a címkéket és a helyek. Ez azonban nem kötelező, de megakadályozza, hogy erőforrásokat, amelyek nem támogatják a címkék és a helyek jelennek meg, nem kompatibilis a megfelelőségi eredmények a. Az egyetlen kivétel ez alól **erőforráscsoportok**. Házirendek kényszerítése, hely vagy egy erőforráscsoportot a címkék megkísérlő-et kell beállítania **mód** való `all` és kifejezetten célja a `Microsoft.Resources/subscriptions/resourceGroup` típusa. Egy vonatkozó példáért lásd: [erőforráscímkék csoport kényszerítése](scripts/enforce-tag-rg.md).
 
@@ -102,6 +102,8 @@ A metaadat-tulajdonságnak belül használható **strongType** arra, hogy az Azu
 * `"resourceTypes"`
 * `"storageSkus"`
 * `"vmSKUs"`
+* `"existingResourceGroups"`
+* `"omsWorkspace"`
 
 A házirend szabályban hivatkozási paraméter a következő szintaxissal:
 

@@ -1,12 +1,12 @@
 ---
-title: "Az Azure-ban irányítás |} Microsoft Docs"
-description: "További információk a felhőalapú számítási szolgáltatás, amely tartalmazza a számítási példányokért széles kijelölt & szolgáltatások, amely is fel-le automatikusan az alkalmazás vagy a vállalat igényeinek."
+title: Az Azure-ban irányítás |} Microsoft Docs
+description: További információk a felhőalapú számítási szolgáltatás, amely tartalmazza a számítási példányokért széles kijelölt & szolgáltatások, amely is fel-le automatikusan az alkalmazás vagy a vállalat igényeinek.
 services: security
 documentationcenter: na
 author: UnifyCloud
 manager: swadhwa
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 875b78f6af330aea3333b045ee72e9632e9aa8a6
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 04d9e6152c87a49a5f1b1b1a29c16d80de00f4e9
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="governance-in-azure"></a>Az Azure-irányítás
+# <a name="governance-in-azure"></a>Irányítás az Azure-ban
 
 Tudjuk, hogy biztonsági-e a feladat a felhőben, és hogy mennyire fontos, hogy található-e az Azure biztonsági pontos és időben információt. A legjobb okai az alkalmazások és szolgáltatások Azure használandó, a széles köréről a biztonsági eszközök és képességek előnyeit. Ezekkel az eszközökkel és képességek segítségével történő biztonságos megoldásokat keres a biztonságos Azure platformon.
 
@@ -115,7 +115,7 @@ A nagyvállalati szerződéssel rendelkező szervezetek számára Azure-előfize
 
 - fiók tulajdonosának
 
-- Szolgáltatás-rendszergazda
+- Szolgáltatásadminisztrátor
 
 Ezt a hierarchiát szabályozza a következő:
 
@@ -199,7 +199,7 @@ A 2014-re az Azure erőforrás-kezelő, amely hozzá, az erőforráscsoport foga
 
 Erőforrás-kezelő lehetővé teszi, amelyre az erőforrások kezelése, számlázási vagy természetes affinitás jelentéssel bíró csoportokba. Amint azt korábban említettük, az Azure két üzembe helyezési modellel rendelkezik. A korábbi [Klasszikus modell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model), a felügyeleti alapvető egysége lett az előfizetés. Előfizetés, amely nagy mennyiségű előfizetések létrehozásához vezetett erőforrások lebontva bonyolult volt. A Resource Manager modellt látott erőforráscsoportok bevezetése.
 
-Egy erőforráscsoport egy olyan tároló, amely egy Azure megoldás kapcsolódó erőforrásokat tárol. [Az erőforráscsoport](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) szerepelhet a megoldás összes erőforrást, és csak azokat az erőforrásokat, amelyet szeretne kezelése csoportként. A szervezet számára legideálisabb elosztás alapján eldöntheti, hogyan szeretné elosztani az erőforrásokat az erőforráscsoportok között.
+Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. [Az erőforráscsoport](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) szerepelhet a megoldás összes erőforrást, és csak azokat az erőforrásokat, amelyet szeretne kezelése csoportként. A szervezet számára legideálisabb elosztás alapján eldöntheti, hogyan szeretné elosztani az erőforrásokat az erőforráscsoportok között.
 
 A sablonokra vonatkozó javaslatokat talál a [Best practices for creating Azure Resource Manager templates](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices) (Az Azure Resource Manager-sablonok létrehozásának ajánlott eljárásai) című cikkben.
 
@@ -359,7 +359,7 @@ Minden üzleti különböző igények rendelkezik, és minden üzleti élvezzék
 
 Mi az ügyfelek szeretné, hogy a szolgáltatók van:
 
-- **Az adatok biztonságos** közben az adatok biztonsági és felügyeleti szabályozást igazolása, hogy a felhő képes biztosítani növekedett, informatikai vezetők továbbra is van szó, hogy a felhőben történő hagyja őket sebezhetőbb a támadók, mint az aktuális belső fejlesztésű megoldások.
+- **Az adatok biztonságos** közben az adatok biztonsági és felügyeleti szabályozást igazolása, hogy a felhő képes biztosítani növekedett, informatikai vezetők továbbra is van szó, hogy a felhőben történő hagyja őket ki lehetnek téve a támadók a jelenlegi belső fejlesztésű megoldások.
 
 - **Az adatok megőrzése** titkos felhőszolgáltatások előléptetése egyedi adatvédelmi kapcsolatban felmerülő kihívások vállalatok számára. Mivel a vállalatok keresse meg a felhőbe, az infrastruktúra használati díjait és javíthatják a nagyon hatékony eszközök, azokat is aggódni vezérelhető, hogy az adatok tárolására, ki fér hozzá, és felhasználásáról lekérdezi.
 
@@ -371,7 +371,7 @@ Mi az ügyfelek szeretné, hogy a szolgáltatók van:
 
 ## <a name="security-configuration-monitoring-and-alerting"></a>Biztonsági beállítások, figyelés és riasztás
 
-Az Azure-előfizetők több eszközről kezelhetik felhőkörnyezeteiket, például felügyeleti munkaállomásokról, fejlesztői PC-kről, és olyan jogosult végfelhasználói eszközökről is, amelyek feladatspecifikus engedélyekkel rendelkeznek. Bizonyos esetekben a felügyeleti funkciók webalapú konzolok, például az Azure-portálon keresztül történik. Más esetekben az Azure-hoz való közvetlen kapcsolat létesíthető virtuális magánhálózatokon (VPN), terminálszolgáltatásokon, ügyfél-alkalmazásprotokollokon, vagy (szoftveresen) az Azure Szolgáltatásfelügyeleti API-n (SMAPI) keresztül. Továbbá az ügyfél-végpontok lehetnek vagy tartományhoz csatlakoztatottak, vagy pedig elkülönítettek és felügyelet nélküliek, mint például a táblagépek vagy az okostelefonok.
+Az Azure-előfizetők több eszközről kezelhetik felhőkörnyezeteiket, például felügyeleti munkaállomásokról, fejlesztői PC-kről, és olyan jogosult végfelhasználói eszközökről is, amelyek feladatspecifikus engedélyekkel rendelkeznek. Bizonyos esetekben a felügyeleti funkciók webalapú konzolok, például az Azure-portálon keresztül történik. Más esetekben az Azure-hoz való közvetlen kapcsolat létesíthető virtuális magánhálózatokon (VPN), terminálszolgáltatásokon, ügyfél-alkalmazásprotokollokon, vagy (szoftveresen) az Azure Service Management API-n (SMAPI) keresztül. Továbbá az ügyfél-végpontok lehetnek vagy tartományhoz csatlakoztatottak, vagy pedig elkülönítettek és felügyelet nélküliek, mint például a táblagépek vagy az okostelefonok.
 
 A sokféle hozzáférési és kezelési képesség a lehetőségek széles tárházát biztosítja, ugyanakkor nagymértékű kockázatot is jelent a felhőkörnyezetek esetén. A felügyeleti műveletek kezelése, nyomon követése és naplózása nehézségekbe ütközhet. Ez a sokrétűség biztonsági fenyegetésekkel is járhat, mivel nem szabályozott hozzáférést tesz lehetővé a felhőszolgáltatások kezelésére használt ügyfélvégpontokhoz. Az általános vagy személyes munkaállomások fejlesztésre és infrastruktúra-kezelésre való használata olyan kiszámíthatatlan fenyegetési vektoroknak enged utat, mint például a webböngészés (pl. alapesetben megbízható weboldalak megfertőződése, ún. watering hole attack) vagy az e-mail (pl. pszichológiai manipuláció és adathalászat).
 
@@ -379,7 +379,7 @@ A megfigyelés és a naplózás biztosítják a felügyeleti tevékenység köve
 
 Az Azure biztonsági irányítás az AD DS csoportházirend-objektumokban, szabályozhatja a rendszergazdák Windows felületeihez, mint például a fájlmegosztást. Terjessze ki a naplózási és megfigyelési folyamatokat a felügyeleti munkaállomásokra. Kövessen nyomon minden rendszergazdai és fejlesztői hozzáférést és tevékenységet.
 
-### <a name="azure-security-center"></a>Az Azure security Centerben
+### <a name="azure-security-center"></a>Azure Security Center
 
 A [az Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) központi az előfizetések erőforrások biztonsági állapotát jeleníti meg, és ajánlásokat, amelyekkel megakadályozható a fertőzött erőforrásokat. Ez részletesebb házirendek (például fog alkalmazni házirendeket, amelyek lehetővé teszik a vállalat személyessé tétele érdekében azok állapotát a kockázat, azok címzési adott erőforráscsoportban) engedélyezéséhez.
 
@@ -406,37 +406,37 @@ Az Azure Security Center figyeli a következő Azure-erőforrások:
 
 - Azure virtuális hálózatok
 
-- Az Azure SQL-szolgáltatás
+- Azure SQL service
 
 - Webalkalmazási tűzfal virtuális gépeken és a például az Azure-előfizetésében integrált partnermegoldások [App Service Environment-környezet](https://docs.microsoft.com/azure/app-service/app-service-app-service-environments-readme).
 
-### <a name="operations-management-suite"></a>Operations Management Suite
+### <a name="log-analytics"></a>Log Analytics
 
-Az OMS szoftverek fejlesztési és szolgáltatás csapat információ-biztonság és [cégirányítási program](https://github.com/Microsoft/azure-docs/blob/master/articles/log-analytics/log-analytics-security.md) támogatja az üzleti követelmények és részben ismertetett módon törvény és szabályozás megfelelő [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/) és [Microsoft Megbízhatósági központ megfelelőségi](https://www.microsoft.com/TrustCenter/Compliance/default.aspx). Hogyan OMS biztonsági követelmények meghatározásához, biztonsági vezérlők azonosítja, kezeli, és figyeli a kockázatok is létezik ismerteti. Évente, azt felülvizsgálati házirendeket, szabványokat, eljárásokra és útmutatást.
+A Naplóelemzési szoftverek fejlesztési és szolgáltatás csapat információ-biztonság és [cégirányítási program](https://github.com/Microsoft/azure-docs/blob/master/articles/log-analytics/log-analytics-security.md) támogatja az üzleti követelmények és részben ismertetett módon törvény és szabályozás megfelelő [Microsoft Azure megbízhatóság Center](https://azure.microsoft.com/support/trust-center/) és [Microsoft adatvédelmi központ megfelelőségi](https://www.microsoft.com/TrustCenter/Compliance/default.aspx). Hogyan Naplóelemzési biztonsági követelmények meghatározásához, biztonsági vezérlők azonosítja, kezeli, és figyeli a kockázatok is létezik ismerteti. Évente, azt felülvizsgálati házirendeket, szabványokat, eljárásokra és útmutatást.
 
-Minden egyes OMS fejlesztési csoport egy tagja megkapja a formális alkalmazás biztonsági képzés. A verziókezelő rendszer belsőleg, szoftverek fejlesztésére használjuk. Minden szoftver projekt védik a rendszerhez.
+Minden Naplóelemzési fejlesztési csoport egy tagja megkapja a formális alkalmazás biztonsági képzés. A verziókezelő rendszer belsőleg, szoftverek fejlesztésére használjuk. Minden szoftver projekt védik a rendszerhez.
 
-A Microsoft hogyan felügyeli, és értékeli az összes szolgáltatás a Microsoft biztonsági és megfelelőségi csoport rendelkezik. Biztonsági informatikusok jött létre a team, és nincsenek OMS fejlesztése mérnöki osztályai társítva. A biztonsági tisztviselő saját felügyeleti lánc rendelkezik, és végezze el a termékek és szolgáltatások biztosításához, biztonsági és megfelelőségi független értékeléseket.
+A Microsoft hogyan felügyeli, és értékeli az összes szolgáltatás a Microsoft biztonsági és megfelelőségi csoport rendelkezik. Biztonsági informatikusok jött létre a team, és nincsenek Naplóelemzési fejlesztése mérnöki osztályai társítva. A biztonsági tisztviselő saját felügyeleti lánc rendelkezik, és végezze el a termékek és szolgáltatások biztosításához, biztonsági és megfelelőségi független értékeléseket.
 
-Az Operations Management Suite (más néven OMS) olyan felügyeleti szolgáltatások gyűjteménye, amelyek kialakítása már a kezdetektől a felhőben történt. Ahelyett, hogy telepíti, és a helyi erőforrások kezelése, OMS-összetevők teljes mértékben az Azure-ban tárolja. Minimális konfigurációt igényelnek, és akár percek alatt használatba vehetők.
+Azure szolgáltatások elindítása a felhőben lévő tervezett gyűjteményét tartalmazza. Ahelyett, hogy telepíti, és a helyi erőforrások kezelése, ezek az összetevők teljes mértékben az Azure-ban üzemeltetett. Minimális konfigurációt igényelnek, és akár percek alatt használatba vehetők.
 
 ![Az Operations Manager Suite](./media/governance-in-azure/security-governance-in-azure-fig8.png)
 
-Annak ellenére, hogy az OMS-szolgáltatások a felhőben futnak, ez nem jelenti azt, hogy ne tudnák hatékonyan felügyelni a helyszíni környezetet.
+Csak, mert a felhőben futtatható szolgáltatások Naplóelemzési nem jelenti azt, hogy azokat ténylegesen nem kezelheti a helyszíni környezetben.
 
 Az ügynök helyezhető el a Windows vagy az adatközpont, és a Linux-számítógép adatokat küld Naplóelemzési, ahol elemzése a felhőből vagy a helyi szolgáltatások gyűjtött összes egyéb adatokkal együtt. Azure biztonsági mentési és az Azure Site Recovery segítségével kihasználhatja a biztonsági mentési és magas rendelkezésre álláshoz tartozó a helyi erőforrásokkal a felhőben.
 
 A felhőben futó runbookok általában nem férnek hozzá a helyszíni erőforrásokhoz, ha azonban egy vagy több gépre ügynököt telepít, az ügynökök futtathatják a runbookokat az adatközpontban. Amikor elindít egy runbookot, csak meg kell adnia, hogy a felhőben vagy a helyi feldolgozón szeretné futtatni azt.
 
-Az OMS legfontosabb funkcióit az Azure-ban futó szolgáltatások biztosítják. Mindegyik szolgáltatás egy adott felügyeleti funkciót biztosít, és a szolgáltatások kombinálásával különféle felügyeleti forgatókönyvek valósíthatók meg.
+Naplóelemzési legfontosabb funkcióit biztosítja az Azure-ban futó szolgáltatások készlete. Mindegyik szolgáltatás egy adott felügyeleti funkciót biztosít, és a szolgáltatások kombinálásával különféle felügyeleti forgatókönyvek valósíthatók meg.
 
 ![Az Operations Manager Suite](./media/governance-in-azure/security-governance-in-azure-fig9.JPG)
 
-Azure-művelet manager bővíti a Funkciók, adja meg a felügyeleti megoldásokra. [Megoldások](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions) logika előre csomagolt csoportja egy hasznosítja ki egy vagy több OMS-szolgáltatások felügyeleti forgatókönyv megvalósításához.
+Azure-művelet manager bővíti a Funkciók, adja meg a felügyeleti megoldásokra. [Megoldások](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions) logika előre csomagolt csoportja egy egy vagy több felügyeleti szolgáltatást, ami felügyeleti forgatókönyv megvalósításához.
 
 ![Azure-művelet kezelése](./media/governance-in-azure/security-governance-in-azure-fig10.png)
 
-A Microsoft és partnerei által kínált különböző megoldások egyszerűen hozzáadhatók az Azure-előfizetéshez, és így növelhető az OMS-sel kapcsolatos befektetéseinek értéke.
+Más megoldások érhetők el, a Microsoft és a partnerek, hogy könnyen adhat az Azure-előfizetéshez Naplóelemzési befektetéseit értékének növelése érdekében.
 
 Partnerként a saját megoldások támogatják az alkalmazások és szolgáltatások és azok a felhasználók számára az Azure piactér vagy a gyors üzembe helyezési sablonokat is létrehozhat.
 
@@ -455,7 +455,7 @@ Különböző szolgáltatások, beleértve a különböző riasztások érhetők
 >[!Note]
 > Lásd: [riasztások beállítása a Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-alerts) és [figyelése rendelkezésre állásának és reakcióidőt, a webhely](https://docs.microsoft.com/azure/application-insights/app-insights-monitor-web-app-availability).
 
-- Naplóelemzési (Operations Management Suite): Lehetővé teszi, hogy a tevékenység és a diagnosztikai naplók szolgáltatáshoz útválasztását. Az Operations Management Suite metrika, a napló és a más riasztástípusok ettől teszi lehetővé.
+- Naplóelemzési: Lehetővé teszi, hogy a tevékenység és a diagnosztikai naplók szolgáltatáshoz útválasztását, és lehetővé teszi, hogy a metrika, naplózási és más riasztástípusok ettől.
 
 >[!Note]
 > További információkért lásd: a riasztások [Naplóelemzési](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts).
@@ -484,7 +484,7 @@ Az alábbiakban a fő eszközöket:
 - **A System Center Operations Manager (SCOM)** van, felügyelheti és figyelheti a nagy felhőalapú telepítések. Valószínűleg már tisztában van, a felügyeleti eszköz a helyi Windows Server és Hyper-V alapú-felhők, de is integrálása és az Azure-alkalmazások kezelése. Többek között az Application Insights telepíthet a meglévő élő alkalmazásokra. Ha egy alkalmazás leáll, láthatja, másodpercben.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Ajánlott eljárások Azure Resource Manager-sablonok létrehozásához](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices).
 

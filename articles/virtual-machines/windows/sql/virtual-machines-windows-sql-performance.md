@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/20/2018
 ms.author: jroth
-ms.openlocfilehash: 2aa066caf6239f29038228c3c91607d913e70682
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e4f955a0880254cb67ccd3e46ad04b3685341263
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="performance-best-practices-for-sql-server-in-azure-virtual-machines"></a>Ajánlott eljárások az SQL Server teljesítményének Azure Virtual Machines szolgáltatásbeli növeléséhez
 
@@ -39,7 +39,7 @@ A következő az optimális teljesítmény érdekében az SQL Server Azure virtu
 
 | Terület | Optimalizálás. |
 | --- | --- |
-| [Virtuálisgép-mérettel](#vm-size-guidance) |[DS3](../sizes-memory.md) vagy újabb SQL Enterprise Edition.<br/><br/>[DS2](../sizes-memory.md) vagy újabb SQL Standard és Web kiadások. |
+| [Virtuálisgép-mérettel](#vm-size-guidance) |[DS3](../sizes-general.md) vagy újabb SQL Enterprise Edition.<br/><br/>[DS2](../sizes-general.md) vagy újabb SQL Standard és Web kiadások. |
 | [Storage](#storage-guidance) |Használjon [prémium szintű Storage](../premium-storage.md). Standard szintű tárolót csak fejlesztési és tesztelési célú ajánlott.<br/><br/>Tartsa a [tárfiók](../../../storage/common/storage-create-storage-account.md) és az SQL Server virtuális gép ugyanabban a régióban.<br/><br/>Tiltsa le az Azure [georedundáns tárolás](../../../storage/common/storage-redundancy.md) (georeplikáció) a tárfiók. |
 | [Lemezek](#disks-guidance) |Legalább 2 használja [P30 lemezek](../premium-storage.md#scalability-and-performance-targets) (1. a naplófájlok; 1. az adatfájlok és a TempDB).<br/><br/>Ne használja az operációs rendszer vagy ideiglenes lemezek adatbázistár vagy naplózás.<br/><br/>A lemez(ek) üzemeltető, az adatok és a TempDB adatfájlok olvasási gyorsítótárazás engedélyezése<br/><br/>Ne engedélyezze a naplófájl üzemeltető lemez(ek) gyorsítótárazás.<br/><br/>Fontos: Az SQL Server szolgáltatás leállítása egy Azure virtuális lemezt a gyorsítótár beállításainak módosításakor.<br/><br/>Paritásos több Azure adatlemezek nagyobb IO átviteli sebesség eléréséhez.<br/><br/>Formázza a dokumentált lemezfoglalás méretét. |
 | [I/O](#io-guidance) |Adatbázis lap tömörítésének engedélyezéséhez.<br/><br/>Az adatfájlok azonnali fájlinicializálása engedélyezése.<br/><br/>Az adatbázis automatikus növekedésre korlátozza.<br/><br/>Tiltsa le az adatbázis autoshrink.<br/><br/>Összes adatbázis áthelyezése adatlemezek, beleértve a rendszer-adatbázisokat.<br/><br/>Helyezze át az SQL Server hiba naplózásához és követéséhez könyvtárak adatlemezek.<br/><br/>A telepítő biztonsági másolat és az adatbázis alapértelmezett tárolási helyeit.<br/><br/>Zárolt lapok engedélyezése.<br/><br/>SQL Server teljesítményét javítások alkalmazása. |

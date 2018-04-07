@@ -1,11 +1,11 @@
 ---
-title: "Virtuális gép létrehozása az Azure portálon |} Microsoft Docs"
-description: "Windows virtuális gép létrehozása az Azure portálon."
+title: Virtuális gép létrehozása az Azure portálon |} Microsoft Docs
+description: Windows virtuális gép létrehozása az Azure portálon.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ROBOTS: NOINDEX
 ms.assetid: 1871f823-ebd7-4eff-9a22-8e2411555595
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
-ms.openlocfilehash: 99a67821ab926983205e2327c428e854d20a0cf5
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 5fd2128ff436d3211f41c7dfdcc4c2b8aabd0eb0
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-virtual-machine-running-windows-in-the-azure-portal"></a>Az Azure portálon Windows rendszerű virtuális gép létrehozása
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ Ez a szakasz bemutatja, hogyan használható a **irányítópult** válassza ki,
 
 Virtuális gépek használatával is létrehozhat [a saját lemezképek](createupload-vhd.md). Ezzel és más módszerekkel kapcsolatos további tudnivalókért lásd: [Windows virtuális gépek létrehozásának különböző módszerei](../../virtual-machines-windows-creation-choices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-## <a id="createvirtualmachine"></a>a virtuális gép létrehozása
+## <a id="createvirtualmachine"> </a>A virtuális gép létrehozása
 [!INCLUDE [virtual-machines-create-WindowsVM](../../../../includes/virtual-machines-create-windowsvm.md)]
 
 ## <a name="next-steps"></a>További lépések

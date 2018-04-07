@@ -1,13 +1,13 @@
 ---
-title: "Linux virtuális gép létrehozása Azure-sablon alapján az Azure CLI 1.0 |} Microsoft Docs"
-description: "Linux virtuális gép létrehozása az Azure-ban az Azure CLI 1.0 és az Azure Resource Manager-sablon használatával."
+title: Linux virtuális gép létrehozása Azure-sablon alapján az Azure CLI 1.0 |} Microsoft Docs
+description: Linux virtuális gép létrehozása az Azure-ban az Azure CLI 1.0 és az Azure Resource Manager-sablon használatával.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: vlivech
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/12/2017
 ms.author: v-livech
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 33d4aaa78fcdf3bd9e2e236606f2d3049f464a8a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 620adcba9e136aa56e7a4867196ce5b9249b6072
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-create-a-linux-vm-using-the-azure-cli-10-an-azure-resource-manager-template"></a>Linux virtuális gépet az Azure CLI 1.0 Azure Resource Manager-sablon létrehozása
 Ez a cikk bemutatja, hogyan helyezhet üzembe gyorsan Linux virtuális gépek az Azure CLI 1.0 és az Azure Resource Manager-sablon használatával. A cikkben foglaltak végrehajtásához szükség van:
@@ -83,6 +83,6 @@ info:    group create command OK
 
 A példa a `--template-uri` paraméter használatával helyezett üzembe egy virtuális gépet.  Emellett letölthet vagy létrehozhat egy sablont helyben, majd átadhatja a sablont a `--template-file` paraméterrel a sablonfájl elérési útját használva argumentumként. Az Azure parancssori felület felszólítja a sablonhoz szükséges paraméterek megadására.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A [sablontárban](https://azure.microsoft.com/documentation/templates/) indított kereséssel derítheti ki, hogy mely alkalmazás-keretrendszert helyezze üzembe következőként.
 

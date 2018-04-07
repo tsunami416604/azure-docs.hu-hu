@@ -1,13 +1,13 @@
 ---
-title: "Felhő inicializálás segítségével testre szabhatja a Linux virtuális gép létrehozása az Azure-ban |} Microsoft Docs"
-description: "Felhő inicializálás használata során az Azure CLI 1.0 létrehozása Linux virtuális gép testreszabása"
+title: Felhő inicializálás segítségével testre szabhatja a Linux virtuális gép létrehozása az Azure-ban |} Microsoft Docs
+description: Felhő inicializálás használata során az Azure CLI 1.0 létrehozása Linux virtuális gép testreszabása
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: vlivech
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2016
 ms.author: v-livech
-ms.openlocfilehash: 0b6150bca333188666935b3c9aa02c4b33690db9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e9182a18a2827ed7f54f5fd042e5934b3b1fd5c
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-cloud-init-to-customize-a-linux-vm-during-creation-with-the-azure-cli-10"></a>Felhő inicializálás segítségével testre szabhatja a Linux virtuális gép létrehozása az Azure CLI 1.0 során
 Ez a cikk bemutatja, hogyan végezheti el a felhő inicializálás parancsfájl az állomásnév, a telepített csomagokat, és felhasználói fiókok kezelése.  A felhő inicializálás parancsfájlok során a virtuális gép létrehozása az Azure CLI nevezzük.  A cikkben foglaltak végrehajtásához szükség van:
@@ -265,7 +265,7 @@ sudo:x:27:myCloudInitAddedAdminUser
 myCloudInitAddedAdminUser:x:1000:
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Felhő inicializálás szabványos úgy lehet módosítani a Linux virtuális gép rendszerindító válik. Azure is rendelkezik a Virtuálisgép-bővítmények, amelyek lehetővé teszik a LinuxVM rendszerindító, vagy futás közben módosítani. Például használhatja az Azure VMAccessExtension SSH vagy felhasználói adatok visszaállítására, a virtuális gép futása közben. A felhő inicializálás a jelszó alaphelyzetbe állítása újraindítás kellene.
 
 [Virtuálisgép-bővítmények és szolgáltatásokkal kapcsolatban](../windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

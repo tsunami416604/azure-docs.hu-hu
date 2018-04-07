@@ -1,13 +1,13 @@
 ---
-title: "Virtuális gép az Azure PowerShell-példák |} Microsoft Docs"
-description: "Virtuális gép az Azure PowerShell-példák"
+title: Virtuális gép az Azure PowerShell-példák |} Microsoft Docs
+description: Virtuális gép az Azure PowerShell-példák
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 11/30/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: bd7fe69f50e1fe1c1b333c6102dd4b8fc39cf3ad
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: 31dbb8485232d1b446469135b5bda0c8c7884190
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-virtual-machine-powershell-samples"></a>Azure virtuális gép PowerShell-minták
 
@@ -37,7 +37,7 @@ A következő táblázat a PowerShell-parancsfájlok példák, amelyek Windows v
 | [A virtuális merevlemez feltöltéséhez és a virtuális gépek létrehozása](./../scripts/virtual-machines-windows-powershell-upload-generalized-script.md) | Egy helyi VHD-fájlt feltölti az Azure-ba, hoz létre és a virtuális merevlemez kép és erről a képről létrehoz egy virtuális Gépet. |
 | [A felügyelt operációsrendszer-lemez a virtuális gép létrehozása](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy virtuális gépet egy meglévő kezelt lemez az operációs rendszer lemezeként csatolásával. |
 | [Hozzon létre egy virtuális Gépet egy pillanatképből](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy virtuális gépet egy pillanatképből, először hoz létre egy felügyelt lemezes pillanatképből, és majd az operációs rendszer lemezeként az új kezelt lemez csatolása. |
-|**Tárterület kezelése**||
+|**Tárhely kezelése**||
 | [Felügyelt lemezes ugyanazon vagy másik előfizetésben található virtuális merevlemez létrehozása](../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Egy felügyelt lemezt hoz létre, egy speciális olyan operációs rendszert tartalmazó virtuális Merevlemezt vagy egy adatlemez ugyanazon vagy másik előfizetésben található virtuális Merevlemezt a.  |
 | [Hozzon létre egy felügyelt lemezes egy pillanatképből](../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Felügyelt lemezes pillanatképet hoz létre. |
 | [Felügyelt lemezmásolás ugyanazon vagy másik előfizetésbe](../scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json) | Másolatot ugyanazon vagy másik előfizetés lemez felügyelt, de ugyanabban a régióban, mint a szülő kezelt lemezre. 

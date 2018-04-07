@@ -4,9 +4,7 @@ description: További tudnivalók az Apache TinkerPop Gremlin nyelvet. Ismerje m
 services: cosmos-db
 documentationcenter: ''
 author: LuisBosquez
-manager: jhubbard
-editor: ''
-tags: ''
+manager: kfile
 ms.assetid: 6016ccba-0fb9-4218-892e-8f32a1bcc590
 ms.service: cosmos-db
 ms.devlang: na
@@ -15,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: 453e11c31a01b6ce8e77deda89725ecd53fd2db9
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b13e31be58502d670b11dace1f646b0632a2f039
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB Gremlin graph-támogatás
 Azure Cosmos-adatbázis támogatja [Apache Tinkerpop](http://tinkerpop.apache.org) átjárás nyelvi diagramot [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps), vagyis egy grafikonon API graph entitások létrehozására és a graph lekérdezés műveletet hajt végre. A Gremlin nyelv segítségével (csúcsban és szélek) graph entitásokat hozhatnak létre, belül entitásokból tulajdonságainak módosítása, hajtsa végre a lekérdezéseket és traversals és entitások törlésére. 

@@ -1,19 +1,19 @@
 ---
-title: "Port túl az 1433-as számú SQL-adatbázis |} Microsoft Docs"
-description: "Az Azure SQL Database ADO.NET érkező ügyfélkapcsolatokat megkerülje a proxyt, és közvetlenül az adatbázist az eltérő 1433-as port használatával kommunikálni."
+title: Port túl az 1433-as számú SQL-adatbázis |} Microsoft Docs
+description: Az Azure SQL Database ADO.NET érkező ügyfélkapcsolatokat megkerülje a proxyt, és közvetlenül az adatbázist az eltérő 1433-as port használatával kommunikálni.
 services: sql-database
 author: MightyPen
 manager: jhubbard
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: article
-ms.date: 08/17/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 2f80e95b6d3828bf8c63e2346b6ba4d14bde70bb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: de40a45cfcc1b105384c6b5462511a372a546fc1
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>Port túl az 1433-as ADO.NET 4.5
 Ez a témakör ismerteti az Azure SQL Database kapcsolat viselkedését ADO.NET 4.5 vagy újabb verzióját használó ügyfelek számára. 

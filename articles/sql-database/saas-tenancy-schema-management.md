@@ -1,21 +1,21 @@
 ---
-title: "Azure SQL Database-séma kezelése több-bérlős alkalmazásban | Microsoft Docs"
-description: "Több bérlő sémájának kezelése Azure SQL Database-t használó több-bérlős alkalmazásban"
-keywords: "sql database-oktatóanyag"
+title: Azure SQL Database-séma kezelése több-bérlős alkalmazásban | Microsoft Docs
+description: Több bérlő sémájának kezelése Azure SQL Database-t használó több-bérlős alkalmazásban
+keywords: sql database-oktatóanyag
 services: sql-database
 author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 07/28/2017
+ms.date: 04/01/2018
 ms.author: sstein
 ms.reviewer: billgib
-ms.openlocfilehash: a473e87934ba573cc22b2c248ea0398bc5a4c29b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 12d8f3cc9fa4ec75f247b6ed602e120b0302be0e
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Az adatbázis-/-bérlő minta használatával az Azure SQL Database SaaS-alkalmazás a séma kezelése
 

@@ -5,7 +5,7 @@ keywords: Távoli asztali hiba, a távoli asztali kapcsolat hiba, nem lehet csat
 services: virtual-machines-windows
 documentationcenter: ''
 author: danielsollondon
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: 0d740f8e-98b8-4e55-bb02-520f604f5b18
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2018
 ms.author: danis
-ms.openlocfilehash: e2b792743f1b4ba458cff111ab6dd888b0c26d93
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 60c54850c1ca5de0e9bda4b48688ba297874e48e
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Egy Azure virtuális géphez a távoli asztali kapcsolatok hibáinak elhárítása
 A távoli asztal protokoll (RDP) kapcsolatot a Windows-alapú Azure virtuális gép (VM) különböző okokból, így nem érhető el a virtuális gép sikertelen lehet. A probléma lehet a távoli asztali szolgáltatás a virtuális Gépet, a hálózati kapcsolat vagy a távoli asztali ügyfél a gazdaszámítógépen. Ez a cikk végigvezeti Önt egy RDP-kapcsolati problémák megoldása a leggyakrabban használt módszerek. 
@@ -94,6 +94,10 @@ Minden hibaelhárítási lépés után ismét kapcsolódni a virtuális Gépre p
     ![Telepítse újra a virtuális Gépet az Azure-portálon](./media/troubleshoot-rdp-connection/redeploy-vm.png)
    
     Ez a művelet befejezése után rövid élettartamú lemez adatok nem vesztek el, és dinamikus IP-címek a virtuális Géphez társított frissülnek.
+
+9. **Ellenőrizze az útválasztást**. Használja a hálózati figyelőt [a következő Ugrás](../../network-watcher/network-watcher-check-next-hop-portal.md) képességet, hogy ellenőrizze, hogy egy útvonal nem akadályozza meg, hogy forgalom való átirányítását, vagy egy virtuális gépről. Egy adott hálózati csatoló összes hatékony útvonalak hatékony útvonalakat is felhasználhatja. További információkért lásd: [hatékony használata az útvonalakat hibáinak elhárítása a virtuális gép forgalom bonyolódjon](../../virtual-network/virtual-network-routes-troubleshoot-portal.md#using-effective-routes-to-troubleshoot-vm-traffic-flow).
+
+10. Győződjön meg arról, hogy azokat a helyi tűzfal, illetve a számítógép tűzfala lehetővé teszi az Azure kimenő 3389-es TCP-forgalom.
 
 Ha RDP problémák továbbra is találkozik, akkor [támogatási kérést nyithat](https://azure.microsoft.com/support/options/) vagy olvasási [RDP hibaelhárítással kapcsolatos fogalmak és a lépések részletes](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
@@ -180,6 +184,10 @@ Minden hibaelhárítási lépés után ismét kapcsolódni a virtuális Gépre p
     Set-AzureRmVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
     ```
 
+6. **Ellenőrizze az útválasztást**. Használja a hálózati figyelőt [a következő Ugrás](../../network-watcher/network-watcher-check-next-hop-portal.md) képességet, hogy ellenőrizze, hogy egy útvonal nem akadályozza meg, hogy forgalom való átirányítását, vagy egy virtuális gépről. Egy adott hálózati csatoló összes hatékony útvonalak hatékony útvonalakat is felhasználhatja. További információkért lásd: [hatékony használata az útvonalakat hibáinak elhárítása a virtuális gép forgalom bonyolódjon](../../virtual-network/virtual-network-routes-troubleshoot-powershell.md#using-effective-routes-to-troubleshoot-vm-traffic-flow).
+
+7. Győződjön meg arról, hogy azokat a helyi tűzfal, illetve a számítógép tűzfala lehetővé teszi az Azure kimenő 3389-es TCP-forgalom.
+
 Ha RDP problémák továbbra is találkozik, akkor [támogatási kérést nyithat](https://azure.microsoft.com/support/options/) vagy olvasási [RDP hibaelhárítással kapcsolatos fogalmak és a lépések részletes](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="troubleshoot-vms-created-using-the-classic-deployment-model"></a>A klasszikus telepítési modell használatával létrehozott virtuális gépek hibaelhárítása
@@ -217,6 +225,8 @@ Hibaelhárítási lépések, után próbáljon újra csatlakozni a virtuális G�
     Válassza ki a virtuális Gépet az Azure portálon, és kattintson a **áttekintése** fülre. Kattintson a **indítsa újra a** gombra:
    
     ![Indítsa újra a virtuális Gépet az Azure-portálon](./media/troubleshoot-rdp-connection/classic-restart-vm.png)
+
+7. Győződjön meg arról, hogy azokat a helyi tűzfal, illetve a számítógép tűzfala lehetővé teszi az Azure kimenő 3389-es TCP-forgalom.
 
 Ha RDP problémák továbbra is találkozik, akkor [támogatási kérést nyithat](https://azure.microsoft.com/support/options/) vagy olvasási [RDP hibaelhárítással kapcsolatos fogalmak és a lépések részletes](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

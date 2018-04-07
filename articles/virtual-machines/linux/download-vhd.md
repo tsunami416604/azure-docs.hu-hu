@@ -1,13 +1,13 @@
 ---
-title: "Töltse le a Linux virtuális merevlemez az Azure-ból |} Microsoft Docs"
-description: "Töltse le az Azure parancssori felület és az Azure-portál használatával Linux virtuális Merevlemezt."
+title: Töltse le a Linux virtuális merevlemez az Azure-ból |} Microsoft Docs
+description: Töltse le az Azure parancssori felület és az Azure-portál használatával Linux virtuális Merevlemezt.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: davidmu1
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: davidmu
-ms.openlocfilehash: 20af28dd4caa6ee5487b9a2ed83715b9b16fad48
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: d177e8de7ace571c57a0b8b39c8834fb5b115365
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Töltse le a Linux virtuális merevlemez az Azure-ból
 
@@ -35,10 +35,10 @@ Virtuális merevlemez nem lehet letölteni az Azure-ból, ha egy virtuális gép
 
 Más virtuális gépek létrehozásához használja a virtuális merevlemez képként, végezze el az alábbi lépéseket:
 
-1. SSH, a fiók nevét és a virtuális gép nyilvános IP-címe használatával kapcsolódni hozzá, és kiosztásának megszüntetése azt. A + felhasználói paraméter is eltávolítja az utolsó kiépített felhasználói fiókot. Ha a fiók hitelesítő adatait a virtuális géphez vannak sütés, hagyja ki ennek + a user paraméterhez. A következő példában eltávolítjuk a legutóbbi kiépített felhasználói fiók:
+1. SSH, a fiók nevét és a virtuális gép nyilvános IP-címe használatával kapcsolódni hozzá, és kiosztásának megszüntetése azt. A nyilvános IP-cím található [az hálózati nyilvános ip-megjelenítése](https://docs.microsoft.com/en-us/cli/azure/network/public-ip#az-network-public-ip-show). A + felhasználói paraméter is eltávolítja az utolsó kiépített felhasználói fiókot. Ha a fiók hitelesítő adatait a virtuális géphez vannak sütés, hagyja ki ennek + a user paraméterhez. A következő példában eltávolítjuk a legutóbbi kiépített felhasználói fiók:
 
     ```bash
-    ssh azureuser@40.118.249.235
+    ssh azureuser@<publicIpAddress>
     sudo waagent -deprovision+user -force
     exit 
     ```

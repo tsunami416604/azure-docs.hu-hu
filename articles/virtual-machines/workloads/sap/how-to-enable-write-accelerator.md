@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/13/2018
+ms.date: 04/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 177bc05eea3aa05231c71a42950fa622b68afc53
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b0cb9b4003faa2ccdd07ccc78c2095472690f0e7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-write-accelerator-for-sap-deployments"></a>Az Azure írási gyorsító SAP telepítésekhez
 Azure írási gyorsító az első megkezdődött M sorozatú virtuális gépek kizárólag funkcionalitást. Az Azure-írási gyorsító adatsorozattal bármely más Virtuálisgép-Azure, kivéve az M-sorozat nem érhető el. Állapota a neve, mint a funkció célja javítása a prémium szintű Azure Storage elleni írások késését i/o. 
@@ -55,15 +55,16 @@ Nincsenek Azure prémium szintű Storage a VHD-k, amely támogatja-e írási gyo
 > Azure írási gyorsító egy meglévő Azure lemezre, amely nem része egy kötet build kívül több lemez is van a Windows-lemez vagy kötet kezelők, a tárolóhelyek a Windows, Windows kibővített fájlkiszolgálóként (SOFS), Linux LVM vagy MDADM, hogy a munkaterhelés fér hozzá a Az Azure lemez kell leállítani. Adatbázis-alkalmazások lemezt az Azure használatával le kell állítani.
 
 > [!IMPORTANT]
-> Az Azure operációsrendszer-lemez a virtuális gép írási gyorsító engedélyezése a virtuális gép újraindul. 
+> Az Azure virtuális gép operációsrendszer-lemez a virtuális gép írási gyorsító engedélyezése a virtuális gép újraindul. 
 
 A lemezek működő nem lehet szükség az SAP, amely lehetővé teszi, hogy Azure írási gyorsító kapcsolatos Virtuálisgép-konfigurációk
 
 ### <a name="restrictions-when-using-azure-write-accelerator"></a>Azure írási gyorsító használatakor korlátozások
 Ha Azure írási gyorsító egy Azure lemez/VHD-t használ, ezek a korlátozások érvényesek:
 
-- A prémium szintű lemez gyorsítótárazás kell "Nincs" értékre állítani. Minden más gyorsítótárazási mód nem támogatott.
+- A prémium szintű lemez gyorsítótárazás kell állítani a "None" vagy "Csak Olvasás". Minden más gyorsítótárazási mód nem támogatott.
 - Az engedélyezett írási gyorsító lemezen pillanatkép még nem támogatott. Ez a korlátozás tiltása, hajtsa végre a virtuális gép összes lemeze konzisztens alkalmazás pillanatképe egy Azure biztonsági mentés szolgáltatás képes-e.
+- Csak kisebb i/o-méretű végzése a gyorsított elérési útja. Az alkalmazások és szolgáltatások olyan helyzetekben, ahol adatokat kezd tömeges betöltve, vagy ha a tranzakciós napló pufferek, a másik adatbázis-kezelő van kitöltve nagyobb mértékben előtt első maradnak meg a tárolási, valószínűleg, amely a írt i/o lemez nem tart a gyorsított elérési útja.
 
 
 ## <a name="enabling-write-accelerator-on-a-specific-disk"></a>Adott lemezre írás gyorsító engedélyezése
@@ -290,7 +291,7 @@ A kimeneti nézhet:
 
 ```
 
-Következő lépés a JSON-fájlt, és írási gyorsító engedélyezéséhez kattintson a lemez "log1" néven. Ezt megteheti ezt az attribútumot a JSON-fájlba a gyorsítótári bejegyzés, a lemez után adja hozzá. 
+Következő lépés a JSON-fájlt, és írási gyorsító engedélyezéséhez kattintson a lemez "log1" néven. Ebben a lépésben adja hozzá ezt az attribútumot a JSON-fájlba a gyorsítótári bejegyzés, a lemez után is elvégezhető. 
 
 ```
         {

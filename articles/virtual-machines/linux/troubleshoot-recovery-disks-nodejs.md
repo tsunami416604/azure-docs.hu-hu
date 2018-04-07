@@ -1,11 +1,11 @@
 ---
-title: "Használja a Linux virtuális gép és az Azure CLI 1.0 hibaelhárítási |} Microsoft Docs"
-description: "Ismerje meg, az operációs rendszer lemezének csatlakozva egy helyreállítási virtuális gépet az Azure CLI 1.0 Linux virtuális gép kapcsolatos problémák elhárítása"
+title: Használja a Linux virtuális gép és az Azure CLI 1.0 hibaelhárítási |} Microsoft Docs
+description: Ismerje meg, az operációs rendszer lemezének csatlakozva egy helyreállítási virtuális gépet az Azure CLI 1.0 Linux virtuális gép kapcsolatos problémák elhárítása
 services: virtual-machines-linux
-documentationCenter: 
+documentationCenter: ''
 authors: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: iainfou
-ms.openlocfilehash: d817358211f123c96d899c5cff88cc47aeb5c9c1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 047d0041fa89fa480de0744e594b8ac4f974973a
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-cli-10"></a>Linux virtuális gép által a operációsrendszer-lemez csatolása a helyreállítási virtuális gépet az Azure CLI 1.0 hibaelhárítása
 Ha a Linux virtuális gép (VM) rendszerindító vagy a lemez hibát tapasztal, szükség lehet végezze el a virtuális merevlemez hibaelhárítási lépéseket. Ilyenek például a bejegyzés érvénytelen lenne `/etc/fstab` , amely megakadályozza a virtuális gép rendszerindító sikeresen megtörtént. Ez a cikk részletezi az Azure CLI 1.0 másik Linux virtuális gép, javítsa ki a hibákat, majd hozza létre újból az eredeti virtuális gép csatlakozni a virtuális merevlemez használata.
@@ -199,7 +199,7 @@ Ha a hibák fakadó problémák megoldásával válassza le, és a meglévő vir
 ## <a name="create-vm-from-original-hard-disk"></a>Virtuális gép eredeti merevlemez létrehozása
 Egy virtuális Gépet hozhat létre az eredeti virtuális merevlemez [Azure Resource Manager sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd). A tényleges JSON-sablon jelenleg a következő hivatkozásra:
 
-- https://RAW.githubusercontent.com/Azure/Azure-quickstart-Templates/Master/201-VM-specialized-VHD/azuredeploy.JSON
+- https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-specialized-vhd/azuredeploy.json
 
 A sablont egy virtuális Gépet létrehozni meglévő virtuális hálózatban, a virtuális merevlemez URL-CÍMÉT a korábbi parancs használatával központilag telepíti. A következő példa telepíti a sablon nevű erőforráscsoport `myResourceGroup`:
 
@@ -237,5 +237,5 @@ Amikor a virtuális Gépet hoz létre a meglévő virtuális merevlemez, rendsze
 azure vm enable-diag --resource-group myResourceGroup --name myDeployedVM
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha a virtuális Géphez való kapcsolódás problémát tapasztal, tekintse meg [hibaelhárítása SSH kapcsolatok egy Azure virtuális gépre](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). A virtuális gépen futó alkalmazások elérésével problémákkal kapcsolatban lásd: [alkalmazás csatlakozási problémák a Linux virtuális gép](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

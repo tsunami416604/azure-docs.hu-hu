@@ -1,19 +1,19 @@
 ---
-title: "Azure SQL adatbázis JSON-funkció |} Microsoft Docs"
-description: "Az Azure SQL Database segítségével elemzési, lekérdezés, és adatok formázása a JavaScript Object Notation (JSON) jelöléssel."
+title: Azure SQL adatbázis JSON-funkció |} Microsoft Docs
+description: Az Azure SQL Database segítségével elemzési, lekérdezés, és adatok formázása a JavaScript Object Notation (JSON) jelöléssel.
 services: sql-database
 author: jovanpop-msft
 manager: craigg
 ms.service: sql-database
 ms.custom: develop databases
-ms.date: 11/15/2016
+ms.date: 04/01/2018
 ms.author: jovanpop
 ms.topic: article
-ms.openlocfilehash: 353a1cc99f122c773f0a005a20f04391236ad913
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f36d7b551a0ff89589564f5f9170aa24f62a61ad
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Ismerkedés az Azure SQL Database JSON szolgáltatásai
 Az Azure SQL Database lehetővé teszi elemezni, és JavaScript Object Notation ábrázolt adatok lekérdezése [(JSON)](http://www.json.org/) formázása, és a relációs adatok exportálása JSON-szövegként.

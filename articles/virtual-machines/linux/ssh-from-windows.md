@@ -1,11 +1,11 @@
 ---
-title: "SSH-kulcsok használata a Windows rendszerben Linux virtuális gépek |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozhat létre és használhat SSH-kulcsok Windows rendszerű számítógépeken egy Linux virtuális gépet az Azure való kapcsolódáshoz."
+title: SSH-kulcsok használata a Windows rendszerben Linux virtuális gépek |} Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre és használhat SSH-kulcsok Windows rendszerű számítógépeken egy Linux virtuális gépet az Azure való kapcsolódáshoz.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 2cacda3b-7949-4036-bd5d-837e8b09a9c8
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
 ms.author: danlep
-ms.openlocfilehash: 66837a3a153cda041f5351c52c8ccb1f8ccfea50
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: fcc2365c3b41fb69492aa68bf7c48c2d3b8ee5f3
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Az SSH kulcsok a Windows Azure-on
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ Csatlakozhat, és a Linux virtuális gépek kezelése az Azure használatával e
 Ha valami nem Bash Windows használni kívánt, közös Windows SSH ügyfelek telepítése tartalmazza a következő csomagokhoz:
 
 * [A Windows Git](https://git-for-windows.github.io/)
-* [a puTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/)
+* [puTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/)
 * [MobaXterm](http://mobaxterm.mobatek.net/)
 * [Cygwin](https://cygwin.com/)
 
@@ -66,7 +66,7 @@ Az alábbiakban a központi telepítési forgatókönyvek és használ az egyes 
 ## <a name="install-git-for-windows"></a>Git for Windows telepítése
 Az előző szakaszban felsorolt több csomagot, amely tartalmazza a `openssl` eszköz Windows rendszerhez. Ez az eszköz nyilvános és titkos kulcsok létrehozásához szükséges. A következő példák részletesen telepítése és használata **Git for Windows**, abban az esetben, ha bármelyik csomag inkább választhat. **Git for Windows** elérheti a szoftverek némelyike kiegészítő nyílt forráskódú ([OSS](https://en.wikipedia.org/wiki/Open-source_software)) eszközök és segédeszközök Linux virtuális gépek használata hasznos lehet.
 
-1. Töltse le és telepítse **Git for Windows** a következő helyről: [https://git-for-windows.github.io/](https://git-for-windows.github.io/).
+1. Töltse le és telepítse **Git for Windows** a következő helyről: [ https://git-for-windows.github.io/ ](https://git-for-windows.github.io/).
 2. Fogadja el az alapértelmezett beállításokat a telepítés során, kivéve, ha kifejezetten módosítani szeretné őket.
 3. Futtatás **Git bash eszközt** a a **Start menü** > **Git** > **Git bash eszközt**. A konzol az alábbihoz hasonlít:
 

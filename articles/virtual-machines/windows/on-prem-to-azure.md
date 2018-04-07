@@ -1,13 +1,13 @@
 ---
-title: "Az Azure-ban kezelt lemezek áttelepítésére AWS és más platformokra |} Microsoft Docs"
-description: "Virtuális gépek létrehozása az Azure-ban a többi felhőből, például az AWS vagy más virtualizációs platformokról feltöltött virtuális merevlemezek és Azure felügyelt lemezek előnyeit."
+title: Az Azure-ban kezelt lemezek áttelepítésére AWS és más platformokra |} Microsoft Docs
+description: Virtuális gépek létrehozása az Azure-ban a többi felhőből, például az AWS vagy más virtualizációs platformokról feltöltött virtuális merevlemezek és Azure felügyelt lemezek előnyeit.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/07/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 02dce319c055f7988355cfadbc1d63df5e268e53
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: b7fe27ed8615b9684e14276d6d0f5bf84ee5ee81
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Az Azure-ban kezelt lemezek áttelepítésére Amazon Web Services (AWS) és más platformokra
 
@@ -55,6 +55,7 @@ Azure-lemezeket felügyelt virtuális gép felügyelet leegyszerűsíti storage-
 
 Ez a szakasz segítséget nyújt a legjobb döntést a virtuális gép és a lemez típusok.
 
+Ha azt tervezi, a nem felügyelt lemezekről történő felügyelt lemezek, amelyeket ajánlott ismernie a felhasználók által a [virtuális gép közreműködő](../../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor) szerepkör nem fogja tudni módosítani a Virtuálisgép-méretet (mivel azok sikerült az átalakítás előtti). Ennek az az oka felügyelt lemezzel rendelkező virtuális gépek a felhasználónak engedéllyel kell rendelkeznie a Microsoft.Compute/disks/write az OS lemezeken.
 
 ### <a name="location"></a>Hely
 
@@ -98,6 +99,6 @@ Alapértelmezés szerint a gyorsítótárazási házirend lemez van *csak olvash
 Tekintse át a [kezelt lemezek árképzési](https://azure.microsoft.com/en-us/pricing/details/managed-disks/). Prémium szintű felügyelt lemez árképzési legyen, mint a nem felügyelt Premium lemezek. Azonban a standard szintű felügyelt lemez árképzési más nem felügyelt Standard lemezeknél.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Kövesse a virtuális merevlemez feltöltése az Azure-ba, mielőtt [Windows VHD vagy VHDX az Azure-bA feltöltendő előkészítése](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

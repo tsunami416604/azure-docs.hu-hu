@@ -1,11 +1,11 @@
 ---
-title: "A virtuális gépek fürtök MATLAB |} Microsoft Docs"
-description: "MATLAB elosztott számítási fürt a számítási igényű párhuzamos MATLAB alkalmazásokat és szolgáltatásokat futtathatnak létrehozásához használja a Microsoft Azure virtuális gépek"
+title: A virtuális gépek fürtök MATLAB |} Microsoft Docs
+description: MATLAB elosztott számítási fürt a számítási igényű párhuzamos MATLAB alkalmazásokat és szolgáltatásokat futtathatnak létrehozásához használja a Microsoft Azure virtuális gépek
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: mscurrell
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: e9980ce9-124a-41f1-b9ec-f444c8ea5c72
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: Windows
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-ms.openlocfilehash: 177f8a61487130e718e3e6cfb779b17a3ed8ed69
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 695833fb12c0c7a130e98fe9b3bdfa502672ab29
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>Azure virtuális gépeken MATLAB elosztott számítási fürtök létrehozása
 A Microsoft Azure virtuális gépek segítségével hozzon létre egy vagy több MATLAB elosztott számítási fürtök a számítási igényű párhuzamos MATLAB munkaterhelések futtatásához. A MATLAB elosztott számítástechnikai kiszolgáló szoftver telepítése egy virtuális Gépre alapjául szolgáló lemezképhez és egy Azure gyors üzembe helyezés-sablon vagy az Azure PowerShell-parancsfájl használata (érhető el a [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)) telepítése és a fürt kezelése. A központi telepítést követően csatlakozzon a fürthöz, a munkaterhelések futtatásához.
@@ -69,6 +69,6 @@ Mint MATLAB elosztott számítástechnikai kiszolgálófürtök, más típusú k
 
 ![Profil kezelő](./media/matlab-mdcs-cluster/cluster_profile_manager.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Telepíthetnek és kezelhetnek az Azure-ban MATLAB elosztott számítástechnikai kiszolgáló fürtök részletes utasításokért lásd: a [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster) a sablonok és a parancsfájlokat tartalmazó tárházba.
 * Lépjen a [MathWorks hely](http://www.mathworks.com/) MATLAB és MATLAB elosztott számítástechnikai kiszolgálóra vonatkozó részletes dokumentációt.

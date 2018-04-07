@@ -1,24 +1,19 @@
 ---
-title: Megjelenítheti és a Stream Analytics-feladatok hibaelhárítása |} Microsoft Docs
-description: Megtudhatja, hogyan jelenítheti meg a Stream Analytics feladat csővezeték önkiszolgáló hibaelhárítási a diagnosztika diagram szolgáltatással.
-keywords: ''
-documentationcenter: ''
+title: Megjelenítheti és Azure Stream Analytics-feladatok hibaelhárítása
+description: Ez a cikk ismerteti a funkcióval a diagnosztika diagram elvégzendő önkiszolgáló hibaelhárítási Stream Analytics-feladat megjelenítése.
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: d87841cd-c59f-4a46-b46e-8b904fdc12e9
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: eae43a6a444514855229af760de6aa1cbec7840a
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/28/2017
+ms.openlocfilehash: 523802f1f9a1dda19c5b6a66da7bc26fee851bd2
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="visualize-and-troubleshoot-stream-analytics-jobs"></a>Megjelenítheti és a Stream Analytics-feladatok hibaelhárítása
 A Stream Analytics más felhőalapú technológiákat a hibaelhárítás néha szükséges megismerhetők miért egy feladat nem készít a várt kimeneti (vagy adott függetlenül attól, hogy a kimenetet). Ilyen kialakításával szem előtt a Stream Analytics lehetővé teszi a folyamatos átviteli feladatnak megjelenítésére. Ez is modellezési eszközként lesz szüksége, és az ügyféloldali előnye a munkahelyi e megkövetelését dokumentációját.
