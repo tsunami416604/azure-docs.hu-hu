@@ -139,6 +139,8 @@
               href: app-service-mobile-how-to-configure-microsoft-authentication.md
             - name: Hitelesítés a Twitterrel
               href: app-service-mobile-how-to-configure-twitter-authentication.md
+        - name: AuthN/authZ testreszabása
+          href: app-service-authentication-how-to.md
         - name: Felügyeltszolgáltatás-identitás használata
           href: app-service-managed-service-identity.md
         - name: SSL-tanúsítvány használata alkalmazáskódban

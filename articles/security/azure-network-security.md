@@ -1,12 +1,12 @@
 ---
-title: "Az Azure hálózati biztonság |} Microsoft Docs"
-description: "További információk a felhőalapú számítási szolgáltatás, amely tartalmazza a számítási példányokért széles kijelölt & szolgáltatások, amely is fel-le automatikusan az alkalmazás vagy a vállalat igényeinek."
+title: Az Azure hálózati biztonság |} Microsoft Docs
+description: További információk a felhőalapú számítási szolgáltatás, amely tartalmazza a számítási példányokért széles kijelölt & szolgáltatások, amely is fel-le automatikusan az alkalmazás vagy a vállalat igényeinek.
 services: security
 documentationcenter: na
 author: UnifyCloud
 manager: swadhwa
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: f0cc1716daa70bf7c860373819568774cf6f95d9
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 9b86eda1f4ddff9b61ff5b0f9c465e5ef6c2088b
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="azure-network-security"></a>Az Azure hálózati biztonság
+# <a name="azure-network-security"></a>Azure hálózati biztonság
 
 Tudjuk, hogy biztonsági-e a feladat a felhőben, és hogy mennyire fontos, hogy található-e az Azure biztonsági pontos és időben információt. A legjobb okok miatt az alkalmazások és szolgáltatások Azure használandó egyik széles köréről Azure a biztonsági eszközök és képességek előnyeit. Ezekkel az eszközökkel és képességek segítségével történő biztonságos megoldások létrehozása az Azure platformon.
 
@@ -392,7 +392,7 @@ Ezenkívül alkalmazás átjáró WAF segít figyelni a webalkalmazásokat integ
 
 A JSON-formázott napló közvetlenül az ügyfél tárfiókjával kerül. Ezek a naplók teljes hozzáféréssel rendelkeznek, és a saját megőrzési házirendeket is alkalmazhat.
 
-Ezek a naplók is betöltési módja, ha a saját analytics rendszer [Azure napló integrációs](https://aka.ms/AzLog). WAF naplók integrálva vannak [Operations Management Suite (OMS)](https://www.microsoft.com/cloud-platform/operations-management-suite) , OMS naplóelemzési segítségével kifinomult részletes lekérdezéseket hajt végre.
+Ezek a naplók is betöltési módja, ha a saját analytics rendszer [Azure napló integrációs](https://aka.ms/AzLog). WAF naplók integrálva vannak [Naplóelemzési](../log-analytics/log-analytics-overview.md) , hogy használhassa a Naplóelemzési kifinomult részletes lekérdezések végrehajtásához.
 
 #### <a name="azure-web-application-firewall-waf"></a>Az Azure webalkalmazási tűzfal (WAF)
 
@@ -510,7 +510,7 @@ Azure biztosít több segédprogramot is figyelni, megakadályozása, észlelés
 
 -   Log Analytics
 
-### <a name="network-watcher"></a>Hálózati figyelőt
+### <a name="network-watcher"></a>Hálózati figyelő
 
 [Hálózati figyelő](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) -forgatókönyv-alapú figyelési által biztosított szolgáltatások a hálózati figyelőt. A szolgáltatás része a csomagrögzítéssel, a következő ugrás, az IP-adatfolyam győződjön meg arról, biztonsági csoport megtekintése, NSG folyamata naplókat. Forgatókönyv szintű figyelési jeleníti meg egy végpontok közötti hálózati erőforrások ellentétben egyes hálózati erőforrás-figyelése.
 
@@ -606,7 +606,7 @@ Hálózati figyelőt biztosít a diagnosztikai naplók megtekintése. Ez a néze
 
 ### <a name="log-analytics"></a>Log Analytics
 
-[Naplófájl Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) szolgáltatás a [Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) , amely figyeli a felhőben és a helyszíni környezetek karbantartásához azok rendelkezésre állását és teljesítményét. A felhőben és a helyszíni környezetben található erőforrások által létrehozott, valamint egyéb figyelési eszközök által biztosított adatokat gyűjtésével biztosítsa elemzést több forráson.
+[Naplófájl Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) egy olyan szolgáltatás, amely figyeli a felhőalapú és helyszíni környezetek karbantartásához azok rendelkezésre állását és teljesítményét az Azure-ban. A felhőben és a helyszíni környezetben található erőforrások által létrehozott, valamint egyéb figyelési eszközök által biztosított adatokat gyűjtésével biztosítsa elemzést több forráson.
 
 Naplóelemzési a hálózatok figyeléséhez a következő megoldásokat nyújtja:
 
@@ -650,7 +650,7 @@ A következő naplók kapcsolódnak támogatottak [hálózati biztonsági csopor
 
 - **NetworkSecurityGroupRuleCounter:** Contains bejegyzéseket hányszor minden NSG-szabályok forgalom engedélyezése vagy megtagadása vonatkozik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Többet szeretne tudni biztonsági ehhez beolvassa a részletes biztonsági témakörök:
 
 -   [Naplóelemzési a hálózati biztonsági csoportokkal (NSG-k)](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)

@@ -232,7 +232,7 @@
               href: service-fabric-cluster-resource-manager-defragmentation-metrics.md
             - name: Fürt terhelésének elosztása
               href: service-fabric-cluster-resource-manager-balancing.md
-            - name: Szabályozás
+            - name: Throttling
               href: service-fabric-cluster-resource-manager-advanced-throttling.md
             - name: Szolgáltatás áthelyezése
               href: service-fabric-cluster-resource-manager-movement-cost.md
@@ -249,12 +249,12 @@
               href: service-fabric-reliable-services-diagnostics.md
             - name: A Reliable Actors eseményei
               href: service-fabric-reliable-actors-diagnostics.md
-            - name: Teljesítmény-mérőszámok
-              href: service-fabric-diagnostics-event-generation-perf.md
             - name: Megfigyelő szolgáltatás távelérésének lehetővé tétele
               href: service-fabric-reliable-serviceremoting-diagnostics.md
         - name: Alkalmazásnaplózás
           href: service-fabric-diagnostics-event-generation-app.md
+        - name: Teljesítmény-mérőszámok
+          href: service-fabric-diagnostics-event-generation-perf.md
         - name: Állapotmodell áttekintése
           href: service-fabric-health-introduction.md
         - name: Állapotesemények jelentése
@@ -433,6 +433,8 @@
           href: service-fabric-cloud-services-migration-worker-role-stateless-service.md
         - name: Ajánlott eljárások
           href: /azure/architecture/service-fabric/migrate-from-cloud-services
+        - name: Migrált alkalmazás újrabontása
+          href: /azure/architecture/service-fabric/refactor-migrated-app
     - name: Alkalmazások életciklus-kezelése
       items:
         - name: Alkalmazás becsomagolása

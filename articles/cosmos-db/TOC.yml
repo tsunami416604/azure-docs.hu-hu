@@ -6,8 +6,6 @@ items:
     items:
       - name: Az Azure Cosmos DB bemutatása
         href: introduction.md
-      - name: Dokumentációs kísérlet
-        href: experiment.md
   - name: Gyors útmutatók
     expanded: true
     items:
@@ -164,7 +162,7 @@ items:
       - name: Biztonság
         href: database-security.md
       - name: Teljes birtoklási költség
-        href: 'https://aka.ms/documentdb-tco-paper'
+        href: 'https://aka.ms/cosmosdb-tco-paper'
       - name: Használati esetek
         href: use-cases.md
         items:
@@ -184,13 +182,15 @@ items:
               - name: SQL-lekérdezések teljesítménye
                 href: sql-api-sql-query-metrics.md
               - name: SQL-játszótér
-                href: 'https://www.documentdb.com/sql/demo'
+                href: 'https://aka.ms/cosmos-db-playground'
               - name: Particionálás
                 href: sql-api-partition-data.md
               - name: 'Tárolt eljárások, eseményindítók és felhasználói függvények'
                 href: programming.md
               - name: Teljesítménytesztelés
                 href: performance-testing.md
+              - name: Teljesítménnyel kapcsolatos tippek Async Javához
+                href: performance-tips-async-java.md
               - name: Teljesítménnyel kapcsolatos tippek .NET-hez
                 href: performance-tips.md
               - name: Teljesítménnyel kapcsolatos tippek Javához
@@ -378,17 +378,17 @@ items:
           - name: Alkalmazásnaplózás a Logic Apps használatával
             href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md
           - name: Kötés az Azure Functionshöz
-            href: ../azure-functions/functions-bindings-documentdb.md
+            href: ../azure-functions/functions-bindings-cosmosdb.md
           - name: Integrálás az Azure Search szolgáltatással
-            href: ../search/search-howto-index-documentdb.md
+            href: ../search/search-howto-index-cosmosdb.md
           - name: Adatok áthelyezése az Azure Data Factoryvel
             href: ../data-factory/connector-azure-cosmos-db.md
           - name: Valós idejű adatok elemzése az Azure Stream Analyticsszel
-            href: '../stream-analytics/stream-analytics-define-outputs.md#documentdb'
+            href: '../stream-analytics/stream-analytics-define-outputs.md#azure-cosmos-db'
           - name: Módosított HL7 FHIR-rekord beszerzése a Logic Apps használatával
             href: change-feed-hl7-fhir-logic-apps.md
           - name: Érzékelőktől kapott adatok valós idejű feldolgozása
-            href: ../hdinsight/hdinsight-storm-iot-eventhub-documentdb.md
+            href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
           - name: Adatok megjelenítése Power BI használatával
             href: powerbi-visualize.md
           - name: Az ODBC-illesztő felhasználása az adatmegjelenítéshez

@@ -1,15 +1,28 @@
 - name: CDN – dokumentáció
   href: index.md
 - name: Áttekintés
-  href: cdn-overview.md
   items:
     - name: Mi az Azure CDN?
-      href: ../best-practices-cdn.md?toc=%2fazure%2fcdn%2ftoc.json
-- name: Első lépések
+      href: cdn-overview.md
+    - name: Az Azure CDN termékszolgáltatásai
+      href: cdn-features.md
+- name: Gyors útmutatók
   items:
-    - name: Az Azure CDN engedélyezése
+    - name: Profil és -végpont létrehozása
       href: cdn-create-new-endpoint.md
-- name: Útmutató
+- name: Oktatóanyagok
+  items:
+    - name: Egyéni tartomány hozzáadása
+      href: cdn-map-content-to-custom-domain.md
+- name: Példák
+  items:
+    - name: Kódminták
+      href: 'https://azure.microsoft.com/resources/samples/?service=cdn'
+- name: Alapelvek
+  items:
+    - name: A gyorsítótárazás működése
+      href: cdn-how-caching-works.md
+- name: Útmutatók
   items:
     - name: Integrálás
       items:
@@ -124,8 +137,6 @@
           href: cdn-rules-engine-reference-match-conditions.md
         - name: Szabálymotor funkciói
           href: cdn-rules-engine-reference-features.md
-    - name: Kódminták
-      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=cdn'
     - name: Azure PowerShell
       href: /powershell/module/azurerm.cdn
     - name: .NET
@@ -145,7 +156,7 @@
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
     - name: MSDN-fórum
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecdn'
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=azurecdn'
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/cdn/'
     - name: Díjkalkulátor

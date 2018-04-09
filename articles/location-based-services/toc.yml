@@ -29,6 +29,8 @@
       href: render-coverage.md
     - name: Útválasztási lefedettség
       href: routing-coverage.md
+    - name: Támogatott nyelvek
+      href: supported-languages.md
 - name: Útmutatók
   items:
     - name: Fiók és kulcsok kezelése
