@@ -1,0 +1,358 @@
+- name: Virtual Network dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: A Virtual Network bemutatása
+      href: virtual-networks-overview.md
+- name: Gyors útmutatók
+  items:
+    - name: Virtuális hálózat létrehozása – portál
+      href: quick-create-portal.md
+    - name: Virtuális hálózat létrehozása – PowerShell
+      href: quick-create-powershell.md
+    - name: Virtuális hálózat létrehozása – Azure CLI
+      href: quick-create-cli.md
+- name: Oktatóanyagok
+  items:
+    - name: Hálózati forgalom szűrése
+      href: tutorial-filter-network-traffic.md
+    - name: Hálózati forgalom továbbítása
+      href: tutorial-create-route-table-portal.md
+    - name: Erőforrások hálózati hozzáférésének korlátozása
+      href: tutorial-restrict-network-access-to-resources.md
+    - name: Virtuális hálózatok csatlakoztatása
+      href: tutorial-connect-virtual-networks-portal.md
+- name: Példák
+  items:
+    - name: Azure CLI
+      href: cli-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
+- name: Alapelvek
+  items:
+    - name: Forgalomszűrés
+      href: security-overview.md
+    - name: Szolgáltatásvégpontok
+      href: virtual-network-service-endpoints-overview.md
+    - name: Útválasztás
+      href: virtual-networks-udr-overview.md
+    - name: Társviszony-létesítés
+      href: virtual-network-peering-overview.md
+    - name: Virtuális hálózat az Azure-szolgáltatásokhoz
+      href: virtual-network-for-azure-services.md
+    - name: Tárolóalapú hálózatkezelés
+      href: container-networking.md
+    - name: Az üzletmenet folytonossága
+      href: virtual-network-disaster-recovery-guidance.md
+    - name: IP-címzés
+      href: virtual-network-ip-addresses-overview-arm.md
+    - name: DDoS Protection
+      href: ddos-protection-overview.md
+    - name: Klasszikus
+      items:
+        - name: IP-címzés
+          href: virtual-network-ip-addresses-overview-classic.md
+        - name: Hozzáférés-vezérlési listák
+          href: virtual-networks-acl.md
+- name: Útmutatók
+  items:
+    - name: Tervezés és kialakítás
+      items:
+        - name: Virtuális hálózatok
+          href: virtual-network-vnet-plan-design-arm.md
+        - name: Network security groups (Hálózati biztonsági csoportok)
+          href: virtual-networks-nsg.md
+    - name: Üzembe helyezés
+      items:
+        - name: Network security groups (Hálózati biztonsági csoportok)
+          items:
+            - name: Azure CLI
+              href: tutorial-filter-network-traffic-cli.md
+            - name: Azure Portal
+              href: virtual-networks-create-nsg-arm-pportal.md
+            - name: Sablon
+              href: virtual-networks-create-nsg-arm-template.md
+            - name: Klasszikus
+              items:
+                - name: Azure PowerShell
+                  href: virtual-networks-create-nsg-classic-ps.md
+                - name: Azure CLI 1.0
+                  href: virtual-networks-create-nsg-classic-cli.md
+        - name: Útvonaltáblák
+          items:
+            - name: Azure PowerShell
+              href: tutorial-create-route-table-powershell.md
+            - name: Azure CLI
+              href: tutorial-create-route-table-cli.md
+            - name: Sablon
+              href: virtual-network-create-udr-arm-template.md
+            - name: Klasszikus
+              items:
+                - name: Azure PowerShell
+                  href: virtual-network-create-udr-classic-ps.md
+                - name: Azure CLI
+                  href: virtual-network-create-udr-classic-cli.md
+        - name: Szolgáltatásvégpontok
+          items:
+            - name: Azure PowerShell
+              href: tutorial-restrict-network-access-to-resources-powershell.md
+            - name: Azure CLI
+              href: tutorial-restrict-network-access-to-resources-cli.md
+        - name: Társviszony létesítése virtuális hálózatok között
+          items:
+            - name: Egyazon üzemi modell – egyazon előfizetés
+              items:
+                - name: Azure PowerShell
+                  href: tutorial-connect-virtual-networks-powershell.md
+                - name: Azure CLI
+                  href: tutorial-connect-virtual-networks-cli.md
+            - name: Egyazon üzemi modell – különböző előfizetések
+              href: create-peering-different-subscriptions.md
+            - name: Különböző üzemi modellek – egyazon előfizetés
+              href: create-peering-different-deployment-models.md
+            - name: Különböző üzemi modellek – különböző előfizetések
+              href: create-peering-different-deployment-models-subscriptions.md
+        - name: Virtual machines (Virtuális gépek)
+          items:
+            - name: Statikus nyilvános IP-címmel rendelkező virtuális gép létrehozása
+              items:
+                - name: Azure Portal
+                  href: virtual-network-deploy-static-pip-arm-portal.md
+                - name: Azure PowerShell
+                  href: virtual-network-deploy-static-pip-arm-ps.md
+                - name: Azure CLI
+                  href: virtual-network-deploy-static-pip-arm-cli.md
+                - name: Sablon
+                  href: virtual-network-deploy-static-pip-arm-template.md
+                - name: Klasszikus
+                  items:
+                    - name: Azure PowerShell
+                      href: virtual-networks-reserved-public-ip.md
+            - name: Virtuális gép létrehozása – Statikus magánhálózati IP-cím
+              items:
+                - name: Azure Portal
+                  href: virtual-networks-static-private-ip-arm-pportal.md
+                - name: Azure PowerShell
+                  href: virtual-networks-static-private-ip-arm-ps.md
+                - name: Azure CLI
+                  href: virtual-networks-static-private-ip-arm-cli.md
+                - name: Klasszikus
+                  items:
+                    - name: Azure Portal
+                      href: virtual-networks-static-private-ip-classic-pportal.md
+                    - name: Azure PowerShell
+                      href: virtual-networks-static-private-ip-classic-ps.md
+                    - name: Azure CLI
+                      href: virtual-networks-static-private-ip-classic-cli.md
+            - name: Virtuális gép létrehozása – Több hálózati adapter
+              items:
+                - name: Azure PowerShell
+                  href: ../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+                - name: Azure CLI
+                  href: ../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+                - name: Sablon
+                  href: virtual-network-deploy-multinic-arm-template.md
+                - name: Klasszikus
+                  items:
+                    - name: Azure PowerShell
+                      href: virtual-network-deploy-multinic-classic-ps.md
+                    - name: Azure CLI
+                      href: virtual-network-deploy-multinic-classic-cli.md
+            - name: Virtuális gép létrehozása – Több IP-cím
+              items:
+                - name: Azure Portal
+                  href: virtual-network-multiple-ip-addresses-portal.md
+                - name: Azure PowerShell
+                  href: virtual-network-multiple-ip-addresses-powershell.md
+                - name: Azure CLI
+                  href: virtual-network-multiple-ip-addresses-cli.md
+                - name: Sablon
+                  href: virtual-network-multiple-ip-addresses-template.md
+            - name: Virtuális gép létrehozása – Gyorsított hálózatkezelés
+              items:
+                - name: Azure PowerShell
+                  href: create-vm-accelerated-networking-powershell.md
+                - name: Azure CLI
+                  href: create-vm-accelerated-networking-cli.md
+            - name: Virtuális gépek hálózati átviteli sebessége
+              href: virtual-machine-network-throughput.md
+        - name: Kapcsolódási forgatókönyvek
+          items:
+            - name: Virtuális hálózatok közötti kapcsolat
+              href: ../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+            - name: Resource Manager-alapú és klasszikus virtuális hálózat közötti kapcsolat
+              href: ../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+            - name: Virtuális hálózat és helyszíni hálózat (VPN) közötti kapcsolat
+              href: ../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+            - name: Virtuális hálózat és helyszíni hálózat (ExpressRoute) közötti kapcsolat
+              href: ../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+            - name: Magas rendelkezésre állású hibrid hálózati architektúra
+              href: ../guidance/guidance-hybrid-network-expressroute-vpn-failover.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+        - name: Biztonsági forgatókönyvek
+          items:
+            - name: Hálózatok biztonságossá tétele virtuális készülékekkel
+              href: virtual-network-scenario-udr-gw-nva.md
+            - name: Szegélyhálózat (DMZ) az Azure és az internet között
+              href: ../guidance/guidance-iaas-ra-secure-vnet-dmz.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+            - name: Felhőszolgáltatás és hálózati biztonság
+              href: ../best-practices-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+              items:
+                - name: Szegélyhálózat létrehozása NSG-kkel
+                  href: virtual-networks-dmz-nsg.md
+                - name: Szegélyhálózat létrehozása NSG-kkel (Klasszikus)
+                  href: virtual-networks-dmz-nsg-asm.md
+                - name: Szegélyhálózat létrehozása tűzfallal és NSG-kkel (Klasszikus)
+                  href: virtual-networks-dmz-nsg-fw-asm.md
+                - name: 'Szegélyhálózat tűzfallal, felhasználó által megadott útválasztással és NSG-kkel (Klasszikus)'
+                  href: virtual-networks-dmz-nsg-fw-udr-asm.md
+                - name: Mintaalkalmazás
+                  href: virtual-networks-sample-app.md
+        - name: Klasszikus
+          items:
+            - name: Virtuális hálózat
+              href: create-virtual-network-classic.md
+              items:
+                - name: Azure Portal
+                  href: virtual-networks-create-vnet-classic-pportal.md
+                - name: Azure PowerShell
+                  href: virtual-networks-create-vnet-classic-netcfg-ps.md
+                - name: Azure CLI
+                  href: virtual-networks-create-vnet-classic-cli.md
+            - name: DNS-beállítások megadása egy virtuális hálózat konfigurációs fájljában
+              href: virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md
+            - name: DNS-beállítások megadása egy szolgáltatáskonfigurációs fájlban
+              href: virtual-networks-specifying-dns-settings-in-a-service-configuration-file.md
+    - name: Konfigurálás
+      items:
+        - name: Virtual machines (Virtuális gépek)
+          items:
+            - name: Hálózati adapterek hozzáadása vagy eltávolítása
+              href: virtual-network-network-interface-vm.md
+            - name: A virtuális gépek és felhőszolgáltatások névfeloldása
+              href: virtual-networks-name-resolution-for-vms-and-role-instances.md
+            - name: Dinamikus DNS használata a saját DNS-kiszolgálóval
+              href: virtual-networks-name-resolution-ddns.md
+            - name: Hálózati teljesítmény optimalizálása
+              href: virtual-network-optimize-network-bandwidth.md
+            - name: Gazdagépnevek megtekintése és módosítása
+              href: virtual-networks-viewing-and-modifying-hostnames.md
+            - name: Klasszikus
+              items:
+                - name: Statikus IP-címek
+                  items:
+                    - name: Azure PowerShell
+                      href: virtual-networks-reserved-private-ip.md
+                    - name: Azure CLI
+                      href: virtual-networks-static-private-ip-classic-cli.md
+                - name: Példányszintű nyilvános IP-cím
+                  href: virtual-networks-instance-level-public-ip.md
+        - name: Klasszikus
+          items:
+            - name: Hozzáférés-vezérlési listák
+              items:
+                - name: Azure Portal
+                  href: ../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+                - name: Azure PowerShell
+                  href: virtual-networks-acl-powershell.md
+    - name: Kezelés
+      items:
+        - name: Virtuális hálózatok
+          href: manage-virtual-network.md
+          items:
+            - name: Alhálózatok
+              href: virtual-network-manage-subnet.md
+            - name: Társviszonyok
+              href: virtual-network-manage-peering.md
+            - name: DDoS Protection
+              items:
+                - name: Azure Portal
+                  href: ddos-protection-manage-portal.md
+                - name: Azure PowerShell
+                  href: ddos-protection-manage-ps.md
+            - name: Klasszikus
+              items:
+                - name: Hálózati konfigurációs fájl
+                  href: virtual-networks-using-network-configuration-file.md
+                - name: Migrálás affinitáscsoportból régióba
+                  href: virtual-networks-migrate-to-regional-vnet.md
+        - name: Network security groups (Hálózati biztonsági csoportok)
+          items:
+            - name: Azure Portal
+              href: virtual-network-manage-nsg-arm-portal.md
+            - name: Azure PowerShell
+              href: virtual-network-manage-nsg-arm-ps.md
+            - name: Azure CLI
+              href: virtual-network-manage-nsg-arm-cli.md
+            - name: Logs
+              href: virtual-network-nsg-manage-log.md
+        - name: Útvonaltáblák
+          href: manage-route-table.md
+        - name: Hálózati illesztők
+          href: virtual-network-network-interface.md
+          items:
+            - name: IP-címek
+              href: virtual-network-network-interface-addresses.md
+        - name: Nyilvános IP-címek
+          href: virtual-network-public-ip-address.md
+        - name: Virtual machines (Virtuális gépek)
+          items:
+            - name: Virtuális gép áthelyezése másik alhálózatra
+              href: virtual-networks-move-vm-role-to-subnet.md
+    - name: Hibaelhárítás
+      items:
+        - name: Network security groups (Hálózati biztonsági csoportok)
+          items:
+            - name: Azure Portal
+              href: virtual-network-nsg-troubleshoot-portal.md
+            - name: Azure PowerShell
+              href: virtual-network-nsg-troubleshoot-powershell.md
+        - name: Útvonalak
+          items:
+            - name: Azure Portal
+              href: virtual-network-routes-troubleshoot-portal.md
+            - name: Azure PowerShell
+              href: virtual-network-routes-troubleshoot-powershell.md
+        - name: Az átviteli sebesség tesztelése
+          href: virtual-network-bandwidth-testing.md
+        - name: Nem lehet törölni a virtuális hálózatokat
+          href: virtual-network-troubleshoot-cannot-delete-vnet.md
+        - name: Virtuális gépek közötti kapcsolódási problémák
+          href: virtual-network-troubleshoot-connectivity-problem-between-vms.md
+        - name: PTR konfigurálása SMTP szalagcím-ellenőrzésre
+          href: create-ptr-for-smtp-service.md
+- name: Referencia
+  items:
+    - name: Azure CLI
+      href: /cli/azure/network
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.network
+    - name: .NET
+      href: /api/overview/azure/virtual-network
+    - name: Java
+      href: /java/api/
+    - name: Node.js
+      href: 'https://docs.microsoft.com/javascript/azure#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST
+      href: /rest/api/virtual-network
+    - name: Kódminták
+      href: 'https://azure.microsoft.com/resources/samples/?service=virtual-network'
+- name: További források
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: Hálózatkezelési blog
+      href: 'http://azure.microsoft.com/blog/topics/networking'
+    - name: Hálózatkezelési fórum
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/virtual-network'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-virtual-network'
+    - name: Hálózati erőforrás-szolgáltató
+      href: resource-groups-networking.md
+    - name: GYIK
+      href: virtual-networks-faq.md

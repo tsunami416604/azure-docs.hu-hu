@@ -15,6 +15,8 @@
       maintainContext: true
 - name: Oktatóanyagok
   items:
+    - name: Terraform- és Azure-szolgáltatók üzembe helyezési pontjai
+      href: terraform-slot-walkthru.md
     - name: Engedélyezett MSI-vel rendelkező Terraform virtuális gép létrehozása
       href: terraform-vm-msi.md
     - name: Virtuálisgép-fürt létrehozása Terraform-modulokkal

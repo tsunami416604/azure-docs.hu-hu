@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 04/06/2018
 ms.author: vinagara
-ms.openlocfilehash: 356c1343443b33e565c65ef0693b8d8455ff1d1b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 445adb7f57332a285494c744763f633806d2675e
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="extend-copy-alerts-from-oms-portal-into-azure"></a>Terjessze ki (Másolás) riasztások a OMS-portálon az Azure
 Az Operations Management Suite (OMS) portál csak a Log Analyticshez riasztásokat jeleníti meg.  Az új riasztások felületet most integrálva van a riasztási élmény különböző szolgáltatások és a Microsoft Azure-része. Az új felület érhető el, **riasztások** Azure figyelése az Azure-ban a portál tartalmazza napló tevékenységriasztásokat, a metrika riasztások és a napló riasztások Naplóelemzés és az Application Insights. 
@@ -30,12 +30,13 @@ Nem rendelkezik Azure-portálon kívül megnyitása a elhatárolt juttatásra, l
 
 - Eltérően az az OMS-portálon, ahol csak 250 riasztások nem sikerült létrehozni és várólistákból. az Azure-riasztások Ez a korlátozás nincs jelen
 - Az Azure riasztásokból a riasztási típusokat kezelhető, előnyeiről, és megtekinthetők; nem csak a Naplóelemzési riasztást küld, mint az OMS-portálon esetében
-- Az Azure riasztások használatára [művelet csoportok](monitoring-action-groups.md), amelyek lehetővé teszik, hogy az egyes riasztások, például SMS, hang-hívás, Automation-Runbook, Webhook, ITSM összekötő és egyéb egynél több művelettel rendelkezik. Mivel a Naplóelemzési riasztások mindkét a számát, valamint korlátozott, mivel a(z) típusú műveletek lehetséges
+- Felhasználók csak a figyelést és riasztást használatával való hozzáférés szabályozása [Azure figyelő szerepkör](monitoring-roles-permissions-security.md)
+- Az Azure riasztások használatára [művelet csoportok](monitoring-action-groups.md), amelyek lehetővé teszik, hogy az egyes riasztások, például SMS, hang-hívás, Automation-Runbook, Webhook, ITSM összekötő és egyéb egynél több művelettel rendelkezik. 
 
 ## <a name="process-of-extending-your-alerts"></a>A folyamat, amely a figyelmeztetéseket
 A riasztások kiterjesztésének az OMS-portálon az Azure, a folyamat nem **nem** a riasztás definíciója, lekérdezés vagy konfiguráció az bármely módon módosítani. Mindössze annyi a változás, szükség, hogy az Azure, az összes műveleteket végez, például e-mail-értesítések webhook hívás, automation-runbook fut, vagy ITSM eszköz csatlakozik végzett művelet csoport keresztül. Ezért ha a megfelelő lépéseket csoporthoz társítva a riasztás - azok lesz lesz kiterjeszthetőek az Azure.
 
-Mivel a folyamat, amely során visszafordítható, és nem interruptive, Microsoft kiterjesztése-e riasztások automatikusan létrehozni az OMS-portálon a riasztásokra az Azure - től kezdődő **2018. április 23**. A nap, a Microsoft megkezdődik a riasztások kiterjeszti Azure ütemezése és fokozatosan az OMS-portálon, kezelhető az Azure portálon található összes riasztás. 
+Mivel a folyamat, amely során visszafordítható, és nem interruptive, Microsoft kiterjesztése-e riasztások automatikusan létrehozni az OMS-portálon a riasztásokra az Azure - től kezdődő **2018. május 14**. A nap, a Microsoft megkezdődik a riasztások kiterjeszti Azure ütemezése és fokozatosan az OMS-portálon, kezelhető az Azure portálon található összes riasztás. 
 
 Naplóelemzési munkaterület riasztások Azure kiterjeszti az beszerzése ütemezése, akkor azok továbbra is működnek, és a rendszer **nem** valamilyen módon veszélyeztetheti a figyelést. Ütemezése, a riasztások nem érhető el módosítása/szerkesztésre ideiglenesen; azonban új Azure riasztásokat továbbra is a rövid idő hozhatók létre. Rövid ebben az időszakban Ha bármely módosítása vagy a riasztás létrehozása az OMS-portálon végezhető el felhasználók kell a beállítást, így folytathatja az Azure Naplóelemzés vagy Azure riasztást.
 
@@ -55,7 +56,12 @@ Amint azt, a Microsoft művelet felügyeleti csomag létrehozott riasztások kit
 
  ![Az Azure kiterjesztendő után értesítések listázása OMS-portálon](./media/monitor-alerts-extend/PostExtendList.png)
 
-Riasztások, például a Szerkesztés és az OMS-portálon végzett létrehozási műveletek felhasználók transzparens módon jutnak Azure riasztásokat. Riasztás létrehozása továbbra is a meglévő [napló Analytics API](../log-analytics/log-analytics-api-alerts.md) a korábbi, csak kisebb módosítását, hogy a után riasztások kiterjeszthetőek az Azure - művelet csoportok ütemezésben kell társítani kell.
+Riasztások, például a Szerkesztés és az OMS-portálon végzett létrehozási műveletek felhasználók transzparens módon jutnak Azure riasztásokat. 
+
+> [!NOTE]
+> Amikor a felhasználók transzparens módon megnyílik az Azure-ba, a bármely hozzáadása vagy szerkesztése műveletet a megfelelő riasztásra OMS - biztosítása a felhasználók megfelelően vannak hozzárendelve a megfelelő [Azure figyelő és riasztás használatára vonatkozó engedélyek](monitoring-roles-permissions-security.md)
+
+Riasztás létrehozása továbbra is a meglévő [napló Analytics API](../log-analytics/log-analytics-api-alerts.md) a korábbi, csak kisebb módosítását, hogy a után riasztások kiterjeszthetőek az Azure - művelet csoportok ütemezésben kell társítani kell.
 
 ## <a name="next-steps"></a>További lépések
 

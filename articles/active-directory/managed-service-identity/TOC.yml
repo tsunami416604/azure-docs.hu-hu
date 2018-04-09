@@ -37,37 +37,49 @@
           href: how-to-use-vm-sign-in.md
         - name: Használat Azure SDK-kal
           href: how-to-use-vm-sdk.md
-    - name: Virtuális gép MSI használata az Azure Data Lake Store eléréséhez
+    - name: Windowsos VM/VMSS felügyelt identitás használata
       items:
-        - name: Windows rendszerű virtuális gépről
+        - name: Az Azure Data Lake Store elérése
           href: tutorial-windows-vm-access-datalake.md
-        - name: Linux rendszerű virtuális gépről
-          href: tutorial-linux-vm-access-datalake.md
-    - name: Virtuális gép MSI használata az Azure Resource Manager eléréséhez
-      items:
-        - name: Windows rendszerű virtuális gépről
+        - name: Az Azure Resource Manager elérése
           href: tutorial-windows-vm-access-arm.md
-        - name: Linux rendszerű virtuális gépről
-          href: tutorial-linux-vm-access-arm.md
-    - name: Virtuális gép MSI használata az Azure SQL eléréséhez
-      items:
-        - name: Windows rendszerű virtuális gépről
+        - name: Az Azure SQL elérése
           href: tutorial-windows-vm-access-sql.md
-    - name: Virtuális gép MSI használata egy Azure-tároló eléréséhez
-      items:
-        - name: Windows rendszerű virtuális gépről hozzáférési kulccsal
+        - name: Az Azure Storage elérése hozzáférési kulcs használatával
           href: tutorial-windows-vm-access-storage.md
-        - name: Windows rendszerű virtuális gépről SAS-szel
+        - name: Az Azure Storage elérése SAS-sel
           href: tutorial-windows-vm-access-storage-sas.md
-        - name: Linux rendszerű virtuális gépről hozzáférési kulccsal
-          href: tutorial-linux-vm-access-storage.md
-        - name: Linux rendszerű virtuális gépről SAS-szel
-          href: tutorial-linux-vm-access-storage-sas.md
-    - name: Virtuális gép MSI használata az Azure Key Vault eléréséhez
-      items:
-        - name: Windows rendszerű virtuális gépről
+        - name: Az Azure Key Vault elérése
           href: tutorial-windows-vm-access-nonaad.md
-        - name: Linux rendszerű virtuális gépről
+    - name: Linuxos VM/VMSS felügyelt identitás használata
+      items:
+        - name: Az Azure Data Lake Store elérése
+          href: tutorial-linux-vm-access-datalake.md
+        - name: Az Azure Resource Manager elérése
+          href: tutorial-linux-vm-access-arm.md
+        - name: Az Azure Storage elérése hozzáférési kulcs használatával
+          href: tutorial-linux-vm-access-storage.md
+        - name: Az Azure Storage elérése SAS-sel
+          href: tutorial-linux-vm-access-storage-sas.md
+        - name: Az Azure Key Vault elérése
           href: tutorial-linux-vm-access-nonaad.md
     - name: Gyakori kérdések és ismert problémák
       href: known-issues.md
+    - name: Referencia
+      items:
+        - name: parancssori felület
+          href: /cli/azure/identity
+        - name: PowerShell
+          href: '/powershell/module/azurerm.managedserviceidentity#managed_service_identity'
+        - name: .NET
+          href: '/dotnet/api/microsoft.azure.management.resourcemanager.fluent.authentication#azure-dotnet'
+        - name: Java
+          href: 'https://github.com/Azure/azure-libraries-for-java#ready-to-run-code-samples-for-virtual-machines'
+        - name: Python
+          href: /python/api/azure.mgmt.msi
+        - name: Ruby
+          href: 'https://rubygems.org/gems/azure_mgmt_msi'
+        - name: Node.js
+          href: /javascript/api/ms-rest-azure
+        - name: Indítás
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/msi/mgmt/2015-08-31-preview/msi'

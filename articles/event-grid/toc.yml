@@ -53,6 +53,8 @@
       href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
     - name: Eseménykézbesítés figyelése
       href: monitor-event-delivery.md
+    - name: Esemény-előfizetések lekérdezése
+      href: query-event-subscriptions.md
 - name: Referencia
   items:
     - name: Azure CLI

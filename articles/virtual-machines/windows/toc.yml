@@ -342,13 +342,20 @@
         - name: Azure naplógyűjtő bővítmény
           href: log-collector-extension.md
         - name: Azure diagnosztikai bővítmény
-          href: ps-extensions-diagnostics.md
+          href: extensions-diagnostics.md
+          items:
+            - name: Bővítményséma
+              href: ../../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md
+            - name: Engedélyezés a PowerShell használatával
+              href: ps-extensions-diagnostics.md
+            - name: Engedélyezés sablonokkal
+              href: extensions-diagnostics-template.md
+            - name: Hibaelhárítás
+              href: ../../monitoring-and-diagnostics/azure-diagnostics-troubleshooting.md
         - name: Virtuálisgép-bővítmények exportálása
           href: extensions-export-templates.md
         - name: Bővítmények hibaelhárítása
           href: extensions-troubleshoot.md
-        - name: Figyelési és diagnosztikai bővítmény
-          href: extensions-diagnostics-template.md
         - name: Network Watcher-ügynök
           href: extensions-nwa.md
         - name: Bővítménytelepítés korlátozása
