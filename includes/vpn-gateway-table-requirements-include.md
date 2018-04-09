@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d8091fdade9cd417af58755d8245c2fb091b86b3
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5e7e365a73c9ba9cfd91d4f93759e7af55a0ad48
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 A következő táblázat PolicyBased és RouteBased VPN-átjáró rendszerkövetelményeit sorolja fel. Ez a tábla a Resource Managerre és a klasszikus üzembe helyezési modellre is érvényes. A Klasszikus modell PolicyBased VPN gatewayek ugyanazok, mint statikus átjárók, és útválasztó-alapú gatewayek ugyanazok, mint a dinamikus átjárók.
 
@@ -23,4 +23,6 @@ A következő táblázat PolicyBased és RouteBased VPN-átjáró rendszerkövet
 | **Hitelesítési módszer** |Előre megosztott kulcs |Előre megosztott kulcs S2S-kapcsolatokhoz, tanúsítvány P2S-kapcsolatokhoz |Előre megosztott kulcs S2S-kapcsolatokhoz, tanúsítvány P2S-kapcsolatokhoz |Előre megosztott kulcs S2S-kapcsolatokhoz, tanúsítvány P2S-kapcsolatokhoz |
 | **S2S-kapcsolatok maximális száma** |1 |10 |10 |30 |
 | **P2S-kapcsolatok maximális száma** |Nem támogatott |128 |128 |128 |
-| **Aktív útválasztás-támogatás (BGP)** |Nem támogatott |Nem támogatott |Támogatott |Támogatott |
+| **Aktív útválasztás-támogatás (BGP)** (*) |Nem támogatott |Nem támogatott |Támogatott |Támogatott |
+
+  (*) A klasszikus üzembe helyezési modell esetén nem támogatottak a BGP.

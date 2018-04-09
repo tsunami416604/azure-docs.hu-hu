@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c5952422bb4faec196a5a54b9f18cf9700988aad
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 655f0b625d9f1b7c7ad216e9276da62d8454380f
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 1. A portálon a bal oldalon kattintson a **+** gombra, és írja be a „Virtuális hálózati átjáró” kifejezést a keresőmezőbe. A keresési eredmények között keresse meg a **Virtuális hálózati átjáró** elemet, és kattintson a bejegyzésre. A **Virtuális hálózati átjáró** lap alsó részén kattintson a **Létrehozás** gombra a **Virtuális hálózati átjáró létrehozása** lap megnyitásához.
 2. A **Virtuális hálózati átjáró létrehozása** lapon töltse ki a virtuális hálózati átjáró értékeit.
@@ -32,7 +32,7 @@ ms.lasthandoff: 03/23/2018
     - Először az **Átjáró IP-konfigurációjának létrehozása** elemre kattintva nyissa meg a „Nyilvános IP-cím választása” lapot, majd az **+Új létrehozása** elemre kattintva a „Nyilvános IP-cím létrehozása” lapot.
     - Ezután adjon egy **nevet** a nyilvános IP-címnek. A termékváltozatot hagyja **Alapszintű** értéken, ha nincs valamilyen konkrét érv amellett, hogy megváltoztassa, majd kattintson a lap alján lévő **OK** gombra a módosítások mentéséhez.
 
-      ![Nyilvános IP-cím létrehozása](./media/vpn-gateway-add-gw-s2s-rm-portal-include/gwip.png "PIP létrehozása")
+      ![Nyilvános IP-cím létrehozása](./media/vpn-gateway-add-gw-rm-portal-include/gwip.png "PIP létrehozása")
 
 4. Ellenőrizze a beállításokat. Ha azt szeretné, hogy az átjáró megjelenjen az irányítópulton, válassza a lap alján lévő **Rögzítés az irányítópulton** elemet. 
 5. A **Létrehozás** gombra kattintva hozzákezdhet a VPN-átjáró létrehozásához. A rendszer ellenőrzi a beállításokat, és az irányítópulton megjelenik a „Virtuális hálózati átjáró üzembe helyezése” csempe. Az átjáró létrehozása akár 45 percet is igénybe vehet. Előfordulhat, hogy a kész állapot megjelenítéséhez frissítenie kell a portáloldalt.
