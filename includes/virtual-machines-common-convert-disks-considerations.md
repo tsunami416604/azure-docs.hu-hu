@@ -3,6 +3,8 @@
 
 * Az átalakítás nem vonható vissza. 
 
+* Ne feledje, hogy bármely rendelkező felhasználók a [virtuális gép közreműködő](../articles/active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor) szerepkör nem fogja tudni módosítani a Virtuálisgép-méretet (mivel azok sikerült az átalakítás előtti). Ennek az az oka felügyelt lemezzel rendelkező virtuális gépek a felhasználónak engedéllyel kell rendelkeznie a Microsoft.Compute/disks/write az OS lemezeken.
+
 * Mindenképpen tesztelje az átalakítást. Migráljon egy tesztcélú virtuális gépet, mielőtt végrehajtja a migrálást éles környezetben.
 
 * Az átalakítás közben felszabadítja a virtuális gépet. A virtuális gép új IP-címet kap, amikor elindul az átalakítás után. Szükség esetén [hozzárendelhet egy statikus IP-címet](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md) a virtuális géphez.
