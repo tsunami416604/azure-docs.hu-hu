@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2018
 ms.author: ganesr
-ms.openlocfilehash: 829646be6404f86d9f370b3a402cfc0c0c980699
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 7380629344b27d5bb1e7af0aeddcb8f7665c1a5c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="expressroute-routing-requirements"></a>Az ExpressRoute útválasztási követelményei
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, be kell állítania és kezelnie kell az útválasztást. Egyes kapcsolatszolgáltatók az útválasztás beállítását és kezelését felügyelt szolgáltatásként kínálják. Ellenőrizze kapcsolatszolgáltatójánál, hogy kínálja-e ezt a szolgáltatást. Ha nem, akkor meg kell felelnie az alábbi követelményeknek:
@@ -197,7 +197,7 @@ Geopolitikai régiónként több ExpressRoute-kapcsolatcsoportot is vásárolhat
 A Microsoft által hirdetett összes útvonal a megfelelő közösségértéket tartalmazó címkével lesz ellátva. 
 
 > [!IMPORTANT]
-> A globális előtagok egy megfelelő közösségértéket tartalmazó címkével rendelkeznek, és csak akkor lesznek meghirdetve, ha az ExpressRoute prémium bővítmény engedélyezve van.
+> A globális előtagok egy megfelelő közösségértéket tartalmazó címkével rendelkeznek.
 > 
 > 
 

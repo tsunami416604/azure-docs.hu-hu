@@ -1,120 +1,169 @@
 ---
-title: "Eszköz beállítása az Azure IoT Hub eszköz kiépítése szolgáltatás |} Microsoft Docs"
-description: "Az eszköz gyártási folyamat során az IoT Hub eszköz kiépítése szolgáltatáson keresztül kiépítését eszköz beállítása"
+title: Eszköz beállítása az Azure IoT Hub Device Provisioning Service szolgáltatáshoz
+description: Az IoT Hub Device Provisioning Service általi eszközregisztráció beállítása az eszközgyártási folyamat során
 services: iot-dps
-keywords: 
+keywords: ''
 author: dsk-2015
 ms.author: dkshir
-ms.date: 09/05/2017
+ms.date: 04/02/2018
 ms.topic: tutorial
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 835a54f147b9ea543df21e7dfeb226ac42aceda3
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
-ms.translationtype: MT
+ms.openlocfilehash: c885e4d5d747d913eaf0b7137b240950e920e7ff
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Eszköz telepítéséhez használja az Azure IoT Hub eszköz kiépítése szolgáltatás beállítása
+# <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Az eszközregisztráció beállítása az Azure IoT Hub Device Provisioning Service használatával
 
-Az előző oktatóanyag megtanulta, hogyan állíthat be az Azure IoT Hub eszköz kiépítése szolgáltatás automatikus kiépítéséhez az eszközök az IoT hub. Ez az oktatóanyag a gyártási folyamat során az eszköz beállításának útmutatást nyújt, hogy az eszköz kiépítése szolgáltatáshoz az eszköz alapján konfigurálhatja a [hardveres biztonsági modul (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security), és az eszköz az eszköz kiépítése szolgáltatáshoz kapcsolódni, az első alkalommal való indításakor. Ez az oktatóanyag ismerteti a folyamatok:
+Az előző oktatóanyagban bemutattuk, hogyan állíthatja be, hogy az Azure IoT Hub Device Provisioning Service automatikusan regisztrálja az eszközöket az IoT Hubban. Ez az oktatóanyag azt mutatja be, hogyan állíthatók be az eszközök a gyártási folyamat során, ami lehetővé teszi az IoT Hub általi automatikus regisztrációt. Az eszköz regisztrálása az [igazolási eljárás](concepts-device.md#attestation-mechanism), az első indítás és a regisztrálási szolgáltatással létesített kapcsolat alapján történik. Ez az oktatóanyag a következő folyamatokat mutatja be:
 
 > [!div class="checklist"]
-> * Válassza ki a hardveres biztonsági modul
-> * A kijelölt hardveres biztonsági MODULT eszköz kiépítése ügyfél SDK építése
-> * Bontsa ki a biztonsági összetevők
-> * Az eszközön az eszköz kiépítése szolgáltatáshoz konfigurációjának beállítása
+> * Platformspecifikus Device Provisioning Services ügyfél-SDK kiépítése
+> * Biztonsági összetevők kicsomagolása
+> * Az eszközregisztrációs szoftver létrehozása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A folytatás előtt hozzon létre az eszköz kiépítése szolgáltatáshoz-példányt és az IoT-központ szerepel az oktatóanyag utasításai [állítsa be az eszközök kiépítését felhő](./tutorial-set-up-cloud.md).
+A folytatás előtt hozza létre a Device Provisioning Service-példányt és egy IoT-központot az előző, [1 – Felhőerőforrások beállítása](./tutorial-set-up-cloud.md) című oktatóanyag alapján.
 
+Ez az oktatóanyag az [Azure IoT SDKs and libraries for C](https://github.com/Azure/azure-iot-sdk-c) (Azure IoT SDK-k és tárak – C) adattárt használja, amely a C nyelvhez készült Device Provisioning Service ügyfél-SDK-t tartalmazza. Az SDK jelenleg Windows- és Ubuntu-implementációkon futó rendszerek számára kínál TPM- és X.509-támogatást. Az oktatóanyag egy Windows rendszerű fejlesztési ügyfél alapján készült, amely alapszintű jártasságot feltételez a Visual Studio 2017 használatában. 
 
-## <a name="select-a-hardware-security-module"></a>Válassza ki a hardveres biztonsági modul
+Amennyiben nem ismeri az automatikus regisztrálás folyamatát, a folytatás előtt olvassa el [az automatikus kiépítés alapfogalmait](concepts-auto-provisioning.md) ismertető cikket. 
 
-A [eszköz kiépítése szolgáltatáshoz ügyfél SDK](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client) támogatja a hardveres biztonsági modulok (vagy HSM-EK) két típusú: 
+## <a name="build-a-platform-specific-version-of-the-sdk"></a>Az SDK platformspecifikus verziójának kiépítése
 
-- [Platformmegbízhatósági modul (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module).
-    - BE egy bevett a legtöbb Windows-alapú eszközplatformokat, valamint néhány Linux/Ubuntu-alapú eszközökön. Egy eszköz gyártóját, ha ezek az eszközökön futó operációs rendszer egyik sem, és keres egy bevett a HSM-EK dönthet erről a HSM. A TPM modulok csak regisztrálhat egyes eszközökre külön-külön az eszköz kiépítése szolgáltatáshoz. Fejlesztési célokra szolgál a TPM szimulátor is használhatja a Windows vagy Linux fejlesztési számítógépén.
+A Device Provisioning Service ügyfél-SDK az eszközregisztrációs szoftver implementálását segíti. Az SDK használata előtt azonban ki kell építenie annak fejlesztésiügyfél-platformjához tartozó verzióját, illetve az igazolási eljárást. Az oktatóanyag során kiépít egy támogatott igazolástípussal rendelkező SDK-t, amely egy Windows fejlesztési platformon használja a Visual Studio 2017-et:
 
-- [X.509](https://cryptography.io/en/latest/x509/) alapú hardveres biztonsági modulok. 
-    - X.509-alapú hardveres biztonsági modulok viszonylag újabb processzorok, a munkahelyi jelenleg halad a Microsofton belül zavargások vagy DARABOLHATÓ modulok, amelyek X.509-tanúsítványokat az vannak. Az X.509 modulok csoportos regisztráláshoz a portálon. Egyes nem - Windows operációs rendszer például embedOS is támogatja. Fejlesztési célra az eszköz kiépítése szolgáltatáshoz ügyfél SDK egy X.509 eszköz szimulátor támogatja. 
+1. Telepítse a szükséges eszközöket, és klónozza a regisztrációs szolgáltatás C ügyfél-SDK-t tartalmazó GitHub-adattárat:
 
-Egy eszköz gyártó szerint kell kiválasztania a hardveres biztonsági modulok/modulok, amely az előző típusok egyikét alapulnak. Más típusú hardveres biztonsági modulok jelenleg nem támogatottak az eszköz kiépítése szolgáltatáshoz ügyfél SDK.   
+   a. Győződjön meg arról, hogy a Visual Studio 2015 vagy a [Visual Studio 2017](https://www.visualstudio.com/vs/) telepítve van a gépen. A Visual Studio telepítésekor engedélyezni kell az [„Asztali fejlesztés C++ használatával”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) számítási feladatot.
 
+   b. Töltse le és telepítse a [CMake buildelési rendszert](https://cmake.org/download/). Fontos, hogy a Visual Studio az „Asztali fejlesztés C++ használatával” számítási feladattal együtt telepítve legyen a gépen a CMake telepítése **előtt**.
 
-## <a name="build-device-provisioning-client-sdk-for-the-selected-hsm"></a>A kijelölt hardveres biztonsági MODULT eszköz kiépítése ügyfél SDK építése
+   c. Győződjön meg arról, hogy a(z) `git` telepítve van a gépen, és a parancsablakból elérhető környezeti változókhoz van adva. A [Software Freedom Conservancy's Git ügyfél eszközeiben](https://git-scm.com/download/) találja a legújabb `git`-eszközöket, köztük a **Git Bash** eszközt, azt a parancssori Bash-felületet, amellyel kommunikálhat a helyi Git-adattárral. 
 
-A eszköz kiépítése ügyfél SDK segítségével valósítja meg a kijelölt biztonsági mechanizmus szoftverben. A következő lépések bemutatják, hogyan használható az SDK a kiválasztott HSM lapka használata:
+   d. Nyissa meg a Git Basht, és klónozza az „Azure IoT SDKs and libraries for C” (Azure IoT SDK-k és tárak – C) adattárt. A klónozási parancs végrehajtása több percet is igénybe vehet, mivel a folyamat során a rendszer számos függő almodult is letölt:
+    
+   ```cmd/sh
+   git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+   ```
 
-1. Ha követte a [gyors üzembe helyezés szimulált eszköz létrehozásához](./quick-create-simulated-device.md), akkor a telepítő készen áll az SDK létrehozására. Ha nem, kövesse az első négy lépést című részre [készítse elő a fejlesztési környezetet](./quick-create-simulated-device.md#setupdevbox). Ezeket a lépéseket a GitHub-tárház klónozása az eszköz kiépítése szolgáltatáshoz ügyfél SDK-ban, valamint telepítse az `cmake` eszköz felépítéséhez. 
+   e. Hozzon létre egy új `cmake` alkönyvtárat az újonnan létrehozott adattáralkönyvtárban:
 
-1. Az SDK összeállítása típusának megfelelő HSM jelölt ki az eszközt, a parancssor használatával a következő parancsok egyikét:
-    - TPM-eszközök:
+   ```cmd/sh
+   mkdir azure-iot-sdk-c/cmake
+   ``` 
+
+2. A Git Bash parancssorán nyissa meg az azure-iot-sdk-c adattár `cmake` alkönyvtárát:
+
+   ```cmd/sh
+   cd azure-iot-sdk-c/cmake
+   ```
+
+3. Hozza létre a fejlesztési platform SDK-ját és az egyik támogatott igazolási eljárást az alábbi parancsok egyikével (a két záró pontot se felejtse ki). Ha elkészült, a CMake kiépíti az eszközspecifikus tartalommal rendelkező `/cmake` alkönyvtárat:
+    - Az igazoláshoz fizikai TPM-/HSM-modult vagy szimulált X.509-tanúsítványt használó eszközök esetében:
         ```cmd/sh
         cmake -Duse_prov_client:BOOL=ON ..
         ```
 
-    - A TPM szimulátor:
+    - Az igazoláshoz TPM-szimulátort használó eszközök esetében:
         ```cmd/sh
         cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON ..
         ```
 
-    - Az X.509 eszközök és szimulátor:
-        ```cmd/sh
-        cmake -Duse_prov_client:BOOL=ON ..
-        ```
-
-1. Az SDK alapértelmezett támogatást nyújt a Windows vagy Ubuntu megvalósításait TPM és X.509 hardveres biztonsági modulokat futtató eszközökön. Ezek a támogatott hardveres biztonsági modulok, a folytatáshoz című részre [bontsa ki a biztonsági összetevők](#extractsecurity) alatt. 
+Most már készen áll arra, hogy az SDK segítségével létrehozza az eszközregisztrációs kódot. 
  
-## <a name="support-custom-tpm-and-x509-devices"></a>Támogatja az egyéni TPM és X.509-eszközök
+<a id="extractsecurity"></a> 
 
-Az eszköz kiépítése rendszer ügyfél SDK-val nem alapértelmezett támogatást nyújt a TPM és X.509 eszközök, amelyeken fut a Windows vagy Ubuntu. Az ilyen eszközök kell az adott HSM lapka használata, az egyéni kód írását, ahogy az az alábbi lépéseket:
+## <a name="extract-the-security-artifacts"></a>Biztonsági összetevők kicsomagolása 
 
-### <a name="develop-your-custom-repository"></a>Az egyéni tárház fejlesztése
+A következő lépés az eszköz által használt igazolási eljárás biztonsági összetevőinek kicsomagolása. 
 
-1. A könyvtár eléréséhez a HSM-ből fejlesztéséhez. Ebben a projektben van szüksége a statikus könyvtárat, az eszköz kiépítése SDK-ban való felhasználására létrehozásához.
-1. Szalagtár a következő fejléc fájlban meghatározott funkciók kell megvalósítania: egy. Egyéni TPM valósítja meg a definiált függvények [egyéni HSM dokumentum](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_custom_hsm.md#hsm-tpm-api).
-    b. Az egyéni X.509 valósítja meg a definiált függvények [egyéni HSM dokumentum](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_custom_hsm.md#hsm-x509-api). 
+### <a name="physical-device"></a>Fizikai eszköz 
 
-### <a name="integrate-with-the-device-provisioning-service-client"></a>Az eszköz-üzembehelyezési szolgáltatásügyfél integrálása
+Ha az SDK fizikai TPM/-HSM-modulból származó igazoláshoz készült:
 
-Miután szalagtár sikeresen létrehozta saját, helyezze át a IOT hubbal C-SDK, és szalagtár elleni hivatkozásra:
+- TPM-eszköz esetén meg kell határozni a TPM-lapka gyártója által hozzá társított **Ellenőrzőkulcsot**. A TPM-eszköz egyedi **Regisztrációs azonosítójának** származtatását az ellenőrzőkulcs kivonatolásával végezheti el.  
 
-1. Adja meg az egyéni HSM GitHub-tárházban, a könyvtár elérési útja és neve a következő cmake parancsot az:
-    ```cmd/sh
-    cmake -Duse_prov_client:BOOL=ON -Dhsm_custom_lib=<path_and_name_of_library> <PATH_TO_AZURE_IOT_SDK>
+- X.509-eszköz esetén szerezze be az eszköz(ök)höz rendelt tanúsítványokat – végfelhasználói tanúsítványt egyéni eszközregisztrációhoz, főtanúsítványokat csoportos eszközregisztrációhoz. 
+
+### <a name="simulated-device"></a>Szimulált eszköz
+
+Ha az SDK szimulált TPM-modulból vagy X.509-tanúsítványból származó igazoláshoz készült:
+
+- Szimulált TPM-eszköz:
+   1. Egy különálló vagy új parancssorban keresse meg az `azure-iot-sdk-c` alkönyvtárat, és futtassa a TPM-szimulátort. A 2321-es és a 2322-es portokon lévő szoftvercsatornán keresztül figyel. Ne zárja be ezt a parancsablakot. A szimulátornak a következő rövid útmutató végéig futnia kell. 
+
+      Az `azure-iot-sdk-c` alkönyvtárból futtassa a következő parancsot a szimulátor indításához:
+
+      ```cmd/sh
+      .\provisioning_client\deps\utpm\tools\tpm_simulator\Simulator.exe
+      ```
+
+   2. A Visual Studióval nyissa meg a *cmake* mappában létrehozott `azure_iot_sdks.sln` nevű megoldást, és hozza létre a „Build” menü „Megoldás fordítása” parancsával.
+
+   3. A Visual Studio *Solution Explorer* (Megoldáskezelő) panelén lépjen a **Provision\_Tools** mappára. Kattintson a jobb gombbal a **tpm_device_provision** projektre, és válassza a **Set as Startup Project** (Beállítás kezdőprojektként) lehetőséget. 
+
+   4. Futtassa a megoldást a Hibakeresés menü valamelyik „Indítás” parancsa segítségével. A kimeneti ablak megjeleníti a TPM-szimulátor eszközök beléptetéséhez és regisztrálásához szükséges **_regisztrációs azonosítóját_** és **_ellenőrzőkulcsot_**. Másolja ki ezeket az értékeket későbbi felhasználás céljára. Bezárhatja a regisztrációs azonosítót és az ellenőrzőkulcsot tartalmazó ablakot, de hagyja futni a TPM-szimulátor ablakát, amelyet az 1. lépésben nyitott meg.
+
+- Szimulált X.509-eszköz:
+  1. A Visual Studióval nyissa meg a *cmake* mappában létrehozott `azure_iot_sdks.sln` nevű megoldást, és hozza létre a „Build” menü „Megoldás fordítása” parancsával.
+
+  2. A Visual Studio *Solution Explorer* (Megoldáskezelő) panelén lépjen a **Provision\_Tools** mappára. Kattintson a jobb gombbal a **dice\_device\_enrollment** projektre, és válassza a **Beállítás kezdőprojektként** lehetőséget. 
+  
+  3. Futtassa a megoldást a Hibakeresés menü valamelyik „Indítás” parancsa segítségével. A kimeneti ablakba írja be a következőt az egyéni regisztrációhoz, amikor a rendszer erre kéri: **i**. A kimeneti ablakban megjelenik egy helyileg létrehozott X.509-tanúsítvány a szimulált eszközhöz. Másolja a vágólapra a kimenetet a *-----BEGIN CERTIFICATE-----* sortól az első *-----END CERTIFICATE-----* sorig, és ügyeljen arra, hogy a kijelölésben ez a két sor is benne legyen. Ne feledje, hogy csak az első tanúsítványra van szüksége a kimeneti ablakból.
+ 
+  4. Hozzon létre egy **_X509testcert.pem_** nevű fájlt, nyissa meg egy szövegszerkesztőben, és másolja bele a vágólapra kimásolt szöveget. Mentse a fájlt, mivel később még szüksége lesz rá az eszköz regisztrálásához. A regisztrációs szoftver működés közben ugyanazt a tanúsítványt használja, mint az automatikus regisztrálás során.    
+
+Ezek a biztonsági összetevők az eszköz Device Provisioning Service szolgáltatásba történő regisztrálásához szükségesek. A regisztrációs szolgáltatás a későbbiekben mindig megvárja, amíg az eszköz elindul és létrejön a kapcsolat. Az eszköz első indításakor az ügyfél-SDK-logika a lapkával (vagy szimulátorral) együttműködve kicsomagolja az eszközön lévő biztonsági összetevőket, és ellenőrzi a Device Provisioning Service szolgáltatással meglévő regisztrációt. 
+
+## <a name="create-the-device-registration-software"></a>Az eszközregisztrációs szoftver létrehozása
+
+Végső lépésként egy olyan regisztrációs alkalmazást kell megírni, amely a Device Provisioning Service ügyfél-SDK segítségével regisztrálja az eszközt az IoT Hub szolgáltatással. 
+
+> [!NOTE]
+> Ennek a lépésnek a során a szimulált eszközt fogjuk használni, amihez a munkaállomáson lévő SDK-mintaregisztrációs alkalmazást futtatjuk. Ugyanezek az alapelvek érvényesülnek azonban, ha a regisztrációs alkalmazást egy fizikai eszközre történő regisztrációhoz készíti. 
+
+1. Az Azure Portalon válassza ki az eszközregisztrációs szolgáltatás **Áttekintés** panelét, és másolja ki az **_Azonosító hatóköre_** értéket. A minden esetben egyedi *Azonosító hatóköre* értéket a szolgáltatás hozza létre. Az érték nem módosítható, és a regisztrációazonosítók egyedi azonosítására szolgál.
+
+    ![DPS végpontinformációk kinyerése a portál paneljéről](./media/tutorial-set-up-device/extract-dps-endpoints.png) 
+
+2. A számítógépén a Visual Studio *Solution Explorer* (Megoldáskezelő) panelén lépjen a **Provision\_Samples** mappára. Válassza ki a **prov\_dev\_client\_sample** nevű mintaprojektet, és nyissa meg a **prov\_dev\_client\_sample.c** nevű forrásfájlt.
+
+3. Rendelje az 1. lépésben létrehozott _Azonosító hatóköre_ értéket az `id_scope` változóhoz (a bal/`[` és jobb/`]` oldali szögletes zárójeleket eltávolítva): 
+
+    ```c
+    static const char* global_prov_uri = "global.azure-devices-provisioning.net";
+    static const char* id_scope = "[ID Scope]";
     ```
-   
-1. A visual studióban nyissa meg az SDK-t, és állítsa be úgy. 
 
-    - A létrehozási folyamat összeállítja az SDK-könyvtár.
-    - Az SDK megkísérli szemben a cmake parancs definiált egyéni hardveres biztonsági modul hivatkozásra.
+    A `global_prov_uri` változó teszi lehetővé az IoT Hub ügyfél-regisztrációs API-nak (`IoTHubClient_LL_CreateFromDeviceAuth`), hogy kapcsolódjon a hozzá kijelölt Device Provisioning Service-példányhoz.
 
-1. Futtassa a `\azure-iot-sdk-c\provisioning_client\samples\prov_dev_client_ll_sample\prov_dev_client_ll_sample.c` minta ellenőrizheti, ha a HSM-ből megfelelően történik.
+4. Ugyanebben a fájlban, a **main()** függvényben az eszköz regisztrációs szoftvere (TPM vagy X.509) által használt igazolási eljáráshoz illő `hsm_type` változó mellett adjon hozzá/távolítson el megjegyzésjelölőt: 
 
-<a id="extractsecurity"></a>
-## <a name="extract-the-security-artifacts"></a>Bontsa ki a biztonsági összetevők
+    ```c
+    hsm_type = SECURE_DEVICE_TYPE_TPM;
+    //hsm_type = SECURE_DEVICE_TYPE_X509;
+    ```
 
-A következő lépésre az eszközön a hardveres biztonsági MODULT a biztonsági összetevők kibontásához.
+5. Mentse a módosításokat, és a „Build” menü „Megoldás létrehozása” parancsát választva hozza létre újból a **prov\_dev\_client\_sample** mintát. 
 
-1. A TPM-eszköz esetén kell tudni, a **ellenőrzőkulccsal** a TPM lapka gyártótól származó társítva. Egy egyedi származtathatók **regisztrációs Azonosítót** kivonatolás az ellenőrzőkulcsot a TPM eszközhöz. 
-2. X.509-eszköz szüksége lesz a eszköz(ök) - a végfelhasználói tanúsítványokban egyedi eszközbeléptetésnél során az eszközök csoport regisztrációkat főtanúsítványok kiállított tanúsítványokhoz juthat.
+6. A **Provision\_Samples** mappában kattintson a jobb gombbal a **prov\_dev\_client\_sample** projektre, és válassza a **Beállítás kezdőprojektként** lehetőséget. MÉG NE futtassa a mintaalkalmazást!
 
-Ezen biztonsági összetevők kell regisztrálnia kell az eszközöket az kiépítése szolgáltatáshoz. A létesítési szolgáltatás majd vár bármely induljanak el, és csatlakozzon az újabb bármikor időben ezeket az eszközöket. Lásd: [kezelése az eszközök regisztrációját](how-to-manage-enrollments.md) kapcsolatos információk ezen biztonsági összetevők használatával történő létrehozásáról a regisztrációt. 
+> [!IMPORTANT]
+> Még ne futtassa/indítsa el az eszközt! Először fejezze be a folyamatot, és regisztrálja az eszközt a Device Provisioning Service szolgáltatással. A Következő lépések szakasz a következő cikkre irányítja.
 
-Amikor az eszköz az első alkalommal elindul, az ügyfél SDK kommunikál a lapka biztonsági összetevők kibontani az eszközt, és az eszközök kiépítését szolgáltatásban történő regisztráció ellenőrzi. 
+### <a name="sdk-apis-used-during-registration-for-reference-only"></a>A regisztráció során használt SDK API-k (csak referenciaként)
 
-
-## <a name="set-up-the-device-provisioning-service-configuration-on-the-device"></a>Az eszközön az eszköz kiépítése szolgáltatáshoz konfigurációjának beállítása
-
-Az eszköz gyártási folyamat utolsó lépése, hogy az alkalmazás, amely az eszköz kiépítése szolgáltatáshoz ügyfél SDK segítségével az eszközt regisztrálni kell a szolgáltatással. Ez az SDK az alábbi API felületeket biztosít az alkalmazásait:
+Az SDK a következő, regisztrációhoz használható API-kat biztosítja az alkalmazásához. Ezek az API-k az indításkor segítik az eszköz csatlakoztatását és regisztrálását a Device Provisioning Service szolgáltatással. Cserébe az eszköz megkapja az IoT Hub-példánnyal létrehozandó kapcsolathoz szükséges adatokat:
 
 ```C
-// Creates a Provisioning Client for communications with the Device Provisioning Client Service
+// Creates a Provisioning Client for communications with the Device Provisioning Client Service.  
 PROV_DEVICE_LL_HANDLE Prov_Device_LL_Create(const char* uri, const char* scope_id, PROV_DEVICE_TRANSPORT_PROVIDER_FUNCTION protocol)
 
 // Disposes of resources allocated by the provisioning Client.
@@ -130,70 +179,25 @@ void Prov_Device_LL_DoWork(PROV_DEVICE_LL_HANDLE handle)
 PROV_DEVICE_RESULT Prov_Device_LL_SetOption(PROV_DEVICE_LL_HANDLE handle, const char* optionName, const void* value)
 ```
 
-Ne felejtse el a változókat inicializálni `uri` és `id_scope` említetteknek megfelelően a [szimulálás első rendszerindítási sorrend a a gyors üzembe helyezési eszköz szakasza](./quick-create-simulated-device.md#firstbootsequence), használatuk előtt. Az eszközök kiépítését regisztráció API `Prov_Device_LL_Create` csatlakozik a globális eszköz kiépítése szolgáltatáshoz. A *azonosító hatókör* az szolgáltatás által létrehozott, és biztosítja, hogy az egyediségi. Már nem módosítható, és a regisztráció azonosítók egyedi azonosításához használt. A `iothub_uri` lehetővé teszi, hogy az IoT Hub-regisztráció API `IoTHubClient_LL_CreateFromDeviceAuth` csatlakozhatnak a megfelelő IoT-központot. 
-
-
-Ezen API-k segítségével csatlakozzon és az eszköz kiépítése szolgáltatáshoz regisztrálja a rendszerindításkor, az IoT hub kapcsolatos információkat és ezt az eszközt. A fájl `provisioning_client/samples/prov_client_ll_sample/prov_client_ll_sample.c` ezen API-k használatát ismerteti. Általában létrehozásához szükséges következő keretet biztosít az ügyfelek regisztrációjának:
-
-```C
-static const char* global_uri = "global.azure-devices-provisioning.net";
-static const char* id_scope = "[ID scope for your provisioning service]";
-...
-static void register_callback(DPS_RESULT register_result, const char* iothub_uri, const char* device_id, void* context)
-{
-    USER_DEFINED_INFO* user_info = (USER_DEFINED_INFO *)user_context;
-    ...
-    user_info. reg_complete = 1;
-}
-static void registation_status(DPS_REGISTRATION_STATUS reg_status, void* user_context)
-{
-}
-int main()
-{
-    ...
-    SECURE_DEVICE_TYPE hsm_type;
-    hsm_type = SECURE_DEVICE_TYPE_TPM;
-    //hsm_type = SECURE_DEVICE_TYPE_X509;
-    prov_dev_security_init(hsm_type); // initialize your HSM 
-
-    prov_transport = Prov_Device_HTTP_Protocol;
-    
-    PROV_CLIENT_LL_HANDLE handle = Prov_Device_LL_Create(global_uri, id_scope, prov_transport); // Create your provisioning client
-
-    if (Prov_Client_LL_Register_Device(handle, register_callback, &user_info, register_status, &user_info) == IOTHUB_DPS_OK) {
-        do {
-        // The register_callback is called when registration is complete or fails
-            Prov_Client_LL_DoWork(handle);
-        } while (user_info.reg_complete == 0);
-    }
-    Prov_Client_LL_Destroy(handle); // Clean up the Provisioning client
-    ...
-    iothub_client = IoTHubClient_LL_CreateFromDeviceAuth(user_info.iothub_uri, user_info.device_id, transport); // Create your IoT hub client and connect to your hub
-    ...
-}
-```
-
-Az eszköz kiépítése szolgáltatáshoz regisztrációs ügyfélalkalmazást először egy teszt szolgáltatás a telepítőprogram használatával a szimulált eszköz használatával is szűkítéséhez. Miután az alkalmazás a tesztelési környezetben működik, összeállítani, az adott eszköz, és másolja a végrehajtható fájlt az eszköz lemezképhez. Az eszköz nem indulnak el, de kell [regisztrálja az eszközt, az eszköz kiépítése szolgáltatáshoz](./tutorial-provision-device-to-hub.md#enrolldevice) az eszköz indítása előtt. Tekintse meg a következő ismerje meg, ez a folyamat az alábbi lépéseket. 
+Előfordulhat, hogy először egy szimulált eszköz, majd egy tesztszolgáltatás beállítása segítségével finomítania kell a Device Provisioning Service ügyfél-regisztrációs alkalmazást. Ha az alkalmazás megfelelően működik a tesztkörnyezetben, a valós eszközhöz is létrehozhatja, és az eszközképre másolhatja a végrehajtható fájlokat. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ezen a ponton előfordulhat, hogy állította be az eszközök kiépítését és az IoT-központ szolgáltatások a portálon. Ha az eszköz-üzembehelyezési telepítő abandon, és/vagy késleltetés ezen szolgáltatások bármelyikét használja, azt javasoljuk felesleges költségek megcélzásával elkerülheti ezeket leállítása.
+Előfordulhat, hogy ekkor fut a portálon a Device Provisioning Service és az IoT Hub szolgáltatás. Ha félbe szeretné hagyni az eszközregisztráció beállítását, és/vagy később fejezné be ezt az oktatóanyagot, javasoljuk, hogy a felesleges költségek elkerülése érdekében kapcsolja ki az eszközt.
 
 1. Az Azure Portal bal oldali menüjében kattintson az **Összes erőforrás** lehetőségre, majd válassza ki az eszközkiépítési szolgáltatást. Az **Összes erőforrás** panel felső részén kattintson a **Törlés** elemre.  
-1. Az Azure Portal bal oldali menüjében kattintson az **Összes erőforrás** lehetőségre, majd válassza ki az IoT Hubot. Az **Összes erőforrás** panel felső részén kattintson a **Törlés** elemre.  
+2. Az Azure Portal bal oldali menüjében kattintson az **Összes erőforrás** lehetőségre, majd válassza ki az IoT Hubot. Az **Összes erőforrás** panel felső részén kattintson a **Törlés** elemre.  
 
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Válassza ki a hardveres biztonsági modul
-> * A kijelölt hardveres biztonsági MODULT eszköz kiépítése ügyfél SDK építése
-> * Bontsa ki a biztonsági összetevők
-> * Az eszközön az eszköz kiépítése szolgáltatáshoz konfigurációjának beállítása
+> * Platformspecifikus Device Provisioning Service ügyfél-SDK kiépítése
+> * Biztonsági összetevők kicsomagolása
+> * Az eszközregisztrációs szoftver létrehozása
 
-A következő oktatóanyag áttekintésével megismerheti, hogyan az eszközt, hogy az IoT hub kiépítéséhez az Azure IoT Hub kiépítése szolgáltatáshoz automatikus üzembe helyezéséhez ügyfélszoftvereken továbblépés.
+A következő oktatóanyagra lépve megtudhatja, hogyan regisztrálhatja az eszközt az IoT Hubban az automatikus regisztrációt elvégző Azure IoT Hub Device Provisioning Service szolgáltatásba való regisztrálással.
 
 > [!div class="nextstepaction"]
-> [Az eszközt, hogy az IoT hub kiépítése](tutorial-provision-device-to-hub.md)
+> [Az eszköz regisztrálása az IoT Hubban](tutorial-provision-device-to-hub.md)
 

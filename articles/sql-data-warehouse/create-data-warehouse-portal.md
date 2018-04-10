@@ -1,25 +1,20 @@
 ---
-title: 'Rövid útmutató: Azure SQL Data Warehouse létrehozása – Azure Portal | Microsoft Docs'
-description: Az Azure SQL Data Warehouse számára létrehozhat egy SQL-kiszolgálót, egy kiszolgálószintű tűzfalszabályt és egy adattárházat az Azure Portalon. Ezután lekérdezéseket futtathat rajta.
-keywords: sql data warehouse oktatóanyag, sql data warehouse létrehozása
-services: sql-database
-documentationcenter: ''
-author: barbkess
+title: Azure SQL Data Warehouse létrehozása és lekérdezése – Azure Portal | Microsoft Docs
+description: Létrehozhat egy Azure SQL Data Warehouse-t az Azure Portalon, majd lekérdezheti azt.
+services: sql-data-warehouse
+author: hirokib
 manager: jhubbard
-editor: ''
-ms.service: sql-database
-ms.custom: mvc,DBs & servers
-ms.workload: Active
-ms.tgt_pltfrm: portal
-ms.devlang: na
+ms.service: sql-data-warehouse
 ms.topic: quickstart
-ms.date: 11/20/2017
-ms.author: barbkess
-ms.openlocfilehash: a620da9dbe9823b9876fa80dc0200aa91fbf9920
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.component: implement
+ms.date: 03/28/2018
+ms.author: elbutter
+ms.reviewer: jrj
+ms.openlocfilehash: 97738b37f81cac3e7eef263fecc2095c9ef4b7ff
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Rövid útmutató: Azure SQL Data Warehouse létrehozása és lekérdezése az Azure Portalon
 

@@ -4,7 +4,7 @@ description: Egy alapszintű Java-alkalmazás üzembe helyezésével megtudhatja
 services: app-service\web
 documentationcenter: ''
 author: rmcmurray
-manager: routlaw
+manager: mbaldwin
 editor: ''
 ms.assetid: 8bacfe3e-7f0b-4394-959a-a88618cb31e1
 ms.service: app-service-web
@@ -12,18 +12,23 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 11/08/2017
+ms.date: 03/26/2018
 ms.author: cephalin;robmcm
 ms.custom: mvc, devcenter
-ms.openlocfilehash: e63f8706e28a5d34cc9774cbaecde31415a4b48e
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 854ae54992a1389ec7c7f7892c738d070421264d
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Az első Java-webalkalmazás létrehozása az Azure-ban
 
 Az [Azure Web Apps](app-service-web-overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ez a gyorsútmutató bemutatja, hogyan helyezhet üzembe Java-webalkalmazásokat az App Service-ben a [Java EE-fejlesztőknek készült Eclipse IDE](http://www.eclipse.org/) használatával.
+
+> [!NOTE]
+>
+> A rövid útmutató lépései bemutatják, hogyan tehet közzé Java-webalkalmazást az App Service-ben az Eclipse IDE használatával, de az IntelliJ IDEA Ultimate Editiont vagy a Community Editiont is használhatja. További információkat az [Azure-hoz készült Hello World webalkalmazás IntelliJ használatával való létrehozásával](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) foglalkozó témakör tartalmaz.
+>
 
 A gyors útmutató befejezését követően alkalmazása webböngészőben megtekintve az alábbi illusztrációra fog hasonlítani:
 
@@ -37,6 +42,11 @@ A gyorsútmutató elvégzéséhez a következők telepítése szükséges:
 
 * Az ingyenes, <a href="http://www.eclipse.org/downloads/" target="_blank">Java EE-fejlesztőknek készült Eclipse IDE</a>. Ez a gyorsútmutató az Eclipse Neont használj.
 * Az <a href="/java/azure/eclipse/azure-toolkit-for-eclipse-installation" target="_blank">Eclipse-hez készült Azure-eszközkészlet</a>.
+
+> [!NOTE]
+>
+> A rövid útmutató lépéseinek elvégzéséhez az Eclipse-hez készült Azure-eszközkészlettel be kell jelentkeznie az Azure-fiókba. Ehhez tekintse meg az [Eclipse-hez készült Azure-eszközkészlethez Azure bejelentkezési utasításokat](/java/azure/eclipse/azure-toolkit-for-eclipse-sign-in-instructions) tartalmazó témakört.
+>
 
 ## <a name="create-a-dynamic-web-project-in-eclipse"></a>Dinamikus webes projekt létrehozása az Eclipse-ben
 
@@ -74,15 +84,20 @@ Az index.jsp fájlban cserélje le a `<body></body>` elemet az alábbi jelölés
 
 Mentse a módosításokat.
 
+> [!NOTE]
+>
+> Ha az 1. sorban olyan hiba szerepel, amely egy hiányzó Java-servletosztályra vonatkozik, figyelmen kívül hagyhatja.
+> 
+> ![Ártalmatlan Java-servlethiba](./media/app-service-web-get-started-java/java-servlet-benign-error.png)
+>
+
 ## <a name="publish-the-web-app-to-azure"></a>A webalkalmazás közzététele az Azure-ban
 
 A Project Explorer (Projektböngésző) nézetben kattintson a jobb gombbal a projektre, majd válassza az **Azure** > **Publish as Azure Web App** (Közzététel Azure-webalkalmazásként) lehetőséget.
 
 ![A Publish as Azure Web App (Közzététel Azure-webalkalmazásként) helyi menü](./media/app-service-web-get-started-java/publish-as-azure-web-app-context-menu.png)
 
-Az **Azure bejelentkezési** párbeszédpanelen tartsa meg az **Interactive** (Interaktív) lehetőséget, majd válassza a **Sign in** (Bejelentkezés) gombot.
-
-Kövesse a bejelentkezési utasításokat.
+Ha megjelenik az **Azure bejelentkezési** párbeszédpanel, akkor az [Eclipse-hez készült Azure-eszközkészletre vonatkozó Azure bejelentkezési utasításokat leíró](/java/azure/eclipse/azure-toolkit-for-eclipse-sign-in-instructions) cikkben lévő lépéseket kell követnie a hitelesítő adatok beírásához.
 
 ### <a name="deploy-web-app-dialog-box"></a>Deploy Web App (Webalkalmazás üzembe helyezése) párbeszédpanel
 
@@ -100,8 +115,8 @@ Megjelenik a **Create App Service** (App Service létrehozása) párbeszédpanel
 
 A **Create App Service** (App Service létrehozása) párbeszédpanelen:
 
-* Tartsa meg a webalkalmazáshoz létrehozott nevet. Ennek a névnek az Azure-on belül egyedinek kell lennie. Ez a név a webalkalmazáshoz tartozó URL-cím része. Ha például a webalkalmazás neve **MyJavaWebApp**, az URL-cím *myjavawebapp.azurewebsites.net*.
-* Tartsa meg az alapértelmezett webes tárolót.
+* Adja meg a webalkalmazás egyedi nevét, vagy őrizze meg a létrehozott nevet. Ennek a névnek az Azure-on belül egyedinek kell lennie. Ez a név a webalkalmazáshoz tartozó URL-cím része. Ha például a webalkalmazás neve **MyJavaWebApp**, az URL-cím *myjavawebapp.azurewebsites.net*.
+* Ezen rövid útmutatóban tartsa meg az alapértelmezett webes tárolót.
 * Válasszon ki egy Azure-előfizetést.
 * Az **App service plan** (App Service-csomag) lapon:
 
@@ -187,7 +202,7 @@ A bal oldali menüben válassza az **Erőforráscsoportok** elemet.
 
 Válassza az erőforráscsoportot. Az oldal megjeleníti a gyorsútmutatóban létrehozott erőforrásokat.
 
-![myResourceGroup erőforráscsoport](media/app-service-web-get-started-java/rg2.png)
+![Erőforráscsoport](media/app-service-web-get-started-java/rg2.png)
 
 Válassza a webalkalmazást (**webapp-170602193915** az előző képen).
 

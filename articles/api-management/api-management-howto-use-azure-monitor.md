@@ -1,11 +1,11 @@
 ---
-title: "A közzétett API-k monitorozása az Azure API Management szolgáltatásban | Microsoft Docs"
-description: "Az API-k Azure API Management szolgáltatásban való monitorozásához kövesse az oktatóanyag lépéseit."
+title: A közzétett API-k monitorozása az Azure API Management szolgáltatásban | Microsoft Docs
+description: Az API-k Azure API Management szolgáltatásban való monitorozásához kövesse az oktatóanyag lépéseit.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 445723242a76dcef4a6b137439728235d5d6e32a
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 93cbcf91af4ecf9425ed43ade400a0c82cea72d8
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="monitor-published-apis"></a>A közzétett API-k monitorozása
 
@@ -44,29 +44,6 @@ A következő videó bemutatja, hogyan monitorozhatja az API Managementet az Azu
 + Végezze el a következő oktatóanyagot is: [Az első API importálása és közzététele](import-and-publish.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
-
-## <a name="diagnostic-logs"></a>Tevékenységnaplók megtekintése
-
-A tevékenységnaplók betekintést engednek az API Management-szolgáltatásokban végrehajtott műveletekbe. A tevékenységnaplók segítségével az API Management-szolgáltatásokban végrehajtott írási műveletek (PUT, POST, DELETE) kapcsán megállapíthatja, hogy a „ki, mit és mikor” hajtott végre. 
-
-> [!NOTE]
-> A tevékenységnaplók az olvasási (GET) műveleteket, illetve az Azure Portalon vagy az eredeti felügyeleti API-k használatával végzett műveleteket nem tartalmazzák.
-
-A tevékenységnaplók az API Management szolgáltatásban, az összes Azure-erőforrás naplói pedig az Azure Monitorban érhetők el. 
-
-A tevékenységnaplók megtekintése:
-
-1. Válassza ki az APIM-szolgáltatáspéldányt.
-2. Kattintson a **Tevékenységnapló** gombra.
-
-## <a name="view-diagnostic-logs"></a>Diagnosztikai naplók megtekintése
-
-A diagnosztikai naplók rengeteg információt tartalmaznak a műveletekkel és a hibákkal kapcsolatban, amelyek felülvizsgálati és hibaelhárítási célból egyaránt fontosak lehetnek. A diagnosztikai naplók különböznek a tevékenységnaplóktól. A tevékenységnaplók az Azure-erőforrásokon végrehajtott műveletekkel kapcsolatos információkat tartalmaznak. A diagnosztikai naplókban az erőforrás által végrehajtott műveletekkel kapcsolatos információk találhatók meg.
-
-A diagnosztikai naplók elérése:
-
-1. Válassza ki az APIM-szolgáltatáspéldányt.
-2. Kattintson a **Diagnosztikai napló** gombra.
 
 ## <a name="view-metrics-of-your-apis"></a>Az API-k metrikáinak megtekintése
 
@@ -109,6 +86,118 @@ A riasztások konfigurálása:
     > A riasztási szabály egy webhookot vagy egy Azure Logic Apps-alkalmazást is meghívhat az aktiválásakor.
 
     ![riasztás-beállítása](./media/api-management-azure-monitor/set-up-alert.png)
+
+## <a name="activity-logs"></a>Tevékenységnaplók
+
+A tevékenységnaplók betekintést engednek az API Management-szolgáltatásokban végrehajtott műveletekbe. A tevékenységnaplók segítségével az API Management-szolgáltatásokban végrehajtott írási műveletek (PUT, POST, DELETE) kapcsán megállapíthatja, hogy a „ki, mit és mikor” hajtott végre. 
+
+> [!NOTE]
+> A tevékenységnaplók az olvasási (GET) műveleteket, illetve az Azure Portalon vagy az eredeti felügyeleti API-k használatával végzett műveleteket nem tartalmazzák.
+
+A tevékenységnaplók az API Management szolgáltatásban, az összes Azure-erőforrás naplói pedig az Azure Monitorban érhetők el. 
+
+A tevékenységnaplók megtekintése:
+
+1. Válassza ki az APIM-szolgáltatáspéldányt.
+2. Kattintson a **Tevékenységnapló** gombra.
+
+## <a name="diagnostic-logs"></a>Diagnosztikai naplók
+
+A diagnosztikai naplók rengeteg információt tartalmaznak a műveletekkel és a hibákkal kapcsolatban, amelyek felülvizsgálati és hibaelhárítási célból egyaránt fontosak lehetnek. A diagnosztikai naplók különböznek a tevékenységnaplóktól. A tevékenységnaplók az Azure-erőforrásokon végrehajtott műveletekkel kapcsolatos információkat tartalmaznak. A diagnosztikai naplókban az erőforrás által végrehajtott műveletekkel kapcsolatos információk találhatók meg.
+
+Diagnosztikai naplók konfigurálása:
+
+1. Válassza ki az APIM-szolgáltatáspéldányt.
+2. Kattintson a **Diagnosztikai napló** gombra.
+3. Kattintson a **Diagnosztika bekapcsolása** elemre. Diagnosztikai naplókat és mérőszámokat archiválhat egy tárfiókba, majd egy eseményközpontba streamelheti vagy a Log Analyticsbe küldheti őket. 
+
+Az API Management jelenleg különálló API-kérelmekről kínál óránként kötegelt diagnosztikai naplókat, amelyek bejegyzései a következő mintát követik:
+
+```json
+{  
+    "isRequestSuccess" : "",
+    "time": "",   
+    "operationName": "",      
+    "category": "",   
+    "durationMs": ,   
+    "callerIpAddress": "",   
+    "correlationId": "",   
+    "location": "",      
+    "httpStatusCodeCategory": "",      
+    "resourceId": "",      
+    "properties": {   
+        "method": "", 
+        "url": "", 
+        "clientProtocol": "", 
+        "responseCode": , 
+        "backendMethod": "", 
+        "backendUrl": "", 
+        "backendResponseCode": ,
+        "backendProtocol": "",  
+        "requestSize": , 
+        "responseSize": , 
+        "cache": "", 
+        "cacheTime": "", 
+        "backendTime": , 
+        "clientTime": , 
+        "apiId": "",
+        "operationId": "", 
+        "productId": "", 
+        "userId": "", 
+        "apimSubscriptionId": "", 
+        "backendId": "",
+        "lastError": { 
+            "elapsed" : "", 
+            "source" : "", 
+            "scope" : "", 
+            "section" : "" ,
+            "reason" : "", 
+            "message" : ""
+        } 
+    }      
+}  
+```
+
+| Tulajdonság  | Típus | Leírás |
+| ------------- | ------------- | ------------- |
+| isRequestSuccess | logikai | Akkor igaz, ha a befejezett HTTP-kérelem válaszának állapotkódja a 2xx vagy 3xx tartományon belülre esik. |
+| time | dátum-idő | Az átjárótól érkező HTTP-kérelem megérkezésének időbélyegzője |
+| operationName | karakterlánc | A „Microsoft.ApiManagement/GatewayLogs” állandó érték |
+| category | karakterlánc | A „GatewayLogs” állandó érték |
+| durationMs | egész szám | A kérelem átjáróhoz való megérkezése és a válasz elküldése között eltelt ezredmásodpercek száma kerekítve |
+| callerIpAddress | karakterlánc | Az átjáró közvetlen hívójának IP-címe (közvetítő is lehet) |
+| correlationId | karakterlánc | Az API Management által hozzárendelt HTTP-kérelem egyedi azonosítója |
+| location | karakterlánc | Az Azure-régió neve, ahol a kérelmet feldolgozó átjáró található |
+| httpStatusCodeCategory | karakterlánc | A HTTP-válasz állapotkódjának kategóriája: Sikeres (301 vagy kevesebb, 304 vagy 307), Jogosulatlan (401, 403, 429), Hibás (400, 500 és 600 között), Egyéb |
+| resourceId | karakterlánc | A /SUBSCRIPTIONS/<subscription>/RESOURCEGROUPS/<erőforráscsoport>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/<name> API Management-erőforrás azonosítója |
+| properties | objektum | Az aktuális kérelem tulajdonságai |
+| method | karakterlánc | A bejövő kérelem HTTP-metódusa |
+| url | karakterlánc | A bejövő kérelem URL-címe |
+| clientProtocol | karakterlánc | A bejövő kérelem HTTP-protokolljának verziója |
+| responseCode | egész szám | Az ügyfélnek küldött HTTP-válasz állapotkódja |
+| backendMethod | karakterlánc | A háttérrendszernek küldött kérelem HTTP-metódusa |
+| backendUrl | karakterlánc | A háttérrendszernek küldött kérelem URL-címe |
+| backendResponseCode | egész szám | A háttérrendszertől érkezett HTTP-válasz kódja |
+| backendProtocol | karakterlánc | A háttérrendszernek küldött kérelem HTTP-protokolljának verziója | 
+| requestSize | egész szám | A kérelem feldolgozása során az ügyféltől érkezett bájtok száma | 
+| responseSize | egész szám | A kérelem feldolgozása során az ügyfélnek küldött bájtok száma | 
+| cache | karakterlánc | Az API Management-gyorsítótár kérelemfeldolgozásban való részvételének állapota (pl. találat, tévesztés, nincs) | 
+| cacheTime | egész szám | Az API Management-gyorsítótár I/O-folyamatával töltött teljes idő ezredmásodpercben (csatlakozás, bájtok küldése és fogadása) | 
+| backendTime | egész szám | A háttérrendszer I/O-folyamatával töltött teljes idő ezredmásodpercben (csatlakozás, bájtok küldése és fogadása) | 
+| clientTime | egész szám | Az ügyfél I/O-folyamatával töltött teljes idő ezredmásodpercben (csatlakozás, bájtok küldése és fogadása) | 
+| apiId | karakterlánc | Az aktuális kérelem API-entitásazonosítója | 
+| operationId | karakterlánc | Az aktuális kérelem műveleti entitásának azonosítója | 
+| productId | karakterlánc | Az aktuális kérelem termékentitásának azonosítója | 
+| userId | karakterlánc | Az aktuális kérelem felhasználói entitásának azonosítója | 
+| apimSubscriptionId | karakterlánc | Az aktuális kérelem előfizetési entitásának azonosítója | 
+| backendId | karakterlánc | Az aktuális kérelem háttérentitásának azonosítója | 
+| LastError | objektum | A legutóbbi kérelemfeldolgozási hiba | 
+| elapsed | egész szám | A kérelem átjáróhoz való megérkezése és a hiba felbukkanása között eltelt ezredmásodpercek száma | 
+| source | karakterlánc | A hibát okozó házirend vagy belső feldolgozáskezelő neve | 
+| scope | karakterlánc | A hibát okozó házirendet tartalmazó szabályzatdokumentum hatóköre | 
+| section | karakterlánc | A hibát okozó szabályzatot tartalmazó szabályzatdokumentum szakasza | 
+| reason | karakterlánc | A hiba oka | 
+| message | karakterlánc | Hibaüzenet | 
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,4 +1,4 @@
-1. Kattintson az Azure Portal bal felső sarkában az **Erőforrás létrehozása** gombra, majd válassza a **Számítás** > **Függvényalkalmazás** lehetőséget. 
+1. Válassza az Azure Portal bal felső sarkában található **Új** gombot, majd válassza a **Számítás** > **Függvényalkalmazás** lehetőséget. 
 
     ![Függvényalkalmazás létrehozása az Azure Portalon](./media/functions-create-function-app-portal/function-app-create-flow.png)
 
@@ -16,8 +16,14 @@
     | **Hely** | Nyugat-Európa | Válasszon egy [régiót](https://azure.microsoft.com/regions/) a közelben, vagy a függvények által elért más szolgáltatások közelében. |
     | **[Tárfiók](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account)** |  Globálisan egyedi név |  A függvényalkalmazás által használt új tárfiók neve. A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat. Meglévő fiókot is használhat. |
 
-1. Kattintson a **Létrehozás** elemre az új függvényalkalmazás létrehozásához és üzembe helyezéséhez. Az üzembe helyezés állapotát a portál jobb felső sarkában található Értesítések ikonra kattintva monitorozhatja. 
+3. Kattintson a **Létrehozás** elemre a függvényalkalmazás kiépítéséhez és üzembe helyezéséhez. 
+
+4. Válassza a portál jobb felső sarkában található Értesítések ikont, és várja meg az **üzembe helyezés sikerességét** jelző üzenetet. 
 
     ![Új függvényalkalmazás-beállítások megadása](./media/functions-create-function-app-portal/function-app-create-notification.png)
 
-    Az új függvényalkalmazásra való továbblépéshez kattintson az **Erőforrás megnyitása** lehetőségre.
+4. Az új függvényalkalmazás megtekintéséhez válassza az **Erőforrás megnyitása** lehetőséget.
+
+>[!TIP]
+>Ha nem találja a portálon a függvényalkalmazásokat, próbáljon [Függvényalkalmazásokat felvenni a kedvencek közé az Azure Portalon](../articles/azure-functions/functions-how-to-use-azure-function-app-settings.md#favorite).   
+

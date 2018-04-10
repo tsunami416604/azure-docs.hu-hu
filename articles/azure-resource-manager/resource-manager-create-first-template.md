@@ -1,8 +1,8 @@
 ---
-title: "Az első Azure Resource Manager-sablon létrehozása | Microsoft Docs"
-description: "Lépésenkénti útmutató az első Azure Resource Manager-sablon létrehozásához. Bemutatja, hogyan használható egy tárfiók sablonreferenciája a sablon létrehozásához."
+title: Az első Azure Resource Manager-sablon létrehozása | Microsoft Docs
+description: Lépésenkénti útmutató az első Azure Resource Manager-sablon létrehozásához. Bemutatja, hogyan használható egy tárfiók sablonreferenciája a sablon létrehozásához.
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -10,14 +10,14 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/02/2017
+ms.date: 03/30/2018
 ms.topic: get-started-article
 ms.author: tomfitz
-ms.openlocfilehash: 7d20469aaf2dfdd7a5f3650983b59152de837837
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: adf7d6ad04b9c341eac2172e09da3cb1f044aa62
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-and-deploy-your-first-azure-resource-manager-template"></a>Az első Azure Resource Manager-sablon létrehozása ás üzembe helyezése
 Ez a témakör bemutatja azon lépéseket, amelyekkel elkészítheti az első Resource Manager-sablonját. A Resource Manager-sablonok JSON-fájlok, melyek az adott megoldáshoz telepítendő erőforrásokat határozzák meg. Az Azure-megoldások telepítésével és kezelésével kapcsolatos fogalmak megismeréséhez lásd: [Az Azure Resource Manager áttekintése](resource-group-overview.md). Ha már rendelkezik erőforrásokkal, és azokhoz kíván sablont használni, lásd: [Azure Resource Manager-sablonok exportálása létező erőforrásokból](resource-manager-export-template.md).
@@ -28,6 +28,7 @@ A sablonok létrehozásához és átalakításához JSON-szerkesztő szükséges
 
 * Visual Studio Code. Ha szükséges, a következő címről telepíthető: [https://code.visualstudio.com/](https://code.visualstudio.com/).
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+* [Azure PowerShell](/powershell/azure/install-azurerm-ps) vagy [Azure CLI](/cli/azure/install-azure-cli) helyben telepítve. Ehhez az oktatóanyaghoz helyi telepítés szükséges, mert a sablon mentése helyi fájlként történik. A Cloud Shell használatához [be kell töltenie a sablont egy tárfiókba](resource-group-template-deploy-cli.md#deploy-template-from-cloud-shell).
 
 ## <a name="create-template"></a>Sablon létrehozása
 
@@ -92,24 +93,6 @@ Készen áll a sablon üzembe helyezésére. A PowerShell vagy az Azure CLI hasz
    az group create --name examplegroup --location "South Central US"
    az group deployment create --resource-group examplegroup --template-file azuredeploy.json
    ```
-
-Az üzembe helyezés után a tárfiók létrejön az erőforráscsoportban.
-
-[!INCLUDE [resource-manager-cloud-shell-deploy.md](../../includes/resource-manager-cloud-shell-deploy.md)]
-
-Azure CLI esetén használja az alábbi parancsokat:
-
-```azurecli-interactive
-az group create --name examplegroup --location "South Central US"
-az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json
-```
-
-A PowerShell a Cloud Shellben jelenleg előzetes verzióban érhető el. PowerShell esetén használja az alábbi parancsokat:
-
-```powershell
-New-AzureRmResourceGroup -Name examplegroup -Location "South Central US"
-New-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -TemplateFile $home\CloudDrive\templates\azuredeploy.json
-```
 
 Az üzembe helyezés után a tárfiók létrejön az erőforráscsoportban.
 
@@ -244,12 +227,6 @@ Azure CLI esetén használja az alábbi parancsot:
 az group deployment create --resource-group examplegroup --template-file azuredeploy.json --parameters storageSKU=Standard_RAGRS storageNamePrefix=newstore
 ```
 
-A Cloud Shell esetén töltse fel a módosított sablont a fájlmegosztásba. Írja felül a meglévő fájlt. Ezután használja az alábbi parancsot:
-
-```azurecli
-az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageSKU=Standard_RAGRS storageNamePrefix=newstore
-```
-
 ## <a name="use-autocomplete"></a>Az automatikus kiegészítés használata
 
 Eddig a sablonon végzett munka csak a cikkben szereplő JSON másolásából és beillesztéséből állt. Amikor azonban saját sablonokat fejleszt, az erőforrástípushoz elérhető tulajdonságokat és értékeket szeretné megkeresni és megadni. A VS Code beolvassa az erőforrástípus sémáját és tulajdonságokat és értékeket javasol. Az automatikus kiegészítés szolgáltatás megtekintéséhez lépjen a sablon tulajdonságok eleméhez, és adjon hozzá egy új sort. Írjon be egy idézőjelet, és figyelje meg, hogy a VS Code azonnal a tulajdonságok elemben elérhető neveket javasol.
@@ -379,12 +356,6 @@ Azure CLI esetén használja az alábbi parancsot:
 az group deployment create --resource-group examplegroup --template-file azuredeploy.json --parameters storageNamePrefix=storesecure
 ```
 
-A Cloud Shell esetén töltse fel a módosított sablont a fájlmegosztásba. Írja felül a meglévő fájlt. Ezután használja az alábbi parancsot:
-
-```azurecli
-az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageNamePrefix=storesecure
-```
-
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rájuk szükség, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével.
@@ -401,7 +372,7 @@ Azure CLI esetén használja az alábbi parancsot:
 az group delete --name examplegroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ha több segítségre van szüksége a sablonok fejlesztéséhez, telepíthet egy VS Code-bővítményt. További információkért lásd: [Azure Resource Manager-sablon létrehozása Visual Studio Code-bővítménnyel](resource-manager-vscode-extension.md)
 * A sablonok struktúrájával kapcsolatos további információk: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
 * A tárfiókok tulajdonságaival kapcsolatos információkért lásd a [tárfióksablonok referenciáját](/azure/templates/microsoft.storage/storageaccounts).

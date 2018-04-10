@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 03/23/2018
+ms.date: 03/27/2018
 ms.author: alehall
-ms.openlocfilehash: 94b09b824becc8a67adf4edfd2d4b44496a6169c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: c43edc6673c42a8b69bfa296e288e77adee4d0af
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Oktatóanyag: Adatok streamelése az Azure Databricksbe az Event Hubs használatával
 
@@ -356,7 +356,7 @@ A kimenetnek ezután a következő kódrészlethez hasonlónak kell lennie:
     ...
     ...
 
-Ennyi az egész! Az Azure Databricks segítségével közel valós időben streamelt adatokat az Azure Event Hubsba. A streamadatokat ezután az Apache Spark Event Hubs-összekötője segítségével használta fel.
+Ennyi az egész! Az Azure Databricks segítségével közel valós időben streamelt adatokat az Azure Event Hubsba. A streamadatokat ezután az Apache Spark Event Hubs-összekötője segítségével használta fel. A Spark Event Hubs-összekötőinek használatáról az [összekötő dokumentációjában](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs) talál további információt.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

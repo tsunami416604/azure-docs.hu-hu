@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/19/2018
 ms.author: billmath
-ms.openlocfilehash: 6f0b5cd7b981cddeda7e5630967f5f8dba18bb98
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: febe055348efb49ea1e6bc670333f435de654cfc
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="integrate-your-on-premises-directories-with-azure-active-directory"></a>A helyszíni címtárak integrálása az Azure Active Directoryval
 Az Azure AD Connect integrálja a helyszíni címtárakat az Azure Active Directoryval. Így közös identitást biztosíthat a felhasználóinak az Azure AD-vel integrált Office 365-, Azure- és SaaS-alkalmazásokhoz. Ez a témakör végigvezeti a tervezéshez, üzembe helyezéshez és működtetéshez szükséges lépéseken. Az anyag a jelen témakörhöz kapcsolódó hivatkozások gyűjteményét is tartalmazza.
@@ -88,7 +88,7 @@ Az Azure AD Connect számos, szükség szerint bekapcsolható vagy alapértelmez
 
 [Szűrés](active-directory-aadconnectsync-configure-filtering.md) használatára akkor van szükség, ha korlátozni kívánja az Azure AD-vel szinkronizálandó objektumok körét. Alapértelmezés szerint valamennyi felhasználó, névjegy és Windows 10 rendszert használó számítógép szinkronizálva van. A szűrési beállítások tartományok, szervezeti egységek vagy attribútumok szerint módosíthatók.
 
-A [jelszó-szinkronizálás](active-directory-aadconnectsync-implement-password-synchronization.md) az Active Directory jelszókivonatát szinkronizálja az Azure AD-vel. A végfelhasználó ugyanazt a jelszót használhatja a helyszíni alkalmazásban és a felhőben, de csak az egyik helyen kezelheti. Mivel ez a funkció szolgáltatóként a helyszíni Active Directoryt használja, saját jelszóházirendjét is alkalmazhatja.
+A [jelszókivonat-szinkronizálás](active-directory-aadconnectsync-implement-password-hash-synchronization.md) az Active Directory jelszókivonatát szinkronizálja az Azure AD-vel. A végfelhasználó ugyanazt a jelszót használhatja a helyszíni alkalmazásban és a felhőben, de csak az egyik helyen kezelheti. Mivel ez a funkció szolgáltatóként a helyszíni Active Directoryt használja, saját jelszóházirendjét is alkalmazhatja.
 
 A [jelszóvisszaíró](../active-directory-passwords-getting-started.md) szolgáltatás lehetővé teszi a felhasználók számára jelszavak módosítását és visszaállítását a felhőben, valamint a helyszíni jelszóházirend alkalmazását.
 
@@ -102,7 +102,7 @@ Az [automatikus frissítés](active-directory-aadconnect-feature-automatic-upgra
 |Témakör |Hivatkozás|  
 | --- | --- |
 |A szűrés konfigurálása | [Az Azure AD Connect szinkronizálása: a szűrés konfigurálása](active-directory-aadconnectsync-configure-filtering.md)|
-|Jelszó-szinkronizálás | [Az Azure AD Connect szinkronizálása: a jelszó-szinkronizálás megvalósítása](active-directory-aadconnectsync-implement-password-synchronization.md)|
+|Jelszókivonat szinkronizálása | [Az Azure AD Connect szinkronizálása: a jelszókivonat-szinkronizálás megvalósítása](active-directory-aadconnectsync-implement-password-hash-synchronization.md)|
 |Jelszóvisszaíró | [A jelszókezelés első lépései](../active-directory-passwords-getting-started.md)|
 |Eszközvisszaíró | [Eszközvisszaírás engedélyezése az Azure AD Connectben](active-directory-aadconnect-feature-device-writeback.md)|
 |Véletlen törlések megakadályozása | [Az Azure AD Connect szinkronizálása: véletlen törlések megakadályozása](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)|

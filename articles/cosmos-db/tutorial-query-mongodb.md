@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: ''
-ms.date: 03/16/2018
+ms.date: 03/29/2018
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: 7c51a2a1cace89305b971d5fb0f56c360cbf93cb
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: f47d250bbe6689e19dda5042b335ff1812a790d4
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-mongodb-api"></a>Oktatóanyag: Az Azure Cosmos DB lekérdezése a MongoDB API használatával
 
@@ -30,6 +30,10 @@ Ez a cikk a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
 > * Adatok lekérdezése a MongoDB használatával
+
+Az első lépésekhez sok segítséget nyújt az alábbi videó, amelyben Andy Hoh, az Azure Cosmos DB programmenedzsere beszél a MongoDB lekérdezéséről:
+
+>[!VIDEO https://www.youtube.com/tVk8S7lFWMA]
 
 ## <a name="sample-document"></a>Mintadokumentum
 
@@ -300,7 +304,7 @@ A következő lekérdezés visszaadja az összes olyan családot, ahol a gyermek
 
 **Results**
 
-Nem ad vissza értéket, mivel nincs olyan család, amelyben 2-nél több gyermek van. Ez a lekérdezés csak akkor lesz sikeres, és adja vissza a teljes dokumentumot, ha a paraméter értéke 2.
+Nem ad vissza értéket, mivel nincs olyan család, amelyben kettőnél több gyermek van. Ez a lekérdezés csak akkor lesz sikeres, és adja vissza a teljes dokumentumot, ha a paraméter értéke 2.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,8 +1,8 @@
 ---
-title: "SharePoint-hely megfigyelése az Application Insights segítségével"
-description: "Új alkalmazás figyelésének megkezdése új kialakítási kulccsal"
+title: SharePoint-hely megfigyelése az Application Insights segítségével
+description: Új alkalmazás figyelésének megkezdése új kialakítási kulccsal
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 2bfe5910-d673-4cf6-a5c1-4c115eae1be0
@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/24/2016
+ms.date: 04/01/2018
 ms.author: mbullwin
-ms.openlocfilehash: 9c07ba125e0f9eae2b8f94661abf6dc1efc0cdad
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 9eb7f74a365b51431aabd78de3c6d36c3c969bb6
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>SharePoint-hely megfigyelése az Application Insights segítségével
 Az Azure Application Insights figyeli alkalmazásai rendelkezésre állását, teljesítményét és használatát. Ebből a cikkből megismerheti, hogyan állíthatja be egy SharePoint-helyhez.
@@ -25,14 +25,30 @@ Az Azure Application Insights figyeli alkalmazásai rendelkezésre állását, t
 ## <a name="create-an-application-insights-resource"></a>Application Insights-erőforrás létrehozása
 Az [Azure Portalon](https://portal.azure.com) hozzon létre egy új Application Insights-erőforrást. Az alkalmazás típusának válassza az ASP.NET lehetőséget.
 
-![Kattintson a Tulajdonságok elemre, válassza ki a kulcsot, és nyomja le a ctrl+C billentyűkombinációt.](./media/app-insights-sharepoint/01-new.png)
+![Kattintson a Tulajdonságok elemre, válassza ki a kulcsot, és nyomja le a ctrl+C billentyűkombinációt.](./media/app-insights-sharepoint/001.png)
 
-A megnyíló panelen megtekintheti az alkalmazása teljesítmény- és használati adatait. Amikor legközelebb bejelentkezik az Azure-ba, a kezdőképernyőn található csempére kattintva léphet közvetlenül erre a panelre. Vagy a Tallózás gombra kattintva is megkeresheti.
+A megnyíló ablakban megtekintheti az alkalmazása teljesítmény- és használati adatait. Amikor legközelebb bejelentkezik az Azure-ba, a kezdőképernyőn található csempére kattintva léphet közvetlenül erre a panelre. Vagy a Tallózás gombra kattintva is megkeresheti.
 
-## <a name="add-our-script-to-your-web-pages"></a>A szkriptünk hozzáadása weblapokhoz
-A Gyors üzembe helyezés területen kérje le a weblapok szkriptjét:
+## <a name="add-the-script-to-your-web-pages"></a>A szkript hozzáadása weblapokhoz
 
-![](./media/app-insights-sharepoint/02-monitor-web-page.png)
+```HTML
+<!-- 
+To collect end-user usage analytics about your application, 
+insert the following script into each page you want to track.
+Place this code immediately before the closing </head> tag,
+and before any other scripts. Your first data will appear 
+automatically in just a few seconds.
+-->
+<script type="text/javascript">
+var appInsights=window.appInsights||function(a){
+  function b(a){c[a]=function(){var b=arguments;c.queue.push(function(){c[a].apply(c,b)})}}var c={config:a},d=document,e=window;setTimeout(function(){var b=d.createElement("script");b.src=a.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js",d.getElementsByTagName("script")[0].parentNode.appendChild(b)});try{c.cookie=d.cookie}catch(a){}c.queue=[];for(var f=["Event","Exception","Metric","PageView","Trace","Dependency"];f.length;)b("track"+f.pop());if(b("setAuthenticatedUserContext"),b("clearAuthenticatedUserContext"),b("startTrackEvent"),b("stopTrackEvent"),b("startTrackPage"),b("stopTrackPage"),b("flush"),!a.disableExceptionTracking){f="onerror",b("_"+f);var g=e[f];e[f]=function(a,b,d,e,h){var i=g&&g(a,b,d,e,h);return!0!==i&&c["_"+f](a,b,d,e,h),i}}return c
+  }({
+      instrumentationKey:"<your instrumentation key>"
+  });
+  
+window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
+</script>
+```
 
 Szúrja be a szkriptet minden olyan lap &lt;/head&gt; címkéje elé, amelyet nyomon szeretne követni. Ha a webhelye mesterlappal rendelkezik, ide helyezheti a szkriptet. Egy ASP.NET MVC-projektben a következő helyre helyezné a szkriptet: View\Shared\_Layout.cshtml
 
@@ -139,7 +155,7 @@ function onRequestFail(sender, args) {
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Webes tesztek](app-insights-monitor-web-app-availability.md) webhelye rendelkezésre állásának figyeléséhez.
 * [Application Insights](app-insights-overview.md) más típusú alkalmazásokhoz.
 

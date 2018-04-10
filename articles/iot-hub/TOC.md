@@ -45,6 +45,7 @@
 ### [Twitter-üzenet lekérdezése az Azure Functions használatával](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
 ### [Üzenetek küldése MQTT-kiszolgálóra az Eclipse Paho API-jaival](iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld.md)
 ### [A mágneses érzékelő monitorozása és e-mail-értesítések küldése az Azure Functions segítségével](iot-hub-arduino-iot-devkit-az3166-door-monitor.md)
+### [Az MXChip IoT DevKit RGB LED vezérlése Azure-ikereszközökkel](iot-hub-arduino-iot-devkit-az3166-devkit-state.md)
 
 # Útmutatók
 ## Felkészülés
@@ -173,7 +174,7 @@
 ## [Java (Szolgáltatás)](/java/api/com.microsoft.azure.sdk.iot.service)
 ## [Java (Eszközök)](/java/api/com.microsoft.azure.sdk.iot.device)
 ## [Node.js (Eszközök)](https://docs.microsoft.com/javascript/api/azure-iot-device/)
-## [Node.js (Szolgáltatás)](https://docs.microsoft.com/javascript/api/azure-iothub)
+## [Node.js (Szolgáltatás)](https://docs.microsoft.com/javascript/api/azure-iothub/)
 ## [C eszköz-SDK](https://azure.github.io/azure-iot-sdk-c/index.html)
 ## [Azure IoT Edge](http://azure.github.io/iot-edge/)
 ## [REST (Erőforrás-szolgáltató)](https://docs.microsoft.com/rest/api/iothub/iothubresource)

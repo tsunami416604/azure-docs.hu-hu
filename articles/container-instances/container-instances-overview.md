@@ -6,14 +6,14 @@ author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: overview
-ms.date: 03/23/2018
+ms.date: 03/29/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: d6e0637974d8076fc610d7154ad507f4e7af0cfa
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e10d4046f543fbcc479421f4ca8f10221abc806f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-container-instances"></a>Azure Container Instances
 
@@ -23,7 +23,11 @@ Az Azure Container Instances ideális megoldás minden olyan forgatókönyv eset
 
 ## <a name="fast-startup-times"></a>Rövid indítási idők
 
-A tárolók jelentős előnyöket nyújtanak a virtuális gépekkel szemben az indítás terén. Az Azure Container Instanceszel másodpercek alatt elindíthat egy tárolót az Azure-ban anélkül, hogy virtuális gépeket kellene kiépítenie és kezelnie.
+A tárolók jelentős előnyöket nyújtanak a virtuális gépekkel szemben az indítás terén. Az Azure Container Instances használatával másodpercek alatt elindíthat egy tárolót az Azure-ban anélkül, hogy virtuális gépeket kellene kiépítenie és kezelnie.
+
+## <a name="public-ip-connectivity-and-dns-name"></a>Nyilvános IP-kapcsolat és DNS-név
+
+Az Azure Container Instances használatával tárolóit közvetlenül is közzéteheti az interneten IP-cím és teljes tartománynév (FQDN) használatával. Tárolópéldány létrehozásakor egyéni DNS-névcímkét kell megadnia ahhoz, hogy az alkalmazás elérhető legyen a *customlabel*.*azureregion*.azurecontainer.io régióban.
 
 ## <a name="hypervisor-level-security"></a>Hipervizorszintű biztonság
 
@@ -33,13 +37,9 @@ Korábban a tárolók biztosítottak ugyan alkalmazásfüggőség-elkülöníté
 
 A tárolók általában egyetlen alkalmazás futtatására vannak optimalizálva, azonban ezeknek az alkalmazásoknak a pontos igényei nagyon is eltérőek lehetnek. Az Azure Container Instances optimális kihasználtságot biztosít, mivel pontosan megadható a processzormagok száma és a memória mennyisége. A fizetés az igényelt erőforrások alapján történik másodpercalapú elszámolás szerint, így tényleges igényeinek megfelelően optimalizálhatja költségeit a legkisebb részletekig.
 
-## <a name="public-ip-connectivity"></a>Nyilvános IP-kapcsolat
-
-Az Azure Container Serviceszel tárolóit közvetlenül is közzéteheti az interneten nyilvános IP-cím és DNS-névcímke használatával. A későbbiekben bővíteni fogjuk a hálózati képességeket, hogy azok magukban foglalják az integrációt a virtuális hálózatokkal, a terheléselosztókkal és az Azure hálózati infrastruktúra egyéb alapvető részeivel.
-
 ## <a name="persistent-storage"></a>Állandó tárolók
 
-Az állapotok az Azure Container Instanceszel való lekéréséhez és megőrzéséhez az [Azure-fájlmegosztások közvetlen csatolásának](container-instances-mounting-azure-files-volume.md) lehetőségét kínáljuk.
+Az állapotok Azure Container Instances használatával való lekéréséhez és megőrzéséhez az [Azure-fájlmegosztások közvetlen csatolásának](container-instances-mounting-azure-files-volume.md) lehetőségét kínáljuk.
 
 ## <a name="linux-and-windows-containers"></a>Linux- és Windows-tárolók
 
@@ -53,4 +53,7 @@ Az Azure Container Instances támogatja az olyan [több tárolóból álló csop
 
 ## <a name="next-steps"></a>További lépések
 
-Próbáljon üzembe helyezni egy tárolót az Azure-ban egyetlen parancs használatával a [rövid útmutatóink](container-instances-quickstart.md) segítségével.
+Próbáljon üzembe helyezni egy tárolót az Azure-ban egyetlen parancs használatával a rövid útmutatónk alapján:
+
+> [!div class="nextstepaction"]
+> [Az Azure Container Instances rövid útmutatója](container-instances-quickstart.md)

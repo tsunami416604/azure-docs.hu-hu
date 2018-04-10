@@ -1,141 +1,136 @@
 ---
-title: Az Azure SQL Data Warehouse lap cheat |} Microsoft Docs
-description: "Hivatkozások és az ajánlott eljárásokat a gyors létrehozása az Azure SQL Data Warehouse megoldások keresése."
+title: Hasznos tanácsok az Azure SQL Data Warehouse-hoz | Microsoft Docs
+description: Itt hivatkozásokat és ajánlott eljárásokat találhat az Azure SQL Data Warehouse-megoldások gyors összeállításához.
 services: sql-data-warehouse
-documentationcenter: NA
 author: acomet
 manager: jhubbard
-editor: 
-ms.assetid: 51f1e444-9ef7-4e30-9a88-598946c45196
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: manage
-ms.date: 02/20/2018
+ms.topic: overview
+ms.component: design
+ms.date: 03/28/2018
 ms.author: acomet
-ms.openlocfilehash: c67d56ff63f70baa052be17c119d943c558d398f
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
-ms.translationtype: MT
+ms.reviewer: mausher,igorstan,jrj
+ms.openlocfilehash: 1e09dc2f3c7e7aa4ae98ef98a8957454a1beee6b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse lap cheat
-Ez Adatlap biztosít hasznos tipp és ajánlott eljárások az Azure SQL Data Warehouse megoldások készítéséhez. Mielőtt hozzáfogna, kapcsolatos további részletek lévő egyes lépések olvasásával [Azure SQL Data Warehouse munkaterhelés minták és víruskereső minták](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns), amely ismerteti, hogy mi az SQL Data Warehouse és mit nem.
+# <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Hasznos tanácsok az Azure SQL Data Warehouse-hoz
+Ez a témakör az Azure SQL Data Warehouse-megoldások összeállításával kapcsolatos hasznos tippeket és ajánlott eljárásokat tartalmaz. Mielőtt belekezdene, részletesen ismerje meg az egyes lépéseket az [Azure SQL Data Warehouse-munkaterhelési mintákat és kizárási mintákat](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns) ismertető témakör elolvasásával, amely leírja, mi az az SQL Data Warehouse.
 
-A következő ábrán látható adatraktár tervezése:
+A következő ábra adattárház tervezésének folyamatát mutatja be:
 
 ![Vázlat]
 
-## <a name="queries-and-operations-across-tables"></a>Lekérdezések és műveletek táblák között
+## <a name="queries-and-operations-across-tables"></a>Táblák közötti lekérdezések és műveletek
 
-Amikor tudja, hogy előzetesen a elsődleges műveletek és az adatraktár futtatásához lekérdezések, hogy ezek a műveletek a data warehouse architektúrája rangsorolhatja. Ezeket a lekérdezéseket és műveletek a következők lehetnek:
-* Egy vagy két ténytáblák dimenzió táblákkal, a kombinált tábla szűrési és majd kiegészíti az eredményeket egy adatpiacot történő csatlakoztatását.
-* Nagy vagy kis frissítések és az a tény értékesítési.
-* A táblák csak adatok hozzáfűzése.
+Ha előre tudja, milyen elsődleges műveleteket és lekérdezéseket futtathat az adattárházban, ezekhez a műveletekhez priorizálhatja az adattárházat. Ilyen lekérdezések és műveletek lehetnek többek között a következők:
+* Egy vagy két ténytábla egyesítése dimenziótáblákkal, a kombinált tábla szűrése, majd az eredmények összefűzése egy data martba.
+* Nagyobb vagy kisebb frissítések elvégzése a tényértékesítésekben.
+* Csak adatok hozzáfűzése a táblákhoz.
 
-Milyen műveleteket előre ismerete segít a táblák kialakításának optimalizálásához.
+A művelettípusok előzetes ismerete segít optimalizálni a táblák kialakítását.
 
-## <a name="data-migration"></a>Adatmigrálás
+## <a name="data-migration"></a>Adatok migrálása
 
-Első lépésként betölteni az adatait [Azure Data Lake Store](https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-data-lake-store) vagy Azure Blob Storage tárolóban. Ezután a PolyBase segítségével az adatok betöltése az SQL Data Warehouse egy átmeneti tárolási tábla. Az alábbi konfigurációt használja:
+Először töltse be az adatokat az [Azure Data Lake Store](https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-data-lake-store)-ba vagy az Azure Blob Storage-ba. Ezután a PolyBase segítségével töltse be az adatokat az SQL Data Warehouse-ba egy előkészítési táblában. Használja a következő konfigurációt:
 
 | Tervezés | Ajánlás |
 |:--- |:--- |
 | Disztribúció | Ciklikus időszeletelés |
 | Indexelés | Halommemória |
-| Particionálás | Nincs |
+| Particionálás | None |
 | Erőforrásosztály | largerc vagy xlargerc |
 
-További információ [adatáttelepítés], [az adatok betöltése], és a [kinyerés, betöltés és átalakítás (ELT) folyamat](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/design-elt-data-loading). 
+Itt további információkat tudhat meg az [adatok migrálásáról], az [adatok betöltéséről] és a [kinyerési, betöltési és átalakítási (ELT) folyamatról](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/design-elt-data-loading). 
 
 ## <a name="distributed-or-replicated-tables"></a>Elosztott vagy replikált táblák
 
-Használja a következő stratégiák, attól függően, hogy a táblázat tulajdonságai:
+A tábla tulajdonságaitól függően a következő stratégiákat használja:
 
-| Típus | Nagyszerű beválik, ha...| Figyelje meg, hogy ha...|
+| Típus | Kiválóan alkalmas a következőhöz:| Ügyeljen a következő esetekben:|
 |:--- |:--- |:--- |
-| Replikált | • Kis dimenziótáblák a tároló (~ 5 x tömörítés) tömörítés után legalább 2 GB csillagséma |• Nagy írási tranzakciók vannak a tábla (például az insert, upsert, törlés, a frissítés)<br></br>• Módosítsa kiépítés gyakran Data Warehouse egységek (DWU)<br></br>• Csak használhatja 2-3 oszlopok a tábla azonban sok oszlopot tartalmaz.<br></br>A replikált tábla indexeli • |
-| Ciklikus multiplexelés (alapértelmezett) | • Ideiglenes/átmeneti tárolási tábla<br></br> • Nem egyértelmű kulcs, vagy nem jó jelölt oszlop csatlakoztatása |• Teljesítmény az adatok mozgása miatt lassú |
-| Kivonat | • A ténytáblák<br></br>• Nagy dimenziótáblák |• A terjesztési kulcs nem lehet frissíteni. |
+| Replikált | • Kis dimenziótáblák csillag sémában, tömörítés után kevesebb mint 2 GB tárhellyel (~5-szörös tömörítés) |• Számos írási tranzakció található a táblában (például beszúrás, upsert, törlés, frissítés)<br></br>• Gyakran módosítja az adattárházegységek (DWU-k) kiépítését<br></br>• Csak 2-3 oszlopot használ, de a táblában számos oszlop található<br></br>• Replikált táblát indexel |
+| Ciklikus időszeletelés (alapértelmezett) | • Ideiglenes/előkészítési tábla<br></br> • Nincs egyértelmű csatlakozási kulcs vagy alkalmas oszlop |• A teljesítmény az adatmozgás miatt lassú |
+| Kivonat | • Ténytáblák<br></br>• Nagyméretű dimenziótáblák |• Az elosztási kulcs nem frissíthető |
 
-**Tipp:**
-* Ciklikus multiplexelés kezdődnie, de aspire előnyeit nagymértékben párhuzamos architektúra kivonatoló terjesztési stratégia felé.
-* Győződjön meg arról, hogy közös kivonatoló kulcsok a ugyanazt az adatformátumot.
-* Ne terjessze varchar formátumának.
-* A közös kivonatoló kulccsal, hogy egy ténytábla gyakori összekapcsolási műveletek a dimenziótáblák elosztott kivonatoló lehet.
-* Használjon  *[sys.dm_pdw_nodes_db_partition_stats]*  bármely döntés az adatok elemzéséhez.
-* Használjon  *[sys.dm_pdw_request_steps]*  adatok elemzése a lekérdezések mögött típusú áthelyezések szórási figyelje, és véletlen műveletek egy. Ez az a telepítési stratégia megfontolja.
+**Tippek:**
+* Kezdje ciklikus időszeleteléssel, de haladjon a kivonatoló terjesztési stratégia felé, hogy kihasználhassa a nagymértékben párhuzamos architektúrát.
+* Ügyeljen arra, hogy a közös kivonatkulcsoknak ugyanaz legyen az adatformátuma.
+* Ne terjesszen varchar formátumban.
+* A gyakori csatlakozási műveletekkel rendelkező ténytáblákhoz közös kivonatkulccsal rendelkező dimenziótáblákhoz kivonatterjesztés használható.
+* A *[sys.dm_pdw_nodes_db_partition_stats]* segítségével elemezheti az adatokban lévő eltéréseket.
+* A *[sys.dm_pdw_request_steps]* segítségével elemezheti a lekérdezések mögötti adatmozgásokat, monitorozhatja az időszórásokat és módosíthatja a műveletek sorrendjét. Ez a terjesztési stratégia áttekintéséhez hasznos.
 
-További információ [replikált táblák] és [táblák elosztott].
+További tudnivalók a [replikált táblákról] és az [elosztott táblákról].
 
-## <a name="index-your-table"></a>A tábla index
+## <a name="index-your-table"></a>A tábla indexelése
 
-Indexelő bizonyulhat hasznosnak táblák gyorsan olvasásához. Nincs olyan egyedi szolgáló technológiák csoportja használhatja a igények alapján:
+Az indexelés a táblák gyors olvasásához hasznos. Egyedi technológiákat alkalmazhat az igényei szerint:
 
-| Típus | Nagyszerű beválik, ha... | Figyelje meg, hogy ha...|
+| Típus | Kiválóan alkalmas a következőhöz: | Ügyeljen a következő esetekben:|
 |:--- |:--- |:--- |
-| Halommemória | • Átmeneti/ideiglenes tábla<br></br>• Kis táblákra kis |• A keresési megvizsgálja a teljes táblázat |
-| Fürtözött index | • Táblákon, amelyekhez a legfeljebb 100 millió sort<br></br>• Nagy (több mint 100 millió sort foglalnak) oszloppal rendelkező táblákon csak 1-2 fokozottan használt |A replikált tábla használt •<br></br>Van több illesztési és Group By műveletek összetett lekérdezések •<br></br>• A módosításokat az indexelt oszlopokon: szükséges memória |
-| Fürtözött oszlopcentrikus index (közösségi koordináló intézet) (alapértelmezés) | • Nagy táblák (több mint 100 millió sort foglalnak) | A replikált tábla használt •<br></br>• Nagy elvégezte frissítési műveleteket a tábla<br></br>• Meg a tábla overpartition: sorcsoportok nem fedik másik terjesztési csomópontok és a partíciók |
+| Halommemória | • Előkészítési/ideiglenes tábla<br></br>• Kisméretű táblák kisméretű keresésekkel |• Minden keresés a teljes táblában keres |
+| Fürtözött index | • Legfeljebb 100 millió sorral rendelkező táblák<br></br>• Nagyméretű táblák (100 millió sornál nagyobbak) mindössze 1-2 gyakran használt oszloppal |• Replikált táblán vannak használva<br></br>• Több csatlakozási és csoportosítási műveletet tartalmazó, összetett lekérdezéseket használ<br></br>• Frissítéseket végez az indexelt oszlopokon: ez memóriát használ |
+| Fürtözött oszlopcentrikus index (CCI) (alapértelmezett) | • Nagyméretű táblák (100 millió sornál nagyobbak) | • Replikált táblán vannak használva<br></br>• Nagyméretű frissítési műveleteket végez a táblán<br></br>• Túlparticionálja a táblát: a sorcsoportok nem fedik a különböző terjesztési csomópontokat és partíciókat |
 
-**Tipp:**
-* Fölött egy fürtözött index előfordulhat, hogy hozzáadandó fürtözetlen index erősen a szűréshez használt oszlop. 
-* Ügyeljen arra, hogyan kezelheti a memória, a közösségi koordináló intézet tartalmazó tábla. Adatok betöltése, ha azt szeretné, nagy erőforrásosztály kihasználják a felhasználó (vagy a lekérdezés). Ügyeljen arra, hogy kerülje a tisztítás és a sok kisméretű tömörített sor eszközcsoportok létrehozása.
-* A közösségi koordináló intézet számítási rétegben sziklák optimalizálva.
-* A közösségi koordináló intézet lassú teljesítmény gyenge tömörítés a sor csoportok miatt fordulhat elő. Ha ez történik, építse újra, vagy a közösségi koordináló intézet átrendezéséhez. Azt szeretné, hogy a tömörített sorcsoportok legalább 100 000 sorszám. Az ideális 1 millió sort foglalnak el egy sorcsoport.
-* A növekményes terhelés gyakoriságát és mérete alapján átrendezéséhez, vagy az indexek újraépítése automatizálni kívánt. Mindig hasznos a rugó tisztítás.
-* Lehet a stratégiai, ha szeretné osztani egy sor csoportot. Hogyan nagy vannak a nyitott sorcsoportok? Adatok betöltése a következő napon várhatók?
+**Tippek:**
+* A fürtözött indexek mellett érdemes lehet nem fürtözött indexet is hozzáadni a szűréshez gyakran használt oszlopokhoz. 
+* Ügyeljen arra, hogyan kezeli a memóriát a CCI-vel rendelkező táblákban. Adatok betöltésekor az a cél, hogy a felhasználó (vagy a lekérdezés) nagyméretű erőforrásosztályt használhasson. Kerülje a vágást és sok kis tömörített sorcsoport létrehozását.
+* CCI-vel rendelkező számítási szintekhez optimalizálva.
+* CCI esetén a sorcsoportok nem megfelelő tömörítése miatt gyenge lehet a teljesítmény. Ilyen esetben állítsa össze újra vagy rendezze át a CCI-t. Tömörített sorcsoportonként legalább 100 000 sorra van szükség. Az ideális a sorcsoportonként 1 millió sor.
+* A növekményes terhelési gyakoriság és méret alapján érdemes lehet automatizálni az indexek átrendezésekor vagy újraépítésekor. A tavaszi nagytakarítás mindig hasznos.
+* A sorcsoportokat stratégiai szempontok szerint vágja. Mekkorák a nyitott sorcsoportok? Mennyi adatot tervez betölteni a következő napokban?
 
-További információ [indexek].
+További információk az [indexekről].
 
 ## <a name="partitioning"></a>Particionálás
-Előfordulhat, hogy partíciós a táblát, ha egy nagy ténytábla (1 milliárd sorok nagyobb). Az esetek százalékát 99 a partíciós kulcs dátum alapján. Legyen óvatos nem overpartition, ha kifejezetten a fürtözött oszlopcentrikus index van.
+Particionálhatja a táblát nagyméretű ténytábla esetén (1 milliárd sornál nagyobb). Az esetek 99 százalékában a partíciókulcsnak dátumon kell alapulnia. Kerülje a túlparticionálást fürtözött oszlopcentrikus index esetén.
 
-Az átmeneti tárolási táblák, ELT igénylő, révén kihasználhatja a particionálást. Elősegíti a adatok életciklusának kezelésére.
-Ügyeljen arra, hogy az adatok, különösen ha a fürtözött oszlopcentrikus index overpartition.
+ELT-t igénylő előkészítési táblák esetén hasznos lehet a particionálás. Ez megkönnyíti az adatok életciklus-felügyeletét.
+Kerülje az adatok túlparticionálását, különösen fürtözött oszlopcentrikus indexeken.
 
-További információ [partíciók].
+További információk a [partíciókról].
 
-## <a name="incremental-load"></a>Növekményes betöltése
+## <a name="incremental-load"></a>Növekményes betöltés
 
-Ha Növekményesen betölteni az adatokat, győződjön meg arról, hogy az adatok betöltése nagyobb erőforrás osztályok osszon ki-e. A a ELT folyamatok automatizálásához az SQL Data Warehouse PolyBase és ADF V2 használatát javasoljuk.
+Ha növekményesen fogja betölteni az adatokat, először győződjön meg arról, hogy nagyobb méretű erőforrásosztályokat foglalt le az adatok betöltéséhez. A PolyBase és az ADF V2 használatát javasoljuk az ELT folyamatok SQL Data Warehouse-ban való automatizálásához.
 
-Nagy kötegelt frissítések előzményadatait először törölje az érintett adatok. Ezután ellenőrizze a tömeges Beszúrás az új adatok. A kétlépéses megoldás, hatékonyabb.
+Az előzményadatokban lévő nagyméretű tömeges frissítéshez először törölje az érintett adatokat. Ezután végezze el az új adatok tömeges beszúrását. Ez a kétlépéses módszer hatékonyabb.
 
 ## <a name="maintain-statistics"></a>Statisztikák karbantartása
- Automatikus-statisztikák általában elérhetők, amíg az SQL Data Warehouse igényel manuális karbantartást statisztikai adat. Fontos, statisztikai adatainak frissítése *jelentős* módosítások fordulhat elő, az adatokhoz. Ez segít a lekérdezésterveket optimalizálása. Ha talál meg, hogy az összes, a statisztikai karbantartása túl sokáig tart, több mérlegelni oszlopok statisztika rendelkeznie kell. 
+ Az automatikus statisztikák általános elérhetővé válásáig az SQL Data Warehouse a statisztikák manuális karbantartását igényli. Fontos a statisztikák frissítése, mivel az adatokban *jelentős* változások történhetnek. Ez segít optimalizálni a lekérdezésterveket. Ha úgy gondolja, hogy túl sokáig tart az összes statisztika karbantartása, körültekintőbben válassza ki, mely oszlopok rendelkezzenek statisztikákkal. 
 
-A frissítési gyakoriságának is meghatározhat. Például érdemes frissíteni a dátumoszlopot, ahol új értékek előfordulhat, hogy vehetők fel, napi bontásban. A legtöbb juttatás nyerhet statisztika rendelkező oszlopokon érintett csatlakozik, a WHERE záradékban használt oszlopok és a GROUP BY található oszlopok.
+A frissítések gyakoriságát is megadhatja. Előfordulhat például, hogy csak a dátumoszlopokat szeretné frissíteni, amelyekbe napi rendszerességgel kerülnek új értékek. A legnagyobb előnnyel az jár, ha a csatlakozások részét képező, a WHERE záradékban használt és a GROUP BY elemben megtalálható oszlopok statisztikáit készíti el.
 
-További információ [statisztika].
+További információk a [statisztikákról].
 
 ## <a name="resource-class"></a>Erőforrásosztály
-Az SQL Data Warehouse erőforráscsoportokat használ arra, hogy memóriát foglaljon le a lekérdezésekhez. Ha a lekérdezés vagy betöltése sebesség növelése érdekében több memóriára van szüksége, magasabb erőforrás osztályok kell lefoglalni. A tükrözés oldalon nagyobb erőforrás osztályokat párhuzamossági hatással van. Minden felhasználó egy nagy erőforrásosztály helyezése előtt figyelembe kell venni, hogy szeretné.
+Az SQL Data Warehouse erőforráscsoportokat használ arra, hogy memóriát foglaljon le a lekérdezésekhez. Ha a lekérdezés vagy a betöltés sebességének növelése érdekében több memóriára van szüksége, magasabb erőforrásosztályokat kell lefoglalnia. A nagyobb erőforrásosztályok használata azonban hatással van a párhuzamos működésre. Ezt érdemes figyelembe venni, mielőtt az összes felhasználót nagyméretű erőforrásosztályba helyezné át.
 
-Ha azt észleli, hogy a lekérdezések túl hosszúak, ellenőrizze, hogy a felhasználók nagy erőforrás osztályok nem működnek. Nagy erőforrás osztályok sok egyidejű üzembe helyezési ponti felhasználását. Más lekérdezések sorba is okozhatják.
+Ha úgy látja, hogy a lekérdezések túl sokáig tartanak, ellenőrizze, hogy a felhasználók nem nagyméretű erőforrásosztályokban futnak-e. A nagyméretű erőforrás osztályok számos egyidejű helyet foglalnak le, ezért más lekérdezések várólistára helyezését okozhatják.
 
-Végül a számítási optimalizált réteg használatával minden erőforrásosztály ennek 2,5-szerese több memóriát, mint a rugalmas optimalizált rétegen lekérdezi.
+Végül a számításra optimalizált szint használata esetén mindegyik erőforrásosztály 2,5-szer több memóriát kap, mint a rugalmas optimalizált szint esetén.
 
-Munkavégzés további [erőforrás osztályok és feldolgozási].
+További információk az [erőforrásosztályokról és a párhuzamos működésről].
 
-## <a name="lower-your-cost"></a>A költségek csökkentése
-Az SQL Data Warehouse alapfunkciója azt a képességet [számítási erőforrások kezelése](sql-data-warehouse-manage-compute-overview.md). Akár szüneteltetheti is, az adatraktár amikor nem használja, ami leállítja a számlázási számítási erőforrásokat. A a teljesítményigények kielégítése érdekében erőforrások méretezheti. Felfüggesztéséhez használja a [Azure-portálon](pause-and-resume-compute-portal.md) vagy [PowerShell](pause-and-resume-compute-powershell.md). Méretezhető, használja a [Azure-portálon](quickstart-scale-compute-portal.md), [Powershell](quickstart-scale-compute-powershell.md), [T-SQL](quickstart-scale-compute-tsql.md), vagy egy [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
+## <a name="lower-your-cost"></a>Csökkentheti költségeit
+Az SQL Data Warehouse egyik legfőbb jellemzője, hogy képes a [számítási erőforrások felügyeletére](sql-data-warehouse-manage-compute-overview.md). Amikor nem használja az adattárházat, szüneteltetheti, ami leállítja a számítási erőforrások számlázását. Az erőforrásokat a teljesítményigényeinek megfelelően skálázhatja. A szüneteltetést az [Azure Portalon](pause-and-resume-compute-portal.md) vagy a [PowerShell-lel](pause-and-resume-compute-powershell.md) végezheti el. A skálázáshoz használhatja az [Azure Portalt](quickstart-scale-compute-portal.md), a [PowerShellt](quickstart-scale-compute-powershell.md), a [T-SQL-t](quickstart-scale-compute-tsql.md) vagy egy [REST API-t](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
 
-Automatikus skálázás most már a időpontban szeretné az Azure Functions:
+Az Azure Functions használatával mostantól bármikor használhatja az automatikus skálázást:
 
 <a href="https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwTimerScaler%2Fazuredeploy.json" target="_blank">
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
 </a>
 
-## <a name="optimize-your-architecture-for-performance"></a>Az architektúra a teljesítmény optimalizálása
+## <a name="optimize-your-architecture-for-performance"></a>Teljesítményre optimalizálhatja az architektúrát
 
-Javasoljuk, hogy az SQL-adatbázis és az Azure Analysis Services hub és küllős architektúra figyelembe véve. Ez a megoldás biztosíthat munkaterhelés különíteni a különböző felhasználói csoportokat is a speciális biztonsági szolgáltatásokat az SQL-adatbázis és az Azure Analysis Services használata során. Azt is adja meg a felhasználóknak korlátlan párhuzamossági módot.
+Küllős architektúra esetén az SQL Database és az Azure Analysis Services használatát javasoljuk. Ez a megoldás a munkaterhelések elkülönítését biztosítja a különböző felhasználói csoportok között, és az SQL Database és az Azure Analysis Services speciális biztonsági funkcióinak használatát teszi lehetővé. Emellett ezzel a módszerrel korlátlan párhuzamos működést biztosíthat a felhasználók számára.
 
-További információ [tipikus architektúrák előnyeit az SQL Data Warehouse](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/common-isv-application-patterns-using-azure-sql-data-warehouse/).
+További információk az [SQL Data Warehouse előnyeit kihasználó tipikus architektúrákról](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/common-isv-application-patterns-using-azure-sql-data-warehouse/).
 
-Egy kattintással központi telepítése az SQL-adatraktár SQL-adatbázisok a küllők:
+Egyetlen kattintással helyezhet üzembe küllőket az SQL-adatbázisokban az SQL Data Warehouse-ból:
 
 <a href="https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwSpokeDbTemplate%2Fazuredeploy.json" target="_blank">
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
@@ -143,15 +138,17 @@ Egy kattintással központi telepítése az SQL-adatraktár SQL-adatbázisok a k
 
 
 <!--Image references-->
-[Sketch]:media/sql-data-warehouse-cheat-sheet/picture-flow.png
+[Vázlat]:media/sql-data-warehouse-cheat-sheet/picture-flow.png
 
 <!--Article references-->
-[az adatok betöltése]:design-elt-data-loading.md
+[adatok betöltéséről]:design-elt-data-loading.md
 [deeper guidance]:guidance-for-loading-data.md
-[indexek]:sql-data-warehouse-tables-index.md
-[partíciók]:sql-data-warehouse-tables-partition.md
-[statisztika]:sql-data-warehouse-tables-statistics.md
-[erőforrás osztályok és feldolgozási]:resource-classes-for-workload-management.md
+[indexekről]:sql-data-warehouse-tables-index.md
+[partíciókról]:sql-data-warehouse-tables-partition.md
+[statisztikákról]:sql-data-warehouse-tables-statistics.md
+[erőforrásosztályokról és a párhuzamos működésről]:resource-classes-for-workload-management.md
+[replikált táblákról]:design-guidance-for-replicated-tables.md
+[elosztott táblákról]:sql-data-warehouse-tables-distribute.md
 
 <!--MSDN references-->
 
@@ -159,9 +156,8 @@ Egy kattintással központi telepítése az SQL-adatraktár SQL-adatbázisok a k
 <!--Other Web references-->
 [typical architectures that take advantage of SQL Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/common-isv-application-patterns-using-azure-sql-data-warehouse/
 [is and is not]:https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns/
-[adatáttelepítés]:https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
-[replikált táblák]:https://docs.microsoft.com/en-us/azure/sql-data-warehouse/design-guidance-for-replicated-tables
-[táblák elosztott]:https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute
-[Azure Data Lake Store]: https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-data-lake-store
-[sys.dm_pdw_nodes_db_partition_stats]: https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql
-[sys.dm_pdw_request_steps]:https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql
+[adatok migrálásáról]:https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
+
+[Azure Data Lake Store]: ../data-factory/connector-azure-data-lake-store.md
+[sys.dm_pdw_nodes_db_partition_stats]: /sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql
+[sys.dm_pdw_request_steps]:/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql

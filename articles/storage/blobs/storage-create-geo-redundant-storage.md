@@ -10,15 +10,15 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: ce72c1a68c1dbe5cede33dd42adc1b002a81326e
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6226fea5001d19a6f0e1f6700d90ea2b9481d43c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="make-your-application-data-highly-available-with-azure-storage"></a>Az alkalmazásadatok magas rendelkezésre állásának biztosítása az Azure Storage használatával
 
-Ez az oktatóanyag egy sorozat első része, amely azt ismerteti, hogyan biztosítható az alkalmazásadatok magas rendelkezésre állása az Azure-ban. Az oktatóanyagban egy konzolalkalmazást hoz majd létre, amely egy blobot tölt fel és kér le egy [írásvédett georedundáns](../common/storage-redundancy.md#read-access-geo-redundant-storage) (RA-GRS) tárfiókba. Az RA-GRS úgy működik, hogy az elsődleges régióból a másodlagosba replikálja a tranzakciókat. A replikációs folyamat garantálja a másodlagos régió adatainak végső konzisztenciáját. Az alkalmazás az [áramköri megszakító](/azure/architecture/patterns/circuit-breaker) mintával határozza meg, hogy melyik végponthoz kapcsolódjon. Az alkalmazás a másodlagos végpontra vált, ha szimulált hibát tapasztal.
+Ez az oktatóanyag egy sorozat első része, amely azt ismerteti, hogyan biztosítható az alkalmazásadatok magas rendelkezésre állása az Azure-ban. Az oktatóanyagban egy konzolalkalmazást hoz majd létre, amely egy blobot tölt fel és kér le egy [írásvédett georedundáns](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) tárfiókba. Az RA-GRS úgy működik, hogy az elsődleges régióból a másodlagosba replikálja a tranzakciókat. A replikációs folyamat garantálja a másodlagos régió adatainak végső konzisztenciáját. Az alkalmazás az [áramköri megszakító](/azure/architecture/patterns/circuit-breaker) mintával határozza meg, hogy melyik végponthoz kapcsolódjon. Az alkalmazás a másodlagos végpontra vált, ha szimulált hibát tapasztal.
 
 A sorozat első részében a következőkkel ismerkedhet meg:
 

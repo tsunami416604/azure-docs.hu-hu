@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.service: backup
 ms.workload: storage-backup-recovery
 manager: carmonm
-ms.openlocfilehash: 850d4d1e2ef6a13fcd8a072e6da210d558c7769b
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 8093275ec9e9cce6d9a765bf1bfc434fecdb6ea7
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Kérdések az Azure Files biztonsági mentéséről
 Ez a cikk az Azure Files biztonsági mentésével kapcsolatos általános kérdéseket válaszol meg. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -27,10 +27,16 @@ A cikk szakaszainak gyors áttekintéséhez használja **A cikk tartalma** terü
 Az előzetes verzióban az Azure-fájlmegosztások biztonsági mentése nem támogatja a tárfiókok minden típusát. Tekintse át [itt](troubleshoot-azure-files.md#preview-boundaries) a támogatott tárfiókok listáját.
 
 ### <a name="why-cant-i-see-some-of-my-azure-file-shares-in-the-storage-account-when-im-trying-to-configure-backup-br"></a>Miért nem látom néhány Azure-fájlmegosztásomat a tárfiókban, miközben a biztonsági mentést próbálom konfigurálni? <br/>
-Ellenőrizze, hogy az Azure-fájlmegosztás már védve van-e ugyanabban a helyreállítási tárban vagy nemrégiben lett-e törölve.
+Ellenőrizze, hogy az Azure-fájlmegosztás már védve van-e ugyanabban a helyreállítási tárban, vagy nemrégiben lett-e törölve.
 
-### <a name="why-cant-i-protect-file-shares-connected-to-a-sync-group-in-azure-file-sync-br"></a>Miért nem tudom védeni az Azure Files Sync szinkronizált csoportjához csatlakoztatott fájlmegosztásaimat? <br/>
-A szinkronizált csoportokhoz csatlakoztatott Azure-fájlmegosztások védelme korlátozott az előzetes kiadásban. Hozzáférés igényléséhez írja meg előfizetési azonosítóját a következő e-mail-címre: [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com). 
+### <a name="can-i-protect-file-shares-connected-to-a-sync-group-in-azure-files-sync-br"></a>Meg tudom védeni az Azure Files Sync szinkronizált csoportjához csatlakoztatott fájlmegosztásaimat? <br/>
+Igen. A szinkronizált csoportokhoz csatlakoztatott Azure-fájlmegosztások védelme engedélyezett, és a nyilvános előzetes verzió része.
+
+### <a name="when-trying-to-back-up-file-shares-i-clicked-on-a-storage-account-for-discovering-the-file-shares-in-it-however-i-did-not-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>Amikor fájlmegosztásokról próbáltam biztonsági másolatot készíteni, egy Storage-fiókra kattintottam a benne lévő fájlmegosztások felderítése érdekében. Azonban nem biztosítottam számukra védelmet. Hogyan védhetem meg ezeket a fájlmegosztásokat másik tárolóval?
+Ha biztonsági mentéskor egy Storage-fiókra kattint az abban lévő fájlmegosztások felderítése érdekében, a Storage-fiókot abból a tárolóról regisztrálja, amelyről ezt végzi. Ha úgy dönt, hogy egy másik tárolóval védi meg a fájlmegosztásokat, [szüntesse meg](troubleshoot-azure-files.md#configuring-backup) a kiválasztott Storage-fiók regisztrációját a tárolóból.
+
+### <a name="can-i-change-the-vault-to-which-i-backup-my-file-shares"></a>Módosíthatom a tárolót, amelybe biztonsági mentést készítek a fájlmegosztásaimról?
+Igen. Azonban [le kell állítania a védelmet](backup-azure-files.md#stop-protecting-an-azure-file-share) a csatlakoztatott tárolóból, [meg kell szüntetnie a Storage-fiók regisztrációját](troubleshoot-azure-files.md#configuring-backup), majd egy másik tárolóból kell védelmet biztosítania számára.
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares-br"></a>Milyen földrajzi helyeken készíthetek biztonsági mentést Azure-fájlmegosztásaimról <br/>
 Az Azure-fájlmegosztások biztonsági mentése jelenleg előzetes verzióban és csak a következő helyeken érhető el: 
@@ -43,7 +49,11 @@ Az Azure-fájlmegosztások biztonsági mentése jelenleg előzetes verzióban é
 -   Kelet-Ausztrália (AE) 
 -   USA keleti régiója (EUS)
 -   USA 2. keleti régiója (EUS2)
+- Kelet-Japán (JPE)
+- Nyugat-Japán (JPW)
 -   Közép-India (INC) 
+- Dél-India (INS)
+- Korea déli régiója (KRS)
 -   USA északi középső régiója (NCUS) 
 -   Észak-Európa (NE) 
 -   USA déli középső régiója (SCUS) 
@@ -55,18 +65,21 @@ Az Azure-fájlmegosztások biztonsági mentése jelenleg előzetes verzióban é
 -   USA nyugati középső régiója (WCUS)
 -   USA 2. nyugati régiója (WUS 2)
 
-Ha a fenti listában nem található régióban kell használnia ezt a megoldást, akkor írjon a következő e-mail-címre: [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com).
+Ha a fenti listában nem szereplő régióban kell használnia ezt a megoldást, írjon a következő e-mail-címre: [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com).
 
 ### <a name="how-many-azure-file-shares-can-i-protect-in-a-vaultbr"></a>Hány Azure-fájlmegosztást védhetek meg egy tárban?<br/>
-Az előzetes verzióban táranként legfeljebb 25 tárfiók Azure-fájlmegosztásait védheti meg. Ezenkívül egyetlen tárban akár 200 Azure-fájlmegosztást is megóvhat. 
+Az előzetes verzióban táranként legfeljebb 25 tárfiók Azure-fájlmegosztásait védheti meg. Ezenkívül egyetlen tárban akár 200 Azure-fájlmegosztást is megóvhat.
+
+### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>Biztosíthatok védelmet két különböző fájlmegosztás számára ugyanabból a Storage-fiókból különböző tárolókba?
+Nem. A Storage-fiókban lévő összes fájlmegosztás számára csak ugyanazzal a tárolóval biztosítható védelem.
 
 ## <a name="backup"></a>Biztonsági mentés
 
 ### <a name="how-many-on-demand-backups-can-i-take-per-file-share-br"></a>Hány igény szerinti biztonsági mentést készíthetek fájlmegosztásonként? <br/>
-Bármely időpontban legfeljebb 200 pillanatkép készíthető fájlmegosztásonként. A korlátba a szabályzatban meghatározottak szerint beletartoznak az Azure Backup által készített pillanatképek is. Ha biztonsági mentései kezdenek meghiúsulni ezen korlát elérése után, akkor töröljön néhány igény szerinti visszaállítási pontot a jövőbeli sikeres biztonsági mentések érdekében.
+Egy tetszőleges időpontban legfeljebb 200 pillanatkép készíthető fájlmegosztásonként. A korlátba a szabályzatban meghatározottak szerint beletartoznak az Azure Backup által készített pillanatképek is. Ha biztonsági mentései kezdenek meghiúsulni ezen korlát elérése után, akkor töröljön néhány igény szerinti visszaállítási pontot a jövőbeli sikeres biztonsági mentések érdekében.
 
 ### <a name="after-enabling-virtual-networks-on-my-storage-account-the-backup-of-file-shares-in-the-account-started-failing-why"></a>A virtuális hálózatok tárfiókomon való engedélyezését követően a fiókban lévő fájlmegosztások biztonsági mentése elkezdett meghiúsulni. Hogy miért?
-Az Azure-fájlmegosztások biztonsági mentése nem támogatja azokat a tárfiókokat, amelyeken engedélyezve vannak a virtuális hálózatok. A sikeres biztonsági mentés engedélyezéséhez tiltsa le a virtuális hálózatokat a tárfiókoknál. 
+Az Azure-fájlmegosztások biztonsági mentése nem támogatja azokat a Storage-fiókokat, amelyeken engedélyezve vannak a virtuális hálózatok. A sikeres biztonsági mentés engedélyezéséhez tiltsa le a virtuális hálózatokat a tárfiókoknál. 
 
 ## <a name="restore"></a>Visszaállítás
 

@@ -1,32 +1,32 @@
 ---
-title: "Zónákba sorolt, Windows rendszerű virtuális gép létrehozása – Azure PowerShell | Microsoft Docs"
-description: "Windows rendszerű virtuális gép létrehozása egy rendelkezésre állási zónában az Azure PowerShell használatával"
+title: Zónákba sorolt, Windows rendszerű virtuális gép létrehozása – Azure PowerShell | Microsoft Docs
+description: Windows rendszerű virtuális gép létrehozása egy rendelkezésre állási zónában az Azure PowerShell használatával
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: dlepow
-manager: timlt
-editor: tysonn
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 09/19/2017
+ms.date: 03/27/2018
 ms.author: danlep
-ms.custom: 
-ms.openlocfilehash: ada47536dbd736386a4efc76249f4ff3a1cfd527
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.custom: ''
+ms.openlocfilehash: 4b6ae95d9b8f7cc4924ea89a743cf9878c7dd79a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-powershell"></a>Windows rendszerű virtuális gép létrehozása egy rendelkezésre állási zónában a PowerShell használatával
 
 Ez a cikk részletesen bemutatja, hogyan lehet egy Windows Server 2016-ot futtató Azure virtuális gépet létrehozni egy Azure rendelkezésre állási zónában az Azure PowerShell használatával. A [rendelkezésre állási zónák](../../availability-zones/az-overview.md) egy Azure-régió fizikailag elkülönített zónáit jelentik. Az alkalmazások és az adatok védelmét rendelkezésre állási zónákkal biztosíthatja nem várt hibák bekövetkezése, illetve a teljes adatközpont elérhetetlenné válása esetére.
 
-[!INCLUDE [availability-zones-preview-statement.md](../../../includes/availability-zones-preview-statement.md)]
+Rendelkezésre állási zóna használatához egy [támogatott Azure-régióban](../../availability-zones/az-overview.md#regions-that-support-availability-zones) hozza létre a virtuális gépet.
 
 Győződjön meg arról, hogy az Azure PowerShell-modul legújabb verziója van telepítve a gépén. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
 
@@ -50,7 +50,7 @@ Get-AzureRmComputeResourceSku | where {$_.Locations.Contains("eastus2")};
 A kimenet a következő sűrített példához hasonló, amelyben azok a rendelkezésre állási zónák láthatók, amelyekben minden virtuálisgép-méret elérhető:
 
 ```powershell
-ResourceType                Name  Location      Zones
+ResourceType                Name  Location      Zones   [...]
 ------------                ----  --------      -----
 virtualMachines  Standard_DS1_v2   eastus2  {1, 2, 3}
 virtualMachines  Standard_DS2_v2   eastus2  {1, 2, 3}
@@ -68,16 +68,16 @@ virtualMachines   Standard_E4_v3   eastus2  {1, 2, 3}
 
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy Azure-erőforráscsoportot a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) parancsmaggal. Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Ebben a példában egy *myResourceGroup* nevű erőforráscsoportot hozunk létre az *eastus2* régióban. Az USA 2. keleti régiója az egyik olyan Azure-régió, amely előzetes verzióban is támogatja a rendelkezésre állási zónákat.
+Hozzon létre egy Azure-erőforráscsoportot a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) parancsmaggal. Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Ebben a példában egy *myResourceGroup* nevű erőforráscsoportot hozunk létre az *eastus2* régióban. 
 
 ```powershell
-New-AzureRmResourceGroup -Name myResourceGroup -Location eastus2
+New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS2
 ```
 
 ## <a name="create-networking-resources"></a>Hálózati erőforrások létrehozása
 
 ### <a name="create-a-virtual-network-subnet-and-a-public-ip-address"></a>Virtuális hálózat, alhálózat és nyilvános IP-cím létrehozása 
-Ezek az erőforrások a virtuális gép hálózati csatlakoztatásának biztosítására, illetve az internethez csatlakoztatására használatosak. Ebben a példában a nyilvános IP-címet a *2.* rendelkezésre állási zónában hozzuk létre. A virtuális gépek rendelkezésre állási zónában történő létrehozásához (ennek folyamatát egy későbbi lépésben mutatjuk be) ugyanazt a zónát kell megadnia, amelyet az IP-cím létrehozásához használt.
+Ezek az erőforrások a virtuális gép hálózati csatlakoztatásának biztosítására, illetve az internethez csatlakoztatására használatosak. Ebben a példában a nyilvános IP-címet a *2.* rendelkezésre állási zónában hozzuk létre. Egy későbbi lépésben ugyanabban a zónában fog virtuális gépet létrehozni, amelyet az IP-cím létrehozásához használt.
 
 ```powershell
 # Create a subnet configuration
@@ -85,7 +85,7 @@ $subnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name mySubnet -AddressPre
 
 # Create a virtual network
 $vnet = New-AzureRmVirtualNetwork -ResourceGroupName myResourceGroup -Location eastus2 `
-    -Name MYvNET -AddressPrefix 192.168.0.0/16 -Subnet $subnetConfig
+    -Name myVNet -AddressPrefix 192.168.0.0/16 -Subnet $subnetConfig
 
 # Create a public IP address in an availability zone and specify a DNS name
 $pip = New-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup -Location eastus2 -Zone 2 `
@@ -122,7 +122,7 @@ $nic = New-AzureRmNetworkInterface -Name myNic -ResourceGroupName myResourceGrou
 
 ## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
-Hozzon létre egy virtuálisgép-konfigurációt. Ebben a konfigurációban a virtuális gép üzembe helyezése során használt beállítások szerepelnek, például a virtuális gép rendszerképe, mérete és hitelesítési konfigurációja. Az e példában szereplő *Standard_DS1_v2* méretet a rendelkezésre állási zónák előzetes verziója is támogatja. Ebben a konfigurációban az IP-cím létrehozásakor beállított rendelkezésre állási zóna is szerepel. Ennek a lépésnek a futtatásakor a rendszer a hitelesítő adatok megadását kéri. Az itt megadott értékek határozzák meg a virtuális géphez tartozó felhasználónevet és jelszavát.
+Hozzon létre egy virtuálisgép-konfigurációt. Ebben a konfigurációban a virtuális gép üzembe helyezése során használt beállítások szerepelnek, például a virtuális gép rendszerképe, mérete és hitelesítési konfigurációja. A példában szereplő *Standard_DS1_v2* méretet a rendelkezésre állási zónák is támogatják. Ebben a konfigurációban az IP-cím létrehozásakor beállított rendelkezésre állási zóna is szerepel. Ennek a lépésnek a futtatásakor a rendszer a hitelesítő adatok megadását kéri. Az itt megadott értékek határozzák meg a virtuális géphez tartozó felhasználónevet és jelszavát.
 
 ```powershell
 # Define a credential object
@@ -141,9 +141,9 @@ Hozza létre a virtuális gépet a [New-AzureRmVM](/powershell/module/azurerm.co
 New-AzureRmVM -ResourceGroupName myResourceGroup -Location eastus2 -VM $vmConfig
 ```
 
-## <a name="zone-for-ip-address-and-managed-disk"></a>IP-cím- és felügyeltlemez-zóna
+## <a name="confirm-zone-for-managed-disk"></a>Felügyelt lemez zónájának megerősítése
 
-A virtuális gép IP-címerőforrását ugyanabban a rendelkezésre állási zónában hozta létre, mint a virtuális gépet. A virtuális gép felügyeltlemez-erőforrása szintén ugyanebben a rendelkezésre állási zónában lett létrehozva. Ezt a [Get-AzureRmDisk](/powershell/module/azurerm.compute/get-azurermdisk) használatával ellenőrizheti:
+A virtuális gép IP-címerőforrását ugyanabban a rendelkezésre állási zónában hozta létre, mint a virtuális gépet. A virtuális gép felügyeltlemez-erőforrása ugyanebben a rendelkezésre állási zónában jött létre. Ezt a [Get-AzureRmDisk](/powershell/module/azurerm.compute/get-azurermdisk) használatával ellenőrizheti:
 
 ```powershell
 Get-AzureRmDisk -ResourceGroupName myResourceGroup
@@ -154,9 +154,9 @@ A kimenetben az látható, hogy a felügyelt lemez és a virtuális gép azonos 
 ```powershell
 ResourceGroupName  : myResourceGroup
 AccountType        : PremiumLRS
-OwnerId            : /subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.
+OwnerId            : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.
                      Compute/virtualMachines/myVM
-ManagedBy          : /subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.
+ManagedBy          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx//resourceGroups/myResourceGroup/providers/Microsoft.
                      Compute/virtualMachines/myVM
 Sku                : Microsoft.Azure.Management.Compute.Models.DiskSku
 Zones              : {2}
@@ -166,15 +166,13 @@ CreationData       : Microsoft.Azure.Management.Compute.Models.CreationData
 DiskSizeGB         : 127
 EncryptionSettings :
 ProvisioningState  : Succeeded
-Id                 : /subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.
+Id                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.
                      Compute/disks/myVM_OsDisk_1_bd921920bb0a4650becfc2d830000000
 Name               : myVM_OsDisk_1_bd921920bb0a4650becfc2d830000000
 Type               : Microsoft.Compute/disks
 Location           : eastus2
 Tags               : {}
 ```
-
-
 
 
 ## <a name="next-steps"></a>További lépések

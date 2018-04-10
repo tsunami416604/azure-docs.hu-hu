@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 34fdf45094fae8e751d6b3e5c57d5b4df2e78200
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 014c9ea34f35e915c6c4eac5a96c55201549e18a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="virtual-network-traffic-routing"></a>Virtuális hálózat forgalmának útválasztása
 
@@ -39,7 +39,7 @@ Mindegyik útvonal tartalmaz egy címelőtagot és a következő ugrás típusá
 |Alapértelmezett|Egyedi a virtuális hálózaton                           |Virtuális hálózat|
 |Alapértelmezett|0.0.0.0/0                                               |Internet       |
 |Alapértelmezett|10.0.0.0/8                                              |Nincs           |
-|Alapértelmezett|172.16.0.0/12                                           |Nincs           |
+|Alapértelmezett|172.16.0.0/12                                           |None           |
 |Alapértelmezett|192.168.0.0/16                                          |None           |
 |Alapértelmezett|100.64.0.0/10                                           |None           |
 
@@ -110,7 +110,7 @@ A következő ugrás típusaihoz megjelenített és hivatkozott név eltér az A
 |Virtuális hálózat                 |VNetLocal                                       |VNetLocal (nem érhető el a parancssori felület 1.0-s verziójában asm mód esetén)|
 |Internet                        |Internet                                        |Internet (nem érhető el a parancssori felület 1.0-s verziójában asm mód esetén)|
 |Virtuális berendezés               |VirtualAppliance                                |VirtualAppliance|
-|None                            |None                                            |Null (nem érhető el a parancssori felület 1.0-s verziójában asm mód esetén)|
+|Nincs                            |None                                            |Null (nem érhető el a parancssori felület 1.0-s verziójában asm mód esetén)|
 |Társviszony létesítése virtuális hálózatok között         |Társviszony létesítése virtuális hálózatok között                                    |Nem alkalmazható|
 |Virtuális hálózati szolgáltatásvégpont|VirtualNetworkServiceEndpoint                   |Nem alkalmazható|
 
@@ -130,9 +130,11 @@ Ha a kimenő adatforgalmat a rendszer egy alhálózatról küldi ki, az Azure ki
 Ha több útvonal is tartalmazza ugyanazt a címelőtagot, akkor az Azure a következő prioritási elv alapján választ az útvonaltípusok közül:
 
 1. Felhasználó által megadott útvonal
-2. Egy *Virtual Network* (Virtuális hálózat), *VNet peering* (Virtuális hálózatok közötti társviszony) vagy *VirtualNetworkServiceEndpoint* ugrási típusú rendszerútvonal.
 2. BGP-útvonal
-3. Egy nem *Virtual Network* (Virtuális hálózat), *VNet peering* (Virtuális hálózatok közötti társviszony) vagy *VirtualNetworkServiceEndpoint* ugrási típusú rendszerútvonal.
+3. Rendszerútvonal
+
+> [!NOTE]
+> A virtuális hálózathoz, virtuális társhálózati viszonyhoz vagy virtuális hálózati szolgáltatásvégponthoz kapcsolódó forgalom rendszerútvonalai előnyben részesített útvonalak akkor is, ha a BGP-útvonalak pontosabbak.
 
 Tegyük fel például, hogy egy útvonaltábla a következő útvonalakat tartalmazza:
 
@@ -208,8 +210,8 @@ A képen látható *Subnet1* alhálózat útvonaltáblája a következő útvona
 |3   |Felhasználó   |Aktív |10.0.0.0/24         |Virtuális hálózat        |                   |Ezen belül: Subnet1|
 |4   |Alapértelmezett|Érvénytelen|10.1.0.0/16         |Társviszony létesítése virtuális hálózatok között           |                   |              |
 |5   |Alapértelmezett|Érvénytelen|10.2.0.0/16         |Társviszony létesítése virtuális hálózatok között           |                   |              |
-|6   |Felhasználó   |Aktív |10.1.0.0/16         |Nincs                   |                   |Ide: VNet2-1-Elejtés|
-|7   |Felhasználó   |Aktív |10.2.0.0/16         |Nincs                   |                   |Ide: VNet2-2-Elejtés|
+|6   |Felhasználó   |Aktív |10.1.0.0/16         |None                   |                   |Ide: VNet2-1-Elejtés|
+|7   |Felhasználó   |Aktív |10.2.0.0/16         |None                   |                   |Ide: VNet2-2-Elejtés|
 |8   |Alapértelmezett|Érvénytelen|10.10.0.0/16        |Virtuális hálózati átjáró|[X.X.X.X]          |              |
 |9   |Felhasználó   |Aktív |10.10.0.0/16        |Virtuális berendezés      |10.0.100.4         |A helyszínire    |
 |10  |Alapértelmezett|Aktív |[X.X.X.X]           |VirtualNetworkServiceEndpoint    |         |              |

@@ -5,16 +5,16 @@ services: iot-edge
 keywords: ''
 author: kgremban
 manager: timlt
-ms.author: v-jamebr
+ms.author: kgremban
 ms.date: 11/15/2017
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: a43ae8f28fc32b61fb5db985ffae98f093293798
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3d7dd0986878c747f92afc712301453bc8772ef2
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="deploy-azure-function-as-an-iot-edge-module---preview"></a>Azure-függvény üzembe helyezése IoT Edge-modulként
 Az Azure Functions használatával olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön valósítja meg az üzleti logikát. Ez az oktatóanyag végigvezeti egy olyan Azure-függvény létrehozásán és üzembe helyezésén, amely érzékelőadatokat szűr az Azure IoT Edge üzembe helyezése szimulált eszközön [Windows][lnk-tutorial1-win]vagy [Linux][lnk-tutorial1-lin] rendszeren című oktatóanyagban létrehozott szimulált IoT Edge-eszközön. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:     
@@ -58,10 +58,10 @@ A következő lépések azt mutatják be, hogyan hozhat létre IoT Edge-függvé
     ```cmd/sh
     dotnet new -i Microsoft.Azure.IoT.Edge.Function
     ```
-2. Hozzon létre egy projektet az új modulhoz. A következő parancs létrehozza a **FilterFunction** nevű projektmappát az aktuális munkamappában:
+2. Hozzon létre egy projektet az új modulhoz. A következő parancs létrehozza a **FilterFunction** nevű projektmappát a tárolóadattárral együtt. Ha Azure-beli tárolóregisztrációs adatbázist használ, a második paraméternek a következő formátumban kell lennie: `<your container registry name>.azurecr.io`. Írja be a következő parancsot az aktuális munkakönyvtárba:
 
     ```cmd/sh
-    dotnet new aziotedgefunction -n FilterFunction
+    dotnet new aziotedgefunction -n FilterFunction -r <your container registry address>/filterfunction
     ```
 
 3. Válassza a **Fájl** > **Mappa megnyitása** elemet, majd keresse meg a **FilterFunction** mappát, és nyissa meg a projektet a VS Code-ban.
@@ -127,24 +127,19 @@ A következő lépések azt mutatják be, hogyan hozhat létre IoT Edge-függvé
 
 11. Mentse a fájlt.
 
-## <a name="publish-a-docker-image"></a>Docker-rendszerkép közzététele
+## <a name="create-a-docker-image-and-publish-it-to-your-registry"></a>Docker-rendszerkép létrehozása és közzététele a beállításjegyzékben
 
-1. Állítsa össze a Docker-rendszerképet.
-    1. A VS Code Explorerben bontsa ki a **Docker** mappát. Ezután bontsa ki a tárolóplatform mappáját, amely a **linux-x64** vagy a **windows-nano** mappa. 
-    2. Kattintson a jobb gombbal a **Dockerfile** fájlra, és kattintson az **IoT Edge-modul Docker-rendszerképének összeállítása** elemre. 
-    3. Keresse meg a **FilterFunction** projektmappát, és kattintson a **Mappa kiválasztása EXE_DIR elemként** elemre. 
-    4. A VS Code-ablak tetején lévő előugró szövegmezőbe írja be a rendszerkép nevét. Például: `<your container registry address>/filterfunction:latest`. A tárolóregisztrációs adatbázis címe megegyezik a bejelentkezési kiszolgáló címével, amelyet a beállításjegyzékből másolt ki. Ennek a következő formátumban kell lennie: `<your container registry name>.azurecr.io`.
- 
-4. Jelentkezzen be a Dockerbe. Az integrált terminálon írja be a következő parancsot: 
-
+1. A VS Code integrált termináljában az alábbi paranccsal jelentkezzen be a Dockerbe: 
+     
    ```csh/sh
-   docker login -u <username> -p <password> <Login server>
+   docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
-        
    A parancsban használandó felhasználónév, jelszó és bejelentkezési kiszolgáló megkereséséhez nyissa meg az [Azure Portalt] (https://portal.azure.com). A **Minden erőforrás** területen kattintson az Azure tárolóregisztrációs adatbázis csempéjére a tulajdonságok megnyitásához, majd kattintson a **Hozzáférési kulcsok** elemre. Másolja a **Felhasználónév**, a **Jelszó** és a **Bejelentkezési kiszolgáló** mezők értékeit. 
 
-3. Küldje le a rendszerképet a Docker-adattárba. Válassza a **Nézet** > **Parancskatalógus** elemet, majd keresse meg az **Edge: IoT Edge-modul Docker-rendszerképének leküldése** elemet.
-4. Az előugró szövegmezőbe írja be az 1.d. lépésben használt rendszerképnevet.
+2. A VS Code Explorerben kattintson a jobb gombbal a **module.json** fájlra, és kattintson az **IoT Edge-modul Docker-rendszerképének összeállítása és leküldése** elemre. A VS Code-ablak tetején lévő előugró legördülő listájában válassza ki a tárolóplatformot: Linux-alapú tároló esetén az **amd64** Windows-alapú tároló esetén pedig a **windows-amd64** lehetőséget. A VS Code ezután tárolókba helyezi a függvénykódokat, majd leküldi őket a megadott tárolóregisztrációs adatbázisba.
+
+
+3. A VS Code integrált termináljában hozzáférhet a teljes tárolórendszerképhez címkével együtt. Az összeállítás és a leküldés meghatározásáról a `module.json` fájlban talál további információt.
 
 ## <a name="add-registry-credentials-to-your-edge-device"></a>Beállításjegyzékhez tartozó hitelesítő adatok hozzáadása az Edge-eszközhöz
 Adja hozzá az Edge-futtatókörnyezethez a beállításjegyzék hitelesítő adatait azon a számítógépen, amelyen az Edge-eszközt futtatja. Ez hozzáférést nyújt a futtatókörnyezetnek a tároló lekéréséhez. 
@@ -174,7 +169,7 @@ Adja hozzá az Edge-futtatókörnyezethez a beállításjegyzék hitelesítő ad
 1. Adja hozzá a **filterFunction** modult.
     1. Válassza ismét az **IoT Edge-modul hozzáadása** lehetőséget.
     2. A **Név** mezőbe írja a következőt: `filterFunction`.
-    3. A **Rendszerkép URI** mezőbe írja be a rendszerkép címét, például a következőt: `<your container registry address>/filtermodule:0.0.1-amd64`. A rendszerkép teljes címe az előző szakaszban található.
+    3. A **Rendszerkép URI** mezőbe írja be a rendszerkép címét, például a következőt: `<your container registry address>/filterfunction:0.0.1-amd64`. A rendszerkép teljes címe az előző szakaszban található.
     74. Kattintson a **Save** (Mentés) gombra.
 2. Kattintson a **Tovább** gombra.
 3. Az **Útvonalak megadása** lépésben másolja az alábbi JSON-t a szövegmezőbe. Az első útvonal a hőmérséklet-érzékelőből a szűrőmodulba szállítja az üzeneteket az input1 végponton keresztül. A második útvonal a szűrőmodulból az IoT Hubra szállítja az üzeneteket. Ebben az útvonalban az `$upstream` egy speciális cél, amely alapján az Edge Hub az IoT Hubnak küldi az üzeneteket. 
@@ -198,11 +193,11 @@ Az IoT Edge-eszközről az IoT hubra küldött, az eszközről a felhőbe irány
 1. Az Azure IoT-eszközkészlet bővítmény konfigurálása kapcsolati karakterlánccal az IoT hubhoz: 
     1. Az Azure Portalon keresse meg az IoT hubot, és válassza a **Megosztott elérési szabályzatok** elemet. 
     2. Válassza az **iothubowner** elemet, majd másolja a **Kapcsolati karakterlánc – elsődleges kulcs** értékét.
-    1. A VS Code Explorerben kattintson az **IOT HUB-ESZKÖZÖK** elemre, majd kattintson a **...** elemre. 
-    1. Válassza az **IoT Hub kapcsolati karakterlánc beállítása** elemet, és írja be az IoT Hub kapcsolati karakterláncát az előugró ablakba. 
+    3. A VS Code Explorerben kattintson az **IOT HUB-ESZKÖZÖK** elemre, majd kattintson a **...** elemre. 
+    4. Válassza az **IoT Hub kapcsolati karakterlánc beállítása** elemet, és írja be az IoT Hub kapcsolati karakterláncát az előugró ablakba. 
 
-1. Az IoT Hubra érkező adatok monitorozásához válassza a **Nézet** > **Parancskatalógus...**  elemet, és keressen rá az **IoT: D2C üzenet monitorozásának megkezdése** kifejezésre. 
-2. Az adatok monitorozásának leállításához használja a Parancskatalógus **IoT: D2C üzenet monitorozásának leállítása** parancsát. 
+2. Az IoT Hubra érkező adatok monitorozásához válassza a **Nézet** > **Parancskatalógus...**  elemet, és keressen rá az **IoT: D2C üzenet monitorozásának megkezdése** kifejezésre. 
+3. Az adatok monitorozásának leállításához használja a Parancskatalógus **IoT: D2C üzenet monitorozásának leállítása** parancsát. 
 
 ## <a name="next-steps"></a>További lépések
 

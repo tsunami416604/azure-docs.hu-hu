@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: get-started-article
 ms.date: 03/06/2018
 ms.author: tamram
-ms.openlocfilehash: eb68993924bff8605fc244f438a686f0142c4762
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 18a8065bba8a4a0ec2025d6b9134fe9fab21eb5f
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="introduction-to-microsoft-azure-storage"></a>A Microsoft Azure Storage bemutatása
 
@@ -143,35 +143,11 @@ Az ügyféloldali titkosítással kapcsolatos további információkért látoga
 
 ## <a name="replication"></a>Replikáció
 
-Az adatok tartósságának biztosítása érdekében az Azure Storage egyszerre több példányban tárolja (és kezeli) az adatokat. Ezt replikációnak vagy más néven redundanciának nevezzük. A Storage-fiók üzembe helyezésekor meg kell választania a replikáció típusát. A legtöbb esetben ez a beállítás a tárfiók üzembe helyezését követően módosítható.
+Az adatok tartósságának biztosítása érdekében az Azure Storage több példányban replikálja az adatokat. A Storage-fiók üzembe helyezésekor meg kell választania a replikáció típusát. A legtöbb esetben ez a beállítás a tárfiók létrehozása után módosítható. 
 
-**Helyileg redundáns tárolás (LRS)**
-
-A helyileg redundáns tárolást (LRS) úgy tervezték, hogy legalább 99,999999999%-os (11 db 9-es) tartós állapotot biztosítson az objektumok számára egy adott évben. Ez azt jelenti, hogy az Azure Storage több példányban tárolja az adatokat a tárfiók beállításakor megadott adatközpontban. Módosítás esetén a rendszer az összes példányt frissíti, mielőtt sikeres eredményt adna vissza. Ez azt jelenti, hogy a replikák mindig szinkronban vannak. Emellett a rendszer a példányokat külön tartalék tartományokban és frissítési tartományokban tárolja, aminek következtében az adatok akkor is elérhetők maradnak, ha az azokat tároló valamelyik tárolócsomópont meghibásodik, vagy frissítés következtében offline állapotba kerül.
-
-**Zónaredundáns tárolás (ZRS) (előzetes verzió)**
-
-A zónaredundáns tárolást (ZRS) úgy tervezték, hogy leegyszerűsítse a magas rendelkezésre állású alkalmazások fejlesztését. A ZRS legalább 99,9999999999%-os (12 db 9-es) tartós állapotot biztosít a tárolt objektumok számára egy adott évben. A ZRS egyszerre több rendelkezésreállási zónában is replikálja az adatokat. A ZRS használata különösen olyan helyzetekben ajánlott, amikor az állásidő nem engedélyezett, például tranzakciós alkalmazásoknál. A ZRS lehetővé teszi az ügyfelek számára az adatok írását és olvasását még akkor is, ha egy bizonyos zóna nem érhető el vagy nem állítható helyre. Az adatok beszúrása és frissítése szinkron módon történik, és nagy mértékben konzisztens.    
-
-A korábbi ZRS képességre mostantól klasszikus ZRS néven hivatkozunk. A klasszikus ZRS-fiókok csak blokkblobokhoz érhetők el az általános célú v1-tárfiókok esetén. A klasszikus ZRS az adatokat aszinkron módon replikálja egy vagy két régió adatközpontjaiba. Lehetséges, hogy a replika nem lesz elérhető, hacsak a Microsoft nem kezdeményezi a másodlagos példány feladatátvételét. A klasszikus ZRS-fiókokat nem lehet átalakítani LRS- vagy GRS-fiókokká vagy fiókokból, és nem rendelkeznek metrikákkal vagy naplózási képességgel.
-
-**Georedundáns tárolás (GRS)**
-
-A georedundáns tárolási (GRS) szolgáltatást úgy tervezték, hogy 99,99999999999999%-os (16 db 9-es) tartós állapotot biztosítson az objektumok számára egy adott évben azáltal, hogy helyi példányokat őriz az adatokból egy elsődleges régióban, valamint emellett egy másik példánykészletet egy másodlagos régióban több száz kilométerre az elsődleges régiótól. Ha az elsődleges régióban hiba történne, az Azure Storage feladatátvételt hajt végre a másodlagos régióba.
-
-**Írásvédett georedundáns tárolás (RA-GRS)**
-
-Az írásvédett georedundáns tárolás megegyezik a GRS tárolással, annyi különbséggel, hogy itt olvasási jogokat kap a másodlagos helyen lévő adatokhoz. Ha az elsődleges adatközpont ideiglenesen elérhetetlenné válna, továbbra is olvashatja az adatokat a másodlagos helyről. Ezt rendkívül hasznos lehet. Például lehet egy olyan webalkalmazása, amely ilyenkor írásvédett módba vált, és a másodlagos példányra mutat, így valamilyen szinten továbbra is hozzáférést biztosít, még ha a frissítsek nem is érhetők el.
-
-> [!IMPORTANT]
-> A tárfiók létrehozása után módosíthatja az adatok replikálási módját. Ez azonban egy egyszeri adatátviteli díjjal járhat, ha LRS vagy ZRS típusú tárolásról GRS vagy RA-GRS típusú tárolásra vált.
->
-
-A replikációs beállításokkal kapcsolatosan további információt az [Azure Storage replikálását](storage-redundancy.md) ismertető szakaszban talál.
+[!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
 
 A vészhelyreállítással kapcsolatos információk: [What to do if an Azure Storage outage occurs](storage-disaster-recovery-guidance.md) (Mi a teendő az Azure Storage leállása esetén?).
-
-A magas rendelkezésre állás az RA-GRS tároló kiaknázásával történő biztosításával kapcsolatos példáért lásd: [Designing Highly Available Applications using RA-GRS](storage-designing-ha-apps-with-ragrs.md) (Magas rendelkezésre állású alkalmazások tervezése az RA-GRS használatával).
 
 ## <a name="transferring-data-to-and-from-azure-storage"></a>Adatok áthelyezése az Azure Storage-ba és az Azure Storage-ból
 

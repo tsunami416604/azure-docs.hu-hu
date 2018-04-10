@@ -8,11 +8,11 @@ ms.date: 1/23/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory-b2c
-ms.openlocfilehash: c2a52a387860de640e290746b25c164090819654
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 19629f383bdab19a2541ca33dd2937574c2ced17
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tutorial-authenticate-users-with-azure-active-directory-b2c-in-an-aspnet-web-app"></a>Oktatóanyag: Felhasználók hitelesítése az Azure Active Directory B2C-vel egy ASP.NET-webalkalmazásban
 
@@ -66,7 +66,7 @@ Jegyezze fel az **alkalmazás ügyfél-azonosítóját**. Az azonosító egyedi 
 
 ### <a name="create-a-client-password"></a>Ügyféljelszó létrehozása
 
-Az Azure AD B2C az OAuth2 engedélyezést használja az [ügyfélalkalmazásokhoz](../active-directory/develop/active-directory-dev-glossary.md#client-application). A webalkalmazások [bizalmas ügyfelek](../active-directory/develop/active-directory-dev-glossary.md#web-client), és használatukhoz titkos ügyfélkódra (jelszóra) van szükség. Az alkalmazás ügyfél-azonosítójára és a titkos ügyfélkódra akkor van szükség, amikor a webalkalmazás az Azure Active Directoryval végzi a hitelesítést. 
+Az Azure AD B2C az OAuth2 engedélyezést használja az [ügyfélalkalmazásokhoz](../active-directory/develop/active-directory-dev-glossary.md#client-application). A webalkalmazások [bizalmas ügyfelek](../active-directory/develop/active-directory-dev-glossary.md#web-client), és használatukhoz ügyfél- vagy alkalmazásazonosítóra, illetve titkos ügyfélkódra, ügyféljelszóra vagy alkalmazáskulcsra van szükség.
 
 1. Válassza ki a regisztrált webalkalmazás Kulcsok lapját, és kattintson a **Kulcs létrehozása** elemre.
 
@@ -150,7 +150,7 @@ Két projekt szerepel a mintául szolgáló megoldásban:
 
 **Mintául szolgáló webes API-alkalmazás (TaskService):** webes API, amely támogatja a feladatlista létrehozását, olvasását, frissítését és törlését. A webes API-nak az Azure AD B2C biztosít védelmet, és a webalkalmazással hívható meg.
 
-Módosítania kell az alkalmazást ahhoz, hogy használni tudja az alkalmazás regisztrációját a saját bérlőjében. A létrehozott szabályzatokat konfigurálni is kell. A mintául szolgáló webalkalmazás a konfigurációs értékeket alkalmazásbeállításokként határozza meg a Web.config fájlban. Az alkalmazás beállításainak módosításához:
+Módosítania kell az alkalmazást ahhoz, hogy használni tudja az alkalmazás regisztrációját a saját bérlőjében, amely tartalmazza az ügyfél- vagy alkalmazásazonosítót, illetve az ügyféljelszót vagy alkalmazáskulcsot. A létrehozott szabályzatokat konfigurálni is kell. A mintául szolgáló webalkalmazás a konfigurációs értékeket alkalmazásbeállításokként határozza meg a Web.config fájlban. Az alkalmazás beállításainak módosításához:
 
 1. Nyissa meg a **B2C-WebAPI-DotNet** megoldást a Visual Studióban.
 
@@ -161,7 +161,7 @@ Módosítania kell az alkalmazást ahhoz, hogy használni tudja az alkalmazás r
     
     <add key="ida:ClientId" value="The Application ID for your web app registered in your tenant" />
     
-    <add key="ida:ClientSecret" value="Client password (client secret)" />
+    <add key="ida:ClientSecret" value="Client password (client secret or app key)" />
     ```
 3. Frissítse a szabályzatbeállításokat a szabályzat létrehozásakor megadott névvel.
 
