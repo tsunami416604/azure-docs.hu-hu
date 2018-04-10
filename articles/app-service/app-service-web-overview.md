@@ -15,15 +15,15 @@ ms.topic: overview
 ms.date: 01/04/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: e789d3c6e10399491eb055b850a590ae10aacd11
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 85a3898145f7aea5d3f668caeafb62286006230d
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="web-apps-overview"></a>A webalkalmazások áttekintése
 
-Az *Azure App Service Web Apps* (vagy röviden Web Apps) webalkalmazásokat, REST API-kat és mobilháttereket üzemeltető szolgáltatás. Kedvenc nyelvén fejleszthet, legyen az .NET, .NET Core, Java, Ruby, Node.js, PHP, vagy Python. Egyszerűen futtathat és méretezhet alkalmazásokat Windows vagy Linux rendszerű virtuális gépeken (lásd a [linuxos App Service-t](containers/app-service-linux-intro.md) ismertető szakaszt). 
+Az *Azure App Service Web Apps* (vagy röviden Web Apps) webalkalmazásokat, REST API-kat és mobilháttereket üzemeltető szolgáltatás. Kedvenc nyelvén fejleszthet, legyen az .NET, .NET Core, Java, Ruby, Node.js, PHP, vagy Python. Egyszerűen futtathat és méretezhet alkalmazásokat Windows-alapú környezetekben. Linux-alapú környezetek esetén lásd: [App Service Linux rendszeren](containers/app-service-linux-intro.md). 
 
 A Web Apps nem csak arra szolgál, hogy a Microsoft Azure funkcióival egészítse ki az alkalmazását, mint például a biztonság, a terheléselosztás, az automatikus skálázás és az automatikus kezelés. DevOps-képességeket is biztosít, mint például a folyamatos üzembe helyezés VSTS-ről, a GitHubról, a Docker Hubról és már forrásokból, a csomagkezelés, az átmeneti környezetek, az egyéni tartomány és az SSL-tanúsítványok. 
 

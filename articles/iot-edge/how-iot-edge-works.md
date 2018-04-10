@@ -1,29 +1,32 @@
 ---
-title: "Az Azure IoT Edge bemutatása | Microsoft Docs"
-description: "Az Azure IoT Edge szolgáltatás áttekintése"
+title: Az Azure IoT Edge bemutatása | Microsoft Docs
+description: Az Azure IoT Edge szolgáltatás áttekintése
 services: iot-Edge
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: timlt
 editor: chipalost
-ms.assetid: 
+ms.assetid: ''
 ms.service: iot-hub
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 04/01/2018
 ms.author: kgremban
-ms.custom: 
-ms.openlocfilehash: 5f69041572729d1458a22a855128639056d61586
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.custom: ''
+ms.openlocfilehash: 9071caedd9ab3b63527c2c0bdab38db2efadb17c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="what-is-azure-iot-edge---preview"></a>Az Azure IoT Edge bemutatása – előzetes verzió
 
 Az Azure IoT Edge szolgáltatás a felhőbeli elemzéseket és egyéni üzleti logikákat eszközökre helyezi át, hogy a szervezet az üzleti elemzésekre tudjon koncentrálni az adatkezelés helyett. Tegye lehetővé megoldása valódi méretezhetőségét az IoT-szoftver konfigurálásával, amelyet standard tárolók használatával helyezhet üzembe az eszközökön, és a felhőn keresztül monitorozhatja is.
+
+>[!NOTE]
+>Az Azure IoT Edge csak az IoT Hub standard szintű csomagjában érhető el. Az alapszintű és standard csomagokról további információt [a megfelelő IoT Hub-csomag kiválasztását](../iot-hub/iot-hub-scaling.md) ismertető cikkben talál.
 
 Az elemzések jelentős üzleti értékeket teremthetnek az IoT-megoldásokban, de nem szükséges minden elemzést a felhőben végezni. Ha azt szeretné, hogy az eszköze a lehető leggyorsabban reagálni tudjon a vészhelyzetekre, akkor magán az eszközön is végezhet rendellenesség-észlelést. Hasonlóképpen, ha csökkenteni szeretné a sávszélesség-költségeket, és el szeretné kerülni több terabájtnyi nyers adat átvitelét, akkor helyileg is elvégezheti az adatok törlését és összesítését. Ezután elküldheti az elemzéseket a felhőbe. 
 
@@ -74,7 +77,7 @@ Az Azure IoT zökkenőmentesen integrálható az Azure IoT Suite-tal, hogy a meg
 
 ![A telemetriák, az elemzések és az eszközök műveletei koordinálva vannak a felhővel][2]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezen fogalmak gyakorlati alkalmazását is kipróbálhatja, ha [üzembe helyezi az IoT Edge szolgáltatást egy szimulált eszközön][lnk-quickstart].
 

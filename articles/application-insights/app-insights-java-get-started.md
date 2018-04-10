@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 227ca3533c7a06b726c758be931df8ec0314e90f
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 7331c3385f70de7d13895fc88d1d8630af4e9b05
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Ismerkedés az Application Insights szolgáltatással Java webes projektben
 
@@ -47,10 +47,10 @@ A következők szükségesek:
 ## <a name="2-add-the-application-insights-sdk-for-java-to-your-project"></a>2. A Javához készült Application Insights SDK hozzáadása a projekthez
 *Válassza ki a projektnek megfelelő módszert.*
 
-#### <a name="if-youre-using-eclipse-to-create-a-maven-or-dynamic-web-project-"></a>Ha az Eclipse-t használja Maven vagy dinamikus webes projekt létrehozásához ...
+#### <a name="if-youre-using-eclipse-to-create-a-dynamic-web-project"></a>Ha az Eclipse-t használja dinamikus webes projekt létrehozásához...
 Használja a [Javához készült Application Insights SDK beépülő modult][eclipse].
 
-#### <a name="if-youre-using-maven"></a>Ha Mavent használ...
+#### <a name="if-youre-using-maven-a-namemaven-setup-"></a>Ha Mavent használ... <a name="maven-setup" />
 Ha a projekt már úgy van beállítva, hogy Mavent használ buildként, egyesítse a következő kódot a pom.xml fájllal.
 
 Ezután frissítse a projektfüggőségeket, hogy letöltse a bináris fájlokat.
@@ -78,12 +78,12 @@ Ezután frissítse a projektfüggőségeket, hogy letöltse a bináris fájlokat
 * *Build- vagy ellenőrzőösszeg-érvényesítési hibák?* Próbáljon egy adott verziót használni, például a következőt: `<version>2.0.n</version>`. A legújabb verziót az [SDK kiadási megjegyzéseiben](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) vagy a [Maven-összetevőkben](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights) találja.
 * *Új SDK-ra kell frissítenie?* Frissítse a projekt függőségeit.
 
-#### <a name="if-youre-using-gradle"></a>Ha Gradle-t használ...
+#### <a name="if-youre-using-gradle-a-namegradle-setup-"></a>Ha Gradle-t használ... <a name="gradle-setup" />
 Ha a projekt már úgy van beállítva, hogy Gradle-t használ buildként, egyesítse a következő kódot a build.gradle fájllal.
 
 Ezután frissítse a projektfüggőségeket, hogy letöltse a bináris fájlokat.
 
-```JSON
+```gradle
 
     repositories {
       mavenCentral()
@@ -95,27 +95,24 @@ Ezután frissítse a projektfüggőségeket, hogy letöltse a bináris fájlokat
     }
 ```
 
-* *Build- vagy ellenőrzőösszeg-érvényesítési hibák? Próbáljon adott verziót használni, például a következőt:* `version:'2.0.n'`. *A legújabb verziót az [SDK kiadási megjegyzéseiben](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) találja.*
-* *Frissítés új SDK-ra*
-  * Frissítse a projekt függőségeit.
+* *Build- vagy ellenőrzőösszeg-érvényesítési hibák?* Próbáljon egy adott verziót használni, például a következőt: `version:'2.0.n'`. A legújabb verziót az [SDK kiadási megjegyzéseiben](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) vagy a [Maven-összetevőkben](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights) találja.
+* *Frissítés új SDK-ra* A projekt függőségeinek frissítése.
 
-#### <a name="otherwise-"></a>Egyéb esetben...
-Kézzel adja hozzá az SDK-t:
-
-1. Töltse le a [Javához készült Application Insights SDK-t](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest).
-2. Bontsa ki a bináris fájlokat a zip-fájlból, és adja azokat a projekthez.
+#### <a name="otherwise-if-you-are-manually-managing-dependencies-"></a>Egyéb esetben, ha manuálisan kezeli a függőségeket...
+Töltse le a [legújabb verziót](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest), és a korábbi verziókat felülírva másolja a szükséges fájlokat a projektbe.
 
 ### <a name="questions"></a>Kérdések...
-* *Mi a kapcsolat a zip-fájl `-core` és `-web` összetevője között?*
-
+* *Mi a kapcsolat a `-core` és a `-web` összetevő között?*
   * `applicationinsights-core`– csak az API-t biztosítja. Erre az összetevőre mindig szüksége van.
   * `applicationinsights-web`– olyan mérőszámokat biztosít, amelyek nyomon követik a HTTP-kérések számát és a válaszidőket. Ezt az összetevőt kihagyhatja, ha nem szeretné automatikusan gyűjteni ezt a telemetriát. hanem például sajátot szeretne írni.
-* *Az SDK frissítése a változások közzétételekor*
+  
+* *Hogyan frissíthetek az SDK legújabb verziójára?*
+  * Ha Gradle-t vagy Mavent használ...
+    * Frissítse a buildfájlt, hogy a legújabb verziót mutassa, vagy a Gradle/Maven helyettesítő szintaxisa segítségével vegye fel automatikusan a legfrissebb verziót. Ezután frissítse a projekt függőségeit. A fenti példákban láthatja a [Gradle](#gradle-setup) és a [Maven](#maven-setup) helyettesítő szintaxisát.
+  * Ha manuálisan kezeli a függőségeket...
+    * Töltse le a legújabb [Javához készült Application Insights SDK-t](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest), és cserélje le a régieket. A változások leírását az [SDK kiadási megjegyzéseiben](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) találja.
 
-  * Töltse le a legújabb [Javához készült Application Insights SDK-t](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest), és cserélje le a régieket.
-  * A változások leírását az [SDK kiadási megjegyzéseiben](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) találja.
-
-## <a name="3-add-an-application-insights-xml-file"></a>3. Application Insights .xml fájl hozzáadása
+## <a name="3-add-an-applicationinsightsxml-file"></a>3. ApplicationInsights.xml fájl hozzáadása
 Adja az ApplicationInsights.xml fájlt a projekt erőforrások mappájához, vagy győződjön meg arról, hogy a projekt üzembe helyezési osztályának elérési útjához van adva. Másolja bele a következő XML-t.
 
 Helyettesítse be az Azure Portalról kapott kialakítási kulcsot.
@@ -127,12 +124,10 @@ Helyettesítse be az Azure Portalról kapott kialakítási kulcsot.
 
 
       <!-- The key from the portal: -->
-
       <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
 
 
       <!-- HTTP request component (not required for bare API) -->
-
       <TelemetryModules>
         <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule"/>
         <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebSessionTrackingTelemetryModule"/>
@@ -153,11 +148,11 @@ Helyettesítse be az Azure Portalról kapott kialakítási kulcsot.
     </ApplicationInsights>
 ```
 
+A konfigurációs fájlt bármely, az alkalmazás számára elérhető helyen tárolhatja.  A `-Dapplicationinsights.configurationDirectory` rendszertulajdonság határozza meg, hogy melyik tár tartalmazza az ApplicationInsights.xml fájlt. Az `E:\myconfigs\appinsights\ApplicationInsights.xml` mappában tárolt konfigurációs fájl konfigurálásához például a `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"` tulajdonság használható.
 
 * A kialakítási kulcsot a telemetria minden elemével megkapja, és ez közli az Application Insights eszközzel, hogy megjelenítse azt az erőforrásban.
 * A HTTP-kérelemösszetevő nem kötelező. Automatikusan telemetriát küld a kérelmekkel és válaszidőkkel kapcsolatban a portálra.
 * Az eseménykorreláció a HTTP-kérelemösszetevő további eleme. Azonosítót rendel a kiszolgáló által fogadott összes kérelemhez, és az azonosítót „Operation.Id” tulajdonságként hozzáadja a telemetria minden eleméhez. Lehetővé teszi az egyes kérelmekkel társított telemetria korrelációját, ha beállít egy szűrőt a [diagnosztikai keresésben][diagnostic].
-* Az Application Insights-kulcs dinamikusan továbbadható az Azure Portalról rendszertulajdonságként (-DAPPLICATION_INSIGHTS_IKEY=saját_kialakítási_kulcs). Ha nincs tulajdonság meghatározva, környezeti változót (APPLICATION_INSIGHTS_IKEY) keres az Azure App-beállításokban. Ha egyik tulajdonság sincs meghatározva, az alapértelmezett InstrumentationKey lesz használva az ApplicationInsights.xml-ből. Ez a sorozat segít a különböző környezetekhez tartozó InstrumentationKey-ek dinamikus kezelésében.
 
 ### <a name="alternative-ways-to-set-the-instrumentation-key"></a>A kialakítási kulcs beállításának egyéb módjai
 Az Application Insights SDK ebben a sorrendben keresi a kulcsot:
@@ -219,7 +214,7 @@ Adja ezt az elemet a Struts konfigurációs fájlhoz (általában struts.xml vag
      <default-interceptor-ref name="ApplicationInsightsRequestNameInterceptor" />
 ```
 
-(Ha egy alapértelmezett veremben elfogók vannak meghatározva, az elfogó egyszerűen a veremhez adható.)
+Ha egy alapértelmezett veremben elfogók vannak meghatározva, az elfogó a veremhez adható.
 
 ## <a name="5-run-your-application"></a>5. Az alkalmazás futtatása
 Futtassa hibakeresés módban a fejlesztési számítógépén, vagy tegye közzé a kiszolgálóján.

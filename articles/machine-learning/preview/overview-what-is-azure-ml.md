@@ -1,6 +1,6 @@
 ---
 title: Mi az Azure Machine Learning? | Microsoft Docs
-description: Az Azure Machine Learning-kísérletezés és Modellkezelés egy, az adatszakértők számára a fejlett elemzési alkalmazások fejlesztéséhez, a kísérletek kidolgozásához és a felhőszinten való üzembe helyezéshez létrehozott átfogó, integrált és fejlett adatelemzési megoldás.
+description: Ismerteti a felhőalapú Machine Learning alapvető fogalmait, az alkalmazási területeket, valamint a Machine Learning kifejezéseit. Az Azure Machine Learning a fejlett elemzési alkalmazások fejlesztéséhez, a kísérletek kidolgozásához és a felhőszinten való üzembe helyezéshez létrehozott átfogó, integrált és fejlett adatelemzési megoldás adatszakértők számára.
 services: machine-learning
 author: mwinkle
 ms.author: mwinkle
@@ -9,14 +9,19 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: get-started-article
 ms.date: 09/21/2017
-ms.openlocfilehash: e5716e3fc519c48aaea3ec17939d11008a1b1fd4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 8a92f42ecee926042e9e0662f6b0bd9438024248
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="what-is-azure-machine-learning"></a>Mi az Azure Machine Learning?
+# <a name="what-is-machine-learning"></a>Mit jelent a Machine Learning?
 
+A Machine Learning egy olyan adatelemzési módszer, amely lehetővé teszi, hogy a számítógépek a meglévő adatokból tanulva jövőbeni viselkedéseket, kimeneteket és trendeket jelezhessenek előre. A gépi tanulással a számítógépek konkrét programozás nélkül tanulhatnak.
+
+A gépi tanulás által biztosított előrejelzéseket felhasználva intelligensebbé tehetők az alkalmazások és az eszközök. Ha például online vásárlói felületeknél alkalmazzák, a gépi tanulás képes a korábban megvásárolt cikkek alapján olyan termékeket ajánlani, amelyek esetleg szintén érdekelhetik Önt. A Machine Learning a bankkártya minden lehúzásakor összeveti az adott tranzakciót az adatbázisban található tranzakciókkal, így segít a csalások felismerésében. Ha robotporszívóra bízza a szoba kitakarítását, a Machine Learning segít eldönteni, hogy a feladat el lett-e végezve.
+
+## <a name="what-is-azure-machine-learning"></a>Mi az Azure Machine Learning?
 Az Azure Machine Learning egy integrált, átfogó és fejlett adatelemzési megoldás. Az adatszakértők számára lehetővé teszi az adatok előkészítését, a kísérletek kidolgozását és a modellek felhőszinten való üzembe helyezését.
 
 Az Azure Machine Learning fő összetevői a következők:
@@ -29,6 +34,7 @@ Az Azure Machine Learning fő összetevői a következők:
 Ezek az alkalmazások és szolgáltatások együttesen jelentősen segítenek felgyorsítani az adatelemzési projektek fejlesztését és üzembe helyezését. 
 
 ![Azure Machine Learning-fogalmak](media/overview-what-is-azure-ml/aml-concepts.png)
+
 
 ## <a name="open-source-compatible"></a>Kompatibilis a nyílt forráskóddal
 

@@ -1,12 +1,12 @@
 ---
-title: "Az Azure-hálózat biztonsági áttekintése | Microsoft Docs"
-description: "Ismerkedjen meg az Azure-erőforrások közötti hálózati forgalom szabályzására szolgáló biztonsági beállításokkal."
+title: Az Azure-hálózat biztonsági áttekintése | Microsoft Docs
+description: Ismerkedjen meg az Azure-erőforrások közötti hálózati forgalom szabályzására szolgáló biztonsági beállításokkal.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: get-started-article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
-ms.openlocfilehash: fbf0556cc47bc08a71fcf050b43c2dbbe5d27184
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 950c64ea1ea2edc072650a9f63a6d21ad369c496
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="network-security"></a>Hálózati biztonság
 
@@ -117,7 +117,7 @@ Az alapértelmezett szabályok nem távolíthatók el, azonban magasabb priorit�
  A szolgáltatáscímkék IP-címelőtagok csoportjait jelölik, így a segítségükkel csökkenthető a biztonsági szabályok létrehozásának összetettsége. Nem hozhat létre saját szolgáltatáscímkéket, és nem határozhatja meg, hogy melyik IP-címeket jelöljék az egyes címkék. A szolgáltatáscímkékben lévő címelőtagokat a Microsoft kezeli, és a címek változásával automatikusan frissíti a szolgáltatáscímkéket. Biztonsági szabályok létrehozása során szolgáltatáscímkéket használhat bizonyos IP-címek helyett. A következő szolgáltatáscímkék érhetőek el biztonsági szabályok meghatározásához. A neveik az egyes [Azure üzembehelyezési modellekben](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) némiképp eltérőek.
 
 * **VirtualNetwork** (Resource Manager) (**VIRTUAL_NETWORK** klasszikus üzemi modell esetén): Ez a címke tartalmazza a virtuális hálózat címterét (a virtuális hálózathoz meghatározott minden CIDR-tartományt), valamint az összes csatlakoztatott helyszíni címteret és a [virtuális hálózati átjárókhoz](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) csatlakoztatott virtuális hálózatokat vagy [társviszonyban álló](virtual-network-peering-overview.md) virtuális hálózatokat.
-* **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** klasszikus telepítéshez): Ez a címke az Azure infrastruktúra terheléselosztóját jelöli. A címkét a rendszer lefordítja arra az [Azure-adatközponti IP-címre](https://www.microsoft.com/download/details.aspx?id=41653), ahonnan az Azure állapot-mintavételei származnak. Ha nem az Azure Load Balancert használja, ezt a szabályt felül lehet bírálni.
+* **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** klasszikus telepítéshez): Ez a címke az Azure infrastruktúra-terheléselosztóját jelöli. A címkét a rendszer lefordítja arra az [Azure-adatközponti IP-címre](https://www.microsoft.com/download/details.aspx?id=41653), ahonnan az Azure állapot-mintavételei származnak. Ha nem az Azure Load Balancert használja, ezt a szabályt felül lehet bírálni.
 * **Internet** (Resource Manager) (**INTERNET** klasszikus telepítéshez): Ez a címke azt az IP-címteret jelöli, amely a virtuális hálózaton kívül esik, és a nyilvános interneten érhető el. A címtartományba beletartozik az [Azure tulajdonában lévő nyilvános IP-címtér](https://www.microsoft.com/download/details.aspx?id=41653) is.
 * **AzureTrafficManager** (csak Resource Manager esetében): Ez a címke az Azure Traffic Manager mintavételezési IP-címeinek IP-címterét jelöli. További információk a Traffic Manager mintavételezési IP-címeiről: [Azure Traffic Manager – Gyakori kérdések](https://docs.microsoft.com/en-us/azure/traffic-manager/traffic-manager-faqs).
 * **Storage** (csak Resource Manager esetében): Ez a címke az Azure Storage szolgáltatás IP-címterét jelöli. Ha a *Storage* értéket adja meg, a Storage szolgáltatás felé irányuló forgalom engedélyezhető vagy letiltható. Ha csak egy adott [régióban](https://azure.microsoft.com/regions) szeretné engedélyezni a hozzáférést a Storage szolgáltatáshoz, megadhat egy régiót. Ha például csak az USA keleti régiójában szeretné engedélyezni a hozzáférést az Azure Storage szolgáltatáshoz, megadhatja a *Storage.EastUS* szolgáltatáscímkét. A címke a szolgáltatást jelöli, annak adott példányait azonban nem. Például a címke az Azure Storage szolgáltatást jelöli, de nem egy adott Azure Storage-fiókot.
@@ -128,7 +128,7 @@ Az alapértelmezett szabályok nem távolíthatók el, azonban magasabb priorit�
 
 ## <a name="application-security-groups"></a>Alkalmazásbiztonsági csoportok
 
-Az alkalmazásbiztonsági csoportok segítségével az alkalmazás struktúrájának természetes bővítményeként konfigurálhatja a hálózati biztonságot, így csoportosíthatja a virtuális gépeket, és ezen csoportok alapján meghatározhatja a hálózati biztonsági szabályokat. Ezzel a szolgáltatással újra felhasználhatja a biztonsági szabályokat nagy léptékben is a konkrét IP-címek manuális karbantartása nélkül. A platform képes kezelni a konkrét IP-címek és a szabálykészletek jelentette összetettséget, így Ön az üzleti logikára összpontosíthat.
+Az alkalmazásbiztonsági csoportokkal az alkalmazás struktúrájának természetes bővítményeként konfigurálhatja a hálózati biztonságot, így csoportosíthatja a virtuális gépeket, és ezen csoportok alapján meghatározhatja a hálózati biztonsági szabályokat. Ezzel a szolgáltatással újra felhasználhatja a biztonsági szabályokat nagy léptékben is a konkrét IP-címek manuális karbantartása nélkül. A platform képes kezelni a konkrét IP-címek és a szabálykészletek jelentette összetettséget, így Ön az üzleti logikára összpontosíthat.
 
 Az alkalmazásbiztonsági csoportokat megadhatja forrásként és célként is a biztonsági szabályokban. A biztonsági szabály meghatározása után létrehozhat virtuális gépeket, és hozzárendelheti az adott virtuális gépekben lévő hálózati adaptereket egy alkalmazásbiztonsági csoporthoz. A szabály a virtuális gépben lévő egyes hálózati adapterek alkalmazásbiztonsági csoporttagsága alapján lesz alkalmazva. Az alábbi példa bemutatja, hogyan használhat egy alkalmazásbiztonsági csoportot az előfizetésében lévő összes webkiszolgálóhoz:
 
@@ -141,7 +141,7 @@ Ha más szabályokat is létrehoz, amelyekben más alkalmazásbiztonsági csopor
  
 Az alkalmazásbiztonsági csoportok létrehozására és a biztonsági szabályokban való alkalmazására vonatkozó korlátozásokkal kapcsolatban tekintse meg az [Azure korlátairól](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) szóló cikket.
 
-Az alkalmazásbiztonsági csoportok előzetes kiadásban érhetőek el. Az előzetes kiadásban elérhető szolgáltatások rendelkezésre állása és megbízhatósága eltér az általánosan elérhető kiadásokban lévőekétől. Az alkalmazásbiztonsági csoportok használata előtt először regisztráljon azok használatára a [hálózati biztonsági csoport alkalmazásbiztonsági csoportokkal való létrehozását](create-network-security-group-preview.md) ismertető cikk Azure-ra vagy PowerShellre vonatkozó szakaszának 1–5. lépése végrehajtásával. Az alkalmazásbiztonsági csoportok a következő korlátozásokkal rendelkeznek:
+Az alkalmazásbiztonsági csoportok a következő korlátozásokkal rendelkeznek:
 
 -   Egy alkalmazásbiztonsági csoportban lévő összes hálózati adapternek ugyanazon a virtuális hálózaton kell lennie. Nem adhat különböző virtuális hálózatokról származó hálózati adaptereket ugyanahhoz az alkalmazásbiztonsági csoporthoz. Az alkalmazásbiztonsági csoporthoz rendelt első hálózati adapter virtuális hálózata határozza meg az összes később hozzárendelt hálózati adapter virtuális hálózatát.
 - Ha biztonsági szabály forrásaként és céljaként határoz meg alkalmazásbiztonsági csoportokat, mindkét alkalmazásbiztonsági csoport hálózati adaptereinek ugyanazon a virtuális hálózaton kell lenniük. Ha például az ABCS1 a VNet1 hálózatról tartalmaz hálózati adaptereket, az ABCS2 pedig a VNet2 hálózatról, nem rendelheti hozzá az ABCS1 csoportot forrásként és az ABCS2 csoportot célként egy szabályban. Minden hálózati adapternek a VNet1 hálózaton kell lennie.
@@ -157,7 +157,7 @@ Az alkalmazásbiztonsági csoportok előzetes kiadásban érhetőek el. Az előz
   Amennyiben 2017. november 15. előtt hozta létre Azure-előfizetését, az SMTP-továbbítási szolgáltatások használata mellett közvetlenül a 25-ös TCP-porton keresztül is küldhet e-maileket. Amennyiben 2017. november 15. után fizetett elő, nem biztos hogy küldhet e-maileket közvetlenül a 25-ös porton keresztül. A 25-ös porton keresztül folytatott kimenő kommunikáció viselkedése az előfizetés típusától függ, amely lehet:
 
      - **Nagyvállalati szerződés**: 25-ös porton keresztüli kimenő kommunikáció engedélyezve. Közvetlenül a virtuális gépekről küldhet kimenő e-maileket a külső e-mail-szolgáltatóknak, és az Azure platform korlátozásai nem érvényesülnek. 
-     - **Használatalapú fizetés**: a 25-ös porton keresztüli kimenő kommunikáció minden erőforráson blokkolva van. Ha közvetlenül a virtuális gépéről szeretne e-mailt küldenie egy külső e-mail-szolgáltatónak (hitelesített SMTP-továbbítás használata nélkül), kérheti a korlátozás feloldását. A kérelmeket a Microsoft saját meglátása szerint értékeli és hagyja jóvá, a visszaélések kiküszöbölésére szolgáló megfelelő ellenőrzések elvégzése után. Kérelem benyújtásához támogatási esetet kell nyitnia a *Technikai*, *Virtuális hálózati kapcsolat*, *Sikertelen e-mail-küldés (SMTP/25-ös port)* problématípus kiválasztásával. A támogatási esetben részletesen indokolja, hogy előfizetésének miért kell közvetlenül a levelezési szolgáltatónak e-mailt küldenie a hitelesített SMTP-továbbítás használata helyett. Amennyiben előfizetését felmentik a korlátozás alól, csak a mentesítés dátuma után létrehozott virtuális gépek képesek a 25-ös porton keresztüli kimenő kommunikációra.
+     - **Használatalapú fizetés**: a 25-ös porton keresztüli kimenő kommunikáció minden erőforráson blokkolva van. Ha közvetlenül a virtuális gépéről szeretne e-mailt küldenie egy külső e-mail-szolgáltatónak (hitelesített SMTP-továbbítás használata nélkül), kérheti a korlátozás feloldását. A kérelmeket a Microsoft saját belátása szerint értékeli és hagyja jóvá, a visszaélések kiküszöbölésére szolgáló megfelelő ellenőrzések elvégzése után. Kérelem benyújtásához támogatási esetet kell nyitnia a *Technikai*, *Virtuális hálózati kapcsolat*, *Sikertelen e-mail-küldés (SMTP/25-ös port)* problématípus kiválasztásával. A támogatási esetben részletesen indokolja, hogy előfizetésének miért kell közvetlenül a levelezési szolgáltatónak e-mailt küldenie a hitelesített SMTP-továbbítás használata helyett. Amennyiben előfizetését felmentik a korlátozás alól, csak a mentesítés dátuma után létrehozott virtuális gépek képesek a 25-ös porton keresztüli kimenő kommunikációra.
      - **Felhőszolgáltató (CSP), MSDN, Azure Pass, Azure in Open, Education, BizSpark és ingyenes próbaverzió**: a 25-ös porton keresztüli kimenő kommunikáció minden erőforráson blokkolva van. Nem küldhető kérelem a korlátozás feloldására, mert a kérelmek nem teljesíthetők. Amennyiben mindenképpen virtuális gépről szeretne e-mailt küldeni, SMTP-továbbítási szolgáltatást kell használnia.
 
   Amennyiben az Azure engedélyezi az e-mailek küldését a 25-ös porton keresztül, a Microsoft nem tudja garantálni, hogy a levelező szolgáltatók elfogadják a virtuális gépről érkező bejövő e-maileket. Amennyiben egy szolgáltató elutasítja a virtuális gépéről érkező leveleket, vele együttműködésben kell megoldania bármely üzenetküldési vagy levélszemétszűrési problémát, vagy SMTP-továbbítási szolgáltatást kell használnia. 
@@ -165,5 +165,4 @@ Az alkalmazásbiztonsági csoportok előzetes kiadásban érhetőek el. Az előz
 
 ## <a name="next-steps"></a>További lépések
 
-* Végezze el a [hálózati biztonsági csoport létrehozásáról](virtual-networks-create-nsg-arm-pportal.md) szóló oktatóanyagot
-* Végezze el a [hálózati biztonsági csoport alkalmazásbiztonsági csoportokkal való létrehozásáról](create-network-security-group-preview.md) szóló oktatóanyagot
+* Ismerje meg [a hálózati biztonsági csoportok létrehozását](tutorial-filter-network-traffic.md).
