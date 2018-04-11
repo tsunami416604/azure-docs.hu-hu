@@ -17,10 +17,10 @@ ms.date: 09/06/2017
 ms.author: trinadhk;jimpark;markgal;
 ms.custom: mvc
 ms.openlocfilehash: 62cc623dc3130119c5ec803933012c5545d703e5
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="back-up-azure-virtual-machines-in-azure-at-scale"></a>Azure-beli virtuális gépek nagy léptékű biztonsági mentése
 
@@ -29,7 +29,7 @@ Ez az oktatóanyag részletesen ismerteti az Azure-beli virtuális gépek helyre
 > [!IMPORTANT]
 > Ez az oktatóanyag feltételezi, hogy már létrehozott egy erőforráscsoportot és egy Azure-beli virtuális gépet.
 
-## <a name="create-a-recovery-services-vault"></a>Helyreállítási tár létrehozása
+## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
 A [helyreállítási tár](backup-azure-recovery-services-vault-overview.md) egy olyan tároló, amely a biztonsági mentésre kijelölt elemek helyreállítási pontjait tartalmazza. A helyreállítási tár egy Azure-erőforráscsoport részeként telepíthető és kezelhető Azure-erőforrás. Ebben az oktatóanyagban ugyanabban az erőforráscsoportban fog helyreállítási tárat létrehozni, mint amelyik a virtuális gép védelmét végzi.
 
