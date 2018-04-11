@@ -1,9 +1,9 @@
 ---
-title: "Ismerkedés a Notification Hubs Xamarin.Android-alkalmazásokkal való használatával | Microsoft Docs"
-description: "Ebben az oktatóanyagban elsajátíthatja, hogy hogyan használható az Azure Notification Hubs leküldéses értesítések küldésére Xamarin Android-alkalmazásokba."
+title: Ismerkedés a Notification Hubs Xamarin.Android-alkalmazásokkal való használatával | Microsoft Docs
+description: Ebben az oktatóanyagban elsajátíthatja, hogy hogyan használható az Azure Notification Hubs leküldéses értesítések küldésére Xamarin Android-alkalmazásokba.
 author: jwhitedev
 manager: kpiteira
-editor: 
+editor: ''
 services: notification-hubs
 documentationcenter: xamarin
 ms.assetid: 0be600fe-d5f3-43a5-9e5e-3135c9743e54
@@ -36,7 +36,7 @@ Az oktatóanyag teljes kódja a GitHubon, [itt][GitHub] található meg.
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyaghoz az alábbiakra lesz szükség:
 
-* Windows rendszeren [Visual Studio és Xamarin], vagy OS X rendszeren [Visual Studio for Mac ].
+* Windows rendszeren [Visual Studio és Xamarin], vagy OS X rendszeren [Visual Studio for Mac].
 * Aktív Google-fiók
 
 Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, Xamarin.Android-alkalmazásokkal kapcsolatos Notification Hubs-oktatóanyag elvégzéséhez.
@@ -305,7 +305,7 @@ Ebben az egyszerű példában értesítéseket küldött az összes Android-eszk
 [Get started with Mobile Services]: /develop/mobile/tutorials/get-started-xamarin-android/#create-new-service
 [JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
 [Visual Studio és Xamarin]: https://docs.microsoft.com/visualstudio/install/install-visual-studio
-[Visual Studio for Mac ]: https://www.visualstudio.com/vs/visual-studio-mac/
+[Visual Studio for Mac]: https://www.visualstudio.com/vs/visual-studio-mac/
 
 [Azure Portalról]: https://portal.azure.com/
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
