@@ -1,11 +1,11 @@
 ---
-title: "Az Azure portál használatával NSG-k kezelése |} Microsoft Docs"
-description: "Megtudhatja, hogyan kezelheti a meglévő NSG-ket az Azure portál használatával."
+title: Az Azure portál használatával NSG-k kezelése |} Microsoft Docs
+description: Megtudhatja, hogyan kezelheti a meglévő NSG-ket az Azure portál használatával.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: carmonm
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 5d55679d-57da-457c-97dc-1e1973909ee5
 ms.service: virtual-network
@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2016
 ms.author: jdial
 ms.openlocfilehash: e9bcf8a893ff209337f6a5763b631a22f8514e20
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="manage-nsgs-using-the-portal"></a>A portál használatával NSG-k kezelése
 
@@ -44,7 +44,7 @@ Megtekintheti a meglévő NSG-ket, szabályok lekérdezni egy meglévő NSG-t, �
 
 Előfizetés az összes meglévő NSG-ket megtekintéséhez kövesse az alábbi lépéseket:
 
-1. Egy böngészőből keresse fel a http://portal.azure.com címet, majd jelentkezzen be az Azure-fiókjával, ha szükséges.
+1. Egy böngészőből keresse fel a(z) http://portal.azure.com címet, majd jelentkezzen be az Azure-fiókjával, ha szükséges.
 
 2. Kattintson a **Tallózás >** > **hálózati biztonsági csoportok**.
 
