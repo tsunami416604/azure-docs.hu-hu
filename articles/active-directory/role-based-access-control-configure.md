@@ -1,8 +1,8 @@
 ---
-title: "Szerepköralapú hozzáférés-vezérlés az Azure Portalon | Microsoft Docs"
-description: "Megismerheti a hozzáférés kezelését az Azure Portal szerepköralapú hozzáférés-vezérlése segítségével. Szerepkör-hozzárendelésekkel rendelhet engedélyeket az erőforrásokhoz."
+title: Szerepköralapú hozzáférés-vezérlés az Azure Portalon | Microsoft Docs
+description: Megismerheti a hozzáférés kezelését az Azure Portal szerepköralapú hozzáférés-vezérlése segítségével. Szerepkör-hozzárendelésekkel rendelhet engedélyeket az erőforrásokhoz.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
@@ -15,10 +15,10 @@ ms.date: 07/17/2017
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.openlocfilehash: 57b6aa57a57317563a9da8e1765f4d97b1b79852
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="use-role-based-access-control-to-manage-access-to-your-azure-subscription-resources"></a>Az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel
 > [!div class="op_single_selector"]

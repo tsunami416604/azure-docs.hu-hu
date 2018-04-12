@@ -1,13 +1,13 @@
 ---
-title: "Linux rendszerű virtuális gépek terheléselosztása az Azure-ban | Microsoft Docs"
-description: "A cikk azt ismerteti, hogyan hozhat létre egy magas rendelkezésre állású és biztonságos alkalmazást három Linux rendszerű virtuális gépen az Azure Load Balancer használatával"
+title: Linux rendszerű virtuális gépek terheléselosztása az Azure-ban | Microsoft Docs
+description: A cikk azt ismerteti, hogyan hozhat létre egy magas rendelkezésre állású és biztonságos alkalmazást három Linux rendszerű virtuális gépen az Azure Load Balancer használatával
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: tutorial
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 11/13/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: feb2c369fc00d37c9a6af0c0be68cbf7d9e59921
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: c473a31261337f0b968ca21c85b61dafbf8fa74a
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application"></a>Linux rendszerű virtuális gépek terheléselosztása az Azure-ban magas rendelkezésre állású alkalmazások létrehozásához
 A terheléselosztás magasabb szintű rendelkezésre állást biztosít, mivel a bejövő kérelmeket több virtuális gép között osztja szét. Ebben az oktatóanyagban megismerkedhet az Azure Load Balancer különböző összetevőivel, amelyek elosztják a forgalmat, és gondoskodnak a magas rendelkezésre állásról. Az alábbiak végrehajtásának módját ismerheti meg:
@@ -58,7 +58,7 @@ Ez a szakasz részletesen ismerteti a terheléselosztó egyes összetevőinek l�
 az group create --name myResourceGroupLoadBalancer --location eastus
 ```
 
-### <a name="create-a-public-ip-address"></a>Nyilvános IP-cím létrehozása
+### <a name="create-a-public-ip-address"></a>Hozzon létre egy nyilvános IP-címet
 Az alkalmazás internetes eléréséhez a terheléselosztónak nyilvános IP-címmel kell rendelkeznie. Hozzon létre egy nyilvános IP-címet az [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) paranccsal. Az alábbi példában létrejön egy *myPublicIP* nevű nyilvános IP-cím a *myResourceGroupLoadBalancer* erőforráscsoportban:
 
 ```azurecli-interactive 
@@ -67,7 +67,7 @@ az network public-ip create \
     --name myPublicIP
 ```
 
-### <a name="create-a-load-balancer"></a>Terheléselosztó létrehozása
+### <a name="create-a-load-balancer"></a>Load Balancer létrehozása
 Hozzon létre egy terheléselosztót az [az network lb create](/cli/azure/network/lb#az_network_lb_create) paranccsal. Az alábbi példa létrehoz egy *myLoadBalancer* nevű terheléselosztót, és hozzárendeli a *myPublicIP* címet az előtérbeli IP-konfigurációhoz:
 
 ```azurecli-interactive 

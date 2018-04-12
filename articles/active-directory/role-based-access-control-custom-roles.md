@@ -1,8 +1,8 @@
 ---
-title: "Hozzon létre egyéni szerepkörök az Azure RBAC |} Microsoft Docs"
-description: "Megtudhatja, hogyan pontosabb identitáskezeléshez átruházásához hozzáférés-vezérléssel egyéni szerepkörök definiálása az Azure-előfizetésben."
+title: Hozzon létre egyéni szerepkörök az Azure RBAC |} Microsoft Docs
+description: Megtudhatja, hogyan pontosabb identitáskezeléshez átruházásához hozzáférés-vezérléssel egyéni szerepkörök definiálása az Azure-előfizetésben.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.assetid: e4206ea9-52c3-47ee-af29-f6eef7566fa5
@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2871ff5eea8fb99040dfab2593d1640d79f51092
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="create-custom-roles-for-azure-role-based-access-control"></a>Hozzon létre egyéni szerepkörök átruházásához hozzáférés-vezérlés
 Hozzon létre egy egyéni biztonsági szerepkört a átruházásához hozzáférés-vezérlés (RBAC) Ha az adott hozzáférési igényeinek a beépített szerepkörök egyike. Egyéni szerepkörök segítségével hozhatók létre [Azure PowerShell](role-based-access-control-manage-access-powershell.md), [Azure parancssori felület](role-based-access-control-manage-access-azure-cli.md) (CLI), és a [REST API](role-based-access-control-manage-access-rest.md). Hasonlóan a beépített szerepkörök egyéni szerepkörök hozzárendelése felhasználók, csoportok és alkalmazások előfizetés, erőforráscsoport és erőforrás-hatókörök. Egyéni szerepkörök az Azure AD-bérlő tárolódnak, és előfizetések között megosztható legyen.
@@ -59,11 +59,11 @@ A következő példa bemutatja egy egyéni biztonsági szerepkört a figyelés �
 ## <a name="actions"></a>Műveletek
 A **műveletek** egy egyéni biztonsági szerepkört a tulajdonság határozza meg, amelyhez a szerepkör hozzáférést biztosít az Azure műveletek. Művelet karakterláncok, amelyek azonosítják az Azure erőforrás-szolgáltatók biztonságos műveletek gyűjteménye. Művelet karakterláncok kövesse formátuma `Microsoft.<ProviderName>/<ChildResourceType>/<action>`. Helyettesítő karakterek művelet karakterláncokat (\*) hozzáférést biztosíthat a művelet karakterláncnak megfelelő összes művelethez. Például:
 
-* `*/read`biztosít hozzáférést az olvasási műveletek az összes Azure-erőforrás-szolgáltató minden erőforrástípus esetén.
-* `Microsoft.Compute/*`engedélyezi a hozzáférést a Microsoft.Compute erőforrás-szolgáltató az összes erőforrástípus összes műveletet.
-* `Microsoft.Network/*/read`olvasási műveletek összes erőforrás típusához a Microsoft.Network erőforrás-szolgáltató az Azure biztosít hozzáférést.
-* `Microsoft.Compute/virtualMachines/*`minden műveletet a virtuális gépek és a gyermek típusú erőforrások hozzáférést biztosít.
-* `Microsoft.Web/sites/restart/Action`a hozzáférési webhely újraindítására.
+* `*/read` biztosít hozzáférést az olvasási műveletek az összes Azure-erőforrás-szolgáltató minden erőforrástípus esetén.
+* `Microsoft.Compute/*` engedélyezi a hozzáférést a Microsoft.Compute erőforrás-szolgáltató az összes erőforrástípus összes műveletet.
+* `Microsoft.Network/*/read` olvasási műveletek összes erőforrás típusához a Microsoft.Network erőforrás-szolgáltató az Azure biztosít hozzáférést.
+* `Microsoft.Compute/virtualMachines/*` minden műveletet a virtuális gépek és a gyermek típusú erőforrások hozzáférést biztosít.
+* `Microsoft.Web/sites/restart/Action` a hozzáférési webhely újraindítására.
 
 Használjon `Get-AzureRmProviderOperation` (a PowerShell) vagy `azure provider operations show` (az Azure CLI) az Azure erőforrás-szolgáltatók műveletek. Ezek a parancsok annak ellenőrzéséhez, hogy egy művelet karakterlánc érvényes, és bontsa ki a helyettesítő művelet karakterláncok is használhatja.
 

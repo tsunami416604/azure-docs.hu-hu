@@ -4,7 +4,7 @@ description: Megismerheti, hogyan használható a felügyelt Azure Batch AI szol
 services: batch-ai
 documentationcenter: ''
 author: alexsuttonms
-manager: timlt
+manager: jeconnoc
 editor: ''
 ms.assetid: ''
 ms.service: batch-ai
@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 10/13/2017
 ms.author: asutton
 ms.custom: ''
-ms.openlocfilehash: 69e7617f1a5918a08e3c692a1a25c4fcdeca536b
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 9834dbbc2232fc286451bcdcd19dfc639f49d3bf
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="what-is-batch-ai-in-azure"></a>Mi az a Batch AI az Azure-ban?
 A Batch AI egy felügyelt szolgáltatás, amely lehetővé teszi az adatelemzők és AI-kutatók számára, hogy betanítsanak mesterséges intelligenciákat és egyéb gépi tanulási modelleket az Azure virtuális gépek fürtjein, beleértve a GPU-támogatással rendelkező virtuális gépeket. Csak adja meg a feladata követelményeit, valamint a bemeneti és kimeneti adatok tárolási helyét, a Batch AI pedig elvégzi a többit.  

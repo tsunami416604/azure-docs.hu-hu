@@ -2,18 +2,17 @@
 title: Azure-fájlok biztonsági mentése az Azure-ba
 description: Ez a cikk ismerteti az Azure-fájlmegosztások biztonsági mentésének és visszaállításának módját, valamint a felügyeleti feladatokat.
 services: backup
-keywords: Ne adjon hozzá kulcsszavakat és ne szerkessze azokat a keresőoptimalizálást végző szakemberrel való egyeztetés nélkül.
 author: markgalioto
 ms.author: markgal
 ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 3eab85aa4f7fde190a93239fc396cb9c04c2396c
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 440cee4309fad0a22d8964982f3aad2178397124
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="back-up-azure-file-shares"></a>Azure-fájlmegosztások biztonsági mentése
 Ez a cikk azt ismerteti, hogyan használhatja az Azure Portalt az [Azure-fájlmegosztások](../storage/files/storage-files-introduction.md) biztonsági mentésére és visszaállítására.
@@ -32,7 +31,7 @@ Mielőtt biztonsági mentést készít egy Azure-fájlmegosztásról, győződj�
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Az Azure-fájlmegosztás biztonsági mentésének korlátozásai az előzetes verzióban
 Az Azure-fájlmegosztások biztonsági mentése jelenleg előzetes verzióban érhető el. Vegye figyelembe a következő korlátozásokat az előzetes verzió használatakor:
-- A tárfiókokban lévő Azure-fájlmegosztásokat nem lehet [zónaredundáns tárolási (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) vagy [írásvédett georedundáns tárolási (RA-GRS)](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage) replikációval védeni.
+- A tárfiókokban lévő Azure-fájlmegosztásokat nem lehet [zónaredundáns tárolási (ZRS)](../storage/common/storage-redundancy-zrs.md) vagy [írásvédett georedundáns tárolási (RA-GRS)](../storage/common/storage-redundancy-grs.md) replikációval védeni.
 - Az Azure-fájlmegosztásokat nem lehet védeni olyan tárfiókokban, amelyeken engedélyezve vannak a virtuális hálózatok.
 - Az Azure Files védelméhez nem áll rendelkezésre PowerShell vagy parancssori felület.
 - Az ütemezett biztonsági mentések maximális száma naponta egy.

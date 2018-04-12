@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
-ms.openlocfilehash: 950c64ea1ea2edc072650a9f63a6d21ad369c496
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3b935d3a3c37b63386dfb2cbd25ceba59d91a998
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="network-security"></a>Hálózati biztonság
 
@@ -35,7 +35,7 @@ Ha egy hálózati biztonsági csoport egy hálózati adapterrel és az azt tarta
 - **Bejövő forgalom**: A rendszer először a hálózati adaptert tartalmazó alhálózathoz rendelt hálózati biztonsági csoportot értékeli ki. Ezután az alhálózathoz rendelt hálózati biztonsági csoporton átengedett forgalmat a hálózati adapterhez rendelt hálózati biztonsági csoport is kiértékeli. Tegyük fel, hogy bejövő hozzáférésre van szüksége egy virtuális géphez a 80-as porton keresztül az internetről. Ha a hálózati adapterhez és az azt tartalmazó alhálózathoz is rendel egy hálózati biztonsági csoportot, az alhálózathoz és a hálózati adapterhez rendelt hálózati biztonsági csoportoknak egyaránt engedélyeznie kell a 80-as port használatát. Ha csak a hálózati adapterhez vagy az azt tartalmazó alhálózathoz rendelt hálózati biztonsági csoporton engedélyezi a 80-as port használatát, a kommunikáció az alapértelmezett biztonsági szabályok miatt meghiúsul. Részletekért lásd az [alapértelmezett biztonsági szabályokat](#default-security-rules). Ha csak az alhálózatra vagy a hálózati adapterre alkalmazott hálózati biztonsági csoportot, és a hálózati biztonsági csoport tartalmaz például olyan szabályt, amely engedi a bejövő forgalmat a 80-as porton, a kommunikáció sikeres lesz. 
 - **Kimenő forgalom**: A rendszer először a hálózati adapterhez rendelt hálózati biztonsági csoportot értékeli ki. Ezután a hálózati adapterhez rendelt hálózati biztonsági csoporton átengedett forgalmat az alhálózathoz rendelt hálózati biztonsági csoport is kiértékeli.
 
-Nem biztos, hogy minden esetben tisztában lesz vele, ha a hálózati adapterrel és az azt tartalmazó alhálózattal is társítva van hálózati biztonsági csoport. A hálózati adapterekhez rendelt összesített szabályokat könnyen megismerheti a hálózati adapter [érvényes biztonsági szabályainak](virtual-network-manage-nsg-arm-portal.md) megtekintésével. Emellett az Azure Network Watcher [IP-forgalom ellenőrzése](../network-watcher/network-watcher-check-ip-flow-verify-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szolgáltatásával is megállapíthatja, hogy a kommunikáció engedélyezett-e a hálózati adapterre/adapterről. Az eszköz megmutatja, hogy a kommunikáció engedélyezett-e, valamint azt is, hogy melyik hálózati biztonsági szabály engedélyezi vagy blokkolja a forgalmat.
+Nem biztos, hogy minden esetben tisztában lesz vele, ha a hálózati adapterrel és az azt tartalmazó alhálózattal is társítva van hálózati biztonsági csoport. A hálózati adapterekhez rendelt összesített szabályokat könnyen megismerheti a hálózati adapter [érvényes biztonsági szabályainak](virtual-network-nsg-troubleshoot-portal.md) megtekintésével. Emellett az Azure Network Watcher [IP-forgalom ellenőrzése](../network-watcher/network-watcher-check-ip-flow-verify-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szolgáltatásával is megállapíthatja, hogy a kommunikáció engedélyezett-e a hálózati adapterre/adapterről. Az eszköz megmutatja, hogy a kommunikáció engedélyezett-e, valamint azt is, hogy melyik hálózati biztonsági szabály engedélyezi vagy blokkolja a forgalmat.
  
 > [!NOTE]
 > A hálózati biztonsági csoportok alhálózatokhoz vagy klasszikus üzemi modellben üzembe helyezett virtuális gépekhez és felhőszolgáltatásokhoz vannak társítva, nem pedig Resource Manager-alapú üzemi modellben üzemelő hálózati adapterekhez. Az Azure üzembehelyezési modellekkel kapcsolatos további információkért lásd: [Az Azure üzemi modelljeinek megismerése](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).

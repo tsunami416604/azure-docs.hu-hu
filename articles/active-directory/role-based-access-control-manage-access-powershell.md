@@ -1,8 +1,8 @@
 ---
-title: "Az Azure PowerShell szerepköralapú hozzáférés-vezérlés (RBAC) kezelése |} Microsoft Docs"
-description: "Hogyan kezelheti az Azure PowerShell, beleértve a szerepköröket, a szerepkörök hozzárendelése és a szerepkör-hozzárendelések törlése RBAC."
+title: Az Azure PowerShell szerepköralapú hozzáférés-vezérlés (RBAC) kezelése |} Microsoft Docs
+description: Hogyan kezelheti az Azure PowerShell, beleértve a szerepköröket, a szerepkörök hozzárendelése és a szerepkör-hozzárendelések törlése RBAC.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.assetid: 9e225dba-9044-4b13-b573-2f30d77925a9
@@ -15,10 +15,10 @@ ms.date: 07/12/2017
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.openlocfilehash: 5e7e01502a173cb93216c77dd43f61094fd88148
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="manage-role-based-access-control-with-azure-powershell"></a>Szerepköralapú hozzáférés-vezérlés kezelése az Azure PowerShell-lel
 > [!div class="op_single_selector"]

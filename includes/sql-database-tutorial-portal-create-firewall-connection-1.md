@@ -47,7 +47,7 @@ Kövesse az alábbi lépéseket egy üres SQL-adatbázis létrehozásához.
    > [!IMPORTANT]
    > \* A szolgáltatási keretbe foglaltnál nagyobb tárterületek előzetes verzióban érhetők el, és extra költségek vonatkoznak rájuk. Részletes információ: [SQL Database – Díjszabás](https://azure.microsoft.com/pricing/details/sql-database/). 
    >
-   >\* Az 1 TB tárhelyméretet meghaladó prémium szintű készletek jelenleg a következő régiókban érhetők el: Közép-Kanada, Kelet-Kanada, Közép-Franciaország, Közép-Németország, Kelet-Japán, Korea középső régiója, USA déli középső régiója, Délkelet-Ázsia, USA 2. keleti régiója, USA nyugati régiója, USA-beli államigazgatás – Virginia és Nyugat-Európa. Lásd: [P11–P15 – Aktuális korlátozások](../articles/sql-database/sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+   >\* Az 1 TB tárhelyméretet meghaladó prémium szintű készletek jelenleg a következő régiókban érhetők el: Közép-Kanada, Kelet-Kanada, Közép-Franciaország, Közép-Németország, Kelet-Japán, Korea középső régiója, USA déli középső régiója, Délkelet-Ázsia, USA 2. keleti régiója, USA nyugati régiója, USA-beli államigazgatás – Virginia és Nyugat-Európa. Lásd: [P11–P15 – Aktuális korlátozások](../articles/sql-database/sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
    > 
 
 9. A kiszolgálószint, a DTU-szám és a tárterületméret kiválasztása után kattintson az **Alkalmaz** gombra.  
