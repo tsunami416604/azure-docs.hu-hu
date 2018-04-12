@@ -10,10 +10,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
 ms.openlocfilehash: a0586b32fd12744c8bfce782583cdc4078979ef1
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/12/2018
 ---
 # <a name="stream-analytics-data-lake-store-output"></a>Stream Analytics Data Lake Store kimeneti
 Stream Analytics-feladatok támogatja több kimeneti módszerek közül az egyik egy [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/). Az Azure Data Lake Store egy vállalati szintű, nagy kapacitású adattár a big data koncepción alapuló adatelemzési célokra. Data Lake Store lehetővé teszi, hogy a műveleti és felderítési jellegű bármilyen méretű, típusú és feldolgozási sebességű adatok.
@@ -34,7 +34,7 @@ Miután a Data Lake Store-fiók hitelesítését, a Data Lake Store kimeneti meg
 <tbody>
 <tr>
 <td><B>TULAJDONSÁG NEVE</B></td>
-<td><B>DESCRIPTION</B></td>
+<td><B>LEÍRÁS</B></td>
 </tr>
 <tr>
 <td>A kimeneti Alias</td>
@@ -46,7 +46,7 @@ Miután a Data Lake Store-fiók hitelesítését, a Data Lake Store kimeneti meg
 </tr>
 <tr>
 <td>Elérési út előtag mintája [<I>választható</I>]</td>
-<td>A megadott Data Lake Store-fiók található a fájl írásához használt elérési. <BR>{date}, {time}<BR>1. példa: mappa1/logs / {date} / {time}<BR>2. példa: mappa1/logs / {date}</td>
+<td>A megadott Data Lake Store-fiók található a fájl írásához használt elérési. <BR>a {date}, {time}<BR>1. példa: mappa1/logs / {date} / {time}<BR>2. példa: mappa1/logs / {date}</td>
 </tr>
 <tr>
 <td>Dátum formátumban [<I>választható</I>]</td>
