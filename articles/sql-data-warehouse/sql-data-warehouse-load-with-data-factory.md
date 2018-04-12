@@ -1,11 +1,11 @@
 ---
-title: "Adatok betöltése az Azure SQL Data Warehouse – adat-előállító |} Microsoft Docs"
-description: "Ez az oktatóanyag az Azure SQL Data Warehouse-adatokat tölt Azure Data Factory használatával, és egy SQL Server-adatbázist használja, mint az adatforrás."
+title: Adatok betöltése az Azure SQL Data Warehouse – adat-előállító |} Microsoft Docs
+description: Ez az oktatóanyag az Azure SQL Data Warehouse-adatokat tölt Azure Data Factory használatával, és egy SQL Server-adatbázist használja, mint az adatforrás.
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
 manager: jhubbard
-editor: 
+editor: ''
 tags: azure-sql-data-warehouse;azure-data-factory
 ms.service: sql-data-warehouse
 ms.workload: data-management
@@ -16,10 +16,10 @@ ms.custom: loading
 ms.date: 02/08/2017
 ms.author: cakarst;barbkess
 ms.openlocfilehash: 6399f1a3390119685c1c9fd7332937e0cdb6f9ea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/12/2018
 ---
 # <a name="load-data-into-sql-data-warehouse-with-data-factory"></a>Adatok betöltése az SQL Data Warehouse Data Factory
 
@@ -97,7 +97,7 @@ Most pedig utasítani fogja a Data Factory a helyszíni SQL Server adatbázis-, 
 
 Most pedig utasítani fogja a Data Factory cél információkkal kapcsolatos.
 
-1. Az SQL Data Warehouse-kapcsolat adatainak automatikusan kitölti a rendszer. A felhasználó nevét adja meg a jelszót. Kattintson **következő**.
+1. Az SQL Data Warehouse-kapcsolat adatainak automatikusan kitölti a rendszer. Adja meg felhasználónévhez tartozó jelszót. Kattintson **következő**.
 
     ![Cél konfigurálása](media/sql-data-warehouse-load-with-data-factory/configure-destination.png)
 
@@ -146,7 +146,7 @@ Megtekintheti a központi telepítésének állapotáról és az eredmények a *
 
 5. A figyelési nézetek későbbi, nyissa meg az SQL Data warehouse elindításához kattintson **adatok betöltése > Azure Data Factory**, válassza ki a gyári, és válassza a **meglévő betöltése feladatok figyelése**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Telepítse át az adatbázist az SQL Data Warehouse, lásd: [áttelepítése – áttekintés](sql-data-warehouse-overview-migrate.md).
 
