@@ -1,11 +1,11 @@
 ---
-title: "PHP-webalkalmazás létrehozása az Azure-ban | Microsoft Docs"
-description: "Percek alatt üzembe helyezheti első Hello World PHP-jét az App Service Web Apps szolgáltatásban."
+title: PHP-webalkalmazás létrehozása az Azure-ban | Microsoft Docs
+description: Percek alatt üzembe helyezheti első Hello World PHP-jét az App Service Web Apps szolgáltatásban.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.service: app-service-web
 ms.workload: web
@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 12/13/2017
 ms.author: cephalin;cfowler
 ms.custom: mvc
-ms.openlocfilehash: e38c8e7d6211c7c7b6bbf3a501ce53c2808ee0fc
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 282b0a8bdb2fabad98dacacbff61c7cc4b8b6fb1
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-php-web-app-in-azure"></a>PHP-webapp létrehozása az Azure-ban
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/03/2018
 > Ebben a cikkben egy alkalmazást helyezünk üzembe a Windowson futó App Service-ben. A _Linuxon_ futó App Service-ben való üzembe helyezéssel kapcsolatban lásd: [PHP-webalkalmazás létrehozása a Linuxon futó App Service-ben](./containers/quickstart-php.md).
 >
 
-Az [Azure Web Apps](app-service-web-overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ez a gyorsútmutató a PHP-alkalmazás Azure Web Apps szolgáltatásban történő üzembe helyezésén vezeti végig. A Cloud Shellben az [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) létrehozza a webalkalmazást, egy [ZIP-fájl](app-service-deploy-zip.md) használatával pedig üzembe helyezi a PHP-mintakódot a webalkalmazásban.
+Az [Azure Web Apps](app-service-web-overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ez a gyorsútmutató a PHP-alkalmazás Azure Web Apps szolgáltatásban történő üzembe helyezésén vezeti végig. A Cloud Shellben az [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) létrehozza a webalkalmazást, a Gittel pedig üzembe helyezi a PHP-mintakódot a webalkalmazásban.
 
 ![Az Azure-ban futó mintaalkalmazás]](media/app-service-web-get-started-php/hello-world-in-browser.png)
 
@@ -39,13 +39,17 @@ Ezeket a lépéseket Mac, Windows vagy Linux rendszert futtató gépen is követ
 
 A gyorsútmutató elvégzéséhez:
 
-* <a href="https://php.net" target="_blank">A PHP telepítése</a>
+* <a href="https://git-scm.com/" target="_blank">A Git telepítése</a>
+* <a href="http://php.net/manual/install.php" target="_blank">A PHP telepítése</a>
 
 ## <a name="download-the-sample-locally"></a>Minta helyi letöltése
 
-Töltse le a minta PHP-projektet a [https://github.com/Azure-Samples/php-docs-hello-world/archive/master.zip](https://github.com/Azure-Samples/php-docs-hello-world/archive/master.zip) címről, majd csomagolja ki a tömörített archívumot.
+Futtassa a következő parancsokat egy terminálablakban. Ezzel klónozza a mintaalkalmazást a helyi gépre, és a mintakódot tartalmazó könyvtárba lép.
 
-Egy terminálablakban keresse meg a minta PHP-projekt gyökérkönyvtárát (ez tartalmazza az _index.php_ fájlt).
+```bash
+git clone https://github.com/Azure-Samples/php-docs-hello-world
+cd php-docs-hello-world
+```
 
 ## <a name="run-the-app-locally"></a>Az alkalmazás futtatása helyben
 
@@ -63,9 +67,9 @@ Az oldalon látható mintaalkalmazáson ekkor a **Hello World!** üzenet jelenik
 
 A terminálablakban nyomja le a **Ctrl+C** billentyűkombinációt a webkiszolgálóból történő kilépéshez.
 
-[!INCLUDE [Create ZIP file](../../includes/app-service-web-create-zip.md)]
-
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+[!INCLUDE [Configure deployment user](../../includes/configure-deployment-user.md)]
 
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group.md)]
 
@@ -78,7 +82,7 @@ A Cloud Shellben az [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest
 A következő példában cserélje ki az `<app_name>` nevet egy globálisan egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`). A futtatókörnyezet beállítása `PHP|7.0` lett. Az összes támogatott futtatókörnyezet megtekintéséhez futtassa az [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_list_runtimes) parancsot. 
 
 ```azurecli-interactive
-az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "PHP|7.0"
+az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "PHP|7.0" --deployment-local-git
 ```
 
 A webalkalmazás létrehozása után az Azure CLI az alábbi példához hasonló eredményeket jelenít meg:
@@ -107,7 +111,32 @@ Az új webalkalmazásnak így kell kinéznie:
 
 ![Üres webalkalmazás oldal](media/app-service-web-get-started-php/app-service-web-service-created.png)
 
-[!INCLUDE [Deploy ZIP file](../../includes/app-service-web-deploy-zip.md)]
+[!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure.md)] 
+
+```bash
+Counting objects: 2, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 352 bytes | 0 bytes/s, done.
+Total 2 (delta 1), reused 0 (delta 0)
+remote: Updating branch 'master'.
+remote: Updating submodules.
+remote: Preparing deployment for commit id '25f18051e9'.
+remote: Generating deployment script.
+remote: Running deployment command...
+remote: Handling Basic Web Site deployment.
+remote: Kudu sync from: '/home/site/repository' to: '/home/site/wwwroot'
+remote: Copying file: '.gitignore'
+remote: Copying file: 'LICENSE'
+remote: Copying file: 'README.md'
+remote: Copying file: 'index.php'
+remote: Ignoring: .git
+remote: Finished successfully.
+remote: Running post deployment command(s)...
+remote: Deployment successful.
+To https://<app_name>.scm.azurewebsites.net/<app_name>.git
+   cc39b1e..25f1805  master -> master
+```
 
 ## <a name="browse-to-the-app"></a>Az alkalmazás megkeresése tallózással
 
@@ -131,19 +160,14 @@ Egy helyi szövegszerkesztő használatával nyissa meg a `index.php` fájlt a P
 echo "Hello Azure!";
 ```
 
-Egy helyi terminálablakban keresse meg az alkalmazás gyökérkönyvtárát, majd hozzon létre egy új ZIP-fájlt a frissített projekt számára.
+A helyi terminálablakban mentse a módosításokat a Gitben, majd továbbítsa a kód módosításait az Azure-ba.
 
+```bash
+git commit -am "updated output"
+git push azure master
 ```
-# Bash
-zip -r myUpdatedAppFiles.zip .
 
-# PowerShell
-Compress-Archive -Path * -DestinationPath myUpdatedAppFiles.zip
-``` 
-
-Telepítse ezt az új ZIP-fájlt az App Service-be [A ZIP-fájl feltöltése](#upload-the-zip-file) részben már ismertetett lépésekkel.
-
-Váltson vissza **Az alkalmazás megkeresése tallózással** lépésben megnyitott böngészőablakra, és frissítse az oldalt.
+Az üzembe helyezés befejezését követően váltson vissza **Az alkalmazás megkeresése tallózással** lépésben megnyitott böngészőablakra, és frissítse az oldalt.
 
 ![Az Azure-ban futó frissített mintaalkalmazás](media/app-service-web-get-started-php/hello-azure-in-browser.png)
 
