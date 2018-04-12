@@ -1,8 +1,8 @@
 ---
-title: "Bérlői rendszergazda jogosultságszintjének emelése – az Azure AD |} Microsoft Docs"
-description: "Ez a témakör ismerteti a beépített szerepkörök szerepköralapú hozzáférés-vezérlés (RBAC)."
+title: Bérlői rendszergazda jogosultságszintjének emelése – az Azure AD |} Microsoft Docs
+description: Ez a témakör ismerteti a beépített szerepkörök szerepköralapú hozzáférés-vezérlés (RBAC).
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: rolyon
 manager: mtillman
 editor: rqureshi
@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 10/30/2017
 ms.author: rolyon
 ms.openlocfilehash: dff3a26201507f974d52de3fe6dcb23945cd900f
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="elevate-access-as-a-tenant-admin-with-role-based-access-control"></a>Bérlői rendszergazdaként a szerepköralapú hozzáférés-vezérlés jogosultságszintjének emelése
 
@@ -45,7 +45,7 @@ Ez a funkció fontos, mert lehetővé teszi a bérlői rendszergazda szerepel a 
 ![Az Azure AD felügyeleti központban - tulajdonságok – globális rendszergazdák által kezelhető Azure-előfizetés – képernyőkép](./media/role-based-access-control-tenant-admin-access/aad-azure-portal-global-admin-can-manage-azure-subscriptions.png)
 
 ## <a name="view-role-assignments-at-the--scope-using-powershell"></a>A PowerShell használatával "/" hatókörből szerepkör-hozzárendelések megtekintése
-Megtekintéséhez a **felhasználói hozzáférés adminisztrátora** -hozzárendelés a  **/**  hatókörét, használja a `Get-AzureRmRoleAssignment` PowerShell-parancsmagot.
+Megtekintéséhez a **felhasználói hozzáférés adminisztrátora** -hozzárendelés a **/** hatókörét, használja a `Get-AzureRmRoleAssignment` PowerShell-parancsmagot.
     
 ```powershell
 Get-AzureRmRoleAssignment* | where {$_.RoleDefinitionName -eq "User Access Administrator" -and $_SignInName -eq "<username@somedomain.com>" -and $_.Scope -eq "/"}

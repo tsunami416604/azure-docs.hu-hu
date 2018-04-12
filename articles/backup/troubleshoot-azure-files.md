@@ -3,25 +3,24 @@ title: Azure Files biztonsági mentésének hibaelhárítása
 description: A cikk olyan hibákkal kapcsolatos hibaelhárítási információkat tartalmaz, amelyek az Azure fájlmegosztások védelmekor következnek be.
 services: backup
 ms.service: backup
-keywords: Ne adjon hozzá kulcsszavakat és ne szerkessze azokat a keresőoptimalizálást végző szakemberrel való egyeztetés nélkül.
 author: markgalioto
 ms.author: markgal
 ms.date: 2/21/2018
 ms.topic: tutorial
 ms.workload: storage-backup-recovery
 manager: carmonm
-ms.openlocfilehash: c803118ccdafa8db0e8f8ddee608f60311f65e05
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 2e067e0a1f673480bc08abfee61d2b1b2c92f885
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-problems-backing-up-azure-files"></a>Az Azure Files biztonsági mentésével kapcsolatos problémák elhárítása
 Az alábbi táblázatokban szereplő információk segítségével elháríthatja az Azure Files biztonsági mentése közben fellépő problémákat és hibákat.
 
 ## <a name="preview-boundaries"></a>Előzetes verzió határai
 Az Azure Files biztonsági mentése jelenleg előzetes verzióként érhető el. Az Azure-fájlmegosztások nem támogatják az alábbi biztonsági mentési forgatókönyveket:
-- Tárfiókokban lévő Azure-fájlmegosztások védelme [zónaredundáns tárolás](../storage/common/storage-redundancy.md#zone-redundant-storage) (ZRS) vagy [írásvédett georedundáns tárolás](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage) (RA-GRS) replikációval.
+- Tárfiókokban lévő Azure-fájlmegosztások védelme [zónaredundáns tárolás](../storage/common/storage-redundancy-zrs.md) (ZRS) vagy [írásvédett georedundáns tárolás](../storage/common/storage-redundancy-grs.md) (RA-GRS) replikációval.
 - Azure-fájlmegosztások védelme olyan tárfiókokban, amelyeken engedélyezve vannak a virtuális hálózatok.
 - Azure-fájlmegosztások biztonsági mentése PowerShell vagy parancssori felület használatával.
 

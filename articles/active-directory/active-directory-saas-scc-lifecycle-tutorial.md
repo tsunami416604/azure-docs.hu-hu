@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directory-integráció SCC életciklusával |} Microsoft Docs"
-description: "Útmutató SCC életciklusa az Azure Active Directoryval az egyszeri bejelentkezés, automatikus kiépítésének, és több!"
+title: 'Oktatóanyag: Azure Active Directory-integráció SCC életciklusával |} Microsoft Docs'
+description: Útmutató SCC életciklusa az Azure Active Directoryval az egyszeri bejelentkezés, automatikus kiépítésének, és több!
 services: active-directory
 author: jeevansd
 documentationcenter: na
@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 01/03/2018
 ms.author: jeedes
 ms.openlocfilehash: 943698311d10b479879fd92d2482d827650e2b0c
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scc-lifecycle"></a>Oktatóanyag: Azure Active Directoryval integrált SCC életciklusa
 Ez az oktatóanyag célja az Azure és SCC életciklus integrálása megjelenítése.  
@@ -45,7 +45,7 @@ Ez a szakasz célja felvázoló SCC életciklusa az alkalmazás-integráció eng
 
 1. A klasszikus Azure portálon, a bal oldali navigációs panelen kattintson a **Active Directory**.
    
-    ![Active Directory](./media/active-directory-saas-scc-lifecycle-tutorial/IC700993.png "Active Directory")
+    ![Az Active Directory](./media/active-directory-saas-scc-lifecycle-tutorial/IC700993.png "Active Directory")
 2. Az a **Directory** listára, válassza ki a könyvtárat, amelyhez a címtár-integrációs engedélyezni szeretné.
 3. A könyvtár nézetben a alkalmazások nézet megnyitásához kattintson **alkalmazások** a felső menüben.
    
@@ -75,7 +75,7 @@ Ez a szakasz célja felvázoló engedélyezése a felhasználók hitelesítésé
 2. A a **hová bejelentkezni SCC életciklus felhasználók** lapon jelölje be **Microsoft Azure AD az egyszeri bejelentkezés**, és kattintson a **következő**.
    
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-scc-lifecycle-tutorial/IC794123.png "egyszeri bejelentkezés konfigurálása")
-3. A a **alkalmazás URL-cím konfigurálása** lap a **URL-cím bejelentkezési** szövegmező, írja be az URL-cím segítségével a felhasználók jelentkezzen be a SCC életciklus-alkalmazás a következő minta használatával " *https://bs1.scc.com/lc7/welcome/customer/PICTtest.aspx* ", és kattintson a **következő**.
+3. A a **alkalmazás URL-cím konfigurálása** lap a **URL-cím bejelentkezési** szövegmező, írja be az URL-cím segítségével a felhasználók jelentkezzen be a SCC életciklus-alkalmazás a következő minta használatával "*https://bs1.scc.com/lc7/welcome/customer/PICTtest.aspx*", és kattintson a **következő**.
    
     ![Alkalmazás URL-CÍMEK konfigurálása](./media/active-directory-saas-scc-lifecycle-tutorial/IC794124.png "alkalmazás URL-CÍMEK konfigurálása")
 4. A a **konfigurálhatja az egyszeri bejelentkezés SCC életciklus** lapján kattintson **metaadatok letöltése**, és mentse helyileg a számítógépen metaadatait tartalmazó fájl.

@@ -1,31 +1,30 @@
 ---
-title: "A begyűjtött Azure Log Analytics-adatok megtekintése vagy elemzése | Microsoft Docs"
-description: "Ez a cikk egy olyan oktatóanyag, amely leírja, hogyan hozhatók létre naplóbeli keresések, és hogyan elemezhetők a Log Analytics-erőforrásokban tárolt adatok a Naplók keresése portálon.  Az oktatóanyag részeként néhány mintalekérdezést is futtatni fog különböző adattípusok visszaadásához és az eredmények elemzéséhez."
+title: A begyűjtött Azure Log Analytics-adatok megtekintése vagy elemzése | Microsoft Docs
+description: Ez a cikk egy olyan oktatóanyag, amely leírja, hogyan hozhatók létre naplóbeli keresések, és hogyan elemezhetők a Log Analytics-erőforrásokban tárolt adatok a Naplók keresése portálon.  Az oktatóanyag részeként néhány mintalekérdezést is futtatni fog különböző adattípusok visszaadásához és az eredmények elemzéséhez.
 services: log-analytics
 documentationcenter: log-analytics
 author: mgoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/26/2017
+ms.date: 04/03/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: fc5dcc945750b4ab4eef337dbd96bd051bb4dd81
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 6345fe89a3bf25041621213274ea0c3081848d99
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="view-or-analyze-data-collected-with-log-analytics-log-search"></a>A Log Analytics-naplókereséssel gyűjtött adatok megtekintése vagy elemzése
 
 A Log Analyticsben a naplókereséssel lekérdezéseket hozhat létre a begyűjtött adatok elemzéséhez, és használhatja a már meglévő irányítópultokat, amelyeket a legértékesebb keresések grafikus nézeteivel testre is tud szabni.  Most, hogy meghatározta az Azure-beli virtuális gépekről és a tevékenységnaplókból származó működési adatok gyűjtésének részleteit, ebben az oktatóanyagban a következőkkel ismerkedhet meg:
 
 > [!div class="checklist"]
-> * Az Azure Log Analytics-erőforrás frissítése az új lekérdezési nyelvre 
 > * Az eseményadatok egyszerű keresése és különböző funkciók használata az eredmények módosításához és szűréséhez 
 > * A teljesítményadatok használatának módja
 
@@ -42,15 +41,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 Először nyissa meg a naplókeresési portált.   
 
 1. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
-2. A Log Analytics-előfizetések ablaktábláján válasszon egy munkaterületet, majd válassza ki a **Naplóbeli keresés** csempét.<br> ![Naplóbeli keresés gomb](media/log-analytics-tutorial-viewdata/azure-portal-01.png)
-
-A portálon a Log Analytics-erőforrások oldalának tetején megjelenhet egy szalag, amely felhívja a figyelmét a Log Analytics frissítésére.<br> ![Log Analytics frissítési felhívás az Azure Portalon](media/log-analytics-tutorial-viewdata/log-analytics-portal-upgradebanner.png)
-
-A Log Analytics nemrég bevezetett egy új lekérdezési nyelvet, amely megkönnyíti a lekérdezések összeállítását, a különböző forrásokból származó adatok összevetését és a tendenciák vagy problémák gyors azonosítására szolgáló elemzések elvégzését.
-
-A frissítés folyamata nem bonyolult.  A folyamat megkezdéséhez kattintson a **További információ és frissítés** szalagra.  Olvassa végig a frissítéssel kapcsolatos további információkat a frissítésre vonatkozó információk lapján, és kattintson a **Frissítés most** gombra.
-
-A folyamat néhány percet igénybe vesz, és az állapotát a menü **Értesítések** területén követheti nyomon. Az [új lekérdezési nyelv előnyeit](log-analytics-log-search-upgrade.md#why-the-new-language) ismertető témakörből további részleteket is megtudhat.
+2. A Log Analytics-előfizetések ablaktábláján válasszon egy munkaterületet, majd válassza ki a **Naplóbeli keresés** csempét.<br><br> ![Naplóbeli keresés gomb](media/log-analytics-tutorial-viewdata/azure-portal-02.png)
 
 ## <a name="create-a-simple-search"></a>Egyszerű keresés létrehozása
 A feldolgozható adatok lekérdezésének leggyorsabb módja az egyszerű lekérdezés, amely egy tábla összes rekordját visszaadja.  Ha Windows vagy Linux rendszerű ügyfelek vannak csatlakoztatva a munkaterülethez, akkor az adatok az Event (Esemény, Windows) vagy a Syslog (Linux) táblában találhatók.
