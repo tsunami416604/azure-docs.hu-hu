@@ -1,11 +1,11 @@
 ---
-title: "Az Azure SQL Data Warehouse teljesítményét rétegek |} Microsoft Docs"
-description: "A rugalmasság és az Azure SQL Data Warehouse rendelkezésre álló számítási optimalizált teljesítményt rétegek bemutatása."
+title: Az Azure SQL Data Warehouse teljesítményét rétegek |} Microsoft Docs
+description: A rugalmasság és az Azure SQL Data Warehouse rendelkezésre álló számítási optimalizált teljesítményt rétegek bemutatása.
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
 manager: jhubbard
-editor: 
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
@@ -15,10 +15,10 @@ ms.custom: performance
 ms.date: 11/10/2017
 ms.author: jrj;barbkess
 ms.openlocfilehash: 03881c12faed723999e97431e4a69fdeb6bfa10d
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/12/2018
 ---
 # <a name="azure-sql-data-warehouse-performance-tiers-preview"></a>Az Azure SQL Data Warehouse teljesítményét rétegek (előzetes verzió)
 Az SQL Data Warehouse tárfióktípus két teljesítményszinttel analitikai munkaterhelések optimalizált kínál. Ez a cikk ismerteti a teljesítmény rétegek segítségével válassza ki a leginkább megfelelő teljesítményszintet a munkaterheléshez elveit. 
@@ -60,7 +60,7 @@ A teljesítmény rétegek különböző memória-profilok fordítja le a külön
 
 A szolgáltatási szintek, a rugalmasság teljesítmény réteg DW100 és közé DW6000 a optimalizálása. 
 
-| Szolgáltatási szint | Maximális párhuzamos lekérdezések | Számítási csomópontok | Azokat a terjesztéseket egyes számítási csomópontjain | Maximális memória (MB) eloszlása | Maximális memória mennyisége data warehouse-ba (GB) |
+| Szolgáltatásszint | Maximális párhuzamos lekérdezések | Számítási csomópontok | Azokat a terjesztéseket egyes számítási csomópontjain | Maximális memória (MB) eloszlása | Maximális memória mennyisége data warehouse-ba (GB) |
 |:-------------:|:----------------------:|:-------------:|:------------------------------:|:--------------------------------:|:----------------------------------:|
 | DW100         | 4                      | 1             | 60                             | 400                              |  24                                |
 | DW200         | 8                      | 2             | 30                             | 800                              |  48                                |
@@ -79,7 +79,7 @@ A szolgáltatási szintek, a rugalmasság teljesítmény réteg DW100 és közé
 
 A számítási teljesítmény réteg DW1000c és közé DW30000c optimalizálása a szolgáltatási szintek. 
 
-| Szolgáltatási szint | Maximális párhuzamos lekérdezések | Számítási csomópontok | Azokat a terjesztéseket egyes számítási csomópontjain | Maximális memória (GB) eloszlása | Maximális memória mennyisége data warehouse-ba (GB) |
+| Szolgáltatásszint | Maximális párhuzamos lekérdezések | Számítási csomópontok | Azokat a terjesztéseket egyes számítási csomópontjain | Maximális memória (GB) eloszlása | Maximális memória mennyisége data warehouse-ba (GB) |
 |:-------------:|:----------------------:|:-------------:|:------------------------------:|:--------------------------------:|:----------------------------------:|
 | DW1000c       | 32                     | 2             | 30                             |  10                              |   600                              |
 | DW1500c       | 32                     | 3             | 20                             |  15                              |   900                              |
@@ -154,7 +154,7 @@ Az alábbi táblázat a maximális párhuzamos lekérdezések és feldolgozási 
 
 **Dinamikus erőforrás-osztályok**
 
-| Szolgáltatási szint | Maximális párhuzamos lekérdezések | Párhuzamossági üzembe helyezési ponti érhető el | smallrc | mediumrc | largerc | xlargerc |
+| Szolgáltatásszint | Maximális párhuzamos lekérdezések | Párhuzamossági üzembe helyezési ponti érhető el | smallrc | mediumrc | largerc | xlargerc |
 |:-------------:|:--------------------------:|:---------------------------:|:-------:|:--------:|:-------:|:--------:|
 | DW100         |  4                         |   4                         | 1       |  1       |  2      |   4      |
 | DW200         |  8                         |   8                         | 1       |  2       |  4      |   8      |
@@ -171,7 +171,7 @@ Az alábbi táblázat a maximális párhuzamos lekérdezések és feldolgozási 
 
 **Statikus erőforrás osztályok** jeleníti meg a maximális párhuzamos lekérdezések és feldolgozási üzembe helyezési ponti a következő táblázat az egyes [statikus erőforrásosztály](resource-classes-for-workload-management.md).  Ezek a rugalmasság teljesítményszinttel optimalizálása vonatkoznak.
 
-| Szolgáltatási szint | Maximális párhuzamos lekérdezések | Maximális feldolgozási tárhelyek |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
+| Szolgáltatásszint | Maximális párhuzamos lekérdezések | Maximális feldolgozási tárhelyek |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
 |:-------------:|:--------------------------:|:-------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
 | DW100         | 4                          |   4                       | 1         | 2          | 4          | 4          |  4         |  4         |  4         |   4        |
 | DW200         | 8                          |   8                       | 1         | 2          | 4          | 8          |  8         |  8         |  8         |   8        |
