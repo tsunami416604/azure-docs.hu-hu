@@ -1,11 +1,11 @@
 ---
-title: "A Windows Hello-jelszó nélkül identitások hitelesítése és az Azure AD |} Microsoft Docs"
-description: "Áttekintést nyújt a Windows Hello üzleti és a vállalati Windows Hello telepítésével kapcsolatos további információkat."
+title: A Windows Hello-jelszó nélkül identitások hitelesítése és az Azure AD |} Microsoft Docs
+description: Áttekintést nyújt a Windows Hello üzleti és a vállalati Windows Hello telepítésével kapcsolatos további információkat.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: femila
 manager: mtillman
-editor: 
+editor: ''
 tags: azure-classic-portal
 ms.assetid: f907bb90-8776-46ca-9e12-279949af66ff
 ms.service: active-directory
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: markvi
 ms.openlocfilehash: 22534cc5f7f2de235bc1f1212c63ea227083c5a4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/14/2018
 ---
 # <a name="authenticating-identities-without-passwords-through-windows-hello-for-business"></a>A vállalati Windows Hello jelszó nélkül identitások hitelesítése
 Az aktuális önmagában jelszavakkal hitelesítési módszerek nem elegendőek felhasználók biztonságát. A felhasználók használja fel, és elfelejti a jelszavát. A jelszóban breachable, phishable, repedések hajlamos és kitalálható. Akkor is le a nehéz megjegyezni és vannak téve a támadásoknak, például a "[adja át a kivonat](https://technet.microsoft.com/dn785092.aspx)".
