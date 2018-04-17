@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1f52079e00c7c5f4e70acf8c86f648ed9281744e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: a7d44e421162cf5784dde58f757e235d12b63cba
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="virtual-machine-governance-with-azure-cli"></a>Virtuális gép irányítás Azure parancssori felülettel
 
@@ -43,15 +43,15 @@ Az erőforráscsoport jelenleg üres.
 
 ## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 
-Azt szeretné, győződjön meg róla a szervezethez tartozó felhasználók a megfelelő szintű ezekhez az erőforrásokhoz való hozzáférés. Nem kívánja korlátlan hozzáférést a felhasználók számára, de azt is meg kell győződnie arról tehetik munkájukat. [Szerepköralapú hozzáférés-vezérlés](../../active-directory/role-based-access-control-what-is.md) segítségével kezelheti a jogosult felhasználók hatókörre konkrét műveletek elvégzéséhez.
+Azt szeretné, győződjön meg róla a szervezethez tartozó felhasználók a megfelelő szintű ezekhez az erőforrásokhoz való hozzáférés. Nem kívánja korlátlan hozzáférést a felhasználók számára, de azt is meg kell győződnie arról tehetik munkájukat. [Szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/overview.md) segítségével kezelheti a jogosult felhasználók hatókörre konkrét műveletek elvégzéséhez.
 
 Hozzon létre, és távolítsa el a szerepkör-hozzárendelések, felhasználónak rendelkeznie kell `Microsoft.Authorization/roleAssignments/*` hozzáférést. A hozzáférés a tulajdonos vagy a felhasználói hozzáférés adminisztrátora szerepkörök keresztül.
 
 A virtuális gép megoldások kezelése, számos három erőforrás-specifikus szerepköröket, amelyek gyakran szükséges hozzáférést biztosítanak.
 
-* [Virtuális gép közreműködő](../../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor)
-* [Hálózati közreműködő](../../active-directory/role-based-access-built-in-roles.md#network-contributor)
-* [Tárolási fiók közreműködői](../../active-directory/role-based-access-built-in-roles.md#storage-account-contributor)
+* [Virtuális gép közreműködő](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
+* [Hálózati közreműködő](../../role-based-access-control/built-in-roles.md#network-contributor)
+* [Tárolási fiók közreműködői](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
 Szerepkörök hozzárendelése az egyéni felhasználók számára, helyett célszerűbb gyakran [Azure Active Directory-csoport létrehozása](../../active-directory/active-directory-groups-create-azure-portal.md) a felhasználók, akik hasonló műveletekre. Adott csoporthoz, majd rendelje hozzá a megfelelő szerepkörhöz. Ez a cikk leegyszerűsítése hoz létre egy Azure Active Directory-csoport tagjai nélkül. Ez a csoport továbbra is hozzárendelése szerepkörhöz hatókörhöz. 
 

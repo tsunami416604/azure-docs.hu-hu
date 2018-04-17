@@ -17,15 +17,15 @@ ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: dfda95d2340d7dd57ac7b4d7ed7b0665c8e9294e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 11dc0e5f6ee398b2a745ed60cbc166e2a1697c3e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>Hálózati forgalom szűrésére, a hálózati biztonsági csoport az Azure parancssori felület használatával
 
-Szűrheti a hálózati forgalom a bejövő és kimenő virtuális hálózati alhálózat a hálózati biztonsági csoport. Hálózati biztonsági csoportok tartalmazzák a szabályokat, amelyek IP-cím, port és protokoll által a hálózati forgalom szűrésére. Egy alhálózaton üzembe helyezett erőforrás biztonsági szabályok érvényesek. Ebből a cikkből megismerheti, hogyan:
+Szűrheti a hálózati forgalom a bejövő és kimenő virtuális hálózati alhálózat a hálózati biztonsági csoport. Hálózati biztonsági csoportok tartalmazzák a szabályokat, amelyek IP-cím, port és protokoll által a hálózati forgalom szűrésére. Egy alhálózaton üzembe helyezett erőforrás biztonsági szabályok érvényesek. Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 * A hálózati biztonsági csoport és a biztonsági szabályok létrehozása
 * Hozzon létre egy virtuális hálózatot, és rendelje hozzá egy alhálózatot a hálózati biztonsági csoport
@@ -241,6 +241,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben egy hálózati biztonsági csoportot hozott létre, és azt társított virtuális hálózati alhálózat. Hálózati biztonsági csoportokkal kapcsolatos további információkért lásd: [hálózati biztonsági csoport – áttekintés](security-overview.md) és [a hálózati biztonsági csoportok kezelése](virtual-network-manage-nsg-arm-ps.md).
+Ebben a cikkben egy hálózati biztonsági csoportot hozott létre, és azt társított virtuális hálózati alhálózat. Hálózati biztonsági csoportokkal kapcsolatos további információkért lásd: [hálózati biztonsági csoport – áttekintés](security-overview.md) és [a hálózati biztonsági csoportok kezelése](manage-network-security-group.md).
 
 Alapértelmezés szerint az alhálózatok közötti forgalmat Azure útvonalak. Ehelyett választhatja, hogy egy virtuális Gépet, mint egy tűzfal keresztül alhálózatok közötti forgalom például. Megtudhatja, hogyan: [hoznia egy útválasztási táblázatot](tutorial-create-route-table-cli.md).

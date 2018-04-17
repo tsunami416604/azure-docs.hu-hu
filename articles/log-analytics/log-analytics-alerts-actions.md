@@ -1,8 +1,8 @@
 ---
-title: "A riasztásokra az Azure Naplóelemzés válaszok |} Microsoft Docs"
-description: "Naplóelemzési riasztások határozza meg az Azure munkaterületen fontos adatokat és is proaktív értesítést küldenek, problémák vagy meghívása műveletek kijavításának őket.  Ez a cikk ismerteti a riasztási szabály és a részletek a különböző általuk végezhető műveletek létrehozása."
+title: A riasztásokra az Azure Naplóelemzés válaszok |} Microsoft Docs
+description: Naplóelemzési riasztások határozza meg az Azure munkaterületen fontos adatokat és is proaktív értesítést küldenek, problémák vagy meghívása műveletek kijavításának őket.  Ez a cikk ismerteti a riasztási szabály és a részletek a különböző általuk végezhető műveletek létrehozása.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e80481f074bc196caae7c03f54134eaef0fb46d5
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 6a48e4c0ab61e5dcf526bb8b1d8bdc6b0d16f9e7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="add-actions-to-alert-rules-in-log-analytics"></a>Műveletek hozzáadni a Naplóelemzési riasztási szabályok
 Ha egy [riasztást hoz létre a Naplóelemzési](log-analytics-alerts.md), lehetősége van a [a riasztási szabály konfigurálása](log-analytics-alerts.md) egy vagy több műveletek elvégzéséhez.  Ez a cikk ismerteti a rendelkezésre álló különféle műveletek és a részletek konfigurálásával összes típusához.
@@ -28,7 +28,7 @@ Ha egy [riasztást hoz létre a Naplóelemzési](log-analytics-alerts.md), lehet
 |:--|:--|
 | [E-mail](#email-actions) | A riasztás részleteit e-mailt küldeni egy vagy több címzett. |
 | [Webhook](#webhook-actions) | Egy külső folyamatban egy HTTP POST kérelemben keresztül meghívni. |
-| [A Runbook](#runbook-actions) | Elindít egy forgatókönyvet az Azure Automation. |
+| [a runbook](#runbook-actions) | Elindít egy forgatókönyvet az Azure Automation. |
 
 
 ## <a name="email-actions"></a>E-mailek műveletek
@@ -39,7 +39,7 @@ E-mailek műveletek igényelnek a tulajdonságok az alábbi táblázatban.
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | Tárgy |A tulajdonos e-mailben.  Az üzenet törzse nem módosítható. |
-| Címzettek |Címzett e-mail címét.  Ha több címet ad meg, majd külön a címeket pontosvesszővel (;). |
+| Címzettek |Címzett e-mail címét.  Ha több címet ad meg, pontosvesszővel (;) válassza el őket. |
 
 
 ## <a name="webhook-actions"></a>Webhookműveletek
@@ -70,7 +70,7 @@ Webhook URL-címet és a hasznos adatok között, amely a külső szolgáltatás
 | SearchIntervalInSeconds |#searchinterval |A riasztási szabály időszak. |
 | SearchIntervalStartTimeUtc |#searchintervalstarttimeutc |Indítsa el a lekérdezések ideje UTC formátumban. |
 | SearchQuery |#searchquery |Naplófájl-keresési lekérdezés a riasztási szabály által használt. |
-| SearchResults |Lásd az alábbi |A lekérdezés JSON formátumban rögzíti.  Az első 5000 rekordok korlátozva. |
+| SearchResults |Lásd alább |A lekérdezés JSON formátumban rögzíti.  Az első 5000 rekordok korlátozva. |
 | WorkspaceID |#workspaceid |A Naplóelemzési munkaterület azonosítója. |
 
 Például megadhatja a következő egyéni payload nevű egyetlen paramétert tartalmazó *szöveg*.  A szolgáltatás, amely behívja a webhook a ennek a paraméternek, akkor rendszer.
@@ -603,6 +603,7 @@ Az alábbiakban látható egy minta hasznos a runbook műveletet egy frissített
                 "a4e29a95-5b4c-408b-80e3-113f9410566e",
                 "00000000-0000-0000-0000-000000000000",
                 "Usage"
+            ]
             ]
         }
         ]

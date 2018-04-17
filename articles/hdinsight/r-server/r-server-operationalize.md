@@ -1,24 +1,22 @@
 ---
 title: Az R Server on HDInsight - Azure azok |} Microsoft Docs
 description: R Server, az Azure HDInsight azok útmutató.
-services: HDInsight
+services: hdinsight
 documentationcenter: ''
 author: nitinme
 manager: cgronlun
 editor: cgronlun
-ms.service: HDInsight
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: R
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: nitinme
-ms.openlocfilehash: 93957b7ee10527039bf2e96cc5470420cdef0651
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6de6e78d9b4ad68d268b59cff18c75fbdd7be757
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="operationalize-r-server-cluster-on-azure-hdinsight"></a>Azok az Azure hdinsight R Server fürt
 
@@ -193,6 +191,6 @@ Leszerelt feldolgozó csomópontjaihoz futtatásához a számítási csomópont 
 
 ## <a name="next-steps"></a>További lépések
 
-* [A HDInsight R Server-fürt kezeléséhez](r-server-hdinsight-manage.md)
-* [Számítási R Server-fürt a HDInsight adatkörnyezet beállításai](r-server-compute-contexts.md)
-* [A HDInsight fürt az R Serverhez Azure tárolási lehetőségek](r-server-storage.md)
+* [R Server-fürt kezelése a HDInsighton](r-server-hdinsight-manage.md)
+* [Számítási környezeti beállítások a HDInsighton belüli R Server-fürt esetében](r-server-compute-contexts.md)
+* [Azure Storage-lehetőségek a HDInsighton belüli R Server-fürthöz](r-server-storage.md)

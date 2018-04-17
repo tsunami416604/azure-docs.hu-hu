@@ -1,9 +1,9 @@
 ---
-title: "Tevékenység napló figyelmeztetések létrehozása, és kezelheti azokat az új riasztások (előzetes verzió) felületet használó Azure figyelőben |} Microsoft Docs"
-description: "Ez a cikk tájékoztatást ad azokról a riasztások (előzetes verzió) lapon, az Azure-figyelő napló riasztások tevékenység létrehozása. Ez a cikk az új felhasználói felületet a szolgáltatáshoz tartozó adatokat."
+title: Tevékenység napló figyelmeztetések létrehozása, és kezelheti azokat az új riasztások (előzetes verzió) felületet használó Azure figyelőben |} Microsoft Docs
+description: Ez a cikk tájékoztatást ad azokról a riasztások (előzetes verzió) lapon, az Azure-figyelő napló riasztások tevékenység létrehozása. Ez a cikk az új felhasználói felületet a szolgáltatáshoz tartozó adatokat.
 author: JYOTHIRMAISURI
 manager: vvithal
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: aabc0e57-78cd-44dd-a8d1-af5e1e567360
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: v-jysur
-ms.custom: 
-ms.openlocfilehash: a7553e4155df0d4ee49b798f44ca636dc7ecdcd2
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.custom: ''
+ms.openlocfilehash: 740edfd158d56fcb224cf93d1720a2330779bfd6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-activity-log-alerts-using-the-new-alerts-preview-experience"></a>Az új figyelmeztetések (előzetes verzió) használatával riasztások élmény tevékenységnapló létrehozása
 
@@ -103,13 +103,13 @@ Kövesse az alábbi eljárást:
 
     **Riasztási logika**:
 
-        - **Event Level**- The severity level of the event.**Verbose,Informational, Warning, Error**, or **Critical**.
-        - **Status**: The status of the event.**Started, Failed**, or **Succeeded**.
-        - **Event initiated by**: Also known as the caller; The email address or Azure Active Directory identifier of the user who performed the operation.
+     - **Eseményszint**-az esemény súlyosságának. **Részletes, a tájékoztató, figyelmeztetés, hiba**, vagy **kritikus**.
+     - **Állapot**: az esemény állapotát. **Sikerült elindítani,**, vagy **sikeres**.
+     - **Az esemény által kezdeményezett**: más néven a hívó; Az e-mail cím vagy a műveletet a felhasználó Azure Active Directory azonosítója.
 
-        **Sample signal graph with alert logic applied** :
+        **Minta jel graph alkalmazott riasztási logikával** :
 
-        ![ criteria selected](./media/monitoring-activity-log-alerts-new-experience/criteria-selected.png)
+        ![ kiválasztott feltételekhez](./media/monitoring-activity-log-alerts-new-experience/criteria-selected.png)
 
 4. A **riasztási szabályok adatainak**, adja meg a következő adatokat:
 

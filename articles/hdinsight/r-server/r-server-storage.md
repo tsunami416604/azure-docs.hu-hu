@@ -1,32 +1,30 @@
 ---
 title: Az R Server on HDInsight - Azure Azure tárolási megoldások |} Microsoft Docs
 description: További információk a HDInsight R Server elérhető más tárolási lehetőségek
-services: HDInsight
+services: hdinsight
 documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 1cf30096-d3ca-45ea-b526-aa3954402f66
-ms.service: HDInsight
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: R
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: nitinme
-ms.openlocfilehash: f0333252e404c52f123da916df01d198234ef5af
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 23e32a913fb73d2207f7cf37ce6230e428fbe95c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-storage-solutions-for-r-server-on-azure-hdinsight"></a>Az R Server on Azure HDInsight az Azure tárolási megoldások
 
 Az R Server on HDInsight számos különféle tárolási megoldásokkal megőrizni az adatokat, kódok vagy elemzés eredményeinek tartalmazó objektumokra. Ezek közé tartozik a következő beállításokat:
 
 - [Azure Blob](https://azure.microsoft.com/services/storage/blobs/)
-- [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/)
+- [Az Azure Data Lake-tároló](https://azure.microsoft.com/services/data-lake-store/)
 - [Az Azure File storage](https://azure.microsoft.com/services/storage/files/)
 
 Lehetősége is van a több Azure storage-fiókok vagy tárolók a HDInsight-fürthöz való hozzáférés. Az Azure File storage az adatok tárolási lehetőség használható a peremhálózati csomóponton, amely lehetővé teszi, hogy csatlakoztassa egy Azure Storage-megosztás és, például a Linux fájlrendszer. Azonban az Azure fájlmegosztások csatlakoztatva, és a rendszer, például a Windows vagy Linux támogatott operációs rendszer által használt. 
@@ -176,5 +174,5 @@ A fő Azure fájlok előnye, hogy a fájlmegosztások csatlakoztatott-e, és hog
 
 * [R Server-fürt a HDInsight áttekintése](r-server-overview.md)
 * [Az R Server-fürt hadoop első lépései](r-server-get-started.md)
-* [Számítási R Server-fürt a HDInsight adatkörnyezet beállításai](r-server-compute-contexts.md)
+* [Számítási környezeti beállítások a HDInsighton belüli R Server-fürt esetében](r-server-compute-contexts.md)
 

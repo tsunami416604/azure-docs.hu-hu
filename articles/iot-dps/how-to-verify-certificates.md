@@ -1,22 +1,22 @@
 ---
-title: "Igazolása-az-birtokában X.509 Hitelesítésszolgáltatói tanúsítványokat, amelyek Azure IoT Hub eszköz kiépítése szolgáltatáshoz tartozó módjáról |} Microsoft Docs"
-description: "X.509 Hitelesítésszolgáltatói tanúsítványokat, amelyek a terjesztési pontok szolgáltatás ellenőrzése"
+title: Igazolása-az-birtokában X.509 Hitelesítésszolgáltatói tanúsítványokat, amelyek Azure IoT Hub eszköz kiépítése szolgáltatáshoz tartozó módjáról |} Microsoft Docs
+description: X.509 Hitelesítésszolgáltatói tanúsítványokat, amelyek a terjesztési pontok szolgáltatás ellenőrzése
 services: iot-dps
-keywords: 
-author: JimacoMS
+keywords: ''
+author: bryanla
 ms.author: v-jamebr
 ms.date: 02/26/2018
 ms.topic: article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 07fe5f975e59c10fcd716db6585e2ae0fefc90e4
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: dd54ca5a172bdb65b7781f2fb764b00f50e5df28
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Útmutatás igazolása-az-birtokában az X.509 CA tanúsítványaiban az eszköz kiépítése szolgáltatáshoz
 
@@ -70,7 +70,7 @@ A PowerShell és a Bash parancsfájlok a dokumentációt, mind az SDK-k támaszk
 
 1. Az eredményül kapott aláírás, a portál a létesítési szolgáltatás ellenőrző tanúsítvány feltöltése A **Tanúsítványadatok** az Azure portál használata az _Fájlkezelőben_ melletti ikon a **ellenőrző tanúsítvány .pem vagy .cer fájl** töltse fel az aláírt mező ellenőrző tanúsítvány a rendszerből.
 
-2. Ha a tanúsítvány sikeresen feltöltődött, kattintson **ellenőrizze**. A **állapot** a tanúsítvány módosításait  **_ellenőrizve_**  a a **tanúsítvány Explorer** listája. Kattintson a **frissítése** Ha nem frissíti automatikusan.
+2. Ha a tanúsítvány sikeresen feltöltődött, kattintson **ellenőrizze**. A **állapot** a tanúsítvány módosításait **_ellenőrizve_** a a **tanúsítvány Explorer** listája. Kattintson a **frissítése** Ha nem frissíti automatikusan.
 
    ![Ellenőrző tanúsítvány feltöltése](./media/how-to-verify-certificates/upload-cert-verification.png)  
 

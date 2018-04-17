@@ -1,26 +1,26 @@
 ---
-title: "A felhő (C) - málna Pi csatlakozzon az Azure IoT Hub Raspberry Pi |} Microsoft Docs"
-description: "Megtudhatja, hogyan kell beállítania, és Azure IoT-központ málna Pi adatokat küldeni az Azure felhőalapú platform ebben az oktatóanyagban málna Pi csatlakozni."
+title: A felhő (C) - málna Pi csatlakozzon az Azure IoT Hub Raspberry Pi |} Microsoft Docs
+description: Megtudhatja, hogyan kell beállítania, és Azure IoT-központ málna Pi adatokat küldeni az Azure felhőalapú platform ebben az oktatóanyagban málna Pi csatlakozni.
 services: iot-hub
-documentationcenter: 
-author: shizn
+documentationcenter: ''
+author: rangv
 manager: timlt
-tags: 
-keywords: "az Azure iot raspberry pi, raspberry pi iot-központ, raspberry pi adatokat küldött a felhőben, raspberry pi felhőbe"
+tags: ''
+keywords: az Azure iot raspberry pi, raspberry pi iot-központ, raspberry pi adatokat küldött a felhőben, raspberry pi felhőbe
 ms.assetid: 68c0e730-1dc8-4e26-ac6b-573b217b302d
 ms.service: iot-hub
 ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/12/2017
-ms.author: xshi
+ms.date: 4/11/2018
+ms.author: rangv
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d643647d4103acd511ed270132c844da12f2ac9b
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: ea4a7b4084faf702cf303036b414a9bc9e153840
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Csatlakozás Azure IoT Hub (C) Raspberry Pi
 
@@ -200,7 +200,7 @@ A következő kimeneti bemutatja az érzékelő adatokat és az IoT hub küldöt
 
 ![Kimeneti - érzékelő adatokat küld az IoT hub málna Pi](media/iot-hub-raspberry-pi-kit-c-get-started/8_run-output.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Egy mintaalkalmazás érzékelő adatokat gyűjteni, és küldje el az IoT hub futtatását. A málna Pi az IoT hub vagy küldési üzenetek a málna Pi egy parancssori felület a küldött üzenetek, olvassa el a [kezelése felhő eszközt az IOT hubbal-explorer oktatóanyag üzenetküldési](https://docs.microsoft.com/en-gb/azure/iot-hub/iot-hub-explorer-cloud-device-messaging).
 

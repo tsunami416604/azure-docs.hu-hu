@@ -1,6 +1,6 @@
 ---
-title: "Ismerkedjen meg az eszköz szimuláció megoldás - Azure |} Microsoft Docs"
-description: "Az IoT Suite szimuláció megoldás olyan eszköz, amely segít a fejlesztési és tesztelési egy IoT-megoldás is használható. A szimuláció szolgáltatás az önálló ajánlat, amely más előkonfigurált megoldásokat együtt használják, vagy a saját egyéni megoldások használni."
+title: Ismerkedjen meg az eszköz szimuláció megoldás - Azure |} Microsoft Docs
+description: Az IoT Suite szimuláció megoldás olyan eszköz, amely segít a fejlesztési és tesztelési egy IoT-megoldás is használható. A szimuláció szolgáltatás az önálló ajánlat, amely más előkonfigurált megoldásokat együtt használják, vagy a saját egyéni megoldások használni.
 services: iot device simulation
 suite: iot-suite
 author: troyhopwood
@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 2a9a6f3387b7f9fb4e3896fc55a06ac4a902ad24
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1452508822f08d4554f419a72f7e9e6018a52469
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="device-simulation-walkthrough"></a>Eszköz szimuláció forgatókönyv
 
@@ -69,22 +69,22 @@ Az eszköz típusa szimulálása eszköz típusának teszi lehetővé. Válasszo
 
 Eszköz szimuláció három előre konfigurált eszköz modellt biztosít. Eszközmodellek a hőmérsékletű felvonók és teherautók érhetők el.
 
-Előre konfigurált eszközmodellek előre meghatározott telemetriai gyakorisággal több érzékelők tartalmazza. Ezek az eszközök a telemetriai adatok gyakorisága nem szabhatja testre.
+Előre konfigurált eszközmodellek több érzékelők speciális viselkedések definiált JavaScript-fájlt tartalmaz. Egyéni viselkedést a webes felhasználói felület nem támogatottak. 
 
 Az alábbi táblázat a minden előre konfigurált eszköz modell konfigurációk listáját:
 
-| Eszközmodell | Érzékelő | Unit (Egység) | Telemetria gyakorisága
-| -------------| ------ | -----| --------------------|
-| Chiller | nedvességtartalma | % | 5 másodperc |
-| | pressure | psig | 5 másodperc |
-| | Hőmérséklet | F | 5 másodperc |
-| Foglalhatja | Emelet | | 5 másodperc |
-| | vibráció | mm | 5 másodperc |
-| | Hőmérséklet | F | 5 másodperc |
-| Teherautó | Szélesség | | 3 másodperc |
-| | Hosszúság | | 3 másodperc |
-| | Sebesség | mph | 5 másodperc |
-| | cargotemperature | F | 5 másodperc |
+| Eszközmodell | Érzékelő | Unit (Egység) | 
+| -------------| ------ | -----| 
+| Hűtő | nedvességtartalma | % |
+| | pressure | psig | 
+| | Hőmérséklet | F | 
+| Foglalhatja | Emelet | 
+| | vibráció | mm | 
+| | Hőmérséklet | F | 
+| Teherautó | Szélesség | |
+| | Hosszúság | | 
+| | Sebesség | mph | 
+| | cargotemperature | F | 
 
 #### <a name="custom-device-model"></a>Egyéni eszköz típusa
 
@@ -106,7 +106,7 @@ Egyéni érzékelők a következő jellemzőkkel rendelkezik:
 
 ### <a name="number-of-devices"></a>Eszközök száma
 
-Eszköz szimuláció jelenleg teszi legfeljebb 1000 eszközök szimulálása.
+Eszköz szimuláció jelenleg teszi szimulálása legfeljebb 20 000 eszköz.
 
 ![Eszközök száma](media/iot-suite-device-simulation-explore/numberofdevices.png)
 

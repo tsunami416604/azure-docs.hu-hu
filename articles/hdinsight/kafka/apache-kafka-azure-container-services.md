@@ -1,24 +1,24 @@
 ---
-title: "Azure Tárolószolgáltatás használata a HDInsight Kafka |} Microsoft Docs"
-description: "Megtudhatja, hogyan Kafka használata a HDInsight a tároló lemezképeinek üzemeltetett Azure tároló szolgáltatás (AKS)."
+title: Azure Tárolószolgáltatás használata a HDInsight Kafka |} Microsoft Docs
+description: Megtudhatja, hogyan Kafka használata a HDInsight a tároló lemezképeinek üzemeltetett Azure tároló szolgáltatás (AKS).
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: cgronlun
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/08/2018
 ms.author: larryfr
-ms.openlocfilehash: 53342e11476a307bb6af356eb40fe51928041822
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 16513cbd775e200a0821e8786ae823b82c67e437
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-container-services-with-kafka-on-hdinsight"></a>Azure-tárolót Services használata a HDInsight Kafka
 
@@ -104,11 +104,11 @@ A Kafka HDInsight-fürt létrehozásakor a HDInsight a korábban létrehozott vi
 > [!IMPORTANT]
 > A fürt létrehozásakor kell használnia a __speciális beállítások__ csatlakozni a virtuális hálózathoz, amelyet a HDInsight hozott létre.
 
-## <a name="configure-kafka-ip-advertising"></a>Configure Kafka IP Advertising
+## <a name="configure-kafka-ip-advertising"></a>Kafka IP-közzététel konfigurálása
 
 Az alábbi lépésekkel konfigurálhatja Kafka tartománynevek helyett IP-címek hivatkozik:
 
-1. Webböngésző segítségével, folytassa a https://CLUSTERNAME.azurehdinsight.net. Cserélje le __CLUSTERNAME__ HDInsight-fürt Kafka nevével.
+1. A webböngészőben nyissa https://CLUSTERNAME.azurehdinsight.net. Cserélje le __CLUSTERNAME__ HDInsight-fürt Kafka nevével.
 
     Amikor a rendszer kéri, használja a HTTPS-felhasználónevet és jelszót a fürthöz. Az Ambari webes felhasználói felületén, a fürt akkor jelenik meg.
 
@@ -158,7 +158,7 @@ Ezen a ponton Kafka és az Azure Tárolószolgáltatás van a peered virtuális 
 
 1. Hozzon létre egy Kafka témakör, amely a tesztelési alkalmazás használja. Létrehozásával kapcsolatos információkat Kafka témakörök, tekintse meg a [Kafka fürt létrehozása](apache-kafka-get-started.md) dokumentum.
 
-2. Töltse le a mintaalkalmazás az [https://github.com/Blackmist/Kafka-AKS-Test](https://github.com/Blackmist/Kafka-AKS-Test). 
+2. Töltse le a mintaalkalmazás az [ https://github.com/Blackmist/Kafka-AKS-Test ](https://github.com/Blackmist/Kafka-AKS-Test). 
 
 3. Szerkessze a `index.js` fájlt, és módosítsa a következő sorokat:
 

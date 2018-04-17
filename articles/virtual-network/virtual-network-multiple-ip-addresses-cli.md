@@ -1,13 +1,13 @@
 ---
-title: "Virtuális gép több IP-címek az Azure parancssori felülettel |} Microsoft Docs"
-description: "Útmutató több IP-címek hozzárendelése egy virtuális gép az Azure parancssori felület (CLI) használatával."
+title: Virtuális gép több IP-címek az Azure parancssori felülettel |} Microsoft Docs
+description: Útmutató több IP-címek hozzárendelése egy virtuális gép az Azure parancssori felület (CLI) használatával.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: jimdial
-ms.openlocfilehash: aa0f84299dcb4800cd332d8276785f6b08152060
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: a1e78f7fa892586385e1dbd186125630ee1fb307
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Több IP-címek hozzárendelése a virtuális gépek az Azure parancssori felület használatával
 
@@ -167,7 +167,7 @@ A privát IP-címek hozzáadása a virtuális gép operációs rendszer, az oper
 
 ## <a name="add"></a>IP-címek hozzáadása a virtuális gépek
 
-További privát és nyilvános IP-címeket adhat hozzá egy meglévő hálózati adapterre a következő lépések végrehajtásával. A példák épül a [forgatókönyv](#Scenario) a cikkben.
+Adhat hozzá további privát és nyilvános IP-címek egy meglévő Azure hálózati adapter a következő lépések végrehajtásával. A példák épül a [forgatókönyv](#Scenario) a cikkben.
 
 1. Nyissa meg a parancssorba, és hajtsa végre a fennmaradó lépéseit ebben a szakaszban egy munkameneten belül. Ha még nem rendelkezik Azure CLI telepítése és konfigurálása, hajtsa végre a a [Azure CLI 2.0 telepítési](/cli/azure/install-az-cli2?toc=%2fazure%2fvirtual-network%2ftoc.json) cikk és az Azure bejelentkezési fiók az a `az-login` parancsot.
 

@@ -1,11 +1,11 @@
 ---
-title: "A Power BI használja az SQL Data Warehouse szolgáltatással |} Microsoft Docs"
-description: "Tippek a Power BI használatával az Azure SQL Data Warehouse adattárházzal történő, megoldások."
+title: A Power BI használja az SQL Data Warehouse szolgáltatással |} Microsoft Docs
+description: Tippek a Power BI használatával az Azure SQL Data Warehouse adattárházzal történő, megoldások.
 services: sql-data-warehouse
 documentationcenter: NA
 author: mlee3gsd
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: b12bee87-2268-40c2-81bf-ab27588b32e8
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: martinle;barbkess
 ms.openlocfilehash: 4ea9a2ff0c95a73b348d3b48e9e62957d5cce31c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-power-bi-with-sql-data-warehouse"></a>A Power BI használja az SQL Data Warehouse szolgáltatással
 Mint az Azure SQL Database, SQL Data Warehouse közvetlen kapcsolódás felhasználó hatékony logikai leküldéses közzététele a Power bi analitikai funkciók együtt használni.  Közvetlen csatlakozás esetén a lekérdezések rendszer küldi vissza az Azure SQL Data Warehouse valós idejű, az adatokba.  Ez, az SQL Data Warehouse lehetővé teszi a számára elleni terabájtos adatkészleteket percben dinamikus jelentéseket készít a skála együtt.  A Megnyitás Power BI gomb bevezetése emellett lehetővé teszi a felhasználók kapcsolódhatnak közvetlenül a Power BI az SQL Data Warehouse Azure egyéb részeitől információk gyűjtése nélkül.

@@ -1,8 +1,8 @@
 ---
-title: "Az Azure SQL adatbázis metrikák és diagnosztikai naplózás |} Microsoft Docs"
-description: "Tudnivalók Azure SQL-adatbázis tárolásához, erőforrás-használat, a kapcsolódási és a lekérdezés végrehajtási statisztika konfigurálása."
+title: Az Azure SQL adatbázis metrikák és diagnosztikai naplózás |} Microsoft Docs
+description: Tudnivalók Azure SQL-adatbázis tárolásához, erőforrás-használat, a kapcsolódási és a lekérdezés végrehajtási statisztika konfigurálása.
 services: sql-database
-documentationcenter: 
+documentationcenter: ''
 author: veljko-msft
 manager: craigg
 ms.service: sql-database
@@ -10,11 +10,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: vvasic
-ms.openlocfilehash: 11ffb1a6260fca52ccb173cb842c1a2d5adbf139
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: b1ac34c97d94f0b8759cb3e6f229ba0f7a2be7c9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database metrikák és diagnosztikai naplózás 
 Az Azure SQL-adatbázis el tudná küldeni, metrikákat és diagnosztikai naplókat a könnyebb figyelése. Az SQL Database beállítható az erőforrás-használatra, feldolgozókra és munkamenetekre, valamint kapcsolatokra vonatkozó adatok tárolására a következő Azure-erőforrások valamelyikén:
@@ -191,11 +191,11 @@ A legegyszerűbben úgy konfigurálja, ahol adatbázisok jegyezze fel a metriká
 
 ### <a name="install-the-sql-analytics-solution-from-the-gallery"></a>Telepítse az SQL-elemzési megoldások a gyűjteményből
 
-1. Miután a Naplóelemzési erőforrás létrehozása, és az adatok áramlik bele, az SQL elemzés megoldás telepítése. Az Operations Management Suite kezdőlapján oldalsó menüben válassza ki **megoldások gyűjtemény**. Az oldalon válassza ki a **Azure SQL elemzés** megoldás, és válassza ki **Hozzáadás**.
+1. Miután a Naplóelemzési erőforrás létrehozása, és az adatok áramlik bele, az SQL elemzés megoldás telepítése. A kezdőlapon, a oldalsó menüben válassza ki a **megoldások gyűjtemény**. Az oldalon válassza ki a **Azure SQL elemzés** megoldás, és válassza ki **Hozzáadás**.
 
    ![felügyeleti megoldás](./media/sql-database-metrics-diag-logging/monitoring-solution.png)
 
-2. Az Operations Management Suite kezdőlapján a **Azure SQL elemzés** csempe jelenik meg. Válassza ki a csempére kattintva nyissa meg a az SQL-elemzések irányítópultján.
+2. A kezdőlapon a **Azure SQL elemzés** csempe jelenik meg. Válassza ki a csempére kattintva nyissa meg a az SQL-elemzések irányítópultján.
 
 ### <a name="use-the-sql-analytics-solution"></a>Az SQL-elemzési megoldás használja
 
@@ -324,7 +324,7 @@ További információ [Lekérdezéstár futásidejű statisztikai adatok](https:
 |TimeGenerated [UTC]|Időbélyegzőt, ha a napló lett felvéve.|
 |Típus|Mindig: AzureDiagnostics|
 |ResourceProvider|Az erőforrás-szolgáltató neve. Always: MICROSOFT.SQL|
-|Kategória|A kategória neve. Always: QueryStoreWaitStatistics|
+|Kategória|A kategória neve. Mindig: QueryStoreWaitStatistics|
 |OperationName|A művelet neve. Always: QueryStoreWaitStatisticsEvent|
 |Erőforrás|Az erőforrás neve|
 |ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK/ADATBÁZISOK|
@@ -363,7 +363,7 @@ További információ [Lekérdezéstár várjon statisztikai adatok](https://doc
 |Típus|Mindig: AzureDiagnostics|
 |ResourceProvider|Az erőforrás-szolgáltató neve. Always: MICROSOFT.SQL|
 |Kategória|A kategória neve. Mindig: hibák|
-|OperationName|A művelet neve. Always: ErrorEvent|
+|OperationName|A művelet neve. Mindig: ErrorEvent|
 |Erőforrás|Az erőforrás neve|
 |ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK/ADATBÁZISOK|
 |SubscriptionId|GUID azonosítója, amelyhez tartozik az adatbázis-előfizetés.|
@@ -391,7 +391,7 @@ További információ [SQL Server hibaüzenetek](https://msdn.microsoft.com/libr
 |TimeGenerated [UTC]|Időbélyegzőt, ha a napló lett felvéve.|
 |Típus|Mindig: AzureDiagnostics|
 |ResourceProvider|Az erőforrás-szolgáltató neve. Always: MICROSOFT.SQL|
-|Kategória|A kategória neve. Always: DatabaseWaitStatistics|
+|Kategória|A kategória neve. Mindig: DatabaseWaitStatistics|
 |OperationName|A művelet neve. Always: DatabaseWaitStatisticsEvent|
 |Erőforrás|Az erőforrás neve|
 |ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK/ADATBÁZISOK|

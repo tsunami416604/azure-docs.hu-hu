@@ -11,17 +11,15 @@ editor: cgronlun
 ms.assetid: 56b913ee-0f9a-4e9f-9eaf-c571f8603dd6
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: jgao
-ms.openlocfilehash: ddb6291cdff7e2b65f54e89196c2b07dd6e4aaff
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3fb08a18fea056bc06eed797a2da809d25109cae
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>Hadoop-feladatok adatainak feltöltése a HDInsightba
 
@@ -45,7 +43,7 @@ Az alábbi segédprogramokat, ha az Azure Storage használatához a Microsoft bi
 | Eszköz | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
 | [Azure parancssori felület][azurecli] |✔ |✔ |✔ |
-| [Azure PowerShell][azure-powershell] | | |✔ |
+| [Az Azure PowerShell][azure-powershell] | | |✔ |
 | [AzCopy][azure-azcopy] |✔ | |✔ |
 | [Hadoop parancs](#commandline) |✔ |✔ |✔ |
 
@@ -54,7 +52,7 @@ Az alábbi segédprogramokat, ha az Azure Storage használatához a Microsoft bi
 >
 >
 
-#### <a id="xplatcli"></a>Azure CLI
+#### <a id="xplatcli"></a>Az Azure parancssori felület
 Az Azure parancssori felület az Azure-szolgáltatások kezelése platformfüggetlen eszközzel. Az alábbi lépések segítségével adatokat feltölteni az Azure Storage:
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
@@ -195,7 +193,7 @@ Van még több alkalmazás, amely a grafikus felületet biztosít az Azure Stora
 | [Azure Explorer](http://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |
 | [Cyberduck](https://cyberduck.io/) | |✔ |✔ |
 
-#### <a name="visual-studio-tools-for-hdinsight"></a>Visual Studio Tools for HDInsight
+#### <a name="visual-studio-tools-for-hdinsight"></a>HDInsight Visual Studio eszközök
 További információkért lásd: [Navigálás a kapcsolt erőforrásokban](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources).
 
 #### <a id="storageexplorer"></a>Azure Storage Explorer

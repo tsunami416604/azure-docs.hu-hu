@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: c82b56cdf0fc2cb288986cf8fbf43c2dab5eacb6
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 130bb7f20c030433741a9b9ecebe740fb44f5f81
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-logging-and-auditing"></a>Az Azure naplózása és naplózás
 ## <a name="introduction"></a>Bevezetés
 ### <a name="overview"></a>Áttekintés
 Segít a jelenlegi és jövőbeli Azure-ügyfél megismeréséhez és a különböző biztonsági képességeivel érhető el, és az Azure platformra körülvevő, Microsoft fejlesztett ki több tanulmányok, biztonsági áttekintése, ajánlott eljárások és Ellenőrzőlisták. A témakörök között körének és mélysége, és rendszeresen frissülnek. Ez a dokumentum a sorozat része a következő absztrakt szakaszban foglaltak szerint.
-### <a name="azure-platform"></a>Azure Platform
+### <a name="azure-platform"></a>Az Azure Platform
 Azure olyan nyitott és rugalmas felhőszolgáltatási platform, amely támogatja a operációs rendszerek, programozási nyelvek, keretrendszerek, eszközök, adatbázisok és eszközök legszélesebb kiválasztása.
 
 Megteheti például a következőt:
@@ -68,12 +68,12 @@ A következő táblázat felsorolja az Azure-ban elérhető naplók legfontosabb
 | Napló kategória | Napló típusa | A tanúsítványalgoritmusok | Integráció |
 | ------------ | -------- | ------ | ----------- |
 |[Tevékenység-naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|Az Azure Resource Manager-erőforrás vezérlő-vezérlősík események|   Adja meg az erőforrást az előfizetésében a végrehajtott műveletek betekintést.| REST-API & [Azure figyelője](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|
-|[Az Azure diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|a következő előfizetés erőforrásait Azure Resource Manager működésével kapcsolatos gyakori adatok| Adja meg, hogy az erőforrás maga végrehajtott műveletek betekintést| Azure Monitor, [Stream](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|
+|[Az Azure diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|a következő előfizetés erőforrásait Azure Resource Manager működésével kapcsolatos gyakori adatok| Adja meg, hogy az erőforrás maga végrehajtott műveletek betekintést| Az Azure figyelő [adatfolyam](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|
 |[Az AAD-jelentés](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal)|Naplók és jelentések|Felhasználói bejelentkezési tevékenységek & rendszer tevékenység szereplő felhasználók és csoportok kezelése|[Graph API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api-quickstart)|
 |[Virtuális gép & Cloud Services csomag](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics-storage)|Windows-Eseménynapló és a Linux rendszernaplójába bejegyzett|    Rendszeradatok és a virtuális gépek a naplózási adatokat rögzíti, és átviszi az adatok az Ön által választott tárolási figyelembe.|   Windows használatával [ÜVEGVATTA](https://docs.microsoft.com/azure/azure-diagnostics) (a Windows Azure diagnosztikai tárolási) és a Linux Azure a Teljesítményfigyelőben|
 |[Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|Tárolási naplózási és mérőszámok-adatokat biztosít a storage-fiók|Betekintést nyújt tárolni kívánt nyomkövetési kérelmek elemezheti a használati trendeket, és a storage-fiók problémák elemzéséhez.|    REST API-t vagy a [ügyféloldali kódtár](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
 |[NSG-t (hálózati biztonsági csoport) folyamat Naplók](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)|JSON formátumban jeleníti meg a bejövő és kimenő forgalom / szabály alapon és|IP-bemenő és kimenő forgalom keresztül a hálózati biztonsági csoportok adatainak megtekintése|[Hálózati figyelőt](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)|
-|[Application insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview)|Naplók, kivételeket és egyéni diagnosztika|    Alkalmazásteljesítmény-felügyeleti (APM) alkalmazásszolgáltatás webfejlesztőknek, több platformon.| REST API, [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|
+|[Application insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview)|Naplók, kivételeket és egyéni diagnosztika|    Alkalmazásteljesítmény-felügyeleti (APM) alkalmazásszolgáltatás webfejlesztőknek, több platformon.| REST API-t [a Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|
 |Adatok feldolgozása / biztonsági riasztás| Az Azure Security Center riasztást, a napló Analytics riasztás|   Biztonsági adatokat és a riasztásokat.|   REST API-k, JSON|
 
 ### <a name="activity-log"></a>Tevékenységnapló
@@ -101,7 +101,7 @@ Integrációs feladatokhoz
 
 -   A műveletnapló napló profilokkal való exportálás [Analytics jelentkezzen](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview).
 
-Használhatja a storage-fiókok vagy [event hub névtér](https://docs.microsoft.com/azure/event-hubs/event-hubs-resource-manager-namespace-event-hub-enable-archive) a rendszer egy kibocsátás bejelentkezési ugyanahhoz az előfizetéshez. A beállítás konfiguráló felhasználónak rendelkeznie kell a megfelelő [RBAC](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) mindkét előfizetéshez való hozzáférés
+Használhatja a storage-fiókok vagy [event hub névtér](https://docs.microsoft.com/azure/event-hubs/event-hubs-resource-manager-namespace-event-hub-enable-archive) a rendszer egy kibocsátás bejelentkezési ugyanahhoz az előfizetéshez. A beállítás konfiguráló felhasználónak rendelkeznie kell a megfelelő [RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) mindkét előfizetéshez való hozzáférés
 ### <a name="azure-diagnostic-logs"></a>Az Azure diagnosztikai naplók
 Az Azure diagnosztikai naplók erőforrás a művelet részletes, gyakori adatokat biztosító erőforrás által kibocsátott. Ezek a naplók tartalmának függ a erőforrástípus (például [Windows rendszer-eseménynaplói](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-windows-events)diagnosztikai napló egy kategóriát vannak a virtuális gépek és [blob, table és a várólista naplók](https://docs.microsoft.com/azure/storage/storage-monitor-storage-account) diagnosztikai naplókat a további kategóriája Storage-fiókok) és erőforrást az előfizetésében a végrehajtott műveletek betekintést nyújt tevékenységnapló különböznek.
 
@@ -373,14 +373,14 @@ A négy különböző módon [naplókat és az Azure-szolgáltatások metrikáj�
 |Szolgáltatások keresése|   Microsoft.Search/<br>searchServices|    Diagnosztika|    Diagnosztika||
 |Service Bus-névtér| Microsoft.ServiceBus/<br>Névterek|    Diagnosztika|Diagnosztika|    [Service Bus Analytics (előzetes verzió)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
 |Service Fabric||       Tárolás||    [Service Fabric Analytics (előzetes verzió)](https://docs.microsoft.com/azure/log-analytics/log-analytics-service-fabric)|
-|SQL (v12)| Microsoft.Sql/<br>servers/<br>adatbázisok||       Diagnosztika||
-||Microsoft.Sql/<br>servers/<br>elasticPools||||
+|SQL (v12)| Microsoft.Sql/<br>kiszolgálók /<br>adatbázisok||       Diagnosztika||
+||Microsoft.Sql/<br>kiszolgálók /<br>elasticPools||||
 |Tárolás|||         Szkript| [Az Azure Storage Analytics (előzetes verzió)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution)|
 |Virtuális gépek|  Microsoft.Compute/<br>virtuális gép|  Mellék|  Mellék||
 ||||Diagnosztika||
 |Virtuális gépek méretezési csoportok|   Microsoft.Compute/<br>virtuális gép    ||Diagnosztika||
-||Microsoft.Compute/<br>virtualMachineScaleSets/<br>virtuális gép||||
-|Web Server farms|Microsoft.Web/<br>serverfarms||   Diagnosztika
+||Microsoft.Compute/<br>virtualMachineScaleSets /<br>virtuális gép||||
+|Kiszolgáló-webfarmok|Microsoft.Web/<br>serverfarms||   Diagnosztika
 |Webhelyek| Microsoft.Web/<br>webhelyek ||      Diagnosztika|    [További információ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webappazure-oms-monitoring)|
 ||Microsoft.Web/<br>helyek /<br>tárolóhelyek|||||
 

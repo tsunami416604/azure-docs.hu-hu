@@ -1,31 +1,26 @@
 ---
-title: "Az Azure SQL Data Warehouse szolgáltatással rugalmas lekérdezési fogalmak |} Microsoft Docs"
-description: "Az Azure SQL Data Warehouse szolgáltatással rugalmas lekérdezési fogalmak"
+title: Rugalmas lekérdezés - hozzáférési adatokat az Azure SQL Data Warehouse az Azure SQL Database |} Microsoft Docs
+description: Ismerje meg az ajánlott eljárások a hozzáférési adatok az Azure SQL Data Warehouse az Azure SQL Database rugalmas lekérdezés segítségével.
 services: sql-data-warehouse
-documentationcenter: NA
 author: hirokib
-manager: johnmac
-editor: 
-ms.assetid: e2dc8f3f-10e3-4589-a4e2-50c67dfcf67f
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: integrate
-ms.date: 09/18/2017
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/11/2018
 ms.author: elbutter
-ms.openlocfilehash: 4c351d88b31adfa3443dd2231f67bb442f2b8fe0
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.reviewer: jrj
+ms.openlocfilehash: 909271792b73b5fdc517847db7cfd6c8cf2092bc
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="how-to-use-elastic-query-with-sql-data-warehouse"></a>Rugalmas lekérdezés használata az SQL Data Warehouse szolgáltatással
+# <a name="best-practices-for-using-elastic-query-in-azure-sql-database-to-access-data-in-azure-sql-data-warehouse"></a>Az Azure SQL Database rugalmas Query segítségével access adatok az Azure SQL Data Warehouse ajánlott eljárásai
+Ismerje meg, hogy gyakorlati tanácsok a hozzáférési adatok az Azure SQL Data Warehouse az Azure SQL Database rugalmas lekérdezés segítségével. 
 
-
-
-Az Azure SQL Data Warehouse szolgáltatással rugalmas lekérdezés lehetővé teszi egy Azure SQL Data Warehouse-példányhoz külső táblák segítségével távolról küldött SQL-adatbázis a Transact-SQL írása. Ezzel a szolgáltatással költségmegtakarítások és a helyzettől függően további performant architektúrát biztosít.
+## <a name="what-is-an-elastic-query"></a>Mi az az rugalmas lekérdezést?
+Egy rugalmas lekérdezés lehetővé teszi a T-SQL és a külső táblák segítségével írhat egy lekérdezést egy Azure SQL-adatbázis egy Azure SQL data warehouse távolról küldött. Ez a szolgáltatás használatának költségmegtakarítások és további performant architektúrák egyikét, attól függően, hogy a forgatókönyv.
 
 Ez a funkció lehetővé teszi, hogy a két elsődleges forgatókönyv:
 
@@ -46,10 +41,7 @@ Rugalmas lekérdezési biztosíthat egyszerűen válassza ki az SQL data warehou
 
 Rugalmas lekérdezési lehetővé teszi, hogy az SQL data warehouse példányán távoli lekérdezés végrehajtása. Egy nyújthatnak a a legjobb SQL-adatbázis és az SQL data warehouse is megadhat, a kiemelt és ritkán használt adatok a két adatbázis között. Felhasználók is megtarthatják az újabb egy SQL-adatbázis, amely ki tud szolgálni, jelentések és átlagos üzleti felhasználók nagy mennyiségű adatot. További adatok vagy számítási szükséges, ha azonban a felhasználó kiszervezése is része egy SQL az adatraktár példánya, ahol a nagyméretű összesítések dolgozható sokkal gyorsabb és hatékonyabb a lekérdezést.
 
-
-
-## <a name="elastic-query-overview"></a>Rugalmas lekérdezési áttekintése
-
+## <a name="elastic-query-process"></a>Rugalmas lekérdezési folyamat
 Egy rugalmas lekérdezést, hogy az adatok egy SQL-adatfájl belül található adatraktár-adatbázis SQL-példány számára elérhető használható. Rugalmas lekérdezési lehetővé teszi, hogy az SQL-adatbázis lekérdezések által hivatkozott táblákat a távoli SQL data warehouse-példányt. 
 
 Az első lépés, ha egy külső adatforrás-definíciót, amely az adatraktár SQL példánya, amely meglévő felhasználói hitelesítő adatokat használja az SQL data warehouse hivatkozik. Nem szükségesek a távoli példányon az SQL data warehouse. 
@@ -58,13 +50,12 @@ Az első lépés, ha egy külső adatforrás-definíciót, amely az adatraktár 
 > 
 > Az ALTER ANY külső ADATFORRÁS engedéllyel kell rendelkeznie. Ez az engedély megtalálható az ALTER DATABASE engedéllyel. Az ALTER ANY külső ADATFORRÁS engedélyekre van szükség lehet hivatkozni a távoli adatforrásokat.
 
-Ezután egy távoli külső tábla definíciójának létrehozhatunk olyan adatbázis SQL-példányon, amely az SQL data warehouse egy távoli táblára mutat. A külső tábla használó lekérdezés használata esetén a lekérdezés a külső tábla hivatkozik, az a része zajlik SQL data warehouse-példány feldolgozásra. A lekérdezés befejezése után az eredménykészlet küld vissza a hívó SQL-adatbázispéldány. Rövid útmutató egy rugalmas SQL-adatbázis és az SQL data warehouse-lekérdezés beállításának, tekintse meg a [rugalmas lekérdezési konfigurálja az SQL Data Warehouse szolgáltatással][Configure Elastic Query with SQL Data Warehouse].
+Ezután hozzon létre egy távoli külső tábla definíciójában egy SQL-adatbázispéldány, amely az SQL data warehouse egy távoli táblára mutat. Amikor egy lekérdezést a külső tábla használja, a lekérdezés a külső tábla hivatkozik, az a része elküldi SQL data warehouse-példány dolgozható fel. A lekérdezés befejezése után az eredménykészlet küld vissza a hívó SQL-adatbázispéldány. Rövid útmutató egy rugalmas SQL-adatbázis és az SQL data warehouse-lekérdezés beállításának, tekintse meg a [rugalmas lekérdezési konfigurálja az SQL Data Warehouse szolgáltatással][Configure Elastic Query with SQL Data Warehouse].
 
 Az SQL database rugalmas lekérdezés további információkért lásd: a [Azure SQL Database rugalmas lekérdezési áttekintése][Azure SQL Database elastic query overview].
 
-
-
 ## <a name="best-practices"></a>Ajánlott eljárások
+Az alábbi gyakorlati tanácsok segítségével hatékonyan rugalmas Queryt kell használni.
 
 ### <a name="general"></a>Általános kérdések
 
@@ -78,9 +69,9 @@ Az SQL database rugalmas lekérdezés további információkért lásd: a [Azure
 
 ### <a name="elastic-querying"></a>Rugalmas lekérdezése
 
-- Sok esetben egy célszerű olyan típusú felhőbe archivált táblázatot, ahol a tábla egy része van az SQL-adatbázis mint gyorsítótárazott adatokat a teljesítmény és a többi SQL Data Warehouse tárolt adatok kezeléséhez. Szüksége lesz a két objektum van az SQL-adatbázis: a külső tábla belül SQL-adatbázis az SQL Data Warehouse, és a tábla az SQL-adatbázis, a "gyorsítótárazott" része az alaptáblára hivatkozik. Vegye figyelembe a nézetek létrehozásával, a külső táblázat és a gyorsítótárazott része tetején keresztül mely egyesítésekhez egyaránt táblázatok és szűrőket, amelyek adatokat közzétéve külső táblák az SQL-adatbázis és az SQL Data Warehouse-adatok materializált vonatkozik.
+- Sok esetben egy célszerű olyan típusú felhőbe archivált táblázatot, ahol a tábla egy része van az SQL-adatbázis mint gyorsítótárazott adatokat a teljesítmény és a többi SQL Data Warehouse tárolt adatok kezeléséhez. Az SQL-adatbázis két objektum szükséges: egy külső tábla belül SQL-adatbázis az SQL Data Warehouse, és a tábla az SQL-adatbázis, a "gyorsítótárazott" része az alaptáblára hivatkozik. Vegye figyelembe a nézetek létrehozásával, a külső táblázat és a gyorsítótárazott része tetején keresztül mely egyesítésekhez egyaránt táblázatok és szűrőket, amelyek adatokat közzétéve külső táblák az SQL-adatbázis és az SQL Data Warehouse-adatok materializált vonatkozik.
 
-  Képzelje el kell tartani az adatok utolsó évben egy SQL-adatbázispéldány. Két tábla tudunk **kiegészítő Rendelések**, táblák, amely hivatkozik, az adatraktár rendeléseket és **dbo. Rendelések** amely jelenti, hogy a legutóbbi év adat tekinthető meg az SQL-adatbázispéldány belül. Helyett kérni a felhasználókat, kívánja-e egy táblát, vagy egy másik lekérdezni, azt nézetet a mindkét tábla utolsó évben partíció pontján felső keresztül kell létrehozni.
+  Tegyük fel, hogy meg szeretné tartani az adatok utolsó évben egy SQL-adatbázispéldány. A **kiegészítő Rendelések** táblahivatkozásoknak az adatraktár rendelések táblákat. A **dbo. Rendelések** jelenti. a legutóbbi év adat tekinthető meg az SQL-adatbázispéldány belül. Helyett kérni a felhasználókat, döntheti el, hogy a lekérdezés egy olyan táblát, vagy egyéb, a nézet létrehozása felső részén mindkét táblát, a partíció utolsó évben ponton keresztül.
 
   ```sql
   CREATE VIEW dbo.Orders_Elastic AS
@@ -115,23 +106,21 @@ Az SQL database rugalmas lekérdezés további információkért lásd: a [Azure
 ### <a name="moving-data"></a>Adatok áthelyezése 
 
 - Ha lehetséges tartsa adatkezelés megkönnyíti a csak a forrástábla úgy, hogy az adatok adatraktár és az adatbázis példányai között könnyen fenntarthatóvá frissítései.
-- Helyezze át az adatokat a partíció szinten kiürítése, és töltse ki a minimálisra csökkenthető a lekérdezés a data warehouse szint és az adatok áthelyezése az adatbázis-példány naprakészen tartása a szemantikájú. 
+- A partíció szinten az adatok áthelyezése ürítése és kitöltésének szemantikáját, hogy minimálisra csökkenthető a lekérdezés az adatok az adatraktár-szint és az adatok áthelyezése az adatbázispéldány fölött naprakész állapotban tartása érdekében. 
 
 ### <a name="when-to-choose-azure-analysis-services-vs-sql-database"></a>Mikor érdemes az Azure Analysis Services vs SQL-adatbázis kiválasztása
 
-#### <a name="azure-analysis-services"></a>Azure Analysis Services
+Használja az Azure Analysis Services esetén:
 
 - A kíván használni a gyorsítótárhoz kis lekérdezések nagy számú elküld egy BI eszközzel
 - Lekérdezés-késleltetés kell subsecond
 - Jártas kidolgozásában kezelése/modellek az Analysis Services 
 
-#### <a name="sql-database"></a>SQL Database
+Használja az Azure SQL adatbázis-mikor:
 
 - Le szeretné kérdezni az SQL gyorsítótár adatok
 - Távoli végrehajtás egyes lekérdezések van szüksége
 - Nagyobb gyorsítótár-követelmények
-
-
 
 ## <a name="faq"></a>GYIK
 
@@ -161,19 +150,11 @@ V: tárolhatja a térbeli típusok az SQL Data Warehouse varbinary(max) értékk
 
 ![a térbeli típusok](./media/sql-data-warehouse-elastic-query-with-sql-database/geometry-types.png)
 
-
-
-
-
-<!--Image references-->
-
 <!--Article references-->
 
-[SQL Data Warehouse development overview]: ./sql-data-warehouse-overview-develop/
-[Configure Elastic Query with SQL Data Warehouse]: ./tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md
+[SQL Data Warehouse development overview]: sql-data-warehouse-overview-develop.md
+[Configure Elastic Query with SQL Data Warehouse]: tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md
 [Feedback Page]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [Azure SQL Database elastic query overview]: ../sql-database/sql-database-elastic-query-overview.md
 
-<!--MSDN references-->
 
-<!--Other Web references-->

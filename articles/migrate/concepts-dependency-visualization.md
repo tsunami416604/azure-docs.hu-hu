@@ -1,16 +1,16 @@
 ---
-title: "Függőség képi megjelenítés Azure áttelepítése |} Microsoft Docs"
-description: "Értékelési számítások az Azure áttelepítése szolgáltatás áttekintése."
+title: Függőség képi megjelenítés Azure áttelepítése |} Microsoft Docs
+description: Értékelési számítások az Azure áttelepítése szolgáltatás áttekintése.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 2/21/2018
 ms.author: raynew
-ms.openlocfilehash: bcbb2ace6686e4052149a5dde1ed837a16c36bad
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: d075ce9ee124d373a1284577324a50338245a03f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="dependency-visualization"></a>Függőségek vizualizációja
 
@@ -24,7 +24,7 @@ Függőség képi megjelenítés Azure áttelepítése lehetővé teszi nagyobb 
 ## <a name="how-does-it-work"></a>Hogyan működik?
 
 Az Azure áttelepítése használja a [Szolgáltatástérkép](../operations-management-suite/operations-management-suite-service-map.md) megoldás [Naplóelemzési](../log-analytics/log-analytics-overview.md) függőségi a képi megjelenítéshez tartozó.
-- Egy Azure áttelepítési projekt létrehozásakor az előfizetéshez egy OMS Naplóelemzési munkaterület jön létre.
+- Egy Azure áttelepítési projekt létrehozásakor az előfizetéshez a Naplóelemzési munkaterület jön létre.
 - A munkaterület neve az a név, az áttelepítés projekt, előtagként a megadott **áttelepítése-**, és opcionálisan toldalékokkal számmal. 
 - A Naplóelemzési munkaterület navigáljon a **Essentials** projekt **áttekintése** lap.
 - A létrehozott munkaterület van megjelölve, a kulccsal **MigrateProject**, és értéket **projektnevet**. Ezek használhatja a Keresés az Azure-portálon.  

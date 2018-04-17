@@ -1,8 +1,8 @@
 ---
-title: "Használja az Apache Kafka adatfolyamok API - az Azure HDInsight |} Microsoft Docs"
-description: "Ismerje meg az Apache Kafka adatfolyamok API használata a HDInsight Kafka. Ez az API lehetővé teszi a streamfeldolgozási Kafka témakörei között."
+title: Használja az Apache Kafka adatfolyamok API - az Azure HDInsight |} Microsoft Docs
+description: Ismerje meg az Apache Kafka adatfolyamok API használata a HDInsight Kafka. Ez az API lehetővé teszi a streamfeldolgozási Kafka témakörei között.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: cgronlun
 editor: cgronlun
@@ -12,16 +12,16 @@ ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/19/2018
+ms.topic: conceptual
+ms.date: 04/10/2018
 ms.author: larryfr
-ms.openlocfilehash: be6ed6d4c0c3a5fa55166b84b128881d434c4ab2
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 36d67cdb99871f3948db1f6497b1a4638df4f3f1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="apache-kafka-streams-api"></a>Apache Kafka streams API
+# <a name="apache-kafka-streams-api"></a>Apache Kafka adatfolyamok API
 
 Megtudhatja, hogyan hozzon létre egy alkalmazást, amely a Kafka adatfolyamok API és a HDInsight Kafka futtassák azt.
 
@@ -45,7 +45,7 @@ Ebben a példában a HDInsight 3.6 Kafka igényel. Megtudhatja, hogyan hozzon l�
 
 Az alábbi lépések segítségével hozza létre, és a HDInsight-fürt Kafka a projekt telepítése.
 
-1. A példákat a [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) címről töltheti le.
+1. Töltse le az említett példákat követik [ https://github.com/Azure-Samples/hdinsight-kafka-java-get-started ](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started).
 
 2. Lépjen a `Streaming` könyvtárra, és majd a jar-csomag létrehozása a következő parancsot:
 
@@ -114,14 +114,14 @@ Az alábbi lépések segítségével hozza létre, és a HDInsight-fürt Kafka a
 
     Ez a parancs felosztja a három részre SSH megjelenítéséhez:
 
-    * A bal oldalon fut a konzol felhasználóinak, mely olvasások érkező üzenetek a `wordcounts` témakör:`/usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $KAFKABROKERS --topic wordcounts --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer`
+    * A bal oldalon fut a konzol felhasználóinak, mely olvasások érkező üzenetek a `wordcounts` témakör: `/usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $KAFKABROKERS --topic wordcounts --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer`
 
         > [!NOTE]
         > A `--property` paraméterek, kérje meg a konzol fogyasztó nyomtatni a kulcsot (word) együtt a count (érték). Ez a paraméter is konfigurálja a deszerializáló ezeket az értékeket a Kafka olvasásához.
 
-    * A jobb felső részében a futtatja az adatfolyamok API-megoldás:`java -jar kafka-streaming.jar $KAFKABROKERS $KAFKAZKHOSTS`
+    * A jobb felső részében a futtatja az adatfolyamok API-megoldás: `java -jar kafka-streaming.jar $KAFKABROKERS $KAFKAZKHOSTS`
 
-    * A jobb alsó részén a konzol készítő fut, és megvárja-e a küldendő üzenetek megadását a `test` témakör:`/usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list $KAFKABROKERS --topic test`
+    * A jobb alsó részén a konzol készítő fut, és megvárja-e a küldendő üzenetek megadását a `test` témakör: `/usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list $KAFKABROKERS --topic test`
  
 6. Miután a `tmux` parancs felosztja a képernyőt, a kurzor jobb alsó részén. Indítsa el a mondatok megadása. Minden mondat után a bal oldali ablaktáblán frissül jelenjen meg az egyedi szavak számát. A kimenet az alábbi szöveghez hasonló:
    

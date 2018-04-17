@@ -3,22 +3,23 @@ title: A Linux adatok tudományos virtuális gépet az Azure adattudomány |} Mi
 description: Hogyan hajthat végre több közös adatok tudományos feladatokat a a Linux adatok tudományos virtuális Géphez.
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: gopitk
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 34ef0b10-9270-474f-8800-eecb183bbce4
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: bradsev
-ms.openlocfilehash: aff0dd17baa72b3f58ed5effbedb3a4c630f22c6
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: gokuma
+ms.openlocfilehash: 055d8b1c9884c9525ba15ea9508ab00a5f48a048
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Adattudomány rendelkező Linux adatok tudományos virtuális gépek Azure-on
 Ez a forgatókönyv bemutatja, hogyan végezhető több közös adatok tudományos a Linux adatok tudományos virtuális gép. A Linux adatok tudományos virtuális gép (DSVM) érhető el, amely adatelemzés és a gépi tanulás általánosan használt eszközöket együtt telepített Azure virtuálisgép-lemezkép. A kulcs szoftverösszetevőket van felsorolva a [a Linux adatok tudományos virtuális gép kiépítéséhez](linux-dsvm-intro.md) témakör. A Virtuálisgép-lemezkép megkönnyíti az első lépések során adattudomány (percben), anélkül, hogy telepítse és konfigurálja az egyes eszközökről külön-külön kellene. Könnyedén növelheti a virtuális gép, ha szükséges, és állítsa le, ha nincsenek használatban. Ehhez az erőforráshoz, mind a rugalmas és költséghatékony.
@@ -238,7 +239,7 @@ A fennmaradó részei bemutatják, hogyan használhatja néhány a Linux adatok 
 * Jupyterhub
 * Rattle
 * PostgreSQL & Squirrel SQL
-* SQL Server Data Warehouse
+* SQL Server-adatraktár
 
 ## <a name="xgboost"></a>XGBoost
 [XGBoost](https://xgboost.readthedocs.org/en/latest/) olyan eszköz, amely gyors és pontos súlyozott fa valósítja meg.
@@ -499,7 +500,7 @@ A legtöbb e-mailek, amelyek magas előfordulása *3d* vannak látszólag levél
 
 Ha egy PostgreSQL-adatbázisban tárolt adatok gépi tanulás elvégzésére, érdemes lehet [MADlib](http://madlib.incubator.apache.org/).
 
-## <a name="sql-server-data-warehouse"></a>SQL Server Data Warehouse
+## <a name="sql-server-data-warehouse"></a>SQL Server-adatraktár
 Az Azure SQL Data Warehouse egy felhőalapú, horizontálisan felskálázható adatbázis, amely nagy mennyiségű relációs és nem relációs adatot képes feldolgozni. További információkért lásd: [Mi az Azure SQL Data Warehouse?](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
 Csatlakozás az adatraktárhoz, és a tábla létrehozásához futtassa a következő parancsot a parancssorba:

@@ -1,24 +1,24 @@
 ---
-title: "Power BI Embedded kapacitás létrehozása az Azure portálon |} Microsoft Docs"
-description: "Ez a cikk végigvezeti a Power BI Embedded kapacitás létrehozása a Microsoft Azure-ban."
+title: Power BI Embedded kapacitás létrehozása az Azure portálon |} Microsoft Docs
+description: Ez a cikk végigvezeti a Power BI Embedded kapacitás létrehozása a Microsoft Azure-ban.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/28/2017
-ms.author: asaxton
-ms.openlocfilehash: bf7eb967760338626cd7e0465b16dc570e5f582a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: maghan
+ms.openlocfilehash: 2fadfde13aee3aaf965c6ba30188544a8a075b9d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-power-bi-embedded-capacity-in-the-azure-portal"></a>Power BI Embedded kapacitás létrehozása az Azure portálon
 
@@ -33,7 +33,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
 * **Azure-előfizetés:** látogasson el [Azure ingyenes próbaverzió](https://azure.microsoft.com/free/) -fiók létrehozása.
-* **Az Azure Active Directory:** előfizetését az Azure Active Directory (AAD) bérlő társítani kell. Emellett a ***kell jelentkeznie az Azure-bA egy olyan fiókkal, hogy a bérlő***. Microsoft-fiókok nem támogatottak. További tudnivalókért tekintse meg a hitelesítés és a felhasználói engedélyek.
+* **Az Azure Active Directory:** előfizetését az Azure Active Directory (AAD) bérlő társítani kell. Emellett a ***kell jelentkeznie az Azure-bA egy olyan fiókkal, hogy a bérlő***. Microsoft-fiókok nem támogatottak. További információ: [Hitelesítés és felhasználói engedélyek](../analysis-services/analysis-services-manage-users.md).
 * **A Power BI bérlői:** legalább egy fiókot az AAD-bérlőben kell feliratkozott a Power bi-ban.
 * **Erőforráscsoport:** már van erőforráscsoport használata vagy [hozzon létre egy újat](../azure-resource-manager/resource-group-overview.md).
 

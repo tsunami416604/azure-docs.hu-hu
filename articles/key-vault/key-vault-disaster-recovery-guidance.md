@@ -1,11 +1,11 @@
 ---
-title: "Mi a teendő, ha az Azure szolgáltatás, amely befolyásolja az Azure Key Vault megszűnésének |} Microsoft Docs"
-description: "Ismerje meg, mi a teendő az Azure-szolgáltatások becsukódjon, amely befolyásolja az Azure Key Vault."
+title: Mi a teendő, ha az Azure szolgáltatás, amely befolyásolja az Azure Key Vault megszűnésének |} Microsoft Docs
+description: Ismerje meg, mi a teendő az Azure-szolgáltatások becsukódjon, amely befolyásolja az Azure Key Vault.
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: adamglick
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 19a9af63-3032-447b-9d1a-b0125f384edb
 ms.service: key-vault
 ms.workload: key-vault
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: sumedhb;aglick
-ms.openlocfilehash: 1f19c4bba2152eb021831dedda734fd54ee78d75
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: aglick
+ms.openlocfilehash: 11c2fe5d4b84f99c3b0e303d1abeea73442f57aa
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Az Azure Key Vault rendelkezésre állás és redundancia
 Az Azure Key Vault a redundancia csökkentése érdekében győződjön meg arról, hogy a kulcsok és titkos használhatóak maradnak arra az alkalmazás akkor is, ha a szolgáltatás egyes összetevők sikertelen rétege funkciókat.

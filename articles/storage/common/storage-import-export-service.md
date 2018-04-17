@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: muralikk
-ms.openlocfilehash: cc36fdde962ec44d679dc0e96f440b0437a84fa8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1e94466d9d41bbc6a2100256d96e19d0d13600cb
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Az adatok átviteléhez az Azure Storage a Microsoft Azure Import/Export szolgáltatás használata
 Ebben a cikkben azt részletes útmutatást nyújtanak az Azure Import/Export szolgáltatás használatával biztonságos átvitelére a nagy mennyiségű adatok Azure Blob storage és Azure fájlok által az Azure adatközpontba szállítási lemezmeghajtókat. Ez a szolgáltatás adatok átviteléhez az Azure storage merevlemez-meghajtók és a helyszíni helyek szállítás is használható. A SATA egyetlen lemezmeghajtó adatait vagy Azure Blob storage-vagy Azure fájlok importálhatók. 
@@ -45,7 +45,7 @@ Kövesse az alábbi lépéseket, ha a lemezen lévő adatok Azure Storage import
     |Beállítás  |Leírás  |
     |---------|---------|
     |/j:     |A napló kiterjesztésű, a .jrn neve. A napló fájl meghajtónkénti jön létre. A lemez sorozatszám napló fájlneve használata javasolt.         |
-    |/sk:     |Az Azure-Tárfiók kulcsának.         |
+    |/SK:     |Az Azure-Tárfiók kulcsának.         |
     |/t:     |A meghajtó betűjelével szállítani a lemezen. Például meghajtó `D`.         |
     |/bk:     |A BitLocker kulcs a meghajtón. A numerikus jelszót a kimenetből ` manage-bde -protectors -get D: `      |
     |/srcdir:     |A meghajtóbetűjelet, a lemez szállítási követ `:\`. Például: `D:\`.         |
@@ -560,7 +560,7 @@ Az oldalakra vonatkozó Blob maximális mérete 1TB.
 
 Az Azure Import/Export szolgáltatás alapértelmezés szerint titkosítja a bitlocker titkosítás AES-128, de ez növelhető AES 256 manuálisan titkosítása a bitlocker előtt az adatok másolásakor. 
 
-Ha használ [WAImportExpot V1](http://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip), az alábbiakban van egy minta parancs
+Ha használ [WAImportExport V1](http://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip), az alábbiakban van egy minta parancs
 ```
 WAImportExport PrepImport /sk:<StorageAccountKey> /csas:<ContainerSas> /t: <TargetDriveLetter> [/format] [/silentmode] [/encrypt] [/bk:<BitLockerKey>] [/logdir:<LogDirectory>] /j:<JournalFile> /id:<SessionId> /srcdir:<SourceDirectory> /dstdir:<DestinationBlobVirtualDirectory> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>] 
 ```

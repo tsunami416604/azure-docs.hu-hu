@@ -7,14 +7,14 @@ manager: jhubbard
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
-ms.date: 03/28/2018
+ms.date: 04/11/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 18d5f4131718021de82328719e0538db759dde9c
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 13189bfe2e2e6db6185c798065dc3bea1fd3d537
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="designing-extract-load-and-transform-elt-for-azure-sql-data-warehouse"></a>Kinyerési, betöltés és átalakítás (ELT) az Azure SQL Data Warehouse tervezése
 
@@ -48,8 +48,8 @@ Adatok betöltése a PolyBase, ezek betöltését beállításokat használhatja
 
 - [PolyBase-T-SQL](load-data-from-azure-blob-storage-using-polybase.md) jól működik, ha az adatok Azure Blob-tároló vagy az Azure Data Lake Store van. A betöltés folyamat a legtöbb ellenőrzést ad meg, de rendelkeznie kell a külső objektumok adhatók meg. A többi módszer határozza meg ezeket az objektumokat a háttérben, a forrástábla leképezése céltábla.  Levezényelni a T-SQL terhelés, az Azure Data Factory, SSIS vagy az Azure functions is használhat. 
 - [PolyBase az SSIS](/sql/integration-services/load-data-to-sql-data-warehouse) jól működik, ha a forrásadatok az SQL Server, SQL Server helyi, illetve a felhőben van-e. SSIS cél tábla leképezéseket a forrás definiálja, és is koordinálja a terhelés. Ha már rendelkezik SSIS-csomagok, módosíthatja a csomagokat az új adatok adatraktár cél együttműködni. 
-- [Azure Data Factory (ADF) PolyBase](sql-data-warehouse-load-with-data-factory.md) egy másik eszköz a vezénylési.  Meghatározza egy folyamatot, és feladatok ütemezi. ADF JSON-adatok elemezni és betölteni azt az SQL Data Warehouse használhatja.
-- [PolyBase az Azure DataBricks](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) továbbítja az adatokat az Azure Data Lake Store az SQL Data Warehouse. Azure DataBricks segítségével JSON-adatok elemzése és az SQL Data Warehouse az adatok betöltésére. 
+- [Azure Data Factory (ADF) PolyBase](sql-data-warehouse-load-with-data-factory.md) egy másik eszköz a vezénylési.  Meghatározza egy folyamatot, és feladatok ütemezi. 
+- [PolyBase az Azure DataBricks](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) továbbítja az adatokat az SQL Data Warehouse-táblából egy Databricks dataframe és/vagy egy Databricks dataframe adatokat ír az SQL Data Warehouse tábla.
 
 ### <a name="polybase-external-file-formats"></a>A PolyBase külső fájlformátum
 
@@ -70,11 +70,8 @@ Megnyílik az adatokat az Azure-tárfiókba, a áthelyezheti úgy, hogy [Azure B
 Ezek azok az eszközök és adatok áthelyezése az Azure Storage segítségével szolgáltatások.
 
 - [Az Azure ExpressRoute](../expressroute/expressroute-introduction.md) szolgáltatás növeli a hálózat átviteli sebességét, a teljesítmény és kiszámíthatóságot. ExpressRoute olyan szolgáltatás, amely továbbítja a dedikált titkos kapcsolaton keresztül az adatok az Azure-bA. Az ExpressRoute-kapcsolatok nem útvonal-adatok a nyilvános interneten keresztül. A kapcsolatok kínál további megbízhatóságát, gyorsabb sebességű, kisebb késések és nagyobb biztonságot nyújtana tipikus kapcsolatok a nyilvános interneten keresztül.
-- [AZCopy segédprogram](../storage/common/storage-use-azcopy.md) adatok áthelyezése az Azure Storage a nyilvános interneten keresztül. Ez működik, ha az adatok mérete legfeljebb 10 TB. Az AZCopy rendszeresen terhelések végrehajtásához tesztelése a hálózati sebességet meg, hogy elfogadható. 
-- [Az Azure Data Factory (ADF)](../data-factory/introduction.md) egy átjárót, amelyek telepítése a helyi kiszolgálón. Majd áthelyezni az adatokat a helyi kiszolgáló Azure Storage legfeljebb egy folyamatot is létrehozhat.
-
-További információkért lásd: [az adatok Azure Storage-ból mozgatása](../storage/common/storage-moving-data.md)
-
+- [AZCopy segédprogram](../storage/common/storage-moving-data.md) adatok áthelyezése az Azure Storage a nyilvános interneten keresztül. Ez működik, ha az adatok mérete legfeljebb 10 TB. Az AZCopy rendszeresen terhelések végrehajtásához tesztelése a hálózati sebességet meg, hogy elfogadható. 
+- [Az Azure Data Factory (ADF)](../data-factory/introduction.md) egy átjárót, amelyek telepítése a helyi kiszolgálón. Majd áthelyezni az adatokat a helyi kiszolgáló Azure Storage legfeljebb egy folyamatot is létrehozhat. Tekintse meg a Data Factory használatához az SQL Data Warehouse szolgáltatással [adatok betöltése az SQL Data Warehouse](/azure/data-factory/load-azure-sql-data-warehouse).
 
 ## <a name="prepare-data"></a>Adatok előkészítése
 

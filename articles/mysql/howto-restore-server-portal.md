@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: 5d6118a47e10763373c9376ca08d328cf22ab3c8
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 8782befb1548606fe649909a7841eb648c15f1c6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Biztonsági mentése és visszaállítása egy kiszolgálóhoz az Azure-adatbázis MySQL az Azure portál használatával
 
@@ -85,6 +85,10 @@ Ha a kiszolgáló a földrajzilag redundáns biztonsági mentéshez konfigurált
 
 2. A képernyőn **forrásának kijelölése** legördülő menüben válasszon **biztonsági mentés**. Ez a művelet betölti a földrajzi redundancia biztonsági mentések engedélyezett kiszolgálók listáját. Válasszon egyet az új kiszolgáló forrásként a biztonsági mentése.
    ![Forrás kiválasztása: Biztonsági mentés és földrajzi redundancia biztonsági mentések listája](./media/howto-restore-server-portal/2-georestore.png)
+
+   > [!NOTE]
+   > A kiszolgáló létrehozásakor azt nem lehet azonnal elérhető georedundáns helyreállítás. A szükséges metaadatok kell feltöltenie néhány órát is igénybe vehet.
+   >
 
 3. Adja meg a többi a beállítások az űrlapot. Kiválaszthatja a **hely**. Miután kiválasztotta a helyen, választhatja **Tarifacsomagot**. Alapértelmezés szerint a meglévő kiszolgáló visszaállítását végzi, a paraméterek jelennek meg. Kattinthat **OK** ezek a beállítások öröklésére változtatás nélkül. Bármikor módosíthatja vagy **számítási generációs** (ha elérhető a régióban választott), a száma, **vCores**, **biztonsági mentés megőrzési időszak**, és **biztonsági mentése Redundancia beállítás**. Módosítása **Tarifacsomagot** (alapszintű, általános célú vagy Memóriaoptimalizált) vagy **tárolási** visszaállítás során mérete nem támogatott.
 

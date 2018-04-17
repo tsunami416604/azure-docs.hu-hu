@@ -28,8 +28,8 @@ Amikor virtuális gépek csatlakoznak, a nyilvános kulcsú próbál bejelentkez
 
 ## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 
-Használatával [szerepköralapú hozzáférés-vezérlést (RBAC)](../articles/active-directory/role-based-access-control-what-is.md), feladatokat elkülönítse a munkacsoporton belül, és csak olyan mértékű hozzáférést adhat a felhasználóknak a feladataik elvégzéséhez szükséges virtuális gépén. Jogosultságot ad a Mindenki helyett korlátlan engedélyeket a virtuális Gépre, engedélyezheti a csak bizonyos műveleteket. Hozzáférés-vezérlés a virtuális gép állíthatja be a [Azure-portálon](../articles/active-directory/role-based-access-control-configure.md)használatával a [Azure CLI](https://docs.microsoft.com/cli/azure/role), vagy[Azure PowerShell](../articles/active-directory/role-based-access-control-manage-access-powershell.md).
+Használatával [szerepköralapú hozzáférés-vezérlést (RBAC)](../articles/role-based-access-control/overview.md), feladatokat elkülönítse a munkacsoporton belül, és csak olyan mértékű hozzáférést adhat a felhasználóknak a feladataik elvégzéséhez szükséges virtuális gépén. Jogosultságot ad a Mindenki helyett korlátlan engedélyeket a virtuális Gépre, engedélyezheti a csak bizonyos műveleteket. Hozzáférés-vezérlés a virtuális gép állíthatja be a [Azure-portálon](../articles/role-based-access-control/role-assignments-portal.md)használatával a [Azure CLI](https://docs.microsoft.com/cli/azure/role), vagy[Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - A virtuális gép biztonsági figyelése az Azure Security Center segítségével lépéseit ismerteti [Linux](../articles/virtual-machines/linux/tutorial-azure-security.md) vagy [Windows](../articles/virtual-machines/windows/tutorial-azure-security.md).

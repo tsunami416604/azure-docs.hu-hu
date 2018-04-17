@@ -1,11 +1,11 @@
 ---
-title: "Hozzon létre egy virtuális gép (klasszikus) több hálózati adapter - Azure CLI 1.0 |} Microsoft Docs"
-description: "Útmutató az Azure parancssori felület (CLI) 1.0 használatával több hálózati adapterrel rendelkező virtuális gép (klasszikus) létrehozása."
+title: Hozzon létre egy virtuális gép (klasszikus) több hálózati adapter - Azure CLI 1.0 |} Microsoft Docs
+description: Útmutató az Azure parancssori felület (CLI) 1.0 használatával több hálózati adapterrel rendelkező virtuális gép (klasszikus) létrehozása.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: timlt
-editor: 
+author: genli
+manager: cshepard
+editor: ''
 tags: azure-service-management
 ms.assetid: b436e41e-866c-439f-a7c7-7b4b041725ef
 ms.service: virtual-network
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
-ms.author: jdial
+ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5569209d3628003b3f3e169b227e069b920c03f
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: d2631e531368df4f00d7ffd8fef585038658797b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-vm-classic-with-multiple-nics-using-the-azure-cli-10"></a>Az Azure CLI 1.0 használatával több hálózati adapterrel rendelkező virtuális gép (klasszikus) létrehozása
 
@@ -45,7 +45,7 @@ A háttér-virtuális gépek létrehozását a következő erőforrások függ:
 
 * **Az adatlemezek tárfiók**. A jobb teljesítmény érdekében az adatlemezek az adatbázis-kiszolgálók a tartós állapotú meghajtót (SSD) technológiát, amely a prémium szintű tárfiók szükséges fogja használni. Győződjön meg arról, hogy az Azure-hely támogatja a prémium szintű storage telepít.
 * **Hálózati adapter**. Minden virtuális gép lesz a két hálózati adapterrel, egy adatbázis-hozzáférési és felügyeleti egyet.
-* **A rendelkezésre állási csoport**. Minden adatbázis-kiszolgálók egyetlen rendelkezésre állási értékre, akkor ellenőrizze, hogy a virtuális gépek közül legalább egy, és a karbantartás során fut hozzáadandó.
+* **Rendelkezésre állási csoport**. Minden adatbázis-kiszolgálók egyetlen rendelkezésre állási értékre, akkor ellenőrizze, hogy a virtuális gépek közül legalább egy, és a karbantartás során fut hozzáadandó.
 
 ### <a name="step-1---start-your-script"></a>1. lépés – a parancsfájl futtatásához
 Letöltheti használt teljes bash parancsfájl [Itt](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-cli.sh). Az alábbi lépésekkel módosíthatja a parancsfájlnak a környezetben:

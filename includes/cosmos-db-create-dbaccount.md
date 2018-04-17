@@ -1,3 +1,19 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: cosmos-db
+author: SnehaGunda
+ms.service: cosmos-db
+ms.topic: include
+ms.date: 04/13/2018
+ms.author: sngun
+ms.custom: include file
+ms.openlocfilehash: f8ef3070c318293af59a8f22d271b9c836c06f69
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 04/16/2018
+---
 1. Egy új böngészőablakban jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Kattintson az **Erőforrás létrehozása** > **Adatbázisok** > **Azure Cosmos DB** lehetőségre.
    
@@ -17,7 +33,7 @@
 
     Ezt követően kattintson a **Create** (Létrehozás) gombra.
 
-    ![Az új fiók lap az Azure Cosmos DB rendszerhez](./media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-2.png)
+    ![Az új fiók lap az Azure Cosmos DB rendszerhez](./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-new-account.png)
 
 4. A fiók létrehozása eltarthat néhány percig. Várja meg a portálon megjelenítendő a **Gratulálunk! A Azure Cosmos DB-fiók létrejött** lap.
 

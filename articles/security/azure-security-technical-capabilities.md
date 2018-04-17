@@ -1,12 +1,12 @@
 ---
-title: "Az Azure biztonsági műszaki képességei |} Microsoft Docs"
-description: "További információk a felhőalapú számítási szolgáltatás, amely tartalmazza a számítási példányokért széles kijelölt & szolgáltatások, amely is fel-le automatikusan az alkalmazás vagy a vállalat igényeinek."
+title: Az Azure biztonsági műszaki képességei |} Microsoft Docs
+description: További információk a felhőalapú számítási szolgáltatás, amely tartalmazza a számítási példányokért széles kijelölt & szolgáltatások, amely is fel-le automatikusan az alkalmazás vagy a vállalat igényeinek.
 services: security
 documentationcenter: na
 author: UnifyCloud
 manager: swadhwa
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 536745d869ea3bcd0beedad3712597b00e600796
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 489b2a66cadb77a338f9ae00443c072a4e19edfd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-technical-capabilities"></a>Az Azure biztonsági technikai lehetőségeit
 
@@ -100,7 +100,7 @@ Core Azure identitáskezelési funkciói a következők:
 
 Számos szervezet alkalmazásokként egy szolgáltatott szoftverként (SaaS) például Office 365, a mezőben és a Salesforce a végfelhasználói termelékenység szoftver támaszkodnak. Hagyományosan informatikai munkatársak külön-külön létrehozásához, és minden SaaS-alkalmazás a felhasználói fiókok frissítése szükséges, és a felhasználóknak kellett jegyezze meg a jelszót az egyes SaaS-alkalmazáshoz.
 
-[Az Azure AD a helyszíni Active Directory kiterjeszti a felhőbe](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis), engedélyezése nemcsak az elsődleges szervezeti fiókkal jelentkeznek be a tartományhoz csatlakoztatott eszközök és a vállalati erőforrásokhoz, de a munkájukhoz szükséges is minden a web- és SaaS-alkalmazásokhoz.
+[Az Azure AD a helyszíni Active Directory kiterjeszti a felhőbe](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis), lehetővé teszi nemcsak az elsődleges szervezeti fiókkal jelentkeznek be a tartományhoz csatlakoztatott eszközökre és a vállalati erőforrások, de szükséges is minden a web- és SaaS-alkalmazásokhoz a feladat.
 
 Nem csak felhasználóknak nem kell több példányban felhasználónevek és jelszavak kezelése, alkalmazás-hozzáférés csak alapján automatikusan kiosztott vagy vonja kiosztott szervezeti csoportok és az állapotuk egy alkalmazott. [Az Azure AD vezet be a biztonsági és irányítási vezérlők](https://docs.microsoft.com/azure/active-directory/active-directory-sso-integrate-saas-apps) , amelyek lehetővé teszik a központilag kezelheti a felhasználói hozzáférés SaaS-alkalmazások között.
 
@@ -166,7 +166,7 @@ Hozzáférés-vezérlés az Azure-ban elindul egy számlázási szempontjából.
 
 Előfizetések is könyvtár van társítva. A directory egy felhasználók csoportját határozza meg. Ezek lehetnek a felhasználók a munkahelyi vagy iskolai, hozott létre a könyvtár, vagy külső felhasználók számára (Ez azt jelenti, hogy a Microsoft Accounts) is lehetnek. Az előfizetések által hozzárendelt szolgáltatás-rendszergazdai (SA) vagy Társadminisztrátorának (CA); directory felhasználók egy részhalmazát érhetők el az egyetlen kivétel, hogy az örökölt összetevők miatt, Microsoft Accounts (korábbi nevén Windows Live ID Azonosítóval) rendelhető rendszergazdai (SA) vagy a CA anélkül, hogy a címtárban található.
 
-A vállalat biztonsági célú van szükségük a pontos engedélyeket ad az alkalmazottak kell összpontosítania. Túl sok engedélyeket is elérhetővé teheti a támadásokkal fiókkal. Túl kevés engedélyek jelenti azt, hogy az alkalmazottak nem munkavégzéséhez hatékony. [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is) nyújt segítséget nyújtó részletes hozzáféréskezelést az Azure által oldja meg a problémát.
+A vállalat biztonsági célú van szükségük a pontos engedélyeket ad az alkalmazottak kell összpontosítania. Túl sok engedélyeket is elérhetővé teheti a támadásokkal fiókkal. Túl kevés engedélyek jelenti azt, hogy az alkalmazottak nem munkavégzéséhez hatékony. [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) nyújt segítséget nyújtó részletes hozzáféréskezelést az Azure által oldja meg a problémát.
 
 ![Védett erőforrásokhoz való hozzáférést ](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig4.png)
 
@@ -188,9 +188,9 @@ Elérése titkosítását, tegye a következők mindegyikét:
 
 Támogatja az adatok titkosítása az alábbi táblázatban részletes ajánlott titkosítási modellek legalább egyike.
 
-| Encryption Models |  |  |  |
+| Titkosítási modellek |  |  |  |
 | ----------------  | ----------------- | ----------------- | --------------- |
-| Server Encryption | Server Encryption | Server Encryption | Client Encryption
+| Server Encryption | Server Encryption | Server Encryption | Ügyfél-titkosítás
 | Kiszolgálóoldali titkosítás segítségével felügyelt kulcsai | Kiszolgálóoldali titkosítás Customer-Managed kulcsok Azure Key Vault használatával | Kiszolgálóoldali titkosítás a helyszínen felügyelt ügyfél kulcsok használata |
 | • Az azure erőforrás-szolgáltatók titkosítási és visszafejtési műveletek végrehajtása <br> • A Microsoft kezeli a kulcsokat <br>• Teljes felhő funkció | • Az azure erőforrás-szolgáltatók titkosítási és visszafejtési műveletek végrehajtása<br>• Felhasználói vezérlők kulcsok Azure Key Vault keresztül<br>• Teljes felhő funkció | • Az azure erőforrás-szolgáltatók titkosítási és visszafejtési műveletek végrehajtása <br>• Felhasználói vezérlők helyszíni kulcsok <br> • Teljes felhő funkció| • Azure-szolgáltatások visszafejtett adatait nem látja. <br>• Ügyfelek megőrizheti a kulcsokat a helyi (vagy más biztonságos tárolók). Kulcsok nem érhetők el az Azure-szolgáltatások <br>• Csökkenteni felhő funkció|
 
@@ -516,7 +516,7 @@ Többet szeretne tudni biztonsági ehhez beolvassa a részletes biztonsági tém
 
 - [Audit és naplózás](https://www.microsoft.com/en-us/trustcenter/security/auditingandlogging)
 
-- [Cybercrime](https://www.microsoft.com/en-us/trustcenter/security/cybercrime)
+- [Kiberbűnözés mértéke](https://www.microsoft.com/en-us/trustcenter/security/cybercrime)
 
 - [Tervezési és a működési biztonság](https://www.microsoft.com/en-us/trustcenter/security/designopsecurity)
 

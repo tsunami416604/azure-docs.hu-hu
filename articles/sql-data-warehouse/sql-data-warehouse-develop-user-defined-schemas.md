@@ -1,27 +1,26 @@
 ---
-title: "Az SQL Data Warehouse felhasználói sémákkal |} Microsoft Docs"
-description: "Tippek a Transact-SQL-sémák használata az Azure SQL Data Warehouse adattárházzal történő, megoldások."
+title: Felhasználó által definiált sémák használata az SQL Data Warehouse |} Microsoft Docs
+description: Tippek a T-SQL-felhasználó által definiált sémák használata az Azure SQL Data Warehouse adattárházzal történő, megoldások.
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
-ms.assetid: 52af5bd5-d5d3-4f9b-8704-06829fb924e3
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: t-sql
-ms.date: 10/31/2016
-ms.author: jrj;barbkess
-ms.openlocfilehash: dfb58956ad6637cf0f50b4c052ab98fb7c26139d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/12/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: d30434bf3c5e5f27f3a95bcb70bddaf3d92967bd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="user-defined-schemas-in-sql-data-warehouse"></a>Az SQL Data Warehouse felhasználói sémák
+# <a name="using-user-defined-schemas-in-sql-data-warehouse"></a>Az SQL Data Warehouse felhasználói sémák használata
+Tippek a T-SQL-felhasználó által definiált sémák használata az Azure SQL Data Warehouse adattárházzal történő, megoldások.
+
+## <a name="schemas-for-application-boundaries"></a>Az alkalmazás határok sémák
+
 Hagyományos adatraktárak gyakran segítségével külön adatbázisban munkaterhelés, a tartomány vagy a biztonsági alapján alkalmazás határokat hozzon létre. Egy hagyományos SQL Server data warehouse tartalmazhat például egy átmeneti adatbázis, adatraktár-adatbázis és néhány adat adatközpont-adatbázis. Ebben a topológiában az egyes adatbázisok működik, a munkaterhelés és az architektúra biztonsági határ.
 
 Az SQL Data Warehouse ellentétben a teljes adatraktározás számítási feladatáról egy adatbázison belül futtatja. Adatbázis közötti illesztések nem engedélyezettek. Ezért az SQL Data Warehouse egy adatbázis tárolja az adatraktár által használt összes táblának vár.
@@ -120,14 +119,6 @@ FROM    [edw].customer
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
-További fejlesztési tippek, lásd: [fejlesztői áttekintés][development overview].
+## <a name="next-steps"></a>További lépések
+További fejlesztési tippek, lásd: [fejlesztői áttekintés](sql-data-warehouse-overview-develop.md).
 
-<!--Image references-->
-
-<!--Article references-->
-[development overview]: sql-data-warehouse-overview-develop.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->

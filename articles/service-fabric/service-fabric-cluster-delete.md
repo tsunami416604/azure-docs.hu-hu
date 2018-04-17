@@ -1,11 +1,11 @@
 ---
-title: "Egy Azure-fürttel és az erőforrások törlése |} Microsoft Docs"
-description: "Ismerje meg, hogyan teljes törléséhez a Service Fabric fürt, vagy törli a fürtöt tartalmazó erőforráscsoportot, vagy szelektív módon törli az erőforrásokat."
+title: Egy Azure-fürttel és az erőforrások törlése |} Microsoft Docs
+description: Ismerje meg, hogyan teljes törléséhez a Service Fabric fürt, vagy törli a fürtöt tartalmazó erőforráscsoportot, vagy szelektív módon törli az erőforrásokat.
 services: service-fabric
 documentationcenter: .net
-author: ChackDan
+author: aljo-microsoft
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: de422950-2d22-4ddb-ac47-dd663a946a7e
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/24/2017
-ms.author: chackdan
-ms.openlocfilehash: 7672aa12421fbe4ad86e7315d6a7a06c2ff5124d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: aljo
+ms.openlocfilehash: 7da2277fef224ff7859cac1ad5a2290c9dc56a85
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="delete-a-service-fabric-cluster-on-azure-and-the-resources-it-uses"></a>Az Azure és az erőforrásokat, ezzel felhasznál egy Service Fabric-fürt törlése
 A Service Fabric-fürt sok más Azure-erőforrások mellett magát fürterőforrás épül fel. A Service Fabric-fürtök teljes törléséhez ezért az összes őket alkotó erőforrást is törölni kell.
@@ -46,7 +46,7 @@ Remove-AzureRmResourceGroup -Name <name of ResouceGroup> -Force
 Jelenít meg, ha nem használja, győződjön meg arról, hogy a törlés elérhetővé válik a *-Force* lehetőséget. A megerősítő az rg-n és a benne található összes erőforrást törlődnek.
 
 ### <a name="delete-a-resource-group-in-the-azure-portal"></a>Egy erőforráscsoportot az Azure-portálon
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. Lépjen a törölni kívánt Service Fabric-fürtre.
 3. Kattintson a fürt alapvető erőforrások lapon erőforráscsoport nevére.
 4. Ekkor megjelenik a **erőforrás csoport Essentials** lap.
@@ -60,12 +60,12 @@ Ha az erőforráscsoport csak a Service Fabric-fürt törli kapcsolódó erőfor
 
 Ha telepítette a fürthöz, a portál használatával, vagy használja a Service Fabric Resource Manager-sablonok egyikét a sablon gyűjteményből, majd a fürt által használt összes erőforrást címkével rendelkeznek a következő két címkékkel. Döntse el, hogy a törölni kívánt erőforrásokat használhatja őket.
 
-***1. tag:*** kulcs = fürtnév, érték = "a fürt neve"
+***Címke #1:*** kulcs = fürtnév, érték = "a fürt neve"
 
-***2. tag:*** kulcsot resourceName, érték = = ServiceFabric
+***Címke #2:*** kulcsot resourceName, érték = = ServiceFabric
 
 ### <a name="delete-specific-resources-in-the-azure-portal"></a>Az Azure portálon meghatározott erőforrások törlése
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. Lépjen a törölni kívánt Service Fabric-fürtre.
 3. Ugrás a **összes beállítás** az essentials panel.
 4. Kattintson a **címkék** alatt **erőforrás-kezelés** a beállítások panelen.
@@ -84,19 +84,19 @@ Nyisson meg egy PowerShell-ablakot, és a következő PS-parancsmagok futtatás�
 ```powershell
 Login-AzureRmAccount
 ```
-Az egyes erőforrások törölni szeretné, futtassa az alábbi parancsot:
+A törölni kívánt erőforrások mindegyikének futtassa a következő parancsfájlt:
 
 ```powershell
 Remove-AzureRmResource -ResourceName "<name of the Resource>" -ResourceType "<Resource Type>" -ResourceGroupName "<name of the resource group>" -Force
 ```
 
-A rendszer törli, futtassa az alábbi parancsot:
+A rendszer törli, futtassa a következő parancsfájlt:
 
 ```powershell
 Remove-AzureRmResource -ResourceName "<name of the Resource>" -ResourceType "Microsoft.ServiceFabric/clusters" -ResourceGroupName "<name of the resource group>" -Force
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Olvassa el a következő is megtudhat a fürt frissítése és particionálás szolgáltatások:
 
 * [További tudnivalók a fürt frissítése](service-fabric-cluster-upgrade.md)

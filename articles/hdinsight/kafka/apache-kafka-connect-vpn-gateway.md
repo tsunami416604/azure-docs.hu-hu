@@ -1,25 +1,25 @@
 ---
-title: "Virtuális hálózatok - Azure HDInsight használatával Kafka csatlakozni |} Microsoft Docs"
-description: "Útmutató a HDInsight az Azure virtuális hálózaton keresztül Kafka közvetlenül kapcsolódni. Megtudhatja, hogyan Kafka fejlesztési VPN-átjáró használatával, vagy a helyi hálózatban lévő ügyfelek használatával kapcsolódnak a VPN-átjáróeszközt."
+title: Virtuális hálózatok - Azure HDInsight használatával Kafka csatlakozni |} Microsoft Docs
+description: Útmutató a HDInsight az Azure virtuális hálózaton keresztül Kafka közvetlenül kapcsolódni. Megtudhatja, hogyan Kafka fejlesztési VPN-átjáró használatával, vagy a helyi hálózatban lévő ügyfelek használatával kapcsolódnak a VPN-átjáróeszközt.
 services: hdinsight
-documentationCenter: 
+documentationCenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
-ms.devlang: 
+ms.devlang: ''
 ms.custom: hdinsightactive
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/05/2018
 ms.author: larryfr
-ms.openlocfilehash: c82629c0f3d3b32314d22467164a06a4c7bcabfe
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 53502257d85c88195a40b7bda033483bd97ff3f4
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>A HDInsight az Azure virtuális hálózaton keresztül Kafka kapcsolódni
 
@@ -62,7 +62,7 @@ A HDInsight nem engedélyezi a Kafka közvetlen kapcsolatra a nyilvános interne
 
 A HDInsight eszközzel virtuális hálózatban további információkért lásd: [kiterjesztése HDInsight Azure virtuális hálózatok használatával](../hdinsight-extend-hadoop-virtual-network.md).
 
-## <a id="on-premises"></a>Csatlakozás egy helyszíni hálózatból Kafka
+## <a id="on-premises"></a> Csatlakozás egy helyszíni hálózatból Kafka
 
 A helyszíni hálózattal, melyekkel Kafka fürt létrehozásához kövesse a [a helyszíni hálózathoz való csatlakozás HDInsight](./../connect-on-premises-network.md) dokumentum.
 
@@ -78,7 +78,7 @@ Ezeket a lépéseket hozza létre az alábbi konfigurációt:
 
 Győződjön meg arról, hogy egy Kafka kapcsolódni tud a fürt a helyszíni, kövesse a lépéseket a a [példa: ügyfél Python](#python-client) szakasz.
 
-## <a id="vpnclient"></a>A VPN-ügyfél Kafka csatlakozni
+## <a id="vpnclient"></a> A VPN-ügyfél Kafka csatlakozni
 
 Ebben a szakaszban a lépések segítségével hozza létre a következő konfigurációt:
 
@@ -244,7 +244,7 @@ Ebben a szakaszban a lépések segítségével hozza létre a következő konfig
 
 Alapértelmezés szerint Zookeeper az ügyfelek számára a Kafka brókerek tartomány nevét adja vissza. Ez a konfiguráció nem működik a VPN-, szoftver-ügyfél, a virtuális hálózat entitások névfeloldás nem használható. Ehhez a konfigurációhoz az alábbi lépések segítségével Kafka hivatkozik tartománynevek helyett IP-címek konfigurálása:
 
-1. Webböngésző segítségével, folytassa a https://CLUSTERNAME.azurehdinsight.net. Cserélje le __CLUSTERNAME__ HDInsight-fürt Kafka nevével.
+1. A webböngészőben nyissa https://CLUSTERNAME.azurehdinsight.net. Cserélje le __CLUSTERNAME__ HDInsight-fürt Kafka nevével.
 
     Amikor a rendszer kéri, használja a HTTPS-felhasználónevet és jelszót a fürthöz. Az Ambari webes felhasználói felületén, a fürt akkor jelenik meg.
 
@@ -292,7 +292,7 @@ Alapértelmezés szerint Zookeeper az ügyfelek számára a Kafka brókerek tart
 
 Ha csatlakozni szeretne a VPN-átjáró, használja a __csatlakozás az Azure-bA__ szakasza a [egy pont – hely kapcsolat beállítása](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect) dokumentum.
 
-## <a id="python-client"></a>Példa: Python ügyfél
+## <a id="python-client"></a> Példa: Python ügyfél
 
 Kafka kapcsolat ellenőrzéséhez tegye a következőket hozhat létre és futtathat a Python-készítő és a fogyasztói:
 

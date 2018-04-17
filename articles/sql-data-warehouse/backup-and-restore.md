@@ -1,23 +1,23 @@
 ---
 title: Az Azure SQL Data Warehouse biztonsági mentési és visszaállítási - pillanatképeket, georedundáns |} Microsoft Docs
-description: Ismerje meg, az Azure SQL Data Warehouse biztonsági mentési és visszaállítási működése. Az adatok adatraktár biztonsági használatával állítsa vissza az adatraktár egy visszaállítási pontot az elsődleges régióban, vagy georedundáns biztonsági mentések használatával állítsa vissza egy másik földrajzi régióban.
+description: Ismerje meg, az Azure SQL Data Warehouse biztonsági mentési és visszaállítási működése. Az adatraktár visszaállítása az elsődleges régióban visszaállítási pontot a biztonsági adatraktár mentések. Georedundáns biztonsági mentések használatával állítsa vissza egy másik földrajzi régióban.
 services: sql-data-warehouse
 author: ronortloff
-manager: jhubbard
+manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
-ms.date: 03/28/2018
+ms.date: 04/11/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 7f540bca0d2eb2c9009a386bd14a5beda2912014
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 21708f51d09d640721af196d2ffa91aede97ffb3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Biztonsági mentés és visszaállítás az Azure SQL Data Warehouse
-Ismerje meg, az Azure SQL Data Warehouse biztonsági mentési és visszaállítási működése. Az adatok adatraktár biztonsági használatával állítsa vissza az adatraktár egy visszaállítási pontot az elsődleges régióban, vagy georedundáns biztonsági mentések használatával állítsa vissza egy másik földrajzi régióban. 
+Ismerje meg, az Azure SQL Data Warehouse biztonsági mentési és visszaállítási működése. Az adatraktár visszaállítása az elsődleges régióban visszaállítási pontot a biztonsági adatraktár mentések. Georedundáns biztonsági mentések használatával állítsa vissza egy másik földrajzi régióban. 
 
 ## <a name="what-is-backup-and-restore"></a>Mi az biztonsági mentési és visszaállítási?
 A *adatraktár biztonsági mentését* , melyekkel egy adatraktár visszaállítani az adatbázis másolata.  Mivel az SQL Data Warehouse egy elosztott rendszerek, adatok adatraktár biztonsági sok fájl található az Azure storage áll. Egy adatraktár biztonsági mentését a helyi adatbázis-pillanatképek és földrajzi-biztonsági mentések az összes adatbázist és egy adatraktár társított fájlok is tartalmaz. 

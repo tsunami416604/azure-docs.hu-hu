@@ -5,7 +5,7 @@
 | Sorozatonkénti (Dv2, F stb.) virtuálisgép-magok [előfizetésenként](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> régiónként | Kapcsolatfelvétel a támogatási szolgáltatással |
 | [Társadminisztrátorok](../articles/billing-add-change-azure-subscription-administrator.md) előfizetésenként |Korlátlan |Korlátlan |
 | [Tárfiókok](../articles/storage/common/storage-create-storage-account.md) előfizetésenként |200 |200<sup>2</sup> |
-| [Erőforráscsoportok](../articles/azure-resource-manager/resource-group-overview.md) előfizetésenként |800 |800 |
+| [Erőforráscsoportok](../articles/azure-resource-manager/resource-group-overview.md) előfizetésenként |980 |980 |
 | [Rendelkezésre állási csoportok](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) előfizetésenként |2000 régiónként |2000 régiónként |
 | Resource Manager API-olvasási műveletek |15 000 óránként |15 000 óránként |
 | Resource Manager API-írási műveletek |1200 óránként |1200 óránként |

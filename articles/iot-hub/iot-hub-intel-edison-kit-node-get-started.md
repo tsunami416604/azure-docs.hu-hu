@@ -3,7 +3,7 @@ title: Intel Edison felhőbe (Node.js) - Intel Edison csatlakozzon az Azure IoT 
 description: Megtudhatja, hogyan kell beállítania, és Azure IoT-központ Intel Edison adatokat küldeni az Azure felhőalapú platform ebben az oktatóanyagban Intel Edison csatlakozni.
 services: iot-hub
 documentationcenter: ''
-author: shizn
+author: rangv
 manager: timlt
 tags: ''
 keywords: az Azure iot intel edison, intel edison iot-központot, intel edison adatküldés intel felhőbe edison felhőbe
@@ -13,14 +13,14 @@ ms.devlang: nodejs
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 6/15/2017
-ms.author: xshi
+ms.date: 4/11/2018
+ms.author: rangv
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5a31efba704045196b5563f7bc467c773bea7805
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 78dd623d021daa7f8cb0d52dd4e438aebe81e924
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-intel-edison-to-azure-iot-hub-nodejs"></a>Intel Edison csatlakozni az Azure IoT Hub (Node.js)
 
@@ -57,7 +57,7 @@ Az IoT-központ az Ön által létrehozott Intel Edison csatlakozni. Majd futtas
 * Az internethez.
 * A típus egy USB-kábel Micro B
 * A közvetlen aktuális (DC) tápegység. A tápegység kell tekinthető meg az alábbiak szerint:
-  - 7-15V DC
+  - 7-15V TARTOMÁNYVEZÉRLŐ
   - Legalább 1500mA
   - A Központ/belső PIN-kódot kell lennie a pozitív sarkpontot az energiaellátás
 

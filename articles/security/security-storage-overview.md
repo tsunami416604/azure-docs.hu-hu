@@ -1,5 +1,5 @@
 ---
-title: "Az Azure Storage használható funkciókat |} Microsoft Docs"
+title: Az Azure Storage használható funkciókat |} Microsoft Docs
 description: " Ez a cikk az alapvető áttekintést nyújt az Azure Storage használható az Azure biztonsági funkciók. "
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: a118bde2290e68c9a741e40cda210d47db918047
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 8160ede71930bf4c15969044deb3fced855f03e6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-storage-security-overview"></a>Az Azure storage biztonsági áttekintése
 Az Azure Storage az ügyfelek igényeihez alkalmazkodó, modern, a tartósságra, rendelkezésre állásra és méretezhetőségre tervezett alkalmazásokhoz legmegfelelőbb felhőalapú tárolómegoldás. Az Azure Storage biztonsági funkciók széles választékát nyújtja:
@@ -44,11 +44,11 @@ Az alábbiakban az alapvető szolgáltatásokat, a cikkben szerepelnek:
 * Azure Key Vault
 
 ## <a name="role-based-access-control-rbac"></a>Szerepköralapú hozzáférés-vezérlés (RBAC)
-A storage-fiókkal, és a szerepköralapú hozzáférés-vezérlést (RBAC) biztonságát. Alapján történő hozzáférés a [tudniuk kell, hogy](https://en.wikipedia.org/wiki/Need_to_know) és [legalacsonyabb jogosultsági szint](https://en.wikipedia.org/wiki/Principle_of_least_privilege) biztonsági elveket elengedhetetlen a szervezeteknek, amelyek az adatok biztonsági házirendek kikényszerítéséhez. A következő hozzáférési jogokat kapnak a megfelelő RBAC szerepkört rendel a csoportok és alkalmazások egy adott hatókörben. Használhat [beépített RBAC-szerepkörök](../active-directory/role-based-access-built-in-roles.md), például a tárolási fiók közreműködői jogosultságokat hozzárendelése felhasználókhoz.
+A storage-fiókkal, és a szerepköralapú hozzáférés-vezérlést (RBAC) biztonságát. Alapján történő hozzáférés a [tudniuk kell, hogy](https://en.wikipedia.org/wiki/Need_to_know) és [legalacsonyabb jogosultsági szint](https://en.wikipedia.org/wiki/Principle_of_least_privilege) biztonsági elveket elengedhetetlen a szervezeteknek, amelyek az adatok biztonsági házirendek kikényszerítéséhez. A következő hozzáférési jogokat kapnak a megfelelő RBAC szerepkört rendel a csoportok és alkalmazások egy adott hatókörben. Használhat [beépített RBAC-szerepkörök](../role-based-access-control/built-in-roles.md), például a tárolási fiók közreműködői jogosultságokat hozzárendelése felhasználókhoz.
 
 További információ:
 
-* [Azure Active Directory szerepköralapú hozzáférés-vezérlése](../active-directory/role-based-access-control-configure.md)
+* [Azure Active Directory szerepköralapú hozzáférés-vezérlése](../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="delegated-access-to-storage-objects"></a>Meghatalmazott hozzáférést biztosít a tárolási objektum
 A közös hozzáférésű jogosultságkód (SAS) delegált hozzáférést biztosít azokhoz a tárfiókban lévő erőforrások. A biztonsági Társítások azt jelenti, hogy egy ügyfél egy adott időszakban, és meghatározott engedélyekkel vannak beállítva a tárfiókban lévő objektumokra vonatkozó engedélyeken csak korlátozott biztosíthat. Ezek korlátozott engedélyek megadásához anélkül, hogy a fiók hozzáférési kulcsait megosztásához. A SAS URI, amely a lekérdezési paraméterek magában foglalja a hitelesített hozzáférést a tároló egyik erőforrásához szükséges összes adatot. Az ügyfél az SA-kat a tárolási erőforrások eléréséhez csak kell megadni. a SAS-t, a megfelelő konstruktort vagy metódust.

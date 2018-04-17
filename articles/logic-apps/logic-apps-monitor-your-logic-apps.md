@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: fdc986fb32225f94e5a257c46a7b943abc0edf8f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c1d5bc55b132b449ebc2964ef95016a6a4780c19
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Állapotának figyelésére, diagnosztikai naplózás beállítása és az Azure Logic Apps riasztás bekapcsolása
 
@@ -66,7 +66,7 @@ Hibák vagy egyéb lehetséges problémákat kapcsolatos értesítéseket kapni,
    ![Lépés részletei](media/logic-apps-monitor-your-logic-apps/monitor-view-details.png)
    
    > [!NOTE]
-   > Az összes futásidejű adatokat és eseményeket a Logic Apps szolgáltatáson belül vannak titkosítva. Akkor lesznek visszafejtve, csak akkor, ha egy felhasználó kéri, hogy az adatok megtekintéséhez. Ezeket az eseményeket az elérésére is szabályozhatja [átruházásához hozzáférés-vezérlés (RBAC)](../active-directory/role-based-access-control-what-is.md).
+   > Az összes futásidejű adatokat és eseményeket a Logic Apps szolgáltatáson belül vannak titkosítva. Akkor lesznek visszafejtve, csak akkor, ha egy felhasználó kéri, hogy az adatok megtekintéséhez. Ezeket az eseményeket az elérésére is szabályozhatja [átruházásához hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md).
 
 6. Ahhoz, hogy egy adott indítási esemény részleteit, lépjen vissza a **áttekintése** ablaktáblán. A **előzmények indítás**, jelölje be az indítási esemény. Most már megtekintheti adatait, például bemenetekhez és kimenetekhez, például:
 
@@ -217,7 +217,7 @@ Riasztások nélkül beállítása [Azure Naplóelemzés](../log-analytics/log-a
 
 ## <a name="azure-diagnostics-event-settings-and-details"></a>Az Azure Diagnostics esemény beállításai és részletek
 
-Minden egyes diagnosztikai esemény részleteit a Logic Apps alkalmazást és az esemény, például az állapot, a start idő, befejezési idő, és így tovább. Programozott módon állítsa be a figyelés, nyomon követését és naplózását, szervezeti egység használja ezeket az adatokat a a [REST API-t az Azure Logic Apps](https://docs.microsoft.com/rest/api/logic) és a [REST API-t az Azure Diagnostics](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftlogicworkflows).
+Minden egyes diagnosztikai esemény részleteit a Logic Apps alkalmazást és az esemény, például az állapot, a start idő, befejezési idő, és így tovább. Programozott módon állítsa be a figyelés, nyomon követését és naplózását, használja az ezen adatok a [REST API-t az Azure Logic Apps](https://docs.microsoft.com/rest/api/logic) és a [REST API-t az Azure Diagnostics](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftlogicworkflows).
 
 Például a `ActionCompleted` eseménynek a `clientTrackingId` és `trackedProperties` nyomon követése és figyelésére használható tulajdonságokról:
 

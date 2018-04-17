@@ -1,9 +1,9 @@
 ---
-title: "Használja a ReportViewer webhely |} Microsoft Docs"
-description: "Ez a témakör ismerteti, hogyan hozhat létre a Visual Studio ReportViewer vezérlő, amely a Microsoft Azure virtuális gépeket tárolt jelentés megjeleníti a Microsoft Azure webhely."
+title: Használja a ReportViewer webhely |} Microsoft Docs
+description: Ez a témakör ismerteti, hogyan hozhat létre a Visual Studio ReportViewer vezérlő, amely a Microsoft Azure virtuális gépeket tárolt jelentés megjeleníti a Microsoft Azure webhely.
 services: virtual-machines-windows
 documentationcenter: na
-author: guyinacube
+author: markingmyname
 manager: erikre
 editor: monicar
 tags: azure-service-management
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
-ms.author: asaxton
-ms.openlocfilehash: c4f7c829e6fe3890342bd973185e679dd3ea2df5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: af8a4a9c25005925bed3ddb78ced618e669f7f09
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-reportviewer-in-a-web-site-hosted-in-azure"></a>A ReportViewer használata Azure-ban üzemeltetett webhelyen
 > [!IMPORTANT] 
@@ -86,7 +86,7 @@ Az Azure-bA ASP.NET webalkalmazás közzétételét, lásd: [hogyan: át, és te
 > 
 > 
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>További források
 [Microsoft-jelentések](http://go.microsoft.com/fwlink/?LinkId=205399)
 
 [Az SQL Server Business Intelligence használata Azure-beli virtuális gépeken](../classic/ps-sql-bi.md)

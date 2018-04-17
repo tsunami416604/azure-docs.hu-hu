@@ -1,8 +1,24 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: virtual-network
+author: genli
+ms.service: virtual-network
+ms.topic: include
+ms.date: 04/13/2018
+ms.author: genli
+ms.custom: include file
+ms.openlocfilehash: 8476a7dadeaff64e703186396b4505cc307e4d3a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 04/16/2018
+---
 ## <a name="how-to-create-a-classic-vnet-using-azure-cli"></a>Egy Azure parancssori felület használatával klasszikus virtuális hálózat létrehozása
-Az Azure CLI segítségével a parancssorból felügyelheti az erőforrásokat bármilyen Windows, Linux vagy OSX rendszert futtató számítógépről. Az alábbi lépésekkel hozhat létre egy VNetet az Azure CLI segítségével.
+Az Azure CLI segítségével a parancssorból felügyelheti az erőforrásokat bármilyen Windows, Linux vagy OSX rendszert futtató számítógépről.
 
 1. Ha még sosem használta az Azure CLI-t, akkor tekintse meg [Install and Configure the Azure CLI](../articles/cli-install-nodejs.md) (Az Azure CLI telepítése és konfigurálása) részt, és kövesse az utasításokat addig a pontig, ahol ki kell választania az Azure-fiókot és -előfizetést.
-2. Futtassa az **azure network vnet create** parancsot egy VNet és egy alhálózat létrehozásához az alábbiak szerint. A kimenet után látható lista ismerteti a használt paramétereket.
+2. Egy VNet és egy alhálózat létrehozásához futtassa a **azure-hálózat virtuális hálózat létrehozása** parancs:
    
             azure network vnet create --vnet TestVNet -e 192.168.0.0 -i 16 -n FrontEnd -p 192.168.1.0 -r 24 -l "Central US"
    
@@ -14,18 +30,18 @@ Az Azure CLI segítségével a parancssorból felügyelheti az erőforrásokat b
             + Setting network configuration
             info:    network vnet create command OK
    
-   * **--vnet**. A létrehozni kívánt VNet neve. A mi esetünkben *TestVNet*
-   * **-e (vagy--címtartomány)**. Virtuális hálózat címterület. A mi esetünkben *192.168.0.0*
-   * **-i (vagy - cidr)**. Hálózati maszk CIDR formátumban. A mi esetünkben *16*.
-   * **-n (vagy--alhálózatneve**). Az első alhálózat neve. A mi esetünkben *FrontEnd*.
-   * **-p (vagy--ip-alhálózat-start)**. Kezdő IP-cím alhálózati vagy alhálózati címtartományt. A mi esetünkben *192.168.1.0*.
-   * **-r (vagy--alhálózat-cidr)**. Hálózati maszk alhálózat CIDR formátumban. A mi esetünkben *24*.
-   * **-l (vagy --location)**. Az Azure-régió, ahol a VNet létrejön. A mi esetünkben *USA középső RÉGIÓJA*.
-3. Futtassa az **azure network vnet subnet create** parancsot egy alhálózat létrehozásához az alábbiak szerint. A kimenet után látható lista ismerteti a használt paramétereket.
+   * **--vnet**. A létrehozni kívánt VNet neve. A forgatókönyvhöz *TestVNet*
+   * **-e (vagy--címtartomány)**. Virtuális hálózat címterület. A forgatókönyvhöz *192.168.0.0*
+   * **-i (vagy - cidr)**. Hálózati maszk CIDR formátumban. A forgatókönyvhöz *16*.
+   * **-n (vagy--alhálózatneve**). Az első alhálózat neve. A forgatókönyvhöz *előtér*.
+   * **-p (vagy--ip-alhálózat-start)**. Kezdő IP-cím alhálózati vagy alhálózati címtartományt. A forgatókönyvhöz *192.168.1.0*.
+   * **-r (vagy--alhálózat-cidr)**. Hálózati maszk alhálózat CIDR formátumban. A forgatókönyvhöz *24*.
+   * **-l (vagy --location)**. Azure-régió, ahol a VNet létrejön. A forgatókönyvhöz *USA középső RÉGIÓJA*.
+3. Egy alhálózat létrehozásához futtassa a **létrehozása az azure vnet alhálózaton** parancs:
    
             azure network vnet subnet create -t TestVNet -n BackEnd -a 192.168.2.0/24
    
-    A fenti parancs várható kimenete:
+    Az előző parancs várható kimenete:
    
             info:    Executing command network vnet subnet create
             + Looking up network configuration
@@ -37,14 +53,14 @@ Az Azure CLI segítségével a parancssorból felügyelheti az erőforrásokat b
             data:    Address prefix                  : 192.168.2.0/24
             info:    network vnet subnet create command OK
    
-   * **-t (vagy--vnet-name**. A VNet neve, ahol létrejön az alhálózat. A mi esetünkben *TestVNet*.
-   * **-n (vagy --name)**. Az új alhálózat neve. A mi esetünkben *háttér*.
-   * **-a (vagy --address-prefix)**. Az alhálózat CIDR-blokkja. Négy esetünkben *192.168.2.0/24*.
-4. Futtassa az **azure network vnet show** parancsot az új vnet tulajdonságainak megtekintéséhez a lent látható módon.
+   * **-t (vagy--vnet-name**. A VNet neve, ahol létrejön az alhálózat. A forgatókönyvhöz *TestVNet*.
+   * **-n (vagy --name)**. Az új alhálózat neve. A forgatókönyvhöz *háttér*.
+   * **-a (vagy --address-prefix)**. Az alhálózat CIDR-blokkja. A forgatókönyvhöz *192.168.2.0/24*.
+4. Az új vnet tulajdonságainak megtekintéséhez futtassa a **azure hálózati vnet show** parancs:
    
             azure network vnet show
    
-    A fenti parancs várható kimenete:
+    Az előző parancs várható kimenete:
    
             info:    Executing command network vnet show
             Virtual network name: TestVNet

@@ -10,11 +10,11 @@ ms.custom: scale out apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 224639dcc7da950801c7a5959ec14fc5ac7313e0
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: cf54c789d766c4bd3d353028e75e34c961470070
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Egy több-bérlős Szolgáltatottszoftver-alkalmazást, amely az adatbázis-/-bérlő mintát használ, az SQL-adatbázis bemutatása
 
@@ -24,7 +24,7 @@ Alkalmazás forrás kódot és kezelésre szolgáló parancsfájlok érhetők el
 
 ## <a name="application-architecture"></a>Alkalmazásarchitektúra
 
-A Wingtip SaaS-alkalmazás az adatbázis-/-bérlő modellt használ. SQL rugalmas készletek hatékonyságának maximalizálása használ. A létrehozásához és a leképezés bérlők számára az adatokat a katalógus-adatbázist használja. A core Wingtip SaaS-alkalmazás egy címkészlet, amely három minta bérlők, valamint a katalógus-adatbázis használja. A kezdeti telepítés bővítmények Wingtip SaaS oktatóanyagok eredményez számos befejezése. Új, például elemzési adatbázisok és az adatbázisok közötti séma felügyeleti bővítmények.
+A Wingtip SaaS-alkalmazás az adatbázis-/-bérlő modellt használ. SQL rugalmas készletek hatékonyságának maximalizálása használ. A létrehozásához és a leképezés bérlők számára az adatokat a katalógus-adatbázist használja. A core Wingtip SaaS-alkalmazás egy címkészlet, amely három minta bérlők, valamint a katalógus-adatbázis használja. Az alkalmazáskatalógus és a bérlői kiszolgálók DNS-aliasokkal használt lettek kiosztva. Ezek aliasok segítségével a Wingtip alkalmazás által használt aktív erőforrások mutató hivatkozás kezelése. Ezek aliasok nem frissítették, hogy a vész-helyreállítási oktatóanyagok a helyreállítási erőforrások mutasson. A kezdeti telepítés bővítmények Wingtip SaaS oktatóanyagok eredményez számos befejezése. Új, például elemzési adatbázisok és az adatbázisok közötti séma felügyeleti bővítmények.
 
 
 ![A Wingtip Szolgáltatottszoftver-architektúra](media/saas-dbpertenant-wingtip-app-overview/app-architecture.png)

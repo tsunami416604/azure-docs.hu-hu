@@ -1,11 +1,11 @@
 ---
-title: "Az Azure gépi tanulás használja az SQL Data Warehouse szolgáltatással |} Microsoft Docs"
-description: "Oktatóanyag az Azure Machine Learning Azure SQL Data Warehouse adattárházzal történő, megoldások fejlesztésére irányuló használatához."
+title: Az Azure gépi tanulás használja az SQL Data Warehouse szolgáltatással |} Microsoft Docs
+description: Oktatóanyag az Azure Machine Learning Azure SQL Data Warehouse adattárházzal történő, megoldások fejlesztésére irányuló használatához.
 services: sql-data-warehouse
 documentationcenter: NA
 author: kevinvngo
 manager: barbkess
-editor: 
+editor: ''
 ms.assetid: ac6bc731-6add-47a9-b3fe-68996e656f4d
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
 ms.openlocfilehash: c19860c6b5b1c15d1e29ddc67f9cf9ad4618725b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-machine-learning-with-sql-data-warehouse"></a>Az Azure gépi tanulás használja az SQL Data Warehouse szolgáltatással
 Az Azure Machine Learning egy teljes körűen felügyelt prediktív elemzési szolgáltatás, amely segítségével az adatok alapján prediktív modellek létrehozása az SQL Data Warehouse, és tegye közzé felhasználásához felhasználásra kész webszolgáltatásként. A prediktív elemzés alapvető és a gépi tanulás olvasásával [Bevezetés az Machine Learning Azure][Introduction to Machine Learning on Azure].  Tudja majd megismerheti, hogyan hozhat létre, betanítását, pontozása és tesztelése a gépi tanulási modell használatával a [létrehozás kísérlet oktatóanyag][Create experiment tutorial].
@@ -109,7 +109,7 @@ Válassza ki azt a író modult, és töltse ki a Tulajdonságok panelen.
 1. A kísérlet futtatásához kattintson a Futtatás a kísérletvászon alatt.
 2. A kísérlet befejezése után minden modul lesz egy zöld pipa jelzi, hogy sikeresen befejeződött.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További fejlesztési tippek: [SQL Data Warehouse fejlesztői áttekintés][SQL Data Warehouse development overview].
 
 <!--Image references-->

@@ -1,11 +1,11 @@
 ---
-title: "Több IP-címek az Azure virtuális gépek - PowerShell |} Microsoft Docs"
-description: "Megtudhatja, hogyan több IP-címek hozzárendelése a virtuális gép PowerShell-lel |} Erőforrás-kezelő."
+title: Több IP-címek az Azure virtuális gépek - PowerShell |} Microsoft Docs
+description: Megtudhatja, hogyan több IP-címek hozzárendelése a virtuális gép PowerShell-lel |} Erőforrás-kezelő.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: c44ea62f-7e54-4e3b-81ef-0b132111f1f8
 ms.service: virtual-network
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: jdial;annahar
-ms.openlocfilehash: b3690ec991add437afdaba3ef22022d49c962b34
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: bfc8f432e868c03d101ca7bfbc6b59f6e98ce29b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Több IP-címek hozzárendelése a virtuális gépek PowerShell használatával
 
@@ -194,7 +194,7 @@ A következő lépések bemutatják, hogyan több IP-címmel, például virtuál
 
 ## <a name="add"></a>IP-címek hozzáadása a virtuális gépek
 
-Egy hálózati adapterre privát és nyilvános IP-címeket adhat hozzá a következő lépések végrehajtásával. A következő szakaszokban szereplő példák azt feltételezik, hogy már van egy virtuális gép leírt három IP-konfigurációk a [forgatókönyv](#Scenario) ezen cikk, de nem szükséges, hogy végezzen.
+Az Azure-hálózat illesztőhöz privát és nyilvános IP-címek adhat hozzá a következő lépések végrehajtásával. A következő szakaszokban szereplő példák azt feltételezik, hogy már van egy virtuális gép leírt három IP-konfigurációk a [forgatókönyv](#Scenario) ezen cikk, de nem szükséges, hogy végezzen.
 
 1. Nyisson meg egy PowerShell-parancssort, és hajtsa végre a fennmaradó lépéseit ebben a szakaszban egy PowerShell-munkameneten belül. Ha még nem rendelkezik a PowerShell telepítése és konfigurálása, hajtsa végre a a [telepítése és konfigurálása az Azure PowerShell](/powershell/azure/overview) cikk.
 2. A következő $Variables "értékek" módosítása a hálózati adapter IP-cím hozzáadásához és az erőforráscsoport és a hálózati adapter létezik a hely nevét:

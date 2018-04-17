@@ -1,6 +1,6 @@
 ---
-title: "Azure Redis Cache konfigurálása |} Microsoft Docs"
-description: "Azure Redis Cache Redis alapértelmezett konfigurációjának megértéséhez, valamint megtudhatja, hogyan konfigurálhatja az Azure Redis Cache példányt"
+title: Azure Redis Cache konfigurálása |} Microsoft Docs
+description: Azure Redis Cache Redis alapértelmezett konfigurációjának megértéséhez, valamint megtudhatja, hogyan konfigurálhatja az Azure Redis Cache példányt
 services: redis-cache
 documentationcenter: na
 author: wesmc7777
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: 2e2e22c17bce4bdaf4988001db8de31b68f497fc
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0cd21c0367a95d3e866137797ac32fc5bdd196c0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-configure-azure-redis-cache"></a>Azure Redis Cache konfigurálása
 Ez a témakör ismerteti az Azure Redis Cache példány érhető el a konfigurációkat. Ez a témakör is magában foglalja az Azure Redis Cache példány alapértelmezett Redis kiszolgálókonfiguráció.
@@ -79,7 +79,7 @@ Kattintson a **tevékenységnapló** művelet elvégezhető a gyorsítótár meg
 
 ### <a name="access-control-iam"></a>Hozzáférés-vezérlés (IAM)
 
-A **hozzáférés-vezérlés (IAM)** szakasz támogatást nyújt az Azure-portál szerepköralapú hozzáférés-vezérlés (RBAC). Ez a konfiguráció segítségével a szervezetek követelményeknek a access management egyszerűen és pontosan. További információkért lásd: [az Azure portál szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-configure.md).
+A **hozzáférés-vezérlés (IAM)** szakasz támogatást nyújt az Azure-portál szerepköralapú hozzáférés-vezérlés (RBAC). Ez a konfiguráció segítségével a szervezetek követelményeknek a access management egyszerűen és pontosan. További információkért lásd: [az Azure portál szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="tags"></a>Címkék
 
@@ -402,7 +402,7 @@ Kattintson a **új támogatja a kérelem** a gyorsítótárhoz támogatási kér
 | `maxmemory-samples` |3 |A memóriahasználat LRU és minimális TTL algoritmusok közelítő algoritmusok pontos algoritmusok helyett. Alapértelmezés szerint Redis ellenőrzések három kulcsok és kivételezések azt, amelyik kevesebb nemrég lett megadva. |
 | `lua-time-limit` |5000 |Maximális végrehajtási idő ezredmásodpercben Lua parancsfájlra. Ha eléri a maximális végrehajtási ideje, Redis naplózza, hogy egy parancsfájl még végrehajtása után a maximális engedélyezett idő, és hiba történt a lekérdezések megválaszolásához kezdődik. |
 | `lua-event-limit` |500 |Parancsfájl esemény sor maximális mérete. |
-| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Az ügyfél kimeneti puffer korlátok segítségével kényszerítheti az ügyfelek, amelyek nem adatainak olvasása elég gyors kiszolgálóról (gyakori oka az, hogy Pub/Sub ügyfél nem lehet felhasználni a lehető leghamarabb a közzétevő születik őket üzenetek) valamilyen okból megszakad. Tovább információ: [http://redis.io/topics/clients](http://redis.io/topics/clients). |
+| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 032mb 8mb 60 0 |Az ügyfél kimeneti puffer korlátok segítségével kényszerítheti az ügyfelek, amelyek nem adatainak olvasása elég gyors kiszolgálóról (gyakori oka az, hogy Pub/Sub ügyfél nem lehet felhasználni a lehető leghamarabb a közzétevő születik őket üzenetek) valamilyen okból megszakad. Tovább információ: [http://redis.io/topics/clients](http://redis.io/topics/clients). |
 
 <a name="databases"></a>
 <sup>1</sup>vonatkozó korlát `databases` eltér az egyes Azure Redis Cache IP-címek és a gyorsítótár létrehozásakor állítható be. Ha nincs `databases` beállítás során megadott gyorsítótár létrehozását, az alapértelmezett érték 16.
@@ -463,7 +463,7 @@ Adatbázisokkal kapcsolatos további információkért lásd: [Mik azok a Redis-
 > * DEBUG
 > * ÁTTELEPÍTÉSE
 > * MENTÉSE
-> * SHUTDOWN
+> * LEÁLLÍTÁS
 > * SLAVEOF
 > * FÜRT - fürt írási parancsokat le vannak tiltva, de csak olvasható fürt parancsot.
 > 

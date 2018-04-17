@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: cherylmc
-ms.openlocfilehash: dfa116981cb0ce912ee83fade54f2502262178bc
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 9ecd8dc40e168c2fd37e3d58ee588a0d9626a04a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>VPN-átjáró konfigurációs beállításairól
 
@@ -79,9 +79,9 @@ New-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --resource-group TestRG1 --vnet VNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait
 ```
 
-###  <a name="resizechange"></a>A Termékváltozat módosítása és átméretezése
+###  <a name="resizechange"></a>Átméretezése, vagy egy SKU módosítása
 
-Átjáró átméretezése termékváltozata viszonylag egyszerű. Minimális állásidő, az átjáró átméretezi lesz. Van azonban szabályok vonatkozó átméretezése:
+Ha van VPN-átjáró és egy másik átjáró SKU használni kívánt, az alábbi lehetőségek állnak az átjáró-Termékváltozat vagy átméretezése, vagy egy másikra módosításához. Ha módosítja egy másik átjáró-Termékváltozat, a meglévő átjáró teljes törlése, és egy új build. Ez legfeljebb 45 perc is beletelhet. Szemben ha azt szeretné, hogy egy átjáró-Termékváltozat, fog minimális állásidő mert Önnek nincs törlése, és építse újra az átjárót. Lehetősége van az átjáró-Termékváltozat átméretezése, mint megváltoztatnia, ha ehhez célszerű. Van azonban szabályok vonatkozó átméretezése:
 
 1. Az átméretezés során a VpnGw1, a VpnGw2 és a VpnGw3 termékváltozatok közül választhat.
 2. Ha a régi átjárók termékváltozataival dolgozik, az átméretezéskor az Alapszintű, a Standard és a Nagy teljesítményű termékváltozatok közül választhat.

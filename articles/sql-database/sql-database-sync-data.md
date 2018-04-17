@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: data-sync
 ms.topic: article
-ms.date: 04/01/2018
+ms.date: 04/10/2018
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: e66adb8b0485e30fded487e18af6b2030f9c7f5b
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 365a612b20ed91a6acde566dff12b07ff3b8b676
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync-preview"></a>Szinkronizálja az adatokat több felhőalapú és helyszíni adatbázisok az SQL adatszinkronizálás (előzetes verzió)
 
@@ -110,7 +110,7 @@ Adatok szinkronizálása által beszúrási, frissítési és törlési esemény
 
 #### <a name="limitations-on-service-and-database-dimensions"></a>A szolgáltatás és az adatbázis-dimenziókra korlátozásai
 
-| **Dimenziók**                                                      | **Limit**              | **Megkerülő megoldás**              |
+| **Dimenziók**                                                      | **Korlát**              | **Megkerülő megoldás**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
 | Szinkronizálási csoportok maximális száma bármely adatbázis is tartozik.       | 5                      |                             |
 | Több végpont már egy szinkronizálási csoportban              | 30                     | Több szinkronizálási csoportok létrehozása |
@@ -138,6 +138,11 @@ Igen. A központ adatbázis SQL-adatbázis fiókkal kell rendelkeznie.
 
 ### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>Adatszinkronizálás segítségével csak SQL Server helyszíni adatbázisok közötti szinkronizálás? 
 Közvetlenül nem. Szinkronizálhatja a helyszíni SQL Server-adatbázisok közötti közvetve, azonban Hub-adatbázis létrehozása az Azure-ban, és majd a szinkronizálási csoportba való felvételekor a helyszíni adatbázisokat.
+
+### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-subscriptions"></a>Adatszinkronizálás segítségével különböző előfizetéshez tartozó SQL-adatbázisok közötti szinkronizálás?
+Igen. Erőforráscsoportok különböző előfizetések tulajdonában tartozó SQL-adatbázisok közötti szinkronizálása.
+-   Ha ugyanannak a bérlőnek a előfizetések tartoznak, és Ön jogosult az előfizetéseket, konfigurálhatja a szinkronizálási csoport az Azure portálon.
+-   Ellenkező esetben van a PowerShell használatával ad hozzá a szinkronizálási tagok, amelyek különböző előfizetések tartoznak.
    
 ### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-keep-them-synchronized"></a>Is szeretnék adatait egy üres adatbázist a termelési adatbázisból származó adatszinkronizálás segítségével, és majd őrizzük szinkronizálva? 
 Igen. A séma manuális létrehozása az új adatbázis alkalmazott parancsprogrammal azt az eredeti. Miután létrehozta a séma, vegye fel a táblák egy szinkronizálási csoportba másolja az adatokat, és legyen szinkronizálva.
@@ -147,6 +152,12 @@ Igen. A séma manuális létrehozása az új adatbázis alkalmazott parancsprogr
 Nem ajánlott SQL adatszinkronizálás (előzetes verzió) segítségével készítsen biztonsági másolatot az adatokat. Nem biztonsági mentése és visszaállítása egy adott időben mivel SQL adatszinkronizálás (előzetes verzió) szinkronizálások nincsenek verzióval ellátva. SQL adatszinkronizálás (előzetes verzió) nem készít biztonsági másolatot más SQL-objektumok, például a tárolt eljárások, továbbá nem végez el gyorsan az egyenértékű a visszaállítási művelet.
 
 Biztonsági mentési módszer javasolt egy, a következő témakörben: [Azure SQL-adatbázis másolása](sql-database-copy.md).
+
+### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>Adatszinkronizálás szinkronizálása titkosított táblákat és oszlopokat?
+
+-   Ha egy adatbázist használ, mindig titkosítja, csak azokat a táblákat és oszlopokat, amelyek szinkronizálása *nem* titkosított. A titkosított oszlopokban nem szinkronizálható, mivel az adatszinkronizálás nem lehet visszafejteni az adatokat.
+
+-   Ha egy oszlop oszlopszintű titkosítás (törlése) használja, szinkronizálhatja az oszlop, mindaddig, amíg a sor mérete kisebb, mint 24 Mb maximális méretét. Adatszinkronizálás az oszlop titkosított kulcs (törlése) normál bináris adatként kezeli. Más szinkronizálási tagok található adatok visszafejtése, ugyanazzal a tanúsítvánnyal rendelkeznie kell.
 
 ### <a name="is-collation-supported-in-sql-data-sync"></a>Támogatott rendezés SQL adatszinkronizálás?
 
@@ -170,7 +181,7 @@ További információ az SQL Data Syncről:
 -   [Az Azure SQL Data Synckel hibaelhárítása](sql-database-troubleshoot-data-sync.md)
 
 -   Teljes PowerShell-példák az SQL Data Sync konfigurálásáról:
-    -   [A PowerShell szolgáltatás használatával több Azure SQL-adatbázisok közötti szinkronizálása](scripts/sql-database-sync-data-between-sql-databases.md)
+    -   [A PowerShell használata több Azure SQL Database-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-sql-databases.md)
     -   [A PowerShell használata egy Azure-beli SQL Database-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-azure-onprem.md)
 
 -   [Az SQL Data Sync REST API dokumentációjának letöltése](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)

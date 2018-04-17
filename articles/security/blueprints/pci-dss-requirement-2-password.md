@@ -1,6 +1,6 @@
 ---
-title: "Az Azure támogatási feldolgozási tervezetének - jelszavakra vonatkozó követelmények"
-description: "PCI DSS követelmény 2"
+title: Az Azure támogatási feldolgozási tervezetének - jelszavakra vonatkozó követelmények
+description: PCI DSS követelmény 2
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 4ae9fc7d5b53d33f9feb98c450970e0560afa2af
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 8fafc277d7410ab3f8f54b0defee127fd6ec2f4d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="password-requirements-for-pci-dss-compliant-environments"></a>PCI DSS-kompatibilis környezetben jelszavakra vonatkozó követelmények 
 ## <a name="pci-dss-requirement-2"></a>PCI DSS követelmény 2
@@ -39,8 +39,8 @@ Ez vonatkozik az összes alapértelmezett jelszavak, beleértve többek között
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure Active Directory-jelszó házirend követelményeinek az új jelszót a AADUX portálon találja meg az ügyfelek által biztosított lépnek érvénybe. Ügyfél által kezdeményezett önkiszolgáló jelszó-változtatásának előzetes jelszó érvényesítést. Rendszergazda jelszavak alaphelyzetbe állítása is későbbi bejelentkezés után módosítható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló megköveteli a felhasználóktól set erős jelszavakat használjon, az összes felhasználó számára. A bemutató nem minta vagy Vendég fiók engedélyezett.<br /><br />Vezeték nélküli és SNMP nem valósult meg a megoldást.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure Active Directory-jelszó házirend követelményeinek az új jelszót a AADUX portálon találja meg az ügyfelek által biztosított lépnek érvénybe. Ügyfél által kezdeményezett önkiszolgáló jelszó-változtatásának előzetes jelszó érvényesítést. Rendszergazda jelszavak alaphelyzetbe állítása is későbbi bejelentkezés után módosítható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló megköveteli a felhasználóktól set erős jelszavakat használjon, az összes felhasználó számára. A bemutató nem minta vagy Vendég fiók engedélyezett.<br /><br />Vezeték nélküli és SNMP nem valósult meg a megoldást.|
 
 
 
@@ -52,8 +52,8 @@ Ez vonatkozik az összes alapértelmezett jelszavak, beleértve többek között
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Vezeték nélküli és SNMP nem valósult meg a megoldást.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Vezeték nélküli és SNMP nem valósult meg a megoldást.|
 
 
 
@@ -70,8 +70,8 @@ Iparágban elfogadott rendszer-megerősítési szabványok információforrások
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure-ban a OSSC műszaki biztonsági csapatnak házon belül fejlesztett alkalmazásokra biztonsági konfigurációs szabványok konzisztensek iparágban elfogadott szabványok korlátozására, a Microsoft Azure környezetben rendszerek számára. Ezeket a beállításokat a rendszer alaptervek szerepelnek és megfelelő konfigurációs módosítások közlik érintett csoportok (pl. IPAK csoport). Eljárások a biztonsági konfigurációs szabványok alapján a megfelelőség figyeléséhez valósíthatók meg. A biztonsági konfigurációs követelmények a Microsoft Azure környezetben rendszerek konzisztens iparágban elfogadott korlátozási szabványok és legalább évente felülvizsgálata. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló biztosít az összes olyan szolgáltatás hatókörében a kártya tulajdonosát adatok környezet (CDE) vezethet. <br /><br />A Contoso webes tároló is telepíti a [az Azure Security Center](https://azure.microsoft.com/services/security-center/), amely az összes Azure-erőforrások biztonsági állapotát központosított áttekintést nyújt. Egy pillanat alatt ellenőrizze, hogy a megfelelő biztonsági vezérlőket teljesül, és megfelelően konfigurálva, és gyorsan azonosíthatja a figyelmet igénylő erőforrásokat.<br /><br />A Contoso webes tároló Operations Management Suite minden rendszer naplózni használja. [Az Operations Management Suite (OMS)](/azure/operations-management-suite/) változások kiterjedt naplózás biztosít. Módosítások tekintse át, és pontossága ellenőrizni. Részletesebb útmutatásért lásd: [PCI útmutatást - az Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure-ban a OSSC műszaki biztonsági csapatnak házon belül fejlesztett alkalmazásokra biztonsági konfigurációs szabványok konzisztensek iparágban elfogadott szabványok korlátozására, a Microsoft Azure környezetben rendszerek számára. Ezeket a beállításokat a rendszer alaptervek szerepelnek és megfelelő konfigurációs módosítások közlik érintett csoportok (pl. IPAK csoport). Eljárások a biztonsági konfigurációs szabványok alapján a megfelelőség figyeléséhez valósíthatók meg. A biztonsági konfigurációs követelmények a Microsoft Azure környezetben rendszerek konzisztens iparágban elfogadott korlátozási szabványok és legalább évente felülvizsgálata. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló biztosít az összes olyan szolgáltatás hatókörében a kártya tulajdonosát adatok környezet (CDE) vezethet. <br /><br />A Contoso webes tároló is telepíti a [az Azure Security Center](https://azure.microsoft.com/services/security-center/), amely az összes Azure-erőforrások biztonsági állapotát központosított áttekintést nyújt. Egy pillanat alatt ellenőrizze, hogy a megfelelő biztonsági vezérlőket teljesül, és megfelelően konfigurálva, és gyorsan azonosíthatja a figyelmet igénylő erőforrásokat.<br /><br />A Contoso webes tároló Operations Management Suite minden rendszer naplózni használja. A Naplóelemzési változások kiterjedt naplózás biztosít. Módosítások tekintse át, és pontossága ellenőrizni. Részletesebb útmutatásért lásd: [PCI útmutatást - az Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -86,8 +86,8 @@ Iparágban elfogadott rendszer-megerősítési szabványok információforrások
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A webes tároló contoso szolgáltatások PaaS szolgáltatásként vannak telepítve. Minden szolgáltatás el választva egymástól, és szegmentált hálózati szegmentálást használni.<br /><br />A Contoso webes tároló is használ egy [App Service-környezet (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) kulcs eljárások érvényesítését. További információkért lásd: [PCI útmutatást - App Service Environment-környezet](payment-processing-blueprint.md#app-service-environment).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A webes tároló contoso szolgáltatások PaaS szolgáltatásként vannak telepítve. Minden szolgáltatás el választva egymástól, és szegmentált hálózati szegmentálást használni.<br /><br />A Contoso webes tároló is használ egy [App Service-környezet (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) kulcs eljárások érvényesítését. További információkért lásd: [PCI útmutatást - App Service Environment-környezet](payment-processing-blueprint.md#app-service-environment).|
 
 
 
@@ -99,8 +99,8 @@ Iparágban elfogadott rendszer-megerősítési szabványok információforrások
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure hardver- és konfigurációk azonosítása, és kiszűri a szükségtelen funkciók, a portok, a protokollok és a szolgáltatások legalább negyedévente felülvizsgálata. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A webes tároló contoso szolgáltatások PaaS szolgáltatásként vannak telepítve. Minden szolgáltatás el választva egymástól, és szegmentált hálózati szegmentálást használni.<br /><br />A Contoso webes tároló is használ egy [App Service-környezet (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) kulcs eljárások érvényesítését. További információkért lásd: [PCI útmutatást - App Service Environment-környezet](payment-processing-blueprint.md#app-service-environment).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure hardver- és konfigurációk azonosítása, és kiszűri a szükségtelen funkciók, a portok, a protokollok és a szolgáltatások legalább negyedévente felülvizsgálata. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A webes tároló contoso szolgáltatások PaaS szolgáltatásként vannak telepítve. Minden szolgáltatás el választva egymástól, és szegmentált hálózati szegmentálást használni.<br /><br />A Contoso webes tároló is használ egy [App Service-környezet (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) kulcs eljárások érvényesítését. További információkért lásd: [PCI útmutatást - App Service Environment-környezet](payment-processing-blueprint.md#app-service-environment).|
 
 
 
@@ -116,8 +116,8 @@ Iparágban elfogadott rendszer-megerősítési szabványok információforrások
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A webes tároló contoso szolgáltatások PaaS szolgáltatásként vannak telepítve. Minden szolgáltatás el választva egymástól, és szegmentált hálózati szegmentálást használni. A központi telepítés is biztosít a CDE hatókörében minden szolgáltatás vezethet. <br /><br />A Contoso webes tároló is telepíti a [az Azure Security Center](https://azure.microsoft.com/services/security-center/), amely az összes Azure-erőforrások biztonsági állapotát központosított áttekintést nyújt. Egy pillanat alatt ellenőrizze, hogy a megfelelő biztonsági vezérlőket teljesül, és megfelelően konfigurálva, és gyorsan azonosíthatja a figyelmet igénylő erőforrásokat.<br /><br />A Contoso webes tároló is használ egy [App Service-környezet (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) kulcs eljárások érvényesítését. További információkért lásd: [PCI útmutatást - App Service Environment-környezet](payment-processing-blueprint.md#app-service-environment).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A webes tároló contoso szolgáltatások PaaS szolgáltatásként vannak telepítve. Minden szolgáltatás el választva egymástól, és szegmentált hálózati szegmentálást használni. A központi telepítés is biztosít a CDE hatókörében minden szolgáltatás vezethet. <br /><br />A Contoso webes tároló is telepíti a [az Azure Security Center](https://azure.microsoft.com/services/security-center/), amely az összes Azure-erőforrások biztonsági állapotát központosított áttekintést nyújt. Egy pillanat alatt ellenőrizze, hogy a megfelelő biztonsági vezérlőket teljesül, és megfelelően konfigurálva, és gyorsan azonosíthatja a figyelmet igénylő erőforrásokat.<br /><br />A Contoso webes tároló is használ egy [App Service-környezet (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) kulcs eljárások érvényesítését. További információkért lásd: [PCI útmutatást - App Service Environment-környezet](payment-processing-blueprint.md#app-service-environment).|
 
 
 
@@ -129,8 +129,8 @@ Iparágban elfogadott rendszer-megerősítési szabványok információforrások
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Azure biztosítja csak az arra jogosult személyek konfigurálhatja az Azure platform biztonsági vezérlőket, többtényezős hozzáférés-vezérlést és dokumentált üzleti igények használatával. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló használja az aad-ben, és kezelheti a biztonsági paraméterek AD RBAC megfelelően vannak-e telepítve. További információkért lásd: [PCI útmutatást - Identity Management](payment-processing-blueprint.md#identity-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Azure biztosítja csak az arra jogosult személyek konfigurálhatja az Azure platform biztonsági vezérlőket, többtényezős hozzáférés-vezérlést és dokumentált üzleti igények használatával. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló használja az aad-ben, és kezelheti a biztonsági paraméterek AD RBAC megfelelően vannak-e telepítve. További információkért lásd: [PCI útmutatást - Identity Management](payment-processing-blueprint.md#identity-management).|
 
 
 
@@ -142,8 +142,8 @@ Iparágban elfogadott rendszer-megerősítési szabványok információforrások
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló dokumentációja nyújt hogyan határok jönnek létre. Contoso-fenyegetések modellezése és adatfolyam-diagram szemlélteti a használt szolgáltatások és a vezérlőket engedélyezve van.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló dokumentációja nyújt hogyan határok jönnek létre. Contoso-fenyegetések modellezése és adatfolyam-diagram szemlélteti a használt szolgáltatások és a vezérlőket engedélyezve van.|
 
 
 
@@ -158,8 +158,8 @@ Iparágban elfogadott rendszer-megerősítési szabványok információforrások
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Microsoft Azure gondoskodik arról, hogy az erős titkosítás használata az elérésekor a hipervizor-infrastruktúra. A Microsoft Azure is biztosítja, hogy az ügyfelek a Microsoft Azure felügyeleti portál használatával érhessék el az erős titkosítás a szolgáltatás/IaaS konzolok. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló bemutatja, hogyan erős jelszavak megvalósítható megoldás; Emellett az összes teszt ellenőrzése, hogy a titkosítás meg van valósítva a megoldás teljes hajtható végre.<br /><br />A Contoso webes tároló is használ egy [App Service-környezet (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) kulcs eljárások érvényesítését. További információkért lásd: [PCI útmutatást - App Service Environment-környezet](payment-processing-blueprint.md#app-service-environment).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure gondoskodik arról, hogy az erős titkosítás használata az elérésekor a hipervizor-infrastruktúra. A Microsoft Azure is biztosítja, hogy az ügyfelek a Microsoft Azure felügyeleti portál használatával érhessék el az erős titkosítás a szolgáltatás/IaaS konzolok. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló bemutatja, hogyan erős jelszavak megvalósítható megoldás; Emellett az összes teszt ellenőrzése, hogy a titkosítás meg van valósítva a megoldás teljes hajtható végre.<br /><br />A Contoso webes tároló is használ egy [App Service-környezet (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) kulcs eljárások érvényesítését. További információkért lásd: [PCI útmutatást - App Service Environment-környezet](payment-processing-blueprint.md#app-service-environment).|
 
 
 
@@ -171,8 +171,8 @@ Iparágban elfogadott rendszer-megerősítési szabványok információforrások
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló bemutató PaaS megoldás készlet a megadott dokumentáció tekinthető meg. További információkért lásd: [PCI útmutatást - alkalmazáshiba OMS megoldások](payment-processing-blueprint.md#oms-solutions).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló bemutató PaaS megoldás készlet a megadott dokumentáció tekinthető meg. További információkért lásd: [PCI útmutatást - alkalmazáshiba megoldások](payment-processing-blueprint.md#management-solutions).|
 
 
 
@@ -184,8 +184,8 @@ Iparágban elfogadott rendszer-megerősítési szabványok információforrások
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló tartalmazza azt a dokumentációt, amely a biztonsági paraméterek betekintést biztosít, illetve a dokumentumok elemek. |
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló tartalmazza azt a dokumentációt, amely a biztonsági paraméterek betekintést biztosít, illetve a dokumentumok elemek. |
 
 
 
@@ -197,8 +197,8 @@ Iparágban elfogadott rendszer-megerősítési szabványok információforrások
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. Microsoft Azure a nem megosztott szolgáltatóhoz. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Nem alkalmazható. Microsoft Azure a nem megosztott szolgáltatóhoz.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. Microsoft Azure a nem megosztott szolgáltatóhoz. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Nem alkalmazható. Microsoft Azure a nem megosztott szolgáltatóhoz.|
 
 
 

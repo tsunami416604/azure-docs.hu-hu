@@ -1,11 +1,11 @@
 ---
-title: "Az Operations Management Suite - Azure Logic Apps B2B üzenetek lekérdezés |} Microsoft Docs"
-description: "Az Operations Management Suite a nyomon követendő AS2, X 12 és EDIFACT üzeneteinek lekérdezések létrehozása"
+title: Log Analytics - Azure Logic Apps B2B üzenetek lekérdezés |} Microsoft Docs
+description: A Naplóelemzési követése AS2, X 12 és EDIFACT üzeneteinek lekérdezések létrehozása
 author: padmavc
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.service: logic-apps
 ms.workload: integration
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: bc1ea42c9fb81fe1e2a2594fda48500132cbb539
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 345857801035fb7f149a57a4f0d58e7668f35b81
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="query-for-as2-x12-and-edifact-messages-in-the-microsoft-operations-management-suite-oms"></a>Az AS2, X 12 és EDIFACT üzenetek a Microsoft Operations Management Suite (OMS) lekérdezés
+# <a name="query-for-as2-x12-and-edifact-messages-in-log-analytics"></a>Az AS2, X 12 és EDIFACT üzenetek Naplóelemzési lekérdezés
 
-Az AS2 megkereséséhez X12 vagy EDIFACT-üzenetek, hogy követi nyomon a [Azure Naplóelemzés](../log-analytics/log-analytics-overview.md) a a [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md), műveletek a megadott feltételek alapján szűrő lekérdezéseket hozhat létre. Például egy adott interchange ellenőrző szám alapján is megtalálhatja.
+Az AS2 megkereséséhez X12 vagy EDIFACT-üzenetek, hogy követi nyomon a [Azure Naplóelemzés](../log-analytics/log-analytics-overview.md), a megadott feltételek alapján műveletek szűrő lekérdezéseket hozhat létre. Például egy adott interchange ellenőrző szám alapján is megtalálhatja.
 
 ## <a name="requirements"></a>Követelmények
 
@@ -30,41 +30,41 @@ Az AS2 megkereséséhez X12 vagy EDIFACT-üzenetek, hogy követi nyomon a [Azure
 
 * Integráció fiók be van állítva a figyelés és naplózás. Ismerje meg, [integrációs fiók létrehozása](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) és [figyelés és naplózás fiók beállításával](../logic-apps/logic-apps-monitor-b2b-message.md).
 
-* Ha még nem tette, [diagnosztikai adatok közzétételére Naplóelemzési](../logic-apps/logic-apps-track-b2b-messages-omsportal.md) és [állítsa be az OMS nyomkövetési üzenet](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+* Ha még nem tette, [diagnosztikai adatok közzétételére Naplóelemzési](../logic-apps/logic-apps-track-b2b-messages-omsportal.md) és [állítsa be a Naplóelemzési nyomkövetési üzenet](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
 > [!NOTE]
-> Miután teljesítette az előző követelményeknek, rendelkeznie kell egy munkaterület a [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md). Az azonos OMS-munkaterület nyomon követése a B2B kommunikáció OMS kell használnia. 
+> Miután teljesítette az előző követelményeknek, rendelkeznie kell a Naplóelemzési munkaterület. A Naplóelemzési B2B kommunikáció követési ugyanazon a munkaterületen kell használnia. 
 >  
-> Ha még nem rendelkezik az OMS-munkaterület, [OMS-munkaterület létrehozása](../log-analytics/log-analytics-get-started.md).
+> Ha még nem rendelkezik a Naplóelemzési munkaterület, [a Naplóelemzési munkaterület létrehozása](../log-analytics/log-analytics-quick-create-workspace.md).
 
-## <a name="create-message-queries-with-filters-in-the-operations-management-suite-portal"></a>Állapotüzenet-lekérdezések létrehozása szűrőkkel az Operations Management Suite-portálon
+## <a name="create-message-queries-with-filters-in-log-analytics"></a>A Naplóelemzési szűrőkkel állapotüzenet-lekérdezések létrehozása
 
 Ez a példa bemutatja, hogyan található üzenetek az adatcsere ellenőrző szám alapján.
 
 > [!TIP] 
-> Ha ismeri az OMS-munkaterület neve, nyissa meg a munkaterület kezdőlapra (`https://{your-workspace-name}.portal.mms.microsoft.com`), 4. lépés: Indítsa el. Ellenkező esetben kezdjék 1. lépés.
+> Ha ismeri a Naplóelemzési munkaterület nevét, keresse fel a munkaterület kezdőlapját (`https://{your-workspace-name}.portal.mms.microsoft.com`), 4. lépés: Indítsa el. Ellenkező esetben kezdjék 1. lépés.
 
 1. Az a [Azure-portálon](https://portal.azure.com), válassza a **minden szolgáltatás**. Keresse meg a "naplóelemzési", és válassza a **Naplóelemzési** itt látható módon:
 
    ![A Naplóelemzési keresése](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/browseloganalytics.png)
 
-2. A **Naplóelemzési**, található, és válassza ki az OMS-munkaterület.
+2. A **Naplóelemzési**, található, és válassza ki a Naplóelemzési munkaterület.
 
-   ![Az OMS-munkaterület kiválasztása](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/selectla.png)
+   ![A Naplóelemzési munkaterület kiválasztása](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/selectla.png)
 
 3. A **felügyeleti**, válassza a **OMS-portálon**.
 
    ![Válassza ki az OMS-portálon](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/omsportalpage.png)
 
-4. Az OMS kezdőlapján válassza **naplófájl-keresési**.
+4. Válassza ki a kezdőlapon **naplófájl-keresési**.
 
-   ![Az OMS kezdőlapján válassza a "Naplófájl-keresési"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
+   ![A kezdőlapon válassza a "Naplófájl-keresési"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
 
    – vagy –
 
-   ![A OMS menüben válassza a "Naplófájl-keresési"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
+   ![A menüben válassza a "Naplófájl-keresési"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
 
-5. A keresési mezőbe, írja be egy mező található, és nyomja le az ENTER kívánt **Enter**. Amikor elkezdi beírni, OMS megjeleníti a lehetséges találatok és műveletek közül választhat. További információ [adatok megkeresése a Naplóelemzési](../log-analytics/log-analytics-log-searches.md).
+5. A keresési mezőbe, írja be egy mező található, és nyomja le az ENTER kívánt **Enter**. Amikor elkezdi beírni, Log Analyticshez megjeleníti a lehetséges találatok és műveletek közül választhat. További információ [adatok megkeresése a Naplóelemzési](../log-analytics/log-analytics-log-searches.md).
 
    Ez a példa eseményeket keres **típus = AzureDiagnostics**.
 
@@ -106,15 +106,15 @@ Ez a példa bemutatja, hogyan található üzenetek az adatcsere ellenőrző sz�
 
    ![Válassza ki a lekérdezés](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-log-search-find-favorites.png)
 
-## <a name="find-and-run-saved-queries-in-the-operations-management-suite-portal"></a>Keresse meg és lekérdezések futtatása az Operations Management Suite-portálon
+## <a name="find-and-run-saved-queries-in-log-analytics"></a>Keresse meg és Naplóelemzési lekérdezések futtatása
 
-1. Nyissa meg az OMS-munkaterület kezdőlapjának (`https://{your-workspace-name}.portal.mms.microsoft.com`), és válassza a **naplófájl-keresési**.
+1. Nyissa meg a Naplóelemzési munkaterület kezdőlap (`https://{your-workspace-name}.portal.mms.microsoft.com`), és válassza a **naplófájl-keresési**.
 
-   ![Az OMS kezdőlapján válassza a "Naplófájl-keresési"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
+   ![A Naplóelemzési kezdőlapján válassza a "Naplófájl-keresési"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
 
    – vagy –
 
-   ![A OMS menüben válassza a "Naplófájl-keresési"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
+   ![A menüben válassza a "Naplófájl-keresési"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
 
 2. Az a **naplófájl-keresési** kezdőlapját, válassza a **Kedvencek**.
 

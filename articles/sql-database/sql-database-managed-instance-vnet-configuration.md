@@ -1,20 +1,20 @@
 ---
-title: "Az Azure SQL adatbázis felügyelt példány VNet konfigurációja |} Microsoft Docs"
-description: "Ez a témakör ismerteti a konfigurációs beállításokat egy virtuális hálózathoz (VNet), ha egy Azure SQL adatbázis-felügyelt példánya."
+title: Az Azure SQL adatbázis felügyelt példány VNet konfigurációja |} Microsoft Docs
+description: Ez a témakör ismerteti a konfigurációs beállításokat egy virtuális hálózathoz (VNet), ha egy Azure SQL adatbázis-felügyelt példánya.
 services: sql-database
 author: srdjan-bozovic
 manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 04/10/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: e724a660f8ba2373cefdabe8595908b7bb42f4d6
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: bccc2d52c592101a23338e57791a992441e80047
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>A virtuális hálózat konfigurálása az Azure SQL adatbázis felügyelt példány
 
@@ -66,13 +66,13 @@ Ha tervezi az alhálózaton belül több felügyelt példányok telepítése és
 Egy Azure virtuális hálózat létrehozása előfeltétele egy felügyelt példányának létrehozásakor. Használhatja az Azure-portálon [PowerShell](../virtual-network/quick-create-powershell.md), vagy [Azure CLI](../virtual-network/quick-create-cli.md). Az alábbi szakasz az Azure portál használatával lépéseit mutatja be. Az itt tárgyalt részleteit a fenti módszerek vonatkozik.
 
 1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
-2. Keresse meg és **virtuális hálózati**, ellenőrizze a **erőforrás-kezelő** a rendszerbe állítási mód van kiválasztva, és kattintson **létrehozása**.
+2. Keresse meg és kattintson a **Virtuális hálózat** elemre. Ellenőrizze, hogy a **Resource Manager** üzembehelyezési mód van-e kiválasztva, majd kattintson a **Létrehozás** lehetőségre.
 
    ![virtuális hálózat létrehozása](./media/sql-database-managed-instance-tutorial/virtual-network-create.png)
 
 3. Töltse ki a virtuális hálózati űrlapot a kért információt, például az alábbi képernyőfelvételen módon:
 
-   ![virtuális hálózati űrlap létrehozása](./media/sql-database-managed-instance-tutorial/virtual-network-create-form.png)
+   ![virtuális hálózat létrehozásának űrlapja](./media/sql-database-managed-instance-tutorial/virtual-network-create-form.png)
 
 4. Kattintson a **Create** (Létrehozás) gombra.
 
@@ -88,28 +88,28 @@ Egy Azure virtuális hálózat létrehozása előfeltétele egy felügyelt péld
 
    Győződjön meg arról, hogy a szolgáltatás végpontok marad lehetőséget **letiltott**. 
 
-   ![virtuális hálózati űrlap létrehozása](./media/sql-database-managed-instance-tutorial/service-endpoint-disabled.png)
+   ![virtuális hálózat létrehozásának űrlapja](./media/sql-database-managed-instance-tutorial/service-endpoint-disabled.png)
 
 ## <a name="create-the-required-route-table-and-associate-it"></a>A szükséges útvonaltábla létrehozása, és társítsa azt
 
 1. Jelentkezzen be az Azure Portalra  
-2. Keresse meg és **útvonaltábla**, és kattintson a **létrehozása** az útvonal tábla oldalon.
+2. Keresse meg az **Útvonaltábla** elemet, kattintson rá, majd az Útvonaltábla lapon kattintson a **Létrehozás** gombra.
 
-   ![Az útvonaltábla űrlap létrehozása](./media/sql-database-managed-instance-tutorial/route-table-create-form.png)
+   ![útvonaltábla létrehozásának űrlapja](./media/sql-database-managed-instance-tutorial/route-table-create-form.png)
 
 3. Hozzon létre 0.0.0.0/0 következő ugrásaként Internet útvonalat, például a képernyőképek a következő módon:
 
-   ![Az útvonaltábla hozzáadása](./media/sql-database-managed-instance-tutorial/route-table-add.png)
+   ![útvonaltábla hozzáadása](./media/sql-database-managed-instance-tutorial/route-table-add.png)
 
-   ![Útvonal](./media/sql-database-managed-instance-tutorial/route.png)
+   ![útvonal](./media/sql-database-managed-instance-tutorial/route.png)
 
 4. Ez az útvonal társítása az alhálózat felügyelt-példány, például a képernyőképek a következő módon:
 
     ![alhálózat](./media/sql-database-managed-instance-tutorial/subnet.png)
 
-    ![Az útvonaltábla beállítása](./media/sql-database-managed-instance-tutorial/set-route-table.png)
+    ![útvonaltábla beállítása](./media/sql-database-managed-instance-tutorial/set-route-table.png)
 
-    ![set útvonal tábla-mentés](./media/sql-database-managed-instance-tutorial/set-route-table-save.png)
+    ![útvonaltábla beállítása – mentés](./media/sql-database-managed-instance-tutorial/set-route-table-save.png)
 
 
 A virtuális hálózat létrehozása után készen áll a felügyelt példányt létrehozni.  
@@ -145,5 +145,5 @@ Ha igen, tekintse meg [egy egyéni DNS konfigurálása](sql-database-managed-ins
 ## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, [Mi az, hogy a felügyelt példánya](sql-database-managed-instance.md)
-- Az oktatóanyag bemutatja, hogyan hozhat létre egy Vnetet, hozzon létre egy felügyelt példányt és egy adatbázis visszaállítása egy adatbázis biztonsági másolatból, lásd: [egy Azure SQL adatbázis-felügyelt példány létrehozása](sql-database-managed-instance-tutorial-portal.md).
+- Az oktatóanyag bemutatja, hogyan hozhat létre egy Vnetet, hozzon létre egy felügyelt példányt és egy adatbázis visszaállítása egy adatbázis biztonsági másolatból, lásd: [egy Azure SQL adatbázis-felügyelt példány létrehozása](sql-database-managed-instance-create-tutorial-portal.md).
 - DNS problémákkal kapcsolatban lásd: [egy egyéni DNS konfigurálása](sql-database-managed-instance-custom-dns.md)

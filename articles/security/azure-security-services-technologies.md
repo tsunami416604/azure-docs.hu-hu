@@ -1,6 +1,6 @@
 ---
-title: "Az Azure biztonsági szolgáltatásokat és technológiákat |} Microsoft Docs"
-description: "A cikk az Azure biztonsági szolgáltatásokat és technológiákat válogatott listáját tartalmazza."
+title: Az Azure biztonsági szolgáltatásokat és technológiákat |} Microsoft Docs
+description: A cikk az Azure biztonsági szolgáltatásokat és technológiákat válogatott listáját tartalmazza.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 1ea707d3d149734dad2d5c76d853ddd667cbf73b
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 838987e7fa5e638a980c592f5cdf775d3110fab0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-services-and-technologies"></a>Az Azure biztonsági szolgáltatásokat és technológiákat
 A jelenlegi és jövőbeli Azure-ügyfél folytatott beszélgetéseket, a rendszer gyakran megkéri "rendelkezik listáját a biztonsági szolgáltatásokat és technológiákat, amelyre az Azure ajánlat kapcsolódó?"
@@ -35,7 +35,7 @@ Kezdeti annak érdekében, hogy a lista a következő: Az idő múlásával a li
 * [Az Azure fejlesztési és tesztelési célú Labs](https://azure.microsoft.com/documentation/services/devtest-lab/)
 
 ## <a name="azure-storage-security"></a>Az Azure Storage-biztonsági
-* [Az Azure Storage szolgáltatás titkosítási](../storage/common/storage-service-encryption.md)
+* [Azure Storage Service Encryption](../storage/common/storage-service-encryption.md)
 * [A StorSimple hibrid tárolási titkosított](https://azure.microsoft.com/documentation/services/storsimple/)
 * [Az Azure ügyféloldali titkosítás](../storage/common/storage-client-side-encryption.md)
 * [Az Azure Storage közös hozzáférésű Jogosultságkód](../storage/common/storage-dotnet-shared-access-signature-part-1.md)
@@ -54,7 +54,7 @@ Kezdeti annak érdekében, hogy a lista a következő: Az idő múlásával a li
 * [Az Azure SQL Database naplózási](../sql-database/sql-database-auditing.md)
 
 ## <a name="azure-identity-and-access-management"></a>Azure-identitás és hozzáférés-kezelés
-* [Azure szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-configure.md)
+* [Azure szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md)
 * [Azure Active Directory](../active-directory/active-directory-whatis.md)
 * [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-get-started.md)
 * [Az Azure Active Directory tartományi szolgáltatások](../active-directory-domain-services/active-directory-ds-overview.md)

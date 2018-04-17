@@ -1,12 +1,12 @@
 ---
-title: "Engedélyek az Azure Security Centerben |} Microsoft Docs"
-description: "Ez a cikk azt ismerteti, hogyan az Azure Security Center segítségével szerepköralapú hozzáférés-vezérlési engedélyek hozzárendelése a felhasználókhoz, és az egyes szerepkörökhöz engedélyezett műveleteket azonosítja."
+title: Engedélyek az Azure Security Centerben |} Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan az Azure Security Center segítségével szerepköralapú hozzáférés-vezérlési engedélyek hozzárendelése a felhasználókhoz, és az egyes szerepkörökhöz engedélyezett műveleteket azonosítja.
 services: security-center
 cloud: na
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-ms.assetid: 
+ms.assetid: ''
 ms.service: security-center
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: terrylan
-ms.openlocfilehash: 0aaa99dda44d2020afd3e841e84020eb4ff87a85
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f85f49bd54eacbca67143b35eaf555cfb744a41d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="permissions-in-azure-security-center"></a>Engedélyek az Azure Security Centerben
 
-Az Azure Security Center [szerepköralapú hozzáférés-vezérlést (RBAC)](../active-directory/role-based-access-control-configure.md) használ, amelynek [beépített szerepköreit](../active-directory/role-based-access-built-in-roles.md) az Azure különböző csoportjaihoz, felhasználóihoz és szolgáltatásaihoz rendelheti.
+Az Azure Security Center által használt [szerepköralapú hozzáférés-vezérlést (RBAC)](../role-based-access-control/role-assignments-portal.md), amely biztosítja [beépített szerepkörök](../role-based-access-control/built-in-roles.md) , hogy a felhasználók, csoportok és az Azure rendelhető.
 
 A Security Center értékeli a konfigurációs az erőforrások biztonsági problémák és biztonsági rések azonosítása. A biztonsági központban csak akkor jelenik meg egy erőforrás tulajdonos, közreműködő vagy olvasó szerepkört az előfizetés vagy az erőforráscsoportot, amelyhez tartozik egy erőforrás hozzárendelése esetén kapcsolatos adatokat.
 
@@ -55,7 +55,7 @@ A következő táblázat megjeleníti a szerepkört, és a Security Center műve
 >
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez a cikk alapján hogyan Security Center segítségével RBAC engedélyek hozzárendelése a felhasználókhoz, és azonosítja az egyes szerepkörökhöz engedélyezett műveletek. Most, hogy ismeri az előfizetés biztonsági állapotának figyeléséhez szükséges szerepkör-hozzárendelések, szerkesztheti a biztonsági szabályzatokat, és a javaslatok alkalmazni, megtudhatja, hogyan:
 
 - [A Security Center biztonsági házirendek beállítása](security-center-policies.md)

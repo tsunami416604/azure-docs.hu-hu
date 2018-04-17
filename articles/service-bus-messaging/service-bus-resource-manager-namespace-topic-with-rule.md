@@ -1,24 +1,24 @@
 ---
-title: "Azure Service Bus témakör előfizetés létrehozása és a szabály az Azure Resource Manager-sablonnal |} Microsoft Docs"
-description: "Hozzon létre egy Service Bus-névtér témakör, előfizetés és Azure Resource Manager-sablon segítségével"
+title: Azure Service Bus témakör előfizetés létrehozása és a szabály az Azure Resource Manager-sablonnal |} Microsoft Docs
+description: Hozzon létre egy Service Bus-névtér témakör, előfizetés és Azure Resource Manager-sablon segítségével
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 9e0aaf58-0214-4bca-bd00-d29c08f9b1bc
 ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 11/10/2017
-ms.author: sethm;shvija
-ms.openlocfilehash: 976c7b425dd17f8ed38f18b6ffa50b4368ab44b3
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.date: 04/11/2018
+ms.author: sethm
+ms.openlocfilehash: 50fd07e4c979cfb415589ba721adb7998cfbe7bd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>Hozzon létre egy Service Bus-névtér témakör, előfizetés és Azure Resource Manager-sablonnal szabály
 
@@ -118,7 +118,6 @@ Létrehoz egy standard Service Bus-névtér típusú **Messaging**, témakör é
         "location": "[variables('location')]",
         "sku": {
             "name": "Standard",
-            "tier": "Standard"
         },
         "resources": [{
             "apiVersion": "[variables('sbVersion')]",
@@ -174,7 +173,7 @@ azure config mode arm
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-subscription-rule/azuredeploy.json>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy már létrehozott és telepített Azure Resource Manager eszközzel, megtudhatja, hogyan kezelheti ezeket az erőforrásokat megtekintésével, ezek a cikkek:
 
 * [Az Azure Service Bus kezelése](service-bus-management-libraries.md)

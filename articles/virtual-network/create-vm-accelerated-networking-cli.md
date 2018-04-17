@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 01/02/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: aa74596906206ba4460e80af9015955c0b848cd4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 718990b69cc75709af819ad7df9a77ad0f8f33ce
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>A hálózat elérését gyorsítja fel Linux virtuális gép létrehozása
 
@@ -66,7 +66,7 @@ A következő korlátozások vonatkoznak az e funkció használata esetén:
 * **Virtuális gép létrehozása:** A hálózati adapter engedélyezve gyorsított hálózattal csak akkor csatolható a virtuális géphez a virtuális gép létrehozásakor. A hálózati adapter nem lehet csatolni, egy meglévő virtuális gépre. Ha a virtuális gép hozzáadása egy meglévő rendelkezésre állási, a rendelkezésre állási csoport virtuális gépeinek kell is rendelkezik az elérését gyorsítja fel engedélyezett hálózati.
 * **Telepítés csak Azure Resource Manageren keresztül:** virtuális gépek (klasszikus) nem állítható rendszerbe, a hálózat elérését gyorsítja fel.
 
-Bár ez a cikk ismerteti a virtuális gép létrehozása az Azure parancssori felület használatával gyorsított hálózattal, is [virtuális gép létrehozása az Azure portál használatával gyorsított hálózattal](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Létrehozásakor egy virtuális gépet egy támogatott operációs rendszer és a Virtuálisgép-méretet a portálon, a **beállítások**, jelölje be **engedélyezve** alatt **elérését gyorsítja fel a hálózat**. A virtuális gép létrehozása után végre kell hajtania a utasításait [győződjön meg arról, hogy engedélyezve van-e a gyorsított hálózatkezelés](#confirm-that-accelerated-networking-is-enabled).
+Bár ez a cikk ismerteti a virtuális gép létrehozása az Azure parancssori felület használatával gyorsított hálózattal, is [virtuális gép létrehozása az Azure portál használatával gyorsított hálózattal](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Létrehozásakor egy virtuális gépet a portálon, a **beállítások**, jelölje be **engedélyezve**a **elérését gyorsítja fel a hálózat**. Gyorsított hálózatkezelés lehetővé teszi nem szerepel a portálon, kivéve, ha a kijelölt egy [támogatott operációs rendszer](#supported-operating-systems) és [Virtuálisgép-méretet](#supported-vm-instances). A virtuális gép létrehozása után végre kell hajtania a utasításait [győződjön meg arról, hogy engedélyezve van-e a gyorsított hálózatkezelés](#confirm-that-accelerated-networking-is-enabled).
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
@@ -175,7 +175,7 @@ A virtuális gép létrehozása után a következő egy példa a kimenetre hason
 
 ## <a name="confirm-that-accelerated-networking-is-enabled"></a>Győződjön meg arról, hogy engedélyezve van-e a gyorsított hálózatkezelés
 
-A következő parancs segítségével a virtuális gép SSH-munkamenetet létrehozni. Cserélje le `<your-public-ip-address>` a nyilvános IP-címmel hozzárendelni a virtuális gép alapján létrehozott, és cserélje le *azureuser* meg más értéket használatakor `--admin-username` a virtuális gép létrehozásakor.
+Használja az alábbi parancsot egy SSH-munkamenet létrehozásához a virtuális géphez. Cserélje le `<your-public-ip-address>` a nyilvános IP-címmel hozzárendelni a virtuális gép alapján létrehozott, és cserélje le *azureuser* meg más értéket használatakor `--admin-username` a virtuális gép létrehozásakor.
 
 ```bash
 ssh azureuser@<your-public-ip-address>

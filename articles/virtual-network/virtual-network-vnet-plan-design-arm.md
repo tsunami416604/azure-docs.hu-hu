@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Virtual Network (VNet) tervezési és kialakítási útmutató |} Microsoft Docs"
-description: "Megtudhatja, hogyan tervezése és kialakítása elkülönítési, a kapcsolat és a hely igény Azure virtuális hálózatairól."
+title: Az Azure Virtual Network (VNet) tervezési és kialakítási útmutató |} Microsoft Docs
+description: Megtudhatja, hogyan tervezése és kialakítása elkülönítési, a kapcsolat és a hely igény Azure virtuális hálózatairól.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/08/2016
 ms.author: jdial
-ms.openlocfilehash: f11b2d1b4061b395918a274c4c53688bf34fbae1
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6e41dae2f4e93fe2e3cef689596612a6a192c844
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="plan-and-design-azure-virtual-networks"></a>Azure virtuális hálózatok megtervezése
 Létre virtuális hálózatok kísérletezhet elég egyszerűen, de valószínűleg több Vnetek adott idő alatt a szervezet a termelési igényeinek támogatásához telepíteni fogja. Az egyes tervezési és kialakítási lesz Vnetek telepítéséhez, és csatlakozzon a hatékonyabb szükséges erőforrások. Ha nem ismeri a Vneteket, javasoljuk, hogy Ön [Vnetek megismerése](virtual-networks-overview.md) és [telepítése](quick-create-portal.md) egy, a folytatás előtt.
@@ -87,12 +87,12 @@ Alapértelmezés szerint a virtuális hálózat használja [Azure által biztos�
 Tekintse át a hálózati korlátok a [Azure korlátozza](../azure-subscription-service-limits.md#networking-limits) cikk annak érdekében, hogy a tervező nem ütközik a határokon. Néhány korlátot lehet növelni egy támogatási jegy megnyitásával.
 
 ### <a name="role-based-access-control-rbac"></a>Szerepköralapú hozzáférés-vezérlés (RBAC)
-Használhat [Azure RBAC](../active-directory/role-based-access-built-in-roles.md) vezérelhető a különböző felhasználók úgy lehet, hogy az Azure-ban a különböző erőforrások hozzáférési szint. Ily módon is elkülönítse a csapat a igényeiknek dolgozott.
+Használhat [Azure RBAC](../role-based-access-control/built-in-roles.md) vezérelhető a különböző felhasználók úgy lehet, hogy az Azure-ban a különböző erőforrások hozzáférési szint. Ily módon is elkülönítse a csapat a igényeiknek dolgozott.
 
 Csakúgy, mint a virtuális hálózatok az érintett felhasználók számára a **hálózat közreműködő** szerepkör Azure Resource Manager virtuális hálózati erőforrások teljes hozzáféréssel rendelkeznek. Hasonlóképpen, a felhasználók a **klasszikus hálózat közreműködő** szerepkör klasszikus virtuális hálózati erőforrások teljes hozzáféréssel rendelkeznek.
 
 > [!NOTE]
-> Emellett [saját szerepköröket hozhat létre](../active-directory/role-based-access-control-configure.md) külön felügyeleti igényeinek.
+> Emellett [saját szerepköröket hozhat létre](../role-based-access-control/role-assignments-portal.md) külön felügyeleti igényeinek.
 >
 >
 
@@ -206,7 +206,7 @@ Ezek a követelmények, meg kell egy előfizetési részlegek számára. Így az
 
 Meg kell adnia a a címterület minden vnet is. Mivel kell a helyszíni adatok közötti kapcsolat adatközpontok Azure-régiókban, a használt Azure Vnet-terület nem ütközhetnek a helyszíni hálózat és minden egyes virtuális hálózat által használt címterület nem kell más meglévő Vnetek ütközhetnek. A címterek, az alábbi táblázat segítségével ezeknek a követelményeknek.  
 
-| **Előfizetés** | **VNet** | **Az Azure-régió** | **Címtér** |
+| **Előfizetés** | **Virtuális hálózat** | **Az Azure-régió** | **Címtér** |
 | --- | --- | --- | --- |
 | BU1 |ProdBU1US1 |USA nyugati régiója |172.16.0.0/16 |
 | BU1 |ProdBU1US2 |USA keleti régiója |172.17.0.0/16 |

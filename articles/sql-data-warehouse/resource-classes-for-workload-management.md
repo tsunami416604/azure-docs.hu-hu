@@ -1,45 +1,93 @@
 ---
-title: "Erőforrás-osztályok a munkaterhelés felügyeleti - Azure SQL Data Warehouse |} Microsoft Docs"
-description: "Útmutató a feldolgozási kezelése és számítási erőforrásokat az Azure SQL Data Warehouse lekérdezések erőforrás osztályok használatával."
+title: Erőforrás-osztályok a munkaterhelés felügyeleti - Azure SQL Data Warehouse |} Microsoft Docs
+description: Útmutató a feldolgozási kezelése és számítási erőforrásokat az Azure SQL Data Warehouse lekérdezések erőforrás osztályok használatával.
 services: sql-data-warehouse
-documentationcenter: NA
-author: sqlmojo
-manager: jhubbard
-editor: 
-ms.assetid: ef170f39-ae24-4b04-af76-53bb4c4d16d3
-ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: performance
-ms.date: 10/23/2017
-ms.author: joeyong;barbkess;kavithaj
-ms.openlocfilehash: c76fb73c9beda93c407d1af29e157682c7fe58c0
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+author: kevinvngo
+manager: craigg-msft
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/11/2018
+ms.author: kevin
+ms.reviewer: jrj
+ms.openlocfilehash: 289281567eff7f2575f26f1ae7ec2f9ee4389461
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="resource-classes-for-workload-management"></a>Erőforrás-osztályok a munkaterhelés-kezelés
-Útmutató az erőforrás-osztályok az egyidejű futtatását, és számítási erőforrásokat az Azure SQL Data Warehouse lekérdezések párhuzamos lekérdezések kezeli.
+# <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Munkaterhelés-kezelés az Azure SQL Data warehouse erőforrás osztályok
+Az erőforrás-osztályok kezeli a memória és az Azure SQL Data Warehouse lekérdezéseivel párhuzamossági útmutatást.  
  
 ## <a name="what-is-workload-management"></a>Mi az az alkalmazások és szolgáltatások felügyeleti?
-Munkaterhelés-kezelés a teljesítménye az összes lekérdezés optimalizálására való képességet. Egy jól bennünket munkaterhelés lekérdezések és hatékonyan függetlenül, hogy azok számítási igényű vagy IO-igényes terhelés műveletek futtatására szolgál. 
+Munkaterhelés-kezelés a teljesítménye az összes lekérdezés optimalizálására való képességet. Egy jól bennünket munkaterhelés lekérdezések és hatékonyan függetlenül, hogy azok számítási igényű vagy IO-igényes terhelés műveletek futtatására szolgál.  Az SQL Data Warehouse többfelhasználós környezetben munkaterhelés funkciókat biztosít. Adatraktár célja nem több-bérlős munkaterhelések.
 
-Az SQL Data Warehouse többfelhasználós környezetben munkaterhelés funkciókat biztosít. Adatraktár célja nem több-bérlős munkaterhelések.
+Egy adatraktár teljesítménye kapacitása határozza meg a [teljesítményszinttel](memory-and-concurrency-limits.md#performance-tiers) és a [az adatraktár-egység](what-is-a-data-warehouse-unit-dwu-cdwu.md). 
+
+- A memória és a feldolgozási korlátok, a teljesítmény-profilokhoz megtekintése: [memória és a feldolgozási korlátok](memory-and-concurrency-limits.md).
+- Teljesítmény kapacitás beállításához is [felfelé vagy lefelé méretezési](quickstart-scale-compute-portal.md).
+
+A lekérdezési teljesítmény kapacitásának lekérdezés erőforrásosztály határozza meg. Ez a cikk hátralévő része erőforrás osztályok vannak, és kiigazítja úgy, hogy miként ismerteti.
+
 
 ## <a name="what-are-resource-classes"></a>Mik azok a erőforrás osztályok?
-Erőforrás szabályozására, a lekérdezés-végrehajtás előre meghatározott erőforrás-korlátozások. Az SQL Data Warehouse korlátozza a számítási erőforrásokat minden lekérdezéshez erőforrásosztály megfelelően. 
+Erőforrás-osztályok előre erőforrás korlát az Azure SQL Data Warehouse szabályozására, a számítási erőforrásokat és a lekérdezés-végrehajtáshoz párhuzamossági határozzák meg. Erőforrás-osztályok segítségével felügyelhetők a terhelést a párhuzamosan futó lekérdezések és minden egyes lekérdezés rendelt számítási erőforrások számának korlátozása. Nincs a memória és a párhuzamosság közötti kompromisszumot.
 
-Erőforrás osztályok szolgáltatással kezelheti az adatraktár-számítási feladat általános teljesítményét. Erőforrás osztályok használatával hatékonyan kezelheti a számítási feladatok által egyidejűleg futó lekérdezések és minden egyes lekérdezés rendelt számítási erőforrások számának korlátozása. 
+- Kisebb erőforrás-osztályok lekérdezésenként maximális memória csökkenti, de növelheti a párhuzamosságot.
+- Nagyobb erőforrás osztályok növeli a maximális memóriaméret lekérdezésenként, de egyidejű csökkentése. 
 
-- Kisebb erőforrás-osztályok kevesebb számítási erőforrásainak használatához, de nagyobb teljes lekérdezés egyidejű engedélyezése
-- Nagyobb erőforrás osztályok adja meg a további számítási erőforrásokat, de a lekérdezés egyidejű korlátozása
+A teljesítmény a lekérdezés határozza meg, a felhasználó erőforrásosztály.
 
-Erőforrás-osztályok adatok kezelése és adatkezelési tevékenységek készültek. Egyes nagyon összetett lekérdezések is előnyösek, ha nagy illesztések és rendezi, hogy a rendszer végrehajtja a lekérdezést lemezre kiömlést helyett memória.
+- Az erőforrás-osztályok az erőforrás-használat megtekintéséhez lásd: [memória és a feldolgozási korlátok](memory-and-concurrency-limits.md#concurrency-maximums).
+- Erőforrásosztály beállításához futtassa a lekérdezést egy másik felhasználói vagy [módosítása az aktuális felhasználó erőforrásosztály](#change-a-user-s-resource-class) tagságát. 
 
-A következő műveletek erőforrás osztályok vonatkoznak:
+Erőforrás osztályok párhuzamossági üzembe helyezési ponti segítségével mérheti hálózatierőforrás-fogyasztás.  [Párhuzamossági üzembe helyezési ponti](#concurrency-slots) magyarázatát a cikk későbbi részében. 
+
+### <a name="static-resource-classes"></a>Statikus erőforrás osztályok
+Statikus erőforrás osztályok foglal le a jelenlegi teljesítményszintje, amit a függetlenül azonos memóriamennyiség [az adatraktár-egység](what-is-a-data-warehouse-unit-dwu-cdwu.md). Mivel a lekérdezések ugyanazt a memóriafoglalás beolvasása a teljesítményszintet függetlenül [az adatraktár kiterjesztése](quickstart-scale-compute-portal.md) lehetővé teszi, hogy további lekérdezések erőforrás osztályon belül.
+
+A statikus erőforrás osztályok ezek előre meghatározott adatbázis-szerepkörök vannak megvalósítva:
+
+- staticrc10
+- staticrc20
+- staticrc30
+- staticrc40
+- staticrc50
+- staticrc60
+- staticrc70
+- staticrc80
+
+Ezen erőforrás megoldások, ami növeli a erőforrásosztály további számítási erőforrásokat lekérni a legmegfelelőbb.
+
+### <a name="dynamic-resource-classes"></a>Dinamikus erőforrás-osztályok
+Dinamikus erőforrás-osztályok a változó méretű memória, attól függően, hogy az aktuális szolgáltatási szint lefoglalni. Vertikális felskálázás nagyobb szolgáltatás szintjét, a lekérdezések automatikusan kapja memóriáját. 
+
+A dinamikus erőforrás-osztályok ezek előre meghatározott adatbázis-szerepkörök vannak megvalósítva:
+
+- smallrc
+- mediumrc
+- largerc
+- xlargerc. 
+
+Ezen erőforrás megoldások mely növekedése számítási méretezési további erőforrásokat lekérni a legmegfelelőbb. 
+
+
+### <a name="default-resource-class"></a>Alapértelmezett erőforrásosztály
+Alapértelmezés szerint minden felhasználó tagja a dinamikus erőforrásosztály **smallrc**. 
+
+A szolgáltatás-rendszergazda erőforrásosztály rögzített, és nem módosítható.  A szolgáltatás-rendszergazda az a felhasználó a telepítési folyamat során létrehozott.
+
+> [!NOTE]
+> Felhasználók vagy csoportok Active Directory-rendszergazda meghatározott egyaránt szolgáltatás-rendszergazdák.
+>
+>
+
+## <a name="resource-class-operations"></a>Erőforrás osztály műveletek
+
+Erőforrás-osztályokat úgy tervezték, hogy az adatok kezelése és adatkezelési tevékenységek teljesítményének. Összetett lekérdezéseket is is kihasználhatja a le egy nagyméretű erőforrásosztály alatti futáshoz. Például a teljesítmény nagy méretű táblákra lekérdezni, és rendezés javíthatja a erőforrásosztály elég nagy ahhoz, hogy a memóriában lefuttatandó lekérdezés esetén.
+
+### <a name="operations-governed-by-resource-classes"></a>Erőforrás-osztályok által szabályozott műveletek
+
+Ezek a műveletek erőforrás osztályok vonatkoznak:
 
 * INSERT SELECT, UPDATE, DELETE
 * Válassza ki a (felhasználói táblák lekérdezésekor)
@@ -56,50 +104,7 @@ A következő műveletek erőforrás osztályok vonatkoznak:
 > 
 > 
 
-## <a name="static-and-dynamic-resource-classes"></a>Statikus és dinamikus erőforrás-osztályok
-
-Erőforrás-osztályok két típusa van: a dinamikus és statikus.
-
-- **Statikus erőforrás osztályok** akkora függetlenül az aktuális szolgáltatási szint, amit a memóriát lefoglalni [az adatraktár-egység](what-is-a-data-warehouse-unit-dwu-cdwu.md). A statikus foglalási azt jelenti, hogy a nagyobb szolgáltatási szintek minden erőforrás osztály több lekérdezéseket is futtathat.  A statikus erőforrás osztályok elnevezése staticrc10, staticrc20, staticrc30, staticrc40, staticrc50, staticrc60, staticrc70 és staticrc80. Ezen erőforrás megoldások, ami növeli a erőforrásosztály további számítási erőforrásokat lekérni a legmegfelelőbb.
-
-- **Dinamikus erőforrás-osztályok** lefoglalni a változó méretű memória, attól függően, hogy az aktuális szolgáltatási szint. Vertikális felskálázás nagyobb szolgáltatás szintjét, a lekérdezések automatikusan kapja memóriáját. A dinamikus erőforrás-osztályok elnevezése smallrc, mediumrc, largerc és xlargerc. Ezen erőforrás megoldások mely növekedése számítási méretezési további erőforrásokat lekérni a legmegfelelőbb. 
-
-A [teljesítmény rétegek](performance-tiers.md) erőforrás osztály nevezze, de különböző [memória és a párhuzamosság specifikációk](performance-tiers.md). 
-
-
-## <a name="assigning-resource-classes"></a>Erőforrás-osztályok hozzárendelése
-
-Erőforrás-osztályok rendelhet a felhasználói adatbázis-szerepkörök valósíthatók meg. Amikor egy felhasználó egy lekérdezést futtatja, a felhasználó erőforrásosztály fut, a lekérdezés. Például ha egy felhasználó a smallrc vagy staticrc10 adatbázis-szerepkör tagja, a lekérdezések futtatása kis mennyiségű memóriával. Ha adatbázis-felhasználó tagja a xlargerc vagy staticrc80 adatbázis-szerepkörök, a lekérdezések futtatása, nagy mennyiségű memóriával. 
-
-A felhasználó erőforrásosztály növeléséhez használja a következő tárolt eljárás [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql). 
-
-```sql
-EXEC sp_addrolemember 'largerc', 'loaduser';
-```
-
-Erőforrásosztály csökkentéséhez használja [sp_droprolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql).  
-
-```sql
-EXEC sp_droprolemember 'largerc', 'loaduser';
-```
-
-A szolgáltatás-rendszergazda erőforrásosztály rögzített, és nem módosítható.  A szolgáltatás-rendszergazda az a felhasználó a telepítési folyamat során létrehozott.
-
-> [!NOTE]
-> Felhasználók vagy csoportok Active Directory-rendszergazda meghatározott egyaránt szolgáltatás-rendszergazdák.
->
->
-
-### <a name="default-resource-class"></a>Alapértelmezett erőforrásosztály
-Alapértelmezés szerint minden felhasználó tagja a kis erőforrásosztály **smallrc**. 
-
-### <a name="resource-class-precedence"></a>Erőforrás osztály sorrendje
-Felhasználók több erőforrás-osztályok tagjait is lehet. Amikor egy felhasználó tartozik egynél több erőforrásosztály:
-
-- Dinamikus erőforrás-osztályok élveznek statikus erőforrás osztályok. Például ha egy felhasználó mediumrc(dynamic) és staticrc80 (statikus) is tagja, lekérdezések futtatása a mediumrc.
-- Nagyobb erőforrás osztályok élveznek kisebb erőforrás-osztályok. Például ha egy felhasználó tagja mediumrc és largerc, lekérdezések futtatása a largerc. Hasonlóképpen ha a felhasználó staticrc20 és statirc80 is tagja, lekérdezések futni staticrc80 erőforrás-hozzárendelések.
-
-### <a name="queries-exempt-from-resource-classes"></a>A lekérdezések erőforrás osztályok alól
+### <a name="operations-not-governed-by-resource-classes"></a>Erőforrás-osztályok nem szabályozzák műveletek
 Néhány lekérdezést mindig futtassa a smallrc erőforrásosztály, annak ellenére, hogy a felhasználó tagja egy nagyobb erőforrásosztály. A következő kivétel lekérdezések nem számítanak bele a feldolgozási korlátot. Például ha a feldolgozási korlátot 16, sok felhasználó is jutni rendszer nézetek a rendelkezésre álló párhuzamossági üzembe helyezési ponti befolyásolása nélkül.
 
 A következő utasítás nem érvényes erőforrás-osztályok a, és mindig smallrc futtassa:
@@ -126,6 +131,45 @@ Removed as these two are not confirmed / supported under SQLDW
 - CREATE EXTERNAL TABLE AS SELECT
 - REDISTRIBUTE
 -->
+
+## <a name="concurrency-slots"></a>Párhuzamossági tárhelyek
+Párhuzamossági üzembe helyezési ponti kényelmesen nyomon követheti a lekérdezés-végrehajtás rendelkezésre álló erőforrások. Például a munkaállomásokat, egy energiaoptimalizálást egyszerre lefoglalni, mivel a ülési korlátozott megvásárolt jegyek vannak. Párhuzamossági helyek / adatraktár teljes száma a szolgáltatási szint határozza meg. A lekérdezés végrehajtása szükséges, foglaljon le elegendő feldolgozási üzembe helyezési ponti képesnek kell lennie. A lekérdezés befejeztével a feldolgozási üzembe helyezési ponti felszabadít.  
+
+- 10 egyidejű üzembe helyezési ponti a futó lekérdezések férhetnek hozzá a 2 párhuzamossági üzembe helyezési ponti futó lekérdezések mint 5 alkalommal több számítási erőforrással.
+- Ha minden lekérdezéshez 10 egyidejű tárhelyek és 40 párhuzamossági tárhelyek, majd csak 4 lekérdezések egyidejűleg is futtathatók.
+ 
+Csak a szabályozott erőforrás lekérdezések párhuzamossági üzembe helyezési ponti felhasználását. Rendszer lekérdezések és az egyes triviális lekérdezések nem igényelnek tárolóhely. A lekérdezés erőforrásosztály felhasznált párhuzamossági tárhelyek pontos számát határozza meg.
+
+## <a name="view-the-resource-classes"></a>Az erőforrás-osztályok megtekintése
+
+Erőforrás osztályok, előre meghatározott adatbázis-szerepkörök vannak megvalósítva. Erőforrás-osztályok két típusa van: a dinamikus és statikus. Az erőforrás-osztályok listájának megtekintéséhez használja a következő lekérdezést:
+
+    ```sql
+    SELECT name FROM sys.database_principals
+    WHERE name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
+    ```
+
+## <a name="change-a-users-resource-class"></a>A felhasználó erőforrásosztály módosítása
+
+Erőforrás-osztályok rendelhet a felhasználói adatbázis-szerepkörök valósíthatók meg. Amikor egy felhasználó egy lekérdezést futtatja, a felhasználó erőforrásosztály fut, a lekérdezés. Például ha egy felhasználó a smallrc vagy staticrc10 adatbázis-szerepkör tagja, a lekérdezések futtatása kis mennyiségű memóriával. Ha adatbázis-felhasználó tagja a xlargerc vagy staticrc80 adatbázis-szerepkörök, a lekérdezések futtatása, nagy mennyiségű memóriával. 
+
+A felhasználó erőforrásosztály növeléséhez használja a következő tárolt eljárás [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql). 
+
+```sql
+EXEC sp_addrolemember 'largerc', 'loaduser';
+```
+
+Erőforrásosztály csökkentéséhez használja [sp_droprolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql).  
+
+```sql
+EXEC sp_droprolemember 'largerc', 'loaduser';
+```
+
+## <a name="resource-class-precedence"></a>Erőforrás osztály sorrendje
+Felhasználók több erőforrás-osztályok tagjait is lehet. Amikor egy felhasználó tartozik egynél több erőforrásosztály:
+
+- Dinamikus erőforrás-osztályok élveznek statikus erőforrás osztályok. Például ha egy felhasználó mediumrc(dynamic) és staticrc80 (statikus) is tagja, lekérdezések futtatása a mediumrc.
+- Nagyobb erőforrás osztályok élveznek kisebb erőforrás-osztályok. Például ha egy felhasználó tagja mediumrc és largerc, lekérdezések futtatása a largerc. Hasonlóképpen ha a felhasználó staticrc20 és statirc80 is tagja, lekérdezések futni staticrc80 erőforrás-hozzárendelések.
 
 ## <a name="recommendations"></a>Javaslatok
 Javasoljuk, hogy egy adott típusú lekérdezés futtatására van kijelölve a felhasználó létrehozásának vagy betölteni az operations. Adja meg, hogy a felhasználó egy állandó erőforrásosztály gyakran erőforrásosztály módosítása helyett. Fényében, hogy a statikus erőforrás osztályok, melynek értéke a munkaterhelések általános szabályozáshoz is javasoljuk, hogy ezek az első használata előtt annak eldöntéséhez, hogy a dinamikus erőforrás-osztályok.

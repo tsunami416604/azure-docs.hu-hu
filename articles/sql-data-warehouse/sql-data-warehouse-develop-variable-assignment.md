@@ -1,40 +1,34 @@
 ---
-title: "Rendelje hozzá az SQL Data Warehouse változók |} Microsoft Docs"
-description: "Tippek a Transact-SQL változókat az Azure SQL Data Warehouse adattárházzal történő, megoldások hozzárendelése."
+title: Rendelje hozzá az Azure SQL Data Warehouse változók |} Microsoft Docs
+description: Tippek a T-SQL változókat az Azure SQL Data Warehouse adattárházzal történő, megoldások hozzárendelése.
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
-ms.assetid: 81ddc7cf-a6ba-4585-91a3-b6ea50f49227
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: t-sql
-ms.date: 10/31/2016
-ms.author: jrj;barbkess
-ms.openlocfilehash: 045d5148cd3f12dac63c961ccf7c953d355ed725
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/12/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: 012bc76950f212d69d26607c666e878b22015e70
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="assign-variables-in-sql-data-warehouse"></a>Rendelje hozzá az SQL Data Warehouse változók
-Az SQL Data Warehouse változók vannak beállítva, használja a `DECLARE` utasítást vagy a `SET` utasítást.
-
-Az alábbi módon tökéletesen érvényes egy változó értékének beállítására:
+---
+# <a name="assigning-variables-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse változók hozzárendelése
+Tippek a T-SQL változókat az Azure SQL Data Warehouse adattárházzal történő, megoldások hozzárendelése.
 
 ## <a name="setting-variables-with-declare"></a>A DECLARE változók beállítása
-Változók DECLARE inicializálása egyike a leginkább rugalmas módja egy változó értéke az SQL Data Warehouse.
+Az SQL Data Warehouse változók vannak beállítva, használja a `DECLARE` utasítást vagy a `SET` utasítást. Változók DECLARE inicializálása egyike a leginkább rugalmas módja egy változó értéke az SQL Data Warehouse.
 
 ```sql
 DECLARE @v  int = 0
 ;
 ```
 
-DECLARE segítségével egyszerre több változó értéke. Nem használhat `SELECT` vagy `UPDATE` ehhez:
+DECLARE segítségével egyszerre több változó értéke. Válassza ki vagy a frissítés nem használható a következőket teheti:
 
 ```sql
 DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 'Smith')
@@ -42,7 +36,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-Nem következő és használhat egy változót az azonos DECLARE utasítást. A pont, az alábbi példa mutatja be **nem** engedélyezett @p1 van inicializálva és az azonos DECLARE utasításban való használathoz. Ez hibát eredményez.
+Nem inicializálható, és használhat egy változót az azonos DECLARE utasítást. Mutatja be a pont, a következő példa egy **nem** óta engedélyezett @p1 van inicializálva és az azonos DECLARE utasításban való használathoz. A következő példa olyan hibaüzenetet ad.
 
 ```sql
 DECLARE @p1 int = 0
@@ -51,9 +45,9 @@ DECLARE @p1 int = 0
 ```
 
 ## <a name="setting-values-with-set"></a>A beállítás értéke beállítva
-Egy változó beállításához nagyon gyakori módja lesz.
+Gyakori módja egy változó beállításához lesz.
 
-Az alábbi példák összes beállítását egy változó beállítva érvényes módon:
+A következő utasításokat az összes érvényes módon beállítva egy változó beállítása:
 
 ```sql
 SET     @v = (Select max(database_id) from sys.databases);
@@ -62,19 +56,11 @@ SET     @v = @v+1;
 SET     @v +=1;
 ```
 
-Egy változó egyszerre beállítva csak beállítani. Azonban, a fent látható összetett operátorok nem megengedett.
+Egy változó egyszerre beállítva csak beállítani. Azonban az összetett operátorok nem megengedett.
 
 ## <a name="limitations"></a>Korlátozások
 Válassza ki vagy frissítés változó-hozzárendelés nem használható.
 
-## <a name="next-steps"></a>Következő lépések
-További fejlesztési tippek, lásd: [fejlesztői áttekintés][development overview].
+## <a name="next-steps"></a>További lépések
+További fejlesztési tippek, lásd: [fejlesztői áttekintés](sql-data-warehouse-overview-develop.md).
 
-<!--Image references-->
-
-<!--Article references-->
-[development overview]: sql-data-warehouse-overview-develop.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->

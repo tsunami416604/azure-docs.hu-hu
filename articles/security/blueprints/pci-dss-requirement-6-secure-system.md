@@ -1,6 +1,6 @@
 ---
-title: "Az Azure támogatási feldolgozási tervezetének - biztonságos rendszerre vonatkozó követelmények"
-description: "PCI DSS követelmény 6"
+title: Az Azure támogatási feldolgozási tervezetének - biztonságos rendszerre vonatkozó követelmények
+description: PCI DSS követelmény 6
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 24c8d90d3fec27258165472e99ba3d36ffcba733
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: cd9054afc359d7568fcd08f983f374e0b2bc3792
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="secure-system-requirements-for-pci-dss-compliant-environments"></a>A PCI DSS-kompatibilis környezetben biztonságos rendszerkövetelményei 
 ## <a name="pci-dss-requirement-6"></a>PCI DSS követelmény 6
@@ -46,8 +46,8 @@ Lelkiismeretlen egyéni felhasználók számára a biztonsági rések segítség
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Eljárások létrejött, és a hatókör határt a hipervizor-állomások a biztonsági rések vizsgálat megvalósítva. Biztonsági rések keresése a megfelelő biztonsági ellenőrzési eszközök megtörténik a kiszolgálói operációs rendszerek, adatbázisok és a hálózati eszközök. A biztonsági vizsgálatok legalább negyedévente történik. A Microsoft Azure szerződéseket független értékelő behatolást vagy a biztonság teszteléséhez a Microsoft Azure-határ. Piros-csapat gyakorlatokat is rendszeresen készül, és eredmények használ a biztonsági javítások. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló csökkenti a biztonsági rések Alkalmazásátjáró WAF, és az engedélyezett OWASP szabálykészletben kockázatát. További információkért lásd: [PCI útmutatást - megoldás a kockázat biztonsági réseket](payment-processing-blueprint.md#application-gateway).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Eljárások létrejött, és a hatókör határt a hipervizor-állomások a biztonsági rések vizsgálat megvalósítva. Biztonsági rések keresése a megfelelő biztonsági ellenőrzési eszközök megtörténik a kiszolgálói operációs rendszerek, adatbázisok és a hálózati eszközök. A biztonsági vizsgálatok legalább negyedévente történik. A Microsoft Azure szerződéseket független értékelő behatolást vagy a biztonság teszteléséhez a Microsoft Azure-határ. Piros-csapat gyakorlatokat is rendszeresen készül, és eredmények használ a biztonsági javítások. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló csökkenti a biztonsági rések Alkalmazásátjáró WAF, és az engedélyezett OWASP szabálykészletben kockázatát. További információkért lásd: [PCI útmutatást - megoldás a kockázat biztonsági réseket](payment-processing-blueprint.md#application-gateway).|
 
 
 
@@ -62,8 +62,8 @@ Lelkiismeretlen egyéni felhasználók számára a biztonsági rések segítség
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure összes hálózati eszköz biztosításáért felelős és hipervizor-OS szoftverek védett az ismert biztonsági rések alkalmazható szállító által biztosított biztonsági javítások telepítésével. Hacsak nem használhatja a szolgáltatást az ügyfél kéri, annak érdekében, hogy operációs rendszer szintű biztonsági rések miatt sikertelen volt, és időben szervizelt van egy javítás felügyeleti folyamat. Az üzemi kiszolgálók beolvasása havonta javítás megfelelőség ellenőrzése. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló egy olyan PaaS service megoldás. Azure biztosít az összes szolgáltatás javítások karbantartása.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure összes hálózati eszköz biztosításáért felelős és hipervizor-OS szoftverek védett az ismert biztonsági rések alkalmazható szállító által biztosított biztonsági javítások telepítésével. Hacsak nem használhatja a szolgáltatást az ügyfél kéri, annak érdekében, hogy operációs rendszer szintű biztonsági rések miatt sikertelen volt, és időben szervizelt van egy javítás felügyeleti folyamat. Az üzemi kiszolgálók beolvasása havonta javítás megfelelőség ellenőrzése. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló egy olyan PaaS service megoldás. Azure biztosít az összes szolgáltatás javítások karbantartása.|
 
 
 
@@ -81,8 +81,8 @@ Lelkiismeretlen egyéni felhasználók számára a biztonsági rések segítség
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure-alkalmazások és a végpontok fejlesztett a Microsoft biztonságos fejlesztési Életciklussal (SDL) módszertan használatával, amely DSS követelményeinek megfelelően. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló úgy lett kialakítva, hajtsa végre az ágazatban kialakult bevált gyakorlaton CHD védelme. Üzembe helyezési útmutatót biztosít a biztonsági meassures részleteit, és a naplózás engedélyezve van.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure-alkalmazások és a végpontok fejlesztett a Microsoft biztonságos fejlesztési Életciklussal (SDL) módszertan használatával, amely DSS követelményeinek megfelelően. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló úgy lett kialakítva, hajtsa végre az ágazatban kialakult bevált gyakorlaton CHD védelme. Üzembe helyezési útmutatót biztosít a biztonsági meassures részleteit, és a naplózás engedélyezve van.|
 
 
 
@@ -94,8 +94,8 @@ Lelkiismeretlen egyéni felhasználók számára a biztonsági rések segítség
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A végső biztonsági felülvizsgálat (FSR) Működésétől fő kiadásokban még éles központi telepítése előtt végzi a kijelölt biztonsági tanácsadó kívül az Azure fejlesztési csapat csak készen áll a termelési alkalmazások kiadott biztosításához. A végső felülvizsgálat részeként biztosítható, hogy a fiókok, a vizsgálati és a vizsgálati adatok el lettek távolítva. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló egy átmeneti és naplózza, és elkülönített szolgáltatást biztosít. A hálózati réteg mindegyikén [NSG] dedikált hálózati biztonsági csoport. További információkért lásd: [PCI útmutatást - hálózati biztonsági csoportok](payment-processing-blueprint.md#network-security-groups).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A végső biztonsági felülvizsgálat (FSR) Működésétől fő kiadásokban még éles központi telepítése előtt végzi a kijelölt biztonsági tanácsadó kívül az Azure fejlesztési csapat csak készen áll a termelési alkalmazások kiadott biztosításához. A végső felülvizsgálat részeként biztosítható, hogy a fiókok, a vizsgálati és a vizsgálati adatok el lettek távolítva. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló egy átmeneti és naplózza, és elkülönített szolgáltatást biztosít. A hálózati réteg mindegyikén [NSG] dedikált hálózati biztonsági csoport. További információkért lásd: [PCI útmutatást - hálózati biztonsági csoportok](payment-processing-blueprint.md#network-security-groups).|
 
 
 
@@ -116,8 +116,8 @@ Lelkiismeretlen egyéni felhasználók számára a biztonsági rések segítség
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure-alkalmazások és a végpontok fejlesztett Microsoft biztonságos fejlesztési Életciklussal (SDL) módszerek alapján. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló egy átmeneti és naplózza, és elkülönített szolgáltatást biztosít. A hálózati réteg mindegyikén [NSG] dedikált hálózati biztonsági csoport. További információkért lásd: [PCI útmutatást - hálózati biztonsági csoportok](payment-processing-blueprint.md#network-security-groups).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure-alkalmazások és a végpontok fejlesztett Microsoft biztonságos fejlesztési Életciklussal (SDL) módszerek alapján. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló egy átmeneti és naplózza, és elkülönített szolgáltatást biztosít. A hálózati réteg mindegyikén [NSG] dedikált hálózati biztonsági csoport. További információkért lásd: [PCI útmutatást - hálózati biztonsági csoportok](payment-processing-blueprint.md#network-security-groups).|
 
 
 
@@ -129,8 +129,8 @@ Lelkiismeretlen egyéni felhasználók számára a biztonsági rések segítség
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft az adott információ-biztonság szoftverfejlesztői kapcsolódó biztonsági szempontok a rendszer kezdetektől SDLC integrálni kell a NIST útmutatót követi. A Microsoft SDL a biztonsági gyakorlatai végrehajtásának folyamatos integrációja lehetővé teszi:<ul><li>Korai azonosítása és csökkenti a biztonsági réseket és konfigurációs hibák</li><li>Kódolási kihívást szükséges biztonsági vezérlők által okozott esetleges szoftver meg</li><li>Megosztott biztonsági szolgáltatások azonosítása és újbóli használatának ajánlott biztonsági eljárások az eszközök, amely azáltal növeli a biztonságot bevált módszerek és technikák használatával</li><li>A Microsoft már átfogó kockázatkezelési programjának végrehajtása</li></ul>A Microsoft Azure létesített változás, és felszabadíthatja a felügyeleti folyamatok végrehajtása jelentős változások többek között szabályozhatja:<ul><li>Az azonosító és a tervezett módosítás dokumentációja</li><li>A termék tervezés során üzleti célokat, a prioritásokkal és a forgatókönyvek azonosítása</li><li>A szolgáltatás vagy összetevő tervezési meghatározása</li><li>Előre meghatározott feltételek/ellenőrzés-listáját általános kockázati/hatásának alapján működőképesség áttekintése</li><li>A belépési és kilépési feltételeket fejlesztői (fejlesztés), a INT (integráció tesztelése), a FÁZIS (éles üzem előtti) és a termék (éles) környezetekhez megfelelő alapján teszteli, az engedélyezési és a változáskezeléshez. Az ügyfelek felelőssége saját Microsoft Azure szolgáltatásban üzemeltetett alkalmazásokat.</li></ul> |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló bemutató egy átmeneti és naplózza, és elkülönített szolgáltatást biztosít. <br /><br />A hálózati réteg mindegyikén [NSG] dedikált hálózati biztonsági csoport. További információkért lásd: [PCI útmutatást - hálózati biztonsági csoportok](payment-processing-blueprint.md#network-security-groups).<br /><br />Módosítások használata az Operations Management Suite naplózza, és a Runbookok segítségével naplógyűjtéshez. [Az Operations Management Suite (OMS)](/azure/operations-management-suite/) változások kiterjedt naplózás biztosít. Módosítások tekintse át, és pontossága ellenőrizni. Részletesebb útmutatásért lásd: [PCI útmutatást - az Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft az adott információ-biztonság szoftverfejlesztői kapcsolódó biztonsági szempontok a rendszer kezdetektől SDLC integrálni kell a NIST útmutatót követi. A Microsoft SDL a biztonsági gyakorlatai végrehajtásának folyamatos integrációja lehetővé teszi:<ul><li>Korai azonosítása és csökkenti a biztonsági réseket és konfigurációs hibák</li><li>Kódolási kihívást szükséges biztonsági vezérlők által okozott esetleges szoftver meg</li><li>Megosztott biztonsági szolgáltatások azonosítása és újbóli használatának ajánlott biztonsági eljárások az eszközök, amely azáltal növeli a biztonságot bevált módszerek és technikák használatával</li><li>A Microsoft már átfogó kockázatkezelési programjának végrehajtása</li></ul>A Microsoft Azure létesített változás, és felszabadíthatja a felügyeleti folyamatok végrehajtása jelentős változások többek között szabályozhatja:<ul><li>Az azonosító és a tervezett módosítás dokumentációja</li><li>A termék tervezés során üzleti célokat, a prioritásokkal és a forgatókönyvek azonosítása</li><li>A szolgáltatás vagy összetevő tervezési meghatározása</li><li>Előre meghatározott feltételek/ellenőrzés-listáját általános kockázati/hatásának alapján működőképesség áttekintése</li><li>A belépési és kilépési feltételeket fejlesztői (fejlesztés), a INT (integráció tesztelése), a FÁZIS (éles üzem előtti) és a termék (éles) környezetekhez megfelelő alapján teszteli, az engedélyezési és a változáskezeléshez. Az ügyfelek felelőssége saját Microsoft Azure szolgáltatásban üzemeltetett alkalmazásokat.</li></ul> |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló bemutató egy átmeneti és naplózza, és elkülönített szolgáltatást biztosít. <br /><br />A hálózati réteg mindegyikén [NSG] dedikált hálózati biztonsági csoport. További információkért lásd: [PCI útmutatást - hálózati biztonsági csoportok](payment-processing-blueprint.md#network-security-groups).<br /><br />Módosítások használata az Operations Management Suite naplózza, és a Runbookok segítségével naplógyűjtéshez. A Naplóelemzési változások kiterjedt naplózás biztosít. Módosítások tekintse át, és pontossága ellenőrizni. Részletesebb útmutatásért lásd: [PCI útmutatást - az Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -142,8 +142,8 @@ Lelkiismeretlen egyéni felhasználók számára a biztonsági rések segítség
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 6.4](#pci-dss-requirement-6-4). |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló egy átmeneti és naplózza, és elkülönített szolgáltatást biztosít. A hálózati réteg mindegyikén [NSG] dedikált hálózati biztonsági csoport. További információkért lásd: [PCI útmutatást - hálózati biztonsági csoportok](payment-processing-blueprint.md#network-security-groups).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 6.4](#pci-dss-requirement-6-4). |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló egy átmeneti és naplózza, és elkülönített szolgáltatást biztosít. A hálózati réteg mindegyikén [NSG] dedikált hálózati biztonsági csoport. További információkért lásd: [PCI útmutatást - hálózati biztonsági csoportok](payment-processing-blueprint.md#network-security-groups).|
 
 
 
@@ -155,8 +155,8 @@ Lelkiismeretlen egyéni felhasználók számára a biztonsági rések segítség
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 6.4](#pci-dss-requirement-6-4). |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló egy átmeneti és naplózza, és elkülönített szolgáltatást biztosít. A hálózati réteg mindegyikén [NSG] dedikált hálózati biztonsági csoport. További információkért lásd: [PCI útmutatást - hálózati biztonsági csoportok](payment-processing-blueprint.md#network-security-groups).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 6.4](#pci-dss-requirement-6-4). |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló egy átmeneti és naplózza, és elkülönített szolgáltatást biztosít. A hálózati réteg mindegyikén [NSG] dedikált hálózati biztonsági csoport. További információkért lásd: [PCI útmutatást - hálózati biztonsági csoportok](payment-processing-blueprint.md#network-security-groups).|
 
 
 
@@ -168,8 +168,8 @@ Lelkiismeretlen egyéni felhasználók számára a biztonsági rések segítség
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 6.4](#pci-dss-requirement-6-4). |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló nincs frissített elsődleges fiók száma (PÁSZTÁZÁS) adatok.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 6.4](#pci-dss-requirement-6-4). |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló nincs frissített elsődleges fiók száma (PÁSZTÁZÁS) adatok.|
 
 
 
@@ -181,8 +181,8 @@ Lelkiismeretlen egyéni felhasználók számára a biztonsági rések segítség
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 6.4](#pci-dss-requirement-6-4). |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló nem rendelkezik egyetlen teszt fiókot.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 6.4](#pci-dss-requirement-6-4). |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló nem rendelkezik egyetlen teszt fiókot.|
 
 
 
@@ -198,8 +198,8 @@ Lelkiismeretlen egyéni felhasználók számára a biztonsági rések segítség
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 6.4](#pci-dss-requirement-6-4). |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló egy olyan PaaS service megoldás. És az Azure biztosít az összes szolgáltatás javítások karbantartása.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 6.4](#pci-dss-requirement-6-4). |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló egy olyan PaaS service megoldás. És az Azure biztosít az összes szolgáltatás javítások karbantartása.|
 
 
 
@@ -215,8 +215,8 @@ Lelkiismeretlen egyéni felhasználók számára a biztonsági rések segítség
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 6.4](#pci-dss-requirement-6-4). |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló egy olyan PaaS service megoldás. És az Azure biztosít az összes szolgáltatás javítások karbantartása.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 6.4](#pci-dss-requirement-6-4). |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló egy olyan PaaS service megoldás. És az Azure biztosít az összes szolgáltatás javítások karbantartása.|
 
 
 
@@ -247,8 +247,8 @@ Lelkiismeretlen egyéni felhasználók számára a biztonsági rések segítség
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 6.4](#pci-dss-requirement-6-4). |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A webes tároló contoso bemutató biztonságos fejlesztési, egy DFD és a fenyegetések modell mutatja be a biztonságos fejlesztésre eljárások útmutatást nyújt a.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 6.4](#pci-dss-requirement-6-4). |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A webes tároló contoso bemutató biztonságos fejlesztési, egy DFD és a fenyegetések modell mutatja be a biztonságos fejlesztésre eljárások útmutatást nyújt a.|
 
 
 
@@ -267,8 +267,8 @@ Lelkiismeretlen egyéni felhasználók számára a biztonsági rések segítség
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Microsoft Azure teszteli az SDL folyamat részeként nyilvánosan elérhető webalkalmazások, mielőtt az éles környezetben telepített alkalmazások. Ezenkívül a Microsoft összes nyilvánosan elérhető webalkalmazások rendszeresen éles környezetben minden lehetséges biztonsági rések észlelése keres. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A hivatkozás megoldás csökkenti a biztonsági rések Alkalmazásátjáró WAF, és az engedélyezett OWASP szabálykészletben kockázatát. További információkért lásd: [PCI útmutatást - megoldás a kockázat biztonsági réseket](payment-processing-blueprint.md#application-gateway).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure teszteli az SDL folyamat részeként nyilvánosan elérhető webalkalmazások, mielőtt az éles környezetben telepített alkalmazások. Ezenkívül a Microsoft összes nyilvánosan elérhető webalkalmazások rendszeresen éles környezetben minden lehetséges biztonsági rések észlelése keres. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A hivatkozás megoldás csökkenti a biztonsági rések Alkalmazásátjáró WAF, és az engedélyezett OWASP szabálykészletben kockázatát. További információkért lásd: [PCI útmutatást - megoldás a kockázat biztonsági réseket](payment-processing-blueprint.md#application-gateway).|
 
 
 
@@ -280,8 +280,8 @@ Lelkiismeretlen egyéni felhasználók számára a biztonsági rések segítség
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A hivatkozás megoldás csökkenti a biztonsági rések Alkalmazásátjáró WAF, és az engedélyezett OWASP szabálykészletben kockázatát. További információkért lásd: [PCI útmutatást - megoldás a kockázat biztonsági réseket](payment-processing-blueprint.md#application-gateway).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A hivatkozás megoldás csökkenti a biztonsági rések Alkalmazásátjáró WAF, és az engedélyezett OWASP szabálykészletben kockázatát. További információkért lásd: [PCI útmutatást - megoldás a kockázat biztonsági réseket](payment-processing-blueprint.md#application-gateway).|
 
 
 

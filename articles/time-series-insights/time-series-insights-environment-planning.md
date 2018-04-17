@@ -1,6 +1,6 @@
 ---
-title: "A skála Azure idő adatsorozat Insights környezet tervezése |} Microsoft Docs"
-description: "Ez a cikk egy Azure idő adatsorozat Insights környezetben, például a tárolási kapacitás, az adatmegőrzés, érkező kapacitás, és a figyelést tervezése során kövesse a bevált gyakorlatokat ismerteti."
+title: A skála Azure idő adatsorozat Insights környezet tervezése |} Microsoft Docs
+description: Ez a cikk egy Azure idő adatsorozat Insights környezetben, például a tárolási kapacitás, az adatmegőrzés, érkező kapacitás, és a figyelést tervezése során kövesse a bevált gyakorlatokat ismerteti.
 services: time-series-insights
 ms.service: time-series-insights
 author: jasonwhowell
@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: 5fb158ba162dd199f419f9568de08a7a18c833dd
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 991db58db1bb07f338c0f80aa4db69ddb868dcab
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>Az Azure idő adatsorozat Insights környezet megtervezése
 
@@ -32,6 +32,8 @@ Vegye figyelembe a következő attribútumok legjobb terv a hosszú távú siker
 - Tárkapacitás
 - Adatmegőrzés időtartama
 - Érkező kapacitás 
+- Az események kialakításában.
+- Így mindig a referenciaadatok helyen
 
 ## <a name="understand-storage-capacity"></a>Tárolási kapacitás
 Alapértelmezés szerint a idő adatsorozat Insights adatokat ellátta tárolókapacitást alapján (egységenként tárolási egység alkalommal összeg) és a bejövő adatok megőrzi.
@@ -74,16 +76,27 @@ Például ha van egy egyetlen S1 SKU és érkező adatok egy percet, és csúcs 
 
 Nem lehet felmérni előre mennyi adatot várt leküldéses. Ebben az esetben az adatok telemetriai található [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics) és [Azure Event Hubs](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/) az Azure-portálon. A telemetria segítségével meghatározhatja, hogy a környezet kiépítése. Használja a **metrikák** oldalon a megfelelő forrás a telemetriai adatok megtekintéséhez az Azure-portálon. Ha megismeri a esemény forrás metrikákat, hatékonyabb megtervezése és jogosultságok kiosztása a idő adatsorozat Insights környezet.
 
-## <a name="calculate-ingress-requirements"></a>Érkező követelmények kiszámítása
+### <a name="calculate-ingress-requirements"></a>Érkező követelmények kiszámítása
 
 - Ellenőrizze a perc átlagos túllépi ezt az értéket a bejövő adatok kapacitás, és, hogy elég nagy a kapacitás kisebb, mint 1 óra x 2 egyenértékű a várható érkező-e a környezetében.
 
 - Érkező igényeiben jelentkező fordulhat elő, ha, amelyek utolsó több mint 1 óra csúcs sebessége használják az átlagos, és jogosultságok kiosztása a kapacitás a csúcs sebessége tartalmazó környezetben.
  
-## <a name="mitigate-throttling-and-latency"></a>Sávszélesség-szabályozás és a késés csökkentése
+### <a name="mitigate-throttling-and-latency"></a>Sávszélesség-szabályozás és a késés csökkentése
 
 Sávszélesség-szabályozás és a késés kapcsolatos információkért lásd: [csökkenthető a késleltetés és a sávszélesség-szabályozás](time-series-insights-environment-mitigate-latency.md). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="shaping-your-events"></a>Az események kialakításában.
+Fontos, hogy ellenőrizze, hogy a küldött események ÁME módszer támogatja kiépíteni a környezet mérete (ezzel szemben, leképezheti a hány események ÁME beolvassa a környezet és az egyes eseményeket mérete).  Hasonlóan fontos gondolja át az attribútumokat, érdemes lehet az adatok lekérdezésekor szűrés és többféle szempontból való.  Ennek tudatában, javasoljuk, hogy tekintse át a JSON kialakításában szakasza a *küldi az eseményeket* dokumentáció [dokumentáció] (https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-send-events).  A lap alján felé van.  
+
+## <a name="ensuring-you-have-reference-data-in-place"></a>Így mindig a referenciaadatok helyen
+A referencia-adatkészlet kiegészítheti az esemény forrásból származó események elemek gyűjteménye. Idő adatsorozat Insights érkező motor minden esemény az eseményforrás a megfelelő adatsor a csatlakozik a referencia-adatkészlet a. Ez a kibővített esemény ezután lekérdezhető. Ezt az összekapcsolást az elsődleges kulcs oszlop(ok) meghatározott a referencia-adatkészlet alapján történik.
+
+Megjegyzés: a referenciaadatok visszamenőleges nincs tartományhoz csatlakoztatva. Ez azt jelenti, hogy csak a jelenlegi és jövőbeli érkező adatok egyező és referencia meghatározott időpontban csatlakozik, konfigurálása és feltöltése után.  Ha azt tervezi, hogy a nagy mennyiségű előzményadatokat küldeni ÁME és nem feltölteni, vagy hozzon létre referenciaadatok ÁME először, akkor lehet, hogy újra munkavégzésre (mutatót, nem szórakoztató).  
+
+Hozzon létre, a referenciaadatok ÁME kezelését és feltöltését kapcsolatos további tudnivalókért keressen fel a *referenciaadatok* dokumentáció [dokumentáció] (https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-add-reference-data-set).
+
+
+## <a name="next-steps"></a>További lépések
 - [Az Event Hubs forrás hozzáadása](time-series-insights-how-to-add-an-event-source-eventhub.md)
 - [Az IoT-központ forrás hozzáadása](time-series-insights-how-to-add-an-event-source-iothub.md)

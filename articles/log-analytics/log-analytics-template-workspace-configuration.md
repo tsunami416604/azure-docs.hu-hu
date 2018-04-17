@@ -1,29 +1,29 @@
 ---
-title: "Azure Resource Manager-sablonok létrehozása és konfigurálása a Naplóelemzési munkaterület |} Microsoft Docs"
-description: "Azure Resource Manager-sablonok segítségével hozza létre és konfigurálja a Naplóelemzési munkaterület."
+title: Azure Resource Manager-sablonok létrehozása és konfigurálása a Naplóelemzési munkaterület |} Microsoft Docs
+description: Azure Resource Manager-sablonok segítségével hozza létre és konfigurálja a Naplóelemzési munkaterület.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: richrundmsft
 manager: jochan
-editor: 
+editor: ''
 ms.assetid: d21ca1b0-847d-4716-bb30-2a8c02a606aa
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: json
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 04/11/2018
 ms.author: richrund
-ms.openlocfilehash: db9b941e84c018a3a56dd683c118e47ee808259d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: e51dab1543c9c5c1c762134b3e73d608bcd523ba
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Log Analytics használata Azure Resource Manager-sablonok kezelése
 Használhat [Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-authoring-templates.md) létrehozása és konfigurálása a Naplóelemzési munkaterület. A sablonok végrehajtható műveletek közé tartoznak:
 
-* Munkaterület létrehozása
+* Beleértve a díjcsomagot beállítás munkaterület létrehozása 
 * Megoldás hozzáadása
 * Mentett keresések létrehozása
 * Hozzon létre egy számítógépcsoportot
@@ -34,32 +34,108 @@ Használhat [Azure Resource Manager-sablonok](../azure-resource-manager/resource
 * A log analytics agent hozzáadása egy Azure virtuális gépen
 * Naplóelemzési Azure diagnostics használatával gyűjt index adatok konfigurálása
 
-Ez a cikk ismerteti a sablon minták, amelyek bemutatják az egyes készítése a konfigurációról sablonok alapján hajthat végre.
+Ez a cikk ismerteti, amelyek bemutatják az egyes készítése a konfigurációról sablonok hajthat végre sablon minták.
 
-## <a name="api-versions"></a>API-verziók
-Ebben a cikkben a példa egy [Naplóelemzési munkaterület frissítése](log-analytics-log-search-upgrade.md).  Egy örökölt munkaterület használatához kellene a lekérdezés szintaxisa a következő örökölt nyelvének módosítása, és módosíthatja az egyes erőforrások API-verzió.  A következő táblázat az ebben a példában használt erőforrások API-verzió.
+## <a name="create-a-log-analytics-workspace"></a>A Naplóelemzési munkaterület létrehozása
+Az alábbi példakód létrehozza a munkaterületen, a helyi gép sablon alapján. A JSON-sablon csak kérjen a munkaterület neve van beállítva, és a többi paraméter, valószínűleg egy szabványos beállításokkal a környezetben használandó alapértelmezett értéket határoz meg.  
 
-| Erőforrás | Erőforrás típusa | Az örökölt API-verzió | Frissített API-verzió |
-|:---|:---|:---|:---|
-| Munkaterület   | A munkaterületek között    | 2015 11-01. dátumú előnézeti | 2017-03-15 – előzetes |
-| Keresés      | savedSearches | 2015 11-01. dátumú előnézeti | 2017-03-15 – előzetes |
-| Adatforrás | adatforrások   | 2015 11-01. dátumú előnézeti | 2015 11-01. dátumú előnézeti |
-| Megoldás    | megoldások     | 2015 11-01. dátumú előnézeti | 2015 11-01. dátumú előnézeti |
+A következő paraméterek állítsa be az alapértelmezett érték:
 
+* Hely - az alapértelmezett érték a USA keleti régiója
+* Termékváltozat - alapértelmezés szerint az új / GB-os tarifacsomag jelent meg a április 2018 fizetési modell
+
+>[!WARNING]
+>Ha létrehozása, vagy a Naplóelemzési munkaterület konfigurálása a olyan előfizetést, amelyet be az új árképzési modellt. április 2018 mellett, az IP-címek csak érvényes Naplóelemzési van **PerGB2018**. 
+>
+
+### <a name="create-and-deploy-template"></a>Hozzon létre és sablon üzembe helyezése
+
+1. Másolja és illessze be a következő JSON-szintaxist a létrehozott fájlba:
+
+    ```json
+    {
+    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspaceName": {
+            "type": "String",
+            "metadata": {
+              "description": "Specifies the name of the workspace."
+            }
+        },
+        "location": {
+            "type": "String",
+            "allowedValues": [
+              "eastus",
+              "westus"
+            ],
+            "defaultValue": "eastus",
+            "metadata": {
+              "description": "Specifies the location in which to create the workspace."
+            }
+        },
+        "sku": {
+            "type": "String",
+            "allowedValues": [
+              "Standalone",
+              "PerNode",
+              "PerGB2018"
+            ],
+            "defaultValue": "PerGB2018",
+            "metadata": {
+            "description": "Specifies the service tier of the workspace: Standalone, PerNode, Per-GB"
+        }
+          },
+    },
+    "resources": [
+        {
+            "type": "Microsoft.OperationalInsights/workspaces",
+            "name": "[parameters('workspaceName')]",
+            "apiVersion": "2017-03-15-preview",
+            "location": "[parameters('location')]",
+            "properties": {
+                "sku": {
+                    "Name": "[parameters('sku')]"
+                },
+                "features": {
+                    "searchVersion": 1
+                }
+            }
+          }
+       ]
+    }
+    ```
+2. Szerkesztheti a sablont az igényeknek.  Felülvizsgálati [Microsoft.OperationalInsights/workspaces sablon](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) hivatkozás megtudhatja, milyen tulajdonságok és értékek támogatottak. 
+3. Mentse a fájlt **deploylaworkspacetemplate.json** egy helyi mappába.
+4. Készen áll a sablon üzembe helyezésére. Használhatja a PowerShell vagy a parancssori műveletet cretae a munkaterületen.
+
+   * PowerShell használni a mappát, amely tartalmazza a sablon a következő parancsokat:
+   
+        ```powershell
+        New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json
+        ```
+
+   * Parancssor az alábbi parancsokkal sablont tartalmazó mappából:
+
+        ```cmd
+        azure config mode arm
+        azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile deploylaworkspacetemplate.json
+        ```
+
+Az üzembe helyezés eltarthat néhány percig. A Befejezés után, amely tartalmazza az eredmény az alábbihoz hasonló üzenet jelenik meg:<br><br> ![Ha befejeződött a telepítés példa eredménye](./media/log-analytics-template-workspace-configuration/template-output-01.png)
 
 ## <a name="create-and-configure-a-log-analytics-workspace"></a>Hozza létre és konfigurálja a Naplóelemzési munkaterület
 A következő sablon minta bemutatja, hogyan:
 
-1. Beleértve a beállítás az adatmegőrzés munkaterület létrehozása
-2. A munkaterület megoldások hozzáadása
-3. Mentett keresések létrehozása
-4. Hozzon létre egy számítógépcsoportot
-5. A Windows-ügynök telepítve az IIS-naplók számítógépekről gyűjtésének engedélyezése
-6. Logikai lemez teljesítményszámlálói gyűjteni a Linux rendszerű számítógépek (% Inode-OK; Szabad hely MB-ban; Foglalt hely; % / Mp átvitelek; Lemezolvasások/mp; Lemezírás/mp)
-7. Syslog-események gyűjtése Linux számítógépekről
-8. Hiba és figyelmeztetési események gyűjtése az alkalmazások eseménynaplójában a Windows rendszerű számítógépek
-9. A Windows rendszerű számítógépek memória rendelkezésre álló memória (MB) teljesítményszámláló gyűjtése.
-11. IIS-napló és a Windows eseménynaplóiban keresse meg a storage-fiókok Azure diagnostics által írt gyűjtése
+1. A munkaterület megoldások hozzáadása
+2. Mentett keresések létrehozása
+3. Hozzon létre egy számítógépcsoportot
+4. A Windows-ügynök telepítve az IIS-naplók számítógépekről gyűjtésének engedélyezése
+5. Logikai lemez teljesítményszámlálói gyűjteni a Linux rendszerű számítógépek (% Inode-OK; Szabad hely MB-ban; Foglalt hely; % / Mp átvitelek; Lemezolvasások/mp; Lemezírás/mp)
+6. Syslog-események gyűjtése Linux számítógépekről
+7. Hiba és figyelmeztetési események gyűjtése az alkalmazások eseménynaplójában a Windows rendszerű számítógépek
+8. A Windows rendszerű számítógépek memória rendelkezésre álló memória (MB) teljesítményszámláló gyűjtése.
+9. IIS-napló és a Windows eseménynaplóiban keresse meg a storage-fiókok Azure diagnostics által írt gyűjtése
 
 ```json
 {
@@ -77,10 +153,11 @@ A következő sablon minta bemutatja, hogyan:
       "allowedValues": [
         "Free",
         "Standalone",
-        "PerNode"
+        "PerNode",
+        "PerGB2018"
       ],
       "metadata": {
-        "description": "Service Tier: Free, Standalone, or PerNode"
+        "description": "Service Tier: Free, Standalone, PerNode, or PerGB2018"
     }
       },
     "dataRetention": {
@@ -421,7 +498,6 @@ New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <r
 azure config mode arm
 azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile azuredeploy.json
 ```
-
 
 ## <a name="example-resource-manager-templates"></a>Példa Resource Manager-sablonok
 Az Azure gyors üzembe helyezés sablon gyűjtemény Naplóelemzési, beleértve a több sablont is tartalmaz:

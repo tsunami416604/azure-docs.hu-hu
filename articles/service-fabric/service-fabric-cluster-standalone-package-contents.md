@@ -1,23 +1,23 @@
 ---
-title: "Az Azure Service Fabric önálló csomag a Windows Server |} Microsoft Docs"
-description: "Leírás és a Windows Server az Azure Service Fabric önálló csomag tartalmát."
+title: Az Azure Service Fabric önálló csomag a Windows Server |} Microsoft Docs
+description: Leírás és a Windows Server az Azure Service Fabric önálló csomag tartalmát.
 services: service-fabric
 documentationcenter: .net
 author: maburlik
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
-ms.author: chackdan;maburlik
-ms.openlocfilehash: 6a6bacedde04419449a061554d5ce9ad37259a2f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maburlik;aljo
+ms.openlocfilehash: 37425f8a076be2579726e5a83bec3da8c6eb5fff
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>A Windows Server a Service Fabric önálló csomag tartalma
 Az a [letöltött](http://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric önálló csomag található a következő fájlokat:
@@ -55,6 +55,6 @@ A GitHub-oldalon fürt konfigurációs sablonok legújabb verziói találhatók:
 ## <a name="independent-runtime-package"></a>Független futásidejű csomag
 A legújabb futásidejű csomag automatikusan letölti a fürt telepítésekor [- Service Fabric-futtatókörnyezet - hivatkozás töltse le a Windows Server](https://go.microsoft.com/fwlink/?linkid=839354).
 
-## <a name="related"></a>Kapcsolódó
+## <a name="related"></a>Kapcsolódó témakörök
 * [Önálló Azure Service Fabric-fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md)
 * [A Service Fabric-fürt biztonsági forgatókönyvek](service-fabric-windows-cluster-windows-security.md)

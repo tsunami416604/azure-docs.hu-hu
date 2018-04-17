@@ -1,12 +1,12 @@
 ---
-title: "Az Azure virtuális gépek - sablon több IP-cím |} Microsoft Docs"
-description: "Útmutató több IP-címek hozzárendelése a virtuális gép Azure Resource Manager-sablonnal."
-documentationcenter: 
+title: Az Azure virtuális gépek - sablon több IP-cím |} Microsoft Docs
+description: Útmutató több IP-címek hozzárendelése a virtuális gép Azure Resource Manager-sablonnal.
+documentationcenter: ''
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2016
 ms.author: jdial
 ms.openlocfilehash: d4b189fb23dda1167c4f6b17b618c718d32dd98f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-an-azure-resource-manager-template"></a>Több IP-címek hozzárendelése a virtuális gépek Azure Resource Manager-sablonnal
 
@@ -34,7 +34,7 @@ A sablonok telepítésével lehetővé teszi gyorsan és következetesen legyene
 
 <a name="resources"></a>A sablon telepítése hoz létre a következő erőforrásokat:
 
-|Erőforrás|Név|Leírás|
+|Erőforrás|Name (Név)|Leírás|
 |---|---|---|
 |Hálózati illesztő|*myNic1*|Ez a cikk a forgatókönyv szakaszban leírt három IP-konfigurációk létrehozása és hozzárendelése a hálózati adapternek.|
 |Nyilvános IP-cím erőforrás|2 jönnek létre: *myPublicIP* és *myPublicIP2*|Ezeket az erőforrásokat statikus nyilvános IP-címek, és vannak rendelve a *IPConfig-1* és *IPConfig-2* IP-konfigurációk a forgatókönyvet ismerteti.|
@@ -44,7 +44,7 @@ A sablonok telepítésével lehetővé teszi gyorsan és következetesen legyene
 
 <a name="parameters"></a>A sablon telepítésekor meg kell adnia a következő paraméter értékét:
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
 |adminUsername|Rendszergazda felhasználóneve. A felhasználónévnek meg kell felelnie [Azure username követelmények](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
 |adminPassword|Rendszergazdai jelszó a jelszót meg kell felelnie [Azure jelszavakra vonatkozó követelmények](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
@@ -68,7 +68,7 @@ A sablon az Azure portál használatával történő üzembe helyezéséhez köv
 1. Ha szükséges, módosítsa a sablon. A sablon telepíti az erőforrások és beállítások szerepel a [erőforrások](#resources) című szakaszát. Sablonok és ahhoz, hogy azok hogyan kapcsolatos további tudnivalókért olvassa el a [Azure Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-network%2ftoc.json)cikk.
 2. A sablon telepítéséhez az alábbi módszerek egyikével:
     - **Válassza ki a sablon a portálon:** lépéseinek végrehajtásához a [egyéni sablont az erőforrások telepítése](../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template) cikk. Válassza ki a korábban létrehozott sablon *101-vm – több-ipconfig*.
-    - **Közvetlenül:** a következő gombra kattintva nyissa meg a sablon közvetlenül a portálon:<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-multiple-ipconfig%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+    - **Közvetlenül:** a következő gombra kattintva nyissa meg a sablon közvetlenül a portálon: <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-multiple-ipconfig%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 
 Akármelyik módszert választja, adja meg az értékeket kell a [paraméterek](#parameters) ebben a cikkben korábban felsorolt. A virtuális gép telepítése után csatlakoztassa a virtuális Gépet, és a privát IP-címek hozzáadása az operációs rendszer, a lépések végrehajtásával telepítette a [hozzáadása IP-címek egy virtuális gép operációs rendszerre](#os-config) című szakaszát. Ne vegyen fel a nyilvános IP-címeket az operációs rendszer.
 

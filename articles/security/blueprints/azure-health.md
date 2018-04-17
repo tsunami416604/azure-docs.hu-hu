@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/27/2018
 ms.author: simorjay
-ms.openlocfilehash: 700378d23f869427fb50b9dee5bcf8448ac73404
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6bc2c63e75e9c750da852b77e4486666c3fc8561
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure biztonsági és megfelelőségi tervezetének - HIPAA/HITRUST állapotadatok és AI
 
@@ -79,14 +79,14 @@ A legalapvetőbb architektúra a következő összetevőkből áll:
 ## <a name="roles"></a>Szerepkörök
 
 
-Szerkezeti terve kórháznak felügyeleti és betegápolás határozza meg két szerepkört azon rendszergazda felhasználók (operátorok), és három szerepkörök a felhasználók számára. Hatodik szerepkör a HIPAA és egyéb szabályozásoknak való megfelelőség kiértékeléséhez egy auditor van meghatározva. Azure szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi, hogy pontosan célzott kezelési minden felhasználóhoz a megoldás a beépített és egyéni szerepkörök keresztül. Lásd: [szerepköralapú hozzáférés-vezérlés az Azure-portálon az első lépései](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is) és [Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörök](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) RBAC, szerepkörök és engedélyekkel kapcsolatos részletes információkat.
+Szerkezeti terve kórháznak felügyeleti és betegápolás határozza meg két szerepkört azon rendszergazda felhasználók (operátorok), és három szerepkörök a felhasználók számára. Hatodik szerepkör a HIPAA és egyéb szabályozásoknak való megfelelőség kiértékeléséhez egy auditor van meghatározva. Azure szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi, hogy pontosan célzott kezelési minden felhasználóhoz a megoldás a beépített és egyéni szerepkörök keresztül. Lásd: [szerepköralapú hozzáférés-vezérlés az Azure-portálon az első lépései](https://docs.microsoft.com/azure/role-based-access-control/overview) és [Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) RBAC, szerepkörök és engedélyekkel kapcsolatos részletes információkat.
 
 ### <a name="site-administrator"></a>Hely rendszergazdája
 
 
 A hely rendszergazdájának felelős az ügyfél az Azure-előfizetéséhez. Általános központi telepítésére, de nincs hozzáférési jogosultsága beteg rögzíti.
 
--   Alapértelmezett szerepkör-hozzárendelések: [tulajdonosa](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#owner)
+-   Alapértelmezett szerepkör-hozzárendelések: [tulajdonosa](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)
 
 -   Egyéni szerepkör-hozzárendelések: nincs
 
@@ -97,7 +97,7 @@ A hely rendszergazdájának felelős az ügyfél az Azure-előfizetéséhez. Ál
 Az adatbázis elemző felügyeli az SQL Server-példány és az adatbázis.
 Nem lehet hozzáférni beteg rekordok rendelkeznek.
 
--   Beépített szerepkör-hozzárendelések: [SQL DB Contributor](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#sql-db-contributor), [SQL Server közreműködő](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#sql-server-contributor)
+-   Beépített szerepkör-hozzárendelések: [SQL DB Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-db-contributor), [SQL Server közreműködő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor)
 
 -   Egyéni szerepkör-hozzárendelések: nincs
 
@@ -108,7 +108,7 @@ Nem lehet hozzáférni beteg rekordok rendelkeznek.
 
 Az adatok tudósok az Azure Machine Learning szolgáltatás működik. Ezek importálni, exportálni, és adatok kezelésére, és jelentéseket is futtathatnak. Az adatok tudósok betegek adatai hozzáféréssel rendelkezik, de nem rendelkezik rendszergazdai jogosultságokkal.
 
--   Beépített szerepkör-hozzárendelések: [tárolási fiók közreműködői](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#storage-account-contributor)
+-   Beépített szerepkör-hozzárendelések: [tárolási fiók közreműködői](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)
 
 -   Egyéni szerepkör-hozzárendelések: nincs
 
@@ -138,7 +138,7 @@ Az e munkakörben dolgozók feladata, hogy nyomon kövessék az egyes betegek á
 
 Az auditor kiértékeli megfelelőség szempontjából a megoldás. Nincs a hálózathoz közvetlen hozzáférést rendelkeznek.
 
--   Beépített szerepkör-hozzárendelések: [olvasó](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#reader)
+-   Beépített szerepkör-hozzárendelések: [olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)
 
 -   Egyéni szerepkör-hozzárendelések: nincs
 
@@ -222,7 +222,7 @@ Ez a szakasz részletesen felsorolja a meghatározott alapértelmezett konfigur�
 
 -   [Az Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection) észlel, a szervezet identitásait érintő lehetséges biztonsági rések, konfigurálja az automatikus válaszokat ad a szervezet identitásait kapcsolódó észlelt gyanús tevékenységek és gyanús incidensek megvizsgálja, és végrehajtja a megfelelő művelettel hárítsa el őket.
 
--   [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](/azure/active-directory/role-based-access-control-configure) lehetővé teszi, hogy pontosan célzott hozzáférés-kezelés az Azure-bA. Előfizetés hozzáférés korlátozódik előfizetés-rendszergazdaként, és az Azure Key Vault hozzáférés korlátozódik a webhely rendszergazdájához. Az erős jelszavak (legalább egy felső/alsó betűvel, számot és speciális karakterek minimális 12 karakter) szükség.
+-   [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](/azure/role-based-access-control/role-assignments-portal) lehetővé teszi, hogy pontosan célzott hozzáférés-kezelés az Azure-bA. Előfizetés hozzáférés korlátozódik előfizetés-rendszergazdaként, és az Azure Key Vault hozzáférés korlátozódik a webhely rendszergazdájához. Az erős jelszavak (legalább egy felső/alsó betűvel, számot és speciális karakterek minimális 12 karakter) szükség.
 
 -   A multi-factor authentication akkor támogatott, ha a - enableMFA kapcsoló engedélyezve van a telepítés során.
 
@@ -230,7 +230,7 @@ Ez a szakasz részletesen felsorolja a meghatározott alapértelmezett konfigur�
 
 **Szerepkörök:**
 
--   A megoldás teszi [beépített szerepkörök](/azure/active-directory/role-based-access-built-in-roles) erőforrásokhoz való hozzáférés kezeléséhez.
+-   A megoldás teszi [beépített szerepkörök](/azure/role-based-access-control/built-in-roles) erőforrásokhoz való hozzáférés kezeléséhez.
 
 -   Minden felhasználó adott beépített szerepkörök alapértelmezett rendeli hozzá.
 
@@ -242,8 +242,8 @@ Ez a szakasz részletesen felsorolja a meghatározott alapértelmezett konfigur�
     -   Beteg adatokat tároló elérési kulcsot
     -   Beteg kapcsolati karakterlánc
     -   A betegek adatai tábla neve
-    -   Azure ML Web Service Endpoint
-    -   Azure ML Service API Key
+    -   Az Azure gépi tanulás webszolgáltatás végpontja
+    -   Az Azure ML Service API-kulcs
 
 -   Speciális hozzáférési házirendek kell alapon
 -   Kulcstároló hozzáférési házirendeket a kulcsok és titkos minimálisan szükséges engedélyeket
@@ -368,7 +368,7 @@ A megoldás Azure esemény rács, az útválasztás kezelése összes események
 ### <a name="application-insights"></a>Application Insights
 - [Az Application Insights](/azure/application-insights/app-insights-overview) egy bővíthető alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek, több platformon. Az élő webalkalmazásának figyelésére használhatja. Teljesítményanomáliákat észlel. Hatékony elemzőeszközöket tartalmaz, amelyek segítenek a problémák felismerésében, és annak a megértésében, hogy a felhasználók mire használják ténylegesen az alkalmazást. Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot.
 
-### <a name="azure-alerts"></a>Azure Alerts
+### <a name="azure-alerts"></a>Az Azure riasztások
 - [Riasztások kínálnak az Azure-szolgáltatások figyelésére szolgáló módszer, és lehetővé teszik adatok konfigurálhatja a platformesemények létrehozási feltételeit. Riasztások is adja meg az értesítéseket, egy riasztási feltétel megegyezik a figyelési adatokat.
 
 ### <a name="operations-management-suite-oms"></a>Az Operations Management Suite (OMS)

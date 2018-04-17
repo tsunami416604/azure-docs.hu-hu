@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: load & move data
 ms.topic: article
-ms.date: 04/01/2018
+ms.date: 04/10/2018
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 72e0ed535139c088c4235b43a12ea96da080dc8a
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 86b0e78f362d1cf3c2480aad97ef5281c5f3bc95
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-sql-data-sync-preview"></a>SQL adatszinkronizálás (előzetes verzió) beállítása
 Ebben az oktatóanyagban elsajátíthatja, hogyan Azure SQL Data szinkronizálás beállítása az Azure SQL Database és az SQL Server-példányokat tartalmazó hibrid szinkronizálási csoportok létrehozásával. Az új szinkronizálási csoport teljes van konfigurálva, és a beállított ütemezés szerint szinkronizálja.
@@ -24,7 +24,7 @@ Ez az oktatóanyag feltételezi, hogy rendelkezik-e legalább némi tapasztalatt
 Az SQL Data Sync áttekintéséhez tekintse meg a [több felhőalapú és helyszíni adatbázis közötti, az Azure SQL Data Sync előzetes verziójával végzett adatszinkronizálást](sql-database-sync-data.md) ismertető cikket.
 
 Teljes PowerShell-példák bemutatják, hogyan konfigurálja az SQL adatszinkronizálás tekintse meg a következő cikkeket:
--   [A PowerShell szolgáltatás használatával több Azure SQL-adatbázisok közötti szinkronizálása](scripts/sql-database-sync-data-between-sql-databases.md)
+-   [A PowerShell használata több Azure SQL Database-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-sql-databases.md)
 -   [A PowerShell használata egy Azure-beli SQL Database-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-azure-onprem.md)
 
 ## <a name="step-1---create-sync-group"></a>1. lépés – a sync-csoport létrehozása
@@ -151,7 +151,7 @@ Az a **konfigurálása a helyszíni** lapján tegye a következőket:
         ![Adja meg az ügynök kulcsot és a kiszolgáló hitelesítő adatait](media/sql-database-get-started-sql-data-sync/datasync-preview-agent-enterkey.png)
 
         >   [!NOTE] 
-        >   Ha a tűzfal hibaüzenet jelenik meg ezen a ponton, hogy egy tűzfalszabály létrehozása az Azure SQL Server-számítógépen a bejövő forgalom engedélyezésére. A szabály manuálisan hozhat létre, a portálon, de előfordulhat, hogy ez egyszerűbbé teszi az SQL Server Management Studio (SSMS) létrehozásához. Az SSMS próbálja meg az Azure-on a központ adatbázishoz való kapcsolódáshoz. Adja meg a nevét, \<hub_database_name\>. database.windows.net. Azure tűzfalszabály konfigurálásához kövesse a párbeszédpanel bezárása. Térjen vissza az ügyfél-szinkronizálási ügynök alkalmazást.
+        >   Ha a tűzfal hibaüzenet jelenik meg ezen a ponton, hogy egy tűzfalszabály létrehozása az Azure SQL Server-számítógépen a bejövő forgalom engedélyezésére. A szabály manuálisan hozhat létre, a portálon, de előfordulhat, hogy ez egyszerűbbé teszi az SQL Server Management Studio (SSMS) létrehozásához. Az SSMS próbálja meg az Azure-on a központ adatbázishoz való kapcsolódáshoz. Adja meg a < hub_database_name > néven. database.windows.net. Azure tűzfalszabály konfigurálásához kövesse a párbeszédpanel bezárása. Térjen vissza az ügyfél-szinkronizálási ügynök alkalmazást.
 
     9.  Az ügyfél-szinkronizálási ügynök alkalmazásban kattintson **regisztrálása** egy SQL Server-adatbázis regisztrálására az ügynököt. A **SQL Server-konfigurációs** párbeszédpanel.
 
@@ -225,7 +225,16 @@ Nem feltétlenül. A szinkronizálási csoport hubbal és három küllők (A, B 
 
 ### <a name="how-do-i-get-schema-changes-into-a-sync-group"></a>Hogyan szerezhetek sémamódosítások egy szinkronizálási csoporthoz?
 
-Akkor hajtsa végre kézzel sémaváltozások.
+És minden sémamódosítások manuálisan propagálása rendelkezik.
+1. A séma módosításokat a központi és az összes szinkronizálás manuálisan replikálja.
+2. A szinkronizálási séma frissítése.
+
+**Új táblákat és oszlopokat hozzáadása**. Új táblákat és oszlopokat az aktuális szinkronizálási nincs hatással. Adatszinkronizálás figyelmen kívül hagyja az új táblákat és oszlopokat csak akkor adja hozzá a szinkronizálási sémát. Amikor új adatbázis-objektumok, ez az a legjobb módon, hogy kövesse:
+1. Az új táblák és oszlopok hozzáadása a központ és az összes szinkronizálás.
+2. Az új táblákat vagy oszlopok hozzáadása a szinkronizálási séma.
+3. Indítsa el az értékek beszúrása az új táblákat és oszlopokat.
+
+**Az adattípus oszlop módosítása**. Az oszlop adattípusának módosítása esetén adatszinkronizálás folytatja a működést, amíg az új értékekkel fér el az eredeti, a szinkronizálási sémában definiált adattípus. Például, ha az adatbázisában típusának módosítása **int** való **bigint**, adatszinkronizálás folytatja a működést, amíg beszúrása egy érték, amely túl nagy a **int** adattípus . A módosítás befejezéséhez manuálisan replikálja a séma módosulását, a központ és az összes szinkronizálás, és frissítse a a szinkronizálási sémát.
 
 ### <a name="how-can-i-export-and-import-a-database-with-data-sync"></a>Hogyan exportálása és importálása az adatszinkronizálás adatbázis?
 Adatbázis exportálása után egy `.bacpac` fájlt, és importálja a fájlt egy új adatbázis létrehozásához, meg kell nyitnia a következő két dolog adatszinkronizálás használni az új adatbázis:
@@ -279,7 +288,7 @@ További információ az SQL Data Syncről:
 -   [Az Azure SQL Data Synckel hibaelhárítása](sql-database-troubleshoot-data-sync.md)
 
 -   Teljes PowerShell-példák az SQL Data Sync konfigurálásáról:
-    -   [A PowerShell szolgáltatás használatával több Azure SQL-adatbázisok közötti szinkronizálása](scripts/sql-database-sync-data-between-sql-databases.md)
+    -   [A PowerShell használata több Azure SQL Database-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-sql-databases.md)
     -   [A PowerShell használata egy Azure-beli SQL Database-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-azure-onprem.md)
 
 -   [Az SQL Data Sync REST API dokumentációjának letöltése](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)

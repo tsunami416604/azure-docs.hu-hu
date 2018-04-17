@@ -1,11 +1,11 @@
 ---
-title: "Azure virtuális gép ajánlott biztonsági eljárások"
-description: "Ez a cikk számos ajánlott biztonsági eljárások használhatók az Azure-ban található virtuális gép."
+title: Azure virtuális gép ajánlott biztonsági eljárások
+description: Ez a cikk számos ajánlott biztonsági eljárások használhatók az Azure-ban található virtuális gép.
 services: security
 documentationcenter: na
 author: YuriDio
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 5e757abe-16f6-41d5-b1be-e647100036d8
 ms.service: security
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 6541d09d7f1a7e85333f54797dba7db79328e9de
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: ddddf72d1ded0fb7952a641c287a4a5696e3aaef
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Ajánlott eljárások az Azure virtuális gép biztonsági
 
@@ -49,14 +49,14 @@ A cikk a következő virtuális gép ajánlott biztonsági eljárások megvizsg�
 
 A virtuális gép védelmének első lépése annak érdekében, hogy csak a hitelesített felhasználóknak beállíthatja az új virtuális gépek. Használhat [Azure házirendek](../azure-policy/azure-policy-introduction.md) egyezmények erőforrások létrehozására a szervezetben, létrehozzon testreszabott házirendeket, és ezek a házirendek alkalmazása erőforrások, például a [erőforráscsoportok](../azure-resource-manager/resource-group-overview.md).
 
-Természetesen az erőforráscsoporthoz tartozó virtuális gépek a házirendek jelentik. Bár javasolt ezt a módszert használja a virtuális gépek kezelése, is is elérését Ön szabályozza az egyes Virtuálisgép-házirendek használatával [szerepköralapú hozzáférés-vezérlést (RBAC)](../active-directory/role-based-access-control-configure.md).
+Természetesen az erőforráscsoporthoz tartozó virtuális gépek a házirendek jelentik. Bár javasolt ezt a módszert használja a virtuális gépek kezelése, is is elérését Ön szabályozza az egyes Virtuálisgép-házirendek használatával [szerepköralapú hozzáférés-vezérlést (RBAC)](../role-based-access-control/role-assignments-portal.md).
 
 Ha engedélyezi az erőforrás-kezelő házirendek és a virtuális gép hozzáférés-vezérlésének RBAC, tökéletesítése általános virtuális gép biztonsági. Azt javasoljuk, hogy Ön konszolidálhatják virtuális gépek azonos életciklusával ugyanabban az erőforráscsoportban. Erőforráscsoport-sablonok használatával telepítheti, figyeléséhez és költségek az erőforrások számlázási összesítő. Ahhoz, hogy a felhasználók számára a hozzáférést, és állítsa be a virtuális gépek, használja a [legalacsonyabb jogosultsági megközelítés](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models). És jogosultságok hozzárendelése felhasználókhoz, ha tervezi, hogy a következő beépített Azure szerepkörök:
 
-- [Virtuális gép közreműködő](../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor): kezelheti a virtuális gépek, de nem a virtuális hálózati vagy tárolási fiókot, amelyhez csatlakoznak.
-- [Klasszikus virtuális gép közreműködő](../active-directory/role-based-access-built-in-roles.md#classic-virtual-machine-contributor): kezelheti a klasszikus üzembe helyezési modellel, de nem a virtuális hálózati vagy tárolási fiókot, amelyhez a virtuális gépek csatlakoznak használatával létrehozott virtuális gépeket.
-- [Biztonságkezelő](../active-directory/role-based-access-built-in-roles.md#security-manager): kezelhetik biztonsági összetevők, a biztonsági házirendek és a virtuális gépek.
-- [DevTest Labs felhasználói](../active-directory/role-based-access-built-in-roles.md#devtest-labs-user): mindent megtekinthetnek, és csatlakozzon, elindítható, indítsa újra, és állítsa le a virtuális gépek.
+- [Virtuális gép közreműködő](../role-based-access-control/built-in-roles.md#virtual-machine-contributor): kezelheti a virtuális gépek, de nem a virtuális hálózati vagy tárolási fiókot, amelyhez csatlakoznak.
+- [Klasszikus virtuális gép közreműködő](../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor): kezelheti a klasszikus üzembe helyezési modellel, de nem a virtuális hálózati vagy tárolási fiókot, amelyhez a virtuális gépek csatlakoznak használatával létrehozott virtuális gépeket.
+- [Biztonságkezelő](../role-based-access-control/built-in-roles.md#security-manager): kezelhetik biztonsági összetevők, a biztonsági házirendek és a virtuális gépek.
+- [DevTest Labs felhasználói](../role-based-access-control/built-in-roles.md#devtest-labs-user): mindent megtekinthetnek, és csatlakozzon, elindítható, indítsa újra, és állítsa le a virtuális gépek.
 
 Ne ossza meg fiókkal és jelszóval egymástól a rendszergazdákat, és ne használja ugyanazt a jelszót több felhasználói fiókhoz vagy szolgáltatáshoz, különösen a közösségi oldalakon jelszavak vagy más nem felügyeleti tevékenységek. Ideális esetben használjon [Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) sablonok biztonságosan beállítása a virtuális gépek. Ezt a módszert használja, a központi telepítési beállítások megerősítése és a biztonsági beállításainak a telepítés során.
 

@@ -1,10 +1,10 @@
 ---
-title: "Az Azure fenntartott IP-címek (klasszikus) - PowerShell kezelése |} Microsoft Docs"
-description: "Fenntartott IP-címek (klasszikus) és a kezelésük módjával PowerShell használatával."
+title: Az Azure fenntartott IP-címek (klasszikus) - PowerShell kezelése |} Microsoft Docs
+description: Fenntartott IP-címek (klasszikus) és a kezelésük módjával PowerShell használatával.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: carmonm
+author: genli
+manager: cshepard
 editor: tysonn
 ms.assetid: 34652a55-3ab8-4c2d-8fb2-43684033b191
 ms.service: virtual-network
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/10/2016
-ms.author: jdial
-ms.openlocfilehash: 5e9c83cebec96c6bc8afd53b0c637d7af899746f
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: genli
+ms.openlocfilehash: 370f30a61727e6c349f6e043f1aed2d9dba47fca
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="reserved-ip-addresses-classic"></a>Fenntartott IP-címek (klasszikus)
 

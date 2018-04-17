@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/12/2018
-ms.openlocfilehash: cda5c26d4256720a8cf9af0e9abd604c979422a7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/09/2018
+ms.openlocfilehash: e7274e4507d901a209ed5832e98ca630feefda4f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Az Azure Stream Analytics Anomáliadetektálás
 
@@ -65,6 +65,8 @@ Az egyedi értékek kívül a rekord kibontásához használja a **GetRecordProp
 `SELECT id, val FROM input WHERE (GetRecordPropertyValue(ANOMALYDETECTION(val) OVER(LIMIT DURATION(hour, 1)), 'BiLevelChangeScore')) > 3.25` 
 
 Anomáliadetektálási típusú észlelt egy anomáliadetektálási pontszámok ebbe a küszöbértéket. A küszöbérték lehet bármely lebegőpontos szám > = 0. Küszöbértéke egy érzékenységi és az vetett bizalmat közötti kompromisszumot. Például alacsonyabb küszöbértékkel Ehhez ellenőrizze észlelési érzékenyebb a módosításokat, és további riasztást állítson elő, mivel a magasabb küszöbértéket sikerült észlelés kevésbé érzékeny és több biztosnak, azonban néhány rendellenességeket maszk. A pontos küszöbérték használni a forgatókönyv függ. Nincs felső korlátja, de a javasolt tartomány 3,25 – 5. 
+
+A példában látható módon 3,25 értéke csak egy javasolt kiindulási pont. Az érték finomhangolhatja, ha fut a végrehajtott műveleteket a saját adatok, és figyelje meg a kimeneti értéket, amíg el nem éri a megengedett küszöbértéket.
 
 ## <a name="anomaly-detection-algorithm"></a>Anomáliaészlelő
 
@@ -118,19 +120,19 @@ Tekintsük át részletesen a strangeness számítási (feltételezik, hogy a ko
    - event_value/90th_percentile, ha event_value > 90th_percentile  
    - 10th_percentile/event_value, ha a event_value < 10th_percentile  
 
-2. **Lassú pozitív trend:** egy trendvonal keresztül az Előzmények ablak esemény értékének kiszámítása, és azt a soron belül pozitív tendenciát keresi. A strangeness értékét számítja ki, hogy:  
+2. **Lassú pozitív trend:** egy trendvonal keresztül az Előzmények ablak esemény értékeinek kiszámítása és a művelet megkeresi a soron belül pozitív tendenciát. A strangeness értékét számítja ki, hogy:  
 
    - Görbét, ha görbét pozitív  
    - 0, egyébként pedig 
 
-1. **Lassú negatív trend:** egy trendvonal keresztül az Előzmények ablak esemény értékének kiszámítása, és azt meg negatív trend a soron belül. A strangeness értékét számítja ki, hogy: 
+3. **Lassú negatív trend:** egy trendvonal keresztül az Előzmények ablak esemény értékeinek kiszámítása és a művelet megkeresi a soron belül negatív trend. A strangeness értékét számítja ki, hogy: 
 
    - Görbét, ha negatív görbét  
    - 0, egyébként pedig  
 
 A beérkező eseményhez strangeness értékét számítja ki, ha egy martingale érték kiszámítása alapján történik a strangeness érték (lásd a [Machine Learning blog](https://blogs.technet.microsoft.com/machinelearning/2014/11/05/anomaly-detection-using-machine-learning-to-detect-abnormalities-in-time-series-data/) talál részletes információt a martingale érték számított hogyan). Ez az érték martingale, az anomáliadetektálási pontszám van retuned. A martingale érték lassan válaszul furcsa értékek, amely lehetővé teszi, hogy az érzékelő maradjon robusztus szórványos változásokat, és csökkenti a téves riasztások növekszik. Hasznos tulajdonsággal is rendelkezik: 
 
-Valószínűség [t ilyen létezik adott M<sub>t</sub> > λ] < 1/λ, ahol M<sub>t</sub> azonnali t martingale értékét, és λ legyen valós szám. Például, ha jelenleg a riasztás feltétele M<sub>t</sub>> 100, majd a vakriasztások valószínűségét 1/100-nál kisebb.  
+Valószínűség [t ilyen létezik adott M<sub>t</sub> > λ] < 1/λ, ahol M<sub>t</sub> azonnali t martingale értékét, és λ legyen valós szám. Például, ha egy riasztás amikor M<sub>t</sub>> 100, majd a vakriasztások valószínűségét 1/100-nál kisebb.  
 
 ## <a name="guidance-for-using-the-bi-directional-level-change-detector"></a>Útmutató a kétirányú szintű érzékelő módosítása 
 
@@ -140,7 +142,7 @@ A következő szempontokat kell figyelembe a rendszer az érzékelő használata
 
 1. Amikor a idősorozat hirtelen látja növelését vagy dobja el az értéket, a AnomalyDetection operátor felismeri. De észlelése normál visszaállításához további tervezést igényel. Ha idősor előtt az anomáliadetektálási, amely a AnomalyDetection operátor észlelési időszak nagyobb, mint fele eltelt a anomáliadetektálási értékre állításával érheti el a stabil állapotban volt. Ez a forgatókönyv azt feltételezi, hogy az anomáliadetektálási minimális időtartama becsülhető időben, és nincs elég események a megadott idő alatt a modell betanításához elég (legalább 50 esemény). 
 
-   Ezt az 1 és kisebb egy felső korlát módosítása (ugyanez a logika vonatkozik a alsó korlát módosítása) 2. ábra mutatja be. Mindkét számokkal a hullámformák egy rendellenes szint módosítása. Narancssárga függőleges vonalak jelölik Ugrás határokat és ugrásának mérete megegyezik a AnomalyDetection operátorban megadott észlelési ablak. A zöld sorok a képzés ablak méretét jelzik. 1. ábráján ugrásának mérete megegyezik a időt, hogy mely anomáliadetektálási tart. A 2. ábrán az Ugrás mérete, amelynek az anomáliadetektálási tart idő fele. Minden esetben egy felfelé változást észlel, mert a modell pontozása használatos a megszokott adatforgalmi lett képezni. De alapján a kétirányú szint módosításának jelentő működése, igazolnia kell zárnia a normál értéket a modell, amely pontszámaihoz normál visszaállításához használt betanítási ablakból. 1. ábrán a a pontozási modell betanítási néhány szokásos eseményeket tartalmazza a, térjen vissza a normál nem észlelhető. De a 2. ábrán, a képzési csak tartalmazza a rendellenes része, amely biztosítja, hogy a normál visszatérési észlelt. Bármi kisebb, mint felét is működik, ugyanezen okból, mivel minden nagyobb kat, beleértve a normál események bit. 
+   Ezt az 1 és kisebb egy felső korlát módosítása (ugyanez a logika vonatkozik a alsó korlát módosítása) 2. ábra mutatja be. Mindkét számokkal a hullámformák egy rendellenes szint módosítása. Narancssárga függőleges vonalak jelölik Ugrás határokat és ugrásának mérete megegyezik a AnomalyDetection operátorban megadott észlelési ablak. A zöld sorok a képzés ablak méretét jelzik. 1. ábráján ugrásának mérete megegyezik a időt, hogy mely anomáliadetektálási tart. A 2. ábrán az Ugrás mérete, amelynek az anomáliadetektálási tart idő fele. Minden esetben egy felfelé változást észlel, mert a modell pontozása használatos a megszokott adatforgalmi lett képezni. De alapján a kétirányú szint módosításának jelentő működése, azt kell zárnia a normál értéket a modell, amely pontszámaihoz normál visszaállításához használt betanítási ablakból. 1. ábrán a a pontozási modell betanítási néhány szokásos eseményeket tartalmazza a, térjen vissza a normál nem észlelhető. De a 2. ábrán, a képzési csak tartalmazza a rendellenes része, amely biztosítja, hogy a normál visszatérési észlelt. Bármi kisebb, mint felét is működik, ugyanezen okból, mivel minden nagyobb kat, beleértve a normál események bit. 
 
    ![Az ablak mérete nagyobb az anomáliadetektálási hossza AD](media/stream-analytics-machine-learning-anomaly-detection/windowsize_equal_anomaly_length.png)
 

@@ -1,19 +1,19 @@
 ---
-title: "Az Azure SQL-adatbázis létrehozásához BACPAC fájl importálása |} Microsoft Docs"
-description: "Hozzon létre egy newAzure SQL-adatbázis BACPAC fájl importálásával."
+title: Az Azure SQL-adatbázis létrehozásához BACPAC fájl importálása |} Microsoft Docs
+description: Hozzon létre egy newAzure SQL-adatbázis BACPAC fájl importálásával.
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: load & move data
-ms.date: 01/29/2018
+ms.date: 04/10/2018
 ms.author: carlrab
 ms.topic: article
-ms.openlocfilehash: 9d829bd312bb1ae2468258bc2ec8619b2858394e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 4279630816b6d5f7cf15b7555bf951d3f2a5f95a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="import-a-bacpac-file-to-a-new-azure-sql-database"></a>Új Azure SQL-adatbázis BACPAC fájl importálása
 
@@ -31,6 +31,9 @@ Az Azure portál használatával adatbázis importálásához nyissa meg a társ
    ![Adatbázis importálása](./media/sql-database-import/import.png)
 
 Az importálási művelet előrehaladásának figyeléséhez, nyissa meg az importált adatbázist tartalmazó logikai kiszolgálóhoz tartozó lapon. Görgessen le a **műveletek** majd **Import/Export** előzményeit.
+
+> [!NOTE]
+> [Az Azure SQL adatbázis felügyelt példány](sql-database-managed-instance.md) a más módszerekkel ebben a cikkben BACPAC-fájlból való importálása támogatott, de jelenleg nem támogatja a áttelepítése az Azure portál használatával.
 
 ### <a name="monitor-the-progress-of-an-import-operation"></a>Az importálási művelet előrehaladásának figyeléséhez
 
@@ -98,6 +101,13 @@ $importStatus
 
 > [!TIP]
 Egy másik mintaparancsfájl, lásd: [adatbázis BACPAC-fájlból való importálása](scripts/sql-database-import-from-bacpac-powershell.md).
+
+## <a name="import-using-other-methods"></a>Más módszerekkel importálása
+
+Ezekben a varázslókban is használhatja:
+
+- [Importálja az SQL Server Management Studio adatrétegbeli alkalmazás varázsló](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database#using-the-import-data-tier-application-wizard).
+- [SQL Server importálása és exportálása varázslóban](https://docs.microsoft.com/sql/integration-services/import-export-data/start-the-sql-server-import-and-export-wizard).
 
 ## <a name="next-steps"></a>További lépések
 * Megtudhatja, hogyan csatlakozhat, és az importált SQL-adatbázis lekérdezése, lásd: [Csatlakozás SQL Database adatbázishoz az SQL Server Management Studio eszközt, és végezze el a T-SQL-mintalekérdezés](sql-database-connect-query-ssms.md).

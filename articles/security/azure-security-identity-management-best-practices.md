@@ -1,6 +1,6 @@
 ---
-title: "Az Azure identity & access ajánlott biztonsági eljárások |} Microsoft Docs"
-description: "Ez a cikk számos gyakorlati tanácsok az Identitáskezelés, és a beépített hozzáférés-vezérlése segítségével Azure-képességek."
+title: Az Azure identity & access ajánlott biztonsági eljárások |} Microsoft Docs
+description: Ez a cikk számos gyakorlati tanácsok az Identitáskezelés, és a beépített hozzáférés-vezérlése segítségével Azure-képességek.
 services: security
 documentationcenter: na
 author: YuriDio
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2017
 ms.author: yurid
-ms.openlocfilehash: d80fdd5a2e4339823c05368d76de333f3314d4ec
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: ec8eb8759e310e31c7798c54cc95f0170e95cf50
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Az Azure Identitáskezelés és hozzáférés szabályozása ajánlott biztonsági eljárások
 Számos fontolja meg az identitást kell lennie az új határ réteg a biztonság érdekében, hogy a hagyományos hálózati-központú szempontjából szerepkör tovább tart. Ez az elsődleges pivot fejlődéséhez vonatkozó biztonsági figyelmet és beruházások származik, hogy a hálózati kialakítását egyre elválasztó vált, és a külső védelem nem lehet hatásos azok egyszer volt felbontására előtt [BYOD ](http://aka.ms/byodcg) eszközök és a felhőalapú alkalmazásokhoz.
@@ -52,7 +52,7 @@ Egy fontos lépés felé biztonságossá tétele a személyazonosságát, hogy g
 Ehhez [hibrid identitás](../active-directory/active-directory-hybrid-identity-design-considerations-overview.md) forgatókönyvben javasoljuk két lehetőség közül választhat:
 
 * A helyszíni címtárral szinkronizálja az Azure AD Connect használatával a felhő címtárral
-* A felhő directory használatáról a helyszíni identitás összevonni [Active Directory összevonási szolgáltatások](https://msdn.microsoft.com/library/bb897402.aspx) (AD FS)
+* Egyszeri bejelentkezés engedélyezése a [Jelszókivonat-szinkronizálást](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization), [átmenő hitelesítés](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq) vagy összevonni a helyszíni identitás a felhő directory használatáról [Active Directory Összevonási szolgáltatások](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/deploying-federation-servers) (AD FS)
 
 A szervezeteknek, amelyek a helyszíni identitás integrálható a felhőalapú identitás nem fog tapasztalni a rendszergazdára felügyelni a fiókok, ami növeli a hibák és a biztonsági résekkel szemben kialakulásának.
 
@@ -95,11 +95,11 @@ További információ az Azure MFA, olvassa el a cikk [Ismerkedés az Azure mult
 ## <a name="use-role-based-access-control-rbac"></a>Használjon szerepköralapú hozzáférés-vezérlést (RBAC)
 Alapján történő hozzáférés a [tudniuk kell, hogy](https://en.wikipedia.org/wiki/Need_to_know) és [legalacsonyabb jogosultsági szint](https://en.wikipedia.org/wiki/Principle_of_least_privilege) biztonsági elveket elengedhetetlen a szervezeteknek, amelyek az adatok biztonsági házirendek kikényszerítéséhez. Azure szerepköralapú hozzáférés-vezérlés (RBAC) segítségével engedélyek hozzárendelése a felhasználók, csoportok és alkalmazások egy adott hatókörben. A szerepkör-hozzárendelés hatóköre lehet előfizetés, egy erőforráscsoport vagy egy erőforrást.
 
-Kihasználhatja [beépített RBAC](../active-directory/role-based-access-built-in-roles.md) szerepkörök az Azure-jogosultságok hozzárendelése felhasználókhoz. Érdemes lehet *tárolási fiók közreműködői* a felhő üzemeltetői, amely szükséges a storage-fiókok kezelése és *klasszikus tárolási fiók közreműködői* szerepkör kezelése a klasszikus tárfiókokat. A felhő üzemeltetői, amelyet a virtuális gépek és a tárfiók kezelése, fontolja meg, hogy *virtuális gép közreműködő* szerepkör.
+Kihasználhatja [beépített RBAC](../role-based-access-control/built-in-roles.md) szerepkörök az Azure-jogosultságok hozzárendelése felhasználókhoz. Érdemes lehet *tárolási fiók közreműködői* a felhő üzemeltetői, amely szükséges a storage-fiókok kezelése és *klasszikus tárolási fiók közreműködői* szerepkör kezelése a klasszikus tárfiókokat. A felhő üzemeltetői, amelyet a virtuális gépek és a tárfiók kezelése, fontolja meg, hogy *virtuális gép közreműködő* szerepkör.
 
 A szervezeteknek, amelyek kényszeríti ki a hozzáférés-vezérlés képességeinek például RBAC által előfordulhat, hogy kell jogosultságot ad mint azok a felhasználók számára szükséges további engedélyekkel. Ennek eredményeképpen előfordulhat adatok sérült biztonság esetén az való felhasználói hozzáférést lehetővé bizonyos típusú adatok (például a nagy üzleti jelentőség), amelyek nem rendelkeznek az először típusú.
 
-További tudnivalók az Azure RBAC által a cikk elolvasása [átruházásához hozzáférés-vezérlés](../active-directory/role-based-access-control-configure.md).
+További tudnivalók az Azure RBAC által a cikk elolvasása [átruházásához hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="control-locations-where-resources-are-created-using-resource-manager"></a>Szabályozhatja a helyek, ahol erőforrások jönnek létre erőforrás-kezelő használatával
 A felhő üzemeltetői feladatait közben megakadályozza az egyezmények, amelyek szükségesek ahhoz, hogy a szervezet erőforrásaihoz kezelése megtörje engedélyezése nagyon fontos. A szervezeteknek, amelyek a helyeken, ahol erőforrások jönnek létre vezérelhető merevlemez kell code ezeket a helyeket.

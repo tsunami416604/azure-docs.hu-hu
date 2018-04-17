@@ -26,12 +26,12 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Alhálózatok száma virtuális hálózatonként |1000 |10000 |
 | Virtuális hálózati társviszony virtuális hálózatonként |10 |50 |
 | DNS-kiszolgálók száma virtuális hálózatonként |9 |25 |
-| Magánhálózati IP-címek száma virtuális hálózatonként |4096 |8192 |
+| Magánhálózati IP-címek száma virtuális hálózatonként |16384 ** |16384 |
 | Magánhálózati IP-címek száma hálózati adapterenként |256 |1024 |
 | Egyidejű TCP vagy UDP-forgalmat egy hálózati Adapterének virtuális gép vagy szerepkörpéldány |500 000 |500 000 |
-| Hálózati adapterek (NIC) |350 |20000 |
+| Hálózati adapterek (NIC) |24000 ** |24000 |
 | Hálózati biztonsági csoportok (NSG) |100 |5000 |
-| NSG-ben szereplő NSG-szabályok |200 |1000 |
+| NSG-ben szereplő NSG-szabályok |1000 ** |1000 |
 | IP-címek és egy biztonsági csoportot a cél- és a megadott tartományok |2000 |4000 |
 | Alkalmazásbiztonsági csoportok |200 |500 |
 | Biztonsági csoportok / IP-konfiguráció, egy hálózati adapter |10 |20 |
@@ -43,6 +43,8 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Nyilvános IP-címek – statikus |(Basic) 20 |kapcsolatfelvétel az ügyfélszolgálattal |
 | Nyilvános IP-címek – statikus |(Standard) 20 |kapcsolatfelvétel az ügyfélszolgálattal |
 | Pont–hely kapcsolati főtanúsítványok száma VPN Gateway-példányonként |20 |20 |
+
+** A alapértelmezett korlátozások vonatkoznak-előfizetések, amelyek korábban nem volt a működés felső korlátjának támogatási növelése
 
 #### <a name="load-balancer"></a>Korlátozza a terheléselosztó
 

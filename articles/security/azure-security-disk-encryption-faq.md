@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/18/2018
-ms.author: devtiw;ejarvi;mayank88mahajan;vermashi;sudhakarareddyevuri;aravindthoram
-ms.openlocfilehash: 5316efb54a12b5ad057d5a0561f36efdfff30884
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: devtiw
+ms.openlocfilehash: cb523b4fbf6e8abdf5c5158ab041d3485add9b23
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-disk-encryption-faq"></a>Az Azure Disk Encryption – gyakori kérdések
 
@@ -46,7 +46,7 @@ Az Azure Disk Encryption támogatott a következő Linux server disztribúciók 
 
 | A Linux-disztribúció | Verzió | Támogatott titkosítási a kötet típusa|
 | --- | --- |--- |
-| Ubuntu | 16.04-DAILY-LTS | Operációs rendszer és az adatok lemezre |
+| Ubuntu | 16.04-NAPI-ES LTS VERZIÓ | Operációs rendszer és az adatok lemezre |
 | Ubuntu | 14.04.5-DAILY-LTS | Operációs rendszer és az adatok lemezre |
 | RHEL | 7.4 | Adatok lemez * |
 | RHEL | 7.3 | Adatok lemez * |

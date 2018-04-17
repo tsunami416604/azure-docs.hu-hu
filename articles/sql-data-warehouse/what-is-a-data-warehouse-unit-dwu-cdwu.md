@@ -1,24 +1,20 @@
 ---
-title: "Mik azok a Adattárházegységek (dwu-k, cDWUs) az Azure SQL Data Warehouse? | Microsoft Docs"
-description: "Az Azure SQL Data Warehouse képességek kibővítési teljesítményét. Horizontális felskálázás dwu-k, cDWUs, beállításával vagy és sablonok felfüggesztése és folytatása a számítási erőforrásokat költségek csökkentése érdekében."
+title: Mik azok a Adattárházegységek (dwu-k, cDWUs) az Azure SQL Data Warehouse? | Microsoft Docs
+description: Az Azure SQL Data Warehouse képességek kibővítési teljesítményét. Horizontális felskálázás dwu-k, cDWUs, beállításával vagy és sablonok felfüggesztése és folytatása a számítási erőforrásokat költségek csökkentése érdekében.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jhubbard
-editor: 
-ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: manage
-ms.date: 03/15/2018
-ms.author: jrj;barbkess
-ms.openlocfilehash: f634bdde2c71f7563df11f686d7ce217311df81d
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+author: sqlmojo
+manager: craigg-msft
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/09/2018
+ms.author: joeyong
+ms.reviewer: jrj
+ms.openlocfilehash: 56d59be2074a3047ce19fde3e808354266040864
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
+---
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Adattárházegységek (dwu-k) és a számítás Adattárházegységek (cDWUs)
 Adattárházegységek (dwu-k) ismerteti, és az Azure SQL Data Warehouse Adattárházegységek (cDWUS) számítási. Javaslatok kiválasztásáról adattárházegységek, és azok számát módosítása ideális számát tartalmazza. 
@@ -38,6 +34,27 @@ Dwu-k növelése:
 - Lineárisan módosítja a rendszer a vizsgálatokat, összesítések és CTAS utasítások
 - Az olvasók és a PolyBase-betöltési műveleteihez írók száma
 - Növeli a párhuzamos lekérdezések és feldolgozási üzembe helyezési ponti maximális számát.
+
+## <a name="service-level-objective"></a>Szolgáltatási szint célkitűzésének
+A szolgáltatási szint célkitűzést (SLO), a méretezhetőség beállítás határozza meg az adatraktár költségeket és a teljesítmény szintjét. A szolgáltatási szintek, a számítási teljesítmény réteg méretezési optimalizálása a számítási adattárházegységek (cDWU), például DW2000c értékek mérése. A rugalmasság szolgáltatási szintek optimalizálása a dwu-k, például DW2000 mérik. 
+
+T-SQL-ben a SERVICE_OBJECTIVE beállítás határozza meg, a szolgáltatási szint és az adatraktár teljesítményének rétegét.
+
+```sql
+--Optimized for Elasticity
+CREATE DATABASE myElasticSQLDW
+WITH
+(    SERVICE_OBJECTIVE = 'DW1000'
+)
+;
+
+--Optimized for Compute
+CREATE DATABASE myComputeSQLDW
+WITH
+(    SERVICE_OBJECTIVE = 'DW1000c'
+)
+;
+```
 
 ## <a name="performance-tiers-and-data-warehouse-units"></a>Teljesítmény szinteket, és Adattárházegységek
 
@@ -209,7 +226,7 @@ Tekintse meg a következő cikkek segítenek megismerni néhány további legfon
 [Best practices]: ./sql-data-warehouse-best-practices.md
 [development overview]: ./sql-data-warehouse-overview-develop.md
 
-[SQL DB Contributor]: ../active-directory/role-based-access-built-in-roles.md#sql-db-contributor
+[SQL DB Contributor]:../role-based-access-control/built-in-roles.md#sql-db-contributor
 
 <!--MSDN references-->
 [ALTER DATABASE]: https://msdn.microsoft.com/library/mt204042.aspx

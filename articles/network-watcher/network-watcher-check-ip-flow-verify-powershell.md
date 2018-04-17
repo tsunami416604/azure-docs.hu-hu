@@ -1,11 +1,11 @@
 ---
-title: "Ellenőrizze a forgalom Azure hálózati figyelő IP-adatfolyam ellenőrizze - PowerShell |} Microsoft Docs"
-description: "Ez a cikk ismerteti, hogyan ellenőrizhető, ha a bejövő és kimenő forgalmat a virtuális gépek engedélyezett vagy megtagadott a PowerShell használatával"
+title: Ellenőrizze a forgalom Azure hálózati figyelő IP-adatfolyam ellenőrizze - PowerShell |} Microsoft Docs
+description: Ez a cikk ismerteti, hogyan ellenőrizhető, ha a bejövő és kimenő forgalmat a virtuális gépek engedélyezett vagy megtagadott a PowerShell használatával
 services: network-watcher
 documentationcenter: na
 author: jimdial
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: e1dad757-8c5d-467f-812e-7cc751143207
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 5257a70aa2dbc25bfe4eca5e2e0db87ca5e6b6fe
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 7c2d5e0811f7a5e1f865992be1d5a2c189f10374
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="check-if-traffic-is-allowed-or-denied-to-or-from-a-vm-with-ip-flow-verify-a-component-of-azure-network-watcher"></a>Ellenőrizze, hogy a forgalom engedélyezett vagy megtagadott vagy a virtuális gép IP-adatfolyam és Azure hálózati figyelőt összetevője ellenőrzése
 
@@ -59,7 +59,7 @@ $VM = Get-AzurermVM -ResourceGroupName "testrg" -Name "testvm1"
 
 ## <a name="get-the-nics"></a>A hálózati adapterek beolvasása
 
-A virtuális gépen egy hálózati adapter IP-címe szükséges, ebben a példában beolvassuk a hálózati adaptert egy virtuális gépen. Ha már ismeri a virtuális gépen vizsgálni kívánt IP-cím, kihagyhatja ezt a lépést.
+A virtuális gépen egy hálózati adapter IP-címe van szükség. A hálózati adaptert egy virtuális géphez, a következő parancs beolvasása. Ha már ismeri a virtuális gépen vizsgálni kívánt IP-cím, kihagyhatja ezt a lépést.
 
 ```powershell
 $Nics = Get-AzureRmNetworkInterface | Where {$_.Id -eq $vm.NetworkProfile.NetworkInterfaces.Id.ForEach({$_})}
@@ -67,7 +67,7 @@ $Nics = Get-AzureRmNetworkInterface | Where {$_.Id -eq $vm.NetworkProfile.Networ
 
 ## <a name="run-ip-flow-verify"></a>Futtatási IP-adatfolyam ellenőrzése
 
-Most, hogy a fordítás során futtassa a parancsmagot, és futtassa azt a `Test-AzureRmNetworkWatcherIPFlow` parancsmag segítségével tesztelheti a forgalmat. A jelen példában használjuk az első IP-cím első hálózati adapteren
+Futtassa a `Test-AzureRmNetworkWatcherIPFlow` parancsmag segítségével tesztelheti a forgalmat. Ebben a példában az első IP-címet az első hálózati adapter által használt.
 
 ```powershell
 Test-AzureRmNetworkWatcherIPFlow -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id `
@@ -90,7 +90,7 @@ Allow  defaultSecurityRules/AllowInternetOutBound
 
 ## <a name="next-steps"></a>További lépések
 
-Ha a forgalmat blokkol, és nem kell, lásd: [hálózati biztonsági csoportok kezelése](../virtual-network/virtual-network-manage-nsg-arm-portal.md) nyomon követheti a hálózati biztonsági csoport és a biztonsági meghatározott szabályokat.
+Ha a forgalmat blokkol, és nem kell, lásd: [hálózati biztonsági csoportok kezelése](../virtual-network/manage-network-security-group.md) nyomon követheti a hálózati biztonsági csoport és a biztonsági meghatározott szabályokat.
 
 [1]: ./media/network-watcher-check-ip-flow-verify-portal/figure1.png
 [2]: ./media/network-watcher-check-ip-flow-verify-portal/figure2.png

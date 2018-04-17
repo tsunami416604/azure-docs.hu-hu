@@ -3,7 +3,7 @@ title: Pillanatkép készítése a virtuális merevlemez létrehozása az Azure-
 description: Útmutató egy példányát kívánja használni, mint biztonsági másolatot, vagy a problémák elhárítása az Azure virtuális gép létrehozásához.
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: timlt
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 15eb778e-fc07-45ef-bdc8-9090193a6d20
@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/09/2017
+ms.date: 04/10/2018
 ms.author: cynthn
-ms.openlocfilehash: c5f4c7224e04b601d7d3fe4da7d8f5f0c02c7039
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 9f5a8be8a50a8e8168736899b6dba3c143f56219
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-snapshot"></a>Pillanatkép létrehozása
 
@@ -37,41 +37,52 @@ Pillanatkép készítése a biztonsági mentéshez vagy elhárítása a virtuál
 9. Kattintson a **Create** (Létrehozás) gombra.
 
 ## <a name="use-powershell-to-take-a-snapshot"></a>Pillanatkép készítése a PowerShell használatával
+
 A következő lépések bemutatják, hogyan kérhet a VHD lemez másolni, hozzon létre a pillanatkép-konfigurációkat és pillanatképet készít, a lemez használatával a [New-AzureRmSnapshot](/powershell/module/azurerm.compute/new-azurermsnapshot) parancsmag. 
 
-Győződjön meg arról, hogy rendelkezik-e a legújabb verzióját a AzureRM.Compute PowerShell-modul telepítve. A következő parancsot a telepítéshez.
+Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik-e a legújabb verzióját a AzureRM.Compute PowerShell-modult. Ez a cikk a AzureRM 5.7.0 verziója szükséges, vagy később. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
-```
-Install-Module AzureRM.Compute -MinimumVersion 2.6.0
-```
-További információkért lásd: [Azure PowerShell Versioning](/powershell/azure/overview).
-
-
-1. Egyes paraméterek megadása 
+Egyes paraméterek megadása 
 
  ```azurepowershell-interactive
 $resourceGroupName = 'myResourceGroup' 
 $location = 'eastus' 
-$dataDiskName = 'myDisk' 
+$vmName = 'myVM'
 $snapshotName = 'mySnapshot'  
 ```
 
-2. A VHD lemez másolandó beolvasása.
+A virtuális gép beolvasása.
 
  ```azurepowershell-interactive
-$disk = Get-AzureRmDisk -ResourceGroupName $resourceGroupName -DiskName $dataDiskName 
+$vm = get-azurermvm `
+   -ResourceGroupName $resourceGroupName `
+   -Name $vmName
 ```
-3. A pillanatkép-konfigurációk létrehozása. 
+
+A pillanatkép-konfiguráció létrehozása. Ebben a példában fogjuk pillanatkép az operációsrendszer-lemezképet.
 
  ```azurepowershell-interactive
-$snapshot =  New-AzureRmSnapshotConfig -SourceUri $disk.Id -CreateOption Copy -Location $location 
+$snapshot =  New-AzureRmSnapshotConfig `
+   -SourceUri $vm.StorageProfile.OsDisk.ManagedDisk.Id `
+   -Location $location `
+   -CreateOption copy
 ```
-4. A pillanatkép elkészítésére.
+   
+> [!NOTE]
+> Ha azt szeretné, a pillanatkép zóna rugalmas tárolás tárolni, olyan régióhoz, amely támogatja a létrehozásához szükséges [rendelkezésre állási zónák](../../availability-zones/az-overview.md) , és tartalmazzák a `-SkuName Standard_ZRS` paraméter.   
 
- ```azurepowershell-interactive
-New-AzureRmSnapshot -Snapshot $snapshot -SnapshotName $snapshotName -ResourceGroupName $resourceGroupName 
+   
+A pillanatkép elkészítésére.
+
+```azurepowershell-interactive
+New-AzureRmSnapshot `
+   -Snapshot $snapshot `
+   -SnapshotName $snapshotName `
+   -ResourceGroupName $resourceGroupName 
 ```
-Ha azt tervezi, a pillanatkép segítségével kezelt lemez létrehozása, és csatlakoztassa a virtuális gépek magas végrehajtása szükséges, használja a paraméterrel `-AccountType Premium_LRS` a New-AzureRmSnapshot paranccsal. A paraméter a pillanatkép hoz, hogy prémium felügyelt lemezként tárolja. Prémium szintű kezelt lemezek drágább szabvány. Ezért mindenképpen valóban szükség van prémium, hogy a paraméter használata előtt.
+
+
+
 
 ## <a name="next-steps"></a>További lépések
 

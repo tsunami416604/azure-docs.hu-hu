@@ -10,20 +10,18 @@ ms.assetid: 7bcad2dd-edea-467c-9130-44cffc005ff3
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/25/2018
 ms.author: larryfr
-ms.openlocfilehash: d3e37ba0f590cf0572b84a53bdd407af63a19d36
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2c201af6b1c14553e31ca71e28fc22d99ec900bd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Storage megosztott hozzáférési aláírásokkal segítségével adatokat a hdinsight eszközben való hozzáférés korlátozása
 
-HDInsight a fürthöz tartozó Azure Storage-fiókokat az adatok teljes hozzáféréssel rendelkezik. A blob tárolóra megosztott hozzáférési aláírásokkal használatával korlátozza a hozzáférést az adatokat. Például írásvédett hozzáférést biztosít az adatokat. Megosztott hozzáférési aláírásokkal (SAS) az Azure storage-fiókok egy szolgáltatása, amely lehetővé teszi az adatokhoz való hozzáférés korlátozása. Például az adatok csak olvasható hozzáférést biztosító.
+HDInsight a fürthöz tartozó Azure Storage-fiókokat az adatok teljes hozzáféréssel rendelkezik. A blob tárolóra megosztott hozzáférési aláírásokkal használatával korlátozza a hozzáférést az adatokat. Megosztott hozzáférési aláírásokkal (SAS) az Azure storage-fiókok egy szolgáltatása, amely lehetővé teszi az adatokhoz való hozzáférés korlátozása. Például az adatok csak olvasható hozzáférést biztosító.
 
 > [!IMPORTANT]
 > Apache Pletyka használó megoldás érdemes a HDInsight-tartományhoz. További információkért lásd: a [konfigurálása tartományhoz csatlakoztatott HDInsight](./domain-joined/apache-domain-joined-configure.md) dokumentum.

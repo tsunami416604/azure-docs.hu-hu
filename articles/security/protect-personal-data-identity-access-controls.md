@@ -1,12 +1,12 @@
 ---
-title: "Az Azure identitások és hozzáférések vezérlőkkel személyes adatok védelme |} Microsoft Docs"
-description: "Azure-identitás és hozzáférés intézkedések segítenek személyes adatok védelmét, és segíthetnek megfelelő az általános adatok védelmi szabályozás (GDPR)"
+title: Az Azure identitások és hozzáférések vezérlőkkel személyes adatok védelme |} Microsoft Docs
+description: Azure-identitás és hozzáférés intézkedések segítenek személyes adatok védelmét, és segíthetnek megfelelő az általános adatok védelmi szabályozás (GDPR)
 services: security
 documentationcenter: na
 author: Barclayn
 manager: MBaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/06/2018
 ms.author: barclayn
-ms.custom: 
-ms.openlocfilehash: fd3beb57cda4993f922fb935263b0e962b38da6a
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.custom: ''
+ms.openlocfilehash: 45b148a9ccbd7c801821f23586810872a4a0d50d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-active-directory-and-multi-factor-authentication-protect-personal-data-with-identity-and-access-controls"></a>Az Azure Active Directory és a multi-factor Authentication: identitások és hozzáférések vezérlőkkel személyes adatok védelme
 
@@ -39,7 +39,7 @@ A vállalat védelmét kell beállítani az ügyfelek és az alkalmazottak szem�
 
 ## <a name="company-goal"></a>Vállalati cél
 
-A vállalat célja, hogy a személyes adatokhoz való hozzáférés szigorúan ellenőrzött. Fontos, hogy a felhasználók a személyes adatokhoz való hozzáférés azonosítói erős hitelesítés védi. A házirend a [minimális jogosultság] (https://en.wikipedia.org/wiki/Principle_of_least_privilege), hogy jogos felhasználója, csak a szintű hozzáférést a szükséges, és nem több kényszerítettnek kell lennie.
+A vállalat célja, hogy a személyes adatokhoz való hozzáférés szigorúan ellenőrzött. Fontos, hogy a felhasználók a személyes adatokhoz való hozzáférés azonosítói erős hitelesítés védi. A házirend a [minimális jogosultság] (https://en.wikipedia.org/wiki/Principle_of_least_privilege) kényszerítettnek kell lennie, hogy jogos felhasználója csak a hozzáférést a szükséges, és nem több mértékét.
 
 ## <a name="solutions"></a>Megoldások
 
@@ -83,11 +83,11 @@ További információkat és utasításokat Ismerkedés az aad-ben PIM [Start ha
 
 ### <a name="azure-role-based-access-control"></a>Azure szerepköralapú hozzáférés-vezérlés
 
-[Szerepköralapú hozzáférés-vezérlés az Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) (RBAC) engedélyezése a felhasználó hozzárendelt szerepkörön alapuló hozzáférés biztosítása az Azure erőforrásokhoz való hozzáférés kezelése Azure rendszergazdáit segíti. Elkülönítse a csapaton belüli feladatokat, és csak olyan mértékű hozzáférést biztosítania a felhasználók, csoportok és alkalmazások, a munkája elvégzéséhez szükséges.
+[Szerepköralapú hozzáférés-vezérlés az Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (RBAC) engedélyezése a felhasználó hozzárendelt szerepkörön alapuló hozzáférés biztosítása az Azure erőforrásokhoz való hozzáférés kezelése Azure rendszergazdáit segíti. Elkülönítse a csapaton belüli feladatokat, és csak olyan mértékű hozzáférést biztosítania a felhasználók, csoportok és alkalmazások, a munkája elvégzéséhez szükséges.
 
 A szerepköralapú hozzáférés az Azure portál, az Azure parancssori segédeszközök vagy az Azure felügyeleti API-k segítségével adható a felhasználóknak.
 
-Azure RBAC alapokkal kapcsolatos további információkért lásd: [Ismerkedés a szerepköralapú hozzáférés-vezérlés az Azure portálon.](https://docs.microsoft.com/active-directory/role-based-access-control-what-is)
+Azure RBAC alapokkal kapcsolatos további információkért lásd: [Ismerkedés a szerepköralapú hozzáférés-vezérlés az Azure portálon.](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 #### <a name="how-do-i-manage-azure-rbac-with-powershell"></a>Hogyan kezelhető az Azure RBAC a PowerShell segítségével?
 
@@ -111,7 +111,7 @@ PowerShell-parancsmagok használatával kezelheti az Azure RBAC, többek közöt
 
 - Egyéni szerepkörök listája
 
-Mobileszközök kezelése a PowerShell segítségével az Azure RBAC, lásd: [kezelése szerepköralapú hozzáférés az Azure PowerShell](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-powershell).
+Mobileszközök kezelése a PowerShell segítségével az Azure RBAC, lásd: [kezelése szerepköralapú hozzáférés az Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
 
 ### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
 
@@ -135,7 +135,7 @@ Ha meg kell vizsgálni a folyamatot, amely a helyzetnek legmegfelelőbb központ
 
     ![](media/protect-personal-data-identity-access-controls/mfa-server-settings.png)
 
-4. Kattintson a **mentése**
+4. Kattintson a **Mentés** gombra.
 
 Ebben az ablakban is lehetősége nyílik a multi-factor Authentication kiszolgáló letöltéséhez. Méretezés és a központi telepítésének megtervezése a cikk áttekintésével kapcsolatos további részletekért [Ismerkedés az Azure multi-factor Authentication kiszolgáló az](../multi-factor-authentication/multi-factor-authentication-get-started-server.md)
 
@@ -184,6 +184,6 @@ Visszaélési riasztás beállítása, az egyszeri Mellőzés létrehozása, egy
 
 - [Azure Multi-Factor Authentication – gyakran ismételt kérdések](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-faq)
 
-- [Szerepköralapú hozzáférés-vezérlés hibaelhárítása](https://docs.microsoft.com/azure/active-directory/role-based-access-control-troubleshooting)
+- [Szerepköralapú hozzáférés-vezérlés hibaelhárítása](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting)
 
 - [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 2/2/2018
+ms.date: 04/09/2018
 ms.author: vinagara
-ms.openlocfilehash: cd289d506cbe22e683392256cce14211a5db0729
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: a786ac2e241657cc0020ecfe9438e3d1a5e4c5fa
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>A napló riasztási szabályok webhookműveletek
 Ha egy [riasztást hoz létre az Azure-ban ](monitor-alerts-unified-usage.md), lehetősége van a [konfigurálása művelet csoportok használatával](monitoring-action-groups.md) egy vagy több műveletek elvégzéséhez.  Ez a cikk ismerteti a rendelkezésre álló különböző webhookműveletek és a részletek a egyéni JSON-alapú webhook konfigurálásával.
@@ -48,12 +48,12 @@ Webhook URL-címet és a hasznos adatok között, amely a külső szolgáltatás
 | AlertThresholdOperator |#thresholdoperator |A riasztási szabály operátor küszöbértéket.  *Nagyobb, mint* vagy *kisebb, mint*. |
 | AlertThresholdValue |#thresholdvalue |A riasztási szabály tartozó küszöbérték. |
 | LinkToSearchResults |#linktosearchresults |A lekérdezésből, amely a riasztás létrehozása a rekordok visszaadó Naplóelemzési napló keresési kapcsolódik. |
-| ResultCount |#searchresultcount |A keresési eredmények rekordok száma. |
+| Attribútumhoz resultcount számlálót. |#searchresultcount |A keresési eredmények rekordok száma. |
 | Keresési intervallum befejezési időpontja |#searchintervalendtimeutc |Befejezési ideje UTC formátumban a lekérdezést. |
 | Keresési intervallum |#searchinterval |A riasztási szabály időszak. |
 | Keresési intervallum kezdő időpont |#searchintervalstarttimeutc |Indítsa el a lekérdezések ideje UTC formátumban. 
 | SearchQuery |#searchquery |Naplófájl-keresési lekérdezés a riasztási szabály által használt. |
-| SearchResults |"IncludeSearchResults": true|Táblaként JSON, csak az első 1000 rekord; a lekérdezés által visszaadott rekordok Ha "IncludeSearchResults": true egyéni JSON webhook definition legfelső szintű tulajdonságként fel van véve. |
+| SearchResults |"IncludeSearchResults": igaz|Táblaként JSON, csak az első 1000 rekord; a lekérdezés által visszaadott rekordok Ha "IncludeSearchResults": true egyéni JSON webhook definition legfelső szintű tulajdonságként fel van véve. |
 | WorkspaceID |#workspaceid |A Naplóelemzési munkaterület azonosítója. |
 | Alkalmazásazonosító |#applicationid |Az Application Insights azonosítója alkalmazást. |
 | Előfizetés azonosítója |#subscriptionid |Az Application insights szolgáltatással használt Azure-előfizetése Azonosítóját. 
@@ -61,15 +61,19 @@ Webhook URL-címet és a hasznos adatok között, amely a külső szolgáltatás
 
 Például megadhatja a következő egyéni payload nevű egyetlen paramétert tartalmazó *szöveg*.  A szolgáltatás, amely behívja a webhook a ennek a paraméternek, akkor rendszer.
 
+```json
+
     {
         "text":"#alertrulename fired with #searchresultcount over threshold of #thresholdvalue."
     }
-
+```
 Ez a példa hasznos volna oldja fel a következőhöz, ha a webhook.
 
+```json
     {
         "text":"My Alert Rule fired with 18 records over threshold of 10 ."
     }
+```
 
 Keresési eredmények belefoglalása az egyéni adattartalom, ügyeljen arra, hogy **IncudeSearchResults** a json-adattartalmat legfelső szintű tulajdonság be van állítva. 
 
@@ -85,7 +89,8 @@ Mindkét ezekben a példákban csak két oszlopok és sorok két üres adattarta
 #### <a name="log-alert-for-azure-log-analytics"></a>Az Azure Naplóelemzés napló riasztás
 Az alábbiakban látható egy minta hasznos a szabványos webhook művelet *egyéni Json-beállítás nélkül* napló analytics-alapú értesítések használja.
 
-    {
+```json
+{
     "WorkspaceId":"12345a-1234b-123c-123d-12345678e",
     "AlertRuleName":"AcmeRule","SearchQuery":"search *",
     "SearchResult":
@@ -95,7 +100,7 @@ Az alábbiakban látható egy minta hasznos a szabványos webhook művelet *egy�
                         [
                         {"name":"$table","type":"string"},
                         {"name":"Id","type":"string"},
-                        {"name":"TimeGenerated","type":"datetime"},
+                        {"name":"TimeGenerated","type":"datetime"}
                         ],
                     "rows":
                         [
@@ -104,7 +109,7 @@ Az alábbiakban látható egy minta hasznos a szabványos webhook művelet *egy�
                         ]
                     }
                 ]
-        }
+        },
     "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
     "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
     "AlertThresholdOperator": "Greater Than",
@@ -114,15 +119,14 @@ Az alábbiakban látható egy minta hasznos a szabványos webhook művelet *egy�
     "LinkToSearchResults": "https://workspaceID.portal.mms.microsoft.com/#Workspace/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
     "Description": null,
     "Severity": "Warning"
-    }
-    
-
+ }
+ ```   
 
 #### <a name="log-alert-for-azure-application-insights"></a>Napló figyelmeztetés a következő Azure Application insights szolgáltatással
 Az alábbiakban látható egy minta hasznos szabványos webhook *egyéni Json-beállítás nélkül* a application insights-alapú napló-riasztások használatakor.
     
-
-    {
+```json
+{
     "schemaId":"Microsoft.Insights/LogAlert","data":
     { 
     "SubscriptionId":"12345a-1234b-123c-123d-12345678e",
@@ -134,7 +138,7 @@ Az alábbiakban látható egy minta hasznos szabványos webhook *egyéni Json-be
                         [
                         {"name":"$table","type":"string"},
                         {"name":"Id","type":"string"},
-                        {"name":"TimeGenerated","type":"datetime"},
+                        {"name":"TimeGenerated","type":"datetime"}
                         ],
                     "rows":
                         [
@@ -143,7 +147,7 @@ Az alábbiakban látható egy minta hasznos szabványos webhook *egyéni Json-be
                         ]
                     }
                 ]
-        }
+        },
     "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
     "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
     "AlertThresholdOperator": "Greater Than",
@@ -152,10 +156,11 @@ Az alábbiakban látható egy minta hasznos szabványos webhook *egyéni Json-be
     "SearchIntervalInSeconds": 3600,
     "LinkToSearchResults": "https://analytics.applicationinsights.io/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
     "Description": null,
-    "Severity": "Error"
+    "Severity": "Error",
     "ApplicationId": "123123f0-01d3-12ab-123f-abc1ab01c0a1"
     }
-    }
+}
+```
 
 > [!NOTE]
 > Az Application Insights riasztásainak naplózási jelenleg nyilvános előzetes - funkcióit és felhasználói élmény változhat.
@@ -163,14 +168,16 @@ Az alábbiakban látható egy minta hasznos szabványos webhook *egyéni Json-be
 #### <a name="log-alert-with-custom-json-payload"></a>Egyéni JSON-adattartalmat napló riasztás
 Például egy egyéni adattartalom, amely tartalmazza a riasztás neve és a keresési eredmények létrehozásához használhatja a következő: 
 
+```json
     {
        "alertname":"#alertrulename",
        "IncludeSearchResults":true
     }
+```
 
 Az alábbiakban látható egy minta hasznos bármely napló riasztás egyéni webhook művelethez.
     
-
+```json
     {
     "alertname":"AcmeRule","IncludeSearchResults":true,
     "SearchResult":
@@ -180,7 +187,7 @@ Az alábbiakban látható egy minta hasznos bármely napló riasztás egyéni we
                         [
                         {"name":"$table","type":"string"},
                         {"name":"Id","type":"string"},
-                        {"name":"TimeGenerated","type":"datetime"},
+                        {"name":"TimeGenerated","type":"datetime"}
                         ],
                     "rows":
                         [
@@ -191,8 +198,7 @@ Az alábbiakban látható egy minta hasznos bármely napló riasztás egyéni we
                 ]
         }
     }
-
-
+```
 
 
 ## <a name="next-steps"></a>További lépések

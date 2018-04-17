@@ -1,26 +1,24 @@
 ---
-title: "Fürt méretek – Azure HDInsight méretezése |} Microsoft Docs"
-description: "HDInsight-fürtök a munkaterhelés vertikális."
+title: Fürt méretek – Azure HDInsight méretezése |} Microsoft Docs
+description: HDInsight-fürtök a munkaterhelés vertikális.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 02/02/2018
 ms.author: ashish
-ms.openlocfilehash: 7e9ee660c07d6265e55e94cf79ed13334fcb3d16
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 8b76d7d0441a5c1c25ad17b73083ec0e4feef1fe
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="scale-hdinsight-clusters"></a>A HDInsight-fürtök méretezése
 
@@ -125,7 +123,7 @@ Miután csökkentett módban, manuálisan eltávolíthatja az ideiglenes fájlok
 
 * Adatbázisok H100 nem lehet elküldeni utasítás megjelenítése: org.apache.thrift.transport.TTransportException: org.apache.http.conn.HttpHostConnectException: hn0-clustername.servername.internal.cloudapp.net:10001 [hn0-clustername.servername kapcsolódni . Internal.cloudapp.NET/1.1.1.1] nem sikerült: **kapcsolat elutasítva**
 
-* H020 nem tudott kapcsolatot hn0-hdisrv.servername.bx.internal.cloudapp .net: 10001: org.apache.thrift.transport.TTransportException: nem hozható létre kapcsolat annak http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 /. org.apache.http.conn.HttpHostConnectException: hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] nem sikerült kapcsolódni: Kapcsolat elutasítva: org.apache.thrift.transport.TTransportException: nem hozható létre kapcsolat annak http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 /. org.apache.http.conn.HttpHostConnectException: hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] nem sikerült kapcsolódni: **kapcsolat elutasítva**
+* H020 nem tudott kapcsolatot hn0-hdisrv.servername.bx.internal.cloudapp .net: 10001: org.apache.thrift.transport.TTransportException: nem hozható létre kapcsolat annak http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] nem sikerült kapcsolódni: Kapcsolat elutasítva: org.apache.thrift.transport.TTransportException: nem hozható létre kapcsolat annak http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] nem sikerült kapcsolódni: **kapcsolat elutasítva**
 
 * A Hive naplókból: [fő] Figyelmeztetés: kiszolgáló. Hiveserver2-n (HiveServer2.java:startHiveServer2(442)) – hiba történt az hiveserver2-n próbálkozás 21, 60 másodperc java.lang.RuntimeException újra fog próbálkozni: engedélyezési házirend alkalmazása a hive-konfigurációs hiba: org.apache.hadoop.ipc.RemoteException () org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: **könyvtár nem hozható létre** /tmp/hive/hive/70a42b8a-9437-466e-acbe-da90b1614374. **Csökkentett módban van a csomópont neve**.
     A jelentett blokkok 0 a küszöbérték teljes blokkok 9 0.9900 eléréséhez további 9 blokkok kell.
@@ -156,7 +154,7 @@ hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode get
 ![A biztonságos mód kikapcsolása](./media/hdinsight-scaling-best-practices/safe-mode-off.png)
 
 > [!NOTE]
-> A `-D` kapcsoló szükség, mert az alapértelmezett fájlrendszert HDInsight vagy az Azure Storage, vagy az Azure Data Lake Store. `-D`Meghatározza, hogy a parancsok végrehajtása során a helyi HDFS fájlrendszerben.
+> A `-D` kapcsoló szükség, mert az alapértelmezett fájlrendszert HDInsight vagy az Azure Storage, vagy az Azure Data Lake Store. `-D` Meghatározza, hogy a parancsok végrehajtása során a helyi HDFS fájlrendszerben.
 
 A következő tekintheti meg egy jelentést, amely a HDFS állapot részleteit jeleníti meg:
 

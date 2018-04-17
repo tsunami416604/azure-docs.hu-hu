@@ -10,11 +10,11 @@ ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: 8ca129640db862f6031325279cc98c1e08dcef59
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 5c5cc1fdbe48fb93eea204e4619038052e685f1f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-cli"></a>Készítsen biztonsági másolatot, és egy kiszolgálóhoz az Azure-adatbázis visszaállítása a PostgreSQL az Azure parancssori felület használatával
 
@@ -52,7 +52,7 @@ A visszaküldött JSON-fájlnak a következőket kell tartalmaznia:
 }
 ```
 
-Ha 0.0.5 verziója nem ad vissza, futtassa a következő a bővítmény frissítése: 
+Ha a parancs nem a 0.0.5-ös verziót adja vissza, akkor a bővítményt a következő parancs futtatásával frissítheti: 
 ```azurecli-interactive
 az extension update --name rdbms
 ```
@@ -113,6 +113,10 @@ A visszaállítási folyamat befejezése után keresse meg az új kiszolgálón,
 Ha a kiszolgáló a földrajzilag redundáns biztonsági mentéshez konfigurált, egy új kiszolgálót a biztonsági mentésből meglévő kiszolgáló hozhatók létre. Az új kiszolgáló is hozható létre bármely régióban, hogy rendelkezésre áll-e PostgreSQL az Azure-adatbázis.  
 
 Földrajzi redundancia biztonsági segítségével kiszolgáló létrehozásához használja az Azure parancssori felület `az postgres server georestore` parancsot.
+
+> [!NOTE]
+> A kiszolgáló létrehozásakor azt nem lehet azonnal elérhető georedundáns helyreállítás. A szükséges metaadatok kell feltöltenie néhány órát is igénybe vehet.
+>
 
 Georedundáns helyreállítás a kiszolgáló, az Azure CLI parancssorba írja be a következő parancsot:
 

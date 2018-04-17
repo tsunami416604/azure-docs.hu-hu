@@ -1,12 +1,12 @@
 ---
-title: "A Power BI munkaterület gyűjtemények egy adatforráshoz való kapcsolódáshoz |} Microsoft Docs"
-description: "Tudnivalók a Power BI munkaterület gyűjtemények egy adatforráshoz való kapcsolódáshoz."
+title: A Power BI munkaterület gyűjtemények egy adatforráshoz való kapcsolódáshoz |} Microsoft Docs
+description: Tudnivalók a Power BI munkaterület gyűjtemények egy adatforráshoz való kapcsolódáshoz.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 2a4caeb3-255d-4215-9554-0ca8e3568c13
 ms.service: power-bi-embedded
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: 24600c4343e3bfebe14f25020c5a7ba02d15af64
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 5a154c4899db974645bb7ade028d8bd8f267aad7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-to-a-data-source"></a>Kapcsolódás adatforráshoz
 
@@ -43,7 +43,7 @@ A Power BI munkaterület gyűjtemények akkor DirectQuery használható felhőal
 ## <a name="supported-data-sources"></a>Támogatott adatforrások
 
 **DirectQuery**
-* Az Azure SQL-adatbázis
+* Azure SQL Database
 * Azure SQL Data Warehouse
 
 **Importálás**

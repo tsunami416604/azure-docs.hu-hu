@@ -5,37 +5,57 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/29/2018
+ms.topic: conceptual
+ms.date: 04/08/2018
 ms.author: raynew
-ms.openlocfilehash: 28ddecc45faa213d1fd536b5ad8690e151037505
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b2a6e3052c64ab6a2865a0c24a4876cb2b98d1a8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware és fizikai kiszolgálók replikálást az Azure-támogatási mátrix
 
 Ez a cikk összefoglalja támogatott összetevők és az Azure-bA VMware virtuális gépek vész-helyreállítási beállítások használatával [Azure Site Recovery](site-recovery-overview.md).
 
-## <a name="supported-scenarios"></a>Támogatott esetek
+## <a name="replication-scenario"></a>Replikációs forgatókönyv
 
-**Scenario** | **Részletek**
+**A forgatókönyv** | **Részletek**
 --- | ---
-VMware virtuális gépek | Helyszíni VMware virtuális gépek esetén az Azure-bA vész-helyreállítási végezheti el. Ebben a forgatókönyvben, az Azure portálon vagy a PowerShell használatával telepítheti.
-Fizikai kiszolgálók | A helyszíni windowsos/Linuxos fizikai kiszolgálók Azure-bA vész-helyreállítási végezheti el. Ebben a forgatókönyvben az Azure portálon telepítése.
+VMware virtuális gépek | Helyszíni VMware virtuális gépek Azure-bA replikálását. Ebben a forgatókönyvben, az Azure portálon vagy a PowerShell használatával telepítheti.
+Fizikai kiszolgálók | A helyszíni windowsos/Linuxos fizikai serversto Azure replikációját. Ebben a forgatókönyvben az Azure portálon telepítése.
 
 ## <a name="on-premises-virtualization-servers"></a>A helyszíni virtualizálási kiszolgálók
 
 **Kiszolgáló** | **Követelmények** | **Részletek**
 --- | --- | ---
-VMware | vCenter Server 6.5 6.0, vagy 5.5 vagy vSphere 6.5, 6.0 vagy 5.5 | Azt javasoljuk, hogy használja-e a vCenter-kiszolgálót.
+VMware | vCenter Server 6.5 6.0, vagy 5.5 vagy vSphere 6.5, 6.0 vagy 5.5 | Azt javasoljuk, hogy használja-e a vCenter-kiszolgálót.<br/><br/> Azt javasoljuk, hogy a vSphere gazdagépek és vCenter-kiszolgáló található-e a folyamatkiszolgáló és a ugyanahhoz a hálózathoz. Alapértelmezés szerint a folyamat kiszolgáló-összetevők fut a konfigurációs kiszolgálón, így ez lesz a hálózatot, amelyben állítsa be a konfigurációs kiszolgáló, kivéve, ha egy dedikált folyamat kiszolgáló. 
 Fizikai | –
 
+## <a name="site-recovery-configuration-server"></a>Helykiszolgáló helyreállítási konfiguráció
+
+A konfigurációs kiszolgálón a helyi számítógépen, a Site Recovery összetevők, beleértve a konfigurációs kiszolgáló, a folyamatkiszolgáló és a fő célkiszolgálón futó. VMware-replikáció beállíthatja a kiszolgáló az összes követelményeinek, a VMware virtuális gépek létrehozása OVF sablonnal. Fizikai kiszolgáló replikációs beállíthatja a konfigurációs kiszolgáló gépet manuálisan.
+
+**Összetevő** | **Követelmények**
+--- |---
+Processzormagok | 8 
+RAM | 12 GB
+Lemezek száma | 3 lemezek<br/><br/> Lemezek tartalmazza az operációs rendszer lemez, a folyamat kiszolgáló gyorsítótár lemez és a feladat-visszavételi adatmegőrzési meghajtó.
+Szabad lemezterület | 600 GB lemezterület, a folyamat gyorsítótár-kiszolgáló szükséges.
+Szabad lemezterület | 600 GB lemezterület az adatmegőrzési meghajtó szükséges.
+Operációs rendszer  | Windows Server 2012 R2 vagy Windows Server 2016 | 
+Operációs rendszer területi beállítása | Angol (en-us) 
+PowerCLI | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") kell telepíteni.
+Windows Server-szerepkörök | Nem engedélyezi: <br> - Active Directory tartományi szolgáltatások <br>– Internet Information Services <br> - Hyper-V |
+Csoportházirendek| Nem engedélyezi: <br> -Tagadni a hozzáférést a parancssorba. <br> -A hozzáférés megakadályozása a beállításjegyzék szerkesztésével eszközök. <br> – Megbízható vonatkozó logikát. <br> -Parancsfájl végrehajtása bekapcsolása. <br> [További információ](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
+IIS | Ellenőrizze, hogy:<br/><br/> – Nem kell egy korábban létező alapértelmezett webhely <br> -Engedélyezése [névtelen hitelesítés](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Engedélyezése [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) beállítás  <br> -Nincs telepítve elérésű, korábban létező webhely vagy alkalmazás figyeli a 443-as port<br>
+A hálózati adapter típusa | VMXNET3 (ha VMware virtuális gépként telepített) 
+IP-cím típusa | Statikus 
+Portok | a vezérlő csatorna vezénylés használt 443)<br>adatok átvitel használt 9443
 
 ## <a name="replicated-machines"></a>Replikált gép
 
-A következő táblázat összefoglalja a VMware virtuális gépek és fizikai kiszolgálók replikáció támogatása. Bármelyik támogatott operációs rendszerű gépen futó feladat replikálását a Site Recovery támogatja.
+Bármelyik támogatott gépen futó feladat replikálását a Site Recovery támogatja.
 
 **Összetevő** | **Részletek**
 --- | ---
@@ -70,8 +90,8 @@ Linux operációs rendszer | Red Hat Enterprise Linux: 5.2 való 5.11, 6.1 való
 
 **Támogatott kiadás** | **Az Azure Site Recovery mobilitási szolgáltatás-verzió** | **Kernel-verzió** |
 --- | --- | --- |
-Debian 7 | 9.14 | 3.2.0-4-amd64 to 3.2.0-5-amd64, 3.16.0-0.bpo.4-amd64 |
-Debian 8 | 9.14 | 3.16.0-4-amd64 to 3.16.0-5-amd64, 4.9.0-0.bpo.4-amd64 to 4.9.0-0.bpo.5-amd64 |
+Debian 7 | 9.14 | a 3.2.0-5-amd64, 3.2.0-4-AMD64 3.16.0-0.bpo.4-amd64 |
+Debian 8 | 9.14 | a 3.16.0-5-amd64, hogy 4.9.0-0.bpo.5-amd64 4.9.0-0.bpo.4-amd64 3.16.0-4-AMD64 |
 
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux rendszerek/Vendég fájltároló
@@ -100,7 +120,7 @@ Gazdagép hálózati IPv4 | Igen.
 Gazdagép hálózati IPv6 | Nem.
 Vendég-kiszolgáló hálózati hálózati adapterek összevonása | Nem.
 Vendég-kiszolgáló hálózati IPv4 | Igen.
-Guest/server network IPv6 | Nem.
+Vendég-kiszolgáló hálózati IPv6 | Nem.
 Vendég/kiszolgáló hálózati statikus IP-címe (Windows) | Igen.
 Vendég/kiszolgáló hálózati statikus IP-címe (Linux) | Igen. <br/><br/>Virtuális gépek feladat-visszavétel DHCP használatára vannak konfigurálva.
 Vendég-kiszolgáló hálózati több hálózati adapter | Igen.
@@ -124,7 +144,7 @@ Azure virtuális hálózat szolgáltatás-végpontok<br/><br/> (Az azure Storage
 **Összetevő** | **Támogatott**
 --- | ---
 Állomás NFS | VMware Igen<br/><br/> Fizikai kiszolgálók esetében nem
-Host SAN (ISCSI) | Igen
+Állomás SAN (ISCSI) | Igen
 Állomás többutas (MPIO) | A Microsoft DSM, EMC PowerPath 5.7 SP4 EMC PowerPath DSM CLARiiON Igen, tesztelve
 Vendég-kiszolgáló vmdk-fájl | Igen
 Vendég-kiszolgáló EFI/UEFI| Részleges (Azure a Windows Server 2012 és újabb verziók VMware virtuális gépek csak áttelepítés) </br></br> Lásd a táblázat végén a megjegyzést
@@ -132,7 +152,7 @@ Vendég-kiszolgáló megosztott fürtlemez | Nem
 Vendég/server titkosított lemez | Nem
 NFS Vendég-kiszolgáló | Nem
 Az SMB 3.0 Vendég-kiszolgáló | Nem
-Guest/server RDM | Igen<br/><br/> A fizikai kiszolgálók N/A
+Vendég-kiszolgáló RDM | Igen<br/><br/> A fizikai kiszolgálók N/A
 Vendég-kiszolgáló > 1 TB méretű lemez | Igen<br/><br/>Legfeljebb 4095 GB
 Vendég/server 4 KB-os logikai és a 4 KB-os fizikai szektort méretű lemez | Igen
 Vendég/server 4 KB-os logikai lemez és 512 bájtos fizikai szektorméretet | Igen

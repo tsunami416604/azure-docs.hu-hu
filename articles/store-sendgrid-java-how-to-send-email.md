@@ -14,11 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
-ms.openlocfilehash: 85a0e302626ca14ac039ee6f662f372ddbeb62c5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c9f7d4841846e41eacb66125bcdeeb29466bb0b8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>E-mailek Java a SendGrid küldése
 Ez az útmutató bemutatja, hogyan Azure a SendGrid e-mail szolgáltatás közös programozási feladatok elvégzéséhez. A minták Java nyelven íródtak. Az ismertetett forgatókönyvek **hozhat létre, e-mailek**, **e-mailek küldéséhez**, **mellékletek hozzáadása**, **szűrőkkel**, és **tulajdonságainak frissítése**. A SendGrid és e-mailek küldéséhez további információkért lásd: a [további lépések](#next-steps) szakasz.
@@ -81,7 +81,7 @@ Megjelenítheti a javax.mail könyvtárak, például a <http://www.oracle.com/te
        Authenticator auth = new SMTPAuthenticator();
        Session mailSession = Session.getDefaultInstance(properties, auth);
 3. Hozza létre az üzenetet, és rendelje hozzá **való**, **a**, **tulajdonos** és értékek tartalmakat. Ezt mutatják be a [Útmutató: hozzon létre egy e-mailt](#how-to-create-an-email) szakasz.
-4. A keresztül küldött egy *javax.mail.Transport* objektum. Ezt mutatják be a [Útmutató: az e-mailek küldése] [hogyan: egy e-mailek küldése] szakasz.
+4. A keresztül küldött egy *javax.mail.Transport* objektum. Ezt mutatják be a [Útmutató: az e-mailek küldése] [#how-to--az-e-mail küldése] szakasz.
 
 ## <a name="how-to-create-an-email"></a>Hogyan: hozzon létre egy e-mailt
 A következő bemutatja, hogyan adható meg érték a e-mailt.

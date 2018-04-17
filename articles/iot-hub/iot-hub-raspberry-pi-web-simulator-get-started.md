@@ -1,24 +1,24 @@
 ---
-title: "Szimulált málna Pi felhőbe (Node.js) - csatlakozás málna Pi webes szimulátor több Azure IoT Hub |} Microsoft Docs"
-description: "Csatlakozás málna Pi webes szimulátor Azure IoT-központ málna Pi Azure felhőben történő adatküldéshez."
+title: Szimulált málna Pi felhőbe (Node.js) - csatlakozás málna Pi webes szimulátor több Azure IoT Hub |} Microsoft Docs
+description: Csatlakozás málna Pi webes szimulátor Azure IoT-központ málna Pi Azure felhőben történő adatküldéshez.
 services: iot-hub
-documentationcenter: 
-author: shizn
+documentationcenter: ''
+author: rangv
 manager: timtl
-tags: 
-keywords: "Raspberry pi szimulátor, az azure iot raspberry pi, raspberry pi iot-központ, raspberry pi adatokat küldött a felhőben, raspberry pi felhőbe"
+tags: ''
+keywords: Raspberry pi szimulátor, az azure iot raspberry pi, raspberry pi iot-központ, raspberry pi adatokat küldött a felhőben, raspberry pi felhőbe
 ms.service: iot-hub
 ms.devlang: node
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/28/2017
-ms.author: xshi
-ms.openlocfilehash: 3b80bf35d6af91d5bdb196d97668dc0f837b92cc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 4/11/2018
+ms.author: rangv
+ms.openlocfilehash: fe953b56e0a4dbbf7aaaa81d5b8ac6e31bb6bc4d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>Csatlakozás málna Pi online szimulátor Azure IoT Hub (Node.js)
 
@@ -88,7 +88,7 @@ A málna Pi webes szimulátor jelenleg előzetes verzióban érhető el. Szeretn
 Bemutatja az érzékelő adatokat és az IoT hub küldött üzenetek a következő kimenetet kell látnia ![kimeneti - érzékelő adatokat küld az IoT hub málna Pi](media/iot-hub-raspberry-pi-web-simulator/2_run_application.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Egy mintaalkalmazás érzékelő adatokat gyűjteni, és küldje el az IoT hub futtatását.
 

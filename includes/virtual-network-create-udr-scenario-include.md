@@ -1,14 +1,30 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: virtual-network
+author: genli
+ms.service: virtual-network
+ms.topic: include
+ms.date: 04/13/2018
+ms.author: genli
+ms.custom: include file
+ms.openlocfilehash: aa513d63a2af0fe994b8ab1ed7335a30998ff8ce
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 04/16/2018
+---
 ## <a name="scenario"></a>Forgatókönyv
-Jobb mutatja be udr-EK létrehozása, ez a dokumentum az alábbi forgatókönyvet fogja használni.
+Ez a dokumentum jobban vnetek létrehozásának udr-EK, használja a következő forgatókönyvet:
 
 ![KÉPLEÍRÁS](./media/virtual-network-create-udr-scenario-include/figure1.png)
 
-Ebben a forgatókönyvben a egy UDR hoz létre a *első záró alhálózat* és az egy másik UDR a *vissza záró alhálózat* , az alábbiak szerint: 
+Ebben a forgatókönyvben a egy UDR létrehozása a *előtér alhálózati* és az egy másik UDR a *háttér-alhálózat*, az alábbiak szerint: 
 
-* **UDR-előtérbeli**. Az előtér UDR alkalmazandó a *előtér* alhálózati, egy útvonalat, és:    
-  * **RouteToBackend**. Ez az útvonal által küldött összes forgalom a háttérrendszer alhálózat a **FW1** virtuális gépet.
-* **UDR-háttérrendszer**. A háttérben UDR alkalmazandó a *háttér* alhálózati, egy útvonalat, és:    
-  * **RouteToFrontend**. Ez az útvonal által küldött összes forgalom az előtér-alhálózat a **FW1** virtuális gépet.
+* **UDR-előtérbeli**. Az előtér-UDR alkalmazott a *előtér* alhálózatot, és egy útvonalat tartalmaznak:    
+  * **RouteToBackend**. Ez az útvonal az összes forgalom küldése a háttér-alhálózat a **FW1** virtuális gépet.
+* **UDR-háttérrendszer**. A háttér-UDR alkalmazott a *háttér* alhálózatot, és egy útvonalat tartalmaznak:    
+  * **RouteToFrontend**. Ez az útvonal az összes forgalom küldése az előtér-alhálózat a **FW1** virtuális gépet.
 
-Ezeket az útvonalakat kombinációja biztosítja, hogy irányuló teljes forgalomra egy alhálózatból másik továbbítja a **FW1** virtuális gépet, mely a virtuális készülék használatos. Szükség kapcsolja be ezt a virtuális Gépet, annak érdekében, hogy más virtuális gépek irányuló forgalom fogadja az IP-továbbítást.
+Ezeket az útvonalakat kombinációja annak biztosítására, hogy irányuló teljes forgalomra egy alhálózatból másik futtatna a **FW1** virtuális gépet, mely a virtuális készülék használatos. Szükség IP-továbbítást a kapcsolja a **FW1** virtuális Gépet, győződjön meg arról, megkaphatja a többi virtuális gépe irányuló forgalmat.
 

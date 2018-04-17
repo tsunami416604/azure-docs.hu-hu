@@ -1,30 +1,26 @@
 ---
-title: "Az SQL Data Warehouse tranzakciók optimalizálása |} Microsoft Docs"
-description: "Az Azure SQL Data Warehouse hatékony tranzakció frissítések írásáról bevált gyakorlatokat tartalmazó útmutatóval"
+title: Az Azure SQL Data Warehouse tranzakciók optimalizálása |} Microsoft Docs
+description: Ismerje meg, hogyan optimalizálható a teljesítmény, a tranzakciós kód az Azure SQL Data Warehouse ugyanakkor minimalizálja a hosszú visszagörgetése kockázatát.
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: t-sql
-ms.date: 03/15/2018
-ms.author: jrj;barbkess
-ms.openlocfilehash: 607c169e3d9e8aa741084392439da383f46cfe0c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/12/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: 55fc317dc9e7a1401aef8c5431ba04d86822d333
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="optimizing-transactions-for-sql-data-warehouse"></a>Az SQL Data Warehouse tranzakciók optimalizálása
-Ez a cikk azt ismerteti, hogyan optimalizálható a teljesítmény, a tranzakciós kód ugyanakkor minimalizálja a hosszú visszagörgetése kockázatát.
+# <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse tranzakciók optimalizálása
+Ismerje meg, hogyan optimalizálható a teljesítmény, a tranzakciós kód az Azure SQL Data Warehouse ugyanakkor minimalizálja a hosszú visszagörgetése kockázatát.
 
 ## <a name="transactions-and-logging"></a>Tranzakciók és a naplózás
--Tranzakciók le egy relációs adatbázis-kezelő fontos része. Az SQL Data Warehouse tranzakciók adatok módosítása során használ. Ezek a tranzakciók explicit vagy implicit lehet. Egyetlen `INSERT`, `UPDATE`, és `DELETE` utasítások valamennyien implicit tranzakciók. Az explicit tranzakciók használata `BEGIN TRAN`, `COMMIT TRAN`, vagy `ROLLBACK TRAN`. Explicit a tranzakciókat jellemzően akkor használják, amikor több módosítási utasítást kell együtt egyetlen atomi egységben. 
+-Tranzakciók le egy relációs adatbázis-kezelő fontos része. Az SQL Data Warehouse tranzakciók adatok módosítása során használ. Ezek a tranzakciók explicit vagy implicit lehet. Egyetlen INSERT, UPDATE és DELETE utasítások példák összes implicit tranzakciók. Az explicit tranzakciók BEGIN TRAN, TRAN véglegesítés vagy VISSZAÁLLÍTÁS TRAN használja. Explicit a tranzakciókat jellemzően akkor használják, amikor több módosítási utasítást kell együtt egyetlen atomi egységben. 
 
 Az SQL Data Warehouse az adatbázis tranzakciós naplók segítségével végzi a módosításokat. Minden terjesztési saját tranzakciónapló rendelkezik. Tranzakciós napló írása automatikus. Nincs szükség konfigurálásra. Bár ez a folyamat biztosítja, hogy az írás, a rendszer egy általános vezethet. A hatás minimalizálhatja tranzakciós úton hatékony kód megírásával. Tranzakciós úton hatékony kód nagyjából két kategóriába esik.
 
@@ -33,7 +29,7 @@ Az SQL Data Warehouse az adatbázis tranzakciós naplók segítségével végzi 
 * A minta egy adott partícióra jelentős módosításokat a partícióváltás elfogadása
 
 ## <a name="minimal-vs-full-logging"></a>A minimális és a teljes körű naplózás
-Ellentétben a teljes naplózott műveleteknek, amely a tranzakciónapló segítségével nyomon követheti, minden sor változás, minimálisan naplózott műveleteknek nyomon követheti, mértékben kiosztásokat és csak a metaadatok módosításokat. Ezért minimális naplózás magában foglalja a naplózás csak a szükséges állítsa vissza a tranzakciót, egy meghibásodás után, vagy egy explicit kérelem adatai (`ROLLBACK TRAN`). Sokkal kevesebb adatot a tranzakciós naplóban rögzíti, mert egy minimálisan naplózott műveletnek jobb, mint egy hasonlóképpen méretű teljesen naplózott műveletet hajt végre. Ezenkívül kevesebb írások nyissa meg a tranzakciós napló, mert naplóadatokat sokkal kisebb mennyiségű jön létre és több, i/o hatékony.
+Ellentétben a teljes naplózott műveleteknek, amely a tranzakciónapló segítségével nyomon követheti, minden sor változás, minimálisan naplózott műveleteknek nyomon követheti, mértékben kiosztásokat és csak a metaadatok módosításokat. Ezért minimális naplózás magában foglalja a naplózás csak a állítsa vissza a tranzakciót, egy meghibásodás után, vagy egy explicit kérelem (VISSZAÁLLÍTÁS TRAN) a szükséges információkat. Sokkal kevesebb adatot a tranzakciós naplóban rögzíti, mert egy minimálisan naplózott műveletnek jobb, mint egy hasonlóképpen méretű teljesen naplózott műveletet hajt végre. Ezenkívül kevesebb írások nyissa meg a tranzakciós napló, mert naplóadatokat sokkal kisebb mennyiségű jön létre és több, i/o hatékony.
 
 A tranzakció biztonsági korlátozások csak a teljes naplózott műveleteknek vonatkoznak.
 
@@ -45,8 +41,8 @@ A tranzakció biztonsági korlátozások csak a teljes naplózott műveleteknek 
 ## <a name="minimally-logged-operations"></a>Minimálisan naplózott műveleteknek
 A következő műveletek képesek minimálisan naplózott:
 
-* HOZZON LÉTRE TABLE AS SELECT ([CTAS][CTAS])
-* INSERT..SELECT
+* HOZZON LÉTRE TABLE AS SELECT ([CTAS](sql-data-warehouse-develop-ctas.md))
+* INSERT... VÁLASSZA KI
 * INDEX LÉTREHOZÁSA
 * ALTER INDEX REBUILD
 * A DROP INDEX
@@ -61,12 +57,12 @@ A következő műveletek képesek minimálisan naplózott:
 -->
 
 > [!NOTE]
-> Belső az adatátviteli műveletek (például `BROADCAST` és `SHUFFLE`) nem érinti a tranzakció biztonsági korlátot.
+> Belső az adatátviteli műveletek (például a SZÓRÁSOS és SORRENDŰ) nem érinti a tranzakció biztonsági korlátot.
 > 
 > 
 
 ## <a name="minimal-logging-with-bulk-load"></a>A tömeges betöltés minimális naplózás
-`CTAS` és `INSERT...SELECT` vannak mindkét tömeges betöltési műveletek. Azonban mind a célként megadott tábla definíciójában befolyásolják, és a terheléselosztási forgatókönyvhöz függenek. Az alábbi táblázat ismerteti, amikor tömeges műveletek teljes vagy minimálisan bejelentkeznek:  
+CTAS és INSERT... Válassza ki mindkét tömeges betöltési műveletek. Azonban mind a célként megadott tábla definíciójában befolyásolják, és a terheléselosztási forgatókönyvhöz függenek. Az alábbi táblázat ismerteti, amikor tömeges műveletek teljes vagy minimálisan bejelentkeznek:  
 
 | Elsődleges indexe | Betöltési forgatókönyv | A naplózási |
 | --- | --- | --- |
@@ -87,7 +83,7 @@ A következő műveletek képesek minimálisan naplózott:
 Adatok betöltése az egy fürtözött index nem üres táblába gyakran tartalmaznak teljes mértékben naplózott és minimálisan naplózott sorok keverékével. Egy fürtözött index egy elosztott terhelésű fa (b-fa) lap. Ha a lap írt már tartalmaz egy másik tranzakció azon sorait, majd ezek írási műveletek teljesen naplóz. Azonban ha az oldal üres majd azt az oldalt az írás minimálisan naplóz.
 
 ## <a name="optimizing-deletes"></a>Törlések optimalizálása
-`DELETE` egy olyan teljes naplózott művelet.  Ha törli egy nagy mennyiségű adatot táblázat vagy partíció van szüksége, gyakran érdemes további `SELECT` tartani, a adatait, amely egy minimálisan naplózott műveletnek is lehet futtatni.  Jelölje ki az adatokat, hozzon létre egy új tábla [CTAS][CTAS].  Létrehozása után használja [átnevezése] [ RENAME] felcserélni a a régi táblázat és az újonnan létrehozott tábla.
+TÖRLÉS egy teljes mértékben naplózott műveletnek.  Ha törli egy nagy mennyiségű adatot táblázat vagy partíció van szüksége, gyakran érdemes további `SELECT` tartani, a adatait, amely egy minimálisan naplózott műveletnek is lehet futtatni.  Jelölje ki az adatokat, hozzon létre egy új tábla [CTAS](sql-data-warehouse-develop-ctas.md).  Létrehozása után használja [átnevezése](/sql/t-sql/statements/rename-transact-sql) felcserélni a a régi táblázat és az újonnan létrehozott tábla.
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -118,9 +114,9 @@ RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 ```
 
 ## <a name="optimizing-updates"></a>Frissítések optimalizálása
-`UPDATE` egy olyan teljes naplózott művelet.  Ha nagyszámú táblázat vagy partíció sorok frissíteni kell, gyakran lehet sokkal hatékonyabb, mint a minimálisan naplózott műveletnek használandó [CTAS] [ CTAS] ehhez.
+FRISSÍTÉS áll egy teljes mértékben naplózott műveletnek.  Ha nagyszámú táblázat vagy partíció sorok frissíteni kell, gyakran lehet sokkal hatékonyabb, mint a minimálisan naplózott műveletnek használandó [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) ehhez.
 
-A példa a teljes táblázat alatt frissítés lett konvertálva a `CTAS` úgy, hogy minimális naplózás lehetséges.
+A teljes táblázat az alábbi példában frissítés lett konvertálva a CTAS úgy, hogy minimális naplózás lehetséges.
 
 Ebben az esetben azt utólag ad hozzá a kedvezményes méretű az értékesítési a táblázatban:
 
@@ -184,7 +180,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 > 
 
 ## <a name="optimizing-with-partition-switching"></a>Partíció váltás optimalizálása
-Ha nagyméretű módosításokkal belül egy [tábla partíciós][table partition], majd egy minta a partícióváltás teljesen logikus. Ha az adatok módosítását jelentős, és több partíció is, majd Léptetés a partíciók keresztül éri el a ugyanazt az eredményt.
+Ha nagyméretű módosításokkal belül egy [tábla partíciós](sql-data-warehouse-tables-partition.md), majd egy minta a partícióváltás teljesen logikus. Ha az adatok módosítását jelentős, és több partíció is, majd Léptetés a partíciók keresztül éri el a ugyanazt az eredményt.
 
 Egy partíció kapcsolójának elvégzendő lépések a következők:
 
@@ -416,23 +412,9 @@ Az SQL Data Warehouse lehetővé teszi, hogy [szüneteltetése, folytatása, és
 
 A legjobb például az, hogy a felhőszolgáltató közötti átviteléhez adatmódosítási művelet befejezése előtt felfüggesztéséhez vagy az SQL Data Warehouse skálázás is. Azonban ez a forgatókönyv nem mindig lehet gyakorlati. Az egy hosszú visszaállítást a kockázatnak a mérséklése érdekében fontolja meg az alábbi lehetőségek közül:
 
-* Módosítsa úgy a hosszú ideig futó műveletek [CTAS][CTAS]
+* Módosítsa úgy a hosszú ideig futó műveletek [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 * A művelet felosztása adattömbök; a sorok működő
 
 ## <a name="next-steps"></a>További lépések
-Lásd: [az SQL Data Warehouse tranzakciók] [ Transactions in SQL Data Warehouse] tudhat meg többet elkülönítési szinten és tranzakciós korlátozásait.  Egyéb ajánlott eljárások áttekintését lásd: [SQL Data Warehouse gyakorlati tanácsok][SQL Data Warehouse Best Practices].
-
-<!--Image references-->
-
-<!--Article references-->
-[Transactions in SQL Data Warehouse]: ./sql-data-warehouse-develop-transactions.md
-[table partition]: ./sql-data-warehouse-tables-partition.md
-[CTAS]: ./sql-data-warehouse-develop-ctas.md
-[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
-
-<!--MSDN references-->
-[alter index]:https://msdn.microsoft.com/library/ms188388.aspx
-[RENAME]: https://msdn.microsoft.com/library/mt631611.aspx
-
-<!-- Other web references -->
+Lásd: [az SQL Data Warehouse tranzakciók](sql-data-warehouse-develop-transactions.md) tudhat meg többet elkülönítési szinten és tranzakciós korlátozásait.  Egyéb ajánlott eljárások áttekintését lásd: [SQL Data Warehouse gyakorlati tanácsok](sql-data-warehouse-best-practices.md).
 

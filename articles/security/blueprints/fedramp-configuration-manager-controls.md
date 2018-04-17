@@ -1,6 +1,6 @@
 ---
-title: "Az Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - konfiguráció kezelése"
-description: "FedRAMP webes alkalmazások Automation - konfiguráció kezelése"
+title: Az Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - konfiguráció kezelése
+description: FedRAMP webes alkalmazások Automation - konfiguráció kezelése
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 6566783769d37ee829df3894fdb5673b4edafd2c
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 356eccac6af2780c02d1cd935d41891b5f89f1a2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configuration-management-cm"></a>Konfigurációkezelés (CM)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-1** a szervezet házon belül fejlesztett alkalmazásokra, dokumentumokat, és hogy terjeszti [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök] egy konfiguráció-kezelési házirenddel, amely célú, hatókör, szerepkörök, feladatok, felügyeleti kötelezettségvállalás, a koordinációs szervezeti entitásokat, és a megfelelőségi; és eljárásokat azzal, hogy a konfigurációs felügyeleti szabályzatot, és a társított konfigurációs felügyeleti vezérlők; végrehajtásának megkönnyítése ellenőrzi, és frissíti a jelenlegi konfiguráció-kezelési házirend [hozzárendelés: szervezet által meghatározott gyakoriság]; és felügyeleti eljárások [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-2** a szervezet házon belül fejlesztett alkalmazásokra, dokumentumok és konfigurációs-szabályozás a információs rendszer aktuális alapkonfiguráció tart fenn.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-2 (1) sémaszintjén** a szervezet ellenőrzi, és frissíti az adatokat a rendszer az alapvető konfigurációhoz [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-2 (1) .b** a szervezet ellenőrzi, és frissíti az alapvető konfigurációhoz, az információs rendszer miatt [hozzárendelés szervezet által meghatározott körülmények között] szükség esetén.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-2 (1) .c** a szervezet ellenőrzi, és frissíti az adatokat a rendszer az alapvető konfigurációhoz információk rendszer összetevő telepítések és frissítések szerves része.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-2 (2)** a szervezet egy naprakész, befejeződött, a pontos és azonnal elérhetők legyenek alapkonfigurációjának a információs rendszer fenntartásához automatizált mechanizmusok funkcióit használja.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-2 (3)** őrzi meg a szervezet [hozzárendelés: eredeti konfigurációk a információs rendszer korábbi verzióiban szervezet által meghatározott] visszaállítási támogatásához.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-2 (7) sémaszintjén** a szervezet problémák [hozzárendelés: szervezet által meghatározott információs rendszerekkel, rendszerösszetevők vagy eszközök] rendelkező [hozzárendelés: szervezet által meghatározott konfigurációk] helyekre utazás egyének részére, amely a szervezet megfelelően konfiguráltnak ítéli a jelentős kockázat lennie.
 
-**Feladatkörök:**`Not Applicable`
+**Feladatok:** `Not Applicable`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-2 (7) .b** a szervezetek [hozzárendelés: szervezet által meghatározott biztonsági óvintézkedéseket] az eszközökön, ha az egyéni felhasználók számára adja vissza.
 
-**Feladatkörök:**`Not Applicable`
+**Feladatok:** `Not Applicable`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-3.a** a szervezet a rendszerben bekövetkezett változások információkat, amelyek a konfigurációs által szabályozott típusú határozza meg.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-3.b** a szervezet ellenőrzi, hogy az információk rendszer javasolt konfiguráció által szabályozott módosításait, és hagyja jóvá vagy fennmaradhat biztonsági hatás elemzések explicit szempont a változások.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-3** a szervezet dokumentumok konfigurációs változásokat az információk rendszerre döntéseket.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-3.d** a szervezete bevezet az információs rendszer konfigurációs által szabályozott jóváhagyott változtatásokat.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-3.e** A szervezet megőrzi az információs rendszer konfigurációs által szabályozott módosításait rögzíti [hozzárendelés: szervezet által meghatározott időszak].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-3.f** a szervezet naplózás, és ellenőrzi, hogy az információkat a system configuration által szabályozott módosításai társított tevékenységet.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -241,7 +241,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-3.g** a szervezet koordinálja és felügyeletet biztosít a konfigurációs módosítás vezérlő tevékenységek [hozzárendelés: szervezet által meghatározott konfigurációs módosítás vezérlő elem (pl. Bizottság, board)], amely convenes [kijelölés () egy vagy több): [hozzárendelés: szervezet által meghatározott gyakoriság]; [Hozzárendelés: szervezet által meghatározott konfigurációs módosítás feltételek]].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-3 (1) sémaszintjén** a szervezet az információs rendszer javasolt módosításait dokumentálása automatizált mechanizmusok funkcióit használja.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-3 (1) .b** a szervezet védett értesíteni automatizált mechanizmusok [hozzárendelés: rendezve által definiált jóváhagyási hatóságok] az adatokat javasolt módosításait, rendszer és a kérelem módosítása jóváhagyást.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -283,7 +283,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-3 (1) .c** a szervezet funkcióit használja az automatizált mechanizmusokat, jelölje ki az információkat a rendszer, amely nem engedélyezett vagy letiltott által javasolt módosításait [hozzárendelés: szervezet által meghatározott időszak].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -297,7 +297,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-3 (1) .d** a szervezet a adatokat a rendszer letiltja az csak a kijelölt jóváhagyások fogadásának automatizált mechanizmusok funkcióit használja.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -311,7 +311,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-3 (1) .e** A szervezet az adatokat a rendszer minden módosításának dokumentálása automatizált mechanizmusok funkcióit használja.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -325,7 +325,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-3 (1) .f** a szervezet védett értesíteni automatizált mechanizmusok [hozzárendelés: szervezet által meghatározott csoporthoz] Ha az információ rendszerhez jóváhagyott változtatások elvégzése.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -339,7 +339,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-3 (2)** a szervezet teszteli, ellenőrzi, és a műveleti rendszerfiókok a módosítások végrehajtása előtt a információk rendszer dokumentumokat.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -353,7 +353,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-3 (4)** a szervezet megköveteli az információk biztonsági képviselőjére tagja a [hozzárendelés: szervezet által meghatározott konfigurációs módosítás vezérlő elem].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -367,7 +367,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-3 (6)** a szervezet biztosítja, hogy titkosítási mechanizmus segítségével adja meg [hozzárendelés: szervezet által meghatározott biztonsági óvintézkedéseket] kezelés alatt állnak.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -381,7 +381,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-4** a szervezet elemzi a információk rendszer módosítás végrehajtása előtt lehetséges biztonsági hatások meghatározásához.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -395,7 +395,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-4 (1)** a szervezet elemzi a működési környezetben, biztonsági hatások hibái, gyenge, alkalmazással való inkompatibilitás miatt, vagy szándékos keres a megvalósítás előtt külön tesztkörnyezetben információs rendszer módosításai malice.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -409,7 +409,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-5** a szervezet határozza meg, dokumentumok, jóvá és érvénybe lépteti a információk rendszer társított fizikai és logikai hozzáférési korlátozásokat.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -423,7 +423,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-5 (1)** az információs rendszer kikényszeríti a korlátozza a hozzáférést, és támogatja a kényszerítési műveletek naplózását.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -437,7 +437,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-5 (2)** rendszer változtatások ellenőrzi, hogy a szervezet [hozzárendelés: szervezet által meghatározott gyakoriság] és [hozzárendelés: szervezet által meghatározott körülmények között] annak meghatározásához, hogy jogosulatlan változások történtek.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -451,7 +451,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-5 (3)** az adatokat a rendszer megakadályozza, hogy a telepítése [hozzárendelés: szervezet által meghatározott szoftver és a belső vezérlőprogram összetevők] ellenőrzése nélkül, hogy az összetevő rendelkezik digitálisan aláírt egy tanúsítvánnyal, a rendszer felismeri és a szervezet által jóváhagyott.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -465,7 +465,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-5 (5) sémaszintjén** a szervezet korlátozza az információk rendszerösszetevők és rendszer-kapcsolatos információkat a termelési vagy a működési környezetben módosítása szükséges engedélyekkel.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -479,7 +479,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-5 (5) .b** a szervezet ellenőrzi és jogosultságokkal reevaluates [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -493,7 +493,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-6.a** a szervezet hoz létre, és beállításokat az alkalmazásban lévő adatokat rendszer a informatikai termékek dokumentumok [hozzárendelés: szervezet által meghatározott biztonsági konfiguráció ellenőrzőlisták] tükrözik a szigorúbb mód működési követelményekkel összhangban.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -507,7 +507,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-6.b** a szervezete bevezet a konfigurációs beállításokat.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -521,7 +521,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-6.c lépést** a szervezet azonosítja, dokumentumokat, és hagyja jóvá a meghatározott konfigurációs beállításainak történő eltérések [hozzárendelés: szervezet által megadott információk rendszerösszetevők] alapján [hozzárendelés: szervezet által meghatározott működési követelményeinek].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -535,7 +535,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-6.d** szervezeti házirendek és eljárások a konfigurációs beállításokat a szervezet figyelők és vezérlők változik.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -549,7 +549,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-6 (1)** a szervezet funkcióit használja az automatizált mechanizmusok központilag kezelheti, alkalmazza, és konfigurációs beállításainak ellenőrzése [hozzárendelés: szervezet által megadott információk rendszerösszetevők].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -563,11 +563,11 @@ ms.lasthandoff: 02/11/2018
 
 **CM-6 (2)** alkalmaz a szervezet [hozzárendelés: szervezet által meghatározott biztonsági óvintézkedéseket] válaszolni a nem hitelesített módosításai [hozzárendelés: szervezet által megadott konfigurációs beállítások].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
-| **Ügyfél** | Ez tervezetének Azure Automation DSC telepíti. Rész Azure Operations Management Suite (OMS) az Automation DSC riasztást vagy konfigurálható felderítésére észlelésekor orvoslása érdekében. |
+| **Ügyfél** | Ez tervezetének Azure Automation DSC telepíti. Automation DSC egy riasztást, vagy konfigurációs hibák észlelésekor orvoslásához konfigurálható. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -577,7 +577,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-7.a** a szervezetnél konfigurálva van a információs rendszer csak az alapvető képességeit.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -591,7 +591,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-7.b** a szervezet nem engedélyezi vagy korlátozza a következő funkciók, portok, protokollok, illetve szolgáltatások: [hozzárendelés: szervezet tiltott vagy korlátozott függvényeket, a portok, protokollok, illetve a szolgáltatások].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -605,7 +605,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-7 (1) sémaszintjén** az adatokat a rendszer ellenőrzi, hogy a szervezet [hozzárendelés: szervezet által meghatározott gyakoriság] szükségtelen és/vagy a nem biztonságos funkciók, portok, protokollok és szolgáltatások azonosításához.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -619,7 +619,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-7 (1) .b** a szervezet letiltja [hozzárendelés: szervezet által definiált függvények, portok, protokollok és a felesleges és/vagy a nem biztonságos kell tekinteni információk rendszerben szolgáltatások].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -633,7 +633,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-7 (2)** az adatokat a rendszer megakadályozza, hogy a program végrehajtását összhangban [kijelölés (egy vagy több): [hozzárendelés: szervezet által meghatározott irányelvek mentén szoftver program használati és -korlátozások]; a feltételek engedélyező szabályok és feltételek program szoftverhasználatról].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -647,7 +647,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-7 (5) sémaszintjén** azonosítja a szervezet [hozzárendelés: szervezet által meghatározott programok jogosult hajtható végre rajta az információs rendszer].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -661,7 +661,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-7 (5) .b** a szervezet egy megtagadási – minden, a kivétel-engedélyezési házirendben engedélyezze az engedélyezett szoftverek végrehajtása a információs rendszerben alkalmazza.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -675,7 +675,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-7 (5) .c** a szervezet ellenőrzi, és az engedélyezett programok listájának frissítése [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -689,7 +689,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-8.a** a szervezet házon belül fejlesztett alkalmazásokra és -dokumentumokat, amely pontosan tükrözi az aktuális információkat rendszer; az információs rendszer engedélyezési határain belül minden összetevőket tartalmazza; jelenleg adatokat rendszerösszetevők leltár a részletesség szintjét szükségesnek követésével és jelentésével; és tartalmaz [hozzárendelés: szervezet által megadott információk szükségesnek hatékony rendszer összetevő felelős eléréséhez].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -703,7 +703,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-8.b** a szervezet ellenőrzi, és frissíti az információkat az összetevő rendszerleltár [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -717,7 +717,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-8 (1)** a szervezet azon információk rendszerösszetevők frissíti, az összetevő telepítését, eltávolítására és adatmódosításaira rendszer szerves részét.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -731,7 +731,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-8 (2)** a szervezet adatokat rendszerösszetevők naprakész, befejeződött, a pontos és azonnal elérhetők legyenek leltárt fenntartásához automatizált mechanizmusok funkcióit használja.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -745,7 +745,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-8 (3) sémaszintjén** a szervezet funkcióit használja az automatikus mechanizmusok [hozzárendelés: szervezet által meghatározott gyakoriság] információk rendszerből jogosulatlan hardveres, szoftveres és belső vezérlőprogramjának összetevők észleléséhez.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -759,7 +759,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-8 (3) .b** a szervezet a következő műveleteket hajtja végre jogosulatlan összetevők észlelésekor: [kijelölés (egy vagy több): letiltja a hálózati hozzáférés ilyen összetevők; elkülöníti az összetevők; értesíti [hozzárendelés: szervezet által meghatározott tanácsadási csoporthoz vagy a szerepkörök]].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -773,7 +773,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-8 (4)** információk rendszer összetevő leltáradatait, által azonosítására szolgáló módszert tartalmazza a szervezet [kijelölés (egy vagy több): név; pozíció; szerepkör], személyek felelős/kiszolgálófelügyeletért felelős ezen összetevők felügyelete .
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -787,7 +787,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-8 (5)** a szervezet ellenőrzi, hogy az információk rendszer engedélyezési határain belül minden összetevő nem lesznek duplikálva egyéb információkat a rendszer összetevő készletek.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -801,7 +801,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-9.a** a szervezet házon belül fejlesztett alkalmazásokra, dokumentumokat és valósítja meg a konfigurációs séma az információk rendszerhez, amely, kötelezettségeket, és konfiguráció kezelésével kapcsolatos folyamatokat és eljárásokat.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -815,7 +815,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-9.b** a szervezet házon belül fejlesztett alkalmazásokra, dokumentumok és valósítja meg a konfigurációs séma hoz létre a folyamat azonosító konfigurációelemeket a rendszer fejlesztési élettartama alatt ciklus, ezért az információk rendszerhez a konfiguráció a konfigurációelemek kezelése.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -829,7 +829,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-9.c** a szervezet házon belül fejlesztett alkalmazásokra, dokumentumokat és a konfigurációs felügyeleti csomag megvalósítja az adatokat a rendszer konfigurációját tartalmazó adatokat rendszer elemek és helyezi el a konfigurációs elemek konfigurációja felügyeleti.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -843,7 +843,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-9.d** a szervezet házon belül fejlesztett alkalmazásokra, dokumentumokat, és egy konfigurációs tervet a konfigurációs felügyeleti csomag megakadályozza a jogosulatlan és -módosítási információk rendszer valósítja meg.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -857,7 +857,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-10.a** a szervezet használja a szoftver és a kapcsolódó dokumentáció létrejött és szerzői jogi törvények megfelelően.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -871,7 +871,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-10.b** a szervezet nyomon követi a szoftver és a kapcsolódó dokumentáció mennyiségi licencek másolása és terjesztési által védett.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -885,7 +885,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-10.c** a szervezet vezérli, és a dokumentumokat a társ-társ fájlmegosztást annak biztosítására, hogy ez a funkció nem használatos a jogosulatlan terjesztési, a megjelenítési, a teljesítmény vagy a szerzői jogi sokszorosítása technológia használatát.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -899,7 +899,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-10-es (1)** a szervezet nyílt forráskódú szoftver használatára a következő korlátozások hoz létre: [hozzárendelés: szervezet által meghatározott korlátozások].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -913,7 +913,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-11.a** a szervezet létesít [hozzárendelés: szervezet által meghatározott házirendek] szabályozó felhasználók szoftver telepítését.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -927,7 +927,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-11.b** a szervezet érvényesíti a szoftverfrissítési telepítési házirendeket keresztül [hozzárendelés: szervezet által definiált metódusok].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -941,7 +941,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-11.c** a szervezet figyeli a szabályzatoknak való megfelelés [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -955,7 +955,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-11 (1)** információk teljesítményriasztások [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök] Ha a jogosulatlan szoftver van telepítve.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|

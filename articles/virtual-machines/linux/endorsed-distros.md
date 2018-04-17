@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: szark
-ms.openlocfilehash: 7c41550d1fe9cf5981406d25599e51aa119eb697
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 8ea768c6ba8b404978b78f2cbd272f98af3fa70b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="linux-on-distributions-endorsed-by-azure"></a>Az Azure által támogatott disztribúciók Linux
 Partnerek adja meg az Azure piactéren Linux-lemezképeket. Már dolgozunk a különböző Linux Közösségek még több változatban is elkészíti a támogatott terjesztési listához adni. Időközben azokat a terjesztéseket, amelyek nem érhetők el a piactérről, az mindig helyezheti a saját Linux által útmutatása szerint [létrehozása és feltöltése a Linux operációs rendszert tartalmazó virtuális merevlemez](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/create-upload-generic).
@@ -27,14 +27,14 @@ Partnerek adja meg az Azure piactéren Linux-lemezképeket. Már dolgozunk a kü
 ## <a name="supported-distributions-and-versions"></a>Támogatott disztribúcióiról, valamint a verziók
 A következő táblázat a Linux terjesztéseket, a támogatott Azure-on. Tekintse meg [támogatja a Microsoft Azure Linux képek](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) részletesebb információ a Linux és az Azure-ban nyílt forráskódú technológiája támogatása.
 
-A Hyper-V és Azure Linux integrációs szolgáltatások (LIS) illesztőprogramok legyenek, amely Microsoft közvetlenül hozzájárul a felsőbb rétegbeli Linux kernel kernel-modulok.  Alapértelmezés szerint a terjesztési kernel egyes LIS illesztőprogramok beépített. Régebbi azokat a terjesztéseket, amelyek Red Hat Enterprise (RHEL) – CentOS, külön letölthető / [Linux integrációs szolgáltatások verzió 4.1 a Hyper-V](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409). Lásd: [Linux kernel követelmények](create-upload-generic.md#linux-kernel-requirements) a LIS további tudnivalókat.
+A Hyper-V és Azure Linux integrációs szolgáltatások (LIS) illesztőprogramok legyenek, amely Microsoft közvetlenül hozzájárul a felsőbb rétegbeli Linux kernel kernel-modulok.  Alapértelmezés szerint a terjesztési kernel egyes LIS illesztőprogramok beépített. Régebbi azokat a terjesztéseket, amelyek Red Hat Enterprise (RHEL) – CentOS, külön letölthető / [Linux integrációs szolgáltatások verzió 4.2 a Hyper-V és Azure](https://www.microsoft.com/en-us/download/details.aspx?id=55106). Lásd: [Linux kernel követelmények](create-upload-generic.md#linux-kernel-requirements) a LIS további tudnivalókat.
 
 Az Azure Linux ügynök előre telepítve van az Azure piactéren elérhető rendszerkép és általában a telepítési csomag tárházból. Forráskód található [GitHub](https://github.com/azure/walinuxagent).
 
   
 | Disztribúció | Verzió | Illesztőprogramok | Ügynök |
 | --- | --- | --- | --- |
-| CentOS |A centOS 6.3 + 7.0 + |CentOS 6.3: [LIS letöltése](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409)<p>CentOS 6.4 +: kernel a |Csomag: A [tárház](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) "WALinuxAgent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| CentOS |A centOS 6.3 + 7.0 + |CentOS 6.3: [LIS letöltése](https://www.microsoft.com/en-us/download/details.aspx?id=55106)<p>CentOS 6.4 +: kernel a |Csomag: A [tárház](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) "WALinuxAgent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |A kernel |Forráskód: [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
 | Debian |Debian 7.9 +, 8.2 + |A kernel |Csomag: a "waagent" adattárban lévő <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Oracle Linux |6.4+, 7.0+ |A kernel |Csomag: a "WALinuxAgent" adattárban lévő <br/>Forráskód: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998) |

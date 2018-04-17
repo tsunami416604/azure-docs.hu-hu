@@ -1,16 +1,16 @@
 ---
-title: "Gép függőségek használata Azure áttelepítése gépek |} Microsoft Docs"
-description: "Útmutatás a gép függőségek használata az Azure áttelepítése szolgáltatásával értékelését létrehozásához."
+title: Gép függőségek használata Azure áttelepítése gépek |} Microsoft Docs
+description: Útmutatás a gép függőségek használata az Azure áttelepítése szolgáltatásával értékelését létrehozásához.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/25/2017
 ms.author: raynew
-ms.openlocfilehash: 720380fd14d9eaf4856ad75269a80f2b63a4725f
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 9e8e1fb918d9cd35b12e71abdd23ca101239ae26
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>Csoport gépek gép függőségi leképezés használata
 
@@ -33,8 +33,8 @@ Az ügynök telepítése Windows-gépen:
 1. Kattintson duplán a letöltött ügynök.
 2. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra. Az a **licencfeltételeket** kattintson **elfogadom** elfogadja a licencfeltételeket.
 3. A **célmappa**, hagyja, vagy módosítsa az alapértelmezett telepítési mappa > **következő**. 
-4. A **ügynök telepítésének beállításai**, jelölje be **Azure Naplóelemzés (OMS)** > **következő**. 
-5. Kattintson a **Hozzáadás** hozzáadása egy új OMS-munkaterület. Illessze be a munkaterület azonosítója és a portál fájlból másolt kulcsot. Kattintson a **Tovább** gombra.
+4. A **ügynök telepítésének beállításai**, jelölje be **Azure Naplóelemzés** > **következő**. 
+5. Kattintson a **Hozzáadás** hozzáadása egy új munkaterületet. Illessze be a munkaterület azonosítója és a portál fájlból másolt kulcsot. Kattintson a **Tovább** gombra.
 
 
 Az ügynök telepítése Linux gépen:
@@ -82,4 +82,4 @@ A csoport létrehozása után javasoljuk, hogy az ügynökök telepítésekor a 
 ## <a name="next-steps"></a>További lépések
 
 - [Megtudhatja, hogyan](how-to-create-group-dependencies.md) pontosítsa a csoport által Függőségek megjelenítése
-- [További](concepts-assessment-calculation.md) kapcsolatos értékelések kiszámítási módját.
+- [További információk](concepts-assessment-calculation.md) az értékelések számításával kapcsolatban.

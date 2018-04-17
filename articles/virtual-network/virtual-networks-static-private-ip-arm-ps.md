@@ -1,6 +1,6 @@
 ---
-title: "Magánhálózati IP-címek konfigurálása virtuális gépek - Azure PowerShell |} Microsoft Docs"
-description: "Útmutató a PowerShell használatával virtuális gépek magánhálózati IP-címek konfigurálásához."
+title: Magánhálózati IP-címek konfigurálása virtuális gépek - Azure PowerShell |} Microsoft Docs
+description: Útmutató a PowerShell használatával virtuális gépek magánhálózati IP-címek konfigurálásához.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8727318c9dff79b795b473caf7b778272134726c
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: b0e8153f1d0cecd4efe66dc7cce64addd6ed62aa
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-powershell"></a>PowerShell használatával virtuális gépek magánhálózati IP-címek konfigurálása
 
@@ -68,7 +68,7 @@ Nevű virtuális gép létrehozása *DNS01* a a *előtér* egy vnet nevű alhál
     -PrivateIpAddress 192.168.1.101
     ```
 
-5. A fentiekben létrehozott hálózati adapter virtuális gép létrehozása.
+5. Hozzon létre a virtuális hálózati adapter:
 
     ```powershell
     $vm = New-AzureRmVMConfig -VMName DNS01 -VMSize "Standard_A1"
@@ -83,16 +83,7 @@ Nevű virtuális gép létrehozása *DNS01* a a *előtér* egy vnet nevű alhál
     New-AzureRmVM -ResourceGroupName $rgName -Location $locName -VM $vm 
     ```
 
-    Várt kimenet:
-    
-        EndTime             : [Date and time]
-        Error               : 
-        Output              : 
-        StartTime           : [Date and time]
-        Status              : Succeeded
-        TrackingOperationId : [Id]
-        RequestId           : [Id]
-        StatusCode          : OK 
+Javasoljuk, hogy nem statikusan rendelje a magánhálózati IP-címe az operációs rendszerben a virtuális gépek az Azure virtuális géphez rendelt kivéve, ha szükséges, például amikor [több IP-címek hozzárendelése egy Windows virtuális gépre](virtual-network-multiple-ip-addresses-powershell.md). Ha manuálisan állítsa be a magánhálózati IP-cím, az operációs rendszerből, győződjön meg arról, hogy az a magánhálózati IP-cím, az Azure rendelt megegyező címre [hálózati illesztő](virtual-network-network-interface-addresses.md#change-ip-address-settings), vagy a virtuális gép is megszakad a kapcsolat. További információ [magánhálózati IP-cím](virtual-network-network-interface-addresses.md#private) beállításait. Manuálisan soha ne rendelje a nyilvános IP-cím, egy Azure virtuális gépen belül a virtuális gép operációs rendszerének rendelt.
 
 ## <a name="retrieve-static-private-ip-address-information-for-a-network-interface"></a>Statikus magánhálózati IP-címadatok a hálózati illesztő beolvasása
 A statikus magánhálózati IP-címadatok a fenti parancsfájl létrehozza a virtuális gép megtekintéséhez futtassa a következő PowerShell-parancsot, és tekintse meg az értékeit *privateipaddress tulajdonságot* és *címkiosztási*:
@@ -199,6 +190,9 @@ $nic.IpConfigurations[0].PrivateIpAllocationMethod = "Static"
 $nic.IpConfigurations[0].PrivateIpAddress = "192.168.1.101"
 Set-AzureRmNetworkInterface -NetworkInterface $nic
 ```
+
+Javasoljuk, hogy nem statikusan rendelje a magánhálózati IP-címe az operációs rendszerben a virtuális gépek az Azure virtuális géphez rendelt kivéve, ha szükséges, például amikor [több IP-címek hozzárendelése egy Windows virtuális gépre](virtual-network-multiple-ip-addresses-powershell.md). Ha manuálisan állítsa be a magánhálózati IP-cím, az operációs rendszerből, győződjön meg arról, hogy az a magánhálózati IP-cím, az Azure rendelt megegyező címre [hálózati illesztő](virtual-network-network-interface-addresses.md#change-ip-address-settings), vagy a virtuális gép is megszakad a kapcsolat. További információ [magánhálózati IP-cím](virtual-network-network-interface-addresses.md#private) beállításait. Manuálisan soha ne rendelje a nyilvános IP-cím, egy Azure virtuális gépen belül a virtuális gép operációs rendszerének rendelt.
+
 ## <a name="change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface"></a>A kiosztási módszer egy adott hálózati csatoló rendelt privát IP-cím módosítása
 
 A magánhálózati IP-címet a statikus vagy dinamikus kiosztási módszerrel van rendelve egy hálózati Adaptert. Dinamikus IP-címek egy virtuális gép leállított (felszabadított) állapotában korábban elindítása után módosíthatja. A potenciálisan hibákat is okozhat, ha a virtuális gép leállított (felszabadított) állapotból újraindítása után is ugyanazt a címet, igénylő futtatja. Statikus IP-címek vannak maradnak, amíg a virtuális gép nem. IP-cím foglalási módjának módosításához futtassa a következő parancsfájlt, amely megváltoztatja a kiosztási módszer a dinamikus statikus. Ha a kiosztási módszer az aktuális magánhálózati IP-címet a statikus, módosítsa *statikus* való *dinamikus* a parancsfájl végrehajtása előtt.
@@ -222,7 +216,5 @@ Get-AzureRmNetworkInterface -ResourceGroupName $RG | Where-Object {$_.Provisioni
 ```
 
 ## <a name="next-steps"></a>További lépések
-* További tudnivalók [foglalt nyilvános IP-cím](virtual-networks-reserved-public-ip.md) címek.
-* További tudnivalók [példányszintű nyilvános IP (ILPIP)](virtual-networks-instance-level-public-ip.md) címek.
-* Tekintse át a [fenntartott IP-REST API-k](https://msdn.microsoft.com/library/azure/dn722420.aspx).
 
+Kezelésével kapcsolatos [IP-címbeállítások](virtual-network-network-interface-addresses.md).

@@ -64,7 +64,7 @@ A következő mértékcsoport teljes élettartamuk az alkalmazás maximális tel
 | Perc. Késés | | | |
 | Átlagos késleltetése | | | |
 | Legfeljebb CPU | | | |
-| Átlagos CPU | | | |
+| Átlagos processzorhasználat | | | |
 | Legfeljebb Memory (Memória) | | | |
 | Átlagos memória | | | |
 | Várólistamélység | | | |
@@ -87,14 +87,14 @@ A teljesítményszámlálók processzor, memória, és minden egyes logikai leme
 | --- | --- | --- | --- |
 | **IOPS vagy tranzakciók száma másodpercenként** |A tárolási lemezre másodpercenként kiadott i/o-kérelmek száma. |Lemezolvasások/mp <br> Lemezírás/mp |TP-k <br> r/s <br> w/s |
 | **Lemez olvasása és írása** |%-át olvasási és írási műveleteket végrehajtani a lemezen. |% Lemez olvasási idő <br> % Lemezre írási ideje |r/s <br> w/s |
-| **Átviteli sebesség** |Írni vagy olvasni a lemezre másodpercenként adatok mennyisége. |Lemez sebessége olvasott bájt/mp <br> Lemez írási bájtok/s |kB_read/s <br> kB_wrtn/s |
+| **Átviteli sebesség** |Írni vagy olvasni a lemezre másodpercenként adatok mennyisége. |Lemezolvasási sebesség (bájt/s) <br> Lemezírási sebesség (bájt/s) |kB_read/s <br> kB_wrtn/s |
 | **Késés** |A lemez IO-kérelem végrehajtásához teljes időtartam. |Átlagos lemez mp/Olvasás <br> Átlagos lemez mp/írás |await <br> svctm |
 | **IO-méret** |I/o méretét a tárolólemezek problémák kéri. |Átlagos lemezátviteli/beolvasott bájtok száma <br> Átlagos írási bájtok/írás |avgrq-sz |
 | **Várólistamélység** |A lekérdezések képernyőn olvasható, vagy a tárolási lemezre váró függőben lévő i/o száma. |Lemezvárólista jelenlegi hossza |avgqu-sz |
 | **Max. Memória** |Zökkenőmentesen működjön az alkalmazás futtatásához szükséges memória mérete |% Előjegyzett memória |Vmstat használata |
 | **Max. PROCESSZOR** |Zökkenőmentesen működjön az alkalmazás futtatásához szükséges CPU összeg |Processzor kihasználtsága |% haszn. |
 
-További információ [iostat](http://linuxcommand.org/man_pages/iostat1.html) és [PerfMon](https://msdn.microsoft.com/library/aa645516.aspx).
+További információ [iostat](https://linux.die.net/man/1/iostat) és [PerfMon](https://msdn.microsoft.com/library/aa645516.aspx).
 
 ## <a name="optimizing-application-performance"></a>Az alkalmazások teljesítményének optimalizálása
 A fő prémium szintű Storage futó alkalmazást teljesítményét befolyásoló tényezők jellegét a IO kérelmeket, Virtuálisgép-méretet, a lemez mérete, lemezek, a lemez gyorsítótár, a többszálas végrehajtás és várólistamélység számát is. A rendszer által biztosított forgatógombját ezek közül néhány tényező vezérelhető. Legtöbb alkalmazás nem adhat meg egy lehetőség, hogy a IO-méret és várólistamélység alter közvetlenül. Például az SQL Server használatakor nem választható, I/O méret- és várólista mélységét. SQL Server úgy dönt, hogy optimális I/O méret- és várólista mélysége értékeket a legtöbb teljesítményre van szüksége. Fontos tudni, hogy mindkét típusú tényezők hatással az alkalmazások teljesítményéről, hogy a teljesítmény igényeinek megfelelő erőforrásokat oszthat.
@@ -140,10 +140,10 @@ Egy alkalmazás, amely lehetővé teszi a IO Oldalméret módosítása oly módo
 
 | Alkalmazás követelményeinek | I/o-mérete | IO | Átviteli sebesség/sávszélesség |
 | --- | --- | --- | --- |
-| Maximális iops-érték |8 KB |5,000 |40 MB / s |
+| Maximális IOPS-érték |8 KB |5000 |40 MB / s |
 | Maximális átviteli sebesség |1024 KB |200 |200 MB / s |
 | Maximális átviteli sebesség + magas iops-érték |64 KB |3,200 |200 MB / s |
-| Maximális iops-érték + magas teljesítmény |32 KB |5,000 |160 MB / s |
+| Maximális iops-érték + magas teljesítmény |32 KB |5000 |160 MB / s |
 
 Iops-érték és egy prémium szintű tároló lemez a maximális értéknél nagyobb sávszélességet, amelyet több premium lemezek csíkozott együtt. Például paritásos két P30 lemezek egy 10 000 IOPS kombinált IOPS vagy egy kombinált átviteli sebesség 400 MB másodpercenként eléréséhez. A következő szakaszban leírtak kell használnia a virtuális gép méretét, amely támogatja a kombinált IOPS és-átviteli sebességet.
 
@@ -242,11 +242,11 @@ Az alábbiakban az adatlemezek, ajánlott lemez-gyorsítótárának beállítás
 
 | **Gyorsítótárazása lemezen** | **Mikor érdemes használni ezt a beállítást a javaslat** |
 | --- | --- |
-| None |Gazdagép-gyorsítótár beállítása None a csak írható és írási műveleteket. |
-| csak olvasható |Gazdagép-gyorsítótár beállítása csak olvasható a csak olvasható és írható-olvasható. |
+| Nincs |Gazdagép-gyorsítótár beállítása None a csak írható és írási műveleteket. |
+| ReadOnly |Gazdagép-gyorsítótár beállítása csak olvasható a csak olvasható és írható-olvasható. |
 | ReadWrite |Gazdagép-gyorsítótár beállítása ReadWrite csak akkor, ha az alkalmazás megfelelően kezeli a gyorsítótárazott adatok írása állandó lemezekre, amikor szükséges. |
 
-*Csak olvasható*  
+*csak olvasható*  
 Csak olvasható, a prémium szintű Storage-adatok gyorsítótárazása lemezek konfigurálásával olvasási kis késleltetésű eléréséhez, és nagyon magas IOPS olvasási és az átvitel lekérése az alkalmazáshoz. Ez a két okok miatt
 
 1. Olvasási gyorsítótár, amely a Virtuálisgép-memória és a helyi SSD végre, és sokkal gyorsabb, mint az olvasások az adatlemezt, amely az Azure blob storage-ból.  
@@ -323,7 +323,7 @@ Minden nagy értékű, de az optimális érték, amely elegendő IOPS, az alkalm
 A csíkozott kötetek karbantartása elég magas várólistamélység úgy, hogy minden lemezhez tartozik egy maximális várólistamélység külön-külön. Vegye figyelembe például olyan alkalmazás, amely a leküldéses értesítések egy várólistamélység 2, és a paritásos 4 lemezek szerepelnek. A két IO kérelmek kerül, a két lemez, és két lemez fennmaradó lesz tétlen. A várólistamélység ezért konfigurálni úgy, hogy a lemezek foglalt lehet. Az alábbi képlet mutatja be a csíkozott kötetek várólistamélységének meghatározásához.  
     ![](media/premium-storage-performance/image7.png)
 
-## <a name="throttling"></a>Szabályozás
+## <a name="throttling"></a>Throttling
 Prémium szintű Storage Azure rendelkezések megadott iops-érték és átviteli száma attól függően, hogy a Virtuálisgép-méretek és a választott mérete. Az alkalmazás próbál IOPS vagy átviteli meghajtó felett Mi a virtuális gép vagy a lemez kezelni tud, működés felső korlátjának, bármikor prémium szintű Storage szabályozás fogja azt. Ez akkor jelentkezik, az alkalmazás teljesítménye formájában. Ez is nagyobb késleltetéssel járhat jelenti azt, csökkentheti a teljesítményt, illetve nem csökkentheti iops-érték. Ha prémium szintű Storage nem szabályozás, az alkalmazás teljesen feladatátadáshoz alapján meghaladó mi erőforrásaihoz képesek elérése érdekében. Igen szabályozás miatt a teljesítményproblémák elkerüléséhez mindig kiépíteni az alkalmazás elegendő erőforrással. Vegye figyelembe, mi ismertettük a Virtuálisgép-méretek és a lemez mérete a fenti szakaszban. A legjobb módja, hogy megtudja, milyen erőforrásokra lesz szüksége a az alkalmazás futtatásához teljesítménymérésre.
 
 ## <a name="benchmarking"></a>Teljesítménymérésre
@@ -374,24 +374,24 @@ Hajtsa végre a gyorsítótár kezeléséből, az alábbi lépéseket
 
 1. Hozzon létre két access specifikációi az alábbi értékek
 
-   | Név | Kérelem mérete | Véletlenszerű % | Olvasási % |
+   | Name (Név) | Kérelem mérete | Véletlenszerű % | Olvasási % |
    | --- | --- | --- | --- |
    | RandomWrites\_1 MB |1MB |100 |0 |
    | RandomReads\_1 MB |1MB |100 |100 |
 2. Futtassa a következő paraméterekkel gyorsítótár lemez inicializálása a Iometer tesztet. Három munkavégző szálat használ a célkötet és egy várólistamélység 128. Az időtartamot "Futásidejű" a vizsgálat 2hrs a "Teszt telepítő" lapon.
 
-   | Forgatókönyv | Célkötet | Név | Időtartam |
+   | Forgatókönyv | Célkötet | Name (Név) | Időtartam |
    | --- | --- | --- | --- |
    | Gyorsítótár lemez inicializálása |CacheReads |RandomWrites\_1 MB |2hrs |
 3. A gyorsítótár lemez a következő paraméterekkel előkészítése a Iometer teszt futtatása. Három munkavégző szálat használ a célkötet és egy várólistamélység 128. Az időtartamot "Futásidejű" a vizsgálat 2hrs a "Teszt telepítő" lapon.
 
-   | Forgatókönyv | Célkötet | Név | Időtartam |
+   | Forgatókönyv | Célkötet | Name (Név) | Időtartam |
    | --- | --- | --- | --- |
    | Meleg gyorsítótár lemezre mentése |CacheReads |RandomReads\_1 MB |2hrs |
 
 Ha gyorsítótár lemez tárolóhelyspecifikus, lépjen az alább felsorolt tesztesetek. A Iometer teszt futtatása, használja a legalább három worker threads **minden** céloz kötet. Az egyes munkavégző szál válassza ki a célkötet, várólistamélység beállítása, és válassza ki a mentett vizsgálati előírásoknak egyikét a megfelelő tesztkörnyezet futtatásához az alábbi táblázatban látható módon. Ezek a tesztek futtatása a táblázatban is látható kívánt eredmény elérése érdekében az iops-érték és a teljesítményt. Minden esetben egy kisméretű I/O mérete 8 KB-os és egy magas várólista mélysége 128 szolgál.
 
-| Tesztkörnyezet | Célkötet | Név | eredménye |
+| Tesztkörnyezet | Célkötet | Name (Név) | Eredmény |
 | --- | --- | --- | --- |
 | Legfeljebb Olvasási IOPS |CacheReads |RandomWrites\_8 KB-os |50 000 IOPS |
 | Legfeljebb IOPS írása |NoCacheWrites |RandomReads\_8 KB-os |64 000 IOPS |
@@ -563,7 +563,7 @@ A teszt végrehajtása közben lesz, kombinált olvasás száma, és írja iops-
 *Maximális átviteli sebesség kombinált*  
 A maximális beolvasandó kombinált olvasási és írási teljesítményt, a nagyobb blokkméret és nagy várólistamélység használata több szál olvasási és írási műveletek végrehajtása. Egy 64 KB-os blokkméretet és 128 várólistamélység is használhatja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ismerje meg a prémium szintű Azure Storage:
 
 * [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure-beli virtuális gépek számítási feladataihoz](../articles/virtual-machines/windows/premium-storage.md)  

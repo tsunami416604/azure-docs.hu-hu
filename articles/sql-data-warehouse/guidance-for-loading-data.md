@@ -1,30 +1,25 @@
 ---
-title: "Az adatbetöltés ajánlott eljárásai – Azure SQL Data Warehouse | Microsoft Docs"
-description: "Javaslatok az adatok betöltéséhez és ELT végrehajtásához az Azure SQL Data Warehouse segítségével"
+title: Az adatbetöltés ajánlott eljárásai – Azure SQL Data Warehouse | Microsoft Docs
+description: Az adatok Azure SQL Data Warehouse-ba való betöltése – javaslatok és teljesítményoptimalizálás
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jenniehubbard
-editor: 
-ms.assetid: 7b698cad-b152-4d33-97f5-5155dfa60f79
+author: ckarst
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: performance
-ms.date: 12/13/2017
-ms.author: barbkess
-ms.openlocfilehash: 277766c22e25945fb314aa51017a72f415cbab46
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
-ms.translationtype: HT
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/11/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: a416bf7965a5d297bfea698d318d45f6e47c9c50
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>Az adatok Azure SQL Data Warehouse-ba való betöltésének ajánlott eljárásai
-Javaslatok és teljesítményoptimalizálás az adatok betöltéséhez az Azure SQL Data Warehouse-ba 
+Az adatok Azure SQL Data Warehouse-ba való betöltése – javaslatok és teljesítményoptimalizálás 
 
-- További információ a PolyBase-ről és egy kinyerési, betöltési és átalakítási (ETL) folyamat megtervezéséről: [ETL tervezése SQL Data Warehouse-hoz](design-elt-data-loading.md).
+- További információ a PolyBase-ről és a kinyerési, betöltési és átalakítási (ELT) folyamat megtervezéséről: [ELT tervezése SQL Data Warehouse-hoz](design-elt-data-loading.md).
 - Betöltési oktatóanyag: [Adatok betöltése az Azure Blob Storage-ból az Azure SQL Data Warehouse-ba a PolyBase használatával](load-data-from-azure-blob-storage-using-polybase.md).
 
 
@@ -43,7 +38,7 @@ A nagy tömörített fájlokat ossza fel kisebb tömörített fájlokra.
 
 A leggyorsabb betöltési sebesség érdekében egyszerre egy betöltési feladatot futtasson. Ha ez nem lehetséges, egyszerre a lehető legkevesebb betöltést futtassa. Ha nagy betöltési feladatra számít, érdemes felskálázni az adattárházat a betöltés előtt.
 
-A betöltések megfelelő számítási erőforrásokkal való futtatásához hozzon létre betöltések futtatására kijelölt betöltést végző felhasználókat. Az egyes betöltést végző felhasználókat rendelje hozzá egy adott erőforrásosztályhoz. Betöltés futtatásához jelentkezzen be az egyik betöltést végző felhasználóként, majd futtassa a betöltést. A betöltés a felhasználó erőforrásosztályával fut.  Ez a módszer egyszerűbb, mint a felhasználó erőforrásosztályának módosításával próbálkozni, hogy az megfeleljen az aktuális erőforrásosztály-igénynek.
+A betöltések megfelelő számítási erőforrásokkal való futtatásához hozzon létre betöltések futtatására kijelölt felhasználókat. Az egyes betöltést végző felhasználókat rendelje hozzá egy adott erőforrásosztályhoz. Betöltés futtatásához jelentkezzen be az egyik betöltést végző felhasználóként, majd futtassa a betöltést. A betöltés a felhasználó erőforrásosztályával fut.  Ez a módszer egyszerűbb, mint a felhasználó erőforrásosztályának módosításával próbálkozni, hogy az megfeleljen az aktuális erőforrásosztály-igénynek.
 
 ### <a name="example-of-creating-a-loading-user"></a>Példa egy betöltést végző felhasználó létrehozására
 Ez a példa létrehoz egy betöltést végző felhasználót a staticrc20 erőforrásosztályhoz. Ennek első lépése a **főkiszolgálóhoz való csatlakozás** és egy bejelentkezés létrehozása.
@@ -62,11 +57,11 @@ Kapcsolódjon az adattárházhoz, majd hozzon létre egy felhasználót. A köve
 ```
 Ha a staticRC20 erőforrásosztályokhoz tartozó erőforrással szeretne betöltést futtatni, egyszerűen jelentkezzen be LoaderRC20 felhasználóként, és futtassa a betöltést.
 
-A betöltéseket inkább statikus, mint dinamikus erőforrásosztályokkal futtassa. A statikus erőforrásosztályok használata garantálja az azonos erőforrásokat a [szolgáltatási szinttől](performance-tiers.md#service-levels) függetlenül. Ha dinamikus erőforrásosztályt használ, az erőforrások a szolgáltatásszinttől függően változhatnak. Dinamikus osztályok esetében egy alacsonyabb szolgáltatási szint azt jelenti, hogy feltehetően nagyobb erőforrásosztályt kell használnia a betöltést végző felhasználóhoz.
+A betöltéseket inkább statikus, mint dinamikus erőforrásosztályokkal futtassa. A statikus erőforrás osztályokat biztosítja, hogy ugyanazokat az erőforrásokat, függetlenül attól, hogy a [az adatraktár-egység](what-is-a-data-warehouse-unit-dwu-cdwu.md). Ha dinamikus erőforrásosztályt használ, az erőforrások a szolgáltatásszinttől függően változhatnak. Dinamikus osztályok esetében egy alacsonyabb szolgáltatási szint azt jelenti, hogy feltehetően nagyobb erőforrásosztályt kell használnia a betöltést végző felhasználóhoz.
 
 ## <a name="allowing-multiple-users-to-load"></a>Betöltés engedélyezése több felhasználó számára
 
-Gyakran van szükség több olyan felhasználóra, akik adatokat töltenek egy adattárházba. A [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] paranccsal való betöltéshez CONTROL engedélyekre van szükség az adatbázishoz.  A CONTROL engedély az összes séma vezérlését biztosítja. Előfordulhat, hogy nem szeretné, hogy minden betöltést végző felhasználó vezérelési jogot kapjon az összes sémához. Az engedélyek korlátozására használja a DENY CONTROL utasítást.
+Gyakran van szükség több olyan felhasználóra, akik adatokat töltenek egy adattárházba. A betöltése a [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) az adatbázis VEZÉRLÉSI engedélyekkel kell rendelkeznie.  A CONTROL engedély az összes séma vezérlését biztosítja. Előfordulhat, hogy nem szeretné, hogy minden betöltést végző felhasználó vezérelési jogot kapjon az összes sémához. Az engedélyek korlátozására használja a DENY CONTROL utasítást.
 
 Vegyünk például két adatbázissémát: schema_A az A részleghez, és schema_B a B részleghez. Legyen user_A és user_B két PolyBase-betöltést végző adatbázis-felhasználó az A, illetve a B részlegen. Mindkét felhasználó kapott adatbázisszintű CONTROL jogosultságokat. Az A és B séma létrehozói zárolják a sémáikat a DENY utasítás segítségével:
 
@@ -94,18 +89,18 @@ Az oszlopcentrikus indexek sok memóriát igényelnek az adatok jó minőségű 
 
 ## <a name="handling-loading-failures"></a>Betöltési hibák kezelése
 
-Külső táblát használó betöltés meghiúsulhat a következő hibával: *„A lekérdezés megszakadt – a rendszer elérte a felső visszautasítási küszöbértéket külső forrásból való beolvasás során”*. Ez az üzenet azt jelzi, hogy a külső adatok szabálytalan rekordokat tartalmaznak. Az adatrekord akkor számít „szabálytalannak”, ha az oszlopok adattípusai és száma nem felel meg a külső tábla definícióinak, vagy ha az adatok nem felelnek meg a megadott külső fájlformátumnak. 
+Egy külső táblát használó betöltés meghiúsulhat a következő hibával: *„A lekérdezés megszakadt – a rendszer elérte a felső visszautasítási küszöbértéket külső forrásból való beolvasás során”*. Ez az üzenet azt jelzi, hogy a külső adatok szabálytalan rekordokat tartalmaznak. Az adatrekord akkor számít „szabálytalannak”, ha az oszlopok adattípusai és száma nem felel meg a külső tábla definícióinak, vagy ha az adatok nem felelnek meg a megadott külső fájlformátumnak. 
 
 A szabálytalan rekordok kijavításához győződjön meg arról, hogy a külső tábla- és fájlformátum-definíciók helyesek, és hogy a külső adatok megfelelnek ezeknek a definícióknak. Amennyiben a külső adatrekordok egy részhalmaza szabálytalan, dönthet úgy, hogy nem tart igényt ezekre a rekordokra a lekérdezéseihez. Ehhez használja a CREATE EXTERNAL TABLE visszautasítási lehetőségeit.
 
 ## <a name="inserting-data-into-a-production-table"></a>Adatok beszúrása az éles táblába
-A kis táblák [INSERT utasítással](/sql/t-sql/statements/insert-transact-sql.md) végzett egyszeri feltöltése vagy akár egy keresés rendszeres újratöltése is megfelelő lehet, ha egy, a következőhöz hasonló utasítást használ: `INSERT INTO MyLookup VALUES (1, 'Type 1')`.  Az egyszeres beszúrásoknál azonban hatékonyabb egy kötegelt betöltés végrehajtása. 
+A kis táblák [INSERT utasítással](/sql/t-sql/statements/insert-transact-sql) végzett egyszeri feltöltése vagy akár egy keresés rendszeres újratöltése is megfelelő lehet, ha egy, a következőhöz hasonló utasítást használ: `INSERT INTO MyLookup VALUES (1, 'Type 1')`.  Az egyszeres beszúrásoknál azonban hatékonyabb egy kötegelt betöltés végrehajtása. 
 
 Ha több ezer egyszeres beszúrást hajt végre egy nap, kötegelje a beszúrásokat, hogy kötegelve tölthesse be őket.  Fejlesszen folyamatokat, amelyek az egyszeres beszúrásokat egy fájlhoz fűzik, majd hozzon létre egy másik folyamatot, amely időszakosan betölti a fájlt.
 
 ## <a name="creating-statistics-after-the-load"></a>Statisztika létrehozása a betöltés után
 
-A lekérdezési teljesítmény javításához fontos létrehozni statisztikákat a táblák összes oszlopához az első betöltés után, illetve az adatok minden lényeges módosítását követően.  A statisztika részletes ismertetése: [Statistics][Statistics]. A következő példa a Customer_Speed tábla öt oszlopára vonatkozó statisztikákat hoz létre.
+A lekérdezési teljesítmény javításához fontos létrehozni statisztikákat a táblák összes oszlopához az első betöltés után, illetve az adatok minden lényeges módosítását követően.  A statisztika részletes ismertetése: [Statisztika](sql-data-warehouse-tables-statistics.md). A következő példa a Customer_Speed tábla öt oszlopára vonatkozó statisztikákat hoz létre.
 
 ```sql
 create statistics [SensorKey] on [Customer_Speed] ([SensorKey]);
@@ -120,17 +115,21 @@ Biztonsági szempontból érdemes rendszeresen módosítani a Blob Storage hozz�
 
 Az Azure Storage-fiók kulcsainak rotálása:
 
-Adja ki az [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql.md) parancsot minden olyan tárfiókhoz, amelynek módosult a kulcsa.
+Adja ki az [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql) parancsot minden olyan tárfiókhoz, amelynek módosult a kulcsa.
 
 Példa:
 
 Létrejön az eredeti kulcs
 
-CREATE DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SECRET = 'key1' 
+    ```sql
+    CREATE DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SECRET = 'key1'
+    ``` 
 
 A kulcs rotálása az 1. kulcsból a 2. kulcsba
 
-ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SECRET = 'key2' 
+    ```sq;
+    ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SECRET = 'key2' 
+    ```
 
 A mögöttes külső adatforrásokban nem kell más módosítást elvégezni.
 

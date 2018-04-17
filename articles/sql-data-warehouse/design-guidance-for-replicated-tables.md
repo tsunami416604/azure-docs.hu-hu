@@ -1,24 +1,20 @@
 ---
-title: "Útmutató a replikált táblák - Azure SQL Data Warehouse kialakítása |} Microsoft Docs"
-description: "Tervezésével kapcsolatos ajánlások replikált táblák az Azure SQL Data Warehouse sémában."
+title: Útmutató a replikált táblák - Azure SQL Data Warehouse kialakítása |} Microsoft Docs
+description: Tervezésével kapcsolatos ajánlások replikált táblák az Azure SQL Data Warehouse sémában.
 services: sql-data-warehouse
-documentationcenter: NA
 author: ronortloff
-manager: jhubbard
-editor: 
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: tables
-ms.date: 10/23/2017
-ms.author: rortloff;barbkess
-ms.openlocfilehash: 575b3c5710d744e99c6e02439577a362eb17c67e
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.topic: conceptual
+ms.component: design
+ms.date: 04/11/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: 271b832f329e33b68f60fbc62005c6ee36bafe69
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Útmutató a replikált táblák használata az Azure SQL Data Warehouse tervezése
 Ez a cikk tervezése során az SQL Data Warehouse-sémát a replikált táblák ajánlásokat biztosít. Ezek a javaslatok segítségével javíthatja a lekérdezések teljesítményét adatok mozgás és a lekérdezés összetettsége csökkentésével.
@@ -84,7 +80,7 @@ WHERE EnglishDescription LIKE '%frame%comfortable%'
 ## <a name="convert-existing-round-robin-tables-to-replicated-tables"></a>Replikált táblák meglévő ciklikus multiplexelés táblák átalakítása
 Ha már rendelkezik ciklikus multiplexelés táblák, ajánlott replikált táblák azokat a cikkben ismertetett feltételekkel, amelyek megfelelnek alakítása. Replikált táblák teljesítmény javítása a ciklikus multiplexelési táblák keresztül, mert nincs szükség az adatátvitelt jelölik.  Ciklikus multiplexelés tábla mindig szükséges, adatátvitelt jelölik a táblákra. 
 
-Ez a példa [CTAS](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) a DimSalesTerritory tábla módosítása replikált táblához. Ez a példa függetlenül attól, hogy DimSalesTerritory kivonatoló elosztott vagy a ciklikus multiplexelési működik.
+Ez a példa [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) a DimSalesTerritory tábla módosítása replikált táblához. Ez a példa függetlenül attól, hogy DimSalesTerritory kivonatoló elosztott vagy a ciklikus multiplexelési működik.
 
 ```sql
 CREATE TABLE [dbo].[DimSalesTerritory_REPLICATE]   
@@ -112,7 +108,7 @@ DROP TABLE [dbo].[DimSalesTerritory_old];
 
 ### <a name="query-performance-example-for-round-robin-versus-replicated"></a>Ciklikus multiplexelés és a lekérdezési teljesítmény példa replikálása 
 
-A replikált tábla nem szükséges minden adatátvitelt jelölik a táblákra mivel az egész tábla már létezik minden számítási csomóponton. Ha a dimenziótáblák ciklikus multiplexelés elosztott, akkor illesztés minden számítási csomópont teljesen a dimenziótáblában másolja át. Helyezze át az adatokat, hogy a lekérdezésterv tartalmaz BroadcastMoveOperation nevű művelet. Ilyen adatok adatátviteli művelet csökkenti a lekérdezés teljesítményét, és kiiktatja a replikált táblák használata. Lekérdezés terv lépéseket megtekintéséhez használja a [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) rendszer katalógusnézet használatával derítheti ki. 
+A replikált tábla nem szükséges minden adatátvitelt jelölik a táblákra mivel az egész tábla már létezik minden számítási csomóponton. Ha a dimenziótáblák ciklikus multiplexelés elosztott, akkor illesztés minden számítási csomópont teljesen a dimenziótáblában másolja át. Helyezze át az adatokat, hogy a lekérdezésterv tartalmaz BroadcastMoveOperation nevű művelet. Ilyen adatok adatátviteli művelet csökkenti a lekérdezés teljesítményét, és kiiktatja a replikált táblák használata. Lekérdezés terv lépéseket megtekintéséhez használja a [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) rendszer katalógusnézet használatával derítheti ki. 
 
 Például a következő lekérdezés az AdventureWorks sémán elvégzett a ` FactInternetSales` táblát kell kivonatoló elosztott. A `DimDate` és `DimSalesTerritory` kisebb dimenzió táblák. Ez a lekérdezés adja vissza az összes értékesítés Észak-Amerika évhez 2004:
  
@@ -140,7 +136,7 @@ Az SQL Data Warehouse-tábla fő verziója fölött valósítja meg a replikált
 
 Újraépíti szükségesek után:
 - Adatok betöltése vagy módosította
-- Az adatraktár méretezhető egy másik [szolgáltatási szint](performance-tiers.md#service-levels)
+- Az adatraktár egy másik szintre méretezése
 - Tábla definíciójában frissül.
 
 Újraépíti esetén nincs szükség után:
@@ -178,7 +174,7 @@ Például a terhelés mintát négy forrásból származó adatokat tölt, de cs
 ### <a name="rebuild-a-replicated-table-after-a-batch-load"></a>A replikált tábla helyreállítása egy kötegelt betöltés után
 Ahhoz, hogy a lekérdezés konzisztens végrehajtásának lassúságát, javasoljuk, a replikált táblák frissítését egy kötegelt betöltés után újraindítás. Ellenkező esetben az első lekérdezés várja meg a táblázatok frissítése, beleértve az indexek újraépítése. Attól függően, hogy a méretét és az érintett replikált táblák számát jelentős lehet a teljesítményre gyakorolt hatást.  
 
-Ez a lekérdezés használja a [sys.pdw_replicated_table_cache_state](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql) DMV módosított, de nem úgy replikált táblák listázásához.
+Ez a lekérdezés használja a [sys.pdw_replicated_table_cache_state](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql) DMV módosított, de nem úgy replikált táblák listázásához.
 
 ```sql 
 SELECT [ReplicatedTable] = t.[name]
@@ -197,11 +193,11 @@ Egy rebuild kényszerítéséhez futtassa a következő utasítás a fenti kimen
 SELECT TOP 1 * FROM [ReplicatedTable]
 ``` 
  
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 A replikált tábla létrehozása valamelyikével ezekről az utasításokról:
 
-- [(Az Azure SQL Data Warehouse) tábla létrehozása](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [TABLE AS SELECT (Azure SQL Data Warehouse) létrehozása](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [(Az Azure SQL Data Warehouse) tábla létrehozása](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
+- [TABLE AS SELECT (Azure SQL Data Warehouse) létrehozása](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 Elosztott táblák áttekintését lásd: [táblák elosztott](sql-data-warehouse-tables-distribute.md).
 

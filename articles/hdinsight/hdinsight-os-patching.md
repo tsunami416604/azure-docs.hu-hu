@@ -1,25 +1,23 @@
 ---
-title: "Az operációs rendszer javítását a Linux-alapú HDInsight-fürtök - Azure ütemezésének konfigurálása |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálja az operációs rendszer javítását a Linux-alapú HDInsight-fürtök ütemezését."
+title: Az operációs rendszer javítását a Linux-alapú HDInsight-fürtök - Azure ütemezésének konfigurálása |} Microsoft Docs
+description: Megtudhatja, hogyan konfigurálja az operációs rendszer javítását a Linux-alapú HDInsight-fürtök ütemezését.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: bprakash
 manager: asadk
 editor: bprakash
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: bhanupr
-ms.openlocfilehash: af3c5a19ae8e2e606e4b0506f9f6dddb41192e40
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 42771b9ff0f177b6b31f626d1dd2d07046a53965
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="os-patching-for-hdinsight"></a>Az operációs rendszer a HDInsight javítását 
 A Hadoop felügyelt szolgáltatásként HDInsight gondoskodik az operációs rendszer alapjául szolgáló virtuális gépek a HDInsight-fürtök által használt javítását. 2016. augusztus 1. a vendég operációs rendszer javítási házirend Linux-alapú HDInsight-fürtök (3.4 vagy újabb verziója) módosítottuk. Az új házirend célja jelentősen csökkentheti a javítás miatt újraindítások számát. Az új házirend minden hétfőn vagy bármely adott fürt csomópontjai között 12 óra UTC lépcsőzetes módon kezdődő csütörtök Linux fürtökön továbbra is javítás virtuális gépek (VM). A megadott virtuális gép azonban csak újraindul, legfeljebb 30 naponta egyszer miatt a vendég operációs rendszer javítását. Továbbá az első újraindítás, újonnan létrehozott fürt nem történik meg gyakoribb 30 napon a fürt létrehozását. Javítások hatékony lesz, ha a virtuális gép újraindítása van.
@@ -54,7 +52,7 @@ Ha a parancsfájl szükséges a következő információkat:
     | Paraméter | Meghatározás |
     | --- | --- |
     | Engedélyezi/letiltja az automatikus újraindulását |0 vagy 1. A 0 érték letiltja az automatikus újraindulását 1 lehetővé teszi az automatikus újraindulását. |
-    | gyakoriság |7-90 (a határokat is beleértve). A virtuális gépek, a számítógép újraindítása szükséges javítást újraindítás előtt várnia napok száma. |
+    | Gyakoriság |7-90 (a határokat is beleértve). A virtuális gépek, a számítógép újraindítása szükséges javítást újraindítás előtt várnia napok száma. |
     | Hét napja |1 és 7 (a határokat is beleértve). 1 érték azt jelzi, az újraindítás megtörténik egy hétfőn, a 7 pedig egy Sunday.For példában paraméterek használatával 1-60 2 eredmények automatikus újraindítás csak 60 naponta (legfeljebb) keddjén jelennek meg. |
     | Adatmegőrzés |A parancsfájlművelet egy meglévő fürthöz alkalmazásakor akkor is megjelölése a parancsfájl megőrzött. Új workernodes hozzáadódnak a méretezés műveletek során a fürt megőrzött parancsfájlok lépnek érvénybe. |
 
@@ -63,7 +61,7 @@ Ha a parancsfájl szükséges a következő információkat:
 Ha a parancsfájl a Fürtlétrehozási folyamat részeként, állandó automatikusan.
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A parancsfájl műveletével részletes lépéseit lásd: a következő részeket a [testreszabása Linuz-alapú HDInsight-fürtök használata parancsfájlművelet](hdinsight-hadoop-customize-cluster-linux.md):
 

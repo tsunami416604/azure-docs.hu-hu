@@ -1,11 +1,11 @@
 ---
-title: "Az Operations Management Suite - Azure Logic Apps B2B üzenetek nyomon követése |} Microsoft Docs"
-description: "Az integráció fiók és a logikai alkalmazások a műveletek Suite (OMS) az Azure Naplóelemzés B2B kommunikációs nyomon követése"
+title: Az Azure Log Analytics - Azure Logic Apps B2B üzenetek nyomon követése |} Microsoft Docs
+description: Az integráció fiók és a logikai alkalmazások az Azure Naplóelemzés B2B kommunikációs nyomon követése
 author: padmavc
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.service: logic-apps
 ms.workload: integration
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: d62be25678044ead469f65362b6f47c1a2df893b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 48523e1f1bc8d5b810cc7c9d1a7308f1aaadf8bb
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="track-b2b-communication-in-the-microsoft-operations-management-suite-oms"></a>A Microsoft Operations Management Suite (OMS) B2B kommunikációs nyomon követése
+# <a name="track-b2b-communication-with-azure-log-analytics"></a>Nyomon követheti az Azure Naplóelemzés B2B kommunikáció
 
-Miután beállította a B2B kommunikációját két üzleti folyamatok vagy a integrációs fiókon keresztül alkalmazásokat futtató entitásokból tudjon cserélni egymással üzeneteket. Ellenőrizze, hogy ezek az üzenetek feldolgozása helyesen, AS2, X12, nyomon követheti és EDIFACT az üzeneteket a [Azure Naplóelemzés](../log-analytics/log-analytics-overview.md) a a [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md). Például a web-alapú nyomkövetési lehetőségeket biztosítanak is használhatja az üzenetek nyomon követése:
+Miután beállította a B2B kommunikációját két üzleti folyamatok vagy a integrációs fiókon keresztül alkalmazásokat futtató entitásokból tudjon cserélni egymással üzeneteket. Ellenőrizze, hogy ezek az üzenetek feldolgozása helyesen, AS2, X12, nyomon követheti és EDIFACT az üzeneteket a [Azure Naplóelemzés](../log-analytics/log-analytics-overview.md). Például a web-alapú nyomkövetési lehetőségeket biztosítanak is használhatja az üzenetek nyomon követése:
 
 * Üzenet számán és állapota
 * Nyugták állapota
@@ -36,30 +36,30 @@ Miután beállította a B2B kommunikációját két üzleti folyamatok vagy a in
 
 * Integráció fiók be van állítva a figyelés és naplózás. Ismerje meg, [integrációs fiók létrehozása](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) és [figyelés és naplózás fiók beállításával](../logic-apps/logic-apps-monitor-b2b-message.md).
 
-* Ha még nem tette, [diagnosztikai adatok közzétételére Naplóelemzési](../logic-apps/logic-apps-track-b2b-messages-omsportal.md) az OMS Szolgáltatáshoz.
+* Ha még nem tette, [diagnosztikai adatok közzétételére Naplóelemzési](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
 > [!NOTE]
-> Miután teljesítette az előző követelményeknek, rendelkeznie kell egy munkaterület a [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md). Az azonos OMS-munkaterület nyomon követése a B2B kommunikáció OMS kell használnia. 
+> Miután teljesítette az előző követelményeknek, rendelkeznie kell a Naplóelemzési munkaterület. A Naplóelemzési B2B kommunikáció követési ugyanazon a munkaterületen kell használnia. 
 >  
-> Ha még nem rendelkezik az OMS-munkaterület, [OMS-munkaterület létrehozása](../log-analytics/log-analytics-get-started.md).
+> Ha még nem rendelkezik a Naplóelemzési munkaterület, [a Naplóelemzési munkaterület létrehozása](../log-analytics/log-analytics-quick-create-workspace.md).
 
-## <a name="add-the-logic-apps-b2b-solution-to-the-operations-management-suite-oms"></a>Adja hozzá a Logic Apps B2B megoldás az Operations Management Suite (OMS)
+## <a name="add-the-logic-apps-b2b-solution-to-log-analytics"></a>A Logic Apps B2B megoldás hozzáadni a Naplóelemzési
 
-Ahhoz, hogy a logikai alkalmazás B2B messages nyomon OMS, hozzá kell adnia a **Logic Apps B2B** megoldást jelent az OMS-portálon. További információ [megoldások hozzáadása OMS](../log-analytics/log-analytics-get-started.md).
+Ahhoz, hogy nyomon követheti a Logic Apps alkalmazást B2B messages Naplóelemzési, hozzá kell adnia a **Logic Apps B2B** megoldást jelent az OMS-portálon. További információ [megoldások hozzáadása Naplóelemzési](../log-analytics/log-analytics-quick-create-workspace.md).
 
 1. Az a [Azure-portálon](https://portal.azure.com), válassza a **minden szolgáltatás**. Keresse meg a "naplóelemzési", és válassza a **Naplóelemzési** itt látható módon:
 
    ![A Naplóelemzési keresése](media/logic-apps-track-b2b-messages-omsportal/browseloganalytics.png)
 
-2. A **Naplóelemzési**, található, és válassza ki az OMS-munkaterület. 
+2. A **Naplóelemzési**, található, és válassza ki a Naplóelemzési munkaterület. 
 
-   ![Az OMS-munkaterület kiválasztása](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
+   ![A Naplóelemzési munkaterület kiválasztása](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
 
 3. A **felügyeleti**, válassza a **OMS-portálon**.
 
    ![Válassza ki az OMS-portálon](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
 
-4. Ha megnyílt az OMS kezdőlapját, válassza ki a **megoldások gyűjtemény**.    
+4. Miután a kezdőlap nyílik meg, válassza ki azt **megoldások gyűjtemény**.    
 
    ![Válassza ki a megoldások gyűjteménye](media/logic-apps-track-b2b-messages-omsportal/omshomepage1.png)
 
@@ -71,21 +71,21 @@ Ahhoz, hogy a logikai alkalmazás B2B messages nyomon OMS, hozzá kell adnia a *
 
    ![Válasszon hozzáadása](media/logic-apps-track-b2b-messages-omsportal/omshomepage3.png)
 
-   A kezdőlapon OMS, a csempe **Logic Apps B2B üzenetek** csomópontként jelenik meg. 
+   A kezdőlapon, a csempe **Logic Apps B2B üzenetek** csomópontként jelenik meg. 
    Ez a csempe frissíti az üzenetek száma, amikor a B2B üzenetek feldolgozása.
 
-   ![Logic Apps B2B üzenetek csempe OMS kezdőlapján](media/logic-apps-track-b2b-messages-omsportal/omshomepage4.png)
+   ![Logic Apps B2B üzenetek csempe a kezdőlap](media/logic-apps-track-b2b-messages-omsportal/omshomepage4.png)
 
 <a name="message-status-details"></a>
 
-## <a name="track-message-status-and-details-in-the-operations-management-suite"></a>Nyomon követheti a Messaging-állapot és az Operations Management Suite részletes adatait
+## <a name="track-message-status-and-details-in-log-analytics"></a>Messaging-állapot és a részletek a Naplóelemzési nyomon követése
 
-1. Után a B2B üzenetek feldolgozása, megtekintheti az állapot és az üzenetek adatait. Az OMS kezdőlapján válassza ki a **Logic Apps B2B üzenetek** csempére.
+1. Után a B2B üzenetek feldolgozása, megtekintheti az állapot és az üzenetek adatait. A kezdőlapon, válassza ki a **Logic Apps B2B üzenetek** csempére.
 
    ![Frissített üzenetek száma](media/logic-apps-track-b2b-messages-omsportal/omshomepage6.png)
 
    > [!NOTE]
-   > Alapértelmezés szerint a **Logic Apps B2B üzenetek** csempe megjeleníti az adatokat egy nap alapján. Az adatok hatókör egy másik időköz módosításához válassza ki a hatókör vezérlő az OMS-oldal tetején:
+   > Alapértelmezés szerint a **Logic Apps B2B üzenetek** csempe megjeleníti az adatokat egy nap alapján. Az adatok hatókör egy másik időköz módosításához válassza ki a hatókör vezérlő az oldal tetején:
    > 
    > ![Adatok hatókörének módosítása](media/logic-apps-track-b2b-messages-omsportal/change-interval.png)
    >
@@ -168,7 +168,7 @@ Az alábbiakban a formátumok minden letöltött AS2 üzenet mappában és fájl
 
 | Fájl vagy mappa | Nevének formátuma |
 | :------------- | :---------- |
-| Üzenet mappa | [sender]\_[receiver]\_AS2\_[correlation-ID]\_[message-ID]\_[timestamp] |
+| Üzenet mappa | [küldő] \_[fogadó]\_AS2\_[korrelációs azonosító]\_[üzenet-azonosítója]\_[időbélyeg] |
 | Bemeneti, kimeneti és if beállítása nyugtázási fájlok | **Bemeneti forgalma**: [küldő]\_[fogadó]\_AS2\_[korrelációs azonosító]\_input_payload.txt </p>**Kimeneti hasznos**: [küldő]\_[fogadó]\_AS2\_[korrelációs azonosító]\_kimeneti\_payload.txt </p></p>**Bemenetek**: [küldő]\_[fogadó]\_AS2\_[korrelációs azonosító]\_inputs.txt </p></p>**Kimenetek**: [küldő]\_[fogadó]\_AS2\_[korrelációs azonosító]\_outputs.txt |
 |          |             |
 
@@ -202,7 +202,7 @@ Minden egyes X12 letölteni az alábbiakban a formátumok üzenetek mappa és a 
 | Fájl vagy mappa | Nevének formátuma |
 | :------------- | :---------- |
 | Üzenet mappa | [sender]\_[receiver]\_X12\_[interchange-control-number]\_[global-control-number]\_[transaction-set-control-number]\_[timestamp] |
-| Bemeneti, kimeneti és if beállítása nyugtázási fájlok | **Input payload**: [sender]\_[receiver]\_X12\_[interchange-control-number]\_input_payload.txt </p>**Kimeneti hasznos**: [küldő]\_[fogadó]\_X12\_[adatcsere-ellenőrző-szám]\_kimeneti\_payload.txt </p></p>**Inputs**: [sender]\_[receiver]\_X12\_[interchange-control-number]\_inputs.txt </p></p>**Outputs**: [sender]\_[receiver]\_X12\_[interchange-control-number]\_outputs.txt |
+| Bemeneti, kimeneti és if beállítása nyugtázási fájlok | **Bemeneti forgalma**: [küldő]\_[fogadó]\_X12\_[adatcsere-ellenőrző-szám]\_input_payload.txt </p>**Kimeneti hasznos**: [küldő]\_[fogadó]\_X12\_[adatcsere-ellenőrző-szám]\_kimeneti\_payload.txt </p></p>**Bemenetek**: [küldő]\_[fogadó]\_X12\_[adatcsere-ellenőrző-szám]\_inputs.txt </p></p>**Kimenetek**: [küldő]\_[fogadó]\_X12\_[adatcsere-ellenőrző-szám]\_outputs.txt |
 |          |             |
 
 <a name="EDIFACT-message-properties"></a>
@@ -235,12 +235,12 @@ Az alábbiakban a formátumok minden letöltött EDIFACT üzenet mappában és f
 | Fájl vagy mappa | Nevének formátuma |
 | :------------- | :---------- |
 | Üzenet mappa | [sender]\_[receiver]\_EDIFACT\_[interchange-control-number]\_[global-control-number]\_[transaction-set-control-number]\_[timestamp] |
-| Bemeneti, kimeneti és if beállítása nyugtázási fájlok | **Input payload**: [sender]\_[receiver]\_EDIFACT\_[interchange-control-number]\_input_payload.txt </p>**Kimeneti hasznos**: [küldő]\_[fogadó]\_EDIFACT\_[adatcsere-ellenőrző-szám]\_kimeneti\_payload.txt </p></p>**Bemenetek**: [küldő]\_[fogadó]\_EDIFACT\_[adatcsere-ellenőrző-szám]\_inputs.txt </p></p>**Kimenetek**: [küldő]\_[fogadó]\_EDIFACT\_[adatcsere-ellenőrző-szám]\_outputs.txt |
+| Bemeneti, kimeneti és if beállítása nyugtázási fájlok | **Bemeneti forgalma**: [küldő]\_[fogadó]\_EDIFACT\_[adatcsere-ellenőrző-szám]\_input_payload.txt </p>**Kimeneti hasznos**: [küldő]\_[fogadó]\_EDIFACT\_[adatcsere-ellenőrző-szám]\_kimeneti\_payload.txt </p></p>**Bemenetek**: [küldő]\_[fogadó]\_EDIFACT\_[adatcsere-ellenőrző-szám]\_inputs.txt </p></p>**Kimenetek**: [küldő]\_[fogadó]\_EDIFACT\_[adatcsere-ellenőrző-szám]\_outputs.txt |
 |          |             |
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Operations Management Suite B2B üzenetek lekérdezés](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
+* [Log Analytics B2B üzenetek lekérdezés](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
 * [AS2-követési sémák](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)
 * [X12-követési sémák](../logic-apps/logic-apps-track-integration-account-x12-tracking-schema.md)
 * [Egyéni követési sémák](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md)

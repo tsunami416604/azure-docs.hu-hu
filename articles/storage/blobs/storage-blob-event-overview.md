@@ -1,6 +1,6 @@
 ---
-title: Azure Blob Storage-események reagálnak |} Microsoft Docs
-description: Esemény rács Azure Blob Storage-események használni.
+title: Azure Blob storage-események reagálnak |} Microsoft Docs
+description: Az Azure Event Griddel előfizethet Blob Storage-eseményekre.
 services: storage,event-grid
 keywords: ''
 author: cbrooksmsft
@@ -8,17 +8,17 @@ ms.author: cbrooks
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: ea2ec712c8d8b5f85f020535ab0544986f0da53a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2762466c0130ead36372a93f4c3b852cb378a02a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="reacting-to-blob-storage-events"></a>Reagál a Blob Storage-események
+# <a name="reacting-to-blob-storage-events"></a>Reagál a Blob storage-események
 
 Az Azure Storage-események lehetővé teszik az alkalmazások létrehozását és törlését a blobok használatával a modern kiszolgáló nélküli architektúrák reagálni. Igen, nincs szükség bonyolult kód vagy drága, és nem elég hatékony lekérdezési szolgáltatások.  Ehelyett az események leküldött vannak [Azure esemény rács](https://azure.microsoft.com/services/event-grid/) többek között az előfizetőknek [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/), vagy akár a saját egyéni HTTP-figyelő, és csak akkor a valóban használt funkciókért fizetési. 
 
-Blob Storage-esemény szabhatják kép- vagy videóátvitel feldolgozás, a keresések indexelése vagy minden fájl alapú munkafolyamat tartalmazza.  Aszinkron fájlfeltöltéseket egy nagyszerű beválik, ha az események.  Ha módosítások alkalomszerű, de adott esetben szükség van a közvetlen reakcióidőt, esemény-alapú architektúra különösen hatékony lehet.
+Blob storage esemény szabhatják közé tartoznak a lemezkép vagy videó feldolgozási, a keresések indexelése vagy minden fájl alapú munkafolyamat.  Aszinkron fájlfeltöltéseket egy nagyszerű beválik, ha az események.  Ha módosítások alkalomszerű, de adott esetben szükség van a közvetlen reakcióidőt, esemény-alapú architektúra különösen hatékony lehet.
 
 Rendelkezésre állás a Storage-események kötődik esemény rács [rendelkezésre állási](../../event-grid/overview.md) és más régiókban is elérhető lesz a esemény rács hasonlóan. Vessen egy pillantást [útvonal Blob storage-események az egy egyéni webalkalmazás-végpont - CLI](storage-blob-event-quickstart.md) vagy [útvonal Blob storage-események az egy egyéni webalkalmazás-végpont - PowerShell](storage-blob-event-quickstart-powershell.md) gyors például. 
 
@@ -53,7 +53,7 @@ További információ a használati esemény rács esemény tulajdonságainak r�
 > |data.contentLength|szám|Ahogy közötti egész számot bájt, számos, a blobból az a Content-Length fejlécet vissza a blob mérete.  Küldött BlobCreated esemény, de nem BlobDeleted.|
 > |Data.URL|karakterlánc|Az objektum, amely az esemény tárgya URL-címe|
 > |data.eTag|karakterlánc|Az etag, az objektum, ha ez az esemény következik be.  Nem érhető el a BlobDeleted esemény.|
-> |data.api|karakterlánc|Ezt az eseményt kiváltó api-művelet neve.  BlobCreated események az értéke "PutBlob", "PutBlockList" vagy "CopyBlob".  BlobDeleted események az értéke "DeleteBlob".  Ezeket az értékeket a azonos api-nevek, amelyek szerepelnek az Azure Storage diagnosztikai naplók.  Lásd: [naplózott műveletek és állapotüzenetek](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).|
+> |Data.API|karakterlánc|Ezt az eseményt kiváltó api-művelet neve.  BlobCreated események az értéke "PutBlob", "PutBlockList" vagy "CopyBlob".  BlobDeleted események az értéke "DeleteBlob".  Ezeket az értékeket a azonos api-nevek, amelyek szerepelnek az Azure Storage diagnosztikai naplók.  Lásd: [naplózott műveletek és állapotüzenetek](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).|
 > |data.sequencer|karakterlánc|Egy nem átlátszó karakterláncértéket, amely a logikai eseménysorozat bármely adott blob neve.  Felhasználók szabványos karakterlánc-összehasonlítási használatával megérthetik, hogy a relatív eseménysorozat két a blob neve.|
 > |data.requestId|karakterlánc|A tárolási API művelet kérelem szolgáltatás által létrehozott azonosítója.  Azure Storage diagnosztikai a "kérelem-azonosító-fejlécet" mező a naplófájlokban naplózza, és küld vissza kezdeményezése API-hívás az "x-ms-request-id" fejléc összefüggéseket használható. Lásd: [naplóformátum](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format).|
 > |data.clientRequestId|karakterlánc|Ügyfél által megadott kérelemazonosító a tárolási API-művelet.  Az Azure Storage diagnosztikai naplókat a naplók "client-request-id" mezője összefüggéseket használható, és biztosítható, hogy az ügyfél kérelmekben a "x-ms-client-request-id" fejlécet. Lásd: [naplóformátum](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format).|
@@ -92,7 +92,7 @@ A BLOB esemény-előfizetések az esemény típusát, valamint a tároló és a 
 
 A Blob storage-események tárgya formátumot használja:
 
-```json
+```
 /blobServices/default/containers/<containername>/blobs/<blobname>
 ```
 
@@ -100,19 +100,19 @@ A storage-fiókhoz tartozó összes esemény megfeleltetéséhez üresen a tulaj
 
 A blobok tárolókban előtag megosztása készlete létrehozott események kereséséhez használja a `subjectBeginsWith` például szűrése:
 
-```json
+```
 /blobServices/default/containers/containerprefix
 ```
 
 Az adott tárolóban létrehozott BLOB események kereséséhez használja a `subjectBeginsWith` például szűrése:
 
-```json
+```
 /blobServices/default/containers/containername/
 ```
 
 A blob nevének előtagját megosztása adott tárolóban létrehozott BLOB származó események kereséséhez használja a `subjectBeginsWith` például szűrése:
 
-```json
+```
 /blobServices/default/containers/containername/blobs/blobprefix
 ```
 

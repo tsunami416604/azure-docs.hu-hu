@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2018
+ms.date: 04/09/2018
 ms.author: Dale.Koetke;mbullwin
-ms.openlocfilehash: f87705ebbdd14b1bbf7cade481a7dbe7dd3d5131
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ce295c449b01de4fa99df9198805a6b0727c0d18
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>Használati és becsült költségei figyelése
 
@@ -61,12 +61,16 @@ Itt jelenik meg egy másik a mérőszámok – a mérőszámok, amelyek megfelel
 3. Alkalmazásadatok Insights\Basic keretét
 4. Alkalmazásadatok Insights\Included
 
-mostantól egy új közös adatok adatfeldolgozást mérő nevű **megosztott Services\Data adatfeldolgozást** az új árképzési modellt nem tartozik adatát csomópont-alapú hozzárendelések.
+mostantól egy új közös adatok adatfeldolgozást mérő nevű **megosztott Services\Data adatfeldolgozást** az új árképzési modellt nem tartozik csomópontonként szereplő adatok jogosultságok.
 
 Megjelenik egy másik módosítás a Naplóelemzési okozhatnak adatok, vagy magasabb költségek régiók elemzések alkalmazás nem jelenik meg az új területi való megfelelően tükrözik, például **"(USA nyugati régiója központi) adatfeldolgozást**.
 
 > [!NOTE]
-> Ha rendelkezik az Operations Management Suite (OMS) előfizetéssel, Naplóelemzés és az Application Insights adatok adatfeldolgozást lefoglalt területet az egyes csomópontok vásárolt jelenik meg. Ez a fiók szintjén (nem pedig az előfizetés) van érvényben, mivel ez a becslés nem mutatja be a megoldást. További részleteket a képviselőjét új árképzési modell részletesebb leírását ebben az esetben.
+> Az előfizetésenként becsült költség nem tényező be a fiók szintű csomópontonként jogosultságok az Operations Management Suite (OMS) előfizetés. További részleteket a képviselőjét új árképzési modell részletesebb leírását ebben az esetben.
+
+## <a name="new-pricing-model-and-operations-management-suite-subscription-entitlements"></a>Új árképzési modellt és az Operations Management Suite előfizetés jogosultságok
+
+Az ügyfelek, akik vásárolt a Microsoft Operations Management Suite E1 és E2 jogosultak a csomópont adatok adatfeldolgozást jogosultságok beállítása [Naplóelemzési](https://www.microsoft.com/en-us/cloud-platform/operations-management-suite) és [Application Insights](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-pricing#the-price-plans). Ezeket a jogosultságokat a Naplóelemzési fogadásához munkaterületek vagy egy adott előfizetésben, hogy előfizetéshez tartozó fizetési modell erőforrásokat kell maradnia a előtti-április 2018 árképzési Application Insights modell helyét a Naplóelemzési "csomópontonként (OMS)" IP-címek és a Az Application Insights "Vállalati" terv árképzési érhetők el. A szervezet által megvásárolt, csomagban csomópontok számától függően néhány áthelyezni az új árképzési modellt előfizetések továbbra is előnyös lehet, de ehhez alapos megfontolás. 
 
 ## <a name="changes-when-moving-to-the-new-pricing-model"></a>Amikor az új árképzési modellt helyezi át a módosításokat
 

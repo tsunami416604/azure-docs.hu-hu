@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 04d9e6152c87a49a5f1b1b1a29c16d80de00f4e9
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: af011cb3eea27498107cdfd650518552cd63bdf3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="governance-in-azure"></a>Irányítás az Azure-ban
 
@@ -147,7 +147,7 @@ Ha Azure jelent, hozzáférés-vezérlést a előfizetés voltak: rendszergazdá
 
 Ez a előfizetések elterjedése már nem szükséges. Szerepköralapú hozzáférés-vezérlést felhasználókat rendelhet szabványos szerepkörök (például a szerepkörök közös "olvasó" és "író" típusok). Egyéni szerepkörök is meghatározhat.
 
-[Azure szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) lehetővé teszi a részletes hozzáféréskezelést az Azure-bA. Az RBAC használata lehetővé teszi, hogy csak olyan mértékű hozzáférést biztosítson, ami a felhasználóknak a feladataik elvégzéséhez szükséges. A vállalat biztonsági célú van szükségük a pontos engedélyeket ad az alkalmazottak kell összpontosítania. Túl sok engedélyek támadók fiókot fedheti fel. Túl kevés engedélyek jelenti azt, hogy az alkalmazottak nem munkavégzéséhez hatékony. Azure szerepköralapú hozzáférés-vezérlés (RBAC) segít a részletes hozzáféréskezelést az Azure felajánlásával oldja meg a problémát. Segít az RBAC elkülönítse a csapaton belüli feladatokat, és csak olyan mértékű hozzáférést biztosítania a felhasználók számára, hogy be kell elvégezni a munkájukat. Jogosultságot ad a Mindenki helyett korlátozás engedélyek az Ön Azure-előfizetés vagy erőforrásokhoz, engedélyezheti a csak bizonyos műveleteket.
+[Azure szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) lehetővé teszi a részletes hozzáféréskezelést az Azure-bA. Az RBAC használata lehetővé teszi, hogy csak olyan mértékű hozzáférést biztosítson, ami a felhasználóknak a feladataik elvégzéséhez szükséges. A vállalat biztonsági célú van szükségük a pontos engedélyeket ad az alkalmazottak kell összpontosítania. Túl sok engedélyek támadók fiókot fedheti fel. Túl kevés engedélyek jelenti azt, hogy az alkalmazottak nem munkavégzéséhez hatékony. Azure szerepköralapú hozzáférés-vezérlés (RBAC) segít a részletes hozzáféréskezelést az Azure felajánlásával oldja meg a problémát. Segít az RBAC elkülönítse a csapaton belüli feladatokat, és csak olyan mértékű hozzáférést biztosítania a felhasználók számára, hogy be kell elvégezni a munkájukat. Jogosultságot ad a Mindenki helyett korlátozás engedélyek az Ön Azure-előfizetés vagy erőforrásokhoz, engedélyezheti a csak bizonyos műveleteket.
 
 Például, hogy egy előfizetésben található virtuális gépek kezeléséhez, miközben egy másik kezelheti az SQL-adatbázisok egyazon előfizetésen belül egy alkalmazott RBAC használatát.
 
@@ -161,7 +161,7 @@ Az Azure RBAC rendelkezik, amelyek érvényesek az összes erőforrástípus há
 
 A többi Azure RBAC szerepkört az adott Azure-erőforrások felügyelet lehetővé tételéhez. Például a virtuális gép közreműködői szerepkör lehetővé teszi, hogy a felhasználó számára a virtuális gépek létrehozására és kezelésére. Azt nem betekintést biztosít a virtuális hálózat vagy az alhálózatot, amely a virtuális géphez csatlakozik.
 
-[Beépített RBAC-szerepkörök](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) felsorolja azokat a szerepköröket, az Azure-ban érhető el. Azt adja meg az operatív és hatókörhöz, amely minden beépített szerepkörök a felhasználók számára.
+[Beépített RBAC-szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) felsorolja azokat a szerepköröket, az Azure-ban érhető el. Azt adja meg az operatív és hatókörhöz, amely minden beépített szerepkörök a felhasználók számára.
 
 Adjon hozzáférést a megfelelő RBAC szerepkört rendel a felhasználók, csoportok és alkalmazások egy adott hatókörben. A szerepkör-hozzárendelés hatóköre lehet előfizetés, egy erőforráscsoport vagy egy erőforrást. A szülő hatókörben szerepkörrel is benne a gyermekek számára engedélyezi a hozzáférést.
 
@@ -169,9 +169,9 @@ Például egy felhasználó, aki hozzáfér az erőforráscsoporthoz az összes 
 
 Az Azure RBAC az Azure-erőforrások felügyeleti műveletek csak támogatja az Azure-portál és az Azure Resource Manager API-k. Nem lehet engedélyezni, az összes adat szintű műveletet Azure-erőforrások. Például engedélyezheti valaki Storage-fiókok kezeléséhez, de a BLOB vagy egy Tárfiókon belül táblák nem. Hasonlóképpen SQL-adatbázis kezelése, de nem szereplő táblák.
 
-Ha további részleteket szeretne arról, hogy hogyan segít az RBAC a hozzáférések kezelésében, tekintse meg [a szerepköralapú hozzáférés-vezérlést](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is) ismertető szakaszt.
+Ha további részleteket szeretne arról, hogy hogyan segít az RBAC a hozzáférések kezelésében, tekintse meg [a szerepköralapú hozzáférés-vezérlést](https://docs.microsoft.com/azure/role-based-access-control/overview) ismertető szakaszt.
 
-Emellett [hozzon létre egy egyéni biztonsági szerepkört](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles) a átruházásához hozzáférés-vezérlés (RBAC) Ha a beépített szerepkörök egyike sem felel meg a kívánt hozzáférés szükséges. Egyéni szerepkörök segítségével hozhatók létre [Azure PowerShell](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-powershell), [Azure parancssori felület (CLI)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-azure-cli), és a [REST API](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-rest). Hasonlóan a beépített szerepkörök felhasználók, csoportok és alkalmazások előfizetés, az erőforráscsoport és az erőforrás hatókörök egyéni szerepkörök rendelhetők.
+Emellett [hozzon létre egy egyéni biztonsági szerepkört](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) a átruházásához hozzáférés-vezérlés (RBAC) Ha a beépített szerepkörök egyike sem felel meg a kívánt hozzáférés szükséges. Egyéni szerepkörök segítségével hozhatók létre [Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell), [Azure parancssori felület (CLI)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli), és a [REST API](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest). Hasonlóan a beépített szerepkörök felhasználók, csoportok és alkalmazások előfizetés, az erőforráscsoport és az erőforrás hatókörök egyéni szerepkörök rendelhetők.
 
 Előfizetésenként 2000 szerepkör-hozzárendelés osztható ki.
 
@@ -271,7 +271,7 @@ Alkalmazása **ReadOnly** váratlan eredményekhez vezethet, mivel bizonyos műv
 
 Például egy App Service-erőforrást egy csak olvasható zárolási helyezi megakadályozza, hogy a Visual Studio Server Explorer megjelenítése az erőforrás fájlok, mert adott interakció írási hozzáféréssel kell rendelkeznie.
 
-Szerepköralapú hozzáférés-vezérlés, ellentétben a felügyeleti zárolás korlátozás alkalmazandó összes felhasználók és szerepkörök használhat. A felhasználók és szerepkörök engedélyeinek beállításával kapcsolatos további tudnivalókért lásd: [Azure szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure).
+Szerepköralapú hozzáférés-vezérlés, ellentétben a felügyeleti zárolás korlátozás alkalmazandó összes felhasználók és szerepkörök használhat. A felhasználók és szerepkörök engedélyeinek beállításával kapcsolatos további tudnivalókért lásd: [Azure szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 
 A szülő hatókörben zárolást alkalmazásakor hatókörön belüli összes erőforrás öröklik az azonos zárolása. A későbbiekben még akkor is, erőforrások örökölt a zárolást. Az öröklés a legszigorúbb zár lép érvénybe.
 

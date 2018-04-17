@@ -1,6 +1,6 @@
 ---
-title: "Hibáinak diagnosztizálásához és elhárításához Azure idő adatsorozat insightsban |} Microsoft Docs"
-description: "Ez a cikk ismerteti, hogyan diagnosztizálhatja, hibaelhárításához és Azure idő adatsorozat Insights környezetében előforduló gyakori problémák megoldásában."
+title: Hibáinak diagnosztizálásához és elhárításához Azure idő adatsorozat insightsban |} Microsoft Docs
+description: Ez a cikk ismerteti, hogyan diagnosztizálhatja, hibaelhárításához és Azure idő adatsorozat Insights környezetében előforduló gyakori problémák megoldásában.
 services: time-series-insights
 ms.service: time-series-insights
 author: venkatgct
@@ -10,12 +10,12 @@ editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 11/15/2017
-ms.openlocfilehash: 757d37183ad334aca462af59bad261cfa686299e
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.date: 04/09/2018
+ms.openlocfilehash: f0c1b8aa99e9ac9c73f57af17490dd3a465a9cac
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="diagnose-and-solve-problems-in-your-time-series-insights-environment"></a>Hibáinak diagnosztizálásához és elhárításához idő adatsorozat Insights környezetében
 
@@ -45,6 +45,11 @@ Során am IoT Hub-regisztráció vagy egy eseményközpontot adja meg a fogyaszt
 Adatok részben látható, de az adatok elmaradt van, több oka lehet figyelembe venni:
 
 ### <a name="possible-cause-a-your-environment-is-getting-throttled"></a>Lehetséges ok A: a környezet első szabályozva van
+Ez akkor gyakori probléma, ha a környezetben egy adatokat tartalmazó eseményforrás létrehozása után törlődnek.  Az Azure IoT-központok és események hubok adattárolásra hét nap.  ÁME mindig indul el a legrégebbi eseménytől (FIFO), az eseményforrás belül.  Így ha öt millió esemény szerepel egy eseményforrás egy S1, egyetlen-egység ÁME környezetben való csatlakozáskor ÁME körülbelül egy millió esemény naponkénti olvasását.  Ez úgy tűnhet, hogy keresse meg, mintha ÁME első ránézésre tapasztal késést követő öt.  Mi történik valójában, hogy a környezet szabályozása folyamatban van.  Ha az eseményforrás a régi eseményekre, megközelíti a két módszer egyikével:
+
+- Az eseményforrás megőrzési korlátozások érdekében selejtezni nem kívánt ÁME megjelennek, régi események módosítása
+- A nagyobb környezet képméretet (egységek száma) kiépítése növelheti a teljesítményt, régi események.  A fenti példa használ, ha egy napig növeli a öt egységnél ugyanabban a S1 környezetben, a környezet olvasottként a most már a napon belül kell.  Ha a stabil állapotot esemény éles 1M vagy kevesebb események/nap, majd csökkentheti a kapacitás vissza egy egység le az esemény után azt naprakész.  
+
 A szabályozási korlát a rendszer érvényesíti a környezet SKU típusát és a kapacitás alapján. A környezet összes eseményforrások oszthassák meg a kapacitást. Az IoT-központ vagy az event hubs az eseményforrás beállításban megadott érvényben lévő korlát adatok küldését, ha sávszélesség-szabályozás és a késés témakörben talál.
 
 Az alábbi ábrán egy S1 SKU és 3 kapacitású egy idő adatsorozat Insights-környezetet. Azt is érkező 3 millió esemény naponkénti.
@@ -77,6 +82,12 @@ Győződjön meg arról, hogy a név- és megfelelnek-e a következő szabályok
 * Az időbélyeg-tulajdonság neve _kis-és nagybetűket_.
 * A Timestamp típusú tulajdonság értéke adatforrásból származó az eseményforrás JSON karakterláncként kell rendelkeznie a formátum _éééé-hh-nnTóó: pp:. FFFFFFFK_. Példa ilyen karakterlánc: "2008-04-12T12:53Z".
 
-## <a name="next-steps"></a>Következő lépések
+A legegyszerűbb módja annak érdekében, hogy a *időbélyeg-tulajdonság neve* rögzített, és megfelelően működik-e a ÁME-kezelővel.  ÁME explorer belül a diagramon, jelöljön ki egy idő után megadott a *időbélyeg-tulajdonság neve*.  Kattintson jobb gombbal a kijelölésre, majd válassza a *események tallózása* lehetőséget.  Az első oszlop fejlécére kell lennie a *időbélyeg-tulajdonság neve* , és rendelkeznie kell egy *($ts)* mellett a word *időbélyeg*, helyett:
+- *(abc)* , azt jelzi, amely ÁME éppen olvas az adatértékek karakterláncként
+- *Naptár ikonra*, azt jelzi, amely ÁME éppen olvas az adatérték, *dátum és idő*
+- *#*, amely jelezné ÁME éppen olvas az adatértékek egész szám
+
+
+## <a name="next-steps"></a>További lépések
 - Ha további segítségre van szüksége, indítsa el a beszélgetés a a [MSDN fórum](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) vagy [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights). 
 - Is [az Azure támogatási](https://azure.microsoft.com/support/options/) a személyes támogatási lehetőségeket.

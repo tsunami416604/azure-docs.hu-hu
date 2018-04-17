@@ -1,6 +1,6 @@
 ---
-title: "Az Azure biztonsági és megfelelőségi tervezetének - környezetek PCI DSS-kompatibilis fizetés feldolgozása"
-description: "Az Azure biztonsági és megfelelőségi tervezetének - környezetek PCI DSS-kompatibilis fizetés feldolgozása"
+title: Az Azure biztonsági és megfelelőségi tervezetének - környezetek PCI DSS-kompatibilis fizetés feldolgozása
+description: Az Azure biztonsági és megfelelőségi tervezetének - környezetek PCI DSS-kompatibilis fizetés feldolgozása
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
 ms.author: frasim
-ms.openlocfilehash: 3e97862091e6ea334f2437bd8424b79952f41bf4
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 5851d5499c61cf99d7f85d07642a292f3b8c19d2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---pci-dss-compliant-payment-processing-environments"></a>Az Azure biztonsági és megfelelőségi tervezetének - környezetek PCI DSS-kompatibilis fizetés feldolgozása
 
@@ -120,7 +120,7 @@ Ebben a megoldásban használt Azure-szolgáltatásokat. Az üzembe helyezési a
 >- Application Gateway
 >- Azure Active Directory
 >- App Service Environment v2
->- OMS szolgáltatáshoz
+>- Log Analytics
 >- Azure Key Vault
 >- Network Security Groups (Hálózati biztonsági csoportok)
 >- Azure SQL DB
@@ -173,12 +173,12 @@ Az NSG-k, amelyek mindegyikének adott portok és protokollok a biztonságos és
 
 Az NSG-k, amelyek mindegyikének adott portokról és protokollokról megnyitott a megoldás a biztonságos és helyes működéséhez. Ezenkívül a következő konfigurációk engedélyezve vannak az egyes NSG:
 - Engedélyezett [diagnosztikai naplók és események](/azure/virtual-network/virtual-network-nsg-manage-log) storage-fiókban tárolt 
-- Az OMS szolgáltatáshoz kapcsolódó a [NSG-t a diagnosztika](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
+- A Naplóelemzési csatlakoztatva a [NSG-t a diagnosztika](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
 
 #### <a name="subnets"></a>Alhálózatok
  Ellenőrizze, hogy az egyes alhálózatokon társítva a megfelelő NSG-e.
 
-#### <a name="custom-domain-ssl-certificates"></a>Custom domain SSL certificates
+#### <a name="custom-domain-ssl-certificates"></a>Az egyéni tartomány SSL-tanúsítványok
  HTTPS-forgalom engedélyezve van, az egyéni tartomány SSL-tanúsítványt használ.
 
 ### <a name="data-at-rest"></a>Inaktív adat
@@ -203,12 +203,12 @@ Az Azure SQL Database-példányt használja a következő adatbázis biztonsági
 
 ### <a name="logging-and-auditing"></a>Naplózás és naplózás
 
-[Az Operations Management Suite (OMS)](/azure/operations-management-suite/) is adja meg a Contoso webes tároló az összes rendszer és a felhasználói tevékenység kiterjedt naplózás, kártya tulajdonosát adatok naplózását tartalmazza. Módosítások tekintse át, és pontossága ellenőrizni. 
+[Naplófájl Analytics](https://azure.microsoft.com/services/log-analytics) is adja meg a Contoso webes tároló az összes rendszer és a felhasználói tevékenység kiterjedt naplózás, kártya tulajdonosát adatok naplózását tartalmazza. Módosítások tekintse át, és pontossága ellenőrizni. 
 
-- **Tevékenységi naplóit:**[tevékenységi naplóit](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) Észreveheti az olyan erőforrást az előfizetésében a végrehajtott műveletek.  
-- **Diagnosztikai naplók:**[diagnosztikai naplók](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) minden erőforrás által kibocsátott összes naplófájlt.   Ezek a naplók tartalmazzák a Windows rendszer-eseménynaplói, a Azure Blob storage, a táblák és a várólista naplókat.
+- **Tevékenységi naplóit:**[tevékenységi naplóit](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) Észreveheti az olyan erőforrást az előfizetésében a végrehajtott műveletek.
+- **Diagnosztikai naplók:**[diagnosztikai naplók](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) minden erőforrás által kibocsátott összes naplófájlt. Ezek a naplók tartalmazzák a Windows rendszer-eseménynaplói, a Azure Blob storage, a táblák és a várólista naplókat.
 - **Tűzfal naplók:** az Alkalmazásátjáró biztosít teljes diagnosztikai és a naplók eléréséhez. Az Application Gateway-erőforrásokra, amelyekre engedélyezve WAF érhetők el naplók tűzfal.
-- **Napló archiválás:** összes diagnosztikai naplók írni egy központosított és titkosított Azure storage-fiókjához megadott megőrzési időtartam (2 nap) archiválási vannak konfigurálva. Naplók majd kezelését, tárolását és dashboarding Azure Naplóelemzés csatlakozik. [Naplófájl Analytics](https://azure.microsoft.com/services/log-analytics) egy OMS-szolgáltatás, amely összegyűjti és elemzi a felhőben lévő erőforrások által létrehozott adatok segítségével és a helyszíni környezetben.
+- **Napló archiválás:** összes diagnosztikai naplók írni egy központosított és titkosított Azure storage-fiókjához megadott megőrzési időtartam (2 nap) archiválási vannak konfigurálva. Naplók majd kezelését, tárolását és dashboarding Azure Naplóelemzés csatlakozik. [Naplófájl Analytics](https://azure.microsoft.com/services/log-analytics) egy szolgáltatás, amellyel összegyűjti és elemzi az adatok a felhőben lévő erőforrások által létrehozott és a helyszíni környezetben.
 
 ### <a name="encryption-and-secrets-management"></a>Titkosítás és a titkos kulcsok kezelése
 
@@ -224,7 +224,7 @@ A következő technológiákat identitás biztosítása a felügyeleti képessé
 - [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) a Microsoft több-bérlős felhőalapú címtár- és identitáskezelési szolgáltatás. Minden felhasználó a megoldáshoz az Azure Active Directoryban, beleértve az SQL-adatbázist elérő felhasználók jöttek létre.
 - Az alkalmazás-hitelesítés az Azure AD használatával történik. További információkért lásd: [alkalmazások integrálása az Azure Active Directory](/azure/active-directory/develop/active-directory-integrating-applications). Emellett az adatbázis oszlopok titkosítását is az Azure AD segítségével hitelesíti az alkalmazás az Azure SQL Database. További információkért lásd: [mindig titkosítja: bizalmas adatokat az SQL-adatbázis védelme](/azure/sql-database/sql-database-always-encrypted-azure-key-vault). 
 - [Az Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection) észlel, a szervezet identitásait érintő lehetséges biztonsági rések, konfigurálja az automatikus válaszokat ad a szervezet identitásait kapcsolódó észlelt gyanús tevékenységek és gyanús incidensek megvizsgálja, és végrehajtja a megfelelő művelettel hárítsa el őket.
-- [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](/azure/active-directory/role-based-access-control-configure) lehetővé teszi, hogy pontosan célzott hozzáférés-kezelés az Azure-bA. Előfizetés hozzáférés korlátozódik előfizetés-rendszergazdaként, és az Azure Key Vault hozzáférés korlátozott minden felhasználó számára.
+- [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](/azure/role-based-access-control/role-assignments-portal) lehetővé teszi, hogy pontosan célzott hozzáférés-kezelés az Azure-bA. Előfizetés hozzáférés korlátozódik előfizetés-rendszergazdaként, és az Azure Key Vault hozzáférés korlátozott minden felhasználó számára.
 
 Az Azure SQL Database biztonsági szolgáltatásaival kapcsolatos további tudnivalókért tekintse meg a [Contoso klinikán bemutató alkalmazás](https://github.com/Microsoft/azure-sql-security-sample) minta.
    
@@ -266,7 +266,7 @@ A virtuális gép létrehozása egy jumpbox (megerősített állomás) a követk
 
 [Az Azure Security Center](https://azure.microsoft.com/services/security-center/) központosított összes Azure-erőforrások biztonsági állapotát jeleníti meg. Egy pillanat alatt ellenőrizze, hogy a megfelelő biztonsági vezérlőket teljesül, és megfelelően konfigurálva, és gyorsan azonosíthatja a figyelmet igénylő erőforrásokat.  
 
-[Az Azure Advisor](/azure/advisor/advisor-overview) , amelynek segítségével személyre szabott felhő tanácsadó kövesse a bevált gyakorlatokat az Azure-környezetekhez optimalizálása érdekében. Az erőforrás-konfigurációhoz és használat telemetriai adatai elemzi, és az, amelyek javítják a költséghatékonyság, a teljesítmény, a magas rendelkezésre állású és az Azure-erőforrások biztonsági megoldások javasolja.
+[Az Azure Advisor](/azure/advisor/advisor-overview) , amelynek segítségével személyre szabott felhő tanácsadó kövesse a bevált gyakorlatokat az Azure-környezetekhez optimalizálása érdekében. Az Advisor elemzi az erőforrások konfiguráció- és használattelemetriáját, és megoldási javaslatokat tesz, amelyek segítségével javítható az Azure-erőforrások költséghatékonysága, teljesítménye, rendelkezésre állása és biztonsága.
 
 [A Microsoft Antimalware](/azure/security/azure-security-antimalware) Azure Cloud Services és a virtuális gépek esetén, amelyek segítségével azonosításához és eltávolításához a vírusok, kémprogramok és más, kártevő szoftverek, konfigurálható riasztást küld, ha ismert a valós idejű védelem funkció kártevő vagy nemkívánatos szoftverek próbálják telepíteni magukat az Azure rendszeren.
 
@@ -278,11 +278,11 @@ Használjon [Application Insights](https://azure.microsoft.com/services/applicat
 
 #### <a name="log-analytics"></a>Log Analytics
 
-[Naplófájl Analytics](https://azure.microsoft.com/services/log-analytics/) az Operations Management Suite (OMS), amely összegyűjti és elemzi az adatok a felhőben lévő erőforrások által generált segít szolgáltatás és a helyszíni környezetben.
+[Naplófájl Analytics](https://azure.microsoft.com/services/log-analytics/) egy olyan szolgáltatás, amely összegyűjti és elemzi az adatok a felhőben lévő erőforrások által generált segít az Azure-ban és a helyszíni környezetben.
 
-#### <a name="oms-solutions"></a>OMS-megoldások
+#### <a name="management-solutions"></a>Felügyeleti megoldások
 
-A további OMS-megoldások legyen tekinthető és konfigurálva:
+További kezelési megoldásokba kell figyelembe venni, és konfigurálva:
 - [Activity Log Analytics](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)
 - [Azure hálózatelemzés](/azure/log-analytics/log-analytics-azure-networking-analytics?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 - [Azure SQL Analytics](/azure/log-analytics/log-analytics-azure-sql)
@@ -338,9 +338,9 @@ Erősen ajánlott, hogy egy tisztán PowerShell üzembe helyezéséhez használh
     
     Részletes használati útmutatásért lásd: [parancsfájl-utasításokat - telepítése és konfigurálása Azure-erőforrások](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md).
     
-3. Naplózás és figyelés OMS Szolgáltatáshoz. Miután a megoldást már telepítették, egy [a Microsoft Operations Management Suite (OMS)](/azure/operations-management-suite/operations-management-suite-overview) munkaterület megnyitása, és a megoldás tárházban sablonjainak minta segítségével bemutatják, hogyan lehet a figyelési irányítópult konfigurálva. A minta OMS sablonok tekintse meg a [omsDashboards mappa](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md). Vegye figyelembe, hogy az adatokat az OMS-sablonok esetében megfelelően telepítendő kell gyűjteni. Ez akár is igénybe vehet egy óráig vagy tovább attól függően, hogy a hely tevékenység.
+3. Naplózás és figyelés. Miután a megoldást már telepítették, a Naplóelemzési munkaterület megnyitása, és bemutatják, hogyan konfigurálható a figyelési irányítópult a megoldás tárházban minta sablonjainak használható. A minta sablonok tekintse meg a [omsDashboards mappa](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md). Vegye figyelembe, hogy az adatokat a megfelelő telepítéséhez a sablonok Naplóelemzési kell gyűjteni. Ez akár is igénybe vehet egy óráig vagy tovább attól függően, hogy a hely tevékenység.
  
-    Az OMS-naplózás beállításakor vegye figyelembe, beleértve az ezekhez az erőforrásokhoz:
+    A Naplóelemzési naplózási beállításakor vegye figyelembe, beleértve az ezekhez az erőforrásokhoz:
  
     - Microsoft.Network/applicationGateways
     - Microsoft.Network/NetworkSecurityGroups
@@ -371,7 +371,7 @@ A megoldás Coalfire Systems, Inc. (PCI DSS minősített biztonsági vizsgáztat
 
 ## <a name="disclaimer-and-acknowledgements"></a>Jogi nyilatkozat és a nyugtázás
 
-2017. szeptember
+*2017. szeptember*
 
 - Ez a dokumentum csak tájékoztatási célokat szolgál. A MICROSOFT ÉS AVYAN ELLENŐRIZZE NINCS SEMMILYEN KIFEJEZETT KIFEJEZETT, VÉLELMEZETT VAGY FELELŐSSÉGET A JELEN DOKUMENTUMBAN SZEREPLŐ INFORMÁCIÓK. Ez a dokumentum biztosított ",-van." Információk és nézetek ebben a dokumentumban, beleértve az URL-CÍMEK és más internetes webhelyet, értesítés nélkül változhatnak. Ez a dokumentum olvasásakor az ügyfelek az alkalmazást saját felelősségére használja.  
 - Ez a dokumentum nem biztosít semmilyen jogot semmilyen Microsoft vagy Avyan termék vagy a megoldások található szellemi tulajdonhoz rendelkező ügyfelek.  

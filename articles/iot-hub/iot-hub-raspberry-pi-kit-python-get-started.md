@@ -1,24 +1,24 @@
 ---
-title: "A felhő (Python) - málna Pi csatlakozzon az Azure IoT Hub Raspberry Pi |} Microsoft Docs"
-description: "Megtudhatja, hogyan kell beállítania, és Azure IoT-központ málna Pi adatokat küldeni az Azure felhőalapú platform ebben az oktatóanyagban málna Pi csatlakozni."
+title: A felhő (Python) - málna Pi csatlakozzon az Azure IoT Hub Raspberry Pi |} Microsoft Docs
+description: Megtudhatja, hogyan kell beállítania, és Azure IoT-központ málna Pi adatokat küldeni az Azure felhőalapú platform ebben az oktatóanyagban málna Pi csatlakozni.
 services: iot-hub
-documentationcenter: 
-author: shizn
+documentationcenter: ''
+author: rangv
 manager: timlt
-tags: 
-keywords: "az Azure iot raspberry pi, raspberry pi iot-központ, raspberry pi adatokat küldött a felhőben, raspberry pi felhőbe"
+tags: ''
+keywords: az Azure iot raspberry pi, raspberry pi iot-központ, raspberry pi adatokat küldött a felhőben, raspberry pi felhőbe
 ms.service: iot-hub
 ms.devlang: python
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/31/2017
-ms.author: xshi
-ms.openlocfilehash: 1b1a9dc960846cbc15ce09d0fd106e1492937439
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 4/11/2018
+ms.author: rangv
+ms.openlocfilehash: 7069748c10f7c98f80fadc008f43a3aa02f7ac0e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-python"></a>Raspberry Pi csatlakozni az Azure IoT Hub (Python)
 
@@ -169,7 +169,7 @@ A számítógép a következő SSH-ügyfél segítségével a málna Pi csatlako
    nano config.py
    ```
 
-   5 makrók van ebben a fájlban configurate is. Az első egy `MESSAGE_TIMESPAN`, amely megadja, hogy az időtartam (ezredmásodpercben) két felhőbe küldött üzenetek között. A második érték `SIMULATED_DATA`, vagyis az, hogy szimulált érzékelőadatait vagy nem logikai értéket. `I2C_ADDRESS`a I2C címet a BME280 érzékelő csatlakoztatva van. `GPIO_PIN_ADDRESS`a GPIO cím szolgál a LED-jét. Az utolsót `BLINK_TIMESPAN`, amely meghatározni a TimeSpan érték, ha a LED ezredmásodpercben be van kapcsolva.
+   5 makrók van ebben a fájlban configurate is. Az első egy `MESSAGE_TIMESPAN`, amely megadja, hogy az időtartam (ezredmásodpercben) két felhőbe küldött üzenetek között. A második érték `SIMULATED_DATA`, vagyis az, hogy szimulált érzékelőadatait vagy nem logikai értéket. `I2C_ADDRESS` a I2C címet a BME280 érzékelő csatlakoztatva van. `GPIO_PIN_ADDRESS` a GPIO cím szolgál a LED-jét. Az utolsót `BLINK_TIMESPAN`, amely meghatározni a TimeSpan érték, ha a LED ezredmásodpercben be van kapcsolva.
 
    Ha Ön **nem rendelkezik az érzékelő**, beállíthatja a `SIMULATED_DATA` egy érték `True` a minta kérelem létrehozása és használata a szimulált érzékelőadatait.
 
@@ -204,7 +204,7 @@ A számítógép a következő SSH-ügyfél segítségével a málna Pi csatlako
    ![Kimeneti - érzékelő adatokat küld az IoT hub málna Pi](media/iot-hub-raspberry-pi-kit-c-get-started/success.png
 )
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Egy mintaalkalmazás érzékelő adatokat gyűjteni, és küldje el az IoT hub futtatását. A málna Pi az IoT hub vagy küldési üzenetek a málna Pi egy parancssori felület a küldött üzenetek, olvassa el a [kezelése felhő eszközt az IOT hubbal-explorer oktatóanyag üzenetküldési](https://docs.microsoft.com/en-gb/azure/iot-hub/iot-hub-explorer-cloud-device-messaging).
 

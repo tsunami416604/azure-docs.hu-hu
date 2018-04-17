@@ -1,3 +1,19 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: virtual-network
+author: genli
+ms.service: virtual-network
+ms.topic: include
+ms.date: 04/13/2018
+ms.author: genli
+ms.custom: include file
+ms.openlocfilehash: a84b31d64f8f9900d342e245ca66cde3c0395be1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 04/16/2018
+---
 ## <a name="how-to-create-a-virtual-network-using-a-network-config-file-from-powershell"></a>PowerShell a hálózati konfigurációs fájl használatával egy virtuális hálózat létrehozása
 Azure előfizetés az összes rendelkezésre álló virtuális hálózatok megadása egy XML-fájlt használja. Letölteni a fájlt, módosítása vagy törlése a meglévő virtuális hálózatok szerkesztheti, majd hozzon létre új virtuális hálózatok. Ebből az oktatóanyagból megtudhatja, hogyan letölteni a fájlt, a hálózati konfiguráció (vagy netcfg) fájl, a továbbiakban, és új virtuális hálózat létrehozása szerkesztésére. A hálózati konfigurációs fájl kapcsolatos további tudnivalókért tekintse meg a [Azure-beli virtuális hálózat konfigurációs séma](https://msdn.microsoft.com/library/azure/jj157100.aspx).
 
@@ -18,8 +34,8 @@ Virtuális hálózat létrehozása a PowerShell használatával netcfg fájllal,
       <?xml version="1.0" encoding="utf-8"?>...
       ```
 
-3. Nyissa meg a bármely XML vagy szöveges szerkesztő alkalmazással 2. lépésben mentett fájlt, és keresse meg a  **<VirtualNetworkSites>**  elemet. Ha olyan hálózatra, már létrehozott, minden egyes hálózati jelenik meg a saját  **<VirtualNetworkSite>**  elemet.
-4. Ebben a forgatókönyvben a virtuális hálózat létrehozásához adja hozzá a következő XML alatt csak a  **<VirtualNetworkSites>**  elem:
+3. Nyissa meg a bármely XML vagy szöveges szerkesztő alkalmazással 2. lépésben mentett fájlt, és keresse meg a **<VirtualNetworkSites>** elemet. Ha olyan hálózatra, már létrehozott, minden egyes hálózati jelenik meg a saját **<VirtualNetworkSite>** elemet.
+4. Ebben a forgatókönyvben a virtuális hálózat létrehozásához adja hozzá a következő XML alatt csak a **<VirtualNetworkSites>** elem:
 
    ```xml
          <?xml version="1.0" encoding="utf-8"?>

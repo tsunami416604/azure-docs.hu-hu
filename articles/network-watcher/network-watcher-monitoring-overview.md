@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: 792b96e4f5ba5dc0f2f943f099a2fee339407d66
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: a546296749ba9373355cfe2b857b83d8af94d5a1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-network-monitoring-overview"></a>Azure-hálózat – áttekintés
 
@@ -51,7 +51,7 @@ Hálózati figyelőt jelenleg a következő képességekkel rendelkezik:
 
 ### <a name="role-based-access-control-rbac-in-network-watcher"></a>Szerepköralapú hozzáférés-vezérlés (RBAC) hálózati figyelőt
 
-Hálózati figyelő használja a [átruházásához hozzáférés-vezérlés (RBAC) modell](../active-directory/role-based-access-control-what-is.md). A következő engedélyek szükségesek a hálózati figyelőt. Fontos, győződjön meg arról, hogy a használt hálózati figyelő API-k kezdeményezése vagy hálózati figyelőt használ a portálról szerepkör rendelkezik-e megfelelő hozzáféréssel.
+Hálózati figyelő használja a [átruházásához hozzáférés-vezérlés (RBAC) modell](../role-based-access-control/overview.md). A következő engedélyek szükségesek a hálózati figyelőt. Fontos, győződjön meg arról, hogy a használt hálózati figyelő API-k kezdeményezése vagy hálózati figyelőt használ a portálról szerepkör rendelkezik-e megfelelő hozzáféréssel.
 
 |Erőforrás| Engedély|
 |---|---| 

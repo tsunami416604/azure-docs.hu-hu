@@ -1,5 +1,5 @@
 ---
-title: "Az Azure biztonsági kezelési és figyelési áttekintés |} Microsoft Docs"
+title: Az Azure biztonsági kezelési és figyelési áttekintés |} Microsoft Docs
 description: " Azure biztonsági mechanizmusai a kezelési és figyelési Azure felhőszolgáltatások és virtuális gépek a segítése érdekében.  Ez a cikk áttekintése ezeket az alapvető biztonsági funkciókat és szolgáltatásokat. "
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: terrylan
-ms.openlocfilehash: 6787877deabafd0b7308e190cb45b4036049b05b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 99e7a7746ae3f229614c8ac3d059b422a4ee6f74
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Az Azure biztonsági kezelési és figyelési áttekintés
 Azure biztonsági mechanizmusai a kezelési és figyelési Azure felhőszolgáltatások és virtuális gépek a segítése érdekében. Ez a cikk áttekintése ezeket az alapvető biztonsági funkciókat és szolgáltatásokat. Adja meg az egyes az adatait, így további cikkek hivatkozásokkal.
@@ -37,7 +37,7 @@ Az alábbiakban az alapvető szolgáltatásokat, a cikkben szerepelnek:
 
 * Szerepköralapú hozzáférés-vezérlés
 * Kártevőirtó
-* Multi-Factor Authentication
+* Többtényezős hitelesítés
 * ExpressRoute
 * Virtuális hálózati átjárók
 * Privileged identity management
@@ -50,7 +50,7 @@ Szerepköralapú hozzáférés-vezérlés (RBAC) biztosít a részletes hozzáf�
 További információ:
 
 * [Szerepalapú az Active Directory csapat blogja](http://i1.blogs.technet.com/b/ad/archive/2015/10/12/azure-rbac-is-ga.aspx)
-* [Azure szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-configure.md)
+* [Azure szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="antimalware"></a>Kártevőirtó
 Az Azure-ral például a Microsoft, a Symantec, Trend Micro, McAfee és Kaspersky fő biztonsági szállítóktól származó kártevőirtó szoftver segítségével a virtuális gépek védelme rosszindulatú fájlok, hirdetéseket és más fenyegetésekkel szemben.
@@ -69,7 +69,7 @@ További információ:
 * [Hogyan kell telepíteni, és a Symantec Endpoint Protection konfigurálása a Windows virtuális gép](../virtual-machines/windows/classic/install-symantec.md)
 * [Új kártevőirtó lehetőségei az Azure virtuális gépek – McAfee az Endpoint Protection védelme](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)
 
-## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+## <a name="multi-factor-authentication"></a>Többtényezős hitelesítés
 Az Azure többtényezős hitelesítés (MFA), amely egynél több ellenőrzési módszer használatát igényli, és a kritikus fontosságú második biztonsági réteget ad hozzá felhasználói bejelentkezéseket és tranzakciókat hitelesítési mód. Többtényezős hitelesítés segítségével hozzáférés biztonságossá tételét adatokhoz és alkalmazásokhoz egyszerű bejelentkezési folyamatot a felhasználó igény szerint betartása mellett. Erős hitelesítés, ellenőrzési lehetőségek széles keresztül biztosítja – a telefonhívás, szöveges üzenet vagy mobilalkalmazás értesítés vagy ellenőrző kód és a harmadik féltől származó OATH-tokeneket.
 
 További információ:
@@ -111,7 +111,7 @@ Az Azure Active Directory (AD) identitás Protection gyanús bejelentkezési tev
 
 További információ:
 
-* [Az Azure Active Directory azonosító adatok védelmét](../active-directory/active-directory-identityprotection.md)
+* [Azure Active Directory Identity Protection](../active-directory/active-directory-identityprotection.md)
 * [9. csatornán: Az Azure AD és az Identity: Identity Protection előzetes kiadásának](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="security-center"></a>Security Center
@@ -125,7 +125,7 @@ A Security Center segítségével optimalizálhatja és által az Azure-erőforr
 
 További információ:
 
-* [Azure Security Center bemutatása](../security-center/security-center-intro.md)
+* [Az Azure Security Center bemutatása](../security-center/security-center-intro.md)
 
 <!--Image references-->
 [1]: ./media/security-management-and-monitoring-overview/shared-responsibility.png

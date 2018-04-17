@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 02/20/2018
 ms.author: elbutter
-ms.openlocfilehash: c34e37f0c6393c65d4b60705012769608bb7395b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ddd80f2ebfa9d06fcd47c41d337348e01ac112e9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse számítási kezelése
 További tudnivalók az Azure SQL Data Warehouse számítási erőforrások kezelése. Az adatraktár felfüggesztésével csökkenthetők a költségek, vagy skálázhatja azt az adatraktár a teljesítményigények kielégítése érdekében. 
@@ -28,7 +28,7 @@ További tudnivalók az Azure SQL Data Warehouse számítási erőforrások keze
 Az SQL Data Warehouse architektúrája elválasztja a tárolást és számítást, hogy egymástól független méretezését. Ennek eredményeképpen a teljesítményigények kielégítése érdekében független adattárolási számítási méretezheti. Is szüneteltetése és folytatása a számítási erőforrásokat. Ez az architektúra természetes következménye, hogy [számlázási](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) számítási és tárolási elkülönül. Ha nem szeretné használni az adatraktár egy ideig, számítási költségeket takaríthat felfüggesztéséhez számítási. 
 
 ## <a name="scaling-compute"></a>Számítás méretezése
-Horizontális felskálázás, vagy vissza számítási méretezése beállításával a [az adatraktár-egység](what-is-a-data-warehouse-unit-dwu-cdwu.md) az adatraktár beállítása. Be- és a lekérdezési teljesítmény lineárisan növelheti a további adattárházegységek való hozzáadása során. Az SQL Data Warehouse kínál [szolgáltatási szintek](performance-tiers.md#service-levels) adatok, amelyek biztosítják a teljesítmény észrevehető változást, akkor adattárházegységek ki, vagy vissza. 
+Horizontális felskálázás, vagy vissza számítási méretezése beállításával a [az adatraktár-egység](what-is-a-data-warehouse-unit-dwu-cdwu.md) az adatraktár beállítása. Be- és a lekérdezési teljesítmény lineárisan növelheti a további adattárházegységek való hozzáadása során. 
 
 Kibővített lépéseiért lásd: a [Azure-portálon](quickstart-scale-compute-portal.md), [PowerShell](quickstart-scale-compute-powershell.md), vagy [T-SQL](quickstart-scale-compute-tsql.md) quickstarts. A kibővített műveleteket is végezhet egy [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
 
@@ -103,19 +103,19 @@ Azt javasoljuk, így a meglévő tranzakció befejezését, mielőtt elindít eg
 
 Ha felfüggeszti vagy méretezi az SQL Data Warehouse-t, a felfüggesztési vagy méretezési kérelem elindításakor a színfalak mögött a lekérdezések megszakadnak.  Egy egyszerű választó lekérdezés megszakítása gyors művelet, amelynek szinte semmilyen hatása nincs az üzemelő példány felfüggesztéséhez vagy méretezéséhez szükséges időtartamra.  Azonban a tranzakciós lekérdezések, amelyek adatokat vagy az adatok szerkezetét is módosítják, nem biztos, hogy ilyen hamar le tudnak állni.  **A tranzakciós lekérdezéseknek definíciójuk szerint vagy teljesen be kell fejeződniük, vagy vissza kell állítaniuk az általuk végrehajtott módosításokat.**  A tranzakciós lekérdezések által elvégzett módosítások visszaállítása ugyanannyi, vagy akár hosszabb ideig is tarthat, mint a lekérdezés által elvégzett eredeti módosítás végrehajtása.  Például ha megszakít egy olyan lekérdezést, amely sorokat törölt és már egy órája futott, a rendszernek egy újabb órájába telhet, hogy a törölt sorokat visszaállítsa.  Ha a felfüggesztést vagy a méretezést olyankor futtatja, amikor épp tranzakciók vannak folyamatban, a felfüggesztés vagy a méretezés látszólag hosszú időt vehet igénybe, mivel e műveleteknek meg kell várniuk, amíg a visszaállítás lezajlik.
 
-Lásd még: [ismertetése tranzakciók](sql-data-warehouse-develop-transactions.md), és a [optimalizálása tranzakciók][tranzakciók optimalizálása](sql-data-warehouse-develop-best-practices-transactions.md).
+Lásd még: [ismertetése tranzakciók](sql-data-warehouse-develop-transactions.md), és [tranzakciók optimalizálása](sql-data-warehouse-develop-best-practices-transactions.md).
 
 ## <a name="automating-compute-management"></a>Számítási felügyeletének automatizálására
 A számítási felügyeleti műveletek automatizálását, lásd: [kezelése számítási az Azure functions](manage-compute-with-azure-functions.md).
 
 Egyes a kibővített, szüneteltetése és folytatása művelet több percet is igénybe vehet. Ha van folyamatban, szüneteltetése, vagy automatikusan folytatása, azt javasoljuk, végrehajtási programot annak biztosításához, hogy bizonyos műveletek végrehajtását befejeződött egy másik művelet folytatása előtt. Az adatraktár állapota keresztül különböző végpontok ellenőrzése lehetővé teszi a megfelelő valósítja meg az ilyen műveletek automatizálását. 
 
-Ellenőrizze az adatraktár állapota, se a [PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) vagy [T-SQL](quickstart-scale-compute-tsql.md#check-data-warehouse-state) gyors üzembe helyezés. Az adatraktár állapota is ellenőrizheti a [REST API](sql-data-warehouse-manage-compute-rest-api.md#check-database-state).
+Az adatraktár állapota ellenőrzéséhez tekintse meg a [PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) vagy [T-SQL](quickstart-scale-compute-tsql.md#check-data-warehouse-state) gyors üzembe helyezés. Az adatraktár állapota is ellenőrizheti a [REST API](sql-data-warehouse-manage-compute-rest-api.md#check-database-state).
 
 
 ## <a name="permissions"></a>Engedélyek
 
-Az adatraktár skálázás az engedélyekkel kell rendelkeznie a leírt [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse.md).  Szüneteltetése és folytatása szükséges a [SQL DB Contributor](../active-directory/role-based-access-built-in-roles.md#sql-db-contributor) engedéllyel, akkor a kifejezetten Microsoft.Sql/servers/databases/action.
+Az adatraktár skálázás az engedélyekkel kell rendelkeznie a leírt [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse).  Szüneteltetése és folytatása szükséges a [SQL DB Contributor](../role-based-access-control/built-in-roles.md#sql-db-contributor) engedéllyel, akkor a kifejezetten Microsoft.Sql/servers/databases/action.
 
 
 ## <a name="next-steps"></a>További lépések

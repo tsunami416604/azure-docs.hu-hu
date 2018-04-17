@@ -1,11 +1,11 @@
 ---
-title: "Hálózati biztonsági csoport – PowerShell hibaelhárítása |} Microsoft Docs"
-description: "Ismerje meg a hálózati biztonsági csoportok hibaelhárítása az Azure PowerShell használata Azure Resource Manager üzembe helyezési modellben."
+title: Hálózati biztonsági csoport – PowerShell hibaelhárítása |} Microsoft Docs
+description: Ismerje meg a hálózati biztonsági csoportok hibaelhárítása az Azure PowerShell használata Azure Resource Manager üzembe helyezési modellben.
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
 manager: narayan
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 4c732bb7-5cb1-40af-9e6d-a2a307c2a9c4
 ms.service: virtual-network
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: d556f2d6d37956c3b3bca2a2905b2c947e6be0df
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 6beaeb4b7e5c9e393427d575f1cf8bc48599dbd5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-network-security-groups-using-azure-powershell"></a>Hálózati biztonsági csoportok az Azure PowerShell hibaelhárítása
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ Ebben a példában a 3389-es portot használja, amíg az alábbi lépések segí
 ## <a name="detailed-troubleshooting-steps"></a>Részletes hibaelhárítási lépéseket
 Az alábbi lépésekkel hibáinak elhárítása az NSG-ket a virtuális gépek:
 
-1. Indítsa el az Azure PowerShell-munkamenetet és a bejelentkezés az Azure-bA. Ha nem ismeri az Azure PowerShell használatával, olvassa el a [telepítése és konfigurálása az Azure PowerShell](/powershell/azure/overview) cikk. Ön fiókjához társítva kell lenni a *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* műveletet a hálózati adapter. Műveletek fiókokhoz rendeléséhez, lásd: [egyedi szerepkörök létrehozását, hozzáférés-vezérlési átruházásához](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
+1. Indítsa el az Azure PowerShell-munkamenetet és a bejelentkezés az Azure-bA. Ha nem ismeri az Azure PowerShell használatával, olvassa el a [telepítése és konfigurálása az Azure PowerShell](/powershell/azure/overview) cikk. Ön fiókjához társítva kell lenni a *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* műveletet a hálózati adapter. Műveletek fiókokhoz rendeléséhez, lásd: [egyedi szerepkörök létrehozását, hozzáférés-vezérlési átruházásához](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
 2. Adja meg a következő parancs sikeresen lefut egy nevű hálózati adapterre alkalmazza minden NSG-szabályok *VM1-NIC1* erőforráscsoportban *RG1*:
    
         Get-AzureRmEffectiveNetworkSecurityGroup -NetworkInterfaceName VM1-NIC1 -ResourceGroupName RG1

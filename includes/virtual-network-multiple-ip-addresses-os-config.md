@@ -1,6 +1,22 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: virtual-network
+author: jimdial
+ms.service: virtual-network
+ms.topic: include
+ms.date: 04/09/2018
+ms.author: jdial
+ms.custom: include file
+ms.openlocfilehash: 1febadbbf7821988600d6feddc94fce25d15e989
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 04/16/2018
+---
 ## <a name="os-config"></a>IP-címek hozzáadása a virtuális gép operációs rendszeréhez
 
-Csatlakozzon, és jelentkezzen be egy több magánhálózati IP-címmel létrehozott virtuális gépbe. A virtuális géphez hozzáadott összes magánhálózati IP-címet (az elsődlegest is beleértve) manuálisan kell hozzáadnia. Végezze el az alábbi lépések közül azokat, amelyek a virtuális gép operációs rendszerére vonatkoznak:
+Csatlakozzon, és jelentkezzen be egy több magánhálózati IP-címmel létrehozott virtuális gépbe. A virtuális géphez hozzáadott összes magánhálózati IP-címet (az elsődlegest is beleértve) manuálisan kell hozzáadnia. Hajtsa végre a lépéseket, hogy a virtuális gép operációs rendszer következő.
 
 ### <a name="windows"></a>Windows
 
@@ -13,17 +29,16 @@ Csatlakozzon, és jelentkezzen be egy több magánhálózati IP-címmel létreho
     * **IP-cím**: Adja meg az *elsődleges* magánhálózati IP-címet
     * **Alhálózati maszk**: Állítsa be az alhálózatának megfelelően. Például ha az alhálózat egy /24 alhálózat, akkor az alhálózati maszk 255.255.255.0.
     * **Alapértelmezett átjáró**: Az alhálózat első IP-címe. Ha az alhálózata 10.0.0.0/24, akkor az átjáró IP-címe 10.0.0.1.
-    * Kattintson **A következő DNS-kiszolgálócímek használata:** elemre, és írja be a következő értékeket:
+    * Válassza ki **a következő DNS-kiszolgálócímek használata** , és írja be a következő értékeket:
         * **Elsődleges DNS-kiszolgáló**: Ha nem a saját DNS-kiszolgálóját használja, adja meg a következőt: 168.63.129.16.  Ha a saját DNS-kiszolgálóját használja, adja meg a kiszolgáló IP-címét.
-    * Kattintson a **Speciális** gombra, és vegyen fel további IP-címeket. Adja hozzá a 8. lépésben felsorolt másodlagos magánhálózati IP-címeket a hálózati adapterhez ugyanazon alhálózat megadásával az elsődleges IP-címhez.
-        >[!WARNING] 
-        >Ha nem megfelelően követi a fenti lépéseket, elveszítheti a kapcsolatot a virtuális géppel. A továbblépés előtt ellenőrizze, hogy az 5. lépésben megadott információk pontosak-e.
+    * Válassza ki a **speciális** gombra, majd adja hozzá a további IP-címeket. Adja hozzá a másodlagos magánhálózati IP-címek, amelyet az Azure hálózati illesztő az előző lépésben hozzáadott mindegyikének a Windows hálózati adapter, amely hozzá van rendelve az elsődleges IP-cím az Azure-hálózat illesztőhöz.
+
+        Manuálisan soha ne rendelje a nyilvános IP-cím, egy Azure virtuális gépen belül a virtuális gép operációs rendszerének rendelt. Ha manuálisan az IP-cím, az operációs rendszerben, ellenőrizze, hogy a magánhálózati IP-cím, az Azure rendelt megegyező címre [hálózati illesztő](../articles/virtual-network/virtual-network-network-interface-addresses.md#change-ip-address-settings), vagy a virtuális gép is megszakad a kapcsolat. További információ [magánhálózati IP-cím](../articles/virtual-network/virtual-network-network-interface-addresses.md#private) beállításait. Soha ne rendelje az Azure nyilvános IP-címnek az operációs rendszerből.
 
     * Kattintson az **OK** gombra a TCP/IP-beállításokból való kilépéshez, majd kattintson ismét az **OK** gombra az adapterbeállítások bezárásához. A rendszer újból létesíti az RDP-kapcsolatot.
 
 6. A parancssorba írja be az *ipconfig /all* parancsot. Megjelenik az összes hozzáadott IP-cím, és a DHCP ki van kapcsolva.
 7. A Windows használják az elsődleges IP-konfiguráció magánhálózati IP-címét az Azure-ban az elsődleges IP-cím a Windows beállítása. Lásd: [nincs Internet-hozzáférést a Azure Windows virtuális Gépet, amely több IP-címmel rendelkezik](https://support.microsoft.com/help/4040882/no-internet-access-from-azure-windows-vm-that-has-multiple-ip-addresse) részleteiről. 
-
 
 ### <a name="validation-windows"></a>Ellenőrzés (Windows)
 

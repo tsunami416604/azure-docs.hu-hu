@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: ac0b15f120071093fd81de1d83cf2067ecbac269
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c5f3dbd1aa26cbe656b2ff89106819d228cf447d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Létrehozása, módosítása vagy a virtuális hálózat törlése
 
@@ -72,7 +72,7 @@ Ez a cikk bármely szakaszának lépéseit befejezése előtt hajtsa végre a k�
 **Parancsok**
 
 - Az Azure CLI: [az hálózati virtuális hálózat létrehozása](/cli/azure/network/vnet)
-- PowerShell: [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork)
+- PowerShell: [új-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork)
 
 ## <a name="view-virtual-networks-and-settings"></a>Virtuális hálózatok megjelenítése és beállítások
 
@@ -128,7 +128,7 @@ Adja hozzá, vagy távolítsa el a címtartomány:
 - Az Azure CLI: [az hálózat virtuális hálózat frissítése](/cli/azure/network/vnet#az_network_vnet_update)
 - PowerShell: [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork)
 
-## <a name="change-dns-servers"></a>Change DNS servers
+## <a name="change-dns-servers"></a>Módosítsa a DNS-kiszolgálók
 
 Minden virtuális gépek csatlakoznak-e a virtuális hálózati register állít be a virtuális hálózat DNS-kiszolgálókkal. Névfeloldás használata a megadott DNS-kiszolgáló is. Mindegyik hálózati interfész (NIC) a virtuális gép lehet a saját DNS-kiszolgáló beállításai. Ha egy hálózati Adaptert a saját DNS-kiszolgáló beállításait, a virtuális hálózat DNS-kiszolgáló beállításai felülbírálják a. A hálózati adapter DNS-beállítások kapcsolatos további információkért lásd: [hálózati illesztő feladatok és a beállítások](virtual-network-network-interface.md#change-dns-servers). További információt a névfeloldást a virtuális gépek és az Azure Felhőszolgáltatások szerepkörpéldányok, lásd: [névfeloldását virtuális gépek és a szerepkörpéldányok](virtual-networks-name-resolution-for-vms-and-role-instances.md). Hozzáadása, módosítása, vagy távolítsa el a DNS-kiszolgáló:
 
@@ -167,7 +167,7 @@ Virtuális hálózat csak akkor, ha nincsenek erőforrások csatlakozik, vagy t�
 
 ## <a name="permissions"></a>Engedélyek
 
-Virtuális hálózatok feladatok elvégzésekor, a fiókot hozzá kell rendelni a [hálózat közreműködő](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkör vagy egy [egyéni](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szerepkör, amely hozzá van rendelve a megfelelő engedélyekkel a következő táblázatban felsorolt:
+Virtuális hálózatok feladatok elvégzésekor, a fiókot hozzá kell rendelni a [hálózat közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkör vagy egy [egyéni](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szerepkör, amely hozzá van rendelve a megfelelő engedélyekkel a következő táblázatban felsorolt:
 
 |Művelet                                    |   Művelet neve                    |
 |-------------------------------------------  |   --------------------------------  |

@@ -18,11 +18,11 @@ ms.dyn365.ops.version: ''
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: mcollier
-ms.openlocfilehash: a5119cf7291db4fd2d2ffaf00ef098cfe336e645
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a87f60b04806fb337a9b4558a67ffa11da661ad5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Az Azure figyelési REST API-forgatókönyv
 Ez a cikk bemutatja, hogyan végezhet hitelesítést, a kód használhassa a [Microsoft Azure figyelő REST API-referencia](https://msdn.microsoft.com/library/azure/dn931943.aspx).         
@@ -45,13 +45,14 @@ Login-AzureRmAccount -SubscriptionId $subscriptionId
 
 # Password for the service principal
 $pwd = "{service-principal-password}"
+$secureStringPassword = ConvertTo-SecureString -String $pwd -AsPlainText -Force
 
 # Create a new Azure AD application
 $azureAdApplication = New-AzureRmADApplication `
                         -DisplayName "My Azure Monitor" `
                         -HomePage "https://localhost/azure-monitor" `
                         -IdentifierUris "https://localhost/azure-monitor" `
-                        -Password $pwd
+                        -Password $secureStringPassword
 
 # Create a new service principal associated with the designated application
 New-AzureRmADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
@@ -74,7 +75,7 @@ $tenantId = $subscription.TenantId
 $authUrl = "https://login.microsoftonline.com/${tenantId}"
 
 $AuthContext = [Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext]$authUrl
-$cred = New-Object -TypeName Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential -ArgumentList ($clientId, $pwd)
+$cred = New-Object -TypeName Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential -ArgumentList ($clientId, $secureStringPassword)
 
 $result = $AuthContext.AcquireToken("https://management.core.windows.net/", $cred)
 
@@ -245,7 +246,7 @@ Ahhoz például, hogy lekérése sikertelen volt a "API-név dimenzió" a "Tranz
 
 ```PowerShell
 $filter = "APIName eq '*' and GeoType eq 'Primary'"
-$request = "https://management.azure.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/microsoft.insights/metrics?metricnames=Transactions&timespan=2018-03-01T00:00:00Z/2018-03-02T00:00:00Z&resultType=metadata&$filter=${filter}&api-version=2018-01-01"
+$request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/microsoft.insights/metrics?metricnames=Transactions&timespan=2018-03-01T00:00:00Z/2018-03-02T00:00:00Z&resultType=metadata&`$filter=${filter}&api-version=2018-01-01"
 Invoke-RestMethod -Uri $request `
     -Headers $authHeader `
     -Method Get `
@@ -316,7 +317,7 @@ Például az első 3 beolvasása API-k, csökkenő értékre "Tranzakciók" sor�
 
 ```PowerShell
 $filter = "APIName eq '*' and GeoType eq 'Primary'"
-$request = "https://management.azure.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/microsoft.insights/metrics?metricnames=Transactions&timespan=2018-03-01T02:00:00Z/2018-03-01T02:05:00Z&$filter=${filter}&interval=PT1M&aggregation=Total&top=3&orderby=Total desc&api-version=2018-01-01"
+$request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/microsoft.insights/metrics?metricnames=Transactions&timespan=2018-03-01T02:00:00Z/2018-03-01T02:05:00Z&`$filter=${filter}&interval=PT1M&aggregation=Total&top=3&orderby=Total desc&api-version=2018-01-01"
 Invoke-RestMethod -Uri $request `
     -Headers $authHeader `
     -Method Get `
@@ -463,7 +464,7 @@ Például a RunsSucceeded metrika adatpontok az adott időtartományt pedig egy 
 
 ```PowerShell
 $filter = "(name.value eq 'RunsSucceeded') and aggregationType eq 'Total' and startTime eq 2017-08-18T19:00:00 and endTime eq 2017-08-18T23:00:00 and timeGrain eq duration'PT1H'"
-$request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metrics?$filter=${filter}&api-version=2016-09-01"
+$request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metrics?`$filter=${filter}&api-version=2016-09-01"
 Invoke-RestMethod -Uri $request `
     -Headers $authHeader `
     -Method Get `
@@ -511,7 +512,7 @@ Több adat- vagy Összesítés pontok lekérdezése, vegye fel a metrika definit
 
 ```PowerShell
 $filter = "(name.value eq 'ActionsCompleted' or name.value eq 'RunsSucceeded') and (aggregationType eq 'Total' or aggregationType eq 'Average') and startTime eq 2017-08-18T21:00:00 and endTime eq 2017-08-18T21:30:00 and timeGrain eq duration'PT1M'"
-$request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metrics?$filter=${filter}&api-version=2016-09-01"
+$request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metrics?`$filter=${filter}&api-version=2016-09-01"
 Invoke-RestMethod -Uri $request `
     -Headers $authHeader `
     -Method Get `
@@ -574,7 +575,7 @@ Egy további módszert is, hogy használja [ARMClient](https://github.com/projec
 
 1. Telepítés [Chocolatey](https://chocolatey.org/) és [ARMClient](https://github.com/projectkudu/armclient).
 2. Írja be egy terminálablakot, *armclient.exe bejelentkezési*. Így kéri, hogy jelentkezzen be az Azure-bA.
-3. Type *armclient GET [your_resource_id]/providers/microsoft.insights/metricdefinitions?api-version=2016-03-01*
+3. Típus *armclient GET [your_resource_id]/providers/microsoft.insights/metricdefinitions?api-version=2016-03-01*
 4. Típus *armclient GET [your_resource_id]/providers/microsoft.insights/metrics?api-version=2016-09-01*
 
 Ahhoz, hogy az adott logikai alkalmazás metrikai meghatározásainak beolvasása, például ki a következő parancsot:
@@ -595,10 +596,10 @@ Az alábbi listában néhány példa a különböző Azure-erőforrások erőfor
 * **IoT Hub** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Devices/IotHubs/*{iot-hub-name}*
 * **Elastic SQL Pool** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Sql/servers/*{pool-db}*/elasticpools/*{sql-pool-name}*
 * **SQL Database (v12)** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Sql/servers/*{server-name}*/databases/*{database-name}*
-* **Service Bus** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.ServiceBus/*{namespace}*/*{servicebus-name}*
+* **A Service Bus** -következő*{előfizetés-azonosító}*/resourceGroups/*{csoport-erőforrásnév}*/providers/Microsoft.ServiceBus/*{névtér}* / *{szolgáltatásbusz-neve}*
 * **Virtuálisgép-méretezési csoportok** -következő*{előfizetés-azonosító}*/resourceGroups/*{csoport-erőforrásnév}*/providers/Microsoft.Compute/virtualMachineScaleSets/ *{Virtuálisgép-név}*
 * **Virtuális gépek** -következő*{előfizetés-azonosító}*/resourceGroups/*{csoport-erőforrásnév}*/providers/Microsoft.Compute/virtualMachines/*{virtuálisgép-név}*
-* **Event Hubs** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.EventHub/namespaces/*{eventhub-namespace}*
+* **Az Event Hubs** -következő*{előfizetés-azonosító}*/resourceGroups/*{csoport-erőforrásnév}*/providers/Microsoft.EventHub/namespaces/*{ az eventhub-namespace}*
 
 Nincsenek alternatív módszer beolvasása az erőforrás-azonosító, beleértve az Azure erőforrás-kezelő, a kívánt erőforrás megtekintése az Azure portálon, és a PowerShell vagy az Azure parancssori felület használatával.
 
@@ -694,7 +695,7 @@ Metrikai meghatározásainak és a kapcsolódó értékekről kívül is is lehe
 ```PowerShell
 $apiVersion = "2015-04-01"
 $filter = "eventTimestamp ge '2017-08-18' and eventTimestamp le '2017-08-19'and eventChannels eq 'Admin, Operation'"
-$request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/microsoft.insights/eventtypes/management/values?api-version=${apiVersion}&$filter=${filter}"
+$request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/microsoft.insights/eventtypes/management/values?api-version=${apiVersion}&`$filter=${filter}"
 Invoke-RestMethod -Uri $request `
     -Headers $authHeader `
     -Method Get `

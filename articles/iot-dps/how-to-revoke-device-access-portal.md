@@ -1,28 +1,28 @@
 ---
-title: "Eszköz-hozzáférés kezelése Azure IoT Hub eszköz kiépítése szolgáltatáshoz |} Microsoft Docs"
-description: "Eszköz-hozzáférés az Azure portálon a terjesztési pontok szolgáltatásbeli visszavonása"
+title: Hogyan disenroll Azure IoT Hub eszköz kiépítése szolgáltatáshoz eszközről
+description: Hogyan disenroll az eszköz Azure IoT Hub eszköz kiépítése szolgáltatáshoz a kiosztás megakadályozása
 services: iot-dps
-keywords: 
-author: JimacoMS
-ms.author: v-jamebr
-ms.date: 12/22/2017
+keywords: ''
+author: bryanla
+ms.author: v-jamebr;bryanla
+ms.date: 04/05/2018
 ms.topic: article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 12aebf3a56aa7469a765ab6fc67aa65b254db71a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 50074eaecacf603d2bc6170183fd632b4a1ab2d1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="revoke-device-access-to-your-provisioning-service-in-the-azure-portal"></a>A létesítési szolgáltatás az Azure portálon eszköz hozzáférés megvonása
+# <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Hogyan disenroll Azure IoT Hub eszköz kiépítése szolgáltatáshoz eszközről
 
-Magas-profil rendszerek például az IoT-megoldások elengedhetetlen a megfelelő felügyeleti eszköz hitelesítő adatokat. Az ilyen rendszerek esetén ajánlott eljárás, visszavonhatja a hozzáférést az eszközök hogyan egyértelmű terv hogy mikor megadhatják hitelesítő adataikat, hogy egy közös hozzáférésű jogosultságkódokat (SAS) jogkivonatot, vagy egy X.509 tanúsítvány utaló jeleket. Ez a cikk ismerteti a kiépítési lépésnél eszközök hozzáférésének visszavonása.
+Magas-profil rendszerek például az IoT-megoldások elengedhetetlen a megfelelő felügyeleti eszköz hitelesítő adatokat. Az ilyen rendszerek esetén ajánlott eljárás, visszavonhatja a hozzáférést az eszközök hogyan egyértelmű terv hogy mikor megadhatják hitelesítő adataikat, hogy egy közös hozzáférésű jogosultságkódokat (SAS) jogkivonatot, vagy egy X.509 tanúsítvány utaló jeleket. 
 
-Az IoT-központ eszköz eléréséhez visszavonása után az eszköz van megadva, lásd: [eszközök letiltása](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices).
+Az eszköz kiépítése szolgáltatáshoz a regisztrációs lehetővé teszi, hogy egy eszköz [automatikus kiosztású](concepts-auto-provisioning.md). A kiépített eszköz egy, az IoT-központot, lehetővé téve az első fogadására regisztrált [eszköz iker](~/articles/iot-hub/iot-hub-devguide-device-twins.md) állapotát és telemetriai adatokat reporting megkezdéséhez. Ez a cikk ismerteti a kiépítési szolgáltatáspéldány, meggátolja, hogy újra létre a jövőben eszközről disenroll.
 
 > [!NOTE] 
 > Vegye figyelembe az újrapróbálkozási házirendet az eszközről, amelyen meg visszavonni a hozzáférést. Például egy eszköz, amely rendelkezik egy végtelen újrapróbálkozási házirendje előfordulhat, hogy folyamatosan próbálja meg regisztrálni az üzembe helyezési szolgáltatással. Ilyen esetben a szolgáltatás-erőforrásokat használ fel, és valószínűleg hatással van a teljesítményre.
@@ -37,10 +37,10 @@ Ideiglenes tiltólistára az eszköz a regisztrációs bejegyzés letiltásával
 2. Az erőforrások listájához válassza ki a létesítési szolgáltatás, amelyet az eszköz tiltólistára kell helyezni.
 3. A létesítési szolgáltatás, válassza ki **regisztrációkat kezelése**, majd válassza ki a **egyedi regisztrációkat** lapon.
 4. Válassza ki a regisztrációs bejegyzés az eszköz, amelyet tiltólistára kell helyezni. 
-5. Válassza ki **letiltása** a a **bejegyzés engedélyezése** váltson, és válassza ki **mentése**.  
+5. Görgessen a lap aljára, és válassza **letiltása** a a **bejegyzés engedélyezése** váltson, és válassza ki **mentése**.  
 
-   ![Tiltsa le az egyes regisztrációs bejegyzés a portálon](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)
-    
+   [![Tiltsa le az egyes regisztrációs bejegyzés a portálon](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png#lightbox)  
+
 A véglegesen tiltólistára az eszköz a regisztrációs bejegyzés törlésével:
 
 1. Jelentkezzen be az Azure portál, és válassza **összes erőforrás** a bal oldali menüből.
@@ -64,9 +64,8 @@ Ideiglenes tiltólistára a tanúsítvány beléptetési csoportjának letiltás
 1. Jelentkezzen be az Azure portál, és válassza **összes erőforrás** a bal oldali menüből.
 2. Az erőforrások listájához válassza ki a létesítési szolgáltatás tiltólistára a aláíró tanúsítványt a kívánt.
 3. Válassza ki a létesítési szolgáltatás **regisztrációkat kezelése**, majd válassza ki a **beléptetési csoportok** lapon.
-4. Válassza ki a regisztrációs a tanúsítványt, amelyet tiltólistára kell helyezni.
-5. Válassza ki a regisztrációs csoport-bejegyzésben **csoport szerkesztése**.
-6. Válassza ki **letiltása** a a **bejegyzés engedélyezése** váltson, és válassza ki **mentése**.  
+4. Válassza ki a regisztrációs tiltólistára kell helyezni kívánt tanúsítvány használatával.
+5. Válassza ki **letiltása** a a **bejegyzés engedélyezése** váltson, és válassza ki **mentése**.  
 
    ![Tiltsa le a regisztrációs csoport bejegyzés a portálon](./media/how-to-revoke-device-access-portal/disable-enrollment-group.png)
 
@@ -96,12 +95,15 @@ Az egyes eszköz beléptetési csoportban tiltólistára, kövesse az alábbi l�
 2. Az erőforrások listájához jelölje ki a létesítési szolgáltatás, amely tartalmazza a beléptetési csoport, az eszköz tiltólistára kell helyezni kívánt.
 3. A létesítési szolgáltatás, válassza ki **regisztrációkat kezelése**, majd válassza ki a **egyedi regisztrációkat** lapon.
 4. Válassza ki a **Hozzáadás** gombra az oldal tetején. 
-5. Válassza ki **X.509** a biztonsági mechanizmus az eszköz, és feltöltése az eszköz tanúsítványát. Ez az az aláírt végfelhasználói tanúsítvány telepítve az eszközön. Az eszköz tanúsítványainak létrehozásához szükséges hitelesítési használja azt.
+5. Válassza ki **X.509** igazoló mechanizmusként használható az eszköz, és feltöltése az eszköz tanúsítványát. Ez az az aláírt végfelhasználói tanúsítvány telepítve az eszközön. Az eszköz tanúsítványainak létrehozásához szükséges hitelesítési használja azt.
 6. A **IoT-központ Eszközazonosító**, adjon meg az Azonosítót az eszközt. 
 7. Válassza ki **letiltása** a a **bejegyzés engedélyezése** váltson, és válassza ki **mentése**. 
 
-   ![Tiltsa le az egyes regisztrációs bejegyzés a portálon](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)
+    [![Használata le van tiltva, az egyes regisztrációs bejegyzés letiltani az eszközt a csoport regisztrációjukat, a portálon](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png#lightbox)
 
 A regisztráció sikeres létrehozásakor megjelennie az eszköz jelenik meg a **egyedi regisztrációkat** fülre.
 
+## <a name="next-steps"></a>További lépések
+
+Disenrollment is a nagyobb megszüntetési folyamatot részét képezi. Egy eszköz megszüntetés disenrollment a szolgáltatás kiépítését, és tartalmaz az IoT-központ deregistering. A teljes folyamattal kapcsolatos további tudnivalókért lásd: [hogyan korábban automatikus-kiépített eszközök kiosztásának megszüntetése](how-to-unprovision-devices.md) 
 

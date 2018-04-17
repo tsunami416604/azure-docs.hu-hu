@@ -1,9 +1,9 @@
 ---
 title: SQL Server Business Intelligence |} Microsoft Docs
-description: "Ez a témakör a klasszikus üzembe helyezési modellel létrehozott erőforrást használ, és az SQL Server rendszert futtató Azure virtuális gépek (VM) rendelkezésre álló üzleti Üzletiintelligencia-funkcióit mutatja be."
+description: Ez a témakör a klasszikus üzembe helyezési modellel létrehozott erőforrást használ, és az SQL Server rendszert futtató Azure virtuális gépek (VM) rendelkezésre álló üzleti Üzletiintelligencia-funkcióit mutatja be.
 services: virtual-machines-windows
 documentationcenter: na
-author: guyinacube
+author: markingmyname
 manager: erikre
 editor: monicar
 tags: azure-service-management
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2017
-ms.author: asaxton
-ms.openlocfilehash: a010e60df2d86d2b1cc923b427aa7d7452f58089
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: maghan
+ms.openlocfilehash: 6f1a95e52def9154253192ab9d43d1e7d621cee7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>Az SQL Server Business Intelligence használata Azure-beli virtuális gépeken
 > [!IMPORTANT] 
@@ -75,7 +75,7 @@ A következő táblázat összefoglalja a közös Microsoft Azure virtuális gé
 * SQL Server 2012 SP3 Enterprise
 * SQL Server 2012 SP3 Standard
 
-| SQL Server BI Feature | A gyűjtemény kép telepítve | Megjegyzések |
+| SQL Server BI szolgáltatás | A gyűjtemény kép telepítve | Megjegyzések |
 | --- | --- | --- |
 | **Jelentéskészítési szolgáltatások natív mód** |Igen |Telepített, de a konfiguráció – beleértve a jelentés manager URL-címet igényel. Című témakör [Reporting Services konfigurálása](#configure-reporting-services). |
 | **Reporting Services – SharePoint módban** |Nem |A Microsoft Azure virtuális gép gyűjteménye a rendszerkép nem tartalmaz a SharePoint vagy a SharePoint telepítési fájlok. <sup>1</sup> |
@@ -101,7 +101,7 @@ A következő táblázat összefoglalja a közös Microsoft Azure virtuális gé
     A lemezek létrehozása és további információkért lásd: [hogyan lehet adatlemezt csatolni egy virtuális gép](../classic/attach-disk-classic.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 * Állítsa le, vagy távolítsa el a szolgáltatások nem tervezi használni. Például ha a virtuális gép csak a Reporting Serviceshez, állítsa le vagy távolítsa el az Analysis Services és az SQL Server Integration Services. Az alábbi képen a szolgáltatások alapértelmezés szerint az elindított példája.
   
-    ![SQL Server services](./media/virtual-machines-windows-classic-ps-sql-bi/IC650107.gif)
+    ![SQL Server-szolgáltatások](./media/virtual-machines-windows-classic-ps-sql-bi/IC650107.gif)
   
   > [!NOTE]
   > Az SQL Server adatbázismotor a támogatott BI esetekben szükséges. A virtuális gép topológia, egyetlen kiszolgáló az adatbázismotor szükséges az azonos virtuális gépen kell futnia.
@@ -216,7 +216,7 @@ A jelentéskészítő kiszolgáló engedélyek információkért lásd: [engedé
 Ellenőrizze a konfigurációt, navigáljon a Jelentéskezelő a virtuális Gépen.
 
 1. A virtuális Gépre indítsa el az Internet Explorer rendszergazdai jogosultságokkal.
-2. Tallózással keresse meg a virtuális Gépre http://localhost/reports.
+2. Keresse meg a http://localhost/reports a virtuális Gépen.
 
 ### <a name="to-connect-to-remote-web-portal-or-report-manager-for-2014-and-2012"></a>Távoli webes portál vagy a Jelentéskezelő 2014 és 2012 való csatlakozáshoz
 Ha azt szeretné csatlakoztatni a webes portál vagy a Jelentéskezelő 2014 és a 2012-ben a távoli számítógépről, a virtuális gépen a új virtuális gép TCP-végpont létrehozása. Alapértelmezés szerint a jelentéskészítő kiszolgáló figyel a HTTP-kérelmek **80-as port**. Ha a jelentéskészítő kiszolgáló URL-címei, egy másik port használatára konfigurálja, eltérő portszámot kell megadnia az alábbi utasításokat.
@@ -225,7 +225,7 @@ Ha azt szeretné csatlakoztatni a webes portál vagy a Jelentéskezelő 2014 és
 2. Nyissa meg a 80-as portot a tűzfalon a virtuális gép.
 3. Keresse meg a webes portálhoz, vagy a jelentés-kezelőt, Azure virtuális gép **DNS-név** a kiszolgáló neve, az URL-címben. Példa:
    
-    **Jelentéskészítő kiszolgáló**: http://uebi.cloudapp.net/reportserver **webes portál**: http://uebi.cloudapp.net/reports
+    **Jelentéskészítő kiszolgáló**: http://uebi.cloudapp.net/reportserver **webes portál**:   http://uebi.cloudapp.net/reports
    
     [Beállítani a tűzfalat a jelentéskészítő kiszolgáló elérése](https://msdn.microsoft.com/library/bb934283.aspx)
 
@@ -285,7 +285,7 @@ A jelen szakaszban szereplő lépéseket **összefoglalója** Analysis Services 
 7. Az a **Analysis Services konfigurációs** lapon jelölje be **táblázatos módban**. Adja hozzá az aktuális felhasználó rendszergazdai engedélyek listájához.
 8. Végezze el, és zárja be az SQL Server telepítővarázsló.
 
-## <a name="analysis-services-configuration"></a>Analysis Services Configuration
+## <a name="analysis-services-configuration"></a>Az Analysis Services beállítása
 ### <a name="remote-access-to-analysis-services-server"></a>Az Analysis Services-kiszolgálóhoz távoli hozzáférést
 Analysis Services-kiszolgáló csak a windows-hitelesítést támogatja. Távolról elérje ügyfélalkalmazásokat, például az SQL Server Management Studio vagy SQL Server Data Tools Analysis Services, a virtuális géphez kell csatlakoztatni kell a helyi tartományhoz, Azure virtuális hálózat használata. További információ: [Azure Virtual Network](../../../virtual-network/virtual-networks-overview.md).
 

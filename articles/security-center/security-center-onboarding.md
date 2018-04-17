@@ -1,11 +1,11 @@
 ---
-title: "Bevezetés az Azure Security Center szabványos a fokozott biztonság |} Microsoft Docs"
+title: Bevezetés az Azure Security Center szabványos a fokozott biztonság |} Microsoft Docs
 description: " Ismerje meg, hogyan való érheti el a Azure Security Center szabványos a fokozott biztonság. "
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2017
 ms.author: terrylan
-ms.openlocfilehash: a6394b1b02ebfe518dc2f2b7f65eb677bb0ba5f2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d83beecfc5a8f6b8a01c64e809bc84c6fd0238bf
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Bevezetés az Azure Security Center szabványos a fokozott biztonság
 Frissítse a Security Center szabványos biztonságosabb kezelés és a hibrid felhő munkaterhelések veszélyforrások elleni védelem előnyeinek kihasználása érdekében.  Standard szabad 60 napig próbálkozhat. Tekintse meg a Security Center [árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/security-center/) további információt.
@@ -30,7 +30,7 @@ A Security Center Standard tartalmazza:
 - **Hozzáférés és az alkalmazás** -blokk kártevő szoftverek és más nemkívánatos alkalmazások által engedélyezett javaslatok alkalmazása az adott munkaterhelés konkrét igazodó, és gépi tanulási technológiával. A hálózati támadási felület csökkentése just-in-time, ellenőrzött hozzáféréssel rendelkező felügyeleti portokhoz Azure virtuális gépeken, ami rendkívüli mértékben csökkenti a találgatásos és egyéb hálózati támadásoktól.
 
 ## <a name="detecting-unprotected-resources"></a>Nem védett erőforrások észlelése     
-A Security Center automatikusan észleli a bármely Azure-előfizetésekre vagy nincs engedélyezve a Security Center szabványos munkaterületek. Ez magában foglalja a Security Center szabad és munkaterületek, amelyek nem rendelkeznek a biztonsági megoldás használata Azure-előfizetések.
+A Security Center automatikusan észleli azokat az Azure-előfizetéseket vagy munkaterületeket, amelyeken nincs engedélyezve a Security Center Standard. Ez a Security Center ingyenes verzióját használó Azure-előfizetéseket és az olyan munkaterületeket is magában foglalja, amelyeken nincs engedélyezve a biztonsági megoldás.
 
 Teljes Azure-előfizetés váltson Standard csomagra, amely örökli az előfizetésen belüli összes erőforrást, vagy megadhat egy egyedi házirendet csak egy meghatározott erőforrás csoport frissítése. Ha az erőforráscsoport házirend-beállítások egyedi, a Security Center nem bírálja felül a árképzési házirendek Ha az előfizetés váltson Standard csomagra. A Standard alkalmazása réteg egy előfizetéshez csak a virtuális gépek az előfizetéshez a Security Center által létrehozott munkaterületek jelentő vonatkozik. Alkalmazza a Standard szint a munkaterületre vonatkozik a munkaterületre reporting összes erőforrást.
 
@@ -84,7 +84,7 @@ A Security Center a nem Azure-számítógépek biztonsági állapotát is képes
 1. Lépjen vissza **bevezetési**.   
 2. Válassza ki **kívánja hozzáadni az új-Azure számítógépek**.
 
-  ![-Azure számítógép hozzáadása][3]
+  ![Nem Azure-beli számítógép hozzáadása][3]
 
 Ha meglévő munkaterületek, alatt vannak felsorolva **nem Azure-új számítógépek hozzáadása**. Számítógépek hozzáadása egy meglévő munkaterülettel, vagy hozzon létre egy új munkaterületet. Hozzon létre egy új munkaterületet, kattintson a hivatkozásra **adja hozzá az új munkaterületet**.
 
@@ -115,7 +115,7 @@ A számítógépet hozzáadhatja a munkafolyamatot a következő **bevezetési**
 2. Válassza ki a **számítási** csempére.
 3. A **számítási**, jelölje be **vesz fel számítógépeket**.
 
-   ![Számítási panel][6]
+   ![Számítás panel][6]
 
 4. A **adja hozzá az új-Azure számítógépek**, csatlakoztassa a számítógépet, és kattintson a munkaterület kiválasztása **számítógépek hozzáadása**.
 
@@ -123,7 +123,7 @@ A számítógépet hozzáadhatja a munkafolyamatot a következő **bevezetési**
 
  A **közvetlen ügynök** panel hivatkozást biztosít egy Windows vagy Linux-ügynök letöltése és a kulcsok az használható az ügynök konfigurálásáról a munkaterület azonosítója.   
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan előkészítésére Azure és az Azure-erőforrások ahhoz, hogy a Security Center speciális biztonsági.  Több, az ehhez a előkészítve erőforrások, lásd:
 
 - [Az adatgyűjtés engedélyezése](security-center-enable-data-collection.md)

@@ -1,8 +1,8 @@
 ---
-title: "SCP.NET programozási útmutatója |} Microsoft Docs"
-description: "Megtudhatja, hogyan lehet SCP.NET használatával létrehozni. A NET-alapú Storm-topológiák a HDInsight alatt futó Storm használható."
+title: SCP.NET programozási útmutatója |} Microsoft Docs
+description: Megtudhatja, hogyan lehet SCP.NET használatával létrehozni. A NET-alapú Storm-topológiák a HDInsight alatt futó Storm használható.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: raviperi
 manager: jhubbard
 editor: cgronlun
@@ -11,15 +11,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 05/16/2016
 ms.author: raviperi
-ms.openlocfilehash: a0ce92ba58fbcda812a3d4e5e275178b73400d6c
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 0f4c021bc209c99e1b3f34b34bf5ba0549eb48f9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="scp-programming-guide"></a>Szolgáltatáskapcsolódási pont programozási útmutató
 Szolgáltatáskapcsolódási pont platformot valós idejű, megbízható és konzisztens, létrehozásához, és az adatfeldolgozás nagy teljesítményű alkalmazás. Be van építve a [alatt futó Apache Storm](http://storm.incubator.apache.org/) – a streamfeldolgozási szerint a OSS Közösségek rendszer. Storm Nathan Marz lett tervezve, és nyílt forrása volt Twitter által. Ez a módszer a [Apache ZooKeeper](http://zookeeper.apache.org/), egy másik Apache projekt engedélyezése nagymértékben megbízható elosztott problémakoordinálás és állapotát. 
@@ -76,7 +74,7 @@ ISCPSpout rendszer a nem tranzakciós spout,
 
 Ha `NextTuple()` neve, a C\# felhasználói kód el tudná küldeni egy vagy több rekordokat. Nincs mit hozható létre, ha ez a módszer kibocsátó semmit nem kell visszaadnia. Fontos megjegyezni, hogy `NextTuple()`, `Ack()`, és `Fail()` összes nevezzük egy egyetlen szálon c. szoros ismétlődő\# folyamat. Ha nem hozható létre rekordokat, udvarias NextTuple alvó kaphatnak a rövid időn (például 10 ezredmásodperc), hogy ne hulladék túl sok CPU.
 
-`Ack()`és `Fail()` hívják, csak akkor, ha a nyugtázási mechanizmus fájlmegadásában fájlban engedélyezve van. A `seqId` alapján határozza meg a rekord, amely korrektúrák, vagy nem sikerült. Így ha nyugtázási nem tranzakciós topológia engedélyezve van, a következő kibocsátása függvény Spout kell használni:
+`Ack()` és `Fail()` hívják, csak akkor, ha a nyugtázási mechanizmus fájlmegadásában fájlban engedélyezve van. A `seqId` alapján határozza meg a rekord, amely korrektúrák, vagy nem sikerült. Így ha nyugtázási nem tranzakciós topológia engedélyezve van, a következő kibocsátása függvény Spout kell használni:
 
     public abstract void Emit(string streamId, List<object> values, long seqId); 
 
@@ -106,7 +104,7 @@ ISCPTxSpout a tranzakciós spout felületet.
 
 Akárcsak a nem tranzakciós másik részét `NextTx()`, `Ack()`, és `Fail()` összes nevezzük egy egyetlen szálon c. szoros ismétlődő\# folyamat. Nem állnak rendelkezésre adatok kibocsátásához, esetén szeretné, hogy udvarias `NextTx` a rövid időn (10 ezredmásodperc), hogy ne túl sok CPU hulladék az alvó állapot.
 
-`NextTx()`új tranzakció, a kimeneti paramétert indításához nevezik `seqId` alapján határozza meg a tranzakció, amely is használva van `Ack()` és `Fail()`. A `NextTx()`, felhasználói el tudná küldeni az adatok Java oldalára. Az adatok ismétlési támogatásához ZooKeeper tárolja. ZooKeeper kapacitása korlátozott, mert a felhasználó kell csak számú metaadat, a tranzakciós spout adatok tömeges sikertelen.
+`NextTx()` új tranzakció, a kimeneti paramétert indításához nevezik `seqId` alapján határozza meg a tranzakció, amely is használva van `Ack()` és `Fail()`. A `NextTx()`, felhasználói el tudná küldeni az adatok Java oldalára. Az adatok ismétlési támogatásához ZooKeeper tárolja. ZooKeeper kapacitása korlátozott, mert a felhasználó kell csak számú metaadat, a tranzakciós spout adatok tömeges sikertelen.
 
 A Storm fog visszajátszásos automatikusan egy tranzakció, ha a hiba, így `Fail()` normál esetben nem szabad meghívni. De ha a szolgáltatáskapcsolódási pont ellenőrizheti a metaadatok tranzakciós spout által kibocsátott, akkor meghívhatja `Fail()` érvénytelen a metaadatok esetén.
 
@@ -121,9 +119,9 @@ ISCPBatchBolt a tranzakciós bolt felületet.
         void FinishBatch(Dictionary<string, Object> parms);  
     }
 
-`Execute()`Ha új rekordot tartalmaz a bolt érkező neve. `FinishBatch()`Amikor befejeződik a tranzakció neve. A `parms` bemeneti paraméter későbbi használatra van fenntartva.
+`Execute()` Ha új rekordot tartalmaz a bolt érkező neve. `FinishBatch()` Amikor befejeződik a tranzakció neve. A `parms` bemeneti paraméter későbbi használatra van fenntartva.
 
-Tranzakciós topológia, egy fontos tényező – nincs `StormTxAttempt`. Rendelkezik két mező `TxId` és `AttemptId`. `TxId`egy bizonyos tranzakció azonosítására szolgál a megadott tranzakció, előfordulhat, hogy többszöri a tranzakció sikertelen, és ha a rendszer játssza vissza. SCP.NET új objektumot hoz létre ISCPBatchBolt feldolgozni az egyes `StormTxAttempt`, csak a például a Storm funkciója Java nyelven. Ez a kialakítás célja támogatja a párhuzamos tranzakciókat feldolgozása. Felhasználói tartsa azt, hogy ha a tranzakció kísérlet befejeződött, a megfelelő ISCPBatchBolt objektum megsemmisül szem előtt tartva és szemétgyűjtő.
+Tranzakciós topológia, egy fontos tényező – nincs `StormTxAttempt`. Rendelkezik két mező `TxId` és `AttemptId`. `TxId` egy bizonyos tranzakció azonosítására szolgál a megadott tranzakció, előfordulhat, hogy többszöri a tranzakció sikertelen, és ha a rendszer játssza vissza. SCP.NET új objektumot hoz létre ISCPBatchBolt feldolgozni az egyes `StormTxAttempt`, csak a például a Storm funkciója Java nyelven. Ez a kialakítás célja támogatja a párhuzamos tranzakciókat feldolgozása. Felhasználói tartsa azt, hogy ha a tranzakció kísérlet befejeződött, a megfelelő ISCPBatchBolt objektum megsemmisül szem előtt tartva és szemétgyűjtő.
 
 ## <a name="object-model"></a>Hálózatiobjektum-modellje
 SCP.NET is tartalmaz egy egyszerű objektumok a fejlesztők számára a program. Ezek **környezetben**, **Állapottárolója**, és **SCPRuntime**. Azok a többi részét ez a szakasz ismerteti.
@@ -137,9 +135,9 @@ Az alkalmazás futó környezetet biztosít a környezetben. Minden egyes ISCPPl
     public static Config Config { get; set; }                    
     public static TopologyContext TopologyContext { get; set; }  
 
-`Logger`napló célra valósul meg.
+`Logger` napló célra valósul meg.
 
-`pluginType`jelzi a beépülő modul típusa a C\# folyamat. Ha a C\# folyamat (nélkül Java) tesztcélú helyi módban fut, a beépülő modul típusa `SCP_NET_LOCAL`.
+`pluginType` jelzi a beépülő modul típusa a C\# folyamat. Ha a C\# folyamat (nélkül Java) tesztcélú helyi módban fut, a beépülő modul típusa `SCP_NET_LOCAL`.
 
     public enum SCPPluginType 
     {
@@ -150,12 +148,12 @@ Az alkalmazás futó környezetet biztosít a környezetben. Minden egyes ISCPPl
         SCP_NET_BATCH_BOLT = 4  
     }
 
-`Config`konfigurációs paraméterek lekérése Java ügyféloldali valósul meg. A paraméterek átadása Java oldaláról amikor C\# beépülő modul inicializálása. A `Config` paraméterek oszthatók két részből áll: `stormConf` és `pluginConf`.
+`Config` konfigurációs paraméterek lekérése Java ügyféloldali valósul meg. A paraméterek átadása Java oldaláról amikor C\# beépülő modul inicializálása. A `Config` paraméterek oszthatók két részből áll: `stormConf` és `pluginConf`.
 
     public Dictionary<string, Object> stormConf { get; set; }  
     public Dictionary<string, Object> pluginConf { get; set; }  
 
-`stormConf`a Storm által definiált paraméterek és `pluginConf` a szolgáltatáskapcsolódási pont által megadott paramétereket. Példa:
+`stormConf` a Storm által definiált paraméterek és `pluginConf` a szolgáltatáskapcsolódási pont által megadott paramétereket. Példa:
 
     public class Constants
     {
@@ -169,7 +167,7 @@ Az alkalmazás futó környezetet biztosít a környezetben. Minden egyes ISCPPl
         public static readonly String STORM_ZOOKEEPER_PORT = "storm.zookeeper.port";                 
     }
 
-`TopologyContext`megadott ahhoz, hogy a topológia a környezetben, esetén a leghasznosabb összetevők több párhuzamosság együtt. Például:
+`TopologyContext` megadott ahhoz, hogy a topológia a környezetben, esetén a leghasznosabb összetevők több párhuzamosság együtt. Például:
 
     //demo how to get TopologyContext info
     if (Context.pluginType != SCPPluginType.SCP_NET_LOCAL)                      
@@ -210,7 +208,7 @@ A nem tranzakciós bolt nyugtázási támogató, legyen, vagy ha kifejezetten `A
     public abstract void Fail(SCPTuple tuple);
 
 ### <a name="statestore"></a>Állapottárolója
-`StateStore`metaadatok szolgáltatások, a monoton sorrend létrehozása és a várakozási szabad koordinációs biztosít. Elosztott feldolgozási magasabb szintű absztrakciók építhetők `StateStore`, beleértve az elosztott zárolásokat, elosztott várólisták, korlátok és tranzakciós szolgáltatásokat.
+`StateStore` metaadatok szolgáltatások, a monoton sorrend létrehozása és a várakozási szabad koordinációs biztosít. Elosztott feldolgozási magasabb szintű absztrakciók építhetők `StateStore`, beleértve az elosztott zárolásokat, elosztott várólisták, korlátok és tranzakciós szolgáltatásokat.
 
 Szolgáltatáskapcsolódási pont alkalmazások is használhatnak a `State` objektum egyes információk ZooKeeper, különösen a tranzakciós topológia megőrzéséhez. Ennek során, ha a tranzakciós spout összeomlik, és indítsa újra, a szükséges adatok lekérését ZooKeeper, és indítsa újra a folyamatot.
 
@@ -304,9 +302,9 @@ SCPRuntime az alábbi két módszert biztosít:
 
     public static void LaunchPlugin(newSCPPlugin createDelegate);  
 
-`Initialize()`a szolgáltatáskapcsolódási pont futásidejű környezet inicializálása szolgál. Ennél a módszernél a C\# folyamat a Java oldalon kapcsolódik, és lekérdezi a konfigurációs paraméterek és a topológia a környezetben.
+`Initialize()` a szolgáltatáskapcsolódási pont futásidejű környezet inicializálása szolgál. Ennél a módszernél a C\# folyamat a Java oldalon kapcsolódik, és lekérdezi a konfigurációs paraméterek és a topológia a környezetben.
 
-`LaunchPlugin()`az üzenet feldolgozása hurok indítsa szolgál. Ez a ciklus, a C a\# beépülő modul fogadja az üzeneteket űrlap Java ügyféloldali (beleértve a rekordokat és a vezérlő jeleket), és majd feldolgozása az üzeneteket, lehet, hogy az az illesztőfelület-metódust hívja meg a felhasználói kód által. A bemeneti paraméter metódus `LaunchPlugin()` van olyan delegált esetén, amely ISCPSpout/IScpBolt/ISCPTxSpout/ISCPBatchBolt felületet megvalósító objektum adhat vissza.
+`LaunchPlugin()` az üzenet feldolgozása hurok indítsa szolgál. Ez a ciklus, a C a\# beépülő modul fogadja az üzeneteket űrlap Java ügyféloldali (beleértve a rekordokat és a vezérlő jeleket), és majd feldolgozása az üzeneteket, lehet, hogy az az illesztőfelület-metódust hívja meg a felhasználói kód által. A bemeneti paraméter metódus `LaunchPlugin()` van olyan delegált esetén, amely ISCPSpout/IScpBolt/ISCPTxSpout/ISCPBatchBolt felületet megvalósító objektum adhat vissza.
 
     public delegate ISCPPlugin newSCPPlugin(Context ctx, Dictionary\<string, Object\> parms); 
 
@@ -314,7 +312,7 @@ A ISCPBatchBolt, beszerezheti a Microsoft `StormTxAttempt` a `parms`, és annak 
 
 A szolgáltatáskapcsolódási pont beépülő modulok általánosan fogalmazva, itt két módban futhat:
 
-1. Helyi tesztelése mód: Ebben a módban, a szolgáltatáskapcsolódási pont beépülő modulok (a C\# felhasználói kód) Visual Studio belül a fejlesztési fázis során futtassa. `LocalContext`Ebben a módban a helyi fájlok kibocsátott rekordokat szerializálni, és vissza memória a olvashatja őket módszert biztosít használható.
+1. Helyi tesztelése mód: Ebben a módban, a szolgáltatáskapcsolódási pont beépülő modulok (a C\# felhasználói kód) Visual Studio belül a fejlesztési fázis során futtassa. `LocalContext` Ebben a módban a helyi fájlok kibocsátott rekordokat szerializálni, és vissza memória a olvashatja őket módszert biztosít használható.
    
         public interface ILocalContext
         {
@@ -360,12 +358,12 @@ SCP.NET hozzáadta a következő funkciók tranzakciós topológiák megadása:
 | **Új funkciók** | **Paraméterek** | **Leírás** |
 | --- | --- | --- |
 | **Tx-topolopy** |topológia-név<br />spout-leképezés<br />bolt-leképezés |Adja meg a topológia néven, a tranzakciós topológia &nbsp;spoutok definition térkép és a boltokhoz definition térkép |
-| **SCP-tx-spout** |Exec-név<br />argumentum<br />Mezők |Adja meg a tranzakciós spout. Az alkalmazás futása ***exec-name*** használatával ***argumentum***.<br /><br />A ***mezők*** a spout a kimeneti mezők |
-| **SCP-tx-batch-bolt** |Exec-név<br />argumentum<br />Mezők |Adja meg egy olyan tranzakciós kötegben Bolthoz. Az alkalmazás futása ***exec-name*** használatával ***argumentum.***<br /><br />A mezők a mező a kimenetre bolt. |
-| **SCP-tx-commit-bolt** |Exec-név<br />argumentum<br />Mezők |Adja meg egy olyan tranzakciós véglegesítési bolthoz. Az alkalmazás futása ***exec-name*** használatával ***argumentum***.<br /><br />A ***mezők*** a bolt a kimeneti mezők |
+| **SCP-tx-spout** |Exec-név<br />argumentum<br />mezők |Adja meg a tranzakciós spout. Az alkalmazás futása ***exec-name*** használatával ***argumentum***.<br /><br />A ***mezők*** a spout a kimeneti mezők |
+| **SCP-tx-batch-bolt** |Exec-név<br />argumentum<br />mezők |Adja meg egy olyan tranzakciós kötegben Bolthoz. Az alkalmazás futása ***exec-name*** használatával ***argumentum.***<br /><br />A mezők a mező a kimenetre bolt. |
+| **SCP-tx-commit-bolt** |Exec-név<br />argumentum<br />mezők |Adja meg egy olyan tranzakciós véglegesítési bolthoz. Az alkalmazás futása ***exec-name*** használatával ***argumentum***.<br /><br />A ***mezők*** a bolt a kimeneti mezők |
 | **nontx-topolopy** |topológia-név<br />spout-leképezés<br />bolt-leképezés |Adja meg a nem tranzakciós-topológia a topológia nevű&nbsp; spoutok definition térkép és a boltokhoz definition térkép |
-| **SCP-spout** |Exec-név<br />argumentum<br />Mezők<br />paraméterek |Adja meg egy nem tranzakciós spout. Az alkalmazás futása ***exec-name*** használatával ***argumentum***.<br /><br />A ***mezők*** a spout a kimeneti mezők<br /><br />A ***paraméterek*** megadása nem kötelező, segítségével adja meg az egyes paraméterek, például "nontransactional.ack.enabled". |
-| **SCP-bolt** |Exec-név<br />argumentum<br />Mezők<br />paraméterek |Adja meg egy nem tranzakciós Bolt. Az alkalmazás futása ***exec-name*** használatával ***argumentum***.<br /><br />A ***mezők*** a bolt a kimeneti mezők<br /><br />A ***paraméterek*** megadása nem kötelező, segítségével adja meg az egyes paraméterek, például "nontransactional.ack.enabled". |
+| **SCP-spout** |Exec-név<br />argumentum<br />mezők<br />paraméterek |Adja meg egy nem tranzakciós spout. Az alkalmazás futása ***exec-name*** használatával ***argumentum***.<br /><br />A ***mezők*** a spout a kimeneti mezők<br /><br />A ***paraméterek*** megadása nem kötelező, segítségével adja meg az egyes paraméterek, például "nontransactional.ack.enabled". |
+| **SCP-bolt** |Exec-név<br />argumentum<br />mezők<br />paraméterek |Adja meg egy nem tranzakciós Bolt. Az alkalmazás futása ***exec-name*** használatával ***argumentum***.<br /><br />A ***mezők*** a bolt a kimeneti mezők<br /><br />A ***paraméterek*** megadása nem kötelező, segítségével adja meg az egyes paraméterek, például "nontransactional.ack.enabled". |
 
 SCP.NET van megadva a következő kulcsszó:
 
@@ -646,7 +644,7 @@ Ez a topológia tartalmaz egy Java Spout és egy C\# Bolt. A szolgáltatáskapcs
 ### <a name="scphostdemo"></a>SCPHostDemo
 Ez a példa megegyezik a HelloWorld lényegében. Az egyetlen különbség, hogy a felhasználói kód lefordított dll-fájl, és a topológia beküldött SCPHost.exe használatával. Részletes ismertetése "SCP-t állomás üzemmódban" című szakaszában talál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Szolgáltatáskapcsolódási pont használatával létrehozott Storm-topológiák példákért lásd a következő dokumentumokat:
 
 * [Visual Studio használatával HDInsight alatt futó Apache Storm a C#-topológiák fejlesztése](apache-storm-develop-csharp-visual-studio-topology.md)

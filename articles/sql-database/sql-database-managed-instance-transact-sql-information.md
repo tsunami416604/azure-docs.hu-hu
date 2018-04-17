@@ -7,14 +7,14 @@ ms.reviewer: carlrab, bonova
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 04/10/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: b633c3c4a4f476cb8e89afde8adeb94558643d4b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0fe0b5d3120833b8472fcdaee366a5d1f2818600
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Az SQL Serverről az Azure SQL adatbázis felügyelt példány T-SQL különbségek 
 
@@ -103,7 +103,7 @@ CREATE CERTIFICATE
 WITH PRIVATE KEY ( <private_key_options> ) 
 >```   
  
-### <a name="clr"></a>CLR 
+### <a name="clr"></a>KÖZÖS NYELVI FUTTATÓ KÖRNYEZET 
 
 Felügyelt példány nem tud hozzáférni a fájlmegosztások és a Windows-mappák, így ha a következő korlátozások vonatkoznak: 
 - Csak `CREATE ASSEMBLY FROM BINARY` esetén támogatott. Lásd: [CREATE ASSEMBLY BINÁRISRÓL](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).  
@@ -239,7 +239,7 @@ További információkért lásd: [FILESTREAM](https://docs.microsoft.com/sql/re
 ### <a name="linked-servers"></a>Társított kiszolgálók
  
 Csatolt kiszolgálók felügyelt példányban célok korlátozott számú támogatja: 
-- Támogatott célok: SQL Server, az SQL-adatbázis, a példány által felügyelt és a SQL Server virtuális gépen.
+- Támogatott célok: SQL Server és SQL-adatbázis
 - Nem támogatott a célok: fájlok, az Analysis Services és az egyéb RDBMS.
 
 Műveletek
@@ -419,4 +419,4 @@ Nem határozható meg csak egy adatbázisbeli levelezési profil és kell meghí
 
 - Felügyelt példány kapcsolatos részletekért lásd: [Mi az, hogy a felügyelt példánya?](sql-database-managed-instance.md)
 - A szolgáltatások és összehasonlító listáját lásd: [általános SQL-szolgáltatások](sql-database-features.md).
-- Az oktatóanyagok esetén lásd: [hozzon létre egy felügyelt példányt](sql-database-managed-instance-tutorial-portal.md).
+- Az oktatóanyag bemutatja, hogyan hozzon létre egy új kezelt példányt, lásd: [felügyelt példány létrehozása](sql-database-managed-instance-create-tutorial-portal.md).

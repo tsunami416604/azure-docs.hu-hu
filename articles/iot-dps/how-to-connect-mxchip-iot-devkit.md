@@ -1,26 +1,26 @@
 ---
-title: Az Azure IoT Hub kiépítése szolgáltatáshoz kapcsolódni a MXChip IoT DevKit használata |} Microsoft Docs
-description: Az Azure IoT Hub kiépítése szolgáltatáshoz kapcsolódni a MXChip IoT DevKit használata
+title: Hogyan használható az Azure IoT Hub eszköz kiépítése szolgáltatáshoz automatikus átadásának regisztrálni a MXChip IoT DevKit IoT-központ |} Microsoft Docs
+description: Hogyan használható az Azure IoT Hub eszköz kiépítése szolgáltatáshoz automatikus átadásának regisztrálni a MXChip IoT DevKit IoT-központot.
 services: iot-dps
 keywords: ''
 author: liydu
 ms.author: liydu
-ms.date: 02/20/2018
+ms.date: 04/04/2018
 ms.topic: article
 ms.service: iot-dps
 documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 502f22a39622e9a8341e1daca8c9899fd8b7d7d1
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d60c5766b22e31c33d0dd4a743fa297470109ac6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="connect-the-mxchip-iot-devkit-to-the-azure-iot-hub-device-provisioning-service"></a>A MXChip IoT DevKit csatlakozni az Azure IoT Hub eszköz-üzembehelyezési szolgáltatás
+# <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Azure IoT Hub eszköz kiépítése szolgáltatáshoz automatikus átadásának segítségével regisztrálja a MXChip IoT DevKit IoT hubbal
 
-Ez a cikk ismerteti a MXChip IoT DevKit abba, hogy automatikusan regisztrálja az Azure IoT Hub szolgáltatással az Azure IoT eszköz kiépítése konfigurálása. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez a cikk ismerteti, hogyan használható az Azure IoT Hub eszköz kiépítése szolgáltatáshoz [automatikus kiépítés](concepts-auto-provisioning.md), a MXChip IoT DevKit regisztrálni Azure IoT-központot. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 * Konfigurálja a globális végpontot az eszköz kiépítése szolgáltatáshoz az eszközön.
 * Egy X.509 tanúsítvány létrehozásához használt titkos kulcs (UDS) az eszköz egyedi.
@@ -33,11 +33,11 @@ A [MXChip IoT DevKit](https://aka.ms/iot-devkit) egy mindent egy Arduino-kompati
 
 Az oktatóanyag lépéseinek végrehajtásához, hajtsa végre a következő feladatokat:
 
-* Készítse elő a DevKit lépéseit követve [IoT DevKit AZ3166 csatlakozzon az Azure IoT hubhoz a felhőben](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started).
+* Készítse elő a DevKit lépéseit követve [IoT DevKit AZ3166 csatlakozzon az Azure IoT hubhoz a felhőben](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started).
 * Frissítés a legújabb belső vezérlőprogrammal (1.3.0 vagy újabb) rendelkező a [frissítés DevKit belső vezérlőprogram](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/) oktatóanyag.
-* Hozzon létre, és az IoT-központ és egy eszköz-üzembehelyezési szolgáltatáspéldány lépéseit követve összekapcsolásához [a IoT Hub eszköz kiépítése szolgáltatás beállítása az Azure portálon](https://docs.microsoft.com/en-us/azure/iot-dps/quick-setup-auto-provision).
+* Hozzon létre, és az IoT-központ és egy eszköz-üzembehelyezési szolgáltatáspéldány lépéseit követve összekapcsolásához [a IoT Hub eszköz kiépítése szolgáltatás beállítása az Azure portálon](/azure/iot-dps/quick-setup-auto-provision).
 
-## <a name="set-up-the-device-provisioning-service-configuration-on-the-device"></a>Az eszköz-üzembehelyezési az eszközön a szolgáltatás konfigurációjának beállítása
+## <a name="build-and-deploy-auto-provisioning-registration-software-to-the-device"></a>Hozza létre és automatikus kiépítés regisztrációs szoftver telepítése az eszközre
 
 A DevKit az eszköz-üzembehelyezési létrehozott szolgáltatáspéldány való csatlakozáshoz:
 
@@ -51,7 +51,7 @@ A DevKit az eszköz-üzembehelyezési létrehozott szolgáltatáspéldány való
   git clone https://github.com/DevKitExamples/DevKitDPS.git
   ```
 
-4. Nyissa meg a Visual Studio Code DevKit csatlakozzon ahhoz a számítógéphez, és nyissa meg a klónozott kódot tartalmazó mappát.
+4. Nyissa meg a Visual Studio Code, a DevKit kapcsolódni a számítógéphez, és nyissa meg a klónozott kódot tartalmazó mappát.
 
 5. Nyissa meg **DevKitDPS.ino**. Keresés és csere `[Global Device Endpoint]` és `[ID Scope]` le feljegyzett értékekkel.
   ![Terjesztési pontok végpont](./media/how-to-connect-mxchip-iot-devkit/endpoint.png) hagyhatja a **registrationId** üres. Az alkalmazás létrehoz egyet a MAC-cím és a belső vezérlőprogram verziója alapján. Ha szeretné testre szabni a regisztrációs Azonosítót, használjon csak alfanumerikus, kis, és az kötőjel kombinációk egy legfeljebb 128 karakter hosszú lehet. További információkért lásd: [kezelése az Azure-portálon eszközbeléptetésnél](https://docs.microsoft.com/en-us/azure/iot-dps/how-to-manage-enrollments).
@@ -62,7 +62,7 @@ A DevKit az eszköz-üzembehelyezési létrehozott szolgáltatáspéldány való
 
 ## <a name="save-a-unique-device-secret-on-an-stsafe-security-chip"></a>Az eszköz egyedi titkos kulcs mentése a egy STSAFE biztonsági lapka használata
 
-Az eszköz-üzembehelyezési szolgáltatás konfigurálható alapján egy eszközön a [hardveres biztonsági modul](https://azure.microsoft.com/en-us/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/). A MXChip IoT DevKit használja a [eszköz identitása összeállítás motor](https://trustedcomputinggroup.org/wp-content/uploads/Foundational-Trust-for-IOT-and-Resource-Constrained-Devices.pdf) a a [Trusted Computing Group](https://trustedcomputinggroup.org). A *az eszköz egyedi titkos kulcs* (UDS) egy STSAFE biztonsági mentése a DevKit lapka létrehozásához használja az eszközhöz tartozó egyedi [X.509](https://docs.microsoft.com/en-us/azure/iot-dps/tutorial-set-up-device#select-a-hardware-security-module) tanúsítvány. A tanúsítvány a regisztrációs folyamat esetén az eszköz-üzembehelyezési szolgáltatás később is használható.
+Automatikus kiépítés konfigurálható egy eszközön, az eszköz alapján [állapotigazolási mechanizmus](concepts-security.md#attestation-mechanism). A MXChip IoT DevKit használja a [eszköz identitása összeállítás motor](https://trustedcomputinggroup.org/wp-content/uploads/Foundational-Trust-for-IOT-and-Resource-Constrained-Devices.pdf) a a [Trusted Computing Group](https://trustedcomputinggroup.org). A *az eszköz egyedi titkos kulcs* (UDS) egy STSAFE biztonsági mentése a DevKit lapka létrehozásához használja az eszközhöz tartozó egyedi [X.509 tanúsítvány](concepts-security.md#x509-certificates). Ezzel a tanúsítvánnyal később a beléptetési folyamat az eszköz-üzembehelyezési szolgáltatás, és futásidőben regisztrálás során.
 
 Egy tipikus eszköz egyedi titkos kulcs egy 64 karakterből álló karakterlánc, az alábbi mintában látható módon:
 
@@ -82,7 +82,7 @@ Az eszköz egyedi titkos kulcs található a DevKit mentéséhez:
 
 4. A soros figyelő ablakban írja be a *set_dps_uds [your_own_uds_value]* válassza ki az ENTER billentyűt.
   > [!NOTE]
-  > Például, ha az utolsó két karakterek módosításával beállíthatja a saját UDS `f`, meg kell adnia az ehhez hasonló parancsot: set_dps_uds 19e25a259d0c2be03a02d416c05c48ccd0cc7d1743458aae1cb488b074993eff.
+  > Például, ha az utolsó két karakterek módosításával beállíthatja a saját UDS `f`, meg kell adnia az ehhez hasonló parancsot: `set_dps_uds 19e25a259d0c2be03a02d416c05c48ccd0cc7d1743458aae1cb488b074993eff`.
 
 5. A soros figyelő ablak bezárása nélkül nyomja meg a **alaphelyzetbe** a DevKit gombjára.
 
@@ -100,23 +100,24 @@ Az eszköz egyedi titkos kulcs található a DevKit mentéséhez:
 
 2. Illessze be a két fájlt a **eszközök** ugyanazon a szinten, a mappa a **.build** mappa.
 
-3. Run **dps_cert_gen.exe**. Az útmutatást követve írja be a **UDS**, a **MAC-cím** a DevKit a és a **belsővezérlőprogram-verziónként** X.509-tanúsítvány létrehozásához.
+3. Futtatás **dps_cert_gen.exe**. Az útmutatást követve írja be a **UDS**, a **MAC-cím** a DevKit a és a **belsővezérlőprogram-verziónként** X.509-tanúsítvány létrehozásához.
   ![Run dps-cert-gen.exe](./media/how-to-connect-mxchip-iot-devkit/dps-cert-gen.png)
 
 4. Miután az X.509 tanúsítvány jön létre, egy **.pem** tanúsítvány ugyanabban a mappában vannak mentve.
 
 ## <a name="create-a-device-enrollment-entry-in-the-device-provisioning-service"></a>Hozzon létre egy eszköz beléptetési az eszköz-üzembehelyezési szolgáltatás
 
-1. Az Azure portálon lépjen a létesítési szolgáltatás. Válassza ki **regisztrációkat kezelése**, majd válassza ki a **egyedi regisztrációkat** lapon. ![Egyes regisztrációkat](./media/how-to-connect-mxchip-iot-devkit/individual-enrollments.png)
+1. Az Azure-portálon keresse meg az eszköz kiépítése szolgáltatáspéldány. Válassza ki **regisztrációkat kezelése**, majd válassza ki a **egyedi regisztrációkat** lapon. ![Egyes regisztrációkat](./media/how-to-connect-mxchip-iot-devkit/individual-enrollments.png)
 
 2. Válassza a **Hozzáadás** lehetőséget.
 
-3. A **mechanizmus**, jelölje be **X.509**.
-  ![Tanúsítvány feltöltése](./media/how-to-connect-mxchip-iot-devkit/upload-cert.png)
+3. A "Hozzáadás regisztrációja" panelen:
+   - Válassza ki **X.509** alatt **mechanizmus**
+   - Válassza a "Fájl kijelölése" **elsődleges .pem vagy a .cer fájlt**
+   - a fájl megnyitása párbeszédpanelen keresse meg és töltse fel a **.pem** imént létrejött tanúsítványt
+   - a többi alapértelmezett hagyja, és kattintson **mentése**
 
-4. A **.pem vagy .cer kiterjesztésű tanúsítványfájlt**, töltse fel a **.pem** imént létrejött tanúsítványt.
-
-5. Alapértelmezett, és válassza ki a többi hagyja **mentése**.
+   ![Tanúsítvány feltöltése](./media/how-to-connect-mxchip-iot-devkit/upload-cert.png)
 
 ## <a name="start-the-devkit"></a>Indítsa el a DevKit
 

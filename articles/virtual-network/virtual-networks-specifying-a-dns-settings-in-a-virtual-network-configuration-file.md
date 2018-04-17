@@ -1,10 +1,10 @@
 ---
-title: "DNS-beállítások megadása a virtuális hálózati konfigurációs fájlban |} Microsoft Docs"
-description: "A klasszikus üzembe helyezési modellel virtuális hálózati konfigurációs fájl használatával egy virtuális hálózat DNS-kiszolgáló beállításainak módosítása"
+title: DNS-beállítások megadása a virtuális hálózati konfigurációs fájlban |} Microsoft Docs
+description: A klasszikus üzembe helyezési modellel virtuális hálózati konfigurációs fájl használatával egy virtuális hálózat DNS-kiszolgáló beállításainak módosítása
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: carmonm
+author: genli
+manager: cshepard
 editor: tysonn
 tags: azure-service-management
 ms.assetid: a8905927-92ac-42b5-8c33-8e42c000692c
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
-ms.author: jdial
-ms.openlocfilehash: ec33268915a1888509834ce6a5b2bc782a12ce4a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: genli
+ms.openlocfilehash: 8e6cfc285b3fb23944dfa0189bb492a9b8fa9a88
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="specifying-dns-settings-in-a-virtual-network-configuration-file"></a>DNS-beállítások megadása a virtuális hálózati konfigurációs fájlban
 A hálózati konfigurációs fájl van két olyan elemet, a tartománynévrendszer (DNS) beállítások megadására használható: **DnsServers** és **DnsServerRef**. Adja hozzá a DNS-kiszolgálók listáját az IP-címek megadásával, és hivatkozzon a neveket a **DnsServers** elemet. Ezután egy **DnsServerRef** elemet adja meg, melyik DNS-kiszolgálóbejegyzéseik az DnsServers elemből különböző hálózati helyek, virtuális hálózaton belül használják.
@@ -63,7 +63,7 @@ A hálózati konfigurációs fájlt a következő elemet tartalmazhatnak. A cím
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Megérteni a [Azure-beli virtuális hálózat konfigurációs séma](http://go.microsoft.com/fwlink/?LinkId=248093).
 * Megérteni a [Azure szolgáltatás konfigurációs séma](https://msdn.microsoft.com/library/windowsazure/ee758710).
 * [Konfigurálja a hálózati konfigurációs fájlokat használó virtuális hálózatot](virtual-networks-using-network-configuration-file.md).

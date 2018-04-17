@@ -1,17 +1,17 @@
 ---
 title: " A konfigurációs kiszolgáló, az Azure Site Recovery vész-helyreállítási fizikai kiszolgáló kezelése |} Microsoft Docs"
-description: "A cikkből megtudhatja, hogyan felügyelheti a fizikai kiszolgáló vész-helyreállítási az Azure-ba, az Azure Site Recovery szolgáltatásban meglévő konfigurációs kiszolgáló."
+description: A cikkből megtudhatja, hogyan felügyelheti a fizikai kiszolgáló vész-helyreállítási az Azure-ba, az Azure Site Recovery szolgáltatásban meglévő konfigurációs kiszolgáló.
 services: site-recovery
 author: AnoopVasudavan
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 04/11/2018
 ms.author: anoopkv
-ms.openlocfilehash: 2fdccade577788d3fc5bc076604547b2ab6690d9
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 84969ff04684003a04f99b4fbf7f03be4140a277
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>A fizikai kiszolgáló vész-helyreállítási kiszolgáló kezelése
 
@@ -24,7 +24,7 @@ A táblázat összefoglalja a prerequistes üzembe helyezéséhez a konfiguráci
 | **Összetevő** | **Követelmény** |
 | --- |---|
 | Processzormagok| 8 |
-| RAM | 12 GB|
+| RAM | 16 GB|
 | Lemezek száma | 3., beleértve az operációs rendszer lemez, a folyamat kiszolgáló gyorsítótár lemez és a feladat-visszavételi adatmegőrzési meghajtó |
 | – Lemez szabad területe (Folyamatkiszolgálói gyorsítótár) | 600 GB
 | Lemez szabad területe (adatmegőrzési lemez) | 600 GB|
@@ -36,7 +36,7 @@ A táblázat összefoglalja a prerequistes üzembe helyezéséhez a konfiguráci
 | IIS | -Nincs már meglévő alapértelmezett webhely <br> -Engedélyezése [névtelen hitelesítés](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Engedélyezése [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) beállítás  <br> -Egyetlen már meglévő webhely vagy alkalmazás figyeli a 443-as port<br>|
 | A hálózati adapter típusa | VMXNET3 (ha VMware virtuális gépként telepített) |
 | IP-cím típusa | Statikus |
-| Internetelérés | A kiszolgáló URL-hozzáférésre van szüksége: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - dc.services.visualstudio.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi (nem szükséges kibővíthető folyamatkiszolgálókhoz) <br> - time.nist.gov <br> - time.windows.com |
+| Internetelérés | A kiszolgáló URL-hozzáférésre van szüksége: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - dc.services.visualstudio.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi (kibővített folyamat kiszolgálók nem kötelező) <br> - time.nist.gov <br> - time.windows.com |
 | Portok | 443 (vezérlőcsatorna-vezénylés)<br>9443 (Adatátvitel)|
 
 ## <a name="download-the-latest-installation-file"></a>A legfrissebb telepítőfájljának letöltése

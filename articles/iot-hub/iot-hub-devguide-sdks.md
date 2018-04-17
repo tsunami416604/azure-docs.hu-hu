@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/12/2018
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2380e72083ec0c9453db991be5fbcc89310cee17
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 71d02e3f8bf0757d7ea0622e76b95acda1fefc95
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Megismeréséhez és használatához Azure IoT Hub SDK-k
 
@@ -33,7 +33,7 @@ További tudnivalók az Azure IoT SDK-k használatával történő fejlesztésé
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-## <a name="azure-iot-device-sdks"></a>Azure IoT device SDKs
+## <a name="azure-iot-device-sdks"></a>Az Azure SDK-k IoT-eszközök
 
 A Microsoft Azure IoT-eszközök SDK-k, amely elősegíti a épület eszközök és alkalmazások és szolgáltatások Azure IoT-központ által kezelt-kódot tartalmaz.
 
@@ -74,12 +74,12 @@ Bizonyos hardvereszközök kompatibilisek SDK kapcsolatos további információk
 
 Az Azure IoT szolgáltatás SDK-k lehetővé teszi az épület alkalmazásokat közvetlenül az IoT-központ kezelheti az eszközöket és a biztonsági kódot tartalmazhatnak.
 
-Azure IoT Hub service SDK for .NET:
+.NET-keretrendszerhez készült Azure IoT-központ szolgáltatás SDK:
 * Töltse le a [Nuget][lnk-nuget-csharp-service]
 * [Forráskód][lnk-dotnet-sdk]
 * [API-referencia][lnk-dotnet-service-ref]
 
-Azure IoT Hub service SDK for Java: 
+Javához készült Azure IoT-központ szolgáltatás SDK: 
 * Adja hozzá [Maven] [ lnk-maven-service] projekt
 * [Forráskód][lnk-java-sdk]
 * [API-referencia][lnk-java-service-ref]
@@ -93,7 +93,7 @@ Python-hez készült Azure IoT-központ szolgáltatás SDK:
 * Töltse le a [pip][lnk-pip-service]
 * [Forráskód][lnk-python-sdk]
 
-Azure IoT Hub service SDK for C: 
+Az Azure IoT-központ szolgáltatás SDK C: 
 * Töltse le a [apt get, MBED, Arduino IDE vagy Nuget][lnk-c-package]
 * [Forráskód][lnk-c-sdk]
 
@@ -124,10 +124,10 @@ Az IoT Hub fejlesztői útmutató egyéb témaköröket tartalmazza:
 [lnk-dotnet-service-ref]: https://docs.microsoft.com/dotnet/api/microsoft.azure.devices
 [lnk-c-ref]: https://azure.github.io/azure-iot-sdk-c/index.html
 [lnk-java-ref]: https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device
-[lnk-node-ref]: https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device
+[lnk-node-ref]: https://docs.microsoft.com/javascript/api/azure-iot-device/?view=azure-iot-typescript-latest
 [lnk-rest-ref]: https://docs.microsoft.com/rest/api/iothub/
 [lnk-java-service-ref]: https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service
-[lnk-node-service-ref]: https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service
+[lnk-node-service-ref]: https://docs.microsoft.com/javascript/api/azure-iothub/?view=azure-iot-typescript-latest
 
 [lnk-maven-device]: https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md#for-the-device-sdk
 [lnk-maven-service]: https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md#for-the-service-sdk

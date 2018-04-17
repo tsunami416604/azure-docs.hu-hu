@@ -1,36 +1,24 @@
 ---
-title: "Az Azure-ból betöltése az Azure data warehouse-blob |} Microsoft Docs"
-description: "Útmutató az Azure blob storage adatok betöltése az SQL Data Warehouse PolyBase segítségével. A nyilvános adatok a Contoso kereskedelmi adatraktár sémába néhány táblák betöltése."
+title: Az Azure SQL Data Warehouse Contoso kereskedelmi adatok betöltése |} Microsoft Docs
+description: A PolyBase és T-SQL-parancsok segítségével két tábla a Contoso kiskereskedelmi adatok betöltése az Azure SQL Data Warehouse.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: barbkess
-editor: 
-ms.assetid: faca0fe7-62e7-4e1f-a86f-032b4ffcb06e
+author: ckarst
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: loading
-ms.date: 10/31/2016
-ms.author: barbkess
-ms.openlocfilehash: 4221bcd5a50fad680427a500e32837c1e75dd990
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/12/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: c32068c965810da8e9072094b5832c7943f2841d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="load-data-from-azure-blob-storage-into-sql-data-warehouse-polybase"></a>Adatok betöltése az Azure blob storage az SQL Data warehouse-ba (PolyBase)
-> [!div class="op_single_selector"]
-> * [Data Factory](sql-data-warehouse-load-from-azure-blob-storage-with-data-factory.md)
-> * [PolyBase](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
-> 
-> 
+# <a name="load-contoso-retail-data-to-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse Contoso kereskedelmi adatok betöltése
 
-Adatok betöltése az Azure blob storage az Azure SQL Data Warehouse PolyBase és T-SQL-parancsok segítségével 
-
-Legyen egyszerű, hogy ez az oktatóanyag tölti be a két tábla az egy nyilvános Azure Storage-Blobból a Contoso kereskedelmi adatraktár sémába. A teljes adatkészlet betöltéséhez futtassa a példa [betölteni a teljes Contoso kereskedelmi adatraktár] [ Load the full Contoso Retail Data Warehouse] a Microsoft SQL Server minták tárházból.
+A PolyBase és T-SQL-parancsok segítségével két tábla a Contoso kiskereskedelmi adatok betöltése az Azure SQL Data Warehouse. A teljes adatkészlet betöltéséhez futtassa a példa [betölteni a teljes Contoso kereskedelmi adatraktár](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md) a Microsoft SQL Server minták tárházból.
 
 Az oktatóanyag tartalma:
 

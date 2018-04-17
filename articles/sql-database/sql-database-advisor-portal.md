@@ -9,11 +9,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: a9b9bec4fd48c44ece9d762b539cd3d6e10c1858
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 92a7b46469bad56af2e08de98a1f79b4b8059eda
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Keresse meg és teljesítmény javaslatok alkalmazása
 
@@ -21,7 +21,7 @@ Használhatja az Azure portálon található teljesítmény javaslatokat is opti
 
 ## <a name="viewing-recommendations"></a>Javaslatok megtekintése
 
-Megtekintheti és teljesítmény ajánlások érvényesek, kell a megfelelő [szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-what-is.md) engedélyek az Azure-ban. **Olvasó**, **SQL DB Contributor** engedélyekre van szükség a javaslatok, megtekintése és **tulajdonos**, **SQL DB Contributor** engedélyek szükségesek végre semmilyen műveletet; Hozzon létre vagy dobjon el indexeket, és indexlétrehozás megszakítását.
+Megtekintheti és teljesítmény ajánlások érvényesek, kell a megfelelő [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md) engedélyek az Azure-ban. **Olvasó**, **SQL DB Contributor** engedélyekre van szükség a javaslatok, megtekintése és **tulajdonos**, **SQL DB Contributor** engedélyek szükségesek végre semmilyen műveletet; Hozzon létre vagy dobjon el indexeket, és indexlétrehozás megszakítását.
 
 Azure-portál teljesítménye javaslatok kereséséhez tegye a következőket:
 
@@ -154,5 +154,5 @@ A javaslatok figyelése, és továbbra is alkalmazandó, pontosítsa a teljesít
 ## <a name="additional-resources"></a>További források
 * [A Lekérdezéstár](https://msdn.microsoft.com/library/dn817826.aspx)
 * [INDEX LÉTREHOZÁSA](https://msdn.microsoft.com/library/ms188783.aspx)
-* [Szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-what-is.md)
+* [Szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md)
 

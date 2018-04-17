@@ -16,12 +16,12 @@ A klasszikus IaaS-erőforrásokra támogatott az áttelepítés során
 * Virtuális hálózatok
 * VPN Gateway átjárók
 * Express Route átjárók _(a tárolóként ugyanazt az előfizetést virtuális hálózat csak)_
-* Network Security Groups (Hálózati biztonsági csoportok) 
-* Útvonaltáblák 
-* Fenntartott IP-címek 
+* Network Security Groups (Hálózati biztonsági csoportok)
+* Útvonaltáblák
+* Fenntartott IP-címek
 
 ## <a name="supported-scopes-of-migration"></a>Az áttelepítés támogatott hatókörök
-Többféleképpen 4 számítási, hálózati és tárolási erőforrásokat áttelepítésének befejezéséhez. Ezek a 
+Többféleképpen 4 számítási, hálózati és tárolási erőforrásokat áttelepítésének befejezéséhez. Ezek a
 
 * (Nem része virtuális hálózatnak) virtuális gépek áttelepítése
 * Virtuális gépek (a virtuális hálózat) áttelepítése
@@ -77,7 +77,7 @@ A következő szolgáltatások jelenleg nem támogatottak. Opcionálisan eltávo
 | Számítás | Virtuálisgép-lemezképeket. | A VHD-blobok ezeknek a lemezeknek mögött fog települnek, ha a Tárfiók telepít át |
 | Network (Hálózat) | Végponti ACL-eket. | Távolítsa el a végponti ACL-eket, és ismételje meg az áttelepítés. |
 | Network (Hálózat) | Application Gateway | Távolítsa el az Alkalmazásátjáró áttelepítésének megkezdése előtt, és ezután hozza létre újból az Application Gateway áttelepítés befejezése után. |
-| Network (Hálózat) | Virtuális hálózatok használatával a Vnetben társviszony-létesítés. | Telepítse át a virtuális hálózati erőforrás-kezelő, majd a partnert. További információ [Vnetben társviszony-létesítés](../articles/virtual-network/virtual-network-peering-overview.md). | 
+| Network (Hálózat) | Virtuális hálózatok használatával a Vnetben társviszony-létesítés. | Telepítse át a virtuális hálózati erőforrás-kezelő, majd a partnert. További információ [Vnetben társviszony-létesítés](../articles/virtual-network/virtual-network-peering-overview.md). |
 
 ### <a name="unsupported-configurations"></a>Nem támogatott konfigurációk
 A következő konfigurációk jelenleg nem támogatottak.
@@ -85,7 +85,7 @@ A következő konfigurációk jelenleg nem támogatottak.
 | Szolgáltatás | Konfiguráció | Ajánlás |
 | --- | --- | --- |
 | Resource Manager |Szerepköralapú hozzáférés vezérlés (RBAC) hagyományos erőforrások |Az erőforrás URI az áttelepítés után módosult, mert ajánlott, hogy megtörténjen-e az áttelepítés után kell RBAC házirend-frissítési tervezi. |
-| Számítás |A virtuális gépek társított több alhálózattal |Frissítse a való hivatkozáshoz csak alhálózatok alhálózati konfigurációt. |
+| Számítás |A virtuális gépek társított több alhálózattal |Frissítse a alhálózati konfigurációt való hivatkozáshoz csak egy alhálózattal rendelkezik. Ez előfordulhat, hogy egy másodlagos hálózati adapter (hivatkozik egy másik alhálózat) eltávolítása a virtuális Gépet, majd csatlakoztassa újra áttelepítés befejeződése után. |
 | Számítás |Virtuális gépek, virtuális hálózathoz tartozó, de nincs hozzárendelve egy explicit alhálózatot |Törölheti a virtuális gép nem kötelező. |
 | Számítás |Riasztások, automatikus skálázás házirendek rendelkező virtuális gépek |Az áttelepítés végighalad, és ezeket a beállításokat a rendszer eldobja. Erősen ajánlott a környezet értékeléséhez, az áttelepítés előtt. Újrakonfigurálhatja azt is megteheti, az értesítés beállításait az áttelepítés befejezése után. |
 | Számítás |XML-Virtuálisgép-bővítmények (BGInfo 1.*, a Visual Studio hibakereső funkcióját, a Web Deploy és távoli hibakeresés) |Ez nem támogatott. Javasoljuk, hogy ezek a bővítmények eltávolítása a virtuális gép áttelepítése a folytatáshoz, vagy azok el lesz dobva, automatikusan az áttelepítési folyamat során. |
@@ -98,7 +98,7 @@ A következő konfigurációk jelenleg nem támogatottak.
 | Network (Hálózat) | Klasszikus Expressroute-Kapcsolatcsoportok |Ez jelenleg nem támogatott. Ezek a kapcsolatok kell áttelepíteni az Azure Resource Manager infrastruktúra-szolgáltatási áttelepítésének megkezdése előtt. További információt a további részletekért lásd [a Resource Manager üzembe helyezési modellben a klasszikus áthelyezése ExpressRoute-Kapcsolatcsoportok](../articles/expressroute/expressroute-move.md).|
 | Azure App Service |Virtuális hálózatok, amelyek tartalmazzák az App Service-környezetek |Ez jelenleg nem támogatott. |
 | Azure HDInsight |Virtuális hálózatok, amelyek tartalmazzák a HDInsight-szolgáltatások |Ez jelenleg nem támogatott. |
-| Microsoft Dynamics Lifecycle Services |Dynamics életciklus szolgáltatások által kezelt virtuális gépeket tartalmazó virtuális hálózatok |Ez jelenleg nem támogatott. |
+| A Microsoft Dynamics életciklus szolgáltatások |Dynamics életciklus szolgáltatások által kezelt virtuális gépeket tartalmazó virtuális hálózatok |Ez jelenleg nem támogatott. |
 | Azure AD Domain Services |Virtuális hálózatok, amelyek tartalmazzák az Azure AD tartományi szolgáltatások |Ez jelenleg nem támogatott. |
 | Azure RemoteApp |Virtuális hálózatok, amelyek tartalmazzák az Azure RemoteApp központi telepítések |Ez jelenleg nem támogatott. |
 | Azure API Management |Virtuális hálózatok, amelyek tartalmazzák az Azure API Management központi telepítések |Ez jelenleg nem támogatott. Az infrastruktúra-szolgáltatási virtuális hálózaton át, módosítsa a virtuális hálózat, az API Management környezetben, amely nincs állásidő művelet. |

@@ -1,23 +1,23 @@
 ---
-title: "Azure Service Fabric önálló fürt telepítési előkészítése |} Microsoft Docs"
-description: "A környezet előkészítése és a fürt konfigurációjának, figyelembe kell venni a termelési alkalmazások és szolgáltatások kezelése szánt fürt üzembe helyezése előtt létrehozása kapcsolatos dokumentációját."
+title: Azure Service Fabric önálló fürt telepítési előkészítése |} Microsoft Docs
+description: A környezet előkészítése és a fürt konfigurációjának, figyelembe kell venni a termelési alkalmazások és szolgáltatások kezelése szánt fürt üzembe helyezése előtt létrehozása kapcsolatos dokumentációját.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/12/2017
-ms.author: dekapur;maburlik;chackdan
-ms.openlocfilehash: b1190ec5a3ff70a368b29465699f9082d2b989bf
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: dekapur;maburlik;aljo
+ms.openlocfilehash: 62673025f5c597f6ed958ad523190d937a52c912
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 <a id="preparemachines"></a>
 
@@ -49,11 +49,11 @@ UDs művelet ad meg, beállíthatja az egyes UD nevét. Például az alábbi nev
 
 Részletesebb információ a FDs és UDs, lásd: [a Service Fabric-fürt leíró](service-fabric-cluster-resource-manager-cluster-description.md).
 
-A fürt éles környezetben kell span legalább három FDs ahhoz, hogy az éles környezet esetén nem támogatott, ha a karbantartási és kezelési csomópont teljes hozzáféréssel rendelkezik, azaz való telepítésért felelős frissítés és a gépek cseréje. A fürtök (azaz Amazon Web Services Virtuálisgép-példányok) környezetben fut, amelyhez nem rendelkezik teljes hozzáférés a gépeket a fürt legalább öt FDs kell rendelkeznie. Minden egyes FD egy vagy több csomópont is rendelkezhetnek. Ez a gép frissítések és verziófrissítések, amelyek attól függően, hogy azok időzítése is az alkalmazások és szolgáltatások fürtök futtató intefere által okozott problémák megelőzése érdekében.
+A fürt éles környezetben kell span legalább három FDs ahhoz, hogy az éles környezet esetén nem támogatott, ha a karbantartási és kezelési csomópont teljes hozzáféréssel rendelkezik, ez azt jelenti, hogy való telepítésért felelős frissítés és a gépek cseréje. A fürtök (Ez azt jelenti, hogy Amazon Web Services Virtuálisgép-példányok) környezetben fut, amelyhez nem rendelkezik teljes hozzáférés a gépeket a fürt legalább öt FDs kell rendelkeznie. Minden egyes FD egy vagy több csomópont is rendelkezhetnek. Ez a gép frissítések és verziófrissítések, amelyek attól függően, hogy azok időzítési megzavarhatja a futó alkalmazások és szolgáltatások a fürtök által okozott problémák megelőzése érdekében.
 
 ## <a name="determine-the-initial-cluster-size"></a>A fürtcsomópontok kezdeti mérete határozza meg
 
-Általában a fürtben található csomópontok számát határozza meg a üzleti igények alapján, azaz, hogy hány szolgáltatások és a tárolók fog futni a fürtön, és hány erőforrások van szüksége a terhelés fenntartása érdekében. Az éles fürtök esetén azt ajánljuk legalább 5 csomópontok a fürt 5 FDs átfedés. Azonban a fent leírtaknak megfelelően, ha a csomópontok teljes hozzáféréssel rendelkeznek, és három FDs is kiterjedhet három csomópontot kell is tegye a feladatot.
+Általában a fürtben található csomópontok számát határozza meg, amely üzleti igényeinek, hogy hány szolgáltatások és tárolók fut a fürtön, és hány erőforrások van szüksége a terhelés fenntartása érdekében. A termelési fürtök ajánlott legalább öt csomóponttal rendelkezik a fürtön, 5 FDs átfedés. Azonban a fent leírtaknak megfelelően, ha a csomópontok teljes hozzáféréssel rendelkeznek, és három FDs is kiterjedhet három csomópontot kell is tegye a feladatot.
 
 Állapotalapú alkalmazások és szolgáltatások futtatása tesztfürtökön kell három csomópontot, mivel csak a csak az állapot nélküli munkaterheléseket futó tesztfürtökön egy csomópont. Azt is megjegyezni, hogy fejlesztési célra lehet egynél több csomópont az adott számítógépen. Éles környezetben azonban a Service Fabric támogatja az egyes fizikai vagy virtuális gép csak egy csomópont.
 
@@ -99,7 +99,7 @@ Amikor a fürt rendszergazdája konfigurálja a különálló Service Fabric-fü
 * El kell távolítani a Service Fabric SDK
 * Rendelkezik a Service Fabric-futtatókörnyezet eltávolítása 
 * A Windows tűzfalszolgáltatást (mpssvc) engedélyezve van
-* A távoli beállításjegyzék szolgáltatás (remoteregistry) engedélyezve van
+* A távoli beállításjegyzék szolgáltatást (a távoli beállításjegyzék) engedélyezve van
 * Fájl megosztási (SMB) engedélyezve van
 * Rendelkezik a szükséges portok nyitva, a fürt konfigurációs portok alapján
 * Rendelkezik a Windows az SMB és a távoli beállításjegyzék szolgáltatás számára szükséges portok: 135-ös, 137, 138, 139 és 445-ös
@@ -165,5 +165,5 @@ Jelenleg ez a konfiguráció tesztelési modul nem felel meg a biztonsági beál
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A Windows Server rendszert futtató önálló fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md)

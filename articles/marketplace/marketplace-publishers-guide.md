@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: 07fb601b2cf6e3fe3cc9bfb7bca3bdcbec7e9ca7
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f090bcd56377d167dddab1b8f942d473aecb66a2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Az Azure piactér és AppSource publisher útmutató
 
@@ -114,15 +114,14 @@ Minden egyes kirakat több közzétételi beállítások és ajánlat típusokat
 |---------|---------|---------|
 |**List**    |    Megkereshetnek, tanácsadás     |  Azure Marketplace, AppSource       |
 |**Próbaverzió**   |     Ingyenes próbaverzió, SaaS-próbaverzióra, interaktív bemutató, kipróbálása    |  Azure Marketplace, AppSource       |
-|**Transaction**     |   Virtuális gép, sablon megoldás, felügyelt alkalmazás      |    Azure Piactér     |
+|**Tranzakció**     |   Virtuális gép, sablon megoldás, felügyelt alkalmazás      |    Azure Piactér     |
 
 ### <a name="list"></a>Lista
 
 Használjon forduljon kérek a próba- vagy tranzakció-szintjén részvétel esetén nem valósítható meg. Ennek a megközelítésnek az az előnye, azonnali megkezdéséhez fogadására, amely képes elindítani az üzleti lendkerék eligazodást üzletek be kell nurtured érdeklődők piacra jutási megoldással közzétevők hasonlít. Azonban a hátránya, hogy az ügyfél engagement korlátozva, szemben a más típusú.
 
 >[!IMPORTANT]
-<<<<<<< HEAD ügyfél engagement próbaverzió és a Transact-kínál. Me forduljon érték megkapja az érdeklődési, tehát ha úgy dönt, hogy a lista tartalmazza az ilyen típusú, győződjön meg arról, hogy a vezető cél van beállítva, és készen áll a átfutási maximalizálása. === Nem ajánlott az ügyfél Me listaelem típusát. Akkor használja, csak olyan esetekben fennáll semmilyen módon nem lehet létrehozni egy próbaverziója. Ügyfél engagement esetén ajánlott a próbaverzióval és a tranzakció-ajánlatokkal rendelkező. Ha bármilyen típusú próbaverziója, a bevezetési folyamat varázsló végigvezeti a forgatókönyvtől függően ezek a lehetőségek egyikére.
->>>>>>> 2874631130f763b6e91e8725781400bcb76d6a62
+>Ügyfél engagement próbaverziójában és Transact kínál. Me forduljon érték megkapja az érdeklődési, tehát ha úgy dönt, hogy a lista tartalmazza az ilyen típusú, győződjön meg arról, hogy a vezető cél van beállítva, és készen áll a átfutási maximalizálása. 
 
 Amikor az ajánlat elsősorban szakmai-szolgáltatásokból állnak (például felméréseket, megvalósításokhoz, műhelyek), használja a a Consulting Services tanácsadó szolgálat fel típusa. Ajánlat hatókör, időtartama és ár javítani kell, egyetlen ügyfél számára kell lennie, és a helyen kell elvégezni.
 
@@ -379,7 +378,7 @@ A közzétételi folyamat megkezdése előtt érdemes egy ajánlatot készítés
 |**Az Azure AD-alkalmazás azonosítója**  |  Csak kipróbálása       |
 |**Az Azure AD alkalmazás-kulcs**     |   Csak kipróbálása      |
 
-### <a name="storefrontmarketplace"></a>Storefront/marketplace
+### <a name="storefrontmarketplace"></a>Kirakat/piactér
 
 
 |A közzétételi összetevő lesz szüksége  |Az ajánlattípus  |
@@ -413,7 +412,7 @@ Ebben a szakaszban a lépések azt ismertetik:
 
 |Piactér-regisztrációs lépésében  |Time  |Leírás  |
 |---------|---------|---------|
-| Regisztrálja a Microoft Partner hálózati | 15 perc | Közzétevők regisztrálva kell lennie a Microsoft Partner Network (MPN) első szintű fiók érvényesítése és kap további előnyökkel is jár, és az Azure piactér Publisher alatt támogatása |
+| A Microsoft Partner Network regisztrálása | 15 perc | Közzétevők regisztrálva kell lennie a Microsoft Partner Network (MPN) első szintű fiók érvényesítése és kap további előnyökkel is jár, és az Azure piactér Publisher alatt támogatása |
 |Microsoft azonosító létrehozása     |   15 perc      |   Partnerek Microsoft ID. kell A Microsoft ID a Cloud Partner portálra eléréséhez használható.       |
 |A piactér jelölési űrlap elküldése     |  1-3 napos       |  Partnerek kell küldenie a jóváhagyási folyamat számára a piactér jelölési formájában. Az űrlap elküldése után a piactér bevezetési csapat tekintse át az alkalmazást, és a kérelem érvényesítése.       |
 |Regisztrálja a fejlesztői központban     |    5 – 10 nap     | Alkalmazás regisztrálása a Microsoft Developer Centerben, ellenőrizze, hogy a partner, az ország, amelyen regisztrálva érvényes adó azonosítója érvényes jogalany a Microsoft szükség. A fejlesztői központ lehetővé teszi egy regisztrált a Microsoft developer kell, és adja meg az Azure fejlesztőprogrambeli a hozzáférést a partnert. <br><br>Vegye figyelembe, hogy a piactér jelölési képernyő még nem fejeződött be, ha meg kell adnia $99 regisztrációs díjat kell fizetnie. Ahhoz, hogy ez a díj az elérhetővé tételt követően, a piactér jelölési űrlap kitöltése és kapni fog egy promóciós kódot e-mailben.  |
@@ -493,9 +492,8 @@ Ez az az Azure piactéren a támogatási lehetőségeket listája:
 
 |Támogatási csatornán keresztül  |Leírás  |
 |---------|---------|
-|Slackhez: [csatlakozás a Slackhez piactér](https://join.marketplace.azure.com)    |   Slack környezet műszaki kapcsolatos problémákkal rendelkező partnerek támogatásához. Nincsenek 350 partnerek jelenleg működik-e ebben a környezetben.        |
 |MSDN fórumain: [piactér](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=DataMarket)     | A Microsoft Developer Network fórum.         |
-|Stack overflow webhelyre: [Azure](https://stackoverflow.com/questions/tagged/azure)     |    A verem túlcsordulás környezet megoldások és kérdései vannak az Azure és a piactér kapcsolatos kapcsolatban:<ul><li>[Azure Marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li><li>[Azure Resource Manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li><li>[Azure Virtual Machines](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li></ul> |
+|Stack overflow webhelyre: [Azure](https://stackoverflow.com/questions/tagged/azure)     |    A verem túlcsordulás környezet megoldások és kérdései vannak az Azure és a piactér kapcsolatos kapcsolatban:<ul><li>[Az Azure piactéren](https://stackoverflow.com/questions/tagged/azure-marketplace)</li><li>[Azure Resource Manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li><li>[Azure Virtual Machines](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li></ul> |
 
 
 **Marketing erőforrások**

@@ -1,32 +1,26 @@
 ---
-title: "Hogyan használható az Azure Blob storage-ának iOS |} Microsoft Docs"
-description: "Store unstructured data in the cloud with Azure Blob storage (object storage) (Strukturálatlan adatok tárolása a felhőben Azure Blob Storage-fiókkal (objektumtároló))."
+title: IOS - Azure-objektum (Blob) tárhelyhez használata |} Microsoft Docs
+description: Store unstructured data in the cloud with Azure Blob storage (object storage) (Strukturálatlan adatok tárolása a felhőben Azure Blob Storage-fiókkal (objektumtároló)).
 services: storage
 documentationcenter: ios
 author: michaelhauss
-manager: vamshik
-editor: tysonn
-ms.assetid: df188021-86fc-4d31-a810-1b0e7bcd814b
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 03/21/2018
 ms.author: michaelhauss
-ms.openlocfilehash: f238804e6031fcf3f194695a06bf5b88733a27b9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a15ba7409b4c5f75729b1b40cd2f333c44ae0368
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Blob storage-ának iOS használata
-[!INCLUDE [storage-selector-blob-include](../../../includes/storage-selector-blob-include.md)]
 
-[!INCLUDE [storage-try-azure-tools-blobs](../../../includes/storage-try-azure-tools-blobs.md)]
+Ez a cikk bemutatja, hogyan hajthat végre a szolgáltatást a Microsoft Azure Blob Storage tárolót használó általános forgatókönyvhöz. A minták írt Objective-C és használni a [Azure Storage ügyféloldali kódtára a iOS](https://github.com/Azure/azure-storage-ios). Az ismertetett forgatókönyvek közé tartozik a feltöltése, listázása, letöltése és blobok törlése. A blobok további információkért lásd: a [lépések](#next-steps) szakasz. Emellett letöltheti a [mintaalkalmazás](https://github.com/Azure/azure-storage-ios/tree/master/BlobSample) gyorsan megtekintheti az iOS-alkalmazás az Azure Storage használatát.
 
-## <a name="overview"></a>Áttekintés
-Ez a cikk bemutatja, hogyan hajthat végre a szolgáltatást a Microsoft Azure Blob Storage tárolót használó általános forgatókönyvhöz. A minták írt Objective-C és használni a [Azure Storage ügyféloldali kódtára a iOS](https://github.com/Azure/azure-storage-ios). Az ismertetett forgatókönyvek **feltöltése**, **felsoroló**, **letöltése**, és **törlése** blobokat. A blobok további információkért lásd: a [lépések](#next-steps) szakasz. Emellett letöltheti a [mintaalkalmazás](https://github.com/Azure/azure-storage-ios/tree/master/BlobSample) gyorsan megtekintheti az iOS-alkalmazás az Azure Storage használatát.
+## <a name="what-is-blob-storage"></a>Mi az a Blob storage?
 
 [!INCLUDE [storage-blob-concepts-include](../../../includes/storage-blob-concepts-include.md)]
 
@@ -91,7 +85,7 @@ Ha a Swift használ, akkor hozzon létre egy áthidalási fejlécet, és ott imp
 
 1. Hozzon létre egy fejlécfájlt `Bridging-Header.h`, és adja hozzá a fenti importálási utasítást.
 2. Lépjen a *Build Settings* lapot, és keresse meg *Objective-C Bridging fejléc*.
-3. Kattintson duplán arra a területén *Objective-C Bridging fejléc* és az elérési út hozzáadása a fejléc fájlhoz:`ProjectName/Bridging-Header.h`
+3. Kattintson duplán arra a területén *Objective-C Bridging fejléc* és az elérési út hozzáadása a fejléc fájlhoz: `ProjectName/Bridging-Header.h`
 4. Építse fel a projektet (⌘ + B) Győződjön meg arról, hogy a áthidalási fejléc volt észlelnie xcode-ban.
 5. Indítsa el a közvetlenül a Swift fájl használatával a könyvtárban, és nincs szükség az importálási utasítást.
 
@@ -222,7 +216,7 @@ A következő példa bemutatja, hogyan minden, a tárolóban lévő blobok list�
 
 * **continuationToken** -a folytatási token jelöli, ahol a listázási művelet kell kezdődnie. Ha nincs jogkivonat van megadva, az elejétől blobok felsorolja. Korlátlan számú blobot is listázva lehet, akár egy készlet maximális nulla. Akkor is, ha ez a módszer nulla eredményeket ad vissza, ha `results.continuationToken` értéke nem nulla, előfordulhat, hogy további BLOB szolgáltatás, amely nem szerepel.
 * **előtag** -blob felsorolást használni kívánt előtagot is megadhat. Csak a előtaggal kezdődő blobok jelenik meg.
-* **Listblobs** – ahogy azt a [elnevezési és a tárolók és blobok hivatkozó](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) szakaszban, a Blob szolgáltatás azonban egy egyszerű tároló séma hozhat létre egy virtuális hierarchia történő útvonal-információinak blobok elnevezésével. Azonban nem simán listaelem jelenleg nem támogatott. Ez a funkció hamarosan elérhető. Most ezt az értéket kell **Igen**.
+* **Listblobs** – ahogy azt a [elnevezési és a tárolók és blobok hivatkozó](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) szakaszban, a Blob szolgáltatás azonban egy egyszerű tároló séma hozhat létre egy virtuális hierarchia történő elérési úttal rendelkező blobok elnevezésével információ. Azonban nem simán listaelem jelenleg nem támogatott. Ez a funkció hamarosan elérhető. Most ezt az értéket kell **Igen**.
 * **blobListingDetails** -megadhatja, hogy mely elemek közé tartozik a blobok listázása során
   * _AZSBlobListingDetailsNone_: csak a véglegesített blobok listázása, és nem ad vissza a blob metaadatait.
   * _AZSBlobListingDetailsSnapshots_: véglegesített blobok listázása és a blob-pillanatképeket.
@@ -382,7 +376,7 @@ A következő példa bemutatja, hogyan törölni a tárolót.
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy megismerte a Blob Storage használata az iOS, az alábbi hivatkozásokból tudhat meg többet az iOS-könyvtár és a tároló szolgáltatást.
 
 * [Az IOS rendszerhez készült Azure Storage ügyféloldali kódtár](https://github.com/azure/azure-storage-ios)

@@ -1,11 +1,11 @@
 ---
-title: "Az Azure tárolási sorok és a Service Bus-üzenetsorok képest és ellentétben |} Microsoft Docs"
-description: "Elemzi az Azure által kínált várólisták két típusú közötti Hasonlóságok és különbségeket."
+title: Az Azure tárolási sorok és a Service Bus-üzenetsorok képest és ellentétben |} Microsoft Docs
+description: Elemzi az Azure által kínált várólisták két típusú közötti Hasonlóságok és különbségeket.
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f07301dc-ca9b-465c-bd5b-a0f99bab606b
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/08/2017
 ms.author: sethm
-ms.openlocfilehash: d564f3974b2bc6355bb5dc5320a5193fe3c196af
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: b1919037e3a112659a81e9207c842c279734fb48
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Tárolási sorok és a Service Bus-üzenetsorok - képest és ellentétben
 Ez a cikk elemzi a különbségek és a Microsoft Azure által kínált ma várólisták kétféle Hasonlóságok: tárolási sorok és a Service Bus-üzenetsorok. Ezekre az információkra alapozva összehasonlíthatók az egyes technológiák, és megfontoltabb döntéseket lehet hozni arról, hogy melyik megoldás felel meg leginkább az igényeknek.
@@ -39,7 +39,7 @@ Annak meghatározása, hogy mely üzenetsor-kezelési technológia célja egy ad
 
 Megoldás felelős mérnök vagy fejlesztők **érdemes használni a tárolási sorok** során:
 
-* Az alkalmazás több mint 80 GB üzenetet kell tárolnia a sorhoz, ahol az üzenetek élettartama rövidebb, mint 7 nap.
+* Az alkalmazás több mint 80 GB üzenetet kell tárolnia a sorhoz.
 * Az alkalmazás szeretné nyomon követni a dolgoz fel üzenetet a várólistában belül. Ez akkor hasznos, ha a munkavégző, egy üzenet feldolgozása összeomlik. A későbbi feldolgozók származó, ahol abbahagyta az előzetes worker folytatásához használhatja ezt az információt.
 * Az összes, szemben a várólisták végrehajtott tranzakciók ügyféloldali kiszolgálónapló van szüksége.
 
@@ -51,7 +51,6 @@ Megoldás felelős mérnök vagy fejlesztők **érdemes használni a Service Bus
 * A megoldás ismétlődő automatikus felderítésének támogatásához képesnek kell lennie.
 * Az alkalmazás folyamat üzenetek párhuzamos hosszan futó adatfolyamokként (üzenetek társítva egy adatfolyam használata a [munkamenet-azonosító](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid) az üzenetben tulajdonság). Ebben a modellben minden csomópontja a fogyasztó alkalmazás sávszélességen adatfolyamok üzenetek szemben. Amikor egy felhasználó csomópont rendelkezésére áll az adatfolyam, a csomópont ellenőrizheti az alkalmazás adatfolyam állapotot tranzakciók állapotának.
 * A megoldás szükséges tranzakciós viselkedését és atomicity küldésekor vagy fogadásakor több üzenetet az üzenetsorból.
-* Az idő-live (TTL) jellemző az alkalmazás-specifikus munkaterhelés lépheti túl a 7 napon belül.
 * Az alkalmazás-kezelési üzenetek azért lépheti túl a 64 KB-os kezeli, de valószínűleg nem megközelítés a 256 KB-os korlátozza.
 * Adja meg a küldő és a szerepköralapú hozzáférés-modell, a várólisták és a különböző jogok vagy engedélyek követelmény foglalkozik.
 * A várólista-méret nem fog 80 GB-nál nagyobb.
@@ -107,7 +106,7 @@ Ez a szakasz a tárolási sorok és a Service Bus-üzenetsorok által biztosíto
 | Frissítés helyben |**Igen** |**Igen** |
 | Kiszolgálóoldali tranzakció napló |**Igen** |**Nem** |
 | Storage mérőszámainak |**Igen**<br/><br/>**Metrikák MINUTE**: biztosít a valós idejű metrikák rendelkezésre állás érdekében TP-k, az API-hoz a számát, a hiba száma és további, az összes valós idejű (percenként összesítve, és az éles környezetben csak történtekről néhány percen belül jelentett a hívás. További információkért lásd: [kapcsolatos Storage Analytics Metrics](/rest/api/storageservices/fileservices/About-Storage-Analytics-Metrics). |**Igen**<br/><br/>(tömeges lekérdezések meghívásával [GetQueues](/dotnet/api/microsoft.servicebus.namespacemanager.getqueues#Microsoft_ServiceBus_NamespaceManager_GetQueues)) |
-| Felügyeleti állapot |**Nem** |**Igen**<br/><br/>[Microsoft.ServiceBus.Messaging.EntityStatus.Active](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft.ServiceBus.Messaging.EntityStatus.Disabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft.ServiceBus.Messaging.EntityStatus.SendDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft.ServiceBus.Messaging.EntityStatus.ReceiveDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus) |
+| Állapotkezelés |**Nem** |**Igen**<br/><br/>[Microsoft.ServiceBus.Messaging.EntityStatus.Active](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft.ServiceBus.Messaging.EntityStatus.Disabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft.ServiceBus.Messaging.EntityStatus.SendDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft.ServiceBus.Messaging.EntityStatus.ReceiveDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus) |
 | Automatikus-üzenettovábbítással |**Nem** |**Igen** |
 | Várólista függvény kiürítése |**Igen** |**Nem** |
 | Üzenet csoportok |**Nem** |**Igen**<br/><br/>(révén üzenetkezelési munkamenetek) |
@@ -132,8 +131,8 @@ Ez a szakasz összehasonlítja tárolási sorok és a Service Bus-üzenetsorok s
 | Összehasonlítási feltétel | Tárolási üzenetsorok | Service Bus által kezelt üzenetsorok |
 | --- | --- | --- |
 | A várólista maximális hossza |**500 TB**<br/><br/>(csak egy [tárfiókok kapacitásával egyetlen](../storage/common/storage-introduction.md#queue-storage)) |**1 GB-os 80 GB**<br/><br/>(a várólista létrehozása után definiált és [particionálás engedélyezése](service-bus-partitioning.md) – a "További információk" című rész) |
-| Maximális üzenetméret |**64 KB**<br/><br/>(48 KB használatakor **Base64** kódolás)<br/><br/>Azure nagy üzeneteket is támogatja üzenetsorokat és blobokat – ekkor is sorba helyezni a kombinálásával legfeljebb 200 GB-ot csak egy elemet. |**256 KB-os** vagy **1 MB**<br/><br/>(beleértve a fejléc és a szövegtörzset, maximális fejléc mérete: 64 KB).<br/><br/>Függ a [szolgáltatásréteg](service-bus-premium-messaging.md). |
-| Maximális üzenet TTL tulajdonsága |**7 nap** |**TimeSpan.Max** |
+| Maximális méret |**64 KB**<br/><br/>(48 KB használatakor **Base64** kódolás)<br/><br/>Azure nagy üzeneteket is támogatja üzenetsorokat és blobokat – ekkor is sorba helyezni a kombinálásával legfeljebb 200 GB-ot csak egy elemet. |**256 KB-os** vagy **1 MB**<br/><br/>(beleértve a fejléc és a szövegtörzset, maximális fejléc mérete: 64 KB).<br/><br/>Függ a [szolgáltatásréteg](service-bus-premium-messaging.md). |
+| Maximális üzenet TTL tulajdonsága |**Végtelen** (az api-version 2017-07-27) |**TimeSpan.Max** |
 | Sorok maximális száma |**Korlátlan** |**10,000**<br/><br/>(egyes szolgáltatásnévtér) |
 | Egyidejű ügyfelek maximális száma |**Korlátlan** |**Korlátlan**<br/><br/>(100 egyidejű kapcsolat korlátai csak vonatkozik a TCP protokoll-alapú kommunikációt) |
 

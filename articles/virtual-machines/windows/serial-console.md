@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/05/2018
 ms.author: harijay
-ms.openlocfilehash: 2ff0dcba0912461d8528fc76c7c67d90febc0324
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: d5d855cac9f09f92798d955dda3d66ab6b631091
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Virtuális gép soros konzolon (előzetes verzió) 
 
@@ -33,7 +33,7 @@ A virtuális gép soros konzol az Azure-on Linux és a Windows virtuális gépek
 ## <a name="prerequisites"></a>Előfeltételek 
 
 * A virtuális gépnek rendelkeznie kell [rendszerindítási diagnosztika](boot-diagnostics.md) engedélyezve 
-* A soros konzol használata a fióknak rendelkeznie kell [közreműködői szerepkör](../../active-directory/role-based-access-built-in-roles.md) a virtuális gép és a [rendszerindítási diagnosztika](boot-diagnostics.md) storage-fiók. 
+* A soros konzol használata a fióknak rendelkeznie kell [közreműködői szerepkör](../../role-based-access-control/built-in-roles.md) a virtuális gép és a [rendszerindítási diagnosztika](boot-diagnostics.md) storage-fiók. 
 
 ## <a name="open-the-serial-console"></a>A soros konzol megnyitása
 a virtuális gépek soros konzolon keresztül csak érhető el [Azure-portálon](https://portal.azure.com). A soros konzol virtuális gépek portálon lépéseit az alábbiakban 
@@ -51,12 +51,12 @@ A soros konzol funkcióit a virtuális gép rendszerindítási diagnosztika beá
 ## <a name="serial-console-security"></a>Soros konzol biztonsága 
 
 ### <a name="access-security"></a>Hozzáférés-biztonságot 
-Soros konzoljához való hozzáférés korlátozódik, akik rendelkeznek [VM közreműködők](../../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor) -e a virtuális géphez való hozzáférés. Ha az AAD-bérlőt többtényezős hitelesítést igényel, akkor a soros konzoljához való hozzáférés csak az MFA, az access keresztül [Azure-portálon](https://portal.azure.com).
+Soros konzoljához való hozzáférés korlátozódik, akik rendelkeznek [VM közreműködők](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) -e a virtuális géphez való hozzáférés. Ha az AAD-bérlőt többtényezős hitelesítést igényel, akkor a soros konzoljához való hozzáférés csak az MFA, az access keresztül [Azure-portálon](https://portal.azure.com).
 
 ### <a name="channel-security"></a>Biztonsági csatorna
 Minden adat küldött vissza, és oda a keresztülhaladnak a hálózaton van titkosítva.
 
-### <a name="audit-logs"></a>Auditnaplók
+### <a name="audit-logs"></a>Naplók
 A soros konzol hozzáférésének jelenleg bejelentkezett a [rendszerindítási diagnosztika](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) naplók a virtuális gép. Ezek a naplók elérését tulajdonában lévő és az Azure virtuális gép rendszergazda határozza meg.  
 
 >[!CAUTION] 
@@ -134,7 +134,7 @@ A második kulcs (a \Policies) csak ha a megfelelő csoportházirend-beállítá
 
 A második kulcs (a \Policies) csak lenne szükség, ha a megfelelő csoportházirend-beállítás volt konfigurálva. Érték a következő csoportházirend-frissítés felülíródik, ha erre van konfigurálva, a csoportházirendben.
 
-### <a name="manage-windows-services"></a>Manage Windows Services
+### <a name="manage-windows-services"></a>Windows-szolgáltatások kezelése
 
 #### <a name="view-service-state"></a>Szolgáltatás állapotának megtekintése
 `sc query termservice`
@@ -177,7 +177,7 @@ vagy
 `netsh interface ip set address name="<interface name>" source=dhcp`
 
 Azure virtuális gépek mindig a vendég operációs rendszer IP-cím beszerzése a DHCP használatára kell konfigurálni. Az Azure statikus IP-beállítása DHCP továbbra is használja ahhoz, hogy megkapja a statikus IP-címet a virtuális géphez.
-#### <a name="ping"></a>Pingelési teszt
+#### <a name="ping"></a>Ping
 `ping 8.8.8.8` 
 #### <a name="port-ping"></a>Port ping  
 A telnet-ügyfél telepítése
@@ -355,7 +355,7 @@ A második kulcs (a \Policies) csak ha a megfelelő csoportházirend-beállítá
 `set-itemproperty -path 'hklm:\software\policies\microsoft\windows nt\terminal services' -name 'fdenytsconNections' 0 -type dword`
 
 A második kulcs (a \Policies) csak lenne szükség, ha a megfelelő csoportházirend-beállítás volt konfigurálva. Érték a következő csoportházirend-frissítés felülíródik, ha erre van konfigurálva, a csoportházirendben.
-### <a name="manage-windows-services"></a>Manage Windows Services
+### <a name="manage-windows-services"></a>Windows-szolgáltatások kezelése
 #### <a name="view-service-details"></a>Szolgáltatás részleteinek megtekintése
 `get-wmiobject win32_service -filter "name='termservice'" |  format-list Name,DisplayName,State,StartMode,StartName,PathName,ServiceType,Status,ExitCode,ServiceSpecificExitCode,ProcessId`
 
@@ -399,7 +399,7 @@ vagy
 `(get-wmiobject Win32_NetworkAdapterConfiguration -filter "ServiceName='netvsc'").EnableDHCP()`
 
 `Get-NetAdapter` áll rendelkezésre a 2012 +. A 2008R2 használjon `Get-WmiObject`. Azure virtuális gépek mindig a vendég operációs rendszer IP-cím beszerzése a DHCP használatára kell konfigurálni. Az Azure statikus IP-beállítása DHCP továbbra is használja a virtuális gép biztosítanak az IP-cím.
-#### <a name="ping"></a>Pingelési teszt
+#### <a name="ping"></a>Ping
 `test-netconnection`
 
 vagy
@@ -560,7 +560,7 @@ További információkért lásd: [Azure példány metaadat-szolgáltatás](http
 ## <a name="errors"></a>Hibák
 A legtöbb hiba átmeneti jellegű, és ezek kapcsolódási címet újrapróbálkozás. Táblázat alatti hibák és a megoldás listáját tartalmazza 
 
-Hiba                            |   Kockázatcsökkentés 
+Hiba                            |   Kezelés 
 :---------------------------------|:--------------------------------------------|
 Nem sikerült beolvasni a rendszerindítási diagnosztika beállításainak "<VMNAME>". A soros konzol használatához győződjön meg arról, hogy a rendszerindítási diagnosztika engedélyezve van a virtuális gép. | Győződjön meg arról, hogy rendelkezik-e a virtuális gép [rendszerindítási diagnosztika](boot-diagnostics.md) engedélyezve van. 
 A virtuális gép leállított felszabadított állapotban van. Indítsa el a virtuális Gépet, majd próbálja megismételni a soros konzol kapcsolat. | Virtuális gép a soros konzol eléréséhez elindított állapotban kell lennie.
@@ -570,7 +570,7 @@ Nem sikerült meghatározni az erőforráscsoport a rendszerindítási diagnoszt
 ## <a name="known-issues"></a>Ismert problémák 
 Mivel azt még szakaszaiban preview a soros konzol hozzáféréshez, azt ismert problémákat keresztül dolgozik, a alatt a listája, ezen a lehetséges megoldások 
 
-Probléma                           |   Kockázatcsökkentés 
+Probléma                           |   Kezelés 
 :---------------------------------|:--------------------------------------------|
 A virtuális gép méretezési készlet példány soros konzolon nincs lehetőség | A virtuálisgép-méretezési készlet példánya a soros konzoljához való hozzáférés előzetes időpontjában nem támogatott.
 Elérte-e meg, miután a kapcsolat szalagcím nem jeleníti meg a napló a kérdés | [Elérte-e meg, nincs semmi hatása.](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)

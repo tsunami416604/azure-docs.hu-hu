@@ -1,11 +1,11 @@
 ---
-title: "Több IP-címek az Azure virtuális gépek - portál |} Microsoft Docs"
-description: "Megtudhatja, hogyan több IP-címek hozzárendelése a virtuális gép az Azure portál használatával |} Erőforrás-kezelő."
+title: Több IP-címek az Azure virtuális gépek - portál |} Microsoft Docs
+description: Megtudhatja, hogyan több IP-címek hozzárendelése a virtuális gép az Azure portál használatával |} Erőforrás-kezelő.
 services: virtual-network
 documentationcenter: na
 author: anavinahar
 manager: narayan
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 3a8cae97-3bed-430d-91b3-274696d91e34
 ms.service: virtual-network
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: annahar
-ms.openlocfilehash: 906105e737087de91e7393861e9057f8acb06aa4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 85eefd0d15ed08eaa82983c6901faa0aa1ff303c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Több IP-címek hozzárendelése a virtuális gépek az Azure portál használatával
 
@@ -35,11 +35,11 @@ Ha szeretne létrehozni egy virtuális gép több IP-címet, vagy hozzá statiku
 
 ## <a name="add"></a>IP-címek hozzáadása a virtuális gépek
 
-Egy hálózati adapterre privát és nyilvános IP-címeket adhat hozzá a következő lépések végrehajtásával. A következő szakaszokban szereplő példák azt feltételezik, hogy már van egy virtuális gép leírt három IP-konfigurációk a [forgatókönyv](#Scenario), de ez nem szükséges.
+Egy Azure-hálózat illesztőhöz privát és nyilvános IP-címeket adhat hozzá a következő lépések végrehajtásával. A következő szakaszokban szereplő példák azt feltételezik, hogy már van egy virtuális gép leírt három IP-konfigurációk a [forgatókönyv](#Scenario), de ez nem szükséges.
 
 ### <a name="coreadd"></a>Alapvető lépéseket
 
-1. Tallózással keresse meg az Azure-portálon https://portal.azure.com és bejelentkezési is, ha szükséges.
+1. Keresse meg az Azure portálon, a https://portal.azure.com majd jelentkezni, vagy ha szükséges.
 2. Kattintson a portál **további szolgáltatások** > típus *virtuális gépek* a Szűrő mezőbe, majd **virtuális gépek**.
 3. Az a **virtuális gépek** ablaktáblában kattintson a virtuális gép hozzá szeretné adni az IP-címek hozzárendelését. Kattintson a **hálózati illesztőt** a virtuális gép ablaktábla, amely akkor jelenik meg, és válassza a hálózati illesztő hozzá szeretné adni az IP-címek. A példában a következő ábrán látható, a hálózati adapter neve *myNIC* nevű virtuális gép *myVM* van kiválasztva:
 
@@ -75,7 +75,7 @@ Egy nyilvános IP-címet vagy egy új IP-konfiguráció, vagy egy meglévő IP-k
 
 Egy nyilvános IP-címet az egyik beállítása egy nyilvános IP-cím erőforrás. Ha egy nyilvános IP-cím erőforrás, amely nem rendelheti hozzá az IP-konfigurációt használni kívánt IP-konfigurációt jelenleg társítva van, hagyja ki a következő lépéseket, és az összes kívánt beállítást, hajtsa végre a következő szakaszok, egyik lépéseit. Ha nincs elérhető nyilvános IP-cím erőforrás, végezze el az alábbi lépéseket követve létrehozhat egyet:
 
-1. Tallózással keresse meg az Azure-portálon https://portal.azure.com és bejelentkezési is, ha szükséges.
+1. Keresse meg az Azure portálon, a https://portal.azure.com majd jelentkezni, vagy ha szükséges.
 3. Kattintson a portál **hozzon létre egy erőforrást** > **hálózati** > **nyilvános IP-cím**.
 4. A a **nyilvános IP-cím létrehozása** a megjelenő panelen adjon meg egy **neve**, jelölje be egy **IP-cím hozzárendelése** típus, egy **előfizetés**, egy **Erőforráscsoport**, és egy **hely**, majd kattintson a **létrehozása**, az alábbi ábrán látható módon:
 

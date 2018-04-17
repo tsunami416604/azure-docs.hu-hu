@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2017
-ms.openlocfilehash: 4d971d75424f85bb07c0be779b9dfedb1ef41c1e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f5561ac0089225ae2d06e51a90fa2081e409ce41
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-an-azure-machine-learning-workspace"></a>Azure Machine Learning-munkaterület kezelése
 
@@ -49,7 +49,7 @@ A munkaterület társított webszolgáltatások kezeléséhez használja a Machi
 > [!NOTE]
 > Központi telepítése, illetve új webszolgáltatások kezelése az előfizetést, amelyhez a webszolgáltatások telepítése egy közreműködő vagy a rendszergazda szerepkört kell hozzárendelni. Ha meghívni egy másik felhasználót egy machine learning munkaterülettel, hozzá kell rendelnie azokat egy közreműködő vagy a rendszergazda szerepkört az előfizetés ahhoz, azok központilag telepíthetne vagy kezelhetne webszolgáltatások. 
 > 
->A hozzáférési engedélyek beállítása további információkért lásd: [access-hozzárendelések megtekintése a felhasználók és csoportok az Azure portálon](../../active-directory/role-based-access-control-manage-assignments.md).
+>A hozzáférési engedélyek beállítása további információkért lásd: [access-hozzárendelések megtekintése a felhasználók és csoportok az Azure portálon](../../role-based-access-control/role-assignments-users.md).
 
 ## <a name="next-steps"></a>További lépések
 * További információ [telepítése Azure Resource Manager-sablonok a Machine Learning](deploy-with-resource-manager-template.md). 

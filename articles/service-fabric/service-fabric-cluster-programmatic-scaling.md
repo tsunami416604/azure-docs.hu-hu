@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric programozott skálázás |} Microsoft Docs"
-description: "Egy bejövő vagy kimenő Azure Service Fabric-fürt méretezése programozott módon, az egyéni eseményindítók szerint"
+title: Azure Service Fabric programozott skálázás |} Microsoft Docs
+description: Egy bejövő vagy kimenő Azure Service Fabric-fürt méretezése programozott módon, az egyéni eseményindítók szerint
 services: service-fabric
 documentationcenter: .net
 author: mjrousos
 manager: jonjung
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,46 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: bfa020e29a9bb67f0634d220725bc11279e1565c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: b875351ef80050687fcf85e35da132cf37bab83b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>A Service Fabric-fürt méretezése programozott módon 
 
-Az Azure Service Fabric-fürt méretezése alapjai dokumentációjában ismertetett a [fürtméretezés](./service-fabric-cluster-scale-up-down.md). Hogy a cikk ismerteti, hogyan Service Fabric-fürtök épülő virtuálisgép-méretezési csoportok és a manuális vagy automatikus skálázása szabályokkal is méretezhető. Ez a dokumentum speciális forgatókönyvekhez koordináló Azure skálázási műveletek programozási módszerek megvizsgálja. 
+Azure-ban futó Service Fabric-fürtök épülő virtuálisgép-méretezési készlet.  [A fürtméretezés](./service-fabric-cluster-scale-up-down.md) ismerteti, hogyan Service Fabric-fürtök méretezhetők, manuális vagy automatikus skálázása szabályait. Ez a cikk ismerteti, hogyan kezelheti a hitelesítő adatokat, és a fürt méretezése vagy használni a Folyékonyan beszél Azure számítási SDK, amely ennél összetettebb környezetben. Áttekintéséhez olvassa el a [programozási módszerek összehangolása a skálázás műveletek Azure](service-fabric-cluster-scaling.md#programmatic-scaling). 
 
-## <a name="reasons-for-programmatic-scaling"></a>Programozott méretezéshez okok
-A sok esetben skálázás manuális vagy automatikus skálázása szabályok segítségével található jó megoldás. Más esetekben azonban nem feltétlenül a megfelelő méretezése. Ezek a módszerek lehetséges hátrányai a következők:
-
-- Manuális skálázás meg kell-e jelentkezni, és igényelhetnek a skálázási műveletek. Ha a skálázási műveletek szükségesek gyakran vagy időpontban előre nem látható, ez a megközelítés nem lehet jó megoldás.
-- Automatikus méretezése szabályok eltávolítása egy virtuálisgép-méretezési csoport egy példányát, ha azok nem automatikusan eltávolítása az adott csomópont Tudásbázis társított Service Fabric-fürt kivéve, ha a csomópont a tartóssági szint ezüst vagy arany van. Automatikus méretezése szabályok működik, a méretezési készletben szint (és nem a Service Fabric szinten), mert automatikus méretezése szabályok is távolítsa el a Service Fabric-csomópont őket szabályosan leállítása nélkül. Goromba csomópont eltávolítása fog hagy "szellemrekord" a Service Fabric-csomópont állapota méretezési a műveletek után. Egy adott (vagy egy szolgáltatás) kell rendszeresen törölnie a Service Fabric-fürtöt az eltávolított csomópont állapota.
-  - Arany vagy ezüst tartóssági szint csomóponttípus automatikusan megtisztítja az eltávolított csomópontokat, ezért semmilyen további karbantartás nincs szükség.
-- Bár vannak [sok metrikák](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md) automatikus méretezése szabályok által támogatott, akkor még mindig korlátozott. Ha a forgatókönyv nem vonatkozik a készletben lévő egyes metrika alapján méretezéshez, majd automatikus méretezése szabályok nem lehet jó választás.
-
-E tényezők alapján, érdemes több testreszabott automatikus méretezési modellek végrehajtásához. 
-
-## <a name="scaling-apis"></a>Méretezési API-k
-Az Azure API-k léteznek, amelyek lehetővé teszik a virtuális gép programozott módon használható alkalmazások méretezési készletek és a Service Fabric-fürtök. Meglévő automatikus méretezése lehetőségek nem működnek az adott esetben, ha ezen API-k lehetővé teszik egyéni méretezési logika végrehajtásához. 
-
-Egy megközelítést a "otthoni végrehajtott" az automatikus skálázás funkció végrehajtására egy új állapotmentes szolgáltatások hozzáadása a Service Fabric-alkalmazás skálázási műveleteinek a felügyeletét. A szolgáltatáson belül `RunAsync` módszer, eseményindítók készlete is megállapítja, hogy skálázás szükség (többek között a paraméterek maximális fürt például ellenőrzése és a méretezés cooldowns).   
-
-A virtuális gép méretezési készlet kapcsolati (mindkettő ellenőrizze a virtuálisgép-példányok jelenlegi száma és módosítható) használja az API a [Folyékonyan beszél Azure felügyeleti számítási könyvtár](https://www.nuget.org/packages/Microsoft.Azure.Management.Compute.Fluent/). A Folyékonyan beszél számítási kódtár biztosít egy könnyen használható API-t használják a virtuálisgép-méretezési készlet.
-
-Segítségével kommunikál a Service Fabric-fürt magát, [System.Fabric.FabricClient](/dotnet/api/system.fabric.fabricclient).
-
-A fürt méretezhető szolgáltatásként természetesen a méretezési kód nem szükséges. Mindkét `IAzure` és `FabricClient` kapcsolódhatnak a kapcsolódó Azure-erőforrások távolról, így a méretezési szolgáltatás könnyen lehet egy konzolalkalmazás vagy a Windows-szolgáltatás fut a kívül a Service Fabric-alkalmazás. 
-
-## <a name="credential-management"></a>Hitelesítő adatok kezelése
+## <a name="manage-credentials"></a>Hitelesítő adatok kezelése
 Méretezés kezelésére rendszerekben a szolgáltatás az egyik kihívás az, hogy a szolgáltatás kell tudni hozzáférni a virtuálisgép-méretezési készlet erőforrások egy interaktív bejelentkezés nélkül. A Service Fabric-fürt használata esetén könnyen a méretezési szolgáltatás módosítja a saját Service Fabric-alkalmazás, de a méretezési eléréséhez szükséges hitelesítő adatokat. Jelentkezzen be, használhatja a [egyszerű](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli) létrehozni a [Azure CLI 2.0](https://github.com/azure/azure-cli).
 
 A szolgáltatás egyszerű hozhatók létre az alábbi lépéseket:
 
 1. Jelentkezzen be az Azure parancssori felület (`az login`) egy olyan felhasználó nevében, aki hozzáféréssel rendelkezik a virtuálisgép-méretezési beállítása
-2. Az egyszerű szolgáltatásnév létrehozása a`az ad sp create-for-rbac`
+2. Az egyszerű szolgáltatásnév létrehozása a `az ad sp create-for-rbac`
     1. Jegyezze meg a appId (más néven "ügyfél-azonosító" máshol), a neve, a jelszót és a bérlői későbbi használatra.
-    2. Konfigurálnia kell az előfizetési azonosító, amely tekinthetők meg`az account list`
+    2. Konfigurálnia kell az előfizetési azonosító, amely tekinthetők meg `az account list`
 
 A Folyékonyan beszél számítási könyvtár jelentkezhetnek be ezeket a hitelesítő adatokat az alábbiak szerint (vegye figyelembe, hogy core Folyékonyan beszél Azure típusok hasonlóan `IAzure` szerepelnek a [Microsoft.Azure.Management.Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) csomag):
 
@@ -85,7 +64,7 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ``` 
 
-Azt is megteheti virtuális gép méretezési készlet méretét is felügyelhetők a PowerShell-parancsmagokkal. [`Get-AzureRmVmss`](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss)lekérheti a virtuálisgép-méretezési készlet objektumot. A jelenlegi kapacitásnál keresztül érhető el a `.sku.capacity` tulajdonság. Miután megváltoztatta a kapacitás a kívánt értékre, az Azure állítsa be a virtuálisgép-méretezési frissíthető a [ `Update-AzureRmVmss` ](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss) parancsot.
+Azt is megteheti virtuális gép méretezési készlet méretét is felügyelhetők a PowerShell-parancsmagokkal. [`Get-AzureRmVmss`](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss) lekérheti a virtuálisgép-méretezési készlet objektumot. A jelenlegi kapacitásnál keresztül érhető el a `.sku.capacity` tulajdonság. Miután megváltoztatta a kapacitás a kívánt értékre, az Azure állítsa be a virtuálisgép-méretezési frissíthető a [ `Update-AzureRmVmss` ](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss) parancsot.
 
 Ha manuálisan ad hozzá egy csomópont, a méretezési példány hozzáadása kell lennie egy új Service Fabric-csomópont el, mivel a méretezési sablon elegendő automatikusan új példányok csatlakoztatása a Service Fabric-fürt kiterjesztéseket is tartalmaz. 
 
@@ -140,12 +119,6 @@ Mint meg, a PowerShell-parancsmagok a módosítását a virtuálisgép-méretez�
 ```csharp
 await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 ```
-
-## <a name="potential-drawbacks"></a>Lehetséges hátrányai
-
-Ahogyan az a megelőző kódrészletek, létrehozása a saját skálázás szolgáltatás biztosítja a legmagasabb szintű vezérlő és az alkalmazás keresztül testreszabhatóság miatt a skálázás viselkedését. Ez lehet hasznos, ha pontosan meghatározhatja hogyan vagy ha egy alkalmazás méretezi-e a bejövő vagy kimenő igénylő forgatókönyvek. Azonban ez a vezérlő tartalmaz a kompromisszummal jár, kód összetettségét. Ezzel a megközelítéssel azt jelenti, hogy saját méretezési kódot, amely nem triviális kell.
-
-Hogyan meg kell megközelíti a Service Fabric skálázás attól függ, hogy a forgatókönyvéhez. Ha skálázás ritka, csomópontok hozzáadásához és eltávolításához manuálisan nem elegendő. Az összetettebb forgatókönyveket automatikus méretezése szabályok és SDK-k teszi ki a szolgáltatás szoftveres kínál az hatékony alternatívák.
 
 ## <a name="next-steps"></a>További lépések
 

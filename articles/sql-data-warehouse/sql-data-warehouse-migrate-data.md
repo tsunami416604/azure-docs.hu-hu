@@ -1,11 +1,11 @@
 ---
-title: "Az SQL Data Warehouse-adatok áttelepítése |} Microsoft Docs"
-description: "Tippek az adatok áttelepítése az Azure SQL Data Warehouse adattárházzal történő, megoldások."
+title: Az SQL Data Warehouse-adatok áttelepítése |} Microsoft Docs
+description: Tippek az adatok áttelepítése az Azure SQL Data Warehouse adattárházzal történő, megoldások.
 services: sql-data-warehouse
 documentationcenter: NA
 author: sqlmojo
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: d78f954a-f54c-4aa4-9040-919bc6414887
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: migrate
 ms.date: 06/29/2017
 ms.author: joeyong;barbkess
-ms.openlocfilehash: 0d156bc2eecf8220bd5ff4eb811d91482f216837
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4fbab223963989eab16cecea2facd9c15ba646d4
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="migrate-your-data"></a>Adatok áttelepítése
 Adatok az SQL Data Warehouse egy különböző eszközeivel mozgathatók különböző forrásokból származó.  ADF másolás, SSIS és bcp összes használható e cél eléréséhez. Azonban adatok növeli a összegként gondolja bontásához, az áttelepítési folyamat azokat a lépéseket. Ez számára biztosítja azt a lehetőséget, hogy az egyes lépések a teljesítmény- és a zökkenőmentes adatok áttelepítéshez hibatűrőnek optimalizálása.
@@ -106,7 +106,7 @@ A PolyBase csak egy rögzített méretű sor lezárójele \n vagy új sor. Az ad
 
 Minden egyes oszlophoz meghatározását a fájlban a PolyBase külső tábla részeként lesz. Győződjön meg arról, hogy minden exportált oszlopokra szükség, és hogy a típusok megfelelnek-e a szükséges szabványokat.
 
-Tekintse meg ismét a [telepítse át a séma] cikk a támogatott adattípusokat részletek.
+Tekintse meg ismét a [áttelepítéséhez a] cikk a támogatott adattípusokat részletek.
 
 ### <a name="location-of-data-files"></a>Adatforrás adatfájljainak helyét
 Az SQL Data Warehouse PolyBase használ az adatok betöltése az Azure Blob Storage kizárólag. Ezért az adatok kell először átadott a blob-tárolóba.
@@ -178,7 +178,7 @@ PolyBase az úgynevezett "rekurzív mappa átjárás" is támogatja. Ez a funkci
 
 A polybase-zel adatok betöltése kapcsolatos további információkért lásd: [használja a PolyBase az adatok betöltése az SQL Data Warehouse][Use PolyBase to load data into SQL Data Warehouse].
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Áttelepítési kapcsolatban bővebben lásd: [megoldás Migrálása az SQL Data Warehouse][Migrate your solution to SQL Data Warehouse].
 További fejlesztési tippek, lásd: [fejlesztői áttekintés][development overview].
 
@@ -190,10 +190,11 @@ További fejlesztési tippek, lásd: [fejlesztői áttekintés][development over
 [ADF samples]: ../data-factory/v1/data-factory-samples.md
 [ADF Copy examples]: ../data-factory/v1/data-factory-copy-activity-tutorial-using-visual-studio.md
 [development overview]: sql-data-warehouse-overview-develop.md
+[áttelepítéséhez a]: sql-data-warehouse-migrate-schema.md
 [Migrate your solution to SQL Data Warehouse]: sql-data-warehouse-overview-migrate.md
 [SQL Data Warehouse development overview]: sql-data-warehouse-overview-develop.md
 [Use bcp to load data into SQL Data Warehouse]: sql-data-warehouse-load-with-bcp.md
-[Use PolyBase to load data into SQL Data Warehouse]: sql-data-warehouse-get-started-load-with-polybase.md
+[Use PolyBase to load data into SQL Data Warehouse]: load-data-wideworldimportersdw.md
 
 
 <!--MSDN references-->

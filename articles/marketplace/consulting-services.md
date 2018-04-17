@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/9/2018
 ms.author: ellacroi
-ms.openlocfilehash: 8d414a7a2ad46fbe63cc6eb8e6a6a41bb76aa432
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: c8966f3dfa16010b82d1fe9cd02c63bdde65463c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-marketplace-consulting-services"></a>Az Azure piactér tanácsadás
 Hozzáférhetőségére, amely ügyfelek támogatása és az Azure használatát kiterjesztése szolgáltatásokkal az Azure piactéren támogatja a Microsoft partnerei rendszert integráló (SI) tanácsadás szolgáltatásajánlatok listája. 
@@ -48,6 +48,9 @@ Ajánlatok kell lennie a következő öt szolgáltatás típusú (listázhatja e
 Kivéve az *tájékoztató* szolgáltatástípus tanácsadás kínálhatók fel személy (Ez azt jelenti, hogy az ügyfél helyen vagy egy partner által létrehozott létesítmény helyszínen), akár virtuálisan (Ez azt jelenti, hogy keresztül teleconferencing, web konferenciahívási, vagy távoli megvalósítása). Eligazítás tartása személyesen kell választhatják.
 
 További információkért lásd: [Microsoft Partner Network szakértelem](https://partner.microsoft.com/en-US/membership/competencies). 
+
+>[!TIP]
+>Ez az információ csak az Azure piactér szolgáltatások van. Az Azure piactér kirakat közzétételéhez lesz a kijelölést a Cloud Partner portálra "Elsődleges termék" legördülő menüből válassza a "Azure". A AppSource való közzétételéhez lesz a kijelölést kiválasztásával "Dynamics 365", "Power BI" vagy "Kiemelt alkalmazások", a Cloud Partner portálra "Elsődleges termék" legördülő menüből. 
 
 ## <a name="supported-countries"></a>Támogatást kínáló országokban
 
@@ -95,3 +98,31 @@ A következő szakaszok az Azure piactéren tanácsadó szolgálat ajánlatát l
 4. **Felülvizsgálati**: A Szerkesztői és marketing csapat ellenőrzi, hogy a beküldött, és optimalizálja a olvashatóságát, nyelvtan és hatékonyságát. 
 5. **Átmeneti**: A beküldött elő van készítve a jóváhagyásra. 
 6. **Közzétételi**: Ön és a Microsoft az előkészített tartalommal teljesülése esetén élő nyissa meg az Azure piactéren készen áll-e az átjáróra a listában. A lista tartalmazza az éles dátumát az ajánlatban szereplő megadott ország függ. Ha a katalógusból, ha a kiválasztott ország még élő a Azure piactérről, a listaelem néhány órán belül fog megjelenni. Ellenkező esetben az átjáróra a listában megjelenik, amint a katalógus élő kerül.
+
+## <a name="content-review-criteria"></a>Tartalom felülvizsgálati feltételek
+
+Miután konfigurálta a fent felsorolt szükséges elemeket, a tartalom felülvizsgálati csapat fogja ellenőrizze, hogy az ajánlat leírása informatívabbá és a célközönséget a teljes. 
+
+Ne feledje, hogy a cím mező 50 karakterkorlát kell továbbítani a ajánlat időtartamát és a szolgáltatás típusa. Ez a teljes méret optimalizálás érdekében. A formátum a következőképpen történik: név: időtartam típusú
+
+Példák:
+
+
+|A minta-cím  |Megfelelő formátumú  |
+|---------|---------|
+|Ismerkedés az Azure IoT gyártás    |   Gyártási IoT: 2 napos Assessment      |
+|Az intelligens kenyérpirítók Workshop        |  Intelligens kenyérpirítók: 1-Wk Workshop       |
+|  SQL Server áttelepítés koncepció    | SQL áttelepítési: a koncepció igazolása 3-Wk        |
+
+ 
+Leírásokat kínálnak, és ezekkel az ajánlat áttekintése, amikor a csapat alkalmazza a következő feltételeknek:
+
+|Csomag típusa  |Szükséges |Ajánlott  |
+|---------|---------|---------|
+|Értékelés    |   Egy többnapos és több hét felméréseket részletes napirendjét tartalmazza, és fogalmazza meg, mi a terméket az ügyfél várható      |    A felső optimalizálás érdekében kulcsszavakkal összefoglaló ajánlatát optimalizálása     |
+|Tájékoztató    |   Fogalmazza meg, mi a terméket az ügyfél várható. Ne feledje, hogy eligazítás tartása kell is biztosít a személy. Ha meg van adva egy virtuális szolgáltatás, kérjük, válasszon ki egy másik ajánlattípus    |  A felső optimalizálás érdekében kulcsszavakkal összefoglaló ajánlatát optimalizálása       |
+|Megvalósítás    |  Több nap vagy hét több megvalósítások részletes napirendjét, és a fogalmazza meg, milyen mérnöki módosításokat, műszaki összetevők vagy egyéb összetevők, az ügyfél számíthat, az engagement eredményeit       |    A felső optimalizálás érdekében kulcsszavakkal összefoglaló ajánlatát optimalizálása     |
+|A koncepció igazolása    |    Fogalmazza meg, milyen mérnöki módosításokat, műszaki összetevők vagy egyéb összetevők, az ügyfél számíthat, az engagement eredményeit     | A felső optimalizálás érdekében kulcsszavakkal összefoglaló ajánlatát optimalizálása        |
+|Workshop    |   Például egy részletes napirend napi, heti vagy havi, attól függően, hogy az ajánlat választott időtartama. Mi a tanulási célok és egyéb termékek esetében sem a workshop fogalmazza     |   A felső keresőmotor-optimalizálás kulcsszavak az összefoglaló ajánlatát optimalizálása      |
+
+Cloud Partner portálra, belül adhat hozzá a tőzsdei használatával formázás [Markdown](https://docs.microsoft.com/en-us/contribute/how-to-write-use-markdown). Ez az segít lengyel hozzá a tőzsdei egyszerűsített tervezési nyelven. 

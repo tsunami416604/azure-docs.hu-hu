@@ -1,8 +1,8 @@
 ---
-title: "Rendszerkép használatával az Azure Machine Learning-munkaterület belül CNTK besorolás |} Microsoft Docs"
-description: "A vonat, kiértékeléséhez és központi telepítése egy egyéni lemezkép besorolási modell Azure ML munkaterület használatával."
+title: Rendszerkép használatával az Azure Machine Learning-munkaterület belül CNTK besorolás |} Microsoft Docs
+description: A vonat, kiértékeléséhez és központi telepítése egy egyéni lemezkép besorolási modell Azure ML munkaterület használatával.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: PatrickBue
 ms.author: pabuehle
 manager: mwinkle
@@ -11,11 +11,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: 03fdd1265464355a2787eff897eb4f70faa095b0
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: c585609ec8854045e943ae7cd33089021f8f1f2f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>Kép besorolás használata az Azure Machine Learning-munkaterület
 
@@ -54,7 +54,7 @@ Ez a példa futtatásához az Előfeltételek a következők:
 4. Egy dedikált GPU nincs szükség a SVM képzési végrehajtása részében 1, azonban szükség van a 2. rész ismertetett DNN finomítása. Ha nem rendelkezik egy erős GPU, szeretné, hogy a több Feldolgozóegységekkel betanítása, vagy egy Windows-számítógép nem rendelkezik, fontolja meg Azure mély tanulási virtuális gépek használata a Windows operációs rendszerrel. Lásd: [Itt](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning) egy 1 kattintással telepítési útmutató. Amennyiben telepített, csatlakoztassa a virtuális Gépet egy távoli asztali kapcsolaton keresztül, munkaterület nincs telepítése és a virtuális gépről helyi hajtható végre a kódot.
 5. Például OpenCV különböző Python függvénytárak telepítve kell lennie. Kattintson a *nyissa meg a parancssort* a a *fájl* menü a munkaterületet üzemeltető futtatja a következő parancsokat a függőségek telepítése:  
     - `pip install https://cntk.ai/PythonWheel/GPU/cntk-2.2-cp35-cp35m-win_amd64.whl`  
-    - `pip install opencv_python-3.3.1-cp35-cp35m-win_amd64.whl` után a OpenCV kerék letöltésére http://www.lfd.uci.edu/~gohlke/pythonlibs/ (a pontos fájl nevét és verzióját módosítható)
+    - `pip install opencv_python-3.3.1-cp35-cp35m-win_amd64.whl` a törlés után a OpenCV letöltése http://www.lfd.uci.edu/~gohlke/pythonlibs/ (a pontos fájl nevét és verzióját módosítható)
     - `conda install pillow`
     - `pip install -U numpy`
     - `pip install bqplot`
@@ -73,7 +73,7 @@ Ez a példa futtatásához az Előfeltételek a következők:
 
 Ebben a példában egy sablon használatával új projekt létrehozásához:
 1.  Nyissa meg az Azure Machine Learning Workbenchet.
-2.  Az a **projektek** lapján kattintson a  **+**  aláírásához, és válassza ki **új projekt**.
+2.  Az a **projektek** lapján kattintson a **+** aláírásához, és válassza ki **új projekt**.
 3.  Az a **új projekt létrehozása** ablaktáblán, töltse ki az adatokat az új projekt.
 4.  Az a **keresési Projektsablonjai** keresési mezőbe, írja be a "Besorolást kép", és válassza ki a sablont.
 5.  Kattintson a **Create** (Létrehozás) gombra.
@@ -215,7 +215,7 @@ A Microsoft most jelent-e többféleképpen 1. rész a modell pontosságának ja
 
 Egy SVM helyett egy teheti meg a besorolási közvetlenül a Neurális hálózat. Ez egy új utolsó réteg hozzáadásával a előre képzett DNN, ami a 512 úszó bemenetként utolsó előtti rétegből érhető el. Ez a besorolás jelölőnégyzetét a DNN előnye, hogy most a teljes hálózati backpropagation is meg lehet retrained. Ezt a módszert gyakran sokkal hatékonyabb besorolás pontosság használatával, előre képzett DNN vezet-azonban csökkenti a sokkal hosszabb képzési időt (akár a GPU-t).
 
-A változó módosítása helyett egy SVM Neurális hálózat betanítása történik `classifier` a `PARAMETERS.py` a `svm` való `dnn`. Majd lásd 1. lépés:, (1. lépés) adatok előkészítése és SVM képzési (3. lépés) kivételével az összes parancsfájl kell újra végre kell hajtania. DNN pontosítás GPU igényel. Ha nincs GPU található, vagy ha a GPU zárolva van (például egy előző CNTK Futtatás követ) majd parancsfájl `2_refineDNN.py` hibát jelez. DNN képzési néhány Feldolgozóegységekkel, amely minibatch méretének csökkentésével elkerülhetők a is throw kevés a memória hiba (változó `cntk_mb_size` a `PARAMETERS.py`).
+A változó módosítása helyett egy SVM Neurális hálózat betanítása történik `classifier` a `PARAMETERS.py` a `svm` való `dnn`. Majd lásd 1. lépés:, (1. lépés) adatok előkészítése és SVM képzési (4. lépés) kivételével az összes parancsfájl kell újra végre kell hajtania. DNN pontosítás GPU igényel. Ha nincs GPU található, vagy ha a GPU zárolva van (például egy előző CNTK Futtatás követ) majd parancsfájl `2_refineDNN.py` hibát jelez. DNN képzési néhány Feldolgozóegységekkel, amely minibatch méretének csökkentésével elkerülhetők a is throw kevés a memória hiba (változó `cntk_mb_size` a `PARAMETERS.py`).
 
 Képzési befejeztét követően a rendszer menti a kifinomultabb modell *DATA_DIR/proc/fashionTexture/cntk_refined.model*, és rajzot rajzolni, amely bemutatja, hogyan a tanítási és tesztelési besorolás hibák betanítás során módosítani. Vegye figyelembe, hogy adott rajzot, amely a hiba a gyakorlókészlethez sokkal kisebb, mint a vizsgálat beállítása. Az úgynevezett túlzott záró viselkedés csökkenteni lehet, például egy magasabb érték használatával jelkiesés sebessége `rf_dropoutRate`.
 <p align="center">
@@ -234,8 +234,7 @@ Az előzmények az egyes futtatása összehasonlítás két vagy több fut, amel
 Az első a képernyőfelvételen látható DNN pontosítás SVM képzési minden osztály-nál nagyobb pontosság vezet. A második képernyőfelvételen látható összes metrikát követett, beleértve a osztályozó volt. A nyomkövetési végezheti el a parancsfájl `5_evaluate.py` az Azure Machine Learning-munkaterület naplózó meghívásával. Emellett a parancsfájl ROC görbe és zavart mátrix is menti a *kimenete* mappát. Ez *kimenete* mappa különleges abban, hogy a benne lévő tartalom is követi nyomon a munkaterületet üzemeltető előzmények funkció, és ezért a kimeneti fájlok érhető el tetszőleges időpontban, függetlenül attól, hogy helyi másolatot felül lett írva.
 
 <p align="center">
-<img src="media/scenario-image-classification-using-cntk/run_comparison1.jpg" alt="alt text" width="700"/>  
-</p>
+<img src="media/scenario-image-classification-using-cntk/run_comparison1.jpg" alt="alt text" width="700"/> </p>
 
 <p align="center">
 <img src="media/scenario-image-classification-using-cntk/run_comparison2b.jpg" alt="alt text" width="700"/>

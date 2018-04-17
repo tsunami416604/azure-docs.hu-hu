@@ -1,12 +1,12 @@
 ---
-title: "Azure-adatbázishoz ajánlott biztonsági eljárások |} Microsoft Docs"
-description: "Ez a cikk ajánlott eljárások az Azure-adatbázis biztonsági biztosít."
+title: Azure-adatbázishoz ajánlott biztonsági eljárások |} Microsoft Docs
+description: Ez a cikk ajánlott eljárások az Azure-adatbázis biztonsági biztosít.
 services: security
 documentationcenter: na
 author: unifycloud
 manager: swadhwa
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: c8f49a778ab5e32108531cab05cab7f7eb092221
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 3c019e8e1518c661eb75065f061ee681f0231efa
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-database-security-best-practices"></a>Azure-adatbázishoz ajánlott biztonsági eljárások
 
@@ -103,7 +103,7 @@ Részletek információt [Itt](https://docs.microsoft.com/azure/sql-database/sql
 
 ## <a name="protect-your-data-using-encryption"></a>Adatok védelme a titkosítás
 
-[Az Azure SQL Database átlátható adattitkosítás (TDE)](https://msdn.microsoft.com/library/dn948096.aspx) védelmét a rosszindulatú tevékenységek fenyegetés elleni valós idejű titkosítási és visszafejtési az adatbázis, a társított biztonsági másolatok, és a tranzakciós naplófájlok aktívan anélkül, hogy az alkalmazást módosítani kellene. TDE teljes adatbázis tárterülete az adatbázis-titkosítási kulcs nevű szimmetrikus kulcs használatával titkosítja.
+[Az Azure SQL Database átlátható adattitkosítás (TDE)](https://msdn.microsoft.com/library/dn948096.aspx) védelmét a rosszindulatú tevékenységek fenyegetés elleni valós idejű titkosítási és visszafejtési az adatbázis, a társított biztonsági másolatok, és a tranzakciós naplófájlok aktívan nélkül hogy az alkalmazást módosítani kellene. TDE teljes adatbázis tárterülete az adatbázis-titkosítási kulcs nevű szimmetrikus kulcs használatával titkosítja.
 
 Akkor is, ha a teljes tárterület titkosított, nagyon fontos is titkosítani az adatbázist, saját magát. Ez az a mélység megközelítés a data protection a védelmet megvalósítása. Ha használja az Azure SQL Database, és szeretne védeni a bizalmas adatok, például a hitelkártya vagy társadalombiztosítási számot, a FIPS 140-2 érvényesítve 256 bites AES titkosítást, amely megfelel az sok ipari szabványok (például a HIPAA, a PCI) adatbázisok titkosíthatók.
 
@@ -112,7 +112,7 @@ Fontos tudni, hogy fájlok kapcsolódó [(BPE) kiterjesztés puffer](https://doc
 Hitelesített felhasználó óta, mint például a biztonsági rendszergazda vagy egy adatbázis-rendszergazda férhet hozzá az adatokhoz akkor is, ha a TDE, az adatbázis titkosított is kövesse az alábbi javaslatokat:
 
 -   Engedélyezze az SQL-hitelesítést az adatbázis szintjén.
--   Használja az Azure AD használatával [RBAC-szerepkörök](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is).
+-   Használja az Azure AD használatával [RBAC-szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/overview).
 -   Felhasználók és az alkalmazások által használandó külön fiókok hitelesítéséhez. Így korlátozhatja a felhasználók és az alkalmazások számára megadott engedélyeket és a kártékony tevékenység a kockázatok csökkentése.
 -   Alkalmazzon adatbázis szintű biztonsági rögzített adatbázis-szerepkörök (például a db_datareader vagy db_datawriter), vagy az alkalmazáshoz kiválasztott adatbázis-objektumok explicit engedélyt egyéni szerepköröket hozhatnak létre.
 
@@ -166,7 +166,7 @@ Adatbázis fenyegetések észlelése és az engedélyezéshez kapcsolatos továb
 ## <a name="conclusion"></a>Összegzés
 Azure-adatbázis egy robusztus adatbázis platform, amely sok szervezeti és szabályozási megfelelőségi követelményeknek funkciókat teljes tartománnyal. A adatokhoz való fizikai hozzáférés vezérlése, és számos lehetőséget használ az adatok biztonsági a fájl-, oszlop-vagy sor szintjén átlátható adattitkosítási, cellaszintű titkosítását alkalmazza vagy sorszintű biztonság is adatok védelme. Mindig titkosított is lehetővé teszi a titkosított adatok műveleteket leegyszerűsítésével alkalmazás frissítések. Viszont naplófájlokat SQL adatbázis-tevékenység hozzáférést biztosít a szükséges információkat, így tudja, hogyan és mikor adatokhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Tűzfalszabályok kapcsolatos további információkért lásd: [tűzfal-szabályok](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure).
 - Felhasználókkal és bejelentkezésekkel kapcsolatos információk: [Bejelentkezések kezelése](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins).
 - Az oktatóanyagok esetén lásd: [az Azure SQL Database biztonságos](https://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial).

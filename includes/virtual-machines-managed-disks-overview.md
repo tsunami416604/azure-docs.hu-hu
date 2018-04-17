@@ -24,7 +24,7 @@ Az Azure Disks 99,999%-os elérhetőséggel büszkélkedhet. REST-könnyebb isme
 
 ### <a name="granular-access-control"></a>A részletes hozzáférés-vezérlés
 
-Használhat [átruházásához hozzáférés-vezérlés (RBAC)](../articles/active-directory/role-based-access-control-what-is.md) felügyelt lemezes jellemző engedélyek hozzárendelése egy vagy több felhasználó. Felügyelt lemezek tesz elérhetővé a különféle műveletek, beleértve az olvasási, írási (létrehozása/frissítése), törölje és lekérése egy [közös hozzáférésű jogosultságkód (SAS) URI](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) a lemezhez. Csak azokat a műveleteket, a feladat végrehajtásához szükséges egy személy hozzáférést biztosíthat. Például ha nem szeretné felügyelt lemezes tárfiókba másolása egy személy, is nem kíván hozzáférést biztosíthat az exportálási művelet a felügyelt lemezt. Hasonlóképpen ha egy személy egy SAS URI követve másolja át a felügyelt lemezes, hogy nem szeretné, dönthet úgy, nem engedélyt szeretne megadni, hogy a kezelt lemezre.
+Használhat [átruházásához hozzáférés-vezérlés (RBAC)](../articles/role-based-access-control/overview.md) felügyelt lemezes jellemző engedélyek hozzárendelése egy vagy több felhasználó. Felügyelt lemezek tesz elérhetővé a különféle műveletek, beleértve az olvasási, írási (létrehozása/frissítése), törölje és lekérése egy [közös hozzáférésű jogosultságkód (SAS) URI](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) a lemezhez. Csak azokat a műveleteket, a feladat végrehajtásához szükséges egy személy hozzáférést biztosíthat. Például ha nem szeretné felügyelt lemezes tárfiókba másolása egy személy, is nem kíván hozzáférést biztosíthat az exportálási művelet a felügyelt lemezt. Hasonlóképpen ha egy személy egy SAS URI követve másolja át a felügyelt lemezes, hogy nem szeretné, dönthet úgy, nem engedélyt szeretne megadni, hogy a kezelt lemezre.
 
 ### <a name="azure-backup-service-support"></a>Az Azure Backup szolgáltatás támogatása
 A felügyelt lemezek Azure Backup szolgáltatás használatával hozzon létre egy biztonsági mentési feladat idő-alapú biztonsági mentések, könnyű VM-helyreállítás és biztonsági mentési adatmegőrzési. Felügyelt lemezek csak támogatják az helyileg redundáns tárolás (LRS) a következő replikálási beállítás; Ez azt jelenti, hogy az adatok három másolatot tart egyetlen régión belül. Regionális vész-helyreállítási kell biztonsági mentést készíteni a virtuális gépek lemezei be egy másik régióban [Azure Backup szolgáltatás](../articles/backup/backup-introduction-to-azure-backup.md) és a biztonsági mentési tárolóval Georedundáns tárfiókot. Azure biztonsági mentési támogatja adatlemez jelenleg biztonsági mentés akár 1TB méretű. További információk a következő [használata Azure Backup szolgáltatás felügyelt lemezzel rendelkező virtuális gépek](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup).
@@ -53,14 +53,14 @@ Vegyük a következő részletes bemutatása.
 
 | **Prémium szintű kezelt <br>lemez típusa** | **P4** | **P6** |**P10** | **P15** | **P20** | **P30** | **P40** | **P50** | 
 |------------------|---------|---------|---------|---------|---------|----------------|----------------|----------------|  
-| Lemezméret        | 32 GiB   | 64 GiB   | 128 GiB  | 256 GiB  | 512 GiB  | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 
+| Lemezméret        | 32 GiB   | 64 GiB   | 128 GiB  | 256 GiB  | 512 GiB  | 1024 GiB (1 TiB) | 2048 giB (2 TiB) | 4095 GiB (4 TiB) | 
 
 
 Íme egy standard szintű felügyelt lemezes a lemezméret:
 
 | **Standard felügyelt <br>lemez típusa** | **S4** | **S6** | **S10** | **S20** | **S30** | **S40** | **S50** |
 |------------------|---------|---------|--------|--------|----------------|----------------|----------------| 
-| Lemezméret        | 32 GiB   | 64 GiB   | 128 GiB | 512 GiB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 
+| Lemezméret        | 32 GiB   | 64 GiB   | 128 GiB | 512 GiB | 1024 GiB (1 TiB) | 2048 giB (2 TiB) | 4095 GiB (4 TiB) | 
 
 
 **A tranzakciók számának**: hajt végre egy standard szintű felügyelt lemezes tranzakciók száma a kell fizetni. Nincs a prémium szintű felügyelt lemezes tranzakciók költség nélkül.
@@ -104,11 +104,10 @@ Nincsenek titkosítási és beszéljék meg, állapotalapú felügyelt lemezek k
 
 ### <a name="storage-service-encryption-sse"></a>Storage Service Encryption (SSE)
 
-[Az Azure Storage szolgáltatás titkosítási](../articles/storage/common/storage-service-encryption.md) nyugalmi titkosítási biztosít, és megakadályozhatja az adatokat, hogy megfeleljen a szervezeti biztonsági és megfelelőségi jár kötelezettségekkel. SSE alapértelmezés szerint az összes felügyelt lemezek, a pillanatképek és a képeket minden régióban, amennyiben rendelkezésre áll-e felügyelt lemezek engedélyezve van. 2017. június 10., kezdve az összes új felügyelt lemezek/pillanatképek/képek és új adatokat írni a meglévő felügyelt lemezek automatikusan titkosítva nyugalmi alapértelmezés szerint a Microsoft által felügyelt kulcsokkal. Választhatja a saját Azure-BLOB és a fájlok titkosítási kulcs. A táblák és a várólisták titkosítási mindig használja a Microsoft által felügyelt kulcsok.
-Ne feledje, hogy miután engedélyezte a Storage szolgáltatás titkosítási, csak az új adatok titkosítva lesznek, és ezt a tárfiókot a meglévő fájlok visszamenőleges beolvasása a háttér-titkosítási folyamat által titkosított. Látogasson el a [kezelt lemezek gyakori kérdéseket tartalmazó oldal](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) további részleteket.
+[Az Azure Storage szolgáltatás titkosítási](../articles/storage/common/storage-service-encryption.md) nyugalmi titkosítási biztosít, és megakadályozhatja az adatokat, hogy megfeleljen a szervezeti biztonsági és megfelelőségi jár kötelezettségekkel. SSE alapértelmezés szerint az összes felügyelt lemezek, a pillanatképek és a képeket minden régióban, amennyiben rendelkezésre áll-e felügyelt lemezek engedélyezve van. 2017. június 10., kezdve az összes új felügyelt lemezek/pillanatképek/képek és új adatokat írni a meglévő felügyelt lemezek automatikusan titkosítva nyugalmi alapértelmezés szerint a Microsoft által felügyelt kulcsokkal. Látogasson el a [kezelt lemezek gyakori kérdéseket tartalmazó oldal](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) további részleteket.
 
 
-### <a name="azure-disk-encryption-ade"></a>Azure Disk Encryption (ADE)
+### <a name="azure-disk-encryption-ade"></a>Az Azure Disk Encryption (ADE)
 
 Az Azure Disk Encryption lehetővé teszi, hogy az operációsrendszer- és adatlemezek egy infrastruktúra-szolgáltatási virtuális gép által használt titkosítását. Ez magában foglalja a felügyelt lemezek. A Windows a meghajtók titkosítása szabványos BitLocker titkosítás technológia használatával. Linux a lemez titkosítása a DM-Crypt technológia használatával. Ez integrálva van az Azure Key Vault lehetővé teszi a lemez titkosítási kulcsok kezeléséhez, és szabályozhatja. További információkért lásd: [lemez titkosítás a Windows Azure és a Linux IaaS virtuális gépeket](../articles/security/azure-security-disk-encryption.md).
 

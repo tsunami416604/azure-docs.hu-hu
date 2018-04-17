@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/05/2018
 ms.author: harijay
-ms.openlocfilehash: b7d6e48a6f34472bc38947fd70e850b1c3bf6f8a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 69f5e29be77f25d649ce357dae6e3905ab2bf6b8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Virtuális gép soros konzolon (előzetes verzió) 
 
@@ -32,7 +32,7 @@ A virtuális gép soros konzol az Azure-on Linux és a Windows virtuális gépek
 ## <a name="prerequisites"></a>Előfeltételek 
 
 * A virtuális gépnek rendelkeznie kell [rendszerindítási diagnosztika](boot-diagnostics.md) engedélyezve 
-* A soros konzol használata a fióknak rendelkeznie kell [közreműködői szerepkör](../../active-directory/role-based-access-built-in-roles.md) a virtuális gép és a [rendszerindítási diagnosztika](boot-diagnostics.md) storage-fiók. 
+* A soros konzol használata a fióknak rendelkeznie kell [közreműködői szerepkör](../../role-based-access-control/built-in-roles.md) a virtuális gép és a [rendszerindítási diagnosztika](boot-diagnostics.md) storage-fiók. 
 * Linux distro jellemző beállításait, lásd: [Linux a soros konzol használata](#accessing-serial-console-for-linux)
 
 
@@ -56,7 +56,7 @@ A soros konzol funkcióit a virtuális gép rendszerindítási diagnosztika beá
 ## <a name="serial-console-security"></a>Soros konzol biztonsága 
 
 ### <a name="access-security"></a>Hozzáférés-biztonságot 
-Soros konzoljához való hozzáférés korlátozódik, akik rendelkeznek [VM közreműködők](../../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor) -e a virtuális géphez való hozzáférés. Ha az AAD-bérlőt többtényezős hitelesítést igényel, akkor a soros konzoljához való hozzáférés csak az MFA, az access keresztül [Azure-portálon](https://portal.azure.com).
+Soros konzoljához való hozzáférés korlátozódik, akik rendelkeznek [VM közreműködők](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) -e a virtuális géphez való hozzáférés. Ha az AAD-bérlőt többtényezős hitelesítést igényel, akkor a soros konzoljához való hozzáférés csak az MFA, az access keresztül [Azure-portálon](https://portal.azure.com).
 
 ### <a name="channel-security"></a>Biztonsági csatorna
 Minden adat küldött vissza, és oda a keresztülhaladnak a hálózaton van titkosítva.
@@ -79,12 +79,12 @@ A soros konzol funkcióit a virtuális gép rendszerindítási diagnosztika beá
 ## <a name="common-scenarios-for-accessing-serial-console"></a>Általános példák a soros konzol használata 
 Forgatókönyv          | A soros konzol műveletek                |  Az operációs rendszer alkalmazhatósági 
 :------------------|:-----------------------------------------|:------------------
-Broken FSTAB file | Adja meg a kulcsot a folytatáshoz, majd javítsa ki fstab fájlt egy szövegszerkesztő segítségével. Lásd: [fstab problémák megoldásával](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors) | Linux 
-Helytelen tűzfalszabályok | Soros konzol eléréséhez, és javítsa ki a iptables vagy a Windows tűzfal-szabályok | Linux/Windows 
-Fájlrendszer sérülése/ellenőrzése | Soros konzol eléréséhez és fájlrendszer helyreállítása | Linux/Windows 
-Az RDP/SSH konfigurációs problémák | Soros konzol eléréséhez és beállításainak módosítása | Linux/Windows 
-Rendszer hálózati zárolása| Hozzáférés soros konzolon keresztül rendszer kezeléséhez | Linux/Windows 
-A rendszertöltő való interakció | Hozzáférés LÁRVAJÁRAT/BCD soros konzolon keresztül | Linux/Windows 
+Hibás FSTAB fájl | Adja meg a kulcsot a folytatáshoz, majd javítsa ki fstab fájlt egy szövegszerkesztő segítségével. Lásd: [fstab problémák megoldásával](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors) | Linux 
+Helytelen tűzfalszabályok | Soros konzol eléréséhez, és javítsa ki a iptables vagy a Windows tűzfal-szabályok | Linux és Windows 
+Fájlrendszer sérülése/ellenőrzése | Soros konzol eléréséhez és fájlrendszer helyreállítása | Linux és Windows 
+Az RDP/SSH konfigurációs problémák | Soros konzol eléréséhez és beállításainak módosítása | Linux és Windows 
+Rendszer hálózati zárolása| Hozzáférés soros konzolon keresztül rendszer kezeléséhez | Linux és Windows 
+A rendszertöltő való interakció | Hozzáférés LÁRVAJÁRAT/BCD soros konzolon keresztül | Linux és Windows 
 
 ## <a name="accessing-serial-console-for-linux"></a>Soros konzol használata Linux rendszeren
 Ahhoz, hogy a soros konzol működését a vendég operációs rendszer és a soros portjára konzol üzenetek olvasási kell állítani. A legtöbb [Azure Linux támogatott Disztribúciókkal](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) a soros konzol alapértelmezés szerint konfigurálva van. Csak kattintva a portálon a soros konzol szakasz hozzáférést biztosít a konzolon. 

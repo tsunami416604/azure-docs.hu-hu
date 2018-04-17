@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/18/2017
-ms.openlocfilehash: afaadc12d056f42a75795073d480fe26757649d8
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/09/2018
+ms.openlocfilehash: 8d984c17ab373428b13ed59a598ca8ae4e88136a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="stream-analytics-outputs-options-for-storage-and-analysis"></a>A Stream Analytics kimenetek: tárolási és elemzésére szolgáló beállítások
 A Stream Analytics-feladat szerzői, vegye figyelembe a kapott adatokban felhasznált hogyan. Hogyan, az eredmények megtekinthetők a Stream Analytics-feladat, és képes tárolására?
@@ -21,24 +21,25 @@ A Stream Analytics-feladat szerzői, vegye figyelembe a kapott adatokban felhasz
 Ahhoz, hogy az alkalmazás minták számos, az Azure Stream Analytics rendelkezik kimeneti tárolja, és az elemzés eredményeinek megtekintése különböző lehetőségek közül. Ez megkönnyíti a feladat kimenetére megtekintése és adatraktározási vagy más célból a használat és a feladat kimenete a rugalmasságot biztosít. Kimenetet a feldolgozás konfigurált már léteznie kell a feladat elindult és események start továbbítására. Például a Blob storage kimenetként használatakor a feladat nem hoz létre egy tárfiókot automatikusan. Hozzon létre egy tárfiókot, a Stream Analytics-feladat indítása előtt.
 
 ## <a name="azure-data-lake-store"></a>Azure Data Lake Store
-A Stream Analytics támogatja [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/). Ez a tároló lehetővé teszi, hogy a műveleti és felderítési jellegű bármilyen méretű, típusú és feldolgozási sebességű adatok. További, Stream Analyticsnek tudnia kell a Data Lake Store jogosultsággal. Engedélyezési és (ha szükséges), a Data Lake Store a feliratkozás ismerteti a [Data Lake kimeneti cikk](stream-analytics-data-lake-output.md).
+A Stream Analytics támogatja [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/). Az Azure Data Lake Store egy vállalati szintű, nagy kapacitású adattár a big data koncepción alapuló adatelemzési célokra. Data Lake Store lehetővé teszi, hogy a műveleti és felderítési jellegű bármilyen méretű, típusú és feldolgozási sebességű adatok. További, Stream Analyticsnek tudnia kell a Data Lake Store jogosultsággal.
 
-### <a name="authorize-an-azure-data-lake-store"></a>Egy Azure Data Lake Store engedélyezése
-Data Lake tárolási kiválasztásakor az Azure portálon kimenetként kéri egy kapcsolat egy meglévő Data Lake Store hitelesítéséhez.  
+### <a name="authorize-an-azure-data-lake-store-account"></a>Egy Azure Data Lake Store-fiók engedélyezése
 
-![Data Lake Store engedélyezése](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)  
+1. Data Lake tárolási kiválasztásakor az Azure portálon kimenetként kéri egy kapcsolat egy meglévő Data Lake Store hitelesítéséhez.  
 
-Az alább látható módon Ezután adja meg a Data Lake Store kimeneti tulajdonságai:
+   ![Data Lake Store engedélyezése](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)  
 
-![Data Lake Store engedélyezése](./media/stream-analytics-define-outputs/07-stream-analytics-define-outputs.png)  
+2. Ha már van hozzáférésük Data Lake Store-ba, kattintson az "Engedélyezés most", és a lap "Engedély átirányítása" jelző felugró. Miután engedélyezési sikeres, lehetősége lesz a lap, amely lehetővé teszi a Data Lake Store kimeneti konfigurálását.  
 
-Az alábbi táblázat felsorolja a tulajdonság nevét és a leírás, egy Data Lake Store kimenet létrehozásához szükséges.
+3. Miután a Data Lake Store-fiók hitelesítését, a Data Lake Store kimeneti megadhatja a tulajdonságait. Az alábbi táblázat pedig a tulajdonság nevét és azok leírását a Data Lake Store kimeneti konfigurálása.
+
+   ![Data Lake Store engedélyezése](./media/stream-analytics-define-outputs/07-stream-analytics-define-outputs.png)  
 
 <table>
 <tbody>
 <tr>
 <td><B>TULAJDONSÁG NEVE</B></td>
-<td><B>DESCRIPTION</B></td>
+<td><B>LEÍRÁS</B></td>
 </tr>
 <tr>
 <td>A kimeneti Alias</td>
@@ -46,11 +47,11 @@ Az alábbi táblázat felsorolja a tulajdonság nevét és a leírás, egy Data 
 </tr>
 <tr>
 <td>Fiók neve</td>
-<td>A Data Lake-tárfiókra ahol küldendő a kimeneti neve. A legördülő listából válassza ki, amelyhez a portál bejelentkezett felhasználó hozzáfér a Data Lake Store-fiókok jelenik meg.</td>
+<td>A Data Lake-tárfiókra ahol küldendő a kimeneti neve. A legördülő listából válassza ki a Data Lake Store-fiókok az előfizetésben elérhető jelenik meg.</td>
 </tr>
 <tr>
 <td>Elérési út előtag mintája</td>
-<td>A következő egyezmény fájlelnevezésnél követi: <BR>{Path Prefix Pattern}/schemaHashcode_Guid_Number.extension <BR> <BR>Példa kimeneti fájlok:<BR>Myoutput/20170901/00/45434_gguid_1.csv <BR>Myoutput/20170901/01/45434_gguid_1.csv <BR> <BR>Itt is az olyan helyzetekben, ahol egy új fájl jön létre:<BR>1. A kimeneti sémával módosítása <BR>2. Külső vagy belső indítsa újra a feladatok<BR><BR>Továbbá ha a fájl elérési út mintája nem tartalmaz egy záró "/", a rendszer a legutóbbi minta elérési útjának fájlnév előtag.<BR><BR>Példa:<BR>Az az elérési út mintája: mappa1/logs/HH, a létrehozott fájl nézhet ki: folder1/logs/02_134343_gguid_1.csv</td>
+<td>A megadott Data Lake Store-fiók található a fájl írásához használt elérési. A {date} egy vagy több példányát adhatja meg, és {time} változók.<BR> 1. példa: mappa1/logs / {date} / {time}<BR>2. példa: mappa1/logs / {date}<BR>Itt is az olyan helyzetekben, ahol egy új fájl jön létre:<BR>1. A kimeneti sémával módosítása <BR>2. Külső vagy belső indítsa újra a feladatok<BR><BR>Továbbá ha a fájl elérési út mintája nem tartalmaz egy záró "/", a rendszer a legutóbbi minta elérési útjának fájlnév előtag.<BR></td>
 </tr>
 <tr>
 <td>Dátum formátumban [<I>választható</I>]</td>
@@ -80,12 +81,14 @@ Az alábbi táblázat felsorolja a tulajdonság nevét és a leírás, egy Data 
 </table>
 
 ### <a name="renew-data-lake-store-authorization"></a>Újítsa meg a Data Lake Store engedélyezési
-Újból hitelesítésre a Data Lake Store-fiókot, ha a jelszó megváltozott a feladat meg lett létrehozva, vagy utolsó hitelesített kell.
+Újból hitelesítésre a Data Lake Store-fiókot, ha a jelszó megváltozott a feladat meg lett létrehozva, vagy utolsó hitelesített kell. Ha nem újból hitelesítésre, a feladat nem fogja kimeneti eredmények, és hiba újbóli engedélyezése szükség szerint a műveletnaplók van bejelentkezve. Jelenleg egy korlátozás amikor a hitelesítési jogkivonat kell manuálisan frissíteni kell a Data Lake Store kimenet összes feladat 90 naponta. 
+
+Hitelesítés megújítása **leállítása** a feladat > lépjen a Data Lake Store kimeneti > kattintson a **újra a portálon** hivatkozásra, és egy rövid ideig lap jelenik meg "Engedély átirányítása..." jelző. A lap automatikusan bezáródik, és ha sikeres, fogja jelezni, "Engedélyezési sikeresen megújítva". Meg kell kattintania **mentése** a lap alján, és csak ezután folytatható, ha a feladatot újraindítja a **feladat utolsó befejezési időpontja** adatvesztés elkerülése érdekében.
 
 ![Data Lake Store engedélyezése](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
 
 ## <a name="sql-database"></a>SQL Database
-[Az Azure SQL Database](https://azure.microsoft.com/services/sql-database/) használható kimenetként a relációs jellegű adatokhoz, vagy olyan alkalmazásnál, amely egy relációs adatbázisban szolgáltatott tartalmaktól függnek. Stream Analytics-feladatok írni a meglévő tábla Azure SQL-adatbázisban.  A következő tábla sémáját pontosan meg kell egyeznie a mezők és azok típusát, a feladat kimenete alatt. Egy [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) az SQL-adatbázis output paraméter is (Ez egy előzetes verziójú funkciók) keresztül kimenetként is megadható. Az alábbi táblázat felsorolja a tulajdonság nevét és egy SQL-adatbázis kimenet létrehozása leírását.
+[Az Azure SQL Database](https://azure.microsoft.com/services/sql-database/) használható kimenetként a relációs jellegű adatokhoz, vagy olyan alkalmazásnál, amely egy relációs adatbázisban szolgáltatott tartalmaktól függnek. Stream Analytics-feladatok írni a meglévő tábla Azure SQL-adatbázisban.  A következő tábla sémáját pontosan meg kell egyeznie a mezők és azok típusát, a feladat kimenete alatt. Egy [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) keresztül, valamint az SQL-adatbázis output paraméter kimenetként is megadható. Az alábbi táblázat felsorolja a tulajdonság nevét és egy SQL-adatbázis kimenet létrehozása leírását.
 
 | Tulajdonság neve | Leírás |
 | --- | --- |
@@ -130,7 +133,7 @@ Az alábbi táblázat felsorolja a tulajdonságnevek és azok leírását a blob
 </tr>
 <tr>
 <td>Elérési út előtag mintája [opcionális]</td>
-<td>A fájl elérési út mintája a megadott tárolóban található blobok írásához használt. <BR> Az elérési út mintája választhatja a következő 2 változó egy vagy több példányát használja a blobok írt gyakorisága: <BR> {date}, {time} <BR> 1. példa: cluster1/logs / {date} / {time} <BR> 2. példa: cluster1/logs / {date} <BR> <BR> A következő egyezmény fájlelnevezésnél követi: <BR> {Path Prefix Pattern}/schemaHashcode_Guid_Number.extension <BR> <BR> Példa kimeneti fájlok: <BR> Myoutput/20170901/00/45434_gguid_1.csv <BR> Myoutput/20170901/01/45434_gguid_1.csv <BR> <BR> Itt is az olyan helyzetekben, ahol egy új fájl jön létre: <BR> 1. Aktuális-fájl túllépi a maximálisan megengedett száma (jelenleg 50 000) <BR> 2. A kimeneti sémával módosítása <BR> 3. Külső vagy belső indítsa újra a feladatok  </td>
+<td>A fájl elérési út mintája a megadott tárolóban található blobok írásához használt. <BR> Az elérési út mintája választhatja a következő 2 változó egy vagy több példányát használja a blobok írt gyakorisága: <BR> a {date}, {time} <BR> 1. példa: cluster1/logs / {date} / {time} <BR> 2. példa: cluster1/logs / {date} <BR> <BR> A következő egyezmény fájlelnevezésnél követi: <BR> {Elérési előtag Pattern}/schemaHashcode_Guid_Number.extension <BR> <BR> Példa kimeneti fájlok: <BR> Myoutput/20170901/00/45434_gguid_1.csv <BR> Myoutput/20170901/01/45434_gguid_1.csv <BR> <BR> Itt is az olyan helyzetekben, ahol egy új fájl jön létre: <BR> 1. Aktuális-fájl túllépi a maximálisan megengedett száma (jelenleg 50 000) <BR> 2. A kimeneti sémával módosítása <BR> 3. Külső vagy belső indítsa újra a feladatok  </td>
 </tr>
 <tr>
 <td>[Választható] dátumformátum</td>
@@ -224,7 +227,7 @@ Az Azure Stream Analytics frissíti az adatokat az adatmodellbe dinamikusan fut�
 Ez a táblázat ismerteti az adatok típusú konverzió [Stream Analytics adattípusok](https://msdn.microsoft.com/library/azure/dn835065.aspx) az energiagazdálkodási BIs [Entity Data Model (EDM) típusok](https://powerbi.microsoft.com/documentation/powerbi-developer-walkthrough-push-data/) a POWER BI adatkészlet és a tábla nem léteznek.
 
 
-A Stream Analytics | To Power BI
+A Stream Analytics | A Power bi-hoz
 -----|-----|------------
 bigint | Int64
 típus: nvarchar(max) | Karakterlánc
@@ -304,19 +307,24 @@ Az alábbi táblázat felsorolja a tulajdonságnevek és azok leírását a táb
 | Elválasztó karakter |Csak a fürt megosztott kötetei szolgáltatás szerializálási alkalmazható. A Stream Analytics számos általánosan használt elválasztó karaktert támogat az adatok CSV formátumban történő szerializálásához. Támogatott értékei vesszővel, pontosvesszővel válassza el, hely, lap és függőleges vonal. |
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
-[Az Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) van egy globálisan elosztott, több modellre adatbázis szolgáltatást, hogy a földgolyó méretét, a gazdag lekérdezési és az automatikus indexeléshez keresztül séma-független adatmodellekben, rugalmasan méretezhető korlátlan ajánlatok garantált alacsony késéssel és iparágvezető átfogó SLA-k.
+[Az Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) van egy globálisan elosztott, több modellre adatbázis szolgáltatást, hogy a földgolyó méretét, a gazdag lekérdezési és az automatikus indexeléshez keresztül séma-független adatmodellekben, rugalmasan méretezhető korlátlan ajánlatok garantált alacsony késéssel és iparágvezető átfogó SLA-k. A Stream Analytics Cosmos DB adatgyűjtési beállítások kapcsolatos információkért tekintse meg a [Cosmos DB kimenetként a Stream Analytics](stream-analytics-documentdb-output.md) cikk.
 
-Az alábbi lista részletesen a tulajdonságnevek és azok leírását egy Azure Cosmos DB kimenet létrehozása.
+> [!Note]
+> Ilyenkor Azure Stream Analytics csak kapcsolatot támogat CosmosDB használatával **SQL API**.
+> Egyéb Azure Cosmos DB API-k még nem támogatott. Ha pont Azure Stream Analytics az Azure Cosmos DB fiókok létrehozása, más API-khoz, az adatok nem megfelelően tárolódhat. 
 
-* **A kimeneti Alias** – egy aliast tekintse meg a kimenetet a Stream Analytics-lekérdezés  
-* **A fiók neve** – a név vagy a végpont URI-azonosítója a Cosmos DB fiók.  
-* **Kulcs fiók** – Cosmos DB fiók a megosztott elérési kulcsot.  
-* **Adatbázis** – Cosmos-adatbázis az adatbázis nevét.  
-* **Gyűjteménynévmintája** – a gyűjtemény nevét vagy a használandó gyűjtemények gyűjteménynévmintája. A gyűjteménynév-formátum az opcionális {partition} token használatával, ahol a partíciók 0-tól kezdődnek lehet létrehozni. Minta érvényes bemenetei a következők:  
-  1\) MyCollection – egy gyűjteményt a következő "MyCollection" néven már léteznie kell.  
-  2\) MyCollection {partition} – ilyen gyűjteményeknek létezniük kell – "MyCollection0", "MyCollection1", "MyCollection2" és így tovább.  
-* **Kulcs partícióazonosító** – nem kötelező. Ez csak akkor van szükség, ha a gyűjteménynévmintája partíció jogkivonatot használ. A kimeneti eseményekben a kimenet gyűjtemények közötti particionálására szolgáló kulcs megadásához használt mező neve. Egyetlen gyűjtemény kimeneti például a PartitionId bármilyen tetszőleges kimeneti oszlop használható.  
-* **Dokumentálja azonosító** – nem kötelező. A kimeneti eseményekben a mely Beszúrás vagy frissítés műveletek alapuló elsődleges kulcs megadásához használt mező neve.  
+A következő táblázat létrehozása az Azure Cosmos DB kimeneti tulajdonságait ismerteti.
+| Tulajdonság neve | Leírás |
+| --- | --- |
+| Kimeneti alias | Tekintse meg ezt a kimenetet a Stream Analytics lekérdezési aliast. |
+| Fogadó | Cosmos DB |
+| Importálási beállítás | Válassza a "Cosmos DB kiválasztása az előfizetésből", vagy "Adjon meg Cosmos adatbázis beállításainak manuális".
+| Fiókazonosító | A név vagy a végpont URI-azonosítója a Cosmos DB fiók. |
+| Fiókkulcs | A megosztott elérési kulcsot az Cosmos DB fiókhoz. |
+| Adatbázis | A Cosmos DB adatbázis neve. |
+| Gyűjteménynévminta | A gyűjtemény nevét vagy a használandó gyűjtemények gyűjteménynévmintája. <br/>A gyűjteménynév-formátum az opcionális {partition} token használatával, ahol a partíciók 0-tól kezdődnek lehet létrehozni. Két példa látható:  <br/>1. _MyCollection_ – már léteznie kell egy gyűjteményt a következő "MyCollection" néven.  <br/>2. _{Partition} MyCollection_ – a particionálási oszlop alapján. <br/>A particionáló oszlop gyűjteményeknek létezniük kell – "MyCollection0", "MyCollection1", "MyCollection2" és így tovább. |
+| Partíciókulcs | Választható. Ez csak akkor szükséges, ha a gyűjtemény mintát használ egy {partition} token.<br/> A partíciós kulcs a kimeneti eseményekben a kimenet gyűjtemények közötti particionálására szolgáló kulcs megadásához használt mező neve.<br/> Egyetlen gyűjtemény kimeneti például a PartitionId bármilyen tetszőleges kimeneti oszlop használható. |
+| A dokumentum azonosítója |Választható. A kimeneti eseményekben a mely Beszúrás vagy frissítés műveletek alapuló elsődleges kulcs megadásához használt mező neve.  
 
 ## <a name="azure-functions-in-preview"></a>Az Azure Functions (az előzetes verzió)
 Az Azure Functions egy kiszolgáló nélküli számítási szolgáltatás, amellyel igény szerint, külön infrastruktúra üzembe helyezése és kezelése nélkül futtathat kódokat. Lehetővé teszi, amely az Azure vagy harmadik féltől származó szolgáltatással téve események által kiváltott kód megvalósítását.  Ez a lehetőség az Azure Functions eseményindítók válaszolni teszi természetes kimeneti számára egy Azure Stream Analytics. A konzolkimeneti adapter lehetővé teszi a felhasználóknak a Stream Analytics csatlakozni az Azure Functions, futtassa a parancsfájlt vagy kódrészletek, számos esemény adott válaszként.
