@@ -183,7 +183,7 @@ items:
                 href: sql-api-sql-query-metrics.md
               - name: SQL-játszótér
                 href: 'https://aka.ms/cosmos-db-playground'
-              - name: Particionálás
+              - name: SQL-adatparticionálás
                 href: sql-api-partition-data.md
               - name: 'Tárolt eljárások, eseményindítók és felhasználói függvények'
                 href: programming.md
@@ -286,6 +286,8 @@ items:
             items:
               - name: Gremlin-támogatás
                 href: gremlin-support.md
+              - name: Graph-particionálás
+                href: graph-partitioning.md
           - name: Tábla API
             items:
               - name: A Table fejlesztése
@@ -328,8 +330,6 @@ items:
             href: geospatial.md
           - name: Indexelés
             href: indexing-policies.md
-          - name: Connected Service a Visual Studióban
-            href: connected-service.md
       - name: Kezelés
         items:
           - name: Költséghatékony írások és olvasások
@@ -394,7 +394,7 @@ items:
           - name: Az ODBC-illesztő felhasználása az adatmegjelenítéshez
             href: odbc-driver.md
           - name: Spring Boot Starter használata SQL API-kkal
-            href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db.md
+            href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db
   - name: Referencia
     items:
       - name: Kódminták

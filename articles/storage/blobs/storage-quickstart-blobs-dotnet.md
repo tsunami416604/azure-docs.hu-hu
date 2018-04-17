@@ -9,11 +9,11 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 03/15/2018
 ms.author: tamram
-ms.openlocfilehash: b84a56996a335f8a137c4219c55b9878e39b5a3b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a34a94a9421c65a2b1d4ce5c390732e0adbb69d6
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-net"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása a .NET használatával
 
@@ -56,26 +56,15 @@ A [git](https://git-scm.com/) használatával töltse le az alkalmazás egy más
 git clone https://github.com/Azure-Samples/storage-blobs-dotnet-quickstart.git
 ```
 
-Ez a parancs a helyi git mappába klónozza az adattárat. A Visual Studio-megoldás megnyitásához keresse meg a storage-blobs-node-quickstart mappát, nyissa meg, és kattintson duplán a storage-blobs-dotnet-quickstart.sln fájlra. 
+Ez a parancs a helyi git mappába klónozza az adattárat. A Visual Studio-megoldás megnyitásához keresse meg a *storage-blobs-dotnet-quickstart* mappát, nyissa meg, és kattintson duplán a *storage-blobs-dotnet-quickstart.sln* fájlra. 
+
+[!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
 ## <a name="configure-your-storage-connection-string"></a>A tárolási kapcsolati karakterlánc konfigurálása
 
-Az alkalmazás futtatásához meg kell adnia a tárfiókjához tartozó kapcsolati karakterláncot. Másolja a kapcsolati karakterláncát az Azure Portalról, és írja be egy új környezeti változóba. A minta beolvassa a kapcsolati karakterláncot a környezeti változóból, és annak használatával hitelesíti az Azure Storage felé intézett kéréseit.
+Az alkalmazás futtatásához meg kell adnia a tárfiókjához tartozó kapcsolati karakterláncot. A mintaalkalmazás beolvassa a kapcsolati karakterláncot egy környezeti változóból, és annak használatával hitelesíti az Azure Storage számára küldött kéréseket.
 
-### <a name="copy-your-connection-string-from-the-azure-portal"></a>A kapcsolati karakterlánc másolása az Azure Portalról
-
-A kapcsolati karakterlánc másolása:
-
-1. Lépjen az [Azure Portalra](https://portal.azure.com).
-2. Keresse meg a Storage-fiókját.
-3. A tárfiók áttekintésének **Beállítások** szakaszában válassza a **Hozzáférési kulcsok** elemet.
-4. Keresse meg a **Kapcsolati karakterlánc** értéket a **key1** területen, és kattintson a **Másolás** gombra a kapcsolati karakterlánc másolásához.  
-
-    ![A kapcsolati karakterlánc az Azure Portalról történő másolását bemutató képernyőkép](media/storage-quickstart-blobs-dotnet/portal-connection-string.png)
-
-## <a name="write-your-connection-string-to-an-environment-variable"></a>A kapcsolati karakterlánc írása egy környezeti változóba
-
-Ezt követően írja az új környezeti változót az alkalmazást futtató helyi gépre. A környezeti változó megadásához nyisson meg egy konzolablakot, és kövesse az operációs rendszerének megfelelő utasításokat. Cserélje le a `<yourconnectionstring>` kifejezést a tényleges kapcsolati karakterláncra:
+A kapcsolati karakterlánc másolása után írja azt egy új környezeti változóba az alkalmazást futtató helyi gépen. A környezeti változó megadásához nyisson meg egy konzolablakot, és kövesse az operációs rendszerének megfelelő utasításokat. Cserélje le a `<yourconnectionstring>` kifejezést a tényleges kapcsolati karakterláncra:
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
 

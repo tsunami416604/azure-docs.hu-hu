@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad8ed320a8dd91ea83dbaf71e2e9514b4df4cdb5
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 630a633cf8657d43d6416d316928830634c9bf48
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Az AD FS monitorozása az Azure AD Connect Health használatával
 Az alábbi dokumentáció az AD FS infrastruktúra Azure AD Connect Health használatával végzett figyelésére vonatkozik. Az Azure AD Connect (szinkronizálási szolgáltatás) az Azure AD Connect Health használatával történő megfigyelésével kapcsolatos információkat [Az Azure AD Connect Health szinkronizálási szolgáltatás használata](active-directory-aadconnect-health-sync.md) című témakörben tekintheti meg. Az Active Directory tartományi szolgáltatások az Azure AD Connect Health használatával történő megfigyelésével kapcsolatos információkat pedig a [Using Azure AD Connect Health with AD DS](active-directory-aadconnect-health-adds.md) (Az Azure AD Connect Health használata az AD DS szolgáltatással) című témakörben találja.
@@ -109,7 +109,7 @@ A jelentésben az alábbi információk találhatók:
 | Felhasználóazonosító |A használt felhasználóazonosítót mutatja. Ez a felhasználó által begépelt érték, ami bizonyos esetekben a rossz felhasználóazonosító. |
 | Sikertelen próbálkozások |A sikertelen bejelentkezések teljes számát mutatja az adott felhasználóazonosítóhoz. A táblázat a sikertelen bejelentkezések mennyisége alapján van rendezve csökkenő sorrendben. |
 | Utolsó sikertelen kísérlet |Az utolsó sikertelen kísérlet időpontjának időbélyegét mutatja. |
-| Legutóbbi sikertelen kísérlet IP-címe |A legutóbbi sikertelen kérelemhez tartozó IP-címet jeleníti meg. |
+| Legutóbbi sikertelen kísérlet IP-címe |A legutóbbi sikertelen kérelemhez tartozó IP-címet jeleníti meg. Ha ebben az értékben egynél több IP-címet lát, lehet, hogy az érték magában foglalja a továbbított ügyfél IP-címét és a felhasználó utoljára megkísérelt kéréséhez tartozó IP-címet.  |
 
 > [!NOTE]
 > A jelentés 12 óránként automatikusan frissül az ez idő alatt gyűjtött új információkkal. Ezért az utolsó 12 órában gyűjtött bejelentkezési kísérletek esetleg még nem szerepelnek a jelentésben.
@@ -191,11 +191,14 @@ A figyelmeztetési küszöbérték küszöbérték-beállításokban módosítha
 1. Miért jelennek meg magánhálózati IP-címtartományok a jelentésben?  <br />
 A magánhálózati IP-címek (<i>10.x.x.x, 172.x.x.x és 192.168.x.x</i>) és az Exchange-IP-címek szűrve vannak, és True értékűként vannak megjelölve az IP-címek engedélyezési listáján. Ha magánhálózati IP-tartományok jelennek meg, nagyon valószínű, hogy a külső terheléselosztó nem küldi el az ügyfél IP-címét, amikor továbbítja a webalkalmazás proxykiszolgálójának.
 
-2. Hogyan blokkolhatok IP-címeket?  <br />
+2. Miért jelennek meg terheléselosztói IP-címek a jelentésben?  <br />
+Ha terheléselosztói IP-címek jelennek meg, nagyon valószínű, hogy a külső terheléselosztó nem küldi el az ügyfél IP-címét, amikor továbbítja a webalkalmazás proxykiszolgálójának. Konfigurálja megfelelően a terheléselosztót a továbbított ügyfél IP-címének továbbítására. 
+
+3. Hogyan blokkolhatok IP-címeket?  <br />
 Az azonosított kártevő IP-címeket érdemes hozzáadni a tűzfalhoz vagy blokkolni az Exchange-ben.   <br />
 AD FS 2016 + 1803.C+ QFE esetén az IP-címeket közvetlenül az AD FS-ben blokkolhatja. 
 
-3. Miért nem jelenik meg egyetlen elem sem a jelentésben? <br />
+4. Miért nem jelenik meg egyetlen elem sem a jelentésben? <br />
    - A sikertelen bejelentkezési tevékenységek nem érték el a beállított küszöbértéket. 
    - Ellenőrizze, hogy nincsen-e aktív „Az állapotszolgáltatás nem naprakész” figyelmeztetés az AD FS-kiszolgálók listáján.  Itt további információkat olvashat [a figyelmeztetés hibaelhárításáról](active-directory-aadconnect-health-data-freshness.md).
    - Az AD FS-farmokon nincs engedélyezve a naplózás.

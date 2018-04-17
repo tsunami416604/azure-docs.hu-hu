@@ -1,12 +1,12 @@
 ---
-title: "Azure verem identitás áttekintése |} Microsoft Docs"
-description: "További tudnivalók az Azure-verem használható identitáskezelő rendszerekkel."
+title: Azure verem identitás áttekintése |} Microsoft Docs
+description: További tudnivalók az Azure-verem használható identitáskezelő rendszerekkel.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 2/22/2018
 ms.author: brenduns
-ms.reviewer: 
-ms.openlocfilehash: deebe5d8ff4c35c4507d2daf5c15025a1810d865
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.reviewer: ''
+ms.openlocfilehash: 607c7938a789b3504a425057645b291bd4c8235b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="overview-of-identity-for-azure-stack"></a>Azure verem identitás áttekintése
 
@@ -52,12 +52,12 @@ Felhasználói fiókok (azonosítók) olyan szabványos fiókok, hitelesítéshe
 Hozzon létre, és hogyan a felhasználók és csoportok kezelése attól függ, az identitás-megoldás használata. 
 
 Azure-készletben, felhasználói fiókok: 
-- Az hozott létre a  *username@domain*  formátumban. Bár az AD FS felhasználói fiókok leképezve az Active Directory-példányban, az AD FS nem használható a  *\<tartományi >\<alias >* formátumban. 
+- Az hozott létre a *username@domain* formátumban. Bár az AD FS felhasználói fiókok leképezve az Active Directory-példányban, az AD FS nem használható a  *\<tartományi >\<alias >* formátumban. 
 - Beállítható a multi-factor authentication használatával. 
 - A könyvtárba, amennyiben először regisztrálják, amely a szervezet címtárához korlátozva.
 - A helyszíni címtárakban lehet importálni. További információkért lásd: [integrálása a helyszíni címtárakat az Azure Active Directoryval](/azure/active-directory/connect/active-directory-aadconnect). 
 
-Amikor bejelentkezik a szervezet bérlői portál, használhatja a  *https://portal.local.azurestack.external*  URL-CÍMÉT. 
+Amikor bejelentkezik a szervezet bérlői portál, használhatja a *https://portal.local.azurestack.external* URL-CÍMÉT. 
 
 ### <a name="guest-users"></a>Vendégfelhasználók
 Vendégfelhasználók számára, hogy a címtárban található erőforrások hozzáférés rendelkezik directory bérlőktől lévő felhasználói fiókok. Vendég felhasználók támogatására, használhatja az Azure Active Directory és a több-bérlős támogatásának engedélyezéséhez. Ha támogatása engedélyezve van, felajánlhatja a vendégfelhasználók a directory-bérlőjéhez, amely a következő funkciókat engedélyezi az együttműködés külső szervezetekkel erőforrásaihoz. 
@@ -145,10 +145,10 @@ Az alkalmazások és a felhasználók az Azure-verem architektúrája négy rét
 
 ### <a name="authenticate-to-azure-resource-manager"></a>Az Azure Resource Manager való hitelesítéséhez
 Az identitásszolgáltató a hitelesítést, és megjelenik egy JSON Web Token, a következő információkat kell rendelkeznie: 
-1.  **Az azonosítási rendszer (szolgáltató) URL-címe**: az URL-cím, ahol az identitásszolgáltató érhető el. Például  *https://login.windows.net* . 
+1.  **Az azonosítási rendszer (szolgáltató) URL-címe**: az URL-cím, ahol az identitásszolgáltató érhető el. Például *https://login.windows.net*. 
 2.  **App ID URI az Azure Resource Manager**: az Azure Resource Manager az identitásszolgáltató által regisztrált egyedi azonosítója. Azt is egyedi érték minden egyes Azure verem telepítés.
 3.  **Hitelesítő adatok**: A hitelesítő adatok segítségével hitelesíti a identitásszolgáltatóval. 
-4.  **URL-CÍMÉT az Azure Resource Manager**: az URL-cím az Azure erőforrás-kezelő szolgáltatás helyét. Például  *https://management.azure.com*  vagy  *https://management.local.azurestack.external* .
+4.  **URL-CÍMÉT az Azure Resource Manager**: az URL-cím az Azure erőforrás-kezelő szolgáltatás helyét. Például *https://management.azure.com* vagy *https://management.local.azurestack.external*.
 
 Ha egy rendszerbiztonsági tag (egy ügyfél, alkalmazás vagy felhasználó) hajt végre a hitelesítési kérelem elért egy erőforrást, a kérelem tartalmaznia kell:
 - Az egyszerű hitelesítő adatokat.
@@ -169,9 +169,9 @@ Ha minden ellenőrzés be nem fejeződik, Azure Resource Manager használ a *kif
 
 ### <a name="use-role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés használata  
 A Microsoft Azure-megvalósítást összhangban a szerepköralapú hozzáférés-vezérlés (RBAC) Azure-készletben. Kezelheti az erőforrásokhoz való hozzáférést, ha a megfelelő RBAC szerepkör hozzárendelése a felhasználók, csoportok és alkalmazások. Az RBAC használata Azure verem kapcsolatos információkért lásd: a következő cikkeket:
-- [Ismerkedés a szerepköralapú hozzáférés-vezérlés az Azure portálon](/azure/active-directory/role-based-access-control-what-is).
-- [Az Azure-előfizetés erőforrásokhoz való hozzáférés kezelése szerepköralapú hozzáférés-vezérlés segítségével](/azure/active-directory/role-based-access-control-configure).
-- [Hozzon létre egyéni szerepkörök átruházásához hozzáférés-vezérlési](/azure/active-directory/role-based-access-control-custom-roles).
+- [Ismerkedés a szerepköralapú hozzáférés-vezérlés az Azure portálon](/azure/role-based-access-control/overview).
+- [Az Azure-előfizetés erőforrásokhoz való hozzáférés kezelése szerepköralapú hozzáférés-vezérlés segítségével](/azure/role-based-access-control/role-assignments-portal).
+- [Hozzon létre egyéni szerepkörök átruházásához hozzáférés-vezérlési](/azure/role-based-access-control/custom-roles).
 - [Szerepköralapú hozzáférés-vezérlés kezelése](azure-stack-manage-permissions.md) Azure navigációs veremben.
 
 

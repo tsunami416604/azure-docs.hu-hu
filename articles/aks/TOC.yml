@@ -83,6 +83,8 @@
           href: openfaas.md
         - name: Spark-feladatok futtatása AKS-en
           href: spark-job.md
+        - name: GPU-k használata az AKS-en
+          href: gpu-cluster.md
     - name: A Kubernetes alapjai
       items:
         - name: A Kubernetes-irányítópult használata

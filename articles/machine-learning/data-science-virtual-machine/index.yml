@@ -1,57 +1,58 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Az Azure Data Science Virtual Machine dokumentációja"
+title: Az Azure Data Science Virtual Machine dokumentációja
 metadata:
-  title: "Az Azure Data Science Virtual Machine dokumentációja"
-  description: "Útmutató az adatelemzési virtuális gép használatához."
+  title: A Data Science Virtual Machine dokumentációja – Azure
+  description: Útmutató a Data Science Virtual Machine használatához, amely egy kísérleti környezet az Azure-felhőben kifejezetten adatelemzéshez. Számos népszerű adatelemzési és egyéb eszköz található meg rajta előre telepítve és konfigurálva, amelyek jelentősen felgyorsítják az intelligens alkalmazások fejlett elemzésekhez történő összeállítását.
   services: machine-learning
-  author: bradsev
+  author: gopitk
   manager: cgronlun
   ms.service: machine-learning
+  ms.component: data-science-vm
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/18/2018
-  ms.author: bradsev
-  ms.openlocfilehash: 291d38522adfa780629892ea6d7f7a17a82a0e39
-  ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+  ms.author: gokuma
+  ms.openlocfilehash: b4a4d167a74b89ff623fb8267c4fdc28b46923e9
+  ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 02/13/2018
+  ms.lasthandoff: 04/16/2018
 abstract:
-  description: "Az adatelemzési és a mélytanulási virtuális gépek testre szabott Azure VM-rendszerképek, rengeteg beépített adatelemzési eszközzel, amelyek fejlett elemzésre tervezett, intelligens alkalmazások létrehozására használhatók."
+  description: Az adatelemzési és a mélytanulási virtuális gépek testre szabott Azure VM-rendszerképek, rengeteg beépített adatelemzési eszközzel, amelyek fejlett elemzésre tervezett, intelligens alkalmazások létrehozására használhatók.
 sections:
-- title: "5 perces gyors útmutatók"
+- title: 5 perces gyors útmutatók
   items:
   - type: paragraph
-    text: "Útmutató a Windows- vagy Linux-alapú adatelemzési virtuális gépek üzembe helyezéséhez:"
+    text: 'Útmutató a Windows- vagy Linux-alapú adatelemzési virtuális gépek üzembe helyezéséhez:'
   - type: list
     style: unordered
     items:
     - html: <a href="provision-vm.md">Windows</a>
     - html: <a href="linux-dsvm-intro.md">Linux CentOS</a>
     - html: <a href="dsvm-ubuntu-intro.md">Linux Ubuntu</a>
-- title: "Részletes útmutatók"
+- title: Részletes útmutatók
   items:
   - type: paragraph
-    text: "Útmutató az adatelemzési virtuális gépek (DSVM) kiépítéséről és használatához:"
+    text: 'Útmutató az adatelemzési virtuális gépek (DSVM) kiépítéséről és használatához:'
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"provision-vm\">Windowsos DSVM kiépítése</a>"
-    - html: "<a href=\"vm-do-ten-thing\">Windowsos DSVM használata</a>"
-    - html: "<a href:\"linux-dsvm-intro\">Linux CentOS-alapú DSVM kiépítése</a>"
-    - html: "<a href=\"dsvm-ubuntu-intro\">Linux Ubuntu-alapú DSVM kiépítése</a>"
-    - html: "<a href=\"linux-dsvm-walkthrough\">Linuxos DSVM használata</a>"
-- title: "További Azure Machine Learning-technológiák"
+    - html: <a href="provision-vm">Windowsos DSVM kiépítése</a>
+    - html: <a href="vm-do-ten-thing">Windowsos DSVM használata</a>
+    - html: <a href:"linux-dsvm-intro">Linux CentOS-alapú DSVM kiépítése</a>
+    - html: <a href="dsvm-ubuntu-intro">Linux Ubuntu-alapú DSVM kiépítése</a>
+    - html: <a href="linux-dsvm-walkthrough">Linuxos DSVM használata</a>
+- title: További Azure Machine Learning-technológiák
   items:
   - type: paragraph
-    text: "Az Azure Machine Learningben elérhető további technológiák:"
+    text: 'Az Azure Machine Learningben elérhető további technológiák:'
   - type: list
     style: cards
     className: cardsFTitle
     items:
-    - title: "Azure Machine Learning-szolgáltatások (előzetes verzió)"
+    - title: Azure Machine Learning-szolgáltatások (előzetes verzió)
       href: /azure/machine-learning/preview/
       image:
         src: media/index/i_machine-learning.svg

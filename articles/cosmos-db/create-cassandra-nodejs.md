@@ -1,11 +1,10 @@
 ---
-title: "Gyors útmutató: Cassandra API a Node.js-szel – Azure Cosmos DB | Microsoft Docs"
-description: "Ez a gyors útmutató azt ismerteti, hogy hogyan használható az Azure Cosmos DB Cassandra API profilalkalmazások létrehozására a Node.js használatával"
+title: 'Gyors útmutató: Cassandra API a Node.js-szel – Azure Cosmos DB | Microsoft Docs'
+description: Ez a gyors útmutató azt ismerteti, hogy hogyan használható az Azure Cosmos DB Cassandra API profilalkalmazások létrehozására a Node.js használatával
 services: cosmos-db
-documentationcenter: 
-author: mimig1
-manager: jhubbard
-editor: 
+documentationcenter: ''
+author: SnehaGunda
+manager: kfile
 ms.assetid: 4732e57d-32ed-40e2-b148-a8df4ff2630d
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc
@@ -14,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/15/2017
-ms.author: govindk
-ms.openlocfilehash: abf88cf96b32bc4168cb8c09a6e70ad0e395e88c
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.author: sngun
+ms.openlocfilehash: e2f2064de5dc29ef290e6dc6dd7df6ae0a466f92
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-and-azure-cosmos-db"></a>Gyors útmutató: Cassandra alkalmazás felépítése a Node.js és az Azure Cosmos DB használatával
 
-Ez a gyors útmutató azt ismerteti, hogy hogyan használható a Node.js és az Azure Cosmos DB [Cassandra API](cassandra-introduction.md) egy profilalkalmazás létrehozására egy GitHubról származó példa klónozásával. Az útmutató emellett azt is bemutatja, hogyan hozható létre egy Azure Cosmos DB-fiók a webes alapú Azure Portal használatával.
+Ez a gyors útmutató azt ismerteti, hogy hogyan használható a Node.js és az Azure Cosmos DB [Cassandra API](cassandra-introduction.md) egy profilalkalmazás létrehozására egy GitHubról származó példa klónozásával. A rövid útmutató emellett azt is bemutatja, hogyan hozható létre egy Azure Cosmos DB-fiók a webes alapú Azure Portal használatával.
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, tábla, kulcs-érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
@@ -61,7 +60,7 @@ Most pedig klónozunk egy Cassandra API-alkalmazást a GitHubról, beállítjuk 
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. A kódrészletek mind a C:\git-samples\azure-cosmos-db-cassandra-nodejs-getting-started mappában található `uprofile.js` fájlból származnak. Egyéb esetben ugorhat [A kapcsolati karakterlánc frissítése](#update-your-connection-string) szakaszra. 
+Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. A kódrészletek mind a C:\git-samples\azure-cosmos-db-cassandra-nodejs-getting-started mappában található `uprofile.js` fájlból származnak. Egyéb esetben áttérhet [A kapcsolati karakterlánc frissítése](#update-your-connection-string) szakaszra. 
 
 * A felhasználónév és a jelszó a kapcsolati karakterlánc oldalán állítható be az Azure Portalon. A `path\to\cert' egy X509-tanúsítvány elérési útját tartalmazza. 
 
@@ -153,7 +152,7 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
 1. Az [Azure Portalon](http://portal.azure.com/) kattintson a **Kapcsolati karakterlánc** elemre. 
 
-    A ![Másolás gomb](./media/create-cassandra-nodejs/copy.png) használatával (a képernyő jobb oldalán) másolja a vágólapra a felső, CONTACT POINT (Kapcsolódási pont) értéket.
+    Válassza a ![Másolás gomb](./media/create-cassandra-nodejs/copy.png) használatával (a képernyő jobb oldalán) másolja a vágólapra a felső, CONTACT POINT (Kapcsolódási pont) értéket.
 
     ![A CONTACT POINT (Kapcsolódási pont), USERNAME (Felhasználónév) és a PASSWORD (Jelszó) értékek másolása az Azure Portal kapcsolati karakterlánc oldaláról](./media/create-cassandra-nodejs/keys.png)
 
@@ -181,7 +180,7 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
     
 ## <a name="use-the-x509-certificate"></a>Az X509-tanúsítvány használata 
 
-1. Ha hozzá kell adnia a Baltimore CyberTrust legfelső szintű tanúsítványát, a sorozatszáma 02:00:00:b9 és a SHA1 ujjlenyomata d4🇩🇪20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74. Letölthető a https://cacert.omniroot.com/bc2025.crt, címről, és .cer kiterjesztéssel helyi fájlba menthető. 
+1. Ha hozzá kell adnia a Baltimore CyberTrust legfelső szintű tanúsítványát, a sorozatszáma 02:00:00:b9 és a SHA1 ujjlenyomata d4🇩🇪20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74. Letölthető a https://cacert.omniroot.com/bc2025.crt címről, és .cer kiterjesztéssel helyi fájlba menthető. 
 
 2. Nyissa meg a uprofile.js fájlt, és változtassa meg a 'path\to\cert' paramétert úgy, hogy az új tanúsítványára mutasson. 
 
@@ -211,9 +210,9 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, hogyan lehet az Adatkezelő segítségével gyűjteményt készíteni, és hogyan lehet futtatni az alkalmazást. Most további adatokat importálhat a Cosmos DB-fiókba. 
+Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, hogyan lehet az Adatkezelő segítségével gyűjteményt készíteni, és hogyan lehet futtatni az alkalmazást. Így már további adatokat importálhat a Cosmos DB-fiókba. 
 
 > [!div class="nextstepaction"]
 > [Cassandra-adatok importálása az Azure Cosmos DB-be](cassandra-import-data.md)

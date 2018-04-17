@@ -35,8 +35,6 @@
       items:
         - name: MPP-architektúra
           href: massively-parallel-processing-mpp-architecture.md
-        - name: Teljesítményszintek
-          href: performance-tiers.md
         - name: Adattárházegységek
           href: what-is-a-data-warehouse-unit-dwu-cdwu.md
         - name: 'Horizontális felskálázás, szüneteltetés, folytatás'
@@ -79,8 +77,10 @@
           href: how-to-use-elastic-query-with-sql-data-warehouse.md
     - name: Lekérdezési teljesítmény
       items:
-        - name: Erőforrásosztályok
+        - name: Erőforrásosztályok és számítási feladatok kezelése
           href: resource-classes-for-workload-management.md
+        - name: Memória- és egyidejűségi korlátok
+          href: memory-and-concurrency-limits.md
         - name: Oszlopcentrikus tömörítés
           href: sql-data-warehouse-memory-optimizations-for-columnstore-compression.md
     - name: Figyelés
@@ -172,9 +172,7 @@
         - name: BCP
           href: sql-data-warehouse-load-with-bcp.md
         - name: Data Factory
-          href: sql-data-warehouse-load-with-data-factory.md
-        - name: AzCopy
-          href: sql-data-warehouse-load-from-sql-server-with-polybase.md
+          href: /azure/data-factory/load-azure-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json
         - name: RedGate
           href: sql-data-warehouse-load-with-redgate.md
         - name: SSIS

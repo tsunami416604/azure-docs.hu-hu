@@ -1,8 +1,8 @@
 ---
-title: "Webalkalmazási tűzfal (WAF) App Service Environment-környezet konfigurálása"
-description: "Ismerje meg az App Service-környezet elé webalkalmazási tűzfal konfigurálásáról."
+title: Webalkalmazás-tűzfal (WAF) konfigurálása App Service Environment környezetben
+description: Megtudhatja, hogyan konfigurálhat webalkalmazás-tűzfalat App Service Environment környezete előtt.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: naziml
 manager: erikre
 editor: jimbe
@@ -12,95 +12,98 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/17/2016
+ms.date: 03/03/2018
 ms.author: naziml
 ms.custom: mvc
-ms.openlocfilehash: bfe36ee5365e71db4280e8e2ccff6db8e552dd39
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
-ms.translationtype: MT
+ms.openlocfilehash: bc59d8671d904cf5096d616213cc4674ef5743b8
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Webalkalmazási tűzfal (WAF) App Service Environment-környezet konfigurálása
+# <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Webalkalmazás-tűzfal (WAF) konfigurálása App Service Environment környezetben
 ## <a name="overview"></a>Áttekintés
-Webalkalmazási tűzfalak, például a [Barracuda WAF az Azure-](https://www.barracuda.com/programs/azure) , amely megtalálható a [Azure piactér](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/) segítségével biztonságos a webalkalmazások, ellenőrizze a bejövő webes forgalomnak SQL alkalommal többhelyes parancsfájlok, kártevő szoftverek feltöltések letiltása & DDoS alkalmazás és más támadásoknak. Azt is ellenőrzi a válaszokat a háttérben futó webes-kiszolgálókról az adatok adatvesztés-megelőzési (DLP). Az elkülönítési és az App Service Environment-környezetek által biztosított további skálázás együtt, a környezetet biztosít az ideális üzleti kritikus webes alkalmazások kell állnia, kártékony kérelmek és nagy mennyiségű forgalom.
+
+A webalkalmazás-tűzfalak (WAF) segítik webalkalmazásai biztonságosabbá tételét azáltal, hogy megvizsgálják a bemenő webes forgalmat, és blokkolják az SQL-injektálásokat, a szkriptet alkalmazó támadásokat, a rosszindulatú feltöltéseket és DDoS-alkalmazásokat és egyéb támadásokat. Ezenkívül megvizsgálják a háttér-webkiszolgálóktól érkező válaszokat is az adatvesztés megelőzése (DLP) érdekében. Az App Service Environment elszigetelésével és további skálázásával kombinálva ideális környezetet nyújt az üzleti szempontból kritikus webalkalmazások tárolására, amelyeknek ellen kell állniuk a kártevő kéréseknek és a nagy forgalomnak. Az Azure az [Application Gateway](http://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) révén WAF képességet is kínál.  Az App Service Environment Application Gatewayjel való integrálásának részleteiért olvassa el az [ILB ASE integrálása egy Application Gatewayjel](http://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway) témakörről szóló dokumentumot.
+
+Az Azure Application Gatewayen túl több piactéri lehetőség is rendelkezésre áll, mint például a [Barracuda WAF for Azure](https://www.barracuda.com/programs/azure). Ezek az [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/)-en érhetők el. A dokumentáció további részre arra fókuszál, hogyan integrálhatja App Service Environment környezetét egy Barracuda WAF-eszközzel.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)] 
 
 ## <a name="setup"></a>Beállítás
-A dokumentum konfiguráljuk az App Service-környezet terhelésű több példánya Barracuda WAF mögött, hogy a WAF csak forgalmát képes elérni az App Service Environment-környezet, és azt nem érhető el a Szegélyhálózaton. Azt is, hogy Azure Traffic Manager elé a Barracuda WAF példányok Azure-adatközpont és régiók terheléselosztása érdekében. Egy magas szintű diagramját, a telepítő az alábbi képen jelenne meg:
+Ebben a dokumentumban a Barracuda WAF több elosztott terhelésű példánya mögül konfigurálja az App Service Environment környezetet, így csak a WAF-ból érkező forgalom érheti el az App Service Environmentet, a DMZ-ből érkező nem. Ezenkívül Azure Traffic Managert is elhelyezünk a Barracuda WAF példányai előtt, hogy el legyen osztva a terhelés az Azure-adatközpontok és -régiók között. Az összeállítás áttekintő jellegű diagramja az alábbi képen láthatóhoz hasonló:
 
 ![Architektúra][Architecture] 
 
 > [!NOTE]
-> Bevezetésével [ILB támogatja az App Service Environment-környezet](app-service-environment-with-internal-load-balancer.md), konfigurálhatja a ASE a Szegélyhálózaton a nem érhető el, és csak a magánhálózaton elérhetővé tenni. 
+> Az [ILB App Service Environment környezetre irányuló támogatásának](app-service-environment-with-internal-load-balancer.md) bevezetésével konfigurálhatja úgy az ASE-t, hogy az elérhetetlen legyen a DMZ-ről, és csak a privát hálózat számára legyen elérhető. 
 > 
 > 
 
-## <a name="configuring-your-app-service-environment"></a>Az App Service-környezet konfigurálása
-Az App Service Environment-környezet konfigurálásához tekintse meg [dokumentációban](app-service-web-how-to-create-an-app-service-environment.md) a témáról. Miután egy App Service-környezet létrehozása, Web Apps, API-alkalmazás, létrehozhat és [Mobile Apps](../../app-service-mobile/app-service-mobile-value-prop.md) ebben a környezetben, amely az összes védi a konfigurálását a következő szakaszban végezzük WAF mögött.
+## <a name="configuring-your-app-service-environment"></a>Az App Service Environment konfigurálása
+Egy App Service Environment környezet konfigurálásához tekintse meg az arról készült [dokumentációnkat](app-service-web-how-to-create-an-app-service-environment.md). Ha létrehozta App Service Environment környezetét, létrehozhat ebben a környezetben webalkalmazásokat, API-alkalmazásokat és [mobilalkalmazásokat](../../app-service-mobile/app-service-mobile-value-prop.md), amelyek mind védelem alatt fognak állni a következő szakaszban konfigurált WAF mögött.
 
 ## <a name="configuring-your-barracuda-waf-cloud-service"></a>A Barracuda WAF Felhőszolgáltatás konfigurálása
-Barracuda rendelkezik egy [részletes cikk](https://campus.barracuda.com/product/webapplicationfirewall/article/WAF/DeployWAFInAzure) üzembe helyezni a WAF az Azure virtuális gépen. De azt szeretné, hogy redundancia, és a hibaérzékeny pontok kialakulását vezet be, mert szeretné-e legalább két WAF példány virtuális gépek üzembe helyezés az ugyanazon a felhőalapú szolgáltatás, ha az alábbi utasításokat.
+A Barracuda [részletes cikkben](https://campus.barracuda.com/product/webapplicationfirewall/article/WAF/DeployWAFInAzure) ismerteti WAF-ja üzembe helyezését egy Azure-beli virtuális gépen. Mivel azonban redundanciát szeretnénk elérni, és nem rendszerkritikus meghibásodási pontot bevezetni, az alábbi utasítások követésekor érdemes legalább két, WAF-példánnyal rendelkező virtuális gépet üzembe helyezni ugyanabban a felhőszolgáltatásban.
 
-### <a name="adding-endpoints-to-cloud-service"></a>A felhőalapú szolgáltatás végpontok hozzáadása
-Ha szükség van a 2 vagy több WAF VM példánya a felhőalapú szolgáltatás, a [Azure-portálon](https://portal.azure.com/) HTTP és HTTPS-végpont a következő ábrán látható módon az alkalmazás által használt hozzáadása:
+### <a name="adding-endpoints-to-cloud-service"></a>Végpontok hozzáadása a felhőszolgáltatásokhoz
+Ha 2 vagy annál több WAF VM-példánya van felhőszolgáltatásában, az [Azure Portal](https://portal.azure.com/) használatával hozzáadhat olyan HTTP- vagy HTTPS-végpontokat, amelyeket az alkalmazás használ, ahogy az alábbi képen látható:
 
-![Konfigurálja a végpontot][ConfigureEndpoint]
+![Végpont konfigurálása][ConfigureEndpoint]
 
-Az alkalmazások más végpontok használata, ha mindenképpen adja hozzá ezen a listán. 
+Ha az alkalmazásai más végpontokat használnak, azokat is adja hozzá ehhez a listához. 
 
-### <a name="configuring-barracuda-waf-through-its-management-portal"></a>A felügyeleti portálon keresztül WAF Barracuda konfigurálása
-Barracuda WAF TCP Port 8000 használja a konfiguráció a felügyeleti portálon keresztül. Ha a WAF virtuális gépek több példánya van, akkor ismételje meg a Itt minden egyes Virtuálisgép-példány. 
+### <a name="configuring-barracuda-waf-through-its-management-portal"></a>A Barracuda WAF konfigurálása annak felügyeleti portálján keresztül
+A Barracuda WAF a 8000-es TCP-portot használja konfigurálásra felügyeleti portálján keresztül. Ha több WAF VM-példánya is van, minden virtuális gép esetében meg kell ismételni a lépéseket. 
 
 > [!NOTE]
-> Ha elkészült, WAF konfigurációjával, távolítsa el a TCP/8000 végpont a WAF virtuális gépeinek a WAF biztonsága.
+> Ha elkészült a WAF konfigurálásával, távolítsa el a TCP/8000 végpontot mindegyik WAF VM-ről, hogy biztonságos legyen a WAF.
 > 
 > 
 
-Adja hozzá a felügyeleti végpont, a Barracuda WAF konfigurálása a következő ábrán látható módon.
+A Barracuda WAF konfigurálásához adja hozzá a felügyeleti végpontot, ahogy az alábbi képen látható.
 
 ![Felügyeleti végpont hozzáadása][AddManagementEndpoint]
 
-A böngésző segítségével keresse meg a felügyeleti végpont a felhőalapú szolgáltatás. Ha a Felhőszolgáltatás neve test.cloudapp.net, ehhez a végponthoz http://test.cloudapp.net:8000 tallózással elérésére. A bejelentkezési oldal, például az alábbi képen, amely bejelentkezhet a WAF virtuális gép telepítési fázis megadott hitelesítő adatokkal kell megjelennie.
+Egy böngészővel tallózzon felhőszolgáltatása felügyeleti végpontjába. Ha a Felhőszolgáltatás neve test.cloudapp.net, a végpontot a http://test.cloudapp.net:8000 helyre tallózva érheti el. Az alábbi képen láthatóhoz hasonló bejelentkező oldalt kell látnia, amelyen bejelentkezhet a WAF VM beállítása során megadott bejelentkezési adatokkal.
 
-![Management bejelentkezési oldal][ManagementLoginPage]
+![Felügyeleti bejelentkezési oldal][ManagementLoginPage]
 
-Miután jelentkezik be, meg kell jelennie egy irányítópultot, ahogy az az alábbi ábrán, amely megadja a WAF védelmi alapvető statisztikája.
+Ha bejelentkezett, az alábbi képen láthatóhoz hasonló irányítópultot fog látni, amely a WAF-védelem alapvető statisztikáit mutatja be.
 
-![Kezelési irányítópult][ManagementDashboard]
+![Felügyeleti irányítópult][ManagementDashboard]
 
-Kattintson a **szolgáltatások** lap lehetővé teszi az általa védett szolgáltatásokhoz WAF konfigurálását. A Barracuda WAF konfigurálásával kapcsolatos további részletekért lásd: [dokumentum](https://techlib.barracuda.com/waf/getstarted1). A következő példában az Azure Web Apps HTTP és HTTPS-forgalmat szolgáltató nincs beállítva.
+A **Szolgáltatások** lapra kattintva konfigurálhatja a WAF-ot azokra a szolgáltatásokra, amelyeket védelmez. A Barracuda WAF további konfigurálásáért lásd a [dokumentációt](https://techlib.barracuda.com/waf/getstarted1). Az alábbi példában egy HTTP-n és HTTPS-en forgalmat bonyolító Azure-webalkalmazás lett konfigurálva.
 
-![Felügyeleti szolgáltatások hozzáadása][ManagementAddServices]
+![Felügyelet – Szolgáltatások hozzáadása][ManagementAddServices]
 
 > [!NOTE]
-> Attól függően, hogy az alkalmazások hogyan vannak konfigurálva, és milyen funkciók használnak az App Service-környezet kell továbbítsa a forgalmat a TCP portokat eltérő 80-as és 443-as, például ha egy webalkalmazás IP SSL-beállítása. Az App Service Environment-környezetek használt hálózati portok listáját lásd: [vezérlő bejövő forgalom dokumentáció](app-service-app-service-environment-control-inbound-traffic.md) hálózati portok szakasz.
+> Attól függően, hogyan konfigurálta alkalmazásait, és milyen szolgáltatásokat használ App Service Environment környezetében, a 80-as és a 443-as portoktól eltérő TCP-portra kell továbbítani a forgalmat, például ha egy webalkalmazás esetén IP SSL-beállítással rendelkezik. Az App Service Environment környezetekben használt hálózati portok listáját a [Bejövő forgalom szabályozása dokumentáció](app-service-app-service-environment-control-inbound-traffic.md) Hálózati portok szakaszában találja.
 > 
 > 
 
-## <a name="configuring-microsoft-azure-traffic-manager-optional"></a>Microsoft Azure Traffic Managerben (nem kötelező)
-Az alkalmazás érhető el több régióba, akkor kell betölteni egyenleg azok mögötti [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md). Ehhez adja hozzá a végpont a [Azure-portálon](https://portal.azure.com) használatával a felhőalapú szolgáltatás nevét a WAF a Traffic Manager-profil a következő ábrán látható módon. 
+## <a name="configuring-microsoft-azure-traffic-manager-optional"></a>A Microsoft Azure Traffic Manager konfigurálása (VÁLASZTHATÓ LEHETŐSÉG)
+Ha alkalmazása több régióban is elérhető, akkor érdemes terheléselosztást alkalmazni rájuk az [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) mögött. Ehhez hozzáadhat egy végpontot az [Azure Portalon](https://portal.azure.com) a WAF felhőszolgáltatás-nevével a Traffic Managerben, ahogy az alábbi képen is látható. 
 
-![Traffic Manager-végpontot][TrafficManagerEndpoint]
+![Traffic Manager-végpont][TrafficManagerEndpoint]
 
-Ha az alkalmazás hitelesítést igényel, ellenőrizze, hogy néhány, nincs szükség a hitelesítés a Traffic Manager Pingelje meg az alkalmazás rendelkezésre állásának az erőforrás. Beállíthatja az URL-címet a **konfigurációs** lapját a [Azure-portálon](https://portal.azure.com) a következő ábrán látható módon:
+Ha az alkalmazás hitelesítést igényel, győződjön meg róla, hogy rendelkezik olyan erőforrásokkal, amelyek nem igényelnek semmilyen hitelesítést a Traffic Managerhez, és amelyek pingelhetik alkalmazása rendelkezésre állását. Az URL-t a **Konfigurálás** lapon, az [Azure Portalon](https://portal.azure.com) konfigurálhatja, ahogy az alábbi képen is látható:
 
 ![A Traffic Manager konfigurálása][ConfigureTrafficManager]
 
-A Traffic Manager ping-üzenetek továbbítása a WAF az alkalmazást, állítsa be a Barracuda WAF a webhely fordítások továbbítsa a forgalmat, hogy az alkalmazást a következő példában látható módon kell:
+A Traffic Manager-pingeknek a WAF-ról az alkalmazásához történő továbbításához be kell állítani a Website Translations szolgáltatást a Barracuda WAF-on, így továbbíthatja a forgalmat az alkalmazásához, ahogy az alábbi példán is látható:
 
-![Webhely fordítások][WebsiteTranslations]
+![Website Translations][WebsiteTranslations]
 
-## <a name="securing-traffic-to-app-service-environment-using-network-security-groups-nsg"></a>Az App Service Environment-környezet hálózati biztonsági csoportokkal (NSG) adatforgalom biztonságossá tétele
-Kövesse a [vezérlő bejövő forgalom dokumentáció](app-service-app-service-environment-control-inbound-traffic.md) forgalmának korlátozása az App Service-környezet a WAF a csak a VIP-cím a felhőalapú szolgáltatás használatával kapcsolatos részletekért. Íme egy minta Powershell-parancsot a 80-as TCP-port a feladat végrehajtásához.
+## <a name="securing-traffic-to-app-service-environment-using-network-security-groups-nsg"></a>Az App Service Environment környezet felé irányuló forgalom biztonságossá tétele hálózati biztonsági csoportok (NSG-k) használatával
+Kövesse a [Bejövő forgalom szabályozása dokumentáció](app-service-app-service-environment-control-inbound-traffic.md) utasításait, így megtudhatja, hogyan korlátozza a WAF-ból az App Service Environment környezetébe irányuló forgalmát, csak a felhőszolgáltatás VIP-címét használva. Itt látható egy PowerShell-példaparancs arra, hogyan lehet ezt a feladatot elvégezni a 80-as TCP-porton.
 
     Get-AzureNetworkSecurityGroup -Name "RestrictWestUSAppAccess" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP Barracuda" -Type Inbound -Priority 201 -Action Allow -SourceAddressPrefix '191.0.0.1'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
 
-A SourceAddressPrefix cserélje le a virtuális IP-cím (VIP) a WAF felhőalapú szolgáltatás.
+Cserélje le a SourceAddressPrefix részt a WAF felhőszolgáltatásának virtuális IP-címére (VIP-jére).
 
 > [!NOTE]
-> A felhőszolgáltatás VIP megváltozik, törölje és hozza létre a felhőalapú szolgáltatás. Ügyeljen arra, hogy a hálózati csoport az IP-címének frissítése, a telepítést követően. 
+> A felhőszolgáltatás VIP-je megváltozik, amikor törli és ismét létrehozza a felhőszolgáltatást. Ha ezt elvégzi, ne felejtse el frissíteni az IP-címet a Hálózatierőforrás-csoportban. 
 > 
 > 
 

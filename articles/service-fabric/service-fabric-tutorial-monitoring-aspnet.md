@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 09/14/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 030c6fbfb5eb76a745a1089acab54e74ce7a01e3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: febeb2b7e6ada69db78cb0553b4fa90874f5f2eb
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric"></a>Oktatóanyag: ASP.NET Core-alkalmazás monitorozása és diagnosztizálása a Service Fabric szolgáltatásban
 Ez az oktatóanyag egy sorozat negyedik része. A Service Fabric-fürtön futó ASP.NET Core alkalmazás Application Insights használatával való monitorozása és diagnosztizálása beállításának lépéseit írja le. Telemetriát gyűjtünk az oktatóanyag [.NET Service Fabric-alkalmazás létrehozása](service-fabric-tutorial-create-dotnet-app.md) című első részében kifejlesztett alkalmazásból. 
@@ -89,8 +89,12 @@ A következő lépéseket kell végrehajtani a NuGet beállításához:
 1. Kattintson a jobb gombbal a Megoldáskezelő tetején lévő **Solution 'Voting'** (Megoldásszavazás) elemre, majd kattintson a **Manage NuGet Packages for Solution...** (NuGet-csomagok kezelése a megoldáshoz) elemre.
 2. Kattintson a „NuGet - Solution” (NuGet – Megoldás) ablak felső navigációs menüjében lévő **Browse** (Tallózás) gombra, és jelölje be a keresősáv melletti **Include prerelease** (Előzetes verzió is) jelölőnégyzetet.
 3. Keresse meg a `Microsoft.ApplicationInsights.ServiceFabric.Native` elemet, és kattintson a megfelelő NuGet-csomagra.
+
+>[!NOTE]
+>Lehet, hogy hasonlóképpen telepítenie kell a Microsoft.ServiceFabric.Diagnostics.Internal csomagot, ha az nincs előre telepítve az Application Insights-csomag telepítése előtt.
+
 4. A jobb oldalon kattintson az alkalmazásban lévő két szolgáltatás (a **VotingWeb** és a **VotingData**) melletti jelölőnégyzetekre, és kattintson az **Install** (Telepítés) gombra.
-    ![Az AI regisztrációja befejeződött](./media/service-fabric-tutorial-monitoring-aspnet/aisdk-sf-nuget.png)
+    ![AI sdk Nuget](./media/service-fabric-tutorial-monitoring-aspnet/ai-sdk-nuget-new.png)
 5. Kattintson az **OK** gombra a felugró *Review Changes* (Módosítások áttekintése) párbeszédpanelen, és fogadja el a *License Acceptance* (Licenc elfogadása) lehetőséget. Ezzel a szolgáltatásokhoz adja a NuGetet.
 6. Most be kell állítania a két szolgáltatásban a telemetriainicializálót. Ehhez nyissa meg a *VotingWeb.cs* és a *VotingData.cs* fájlokat. Mindkettőhöz végezze el a következő lépéseket:
     1. Adja hozzá ezt a két *using* utasítást mindegyik *\<ServiceName>.cs* tetején:
@@ -114,6 +118,7 @@ A következő lépéseket kell végrehajtani a NuGet beállításához:
                 .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext)))
         .UseContentRoot(Directory.GetCurrentDirectory())
         .UseStartup<Startup>()
+        .UseApplicationInsights()
         .UseServiceFabricIntegration(listener, ServiceFabricIntegrationOptions.None)
         .UseUrls(url)
         .Build();
@@ -137,6 +142,19 @@ A következő lépéseket kell végrehajtani a NuGet beállításához:
         .Build();
     ```
 
+Ellenőrizze, hogy a `UseApplicationInsights()` metódus mindkét fájlban a fenti módon meg legyen hívva. 
+
+>[!NOTE]
+>Ez a mintaalkalmazás a http-t használja a szolgáltatások kommunikációjához. Ha a szolgáltatás távelérésének 2-es verziója használatával fejleszt ki egy alkalmazást, a következő kódsorokat is hozzá kell adnia a fentiekkel megegyező helyen.
+
+```csharp
+ConfigureServices(services => services
+    ...
+    .AddSingleton<ITelemetryModule>(new ServiceRemotingDependencyTrackingTelemetryModule())
+    .AddSingleton<ITelemetryModule>(new ServiceRemotingRequestTrackingTelemetryModule())
+)
+```
+
 Ekkor készen áll az alkalmazás üzembe helyezésére. Kattintson a felső **Start** gombra (vagy nyomja le az **F5** billentyűt), és a Visual Studio felépíti és becsomagolja az alkalmazást, beállítja a helyi fürtöt, és üzembe helyezi azon az alkalmazást. 
 
 Az alkalmazás üzembe helyezésének befejezése után lépjen a [localhost:8080](localhost:8080) portra, ahol a Voting Sample egyoldalas alkalmazást kell látnia. Szavazzon néhány tetszőleges elemre, hogy mintaadatokat és telemetriát hozzon létre – én az édességeket választottam!
@@ -147,9 +165,7 @@ Nyugodtan *el is távolíthat* néhány szavazati lehetőséget, miután hozzáa
 
 ## <a name="view-telemetry-and-the-app-map-in-application-insights"></a>Telemetria és az Alkalmazástérkép megtekintése az Application Insightsban 
 
-Lépjen az Azure Portalon az Application Insights-erőforrásra, és az erőforrás bal oldali navigációs sávjában kattintson a *Configure* (Konfigurálás) területen lévő **Previews** (Előnézetek) elemre. Kapcsolja **be** a *Multi-role Application Map* (Többszerepes alkalmazástérkép) elemet az elérhető előnézetek listájában.
-
-![AI Alkalmazástérkép engedélyezése](./media/service-fabric-tutorial-monitoring-aspnet/ai-appmap-enable.png)
+Lépjen az Application Insights-erőforrásra az Azure Portalon.
 
 Kattintson az **Overview** (Áttekintés) lehetőségre, hogy visszatérjen az erőforrás kezdőlapjára. Kattintson a felül lévő **Search** (Keresés) gombra a bejövő nyomok megtekintéséhez. Néhány percig tart, amíg a nyomok megjelennek az Application Insightsban. Ha nem lát nyomokat, várjon egy percet, és kattintson a felül lévő **Refresh** (Frissítés) gombra.
 ![AI nyomok megtekintése](./media/service-fabric-tutorial-monitoring-aspnet/ai-search.png)
@@ -160,9 +176,9 @@ A nyomokra kattintva további részleteket tudhat meg azokról. Hasznos adatokat
 
 ![AI nyomrészletek](./media/service-fabric-tutorial-monitoring-aspnet/trace-details.png)
 
-Ezenkívül mivel engedélyezte az Alkalmazástérképet, az *Áttekintés* oldalon az **Alkalmazástérkép** ikonra kattintva mindkét csatlakoztatott szolgáltatás megjelenik.
+Ezenkívül az Áttekintés oldal bal oldali menüjében lévő *Alkalmazástérképre* vagy az **Alkalmazástérkép** ikonra kattintva a két csatlakoztatott szolgáltatást megjelenítő alkalmazástérképre léphet.
 
-![AI nyomrészletek](./media/service-fabric-tutorial-monitoring-aspnet/app-map.png)
+![AI nyomrészletek](./media/service-fabric-tutorial-monitoring-aspnet/app-map-new.png)
 
 Az Alkalmazástérkép segíthet az alkalmazástopológia jobb megértésében, különösen, amikor több együttműködő szolgáltatást kezd hozzáadni. A kérések sikerességi arányáról is alapvető adatokat nyújt, és segíthet a sikertelen kérések diagnosztizálásában, hogy jobban megértse, mi volt hiba. Az Alkalmazástérkép használatáról további információért lásd: [Alkalmazástérkép az Application Insightsban](../application-insights/app-insights-app-map.md).
 

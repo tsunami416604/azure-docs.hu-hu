@@ -1,12 +1,12 @@
 ---
-title: "Spring Boot-alkalmazás telepítése Azure Service Fabricre | Microsoft Docs"
-description: "Ez a rövid útmutató azt ismerteti, hogyan lehet Spring Boot-alkalmazást telepíteni az Azure Service Fabricre egy Spring Boot-mintaalkalmazás használatával."
+title: Spring Boot-alkalmazás telepítése Azure Service Fabricre | Microsoft Docs
+description: Ez a rövid útmutató azt ismerteti, hogyan lehet Spring Boot-alkalmazást telepíteni az Azure Service Fabricre egy Spring Boot-mintaalkalmazás használatával.
 services: service-fabric
 documentationcenter: java
 author: suhuruli
 manager: msfussell
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: java
 ms.topic: quickstart
@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ab860b8525bcb77d3ab35d3f649532713c661b61
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: e41a7754e6e170dda7818bceadab7858a9d9fa76
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-application-to-azure"></a>Rövid útmutató: Java Spring Boot-alkalmazás telepítése az Azure-ra
 Az Azure Service Fabric egy elosztott rendszerplatform, amely mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál. 
@@ -30,12 +30,11 @@ Ez a rövid útmutató a Spring Boot-alkalmazás Service Fabricre történő tel
 
 Ezen rövid útmutató segítségével megtanulhatja a következőket:
 
-> [!div class="checklist"]
-> * Spring Boot-alkalmazás telepítése Service Fabricre
-> * Az alkalmazás központi telepítése a helyi fürtre 
-> * Az alkalmazás központi telepítése egy fürtre az Azure-ban
-> * Az alkalmazás horizontális felskálázása több csomópontra
-> * Feladatátvétel elvégzése a szolgáltatáson a rendelkezésre állás korlátozása nélkül
+* Spring Boot-alkalmazás telepítése Service Fabricre
+* Az alkalmazás központi telepítése a helyi fürtre 
+* Az alkalmazás központi telepítése egy fürtre az Azure-ban
+* Az alkalmazás horizontális felskálázása több csomópontra
+* Feladatátvétel elvégzése a szolgáltatáson a rendelkezésre állás korlátozása nélkül
 
 ## <a name="prerequisites"></a>Előfeltételek
 A gyorsútmutató elvégzéséhez:
@@ -45,13 +44,13 @@ A gyorsútmutató elvégzéséhez:
 4. [A Java-környezet beállítása](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development)
 
 ## <a name="download-the-sample"></a>A minta letöltése
-Egy parancssori ablakban futtassa a következő parancsot a Spring Boot mintaalkalmazásának helyi számítógépre történő klónozásához.
-```
+Egy terminálablakban futtassa a következő parancsot a Spring Boot-mintaalkalmazás helyi számítógépre történő klónozásához.
+```bash
 git clone https://github.com/spring-guides/gs-spring-boot.git
 ```
 
 ## <a name="package-the-spring-boot-application"></a>A Spring Boot-alkalmazás becsomagolása 
-1. A klónozott `gs-spring-boot` könyvtárban futtassa a `yo azuresfguest` parancsot. 
+1. A klónban lévő `gs-spring-boot` könyvtárban futtassa a `yo azuresfguest` parancsot. 
 
 2. Az egyes sorokban adja meg a következő adatokat. 
 
@@ -101,21 +100,40 @@ Most már elérhető a Service Fabric-fürtre telepített Spring Boot-alkalmazá
 ### <a name="set-up-your-azure-service-fabric-cluster"></a>Azure Service Fabric-fürt beállítása
 Az alkalmazás Azure-fürtön történő üzembe helyezéséhez hozzon létre egy saját fürtöt.
 
-A nyilvános fürtök ingyenes, korlátozott időtartamú Azure Service Fabric-fürtök. Ezeket a Service Fabric csapata üzemelteti, és bárki üzembe helyezhet rajtuk alkalmazásokat, illetve megismerkedhet a platform használatával. A nyilvános fürt eléréséhez [kövesse az alábbi utasításokat](http://aka.ms/tryservicefabric). 
+A nyilvános fürtök ingyenes, korlátozott időtartamú, Azure-ban üzemeltetett Service Fabric-fürtök, amelyek futtatását a Service Fabric csapata végzi. A nyilvános fürtökkel alkalmazásokat helyezhet üzembe, és megismerkedhet a platform használatával. A fürt egy önaláírt tanúsítványt használ a csomópontok közötti, valamint az ügyfél és a csomópont közötti biztonsághoz.
 
-Ha kezelési műveleteket szeretne végrehajtani a biztonságos fél fürtjén, használhatja a Service Fabric Explorert, a parancssori felületet vagy a Powershellt. A Service Fabric Explorer használatához le kell töltenie a PFX-fájlt a nyilvános fürt webhelyéről, és importálnia kell a tanúsítványt a tanúsítványtárolóba (Windows vagy Mac) vagy a böngészőbe (Ubuntu). A nyilvános fürtből származó önaláírt tanúsítványoknak nincs jelszavuk. 
-
-Ha kezelési műveleteket szeretne végrehajtani a Powershell-lel vagy a parancssori felületről, szüksége lesz a következőkre: PFX (Powershell) vagy PEM (parancssori felület). A PFX-fájlok PEM-fájlokká történő konvertálásához használja a következő parancsot:  
-
-```bash
-openssl pkcs12 -in party-cluster-1277863181-client-cert.pfx -out party-cluster-1277863181-client-cert.pem -nodes -passin pass:
-```
-
-További információk saját fürtök létrehozásáról: [Service Fabric-fürt létrehozása az Azure-on](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
+Jelentkezzen be, és csatlakozzon egy [Linux-fürthöz](http://aka.ms/tryservicefabric). A **PFX** hivatkozásra kattintva töltse le a PFX-tanúsítványt a számítógépre. Kattintson a **ReadMe** hivatkozásra a tanúsítvány jelszavának és a különböző környezetek a tanúsítvány használatára konfigurálása lépéseinek megismeréséhez. Hagyja megnyitva a **kezdőlapot** és a **ReadMe** oldalt, az itt található utasításokat a következő lépések során fogja használni. 
 
 > [!Note]
+> Óránként korlátozott számú nyilvános fürt érhető el. Ha a nyilvános fürtre való regisztráláskor hiba lép fel, várjon egy kis ideig, majd próbálkozzon újra, vagy kövesse a [Service Fabric-fürt az Azure-ban való létrehozását ismertető](service-fabric-tutorial-create-vnet-and-linux-cluster.md) oktatóanyagban szereplő lépéseket, amelyekkel létrehozhat egy fürtöt az előfizetésben. 
+>
 > A Spring Boot szolgáltatás a konfigurációja szerint a 8080-as porton figyeli a bejövő forgalmat. Győződjön meg róla, hogy a port nyitva van a fürtön. Ha a nyilvános fürtöt használja, ez a port nyitva van.
 >
+
+A Service Fabric számos eszközt nyújt, amelyekkel kezelheti a fürtöket és azok alkalmazásait:
+
+- A Service Fabric Explorert, amely egy böngészőalapú eszköz.
+- A Service Fabric parancssori felületet (CLI-t), amely az Azure CLI 2.0-n fut.
+- PowerShell-parancsokat. 
+
+Ebben a rövid útmutatóban a Service Fabric parancssori felületet és a Service Fabric Explorert használja. 
+
+A parancssori felület használatához létre kell hoznia egy PEM-fájlt a letöltött PFX-fájl alapján. A fájl konvertálásához használja az alábbi parancsot. (Nyilvános fürtök esetén a PFX-fájlra vonatkozó parancsot másolhat a **ReadMe** oldal utasításai közül.)
+
+    ```bash
+    openssl pkcs12 -in party-cluster-1486790479-client-cert.pfx -out party-cluster-1486790479-client-cert.pem -nodes -passin pass:1486790479
+    ``` 
+
+A Service Fabric Explorer használatához importálnia kell a tanúsítvány PFX-fájlját, amelyet a nyilvános fürt webhelyéről a tanúsítványtárolóba (Windows vagy Mac) vagy magába a böngészőbe (Ubuntu) töltött le. Szüksége van a PFX titkos kulcs jelszavára, amelyet a **ReadMe** oldalról szerezhet be.
+
+Tetszőleges módszerrel importálhatja a tanúsítványt a rendszerre. Például:
+
+- Windows rendszeren: Kattintson duplán a PFX-fájlra, és kövesse a lépéseket a tanúsítvány a `Certificates - Current User\Personal\Certificates` személyes tárolóban való telepítéséhez. Másik lehetőségként használhatja a **ReadMe** utasításokban lévő PowerShell-parancsot is.
+- Mac rendszeren: Kattintson duplán a PFX-fájlra, és kövesse a lépéseket a tanúsítvány a kulcskarikában való telepítéséhez.
+- Ubuntu rendszeren: A Mozilla Firefox az alapértelmezett böngésző az Ubuntu 16.04-en. A tanúsítvány a Firefoxba importálásához kattintson a böngésző jobb felső sarkában lévő menügombra, majd a **Beállítások** gombra. A **Beállítások** oldalon a keresőmezővel keressen rá a „tanúsítványok” kifejezésre. Kattintson a **Tanúsítványkezelő** gombra, válassza a **Saját tanúsítványok** fület, kattintson az **Importálás** lehetőségre, és kövesse az utasításokat a tanúsítvány importálásához.
+ 
+   ![Tanúsítvány telepítése Firefoxon](./media/service-fabric-quickstart-java-spring-boot/install-cert-firefox.png) 
+
 
 ### <a name="deploy-the-application-using-cli"></a>Az alkalmazás üzembe helyezése a parancssori felület használatával
 Az alkalmazást és a fürtjét a létrehozása után közvetlenül a parancssori felületről telepítheti egy fürtre.
@@ -138,18 +156,18 @@ Az alkalmazást és a fürtjét a létrehozása után közvetlenül a parancssor
     ./install.sh
     ```
 
-4. Nyissa meg a kedvenc webböngészőjét, és nyissa meg az alkalmazást a **http://\<ConnectionIPOrUrl>:8080** címen. 
+4. Nyissa meg a webböngészőjét, és nyissa meg az alkalmazást a **http://\<ConnectionIPOrUrl>:8080** címen. 
 
     ![Helyi alkalmazás kezelőfelülete](./media/service-fabric-quickstart-java-spring-boot/springbootsfazure.png)
     
-Most már elérhető a Service Fabric-fürtre telepített Spring Boot-alkalmazás.  
+Most már elérhető az Azure-beli Service Fabric-fürtön futó Spring Boot-alkalmazás.  
     
 ## <a name="scale-applications-and-services-in-a-cluster"></a>Alkalmazások és szolgáltatások méretezése a fürtökben
-A szolgáltatások skálázhatók egy adott fürtben, hogy kövessék a szolgáltatások terhelésének változásait. A szolgáltatások méretezése a fürtben futó példányok számának módosításával történik. A szolgáltatásokat többféleképpen is méretezheti – használhat szkripteket, vagy a Service Fabric parancssori felület (sfctl) parancsait. Ebben a példában a Service Fabric Explorert használjuk.
+A szolgáltatások skálázhatók egy adott fürtben, hogy kövessék a szolgáltatások terhelésének változásait. A szolgáltatások méretezése a fürtben futó példányok számának módosításával történik. A szolgáltatásokat többféleképpen is skálázhatja, használhat például szkripteket vagy a Service Fabric parancssori felület (sfctl) parancsait. A következő lépések során a Service Fabric Explorert használjuk.
 
-A Service Fabric Explorer az összes Service Fabric-fürtben fut. Eléréséhez egy böngészőben navigáljon az adott fürt HTTP-kezelési portjára (19080), például: `http://localhost:19080`.
+A Service Fabric Explorer az összes Service Fabric-fürtben fut. Az eléréséhez egy böngészőben navigáljon az adott fürt HTTP-kezelési portjára (19080), például: `http://localhost:19080`.
 
-A webes előtér-szolgáltatás méretezéséhez hajtsa végre a következő lépéseket:
+A webes előtér-szolgáltatás skálázásához tegye a következőket:
 
 1. Nyissa meg a Service Fabric Explorert a fürtben – például: `http://localhost:19080`.
 2. Kattintson a három pontra a fanézetben a **fabric:/SpringServiceFabric/SpringGettingStarted** csomópont mellett, és válassza a **Szolgáltatás méretezése** lehetőséget.
@@ -176,7 +194,7 @@ A webes előtér-szolgáltatás méretezéséhez hajtsa végre a következő lé
 
     A szolgáltatás három példányban jelenik meg, a fanézetben pedig látható, hogy a példányok melyik csomópontokon futnak.
 
-Ezzel az egyszerű felügyeleti eljárással megnöveltük a Spring szolgáltatás számára a felhasználói terhelések feldolgozásához rendelkezésre álló erőforrások mennyiségét. Fontos megérteni, hogy nincs szükség több példányra ahhoz, hogy a szolgáltatás megbízhatóan fusson. Ha egy szolgáltatás meghibásodik, a Service Fabric gondoskodik róla, hogy egy új szolgáltatáspéldány kezdjen futni a fürtben.
+Ezzel az egyszerű felügyeleti eljárással megduplázta az előtér-szolgáltatás számára a felhasználói terhelések feldolgozásához rendelkezésre álló erőforrások mennyiségét. Fontos tudni, hogy nincs szükség több példányra ahhoz, hogy a szolgáltatás megbízhatóan fusson. Ha egy szolgáltatás meghibásodik, a Service Fabric gondoskodik róla, hogy egy új szolgáltatáspéldány elinduljon a fürtben.
 
 ## <a name="fail-over-services-in-a-cluster"></a>Feladatátvételi szolgáltatások a fürtben 
 A szolgáltatás feladatátvételének bemutatásához a Service Fabric Explorerben szimuláljuk egy csomópont újraindítását. Győződjön meg arról, hogy a szolgáltatásnak kizárólag egy példánya fut. 
@@ -192,13 +210,13 @@ A szolgáltatás feladatátvételének bemutatásához a Service Fabric Explorer
 ## <a name="next-steps"></a>További lépések
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 
-> [!div class="checklist"]
-> * Spring Boot-alkalmazás telepítése Service Fabricre
-> * Az alkalmazás központi telepítése a helyi fürtre 
-> * Az alkalmazás központi telepítése egy fürtre az Azure-ban
-> * Az alkalmazás horizontális felskálázása több csomópontra
-> * Feladatátvétel elvégzése a szolgáltatáson a rendelkezésre állás korlátozása nélkül
+* Spring Boot-alkalmazás telepítése Service Fabricre
+* Az alkalmazás központi telepítése a helyi fürtre 
+* Az alkalmazás központi telepítése egy fürtre az Azure-ban
+* Az alkalmazás horizontális felskálázása több csomópontra
+* Feladatátvétel elvégzése a szolgáltatáson a rendelkezésre állás korlátozása nélkül
 
-* További információ [a Java-mikroszolgáltatások Service Fabric programozási modellekkel történő kiépítéséről](service-fabric-quickstart-java-reliable-services.md).
-* További információk a [folyamatos integráció és üzembe helyezés beállításáról a Jenkins használatával](service-fabric-cicd-your-linux-applications-with-jenkins.md)
-* Egyéb [Java-minták](https://github.com/Azure-Samples/service-fabric-java-getting-started) megtekintése.
+Ha bővebb információra van szüksége a Java-alkalmazások Service Fabricben való használatával kapcsolatban, lépjen tovább a Java-alkalmazásokról szóló oktatóanyagra.
+
+> [!div class="nextstepaction"]
+> [Java-alkalmazás üzembe helyezése](./service-fabric-tutorial-create-java-app.md)

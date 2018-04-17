@@ -1,6 +1,6 @@
 ---
-title: Virtuális hálózat az Azure PowerShell-példák |} Microsoft Docs
-description: Az Azure PowerShell-példák virtuális hálózat.
+title: Azure PowerShell-minták virtuális hálózathoz | Microsoft Docs
+description: Azure PowerShell-minták virtuális hálózathoz.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
@@ -10,24 +10,24 @@ tags: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: jdial
-ms.openlocfilehash: c9cb8da2a6a7512daa6721af90d5b21c6ba5e8e5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.openlocfilehash: ab3a0935f23cda70cfef49af3563f6b1e85d1d8b
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="azure-powershell-samples-for-virtual-network"></a>Virtuális hálózat az Azure PowerShell-példák
+# <a name="azure-powershell-samples-for-virtual-network"></a>Azure PowerShell-minták virtuális hálózathoz
 
-A következő táblázat az Azure Powershell-parancsfájlok mutató hivatkozásokat tartalmaz:
+A következő táblázat Azure PowerShell-szkriptekre mutató hivatkozásokat tartalmaz:
 
 | | |
 |----|----|
-| [A többrétegű alkalmazások virtuális hálózat létrehozása](./scripts/virtual-network-powershell-sample-multi-tier-application.md) | Előtér- és alhálózatok hoz létre a virtuális hálózat. Az előtér-alhálózat felé irányuló forgalom korlátozódik HTTP, közben az adatforgalom a háttér-alhálózathoz korlátozott, az SQL-1433-as port. |
-| [A két partner virtuális hálózatok](./scripts/virtual-network-powershell-sample-peer-two-virtual-networks.md) | Hoz létre, és két virtuális hálózat ugyanabban a régióban kapcsolódik. |
-| [A hálózati virtuális készülék-útvonal forgalmát](./scripts/virtual-network-powershell-sample-route-traffic-through-nva.md) | Hoz létre egy virtuális hálózati előtér- és alhálózatok és virtuális gép, amely képes irányíthatja a forgalmat a két alhálózat között. |
-| [Bejövő és kimenő virtuális gép hálózati forgalom szűrésére](./scripts/virtual-network-powershell-sample-filter-network-traffic.md) | Előtér- és alhálózatok hoz létre a virtuális hálózat. Az előtér-alhálózat bejövő hálózati forgalmát a HTTP és HTTPS korlátozódik. Kimenő forgalom az internethez, a háttér-alhálózatból nem engedélyezett. |
+| [Virtuális hálózat létrehozása többrétegű alkalmazásokhoz](./scripts/virtual-network-powershell-sample-multi-tier-application.md) | Egy virtuális hálózatot hoz létre előtérbeli és háttérbeli alhálózatokkal. Az előtérbeli alhálózat felé irányuló forgalom HTTP-re, a háttérbeli alhálózat felé irányuló forgalom pedig az SQL-re, az 1433-as portra korlátozódik. |
+| [Társviszony létesítése két virtuális hálózat között](./scripts/virtual-network-powershell-sample-peer-two-virtual-networks.md) | Két virtuális hálózatot hoz létre és csatlakoztat ugyanabban a régióban. |
+| [Forgalom irányítása hálózati virtuális készüléken keresztül](./scripts/virtual-network-powershell-sample-route-traffic-through-nva.md) | Egy virtuális hálózatot hoz létre előtérbeli és háttérbeli alhálózatokkal, valamint egy virtuális gépet, amely képes a két alhálózat közötti forgalom irányítására. |
+| [Virtuális gép kimenő és bejövő hálózati forgalmának szűrése](./scripts/virtual-network-powershell-sample-filter-network-traffic.md) | Egy virtuális hálózatot hoz létre előtérbeli és háttérbeli alhálózatokkal. Az előtérbeli alhálózat bejövő hálózati forgalma HTTP-re és HTTPS-re korlátozódik. A háttérbeli alhálózat felől az internetre irányuló kimenő forgalom nem engedélyezett. |

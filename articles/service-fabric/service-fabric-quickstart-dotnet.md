@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 6038251ba79797312a0fec61e4a6f3d2e99d5435
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 276c6bf1a476e5c74c5e75e4906f451154becf31
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-create-a-net-service-fabric-application-in-azure"></a>Rövid útmutató: .NET Service Fabric-alkalmazás létrehozása az Azure-ban
 Az Azure Service Fabric egy elosztott rendszerplatform, amely skálázható és megbízható mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál. 
@@ -29,14 +29,14 @@ Ez a rövid útmutató bemutatja, hogyan helyezheti üzembe első .NET-alkalmaz�
 ![Képernyőkép az alkalmazásról](./media/service-fabric-quickstart-dotnet/application-screenshot.png)
 
 Az alkalmazás használatával a következőkkel ismerkedhet meg:
-> [!div class="checklist"]
-> * Alkalmazás létrehozása a .NET és a Service Fabric használatával
-> * Az ASP.NET Core használata webes kezelőfelületként
-> * Alkalmazásadatok tárolása állapotalapú szolgáltatásban
-> * Alkalmazás helyi hibakeresése
-> * Az alkalmazás üzembe helyezése egy Azure-fürtön
-> * Az alkalmazás horizontális felskálázása több csomópontra
-> * Alkalmazás frissítése működés közben
+
+* Alkalmazás létrehozása a .NET és a Service Fabric használatával
+* Az ASP.NET Core használata webes kezelőfelületként
+* Alkalmazásadatok tárolása állapotalapú szolgáltatásban
+* Alkalmazás helyi hibakeresése
+* Az alkalmazás üzembe helyezése egy Azure-fürtön
+* Az alkalmazás horizontális felskálázása több csomópontra
+* Alkalmazás frissítése működés közben
 
 ## <a name="prerequisites"></a>Előfeltételek
 A gyorsútmutató elvégzéséhez:
@@ -92,7 +92,7 @@ Amikor szavazatot adnak le az alkalmazásban, az alábbi eseményekre kerül sor
 
 ## <a name="debug-in-visual-studio"></a>Hibakeresés a Visual Studióban
 
-Az alkalmazás Visual Studióban történő hibakeresése során egy helyi Service Fabric fejlesztési fürtöt használ. Arra is lehetősége van, hogy a hibakeresési folyamatot a saját forgatókönyvéhez igazítsa. Ebben az alkalmazásban az adatokat a háttérszolgáltatás tárolja egy megbízható szótárban. A Visual Studio alapértelmezés szerint a hibakereső leállításakor eltávolítja az alkalmazást. Az alkalmazás eltávolításával a háttérszolgáltatásban tárolt adatok is el lesznek távolítva. Ha szeretné megtartani az adatokat a hibakeresési munkamenetek között, akkor módosítania kell az **Application Debug Mode** (Alkalmazás hibakeresési módja) tulajdonságot a **Voting** (Szavazás) projektben a Visual Studióban.
+Az alkalmazásnak megfelelően kellene futnia, de a hibakeresővel megtekintheti, hogyan működnek az alkalmazás fő részei. Az alkalmazás Visual Studióban történő hibakeresése során egy helyi Service Fabric fejlesztési fürtöt használ. Arra is lehetősége van, hogy a hibakeresési folyamatot a saját forgatókönyvéhez igazítsa. Ebben az alkalmazásban az adatokat a háttérszolgáltatás tárolja egy megbízható szótárban. A Visual Studio alapértelmezés szerint a hibakereső leállításakor eltávolítja az alkalmazást. Az alkalmazás eltávolításával a háttérszolgáltatásban tárolt adatok is el lesznek távolítva. Ha szeretné megtartani az adatokat a hibakeresési munkamenetek között, akkor módosítania kell az **Application Debug Mode** (Alkalmazás hibakeresési módja) tulajdonságot a **Voting** (Szavazás) projektben a Visual Studióban.
 
 Ha szeretné megtekinteni, hogy mi történik a kódban, hajtsa végre a következő lépéseket:
 1. Nyissa meg a **/VotingWeb/Controllers/VotesController.cs** fájlt, és állítson be egy töréspontot a webes API **Put** metódusában (69. sor). A fájlt megkeresheti a Visual Studio Megoldáskezelőjében.
@@ -181,8 +181,8 @@ Előfordulhat, hogy a böngésző nem megbízhatóként jelzi a helyet. Ennek ok
 
 A webes előtér-szolgáltatás méretezéséhez hajtsa végre a következő lépéseket:
 
-1. Nyissa meg a Service Fabric Explorert a fürtben – például: `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`.
-2. Kattintson a három pontra a fanézetben a **fabric:/Voting/VotingWeb** csomópont mellett, és válassza a **Scale Service** (Szolgáltatás méretezése) lehetőséget.
+1. Nyissa meg a Service Fabric Explorert a fürtben – például: `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`. 
+2. A fanézetben bontsa ki az **Applications**->**VotingType**->**fabric:/Voting** elemet. Kattintson a három pontra a fanézetben a **fabric:/Voting/VotingWeb** csomópont mellett, és válassza a **Scale Service** (Szolgáltatás méretezése) lehetőséget.
 
     ![Service Fabric Explorer](./media/service-fabric-quickstart-dotnet/service-fabric-explorer-scale.png)
 
@@ -213,25 +213,26 @@ Az alkalmazás frissítéséhez tegye a következőket:
 7. A **Publish Service Fabric Application** (Service Fabric-alkalmazás közzététele) párbeszédpanelen jelölje be az Upgrade the Application (Alkalmazás frissítése) jelölőnégyzetet, majd kattintson a **Publish** (Közzététel) parancsra.
 
     ![A Közzététel párbeszédpanel frissítési beállításai](./media/service-fabric-quickstart-dotnet/upgrade-app.png)
+
+    Frissítés közben az alkalmazás továbbra is használható. Mivel a fürtön a szolgáltatás két példánya fut, a kérelmek egy része már az alkalmazás frissített verziójával találkozik, míg mások továbbra is a régebbivel.
+
 8. Nyissa meg a böngészőt, és keresse meg a fürt címét az 19080-as porton, például: `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`.
 9. Kattintson az **Alkalmazások** csomópontra a fanézetben, majd a jobb oldali ablaktáblán található **Folyamatban lévő frissítések** elemre. Ekkor láthatja, hogy a frissítés hogyan lépked végig a fürt frissítési tartományain, miközben továbblépés előtt minden tartomány állapotát ellenőrzi. A frissítési tartomány zöld színnel jelenik meg a folyamatjelzőn, ha a tartomány állapota ellenőrizve lett.
     ![Frissítési nézet a Service Fabric Explorerben](./media/service-fabric-quickstart-dotnet/upgrading.png)
 
     A Service Fabric a biztonságos frissítés érdekében a fürt minden egyes csomópontjának frissítése után két percet várakozik. A teljes frissítés körülbelül nyolc percet vesz igénybe.
 
-10. Frissítés közben az alkalmazás továbbra is használható. Mivel a fürtön a szolgáltatás két példánya fut, a kérelmek egy része már az alkalmazás frissített verziójával találkozik, míg mások továbbra is a régebbivel.
 
 ## <a name="next-steps"></a>További lépések
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 
-> [!div class="checklist"]
-> * Alkalmazás létrehozása a .NET és a Service Fabric használatával
-> * Az ASP.NET Core használata webes kezelőfelületként
-> * Alkalmazásadatok tárolása állapotalapú szolgáltatásban
-> * Alkalmazás helyi hibakeresése
-> * Az alkalmazás üzembe helyezése egy Azure-fürtön
-> * Az alkalmazás horizontális felskálázása több csomópontra
-> * Alkalmazás frissítése működés közben
+* Alkalmazás létrehozása a .NET és a Service Fabric használatával
+* Az ASP.NET Core használata webes kezelőfelületként
+* Alkalmazásadatok tárolása állapotalapú szolgáltatásban
+* Alkalmazás helyi hibakeresése
+* Az alkalmazás üzembe helyezése egy Azure-fürtön
+* Az alkalmazás horizontális felskálázása több csomópontra
+* Alkalmazás frissítése működés közben
 
 A Service Fabrickel és a .NET-tel kapcsolatos további tudnivalókért tekintse át a következő oktatóanyagot:
 > [!div class="nextstepaction"]

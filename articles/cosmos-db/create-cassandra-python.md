@@ -1,11 +1,10 @@
 ---
-title: "Gyors útmutató: Cassandra API a Pythonnal – Azure Cosmos DB | Microsoft Docs"
-description: "Ez a gyors útmutató azt ismerteti, hogy hogyan használható az Azure Cosmos DB Apache Cassandra API profilalkalmazások létrehozására a Python használatával"
+title: 'Gyors útmutató: Cassandra API a Pythonnal – Azure Cosmos DB | Microsoft Docs'
+description: Ez a gyors útmutató azt ismerteti, hogy hogyan használható az Azure Cosmos DB Apache Cassandra API profilalkalmazások létrehozására a Python használatával
 services: cosmos-db
-documentationcenter: 
-author: mimig1
-manager: jhubbard
-editor: 
+documentationcenter: ''
+author: SnehaGunda
+manager: kfile
 ms.assetid: 4ebc883e-c512-4e34-bd10-19f048661159
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/15/2017
-ms.author: govindk
-ms.openlocfilehash: 4a2347fe9578b35c95d240c5c4dd2bf062077ece
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.author: sngun
+ms.openlocfilehash: c725610dde10c275c3e2811cab197cf4912fe808
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-and-azure-cosmos-db"></a>Gyors útmutató: Cassandra alkalmazás felépítése a Python és az Azure Cosmos DB használatával
 
@@ -62,7 +61,7 @@ Most pedig klónozunk egy Cassandra API-alkalmazást a GitHubról, beállítjuk 
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. A kódrészletek mind a `pyquickstart.py` fájlból származnak. Egyéb esetben ugorhat [A kapcsolati karakterlánc frissítése](#update-your-connection-string) szakaszra. 
+Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. A kódrészletek mind a `pyquickstart.py` fájlból származnak. Egyéb esetben áttérhet [A kapcsolati karakterlánc frissítése](#update-your-connection-string) szakaszra. 
 
 * A felhasználónév és a jelszó a kapcsolati karakterlánc oldalán állítható be az Azure Portalon. Cserélje le a path\to\cert paraméter értékét az X509-tanúsítvány elérési útjára.
 
@@ -133,7 +132,7 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
 1. Az [Azure Portalon](http://portal.azure.com/) kattintson a **Kapcsolati karakterlánc** elemre. 
 
-    A ![Másolás gomb](./media/create-cassandra-python/copy.png) használatával (a képernyő jobb oldalán) másolja a vágólapra a felső, CONTACT POINT (Kapcsolódási pont) értéket.
+    Válassza a ![Másolás gomb](./media/create-cassandra-python/copy.png) használatával (a képernyő jobb oldalán) másolja a vágólapra a felső, CONTACT POINT (Kapcsolódási pont) értéket.
 
     ![Hozzáférési felhasználónév, jelszó és kapcsolódási pont megtekintése és másolása az Azure Portal kapcsolati karakterlánc paneljén](./media/create-cassandra-python/keys.png)
 
@@ -161,7 +160,7 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
     
 ## <a name="use-the-x509-certificate"></a>Az X509-tanúsítvány használata
 
-1. Ha hozzá kell adnia a Baltimore CyberTrust legfelső szintű tanúsítványát, a sorozatszáma 02:00:00:b9 és a SHA1 ujjlenyomata d4🇩🇪20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74. Letölthető a https://cacert.omniroot.com/bc2025.crt, címről, és .cer kiterjesztéssel helyi fájlba menthető
+1. Ha hozzá kell adnia a Baltimore CyberTrust legfelső szintű tanúsítványát, a sorozatszáma 02:00:00:b9 és a SHA1 ujjlenyomata d4🇩🇪20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74. Letölthető a https://cacert.omniroot.com/bc2025.crt címről, és .cer kiterjesztéssel helyi fájlba menthető.
 
 2. Nyissa meg a pyquickstart.py fájlt, és változtassa meg a 'path\to\cert' paramétert úgy, hogy az új tanúsítványára mutasson.
 
@@ -204,9 +203,9 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, hogyan lehet az Adatkezelő segítségével gyűjteményt készíteni, és hogyan lehet futtatni az alkalmazást. Most további adatokat importálhat a Cosmos DB-fiókba. 
+Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, hogyan lehet az Adatkezelő segítségével gyűjteményt készíteni, és hogyan lehet futtatni az alkalmazást. Így már további adatokat importálhat a Cosmos DB-fiókba. 
 
 > [!div class="nextstepaction"]
 > [Cassandra-adatok importálása az Azure Cosmos DB-be](cassandra-import-data.md)

@@ -55,11 +55,11 @@
         - name: Azure verem telepítési PKI-követelmények
           href: azure-stack-pki-certs.md
           items:
-            - name: Azure verem PKI-tanúsítványok beszerzése
+            - name: PKI-tanúsítványok létrehozása
               href: azure-stack-get-pki-certs.md
             - name: Azure verem PKI-tanúsítványok előkészítése
               href: azure-stack-prepare-pki-certs.md
-            - name: Azure verem PKI-tanúsítványok ellenőrzése
+            - name: PKI-tanúsítványok ellenőrzése
               href: azure-stack-validate-pki-certs.md
         - name: Identitásintegráció
           href: azure-stack-integrate-identity.md
@@ -216,7 +216,7 @@
               href: azure-stack-app-service-deploy.md
             - name: App Service-szolgáltatások offline üzembe helyezése
               href: azure-stack-app-service-deploy-offline.md
-            - name: Update App Service
+            - name: Az App Service frissítése
               href: azure-stack-app-service-update.md
             - name: Az App Service Offline frissítése
               href: azure-stack-app-service-update-offline.md
@@ -286,8 +286,6 @@
           href: azure-stack-diagnostics.md
         - name: Az Azure verem érvényesítése
           href: azure-stack-diagnostic-test.md
-        - name: Az Azure Stack Development Kit ismételt üzembe helyezése
-          href: azure-stack-redeploy.md
 - name: Leírások
   items:
     - name: Azure Stack PowerShell

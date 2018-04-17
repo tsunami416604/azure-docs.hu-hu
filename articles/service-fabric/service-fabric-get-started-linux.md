@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 9123519217e87494316c1dc6b7f90da1b30ba392
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 804bc3f3708a6b5e70c91d68f954ebc10c477831
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>A fejlesztőkörnyezet előkészítése Linuxon
 > [!div class="op_single_selector"]
@@ -194,11 +194,16 @@ A Service Fabric-szolgáltatások Java használatával történő létrehozásá
   sudo apt-get install gradle
   ```
 
-## <a name="install-the-eclipse-neon-plug-in-optional"></a>Az Eclipse Neon beépülő modul telepítése (nem kötelező)
+## <a name="install-the-eclipse-plug-in-optional"></a>Az Eclipse beépülő modul telepítése (nem kötelező)
 
 A Service Fabric Eclipse beépülő modulját a Java-fejlesztőknek készült Eclipse IDE-ből telepítheti. Az Eclipse segítségével új Service Fabric futtatható vendégalkalmazásokat és tárolóalkalmazásokat, valamint Service Fabric Java-alkalmazásokat hozhat létre.
 
-1. Az Eclipse-ben győződjön meg arról, hogy telepítve van a legújabb Eclipse Neon és a Buildship 1.0.17-es vagy újabb verziója. A telepített összetevők verzióját a **Súgó** > **Telepítés részletei** lehetőség kiválasztásával ellenőrizheti. A Buildship frissítéséhez kövesse az [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: Eclipse beépülő modulok a Gradle-hez) című témakör utasításait.
+> [!IMPORTANT]
+> A Service Fabric beépülő modulhoz Eclipse Neon vagy újabb verzió szükséges. Az ezt a megjegyzést követő útmutatások segítségével ellenőrizheti az Eclipse verzióját. Ha az Eclipse egy korábbi verziója van telepítve, az [Eclipse webhelyéről](https://www.eclipse.org) tölthet le újabb verziót. Nem ajánlott az új verziót az Eclipse meglévő telepítésére telepíteni (azt felülírni). A meglévő verziót eltávolíthatja a telepítő futtatása előtt, vagy másik könyvtárba telepítheti az újabb verziót. 
+> 
+> Ubuntu rendszeren ajánlott közvetlenül az Eclipse webhelyéről elvégezni a telepítést csomagtelepítő helyett (`apt` vagy `apt-get`). Így biztosan az Eclipse legfrissebb verzióját fogja beszerezni. 
+
+1. Az Eclipse-ben győződjön meg arról, hogy telepítve van az Eclipse Neon vagy újabb verzió és a Buildship legújabb (1.0.17-es vagy újabb) verziója. A telepített összetevők verzióját a **Súgó** > **Telepítés részletei** lehetőség kiválasztásával ellenőrizheti. A Buildship frissítéséhez kövesse az [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: Eclipse beépülő modulok a Gradle-hez) című témakör utasításait.
 
 2. A Service Fabric beépülő modul telepítéséhez válassza a **Help** > **Install New Software** (Súgó, Új szoftver telepítése) elemet.
 

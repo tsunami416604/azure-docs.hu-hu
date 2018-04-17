@@ -1,26 +1,26 @@
 ---
-title: "Interaktív térképes keresés az Azure Location Based Services használatával | Microsoft Docs"
-description: "Azure rövid útmutató – Bemutató interaktív térképes keresés indítása az Azure Location Based Services (előzetes verzió) használatával"
+title: Interaktív térképes keresés az Azure Location Based Services használatával | Microsoft Docs
+description: Azure rövid útmutató – Bemutató interaktív térképes keresés indítása az Azure Location Based Services (előzetes verzió) használatával
 services: location-based-services
-keywords: 
+keywords: ''
 author: kgremban
 ms.author: kgremban
-ms.date: 11/28/2017
+ms.date: 04/03/2018
 ms.topic: quickstart
 ms.service: location-based-services
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 288044b2f8a4b996489bbd6a6b0a61b455e8f4ad
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7a61d56f8e649d60dacff8f9849ab7e26363e119
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="launch-a-demo-interactive-map-search-using-azure-location-based-services-preview"></a>Bemutató interaktív térképes keresés indítása az Azure Location Based Services (előzetes verzió) használatával
 
-Ez a cikk bemutatja az Azure Location Based Services (LBS) képességeit egy interaktív keresésen keresztül az Azure Maps szolgáltatásban. Azt is ismerteti, hogyan hozhat létre saját LBS-fiókot, szerezheti be a fiók kulcsát, és használhatja azt a bemutató webalkalmazásban. 
+Ez a cikk bemutatja az Azure Location Based Services (LBS) képességeit egy interaktív keresésen keresztül. Azt is ismerteti, hogyan hozhat létre saját LBS-fiókot, szerezheti be a fiók kulcsát, és használhatja azt a bemutató webalkalmazásban. 
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -40,14 +40,14 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 5. Miután sikeresen létrehozta a fiókot, nyissa meg, és lépjen a fiók **BEÁLLÍTÁSAIHOZ**. Kattintson a **Kulcsok** elemre az Azure Location Based Services-fiók elsődleges és másodlagos kulcsainak lekéréséhez. Másolja az **Elsődleges kulcs** értékét a vágólapra, mert a következő szakaszban használnia kell majd. 
 
-## <a name="download-the-demo-application-for-azure-maps"></a>Az Azure Maps bemutató alkalmazás letöltése
+## <a name="download-the-demo-application"></a>A bemutató alkalmazás letöltése
 
 1. Töltse le vagy másolja ki az [interactiveSearch.html](https://github.com/Azure-Samples/location-based-services-samples/blob/master/src/interactiveSearch.html) fájl tartalmát.
 2. Mentse a fájl tartalmát helyileg **AzureMapDemo.html** néven, és nyissa meg egy szövegszerkesztőben.
 3. Keresse meg benne az `<insert-key>` karakterláncot, és cserélje le az előző szakaszban kimásolt **Elsődleges kulcs** értékére. 
 
 
-## <a name="launch-the-demo-application-for-azure-maps"></a>Az Azure Maps bemutató alkalmazás indítása
+## <a name="launch-the-demo-application-for"></a>Bemutató alkalmazás indítása a következőhöz:
 
 1. Nyissa meg az **AzureMapDemo.html** fájlt egy tetszőleges böngészőben.
 2. Vegye szemügyre a megjelenő térképen Los Angeles városát. A várost az *AzureMapDemo.html* fájlban a **center** nevű JavaScript-változóhoz megadott `[longitude, latitude]` pár értéke határozza meg. Ezeket a koordinátákat megváltoztathatja bármilyen más tetszőleges városéra. Például New York City koordinátái: *[-74,0060, 40,7128]*.

@@ -1,6 +1,6 @@
 ---
-title: Az Azure CLI parancsfájl minta - társ két virtuális hálózatok |} Microsoft Docs
-description: Az Azure CLI parancsfájl minta - társ két virtuális hálózatok.
+title: Azure CLI-példaszkript – Társviszony létesítése két virtuális hálózat között | Microsoft Docs
+description: Azure CLI-példaszkript – Társviszony létesítése két virtuális hálózat között.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
@@ -10,22 +10,22 @@ tags: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: jdial
-ms.openlocfilehash: 244d7f6ff64643386c417d708f7fb1e9bbc34209
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.openlocfilehash: feab9f518076938ed20396319ceb1d5badb9eb8f
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="peer-two-virtual-networks"></a>A két partner virtuális hálózatok
+# <a name="peer-two-virtual-networks-script-sample"></a>Példaszkript társviszony létesítéséhez két virtuális hálózat között
 
-Ezt a parancsfájlt hoz létre, és két virtuális hálózat ugyanabban a régióban csatlakozik az Azure-hálózatot. A parancsfájl futtatása után, hogy társviszony-létesítés virtuális hálózatok között.
+Ez a példaszkript két virtuális hálózatot hoz létre és csatlakoztat ugyanabban a régióban az Azure-hálózaton keresztül. A szkript futtatása után társviszony jön létre a két virtuális hálózat között.
 
-A parancsfájl az Azure-ból hajthat végre [felhő rendszerhéj](https://shell.azure.com/bash), vagy a helyi Azure CLI-telepítés. Helyileg a CLI-t használja, ha ezt a parancsfájlt van szükség, hogy futnak-e 2.0.28 verzió vagy újabb. A telepített verzió megkereséséhez futtassa `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja a CLI, is futtatásához szükséges `az login` az Azure VPN-kapcsolat létrehozásához.
+A szkriptet az Azure [Cloud Shellben](https://shell.azure.com/bash) vagy egy helyi Azure CLI-telepítésből futtathatja. Ha a parancssori felületet helyileg használja, akkor ehhez a szkripthez az Azure CLI 2.0.28-as vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja a parancssori felületet, akkor emellett a `az login` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -36,7 +36,7 @@ A parancsfájl az Azure-ból hajthat végre [felhő rendszerhéj](https://shell.
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása 
 
-Futtassa a következő parancs futtatásával távolítsa el az erőforráscsoportot, virtuális gép és az összes kapcsolódó erőforrások:
+Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás:
 
 ```azurecli
 az group delete --name myResourceGroup --yes
@@ -44,17 +44,17 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-A szkript a következő parancsokat használja egy erőforráscsoport, egy virtuális gép és minden kapcsolódó erőforrás létrehozásához. Minden parancs az alábbi táblázatban hivatkozások parancs-specifikus dokumentációját:
+A szkript a következő parancsokat használja egy erőforráscsoport, egy virtuális gép és minden kapcsolódó erőforrás létrehozásához. Az alábbi táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik:
 
 | Parancs | Megjegyzések |
 |---|---|
 | [az group create](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) | Létrehoz egy Azure-beli virtuális hálózatot és alhálózatot. |
-| [az hálózati vnetben társviszony-létesítés létrehozása](/cli/azure/network/vnet/peering#az_network_vnet_peering_create) | Létrehozza a társviszony-létesítés virtuális hálózatok között.  |
+| [az network vnet peering create](/cli/azure/network/vnet/peering#az_network_vnet_peering_create) | Társviszonyt létesít két virtuális hálózat között.  |
 | [az group delete](/cli/azure/vm/extension#az_vm_extension_set) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 
-További virtuális hálózati CLI parancsfájl minták található [virtuális hálózati CLI minták](../cli-samples.md).
+A [virtuális hálózatokra vonatkozó CLI-minták](../cli-samples.md) között további, a virtuális hálózatokra vonatkozó CLI-példaszkripteket talál.

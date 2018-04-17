@@ -89,28 +89,30 @@
       href: concepts-service.md
 - name: Útmutatók
   items:
-    - name: Eszközök beléptetésének kezelése
-      items:
-        - name: Eszközök beléptetésének kezelése az Azure Portalon
-          href: how-to-manage-enrollments.md
-        - name: Eszközök beléptetésének kezelése szolgáltatási SDK-kal
-          href: how-to-manage-enrollments-sdks.md
-    - name: Eszköz hozzáférésének visszavonása
-      href: how-to-revoke-device-access-portal.md
-    - name: Eszközök leépítése
-      href: how-to-unprovision-devices.md
-    - name: Tulajdonlástanúsítási eljárás X.509-es hitelesítésszolgáltatói tanúsítványokra vonatkozóan
-      href: how-to-verify-certificates.md
-    - name: A HSM használata az SDK-val
-      href: use-hsm-with-sdk.md
-    - name: Eszközkiépítési szolgáltatás hozzáférés-vezérlése
-      href: how-to-control-access.md
-    - name: A Device Provisioning Service kezelése az Azure CLI-vel
-      href: how-to-manage-dps-with-cli.md
-    - name: Fejlesztés SDK-eszközök használatával
-      href: how-to-use-sdk-tools.md
-    - name: Csatlakozás az MXChip IoT DevKithez
+    - name: Az MXChip IoT fejlesztői készlet csatlakoztatása az IoT Hubhoz
       href: how-to-connect-mxchip-iot-devkit.md
+    - name: Eszközregisztrációs konfigurációk kezelése
+      items:
+        - name: Ellenőrzött hitelesítésszolgáltatói tanúsítványok konfigurálása
+          href: how-to-verify-certificates.md
+        - name: Megszüntetés kezelése
+          href: how-to-unprovision-devices.md
+        - name: Regisztráció megszüntetésének kezelése
+          href: how-to-revoke-device-access-portal.md
+        - name: Regisztrációk kezelése – portál
+          href: how-to-manage-enrollments.md
+        - name: Regisztrációk kezelése – szolgáltatási SDK-k
+          href: how-to-manage-enrollments-sdks.md
+    - name: Eszközregisztrációs szolgáltatás kezelése
+      items:
+        - name: Eszközregisztrációs szolgáltatás konfigurálása az Azure CLI-vel
+          href: how-to-manage-dps-with-cli.md
+        - name: Regisztrációs szolgáltatási API-k hozzáférésének vezérlése
+          href: how-to-control-access.md
+    - name: Igazolási mechanizmusok használata SDK-val
+      href: use-hsm-with-sdk.md
+    - name: Fejlesztés SDK-eszközökkel
+      href: how-to-use-sdk-tools.md
 - name: Referencia
   items:
     - name: REST

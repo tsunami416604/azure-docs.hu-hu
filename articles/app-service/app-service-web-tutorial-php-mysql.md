@@ -1,11 +1,11 @@
 ---
-title: "PHP- és MySQL-webalkalmazás létrehozása az Azure-ban | Microsoft Docs"
-description: "Megismerheti, hogyan tehet szert egy olyan, az Azure-ban működő PHP-alkalmazásra, amely csatlakozik egy MySQL-adatbázishoz az Azure-ban."
+title: PHP- és MySQL-webalkalmazás létrehozása az Azure-ban | Microsoft Docs
+description: Megismerheti, hogyan tehet szert egy olyan, az Azure-ban működő PHP-alkalmazásra, amely csatlakozik egy MySQL-adatbázishoz az Azure-ban.
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 14feb4f3-5095-496e-9a40-690e1414bd73
 ms.service: app-service-web
 ms.workload: web
@@ -15,13 +15,13 @@ ms.topic: tutorial
 ms.date: 10/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 39bfc4e6a4f4066e8aeda0da387fe570525b6086
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 28c50aea9aaad1b9b18fb6b3034617d10beea7ec
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="build-a-php-and-mysql-web-app-in-azure"></a>PHP- és MySQL-webalkalmazás létrehozása az Azure-ban
+# <a name="tutorial-build-a-php-and-mysql-web-app-in-azure"></a>Oktatóanyag: PHP- és MySQL-webalkalmazás létrehozása az Azure-ban
 
 > [!NOTE]
 > Ebben a cikkben egy alkalmazást helyezünk üzembe a Windowson futó App Service-ben. A _Linuxon_ futó App Service-ben való üzembe helyezéssel kapcsolatban lásd: [PHP- és MySQL-webalkalmazás létrehozása a Linuxon futó Azure App Service-ben](./containers/tutorial-php-mysql-app.md).
@@ -154,7 +154,7 @@ A PHP-kiszolgáló leállításához írja be a `Ctrl + C` billentyűparancsot a
 
 ## <a name="create-mysql-in-azure"></a>MySQL létrehozása az Azure-ban
 
-Ebben a lépésben egy MySQL-adatbázist hoz létre az [Azure Database for MySQL (előzetes verzió)](/azure/mysql) szolgáltatásban. Később konfigurálni fogja a PHP-alkalmazást az adatbázishoz való csatlakozásra.
+Ebben a lépésben egy MySQL-adatbázist hoz létre az [Azure Database for MySQL-ben](/azure/mysql). Később konfigurálni fogja a PHP-alkalmazást az adatbázishoz való csatlakozásra.
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -162,7 +162,7 @@ Ebben a lépésben egy MySQL-adatbázist hoz létre az [Azure Database for MySQL
 
 ### <a name="create-a-mysql-server"></a>MySQL-kiszolgáló létrehozása
 
-A Cloud Shellben hozzon létre egy kiszolgálót az Azure Database for MySQL (előzetes verzió) szolgáltatásban az [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) paranccsal.
+A Cloud Shellben hozzon létre egy kiszolgálót az Azure Database for MySQL szolgáltatásban az [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) paranccsal.
 
 Az alábbi parancsban a _&lt;mysql_server_name>_ helyőrzőt cserélje le a MySQL-kiszolgáló nevére (érvényes karakterek: `a-z`, `0-9` és `-`). Ez a név része a MySQL-kiszolgáló állomásnevének (`<mysql_server_name>.database.windows.net`), és globálisan egyedinek kell lennie.
 
@@ -199,7 +199,7 @@ az mysql server firewall-rule create --name allIPs --server <mysql_server_name> 
 ```
 
 > [!NOTE]
-> Az Azure Database for MySQL (előzetes verzió) jelenleg nem korlátozza a kapcsolatokat csak Azure-szolgáltatásokra. Mivel Azure-ban az IP-címek kiosztása dinamikusan történik, érdemes az összes IP-címet engedélyezni. A szolgáltatás előzetes verzióként érhető el. Folyik az adatbázis védelmét biztosító jobb módszerek tervezése.
+> Az Azure Database for MySQL jelenleg nem korlátozza a kapcsolatokat kizárólag Azure-szolgáltatásokra. Mivel Azure-ban az IP-címek kiosztása dinamikusan történik, érdemes az összes IP-címet engedélyezni. Folyik az adatbázis védelmét biztosító jobb módszerek tervezése.
 >
 >
 
@@ -236,7 +236,7 @@ quit
 
 ## <a name="connect-app-to-azure-mysql"></a>Az alkalmazás csatlakoztatása az Azure MySQL-hez
 
-Ebben a lépésben csatlakoztatja a PHP-alkalmazást a MySQL-adatbázishoz, amelyet az Azure Database for MySQL (előzetes verzió) szolgáltatásban hozott létre.
+Ebben a lépésben csatlakoztatja a PHP-alkalmazást a MySQL-adatbázishoz, amelyet az Azure Database for MySQL-ben hozott létre.
 
 <a name="devconfig"></a>
 
@@ -260,7 +260,7 @@ MYSQL_SSL=true
 Mentse a módosításokat.
 
 > [!TIP]
-> A MySQL-kapcsolati adatok védelme érdekében ez a fájl már ki van zárva a Git-adattárból (lásd: _.gitignore_ az adattár gyökérkönyvtárában). Később megtudhatja, hogyan konfigurálhat környezeti változókat az App Service-ben az Azure Database for MySQL (előzetes verzió) szolgáltatásban található adatbázishoz való csatlakozáshoz. A környezeti változók esetében nincs szüksége a *.env* fájlra az App Service-ben.
+> A MySQL-kapcsolati adatok védelme érdekében ez a fájl már ki van zárva a Git-adattárból (lásd: _.gitignore_ az adattár gyökérkönyvtárában). Később megtudhatja, hogyan konfigurálhat környezeti változókat az App Service-ben az Azure Database for MySQL-ben található adatbázishoz való csatlakozáshoz. A környezeti változók esetében nincs szüksége a *.env* fájlra az App Service-ben.
 >
 
 ### <a name="configure-ssl-certificate"></a>SSL-tanúsítvány konfigurálása
@@ -283,7 +283,7 @@ Az oktatóanyagban az egyszerűség kedvéért a `BaltimoreCyberTrustRoot.crt.pe
 
 ### <a name="test-the-application-locally"></a>Az alkalmazás helyi tesztelése
 
-Futtassa a Laravel adatbázis-migrálási parancsait a _.env.production_ fájllal környezeti fájlként a táblák létrehozásához az Azure Database for MySQL (előzetes verzió) szolgáltatásban található MySQL-adatbázisban. Ne feledje, hogy a _.env.production_ fájl tartalmazza a kapcsolatadatokat az Azure-ban található MySQL-adatbázishoz való csatlakozáshoz.
+Futtassa a Laravel adatbázis-migrálási parancsait az _.env.production_ fájllal környezeti fájlként az Azure Database for MySQL szolgáltatásban található MySQL-adatbázis tábláinak létrehozásához. Ne feledje, hogy a _.env.production_ fájl tartalmazza a kapcsolatadatokat az Azure-ban található MySQL-adatbázishoz való csatlakozáshoz.
 
 ```bash
 php artisan migrate --env=production --force
@@ -305,7 +305,7 @@ Nyissa meg a `http://localhost:8000` címet. Ha az oldal hiba nélkül betölt, 
 
 Vegyen fel néhány feladatot az oldalon.
 
-![A PHP sikeresen csatlakozik az Azure Database for MySQL (előzetes verzió) szolgáltatáshoz](./media/app-service-web-tutorial-php-mysql/mysql-connect-success.png)
+![A PHP sikeresen csatlakozik az Azure Database for MySQL-hez](./media/app-service-web-tutorial-php-mysql/mysql-connect-success.png)
 
 A PHP leállításához írja be a `Ctrl + C` billentyűparancsot a terminálon.
 

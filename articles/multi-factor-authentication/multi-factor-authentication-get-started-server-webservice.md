@@ -1,8 +1,8 @@
 ---
-title: "Az Azure MFA-kiszolgáló Mobile App Web Service szolgáltatása | Microsoft Docs"
-description: "A Microsoft Authenticator alkalmazás egy további sávon kívüli hitelesítési lehetőséget kínál.  Ez lehetővé teszi, hogy az MFA-kiszolgáló leküldéses értesítéseket küldjön a felhasználóknak."
+title: Az Azure MFA-kiszolgáló Mobile App Web Service szolgáltatása | Microsoft Docs
+description: A Microsoft Authenticator alkalmazás egy további sávon kívüli hitelesítési lehetőséget kínál.  Ez lehetővé teszi, hogy az MFA-kiszolgáló leküldéses értesítéseket küldjön a felhasználóknak.
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.assetid: 6c8d6fcc-70f4-4da4-9610-c76d66635b8b
@@ -15,11 +15,11 @@ ms.date: 08/23/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 83b04e48dd528881097bcf16bc03e1a18ea20c43
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7ca5c7bcc82f0a77276f4f39a02d8abf2f47bc10
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="enable-mobile-app-authentication-with-azure-multi-factor-authentication-server"></a>A mobilalkalmazásos hitelesítés engedélyezése az Azure Multi-Factor Authentication-kiszolgálóval
 
@@ -29,11 +29,13 @@ Ha a telefonon a vétel nem megbízható, kétlépéses ellenőrzést biztosít�
 
 A Mobile App Web Service-t a környezettől függően érdemes lehet az Azure Multi-Factor Authentication-kiszolgálóval megegyező kiszolgálóra, illetve egy másik, internetkapcsolattal rendelkező kiszolgálóra telepíteni.
 
+Ha telepítette az MFA Server 8.0-s vagy újabb verzióját, a következő lépések legtöbbjére nincs szükség. A mobilalkalmazások hitelesítését [a mobilalkalmazás konfigurálását](#configure-the-mobile-app-settings-in-the-azure-multi-factor-authentication-server) ismertető szakasz lépéseit követve állíthatja be.
+
 ## <a name="requirements"></a>Követelmények
 
 A Microsoft Authenticator alkalmazás használatához a következőkre van szükség, hogy az alkalmazás sikeresen kommunikáljon a Mobile App Web Service-szel:
 
-* Az Azure Multi-Factor Authentication-kiszolgáló 6.0-s vagy újabb verziója
+* Azure Multi-Factor Authentication-kiszolgáló 6.x. vagy újabb verziója
 * A Mobile App Web Service telepítése Microsoft® [Internet Information Services (IIS) 7.x vagy újabb](http://www.iis.net/) verziót futtató internetes webkiszolgálóra
 * Az ASP.NET 4.0.30319-es verziója telepítve és regisztrálva van, és engedélyezett állapotú
 * A szükséges szerepkör-szolgáltatások közé tartozik az ASP.NET és az IIS 6 metabázisával való kompatibilitás.
@@ -48,6 +50,7 @@ A Microsoft Authenticator alkalmazás használatához a következőkre van szük
 
 A Mobile App Web Service telepítése előtt vegye figyelembe a következő részleteket:
 
+* A Mobile App Web Service telepítése 8.0-s vagy újabb verzió esetén nem szükséges. Csak [a mobilalkalmazás konfigurálásáról](#configure-the-mobile-app-settings-in-the-azure-multi-factor-authentication-server) szóló szakasz lépéseit végezze el.
 * Olyan szolgáltatásfiók szükséges, amely a „PhoneFactor-adminisztrátorok” csoport tagja. Ez lehet ugyanaz a fiók, amelyet a felhasználói portál telepítéséhez használt.
 * Hasznos lehet, ha megnyit egy webböngészőt az internetes webkiszolgálón és megkeresi a Web Service SDK a web.config fájlban megadott URL-címét. Ha a böngésző sikeresen eléri a webszolgáltatást, kérnie kell a hitelesítő adatok megadását. Írja be a web.config fájlban megadott felhasználónevet és jelszót pontosan úgy, ahogyan az a fájlban megjelenik. Győződjön meg arról, hogy nem látható tanúsítvánnyal kapcsolatos figyelmeztetés vagy hiba.
 * Ha fordított proxy vagy tűzfal található a Mobile App Web Service webkiszolgálója előtt és SSL-tehermentesítést végez, a Mobile App Web Service web.config fájljának szerkesztésével a Mobile App Web Service http-t használhat https helyett. Az SSL továbbra is szükséges a Mobile App és a tűzfal/fordított proxy között. Adja hozzá a következő kulcsot az \<appSettings\> szakaszhoz:
@@ -80,28 +83,27 @@ A Web Service SDK védelméhez SSL-tanúsítvány használata szükséges. Erre 
 
    * Keresse meg a **„WEB_SERVICE_SDK_AUTHENTICATION_USERNAME”** kulcsot, és módosítsa a **value=""** értéket **value="DOMAIN\User"** értékre, ahol a DOMAIN\User egy olyan szolgáltatásfiók, amely a „PhoneFactor-adminisztrátorok” csoport tagja.
    * Keresse meg a **„WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD”** kulcsot, és módosítsa a **value=""** értéket **value="Password"** értékre, ahol a Password az előző sorban megadott szolgáltatásfiókhoz tartozó jelszó.
-   * Keresse meg a **pfMobile App Web Service_pfwssdk_PfWsSdk** beállítást, és módosítsa az értéket **http://localhost:4898/PfWsSdk.asmx** értékről a Web Service SDK URL-címére (például https://mfa.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx).
+   * Keresse meg a **pfMobile App Web Service_pfwssdk_PfWsSdk** beállítást, és módosítsa az értéket **http://localhost:4898/PfWsSdk.asmx** értékről a Web Service SDK URL-címére (például: https://mfa.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx)).
    * Mentse a Web.Config fájlt, és zárja be a Jegyzettömböt.
 
    > [!NOTE]
    > Mivel ehhez a kapcsolathoz a rendszer SSL-t használ, a Web Service SDK-ra **nem IP-cím**, hanem **teljes tartománynév (FQDN)** alapján kell hivatkozni. Az SSL-tanúsítvány a teljes tartománynévhez lesz kiadva, és a használt URL-címnek meg kell egyeznie a tanúsítványon szereplő névvel.
 
 7. Ha az a webhely, amelyen a Mobile App Web Service telepítve lett, még nincs nyilvánosan aláírt tanúsítványhoz kötve, telepítse a tanúsítványt a kiszolgálóra, nyissa meg az IIS-kezelőt, és kösse a tanúsítványt a webhelyhez.
-8. Nyisson meg egy webböngészőt bármilyen számítógépről, és lépjen arra az URL-címre, ahol a Mobile App Web Service telepítve van (például: https://mfa.contoso.com/MultiFactorAuthMobileAppWebService). Győződjön meg arról, hogy nem látható tanúsítvánnyal kapcsolatos figyelmeztetés vagy hiba.
+8. Nyisson meg egy webböngészőt bármilyen számítógépről, és lépjen arra az URL-címre, ahol a Mobile App Web Service telepítve van (például: https://mfa.contoso.com/MultiFactorAuthMobileAppWebService)). Győződjön meg arról, hogy nem látható tanúsítvánnyal kapcsolatos figyelmeztetés vagy hiba.
 9. A webes szolgáltatások SDK-jában elérhető módszerekkel kapcsolatos további információkért tekintse meg az MFA-kiszolgáló súgófájlját.
+10. Most, hogy telepítette a Mobile App Web Service-t, konfigurálnia kell az Azure Multi-Factor Authentication-kiszolgálót, hogy működjön a portállal.
 
 ## <a name="configure-the-mobile-app-settings-in-the-azure-multi-factor-authentication-server"></a>A mobilalkalmazás beállításainak konfigurálása az Azure Multi-Factor Authentication-kiszolgálón
-
-Most, hogy telepítette a Mobile App Web Service-t, konfigurálnia kell az Azure Multi-Factor Authentication-kiszolgálót, hogy működjön a portállal.
 
 1. A Multi-Factor Authentication-kiszolgáló konzoljában kattintson a Felhasználói portál ikonra. Ha a felhasználók vezérelhetik a hitelesítési módszereiket, a Beállítások lapon a **Módszer kiválasztásának engedélyezése a felhasználóknak** lehetőség alatt jelölje be a **Mobile App** jelölőnégyzetét. Ha a szolgáltatás nincs engedélyezve, a végfelhasználóknak kapcsolatba kell lépniük a támogatási szolgálattal a Mobile App aktiválásának befejezéséhez.
 2. Jelölje be a **Mobilalkalmazás aktiválásának engedélyezése a felhasználóknak** jelölőnégyzetet.
 3. Jelölje be a **Felhasználó beléptetésének engedélyezése** jelölőnégyzetet.
 4. Kattintson a **Mobile App** ikonra.
-5. Adja meg a MultiFactorAuthenticationMobileAppWebServiceSetup64 telepítésekor létrehozott virtuális címtárhoz használt URL-címet (például: https://mfa.contoso.com/MultiFactorAuthMobileAppWebService/) a **Mobile App Web Service URL-címe:** mezőben.
+5. Ha 8.0-s vagy újabb verziót használ, ugorja át a következő lépést: Adja meg az URL-címet, amelyet a MultiFactorAuthenticationMobileAppWebServiceSetup64 telepítésekor létrehozott virtuális könyvtárral használ: (Példa: https://mfa.contoso.com/MultiFactorAuthMobileAppWebService/) a **Mobile App Web Service URL:** mezőben).
 6. A **Fiók neve** mezőben adja meg a fiókhoz tartozó mobilalkalmazásban megjeleníteni kívánt cég- vagy szervezetnevet.
    ![MFA-kiszolgáló konfigurálása – A Mobile App beállításai](./media/multi-factor-authentication-get-started-server-webservice/mobile.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Speciális, az Azure Multi-Factor Authenticationre és külső VPN-ekre vonatkozó forgatókönyvek](multi-factor-authentication-advanced-vpn-configurations.md).

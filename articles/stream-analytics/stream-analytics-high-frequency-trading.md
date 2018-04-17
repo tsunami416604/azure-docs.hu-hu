@@ -1,24 +1,19 @@
 ---
-title: Nagy gyakoriságú kereskedelmi szimuláció a Stream Analyticsszel | Microsoft Docs
-description: Lineáris regressziós modellek tanítása és pontozása azonos Stream Analytics-feladatban
-keywords: gépi tanulás, továbbfejlesztett elemzések, lineáris regresszió, szimuláció, UDA, felhasználó által megadott függvények
-documentationcenter: ''
+title: Nagy gyakoriságú kereskedelmi szimuláció az Azure Stream Analyticsszel
+description: Lineáris regressziós modellek tanítása és pontozása Azure Stream Analytics-feladatban.
 services: stream-analytics
 author: zhongc
-manager: ryanw
-ms.assetid: 997ccfc1-abaf-4c12-bef2-632481140f05
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 11/05/2017
 ms.author: zhongc
-ms.openlocfilehash: 349dc5c5277260b664d7214979ef15d1689b2716
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: get-started-article
+ms.date: 11/05/2017
+ms.openlocfilehash: cf04cf92f204b89c0641a23ba38b05dbcad409b2
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Nagy gyakoriságú kereskedelmi szimuláció a Stream Analyticsszel
 Az Azure Stream Analyticsben az SQL-nyelv, illetve a felhasználó által definiált JavaScript-függvények (UDF-ek) és felhasználó által definiált összesítések (UDA-k) kombinációja lehetővé teszi, hogy a felhasználók fejlett elemzéseket végezzenek. A fejlett elemzések magukban foglalhatnak például online gépi tanulásra vonatkozó tanítási és pontozási, valamint állapotalapú folyamat-szimulációkat. Ez a cikk bemutatja, hogyan történik egy nagy gyakoriságú kereskedelmi forgatókönyvben a folyamatos tanítási és pontozási folyamatokat végrehajtó lineáris regressziós modell futtatása egy Azure Stream Analytics-feladatban.

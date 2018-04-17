@@ -57,6 +57,8 @@
       href: asdk-register.md
     - name: Azure verem telemetriai beállítások konfigurálása
       href: asdk-telemetry.md
+    - name: Elindítása és leállítása a ASDK
+      href: asdk-start-stop.md
     - name: Hibaelhárítás
       href: asdk-troubleshooting.md
 - name: Leírások

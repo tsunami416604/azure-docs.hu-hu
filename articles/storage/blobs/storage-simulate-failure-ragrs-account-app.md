@@ -10,11 +10,11 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.date: 12/23/2017
 ms.author: tamram
-ms.openlocfilehash: 0e7ab68075fbce729d3905375acce0dace22c483
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: a86f54d580db6e577b878cb1701c7b969d23c129
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="simulate-a-failure-in-accessing-read-access-redundant-storage"></a>Írásvédett redundáns tárolók elérése során fellépő hiba szimulálása
 
@@ -179,9 +179,9 @@ A sorozat második részében megismerte az írásvédett georedundáns tároló
 > * Hiba szimulálása [Fiddlerrel](#simulate-a-failure-with-fiddler) vagy [érvénytelen statikus útvonallal](#simulate-a-failure-with-an-invalid-static-route) 
 > * Elsődleges végpont visszaállításának szimulálása
 
-Kövesse ezt a hivatkozást az előre felépített tárolóminták megtekintéséhez.
+Ha többet szeretne megtudni az RA-GRS tároló működéséről (és a kapcsolódó kockázatokról), olvassa el az alábbi cikket.
 
 > [!div class="nextstepaction"]
-> [Azure Storage-szkriptminták](storage-samples-blobs-cli.md)
+> [HA-alkalmazások tervezése RA-GRS használatával](../common/storage-designing-ha-apps-with-ragrs.md)
 
 [previous-tutorial]: storage-create-geo-redundant-storage.md

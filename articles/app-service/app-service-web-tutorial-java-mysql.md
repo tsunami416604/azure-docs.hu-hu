@@ -1,12 +1,12 @@
 ---
-title: "Java- és MySQL-webalkalmazás létrehozása az Azure-ban"
-description: "Megtudhatja, hogyan állíthat üzembe egy, az Azure MySQL-adatbázisszolgáltatáshoz csatlakozó Java-alkalmazást az Azure App Service-ben."
+title: Java- és MySQL-webalkalmazás létrehozása az Azure-ban
+description: Megtudhatja, hogyan állíthat üzembe egy, az Azure MySQL-adatbázisszolgáltatáshoz csatlakozó Java-alkalmazást az Azure App Service-ben.
 services: app-service\web
 documentationcenter: Java
 author: bbenz
 manager: jeffsand
 editor: jasonwhowell
-ms.assetid: 
+ms.assetid: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
@@ -15,13 +15,13 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: 2df08c8e3dbadbfc1a9d2cfb3adcda4f5bae2851
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0712035f317adb318d60285637526f951bf5bdec
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="build-a-java-and-mysql-web-app-in-azure"></a>Java- és MySQL-webalkalmazás létrehozása az Azure-ban
+# <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>Oktatóanyag: Java- és MySQL-webalkalmazás létrehozása az Azure-ban
 
 > [!NOTE]
 > Ebben a cikkben egy alkalmazást helyezünk üzembe a Windowson futó App Service-ben. Az App Service _Linuxon_ való üzembe helyezésével kapcsolatban lásd a [tárolóalapú Spring Boot-alkalmazás az Azure-ban történő üzembe helyezését](/java/azure/spring-framework/deploy-containerized-spring-boot-java-app-with-maven-plugin) ismertető szakaszt.
@@ -137,7 +137,7 @@ A `--location` paraméterhez használható lehetséges értékek megtekintéséh
 
 ### <a name="create-a-mysql-server"></a>MySQL-kiszolgáló létrehozása
 
-A Cloud Shellben hozzon létre egy kiszolgálót az Azure Database for MySQL (előzetes verzió) szolgáltatásban az [`az mysql server create`](/cli/azure/mysql/server#az_mysql_server_create) paranccsal. A `<mysql_server_name>` helyőrző minden előfordulási helyére írja be saját, egyedi MySQL-kiszolgálónevét. Ez a név része a MySQL-kiszolgáló gazdanevének (`<mysql_server_name>.mysql.database.azure.com`), és globálisan egyedinek kell lennie. Az `<admin_user>` és az `<admin_password>` helyére is a saját értékeit írja.
+A Cloud Shellben hozzon létre egy kiszolgálót az Azure Database for MySQL szolgáltatásban az [`az mysql server create`](/cli/azure/mysql/server#az_mysql_server_create) paranccsal. A `<mysql_server_name>` helyőrző minden előfordulási helyére írja be saját, egyedi MySQL-kiszolgálónevét. Ez a név része a MySQL-kiszolgáló gazdanevének (`<mysql_server_name>.mysql.database.azure.com`), és globálisan egyedinek kell lennie. Az `<admin_user>` és az `<admin_password>` helyére is a saját értékeit írja.
 
 ```azurecli-interactive
 az mysql server create --name <mysql_server_name> --resource-group myResourceGroup --location "North Europe" --admin-user <admin_user> --admin-password <admin_password>
@@ -168,7 +168,7 @@ az mysql server firewall-rule create --name allIPs --server <mysql_server_name> 
 ```
 
 > [!NOTE]
-> Az Azure Database for MySQL (előzetes verzió) jelenleg nem engedélyezi automatikusan az Azure-szolgáltatásokról érkező kapcsolatokat. Mivel az Azure-ban az IP-címek kiosztása dinamikusan történik, érdemes egyelőre az összes IP-címet engedélyezni. A szolgáltatás előzetes verziójának továbbfejlesztésével jobb módszerek válnak elérhetővé az adatbázis védelmére.
+> Az Azure Database for MySQL jelenleg nem engedélyezi automatikusan az Azure-szolgáltatásokból érkező kapcsolatokat. Mivel az Azure-ban az IP-címek kiosztása dinamikusan történik, érdemes egyelőre az összes IP-címet engedélyezni. Jobb módszerek válnak elérhetővé az adatbázis védelmére.
 
 ## <a name="configure-the-azure-mysql-database"></a>Az Azure MySQL-adatbázis konfigurálása
 
