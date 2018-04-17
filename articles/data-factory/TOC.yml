@@ -364,6 +364,10 @@
           href: create-azure-ssis-integration-runtime.md
     - name: SSIS-csomagok futtatása az Azure-ban
       items:
+        - name: Az Azure SSIS integrációs modul egyéni beállításai
+          href: how-to-configure-azure-ssis-ir-custom-setup.md
+        - name: Az Azure SSIS integrációs modul Enterprise Edition kiadásának üzembe helyezése
+          href: how-to-configure-azure-ssis-ir-enterprise-edition.md
         - name: Az Azure SSIS integrációs modul csatlakoztatása virtuális hálózathoz
           href: join-azure-ssis-integration-runtime-virtual-network.md
         - name: Az Azure SSIS integrációs modul kezelése
@@ -374,6 +378,8 @@
           href: how-to-invoke-ssis-package-stored-procedure-activity.md
         - name: Azure-SSIS integrációs modul ütemezése
           href: how-to-schedule-azure-ssis-integration-runtime.md
+        - name: Az Azure SSIS integrációs modul licencelt összetevőinek fejlesztése
+          href: how-to-develop-azure-ssis-ir-licensed-components.md
     - name: Eseményindítók létrehozása
       items:
         - name: Ütemezési eseményindító létrehozása

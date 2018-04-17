@@ -1,59 +1,59 @@
 ---
-title: "PowerShell – példa BACPAC fájl Azure SQL adatbázis importálása |} Microsoft Docs"
-description: "Az Azure PowerShell-példa parancsprogram SQL-adatbázis BACPAC fájl importálása"
+title: PowerShell-példa BACPAC-fájl importálására Azure SQL-adatbázisba | Microsoft Docs
+description: Azure PowerShell-példaszkript – BACPAC-fájl importálása SQL-adatbázisba
 services: sql-database
 documentationcenter: sql-database
 author: janeng
 manager: jstrauss
 editor: carlrab
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: sql-database
 ms.custom: load & move data, mvc
 ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 06/23/2017
+ms.date: 04/01/2018
 ms.author: janeng
-ms.openlocfilehash: c24a3b7551058a69cbfdddf8b859b635e0829402
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
-ms.translationtype: MT
+ms.openlocfilehash: 1ee17d416baa99105ea870cf334bdb360ed39272
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="use-powershell-to-import-a-bacpac-file-into-an-azure-sql-database"></a>Azure SQL-adatbázis BACPAC a fájl importálásához a PowerShell használatával
+# <a name="use-powershell-to-import-a-bacpac-file-into-an-azure-sql-database"></a>BACPAC-fájl importálása egy Azure SQL-adatbázisba a PowerShell használatával
 
-A PowerShell-mintaparancsfájl BACPAC fájlból egy adatbázis importál egy Azure SQL-adatbázis.  
+Ez a PowerShell-példaszkript egy BACPAC-fájlban lévő adatbázist importál egy Azure SQL-adatbázisba.  
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
 [!code-powershell[main](../../../powershell_scripts/sql-database/import-from-bacpac/import-from-bacpac.ps1?highlight=18-19 "Create SQL Database")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-A parancsfájl-minta futtatása után a következő parancs segítségével távolítsa el az erőforráscsoportot és a vele társított összes erőforrást.
+A példaszkript futtatása után a következő paranccsal távolítható el az erőforráscsoport és az összes ahhoz kapcsolódó erőforrás.
 
 ```powershell
 Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
 ```
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-A parancsfájl a következő parancsokat. Minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatkozásokat.
+A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Új-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Az összes erőforrás tároló erőforrás csoportot hoz létre. |
-| [Új AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | Az SQL-adatbázist futtató logikai kiszolgáló létrehozása. |
-| [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule) | Engedélyezi a kiszolgálón lévő összes SQL-adatbázis elérését a megadott IP-címtartomány egy tűzfalszabályt hoz létre. |
-| [Új AzureRmSqlDatabaseImport](/powershell/module/azurerm.sql/new-azurermsqldatabaseimport) | Importálja a BACPAC fájlt, és hozzon létre egy új adatbázist a kiszolgálón. |
-| [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Egy olyan erőforráscsoport, beleértve az összes beágyazott erőforrások törlése. |
+| [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | Létrehoz egy logikai kiszolgálót, amelyen az SQL Database szolgáltatás fut. |
+| [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule) | Létrehoz egy tűzfalszabályt, amely engedélyezi a kiszolgálón lévő összes SQL Database-adatbázis elérését a megadott IP-címtartományból. |
+| [New-AzureRmSqlDatabaseImport](/powershell/module/azurerm.sql/new-azurermsqldatabaseimport) | Importál egy BACPAC-fájlt, és létrehoz egy új adatbázist a kiszolgálón. |
+| [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az Azure PowerShell további információkért lásd: [Azure PowerShell dokumentációs](/powershell/azure/overview).
+Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](/powershell/azure/overview).
 
-További SQL Database PowerShell parancsfájl minták megtalálhatók a [Azure SQL Database PowerShell-parancsfájlok](../sql-database-powershell-samples.md).
+További SQL Database PowerShell szkriptminták találhatók az [Azure SQL Database PowerShell szkriptekben](../sql-database-powershell-samples.md).

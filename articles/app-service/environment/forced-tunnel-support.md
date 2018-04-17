@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 3/6/2018
+ms.date: 03/20/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 92073cd29f29c1ddf5863e23c4a12dfdf8e21598
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 904641a433d55cc5f1d04b17ed067cd560c6b33c
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>Az App Service-környezet konfigurálása kényszerített bújtatással
 
@@ -49,6 +49,8 @@ Ha engedélyezni szeretné, hogy az ASE közvetlenül az internethez csatlakozzo
 
 Ha végrehajtja ezt a két módosítást, az App Service-környezet alhálózatából származó, internetre küldött forgalom nem lesz rákényszerítve az ExpressRoute-kapcsolatra.
 
+Ha a hálózat már irányít forgalmat a helyszínen, létre kell hozni egy alhálózatot az ASE üzemeltetéséhez és az UDR konfigurálásához az ASE számára, mielőtt megkísérelni üzembe helyezni az ASE-t.  
+
 > [!IMPORTANT]
 > Az UDR-ben meghatározott útvonalaknak annyira pontosnak kell lenniük, hogy prioritást kapjanak az ExpressRoute-konfiguráció által meghirdetett bármely útvonallal szemben. Az előző példa a széles 0.0.0.0/0 címtartományt használja. Ezt véletlenül felülírhatják olyan útvonalhirdetések, amelyek pontosabb címtartományokat használnak.
 >
@@ -56,13 +58,16 @@ Ha végrehajtja ezt a két módosítást, az App Service-környezet alhálózat�
 
 ![Közvetlen internet-hozzáférés][1]
 
-## <a name="configure-your-ase-with-service-endpoints"></a>Az ASE konfigurálása szolgáltatásvégpontokkal
+
+## <a name="configure-your-ase-with-service-endpoints"></a>Az ASE konfigurálása szolgáltatásvégpontokkal ##
 
 Ha az Azure SQL és az Azure Storage felé irányuló forgalmon kívül az ASE összes kimenő forgalmát át szeretné irányítani, végezze el a következő lépéseket:
 
 1. Hozzon létre egy útválasztási táblázatot, és rendelje hozzá az ASE-alhálózathoz. Keresse meg a régiójának megfelelő címeket az [App Service-környezet kezelési címeit][management] ismertető szakaszban. Hozzon létre útvonalakat ezekhez a címekhez egy következő ugrási típusú internettel. Erre azért van szükség, mert az App Service-környezet bejövő felügyeleti forgalmának ugyanarról a címről kell válaszolnia, amelyre küldték.   
 
-2. Szolgáltatásvégpontok engedélyezése az Azure SQL-hez és az Azure Storage szolgáltatáshoz az ASE-alhálózattal
+2. Engedélyezze a szolgáltatásvégpontokat az Azure SQL-hez és az Azure Storage-hoz az ASE-alhálózattal.  Miután ezt a lépést elvégezte, konfigurálhatja virtuális hálózatát kényszerített bújtatással.
+
+Ha ASE-t olyan virtuális hálózaton szeretné létrehozni, amely már konfigurálva lett arra, hogy minden forgalmat irányítson a helyszínen, az ASE-t Resource Manager-sablon használatával kell létrehozni.  ASE nem hozható létre a portállal egy már meglévő alhálózatban.  Amikor üzembe helyezi az ASE-t egy olyan virtuális hálózatban, amely már konfigurálva lett a kimenő forgalom irányítására a helyszínen, az ASE-t egy Resource Manager-sablon használatával kell létrehozni, ami lehetővé teszi egy meglévő alhálózat megadását. Az ASE sablonnal történő üzembe helyezéséhez olvassa el az [App Service Environment sablon használatával történő létrehozásával][template] foglalkozó cikket.
 
 A szolgáltatásvégpontokkal Azure-beli virtuális hálózatok és alhálózatok készletére korlátozhatja a több-bérlős szolgáltatásokhoz való hozzáférést. A szolgáltatásvégpontokról bővebben a [virtuális hálózatok szolgáltatásvégpontjaival][serviceendpoints] kapcsolatos dokumentációban olvashat. 
 
@@ -70,7 +75,7 @@ Amikor engedélyezi a szolgáltatásvégpontokat egy erőforráson, az összes t
 
 Amikor a szolgáltatásvégpontok engedélyezettek egy Azure SQL-példánnyal rendelkező alhálózaton, akkor az erről az alhálózatról elért összes Azure SQL-példányhoz engedélyezve kell lennie a szolgáltatásvégpontoknak. Ha több Azure SQL-példányt szeretne elérni ugyanarról az alhálózatról, nem engedélyezheti a szolgáltatásvégpontokat csak az egyik Azure SQL-példányon, egy másikon pedig nem.  Az Azure Storage nem úgy viselkedik, mint az Azure SQL.  Amikor az Azure Storage szolgáltatáshoz engedélyezi a szolgáltatásvégpontokat, azzal zárolja az erőforráshoz való hozzáférést az alhálózatról, de továbbra is elérhet más Azure Storage-fiókokat, még akkor is, ha azokon nincsenek engedélyezve a szolgáltatásvégpontok.  
 
-Ha kényszerített bújtatást konfigurál egy hálózatszűrő berendezéssel, akkor ne feledje, hogy az ASE az Azure SQL és az Azure Storage mellett egyéb függőségekkel is rendelkezik. Engedélyeznie kell ezt a forgalmat, különben az ASE nem fog megfelelően működni.
+Ha kényszerített bújtatást konfigurál egy hálózatszűrő berendezéssel, akkor ne feledje, hogy az ASE az Azure SQL és az Azure Storage mellett más függőségekkel is rendelkezik. Engedélyeznie kell a forgalmat ezen függőségekre vonatkozóan, különben az ASE nem fog megfelelően működni.
 
 ![Kényszerített bújtatás szolgáltatásvégpontokkal][2]
 

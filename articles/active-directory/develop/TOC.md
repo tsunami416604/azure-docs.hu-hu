@@ -7,9 +7,9 @@
 ### [Áttekintés](active-directory-authentication-scenarios.md#native-application-to-web-api)
 ### [iOS](active-directory-devquickstarts-ios.md)
 ### [Android](active-directory-devquickstarts-android.md)
-### [.NET](active-directory-devquickstarts-dotnet.md)
-### [Windows](active-directory-devquickstarts-windowsstore.md)
-### [Xamarin](active-directory-devquickstarts-xamarin.md)
+### [.NET (asztali Windows)](active-directory-devquickstarts-dotnet.md)
+### [.NET (univerzális Windows)](active-directory-devquickstarts-windowsstore.md)
+### [.NET (Xamarin)](active-directory-devquickstarts-xamarin.md)
 ### [Cordova](active-directory-devquickstarts-cordova.md)
 ### [OAuth 2.0](active-directory-protocols-oauth-code.md)
 ## Webalkalmazások
@@ -96,11 +96,16 @@
 ### Mobil- és asztali appok
 #### [iOS](guidedsetups/active-directory-ios.md)
 #### [Android](guidedsetups/active-directory-android.md)
-#### [Windows asztali .NET](guidedsetups/active-directory-windesktop.md)
+#### [.NET (asztali Windows)](guidedsetups/active-directory-windesktop.md)
 ### Webalkalmazások
-#### [JavaScript SPA](guidedsetups/active-directory-javascriptspa.md)
-#### [ASP.NET-webkiszolgáló](guidedsetups/active-directory-aspnetwebapp.md)
-#### [NodeJS-webalkalmazás](active-directory-v2-devquickstarts-node-web.md)
+#### [ASP.NET](guidedsetups/active-directory-aspnetwebapp.md)
+#### [NodeJS](active-directory-v2-devquickstarts-node-web.md)
+### Egylapos appok
+#### [JavaScript](guidedsetups/active-directory-javascriptspa.md)
+### Webes API-k
+#### [NodeJS](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2)
+### Szolgáltatások közötti
+#### [ASP.NET](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)
 ## Útmutatók
 ### [Alkalmazás regisztrálása](active-directory-v2-app-registration.md)
 ## Referencia
@@ -110,10 +115,10 @@
 #### [OAuth 2.0 hitelesítési kódmegadás](active-directory-v2-protocols-oauth-code.md)
 #### [OAuth 2.0 implicit engedélyezés](active-directory-v2-protocols-implicit.md)
 #### [OAuth 2.0-ügyfél hitelesítő adatainak megadása](active-directory-v2-protocols-oauth-client-creds.md)
-#### [Oauth 2.0-alapú meghatalmazásos folyamat](active-directory-v2-protocols-oauth-on-behalf-of.md)
-#### [Jogkivonat-referencia](active-directory-v2-tokens.md)
+#### [OAuth 2.0-alapú meghatalmazásos folyamat](active-directory-v2-protocols-oauth-on-behalf-of.md)
 #### [Tanúsítványok hitelesítő adatai](active-directory-certificate-credentials.md)
-### [Hatókörök](active-directory-v2-scopes.md)
+### [Jogkivonatok](active-directory-v2-tokens.md)
+### [Hatókörök és jóváhagyások](active-directory-v2-scopes.md)
 # További források
 ## [Segítség kérése](active-directory-develop-help-support.md)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)

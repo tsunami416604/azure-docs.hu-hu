@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Security Center platform migrációja| Microsoft Docs"
-description: "Ez a dokumentum az Azure Security Center adatgyűjtési módjának néhány változását ismerteti."
+title: Az Azure Security Center platform migrációja| Microsoft Docs
+description: Ez a dokumentum az Azure Security Center adatgyűjtési módjának néhány változását ismerteti.
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 80246b00-bdb8-4bbc-af54-06b7d12acf58
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2017
 ms.author: yurid
-ms.openlocfilehash: 89970b50a2f7246a43ac9666be4d992649605cbf
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 2e2e8d7213504ccd71df7048045925bf566c76d5
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-security-center-platform-migration"></a>Az Azure Security Center platform migrációja
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 12/13/2017
 
 Régebben a Security Center az Azure Monitoring Agent ügynököt használta a biztonsági adatok virtuális gépekről való gyűjtésére. Ez magában foglal biztonsági konfigurációkra vonatkozó adatokat, amelyek a biztonsági rések azonosítására és biztonsági eseményeket, amelyek a veszélyek észlelésére használatosak. Ezeket az adatokat az Azure Storage-fiókjában tároltuk.
 
-A későbbiekben a Security Center a Microsoft Monitoring Agent ügynököt használja – ez ugyanaz az ügynök, amelyet az Operations Management Suite és a Log Analytics szolgáltatás használ. Az ettől az ügynöktől gyűjtött adatok tárolása vagy egy már meglévő, az Azure-előfizetéséhez társított *Log Analytics*-[munkaterületen](../log-analytics/log-analytics-manage-access.md) történik, vagy új munkaterülete(ke)n, a virtuális gép földrajzi helyének figyelembevételével.
+A későbbiekben a Security Center a Microsoft Monitoring Agent ügynököt használja – ez ugyanaz az ügynök, mint amelyet a Log Analytics szolgáltatás használ. Az ettől az ügynöktől gyűjtött adatok tárolása vagy egy már meglévő, az Azure-előfizetéséhez társított *Log Analytics*-[munkaterületen](../log-analytics/log-analytics-manage-access.md) történik, vagy új munkaterülete(ke)n, a virtuális gép földrajzi helyének figyelembevételével.
 
 ## <a name="agent"></a>Ügynök
 
@@ -62,9 +62,9 @@ A Security Center által létrehozott munkaterületeken az adatok 30 napig őrz�
 > [!NOTE]
 > A Security Center által korábban gyűjtött adatok a Storage-fiók(ok)ban maradnak. A migráció befejeződése után ezeket a Storage-fiókokat törölheti.
 
-### <a name="oms-security-solution"></a>OMS biztonsági megoldás 
+### <a name="security-management-solution"></a>Biztonságkezelési megoldás 
 
-Azok számára a meglévő ügyfelek számára, akiknél nincs telepítve az OMS biztonsági megoldás, a Microsoft telepíti azt a munkaterületükre, de csak az Azure virtuális gépeket célozva. Ne távolítsa el ezt a megoldást, mert nincs automatikus javítási lehetőség, ha ezt az OMS kezelési konzoljáról teszi.
+Azon meglévő ügyfelek számára, akiknél nincs telepítve a Log Analytics biztonságkezelési megoldás, a Microsoft telepíti azt a munkaterületükre, de csak az Azure virtuális gépeket célozva. Ne távolítsa el ezt a megoldást, mert nincs automatikus javítási lehetőség, ha ezt a felügyeleti konzolról teszi.
 
 
 ## <a name="other-updates"></a>Egyéb frissítések

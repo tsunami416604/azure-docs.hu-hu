@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 04/03/2018
+ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: ffe25e911273b93f1c16224d30fea5c920425f03
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ba57530c5708216ca7c990025d513144dcdf82a4
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Mi az a felügyelt példánya (előzetes verzió)?
 
@@ -115,7 +115,7 @@ A következőkben olvashat az általános célú szolgáltatásréteg a legfonto
 | Adatfájlok (sorok) az adatbázis másodpercenkénti száma | Többszörös | 
 | Adatbázisonként (napló) fájlok száma | 1 | 
 | Az automatikus biztonsági mentés felügyelete | Igen |
-| HA | Távoli tároló alapján és [Azure Service Fabric](../service-fabric/service-fabric-overview.md) |
+| MAGAS RENDELKEZÉSRE ÁLLÁSÚ | Távoli tároló alapján és [Azure Service Fabric](../service-fabric/service-fabric-overview.md) |
 | Beépített példány adatbázis ellenőrzésének és metrikák | Igen |
 | A szoftverfrissítések automatikus javítás | Igen |
 | VNet - Azure Resource Manager telepítés | Igen |
@@ -131,7 +131,7 @@ A következőkben olvashat az általános célú szolgáltatásréteg a legfonto
 
 Felügyelt példány további biztonsági elkülönítés Azure felhőben más bérlők számára. Biztonsági elkülönítés tartalmazza: 
 
-- Natív virtuális hálózati végrehajtása és a helyszíni környezetben Azure Express Route vagy VPN-átjárót, kapcsolattal 
+- [Natív virtuális hálózati megvalósítási](sql-database-managed-instance-vnet-configuration.md) és a helyszíni környezetben Azure Express Route vagy VPN-átjárót, kapcsolattal 
 - SQL-végpont csak egy magánhálózati IP-cím, lehetővé téve a biztonságos kapcsolat a saját Azure vagy hibrid hálózatok keresztül van közzétéve.
 - Single-bérlő az alapul szolgáló dedikált infrastruktúrát (számítási, tároló)
 
@@ -185,7 +185,13 @@ Az Azure-adatbázis áttelepítési szolgáltatás egy olyan teljes körűen fel
 
 ### <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás  
 
-Az áttelepítési módszer SQL biztonsági mentés az Azure blob storage kihasználja. Azure storage-blob tárolt biztonsági is állítható helyre közvetlenül kezelt példány. 
+Az áttelepítési módszer SQL biztonsági mentés az Azure blob storage kihasználja. Azure storage-blob tárolt biztonsági is állítható helyre közvetlenül kezelt példány. A felügyelt példánya egy meglévő SQL-adatbázis visszaállításához a következőket teheti:
+
+- Használjon [adatok áttelepítési szolgáltatás (DMS)](/sql/dma/dma-overview). Az oktatóanyagok esetén lásd: [áttelepítése az Azure adatbázis áttelepítési szolgáltatás (DMS) használatával felügyelt példányra](../dms/tutorial-sql-server-to-managed-instance.md) adatbázis biztonsági másolatból való visszaállítása
+- Használja a [T-SQL RESTORE parancs](https://docs.microsoft.com/en-us/sql/t-sql/statements/restore-statements-transact-sql). 
+  - Az oktatóanyag bemutatja, hogyan állítsa vissza a Wide World Importers - szabványos adatbázis biztonságimásolat-fájlt, tekintse meg a [állítsa vissza biztonsági másolatból egy felügyelt példányon](sql-database-managed-instance-restore-from-backup-tutorial.md). Ez az oktatóanyag bemutatja, hogy biztonságimásolat-fájl feltöltése Azure blog tárolási és biztonságos közös hozzáférési jogosultságkód (SAS) kulccsal.
+  - URL-címről visszaállítási kapcsolatos információkért lásd: [URL-címről natív VISSZAÁLLÍTÁSA](sql-database-managed-instance-migrate.md#native-restore-from-url).
+- [BACPAC-fájlból való importálása](sql-database-import.md)
 
 ## <a name="sql-features-supported"></a>Támogatott SQL-szolgáltatások 
 
@@ -217,5 +223,6 @@ A felügyelt példány lehetővé teszik a rendszergazdának a legtöbb vállala
 ## <a name="next-steps"></a>További lépések
 
 - A szolgáltatások és összehasonlító listáját lásd: [általános SQL-szolgáltatások](sql-database-features.md).
+- A VNetek konfigurálásával kapcsolatos további információkért tekintse meg a [felügyelt példányok VNetjének konfigurálásával kapcsolatos](sql-database-managed-instance-vnet-configuration.md) cikket.
 - Az oktatóanyag, amely létrehoz egy kezelt példányt, és visszaállítja egy adatbázis biztonsági másolatból, lásd: [hozzon létre egy felügyelt példányt](sql-database-managed-instance-tutorial-portal.md).
 - Az Azure Database Migration Service migráláshoz való használatát a [felügyelt példány DMS használatával történő migrálását](../dms/tutorial-sql-server-to-managed-instance.md) bemutató oktatóanyag ismerteti.

@@ -96,7 +96,7 @@
     - name: Alkalmazások létrehozása
       href: service-fabric-choose-framework.md
       items:
-        - name: Tárolók
+        - name: Containers
           href: service-fabric-containers-overview.md
           items:
             - name: Docker Compose (előzetes verzió)
@@ -201,6 +201,8 @@
       items:
         - name: Fürtbiztonság
           href: service-fabric-cluster-security.md
+        - name: Méretezés
+          href: service-fabric-cluster-scaling.md
         - name: Különbségek a Linux és a Windows szolgáltatásai között
           href: service-fabric-linux-windows-differences.md
         - name: Fürtök az Azure-on
@@ -323,6 +325,8 @@
               href: service-fabric-resource-governance.md
             - name: Kötet- és naplózási illesztők
               href: service-fabric-containers-volume-logging-drivers.md
+            - name: Tárolónaplók megtekintése
+              href: service-fabric-containers-view-logs.md
             - name: Tárolókon belüli szolgáltatások
               href: service-fabric-services-inside-containers.md
             - name: Tárolóalapú hálózatkezelés módjai
@@ -539,8 +543,10 @@
           href: service-fabric-visualizing-your-cluster.md
         - name: Csatlakozás biztonságos fürthöz
           href: service-fabric-connect-to-secure-cluster.md
-        - name: Fürtcsomópontok javítása
+        - name: Fürtcsomópontok javítása (Windows)
           href: service-fabric-patch-orchestration-application.md
+        - name: Fürtcsomópontok javítása (Linux)
+          href: service-fabric-patch-orchestration-application-linux.md
     - name: Megfigyelés és diagnosztika
       items:
         - name: Elemzés az OMS szolgáltatással

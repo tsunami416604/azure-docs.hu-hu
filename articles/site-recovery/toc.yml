@@ -293,8 +293,8 @@
               href: delete-vault.md
         - name: Figyelés és hibaelhárítás
           items:
-            - name: Az Azure-ba irányuló feladatátvétel hibaelhárítása
-              href: site-recovery-failover-to-azure-troubleshoot.md
+            - name: A Hyper-V-replikáció hibaelhárítása
+              href: hyper-v-azure-troubleshoot.md
             - name: Az Azure Site Recovery monitorozása
               href: site-recovery-monitor-and-troubleshoot.md
     - name: Hyper-V – másodlagos hely

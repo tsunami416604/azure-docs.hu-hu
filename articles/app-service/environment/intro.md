@@ -1,6 +1,6 @@
 ---
-title: "Az Azure App Service Environment bemutatása"
-description: "Az Azure App Service Environment rövid áttekintése"
+title: Az Azure App Service Environment bemutatása
+description: Az Azure App Service Environment rövid áttekintése
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -11,20 +11,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 06/13/2017
+ms.date: 03/20/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 803a1cde5387b549504b42346d1a2e6a5df04746
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 0b113a594ebf1180346eccc295251f522dcc29c5
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="introduction-to-app-service-environments"></a>Az App Service Environment bemutatása #
+# <a name="introduction-to-the-app-service-environments"></a>Az App Service Environment bemutatása #
  
 ## <a name="overview"></a>Áttekintés ##
 
-Az Azure App Service Environment egy Azure App Service-funkció, amely teljesen elkülönített és dedikált környezetben futtatható az App Service-alkalmazások biztonságos, nagy léptékű futtatása érdekében. Ennek köszönhetően a szolgáltatás képes a webalkalmazások, [mobilalkalmazások][mobileapps], API-alkalmazások és [függvények][Functions] üzemeltetésére.
+Az Azure App Service Environment egy Azure App Service-funkció, amely teljesen elkülönített és dedikált környezetet biztosít az App Service-alkalmazások biztonságos, nagy léptékű futtatásához. Ennek köszönhetően a szolgáltatás képes a webalkalmazások, [mobilalkalmazások][mobileapps], API-alkalmazások és [függvények][Functions] üzemeltetésére.
 
 Az App Service Environment (ASE) a következő igényekkel rendelkező összes alkalmazási számítási feladat elvégzésére használható:
 
@@ -43,7 +43,7 @@ Elkülönítettségük révén az ASE-k környezetek egyetlen ügyfél alkalmaz�
 
 ## <a name="dedicated-environment"></a>Dedikált környezet ##
 
-Az ASE kizárólag egyetlen előfizetéshez van dedikálva, és akár 100 példány üzemeltetésére is képes. A tartomány akár 100 példányt is magában foglalhat egyetlen App Service-csomag keretében, vagy 100 egypéldányos App Service-csomagot, illetve ezek között bármennyit.
+Az ASE kizárólag egyetlen előfizetéshez van dedikálva, és akár 100 App Service-csomagpéldány üzemeltetésére is képes. A tartomány akár 100 példányt is magában foglalhat egyetlen App Service-csomag keretében, vagy 100 egypéldányos App Service-csomagot, illetve ezek között bármennyit.
 
 Egy ASE előtérrendszerekből és feldolgozókból áll. Az előtérrendszerek a HTTP/HTTPS-végződtetésért, valamint az alkalmazáskérések egy ASE-n belüli automatikus terheléselosztásáért felelősek. Az előtérrendszerek az ASE App Service-csomagjainak felskálázásakor automatikusan hozzáadódnak.
 

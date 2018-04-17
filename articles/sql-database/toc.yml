@@ -48,14 +48,18 @@
       href: sql-database-design-first-database.md
     - name: 1 – Adatbázis tervezése a .NET használatával
       href: sql-database-design-first-database-csharp.md
-    - name: 2 – SQL Server-adatbázisba irányuló migrálás
+    - name: 2 – Migrálás SQL Server-adatbázisba DMS használatával
       href: sql-database-migrate-your-sql-server-database.md
     - name: 3 – Az SQL DB biztonságossá tétele
       href: sql-database-security-tutorial.md
     - name: 4 – Földrajzilag elosztott adatbázis implementálása
       href: sql-database-implement-geo-distributed-database.md
     - name: 5 – Felügyelt példány létrehozása
-      href: sql-database-managed-instance-tutorial-portal.md
+      href: sql-database-managed-instance-create-tutorial-portal.md
+    - name: 6 – Biztonsági másolat visszaállítása felügyelt példányra
+      href: sql-database-managed-instance-restore-from-backup-tutorial.md
+    - name: 7 – Migrálás felügyelt példányra DMS használatával
+      href: ../dms/tutorial-sql-server-to-managed-instance.md
 - name: Példák
   items:
     - name: Kódminták
@@ -410,6 +414,10 @@
               href: saas-tenancy-cross-tenant-reporting.md
             - name: ETL elemzéshez
               href: saas-tenancy-tenant-analytics.md
+            - name: Vészhelyreállítás georedundáns visszaállítással
+              href: saas-dbpertenant-dr-geo-restore.md
+            - name: Vészhelyreállítás adatbázis georeplikációjával
+              href: saas-dbpertenant-dr-geo-replication.md
         - name: Több-bérlős adatbázis
           items:
             - name: Mintaalkalmazás üzembe helyezése

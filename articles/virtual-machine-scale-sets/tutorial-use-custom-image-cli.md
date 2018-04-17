@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: dc1f9cbc87e058d3c925763a9204392791429db8
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b01ff98667523f498c06ba867e017f696059d120
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli-20"></a>Oktatóanyag: Egyéni rendszerkép létrehozása és használata virtuálisgép-méretezési csoportokhoz az Azure CLI 2.0-val
 Méretezési csoport létrehozása során meg kell adnia egy rendszerképet a virtuálisgép-példányok üzembe helyezésekor. Egyéni virtuálisgép-rendszerkép használatával csökkentheti a feladatok számát a virtuálisgép-példányok üzembe helyezése után. Ez az egyéni virtuálisgép-rendszerkép tartalmaz minden szükséges alkalmazástelepítést és -konfigurációt. A méretezési csoportban létrehozott összes virtuálisgép-példány az egyéni virtuálisgép-rendszerképet használja, és készen állnak az alkalmazás forgalmának kiszolgálására. Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -39,6 +39,10 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 
 ## <a name="create-and-configure-a-source-vm"></a>Forrás virtuális gép létrehozása és konfigurálása
+
+>[!NOTE]
+> Ez az oktatóanyag bemutatja az általánosított virtuálisgép-rendszerképek létrehozásának és használatának folyamatát. A méretezési csoportok speciális virtuálisgép-rendszerképekből való létrehozása nem támogatott.
+
 Először is hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create), majd egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. Ez a virtuális gép szolgál majd az egyéni virtuálisgép-rendszerkép forrásaként. A következő példában létrehozunk egy *myVM* nevű virtuális gépet a *myResourceGroup* nevű erőforráscsoportban:
 
 ```azurecli-interactive

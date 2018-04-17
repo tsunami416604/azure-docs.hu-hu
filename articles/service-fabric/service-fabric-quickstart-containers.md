@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/27/18
+ms.date: 04/03/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: eb4de9d7781ae355e42a6fec9f7732ad67228e70
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 47a4e75699e024dae367524f16eb23fb72043ef5
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-deploy-a-service-fabric-windows-container-application-on-azure"></a>Gyors útmutató: Windows-alapú Service Fabric-tároló üzembe helyezése az Azure-on
 Az Azure Service Fabric egy elosztott rendszerplatform, amely skálázható és megbízható mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál. 
@@ -28,12 +28,12 @@ A meglévő alkalmazások Service Fabric-fürtökön lévő Windows-tárolókban
 
 ![Az IIS alapértelmezett webhelye][iis-default]
 
-Ezen rövid útmutató segítségével megtanulhatja a következőket:
-> [!div class="checklist"]
-> * Docker-rendszerképtároló becsomagolása
-> * A kommunikáció konfigurálása
-> * Service Fabric-alkalmazás felépítése és becsomagolása
-> * A tárolóalkalmazás üzembe helyezése az Azure-on
+Ennek a rövid útmutatónak a segítségével megtanulhatja az alábbiakat:
+
+* Docker-rendszerképtároló becsomagolása
+* A kommunikáció konfigurálása
+* Service Fabric-alkalmazás felépítése és becsomagolása
+* A tárolóalkalmazás üzembe helyezése az Azure-on
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Azure-előfizetés (létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)).
@@ -210,16 +210,16 @@ Itt találja a jelen rövid útmutatóban használt teljes szolgáltatás- és a
 
 ## <a name="next-steps"></a>További lépések
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
-> [!div class="checklist"]
-> * Docker-rendszerképtároló becsomagolása
-> * A kommunikáció konfigurálása
-> * Service Fabric-alkalmazás felépítése és becsomagolása
-> * A tárolóalkalmazás üzembe helyezése az Azure-on
 
-* További információk a [tárolók futtatásáról a Service Fabricban](service-fabric-containers-overview.md).
-* Tekintse meg a [.NET-alkalmazás üzembe helyezését](service-fabric-host-app-in-a-container.md) ismertető oktatóanyagot.
-* További információk a Service Fabric [alkalmazásainak élettartamáról](service-fabric-application-lifecycle.md).
-* Tekintse meg [a Service Fabric-tárolók mintakódjait](https://github.com/Azure-Samples/service-fabric-containers) a GitHubon.
+* Docker-rendszerképtároló becsomagolása
+* A kommunikáció konfigurálása
+* Service Fabric-alkalmazás felépítése és becsomagolása
+* A tárolóalkalmazás üzembe helyezése az Azure-on
+
+Ha bővebb információra van szüksége a Windows-tárolók Service Fabricben való használatával kapcsolatban, lépjen tovább a Windows-tárolóalkalmazásokról szóló oktatóanyagra.
+
+> [!div class="nextstepaction"]
+> [Tárolóalkalmazás létrehozása Windowshoz](./service-fabric-host-app-in-a-container.md)
 
 [iis-default]: ./media/service-fabric-quickstart-containers/iis-default.png
 [publish-dialog]: ./media/service-fabric-quickstart-containers/publish-dialog.png

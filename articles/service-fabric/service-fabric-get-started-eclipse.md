@@ -1,11 +1,11 @@
 ---
-title: "Azure Service Fabric beépülő modul az Eclipse-hez | Microsoft Docs"
-description: "Bevezetés az Eclipse Service Fabric beépülő moduljának használatába."
+title: Azure Service Fabric beépülő modul az Eclipse-hez | Microsoft Docs
+description: Bevezetés az Eclipse Service Fabric beépülő moduljának használatába.
 services: service-fabric
 documentationcenter: java
 author: rapatchi
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
 ms.service: service-fabric
 ms.devlang: java
@@ -14,38 +14,43 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/21/2016
 ms.author: rapatchi
-ms.openlocfilehash: 291bbd35d6e3c89eb9568130ad144831452142ad
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: d415c3eb540056dc7ad6f1ab14fc8250903d6744
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Az Eclipse Service Fabric beépülő moduljának Java alkalmazásfejlesztése
-Az Eclipse a Java-fejlesztők által leggyakrabban használt integrált fejlesztőkörnyezetek (IDE-k) közé tartozik. Ebben a cikkben azt ismertetjük, hogyan állíthatja be az Eclipse fejlesztői környezetet az Azure Service Fabrickel való használathoz. Megtudhatja, hogyan telepítheti a Service Fabric beépülő modult, hogyan hozhat létre Service Fabric-alkalmazást, és hogyan helyezhet üzembe Service Fabric-alkalmazásokat helyi vagy távoli Service Fabric-fürtön az Eclipse Neonon. 
+Az Eclipse a Java-fejlesztők által leggyakrabban használt integrált fejlesztőkörnyezetek (IDE-k) közé tartozik. Ebben a cikkben azt ismertetjük, hogyan állíthatja be az Eclipse fejlesztői környezetet az Azure Service Fabrickel való használathoz. Megtudhatja, hogyan telepítheti a Service Fabric beépülő modult, hogyan hozhat létre Service Fabric-alkalmazást, és hogyan helyezhet üzembe Service Fabric-alkalmazásokat helyi vagy távoli Service Fabric-fürtön az Eclipse-ben. 
 
 > [!NOTE]
 > Az Eclipse beépülő modul jelenleg nem támogatott a Windows rendszeren. 
 
-## <a name="install-or-update-the-service-fabric-plug-in-in-eclipse-neon"></a>A Service Fabric beépülő modul telepítése vagy frissítése az Eclipse Neonon
+## <a name="install-or-update-the-service-fabric-plug-in-in-eclipse"></a>A Service Fabric beépülő modul telepítése vagy frissítése az Eclipse-ben
 Telepíthet egy Service Fabric beépülő modult az Eclipse-en. A beépülő modul segíthet leegyszerűsíteni a Java-szolgáltatások létrehozásának és üzembe helyezésének folyamatát.
 
-1.  Gondoskodjon róla, hogy az Eclipse Neon és a Buildship legújabb verziója (1.0.17-es vagy újabb) legyen telepítve:
-    -   A telepített összetevők verziójának ellenőrzéséhez az Eclipse Neonban lépjen a **Help** > **Installation Details** (Súgó, Telepítés részletei) területre.
-    -   A Buildship frissítéséért lásd: [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: Eclipse beépülő modulok a Gradle-hez).
-    -   Az Eclipse Neon frissítéseinek kereséséhez és telepítéséhez lépjen a **Help** > **Check for Updates** (Súgó, Frissítések keresése) területre.
+> [!IMPORTANT]
+> A Service Fabric beépülő modulhoz Eclipse Neon vagy újabb verzió szükséges. Az ezt a megjegyzést követő útmutatások segítségével ellenőrizheti az Eclipse verzióját. Ha az Eclipse egy korábbi verziója van telepítve, az [Eclipse webhelyéről](https://www.eclipse.org) tölthet le újabb verziót. Nem ajánlott az új verziót az Eclipse meglévő telepítésére telepíteni (azt felülírni). A meglévő verziót eltávolíthatja a telepítő futtatása előtt, vagy másik könyvtárba telepítheti az újabb verziót. 
+> 
+> Ubuntu rendszeren ajánlott közvetlenül az Eclipse webhelyéről elvégezni a telepítést csomagtelepítő helyett (`apt` vagy `apt-get`). Így biztosan az Eclipse legfrissebb verzióját fogja beszerezni. 
 
-2.  A Service Fabric beépülő modul telepítéséhez az Eclipse Neonban lépjen a **Help** > **Install New Software** (Súgó, Új szoftver telepítése) területre.
-  1.    A **Work with** mezőbe írja be a **http://dl.microsoft.com/eclipse** címet.
+1.  Győződjön meg róla, hogy az Eclipse Neon vagy újabb verzió és a Buildship legújabb verziója (1.0.17-es vagy újabb) van telepítve:
+    -   A telepített összetevők verziójának ellenőrzéséhez az Eclipse-ben lépjen a **Help** > **Installation Details** (Súgó > Telepítés részletei) területre.
+    -   A Buildship frissítéséért lásd: [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: Eclipse beépülő modulok a Gradle-hez).
+    -   Az Eclipse frissítéseinek kereséséhez és telepítéséhez lépjen a **Help** > **Check for Updates** (Súgó > Frissítések keresése) területre.
+
+2.  A Service Fabric beépülő modul telepítéséhez az Eclipse-ben lépjen a **Help** > **Install New Software** (Súgó > Új szoftver telepítése) területre.
+  1.    A **Work with** (Használat) mezőbe írja be a **http://dl.microsoft.com/eclipse** címet.
   2.    Kattintson a **Hozzáadás** parancsra.
 
-         ![Az Eclipse Neon Service Fabric beépülő modulja][sf-eclipse-plugin-install]
+         ![Az Eclipse Service Fabric beépülő modulja][sf-eclipse-plugin-install]
   3.    Válassza ki a Service Fabric beépülő modult, majd kattintson a **Next** (Tovább) gombra.
   4.    Végezze el a telepítés lépéseit, majd fogadja el a Microsoft szoftverlicenc-szerződését.
 
 Ha a Service Fabric beépülő modul már telepítve van, győződjön meg arról, hogy a legújabb verzióval rendelkezik. Az elérhető frissítések kereséséhez lépjen a **Help** > **Installation Details** (Súgó, Telepítés részletei) területre. A telepített beépülő modulok listájában válassza ki a Service Fabric elemet, majd kattintson az **Update** (Frissítés) parancsra. A rendszer telepíti az elérhető frissítéseket.
 
 > [!NOTE]
-> Ha a Service Fabric beépülő modul telepítése vagy frissítése túl lassú, azt az Eclipse valamelyik beállítása okozhatja. Az Eclipse metaadatokat gyűjt az Eclipse-példányhoz regisztrált frissítési helyek összes módosításáról. Ahhoz, hogy fel tudja gyorsítani a Service Fabric beépülő modul frissítéseinek keresési és telepítési folyamatát, lépjen az **Available Software Sites** (Elérhető szoftverhelyek) területre. Törölje az összes hely jelölőnégyzetét a Service Fabric beépülő modul helyére (http://dl.microsoft.com/eclipse/azure/servicefabric) mutató jelölőnégyzet kivételével.
+> Ha a Service Fabric beépülő modul telepítése vagy frissítése túl lassú, azt az Eclipse valamelyik beállítása okozhatja. Az Eclipse metaadatokat gyűjt az Eclipse-példányhoz regisztrált frissítési helyek összes módosításáról. Ahhoz, hogy fel tudja gyorsítani a Service Fabric beépülő modul frissítéseinek keresési és telepítési folyamatát, lépjen az **Available Software Sites** (Elérhető szoftverhelyek) területre. Törölje az összes hely jelölőnégyzetét a Service Fabric beépülő modul helyére (http://dl.microsoft.com/eclipse/azure/servicefabric)) mutató jelölőnégyzet kivételével.
 
 > [!NOTE]
 >Ha az Eclipse nem a várt módon működik a Mac gépén (vagy a futtatáshoz felügyelőként történő bejelentkezést ír elő), keresse meg az **ECLIPSE_INSTALLATION_PATH** mappa **Eclipse.app/Contents/MacOS** almappáját. Indítsa el az Eclipse-et az `./eclipse` futtatásával.
@@ -53,7 +58,7 @@ Ha a Service Fabric beépülő modul már telepítve van, győződjön meg arró
 
 ## <a name="create-a-service-fabric-application-in-eclipse"></a>Service Fabric-alkalmazás létrehozása az Eclipse-ben
 
-1.  Az Eclipse Neonban lépjen a **File** > **New** > **Other** (Fájl, Új, Egyéb) lehetőségre. Válassza a **Service Fabric Project** (Service Fabric-projekt) lehetőséget, majd kattintson a **Next** (Tovább) gombra.
+1.  Az Eclipse-ben lépjen a **File** > **New** > **Other** (Fájl > Új > Egyéb) lehetőségre. Válassza a **Service Fabric Project** (Service Fabric-projekt) lehetőséget, majd kattintson a **Next** (Tovább) gombra.
 
     ![Service Fabric – Új projekt, 1. oldal][create-application/p1]
 
@@ -142,7 +147,7 @@ Frissítési forgatókönyv esetén tegyük fel, hogy az **App1** projektet hozt
 
 Először végezzen módosítást az alkalmazáson, majd építse újra a módosított szolgáltatást. Frissítse a módosított szolgáltatás jegyzékfájlját (ServiceManifest.xml) a szolgáltatás frissített verzióival (és a megfelelő Code, Config vagy Data értékkel). Módosítsa az alkalmazás jegyzékfájlját is (ApplicationManifest.xml) az alkalmazás frissített verziószámával és a módosított szolgáltatással.  
 
-Ha az Eclipse Neonnal szeretné frissíteni az alkalmazást, létrehozhat egy duplikált futtatási konfigurációs profilt, amelyet aztán szükség szerint az alkalmazás frissítésére használhat.
+Ha az Eclipse-szel szeretné frissíteni az alkalmazást, létrehozhat egy duplikált futtatáskonfigurációs profilt, amelyet aztán szükség szerint az alkalmazás frissítésére használhat.
 
 1.  Lépjen a **Run** > **Run Configurations** (Futtatás, Konfigurációk futtatása) területre. A bal oldali ablaktáblában kattintson a **Gradle Project** (Gradle-projekt) bal oldalán található kis nyílra.
 2.  Kattintson a jobb gombbal a **ServiceFabricDeployer** elemre, majd válassza a **Duplicate** (Megkettőzés) parancsot. Adjon egy új nevet a konfigurációnak, például **ServiceFabricUpgrader**.

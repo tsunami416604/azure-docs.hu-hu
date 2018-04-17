@@ -14,14 +14,14 @@ ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 07/31/2017
+ms.date: 04/01/2018
 ms.author: jognanay
 ms.reviewer: douglasl
-ms.openlocfilehash: 31be6bc80b147e106066c064903c6eb9e1900e12
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 5f10bc981581de12b816a45a6c6d704c42024b67
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-powershell-to-sync-between-a-sql-database-and-a-sql-server-on-premises-database"></a>A PowerShell használata egy Azure-beli SQL Database-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz
 
@@ -395,7 +395,7 @@ További információ az SQL Data Syncről:
 -   [Több felhőalapú és helyszíni adatbázis közötti adatszinkronizálás az Azure SQL Data Synckel](../sql-database-sync-data.md)
 -   [Az Azure SQL Data Sync beállítása](../sql-database-get-started-sql-data-sync.md)
 -   [Ajánlott eljárások az Azure SQL Data Synchez](../sql-database-best-practices-data-sync.md)
--   [Az Azure SQL Data Sync monitorozása az OMS Log Analytics használatával](../sql-database-sync-monitor-oms.md)
+-   [Az Azure SQL Data Sync monitorozása a Log Analytics használatával](../sql-database-sync-monitor-oms.md)
 -   [Az Azure SQL Data Synckel hibaelhárítása](../sql-database-troubleshoot-data-sync.md)
 
 -   Teljes PowerShell-példák az SQL Data Sync konfigurálásáról:

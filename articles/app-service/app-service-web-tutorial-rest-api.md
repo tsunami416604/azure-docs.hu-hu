@@ -1,11 +1,11 @@
 ---
-title: "CORS-támogatással rendelkező RESTful API az Azure App Service-ben | Microsoft Docs"
-description: "Ismerje meg, hogyan üzemeltethet CORS-támogatással rendelkező RESTful API-kat az Azure App Service-ben."
+title: CORS-támogatással rendelkező RESTful API az Azure App Service-ben | Microsoft Docs
+description: Ismerje meg, hogyan üzemeltethet CORS-támogatással rendelkező RESTful API-kat az Azure App Service-ben.
 services: app-service\api
 documentationcenter: dotnet
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: a820e400-06af-4852-8627-12b3db4a8e70
 ms.service: app-service
 ms.workload: web
@@ -15,13 +15,13 @@ ms.topic: tutorial
 ms.date: 02/28/2018
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 7420e92bc929808f074e9be00dfbcb7d8476654a
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 4b5e432a9c553f5221f138b19a180f92420e6058
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="host-a-restful-api-with-cors-in-azure-app-service"></a>CORS-támogatással rendelkező RESTful API üzemeltetése az Azure App Service-ben
+# <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Oktatóanyag: CORS-támogatással rendelkező RESTful API üzemeltetése az Azure App Service-ben
 
 Az [Azure App Service](app-service-web-overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Továbbá az App Service beépített támogatást nyújt az [Eltérő eredetű erőforrások megosztásához (CORS)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) a RESTful API-k esetében. Ez az oktatóanyag bemutatja, hogyan telepíthető ASP.NET Core API-alkalmazás az App Service-ben CORS-támogatással. Az alkalmazást parancssori eszközökkel állíthatja be, és a Git használatával helyezheti üzembe. 
 
@@ -204,7 +204,7 @@ Az alábbiak elvégzését ismerte meg:
 > * RESTful API üzembe helyezése az Azure-ban a Git használatával
 > * Az App Service CORS-támogatásának engedélyezése
 
-Lépjen a következő oktatóanyaghoz, amelyből megtudhatja, hogyan képezhet le egyedi DNS-nevet a webalkalmazáshoz.
+A következő oktatóanyag a felhasználók hitelesítését és engedélyezését mutatja be.
 
 > [!div class="nextstepaction"]
-> [Meglévő egyéni DNS-név hozzákapcsolása az Azure-webalkalmazásokhoz](app-service-web-tutorial-custom-domain.md)
+> [Oktatóanyag: Felhasználók teljes körű hitelesítése és engedélyezése](app-service-web-tutorial-auth-aad.md)

@@ -1,6 +1,6 @@
 ---
 title: Belső terheléselosztó létrehozása és használata Azure App Service Environmenttel
-description: Részletes információk az internettől elzárt Azure App Service Environment létrehozásáról
+description: Részletes információk az internettől elzárt Azure App Service Environment létrehozásáról.
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 06/13/2017
+ms.date: 03/20/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 0d08d140ab338d8c742277835fdfb4316862f07b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 61a454ffb36865d4e1bc6b7ae5622fa4d4e85fd2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Belső terheléselosztó létrehozása és használata App Service Environmenttel #
 
@@ -63,7 +63,7 @@ Az ILB ASE létrehozása:
 
 4. Válasszon ki vagy hozzon létre egy virtuális hálózatot.
 
-5. Ha már létező virtuális hálózatot választ, létre kell hoznia egy alhálózatot az ASE környezethez. Gondoskodjon arról, hogy az alhálózat mérete elég nagy legyen az ASE jövőbeli növekedésének biztosítására. Mi a `/25` méretet javasoljuk, amely 128 címet tartalmaz, és képes kezelni egy maximális méretű ASE környezetet. A `/28` a kiválasztható legkisebb méret. Az infrastrukturális igényeket figyelembe véve ez a méret legfeljebb 11 példányra skálázható fel.
+5. Ha már létező virtuális hálózatot választ, létre kell hoznia egy alhálózatot az ASE környezethez. Gondoskodjon arról, hogy az alhálózat mérete elég nagy legyen az ASE jövőbeli növekedésének biztosítására. Mi a `/25` méretet javasoljuk, amely 128 címet tartalmaz, és képes kezelni egy maximális méretű ASE környezetet. A `/28` a kiválasztható legkisebb méret. Az infrastrukturális igényeket figyelembe véve ez a méret legfeljebb 3 példányra skálázható fel.
 
     * Az alapértelmezett maximális 100 példányszámot az App Service-csomagban emelheti meg.
 
@@ -81,7 +81,7 @@ Az ILB ASE létrehozása:
 
     * &lt;ase neve&gt;.p.azurewebsites.net
 
-   Az alkalmazásokhoz használt egyéni tartománynév és az ASE által használt egyéni tartománynév nem egyezhet meg. ILB ASE esetében a _contoso.com_ tartománynév használata esetén az alábbi egyéni tartományneveket nem használhatja alkalmazásaihoz:
+   Az egyéni tartománynevek szolgáltatás lehetővé teszi, hogy leképezzen egy meglévő DNS-nevet a webalkalmazásra. Erről a szolgáltatásról a [meglévő DNS-név webalkalmazásra történő leképezését ismertető][customdomain] dokumentumban olvashat. Az alkalmazásokhoz használt egyéni tartománynév és az ASE által használt egyéni tartománynév nem egyezhet meg. ILB ASE esetében a _contoso.com_ tartománynév használata esetén az alábbi egyéni tartományneveket nem használhatja alkalmazásaihoz:
 
     * www.contoso.com
 
@@ -250,3 +250,4 @@ Az ILB ASE WAF eszközhöz való konfigurálásáról további információkat a
 [Kudu]: http://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[customdomain]: ../app-service-web-tutorial-custom-domain.md

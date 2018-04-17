@@ -9,13 +9,13 @@ ms.service: virtual-network
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/26/2017
+ms.date: 04/3/2018
 ms.author: jonor
-ms.openlocfilehash: 7fcd8e12a7109218387788e47eddad48e72797bb
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 1aab466a06711a334df0584334e5229b33f57754
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="microsoft-azure-virtual-datacenter-a-network-perspective"></a>A Microsoft Azure virtuális Datacenter: Egy hálózati terv
 **A Microsoft Azure**: gyorsabb, költségtakarékosabb munkavégzésben, integrálása a helyszíni alkalmazások és adatok
@@ -97,7 +97,7 @@ Egy [ **Azure telephelyek közötti VPN** ] [ VPN] összekapcsolási szolgáltat
 ExpressRoute kapcsolatok foglal magában, amelyek révén az ExpressRoute-szolgáltatóhoz. A Testreszabás gyorsan igénylő ügyfelek azt általános kezdetben a telephelyek közötti VPN használatával a virtualizált tartományvezérlő közötti kapcsolatot létrehozni a és a helyszíni erőforrásokkal, majd utána áttelepíteni az ExpressRoute-kapcsolatot.
 
 ##### <a name="connectivity-within-the-cloud"></a>*Kapcsolat a felhőben*
-[Vnetek] [ VNet] és [Vnetben társviszony-létesítés] [ VNetPeering] belül egy virtualizált tartományvezérlő alapvető hálózati kapcsolat szolgáltatást. Egy VNet biztosítja, hogy a virtualizált tartományvezérlő erőforrások elkülönítési természetes határ, és Vnetben társviszony-létesítés lehetővé teszi, hogy a más Vnetekről belül az azonos Azure-régió közötti befolyásolása. Hozzáférés-vezérlési listái keresztül megadott biztonsági szabályok egyeznie kell a Vneten belül és között Vnetek forgalomirányítás ([hálózati biztonsági csoport][NSG]), [hálózati virtuális készülékek ] [ NVA], és egyéni útválasztási táblázataiba ([UDR][UDR]).
+[Vnetek] [ VNet] és [Vnetben társviszony-létesítés] [ VNetPeering] belül egy virtualizált tartományvezérlő alapvető hálózati kapcsolat szolgáltatást. Egy Vnetet biztosítja, hogy a virtualizált tartományvezérlő erőforrások elkülönítési természetes határ, és a Vnetben társviszony-létesítés lehetővé teszi, hogy a más Vnetekről belül az azonos Azure-régió, vagy akár keresztül régiók közötti befolyásolása. Hozzáférés-vezérlési listái keresztül megadott biztonsági szabályok egyeznie kell a Vneten belül és között Vnetek forgalomirányítás ([hálózati biztonsági csoport][NSG]), [hálózati virtuális készülékek ] [ NVA], és egyéni útválasztási táblázataiba ([UDR][UDR]).
 
 ## <a name="virtual-data-center-overview"></a>Virtuális adatközpont – áttekintés
 
@@ -124,7 +124,7 @@ Minden egyes küllős szerepe állomás munkaterhelések eltérő típusú lehet
 ##### <a name="subscription-limits-and-multiple-hubs"></a>Előfizetési korlátozásait és több hubok
 Azure-ban minden összetevő, függetlenül a típus van telepítve az Azure-előfizetéssel. Az Azure-előfizetések az Azure összetevők elkülönítési is felel meg a különböző LOB, például a hozzáférési és engedélyezési szinteket beállítása.
 
-Egyetlen vDC költenie nagyszámú küllők, bár, csakúgy, mint minden informatikai rendszer korlátai platformok vannak. A központi telepítési kötve van egy adott Azure-előfizetéshez, amelynek korlátozások és korlátozások (lásd például a Vnetben társviszony - maximális száma: [Azure-előfizetés és szolgáltatási korlátok, kvóták és megkötések] [ Limits] részletekért). Azokban az esetekben, ahol korlátokat lehet, hogy egy probléma, az architektúra méretezhető akár további kiterjesztésével a modell egyetlen hub-küllők a hub és küllők fürtre. Egy vagy több Azure-régiók több központok az Express Route vagy telephelyek közötti VPN használatával kell egymáshoz.
+Egyetlen vDC költenie nagyszámú küllők, bár, csakúgy, mint minden informatikai rendszer korlátai platformok vannak. A központi telepítési kötve van egy adott Azure-előfizetéshez, amelynek korlátozások és korlátozások (lásd például a Vnetben társviszony - maximális száma: [Azure-előfizetés és szolgáltatási korlátok, kvóták és megkötések] [ Limits] részletekért). Azokban az esetekben, ahol korlátokat lehet, hogy egy probléma, az architektúra méretezhető akár további kiterjesztésével a modell egyetlen hub-küllők a hub és küllők fürtre. Egy vagy több Azure-régiók több központok a Vnetben társviszony-létesítést, ExpressRoute vagy telephelyek közötti VPN használatával kell egymáshoz.
 
 [![2]][2]
 
@@ -191,10 +191,10 @@ Infrastruktúra-összetevőihez a következő funkciókat tartalmazza:
 -   [**Virtuális hálózati**][VPN]. Virtuális hálózatok a virtualizált tartományvezérlő fő összetevői, és lehetővé teszik a forgalom elkülönítése határ létrehozása az Azure platformon. Virtuális hálózat egy vagy több virtuális hálózati szegmensen, az egy adott IP-hálózati előtag (alhálózat) áll. A virtuális hálózat határozza meg egy belső szegélyhálózati területre, ahol IaaS virtuális gépek és PaaS szolgáltatások létesíthet a személyes kommunikációt. Virtuális gépek (és PaaS szolgáltatások) egy virtuális hálózat nem tud kommunikálni közvetlenül a virtuális gépek (és PaaS szolgáltatások) egy másik virtuális hálózatot, még akkor is, ha mindkét virtuális hálózatok jöttek létre az azonos ügyfél, az ugyanazon előfizetésben található. Elkülönítési kritikus tulajdonság, amely biztosítja a felhasználói virtuális gépeket, kommunikációs titkos virtuális hálózaton belül marad.
 -   [**UDR**][UDR]. Virtuális hálózati adatforgalom a rendszer útválasztási táblázat alapján alapértelmezés szerint történik. Felhasználó megadása útvonal egy egyéni útválasztási táblázat, amely a hálózati rendszergazdák társítható egy vagy több alhálózatból felülírja a rendszer útvonaltábla viselkedését, és meg a virtuális hálózaton belül a kommunikációs elérési utat. Udr-EK jelenléte biztosítja, hogy a kimenő forgalom a meghatározott egyéni virtuális gépek és/vagy a virtuális hálózati berendezések és a jelen, a központban és a küllők terheléselosztók küllős átmenő.
 -   [**NSG**][NSG]. Hálózati biztonsági csoport, amely a szűrést az IP-adatforrások, IP-cél, protokollok, IP-forrás portok és IP-cél portok forgalom összekötőként biztonsági szabályok listáját. Az NSG alhálózathoz, egy Azure virtuális Gépen, vagy mindkettőt társított virtuális hálózati kártya alkalmazhatók. Az NSG-k nélkülözhetetlenek a központban és a küllők megfelelő forgalomszabályozás végrehajtásához. Az NSG által biztosított biztonsági szintje, nyisson meg portokat, és milyen célból. További-a virtuális Gépenkénti szűrők például IPtables állomásalapú tűzfalaknak vagy a Windows tűzfal célszerű telepíteni.
--   **DNS**. A névfeloldás az erőforrásoknak a Vnetek egy virtualizált tartományvezérlő, DNS-en keresztül valósul meg. A virtuális hálózat névfeloldását a DNS alapértelmezett körének korlátozódik. Általában központban közös szolgáltatások részeként telepíteni kell egy egyéni DNS-szolgáltatás, de a DNS-szolgáltatások fő fogyasztóinak a küllős találhatók. Ha szükséges, az ügyfelek DNS hierarchikus tudja létrehozni a DNS-zónák a küllők delegálását.
+-   [**DNS**][DNS]. A névfeloldás az erőforrásoknak a Vnetek egy virtualizált tartományvezérlő, DNS-en keresztül valósul meg. Azure DNS-szolgáltatásokat is biztosít [nyilvános][DNS] és [titkos] [ PrivateDNS] nevek feloldása. Személyes zónák mind a virtuális hálózaton belül, és a virtuális hálózatok közötti névfeloldás biztosítása. Személyes zónák csak tartomány ugyanabban a régióban, hanem a régiókban és előfizetések virtuális hálózatok közötti lehet. A nyilvános feloldásához Azure DNS szolgáltatást biztosít a egy üzemeltetési DNS-tartományok biztosítani a névfeloldást a Microsoft Azure-infrastruktúra használatával. Ha tartományait az Azure-ban üzemelteti, DNS-rekordjait a többi Azure-szolgáltatáshoz is használt hitelesítő adatokkal, API-kkal, eszközökkel és számlázási információkkal kezelheti.
 -   [** Előfizetés] [ SubMgmt] és [erőforráscsoport felügyeleti][RGMgmt]**. Előfizetés az erőforrások több csoport létrehozása az Azure-ban a természetes határ határozza meg. Előfizetés az erőforrások erőforráscsoportok nevű logikai tárolókban lévő együtt tartanak. Az erőforráscsoport egy virtualizált tartományvezérlő erőforrások rendszerezéséhez logikai csoport jelöli.
 -   [**RBAC**][RBAC]. Szerepalapú, keresztül térkép szervezeti szerepkörhöz adott Azure-erőforrások, hogy lehetővé teszi a felhasználók korlátozása csak egy bizonyos részét műveletek hozzáférjenek együtt. Az RBAC a megfelelő szerepkör hozzárendelése a felhasználók, csoportok és alkalmazások megfelelő hatókörén belül szerint engedélyezheti a hozzáférést. Szerepkör-hozzárendelés hatóköre lehet az Azure-előfizetéssel, egy erőforráscsoport vagy egy erőforrást. Az RBAC lehetővé teszi, hogy az engedélyek öröklődése. A szülő hatókörben szerepkörrel is benne a gyermekek számára engedélyezi a hozzáférést. Az RBAC használata, elkülönítse a feladatokat, és csak olyan mértékű hozzáférést biztosítania a felhasználóknak a feladataik elvégzéséhez szükséges. Például, hogy egy előfizetésben található virtuális gépek kezeléséhez, miközben egy másik SQL-adatbázisok kezelhető egyazon előfizetésen belül egy alkalmazott RBAC használatát.
--   [**VNet-társviszony létesítése –**][VNetPeering]. Az alapvető egy virtualizált tartományvezérlő infrastruktúrája létrehozásához használt szolgáltatása Vnetben társviszony-létesítés, egy olyan mechanizmus, amely összeköti a két virtuális hálózatokról (Vnetekről) ugyanabban a régióban Azure adatközpont a hálózaton keresztül.
+-   [**VNet-társviszony létesítése –**][VNetPeering]. Az alapvető egy virtualizált tartományvezérlő infrastruktúrája létrehozásához használt szolgáltatása Vnetben társviszony-létesítést, egy olyan mechanizmus, amely összeköti a két virtuális hálózatokról (Vnetekről) és az Azure adatközpont-hálózat, illetve Azure világszerte gerincét használatával különböző régiókban ugyanabban a régióban.
 
 #### <a name="component-type-perimeter-networks"></a>Összetevő típusa: Szegélyhálózat
 [Szegélyhálózaton] [ DMZ] összetevők (más néven DMZ-hálózat), hogy adja meg a hálózati kapcsolat a helyszíni vagy a fizikai adatközpont-hálózatot, és az internetről érkező vagy oda irányuló kapcsolatok engedélyezése. Akkor is ahol a hálózati és biztonsági csoportok, valószínűleg a legmagasabbak az időt.
@@ -206,7 +206,7 @@ Külső hálózati összetevők az alábbi szolgáltatásokat biztosítja:
 -   [Virtuális hálózatok][VNet], [UDR][UDR], [NSG][NSG]
 -   [Virtuális hálózati készülékek][NVA]
 -   [Terheléselosztó][ALB]
--   [Application Gateway][AppGW] / [WAF][WAF]
+-   [Alkalmazásátjáró][AppGW] / [WAF][WAF]
 -   [Nyilvános IP-címek][PIP]
 
 Általában a központi IT és biztonsági csoportok követelmény definíciója és a szegélyhálózat működésére.
@@ -229,7 +229,7 @@ A tűzfal farmhoz csoport tűzfalak alatt található a küllők a munkaterhelé
 
 Javasoljuk, hogy az internetes forgalmat egy elosztott NVAs használja, és egy másik származó forgalmat a helyszíni. Biztonsági kockázatot jelent, csak egy NVAs használatával is, lehetővé teszi a hálózati forgalom két készlet között nincs biztonsági szegélyhálózati. Külön NVAs használata csökkenti a biztonsági szabályok keresése összetettségét, és törölje, mely szabályokat mely bejövő hálózati kérelem felelnek meg teszi.
 
-Most large enterprises manage multiple domains. Azure DNS can be used to host the DNS records for a particular domain. Példa a Virtual IP Address (VIP) az Azure külső terheléselosztó (vagy a WAFs) regisztrálni lehet az Azure DNS-rekord az A rekordot.
+A nagyobb vállalatok több tartományok kezelése. Az Azure DNS az egyes tartományokhoz tartozó DNS-rekordjait üzemeltetéséhez használható. Példa a Virtual IP Address (VIP) az Azure külső terheléselosztó (vagy a WAFs) regisztrálni lehet az Azure DNS-rekord az A rekordot.
 
 [**Az Azure terheléselosztó** ] [ ALB] Azure terheléselosztó kínál a magas rendelkezésre állású réteg 4 (TCP, UDP) szolgáltatást, amely egy elosztott terhelésű készlet definiált szolgáltatáspéldányok között bejövő forgalom elosztását. A terheléselosztó előtér-végpontok (nyilvános IP-végpontok vagy privát IP-végpontok) a küldött forgalmat szabadon terjeszthető, vagy anélkül címfordítás, hogy egy háttér-IP-címkészlet (példák folyamatban; Virtuális hálózati berendezések vagy virtuális gépeken).
 
@@ -243,6 +243,8 @@ Az Azure terheléselosztó is mintavétel, valamint a különböző kiszolgáló
 Figyelési összetevők látható, és az egyéb összetevők közül riasztás adja meg. Az összes csoport rendelkezzenek hozzáféréssel az a-összetevők figyelésének és szolgáltatások hozzáférhetnek. Ha egy központi súgó ügyfélszolgálat vagy a műveletek csapat, azokat kellene férhetnek hozzá az adatokhoz, ezek az összetevők által biztosított van integrálva.
 
 Naplózás és az Azure viselkedésének nyomon-szolgáltatások figyelésének különböző típusú Azure ajánlatok üzemeltetett erőforrásokhoz. Cégirányítási és vezérelhető a munkaterhelések az Azure-ban alapján csak a gyűjtését naplóadatokat, hanem az adott jelentésben szereplő események alapján műveleteket képes.
+
+[**Az Azure figyelő** ] [ Monitor] -Azure tartalmaz több szolgáltatást, amely külön-külön végrehajtani egy adott szerepkör vagy a feladatot a figyelés munkaterületen. Ezek a szolgáltatások együtt, egy átfogó megoldást nyújt az gyűjtése, elemzése és az alkalmazás és az őket támogató Azure-erőforrások telemetriai ható biztosításához. Ezek is működnek, ahhoz, hogy adja meg a figyelési környezet hibrid kritikus a helyszíni erőforrások figyelése. Az eszközök és a rendelkezésre álló adatok ismertetése első lépése az alkalmazás teljes felügyeleti stratégia kidolgozásában.
 
 A naplók az Azure-ban két fő típusa van:
 
@@ -259,9 +261,11 @@ A virtualizált tartományvezérlő, a rendkívül fontos nyomon követéséhez 
 
 Összes naplófájlt is tárolható Azure Storage-fiókok, a naplózási, statikus elemzési vagy a biztonsági másolat létrehozása céljából. A naplók az Azure storage-fiókok vannak tárolva, amikor az ügyfelek segítségével keretrendszerek különböző típusú beolvasni, előkészítése, elemzése, és ezen adatok jelenti az állapot és a felhőben lévő erőforrások állapotának megjelenítése.
 
-A nagyobb vállalatok szabványos keretrendszere, amely a helyszíni rendszerek figyelése már szerezték, és kiterjesztheti a keretrendszer integrálható a felhőalapú telepítések által létrehozott naplók. Olyan szervezeteknek, amelyek a naplózási tartani a felhőben [Naplóelemzési] [ LogAnalytics] kiváló választás. Naplóelemzési felhőalapú szolgáltatásként valósul meg, mert akkor is, működik, és gyorsan az infrastruktúra-szolgáltatásokat a minimális befektetési. A Naplóelemzési is integrálható a System Center-összetevők, például a System Center Operations Manager kiterjesztése a meglévő felügyeleti beruházások kiterjeszti a felhőbe.
+A nagyobb vállalatok szabványos keretrendszere, amely a helyszíni rendszerek figyelése már szerezték, és kiterjesztheti a keretrendszer integrálható a felhőalapú telepítések által létrehozott naplók. A szervezeteknek, amelyek szeretné megőrizni a naplózás a felhőben, [Log Analyticshez] [LogAnalytics] kiváló választás. Naplóelemzési felhőalapú szolgáltatásként valósul meg, mert akkor is, működik, és gyorsan az infrastruktúra-szolgáltatásokat a minimális befektetési. A Naplóelemzési is integrálható a System Center-összetevők, például a System Center Operations Manager kiterjesztése a meglévő felügyeleti beruházások kiterjeszti a felhőbe.
 
 A Naplóelemzési egy olyan szolgáltatás, amely segít gyűjtése, összefüggéseket, keresése és operációs rendszerek, alkalmazások és a felhő infrastruktúra-összetevőihez által létrehozott napló és a teljesítmény adatok intézkedjen Azure-ban. Az ügyfelek biztosít az integrált keresés és az egyéni irányítópultok a rekordok elemezni egy virtualizált tartományvezérlő a munkaterhelés, a valós idejű operational insights szolgáltatással.
+
+A [hálózati teljesítmény figyelése (NPM)] [ NPM] belül OMS megoldást biztosít részletes hálózati információkat-végpontok közötti, beleértve az Azure-hálózatok és a helyszíni hálózatokban egyetlen nézetben. Az ExpressRoute- és nyilvános szolgáltatások adott figyeli.
 
 #### <a name="component-type-workloads"></a>Összetevő típusa: munkaterhelések
 Munkaterhelés-összetevők, ahol a tényleges alkalmazásokhoz és szolgáltatásokhoz találhatók. Akkor is ahol az alkalmazást a fejlesztési csapat legmagasabbak az időt.
@@ -276,7 +280,7 @@ Az üzletági alkalmazások a folyamatban lévő műveletet, a vállalatok kriti
 -   **Adatalapú**. LOB-alkalmazások olyan intenzív a gyakori hozzáférést az adatbázisok vagy egyéb tárolási adatok.
 -   **Integrált**. LOB-alkalmazások ajánlat integrációs belül vagy kívül a szervezet más rendszerekkel.
 
-**Ügyfelek által használt (Internet vagy belső hozzáférhető) webhelyek** az internetes legtöbb alkalmazásokat olyan webhelyek. Azure lehetőséget nyújt a futtatásához egy webhely, az infrastruktúra-szolgáltatási virtuális gép vagy a egy [Azure Web Apps] [ WebApps] hely (PaaS). Az Azure Web Apps támogatja a Vneteket, mely lehetővé teszi a webalkalmazások telepítését az egy virtualizált tartományvezérlő küllős integrálását. Az virtuális integráció nem kell tenni az alkalmazások Internet végpont, de is inkább az erőforrások titkos nem internetes irányítható címeit a titkos virtuális hálózat.
+**Ügyfelek által használt (Internet vagy belső hozzáférhető) webhelyek** az internetes legtöbb alkalmazásokat olyan webhelyek. Azure lehetőséget nyújt a futtatásához egy webhely, az infrastruktúra-szolgáltatási virtuális gép vagy a egy [Azure Web Apps] [ WebApps] hely (PaaS). Az Azure Web Apps támogatja a Vneteket, mely lehetővé teszi a webalkalmazások telepítését az egy virtualizált tartományvezérlő küllős integrálását. Belső irányuló webhelyekhez, a virtuális integráció, ha nem kell tenni az alkalmazások Internet végpont, de is használja helyette az erőforrások nem internetes irányítható magáncímeket a személyes vnet keresztül.
 
 **A big Data/Analytics** Ha adatokat növelheti a nagyon nagy, adatbázisok előfordulhat, hogy nem vertikális felskálázás megfelelően. Hadoop technológia kínál az elosztott lekérdezések csomópontok nagy száma párhuzamos futhat a rendszer. Az ügyfelek data-számítási feladatok futtatását IaaS virtuális gépeket vagy PaaS lehetőség van ([HDInsight][HDI]). HDInsight támogatja az olyan a helyalapú Vneten üzembe, a fürt egy küllős, a virtualizált tartományvezérlő is telepíthető.
 
@@ -308,11 +312,12 @@ A vész-helyreállítási terv végrehajtásának erősen kapcsolódó érintett
 
 Szinkronizálás vagy szívverésfigyelés különböző vDCs alkalmazásai igényel a köztük folyó kommunikációt. Két, különböző régiókban vDCs keresztül csatlakozhat:
 
+-   Vnetben Társviszony - Vnetben társviszony-létesítés kapcsolódhatnak hubok régiók között
 -   Az ExpressRoute magánhálózati társviszony-létesítés a virtualizált tartományvezérlő hubok csatlakoztatott ExpressRoute-kapcsolatcsoportot
 -   több ExpressRoute-Kapcsolatcsoportok keresztül a vállalati gerincét csatlakoztatva, és a virtualizált tartományvezérlő háló kapcsolódik az ExpressRoute-Kapcsolatcsoportok
 -   A virtualizált tartományvezérlő hubok minden Azure-régióban közötti pont-pont VPN-kapcsolatok
 
-Általában az ExpressRoute-kapcsolat esetén az előnyben részesített mechanizmus nagyobb sávszélességet és egységes késés miatt a Microsoft gerincét áthaladó.
+Általában Vnetben társviszony-létesítés vagy ExpressRoute-kapcsolatok esetén az előnyben részesített mechanizmus nagyobb sávszélességet és egységes késés miatt a Microsoft gerincét áthaladó.
 
 Nincs nincs magic módszereivel különböző régiókban található két (vagy több) különböző vDCs között elosztott alkalmazás érvényesítéséhez. Az ügyfelek hálózati minősítési tesztek ellenőrzése a késés és a sávszélesség a kapcsolatok és a célkiszolgáló megfelelő-e adatok szinkron vagy aszinkron replikáció, és mi az optimális helyreállítási idő célkitűzése (RTO) is lehet a munkaterhelések kell futtatnia.
 
@@ -330,11 +335,11 @@ A következő funkciókat a dokumentumban ismertetett volt. További hivatkozás
 | | | |
 |-|-|-|
 |Hálózati szolgáltatások|Terheléselosztás|Kapcsolatok|
-|[Egy Azure virtuális hálózatot][VNet]</br>[Hálózati biztonsági csoportok][NSG]</br>[NSG-naplók][NSGLog]</br>[Felhasználó által definiált Útválasztás][UDR]</br>[Virtuális hálózati készülékek][NVA]</br>[Nyilvános IP-címek][PIP]|[Azure Load Balancer (3.) ][ALB]</br>[Az Alkalmazásátjáró (7.) ][AppGW]</br>[Webalkalmazási tűzfal][WAF]</br>[Az Azure Traffic Manager][TM] |[VNet-társviszony létesítése –][VNetPeering]</br>[Virtuális magánhálózat][VPN]</br>[ExpressRoute][ExR]
+|[Egy Azure virtuális hálózatot][VNet]</br>[Hálózati biztonsági csoportok][NSG]</br>[NSG-naplók][NSGLog]</br>[Felhasználó által definiált Útválasztás][UDR]</br>[Virtuális hálózati készülékek][NVA]</br>[Nyilvános IP-címek][PIP]</br>[DNS]|[Azure Load Balancer (3.) ][ALB]</br>[Az Alkalmazásátjáró (7.) ][AppGW]</br>[Webalkalmazási tűzfal][WAF]</br>[Az Azure Traffic Manager][TM] |[VNet-társviszony létesítése –][VNetPeering]</br>[Virtuális magánhálózat][VPN]</br>[ExpressRoute][ExR]
 |Identitás</br>|Figyelés</br>|Ajánlott eljárások</br>|
-|[Azure Active Directory][AAD]</br>[Többtényezős hitelesítés][MFA]</br>[Szerepkör alap hozzáférés-vezérlést][RBAC]</br>[Alapértelmezett AAD-szerepkörök][Roles] |[Tevékenység-naplók][ActLog]</br>[Diagnosztikai naplók][DiagLog]</br>[A Naplóelemzési][LogAnalytics]</br> |[Külső hálózatok gyakorlati tanácsok][DMZ]</br>[Előfizetés-kezelés][SubMgmt]</br>[Erőforrás-csoportok kezelése][RGMgmt]</br>[Azure-előfizetésre vonatkozó korlátok][Limits] |
+|[Azure Active Directory][AAD]</br>[Többtényezős hitelesítés][MFA]</br>[Szerepkör alap hozzáférés-vezérlést][RBAC]</br>[Alapértelmezett AAD-szerepkörök][Roles] |[Az Azure-figyelő][Monitor]</br>[Tevékenység-naplók][ActLog]</br>[Diagnosztikai naplók][DiagLog]</br>[A Microsoft Operations Management Suite szolgáltatásban][OMS]</br>[Hálózati teljesítmény figyelése][NPM]|[Külső hálózatok gyakorlati tanácsok][DMZ]</br>[Előfizetés-kezelés][SubMgmt]</br>[Erőforrás-csoportok kezelése][RGMgmt]</br>[Azure-előfizetésre vonatkozó korlátok][Limits] |
 |Más Azure-szolgáltatásokkal|
-|[Azure Web Apps][WebApps]</br>[HDInsights (Hadoop) ][HDI]</br>[Event Hubs][EventHubs]</br>[Szolgáltatásbusz][ServiceBus]|
+|[Azure-webalkalmazásokban][WebApps]</br>[HDInsights (Hadoop) ][HDI]</br>[Event Hubs][EventHubs]</br>[Szolgáltatásbusz][ServiceBus]|
 
 
 
@@ -358,12 +363,14 @@ A következő funkciókat a dokumentumban ismertetett volt. További hivatkozás
 
 <!--Link References-->
 [Limits]: https://docs.microsoft.com/azure/azure-subscription-service-limits
-[Roles]: https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles
+[Roles]: https://docs.microsoft.com/azure/role-based-access-control/built-in-roles
 [VNet]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview
-[NSG]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg 
+[NSG]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg
+[DNS]: https://docs.microsoft.com/azure/dns/dns-overview
+[PrivateDNS]: https://docs.microsoft.com/azure/dns/private-dns-overview
 [VNetPeering]: https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview 
 [UDR]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview 
-[RBAC]: https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is
+[RBAC]: https://docs.microsoft.com/azure/role-based-access-control/overview
 [MFA]: https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication
 [AAD]: https://docs.microsoft.com/azure/active-directory/active-directory-whatis
 [VPN]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways 
@@ -376,10 +383,12 @@ A következő funkciókat a dokumentumban ismertetett volt. További hivatkozás
 [PIP]: https://docs.microsoft.com/azure/virtual-network/resource-groups-networking#public-ip-address
 [AppGW]: https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction
 [WAF]: https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview
+[Monitor]: https://docs.microsoft.com/azure/monitoring-and-diagnostics/
 [ActLog]: https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs 
 [DiagLog]: https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs
 [NSGLog]: https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log
-[LogAnalytics]: https://docs.microsoft.com/azure/log-analytics/log-analytics-overview
+[OMS]: https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview
+[NPM]: https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor
 [WebApps]: https://docs.microsoft.com/azure/app-service/
 [HDI]: https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-introduction
 [EventHubs]: https://docs.microsoft.com/azure/event-hubs/event-hubs-what-is-event-hubs 

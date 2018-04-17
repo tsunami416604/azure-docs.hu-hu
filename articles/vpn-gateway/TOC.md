@@ -25,32 +25,25 @@
 ### [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 ### [Azure PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 ### [Azure CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
-### [(Klasszikus) Azure Portal](vpn-gateway-howto-site-to-site-classic-portal.md)
-
 ## [VPN-eszközök konfigurációs szkriptjeinek letöltése](vpn-gateway-download-vpndevicescript.md)
-
 ## Pont–hely kapcsolatok konfigurálása – hitelesítés natív Azure-tanúsítvánnyal
 ### Pont–hely VPN-kapcsolat konfigurálása
 #### [Azure Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 #### [Azure PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
-#### [(Klasszikus) Azure Portal](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
 ### Önaláírt tanúsítványok létrehozása
 #### [Azure PowerShell](vpn-gateway-certificates-point-to-site.md)
 #### [Makecert](vpn-gateway-certificates-point-to-site-makecert.md)
 ### [A VPN-ügyfél konfigurációs fájljainak létrehozása és telepítése](point-to-site-vpn-client-configuration-azure-cert.md)
 ### [Ügyféltanúsítványok telepítése](point-to-site-how-to-vpn-client-install-azure-cert.md)
-
 ## Pont–hely kapcsolatok konfigurálása – RADIUS hitelesítés
 ### Pont–hely VPN-kapcsolat konfigurálása
 #### [Azure PowerShell](point-to-site-how-to-radius-ps.md)
 ### [A VPN-ügyfél konfigurációs fájljainak létrehozása és telepítése](point-to-site-vpn-client-configuration-radius.md)
 ### [P2S VPN RADIUS-hitelesítés integrálása az NPS-kiszolgálóval](vpn-gateway-radiuis-mfa-nsp.md)
-
 ## Virtuális hálózatok közötti kapcsolatok konfigurálása
 ### [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 ### [Azure PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 ### [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
-### [(Klasszikus) Azure Portal](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 ## Virtuális hálózatok közötti kapcsolat konfigurálása üzemi modellek között
 ### [Azure Portal](vpn-gateway-connect-different-deployment-models-portal.md)
 ### [Azure PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
@@ -58,7 +51,6 @@
 ### [Azure PowerShell](../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 ## Több helyek közötti kapcsolat konfigurálása
 ### [Azure Portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
-### [Azure PowerShell (klasszikus)](vpn-gateway-multi-site.md)
 ## Több házirendalapú VPN-eszköz csatlakoztatása
 ### [Azure PowerShell](vpn-gateway-connect-multiple-policybased-rm-ps.md)
 ## IPsec/IKE kapcsolati házirendjeinek konfigurálása
@@ -70,7 +62,6 @@
 ### [Azure CLI](bgp-how-to-cli.md)
 ## Kényszerített bújtatás konfigurálása
 ### [Azure PowerShell](vpn-gateway-forced-tunneling-rm.md)
-### [Azure PowerShell (klasszikus)](vpn-gateway-about-forced-tunneling.md)
 ## Helyi hálózati átjáró beállításainak módosítása
 ### [Azure Portal](vpn-gateway-modify-local-network-gateway-portal.md)
 ### [Azure PowerShell](vpn-gateway-modify-local-network-gateway.md)
@@ -80,13 +71,10 @@
 ## VPN Gateway törlése
 ### [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
 ### [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-### [Azure PowerShell (klasszikus)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-## [VPN-átjáró konfigurálása (klasszikus)](vpn-gateway-configure-vpn-gateway-mp.md)
 ## [Átjáró-termékváltozatok (örökölt)](vpn-gateway-about-skus-legacy.md)
 ## Külső VPN-eszközök konfigurálása
 ### [Áttekintés és Azure-konfiguráció](vpn-gateway-3rdparty-device-config-overview.md)
 ### [Minta: Cisco ASA-eszköz (IKEv2/nincs BGP)](vpn-gateway-3rdparty-device-config-cisco-asa.md)
-## [Áttelepítés klasszikusról Resource Manager-alapú környezetbe](vpn-gateway-classic-resource-manager-migration.md)
 ## [Hibaelhárítás](vpn-gateway-troubleshoot.md)
 ### [Közösség által javasolt VPN- vagy tűzfaleszköz-beállítások](vpn-gateway-third-party-settings.md)
 ### [VNet- vagy VPN-kapcsolatok konfigurálása és érvényesítése](https://support.microsoft.com/help/4032151/configuring-and-validating-vnet-or-vpn-connections)
@@ -98,6 +86,15 @@
 #### [Helyek közötti kapcsolati problémák](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md)
 #### [A helyek közötti kapcsolat időnként megszakad](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
 
+## Klasszikus üzemi modellhez kapcsolódó cikkek
+### [Helyek közötti kapcsolat konfigurálása](vpn-gateway-howto-site-to-site-classic-portal.md)
+### [Pont–hely kapcsolat konfigurálása](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
+### [Virtuális hálózatok közötti kapcsolat konfigurálása](vpn-gateway-howto-vnet-vnet-portal-classic.md)
+### [Kényszerített bújtatás konfigurálása](vpn-gateway-about-forced-tunneling.md)
+### [VPN Gateway törlése](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+### [Több helyek közötti kapcsolat konfigurálása](vpn-gateway-multi-site.md)
+### [VPN-átjáró konfigurálása](vpn-gateway-configure-vpn-gateway-mp.md)
+### [Áttelepítés klasszikusról Resource Manager-alapú környezetbe](vpn-gateway-classic-resource-manager-migration.md)
 
 # Referencia
 ## [Azure PowerShell](/powershell/module/azurerm.network/?view=azurermps-4.0.0#vpn)

@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 06/14/2017
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 698f23507da0707a4612f8d33fe7e2995429f361
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 91f6fd077146e94833a5527f03ac710352e4fd9c
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>ASP.NET Core-webalkalmazás létrehozása az Azure-ban
 
@@ -44,6 +44,8 @@ Az oktatóanyag elvégzéséhez:
     - **Azure-fejlesztés**
 
     ![ASP.NET és webfejlesztés és Azure-fejlesztés (Web és felhőszolgáltatások alatt)](media/app-service-web-tutorial-dotnet-sqldatabase/workloads.png)
+
+Ha már telepítette a Visual Studiót, adja hozzá a számítási feladatokat a Visual Studióban a **Tools** (Eszközök)  >  **Get Tools and Features** (Eszközök és funkciók beszerzése) elemre kattintva.
 
 ## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core-webalkalmazás létrehozása
 

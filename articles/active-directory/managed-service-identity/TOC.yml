@@ -1,6 +1,14 @@
 - name: Felügyeltszolgáltatás-identitás
   href: overview.md
   items:
+    - name: Gyors útmutatók
+      items:
+        - name: Virtuális gép MSI használata az Azure Resource Manager eléréséhez
+          items:
+            - name: Windows rendszerű virtuális gép
+              href: tutorial-windows-vm-access-arm.md
+            - name: Linux rendszerű virtuális gép
+              href: tutorial-linux-vm-access-arm.md
     - name: Az MSI konfigurálása Azure-beli virtuális géphez
       items:
         - name: Az Azure Portal használata
@@ -41,8 +49,6 @@
       items:
         - name: Az Azure Data Lake Store elérése
           href: tutorial-windows-vm-access-datalake.md
-        - name: Az Azure Resource Manager elérése
-          href: tutorial-windows-vm-access-arm.md
         - name: Az Azure SQL elérése
           href: tutorial-windows-vm-access-sql.md
         - name: Az Azure Storage elérése hozzáférési kulcs használatával
@@ -55,14 +61,14 @@
       items:
         - name: Az Azure Data Lake Store elérése
           href: tutorial-linux-vm-access-datalake.md
-        - name: Az Azure Resource Manager elérése
-          href: tutorial-linux-vm-access-arm.md
         - name: Az Azure Storage elérése hozzáférési kulcs használatával
           href: tutorial-linux-vm-access-storage.md
         - name: Az Azure Storage elérése SAS-sel
           href: tutorial-linux-vm-access-storage-sas.md
         - name: Az Azure Key Vault elérése
           href: tutorial-linux-vm-access-nonaad.md
+        - name: Az Azure Cosmos DB elérése
+          href: tutorial-linux-vm-access-cosmos-db.md
     - name: Gyakori kérdések és ismert problémák
       href: known-issues.md
     - name: Referencia

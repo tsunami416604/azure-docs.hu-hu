@@ -30,7 +30,7 @@
       href: storage-quickstart-blobs-ruby.md
     - name: Blobok használata – Node.js
       href: storage-quickstart-blobs-nodejs.md
-    - name: Blobok használata – JavaScript/HTML
+    - name: Blobok használata – JS/HTML
       href: storage-quickstart-blobs-javascript-client-libraries.md
     - name: Blobok használata – PHP
       href: storage-quickstart-blobs-php.md

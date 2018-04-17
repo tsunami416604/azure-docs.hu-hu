@@ -1,17 +1,17 @@
 ---
-title: "Helyszíni VMware virtuális gépek felderítése és kiértékelése az Azure-ba való migráláshoz az Azure Migrate segítségével | Microsoft Docs"
-description: "Ismerteti, hogyan derítheti fel és értékelheti ki a helyszíni VMware virtuális gépeket az Azure-ba való migráláshoz az Azure Migrate szolgáltatással."
+title: Helyszíni VMware virtuális gépek felderítése és kiértékelése az Azure-ba való migráláshoz az Azure Migrate segítségével | Microsoft Docs
+description: Ismerteti, hogyan derítheti fel és értékelheti ki a helyszíni VMware virtuális gépeket az Azure-ba való migráláshoz az Azure Migrate szolgáltatással.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 02/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: bbd08637894c43c543aeb8236f515e5ed9c5fc19
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: d70b4ea2d45c38fa53ab3c00f76c00ef6f3d7663
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Helyszíni VMware virtuális gépek felderítése és kiértékelése az Azure-ba való migráláshoz
 
@@ -84,7 +84,15 @@ A telepítése előtt ellenőrizze, hogy az .OVA-fájl biztonságos-e.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Gyakorlati példa: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 3. A létrehozott kivonatnak egyeznie kell ezekkel a beállításokkal.
+    
+    Az OVA 1.0.9.7-es verziója esetében
 
+    **Algoritmus** | **Kivonat értéke**
+    --- | ---
+    MD5 | d5b6a03701203ff556fa78694d6d7c35
+    SHA1 | f039feaa10dccd811c3d22d9a59fb83d0b01151e
+    SHA256 | e5e997c003e29036f62bf3fdce96acd4a271799211a84b34b35dfd290e9bea9c
+    
     Az OVA 1.0.9.5-ös verziója esetében
 
     **Algoritmus** | **Kivonat értéke**
@@ -151,7 +159,7 @@ Importálja a letöltött fájlt a vCenter Serverre.
     - Ha a virtuális gép proxykiszolgálón keresztül éri el az internetet, kattintson a **Proxy settings** (Proxybeállítások) gombra, és adja meg a proxykiszolgáló címét és a figyelőportot. Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel.
 
     > [!NOTE]
-    > A proxykiszolgáló címét a http://ProxyIPcíme vagy a http://Proxyteljestartományneve formátumban kell megadni. Csak a HTTP-proxyk használata támogatott.
+    > A proxykiszolgáló címét http://ProxyIPAddress vagy http://ProxyFQDN formátumban kell megadni. Csak a HTTP-proxyk használata támogatott.
 
     - A gyűjtő ellenőrzi, hogy fut-e a gyűjtőszolgáltatás. A szolgáltatás alapértelmezés szerint telepítve van a gyűjtő virtuális gépen.
     - Töltse le és telepítse a VMware PowerCLI-t.

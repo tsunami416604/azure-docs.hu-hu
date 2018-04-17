@@ -1,11 +1,11 @@
 ---
-title: "Útmutató a Security Center tervezéséhez és működtetéséhez | Microsoft Docs"
-description: "Ez a dokumentum segít az Azure Security Center bevezetése előtti tervezésben, valamint megismerteti a napi műveletekhez tartozó szempontokkal."
+title: Útmutató a Security Center tervezéséhez és működtetéséhez | Microsoft Docs
+description: Ez a dokumentum segít az Azure Security Center bevezetése előtti tervezésben, valamint megismerteti a napi műveletekhez tartozó szempontokkal.
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: f984e4a2-ac97-40bf-b281-2f7f473494c4
 ms.service: security-center
 ms.topic: hero-article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/02/2018
 ms.author: yurid
-ms.openlocfilehash: 8a44542091ea4dddc214a4954766c63dacd3e2a2
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: e07e6792c74e1bdb5c5839e8c6bd9efbedf10170
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Útmutató az Azure Security Center tervezéséhez és működtetéséhez
 Ez az útmutató olyan informatikusok, megoldástervezők, adatbiztonsági elemzők és felhőszolgáltatás-rendszergazdák számára készült, akik az Azure Security Center egész vállalatra kiterjedő bevezetését tervezik.
@@ -138,7 +138,7 @@ A Security Center automatikusan létrehoz egy alapértelmezett biztonsági szab�
 A biztonsági szabályzatok konfigurálása előtt mindig olvassa el a [biztonsági javaslatokat](https://docs.microsoft.com/azure/security-center/security-center-recommendations), és döntse el, hogy ezek a szabályzatok megfelelőek-e az Ön által használt előfizetésekhez és erőforráscsoportokhoz. Ezenkívül fontos, hogy tisztában legyen azzal, milyen lépéseket kell tennie a biztonsági javaslatok kezelése érdekében, és a szervezeténél ki az új javaslatok monitorozásának és a szükséges lépések megtételének a felelőse.
 
 ## <a name="data-collection-and-storage"></a>Adatgyűjtés és -tárolás
-Az Azure Security Center a Microsoft Monitoring Agentet használja – ez ugyanaz az ügynök, mint amelyet az Operations Management Suite és a Log Analytics is használ – a biztonsági adatok gyűjtésére a virtuális gépekről. Az ebből az ügynökből [gyűjtött adatokat](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) a rendszer a Log Analytics munkaterület(ek)en tárolja.
+Az Azure Security Center a Microsoft Monitoring Agentet használja – ez ugyanaz az ügynök, mint amelyet a Log Analytics szolgáltatás is használ – a biztonsági adatok gyűjtésére a virtuális gépekről. Az ebből az ügynökből [gyűjtött adatokat](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) a rendszer a Log Analytics munkaterület(ek)en tárolja.
 
 ### <a name="agent"></a>Ügynök
 

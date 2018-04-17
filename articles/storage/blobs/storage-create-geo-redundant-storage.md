@@ -7,14 +7,14 @@ manager: jeconnoc
 ms.service: storage
 ms.workload: web
 ms.topic: tutorial
-ms.date: 02/20/2018
+ms.date: 03/26/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 6226fea5001d19a6f0e1f6700d90ea2b9481d43c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 86fb0ae7c9ee5a2856c81603a4e08ae7016b022f
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="make-your-application-data-highly-available-with-azure-storage"></a>Az alkalmazásadatok magas rendelkezésre állásának biztosítása az Azure Storage használatával
 
@@ -45,6 +45,11 @@ Az oktatóanyag elvégzéséhez:
 * Telepítse a [Pythont](https://www.python.org/downloads/).
 * A [Pythonhoz készült Azure Storage SDK](https://github.com/Azure/azure-storage-python) letöltése és telepítése
 * (Választható) A [Fiddler](https://www.telerik.com/download/fiddler) letöltése és telepítése
+
+# <a name="java-tabjava"></a>[Java] (#tab/java)
+
+* A [Maven](http://maven.apache.org/download.cgi) telepítése, és konfigurálása a parancssorból való működésre
+* [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) telepítése és konfigurálása
 
 ---
 
@@ -95,6 +100,13 @@ git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-patter
 ```bash
 git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
+
+# <a name="java-tabjava"></a>[Java] (#tab/java)
+[Töltse le a mintaprojektet](https://github.com/Azure-Samples/storage-java-ha-ra-grs), és bontsa ki a storage-java-ragrs.zip fájlt. A [git](https://git-scm.com/) használatával is letöltheti az alkalmazás egy másolatát a fejlesztői környezetbe. A mintaprojekt tartalmaz egy egyszerű Java-alkalmazást.
+
+```bash
+git clone https://github.com/Azure-Samples/storage-java-ha-ra-grs.git
+```
 ---
 
 
@@ -135,15 +147,20 @@ A Storage-objektum újrapróbálkozási függvénye lineáris újrapróbálkozá
  
 A letöltés előtt meg kell határozni a Service objektum [retry_callback](https://docs.microsoft.com/en-us/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) és [response_callback](https://docs.microsoft.com/en-us/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) függvényét. Ezek a függvények határozzák meg az eseménykezelőket, amelyek a letöltés sikeres befejezésekor vagy a sikertelen letöltés utáni újrapróbálkozásokkal aktiválódnak.  
 
+# <a name="java-tabjava"></a>[Java] (#tab/java)
+Az alkalmazás futtatásához nyisson meg egy terminált vagy parancssort, amelynek hatóköre a letöltött alkalmazásmappára terjed ki. Az alkalmazás futtatásához adja ki a következő parancsot: `mvn compile exec:java`. Az alkalmazás ezután feltölti a **HelloWorld.png** képet a könyvtárból a tárfiókjába, és ellenőrzi, hogy a kép replikálása a másodlagos RA-GRS-végpontra megtörtént-e. Ha az ellenőrzés befejeződött, az alkalmazás folyamatos ismétléssel elkezdi letölteni a képet, miközben jelent annak a végpontnak, ahonnan a képet letölti.
+
+A Storage-objektum újrapróbálkozási függvénye lineáris újrapróbálkozási szabályzat használatára van beállítva. Az újrapróbálkozási függvény határozza meg, hogy egy kérést újra kell-e próbálni, valamint megadja, hogy hány másodpercnyi várakozás után történjen az újrapróbálkozás. A **BlobRequestOptions** **LocationMode** tulajdonságát először **PRIMARY\_, majd \_SECONDARY** értékűre kell beállítani. Ez lehetővé teszi, hogy az alkalmazás automatikusan a másodlagos helyszínre váltson, ha nem éri el az elsődleges helyszínt a **HelloWorld.png** letöltésére tett kísérletkor.
+
 ---
 
-### <a name="retry-event-handler"></a>Újrapróbálkozási eseménykezelő
+## <a name="understand-the-sample-code"></a>A mintakód értelmezése
 
 # <a name="net-tabdotnet"></a>[.NET] (#tab/dotnet)
 
-A rendszer akkor hívja meg az `OperationContextRetrying` eseménykezelőt, ha a kép letöltése meghiúsult, és újrapróbálkozásra van beállítva. Ha a rendszer elérte a próbálkozások alkalmazásban definiált maximális számát, a kérelem [LocationMode](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.locationmode?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_LocationMode) paramétere `SecondaryOnly` értékre változik. Ez a beállítás kényszeríti az alkalmazást, hogy a másodlagos végpontról kísérelje meg letölteni a képet. Ezzel a konfigurációval csökkenthető a kép lekérési ideje, mivel a rendszer nem próbálja vég nélkül elérni az elsődleges végpontot.
+### <a name="retry-event-handler"></a>Újrapróbálkozási eseménykezelő
 
-A mintakód a `Program.cs` fájlban található `RunCircuitBreakerAsync` művelettel letölt egy képet a tárfiókból a [DownloadToFileAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadtofileasync?view=azure-dotnet) metódus segítségével. A letöltés előtt meg kell határozni egy [OperationContext](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.operationcontext?view=azure-dotnet) környezetet. A műveleti környezet határozza meg az eseménykezelőket, amelyek a letöltés sikeres befejezésekor vagy a sikertelen letöltés utáni újrapróbálkozásokkal aktiválódnak.
+A rendszer akkor hívja meg az `OperationContextRetrying` eseménykezelőt, ha a kép letöltése meghiúsult, és újrapróbálkozásra van beállítva. Ha a rendszer elérte a próbálkozások alkalmazásban definiált maximális számát, a kérelem [LocationMode](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.locationmode?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_LocationMode) paramétere `SecondaryOnly` értékre változik. Ez a beállítás kényszeríti az alkalmazást, hogy a másodlagos végpontról kísérelje meg letölteni a képet. Ezzel a konfigurációval csökkenthető a kép lekérési ideje, mivel a rendszer nem próbálja vég nélkül elérni az elsődleges végpontot.
  
 ```csharp
 private static void OperationContextRetrying(object sender, RequestEventArgs e)
@@ -169,34 +186,7 @@ private static void OperationContextRetrying(object sender, RequestEventArgs e)
 }
 ```
 
-# <a name="python-tabpython"></a>[Python] (#tab/python) 
-A rendszer akkor hívja meg az `retry_callback` eseménykezelőt, ha a kép letöltése meghiúsult, és újrapróbálkozásra van beállítva. Ha a rendszer elérte a próbálkozások alkalmazásban definiált maximális számát, a kérelem [LocationMode](https://docs.microsoft.com/en-us/python/api/azure.storage.common.models.locationmode?view=azure-python) paramétere `SECONDARY` értékre változik. Ez a beállítás kényszeríti az alkalmazást, hogy a másodlagos végpontról kísérelje meg letölteni a képet. Ezzel a konfigurációval csökkenthető a kép lekérési ideje, mivel a rendszer nem próbálja vég nélkül elérni az elsődleges végpontot.  
-
-```python
-def retry_callback(retry_context):
-    global retry_count
-    retry_count = retry_context.count
-    sys.stdout.write("\nRetrying event because of failure reading the primary. RetryCount= {0}".format(retry_count))
-    sys.stdout.flush()
-
-    # Check if we have more than n-retries in which case switch to secondary
-    if retry_count >= retry_threshold:
-
-        # Check to see if we can fail over to secondary.
-        if blob_client.location_mode != LocationMode.SECONDARY:
-            blob_client.location_mode = LocationMode.SECONDARY
-            retry_count = 0
-        else:
-            raise Exception("Both primary and secondary are unreachable. "
-                            "Check your application's network connection.")
-```
-
----
-
-
 ### <a name="request-completed-event-handler"></a>Befejezett kérelem eseménykezelő
- 
-# <a name="net-tabdotnet"></a>[.NET] (#tab/dotnet)
 
 A rendszer akkor hívja meg az `OperationContextRequestCompleted` eseménykezelőt, ha a kép letöltése sikerült. Ha az alkalmazás a másodlagos végpontot használja, továbbra is ezt a végpontot használja majd legfeljebb 20 alkalommal. A 20. alkalom után az alkalmazás visszaállítja a [LocationMode](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.locationmode?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_LocationMode) paramétert `PrimaryThenSecondary` értékre, és az elsődleges végponton próbálkozik újra. Ha a kérelem sikeres, az alkalmazás továbbra is az elsődleges végpontról végzi a beolvasást.
  
@@ -219,6 +209,31 @@ private static void OperationContextRequestCompleted(object sender, RequestEvent
 
 # <a name="python-tabpython"></a>[Python] (#tab/python) 
 
+### <a name="retry-event-handler"></a>Újrapróbálkozási eseménykezelő
+
+A rendszer akkor hívja meg az `retry_callback` eseménykezelőt, ha a kép letöltése meghiúsult, és újrapróbálkozásra van beállítva. Ha a rendszer elérte a próbálkozások alkalmazásban definiált maximális számát, a kérelem [LocationMode](https://docs.microsoft.com/en-us/python/api/azure.storage.common.models.locationmode?view=azure-python) paramétere `SECONDARY` értékre változik. Ez a beállítás kényszeríti az alkalmazást, hogy a másodlagos végpontról kísérelje meg letölteni a képet. Ezzel a konfigurációval csökkenthető a kép lekérési ideje, mivel a rendszer nem próbálja vég nélkül elérni az elsődleges végpontot.  
+
+```python
+def retry_callback(retry_context):
+    global retry_count
+    retry_count = retry_context.count
+    sys.stdout.write("\nRetrying event because of failure reading the primary. RetryCount= {0}".format(retry_count))
+    sys.stdout.flush()
+
+    # Check if we have more than n-retries in which case switch to secondary
+    if retry_count >= retry_threshold:
+
+        # Check to see if we can fail over to secondary.
+        if blob_client.location_mode != LocationMode.SECONDARY:
+            blob_client.location_mode = LocationMode.SECONDARY
+            retry_count = 0
+        else:
+            raise Exception("Both primary and secondary are unreachable. "
+                            "Check your application's network connection.")
+```
+
+### <a name="request-completed-event-handler"></a>Befejezett kérelem eseménykezelő
+
 A rendszer akkor hívja meg az `response_callback` eseménykezelőt, ha a kép letöltése sikerült. Ha az alkalmazás a másodlagos végpontot használja, továbbra is ezt a végpontot használja majd legfeljebb 20 alkalommal. A 20. alkalom után az alkalmazás visszaállítja a [LocationMode](https://docs.microsoft.com/en-us/python/api/azure.storage.common.models.locationmode?view=azure-python) paramétert `PRIMARY` értékre, és az elsődleges végponton próbálkozik újra. Ha a kérelem sikeres, az alkalmazás továbbra is az elsődleges végpontról végzi a beolvasást.
 
 ```python
@@ -234,7 +249,20 @@ def response_callback(response):
             secondary_read_count = 0
 ```
 
+# <a name="java-tabjava"></a>[Java] (#tab/java)
+
+Java esetén nem kell visszahívás-kezelőket meghatározni, ha a **BlobRequestOptions** **LocationMode** tulajdonsága először **PRIMARY\_, majd\_SECONDARY** értékűre lett beállítva. Ez lehetővé teszi, hogy az alkalmazás automatikusan a másodlagos helyszínre váltson, ha nem éri el az elsődleges helyszínt a **HelloWorld.png** letöltésére tett kísérletkor.
+
+```java
+    BlobRequestOptions myReqOptions = new BlobRequestOptions();
+    myReqOptions.setRetryPolicyFactory(new RetryLinearRetry(deltaBackOff, maxAttempts));
+    myReqOptions.setLocationMode(LocationMode.PRIMARY_THEN_SECONDARY);
+    blobClient.setDefaultRequestOptions(myReqOptions);
+
+    blob.downloadToFile(downloadedFile.getAbsolutePath(),null,blobClient.getDefaultRequestOptions(),opContext);
+```
 ---
+
 
 ## <a name="next-steps"></a>További lépések
 

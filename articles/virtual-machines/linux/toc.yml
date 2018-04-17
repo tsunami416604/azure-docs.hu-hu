@@ -89,6 +89,8 @@
           href: sizes-hpc.md
         - name: 'Azure számítási egységek (Azure Compute Units, ACU-k)'
           href: acu.md
+        - name: Teljesítményteszt pontszámai
+          href: compute-benchmark-scores.md
     - name: Támogatott disztribúciók
       href: endorsed-distros.md
     - name: Karbantartás és frissítések
@@ -145,7 +147,7 @@
         - name: Titkosítás
           href: encrypt-disks.md
         - name: Hozzáférés-vezérlők használata
-          href: ../../active-directory/role-based-access-control-what-is.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Szabályzatok használata
           href: policy.md
         - name: Kulcstartó létrehozása
@@ -400,6 +402,8 @@
           href: ../../virtual-network/create-vm-accelerated-networking-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Nyilvános DNS-név hozzárendelése
           href: portal-create-fqdn.md
+        - name: Nem csatolt hálózati adapterek keresése és törlése
+          href: find-unattached-nics.md
         - name: DNS feloldása
           href: azure-dns.md
           items:

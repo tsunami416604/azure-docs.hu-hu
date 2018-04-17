@@ -1,10 +1,10 @@
 ---
-title: "Az Azure Event Grid használata a feltöltött képek átméretezésének automatizálására | Microsoft Docs"
-description: "Az Azure Event Grid a blobok Azure Storage-ba való feltöltésekor aktiválódhat. A segítségével Azure Storage-ba feltöltött képfájlokat küldhet más szolgáltatásoknak, például az Azure Functions szolgáltatásnak átméretezés vagy egyéb javítás céljából."
+title: Az Azure Event Grid használata a feltöltött képek átméretezésének automatizálására | Microsoft Docs
+description: Az Azure Event Grid a blobok Azure Storage-ba való feltöltésekor aktiválódhat. A segítségével Azure Storage-ba feltöltött képfájlokat küldhet más szolgáltatásoknak, például az Azure Functions szolgáltatásnak átméretezés vagy egyéb javítás céljából.
 services: event-grid, functions
 author: ggailey777
 manager: cfowler
-editor: 
+editor: ''
 ms.service: event-grid
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 10/20/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 68343c3ffd87496ed4ae89b478ee5c8119ed67f5
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 0edf5648ddef58db74273635c84d7473e17e1b30
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="automate-resizing-uploaded-images-using-event-grid"></a>Feltöltött képek átméretezésének automatizálása az Event Grid használatával
 
@@ -90,7 +90,7 @@ storageConnectionString=$(az storage account show-connection-string \
 az functionapp config appsettings set --name <function_app> \
 --resource-group myResourceGroup \
 --settings myblobstorage_STORAGE=$storageConnectionString \
-myContainerName=thumbs
+myContainerName=thumbnails
 ```
 
 Most már üzembe helyezhet egy függvénykód-projektet a függvényalkalmazásban.
@@ -155,7 +155,7 @@ A képátméretezés webalkalmazásban való teszteléséhez nyissa meg a közz�
 
 Kattintson a **Fényképek feltöltése** területre egy fájl kiválasztásához és feltöltéséhez. Fényképet is behúzhat a területre. 
 
-Figyelje meg, hogy miután a feltöltött kép eltűnik, a feltöltött kép másolata megjelenik a **Létrehozott miniatűrök** nevű forgó képválasztón. A függvény átméretezte a képet, hozzáadta a *miniatűrök* tárolóhoz, a webes ügyfél pedig letöltötte.
+Figyelje meg, hogy miután a feltöltött kép eltűnik, a feltöltött kép másolata megjelenik a **Létrehozott miniatűrök** nevű forgó képválasztón. A függvény átméretezte a képet, hozzáadta a *miniatűrök* tárolóhoz, a webes ügyfél pedig letöltötte a képet.
 
 ![Közzétett webalkalmazás az Edge böngészőben](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png) 
 

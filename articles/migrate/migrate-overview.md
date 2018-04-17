@@ -7,11 +7,11 @@ ms.topic: overview
 ms.date: 03/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 857dab5474cba24445daf7d139ae49d923038196
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 8f6c2c54dd20b663eb43c716a2bd82310cf0256a
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
@@ -30,7 +30,7 @@ Az Azure Migrate az alábbiakban nyújt segítséget:
 
 - Jelenleg csak a helyszíni VMware virtuális gépek Azure-beli virtuális gépekre való migrálásának lehetőségeit értékelheti ki. A VMware virtuális gépeket egy 5.5-ös, 6.0-s vagy 6.5-ös verziójú vCenter Servernek kell felügyelnie.
 - A Hyper-V támogatása tervbe van véve. Addig is az [Azure Site Recovery Deployment Planner](http://aka.ms/asr-dp-hyperv-doc) használatát javasoljuk a Hyper-V-alapú számítási feladatok migrálásának megtervezéséhez. 
-- Egyetlen felderítéssel akár 1000 virtuális gépet, egyetlen projekt részeként pedig akár 1500 virtuális gépet is felderíthet. Ezenkívül egyetlen értékeléssel akár 400 virtuális gépet is értékelhet. Ha ennél többet kell felderítenie vagy értékelnie, növelheti a felderítések vagy az értékelések számát. [További információk](how-to-scale-assessment.md).
+- Egyetlen felderítéssel legfeljebb 1500 virtuális gépet, egyetlen projekt részeként pedig szintén legfeljebb 1500 virtuális gépet deríthet fel. Egyetlen értékeléssel emellett legfeljebb 1500 virtuális gépet értékelhet.
 - Azure Migrate-projektet csak az USA középnyugati régiójában és keleti régiójában lehet létrehozni. Ez azonban nem befolyásolja a migrálás megtervezését egy másik Azure-beli célhelyre. A migrálási projekt helyét a rendszer csak a helyszíni környezetből felderített metaadatok tárolására használja.
 - Az Azure Migrate kizárólag a felügyelt lemezek migrálásfelmérését támogatja.
 

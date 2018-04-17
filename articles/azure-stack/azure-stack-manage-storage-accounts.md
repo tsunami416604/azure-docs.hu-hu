@@ -1,11 +1,11 @@
 ---
-title: "A verem Azure storage-fiókok kezelése |} Microsoft Docs"
-description: "Megtudhatja, hogyan keresése, kezelése, helyreállítás és VISSZAIGÉNYLÉSE verem Azure storage-fiókok"
+title: A verem Azure storage-fiókok kezelése |} Microsoft Docs
+description: Megtudhatja, hogyan keresése, kezelése, helyreállítás és VISSZAIGÉNYLÉSE verem Azure storage-fiókok
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 627d355b-4812-45cb-bc1e-ce62476dab34
 ms.service: azure-stack
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 02/22/2018
 ms.author: mabrigg
 ms.reviewer: anirudha
-ms.openlocfilehash: 395cd113e21bf747c796ff28026f552f30656b47
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ce61dec785d6207e2d2df21884525f76a6778f4a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>A verem Azure storage-fiókok kezelése
 Útmutató: Azure-készletben található, helyreállítására és az üzleti igények alapján tárolási kapacitás visszaigényléséhez storage-fiókok kezelése.
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/08/2018
 ## <a name="find"></a>A storage-fiók található
 A listában tárfiókok régióban Azure verem által tekintheti meg:
 
-1. Egy webböngészőben nyissa meg a https://adminportal.local.azurestack.external.
+1. A böngészőben, keresse meg https://adminportal.local.azurestack.external.
 2. Jelentkezzen be a verem Azure felügyeleti portálon, a felhő üzemeltetője (a telepítés során megadott hitelesítő adatok használata)
 3. Keresse meg az alapértelmezett irányítópult – a **régió felügyeleti** listán, és kattintson a régiót szeretné használni, például **(helyi**).
    
@@ -99,11 +99,11 @@ Azure-készletben egy egyszerű módja van:
   Ha a törölt fiókhoz már megtörtént a szemétgyűjtő meg a fiók nem jelenik a fiókok listáján. Ebben az esetben nem állíthatók vissza. Lásd: [kapacitás visszaigényléséhez](#reclaim) ebben a témakörben.
 
 ## <a name="set-the-retention-period"></a>A megőrzési időszak beállítása
-A megőrzési időszak beállítása lehetővé teszi, hogy a felhő üzemeltetője Ha meg szeretné adni egy adott időszakban között eltelt napok (0 és 9999 nap) amely során egy törölt fiókhoz potenciálisan állíthatók helyre. A megőrzési idő van beállítva, és 15 nap. Az érték "0" azt jelenti, hogy a törölt fiók azonnal megőrzési kívül esik, és rendszeres szemétgyűjtési.
+A megőrzési időszak beállítása lehetővé teszi, hogy a felhő üzemeltetője Ha meg szeretné adni egy adott időszakban között eltelt napok (0 és 9999 nap) amely során egy törölt fiókhoz potenciálisan állíthatók helyre. A megőrzési idő 0 nap van beállítva. Az érték "0" azt jelenti, hogy a törölt fiók azonnal megőrzési kívül esik, és rendszeres szemétgyűjtési.
 
 **A megőrzési időtartam módosítása:**
 
-1. Egy webböngészőben nyissa meg a https://adminportal.local.azurestack.external.
+1. A böngészőben, keresse meg https://adminportal.local.azurestack.external.
 2. Jelentkezzen be a verem Azure felügyeleti portálon, a felhő üzemeltetője (a telepítés során megadott hitelesítő adatok használata)
 3. Keresse meg az alapértelmezett irányítópult – a **régió felügyeleti** listán, és kattintson a felfedezés – például kívánt régiót **(helyi**).
 4. Válassza ki **tárolási** a a **erőforrás-szolgáltató** listája.

@@ -1,12 +1,12 @@
 ---
-title: "Meglévő egyéni DNS-név leképezése az Azure Web Appsra | Microsoft Docs"
-description: "Megtudhatja, hogyan adhat hozzá meglévő egyéni DNS-tartománynevet (egyéni tartományt) egy webalkalmazáshoz, egy mobilalkalmazás hátérrendszeréhez vagy egy API-alkalmazáshoz az Azure App Service-ben."
-keywords: "app service, azure app service, tartomány-hozzárendelés, tartománynév, meglévő tartomány, gazdagépnév"
+title: Meglévő egyéni DNS-név leképezése az Azure Web Appsra | Microsoft Docs
+description: Megtudhatja, hogyan adhat hozzá meglévő egyéni DNS-tartománynevet (egyéni tartományt) egy webalkalmazáshoz, egy mobilalkalmazás hátérrendszeréhez vagy egy API-alkalmazáshoz az Azure App Service-ben.
+keywords: app service, azure app service, tartomány-hozzárendelés, tartománynév, meglévő tartomány, gazdagépnév
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: dc446e0e-0958-48ea-8d99-441d2b947a7c
 ms.service: app-service-web
 ms.workload: web
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 06/23/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 9867cc2f8a8d484ca4bfb160c20a07df38790f4d
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 431268082b24d23289188f5422cd596dc5f37d30
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="map-an-existing-custom-dns-name-to-azure-web-apps"></a>Meglévő egyéni DNS-név leképezése az Azure Web Appsra
+# <a name="tutorial-map-an-existing-custom-dns-name-to-azure-web-apps"></a>Oktatóanyag: Meglévő egyéni DNS-név leképezése az Azure Web Appsra
 
 Az [Azure Web Apps](app-service-web-overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ez az oktatóanyag bemutatja, hogyan képezhet le meglévő egyéni DNS-nevet az Azure Web Appsra.
 
@@ -292,7 +292,7 @@ A lap alján, a virtuális gyökérkönyvtár (`/`) alapértelmezés szerint a `
 
 ![A virtuális könyvtár testreszabása](./media/app-service-web-tutorial-custom-domain/customize-virtual-directory.png)
 
-A művelet befejezése után az alkalmazás a megfelelő oldalt adja vissza a gyökérútvonalon (például http://contoso.com).
+A művelet befejezése után az alkalmazás a megfelelő oldalt adja vissza a gyökérútvonalon (például http://contoso.com)).
 
 ## <a name="automate-with-scripts"></a>Automatizálás szkriptekkel
 

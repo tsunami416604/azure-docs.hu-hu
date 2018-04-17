@@ -1,11 +1,11 @@
 ---
-title: "ASP.NET Framework webalkalmazás létrehozása az Azure-ban | Microsoft Docs"
-description: "Az alapértelmezett ASP.NET-webalkalmazás üzembe helyezésével megtudhatja, hogy miként futtathat webalkalmazásokat az Azure App Service-ben."
+title: ASP.NET Framework webalkalmazás létrehozása az Azure-ban | Microsoft Docs
+description: Az alapértelmezett ASP.NET-webalkalmazás üzembe helyezésével megtudhatja, hogy miként futtathat webalkalmazásokat az Azure App Service-ben.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 04a1becf-7756-4d4e-92d8-d9471c263d23
 ms.service: app-service-web
 ms.workload: web
@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 11/30/2017
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 6ce5d49fe4e58b3c89c09ef80d563d001a4abb41
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 125377b91514b1615cfbb488f7ddfe59fbc016f5
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>ASP.NET Framework webalkalmazás létrehozása az Azure-ban
 
@@ -40,6 +40,8 @@ Az oktatóanyag elvégzéséhez:
     - **Azure-fejlesztés**
 
     ![ASP.NET és webfejlesztés és Azure-fejlesztés (Web és felhőszolgáltatások alatt)](media/app-service-web-tutorial-dotnet-sqldatabase/workloads.png)
+
+Ha már telepítette a Visual Studiót, adja hozzá a számítási feladatokat a Visual Studióban a **Tools** (Eszközök)  >  **Get Tools and Features** (Eszközök és funkciók beszerzése) elemre kattintva.
 
 ## <a name="create-an-aspnet-web-app"></a>ASP.NET-webapp létrehozása
 

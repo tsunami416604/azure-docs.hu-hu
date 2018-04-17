@@ -2,40 +2,38 @@
 
 # Áttekintés
 ## [Mi a Stream Analytics?](stream-analytics-introduction.md)
-## [A Storm és a Stream Analytics összehasonlítása](stream-analytics-comparison-storm.md)
 
-# Bevezetés
-## [IoT streamingelt adatok feldolgozása](stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md)
-## [Az adathamisítások azonnali felismerése](stream-analytics-real-time-fraud-detection.md)
-## [Adatelemzés a Power BI segítségével](stream-analytics-power-bi-dashboard.md)
+# Gyors útmutatók
+## [Feladat létrehozása – Azure Portal](stream-analytics-quick-create-portal.md)
+## [Feladat létrehozása – PowerShell](stream-analytics-quick-create-powershell.md)
+
+# Oktatóanyagok
+## [1 – Feladat létrehozása/kezelése](stream-analytics-manage-job.md)
+## [2 – Az Azure Functions futtatása](stream-analytics-with-azure-functions.md)
+## [3 – JavaScript UDF futtatása](stream-analytics-javascript-user-defined-functions.md)
 
 # Példák
 ## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=stream-analytics)
 
 # Alapelvek
-## Feladatok bemenettípusai
+## [Feladatok bemenettípusai](stream-analytics-add-inputs.md)
 ### [Streamadat típusú bemenetek](stream-analytics-define-inputs.md)
 ### [Referenciaadat típusú bemenetek](stream-analytics-use-reference-data.md)
 ## [Feladatok kimenettípusai](stream-analytics-define-outputs.md)
+### [Kimenet a Cosmos DB-be](stream-analytics-documentdb-output.md)
 ## [Ablakfüggvények](stream-analytics-window-functions.md)
 ## [Kompatibilitási szint](stream-analytics-compatibility-level.md)
 ## [Gyakori lekérdezési minták](stream-analytics-stream-analytics-query-patterns.md)
 ## [Eseményrendezési szempontok](stream-analytics-out-of-order-and-late-events.md)
 
-
 # Útmutatók
-
-## Feladatok létrehozása
-### [Tesztlekérdezések és minta beviteli adatok](stream-analytics-sample-data-input.md)
-### [Tesztlekérdezések](stream-analytics-test-query.md)
-### [JavaScript UDF futtatása](stream-analytics-javascript-user-defined-functions.md)
-### [Kimenet a Data Lake Store-ba](stream-analytics-data-lake-output.md)
-### [Kimenet a Cosmos DB-be](stream-analytics-documentdb-output.md)
-### [Riasztások konfigurálása](stream-analytics-set-up-alerts.md)
 
 ## Kezelés
 ### [Feladat frissítése](stream-analytics-job-reliability.md)
 ### [Hitelesítő adatok frissítése](stream-analytics-login-credentials-inputs-outputs.md)
+### [Riasztások konfigurálása](stream-analytics-set-up-alerts.md)
+### [A feladat tesztelése](stream-analytics-test-query.md)
+### [Eredmények megtekintése az irányítópulton](stream-analytics-power-bi-dashboard.md)
 
 ## Megoldások kiépítése
 ### [Twitter-hangulatelemzés](stream-analytics-twitter-sentiment-analysis-trends.md)
@@ -44,11 +42,11 @@
 ### [Fizetőkapu érzékelőadatainak elemzése](stream-analytics-build-an-iot-solution-using-stream-analytics.md)
 ### [JavaScript UDA futtatása](stream-analytics-javascript-user-defined-aggregates.md)
 ### [Nagy gyakoriságú kereskedelem](stream-analytics-high-frequency-trading.md)
-### [Az Azure Functions futtatása](stream-analytics-with-azure-functions.md)
+### [IoT streamingelt adatok feldolgozása](stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md)
 
 ## Figyelés
 
-### [Feladatok monitorozása – Portál](stream-analytics-monitoring.md)
+### [Feladatok monitorozása – Azure Portal](stream-analytics-monitoring.md)
 ### [Feladatok monitorozása – PowerShell](stream-analytics-monitor-and-manage-jobs-use-powershell.md)
 ### [Feladatok monitorozása – Azure .NET SDK](stream-analytics-monitor-jobs.md)
 
@@ -82,7 +80,6 @@
 ### [Anomáliadetektálás](stream-analytics-machine-learning-anomaly-detection.md)
 ### [REST API-k használata](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 
-
 # Referencia
 ## [Azure PowerShell](/powershell/module/azurerm.streamanalytics)
 ## [Lekérdezés nyelve](https://msdn.microsoft.com/library/azure/dn834998)
@@ -102,7 +99,8 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-stream-analytics)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=stream-analytics)
 ## [Ügyféleset-tanulmányok](https://azure.microsoft.com/case-studies/?service=stream-analytics)
-## [Valós idejű eseményfeldolgozás](stream-analytics-real-time-event-processing-reference-architecture.md)
+## [Tanulmány – Valós idejű eseményfeldolgozás](stream-analytics-real-time-event-processing-reference-architecture.md)
+## [A Storm és a Stream Analytics összehasonlítása](stream-analytics-comparison-storm.md)
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure figyelési adatok archiválása |} Microsoft Docs"
-description: "Azure-ban létrehozott archív napló és a metrika adatok tárfiókba."
+title: Azure monitorozási adatok archiválása | Microsoft Docs
+description: Az Azure-ban készült napló- és metrikaadatokat tárfiókba archiválhatja.
 author: johnkemnetz
 manager: orenr
 services: monitoring-and-diagnostics
@@ -10,23 +10,23 @@ ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
-ms.openlocfilehash: a3ab4713861d4d9681ad2ac5f084255fc29462ce
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
-ms.translationtype: MT
+ms.openlocfilehash: b44bbd9cb2f54107d2593b1ab7f07f07fcc41e57
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="archive-azure-monitoring-data"></a>Figyelési adatok archiválása Azure
+# <a name="archive-azure-monitoring-data"></a>Azure monitorozási adatok archiválása
 
-Az Azure-alapú környezetben több rétegből napló és a metrika értékét, amely egy Azure Storage-fiók archiválható eredményez. Érdemes lehet ehhez figyelési adatok időbeli alacsony költségű, nem kereshető tárolóban adatok Naplóelemzési vagy Azure figyelő a megőrzési időszak letelte után előzményeinek megőrzése érdekében. A folyamatot, amely az Azure-tárfiókba adatok archiválására környezet konfigurálása a Útmutató lépéseit.
+Az Azure-környezet több rétege készít napló- és metrikaadatokat, amelyek Azure Storage-fiókban archiválhatók. Ezt azért érdemes elvégezni, hogy megőrizze a monitorozási adatok előzményeit egy olcsó, nem kereshető tárolóban, miután lejárt az adatok megőrzési ideje a Log Analyticsben vagy az Azure Monitorban. Ez az oktatóanyag végigvezeti azon a folyamaton, amely során az Azure-környezetet az adatok tárfiókban való archiválásához konfigurálhatja.
 
 > [!div class="checklist"]
-> * Hozzon létre egy tárfiókot a figyelési adatok tárolásához
-> * Előfizetési naplók átirányítása 
-> * Útvonal erőforrás adatokat 
-> * Virtuális gép (vendég operációs rendszer) adatainak átirányítása 
-> * A figyelési adatok megtekintése 
-> * Az erőforrások törlése 
+> * Tárfiók létrehozása monitorozási adatok tárolásához
+> * Előfizetési naplók átirányítása a tárfiókba
+> * Erőforrásadatok átirányítása a tárfiókba
+> * Virtuális gép (vendég operációs rendszer) adatainak átirányítása a tárfiókba
+> * A tárfiókban lévő monitorozási adatok megtekintése
+> * Az erőforrások törlése
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -36,148 +36,155 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-a-storage-account"></a>Create a storage account
 
-Először meg kell állítania egy tárfiókot, amelyhez a figyelési adatok archiválja a rendszer. Ehhez a [kövesse a lépéseket Itt](../storage/common/storage-create-storage-account.md).
+Először be kell állítania egy tárfiókot, amelybe a monitorozási adatokat archiválja. Ehhez [kövesse ezeket a lépéseket](../storage/common/storage-create-storage-account.md).
 
-## <a name="route-subscription-logs-to-the-storage-account"></a>A tárolási fiók útvonal előfizetési naplók
+## <a name="route-subscription-logs-to-the-storage-account"></a>Előfizetési naplók átirányítása a tárfiókba
 
-Most már készen áll a figyelési adatok tárfiókba irányításához az Azure környezetben beállítása megkezdéséhez. (Az Azure tevékenységnapló szereplő) előfizetés-szintű adatokat először a tárolási fiók átirányítás konfiguráljuk. A [ **Azure tevékenységnapló** ](monitoring-overview-activity-logs.md) Azure előfizetés-szintű események előzményeit biztosítja. Tallózással is kikeresheti azt határozza meg az Azure portálon található *ki* létrehozott, frissített vagy törölt *mi* erőforrások és *amikor* tevékenységük azt.
+Most már megkezdheti az Azure-környezet beállítását a monitorozási adatok a tárfiókba való irányításához. Először beállítjuk, hogy az előfizetés-szintű adatok (amelyek az Azure-tevékenységnaplóban szerepelnek) a tárfiókba legyenek irányítva. Az [**Azure-tevékenységnapló**](monitoring-overview-activity-logs.md) az Azure előfizetés-szintű eseményeit tartalmazza. Az Azure Portalon ezt böngészve megállapíthatja, hogy *ki* és *milyen* erőforrásokat hozott létre, frissített vagy törölt, és a műveletekre *mikor* került sor.
 
-1. Kattintson a **figyelő** gomb megtalálható a bal oldali navigációs listára, majd **tevékenységnapló**.
+1. Kattintson a bal oldali navigációs listán található **Figyelés** gombra, majd a **Tevékenységnapló** gombra.
 
-   ![Tevékenység napló szakasz](media/monitor-tutorial-archive-monitoring-data/activity-log-home.png)
+   ![Tevékenységnapló szakasz](media/monitor-tutorial-archive-monitoring-data/activity-log-home.png)
 
-2. A megjelenített tevékenységnapló szakaszban kattintson a a **exportálása** gombra.
+2. A megjelenő Tevékenységnapló szakaszban kattintson az **Exportálás** gombra.
 
-3. Az a **exportálási tevékenységnapló** szakaszt, amely akkor jelenik meg, jelölje be a **tárfiókba exportálása** kattintson **válasszon egy tárfiókot.**
+3. A megjelenő **Tevékenységnapló exportálása** szakaszban jelölje be az **Exportálás tárfiókba** beállítást, és kattintson a **Válasszon egy tárfiókot** lehetőségre.
 
-   ![A Tevékenységnaplói exportálás](media/monitor-tutorial-archive-monitoring-data/activity-log-export.png)
+   ![Tevékenységnapló exportálása](media/monitor-tutorial-archive-monitoring-data/activity-log-export.png)
 
-4. A területen megjelenő használja a **tárfiók** legördülő menüből válassza ki a nevét, az előző létrehozott tárfiók **hozzon létre egy tárfiókot** . lépés:, majd kattintson az **OK**.
+4. A megjelenő szakasz **Tárfiók** legördülő listájában válassza ki az előző, **Tárfiók létrehozása** című lépésben létrehozott tárfiókot, majd kattintson az **OK** gombra.
 
-   ![A storage-fiók kiválasztása](media/monitor-tutorial-archive-monitoring-data/activity-log-storage.png)
+   ![Tárfiók kiválasztása](media/monitor-tutorial-archive-monitoring-data/activity-log-storage.png)
 
-5. Állítsa be a **megőrzés (nap)** 30 csúszkát. A csúszka a tárfiókban lévő figyelési adatok megőrzéséhez a napok számának beállítása. A figyelő az Azure automatikusan törli a számú napnál régebbi adatok megadott. Egy nulla napos megőrzési határozatlan ideig tárolja az adatokat.
+5. Állítsa a **Megőrzés (nap)** csúszkát a 30 értékre. Ez a csúszka beállítja a monitorozási adatok tárfiókban való megőrzésének időtartamát napokban. Az Azure Monitor automatikusan törli a megadott számú napnál régebbi adatokat. A nulla értékű megőrzési időszak határozatlan ideig tárolja az adatokat.
 
-6. Kattintson a **mentése** és zárja be az ebben a szakaszban.
+6. Kattintson a **Mentés** gombra, majd zárja be ezt a szakaszt.
 
-A tárfiókhoz be most áramló a figyelési adatok az előfizetésből.
+Az előfizetés monitorozási adatai most a tárfiókba kerülnek.
 
-## <a name="route-resource-data-to-the-storage-account"></a>A tárolási fiók útvonal erőforrásadatok
+## <a name="route-resource-data-to-the-storage-account"></a>Erőforrásadatok átirányítása a tárfiókba
 
-Most azt konfigurálja, erőforrás-szintű adatokat (erőforrás metrikáit és a diagnosztikai naplók) a tárolási fiók beállításával átirányítás **erőforrás diagnosztikai beállításainak**.
+Most úgy konfiguráljuk az erőforrásszintű adatokat (erőforrásmetrikákat és diagnosztikai naplókat), hogy a tárfiókba legyenek átirányítva. Ehhez beállítjuk az **erőforrás diagnosztikai beállításait**.
 
-1. Kattintson a **figyelő** gomb megtalálható a bal oldali navigációs listára, majd **diagnosztikai beállítások**. Itt láthatja az összes erőforrást az előfizetésében keresztül Azure figyelő figyelési adatokat előállító listáját. Ha nem rendelkezik olyan erőforrásokkal ebben a listában, akkor [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md) erőforrás diagnosztikai beállításának konfigurálható, hogy a folytatás előtt.
+1. Kattintson a bal oldali navigációs listán található **Figyelés** gombra, majd a **Diagnosztikai beállítások** gombra. Itt láthatja az előfizetésben lévő összes olyan erőforrást, amely monitorozási adatokat készít az Azure Monitoron keresztül. Ha nincsenek erőforrások a listában, a továbblépés előtt [létrehozhat egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md), hogy rendelkezzen egy olyan erőforrással, amelyhez diagnosztikai beállítást konfigurálhat.
 
-2. Kattintson a listában egy erőforráson, majd **a diagnosztika bekapcsolásához**.
-   
+2. Kattintson egy erőforrásra a listában, majd kattintson a **Diagnosztika bekapcsolása** elemre.
+
    ![Diagnosztika bekapcsolása](media/monitor-tutorial-archive-monitoring-data/diagnostic-settings-turn-on.png)
 
-   Ha már létezik egy beállítást, inkább látható, a meglévő beállítások, és egy gombra kattintva **diagnosztikai beállítás hozzáadása**. A gombra kattintva.
+   Ha már van konfigurált beállítás, ehelyett a meglévő beállításokat láthatja, valamint egy **Diagnosztikai beállítás hozzáadása** feliratú gombot is. Kattintson erre a gombra.
 
-   Egy erőforrás diagnosztikai beállításának definíciójának *mi* figyelési adatok irányítani kell egy adott erőforráshoz és *ahol* , hogy el kell-e a figyelési adatok.
+   Az erőforrások diagnosztikai beállítása annak definíciója, hogy *milyen* monitorozási adatokat kell átirányítani egy adott erőforrásból, és *hová* kell kerülniük ezeknek a monitorozási adatoknak.
 
-3. A szakaszban, amely akkor jelenik meg, adjon meg a beállítás egy **neve** , és jelölje be a **tárfiókba archív**.
+3. A megjelenő szakaszban adjon egy **nevet** a beállításnak, és jelölje be az **Archiválás tárfiókba** jelölőnégyzetet.
 
    ![Diagnosztikai beállítások szakasz](media/monitor-tutorial-archive-monitoring-data/diagnostic-settings-home.png)
 
-4. Kattintson a a **konfigurálása** gombra kattint, a **tárfiókba archív** , és válassza ki az előző szakaszban létrehozott tárfiókot. Kattintson az **OK** gombra.
+4. Kattintson az **Archiválás tárfiókba** szakasz alatt lévő **Konfigurálás** gombra, és válassza ki az előző szakaszban létrehozott tárfiókot. Kattintson az **OK** gombra.
 
-   ![Diagnosztikai beállítások storage-fiók](media/monitor-tutorial-archive-monitoring-data/diagnostic-settings-storage.png)
+   ![Diagnosztikai beállítások tárfiókhoz](media/monitor-tutorial-archive-monitoring-data/diagnostic-settings-storage.png)
 
-5. Ellenőrizze az összes be **napló** és **metrika**. Attól függően, hogy az erőforrás típusa csak akkor lehet szükség ezen beállítások valamelyikét. E jelölőnégyzetek szabályozza, mely kategóriák napló és a metrika adatok elérhető erőforrástípus küldött a célra kijelölt, ebben az esetben egy tárfiókot.
+5. Jelölje be a **Napló** és a **Metrika** alatti jelölőnégyzeteket. Az erőforrás típusától függően előfordulhat, hogy csak az egyik lehetőség jelenik meg. Ezek a jelölőnégyzetek szabályozzák, hogy a napló- és metrikaadatok milyen, az erőforrástípushoz elérhető kategóriái kerülnek a kiválasztott célra, amely ebben az esetben a tárfiók.
 
-   ![Diagnosztikai beállítások kategóriák](media/monitor-tutorial-archive-monitoring-data/diagnostic-settings-categories.png)
-   
-6. Állítsa be a **megőrzés (nap)** 30 csúszkát. A csúszka a tárfiókban lévő figyelési adatok megőrzéséhez a napok számának beállítása. A figyelő az Azure automatikusan törli a számú napnál régebbi adatok megadott. Egy nulla napos megőrzési határozatlan ideig tárolja az adatokat.
+   ![Diagnosztikai beállítások kategóriái](media/monitor-tutorial-archive-monitoring-data/diagnostic-settings-categories.png)
+
+6. Állítsa a **Megőrzés (nap)** csúszkát a 30 értékre. Ez a csúszka beállítja a monitorozási adatok tárfiókban való megőrzésének időtartamát napokban. Az Azure Monitor automatikusan törli a megadott számú napnál régebbi adatokat. A nulla értékű megőrzési időszak határozatlan ideig tárolja az adatokat.
 
 7. Kattintson a **Save** (Mentés) gombra.
 
-Az erőforrás adatait figyelési van most összekapcsolását a tárfiók.
+Az erőforrás monitorozási adatai mostantól a tárfiókba kerülnek.
 
-## <a name="route-virtual-machine-guest-os-data-to-the-storage-account"></a>A tárolási fiók útvonal (vendég operációs rendszer) virtuális gép adatai
+> [!NOTE]
+> A többdimenziós metrikák diagnosztikai beállításokon keresztül történő küldése jelenleg nem támogatott. A dimenziókkal rendelkező metrikák egybesimított, egydimenziós metrikákként vannak exportálva, összesített dimenzióértékekkel.
+>
+> *Például*: Egy eseményközpont „Bejövő üzenetek” metrikája üzenetsoronként deríthető fel és ábrázolható. Ha azonban diagnosztikai beállításokon keresztül van exportálva, a metrika az eseményközpontban lévő összes üzenetsor összes bejövő üzeneteként lesz ábrázolva.
+>
+>
 
-1. Ha még nem rendelkezik a virtuális gépek az előfizetéshez [hozzon létre egy virtuális gépet](../virtual-machines/windows/quick-create-portal.md).
+## <a name="route-virtual-machine-guest-os-data-to-the-storage-account"></a>Virtuális gép (vendég operációs rendszer) adatainak átirányítása a tárfiókba
 
-2. A portál bal oldali navigációs listájában kattintson a **virtuális gépek**.
+1. Ha még nincs virtuális gépe az előfizetésben, [hozzon létre egy virtuális gépet](../virtual-machines/windows/quick-create-portal.md).
 
-3. A virtuális gépek akkor jelenik meg, kattintson a létrehozott virtuális gépen.
+2. A portál bal oldali navigációs listájában kattintson a **Virtuális gépek** lehetőségre.
 
-4. A megjelenő szakaszban kattintson a **diagnosztikai beállítások** a bal oldali navigációs. Ez a szakasz lehetővé teszi állíthat be a out-of-box monitorozási bővítményt az Azure-figyelő a virtuális gép és a Windows vagy Linux tárfiók mutatni útvonal adatai.
+3. A virtuális gépek megjelenő listájában kattintson a létrehozott virtuális gépre.
 
-   ![Navigáljon a diagnosztikai beállítások](media/monitor-tutorial-archive-monitoring-data/guest-navigation.png)
+4. A megjelenő szakaszban kattintson a bal oldali navigációs listában lévő **Diagnosztikai beállítások** elemre. Ebben a szakaszban beállíthatja az Azure Monitor azonnal használható monitorozási bővítményét a virtuális gépen, és egy tárfiókba irányíthatja a Windows vagy Linux által létrehozott adatokat.
 
-5. Kattintson a **vendégszintű a figyelés bekapcsolható** megjelenő szakaszában.
+   ![Navigálás a diagnosztikai beállításokhoz](media/monitor-tutorial-archive-monitoring-data/guest-navigation.png)
+
+5. A megjelenő szakaszban kattintson a **Vendégszintű monitorozás engedélyezése** elemre.
 
    ![Diagnosztikai beállítások engedélyezése](media/monitor-tutorial-archive-monitoring-data/guest-enable.png)
 
-6. A diagnosztikai beállításának megfelelően mentette, miután a **áttekintése** fülre az összegyűjtött adatokat listáját tartalmazza, és folyamatban helyén. Kattintson a **teljesítményszámlálók** szakasz nézze át a Windows-teljesítmény teljesítményszámlálók gyűjtése.
+6. A diagnosztikai beállítás megfelelő mentése után az **Áttekintés** lapon a begyűjtött adatok listája és a tárolási hely látható. Kattintson a **Teljesítményszámlálók** szakaszra a begyűjtött Windows-teljesítményszámlálók halmazának áttekintéséhez.
 
    ![Teljesítményszámlálók beállításai](media/monitor-tutorial-archive-monitoring-data/guest-perf-counters.png)
-   
-7. Kattintson a a **naplók** fülre és ellenőrizze a tartozó jelölőnégyzeteket **információk** szint alkalmazás bejelentkezik, és a rendszer naplóz.
+
+7. Kattintson a **Naplók** fülre, és jelölje be az alkalmazás- és rendszernaplókban lévő **Tájékoztatás** szintű naplók jelölőnégyzeteit.
 
    ![Naplók beállításai](media/monitor-tutorial-archive-monitoring-data/guest-logs.png)
 
-8. Kattintson a a **ügynök** lapon és a **tárfiók** kattintson a látható a tárfiók nevére.
+8. Kattintson az **Ügynök** lapra, majd a **Tárfiók** területen kattintson a megjelenő tárfiók nevére.
 
-   ![A tárfiók módosítása](media/monitor-tutorial-archive-monitoring-data/guest-storage-home.png)
+   ![Tárfiók frissítése](media/monitor-tutorial-archive-monitoring-data/guest-storage-home.png)
 
-9. A megjelenő szakaszban válassza ki az előző létrehozott tárfiók **hozzon létre egy tárfiókot** lépés.
+9. A megjelenő szakaszban válassza ki az előző, **Tárfiók létrehozása** című lépésben létrehozott tárfiókot.
 
 10. Kattintson a **Save** (Mentés) gombra.
 
-A virtuális gépek adatainak figyelés van most összekapcsolását a tárfiók.
+Az virtuális gépek monitorozási adatai mostantól a tárfiókba kerülnek.
 
-## <a name="view-the-monitoring-data-in-the-storage-account"></a>A tárfiók a figyelési adatok megtekintése
+## <a name="view-the-monitoring-data-in-the-storage-account"></a>A tárfiókban lévő monitorozási adatok megtekintése
 
-Ha követte a fenti lépéseket, adatokat halad a tárfiók már megkezdődött.
+Ha követte az előző lépéseket, az adatok elkezdtek a tárfiókba érkezni.
 
-1. Az egyes adattípusok, például a tevékenységnapló szükség van néhány tevékenység, amely a tárfiókban lévő generál egy eseményt. A műveletnapló tevékenység létrehozásához hajtsa végre a [ezeket az utasításokat](./monitor-quick-audit-notify-action-in-subscription.md). Várja meg legfeljebb öt percet az esemény jelenik meg a tárfiók szeretne.
+1. Néhány adattípus, például a tevékenységnapló esetében szükség van egy olyan tevékenységre, amely eseményt hoz létre a tárfiókban. Tevékenység létrehozásához tevékenységnaplóban kövesse [ezeket az utasításokat](./monitor-quick-audit-notify-action-in-subscription.md). Előfordulhat, hogy akár öt percet is várnia kell, mielőtt az esemény megjelenik a tárfiókban.
 
-2. A portálon lépjen a **Tárfiókok** szakaszban keresse meg azt a bal oldali navigációs sávon.
+2. A portálban navigáljon a bal oldali navigációs sávon található **Tárfiókok** szakaszhoz.
 
-3. Azonosítsa az előző szakaszban létrehozott tárfiók, és kattintson rá.
+3. Azonosítsa az előző szakaszban létrehozott tárfiókot, és kattintson rá.
 
-4. Kattintson a **Blobok**, majd a tárolóra, címkével **insights műveleti naplókat** és végül a tároló címkéjű **neve = alapértelmezett**. Ez az a tárolóhoz, amelybe a tevékenység naplója van benne. Figyelési adatok vannak osztva tárolók erőforrás-azonosítója (csak az előfizetési Azonosítóját a műveletnapló), majd dátum és idő. A blobok teljes formátuma:
+4. Kattintson a **Blobok** elemre, majd az **insights-operational-logs** címkéjű tárolóra, és végül a **name=default** címkéjű tárolóra. Ez az a tároló, amelyben a tevékenységnapló található. A monitorozási adatok erőforrás-azonosító (csak a tevékenységnapló előfizetés-azonosítója), majd a dátum és idő alapján vannak tárolókba osztva. A blobok teljes formátuma a következő:
 
-   insights-operational-logs/name=default/resourceId=/SUBSCRIPTIONS/{subscription ID}/y={four-digit numeric year}/m={two-digit numeric month}/d={two-digit numeric day}/h={two-digit 24-hour clock hour}/m=00/PT1H.json
+   insights-operational-logs/name=default/resourceId=/SUBSCRIPTIONS/{előfizetés-azonosító}/y={négy számjegyű numerikus év}/m={két számjegyű numerikus hónap}/d={két számjegyű numerikus nap}/h={két számjegyű óra 24 órás formátumban}/m=00/PT1H.json
 
-5. Keresse meg az erőforrás-azonosító, dátum és idő a tárolók kattintson a PT1H.json fájlt. Kattintson a PT1H.json fájlra, és kattintson a **letöltése**. Minden egyes PT1H.json blob tartalmaz a blob URL-címben megadott órán belül előforduló eseményeket a JSON blob (például h = 12). A jelenlegi órán belül események lesz hozzáfűzve a PT1H.json fájl azok bekövetkezésekor. A perc értéket (m = 00) mindig 00, mivel alkalmazásnapló-események az egyes blobok óránként van felosztva.
+5. Az erőforrás-azonosító, dátum és idő tárolóiba kattintva keresse meg a PT1H.json fájlt. Kattintson a PT1H.json fájlra, majd a **Letöltés** gombra. Mindegyik PT1H.json blob tartalmazza a blob URL-jében meghatározott órában (például h=12) bekövetkezett események JSON-blobját. Az aktuális órában az események az előfordulásukkor lesznek a PT1H.json fájlhoz fűzve. A perc értéke (m=00) mindig 00, mert a naplóesemények óránként vannak külön blobokba osztva.
 
-   Most már megtekintheti a tárfiókban tárolt JSON-esemény. Az erőforrás diagnosztikai naplók a BLOB formátuma:
+   Most megtekintheti a tárfiókban tárolt JSON-eseményt. Erőforrás-diagnosztikai naplók esetében a blobok formátuma a következő:
 
-   insights - logs-{napló kategória neve} / resourceId = / {erőforrás-azonosító} / y = {négyjegyű numerikus year} / m = {kétjegyű numerikus month} / d {kétjegyű számozott napja} = / h = {kétjegyű 24 órás hour}/m=00/PT1H.json
+   insights-logs-{naplókategória neve}/resourceId=/{erőforrás-azonosító}/y={négy számjegyű numerikus év}/m={két számjegyű numerikus hónap}/d={két számjegyű numerikus nap}/h={két számjegyű óra 24 órás formátumban}/m=00/PT1H.json
 
-6. Vendég operációs rendszer figyelési adatok táblák tárolja. Lépjen vissza az otthoni tárfiók, és kattintson a **táblák**. Nincsenek metrikákat, a teljesítményszámlálók és az eseménynaplók táblák.
+6. A vendég operációs rendszerek monitorozási adatai táblákban vannak tárolva. lépjen vissza a tárfiók kezdőlapjára, és kattintson a **Táblák** elemre. A metrikákhoz, teljesítményszámlálókhoz és eseménynaplókhoz érhetők el táblák.
 
-Most már sikeresen állított be figyelési adatok tárfiókba archiválását.
+Sikeresen beállította, hogy a monitorozási adatok tárfiókba legyenek archiválva.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-1. Lépjen vissza a **tevékenységnapló exportálása** át az előző szakaszban **előfizetési naplók átirányíthatja a tárfiók** lépést, és kattintson a **alaphelyzetbe**.
+1. Lépjen vissza a **Tevékenységnapló exportálása** szakaszra az előző, **Előfizetési naplók átirányítása a tárfiókba** nevű lépésből, és kattintson a **Visszaállítás** gombra.
 
-2. Keresse meg a **diagnosztikai beállítások** területen kattintson az erőforrás-készítési diagnosztikai beállításának az előző **útvonal-erőforrás adatait a tárolási fiók** . lépés:, majd a beállítás található meg létrehozott, kattintson a **beállításainak módosítása** gombra, majd kattintson a **törlése**.
+2. Keresse meg a **Diagnosztikai beállítások** szakaszt, kattintson arra az erőforrásra, amelyhez az előző, **Erőforrásadatok átirányítása a tárfiókba** nevű lépésben diagnosztikai beállítást hozott létre, majd keresse meg a létrehozott beállítást, kattintson a **Beállítás szerkesztése** gombra, és végül kattintson a **Törlés** elemre.
 
-3. Keresse meg a **diagnosztikai beállítások** a virtuális gépen, amelyet az előző szakaszban **virtuális gép (vendég operációs rendszer) adatok továbbításához a tárolási fiók** lépés, és a  **Ügynök** lapon kattintson **eltávolítása** (alatt a **távolítsa el az Azure diagnosztikai ügynök** szakaszban).
+3. Keresse meg a **Diagnosztikai beállítások** szakaszt az előző, **Virtuális gép (vendég operációs rendszer) adatainak átirányítása a tárfiókba** nevű lépésben konfigurált virtuális gépen, majd az **Ügynök** lapon kattintson az **Eltávolítás** elemre (az **Azure Diagnostics-ügynök eltávolítása** szakasz alatt).
 
-4. Lépjen a tárfiókhoz, az előző létrehozott **hozzon létre egy tárfiókot** . lépés:, és kattintson a **törölni a tárfiókot**. Írja be a tárfiók nevét, és kattintson **törlése**.
+4. Keresse meg az előző, **Tárfiók létrehozása** nevű lépésben létrehozott tárfiókot, és kattintson a **Tárfiók törlése** elemre. Adja meg a fiók nevét, majd kattintson a **Törlés** gombra.
 
-5. Ha létrehozott egy virtuális gép vagy a logikai alkalmazást az előző lépéseket, törölni is azokat.
+5. Ha az előző lépésekhez virtuális gépet vagy logikai alkalmazást is létrehozott, törölje ezeket is.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtudta, hogyan figyelése az Azure környezetben (előfizetés, erőforrás és a vendég operációs rendszer) archiválását, a tárolási fiók adatait. 
+Ebben az oktatóanyagban megismerte, hogyan állíthatja be az Azure-környezetből (előfizetésből, erőforrásból és vendég operációs rendszerből) származó monitorozási adatok tárfiókba történő archiválását.
 
 
 > [!div class="checklist"]
-> * Hozzon létre egy tárfiókot a figyelési adatok tárolásához
-> * Előfizetési naplók átirányítása 
-> * Útvonal erőforrás adatokat 
-> * Virtuális gép (vendég operációs rendszer) adatainak átirányítása 
-> * A figyelési adatok megtekintése 
-> * Az erőforrások törlése 
+> * Tárfiók létrehozása monitorozási adatok tárolásához
+> * Előfizetési naplók átirányítása a tárfiókba
+> * Erőforrásadatok átirányítása a tárfiókba
+> * Virtuális gép (vendég operációs rendszer) adatainak átirányítása a tárfiókba
+> * A tárfiókban lévő monitorozási adatok megtekintése
+> * Az erőforrások törlése
 
-Még több előny az adatokat, és további betekintést nyerjen származnia, is elküldheti az adatokat a Naplóelemzési.
+Ha többet szeretne kihozni az adatokból és további betekintést szeretne nyerni, a Log Analyticsnek is küldje el az adatokat.
 
 > [!div class="nextstepaction"]
-> [Log Analytics használatába](../log-analytics/log-analytics-get-started.md)
+> [Ismerkedés a Log Analytics szolgáltatással](../log-analytics/log-analytics-get-started.md)

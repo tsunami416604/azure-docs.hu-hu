@@ -1,11 +1,11 @@
 ---
-title: "ASP.NET-alkalmazás létrehozása az Azure-ban SQL Database használatával | Microsoft Docs"
-description: "Megismerheti, hogyan tehet szert egy olyan, az Azure-ban működő ASP.NET-alkalmazásra, amely csatlakozik egy SQL Database-adatbázishoz."
+title: ASP.NET-alkalmazás létrehozása az Azure-ban SQL Database használatával | Microsoft Docs
+description: Megismerheti, hogyan tehet szert egy olyan, az Azure-ban működő ASP.NET-alkalmazásra, amely csatlakozik egy SQL Database-adatbázishoz.
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
 ms.service: app-service-web
 ms.workload: web
@@ -15,13 +15,13 @@ ms.topic: tutorial
 ms.date: 06/09/2017
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: bd5aa5186bdec84e1943887ef0980fa50cd26324
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 72bc8e95e5b77baec29247f5593a522bbe663368
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="build-an-aspnet-app-in-azure-with-sql-database"></a>ASP.NET-alkalmazás létrehozása az Azure-ban SQL Database használatával
+# <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Oktatóanyag: ASP.NET-alkalmazás létrehozása az Azure-ban SQL Database használatával
 
 Az [Azure Web Apps](app-service-web-overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ebből az oktatóanyagból megtudhatja, hogyan helyezhet üzembe egy adatvezérelt ASP.NET-webalkalmazást az Azure-ban, és hogyan csatlakoztathatja az [Azure SQL Database-adatbázishoz](../sql-database/sql-database-technical-overview.md). Az oktatóanyag eredménye egy, az Azure-ban futó és az SQL Database-adatbázishoz csatlakozó ASP.NET-alkalmazás lesz.
 
@@ -48,6 +48,8 @@ Az oktatóanyag elvégzéséhez:
   - **Azure-fejlesztés**
 
   ![ASP.NET és webfejlesztés és Azure-fejlesztés (Web és felhőszolgáltatások alatt)](media/app-service-web-tutorial-dotnet-sqldatabase/workloads.png)
+
+Ha már telepítette a Visual Studiót, adja hozzá a számítási feladatokat a Visual Studióban a **Tools** (Eszközök)  >  **Get Tools and Features** (Eszközök és funkciók beszerzése) elemre kattintva.
 
 ## <a name="download-the-sample"></a>A minta letöltése
 

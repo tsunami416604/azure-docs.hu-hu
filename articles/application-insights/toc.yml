@@ -196,6 +196,8 @@
               href: app-insights-usage-segmentation.md
             - name: Tölcsérek
               href: usage-funnels.md
+            - name: Kohorszok
+              href: app-insights-usage-cohorts.md
             - name: Hatás
               href: app-insights-usage-impact.md
             - name: Megőrzés

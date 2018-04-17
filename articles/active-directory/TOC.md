@@ -56,6 +56,7 @@
 #### [Meghívó e-mail](active-directory-b2b-invitation-email.md)
 #### [Meghívó beváltása](active-directory-b2b-redemption-experience.md)
 #### [B2B-felhasználók hozzáadása meghívás nélkül](active-directory-b2b-add-user-without-invite.md)
+#### [Meghívások engedélyezése vagy letiltása](active-directory-b2b-allow-deny-list.md)
 #### [Feltételes hozzáférés B2B-hez](active-directory-b2b-mfa-instructions.md)
 #### [B2B megosztási szabályzatok](active-directory-b2b-delegate-invitations.md)
 #### [B2B-felhasználó hozzáadása szerepkörhöz](active-directory-b2b-add-guest-to-role.md)
@@ -327,9 +328,6 @@
 #### [Technikai útmutató](active-directory-conditional-access-technical-reference.md)
 #### [Gyakori kérdések](active-directory-conditional-faqs.md)
 
-### Windows Hello
-#### [Jelszóhasználat nélküli hitelesítés](active-directory-azureadjoin-passport.md)
-#### [A Vállalati Windows Hello engedélyezése](active-directory-azureadjoin-passport-deployment.md)
 ### Tanúsítványalapú hitelesítés
 #### [Android](active-directory-certificate-based-authentication-android.md)
 #### [iOS](active-directory-certificate-based-authentication-ios.md)

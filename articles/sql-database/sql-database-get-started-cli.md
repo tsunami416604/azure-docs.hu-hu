@@ -11,11 +11,11 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 03/23/2018
 ms.author: carlrab
-ms.openlocfilehash: 509cff23609896a019c110d8046935dfbce793f2
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 0c011ba84033655432ceee34295c2b1908a3ab58
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-a-single-azure-sql-database-using-the-azure-cli"></a>Önálló Azure SQL-adatbázis létrehozása az Azure CLI használatával
 
@@ -29,7 +29,7 @@ Ha a CLI helyi telepítését és használatát választja, akkor ehhez a témak
 
 ## <a name="define-variables"></a>Változók meghatározása
 
-Ebben a rövid útmutatóban változókat határozhat meg a szkriptekben való használatra.
+Ebben a rövid útmutatóban a szkriptekben használt változókat határozhat meg.
 
 ```azurecli-interactive
 # The data center and resource name for your resources
@@ -78,7 +78,7 @@ az sql server firewall-rule create --resource-group $resourcegroupname --server 
 
 ## <a name="create-a-database-in-the-server-with-sample-data"></a>Hozzon létre egy adatbázist a kiszolgálón mintaadatokkal
 
-Hozzon létre egy [S0 teljesítményszintű](sql-database-service-tiers.md) adatbázist a kiszolgálón az [az sql db create](/cli/azure/sql/db#az_sql_db_create) paranccsal. Az alábbi példa egy `mySampleDatabase` nevű adatbázist hoz létre, és betölti az AdventureWorksLT mintaadatokat ebbe az adatbázisba. Igény szerint cserélje ki ezeket az előre meghatározott értékeket (az ebben a gyűjteményben lévő többi rövid útmutató az ebben a rövid útmutatóban lévő értékekre épít).
+Hozzon létre egy [S0 teljesítményszintű](sql-database-service-tiers.md) adatbázist a kiszolgálón az [az sql db create](/cli/azure/sql/db#az_sql_db_create) paranccsal. Az alábbi példa egy `mySampleDatabase` nevű adatbázist hoz létre, és betölti az AdventureWorksLT mintaadatokat ebbe az adatbázisba. Igény szerint cserélje ki ezeket az előre meghatározott értékeket (az ebben a gyűjteményben lévő többi rövid útmutató a jelen rövid útmutatóban található értékekre épít).
 
 ```azurecli-interactive
 az sql db create --resource-group $resourcegroupname --server $servername \
@@ -87,7 +87,7 @@ az sql db create --resource-group $resourcegroupname --server $servername \
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az ebben a gyűjteményben lévő többi rövid útmutató erre a rövid útmutatóra épít. 
+A gyűjtemény részét képező többi rövid útmutató erre a rövid útmutatóra épül. 
 
 > [!TIP]
 > Ha azt tervezi, hogy az ezt követő rövid útmutatókkal dolgozik tovább, akkor ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a munkát, akkor a következő lépésekkel törölheti az Azure Portalon a rövid útmutatóhoz létrehozott összes erőforrást.

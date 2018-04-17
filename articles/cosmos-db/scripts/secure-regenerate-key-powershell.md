@@ -1,13 +1,12 @@
 ---
-title: "Az Azure PowerShell parancsfájl-újragenerálása Azure Cosmos DB fiókkulcs |} Microsoft Docs"
-description: "Az Azure PowerShell-parancsfájl minta - újragenerálása Azure Cosmos DB fiókkulcs"
+title: Azure PowerShell-szkript – Azure Cosmos DB-fiókkulcs újbóli létrehozása | Microsoft Docs
+description: Azure PowerShell-példaszkript – Azure Cosmos DB-fiókkulcs újbóli létrehozása
 services: cosmos-db
 documentationcenter: cosmosdb
-author: mimig1
-manager: jhubbard
-editor: 
+author: SnehaGunda
+manager: kfile
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: mvc
 ms.devlang: PowerShell
@@ -15,45 +14,45 @@ ms.topic: sample
 ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 05/10/2017
-ms.author: mimig
-ms.openlocfilehash: 187d7b0839e1cd94122d4455c11eda05673f5acc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.author: sngun
+ms.openlocfilehash: e4ef312ec96bb51b36297ce2d68d3c9f41333033
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="regenerate-an-azure-cosmos-db-account-key-using-powershell"></a>Egy PowerShell-lel Azure Cosmos DB fiók kulcs újragenerálása
+# <a name="regenerate-an-azure-cosmos-db-account-key-using-powershell"></a>Azure Cosmos DB-fiókkulcs újbóli létrehozása a PowerShell használatával
 
-Ez a minta újragenerálja az Azure parancssori felület használatával Azure Cosmos DB fiókkulcs bármilyen típusú.  
+Ez a példa újra létrehoz bármilyen Azure Cosmos DB-fiókkulcsot az Azure CLI használatával.  
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
 [!code-powershell[main](../../../powershell_scripts/cosmosdb/regenerate-account-keys/regenerate-account-keys.ps1?highlight=36-41 "Regenerate Azure Cosmos DB account keys")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-A parancsfájl-minta futtatása után a következő parancs segítségével távolítsa el az erőforráscsoportot és a vele társított összes erőforrást.
+A példaszkript futtatása után a következő paranccsal távolítható el az erőforráscsoport és az összes ahhoz kapcsolódó erőforrás.
 
 ```powershell
 Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
 ```
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-A parancsfájl a következő parancsokat. Minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatkozásokat.
+A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Új-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.5.0/new-azurermresourcegroup) | Az összes erőforrás tároló erőforrás csoportot hoz létre. |
-| [Új AzureRmResource](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresource?view=azurermps-3.8.0) | Adatbázis vagy a rugalmas készlet tároló logikai kiszolgáló létrehozása. |
-| [Invoke-AzureRmResourceAction](https://docs.microsoft.com/powershell/module/azurerm.resources/invoke-azurermresourceaction?view=azurermps-3.8.0) | Meghívja az Azure CosmosDB fiók egy műveletet. |
-| [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.5.0/remove-azurermresourcegroup) | Egy olyan erőforráscsoport, beleértve az összes beágyazott erőforrások törlése. |
+| [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.5.0/new-azurermresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [New-AzureRmResource](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresource?view=azurermps-3.8.0) | Olyan logikai kiszolgálót hoz létre, amely egy adatbázist vagy rugalmas készletet üzemeltet. |
+| [Invoke-AzureRmResourceAction](https://docs.microsoft.com/powershell/module/azurerm.resources/invoke-azurermresourceaction?view=azurermps-3.8.0) | Meghív egy műveletet az Azure Cosmos DB-fiókban. |
+| [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.5.0/remove-azurermresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az Azure PowerShell további információkért lásd: [Azure PowerShell dokumentációs](https://docs.microsoft.com/powershell/).
+Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 
-További Azure Cosmos DB PowerShell-parancsfájl példák találhatók a [Azure Cosmos DB PowerShell-parancsfájlok](../powershell-samples.md).
+További Azure Cosmos DB PowerShell-példaszkripteket az [Azure Cosmos DB PowerShell-szkriptek között](../powershell-samples.md) találhat.

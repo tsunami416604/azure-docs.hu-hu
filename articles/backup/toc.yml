@@ -85,8 +85,6 @@
           href: backup-azure-files.md
         - name: Azure-fájlmegosztások biztonsági mentése – GYIK
           href: backup-azure-files-faq.md
-        - name: Az Azure-fájlmegosztások biztonsági mentésének hibaelhárítása
-          href: troubleshoot-azure-files.md
     - name: Azure-beli virtuális gépek
       items:
         - name: A virtuális gép előkészítése
@@ -181,18 +179,20 @@
           href: backup-azure-delete-vault.md
     - name: Hibaelhárítás
       items:
-        - name: Azure-beli virtuális gép biztonsági mentésével kapcsolatos problémák az Azure Portalon
+        - name: IaaS virtuális gép biztonsági mentési hibaüzenetei
           href: backup-azure-vms-troubleshoot.md
-        - name: 'Az Azure-beli virtuális gép mentése sikertelen: nem sikerült lekérni a virtuálisgép-ügynökről a pillanatkép-állapotot – a VM-pillanatképet készítő részfeladat időtúllépést okozott'
+        - name: Az Azure Backup (MARS) ügynöke vagy a virtuális gép bővítménye esetében időtúllépés történt
           href: backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md
-        - name: Az Azure Backup-fájlok és -mappák lassú biztonsági mentése
+        - name: A fájlok és mappák biztonsági mentése lassú
           href: backup-azure-troubleshoot-slow-backup-performance-issue.md
-        - name: Az Azure Backup Server hibaelhárítása
+        - name: Azure Backup Server
           href: backup-azure-mabs-troubleshoot.md
-        - name: A System Center Data Protection Manager hibaelhárítása
+        - name: System Center DPM
           href: backup-azure-scdpm-troubleshooting.md
-        - name: Az Azure Backup Agent hibaelhárítása
+        - name: Azure Backup (MARS) ügynöke
           href: backup-azure-mars-troubleshoot.md
+        - name: Azure-fájlmegosztások biztonsági mentése
+          href: troubleshoot-azure-files.md
 - name: Referencia
   items:
     - name: Azure PowerShell

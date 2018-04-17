@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 03/06/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 66a5f7e6872a76c91f1f5f1a4b0b1973cb890b0f
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 09a229d93ee8d5fec36a0cfa765e87bebaafc24d
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="secure-access-to-an-applications-data-in-the-cloud"></a>Biztonságos hozzáférés egy alkalmazás adataihoz a felhőben
 
@@ -34,7 +34,7 @@ Az oktatóanyag teljesítéséhez el kell végeznie az előző tárolási oktat�
 
 ## <a name="set-container-public-access"></a>A tároló nyilvános hozzáférésének beállítása
 
-Az oktatóanyag-sorozat ezen részében SAS-jogkivonatokat használunk a miniatűr képekhez való hozzáféréshez. Ebben a lépésben a _thumbs_ tároló nyilvános hozzáférését `off` értékre állítja be.
+Az oktatóanyag-sorozat ezen részében SAS-jogkivonatokat használunk a miniatűr képekhez való hozzáféréshez. Ebben a lépésben a _thumbnails_ tároló nyilvános hozzáférését `off` értékre állítja be.
 
 ```azurecli-interactive 
 blobStorageAccount=<blob_storage_account>
@@ -42,7 +42,7 @@ blobStorageAccount=<blob_storage_account>
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
 -n $blobStorageAccount --query [0].value --output tsv) 
 
-az storage container set-permission \ --account-name $blobStorageAccount \ --account-key $blobStorageAccountKey \ --name thumbs  \
+az storage container set-permission \ --account-name $blobStorageAccount \ --account-key $blobStorageAccountKey \ --name thumbnails  \
 --public-access off
 ``` 
 
