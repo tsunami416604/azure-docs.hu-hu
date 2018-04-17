@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 5a76f897-02e8-4437-8f2b-4fb12225854a
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 9b5df3d5e355fac0c0ea4203d28170a2d3c04ad9
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ea5b19abed0b9d2a2b8131f2be3be14e94e17405
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Hdinsight Hadoop-fürtök kezelése az Azure-portál használatával
 
@@ -63,7 +61,7 @@ HDInsight-fürtök létrehozásakor meg kell adnia egy Azure-előfizetés. A fü
     1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
     2. Kattintson a **előfizetés** a bal oldali menüből. Rendelkezik a sárga kulcs ikon. Az előfizetések listája megjelenik.
     3. Kattintson az előfizetést, a fürtök létrehozására használhatja. 
-    4. Kattintson a **saját engedélyek**.  Azt illusztrálja a [szerepkör](../active-directory/role-based-access-control-what-is.md#built-in-roles) az előfizetésben. Legalább kell közreműködői access HDInsight-fürt létrehozásához.
+    4. Kattintson a **saját engedélyek**.  Azt illusztrálja a [szerepkör](../role-based-access-control/overview.md#built-in-roles) az előfizetésben. Legalább kell közreműködői access HDInsight-fürt létrehozásához.
 
 - Meglévő erőforráscsoport használata:
 
@@ -89,7 +87,7 @@ Ha a NoRegisteredProviderFound hiba vagy a MissingSubscriptionRegistration hiba,
 
     **Bal oldali menüben:**
     * **Tevékenységi naplóit**: megjelenítése és a lekérdezés tevékenységi naplóit.
-    * **Hozzáférés-vezérlés (IAM)**: szerepkör-hozzárendelésekkel.  Lásd: [az Azure-előfizetés erőforrásokhoz való hozzáférés kezelése a szerepkör-hozzárendelések segítségével](../active-directory/role-based-access-control-configure.md).
+    * **Hozzáférés-vezérlés (IAM)**: szerepkör-hozzárendelésekkel.  Lásd: [az Azure-előfizetés erőforrásokhoz való hozzáférés kezelése a szerepkör-hozzárendelések segítségével](../role-based-access-control/role-assignments-portal.md).
     * **Címkék**: lehetővé teszi a felhőalapú szolgáltatások egyéni besorolás meghatározásához kulcs/érték párok beállítását. Például létrehozhat nevű kulcs **projekt**, majd használja az adott projekthez tartozó összes szolgáltatás közös értéket.
     * **Hibáinak diagnosztizálásához és elhárításához**: hibaelhárítási információk megjelenítése.
     * **Zárolja**: vegye fel a zárolást a fürt folyamatban érdekében módosították vagy törölték.

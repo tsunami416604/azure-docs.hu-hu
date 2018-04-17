@@ -1,8 +1,8 @@
 ---
-title: "Azure HDInsight-alkalmazások közzététele |} Microsoft Docs"
-description: "Útmutató a HDInsight-alkalmazások létrehozásához, és tegye közzé az Azure piactéren."
+title: Azure HDInsight-alkalmazások közzététele |} Microsoft Docs
+description: Útmutató a HDInsight-alkalmazások létrehozásához, és tegye közzé az Azure piactéren.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: 14aef891-7a37-4cf1-8f7d-ca923565c783
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: 597ea68f063d02541132d275de815c1673369ae0
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: aef54782c200ad0be261959705b9b10cd0ebb064
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>HDInsight-alkalmazások közzététele az Azure piactéren
 Azure HDInsight-alkalmazásokat is telepíthető egy Linux-alapú HDInsight-fürtöt. Ebben a cikkben megtudhatja, hogyan tehet közzé HDInsight-alkalmazások az Azure piactéren. Az Azure piactéren közzétételre vonatkozó általános információkért lásd: [ajánlat közzététele az Azure piactéren](../marketplace-publishing/marketplace-publishing-getting-started.md).
@@ -99,8 +97,8 @@ HDInsight-alkalmazások közzététele:
 3. Adjon meg egy címet, majd válassza ki **hozzon létre egy új megoldássablon**.
 4. Ha a szervezet már még nem regisztrált, válassza ki a **létrehozás fejlesztői központban regisztrált fiókjában és csatlakozás az Azure programhoz**.  További információkért lásd: [Microsoft Developer-fiók létrehozása](../marketplace-publishing/marketplace-publishing-accounts-creation-registration.md).
 5. Válassza ki **megadása a kezdéshez néhány topológiák**. A megoldássablon egy hozzá tartozó topológia "szülőeleme". Egy ajánlat vagy megoldás sablonban több topológiát is megadhat. Amikor egy ajánlatot a rendszer előkészítésre továbbít, topológiájával együtt az összes hozzá tartozó topológia. 
-6. Adja meg a topológia nevét, majd válassza ki  **+** .
-7. Adjon meg egy új verzióra, majd válassza ki  **+** .
+6. Adja meg a topológia nevét, majd válassza ki **+**.
+7. Adjon meg egy új verzióra, majd válassza ki **+**.
 8. A létrehozott mikor .zip fájl feltöltéséhez, [csomagolva az alkalmazás](#package-application).  
 9. Válassza ki **kérjen tanúsítási**. A Microsoft hitelesítő csapata áttekinti a fájlokat, és hitelesíti a topológiát.
 

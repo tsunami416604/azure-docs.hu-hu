@@ -1,6 +1,6 @@
 ---
-title: "Teszt futtatása Azure verem |} Microsoft Docs"
-description: "Azure-készletben diagnosztikai naplófájlok gyűjtéséről"
+title: Teszt futtatása Azure verem |} Microsoft Docs
+description: Azure-készletben diagnosztikai naplófájlok gyűjtéséről
 services: azure-stack
 author: mattbriggs
 manager: femila
@@ -11,13 +11,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 04/06/2018
 ms.author: mabrigg
-ms.openlocfilehash: 4f86397d4db5a0e67b294befd92087166d6b8109
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: c28216ced2a7cd2995c55a9faacb93cf27e60c65
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="run-a-validation-test-for-azure-stack"></a>Azure verem teszt futtatása
 
@@ -33,7 +33,8 @@ Ha a probléma, forduljon a Microsoft ügyfélszolgálata szolgáltatások, és 
 2. Forduljon a Microsoft ügyfélszolgálati támogatás.
 3. Futtatás **teszt-AzureStack** a rendszerjogosultságú végpontját.
     1. A privilegizált végpont a hozzáférést. Útmutatásért lásd: [használatával a privilegizált végpont Azure verem](azure-stack-privileged-endpoint.md). 
-    2. Jelentkezzen be **AzureStack\CloudAdmin** a felügyeleti gazdagépen.
+    2. A ASDK a jelentkezzen be a felügyeleti gazdagép, **AzureStack\CloudAdmin**.  
+    Az integrált rendszeren szüksége lesz a kiemelt--végpont a OEM hardver gyártója által biztosított felügyeleti használja az IP-címet.
     3. Nyissa meg a PowerShellt rendszergazdaként.
     4. Futtatás: `Enter-PSSession -ComputerName <ERCS VM name> -ConfigurationName PrivilegedEndpoint`
     5. Futtatás: `Test-AzureStack`
@@ -61,11 +62,11 @@ Az Azure-verem állapotát ellenőrzi. A parancsmag a jelentés az Azure-verem h
 
 | Paraméter               | Érték           | Szükséges | Alapértelmezett |
 | ---                     | ---             | ---      | ---     |
-| ServiceAdminCredentials | PSCredential    | Nem       | FALSE   |
-| DoNotDeployTenantVm     | SwitchParameter | Nem       | FALSE   |
+| ServiceAdminCredentials | PSCredential    | Nem       | HAMIS   |
+| DoNotDeployTenantVm     | SwitchParameter | Nem       | HAMIS   |
 | AdminCredential         | PSCredential    | Nem       | NA      |
 <!-- | StorageConnectionString | Karakterlánc          | Nem       | NA      | nem támogatott a 1802-->
-| Lista                    | SwitchParameter | Nem       | FALSE   |
+| Lista                    | SwitchParameter | Nem       | HAMIS   |
 | Kihagyás                  | Karakterlánc          | Nem       | NA      |
 | Belefoglalás                 | Karakterlánc          | Nem       | NA      |
 
@@ -150,17 +151,17 @@ A következő táblázat összefoglalja az érvényesítési tesztek futtatásá
 
 | Name (Név)                                                                                                                              |
 |-----------------------------------------------------------------------------------------------------------------------------------|-----------------------|
-| Azure Stack Cloud Hosting Infrastructure Summary                                                                                  |
-| Azure Stack Storage Services Summary                                                                                              |
-| Azure Stack Infrastructure Role Instance Summary                                                                                  |
-| Azure Stack Cloud Hosting Infrastructure Utilization                                                                              |
+| Az Azure verem Felhőszolgáltatóknak infrastruktúra összegzése                                                                                  |
+| Az Azure verem tárolási szolgáltatások – összefoglalás                                                                                              |
+| Az Azure verem infrastruktúra szerepkör példány összegzése                                                                                  |
+| Az Azure verem felhőalapú infrastruktúra kihasználtsági üzemeltetési                                                                              |
 | A verem Azure infrastruktúra-kapacitás                                                                                               |
 | A verem az Azure portál és API-összefoglalót                                                                                                |
 | Azure verem Azure Resource Manager-tanúsítvány adatai                                                                                               |
 | Infrastruktúra felügyeletvezérlő, a hálózati vezérlő, a tárolási szolgáltatások és a kiemelt végpont infrastruktúra-szerepkörök          |
 | Infrastruktúra felügyeletvezérlő, a hálózati vezérlő, a tárolási szolgáltatások és a kiemelt végpont infrastruktúra Szerepkörpéldányokat |
-| Azure Stack Infrastructure Role summary                                                                                           |
-| Azure Stack Cloud Service Fabric Services                                                                                         |
+| Az Azure infrastruktúra-szerepkör verem összegzése                                                                                           |
+| Az Azure verem Felhőszolgáltatások Service Fabric                                                                                         |
 | Az Azure verem infrastruktúra szerepkör példány teljesítmény                                                                              |
 | Az Azure verem felhő állomás létrehozásának összegzése                                                                                        |
 | Az Azure verem szolgáltatás erőforrás használat összegzése                                                                                  |

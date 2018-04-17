@@ -1,13 +1,13 @@
 ---
-title: "Az Azure-telepítés gyakori hibák elhárítása |} Microsoft Docs"
-description: "Ismerteti, hogyan lehet gyakori hibák megoldásához erőforrások Azure-ban Azure Resource Manager használatával történő központi telepítésekor."
+title: Az Azure-telepítés gyakori hibák elhárítása |} Microsoft Docs
+description: Ismerteti, hogyan lehet gyakori hibák megoldásához erőforrások Azure-ban Azure Resource Manager használatával történő központi telepítésekor.
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 tags: top-support-issue
 author: tfitzmac
 manager: timlt
 editor: tysonn
-keywords: "központi telepítési hiba, az azure-telepítés, telepítse az azure"
+keywords: központi telepítési hiba, az azure-telepítés, telepítse az azure
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: support-article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: f251fe11c43dc4b3f29c70f937f5bfcb6af6c44e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 01cc75c522b85f7b4a4b38c92f42cb113d016b73
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Hibaelhárítás általános az Azure-telepítés az Azure Resource Manager eszközzel
 
@@ -31,9 +31,9 @@ Ez a cikk ismerteti a gyakori az Azure-telepítés hibák észlelhetnek, és jav
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | Kövesse a tárfiókok vonatkozó elnevezési korlátozás. | [Oldja meg a tárfiók neve](resource-manager-storage-account-name-errors.md) |
 | AccountPropertyCannotBeSet | Ellenőrizze a rendelkezésre álló tár fiók tulajdonságait. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
-| AllocationFailed | A fürt vagy a régió nincs forrásanyag is elérhető, vagy nem támogatja a kért Virtuálisgép-méretet. Próbálja megismételni a kérést később, vagy kérje meg egy másik Virtuálisgép-méretet. | [Kiépítés és lefoglalás problémái Linux](../virtual-machines/linux/troubleshoot-deployment-new-vm.md) és [Windows kiépítés és lefoglalás problémái](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) |
+| AllocationFailed | A fürt vagy a régió nincs forrásanyag is elérhető, vagy nem támogatja a kért Virtuálisgép-méretet. Próbálja megismételni a kérést később, vagy kérje meg egy másik Virtuálisgép-méretet. | [Kiépítés és lefoglalás problémái Linux](../virtual-machines/linux/troubleshoot-deployment-new-vm.md), [Windows kiépítés és lefoglalás problémái](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) és [fellépő lefoglalási hibák elhárítása](../virtual-machines/windows/allocation-failure.md)|
 | AnotherOperationInProgress | Várjon, amíg egyidejű művelet elvégzéséhez. | |
-| AuthorizationFailed | A fióknév vagy egyszerű szolgáltatásnév nincs engedélye a központi telepítés befejezéséhez. Ellenőrizze a szerepkör a fiókja tagja, és a hozzáférése a központi telepítés hatókör. | [Azure szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-configure.md) |
+| AuthorizationFailed | A fióknév vagy egyszerű szolgáltatásnév nincs engedélye a központi telepítés befejezéséhez. Ellenőrizze a szerepkör a fiókja tagja, és a hozzáférése a központi telepítés hatókör. | [Azure szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md) |
 | BadRequest | Központi telepítés értékek, amelyek nem egyeznek, mi várható erőforrás-kezelő által küldött. Ellenőrizze a belső hibaállapot-üzeneteket a hibaelhárítás támogatásához. | [Sablonra való hivatkozást](/azure/templates/) és [támogatott helyek](resource-manager-templates-resources.md#location) |
 | Ütközés | A kért műveletet az erőforrás a jelenlegi állapotban nem engedélyezett. Például a lemezek átméretezése engedélyezett csak akkor, ha a virtuális gép létrehozása, vagy ha a virtuális gép felszabadítása. | |
 | DeploymentActive | Várjon, amíg párhuzamos központi telepítést, hogy ez az erőforráscsoport befejezéséhez. | |

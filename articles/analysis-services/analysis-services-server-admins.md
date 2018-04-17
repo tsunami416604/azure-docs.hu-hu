@@ -1,25 +1,18 @@
 ---
-title: "Az Azure Analysis Services kiszolgálói rendszergazdák kezelése |} Microsoft Docs"
-description: "Megtudhatja, hogyan kezelheti a kiszolgáló-rendszergazdák az Azure Analysis Services-kiszolgáló."
-services: analysis-services
-documentationcenter: 
+title: Az Azure Analysis Services kiszolgálói rendszergazdák kezelése |} Microsoft Docs
+description: Megtudhatja, hogyan kezelheti a kiszolgáló-rendszergazdák az Azure Analysis Services-kiszolgáló.
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: d90f1e3df8f5934d5c334ec72b5726f105842ca1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: def09f2853f761f3fefca80f341e6cc0557bac86
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-server-administrators"></a>Kiszolgáló-rendszergazdák kezelése
 Kiszolgáló-rendszergazdák, amelyek a kiszolgálón található bérlőjének kell lennie egy érvényes felhasználó vagy csoport az Azure Active Directory (Azure AD). Használhat **Analysis Services rendszergazdák** a kiszolgáló Azure-portálon, vagy a kiszolgáló Tulajdonságok szolgáltatáshoz az ssms kiszolgáló-rendszergazdák kezeléséhez. 
@@ -41,5 +34,5 @@ Kiszolgáló-rendszergazdák, amelyek a kiszolgálón található bérlőjének 
 ## <a name="next-steps"></a>További lépések 
 [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md)  
 [Adatbázis-szerepkörök és a felhasználók kezelése](analysis-services-database-users.md)  
-[Szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-what-is.md)  
+[Szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md)  
 

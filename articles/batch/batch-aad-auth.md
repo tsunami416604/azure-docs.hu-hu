@@ -15,11 +15,11 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 09/28/2017
 ms.author: danlep
-ms.openlocfilehash: 2479701174086ddf680e0ecb1da4a9d13b32b76e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e67ae32902c989f74cee0c1d223dacc770c0d387
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Kötegelt szolgáltatási megoldások és az Active Directory hitelesítéséhez
 
@@ -139,7 +139,7 @@ Egy egyszerű szolgáltatásnév végzett hitelesítéshez, akkor hozzá kell re
 1. Az Azure-portálon lépjen a Batch-fiók, amelyet az alkalmazás.
 2. Az a **beállítások** a Batch-fiók, jelölje be a panelt **hozzáférés-vezérlés (IAM)**.
 3. Kattintson a **Hozzáadás** gombra. 
-4. Az a **szerepkör** legördülő listából válassza a _közreműködő_ vagy _olvasó_ szerepkör az alkalmazáshoz. Ezek a szerepkörök további információkért lásd: [szerepköralapú hozzáférés-vezérlés az Azure-portálon az első lépései](../active-directory/role-based-access-control-what-is.md).  
+4. Az a **szerepkör** legördülő listából válassza a _közreműködő_ vagy _olvasó_ szerepkör az alkalmazáshoz. Ezek a szerepkörök további információkért lásd: [szerepköralapú hozzáférés-vezérlés az Azure-portálon az első lépései](../role-based-access-control/overview.md).  
 5. Az a **válasszon** mezőbe írja be az alkalmazás nevét. Válassza ki az alkalmazást a listából, és kattintson a **mentése**.
 
 Az alkalmazás ekkor meg kell jelennie a hozzáférés-vezérlési beállításokkal hozzárendelt RBAC szerepkörrel rendelkező. 

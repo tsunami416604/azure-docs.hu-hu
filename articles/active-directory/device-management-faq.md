@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory eszköz felügyeleti kapcsolatos gyakori kérdések |} Microsoft Docs"
-description: "Az Azure Active Directory kezelése – gyakori kérdések."
+title: Azure Active Directory eszköz felügyeleti kapcsolatos gyakori kérdések |} Microsoft Docs
+description: Az Azure Active Directory kezelése – gyakori kérdések.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 0ef5b84820cfcaf86f526ddd0565463e12b96331
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 4358b57284721642957d56ad8cfeea2b0f53fd89
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory eszköz felügyeleti kapcsolatos gyakori kérdések
 
@@ -41,47 +41,44 @@ ms.lasthandoff: 01/16/2018
 
 **K: az eszköz nemrég I regisztrálva. Miért nem látom az eszközt az Azure-portálon a saját felhasználói adatok alapján?**
 
-**V:** , amelyek automatikus eszközregisztráció tartományhoz csatlakoztatott Windows 10-eszközök nem jelennek meg a felhasználói adatok alapján.
+**V:** csatlakozott az Azure AD hibrid Windows 10-es eszközök nem jelennek meg a felhasználói eszközök alapján.
 Minden eszköz tekintse meg a PowerShell használatával kell. 
 
-A felhasználói adatok találhatók a következő eszközöket:
+A felhasználói eszközök csak a következő eszközök találhatók:
 
-- Az összes személyes eszközök, amelyek nem csatlakoztatott vállalati 
-- Az összes nem - Windows 10 vagy Windows Server 2016 
+- Az összes személyes eszközök, amelyek az Azure AD hibrid nincsenek csatlakoztatva. 
+- Az összes nem - Windows 10 vagy Windows Server 2016-os eszközök.
 - Minden-Windows eszköz 
 
 ---
 
 **K: Miért nem látom minden olyan eszközre, az Azure-portálon az Azure Active Directoryban regisztrálva?** 
 
-**V:** jelenleg nincs mód az Azure portálon minden regisztrált eszközök megjelenítéséhez. Használhatja az Azure PowerShell minden eszköz kereséséhez. További részletekért lásd: a [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) parancsmag.
+**V:** most már megtekintheti őket az Azure Active Directory -> minden eszköz menü. Azure PowerShell is használható, ha minden eszköz kereséséhez. További részletekért lásd: a [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) parancsmag.
 
 --- 
 
 **K: Hogyan állapítható meg, hogy mi az az ügyfél az eszköz regisztrációs állapotát?**
 
-**V:** az eszköz regisztrációja állapotától függ:
+**V:** a Windows 10 és Windows Server 2016 vagy újabb rendszerű eszközök, futtassa a dsregcmd.exe/status.
 
-- Mi az az eszköz
-- Hogyan regisztrálták 
-- Minden hozzá kapcsolódó adatokat. 
- 
+A régebbi verziójú operációs rendszer verziója futtassa a "%programFiles%\Microsoft munkahelyi Join\autoworkplace.exe"
 
 ---
 
 **K: Miért van egy eszközt törölt rendelkezik az Azure portálon vagy a Windows PowerShell használatával továbbra is szerepel a regisztrált?**
 
-**V:** Ez az elvárt működés. Az eszköz nem fog erőforrásokhoz való hozzáférés a felhőben. Ha azt szeretné, távolítsa el az eszközt, és regisztrálja újra, kézi művelet szükséges az eszközön kell lennie. 
+**V:** Ez az elvárt működés. Az eszköz nem fog erőforrásokhoz való hozzáférés a felhőben. Ha szeretné újra regisztrálni újra, a manuális műveletet kell venni az eszközön kell lennie. 
 
-A Windows 10 és Windows Server 2016-os, amely a helyszíni AD-tartományhoz:
+Törölje a csatlakoztatási állapotnak a Windows 10 és Windows Server 2016-os, amelyek a helyszíni AD-tartományhoz:
 
 1.  Nyissa meg a parancssort rendszergazdaként.
 
-2.  Típusa`dsregcmd.exe /debug /leave`
+2.  Típusa `dsregcmd.exe /debug /leave`
 
-3.  Jelentkezzen ki, és jelentkezzen be újra regisztrálja az eszközt az ütemezett feladat elindítása. 
+3.  Jelentkezzen ki, és jelentkezzen be újra az Azure AD-val regisztrálja az eszközt az ütemezett feladat elindítása. 
 
-Az egyéb Windows platformra, amelyek a helyszíni AD-tartományhoz:
+A régebbi verziójú Windows operációsrendszer-verziók, amely a helyszíni AD-tartományhoz:
 
 1.  Nyissa meg a parancssort rendszergazdaként.
 2.  Gépelje be: `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`.
@@ -93,13 +90,13 @@ Az egyéb Windows platformra, amelyek a helyszíni AD-tartományhoz:
 
 **V:**
 
--   Windows 10 és Windows Server 2016 ha azok elhagyása és újracsatlakozhatnak ugyanarra az eszközre, az ismételt kísérletek előfordulhat ismétlődő bejegyzések. 
+-   Windows 10 és Windows Server 2016 elhagyása vagy újracsatlakozhatnak ugyanarra az eszközre tett ismételt kísérlet esetén előfordulhat ismétlődő bejegyzések. 
 
 -   Használta, adja hozzá a munkahelyi vagy iskolai fiókkal, minden windows-felhasználó hozzáadása munkahelyi vagy iskolai fiókhoz használó fog rekordot kell létrehozni egy új eszköz ilyen nevű eszköz.
 
--   Egyéb Windows-platformokat, amelyek a helyszíni AD tartományhoz az automatikus regisztráció használatával hoz létre egy új eszközrekordhoz minden tartományi felhasználó, aki bejelentkezik az eszközre való ilyen eszköz nevű. 
+-   Régebbi verziójú Windows operációsrendszer-verziók, amely a helyszíni AD tartományhoz az automatikus regisztráció használatával létre fog hozni egy új eszközrekordhoz minden tartományi felhasználóhoz, aki bejelentkezik az eszközre az eszköz néven. 
 
--   Törölt, újratelepítése és ugyanazzal a névvel, újra csatlakoztatott AADJ gép eszköz azonos nevű másik rekordként jelennek meg.
+-   Az Azure AD csatlakozó számítógépeken tárolt adatok törléséig, újratelepítése és ugyanazzal a névvel, újra csatlakoztatott eszköz azonos nevű másik rekordként jelennek meg.
 
 ---
 
@@ -108,21 +105,21 @@ Az egyéb Windows platformra, amelyek a helyszíni AD-tartományhoz:
 **V:** is igénybe vehet egy visszavonási alkalmazandó egy órát.
 
 >[!Note] 
->Az elveszett eszközök azt javasoljuk, hogy a felhasználók nem férhetnek hozzá a az eszköz az eszköz adatainak törlésekor. További részletekért lásd: [eszközök regisztrálása az Intune-ban felügyeletre](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
+>Regisztrált eszközök azt javasoljuk, hogy a felhasználók nem férhetnek hozzá a az erőforrásokat az eszköz adatainak törlésekor. További részletekért lásd: [eszközök regisztrálása az Intune-ban felügyeletre](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
 
 
 ---
 
 **K: Miért látnak a felhasználók "Nem érheti el innen"?**
 
-**V:** Ha konfigurálta az egyes feltételes hozzáférési szabályai szükséges egy adott eszköz állapotát, és az eszköz nem felel meg a feltételeket, a felhasználók le vannak tiltva, és ez az üzenet megjelenik. Értékelje ki a szabályokat, és győződjön meg arról, hogy az eszköz képes a megadott feltételeknek megfelelő szeretne több ilyen üzenetet.
+**V:** Ha konfigurálta az egyes feltételes hozzáférési szabályai szükséges egy adott eszköz állapotát, és az eszköz nem felel meg a feltételeket, a felhasználók le vannak tiltva, és ez az üzenet megjelenik. Értékelje ki a feltételes hozzáférési szabályzat előírásainak, és győződjön meg arról, hogy az eszköz képes a megadott feltételeknek megfelelő szeretne több ilyen üzenetet.
 
 ---
 
 
 **K: I tekintse meg a rekordokat az Azure-portálon a felhasználói adatok alapján, és az ügyfél regisztrált állapota látható. A feltételes hozzáférés használatának megfelelően beállítani a perceké 'M?**
 
-**V:** eszközrekord (deviceID) és állapotát az Azure portálon kell felel meg az ügyfél és bármely értékelési feltételeknek a feltételes hozzáférés. További részletekért lásd: [Ismerkedés az Azure Active Directory Eszközregisztrációs](active-directory-device-registration.md).
+**V:** kifejezi deviceID, az eszköz csatlakoztatási állapotnak kell felelnek meg, hogy Azure ad-val, és bármely értékelési feltételeknek a feltételes hozzáférés. További részletekért lásd: [Ismerkedés az Azure Active Directory Eszközregisztrációs](active-directory-device-registration.md).
 
 ---
 
@@ -140,9 +137,9 @@ Az egyéb Windows platformra, amelyek a helyszíni AD-tartományhoz:
 
 ---
 
-**K: Miért tekintse meg a "Oops... hiba történt!" párbeszédpanel jelenik meg a számítógép csatlakozni?**
+**K: Miért látható a "Oops... hiba történt!" párbeszédpanel jelenik meg, hajtsa végre az Azure AD join a számítógép?**
 
-**V:** Ez az Azure Active Directory-regisztráció az Intune-nal beállításának eredménye. További részletekért lásd: [Windows-eszközök kezelésének beállítása](https://docs.microsoft.com/intune/deploy-use/set-up-windows-device-management-with-microsoft-intune#azure-active-directory-enrollment).  
+**V:** Ez az Azure Active Directory-regisztráció az Intune-nal beállításának eredménye. Győződjön meg arról, hogy hajtsa végre az Azure AD join próbáló felhasználó rendelkezik-e a megfelelő Intune-licenccel. További részletekért lásd: [Windows-eszközök kezelésének beállítása](https://docs.microsoft.com/intune/deploy-use/set-up-windows-device-management-with-microsoft-intune#azure-active-directory-enrollment).  
 
 ---
 

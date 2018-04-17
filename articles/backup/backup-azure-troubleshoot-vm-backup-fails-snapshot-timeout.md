@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: 81678f6a8659ffb763ebfe418098e510c73f6ae0
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 194b8237ce1bff6ac18878bc7eca6e0d3891aa33
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure biztonsági mentési hiba elhárítása: az ügynök vagy a bővítmény problémái
 
@@ -29,7 +29,8 @@ Ez a cikk ismerteti a hibaelhárítási lépéseket, amelyek segítségével jav
 
 ## <a name="vm-agent-unable-to-communicate-with-azure-backup"></a>Nem lehet kommunikálni az Azure biztonsági mentés Virtuálisgép-ügynök
 
-Hibaüzenet: "Virtuálisgép-ügynök nem lehet kommunikálni az Azure Backup"
+Hibaüzenet: "Virtuálisgép-ügynök nem lehet kommunikálni az Azure Backup"<br>
+Hibakód: "UserErrorGuestAgentStatusUnavailable"
 
 Miután regisztrálja, és ütemezze a biztonsági mentési szolgáltatás virtuális gép, a biztonsági mentés a feladat kezdeményezi úgy, hogy pont időponthoz kötött pillanatképet készít a virtuális gép ügynökkel folytatott kommunikáció. A következő esetekben előfordulhat, hogy a pillanatkép indított folyamatban. Pillanatkép kiváltásakor a nem a biztonsági mentés sikertelen lehet. Fejezze be a következő hibaelhárítási lépéseket a megadott sorrendben, majd próbálja megismételni a műveletet:
 
@@ -41,7 +42,8 @@ Miután regisztrálja, és ütemezze a biztonsági mentési szolgáltatás virtu
 
 ## <a name="snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>Pillanatkép-művelet sikertelen, mert a virtuális gép nincs csatlakoztatva a hálózathoz
 
-Hibaüzenet: "Pillanatkép-művelet sikertelen volt, mert nincs hálózati kapcsolat a virtuális gépen"
+Hibaüzenet: "Pillanatkép-művelet sikertelen volt, mert nincs hálózati kapcsolat a virtuális gépen"<br>
+Hibakód: "ExtensionSnapshotFailedNoNetwork"
 
 Miután regisztrálja, és egy virtuális Gépet az Azure Backup szolgáltatás ütemezése, biztonsági mentés indít el a feladat által a biztonsági mentés Virtuálisgép-bővítmény időpontban pillanatképének elkészítéséhez kommunikál. A következő esetekben előfordulhat, hogy a pillanatkép indított folyamatban. Ha a pillanatkép nem elindul, a biztonsági mentési hiba léphet fel. Fejezze be a következő hibaelhárítási lépéseket a megadott sorrendben, majd próbálja megismételni a műveletet:    
 **1. ok: [a virtuális gép nem rendelkezik internet-hozzáférés](#the-vm-has-no-internet-access)**  
@@ -50,7 +52,8 @@ Miután regisztrálja, és egy virtuális Gépet az Azure Backup szolgáltatás 
 
 ## <a name="vmsnapshot-extension-operation-failed"></a>VMSnapshot bővítmény művelet sikertelen
 
-Hibaüzenet: "VMSnapshot művelet sikertelen volt"
+Hibaüzenet: "VMSnapshot művelet sikertelen volt"<br>
+Hibakód: "ExtentionOperationFailed"
 
 Miután regisztrálja, és egy virtuális Gépet az Azure Backup szolgáltatás ütemezése, biztonsági mentés indít el a feladat által a biztonsági mentés Virtuálisgép-bővítmény időpontban pillanatképének elkészítéséhez kommunikál. A következő esetekben előfordulhat, hogy a pillanatkép indított folyamatban. Ha a pillanatkép nem elindul, a biztonsági mentési hiba léphet fel. Fejezze be a következő hibaelhárítási lépéseket a megadott sorrendben, majd próbálja megismételni a műveletet:  
 **1. ok: [pillanatkép állapota nem olvasható, vagy a pillanatkép nem végezhető](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
@@ -60,7 +63,7 @@ Miután regisztrálja, és egy virtuális Gépet az Azure Backup szolgáltatás 
 
 ## <a name="backup-fails-because-the-vm-agent-is-unresponsive"></a>Biztonsági mentés sikertelen lesz, mivel a Virtuálisgép-ügynök nem válaszol
 
-Hiba messagae: "Nem lehet végrehajtani a műveletet, a Virtuálisgép-ügynök nem válaszol"
+Hibaüzenet: "Nem lehet végrehajtani a műveletet, a Virtuálisgép-ügynök nem válaszol"
 
 Miután regisztrálja, és egy virtuális Gépet az Azure Backup szolgáltatás ütemezése, biztonsági mentés indít el a feladat által a biztonsági mentés Virtuálisgép-bővítmény időpontban pillanatképének elkészítéséhez kommunikál. A következő esetekben előfordulhat, hogy a pillanatkép indított folyamatban. Ha a pillanatkép nem elindul, a biztonsági mentési hiba léphet fel. Fejezze be a következő hibaelhárítási lépéseket a megadott sorrendben, majd próbálja megismételni a műveletet:  
 **1. ok: [az ügynök telepítve legyen a virtuális Géphez, de azok nem válaszoló (a Windows-alapú virtuális gépek)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
@@ -177,6 +180,8 @@ A bővítmény eltávolítása:
 3. Válassza ki **bővítmények**.
 4. Válassza ki **Vmsnapshot bővítmény**.
 5. Válassza ki **eltávolítása**.
+
+A Linux virtuális gép, ha a VMSnapshot bővítmény nem jeleníti meg az Azure-portálon a [Azure Linux ügynök frissítése](../virtual-machines/linux/update-agent.md), majd futtassa a biztonsági mentés. 
 
 A lépések végrehajtása azt eredményezi, a bővítmény a következő biztonsági mentés során újra kell telepíteni.
 

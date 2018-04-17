@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2018
 ms.author: rithorn
-ms.openlocfilehash: 911043c8fda985f25023dc1224d8e67b283f4d6c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 31e71f153c7bbf76b0f06f8f17a74c43cc1b1c81
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Az Azure felügyeleti csoportok-erőforrások rendszerezése 
 
@@ -32,7 +32,7 @@ Felügyeleti csoport és az előfizetések a egyesített házirend- és hozzáf�
 
 ![fa](media/management-groups/MG_overview.png)
 
-Hozzon létre egy hierarchiát, amely a szervezeti egységek szerint vannak csoportosítva, le is tudja hozzárendelése [átruházásához hozzáférés-vezérlés (RBAC)](../active-directory/role-based-access-control-what-is.md) szerepkörök, amelyek *öröklése* az adott felügyeleti csoportba tartozó szervezeti. Felügyeleti csoportok segítségével csökkentheti a terhelést, és csökkenti a hiba csak egyszer rendelhető hozzá a szerepkört ehhez. 
+Hozzon létre egy hierarchiát, amely a szervezeti egységek szerint vannak csoportosítva, le is tudja hozzárendelése [átruházásához hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md) szerepkörök, amelyek *öröklése* az adott felügyeleti csoportba tartozó szervezeti. Felügyeleti csoportok segítségével csökkentheti a terhelést, és csökkenti a hiba csak egyszer rendelhető hozzá a szerepkört ehhez. 
 
 ### <a name="important-facts-about-management-groups"></a>Fontos alapvető tudnivalók a felügyeleti csoportok
 - 10 000 felügyeleti csoportok támogatja a egyetlen könyvtárban található. 
@@ -55,7 +55,7 @@ Ez az elem van végzett, és megszűnik, mielőtt a felügyeleti csoportok is me
 
 ## <a name="root-management-group-for-each-directory"></a>Gyökérszintű felügyeleti csoport minden könyvtár
 
-Minden könyvtár kap a "Gyökér" felügyeleti csoport egyetlen legfelső szintű felügyeleti csoportjában. A gyökérszintű felügyeleti csoport összeállítása a hierarchiába, hogy az összes felügyeleti csoportot, és előfizetések részekre bontani hozzá. A gyökérszintű felügyeleti csoport lehetővé teszi a globális házirendek és az RBAC-hozzárendelések a könyvtár szintjén kell alkalmazni. A [Directory rendszergazdának kell jogosultságszint-emelés maguk](../active-directory/role-based-access-control-tenant-admin-access.md) kell kezdetben a legfelső szintű csoport tulajdonosa. Ha a rendszergazda a csoport tulajdonosa, azok rendelhet RBAC szerepköröket egyéb directory – felhasználók és csoportok kezelése a hierarchiában.  
+Minden könyvtár kap a "Gyökér" felügyeleti csoport egyetlen legfelső szintű felügyeleti csoportjában. A gyökérszintű felügyeleti csoport összeállítása a hierarchiába, hogy az összes felügyeleti csoportot, és előfizetések részekre bontani hozzá. A gyökérszintű felügyeleti csoport lehetővé teszi a globális házirendek és az RBAC-hozzárendelések a könyvtár szintjén kell alkalmazni. A [Directory rendszergazdának kell jogosultságszint-emelés maguk](../role-based-access-control/elevate-access-global-admin.md) kell kezdetben a legfelső szintű csoport tulajdonosa. Ha a rendszergazda a csoport tulajdonosa, azok rendelhet RBAC szerepköröket egyéb directory – felhasználók és csoportok kezelése a hierarchiában.  
 
 ### <a name="important-facts-about-the-root-management-group"></a>A legfelső szintű felügyeleti csoportra vonatkozó fontos tények
 - A gyökérszintű felügyeleti csoport nevét és Azonosítóját alapértelmezés szerint az Azure Active Directory-Azonosítót kapnak. A megjelenített név az Azure-portálon belül különböző megjelenítendő bármikor lehet frissíteni. 
@@ -67,9 +67,9 @@ Minden könyvtár kap a "Gyökér" felügyeleti csoport egyetlen legfelső szint
   
 ## <a name="management-group-access"></a>Felügyeleti csoport hozzáférése
 
-Támogatja az Azure felügyeleti csoportok [átruházásához hozzáférés-vezérlés (RBAC)](../active-directory/role-based-access-control-what-is.md) az összes erőforrás hozzáférések és szerepkör-definíciók. Ezeket az engedélyeket a hierarchiában található gyermek erőforrásokhoz örökölt.   
+Támogatja az Azure felügyeleti csoportok [átruházásához hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md) az összes erőforrás hozzáférések és szerepkör-definíciók. Ezeket az engedélyeket a hierarchiában található gyermek erőforrásokhoz örökölt.   
 
-Miközben bármely [beépített RBAC szerepkör](../active-directory/role-based-access-control-what-is.md#built-in-roles) lehet hozzárendelni felügyeleti csoporthoz, általánosan használt négy szerepkör is létezik: 
+Miközben bármely [beépített RBAC szerepkör](../role-based-access-control/overview.md#built-in-roles) lehet hozzárendelni felügyeleti csoporthoz, általánosan használt négy szerepkör is létezik: 
 - **Tulajdonos** minden erőforrást, beleértve a jogot, hogy mások számára delegálása teljes hozzáféréssel rendelkezik. 
 - **A közreműködői** is létrehozása és kezelése az Azure-erőforrások minden típusú, de nem tud hozzáférést biztosítani, mások számára.
 - **Erőforrás házirend közreműködői** hozhat létre és kezelhet házirendeket az erőforrások könyvtárában.     

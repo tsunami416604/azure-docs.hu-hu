@@ -1,43 +1,48 @@
 ---
-title: "Hogyan leépíteni a következőt: eszközök regisztrálva az Azure IoT Hub eszköz kiépítése szolgáltatáshoz |} Microsoft Docs"
-description: "Hogyan leépíteni a következőt: az Azure portálon a terjesztési pontok szolgáltatás által regisztrált eszközök"
+title: Útmutató az Azure IoT Hub eszköz kiépítése szolgáltatáshoz kiépített eszközök kiosztásának megszüntetése |} Microsoft Docs
+description: Mobileszközök deprovision kiépített az Azure IoT Hub eszköz kiépítése szolgáltatáshoz
 services: iot-dps
-keywords: 
-author: JimacoMS
-ms.author: v-jamebr
-ms.date: 01/08/2018
+keywords: ''
+author: bryanla
+ms.author: v-jamebr;bryanla
+ms.date: 04/06/2018
 ms.topic: article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 1d057a4df43cf25e6817672d198207d9a50e462e
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 439d4ffa8eec12481f52bd15f0060800411f316e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="how-to-unprovision-devices-enrolled-by-your-provisioning-service"></a>Hogyan leépíteni a következőt: a létesítési szolgáltatás által regisztrált eszközök
+# <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>Hogyan korábban automatikus-kiépített eszközök kiosztásának megszüntetése 
 
-Előfordulhat az szükséges, hogy az eszköz kiépítése szolgáltatáson keresztül lettek kiosztva leépíteni eszközökre. Például egy eszköz tulajdonjogát vagy áthelyezése egy másik IoT-központ a, vagy lehet elveszett, ellopott, vagy más módon sérült. 
+Előfordulhat, szükség deprovision eszközök korábban automatikus kiosztású az eszköz kiépítése szolgáltatáson keresztül. Például egy eszköz tulajdonjogát vagy áthelyezése egy másik IoT-központ a, vagy lehet elveszett, ellopott, vagy más módon sérült. 
 
-Általában egy eszköz leépítése két lépésből áll:
+Általában egy eszköz megszüntetés két lépésből áll:
 
-1. Az eszköz a kiépítési szolgáltatáshoz való hozzáférés visszavonásához. Attól függően, hogy átmenetileg vagy véglegesen vonni a hozzáférést, illetve az X.509 tanúsítvány mechanizmus a hierarchiában, a meglévő regisztrációs csoportok esetén érdemes lehet tiltsa le vagy regisztrációs bejegyzés törlése. 
+1. Az eszköz a jövőbeli automatikus-kiosztás megakadályozása, a létesítési szolgáltatás disenroll. Attól függően, hogy átmenetileg vagy véglegesen vonni a hozzáférést érdemes lehet tiltsa le vagy regisztrációs bejegyzés törlése. Az X.509 tanúsítvány használó eszközt érdemes lehet egy bejegyzést a hierarchiában, a meglévő regisztrációs csoportok letiltása/törlése.  
  
-   - A portál használatával eszközök hozzáférésének visszavonása, lásd: [eszközök hozzáférésének visszavonása](how-to-revoke-device-access-portal.md).
-   - Programozott módon, a létesítési szolgáltatás SDK-k egyik eszközök hozzáférésének visszavonása, lásd: [eszközbeléptetésnél a szolgáltatás SDK-k kezelése](how-to-manage-enrollments-sdks.md).
+   - Az eszköz disenroll, lásd: [hogyan Azure IoT Hub eszköz kiépítése szolgáltatáshoz eszközről disenroll](how-to-revoke-device-access-portal.md).
+   - Programozott módon, a létesítési szolgáltatás SDK-k egyik eszköz disenroll lásd: [eszközbeléptetésnél a szolgáltatás SDK-k kezelése](how-to-manage-enrollments-sdks.md).
 
-2. Tiltsa le, vagy törölheti az identitásjegyzékhez bejegyzést az eszközt az IoT Hub, ahol lett kiépítve. További tudnivalókért lásd: [eszköz Identitáskezelést](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices) az Azure IoT Hub-dokumentációban. 
+2. Az IoT Hub jövőbeli kommunikáció és az adatátvitelt megelőzése érdekében az eszköz regisztrációjának törléséhez. Ebben az esetben ideiglenesen letilthatja vagy véglegesen törli az eszköz bejegyzést az identitásjegyzékhez az IoT Hub, ahol lett kiépítve a. Lásd: [eszközök letiltása](/azure/iot-hub/iot-hub-devguide-identity-registry.md#disable-devices) megfelelő tájékozódhat. "Eszköz felügyeleti / IoT-eszközök" az IoT-központ erőforrás című a [Azure-portálon](https://portal.azure.com).
 
-A pontos lépéseket leépíteni a következőt: egy eszközt az igazolás mechanizmus és a vonatkozó regisztrációs bejegyzés az üzembe helyezési szolgáltatással függ.
+A pontos lépései kiosztásának megszüntetése eszköz a tanúsítvány mechanizmus és a vonatkozó regisztrációs bejegyzés az üzembe helyezési szolgáltatással függ. A következő szakaszokban a folyamat, a regisztráció és a tanúsítvány típusa alapján áttekintése.
 
 ## <a name="individual-enrollments"></a>Egyes regisztrációkat
 A levél tanúsítvánnyal TPM tanúsítványt vagy X.509 tanúsítvány használó eszközök törlődnek, az egyes regisztrációs bejegyzés. 
 
-Egy eszköz, amely rendelkezik az egyes tagság leépíteni a következőt: 
-1. TPM tanúsítványt használó eszközök esetében törölje az egyes regisztrációs bejegyzés véglegesen visszavonni a hozzáférést az eszköz a létesítési szolgáltatás, vagy tiltsa le a bejegyzés ideiglenesen visszavonni a hozzáférést. Az X.509 tanúsítvány használó eszközt vagy törölheti vagy tiltsa le a bejegyzést. Vegye figyelembe, azonban, hogy ha egy egyéni egy eszköz regisztrációjának törlése, amely használ X.509 tanúsítvány, és egy engedélyezett beléptetési csoport létezik-e egy aláíró tanúsítványt abban, hogy az eszköz tanúsítványlánc, az eszköz mindig újból beléptethetik. Az ilyen eszközök hogy biztonságosabb lehet letiltani a regisztrációs bejegyzés. Ez megakadályozza az eszköz a beléptetés, függetlenül attól, hogy egy engedélyezett beléptetési csoport létezik-e aláíró tanúsítványt.
+Egy eszköz kiosztásának megszüntetése, amely rendelkezik az egyes tagság: 
+
+1. Az eszköz üzembe helyezési szolgáltatás disenroll:
+
+   - A TPM-igazolási használó eszközök az egyes regisztrációs bejegyzés véglegesen visszavonni a hozzáférést az eszköz a létesítési szolgáltatás törlése, vagy tiltsa le a ideiglenesen visszavonni a hozzáférést a bejegyzést. 
+   - Az X.509 tanúsítvány használó eszközt vagy törölheti vagy tiltsa le a bejegyzést. Vegye figyelembe, azonban, ha törli egy eszköz által használt X.509 egyedi igénylésére és egy engedélyezett beléptetési csoport létezik-e egy aláíró tanúsítványt abban, hogy az eszköz tanúsítványlánc, az eszköz mindig újból beléptethetik. Az ilyen eszközök hogy biztonságosabb lehet letiltani a regisztrációs bejegyzés. Ez megakadályozza az eszköz a beléptetés, függetlenül attól, hogy egy engedélyezett beléptetési csoport létezik-e aláíró tanúsítványt.
+
 2. Tiltsa le, vagy törli a identitás beállításkulcsot, amely még lett beállítva, az IoT-központ az eszközt. 
 
 
@@ -55,11 +60,12 @@ Az eszközről, amelyen keresztül a beléptetési csoport lettek kiosztva list�
 
 A beléptetési csoportok esetén két esetben kell figyelembe venni:
 
-- Az eszközöket, amelyek egy beléptetési csoporton keresztül lettek kiosztva mindegyikét leépíteni a következőt:
+- A kiosztásának megszüntetése összes egy beléptetési csoporton keresztül kiépített eszközt:
   1. Tiltsa le a regisztrációs csoport aláíró tanúsítványát tiltólistára kell helyezni. 
   2. A beléptetési csoport kiépített eszközök listája használatával tiltsa le, illetve törölhet minden eszköz a megfelelő IoT hub az identitásjegyzékhez. 
   3. Után letiltása, vagy minden eszköz eltávolítása a saját IoT-központok, a beléptetési csoport opcionálisan törölheti. Ne feledje azonban, hogy a beléptetési csoport és egy engedélyezett beléptetési csoport egy vagy több olyan eszközt a magasabb a tanúsítványlánc aláíró tanúsítványt, az eszközök mindig újból beléptethetik. 
-- Beléptetési csoportból egyetlen eszközt leépíteni a következőt:
+
+- A beléptetési csoportból egyetlen eszközt kiosztásának megszüntetése:
   1. Hozzon létre egy letiltott egyes regisztrációja a levél (eszközök) tanúsítványát. Ez visszavonja az eszköznek a létesítési szolgáltatás ugyanakkor továbbra is lehetővé teszi a hozzáférést a beléptetési csoport aláíró tanúsítványt a láncban lévő más eszközök. Ne törölje a letiltott egyes regisztrációt az adott eszköz. Így lehetővé teheti az eszköz újítsa meg a beléptetési csoporton keresztül. 
   2. Használja a beléptetési csoport kiépített eszközök listáját az IoT hub, amely az eszköz számára lett kiépítve található, és tiltsa le, vagy törölni az adott központi identitásjegyzékhez. 
   

@@ -3,7 +3,7 @@ title: Globális adatok Azure Cosmos DB terjesztése |} Microsoft Docs
 description: Ismerje meg a globális adatbázisokat az Azure Cosmos Adatbázisból, egy globálisan elosztott, mutli-modell dokumentumadatbázis-szolgáltatás segítségével bolygónk méretű georeplikáció, a feladatátvételt és az adatok helyreállítás.
 services: cosmos-db
 documentationcenter: ''
-author: arramac
+author: SnehaGunda
 manager: kfile
 ms.assetid: ba5ad0cc-aa1f-4f40-aee9-3364af070725
 ms.service: cosmos-db
@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2018
-ms.author: arramac
-ms.openlocfilehash: 588eb4df9555f20fe4193e8ae34ad51c17921db2
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: sngun
+ms.openlocfilehash: 54eac2f3a95ecd37af357c933ba03f6c59bb241f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>Globális adatok Azure Cosmos DB terjesztése
 Azure a széles körű – folyamatosan bővülő, és egy globális erőforrásigényét tért 30 + földrajzi régiók között. A globális jelenlét, az Azure felajánlja, hogy a fejlesztők differenciált képességeit egyik létre, telepíthetnek és könnyen globálisan elosztott alkalmazások kezelésére képes. 
@@ -236,4 +236,4 @@ Azure Cosmos DB transzparens módon az átviteli sebesség, a késés, a konzisz
 6. Peter Bailis és mások. [A gyakorlati részleges határozatképességére probabilisztikus a kötött elavulási (PBS)](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
 7. Naor és gyapjú. [Betöltési, a kapacitás és a rendelkezésre állási kvórum rendszerekben](http://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf)
 8. Herlihy és a következő. [Lineralizability: Helyességét feltételt az egyidejű objektumok](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf)
-9. [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/)
+9. [Az Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/)

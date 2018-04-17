@@ -1,26 +1,24 @@
 ---
-title: "A Hive használata a hadooppal a webhelynapló elemzése - Azure HDInsight |} Microsoft Docs"
-description: "Útmutató a Hive használata a Hdinsightban elemezhet. Egy naplófájlt használja bemenetként egy HDInsight táblába lesz, és a lekérdezést a HiveQL használatával."
+title: A Hive használata a hadooppal a webhelynapló elemzése - Azure HDInsight |} Microsoft Docs
+description: Útmutató a Hive használata a Hdinsightban elemezhet. Egy naplófájlt használja bemenetként egy HDInsight táblába lesz, és a lekérdezést a HiveQL használatával.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.assetid: 6fb7b5c2-8df4-40b1-a9e2-6815080004f9
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/17/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5aabb69dc233dfd927c1d6cc1b131115e2d096d4
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 53a0560d3bc5a52069d5829b9c3bd353e0c37ef3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-hive-with-windows-based-hdinsight-to-analyze-logs-from-websites"></a>A Hive használata a Windows-alapú hdinsight eszközzel webhelyek naplóinak elemzése
 Útmutató a HDInsight HiveQL ezen webhelyek naplóinak elemzése. A webhelynapló elemzése is használható, szegmentálhatja a célközönséget, hasonló tevékenységek alapján, a látogatók demográfiai szerinti kategóriák, valamint tudja meg a tartalom azokat nézet, a webhelyek származnak, és így tovább.
@@ -52,7 +50,7 @@ Ez a példa a HDInsight-fürtök webhelynaplókat látogatások gyakoriságáró
 3. A megnyíló weblapon, kattintson a **Getting Started gyűjteménye** fülre, majd a a **mintaadatokkal megoldások** kategória, kattintson a **Webhelynapló elemzése** minta.
 4. Kövesse a megjelenő utasításokat a weblap a minta befejezéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Próbálja meg a következő mintát: [Érzékelőadatok elemzése a HDInsight Hive eszközzel](apache-hive-analyze-sensor-data.md).
 
 [hdinsight-sensor-data-sample]: ../hdinsight-use-hive-sensor-data-analysis.md

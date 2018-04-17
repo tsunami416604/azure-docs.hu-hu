@@ -5,7 +5,7 @@ keywords: Hierarchikus modell cosmosdb, az azure, a Microsoft azure
 services: cosmos-db
 documentationcenter: ''
 author: rafats
-manager: jhubbard
+manager: kfile
 ms.assetid: ef9d5c0c-0867-4317-bb1b-98e219799fd5
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 948fc84db2fd2d6f2059f9807b84194ebac59472
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: f0fc8a977a172a859d6691a5b587135caf14e03f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Az Azure Cosmos DB hierarchikus erőforrás-modellje és alapfogalmai
 
@@ -61,7 +61,7 @@ Erőforrások munkakezdéshez kell [adatbázisfiók létrehozása](create-sql-ap
 | Gyűjtemény |A gyűjtemény egy JSON-dokumentumokat és a kapcsolódó JavaScript-alkalmazáslogikát tartalmazó tároló. Egy gyűjtemény egy számlázható entitás, ahol a [költség](performance-levels.md) a gyűjteményhez társított teljesítményszint határozza meg. A gyűjtemények egy vagy több partícióra/kiszolgálóra is kiterjedhetnek, valamint gyakorlatilag korlátlan mennyiségű tárterület vagy átviteli sebesség kezelésére méretezhetők. |
 | Tárolt eljárás |A JavaScript, amely regisztrálva gyűjtemény és tranzakciós úton futtatásuk az adatbázismotor írt alkalmazás logikáját. |
 | Eseményindító |Úgy az alkalmazáslogikát végrehajtása előtt vagy után vagy egy INSERT utasítás, JavaScript nyelven írt csere vagy törlési művelet. |
-| UDF |JavaScript nyelven írt alkalmazás logikáját. Felhasználó által megadott függvények lehetővé teszik egy egyéni lekérdezés operátor modell, és ezáltal kiterjesztése a core SQL API lekérdező nyelve. |
+| AZ UDF |JavaScript nyelven írt alkalmazás logikáját. Felhasználó által megadott függvények lehetővé teszik egy egyéni lekérdezés operátor modell, és ezáltal kiterjesztése a core SQL API lekérdező nyelve. |
 | Dokumentum |Felhasználó által definiált (tetszőleges) JSON-tartalmak. Alapértelmezés szerint nem tartozik séma kell definiálni, sem másodlagos indexek kell adni a gyűjteménybe felvett összes dokumentumot. |
 | Melléklet |Egy mellékletet tartalmazó hivatkozásokat és a külső blob/médiához kapcsolódó metaadatok különleges dokumentumot. A fejlesztői választhat Cosmos DB kezeli a blob rendelkezik, vagy tárolja el azt egy külső blob-szolgáltatónál, például a onedrive-on, Dropbox, stb. |
 
@@ -117,12 +117,12 @@ Minden erőforrás URI-címmel rendelkező. Értékét a **_self** erőforrás t
 | A _self értéke | Leírás |
 | --- | --- |
 | /dbs |Adatcsatorna adatbázisok egy adatbázis-fiókkal |
-| /dbs/{dbName} |{%{Dbname/} értékével egyező azonosítójú adatbázis |
+| /dbs/ {%{dbname/} |{%{Dbname/} értékével egyező azonosítójú adatbázis |
 | {%{dbname/} /dbs/ /colls/ |A gyűjtemények az adatbázis adatcsatorna |
 | {%{dbname/} /dbs/ /colls/ {collName} |{CollName} értékével egyező azonosítójú gyűjtemény |
 | {%{dbname/} /dbs/ /colls/ {collName} / docs |A gyűjtemény dokumentumok adatcsatorna |
-| /dbs/{dbName}/colls/{collName}/docs/{docId} |{Doc} értékével egyező azonosítójú dokumentálása |
-| /dbs/{dbName}/users/ |A felhasználók egy adatbázist a hírcsatorna |
+| {%{dbname/} /dbs/ /colls/ {collName} /docs/ {dokumentumazonosító} |{Doc} értékével egyező azonosítójú dokumentálása |
+| {%{dbname/} /dbs/ /felhasználók/ |A felhasználók egy adatbázist a hírcsatorna |
 | /dbs/{dbName}/users/{userId} |{Felhasználó} értékével egyező azonosítójú felhasználó |
 | /dbs/{dbName}/users/{userId}/permissions |Adatcsatorna egy felhasználói engedélyek |
 | /dbs/{dbName}/users/{userId}/permissions/{permissionId} |{Engedély} értékével egyező azonosítójú engedély |

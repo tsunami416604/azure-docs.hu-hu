@@ -1,8 +1,8 @@
 ---
-title: "A Hadoop-szolgáltatás a HDInsight - Azure halommemória memóriaképek engedélyezése |} Microsoft Docs"
-description: "A Hibakeresés és elemzésére szolgáló Hadoop Linux-alapú HDInsight-fürtök szolgáltatásai halommemória memóriaképek engedélyezése."
+title: A Hadoop-szolgáltatás a HDInsight - Azure halommemória memóriaképek engedélyezése |} Microsoft Docs
+description: A Hibakeresés és elemzésére szolgáló Hadoop Linux-alapú HDInsight-fürtök szolgáltatásai halommemória memóriaképek engedélyezése.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 8f151adb-f687-41e4-aca0-82b551953725
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 2bc7b35a87f3973c59fb36372d4edad86412ea0e
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: cd906736f2642d764c2b72a0572f63d675613c81
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="enable-heap-dumps-for-hadoop-services-on-linux-based-hdinsight"></a>Halommemória memóriaképek a Linux-alapú HDInsight Hadoop-szolgáltatások engedélyezése
 
@@ -63,7 +61,7 @@ A következő beállítás lehetővé teszi, hogy halommemória memóriaképek e
 
     -XX:+HeapDumpOnOutOfMemoryError
 
-A  **+**  azt jelzi, hogy ez a beállítás engedélyezve van-e. Ez a beállítás alapértelmezés szerint le van tiltva.
+A **+** azt jelzi, hogy ez a beállítás engedélyezve van-e. Ez a beállítás alapértelmezés szerint le van tiltva.
 
 > [!WARNING]
 > Halommemória memóriaképek nem engedélyezettek a HDInsight Hadoop-szolgáltatás alapértelmezés szerint, lehet, hogy nagy a memóriakép fájlokhoz. Ha engedélyezi ezeket a hibaelhárításhoz, ne felejtse el őket tiltani, miután a probléma másolható és a memóriaképek összegyűjtött.
@@ -76,7 +74,7 @@ A biztonsági másolat fájl alapértelmezett helye az aktuális munkakönyvtár
 
 Használata esetén például `-XX:HeapDumpPath=/tmp` hatására a memóriaképek könyvtárban kell tárolni.
 
-### <a name="scripts"></a>Parancsprogramok
+### <a name="scripts"></a>Scripts
 
 Egy parancsfájlt is el lehet indítani amikor egy **OutOfMemoryError** következik be. Például váltanak ki egy értesítést, így megtudhatja, hogy a hiba. A következő kapcsoló használatával indul el, a parancsfájl egy __OutOfMemoryError__:
 
@@ -91,7 +89,7 @@ Egy parancsfájlt is el lehet indítani amikor egy **OutOfMemoryError** követke
 
 A szolgáltatás konfigurációjának módosítása, tegye a következőket:
 
-1. Nyissa meg a fürt Ambari webes felhasználói Felületét. Az URL-cím https://YOURCLUSTERNAME.azurehdinsight.net.
+1. Nyissa meg a fürt Ambari webes felhasználói Felületét. Az URL-címe https://YOURCLUSTERNAME.azurehdinsight.net.
 
     Amikor a rendszer kéri, a helyhez, a HTTP-fiók nevének hitelesíteni (alapértelmezett: admin) és a jelszót a fürt számára.
 
@@ -108,7 +106,7 @@ A szolgáltatás konfigurációjának módosítása, tegye a következőket:
 
 4. Keresés a  **\* \_OPTS** szolgáltatás bejegyzése szeretné a halommemória memóriaképek engedélyezése, majd adja meg az engedélyezni kívánt beállításokat. Az alábbi képen felvett `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` számára a **HADOOP\_NAMENODE\_OPTS** bejegyzést:
 
-    ![HADOOP_NAMENODE_OPTS with -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/](./media/hdinsight-hadoop-heap-dump-linux/opts.png)
+    ![A - XX HADOOP_NAMENODE_OPTS: + HeapDumpOnOutOfMemoryError - XX: HeapDumpPath = / tmp /](./media/hdinsight-hadoop-heap-dump-linux/opts.png)
 
    > [!NOTE]
    > Ha halommemória engedélyezése a térkép listázása, vagy csökkentse gyermekfolyamat, keresse meg a mezők nevű **mapreduce.admin.map.child.java.opts** és **mapreduce.admin.reduce.child.java.opts**.

@@ -1,8 +1,8 @@
 ---
-title: "Azure-erőforrások kezeléséhez Azure portál használatával |} Microsoft Docs"
-description: "Azure-portál és az Azure Resource Manager segítségével kezelheti az erőforrásokat. Bemutatja, hogyan irányítópultok erőforrások figyelésére használható."
+title: Azure-erőforrások kezeléséhez Azure portál használatával |} Microsoft Docs
+description: Azure-portál és az Azure Resource Manager segítségével kezelheti az erőforrásokat. Bemutatja, hogyan irányítópultok erőforrások figyelésére használható.
 services: azure-resource-manager,azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2016
 ms.author: tomfitz
-ms.openlocfilehash: 27213482c3ef6b35e1e3f887c9a336b946850802
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 61cfd9e9d955b6a722bc88542b872a4a3edf5a36
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-azure-resources-through-portal"></a>Azure-portálon keresztül erőforrások kezelése
 
@@ -26,7 +26,7 @@ Ez a cikk bemutatja, hogyan használható a [Azure-portálon](https://portal.azu
 
 ## <a name="manage-resource-groups"></a>Erőforrás-csoportok kezelése
 
-Egy erőforráscsoport egy olyan tároló, amely egy Azure megoldás kapcsolódó erőforrásokat tárol. Az erőforráscsoport tartalmazhatja a megoldás összes erőforrását, vagy csak azokat az erőforrásokat, amelyeket Ön egy csoportként szeretne kezelni. A szervezet számára legideálisabb elosztás alapján eldöntheti, hogyan szeretné elosztani az erőforrásokat az erőforráscsoportok között. Általában adja hozzá az erőforrásokat, amelyek ugyanabban az erőforráscsoportban az azonos életciklussal megoszthatja, így könnyen központi telepítése, frissítése és csoportként törölje őket. 
+Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. Az erőforráscsoport tartalmazhatja a megoldás összes erőforrását, vagy csak azokat az erőforrásokat, amelyeket Ön egy csoportként szeretne kezelni. A szervezet számára legideálisabb elosztás alapján eldöntheti, hogyan szeretné elosztani az erőforrásokat az erőforráscsoportok között. Általában adja hozzá az erőforrásokat, amelyek ugyanabban az erőforráscsoportban az azonos életciklussal megoszthatja, így könnyen központi telepítése, frissítése és csoportként törölje őket. 
 
 Az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Ezért ha az erőforráscsoport számára megad egy helyet, akkor a metaadatok tárolási helyét adja meg. Megfelelőségi okokból szükség lehet arra, hogy az adatokat egy adott régióban tárolja.
 
@@ -123,10 +123,10 @@ Erőforráscsoport törlésekor törlődnek a benne található összes erőforr
 
 ![Csoport törlése](./media/resource-group-portal/delete-group.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Tevékenységi naplóit megtekintéséhez lásd: [naplózási műveletek a Resource Manager](resource-group-audit.md).
 * A központi telepítés részleteinek megtekintéséhez lásd: [üzembe helyezési műveleteinek megtekintése](resource-manager-deployment-operations.md).
 * Az erőforrásoknak a portálon keresztül történő központi telepítéséhez lásd: [erőforrások a Resource Manager-sablonok és az Azure-portál telepítése](resource-group-template-deploy-portal.md).
-* Erőforrások elérésének kezelésében, tekintse meg [az Azure-előfizetés erőforrásokhoz való hozzáférés kezelése a szerepkör-hozzárendelések segítségével](../active-directory/role-based-access-control-configure.md).
+* Erőforrások elérésének kezelésében, tekintse meg [az Azure-előfizetés erőforrásokhoz való hozzáférés kezelése a szerepkör-hozzárendelések segítségével](../role-based-access-control/role-assignments-portal.md).
 * Nagyvállalatoknak az [Azure enterprise scaffold - prescriptive subscription governance](resource-manager-subscription-governance.md) (Azure nagyvállalati struktúra - előíró előfizetés-irányítás) című cikk nyújt útmutatást az előfizetéseknek a Resource Managerrel való hatékony kezeléséről.
 

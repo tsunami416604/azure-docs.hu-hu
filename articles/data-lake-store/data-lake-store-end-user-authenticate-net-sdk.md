@@ -1,8 +1,8 @@
 ---
-title: "Végfelhasználói hitelesítési: .NET SDK-val Data Lake Store az Azure Active Directoryval |} Microsoft Docs"
-description: "Megtudhatja, hogyan végfelhasználói hitelesítési elérése a Data Lake Store .NET SDK-val az Azure Active Directoryval"
+title: 'Végfelhasználói hitelesítési: .NET SDK-val Data Lake Store az Azure Active Directoryval |} Microsoft Docs'
+description: Megtudhatja, hogyan végfelhasználói hitelesítési elérése a Data Lake Store .NET SDK-val az Azure Active Directoryval
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: cgronlun
 editor: cgronlun
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: ea71743e775da8cfd85ecbd20e9c5981a198e05c
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 524b00c9fac8b874576cb756c1c8ee39e15e9882
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-net-sdk"></a>Végfelhasználói hitelesítési a Data Lake Store .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -63,7 +63,7 @@ Ebből a cikkből megismerheti az Azure Data Lake Store végfelhasználói hitel
    4. Zárja be a **NuGet-csomagkezelőt**.
 
 6. Nyissa meg **Program.cs**
-7. A használatával replease utasítások a következő sort:
+7. Cserélje le a használatával utasítások a következő sort:
 
     ```csharp
     using System;

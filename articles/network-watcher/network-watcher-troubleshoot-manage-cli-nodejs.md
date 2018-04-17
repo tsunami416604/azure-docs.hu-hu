@@ -1,11 +1,11 @@
 ---
-title: "Az Azure virtuális hálózati átjáró és a kapcsolatok - Azure CLI 1.0 hibaelhárítása |} Microsoft Docs"
-description: "Ez a lap ismerteti, hogyan Azure hálózati figyelőt Azure CLI 1.0 hibaelhárítása"
+title: Az Azure virtuális hálózati átjáró és a kapcsolatok - Azure CLI 1.0 hibaelhárítása |} Microsoft Docs
+description: Ez a lap ismerteti, hogyan Azure hálózati figyelőt Azure CLI 1.0 hibaelhárítása
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 2838bc61-b182-4da8-8533-27db8fdbd177
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: 2acbc47970acf0eb2aa1aea8535d7157bc73cbb6
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: ac5ce43d5ec992d8ec1bc5d7c787b1ca071eda98
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli-10"></a>Virtuális hálózati átjáró és az Azure hálózati figyelő Azure CLI 1.0 használatával kapcsolatok hibáinak elhárítása
 
@@ -103,4 +103,4 @@ A fájlok letöltését az azure storage-fiókok útmutatásért tekintse meg [a
 
 ## <a name="next-steps"></a>További lépések
 
-Ha a beállítások módosítása, hogy stop VPN-kapcsolatot, lásd: [hálózati biztonsági csoportok kezelése](../virtual-network/virtual-network-manage-nsg-arm-portal.md) nyomon követheti a hálózati biztonsági csoport és a biztonsági szabályok, amelyek lehet, hogy a szóban forgó.
+Ha a beállítások módosítása, hogy stop VPN-kapcsolatot, lásd: [hálózati biztonsági csoportok kezelése](../virtual-network/manage-network-security-group.md) nyomon követheti a hálózati biztonsági csoport és a biztonsági szabályok, amelyek lehet, hogy a szóban forgó.

@@ -1,11 +1,11 @@
 ---
-title: "A Felhőbeli szolgáltatás szolgáltatója az Azure-verem előfizetés kezelése céljából engedélyezése |} Microsoft Docs"
-description: "Azure-készletben előfizetés eléréséhez a szolgáltató engedélyezése."
+title: A Felhőbeli szolgáltatás szolgáltatója az Azure-verem előfizetés kezelése céljából engedélyezése |} Microsoft Docs
+description: Azure-készletben előfizetés eléréséhez a szolgáltató engedélyezése.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/27/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: 4bc5644425aa11fb210d81095e4166baefc6432e
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 26ba68be6d4932da77befaf7c968525393c0a033
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="enable-a-cloud-service-provider-to-manage-your-azure-stack-subscription"></a>A Felhőbeli szolgáltatás szolgáltatója az Azure-verem előfizetés kezelése céljából engedélyezése
 
@@ -41,7 +41,7 @@ Ha Azure veremmel rendelkező egy Felhőszolgáltató (CSP) használ, a az Azure
 A kriptográfiai Szolgáltató tulajdonosa hozzá az előfizetéséhez. 
 
 1. Adja hozzá a kriptográfiai Szolgáltató Vendég felhasználó. a bérlő címtár tulajdonosa szerepkörrel.  A felhasználók hozzáadásával kapcsolatos utasítások: [új felhasználók hozzáadása az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory)
-2. Tulajdonosi szerepkör hozzáadása a CSP Vendég felhasználó. A kriptográfiai Szolgáltató felhasználó hozzáadása az előfizetéséhez lépéseiért lásd: [Use Role-Based hozzáférés-vezérlés az Azure-előfizetés erőforrásokhoz való hozzáférés kezelése](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)
+2. Tulajdonosi szerepkör hozzáadása a CSP Vendég felhasználó. A kriptográfiai Szolgáltató felhasználó hozzáadása az előfizetéséhez lépéseiért lásd: [Use Role-Based hozzáférés-vezérlés az Azure-előfizetés erőforrásokhoz való hozzáférés kezelése](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 3. A kriptográfiai Szolgáltató majd hoz létre a helyi Azure verem előfizetési meg.
 4. Készen áll az Azure verem használatának megkezdéséhez.
 5. A kriptográfiai Szolgáltató kell majd hozzon létre egy erőforrást a előfizetés győződjön meg arról, hogy az erőforrások kezelésére. 

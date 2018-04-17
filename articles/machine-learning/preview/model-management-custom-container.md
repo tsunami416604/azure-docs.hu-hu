@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 3/26/2018
-ms.openlocfilehash: 858c8933565aeeb22dc1b685082dab2c6481737b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f56b651c40187e42361ac12f0cbf4e509385e0d2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="customize-the-container-image-used-for-azure-ml-models"></a>A használt Azure ML modellek tároló lemezkép testreszabása
 
@@ -23,7 +23,7 @@ Ez a cikk ismerteti az Azure Machine Learning modellek tároló lemezkép testre
 ## <a name="how-to-customize-the-docker-image"></a>A Docker lemezkép testreszabása
 Az Azure ML telepítő használatával Docker lemezkép testreszabása:
 
-1. Egy depenencies.yml fájlt: függőségei vannak, amelyek a telepíthető bővítmények kezeléséhez [PyPi]( https://pypi.python.org/pypi), használhatja a munkaterületet üzemeltető projekt conda_dependencies.yml a fájl, vagy hozza létre a sajátját. Ez a pip telepíthető Python függőségek telepítése az ajánlott megközelítés.
+1. A `dependencies.yml` fájl: függőségei vannak, amelyek a telepíthető bővítmények kezeléséhez [PyPi]( https://pypi.python.org/pypi), használhatja a `conda_dependencies.yml` a munkaterületet üzemeltető projekt fájlként, vagy hozza létre a sajátját. Ez a pip telepíthető Python függőségek telepítése az ajánlott megközelítés.
 
    Példa parancssori parancsot:
    ```azurecli

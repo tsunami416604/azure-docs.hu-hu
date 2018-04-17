@@ -1,26 +1,24 @@
 ---
-title: "Windows-alapú Azure hdinsight Java HBase-alkalmazás létrehozása |} Microsoft Docs"
-description: "Útmutató Apache Maven segítségével összeállíthat egy Apache HBase Java-alapú alkalmazást, majd központilag telepítenie kell egy Windows-alapú Azure HDInsight-fürtöt."
+title: Windows-alapú Azure hdinsight Java HBase-alkalmazás létrehozása |} Microsoft Docs
+description: Útmutató Apache Maven segítségével összeállíthat egy Apache HBase Java-alapú alkalmazást, majd központilag telepítenie kell egy Windows-alapú Azure HDInsight-fürtöt.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.assetid: 7f4a4e02-45ab-40dd-842b-3ec034f256c9
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/05/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: 59c9af5a91b107e68a676f02fe5a936f955b22fa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7ec84260a72b2745630087ceac24c8c00ff3f04f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-maven-to-build-java-applications-that-use-hbase-with-windows-based-hdinsight-hadoop"></a>A HBase és a Windows-alapú HDInsight (Hadoop) együttes használata Java-alkalmazások készítéséhez használja Maven
 Ismerje meg, hogyan hozhat létre és build egy [Apache HBase](http://hbase.apache.org/) alkalmazás Apache Maven használatával Java nyelven. Ezután használja az alkalmazást az Azure HDInsight (Hadoop).

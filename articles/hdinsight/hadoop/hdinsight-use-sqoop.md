@@ -1,26 +1,24 @@
 ---
-title: "Apache Sqoop feladatok futtatása az Azure HDInsight (Hadoop) |} Microsoft Docs"
-description: "Ismerje meg, hogyan használható az Azure PowerShell munkaállomásról futtatása Sqoop importálása és exportálása egy Hadoop-fürt és az Azure SQL-adatbázis között."
+title: Apache Sqoop feladatok futtatása az Azure HDInsight (Hadoop) |} Microsoft Docs
+description: Ismerje meg, hogyan használható az Azure PowerShell munkaállomásról futtatása Sqoop importálása és exportálása egy Hadoop-fürt és az Azure SQL-adatbázis között.
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 ms.assetid: 2fdcc6b7-6ad5-4397-a30b-e7e389b66c7a
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: e96003de4a0dd4a5d8b060bb5883e51291827316
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 2c9d708144ee10a7f55a6ffff33925e865ecd415
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-sqoop-with-hadoop-in-hdinsight"></a>Sqoop használata a hadooppal a Hdinsightban
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -49,7 +47,7 @@ HDInsight-fürtök néhány adatot tartalmaz. A következő két mintát haszná
   | --- | --- |
   | ClientID |karakterlánc |
   | querytime |karakterlánc |
-  | market |karakterlánc |
+  | piaci |karakterlánc |
   | deviceplatform |karakterlánc |
   | devicemake |karakterlánc |
   | devicemodel |karakterlánc |
@@ -62,7 +60,7 @@ HDInsight-fürtök néhány adatot tartalmaz. A következő két mintát haszná
 Az oktatóanyag segítségével ezen két adatkészletek tesztelése Sqoop importálása és exportálása.
 
 ## <a name="create-cluster-and-sql-database"></a>Fürt és az SQL-adatbázis létrehozása
-Ez a szakasz bemutatja, hogyan fürt SQL-adatbázis, az SQL adatbázis sémák és futtatásához az oktatóanyag az Azure-portál és az Azure Resource Manager-sablon létrehozásához. A sablonban található [Azure gyors üzembe helyezési sablonokat](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/). A Resource Manager-sablon meghívja a táblasémákat telepítendő SQL-adatbázis bacpac csomag.  A következő nyilvános blobtárolóban https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac a bacpac csomag található. Ha azt szeretné, személyes tároló használata a bacpac-fájlok, a sablon a következő értékeket használja:
+Ez a szakasz bemutatja, hogyan fürt SQL-adatbázis, az SQL adatbázis sémák és futtatásához az oktatóanyag az Azure-portál és az Azure Resource Manager-sablon létrehozásához. A sablonban található [Azure gyors üzembe helyezési sablonokat](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/). A Resource Manager-sablon meghívja a táblasémákat telepítendő SQL-adatbázis bacpac csomag.  A bacpac-csomag egy nyilvános blob tárolóban található https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac. Ha azt szeretné, személyes tároló használata a bacpac-fájlok, a sablon a következő értékeket használja:
    
 ```json
 "storageKeyType": "Primary",
@@ -97,7 +95,7 @@ Ha inkább az Azure PowerShell használatával a fürt és az SQL-adatbázis lé
         |Name (Név)|Érték|
         |----|-----|
         | Alapértelmezett tárfiók neve | &lt;CluterName > tárolásához |
-        | Az Azure SQL adatbázis-kiszolgáló neve | &lt;ClusterName>dbserver |
+        | Az Azure SQL adatbázis-kiszolgáló neve | &lt;ClusterName > dbserver |
         | Az Azure SQL-adatbázis neve | &lt;ClusterName > db |
      
 3. Válassza ki **elfogadom a feltételeket és a fenti feltételek**.

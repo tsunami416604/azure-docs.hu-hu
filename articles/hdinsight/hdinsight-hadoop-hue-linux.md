@@ -1,26 +1,24 @@
 ---
-title: "A fürtök - Azure HDInsight Linux-alapú hadooppal hue |} Microsoft Docs"
-description: "Útmutató a Hue telepítése HDInsight-fürtök és a kérelmek Hue-hez irányítandó bújtatás használata. Hue segítségével keresse meg a tárolási, és futtassa a Hive vagy Pig."
+title: A fürtök - Azure HDInsight Linux-alapú hadooppal hue |} Microsoft Docs
+description: Útmutató a Hue telepítése HDInsight-fürtök és a kérelmek Hue-hez irányítandó bújtatás használata. Hue segítségével keresse meg a tárolási, és futtassa a Hive vagy Pig.
 keywords: hue hadoop
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 9e57fcca-e26c-479d-a745-7b80a9290447
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: nitinme
-ms.openlocfilehash: 5cef5e72af8a8b7c007b688b029f875e89d163ae
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 829f309fa66bc548b9f74cca8112c244cc88775e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Telepítheti és használhatja Hue HDInsight Hadoop-fürtök
 
@@ -100,7 +98,7 @@ SSH-bújtatás Hue hozzáférni a fürtön, miután fut-e az egyetlen lehetősé
         hn0-myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
 
     Az elsődleges headnode állomásnevét azt, ahol a Hue webhelyen-e.
-4. A böngésző segítségével, http://HOSTNAME:8888 a Hue portál megnyitása. ÁLLOMÁSNÉV cserélje le az előző lépésben beolvasott nevére.
+4. A böngésző segítségével, a Hue portál megnyitása http://HOSTNAME:8888. ÁLLOMÁSNÉV cserélje le az előző lépésben beolvasott nevére.
 
    > [!NOTE]
    > Amikor első alkalommal bejelentkezik, a rendszer kéri, jelentkezzen be a Hue portál fiók létrehozásához. Az itt megadott hitelesítő adatok nem kapcsolódnak a rendszergazda vagy a megadott kiépítési a fürtön SSH hitelesítő, és kizárólag a portál.

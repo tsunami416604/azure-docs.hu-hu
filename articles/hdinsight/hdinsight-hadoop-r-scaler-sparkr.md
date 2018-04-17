@@ -1,8 +1,8 @@
 ---
-title: "ScaleR és SparkR használata az Azure HDInsight |} Microsoft Docs"
-description: "R Server és a HDInsight ScaleR és SparkR használata"
+title: ScaleR és SparkR használata az Azure HDInsight |} Microsoft Docs
+description: R Server és a HDInsight ScaleR és SparkR használata
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: jhubbard
 editor: cgronlun
@@ -10,37 +10,37 @@ tags: azure-portal
 ms.assetid: 5a76f897-02e8-4437-8f2b-4fb12225854a
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: b84c365defbaadbc83c86e6e387c15a63e0f17ce
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 4306f265bf7f52f9bc307def2256dd62e94e004f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>ScaleR és SparkR a Hdinsightban
 
-Ez a cikk bemutatja, hogyan repülési érkezési késések használatával megjósolható egy **ScaleR** logisztikai regresszió modell repülési késést és időjárási adatokból csatlakoztatni a **SparkR**. Ebben a forgatókönyvben a Spark használt Microsoft R Server analytics adatkezelési ScaleR lehetőségeit mutatja be. Ezek a technológiák együttesen a legújabb funkciókat az elosztott feldolgozási alkalmazását teszi lehetővé.
+Ez a dokumentum bemutatja, hogyan repülési érkezési késések használatával megjósolható egy **ScaleR** logisztikai regresszió modell. A példában repülési késleltetés és a időjárási adatokat illesztve **SparkR**.
 
 Bár mindkét csomagot Hadoop a Spark végrehajtási motorján futnak, akkor sem, minden egyes van szükségük a saját megfelelő Spark-munkamenetek megosztása a memóriában levő. Ezzel a problémával az R Server egy jövőbeli verziójában, amíg a megoldás, Spark-munkameneteket mozaikként, átfedés nélkül, és az exchange-adatok keresztül közbülső fájlok. Az utasítások mutatja, hogy ezek a követelmények egyszerű eléréséhez.
 
-Itt először egy, a rétegek 2016 előadás a által megosztott Mario Inchiosa és Roni Burd, amely egyúttal a válaszok webes szemináriumhoz keresztül elérhető például használjuk [egy méretezhető tudományos Adatplatform r felépítése](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio). A példa SparkR való csatlakozáshoz a jól ismert légitársaság érkezési késleltetés adatkészlet indulási és érkezési repülőtereken időjárási adatokkal. Az adatok csatlakoztatott ScaleR logisztikai regresszió modell bemeneteként majd használja a repülési érkezési késleltetés előrejelzéséhez.
+Ez a példa kezdetben megosztott egy előadás rétegek 2016, az Mario Inchiosa és Roni Burd. A következő előadás található [egy méretezhető tudományos Adatplatform r felépítése](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio).
 
-A kód azt forgatókönyv eredetileg készült az R Serverhez fut a Spark on Azure HDInsight-fürtöt. De a SparkR és ScaleR használatát egy parancsfájlban keverése fogalma is a helyszíni környezetben környezetében érvényes. Az alábbiakban azt feltételezik, a közbenső szintű Tudásbázis R és a [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) az R Server könyvtárban. Azt is vezethet használatát [SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) ebben a forgatókönyvben közben.
+A kód eredetileg készült az R Serverhez fut a Spark on Azure HDInsight-fürtöt. De a SparkR és ScaleR használatát egy parancsfájlban keverése fogalma is a helyszíni környezetben környezetében érvényes. 
+
+A jelen dokumentumban leírt lépések azt feltételezik, hogy rendelkezik-e a közbenső szintű Tudásbázis R és a [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) az R Server könyvtárban. Ön belépnek [SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) ebben a forgatókönyvben közben.
 
 ## <a name="the-airline-and-weather-datasets"></a>A légitársaság és időjárási adatkészletek
 
-A **AirOnTime08to12CSV** légitársaság nyilvános dataset repülési érkezési és indító adatait az USA, a December 2012. októberi 1987 belül minden kereskedelmi repülőútra információkat tartalmaz. Ez a nagy adatbázisból: nincsenek majdnem 150 millió rekordot összesen. Csomagolva csak a 4 GB. Az elérhető a [Egyesült államokbeli kormányzati archívumokat](http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236). Több kényelmesen, mint egy zip-fájl (AirOnTimeCSV.zip) tartalmazó 303 külön havi CSV-fájlok rendelkezésre áll a [fordulat Analytics dataset tárház](http://packages.revolutionanalytics.com/datasets/AirOnTime87to12/)
+A felhőszolgáltató közötti átviteléhez adat a [Egyesült államokbeli kormányzati archívumokat](http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236). Azt is rendelkezésre áll, mint a zip [AirOnTimeCSV.zip](http://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip).
 
-Repülési késések eredő időjárási megtekintéséhez a repülőtéren mindegyik időjárási adatok is kell. Ezek az adatok letölthető zip fájlt nyers formátumban, hónap, a [nemzeti óceáni és légköri felügyeleti tárház](http://www.ncdc.noaa.gov/orders/qclcd/). Ebben a példában az alkalmazásában azt olvasnak be adatokat időjárási, előfordulhat, hogy 2007 – December 2012 és a 68 havi zips belül az óránkénti adatfájlok használt. A havi zip-fájlok leképezéseket (YYYYMMstation.txt) is tartalmaz az időjárási állomás azonosítója (WBAN), a repülőtéren (hívójel) tartozik, és a repülőtéren időzóna eltolás az UTC (időzóna) között. Ezen információk van szükség, ha a légitársaság késleltetés és időjárási adatokkal való csatlakozás.
+A időjárási adatok letölthető zip fájlt nyers formátumban, hónap, a [nemzeti óceáni és légköri felügyeleti tárház](http://www.ncdc.noaa.gov/orders/qclcd/). Ebben a példában töltse le az adatokat, lehetséges, hogy 2007 – December 2012. Használja az óránkénti adatfájlok és `YYYYMMMstation.txt` fájl a zips belül. 
 
 ## <a name="setting-up-the-spark-environment"></a>A Spark-környezet létrehozása
 
-Az első lépés a Spark környezet beállítása. Az első lépések a bemeneti adatok könyvtárak tartalmazó könyvtárra mutat, egy Spark számítási környezet létrehozásakor, és a konzol tájékoztató naplózás naplózási függvény létrehozása:
+A következő kódot a Spark-környezetet használja:
 
 ```
 workDir        <- '~'  
@@ -85,7 +85,7 @@ logmsg('Start')
 logmsg(paste('Number of task nodes=',length(trackers)))
 ```
 
-Ezután azt hozzáadása "Spark_Home" R csomagok a keresési elérési útját, hogy azt SparkR használja, és egy SparkR munkamenet inicializálása:
+Ezután adja hozzá `Spark_Home` a keresési elérési útjára vonatkozóan R csomagokat. A keresési elérési út való hozzáadását lehetővé teszi SparkR használja, és egy SparkR munkamenet inicializálása:
 
 ```
 #..setup for use of SparkR  
@@ -108,7 +108,7 @@ sqlContext <- sparkRSQL.init(sc)
 
 ## <a name="preparing-the-weather-data"></a>Az időjárási adatok előkészítése
 
-Időjárás létrehozása azt részét úgy, hogy az oszlopok modellezési szükséges: 
+A időjárási adatok előkészítéséhez részét úgy, hogy az oszlopok szükséges modellezési: 
 
 - "Látható"
 - "DryBulbCelsius"
@@ -117,17 +117,9 @@ Időjárás létrehozása azt részét úgy, hogy az oszlopok modellezési szük
 - "Szélsebesség"
 - "Magasságmérő"
 
-Majd azt egy időjárási állomás társított repülőtéri kódot, és a mértékek konvertálása helyi idő az egyezményes világidőhöz.
+Majd adja hozzá az időjárási állomás társított repülőtéri kódot, és a mértékek konvertálása helyi idő az egyezményes világidőhöz.
 
-Az első lépések a időjárási állomáson (WBAN) adatait hozzárendelése egy repülőtéri kódot fájl létrehozásával. Azt a korrelációs sikerült beszerezni a leképezési fájlban az időjárási adatokat tartalmazza. Leképezi a *hívójel* (például LAX) mező mellett a időjárási adatfájl *származási* légitársaság adatban. Azonban azt csak történt egy másik leképezési aktuális rendelik hozzá *WBAN* való *AirportID* (például 12892 LAX), és tartalmazza *időzóna* , hogy mentette a CSV-fájl neve "wban-az-repülőtéri-azonosító-tz. Fürt megosztott kötetei szolgáltatás", amely is használhatók. Példa:
-
-| AirportID | WBAN | Időzóna
-|-----------|------|---------
-| 10685 | 54831 | -6
-| 14871 | 24232 | -8
-| .. | .. | ..
-
-Az alábbi kód beolvassa az óránkénti nyers időjárási adatok fájlok, igazolnia kell, a időjárási állomás leképezési fájlban egyesíti, állítja be az időpontok UTC mérések és a fájl egy új verzióját, majd írja oszlopokra részhalmazának:
+Először hozzon létre egy fájlt a időjárási állomáson (WBAN) adatait hozzárendelése egy repülőtéri kódot. Az alábbi kód beolvassa az óránkénti nyers időjárási adatok fájlok, igazolnia kell, a időjárási állomás leképezési fájlban egyesíti, állítja be az időpontok UTC mérések és a fájl egy új verzióját, majd írja oszlopokra részhalmazának:
 
 ```
 # Look up AirportID and Timezone for WBAN (weather station ID) and adjust time
@@ -542,7 +534,7 @@ elapsed <- (proc.time() - t0)[3]
 logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 ```
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ez a cikk azt már látható hogyan is lehet kombinálni SparkR használható modell fejlesztési Hadoop Spark ScaleR adatok módosítását. Ebben a forgatókönyvben csak fut egyszerre csak egy munkamenet külön Spark munkamenetek, karbantartása és exchange-adatok CSV-fájlok keresztül igényel. Egyszerű, bár ez a folyamat lehet egy jövőbeli R Server a kiadásban még egyszerűbbé SparkR és ScaleR is megosztani egy Spark-munkamenetet, és így megosztani a Spark DataFrames.
 

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: b13e31be58502d670b11dace1f646b0632a2f039
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c3d80fcaa38d0f1d7fa1770879ca9b40642bb796
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB Gremlin graph-támogatás
 Azure Cosmos-adatbázis támogatja [Apache Tinkerpop](http://tinkerpop.apache.org) átjárás nyelvi diagramot [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps), vagyis egy grafikonon API graph entitások létrehozására és a graph lekérdezés műveletet hajt végre. A Gremlin nyelv segítségével (csúcsban és szélek) graph entitásokat hozhatnak létre, belül entitásokból tulajdonságainak módosítása, hajtsa végre a lekérdezéseket és traversals és entitások törlésére. 
@@ -153,12 +153,6 @@ Minden egyes tulajdonság szerepel egy tömbben több érték is tárolható.
 | Tulajdonság | Leírás |
 | --- | --- |
 | érték | A tulajdonság értéke
-
-## <a name="gremlin-partitioning"></a>Particionálás gremlin
-
-Az Azure Cosmos DB, diagramjait belül is méretezhető tárolókhoz tároló egymástól függetlenül a tárolási és átviteli sebesség (a normalizált kérelmek / másodperc szerint megadva) tekintetében. Minden egyes tárolóban kell adnia egy nem kötelező, de ajánlott a partíciós kulcs tulajdonság határozza meg, hogy a logikai partíciót határ kapcsolódó adatok. Minden csomópont él kell lennie egy `id` tulajdonság, amely egyedi entitások belül, hogy a partíciós kulcs értéke. A részleteket lásd: [Azure Cosmos DB a particionálás](partition-data.md).
-
-Gremlin műveletek problémamentesen működik, amelyek több partíciót az Azure Cosmos DB több Diagramadatok között. Azonban ajánlott válassza ki a diagramok egy partíciós kulcs, amely általában arra használják a lekérdezések szűrő hozzáféréssel rendelkezik az számos különböző értékeket, és hasonló gyakorisága ezeket az értékeket. 
 
 ## <a name="gremlin-steps"></a>Gremlin lépéseket
 Mostantól az Azure Cosmos DB által támogatott Gremlin lépéseket vizsgáljuk meg. A Gremlin teljes referenciáért lásd: [TinkerPop hivatkozás](http://tinkerpop.apache.org/docs/current/reference).

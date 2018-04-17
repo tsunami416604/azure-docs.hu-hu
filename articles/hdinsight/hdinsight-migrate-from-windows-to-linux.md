@@ -1,8 +1,8 @@
 ---
-title: "Áttelepítheti a Windows-alapú HDInsight Linux-alapú HDInsight - Azure |} Microsoft Docs"
-description: "Megtudhatja, hogyan telepíthetők át egy Windows-alapú HDInsight-fürtöt egy Linux-alapú HDInsight-fürtöt."
+title: Áttelepítheti a Windows-alapú HDInsight Linux-alapú HDInsight - Azure |} Microsoft Docs
+description: Megtudhatja, hogyan telepíthetők át egy Windows-alapú HDInsight-fürtöt egy Linux-alapú HDInsight-fürtöt.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,16 +10,14 @@ ms.assetid: ff35be59-bae3-42fd-9edc-77f0041bab93
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: dff9eaad252a71942b07212b7cfa9d9ddf346a3f
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 6d4b537834b8a70f0015fc9c6316dae20af5dd5a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Linux-alapú fürtre Windows-alapú HDInsight-fürtök áttelepítése
 
@@ -146,13 +144,13 @@ Windows-alapú HDInsight-fürtök a klasszikus virtuális hálózatok csak haszn
 
 A konfigurációs követelményekről további információkért lásd: a [kiterjesztése HDInsight képességek a virtuális hálózat segítségével](hdinsight-extend-hadoop-virtual-network.md) dokumentum.
 
-## <a name="management-and-monitoring"></a>Kezelés és figyelés
+## <a name="management-and-monitoring"></a>Kezelés és monitorozás
 
-A web UI használta a Windows-alapú hdinsight eszközzel, például a feladatelőzmények vagy a Yarn felhasználói felületen, számos Ambari keresztül érhető el. Emellett az Ambari Hive View megoldást egy webböngésző segítségével Hive-lekérdezések futtatásához. Az Ambari webes felhasználói felületén Linux-alapú fürtökön https://CLUSTERNAME.azurehdinsight.net címen érhető el.
+A web UI használta a Windows-alapú hdinsight eszközzel, például a feladatelőzmények vagy a Yarn felhasználói felületen, számos Ambari keresztül érhető el. Emellett az Ambari Hive View megoldást egy webböngésző segítségével Hive-lekérdezések futtatásához. Az Ambari webes felhasználói felület érhető el a Linux-alapú fürtökön https://CLUSTERNAME.azurehdinsight.net.
 
 Ambari használatával kapcsolatos további információkért lásd a következő dokumentumokat:
 
-* [Ambari Web](hdinsight-hadoop-manage-ambari.md)
+* [Ambari webes](hdinsight-hadoop-manage-ambari.md)
 * [Ambari REST API-n](hdinsight-hadoop-manage-ambari-rest-api.md)
 
 ### <a name="ambari-alerts"></a>Ambari riasztások
@@ -234,7 +232,7 @@ Ha olyan munkafolyamatot, amely C#-alkalmazás használ, ellenőrizze a Linux k�
 | A Windows-alapú, használni... | A Linux-alapú... |
 | --- | --- |
 | A Storm irányítópultja |A Storm irányítópultjának nem érhető el. Lásd: [a Linux-alapú HDInsight központi telepítése és kezelése Storm topológiák](storm/apache-storm-deploy-monitor-topology-linux.md) küldeni topológiákat módon a |
-| A Storm felhasználói felülete |A Storm felhasználói felülete https://CLUSTERNAME.azurehdinsight.net/stormui címen érhető el |
+| A Storm felhasználói felülete |A Storm felhasználói felülete érhető el: https://CLUSTERNAME.azurehdinsight.net/stormui |
 | A Visual Studio létrehozásához, telepítéséhez és felügyeletéhez a C# vagy hibrid topológiák |A Visual Studio létrehozásához, telepítéséhez és felügyeletéhez a C# (SCP.NET) vagy a Linux-alapú HDInsight alatt futó Storm hibrid topológiák is használható. Csak használható 10/28/2016 után létrehozott fürtökkel. |
 
 ## <a name="hbase"></a>HBase

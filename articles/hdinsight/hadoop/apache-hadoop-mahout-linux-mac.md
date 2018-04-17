@@ -1,8 +1,8 @@
 ---
-title: "Mahout és-(SSH) HDInsight - Azure javaslatok generálása |} Microsoft Docs"
-description: "Megtudhatja, hogyan használja az Apache Mahout machine learning-könyvtárral movie javaslatok és a HDInsight (Hadoop) együttes létrehozásához."
+title: Mahout és-(SSH) HDInsight - Azure javaslatok generálása |} Microsoft Docs
+description: Megtudhatja, hogyan használja az Apache Mahout machine learning-könyvtárral movie javaslatok és a HDInsight (Hadoop) együttes létrehozásához.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: c78ec37c-9a8c-4bb6-9e38-0bdb9e89fbd7
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: larryfr
-ms.openlocfilehash: 4674008523704b9b1fb86de8606641f6140e2910
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 357df033c4d3fd0da84ea595d68802546aee3e9a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-linux-based-hadoop-in-hdinsight-ssh"></a>Film javaslatok generálása Apache Mahout Linux-alapú hadooppal a HDInsight-(SSH) használatával
 
@@ -49,9 +47,9 @@ A funkciók Mahout által biztosított egyike egy javaslat motor. Ez a motor elf
 
 Az alábbi munkafolyamat egy egyszerűsített példa movie adatait használó:
 
-* **Közös előfordulási**: Joe, Ágnes és minden tetszését Bob *csillag ütközések*, *vissza sztrájkok a Empire*, és *a Jedi visszaküldése*. Mahout határozza meg, hogy a felhasználók számára is, például a filmek egyikét sem például a másik kettőt.
+* **közös előfordulási**: Joe, Ágnes és minden tetszését Bob *csillag ütközések*, *vissza sztrájkok a Empire*, és *a Jedi visszaküldése*. Mahout határozza meg, hogy a felhasználók számára is, például a filmek egyikét sem például a másik kettőt.
 
-* **Közös előfordulási**: Bálint és Alice is tetszését *a látszólagos támadása*, *támadás a klónja*, és *megtorlás a Sith a*. Mahout határozza meg, hogy felhasználók, akik az előző három filmek is tetszését hasonlóan ezen három filmek.
+* **közös előfordulási**: Bálint és Alice is tetszését *a látszólagos támadása*, *támadás a klónja*, és *megtorlás a Sith a*. Mahout határozza meg, hogy felhasználók, akik az előző három filmek is tetszését hasonlóan ezen három filmek.
 
 * **Hasonlóság ajánlás**: mivel Joe tetszését az első három filmek, Mahout ellenőrzi, hogy az filmek, hogy más, hasonló beállítások tetszett, de Joe rendelkezik nem figyelt (tetszését/névleges). Ebben az esetben Mahout javasolja *a látszólagos támadása*, *támadás a klónja*, és *a Sith a megtorlás*.
 

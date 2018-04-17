@@ -1,9 +1,9 @@
 ---
-title: "A telepítő a Hadoop, Spark, Kafka, HBase vagy R Server - Azure HDInsight fürt |} Microsoft Docs"
-description: "Hadoop, Kafka, Spark, HBase, R Server, vagy beállítása Storm-fürtök a HDInsight egy böngészőt, az Azure parancssori felület, Azure PowerShell, REST vagy SDK."
-keywords: "hadoop-fürt beállítása, kafka fürtbeállítás, spark-fürt beállítása, mi az hadoop-fürt"
+title: A telepítő a Hadoop, Spark, Kafka, HBase vagy R Server - Azure HDInsight fürt |} Microsoft Docs
+description: Hadoop, Kafka, Spark, HBase, R Server, vagy beállítása Storm-fürtök a HDInsight egy böngészőt, az Azure parancssori felület, Azure PowerShell, REST vagy SDK.
+keywords: hadoop-fürt beállítása, kafka fürtbeállítás, spark-fürt beállítása, mi az hadoop-fürt
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -12,16 +12,14 @@ ms.assetid: 23a01938-3fe5-4e2e-8e8b-3368e1bbe2ca
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: jgao
-ms.openlocfilehash: 39c1be51d7aa54691a6ff55483138a603c3fabed
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 54c88b25911ddfa4ed9ecf6ea4b28278c2d9aac2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>Hdinsight Hadoop, Spark, Kafka és több fürt beállítása
 
@@ -68,7 +66,7 @@ Kövesse a alapvető fürttelepítés ehhez a képernyőn megjelenő utasításo
 
 [Az Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) egy Azure-erőforráscsoportot néven a munkát az erőforrásokkal egy csoportként az alkalmazásban. Telepítéséhez, frissítéséhez, figyelése, vagy törli az összes erőforrást egyetlen, koordinált műveletben az alkalmazáshoz.
 
-## <a name="cluster-types">Fürt típusa és konfigurálása</a>
+## <a name="cluster-types"></a> Fürt típusa és konfigurálása
 Az Azure HDInsight jelenleg a következő fürttípusok, az összetevők arra, hogy bizonyos funkciók biztosít.
 
 > [!IMPORTANT]

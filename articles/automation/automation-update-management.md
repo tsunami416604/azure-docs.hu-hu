@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 04/05/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: c9a546f82d3300b37f861fff53421ebbf9fe3804
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 2c54435d893753306e903c0851e319fc3d1621b1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítse a felügyeleti megoldás az Azure-ban
 
@@ -51,7 +51,7 @@ A következő táblázat a támogatott operációs rendszerek listáját jelení
 |Operációs rendszer  |Megjegyzések  |
 |---------|---------|
 |Windows Server 2008, Windows Server 2008 R2 RTM    | Csak értékelés frissítése         |
-|Windows Server 2008 R2 SP1 és újabb rendszer     |.NET-keretrendszer 4.5 és WMF 5.0-s vagy újabb szükséges a Windows Server 2008 R2 SP1        |
+|Windows Server 2008 R2 SP1 és újabb rendszer     |A Windows PowerShell 4.0-s vagy újabb rendszer szükséges ([töltse le a WMF 4.0-s](https://www.microsoft.com/download/details.aspx?id=40855)).<br> A Windows PowerShell 5.1 ([letöltése WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616)) megbízhatóbbak ajánlott.         |
 |CentOS 6 (x86/x64) és 7 (x64)      | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
 |Red Hat Enterprise 6 (x86/x64) és 7 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) és 12 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
@@ -207,10 +207,10 @@ A következő táblázat a megoldás által gyűjtött frissítési rekordok min
 | Lekérdezés | Leírás |
 | --- | --- |
 |Frissítés<br>&#124;Ha UpdateState == "Szükséges" és az opcionális == false<br>&#124;Számítógép, a cím, a KBID, a besorolás, a PublishedDate projekt |Minden számítógép, amelyről hiányzik frissítés<br>Adja hozzá az operációs rendszer korlátozni a következők egyikét:<br>OSType = "Windows"<br>OSType == "Linux" |
-| Frissítés<br>&#124;Ha UpdateState == "Szükséges" és az opcionális == false<br>&#124;Ha számítógép == "ContosoVM1.contoso.com"<br>&#124; project Computer, Title, KBID, Product, PublishedDate |Egy adott számítógépről hiányzó frissítések (cserélje le az értéket a saját számítógépnevére)|
+| Frissítés<br>&#124;Ha UpdateState == "Szükséges" és az opcionális == false<br>&#124;Ha számítógép == "ContosoVM1.contoso.com"<br>&#124;Számítógép, a cím, a KBID, a termék, a PublishedDate projekt |Egy adott számítógépről hiányzó frissítések (cserélje le az értéket a saját számítógépnevére)|
 | Esemény<br>&#124;Ha EventLevelName == "error" és a számítógép ((frissítés &#124; where (besorolási == "Biztonsági frissítések" vagy a besorolási == "Kritikus frissítések")<br>&#124;Ha UpdateState == "Szükséges" és az opcionális == false <br>&#124;különálló számítógép)) |Olyan gépek hibaeseményei, amelyeknél kritikus vagy biztonsági szükséges frissítések hiányoznak |
 | Frissítés<br>&#124;Ha UpdateState == "Szükséges" és az opcionális == false<br>&#124;különböző cím |Egyedi frissítések minden számítógépnél |
-| UpdateRunProgress<br>&#124;Ha InstallationStatus == "sikertelen" <br>&#124; summarize AggregatedValue = count() by Computer, Title, UpdateRunName |Futtassa egy frissítés sikertelen rendelkező számítógépek<br>Adja hozzá az operációs rendszer korlátozni a következők egyikét:<br>OSType = "Windows"<br>OSType == "Linux" |
+| UpdateRunProgress<br>&#124;Ha InstallationStatus == "sikertelen" <br>&#124;AggregatedValue összefoglalója count() által számítógép, cím, UpdateRunName = |Futtassa egy frissítés sikertelen rendelkező számítógépek<br>Adja hozzá az operációs rendszer korlátozni a következők egyikét:<br>OSType = "Windows"<br>OSType == "Linux" |
 | Frissítés<br>&#124;Ha OSType == "Linux"<br>&#124;Ha UpdateState! = "Nem szükséges" és (besorolási == "Kritikus frissítések" vagy a besorolási == "Biztonsági frissítések")<br>&#124;AggregatedValue összefoglalója = count() számítógépenként |Linux gépeire, amelyeket a csomag frissítés érhető el, amely kritikus vagy biztonsági rést listája | 
 | UpdateRunProgress<br>&#124;Ha UpdateRunName == "DeploymentName"<br>&#124;AggregatedValue összefoglalója = count() számítógépenként|Az ebben a frissítésfuttatásban frissített számítógépek (cserélje le az értéket a saját frissítéstelepítésének nevére) | 
 

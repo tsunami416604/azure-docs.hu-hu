@@ -1,25 +1,23 @@
 ---
-title: "További Azure storage-fiókok hozzáadása HDInsight |} Microsoft Docs"
-description: "Ismerje meg, hogy további Azure storage-fiókok hozzáadása egy meglévő HDInsight-fürtre."
+title: További Azure storage-fiókok hozzáadása HDInsight |} Microsoft Docs
+description: Ismerje meg, hogy további Azure storage-fiókok hozzáadása egy meglévő HDInsight-fürtre.
 services: hdinsight
-documentationCenter: 
+documentationCenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
-ms.devlang: 
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.devlang: ''
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 72045d363516a2f16d45e3f8ee157ddd9d9242bd
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 569a41dfdbf2f9d911e67f283f413130ba7e1f79
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>HDInsight további storage-fiókok hozzáadása
 
@@ -55,7 +53,7 @@ A feldolgozás során a parancsfájl a következő műveleteket hajtja végre:
 
 ## <a name="the-script"></a>A parancsfájl
 
-__Script location__: [https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh)
+__Parancsfájl-hely__: [https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh)
 
 __Követelmények__:
 
@@ -68,7 +66,7 @@ Ez a parancsfájl az Azure portál, Azure PowerShell vagy az Azure CLI 1.0 haszn
 > [!IMPORTANT]
 > A testreszabási dokumentumban leírt lépések használata esetén olvassa el következő alkalmazni ezt a parancsfájlt:
 >
-> * Cserélje le ezt a parancsfájlt (https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh) URI-JÁNAK bármely példa parancsfájlművelet URI.
+> * A példa parancsfájlművelet URI cserélje le a parancsfájl URI-JÁNAK (https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh).
 > * A példa paramétereket cserélje le a az Azure storage-fiók nevét és a kulcsot a tárfiók hozzá kell adni a fürthöz. Az Azure portál használatával, ha ezeket a paramétereket szóközzel kell elválasztani.
 > * Nem kell megjelölni a parancsprogramot __megőrzött__, ahogy azt közvetlenül frissíti az Ambari konfigurációját a fürt számára.
 
@@ -100,7 +98,7 @@ curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/cluster
 > [!NOTE]
 > Állítsa be `$PASSWORD` az a fürt (rendszergazda) bejelentkezési fiók jelszavát. Állítsa be `$CLUSTERNAME` a HDInsight-fürt nevére. Állítsa be `$STORAGEACCOUNTNAME` a tárfiók nevére.
 >
-> Ez a példa [curl (http://curl.haxx.se/)](http://curl.haxx.se/) és [jq (https://stedolan.github.io/jq/)](https://stedolan.github.io/jq/) beolvasása és elemzése JSON-adatokat.
+> Ez a példa [curl (http://curl.haxx.se/) ](http://curl.haxx.se/) és [jq (https://stedolan.github.io/jq/) ](https://stedolan.github.io/jq/) beolvasása és elemzése JSON-adatokat.
 
 Ha ezzel a paranccsal cserélje le __CLUSTERNAME__ a HDInsight-fürt nevét. Cserélje le __jelszó__ a fürt HTTP bejelentkezési jelszavával. Cserélje le __STORAGEACCOUNT__ parancsfájlművelet segítségével adhatók hozzá a tárfiók nevével. Ez a parancs által visszaadott információ jelenik meg az alábbihoz hasonló:
 
@@ -116,7 +114,7 @@ A parancsfájlművelet újra fut does __nem__ frissíti a kulcsot, a parancsfáj
 
 Ez a probléma megoldása érdekében el kell távolítania a meglévő bejegyzést a tárfiók. Az alábbi lépések segítségével távolítsa el a meglévő bejegyzést:
 
-1. Egy webböngészőben nyissa meg az Ambari webes felhasználói felülete a HDInsight-fürthöz. The URI is https://CLUSTERNAME.azurehdinsight.net. Cserélje le a __CLUSTERNAME__ elemet a fürt nevére.
+1. Egy webböngészőben nyissa meg az Ambari webes felhasználói felülete a HDInsight-fürthöz. A megadott URI azonosító https://CLUSTERNAME.azurehdinsight.net. Cserélje le a __CLUSTERNAME__ elemet a fürt nevére.
 
     Amikor a rendszer kéri, adja meg a bejelentkezési felhasználói HTTP és a jelszót a fürt számára.
 

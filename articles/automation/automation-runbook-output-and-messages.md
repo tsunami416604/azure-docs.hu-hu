@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: d4b8d485906701b4f05e057996bc31232a29e620
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d4931c710bebc5e6c3ee23fb58e1432bb86da4a5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Runbook-kimenet és üzenetek az Azure Automationben
 Azure Automation-forgatókönyv a legtöbb van valamilyen kimenetet például egy hibaüzenet a felhasználó számára, vagy egy összetett objektumot egy másik munkafolyamat számára készült. A Windows PowerShell szintén [több adatfolyam](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) kimenetként egy parancsfájl vagy a munkafolyamat számára. Az összes ezekbe az adatfolyamokba eltérő módon működik az Azure Automation, és ajánlott eljárások használata minden egyes runbook létrehozásakor kell.
@@ -33,29 +33,32 @@ A kimeneti adatfolyamba megfelelően egy parancsfájl vagy a munkafolyamat álta
 
 Adatokat írni a kimeneti adatfolyamhoz a [Write-Output](http://technet.microsoft.com/library/hh849921.aspx) vagy az objektum saját sort kap a runbookban a helyezésével.
 
-    #The following lines both write an object to the output stream.
-    Write-Output –InputObject $object
-    $object
+```PowerShell
+#The following lines both write an object to the output stream.
+Write-Output –InputObject $object
+$object
+```
 
 ### <a name="output-from-a-function"></a>Függvények kimenete
 Ha a kimeneti adatfolyamba, a runbookban szereplő függvényből ír a kimeneti átadódik a runbookot. Ha a runbook hozzárendeli a kimenet egy változóhoz, majd nem írás a kimeneti adatfolyamba. A runbook megfelelő adatfolyamába ír írás bármely másik adatfolyamba a függvényen belül.
 
 Vegye figyelembe az alábbi példában a runbook:
 
-    Workflow Test-Runbook
-    {
-        Write-Verbose "Verbose outside of function" -Verbose
-        Write-Output "Output outside of function"
-        $functionOutput = Test-Function
-        $functionOutput
+```PowerShell
+Workflow Test-Runbook
+{
+  Write-Verbose "Verbose outside of function" -Verbose
+  Write-Output "Output outside of function"
+  $functionOutput = Test-Function
+  $functionOutput
 
-    Function Test-Function
-     {
-        Write-Verbose "Verbose inside of function" -Verbose
-        Write-Output "Output inside of function"
-      }
-    }
-
+  Function Test-Function
+  {
+    Write-Verbose "Verbose inside of function" -Verbose
+    Write-Output "Output inside of function"
+  }
+}
+```
 
 A kimeneti adatfolyamba, a runbook-feladat a következő lesz:
 
@@ -81,13 +84,15 @@ Ez egy lista példa kimenet típusa:
 
 Az alábbi példában a runbook kimenete egy karakterlánc-objektum, és megadja az elvárt kimenettípust. Ha a runbook kimenete egy bizonyos típusú tömb, majd, továbbra is adja meg a típus típusú tömb szemben.
 
-    Workflow Test-Runbook
-    {
-       [OutputType([string])]
+```PowerShell
+Workflow Test-Runbook
+{
+  [OutputType([string])]
 
-       $output = "This is some string output."
-       Write-Output $output
-    }
+  $output = "This is some string output."
+  Write-Output $output
+}
+ ```
 
 A forgatókönyvek grafikus vagy grafikus PowerShell-munkafolyamat egy kimeneti típus deklarálja, jelölje ki a **bemeneti és kimeneti** menüpontra, majd a kimeneti típus nevében típusa. Ajánlott a teljes .NET-osztály neve segítségével könnyebben könnyen azonosítható, ha a szülőrunbookból hivatkoznak rá. Ez az adatbuszhoz a runbookban lévő osztály összes tulajdonságainak és sok rugalmasságot nyújt, amikor a használatuk feltételes logikához, a naplózás, és más tevékenységek a runbookban értékként hivatkozik.<br> ![A Runbook bemeneti és kimeneti beállítás](media/automation-runbook-output-and-messages/runbook-menu-input-and-output-option.png)
 
@@ -103,7 +108,7 @@ A második forgatókönyv ebben a példában, nevű *teszt-ChildOutputType*, egy
 
 Az első tevékenység hívások a **AuthenticateTo-Azure** runbook és a második tevékenység fut a **Write-Verbose** parancsmagot a **adatforrás** a **tevékenység kimeneti** és az értéke **mező elérési útja** van **Context.Subscription.SubscriptionName**, amely határozza meg a környezetben kimenetét a a **AuthenticateTo-Azure** runbook.<br> ![Write-Verbose parancsmag paraméter adatforrás](media/automation-runbook-output-and-messages/runbook-write-verbose-parameters-config.png)    
 
-Ennek kimenete az előfizetés esetén.<br> ![Test-ChildOutputType Runbook Results](media/automation-runbook-output-and-messages/runbook-test-childoutputtype-results.png)
+Ennek kimenete az előfizetés esetén.<br> ![Teszt-ChildOutputType eredmények összesítése](media/automation-runbook-output-and-messages/runbook-test-childoutputtype-results.png)
 
 A kimeneti típus vezérlő viselkedését egy megjegyzést. Ha a kimeneti mezőben a bemeneti és kimeneti tulajdonságai panelen írjon be egy értéket kell a vezérlőn kívül, akkor ahhoz, hogy a megadott adatot ismeri fel a vezérlő beírása után.  
 
@@ -115,11 +120,13 @@ A figyelmeztetési és hibaadatfolyamok a runbookban előforduló problémákat 
 
 Hozzon létre egy figyelmeztető és hibaüzeneteket a [Write-Warning](https://technet.microsoft.com/library/hh849931.aspx) vagy [Write-Error](http://technet.microsoft.com/library/hh849962.aspx) parancsmag. A tevékenységek is írhatnak adatokat ezekbe az adatfolyamokba.
 
-    #The following lines create a warning message and then an error message that will suspend the runbook.
+```PowerShell
+#The following lines create a warning message and then an error message that will suspend the runbook.
 
-    $ErrorActionPreference = "Stop"
-    Write-Warning –Message "This is a warning message."
-    Write-Error –Message "This is an error message that will stop the runbook because of the preference variable."
+$ErrorActionPreference = "Stop"
+Write-Warning –Message "This is a warning message."
+Write-Error –Message "This is an error message that will stop the runbook because of the preference variable."
+```
 
 ### <a name="verbose-stream"></a>Részletes adatfolyam
 A részletes üzenet-adatfolyam van a runbook-művelettel kapcsolatos általános információkat. Mivel a [hibakeresési adatfolyam](#Debug) nem érhető el egy runbook részletes üzenetek használja a rendszer hibakeresési információ. Alapértelmezés szerint a közzétett runbookok részletes üzenetei nem tárolódik a feladatelőzményekben. Részletes üzenetek tárolásához, konfigurálja a konfigurálása lapon, az Azure-portálon a runbook közzétett runbookok részletes rekordok naplózása. A legtöbb esetben érdemes megtartani az alapértelmezett beállítás, amely nem naplózza a teljesítményre vonatkozó megfontolásból runbook részletes rekordjait. Kapcsolja be ezt a lehetőséget csak hibaelhárítása vagy a hibakeresési egy runbookot.
@@ -128,9 +135,11 @@ Ha [runbook tesztelése](automation-testing-runbook.md), részletes üzenet nem 
 
 Részletes üzenetet létrehozni a [Write-Verbose](http://technet.microsoft.com/library/hh849951.aspx) parancsmag.
 
-    #The following line creates a verbose message.
+```PowerShell
+#The following line creates a verbose message.
 
-    Write-Verbose –Message "This is a verbose message."
+Write-Verbose –Message "This is a verbose message."
+```
 
 ### <a name="debug-stream"></a>Hibakeresési adatfolyam
 A hibakeresési adatfolyam interaktív felhasználót számára készült, és nem használható a runbookok.
@@ -147,16 +156,16 @@ Az alábbi táblázat a preferenciaváltozók használható a runbookok, valamin
 
 | Változó | Alapértelmezett érték | Érvényes értékek |
 |:--- |:--- |:--- |
-| WarningPreference |Folytatás |Leállítás<br>Folytatás<br>SilentlyContinue |
-| ErrorActionPreference |Folytatás |Leállítás<br>Folytatás<br>SilentlyContinue |
-| VerbosePreference |SilentlyContinue |Leállítás<br>Folytatás<br>SilentlyContinue |
+| WarningPreference |Folytatás |Leállítás<br>Folytatás<br>Folytatáscsendben |
+| ErrorActionPreference |Folytatás |Leállítás<br>Folytatás<br>Folytatáscsendben |
+| VerbosePreference |Folytatáscsendben |Leállítás<br>Folytatás<br>Folytatáscsendben |
 
 A következő táblázat preferencia változóértékei, amelyek érvényesek a runbookok viselkedését.
 
 | Érték | Viselkedés |
 |:--- |:--- |
 | Folytatás |Naplózza az üzenetet, és folytatja a runbook futtatását. |
-| SilentlyContinue |Továbbra is fennáll, az üzenet naplózása nélkül a runbook futtatását. Ez befolyásolja a rendszer figyelmen kívül hagyja az üzenetet. |
+| Folytatáscsendben |Továbbra is fennáll, az üzenet naplózása nélkül a runbook futtatását. Ez befolyásolja a rendszer figyelmen kívül hagyja az üzenetet. |
 | Leállítás |Naplózza az üzenetet, és felfüggeszti a runbook futtatását. |
 
 ## <a name="retrieving-runbook-output-and-messages"></a>Runbook-kimenet és üzenetek lekérése
@@ -168,24 +177,25 @@ A Windows PowerShell parancssorába beolvasható-kimenet és üzenetek powershel
 
 A következő példában elindul a runbook, és majd megvárja, amíg befejeződik. Ezt követően a kimeneti adatfolyamot begyűjti a feladatból.
 
-    $job = Start-AzureRmAutomationRunbook -ResourceGroupName "ResourceGroup01" `
-    –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook"
+```PowerShell
+$job = Start-AzureRmAutomationRunbook -ResourceGroupName "ResourceGroup01" `
+  –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook"
 
-    $doLoop = $true
-    While ($doLoop) {
-       $job = Get-AzureRmAutomationJob -ResourceGroupName "ResourceGroup01" `
-       –AutomationAccountName "MyAutomationAccount" -Id $job.JobId
-       $status = $job.Status
-       $doLoop = (($status -ne "Completed") -and ($status -ne "Failed") -and ($status -ne "Suspended") -and ($status -ne "Stopped"))
-    }
+$doLoop = $true
+While ($doLoop) {
+  $job = Get-AzureRmAutomationJob -ResourceGroupName "ResourceGroup01" `
+    –AutomationAccountName "MyAutomationAccount" -Id $job.JobId
+  $status = $job.Status
+  $doLoop = (($status -ne "Completed") -and ($status -ne "Failed") -and ($status -ne "Suspended") -and ($status -ne "Stopped"))
+}
 
-    Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
-    –AutomationAccountName "MyAutomationAccount" -Id $job.JobId –Stream Output
-    
-    # For more detailed job output, pipe the output of Get-AzureRmAutomationJobOutput to Get-AzureRmAutomationJobOutputRecord
-    Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
-    –AutomationAccountName "MyAutomationAccount" -Id $job.JobId –Stream Any | Get-AzureRmAutomationJobOutputRecord
-    
+Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
+  –AutomationAccountName "MyAutomationAccount" -Id $job.JobId –Stream Output
+
+# For more detailed job output, pipe the output of Get-AzureRmAutomationJobOutput to Get-AzureRmAutomationJobOutputRecord
+Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
+  –AutomationAccountName "MyAutomationAccount" -Id $job.JobId –Stream Any | Get-AzureRmAutomationJobOutputRecord
+``` 
 
 ### <a name="graphical-authoring"></a>Grafikus készítése
 Grafikus forgatókönyvekhez extra naplózás érhető tevékenység szintű nyomkövetés formájában. Nyomkövetés két szint: Basic, és részletesen. Alapvető nyomkövetés, láthatja, hogy a start és a runbook, valamint minden tevékenység-újrapróbálkozások, például a kapcsolatos adatokat minden tevékenység befejezési időpontja kísérletet tett, és a tevékenység kezdési időpontja. Részletes nyomkövetés, a kapott egyszerű nyomkövetést plusz bemeneti és kimeneti minden egyes tevékenységhez. Jelenleg a nyomkövetési rekord segítségével készül a részletes napló, engedélyeznie kell a részletes naplózást, ha engedélyezi a nyomkövetést. Grafikus forgatókönyvekhez a kérelmek nyomon követése engedélyezve van nincs szükség a naplózza az állapotrekordokat, mert az alapvető nyomkövetés ugyanazt a célt szolgálja, és több információs célokat szolgál.

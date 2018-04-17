@@ -1,11 +1,11 @@
 ---
-title: "Konfigurációs és kezelésének számos, a Microsoft Azure Cloud Services – gyakori kérdések |} Microsoft Docs"
-description: "Ez a cikk a kapcsolatos gyakori kérdések konfigurálása és kezelése a Microsoft Azure Felhőszolgáltatások sorolja fel."
+title: Konfigurációs és kezelésének számos, a Microsoft Azure Cloud Services – gyakori kérdések |} Microsoft Docs
+description: Ez a cikk a kapcsolatos gyakori kérdések konfigurálása és kezelése a Microsoft Azure Felhőszolgáltatások sorolja fel.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
 ms.service: cloud-services
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: genli
-ms.openlocfilehash: 916fbb436806c64ded9ebf9fdd9c57c42d0809f0
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: cc43d1a0e07eac78a47e6f183c2fd066a489f4f4
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfigurációs és kezelésének számos Azure-szolgáltatásokhoz: gyakran ismételt kérdések (GYIK)
 
@@ -57,7 +57,7 @@ Ez a cikk tartalmazza a konfigurációs és kezelésének számos kapcsolatos gy
 - [I nem felüli X példányok](#i-cannot-scale-beyond-x-instances)
 - [Hogyan konfigurálható a memória mérőszámok alapján automatikus méretezése?](#how-can-i-configure-auto-scale-based-on-memory-metrics)
 
-**Generic**
+**Általános**
 
 - [Hogyan "nosniff" hozzáadása a webhely?](#how-do-i-add-nosniff-to-my-website)
 - [Hogyan testre az IIS egy webes szerepkör?](#how-do-i-customize-iis-for-a-web-role)
@@ -173,7 +173,7 @@ Microsoft folyamatosan figyeli a kiszolgálók, hálózatok és alkalmazások é
 
 Windows 10 és Windows Server 2016 kapható HTTP/2 támogatása az ügyfél és a kiszolgáló oldalán. Ha az ügyfél (böngésző) kapcsolódik a TLS feletti IIS-kiszolgálóra, amely egyezteti a HTTP/2 TLS-bővítményeket keresztül, akkor a kiszolgálóoldali semmilyen módosítást nem kell. Ennek az oka TLS, feletti a HTTP/2 használatát megadó h2-14 fejléc alapértelmezés szerint küldi. Ha viszont az ügyfél küld egy frissítési fejlécben frissítése a HTTP/2, akkor szüksége a változtatások alább a kiszolgáló oldalán, annak érdekében, hogy a frissítési működik, és végül egy HTTP/2-kapcsolatot. 
 
-1. Run regedit.exe.
+1. Futtassa a regedit.exe.
 2. Keresse meg a beállításkulcs: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
 3. Hozzon létre egy új DWORD értéket **DuoEnabled**.
 4. Állítsa be az értékét 1-re.
@@ -201,7 +201,7 @@ További információkért lásd: [HTTP/2 IIS](https://blogs.iis.net/davidso/htt
 ### <a name="how-can-i-implement-role-based-access-for-cloud-services"></a>Hogyan is létrehozható a Felhőszolgáltatások szerepkörön alapuló hozzáférés?
 Cloud Services nem támogatja a szerepköralapú hozzáférés-vezérlést (RBAC) modell a, mert nincs olyan Azure Resource Manager-alapú szolgáltatás.
 
-Lásd: [hagyományos előfizetés rendszergazdái és az Azure RBAC](../active-directory/role-based-access-control-what-is.md#azure-rbac-vs-classic-subscription-administrators).
+Lásd: [hagyományos előfizetés rendszergazdái és az Azure RBAC](../role-based-access-control/overview.md#azure-rbac-vs-classic-subscription-administrators).
 
 ## <a name="remote-desktop"></a>A távoli asztal
 

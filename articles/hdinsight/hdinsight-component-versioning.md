@@ -1,27 +1,25 @@
 ---
-title: "Hadoop-összetevők és verziók - Azure HDInsight |} Microsoft Docs"
-description: "Ismerje meg, a Hadoop-összetevők és a HDInsight és a szolgáltatási szintek érhető el a felhőalapú terjesztési Hortonworks Data platform-verziók."
-keywords: "hadoop verziók, a hadoop-ökoszisztémával összetevők, a hadoop-összetevők, hogyan hadoop-verziójának ellenőrzése"
+title: Hadoop-összetevők és verziók - Azure HDInsight |} Microsoft Docs
+description: Ismerje meg, a Hadoop-összetevők és a HDInsight és a szolgáltatási szintek érhető el a felhőalapú terjesztési Hortonworks Data platform-verziók.
+keywords: hadoop verziók, a hadoop-ökoszisztémával összetevők, a hadoop-összetevők, hogyan hadoop-verziójának ellenőrzése
 services: hdinsight
 editor: cgronlun
 manager: asadk
 author: bprakash
 tags: azure-portal
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 367b3f4a-f7d3-4e59-abd0-5dc59576f1ff
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2018
 ms.author: bprakash
-ms.openlocfilehash: 35ded349e9ced6463ece876ca1fd92423d20c625
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 813b05c5be4378ea6e57cb0b14fd8110e2772998
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Mik azok a Hadoop-összetevők és a hdinsight eszközzel verziók?
 
@@ -37,7 +35,7 @@ A HDInsight-fürt verziókról társított összetevő-verziók a következő t�
 > [!NOTE]
 > Az alapértelmezett verzió a HDInsight szolgáltatás minden külön értesítés nélkül változhatnak. Ha verzió függőség, ha a .NET SDK-val Azure PowerShell és az Azure parancssori felület a fürtök létrehozásához, adja meg a HDInsight-verzió.
 
-| Összetevő | HDInsight 3.6 (alapértelmezett) | HDInsight 3.5 | HDInsight 3.4 | HDInsight 3.3 | A HDInsight 3.2. | HDInsight 3.1 | HDInsight 3.0 |
+| Összetevő | HDInsight 3.6 (alapértelmezett) | HDInsight 3.5 | HDInsight 3.4 | HDInsight 3.3 | A HDInsight 3.2. | HDInsight 3.1 | A HDInsight 3.0 |
 | --- | --- | --- | --- | --- | --- | --- |--- |
 | Hortonworks Data Platform |2.6 |2.5 |2.4 |2.3 |2.2 |2.1.7 |2.0 |
 | Apache Hadoop és a YARN |2.7.3 |2.7.3 |2.7.1 |2.7.1 |2.6.0 |2.4.0 |2.2.0 |
@@ -82,8 +80,8 @@ A következő táblázat használható az Azure portál, valamint a más közpon
 
 | HDInsight-verzió | HDP verzió | VM OS | Kiadási dátum | Támogatás lejárati dátuma | Kivezetési dátum | Magas rendelkezésre állás |  Az Azure portálon rendelkezésre állása | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 3.6. |HDP 2.6 |Ubuntu 16.0.4 LTS |2017. április 4. | | |Igen |Igen |
-| HDInsight 3.5 |HDP 2.5 |Ubuntu 16.0.4 LTS |2016. Szeptembertől 30. |2017. szeptember 5. |2018. május 31-ig. |Igen |Igen |
+| HDInsight 3.6. |2.6 HDP |Ubuntu 16.0.4 LTS |2017. április 4. | | |Igen |Igen |
+| HDInsight 3.5 |2.5 HDP |Ubuntu 16.0.4 LTS |2016. Szeptembertől 30. |2017. szeptember 5. |2018. május 31-ig. |Igen |Igen |
 | HDInsight 3.3 |HDP 2.3 |Windows Server 2012 R2 |2015. december 2. |2016. június 27. |2018. július 31-ig. |Igen |Nem |
 
 > [!NOTE]
@@ -98,18 +96,18 @@ A következő táblázat, amelyek a HDInsight-verziók listája olvasható **nem
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |2016. március 29. |2016. december 29. |2018. január 9. |Igen |Nem |
 | HDInsight 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2015. december 2. |2016. június 27. |2017. július 31-ig. |Igen |Nem |
-| A HDInsight 3.2. |HDP 2.2 |Ubuntu, 12.04 LTS, vagy a Windows Server 2012 R2 rendszerben |2015. február 18. |2016. március 1. |2017. április 1. |Igen |Nem |
-| HDInsight 3.1 |HDP 2.1 |Windows Server 2012 R2 |2014. június 24. |2015. május 18. |2016. június 30. |Igen |Nem |
-| HDInsight 3.0 |HDP 2.0 |Windows Server 2012 R2 |2014. február 11. |2014. szeptember 17. |2015. június 30. |Igen |Nem |
-| A HDInsight 2.1-es verziója |HDP 1.3 |Windows Server 2012 R2 |2013. október 28. |2014. május 12. |2015. május 31-ig. |Igen |Nem |
-| HDInsight 1.6-os |HDP 1.1 | |2013. október 28. |2014. április 26. |2015. május 31-ig. |Nem |Nem |
+| A HDInsight 3.2. |2.2 HDP |Ubuntu, 12.04 LTS, vagy a Windows Server 2012 R2 rendszerben |2015. február 18. |2016. március 1. |2017. április 1. |Igen |Nem |
+| HDInsight 3.1 |2.1 HDP |Windows Server 2012 R2 |2014. június 24. |2015. május 18. |2016. június 30. |Igen |Nem |
+| A HDInsight 3.0 |HDP 2.0 |Windows Server 2012 R2 |2014. február 11. |2014. szeptember 17. |2015. június 30. |Igen |Nem |
+| A HDInsight 2.1-es verziója |1.3 HDP |Windows Server 2012 R2 |2013. október 28. |2014. május 12. |2015. május 31-ig. |Igen |Nem |
+| HDInsight 1.6-os |1.1 HDP | |2013. október 28. |2014. április 26. |2015. május 31-ig. |Nem |Nem |
 
 > [!NOTE]
 > Magas rendelkezésre állású fürtök két átjárócsomópontokkal a HDInsight-verzió 2.1-es és újabb verziók esetében alapértelmezés szerint vannak telepítve. Nem elérhetők a HDInsight-fürtök 1.6-os verzióra.
 
 ## <a name="enterprise-security-package-for-hdinsight"></a>A HDInsight a vállalati biztonsági csomag
 
-Az Azure HDInsight csomag egy nem kötelező, amelyeket felvehet a HDInsight-fürt létrehozása a fürt munkafolyamat részeként. A vállalati biztonsági csomag támogatja:
+A vállalati biztonsági csomag egy nem kötelező, amelyeket felvehet a HDInsight-fürt létrehozása a fürt munkafolyamat részeként. A vállalati biztonsági csomag támogatja:
 
 - Active Directory integrációja a hitelesítéshez.
 
@@ -241,7 +239,7 @@ Az alábbi táblázatok a HDInsight-fürtök az alapértelmezett virtuális gép
   | Munkavégző: alapértelmezett Virtuálisgép-méretet |D3 v2 |D3 v2  | D13, D14 |D3 v2 |Windows: D12 v2; Linux: D4 v2 |Windows: D12 v2; Linux: D4 v2 |
   | Munkavégző: ajánlott Virtuálisgép-méretek |D3 v2, D4 v2, D12 v2 |D3 v2, D4 v2, D12 v2  | D13, D14 |D3 v2, D4 v2, D12 v2 |Windows: D12 v2, D13 v2, D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |Windows: D12 v2, D13 v2, D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |
   | ZooKeeper: alapértelmezett Virtuálisgép-méretet | |A3 | |A2 | | |
-  | ZooKeeper: ajánlott Virtuálisgép-méretek | |A3 MÉRETŰ, A4 MÉRETŰ, A5 CSOMAG | | A2, A3, A4 | | |
+  | ZooKeeper: ajánlott Virtuálisgép-méretek | |A3 MÉRETŰ, A4 MÉRETŰ, A5 CSOMAG | | A2 MÉRETŰ, A3 MÉRETŰ, A4 | | |
   | Peremhálózati: alapértelmezett Virtuálisgép-méretet | | | | | |Windows: D12 v2; Linux: D4 v2 |
   | Peremhálózati: ajánlott Virtuálisgép-mérettel | | | | | |Windows: D12 v2, D13 v2, D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |
 * Dél-Brazília és Nyugat-japán csak (nincs v2 méretű):
@@ -249,13 +247,13 @@ Az alábbi táblázatok a HDInsight-fürtök az alapértelmezett virtuális gép
   | Fürttípus | Hadoop | HBase | Interaktív lekérdezés |Storm | Spark | R Server |
   | --- | --- | --- | --- | --- | --- | --- |
   | HEAD: alapértelmezett Virtuálisgép-méretet |D3 |D3  | D13, D14 |A3 |D12 |D12 |
-  | HEAD: ajánlott Virtuálisgép-méretek |D3, D4, D12 |D3, D4, D12  | D13, D14 |A3 MÉRETŰ, A4 MÉRETŰ, A5 CSOMAG |D12, D13, D14 |D12, D13, D14 |
+  | HEAD: ajánlott Virtuálisgép-méretek |D3 D4, D12 |D3 D4, D12  | D13, D14 |A3 MÉRETŰ, A4 MÉRETŰ, A5 CSOMAG |D12, D13, D14 |D12, D13, D14 |
   | Munkavégző: alapértelmezett Virtuálisgép-méretet |D3 |D3  | D13, D14 |D3 |Windows: D12; Linux: D4 |Windows: D12; Linux: D4 |
-  | Munkavégző: ajánlott Virtuálisgép-méretek |D3, D4, D12 |D3, D4, D12  | D13, D14 |D3, D4, D12 |Windows: D12, D13, D14; Linux: D4, D12, D13, D14 |Windows: D12, D13, D14; Linux: D4, D12, D13, D14 |
+  | Munkavégző: ajánlott Virtuálisgép-méretek |D3 D4, D12 |D3 D4, D12  | D13, D14 |D3 D4, D12 |Windows: D12 D13, D14; Linux: D4, D12 D13, D14 |Windows: D12 D13, D14; Linux: D4, D12 D13, D14 |
   | ZooKeeper: alapértelmezett Virtuálisgép-méretet | |A2 | | A2 | | |
-  | ZooKeeper: ajánlott Virtuálisgép-méretek | |A2, A3, A4 | |A2, A3, A4 | | |
+  | ZooKeeper: ajánlott Virtuálisgép-méretek | |A2 MÉRETŰ, A3 MÉRETŰ, A4 | |A2 MÉRETŰ, A3 MÉRETŰ, A4 | | |
   | Peremhálózati: alapértelmezett Virtuálisgép-méretek | | | | | |Windows: D12; Linux: D4 |
-  | Peremhálózati: ajánlott Virtuálisgép-méretek | | | | | |Windows: D12, D13, D14; Linux: D4, D12, D13, D14 |
+  | Peremhálózati: ajánlott Virtuálisgép-méretek | | | | | |Windows: D12 D13, D14; Linux: D4, D12 D13, D14 |
 
 > [!NOTE]
 > - HEAD nevezik *Nimbus* a Storm a fürt típusa.

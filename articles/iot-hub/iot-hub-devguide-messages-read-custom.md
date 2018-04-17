@@ -1,23 +1,23 @@
 ---
-title: "Azure IoT Hub egyéni végpontokat megértése |} Microsoft Docs"
-description: "Fejlesztői útmutató - útválasztási szabályok használatával egyéni végpontokkal való eszközről a felhőbe üzenetek továbbításához."
+title: Azure IoT Hub egyéni végpontokat megértése |} Microsoft Docs
+description: Fejlesztői útmutató - útválasztási szabályok használatával egyéni végpontokkal való eszközről a felhőbe üzenetek továbbításához.
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/29/2018
+ms.date: 04/09/2018
 ms.author: dobett
-ms.openlocfilehash: a40fa94260b488e9c01ac09b22da8c0677d73968
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 3d54da43141dc2bdf34c9f71adc41dc7cf24ff10
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>Üzenet útvonalak és egyéni végpontokat használja az eszköz a felhőbe küldött üzeneteket
 
@@ -26,11 +26,13 @@ Az IoT-központ lehetővé teszi a továbbításához [eszköz a felhőbe küld�
 | Tulajdonság      | Leírás |
 | ------------- | ----------- |
 | **Name (Név)**      | A szabály azonosító egyedi név. |
-| **Source**    | Az adatfolyamot kell bírálni a forrása. Például telemetriát. |
+| **Forrás**    | Az adatfolyamot kell bírálni a forrása. Például telemetriát. |
 | **Az állapot** | Az útválasztási szabály, amely az üzenet fejlécek és body futtatni, és határozza meg, ha a végpont egyezés lekérdezési kifejezésben. Útvonal feltétel létrehozásával kapcsolatos további információkért tekintse meg a [referencia - lekérdezési nyelv eszköz twins és feladatok][lnk-devguide-query-language]. |
-| **Végpont**  | A végpont, ahol az IoT-központ elküldi a feltételnek megfelelő üzenetek neve. Végpontok az IoT hub ugyanabban a régióban kell lennie, ellenkező esetben meg kell felszámítani kereszt-régió írási műveleteket. |
+| **végpont**  | A végpont, ahol az IoT-központ elküldi a feltételnek megfelelő üzenetek neve. Végpontok az IoT hub ugyanabban a régióban kell lennie, ellenkező esetben meg kell felszámítani kereszt-régió írási műveleteket. |
 
 Egyetlen üzenet előfordulhat, hogy felel meg a feltétel több útválasztási szabályokat, amelyben eset az IoT-központ kézbesíti az üzenetet minden egyező szabályt társított végpont. Az IoT-központ is automatikusan deduplicates üzenetkézbesítést, így ha egy üzenet rendelkezhet azonos céllal több szabály megfelel, csak írás egyszer célhoz.
+
+## <a name="endpoints-and-routing"></a>Végpontok és az Útválasztás
 
 Az IoT-központ rendelkezik egy alapértelmezett [beépített végpont][lnk-built-in]. Egyéni végpontokat üzeneteknek az előfizetésében szereplő más szolgáltatások létrehozhatja, ha szeretne az elosztóhoz hozhat létre. Az IoT-központ jelenleg támogatja az Azure Storage tárolók, az Event Hubs, a Service Bus-üzenetsorok és a Service Bus-üzenettémakörök egyéni végpontként.
 
@@ -50,6 +52,12 @@ A egyéni végpontok olvasását kapcsolatos további információkért lásd:
 * A olvasásakor [az Event Hubs][lnk-getstarted-eh].
 * A olvasásakor [Service Bus-üzenetsorok][lnk-getstarted-queue].
 * A olvasásakor [Service Bus-üzenettémakörök][lnk-getstarted-topic].
+
+## <a name="latency"></a>Késés
+
+Útvonal eszközről a felhőbe telemetriai üzenetek beépített végpont, nincs a a végpontok közötti késés megnövekedett az első útvonal létrehozása után.
+
+A legtöbb esetben a átlagos késés növekedése legalább egy másodperc. A késés használatával figyelheti **d2c.endpoints.latency.builtIn.events** [IoT-központ metrika](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics). Létrehozott, és egyetlen útvonalnak törlése után az elsőt nincs hatással a végpontok közötti késés.
 
 ### <a name="next-steps"></a>További lépések
 

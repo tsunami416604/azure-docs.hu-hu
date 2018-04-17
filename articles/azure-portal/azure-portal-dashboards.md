@@ -1,8 +1,8 @@
 ---
-title: "Hozzon létre és osszon meg az Azure portál irányítópultok |} Microsoft Docs"
-description: "Ez a cikk ismerteti, hogyan hozhat létre és szerkeszthet irányítópultok az Azure portálon."
+title: Hozzon létre és osszon meg az Azure portál irányítópultok |} Microsoft Docs
+description: Ez a cikk ismerteti, hogyan hozhat létre és szerkeszthet irányítópultok az Azure portálon.
 services: azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: sewatson
 manager: timlt
 editor: tysonn
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/06/2016
 ms.author: sewatson
-ms.openlocfilehash: 7f90c882285170bac34bfe020831d3ac04010a11
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 4e5a5ae944b5f0059ee78a2171a9688902aaf6db
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Hozzon létre és osszon irányítópultok az Azure-portálon
 Több irányítópultot létrehozni, és megoszthatja őket másokkal, akik hozzáférhetnek a Azure-előfizetését.  Ez a cikk végighalad létrehozására, szerkesztésére, közzétételének és irányítópultokhoz való hozzáférés kezelése a alapjait.
@@ -75,7 +75,7 @@ Amikor létrehoz egy irányítópultot, titkos alapértelmezés szerint azt jele
 
 ![Irányítópult megosztása](./media/azure-portal-dashboards/share-dashboard.png)
 
-A rendszer felkéri válasszon ki egy előfizetés és az erőforráscsoport irányítópulthoz való közzétételhez. Irányítópultok zökkenőmentesen integrálja az ökoszisztéma, azt korábban megosztott irányítópultok, megvalósítva Azure-erőforrások (tehát nem lehet megosztani, írja be az e-mail címet).  A csempék a portál által megjelenített információk elérését az irányadó [Azure szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-configure.md). Access control szempontból megosztott irányítópultok ugyanazok a virtuális gép vagy egy tárfiókot.  
+A rendszer felkéri válasszon ki egy előfizetés és az erőforráscsoport irányítópulthoz való közzétételhez. Irányítópultok zökkenőmentesen integrálja az ökoszisztéma, azt korábban megosztott irányítópultok, megvalósítva Azure-erőforrások (tehát nem lehet megosztani, írja be az e-mail címet).  A csempék a portál által megjelenített információk elérését az irányadó [Azure szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md). Access control szempontból megosztott irányítópultok ugyanazok a virtuális gép vagy egy tárfiókot.  
 
 Tegyük fel, Azure-előfizetéssel rendelkezik, és a csoport tagjai hozzárendelt szerepkörök adott biztonsági **tulajdonos**, **közreműködő**, vagy **olvasó** az előfizetés.  Felhasználók, akik a tulajdonos vagy közreműködő szerepkörrel rendelkező személyek képesek listában, megtekintése, létrehozása, módosítása vagy törlése irányítópultok adott előfizetésen belül.  Olvasók felhasználók lehet lista, és tekintse meg az irányítópultok, de nem módosítsa vagy törölje őket.  Olvasási joggal rendelkező felhasználók lehet a helyi módosíthatja is egy megosztott irányítópult, de a rendszer nem tudja közzétenni az ezeket a módosításokat a kiszolgálóra.  Azonban akkor az irányítópult saját használatra titkos másolatát.  Egyes csempéit az irányítópultra, mindig a saját alapján megfelelnek az erőforrások hozzáférés-vezérlési szabályok kényszerítése.  
 
@@ -91,7 +91,7 @@ Az irányítópult közzététele után a **megosztás + hozzáférés** Vezérl
 
 ![hozzáférés-vezérlés kezelése](./media/azure-portal-dashboards/manage-access.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Erőforrások kezeléséhez, tekintse meg a [kezelése Azure-erőforrások portálon keresztül](../azure-resource-manager/resource-group-portal.md).
 * Erőforrások telepítéséhez lásd: [erőforrások a Resource Manager-sablonok és az Azure-portál telepítése](../azure-resource-manager/resource-group-template-deploy-portal.md).
 

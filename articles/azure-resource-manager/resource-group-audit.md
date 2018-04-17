@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 990c3ed8c6fd79430b27c7c96673f7845e54b26f
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: bd11ec7c8a32792853e60b4bb14d4ed52f53f4a3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>Az erőforrás műveletek naplózása tevékenység naplók megtekintése
 
@@ -30,7 +30,7 @@ Keresztül tevékenységi naplóit meghatározhatja:
 * A művelet állapotát
 * Az értékeket, amelyek segíthetnek tulajdonságokat vizsgálja meg a műveletet
 
-A műveletnapló az erőforrásokon végrehajtott minden írási műveletek (PUT, POST, Törlés) tartalmazza. Az olvasási műveletek (GET) nem tartalmazza. Erőforrás-műveletek listáját, [Azure Resource Manager erőforrás-szolgáltató műveletek](../active-directory/role-based-access-control-resource-provider-operations.md). A vizsgálati naplók található hiba esetén végzett hibaelhárításhoz vagy hogyan a szervezet egy felhasználó módosította a következő erőforrás figyelésére használható.
+A műveletnapló az erőforrásokon végrehajtott minden írási műveletek (PUT, POST, Törlés) tartalmazza. Az olvasási műveletek (GET) nem tartalmazza. Erőforrás-műveletek listáját, [Azure Resource Manager erőforrás-szolgáltató műveletek](../role-based-access-control/resource-provider-operations.md). A vizsgálati naplók található hiba esetén végzett hibaelhárításhoz vagy hogyan a szervezet egy felhasználó módosította a következő erőforrás figyelésére használható.
 
 Tevékenységi naplóit 90 napig megőrződnek. Bármely dátumtartomány alapján is kereshet, mindaddig, amíg a kezdő dátum nem több mint 90 nappal ezelőtti.
 
@@ -154,8 +154,8 @@ A REST műveleteinek használata a műveletnapló részét képezik a [Insights 
 ## <a name="next-steps"></a>További lépések
 
 * Az Azure tevékenységi naplóit segítségével a Power BI információt kaphat a nagyobb az előfizetésében szereplő műveleteket. Lásd: [megtekintése és elemzése a Power bi-ban és több Azure tevékenységi naplóit](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
-* Biztonsági házirendek beállításával kapcsolatos további tudnivalókért lásd: [Azure szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-configure.md).
+* Biztonsági házirendek beállításával kapcsolatos további tudnivalókért lásd: [Azure szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md).
 * Az üzembe helyezési műveleteinek megtekintése a parancsokkal kapcsolatban további tudnivalókért lásd: [üzembe helyezési műveleteinek megtekintése](resource-manager-deployment-operations.md).
 * Az összes felhasználó erőforrás törlésének megakadályozására, lásd: [erőforrások az Azure Resource Manager zárolása](resource-group-lock-resources.md).
-* Egyes Microsoft Azure Resource Manager szolgáltatók elérhető műveletek listájának megtekintéséhez lásd: [Azure Resource Manager erőforrás-szolgáltató műveletek](~/articles/active-directory/role-based-access-control-resource-provider-operations.md)
+* Egyes Microsoft Azure Resource Manager szolgáltatók elérhető műveletek listájának megtekintéséhez lásd: [Azure Resource Manager erőforrás-szolgáltató műveletek](../role-based-access-control/resource-provider-operations.md)
 

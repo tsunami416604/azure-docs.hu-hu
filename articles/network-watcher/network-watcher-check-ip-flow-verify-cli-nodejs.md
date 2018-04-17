@@ -1,11 +1,11 @@
 ---
-title: "Ellenőrizze a forgalmat az Azure hálózati figyelő IP Flow ellenőrizze - Azure CLI |} Microsoft Docs"
-description: "Ez a cikk ismerteti, hogyan ellenőrizhető, ha a bejövő és kimenő forgalmat a virtuális gépek engedélyezett vagy megtagadott Azure parancssori felület használatával"
+title: Ellenőrizze a forgalmat az Azure hálózati figyelő IP Flow ellenőrizze - Azure CLI |} Microsoft Docs
+description: Ez a cikk ismerteti, hogyan ellenőrizhető, ha a bejövő és kimenő forgalmat a virtuális gépek engedélyezett vagy megtagadott Azure parancssori felület használatával
 services: network-watcher
 documentationcenter: na
 author: jimdial
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 92b857ed-c834-4c1b-8ee9-538e7ae7391d
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: f1355cd861722848211277250155c434da1e774d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 8681118e55d8ddddf17ebac3bae63486446c70e9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="check-if-traffic-is-allowed-or-denied-to-or-from-a-vm-with-ip-flow-verify-a-component-of-azure-network-watcher"></a>Ha a forgalom engedélyezett vagy megtagadott vagy a virtuális gép IP Flow ellenőrizze és Azure hálózati figyelőt összetevője ellenőrzése
 
@@ -53,7 +53,7 @@ azure vm show -g resourceGroupName -n virtualMachineName
 
 ## <a name="get-the-nics"></a>A hálózati adapterek beolvasása
 
-A virtuális gépen egy hálózati adapter IP-címe szükséges, ebben a példában beolvassuk a hálózati adaptert egy virtuális gépen. Ha már ismeri a virtuális gépen vizsgálni kívánt IP-cím, kihagyhatja ezt a lépést.
+A virtuális gépen egy hálózati adapter IP-címe van szükség. A hálózati adaptert egy virtuális gépet a következő parancs beolvasása. Ha már ismeri a virtuális gépen vizsgálni kívánt IP-cím, kihagyhatja ezt a lépést.
 
 ```
 azure network nic show -g resourceGroupName -n nicName
@@ -61,7 +61,7 @@ azure network nic show -g resourceGroupName -n nicName
 
 ## <a name="run-ip-flow-verify"></a>Futtatási IP-adatfolyam ellenőrzése
 
-Most, hogy a fordítás során futtassa a parancsmagot, és futtassa azt a `network watcher ip-flow-verify` parancsmag segítségével tesztelheti a forgalmat. A jelen példában használjuk az első IP-cím első hálózati adapteren
+Futtassa a `network watcher ip-flow-verify` parancsmag segítségével tesztelheti a forgalmat. Ebben a példában az első IP-cím első hálózati adapter szolgál:
 
 ```
 azure network watcher ip-flow-verify -g resourceGroupName -n networkWatcherName -t targetResourceId -d directionInboundorOutbound -p protocolTCPorUDP -o localPort -m remotePort -l localIpAddr -r remoteIpAddr
@@ -82,7 +82,7 @@ info:    network watcher ip-flow-verify command OK
 
 ## <a name="next-steps"></a>További lépések
 
-Ha a forgalmat blokkol, és nem kell, lásd: [hálózati biztonsági csoportok kezelése](../virtual-network/virtual-network-manage-nsg-arm-portal.md) nyomon követheti a hálózati biztonsági csoport és a biztonsági meghatározott szabályokat.
+Ha a forgalmat blokkol, és nem kell, lásd: [hálózati biztonsági csoportok kezelése](../virtual-network/manage-network-security-group.md) nyomon követheti a hálózati biztonsági csoport és a biztonsági meghatározott szabályokat.
 
 Ismerje meg, látogasson el a NSG beállítások naplózandó [naplózás hálózati biztonsági csoportok (NSG) rendelkező hálózati figyelőt](network-watcher-nsg-auditing-powershell.md).
 

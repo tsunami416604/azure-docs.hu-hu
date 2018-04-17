@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 04/13/2018
 ms.author: jingwang
-ms.openlocfilehash: e765c5b0240eb1b0311210dc466d1bc0a43ae58f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: cac7ba6f538a8efbd09b27888bd5f1059c2290bd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>Adatok másolása, vagy a Windows operációs rendszer Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -65,8 +65,11 @@ A következő tulajdonságok fájl kapcsolódó rendszerszolgáltatás támogatj
 
 | Forgatókönyv | a társított szolgáltatás definíciójának "állomás" | Az adatkészlet-definícióban "folderPath" |
 |:--- |:--- |:--- |
-| Helyi mappa integrációs futásidejű gépen: <br/><br/>Példák: D:\\ \* vagy D:\folder\subfolder\\* |D:\\\\ |. \\ \\ vagy mappa\\\\almappa |
-| Távoli megosztott mappa: <br/><br/>Példák: \\ \\myserver\\megosztása\\ \* vagy \\ \\myserver\\megosztása\\mappa\\almappa\\* |\\\\\\\\myserver\\\\share |. \\ \\ vagy mappa\\\\almappa |
+| Helyi mappa integrációs futásidejű gépen: <br/><br/>Példák: D:\\ \* vagy D:\folder\subfolder\\* |A JSON-ban: `D:\\`<br/>A felhasználói felület: `D:\` |A JSON: `.\\` vagy `folder\\subfolder`<br>A felhasználói felület: `.\` vagy `folder\subfolder` |
+| Távoli megosztott mappa: <br/><br/>Példák: \\ \\myserver\\megosztása\\ \* vagy \\ \\myserver\\megosztása\\mappa\\almappa\\* |A JSON-ban: `\\\\myserver\\share`<br/>A felhasználói felület: `\\myserver\share` |A JSON: `.\\` vagy `folder\\subfolder`<br/>A felhasználói felület: `.\` vagy `folder\subfolder` |
+
+>[!NOTE]
+>Szerzői felhasználói felületén keresztül, ha nem kell a felhasználótól, dupla fordított perjel (`\\`) karaktert, mint amikor JSON keresztül, adjon meg egy fordított perjel.
 
 **Példa**
 

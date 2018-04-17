@@ -1,26 +1,24 @@
 ---
-title: "Az Apache Hive - Azure HDInsight Twitter-adatok elemzése |} Microsoft Docs"
-description: "Megtudhatja, hogyan használja a use Hive és a hdinsight Hadoop nyers TWitter-adatok átalakítása kereshető Hive táblákat."
+title: Az Apache Hive - Azure HDInsight Twitter-adatok elemzése |} Microsoft Docs
+description: Megtudhatja, hogyan használja a use Hive és a hdinsight Hadoop nyers TWitter-adatok átalakítása kereshető Hive táblákat.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.assetid: e1e249ed-5f57-40d6-b3bc-a1b4d9a871d3
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: b6e540576bc4a5876bc8546262a181bd82ad9727
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 1e3a9b12a9621baf91d49be48fb79a5d6bca1326
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="analyze-twitter-data-using-hive-and-hadoop-on-hdinsight"></a>A HDInsight Hive és a Hadoop használatával Twitter-adatok elemzése
 
@@ -37,7 +35,7 @@ Twitter lehetővé teszi a [minden tweetet adatainak](https://dev.twitter.com/do
 
 ### <a name="create-a-twitter-application"></a>Twitter-alkalmazás létrehozása
 
-1. Egy webböngészőből, jelentkezzen be [https://apps.twitter.com/](https://apps.twitter.com/). Kattintson a **előfizetési most** hivatkozásra, ha egy Twitter-fiók nem rendelkezik.
+1. Egy webböngészőből, jelentkezzen be [ https://apps.twitter.com/ ](https://apps.twitter.com/). Kattintson a **előfizetési most** hivatkozásra, ha egy Twitter-fiók nem rendelkezik.
 
 2. Kattintson a **új alkalmazás létrehozása**.
 

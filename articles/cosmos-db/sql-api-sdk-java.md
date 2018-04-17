@@ -4,7 +4,7 @@ description: Tudnivalók az SQL Java API-t és SDK, beleértve a kiadási dátum
 services: cosmos-db
 documentationcenter: java
 author: rnagpal
-manager: jhubbard
+manager: kfile
 editor: cgronlun
 ms.assetid: 7861cadf-2a05-471a-9925-0fec0599351b
 ms.service: cosmos-db
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/14/2017
 ms.author: khdang
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 547bc8933d8afc593db7620b2e610d50d6e22cdf
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 4a89b2e2d352b614323c7d7ab136aec325c590b2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API-t Azure Cosmos DB Java SDK: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ Az SQL API Java SDK támogatja a szinkron műveleteket. Az aszinkron támogatás
 
 <tr><td>**API-JÁNAK dokumentációja**</td><td>[Java API-referenciadokumentáció](/java/api/com.microsoft.azure.documentdb)</td></tr>
 
-<tr><td>**Hozzájárul az SDK**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-java/)</td></tr>
+<tr><td>**Hozzájárul az SDK**</td><td>[GitHubon](https://github.com/Azure/azure-documentdb-java/)</td></tr>
 
 <tr><td>**Első lépések**</td><td>[Ismerkedés a Java SDK-val](sql-api-java-get-started.md)</td></tr>
 
@@ -217,7 +217,7 @@ A Cosmos DB kivont SDK használatával fog kell elutasította a szolgáltatás.
 | 0.9.1-prelease |2014. decemberi 19 |2016. február 29. |
 | 0.9.0-prelease |2014. december 10. |2016. február 29. |
 
-## <a name="faq"></a>Gyakori kérdések
+## <a name="faq"></a>GYIK
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Lásd még

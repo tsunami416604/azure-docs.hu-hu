@@ -11,11 +11,11 @@ ms.service: active-directory
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 98665ab215c98ea60273ce3aae2757cf20817a90
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 09ee56627f6c254362d9fbc3c665494418efb1dc
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Biztonságossá tétele a felhőalapú és hibrid telepítések privileged access Azure AD-ben
 
@@ -154,9 +154,9 @@ Ha még nem tette meg, a felhasználók számára a globális rendszergazdai fel
 
 Győződjön meg arról, hogy minden felhasználó a rendszergazdai fiókok be van jelentkezve és az utolsó 90 napban legalább egyszer a jelszavukat módosítani. Emellett győződjön meg arról, hogy mely több felhasználók olyan megosztott fiók a jelszó ismerete futtatta a nemrég módosította jelszavát.
 
-#### <a name="turn-on-password-synchronization"></a>Kapcsolja be a jelszó-szinkronizálás
+#### <a name="turn-on-password-hash-synchronization"></a>Kapcsolja be a Jelszókivonat-szinkronizálást
 
-A jelszó-szinkronizálás lehetővé teszi az használt szinkronizálni a kivonatokat a felhasználói jelszó-kivonatok a helyszíni Active Directory-példányról egy felhőalapú Azure AD-példányban. Még akkor is, ha az Active Directory összevonási szolgáltatások (AD FS) vagy az egyéb identitás-szolgáltatóktól összevonási használata mellett dönt, akkor opcionálisan beállítása a jelszó-szinkronizálás biztonsági esetében a helyszíni infrastruktúrát, például AD vagy AD FS-kiszolgáló sikertelen vagy válik átmenetileg nem érhető el. Ez lehetővé teszi, hogy a felhasználók jelentkezhetnek be a szolgáltatás által ugyanazzal a jelszóval, amelyekkel jelentkezzen be a helyszíni AD-példányban. Emellett lehetővé teszi Identity Protection hitelesítő adatokkal való visszaélés észlelése ezen jelszókivonatait összehasonlítva az ismert megsértik, ha a felhasználó rendelkezik kihasználhatók a ugyanazt az e-mail címet és más szolgáltatások nem csatlakozott az Azure AD-jelszó jelszavakat.  További információkért lásd: [Jelszókivonat-szinkronizálást és az Azure AD Connect-szinkronizálás megvalósítása](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md).
+Jelszókivonat-szinkronizálást egy olyan funkció, lehet szinkronizálni a kivonatokat a felhasználói jelszó-kivonatok a helyszíni Active Directory-példányról egy felhőalapú Azure AD-példányban. Még akkor is, ha az Active Directory összevonási szolgáltatások (AD FS) vagy az egyéb identitás-szolgáltatóktól összevonási használata mellett dönt, akkor opcionálisan beállítása Jelszókivonat-szinkronizálást biztonsági esetében a helyszíni infrastruktúrát, például AD vagy AD FS-kiszolgáló sikertelen vagy válik átmenetileg nem érhető el. Ez lehetővé teszi, hogy a felhasználók jelentkezhetnek be a szolgáltatás által ugyanazzal a jelszóval, amelyekkel jelentkezzen be a helyszíni AD-példányban. Emellett lehetővé teszi Identity Protection hitelesítő adatokkal való visszaélés észlelése ezen jelszókivonatait összehasonlítva az ismert megsértik, ha a felhasználó rendelkezik kihasználhatók a ugyanazt az e-mail címet és más szolgáltatások nem csatlakozott az Azure AD-jelszó jelszavakat.  További információkért lásd: [Jelszókivonat-szinkronizálást és az Azure AD Connect-szinkronizálás megvalósítása](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md).
 
 #### <a name="require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users"></a>Többtényezős hitelesítés (MFA) igényelnek a felhasználók minden kiemelt szerepkört és a kitett felhasználók
 
@@ -282,11 +282,11 @@ A [az Azure Security Center](../security-center/security-center-intro.md) biztos
 
 #### <a name="inventory-your-privileged-accounts-within-hosted-virtual-machines"></a>Készítsen leltárt a futtatott virtuális gépek belül a kiemelt jogosultságú fiókok
 
-A legtöbb esetben nem kell megadnia a felhasználók korlátlan engedélyeket az Azure-előfizetések és erőforrásokhoz. Használhatja az Azure AD rendszergazdai szerepkörök feladataik elkülönítse a szervezeten belül, és csak olyan mértékű hozzáférést biztosítania a felhasználók, akik adott feladatok elvégzéséhez. Például az Azure AD rendszergazdai szerepkörök használatával lehetővé teszik egy rendszergazda egy előfizetéshez csak virtuális gépek kezeléséhez, amíg egy másik kezelheti az SQL-adatbázisok egyazon előfizetésen belül. További információkért lásd: [szerepköralapú hozzáférés-vezérlés az Azure-portálon az első lépései](role-based-access-control-what-is.md).
+A legtöbb esetben nem kell megadnia a felhasználók korlátlan engedélyeket az Azure-előfizetések és erőforrásokhoz. Használhatja az Azure AD rendszergazdai szerepkörök feladataik elkülönítse a szervezeten belül, és csak olyan mértékű hozzáférést biztosítania a felhasználók, akik adott feladatok elvégzéséhez. Például az Azure AD rendszergazdai szerepkörök használatával lehetővé teszik egy rendszergazda egy előfizetéshez csak virtuális gépek kezeléséhez, amíg egy másik kezelheti az SQL-adatbázisok egyazon előfizetésen belül. További információkért lásd: [szerepköralapú hozzáférés-vezérlés az Azure-portálon az első lépései](../role-based-access-control/overview.md).
 
 #### <a name="implement-pim-for-azure-ad-administrator-roles"></a>A rendszergazda szerepkörhöz az Azure AD PIM megvalósítása
 
-Rendszergazdai szerepkörök az Azure AD Privileged identity Management használatával kezelése, szabályozása és figyelése az Azure-erőforrások eléréséhez. A PIM használatával védi kiemelt jogosultságú fiókok számítógépes-támadások jogosultságokat a kitettség idő csökkentése és a használatukat keresztül jelentéseket és riasztásokat láthatósága növelését. További információkért lásd: [Privileged Identity Management Azure-erőforrások kezelése Szerepalapú hozzáférés](pim-azure-resource.md).
+Rendszergazdai szerepkörök az Azure AD Privileged identity Management használatával kezelése, szabályozása és figyelése az Azure-erőforrások eléréséhez. A PIM használatával védi kiemelt jogosultságú fiókok számítógépes-támadások jogosultságokat a kitettség idő csökkentése és a használatukat keresztül jelentéseket és riasztásokat láthatósága növelését. További információkért lásd: [Privileged Identity Management Azure-erőforrások kezelése Szerepalapú hozzáférés](../role-based-access-control/pim-azure-resource.md).
 
 #### <a name="use-azure-log-integrations-to-send-relevant-azure-logs-to-your-siem-systems"></a>Azure naplóelemzés integrációja a is elküldhetik a megfelelő Azure naplóit a SIEM-rendszerekről 
 

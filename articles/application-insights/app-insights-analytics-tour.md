@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Application Insights keresztül Analytics bemutatása |} Microsoft Docs"
-description: "A fő lekérdezések Analytics, a hatékony keresési eszköz az Application Insights rövid minta."
+title: Az Azure Application Insights keresztül Analytics bemutatása |} Microsoft Docs
+description: A fő lekérdezések Analytics, a hatékony keresési eszköz az Application Insights rövid minta.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: bddf4a6d-ea8d-4607-8531-1fe197cc57ad
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/06/2017
 ms.author: mbullwin
-ms.openlocfilehash: 271ccc126eeb9411646b68b32fd30ce32b5eef5c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 4f82e436e25d01bbfa09ec1e8a2efcdf0be8c006
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Az Application Insightsban Analytics bemutatása
 [Elemzés](app-insights-analytics.md) a hatékony keresési funkciója [Application Insights](app-insights-overview.md). Ezeken a lapokon a Log Analytics lekérdezési nyelv ismertetik.
@@ -69,7 +69,7 @@ Az Application Insights több alkalmazás adatainak kombinálását, használja 
 ```
 
 ## <a name="tophttpsdocsloganalyticsioquerylanguagequerylanguagetopoperatorhtml-and-sorthttpsdocsloganalyticsioquerylanguagequerylanguagesortoperatorhtml"></a>[Felső](https://docs.loganalytics.io/queryLanguage/query_language_topoperator.html) és [rendezés](https://docs.loganalytics.io/queryLanguage/query_language_sortoperator.html)
-`take`hasznos eredményeként gyors mintát eléréséhez, de nem meghatározott sorrendben jeleníti meg a tábla azon sorait. Amelyet egy rendezett nézet `top` (a minta) vagy `sort` (keresztül az egész tábla).
+`take` hasznos eredményeként gyors mintát eléréséhez, de nem meghatározott sorrendben jeleníti meg a tábla azon sorait. Amelyet egy rendezett nézet `top` (a minta) vagy `sort` (keresztül az egész tábla).
 
 Az első n sorok, adott oszlop szerint rendezve jelenjenek meg:
 
@@ -79,11 +79,11 @@ Az első n sorok, adott oszlop szerint rendezve jelenjenek meg:
 ```
 
 * *Szintaxis:* legtöbb operátorok rendelkeznek kulcsszó paraméterek például `by`.
-* `desc`csökkenő sorrendben = `asc` = növekvő.
+* `desc` csökkenő sorrendben = `asc` = növekvő.
 
 ![](./media/app-insights-analytics-tour/260.png)
 
-`top...`További performant módszer megkapta a `sort ... | take...`. A Microsoft sikerült írt:
+`top...` További performant módszer megkapta a `sort ... | take...`. A Microsoft sikerült írt:
 
 ```AIQL
 
@@ -146,7 +146,7 @@ Bírálja felül az időtartományt, amely akkor említi lekérdezés írásáva
 
 Az idő a tartomány szolgáltatás megegyezik a "where" záradék után minden hashtagként a forrástáblákból közül az egyik beilleszteni.
 
-`ago(3d)`azt jelenti, hogy a "három nappal ezelőtt". Más időegységekkel óra közé tartozik (`2h`, `2.5h`), a perc (`25m`), és a másodperc (`10s`).
+`ago(3d)` azt jelenti, hogy a "három nappal ezelőtt". Más időegységekkel óra közé tartozik (`2h`, `2.5h`), a perc (`25m`), és a másodperc (`10s`).
 
 További példák:
 
@@ -170,7 +170,7 @@ További példák:
 
 ```
 
-[Dátumokat és időpontokat hivatkozás](https://docs.loganalytics.io/concepts/concepts_datatypes_datetime.html).
+[Dátumokat és időpontokat hivatkozás](https://docs.loganalytics.io/docs/Language-Reference/Data-types/datetime).
 
 
 ## <a name="projecthttpsdocsloganalyticsioquerylanguagequerylanguageprojectoperatorhtml-select-rename-and-compute-columns"></a>[Projekt](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html): válassza ki, nevezze át és számítási oszlopok
@@ -199,10 +199,10 @@ Nevezze át az oszlopok is, és újakat megadása:
 
 ![eredménye](./media/app-insights-analytics-tour/270.png)
 
-* Oszlopnevek szóközöket is tartalmazhatnak, vagy azok vannak zárójeles Ha szimbólumokat, ez például: `['...']` vagy`["..."]`
-* `%`van a szokásos moduló operátor.
-* `1d`(Ez egy számjegy, majd egy kellett ") literális timespan tehát az egy nap. Az alábbiakban néhány további timespan-szövegkonstans: `12h`, `30m`, `10s`, `0.01s`.
-* `floor`(alias `bin`) kerekít egy értéket, az alapérték megadta a legközelebbi többszörösére le. Ezért `floor(aTime, 1s)` kerekítése a legközelebbi második le egyszerre.
+* Oszlopnevek szóközöket is tartalmazhatnak, vagy azok vannak zárójeles Ha szimbólumokat, ez például: `['...']` vagy `["..."]`
+* `%` van a szokásos moduló operátor.
+* `1d` (Ez egy számjegy, majd egy kellett ") literális timespan tehát az egy nap. Az alábbiakban néhány további timespan-szövegkonstans: `12h`, `30m`, `10s`, `0.01s`.
+* `floor` (alias `bin`) kerekít egy értéket, az alapérték megadta a legközelebbi többszörösére le. Ezért `floor(aTime, 1s)` kerekítése a legközelebbi második le egyszerre.
 
 Kifejezések lehetnek a szokásos operátorok (`+`, `-`,...), és számos különböző hasznos funkciók.
 
@@ -231,7 +231,7 @@ Időbélyeg helyi időre mindig UTC formátumban vannak. Így ha Ön a US csende
 
 
 ## <a name="summarizehttpsdocsloganalyticsioquerylanguagequerylanguagesummarizeoperatorhtml-aggregate-groups-of-rows"></a>[Összefoglalója](https://docs.loganalytics.io/queryLanguage/query_language_summarizeoperator.html): sorcsoportra összesítése
-`Summarize`alkalmazza a megadott *aggregátumfüggvény* keresztül sorcsoportra.
+`Summarize` alkalmazza a megadott *aggregátumfüggvény* keresztül sorcsoportra.
 
 Például a webalkalmazás válaszol a kérelemre idejét a mezőben jelentett `duration`. Nézzük meg, az átlagos válaszidő kérelmekre:
 
@@ -241,13 +241,13 @@ Vagy az eredmény azt sikerült külön kéréseket a különböző nevek:
 
 ![](./media/app-insights-analytics-tour/420.png)
 
-`Summarize`gyűjti az adatfolyamban az adatpontok csoportokba, amelynek a `by` záradék egyaránt értékelődik ki. Minden érték a `by` kifejezés - minden egyedi művelet neve a fenti példa - eredménytáblájában egy sort eredményez.
+`Summarize` gyűjti az adatfolyamban az adatpontok csoportokba, amelynek a `by` záradék egyaránt értékelődik ki. Minden érték a `by` kifejezés - minden egyedi művelet neve a fenti példa - eredménytáblájában egy sort eredményez.
 
 Vagy azt sikerült eredmények csoportosítás időpontja:
 
 ![](./media/app-insights-analytics-tour/430.png)
 
-Figyelje meg, hogyan használunk a `bin` funkciót (más néven `floor`). Ha éppen most használt `by timestamp`, mindegyik bemeneti sorában végül volna a saját kis csoport. A minden alkalommal például folyamatos skaláris vagy számok, frissítenünk kell a folyamatos tartomány felosztása kezelhető számos diszkrét értéket. `bin`-Ez csak a jól ismert kerekítési lefelé `floor` működik – a a legegyszerűbb módja.
+Figyelje meg, hogyan használunk a `bin` funkciót (más néven `floor`). Ha éppen most használt `by timestamp`, mindegyik bemeneti sorában végül volna a saját kis csoport. A minden alkalommal például folyamatos skaláris vagy számok, frissítenünk kell a folyamatos tartomány felosztása kezelhető számos diszkrét értéket. `bin` -Ez csak a jól ismert kerekítési lefelé `floor` működik – a a legegyszerűbb módja.
 
 Ugyanaz a technika használatával is csökkentheti a karakterláncok tartományait:
 
@@ -256,7 +256,7 @@ Ugyanaz a technika használatával is csökkentheti a karakterláncok tartomány
 Figyelje meg, hogy használható `name=` olyan eredményoszlopot, az összesítő kifejezések vagy a-záradék nevének megadása.
 
 ## <a name="counting-sampled-data"></a>Leltár adatminta
-`sum(itemCount)`az ajánlott összevonása események száma a rendszer. Sok esetben az elemek száma 1, ==, a függvény egyszerűen megjeleníti a csoportban található sorok számát. De ha [mintavételi](app-insights-sampling.md) van műveletben, csak töredéke alatt az eredeti események kerülnek, az Application Insights adatpontok úgy, hogy az egyes adatpontokban látja, `itemCount` események.
+`sum(itemCount)` az ajánlott összevonása események száma a rendszer. Sok esetben az elemek száma 1, ==, a függvény egyszerűen megjeleníti a csoportban található sorok számát. De ha [mintavételi](app-insights-sampling.md) van műveletben, csak töredéke alatt az eredeti események kerülnek, az Application Insights adatpontok úgy, hogy az egyes adatpontokban látja, `itemCount` események.
 
 Például, ha a mintavételi elveti az eredeti események, akkor az elemek száma 75 % == 4 megtartott rekordokban - Ez azt jelenti, hogy megtartott rekordot, volt négy eredeti rögzíti.
 
@@ -661,7 +661,7 @@ A HTTP-kérelem, az alkalmazás lett kezelése, ha a kivételt észlelt megkeres
 ![Csatlakoztatás operation_Id kivételek kérések](./media/app-insights-analytics-tour/analytics-exception-request.png)
 
 ### <a name="browser-timings-table"></a>Időzítés tábla Browser
-`browserTimings`a felhasználók böngészőjének gyűjtött lapbetöltési adatainak megjelenítése.
+`browserTimings` a felhasználók böngészőjének gyűjtött lapbetöltési adatainak megjelenítése.
 
 [Állítsa be az alkalmazás ügyféloldali telemetriai](app-insights-javascript.md) metrikákat láthatók.
 
@@ -672,7 +672,7 @@ A különböző oldalakhoz popularities megjelenítése, és az összes lapon al
 ![Lapbetöltési idők Analytics](./media/app-insights-analytics-tour/analytics-page-load.png)
 
 ### <a name="availability-results-table"></a>Rendelkezésre állási eredmények táblázatában
-`availabilityResults`eredményeit jeleníti meg a [webalkalmazás-tesztek](app-insights-monitor-web-app-availability.md). Minden egyes teszt helyen a teszt futtatásakor a külön-külön jelenti.
+`availabilityResults` eredményeit jeleníti meg a [webalkalmazás-tesztek](app-insights-monitor-web-app-availability.md). Minden egyes teszt helyen a teszt futtatásakor a külön-külön jelenti.
 
 ![Lapbetöltési idők Analytics](./media/app-insights-analytics-tour/analytics-availability.png)
 

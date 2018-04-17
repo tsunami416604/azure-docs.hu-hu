@@ -1,26 +1,24 @@
 ---
-title: "Telepítés közzétett alkalmazás - Dataiku DDS - Azure HDInsight |} Microsoft Docs"
-description: "Telepítheti és használhatja a Dataiku DDS külső Hadoop alkalmazás."
+title: Telepítés közzétett alkalmazás - Dataiku DDS - Azure HDInsight |} Microsoft Docs
+description: Telepítheti és használhatja a Dataiku DDS külső Hadoop alkalmazás.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 835f433e0bf79e8bc4d9b30963196f65bc53cd0e
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: facee9187528fa0c6a74f71ee73636dc23ca35ba
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-published-application---dataiku-dds"></a>Közzétett alkalmazás - Dataiku DDS telepítése
 
@@ -64,7 +62,7 @@ Az alábbi lépések egy egyszerű bemutató nyújtanak.
 
 1. [Töltse le a minta rendeléseket CSV](https://doc.dataiku.com/tutorials/data/101/haiku_shirt_sales.csv).
 
-2. DSS irányítópultot, válassza ki a  **+**  (új projekt) hivatkozásra kattintva hozzon létre egy új projektet a bal oldali menüből.
+2. DSS irányítópultot, válassza ki a **+** (új projekt) hivatkozásra kattintva hozzon létre egy új projektet a bal oldali menüből.
 
     ![Új projekt hivatkozás](./media/hdinsight-apps-install-dataiku/new-project.png)
 

@@ -1,25 +1,23 @@
 ---
-title: "A HDInsight-fürt létrehozása – Azure során adja hozzá a Hive-könyvtárakhoz |} Microsoft Docs"
-description: "Megtudhatja, hogyan Hive-könyvtárakhoz (jar fájlok) hozzáadása egy HDInsight-fürtre a fürt létrehozása során."
+title: A HDInsight-fürt létrehozása – Azure során adja hozzá a Hive-könyvtárakhoz |} Microsoft Docs
+description: Megtudhatja, hogyan Hive-könyvtárakhoz (jar fájlok) hozzáadása egy HDInsight-fürtre a fürt létrehozása során.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 2fd74b8d-c006-45c6-a9e2-72ff5d2d978a
 ms.service: hdinsight
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 434c7d24f55c20cc763df3b83429e039bb5e8541
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 71e2859085dc4a9f4fa327d88faff4fecf5108ef
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="add-custom-hive-libraries-when-creating-your-hdinsight-cluster"></a>Adja hozzá az egyedi Hive-könyvtárakhoz, ha a HDInsight-fürt létrehozása
 
@@ -41,9 +39,9 @@ Fürt létrehozása során a parancsfájl a fájlok enumerálása, másolja őke
 
 **Parancsfájl helyét**
 
-For **Linux-based clusters**: [https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh)
+A **Linux-alapú fürtökön**: [https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh)
 
-For **Windows-based clusters**: [https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1](https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1)
+A **Windows-alapú fürtök**: [https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1](https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1)
 
 > [!IMPORTANT]
 > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
@@ -56,7 +54,7 @@ For **Windows-based clusters**: [https://hdiconfigactions.blob.core.windows.net/
 
 * A tárfiók tartalmazó jar-fájlok a könyvtárban **kell** is csatolva van a HDInsight-fürt létrehozása során. Azt az alapértelmezett tárfiókot kell lennie, vagy a fiók hozzáadva __opcionális konfigurációs__.
 
-* A tároló WASB elérési útja meg kell adni a Script Action paramétereként. Például, ha a JAR-fájlok kivételével nevű tárolóban vannak tárolva **függvénytárak** egy tárfiókon nevű **mystorage**, a paraméter lenne  **wasb://libs@mystorage.blob.core.windows.net/** .
+* A tároló WASB elérési útja meg kell adni a Script Action paramétereként. Például, ha a JAR-fájlok kivételével nevű tárolóban vannak tárolva **függvénytárak** egy tárfiókon nevű **mystorage**, a paraméter lenne **wasb://libs@mystorage.blob.core.windows.net/**.
 
   > [!NOTE]
   > Jelen dokumentum céljából feltételezzük, hogy már létrehozott egy tárfiókot, a blob tároló, és a fájlok fel.
@@ -76,7 +74,7 @@ For **Windows-based clusters**: [https://hdiconfigactions.blob.core.windows.net/
 
    * **NÉV**: Adja meg a parancsfájlművelet rövid nevét.
 
-   * **SCRIPT URI**: https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh
+   * **PARANCSFÁJL URI AZONOSÍTÓJA**: https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh
 
    * **HEAD**: ezt a beállítást.
 
@@ -84,7 +82,7 @@ For **Windows-based clusters**: [https://hdiconfigactions.blob.core.windows.net/
 
    * **ZOOKEEPER**: hagyja üresen a mezőt.
 
-   * **PARAMÉTEREK**: a WASB címet adjon meg a tároló és a storage-fiókhoz, amely tartalmazza a JAR-fájlok kivételével. Például  **wasb://libs@mystorage.blob.core.windows.net/** .
+   * **PARAMÉTEREK**: a WASB címet adjon meg a tároló és a storage-fiókhoz, amely tartalmazza a JAR-fájlok kivételével. Például **wasb://libs@mystorage.blob.core.windows.net/**.
 
 3. Alján a **Parancsfájlműveletek**, használja a **válasszon** gombra kattintva mentse a konfigurációt.
 

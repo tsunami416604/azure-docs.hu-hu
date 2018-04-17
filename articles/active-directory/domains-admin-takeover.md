@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/14/2017
+ms.date: 04/06/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 16f5c515231f486e3576b95a0d103d2fa34842ff
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: cd11ea68f298395236abf83295b939462ba00964
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Egy nem felügyelt directory átveszi az Azure Active Directoryban rendszergazdaként
 Ez a cikk ismerteti a két módon vegye át egy DNS-tartománynév, az Azure Active Directory (Azure AD) egy nem felügyelt könyvtárban. Egy önkiszolgáló felhasználó előfizet egy felhőalapú szolgáltatás által használt Azure AD, ha hozzáadja őket egy nem felügyelt Azure AD-címtár az e-mail tartománya alapján. Önkiszolgáló, vagy a szolgáltatás "ugrásszerű" létrehozni kapcsolatban bővebben lásd: [Mi az az Azure Active Directory önkiszolgáló regisztráció?]()
@@ -83,28 +83,33 @@ Ellenőrizze a tartománynév tulajdonjogát, az Azure AD a nem felügyelt bérl
 - Felhasználók
 - Előfizetések
 - A licenc-hozzárendeléseivel
- 
-A [ **ForceTakeover** beállítás](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) tartomány nevét a külső rendszergazda felvásárlási csak két szolgáltatást, a Power bi-ban és az Azure RMS esetén támogatott.
 
 ### <a name="support-for-external-admin-takeover"></a>Külső felügyeleti felvásárlási támogatása
 Külső felügyeleti felvásárlási a következő online szolgáltatások által támogatott:
 
 - Power BI
-- Az Azure Rights Management szolgáltatásbeli (RMS)
+- Azure Rights Management
 - Exchange Online
 
 A támogatott service-csomagok a következők:
 
 - Ingyenes Power bi-ban
-- Power BI Pro
+- A Power BI Pro
 - Szabad PowerApps
 - Szabad PowerFlow
-- Az Azure Rights Management szolgáltatás Basic (RMS)
-- Azure Rights Management Service Enterprise (RMS)
+- RMS egyéni felhasználók számára
 - Microsoft Stream
 - Dynamics 365 ingyenes próbaverzió
 
-Nem támogatott Exernal admin felvásárlási bármely szolgáltatás, amely rendelkezik a SharePoint, a onedrive-on, illetve az üzleti Skype; service-csomagokról például az ingyenes Office-előfizetés vagy az Office alapszintű Termékváltozat.
+Külső felügyeleti felvásárlási nem támogatott bármely szolgáltatás, amely rendelkezik a SharePoint, a onedrive-on, illetve az üzleti Skype; service-csomagokról például az ingyenes Office-előfizetés vagy az Office alapszintű Termékváltozat. Is használhat a [ **ForceTakeover** beállítás](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) a tartománynév eltávolítása a nem felügyelt bérlői, és a kívánt tenant ellenőrzésének azt. A ForceTakeover beállítás nem felhasználók átvitele, vagy az előfizetés való hozzáférés megőrzése. Ehelyett ez a beállítás csak helyezi a tartomány nevét. 
+
+#### <a name="more-information-about-rms-for-individuals"></a>További információk az RMS egyéni felhasználók számára
+
+A [RMS egyéni felhasználók számára](/information-protection/understand-explore/rms-for-individuals), ha a nem felügyelt bérlői és a bérlői ugyanabban a régióban, hogy Ön a tulajdonosa, az automatikusan létrehozott [Azure Information Protection bérlőkulcs](/information-protection/plan-design/plan-implement-tenant-key) és [alapértelmezett védelmi sablonok](/information-protection/deploy-use/configure-usage-rights#rights-included-in-the-default-templates) továbbá a tartomány nevét átkerül. 
+
+A kulcs és sablonok nem kerülnek egy másik régióban a nem felügyelt bérlő esetén. Például a nem felügyelt bérlő az Európában és a bérlő saját Észak-amerikai van. 
+
+Bár az RMS egyéni felhasználók számára védett tartalom megnyitása az Azure AD-alapú hitelesítés támogatására szolgál, nem rendszergazdák számára is a tartalmak védelmére. Ha a felhasználók adott tartalomvédelemre az RMS egyéni felhasználók számára előfizetéssel, és a kulcs és a sablonok nem lett áthelyezve, ezt a tartalmat nem lesznek elérhetők a tartomány felvásárlási után.    
 
 ### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>A ForceTakeover lehetőséget az Azure AD PowerShell-parancsmagjai
 Láthatja, hogy ezek a parancsmagok használt [PowerShell-példa](#powershell-example).
@@ -118,7 +123,7 @@ A parancsmag | Használat
 `get-msoldomain` | A tartomány neve már szerepel a felügyelt tenanthoz társított tartománynevek listája, de van megadva, **tartalomszűrő**.
 `get-msoldomainverificationdns –Domainname <domainname> –Mode DnsTxtRecord` | A tájékoztatást ad meg szeretne adni a tartomány új DNS TXT-rekord (MS = xxxxx). Ellenőrzési előfordulhat, hogy hiba akkor fordulhat elő azonnal csak bizonyos idő a TXT rekord propagálása, mert így várja meg, annak eldöntéséhez, hogy néhány percet a **- ForceTakeover** lehetőséget. 
 `confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>Ha a tartomány neve még nem ellenőrizhető, és folytassa a **- ForceTakeover** lehetőséget. Ellenőrzi, hogy a TXT-rekord lett létrehozva, ezért a felvásárlási folyamat másolattól.<li>A **- ForceTakeover** beállítás hozzá kell adni a parancsmag csak akkor, ha egy külső rendszergazda felvásárlási, például ha a nem felügyelt bérlői rendelkezik Office 365-szolgáltatásokhoz blokkolja a felvásárlási kényszerítése.
-`get-msoldomain` | A lista már helyesen jelenik meg a tartománynevet **ellenőrizve**.
+`get-msoldomain` | A lista megjelenik a tartomány nevét **ellenőrizve**.
 
 ### <a name="powershell-example"></a>PowerShell – példa
 

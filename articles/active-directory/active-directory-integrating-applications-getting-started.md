@@ -1,11 +1,11 @@
 ---
-title: "Ismerkedés az Azure AD integrálása az alkalmazásokkal |} Microsoft Docs"
-description: "Ez a cikk egy első lépésekről szóló útmutatót az Azure Active Directory (AD) integrálása a helyszíni alkalmazások és a felhőalapú alkalmazásokhoz."
+title: Ismerkedés az Azure AD integrálása az alkalmazásokkal |} Microsoft Docs
+description: Ez a cikk egy első lépésekről szóló útmutatót az Azure Active Directory (AD) integrálása a helyszíni alkalmazások és a felhőalapú alkalmazásokhoz.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: db6d210d-c970-49e9-bd20-36d984bcd1c3
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: bf8ef28b49a3a12772965e7ebc85539c1a86e10f
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: dd118dbda9b7b0bee27bf9c97627bb8269e2d9b4
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Azure Active Directory integrálása alkalmazások első lépések útmutató
 ## <a name="overview"></a>Áttekintés
@@ -51,7 +51,7 @@ Alkalmazások integrálása az Azure ad-vel való ugrás előtt fontos tudni, ho
 * Szükség lesz-felhasználó vagy csoport adatbázisok karbantartása integrálása előtt?  (Ez a közérthető fontos kérdésre. Szemétgyűjtési a szemétgyűjtési ki.)
 
 ### <a name="access-management-inventory"></a>Access felügyeleti készlet
-* Hogyan jelenleg felügyel alkalmazásokhoz való felhasználói hozzáférések? Nem, amely kell?  Tekintette egyéb módjai kezelésére, többek között a [RBAC](role-based-access-control-configure.md) például?
+* Hogyan jelenleg felügyel alkalmazásokhoz való felhasználói hozzáférések? Nem, amely kell?  Tekintette egyéb módjai kezelésére, többek között a [RBAC](../role-based-access-control/role-assignments-portal.md) például?
 * Ki kell, hogy mi a hozzáférést?
 
 Lehet, hogy nincs minden ezekre a kérdésekre adott válaszokat előre, de ez nem probléma.  Ez az útmutató segítséget nyújt válaszolja meg a fenti kérdések közül, és néhány kérdésekre vonatkozó döntések meghozatalában.

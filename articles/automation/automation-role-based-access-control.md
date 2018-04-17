@@ -1,7 +1,7 @@
 ---
-title: "Szerepköralapú hozzáférés-vezérlés az Azure Automationben"
-description: "A Szerepköralapú hozzáférés-vezérlés (RBAC) hozzáférés-vezérlést biztosít az Azure-erőforrásokhoz. Ez a cikk ismerteti az RBAC beállítását az Azure Automationben."
-keywords: "automation rbac, szerepköralapú hozzáférés-vezérlés, azure rbac"
+title: Szerepköralapú hozzáférés-vezérlés az Azure Automationben
+description: A Szerepköralapú hozzáférés-vezérlés (RBAC) hozzáférés-vezérlést biztosít az Azure-erőforrásokhoz. Ez a cikk ismerteti az RBAC beállítását az Azure Automationben.
+keywords: automation rbac, szerepköralapú hozzáférés-vezérlés, azure rbac
 services: automation
 ms.service: automation
 author: georgewallace
@@ -9,15 +9,15 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 9fb77f3b435491b5ac5b16327d6ce74f90664a79
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: c9cdebd2fb7f650b042fa04f345ac440e0b41cb8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Szerepköralapú hozzáférés-vezérlés az Azure Automationben
 
-A Szerepköralapú hozzáférés-vezérlés (RBAC) hozzáférés-vezérlést biztosít az Azure-erőforrásokhoz. Használatával [RBAC](../active-directory/role-based-access-control-configure.md), feladatokat elkülönítse a munkacsoporton belül, és csak olyan mértékű hozzáférést biztosítania a felhasználók, csoportok, és alkalmazásokat, amelyek kell elvégezni a munkájukat. A szerepköralapú hozzáférés az Azure Portal, az Azure parancssori segédeszközök vagy az Azure felügyeleti API-k segítségével adható a felhasználóknak.
+A Szerepköralapú hozzáférés-vezérlés (RBAC) hozzáférés-vezérlést biztosít az Azure-erőforrásokhoz. Használatával [RBAC](../role-based-access-control/role-assignments-portal.md), feladatokat elkülönítse a munkacsoporton belül, és csak olyan mértékű hozzáférést biztosítania a felhasználók, csoportok, és alkalmazásokat, amelyek kell elvégezni a munkájukat. A szerepköralapú hozzáférés az Azure Portal, az Azure parancssori segédeszközök vagy az Azure felügyeleti API-k segítségével adható a felhasználóknak.
 
 ## <a name="roles-in-automation-accounts"></a>Szerepkörök az Automation-fiók
 Az Azure Automationben a hozzáférés biztosításához a megfelelő RBAC-szerepkörök rendelhetők az Automation-fiók tartományában lévő felhasználókhoz, csoportokhoz és alkalmazásokhoz. Alább láthatók az Automation-fiók által támogatott beépített szerepkörök:
@@ -123,7 +123,7 @@ A napló Analytics munkatárs összes figyelési adatot olvashatják és figyel�
 
 |**Műveletek**  |**Leírás**  |
 |---------|---------|
-|*/read|Olvassa el az erőforrásokat bármilyen típusú, kivéve a titkos kulcsok.|
+|* / olvasása|Olvassa el az erőforrásokat bármilyen típusú, kivéve a titkos kulcsok.|
 |Microsoft.Automation/automationAccounts/*|Automation-fiók kezelése.|
 |Microsoft.ClassicCompute/virtualMachines/extensions/*|Hozzon létre, és a virtuálisgép-bővítmények kezelésére.|
 |Microsoft.ClassicStorage/storageAccounts/listKeys/action|Klasszikus tárfiókkulcsok listázása.|
@@ -144,7 +144,7 @@ A napló Analytics olvasó megtekintheti és összes figyelési adatok keresése
 
 |**Műveletek**  |**Leírás**  |
 |---------|---------|
-|*/read|Olvassa el az erőforrásokat bármilyen típusú, kivéve a titkos kulcsok.|
+|* / olvasása|Olvassa el az erőforrásokat bármilyen típusú, kivéve a titkos kulcsok.|
 |Microsoft.OperationalInsights/workspaces/analytics/query/action|A Naplóelemzési lekérdezések kezelése.|
 |Microsoft.OperationalInsights/workspaces/search/action|Log Analytics-adatok keresése.|
 |Microsoft.Support/*|Hozzon létre és támogatási jegyek kezelése.|
@@ -157,7 +157,7 @@ A figyelési munkatárs összes figyelési adatot olvashatják és monitoringbe�
 
 |**Műveletek**  |**Leírás**  |
 |---------|---------|
-|*/read|Olvassa el az erőforrásokat bármilyen típusú, kivéve a titkos kulcsok.|
+|* / olvasása|Olvassa el az erőforrásokat bármilyen típusú, kivéve a titkos kulcsok.|
 |Microsoft.AlertsManagement/alerts/*|Riasztások kezelése.|
 |Microsoft.AlertsManagement/alertsSummary/*|A riasztási irányítópult kezelése.|
 |Microsoft.Insights/AlertRules/*|Riasztási szabályok kezelése.|
@@ -183,7 +183,7 @@ A figyelés olvasó összes figyelési adatot tud olvasni. Az alábbi táblázat
 
 |**Műveletek**  |**Leírás**  |
 |---------|---------|
-|*/read|Olvassa el az erőforrásokat bármilyen típusú, kivéve a titkos kulcsok.|
+|* / olvasása|Olvassa el az erőforrásokat bármilyen típusú, kivéve a titkos kulcsok.|
 |Microsoft.OperationalInsights/workspaces/search/action|Keresse meg a Naplóelemzési munkaterület.|
 |Microsoft.Support/*|Hozzon létre és támogatási jegyek kezelése|
 
@@ -193,7 +193,7 @@ A felhasználói hozzáférés adminisztrátora kezelheti az Azure-erőforrások
 
 |**Műveletek**  |**Leírás**  |
 |---------|---------|
-|*/read|Minden erőforrás olvasása|
+|* / olvasása|Minden erőforrás olvasása|
 |Microsoft.Authorization/*|Engedélyezési kezelése|
 |Microsoft.Support/*|Hozzon létre és támogatási jegyek kezelése|
 
@@ -307,7 +307,7 @@ Ennek a felhasználónak nincs jogosultsága megtekinteni a forgatókönyvekhez 
 ![Nincs hozzáférése a webhookokhoz](media/automation-role-based-access-control/automation-13-no-access-to-webhooks.png)  
 
 ## <a name="configure-rbac-for-your-automation-account-using-azure-powershell"></a>Az RBAC konfigurálása az Azure PowerShell használatával az Automation-fiók
-Szerepköralapú hozzáférés-is beállítható úgy, hogy az alábbi Automation-fiók [Azure PowerShell-parancsmagok](../active-directory/role-based-access-control-manage-access-powershell.md):
+Szerepköralapú hozzáférés-is beállítható úgy, hogy az alábbi Automation-fiók [Azure PowerShell-parancsmagok](../role-based-access-control/role-assignments-powershell.md):
 
 • A [Get-AzureRmRoleDefinition](https://msdn.microsoft.com/library/mt603792.aspx) felsorolja az Azure Active Directoryban elérhető összes RBAC-szerepkört. Ezt a parancsot használhatja a **Name** (Név) tulajdonsággal, ha fel szeretné sorolni az összes műveletet, amelyet egy adott szerepkörrel lehet elvégezni.
 
@@ -380,7 +380,7 @@ Remove-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to remov
 Cserélje le a fenti példákban **bejelentkezés Id**, **előfizetési azonosító**, **erőforráscsoport-név**, és **Automation-fiók neve** rendelkező a fiók adatait. Ha a rendszer rákérdez, hogy tényleg szeretné-e törölni a szerepkör-hozzárendelést, kattintson az **Igen** gombra.   
 
 ## <a name="next-steps"></a>További lépések
-* Az RBAC for Azure Automation konfigurálásának különböző módjaira vonatkozó további információért lásd [az RBAC Azure PowerShellel folytatott kezelésével](../active-directory/role-based-access-control-manage-access-powershell.md) foglalkozó témakört.
+* Az RBAC for Azure Automation konfigurálásának különböző módjaira vonatkozó további információért lásd [az RBAC Azure PowerShellel folytatott kezelésével](../role-based-access-control/role-assignments-powershell.md) foglalkozó témakört.
 * További információk a forgatókönyvek elindításának különböző módjairól: [Forgatókönyv elindítása](automation-starting-a-runbook.md).
 * További információk a különböző forgatókönyv-típusokról: [Az Azure Automation forgatókönyveinek típusai](automation-runbook-types.md)
 

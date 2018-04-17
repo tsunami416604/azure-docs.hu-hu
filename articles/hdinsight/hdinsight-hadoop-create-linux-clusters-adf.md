@@ -1,8 +1,8 @@
 ---
-title: "Igény szerinti használatával a Data Factory - Azure HDInsight Hadoop-fürtök létrehozása |} Microsoft Docs"
-description: "Ismerje meg, igény szerinti Hadoop-fürtök létrehozása a HDInsight az Azure Data Factory használatával."
+title: Igény szerinti használatával a Data Factory - Azure HDInsight Hadoop-fürtök létrehozása |} Microsoft Docs
+description: Ismerje meg, igény szerinti Hadoop-fürtök létrehozása a HDInsight az Azure Data Factory használatával.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: spelluru
 manager: jhubbard
@@ -11,16 +11,14 @@ ms.assetid: 1f3b3a78-4d16-4d99-ba6e-06f7bb185d6a
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 07/20/2017
 ms.author: spelluru
-ms.openlocfilehash: b9b73f6691af957e42236ef9a223411a0296f96f
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 213f1122dc9f616474005070ae3aefa45641fecc
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-on-demand-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Igény szerinti Hadoop-fürtök létrehozása a Hdinsightban Azure Data Factory használatával
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -83,9 +81,9 @@ Ebben a forgatókönyvben legfeljebb három storage-fiókok is használhatja:
 
 Az oktatóanyag leegyszerűsítése segítségével egy tárfiókot a három célokra szolgál. Az Azure PowerShell-parancsfájlpélda ebben a szakaszban található a következő feladatokat hajtja végre:
 
-1. Jelentkezzen be az Azure-bA.
+1. Bejelentkezik az Azure-ba.
 2. Azure-erőforráscsoport létrehozása
-3. Hozzon létre egy Azure Storage-fiókot.
+3. Azure Storage-fiók létrehozása.
 4. A tárfiók egy Blob-tároló létrehozása
 5. A következő két fájlt másolja a Blob-tároló:
 
@@ -189,7 +187,7 @@ Ha a PowerShell parancsfájl segítségre van szüksége, tekintse meg a [az Azu
 ## <a name="create-a-data-factory-using-resource-manager-template"></a>A Resource Manager sablonnal adat-előállító létrehozása
 A tárfiók, a bemeneti adatok és a HiveQL-parancsfájlt készített készen áll az Azure data factory létrehozása. Többféleképpen az adat-előállító létrehozása. Ebben az oktatóanyagban létrehoz egy adat-előállító telepítésével az Azure Resource Manager-sablon az Azure portál használatával. A Resource Manager-sablon használatával is telepítheti [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) és [Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md#deploy-local-template). Más data factory létrehozási módszert, lásd: [oktatóanyag: az első adat-előállító létrehozása](../data-factory/quickstart-create-data-factory-dot-net.md).
 
-1. Az alábbi képre kattintva jelentkezzen be az Azure-ba, és nyissa meg a Resource Manager-sablont az Azure Portalon. A sablon https://hditutorialdata.blob.core.windows.net/adfhiveactivity/data-factory-hdinsight-on-demand.json helyezkedik el. Tekintse meg a [adat-előállító bejegyzései szerepelnek a sablon](#data-factory-entities-in-the-template) szakasz a sablonban definiált entitások kapcsolatos részletes információkat. 
+1. Az alábbi képre kattintva jelentkezzen be az Azure-ba, és nyissa meg a Resource Manager-sablont az Azure Portalon. A sablon a következő helyen található https://hditutorialdata.blob.core.windows.net/adfhiveactivity/data-factory-hdinsight-on-demand.json. Tekintse meg a [adat-előállító bejegyzései szerepelnek a sablon](#data-factory-entities-in-the-template) szakasz a sablonban definiált entitások kapcsolatos részletes információkat. 
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fadfhiveactivity%2Fdata-factory-hdinsight-on-demand.json" target="_blank"><img src="./media/hdinsight-hadoop-create-linux-clusters-adf/deploy-to-azure.png" alt="Deploy to Azure"></a>
 2. Válassza ki **használata meglévő** választás a **erőforráscsoport** beállításával, és válassza ki a nevét (a PowerShell-parancsfájl használatával), az előző lépésben létrehozott erőforráscsoportot.
@@ -561,7 +559,7 @@ Abban az esetben, ha nem szeretné törölni a tárfiókot, ha törli az erőfor
         }
     },            
     ```
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben rendelkezik megtanulta, hogyan használható az Azure Data Factory igény szerinti HDInsight-fürt feldolgozni a Hive-feladatok létrehozása. Ha többet:
 
 * [Hadoop oktatóanyag: hdinsight Linux-alapú Hadoop használatának megkezdése](hadoop/apache-hadoop-linux-tutorial-get-started.md)

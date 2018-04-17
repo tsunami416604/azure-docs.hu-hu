@@ -1,25 +1,18 @@
 ---
-title: "Azure Analysis Services oktatóanyag – kiegészítő lecke: Hézagos hierarchiák | Microsoft Docs"
-description: "Ismerteti a hézagos hierarchiák javításának módját az Azure Analysis Services oktatóanyagában."
-services: analysis-services
-documentationcenter: 
-author: Minewiskan
+title: 'Azure Analysis Services oktatóanyag – kiegészítő lecke: Hézagos hierarchiák | Microsoft Docs'
+description: Ismerteti a hézagos hierarchiák javításának módját az Azure Analysis Services oktatóanyagában.
+author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 01/08/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: c5c4a687ffe512b15372d152b517834771e46328
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
-ms.translationtype: HT
+ms.reviewer: minewiskan
+ms.openlocfilehash: 955bc57bbf5f8bc3f0d91350f885d5dc77db93a8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="supplemental-lesson---ragged-hierarchies"></a>Kiegészítő lecke – Hézagos hierarchiák
 
@@ -51,8 +44,8 @@ Ha az oktatóanyag részeként hozta létre az AW internetes értékesítési pr
     | 1. táblázat           | Oszlop       | Szűrés iránya   | 2. táblázat     | Oszlop      | Aktív |
     |-------------------|--------------|--------------------|-------------|-------------|--------|
     | FactResellerSales | OrderDateKey | Alapértelmezett            | DimDate     | Dátum        | Igen    |
-    | FactResellerSales | DueDate      | Alapértelmezett            | DimDate     | Dátum        | Nincs     |
-    | FactResellerSales | ShipDateKey  | Alapértelmezett            | DimDate     | Dátum        | Nincs     |
+    | FactResellerSales | DueDate      | Alapértelmezett            | DimDate     | Dátum        | Nem     |
+    | FactResellerSales | ShipDateKey  | Alapértelmezett            | DimDate     | Dátum        | Nem     |
     | FactResellerSales | ProductKey   | Alapértelmezett            | DimProduct  | ProductKey  | Igen    |
     | FactResellerSales | EmployeeKey  | Mindkét táblázathoz | DimEmployee | EmployeeKey | Igen    |
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure-alkalmazás identitását létrehozása a PowerShell használatával |} Microsoft Docs"
-description: "Ismerteti, hogyan hozzon létre egy Azure Active Directory-alkalmazást és egy egyszerű szolgáltatást, és a szerepköralapú hozzáférés-vezérléssel erőforrásokhoz való hozzáférés engedélyezése az Azure PowerShell használatával. Azt mutatja, hogyan hitelesítheti az alkalmazás a tanúsítvánnyal."
+title: Azure-alkalmazás identitását létrehozása a PowerShell használatával |} Microsoft Docs
+description: Ismerteti, hogyan hozzon létre egy Azure Active Directory-alkalmazást és egy egyszerű szolgáltatást, és a szerepköralapú hozzáférés-vezérléssel erőforrásokhoz való hozzáférés engedélyezése az Azure PowerShell használatával. Azt mutatja, hogyan hitelesítheti az alkalmazás a tanúsítvánnyal.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/12/2018
 ms.author: tomfitz
-ms.openlocfilehash: 175d95c16484b90b13936c3be39b67749f0c3238
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3b14d148669457a47eecda11cf6a8c85b5361677
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Hozzon létre egy egyszerű szolgáltatást egy tanúsítványt az Azure PowerShell használatával
 
@@ -40,7 +40,7 @@ A legegyszerűbben a portálon ellenőrizheti, hogy rendelkezik-e megfelelő jog
 
 ## <a name="create-service-principal-with-self-signed-certificate"></a>Egyszerű szolgáltatásnév létrehozása önaláírt tanúsítvánnyal
 
-A következő példa egy olyan egyszerű forgatókönyvet ismertet. Használja [New-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) szolgáltatásnevet létrehozni az önaláírt tanúsítványt, és használja a [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) hozzárendelni a [közreműködő](../active-directory/role-based-access-built-in-roles.md#contributor)a szolgáltatás egyszerű szerepkört. A szerepkör-hozzárendelés hatókörét az aktuálisan kijelölt Azure-előfizetéshez. Válasszon másik előfizetést, használja a [Set-AzureRmContext](/powershell/module/azurerm.profile/set-azurermcontext).
+A következő példa egy olyan egyszerű forgatókönyvet ismertet. Használja [New-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) szolgáltatásnevet létrehozni az önaláírt tanúsítványt, és használja a [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) hozzárendelni a [közreműködő](../role-based-access-control/built-in-roles.md#contributor)a szolgáltatás egyszerű szerepkört. A szerepkör-hozzárendelés hatókörét az aktuálisan kijelölt Azure-előfizetéshez. Válasszon másik előfizetést, használja a [Set-AzureRmContext](/powershell/module/azurerm.profile/set-azurermcontext).
 
 ```powershell
 $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" `
@@ -170,7 +170,7 @@ Ha szeretné beolvasni az alkalmazás Azonosítóját, használja:
 
 ## <a name="create-service-principal-with-certificate-from-certificate-authority"></a>Egyszerű szolgáltatásnév létrehozása hitelesítésszolgáltatótól származó tanúsítvánnyal
 
-Az alábbi példában egy hitelesítésszolgáltató által kiállított tanúsítványt egyszerű szolgáltatásnév létrehozása. A megadott Azure-előfizetés a hozzárendelés hatókörét. A szolgáltatás egyszerű, hogy hozzáadja a [közreműködő](../active-directory/role-based-access-built-in-roles.md#contributor) szerepkör. Ha a szerepkör-hozzárendelés során hiba lép fel, a hozzárendelés újrapróbálkozik.
+Az alábbi példában egy hitelesítésszolgáltató által kiállított tanúsítványt egyszerű szolgáltatásnév létrehozása. A megadott Azure-előfizetés a hozzárendelés hatókörét. A szolgáltatás egyszerű, hogy hozzáadja a [közreműködő](../role-based-access-control/built-in-roles.md#contributor) szerepkör. Ha a szerepkör-hozzárendelés során hiba lép fel, a hozzárendelés újrapróbálkozik.
 
 ```powershell
 Param (

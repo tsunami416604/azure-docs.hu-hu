@@ -1,8 +1,8 @@
 ---
-title: "Erőforrások, szerepkörök és hozzáférés szabályozása Azure Application insightsban |} Microsoft Docs"
-description: "Tulajdonosai, közreműködő szerepkörrel rendelkező személyek és a szervezet insights olvasói."
+title: Erőforrások, szerepkörök és hozzáférés szabályozása Azure Application insightsban |} Microsoft Docs
+description: Tulajdonosai, közreműködő szerepkörrel rendelkező személyek és a szervezet insights olvasói.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 49f736a5-67fe-4cc6-b1ef-51b993fb39bd
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: 6e811c9b427469fa781cf1f5b7c7deff3a8e6eb3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5bb6c33c083e1be690b70b63ca087c923d43f3ee
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Erőforrások, szerepkörök és hozzáférés-vezérlés az Application Insightsban
-Szabályozhatja, aki rendelkezik-e olvasási és hozzáférési frissíteni az adatait az Azure-ban [Application Insights][start], használatával [Microsoft Azure szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-configure.md).
+Szabályozhatja, aki rendelkezik-e olvasási és hozzáférési frissíteni az adatait az Azure-ban [Application Insights][start], használatával [Microsoft Azure szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md).
 
 > [!IMPORTANT]
 > Hozzáférést biztosít a felhasználók a **erőforráscsoportba vagy előfizetésbe** , amelyhez az alkalmazás erőforrás tartozik - magát az erőforrás nem található. Rendelje hozzá a **Application Insights-összetevővel kapcsolatos közreműködői** szerepkör. Ez biztosítja az egységes irányítását webes tesztjeinek használatát, és a riasztások mellett az alkalmazás erőforrás elérésére. [További információk](#access).
@@ -45,7 +45,7 @@ Első, néhány definíciók:
 * [**Előfizetés** ](https://portal.azure.com) - jelentkezzen be Azure-előfizetés az Application Insights vagy más Azure-erőforrások használatára. Minden erőforráscsoport tartozik egy Azure-előfizetéssel, ahol az ár csomag kiválasztása és, ha egy szervezet előfizetés, válassza ki a tagok és a hozzáférési engedélyeket.
 * [**Microsoft-fiók** ] [ account] -felhasználónevét és jelszavát, amelyekkel bejelentkezhet a Microsoft Azure előfizetések, XBox Live-, Outlook.com-os és más Microsoft-szolgáltatásokban.
 
-## <a name="access"></a>Elérés az erőforráscsoportban
+## <a name="access"></a> Elérés az erőforráscsoportban
 Fontos megérteni, hogy az erőforrás alkalmazás létrehozta, kívül is külön rejtett erőforrások riasztások és a webes tesztjeinek használatát. Kapcsolódó azonos [erőforráscsoport](#resource-group) az alkalmazás. Előfordulhat, hogy is vezettek be más Azure-szolgáltatásokat az ott, például webhelyekhez vagy tároló.
 
 ![Az Application Insightsban erőforrások](./media/app-insights-resources-roles-access-control/00-resources.png)
@@ -67,7 +67,7 @@ Nincs a felhasználó hozzáadása.
 
 Vagy nem sikerült lépjen be egy másik szint és a felhasználó hozzáadása az előfizetéshez.
 
-#### <a name="select-a-role"></a>Szerepkörválasztás
+#### <a name="select-a-role"></a>Szerepkör kiválasztása
 ![Az új felhasználó szerepkör kiválasztása](./media/app-insights-resources-roles-access-control/03-role.png)
 
 | Szerepkör | Az erőforráscsoporthoz tartozik |
@@ -79,7 +79,7 @@ Vagy nem sikerült lépjen be egy másik szint és a felhasználó hozzáadása 
 
 "Szerkesztés" magában foglalja a létrehozása, törlése és frissítése:
 
-* Erőforrások
+* További források
 * Webtesztek
 * Riasztások
 * Folyamatos exportálás
@@ -91,7 +91,7 @@ Ha a felhasználó nem szerepel a könyvtár, felajánlhatja bárki, aki a Micro
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 
-* [Szerepköralapú hozzáférés-vezérlés az Azure-ban](../active-directory/role-based-access-control-configure.md)
+* [Szerepköralapú hozzáférés-vezérlés az Azure-ban](../role-based-access-control/role-assignments-portal.md)
 
 <!--Link references-->
 

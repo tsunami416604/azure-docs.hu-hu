@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Backup: Biztonsági másolatot készíteni a virtuális gépek előkészítése |} Microsoft Docs"
-description: "Győződjön meg arról, hogy a környezet elő kell készíteni az Azure virtuális gépek biztonsági mentését."
+title: 'Az Azure Backup: Biztonsági másolatot készíteni a virtuális gépek előkészítése |} Microsoft Docs'
+description: Győződjön meg arról, hogy a környezet elő kell készíteni az Azure virtuális gépek biztonsági mentését.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
-keywords: "biztonsági mentések; biztonsági mentése;"
+editor: ''
+keywords: biztonsági mentések; biztonsági mentése;
 ms.assetid: e87e8db2-b4d9-40e1-a481-1aa560c03395
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/1/2018
 ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: cd8274ab6b50eee83bc3e41ea543930aa309e790
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 70c1553c166cc334f9db03c78139181c6f5c0553
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>A környezet előkészítése a Resource Managerrel üzembe helyezett virtuális gépek biztonsági mentéséhez
 
@@ -55,7 +55,7 @@ A környezet előkészítése előtt ügyeljen arra, hogy ezek a korlátozások 
 * Csatlakoztatott hálózati meghajtók egy virtuális Géphez csatlakozik, nem tartalmazza a biztonsági mentési adatokat.
 * Egy meglévő virtuális gép cseréje a visszaállítás során nem támogatott. Ha úgy próbálja visszaállítani a virtuális gép, ha a virtuális gép létezik, a visszaállítási művelet sikertelen.
 * Kereszt-régió biztonsági mentését, és a visszaállítás nem támogatottak.
-* Biztonsági mentése és visszaállítása a virtuális gépek használata a nem felügyelt lemezek tárfiókokban hálózati szabálya, nem támogatott. 
+* Biztonsági mentése és visszaállítása a virtuális gépek használata a nem felügyelt lemezek tárfiókokban hálózati szabálya, a régi virtuális gép biztonsági mentési veremben ügyfelek esetén nem támogatott. 
 * Miközben vissza konfigurálásának lépésein, győződjön meg arról, hogy a **tűzfalak és a virtuális hálózatok** tárolási fiók beállításait minden hálózati hozzáférés engedélyezése.
 * Minden nyilvános régióiba Azure virtuális gépek biztonsági. (Lásd a [ellenőrzőlista](https://azure.microsoft.com/regions/#services) a támogatott régiók.) A régiót, amelyben keres jelenleg nem támogatott, ha már nem jelenik a legördülő listából válassza ki a tároló létrehozása során.
 * A tartományvezérlők visszaállítását (DC) virtuális Gépet, amely része egy multi-tartományvezérlő-konfiguráció támogatott csak a PowerShell segítségével. További tudnivalókért lásd: [multi-DC tartományvezérlő visszaállítása](backup-azure-arm-restore-vms.md#restore-domain-controller-vms).

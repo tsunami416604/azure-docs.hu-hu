@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 2ab79e3a6308d01d836a82f356f43eccb6af9791
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b91d446f4c43a4ecae40ef49e5e7f930f25e6ad2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-draft-with-azure-container-service-aks"></a>Az Azure Tárolószolgáltatás (AKS) vázlat használata
 
@@ -33,10 +33,10 @@ Végül, telepítenie kell a [Docker](https://www.docker.com).
 
 ## <a name="install-draft"></a>Vázlat telepítése
 
-A Vázlat CLI egy ügyfelet, amelyben a fejlesztői rendszeren fut, és lehetővé teszi, hogy quicky kód telepítése Kubernetes fürtbe. 
+A Vázlat CLI egy ügyfelet, amelyben a fejlesztői rendszeren fut, és lehetővé teszi, hogy quicky kód telepítése Kubernetes fürtbe.
 
-> [!NOTE] 
-> Ha telepítette a vázlatként megjelölt verziót 0.12 előtt, kell először törölnie vázlat a fürt használt `helm delete --purge draft` , és távolítsa el a helyi konfigurációs futtatásával `rm -rf ~/.draft`. Ha a MacOS, futtathatja `brew upgrade draft`.
+> [!NOTE]
+> Ha telepítette a vázlatként megjelölt verziót 0.12 előtt, kell először törölnie vázlat a fürt használt `helm delete --purge draft` , és távolítsa el a helyi konfigurációs futtatásával `rm -rf ~/.draft`. Ha MacOS, `brew upgrade draft`.
 
 A Vázlat parancssori felület telepítése egy Mac használata `brew`. További telepítési beállítások talál, a [vázlat telepítése útmutató][install-draft].
 
@@ -71,9 +71,9 @@ az role assignment create --assignee $AKS_SP_ID --scope $ACR_RESOURCE_ID --role 
 
 Most, hogy AKS és ACR közötti megbízhatósági kapcsolat áll fenn, akkor a következő lépéseket a AKS fürtről ACR használatának engedélyezése.
 1. A tervezett konfiguráció `registry` futtatásával érték `draft config set registry <registry name>.azurecr.io`, ahol _&lt;beállításjegyzék neve&lt;_ a ACR beállításjegyzék neve.
-2. Jelentkezzen be a ACR beállításjegyzék futtatásával `az acr login -n <registry name>`. 
+2. Jelentkezzen be a ACR beállításjegyzék futtatásával `az acr login -n <registry name>`.
 
-Mivel most jelentkezett be helyileg történő ACR és AKS és ACR megbízhatósági kapcsolatot létrehozott, nincs jelszó vagy titkos kulcsok szükségesek leküldése vagy lekérés ACR a AKS be. Hitelesítés az Azure Resource Manager szintjén, Azure Active Directory használatával történik. 
+Mivel most jelentkezett be helyileg történő ACR és AKS és ACR megbízhatósági kapcsolatot létrehozott, nincs jelszó vagy titkos kulcsok szükségesek leküldése vagy lekérés ACR a AKS be. Hitelesítés az Azure Resource Manager szintjén, Azure Active Directory használatával történik.
 
 ## <a name="run-an-application"></a>Alkalmazás futtatása
 
@@ -143,7 +143,7 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 >> Listening on 0.0.0.0:4567
 ```
 
-Az alkalmazás tallózással most tesztelheti http://localhost:46143 (az előző példában; az a port eltérő is lehet). Amikor befejeződött az alkalmazás használatát tesztelés `Control+C` leállítja a proxykapcsolatot.
+Az alkalmazás most teszteléséhez tallózással http://localhost:46143 (az előző példában; az a port eltérő is lehet). Amikor befejeződött az alkalmazás használatát tesztelés `Control+C` leállítja a proxykapcsolatot.
 
 > [!NOTE]
 > Használhatja a `draft up --auto-connect` felépítéséhez és az alkalmazás központi telepítése, és azonnal csatlakozni az első futó tárolót, hogy ellenőrizze az iterációs parancs még gyorsabban ciklus.

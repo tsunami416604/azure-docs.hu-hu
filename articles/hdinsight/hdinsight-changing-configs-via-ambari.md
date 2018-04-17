@@ -1,24 +1,22 @@
 ---
-title: "Az Ambari - Azure HDInsight fürt konfigurációjának optimalizálása |} Microsoft Docs"
-description: "Az Ambari webes felhasználói felület segítségével konfigurálhatja, és optimalizálja a HDInsight-fürtök."
-documentationcenter: 
+title: Az Ambari - Azure HDInsight fürt konfigurációjának optimalizálása |} Microsoft Docs
+description: Az Ambari webes felhasználói felület segítségével konfigurálhatja, és optimalizálja a HDInsight-fürtök.
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: ashish
-ms.openlocfilehash: 74c1b3298cd7b6ffd5b4a60e2fa78ed733232f92
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: f3c1edc767ab07bcdd8b09a0e40e291cbd1f3d9a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-ambari-to-optimize-hdinsight-cluster-configurations"></a>A HDInsight fürt konfigurációjának optimalizálása az Ambari használatával
 
@@ -183,7 +181,7 @@ A rendelkezésre álló tömörítési típusok a következők:
 
 | Formátum | Eszköz | Algoritmus | Fájlnévkiterjesztés | Feloszthatók? |
 | -- | -- | -- | -- | -- |
-| Gzip | Gzip | DEFLATE | .gz | Nem |
+| Gzip | Gzip | DEFLATE | .GZ | Nem |
 | Bzip2 | Bzip2 | Bzip2 |.bz2 | Igen |
 | LZO | Lzop | LZO | .lzo | Igen, ha indexelt |
 | klassz kis | – | klassz kis | klassz kis | Nem |
@@ -274,7 +272,7 @@ A következő részekben további Hive kapcsolatos optimalizálást állíthatja
 
 A Hive az alapértelmezett illesztési típus szerepel a *sorrendű illesztési*. A Hive különleges mappers olvassa a bemeneti, és egy illesztési kulcs/érték pár köztes fájlba hozható létre. Hadoop rendezi, és egyesíti a párok egy véletlen szakaszában. Ebben a szakaszban sorrendű is drága. Az adatok alapján a megfelelő csatlakozási kiválasztásával jelentősen fejleszti a teljesítményt.
 
-| Csatlakozás típusa | Időpont | Útmutató | Hive-beállítások | Megjegyzések |
+| Csatlakozás típusa | Mikor: | Hogyan | Hive-beállítások | Megjegyzések |
 | -- | -- | -- | -- | -- |
 | Csatlakoztatás sorrendű | <ul><li>Alapértelmezett választás</li><li>Mindig működik.</li></ul> | <ul><li>A tábla részei olvassa be</li><li>Gyűjtők és a rendezés illesztési kulcs</li><li>Egy gyűjtő küld minden csökkentése</li><li>Csatlakozás a Reduce oldalon történik</li></ul> | Nincs jelentős Hive szükséges beállítása | Minden alkalommal működik |
 | Térkép illesztés | <ul><li>Egy tábla elfér a memóriában</li></ul> | <ul><li>Kis tábla beolvassa a kivonattábla memória</li><li>A nagy méretű fájl keresztül adatfolyamok</li><li>A kivonattábla rekordokban illesztése</li><li>A kizárólag hozzárendelő vannak illesztések</li></ul> | `hive.auto.confvert.join=true` | Nagyon gyorsan, de korlátozott |
@@ -286,7 +284,7 @@ A Hive-végrehajtó motor optimalizálási további javaslatokat:
 
 | Beállítás | Ajánlott | A HDInsight alapértelmezett |
 | -- | -- | -- |
-| `hive.mapjoin.hybridgrace.hashtable` | Igaz értéket = biztonságosabb, lassabb; FALSE = gyorsabban | hamis |
+| `hive.mapjoin.hybridgrace.hashtable` | Igaz értéket = biztonságosabb, lassabb; FALSE = gyorsabban | false |
 | `tez.am.resource.memory.mb` | 4 GB-os felső határa a legtöbb | Automatikusan beállított |
 | `tez.session.am.dag.submit.timeout.secs` | 300+ | 300 |
 | `tez.am.container.idle.release-timeout-min.millis` | 20000+ | 10000 |

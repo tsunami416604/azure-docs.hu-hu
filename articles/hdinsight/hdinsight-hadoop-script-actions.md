@@ -9,18 +9,16 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 836d68a8-8b21-4d69-8b61-281a7fe67f21
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: ac2a087bb0a9d8cac15dfea2448a9c42cee4a1f4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 98040f10eb15245f36eb0b365dcdf0f5ba7f107a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>A HDInsight-Windows-alapú fürtök parancsfájlművelet-parancsfájlok fejlesztése
 A HDInsight parancsfájlművelet parancsfájlok írásának ismertetése. Parancsfájlművelet-parancsfájlok használatával kapcsolatos információkért lásd: [testreszabása HDInsight-fürtök használata parancsfájlművelet](hdinsight-hadoop-customize-cluster.md). A Linux-alapú HDInsight-fürtök írt ugyanazon cikk, lásd: [parancsfájlművelet fejlesztése parancsfájlok a HDInsight](hdinsight-hadoop-script-actions-linux.md).
@@ -178,7 +176,7 @@ A HDInsight-fürtök egyéni parancsfájl fejlesztésekor van több bevált gyak
 
     HDInsight felépítésű egy aktív-passzív a magas rendelkezésre állás érdekében egy átjárócsomóponttal van aktív módot (ahol a HDInsight-szolgáltatás fut) és a más átjárócsomópont (mely a hdinsight szolgáltatások nem futnak) készenléti kiszolgálói módban van. A csomópontok aktív és passzív módban vált, ha a HDInsight szolgáltatások megszakadnak. A parancsfájlművelet kiszolgálók telepítését mindkét központi csomópont a magas rendelkezésre állású használata esetén vegye figyelembe, hogy a HDInsight feladatátvételi mechanizmus nem tudja, hogy automatikusan áthelyezze a feladatokat a felhasználók által telepített szolgáltatások. HDInsight központi csomópontokra, amelyeket várhatóan magas rendelkezésre állású legyen, felhasználók által telepített szolgáltatások vagy a saját feladatátvételi mechanizmus, ha az aktív-passzív módban van vagy kell aktív-aktív módban.
 
-    Egy HDInsight-parancsfájlművelet parancs mindkét központi csomópontján fut, amikor az átjárócsomópont szerepkör van megadva értékként a *ClusterRoleCollection* paraméter. Egyéni parancsfájl tervezésekor ügyeljen, hogy, hogy a telepítő tisztában-e a parancsfájlt. A problémák, ahol ugyanazok a szolgáltatások telepítve, és mindkét központi csomópont elindult és azok egymással versengő végül nem kell futtatnia. Is vegye figyelembe, hogy adatok nem vesztek el során, különösen, tehát parancsfájlművelet keresztül telepített szoftverek ezek az események rugalmasak lehetnek. Alkalmazások úgy kell megtervezni, magas rendelkezésre állású adatait, amely van osztva sok csomópontjai között. Vegye figyelembe, hogy képes-e akár 1/5 egy fürt csomópontja lemezképet egy időben.
+    Egy HDInsight-parancsfájlművelet parancs mindkét központi csomópontján fut, amikor az átjárócsomópont szerepkör van megadva értékként a *ClusterRoleCollection* paraméter. Egyéni parancsfájl tervezésekor ügyeljen, hogy, hogy a telepítő tisztában-e a parancsfájlt. A problémák, ahol ugyanazok a szolgáltatások telepítve, és mindkét központi csomópont elindult és azok egymással versengő végül nem kell futtatnia. Is vegye figyelembe, hogy adatok nem vesztek el során, különösen, tehát parancsfájlművelet keresztül telepített szoftverek ezek az események rugalmasak lehetnek. Alkalmazások úgy kell megtervezni, magas rendelkezésre állású adatait, amely van osztva sok csomópontjai között. Akár 1/5 egy fürt csomópontja egyidejűleg lemezképet is lehet.
 * Az Azure Blob storage használata egyéni összetevők konfigurálása
 
     Az egyéni összetevők, amelyek telepítése a fürtcsomópontokon előfordulhat, hogy rendelkezik a Hadoop elosztott fájlrendszerrel (HDFS) tárolót használjanak alapértelmezett konfigurációval. Módosítania kell a konfigurációt használja helyette az Azure Blob Storage tárolóban. A fürt lemezkép alaphelyzetbe a HDFS fájlrendszer formázott lekérdezi és elveszítik az ott tárolt adatokat. Azure Blob storage használatával helyette biztosítja, hogy az adatok őrződnek meg.
@@ -192,14 +190,14 @@ Gyakran a parancsfájl művelet fejlesztési, úgy érzi, hogy a környezeti vá
     Write-HDILog "Starting environment variable setting at: $(Get-Date)";
     [Environment]::SetEnvironmentVariable('MDS_RUNNER_CUSTOM_CLUSTER', 'true', 'Machine');
 
-A jelen nyilatkozat beállítja a környezeti változó **MDS_RUNNER_CUSTOM_CLUSTER** értékre a "true", továbbá beállítja ezt a változót kell gépre kiterjedő hatóköre. Esetenként fontos, hogy a környezeti változók a megfelelő hatókörben – számítógép vagy felhasználó van beállítva. Tekintse meg a [Itt] [ 1] környezeti változók beállításával kapcsolatos további információt.
+A jelen nyilatkozat beállítja a környezeti változó **MDS_RUNNER_CUSTOM_CLUSTER** értékre a "true", továbbá beállítja ezt a változót kell gépre kiterjedő hatóköre. Fontos, hogy a környezeti változók a megfelelő hatókörben – számítógép vagy felhasználó van beállítva. Tekintse meg a [Itt] [ 1] környezeti változók beállításával kapcsolatos további információt.
 
 ### <a name="access-to-locations-where-the-custom-scripts-are-stored"></a>Hozzáférés az egyéni parancsfájlok tároló helyekhez
-A fürt testreszabásához használt parancsfájlok kell bármelyik kell az alapértelmezett tárfiókot, a fürt vagy egy nyilvános csak olvasható tároló bármely más tárfiók. Ha a parancsfájl máshol található erőforrásokhoz fér hozzá ezek kell lenniük egy nyilvánosan elérhető (legalább nyilvános csak olvasható). Például előfordulhat, hogy szeretne hozzáférni egy fájlhoz, és mentse a SaveFile-HDI-paranccsal.
+A fürt testreszabásához használt parancsfájlok kell bármelyik kell az alapértelmezett tárfiókot, a fürt vagy egy nyilvános csak olvasható tároló bármely más tárfiók. Ha a parancsfájl máshol található erőforrásokhoz fér hozzá az erőforrásokat nyilvánosan olvashatónak kell lennie. Például előfordulhat, hogy szeretne hozzáférni egy fájlhoz, és mentse a SaveFile-HDI-paranccsal.
 
     Save-HDIFile -SrcUri 'https://somestorageaccount.blob.core.windows.net/somecontainer/some-file.jar' -DestFile 'C:\apps\dist\hadoop-2.4.0.2.1.9.0-2196\share\hadoop\mapreduce\some-file.jar'
 
-Ebben a példában meg kell győződnie arról, hogy a tároló "somecontainer" tárfiókban "somestorageaccount" nyilvánosan elérhető. Ellenkező esetben a parancsfájl "Nem található" kivételt okoz, és sikertelen lesz.
+Ebben a példában, győződjön meg arról, hogy a tároló `somecontainer` tárfiókban `somestorageaccount` nyilvánosan elérhető. Ellenkező esetben a parancsfájl "Nem található" kivételt okoz, és sikertelen lesz.
 
 ### <a name="pass-parameters-to-the-add-azurermhdinsightscriptaction-cmdlet"></a>Az Add-AzureRmHDInsightScriptAction parancsmagnak paraméterekkel
 Az Add-AzureRmHDInsightScriptAction parancsmag több paraméterekkel, magában foglalja a parancsfájl az összes paraméter értékeként karakterlánc formázni kell. Példa:
@@ -238,9 +236,9 @@ Azt a parancsfájlok telepítendő előkészítésekor tartott lépései a köve
 
 1. Helyezze el az egyéni parancsfájlok, amely elérhető a fürt csomópontjai a telepítés során helyen tartalmazó fájlokat. Ez az alapértelmezett vagy a fürtöt tartalmazó környezetben, vagy bármely más nyilvánosan elérhető tároló időpontjában megadott további tárfiókok lehet.
 2. Győződjön meg arról, hogy azok végrehajtási idempotently, így a parancsfájl hajtható végre több alkalommal ugyanazon a csomóponton parancsfájlok ellenőrzést hozzáadása.
-3. Használja a **Write-Output** Azure PowerShell-parancsmag segítségével STDOUT, valamint az STDERR dokumentumokat nyomtassanak azokon. Ne használjon **Write-Host**.
-4. Ideiglenes mappát, például a $env: ideiglenes, tartsa meg a letöltött parancsfájlok által használt, majd eltávolítással parancsfájlok rendelkezik végrehajtása után.
-5. Csak a D:\ vagy C:\apps egyéni szoftver telepítése. A C: meghajtón más helyeken nem használható, azok le foglalva. Vegye figyelembe, hogy a C: meghajtón a C:\apps mappán kívüli fájlok telepítése azt eredményezheti, a telepítő hibákat reimages a csomópont alatt.
+3. Használja a `Write-Output` Azure PowerShell-parancsmag segítségével STDOUT, valamint az STDERR dokumentumokat nyomtassanak azokon. Ne használjon `Write-Host`.
+4. Használjon például egy ideiglenes mappába `$env:TEMP`, hogy a parancsfájlok által használt a letöltött fájlt, majd eltávolítással parancsfájlok rendelkezik végrehajtása után.
+5. Csak a D:\ vagy C:\apps egyéni szoftver telepítése. A C: meghajtón más helyeken nem használható, azok le foglalva. A C: meghajtón a C:\apps mappán kívüli fájlok telepítése azt eredményezheti, a telepítő hibákat reimages a csomópont alatt.
 6. Abban az esetben, ha az operációs rendszer szintű beállításokat vagy Hadoop szolgáltatás konfigurációs fájlok módosultak, érdemes lehet indítsa újra a HDInsight-szolgáltatásokat, így kiválaszthatja a bármely az operációs rendszer szintű beállításokat, például a parancsfájlokban beállított környezeti változókat.
 
 ## <a name="debug-custom-scripts"></a>Egyéni parancsfájlok hibakeresése

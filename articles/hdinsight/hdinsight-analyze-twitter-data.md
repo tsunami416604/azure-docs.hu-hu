@@ -1,25 +1,23 @@
 ---
-title: "A HDInsight - Azure Hadoop Twitter adatok elemzése |} Microsoft Docs"
-description: "Útmutató egy adott word használati gyakoriságának a HDInsight hadoop Twitter-adatok elemzése a Hive segítségével."
+title: A HDInsight - Azure Hadoop Twitter adatok elemzése |} Microsoft Docs
+description: Útmutató egy adott word használati gyakoriságának a HDInsight hadoop Twitter-adatok elemzése a Hive segítségével.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 78e4ea33-9714-424d-ac07-3d60ecaebf2e
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: a5f97dfa084291cefde9bf27b5639926de1bc80e
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 1d3f00658c836eaba41b7ab3d1c065991a2c12a6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>Hdinsight Hive eszközzel Twitter-adatok elemzése
 Közösségi webhelyek egyik fő növeli a big data alkalmazására vonatkozóan. Nyilvános API-k, például a Twitter helyek által biztosított az hasznos adatforrást ismertetése népszerű trendeket és elemzésére.
@@ -77,13 +75,13 @@ Az első lépés lehetővé teszi az OAuth-hoz egy új alkalmazás létrehozása
 
 **Twitter-alkalmazás létrehozása**
 
-1. Jelentkezzen be [https://apps.twitter.com/](https://apps.twitter.com/). Kattintson a **feliratkozás most** hivatkozásra, ha egy Twitter-fiók nem rendelkezik.
+1. Jelentkezzen be [ https://apps.twitter.com/ ](https://apps.twitter.com/). Kattintson a **feliratkozás most** hivatkozásra, ha egy Twitter-fiók nem rendelkezik.
 2. Kattintson a **új alkalmazás létrehozása**.
 3. Adja meg **neve**, **leírás**, **webhely**. Hogy fel egy URL-címet a **webhely** mező. A következő táblázatban néhány példa értékeket:
 
    | Mező | Érték |
    | --- | --- |
-   |  Név |MyHDInsightApp |
+   |  Name (Név) |MyHDInsightApp |
    |  Leírás |MyHDInsightApp |
    |  Honlap |http://www.myhdinsightapp.com |
 4. Ellenőrizze **Igen, elfogadom**, és kattintson a **az Twitter-alkalmazás létrehozása**.
@@ -242,7 +240,7 @@ Ebben az oktatóanyagban Windows PowerShell használatával ellenőrizze a webes
     $trackString|A webszolgáltatás visszatér a következő kulcsszavak kapcsolódó Twitter-üzeneteket. Az alapértelmezett érték **Azure-felhő, HDInsight**. Ha megváltoztatja az alapértelmezett érték, ennek megfelelően frissíti a Windows PowerShell-parancsfájlokat.
     $lineMax|Az érték határozza meg, hány Twitter-üzeneteket, a parancsfájl olvasását. Három perc olvasási 100 Twitter-üzeneteket vesz igénybe. Megadhat egy nagyobb számot, de letöltése több ideig tart.
 
-1. A szkript futtatásához nyomja le az **F5** billentyűt. Ha a probléma megoldásához, problémát tapasztal a sorok, és nyomja le az **F8**.
+1. A szkriptek futtatásához nyomja le az **F5** billentyűt. Ha a probléma megoldásához, problémát tapasztal a sorok, és nyomja le az **F8**.
 2. Ekkor megjelenik a "Complete!" a kimeneti végén. Piros hibaüzenet jelenik meg.
 
 Egy érvényesítési eljárással ellenőrizheti a kimeneti fájl **/tutorials/twitter/data/tweets.txt**, a Azure Blob-tároló egy Azure Tártallózó vagy az Azure PowerShell használatával. A Windows PowerShell-parancsfájlpélda a fájlok listázása, lásd: [és a HDInsight együttes használata a Blob storage][hdinsight-storage-powershell].
@@ -447,7 +445,7 @@ A HiveQL-parancsfájlt kell elvégezni a következőket:
    |  $sourceDataPath |Az Azure Blob tárolási helyét, ahol a Hive-lekérdezéseket a adatokat olvassa. Nem kell módosítani a változót. |
    |  $outputPath |A Hive-lekérdezések lesz a kimeneti eredmények Azure Blob tárolási helyét. Nem kell módosítani a változót. |
    |  $hqlScriptFile |A hely és a HiveQL parancsfájl a fájl nevét. Nem kell módosítani a változót. |
-4. A szkript futtatásához nyomja le az **F5** billentyűt. Ha a probléma megoldásához, problémát tapasztal a sorok, és nyomja le az **F8**.
+4. A szkriptek futtatásához nyomja le az **F5** billentyűt. Ha a probléma megoldásához, problémát tapasztal a sorok, és nyomja le az **F8**.
 5. Ekkor megjelenik a "Complete!" a kimeneti végén. Piros hibaüzenet jelenik meg.
 
 Egy érvényesítési eljárással ellenőrizheti a kimeneti fájl **/tutorials/twitter/twitter.hql**, a Azure Blob-tároló egy Azure Tártallózó vagy az Azure PowerShell használatával. A Windows PowerShell-parancsfájlpélda a fájlok listázása, lásd: [és a HDInsight együttes használata a Blob storage][hdinsight-storage-powershell].
@@ -539,7 +537,7 @@ Write-Host "==================================" -ForegroundColor Green
 
 Miután az elemzés eredményeinek az Azure Blob storage lettek helyezve, exportálja az adatokat az Azure SQL adatbázis vagy SQL server, az adatok exportálása az Excel Power Query használatával vagy a Hive ODBC-illesztő segítségével csatlakozzon az alkalmazás számára az adatok. További információkért lásd: [és a HDInsight együttes használata Sqoop][hdinsight-use-sqoop], [adatelemzés repülési késleltetés HDInsight eszközzel][hdinsight-analyze-flight-delay-data], [HDInsight a Power Query az Excel csatlakozás][hdinsight-power-query], és [csatlakozzon az Excel a Microsoft Hive ODBC-illesztőprogram HDInsight][hdinsight-hive-odbc].
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban úgy találtuk, hogyan kell egy strukturálatlan JSON adatkészlet átalakítása strukturált Hive tábla lekérdezésére, vizsgálatát, és a Twitter adatok elemzése az Azure-on HDInsight használatával. További tudnivalókért lásd:
 
 * [Első lépései a hdinsight eszközzel][hdinsight-get-started]

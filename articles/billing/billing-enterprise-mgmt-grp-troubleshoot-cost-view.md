@@ -1,10 +1,10 @@
 ---
-title: "Nézetek - Azure költség vállalati hibaelhárítása |} Microsoft Docs"
-description: "Megtudhatja, hogyan lehetséges, hogy az Azure-portálon belül szervezeti költség nézetekkel kapcsolatos problémák megoldásához."
+title: Nézetek - Azure költség vállalati hibaelhárítása |} Microsoft Docs
+description: Megtudhatja, hogyan lehetséges, hogy az Azure-portálon belül szervezeti költség nézetekkel kapcsolatos problémák megoldásához.
 author: rthorn17
 manager: rithorn
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: billing
 ms.devlang: na
 ms.topic: article
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/22/2017
 ms.author: rithorn
-ms.openlocfilehash: 54c7610f1a0d3de2503ef471ca9adc0db423f530
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 527e12cdcc4eaebf98708c389dd21e8ac6ae4ac7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>Nézetek költség vállalati hibaelhárítása 
 
-Vállalati regisztrációkat belül beállításokat a rendszer több, amely a felhasználót a regisztráció belül nem tudják megjeleníteni a költségeket.  Ezek a beállítások kezelik a beléptetési rendszergazdája, vagy a partner által a tagság nem vásárolt közvetlenül a Microsofttal.  Ez a cikk segít megérteni a Mik azok a beállítások, és milyen hatással lesznek a regisztrációt. Ezek a beállítások függetlenek a [Azure RBAC-szerepkörök](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure). 
+Vállalati regisztrációkat belül beállításokat a rendszer több, amely a felhasználót a regisztráció belül nem tudják megjeleníteni a költségeket.  Ezek a beállítások kezelik a beléptetési rendszergazdája, vagy a partner által a tagság nem vásárolt közvetlenül a Microsofttal.  Ez a cikk segít megérteni a Mik azok a beállítások, és milyen hatással lesznek a regisztrációt. Ezek a beállítások függetlenek a [Azure RBAC-szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal). 
 
 
 ## <a name="enabling-access-to-costs"></a>Költségek való hozzáférés engedélyezése
@@ -41,7 +41,7 @@ Lehet, hogy a következő okok egyikéből adódóan:
 ## <a name="asset-is-unavailable"></a>Nem érhető el az eszköz? 
 Ha azért kapta, egy hibaüzenet "Ez az eszköz nem érhető el" Amikor megpróbál hozzáférni egy előfizetés vagy egy felügyeleti csoportot, majd nincs a megfelelő szerepkör ezen elem megtekintéséhez.  
 
-![asset-not-found](media/billing-enterprise-mgmt-groups/asset-not-found.png)
+![eszköz nem található](media/billing-enterprise-mgmt-groups/asset-not-found.png)
 
 Kérje a rendszergazda az előfizetés vagy felügyeleti csoportok hozzáférést.  
-* Előfizetések hivatkozhat [átruházásához hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) dokumentum segítséget, amelyen a szerepkör szükséges.
+* Előfizetések hivatkozhat [átruházásához hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) dokumentum segítséget, amelyen a szerepkör szükséges.

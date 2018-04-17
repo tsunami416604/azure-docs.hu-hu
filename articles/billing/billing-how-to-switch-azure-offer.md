@@ -1,11 +1,11 @@
 ---
-title: "Módosítsa az Azure-előfizetés ajánlat |} Microsoft Docs"
-description: "További tudnivalók az Azure-előfizetés módosítása, és váltson egy másik ajánlatra Azure Account Center használata"
-services: 
-documentationcenter: 
+title: Módosítsa az Azure-előfizetés ajánlat |} Microsoft Docs
+description: További tudnivalók az Azure-előfizetés módosítása, és váltson egy másik ajánlatra Azure Account Center használata
+services: ''
+documentationcenter: ''
 author: genlin
 manager: jlian
-editor: 
+editor: ''
 tags: billing,top-support-issue
 ms.assetid: aae227b3-6d64-4550-a5b6-d359f53f0a59
 ms.service: billing
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/30/2017
 ms.author: genli
-ms.openlocfilehash: 381994079b7bcaeff08802b06573b977bf631e9d
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 12e5641093dd1bdc1546cc115283f48d5c134121
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="change-your-azure-pay-as-you-go-subscription-to-a-different-offer"></a>Módosítsa az Azure használatalapú fizetés előfizetés egy másik ajánlatra
 
@@ -29,13 +29,13 @@ Mint egy [használatalapú fizetés](https://azure.microsoft.com/offers/ms-azr-0
 
 ## <a name="whats-supported"></a>Támogatott források és műveletek:
 
-| Ettől | Művelet |
+| Forrás | Művelet |
 | --- | --- |
 | Utólagos, használatalapú fizetés |[Fejlesztés/tesztelés – használatalapú fizetés](https://azure.microsoft.com/offers/ms-azr-0023p/) |
-| Utólagos, használatalapú fizetés |[A Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/) |
-| Utólagos, használatalapú fizetés |[A Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/) |
+| Utólagos, használatalapú fizetés |[Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/) |
+| Utólagos, használatalapú fizetés |[Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/) |
 | Utólagos, használatalapú fizetés |[MSDN platformok](https://azure.microsoft.com/offers/ms-azr-0062p/) |
-| Utólagos, használatalapú fizetés |[A Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) |
+| Utólagos, használatalapú fizetés |[Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) |
 | Utólagos, használatalapú fizetés |[A Visual Studio Enterprise (Bizspark)](https://azure.microsoft.com/offers/ms-azr-0064p/) |
 
 > [!NOTE]
@@ -63,7 +63,7 @@ Mint egy [használatalapú fizetés](https://azure.microsoft.com/offers/ms-azr-0
 1. Átnevezheti az előfizetéshez. Alapértelmezés szerint azt állítani az új ajánlat nevére. Kattintson a **kapcsoló kínálnak** a folyamat befejezéséhez.
 
    ![A zöld gombra.](./media/billing-how-to-switch-azure-offer/confirmpage.png)
-1. Sikeres bejelentkezés. Az előfizetés már át lett váltva az új ajánlat.
+1. Sikerült! Az előfizetés már át lett váltva az új ajánlat.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -105,7 +105,7 @@ Váltás napon számla generál a rendszer minden díjhátralékot. Az előfizet
 
 ### <a name="can-i-migrate-from-pay-as-you-go-to-cloud-solution-providerhttpspartnermicrosoftcomsolutionscloud-reseller-overview-csp-or-enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement-ea"></a>Telepíthetek át használatalapú fizetésre a [Cloud Solution Provider](https://partner.microsoft.com/Solutions/cloud-reseller-overview) (CSP) vagy [nagyvállalati szerződés](https://azure.microsoft.com/pricing/enterprise-agreement/) (EA)?
 
-* Kriptográfiai Szolgáltató áttelepítéséhez lásd: [Azure szolgáltatói címei-,-akkor-Ugrás előfizetés áttelepítési CSP-hez](https://docs.microsoft.com/azure/cloud-solution-provider/migration/migration-from-payg-to-csp).
+* Kriptográfiai Szolgáltató áttelepítéséhez lásd: [Azure használatalapú fizetés előfizetés áttelepítési CSP-hez](https://docs.microsoft.com/azure/cloud-solution-provider/migration/migration-from-payg-to-csp).
 * EA át, a beléptetési rendszergazda adja hozzá a fiókot a EA rendelkezik. Kövesse az utasításokat a meghívó e-mailben a mellett EA beléptetési előfizetéssel rendelkezik. További tudnivalókért lásd: [társítja a meglévő fiók](https://ea.azure.com/helpdocs/associateExistingAccount) a EA portálon.
 
 ### <a name="can-i-migrate-data-and-services-to-a-new-subscription"></a>Telepíthetek át adatokat és szolgáltatásokat az új előfizetés?

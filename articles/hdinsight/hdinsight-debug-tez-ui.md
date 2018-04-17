@@ -1,28 +1,26 @@
 ---
-title: "Tez felhasználói felület használata a Windows-alapú HDInsight - Azure |} Microsoft Docs"
-description: "Útmutató a Tez felhasználói felület használata a Windows-alapú HDInsight HDInsight-on Tez feladatokhoz."
+title: Tez felhasználói felület használata a Windows-alapú HDInsight - Azure |} Microsoft Docs
+description: Útmutató a Tez felhasználói felület használata a Windows-alapú HDInsight HDInsight-on Tez feladatokhoz.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: a55bccb9-7c32-4ff2-b654-213a2354bd5c
 ms.service: hdinsight
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: 32f6a12544c05dbf4ac65dd386cd9dea18ca79b3
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 4201fb76ef9b0e711fd48972db86c356d72e6671
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-the-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>A Tez felhasználói felület használata a Windows-alapú HDInsight-on Tez feladatokhoz
-A Tez felhasználói felület egy olyan weblap, megértéséhez, valamint a Tez használják a Windows-alapú HDInsight-fürtök-végrehajtó motor feladatok debug használható. A Tez felhasználói felület lehetővé teszi a feladathoz egy grafikonon csatlakoztatott elemek megjelenítése, egyes elemek elemezze, és statisztika és naplózási információk lekérdezéséhez.
+A Tez felhasználói felület segítségével használja a-végrehajtó motor Tez Hive-feladatok hibakeresését. A Tez felhasználói felület visualizes a feladatot, egy grafikont a csatlakoztatott elemek egyes elemek elemezze, és statisztika és naplózási információk lekérdezéséhez.
 
 > [!IMPORTANT]
 > A jelen dokumentumban leírt lépések egy HDInsight-fürt által használt Windows igényelnek. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
@@ -37,25 +35,25 @@ A Tez felhasználói felület egy olyan weblap, megértéséhez, valamint a Tez 
 * A Windows-alapú távoli asztali ügyfél.
 
 ## <a name="understanding-tez"></a>Tez ismertetése
-Tez egy bővíthető keretrendszer, amely a hagyományos MapReduce feldolgozási-nál nagyobb sebesség biztosítja az adatok feldolgozásához. A Windows-alapú HDInsight-fürtök egy nem kötelező motor, amely a Hive-lekérdezés részeként a következő paranccsal engedélyezheti a Hive esetén:
+Tez egy bővíthető keretrendszer a Hadoop az adatok feldolgozásához, és nagyobb hagyományos MapReduce-feldolgozási sebességet biztosít. Tez Hive-lekérdezések részeként a következő leírásával engedélyezheti:
 
     set hive.execution.engine=tez;
 
-Amikor munkahelyi Tez, létrehoz egy irányított aciklikus diagramhoz (DAG), amely leírja a feladat által igényelt művelet végrehajtási sorrendjét. Egyes műveletek csúcsban hívják, és egy adat, a teljes feladat végrehajtása. A munkahelyi csúcspont szerint tényleges végrehajtása feladat neve, és előfordulhat, hogy a fürt több csomópontja legyen elosztva.
+Tez létrehoz egy irányított aciklikus diagramhoz (DAG), amely leírja a feladat által igényelt művelet végrehajtási sorrendjét. Egyes műveletek csúcsban hívják, és egy adat, a teljes feladat végrehajtása. A munkahelyi csúcspont szerint tényleges végrehajtása feladat neve, és előfordulhat, hogy a fürt több csomópontja legyen elosztva.
 
 ### <a name="understanding-the-tez-ui"></a>A Tez felhasználói felület ismertetése
-A Tez felhasználói felület egy weblap nyújt információkat folyamatok futó, és rendelkezik a korábban futtatott Tez használatával. Lehetővé teszi a Tez, által generált DAG például a feladatok és a csúcsban és a hibainformációk által használt memória hogyan oszlik más fürtökre, teljesítményszámlálók. Felajánlhatja, hogy a következő esetekben hasznos információkat:
+A Tez felhasználói felület egy weblap információt nyújt a Tez használó folyamatok. Felajánlhatja, hogy a következő esetekben hasznos információkat:
 
 * Figyelési hosszan futó dolgozza fel a térkép állapotának megtekintése, és a feladatokat.
 * Megtudhatja, hogyan lehet javítani, feldolgozás, vagy sikertelenségének sikeres vagy sikertelen folyamatok előzményadatainak elemzése.
 
 ## <a name="generate-a-dag"></a>Egy dag-csoport létrehozása
-A Tez felhasználói felület csak fog adatokat tartalmazni, ha egy feladatot használ a Tez motor éppen fut, vagy már futott az elmúlt. Egyszerű Hive-lekérdezések általában feloldható Tez, azonban összetett lekérdezések, amelyek szűrés, csoportosítás, rendezés, illesztéseket, stb. általában szükséges Tez használata nélkül.
+A Tez felhasználói felület adatokat tartalmaz, ha egy feladatot használ a Tez motor éppen fut, vagy már futott az elmúlt. Egyszerű Hive-lekérdezések általában feloldható Tez használata nélkül. Összetettebb lekérdezések, amelyek szűrés, csoportosítás, rendezés, illesztések stb. szükséges Tez.
 
-A következő lépésekkel futtathat Hive-lekérdezéseket, amely végrehajtja a Tez használatával.
+Az alábbi lépések segítségével által használt Tez Hive-lekérdezések futtatása.
 
-1. Egy böngészőben navigáljon a https://CLUSTERNAME.azurehdinsight.net, ahol **CLUSTERNAME** a HDInsight-fürt neve.
-2. Az oldal tetején a menüből válassza ki a **Hive szerkesztő**. Ekkor megjelenik egy oldal, a következő példa lekérdezést.
+1. Egy böngészőben navigáljon https://CLUSTERNAME.azurehdinsight.net, ahol **CLUSTERNAME** a HDInsight-fürt neve.
+2. Az oldal tetején a menüből válassza ki a **Hive szerkesztő**. A következő példalekérdezés egy lapon megjelenik.
 
         Select * from hivesampletable
 
@@ -75,7 +73,7 @@ A következő lépésekkel futtathat Hive-lekérdezéseket, amely végrehajtja a
 >
 >
 
-1. Az a [Azure-portálon](https://portal.azure.com), válassza ki a HDInsight-fürthöz. A HDInsight panel felső részén válassza ki a **távoli asztal** ikonra. Ez megjeleníti a távoli asztali panel
+1. Az a [Azure-portálon](https://portal.azure.com), válassza ki a HDInsight-fürthöz. A HDInsight panel felső részén válassza ki a **távoli asztal** ikonra. A hivatkozás megjeleníti a távoli asztali panel
 
     ![Távoli asztali ikon](./media/hdinsight-debug-tez-ui/remotedesktopicon.png)
 2. A távoli asztal panelen válassza ki **Connect** az átjárócsomóponthoz való kapcsolódáshoz. Amikor a rendszer kéri, használja a fürt távoli asztalhoz tartozó felhasználónév és jelszó a kapcsolat hitelesítéséhez.
@@ -88,14 +86,14 @@ A következő lépésekkel futtathat Hive-lekérdezéseket, amely végrehajtja a
    >
 3. A csatlakozás után nyissa meg az Internet Explorer, a távoli asztalon, jelölje ki a fogaskerék ikonra a képernyő jobb felső sarkában a böngészőt, és válassza **kompatibilitási nézet beállításai**.
 4. Alján **kompatibilitási nézet beállításai**, törölje a jelölést az **kompatibilitási nézetben jeleníti meg az intranetes helyek** és **használata Microsoft kompatibilitási lista**, majd válassza ki **Bezárás**.
-5. Az Internet Explorer programban navigáljon a http://headnodehost:8188/tezui / #/. Ez megjeleníti a Tez felhasználói felület
+5. Internet Explorer, keresse meg a http://headnodehost:8188/tezui/#/. Ez megjeleníti a Tez felhasználói felület
 
     ![Tez felhasználói felület](./media/hdinsight-debug-tez-ui/tezui.png)
 
-    A Tez felhasználói felület betöltésekor látni fogja, amely jelenleg fut, vagy dag listáját a fürtön futottak. Az alapértelmezett nézet tartalmazza a Dag nevét, azonosítója, küldő, állapot, Kezdés időpontja, befejezési idő, időtartam, Alkalmazásazonosító, és várólista. További oszlopok is hozzáadhatók a fogaskerék ikonra a lap jobb használatával.
+    A Tez felhasználói felület betöltésekor megjelenik, amely jelenleg fut, vagy dag listáját a fürtön futottak. Az alapértelmezett nézet tartalmazza a DAG nevét, azonosítója, küldő, állapot, Kezdés időpontja, befejezési idő, időtartam, Alkalmazásazonosító, és várólista. További oszlopok is hozzáadhatók a fogaskerék ikonra a lap jobb használatával.
 
-    Ha csak egy bejegyzést, az előző szakaszban futtatott lekérdezés lesz. Ha több bejegyzés, továbbra is beírva a keresési feltételek mezőiben adatbázis-elérhetőségi csoportot, majd kattintson a **Enter**.
-6. Válassza ki a **Dag neve** a legutóbbi DAG-bejegyzést. Ez megjeleníti a DAG kapcsolatos információkat, valamint egy zip a DAG információkat tartalmazó JSON-fájlok letöltése beállítás.
+    Ha csak egy bejegyzés, a lekérdezés, amely futtatta az előző szakaszban is. Ha több bejegyzés, továbbra is beírva a keresési feltételek mezőiben adatbázis-elérhetőségi csoportot, majd kattintson a **Enter**.
+6. Válassza ki a **Dag neve** a legutóbbi DAG-bejegyzést. A hivatkozás megjeleníti a DAG kapcsolatos információkat, valamint egy zip a DAG információkat tartalmazó JSON-fájlok letöltése beállítás.
 
     ![DAG-részletek](./media/hdinsight-debug-tez-ui/dagdetails.png)
 7. Fent a **DAG részletek** több kapcsolat, az adatbázis-elérhetőségi csoport kapcsolatos információk megjelenítéséhez használható.
@@ -111,7 +109,7 @@ A következő lépésekkel futtathat Hive-lekérdezéseket, amely végrehajtja a
      >
      >
 
-     Hiba történt a feladathoz, ha a DAG részleteit és a meghiúsult feladat kapcsolatos információkra mutató hivatkozásokat sikertelen, az állapot jelenik meg. Diagnosztikai adatok az adatbázis-elérhetőségi csoport részletek alatt jelenik meg.
+     Hiba történt a feladathoz, ha az adatbázis-elérhetőségi csoport részletek állapota sikertelen, és a meghiúsult feladat kapcsolatos információkra mutató hivatkozásokat. Diagnosztikai adatokat a rendszer DAG részleteit alatt jelennek meg.
 8. Válassza ki **grafikus nézetének**. Ez megjeleníti a DAG grafikus ábrázolása. Az egér elhelyezheti az információt szeretne megjeleníteni a nézetben minden csomópont alatt.
 
     ![Grafikus megtekintése](./media/hdinsight-debug-tez-ui/dagdiagram.png)
@@ -134,11 +132,11 @@ A következő lépésekkel futtathat Hive-lekérdezéseket, amely végrehajtja a
       > Mint az előző menüvel görgetve az oszlop megjelenítési feladatok, feladat kísérletet, és a források & a Sinks__ további információt az egyes elemekhez tartozó mutató hivatkozások megjelenítése.
       >
       >
-11. Válassza ki **feladatok**, és válassza ki a nevű elem **00_000000**. Ez megjeleníti **feladat részletei** ehhez a feladathoz. Ez a képernyő megtekintheti **feladat számlálók** és **feladat kísérletek**.
+11. Válassza ki **feladatok**, és válassza ki a nevű elem **00_000000**. A hivatkozás megjeleníti **feladat részletei** ehhez a feladathoz. Ez a képernyő megtekintheti **feladat számlálók** és **feladat kísérletek**.
 
     ![Feladat részletei](./media/hdinsight-debug-tez-ui/taskdetails.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy rendelkezik megtudta, hogyan használja a Tez, további információ [használata a HDInsight Hive](hadoop/hdinsight-use-hive.md).
 
 Részletesebb műszaki információkat Tez, lásd: a [Hortonworks Tez lapon](http://hortonworks.com/hadoop/tez/).

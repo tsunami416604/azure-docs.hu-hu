@@ -1,9 +1,9 @@
 ---
-title: "Azure eszközkészlet használata a Hortonworks védőfal IntelliJ |} Microsoft Docs"
-description: "Megtudhatja, hogyan használhat HDInsight eszközöket az Azure-eszközkészlet a Hortonworks védőfal az intellij-t."
-keywords: "hadoop-eszközök hive lekérdezés, az intellij, hortonworks védőfal, intellij azure eszköztára"
+title: Azure eszközkészlet használata a Hortonworks védőfal IntelliJ |} Microsoft Docs
+description: Megtudhatja, hogyan használhat HDInsight eszközöket az Azure-eszközkészlet a Hortonworks védőfal az intellij-t.
+keywords: hadoop-eszközök hive lekérdezés, az intellij, hortonworks védőfal, intellij azure eszköztára
 services: HDInsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
@@ -12,16 +12,14 @@ ms.assetid: b587cc9b-a41a-49ac-998f-b54d6c0bdfe0
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: jgao
-ms.openlocfilehash: 6bb29dc4e231bc859be620e56a606fbbfade102b
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: c72fb17a53b9d373bbd141f76f01e6b029d1e8f7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Használja a HDInsight Tools for IntelliJ a Hortonworks védőfal
 
@@ -64,7 +62,7 @@ Ebben a szakaszban IntelliJ IDEA használatával hoz létre egy minta Scala-proj
 
    ![Az új projekt párbeszédpanel](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
 
-2. Válassza ki **következő**.
+2. Kattintson a **Tovább** gombra.
 3. A következő **új projekt** párbeszédpanelen töltse ki az alábbi lépéseket:
 
     1. Az a **projektnevet** mezőbe írja be a projekt nevét.
@@ -79,7 +77,7 @@ Ebben a szakaszban IntelliJ IDEA használatával hoz létre egy minta Scala-proj
 5. Ha a **projekt** nézet még nincs megnyitva, nyomja le az ENTER **Alt + 1** való megnyitásához.
 6. A **Project Explorer**, bontsa ki a projektet, és válassza **src**.
 7. Kattintson a jobb gombbal **src**, mutasson a **új**, majd válassza ki **Scala osztály**.
-8. Az a **neve** adjon meg egy nevet. Az a **jellegű** mezőben válassza **objektum**. Ezt követően válassza **OK**.
+8. Az a **neve** adjon meg egy nevet. Az a **jellegű** mezőben válassza **objektum**. Ezután válassza az **OK** lehetőséget.
 
     ![Az új Scala osztály létrehozása párbeszédpanel](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-new-scala-class.png)
 
@@ -131,7 +129,7 @@ Az emulátor összekapcsolása:
 1. Nyissa meg a projektet az intellij-t.
 2. Az a **nézet** menüjében válassza **eszközök Windows**, majd válassza ki **Azure Explorer**.
 3. Bontsa ki a **Azure**, kattintson a jobb gombbal **HDInsight**, majd válassza ki **hivatkozásra az emulátor**.
-4. Az a **hivatkozásra egy új emulátor** párbeszédpanelen adja meg a jelszavát, amelyet a Hortonworks védőfal rendszergazdafiók beállította. Ezután adja meg az alábbi képernyőfelvételen a hasonló értékek. Ezt követően válassza **OK**. 
+4. Az a **hivatkozásra egy új emulátor** párbeszédpanelen adja meg a jelszavát, amelyet a Hortonworks védőfal rendszergazdafiók beállította. Ezután adja meg az alábbi képernyőfelvételen a hasonló értékek. Ezután válassza az **OK** lehetőséget. 
 
    ![A hivatkozás egy új emulátor párbeszédpanel](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-link-an-emulator.png)
 
@@ -146,7 +144,7 @@ Miután a IntelliJ IDEA emulátorának, elküldheti a a projekthez.
 A projekt egy emulátorának küldeni:
 
 1. A **Project Explorer**, kattintson jobb gombbal a projektre, majd válassza ki **küldje el a Spark-alkalmazást, amely**.
-2. Kövesse az alábbi lépéseket:
+2. Hajtsa végre a következő lépéseket:
 
     1. Az a **Spark-fürt (csak Linux)** legördülő listára, válassza ki a helyi Hortonworks védőfal.
     2. Az a **fő osztálynév** mezőben válassza ki vagy adja meg a fő osztály nevét. Ebben az oktatóanyagban a értéke **GroupByTest**.

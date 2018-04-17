@@ -1,8 +1,8 @@
 ---
-title: "Hadoop Pig használata a Hdinsightban |} Microsoft Docs"
-description: "Útmutató a Pig használata a HDInsight Hadoop."
+title: Hadoop Pig használata a Hdinsightban |} Microsoft Docs
+description: Útmutató a Pig használata a HDInsight Hadoop.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: acfeb52b-4b81-4a7d-af77-3e9908407404
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: larryfr
-ms.openlocfilehash: ca68391db99d882887e41005928a30610c7cb930
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: d6d42a1e0edb038f6d4cc9c8149768bdb698cafc
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-pig-with-hadoop-on-hdinsight"></a>A Pig használata a HDInsight Hadoop
 
@@ -33,7 +31,7 @@ A Pig egy platform programok létrehozásához a Hadoop által ismert eljárási
 | [SSH](apache-hadoop-use-pig-ssh.md) |✔ |✔ |Linux |Linux, Unix, Mac OS X vagy Windows |
 | [REST API](apache-hadoop-use-pig-curl.md) |&nbsp; |✔ |Linux- vagy Windows |Linux, Unix, Mac OS X vagy Windows |
 | [.NET SDK a Hadoophoz](apache-hadoop-use-pig-dotnet-sdk.md) |&nbsp; |✔ |Linux- vagy Windows |(Egyelőre) Windows |
-| [Windows PowerShell](apache-hadoop-use-pig-powershell.md) |&nbsp; |✔ |Linux- vagy Windows |Windows |
+| [A Windows PowerShell](apache-hadoop-use-pig-powershell.md) |&nbsp; |✔ |Linux- vagy Windows |Windows |
 
 > [!IMPORTANT]
 > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
@@ -102,7 +100,7 @@ A Pig Latin feladatok futtatásával a HDInsight többféle módszerrel. A köve
 | [SSH](apache-hadoop-use-pig-ssh.md) |✔ |✔ |Linux |Linux, Unix, Mac OS X vagy Windows |
 | [Curl](apache-hadoop-use-pig-curl.md) |&nbsp; |✔ |Linux- vagy Windows |Linux, Unix, Mac OS X vagy Windows |
 | [.NET SDK a Hadoophoz](apache-hadoop-use-pig-dotnet-sdk.md) |&nbsp; |✔ |Linux- vagy Windows |(Egyelőre) Windows |
-| [Windows PowerShell](apache-hadoop-use-pig-powershell.md) |&nbsp; |✔ |Linux- vagy Windows |Windows |
+| [A Windows PowerShell](apache-hadoop-use-pig-powershell.md) |&nbsp; |✔ |Linux- vagy Windows |Windows |
 
 > [!IMPORTANT]
 > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).

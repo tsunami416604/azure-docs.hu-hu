@@ -7,15 +7,15 @@ ms.date: 1/31/2017
 ms.topic: article
 ms.service: microsoft-docs
 ms.assetid: 58a0ca9d-86d2-469a-9714-3b8320c33cf5
-ms.openlocfilehash: 20ebd324cbf379980b43d255d468673de2b6d950
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c3557d54b9fb3fd0173eec1e327050ac7cc80fc2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>Azure szerepköralapú hozzáférés-vezérlés (RBAC) való hozzáférési jogosultságainak vezérlése létrehozásához és kezeléséhez a támogatási kérelmek
 
-[Szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is) lehetővé teszi a részletes hozzáféréskezelést az Azure-bA.
+[Szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) lehetővé teszi a részletes hozzáféréskezelést az Azure-bA.
 Támogatja a kérelem létrehozását az Azure-portálon [portal.azure.com](https://portal.azure.com), határozza meg, akik hozhat létre és támogatási kérelmek kezelése az Azure RBAC-modellben használatával.
 Hozzáférés a megfelelő RBAC szerepkört rendel a felhasználók, csoportok és alkalmazások egy bizonyos hatókörhöz, amely lehet egy előfizetést, erőforráscsoport vagy egy erőforrás.
 

@@ -1,11 +1,11 @@
 ---
-title: "Váratlan költségek megakadályozása, számlázási - Azure kezelése |} Microsoft Docs"
-description: "Útmutató az Azure számlázásának váratlan költségek elkerülése érdekében. Költség-nyomon követését és a felügyeleti szolgáltatások használata a Microsoft Azure-előfizetés."
-services: 
-documentationcenter: 
+title: Váratlan költségek megakadályozása, számlázási - Azure kezelése |} Microsoft Docs
+description: Útmutató az Azure számlázásának váratlan költségek elkerülése érdekében. Költség-nyomon követését és a felügyeleti szolgáltatások használata a Microsoft Azure-előfizetés.
+services: ''
+documentationcenter: ''
 author: tonguyen10
 manager: tonguyen
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.service: billing
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: tonguyen
-ms.openlocfilehash: 885dcbc0e0d3d9490d745a07ade5d9dece7ff3d6
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: a13552e36b4c74b6d3165168c727dbcc8a00704e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Azure számlázás és költség felügyeleti váratlan díjak elkerülése végett
 
@@ -62,7 +62,7 @@ Számlázási riasztás beállítása kapniuk, ha a használati költségek hala
 
 Előfordulhat, hogy szeretné használni a árképzési Számológép a becsült költség az eszközöket, az első riasztás.
 
-### <a name="spending-limit"></a>Ellenőrizheti, hogy a költségkeret maximumát
+### <a name="spending-limit"></a> Ellenőrizheti, hogy a költségkeret maximumát
 
 Ha egy előfizetési kreditek használó, majd a költségkeret maximumát van kapcsolva, alapértelmezés szerint. Ezzel a módszerrel töltött a jóváírások, amikor a hitelkártya nem get számítjuk fel. Tekintse meg a [teljes listáját az Azure-ajánlatok és a költségkeret](https://azure.microsoft.com/support/legal/offer-details/).
 
@@ -76,7 +76,7 @@ Kattintson a szalagcím, és távolítsa el a költségkeret maximumát utasít�
 
 ## <a name="ways-to-monitor-your-costs-when-using-azure-services"></a>A költségek figyelése az Azure-szolgáltatások használatakor módjai
 
-### <a name="tags"></a>Címkék hozzáadása az erőforrások az elszámolási adatok
+### <a name="tags"></a> Címkék hozzáadása az erőforrások az elszámolási adatok
 
 Támogatott szolgáltatások címkék számlázási adatainak csoportosítására is használhatja. Például ha a különböző csapatok több virtuális gépeken futtatja, majd meg címkék csoportosítására használhatók költségek költségközpont (HR, marketing, pénzügyi) vagy a környezet (, éles üzem előtti tesztelése). 
 
@@ -86,7 +86,7 @@ A címkék teljes reporting nézetek különböző költség jelenik meg. Péld�
 
 További információkért lásd: [az Azure-erőforrások rendszerezése címkék használatával](../azure-resource-manager/resource-group-using-tags.md).
 
-### <a name="costs"></a>Rendszeresen költség bontásához a portálon, és Írás gyakorisága
+### <a name="costs"></a> Rendszeresen költség bontásához a portálon, és Írás gyakorisága
 
 Miután beszerezte a futó szolgáltatásokat, rendszeresen ellenőrzi azokat, amelyek mennyi költségszámítás még meg. Tekintse meg az aktuális ráfordítás, és Írás gyakorisága Azure-portálon. 
 
@@ -138,7 +138,7 @@ Az elszámolási időszak vége után is elérhető lesz a számla. Emellett [t�
 
 A számlázási API használatával programozott módon a használati adatok beolvasása. A RateCard API és a használati API együtt történő beolvasásához használja a számlázott használat. További információkért lásd: [betekintést nyerhet a Microsoft Azure erőforrás-felhasználás](billing-usage-rate-card-overview.md).
 
-## <a name="other-offers"></a>További források és bizonyos esetekben
+## <a name="other-offers"></a> További források és bizonyos esetekben
 
 ### <a name="ea-csp-and-sponsorship-customers"></a>EA, CSP és szponzorálás használó ügyfelek számára
 Konzultáljon a ügyfélfelelőshöz vagy a Azure partner a kezdéshez.
@@ -151,7 +151,7 @@ Konzultáljon a ügyfélfelelőshöz vagy a Azure partner a kezdéshez.
 
 Ha az Ön által felügyelt informatikai olyan nagy szervezethez, azt javasoljuk, olvasási [Azure enterprise scaffold](../azure-resource-manager/resource-manager-subscription-governance.md) és a [vállalati informatikai tanulmány](http://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) (.pdf letöltés, csak angol nyelvű).
 
-#### <a name="EA"></a>Előzetes nagyvállalati szerződés költség nézetekhez Azure-portálon 
+#### <a name="EA"></a> Előzetes nagyvállalati szerződés költség nézetekhez Azure-portálon 
 
 Vállalati költség nézetek jelenleg nyilvános előzetes verziójához. Vegye figyelembe a következő elemek:
 - Előfizetés költségek a felhasználás alapján, és nem derül ki előre összegek, többletfelhasználás, belefoglalt mennyiségek, módosításának és adók. A tényleges díjak arra az esetre vonatkoznak, a beléptetési szinten. 
@@ -172,7 +172,7 @@ Ha Ön a fiókadminisztrátor megtekintéséhez keresse fel a [előfizetések pa
 
 ![Képernyőfelvétel a szerepkör az előfizetések nézetben az Azure-portálon](./media/billing-getting-started/sub-blade-view.PNG)
 
-Ha még nem fiókadminisztrátor, akkor valaki valószínűleg Önnek megadó részleges hozzáférésének [Azure Active Directory szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-configure.md) (RBAC). Előfizetések és számlázási adatok, módosítás kezeléséhez [fiókadminisztrátor található](billing-subscription-transfer.md#whoisaa) és kérje meg a feladatok végrehajtásához vagy [az előfizetés átvitele](billing-subscription-transfer.md).
+Ha még nem fiókadminisztrátor, akkor valaki valószínűleg Önnek megadó részleges hozzáférésének [Azure Active Directory szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md) (RBAC). Előfizetések és számlázási adatok, módosítás kezeléséhez [fiókadminisztrátor található](billing-subscription-transfer.md#whoisaa) és kérje meg a feladatok végrehajtásához vagy [az előfizetés átvitele](billing-subscription-transfer.md).
 
 Ha a fiókadminisztrátor már nem a szervezet és számlázási kezeléséhez szükséges [forduljon a támogatási szolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). 
 ## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel a támogatási szolgáltatással

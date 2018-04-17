@@ -1,26 +1,24 @@
 ---
 title: Adatfolyam-Kafka - Azure HDInsight az Apache Spark on |} Microsoft Docs
-description: "Megtudhatja, hogyan használja Spark az Apache Spark on az adatfolyam adatok virtuális gépbe vagy onnan Apache Kafka DStreams használatával. Ebben a példában a HDInsight Spark a Jupyter notebook használatával adatok folyamatos átviteléhez."
-keywords: "kafka például kafka zookeeper, spark streamelési kafka, spark streamelési kafka – példa"
+description: Megtudhatja, hogyan használja Spark az Apache Spark on az adatfolyam adatok virtuális gépbe vagy onnan Apache Kafka DStreams használatával. Ebben a példában a HDInsight Spark a Jupyter notebook használatával adatok folyamatos átviteléhez.
+keywords: kafka például kafka zookeeper, spark streamelési kafka, spark streamelési kafka – példa
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 ms.assetid: dd8f53c1-bdee-4921-b683-3be4c46c2039
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: 
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.devlang: ''
+ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: larryfr
-ms.openlocfilehash: 8c9a901b8922bf349959438487c88e3df4f2ebea
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: a9463b5983b5f41683a5cfe416ca125bf2810062
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="apache-spark-streaming-dstream-example-with-kafka-on-hdinsight"></a>Apache Spark streaming (DStream) például Kafka a HDInsight a
 
@@ -87,7 +85,7 @@ Az erőforrások létrehozása után, egy összegző lap jelenik meg.
 
 ## <a name="use-the-notebooks"></a>A notebookok használata
 
-A jelen dokumentumban ismertetett példa kódja megtalálható [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka).
+A jelen dokumentumban ismertetett példa kódja megtalálható [ https://github.com/Azure-Samples/hdinsight-spark-scala-kafka ](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka).
 
 Ez a példa befejezéséhez kövesse a `README.md`.
 

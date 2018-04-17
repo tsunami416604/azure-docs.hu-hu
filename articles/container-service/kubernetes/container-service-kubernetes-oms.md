@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: efe4b3a1a63fa1986682a2fdde1a20221dc5d93a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b91b1f902b2d769823067ea66bf7d00bd17a5160
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitor-an-azure-container-service-cluster-with-log-analytics"></a>A figyelő a Log Analytics egy Azure Tárolószolgáltatási fürthöz
 
@@ -30,8 +30,8 @@ Ha tesztelheti a `az` eszköz futtatásával telepítve:
 $ az --version
 ```
 
-Ha nem rendelkezik a `az` eszköz telepítve, az e-mail utasításokat is [Itt](https://github.com/azure/azure-cli#installation).  
-Használhatja azt is megteheti, [Azure Cloud rendszerhéj](https://docs.microsoft.com/azure/cloud-shell/overview), amelynek a `az` Azure cli és `kubectl` már telepítette a eszközök.  
+Ha nem rendelkezik a `az` eszköz telepítve, az e-mail utasításokat is [Itt](https://github.com/azure/azure-cli#installation).
+Használhatja azt is megteheti, [Azure Cloud rendszerhéj](https://docs.microsoft.com/azure/cloud-shell/overview), amelynek a `az` Azure cli és `kubectl` már telepítette a eszközök.
 
 Ha tesztelheti a `kubectl` eszköz futtatásával telepítve:
 
@@ -67,40 +67,40 @@ A tároló megoldásról további információkért tekintse meg a [tároló meg
 ## <a name="installing-log-analytics-on-kubernetes"></a>A Naplóelemzési Kubernetes telepítése
 
 ### <a name="obtain-your-workspace-id-and-key"></a>Munkaterületének Azonosítóját és kulcs beszerzése
-Az OMS felvegye a szolgáltatás az ügynök kell konfigurálni a munkaterület azonosítóját és kulcsát egy. A munkaterület azonosítója és a fiók létrehozásához szükséges kulcs <https://mms.microsoft.com>.
+A Naplóelemzési felvegye a szolgáltatás az ügynök kell konfigurálni a munkaterület Azonosítóját és kulcsát egy. A munkaterület azonosítója és a fiók létrehozásához szükséges kulcs <https://mms.microsoft.com>.
 Kérjük, kövesse a lépéseket egy fiók létrehozásához. Ha elkészült a fiók létrehozását, be kell szereznie a azonosítója és kulcsa kattintva **beállítások**, majd **csatlakoztatott források**, majd **Linux kiszolgálók**lent látható módon.
 
  ![](media/container-service-monitoring-oms/image5.png)
 
-### <a name="install-the-oms-agent-using-a-daemonset"></a>Egy DaemonSet használatával OMS-ügynök telepítése
+### <a name="install-the-log-analytics-agent-using-a-daemonset"></a>A használatával egy DaemonSet Log Analytics-ügynök telepítése
 A tároló egyetlen példány futhat az a fürt minden egyes állomás DaemonSets Kubernetes használják.
 Fontosságúak tökéletes figyelőügynökök futtatásához.
 
 Itt a [DaemonSet YAM fájl](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes). Mentse a fájlt `oms-daemonset.yaml` , és cserélje le a helyőrző értékeinek `WSID` és `KEY` a munkaterület azonosítója és a fájlban kulccsal.
 
-Miután hozzáadta a munkaterület azonosítója és kulcsa az DaemonSet konfigurációhoz, telepítheti az OMS-ügynököt a fürt a `kubectl` parancssori eszköz:
+Miután hozzáadta a munkaterület azonosítója és kulcsa az DaemonSet konfigurációhoz, telepítheti a Log Analyticshez ügynök a fürt a `kubectl` parancssori eszköz:
 
 ```console
 $ kubectl create -f oms-daemonset.yaml
 ```
 
-### <a name="installing-the-oms-agent-using-a-kubernetes-secret"></a>Kubernetes titkos kulcs használata az OMS-ügynök telepítése
+### <a name="installing-the-log-analytics-agent-using-a-kubernetes-secret"></a>A titkos kulcs Kubernetes használatával Naplóelemzési ügynök telepítése
 A Naplóelemzési munkaterület azonosítója és a kulcs védelméhez Kubernetes titkos kulcsot is használhat DaemonSet YAM-fájl részeként.
 
- - Másolja a parancsfájlt, titkos sablon és a DaemonSet YAM fájlt (a [tárház](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)), és győződjön meg arról, hogy az ugyanabban a könyvtárban. 
+ - Másolja a parancsfájlt, titkos sablont, és az DaemonSet YAM fájlt (a [tárház](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)), és győződjön meg arról, hogy az ugyanabban a könyvtárban.
       - Titkos kulcs parancsprogram - secret-gen.sh létrehozása
       - titkos sablon - secret-template.yaml
-   - DaemonSet YAML file - omsagent-ds-secrets.yaml
- - Futtassa a szkriptet. A parancsprogram kéri a napló Analytics munkaterület azonosítója és az elsődleges kulcs. Helyezze be, és a parancsfájl létrehoz egy titkos yam fájlt, ezért is futtathatja.   
+   - DaemonSet YAM fájl - omsagent – ds-secrets.yaml
+ - Futtassa a szkriptet. A parancsprogram kéri a napló Analytics munkaterület azonosítója és az elsődleges kulcs. Helyezze be, és a parancsfájl létrehoz egy titkos yam fájlt, ezért is futtathatja.
    ```
-   #> sudo bash ./secret-gen.sh 
+   #> sudo bash ./secret-gen.sh
    ```
 
    - Hozza létre a titkos kulcsok fogyasztanak a következő futtatásával: ``` kubectl create -f omsagentsecret.yaml ```
- 
-   - Ellenőrzéséhez futtassa az alábbi parancsot: 
 
-   ``` 
+   - Ellenőrzéséhez futtassa az alábbi parancsot:
+
+   ```
    root@ubuntu16-13db:~# kubectl get secrets
    NAME                  TYPE                                  DATA      AGE
    default-token-gvl91   kubernetes.io/service-account-token   3         50d
@@ -116,10 +116,10 @@ A Naplóelemzési munkaterület azonosítója és a kulcs védelméhez Kubernete
    Data
    ====
    WSID:   36 bytes
-   KEY:    88 bytes 
+   KEY:    88 bytes
    ```
- 
+
   - A omsagent futó démon-készlet létrehozása ``` kubectl create -f omsagent-ds-secrets.yaml ```
 
 ### <a name="conclusion"></a>Összegzés
-Ennyi az egész! Néhány perc múlva megtekintheti az OMS-irányítópultra áramló adatokat kell lennie.
+Ennyi az egész! Néhány perc múlva megtekintheti az irányítópulton való rögzítéséhez Naplóelemzési áramló adatokat kell lennie.

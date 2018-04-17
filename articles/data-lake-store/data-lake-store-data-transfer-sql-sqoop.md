@@ -1,8 +1,8 @@
 ---
-title: "Data Lake Store és a Sqoop használatával Azure SQL-adatbázis közötti adatok másolása |} Microsoft Docs"
-description: "Másolja az adatokat az Azure SQL Database és a Data Lake Store között a Sqoop használatával"
+title: Data Lake Store és a Sqoop használatával Azure SQL-adatbázis közötti adatok másolása |} Microsoft Docs
+description: Másolja az adatokat az Azure SQL Database és a Data Lake Store között a Sqoop használatával
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 2611b50114a9fae003fe6e77300780a9af0698cc
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 2e68f74976c25a5c2db32867dabca147f5c30e80
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="copy-data-between-data-lake-store-and-azure-sql-database-using-sqoop"></a>Data Lake Store és a Sqoop használatával Azure SQL-adatbázis közötti adatok másolása
 Útmutató Apache Sqoop használatával importálhat és exportálhat adatokat az Azure SQL Database és a Data Lake Store között.
@@ -48,7 +48,7 @@ A cikk elkezdéséhez az alábbiakkal kell rendelkeznie:
         [ID] [int] NOT NULL,
         [FName] [nvarchar](50) NOT NULL,
         [LName] [nvarchar](50) NOT NULL,
-         CONSTRAINT [PK_Table_4] PRIMARY KEY CLUSTERED
+         CONSTRAINT [PK_Table_1] PRIMARY KEY CLUSTERED
             (
                    [ID] ASC
             )
@@ -61,7 +61,7 @@ A cikk elkezdéséhez az alábbiakkal kell rendelkeznie:
         [ID] [int] NOT NULL,
         [FName] [nvarchar](50) NOT NULL,
         [LName] [nvarchar](50) NOT NULL,
-         CONSTRAINT [PK_Table_4] PRIMARY KEY CLUSTERED
+         CONSTRAINT [PK_Table_2] PRIMARY KEY CLUSTERED
             (
                    [ID] ASC
             )

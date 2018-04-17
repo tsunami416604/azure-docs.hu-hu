@@ -1,26 +1,24 @@
 ---
-title: "Az Ambari API-jával - Azure hdinsight Hadoop-fürtök figyelése |} Microsoft Docs"
-description: "Az Apache Ambari API-k létrehozása, kezelése és figyelése a Hadoop-fürtök használja. Intuitív operátori eszközök és API-k elrejtése a Hadoop összetettségét."
+title: Az Ambari API-jával - Azure hdinsight Hadoop-fürtök figyelése |} Microsoft Docs
+description: Az Apache Ambari API-k létrehozása, kezelése és figyelése a Hadoop-fürtök használja. Intuitív operátori eszközök és API-k elrejtése a Hadoop összetettségét.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 editor: cgronlun
 manager: jhubbard
 ms.assetid: 052135b3-d497-4acc-92ff-71cee49356ff
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/07/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 57b63490037760c9150fd4b8fdb66267739f20ae
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 3c8b1af3ad151a7a901150352202ab0b85aa6ec8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitor-hadoop-clusters-in-hdinsight-using-the-ambari-api"></a>A HDInsight-beli Hadoop-fürtök figyelése az Ambari API használatával
 Ismerje meg, hogy a HDInsight-fürtök figyelése az Ambari API-k használatával.
@@ -143,7 +141,7 @@ Az alábbi táblázatban a leggyakrabban használt Ambari API-hívások figyelé
 | Konfigurációk beolvasása |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/configurations` |Config típusok: core-webhely, hdfs-webhely, mapred-helyet, hive-hely |
 | Konfigurációs adatok beolvasása. |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/configurations?type=<ConfigType>&tag=<VersionName>` |Config típusok: core-webhely, hdfs-webhely, mapred-helyet, hive-hely |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most megtanulhatta, hogyan használható az Ambari API-hívások figyelése. További tudnivalókért lásd:
 
 * [Az Azure portál használata a HDInsight-fürtök kezelése][hdinsight-admin-portal]

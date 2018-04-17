@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 04/13/2018
 ms.author: jingwang
-ms.openlocfilehash: 5d284277f600465345be0058468192f2f5609d89
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0bc24fb0206455c723acf5e6f4b82d82002f727c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Másolja a adatok vagy az Azure SQL Data Warehouse Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -130,7 +130,7 @@ Szolgáltatás egyszerű AAD alkalmazás jogkivonat hitelesítési módszer hasz
         "typeProperties": {
             "connectionString": {
                 "type": "SecureString",
-                "value": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+                "value": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;Connection Timeout=30"
             },
             "servicePrincipalId": "<service principal id>",
             "servicePrincipalKey": {
@@ -351,7 +351,7 @@ Adatok másolása az Azure SQL Data Warehouse, állítsa a fogadó típusa a má
 | rejectType |Határozza meg, hogy a rejectValue beállítás konstans értéket vagy százalékában van megadva.<br/><br/>Két érték engedélyezett: **érték** (alapértelmezett), és **százalékos**. |Nem |
 | rejectSampleValue |Mielőtt a PolyBase újraszámítja a visszautasított sorok százalékát beolvasandó sorok számát határozza meg.<br/><br/>Engedélyezett értékek: 1, 2,... |Igen, ha **rejectType** van **százalékos aránya** |
 | useTypeDefault |Megadja, hogyan legyen kezelve tagolt szövegfájlok a hiányzó értékeket, amikor a PolyBase kér le adatokat a szövegfájlból.<br/><br/>Ezt a tulajdonságot, az argumentumok ismertető részben olvashat [létrehozása külső FÁJLFORMÁTUM (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx).<br/><br/>Két érték engedélyezett: **igaz**, **hamis** (alapértelmezett). |Nem |
-| writeBatchSize |Szúr be az SQL-tábla adatokat, amikor a puffer mérete eléri writeBatchSize. Csak akkor, ha a rendszer nem használja a PolyBase vonatkozik.<br/><br/>Két érték engedélyezett: egész szám (sorok száma). |Nem (alapértelmezett beállítás 10000) |
+| WriteBatchSize |Szúr be az SQL-tábla adatokat, amikor a puffer mérete eléri writeBatchSize. Csak akkor, ha a rendszer nem használja a PolyBase vonatkozik.<br/><br/>Két érték engedélyezett: egész szám (sorok száma). |Nem (alapértelmezett beállítás 10000) |
 | writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezését, mielőtt azt az időkorlátot. Csak akkor, ha a rendszer nem használja a PolyBase vonatkozik.<br/><br/>Két érték engedélyezett: timespan. Példa: "00: 30:00" (30 perc). |Nem |
 | preCopyScript |Adjon meg egy SQL-lekérdezés végrehajtása előtt az adatok írása az Azure SQL Data Warehouse minden egyes futtatásához a másolási tevékenység. Ez a tulajdonság segítségével törölje az előre betöltött adatokat. |Nem |(#repeatability során-másolási). |A lekérdezési utasítást. |Nem |
 
@@ -552,25 +552,25 @@ A/az Azure SQL Data Warehouse-adatok másolásakor a következő leképezéseit 
 | dátum |DateTime |
 | Dátum és idő |DateTime |
 | datetime2 |DateTime |
-| Datetimeoffset |DateTimeOffset |
+| datetimeoffset |DateTimeOffset |
 | Decimális |Decimális |
 | A FILESTREAM attribútum (varbinary(max)) |Byte] |
 | Lebegőpontos |Dupla |
-| image |Byte] |
+| Kép |Byte] |
 | int |Int32 |
 | pénz |Decimális |
 | nchar |Karakterlánc, Char] |
 | ntext |Karakterlánc, Char] |
 | Numerikus |Decimális |
 | nvarchar |Karakterlánc, Char] |
-| valós |Egyedülálló |
+| valós |Önálló |
 | ROWVERSION |Byte] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
 | kis pénz típusú értéknél |Decimális |
 | sql_variant |Objektum * |
 | Szöveg |Karakterlánc, Char] |
-| time |TimeSpan |
+| time |A TimeSpan |
 | időbélyeg |Byte] |
 | tinyint |Bájt |
 | egyedi azonosító |GUID |

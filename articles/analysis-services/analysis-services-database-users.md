@@ -1,25 +1,18 @@
 ---
-title: "Adatbázis-szerepkörök és a felhasználók az Azure Analysis Services kezelése |} Microsoft Docs"
-description: "Útmutató: az adatbázis-szerepkörök és az Analysis Services-kiszolgálóhoz, az Azure-ban a felhasználók kezelése."
-services: analysis-services
-documentationcenter: 
+title: Adatbázis-szerepkörök és a felhasználók az Azure Analysis Services kezelése |} Microsoft Docs
+description: 'Útmutató: az adatbázis-szerepkörök és az Analysis Services-kiszolgálóhoz, az Azure-ban a felhasználók kezelése.'
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 38bad0641d97028b435e05458d597bda378a8363
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: 3c35fb1ee70544b8b01bbadaf72ee38145179b27
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-database-roles-and-users"></a>Adatbázis-szerepkörök és a felhasználók kezelése
 
@@ -48,11 +41,11 @@ Amikor létrehoz egy táblázatos modell projektet, szerepköröket hozhat létr
   
     |Engedély|Leírás|  
     |----------------|-----------------|  
-    |Egyik sem|A tagok nem módosítható a modellsémát, és nem tudja lekérdezni az adatokat.|  
+    |**Egyik sem**|A tagok nem módosítható a modellsémát, és nem tudja lekérdezni az adatokat.|  
     |**Olvasás**|Tagok lekérdezheti adatokat (sorszűrőket alapján), de nem módosíthatja a modellsémát.|  
     |**Olvasás és a folyamat**|Tagok lekérdezheti adatokat (a sorszintű szűrők) és futtatási folyamat és a folyamat minden műveleteket, de nem módosítható a modellsémát.|  
     |**Folyamat**|Tagok folyamat és a folyamat minden műveletek is futtatható. A modell sémája nem módosítható és nem tudja lekérdezni az adatokat.|  
-    |Rendszergazda|Tagok modellsémát módosíthatja, és minden adat lekérdezése.|   
+    |**Rendszergazda**|Tagok modellsémát módosíthatja, és minden adat lekérdezése.|   
   
 5.  Ha a szerepkör létrehozása rendelkezik olvasási vagy olvasási és a folyamat engedélyt adhat hozzá sorszűrőket DAX-képlet használatával. Kattintson a **sorszűrőket** lapra, majd válasszon egy táblázatot, majd kattintson a **DAX-szűrő** mezőben, és írja be egy DAX-képletet.
   

@@ -3,36 +3,43 @@ title: Azure Table storage vagy a Node.js-ből a Azure Cosmos DB használatával
 description: Strukturált adat tárolása a felhőben Azure Table storage vagy Azure Cosmos DB használatával.
 services: cosmos-db
 documentationcenter: nodejs
-author: mimig1
-manager: jhubbard
-editor: tysonn
+author: SnehaGunda
+manager: kfile
 ms.assetid: fc2e33d2-c5da-4861-8503-53fdc25750de
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 03/23/2018
-ms.author: mimig
-ms.openlocfilehash: fc6e3ca079b4d1edefa82e06dbe63b393ab2fbb3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.date: 04/05/2018
+ms.author: sngun
+ms.openlocfilehash: 3f1908a6c2d129da44e0719b2cf69cf09baef356
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-use-azure-table-storage-from-nodejs"></a>Node.js-ből a Azure Table storage használata
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
 ## <a name="overview"></a>Áttekintés
-Ez a cikk bemutatja, hogyan hajthat végre az Azure Storage Table szolgáltatás vagy az Azure Comsos DB használata Node.js-alkalmazásokban gyakori forgatókönyvek.
+Ez a cikk bemutatja, hogyan hajthat végre az Azure Storage Table szolgáltatás vagy az Azure Cosmos DB használata Node.js-alkalmazásokban gyakori forgatókönyvek.
 
-[!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
+## <a name="create-an-azure-service-account"></a>Az Azure szolgáltatás-fiók létrehozása
 
-[!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
+[!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
+
+### <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása
+
+[!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
+
+### <a name="create-an-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB tábla API-fiók létrehozása
+
+[!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="configure-your-application-to-access-azure-storage"></a>Állítsa be az alkalmazását Azure Storage eléréséhez
-Azure Storage használatához szüksége az Azure Storage szolgáltatás SDK for Node.js, amely tartalmaz, a felhasználók kényelme érdekében szalagtár szerepel, amely a többi tárolási szolgáltatásokkal kommunikálni.
+Azure Storage- vagy Azure Cosmos DB használatához szüksége az Azure Storage szolgáltatás SDK a Node.js, amely tartalmaz, a felhasználók kényelme érdekében szalagtár szerepel, amely a többi tárolási szolgáltatásokkal kommunikálni.
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>A csomag telepítése a csomópont Package Manager (NPM) használatával
 1. Használjon például egy parancssori felületet **PowerShell** (Windows), **Terminálszolgáltatások** (Mac), vagy **Bash** (Unix) eszközt, és lépjen abba a mappába, amelyben létrehozta az alkalmazást.

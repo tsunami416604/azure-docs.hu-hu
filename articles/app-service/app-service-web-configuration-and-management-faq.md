@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: efbed264babe0b192590380639cdc1c8861b4f38
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 42fbf50ac0807a3982385990871d9c4724bdaaad
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurálása és kezelése – gyakori kérdések az Azure Web Apps
 
@@ -84,7 +84,7 @@ A webalkalmazás kimenő IP-címek listájának lekérdezése:
 
 A kimenő IP-címek listája jelenik meg.
 
-Ha a webhely az App Service Environment-környezet a powerapps segítségével, a kimenő IP-cím beszerzéséről lásd: [kimenő hálózati címek](environment/app-service-app-service-environment-network-architecture-overview.md#outbound-network-addresses).
+Megtudhatja, hogyan tud a kimenő IP-címet, ha a webhely az App Service-környezetben, lásd: [kimenő hálózati címek](environment/app-service-app-service-environment-network-architecture-overview.md#outbound-network-addresses).
 
 ## <a name="how-do-i-get-a-reserved-or-dedicated-inbound-ip-address-for-my-web-app"></a>Hogyan szerezhetek fenntartott vagy dedikált bejövő IP-címnek a webalkalmazás?
 

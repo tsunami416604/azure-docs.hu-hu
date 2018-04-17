@@ -1,25 +1,25 @@
 ---
-title: "Az Azure leválasztott telepítési döntések Azure verem integrált rendszerek |} Microsoft Docs"
-description: "Határozza meg a központi telepítési tervének kidolgozásához többcsomópontos Azure verem Azure kapcsolódó központi telepítések."
+title: Az Azure leválasztott telepítési döntések Azure verem integrált rendszerek |} Microsoft Docs
+description: Határozza meg a központi telepítési tervének kidolgozásához többcsomópontos Azure verem Azure kapcsolódó központi telepítések.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2018
+ms.date: 04/09/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: e697dec0f3d104af073fd61bac81a00e182524e1
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 8fbc489bacb3c8592ee99fc5a4486fd864f498ee
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Az Azure-kapcsolat nélküli telepítés tervezési megfontolások Azure verem integrált rendszerek
 Után úgy döntött, [hogyan fogja integrálja Azure verem a hibrid felhőkörnyezet](azure-stack-connection-models.md), majd véglegesítése is az Azure-verem telepítési döntések meghozatalában.
@@ -45,7 +45,7 @@ Azure verem legjobban, ha a kapcsolódó Azure-ba, ezért fontos megjegyezni, ho
 |A Virtuálisgép-telepítéshez Docker kiterjesztésű Docker parancsok futtatásához|Sérült – Docker ellenőrzi az interneten található legújabb verzióhoz, és ez az ellenőrzés sikertelen lesz.|
 |Az Azure-verem portál dokumentációjában hivatkozások|Nem érhető el – hivatkozások például visszajelzés segítségre van szüksége, gyors üzembe helyezés, az internetes URL-címe nem fognak működni használó stb.|
 |Riasztási szervizelési/megoldás, amely egy online szervizelési útmutató hivatkozik|Nem érhető el – bármely riasztási eltávolításának hivatkozásokat tartalmaz, hogy használja az internetes URL-címe nem fognak működni.|
-|Piactér szindikálási – válassza ki, és adja hozzá a gyűjtemény csomagokat közvetlenül az Azure piactérről|Nem érhető el – a szolgáltatás működéséhez Azure és az Azure Active Directory-fiókkal való kapcsolódást.|
+|Piactér szindikálási – válassza ki, és adja hozzá a gyűjtemény csomagokat közvetlenül az Azure piactérről|Sérült – Azure verem (nélkül bármely internetkapcsolat) kapcsolat nélküli módban telepítésekor Piactéri elemek nem lehet letölteni a verem Azure portál használatával. Azonban használhatja a [piactér szindikálási eszköz](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item#download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity) töltse le a Piactéri elemek egy internetkapcsolattal rendelkező gép, és majd átviszi a verem Azure környezetben.|
 |Az Azure-verem központi telepítésének kezelése az Azure Active Directory összevonási fiókok segítségével|Nem érhető el – ez a funkció használatához Azure hozzáférés szükséges. Az AD FS, ha a helyi Active Directory példánya használandók.|
 |Például a webalkalmazás és az SQL erőforrás-szolgáltató|Nem érhető el – például a webalkalmazás és az SQL erőforrás-szolgáltatók internetelérés szükséges a tartalomhoz.|
 |Parancssori felület (CLI)|Sérült – CLI lecsökkentette és szolgáltatás alapelveinek létesítésének funkciókat.|
@@ -55,7 +55,7 @@ Telemetria|Nem érhető el – és minden függő telemetriai adatok külső gy�
 |Tanúsítványok|Nem érhető el – internetkapcsolat szükség a visszavont tanúsítványok listáját (CRL), és Online tanúsítvány állapota protokoll (OSCP) szolgáltatások HTTPS környezetében.|
 |Key-Vault|Sérült – Key vault gyakori használati eset az, hogy az alkalmazás megnyithassa a futási időben. Ennek az alkalmazást kell egy egyszerű szolgáltatást a címtárban. Az Azure Active Directoryban a normál felhasználók (nem rendszergazda) rendszer az új szolgáltatásnevekről alapértelmezés szerint. Az Active Directory (AD FS használatával) nem válnak. Ez helyezi a küszöbértéket a végpont élmény mert egyik mindig haladjon végig a directory-rendszergazda bármely alkalmazás hozzáadása.| 
 
-## <a name="learn-more"></a>További információ
+## <a name="learn-more"></a>Részletek
 - További információ a használati esetek, megvásárlásáról, partnerek és OEM hardverszállítók: a [Azure verem](https://azure.microsoft.com/overview/azure-stack/) termék oldalát.
 - A terv és a földrajzi rendelkezésre állása információt Azure verem integrált rendszerek, tekintse meg a: [Azure verem: Azure kiterjesztése](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
 - További információt a Microsoft Azure verem csomagolás és árképzési [töltse le a .pdf](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf). 

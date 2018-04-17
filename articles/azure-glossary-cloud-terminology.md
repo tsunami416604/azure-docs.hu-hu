@@ -1,12 +1,12 @@
 ---
-title: "Az Azure szószedet - Azure szótár |} Microsoft Docs"
-description: "Az Azure szószedet használatával megérthetik, hogy a felhő terminológia az Azure platformon. A rövid Azure szótár biztosít jelentésdefiníciókat közös felhő feltételek az Azure-bA."
-keywords: "Azure szótár, felhőalapú terminológia, Azure szószedet, terminológiai definíciók, felhőalapú feltételek"
+title: Az Azure szószedet - Azure szótár |} Microsoft Docs
+description: Az Azure szószedet használatával megérthetik, hogy a felhő terminológia az Azure platformon. A rövid Azure szótár biztosít jelentésdefiníciókat közös felhő feltételek az Azure-bA.
+keywords: Azure szótár, felhőalapú terminológia, Azure szószedet, terminológiai definíciók, felhőalapú feltételek
 services: na
 documentationcenter: na
 author: MonicaRush
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: d7ac12f7-24b5-4bcd-9e4d-3d76fbd8d297
 ms.service: multiple
 ms.workload: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: fd20405c284161a1a66493056f21c147efa632cb
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 953320734c1601c411144bd7a6496716a65e452e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>A Microsoft Azure szószedet: az Azure platformon felhő terminológia dictionary
 
@@ -46,7 +46,7 @@ Lásd: [Windows virtuális gépek rendelkezésre állásának kezelése](virtual
 Egy két [üzembe helyezési modellel](resource-manager-deployment-model.md) erőforrások az Azure (az új modell az Azure Resource Manager) központi telepítéséhez. Egyes Azure-szolgáltatásokhoz csak a Resource Manager üzembe helyezési modellel támogatja, néhány csak a klasszikus üzembe helyezési modellt támogatja, és néhány támogatja. Minden Azure szolgáltatás dokumentációjában határozza meg, mely a modellek támogatják-e.
 
 ## <a name="cli"></a>Azure parancssori felület (CLI)
-MacOS, Linux és a Windows Azure-szolgáltatások kezeléséhez használható parancssori felület.  Egyes szolgáltatásokat vagy a szolgáltatások csak a PowerShell vagy a parancssori felületen keresztül kezelheti. See [Azure CLI 2.0](/cli/azure)
+MacOS, Linux és a Windows Azure-szolgáltatások kezeléséhez használható parancssori felület.  Egyes szolgáltatásokat vagy a szolgáltatások csak a PowerShell vagy a parancssori felületen keresztül kezelheti. Lásd: [Azure CLI 2.0](/cli/azure)
 
 ## <a name="powershell"></a>Azure PowerShell
 Egy parancssori felületet Azure szolgáltatást a parancssor használatával kezelheti a Windows rendszerű számítógépeken. Egyes szolgáltatásokat vagy a szolgáltatások csak a PowerShell vagy a parancssori felületen keresztül kezelheti.
@@ -68,7 +68,7 @@ A folyamat automatikusan replikálása tartalmának, például a blobot, táblá
 Lásd: [aktív Georeplikáció Azure SQL-adatbázis](sql-database/sql-database-geo-replication-overview.md)
 <!-- The meaning of "geo" in this term seems to be different than the meaning provided in the "geo" entry -->
 
-## <a name="image"></a>image
+## <a name="image"></a>Kép
 A fájl, amely tartalmazza az operációs rendszer és az alkalmazás konfigurációját, tetszőleges számú virtuális gépek létrehozásához használható. Az Azure-ban lemezképek két típusa van: virtuális gép lemezképét és az operációsrendszer-lemezképek. Egy Virtuálisgép-lemezkép az operációs rendszer és a lemezkép létrehozásakor a virtuális géphez csatolt összes lemezt tartalmaz. Az operációsrendszer-lemezképek operációs rendszer nélküli adatok lemezkonfigurációkkal valóüzemeltetése csak egy általánosított tartalmazza.  
 Lásd: [keresse meg és jelölje be a Windows virtuálisgép-rendszerképek a PowerShell vagy a CLI Azure-ban](virtual-machines/windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
@@ -111,7 +111,7 @@ Lásd: [Azure Resource Manager áttekintése](azure-resource-manager/resource-gr
 
 ## <a name="role"></a>szerepkör
 Eszköz hozzárendelheti a felhasználók, csoportok és a szolgáltatások hozzáférés szabályozása. Szerepköröket használják, mint például létrehozása, kezelése, és az Azure-erőforrások olvasási műveleteket végezhet.  
-Lásd: [RBAC: beépített szerepkörök](active-directory/role-based-access-built-in-roles.md)
+Lásd: [RBAC: beépített szerepkörök](role-based-access-control/built-in-roles.md)
 
 ## <a name="sla"></a>Szolgáltatásiszint-szerződéssel (SLA)
 A szerződést, amely leírja a Microsoft felé vállalt kötelezettségeinket hasznos üzemidő és kapcsolatot. Minden Azure szolgáltatásnak van egy adott SLA-t.  

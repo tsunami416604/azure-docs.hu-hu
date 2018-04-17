@@ -1,11 +1,11 @@
 ---
-title: "Azure számlázás szerepkörök használatával való hozzáférés kezelése |} Microsoft Docs"
-description: 
-services: 
-documentationcenter: 
+title: Azure számlázás szerepkörök használatával való hozzáférés kezelése |} Microsoft Docs
+description: ''
+services: ''
+documentationcenter: ''
 author: vikramdesai01
 manager: vikdesai
-editor: 
+editor: ''
 tags: billing
 ms.assetid: e4c4d136-2826-4938-868f-a7e67ff6b025
 ms.service: billing
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: vikdesai
-ms.openlocfilehash: c70904097f139bc2178feed83f1cf1274f3c738d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ded7904c6cb855994d92e68c4a1af64ccdb2c3a0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-access-to-billing-information-for-azure-using-role-based-access-control"></a>Számlázási adatokat az Azure szerepköralapú hozzáférés-vezérlés használatával való hozzáférés kezelése
 
-Ön hozzáférést biztosíthat az Azure számlázási adatokat a csoport tagjai számára úgy egyet az alábbi felhasználói szerepkörök hozzárendelése az előfizetéshez: Fiókadminisztrátor, szolgáltatás-rendszergazdát, társadminisztrátoraként, tulajdonos, közreműködő, olvasó és számlázási olvasó. Férhet számlázási adatokhoz a [Azure-portálon](https://portal.azure.com/), és használhatják a [számlázási API-k](billing-usage-rate-card-overview.md) programozott módon le a számlák (egyszer engedélyezte, bejövő) és a használat részleteiről. További információ szerepkörök adhatnak ki, és mely szerepköröket is mi, olvassa el [szerepkörök az Azure RBAC](../active-directory/role-based-access-built-in-roles.md).
+Ön hozzáférést biztosíthat az Azure számlázási adatokat a csoport tagjai számára úgy egyet az alábbi felhasználói szerepkörök hozzárendelése az előfizetéshez: Fiókadminisztrátor, szolgáltatás-rendszergazdát, társadminisztrátoraként, tulajdonos, közreműködő, olvasó és számlázási olvasó. Férhet számlázási adatokhoz a [Azure-portálon](https://portal.azure.com/), és használhatják a [számlázási API-k](billing-usage-rate-card-overview.md) programozott módon le a számlák (egyszer engedélyezte, bejövő) és a használat részleteiről. További információ szerepkörök adhatnak ki, és mely szerepköröket is mi, olvassa el [szerepkörök az Azure RBAC](../role-based-access-control/built-in-roles.md).
 
-## <a name="opt-in"></a>Felhasználó számlák eléréséhez
+## <a name="opt-in"></a> Felhasználó számlák eléréséhez
 
 A Fiókadminisztrátor használatával bírálhatja felül a [Azure-portálon](https://portal.azure.com/) számlák a hozzáférést, a más felhasználók számára, és API-n keresztül.
 

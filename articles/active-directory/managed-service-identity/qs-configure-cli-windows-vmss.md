@@ -1,11 +1,11 @@
 ---
-title: "MSI konfigurálása az Azure virtuálisgép-méretezési beállítása az Azure parancssori felület használatával"
-description: "Lépés által felügyelt szolgáltatás identitásának (MSI) konfigurálásához egy Azure virtuálisgép-méretezési, Azure parancssori felület használatának részletes utasításokat."
+title: MSI konfigurálása az Azure virtuálisgép-méretezési beállítása az Azure parancssori felület használatával
+description: Lépés által felügyelt szolgáltatás identitásának (MSI) konfigurálásához egy Azure virtuálisgép-méretezési, Azure parancssori felület használatának részletes utasításokat.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/15/2018
 ms.author: daveba
-ms.openlocfilehash: d7a7b0c8b3f9bf0279282dbf1fed4fc8163d9170
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 9cdf5225f2d87fffa2290e3edd09d4ae829aee21
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configure-a-virtual-machine-scale-set-managed-service-identity-msi-using-azure-cli"></a>Konfigurálja a virtuálisgép-méretezési készlet által felügyelt szolgáltatás Identity (MSI) Azure parancssori felület használatával
 
@@ -71,10 +71,10 @@ Ha egy meglévő Azure virtuálisgép-méretezési csoport MSI engedélyezni kel
    az login
    ```
 
-2. Használja [az vmss hozzárendelése-identitás](/cli/azure/vm/#az_vmss_assign_identity) rendelkező a `--assign-identity` paraméter egy olyan MSI Csomaghoz hozzáadása egy meglévő virtuális Gépen:
+2. Használjon [az vmss identitás hozzárendelése](/cli/azure/vmss/identity/#az_vmss_identity_assign) parancs futtatásával adja hozzá egy meglévő virtuális gép egy olyan MSI Csomaghoz:
 
    ```azurecli-interactive
-   az vmss assign-identity -g myResourceGroup -n myVMSS
+   az vmss identity assign -g myResourceGroup -n myVMSS
    ```
 
 ## <a name="remove-msi-from-an-azure-virtual-machine-scale-set"></a>Egy Azure virtuálisgép-méretezési csoport MSI eltávolítása
@@ -87,10 +87,10 @@ Ha egy virtuálisgép-méretezési csoport, amely már nem kell egy olyan MSI Cs
    az login
    ```
 
-2. Használja a `--identities` kapcsoló [az vmss remove-identitás](/cli/azure/vmss/#az_vmss_remove_identity) az MSI eltávolítása:
+2. Használjon [az vmss identitás eltávolítása](/cli/azure/vmss/identity/#az_vmss_remove_identity) parancs beírásával távolítsa el a MSI:
 
    ```azurecli-interactive
-   az vmss remove-identity -g myResourceGroup -n myVMSS --identities readerID writerID
+   az vmss identity remove -g myResourceGroup -n myVMSS --identities readerID writerID
    ```
 
 ## <a name="next-steps"></a>További lépések

@@ -1,26 +1,23 @@
 ---
-title: "Részletes bemutatója - advanced analytics - Azure HDInsight |} Microsoft Docs"
-description: "Ismerje meg, hogyan speciális elemzésekre algoritmusokat használ a big Data típusú adatok feldolgozásához."
+title: Részletes bemutatója - advanced analytics - Azure HDInsight |} Microsoft Docs
+description: Ismerje meg, hogyan speciális elemzésekre algoritmusokat használ a big Data típusú adatok feldolgozásához.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-ms.assetid: 
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 61a00c902be5cd3e37dabba09c15f9226e5e88b4
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: f121a1f95eed04bf8086c03a5d4406c092dc9445
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="deep-dive---advanced-analytics"></a>Részletes bemutatója - speciális elemzés
 
@@ -30,7 +27,7 @@ A HDInsight lehetővé teszi a strukturált, strukturálatlan nagy mennyiségű 
 
 ## <a name="advanced-analytics-process"></a>Bővített analitikát folyamat
 
-![Feldolgozás](./media/apache-hadoop-deep-dive-advanced-analytics/process.png)
+![Folyamat](./media/apache-hadoop-deep-dive-advanced-analytics/process.png)
 
 Miután állapította meg az üzleti problémát, és elindította gyűjtése és az adatok feldolgozása, kell létrehoznia egy modell a a kérdése kívánja előre jelezni. A modell egy vagy több gépi tanulási algoritmusok használni előrejelzés üzleti igényeinek legjobban megfelelő típusú.  A legtöbb, az adatok és a többi kiértékelésére, használja a modell betanításához használandó. 
 

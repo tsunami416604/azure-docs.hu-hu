@@ -1,8 +1,8 @@
 ---
-title: "Az Azure PowerShell-megoldások kezelése |} Microsoft Docs"
-description: "Azure PowerShell és a Resource Manager segítségével kezelheti az erőforrásokat."
+title: Az Azure PowerShell-megoldások kezelése |} Microsoft Docs
+description: Azure PowerShell és a Resource Manager segítségével kezelheti az erőforrásokat.
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 96206482195cdcbd06ee2dafdc551f7b1f81d319
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9521a9be1d2bdc91836830dbb6471d2ffcb4daaf
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-resources-with-azure-powershell"></a>Az Azure PowerShell-erőforrások kezelése
 
@@ -51,9 +51,9 @@ Az erőforráscsoport jelenleg üres.
 
 Ez a cikk telepít, a virtuális gépek és a kapcsolódó virtuális hálózatot. A virtuális gép megoldások kezelése, számos három erőforrás-specifikus szerepköröket, amelyek gyakran szükséges hozzáférést biztosítanak.
 
-* [Virtuális gép közreműködő](../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor)
-* [Hálózati közreműködő](../active-directory/role-based-access-built-in-roles.md#network-contributor)
-* [Tárolási fiók közreműködői](../active-directory/role-based-access-built-in-roles.md#storage-account-contributor)
+* [Virtuális gép közreműködő](../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
+* [Hálózati közreműködő](../role-based-access-control/built-in-roles.md#network-contributor)
+* [Tárolási fiók közreműködői](../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
 Szerepkörök hozzárendelése az egyéni felhasználók számára, helyett célszerűbb gyakran [Azure Active Directory-csoport létrehozása](../active-directory/active-directory-groups-create-azure-portal.md) a felhasználók, akik hasonló műveletekre. Adott csoporthoz, majd rendelje hozzá a megfelelő szerepkörhöz. Ez a cikk leegyszerűsítése hoz létre egy Azure Active Directory-csoport tagjai nélkül. Ez a csoport továbbra is hozzárendelése szerepkörhöz hatókörhöz. 
 

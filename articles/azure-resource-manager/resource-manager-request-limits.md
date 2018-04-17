@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Resource Manager kérelmekre vonatkozó korlátokat |} Microsoft Docs"
-description: "Ismerteti, hogyan használható az Azure Resource Manager által szabályozás, amikor a rendszer elérte az előfizetési korlátozásait."
+title: Az Azure Resource Manager kérelmekre vonatkozó korlátokat |} Microsoft Docs
+description: Ismerteti, hogyan használható az Azure Resource Manager által szabályozás, amikor a rendszer elérte az előfizetési korlátozásait.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/26/2018
+ms.date: 04/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: dc109cdaeade900e239624f408cea2a1f448ae5a
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 1d670fd7a9a165977fa5c8d3ce4caf5ff1b1df1e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="throttling-resource-manager-requests"></a>Erőforrás-kezelő szabályozás
 Minden egyes előfizetésekhez és bérlői erőforrás-kezelő korlátok óránként 15 000 kérelmek és olvasási kérések 1200 óránként. Ezek a korlátozások vonatkoznak az Azure Resource Manager feltünteti. Több példánya van minden Azure-régiót, és az Azure Resource Manager a rendszer minden Azure-régió.  Így a, a gyakorlatban korlátok hatékonyan sokkal nagyobb, mint a működés felső korlátjának, felhasználóként kérelmek általában által kiszolgált számos különböző példányai.
@@ -29,15 +29,15 @@ Amikor eléri a határértéket, kapja-e a HTTP-állapotkód: **429-es jelű tú
 
 A kérelmek száma az előfizetés vagy a bérlő hatókörét. Ha több, egyidejű alkalmazások kérelmet benyújtó az előfizetésében szereplő azon alkalmazások kérelmeinek felvétele fennmaradó kérések száma meghatározása érdekében.
 
-Hatókörű előfizetési kérelmek azok a involve átadja az előfizetés azonosítója, például az erőforráscsoportok az előfizetésében beolvasása. Bérlői hatókörű kérelmek nem tartalmaznak az előfizetés-Azonosítóval, mint érvényes Azure helyek lekérése.
+Hatókörű előfizetési kérelmek azok a involve átadja az előfizetés azonosítója, például az erőforráscsoportok az előfizetésében beolvasása. Bérlői hatókörű kérések nem tartalmazzák az előfizetés-Azonosítóval, mint érvényes Azure helyek lekérése.
 
 ## <a name="remaining-requests"></a>Fennmaradó kérelmek
 Válaszfejlécek megvizsgálásával azt is meghatározhatja a fennmaradó kérelmek száma. Minden egyes kérelem fennmaradó olvasási és írási kérések száma értékeket tartalmaz. A következő táblázat ismerteti a válaszfejlécek ezeket az értékeket a ellenőrizheti:
 
 | Válaszfejléc | Leírás |
 | --- | --- |
-| x-ms-ratelimit-remaining-subscription-reads |Előfizetés hatókörű beolvassa a fennmaradó |
-| x-ms-ratelimit-remaining-subscription-writes |Előfizetés hatókörű ír fennmaradó |
+| x-ms-ratelimit-remaining-subscription-reads |Előfizetés hatókörű beolvassa a fennmaradó. Ez az érték akkor adja vissza az olvasási műveletek. |
+| x-ms-ratelimit-remaining-subscription-writes |Előfizetés hatókörű írja a fennmaradó. Ez az érték akkor adja vissza az írási műveletek. |
 | x-ms-ratelimit-remaining-tenant-reads |Bérlői hatókörű beolvassa a fennmaradó |
 | x-ms-ratelimit-remaining-tenant-writes |Bérlői hatókörű ír fennmaradó |
 | x-ms-ratelimit-remaining-subscription-resource-requests |Előfizetés fennmaradó erőforrás típusú kérések hatókörét.<br /><br />Ezt a fejlécértéket csak akkor ad vissza, ha a szolgáltatás felülírta az alapértelmezett határérték. Erőforrás-kezelő hozzáadása az előfizetés olvasások és írások helyett ezt az értéket. |
@@ -70,7 +70,6 @@ Get-AzureRmResourceGroup -Debug
 Több értékhez, többek között a következő válasz értéket visszaadó:
 
 ```powershell
-...
 DEBUG: ============================ HTTP RESPONSE ============================
 
 Status Code:
@@ -79,7 +78,25 @@ OK
 Headers:
 Pragma                        : no-cache
 x-ms-ratelimit-remaining-subscription-reads: 14999
-...
+```
+
+Írási korlátok, amelyet egy írási művelet: 
+
+```powershell
+New-AzureRmResourceGroup -Name myresourcegroup -Location westus -Debug
+```
+
+Visszaadó sok értéket, beleértve a következő értékeket:
+
+```powershell
+DEBUG: ============================ HTTP RESPONSE ============================
+
+Status Code:
+Created
+
+Headers:
+Pragma                        : no-cache
+x-ms-ratelimit-remaining-subscription-writes: 1199
 ```
 
 A **Azure CLI**, a részletesebb beállítás használatával beolvashatja a fejléc értéke.
@@ -88,24 +105,41 @@ A **Azure CLI**, a részletesebb beállítás használatával beolvashatja a fej
 az group list --verbose --debug
 ```
 
-Visszaadó sok értéket, beleértve a következő objektumot:
+Visszaadó sok értéket, beleértve a következő értékeket:
 
 ```azurecli
-...
-silly: returnObject
-{
-  "statusCode": 200,
-  "header": {
-    "cache-control": "no-cache",
-    "pragma": "no-cache",
-    "content-type": "application/json; charset=utf-8",
-    "expires": "-1",
-    "x-ms-ratelimit-remaining-subscription-reads": "14998",
-    ...
+msrest.http_logger : Response status: 200
+msrest.http_logger : Response headers:
+msrest.http_logger :     'Cache-Control': 'no-cache'
+msrest.http_logger :     'Pragma': 'no-cache'
+msrest.http_logger :     'Content-Type': 'application/json; charset=utf-8'
+msrest.http_logger :     'Content-Encoding': 'gzip'
+msrest.http_logger :     'Expires': '-1'
+msrest.http_logger :     'Vary': 'Accept-Encoding'
+msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-reads': '14998'
+```
+
+Írási korlátok, amelyet egy írási művelet: 
+
+```azurecli
+az group create -n myresourcegroup --location westus --verbose --debug
+```
+
+Visszaadó sok értéket, beleértve a következő értékeket:
+
+```azurecli
+msrest.http_logger : Response status: 201
+msrest.http_logger : Response headers:
+msrest.http_logger :     'Cache-Control': 'no-cache'
+msrest.http_logger :     'Pragma': 'no-cache'
+msrest.http_logger :     'Content-Length': '163'
+msrest.http_logger :     'Content-Type': 'application/json; charset=utf-8'
+msrest.http_logger :     'Expires': '-1'
+msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-writes': '1199'
 ```
 
 ## <a name="waiting-before-sending-next-request"></a>Várakozás a következő kérelem elküldése előtt
-Ha eléri a kérelmi korlátjának, erőforrás-kezelő adja vissza a **429** HTTP-állapotkód és egy **újrapróbálkozási után** a fejléc értéke. A **újrapróbálkozási után** érték másodperc megvárja-e az alkalmazás (vagy alvó) számát adja meg a következő kérelem elküldése előtt. Az újrapróbálási értéket letelte előtt kérelmet küld, ha a kérelem nincs feldolgozva, és próbálkozzon újra új értéket ad vissza.
+Ha eléri a kérelmi korlátjának, erőforrás-kezelő adja vissza a **429** HTTP-állapotkód és egy **újrapróbálkozási után** a fejléc értéke. A **újrapróbálkozási után** érték másodperc megvárja-e az alkalmazás (vagy alvó) számát adja meg a következő kérelem elküldése előtt. Az újrapróbálási értéket letelte előtt kérelmet küld, ha a kérelem feldolgozása nem, és próbálkozzon újra új értéket ad vissza.
 
 ## <a name="next-steps"></a>További lépések
 

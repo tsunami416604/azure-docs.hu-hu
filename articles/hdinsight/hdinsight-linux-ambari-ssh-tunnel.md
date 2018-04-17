@@ -1,8 +1,8 @@
 ---
-title: "Az SSH tunneling elérni az Azure HDInsight használata |} Microsoft Docs"
-description: "Útmutató az SSH-alagút segítségével biztonságosan keresse meg a Linux-alapú HDInsight-csomópontok webes erőforrásaihoz."
+title: Az SSH tunneling elérni az Azure HDInsight használata |} Microsoft Docs
+description: Útmutató az SSH-alagút segítségével biztonságosan keresse meg a Linux-alapú HDInsight-csomópontok webes erőforrásaihoz.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,16 +10,14 @@ ms.assetid: 879834a4-52d0-499c-a3ae-8d28863abf65
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: larryfr
-ms.openlocfilehash: a6604cca4056acf3ce759eaf56bb9130ef672bc7
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 05e06d6ed8c2a3bec0d12f81aae6f7022a56b942
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-ssh-tunneling-to-access-ambari-web-ui-jobhistory-namenode-oozie-and-other-web-uis"></a>SSH Tunneling Ambari webes felhasználói felület, JobHistory, NameNode, Oozie és egyéb web UI eléréséhez használja
 
@@ -75,7 +73,7 @@ Ez a parancs kapcsolatot hoz létre, amely irányítja a forgalmat helyi port 98
 * **2** -force SSH protokoll 2-es verzióját kipróbálásához.
 * **a q** -csendes mód.
 * **T** -pszeudo-tty kiosztását, tiltsa le, mivel csak továbbít egy portot.
-* **n**-Előfordulhat, hogy olvasása STDIN, mivel csak továbbít egy portot.
+* **n** -megakadályozása STDIN, olvasása, mivel csak továbbít egy portot.
 * **N** -nem hajtható végre távoli parancsot, mert csak továbbít egy portot.
 * **f** -fusson a háttérben.
 
@@ -85,7 +83,7 @@ Ha a parancs a helyi számítógépen 9876 portra küldi továbbítódik a head 
 
 [A puTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty) egy grafikus SSH-ügyfél Windows. Használja a PuTTY SSH-alagút létrehozásához tegye a következőket:
 
-1. Nyissa meg a PuTTY, és adja meg a kapcsolódási adatokat. Ha nem ismeri a PuTTY-e, tekintse meg a [dokumentáció (http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html) PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html).
+1. Nyissa meg a PuTTY, és adja meg a kapcsolódási adatokat. Ha nem ismeri a PuTTY-e, tekintse meg a [dokumentáció PuTTY (http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)](http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html).
 
 2. Az a **kategória** a párbeszédpanel bal területen bontsa ki a **kapcsolat**, bontsa ki a **SSH**, majd válassza ki **alagutak**.
 
@@ -115,16 +113,16 @@ Ha a parancs a helyi számítógépen 9876 portra küldi továbbítódik a head 
    > [!NOTE]
    > Kiválasztása **távoli DNS** oldja fel a tartománynévrendszer (DNS) kéréseket a HDInsight-fürt használatával. Ez a beállítás használata a fürt átjárócsomópontjához DNS oldja fel.
 
-2. Győződjön meg arról, hogy működik-e az alagutat a webhely felkeresésével [http://www.whatismyip.com/](http://www.whatismyip.com/). Kell lennie az IP-cím adott vissza a Microsoft Azure datacenter használják.
+2. Győződjön meg arról, hogy működik-e az alagutat a webhely felkeresésével [ http://www.whatismyip.com/ ](http://www.whatismyip.com/). Kell lennie az IP-cím adott vissza a Microsoft Azure datacenter használják.
 
 ## <a name="verify-with-ambari-web-ui"></a>Ellenőrizze a következővel Ambari webes felhasználói felület
 
 A fürt létrehozása után az alábbi lépések segítségével győződjön meg arról, hogy elérhető szolgáltatás web UI az Ambari webes:
 
-1. A böngészőben nyissa meg http://headnodehost:8080. A `headnodehost` a fürthöz, és hárítsa el a headnode Ambari futó történő címet zajlik az alagúton keresztül. Amikor a rendszer kéri, adja meg a rendszergazdai felhasználónevet (rendszergazda) és a jelszót a fürt számára. Kérheti még egyszer az Ambari webes felhasználói felület által. Ha igen, írja be újra az adatokat.
+1. A böngészőben nyissa meg a http://headnodehost:8080. A `headnodehost` a fürthöz, és hárítsa el a headnode Ambari futó történő címet zajlik az alagúton keresztül. Amikor a rendszer kéri, adja meg a rendszergazdai felhasználónevet (rendszergazda) és a jelszót a fürt számára. Kérheti még egyszer az Ambari webes felhasználói felület által. Ha igen, írja be újra az adatokat.
 
    > [!NOTE]
-   > Ha a http://headnodehost:8080 cím segítségével csatlakozzon a fürthöz, az alagúton keresztül kapcsolódik. Kommunikációs használatával lett biztonságossá téve az SSH-alagút HTTPS kapcsolat helyett. Az interneten, HTTPS-kapcsolaton keresztül csatlakozni, használja a https://CLUSTERNAME.azurehdinsight.net, ahol **CLUSTERNAME** a fürt neve.
+   > Használatakor a http://headnodehost:8080 a cím, csatlakozzon a fürthöz, az alagúton keresztül kapcsolódik. Kommunikációs használatával lett biztonságossá téve az SSH-alagút HTTPS kapcsolat helyett. Az interneten, HTTPS-kapcsolaton keresztül csatlakozni, használja a https://CLUSTERNAME.azurehdinsight.net, ahol **CLUSTERNAME** a fürt neve.
 
 2. Az Ambari webes felhasználói felületén jelölje ki a lap bal oldali listában a HDFS.
 
@@ -144,7 +142,7 @@ A fürt létrehozása után az alábbi lépések segítségével győződjön me
     ![A NameNode felhasználói felület képe](./media/hdinsight-linux-ambari-ssh-tunnel/namenode.png)
 
    > [!NOTE]
-   > Figyelje meg ezen a lapon; URL-címe meg kell hasonló **http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/fürt**. Ezt az URI a csomópont a belső teljesen minősített tartománynevét (FQDN) használja, és csak elérhető az SSH-alagút használatakor.
+   > Figyelje meg ezen a lapon; URL-címe meg kell hasonló **http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster**. Ezt az URI a csomópont a belső teljesen minősített tartománynevét (FQDN) használja, és csak elérhető az SSH-alagút használatakor.
 
 ## <a name="next-steps"></a>További lépések
 

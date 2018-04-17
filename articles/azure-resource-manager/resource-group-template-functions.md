@@ -1,6 +1,6 @@
 ---
-title: "Resource Manager Sablonfüggvényei |} Microsoft Docs"
-description: "Az Azure Resource Manager-sablonok segítségével értékek lekérését, karakterláncok és írhatók, és központi telepítési információk beolvasása funkcióit ismerteti."
+title: Resource Manager Sablonfüggvényei |} Microsoft Docs
+description: Az Azure Resource Manager-sablonok segítségével értékek lekérését, karakterláncok és írhatók, és központi telepítési információk beolvasása funkcióit ismerteti.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/18/2017
+ms.date: 04/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: 54580abdca8b6be10576cf74ad23e8ff2665341c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 834488e259caf60ae96450fcf7c8188c5ffb0bc5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-resource-manager-template-functions"></a>Az Azure Resource Manager sablonfüggvényei
 Ez a cikk ismerteti az Azure Resource Manager-sablonokban használható összes függvények.
@@ -50,18 +50,18 @@ Sablon függvényeket és paramétereket nem különböztetik meg. Például az 
 ## <a name="array-and-object-functions"></a>A tömb és objektum funkciók
 Erőforrás-kezelő számos funkciókat nyújt, tömbök és objektumok.
 
-* [array](resource-group-template-functions-array.md#array)
+* [A tömb](resource-group-template-functions-array.md#array)
 * [Egyesítés](resource-group-template-functions-array.md#coalesce)
 * [concat](resource-group-template-functions-array.md#concat)
 * [tartalmazza](resource-group-template-functions-array.md#contains)
 * [createArray](resource-group-template-functions-array.md#createarray)
 * [üres](resource-group-template-functions-array.md#empty)
 * [első](resource-group-template-functions-array.md#first)
-* [intersection](resource-group-template-functions-array.md#intersection)
+* [metszetének](resource-group-template-functions-array.md#intersection)
 * [json](resource-group-template-functions-array.md#json)
-* [last](resource-group-template-functions-array.md#last)
+* [utolsó](resource-group-template-functions-array.md#last)
 * [Hossza](resource-group-template-functions-array.md#length)
-* [min](resource-group-template-functions-array.md#min)
+* [Perc](resource-group-template-functions-array.md#min)
 * [max](resource-group-template-functions-array.md#max)
 * [range](resource-group-template-functions-array.md#range)
 * [skip](resource-group-template-functions-array.md#skip)
@@ -90,9 +90,9 @@ Erőforrás-kezelő számos funkciókat nyújt a sablonokban összehasonlítás�
 ## <a name="deployment-value-functions"></a>Központi telepítési érték funkciók
 Erőforrás-kezelő a következő funkciókat nyújt értékek lekérése a sablon és a központi telepítéshez kapcsolódó értékek szakaszait:
 
-* [deployment](resource-group-template-functions-deployment.md#deployment)
+* [központi telepítés](resource-group-template-functions-deployment.md#deployment)
 * [paraméterek](resource-group-template-functions-deployment.md#parameters)
-* [variables](resource-group-template-functions-deployment.md#variables)
+* [változók](resource-group-template-functions-deployment.md#variables)
 
 <a id="and" />
 <a id="bool" />
@@ -107,7 +107,7 @@ Erőforrás-kezelő a következő funkciókat biztosít a logikai feltételek ha
 * [bool](resource-group-template-functions-logical.md#bool)
 * [if](resource-group-template-functions-logical.md#if)
 * [not](resource-group-template-functions-logical.md#not)
-* [or](resource-group-template-functions-logical.md#or)
+* [vagy](resource-group-template-functions-logical.md#or)
 
 <a id="add" />
 <a id="copyindex" />
@@ -123,12 +123,12 @@ Erőforrás-kezelő a következő funkciókat biztosít a logikai feltételek ha
 ## <a name="numeric-functions"></a>Numerikus funkciók
 Erőforrás-kezelő a következő funkciókat nyújt egész számok használata:
 
-* [add](resource-group-template-functions-numeric.md#add)
+* [Hozzáadása](resource-group-template-functions-numeric.md#add)
 * [copyIndex](resource-group-template-functions-numeric.md#copyindex)
 * [div](resource-group-template-functions-numeric.md#div)
 * [float](resource-group-template-functions-numeric.md#float)
 * [int](resource-group-template-functions-numeric.md#int)
-* [min](resource-group-template-functions-numeric.md#min)
+* [Perc](resource-group-template-functions-numeric.md#min)
 * [max](resource-group-template-functions-numeric.md#max)
 * [MOD](resource-group-template-functions-numeric.md#mod)
 * [MUL számú](resource-group-template-functions-numeric.md#mul)
@@ -145,7 +145,9 @@ Erőforrás-kezelő a következő funkciókat nyújt egész számok használata:
 ## <a name="resource-functions"></a>Erőforrás-funkciók
 Erőforrás-kezelő a következő funkciókat biztosít erőforrás értékek beolvasása:
 
-* [listKeys és a {Value} lista](resource-group-template-functions-resource.md#listkeys)
+* [listKeys](resource-group-template-functions-resource.md#listkeys)
+* [listSecrets](resource-group-template-functions-resource.md#list)
+* [lista *](resource-group-template-functions-resource.md#list)
 * [szolgáltatók](resource-group-template-functions-resource.md#providers)
 * [reference](resource-group-template-functions-resource.md#reference)
 * [resourceGroup](resource-group-template-functions-resource.md#resourcegroup)
@@ -198,7 +200,7 @@ Erőforrás-kezelő a következő funkciókat nyújt karakterláncok használata
 * [első](resource-group-template-functions-string.md#first)
 * [guid](resource-group-template-functions-string.md#guid)
 * [indexOf](resource-group-template-functions-string.md#indexof)
-* [last](resource-group-template-functions-string.md#last)
+* [utolsó](resource-group-template-functions-string.md#last)
 * [lastIndexOf](resource-group-template-functions-string.md#lastindexof)
 * [Hossza](resource-group-template-functions-string.md#length)
 * [padLeft](resource-group-template-functions-string.md#padleft)

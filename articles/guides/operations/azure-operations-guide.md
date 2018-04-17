@@ -15,11 +15,11 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/12/2017
 ms.author: nepeters
-ms.openlocfilehash: 0be60fff3d49ff39691f19cb1013e023f9f984e6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 231e8110dc6e1844108502e5c2277edc3ba77132
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>Bevezetés a felhőalapú informatika és a Microsoft Azure
 
@@ -118,7 +118,7 @@ Szolgáltatások létrehozása és alkalmazások működő:
 
 -   Azure Schedulerrel
 
--   Azure Media Services
+-   Az Azure Media Services
 
 ### <a name="network-services"></a>A hálózati szolgáltatások
 
@@ -128,7 +128,7 @@ Azure-ban, és az Azure és a helyszíni adatközpont között hálózati szolg�
 
 -   Azure ExpressRoute
 
--   Azure-provided DNS
+-   Azure által biztosított DNS-
 
 -   Azure Traffic Manager
 
@@ -323,7 +323,7 @@ Hozzáférés biztosításához meg rendelhet hozzá egy szerepkört a felhaszn�
 
 -   **Tárolási fiók közreműködői**: Ezzel a szerepkörrel rendelkező felhasználók kezelhetik a storage-fiókok, de nem tudja kezelni a storage-fiókok hozzáférést.
 
-További információkért lásd: [az Azure-előfizetés erőforrásokhoz való hozzáférés kezelése a szerepkör-hozzárendelések segítségével](../../active-directory/role-based-access-control-configure.md).
+További információkért lásd: [az Azure-előfizetés erőforrásokhoz való hozzáférés kezelése a szerepkör-hozzárendelések segítségével](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="azure-virtual-machines"></a>Azure-alapú virtuális gépek
 

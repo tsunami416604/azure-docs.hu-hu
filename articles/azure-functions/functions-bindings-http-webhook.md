@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tdykstra
-ms.openlocfilehash: 94a039ab1973cbd4112ddd0cd7548baa69924d26
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3ee70c3784205a70f455bd7ef147467e4547d167
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>Az Azure Functions HTTP és a webhook kötések
 
@@ -138,7 +138,6 @@ public static string Run(CustomObject req, TraceWriter log)
 
 public class CustomObject {
      public String name {get; set;}
-}
 }
 ```
 
@@ -338,7 +337,7 @@ let Run(req: HttpRequestMessage, log: TraceWriter) =
     } |> Async.StartAsTask
 ```
 
-### <a name="webhook---javascript-example"></a>Webhook - JavaScript example
+### <a name="webhook---javascript-example"></a>Webhook - JavaScript – példa
 
 A következő példa bemutatja a kötés webhook eseményindító egy *function.json* fájlt és egy [JavaScript függvény](functions-reference-node.md) , amely a kötés használja. A függvény GitHub probléma megjegyzések naplózza.
 
@@ -389,11 +388,11 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-| **Típusa** | n/a| Szükséges – kell állítani `httpTrigger`. |
+| **type** | n/a| Szükséges – kell állítani `httpTrigger`. |
 | **direction** | n/a| Szükséges – kell állítani `in`. |
 | **name** | n/a| Kötelező – a kérelem vagy kérelemtörzset függvény a kódban használt változó neve. |
 | <a name="http-auth"></a>**authLevel** |  **AuthLevel** |Meghatározza, hogy mi kulcsok, ha van ilyen kell jelen lennie ahhoz, hogy a függvény meghívása a kérésre. A jogosultsági szintet a következő értékek egyike lehet: <ul><li><code>anonymous</code>&mdash;Nincs API-kulcsot meg kell adni.</li><li><code>function</code>&mdash;Funkcióspecifikus API-kulcs megadása kötelező. Ez az az alapértelmezett érték, ha nincs megadva.</li><li><code>admin</code>&mdash;A fő kulcsot meg kell adni.</li></ul> További információkért lásd: a szakasz [engedélyezési kulcsok](#authorization-keys). |
-| **Módszerek** |**Módszerek** | A tömb, amelyre a függvény válaszol a HTTP-metódus. Ha nincs megadva, a függvény válaszol-e a HTTP-metódus. Lásd: [testre szabhatja a http-végpont](#trigger---customize-the-http-endpoint). |
+| **Módszerek** |**Módszerek** | A tömb, amelyre a függvény válaszol a HTTP-metódus. Ha nincs megadva, a függvény válaszol-e a HTTP-metódus. Lásd: [testre szabhatja a http-végpont](#customize-the-http-endpoint). |
 | **Útvonal** | **Útvonal** | Meghatározza az útvonalsablonhoz szabályozása, amelyhez a kérés URL-címeket, a függvény válaszol. Az alapértelmezett érték, ha nincs megadva `<functionname>`. További információkért lásd: [testre szabhatja a http-végpont](#customize-the-http-endpoint). |
 | **webHookType** | **WebHookType** |Konfigurálja a HTTP-eseményindítóval járhasson el egy [webhook](https://en.wikipedia.org/wiki/Webhook) fogadójának a megadott szolgáltatón. Ne állítsa be a `methods` tulajdonságot, ha a tulajdonság értékét. A webhook típus a következő értékek egyike lehet:<ul><li><code>genericJson</code>&mdash;Egy általános célú webhook végpont logika egy adott szolgáltató nélkül. Ez a beállítás megtiltja kérelmek Ha csak a HTTP-n keresztül, POST, hogy az a `application/json` tartalomtípus.</li><li><code>github</code>&mdash;A függvény válaszol-e a [GitHub webhook](https://developer.github.com/webhooks/). Ne használja a _authLevel_ GitHub webhook tulajdonságot. További információkért lásd a GitHub webhook című cikkben.</li><li><code>slack</code>&mdash;A függvény válaszol-e a [Slack-webhookok](https://api.slack.com/outgoing-webhooks). Ne használja a _authLevel_ Slack webhookok tulajdonságot. További információkért lásd: a Slack webhookok című cikkben.</li></ul>|
 
@@ -568,7 +567,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Tulajdonság  |Leírás  |
 |---------|---------|
-| **Típusa** |meg kell `http`. |
+| **type** |meg kell `http`. |
 | **direction** | meg kell `out`. |
 |**name** | A változó nevét, a válasz függvény kódban használt. |
 

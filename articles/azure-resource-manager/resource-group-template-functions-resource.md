@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Resource Manager sablonfüggvényei - erőforrások |} Microsoft Docs"
-description: "Az Azure Resource Manager-sablonok segítségével erőforrásokra vonatkozó értékek lekérését funkcióit ismerteti."
+title: Az Azure Resource Manager sablonfüggvényei - erőforrások |} Microsoft Docs
+description: Az Azure Resource Manager-sablonok segítségével erőforrásokra vonatkozó értékek lekérését funkcióit ismerteti.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
@@ -14,17 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: f92afd27540e935ed901151d980377b9b34ea8f5
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: f2ff44fc6644f3a4294f7b2c752a7f3ab05f351d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Az Azure Resource Manager sablonokhoz erőforrás-funkciók
 
 Erőforrás-kezelő a következő funkciókat biztosít erőforrás értékek beolvasása:
 
-* [listKeys és a {Value} lista](#listkeys)
+* [listKeys](#listkeys)
+* [listSecrets](#list)
+* [lista *](#list)
 * [szolgáltatók](#providers)
 * [reference](#reference)
 * [resourceGroup](#resourcegroup)
@@ -36,12 +38,14 @@ Ahhoz, hogy az értékeket a paraméterek, változók vagy a jelenlegi üzemelő
 <a id="listkeys" />
 <a id="list" />
 
-## <a name="listkeys-and-listvalue"></a>listKeys és a {Value} lista
+## <a name="listkeys-listsecrets-and-list"></a>listKeys, listSecrets és listája
 `listKeys(resourceName or resourceIdentifier, apiVersion)`
+
+`listSecrets(resourceName or resourceIdentifier, apiVersion)`
 
 `list{Value}(resourceName or resourceIdentifier, apiVersion)`
 
-Minden erőforrástípus, amely támogatja a list művelet értékeket adja vissza. A leggyakoribb használata `listKeys`. 
+Minden erőforrástípus, amely támogatja a list művelet értékeket adja vissza. A leggyakoribb használatokban vannak `listKeys` és `listSecrets`. 
 
 ### <a name="parameters"></a>Paraméterek
 
@@ -441,7 +445,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 <a id="resourcegroup" />
 
-## <a name="resourcegroup"></a>resourceGroup
+## <a name="resourcegroup"></a>Erőforráscsoport
 `resourceGroup()`
 
 A jelenlegi erőforráscsoportban képviselő objektumot adja vissza. 

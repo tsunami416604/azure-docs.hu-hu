@@ -1,8 +1,8 @@
 ---
-title: "Azure REST API - Azure Hadoop-fürtök létrehozása |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozhat létre HDInsight-fürtök küldése az Azure Resource Manager-sablonok az Azure REST API-t."
+title: Azure REST API - Azure Hadoop-fürtök létrehozása |} Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre HDInsight-fürtök küldése az Azure Resource Manager-sablonok az Azure REST API-t.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: 98be5893-2c6f-4dfa-95ec-d4d8b5b7dcb5
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/31/2018
 ms.author: larryfr
-ms.openlocfilehash: 4fcdde200fa9d54c7eb5b0ffe151aff3fbd0ed85
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a71a73d8d54e6a24c9a491bd02c7270f56823003
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-hadoop-clusters-using-the-azure-rest-api"></a>Az Azure REST API használatával Hadoop-fürtök létrehozása
 
@@ -34,13 +32,13 @@ Az Azure REST API lehetővé teszi az Azure platformon, beleértve az új erőfo
 > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 > [!NOTE]
-> A lépéseket, ez a dokumentum használatát a [curl (https://curl.haxx.se/)](https://curl.haxx.se/) segédprogram kommunikálni az Azure REST API-t.
+> A lépéseket, ez a dokumentum használatát a [curl (https://curl.haxx.se/) ](https://curl.haxx.se/) segédprogram kommunikálni az Azure REST API-t.
 
 ## <a name="create-a-template"></a>Sablon létrehozása
 
 Az Azure Resource Manager-sablonok leíró JSON-dokumentumok egy **erőforráscsoport** és minden-erőforrásokat (például a HDInsight.) Ez a sablon-alapú módszer lehetővé teszi a hdinsight egy sablont a szükséges erőforrások meghatározása.
 
-A következő JSON-dokumentumhoz egy egyesülés következtében a sablon és a paraméterek fájlok [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password), amely egy Linux-alapú fürtöt hoz létre az SSH-felhasználói fiók biztonságos jelszó használatával.
+A következő JSON-dokumentumhoz egy egyesülés következtében a sablon és a paraméterek fájlok [ https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password), ami létrehoz egy Linux-alapú fürt biztonságos SSH-felhasználói fiókjának biztonságát jelszóval.
 
    ```json
    {

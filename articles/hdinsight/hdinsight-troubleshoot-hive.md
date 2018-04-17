@@ -1,25 +1,23 @@
 ---
-title: "Azure HDInsight Hive hibaelhárításáról |} Microsoft Docs"
-description: "Az Apache Hive és a Azure HDInsight kapcsolatos gyakori kérdésekre adott válaszok."
-keywords: "Az Azure HDInsight Hive, gyakori kérdések hibaelhárítási útmutatója, gyakori kérdések"
+title: Azure HDInsight Hive hibaelhárításáról |} Microsoft Docs
+description: Az Apache Hive és a Azure HDInsight kapcsolatos gyakori kérdésekre adott válaszok.
+keywords: Az Azure HDInsight Hive, gyakori kérdések hibaelhárítási útmutatója, gyakori kérdések
 services: Azure HDInsight
 documentationcenter: na
 author: dharmeshkakadia
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 15B8D0F3-F2D3-4746-BDCB-C72944AA9252
-ms.service: multiple
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
 ms.date: 11/2/2017
 ms.author: dharmeshkakadia
-ms.openlocfilehash: 398cc7cd0fa815f12ba5b503a1328688e1159eee
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: d397552285466dc038fe580a084e2d1d0d69bfe2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-hive-by-using-azure-hdinsight"></a>Hive hibaelhárítása az Azure HDInsight használatával
 
@@ -29,7 +27,7 @@ A felső kérdések és azok megoldásait ismerje meg az Apache Ambari az Apache
 ## <a name="how-do-i-export-a-hive-metastore-and-import-it-on-another-cluster"></a>Hogyan egy Hive metaadattárhoz exportálhatja és importálhatja azokat a fürt egy másik?
 
 
-### <a name="resolution-steps"></a>Megoldási lépések
+### <a name="resolution-steps"></a>A megoldás lépései
 
 1. Csatlakozás egy Secure Shell (SSH) ügyfél segítségével a HDInsight-fürthöz. További információkért lásd: [További olvasnivaló](#additional-reading-end).
 
@@ -56,7 +54,7 @@ A kódot a megoldási lépések feltételezi, hogy az új fürtön adatelérési
 
 ## <a name="how-do-i-locate-hive-logs-on-a-cluster"></a>Hogyan keresik meg Hive naplók fürt?
 
-### <a name="resolution-steps"></a>Megoldási lépések
+### <a name="resolution-steps"></a>A megoldás lépései
 
 1. Kapcsolódás a HDInsight-fürthöz az SSH használatával. További információkért lásd: **További olvasnivaló**.
 
@@ -85,7 +83,7 @@ A kódot a megoldási lépések feltételezi, hogy az új fürtön adatelérési
 
 ## <a name="how-do-i-launch-the-hive-shell-with-specific-configurations-on-a-cluster"></a>Hogyan indítsa el a fürt adott konfigurációjú a Hive rendszerhéjat?
 
-### <a name="resolution-steps"></a>Megoldási lépések
+### <a name="resolution-steps"></a>A megoldás lépései
 
 1. Adjon meg egy konfigurációs kulcs-érték párt, a Hive rendszerhéjat indításakor. További információkért lásd: [További olvasnivaló](#additional-reading-end).
 
@@ -113,7 +111,7 @@ A kódot a megoldási lépések feltételezi, hogy az új fürtön adatelérési
 ## <a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>Hogyan elemezheti a fürt kritikus útvonalra Tez DAG adatokat?
 
 
-### <a name="resolution-steps"></a>Megoldási lépések
+### <a name="resolution-steps"></a>A megoldás lépései
  
 1. Elemezze az Apache Tez irányított aciklikus diagramhoz (DAG) egy fürt kritikus grafikonon, csatlakozzon a HDInsight-fürthöz SSH használatával. További információkért lásd: [További olvasnivaló](#additional-reading-end).
 
@@ -153,7 +151,7 @@ A kódot a megoldási lépések feltételezi, hogy az új fürtön adatelérési
 ## <a name="how-do-i-download-tez-dag-data-from-a-cluster"></a>Hogyan le Tez DAG adatok fürtből?
 
 
-#### <a name="resolution-steps"></a>Megoldási lépések
+#### <a name="resolution-steps"></a>A megoldás lépései
 
 A Tez DAG adatok gyűjtéséhez két módja van:
 

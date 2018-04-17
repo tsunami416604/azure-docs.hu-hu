@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 04/12/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 890237ff40f9c9893c57f49c96e6ddc99849c2bd
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b09799fe102522e1ad91f4983cf4f5fa8122b2c1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-api-version-profiles-for-powershell-in-azure-stack"></a>API-verzió profilok verem Azure PowerShell használata
 
@@ -34,15 +34,10 @@ A **AzureRM.Bootstrapper** modult, amelyben a PowerShell-galériában keresztül
 ```PowerShell
 Install-Module -Name AzureRm.BootStrapper
 ```
-A AzureRM.Bootstrapper modul jelenleg előzetes verzióban érhető; Részletek és a funkciók van változhatnak. Töltse le és telepítse a legújabb verziót a modul a PowerShell-galériából, futtassa a következő parancsmagot:
-
-```PowerShell
-Update-Module -Name "AzureRm.BootStrapper"
-```
 
 ## <a name="install-a-profile"></a>Profil telepítése
 
-Használja a **Install-AzureRmProfile** parancsmagot a **2017-03-09-profil** API-verzió profilt Azure verem szükséges AzureRM-modulok telepítése. Vegye figyelembe, hogy az Azure-verem operátor modulok nincsenek telepítve az API-verzió profillal, és akkor kell telepíteni, külön-külön meghatározott a 3. lépését a [verem Azure PowerShell telepítése](azure-stack-powershell-install.md) cikk.
+Használja a **Install-AzureRmProfile** parancsmagot a **2017-03-09-profil** API-verzió profilt Azure verem szükséges AzureRM-modulok telepítése. Az Azure-verem operátor modulok nincsenek telepítve az API-verzió profillal. Akkor kell telepíteni, külön-külön meghatározott a 3. lépését a [verem Azure PowerShell telepítése](azure-stack-powershell-install.md) cikk.
 
 ```PowerShell 
 Install-AzureRMProfile -Profile 2017-03-09-profile

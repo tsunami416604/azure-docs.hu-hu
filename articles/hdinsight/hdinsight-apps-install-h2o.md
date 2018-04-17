@@ -1,26 +1,24 @@
 ---
-title: "Telepítés közzétett alkalmazás - H2O készült vízjel - Azure HDInsight |} Microsoft Docs"
-description: "Telepítheti és használhatja a H2O készült vízjel külső Hadoop alkalmazás."
+title: Telepítés közzétett alkalmazás - H2O készült vízjel - Azure HDInsight |} Microsoft Docs
+description: Telepítheti és használhatja a H2O készült vízjel külső Hadoop alkalmazás.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 8734daa5303aa76e9f8a074b5f709727cabb58b2
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 9a03588b3327c3ab231f5c2cae17488f4d63bde7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-published-application---h2o-sparkling-water"></a>Telepítse a közzétett alkalmazás - H2O készült vízjel
 
@@ -73,7 +71,7 @@ Ez, és más elérhető ISV alkalmazások telepítésével kapcsolatos részlete
 
     ![Indítsa el a fürt](./media/hdinsight-apps-install-h2o/start-cluster.png)
 
-5. Miután a H2O fürt megfelelően működik, és, nyissa meg H2O Flow címen  **`https://<ClusterName>-h2o.apps.azurehdinsight.net:443`** .
+5. Miután a H2O fürt megfelelően működik, és, nyissa meg H2O Flow címen **`https://<ClusterName>-h2o.apps.azurehdinsight.net:443`**.
 
     > [!NOTE]
     > Ha nem tudja megnyitni a H2O Flow, próbálja meg törölni a gyorsítótárban. Ha még mindig nem lehet elérni, valószínűleg nincs elég erőforrás a fürtön. Próbálja növelni a feldolgozó csomópontok száma a **méretezési fürt** lehetőséget a fürt ablaktáblán.
@@ -82,9 +80,9 @@ Ez, és más elérhető ISV alkalmazások telepítésével kapcsolatos részlete
 
 6. Válassza ki a **Million_Songs.flow** példa a jobb oldali menüből. Figyelmeztetés megjelenésekor kattintson **terhelés Notebook**. Ez a bemutató futtatásra tervezték, használja az adatok Valóságosak, néhány perc múlva. A cél az, hogy az adatokból megjósolható, hogy a dal előtt vagy után 2004 kiadott bináris besorolásával.
 
-    ![Select Million_Songs.flow](./media/hdinsight-apps-install-h2o/million-songs.png)
+    ![Válassza ki a Million_Songs.flow](./media/hdinsight-apps-install-h2o/million-songs.png)
 
-7. Az elérési utat tartalmazó található **milsongs-cls-train.csv.gz**, és cserélje le a teljes útvonalat **https://h2o-public-test-data.s3.amazonaws.com/bigdata/laptop/milsongs/milsongs-cls-train.csv.gz** .
+7. Az elérési utat tartalmazó található **milsongs-cls-train.csv.gz**, és cserélje le a teljes útvonalat **https://h2o-public-test-data.s3.amazonaws.com/bigdata/laptop/milsongs/milsongs-cls-train.csv.gz**.
 
 8. Az elérési utat tartalmazó található **milsongs-cls-test.csv.gz** , és cserélje le **https://h2o-public-test-data.s3.amazonaws.com/bigdata/laptop/milsongs/milsongs-cls-test.csv.gz**.
 

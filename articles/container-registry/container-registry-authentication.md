@@ -1,6 +1,6 @@
 ---
-title: "Egy Azure-tárolót beállításjegyzék hitelesítéshez"
-description: "Egy Azure-tárolót beállításjegyzék, például az Azure Active Directory hitelesítési beállítások a rendszerbiztonsági tagok közvetlen és a beállításjegyzék bejelentkezési szolgáltatás."
+title: Egy Azure-tárolót beállításjegyzék hitelesítéshez
+description: Egy Azure-tárolót beállításjegyzék, például az Azure Active Directory hitelesítési beállítások a rendszerbiztonsági tagok közvetlen és a beállításjegyzék bejelentkezési szolgáltatás.
 services: container-registry
 author: stevelas
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 70758f938718aef160670bc023aff5fc0c9fb92a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 349d4f8cba2967edcedb202979695d271283fa8b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>A hitelesítést egy titkos Docker-tároló beállításjegyzék
 
@@ -31,11 +31,11 @@ Az használatakor a beállításjegyzék közvetlenül, például a lemezképeke
 az acr login --name <acrName>
 ```
 
-Ha jelentkezzen be az `az acr login`, a CLI-t használja a jogkivonatot jön létre, amikor hajtja végre `az login` akadálytalanul hitelesíteni a beállításjegyzék-munkamenet. Ha így már bejelentkezett, a hitelesítő adatok gyorsítótárazott, és az azt követő `docker` parancsok nem igényelnek, a felhasználónév vagy jelszó. Ha a jogkivonat lejár, frissítheti azt használatával a `az acr login` újra a parancsot újból hitelesítésre. Használatával `az acr login` Azure identitások nyújt [szerepkörön alapuló hozzáférés](../active-directory/role-based-access-control-configure.md).
+Ha jelentkezzen be az `az acr login`, a CLI-t használja a jogkivonatot jön létre, amikor hajtja végre `az login` akadálytalanul hitelesíteni a beállításjegyzék-munkamenet. Ha így már bejelentkezett, a hitelesítő adatok gyorsítótárazott, és az azt követő `docker` parancsok nem igényelnek, a felhasználónév vagy jelszó. Ha a jogkivonat lejár, frissítheti azt használatával a `az acr login` újra a parancsot újból hitelesítésre. Használatával `az acr login` Azure identitások nyújt [szerepkörön alapuló hozzáférés](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="service-principal"></a>Szolgáltatásnév
 
-Hozzárendelhet egy [szolgáltatás egyszerű](../active-directory/develop/active-directory-application-objects.md) a beállításjegyzéket, és az alkalmazás vagy szolgáltatás használható a távfelügyeleti hitelesítéshez. Engedélyezi szolgáltatás rendszerbiztonsági tagok [szerepköralapú hozzáférés-](../active-directory/role-based-access-control-configure.md) a beállításjegyzéket, és több szolgáltatásnevekről rendelhet a beállításjegyzékben. Több szolgáltatásnevekről lehetővé teszik a különböző alkalmazások különböző hozzáférés meghatározása.
+Hozzárendelhet egy [szolgáltatás egyszerű](../active-directory/develop/active-directory-application-objects.md) a beállításjegyzéket, és az alkalmazás vagy szolgáltatás használható a távfelügyeleti hitelesítéshez. Engedélyezi szolgáltatás rendszerbiztonsági tagok [szerepköralapú hozzáférés-](../role-based-access-control/role-assignments-portal.md) a beállításjegyzéket, és több szolgáltatásnevekről rendelhet a beállításjegyzékben. Több szolgáltatásnevekről lehetővé teszik a különböző alkalmazások különböző hozzáférés meghatározása.
 
 A következő szerepkörök választhatók:
 

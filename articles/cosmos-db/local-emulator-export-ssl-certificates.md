@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Cosmos DB emulátor tanúsítványok exportálása |} Microsoft Docs"
-description: "A nyelv és a Windows tanúsítványtároló nem használó futtatókörnyezetek fejlesztése során szüksége lesz exportálni, és az SSL-tanúsítványok kezelését. A post lépésenkénti utasításokat biztosít."
+title: Az Azure Cosmos DB emulátor tanúsítványok exportálása |} Microsoft Docs
+description: A nyelv és a Windows tanúsítványtároló nem használó futtatókörnyezetek fejlesztése során szüksége lesz exportálni, és az SSL-tanúsítványok kezelését. A post lépésenkénti utasításokat biztosít.
 services: cosmos-db
-documentationcenter: 
-keywords: "Az Azure Cosmos DB emulátor"
+documentationcenter: ''
+keywords: Az Azure Cosmos DB emulátor
 author: voellm
-manager: jhubbard
-editor: 
+manager: kfile
+editor: ''
 ms.assetid: ef43deda-c2e9-4193-99e2-7f6a88a0319f
 ms.service: cosmos-db
 ms.devlang: multiple
@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 06/06/2017
 ms.author: tvoellm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0d3811a9d59e388a1ceaacdefebc17afeda5b07d
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 87d453cd544b3e913209f50e4e08b77282efab39
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>A Node.js, Java és Python való használatra Azure Cosmos DB emulátor tanúsítványok exportálása
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 12/14/2017
 
 Az Azure Cosmos DB Emulator emulálja a fejlesztéshez, beleértve az SSL-kapcsolatok használatát a Azure Cosmos DB szolgáltatás, helyi környezetet biztosít. A post bemutatja, hogyan kell exportálni a nyelvet és a futtatókörnyezetek, amely integrálható a Windows tanúsítványtárolóban, például a Java, amely használja a saját SSL-tanúsítványok [tanúsítványtároló](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html) és Python használó[burkolók szoftvercsatorna](https://docs.python.org/2/library/ssl.html) és a Node.js használó [tlsSocket](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback). További tudnivalók az emulátor [fejlesztéshez és teszteléshez használja az Azure Cosmos DB Emulator](./local-emulator.md).
 
-Ez az oktatóanyag ismerteti a következő feladatokat:
+Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
 > * Tanúsítványok elforgatása
@@ -93,9 +93,9 @@ Alapértelmezés szerint a [Python SDK(version 2.0.0 or higher)](sql-api-sdk-pyt
 
 Alapértelmezés szerint a [Node.js SDK(version 1.10.1 or higher)](sql-api-sdk-node.md) az SQL API-t nem próbálja meg, és nem használja az SSL-tanúsítvány, ha a helyi emulátor csatlakozik. Ha azonban az SSL-érvényesítési használni kívánt követésével szereplő példák a [Node.js dokumentáció](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban ezt a következők:
+Ebben az oktatóanyagban a következőket hajtotta végre:
 
 > [!div class="checklist"]
 > * Elforgatott tanúsítványok

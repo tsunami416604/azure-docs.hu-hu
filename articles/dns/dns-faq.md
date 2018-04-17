@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2017
 ms.author: kumud
-ms.openlocfilehash: f07f914ccf8ea6df216e3f571e38d7628b2d7fb6
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e0eb39ced1d88d2e0b6128493304f112f9c685fa
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-dns-faq"></a>Az Azure DNS – gyakori kérdések
 
@@ -46,6 +46,7 @@ További információkért lásd: a [Azure DNS szolgáltatásiszint-szerződés 
 ### <a name="what-is-a-dns-zone-is-it-the-same-as-a-dns-domain"></a>Újdonságok a DNS-zónát? Ugyanaz, mint a DNS-tartomány? 
 
 A tartomány egy egyedi nevet a tartománynévrendszerben, például "contoso.com".
+
 
 Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A "contoso.com" tartomány például számos DNS-rekordokat, például "mail.contoso.com" (levelezési kiszolgálóhoz) és "www.contoso.com" (webhelyhez) is tartalmazhat. Ezeket a rekordokat a DNS "contoso.com" zóna a támadó által.
 
@@ -90,6 +91,14 @@ Zónaletöltés lehetővé teszi az Azure DNS várakozó fájlok számát a nyom
 Nem. URL-cím átirányítási szolgáltatások nincsenek ténylegesen egy DNS-szolgáltatás, mert a DNS-szintjét, hanem a HTTP szinten működnek. Egyes DNS-szolgáltatók szeretné a URL-címet átirányítja a szolgáltatás a teljes ajánlat részeként. Ez nem jelenleg támogatott Azure DNS által.
 
 Átirányítási URL-cím funkció az Azure DNS várakozó kulcsban követhető nyomon. Használhatja a visszajelzési webhelyet, hogy [regisztrálja ezt a szolgáltatást a támogatása](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape).
+
+### <a name="does-azure-dns-support-extended-ascii-encoding-8-bit-set-for-txt-recordset-"></a>Támogatja az Azure DNS TXT rekordhalmazhoz (8 bites) kódolást kiterjesztett ASCII?
+
+Igen. Az Azure DNS támogat a kiterjesztett ASCII kódolási a TXT-rekordhalmazok, ha az Azure REST API-k, a SDK-k, a PowerShell és a parancssori felület (2017-10-01-verziók vagy nem támogatja a bővített ASCII karakterkészlet SDK 2.1 tegye) legújabb verzióját használja. Például, ha a felhasználó megadja egy karakterlánc értékeként egy TXT-rekord, amelynek a kiterjesztett ASCII karaktert \128 (pl.: "abcd\128efgh"), Azure DNS belső ábrázolás fogja használni a bájtérték (amely 128) karaktert. A DNS-feloldás időpontjában, valamint a bájtérték visszatér a válaszban. Ne feledje, hogy "abc" és "\097\098\099" felcserélhető feloldási illetően. 
+
+Hajtsa végre az azt [RFC 1035 szabványnak megfelelően](https://www.ietf.org/rfc/rfc1035.txt) fájl fő formátum escape szabályok TXT-rekord zóna. Például "\" most ténylegesen lehet kilépni minden, egy a RFC. "A\B" TXT rekord értékeként adja meg, ha ez fog megjelenni, és oldja meg, csak az "AB". Ha a TXT-rekord "A\B" megoldás, hogy valóban szeretné kell megadnia a "\" újra, azaz Adja meg az "A\\B". 
+
+Vegye figyelembe, hogy ez a támogatás jelenleg nem érhető el az Azure-portálon létrehozott TXT rekord. 
 
 ## <a name="using-azure-dns"></a>Az Azure DNS-sel
 
@@ -145,7 +154,7 @@ Nemzetközi tartományneveket (IDN) működnek-e kódolását minden DNS neve "[
 
 Konfigurálhatja nemzetközi tartományneveket (IDN) az Azure DNS-alakítja át, a zóna nevét vagy rekordhalmaz neveként a punycode. Az Azure DNS jelenleg nem támogatja a punycode és a beépített átalakítását.
 
-## <a name="private-dns"></a>Private DNS
+## <a name="private-dns"></a>Saját DNS
 
 [!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
 
@@ -169,7 +178,7 @@ Nem. Saját zónák virtuális hálózatok összehangolva használhatók, és tu
 Igen. Az ügyfelek felbontása legfeljebb 10 virtuális hálózatok társíthatja egy titkos zóna.
 
 ### <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-added-as-a-resolution-virtual-network-to-a-private-zone"></a>Egy virtuális hálózatot, amelyhez tartozik egy másik előfizetésben található felveheti feloldási virtuális hálózatként saját zónához? 
-Igen, mindaddig, amíg a felhasználó rendelkezik-e írási művelet engedélye mind a virtuális hálózatok, valamint a saját DNS-zónát. Vegye figyelembe, hogy az írási engedély több RBAC-szerepkörök lehet osztani. Például a klasszikus hálózati közreműködői RBAC szerepkörhöz írási jogot a virtuális hálózatok. Az RBAC-szerepkörök további információkért lásd: [szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-what-is.md)
+Igen, mindaddig, amíg a felhasználó rendelkezik-e írási művelet engedélye mind a virtuális hálózatok, valamint a saját DNS-zónát. Vegye figyelembe, hogy az írási engedély több RBAC-szerepkörök lehet osztani. Például a klasszikus hálózati közreműködői RBAC szerepkörhöz írási jogot a virtuális hálózatok. Az RBAC-szerepkörök további információkért lásd: [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md)
 
 ### <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-the-virtual-machines-are-deleted-by-the-customer"></a>A privát zóna automatikusan regisztrált virtuális gép DNS-rekordok automatikusan törli a virtuális gépek esetén törli az ügyfél által?
 Igen. Ha töröl egy virtuális gépet a regisztrációs virtuális hálózaton belül, a Microsoft automatikusan törli a DNS-rekordokat, mivel ez egy regisztrációs virtuális hálózati miatt a zónába regisztrált. 

@@ -1,8 +1,8 @@
 ---
-title: "Apache Kafka használata a HDInsight - Azure alatt futó Storm |} Microsoft Docs"
-description: "Apache Kafka HDInsight alatt futó Apache Storm együtt települ. Megtudhatja, hogyan Kafka írni, és majd olvasni, a Storm megadott KafkaBolt és KafkaSpout összetevővel. Is megtudhatja, hogyan határozza meg, és küldje el a Storm-topológiák fluxus keretében segítségével."
+title: Apache Kafka használata a HDInsight - Azure alatt futó Storm |} Microsoft Docs
+description: Apache Kafka HDInsight alatt futó Apache Storm együtt települ. Megtudhatja, hogyan Kafka írni, és majd olvasni, a Storm megadott KafkaBolt és KafkaSpout összetevővel. Is megtudhatja, hogyan határozza meg, és küldje el a Storm-topológiák fluxus keretében segítségével.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,16 +10,14 @@ ms.assetid: e4941329-1580-4cd8-b82e-a2258802c1a7
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 03/08/2018
 ms.author: larryfr
-ms.openlocfilehash: 0c74e46f37319a9d1eb0ea1587087e24312de451
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: be62705ce0217235b75ec5ad220ad6f32dfd3c10
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-apache-kafka-with-storm-on-hdinsight"></a>Apache Kafka használata a HDInsight alatt futó Storm
 
@@ -32,7 +30,7 @@ ms.lasthandoff: 03/09/2018
 
 ## <a name="get-the-code"></a>A kód letöltése
 
-Ebben a dokumentumban bemutatott példában kódja megtalálható [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka).
+Ebben a dokumentumban bemutatott példában kódja megtalálható [ https://github.com/Azure-Samples/hdinsight-storm-java-kafka ](https://github.com/Azure-Samples/hdinsight-storm-java-kafka).
 
 Ez a projekt fordítása, a következő konfigurációs a fejlesztési környezet szüksége:
 
@@ -119,7 +117,7 @@ A projekt két topológiát tartalmaz:
 * **KafkaReader**: által meghatározott a **reader.yaml** fájl, ez a topológia Kafka az Apache Storm megadott KafkaSpout segítségével olvassa be az adatokat, majd az adatokat naplózza az stdout.
 
     Ez a topológia a Storm HdfsBolt adatokat írni az alapértelmezett tároló a Storm-fürt használja.
-### <a name="flux"></a>Flux
+### <a name="flux"></a>Fluxus
 
 A topológia meghatározása [fluxus](https://storm.apache.org/releases/1.1.2/flux.html). Fluxus bemutatott Storm 0.10.x, és lehetővé teszi a topológia konfigurációjával kód külön. A fluxus keretrendszert használó topológia esetén a topológia egy YAM fájlban definiálva van. A YAM fájl a topológia része lehet. A topológia elküldésekor használt önálló fájl is lehet. Fluxus futásidőben, ebben a példában használt változók behelyettesítését is támogatja.
 
@@ -131,11 +129,11 @@ Az alábbi topológiák futási időben vannak megadva a következő paramétere
 
 * `${kafka.zookeeper.hosts}`: A gazdagépeken futó Zookeeper a Kafka fürtben.
 
-Fluxus topológiák további információkért lásd: [https://storm.apache.org/releases/1.1.2/flux.html](https://storm.apache.org/releases/1.1.2/flux.html).
+Fluxus topológiák további információkért lásd: [ https://storm.apache.org/releases/1.1.2/flux.html ](https://storm.apache.org/releases/1.1.2/flux.html).
 
 ## <a name="download-and-compile-the-project"></a>Töltse le és a projekt lefordítása
 
-1. A fejlesztési környezetben, töltse le a projektet a [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka), nyisson meg egy parancssori és abba a mappába, hogy a projekt letöltött.
+1. A fejlesztési környezetben, töltse le a projektet a [ https://github.com/Azure-Samples/hdinsight-storm-java-kafka ](https://github.com/Azure-Samples/hdinsight-storm-java-kafka), nyisson meg egy parancssori és abba a mappába, hogy a projekt letöltött.
 
 2. Az a **hdinsight-storm-java-kafka** directory, a projekt lefordítása és központi telepítési csomagot hozhat létre a következő paranccsal:
 

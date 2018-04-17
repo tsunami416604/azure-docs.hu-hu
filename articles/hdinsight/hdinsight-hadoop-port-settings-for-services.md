@@ -1,8 +1,8 @@
 ---
-title: "A HDInsight - Azure Hadoop-szolgáltatás által használt portok |} Microsoft Docs"
-description: "HDInsight Hadoop szolgáltatás által használt portok listájáról."
+title: A HDInsight - Azure Hadoop-szolgáltatás által használt portok |} Microsoft Docs
+description: HDInsight Hadoop szolgáltatás által használt portok listájáról.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,16 +10,14 @@ ms.assetid: dd14aed9-ec25-4bb3-a20c-e29562735a7d
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: larryfr
-ms.openlocfilehash: 70bb69c78a23c9ffe012c0b775c98355da7cbce6
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: b6510024d1644f1e0b357126e2b971c66eb95dbc
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="ports-used-by-hadoop-services-on-hdinsight"></a>A HDInsight Hadoop-szolgáltatás által használt portok
 
@@ -82,11 +80,11 @@ Minden szolgáltatás nyilvánosan elérhetővé az interneten hitelesíteni kel
 | Szolgáltatás | Csomópontok | Port | URL-cím | Protokoll | 
 | --- | --- | --- | --- | --- |
 | Ambari webes felhasználói felület | HEAD csomópontok | 8080 | / | HTTP |
-| Ambari REST API-n | HEAD csomópontok | 8080 | /api/v1 | HTTP |
+| Ambari REST API-n | HEAD csomópontok | 8080 | / api/v1 | HTTP |
 
 Példák:
 
-* Ambari REST API:`curl -u admin "http://10.0.0.11:8080/api/v1/clusters"`
+* Ambari REST API: `curl -u admin "http://10.0.0.11:8080/api/v1/clusters"`
 
 ### <a name="hdfs-ports"></a>HDFS portok
 
@@ -124,7 +122,7 @@ Példák:
 
 | Szolgáltatás | Csomópontok | Port | Protokoll | Leírás |
 | --- | --- | --- | --- | --- |
-| WebHCat server |HEAD csomópontok |30111 |HTTP |Webes API-k fölött HCatalog és egyéb Hadoop-szolgáltatás |
+| WebHCat-kiszolgáló |HEAD csomópontok |30111 |HTTP |Webes API-k fölött HCatalog és egyéb Hadoop-szolgáltatás |
 
 ### <a name="mapreduce-ports"></a>MapReduce portok
 
@@ -138,8 +136,8 @@ Példák:
 
 | Szolgáltatás | Csomópontok | Port | Protokoll | Leírás |
 | --- | --- | --- | --- | --- |
-| Oozie server |HEAD csomópontok |11000 |HTTP |Oozie szolgáltatás URL-címe |
-| Oozie server |HEAD csomópontok |11001 |HTTP |A Oozie rendszergazdai port |
+| Oozie kiszolgáló |HEAD csomópontok |11000 |HTTP |Oozie szolgáltatás URL-címe |
+| Oozie kiszolgáló |HEAD csomópontok |11001 |HTTP |A Oozie rendszergazdai port |
 
 ### <a name="ambari-metrics"></a>Ambari metrikák
 
@@ -154,7 +152,7 @@ Példák:
 | --- | --- | --- | --- | --- |
 | HMaster |HEAD csomópontok |16000 |&nbsp; |&nbsp; |
 | Webes felhasználói felületén HMaster adatai |HEAD csomópontok |16010 |HTTP |A HBase fő webes felhasználói felület port |
-| Region server |Az összes munkavégző csomópontokhoz |16020 |&nbsp; |&nbsp; |
+| A régióban kiszolgáló |Az összes munkavégző csomópontokhoz |16020 |&nbsp; |&nbsp; |
 | &nbsp; |&nbsp; |2181 |&nbsp; |A port, amelyet az ügyfelek csatlakozhatnak ZooKeeper |
 
 ### <a name="kafka-ports"></a>Kafka portok
@@ -169,7 +167,7 @@ Példák:
 | Szolgáltatás | Csomópontok | Port | Protokoll | URL-cím | Leírás |
 | --- | --- | --- | --- | --- | --- |
 | A Spark Thrift-kiszolgálók |HEAD csomópontok |10002 |Thrift | &nbsp; | Szolgáltatás Spark SQL (Thrift/JDBC) való kapcsolódáshoz |
-| Livy server | HEAD csomópontok | 8998 | HTTP | &nbsp; | Szolgáltatás utasítások, feladatok és alkalmazások |
+| Livy kiszolgáló | HEAD csomópontok | 8998 | HTTP | &nbsp; | Szolgáltatás utasítások, feladatok és alkalmazások |
 | Jupyter notebook | HEAD csomópontok | 8001 | HTTP | &nbsp; | Jupyter notebook webhely |
 
 Példák:

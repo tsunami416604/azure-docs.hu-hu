@@ -13,132 +13,142 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
 ms.author: mbullwin
-ms.openlocfilehash: 42c54509cedf48e9ebabb5b50865ed56e54bee05
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 694818709bd1b756198c87692df23b0b35972bdd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>Az Application Insightsban tarifa- és adatok kötet kezelése
 
 Az árképzés [Azure Application Insights] [ start] adatmennyiség alkalmazásonként alapul. Minden egyes Application Insights-erőforrás külön szolgáltatás fel van töltve, és hozzájárul az Azure-előfizetéshez tartozó számlázási.
 
-Nincsenek két árképzési tervek. Az alapértelmezett terv Basic, amely tartalmazza az összes funkciót a vállalati terv elsősorban az adatok okozhatnak a köteten nincs hozzáadása költség és váltók neve. Ha az Operations Management Suite használ, úgy kell dönthet, a vállalati terv, amely egy csomópontonként díjat számítanak naponta adatok támogatás együtt, és majd díjat számítanak a belefoglalt támogatás fent okozhatnak adatok.
+Az Application Insights van két árképzési tervek: Basic és Enterprise. Az alapvető tarifacsomagot az alapértelmezett terv. Ez magában foglalja az összes vállalati terv funkciót, minden további költség nélkül. Az alapszintű csomag váltók elsősorban okozhatnak az adatokat a köteten. 
 
-Ha árképzés működésével kapcsolatos az Application Insights kérdése van, nyugodtan fel a kérdést a [fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=ApplicationInsights).
+A vállalati tervben szereplő csomópontonként járnak, és minden csomópont kap egy napi adatok támogatás. A vállalat díjszabási csomaggal van szó, a fent a belefoglalt támogatás okozhatnak adatokat. Az Operations Management Suite használja, ha a vállalati terv kell kiválasztani. 
 
-## <a name="the-price-plans"></a>Az árlista csomagok
+Ha árképzés működésével kapcsolatos az Application Insights kérdése van, vannak, beküldheti fel kérdést az [fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=ApplicationInsights).
 
-Tekintse meg a [árképzést ismertető oldalra Application Insights] [ pricing] aktuális árak a pénznem és régióban.
+## <a name="pricing-plans"></a>Díjszabások
+
+Lásd: az a régió és aktuális árak [Application Insights árképzési][pricing].
 
 ### <a name="basic-plan"></a>Alapszintű
 
-Az alapszintű csomag az alapértelmezett beállítás, ha egy új Application Insights-erőforrás jön létre, és az Operations Management Suite előfizetői kivételével valamennyi ügyfél számára optimális.
+Az alapszintű csomag az alapérték árképzési terv, amikor létrejön egy új Application Insights-erőforrást. Az alapszintű csomag el legoptimálisabban az összes ügyfél számára, kivéve azokat, aki rendelkezik az Operations Management Suite-előfizetéssel.
 
-* Az alapszintű csomag, az adatok kötetenként van szó: a telemetriai adatok az Application Insights által fogadott bájtok száma. Az Application Insights által kapott az alkalmazás tömörítetlen JSON adatcsomag méretének adatmennyiség mérése történik.
-A [Analytics importált adatok](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import), adatmennyiség mérik, mert a tömörítetlen Application insights szolgáltatásnak elküldött fájlok mérete.
+* Az alapszintű csomag által adatmennyiség van szó. Adatmennyiség telemetriai adatot az Application Insights által fogadott bájtok száma. 
+    
+    A tömörítetlen JSON adatok csomag érkezett az Application Insights által az alkalmazás adatainak mennyisége kell mérni.
+
+    A [Analytics importált táblázatos adatok](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import), adatmennyiség Application insights szolgáltatásnak elküldött fájlok tömörítetlen méretének mérése történik.
 * [Élő Stream metrikák](app-insights-live-stream.md) adatok díjszabási célra nem számítanak.
-* [A folyamatos exportálás](app-insights-export-telemetry.md) és a [Naplóelemzési összekötő](https://go.microsoft.com/fwlink/?LinkId=833039&amp;clcid=0x409) érhetők el minden további költség nélkül. április 2018 frissítésétől az alapszintű csomag.
+* [A folyamatos exportálás](app-insights-export-telemetry.md) és a [Azure Naplóelemzés összekötő](https://go.microsoft.com/fwlink/?LinkId=833039&amp;clcid=0x409) érhetők el külön díjfizetés nélkül az alapszintű csomag április 2018 től.
 
 ### <a name="enterprise-plan-and-operations-management-suite-subscription-entitlements"></a>Vállalati terv és az Operations Management Suite előfizetés jogosultságok
 
-Az ügyfelek, akik megvásárolják a Microsoft Operations Management Suite E1 és E2 kérhető le a Application Insights vállalati további ingyenes további összetevőként [korábban bejelentette](https://blogs.technet.microsoft.com/msoms/2017/05/19/azure-application-insights-enterprise-as-part-of-operations-management-suite-subscription/). Az Operations Management Suite E1 és E2 tárolóegységekhez konkrétan az Application Insights a vállalati terv 1 csomópont jogosultságot. Alább leírtak részletesebben minden Application Insights csomópont tartalmazza az adatok naponta (elkülönül Naplóelemzési adatfeldolgozást), az adatok 90 napos megőrzési további költségek nélkül okozhatnak legfeljebb 200 MB. Ez a tulajdonság csak az Operations Management Suite-előfizetéssel rendelkező felhasználók alkalmazható, mert az előfizetés nélkül ügyfelek nem fogják látni a egy lehetőség, hogy válassza ki a tervet.
+Az ügyfelek, akik beszerzési Operations Management Suite E1 és E2 Application Insights vállalati kaphat további ingyenes további összetevőként [korábban bejelentette](https://blogs.technet.microsoft.com/msoms/2017/05/19/azure-application-insights-enterprise-as-part-of-operations-management-suite-subscription/). Az Operations Management Suite E1 és E2 tárolóegységekhez konkrétan az Application Insights vállalati terv egy csomópont jogosultságot. Minden Application Insights csomópont tartalmazza az adatok naponta (elkülönül Naplóelemzési adatfeldolgozást), az adatok 90 napos megőrzési további költségek nélkül okozhatnak legfeljebb 200 MB. A terv a cikk későbbi részében részletesebben ismerteti. 
+
+Mivel ez a csomag csak az Operations Management Suite-előfizetéssel rendelkező felhasználók használható, a felhasználóknak, akik nem rendelkezik az Operations Management Suite-előfizetéssel nem lát olyan lehetőséget, jelölje be ezt a tervet.
 
 > [!NOTE]
-> Győződjön meg arról, hogy ezt a jogosultságot kap, kell rendelkeznie az Application Insights-erőforrások vállalati árképzési terv. Ez a jogosultság lesz csak csomópontokat, az alapszintű csomag az Application Insights-erőforrások nem valósíthat meg hasznos. Vegye figyelembe, hogy ez a jogosultság nem látható lesz a becsült költség jelenik meg a *használati és a becsült költség* lap. Is ha előfizetés az új Azure árképzési modelljének előnyei. április 2018 figyelési helyezi át, az alapszintű csomag nem érhető el egyetlen terv, ha az Operations Management Suite-előfizetéssel rendelkezik nem javasoljuk.
+> Győződjön meg arról, hogy ezt a jogosultságot kap, az Application Insights-erőforrások árképzési terv a vállalaton belül kell lennie. Ez a jogosultság csak csomópontként vonatkozik. Az alapszintű csomag az Application Insights-erőforrások hasznos figyelmen kívül hagyja. Ez a jogosultság nem látható a látható becsült költségeket a **használati és a becsült költség** ablaktáblán. Ha az új árképzési modellt a megfigyelést. április 2018 Azure előfizetés helyezi át, az alapszintű csomag is elérhető csak terv. Előfizetés áthelyezése az új Azure árképzési modellt figyelés nem javasolt, ha az Operations Management Suite-előfizetéssel rendelkezik.
 
-További információk a vállalati terven látogasson el a [vállalati árképzési részleteit megjelenítő oldalra.](app-insights-pricing-enterprise-details.md)
+A vállalati terv kapcsolatos további információkért lásd: [díjszabása vállalati](app-insights-pricing-enterprise-details.md).
 
 ### <a name="multi-step-web-tests"></a>Többlépéses webes tesztek
 
-Nincs olyan kiegészítő díjat [többlépéses webteszt](app-insights-monitor-web-app-availability.md#multi-step-web-tests). A webes tesztjeinek használatát, amely egy műveletsorozatot végre vonatkozik.
+[Több lépés webteszt](app-insights-monitor-web-app-availability.md#multi-step-web-tests) fel Önnek egy kell külön fizetni. Több lépés webes tesztjeinek használatát olyan webes tesztjeinek használatát, amely egy műveletsorozatot végrehajtani.
 
-Nincs "ping-vizsgálatok" egy oldal külön díjmentes. A többlépéses tesztek és ping-vizsgálatok telemetriai fel van töltve, és egyéb telemetriai az alkalmazásból.
+A különálló ingyenesek *ping-vizsgálatok* egy oldal. A ping-vizsgálatok és többlépéses tesztek telemetriai díjfizetéssel ugyanaz, mint más telemetriai az alkalmazásból.
 
 ## <a name="review-pricing-plans-and-estimate-costs"></a>Tekintse át a csomagok és a becsült költség díjszabása
 
-Az Application Insights megkönnyíti az elérhető árképzési csomagok, és milyen költségeket valószínűleg alapulhat legutóbbi használati szokások megismerése. Megnyitásával indítsa el a **használati és a becsült költség** lapján az Application Insights-erőforrást az Azure-portálon:
+Az Application Insights megkönnyíti, hogy az elérhető árképzési csomagok megértéséhez, és milyen a költségek valószínűleg legutóbbi használati minták alapján. Ismerkedés az Azure portálon, az Application Insights-erőforrást, keresse fel a **használati és a becsült költség** panelen:
 
 ![Tarifacsomag kiválasztása](./media/app-insights-pricing/pricing-001.png)
 
-**a.** Tekintse át a adatmennyiség az adott hónap. Ez magában foglalja a fogadott és megőrzi minden adat (után bármely [mintavételi](app-insights-sampling.md) a kiszolgáló és az ügyfélalkalmazások, és rendelkezésreállás figyelésére szolgáló tesztek.
+A. Tekintse át a adatmennyiség az adott hónap. Ez magában foglalja az adatok által fogadott és maradnak (után bármely [mintavételi](app-insights-sampling.md)) a kiszolgáló és az ügyfélalkalmazások, és rendelkezésreállás figyelésére szolgáló tesztek.  
+B. Egy külön kell fizetni történik [többlépéses webteszt](app-insights-monitor-web-app-availability.md#multi-step-web-tests). (Ebbe nem számítanak bele egyszerű rendelkezésreállás figyelésére szolgáló tesztek, amelyek szerepelnek az adatok kötet kell fizetni.)  
+C. Adatok kötet tendenciák megtekintése az elmúlt hónapban.  
+D. Engedélyezze az adatfeldolgozást [mintavételi](app-insights-sampling.md).   
+E. Állítsa be a napi adatok kötet kap.  
 
-**b.** Egy külön kell fizetni történik [többlépéses webteszt](app-insights-monitor-web-app-availability.md#multi-step-web-tests). (Ebbe nem számítanak bele egyszerű rendelkezésreállás figyelésére szolgáló tesztek, amelyek szerepelnek az adatok kötet kell fizetni.)
+Application Insights költségek az Azure számlázásának hozzáadódnak. A számlázás az Azure részleteit láthatja a **számlázási** szakaszban az Azure-portálon, vagy a a [Azure számlázási portálon](https://account.windowsazure.com/Subscriptions). 
 
-**c.** Adatok kötet tendenciák megtekintése az elmúlt hónapban.
-
-**d.** Engedélyezze az adatfeldolgozást [mintavételi.](app-insights-sampling.md) 
-
-**e.** Konfigurálja a napi adatok kötet kap.
-
-Application Insights költségek az Azure számlázásának hozzáadódnak. A számlázási szakaszban az Azure portál vagy a számlázás az Azure részleteit láthatja a [Azure Billing Portal](https://account.windowsazure.com/Subscriptions). 
-
-![Az oldalsó menüben válassza ki a számlázási.](./media/app-insights-pricing/02-billing.png)
+![A bal oldali menüben válassza ki a számlázás](./media/app-insights-pricing/02-billing.png)
 
 ## <a name="data-rate"></a>Átviteli sebesség
-A kötet küldött adatok korlátozódik három módja van:
+Küldött adatok mennyisége három módon van korlátozva:
 
-* **Mintavételi:** Ez az eljárás használható a kiszolgáló és az ügyfél alkalmazásoknak, a minimális torzulásának metrikák küldött telemetriai adatok mennyiségének csökkentésére. Ez az adatmennyiség hangolására, hogy az elsődleges eszköz. További információ [szolgáltatások mintavétel](app-insights-sampling.md). 
-* **Napi cap:** Ha létrehozása az Application Insights-erőforrást az Azure portálról ennek értéke 100 GB/nap. A Visual Studio Application Insights-erőforrás létrehozásakor alapértelmezés szerint csak a tesztelés elősegítése készült kis (csak 32,3 megabájt MB/nap). Ebben az esetben célja, hogy a felhasználó emeli a napi kap éles környezetben az alkalmazás telepítése előtt. A maximális kap kért nagy forgalmú alkalmazások magasabb legfeljebb 1000 GB/nap esetén. Körültekintően járjon el a napi kap beállításakor a leképezés kell lennie **soha nem az, hogy a napi kap találati**, mert fog majd adatvesztés, a nap hátralevő és kell az alkalmazás figyelése nem lehetséges. Ha módosítani szeretné azt, a napi kötet cap beállítást használja, a használat és a becsült költség lap (lásd alább) kapcsolódó. Néhány előfizetés típusú jóváírás, amely nem használható az Application Insights rendelkező korlátozását eltávolította azt. Korábban Ha az előfizetésnek a költségkeret maximumát, napi cap párbeszédpanel lesz utasításokat távolítsa el, és a napi kap túl 32,3 megabájt MB/nap felmerülő engedélyezésével.
-* **Sávszélesség-szabályozás:** ez korlátozza az egy második, átlagolt több mint 1 perc alatt 32000 események sebesség.
+* **A mintavételi**: mintavételi használhatja a kiszolgáló és az ügyfél alkalmazásoknak, a minimális torzulásának metrikák által küldött telemetriai adatok mennyiségének csökkentésére. Mintavételi küldött adatok mennyisége hangolására használható elsődleges eszköz. További információ [szolgáltatások mintavétel](app-insights-sampling.md). 
+* **Napi maximális**: az Application Insights-erőforrást az Azure-portálon való létrehozásakor a napi maximális értéke 100 GB/nap. A Visual Studio Application Insights-erőforrást hoz létre, amikor az alapértelmezett érték kis (csak 32,3 megabájt MB/nap). A napi cap alapértelmezett értéke a tesztelés elősegítése érdekében. Célja, hogy a felhasználó emeli a napi kap éles környezetben az alkalmazás telepítése előtt. 
+
+    A maximális kap kér egy nagy forgalmú alkalmazáshoz magasabb legfeljebb 1000 GB/nap esetén. 
+
+    Körültekintően járjon el a napi kap beállításakor. A cél kell *soha nem elérte a napi kap*. Elérte a napi kap, ha a nap hátralevő adatok elvesznek, és nem figyelheti az alkalmazást. A napi kap módosításához használja a **napi kötet cap** lehetőséget. Érheti el ezt a lehetőséget a **használati és a becsült költség** (Ez leírása a cikk későbbi részében részletesebben) panelen.
+    Néhány előfizetés típust, amely nem használható az Application Insights jóváírás rendelkező korlátozását eltávolította azt. Korábban Ha az előfizetésnek a költségkeret maximumát, a napi cap párbeszédpanelnek távolítsa el a költségkeret maximumát, és engedélyezze a napi kap túl 32,3 megabájt MB/nap felmerülő vonatkozó utasításokat.
+* **Sávszélesség-szabályozás**: szabályozás korlátok 32000 események másodpercenkénti, hogy az adatátviteli sebesség átlagosan több mint 1 perc.
 
 *Mi történik, ha az alkalmazás meghaladja a szabályozási értéket?*
 
-* Tartalmazza az alkalmazás által percenként megfelelőségét ellenőrizni kell. Ha a percre átlagolva másodpercenkénti aránya meghaladja, a kiszolgáló visszautasítja bizonyos kérelmek. Az SDK puffereli, az adatokat, és megkísérli újraküldéséhez megugrását terjednek több perc. Az alkalmazás rendszeresen küld adatokat a fent a szabályozási értéket, ha egyes adatok ki lesznek hagyva. (Az ASP.NET, Java és JavaScript SDK-k megpróbálja újra elküldeni, így; Csomagjától előfordulhat, hogy egyszerűen az vetett szabályozott adatokat.) Sávszélesség-szabályozás történik, akkor megjelenik egy értesítés, figyelmeztetés, hogy ez történik.
+* Tartalmazza az alkalmazás által percenként megfelelőségét ellenőrizni kell. Ha a percre átlagolva másodpercenkénti aránya meghaladja, a kiszolgáló visszautasítja bizonyos kérelmek. Az SDK puffereli, az adatokat, és próbálja meg újból elküldeni. Hogy terjeszti ki megugrását, néhány perc. Ha az alkalmazás következetesen küld adatokat a több, mint a szabályozási értéket, bizonyos adatok ki lesznek hagyva. (Az ASP.NET, Java és JavaScript SDK-k próbálja meg újra elküldeni az adatok így; Csomagjától előfordulhat, hogy egyszerűen az vetett szabályozott adatokat.) Sávszélesség-szabályozás akkor fordul elő, ha egy értesítési figyelmeztető riasztást küld arról, hogy ez történt.
 
 *Honnan tudhatom, hogy mennyi adatot küld alkalmazásom?*
 
-* Nyissa meg a **használati és a becsült költség** lapot, melyen megtekintheti a napi adatok kötet diagram. 
-* A Metrikaböngészőben, új diagram hozzáadása, és válassza ki **adatpontok mennyisége** a metrika szerint. Csoportosítás váltson, és szerint kell csoportosítani a **adattípus**.
+Mennyi adatot küld az alkalmazás megtekintéséhez használhatja az alábbi lehetőségek közül:
 
-## <a name="to-reduce-your-data-rate"></a>Az arány csökkentése érdekében
+* Lépjen a **használati és a becsült költség** ablaktáblában tekintse meg az adatok napi kötet diagram. 
+* A Metrikaböngészőben új diagram hozzáadása. Válassza ki a diagram metrika **adatpontok mennyisége**. Kapcsolja be a **csoportosítási**, és ezután csoportosítási **adattípus**.
+
+## <a name="reduce-your-data-rate"></a>Csökkentse az arány
 A következőkben az adatmennyiség csökkentése érdekében teheti:
 
-* Használjon [mintavételi](app-insights-sampling.md). Ez a technológia csökkenti az átviteli sebesség döntés a metrikákat, és keresse meg a keresési kapcsolódó elemek között olyan megszakítása nélkül. Kiszolgálói alkalmazások esetében működik automatikusan.
+* Használjon [mintavételi](app-insights-sampling.md). Ez a technológia csökkenti az arány nélkül a metrikákat döntés. Keresse meg a keresési kapcsolódó elemek között olyan őrizze meg. Mintavételi kiszolgáló alkalmazások automatikusan működik.
 * [Korlátozza az jelenthetők Ajax-hívások számát](app-insights-javascript.md#detailed-configuration) minden lap nézetben vagy kapcsoló Ajax reporting ki.
-* Kapcsolja ki a gyűjtemény modulok által a felesleges [ApplicationInsights.config szerkesztése](app-insights-configuration-with-applicationinsights-config.md). Például dönthet úgy, hogy teljesítményszámlálókkal és a függőségi adatokat inessential.
-* Ossza fel a telemetria bekapcsolásával instrumentation kulcsok külön. 
-* Előre összesített metrikákat. TrackMetric hívások vezettek az alkalmazásban, ha forgalmat csökkentheti a túlterhelést, amely fogadja a átlagának kiszámítása és a mérési köteg szórása használatával. Vagy használhat egy [előre összesítése csomag](https://www.myget.org/gallery/applicationinsights-sdk-labs).
+* [Szerkessze az ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) nincs szükség gyűjtemény modulok kikapcsolása. Például dönthet úgy, hogy teljesítményszámlálókkal és a függőségi adatokat inessential.
+* Ossza fel a telemetriai külön instrumentation kulcsok között. 
+* Előre összesített metrikákat. TrackMetric hívások be az alkalmazást, ha forgalmat csökkentheti a túlterhelést, amely fogadja a átlagának kiszámítása és a mérési köteg szórása használatával. Vagy használhat egy [előre összesítése csomag](https://www.myget.org/gallery/applicationinsights-sdk-labs).
 
-## <a name="managing-the-maximum-daily-data-volume"></a>A maximális napi adatmennyiség kezelése
+## <a name="manage-the-maximum-daily-data-volume"></a>A maximális napi adatmennyiség kezelése
 
-A napi kötet kap használatával korlátozható az összegyűjtött adatokat, de a kap teljesülése esetén, a nap hátralevő az alkalmazás által küldött összes telemetriai adat adatvesztést okoz. Az **nem ajánlott** szeretné, hogy az alkalmazás elérte a napi kap, mivel Ön nem tudja követni a állapotának és az alkalmazás teljesítményének után azt talált.
+A napi kötet kap használatával korlátozható az összegyűjtött adatokat. Azonban a kap teljesülése esetén, a nap hátralevő az alkalmazás által küldött összes telemetriai adat adatvesztést következik be. Az *nem ajánlott* szeretné, hogy az alkalmazás elérte a napi kap. Nyomon követése nem állapotának és az alkalmazás teljesítményének után eléri a napi kap.
 
-Ehelyett használjon [mintavételi](app-insights-sampling.md) finomhangolhatják a szintre adatmennyiség kívánja, majd használja a napi kap csak "utolsó lehetőségként", abban az esetben, ha az alkalmazás indítása telemetriai sokkal nagyobb mennyiségű váratlanul küldésekor.
+A napi kötet kap helyett használja [mintavételi](app-insights-sampling.md) hangolására adatmennyiség a kívánt szintre. Ezután használja a napi kap csak "utolsó lehetőségként" abban az esetben, ha az alkalmazás váratlanul megkezdi sok nagyobb mennyiségű telemetriai adatok küldését.
 
-Váltás a napi kap, a konfigurálási csoportban az Application Insights-erőforrás a **használati és a becsült költség** lapján kattintson **napi maximális**.
+Megváltozott a napi kap, a **konfigurálása** szakasza az Application Insights-erőforrást, a a **használati és a becsült költség** ablaktáblán válassza előbb **napi maximális**.
 
 ![A napi telemetriai kötet kap beállítása](./media/app-insights-pricing/pricing-003.png)
 
 ## <a name="sampling"></a>Mintavételezés
-[A mintavételi](app-insights-sampling.md) egy metódust, így csökkentve a telemetriai van küldésének sebessége az alkalmazásban, ugyanakkor megmaradnak helyreállításra a kapcsolódó események megkeresését diagnosztikai keresések során, és továbbra is írásmódja megfelelő esemény száma.
+[A mintavételi](app-insights-sampling.md) csökkenti a telemetriai adatok van küldésének sebessége az alkalmazáshoz, megtartja a kapcsolódó események megkeresését diagnosztikai keresések során módot. Is megőrzik a megfelelő események száma.
 
-Mintavételi hatékonyan csökkentheti a költségeket és a havi kvótán belül maradnak. A mintavételi algoritmus megőrzi telemetriai adatokat a kapcsolódó elemeket, hogy az, például a kereséssel, található egy adott kivételhez kapcsolódó a kérést. Az algoritmus is megfelelő számát, őrzi meg, hogy a kérelem sebességét, a kivétel díjszabás és egyéb számok a megfelelő értéke metrika Explorer látható.
+Mintavételi hatékonyan csökkentheti a költségeket és a havi kvótán belül maradnak. A mintavételi algoritmus így megtartja a kapcsolódó elemek telemetriai adatot, például a kereséssel, található egy adott kivételhez kapcsolódó a kérést. Az algoritmus is megőrzi megfelelő számát, ezért az kérelem sebességét, a kivétel díjszabás és egyéb számok a megfelelő értékeit metrika Explorer.
 
 Nincsenek mintavételi több űrlap.
 
-* [Adaptív mintavételi](app-insights-sampling.md) az ASP.NET SDK-ban, amely automatikusan igazodni fog a kötet telemetriai adatot az alkalmazás által az alapértelmezett beállítás. Működést automatikusan az SDK-t a webalkalmazás, így csökken a telemetriai adatokat a hálózati forgalom. 
-* *Adatfeldolgozást mintavételi* alternatív megoldás, amely működik, ahol az alkalmazásból telemetriai belép az Application Insights szolgáltatással. Ez nincs hatással az alkalmazásból küldött telemetriai adatok mennyiségét, de ez csökkenti a szolgáltatás megőrzi. Használhatja a kvóta telemetriai böngészők és egyéb SDK-k által használt csökkentése érdekében.
+* [Adaptív mintavételi](app-insights-sampling.md) az alapértelmezett beállítás az ASP.NET SDK-ban. Adaptív mintavételi automatikusan igazodni fog a telemetriai adatokból, hogy az alkalmazás küld mennyiségét. Működést automatikusan az SDK-t a webalkalmazás, hogy a hálózati forgalom telemetriai csökken. 
+* *Adatfeldolgozást mintavételi* alternatív megoldás, amely működik, ahol az alkalmazásból telemetriai belép az Application Insights szolgáltatással. Adatfeldolgozást mintavételi nincs hatással az alkalmazásból küldött telemetriai adatok mennyiségét, de csökkenti a kötetet, amelyet a szolgáltatás megőrzi. Adatfeldolgozást mintavételi segítségével csökkenthető a telemetriai böngészők és egyéb SDK-k által használt kvótát.
 
-Adatfeldolgozást mintavételi beállítása, állítsa be a vezérlő az árazás párbeszédpanelen:
+Állítsa be az adatfeldolgozást mintavételi, keresse fel a **árazás** panelen:
 
-![A kvóta és árképzési párbeszédpanel kattintson a minták csempéjére, és válassza a mintavételi töredéke alatt.](./media/app-insights-pricing/pricing-004.png)
+![A kvóta és árképzési ablaktáblán, a minták csempe, majd válassza ki és mintavételi töredéke alatt](./media/app-insights-pricing/pricing-004.png)
 
 > [!WARNING]
-> Az adatok mintavételi párbeszédpanel csak adatfeldolgozást mintavételi érték határozza meg. A mintavételi ráta alkalmazott az Application Insights SDK az alkalmazás által nem is. Ha a bejövő telemetriai már mintavételezett: az SDK-t, az adatfeldolgozást mintavételi nem lesz alkalmazva.
+> A **adat-mintavételezésre** ablaktábla csak az adatfeldolgozást mintavételi érték szabályozza. A mintavételi ráta alkalmazott az Application Insights SDK az alkalmazás által nem is. Ha a bejövő telemetriai már mintavételezett az SDK-ban, adatfeldolgozást mintavételi nincs alkalmazva.
 >
 
-Annak megállapításához, a tényleges mintavételi ráta, függetlenül attól, hol van érvényben, használjon egy [Analytics lekérdezési](app-insights-analytics.md) Ez például:
+A tényleges mintavételi ráta, függetlenül attól, ahol azt van érvényben, felderítéséhez használni egy [Analytics lekérdezési](app-insights-analytics.md). A lekérdezés így néz ki:
 
     requests | where timestamp > ago(1d)
     | summarize 100/avg(itemCount) by bin(timestamp, 1h)
     | render areachart
 
-Az egyes megőrzi a rekord, `itemCount` azt jelzi, amely azt jelöli, eredeti rekordok száma egyenlő 1 + az előző elvetett rekordok száma. 
+Az egyes megőrzi a rekord, `itemCount` azt jelzi, hogy ezt az eredeti rekordok száma. Ez megegyezik 1 + az előző elvetett rekordok száma. 
 
 ## <a name="automation"></a>Automatizálás
 
-Írhat egy parancsfájlt a ár terv beállítása Azure Resource Manager használatával. [További tudnivalókat itt talál](app-insights-powershell.md#price).
+A parancsfájl az ár terv beállítása az Azure Resource Manager használatával írhat. [További tudnivalókat itt talál](app-insights-powershell.md#price).
 
 ## <a name="limits-summary"></a>Korlátozások összegzése
 

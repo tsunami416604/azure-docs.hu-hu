@@ -1,25 +1,25 @@
 ---
-title: "Telepítse vagy frissítse a HDInsight - Azure monó |} Microsoft Docs"
-description: "Ismerje meg, hogy egy adott verziójához monó használata a HDInsight-fürthöz. Monó a Linux-alapú HDInsight-fürtökön futó .NET-alkalmazások futtatására szolgál."
+title: Telepítse vagy frissítse a HDInsight - Azure monó |} Microsoft Docs
+description: Ismerje meg, hogy egy adott verziójához monó használata a HDInsight-fürthöz. Monó a Linux-alapú HDInsight-fürtökön futó .NET-alkalmazások futtatására szolgál.
 services: hdinsight
-documentationCenter: 
+documentationCenter: ''
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
-ms.devlang: 
-ms.topic: article
+ms.devlang: ''
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/17/2018
+ms.date: 04/10/2018
 ms.author: larryfr
 ms.custom: hdinsightactive
-ms.openlocfilehash: 555f82ec9351c8c3610ad99a95159cc47d2ee539
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 165f1d8175c7c7b58a5eec02a208b81fe73cb5f9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-or-update-mono-on-hdinsight"></a>Telepítse vagy frissítse a HDInsight monó
 
@@ -31,17 +31,17 @@ Monó a HDInsight 3.4-es és újabb rendszer van telepítve, és .NET-alkalmazá
 
 Ez a parancsfájl fogadja el a következő paramétert:
 
-* __Monó verziószáma__: monó telepítendő verzióját. A verzió elérhetőnek kell lennie [https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/](https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/).
+* __Monó verziószáma__: monó telepítendő verzióját. A verzió elérhetőnek kell lennie [ https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/ ](https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/).
 
 A parancsfájl telepíti a következő monó csomagokat:
 
-* __mono-complete__
+* __Monó befejezése__
 
 * __ca-certificates-mono__
 
 ## <a name="the-script"></a>A parancsfájl
 
-__Script location__: [https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash](https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash)
+__Parancsfájl-hely__: [https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash](https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash)
 
 __Követelmények__:
 

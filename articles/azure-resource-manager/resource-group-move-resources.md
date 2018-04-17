@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2018
+ms.date: 04/11/2018
 ms.author: tomfitz
-ms.openlocfilehash: 40e79ba584843787ad7744f91e14907deb99ccaa
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3f5ad64a73bddbb64556ae7a329f91f93b99b016
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -192,6 +192,8 @@ A csatolt tervek piactér erőforrások alapján létrehozott virtuális gépeke
 A virtuális gépek a Key Vault tárolt tanúsítvány helyezheti át egy új erőforráscsoportot ugyanazt az előfizetést, de nem előfizetések között.
 
 ## <a name="virtual-networks-limitations"></a>Virtuális hálózatok korlátozásai
+
+A virtuális hálózati áthelyezésekor is át kell helyezni a tőle függő erőforrások. Például a virtuális hálózati átjárók kell áthelyeznie.
 
 Peered virtuális hálózat áthelyezni, előbb le kell tiltania a virtuális hálózati társviszony. Ha le van tiltva, áthelyezheti a virtuális hálózat. Az áthelyezés után újból engedélyezi, a virtuális hálózati társviszony.
 

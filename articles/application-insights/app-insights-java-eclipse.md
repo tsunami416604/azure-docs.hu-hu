@@ -1,6 +1,6 @@
 ---
-title: "Ismerkedés az Azure Application Insights az eclipse-ben Java |} Microsoft docs"
-description: "Az Eclipse beépülő modul segítségével adja hozzá a teljesítmény- és használat figyelését a Java-webhelyéhez az Application insights szolgáltatással"
+title: Ismerkedés az Azure Application Insights az eclipse-ben Java |} Microsoft docs
+description: Az Eclipse beépülő modul segítségével adja hozzá a teljesítmény- és használat figyelését a Java-webhelyéhez az Application insights szolgáltatással
 services: application-insights
 documentationcenter: java
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2016
 ms.author: mbullwin
-ms.openlocfilehash: 616cbfed405454d2abbb6bb526166d2c72e4365d
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 3cddfb918f98dfd41e84a6cc5473df6e26d1a482
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-application-insights-with-java-in-eclipse"></a>Ismerkedés az Application Insights Java az eclipse-ben
 Az Application Insights SDK, hogy elemezheti a használati és teljesítményadatokat küld a Java-webalkalmazások telemetriai adatokat. Az eclipse-ben az Application Insights beépülő modult úgy, hogy be kívül mezőben telemetriai adatok, valamint az API-k, amelyek segítségével egyéni telemetriai adatokat írni automatikusan telepíti az SDK-t a projektben.   
@@ -28,7 +28,7 @@ Jelenleg a beépülő modul működését Maven-projektek és dinamikus webes pr
 
 A következők szükségesek:
 
-* Oracle JRE 1.6 vagy újabb verzió
+* JRE 1.7 vagy 1.8
 * Egy [Microsoft Azure](https://azure.microsoft.com/)-előfizetés.
 * [Java EE-fejlesztőknek IDE Holdas](http://www.eclipse.org/downloads/), Indigo vagy újabb.
 * Windows 7 vagy újabb, vagy a Windows Server 2008 vagy újabb
@@ -39,7 +39,7 @@ Csak kell elvégezni a számítógép egy alkalommal. Ez a lépés telepíti egy
 1. Az eclipse-ben kattintson a Súgó, új szoftverek telepítése.
 
     ![Súgó, új szoftverek telepítése](./media/app-insights-java-eclipse/0-plugin.png)
-2. Az SDK http://dl.microsoft.com/eclipse Azure eszközkészlet alatt van.
+2. Az SDK-val van http://dl.microsoft.com/eclipse, Azure eszközkészlet alatt.
 3. Törölje a jelet **lépjen kapcsolatba az összes frissítés hely...**
 
     ![Application Insights SDK törölje lépjen kapcsolatba az összes frissítés helyek](./media/app-insights-java-eclipse/1-plugin.png)
@@ -215,7 +215,7 @@ Kód weblapon JavaScript- és kiszolgálóoldali Java beszúrásához.
 
 [További tudnivalók az egyéni telemetria][track]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 #### <a name="detect-and-diagnose-issues"></a>Észlelheti és diagnosztizálhatja a problémákat
 * [Adja hozzá a webes ügyfél telemetriai] [ usage] teljesítmény telemetriai adatainak lekérése a webes ügyféllel.
 * [Beállíthat webes teszteket][availability] annak biztosításához, hogy az alkalmazás mindig elérhető és válaszkész legyen.

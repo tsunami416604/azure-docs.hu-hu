@@ -1,20 +1,20 @@
 ---
-title: "Azure-előfizetések és a fiókok aktiválásához |} Microsoft Docs"
-description: "Engedélyezze a hozzáférést az Azure Resource Manager API-k használatával új és meglévő fiókok és közös fiók problémák megoldásához."
+title: Azure-előfizetések és a fiókok aktiválásához |} Microsoft Docs
+description: Engedélyezze a hozzáférést az Azure Resource Manager API-k használatával új és meglévő fiókok és közös fiók problémák megoldásához.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 03/01/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
-ms.custom: 
-ms.openlocfilehash: a0dc2ee201c1729b10cd363553cdf5d61ec87748
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.custom: ''
+ms.openlocfilehash: dbbbc7ee87d53f65d51b20fd5b8ffcb6c4930f15
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-azure-cost-management"></a>Azure-előfizetések és a fiókok az Azure költség Management aktiválása
 
@@ -29,7 +29,7 @@ Hajtsa végre a cikkben ismertetett adott engedélyekre van szükség. Ön vagy 
 - A CloudynCollector alkalmazás regisztrálása az Azure AD-bérlő engedély.
 - Az alkalmazást az Azure-előfizetések a szerepkör lehetővé teszi.
 
-Az Azure-előfizetését, rendelkeznie kell a fiókok `Microsoft.Authorization/*/Write` rendelje hozzá a CloudynCollector alkalmazás eléréséhez. Ez a művelet biztosítja a [tulajdonos](../active-directory/role-based-access-built-in-roles.md#owner) szerepkör vagy [felhasználói hozzáférés adminisztrátora](../active-directory/role-based-access-built-in-roles.md#user-access-administrator) szerepkör.
+Az Azure-előfizetését, rendelkeznie kell a fiókok `Microsoft.Authorization/*/Write` rendelje hozzá a CloudynCollector alkalmazás eléréséhez. Ez a művelet biztosítja a [tulajdonos](../role-based-access-control/built-in-roles.md#owner) szerepkör vagy [felhasználói hozzáférés adminisztrátora](../role-based-access-control/built-in-roles.md#user-access-administrator) szerepkör.
 
 Ha a fiók hozzá van rendelve a **közreműködő** szerepkör, Önnek nincs megfelelő engedélye arra, hogy az alkalmazást. Arra vonatkozó hibaüzenetet kap, az Azure-előfizetése CloudynCollector alkalmazás hozzárendelésekor.
 
@@ -61,8 +61,8 @@ Fiók frissítés előfizetés hozzáadásakor Azure költség felügyeleti hozz
 2. Ha szükséges, adja meg a bérlő azonosítóját. Ha nem ismeri a bérlő azonosítója, az alábbi lépések segítségével találja meg:
     1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com).
     2. Válassza ki az Azure-portálon **Azure Active Directory**.
-    3. Válassza ki ahhoz, hogy a bérlő azonosítója, **tulajdonságok** az Azure AD-bérlő.
-    4. Másolja a Directory azonosító GUID. Ez az érték az a bérlő azonosítója.
+    3. A bérlőazonosító lekéréséhez válassza ki az Azure AD-bérlőjéhez tartozó **Tulajdonságok** elemet.
+    4. Másolja a Directory azonosító GUID. Ez az érték a bérlőazonosítója.
     További információkért lásd: [-bérlőazonosító beszerzése](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
 3. Ha szükséges, válassza ki a sebesség azonosítóját. Ha nem ismeri a sebesség Azonosítóját, a következő lépések segítségével találja meg.
     1. A jobb felső az Azure portál, kattintson a felhasználói adatokat, és kattintson a **megtekintése a számlázási**.

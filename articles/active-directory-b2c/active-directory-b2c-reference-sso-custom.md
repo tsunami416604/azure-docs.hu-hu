@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: davidmu
-ms.openlocfilehash: 3d378d188d9acec06f37ca91e3c67e82fb31fc08
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ca7160d39d5d26ca69345ce636f22afbe44b25db
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-ad-b2c-single-sign-on-sso-session-management"></a>Az Azure AD B2C: Az egyszeri bejelentkezés (SSO) munkamenet-kezelés
 
@@ -47,6 +47,9 @@ A név szerint, a szolgáltató nincs semmi hatása. Ez a szolgáltató hogyan k
 ### <a name="defaultssosessionprovider"></a>DefaultSSOSessionProvider
 
 Ez a szolgáltató munkamenetben jogcímek tárolására használható. Ez a szolgáltató egy helyi kezelésére használt műszaki profil általában hivatkozik. 
+
+> [!NOTE]
+> Amikor a DefaultSSOSessionProvider használatával jogcímek munkamenet használatával, meg kell győződjön meg arról, hogy jogcímeket kell juttatni az alkalmazás vagy a későbbi lépésekben előtti feltételek által használt tárolja a munkamenet vagy a felhasználók profilból olvasási kiegészítve könyvtár. Ezzel biztosíthatja, hogy a hitelesítési használatában nem sikertelen lesz a hiányzó jogcímek.
 
 ```XML
 <TechnicalProfile Id="SM-AAD">

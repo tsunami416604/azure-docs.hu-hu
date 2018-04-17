@@ -15,11 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 12/20/2017
 ms.author: markgal;trinadhk;pullabhk
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bac1e679aa46b280596ab09ba40da780c81cac5d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 8b5869e44e22fab1e996fcd58b4258849603a711
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>Készítsen biztonsági másolatot a virtuális gépek AzureRM.RecoveryServices.Backup-parancsmagok használatával
 
@@ -132,7 +132,7 @@ A következő lépések alapján a Recovery Services-tároló létrehozása. Rec
     ```
 
    > [!TIP]
-   > Sok Azure biztonsági mentést készítő parancsmagok bemeneti adatokként a Recovery Services-tároló objektum szükséges. Emiatt célszerű a Recovery Services biztonsági másolat tároló objektum tárolható egy változóban.
+   > Számos Azure Backup-parancsmaghoz szükséges bemenetként a helyreállítási tár objektum. Ebből az okból célszerű egy változóban tárolni a helyreállítási tár objektumot.
    >
    >
 
@@ -157,14 +157,14 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 Recovery Services-tároló segítségével a virtuális gépek védelmére. Alkalmazza a védelmet, mielőtt a tárolóban (a tárolóban lévő védett adatok típusától) környezetben, és a védelmi házirend ellenőrzése. A védelmi házirend az ütemezés a biztonsági mentési feladatok futtatásakor, és mennyi ideig őrzi meg minden egyes biztonsági mentési pillanatképet.
 
 ### <a name="set-vault-context"></a>Tároló környezet beállítása
-Ahhoz, hogy a virtuális gép védelme, használjon **[Set-AzureRmRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)** beállítani a tároló a környezetben. A tároló-környezet van beállítva, ha az összes későbbi parancsmag vonatkozik. Az alábbi példa megállapítja a tárolóban, a tároló *testvault*.
+Ahhoz, hogy a virtuális gép védelme, használjon **[Set-AzureRmRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)** beállítani a tároló a környezetben. A tárolási környezet beállítását követően az minden további parancsmagra érvényes lesz. Az alábbi példa megállapítja a tárolóban, a tároló *testvault*.
 
 ```
 PS C:\> Get-AzureRmRecoveryServicesVault -Name "testvault" | Set-AzureRmRecoveryServicesVaultContext
 ```
 
 ### <a name="create-a-protection-policy"></a>Védelmi házirend létrehozása
-Recovery Services-tároló létrehozásakor az alapértelmezett védelem és adatmegőrzési ismét. Az alapértelmezett védelmi házirendet a biztonsági mentési feladatot, a megadott időpontban naponta váltja ki. Az alapértelmezett megőrzési házirend 30 napig őrzi meg a napi helyreállítási pont. Az alapértelmezett házirend segítségével gyorsan védelme a virtuális Gépet, és később különböző adatokkal házirend szerkesztése.
+Helyreállítási tár létrehozásakor a tár alapértelmezett védelmi és megőrzési szabályzatokkal rendelkezik. Az alapértelmezett védelmi szabályzat naponta egyszer, adott időben aktivál egy biztonsági mentési feladatot. Az alapértelmezett megőrzési szabályzat 30 napig őrzi meg a napi helyreállítási pontokat. Az alapértelmezett házirend segítségével gyorsan védelme a virtuális Gépet, és később különböző adatokkal házirend szerkesztése.
 
 Használjon **[Get-AzureRmRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupprotectionpolicy)** az adatvédelmi szabályzatok megtekintéséhez a tárolóban lévő állapottal. Ez a parancsmag is használhatja, egy adott házirend segítségével, vagy egy munkaterhelés-típushoz tartozó házirendek megtekintéséhez. Az alábbi példa-házirendet munkaterhelés, AzureVM lekérdezi.
 
@@ -362,7 +362,7 @@ Miután helyreállította a lemezeket, nyissa meg a virtuális gép létrehozás
 Miután visszaállította a lemezeket, ezek lépések segítségével hozza létre és konfigurálja a virtuális gép lemezéről.
 
 > [!NOTE]
-> Titkosított virtuális gépek létrehozásához visszaállított lemezekről, az Azure szerepkör a művelet végrehajtásához szükséges engedéllyel kell rendelkeznie **Microsoft.KeyVault/vaults/deploy/action**. Ha a szerepkör nem rendelkezik ezzel az engedéllyel, hozzon létre egy egyéni biztonsági szerepkört ezt a műveletet. További információkért lásd: [egyéni szerepkörök az Azure RBAC](../active-directory/role-based-access-control-custom-roles.md).
+> Titkosított virtuális gépek létrehozásához visszaállított lemezekről, az Azure szerepkör a művelet végrehajtásához szükséges engedéllyel kell rendelkeznie **Microsoft.KeyVault/vaults/deploy/action**. Ha a szerepkör nem rendelkezik ezzel az engedéllyel, hozzon létre egy egyéni biztonsági szerepkört ezt a műveletet. További információkért lásd: [egyéni szerepkörök az Azure RBAC](../role-based-access-control/custom-roles.md).
 >
 >
 

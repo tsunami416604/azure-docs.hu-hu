@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Data Lake Store Eseményközpontokból származó adatok rögzítéséhez |} Microsoft Docs"
-description: "Használata Azure Data Lake Store Eseményközpontokból származó adatok rögzítéséhez"
+title: Az Azure Data Lake Store Eseményközpontokból származó adatok rögzítéséhez |} Microsoft Docs
+description: Használata Azure Data Lake Store Eseményközpontokból származó adatok rögzítéséhez
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: ac8000abc35cba89c4bf655a4806636933ab8d08
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 9f91acf8c26fdec0c8d128f598f218cff091c7aa
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-data-lake-store-to-capture-data-from-event-hubs"></a>Használata Azure Data Lake Store Eseményközpontokból származó adatok rögzítéséhez
 
@@ -27,7 +27,7 @@ Ismerje meg, hogyan használható az Azure Data Lake Store az Azure Event Hubs �
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Egy Azure Data Lake Store-fiók**. Hogyan hozhat létre ilyet, lásd: [Ismerkedés az Azure Data Lake Store](data-lake-store-get-started-portal.md).
+* **Egy Azure Data Lake Store-fiók**. A fióklétrehozás módjával kapcsolatban tekintse meg [az Azure Data Lake Store használatának első lépéseit ismertető](data-lake-store-get-started-portal.md) témakört.
 
 *  **Az Event Hubs névtér**. Útmutatásért lásd: [az Event Hubs-névtér létrehozása](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace). Gondoskodjon arról, hogy a Data Lake Store-fiókot és az Event Hubs névtér azonos Azure-előfizetést.
 
@@ -58,9 +58,12 @@ Ebben a szakaszban a fiókon belül hol kívánja rögzíteni az adatokat az Eve
 
     c. A **engedélyek hozzárendelése**, kattintson a **Select engedélyeket**. Állítsa be **engedélyek** való **hajtható végre**. Állítsa be **hozzáadása** való **ezt a mappát, és minden gyermeknek**. Állítsa be **hozzáadni** való **egy hozzáférési engedélybejegyzés és egy alapértelmezett engedélybejegyzés**.
 
-    ![Engedélyeket rendelhet a Data Lake Store legfelső szintű](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "engedélyeket rendelhet a Data Lake Store gyökér")
+> [!IMPORTANT]
+> Az Azure Event Hubs által fogadott adatok rögzítéséhez egy új mappahierarchiában létrehozásakor ez egyszerű módja a célmappa való hozzáférés biztosításához.  Azonban a legfelső szintű mappa minden gyermeknek sok gyermek fájlokhoz és mappákhoz engedélyek hozzáadása a sok időre lehet szükség.  Ha a gyökérmappában található fájlok és mappák sok tartalmaz, akkor lehet gyorsabb hozzáadása **Execute** engedélyeinek `Microsoft.EventHubs` külön-külön történő minden mappa elérési útját a végső rendeltetési mappára. 
 
-    Kattintson az **OK** gombra.
+    ![Assign permissions for Data Lake Store root](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Assign permissions for Data Lake Store root")
+
+    Click **OK**.
 
 4. Rendelje hozzá a Data Lake Store-fiókjában hol kívánja rögzíteni adatok mappára vonatkozó engedélyeket.
 

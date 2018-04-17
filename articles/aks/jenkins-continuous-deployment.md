@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 8238e0f55b88e4fa207357630aa4228250c33249
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b0adf5098b1be9f245b22c859dbb86a14335e435
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="continuous-deployment-with-jenkins-and-azure-container-service"></a>Azure Tárolószolgáltatás és Jenkins folyamatos üzembe helyezés
 
-Ez a dokumentum bemutatja, hogyan állíthat be egy alapszintű folyamatos üzembe helyezés munkafolyamat Jenkins és az Azure-tároló szolgáltatás (AKS) fürt között. 
+Ez a dokumentum bemutatja, hogyan állíthat be egy alapszintű folyamatos üzembe helyezés munkafolyamat Jenkins és az Azure-tároló szolgáltatás (AKS) fürt között.
 
 A példa-munkafolyamat a következő lépésekből áll:
 
@@ -41,7 +41,7 @@ Ebben a cikkben szereplő lépések végrehajtásához a következőkre van szü
 
 ## <a name="prepare-application"></a>Alkalmazás előkészítése
 
-Ez a dokumentum használt Azure szavazat-alkalmazás egy vagy több három munkaállomás-csoporttal, és egy második pod Redis üzemeltető ideiglenes tárolására tárolt webes felületet tartalmazza. 
+Ez a dokumentum használt Azure szavazat-alkalmazás egy vagy több három munkaállomás-csoporttal, és egy második pod Redis üzemeltető ideiglenes tárolására tárolt webes felületet tartalmazza.
 
 A Jenkins létrehozása előtt / AKS integráció, előkészítése, és az Azure szavazattal alkalmazás AKS fürthöz való telepítéséhez. Használjon egy, az alkalmazás verziója.
 
@@ -94,7 +94,7 @@ Használja a [docker címke] [ docker-tag] parancs használatával címkézhesse
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
 ```
 
-Frissítse az ACR bejelentkezési kiszolgáló értéket a ACR bejelentkezési kiszolgáló nevét, és leküldéses a `azure-vote-front` kép a beállításjegyzékhez. 
+Frissítse az ACR bejelentkezési kiszolgáló értéket a ACR bejelentkezési kiszolgáló nevét, és leküldéses a `azure-vote-front` kép a beállításjegyzékhez.
 
 ```bash
 docker push <acrLoginServer>/azure-vote-front:v1
@@ -118,7 +118,7 @@ Ezután használhatja a [kubectl létrehozása] [ kubectl-create] parancsot kell
 kubectl create -f azure-vote-all-in-one-redis.yaml
 ```
 
-A [Kubernetes szolgáltatás] [ kubernetes-service] teszi közzé az alkalmazást az interneten jön létre. Ez eltarthat pár percig. 
+A [Kubernetes szolgáltatás] [ kubernetes-service] teszi közzé az alkalmazást az interneten jön létre. Ez eltarthat pár percig.
 
 A folyamat állapotának monitorozásához használja [kubectl get service][kubectl-get] parancsot a `--watch` argumentummal.
 
@@ -127,12 +127,12 @@ kubectl get service azure-vote-front --watch
 ```
 
 Kezdetben az *azure-vote-front* szolgáltatás *EXTERNAL-IP* értéke *pending* állapotú.
-  
+
 ```
 azure-vote-front   10.0.34.242   <pending>     80:30676/TCP   7s
 ```
 
-Miután az *EXTERNAL-IP* cím *pending* állapotról egy *IP-címre* változik, a `control+c` billentyűparanccsal állítsa le a kubectl figyelési folyamatát. 
+Miután az *EXTERNAL-IP* cím *pending* állapotról egy *IP-címre* változik, a `control+c` billentyűparanccsal állítsa le a kubectl figyelési folyamatát.
 
 ```
 azure-vote-front   10.0.34.242   13.90.150.118   80:30676/TCP   2m
@@ -209,7 +209,7 @@ Kattintson a **OK** és térjen vissza a Jenkins felügyeleti portálra.
 
 A Jenkins felügyeleti portálon, kattintson **új elem**.
 
-Nevezze el a projekt, például `azure-vote`, jelölje be **Freestyle projekt**, és kattintson a **OK**. 
+Nevezze el a projekt, például `azure-vote`, jelölje be **Freestyle projekt**, és kattintson a **OK**.
 
 ![Jenkins projekt](media/aks-jenkins/jenkins-project.png)
 
@@ -217,9 +217,9 @@ A **általános**, jelölje be **GitHub-projekt** , és írja be az URL-címet a
 
 ![GitHub-projekt](media/aks-jenkins/github-project.png)
 
-A **forrás kód felügyeleti**, jelölje be **Git**, adja meg az URL-címet az elágazáshoz, az Azure szavazattal GitHub-tárház. 
+A **forrás kód felügyeleti**, jelölje be **Git**, adja meg az URL-címet az elágazáshoz, az Azure szavazattal GitHub-tárház.
 
-A hitelesítő adatokat, kattintson az és **Hozzáadás** > **Jenkins**. A **jellegű**, jelölje be **titkos szöveg** , és írja be a [GitHub személyes hozzáférési jogkivonat] [ git-access-token] , a titkos kulcsot. 
+A hitelesítő adatokat, kattintson az és **Hozzáadás** > **Jenkins**. A **jellegű**, jelölje be **titkos szöveg** , és írja be a [GitHub személyes hozzáférési jogkivonat] [ git-access-token] , a titkos kulcsot.
 
 Válassza ki **Hozzáadás** végzett.
 
@@ -233,7 +233,7 @@ A **telepítési környezet**, jelölje be **titkos szövegek vagy fájlok**.
 
 ![Jenkins összeállító környezetet](media/aks-jenkins/build-environment.png)
 
-A **kötések**, jelölje be **Hozzáadás** > **felhasználónév és jelszó (elválasztott)**. 
+A **kötések**, jelölje be **Hozzáadás** > **felhasználónév és jelszó (elválasztott)**.
 
 Adja meg `ACR_ID` a a **tartozó felhasználónév változójának**, és `ACR_PASSWORD` a a **jelszó változót**.
 
@@ -263,13 +263,13 @@ Ezt követően kattintson **mentése**.
 
 A folytatás előtt tesztelje a Jenkins összeállítása. Ez azt ellenőrzi, hogy az összeállítási feladat megfelelően van konfigurálva, illetve a megfelelő Kubernetes hitelesítési fájlt helyben, és, hogy vannak-e megadva ACR szükséges hitelesítő adatokat.
 
-Kattintson a **Build most** a projekt a bal oldali menüben. 
+Kattintson a **Build most** a projekt a bal oldali menüben.
 
 ![Jenkins build tesztelése](media/aks-jenkins/test-build.png)
 
 A folyamat során a GitHub-tárházban klónozták a Jenkins build kiszolgálóra. Új tároló-lemezkép összeállítása és a ACR beállításjegyzék leküldve. Végül az Azure szavazattal alkalmazás AKS fürtben futó frissül az új rendszerképet használja. Az alkalmazás kódja nem módosult, mert az alkalmazás nem változik.
 
-Ha a folyamat befejeződött, kattintson a **#1 build** az előzmények építsenek, és válassza ki **konzol kimeneti** a felépítési folyamat összes eredményének megtekintéséhez. Utolsó sorának sikeres build jelzi. 
+Ha a folyamat befejeződött, kattintson a **#1 build** az előzmények építsenek, és válassza ki **konzol kimeneti** a felépítési folyamat összes eredményének megtekintéséhez. Utolsó sorának sikeres build jelzi.
 
 ## <a name="create-github-webhook"></a>GitHub-webhook létrehozása
 
@@ -280,14 +280,14 @@ A következő környezet igénybe vételét az alkalmazás tárház a Jenkins bu
 3. Válasszon **hozzáadása szolgáltatás**, adja meg `Jenkins (GitHub plugin)` a Szűrő mezőbe, és válasszon a beépülő modul.
 4. Az a Jenkins hook URL-CÍMÉT, írja be a `http://<publicIp:8080>/github-webhook/` ahol `publicIp` Jenkins kiszolgáló IP-címét. Győződjön meg arról, hogy tartalmazzák a záró /.
 5. Válassza ki a bővítmény szolgáltatást.
-  
+
 ![GitHub-webhook](media/aks-jenkins/webhook.png)
 
 ## <a name="test-cicd-process-end-to-end"></a>CI/CD folyamat teljes körű tesztelése
 
-A fejlesztői számítógépén nyissa meg a klónozott bejelentést a kód szerkesztése. 
+A fejlesztői számítógépén nyissa meg a klónozott bejelentést a kód szerkesztése.
 
-Az a **/azure-vote/azure-vote** könyvtárban található nevű fájl **config_file.cfg**. Módosítsa szavazás a fájl egy eltérő macska és kutya. 
+Az a **/azure-vote/azure-vote** directory, a nevű fájlban található **config_file.cfg**. Módosítsa szavazás a fájl egy eltérő macska és kutya.
 
 Az alábbi példában látható, és frissítve **config_file.cfg** fájlt.
 
@@ -299,7 +299,7 @@ VOTE2VALUE = 'Purple'
 SHOWHOST = 'false'
 ```
 
-Amikor végzett, mentse a fájlt, a változtatások véglegesítése a határidő, és ezek az elágazáshoz, a GitHub-tárház leküldéses... A véglegesítési befejezése után a GitHub webhook új Jenkins build, frissül a tároló lemezképet, és a AKS telepítési váltja ki. A Jenkins felügyeleti konzol a folyamat figyelése. 
+Amikor végzett, mentse a fájlt, a változtatások véglegesítése a határidő, és ezek az elágazáshoz, a GitHub-tárház leküldéses... A véglegesítési befejezése után a GitHub webhook új Jenkins build, frissül a tároló lemezképet, és a AKS telepítési váltja ki. A Jenkins felügyeleti konzol a folyamat figyelése.
 
 A létrehozás befejezése után újra keresse meg az alkalmazás végpontjának és figyelje meg a módosításokat.
 

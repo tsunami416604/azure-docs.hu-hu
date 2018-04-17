@@ -1,11 +1,11 @@
 ---
-title: "Állítsa be az Azure Logic Apps Azure Service Bus üzenetkezelés |} Microsoft Docs"
-description: "Üzenetek küldése és fogadása a logic Apps alkalmazások az Azure Service Bus használatával"
+title: Állítsa be az Azure Logic Apps Azure Service Bus üzenetkezelés |} Microsoft Docs
+description: Üzenetek küldése és fogadása a logic Apps alkalmazások az Azure Service Bus használatával
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: d6d14f5f-2126-4e33-808e-41de08e6721f
 ms.service: logic-apps
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: logic-apps
 ms.date: 02/06/2018
 ms.author: ladocs
-ms.openlocfilehash: e81580db17610adc6be534c9801881f9b68b14fd
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d5a4760e1e0f38fd81fd779786985f5753d77eab
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="send-and-receive-messages-with-the-azure-service-bus-connector"></a>Az Azure Service Bus-összekötővel üzeneteket küldjön és fogadjon
 
@@ -44,7 +44,7 @@ A Logic Apps alkalmazást bármely szolgáltatás hozzáférni, létre kell hozn
 
    ![A Service Bus-névtér engedélyeinek kezelése](./media/connectors-create-api-azure-service-bus/azure-service-bus-namespace.png)
 
-3. Ha azt szeretné, hogy később manuálisan adja meg a kapcsolati adatokat, a kapcsolati karakterlánc beolvasása a Service Bus-névtér. Choose **RootManageSharedAccessKey**. Mellett az elsődleges kulcs kapcsolati karakterláncot válassza a Másolás gombra. Későbbi használatra a kapcsolódási karakterlánc mentése.
+3. Ha azt szeretné, hogy később manuálisan adja meg a kapcsolati adatokat, a kapcsolati karakterlánc beolvasása a Service Bus-névtér. Válasszon **RootManageSharedAccessKey**. Mellett az elsődleges kulcs kapcsolati karakterláncot válassza a Másolás gombra. Későbbi használatra a kapcsolódási karakterlánc mentése.
 
    ![Másolja a Service Bus-névtér kapcsolati karakterláncot](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
 
@@ -65,12 +65,17 @@ A [ *eseményindító* ](../logic-apps/logic-apps-overview.md#logic-app-concepts
 
    ![Válassza ki a Service Bus eseményindító](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
 
+   > [!NOTE]
+   > Néhány váltja ki egy visszatérési, illetve az üzeneteket, például a *Service Bus - egy vagy több üzenet a várólistában egyszerre várakozó (automatikusan hajthat végre) érkezésekor* eseményindító.
+   > Ezek az eseményindítók érvényesítést, akkor lépjen vissza egy és az eseményindító által megadott üzenetek száma között **maximális üzenetek száma** tulajdonság.
+
    1. A Service Bus-névtér már nincs kapcsolat, ha a program kéri, most már a kapcsolat létrehozásához. Nevezze el a kapcsolatot, és válassza ki a használni kívánt Service Bus-névtér.
 
       ![Service Bus-kapcsolat létrehozása](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-1.png)
 
       Vagy manuálisan adja meg a kapcsolati karakterláncot, válassza a **manuálisan adja meg a kapcsolati adatokat**. 
       Ismerje meg, [a kapcsolati karakterlánc megkeresése](#permissions-connection-string).
+      
 
    2. Most válassza ki a Service Bus házirendet használja, és válassza a **létrehozása**.
 
@@ -79,6 +84,11 @@ A [ *eseményindító* ](../logic-apps/logic-apps-overview.md#logic-app-concepts
 4. Válassza ki a Service Bus-üzenetsorba, és állítsa be az időköz és mikor ellenőrizze a várólista gyakorisága.
 
    ![Válassza ki a Service Bus-üzenetsorba, és állítsa be a lekérdezési intervallum](./media/connectors-create-api-azure-service-bus/select-service-bus-queue.png)
+
+   > [!NOTE]
+   > A Service Bus indítók vannak **hosszú-lekérdezési** eseményindítók, ami azt jelenti, hogy egy eseményindító következik be, amikor az eseményindító összes üzenetet feldolgozza majd megvárja-e a további üzeneteket az üzenetsor vagy témakör előfizetés megjelenő 30 másodperc.
+   > Ha nem érkezik üzenet 30 másodperc, a rendszer kihagyja a eseményindító Futtatás. Ellenkező esetben az eseményindító továbbra is fennáll, addig, amíg az üzenetsor vagy témakör előfizetés nem üres üzenetek olvasásához.
+   > A következő eseményindító lekérdezési az eseményindító tulajdonságaiban megadott ismétlődési alapul.
 
 5. Mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés** parancsot.
 

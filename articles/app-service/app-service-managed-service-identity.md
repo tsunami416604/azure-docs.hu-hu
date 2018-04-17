@@ -1,36 +1,32 @@
 ---
-title: "Az App Service és az Azure Functions-identitás |} Microsoft Docs"
-description: "A kezelt Service identitás támogatása az Azure App Service és az Azure Functions fogalmi hivatkozást és a telepítési útmutatója"
+title: Az App Service és az Azure Functions-identitás |} Microsoft Docs
+description: A kezelt Service identitás támogatása az Azure App Service és az Azure Functions fogalmi hivatkozást és a telepítési útmutatója
 services: app-service
 author: mattchenderson
 manager: cfowler
-editor: 
+editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 09/13/2017
+ms.date: 04/12/2018
 ms.author: mahender
-ms.openlocfilehash: 09e848abaf09811ff3f2b8ad009cd23dedb6645d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a2aacc28a70a5150c1903a60c7a697409e2bbbe7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>Azure által felügyelt Szolgáltatásidentitás (nyilvános előzetes verzió) App Service és az Azure Functions használatával
 
 > [!NOTE] 
-> Az App Service és az Azure Functions felügyelt Szolgáltatásidentitás jelenleg előzetes verzió.
+> Az App Service és az Azure Functions felügyelt Szolgáltatásidentitás jelenleg előzetes verzió. Linux és a tárolók webalkalmazást az App Service jelenleg nem támogatottak.
 
 Ez a témakör bemutatja, hogyan hoz létre egy felügyelt alkalmazást az App Service és az Azure Functions alkalmazásokhoz és egyéb erőforrásainak elérésére használatával. Az Azure Active Directory felügyelt szolgáltatásidentitás lehetővé teszi az alkalmazás egyszerűen hozzáférhessenek más AAD által védett erőforrások, például az Azure Key Vault. Az azonosító az Azure platform kezeli, és nem kell kiosztania vagy a titkos kulcsok elforgatása. Felügyelt Szolgáltatásidentitás kapcsolatban bővebben lásd: a [Szolgáltatásidentitás felügyelete – áttekintés](../active-directory/managed-service-identity/overview.md).
 
 ## <a name="creating-an-app-with-an-identity"></a>Azonosító adatok az alkalmazások létrehozása
 
 Egy további tulajdonsággal állítható be az alkalmazást egy alkalmazás létrehozásához identitással van szükség.
-
-> [!NOTE] 
-> Egy hely csak az elsődleges tárhely identitásának fog kapni. A felügyelt szolgáltatás-identitások központi telepítés, üzembe helyezési ponti még nem támogatott.
-
 
 ### <a name="using-the-azure-portal"></a>Az Azure Portal használata
 
@@ -48,11 +44,11 @@ A portálon kezelt szolgáltatásidentitás beállításához először létreho
 
 ### <a name="using-the-azure-cli"></a>Az Azure parancssori felületének használata
 
-Az Azure parancssori felület használatával felügyelt szolgáltatásidentitás beállításához kell használni a `az webapp assign-identity` parancs egy meglévő alkalmazást. Ez a szakasz a példák futó három lehetőség közül választhat:
+Az Azure parancssori felület használatával felügyelt szolgáltatásidentitás beállításához kell használni a `az webapp identity assign` parancs egy meglévő alkalmazást. Ez a szakasz a példák futó három lehetőség közül választhat:
 
 - Használjon [Azure Cloud rendszerhéj](../cloud-shell/overview.md) Azure-portálról.
 - A beágyazott Azure Cloud rendszerhéj a "próbálja" gombra, az alábbi kódrészletet jobb felső sarkában található keresztül használja.
-- [Telepítse a legújabb verziót a CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.21 vagy újabb verzió) Ha a helyi CLI-konzollal szeretné. 
+- [Telepítse a legújabb verziót a CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 vagy újabb verzió) Ha a helyi CLI-konzollal szeretné. 
 
 Az alábbi lépéseket végigvezeti hoz létre egy webalkalmazást, és azt a parancssori felület használatával identitás:
 
@@ -65,14 +61,14 @@ Az alábbi lépéseket végigvezeti hoz létre egy webalkalmazást, és azt a pa
 
     ```azurecli-interactive
     az group create --name myResourceGroup --location westus
-    az appservice plan create --name myplan --resource-group myResourceGroup --sku S1
-    az webapp create --name myapp --resource-group myResourceGroup --plan myplan
+    az appservice plan create --name myPlan --resource-group myResourceGroup --sku S1
+    az webapp create --name myApp --resource-group myResourceGroup --plan myPlan
     ```
 
-3. Futtassa a `assign-identity` parancsot az alkalmazás identitását létrehozásához:
+3. Futtassa a `identity assign` parancsot az alkalmazás identitását létrehozásához:
 
     ```azurecli-interactive
-    az webapp assign-identity --name myApp --resource-group myResourceGroup
+    az webapp identity assign --name myApp --resource-group myResourceGroup
     ```
 
 ### <a name="using-an-azure-resource-manager-template"></a>Azure Resource Manager-sablonnal

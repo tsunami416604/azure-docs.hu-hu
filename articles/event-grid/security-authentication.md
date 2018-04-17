@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Event rács biztonsági és hitelesítési"
-description: "Azure Event rács és a fogalmakat ismerteti."
+title: Az Azure Event rács biztonsági és hitelesítési
+description: Azure Event rács és a fogalmakat ismerteti.
 services: event-grid
 author: banisadr
 manager: timlt
@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: babanisa
-ms.openlocfilehash: 0b7ef71cf940f82f46a7f053e5c9f7ef64342b6e
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: f97de4e93c9330206ed22c071d8ade0821bf6691
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="event-grid-security-and-authentication"></a>Esemény rács biztonsági és hitelesítési 
 
@@ -22,7 +22,7 @@ Az Azure Event rács három típusú hitelesítés van:
 * Esemény közzététele
 * WebHook esemény kézbesítés
 
-## <a name="webhook-event-delivery"></a>WebHook Event delivery
+## <a name="webhook-event-delivery"></a>WebHook esemény kézbesítés
 
 Webhook olyan események fogadása Azure esemény rács számos módja közül. Amikor készen áll az új esemény, az esemény rács Webhook HTTP-kérelmet küld a beállított HTTP-végpont a törzsben szereplő eseménnyel.
 
@@ -154,7 +154,7 @@ Az Azure event rács támogatja a következő műveleteket:
 * Microsoft.EventGrid/topics/listKeys/action
 * Microsoft.EventGrid/topics/regenerateKey/action
 
-Az utolsó három műveletek térjen vissza a potenciálisan bizalmas adatokat, amelyeket normál olvasási műveletek lekérdezi szűrve. Ajánlott eljárás, hogy ezek a műveletek való hozzáférés korlátozása. Egyéni szerepkörök segítségével hozhatók létre [Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md), [Azure parancssori felület (CLI)](../active-directory/role-based-access-control-manage-access-azure-cli.md), és a [REST API](../active-directory/role-based-access-control-manage-access-rest.md).
+Az utolsó három műveletek térjen vissza a potenciálisan bizalmas adatokat, amelyeket normál olvasási műveletek lekérdezi szűrve. Ajánlott eljárás, hogy ezek a műveletek való hozzáférés korlátozása. Egyéni szerepkörök segítségével hozhatók létre [Azure PowerShell](../role-based-access-control/role-assignments-powershell.md), [Azure parancssori felület (CLI)](../role-based-access-control/role-assignments-cli.md), és a [REST API](../role-based-access-control/role-assignments-rest.md).
 
 ### <a name="enforcing-role-based-access-check-rbac"></a>Érvényesítési szerepkör alapú hozzáférés-ellenőrzést (RBAC)
 

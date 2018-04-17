@@ -1,25 +1,18 @@
 ---
 title: Az Azure Analysis Services támogatott adatforrások |} Microsoft Docs
 description: Az Azure Analysis Services adatmodellekben támogatott adatforrások ismerteti.
-services: analysis-services
-documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: ''
-tags: ''
-ms.assetid: 6ec63319-ff9b-4b01-a1cd-274481dc8995
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 04/05/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 16bf333fe18c912db7cb81e74fce29960b0728d9
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.reviewer: minewiskan
+ms.openlocfilehash: 3b60a5b96d7b8a0c48aacc916b1ba933dcd83705
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Az Azure Analysis Services támogatott adatforrások
 
@@ -36,12 +29,12 @@ Az adatforrások és összekötők jelennek meg adatok beolvasása vagy a Visual
 |Azure Cosmos DB*     |  Igen        |  Nem        |
 |Azure Data Lake Store*     |   Igen       |    Nem      |
 |Azure HDInsight HDFS*     |     Igen     |   Nem       |
-|Azure HDInsight Spark*     |   Igen       |   Nem       |
+|Az Azure HDInsight Spark *     |   Igen       |   Nem       |
 ||||
 
 \* A táblázatos 1 400 modellek csak.
 
-**Provider**   
+**Szolgáltató**   
 A memóriában és csatlakozás az Azure adatforrásokhoz DirectQuery-modellekre használata a .NET Framework Data Provider az SQL Server.
 
 ## <a name="on-premises-data-sources"></a>Helyszíni adatforrások
@@ -53,7 +46,7 @@ Csatlakozás helyszíni erőforrásait és Azure AS-kiszolgáló szükséges egy
 |Adatforrás | A memória szolgáltató | DirectQuery-szolgáltató |
 |  --- | --- | --- |
 | SQL Server |SQL Server natív ügyfél 11.0, Microsoft OLE DB-szolgáltató az SQL Server, a .NET Framework Data Provider az SQL Server | .NET framework Data Provider az SQL Server |
-| SQL Server Data Warehouse |SQL Server natív ügyfél 11.0, Microsoft OLE DB-szolgáltató az SQL Server, a .NET Framework Data Provider az SQL Server | .NET framework Data Provider az SQL Server |
+| SQL Server-adatraktár |SQL Server natív ügyfél 11.0, Microsoft OLE DB-szolgáltató az SQL Server, a .NET Framework Data Provider az SQL Server | .NET framework Data Provider az SQL Server |
 | Oracle |Microsoft OLE DB-szolgáltató az Oracle, Oracle-adatszolgáltatóban a .NET-hez |Oracle-adatszolgáltatóban a .NET-hez | |
 | Teradata |OLE DB-szolgáltató a teradata rendszerhez, Teradata-adatszolgáltatója a .NET-hez |Teradata-adatszolgáltatója a .NET-hez | |
 | | | |
@@ -66,7 +59,7 @@ Csatlakozás helyszíni erőforrásait és Azure AS-kiszolgáló szükséges egy
 |Active Directory*     |  
 |Analysis Services     |  
 |Analytics Platform System     |  
-|Dynamics CRM*     |  
+|Dynamics CRM *     |  
 |Az Excel-munkafüzet     |  
 |Exchange*     |  
 |Mappa *     | 

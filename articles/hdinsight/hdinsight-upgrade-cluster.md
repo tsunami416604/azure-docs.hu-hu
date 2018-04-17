@@ -1,8 +1,8 @@
 ---
-title: "Egy újabb verzióra frissítés HDInsight-fürt-Azure |} Microsoft Docs"
-description: "Megtudhatja, hogyan kell frissíteni a HDInsight-fürt egy újabb verzióra."
+title: Egy újabb verzióra frissítés HDInsight-fürt-Azure |} Microsoft Docs
+description: Megtudhatja, hogyan kell frissíteni a HDInsight-fürt egy újabb verzióra.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: bhanupr
 manager: asadk
 editor: bhanupr
@@ -11,15 +11,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 04/04/2017
 ms.author: bhanupr
-ms.openlocfilehash: fa2e37bd922690322ccc3d8f68128180d013b701
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d6cd0dd8b326f5340e5014bba4babc6dd945744d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>HDInsight-fürt frissítése újabb verzióra
 A legújabb HDInsight-funkciók előnyeit, azt javasoljuk, hogy a HDInsight-fürtök legújabb verzióra frissíteni. Kövesse az útmutatást frissítése a HDInsight alatt fürt verziók.
@@ -48,7 +46,7 @@ Miután ellenőrizte, hogy minden megfelelően működik-e, az áttelepítés te
 4.  Biztonsági másolatot készített az átmeneti adatok importálása.
 5.  Kezdő feladatok/folytatni az új fürt segítségével.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Ismerje meg a Linux-alapú HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md)
 * [HDInsight SSH használatával kapcsolódni](hdinsight-hadoop-linux-use-ssh-unix.md)
 * [A Linux-alapú fürt Ambari kezelése](hdinsight-hadoop-manage-ambari.md)

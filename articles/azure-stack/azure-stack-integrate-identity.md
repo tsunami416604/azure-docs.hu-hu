@@ -6,15 +6,15 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 04/06/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 3180b24454fc49a34a40bdf2873fad1d56173e3d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4ecd08f3750e8521270369a69c6801497e587a75
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Az Azure verem datacenter integrációs - identitás
 Az identitás-szolgáltatóktól Azure verem Azure Active Directory (Azure AD) vagy Active Directory összevonási szolgáltatások (AD FS) használatával telepítheti. Azure verem központi telepítése előtt meg kell nyitnia a választás. AD FS segítségével központi telepítés is nevezzük Azure verem kapcsolat nélküli módban való telepítése.
@@ -56,7 +56,7 @@ Követelmények:
 |Összetevő|Követelmény|
 |---------|---------|
 |Graph|Microsoft Active Directory 2012/2012 R2/2016|
-|AD FS|Windows Server 2012/2012 R2/2016|
+|AD FS|Windows Server 2012 vagy 2012 R2/2016|
 
 ## <a name="setting-up-graph-integration"></a>Graph-integráció beállítása
 
@@ -262,6 +262,9 @@ Ha úgy dönt, hogy manuálisan futtassa a parancsokat, kövesse az alábbi lép
    > Kell használnia az AD FS beépülő MMC-modulban a kiállítás-engedélyezési szabályok konfigurálása a Windows Server 2012 vagy 2012 R2 AD FS használata esetén.
 
 4. Internet Explorer vagy használatakor az Edge böngésző Azure verem eléréséhez, akkor kell figyelmen kívül a token kötések. Ellenkező esetben a bejelentkezési kísérlet sikertelen. Az AD FS-példányt vagy egy farm tagja a következő parancsot:
+
+   > [!note]  
+   > Ez a lépés használata esetén nem alkalmazható a Windows Server 2012 vagy 2012 R2 AD FS. Biztonságos, hagyja ki ezt a parancsot, és folytassa az integrációt is.
 
    ```powershell
    Set-AdfsProperties -IgnoreTokenBinding $true

@@ -1,27 +1,25 @@
 ---
-title: "Szerializálni az adatokat a Hadoop - Microsoft Avro Library - Azure-ban |} Microsoft Docs"
-description: "Megtudhatja, hogyan lehet szerializálni, és adatokat a Hadoop on HDInsight használatával a Microsoft az Avro Library megőrizni a memória, egy adatbázis vagy a fájl."
+title: Szerializálni az adatokat a Hadoop - Microsoft Avro Library - Azure-ban |} Microsoft Docs
+description: Megtudhatja, hogyan lehet szerializálni, és adatokat a Hadoop on HDInsight használatával a Microsoft az Avro Library megőrizni a memória, egy adatbázis vagy a fájl.
 keywords: az avro, hadoop avro
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.assetid: c78dc20d-5d8d-4366-94ac-abbe89aaac58
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: jgao
 ms.custom: hdiseo17may2017
-ms.openlocfilehash: 5bb2ee2b9b838cc9feca60eca6b2c721ca58ed45
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 9b4bd615a8a64070a9b246cb8fe8635cc89108cf
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="serialize-data-in-hadoop-with-the-microsoft-avro-library"></a>A Microsoft az Avro Library Hadoop adatok szerializálása
 
@@ -1384,7 +1382,7 @@ Minden adatot a Előfeltételek kell adni a minta konfigurációs fájl a minta 
 * Szerkessze az app.config fájlt, a minta gyökérkönyvtárában, és majd kialakítható a minta
 * A minta először létre, és szerkessze a AvroHDISample.exe.config a build könyvtárban
 
-Mindkét esetben minden módosításokat kell végezni a  **<appSettings>**  beállítások szakaszban. Kövesse a megjegyzéseket, a fájlban.
+Mindkét esetben minden módosításokat kell végezni a **<appSettings>** beállítások szakaszban. Kövesse a megjegyzéseket, a fájlban.
 A minta futtatása a parancssorból futtassa a következő parancsot (amelyben a .zip-fájlt a mintával lett feltételezi, hogy kibontott C:\AvroHDISample; Ha ellenkező esetben használja a megfelelő elérési útja):
 
     AvroHDISample run C:\AvroHDISample\Data
