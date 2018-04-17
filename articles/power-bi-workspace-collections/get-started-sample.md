@@ -1,12 +1,12 @@
 ---
-title: "Ismerkedés egy minta segítségével"
-description: "Ebben a cikkben azt fogja megismerteti a Power BI munkaterület gyűjtemények get elindított minta."
+title: Ismerkedés egy minta segítségével
+description: Ebben a cikkben azt fogja megismerteti a Power BI munkaterület gyűjtemények get elindított minta.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: d8a9ef78-ad4e-4bc7-9711-89172dc5c548
 ms.service: power-bi-embedded
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/25/2017
-ms.author: asaxton
-ms.openlocfilehash: 9049f95c9f81c0217c96469a45561b6cd0b33ae9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 4daa675092bed1788025e7e3f7e7e11d02ef1671
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Bevezetés a Power BI munkaterület gyűjtemények minta használatába
 
@@ -45,7 +45,7 @@ Bemutatjuk, keresztül érik el a mintaalkalmazás futtatásához szükséges ö
 
 1. Töltse le és csomagolja ki a [Power BI munkaterület gyűjtemények - jelentés integrálásához webalkalmazás](http://go.microsoft.com/fwlink/?LinkId=761493) mintát a Githubon.
 2. Nyissa meg **Power bi-embedded.sln** a Visual Studióban. Szükség lehet végrehajtani a **-csomag** a NuGet-Csomagkezelő konzol frissítéséhez a csomagokat a megoldásban használt parancsot.
-3. A megoldás felépítéséhez.
+3. Hozza létre a megoldást.
 4. Futtassa a **ProvisionSample** konzolalkalmazást. A minta-Konzolalkalmazás munkaterület kiépíteni, és PBIX-fájl importálása.
 5. Kiépítéséhez egy új **munkaterület**, válassza az 1. lehetőség – **gyűjtési felügyeleti**, és választhatja meg a 6., **új munkaterület kiépítése**
 6. Importálhatja egy új **jelentés**, válassza ki a 2. lehetőség – **jelentést a felügyeleti**, majd válassza ki a 3. lehetőség – **pbix-fájlt asztali importálása fájlból egy munkaterület**.
@@ -71,7 +71,7 @@ Checking import state... Succeeded
 
 Ezen a ponton rendelkezik egy Power BI pbix-fájlt a jelentés importálni a **munkaterület**. Most hogyan futtathat vizsgáljuk meg a **Power BI munkaterület gyűjtemények** elindított minta webalkalmazás beolvasása.
 
-## <a name="run-the-sample-web-app"></a>A webes mintaalkalmazás futtatása
+## <a name="run-the-sample-web-app"></a>A mintául szolgáló webalkalmazás futtatása
 
 A webes alkalmazás minta egy jeleníti meg az importált jelentések mintaalkalmazás a **munkaterület**. Ez a webes alkalmazás minta konfigurálása.
 
@@ -143,7 +143,7 @@ A **nézet** kezeli a képernyőt a Power bi **jelentések** és a Power BI **je
 
 | Rész | Leírás |
 | --- | --- |
-| Cím |A jelentés nevét. |
+| Beosztás |A jelentés nevét. |
 | Lekérdezési karakterlánc |A jelentés azonosítója mutató hivatkozás |
 
     <div id="reports-nav" class="panel-collapse collapse">
@@ -171,7 +171,7 @@ Report.cshtml: Állítsa be a **Model.AccessToken**, és a Lambda kifejezést **
         @Html.PowerBIReportFor(m => m.Report, new { style = "height:85vh" })
     </div>
 
-### <a name="controller"></a>Tartományvezérlő
+### <a name="controller"></a>Vezérlő
 
 **DashboardController.cs**: egy PowerBIClient sikeres létrehoz egy **alkalmazási jogkivonatának**. A JSON webes jogkivonat (JWT) jön létre a **aláírási kulcs** lekérni a **hitelesítő adatok**. A **hitelesítő adatok** példányának létrehozásához használt **PowerBIClient**. Ha egy példánya már **PowerBIClient**, GetReports() és GetReportsAsync() hívása.
 
@@ -254,7 +254,7 @@ $filter={tableName/fieldName}%20eq%20'{fieldValue}'
 > [!NOTE]
 > A {tableName/fieldName} nem tartalmazhat szóközt és speciális karaktereket. A {fieldValue} egyetlen kategorikus értéket enged.  
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 [Microsoft Power BI-Munkaterületcsoport gyakori helyzetek](scenarios.md)  
 [Hitelesítés és engedélyezés a Power BI-munkaterületcsoportok használatával](app-token-flow.md)  

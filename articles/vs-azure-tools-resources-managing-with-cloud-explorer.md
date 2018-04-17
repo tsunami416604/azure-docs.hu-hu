@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 03/25/2017
 ms.author: ghogen
-ms.openlocfilehash: 676feb0b01ec5622feff4351ade54e9856e54b13
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: f5205bb158141a3f8e0296fefe2528d1bc5ea64c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-the-resources-associated-with-your-azure-accounts-in-visual-studio-cloud-explorer"></a>A Visual Studio Cloud Explorer Azure fiókokhoz tartozó erőforrások kezelése
 Cloud Explorer lehetővé teszi az Azure-erőforrások és csoportok megtekintése, vizsgálja meg a tulajdonságaikról és műveleteket kulcs fejlesztői diagnosztika a Visual studióban. 
 
-Például a [Azure-portálon](http://go.microsoft.com/fwlink/p/?LinkID=525040), Cloud Explorer épül, az Azure Resource Manager-készletben. Ezért Cloud Explorer megértette erőforrások, például Azure erőforráscsoport-sablonok és a Logic Apps alkalmazásokat és API-alkalmazások például az Azure-szolgáltatásokat, valamint a [szerepköralapú hozzáférés-vezérlés](active-directory/role-based-access-control-configure.md) (RBAC). 
+Például a [Azure-portálon](http://go.microsoft.com/fwlink/p/?LinkID=525040), Cloud Explorer épül, az Azure Resource Manager-készletben. Ezért Cloud Explorer megértette erőforrások, például Azure erőforráscsoport-sablonok és a Logic Apps alkalmazásokat és API-alkalmazások például az Azure-szolgáltatásokat, valamint a [szerepköralapú hozzáférés-vezérlés](role-based-access-control/role-assignments-portal.md) (RBAC). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 - [A Visual Studio 2017](https://www.visualstudio.com/downloads/) rendelkező a **Azure számítási** kiválasztva, vagy a Visual Studio egy korábbi verzióját a [Microsoft Azure SDK for .NET 2.9](https://www.microsoft.com/en-us/download/details.aspx?id=51657).

@@ -1,6 +1,6 @@
 ---
-title: "Az Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - kockázatbecslés"
-description: "FedRAMP webes alkalmazások Automation - kockázatbecslés"
+title: Az Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - kockázatbecslés
+description: FedRAMP webes alkalmazások Automation - kockázatbecslés
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 7abdb674b9d6bb000ce9a8e1861d012c1882f2a5
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 7a7529f9a0ebe43c9fd6e473baff6f7a3b61e5e5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="risk-assessment-ra"></a>Kockázatbecslés (RA)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **RA-1** a szervezet házon belül fejlesztett alkalmazásokra, dokumentumokat, és hogy terjeszti [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök] célra, hatókör, szerepkörök, feladatok, felügyeleti kötelezettségvállalás, koordinációs orvosló kockázat assessment házirend szervezeti entitásokat, és a megfelelőségi; és eljárásokat azzal, hogy a kockázati assessment házirend és a kapcsolódó kockázat assessment vezérlők; végrehajtásának megkönnyítése ellenőrzi, és frissíti az aktuális kockázata értékelő házirend [hozzárendelés: szervezet által meghatározott gyakoriság]; és eljárások kockázatát [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **RA-2.a** a szervezet kategorizálja információkat és az információs rendszer megfelelően Szövetségi törvényi, végrehajtó rendelések, irányelvek, házirendek, szabványok, szabványok és útmutatást.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **RA-2.b** a szervezet dokumentumokat a biztonsági kategorizálási eredmények (beleértve a profilkategóriák támogató) a biztonsági csomagban az információk rendszerhez.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **RA-2.c** a szervezet biztosítja, hogy a hivatalos engedélyező, illetve ennek engedélyezése hivatalos kijelölt képviselője ellenőrzi, és hagyja jóvá a biztonsági kategorizálási döntést.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **RA-3.a** a szervezet használt kockázata, többek között a valószínűsége és kárt, a jogosulatlan hozzáférés, használja, nyilvánosságra, szüneteltetése, módosítása vagy megsemmisítése az információk rendszer és az információk mennyiségére értékelése az dolgozza fel, vagy tárolja továbbítja.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **RA-3.b** a szervezet kockázatok értékelési eredmények dokumentumok [kijelölés: biztonsági terv; kockázata értékelő jelentést; [Hozzárendelés: a dokumentum a szervezet által meghatározott]].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **RA-3** a szervezet ellenőrzi, hogy kockázat értékelési eredmények [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **RA-3.d** a szervezet terjeszt kockázati értékelési eredmények [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **RA-3.e** A szervezet frissíti a kockázatbecslés [hozzárendelés: szervezet által meghatározott gyakoriság] vagy amikor jelentős módosításokat a rendszer vagy a környezet művelet (beleértve az új veszélyeket és biztonsági rések azonosítása), vagy egyéb feltételeket, amelyek hatással lehet a rendszer biztonsági állapotát.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -157,11 +157,11 @@ ms.lasthandoff: 02/11/2018
 
 **RA-5.a** a szervezet biztonsági rések keres a információs rendszerben, és alkalmazásokat [hozzárendelés: szervezet által meghatározott gyakoriságát és/vagy véletlenszerűen szervezet által meghatározott folyamat összhangban] és mikor új biztonsági réseket a rendszer alkalmazások potenciálisan érintő azonosítva és jelenteni.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
-| **Ügyfél** | Ez tervezetének telepíti az OMS biztonsági és hitelesítési megoldás. Ez a megoldás révén átfogó képet kaphat a biztonságot. A megoldáson két biztonsági tartomány, a frissítések értékelését és alapkonfiguráció értékelése, érhetők el. Alapkonfiguráció értékelése értékelésére beállításkulcsok, a naplórend-beállítások és a biztonsági házirendjének beállításai a Microsoft ezek a beállítások ajánlott értékeit együtt. Frissítések értékelését értékeli az elérhető frissítések az összes telepített virtuális gépek állapotát. |
+| **Ügyfél** | Ez tervezetének telepíti a biztonsági és hitelesítési megoldás. Ez a megoldás révén átfogó képet kaphat a biztonságot. A megoldáson két biztonsági tartomány, a frissítések értékelését és alapkonfiguráció értékelése, érhetők el. Alapkonfiguráció értékelése értékelésére beállításkulcsok, a naplórend-beállítások és a biztonsági házirendjének beállításai a Microsoft ezek a beállítások ajánlott értékeit együtt. Frissítések értékelését értékeli az elérhető frissítések az összes telepített virtuális gépek állapotát. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -171,11 +171,11 @@ ms.lasthandoff: 02/11/2018
 
 **RA-5.b** a szervezet biztonsági rések keresése eszközöket és technikákat, amely az eszközök közötti együttműködés elősegítheti és automatizálhatja a a biztonsági rés felügyeleti folyamat részeinek szabványok használatával rendszerek, szoftverek hibái enumerálásához használatos funkcióit használja. , és nem megfelelő konfigurációk; formázási ellenőrzőlistákra és eljárásokra teszt; és a mérési biztonsági rés hatása.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
-| **Ügyfél** | Ez tervezetének telepíti az OMS biztonsági és hitelesítési megoldás. A megoldáson két biztonsági tartomány, a frissítések értékelését és alapkonfiguráció értékelése, érhetők el. Azonosított hibák elhárítása besorolást kapnak. Common Configuration Enumeration (CCE) azonosítók alapkonfiguráció értékelése szabályok célokat szolgálnak.  |
+| **Ügyfél** | Ez tervezetének telepíti a biztonsági és hitelesítési megoldás. A megoldáson két biztonsági tartomány, a frissítések értékelését és alapkonfiguráció értékelése, érhetők el. Azonosított hibák elhárítása besorolást kapnak. Common Configuration Enumeration (CCE) azonosítók alapkonfiguráció értékelése szabályok célokat szolgálnak.  |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **RA-5.c** a szervezet biztonsági rés vizsgálat jelentések elemzi és biztonsági vezérlő értékelések annak az eredménye.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **RA-5.d** a szervezet javítja a megfelelőséget hiteles biztonsági rések [hozzárendelés: szervezet által meghatározott válaszidők] egy szervezeti kockázatbecslés megfelelően.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **RA-5.e** A szervezet osztja meg a biztonsági rés vizsgálatát a folyamat, és biztonsági vezérlő értékelések származó információ [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök] hasonló biztonsági rések (azaz a más információs rendszerekkel használt kiküszöbölése érdekében rendszeres gyenge vagy hiányosságok).
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -227,11 +227,11 @@ ms.lasthandoff: 02/11/2018
 
 **RA-5 (1)** a szervezet biztonsági rés ellenőrzési könnyen frissíteni az adatokat rendszer biztonsági rések beolvasandó funkció tartalmazó eszközök funkcióit használja.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
-| **Ügyfél** | Ez tervezetének telepíti az OMS biztonsági és hitelesítési megoldás. A megoldáson két biztonsági tartomány, a frissítések értékelését és alapkonfiguráció értékelése, érhetők el. A feltételek, amelyen ezek a megoldások értékeléséhez automatikusan frissül. |
+| **Ügyfél** | Ez tervezetének telepíti a biztonsági és hitelesítési megoldás. A megoldáson két biztonsági tartomány, a frissítések értékelését és alapkonfiguráció értékelése, érhetők el. A feltételek, amelyen ezek a megoldások értékeléséhez automatikusan frissül. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -241,11 +241,11 @@ ms.lasthandoff: 02/11/2018
 
 **RA-5 (2)** a szervezet frissíti az információk rendszer biztonsági réseit beolvasott [kijelölés (egy vagy több): [hozzárendelés: szervezet által meghatározott gyakoriság]; előtt új vizsgálat; Ha egy új biztonsági hiányosságok azonosított és jelentett].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
-| **Ügyfél** | Ez tervezetének telepíti az OMS biztonsági és hitelesítési megoldás. A megoldáson két biztonsági tartomány, a frissítések értékelését és alapkonfiguráció értékelése, érhetők el. A feltételek, amelyen ezek a megoldások értékeléséhez automatikusan frissül. |
+| **Ügyfél** | Ez tervezetének telepíti a biztonsági és hitelesítési megoldás. A megoldáson két biztonsági tartomány, a frissítések értékelését és alapkonfiguráció értékelése, érhetők el. A feltételek, amelyen ezek a megoldások értékeléséhez automatikusan frissül. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -255,11 +255,11 @@ ms.lasthandoff: 02/11/2018
 
 **RA-5 (3)** a szervezet biztonsági ellenőrzési eljárást, amely képes azonosítani a szélessége és mélysége a érvényességének (azaz beolvasott adatokat rendszerösszetevők és biztonsági rések be van jelölve) funkcióit használja.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
-| **Ügyfél** | Ez tervezetének telepíti az OMS biztonsági és hitelesítési megoldás. A megoldáson két biztonsági tartomány, a frissítések értékelését és alapkonfiguráció értékelése, érhetők el. Frissítések értékelését Windows és Linux virtuális gépek elleni assessment hajt végre. Alapkonfiguráció értékelése ágazatban kialakult bevált gyakorlaton alapuló fejlesztett Microsoft alapterv használata Windows virtuális gépek elleni assessment hajt végre. |
+| **Ügyfél** | Ez tervezetének telepíti a biztonsági és hitelesítési megoldás. A megoldáson két biztonsági tartomány, a frissítések értékelését és alapkonfiguráció értékelése, érhetők el. Frissítések értékelését Windows és Linux virtuális gépek elleni assessment hajt végre. Alapkonfiguráció értékelése ágazatban kialakult bevált gyakorlaton alapuló fejlesztett Microsoft alapterv használata Windows virtuális gépek elleni assessment hajt végre. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/11/2018
 
 **RA-5 (4)** a szervezet határozza meg, milyen információkat rendszer adatait ellenfelek által felderíthető, és ezt követően veszi [hozzárendelés: korrekciós műveletek szervezet által meghatározott].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -283,7 +283,7 @@ ms.lasthandoff: 02/11/2018
 
 **RA-5 (5)** az információs rendszer megvalósítja az emelt szintű hozzáférés engedélyezése [hozzárendelés: szervezet azonosított információk rendszerösszetevők] kijelölt [hozzárendelés: szervezet által meghatározott biztonsági rés tevékenységek vizsgálata].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -297,11 +297,11 @@ ms.lasthandoff: 02/11/2018
 
 **RA-5 (6)** a szervezet biztonsági vizsgálatok bizonyos idő információk rendszer biztonsági rések trendeket eredményeinek összehasonlítására automatizált mechanizmusok funkcióit használja.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
-| **Ügyfél** | OMS lehetővé teszi a hozzon létre egyéni irányítópult csempéi Naplóelemzési és a Microsoft Monitoring Agent által gyűjtött adatok elemzésére. Ezen csempék testre szabható trendeket megjelenítése adott idő alatt. |
+| **Ügyfél** | Azure lehetővé teszi a hozzon létre egyéni irányítópult csempéi Naplóelemzési és a Microsoft Monitoring Agent által gyűjtött adatok elemzésére. Ezen csempék testre szabható trendeket megjelenítése adott idő alatt. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -311,7 +311,7 @@ ms.lasthandoff: 02/11/2018
 
 **RA-5 (8)** a szervezet ellenőrzi, hogy történelmi naplókat annak meghatározásához, ha egy biztonsági rés, az adatokat a rendszer azonosított korábban már ki.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -325,9 +325,9 @@ ms.lasthandoff: 02/11/2018
 
 **RA-5 (10)** a szervezet korrelálja kimenetét a biztonsági rés eszközök több-vulnerability/több-hop támadási meglétének vizsgálatát.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
-| **Ügyfél** | Ez tervezetének telepíti az OMS biztonsági és hitelesítési megoldás. Ez a megoldás révén átfogó képet kaphat a biztonságot. A biztonsági és naplózási irányítópult érhetők el adatok használata telepített OMS-megoldásokkal telepített erőforrások biztonsági állapotának magas szintű betekintést nyújt. |
+| **Ügyfél** | Ez tervezetének telepíti a biztonsági és hitelesítési megoldás. Ez a megoldás révén átfogó képet kaphat a biztonságot. A biztonsági és naplózási irányítópult érhetők el adatok használata telepített megoldásokkal telepített erőforrások biztonsági állapotának magas szintű betekintést nyújt. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |

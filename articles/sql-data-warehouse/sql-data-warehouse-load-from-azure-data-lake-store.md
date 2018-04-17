@@ -1,56 +1,50 @@
 ---
-title: "Betöltési – az Azure Data Lake Store az SQL Data Warehouse |} Microsoft Docs"
-description: "Útmutató: az adatok betöltése az Azure Data Lake Store az Azure SQL Data Warehouse PolyBase külső táblák segítségével."
+title: 'Oktatóanyag: Azure SQL Data warehouse betöltése az Azure Data Lake Store |} Microsoft Docs'
+description: A PolyBase külső táblák segítségével az adatok betöltése az Azure Data Lake Store az Azure SQL Data warehouse-bA.
 services: sql-data-warehouse
-documentationcenter: NA
 author: ckarst
-manager: barbkess
-editor: 
-ms.assetid: 
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: loading
-ms.date: 3/14/2018
-ms.author: cakarst;barbkess
-ms.openlocfilehash: f8cd293236255e227f80a42e78d25aebd8789bdd
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/12/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: 3c6907e8eb4ae4bbfae76a5a220d670427afd703
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="load-data-from-azure-data-lake-store-into-sql-data-warehouse"></a>Adatok betöltése az Azure Data Lake Store az SQL Data Warehouse
-Ez a dokumentum lehetővé teszi az összes lépést kell az Azure Data Lake Store-(ADLS-) adatok betöltése az SQL Data Warehouse PolyBase használatával.
-Miközben az ad hoc lekérdezéseket futtatnia a külső táblák segítségével ADLS tárolt adatokat képes, javasoljuk, hogy az adatok importálása az SQL Data Warehouse a legjobb teljesítmény érdekében.
+# <a name="load-data-from-azure-data-lake-store-to-sql-data-warehouse"></a>Adatok betöltése az Azure Data Lake Store az SQL Data Warehouse
+A PolyBase külső táblák segítségével az adatok betöltése az Azure Data Lake Store az Azure SQL Data warehouse-bA. Bár az adatok tárolva ADLS ad hoc lekérdezéseket is futtathat, azt javasoljuk az adatok importálása az SQL Data Warehouse a legjobb teljesítmény érdekében.
 
-Ebből az oktatóanyagból megtudhatja, hogyan:
+> [!div class="checklist"]
+> * Az Azure Data Lake Store betöltéséhez szükséges adatbázis-objektumok létrehozása.
+> * Csatlakozás az Azure Data Lake Store-címtárhoz.
+> * Adatok betöltése az Azure SQL Data warehouse-bA.
 
-1. Az Azure Data Lake Store betöltéséhez szükséges adatbázis-objektumok létrehozása.
-2. Csatlakozás az Azure Data Lake Store-címtárhoz.
-3. Adatok betöltése az Azure SQL Data warehouse-bA.
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="before-you-begin"></a>Előkészületek
+Az oktatóanyag megkezdése előtt töltse le és telepítse az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) legújabb verzióját.
+
 Ez az oktatóanyag futtatásához szükséges:
 
-* Az Azure Active Directory-alkalmazást a szolgáltatások közötti hitelesítéshez használandó. Létrehozásához hajtsa végre az [Active directory-hitelesítés](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory)
+* Az Azure Active Directory-alkalmazást a szolgáltatások közötti hitelesítéshez használandó. Létrehozásához hajtsa végre az [Active directory-hitelesítés](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)
 
 >[!NOTE] 
-> Az ügyfél-azonosító, a kulcs és a OAuth2.0 Token végpont értékét az Active Directory-alkalmazás csatlakozni az SQL Data Warehouse az Azure Data Lake van szükség. Ezek az értékek beolvasásával részleteit a fenti hivatkozás van.
->Megjegyzés: az Azure Active Directory-alkalmazás regisztráció alkalmazás-azonosító használata az ügyfél-azonosító.
+> Az ügyfél-azonosító, a kulcs és a OAuth2.0 Token végpont értékét az Active Directory-alkalmazás csatlakozni az SQL Data Warehouse az Azure Data Lake van szükség. Ezek az értékek beolvasásával részleteit a fenti hivatkozás van. Az Azure Active Directory-alkalmazás regisztráció Alkalmazásazonosító használják az ügyfél-azonosító.
+> 
 
-* SQL Server Management Studio vagy SQL Server Data Tools SSMS töltse le és csatlakoztassa [lekérdezés SSMS](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-query-ssms)
+* Egy Azure SQL Data Warehouse. Lásd: [létrehozása és a lekérdezés és az Azure SQL Data Warehouse](create-data-warehouse-portal.md).
 
-* Egy Azure SQL Data Warehouse létrehozása egy kövesse: https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-provision
+* Egy Azure Data Lake Store. Lásd: [Ismerkedés az Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md). 
 
-* Egy Azure Data Lake Store, hozzon létre egy kövesse: https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal
+##  <a name="create-a-credential"></a>Hitelesítő adatok létrehozása
+Az Azure Data Lake Store eléréséhez szüksége lesz a következő lépésben használt hitelesítő adatok titkos titkosításához Adatbázisfőkulcs létrehozása. Ezután hozzon létre egy Database Scoped Credential, amely tárolja a szolgáltatás egyszerű hitelesítő adatok beállítása az aad-ben. Azok az Ön számára, akik használt PolyBase csatlakozni a Windows Azure Storage Blobs, vegye figyelembe, hogy a credential szintaxis különböző.
 
-
-###  <a name="create-a-credential"></a>Hitelesítő adatok létrehozása
-Az Azure Data Lake Store eléréséhez szüksége lesz a következő lépésben használt hitelesítő adatok titkos titkosításához Adatbázisfőkulcs létrehozása.
-Ezután hozzon létre egy Database Scoped Credential, amely tárolja a szolgáltatás egyszerű hitelesítő adatok beállítása az aad-ben. Azok az Ön számára, akik használt PolyBase csatlakozni a Windows Azure Storage Blobs, vegye figyelembe, hogy a credential szintaxis különböző.
-Azure Data Lake Store csatlakozni kell **első** hozzon létre egy Azure Active Directory-alkalmazást, hozzáférési kulcs létrehozása, és adja meg az alkalmazás-hozzáférés az Azure Data Lake-erőforráshoz. Utasításokat a következő lépésekkel találhatók [Itt](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory).
+Azure Data Lake Store csatlakozni kell **első** hozzon létre egy Azure Active Directory-alkalmazást, hozzáférési kulcs létrehozása, és adja meg az alkalmazás-hozzáférés az Azure Data Lake-erőforráshoz. Útmutatásért lásd: [hitelesítés az Azure Data Lake Store használatával Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
 
 ```sql
 -- A: Create a Database Master Key.
@@ -80,9 +74,8 @@ WITH
 ;
 ```
 
-
-### <a name="create-the-external-data-source"></a>A külső adatforrás létrehozása
-Ezzel [külső ADATFORRÁS létrehozása] [ CREATE EXTERNAL DATA SOURCE] parancs használatával tárolja az adatok helyét. 
+## <a name="create-the-external-data-source"></a>A külső adatforrás létrehozása
+Ezzel [külső ADATFORRÁS létrehozása](/sql/t-sql/statements/create-external-data-source-transact-sql) parancs használatával tárolja az adatok helyét. 
 
 ```sql
 -- C: Create an external data source
@@ -100,7 +93,7 @@ WITH (
 
 ## <a name="configure-data-format"></a>Az adatformátum konfigurálása
 Az adatok importálása ADLS, meg kell adnia a külső fájlformátumot. Ezt az objektumot határozza meg, hogyan az ADLS írja a fájlt.
-A teljes listát, tekintse meg a T-SQL dokumentációról [külső FÁJLFORMÁTUM létrehozása][CREATE EXTERNAL FILE FORMAT]
+A teljes listát, tekintse meg a T-SQL dokumentációról [külső FÁJLFORMÁTUM létrehozása](/sql/t-sql/statements/create-external-file-format-transact-sql)
 
 ```sql
 -- D: Create an external file format
@@ -160,7 +153,7 @@ A REJECT_TYPE és REJECT_VALUE beállítások megadása a sorok számát, vagy a
  Azure Data Lake store szerepköralapú hozzáférés vezérlés (RBAC) segítségével az adatok hozzáférésének vezérléséhez. Ez azt jelenti, hogy a szolgáltatás egyszerű Olvasás engedéllyel kell rendelkeznie a könyvtárak a hely paraméterben meghatározott, és végső könyvtárat és fájlokat gyermekei. Ez lehetővé teszi, hogy a hitelesítéshez, és adott adatok betöltése a PolyBase. 
 
 ## <a name="load-the-data"></a>Az adatok betöltése
-Az adatok betöltése az Azure Data Lake Store használatát a [CREATE TABLE AS SELECT (Transact-SQL)] [ CREATE TABLE AS SELECT (Transact-SQL)] utasítást. 
+Az adatok betöltése az Azure Data Lake Store használatát a [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) utasítást. 
 
 CTAS új táblát hoz létre, és feltölti a select utasítás a eredményekkel. CTAS határozza meg az új tábla ugyanazon oszlopok és adattípusok rendelkezik, mint a select utasítás eredményét. Ha minden oszlop egy külső tábla, az új táblázat a külső tábla az adattípusokat és az oszlopok egy replikát.
 
@@ -177,7 +170,7 @@ OPTION (LABEL = 'CTAS : Load [dbo].[DimProduct]');
 
 
 ## <a name="optimize-columnstore-compression"></a>Oszlopcentrikus tömörítés optimalizálása
-Alapértelmezés szerint az SQL Data Warehouse tárolja a tábla fürtözött oszlopcentrikus index. A betöltés befejezése után az adatsorok némelyike esetleg nem tömörítse össze az oszlopcentrikus.  Miért Ez akkor fordulhat elő, ennek több van. További tudnivalókért lásd: [oszlopcentrikus Indexek kezelése][manage columnstore indexes].
+Alapértelmezés szerint az SQL Data Warehouse tárolja a tábla fürtözött oszlopcentrikus index. A betöltés befejezése után az adatsorok némelyike esetleg nem tömörítse össze az oszlopcentrikus.  Miért Ez akkor fordulhat elő, ennek több van. További tudnivalókért lásd: [oszlopcentrikus Indexek kezelése](sql-data-warehouse-tables-index.md).
 
 Optimalizálható a teljesítmény-küszöbérték és a betöltés után oszlopcentrikus tömörítés, építse újra az oszloptárindexet az összes sor tömörítendő kényszerítése a tábla.
 
@@ -187,41 +180,31 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 
 ```
 
-Az oszlopcentrikus indexek fenntartása További információkért lásd: a [oszlopcentrikus Indexek kezelése] [ manage columnstore indexes] cikk.
-
 ## <a name="optimize-statistics"></a>Statisztika optimalizálása
 Érdemes a betöltés után azonnal létrehozza a egyoszlopos statisztikát. Nincsenek néhány statisztikai lehetőségeit. Például ha egyoszlopos statisztikát hoz létre minden egyes oszlophoz a statisztika, hogy hosszú ideig eltarthat. Ha ismeri az egyes oszlopok nem tervezi, hogy a lekérdezés predikátumok kell, kihagyhatja a statisztikák létrehozása az ilyen oszlopokat.
 
-Ha egy oszlop statisztikákat létrehozni minden tábla minden egyes oszlophoz, használhatja a tárolt eljárás kódminta `prc_sqldw_create_stats` a a [statisztika] [ statistics] cikk.
+Ha egy oszlop statisztikákat létrehozni minden tábla minden egyes oszlophoz, használhatja a tárolt eljárás kódminta `prc_sqldw_create_stats` a a [statisztika](sql-data-warehouse-tables-statistics.md) cikk.
 
 A következő példa: statisztikák létrehozása az jó kiindulási pont. Minden egyes oszlopának a dimenziótáblában és a ténytáblák csatlakozó oszlopainak egyoszlopos statisztikát hoz. Mindig hozzáadhat egy vagy több oszlop statisztikai más tény táblaoszlopok később.
-
 
 ## <a name="achievement-unlocked"></a>Zárolása feloldva elérésének!
 Az Azure SQL Data Warehouse sikeresen betöltött adatok. Remek munka!
 
-## <a name="next-steps"></a>További lépések
-Adatok betöltése az SQL Data Warehouse data warehouse megoldás fejlesztése első lépése. Tekintse meg a fejlesztői erőforrások a [táblák](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-overview) és [T-SQL](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-loops).
+## <a name="next-steps"></a>További lépések 
+Ebben az oktatóanyagban létre Azure Data Lake Store-ban tárolt adatok struktúra külső táblák, és a PolyBase CREATE TABLE AS SELECT utasítás használatával adatok betöltése az az adatraktár. 
+
+A következőket hajtotta végre:
+> [!div class="checklist"]
+> * Szükséges betölteni az Azure Data Lake Store a létrehozott adatbázis-objektumokat.
+> * Az Azure Data Lake Store-címtárhoz csatlakozik.
+> * Az Azure SQL Data Warehouse betöltött adatokról.
+> 
+
+Adatok betöltése az SQL Data Warehouse data warehouse megoldás fejlesztése első lépése. Tekintse meg a fejlesztői erőforrások.
+
+> [!div class="nextstepaction"]
+>[Ismerje meg, hogyan fejleszthet az SQL Data Warehouse táblák](sql-data-warehouse-tables-overview.md)
 
 
-<!--Image references-->
 
-<!--Article references-->
-[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
-[Load data into SQL Data Warehouse]: sql-data-warehouse-overview-load.md
-[SQL Data Warehouse development overview]: sql-data-warehouse-overview-develop.md
-[manage columnstore indexes]: sql-data-warehouse-tables-index.md
-[Statistics]: sql-data-warehouse-tables-statistics.md
-[CTAS]: sql-data-warehouse-develop-ctas.md
-[label]: sql-data-warehouse-develop-label.md
 
-<!--MSDN references-->
-[CREATE EXTERNAL DATA SOURCE]: https://msdn.microsoft.com/library/dn935022.aspx
-[CREATE EXTERNAL FILE FORMAT]: https://msdn.microsoft.com/library/dn935026.aspx
-[CREATE TABLE AS SELECT (Transact-SQL)]: https://msdn.microsoft.com/library/mt204041.aspx
-[sys.dm_pdw_exec_requests]: https://msdn.microsoft.com/library/mt203887.aspx
-[REBUILD]: https://msdn.microsoft.com/library/ms188388.aspx
-
-<!--Other Web references-->
-[Microsoft Download Center]: http://www.microsoft.com/download/details.aspx?id=36433
-[Load the full Contoso Retail Data Warehouse]: https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md

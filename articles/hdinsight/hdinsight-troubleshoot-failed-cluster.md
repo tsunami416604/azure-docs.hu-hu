@@ -1,26 +1,24 @@
 ---
-title: "A lassú vagy meghibásodott HDInsight-fürt - Azure HDInsight hibaelhárítása |} Microsoft Docs"
-description: "Diagnosztizálásához és hibaelhárításához lassú vagy meghibásodott HDInsight-fürt."
+title: A lassú vagy meghibásodott HDInsight-fürt - Azure HDInsight hibaelhárítása |} Microsoft Docs
+description: Diagnosztizálásához és hibaelhárításához lassú vagy meghibásodott HDInsight-fürt.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: 00c4ac0e2ac059efebbfbe0b2426b27361ad8e37
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: bd026169062788fa7587cb6357b3764fbfdb24fb
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>Lassú vagy meghibásodott HDInsight-fürt hibaelhárítása
 
@@ -134,7 +132,7 @@ $ curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton
 
 Ambari megjelenít egy riasztást jelenít meg a gazdagépek, amelyen a WebHCat szolgáltatás le van állítva. Próbálja meg elindítani a WebHCat szolgáltatás vissza indítsa újra a szolgáltatást a gazdagépen.
 
-![Restart WebHCat Server](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat.png)
+![Indítsa újra a WebHCat-kiszolgáló](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat.png)
 
 Ha a Webhcaten-kiszolgáló még nem kapja meg, majd a naplóban a műveletek hibaüzenetek. Részletes információkat, ellenőrizze a `stderr` és `stdout` a csomóponton hivatkozott fájlok.
 
@@ -209,7 +207,7 @@ Ezek a problémák diagnosztizálásához:
 
     Előfordulhatnak olyan esetekben, ahol WebHCat interakció sikeres, de a feladat sikertelen.
 
-    Lépni a Templeton gyűjti a feladat konzol kimeneti adatok `stderr` a `statusdir`, amelyeket legtöbbször a hibaelhárításhoz használható. `stderr`a tényleges lekérdezés a YARN-azonosítót tartalmaz.
+    Lépni a Templeton gyűjti a feladat konzol kimeneti adatok `stderr` a `statusdir`, amelyeket legtöbbször a hibaelhárításhoz használható. `stderr` a tényleges lekérdezés a YARN-azonosítót tartalmaz.
 
 ## <a name="step-4-review-the-environment-stack-and-versions"></a>4. lépés:, Tekintse át a környezeti verem és -verziók
 

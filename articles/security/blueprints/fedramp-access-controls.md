@@ -1,6 +1,6 @@
 ---
-title: "Az Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - hozzáférés-vezérlés"
-description: "FedRAMP webes alkalmazások Automation - hozzáférés-vezérlés"
+title: Az Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - hozzáférés-vezérlés
+description: FedRAMP webes alkalmazások Automation - hozzáférés-vezérlés
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 73ce33bc6136b9b76661dc9e29b3a11c3eabc5f8
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 3d30f889c4d7ed0dafcf8559e8987090c03f4d5e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="access-control-ac"></a>Hozzáférés-vezérlés (AC)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-1** a szervezet házon belül fejlesztett alkalmazásokra, dokumentumokat, és hogy terjeszti [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök] célra, hatókör, szerepkörök, feladatok, felügyeleti kötelezettségvállalás, koordinációs orvosló hozzáférés-vezérlési szabályzatok szervezeti entitásokat, és a megfelelőségi; és eljárásokat azzal, hogy a hozzáférés-vezérlési szabályzat és a kapcsolódó hozzáférés-vezérlés; végrehajtásának megkönnyítése ellenőrzi, hogy és a hozzáférés-vezérlési házirend frissítések [hozzárendelés: szervezet által meghatározott gyakorisága]; és hozzáférési az ellenőrzési eljárások [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2.a** a szervezet azonosítja, és kiválasztja a következő típusú információk rendszerfiókok szervezeti feladatok/üzleti funkciók támogatásához: [hozzárendelés: szervezet által megadott információk rendszer fióktípusok].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2.b** a szervezet adatokat rendszerfiókok fiók feletteseit rendeli hozzá.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2.c** a szervezet csoport és a szerepkör tagsági hoz létre.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2.d** a szervezet határozza meg a hitelesített felhasználók a rendszer, a csoport és a szerepkör tagság és a hozzáférési engedélyek (például a jogosultságok) és egyéb attribútumai (szükség szerint) az egyes fiókok számára.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2.e** A szervezet megköveteli a jóváhagyások által [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök] kérelmeknél hozza létre a információt.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2.f** a szervezet hoz létre, lehetővé teszi, módosítja, letilthatja és információ rendszer fiókok támogatják; ezzel eltávolítja [hozzárendelés: szervezet által meghatározott eljárást, vagy feltételek].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -129,11 +129,11 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2.g** a szervezet adatokat rendszerfiókok használatát figyeli.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
-| **Ügyfél** | Ez tervezetének megvalósítja az OMS biztonsági és hitelesítési megoldás identitások és hozzáférések irányítópult. Ez az irányítópult lehetővé teszi, hogy a fiók kezelők figyelése információ rendszer fiókok használatát. |
+| **Ügyfél** | Ez tervezetének valósítja meg a biztonsági és hitelesítési megoldás identitások és hozzáférések irányítópult. Ez az irányítópult lehetővé teszi, hogy a fiók kezelők figyelése információ rendszer fiókok használatát. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2.h** a szervezeti fiók kezelők értesítést küld, ha a fiókok már nem szükséges; felhasználók megszakadt és átvitt; és ha egyes információk rendszer használati vagy ismernie kell a változtatásokat.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2.i** a szervezet engedélyezi a hozzáférést a információs rendszer egy érvényes hálózatelérési hitelesítést; tervezett rendszer használati; és a szervezet vagy a kapcsolódó feladatok/üzleti funkciók által megkövetelt egyéb attribútumai alapján.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2.j** fiókot a következő fiók felügyeleti követelmények ellenőrzi, hogy a szervezet [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2.k** a szervezet hoz létre egy folyamatot, hosszkorlátját megosztott/csoport fiók hitelesítő adatait (ha telepítve vannak) egyéni felhasználók számára a csoport eltávolításakor.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -199,11 +199,11 @@ ms.lasthandoff: 02/11/2018
 
 **(1) AC-2** a szervezet funkcióit használja az automatizált mechanizmusok információ rendszer fiókok felügyeletének támogatásához.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
-| **Ügyfél** | Ez tervezetének megvalósítja az OMS biztonsági és hitelesítési megoldás identitások és hozzáférések irányítópult. Ez az irányítópult lehetővé teszi, hogy a fiók kezelők figyelése információ rendszer fiókok használatát. OMS beállítható úgy, hogy küld riasztást, ha a rendellenes tevékenységek gyanús vagy más előre meghatározott események következnek be. |
+| **Ügyfél** | Ez tervezetének valósítja meg a biztonsági és hitelesítési megoldás identitások és hozzáférések irányítópult. Ez az irányítópult lehetővé teszi, hogy a fiók kezelők figyelése információ rendszer fiókok használatát. Küld riasztást, ha a rendellenes tevékenységek gyanús vagy más előre meghatározott események konfigurálható. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2 (2)** az adatokat a rendszer automatikusan [kijelölés: eltávolítja; letiltja] után ideiglenes és vészhelyzeti fiókok [hozzárendelés: szervezet által meghatározott időszakban az egyes fiók].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **(3) AC-2** az adatokat a rendszer automatikusan letiltja a után inaktív fiókok [hozzárendelés: szervezet által meghatározott időszak].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -241,11 +241,11 @@ ms.lasthandoff: 02/11/2018
 
 **(4) AC-2** az adatokat a rendszer automatikusan fiók létrehozását, módosítását, engedélyezése, letiltása, és eltávolítási műveletek naplózás, és értesíti, [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
-| **Ügyfél** | Ez tervezetének valósítja meg a következő rendszer fióktípus: Azure Active Directory-felhasználók, a Windows operációs rendszer felhasználók, az SQL Server szolgáltatásfiókja. Az Azure Active Directory-fiók felügyeleti műveletek generál egy eseményt az Azure tevékenységnapló; Az operációs rendszer szintű fiók felügyeleti műveletek esemény létrehozása a rendszernaplóba. Ezek a naplók Naplóelemzési által gyűjtött, és az OMS-tárház tárolja. OMS beállítható úgy, hogy küld riasztást, előre meghatározott események bekövetkezésekor.  |
+| **Ügyfél** | Ez tervezetének valósítja meg a következő rendszer fióktípus: Azure Active Directory-felhasználók, a Windows operációs rendszer felhasználók, az SQL Server szolgáltatásfiókja. Az Azure Active Directory-fiók felügyeleti műveletek generál egy eseményt az Azure tevékenységnapló; Az operációs rendszer szintű fiók felügyeleti műveletek esemény létrehozása a rendszernaplóba. Ezek a naplók Naplóelemzési által gyűjtött, és a Naplóelemzési munkaterület tárolja. A Naplóelemzési beállítható úgy, hogy küld riasztást, előre meghatározott események bekövetkezésekor.  |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2 (5)** a szervezet megköveteli, hogy a felhasználók jelentkeznek, amikor [hozzárendelés: szervezet által meghatározott időszak várt tétlen vagy jelentkezzen ki a leírás].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/11/2018
 
 **(7) AC-2 sémaszintjén** a szervezet hoz létre és felügyeli a jogosultsággal rendelkező felhasználói fiókok szerint rendezi a rendszer engedélyezett információelérés és a jogosultságok a szerepkörök a szerepköralapú hozzáférés-sémát.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -283,11 +283,11 @@ ms.lasthandoff: 02/11/2018
 
 **(7) AC-2 .b** a szervezet kiemelt szerepkör-hozzárendelések figyeli.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
-| **Ügyfél** | Ez tervezetének megvalósítja az OMS biztonsági naplózási megoldás azonosítása és irányítópulton. Ez az irányítópult lehetővé teszi, hogy a fiók kezelők figyelése információ rendszer fiókok használatát. Ez a megoldás kiemelt szerepkör-hozzárendelések jelentésének lehet lekérdezni. |
+| **Ügyfél** | Ez tervezetének valósítja meg a biztonsági naplózás megoldás azonosítása és irányítópulton. Ez az irányítópult lehetővé teszi, hogy a fiók kezelők figyelése információ rendszer fiókok használatát. Ez a megoldás kiemelt szerepkör-hozzárendelések jelentésének lehet lekérdezni. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -297,7 +297,7 @@ ms.lasthandoff: 02/11/2018
 
 **(7) AC-2 .c** a szervezetnek szüksége [hozzárendelés: szervezet által meghatározott műveleteket] Ha kiemelt szerepkör-hozzárendelések nem megfelelőek.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -311,7 +311,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2 (9)** a szervezet csak lehetővé teszi a megfelelő megosztott/csoport fiókok használata [hozzárendelés: megosztott/csoportfiókoknak létrehozó szervezet által meghatározott feltételek].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -325,7 +325,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2 (10)** az információs rendszer megosztott/csoport fiók hitelesítő adatainak ér véget, amikor a tagok a csoport elhagyására.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -339,7 +339,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2 (11)** az adatokat a rendszer érvénybe lépteti [hozzárendelés: szervezet által meghatározott körülmények között és/vagy a használati feltételek] a(z) [hozzárendelés: szervezet által megadott információk rendszerfiókok].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -353,11 +353,11 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2 (12) sémaszintjén** a szervezet figyeli információ rendszer fiókok számára [hozzárendelés: a rendellenes használati szervezet által meghatározott].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
-| **Ügyfél** | Ez tervezetének megvalósítja az OMS biztonsági és hitelesítési megoldás identitások és hozzáférések irányítópult. Ez az irányítópult lehetővé teszi, hogy a fiók kezelők hozzáférések elleni telepített erőforrások figyelése. |
+| **Ügyfél** | Ez tervezetének valósítja meg a biztonsági és hitelesítési megoldás identitások és hozzáférések irányítópult. Ez az irányítópult lehetővé teszi, hogy a fiók kezelők hozzáférések elleni telepített erőforrások figyelése. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -367,11 +367,11 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2 (12) .b** a szervezet jelenti a rendellenes használati információk rendszer fiókokat [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
-| **Ügyfél** | Ez tervezetének megvalósítja az OMS biztonsági és hitelesítési megoldás identitások és hozzáférések irányítópult. Ez az irányítópult lehetővé teszi, hogy a fiók kezelők hozzáférések elleni telepített erőforrások figyelése. Ez a megoldás beállítható úgy, hogy küld riasztást, ha a rendellenes tevékenységek gyanús vagy más előre meghatározott események következnek be. |
+| **Ügyfél** | Ez tervezetének valósítja meg a biztonsági és hitelesítési megoldás identitások és hozzáférések irányítópult. Ez az irányítópult lehetővé teszi, hogy a fiók kezelők hozzáférések elleni telepített erőforrások figyelése. Ez a megoldás beállítható úgy, hogy küld riasztást, ha a rendellenes tevékenységek gyanús vagy más előre meghatározott események következnek be. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -381,7 +381,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2 (13)** a szervezeten belül lényeges kockázatot jelentő felhasználót letiltja [hozzárendelés: szervezet által meghatározott időszak] kockázat felderítés.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -395,7 +395,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-3** az adatokat a rendszer érvénybe lépteti a jóváhagyott engedélyek logikai erőforrások elérése érdekében információkat és a rendszer megfelel-e megfelelő hozzáférés-vezérlési házirendeket.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -409,7 +409,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-4** az adatokat a rendszer érvénybe lépteti a rendszerből, és alapján összekapcsolt rendszerek közötti információáramlást szabályozásának jóváhagyott engedélyek [hozzárendelés: szervezet által megadott információk folyamata Alkalmazásvezérlési házirendek].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -423,7 +423,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-4 (8)** az adatokat a rendszer érvénybe lépteti adatokat folyamata vezérlő a [hozzárendelés: szervezet által meghatározott biztonsági házirend szűrők] folyamat vezérlő döntéseinek alapjaként [hozzárendelés: szervezet által meghatározott információáramlás].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -437,7 +437,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-4 (21)** az információs rendszer logikailag vagy fizikailag az információáramlás elválasztja [hozzárendelés: és/vagy a szervezet által meghatározott mechanizmusok technikák] megvalósítása [hozzárendelés: szervezet által meghatározott típusú színkivonatok szükséges adatok].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -451,7 +451,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-5.a** elválasztja a szervezet [hozzárendelés: egyének szervezet által meghatározott feladatai].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -465,7 +465,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-5.b** a szervezet dokumentumok egyének feladataik elválasztását igénylik.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -479,7 +479,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-5.c** a szervezet adatokat rendszer hozzáférési engedélyek feladataik elválasztását igénylik támogatásához határozza meg.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -493,7 +493,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-6** a szervezet védelmi funkciókat alkalmaz, így csak hitelesített fér hozzá a felhasználók (vagy a felhasználók nevében eljáró folyamatok) hozzárendelt tevékenység megfelelően szervezeti feladatok elvégzéséhez szükséges legalacsonyabb jogosultsági szint elve és üzleti funkciók.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -507,7 +507,7 @@ ms.lasthandoff: 02/11/2018
 
 **(1) AC-6** a szervezet explicit módon engedélyezi a hozzáférést [hozzárendelés: (telepítve hardveres, szoftveres és belső vezérlőprogramja) szervezet által meghatározott biztonsági funkciók és biztonsági vonatkozó információt].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -521,7 +521,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-6 (2)** a szervezet megköveteli, hogy a információk rendszerfiókok vagy szerepkörök hozzáféréssel rendelkező felhasználói [hozzárendelés: szervezet által meghatározott biztonsági funkciók vagy biztonsági vonatkozó információkat], használja a megfelelő jogosultságokkal nem rendelkező fiókok vagy szerepkörök, amikor nem a biztonsággal kapcsolatos funkciók eléréséhez.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -535,7 +535,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-6 (3)** a szervezet engedélyezi a hálózati hozzáférést [hozzárendelés: kiemelt parancsok szervezet által meghatározott] csak a [hozzárendelés: szervezet által meghatározott működési igényeknek vonatkozóan] és a hozzáférés indoklása dokumentumokat a az adatokat a rendszer biztonsági tervezése.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -549,7 +549,7 @@ ms.lasthandoff: 02/11/2018
 
 **[5] AC-6** a szervezet korlátozza a információk rendszer kiemelt jogosultságú fiókok [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -563,7 +563,7 @@ ms.lasthandoff: 02/11/2018
 
 **(7) AC-6 sémaszintjén** a szervezet értékelést [hozzárendelés: szervezet által meghatározott gyakorisága] jogosultságaival [hozzárendelés: szervezet által meghatározott szerepkörök vagy felhasználói osztályok] ilyen jogosultsággal szükség érvényesítéséhez.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -577,7 +577,7 @@ ms.lasthandoff: 02/11/2018
 
 **(7) AC-6 .b** a szervezet ismét kiosztja, vagy eltávolítja a jogosultságokat, ha szükséges, megfelelő a szervezeti kritikus/üzleti igényeinek megfelelően.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -591,7 +591,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-6 (8)** megakadályozza, hogy az adatokat a rendszer [hozzárendelés: szervezet által definiált egyéni] futtatásának felhasználók végrehajtása a szoftver-nál magasabb jogosultsági szinten.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -605,11 +605,11 @@ ms.lasthandoff: 02/11/2018
 
 **AC-6 (9)** az információs rendszer naplózás jogosultsági szintű funkciók végrehajtását.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
-| **Ügyfél** | Ez tervezetének az OMS a Naplóelemzés szolgáltatás megvalósítja. Telepített virtuális gépek és az Azure storage-fiókok diagnosztika is, amelyeknek nincs csatlakoztatott Naplóelemzési biztosítására jogosultsági szintű funkciók végrehajtását ellenőrzi, hogy. |
+| **Ügyfél** | Ez tervezetének a Naplóelemzés szolgáltatás megvalósítja. Telepített virtuális gépek és az Azure storage-fiókok diagnosztika is, amelyeknek nincs csatlakoztatott Naplóelemzési biztosítására jogosultsági szintű funkciók végrehajtását ellenőrzi, hogy. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -619,7 +619,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-6 (10)** az adatokat a rendszer megakadályozza, hogy a megfelelő jogosultságokkal nem rendelkező felhasználók tiltása játsszák ki, hogy kiemelt funkciók végrehajtása, vagy biztonsági óvintézkedéseket/ellenintézkedések módosítása megvalósítva.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -633,7 +633,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-7.a** az adatokat a rendszer érvénybe lépteti legfeljebb [hozzárendelés: szervezet által megadott szám] egymást követő érvénytelen bejelentkezési kísérletek során a felhasználó egy [hozzárendelés: szervezet által meghatározott időszak].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -647,7 +647,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-7.b** az adatokat a rendszer automatikusan [kijelölés: zárolja a fiókot/csomópont egy [hozzárendelés: szervezet által meghatározott időszakra vonatkozó]; zárolja a fiókot/csomópont mindaddig, amíg a rendszergazda által kiadott; késlelteti a következő bejelentkezési kérelem [megfelelően Hozzárendelés: szervezet által meghatározott késleltetés algoritmus]] Ha túllépik a sikertelen kísérletek maximális számát.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -661,7 +661,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-7 (2)** az információs rendszer pon/törlés adatait [hozzárendelés: mobileszközök szervezet által meghatározott] alapján [hozzárendelés: szervezet által meghatározott követelmények vagy eljárások kiürítése/törlése] után [hozzárendelése: szervezet által megadott szám] eszköz egymást követő, sikertelen bejelentkezési kísérletek.
 
-**Feladatkörök:**`Not Applicable`
+**Feladatok:** `Not Applicable`
 
 |||
 |---|---|
@@ -675,7 +675,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-8.a** az adatokat a rendszer megjeleníti a felhasználók számára [hozzárendelés: szervezet által meghatározott rendszer értesítési üzenetet, vagy a transzparens használja] előtt a rendszer, amely megfelelő Szövetségi konzisztens adatvédelmi és biztonsági közlemények való hozzáférés biztosítása törvényi, végrehajtó rendelések, irányelvek, házirendek, szabályzat, szabványokat, és útmutatást és, hogy felhasználók elérik-e egy USA állapotok Kormányzati információk rendszer; információk rendszer használati ellenőrizhető legyen, rögzített, és ellenőrzés; az információs rendszer jogosulatlan használata tiltott és büntetőjogi vonatkoznak vagy civil eljárást; és az információk használatára figyelésével és rögzítésével hozzájárul jelzi.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -689,7 +689,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-8.b** az adatokat a rendszer megőrzi a értesítési üzenet vagy egy szalagcím képernyőn mindaddig, amíg a felhasználók megerősíti a használati feltételeket, és jelentkezzen be, vagy további elérni az adatokat a rendszer explicit műveletek végrehajtása.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -703,7 +703,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-8.c** nyilvánosan elérhető rendszerekhez az információk rendszer jeleníti meg a rendszer adatok használata [hozzárendelés: szervezet által megadott feltételek], további hozzáférést; megelőzően megjeleníti hivatkozásokat, ha vannak ilyenek, figyelés, a rögzítés, vagy naplózás, amely konzisztensek adatvédelmi szálláslehetőségeinek az ilyen rendszerekre, amelyek általában nem engedik az adott tevékenységek; és a jogosult használatát, a rendszer leírását tartalmazza.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -717,7 +717,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 10-es** az információs rendszer korlátozza az egyidejű munkamenetek minden [hozzárendelés: szervezet által meghatározott fiók és/vagy a fiók típusa] való [hozzárendelés: szervezet által megadott szám].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -731,7 +731,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-11.a** az adatokat a rendszer megakadályozza a további elérését, a rendszer által kezdeményezése után a munkamenet-zárolási [hozzárendelés: szervezet által meghatározott időszak] tétlen vagy a felhasználó egy kérelem fogadásakor.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -745,7 +745,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-11.b** az adatokat a rendszer megőrzi a munkamenet zárolási mindaddig, amíg a felhasználói hozzáférés meghatározott azonosítási és hitelesítési eljárások segítségével helyreállítja a csatolást.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -759,7 +759,7 @@ ms.lasthandoff: 02/11/2018
 
 **(1) AC-11** az információs rendszer elfedi, a munkamenet zárolás keresztül nyilvánosan megtekinthető képének képernyőjén korábban látható információt.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -773,7 +773,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC – 12** az adatokat a rendszer automatikusan után felhasználói munkamenet leállítása [hozzárendelés: szervezet által meghatározott feltételek vagy a munkamenet leválasztása igénylő kiváltó események].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -787,7 +787,7 @@ ms.lasthandoff: 02/11/2018
 
 **(1) AC – 12 sémaszintjén** az információs rendszer kijelentkezési képességet biztosít a felhasználó által kezdeményezett kommunikáció munkamenetek, amikor eléréséhez hitelesítés esetén [hozzárendelés: szervezet által megadott információk erőforrások].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -801,7 +801,7 @@ ms.lasthandoff: 02/11/2018
 
 **(1) AC – 12 .b** az adatokat a rendszer explicit kijelentkezési jelenik meg a felhasználók számára, amely jelzi, hitelesített kommunikációs munkamenetek megbízható megszüntetését.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -815,7 +815,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-14.a** azonosítja a szervezet [hozzárendelés: szervezet által meghatározott felhasználói műveletek], amely a végrehajtható azonosítási és hitelesítési szervezeti feladatok/üzleti funkciók konzisztens nélkül az információk rendszer.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -829,7 +829,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-14.b** a szervezet dokumentumokat, és itt támogató profilkategóriák a biztonsági csomagban információs rendszer azonosítási és hitelesítési nem igénylő felhasználói műveletek.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -843,7 +843,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-17.a** a szervezet létesít, és a használattal kapcsolatos korlátozások, konfigurációs vagy kapcsolódási követelményeihez és megvalósítási útmutatás az egyes engedélyezett távoli hozzáférési dokumentumokat.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -857,7 +857,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-17.b** a szervezet engedélyezi a távoli hozzáférést az információs rendszer ilyen kapcsolatok engedélyezése előtt.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -871,11 +871,11 @@ ms.lasthandoff: 02/11/2018
 
 **(1) AC-17** az információs rendszer figyeli, és távelérési módszerek szabályozza.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
-| **Ügyfél** | Ez tervezetének az információs rendszer az Azure portálon keresztül egy jumpbox távoli asztali kapcsolaton keresztül, és egy ügyfél megvalósított webalkalmazás révén távoli hozzáférést biztosít. Az Azure portál és a távoli asztali munkamenetekhez keresztül fér hozzá naplóz, és OMS révén figyelhető. Az ügyfél távoli hozzáférés-vezérléssel szükség esetén, a webalkalmazásnak kell megvalósítania. |
+| **Ügyfél** | Ez tervezetének az információs rendszer az Azure portálon keresztül egy jumpbox távoli asztali kapcsolaton keresztül, és egy ügyfél megvalósított webalkalmazás révén távoli hozzáférést biztosít. Az Azure portál és a távoli asztali munkamenetekhez keresztül fér hozzá naplóz, és Naplóelemzési révén figyelhető. Az ügyfél távoli hozzáférés-vezérléssel szükség esetén, a webalkalmazásnak kell megvalósítania. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -885,7 +885,7 @@ ms.lasthandoff: 02/11/2018
 
 **(2) AC-17** az információs rendszer valósítja meg a távelérés munkamenetek sértetlenségét és bizalmasságát védelme érdekében titkosítási mechanizmus.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -899,7 +899,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-17 (3)** az adatokat a rendszer továbbítja a keresztül minden távoli hozzáférések [hozzárendelés: szervezet által megadott szám] felügyelt hálózati hozzáférési ellenőrzési pontok.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -913,7 +913,7 @@ ms.lasthandoff: 02/11/2018
 
 **(4) AC-17 sémaszintjén** a szervezet engedélyezi a kiemelt parancsok és biztonsági-információk csak a távoli hozzáférést keresztül hozzáférést végrehajtása [hozzárendelés: szervezet által meghatározott igények].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -927,7 +927,7 @@ ms.lasthandoff: 02/11/2018
 
 **(4) AC-17 .b** a szervezet hozzáférés indoklása dokumentumokat a biztonsági csomagban az információk rendszerhez.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -941,7 +941,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-17 (9)** a szervezet lehetővé teszi a gyors bontja a kapcsolatot, vagy tiltsa le a távoli hozzáférés információk belül [hozzárendelés: szervezet által meghatározott időszak].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -955,7 +955,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-18.a** a szervezet használattal kapcsolatos korlátozások, a konfiguráció/kapcsolat követelményeket és a megvalósítás útmutató a vezeték nélküli hozzáférési határoz meg.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -969,7 +969,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-18.b** a szervezet engedélyezi a vezeték nélküli hozzáférést a információs rendszer ilyen kapcsolatok engedélyezése előtt.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -983,7 +983,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-18-ra (1)** az információs rendszer védi a vezeték nélküli hozzáférést a rendszerhez hitelesítésével [kijelölés (egy vagy több): felhasználók; eszközök] és a titkosítás.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -997,7 +997,7 @@ ms.lasthandoff: 02/11/2018
 
 **(3) AC-18** a szervezet letiltja, amikor nem készült, vezeték nélküli hálózati információkat rendszerösszetevők kiállítási és üzembe helyezés előtt belső ágyazott lehetőségeket.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -1011,7 +1011,7 @@ ms.lasthandoff: 02/11/2018
 
 **(4) AC-18** a szervezet azonosítja, és kifejezetten engedélyezi a felhasználók külön konfigurálni a vezeték nélküli hálózati funkciói.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -1025,7 +1025,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 18. [5]** a szervezet rádió antennák kiválasztása, és új átviteli teljesítményszintek a valószínűsége annak, hogy használható jelek fogadhatók szervezet által szabályozott határain kívül csökkentése érdekében.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -1039,7 +1039,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-19.a** a szervezet használattal kapcsolatos korlátozások, a konfigurációs követelmények, a kapcsolat követelményeket és a megvalósítás útmutató a szervezet által felügyelt mobileszközök határoz meg.
 
-**Feladatkörök:**`Not Applicable`
+**Feladatok:** `Not Applicable`
 
 |||
 |---|---|
@@ -1053,7 +1053,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-19.b** a szervezet engedélyezi a szervezeti adatok rendszerekre mobileszközök kapcsolat.
 
-**Feladatkörök:**`Not Applicable`
+**Feladatok:** `Not Applicable`
 
 |||
 |---|---|
@@ -1067,7 +1067,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-19 (5)** alkalmaz a szervezet [kijelölés: teljes eszköztitkosítás; tároló titkosítása] védelme érdekében a titkosítás és az adatok integritását a [hozzárendelés: szervezet által meghatározott mobileszközök].
 
-**Feladatkörök:**`Not Applicable`
+**Feladatok:** `Not Applicable`
 
 |||
 |---|---|
@@ -1081,7 +1081,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-20.a** a szervezet hoz létre a használati feltételeket, működő, a tulajdonos, más szervezetekkel létrehozott megbízhatósági kapcsolata konzisztens és/vagy karbantartása külső információs rendszerekkel, így jogosult személyek az információs rendszer eléréséhez információk külső rendszerekből.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -1095,7 +1095,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-20.b** a szervezet hoz létre a használati feltételeket, működő, a tulajdonos, más szervezetekkel létrehozott megbízhatósági kapcsolata konzisztens és/vagy karbantartása külső információs rendszerekkel, így jogosult személyek feldolgozni, tárolni vagy továbbítását szervezet által szabályozott információk külső rendszerekből.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -1109,7 +1109,7 @@ ms.lasthandoff: 02/11/2018
 
 **(1) AC-20** a szervezet lehetővé teszi a felhatalmazott személyek segítségével egy külső információs rendszer az információs rendszer eléréséhez vagy feldolgozni, tárolni vagy továbbít a szervezet által felügyelt információkat, csak akkor, ha a szervezet ellenőrzi a a külső rendszer a szervezet adatokat biztonsági házirendet, és a biztonsági tervnek; a szükséges biztonsági ellenőrzések végrehajtása vagy a külső adatokat rendszert üzemeltető szervezeti entitással jóváhagyott rendszer kapcsolat vagy feldolgozási megállapodások megőrzi.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -1123,7 +1123,7 @@ ms.lasthandoff: 02/11/2018
 
 **(2) AC-20** a szervezet [kijelölés: korlátozza; Ez a beállítás letiltja] által felhatalmazott személyek külső adatokat rendszerek hordozható tárolóeszközre szervezet által felügyelt eszköz.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -1137,7 +1137,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-21.a** a szervezet információk megosztásához, ellenőrizze, hogy a megosztási partner hozzárendelt hozzáférési engedélyek felel meg az információkat a vonatkozó hozzáférési korlátozásokat a hitelesített felhasználóknak engedélyezésével elősegíti a [hozzárendelése: szervezet által megadott információk megosztása körülmények között, ahol szükség-e felhasználói megítélése].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -1151,7 +1151,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-21.b** alkalmaz a szervezet [hozzárendelés: szervezet által meghatározott automatikus mechanizmusok, vagy manuálisan végrehajtott folyamatokat] felhasználók segít a információk megosztása/együttműködés döntések meghozatala során.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -1165,7 +1165,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-22.a** a szervezet egy nyilvánosan elérhető információkat rendszerre információk jogosult személyek jelöli meg.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -1179,7 +1179,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-22.b** a szervezet betanítja felhatalmazott személyek annak érdekében, hogy nyilvánosan elérhető információk csak bizalmasként adatokat tartalmazza.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -1193,7 +1193,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-22.c** a szervezet ellenőrzi, hogy a nyilvánosan elérhető információkat rendszerbe, győződjön meg arról, hogy bizalmasként adatok nem tartalmazza a könyvelési előtt javasolt tartalmát.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -1207,7 +1207,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-22.d** a szervezet ellenőrzi, hogy a tartalmat a nyilvánosan elérhető információkat rendszeren bizalmasként információt [hozzárendelés: szervezet által meghatározott gyakoriság] és az ilyen adatokat eltávolítja, ha a felderített.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|

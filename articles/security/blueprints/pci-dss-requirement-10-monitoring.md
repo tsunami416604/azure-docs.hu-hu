@@ -1,6 +1,6 @@
 ---
-title: "Az Azure fizetési feldolgozási tervezetének - figyelés követelményei"
-description: "PCI DSS követelmény 10"
+title: Az Azure fizetési feldolgozási tervezetének - figyelés követelményei
+description: PCI DSS követelmény 10
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 5fa1d17e68ce04b1f67081479518279be6cca099
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 708c57c1d7b79d3fd3c129de9a7ce4099ab6ac36
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitoring-requirements-for-pci-dss-compliant-environments"></a>PCI DSS-kompatibilis környezetben felügyeleti követelmények 
 ## <a name="pci-dss-requirement-10"></a>PCI DSS követelmény 10
@@ -38,8 +38,8 @@ Naplózási mechanizmusok és felhasználói tevékenységek követését kritik
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure korlátozza a hozzáférést az arra jogosult személyek felügyeleti és diagnosztikai eszközök megfelelő feladat ezzel. A Microsoft Azure a legalacsonyabb jogosultsági alapelvek alapján éles környezetben használt eszközök korlátozza a privilegizált hozzáférési jogosultsága. A Microsoft Azure rögzíti, és tart fenn a Microsoft Azure-összetevőkkel a platform környezetben minden egyes felhasználói hozzáférés naplózása.<br /><br />A Microsoft Azure platform összetevők (például az operációs rendszer, CloudNet, háló és így tovább) vannak konfigurálva a naplózása, és a biztonsági események gyűjtése. A Microsoft Azure platform rendszergazdai tevékenység naplózása. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló kiterjedt naplózás minden rendszer, és felhasználói tevékenység (beleértve a CHD naplózás) rendelkezik. További információkért lásd: [útmutatást PCI - naplózás](payment-processing-blueprint.md#logging-and-auditing).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure korlátozza a hozzáférést az arra jogosult személyek felügyeleti és diagnosztikai eszközök megfelelő feladat ezzel. A Microsoft Azure a legalacsonyabb jogosultsági alapelvek alapján éles környezetben használt eszközök korlátozza a privilegizált hozzáférési jogosultsága. A Microsoft Azure rögzíti, és tart fenn a Microsoft Azure-összetevőkkel a platform környezetben minden egyes felhasználói hozzáférés naplózása.<br /><br />A Microsoft Azure platform összetevők (például az operációs rendszer, CloudNet, háló és így tovább) vannak konfigurálva a naplózása, és a biztonsági események gyűjtése. A Microsoft Azure platform rendszergazdai tevékenység naplózása. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló kiterjedt naplózás minden rendszer, és felhasználói tevékenység (beleértve a CHD naplózás) rendelkezik. További információkért lásd: [útmutatást PCI - naplózás](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -58,8 +58,8 @@ Naplózási mechanizmusok és felhasználói tevékenységek követését kritik
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure korlátozza a hozzáférést az arra jogosult személyek felügyeleti és diagnosztikai eszközök megfelelő feladat ezzel. A Microsoft Azure a legalacsonyabb jogosultsági alapelvek alapján éles környezetben használt eszközök korlátozza a privilegizált hozzáférési jogosultsága. A Microsoft Azure rögzíti, és tart fenn a Microsoft Azure-összetevőkkel a platform környezetben minden egyes felhasználói hozzáférés naplózása.<br /><br />A Microsoft Azure platform összetevők (például az operációs rendszer, CloudNet, háló és így tovább) vannak konfigurálva a naplózása, és a biztonsági események gyűjtése. A Microsoft Azure platform rendszergazdai tevékenység naplózása. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló rendelkezik az összes rendszer és felhasználói tevékenységek, beleértve a CHD naplózási kiterjedt naplózását. További információkért lásd: [útmutatást PCI - naplózás](payment-processing-blueprint.md#logging-and-auditing).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure korlátozza a hozzáférést az arra jogosult személyek felügyeleti és diagnosztikai eszközök megfelelő feladat ezzel. A Microsoft Azure a legalacsonyabb jogosultsági alapelvek alapján éles környezetben használt eszközök korlátozza a privilegizált hozzáférési jogosultsága. A Microsoft Azure rögzíti, és tart fenn a Microsoft Azure-összetevőkkel a platform környezetben minden egyes felhasználói hozzáférés naplózása.<br /><br />A Microsoft Azure platform összetevők (például az operációs rendszer, CloudNet, háló és így tovább) vannak konfigurálva a naplózása, és a biztonsági események gyűjtése. A Microsoft Azure platform rendszergazdai tevékenység naplózása. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló rendelkezik az összes rendszer és felhasználói tevékenységek, beleértve a CHD naplózási kiterjedt naplózását. További információkért lásd: [útmutatást PCI - naplózás](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -77,8 +77,8 @@ Naplózási mechanizmusok és felhasználói tevékenységek követését kritik
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure létesített eljárások szinkronizálni a kiszolgálók és hálózati eszközök a Microsoft Azure környezetben NTP hierarchiabeli 1 időkiszolgálók szinkronizálva a globális helymeghatározási (GPS) szatellit. Szinkronizálás automatikusan 5 percenként történik. Microsoft Azure a megfelelő szinkronizálási idő üzemeltetett szolgáltatások azzal biztosításáért felelős. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló rögzíti a felhasználói azonosító, eseménytípus, dátum-időbélyeg, sikeres, sikertelen események, esemény forrását, és a 10,3 vezérlő által megkövetelt erőforrás nevét.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure létesített eljárások szinkronizálni a kiszolgálók és hálózati eszközök a Microsoft Azure környezetben NTP hierarchiabeli 1 időkiszolgálók szinkronizálva a globális helymeghatározási (GPS) szatellit. Szinkronizálás automatikusan 5 percenként történik. Microsoft Azure a megfelelő szinkronizálási idő üzemeltetett szolgáltatások azzal biztosításáért felelős. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló rögzíti a felhasználói azonosító, eseménytípus, dátum-időbélyeg, sikeres, sikertelen események, esemény forrását, és a 10,3 vezérlő által megkövetelt erőforrás nevét.|
 
 
 
@@ -92,8 +92,8 @@ Naplózási mechanizmusok és felhasználói tevékenységek követését kritik
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure létesített eljárások szinkronizálni a kiszolgálók és hálózati eszközök a Microsoft Azure környezetben NTP hierarchiabeli 1 időkiszolgálók szinkronizálva a globális helymeghatározási (GPS) szatellit. Szinkronizálás automatikusan 5 percenként történik. Microsoft Azure a megfelelő szinkronizálási idő üzemeltetett szolgáltatások azzal biztosításáért felelős. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A PaaS szolgáltatás időszinkronizálást Azure végzi el.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure létesített eljárások szinkronizálni a kiszolgálók és hálózati eszközök a Microsoft Azure környezetben NTP hierarchiabeli 1 időkiszolgálók szinkronizálva a globális helymeghatározási (GPS) szatellit. Szinkronizálás automatikusan 5 percenként történik. Microsoft Azure a megfelelő szinkronizálási idő üzemeltetett szolgáltatások azzal biztosításáért felelős. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A PaaS szolgáltatás időszinkronizálást Azure végzi el.|
 
 
 
@@ -105,8 +105,8 @@ Naplózási mechanizmusok és felhasználói tevékenységek követését kritik
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 10.4](#pci-dss-requirement-10-4). |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A PaaS szolgáltatás időszinkronizálást Azure végzi el.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 10.4](#pci-dss-requirement-10-4). |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A PaaS szolgáltatás időszinkronizálást Azure végzi el.|
 
 
 
@@ -118,8 +118,8 @@ Naplózási mechanizmusok és felhasználói tevékenységek követését kritik
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 10.4](#pci-dss-requirement-10-4). |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A PaaS szolgáltatás időszinkronizálást Azure végzi el.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 10.4](#pci-dss-requirement-10-4). |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A PaaS szolgáltatás időszinkronizálást Azure végzi el.|
 
 
 
@@ -131,8 +131,8 @@ Naplózási mechanizmusok és felhasználói tevékenységek követését kritik
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 10.4](#pci-dss-requirement-10-4). |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A PaaS szolgáltatás időszinkronizálást Azure végzi el.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 10.4](#pci-dss-requirement-10-4). |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A PaaS szolgáltatás időszinkronizálást Azure végzi el.|
 
 
 
@@ -144,8 +144,8 @@ Naplózási mechanizmusok és felhasználói tevékenységek követését kritik
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | FIM és Azonosítók eszközök a Microsoft Azure-környezeten belül valósíthatók meg. A Microsoft Azure EWS események a működési környezetben valós idejű elemzési támogatásához használja. MAs és célok készítése közel valós idejű riasztásokat az eseményeket, amelyek vélhetően okoz a rendszerben. <br /><br />(Webkiszolgáló naplóinak, FTP-kiszolgáló naplóit, és így tovább) szolgáltatás, a felhasználó- és a biztonsági események naplózása engedélyezve van, és központilag maradnak. Azure korlátozza a hozzáférést a naplók az arra jogosult személyek felelősségi alapján. Eseménynaplók az Azure biztonságos archiválási infrastruktúra archivált, és 180 napig megőrződnek. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló biztosít az összes elem az OMS Szolgáltatáshoz naplózását. Biztonsági mentés külső forrásból is elvégezheti [Azure biztonsági mentés](https://azure.microsoft.com/services/backup/).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | FIM és Azonosítók eszközök a Microsoft Azure-környezeten belül valósíthatók meg. A Microsoft Azure EWS események a működési környezetben valós idejű elemzési támogatásához használja. MAs és célok készítése közel valós idejű riasztásokat az eseményeket, amelyek vélhetően okoz a rendszerben. <br /><br />(Webkiszolgáló naplóinak, FTP-kiszolgáló naplóit, és így tovább) szolgáltatás, a felhasználó- és a biztonsági események naplózása engedélyezve van, és központilag maradnak. Azure korlátozza a hozzáférést a naplók az arra jogosult személyek felelősségi alapján. Eseménynaplók az Azure biztonságos archiválási infrastruktúra archivált, és 180 napig megőrződnek. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló biztosít az összes elem Azure naplózását. Biztonsági mentés külső forrásból is elvégezheti [Azure biztonsági mentés](https://azure.microsoft.com/services/backup/).|
 
 
 
@@ -157,8 +157,8 @@ Naplózási mechanizmusok és felhasználói tevékenységek követését kritik
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 10.5](#pci-dss-requirement-10-5). |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló biztosít az összes elem az OMS Szolgáltatáshoz naplózását. Biztonsági mentés külső forrásból is elvégezheti [Azure biztonsági mentés](https://azure.microsoft.com/services/backup/).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 10.5](#pci-dss-requirement-10-5). |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló biztosít az összes elem Azure naplózását. Biztonsági mentés külső forrásból is elvégezheti [Azure biztonsági mentés](https://azure.microsoft.com/services/backup/).|
 
 
 
@@ -170,8 +170,8 @@ Naplózási mechanizmusok és felhasználói tevékenységek követését kritik
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 10.5](#pci-dss-requirement-10-5). |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló biztosít az összes elem az OMS Szolgáltatáshoz naplózását. Biztonsági mentés külső forrásból is elvégezheti [Azure biztonsági mentés](https://azure.microsoft.com/services/backup/).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 10.5](#pci-dss-requirement-10-5). |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló biztosít az összes elem Azure naplózását. Biztonsági mentés külső forrásból is elvégezheti [Azure biztonsági mentés](https://azure.microsoft.com/services/backup/).|
 
 
 
@@ -183,8 +183,8 @@ Naplózási mechanizmusok és felhasználói tevékenységek követését kritik
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 10.5](#pci-dss-requirement-10-5). |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló biztosít az összes elem az OMS Szolgáltatáshoz naplózását. Biztonsági mentés külső forrásból is elvégezheti [Azure biztonsági mentés](https://azure.microsoft.com/services/backup/).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 10.5](#pci-dss-requirement-10-5). |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló biztosít az összes elem Azure naplózását. Biztonsági mentés külső forrásból is elvégezheti [Azure biztonsági mentés](https://azure.microsoft.com/services/backup/).|
 
 
 
@@ -196,8 +196,8 @@ Naplózási mechanizmusok és felhasználói tevékenységek követését kritik
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 10.5](#pci-dss-requirement-10-5). |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló biztosít az összes elem az OMS Szolgáltatáshoz naplózását. Biztonsági mentés külső forrásból is elvégezheti [Azure biztonsági mentés](https://azure.microsoft.com/services/backup/).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 10.5](#pci-dss-requirement-10-5). |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló biztosít az összes elem Azure naplózását. Biztonsági mentés külső forrásból is elvégezheti [Azure biztonsági mentés](https://azure.microsoft.com/services/backup/).|
 
 
 
@@ -209,8 +209,8 @@ Naplózási mechanizmusok és felhasználói tevékenységek követését kritik
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 10.5](#pci-dss-requirement-10-5). |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló biztosít az összes elem az OMS Szolgáltatáshoz naplózását. Biztonsági mentés külső forrásból is elvégezheti [Azure biztonsági mentés](https://azure.microsoft.com/services/backup/).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 10.5](#pci-dss-requirement-10-5). |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló biztosít az összes elem Azure naplózását. Biztonsági mentés külső forrásból is elvégezheti [Azure biztonsági mentés](https://azure.microsoft.com/services/backup/).|
 
 
 
@@ -225,8 +225,8 @@ Naplózási mechanizmusok és felhasználói tevékenységek követését kritik
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | FIM és Azonosítók eszközök a Microsoft Azure-környezeten belül valósíthatók meg. A Microsoft Azure EWS események a működési környezetben valós idejű elemzési támogatásához használja. MAs és célok készítése közel valós idejű riasztásokat az eseményeket, amelyek vélhetően okoz a rendszerben. <br /><br />(Webkiszolgáló naplóinak, FTP-kiszolgáló naplóit, és így tovább) szolgáltatás, a felhasználó- és a biztonsági események naplózása engedélyezve van, és központilag maradnak. Azure korlátozza a hozzáférést a naplók az arra jogosult személyek felelősségi alapján. Eseménynaplók az Azure biztonságos archiválási infrastruktúra archivált, és 180 napig megőrződnek. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló használ [az Azure Security Center](https://azure.microsoft.com/services/security-center/) figyeléséhez, jelentést, és megakadályozza a rendellenességeket. [Az Azure Advisor](/azure/advisor/advisor-security-recommendations) javaslatok az Azure erőforrások egységes, összevont nézetét jeleníti meg.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | FIM és Azonosítók eszközök a Microsoft Azure-környezeten belül valósíthatók meg. A Microsoft Azure EWS események a működési környezetben valós idejű elemzési támogatásához használja. MAs és célok készítése közel valós idejű riasztásokat az eseményeket, amelyek vélhetően okoz a rendszerben. <br /><br />(Webkiszolgáló naplóinak, FTP-kiszolgáló naplóit, és így tovább) szolgáltatás, a felhasználó- és a biztonsági események naplózása engedélyezve van, és központilag maradnak. Azure korlátozza a hozzáférést a naplók az arra jogosult személyek felelősségi alapján. Eseménynaplók az Azure biztonságos archiválási infrastruktúra archivált, és 180 napig megőrződnek. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló használ [az Azure Security Center](https://azure.microsoft.com/services/security-center/) figyeléséhez, jelentést, és megakadályozza a rendellenességeket. [Az Azure Advisor](/azure/advisor/advisor-security-recommendations) javaslatok az Azure erőforrások egységes, összevont nézetét jeleníti meg.|
 
 
 
@@ -242,8 +242,8 @@ Naplózási mechanizmusok és felhasználói tevékenységek követését kritik
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 10.6](#pci-dss-requirement-10-6). |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló használ [az Azure Security Center](https://azure.microsoft.com/services/security-center/) figyeléséhez, jelentést, és megakadályozza a rendellenességeket. [Az Azure Advisor](/azure/advisor/advisor-security-recommendations) javaslatok az Azure erőforrások egységes, összevont nézetét jeleníti meg.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 10.6](#pci-dss-requirement-10-6). |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló használ [az Azure Security Center](https://azure.microsoft.com/services/security-center/) figyeléséhez, jelentést, és megakadályozza a rendellenességeket. [Az Azure Advisor](/azure/advisor/advisor-security-recommendations) javaslatok az Azure erőforrások egységes, összevont nézetét jeleníti meg.|
 
 
 
@@ -255,8 +255,8 @@ Naplózási mechanizmusok és felhasználói tevékenységek követését kritik
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 10.6](#pci-dss-requirement-10-6). |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló használ [az Azure Security Center](https://azure.microsoft.com/services/security-center/) figyeléséhez, jelentést, és megakadályozza a rendellenességeket. [Az Azure Advisor](/azure/advisor/advisor-security-recommendations) javaslatok az Azure erőforrások egységes, összevont nézetét jeleníti meg.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 10.6](#pci-dss-requirement-10-6). |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló használ [az Azure Security Center](https://azure.microsoft.com/services/security-center/) figyeléséhez, jelentést, és megakadályozza a rendellenességeket. [Az Azure Advisor](/azure/advisor/advisor-security-recommendations) javaslatok az Azure erőforrások egységes, összevont nézetét jeleníti meg.|
 
 
 
@@ -268,8 +268,8 @@ Naplózási mechanizmusok és felhasználói tevékenységek követését kritik
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | További részletekért lásd a "Microsoft Azure" című rész [követelmény 10.6](#pci-dss-requirement-10-6). |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló használ [az Azure Security Center](https://azure.microsoft.com/services/security-center/) figyeléséhez, jelentést, és megakadályozza a rendellenességeket. [Az Azure Advisor](/azure/advisor/advisor-security-recommendations) javaslatok az Azure erőforrások egységes, összevont nézetét jeleníti meg.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | További részletekért lásd a "Microsoft Azure" című rész [követelmény 10.6](#pci-dss-requirement-10-6). |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló használ [az Azure Security Center](https://azure.microsoft.com/services/security-center/) figyeléséhez, jelentést, és megakadályozza a rendellenességeket. [Az Azure Advisor](/azure/advisor/advisor-security-recommendations) javaslatok az Azure erőforrások egységes, összevont nézetét jeleníti meg.|
 
 
 
@@ -281,8 +281,8 @@ Naplózási mechanizmusok és felhasználói tevékenységek követését kritik
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Microsoft Azure saját belső portálon keresztül azonnal elérhető legfrissebb 3 hónapos egy évig naplók megőrzi. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló kiterjedt naplózás minden rendszer, és felhasználói tevékenység (beleértve a CHD naplózás) rendelkezik. További információkért lásd: [útmutatást PCI - naplózás](payment-processing-blueprint.md#logging-and-auditing).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure saját belső portálon keresztül azonnal elérhető legfrissebb 3 hónapos egy évig naplók megőrzi. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló kiterjedt naplózás minden rendszer, és felhasználói tevékenység (beleértve a CHD naplózás) rendelkezik. További információkért lásd: [útmutatást PCI - naplózás](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -292,7 +292,7 @@ Naplózási mechanizmusok és felhasználói tevékenységek követését kritik
 - Tűzfalak
 - AZONOSÍTÓK/IP-CÍMEK
 - FIM
-- Víruskereső
+- Anti-virus
 - Fizikai hozzáférés-vezérlést
 - Logikai hozzáférés-vezérlést
 - Naplózási naplózási mechanizmusok
@@ -307,8 +307,8 @@ Naplózási mechanizmusok és felhasználói tevékenységek követését kritik
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure EWS események a működési környezetben valós idejű elemzési támogatásához használja. MAs és célok készítése közel valós idejű riasztásokat az eseményeket, amelyek vélhetően okoz a rendszerben. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló kiterjedt naplózás minden rendszer, és felhasználói tevékenység (beleértve a CHD naplózás) rendelkezik. További információkért lásd: [útmutatást PCI - naplózás](payment-processing-blueprint.md#logging-and-auditing).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure EWS események a működési környezetben valós idejű elemzési támogatásához használja. MAs és célok készítése közel valós idejű riasztásokat az eseményeket, amelyek vélhetően okoz a rendszerben. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló kiterjedt naplózás minden rendszer, és felhasználói tevékenység (beleértve a CHD naplózás) rendelkezik. További információkért lásd: [útmutatást PCI - naplózás](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -330,8 +330,8 @@ Naplózási mechanizmusok és felhasználói tevékenységek követését kritik
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure EWS események a működési környezetben valós idejű elemzési támogatásához használja. MAs és célok készítése közel valós idejű riasztásokat az eseményeket, amelyek vélhetően okoz a rendszerben. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló kiterjedt naplózás minden rendszer, és felhasználói tevékenység (beleértve a CHD naplózás) rendelkezik. További információkért lásd: [útmutatást PCI - naplózás](payment-processing-blueprint.md#logging-and-auditing).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure EWS események a működési környezetben valós idejű elemzési támogatásához használja. MAs és célok készítése közel valós idejű riasztásokat az eseményeket, amelyek vélhetően okoz a rendszerben. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló kiterjedt naplózás minden rendszer, és felhasználói tevékenység (beleértve a CHD naplózás) rendelkezik. További információkért lásd: [útmutatást PCI - naplózás](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -344,8 +344,8 @@ Naplózási mechanizmusok és felhasználói tevékenységek követését kritik
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló biztosít a használati esetek és egy leírást arról, hogyan a CHD felügyelete és védelme.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló biztosít a használati esetek és egy leírást arról, hogyan a CHD felügyelete és védelme.|
 
 
 

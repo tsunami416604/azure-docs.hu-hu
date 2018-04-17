@@ -1,6 +1,6 @@
 ---
-title: "Az Azure SQL Database biztonsági áttekintése | Microsoft Docs"
-description: "További tudnivalók az Azure SQL Database és SQL Server biztonsági, beleértve a felhőben és helyszíni SQL Server közötti különbségeket."
+title: Az Azure SQL Database biztonsági áttekintése | Microsoft Docs
+description: További tudnivalók az Azure SQL Database és SQL Server biztonsági, beleértve a felhőben és helyszíni SQL Server közötti különbségeket.
 services: sql-database
 author: giladm
 manager: craigg
@@ -10,11 +10,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: giladm
-ms.openlocfilehash: 1dc34f021fa6482c65cce0e922951ae329987c43
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6a66c9fe3716935a717dca984d1995ca371d9499
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="securing-your-sql-database"></a>Az SQL Database-adatbázis védelme
 
@@ -48,7 +48,7 @@ További információkért lásd: [Ismerkedés az SQL DB adatok felderítési & 
 Az SQL Database úgy biztosítja az adatai védelmét, hogy korlátozza az adatbázishoz való hozzáférést tűzfalszabályokkal, a felhasználókat az azonosságuk igazolására kényszerítő hitelesítési mechanizmusokkal, engedélyezéssel az adatokhoz szerepalapú tagságok és engedélyek útján, valamint sorszintű biztonsággal és dinamikus adatmaszkolással. Az SQL Database említett hozzáférés-vezérlési funkcióinak használatával kapcsolatban lásd a [hozzáférés-vezérléssel](sql-database-control-access.md) foglalkozó témakört.
 
 > [!IMPORTANT]
-> Az adatbázisok és logikai kiszolgálók az Azure-ban való kezelését a portál felhasználói fiókjának szerepkör-hozzárendelése szabályozza. Ez a cikk további információkért lásd: [Azure portál szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-what-is.md).
+> Az adatbázisok és logikai kiszolgálók az Azure-ban való kezelését a portál felhasználói fiókjának szerepkör-hozzárendelése szabályozza. Ez a cikk további információkért lásd: [Azure portál szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md).
 >
 
 ### <a name="firewall-and-firewall-rules"></a>Tűzfal és tűzfalszabályok

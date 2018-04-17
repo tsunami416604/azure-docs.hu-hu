@@ -1,12 +1,12 @@
 ---
-title: "Csak idő virtuális gép férnek hozzá az Azure Security Centerben |} Microsoft Docs"
-description: "Ez a dokumentum azt mutatja be, hogyan igény szerint VM hozzáférés az Azure Security Center segítséget nyújt az Azure virtuális gépeken való hozzáférés szabályozása."
+title: Csak idő virtuális gép férnek hozzá az Azure Security Centerben |} Microsoft Docs
+description: Ez a dokumentum azt mutatja be, hogyan igény szerint VM hozzáférés az Azure Security Center segítséget nyújt az Azure virtuális gépeken való hozzáférés szabályozása.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/06/2018
 ms.author: terrylan
-ms.openlocfilehash: f1ea31d1081bc263cf85cf4dcc3d73d4cc0b842d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 22eee6c2253e6b1ff92de0cebf4fea451a0a8fe5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>JIT-virtuális gép hozzáférés kezelése
 
 Csak az idő a virtuális gép (VM) hozzáférés segítségével az Azure virtuális gépeken, támadásoknak való kitettség csökkentése során könnyen hozzá lehet férni a virtuális gépekhez, szükség esetén csatlakoztassa a bejövő forgalom zárolását.
 
 > [!NOTE]
-> A csak időbeli funkció érhető el a Security Center Standard csomagra.  Lásd: [árazás](security-center-pricing.md) további bővebben a Security Center által tarifacsomag szükséges.
+> A csak időbeli funkció érhető el a Security Center Standard csomagra.  A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md).
 >
 >
 
@@ -41,7 +41,7 @@ Egy találgatásos támadással való kitettség csökkentése érdekében módj
 
 Ha az igény szerinti hozzáférés engedélyezve van, a Security Center minden, az Azure-beli virtuális gépekre érkező forgalmat zárol egy NSG-szabály létrehozásával. Kiválaszthatja a a virtuális Gépre, amelyre a bejövő forgalom lesz zárolva. Ezeket a portokat szabályozzák az imént idő megoldásban.
 
-Amikor egy felhasználó egy virtuális Géphez való hozzáférést igényel, a Security Center ellenőrzi, hogy a felhasználó rendelkezik-e [szerepköralapú hozzáférés-vezérlést (RBAC)](../active-directory/role-based-access-control-configure.md) írási hozzáférést biztosítson a virtuális gép az engedélyeket. Ha, írási jogosultsággal rendelkeznek, a kérelem jóváhagyása és a Security Center automatikusan konfigurálja a hálózati biztonsági csoportok (NSG-k) a bejövő forgalom a felügyeleti portokat ennyi ideig való adott meg. Az időszak lejárta után a Security Center az NSG-ket visszaállítja korábbi állapotába.
+Amikor egy felhasználó egy virtuális Géphez való hozzáférést igényel, a Security Center ellenőrzi, hogy a felhasználó rendelkezik-e [szerepköralapú hozzáférés-vezérlést (RBAC)](../role-based-access-control/role-assignments-portal.md) írási hozzáférést biztosítson a virtuális gép az engedélyeket. Ha, írási jogosultsággal rendelkeznek, a kérelem jóváhagyása és a Security Center automatikusan konfigurálja a hálózati biztonsági csoportok (NSG-k) a bejövő forgalom a felügyeleti portokat ennyi ideig való adott meg. Az időszak lejárta után a Security Center az NSG-ket visszaállítja korábbi állapotába.
 
 > [!NOTE]
 > Biztonsági központ csak a virtuális gép elérhető jelenleg csak virtuális gépek Azure Resource Manager használatával telepített. Ismerje meg, a klasszikus és Resource Manager üzembe helyezési modellel kapcsolatos információkért tekintse meg a [Azure Resource Manager és klasszikus üzembe helyezési](../azure-resource-manager/resource-manager-deployment-model.md).
@@ -129,7 +129,7 @@ Ahhoz, hogy csak az idő házirendet a virtuális gépek meglévő szerkesztése
 1. A **virtuális gépek**, jelöljön ki egy virtuális Gépet, a port hozzáadása a soron belüli három pontra kattintva ezt a virtuális gépet. Ekkor megnyílik egy menüben.
 2. Válassza ki **szerkesztése** a menüben. Ekkor megnyílik **JIT VM konfiguráció**.
 
-  ![Házirend szerkesztése][8]
+  ![A szabályzat szerkesztése][8]
 
 3. A **JIT VM konfiguráció**, vagy szerkesztheti a meglévő beállítások már védett port a porton kattint, vagy választhat **Hozzáadás**. Ekkor megnyílik **Hozzáadás portkonfigurációjának**.
 

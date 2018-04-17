@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: d241bfb6245eb5a70f1e4fcedc86c969766019f4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: fc3dca82bea17b44f66b433f59e5861da3bb0ca2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="overview-failover-groups-and-active-geo-replication"></a>Áttekintés: Feladatátvételi csoportok és aktív georeplikáció
 Aktív georeplikáció legfeljebb négy olvasható másodlagos adatbázisok konfigurálása az ugyanazon vagy másik data center helyeken (régió) teszi lehetővé. Másodlagos adatbázisok érhetők el, a lekérdezésre, és a feladatátvételi, ha van egy adatközpont-meghibásodás után, vagy nem az elsődleges adatbázishoz való kapcsolódáshoz. A feladatátvételi kell kezdeményeznie manuálisan az alkalmazás a felhasználó. A feladatátvétel után az új elsődleges van egy másik kapcsolati végpontot. 
@@ -131,7 +131,7 @@ A nagy késleltetésű nagy kiterjedésű hálózatok, mert a folyamatos másol�
 ## <a name="programmatically-managing-failover-groups-and-active-geo-replication"></a>Programozott módon a feladatátvételi csoportok és aktív georeplikáció kezelése
 Korábban bemutatott automatikus feladatátvételt csoportok (az előzetes verzió) és az aktív georeplikáció is kezelhetők programozott módon, Azure PowerShell és a REST API-t. Az alábbi táblázatban láthatók az elérhető parancsok készlete.
 
-**Az Azure Resource Manager API és a szerepkör alapú biztonsági**: aktív georeplikáció tartalmaz egy Azure Resource Manager API-kezelésre, beleértve a [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/) és [Azure PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/overview). Ezen API-k erőforráscsoportok használatát, és támogatja a szerepköralapú biztonsággal (RBAC). Hozzáférés szerepkörök megvalósításához további információkért lásd: [átruházásához hozzáférés-vezérlés](../active-directory/role-based-access-control-what-is.md).
+**Az Azure Resource Manager API és a szerepkör alapú biztonsági**: aktív georeplikáció tartalmaz egy Azure Resource Manager API-kezelésre, beleértve a [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/) és [Azure PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/overview). Ezen API-k erőforráscsoportok használatát, és támogatja a szerepköralapú biztonsággal (RBAC). Hozzáférés szerepkörök megvalósításához további információkért lásd: [átruházásához hozzáférés-vezérlés](../role-based-access-control/overview.md).
 
 ## <a name="manage-sql-database-failover-using-transact-sql"></a>SQL-adatbázis feladatátvétel Transact-SQL használatával kezelése
 

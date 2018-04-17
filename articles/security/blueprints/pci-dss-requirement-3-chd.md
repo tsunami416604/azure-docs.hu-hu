@@ -1,6 +1,6 @@
 ---
-title: "Az Azure támogatási feldolgozási tervezetének - CHD követelmények"
-description: "3. követelmény PCI DSS"
+title: Az Azure támogatási feldolgozási tervezetének - CHD követelmények
+description: 3. követelmény PCI DSS
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 356599cbe1e4e1948a5ec16d0d504835fa7dcd43
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 3bbed692bfccaa2a3296ba4697c66e9069b6e914
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="chd-requirements-for-pci-dss-compliant-environments"></a>PCI DSS-kompatibilis környezetben CHD követelményei
 ## <a name="pci-dss-requirement-3"></a>3. követelmény PCI DSS
@@ -43,8 +43,8 @@ Tekintse meg a PCI DSS, PA-DSS szószedetben és rövidítések és rövidítés
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Azure felelős az ügyféladatokat, a törlésre kijelölt teljesülnek biztonságosan leszerelt NIST 800-88 biztonságos kivezetési házirendjeit megadott megfelelő protokollok használatával. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló nem törli vagy megsemmisítése bármely tárolt CHD. Azonban az összes adat titkosítva, és nem elsődleges fiók száma (PÁSZTÁZÁS) tárolja.<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Azure felelős az ügyféladatokat, a törlésre kijelölt teljesülnek biztonságosan leszerelt NIST 800-88 biztonságos kivezetési házirendjeit megadott megfelelő protokollok használatával. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló nem törli vagy megsemmisítése bármely tárolt CHD. Azonban az összes adat titkosítva, és nem elsődleges fiók száma (PÁSZTÁZÁS) tárolja.<br /><br />|
 
 
 
@@ -60,8 +60,8 @@ Bizalmas hitelesítési adatok adatai, fájljaiban szereplő az alábbi követel
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló nem törölhető és nem minden tárolt CHD; megszüntetése a mintaadatok csak bemutató célokra tárolja. Azonban minden adata titkosított, és nem elsődleges fiók száma (PÁSZTÁZÁS) tárolja.<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló nem törölhető és nem minden tárolt CHD; megszüntetése a mintaadatok csak bemutató célokra tárolja. Azonban minden adata titkosított, és nem elsődleges fiók száma (PÁSZTÁZÁS) tárolja.<br /><br />|
 
 
 
@@ -73,7 +73,7 @@ Bizalmas hitelesítési adatok adatai, fájljaiban szereplő az alábbi követel
 > Üzleti normális működés során az alábbi adatok elemek a mágneses paritásos megőrzendő lehet szükség: 
 > - A kártya tulajdonosát neve 
 > - Elsődleges számát (PÁSZTÁZÁS) 
-> - Lejárat dátuma 
+> - Lejárati dátum 
 > - Szolgáltatás kódot 
 >
 > Minimálisra csökkenthetők a járulékos, csak ezen adatok elemek tárolására üzleti igény szerint.
@@ -82,8 +82,8 @@ Bizalmas hitelesítési adatok adatai, fájljaiban szereplő az alábbi követel
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló nem tárol bármely CHD teljes tartalmát.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló nem tárol bármely CHD teljes tartalmát.|
 
 
 
@@ -95,8 +95,8 @@ Bizalmas hitelesítési adatok adatai, fájljaiban szereplő az alábbi követel
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló összes adatokat, többek között a CVV minták titkosítja.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló összes adatokat, többek között a CVV minták titkosítja.|
 
 
 
@@ -108,8 +108,8 @@ Bizalmas hitelesítési adatok adatai, fájljaiban szereplő az alábbi követel
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló a PIN-kód információt nem tárolnak.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló a PIN-kód információt nem tárolnak.|
 
 
 
@@ -124,8 +124,8 @@ Bizalmas hitelesítési adatok adatai, fájljaiban szereplő az alábbi követel
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló elfedi az elsődleges számát (PÁSZTÁZÁS) átlátható adattitkosítás, mindig titkosított oszlopok és dinamikus adatmaszkolási használatával. További információkért lásd: [PCI útmutatást - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló elfedi az elsődleges számát (PÁSZTÁZÁS) átlátható adattitkosítás, mindig titkosított oszlopok és dinamikus adatmaszkolási használatával. További információkért lásd: [PCI útmutatást - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -144,8 +144,8 @@ Bizalmas hitelesítési adatok adatai, fájljaiban szereplő az alábbi követel
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló összes hitelkártya titkosítja és az Azure Key Vault kezelésére használ kulcsok beolvasása a CHD megakadályozza.<br /><br />További információkért lásd: [PCI útmutatást - titkosítás](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló összes hitelkártya titkosítja és az Azure Key Vault kezelésére használ kulcsok beolvasása a CHD megakadályozza.<br /><br />További információkért lásd: [PCI útmutatást - titkosítás](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -160,8 +160,8 @@ Bizalmas hitelesítési adatok adatai, fájljaiban szereplő az alábbi követel
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló tárolt összes adat titkosítását, és elkülöníti a forgalmat a DevOps funkciók kiemelt jogok kiterjesztésének megelőzése.<br /><br />Az App Service Environment-környezet védett, és a zárolását, kell adni egy mechanizmus, amellyel lehetővé teszik a DevOps kiadásokban vagy egy webalkalmazást, a Kudu használatával kell megfigyelniük, például szükség lehet a módosításokat.<br /><br />Egy virtuális gépet át nem veszi egy jumpbox (megerősített gazdagépen), a következő beállításokat:<br /><br /><ul><li>[Kártevőirtó-bővítmény](/azure/security/azure-security-antimalware)</li><li>[OMS figyelőbővítmény](/azure/virtual-machines/virtual-machines-windows-extensions-oms)</li><li>[Virtuálisgép-diagnosztika bővítmény](/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)</li><li>[A BitLocker titkosított lemez](/azure/security/azure-security-disk-encryption)</li></ul>Az Azure Key Vault használatával igazodik Azure Government, PCI DSS és HIPAA követelményeket.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló tárolt összes adat titkosítását, és elkülöníti a forgalmat a DevOps funkciók kiemelt jogok kiterjesztésének megelőzése.<br /><br />Az App Service Environment-környezet védett, és a zárolását, kell adni egy mechanizmus, amellyel lehetővé teszik a DevOps kiadásokban vagy egy webalkalmazást, a Kudu használatával kell megfigyelniük, például szükség lehet a módosításokat.<br /><br />Egy virtuális gépet át nem veszi egy jumpbox (megerősített gazdagépen), a következő beállításokat:<br /><br /><ul><li>[Kártevőirtó-bővítmény](/azure/security/azure-security-antimalware)</li><li>[Napló Analytics figyelőbővítmény](/azure/virtual-machines/virtual-machines-windows-extensions-oms)</li><li>[Virtuálisgép-diagnosztika bővítmény](/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)</li><li>[A BitLocker titkosított lemez](/azure/security/azure-security-disk-encryption)</li></ul>Az Azure Key Vault használatával igazodik Azure Government, PCI DSS és HIPAA követelményeket.|
 
 
 
@@ -176,8 +176,8 @@ Bizalmas hitelesítési adatok adatai, fájljaiban szereplő az alábbi követel
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | **A Key vault ügyfelek:**<br /><br />Microsoft Azure biztosítja, hogy ügyfél kulcstárolójának logikailag egymástól különítve, és logikailag különítve a felügyeleti vezérlősík a Key Vault szolgáltatás. Key Vault kialakításának köszönhetően a Microsoft nem rendelkezik az ügyfél kulcstároló folyamatos elérését. <br /><br />Kulcsok vannak védik a Microsoft Azure-ban iparági szabványoknak megfelelő algoritmusok, kulcshosszok és hardveres biztonsági modulokkal (HSM) használatával.<br /><br />A Microsoft Azure Key Vault szolgáltatókban tárolt kulcsok egy másik kulcsának védelmére használhatók. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló dokumentációt bemutatják és telepíthet a bemutató CHD védelméhez védett kulcs megoldást biztosít.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **A Key vault ügyfelek:**<br /><br />Microsoft Azure biztosítja, hogy ügyfél kulcstárolójának logikailag egymástól különítve, és logikailag különítve a felügyeleti vezérlősík a Key Vault szolgáltatás. Key Vault kialakításának köszönhetően a Microsoft nem rendelkezik az ügyfél kulcstároló folyamatos elérését. <br /><br />Kulcsok vannak védik a Microsoft Azure-ban iparági szabványoknak megfelelő algoritmusok, kulcshosszok és hardveres biztonsági modulokkal (HSM) használatával.<br /><br />A Microsoft Azure Key Vault szolgáltatókban tárolt kulcsok egy másik kulcsának védelmére használhatók. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló dokumentációt bemutatják és telepíthet a bemutató CHD védelméhez védett kulcs megoldást biztosít.|
 
 
 
@@ -195,8 +195,8 @@ Bizalmas hitelesítési adatok adatai, fájljaiban szereplő az alábbi követel
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | **A Key vault ügyfelek:**<br /><br />Microsoft Azure biztosítja, hogy ügyfél kulcstárolójának logikailag egymástól különítve, és logikailag különítve a felügyeleti vezérlősík a Key Vault szolgáltatás. Key Vault kialakításának köszönhetően a Microsoft nem rendelkezik az ügyfél kulcstároló folyamatos elérését. <br /><br />Kulcsok vannak védik a Microsoft Azure-ban iparági szabványoknak megfelelő algoritmusok, kulcshosszok és hardveres biztonsági modulokkal (HSM) használatával.<br /><br />A Microsoft Azure Key Vault szolgáltatókban tárolt kulcsok egy másik kulcsának védelmére használhatók. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló dokumentációt bemutatják és telepíthet a bemutató CHD védelméhez védett kulcs megoldást biztosít.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **A Key vault ügyfelek:**<br /><br />Microsoft Azure biztosítja, hogy ügyfél kulcstárolójának logikailag egymástól különítve, és logikailag különítve a felügyeleti vezérlősík a Key Vault szolgáltatás. Key Vault kialakításának köszönhetően a Microsoft nem rendelkezik az ügyfél kulcstároló folyamatos elérését. <br /><br />Kulcsok vannak védik a Microsoft Azure-ban iparági szabványoknak megfelelő algoritmusok, kulcshosszok és hardveres biztonsági modulokkal (HSM) használatával.<br /><br />A Microsoft Azure Key Vault szolgáltatókban tárolt kulcsok egy másik kulcsának védelmére használhatók. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló dokumentációt bemutatják és telepíthet a bemutató CHD védelméhez védett kulcs megoldást biztosít.|
 
 
 
@@ -209,8 +209,8 @@ Bizalmas hitelesítési adatok adatai, fájljaiban szereplő az alábbi követel
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | **A Key vault ügyfelek:**<br /><br />Key Vault támogatja több szintű hozzáférési házirendeket, amelyek lehetővé teszik a Key Vault tulajdonosa hozzáférést biztosíthat bizonyos funkciók jellemző bejegyzésekre egyedi műveletek végrehajtásához. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A webes tároló contoso kulcskezelés el különítve egy felhasználói fiókhoz (admin ##@contosowebstore.com).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **A Key vault ügyfelek:**<br /><br />Key Vault támogatja több szintű hozzáférési házirendeket, amelyek lehetővé teszik a Key Vault tulajdonosa hozzáférést biztosíthat bizonyos funkciók jellemző bejegyzésekre egyedi műveletek végrehajtásához. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A webes tároló contoso kulcskezelés el különítve egy felhasználói fiókhoz (admin ##@contosowebstore.com).|
 
 
 
@@ -228,8 +228,8 @@ Bizalmas hitelesítési adatok adatai, fájljaiban szereplő az alábbi követel
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | **A Key vault ügyfelek:**<br /><br />Kulcsok vannak tárolva az ügyfél által azonosított egyedi kulcstárolót.<br /><br />Key Vault hozzáférhet egyszerre és globálisan több alkalmazás, amely csökkenti a másolja a vágólapra a kulcsot, és több helyen tárolja. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló összes kulcskezelés Azure Key Vault használ. További információkért lásd: [PCI útmutatást - titkosítás](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **A Key vault ügyfelek:**<br /><br />Kulcsok vannak tárolva az ügyfél által azonosított egyedi kulcstárolót.<br /><br />Key Vault hozzáférhet egyszerre és globálisan több alkalmazás, amely csökkenti a másolja a vágólapra a kulcsot, és több helyen tárolja. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló összes kulcskezelés Azure Key Vault használ. További információkért lásd: [PCI útmutatást - titkosítás](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -242,8 +242,8 @@ Bizalmas hitelesítési adatok adatai, fájljaiban szereplő az alábbi követel
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | **A Key vault ügyfelek:**<br /><br />Kulcsok vannak tárolva az ügyfél által azonosított egyedi kulcstárolót. <br /><br />Key Vault hozzáférhet egyszerre és globálisan több alkalmazás, amely csökkenti a másolja a vágólapra a kulcsot, és több helyen tárolja. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló összes kulcskezelés Azure Key Vault használ. További információkért lásd: [PCI útmutatást - titkosítás](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **A Key vault ügyfelek:**<br /><br />Kulcsok vannak tárolva az ügyfél által azonosított egyedi kulcstárolót. <br /><br />Key Vault hozzáférhet egyszerre és globálisan több alkalmazás, amely csökkenti a másolja a vágólapra a kulcsot, és több helyen tárolja. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló összes kulcskezelés Azure Key Vault használ. További információkért lásd: [PCI útmutatást - titkosítás](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -252,14 +252,14 @@ Bizalmas hitelesítési adatok adatai, fájljaiban szereplő az alábbi követel
 **3.6** teljesen és dokumentálása valósítja meg az összes kulcskezelés folyamatok és eljárások, a kártya tulajdonosát adatok, beleértve a következőket titkosításhoz használt kriptográfiai kulcsokkal. 
 
 > [!NOTE]
-> A különböző erőforrások, például az NIST, amely http://csrc.nist.gov helyen találhatók a kulcskezeléshez számos ipari szabványok érhetők el.
+> A kulcskezeléshez számos ipari szabványok érhetők el a különböző erőforrások, például az NIST, amely a következő http://csrc.nist.gov.
 
 **Feladatok:&nbsp;&nbsp;`Customer Only`**
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló összes kulcskezelés Azure Key Vault használ. További információkért lásd: [PCI útmutatást - titkosítás](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló összes kulcskezelés Azure Key Vault használ. További információkért lásd: [PCI útmutatást - titkosítás](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -271,8 +271,8 @@ Bizalmas hitelesítési adatok adatai, fájljaiban szereplő az alábbi követel
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | **A Key vault ügyfelek:** <br /><br />A Key Vault kulcsok generálásakor Azure felelős az ügyfél vállalatához specifikációi / kulcs létrehozásakor. Kulcsok jönnek létre, a hardveres biztonsági modul használatával. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló összes kulcskezelés Azure Key Vault használ. További információkért lásd: [PCI útmutatást - titkosítás](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **A Key vault ügyfelek:** <br /><br />A Key Vault kulcsok generálásakor Azure felelős az ügyfél vállalatához specifikációi / kulcs létrehozásakor. Kulcsok jönnek létre, a hardveres biztonsági modul használatával. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló összes kulcskezelés Azure Key Vault használ. További információkért lásd: [PCI útmutatást - titkosítás](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -284,8 +284,8 @@ Bizalmas hitelesítési adatok adatai, fájljaiban szereplő az alábbi követel
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | **A Key vault ügyfelek:**<br /><br />A saját kulcs (használatának BYOK) eszközt magában foglalja a felhasználói kulcsot, és támad egy meghatározott biztonsági tárolóban, amely egy adott Azure-előfizetés van kötve. A kulcs csak akkor importálhatók a megadott előfizetés kulcstároló, a megadott régión belül. Ez a folyamat használja a titkosítási eljárásokat a hardver gyártója által biztosított. Ügyfelek, hogy sikeres volt-e az átvitel értesítést kaphat. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló összes kulcskezelés Azure Key Vault használ. További információkért lásd: [PCI útmutatást - titkosítás](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **A Key vault ügyfelek:**<br /><br />A saját kulcs (használatának BYOK) eszközt magában foglalja a felhasználói kulcsot, és támad egy meghatározott biztonsági tárolóban, amely egy adott Azure-előfizetés van kötve. A kulcs csak akkor importálhatók a megadott előfizetés kulcstároló, a megadott régión belül. Ez a folyamat használja a titkosítási eljárásokat a hardver gyártója által biztosított. Ügyfelek, hogy sikeres volt-e az átvitel értesítést kaphat. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló összes kulcskezelés Azure Key Vault használ. További információkért lásd: [PCI útmutatást - titkosítás](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -297,8 +297,8 @@ Bizalmas hitelesítési adatok adatai, fájljaiban szereplő az alábbi követel
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | **A Key vault ügyfelek:**<br /><br />Kulcsok a HSM-EK tárolódnak, és használja-e a hardver gyártójának kriptográfiai biztonsági biztosított. A metaadatok kulcsok titkosítására, amely minden kulcstároló egyedi az Azure Storage tárolja. <br /><br /> |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló összes kulcskezelés Azure Key Vault használ. További információkért lásd: [PCI útmutatást - titkosítás](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **A Key vault ügyfelek:**<br /><br />Kulcsok a HSM-EK tárolódnak, és használja-e a hardver gyártójának kriptográfiai biztonsági biztosított. A metaadatok kulcsok titkosítására, amely minden kulcstároló egyedi az Azure Storage tárolja. <br /><br /> |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló összes kulcskezelés Azure Key Vault használ. További információkért lásd: [PCI útmutatást - titkosítás](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -310,8 +310,8 @@ Bizalmas hitelesítési adatok adatai, fájljaiban szereplő az alábbi követel
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | **A Key vault ügyfelek:**<br /><br />Kulcstároló frissítése, vagy állítsa a kulcsokat, az ügyfél által definiált funkcióját támogatja. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló összes kulcskezelés Azure Key Vault használ. További információkért lásd: [PCI útmutatást - titkosítás](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **A Key vault ügyfelek:**<br /><br />Kulcstároló frissítése, vagy állítsa a kulcsokat, az ügyfél által definiált funkcióját támogatja. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló összes kulcskezelés Azure Key Vault használ. További információkért lásd: [PCI útmutatást - titkosítás](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -326,8 +326,8 @@ Bizalmas hitelesítési adatok adatai, fájljaiban szereplő az alábbi követel
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | **A Key vault ügyfelek:**<br /><br />Key Vault kivonása vagy cserélni, az ügyfél által definiált funkcióját támogatja. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló összes kulcskezelés Azure Key Vault használ. További információkért lásd: [PCI útmutatást - titkosítás](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **A Key vault ügyfelek:**<br /><br />Key Vault kivonása vagy cserélni, az ügyfél által definiált funkcióját támogatja. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló összes kulcskezelés Azure Key Vault használ. További információkért lásd: [PCI útmutatást - titkosítás](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -342,8 +342,8 @@ Bizalmas hitelesítési adatok adatai, fájljaiban szereplő az alábbi követel
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló összes kulcskezelés Azure Key Vault használ. További információkért lásd: [PCI útmutatást - titkosítás](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló összes kulcskezelés Azure Key Vault használ. További információkért lásd: [PCI útmutatást - titkosítás](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -355,8 +355,8 @@ Bizalmas hitelesítési adatok adatai, fájljaiban szereplő az alábbi követel
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | **A Key vault ügyfelek:**<br /><br />Kulcs tárolók logikailag el egymástól, és nem támogatják a kereszt-directory engedélyezési. Emiatt nem engedélyezett helyettesítés miatt meghiúsult. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló összes kulcskezelés Azure Key Vault használ. További információkért lásd: [PCI útmutatást - titkosítás](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **A Key vault ügyfelek:**<br /><br />Kulcs tárolók logikailag el egymástól, és nem támogatják a kereszt-directory engedélyezési. Emiatt nem engedélyezett helyettesítés miatt meghiúsult. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló összes kulcskezelés Azure Key Vault használ. További információkért lásd: [PCI útmutatást - titkosítás](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -368,8 +368,8 @@ Bizalmas hitelesítési adatok adatai, fájljaiban szereplő az alábbi követel
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A webes tároló contoso kulcskezelés el különítve egy felhasználói fiókhoz (admin ##@contosowebstore.com).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A webes tároló contoso kulcskezelés el különítve egy felhasználói fiókhoz (admin ##@contosowebstore.com).|
 
 
 
@@ -381,8 +381,8 @@ Bizalmas hitelesítési adatok adatai, fájljaiban szereplő az alábbi követel
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló összes kulcskezelés Azure Key Vault használ. További információkért lásd: [PCI útmutatást - titkosítás](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló összes kulcskezelés Azure Key Vault használ. További információkért lásd: [PCI útmutatást - titkosítás](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 

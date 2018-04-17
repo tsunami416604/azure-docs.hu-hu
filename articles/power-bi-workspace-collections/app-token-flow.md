@@ -1,12 +1,12 @@
 ---
-title: "Hitelesítése és engedélyezése a Power BI munkaterület gyűjteményekkel |} Microsoft Docs"
-description: "Hitelesítése és engedélyezése a Power BI munkaterület gyűjteményéhez."
+title: Hitelesítése és engedélyezése a Power BI munkaterület gyűjteményekkel |} Microsoft Docs
+description: Hitelesítése és engedélyezése a Power BI munkaterület gyűjteményéhez.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 1c1369ea-7dfd-4b6e-978b-8f78908fd6f6
 ms.service: power-bi-embedded
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: ae9627c6bb5e7bb099598acaa2eb29375c35593e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 74d34e708fb74daa295642d50643b78af8f6cb7a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>Hitelesítése és engedélyezése a Power BI munkaterület gyűjtemények
 
@@ -48,7 +48,7 @@ Az alkalmazás-token a következő jogcímeket tartalmazza:
 | **ver** |Az alkalmazás jogkivonatában verzióját. 0.2.0 az aktuális verziója. |
 | **és** |A jogkivonat az illetékes címzett. A Power BI munkaterület gyűjtemények használható: "https://analysis.windows.net/powerbi/api." |
 | **iss** |Egy karakterlánc, amely az alkalmazást, amely a jogkivonatot ki. |
-| **típusa** |A létrehozandó alkalmazás jogkivonatában típusa. Aktuális az egyetlen támogatott típus van **beágyazása**. |
+| **type** |A létrehozandó alkalmazás jogkivonatában típusa. Aktuális az egyetlen támogatott típus van **beágyazása**. |
 | **Windows azonnali csatlakozás** |Munkaterület gyűjteménynév a token küldése történik. |
 | **belső Windows-adatbázis** |Munkaterületének Azonosítóját a token küldése történik. |
 | **a relatív azonosítók** |A token azonosítója küldése történik. |
@@ -147,10 +147,10 @@ Body
 
 ### <a name="operations-and-scopes"></a>Műveletek és hatókörök
 
-|Művelet|Tároló-erőforrás|Token engedélyek|
+|Művelet|Célerőforrás|Token engedélyek|
 |---|---|---|
-|Adatkészlet alapján új jelentés létrehozása (a memóriában).|Adatkészlet|Dataset.Read|
-|Adatkészlet alapján új jelentés létrehozása (a memóriában), és mentse a jelentést.|Adatkészlet|* Dataset.Read<br>* Workspace.Report.Create|
+|Adatkészlet alapján új jelentés létrehozása (a memóriában).|Adathalmaz|Dataset.Read|
+|Adatkészlet alapján új jelentés létrehozása (a memóriában), és mentse a jelentést.|Adathalmaz|* Dataset.Read<br>* Workspace.Report.Create|
 |Megtekintheti és (a memória) egy meglévő jelentés felfedezése és szerkesztése. Report.Read Dataset.Read jelenti. Report.Read nem teszi lehetővé a módosítások mentése.|Jelentés|Report.Read|
 |Módosítsa és mentse egy meglévő jelentést.|Jelentés|Report.ReadWrite|
 |A jelentés (Mentés másként) másolatának mentése.|Jelentés|* Report.Read<br>* Workspace.Report.Copy|

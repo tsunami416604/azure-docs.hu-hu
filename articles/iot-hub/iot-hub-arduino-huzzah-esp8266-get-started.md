@@ -1,25 +1,25 @@
 ---
-title: "Felhőbe - ESP8266 lágyított HUZZAH ESP8266 csatlakozni az Azure IoT Hub |} Microsoft Docs"
-description: "Megtudhatja, hogyan kell beállítania, és Azure IoT-központ az adatokat küldeni az Azure felhőalapú platform ebben az oktatóanyagban Adafruit lágyított HUZZAH ESP8266 csatlakozni."
+title: Felhőbe - ESP8266 lágyított HUZZAH ESP8266 csatlakozni az Azure IoT Hub |} Microsoft Docs
+description: Megtudhatja, hogyan kell beállítania, és Azure IoT-központ az adatokat küldeni az Azure felhőalapú platform ebben az oktatóanyagban Adafruit lágyított HUZZAH ESP8266 csatlakozni.
 services: iot-hub
-documentationcenter: 
-author: shizn
+documentationcenter: ''
+author: rangv
 manager: timlt
-tags: 
-keywords: 
+tags: ''
+keywords: ''
 ms.assetid: c505aacf-89a8-40ed-a853-493b75bec524
 ms.service: iot-hub
 ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/15/2017
-ms.author: xshi
-ms.openlocfilehash: e8f0397797d8f4c3349afcdfb02de071a6593c72
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.date: 4/11/2018
+ms.author: rangv
+ms.openlocfilehash: b850bb25d7a6d06a2d0f55ed915321badf76bb39
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>Csatlakozás Adafruit lágyított HUZZAH ESP8266 Azure IoT Hub a felhőben
 
@@ -89,7 +89,7 @@ PIN-kód érzékelő használja a következő vezetékezést:
 | Indítsa el a (érzékelő)           | Záró (tábla)           | Kábel szín   |
 | -----------------------  | ---------------------- | ------------: |
 | VDD (PIN-kód 31F)            | 3V (PIN-kód 58H)           | Piros kábel     |
-| ADATOK (PIN-kód 32F)           | GPIO 2 (Pin 46A)       | Kék kábel    |
+| ADATOK (PIN-kód 32F)           | GPIO 2 (PIN-kód 46A)       | Kék kábel    |
 | GND (PIN-kód 34F)            | GND (PIN-kód 56I)          | Fekete kábel   |
 
 További információkért lásd: [Adafruit DHT22 érzékelő telepítő](https://learn.adafruit.com/dht/connecting-to-a-dhtxx-sensor) és [Adafruit lágyított HUZZAH Esp8266 érintkezőkiosztása szerepel](https://learn.adafruit.com/adafruit-feather-huzzah-esp8266/using-arduino-ide?view=all#pinouts).
@@ -210,7 +210,7 @@ A mintaalkalmazás szimulálhatja a hőmérséklet és a páratartalom adatok, a
 
 ### <a name="deploy-the-sample-application-to-feather-huzzah-esp8266"></a>A mintaalkalmazás lágyított HUZZAH ESP8266 történő telepítése
 
-1. Kattintson a Visual Studio Code  **<Select Serial Port>**  állapotát sáv megnyitásához, és kattintson a soros port a lágyított HUZZAH ESP8266.
+1. Kattintson a Visual Studio Code **<Select Serial Port>** állapotát sáv megnyitásához, és kattintson a soros port a lágyított HUZZAH ESP8266.
 1. Adja meg `F1`, írja be **Arduino** válassza **Arduino: feltöltése** felépítéséhez és az lágyított HUZZAH ESP8266 minta alkalmazást telepíti.
 
 ### <a name="enter-your-credentials"></a>Adja meg hitelesítő adatait

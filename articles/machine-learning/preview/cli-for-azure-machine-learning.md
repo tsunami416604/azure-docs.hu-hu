@@ -1,20 +1,21 @@
 ---
-title: "Telepíti, és gépi tanulási CLI felső Azure Machine Learning feladatokhoz"
-description: "Ismerje meg, hogyan kell telepíteni, és a parancssori felület használata a leggyakrabban használt gépi tanulási feladatok az Azure Machine Learning."
+title: Telepítheti és használhatja a parancssori felület a legfontosabb feladatok - Azure Machine Learning
+description: Ismerje meg, hogyan kell telepíteni, és a parancssori felület használata a leggyakrabban használt gépi tanulási feladatok az Azure Machine Learning.
 services: machine-learning
 author: haining
 ms.author: haining
-manager: mwinkler
+manager: cgronlun
 ms.reviewer: mldocs
 ms.service: machine-learning
+ms.component: core
 ms.workload: data-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/10/2018
-ms.openlocfilehash: f34c247728c854c47f486925d440eee0dc5b1945
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 33a1665c8f09efae88c831172199fca3e0b7634d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-and-use-the-machine-learning-cli-for-top-tasks-in-azure-machine-learning"></a>Telepíti, és gépi tanulási CLI Azure Machine Learning felső feladataihoz
 
@@ -32,7 +33,11 @@ Ez a cikk bemutatja a leghasznosabb CLI parancsainak az Ön kényelme.
 
 ![Azure Machine Learning parancssori felület](media/cli-for-azure-machine-learning/flow.png)
 
->[!NOTE]
+## <a name="what-you-need-to-get-started"></a>Mi szükséges a kezdéshez
+
+Azure-előfizetés vagy egy olyan erőforráscsoport, ahol központilag telepíthető a modellek közreműködői hozzáférés szükséges. Emellett telepítendő Azure Machine Learning-munkaterület a CLI futtatásához. 
+
+>[!IMPORTANT]
 >A CLI Azure Machine Learning szolgáltatás fel eltér a [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest), amely Azure-erőforrások kezelésére szolgál.
 
 ## <a name="get-and-start-cli"></a>GET, és indítsa el a parancssori felület

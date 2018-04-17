@@ -1,6 +1,6 @@
 ---
-title: "Hálózati biztonsági csoport – Azure Resource Manager-sablon létrehozása |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozhat létre és telepíthet a hálózati biztonsági csoportok Azure Resource Manager-sablonnal."
+title: Hálózati biztonsági csoport – Azure Resource Manager-sablon létrehozása |} Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre és telepíthet a hálózati biztonsági csoportok Azure Resource Manager-sablonnal.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -17,10 +17,10 @@ ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1fc210ac5e28efe10be27f8b5a752788d3d5a5a3
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-network-security-groups-using-an-azure-resource-manager-template"></a>Hálózati biztonsági csoportok használata az Azure Resource Manager-sablon létrehozása
 
@@ -104,7 +104,7 @@ A nyilvános tárházban elérhető mintasablon a fent leírt forgatókönyv lé
 A letöltött ARM-sablon PowerShell használatával történő üzembe helyezéséhez kövesse az alábbi lépéseket.
 
 1. Ha még sosem használta az Azure PowerShell, kövesse az utasításokat a [hogyan telepítése és konfigurálása az Azure PowerShell](/powershell/azure/overview) való telepítéséhez és konfigurálásához.
-2. Futtassa a  **`New-AzureRmResourceGroup`**  parancsmag segítségével hozzon létre egy erőforráscsoportot a sablon használatával.
+2. Futtassa a **`New-AzureRmResourceGroup`** parancsmag segítségével hozzon létre egy erőforráscsoportot a sablon használatával.
 
     ```powershell
     New-AzureRmResourceGroup -Name TestRG -Location uswest `

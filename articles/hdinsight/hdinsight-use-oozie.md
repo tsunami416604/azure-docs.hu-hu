@@ -1,8 +1,8 @@
 ---
-title: "Hdinsight Hadoop Oozie használata |} Microsoft Docs"
-description: "Hadoop Oozie használata a Hdinsightban, big data-szolgáltatása. Megtudhatja, hogyan határozza meg az Oozie munkafolyamat, valamint az Oozie feladat elküldéséhez."
+title: Hdinsight Hadoop Oozie használata |} Microsoft Docs
+description: Hadoop Oozie használata a Hdinsightban, big data-szolgáltatása. Megtudhatja, hogyan határozza meg az Oozie munkafolyamat, valamint az Oozie feladat elküldéséhez.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
@@ -10,18 +10,16 @@ editor: cgronlun
 ms.assetid: 870098f0-f416-4491-9719-78994bf4a369
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 73d8a26945be05ac0131148b5c0ffdd5f8053bcd
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: a3c7252be926c6e6b2f9116efb652b888154e46a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>A Hadoop Oozie segítségével határozza meg, és futtatnak egy munkafolyamatot a Hdinsightban
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
@@ -617,7 +615,7 @@ Futtassa újra a munkafolyamatot, törölnie kell a következő elemek:
 
     $conn.close()
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban megtanulta, hogyan adhat meg az Oozie-munkafolyamat és az Oozie-feladat futtatása a PowerShell használatával. További tudnivalókért tekintse meg a következő cikkeket:
 
 * [Időalapú Oozie-koordinátor használata a hdinsight eszközzel][hdinsight-oozie-coordinator-time]

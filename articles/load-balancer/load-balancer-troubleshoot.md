@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 560e2ed7cafd1018f4b64ac6d0e45134560082b6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 69b2caa6cd2fe6d2c89074614aaf28e2ad68a25a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Azure Load Balancer hibaelhárítása
 
@@ -103,9 +103,7 @@ Ha egy virtuális gép nem válaszol az adatforgalmat, lehet, mert vagy a cél p
 
 Ha egy vagy több hálózati biztonsági csoportot az alhálózaton lévő vagy a virtuális Gépre, blokkolja a forrás IP-cím vagy a port, akkor a virtuális gép nem tud válaszolni.
 
-* A hálózati biztonsági csoportokhoz a háttérkiszolgálón VM listában. További információkért lásd:
-    -  [A portál használatával a hálózati biztonsági csoportok kezelése](../virtual-network/virtual-network-manage-nsg-arm-portal.md)
-    -  [Hálózati biztonsági csoportok kezelése a PowerShell-lel](../virtual-network/virtual-network-manage-nsg-arm-ps.md)
+* A hálózati biztonsági csoportokhoz a háttérkiszolgálón VM listában. További információkért lásd: [hálózati biztonsági csoportok kezelése](../virtual-network/manage-network-security-group.md).
 * Hálózati biztonsági csoportok listában ellenőrizze, hogy:
     - az adatok port bejövő vagy kimenő forgalom zavaró tényező rendelkezik. 
     - egy **megtagadása az összes** hálózati biztonsági csoport szabály a hálózati adapter által a virtuális gép vagy az alhálózat, a magasabb prioritású, amely az alapértelmezett szabály, amely lehetővé teszi, hogy a terheléselosztó-vizsgálat, és a forgalom (hálózati biztonsági csoportok engedélyeznie kell a Load Balancer IP-címe 168.63.129.16, Ez a mintavételi portot) 

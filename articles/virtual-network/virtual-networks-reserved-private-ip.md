@@ -1,10 +1,10 @@
 ---
-title: "Statikus belső privát IP - Azure VM – klasszikus"
-description: "Statikus belső IP-címek (immerzióban) és a kezelésük módjával ismertetése"
+title: Statikus belső privát IP - Azure VM – klasszikus
+description: Statikus belső IP-címek (immerzióban) és a kezelésük módjával ismertetése
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: genli
+manager: cshepard
 editor: tysonn
 ms.assetid: 93444c6f-af1b-41f8-a035-77f5c0302bf0
 ms.service: virtual-network
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2016
-ms.author: jdial
-ms.openlocfilehash: cf9ee59ca4e44ed01836c2efb1f4df5f073bf6e0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: genli
+ms.openlocfilehash: b668a06b91a5fcb1dd08737e0422b599bdb3e27f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-set-a-static-internal-private-ip-address-using-powershell-classic"></a>Hogyan kell beállítani egy statikus belső magánhálózati IP-cím (klasszikus) PowerShell használatával
 A legtöbb esetben nem kell a virtuális gép statikus belső IP-címet megadni. A virtuális hálózat virtuális gépek automatikusan fog kapni a belső IP-címnek megadott tartomány. Azonban bizonyos esetekben egy statikus IP-címet ad meg egy adott virtuális gép teljesen logikus. Ha például a virtuális Gépet DNS futtatni fogja vagy egy tartományvezérlő. Egy statikus belső IP-címet a virtuális gép akár keresztül stop/deprovision állapotban marad. 
@@ -101,7 +101,7 @@ Hozzáadása egy belső statikus IP-cím kötése a virtuális gép létre a par
     | Set-AzureStaticVNetIP -IPAddress 10.10.0.7 `
     | Update-AzureVM
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Fenntartott IP-cím](virtual-networks-reserved-public-ip.md)
 
 [Példányszintű nyilvános IP-cím (ILPIP)](virtual-networks-instance-level-public-ip.md)

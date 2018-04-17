@@ -1,32 +1,32 @@
 ---
-title: "Az Azure telepítés utáni feladatok OpenShift |} Microsoft Docs"
-description: "További feladatok után egy OpenShift fürt telepítve van."
+title: Az Azure telepítés utáni feladatok OpenShift |} Microsoft Docs
+description: További feladatok után egy OpenShift fürt telepítve van.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldw
 manager: najoshi
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 
+ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: 77c4719b5cee7f5736d73ee10cf6abf12229ea11
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 1fe44f6d18199fe1a37db566f8b30eeaa4fbfab2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="post-deployment-tasks"></a>Telepítés utáni feladatok
 
 Egy OpenShift fürt telepítése után beállíthatja a további elemeket. Ez a cikk a következőket tartalmazza:
 
 - Azure Active Directory (Azure AD) segítségével az egyszeri bejelentkezés konfigurálása
-- Az Operations Management Suite OpenShift figyelése konfigurálása
+- Naplóelemzési OpenShift figyelése konfigurálása
 - Metrikák és a naplózás konfigurálása
 
 ## <a name="configure-single-sign-on-by-using-azure-active-directory"></a>Egyszeri bejelentkezés konfigurálása az Azure Active Directoryval
@@ -38,9 +38,9 @@ Azure Active Directory használatára a hitelesítéshez, először meg kell lé
 Ezeket a lépéseket az Azure parancssori felület használatával hozza létre az alkalmazás regisztrálása és az engedélyek beállítása a grafikus felhasználói (portál). Az alkalmazás regisztrálásának létrehozása a következő öt adatot kell:
 
 - Megjelenített név: alkalmazás regisztrációja neve (például OCPAzureAD)
-- Kezdőlap: OpenShift konzol URL-címe (például https://masterdns343khhde.westus.cloudapp.azure.com:8443/konzol)
-- URI-azonosító: OpenShift konzol URL-címe (például https://masterdns343khhde.westus.cloudapp.azure.com:8443/konzol)
-- Válasz URL-címe: Főkiszolgáló nyilvános URL-cím és a regisztrációs alkalmazásnév (például https://masterdns343khhde.westus.cloudapp.azure.com:8443/oauth2callback/OCPAzureAD)
+- Kezdőlap: OpenShift (például konzol URL-címe https://masterdns343khhde.westus.cloudapp.azure.com:8443/console)
+- URI-azonosító: OpenShift konzol URL-címe (például https://masterdns343khhde.westus.cloudapp.azure.com:8443/console)
+- Válasz URL-címe: Fő URL-címe és az alkalmazás regisztrálása nevére (például https://masterdns343khhde.westus.cloudapp.azure.com:8443/oauth2callback/OCPAzureAD)
 - Jelszó: Biztonságos jelszó (erős jelszó használata)
 
 A következő példa egy alkalmazás regisztrálása a fenti adatokat használatával hozza létre:
@@ -145,7 +145,7 @@ Szúrja be a következő sorokat közvetlenül az előző sorok után:
         token: https://login.microsoftonline.com/<tenant Id>/oauth2/token
 ```
 
-A bérlői azonosító található a következő parancssori paranccsal:```az account show```
+A bérlői azonosító található a következő parancssori paranccsal: ```az account show```
 
 Indítsa újra a OpenShift fő services összes fő csomópontján:
 
@@ -171,11 +171,11 @@ sudo systemctl restart atomic-openshift-master
 
 A OpenShift konzolon ekkor megjelenik az hitelesítéshez két lehetőség közül választhat: htpasswd_auth és [App regisztrációs].
 
-## <a name="monitor-openshift-with-operations-management-suite"></a>A figyelő OpenShift az Operations Management Suite szolgáltatásban
+## <a name="monitor-openshift-with-log-analytics"></a>A Naplóelemzési figyelő OpenShift
 
-Az Operations Management Suite OpenShift figyeléséhez használhatja a két lehetőség közül: OMS-ügynök telepítése a Virtuálisgép-gazda, vagy az OMS-tároló. A cikkben megtudhatja, hogyan telepítheti az OMS-tárolóban.
+A Naplóelemzési OpenShift figyeléséhez használhatja a két lehetőség közül: OMS-ügynök telepítése a Virtuálisgép-gazda, vagy az OMS-tároló. A cikkben megtudhatja, hogyan telepítheti az OMS-tárolóban.
 
-## <a name="create-an-openshift-project-for-operations-management-suite-and-set-user-access"></a>Az Operations Management Suite OpenShift projekt létrehozása és beállítása a felhasználói hozzáférés
+## <a name="create-an-openshift-project-for-log-analytics-and-set-user-access"></a>A Naplóelemzési OpenShift projekt létrehozása és beállítása a felhasználói hozzáférés
 
 ```bash
 oadm new-project omslogging --node-selector='zone=default'
@@ -244,7 +244,7 @@ spec:
 
 ## <a name="create-a-secret-yaml-file"></a>Hozzon létre egy titkos yam fájlt
 
-A titkos yam-fájl létrehozására, kétféle információt kell: OMS-munkaterület azonosítója és az OMS-munkaterület megosztott kulcsot. 
+A titkos yam-fájl létrehozására, kétféle információt kell: napló Analytics munkaterület azonosítója és a napló Analytics megosztott kulcsát. 
 
 Az ocp-secret.yml mintafájl a következőképpen: 
 
@@ -258,7 +258,7 @@ data:
   KEY: key_data
 ```
 
-A név felülírandó wsid_data rendelkező a Base64 kódolású OMS-munkaterület azonosítója. Ezután cserélje le key_data a Base64-kódolású OMS megosztott kulcsát.
+A név felülírandó wsid_data rendelkező a Base64 kódolású Naplóelemzési munkaterület azonosítója. Ezután cserélje le key_data a Base64-kódolású napló Analytics megosztott kulcsát.
 
 ```bash
 wsid_data='11111111-abcd-1111-abcd-111111111111'
@@ -347,7 +347,7 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cl
 -e openshift_logging_install_logging=True 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Ismerkedés a OpenShift tároló Platform](https://docs.openshift.com/container-platform/3.6/getting_started/index.html)
 - [Bevezetés az OpenShift Origin használatába](https://docs.openshift.org/latest/getting_started/index.html)

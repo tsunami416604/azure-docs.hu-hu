@@ -1,6 +1,6 @@
 ---
-title: "Vész-helyreállítási Hyper-V virtuális gépek Azure-bA helyszíni Hyper-V kiszolgáló előkészítése |} Microsoft Docs"
-description: "Ismerje meg, hogyan készíti elő a vész-helyreállítási az Azure-bA az Azure Site Recovery szolgáltatásban a System Center VMM által nem kezelt helyszíni Hyper-V virtuális gépek."
+title: Vész-helyreállítási Hyper-V virtuális gépek Azure-bA helyszíni Hyper-V kiszolgáló előkészítése |} Microsoft Docs
+description: Ismerje meg, hogyan készíti elő a vész-helyreállítási az Azure-bA az Azure Site Recovery szolgáltatásban a System Center VMM által nem kezelt helyszíni Hyper-V virtuális gépek.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1290a186ca8e83b09f53b286e80c5ce75f08d88c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7e0219a662483ef123bdc2889a43dd3d93d23ac2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Helyszíni Hyper-V kiszolgálók előkészítése az Azure-bA katasztrófa utáni helyreállítás
 
@@ -35,8 +35,8 @@ Győződjön meg arról, hogy a Hyper-V-gazdagépek és virtuális gépek megfel
 1. [Győződjön meg arról](hyper-v-azure-support-matrix.md#on-premises-servers) helyszíni kiszolgáló követelményei.
 2. [A követelmények ellenőrzéséhez](hyper-v-azure-support-matrix.md#replicated-vms) Hyper-V virtuális gépek replikálása Azure-bA szeretne.
 3. Ellenőrizze a Hyper-V gazdagép [hálózati](hyper-v-azure-support-matrix.md#hyper-v-network-configuration); és a gazdagép és vendég [tárolási](hyper-v-azure-support-matrix.md#hyper-v-host-storage) támogatja a helyszíni Hyper-V gazdagépek.
-4. Ellenőrizze, hogy mi támogatott [Azure hálózatkezelés](hyper-v-azure-support-matrix.md#azure-vm-network-configuration-after-failover), [tárolási](hyper-v-azure-support-matrix.md#azure-storage), és [számítási](hyper-v-azure-support-matrix.md#azure-compute-features), a feladatátvételt követően.
-5. Meg kell felelnie a helyszíni virtuális gépek replikálása Azure-ba, [Azure virtuális gép](hyper-v-azure-support-matrix.md#azure-vm-requirements).
+4. Ellenőrizze az Azure támogatott [hálózati](hyper-v-azure-support-matrix.md#azure-vm-network-configuration-after-failover), [tárolási](hyper-v-azure-support-matrix.md#azure-storage) és [számítási](hyper-v-azure-support-matrix.md#azure-compute-features) lehetőségeit a feladatátvételt követően.
+5. Az Azure-ba replikált helyszíni virtuális gépeknek meg kell felelniük az [Azure virtuális gépekre vonatkozó feltételeinek](hyper-v-azure-support-matrix.md#azure-vm-requirements).
 
 
 ## <a name="prepare-vmm-optional"></a>Készítse elő a VMM (nem kötelező)
@@ -58,14 +58,13 @@ Készítse elő a VMM a hálózatleképezés az alábbiak szerint:
 
 ## <a name="verify-internet-access"></a>Internet-hozzáférés ellenőrzése
 
-1. Az oktatóanyag céljából a legegyszerűbb konfiguráció esetén a Hyper-V-gazdagépek és a VMM-kiszolgálón érvényes, az internet közvetlen hozzáféréssel rendelkezzenek a proxy használata nélkül. 
+1. Az oktatóanyag céljából a legegyszerűbb konfiguráció esetén a Hyper-V-gazdagépek és a VMM-kiszolgáló és az internet közvetlen hozzáféréssel rendelkezzenek a proxy használata nélkül. 
 2. Győződjön meg arról, hogy a Hyper-V-gazdagépek és a VMM-kiszolgálót, ha szükséges, férhetnek hozzá az URL-címek: 
 
     [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
     
-3. Győződjön meg arról, hogy:
-    - Bármely IP-címeken alapuló tűzfalszabályok szabályokat engedélyezni kell az Azure-kommunikációt.
-    - Engedélyezze az [Azure-adatközpont IP-tartományait](https://www.microsoft.com/download/confirmation.aspx?id=41653) és a HTTPS-portot (443).
+3. Ha IP-cím szerint szabályozására van, győződjön meg arról, hogy:
+    - IP-címeken alapuló tűzfalszabályok szabályok csatlakozni tud-e [Azure Datacenter IP-címtartományok](https://www.microsoft.com/download/confirmation.aspx?id=41653), és a HTTPS (443) port.
     - Az IP-címtartományok az előfizetés az Azure-régió, valamint a (hozzáférés-vezérlés és identitás kezelésre szolgáló) USA nyugati régiója engedélyezése.
 
 

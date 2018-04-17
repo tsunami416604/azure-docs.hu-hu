@@ -1,5 +1,5 @@
-* [Szerepköralapú hozzáférés-vezérlés](../articles/active-directory/role-based-access-control-configure.md)
-* [Azure Powershell-hozzáférés kezelése](../articles/active-directory/role-based-access-control-manage-access-powershell.md)
-* [Az Azure CLI-hozzáférés kezelése](../articles/active-directory/role-based-access-control-manage-access-azure-cli.md)
-* [Az RBAC beépített szerepkörök](../articles/active-directory/role-based-access-built-in-roles.md)
+* [Szerepköralapú hozzáférés-vezérlés](../articles/role-based-access-control/role-assignments-portal.md)
+* [Azure Powershell-hozzáférés kezelése](../articles/role-based-access-control/role-assignments-powershell.md)
+* [Az Azure CLI-hozzáférés kezelése](../articles/role-based-access-control/role-assignments-cli.md)
+* [Az RBAC beépített szerepkörök](../articles/role-based-access-control/built-in-roles.md)
 

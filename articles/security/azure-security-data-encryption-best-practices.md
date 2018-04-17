@@ -1,6 +1,6 @@
 ---
-title: "Gyakorlati tanácsok a biztonsági adatok és a titkosítás |} Microsoft Docs"
-description: "Ez a cikk számos gyakorlati tanácsok az adatok biztonságát, és a beépített titkosítási használata Azure-képességek."
+title: Gyakorlati tanácsok a biztonsági adatok és a titkosítás |} Microsoft Docs
+description: Ez a cikk számos gyakorlati tanácsok az adatok biztonságát, és a beépített titkosítási használata Azure-képességek.
 services: security
 documentationcenter: na
 author: YuriDio
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 0cebc7ae5279b720e8fd0d6c986e1706d944476f
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 159bdf681761b9fc46f77cbcf25a210db11d1d9b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Az Azure Data biztonsági és a titkosítás gyakorlati tanácsok
 A kulcsokat a felhőben az adatvédelem egyik elszámolása van a lehetséges állapotok az adatok akkor fordulhat elő, és milyen vezérlők érhetők el az adott állapotban. Céljából az Azure data biztonsági és a titkosítás gyakorlati tanácsok a javaslatok lesz körül állapotok a következő adatokat:
@@ -63,11 +63,11 @@ További információ az Azure MFA, olvassa el a cikk [Ismerkedés az Azure mult
 ## <a name="use-role-based-access-control-rbac"></a>Használjon szerepköralapú hozzáférés-vezérlést (RBAC)
 Alapuló hozzáférés korlátozása a [tudniuk kell, hogy](https://en.wikipedia.org/wiki/Need_to_know) és [legalacsonyabb jogosultsági szint](https://en.wikipedia.org/wiki/Principle_of_least_privilege) biztonsági alapelveket. Ez elengedhetetlen a szervezeteknek, amelyek az adatok biztonsági házirendek kikényszerítéséhez. Azure szerepköralapú hozzáférés-vezérlés (RBAC) segítségével engedélyek hozzárendelése a felhasználók, csoportok és alkalmazások egy adott hatókörben. A szerepkör-hozzárendelés hatóköre lehet előfizetés, egy erőforráscsoport vagy egy erőforrást.
 
-Kihasználhatja [beépített RBAC-szerepkörök](../active-directory/role-based-access-built-in-roles.md) felhasználók jogosultságok hozzárendelése az Azure-ban. Érdemes lehet *tárolási fiók közreműködői* a felhő üzemeltetői, amely szükséges a storage-fiókok kezelése és *klasszikus tárolási fiók közreműködői* szerepkör kezelése a klasszikus tárfiókokat. A felhő üzemeltetői, amelyet a virtuális gépek és a tárfiók kezelése, fontolja meg, hogy *virtuális gép közreműködő* szerepkör.
+Kihasználhatja [beépített RBAC-szerepkörök](../role-based-access-control/built-in-roles.md) felhasználók jogosultságok hozzárendelése az Azure-ban. Érdemes lehet *tárolási fiók közreműködői* a felhő üzemeltetői, amely szükséges a storage-fiókok kezelése és *klasszikus tárolási fiók közreműködői* szerepkör kezelése a klasszikus tárfiókokat. A felhő üzemeltetői, amelyet a virtuális gépek és a tárfiók kezelése, fontolja meg, hogy *virtuális gép közreműködő* szerepkör.
 
 A szervezeteknek, amelyek kényszeríti ki a hozzáférés-vezérlés képességeinek például RBAC által előfordulhat, hogy kell jogosultságot ad mint azok a felhasználók számára szükséges további engedélyekkel. Ez azzal, hogy bizonyos adatokat, az elsőként nem rendelkeznek hozzáféréssel rendelkező felhasználók adatok biztonsági sérülés vezethet.
 
-További tudnivalók az Azure RBAC által a cikk elolvasása [átruházásához hozzáférés-vezérlés](../active-directory/role-based-access-control-configure.md).
+További tudnivalók az Azure RBAC által a cikk elolvasása [átruházásához hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="encrypt-azure-virtual-machines"></a>Az Azure virtuális gépek titkosítása
 A legtöbb szervezet számára [adatok titkosítását](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) kötelező lépés adatvédelmi, a megfelelőség és az adatok közös joghatóság alá felé. Az Azure Disk Encryption lehetővé teszi, hogy a rendszergazdák számára a Windows és Linux rendszerű infrastruktúra-szolgáltatási virtuális gép (VM) lemezek titkosításához. Az Azure Disk Encryption használja. Ez az iparági szabványos BitLocker a Windows és a DM-crypt program segítségével a Linux operációs rendszer és az adatlemezek kötettitkosítást biztosít.

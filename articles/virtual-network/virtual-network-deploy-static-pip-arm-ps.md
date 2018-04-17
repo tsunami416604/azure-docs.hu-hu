@@ -1,11 +1,11 @@
 ---
-title: "Hozzon létre egy virtuális Gépet egy statikus nyilvános IP-cím - Azure PowerShell |} Microsoft Docs"
-description: "Útmutató: virtuális gép létrehozása a PowerShell használatával statikus nyilvános IP-cím."
+title: Hozzon létre egy virtuális Gépet egy statikus nyilvános IP-cím - Azure PowerShell |} Microsoft Docs
+description: 'Útmutató: virtuális gép létrehozása a PowerShell használatával statikus nyilvános IP-cím.'
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: ad975ab9-d69f-45c1-9e45-0d3f0f51e87e
 ms.service: virtual-network
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e4c413d3cb5c242a16f3e534dafe322785a35141
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 94d3458fd6ea917347296fdb297ab67f3052f8e0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-vm-with-a-static-public-ip-address-using-powershell"></a>Virtuális gép létrehozása a PowerShell használatával statikus nyilvános IP-cím
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 12/21/2017
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
-## <a name="step-1---start-your-script"></a>1. lépés – a parancsfájl futtatásához
+## <a name="start-your-script"></a>A parancsfájl futtatásához
 Letöltheti használt teljes PowerShell-parancsfájl [Itt](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/virtual-network-deploy-static-pip-arm-ps.ps1). Módosíthatja a parancsfájlnak a környezetben az alábbi lépésekkel.
 
 A telepítéshez használni kívánt értékek alapján az alábbi változók értékeinek módosítása. A következő értékek leképezése a forgatókönyvet, a cikk ezt használja:
@@ -74,7 +74,7 @@ $pipName               = "PIPWEB1"
 $dnsName               = "iaasstoryws1"
 ```
 
-## <a name="step-2---create-the-necessary-resources-for-your-vm"></a>2. lépés - a szükséges erőforrások a virtuális gép létrehozása
+## <a name="create-the-necessary-resources-for-your-vm"></a>A szükséges erőforrások a virtuális gép létrehozása
 Virtuális gép létrehozása előtt meg kell egy erőforráscsoport, hálózatok, nyilvános IP-cím és a hálózati adapter a virtuális gép által használandó.
 
 1. Hozzon létre egy új erőforráscsoportot.
@@ -119,7 +119,7 @@ Virtuális gép létrehozása előtt meg kell egy erőforráscsoport, hálózato
     -ResourceGroupName $rgName -Type Standard_LRS -Location $location
     ```
 
-## <a name="step-3---create-the-vm"></a>3. lépés – a virtuális gép létrehozása
+## <a name="create-the-vm"></a>Virtuális gép létrehozása
 Most, hogy minden szükséges erőforrás van érvényben, létrehozhat egy új virtuális Gépet.
 
 1. A konfigurációs objektumot létrehozni a virtuális gép számára.
@@ -169,81 +169,14 @@ Most, hogy minden szükséges erőforrás van érvényben, létrehozhat egy új 
 
 8. Mentse a parancsfájlt.
 
-## <a name="step-4---run-the-script"></a>4. lépés: a parancsfájl futtatása
-Szükséges módosítások, és a parancsfájl megismerése után fent megjelenítése, futtassa a parancsfájlt. 
+## <a name="run-the-script"></a>A parancsfájl futtatása
 
-1. Egy PowerShell-konzolon, vagy a PowerShell ISE a fenti parancsfájl futtatásához.
-2. A következő kimeneti üzenetnek kell megjelennie, néhány perc elteltével:
-   
-        ResourceGroupName : IaaSStory
-        Location          : westus
-        ProvisioningState : Succeeded
-        Tags              : 
-        ResourceId        : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory
-   
-        AddressSpace      : Microsoft.Azure.Commands.Network.Models.PSAddressSpace
-        DhcpOptions       : Microsoft.Azure.Commands.Network.Models.PSDhcpOptions
-        Subnets           : {FrontEnd}
-        ProvisioningState : Succeeded
-        AddressSpaceText  : {
-                              "AddressPrefixes": [
-                                "192.168.0.0/16"
-                              ]
-                            }
-        DhcpOptionsText   : {}
-        SubnetsText       : [
-                              {
-                                "Name": "FrontEnd",
-                                "AddressPrefix": "192.168.1.0/24"
-                              }
-                            ]
-        ResourceGroupName : IaaSStory
-        Location          : westus
-        ResourceGuid      : [Id]
-        Tag               : {}
-        TagsTable         : 
-        Name              : WTestVNet
-        Etag              : W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-        Id                : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory/providers/Microsoft.Network/virtualNetworks/WTestVNet
-   
-        AddressSpace      : Microsoft.Azure.Commands.Network.Models.PSAddressSpace
-        DhcpOptions       : Microsoft.Azure.Commands.Network.Models.PSDhcpOptions
-        Subnets           : {FrontEnd}
-        ProvisioningState : Succeeded
-        AddressSpaceText  : {
-                              "AddressPrefixes": [
-                                "192.168.0.0/16"
-                              ]
-                            }
-        DhcpOptionsText   : {
-                              "DnsServers": []
-                            }
-        SubnetsText       : [
-                              {
-                                "Name": "FrontEnd",
-                                "Etag": [Id],
-                                "Id": "/subscriptions/[Subscription ID]/resourceGroups/IaaSStory/providers/Microsoft.Network/virtualNetworks/WTestVNet/subnets/FrontEnd",
-                                "AddressPrefix": "192.168.1.0/24",
-                                "IpConfigurations": [],
-                                "ProvisioningState": "Succeeded"
-                              }
-                            ]
-        ResourceGroupName : IaaSStory
-        Location          : westus
-        ResourceGuid      : [Id]
-        Tag               : {}
-        TagsTable         : 
-        Name              : WTestVNet
-        Etag              : [Id]
-        Id                : /subscriptions/[Subscription Id]/resourceGroups/IaaSStory/providers/Microsoft.Network/virtualNetworks/WTestVNet
-   
-        TrackingOperationId : [Id]
-        RequestId           : [Id]
-        Status              : Succeeded
-        StatusCode          : OK
-        Output              : 
-        StartTime           : [Subscription Id]
-        EndTime             : [Subscription Id]
-        Error               : 
-        ErrorText           : 
+Miután kiválasztotta a szükséges módosításokat, futtassa az előző parancsfájlt. A virtuális gép létrehozása néhány perc múlva.
 
+## <a name="set-ip-addresses-within-the-operating-system"></a>Állítsa be az operációs rendszer belüli IP-címek
+
+Manuálisan soha ne rendelje a nyilvános IP-cím, egy Azure virtuális gépen belül a virtuális gép operációs rendszerének rendelt. Javasoljuk, hogy nem statikusan rendelje a magánhálózati IP-címe az operációs rendszerben a virtuális gépek az Azure virtuális géphez rendelt kivéve, ha szükséges, például amikor [több IP-címek hozzárendelése egy Windows virtuális gépre](virtual-network-multiple-ip-addresses-powershell.md). Ha manuálisan állítsa be a magánhálózati IP-cím, az operációs rendszerből, győződjön meg arról, hogy az a magánhálózati IP-cím, az Azure rendelt megegyező címre [hálózati illesztő](virtual-network-network-interface-addresses.md#change-ip-address-settings), vagy a virtuális gép is megszakad a kapcsolat. További információ [magánhálózati IP-cím](virtual-network-network-interface-addresses.md#private) beállításait.
+
+## <a name="next-steps"></a>További lépések
+
+A hálózati forgalommal áramolhasson felé és felől a virtuális gép létrehozása az ebben a cikkben. Megadhatja a bejövő és kimenő biztonsági szabályok, korlátozó áramolhasson az a hálózati adapter vagy az alhálózat érkező vagy oda irányuló forgalmat hálózati biztonsági csoporton belül. Hálózati biztonsági csoportokkal kapcsolatos további információkért lásd: [hálózati biztonsági csoport – áttekintés](security-overview.md).

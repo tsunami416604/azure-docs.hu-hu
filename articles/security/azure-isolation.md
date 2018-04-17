@@ -1,12 +1,12 @@
 ---
-title: "Az Azure nyilvános Felhőjében elszigeteléséről |} Microsoft Docs"
-description: "További információk a felhőalapú számítási szolgáltatás, amely tartalmazza a számítási példányokért széles kijelölt & szolgáltatások, amely is fel-le automatikusan az alkalmazás vagy a vállalat igényeinek."
+title: Az Azure nyilvános Felhőjében elszigeteléséről |} Microsoft Docs
+description: További információk a felhőalapú számítási szolgáltatás, amely tartalmazza a számítási példányokért széles kijelölt & szolgáltatások, amely is fel-le automatikusan az alkalmazás vagy a vállalat igényeinek.
 services: security
 documentationcenter: na
 author: UnifyCloud
 manager: swadhwa
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a153d70e077ad63a042e76d0c4ae40e3cc067a2a
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 996079e0062bf1e24ae2bf24354a94167e6adff3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Az Azure nyilvános Felhőjében elszigeteléséről
 ##  <a name="introduction"></a>Bevezetés
@@ -52,7 +52,7 @@ Felhőalapú munkahelyek esetén a bérlő olyan ügyfelet vagy szervezetet jele
 Mindegyik Azure AD-címtár önálló, és el van választva a többi Azure AD-címtártól. Ahogy a vállalat irodaépülete is egy vállalatspecifikus biztonsági vagyontárgynak tekinthető, az Azure AD-címtár is egy, kizárólag az adott szervezet általi használatra kialakított biztonságos eszköz. Az Azure AD architektúrájával megakadályozható az ügyfél- és identitásadatok keveredése. Ez azt jelenti, hogy az adott Azure AD-címtár felhasználói és rendszergazdái véletlenül vagy kártételi szándékkal nem férhetnek hozzá más címtárak adataihoz.
 
 ### <a name="azure-tenancy"></a>Az Azure-Bérlőhöz
-Az Azure-bérlőhöz (Azure-előfizetéshez) hivatkozik a "felhasználói/billing" kapcsolat és egy egyedi [bérlői](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) a [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis). Bérlő szintű elkülönítés a Microsoft Azure-ban érhető el, az Azure Active Directoryval és [szerepköralapú vezérlők](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is) által kínált. Minden Azure-előfizetés tartozik egy Azure Active Directory (AD) címtárban.
+Az Azure-bérlőhöz (Azure-előfizetéshez) hivatkozik a "felhasználói/billing" kapcsolat és egy egyedi [bérlői](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) a [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis). Bérlő szintű elkülönítés a Microsoft Azure-ban érhető el, az Azure Active Directoryval és [szerepköralapú vezérlők](https://docs.microsoft.com/azure/role-based-access-control/overview) által kínált. Minden Azure-előfizetés tartozik egy Azure Active Directory (AD) címtárban.
 
 Felhasználók, csoportok és alkalmazások tartalmazza a kezelhetik az erőforrásokat az Azure-előfizetésben. Az Azure portál, az Azure parancssori eszközök és az Azure szolgáltatásfelügyeleti API használatával a következő hozzáférési jogokat rendelhet hozzá. Az Azure AD-bérlő elkülönül logikailag biztonsági határokat használja, így nem az ügyfél hozzáférési vagy veszélyeztetheti a közös bérlők szándékosan vagy véletlenül. Az Azure AD fut egy elkülönített hálózati szegmensen elkülönített "operációs rendszer nélküli" kiszolgálókon, ahol gazdaszintű hálózaticsomag-szűrés és a Windows tűzfal blokkolja kéretlen kapcsolatokat és a forgalom.
 
@@ -71,7 +71,7 @@ Felhasználók, csoportok és alkalmazások tartalmazza a kezelhetik az erőforr
 
 A diagnosztika és karbantartási igényeire az operatív modell just-in-time jogosultság jogosultságszint-emelés rendszer által szükséges, és használja. Az Azure AD Privileged Identity Management (PIM) jelenik meg az egy jogosult rendszergazdának. [Jogosult rendszergazdák](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) szükséges jogosultsággal rendelkező felhasználók férhetnek hozzá a most majd, de nem minden nap lehet. A szerepkör nem aktív, amíg a felhasználó kell elérnie, akkor az aktiválási folyamat befejezéséhez, és egy előre meghatározott időn egy aktív felügyeleti válik.
 
-![Az Azure AD Privileged Identity Management](./media/azure-isolation/azure-isolation-fig2.png)
+![Azure AD Privileged Identity Management](./media/azure-isolation/azure-isolation-fig2.png)
 
 Az Azure Active Directory mindegyik bérlő saját védett tárolóban, szabályzatokat és engedélyeket a, és kizárólag által birtokolt vagy kezelt a bérlő tárolóban levő üzemelteti.
 
@@ -80,7 +80,7 @@ A bérlői tárolók fogalmát mélyen ingrained összes rétegek, egészen az �
 Akkor is, ha több Azure Active Directory-bérlő metaadatok ugyanazon a fizikai lemezen tárolja, nincs kapcsolat a tárolók a címtárszolgáltatás, amely viszont határozza meg a bérlői rendszergazda által meghatározott eltérő között.
 
 ### <a name="azure-role-based-access-control-rbac"></a>Azure szerepköralapú hozzáférés-vezérlés (RBAC)
-[Azure szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is) segítséget nyújt az Azure-előfizetés belül elérhető különböző összetevőket fájlmegosztás, adja meg a részletes hozzáféréskezelést az Azure. Az Azure RBAC lehetővé teszi, hogy elkülönítse a feladatokat a szervezeten belül, és hozzáférést biztosíthat a felhasználóknak kell elvégezni a munkájukat alapján. Jogosultságot ad a Mindenki helyett korlátlan engedélyeket a Azure-előfizetés vagy erőforrásokhoz, engedélyezheti a csak bizonyos műveleteket.
+[Azure szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) segítséget nyújt az Azure-előfizetés belül elérhető különböző összetevőket fájlmegosztás, adja meg a részletes hozzáféréskezelést az Azure. Az Azure RBAC lehetővé teszi, hogy elkülönítse a feladatokat a szervezeten belül, és hozzáférést biztosíthat a felhasználóknak kell elvégezni a munkájukat alapján. Jogosultságot ad a Mindenki helyett korlátlan engedélyeket a Azure-előfizetés vagy erőforrásokhoz, engedélyezheti a csak bizonyos műveleteket.
 
 Az Azure RBAC rendelkezik, amelyek érvényesek az összes erőforrástípus három alapvető szerepkörök:
 
@@ -94,7 +94,7 @@ Az Azure RBAC rendelkezik, amelyek érvényesek az összes erőforrástípus há
 
 A többi Azure RBAC szerepkört az adott Azure-erőforrások felügyelet lehetővé tételéhez. Például a virtuális gép közreműködői szerepkör lehetővé teszi, hogy a felhasználó számára a virtuális gépek létrehozására és kezelésére. Azt nem betekintést biztosít az Azure virtuális hálózat vagy az alhálózatot, amely a virtuális géphez csatlakozik.
 
-[Beépített RBAC-szerepkörök](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) össze az Azure-ban érhető el a szerepkörök listáját. Azt adja meg az operatív és hatókörhöz, amely minden beépített szerepkörök a felhasználók számára. Ha még nagyobb mértékben vezérelheti a saját szerepköröket definiál, lásd: hogyan hozhat létre [egyéni szerepkörök az Azure RBAC](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles).
+[Beépített RBAC-szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) össze az Azure-ban érhető el a szerepkörök listáját. Azt adja meg az operatív és hatókörhöz, amely minden beépített szerepkörök a felhasználók számára. Ha még nagyobb mértékben vezérelheti a saját szerepköröket definiál, lásd: hogyan hozhat létre [egyéni szerepkörök az Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).
 
 Az Azure Active Directory néhány más képességet a következők:
 - Az Azure AD lehetővé teszi, hogy egyszeri bejelentkezés az SaaS-alkalmazásokhoz, függetlenül attól, hogy a rendszer hol tárolja. Egyes alkalmazások az Azure AD-vel összevontan működnek, mások jelszavas egyszeri bejelentkezést használnak. Összevont alkalmazásokat is képes támogatni a felhasználók átadása és [jelszótárolást](https://www.techopedia.com/definition/31415/password-vault).
@@ -333,7 +333,7 @@ Az Azure-telepítés hálózati elkülönítési rétege rendelkezik. Az alábbi
 
 [Alhálózati](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview#subnets) elkülönítési a virtuális hálózat IP-címtartomány alapján további réteget biztosít. IP-címtartomány a virtuális hálózaton, a virtuális hálózatot lehet osztani érdekében több alhálózatra a szervezet és a biztonság. Egy VNeten belül az alhálózatokra üzembe helyezett virtuális gépek és a PaaS szerepkörpéldányok (ugyanaz vagy különböző) további konfigurálás nélkül is tudnak egymással kommunikálni. Beállíthatja úgy is [hálózati biztonsági csoport (NSG-k)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview#network-security-groups-nsg) a hozzáférési lista (ACL) a NSG beállított szabályok alapján Virtuálisgép-példány a hálózati adatforgalom engedélyezéséhez vagy letiltásához. Az NSG-ket alhálózatokhoz vagy az alhálózaton belüli virtuálisgép-példányokhoz lehet hozzárendelni. Ha az NSG-t hozzárendelik egy alhálózathoz, az ACL-szabályok érvényesek lesznek az alhálózatban lévő összes virtuálisgép-példányra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Hálózati elkülönítési beállítások gépek vannak a Windows Azure virtuális hálózatok](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)
 

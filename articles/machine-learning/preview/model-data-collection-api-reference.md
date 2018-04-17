@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Machine Learning modell adatok gyűjtemény API-referencia |} Microsoft Docs"
-description: "Az Azure Machine Learning modell adatok gyűjtemény API-hivatkozás."
+title: Az Azure Machine Learning modell adatok gyűjtemény API-referencia |} Microsoft Docs
+description: Az Azure Machine Learning modell adatok gyűjtemény API-hivatkozás.
 services: machine-learning
 author: aashishb
 ms.author: aashishb
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: 2de5e8bc8880fea5e7f57c88590e32a9fbb60ac6
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: db8718b60cdd934e3301479489f21fe45f5578cd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-machine-learning-model-data-collection-api-reference"></a>Az Azure Machine Learning modell adatok gyűjtemény API-referencia
 
@@ -48,7 +48,7 @@ Használatos operationalization pontozási fájlban az adatokat gyűjtő modulj�
 ## <a name="model-data-collector-instantiation"></a>Modell adatokat gyűjtő által okozott
 Egy új példányát egy ModelDataCollector hozható létre:
 
-dc = ModelDataCollector(model_name, identifier='default', feature_names=None, model_management_account_id='unknown', webservice_name='unknown', model_id='unknown', model_version='unknown')
+    dc = ModelDataCollector(model_name, identifier='default', feature_names=None, model_management_account_id='unknown', webservice_name='unknown', model_id='unknown', model_version='unknown')
 
 A Részletek területen osztály és a paraméter:
 

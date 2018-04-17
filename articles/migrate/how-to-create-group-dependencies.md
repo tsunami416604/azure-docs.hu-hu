@@ -1,16 +1,16 @@
 ---
-title: "Egy értékelési csoport csoport függőségi leképezéssel Azure telepítse át a pontosítsa |} Microsoft Docs"
-description: "Ismerteti, hogyan pontosítsa csoport függőségi leképezés használata az Azure áttelepítése szolgáltatásban értékelését."
+title: Egy értékelési csoport csoport függőségi leképezéssel Azure telepítse át a pontosítsa |} Microsoft Docs
+description: Ismerteti, hogyan pontosítsa csoport függőségi leképezés használata az Azure áttelepítése szolgáltatásban értékelését.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/22/2017
 ms.author: raynew
-ms.openlocfilehash: 3b10765894501791004e3a9221363f196cc0c91d
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: a7c1dcae5708164252fa04a0fd1471eb1ae9bf90
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Pontosítsa a csoportot a függőségi leképezése
 
@@ -37,8 +37,8 @@ Az ügynök telepítése Windows-gépen:
 1. Kattintson duplán a letöltött ügynök.
 2. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra. Az a **licencfeltételeket** kattintson **elfogadom** elfogadja a licencfeltételeket.
 3. A **célmappa**, hagyja, vagy módosítsa az alapértelmezett telepítési mappa > **következő**. 
-4. A **ügynök telepítésének beállításai**, jelölje be **Azure Naplóelemzés (OMS)** > **következő**. 
-5. Kattintson a **Hozzáadás** hozzáadása egy új OMS-munkaterület. Illessze be a munkaterület azonosítója és a portál fájlból másolt kulcsot. Kattintson a **Tovább** gombra.
+4. A **ügynök telepítésének beállításai**, jelölje be **Azure Naplóelemzés** > **következő**. 
+5. Kattintson a **Hozzáadás** hozzáadása egy új munkaterületet. Illessze be a munkaterület azonosítója és a portál fájlból másolt kulcsot. Kattintson a **Tovább** gombra.
 
 
 Az ügynök telepítése Linux gépen:

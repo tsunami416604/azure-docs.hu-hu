@@ -1,24 +1,24 @@
 ---
-title: "Az Azure Functions segítségével adatokat küldeni a HDInsight Kafka |} Microsoft Docs"
-description: "Ismerje meg, egy Azure-függvény használata a HDInsight Kafka adatokat írni."
+title: Az Azure Functions segítségével adatokat küldeni a HDInsight Kafka |} Microsoft Docs
+description: Ismerje meg, egy Azure-függvény használata a HDInsight Kafka adatokat írni.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: cgronlun
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: 
-ms.topic: article
+ms.devlang: ''
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/09/2018
 ms.author: larryfr
-ms.openlocfilehash: c1c03cfcbcb7e0bfdb4a631b9e2ae568f0684069
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 6c462f9fe5e152c82be1a2b8643ee35d260a90f6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-kafka-on-hdinsight-from-an-azure-function-app"></a>Kafka használata a HDInsight az Azure-függvény alkalmazásokból
 
@@ -58,7 +58,7 @@ A HDInsight Kafka egy Azure virtuális hálózat található. Az Azure Functions
 
 ![Kapcsolódás a HDInsight az Azure Functions architektúrája](./media/apache-kafka-azure-functions/kafka-azure-functions.png)
 
-## <a name="configure-kafka"></a>Configure Kafka
+## <a name="configure-kafka"></a>Kafka konfigurálása
 
 Ebben a szakaszban található információk előkészíti a Kafka fürtöt, az Azure-függvény adatokat fogadhat. Magában foglalja az alábbi konfigurációs műveletek:
 
@@ -70,7 +70,7 @@ Ebben a szakaszban található információk előkészíti a Kafka fürtöt, az 
 
 Alapértelmezés szerint Zookeeper az ügyfelek számára a Kafka brókerek tartomány nevét adja vissza. Ez a konfiguráció nem működik nélkül egy DNS-kiszolgáló, az ügyfél (az Azure Functions) nem oldható fel a virtuális hálózat nevét. Ehhez a konfigurációhoz az alábbi lépések segítségével Kafka hivatkozik tartománynevek helyett IP-címek konfigurálása:
 
-1. Webböngésző segítségével, folytassa a https://CLUSTERNAME.azurehdinsight.net. Cserélje le __CLUSTERNAME__ HDInsight-fürt Kafka nevével.
+1. A webböngészőben nyissa https://CLUSTERNAME.azurehdinsight.net. Cserélje le __CLUSTERNAME__ HDInsight-fürt Kafka nevével.
 
     Amikor a rendszer kéri, használja a HTTPS-felhasználónevet és jelszót a fürthöz. Az Ambari webes felhasználói felületén, a fürt akkor jelenik meg.
 

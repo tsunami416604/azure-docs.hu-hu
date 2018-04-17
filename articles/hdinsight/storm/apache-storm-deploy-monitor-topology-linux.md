@@ -1,8 +1,8 @@
 ---
-title: "Központi telepítése és kezelése a Linux-alapú HDInsight alatt futó Apache Storm-topológiák |} Microsoft Docs"
-description: "Ismerje meg, hogyan telepítheti, figyelheti és kezelheti a Storm irányítópultjának használata a Linux-alapú HDInsight alatt futó Apache Storm-topológiák. Visual Studio Hadoop-eszközök használata."
+title: Központi telepítése és kezelése a Linux-alapú HDInsight alatt futó Apache Storm-topológiák |} Microsoft Docs
+description: Ismerje meg, hogyan telepítheti, figyelheti és kezelheti a Storm irányítópultjának használata a Linux-alapú HDInsight alatt futó Apache Storm-topológiák. Visual Studio Hadoop-eszközök használata.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,16 +10,14 @@ ms.assetid: 35086e62-d6d8-4ccf-8cae-00073464a1e1
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 18b7b5d56acb4d9d0c2ed007f0521193e37d82e8
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 9dd63e1f3ec381dd99495ebc6193198611c76c88
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-hdinsight"></a>Központi telepítése és kezelése a HDInsight alatt futó Apache Storm-topológiák
 
@@ -65,7 +63,7 @@ A HDInsight Tools elküldeni a C# vagy hibrid topológiák a Storm fürthöz has
 
 3. Az a **új projekt** párbeszédpanelen bontsa ki **telepített** > **sablonok**, majd válassza ki **HDInsight**. Válassza ki a listáról a sablonok **Storm minta**. A párbeszédpanel alján írja be az alkalmazás nevét.
 
-    ![image](./media/apache-storm-deploy-monitor-topology-linux/sample.png)
+    ![Kép](./media/apache-storm-deploy-monitor-topology-linux/sample.png)
 
 4. A **Megoldáskezelőben**, kattintson jobb gombbal a projektre, és válassza ki **Submit a HDInsight alatt futó Storm**.
 
@@ -95,7 +93,7 @@ A HDInsight Tools elküldeni a C# vagy hibrid topológiák a Storm fürthöz has
 
 ## <a name="submit-a-topology-programmatically"></a>Küldje el a topológia: programozott módon
 
-A topológia a Nimbus szolgáltatással programozott módon telepítheti. [https://github.com/Azure-Samples/hdinsight-Java-Deploy-Storm-topology](https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology) példával Java-alkalmazás, amely bemutatja, hogyan kell telepíteni és elindítani a topológia a Nimbus szolgáltatáson keresztül.
+A topológia a Nimbus szolgáltatással programozott módon telepítheti. [https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology](https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology) Java-alkalmazás, amely bemutatja, hogyan kell telepíteni és elindítani a topológia a Nimbus szolgáltatáson keresztül példaként szolgál.
 
 ## <a name="monitor-and-manage-visual-studio"></a>Megfigyelés és kezelés: Visual Studio
 

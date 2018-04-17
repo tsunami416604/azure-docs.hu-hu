@@ -1,11 +1,11 @@
 ---
-title: "Gyakori kérdések (GYIK) az Azure Security Center |} Microsoft Docs"
-description: "Ez a GYIK az Azure Security Center kapcsolatos kérdésekre ad választ."
+title: Gyakori kérdések (GYIK) az Azure Security Center |} Microsoft Docs
+description: Ez a GYIK az Azure Security Center kapcsolatos kérdésekre ad választ.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: be2ab6d5-72a8-411f-878e-98dac21bc5cb
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/11/2018
 ms.author: terrylan
-ms.openlocfilehash: 2bbd0a8be891bd472cdc631a1f8dc79471d66a77
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 7bbe0945981370c15fd10e93498fcc3ee0bf1a39
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center – gyakori kérdések
 Ez a GYIK az Azure Security Center, egy szolgáltatás, amely segít a megakadályozása, észlelésében és kezelésében fenyegetések láthatóság növelésével és a Microsoft Azure-erőforrások védelmét kapcsolatos kérdésekre ad választ.
@@ -41,10 +41,10 @@ A Security Center érhető el, a két réteg:
 
 A **ingyenes szint** biztosít a biztonsági állapotát az Azure-erőforrások, az alapvető biztonsági házirend, a biztonsági javaslatok és a integrációs láthatósága biztonsági termékeinek és szolgáltatásainak partnertől.
 
-A **Standard csomagra** hozzáadja az advanced threat az észlelési képességek, beleértve az eszközintelligencia, viselkedéssel összefüggő elemzésekkel, anomáliadetektálás, biztonsági incidensek fenyegetés, és a fenyegetés szolgáló jelentések. A standard szint 60 napig ingyenesen használható. Választja 60 napon túl a szolgáltatás használatának folytatásához, automatikusan először a szolgáltatás igénybe.  Frissítéséhez válassza [Tarifacsomagot](https://docs.microsoft.com/azure/security-center/security-center-pricing) a biztonsági házirendben.
+A **Standard csomagra** hozzáadja az advanced threat az észlelési képességek, beleértve az eszközintelligencia, viselkedéssel összefüggő elemzésekkel, anomáliadetektálás, biztonsági incidensek fenyegetés, és a fenyegetés szolgáló jelentések. A Standard szint az első 60 napban ingyenesen használható. Választja 60 napon túl a szolgáltatás használatának folytatásához, automatikusan először a szolgáltatás igénybe.  Frissítéséhez válassza [Tarifacsomagot](https://docs.microsoft.com/azure/security-center/security-center-pricing) a biztonsági házirendben.
 
 ## <a name="permissions"></a>Engedélyek
-Az Azure Security Center [szerepköralapú hozzáférés-vezérlést (RBAC)](../active-directory/role-based-access-control-configure.md) használ, amelynek [beépített szerepköreit](../active-directory/role-based-access-built-in-roles.md) az Azure különböző csoportjaihoz, felhasználóihoz és szolgáltatásaihoz rendelheti.
+Az Azure Security Center által használt [szerepköralapú hozzáférés-vezérlést (RBAC)](../role-based-access-control/role-assignments-portal.md), amely biztosítja [beépített szerepkörök](../role-based-access-control/built-in-roles.md) , hogy a felhasználók, csoportok és az Azure rendelhető.
 
 A Security Center értékeli a konfigurációs az erőforrások biztonsági problémák és biztonsági rések azonosítása. A biztonsági központban csak akkor jelenik meg egy erőforrás tulajdonos, közreműködő vagy olvasó szerepkört az előfizetés vagy az erőforráscsoportot, amelyhez tartozik egy erőforrás hozzárendelése esetén kapcsolatos adatokat.
 
@@ -115,7 +115,7 @@ Az Azure Security Center figyeli a következő Azure-erőforrások:
 
 * Virtuális gépek (VM) (beleértve a [Felhőszolgáltatások](../cloud-services/cloud-services-choose-me.md))
 * Azure virtuális hálózatok
-* Az Azure SQL-szolgáltatás
+* Azure SQL service
 * Azure Storage-fiók
 * Az Azure Web Apps (a [App Service Environment-környezet](../app-service/environment/intro.md))
 * Például a webalkalmazási tűzfal virtuális gépek és az App Service Environment-környezet az Azure-előfizetésében integrált partneri megoldások

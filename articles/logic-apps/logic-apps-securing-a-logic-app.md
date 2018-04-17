@@ -1,11 +1,11 @@
 ---
-title: "Biztonságos hozzáférés a Azure Logic Apps |} Microsoft Docs"
-description: "Adja hozzá a biztonsági védelmének eseményindítók, bemeneti és kimeneti, művelet paramétereinek és a munkafolyamatok az Azure Logic Apps szolgáltatás elérésére."
+title: Biztonságos hozzáférés a Azure Logic Apps |} Microsoft Docs
+description: Adja hozzá a biztonsági védelmének eseményindítók, bemeneti és kimeneti, művelet paramétereinek és a munkafolyamatok az Azure Logic Apps szolgáltatás elérésére.
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.service: logic-apps
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/22/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 45a4e476f930e0f5f6633dc5b3b35b66dc6dfa20
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2042fdaa037fe1928fdb81727968a532ddfae0a6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="secure-access-to-your-logic-apps"></a>Biztonságos hozzáférés a logic Apps alkalmazásait
 
@@ -77,7 +77,7 @@ A közös hozzáférésű Jogosultságkód mellett Kezdésként korlátozhatja a
 Ez a beállítás konfigurálható a logic app beállításokat:
 
 1. Az Azure-portálon nyissa meg a logikai alkalmazást szeretne hozzáadni az IP-címkorlátozások
-1. Kattintson a **hozzáférés-vezérlési konfiguráció** menüpont alatt **beállítások**
+1. Kattintson a **munkafolyamat-beállításokat** menüpont alatt **beállítások**
 1. Adja meg az eseményindító fogadja el az IP-címtartományok listáját
 
 Egy érvényes IP-címtartomány veszi a formátum `192.168.1.1/255`. Ha azt szeretné, hogy a logikai alkalmazás csak indul el egy beágyazott logikai alkalmazást, válassza a **csak más logic apps** lehetőséget. Ez a beállítás ír üres tömb az erőforrás értelmében csak a saját magát (szülő logic apps) szolgáltatás hívásait sikeresen érvényesítést.
@@ -119,7 +119,7 @@ További hitelesítési protokollok fölött egy logikai alkalmazás hozzáadás
 
 ## <a name="secure-access-to-manage-or-edit-logic-apps"></a>Biztonságos hozzáférés kezeléséhez vagy a logic apps szerkesztése
 
-Hozzáférés a logikai alkalmazás felügyeleti műveleteihez korlátozhatja, hogy csak bizonyos felhasználók vagy csoportok képesek az erőforrás-műveletek végrehajtásához. A Logic apps használata az Azure [szerepköralapú hozzáférés-vezérlést (RBAC)](../active-directory/role-based-access-control-configure.md) a beállítást, és testre szabható eszközök.  Az előfizetés tagjai, valamint rendelje hozzá néhány beépített szerepkörök állnak rendelkezésre:
+Hozzáférés a logikai alkalmazás felügyeleti műveleteihez korlátozhatja, hogy csak bizonyos felhasználók vagy csoportok képesek az erőforrás-műveletek végrehajtásához. A Logic apps használata az Azure [szerepköralapú hozzáférés-vezérlést (RBAC)](../role-based-access-control/role-assignments-portal.md) a beállítást, és testre szabható eszközök.  Az előfizetés tagjai, valamint rendelje hozzá néhány beépített szerepkörök állnak rendelkezésre:
 
 * **Logic App közreműködői** -megtekintése, szerkesztése és frissítse a logikai alkalmazás hozzáférést biztosít.  Nem lehet eltávolítani az erőforrás, vagy felügyeleti műveleteket.
 * **Logic App operátor** – megtekintheti a logikai alkalmazást és futtatási előzményei, és engedélyezését vagy letiltását.  Nem szerkeszthetők, vagy a definíció frissítése.
@@ -268,7 +268,7 @@ Sok felügyelt összekötők logic apps a helyszíni rendszerekre, például Fil
 
 [Az Azure API Management](https://azure.microsoft.com/services/api-management/) rendelkezik a helyszíni kapcsolati lehetőségek, többek között pont-pont VPN- és ExpressRoute integráció biztonságos proxy és a helyszíni rendszerekre történő kommunikációhoz. A Logic App Designer az API-k felfedni a Azure API Management egy munkafolyamaton belül a helyszíni rendszerekben gyors elérését biztosító gyorsan kiválaszthatja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Központi telepítési sablon létrehozása](logic-apps-create-deploy-template.md)  
 [Kivételkezelés](logic-apps-exception-handling.md)  
 [Logikai alkalmazások figyelése](logic-apps-monitor-your-logic-apps.md)  

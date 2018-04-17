@@ -10,11 +10,11 @@ ms.custom: scale out apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 4ddb870d0513d6834aacf0964c240260f18df0fd
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 3a4026b56522da6c6efede4b8b7a542efc8a776d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Útmutató új bérlők ellátásához, majd regisztrálja őket a katalógusban
 
@@ -63,7 +63,7 @@ A séma-kezelés stratégiájának részeként kell adatbázis létrehozását. 
 
 A Wingtip jegyek adatbázis / bérlői alkalmazás új bérlők látja el a sablon nevű adatbázis másolása _basetenantdb_, amely a katalógus kiszolgálón van telepítve. Kiépítés integrálhatják az alkalmazás-előfizetési élmény részeként. Azt is támogatnak a kapcsolat nélküli parancsfájlok segítségével. Ez az oktatóanyag ismerteti, kiépítés PowerShell használatával. 
 
-Kiépítés parancsfájlok másolása a _basetenantdb_ adatbázis új bérlő adatbázis létrehozására a rugalmas készletekben található. A parancsfájlok majd inicializálása bérlői-specifikus adatait. az adatbázis, és regisztrálja a katalógus shard leképezésben. Bérlői adatbázisok a következők a bérlő neve alapuló nevet kapnak. Az elnevezési sémája nem egy minta kritikus része. A katalógus bármely elnevezési is használható, az adatbázis neve képezi le a bérlői kulcs. 
+Kiépítés parancsfájlok másolása a _basetenantdb_ adatbázis új bérlő adatbázis létrehozására a rugalmas készletekben található. A bérlői adatbázis jön létre a bérlői kiszolgáló leképezve a _newtenant_ DNS-alias. Ez az alias az új bérlők létrehozásához használt kiszolgáló tartja nyilván, majd a vész-helyreállítási oktatóanyagok helyreállítási bérlői kiszolgálóra mutasson frissül ([georestore használatával DR](saas-dbpertenant-dr-geo-restore.md), [vész-Helyreállítási georeplication beállításáthasználatával](saas-dbpertenant-dr-geo-replication.md)). A parancsfájlok majd inicializálása bérlői-specifikus adatait. az adatbázis, és regisztrálja a katalógus shard leképezésben. Bérlői adatbázisok a következők a bérlő neve alapuló nevet kapnak. Az elnevezési sémája nem egy minta kritikus része. A katalógus bármely elnevezési is használható, az adatbázis neve képezi le a bérlői kulcs. 
 
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>A Wingtip jegyek SaaS adatbázis / bérlői alkalmazás parancsfájlok beolvasása

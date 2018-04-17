@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: cshoe
-ms.openlocfilehash: 73353d3b27b65298d804a138b33cdf2de23726fe
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 2debe3bb06f00741100883ff7c9978f11f5be799
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-storage-security-guide"></a>Az Azure Storage biztonsági útmutató
 
@@ -84,17 +84,17 @@ Az alábbiakban a fő pontokat, meg kell ismernie az RBAC használata a kezelés
 * A felhasználó kell előtt be kell állítania az Azure Active Directoryban egy szerepkör rendelhet hozzájuk.
 * Ki megadott vagy visszavont milyen típusú hozzáférést és a akinek, és milyen hatókörben, a PowerShell vagy az Azure parancssori felület jelentést hozhat létre.
 
-#### <a name="resources"></a>Erőforrások
-* [Azure Active Directory szerepköralapú hozzáférés-vezérlése](../../active-directory/role-based-access-control-configure.md)
+#### <a name="resources"></a>További források
+* [Azure Active Directory szerepköralapú hozzáférés-vezérlése](../../role-based-access-control/role-assignments-portal.md)
 
   Ez a cikk az Azure Active Directory szerepkörön alapuló hozzáférés-vezérlését és annak működési módját ismerteti.
-* [RBAC: Beépített szerepkörök](../../active-directory/role-based-access-built-in-roles.md)
+* [RBAC: Beépített szerepkörök](../../role-based-access-control/built-in-roles.md)
 
   Ez a cikk részletezi az összes elérhető RBAC beépített szerepkör.
 * [A Resource Manager-alapú és a klasszikus üzembe helyezés ismertetése](../../azure-resource-manager/resource-manager-deployment-model.md)
 
   Ez a cikk ismerteti a Resource Manager telepítés és a klasszikus üzembe helyezési modellel, és a Resource Manager és az erőforrás-csoportok használata előnyeinek bemutatása. A Resource Manager modellben az Azure számítási, hálózati és tárolási szolgáltatók működése ismerteti.
-* [Szerepköralapú hozzáférés-vezérlés kezelése REST API-val](../../active-directory/role-based-access-control-manage-access-rest.md)
+* [Szerepköralapú hozzáférés-vezérlés kezelése REST API-val](../../role-based-access-control/role-assignments-rest.md)
 
   Ez a cikk leírja, hogyan használható a REST API az RBAC kezeléséhez.
 * [Az Azure Storage erőforrás szolgáltató REST API-referencia](https://msdn.microsoft.com/library/azure/mt163683.aspx)
@@ -143,7 +143,7 @@ Egy másik Azure Key Vault előnye is szabályozhatja a hozzáférést a kulcsok
 
 Megjegyzés: ajánlott használni a kulcsok közül csak az alkalmazásokat egy időben. Az egyes helyek kulcs 1 és más kulcs 2 használatakor csak akkor tudja forgassa el a kulcsok egy alkalmazás-hozzáférés elvesztése nélkül.
 
-#### <a name="resources"></a>Erőforrások
+#### <a name="resources"></a>További források
 * [Az Azure Storage-fiókokról](storage-create-storage-account.md#regenerate-storage-access-keys)
 
   A cikk áttekintést nyújt a tárfiókok, valamint ismerteti a megtekintése, másolása és tárelérési kulcsok újragenerálása.
@@ -231,7 +231,7 @@ A tárolt házirend származó SAS használatakor is eltávolíthat, hozzáfér�
 
 A tárolt házirend származó SAS használatával lehetővé teszi az adott SAS azonnal visszavonni, mert az ajánlott mindig használjon tárolt hozzáférési házirendek lehetőség.
 
-#### <a name="resources"></a>Erőforrások
+#### <a name="resources"></a>További források
 További részletes információt a megosztott hozzáférési aláírásokkal és tárolt hozzáférési házirendeket, kész, de példák tekintse meg a következő cikkeket:
 
 * Ezek azok a útmutatót.
@@ -270,7 +270,7 @@ Az Azure fájlmegosztások Unix használható, amíg a Linux SMB-ügyfél még t
 
 A rendszer az Azure-fájlok szolgáltatással titkosítás kényszerítheti a engedélyezésével [szükséges átviteli biztonságos](../storage-require-secure-transfer.md) a tárfiók. A REST API-k használata, ha HTTPs megadása kötelező. Az SMB-csak SMB-kapcsolatok, amely támogatja a titkosítást az sikeresen fog csatlakozni.
 
-#### <a name="resources"></a>Erőforrások
+#### <a name="resources"></a>További források
 * [Az Azure Files bemutatása](../files/storage-files-introduction.md)
 * [A Windows Azure-fájlok az első lépései](../files/storage-how-to-use-files-windows.md)
 
@@ -309,7 +309,7 @@ Amennyiben ezzel például ha egy webes alkalmazás, amely BLOB tárolja, és le
 
 A titkosítási magát Ön hozza létre és a saját titkosítási kulcsok kezeléséhez. Használhatja az Azure Storage ügyféloldali kódtár által létrehozott kulcsok, vagy beállíthatja, hogy az Azure Key Vault a kulcsok létrehozásához. A titkosítási kulcsok tárolása a helyszíni kulcstároló, vagy tárolhatja őket az Azure Key Vault. Az Azure Key Vault lehetővé teszi a titkos kulcsok Azure Key Vault a hozzáférést az adott felhasználóknak, az Azure Active Directoryval. Ez azt jelenti, hogy birtokában bárki nem csak az Azure Key Vault olvasni, valamint használata ügyféloldali titkosítási kulcsok.
 
-#### <a name="resources"></a>Erőforrások
+#### <a name="resources"></a>További források
 * [Titkosításához és visszafejtéséhez az Azure Key Vault használatával a Microsoft Azure Storage blobs](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
 
   Ez a cikk bemutatja, hogyan ügyféloldali titkosítás használata az Azure Key Vault, többek között a KEK létrehozása és a PowerShell használatával tárolóban tárolja.
@@ -350,7 +350,7 @@ A megoldás nem támogatja a következő forgatókönyvek, szolgáltatások és 
 
 Ez a szolgáltatás biztosítja, hogy a virtuális gépek lemezeit a összes adata titkosításra kerül-e az Azure Storage aktívan.
 
-#### <a name="resources"></a>Erőforrások
+#### <a name="resources"></a>További források
 * [Windows és Linux IaaS virtuális gépeket az Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)
 
 ### <a name="comparison-of-azure-disk-encryption-sse-and-client-side-encryption"></a>Az Azure Disk Encryption, az SSE és az ügyféloldali titkosítás összehasonlítása
@@ -427,11 +427,11 @@ Három olyan esetekben, amely azt is van.
    1.0;2015-11-16T18:30:05.6556115Z;GetBlob;**SASSuccess**;200;416;64;**sas**;;mystorage…
 3. A blob személyes, és a kulcs lett megadva az eléréséhez. Ebben az esetben a kérelem-állapota "**sikeres**"és a hitelesítési típus:"**hitelesített**".
 
-   1.0;2015-11-16T18:32:24.3174537Z;GetBlob;**Success**;206;59;22;**authenticated**;mystorage…
+   1.0; 2015-11-16T18:32:24.3174537Z; GetBlob; **Sikeres**; 206-os; 59; 22; **hitelesített**; mystorage...
 
 A Microsoft Message Analyzer segítségével megtekintheti, és ezek a naplók elemzése. Ez magában foglalja a keresési és szűrési lehetőségeket. Például előfordulhat, hogy a keresni kívánt várt, ez azt jelenti, hogy a használata esetén győződjön meg arról, hogy valaki nem fér hozzá a tárfiók nem megfelelően megjelenítéséhez GetBlob példányai.
 
-#### <a name="resources"></a>Erőforrások
+#### <a name="resources"></a>További források
 * [Storage Analytics](../storage-analytics.md)
 
   Ez a cikk a tárolási analitika és ahhoz, hogyan nyújt áttekintést.
@@ -486,7 +486,7 @@ Ez minden egyes sorára jelenti:
 * **ExposedHeaders** ez alapján mely válaszfejlécek elérhetővé tehető a böngésző számára a kérelmet kibocsátó. Ebben a példában minden kezdve fejléc "x-ms - meta-" megjelenik.
 * **MaxAgeInSeconds** Ez az a maximális időt, hogy a böngésző gyorsítótárazza-e a ellenőrzési beállítások kérelmet. (Az előzetes kérelmekre vonatkozó további információkért ellenőrizze a első cikkben.)
 
-#### <a name="resources"></a>Erőforrások
+#### <a name="resources"></a>További források
 CORS és az engedélyezéshez kapcsolatos további információkért tekintse meg ezeket az erőforrásokat.
 
 * [Eltérő eredetű erőforrások megosztása (CORS) támogatása az Azure Storage szolgáltatásainak az Azure.com-on](../storage-cors-support.md)

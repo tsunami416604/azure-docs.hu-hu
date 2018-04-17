@@ -1,12 +1,12 @@
 ---
-title: "Szerepköralapú hozzáférés-vezérlés használata StorSimple |} Microsoft Docs"
-description: "Azure szerepköralapú hozzáférés-vezérlés (RBAC) StorSimple környezetében használatát ismerteti."
+title: Szerepköralapú hozzáférés-vezérlés használata StorSimple |} Microsoft Docs
+description: Azure szerepköralapú hozzáférés-vezérlés (RBAC) StorSimple környezetében használatát ismerteti.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: d040849360a47c611d44b3a5d7649c685dcc8068
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 5d68df424fbedbb9f0d17b87ceb243b079b3da14
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="role-based-access-control-for-storsimple"></a>StorSimple szerepköralapú hozzáférés-vezérlés
 
-A cikkben megtudhatja, hogyan átruházásához hozzáférés-vezérlés (RBAC) is használható a StorSimple eszköz rövid leírása. Az RBAC részletes hozzáféréskezelést az Azure biztosít. Használja a Szerepalapú helyett mindenki jogosultságot ad a munkája elvégzéséhez a StorSimple felhasználók hozzáférésének csak a megfelelő mennyiségű teljes hozzáférést. Hozzáférés-kezelés az Azure-ban az alapok további információk: [szerepköralapú hozzáférés-vezérlés az Azure-portálon az első lépései](../active-directory/role-based-access-control-what-is.md).
+A cikkben megtudhatja, hogyan átruházásához hozzáférés-vezérlés (RBAC) is használható a StorSimple eszköz rövid leírása. Az RBAC részletes hozzáféréskezelést az Azure biztosít. Használja a Szerepalapú helyett mindenki jogosultságot ad a munkája elvégzéséhez a StorSimple felhasználók hozzáférésének csak a megfelelő mennyiségű teljes hozzáférést. Hozzáférés-kezelés az Azure-ban az alapok további információk: [szerepköralapú hozzáférés-vezérlés az Azure-portálon az első lépései](../role-based-access-control/overview.md).
 
 Ez a cikk vonatkozik a StorSimple 8000 sorozat eszközeire frissítés 3.0 fut, vagy később az Azure-portálon.
 
@@ -30,9 +30,9 @@ Ez a cikk vonatkozik a StorSimple 8000 sorozat eszközeire frissítés 3.0 fut, 
 
 Az RBAC-alapú szerepkörök rendelhetők. A szerepkörök gondoskodjon arról, hogy bizonyos jogosultsági szintek a környezetben elérhető erőforrások alapján. StorSimple-felhasználók közül választhatnak szerepkörök két típusa van: beépített és egyéni.
 
-* **Beépített szerepkörök** -tulajdonos, közreműködő, olvasó vagy felhasználói hozzáférés adminisztrátora a beépített szerepkörök lehet. További információkért lásd: [Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörök](../active-directory/role-based-access-control-what-is.md#built-in-roles).
+* **Beépített szerepkörök** -tulajdonos, közreműködő, olvasó vagy felhasználói hozzáférés adminisztrátora a beépített szerepkörök lehet. További információkért lásd: [Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörök](../role-based-access-control/overview.md#built-in-roles).
 
-* **Egyéni szerepkörök** -Ha a beépített szerepkörök nem a saját igényeinek megfelelően, a StorSimple hozhat létre egyéni RBAC-szerepkörök. Egyéni RBAC-szerepkör létrehozásához egy beépített szerepkör kezdődhet, szerkesztheti, majd importálja vissza a környezetben. A letöltés és a szerepkör feltöltése felügyelt Azure PowerShell vagy az Azure parancssori felület használatával. További információkért lásd: [egyedi szerepkörök létrehozását a szerepköralapú hozzáférés-vezérlési](../active-directory/role-based-access-control-custom-roles.md).
+* **Egyéni szerepkörök** -Ha a beépített szerepkörök nem a saját igényeinek megfelelően, a StorSimple hozhat létre egyéni RBAC-szerepkörök. Egyéni RBAC-szerepkör létrehozásához egy beépített szerepkör kezdődhet, szerkesztheti, majd importálja vissza a környezetben. A letöltés és a szerepkör feltöltése felügyelt Azure PowerShell vagy az Azure parancssori felület használatával. További információkért lásd: [egyedi szerepkörök létrehozását a szerepköralapú hozzáférés-vezérlési](../role-based-access-control/custom-roles.md).
 
 A StorSimple eszköz felhasználói különböző szerepkörök az Azure portálon megtekintéséhez nyissa meg a StorSimple eszköz Manager szolgáltatáshoz, és folytassa a **hozzáférés-vezérlés (IAM) > szerepkörök**.
 
@@ -43,7 +43,7 @@ A következő példában először a beépített szerepkör **olvasó** , amely 
 
 1. A Windows PowerShell futtatása rendszergazdaként.
 
-2. Jelentkezzen be az Azure-bA.
+2. Bejelentkezik az Azure-ba.
 
     `Login-AzureRMAccount`
 
@@ -108,7 +108,7 @@ Ez a szerepkör ekkor meg kell jelennie a szerepkörök listáját a **hozzáfé
 
 ![Nézet RBAC-szerepkörök](./media/storsimple-8000-role-based-access-control/rbac-role-types.png)
 
-További információkért látogasson el [hozzon létre egy egyéni RBAC szerepkört a PowerShell segítségével](../active-directory/role-based-access-control-create-custom-roles-for-internal-external-users.md#create-a-custom-rbac-role-to-open-support-requests-using-powershell).
+További információkért látogasson el [hozzon létre egy egyéni RBAC szerepkört a PowerShell segítségével](../role-based-access-control/role-assignments-external-users.md#create-a-custom-rbac-role-to-open-support-requests-using-powershell).
 
 ### <a name="sample-output-for-custom-role-creation-via-the-powershell"></a>Minta kimenet az egyéni szerepkör létrehozása a PowerShell használatával
 
@@ -153,7 +153,7 @@ PS C:\WINDOWS\system32>
 
 ## <a name="add-users-to-the-custom-role"></a>Felhasználók hozzáadása az egyéni szerepkör
 
-A hozzáférés a szerepkör-hozzárendelés hatókörébe tartozó erőforrásból, erőforráscsoportból vagy előfizetésből biztosítható. Ha hozzáférést biztosító, figyelembe kell vennie, hogy a gyermek örökli a szülő csomópontban biztosított hozzáférést. További információkért látogasson el [erőforrás hierarchia és hozzáférési öröklési](../active-directory/role-based-access-control-what-is.md#resource-hierarchy-and-access-inheritance).
+A hozzáférés a szerepkör-hozzárendelés hatókörébe tartozó erőforrásból, erőforráscsoportból vagy előfizetésből biztosítható. Ha hozzáférést biztosító, figyelembe kell vennie, hogy a gyermek örökli a szülő csomópontban biztosított hozzáférést. További információkért látogasson el [erőforrás hierarchia és hozzáférési öröklési](../role-based-access-control/overview.md#resource-hierarchy-and-access-inheritance).
 
 1. Ugrás a **hozzáférés-vezérlés (IAM)**. Kattintson a **+ Hozzáadás** a hozzáférés-vezérlő panelen.
 
@@ -184,7 +184,7 @@ Ez a szerepkör létrehozása után megtekintheti az Azure-portálon a szerepkö
     ![StorSimple infrastruktúra rendszergazdai szerepkör felhasználóinak megtekintése](./media/storsimple-8000-role-based-access-control/rbac-infra-admin-permissions1.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogyan [belső és külső felhasználók egyéni szerepkörök hozzárendelése](../active-directory/role-based-access-control-create-custom-roles-for-internal-external-users.md).
+Megtudhatja, hogyan [belső és külső felhasználók egyéni szerepkörök hozzárendelése](../role-based-access-control/role-assignments-external-users.md).
 

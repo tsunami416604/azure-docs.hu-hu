@@ -1,6 +1,6 @@
 ---
-title: "Az Azure támogatási feldolgozási tervezetének - tűzfalra vonatkozó követelmények"
-description: "1. követelmény PCI DSS"
+title: Az Azure támogatási feldolgozási tervezetének - tűzfalra vonatkozó követelmények
+description: 1. követelmény PCI DSS
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 995ecd5ef876695145fc6313aba2a46d2cc085cc
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 4e04d6417f1468c1bafada1a93ab63a73e39653d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="firewall-requirements-for-pci-dss-compliant-environments"></a>Tűzfalkövetelmények PCI DSS-kompatibilis környezetben 
 ## <a name="pci-dss-requirement-1"></a>1. követelmény PCI DSS
@@ -42,8 +42,8 @@ Egyéb rendszerösszetevők rendelkezhetnek tűzfal működését, amíg azok me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló, a CDE firewalling PaaS-elkülönítéssel és biztosít egy App Service Environment-környezet végrehajtása biztosítja, hogy CDE bemenő és kimenő adatok védett legyen.<br /><br />Egy [App Service-környezet (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) a Premium szolgáltatás csomag megfelelőségi okokból használni. ASE vezérlők és a konfiguráció további információkért lásd: [PCI útmutatást - App Service Environment-környezet](payment-processing-blueprint.md#app-service-environment).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló, a CDE firewalling PaaS-elkülönítéssel és biztosít egy App Service Environment-környezet végrehajtása biztosítja, hogy CDE bemenő és kimenő adatok védett legyen.<br /><br />Egy [App Service-környezet (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) a Premium szolgáltatás csomag megfelelőségi okokból használni. ASE vezérlők és a konfiguráció további információkért lásd: [PCI útmutatást - App Service Environment-környezet](payment-processing-blueprint.md#app-service-environment).|
 
 
 
@@ -56,8 +56,8 @@ Egyéb rendszerösszetevők rendelkezhetnek tűzfal működését, amíg azok me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló példánya hoz létre olyan CI/CD DevOps modell, győződjön meg arról, hogy minden változást megfelelően kezeli-e. [Az Operations Management Suite (OMS)](/azure/operations-management-suite/) változások kiterjedt naplózás biztosít. Módosítások tekintse át, és pontossága ellenőrizni. Részletesebb útmutatásért lásd: [PCI útmutatást - az Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing).<br /><br />[Az Azure Security Center](https://azure.microsoft.com/services/security-center/) központosított összes Azure-erőforrások biztonsági állapotát jeleníti meg. Egy pillanat alatt ellenőrizze, hogy a megfelelő biztonsági vezérlőket teljesül, és megfelelően konfigurálva, és gyorsan azonosíthatja a figyelmet igénylő erőforrásokat.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló példánya hoz létre olyan CI/CD DevOps modell, győződjön meg arról, hogy minden változást megfelelően kezeli-e. A Naplóelemzési változások kiterjedt naplózás biztosít. Módosítások tekintse át, és pontossága ellenőrizni. Részletesebb útmutatásért lásd: [PCI útmutatást - az Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing).<br /><br />[Az Azure Security Center](https://azure.microsoft.com/services/security-center/) központosított összes Azure-erőforrások biztonsági állapotát jeleníti meg. Egy pillanat alatt ellenőrizze, hogy a megfelelő biztonsági vezérlőket teljesül, és megfelelően konfigurálva, és gyorsan azonosíthatja a figyelmet igénylő erőforrásokat.|
 
 
 
@@ -69,8 +69,8 @@ Egyéb rendszerösszetevők rendelkezhetnek tűzfal működését, amíg azok me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Tekintse meg a Contoso webes tároló felépítéséről és kialakításáról referenciadokumentációt a telepítési minta a megoldás részeként.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Tekintse meg a Contoso webes tároló felépítéséről és kialakításáról referenciadokumentációt a telepítési minta a megoldás részeként.|
 
 
 
@@ -82,8 +82,8 @@ Egyéb rendszerösszetevők rendelkezhetnek tűzfal működését, amíg azok me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló DFD és a fenyegetések modellezése hivatkozik.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló DFD és a fenyegetések modellezése hivatkozik.|
 
 
 
@@ -95,8 +95,8 @@ Egyéb rendszerösszetevők rendelkezhetnek tűzfal működését, amíg azok me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure határ védelmi eszközök, például az átjárók, a hálózati hozzáférés-vezérlési listák és a külső és belső határok platform szintjén, a vezérlő kommunikáció tűzfalak funkcióit használja. Az ügyfél ezután konfigurálja azokat a saját specifikációkért és követelményekért. Microsoft Azure szűrők kommunikáció, amikor a platformra hamarosan. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló nyújt PaaS-elkülönítéssel DMZ, és az App Service Environment-környezet végrehajtása biztosítja, hogy CDE bemenő és kimenő adatok védett legyen.<br /><br />Egy [App Service-környezet (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) a Premium szolgáltatás csomag megfelelőségi okokból használni. ASE vezérlők és a konfiguráció további információkért lásd: [PCI útmutatást - App Service Environment-környezet](payment-processing-blueprint.md#app-service-environment).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure határ védelmi eszközök, például az átjárók, a hálózati hozzáférés-vezérlési listák és a külső és belső határok platform szintjén, a vezérlő kommunikáció tűzfalak funkcióit használja. Az ügyfél ezután konfigurálja azokat a saját specifikációkért és követelményekért. Microsoft Azure szűrők kommunikáció, amikor a platformra hamarosan. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló nyújt PaaS-elkülönítéssel DMZ, és az App Service Environment-környezet végrehajtása biztosítja, hogy CDE bemenő és kimenő adatok védett legyen.<br /><br />Egy [App Service-környezet (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) a Premium szolgáltatás csomag megfelelőségi okokból használni. ASE vezérlők és a konfiguráció további információkért lásd: [PCI útmutatást - App Service Environment-környezet](payment-processing-blueprint.md#app-service-environment).|
 
 
 
@@ -108,8 +108,8 @@ Egyéb rendszerösszetevők rendelkezhetnek tűzfal működését, amíg azok me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló használ [átruházásához hozzáférés-vezérlés (RBAC)](/azure/active-directory/role-based-access-control-configure) felhasználói szerepkörök elkülönítése. Szerepalapú lehetővé teszi, hogy pontosan célzott hozzáférés-kezelés az Azure-bA. Specifikus konfigurációk létezik előfizetés hozzáférést, és az Azure Key Vault hozzáférhetnek.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló használ [átruházásához hozzáférés-vezérlés (RBAC)](/azure/role-based-access-control/role-assignments-portal) felhasználói szerepkörök elkülönítése. Szerepalapú lehetővé teszi, hogy pontosan célzott hozzáférés-kezelés az Azure-bA. Specifikus konfigurációk létezik előfizetés hozzáférést, és az Azure Key Vault hozzáférhetnek.|
 
 
 
@@ -121,8 +121,8 @@ Egyéb rendszerösszetevők rendelkezhetnek tűzfal működését, amíg azok me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló csak a szükséges portok és protokollok a Regisztrációszolgáltató tervezési nyílik meg. Adatfolyam adatait a DFD és a fenyegetések modell látható.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló csak a szükséges portok és protokollok a Regisztrációszolgáltató tervezési nyílik meg. Adatfolyam adatait a DFD és a fenyegetések modell látható.|
 
 
 
@@ -134,8 +134,8 @@ Egyéb rendszerösszetevők rendelkezhetnek tűzfal működését, amíg azok me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló, a tűzfal szabálykészletek javasoljuk, hogy ellenőrizze, hogy nincsenek a szükségtelen vagy a nem használt szabályok tartalmazza. Úgy lett kialakítva a bemutató a legalacsonyabb jogosultsági szint, legkisebb elérési helyigénnyel üzembe helyezéséhez.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló, a tűzfal szabálykészletek javasoljuk, hogy ellenőrizze, hogy nincsenek a szükségtelen vagy a nem használt szabályok tartalmazza. Úgy lett kialakítva a bemutató a legalacsonyabb jogosultsági szint, legkisebb elérési helyigénnyel üzembe helyezéséhez.|
 
 
 
@@ -150,8 +150,8 @@ Egyéb rendszerösszetevők rendelkezhetnek tűzfal működését, amíg azok me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló CDE van definiálva az RA és a telepítési dokumentációban. Nem megbízható hálózatokon van Tiltás alatt úgy lett kialakítva.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló CDE van definiálva az RA és a telepítési dokumentációban. Nem megbízható hálózatokon van Tiltás alatt úgy lett kialakítva.|
 
 
 
@@ -163,8 +163,8 @@ Egyéb rendszerösszetevők rendelkezhetnek tűzfal működését, amíg azok me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló CDE van definiálva az RA és a telepítési dokumentációban. Nem megbízható hálózatokon van Tiltás alatt úgy lett kialakítva. A Contoso webes tároló bemutató konfigurálja a Microsoft Azure tűzfal engedélyezi az IP-címek Microsoft Azure-szolgáltatások eléréséhez csak a megadott tartományokon. A Contoso webes tároló minden biztosít a Megtagadás – minden tűzfal, CDE határokat. Az összes konfiguráció a központi telepítés kezdeti beállítás során történik.
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló CDE van definiálva az RA és a telepítési dokumentációban. Nem megbízható hálózatokon van Tiltás alatt úgy lett kialakítva. A Contoso webes tároló bemutató konfigurálja a Microsoft Azure tűzfal engedélyezi az IP-címek Microsoft Azure-szolgáltatások eléréséhez csak a megadott tartományokon. A Contoso webes tároló minden biztosít a Megtagadás – minden tűzfal, CDE határokat. Az összes konfiguráció a központi telepítés kezdeti beállítás során történik.
 
 > [!NOTE]
 > App Service-környezet (ASE) szolgál ebben a megoldásban elkülöníteni a CDE azonban fontos, hogy a minősített biztonsági végző (QSA) kiértékeli az ebben a megoldásban, ASE megvalósítja a DMZ elkülönítési, amely lehetővé teszi a kimenő kapcsolatok a ASE által történő. PCI DSS megköveteli, hogy az összes bejövő és kimenő kapcsolatokat, amelyek nem kötelezőek le kell tiltani. A ASE megfelelően működjön, ASE főkiszolgálójával kimenő kapcsolatok szükséges a ["App Service-környezet hálózati szempontjai"](/azure/app-service/app-service-environment/network-info). Az ügyfelek ki kell értékelnie, hogy a kimenő kapcsolatok a QSA előtt a megoldás telepítése éles környezetbe történő győződjön meg arról, hogy az megfeleljen a követelményeknek. |
@@ -179,8 +179,8 @@ Egyéb rendszerösszetevők rendelkezhetnek tűzfal működését, amíg azok me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló konfigurációk esetén a Microsoft Azure natív hálózati vezérlők biztosít.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló konfigurációk esetén a Microsoft Azure natív hálózati vezérlők biztosít.|
 
 
 
@@ -192,8 +192,8 @@ Egyéb rendszerösszetevők rendelkezhetnek tűzfal működését, amíg azok me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló nem rendelkezik a vezeték nélküli megoldások vagy engedélyezett képességek.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló nem rendelkezik a vezeték nélküli megoldások vagy engedélyezett képességek.|
 
 
 
@@ -205,8 +205,8 @@ Egyéb rendszerösszetevők rendelkezhetnek tűzfal működését, amíg azok me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure alkalmazta a hálózat- és állomásalapú határ védelmi eszközök, például a tűzfalak, terheléselosztók, és hozzáférés-vezérlési listák. Ezek az eszközök használja például a VLAN elkülönítése, NAT és internetes forgalmát különálló ügyfél és felügyeleti forgalom szűrés csomag funkcióját. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló biztosít, a központi telepítés, idején a konfigurációkat, az Azure-alkalmazásokban tűzfal engedélyezése csak az IP-címek és hozzáférhetnek a webhelyhez, a megerősített Azure virtuális gépeket szerepeltetni a CDE megadott tartományokon.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure alkalmazta a hálózat- és állomásalapú határ védelmi eszközök, például a tűzfalak, terheléselosztók, és hozzáférés-vezérlési listák. Ezek az eszközök használja például a VLAN elkülönítése, NAT és internetes forgalmát különálló ügyfél és felügyeleti forgalom szűrés csomag funkcióját. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló biztosít, a központi telepítés, idején a konfigurációkat, az Azure-alkalmazásokban tűzfal engedélyezése csak az IP-címek és hozzáférhetnek a webhelyhez, a megerősített Azure virtuális gépeket szerepeltetni a CDE megadott tartományokon.|
 
 
 
@@ -219,8 +219,8 @@ Egyéb rendszerösszetevők rendelkezhetnek tűzfal működését, amíg azok me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A DMZ Contoso webes tároló végrehajtása biztosítja, hogy csak a jogosult szolgáltatások csatlakozhatnak a CDE.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A DMZ Contoso webes tároló végrehajtása biztosítja, hogy csak a jogosult szolgáltatások csatlakozhatnak a CDE.|
 
 
 
@@ -232,8 +232,8 @@ Egyéb rendszerösszetevők rendelkezhetnek tűzfal működését, amíg azok me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A DMZ Contoso webes tároló végrehajtása biztosítja, hogy csak a jogosult szolgáltatások csatlakozhatnak a CDE.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A DMZ Contoso webes tároló végrehajtása biztosítja, hogy csak a jogosult szolgáltatások csatlakozhatnak a CDE.|
 
 
 
@@ -245,8 +245,8 @@ Egyéb rendszerösszetevők rendelkezhetnek tűzfal működését, amíg azok me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure valósítja meg a hálózati szűrés hamisított forgalom és megbízható webplatform-összetevők bejövő és kimenő forgalom korlátozása érdekében. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Nem alkalmazható.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure valósítja meg a hálózati szűrés hamisított forgalom és megbízható webplatform-összetevők bejövő és kimenő forgalom korlátozása érdekében. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Nem alkalmazható.|
 
 
 
@@ -259,8 +259,8 @@ Egyéb rendszerösszetevők rendelkezhetnek tűzfal működését, amíg azok me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló-architektúra megakadályozza a jogosulatlan kimenő forgalmat a hatókör környezetből az internethez. Mindez által engedélyezett portok és protokollok a kimenő forgalom hozzáférés-vezérlési listák beállítása a Microsoft Azure-ban. Ezek az intézkedések foglalja a hozzáférést a CDE az SQL Server-adatbázisban. <br /><br />A Platformszolgáltatásos SQL Database-példányt, adatbázis biztonsági intézkedéseket megjelenítve szolgál. További információkért lásd: [PCI útmutatást - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló-architektúra megakadályozza a jogosulatlan kimenő forgalmat a hatókör környezetből az internethez. Mindez által engedélyezett portok és protokollok a kimenő forgalom hozzáférés-vezérlési listák beállítása a Microsoft Azure-ban. Ezek az intézkedések foglalja a hozzáférést a CDE az SQL Server-adatbázisban. <br /><br />A Platformszolgáltatásos SQL Database-példányt, adatbázis biztonsági intézkedéseket megjelenítve szolgál. További információkért lásd: [PCI útmutatást - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -273,8 +273,8 @@ Egyéb rendszerösszetevők rendelkezhetnek tűzfal működését, amíg azok me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure valósítja meg a hálózati szűrés hamisított forgalom és megbízható webplatform-összetevők bejövő és kimenő forgalom korlátozása érdekében. A Microsoft Azure-hálózathoz van elkülönített felhasználói forgalom elkülönítéséhez felügyeleti forgalmat. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Nem alkalmazható.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure valósítja meg a hálózati szűrés hamisított forgalom és megbízható webplatform-összetevők bejövő és kimenő forgalom korlátozása érdekében. A Microsoft Azure-hálózathoz van elkülönített felhasználói forgalom elkülönítéséhez felügyeleti forgalmat. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Nem alkalmazható.|
 
 
 
@@ -287,8 +287,8 @@ Egyéb rendszerösszetevők rendelkezhetnek tűzfal működését, amíg azok me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure a hálózati elkülönítést és a NAT külön felhasználói forgalom a felügyeleti forgalom használ. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló-architektúra megakadályozza a jogosulatlan kimenő forgalmat a hatókör környezetből az internethez. Mindez által engedélyezett portok és protokollok a kimenő forgalom hozzáférés-vezérlési listák beállítása a Microsoft Azure-ban. Ezek az intézkedések foglalja a hozzáférést a CDE az SQL Server-adatbázisban. <br /><br />A Platformszolgáltatásos SQL Database-példányt, adatbázis biztonsági intézkedéseket megjelenítve szolgál. További információkért lásd: [PCI útmutatást - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure a hálózati elkülönítést és a NAT külön felhasználói forgalom a felügyeleti forgalom használ. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló-architektúra megakadályozza a jogosulatlan kimenő forgalmat a hatókör környezetből az internethez. Mindez által engedélyezett portok és protokollok a kimenő forgalom hozzáférés-vezérlési listák beállítása a Microsoft Azure-ban. Ezek az intézkedések foglalja a hozzáférést a CDE az SQL Server-adatbázisban. <br /><br />A Platformszolgáltatásos SQL Database-példányt, adatbázis biztonsági intézkedéseket megjelenítve szolgál. További információkért lásd: [PCI útmutatást - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -308,8 +308,8 @@ Egyéb rendszerösszetevők rendelkezhetnek tűzfal működését, amíg azok me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure hálózati címfordítás (NAT) és a hálózati elkülönítés használatával külön felhasználói forgalom a felügyeleti forgalom. Az Azure eszközök egyedileg azonosítja az UUID és hitelesítése Kerberos használatával. Azure által felügyelt hálózati eszközök azonosítják az RFC 1918 IP-címmel. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló összes kártya tulajdonosát adatokat proxy kiszolgálók/tűzfal mögött elhelyezkedő helyezi, és RFC1918 címterület belső használja.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure hálózati címfordítás (NAT) és a hálózati elkülönítés használatával külön felhasználói forgalom a felügyeleti forgalom. Az Azure eszközök egyedileg azonosítja az UUID és hitelesítése Kerberos használatával. Azure által felügyelt hálózati eszközök azonosítják az RFC 1918 IP-címmel. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló összes kártya tulajdonosát adatokat proxy kiszolgálók/tűzfal mögött elhelyezkedő helyezi, és RFC1918 címterület belső használja.|
 
 
 
@@ -323,8 +323,8 @@ Egyéb rendszerösszetevők rendelkezhetnek tűzfal működését, amíg azok me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló nem nyújt védelmet a végfelhasználói eszközöket. [A Microsoft Intune](https://www.microsoft.com/cloud-platform/microsoft-intune) a dolgozók számára a vállalati adatok elérésére használt mobil eszközök kezelésére is használható.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló nem nyújt védelmet a végfelhasználói eszközöket. [A Microsoft Intune](https://www.microsoft.com/cloud-platform/microsoft-intune) a dolgozók számára a vállalati adatok elérésére használt mobil eszközök kezelésére is használható.|
 
 
 
@@ -336,8 +336,8 @@ Egyéb rendszerösszetevők rendelkezhetnek tűzfal működését, amíg azok me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló biztosít, a központi telepítés, idején a konfigurációkat, az Azure-alkalmazásokban tűzfal engedélyezése csak az IP-címek és hozzáférhetnek a webhelyhez, a megerősített Azure virtuális gépeket szerepeltetni a CDE megadott tartományokon.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló biztosít, a központi telepítés, idején a konfigurációkat, az Azure-alkalmazásokban tűzfal engedélyezése csak az IP-címek és hozzáférhetnek a webhelyhez, a megerősített Azure virtuális gépeket szerepeltetni a CDE megadott tartományokon.|
 
 
 

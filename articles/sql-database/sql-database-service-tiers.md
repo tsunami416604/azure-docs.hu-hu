@@ -6,14 +6,14 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 04/09/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: a4474aec212084006becd02f317dabae6e731d98
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5ac9623b9089fc0aa8a440196fb7f48cb4963a64
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="what-are-azure-sql-database-service-tiers"></a>Mik az Azure SQL Database szolgáltatási szinteket?
 
@@ -100,6 +100,12 @@ Az a vCore-alapú vásárlási modell ügyfelek díja:
 
 > [!IMPORTANT]
 > Számítás-, IOs, adatok, és a naplók tárolásához van szó, adatbázis vagy a rugalmas készlet. Biztonsági másolatok tárolási fel van töltve, egyes adatbázisonként. A részletes adatokat felügyelt példány díjak meg [Azure SQL adatbázis felügyelt példány](sql-database-managed-instance.md).
+
+> [!IMPORTANT]
+> A régióban korlátozások vonatkoznak: 
+>
+> A vCore-alapú alapjául szolgáló vásárlási modell még nem érhető el a Ausztrália délkeleti. A kép nem érhető el a következő régióban: Nyugat-Európában, Franciaország központi, Egyesült Királyság déli régiója és Egyesült Királyság nyugati régiója.
+> 
 
 ### <a name="choosing-service-tier-compute-memory-storage-and-io-resources"></a>Szolgáltatási réteg, számítási, memória, tárolási és IO erőforrások kiválasztása
 

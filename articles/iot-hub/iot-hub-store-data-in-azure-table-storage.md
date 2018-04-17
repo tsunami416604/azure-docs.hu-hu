@@ -1,25 +1,25 @@
 ---
-title: "Az IoT hub üzenetek mentése az Azure data Storage |} Microsoft Docs"
-description: "Az IoT-központ üzenet útválasztás használatával az IoT hub üzenetek mentése az Azure blob storage. Az IoT hub üzeneteket tartalmaz információkat, például az IoT-eszközről küldött érzékelőadatait."
+title: Az IoT hub üzenetek mentése az Azure data Storage |} Microsoft Docs
+description: Az IoT-központ üzenet útválasztás használatával az IoT hub üzenetek mentése az Azure blob storage. Az IoT hub üzeneteket tartalmaz információkat, például az IoT-eszközről küldött érzékelőadatait.
 services: iot-hub
-documentationcenter: 
-author: shizn
+documentationcenter: ''
+author: rangv
 manager: timlt
-tags: 
-keywords: "az IOT adattárolás, iot érzékelő adatokat tároló"
+tags: ''
+keywords: az IOT adattárolás, iot érzékelő adatokat tároló
 ms.assetid: 62fd14fd-aaaa-4b3d-8367-75c1111b6269
 ms.service: iot-hub
 ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/04/2017
-ms.author: xshi
-ms.openlocfilehash: f6b334dbc9903d0080b74052062de7564aa4a993
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.date: 4/11/2018
+ms.author: rangv
+ms.openlocfilehash: 03111cd07364aa30f15ddcfdc196107d92d02e0d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="save-iot-hub-messages-that-contain-sensor-data-to-your-azure-blob-storage"></a>Az IoT hub üzeneteket, amelyek tartalmazzák az érzékelők adataiból, hogy az Azure blob storage mentése
 
@@ -61,7 +61,7 @@ Megismerheti az Azure-tárfiók és az IoT hub üzenetek tárolásához a blob S
 
 ## <a name="prepare-your-iot-hub-to-route-messages-to-storage"></a>Az IoT hub üzenetek tárhely előkészítése
 
-Az IoT-központ natív módon támogatja az Azure storage üzenetek blobként.
+Az IoT-központ natív módon támogatja az Azure storage üzenetek blobként. További információk az Azure IoT Hub egyéni végpontokat tudnia, olvassa el a [beépített IoT-központok végpontjai listája](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-endpoints#custom-endpoints).
 
 ### <a name="add-storage-as-a-custom-endpoint"></a>Egyéni végpontként tároló hozzáadása
 

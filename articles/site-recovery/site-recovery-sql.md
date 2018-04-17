@@ -1,24 +1,24 @@
 ---
-title: "Az SQL Server és az Azure Site Recovery alkalmazások replikálni |} Microsoft Docs"
-description: "A cikkből megtudhatja, hogyan replikáljon az SQL Server az SQL Server vészhelyreállítási képességek az Azure Site Recovery segítségével."
+title: Az SQL Server és az Azure Site Recovery alkalmazások replikálni |} Microsoft Docs
+description: A cikkből megtudhatja, hogyan replikáljon az SQL Server az SQL Server vészhelyreállítási képességek az Azure Site Recovery segítségével.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: prateek9us
 manager: gauravd
-editor: 
+editor: ''
 ms.assetid: 9126f5e8-e9ed-4c31-b6b4-bf969c12c184
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2017
+ms.date: 04/09/2018
 ms.author: pratshar
-ms.openlocfilehash: 7981173b419632683a40a54bc07f51f0fccab531
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: f0c43eee127857edfd1692dce825ef295be09f7b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="protect-sql-server-using-sql-server-disaster-recovery-and-azure-site-recovery"></a>SQL Server vészhelyreállítási és az Azure Site Recovery használata az SQL Server védelme
 
@@ -45,7 +45,7 @@ Számos különféle munkaterheléshez alapjaként SQL Servert használja, és a
 ### <a name="supported-scenarios"></a>Támogatott esetek
 A Site Recovery megvédheti az SQL Server, a táblázatban foglaltak szerint.
 
-**A forgatókönyv** | **Egy másodlagos helyre** | **Az Azure-bA**
+**A forgatókönyv** | **Egy másodlagos helyre** | **Az Azure-ba**
 --- | --- | ---
 **Hyper-V** | Igen | Igen
 **VMware** | Igen | Igen
@@ -95,7 +95,7 @@ A táblázat összefoglalja, az SQL Server BCDR-technológiákkal integrálása 
 
 Active Directory beállítása a másodlagos helyreállítási hely, az SQL Server megfelelő futtatásához.
 
-* **Kis vállalati**– néhány alkalmazások és a helyszíni hely egyetlen tartományvezérlővel rendelkezik, ha azt szeretné, hogy áthelyezze a feladatokat a teljes webhelyet, javasolt a tartományvezérlő replikálja a másodlagos adatközpontba, vagy az Azure Site Recovery-replikációt használ.
+* **Kis vállalati**– néhány alkalmazások és a helyszíni hely egyetlen tartományvezérlővel rendelkezik, ha azt szeretné, hogy áthelyezze a feladatokat a teljes webhelyet, javasolt a Site Recovery-replikációt használ a tartományvezérlő replikálni a másodlagos Datacenter, vagy az Azure-bA.
 * **Közepes vagy nagyméretű vállalat**– Ha nagyszámú alkalmazásokat, egy Active Directory-erdőben van, és szeretné adni az alkalmazás vagy munkaterhelés át, ajánlott állít be egy további tartományvezérlőt a másodlagos adatközpontba, vagy az Azure-ban. Ha az Always On rendelkezésre állási csoportokat használ az egy távoli helyre történő helyreállítást, ajánlott állít be egy másik tartományvezérlő a másodlagos helyen vagy az Azure, a helyreállított SQL Server-példány használata.
 
 A jelen cikkben lévő utasítások feltételezik, hogy a tartományvezérlő érhető el a másodlagos helyen. [További](site-recovery-active-directory.md) az Active Directory, a Site Recovery védelméről.

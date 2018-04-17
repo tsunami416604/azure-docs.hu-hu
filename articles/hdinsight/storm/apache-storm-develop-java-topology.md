@@ -1,27 +1,25 @@
 ---
-title: "Apache Storm például Java-topológiák - Azure HDInsight |} Microsoft Docs"
-description: "Útmutató Apache Storm-topológiák létrehozása a Java hozzon létre egy példa a word-count topológiához."
+title: Apache Storm például Java-topológiák - Azure HDInsight |} Microsoft Docs
+description: Útmutató Apache Storm-topológiák létrehozása a Java hozzon létre egy példa a word-count topológiához.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-keywords: "Apache storm, apache storm például storm java, a storm topológia – példa"
+keywords: Apache storm, apache storm például storm java, a storm topológia – példa
 ms.assetid: a8838f29-9c08-4fd9-99ef-26655d1bf6d7
 ms.service: hdinsight
 ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 2403261f05d9e5aab2e50939720b3eb007aecd6e
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 5f2a6de9737569c75e0350e2aceec19b149d9549
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Hozzon létre egy Apache Storm-topológia a Java nyelven
 
@@ -30,7 +28,7 @@ ms.lasthandoff: 02/22/2018
 A jelen dokumentumban leírt lépések elvégzése után a topológia telepítene a HDInsight alatt futó Apache Storm.
 
 > [!NOTE]
-> Ebben a dokumentumban létrehozott Storm-topológia példák befejezett verzióját [https://github.com/Azure-Samples/hdinsight-java-storm-wordcount](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount).
+> Ebben a dokumentumban létrehozott Storm-topológia példák befejezett verzióját [ https://github.com/Azure-Samples/hdinsight-java-storm-wordcount ](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -169,7 +167,7 @@ Maven beépülő modulok lehetővé teszik a létrehozási szakaszokra a projekt
 </build>
 ```
 
-Ez a szakasz segítségével adja hozzá a beépülő modulok, erőforrások és egyéb build-konfigurációs beállítások. A teljes körű referenciáért a **pom.xml** fájl című [http://maven.apache.org/pom.html](http://maven.apache.org/pom.html).
+Ez a szakasz segítségével adja hozzá a beépülő modulok, erőforrások és egyéb build-konfigurációs beállítások. A teljes körű referenciáért a **pom.xml** fájl című [ http://maven.apache.org/pom.html ](http://maven.apache.org/pom.html).
 
 ### <a name="add-plug-ins"></a>Beépülő modulok hozzáadása
 
@@ -565,10 +563,10 @@ Az XML számára egy új naplózó konfigurálja a `com.microsoft.example` oszt�
 
 A `<Root level="error">` szakasz konfigurálja a naplózási gyökérszinten (mindent nem szereplő `com.microsoft.example`) csak a hibák naplózása.
 
-Log4j naplózásának konfigurálásáról további információkért lásd: [http://logging.apache.org/log4j/2.x/manual/configuration.html](http://logging.apache.org/log4j/2.x/manual/configuration.html).
+Log4j naplózásának konfigurálásáról további információkért lásd: [ http://logging.apache.org/log4j/2.x/manual/configuration.html ](http://logging.apache.org/log4j/2.x/manual/configuration.html).
 
 > [!NOTE]
-> Storm verzióját 0.10.0-s és magasabb használata Log4j 2.x. A storm régebbi verzióit használja Log4j 1.x, a naplózási konfiguráció más formátumú használt. A régebbi konfigurációtól tudnivalókért lásd: [http://wiki.apache.org/logging-log4j/Log4jXmlFormat](http://wiki.apache.org/logging-log4j/Log4jXmlFormat).
+> Storm verzióját 0.10.0-s és magasabb használata Log4j 2.x. A storm régebbi verzióit használja Log4j 1.x, a naplózási konfiguráció más formátumú használt. A régebbi konfigurációtól tudnivalókért lásd: [ http://wiki.apache.org/logging-log4j/Log4jXmlFormat ](http://wiki.apache.org/logging-log4j/Log4jXmlFormat).
 
 ## <a name="test-the-topology-locally"></a>A topológia helyi tesztelése
 
@@ -601,7 +599,7 @@ A YAM fájl határozza meg a topológia és az adatok az összetevők közötti 
 Fluxus további információkért lásd: [fluxus keretrendszer (https://storm.apache.org/releases/0.10.0/flux.html)](https://storm.apache.org/releases/0.10.0/flux.html).
 
 > [!WARNING]
-> Oka az, hogy egy [hiba (https://issues.apache.org/jira/browse/STORM-2055)](https://issues.apache.org/jira/browse/STORM-2055) Storm 1.0.1-es, előfordulhat, hogy telepíteni szeretné a [Storm fejlesztőkörnyezet](https://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html) fluxus topológiák helyi futtatásához.
+> Oka az, hogy egy [hiba (https://issues.apache.org/jira/browse/STORM-2055) ](https://issues.apache.org/jira/browse/STORM-2055) Storm 1.0.1-es, előfordulhat, hogy telepíteni szeretné a [Storm fejlesztőkörnyezet](https://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html) fluxus topológiák helyi futtatásához.
 
 1. Helyezze át a `WordCountTopology.java` fájlt a projekt kívüli. Korábban ezt a fájlt a topológia definiálva, de a fluxus nem szükséges.
 
@@ -720,7 +718,7 @@ Fluxus további információkért lásd: [fluxus keretrendszer (https://storm.ap
     ```
 
     > [!WARNING]
-    > Ha a topológia a Storm 1.0.1-es bits használ, ez a parancs sikertelen lesz. Ez a hiba oka [https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055). Ehelyett [Storm a fejlesztési környezet telepítése](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html) és kövesse az alábbi lépéseket:
+    > Ha a topológia a Storm 1.0.1-es bits használ, ez a parancs sikertelen lesz. Ez a hiba oka [ https://issues.apache.org/jira/browse/STORM-2055 ](https://issues.apache.org/jira/browse/STORM-2055). Ehelyett [Storm a fejlesztési környezet telepítése](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html) és kövesse az alábbi lépéseket:
     >
     > Ha rendelkezik [Storm a fejlesztési környezetben telepített](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html), ehelyett a következő parancsokat használhatja:
     >

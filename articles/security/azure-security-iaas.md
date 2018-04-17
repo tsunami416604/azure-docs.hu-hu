@@ -1,5 +1,5 @@
 ---
-title: "Ajánlott biztonsági eljárások IaaS munkaterhelések az Azure-ban |} Microsoft Docs"
+title: Ajánlott biztonsági eljárások IaaS munkaterhelések az Azure-ban |} Microsoft Docs
 description: " Az áttelepítés a Azure IaaS munkaterhelések számos lehetőséget kínál, hogy újra kiértékelje a tervek lehetőségek "
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: barclayn
-ms.openlocfilehash: 376a3e47e5099aa4d74732e0b6ed14ed9af14091
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 8561d9ca2570975f4cd20a0606ce5b9cdee632b7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Ajánlott biztonsági eljárások az Azure IaaS munkaterhelések
 
@@ -83,7 +83,7 @@ Használhat [Privileged Identity Management](../active-directory/active-director
 
 Az Azure labs és fejlesztői környezetek lehetővé teszi a szervezetek könnyen reagálhat tesztelési és fejlesztési nyerni számítógépnél véve a Várakozás, amely a hardver beszerzése vezet be. Sajnos Azure vagy az elfogadását gyorsítása érdekében kell ismeretét hiánya vezethet a rendszergazdát, hogy túlságosan megengedett jogok hozzárendelésekor. A kockázat véletlenül esetleg felfedi a szervezet a belső támadásokkal szemben. Egyes felhasználók előfordulhat, hogy hozzáférést sokkal több mint kell rendelkezniük.
 
-A [Azure DevTest Labs](../devtest-lab/devtest-lab-overview.md) használja [átruházásához hozzáférés-vezérlés](../active-directory/role-based-access-control-what-is.md) (RBAC). RBAC használatával akkor is elkülönítse feladatokat a munkacsoporton belül a szerepköröket, amelyek csak a hozzáférési szintet, a felhasználóknak a munkájuk elvégzéséhez szükséges megadni. Az RBAC előre definiált szerepkörök (tulajdonos, lab-felhasználó és közreműködő) tartalmaz. Ezek a szerepkörök segítségével is külső partnerekkel jogosultságokat rendelhet hozzá, és nagy mértékben egyszerűsítheti az együttműködés.
+A [Azure DevTest Labs](../devtest-lab/devtest-lab-overview.md) használja [átruházásához hozzáférés-vezérlés](../role-based-access-control/overview.md) (RBAC). RBAC használatával akkor is elkülönítse feladatokat a munkacsoporton belül a szerepköröket, amelyek csak a hozzáférési szintet, a felhasználóknak a munkájuk elvégzéséhez szükséges megadni. Az RBAC előre definiált szerepkörök (tulajdonos, lab-felhasználó és közreműködő) tartalmaz. Ezek a szerepkörök segítségével is külső partnerekkel jogosultságokat rendelhet hozzá, és nagy mértékben egyszerűsítheti az együttműködés.
 
 Mivel a DevTest Labs RBAC használ, azt is létrehozhat további, [egyéni szerepkörök](../devtest-lab/devtest-lab-grant-user-permissions-to-specific-lab-policies.md). DevTest Labs nem csak egyszerűbbé teszi a engedélyek, egyszerűbbé teszi a kiépített környezetek folyamatának. Emellett segítséget nyújt az egyéb csoportok fejlesztési és tesztelési környezetben működő tipikus kihívásaival kezelésére. Bizonyos előkészületeket igényel, de a hosszú távú, azt fogja egyszerűbbé a csapat számára.
 
@@ -224,7 +224,7 @@ Az alábbi képernyőfelvételen az adatokat az Operations Management Suite megj
 
 ![Az Operations Management Suite biztonsági alapterveket](./media/azure-security-iaas/oms-security-baseline.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure Security csapat blogja](https://blogs.msdn.microsoft.com/azuresecurity/)
 * [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx)

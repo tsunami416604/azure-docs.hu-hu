@@ -1,11 +1,11 @@
 ---
-title: "Magánhálózati IP-címek konfigurálása virtuális gépek - Azure parancssori Felülettel |} Microsoft Docs"
-description: "Útmutató az Azure parancssori felület (CLI) használó virtuális gépek magánhálózati IP-címek konfigurálásához."
+title: Magánhálózati IP-címek konfigurálása virtuális gépek - Azure parancssori Felülettel |} Microsoft Docs
+description: Útmutató az Azure parancssori felület (CLI) használó virtuális gépek magánhálózati IP-címek konfigurálásához.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 40b03a1a-ea00-454c-b716-7574cea49ac0
 ms.service: virtual-network
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a9fe7020719079e11150c62068650aa6ca17b056
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: f4f6a40fde23ee70391c5057762f17ce1eb44123
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Az Azure parancssori felület használatával virtuális gépek magánhálózati IP-címek konfigurálása
 
@@ -158,6 +158,7 @@ Nevű virtuális gép létrehozása *DNS01* a a *előtér* egy vnet nevű alhál
 
    * `--nics`: A hálózati adapter, amely a virtuális gép csatlakozik neve.
    
+Javasoljuk, hogy nem statikusan rendelje a magánhálózati IP-címe az operációs rendszerben a virtuális gépek az Azure virtuális géphez rendelt kivéve, ha szükséges, például amikor [több IP-címek hozzárendelése egy Windows virtuális gépre](virtual-network-multiple-ip-addresses-cli.md). Ha manuálisan állítsa be a magánhálózati IP-cím, az operációs rendszerből, győződjön meg arról, hogy az a magánhálózati IP-cím, az Azure rendelt megegyező címre [hálózati illesztő](virtual-network-network-interface-addresses.md#change-ip-address-settings), vagy a virtuális gép is megszakad a kapcsolat. További információ [magánhálózati IP-cím](virtual-network-network-interface-addresses.md#private) beállításait.
 
 ## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>Statikus magánhálózati IP-címadatok a virtuális gép beolvasása
 
@@ -267,9 +268,7 @@ A hálózati Adaptert a virtuális gép az előző parancsban használt módosí
 
     > [!NOTE]
     > Ha a virtuális gép elég nagy ahhoz, hogy több hálózati adapter, futtassa a **azure-hálózat hálózati törlése** parancs törli a régi hálózati adaptert.
-   
-## <a name="next-steps"></a>További lépések
-* További tudnivalók [foglalt nyilvános IP-cím](virtual-networks-reserved-public-ip.md) címek.
-* További tudnivalók [példányszintű nyilvános IP (ILPIP)](virtual-networks-instance-level-public-ip.md) címek.
-* Tekintse át a [fenntartott IP-REST API-k](https://msdn.microsoft.com/library/azure/dn722420.aspx).
 
+## <a name="next-steps"></a>További lépések
+
+Kezelésével kapcsolatos [IP-címbeállítások](virtual-network-network-interface-addresses.md).

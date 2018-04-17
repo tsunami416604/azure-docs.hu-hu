@@ -1,20 +1,20 @@
 ---
-title: "Az Azure SQL adatbázis felügyelt példány egyéni DNS |} Microsoft Docs"
-description: "Ez a témakör ismerteti az Azure SQL adatbázis felügyelt példánya egy egyéni DNS-konfigurációs beállítások."
+title: Az Azure SQL adatbázis felügyelt példány egyéni DNS |} Microsoft Docs
+description: Ez a témakör ismerteti az Azure SQL adatbázis felügyelt példánya egy egyéni DNS-konfigurációs beállítások.
 services: sql-database
 author: srdjan-bozovic
 manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 04/10/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 993ff518a1987581ad7de4797611f104080c2c2f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3175b99c0e41cedf313115043b09608496adfdca
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>Példány egy egyéni DNS konfigurálása az Azure SQL Database felügyelete
 
@@ -79,5 +79,5 @@ Egy Azure virtuális hálózatot a DNS-konfiguráció szükséges, hogy adja meg
 ## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, [Mi az, hogy a felügyelt példánya](sql-database-managed-instance.md)
-- Például egy virtuális hálózat létrehozása, és ezután a felügyelt példány létrehozása, [felügyelt példány létrehozása](sql-database-managed-instance-tutorial-portal.md).
-- A virtuális hálózat konfigurálása, lásd: [felügyelt példányok VNet konfigurációja](sql-database-managed-instance-vnet-configuration.md)
+- Az oktatóanyag bemutatja, hogyan hozzon létre egy új kezelt példányt, lásd: [felügyelt példány létrehozása](sql-database-managed-instance-create-tutorial-portal.md).
+- További információ a virtuális hálózat konfigurálása a felügyelt példányához: [felügyelt példányok VNet konfigurációja](sql-database-managed-instance-vnet-configuration.md)

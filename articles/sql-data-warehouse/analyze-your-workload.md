@@ -3,23 +3,23 @@ title: A munkaterhelés - Azure SQL Data Warehouse elemzése |} Microsoft Docs
 description: Az Azure SQL Data Warehouse a munkaterheléshez lekérdezés rangsorolási elemzése technikákat.
 services: sql-data-warehouse
 author: sqlmojo
-manager: jhubbard
+manager: craigg-msft
 ms.topic: conceptual
 ms.component: manage
-ms.date: 03/28/2018
+ms.date: 04/11/2018
 ms.author: joeyong
 ms.reviewer: jrj
-ms.openlocfilehash: 7fa5bbd8d9a50bb1dcd1ab5be73f4e248cbbf8fc
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 609a0d72aa646054273e1a8ea8e02e3c3ae95dc2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="analyze-your-workload"></a>A számítási feladatok elemzése
+# <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>A számítási feladatok az Azure SQL Data Warehouse elemzése
 Az Azure SQL Data Warehouse a munkaterheléshez lekérdezés rangsorolási elemzése technikákat.
 
 ## <a name="workload-groups"></a>Munkaterhelés-csoport 
-Az SQL Data Warehouse erőforrás osztályok munkaterhelés-csoport használatával valósít meg. Nincsenek összesen nyolc munkaterhelés-csoport, amely felügyeli az erőforrás osztályok között a különböző DWU méretű. A DWU az SQL Data Warehouse csak közül négyet használ a nyolc munkaterhelés-csoport. Ez teljesen logikus, mert egyes tevékenységprofil-csoport van rendelve egy négy erőforrás osztályok: smallrc, mediumrc, largerc, vagy xlargerc. A munkaterhelés-csoport ismertetése fontosságát az, hogy a munkaterhelés csoportok vannak beállítva a magasabb *fontossági*. Fontos használt CPU ütemezés. A nagyon fontos futtatása lekérdezések háromszor több, mint a közepes fontos CPU-ciklusok fogja kapni. Ezért a feldolgozási tárolóhely hozzárendelések is CPU prioritásának meghatározása. Lekérdezés 16 vagy több üzembe helyezési ponti használ fel, ha fut, nagyon fontos.
+Az SQL Data Warehouse erőforrás osztályok munkaterhelés-csoport használatával valósít meg. Nincsenek összesen nyolc munkaterhelés-csoport, amely felügyeli az erőforrás osztályok között a különböző DWU méretű. A DWU az SQL Data Warehouse csak közül négyet használ a nyolc munkaterhelés-csoport. Ez a megközelítés szabálykészletében mert minden egyes tevékenységprofil-csoport van rendelve egy négy erőforrás osztályok: smallrc, mediumrc, largerc, vagy xlargerc. A munkaterhelés-csoport ismertetése fontosságát az, hogy a munkaterhelés csoportok vannak beállítva a magasabb *fontossági*. Fontos használt CPU ütemezés. A nagyon fontos futtatása lekérdezések háromszor további CPU-ciklusok, mint a közepes fontos futtatása lekérdezések beolvasása. Ezért a feldolgozási tárolóhely hozzárendelések is CPU prioritásának meghatározása. Lekérdezés 16 vagy több üzembe helyezési ponti használ fel, ha fut, nagyon fontos.
 
 Az alábbi táblázat az egyes tevékenységprofil-csoport fontosság leképezéseit.
 
@@ -27,37 +27,37 @@ Az alábbi táblázat az egyes tevékenységprofil-csoport fontosság leképezé
 
 | Munkaterhelés-csoport | Párhuzamossági tárolóhely leképezése | MB / terjesztési (rugalmasság) | MB / terjesztési (számítást) | Fontos leképezése |
 |:---------------:|:------------------------:|:------------------------------:|:---------------------------:|:------------------:|
-| SloDWGroupC00   | 1                        |    100                         | 250                         | Közepesen súlyos             |
-| SloDWGroupC01   | 2.                        |    200                         | 500                         | Közepesen súlyos             |
-| SloDWGroupC02   | 4                        |    400                         | 1000                        | Közepesen súlyos             |
-| SloDWGroupC03   | 8                        |    800                         | 2000                        | Közepesen súlyos             |
-| SloDWGroupC04   | 16                       |  1,600                         | 4000                        | Súlyos               |
-| SloDWGroupC05   | 32                       |  3,200                         | 8000                        | Súlyos               |
-| SloDWGroupC06   | 64                       |  6,400                         | 16,000                      | Súlyos               |
-| SloDWGroupC07   | 128                      | 12,800                         | 32,000                      | Súlyos               |
-| SloDWGroupC08   | 256                      | 25,600                         | 64,000                      | Súlyos               |
+| SloDWGroupC00   | 1                        |    100                         | 250                         | Közepes             |
+| SloDWGroupC01   | 2                        |    200                         | 500                         | Közepes             |
+| SloDWGroupC02   | 4                        |    400                         | 1000                        | Közepes             |
+| SloDWGroupC03   | 8                        |    800                         | 2000                        | Közepes             |
+| SloDWGroupC04   | 16                       |  1,600                         | 4000                        | Magas               |
+| SloDWGroupC05   | 32                       |  3,200                         | 8000                        | Magas               |
+| SloDWGroupC06   | 64                       |  6,400                         | 16,000                      | Magas               |
+| SloDWGroupC07   | 128                      | 12,800                         | 32,000                      | Magas               |
+| SloDWGroupC08   | 256                      | 25,600                         | 64,000                      | Magas               |
 
 <!-- where are the allocation and consumption of concurrency slots charts? -->
-Az a **foglalási és felhasználási párhuzamossági tárolóhelyek** diagram, ellenőrizheti, hogy egy DW500 használ 1, 4, 8, vagy 16 párhuzamossági üzembe helyezési ponti smallrc, mediumrc, largerc és xlargerc, illetve. Megtekintheti ezeket az értékeket az előző táblázat az egyes erőforrás fontossága kereséséhez.
+A **foglalási és felhasználási párhuzamossági tárolóhelyek** egy DW500 használ 1, 4, 8, vagy 16 párhuzamossági üzembe helyezési ponti smallrc, mediumrc, largerc és xlargerc, illetve a diagram ábrázolja. Az egyes erőforrás fontossága megtalálásához megtekintheti ezeket az értékeket a fenti diagramon.
 
 ### <a name="dw500-mapping-of-resource-classes-to-importance"></a>Az erőforrás fontossága osztályok DW500 leképezése
 | Erőforrásosztály | A tevékenységprofil-csoport | Párhuzamossági tárhelyek használt | MB / terjesztési | Fontosság |
 |:-------------- |:-------------- |:----------------------:|:-----------------:|:---------- |
-| smallrc        | SloDWGroupC00  | 1                      | 100               | Közepesen súlyos     |
-| mediumrc       | SloDWGroupC02  | 4                      | 400               | Közepesen súlyos     |
-| largerc        | SloDWGroupC03  | 8                      | 800               | Közepesen súlyos     |
-| xlargerc       | SloDWGroupC04  | 16                     | 1,600             | Súlyos       |
-| staticrc10     | SloDWGroupC00  | 1                      | 100               | Közepesen súlyos     |
-| staticrc20     | SloDWGroupC01  | 2.                      | 200               | Közepesen súlyos     |
-| staticrc30     | SloDWGroupC02  | 4                      | 400               | Közepesen súlyos     |
-| staticrc40     | SloDWGroupC03  | 8                      | 800               | Közepesen súlyos     |
-| staticrc50     | SloDWGroupC03  | 16                     | 1,600             | Súlyos       |
-| staticrc60     | SloDWGroupC03  | 16                     | 1,600             | Súlyos       |
-| staticrc70     | SloDWGroupC03  | 16                     | 1,600             | Súlyos       |
-| staticrc80     | SloDWGroupC03  | 16                     | 1,600             | Súlyos       |
+| smallrc        | SloDWGroupC00  | 1                      | 100               | Közepes     |
+| mediumrc       | SloDWGroupC02  | 4                      | 400               | Közepes     |
+| largerc        | SloDWGroupC03  | 8                      | 800               | Közepes     |
+| xlargerc       | SloDWGroupC04  | 16                     | 1,600             | Magas       |
+| staticrc10     | SloDWGroupC00  | 1                      | 100               | Közepes     |
+| staticrc20     | SloDWGroupC01  | 2                      | 200               | Közepes     |
+| staticrc30     | SloDWGroupC02  | 4                      | 400               | Közepes     |
+| staticrc40     | SloDWGroupC03  | 8                      | 800               | Közepes     |
+| staticrc50     | SloDWGroupC03  | 16                     | 1,600             | Magas       |
+| staticrc60     | SloDWGroupC03  | 16                     | 1,600             | Magas       |
+| staticrc70     | SloDWGroupC03  | 16                     | 1,600             | Magas       |
+| staticrc80     | SloDWGroupC03  | 16                     | 1,600             | Magas       |
 
 ## <a name="view-workload-groups"></a>Munkaterhelés-csoportok megtekintése
-A következő DMV-lekérdezés is használhatja, nézze meg a memória erőforrás-elosztás részletesen különbségek szempontjából az erőforrás-vezérlő, illetve elemzése a munkaterhelés-csoport aktív és előzménynaplók használata esetén végzett hibaelhárításhoz.
+A következő lekérdezés a memória az erőforrás-vezérlő szempontjából erőforrás-elosztás részleteit jeleníti meg. Ez akkor hasznos lehet a munkaterhelés-csoport aktív és előzménynaplók használatának elemzése hibaelhárítása során.
 
 ```sql
 WITH rg
@@ -106,7 +106,7 @@ ORDER BY
 ```
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>Várólistára helyezett lekérdezés felderítését és egyéb dinamikus felügyeleti nézetek
-Használhatja a `sys.dm_pdw_exec_requests` DMV lekérdezések egy feldolgozási sorban várakozó azonosításához. Lekérdezi a feldolgozási tárhely állapottal fog rendelkezni várakozással **felfüggesztve**.
+Használhatja a `sys.dm_pdw_exec_requests` DMV lekérdezések egy feldolgozási sorban várakozó azonosításához. Várakozás a feldolgozási tárhely lekérdezések állapotú **felfüggesztve**.
 
 ```sql
 SELECT  r.[request_id]                           AS Request_ID
@@ -146,7 +146,7 @@ Az SQL Data Warehouse rendelkezik várjon típusok a következők:
 * **LocalQueriesConcurrencyResourceType**: lekérdezések, amelyek a feldolgozási tárolóhely keretrendszer kívül elhelyezkedik. DMV lekérdezések és a rendszer funkciókkal, mint például `SELECT @@VERSION` példák a helyi lekérdezések.
 * **UserConcurrencyResourceType**: egyidejűségi tárolóhely keretein belül elhelyezkedik lekérdezések. Végfelhasználói táblák lekérdezéseket képviselő példák, amelyek szeretné használni az erőforrástípus.
 * **DmsConcurrencyResourceType**: megvárja-e az adatátviteli műveletek eredő.
-* **BackupConcurrencyResourceType**: A várakozás azt jelzi, hogy egy adatbázis biztonsági mentése van folyamatban. Az erőforrástípus maximális értéke 1. Ha több biztonsági mentés kért egy időben, a többi várólistájára.
+* **BackupConcurrencyResourceType**: A várakozás azt jelzi, hogy egy adatbázis biztonsági mentése van folyamatban. Az erőforrástípus maximális értéke 1. Ha több biztonsági mentés egy időben, a többi kért várólista.
 
 A `sys.dm_pdw_waits` DMV kérelmet arra vár, hogy milyen erőforrásokat is használható.
 

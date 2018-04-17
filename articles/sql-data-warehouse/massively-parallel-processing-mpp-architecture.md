@@ -1,34 +1,30 @@
 ---
-title: "Az MPP architektúra - Azure SQL Data Warehouse? | Microsoft Docs"
-description: "Ismerje meg, hogyan egyesíti az Azure SQL Data Warehouse a nagymértékben párhuzamos feldolgozási (MPP) az Azure storage magas teljesítmény és méretezhetőség eléréséhez."
+title: Az SQL Data Warehouse - MPP architektúra |} Microsoft Docs
+description: Ismerje meg, hogyan egyesíti az Azure SQL Data Warehouse a nagymértékben párhuzamos feldolgozási (MPP) az Azure storage magas teljesítmény és méretezhetőség eléréséhez.
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
+author: acomet
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: architecture
-ms.date: 11/15/2017
-ms.author: jrj;barbkess
-ms.openlocfilehash: 4c230eb0633b2917b90a5c1f9f4176882bfd0290
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.topic: conceptual
+ms.component: design
+ms.date: 04/11/2018
+ms.author: acomet
+ms.reviewer: mausher
+ms.openlocfilehash: a0dad8afa87b3424c8561b2aaf44fbe0f5d5dae6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Az SQL Data Warehouse - nagymértékben párhuzamos feldolgozási (MPP) architektúra
 Ismerje meg, hogyan egyesíti az Azure SQL Data Warehouse a nagymértékben párhuzamos feldolgozási (MPP) az Azure storage magas teljesítmény és méretezhetőség eléréséhez. 
 
 ## <a name="mpp-architecture-components"></a>Az MPP architektúra összetevők
-Az SQL Data Warehouse egy számítási adatok feldolgozása szét több csomópont architektúra kibővítési kihasználja. A skálázási egység szerint egy adatraktáregység számítási teljesítményt absztrakciós. Az SQL Data Warehouse elkülönítésére szolgál a számítási tárolásból mely lehetővé teszi, hogy Ön mint a felhasználót, hogy méretezhető számítási függetlenül. az adatokat a rendszer.
+Az SQL Data Warehouse egy számítási adatok feldolgozása szét több csomópont architektúra kibővítési kihasználja. A skálázási egység szerint egy adatraktáregység számítási teljesítményt absztrakciós. Az SQL Data Warehouse elkülönítésére szolgál számítási, tárolási, mely lehetővé teszi, hogy méretezhető számítási függetlenül az adatok a rendszer a.
 
 ![Az SQL Data Warehouse architektúrája](media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-Az SQL Data Warehouse-alapú csomópont architektúrát használ. Alkalmazások csatlakozni, és T-SQL parancsokkal kiadni a vezérlő csomópont, amely a központi hely, az adatraktár. A vezérlő csomópont az MPP motor, amely optimalizálja a lekérdezések párhuzamos feldolgozásra, és majd átadja a műveleteket számítási csomópontok a munkájuk párhuzamosan futtatja. A számítási csomópontok összes felhasználói adatot az Azure Storage tárolja, és a párhuzamos lekérdezések futtatása. Az adatátviteli szolgáltatás (DMS) egy olyan rendszerszintű belső szolgáltatás, amely a párhuzamos lekérdezések futtatása és ad vissza pontos eredményeket, szükség szerint a csomópontok között mozgatja az adatokat. 
+Az SQL Data Warehouse csomópont-alapú architektúrát használ. Alkalmazások csatlakozni, és T-SQL parancsokkal kiadni a vezérlő csomópont, amely a központi hely, az adatraktár. A vezérlő csomópont az MPP motor, amely optimalizálja a lekérdezések párhuzamos feldolgozásra, és majd átadja a műveleteket számítási csomópontok a munkájuk párhuzamosan futtatja. A számítási csomópontok összes felhasználói adatot az Azure Storage tárolja, és a párhuzamos lekérdezések futtatása. Az adatátviteli szolgáltatás (DMS) egy olyan rendszerszintű belső szolgáltatás, amely a párhuzamos lekérdezések futtatása és ad vissza pontos eredményeket, szükség szerint a csomópontok között mozgatja az adatokat. 
 
 Az SQL Data Warehouse a tárterület és a számítási műveletek elkülönítésével a következőkre képes:
 
@@ -37,10 +33,10 @@ Az SQL Data Warehouse a tárterület és a számítási műveletek elkülönít�
 * A számítási kapacitás az adatok érintetlenül maradnak, miközben, csak kell fizetnie a tároláshoz.
 * A működési időn belül folytatni tudja a számítási kapacitást.
 
-### <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage"></a>Azure Storage tárterület
 Az SQL Data Warehouse az Azure storage használatával a felhasználói adatok biztonságát.  Mivel az adatok tárolásának és az Azure storage kezeli, az SQL Data Warehouse külön-külön a tárhelyhasználati díja. Maga az adat a szilánkos **terjesztéseket** a rendszer teljesítményének optimalizálása érdekében. Kiválaszthatja, hogy mely horizontális mintát juttassa el az adatokat, ha a tábla. Az SQL Data Warehouse támogatja ezeket a horizontális mintákat:
 
-* Kivonatoló
+* Kivonat
 * Ciklikus időszeletelés
 * Replikálás
 
@@ -57,7 +53,7 @@ Minden számítási csomópont van a csomópont-Azonosítót, amely a rendszer l
 ### <a name="data-movement-service"></a>Adatátviteli szolgáltatás
 Adatok adatátviteli szolgáltatás (DMS) az adatátvitelt jelölik a számítási csomópontok közötti koordinálja adatok átviteli technológiát. Egyes lekérdezések esetében meg kell annak érdekében, hogy a párhuzamos lekérdezések ad vissza pontos eredményeket adatátvitelt jelölik. Adatátvitel szükség, ha a DMS biztosítja a megfelelő adatok beolvasása a megfelelő helyre. 
 
-## <a name="distributions"></a>Azokat a terjesztéseket
+## <a name="distributions"></a>Felosztások
 
 A terjesztés az tárolása és feldolgozása párhuzamos lekérdezések elosztott adatokon rendszert futtató alapvető egysége. Az SQL Data Warehouse-lekérdezés futtatása, ha a munkahelyi 60 kisebb lekérdezésekre párhuzamosan futó van osztva. A 60 kisebb lekérdezésekre mindegyikének fut, az adatok terjesztéseket egyik. Minden számítási csomópont egy vagy több 60 terjesztéseket kezeli. Maximális számítási erőforrással adatraktár rendelkezik egy terjesztési egyes számítási csomópontjain. Minimális számítási erőforrással adatraktár rendelkezik a megfelelő kiadásának egy számítási csomóponton.  
 
@@ -91,7 +87,7 @@ Az alábbi ábrán látható, a replikált tábla. Az SQL Data Warehouse a repli
 
 ![Replikált tábla](media/sql-data-warehouse-distributed-data/replicated-table.png "replikált tábla") 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy jobban megismerte az SQL Data Warehouse szolgáltatást, tudjon meg többet az [SQL Data Warehouse gyors létrehozásáról][create a SQL Data Warehouse] és a [mintaadatok betöltéséről][load sample data]. Ha az Azure új felhasználója, hasznosnak találhatja az [Azure szószedetét][Azure glossary], amikor az új fogalmakkal ismerkedik. Vagy tekintsen meg néhányat a többi SQL Data Warehouse-erőforrás közül.  
 
 * [Ügyfelek sikertörténetei]

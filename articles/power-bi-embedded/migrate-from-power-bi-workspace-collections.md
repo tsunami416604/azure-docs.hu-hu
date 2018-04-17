@@ -3,8 +3,8 @@ title: Hogyan kell áttelepíteni a Power BI-Munkaterületcsoport tartalom Power
 description: Megtudhatja, hogyan telepíthetők át a Power BI munkaterület gyűjtemények Power BI Embedded, és használja ki az alkalmazásokban monitorfelbontás kiadásokban.
 services: power-bi-embedded
 documentationcenter: ''
-author: guyinacube
-manager: erikre
+author: markingmyname
+manager: kfile
 editor: ''
 tags: ''
 ms.service: power-bi-embedded
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/28/2017
-ms.author: asaxton
-ms.openlocfilehash: 069f31c8213bd0d8586f7ca50e543acfdad8a2b3
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: maghan
+ms.openlocfilehash: d138b0c26ffc0a44947f79811fd586dda7df4509
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-migrate-power-bi-workspace-collection-content-to-power-bi-embedded"></a>A Power BI-Munkaterületcsoport tartalom Power BI Embedded áttelepítése
 
@@ -107,7 +107,7 @@ Többféle jelentések, melyekhez a különböző áttelepítési folyamata.
 
 Gyorsítótárazott adatkészletek tekintse meg a pbix-fájlt fájlt, amely kellett importálta az adatokat a élő kapcsolattal vagy DirectQuery kapcsolat szemben.
 
-**Flow**
+**Attribútumfolyam**
 
 1. Töltse le a pbix-fájlt API-t hívja a Power BI-Munkaterületcsoport munkaterületről.
 2. Mentse a pbix-fájlt.
@@ -115,7 +115,7 @@ Gyorsítótárazott adatkészletek tekintse meg a pbix-fájlt fájlt, amely kell
 
 #### <a name="directquery-dataset-and-report"></a>DirectQuery adatkészlet és a jelentés
 
-**Flow**
+**Attribútumfolyam**
 
 1. GET hívás https://api.powerbi.com/v1.0/collections/{collection_id}/workspaces/{wid}/datasets/{dataset_id}/Default.GetBoundGatewayDataSources , és mentse a kapcsolati karakterlánc érkezett.
 2. Töltse le a pbix-fájlt API-t hívja a Power BI-Munkaterületcsoport munkaterületről.
@@ -129,7 +129,7 @@ Gyorsítótárazott adatkészletek tekintse meg a pbix-fájlt fájlt, amely kell
 
 A jelentések feltöltés előtt október 2016 nem támogatja a PBIX letöltése szolgáltatást.
 
-**Flow**
+**Attribútumfolyam**
 
 1. Pbix-fájlt a fejlesztési környezetet (a belső verziókezelő) beolvasása sikertelen.
 2. A Power BI Embedded munkaterület hívható importálási pbix-fájlt.
@@ -138,7 +138,7 @@ A jelentések feltöltés előtt október 2016 nem támogatja a PBIX letöltése
 
 Töltse le nem támogatja a pbix-fájlt *leküldéses API* adatkészletek. Leküldéses API dataset adatok nem használatát. a Power BI munkaterület Ügyfélgyűjteményekből Power BI Embedded.
 
-**Flow**
+**Attribútumfolyam**
 
 1. A dataset adatkészlet Power BI Embedded munkaterület létrehozásához Json "Adatkészlet létrehozása" API hívása.
 2. Építse újra a jelentést a létrehozott adatkészlet *.

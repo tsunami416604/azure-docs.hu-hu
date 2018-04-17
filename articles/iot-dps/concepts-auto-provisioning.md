@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: ''
-ms.openlocfilehash: cd458b1f6d26fbd5f5821a04cd01be5c3a4e4514
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e743f40a1f8ff71fe93f14217b410df348d9903d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="auto-provisioning-concepts"></a>Automatikus kiépítés fogalmak
 
@@ -31,7 +31,7 @@ Az Azure IoT automatikus átadásának is kell megadni, három fázisra oszthat�
    > [!NOTE]
    > Az IoT-megoldásból méretétől függetlenül akkor is, ha azt tervezi, hogy az eszközök több millió azt egy **egyszeri**.
 
-2. **Az eszközregisztráció** -a folyamat, amellyel az eszközöket, amelyek megkísérli regisztrálni a jövőben tudomást az eszköz kiépítése szolgáltatáspéldány. Regisztrációs eszköz azonosító adatok konfigurálása a létesítési szolgáltatás, vagy az "egyedi tagság" egyetlen eszközhöz, vagy a "csoport"eszközök regisztrációja a több úgy érhető el. Identitás alapul a [állapotigazolási mechanizmus](concepts-security.md#attestation-mechanism) az eszköz célja, hogy használja, amely lehetővé teszi, hogy a létesítési szolgáltatás igazolják az eszköz eredetiséget való regisztráció során:
+2. **Az eszközregisztráció** -a folyamat, amellyel az eszközöket, amelyek megkísérli regisztrálni a jövőben tudomást az eszköz kiépítése szolgáltatáspéldány. [Beléptetési](concepts-service.md#enrollment) eszköz azonosító adatok konfigurálása a létesítési szolgáltatás, vagy az "egyedi tagság" egyetlen eszközhöz, vagy a "csoport"eszközök regisztrációja a több úgy érhető el. Identitás alapul a [állapotigazolási mechanizmus](concepts-security.md#attestation-mechanism) az eszköz célja, hogy használja, amely lehetővé teszi, hogy a létesítési szolgáltatás igazolják az eszköz eredetiséget való regisztráció során:
 
    - **TPM**: konfigurált "különálló regisztrációja", az eszközidentitást alapul a TPM-regisztrációs Azonosítót és a nyilvános kulcsa. Fényében, hogy a TPM egy [specification]((https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)), a szolgáltatás csak a meghatározás (hardveres vagy szoftveres) TPM kivitelezéstől függetlenül minden igazolják vár. Lásd: [eszközök kiépítését: identitás igazolás a platformmegbízhatósági Modullal](https://azure.microsoft.com/blog/device-provisioning-identity-attestation-with-tpm/) részleteinek a TPM-alapú tanúsítvány. 
 

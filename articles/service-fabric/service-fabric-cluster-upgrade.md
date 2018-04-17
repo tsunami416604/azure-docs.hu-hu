@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Service Fabric-fürt frissítése |} Microsoft Docs"
-description: "A Service Fabric-kódot és/vagy a Service Fabric-fürt, beleértve a fürt frissítési mód, tanúsítványok hozzáadása az alkalmazás-porttal rendelkezik, ennek során az operációsrendszer-javítások, frissítés beállítása futtató konfiguráció frissítése, és így tovább. Mi a számíthat, ha a frissítés történik?"
+title: Az Azure Service Fabric-fürt frissítése |} Microsoft Docs
+description: A Service Fabric-kódot és/vagy a Service Fabric-fürt, beleértve a fürt frissítési mód, tanúsítványok hozzáadása az alkalmazás-porttal rendelkezik, ennek során az operációsrendszer-javítások, frissítés beállítása futtató konfiguráció frissítése, és így tovább. Mi a számíthat, ha a frissítés történik?
 services: service-fabric
 documentationcenter: .net
-author: ChackDan
+author: aljo-microsoft
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 15190ace-31ed-491f-a54b-b5ff61e718db
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/10/2017
-ms.author: chackdan
-ms.openlocfilehash: 7ea71ab891583c51b3c07a4d0a9f0b4f54e56669
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: aljo
+ms.openlocfilehash: 22dae85c4125c54003f65aba3ef112ffcec9b76d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="upgrade-an-azure-service-fabric-cluster"></a>Az Azure Service Fabric-fürt frissítése
 > [!div class="op_single_selector"]

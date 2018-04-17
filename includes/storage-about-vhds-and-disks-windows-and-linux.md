@@ -1,4 +1,19 @@
-
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: storage
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 04/09/2018
+ms.author: tamram
+ms.custom: include file
+ms.openlocfilehash: b4d208ca28f6287489f104ba4e2ea9696e7a1f58
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 04/16/2018
+---
 ## <a name="about-vhds"></a>Tudnivalók a VHD-kről
 
 Az Azure-ban használt VHD-k .vhd fájlok, amelyek lapblobként vannak tárolva egy standard vagy prémium szintű Azure-tárfiókban. A lapblobokkal kapcsolatos további részletekért tekintse meg [a blokkblobokat és a lapblobokat bemutató cikket](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs/). A prémium szintű tárolással kapcsolatos részletekért tekintse meg [a nagy teljesítményű Premium Storage szolgáltatással és az Azure virtuális gépekkel kapcsolatos cikket](../articles/virtual-machines/windows/premium-storage.md).
@@ -10,10 +25,10 @@ A lemezek vagy képek létrehozása forrásként használni kívánt Azure-ban m
 Amikor egy virtuális gépet hoz létre egy rendszerképből, az Azure létrehoz egy lemezt a virtuális gép számára, amely a forrás .vhd fájl másolata. A véletlen törlés elleni védelem érdekében az Azure egy bérlést helyez minden olyan forrás .vhd fájlra, amelyet egy rendszerkép, egy operációsrendszer-lemez vagy egy adatlemez létrehozásához használtak.
 
 Mielőtt a forrás .vhd fájlt törölhetné, el kell távolítania a bérlést, ehhez pedig törölnie kell a lemezt vagy a rendszerképet. Ha törölni szeretne egy virtuális gép által operációsrendszer-lemezként használt .vhd fájlt, egyszerre is törölheti a virtuális gépet, az operációsrendszer-lemezt és a forrás .vhd fájlt a virtuális gép és az összes hozzá tartozó lemez törlésével. Egy adatlemez forrásaként használt .vhd fájl törléséhez azonban több lépést is el kell végezni, egy megadott sorrendben. Először válassza le a lemezt a virtuális gépről, majd törölje a lemezt, és végül törölje a .vhd fájlt.
-
 > [!WARNING]
 > Ha töröl egy forrás .vhd fájlt a tárolóból, vagy törli a saját tárfiókját, a Microsoft nem tudja visszaállítani az adatait.
 > 
+> Prémium szintű Storage a lapblobokat használatra lettek tervezve merevlemezekként csak. A Microsoft nem javasolja más típusú adatok tárolása a prémium szintű Storage, a lapblobokat, a költség jelentősen nagyobb lehet. Blokkblobok használata, amely nincs a virtuális merevlemez adatainak tárolásához.
 
 ## <a name="types-of-disks"></a>Lemeztípusok 
 
@@ -30,7 +45,7 @@ A Standard Storage és a VM-lemezek együttes használatával kapcsolatos inform
 
 ### <a name="premium-storage"></a>Prémium szintű Storage 
 
-Az SSD-kre épülő Premium Storage nagy teljesítményű, kis késleltetésű lemeztámogatást biztosít a nagy adatátviteli teljesítményt igénylő számítási feladatokat futtató virtuális gépek számára. Prémium szintű Storage használata DS, DSv2, GS, Ls vagy FS adatsorozat Azure virtuális gépeken. További információk: [Premium Storage](../articles/virtual-machines/windows/premium-storage.md).
+Az SSD-kre épülő Premium Storage nagy teljesítményű, kis késleltetésű lemeztámogatást biztosít a nagy adatátviteli teljesítményt igénylő számítási feladatokat futtató virtuális gépek számára. Prémium szintű Storage általában használható van szükség, amelyek tartalmazzák az "s". az adatsorozat neve. Például a Dv3-sorozat van, és a Dsv3-sorozat, a Dsv3-sorozat használható prémium szintű Storage.  További információk: [Premium Storage](../articles/virtual-machines/windows/premium-storage.md).
 
 ### <a name="unmanaged-disks"></a>Nem felügyelt lemezek
 

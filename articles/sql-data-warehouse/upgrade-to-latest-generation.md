@@ -10,13 +10,13 @@ ms.component: manage
 ms.date: 04/02/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 6ea45398b0bf7fca43c75797313b7e683972b1ab
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 724f027f3f43cd0ad846210b511c8fc1af27153f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Frissítse az SQL Data Warehouse teljesítményének optimalizálása
+# <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Teljesítményoptimalizálás az SQL Data Warehouse frissítésével
 
 Mostantól zökkenőmentesen frissítheti a számítási teljesítmény rétegben az Azure portálon optimalizálása. Ha a rugalmasság adatraktár egy optimalizált, ajánlott frissítése a legújabb Azure hardver- és egy speciális tároló-architektúra beszerzéséhez. Jobb teljesítmény, a méretezhetőség és a korlátlan oszlopos tárolási kihasználni fogja. 
 
@@ -70,9 +70,9 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
    
    Az első lépés a frissítési folyamat végighalad a méretezési művelet ("a frissítés - kapcsolat nélküli"), ahol az összes munkamenetek meg lesznek szakítva és kapcsolatok törlődnek. 
    
-   A frissítési folyamat második lépése az adatáttelepítés ("a frissítés - Online"). Adatok áttelepítése egy online trickle háttérfolyamatként, amely lassan helyez oszlopos a régi Gen1 tároló-architektúra át adatokat az új Gen2 tároló-architektúra ki a helyi SSD-gyorsítótár Gen2. Ebben az időszakban az adatraktár lekérdezésére és betöltése online lesz. Az adatok lekérdezése, függetlenül attól, hogy az áttelepítés vagy nem lesz. Az adatáttelepítés attól függően, hogy az adatok mérete, a teljesítményszintet és a oszlopcentrikus szegmensek száma különböző ütemben történik. 
+   A frissítési folyamat második lépése az adatáttelepítés ("a frissítés - Online"). Adatok áttelepítése egy online trickle háttérfolyamatként, amely lassan a régi tároló-architektúra oszlopos adatokat az új tároló-architektúra, ami a helyi SSD-gyorsítótárba helyezi. Ebben az időszakban az adatraktár lekérdezésére és betöltése online lesz. Az adatok lekérdezése, függetlenül attól, hogy az áttelepítés vagy nem lesz. Az adatáttelepítés attól függően, hogy az adatok mérete, a teljesítményszintet és a oszlopcentrikus szegmensek száma különböző ütemben történik. 
 
-5. **Nem kötelező javaslat:** az adatok áttelepítési háttér folyamat lebonyolításához, javasoljuk, hogy azonnal kényszerítheti az adatmozgás futtatásával [Alter Index rebuild](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-tables-index) összes oszlopcentrikus táblán egy nagyobb slo-t és az erőforrás az osztály. Ezt a műveletet offline állapotban a trickle háttérfolyamatként; képest azonban adatáttelepítés lesz sokkal gyorsabb, ahol, majd teljes mértékben kihasználhassa a Gen2 tároló-architektúra egyszer kész, de jó minőségű rowgroups. 
+5. **Nem kötelező javaslat:** az adatok áttelepítési háttér folyamat lebonyolításához, javasoljuk, hogy azonnal kényszerítheti az adatmozgás futtatásával [Alter Index rebuild](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-tables-index) összes oszlopcentrikus táblán egy nagyobb slo-t és az erőforrás az osztály. Ezt a műveletet offline állapotban a trickle háttérfolyamatként; képest azonban adatáttelepítés lesz sokkal gyorsabb, ahol, majd teljes mértékben kihasználhassa az új egyszer kész, de jó minőségű rowgroups emelt szintű tároló-architektúra. 
 
 A következő lekérdezés állít elő, az áttelepítési folyamat lebonyolításához szükséges az Alter Index Rebuild parancsokat:
 

@@ -1,8 +1,8 @@
 ---
-title: "Központi telepítése és kezelése a HDInsight alatt futó Apache Storm-topológiák |} Microsoft Docs"
-description: "Ismerje meg, hogyan telepítheti, figyelheti és kezelheti a Storm irányítópultjának használata a HDInsight alatt futó Apache Storm-topológiák. Visual Studio Hadoop-eszközök használata."
+title: Központi telepítése és kezelése a HDInsight alatt futó Apache Storm-topológiák |} Microsoft Docs
+description: Ismerje meg, hogyan telepítheti, figyelheti és kezelheti a Storm irányítópultjának használata a HDInsight alatt futó Apache Storm-topológiák. Visual Studio Hadoop-eszközök használata.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 5e542072-f014-42aa-82d6-2694a76df520
 ms.service: hdinsight
 ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 03/01/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: 92c1a02cd7d435809914e7f5bb43b2f8d6aa0cdb
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 55c92e6408522b8a96a37dbedd99d929af1e49fb
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-windows-based-hdinsight"></a>Központi telepítése és kezelése a Windows-alapú HDInsight alatt futó Apache Storm-topológiák
 
@@ -94,7 +92,7 @@ A hivatkozás kiválasztása a **topológia összegzése** csoportban megjelenne
 
   * **Visszaegyensúlyozás**: Beállítja a topológia párhuzamosságát. A fürtben található csomópontok számának megváltoztatását követően újra ki kell egyensúlyozni a futó topológiákat. Ez lehetővé teszi a topológia párhuzamosságának kiegyensúlyozása érdekében a növelő vagy csökkentő a fürtben található csomópontok számát.
 
-      További információkért lásd: [ismertetése a Storm-topológia (http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) párhuzamosságát](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
+      További információkért lásd: [ismertetése a Storm-topológia párhuzamosságát (http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
 
   * **Kill**: a Storm-topológia leállítása bizonyos időtúllépést követően.
 
@@ -171,7 +169,7 @@ További információkért lásd: [Storm UI REST API](https://github.com/apache/
 
 Az alap URI a HDInsight-fürtök REST API **https://&lt;clustername >.azurehdinsight.net/stormui/api/v1/**, ahol **clustername** a Storm on HDInsight-fürt neve.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Hitelesítés
 
 A REST API-kérésnek kell használnia **az egyszerű hitelesítés**, így a HDInsight fürt rendszergazdája nevet és jelszót használják.
 
@@ -182,7 +180,7 @@ A REST API-kérésnek kell használnia **az egyszerű hitelesítés**, így a HD
 
 Információ a REST API visszaadott csak lehet a fürt vagy a virtuális gépek azonos Azure virtuális hálózaton a fürt belül használható. Például a teljesen minősített tartománynevét (FQDN) adott vissza a rendszer a Zookeeper kiszolgálók nem lehet elérhető az internetről.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte segítségével telepítheti és figyelheti a topológia a Storm irányítópultjának használatával megtudhatja, hogyan lehet:
 

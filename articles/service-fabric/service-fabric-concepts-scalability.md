@@ -1,11 +1,11 @@
 ---
-title: "Méretezhetőséget biztosít a Service Fabric szolgáltatások |} Microsoft Docs"
-description: "Ismerteti a Service Fabric szolgáltatások méretezése"
+title: Méretezhetőséget biztosít a Service Fabric szolgáltatások |} Microsoft Docs
+description: Ismerteti a Service Fabric szolgáltatások méretezése
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: ed324f23-242f-47b7-af1a-e55c839e7d5d
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: aeda1184610398c0445238ea2e7ccbea866ed418
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6d8484a4c30fdd17cbb4773e6ff822b73efd5c4b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="scaling-in-service-fabric"></a>A Service Fabric skálázás
 Az Azure Service Fabric megkönnyíti a méretezhető alkalmazások hozhat létre a szolgáltatások, partíciók és a fürt csomópontjait a replikák kezelése. Számos különféle munkaterheléshez fut ugyanazon a hardveren lehetővé teszi, hogy a maximális erőforrás-használat, de rugalmas hogyan úgy dönt, hogy a munkaterhelés vertikális is biztosít. A Channel 9 videó ismerteti, hogyan hozhat létre méretezhető mikroszolgáltatások alkalmazások:
@@ -117,12 +117,7 @@ Növeli a csomópontok számát, a Service Fabric áthelyezi a meglévő replik�
 ## <a name="scaling-by-adding-and-removing-nodes-from-the-cluster"></a>Méretezhetővé hozzáadása és eltávolítása a csomópontot a fürtből 
 A Service Fabric méretezéshez másik lehetőség is a fürt méretének módosításához. A fürt méretének módosítása azt jelenti, hogy csomópontokat hozzáadni vagy eltávolítani egy vagy több csomóponttípus a fürtben. Vegyük példaként egy olyan esetben, ahol a fürt csomópontjaihoz minden gyakran használt adatok. Ez azt jelenti, hogy a fürt erőforrásait szinte minden használni. Ebben az esetben a fürt további fürtcsomópontok hozzáadásához legegyszerűbben méretezése. Után az új csomópontok csatlakoztatását a fürthöz a Service Fabric fürt erőforrás-kezelő áthelyezése szolgáltatások őket, ami azt eredményezi, hogy a meglévő csomópontok kevesebb teljes terhelése. Az állapotmentes szolgáltatások példányok száma = -1, további példányok automatikusan jönnek létre a szolgáltatás. Ez lehetővé teszi, hogy néhány hívás az új csomópontot a meglévő csomópontok áthelyezése. 
 
-Hozzáadása és eltávolítása, csomópontok a fürthöz a pedig a Service Fabric Azure Resource Manager PowerShell-modul segítségével konfigurálhatók.
-
-```posh
-Add-AzureRmServiceFabricNode -ResourceGroupName $resourceGroupName -Name $clusterResourceName -NodeType $nodeTypeName  -NumberOfNodesToAdd 5 
-Remove-AzureRmServiceFabricNode -ResourceGroupName $resourceGroupName -Name $clusterResourceName -NodeType $nodeTypeName -NumberOfNodesToRemove 5
-```
+További információkért lásd: [fürtméretezés](service-fabric-cluster-scaling.md).
 
 ## <a name="putting-it-all-together"></a>A teljes kép
 Megtudhatja, hogy minden ötleteire, azt itt már tárgyalt, és egy példán keresztül kommunikál. Vegye figyelembe a következő szolgáltatást: próbál egy szolgáltatás, amely különbséglemezként funkcionál nevekre üzem címjegyzék build és elérhetőségét. 

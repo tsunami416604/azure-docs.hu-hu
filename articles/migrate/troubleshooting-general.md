@@ -6,11 +6,11 @@ ms.service: azure-migrate
 ms.topic: troubleshooting
 ms.date: 03/19/2018
 ms.author: raynew
-ms.openlocfilehash: b2c89a980411cac02f46bc91d53620bc94fa845b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: bba52534c534ea33c2939d0d9b76b7b4138e13cd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-azure-migrate"></a>Az Azure Migrate hibaelhárítása
 
@@ -37,7 +37,7 @@ Győződjön meg arról, hogy másolja, és a megfelelő információk beilleszt
 2. A telepítés elindításához kattintson duplán a letöltött fájlt.
 3. A telepítő a a **üdvözli** kattintson **tovább**. Az a **licencfeltételeket** kattintson **elfogadom** elfogadja a licencfeltételeket.
 4. A **célmappa**, hagyja, vagy módosítsa az alapértelmezett telepítési mappa > **következő**.
-5. A **ügynök telepítésének beállításai**, jelölje be **Azure Naplóelemzés (OMS)** > **következő**.
+5. A **ügynök telepítésének beállításai**, jelölje be **Azure Naplóelemzés** > **következő**.
 6. Kattintson a **Hozzáadás** hozzáadása egy új munkaterületet. Illessze be a projekt azonosítója és a másolt kulcsot. Ezután kattintson a **Next** (Tovább) gombra.
 7. Győződjön meg arról, hogy az ügynök a projekt csatlakozhat. Ha nem, akkor ellenőrizze a beállításokat. Ha az ügynök képes kapcsolódni, de a gyűjtő nem, forduljon a támogatási szolgálathoz.
 
@@ -62,7 +62,7 @@ Ahhoz, hogy a lemezek és a hálózati teljesítmény adatok gyűjtését, módo
 
 **I telepített ügynökök, és a függőségi képi megjelenítés csoportok létrehozásához használt. A gépek megjelenítése "Ügynököt a" művelet "Függőségeinek megtekintése" helyett most utáni feladatátvétel esetén**
 * POST tervezett vagy nem tervezett feladatátvétel a helyszíni gépek ki vannak kapcsolva, és egyenértékű gépeken vannak hoz létre az Azure-ban. Ezek a gépek szerezzen be egy másik MAC-címet. Ezek megszerezheti egy másik IP-cím alapján, hogy a felhasználó úgy döntene, hogy megőrzi a helyi IP-címet, vagy nem. Eltérnek a MAC és IP-címeket is, ha az Azure áttelepítése nem rendel hozzá a helyszíni gépeket Szolgáltatástérkép függőségi adatokat, és megkérdezi a felhasználót az ügynökök helyett függőségeinek megtekintése telepítéséhez.
-* A feladatátvételi teszt utáni a helyszíni gépeket bekapcsolva maradjon, várt módon. Egyenértékű gépek hoz létre az Azure-ban különböző MAC-címet szerezzenek be, és előfordulhat, hogy a különböző IP-cím megszerzésére. Kivéve, ha a felhasználó ezek a gépek OMS kimenő forgalmat blokkolja, az Azure áttelepítése nem rendel hozzá a helyszíni gépeket Szolgáltatástérkép függőségi adatokat, és megkérdezi a felhasználót az ügynökök helyett függőségeinek megtekintése telepítéséhez.
+* A feladatátvételi teszt utáni a helyszíni gépeket bekapcsolva maradjon, várt módon. Egyenértékű gépek hoz létre az Azure-ban különböző MAC-címet szerezzenek be, és előfordulhat, hogy a különböző IP-cím megszerzésére. Kivéve, ha a felhasználó ezek a gépek Naplóelemzési kimenő forgalmat blokkolja, az Azure áttelepítése nem rendel hozzá a helyszíni gépeket Szolgáltatástérkép függőségi adatokat, és megkérdezi a felhasználót az ügynökök helyett függőségeinek megtekintése telepítéséhez.
 
 
 ## <a name="troubleshoot-readiness-issues"></a>Készültségi elhárítása
@@ -128,13 +128,13 @@ A Windows esemény-nyomkövetése gyűjtése, tegye a következőket:
 
 ## <a name="vcenter-errors"></a>vCenter hibák
 
-### <a name="error-unhandledexception-internal-error-occured-systemiofilenotfoundexception"></a>Error UnhandledException Internal error occured: System.IO.FileNotFoundException
+### <a name="error-unhandledexception-internal-error-occured-systemiofilenotfoundexception"></a>Hiba UnhandledException belső hiba történt: System.IO.FileNotFoundException
 
 Ez a hiba a gyűjtő 1.0.9.5-ösnél korábbi verzióiban jelentkezik. Ha a gyűjtő 1.0.9.2-es vagy a GA előtti, például az 1.0.8.59-es verzióját használja, ez a probléma elő fog fordulni. [Részletes válaszokért lásd a fórumokra mutató hivatkozást](https://social.msdn.microsoft.com/Forums/azure/en-US/c1f59456-7ba1-45e7-9d96-bae18112fb52/azure-migrate-connect-to-vcenter-server-error?forum=AzureMigrate).
 
 [A probléma felszámolásához frissítse a gyűjtőt](https://aka.ms/migrate/col/checkforupdates).
 
-### <a name="error-unabletoconnecttoserver"></a>Error UnableToConnectToServer
+### <a name="error-unabletoconnecttoserver"></a>Hiba UnableToConnectToServer
 
 Nem sikerült kapcsolódni a vCenter-kiszolgáló "Servername.com:9443" hiba miatt: Hiba történt a nem figyel végpont https://Servername.com:9443/sdk , amely tudta volna fogadni az üzenetet.
 

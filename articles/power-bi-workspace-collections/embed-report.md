@@ -1,26 +1,26 @@
 ---
-title: "A jelentés beágyazása a Azure Power BI munkaterület gyűjtemények |} Microsoft Docs"
-description: "Útmutató egy jelentést, amely a Power BI munkaterület gyűjtemények az alkalmazásba beágyazandó."
+title: A jelentés beágyazása a Azure Power BI munkaterület gyűjtemények |} Microsoft Docs
+description: Útmutató egy jelentést, amely a Power BI munkaterület gyűjtemények az alkalmazásba beágyazandó.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
-ms.assetid: 
+ms.assetid: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: 56e7ca90132527c0ef9d4bd478e99b75ca055272
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: b6fa46b1cf3a251d6116e7de6ef41a9e6d265c29
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="embed-a-report-in-power-bi-workspace-collections"></a>A jelentés beágyazása a Power BI munkaterület gyűjtemények
 
@@ -116,7 +116,7 @@ Beágyazási jogkivonatok használata esetén előfordulhat, hogy korlátozni sz
 
 ## <a name="embed-using-javascript"></a>Beágyazása a JavaScript használatával
 
-A hozzáférési jogkivonat és az után az azonosítója, azt is be a jelentést, JavaScript használatával. Ehhez szükséges, hogy telepítse a NuGet [Power BI JavaScript csomag](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). A embedUrl https://embedded.powerbi.com/appTokenReportEmbed fog majd.
+A hozzáférési jogkivonat és az után az azonosítója, azt is be a jelentést, JavaScript használatával. Ehhez szükséges, hogy telepítse a NuGet [Power BI JavaScript csomag](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). A embedUrl fog majd https://embedded.powerbi.com/appTokenReportEmbed.
 
 > [!NOTE]
 > Használhatja a [JavaScript-jelentés beágyazása minta](https://microsoft.github.io/PowerBI-JavaScript/demo/) funkciók tesztelésére. A különböző műveletek elérhető kódpéldák is biztosít.
@@ -148,7 +148,7 @@ var report = powerbi.embed($reportContainer.get(0), embedConfiguration);
 
 A jelentés automatikusan beágyazni kívánt tárolója mérete alapján. Bírálja felül a beágyazott elem alapértelmezett méretét, egyszerűen adja hozzá egy CSS osztály attribútuma vagy beágyazott stílusok szélességét és magasságát.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 [Bevezetés a minta használatába](get-started-sample.md)  
 [Hitelesítés és engedélyezés a Power BI-munkaterületcsoportok használatával](app-token-flow.md)  

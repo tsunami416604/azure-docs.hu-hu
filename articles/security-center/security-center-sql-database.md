@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Security Center és az Azure SQL Database szolgáltatás |} Microsoft Docs"
-description: "Ez a cikk bemutatja, hogyan Security Center segítségével hozzájárulhat az adatbázisokat az Azure SQL-adatbázis."
+title: Az Azure Security Center és az Azure SQL Database szolgáltatás |} Microsoft Docs
+description: Ez a cikk bemutatja, hogyan Security Center segítségével hozzájárulhat az adatbázisokat az Azure SQL-adatbázis.
 services: sql-database
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: f109adfd-daed-4257-9692-2042a1399480
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 46dd298a5664d914e55d45c5b7599d5983287476
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b507a62db9a80866005cb63d2008fb14612b516f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-center-and-azure-sql-database-service"></a>Az Azure Security Center és az Azure SQL Database szolgáltatás
 [Az Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/) lehetővé teszi a fenyegetések megelőzését, észlelését és kezelését. Az ügyfél összes előfizetésére kiterjedő, integrált biztonsági monitorozást és szabályzatkezelést biztosít, megkönnyíti a nehezen észlelhető fenyegetések azonosítását, és számos biztonsági megoldással együttműködik.
@@ -38,7 +38,7 @@ Védelem az SQL-adatbázis-erőforrások, mellett a Security Center is biztosít
 ## <a name="prerequisites"></a>Előfeltételek
 A Security Center használatához Microsoft Azure-előfizetéssel kell rendelkeznie. Ingyenes szint a Security Center engedélyezve van az előfizetéshez. A Security Center szabad és a szabványos rétegek további információkért lásd: [Security Center árképzési](https://azure.microsoft.com/pricing/details/security-center/).
 
-Biztonsági központ szerepkörön alapuló hozzáférés támogatja. Azure szerepköralapú hozzáférés-vezérlés (RBAC) kapcsolatos további információkért lásd: [Azure Active Directory szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-configure.md). A Security Center: GYIK információt nyújt a [engedélyek kezelésének módja a biztonsági központban](security-center-faq.md#permissions).
+Biztonsági központ szerepkörön alapuló hozzáférés támogatja. Azure szerepköralapú hozzáférés-vezérlés (RBAC) kapcsolatos további információkért lásd: [Azure Active Directory szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md). A Security Center: GYIK információt nyújt a [engedélyek kezelésének módja a biztonsági központban](security-center-faq.md#permissions).
 
 ## <a name="access-security-center"></a>A Security Center elérése
 A Security Center az [Azure Portalról](https://azure.microsoft.com/features/azure-portal/) érhető el. [Jelentkezzen be a portálra](https://portal.azure.com/) válassza ki a **Security Center beállítás**.
@@ -77,7 +77,7 @@ Javaslatok az Azure-erőforrások megtekintéséhez válasszon a **javaslatok** 
 ![Javaslatok][4]
 
 Alább látható módon a Security Center jeleníti meg az SQL Server, ahol a naplózás és a fenyegetések észlelésére nem engedélyezettek. Naplózás bekapcsolása után beállíthatja a Fenyegetésészlelés beállítások és az e-mail-beállításait szeretné megkapni a biztonsági riasztásokat. A Fenyegetésészlelés figyelmezteti, ha azt észleli, hogy adatbázist érintő rendellenes tevékenységeket, amelyek jelzik, az adatbázis esetleges biztonsági fenyegetéseket jelezhetnek. A riasztásokat a Security Center irányítópultjának jelennek meg.
-![Naplózás és a fenyegetések észlelése][5]
+![Naplózás és fenyegetésészlelés][5]
 
 Kövesse a [SQL-adatbázis a fenyegetésészlelés az Azure portálon](../sql-database/sql-database-threat-detection-portal.md) bekapcsolásának és konfigurálásának fenyegetésészlelés, és konfigurálhatja az e-maileket, a rendellenes tevékenységek észlelésekor a biztonsági riasztásokat fogadó listáját.
 
@@ -100,7 +100,7 @@ Alább látható módon a Security Center biztosít, amely áttekintést nyújta
 
 További tudnivalókért lásd: [kezelése és a biztonsági riasztásokra való reagálásról](security-center-managing-and-responding-alerts.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Security Center: GYIK](security-center-faq.md) – gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
 * [A Security Center tervezésével és műveletek útmutató](security-center-planning-and-operations-guide.md) - kövesse az ismertetett lépések és feladatok optimalizálja a Security Center a szervezete biztonsági igényeinek és felhőfelügyeleti modelljének alapján.
 * [Biztonsági központ adatbiztonság](security-center-data-security.md) – megtudhatja, hogyan gyűjti a Security Center, és feldolgozza az Azure-erőforrások, például konfigurációs adatokat, metaadatokat, eseménynaplók, összeomlási memóriaképek és egyéb adatait.

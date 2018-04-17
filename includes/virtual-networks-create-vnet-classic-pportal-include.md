@@ -1,8 +1,24 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: virtual-network
+author: genli
+ms.service: virtual-network
+ms.topic: include
+ms.date: 04/13/2018
+ms.author: genli
+ms.custom: include file
+ms.openlocfilehash: edfcd4d59eceada9e1c6014dad9afa7fe8ab3c8f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 04/16/2018
+---
 ## <a name="how-to-create-a-classic-vnet-in-the-azure-portal"></a>A klasszikus virtuális hálózat létrehozása az Azure-portálon
 A fenti forgatókönyv alapján VNet klasszikus létrehozásához kövesse az alábbi lépéseket.
 
-1. Egy böngészőből keresse fel a http://portal.azure.com címet, majd jelentkezzen be az Azure-fiókjával, ha szükséges.
-2. Kattintson a **hozzon létre egy erőforrást** > **hálózati** > **virtuális hálózati**. Figyelje meg, hogy a **telepítési modell kiválasztása** lista már bemutatja **klasszikus**. 3. Kattintson a **létrehozása** az alábbi ábrán látható módon.
+1. Egy böngészőből keresse fel a(z) http://portal.azure.com címet, majd jelentkezzen be az Azure-fiókjával, ha szükséges.
+2. Kattintson az **Erőforrás létrehozása** > **Hálózat** > **Virtuális hálózat** lehetőségre. Figyelje meg, hogy a **telepítési modell kiválasztása** lista már bemutatja **klasszikus**. 3. Kattintson a **létrehozása** az alábbi ábrán látható módon.
    
     ![VNet létrehozása az Azure Portalon](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure1.gif)
 4. Az a **virtuális hálózati** ablak, írja be a **neve** a virtuális hálózaton, és kattintson a **Címtéren**. Konfigurálja a virtuális hálózat és az első alhálózati cím terület beállításait, majd kattintson a **OK**. Az alábbi ábrán a mi esetünkben CIDR blokk beállításait.

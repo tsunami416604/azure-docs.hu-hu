@@ -1,12 +1,12 @@
 ---
-title: "A Power BI munkaterület gyűjtemények újdonságai"
-description: "A Power BI munkaterület gyűjtemények újdonságai a legfrissebb adatok beolvasása"
+title: A Power BI munkaterület gyűjtemények újdonságai
+description: A Power BI munkaterület gyűjtemények újdonságai a legfrissebb adatok beolvasása
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 2794ae98-b9a7-45df-b6e1-962a395b91fa
 ms.service: power-bi-embedded
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: a2faf610ca50acdb54353ade7c7a4ecabd314347
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 647b571fc05dca12ab9d4db45236962e4794ef4b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="whats-new-in-power-bi-workspace-collections"></a>A Power BI munkaterület gyűjtemények újdonságai
 
@@ -48,7 +48,7 @@ Szoftverfrissítések **Power BI munkaterület gyűjtemények** rendszeresen kia
 * Klónozás jelentést és egy adatkészletet
 * A jelentés kötés egy másik DataSet adatkészlethez
 
-**Példák**
+**Minták**
 
 * Frissített [JavaScript-jelentés beágyazása minta](https://microsoft.github.io/PowerBI-JavaScript/demo)
 

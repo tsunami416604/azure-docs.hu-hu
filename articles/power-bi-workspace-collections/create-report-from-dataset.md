@@ -1,26 +1,26 @@
 ---
-title: "Új jelentés létrehozása a Power BI munkaterület gyűjtemények egy adatkészletből |} Microsoft Docs"
-description: "A Power BI-Munkaterületcsoport jelentések most hozhatók létre a saját alkalmazásban egy adatkészletből."
+title: Új jelentés létrehozása a Power BI munkaterület gyűjtemények egy adatkészletből |} Microsoft Docs
+description: A Power BI-Munkaterületcsoport jelentések most hozhatók létre a saját alkalmazásban egy adatkészletből.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
-ms.assetid: 
+ms.assetid: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: aa902cbc4992292420948b36d85e52fafc7224de
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 5c6a52edd708b6077820f2004e83ac7dee945610
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-new-report-from-a-dataset-in-power-bi-workspace-collections"></a>A Power BI munkaterület gyűjtemények egy adatkészletből új jelentés létrehozása
 
@@ -63,7 +63,7 @@ var token = embedToken.Generate("{access key}");
 
 ## <a name="create-a-new-blank-report"></a>Üres új jelentés létrehozása
 
-Ahhoz, hogy az új jelentés létrehozása a létrehozás konfigurációs kell megadni. Ennek tartalmaznia kell a hozzáférési jogkivonat, a embedURL és a datasetID kell létrehozni a jelentéskészítés vonatkozni fog. Ehhez szükséges, hogy telepítse a nuget [Power BI JavaScript csomag](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). A embedUrl https://embedded.powerbi.com/appTokenReportEmbed fog majd.
+Ahhoz, hogy az új jelentés létrehozása a létrehozás konfigurációs kell megadni. Ennek tartalmaznia kell a hozzáférési jogkivonat, a embedURL és a datasetID kell létrehozni a jelentéskészítés vonatkozni fog. Ehhez szükséges, hogy telepítse a nuget [Power BI JavaScript csomag](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). A embedUrl fog majd https://embedded.powerbi.com/appTokenReportEmbed.
 
 > [!NOTE]
 > Használhatja a [JavaScript-jelentés beágyazása minta](https://microsoft.github.io/PowerBI-JavaScript/demo/) funkciók tesztelésére. A különböző műveletek elérhető kódpéldák is biztosít.
@@ -199,7 +199,7 @@ var embedCreateConfiguration = {
     });
 ```
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 [Bevezetés a minta használatába](get-started-sample.md)  
 [Jelentések mentése](save-reports.md)  

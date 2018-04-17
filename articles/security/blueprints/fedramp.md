@@ -1,6 +1,6 @@
 ---
-title: "Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások automatizálás"
-description: "Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások automatizálás"
+title: Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások automatizálás
+description: Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások automatizálás
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 9b605e500925e8435b15ec8055f8d8f376888aaf
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 10ed297180f68fcaf006f2778990879be02f994d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---fedramp-web-applications-automation"></a>Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások automatizálás
 
@@ -62,7 +62,7 @@ A megoldás az Azure-szolgáltatásokat. Az üzembe helyezési architektúrája 
     - DNS-beállítások mindkét tartományvezérlőn van beállítva
 * **Azure Load Balancer**
     - (1) SQL terheléselosztó
-* **Azure Application Gateway**
+* **Az Azure alkalmazás átjáró**
     - (1) az Alkalmazásátjáró WAF engedélyezve
       - Tűzfal-mód: megelőzése
       - Szabálykészlet: OWASP 3.0
@@ -76,10 +76,9 @@ A megoldás az Azure-szolgáltatásokat. Az üzembe helyezési architektúrája 
 * **Azure Active Directory**
 * **Azure Resource Manager**
 * **Azure Log Analytics**
+    - (1) a Naplóelemzési munkaterület
 * **Azure Automation**
     - (1) automation-fiók
-* **Operations Management Suite**
-    - (1) OMS-munkaterület
 
 ## <a name="deployment-architecture"></a>Üzembe helyezési architektúrája
 
@@ -136,7 +135,7 @@ Az Azure Disk Encryption titkosított Windows IaaS virtuális gépek lemezeit sz
 
 ### <a name="logging-and-auditing"></a>Naplózás és naplózás
 
-[Az Operations Management Suite (OMS)](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) rendszer és felhasználói tevékenységek, valamint a rendszerállapot-részletes naplózást végez. 
+[Naplófájl Analytics](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) rendszer és felhasználói tevékenységek, valamint a rendszerállapot-részletes naplózást végez. 
 
 - **Tevékenységi naplóit:**[tevékenységi naplóit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) Észreveheti az olyan erőforrást az előfizetésében a végrehajtott műveletek.
 - **Diagnosztikai naplók:**[diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) minden erőforrás által kibocsátott összes naplófájlt. Ezek a naplók tartalmazzák a Windows rendszer-eseménynaplói, az Azure storage naplókat, Key Vault-naplók és Alkalmazásátjáró hozzáférés és a tűzfalon naplókat.
@@ -154,7 +153,7 @@ A megoldás az Azure Key Vault használ a kulcsok és titkos kulcsok kezeléséh
 A következő technológiákat identitás biztosítása a felügyeleti képességek az Azure környezetben.
 - [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) a Microsoft több-bérlős felhőalapú címtár- és identitáskezelési szolgáltatás.
 - Egy ügyfél telepített webalkalmazás-hitelesítés használatával végezheti el az Azure AD. További információkért lásd: [alkalmazások integrálása az Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).  
-- [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) lehetővé teszi, hogy pontosan célzott hozzáférés-kezelés az Azure-bA. Előfizetés hozzáférés korlátozódik előfizetés-rendszergazdaként, és az erőforrásokhoz való hozzáférés korlátozható a felhasználói szerepkör alapján.
+- [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) lehetővé teszi, hogy pontosan célzott hozzáférés-kezelés az Azure-bA. Előfizetés hozzáférés korlátozódik előfizetés-rendszergazdaként, és az erőforrásokhoz való hozzáférés korlátozható a felhasználói szerepkör alapján.
 - Egy telepített IaaS Active Directory példánnyal üzembe helyezett infrastruktúra-szolgáltatási virtuális gépeknél operációsrendszer-szintű identitás-felügyeletet biztosít.
    
 ### <a name="compute-resources"></a>Számítási erőforrások
@@ -182,17 +181,17 @@ A felügyeleti jumpbox (megerősített állomás) biztonságos kapcsolatot bizto
 
 ### <a name="patch-management"></a>A javítások
 
-Az Azure biztonsági és megfelelőségi tervezetének automatizálás által telepített Windows virtuális gépek automatikus frissítések kap a Windows Update szolgáltatás alapértelmezés szerint vannak konfigurálva. Ez a megoldás is telepíti az OMS Azure Automation-megoldást, amelyen keresztül a központi telepítést is létrehozható kiszolgálókra történő központi telepítéséhez javítások Windows szükség esetén.
+Az Azure biztonsági és megfelelőségi tervezetének automatizálás által telepített Windows virtuális gépek automatikus frissítések kap a Windows Update szolgáltatás alapértelmezés szerint vannak konfigurálva. Ez a megoldás is telepíti az Azure Automation-megoldást, amelyen keresztül a központi telepítést is létrehozható kiszolgálókra történő központi telepítéséhez javítások Windows szükség esetén.
 
 ### <a name="operations-management"></a>Operatív ügyek
 
 #### <a name="log-analytics"></a>Log Analytics
 
-[Naplófájl Analytics](https://azure.microsoft.com/services/log-analytics/) szolgáltatás az Operations Management Suite (OMS), amely lehetővé teszi a gyűjtése és elemzése az Azure-erőforrások által létrehozott adatok és a helyszíni környezetben.
+[Naplófájl Analytics](https://azure.microsoft.com/services/log-analytics/) egy szolgáltatás, amely lehetővé teszi, hogy gyűjtése és elemzése az Azure-erőforrások által létrehozott adatok és a helyszíni környezetben.
 
-#### <a name="oms-solutions"></a>OMS-megoldások
+#### <a name="management-solutions"></a>Felügyeleti megoldások
 
-A következő OMS-megoldások előre telepítve van a megoldás részeként:
+A következő megoldások előre telepítve van a megoldás részeként:
 - [AD-elemzés](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)
 - [Kártevőirtók felmérése](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware)
 - [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)

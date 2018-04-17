@@ -1,6 +1,6 @@
 ---
 title: DNS-alias az Azure SQL Database |} Microsoft Docs
-description: "Az alkalmazások alias nevét az Azure SQL Database-kiszolgálóhoz csatlakozhat. Eközben a alias mutat bármikor, és így tovább tesztelés elősegítése érdekében az SQL-adatbázis bármikor módosíthatja."
+description: Az alkalmazások alias nevét az Azure SQL Database-kiszolgálóhoz csatlakozhat. Eközben a alias mutat bármikor, és így tovább tesztelés elősegítése érdekében az SQL-adatbázis bármikor módosíthatja.
 services: sql-database
 author: MightyPen
 manager: craigg
@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 02/05/2018
 ms.reviewer: genemi;ayolubek
 ms.author: dmalik
-ms.openlocfilehash: c2a2bce3b385bd5700bf327f283289cf4d94b057
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1793f44026db55d17fabde5fb92bc46795109418
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Az Azure SQL Database DNS-alias
 
@@ -63,7 +63,7 @@ Az SQL Database-kiszolgálóhoz tartozó minden DNS-alias alkalmazása a követk
 - *Minden régió nincs kötve:* DNS-aliasok nem kötött egy régiót. A DNS-aliasokat lehet hivatkozni egy Azure SQL adatbázis-kiszolgáló, amely a földrajzi régióban található lehet frissíteni.
     - Azonban egy másik kiszolgálóra utal alias frissítésekor mindkét kiszolgáló már léteznie kell az azonos Azure *előfizetés*.
 
-- *Engedélyek:* tudja felügyelni a DNS-aliast, a felhasználónak rendelkeznie kell *Server közreműködői* engedélyeket, vagy újabb verzióját. További információkért lásd: [szerepköralapú hozzáférés-vezérlés az Azure-portálon az első lépései](../active-directory/role-based-access-control-what-is.md).
+- *Engedélyek:* tudja felügyelni a DNS-aliast, a felhasználónak rendelkeznie kell *Server közreműködői* engedélyeket, vagy újabb verzióját. További információkért lásd: [szerepköralapú hozzáférés-vezérlés az Azure-portálon az első lépései](../role-based-access-control/overview.md).
 
 
 

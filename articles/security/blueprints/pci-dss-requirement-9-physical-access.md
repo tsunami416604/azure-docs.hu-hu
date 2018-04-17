@@ -1,6 +1,6 @@
 ---
-title: "Az Azure támogatási feldolgozási tervezetének - fizikai hozzáférési követelmények"
-description: "PCI DSS követelmény 9"
+title: Az Azure támogatási feldolgozási tervezetének - fizikai hozzáférési követelmények
+description: PCI DSS követelmény 9
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 89f7b20a130e988bfe4964d50ae97de788ca4623
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 2dbf4d9e2f4ff7b6cdf8e48c24eeee4d036fe195
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="physical-access-requirements-for-pci-dss-compliant-environments"></a>Fizikai hozzáférési követelmények PCI DSS-kompatibilis környezetben 
 ## <a name="pci-dss-requirement-9"></a>PCI DSS követelmény 9
@@ -38,8 +38,8 @@ Minden fizikai hozzáférést adatok vagy a rendszer, hogy house kártya tulajdo
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Microsoft Azure a végrehajtási, a kényszerítése, és a fizikai biztonság adatközpontok, felügyeletéért felelős. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Nem alkalmazható.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure a végrehajtási, a kényszerítése, és a fizikai biztonság adatközpontok, felügyeletéért felelős. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Nem alkalmazható.|
 
 
 
@@ -54,8 +54,8 @@ Minden fizikai hozzáférést adatok vagy a rendszer, hogy house kártya tulajdo
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure a végrehajtási, érvényesítése és figyelési zárt láncú TV és a adatközpontok biometrikus hozzáférés mechanizmusai felelős. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Nem alkalmazható.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure a végrehajtási, érvényesítése és figyelési zárt láncú TV és a adatközpontok biometrikus hozzáférés mechanizmusai felelős. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Nem alkalmazható.|
 
 
 
@@ -69,8 +69,8 @@ Például hálózati csatlakozók található nyilvános területeihez és láto
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nincs nyilvánosan elérhető hálózat csatlakozók a Microsoft Azure platform belül van. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Nem alkalmazható.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nincs nyilvánosan elérhető hálózat csatlakozók a Microsoft Azure platform belül van. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Nem alkalmazható.|
 
 
 
@@ -82,8 +82,8 @@ Például hálózati csatlakozók található nyilvános területeihez és láto
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Fizikai hálózati hardver szorosan vezérli hozzáférés listák Microsoft Azure-hozzáférést, több űrlapos hitelesítés, fizikai határok bejegyzést, és az üzleti követelményt kell jóvá kell hagyni a berendezéshez való hozzáféréshez. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Nem alkalmazható.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Fizikai hálózati hardver szorosan vezérli hozzáférés listák Microsoft Azure-hozzáférést, több űrlapos hitelesítés, fizikai határok bejegyzést, és az üzleti követelményt kell jóvá kell hagyni a berendezéshez való hozzáféréshez. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Nem alkalmazható.|
 
 
 
@@ -98,8 +98,8 @@ Például hálózati csatlakozók található nyilvános területeihez és láto
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Microsoft Azure a végrehajtási, érvényesítése és biztonsági és alkalmazott vagy alvállalkozó azonosító fizikai hozzáférés figyelése adatközpontok meglátogatásakor felelős. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Nem alkalmazható.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure a végrehajtási, érvényesítése és biztonsági és alkalmazott vagy alvállalkozó azonosító fizikai hozzáférés figyelése adatközpontok meglátogatásakor felelős. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Nem alkalmazható.|
 
 
 
@@ -113,8 +113,8 @@ Például hálózati csatlakozók található nyilvános területeihez és láto
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Hozzáférési engedélyek a Microsoft azon adatközpontjainak a legalacsonyabb jogosultsági szint elve alapján adatközpont csapat által jóváhagyott engedélyezett hozzáférési lista szabályozza. A hozzáférés-vezérlési lista tekintse át, ellenőrzése és frissítése negyedévente.<br /><br />A Microsoft Azure adatközpontjaiban fizikai hozzáférést biztosító eszközök használatára, például a szegélyhálózat kapuk, elektronikus hozzáférést jelvény olvasók, biometrikus olvasók, man-trapek/portálok és víruskereső fázis biztonsági eszközök. Hozzáférés jelvény eszközök folyamatosan figyeli. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Nem alkalmazható.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Hozzáférési engedélyek a Microsoft azon adatközpontjainak a legalacsonyabb jogosultsági szint elve alapján adatközpont csapat által jóváhagyott engedélyezett hozzáférési lista szabályozza. A hozzáférés-vezérlési lista tekintse át, ellenőrzése és frissítése negyedévente.<br /><br />A Microsoft Azure adatközpontjaiban fizikai hozzáférést biztosító eszközök használatára, például a szegélyhálózat kapuk, elektronikus hozzáférést jelvény olvasók, biometrikus olvasók, man-trapek/portálok és víruskereső fázis biztonsági eszközök. Hozzáférés jelvény eszközök folyamatosan figyeli. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Nem alkalmazható.|
 
 
 
@@ -126,8 +126,8 @@ Például hálózati csatlakozók található nyilvános területeihez és láto
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure felelős, az előre jóváhagyott kézbesítések végrehajtó érkezik egy biztonságos betöltése fiókba, amely fizikailag elkülönített származó információk feldolgozás, és arra jogosult személyek által figyelt. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Nem alkalmazható.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure felelős, az előre jóváhagyott kézbesítések végrehajtó érkezik egy biztonságos betöltése fiókba, amely fizikailag elkülönített származó információk feldolgozás, és arra jogosult személyek által figyelt. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Nem alkalmazható.|
 
 
 
@@ -140,8 +140,8 @@ Például hálózati csatlakozók található nyilvános területeihez és láto
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure felelős, az előre jóváhagyott kézbesítések végrehajtó érkezik egy biztonságos betöltése fiókba, amely fizikailag elkülönített származó információk feldolgozás, és arra jogosult személyek által figyelt. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Nem alkalmazható.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure felelős, az előre jóváhagyott kézbesítések végrehajtó érkezik egy biztonságos betöltése fiókba, amely fizikailag elkülönített származó információk feldolgozás, és arra jogosult személyek által figyelt. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Nem alkalmazható.|
 
 
 
@@ -153,8 +153,8 @@ Például hálózati csatlakozók található nyilvános területeihez és láto
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Lehet, hogy a Microsoft data access központjában előre jóváhagyott, és jogosult látogatók szükséges, hogy be fizikai biztonsági érkezési helyén, és adja meg a azonosítója érvényes igazolása előtt. Jelvények egyértelműen jelzik az alkalmazottak. Alvállalkozói látogatók ideiglenes badges, hogy a létesítmény elhagyását követően le kell kaphat. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Nem alkalmazható.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Lehet, hogy a Microsoft data access központjában előre jóváhagyott, és jogosult látogatók szükséges, hogy be fizikai biztonsági érkezési helyén, és adja meg a azonosítója érvényes igazolása előtt. Jelvények egyértelműen jelzik az alkalmazottak. Alvállalkozói látogatók ideiglenes badges, hogy a létesítmény elhagyását követően le kell kaphat. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Nem alkalmazható.|
 
 
 
@@ -166,8 +166,8 @@ Például hálózati csatlakozók található nyilvános területeihez és láto
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft-létesítményben induláskor jelvények lemondani látogatók szükségesek. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Nem alkalmazható.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft-létesítményben induláskor jelvények lemondani látogatók szükségesek. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Nem alkalmazható.|
 
 
 
@@ -181,8 +181,8 @@ Ez a napló legalább három hónapos, továbbra is csak jog egyéb korlátozza.
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure mint egy fizikai napló látogató tevékenység a létesítmény, valamint a számítógép kiszolgálótermek és az adatközpontok, ahol kártya tulajdonosát adatok tárolt és továbbított adatokról a látogató adott területre a napló karbantartásáért felelős. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Nem alkalmazható.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure mint egy fizikai napló látogató tevékenység a létesítmény, valamint a számítógép kiszolgálótermek és az adatközpontok, ahol kártya tulajdonosát adatok tárolt és továbbított adatokról a látogató adott területre a napló karbantartásáért felelős. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Nem alkalmazható.|
 
 
 
@@ -194,8 +194,8 @@ Ez a napló legalább három hónapos, továbbra is csak jog egyéb korlátozza.
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló összes adatot tárol az Azure SQL Database. A Platformszolgáltatásos SQL Database-példányt, adatbázis biztonsági intézkedéseket megjelenítve szolgál. További információkért lásd: [PCI útmutatást - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló összes adatot tárol az Azure SQL Database. A Platformszolgáltatásos SQL Database-példányt, adatbázis biztonsági intézkedéseket megjelenítve szolgál. További információkért lásd: [PCI útmutatást - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -207,8 +207,8 @@ Ez a napló legalább három hónapos, továbbra is csak jog egyéb korlátozza.
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló összes adatot tárol az Azure SQL Database. A Platformszolgáltatásos SQL Database-példányt, adatbázis biztonsági intézkedéseket megjelenítve szolgál. További információkért lásd: [PCI útmutatást - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló összes adatot tárol az Azure SQL Database. A Platformszolgáltatásos SQL Database-példányt, adatbázis biztonsági intézkedéseket megjelenítve szolgál. További információkért lásd: [PCI útmutatást - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -220,8 +220,8 @@ Ez a napló legalább három hónapos, továbbra is csak jog egyéb korlátozza.
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló összes adatot tárol az Azure SQL Database. A Platformszolgáltatásos SQL Database-példányt, adatbázis biztonsági intézkedéseket megjelenítve szolgál. További információkért lásd: [PCI útmutatást - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló összes adatot tárol az Azure SQL Database. A Platformszolgáltatásos SQL Database-példányt, adatbázis biztonsági intézkedéseket megjelenítve szolgál. További információkért lásd: [PCI útmutatást - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -233,8 +233,8 @@ Ez a napló legalább három hónapos, továbbra is csak jog egyéb korlátozza.
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló összes adatot tárol az Azure SQL Database. A Platformszolgáltatásos SQL Database-példányt, adatbázis biztonsági intézkedéseket megjelenítve szolgál. További információkért lásd: [PCI útmutatást - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló összes adatot tárol az Azure SQL Database. A Platformszolgáltatásos SQL Database-példányt, adatbázis biztonsági intézkedéseket megjelenítve szolgál. További információkért lásd: [PCI útmutatást - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -246,8 +246,8 @@ Ez a napló legalább három hónapos, továbbra is csak jog egyéb korlátozza.
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló összes adatot tárol az Azure SQL Database. A Platformszolgáltatásos SQL Database-példányt, adatbázis biztonsági intézkedéseket megjelenítve szolgál. További információkért lásd: [PCI útmutatást - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló összes adatot tárol az Azure SQL Database. A Platformszolgáltatásos SQL Database-példányt, adatbázis biztonsági intézkedéseket megjelenítve szolgál. További információkért lásd: [PCI útmutatást - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -259,8 +259,8 @@ Ez a napló legalább három hónapos, továbbra is csak jog egyéb korlátozza.
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló összes adatot tárol az Azure SQL Database. A Platformszolgáltatásos SQL Database-példányt, adatbázis biztonsági intézkedéseket megjelenítve szolgál. További információkért lásd: [PCI útmutatást - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló összes adatot tárol az Azure SQL Database. A Platformszolgáltatásos SQL Database-példányt, adatbázis biztonsági intézkedéseket megjelenítve szolgál. További információkért lásd: [PCI útmutatást - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -272,8 +272,8 @@ Ez a napló legalább három hónapos, továbbra is csak jog egyéb korlátozza.
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló összes adatot tárol az Azure SQL Database. A Platformszolgáltatásos SQL Database-példányt, adatbázis biztonsági intézkedéseket megjelenítve szolgál. További információkért lásd: [PCI útmutatást - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló összes adatot tárol az Azure SQL Database. A Platformszolgáltatásos SQL Database-példányt, adatbázis biztonsági intézkedéseket megjelenítve szolgál. További információkért lásd: [PCI útmutatást - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -286,8 +286,8 @@ Ez a napló legalább három hónapos, továbbra is csak jog egyéb korlátozza.
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló összes adatot tárol az Azure SQL Database. A Platformszolgáltatásos SQL Database-példányt, adatbázis biztonsági intézkedéseket megjelenítve szolgál. További információkért lásd: [PCI útmutatást - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló összes adatot tárol az Azure SQL Database. A Platformszolgáltatásos SQL Database-példányt, adatbázis biztonsági intézkedéseket megjelenítve szolgál. További információkért lásd: [PCI útmutatást - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -299,8 +299,8 @@ Ez a napló legalább három hónapos, továbbra is csak jog egyéb korlátozza.
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló összes adatot tárol az Azure SQL Database. A Platformszolgáltatásos SQL Database-példányt, adatbázis biztonsági intézkedéseket megjelenítve szolgál. További információkért lásd: [PCI útmutatást - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló összes adatot tárol az Azure SQL Database. A Platformszolgáltatásos SQL Database-példányt, adatbázis biztonsági intézkedéseket megjelenítve szolgál. További információkért lásd: [PCI útmutatást - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -312,8 +312,8 @@ Ez a napló legalább három hónapos, továbbra is csak jog egyéb korlátozza.
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló összes adatot tárol az Azure SQL Database. A Platformszolgáltatásos SQL Database-példányt, adatbázis biztonsági intézkedéseket megjelenítve szolgál. További információkért lásd: [PCI útmutatást - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló összes adatot tárol az Azure SQL Database. A Platformszolgáltatásos SQL Database-példányt, adatbázis biztonsági intézkedéseket megjelenítve szolgál. További információkért lásd: [PCI útmutatást - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -325,8 +325,8 @@ Ez a napló legalább három hónapos, továbbra is csak jog egyéb korlátozza.
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Adatok megsemmisítésének technikák az adatok objektumtípust, törlés, függenek, hogy előfizetések, tárolási, virtuális gépeket vagy adatbázisokat. A Microsoft Azure több-bérlős környezetben alapos figyelmet kell fordítani, hogy egy felhasználói adatokat nem engedélyezett "memóriavesztés" egy másik ügyféladatok, vagy amikor az ügyfél törli az adatokat, más ügyfélre (beleértve a legtöbb esetben az ügyfél aki egyszer az adatok tulajdonosa) is hozzáférhetnek a törölt adatokat.<br /><br />A Microsoft Azure NIST 800-88 iránymutatást Media tisztítási, amely gondoskodik arról, hogy az egyszerű probléma megoldásának nem szándékos kiadott követi. Ezeket az irányelveket elektronikus és a fizikai tisztítási foglalnia. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló teljes mértékben központi telepítése során használt erőforráscsoport törlésével törölhetők.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Adatok megsemmisítésének technikák az adatok objektumtípust, törlés, függenek, hogy előfizetések, tárolási, virtuális gépeket vagy adatbázisokat. A Microsoft Azure több-bérlős környezetben alapos figyelmet kell fordítani, hogy egy felhasználói adatokat nem engedélyezett "memóriavesztés" egy másik ügyféladatok, vagy amikor az ügyfél törli az adatokat, más ügyfélre (beleértve a legtöbb esetben az ügyfél aki egyszer az adatok tulajdonosa) is hozzáférhetnek a törölt adatokat.<br /><br />A Microsoft Azure NIST 800-88 iránymutatást Media tisztítási, amely gondoskodik arról, hogy az egyszerű probléma megoldásának nem szándékos kiadott követi. Ezeket az irányelveket elektronikus és a fizikai tisztítási foglalnia. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló teljes mértékben központi telepítése során használt erőforráscsoport törlésével törölhetők.|
 
 
 
@@ -341,8 +341,8 @@ Ez a napló legalább három hónapos, továbbra is csak jog egyéb korlátozza.
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló összes rendszer naplózni OMS használja.<br /><br />[Az Operations Management Suite (OMS)](/azure/operations-management-suite/) változások kiterjedt naplózás biztosít. Módosítások tekintse át, és pontossága ellenőrizni. Részletesebb útmutatásért lásd: [PCI útmutatást - az Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló összes rendszer naplózni Azure használja.<br /><br />A Naplóelemzési változások kiterjedt naplózás biztosít. Módosítások tekintse át, és pontossága ellenőrizni. Részletesebb útmutatásért lásd: [útmutatást PCI - naplózás és naplózási](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -357,8 +357,8 @@ Ez a napló legalább három hónapos, továbbra is csak jog egyéb korlátozza.
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló biztosít egy referencia-architektúrában és az összes olyan szolgáltatás, a központi telepítési dokumentációjában használja listáját.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló biztosít egy referencia-architektúrában és az összes olyan szolgáltatás, a központi telepítési dokumentációjában használja listáját.|
 
 
 
@@ -373,8 +373,8 @@ Ez a napló legalább három hónapos, továbbra is csak jog egyéb korlátozza.
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Nem alkalmazható.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Nem alkalmazható.|
 
 
 
@@ -390,8 +390,8 @@ Ez a napló legalább három hónapos, továbbra is csak jog egyéb korlátozza.
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Nem alkalmazható.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Nem alkalmazható.|
 
 
 
@@ -403,8 +403,8 @@ Ez a napló legalább három hónapos, továbbra is csak jog egyéb korlátozza.
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Nem alkalmazható.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Nem alkalmazható.|
 
 
 

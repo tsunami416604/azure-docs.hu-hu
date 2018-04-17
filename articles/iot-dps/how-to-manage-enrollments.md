@@ -1,22 +1,22 @@
 ---
-title: "Az Azure-portálon eszközbeléptetésnél kezelése |} Microsoft Docs"
-description: "A terjesztési pontok szolgáltatás az Azure portálon eszközbeléptetésnél kezelése"
+title: Az Azure-portálon eszközbeléptetésnél kezelése |} Microsoft Docs
+description: A terjesztési pontok szolgáltatás az Azure portálon eszközbeléptetésnél kezelése
 services: iot-dps
-keywords: 
+keywords: ''
 author: dsk-2015
 ms.author: dkshir
-ms.date: 09/05/2017
+ms.date: 04/05/2018
 ms.topic: article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 06cc215e5c4087c7a38937de10eaa066037ac444
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 55486d9a37968351f5313c708e9ef26e5b89063c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Az Azure portál eszközbeléptetésnél kezelése
 
@@ -31,28 +31,30 @@ Az üzembe helyezési szolgáltatással az eszközök regisztrálása két módj
 
     A portálon, a csoport az eszközök az alábbi lépéseket követve létrehozhat egy beléptetési csoport:
 
-    1. Jelentkezzen be az Azure-portálon, majd kattintson a **összes erőforrás** a bal oldali menüből.
-    2. Kattintson az eszköz az erőforrások listájához a regisztrálni kívánt eszközök kiépítését szolgáltatás.
-    3. A létesítési szolgáltatás kattintson **regisztrációkat kezelése**, majd jelölje be **beléptetési csoportok** lapon.
-    4. Kattintson a **Hozzáadás** felső gombra, és adja meg a beléptetési lista bejegyzés szükséges adatokat. A csoport az eszközök a legfelső szintű tanúsítvány feltöltése. 
-    5. Kattintson a **Save** (Mentés) gombra. A beléptetési csoport sikeres létrehozásakor kell megjelennie a csoport neve alatt jelennek meg a **beléptetési csoportok** fülre. 
+    1. Jelentkezzen be az Azure-portálon, majd kattintson a **összes erőforrás** a bal oldali menüből.  
+    2. Kattintson az eszköz az erőforrások listájához a regisztrálni kívánt eszközök kiépítését szolgáltatás.  
+    3. Az üzembe helyezési szolgáltatásban:  
+       a. Kattintson a **regisztrációkat kezelése**, majd jelölje be a **beléptetési csoportok** fülre.  
+       b. Kattintson a felül lévő **Hozzáadás** gombra.  
+       c. Amikor megjelenik a "Csoport hozzáadása a beléptetési" panelen, írja be a beléptetési listaelem adatait.  **Csoportnév** szükséges. Kiválaszthatja a "CA vagy köztes" lehetőséget a **tanúsítványtípus**, és töltse fel a legfelső szintű **elsődleges tanúsítvány** a csoport az eszközök.  
+       d. Kattintson a **Save** (Mentés) gombra. A beléptetési csoport sikeres létrehozásakor kell megjelennie a csoport neve alatt jelennek meg a **beléptetési csoportok** fülre.  
 
-        ![A portál regisztrációs csoport](./media/how-to-manage-enrollments/group-enrollment.png)
-
+       [![A portál regisztrációs csoport](./media/how-to-manage-enrollments/group-enrollment.png)] (. / media/how-to-manage-enrollments/group-enrollment.png#lightbox)
     
-* Egy **egyes beléptetési** regisztrálni lehet, hogy egyetlen eszköz bejegyzés. Egyes regisztrációkat használhatja bármelyik x509 tanúsítványokat vagy SAS jogkivonatok (a valós vagy virtuális TPM), állapotigazolási mechanizmusok. Azt javasoljuk, egyes regisztrációkat az eszközök, amelyek külön kezdeti konfigurációt igényelnek, vagy az eszközök, amelyek is csak TPM vagy virtuális TPM SAS-tokenje igazoló mechanizmusként. Előfordulhat, hogy az egyes regisztrációkat a kívánt IoT hub eszköz-azonosító van megadva.
+
+* Egy **egyes beléptetési** regisztrálni lehet, hogy egyetlen eszköz bejegyzés. Egyes regisztrációkat használhatja bármelyik x509 tanúsítványokat vagy SAS jogkivonatok (a fizikai vagy virtuális TPM), állapotigazolási mechanizmusok. Azt javasoljuk, egyes regisztrációkat az eszközök, amelyek külön kezdeti konfigurációt igényelnek, vagy az eszközök, amelyek is csak TPM vagy virtuális TPM SAS-tokenje igazoló mechanizmusként. Előfordulhat, hogy az egyéni regisztrációkhoz meg van határozva a kívánt IoT Hub-eszközazonosító.
 
     A portál az alábbi lépéseket követve hozhat létre az egyes tagság:
 
     1. Jelentkezzen be az Azure-portálon, majd kattintson a **összes erőforrás** a bal oldali menüből.
     2. Kattintson az eszköz az erőforrások listájához a regisztrálni kívánt eszközök kiépítését szolgáltatás.
-    3. A létesítési szolgáltatás kattintson **regisztrációkat kezelése**, majd válassza **egyedi regisztrációkat** lapon.
-    4. Kattintson a **Hozzáadás** gombra az oldal tetején. 
-    5. Válassza ki a biztonsági mechanizmust, az eszköz, és adja meg a beléptetési lista bejegyzés szükséges adatokat. Töltse fel egy aláírt tanúsítványt, ha az eszköz X.509 valósítja meg. 
-    6. Kattintson a **Save** (Mentés) gombra. A beléptetési csoport sikeres létrehozásakor kell megjelennie az eszköz alatt jelennek meg a **egyedi regisztrációkat** fülre. 
+    3. Az üzembe helyezési szolgáltatásban:  
+       a. Kattintson a **regisztrációkat kezelése**, majd válassza a **egyedi regisztrációkat** fülre.  
+       b. Kattintson a felül lévő **Hozzáadás** gombra.   
+       c. Amikor megjelenik a "Regisztrációja hozzáadása" panelen, írja be a beléptetési listaelem adatait. Először válassza ki azt a tanúkiszolgáló **mechanizmus** az eszköz (X.509 vagy TPM). X.509 tanúsítvány meg feltölteni a levél **elsődleges tanúsítvány** az eszközön. TPM meg kell adnia a **Állapotigazolási kulcs** és **regisztrációs Azonosítót** az eszközön.  
+       d. Kattintson a **Save** (Mentés) gombra. A beléptetési csoport sikeres létrehozásakor kell megjelennie az eszköz alatt jelennek meg a **egyedi regisztrációkat** fülre.  
 
-        ![Az egyes beléptetési a portálon](./media/how-to-manage-enrollments/individual-enrollment.png)
-
+       [![Az egyes beléptetési a portálon](./media/how-to-manage-enrollments/individual-enrollment.png)](./media/how-to-manage-enrollments/individual-enrollment.png#lightbox)
 
 ## <a name="update-an-enrollment-entry"></a>Regisztrációs bejegyzés frissítése
 Frissítheti a meglévő regisztrációs bejegyzése a portálon, az alábbi lépéseket követve:
@@ -64,7 +66,6 @@ Frissítheti a meglévő regisztrációs bejegyzése a portálon, az alábbi lé
 
     ![Frissíti a regisztrációját a portálon](./media/how-to-manage-enrollments/update-enrollment.png)
 
-
 ## <a name="remove-a-device-enrollment"></a>Távolítsa el az olyan eszközök beléptetése
 Azokban az esetekben, ahol az eszközöket nem kell kell létrehozni, hogy az IoT-központ eltávolíthatja a kapcsolódó regisztrációs bejegyzés a portálon, az alábbi lépéseket követve:
 
@@ -74,6 +75,5 @@ Azokban az esetekben, ahol az eszközöket nem kell kell létrehozni, hogy az Io
 5. Ha a művelet befejeződött, a bejegyzés eltávolítja a listáról, az eszközök regisztrációját jelenik meg. 
  
     ![Távolítsa el a regisztrációs a portálon](./media/how-to-manage-enrollments/remove-enrollment.png)
-
 
 

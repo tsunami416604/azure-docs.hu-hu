@@ -1,11 +1,11 @@
 ---
-title: "Szabályozhatja az Azure - útválasztó és a virtuális készülékek sablon |} Microsoft Docs"
-description: "Megtudhatja, hogyan szabályozhatja az Azure Resource Manager-sablonnal útválasztási és a virtuális készülékek."
+title: Szabályozhatja az Azure - útválasztó és a virtuális készülékek sablon |} Microsoft Docs
+description: Megtudhatja, hogyan szabályozhatja az Azure Resource Manager-sablonnal útválasztási és a virtuális készülékek.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: carmonm
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 832c7831-d0e9-449b-b39c-9a09ba051531
 ms.service: virtual-network
@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
 ms.openlocfilehash: a00b908f9811822f262d2c6113e3ff5fc364b1b4
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-user-defined-routes-udr-using-a-template"></a>Hozzon létre felhasználói útvonalakat (UDR) sablon használatával
 
@@ -186,7 +186,7 @@ Az Azure Resource Manager-sablon az Azure parancssori felület használatával t
 
         info:    New mode is arm
 
-3. A böngészőben navigáljon **https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json**, másolja a json-fájl tartalmát, és illessze be egy új fájlt a számítógép. Ebben az esetben másolja át a következő értékek nevű fájlba **c:\udr\azuredeploy.parameters.json**.
+3. A böngészőben navigáljon **https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json**, másolja a json-fájl tartalmát, és illessze be egy új fájlt a számítógépen. Ebben az esetben másolja át a következő értékek nevű fájlba **c:\udr\azuredeploy.parameters.json**.
 
     ```json
         {

@@ -1,6 +1,6 @@
 ---
-title: "Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - rendszer és a kommunikáció védelme"
-description: "FedRAMP webes alkalmazások Automation - rendszer és a kommunikáció védelme"
+title: Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - rendszer és a kommunikáció védelme
+description: FedRAMP webes alkalmazások Automation - rendszer és a kommunikáció védelme
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: ce0917cec67612736103932903eab18d7f0f21bb
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 6749ad50cd1ea1cd4ec6ca2f86fef43a9f1515d9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="system-and-communications-protection-sc"></a>Rendszer és a kommunikáció védelme (SC)
 
 > [!NOTE]
 > Ezek az intézkedések határozzák meg NIST és az Egyesült Államok Kereskedelmi Minisztériuma a NIST különleges közlemény 800-53-as verziójának 4 részeként. Tekintse meg a NIST 800-53 fordított 4 tesztelési útmutató a vezérlők és eljárásokat olvashat.
 
-## <a name="nist-800-53-control-sc-1"></a>NIST 800-53 Control SC-1
+## <a name="nist-800-53-control-sc-1"></a>A NIST 800-53 vezérlő SC-1
 
 #### <a name="system-and-communications-protection-policy-and-procedures"></a>Rendszer- és kommunikációs védelmi házirend- és eljárások
 
 **SC-1** a szervezet házon belül fejlesztett alkalmazásokra, dokumentumokat, és hogy terjeszti [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök] egy rendszer- és kommunikációs védelmi házirendje, amely célú, a hatókör, a szerepkörök, a feladatkörei, a felügyeleti megoldást előfizetési, koordinálásának szervezeti entitásokat, és a megfelelőségi; és eljárásokat azzal, hogy a rendszer és a kommunikációs védelmi házirendet és a kapcsolódó rendszer és a kommunikáció védelmi vezérlők; végrehajtásának megkönnyítése ellenőrzi, és frissíti az aktuális rendszer és a kommunikáció védelmi házirend [hozzárendelés: szervezet által meghatározott gyakorisága]; és a rendszer és a kommunikáció védelmi eljárások [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-2** az információs rendszer felhasználói funkciója (például a felhasználói felület szolgáltatások) elválasztja információk rendszer felügyeleti funkciót.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-3** az információs rendszer elkülöníti a biztonsági funkciók a nem a biztonsággal kapcsolatos funkciók.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-4** az adatokat a rendszer megakadályozza, hogy a jogosulatlan és a nem kívánt információkat átviteli keresztül megosztott rendszererőforrásokat.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -81,13 +81,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sc-5"></a>NIST 800-53 Control SC-5
+ ## <a name="nist-800-53-control-sc-5"></a>A NIST 800-53 vezérlő SC-5
 
 #### <a name="denial-of-service-protection"></a>Letiltja a védelmi szolgáltatás
 
 **SC-5** az információs rendszer ellen, vagy korlátozza a következő típusú szolgáltatásmegtagadási támadások hatásainak: [hozzárendelés: szolgáltatásmegtagadási támadások, illetve az adatforrások ilyen adatokat való hivatkozások szervezet által meghatározott típusú] által alkalmazó [hozzárendelés: szervezet által meghatározott biztonsági óvintézkedéseket].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -95,13 +95,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sc-6"></a>NIST 800-53 Control SC-6
+ ## <a name="nist-800-53-control-sc-6"></a>A NIST 800-53 vezérlő SC-6
 
 #### <a name="resource-availability"></a>Erőforrás-elérhetőséget
 
 **SC-6** az információs rendszer erőforrások rendelkezésre állását védi lefoglalásával [hozzárendelés: szervezet által meghatározott erőforrások] által [kijelölés (egy vagy több); prioritás; kvóta; [Hozzárendelés: szervezet által meghatározott biztonsági óvintézkedéseket]].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -115,11 +115,11 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7.a** az információs rendszer figyelők és -vezérlők kommunikációs, a rendszer a külső határ és a kulcs belső határain belül a rendszer.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
-| **Ügyfél** | Ez tervezetének Alkalmazásátjáró telepíti, terheléselosztóhoz, és konfigurálja a hálózati biztonsági csoportszabályok vezérlésére commutations határok külső és belső alhálózatok között. Engedélyezi az ügyfél figyelését az OMS Naplóelemzési által gyűjtött Alkalmazásátjáró, a terheléselosztóhoz, és a hálózati biztonsági csoport eseménye és a diagnosztikai naplókat. |
+| **Ügyfél** | Ez tervezetének Alkalmazásátjáró telepíti, terheléselosztóhoz, és konfigurálja a hálózati biztonsági csoportszabályok vezérlésére commutations határok külső és belső alhálózatok között. Alkalmazásátjáró, a terheléselosztóhoz, és a hálózati biztonsági csoport eseménye és a diagnosztikai naplók gyűjti össze a Log Analyticshez engedélyezi az ügyfél figyelését. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7.b** a információkat rendszer megvalósítja az nyilvánosan elérhető rendszer összetevőinek alhálózatai [kijelölés: fizikailag; logikailag] különíteni a belső szervezeti hálózatokhoz.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -137,13 +137,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sc-7c"></a>NIST 800-53 Control SC-7.c
+ ## <a name="nist-800-53-control-sc-7c"></a>A NIST 800-53 vezérlő SC-7.c
 
 #### <a name="boundary-protection"></a>Határ védelme
 
 **SC-7.c** az információs rendszer csatlakozik a külső hálózatokat vagy információs rendszerekkel használt csak az megfelelően egy szervezeti biztonsági architektúrája a határ Kulcsvédelmi eszközök álló felügyelt felületeken keresztül.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -151,13 +151,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ### <a name="nist-800-53-control-sc-7-3"></a>NIST 800-53 Control SC-7 (3)
+ ### <a name="nist-800-53-control-sc-7-3"></a>A NIST 800-53 vezérlő SC-7 (3)
 
 #### <a name="boundary-protection--access-points"></a>Határ védelmi |} Hozzáférési pontok
 
 **SC-7 (3)** a szervezet az adatokat a rendszer a külső hálózati kapcsolatok számának korlátozása.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7 (4) sémaszintjén** a szervezete bevezet egy felügyelt felület minden egyes külső telekommunikációs szolgáltatás.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -179,13 +179,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ### <a name="nist-800-53-control-sc-7-4b"></a>NIST 800-53 Control SC-7 (4).b
+ ### <a name="nist-800-53-control-sc-7-4b"></a>A NIST 800-53 vezérlő SC-7 (4) .b
 
 #### <a name="boundary-protection--external-telecommunications-services"></a>Határ védelmi |} Külső távközlési szolgáltatások
 
 **SC-7 (4) .b** a szervezet hoz létre az egyes felügyelt felület forgalom folyamata szabályzat.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -193,13 +193,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ### <a name="nist-800-53-control-sc-7-4c"></a>NIST 800-53 Control SC-7 (4).c
+ ### <a name="nist-800-53-control-sc-7-4c"></a>A NIST 800-53 vezérlő SC-7 (4) .c
 
 #### <a name="boundary-protection--external-telecommunications-services"></a>Határ védelmi |} Külső távközlési szolgáltatások
 
 **SC-7 (4) .c** a szervezet a titkosítás és az egyes csatolókra között továbbított információk integritására – védi.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -207,13 +207,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ### <a name="nist-800-53-control-sc-7-4d"></a>NIST 800-53 Control SC-7 (4).d
+ ### <a name="nist-800-53-control-sc-7-4d"></a>A NIST 800-53 vezérlő SC-7 (4) .d
 
 #### <a name="boundary-protection--external-telecommunications-services"></a>Határ védelmi |} Külső távközlési szolgáltatások
 
 **SC-7 (4) .d** a szervezet minden kivételt a forgalom adatfolyam házirend támogató kritikus/üzleti igényeknek és időtartama, amelyen a kell dokumentumokat.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -221,13 +221,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ### <a name="nist-800-53-control-sc-7-4e"></a>NIST 800-53 Control SC-7 (4).e
+ ### <a name="nist-800-53-control-sc-7-4e"></a>A NIST 800-53 vezérlő SC-7 (4) .e
 
 #### <a name="boundary-protection--external-telecommunications-services"></a>Határ védelmi |} Külső távközlési szolgáltatások
 
 **SC-7 (4).e** A szervezet ellenőrzi, hogy a forgalom adatfolyam házirend kivételeit [hozzárendelés: szervezet által meghatározott gyakoriság], és eltávolítja a kivételeket, amelyek egy explicit kritikus/üzleti igények által már nem támogatott.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -235,13 +235,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ### <a name="nist-800-53-control-sc-7-5"></a>NIST 800-53 Control SC-7 (5)
+ ### <a name="nist-800-53-control-sc-7-5"></a>A NIST 800-53 vezérlő SC-7 (5)
 
 #### <a name="boundary-protection--deny-by-default--allow-by-exception"></a>Határ védelmi |} Alapértelmezés szerint megtagadási / által kivétel engedélyezése
 
 **SC-7 (5)** az információk rendszernek felügyelt felületeket hálózati kommunikációs forgalom alapértelmezés szerint letiltja, és lehetővé teszi a hálózati kommunikációs forgalom kivétel (azaz az összes megtagadása, engedélyezik a kivétel).
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7 (7)** adatokat a rendszer, a távoli eszköz együtt megakadályozza, hogy az eszköz egyszerre a rendszer nem távoli kapcsolatok létrehozásáról és néhány más erőforrásokhoz a külső hálózatokat-kapcsolaton keresztül kommunikál.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -263,13 +263,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ### <a name="nist-800-53-control-sc-7-8"></a>NIST 800-53 Control SC-7 (8)
+ ### <a name="nist-800-53-control-sc-7-8"></a>A NIST 800-53 vezérlő SC-7 (8)
 
 #### <a name="boundary-protection--route-traffic-to-authenticated-proxy-servers"></a>Határ védelmi |} Irányíthatja a forgalmat a hitelesített Proxy kiszolgálókon
 
 **SC-7 (8)** információk rendszerútvonalakra [hozzárendelés: szervezet által meghatározott belső kommunikációs forgalom] való [hozzárendelés: külső hálózatok szervezet által meghatározott] keresztül hitelesített proxykiszolgáló felügyelt felületeket.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -277,13 +277,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ### <a name="nist-800-53-control-sc-7-10"></a>NIST 800-53 Control SC-7 (10)
+ ### <a name="nist-800-53-control-sc-7-10"></a>A NIST 800-53 vezérlő SC-7 (10)
 
 #### <a name="boundary-protection--prevent-unauthorized-exfiltration"></a>Határ védelmi |} Megakadályozza a jogosulatlan Exfiltration
 
 **SC-7 (10)** a szervezet megakadályozza, hogy az adatok illetéktelen exfiltration keresztül felügyelt felületeket.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -297,7 +297,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7 (12)** a szervezet valósít meg [hozzárendelés: állomásalapú határ szervezet által meghatározott védelmi mechanizmus], [hozzárendelés: szervezet által megadott információk rendszerösszetevők].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -311,7 +311,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7 (13)** a szervezet elkülöníti [hozzárendelés: szervezet által megadott információk biztonsági eszközöket, a mechanizmusok, és a támogatási összetevőket] az egyéb belső információ rendszerösszetevők fizikailag megvalósításával az alhálózatokra külön a rendszer más összetevőitől felügyelt felületet.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -319,13 +319,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ### <a name="nist-800-53-control-sc-7-18"></a>NIST 800-53 Control SC-7 (18)
+ ### <a name="nist-800-53-control-sc-7-18"></a>A NIST 800-53 vezérlő SC-7 (18)
 
 #### <a name="boundary-protection--fail-secure"></a>Határ védelmi |} Biztonságos sikertelen
 
 **SC-7 (18)** a információk rendszer biztonságosan sikertelen határ védelmi eszköz egy operatív meghibásodása esetén.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -333,13 +333,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | A Microsoft Azure földrajzilag különálló és a redundáns-átjáró kiszolgálókon és az SSL VPN telepíti. Amikor egy átjáró rendszer sikertelen, biztonságosan nem sikerül, és hozzáférés a környezet korlátozott. Ahhoz, hogy a kapcsolatot a Microsoft Azure-környezethez, a felhasználó egy aktív Microsoft Azure által kezelt átjárókiszolgálóra külön kapcsolatot kell létesítenie. <br /> Emellett ha meghibásodik a Microsoft Azure hálózati eszközöket (beleértve a peremhálózati útválasztók, hozzáférési útválasztók, terheléselosztók, összesítési kapcsolók és TORS), az érintett áramkör válik csatlakozik, így biztonságosan sikertelen. A Microsoft Azure hálózati eszköz hibája nem vezethet, vagy adja meg az eszköz a rendszer a külső adatokat okozhat, és nem jogosulatlan információk kiadás engedélyez hibát. A beépített redundanciát lehetővé teszi, hogy a Microsoft Azure eszközök rendelkezésre állási befolyásolása nélkül sikertelen lesz. |
 
 
- ### <a name="nist-800-53-control-sc-7-20"></a>NIST 800-53 Control SC-7 (20)
+ ### <a name="nist-800-53-control-sc-7-20"></a>A NIST 800-53 vezérlő SC-7 (20.)
 
 #### <a name="boundary-protection--dynamic-isolation--segregation"></a>Határ védelmi |} Dinamikus elkülönítési / elkülönítése
 
 **SC-7 (20)** az információs rendszer lehetővé teszi a dinamikusan izolátumának/elkülönítse [hozzárendelés: szervezet által megadott információk rendszerösszetevők] más összetevők, a rendszer.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -353,7 +353,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7 (21)** a szervezet védett határ védelmi mechanizmus külön [hozzárendelés: szervezet által megadott információk rendszerösszetevők] támogató [hozzárendelés: szervezet által meghatározott feladatok és/vagy üzleti funkciók].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -361,13 +361,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sc-8"></a>NIST 800-53 Control SC-8
+ ## <a name="nist-800-53-control-sc-8"></a>A NIST 800-53 vezérlő SC-8
 
 #### <a name="transmission-confidentiality-and-integrity"></a>Átviteli titkosítás és integritás
 
 **SC-8** védi az adatokat a rendszer a [kijelölés (egy vagy több): bizalmas; integritási] az átvitt adatok.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -375,13 +375,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ### <a name="nist-800-53-control-sc-8-1"></a>NIST 800-53 Control SC-8 (1)
+ ### <a name="nist-800-53-control-sc-8-1"></a>A NIST 800-53 vezérlő SC-8 (1)
 
 #### <a name="transmission-confidentiality-and-integrity--cryptographic-or-alternate-physical-protection"></a>Átviteli titkosítás és integritásának |} Kriptográfiai vagy egy másik fizikai védelem
 
 **SC-8 (1)** a információk rendszer megvalósítja a titkosítási mechanizmus [kijelölés (egy vagy több): jogosulatlan információk közzétételének megakadályozása; információk módosításai észlelése] átvitel közben kivéve, ha más módon védi [hozzárendelése: szervezet által megadott alternatív fizikai védelmi szolgáltatás].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -389,13 +389,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sc-10"></a>NIST 800-53 Control SC-10
+ ## <a name="nist-800-53-control-sc-10"></a>A NIST 800-53 vezérlő SC-10
 
 #### <a name="network-disconnect"></a>Hálózati kapcsolat bontása
 
 **SC-10** az adatokat a rendszer megszakítja a hálózati kapcsolatot, a kommunikációs munkamenet befejezése után a munkamenet vagy után társított [hozzárendelés: szervezet által meghatározott időszak] tétlen.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -403,13 +403,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sc-12"></a>NIST 800-53 Control SC-12
+ ## <a name="nist-800-53-control-sc-12"></a>A NIST 800-53 vezérlő SC-12
 
 #### <a name="cryptographic-key-establishment-and-management"></a>Titkosítási kulcs létrehozása és kezelése
 
 **SC-12** a szervezet hoz létre és kezeli a titkosítási kulcsokat az alkalmazásban lévő összhangban az információs rendszer szükséges titkosítási [hozzárendelés: a kulcsok létrehozásának, terjesztési, szervezet által meghatározott követelmények tárolási, hozzáférési és megsemmisítése].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -423,7 +423,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-12 (1)** a szervezeti felhasználók titkosítási kulcsok a adatvesztés információk tart fenn.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -431,13 +431,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ### <a name="nist-800-53-control-sc-12-2"></a>NIST 800-53 Control SC-12 (2)
+ ### <a name="nist-800-53-control-sc-12-2"></a>A NIST 800-53 vezérlő SC-12 (2)
 
 #### <a name="cryptographic-key-establishment-and-management--symmetric-keys"></a>Titkosítási kulcs létrehozásához és felügyeleti |} Szimmetrikus kulcsok
 
 **SC-12 (2)** a szervezet hoz létre, vezérli, és elosztja a szimmetrikus titkosítási kulcsok használatával [kijelölés: NIST FIPS-kompatibilis; Kulcskezelés NSA jóváhagyott] technológia és a folyamatok.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -451,7 +451,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-12 (3)** a szervezet hoz létre, vezérli, és elosztja az aszimmetrikus titkosítási kulcsok használatával [kijelölés: NSA jóváhagyott kulcsfontosságú technológia és a folyamatok; jóváhagyott osztály 3 PKI-tanúsítványok vagy elhelyezett kulcskezelő anyagokat; nyilvános kulcsokra épülő infrastruktúra osztály 3 vagy 4 osztály tanúsítványokat és a hardveres biztonsági jogkivonatokat, amelyek a felhasználó titkos kulcs védelme jóváhagyott].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -459,13 +459,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sc-13"></a>NIST 800-53 Control SC-13
+ ## <a name="nist-800-53-control-sc-13"></a>A NIST 800-53 vezérlő SC-13
 
 #### <a name="cryptographic-protection"></a>Titkosítási védelem
 
 **SC-13** megvalósítja az adatokat a rendszer [hozzárendelés: szervezet által meghatározott kriptográfiai használ, és minden szükséges titkosítási típus] vonatkozó Szövetségi törvényeket, végrehajtó rendelések irányelveknek, házirendek, szabványok – megfelelően és szabványnak.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -479,7 +479,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-15.a** az információs rendszer ez a beállítás letiltja a Távoli aktiválás együttműködési számítási eszközök az alábbi kivételekkel: [hozzárendelés: Távoli aktiválás esetén engedélyezni kell a szervezet által meghatározott kivételek].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -487,13 +487,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sc-15b"></a>NIST 800-53 Control SC-15.b
+ ## <a name="nist-800-53-control-sc-15b"></a>A NIST 800-53 vezérlő SC-15.b
 
 #### <a name="collaborative-computing-devices"></a>Együttműködési számítástechnikai eszközök
 
 **SC-15.b** a információt rendszer biztosít explicit utalhat, hogy használja a felhasználók fizikailag jelen az eszközök számára.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -501,13 +501,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sc-17"></a>NIST 800-53 Control SC-17
+ ## <a name="nist-800-53-control-sc-17"></a>A NIST 800-53 vezérlő SC-17
 
 #### <a name="public-key-infrastructure-certificates"></a>Nyilvános kulcsú infrastruktúra tanúsítványait
 
 **SC-17** a nyilvános kulcsú tanúsítványokat állít ki a szervezet egy [hozzárendelés: szervezet által meghatározott tanúsítvány-házirend] vagy jut hozzá a nyilvános kulcsú tanúsítványokat egy jóváhagyott-szolgáltatótól.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -515,13 +515,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sc-18a"></a>NIST 800-53 Control SC-18.a
+ ## <a name="nist-800-53-control-sc-18a"></a>A NIST 800-53 vezérlő SC-18.a
 
 #### <a name="mobile-code"></a>Mobil kódot
 
 **SC-18.a** a szervezet elfogadható és elfogadhatatlan mobil kódnak és a mobil kódnak technológiák határozza meg.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -535,7 +535,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-18.b** a szervezet létesít végrehajtási útmutató elfogadható mobil kódnak és a mobil kódnak technológiák és használattal kapcsolatos korlátozásokat.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -549,7 +549,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-18.c** a szervezet engedélyezi, figyeli, és információt rendszerből mobil kódnak használatát szabályozza.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -557,13 +557,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sc-19a"></a>NIST 800-53 Control SC-19.a
+ ## <a name="nist-800-53-control-sc-19a"></a>A NIST 800-53 vezérlő SC-19.a
 
 #### <a name="voice-over-internet-protocol"></a>Voice Over Internet Protocol
 
 **SC-19.a** a szervezet használattal kapcsolatos korlátozások és megvalósítási útmutató a hang / Internet Protocol (VoIP) technológiák az információs rendszer való megosztása kárt okozhat, ha ártó szándékkal használja alapján hoz létre.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -577,7 +577,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-19.b** a szervezet engedélyezi, figyeli, és információt rendszerből VoIP használatát szabályozza.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -591,7 +591,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-20.a** az információs rendszer biztosít további adatok forrása hitelesítési és sértetlenségének ellenőrzése összetevők a mérvadó névfeloldási adatokat a rendszer külső nevét és címét névfeloldási lekérdezéseket válaszul adja vissza.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -605,7 +605,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-20.b** az információs rendszer lehetővé teszi a gyermekzónákhoz és (Ha a gyermek támogatja a biztonságos névfeloldási szolgáltatást) biztonsági állapotának ellenőrzése a szülő és gyermek tartományok közötti megbízhatósági láncot engedélyezésére, amikor részeként működő elosztott, hierarchikus névtér.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -613,13 +613,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sc-21"></a>NIST 800-53 Control SC-21
+ ## <a name="nist-800-53-control-sc-21"></a>A NIST 800-53 vezérlő SC-21
 
 #### <a name="secure-name--address-resolution-service-recursive-or-caching-resolver"></a>Biztonságos neve / cím (rekurzív vagy gyorsítótárazása) névfeloldási szolgáltatás
 
 **SC-21** az információs rendszer kér, és a nevét és címét feloldási válaszokat a rendszer kap mérvadó forrásból származó adatok eredetének hitelesítését és a rendszerintegritás-ellenőrzést végez.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -627,13 +627,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sc-22"></a>NIST 800-53 Control SC-22
+ ## <a name="nist-800-53-control-sc-22"></a>A NIST 800-53 vezérlő SC-22
 
 #### <a name="architecture-and-provisioning-for-name--address-resolution-service"></a>Architektúra és a kiépítés neve / cím névfeloldási szolgáltatás
 
 **SC-22** az információs rendszerekkel használt, amelyek együttesen biztosítanak a szervezet nevét és címét névfeloldási szolgáltatás hibatűrő, és a belső/külső Szerepszétválasztás megvalósításához.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -641,13 +641,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sc-23"></a>NIST 800-53 Control SC-23
+ ## <a name="nist-800-53-control-sc-23"></a>A NIST 800-53 vezérlő SC-23
 
 #### <a name="session-authenticity"></a>Munkamenet eredetiséget
 
 **SC-23** az adatokat a rendszer kommunikációs munkamenetek hitelességének védelmet nyújt.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -661,7 +661,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-23 (1)** az információs rendszer érvényteleníti a munkamenet-azonosítók felhasználó kijelentkezik vagy más munkamenet befejezését követően.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -669,13 +669,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sc-24"></a>NIST 800-53 Control SC-24
+ ## <a name="nist-800-53-control-sc-24"></a>A NIST 800-53 vezérlő SC-24
 
 #### <a name="fail-in-known-state"></a>Ismeretlen állapotú sikertelen
 
 **SC-24** az adatokat a rendszer nem tudja a [hozzárendelés: szervezet által meghatározott ismert-állapot] a(z) [hozzárendelés: hibák szervezet által meghatározott típusú] megőrzi az [hozzárendelés: szervezet által meghatározott állapotadatairól] nem.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -683,13 +683,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sc-28"></a>NIST 800-53 Control SC-28
+ ## <a name="nist-800-53-control-sc-28"></a>A NIST 800-53 vezérlő SC-28
 
 #### <a name="protection-of-information-at-rest"></a>Adatok inaktív védelme
 
 **SC-28** védi az adatokat a rendszer a [kijelölés (egy vagy több): bizalmas; integritási], [hozzárendelés: szervezet által megadott információk aktívan].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -703,7 +703,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-28 (1)** a információk rendszer megvalósítja a jogosulatlan és módosításának megakadályozása érdekében titkosítási mechanizmus [hozzárendelés: szervezet által megadott információk] az [hozzárendelés: szervezet által megadott információk rendszer összetevők].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -717,7 +717,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-39** az adatokat a rendszer fenntartja az összes végrehajtás alatt álló folyamat külön végrehajtási tartományhoz.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|

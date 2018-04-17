@@ -16,21 +16,19 @@ ms.workload: infrastructure
 ms.date: 04/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b0cb9b4003faa2ccdd07ccc78c2095472690f0e7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 89a4216a3893892eedd6c216c7e0e5d51cf64749
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-write-accelerator-for-sap-deployments"></a>Az Azure írási gyorsító SAP telepítésekhez
 Azure írási gyorsító az első megkezdődött M sorozatú virtuális gépek kizárólag funkcionalitást. Az Azure-írási gyorsító adatsorozattal bármely más Virtuálisgép-Azure, kivéve az M-sorozat nem érhető el. Állapota a neve, mint a funkció célja javítása a prémium szintű Azure Storage elleni írások késését i/o. 
 
->[!NOTE]
-> Ezen a ponton az Azure-írási gyorsító nyilvános előzetes verziójában, és megköveteli az Azure-előfizetése Azonosítóját fehér listája
-
 Az Azure írási gyorsító funkciók M-sorozat telepítési, mint a nyilvános előzetes verzió érhető el:
 
 - Nyugat-US2
+- Kelet-US2
 - Nyugat-Európa
 - Délkelet-Ázsia
 
@@ -44,8 +42,15 @@ Azure írási gyorsító csak működik együtt [Azure által kezelt lemezeken](
 
 Nincsenek Azure prémium szintű Storage a VHD-k, amely támogatja-e írási gyorsító Azure virtuális gépenként korlátozások. A jelenlegi korlátozások a következők:
 
-- Egy M128xx 16 virtuális merevlemezek méretű VM
-- Egy M64xx 8 virtuális merevlemezek méretű VM
+
+| VIRTUÁLIS GÉP TERMÉKVÁLTOZAT | Írási gyorsító lemezek számát | Virtuális gépenként IOPS gyorsító írása |
+| --- | --- | --- |
+| M128ms | 16 | 8000 |
+| M128s | 16 | 8000 |
+| M64ms | 8 | 4000 |
+| M64s | 8 | 4000 | 
+
+
 
 > [!IMPORTANT]
 > Ha szeretné engedélyezni vagy letiltani egy létező kötet, amely több prémium szintű Azure Storage-lemez ki van építve, és a Windows lemezre vagy kötetre-kezelők használatával csíkozott Azure írási gyorsító, Windows tárhelyeken, a Windows a kibővített fájlkiszolgáló (sofs-sel) Linux LVM vagy MDADM, a kötet felépítése az összes lemez kell lennie engedélyezésekor vagy letiltásakor gyorsító írni a különálló lépések. **Engedélyezése vagy letiltása írási gyorsító ilyen konfiguráció, előtt állítsa le az Azure virtuális gép**. 

@@ -7,11 +7,11 @@ manager: rloutlaw
 ms.author: tarcher
 ms.date: 3/12/2018
 ms.topic: article
-ms.openlocfilehash: db45e9fe1eb724e6404f5e83bbbe4f62ee32343d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5f0ee2904c1072a5ad8c5f7ae1c90e649cc4813c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-service-identity"></a>Az Azure piactér lemezkép segítségével felügyelt szolgáltatás identitású Terraform Linux virtuális gép létrehozása
 
@@ -88,7 +88,7 @@ Az előző parancsfájl használja a [v 2.0 AZ CLI interaktív bejelentkezés](h
 
  `cp  ~/tfTemplate/remoteState.tf .`
 
- Állapot távfelügyelettel kapcsolatos további információkért lásd: [ezen a lapon Terraform távoli állapotára vonatkozó](https://www.terraform.io/docs/state/remote.html). A tárelérési kulcs fel van fedve ebben a fájlban, és a forrás vezérlőbe alaposan ellenőrizni kell.  
+ Állapot távfelügyelettel kapcsolatos további információkért lásd: [ezen a lapon Terraform távoli állapotára vonatkozó](https://www.terraform.io/docs/state/remote.html). A tárelérési kulcs fel van fedve ebben a fájlban, és az adatforrás-vezérlő előtt commiting Terraform konfigurációs fájlok zárhatók ki kell.
 
 ## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan állíthat be egy Terraform Linux virtuális gépet az Azure. Az alábbiakban néhány további források további tudnivalók az Azure-on Terraform: 

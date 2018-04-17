@@ -1,24 +1,24 @@
 ---
-title: "Rendszerű Linux (Ubuntu) adatok tudományos virtuális gép az Azure-on |} Microsoft Docs"
-description: "Konfigurálja, és hozzon létre egy adatok tudományos virtuális gép a Linux (Ubuntu) Azure elemzés és gépi tanulás."
+title: Rendszerű Linux (Ubuntu) adatok tudományos virtuális gép az Azure-on |} Microsoft Docs
+description: Konfigurálja, és hozzon létre egy adatok tudományos virtuális gép a Linux (Ubuntu) Azure elemzés és gépi tanulás.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
-editor: cgronlun
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: bradsev
-ms.openlocfilehash: 721b18845a3b839d59c7eb0a04646635fa8d9fe7
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: f3ddebdd02d4766b83f0834979a54552f88179cb
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Az adatok tudományos virtuális gép kiépítése Linux (Ubuntu)
 
@@ -159,7 +159,7 @@ Caffe2 egy részletes tanulási Caffe épülő Facebook-keretrendszert. Rendszer
 Néhány példa notebookok JupyterHub érhetők el.
 
 #### <a name="h2o"></a>H2O
-H2O egy gyors, a memóriában, elosztott gépi tanulási és prediktív elemzési platformot. A Python-csomag telepítve van, a legfelső szintű és py35 Anaconda környezetekben egyaránt. Az R csomagot is telepítve van. A parancssorból H2O indításához futtassa `java -jar /dsvm/tools/h2o/current/h2o.jar`; léteznek a különböző [parancssori kapcsolók](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line) , előfordulhat, hogy szeretne konfigurálni. Az Flow webes felhasználói felületén a kezdéshez http://localhost:54321 tallózással elérhetők. A minta notebookok JupyterHub is elérhetők.
+H2O egy gyors, a memóriában, elosztott gépi tanulási és prediktív elemzési platformot. A Python-csomag telepítve van, a legfelső szintű és py35 Anaconda környezetekben egyaránt. Az R csomagot is telepítve van. A parancssorból H2O indításához futtassa `java -jar /dsvm/tools/h2o/current/h2o.jar`; léteznek a különböző [parancssori kapcsolók](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line) , előfordulhat, hogy szeretne konfigurálni. Az Flow webes felhasználói felületén elérhető tallózással http://localhost:54321 a kezdéshez. A minta notebookok JupyterHub is elérhetők.
 
 #### <a name="keras"></a>Keras
 Keras egy magas szintű Neurális hálózat API, amely képes a felső részén TensorFlow vagy Theano futó a Python. Érhető el a legfelső szintű és py35 Python-környezetben. 
@@ -221,7 +221,7 @@ További Python-könyvtárak telepítéséhez futtatnia kell ```conda``` vagy ``
 ### <a name="jupyter-notebook"></a>Jupyter notebook
 A Anaconda terjesztési Jupyter notebook, egy környezet kóddal és elemzési is tartalmaz. A Jupyter notebook JupyterHub keresztül érhető el. A helyi Linux-felhasználónév és jelszó használatával bejelentkezik.
 
-A Jupyter notebook kiszolgáló előre beállított Python 2, a Python 3 és az R kernelek. Nincs "Jupyter Notebook" Indítsa el a böngészőt a notebook kiszolgálóhoz való hozzáféréshez nevű asztali ikon. Ha a virtuális gépről SSH vagy X2Go ügyfél, meglátogathatja [https://localhost:8000 /](https://localhost:8000/) a Jupyter notebook kiszolgálóhoz való hozzáféréshez.
+A Jupyter notebook kiszolgáló előre beállított Python 2, a Python 3 és az R kernelek. Nincs "Jupyter Notebook" Indítsa el a böngészőt a notebook kiszolgálóhoz való hozzáféréshez nevű asztali ikon. Ha a virtuális gépről SSH vagy X2Go ügyfél, meglátogathatja [ https://localhost:8000/ ](https://localhost:8000/) a Jupyter notebook kiszolgálóhoz való hozzáféréshez.
 
 > [!NOTE]
 > Folytassa, ha kapott tanúsítványt figyelmeztetéseket.
@@ -404,7 +404,7 @@ Most már egy grafikus felület megnyílik lapok vannak beállítva. Az első l�
 7. Kattintson a **Evaluate** fülre.
 8. Kattintson a **kockázati** választógomb, és kattintson a **Execute** két kockázat (eloszlásfv) teljesítmény előkészítésére megjelenítéséhez.
 9. Kattintson a **napló** lapon, a fenti műveletekre vonatkozó generate R kód megjelenítése.
-   (Az aktuális kiadás Rattle egy hiba miatt be kell helyezni egy  *#*  karakter elé *... Ez a napló exportálása*  a szöveges napló.)
+   (Az aktuális kiadás Rattle egy hiba miatt be kell helyezni egy *#* karakter elé *... Ez a napló exportálása*  a szöveges napló.)
 10. Kattintson a **exportálása** gombra kattintva mentse az R-parancsfájl nevű *weather_script. R* az otthoni mappába.
 
 Kiléphet Rattle és R. Most módosítja a generált R-parancsfájl, vagy használja, mert az ismétlődő minden, ami a Rattle felhasználói felületen belül lett elvégezve bármikor futtatásához. Különösen az R kezdők, ez pedig egyszerűen gyorsan elemzést és a gépi tanulás egyszerű grafikus felületen, automatikusan az R módosítása és/vagy ismerje meg, a kód létrehozása közben.

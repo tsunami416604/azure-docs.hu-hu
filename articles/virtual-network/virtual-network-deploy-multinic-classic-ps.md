@@ -1,11 +1,11 @@
 ---
-title: "Hozzon létre egy virtuális gép (klasszikus) több hálózati adapter - Azure PowerShell |} Microsoft Docs"
-description: "Tudnivalók a PowerShell segítségével több hálózati adapterrel rendelkező virtuális gép (klasszikus) létrehozása."
+title: Hozzon létre egy virtuális gép (klasszikus) több hálózati adapter - Azure PowerShell |} Microsoft Docs
+description: Tudnivalók a PowerShell segítségével több hálózati adapterrel rendelkező virtuális gép (klasszikus) létrehozása.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
-editor: 
+author: genli
+manager: cshepard
+editor: ''
 tags: azure-service-management
 ms.assetid: 6e50f39a-2497-4845-a5d4-7332dbc203c5
 ms.service: virtual-network
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
-ms.author: jdial
+ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 824af3f0f5f6d42341f6f1dc94104f6009b568b8
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: a86a3cecffa50143afbb7aad20b1a40baeb87c38
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-vm-classic-with-multiple-nics-using-powershell"></a>PowerShell-lel több hálózati adapterrel rendelkező virtuális gép (klasszikus) létrehozása
 
@@ -46,7 +46,7 @@ A háttér-virtuális gépek létrehozását a következő erőforrások függ:
 
 * **Backend alhálózathoz**. Az adatbázis-kiszolgálókhoz külön alhálózathoz, hogy áthaladó forgalmat leválasszanak része lesz. Az alábbi parancsfájl vár az alhálózat léteznie egy nevű vnetet a *WTestVnet*.
 * **Az adatlemezek tárfiók**. A jobb teljesítmény érdekében az adatlemezek az adatbázis-kiszolgálók a tartós állapotú meghajtót (SSD) technológiát, amely a prémium szintű tárfiók szükséges fogja használni. Győződjön meg arról, hogy az Azure-hely támogatja a prémium szintű storage telepít.
-* **A rendelkezésre állási csoport**. Minden adatbázis-kiszolgálók egyetlen rendelkezésre állási értékre, akkor ellenőrizze, hogy a virtuális gépek közül legalább egy, és a karbantartás során fut hozzáadandó.
+* **Rendelkezésre állási csoport**. Minden adatbázis-kiszolgálók egyetlen rendelkezésre állási értékre, akkor ellenőrizze, hogy a virtuális gépek közül legalább egy, és a karbantartás során fut hozzáadandó.
 
 ### <a name="step-1---start-your-script"></a>1. lépés – a parancsfájl futtatásához
 Letöltheti használt teljes PowerShell-parancsfájl [Itt](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-ps.ps1). Módosíthatja a parancsfájlnak a környezetben az alábbi lépésekkel.

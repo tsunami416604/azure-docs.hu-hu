@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Service Fabric-fürt biztonságos |} Microsoft Docs"
-description: "További információk a biztonsági forgatókönyvek az Azure Service Fabric-fürt és a segítségével alkalmazásukhoz szükséges különböző technológiákat."
+title: Az Azure Service Fabric-fürt biztonságos |} Microsoft Docs
+description: További információk a biztonsági forgatókönyvek az Azure Service Fabric-fürt és a segítségével alkalmazásukhoz szükséges különböző technológiákat.
 services: service-fabric
 documentationcenter: .net
-author: ChackDan
+author: aljo-microsoft
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 26b58724-6a43-4f20-b965-2da3f086cf8a
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2017
-ms.author: chackdan
-ms.openlocfilehash: f0fdbd7fc4ec48037371ffa296cf668897e45b70
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.author: aljo
+ms.openlocfilehash: f60b428ba7fe93713af68851a3e9d246a3b1641b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>A Service Fabric-fürt biztonsági forgatókönyvek
 Az Azure Service Fabric-fürt saját erőforrás. A feladata a fürtökhöz, hogy megakadályozza a jogosulatlan felhasználók az csatlakozik hozzájuk biztonságossá tételéhez. A biztonságos fürt különösen fontos, ha a fürtön fut. a termelési számítási feladatokhoz. Bár lehetséges egy nem biztonságos fürtök létrehozásához, ha a fürt felügyeleti végpontok a nyilvános internethez azt mutatja, a névtelen felhasználók csatlakozhatnak azt. Nem biztonságos fürtök nem támogatottak a termelési számítási feladatokhoz. 
@@ -103,7 +103,7 @@ A **tulajdonos** mezőben több érték szerepelhet. Minden egyes érték van el
 > [!NOTE]
 > A Service Fabric-fürtök összes felügyeleti műveleteihez kiszolgálói tanúsítványokat igényel. Ügyféltanúsítványok felügyeleti nem használható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Fürt létrehozása az Azure Resource Manager-sablon használatával](service-fabric-cluster-creation-via-arm.md) 
 * [Fürt létrehozása az Azure portál használatával](service-fabric-cluster-creation-via-portal.md)
 

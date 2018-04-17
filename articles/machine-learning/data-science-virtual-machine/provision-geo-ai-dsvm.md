@@ -1,24 +1,25 @@
 ---
-title: "Egy földrajzi mesterséges Eszközintelligencia virtuális gépet az Azure - kiépítése Azure |} Microsoft Docs"
-description: "Megtudhatja, hogyan lehet kiépíteni egy földrajzi AI virtuális gépet az Azure."
-keywords: "a mélyhivatkozással tanulási, AI adatok tudományos eszközök, az adatok tudományos virtuális gépet, a földrajzi elemzés"
+title: Egy földrajzi mesterséges Eszközintelligencia virtuális gépet az Azure - kiépítése Azure |} Microsoft Docs
+description: Megtudhatja, hogyan lehet kiépíteni egy földrajzi AI virtuális gépet az Azure.
+keywords: a mélyhivatkozással tanulási, AI adatok tudományos eszközök, az adatok tudományos virtuális gépet, a földrajzi elemzés
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: gopitk
 manager: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: 2994ef858e960640d98ab2f7d02a401b11aa9e8f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 93dfe6594aeaf45a6905fe8cb55c98dd37cc9599
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Egy földrajzi mesterséges Eszközintelligencia virtuális gépet az Azure telepítéséhez 
 
@@ -82,7 +83,7 @@ A földrajzi DSVM már előre telepített ArcGIS Pro asztali és a környezet el
 
 Ellenkező esetben iratkozzon fel új ArcGIS fiók és a licencek vagy futtasson egy [ingyenes próbaverzió](https://www.arcgis.com/features/free-trial.html). 
 
-![ArcGIS-Free-Trial](./media/provision-geo-ai-dsvm/ArcGIS-Free-Trial.png)
+![ArcGIS ingyenes](./media/provision-geo-ai-dsvm/ArcGIS-Free-Trial.png)
 
 Miután előfizetési egy bármelyik fizetett vagy egy ingyenes próbafiók ArcGIS, engedélyezheti ArcGIS Pro fiókja utasításait követve a [ArcGIS Pro dokumentáció első lépések](http://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf). 
 

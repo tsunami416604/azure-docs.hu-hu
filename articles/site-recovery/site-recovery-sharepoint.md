@@ -1,24 +1,24 @@
 ---
-title: "Egy Azure Site Recovery segítségével többrétegű SharePoint alkalmazás replikálása |} Microsoft Docs"
-description: "A cikkből megtudhatja, hogyan replikáljon egy többrétegű SharePoint-alkalmazást, az Azure Site Recovery képességeit."
+title: Egy Azure Site Recovery segítségével többrétegű SharePoint alkalmazás replikálása |} Microsoft Docs
+description: A cikkből megtudhatja, hogyan replikáljon egy többrétegű SharePoint-alkalmazást, az Azure Site Recovery képességeit.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: sujayt
 manager: rochakm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/23/2017
+ms.date: 04/09/2018
 ms.author: sutalasi
-ms.openlocfilehash: 3610409691b71fcce0c36a3af94184dbe6db8661
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 86a1d53570aeefd57c5133688e67064da6f5dc77
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="replicate-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Azure Site Recovery segítségével vész-helyreállítási egy többrétegű SharePoint alkalmazás replikálása
 
@@ -66,7 +66,7 @@ Ez a cikk létrehozásához, a VMware virtuális gépek, a Windows Server 2012 R
 
 ### <a name="source-and-target"></a>Forrása és célja
 
-**Scenario** | **Egy másodlagos helyre** | **Az Azure-bA**
+**A forgatókönyv** | **Egy másodlagos helyre** | **Az Azure-ba**
 --- | --- | ---
 **Hyper-V** | Igen | Igen
 **VMware** | Igen | Igen
@@ -115,7 +115,7 @@ Hajtsa végre a [Ez az útmutató](site-recovery-vmware-to-azure.md) elindítani
 Az internetre irányuló helyek ["Priority" típusú Traffic Manager-profil létrehozása](../traffic-manager/traffic-manager-create-profile.md) az Azure-előfizetésben. Majd konfigurálja a DNS és a Traffic Manager-profilt a következő módon.
 
 
-| **Where** | **Source** | **Target**|
+| **Ha** | **Forrás** | **Target**|
 | --- | --- | --- |
 | Nyilvános DNS-ben | Nyilvános DNS-ben, a SharePoint-webhelyekhez <br/><br/> Például: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
 | On-premises DNS | sharepointonprem.contoso.com | A helyszíni farm nyilvános IP-cím |

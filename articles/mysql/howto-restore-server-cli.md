@@ -10,11 +10,11 @@ ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: 322de1fb19461455a063d939ace3d5553ed1fc79
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 5e8ac9da4df2428191e8a7e6402f2ac06e695503
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>Készítsen biztonsági másolatot, és a kiszolgáló Azure-adatbázis visszaállítása a MySQL az Azure parancssori felület használatával
 
@@ -52,7 +52,7 @@ A visszaküldött JSON-fájlnak a következőket kell tartalmaznia:
 }
 ```
 
-Ha 0.0.5 verziója nem ad vissza, futtassa a következő a bővítmény frissítése: 
+Ha a parancs nem a 0.0.5-ös verziót adja vissza, akkor a bővítményt a következő parancs futtatásával frissítheti: 
 ```azurecli-interactive
 az extension update --name rdbms
 ```
@@ -113,6 +113,10 @@ A visszaállítási folyamat befejezése után keresse meg az új kiszolgálón,
 Ha a kiszolgáló a földrajzilag redundáns biztonsági mentéshez konfigurált, egy új kiszolgálót a biztonsági mentésből meglévő kiszolgáló hozhatók létre. Az új kiszolgáló is hozható létre bármely régióban, hogy rendelkezésre áll-e MySQL az Azure-adatbázis.  
 
 Földrajzi redundancia biztonsági segítségével kiszolgáló létrehozásához használja az Azure parancssori felület `az mysql server georestore` parancsot.
+
+> [!NOTE]
+> A kiszolgáló létrehozásakor azt nem lehet azonnal elérhető georedundáns helyreállítás. A szükséges metaadatok kell feltöltenie néhány órát is igénybe vehet.
+>
 
 Georedundáns helyreállítás a kiszolgáló, az Azure CLI parancssorba írja be a következő parancsot:
 

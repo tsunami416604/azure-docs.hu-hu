@@ -1,31 +1,26 @@
 ---
-title: "Csatlakozás az Azure SQL Data Warehouse-hoz | Microsoft Docs"
-description: "Az Azure SQL Data Warehouse kiszolgálónevének és kapcsolati karakterláncának lekérdezése"
+title: Csatlakozás az Azure SQL Data Warehouse-hoz | Microsoft Docs
+description: Az Azure SQL Data Warehouse-kapcsolat létesítése.
 services: sql-data-warehouse
-documentationcenter: NA
-author: antvgski
-manager: jhubbard
-editor: 
-ms.assetid: e52872ca-ae74-4e25-9c56-d49c85c8d0f0
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: connect
-ms.date: 12/14/2017
-ms.author: anvang;barbkess;kevin
-ms.openlocfilehash: 804d91d309fcce42f0ac50ac98dbad9c5648b4eb
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
-ms.translationtype: HT
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/12/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: a575bc4f57c3b1dbcf3846b1246b338621e4d720
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-to-azure-sql-data-warehouse"></a>Csatlakozás az Azure SQL Data Warehouse-hoz
-Ennek a cikknek a segítségével első alkalommal csatlakozhat az SQL Data Warehouse-hoz.
+Az Azure SQL Data Warehouse-kapcsolat létesítése.
 
 ## <a name="find-your-server-name"></a>A kiszolgálónév lekérdezése
-Az SQL Data Warehouse-hoz való kapcsolódás első lépése a kiszolgálónév lekérdezési módjának ismerete.  A kiszolgáló neve az alábbi példában samplesvr.database.windows.net. A teljes kiszolgálónév lekérdezése:
+A kiszolgáló nevét az alábbi példában samplesvr.database.windows.net. A teljes kiszolgálónév lekérdezése:
 
 1. Nyissa meg az [Azure Portalt][Azure portal].
 2. Kattintson az **SQL-adattárházak** elemre.
@@ -35,7 +30,7 @@ Az SQL Data Warehouse-hoz való kapcsolódás első lépése a kiszolgálónév 
     ![Teljes kiszolgálónév][1]
 
 ## <a name="supported-drivers-and-connection-strings"></a>Támogatott illesztők és kapcsolati karakterláncok
-Az Azure SQL Data Warehouse a következő illesztőprogramokat támogatja: [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] és [JDBC][JDBC]. A legújabb verziók és dokumentációk megkereséséhez kattintson az egyik előző illesztőre. Az Azure Portalból használt illesztőprogram kapcsolati karakterláncának automatikusan létrehozhatja az előző példában szereplő **Adatbázis-kapcsolati karakterláncok megjelenítése** elemre kattintva.  A következő néhány példa bemutatja, hogy néz ki a kapcsolati karakterlánc az egyes illesztők esetében.
+Az Azure SQL Data Warehouse a következő illesztőprogramokat támogatja: [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] és [JDBC][JDBC]. A legújabb verzióra, és dokumentáció található, kattintson az előző illesztőprogramokat. A kapcsolati karakterlánc az Ön által használt illesztőprogram automatikus generálása az Azure-portálon, kattintson a a **adatbázis-kapcsolati karakterláncok megjelenítése** az előző példából. A következő néhány példa bemutatja, hogy néz ki a kapcsolati karakterlánc az egyes illesztők esetében.
 
 > [!NOTE]
 > Javasoljuk, hogy a kapcsolat időkorlátjának 300 másodpercet adjon meg, hogy a kapcsolat rövid idejű kimaradások esetén is fennmaradjon.

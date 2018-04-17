@@ -1,28 +1,27 @@
 ---
-title: "Az SQL Data Warehouse beállítások csoportosítás |} Microsoft Docs"
-description: "Ötletek a csoport beállításai az Azure SQL Data Warehouse adattárházzal történő, megoldások."
+title: Csoport használata az Azure SQL Data Warehouse beállítások |} Microsoft Docs
+description: Ötletek a csoport beállításai az Azure SQL Data Warehouse adattárházzal történő, megoldások.
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
-ms.assetid: f95a1e43-768f-4b7b-8a10-8a0509d0c871
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: queries
-ms.date: 10/31/2016
-ms.author: jrj;barbkess
-ms.openlocfilehash: da71cb834c13da5d0f5690f471efc6c696163f30
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/12/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: 98d2ecfd2f38d086e50f3103b8598b1dccc9323b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="group-by-options-in-sql-data-warehouse"></a>Az SQL Data Warehouse beállítások szerint kell csoportosítani
-A [GROUP BY] [ GROUP BY] záradék használatával sorok összefoglaló készlete összesített adatokat. Azt is meg funkciókat, amelyeket dolgozott körül, mivel azok nem közvetlenül által támogatott Azure SQL Data Warehouse kibővítő néhány lehetőség.
+Ötletek a csoport beállításai az Azure SQL Data Warehouse adattárházzal történő, megoldások.
+
+## <a name="what-does-group-by-do"></a>Mit jelent a GROUP BY?
+
+A [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql) T-SQL záradék összesíti az adatokat sorok összefoglaló készlete. A GROUP BY rendelkezik néhány lehetőség, amely az SQL Data Warehouse nem támogatja. Ezek a beállítások a lehetséges megoldások rendelkeznek.
 
 Ezek a beállítások
 
@@ -31,10 +30,9 @@ Ezek a beállítások
 * A GROUP BY ADATKOCKA
 
 ## <a name="rollup-and-grouping-sets-options"></a>Rollup és grouping sets beállítások
-A legegyszerűbb lehetőség `UNION ALL` inkább a kumulatív frissítést végrehajtásához ahelyett, hogy a explicit szintaxis hagyatkoznia. Eredménye nem pontosan ugyanaz
+A legegyszerűbb lehetőség meg használni kívánt UNION ALL inkább a kumulatív frissítést ahelyett, hogy a explicit szintaxis hagyatkoznia. Eredménye nem pontosan ugyanaz
 
-Az alábbiakban látható egy példa egy csoport utasítás használatával a `ROLLUP` lehetőséget:
-
+A következő példa a KUMULATÍV kapcsolóval használja a GROUP BY utasítást:
 ```sql
 SELECT [SalesTerritoryCountry]
 ,      [SalesTerritoryRegion]
@@ -48,13 +46,13 @@ GROUP BY ROLLUP (
 ;
 ```
 
-ÖSSZESÍTŐ használatával a következő összesítések kért azt:
+A ROLLUP, az előző példában a következő összesítések kéri:
 
 * Ország és régió
 * Ország
 * Végösszeg
 
-Lecseréli a használatához szüksége lesz `UNION ALL`; adja meg az összesítéseket, explicit módon kell ugyanazt az eredményt adja vissza:
+Cserélje le a ROLLUP, és ugyanazt az eredményt adja vissza, használhatja a UNION ALL és explicit módon adja meg a szükséges összesítések:
 
 ```sql
 SELECT [SalesTerritoryCountry]
@@ -81,10 +79,10 @@ FROM  dbo.factInternetSales s
 JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritoryKey;
 ```
 
-A GROUPING SETS összes végrehajtásához igazolnia kell elfogadják ugyanazt az egyszerű szolgáltatásnevet, de csak a UNION ALL szakaszok az összesítési szintjeinek szeretnénk megnézni létrehozása
+Lecseréli a GROUPING SETS, a minta elvet. Csak a csoportosítási szintek meg szeretné tekinteni a UNION ALL szakaszok létrehozásához szükséges.
 
 ## <a name="cube-options"></a>Adatkocka-beállítások
-Azt is létrehozhat egy csoport által a KOCKA a UNION ALL módszer használatával. A probléma oka, hogy a kód nehézkes és kezelése nehézkessé vehet. Ennek orvoslása ezzel fejlettebb módszert.
+Azt is létrehozhat egy csoport által a KOCKA a UNION ALL módszer használatával. A probléma oka, hogy a kód nehézkes és kezelése nehézkessé vehet. Ennek orvoslása érdekében ezzel fejlettebb módszert.
 
 Most használja a fenti példa.
 
@@ -119,9 +117,9 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-A CTAS eredményeinek alább látható:
+A következő a CTAS eredményeit jeleníti meg:
 
-![][1]
+![Csoportosítási szempont adatkocka](media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png)
 
 A második lépése, hogy adja meg a céltábla köztes eredmények tárolására:
 
@@ -170,7 +168,7 @@ BEGIN
 END
 ```
 
-Végül azt térhet vissza az eredményeket a #Results ideiglenes táblából egyszerűen beolvasásával
+Végül térhet vissza az eredményeket a #Results ideiglenes táblából egyszerűen beolvasásával
 
 ```sql
 SELECT *
@@ -179,19 +177,8 @@ ORDER BY 1,2,3
 ;
 ```
 
-A kód összeállításának részre, és olyan ismétlési konstrukció generálása a kód lesz kezelhető, és fenntarthatóvá.
+A kód összeállításának szakaszokra, és olyan ismétlési konstrukció létrehozásakor, a kód lesz kezelhető, és fenntarthatóvá.
 
-## <a name="next-steps"></a>Következő lépések
-További fejlesztési tippek, lásd: [fejlesztői áttekintés][development overview].
+## <a name="next-steps"></a>További lépések
+További fejlesztési tippek, lásd: [fejlesztői áttekintés](sql-data-warehouse-overview-develop.md).
 
-<!--Image references-->
-[1]: media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png
-
-<!--Article references-->
-[development overview]: sql-data-warehouse-overview-develop.md
-
-<!--MSDN references-->
-[GROUP BY]: https://msdn.microsoft.com/library/ms177673.aspx
-
-
-<!--Other Web references-->

@@ -1,8 +1,8 @@
 ---
-title: "A Python comopnents - Azure HDInsight alatt futó Apache Storm |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozzon létre egy Python-összetevők használó alatt futó Apache Storm-topológiák."
+title: A Python comopnents - Azure HDInsight alatt futó Apache Storm |} Microsoft Docs
+description: Megtudhatja, hogyan hozzon létre egy Python-összetevők használó alatt futó Apache Storm-topológiák.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: edd0ec4f-664d-4266-910c-6ecc94172ad8
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: python
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 1da38ebbe3354bbb36f68d1243b30bf2f4c5633f
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: ebfc9d5aa1c3a650a938c0a9f5fc3d047f90458d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Python használata a HDInsight alatt futó Apache Storm-topológiák fejlesztése
 
@@ -29,7 +27,7 @@ Megtudhatja, hogyan hozzon létre egy Python-összetevők használó alatt futó
 > [!IMPORTANT]
 > A jelen dokumentumban szereplő információk teszteltük a HDInsight 3.6 alatt futó Storm használatával. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-Ez a projekt kódját érhető el: [https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount).
+Ez a projekt kódját érhető el: [ https://github.com/Azure-Samples/hdinsight-python-storm-wordcount ](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -43,7 +41,7 @@ Ez a projekt kódját érhető el: [https://github.com/Azure-Samples/hdinsight-p
 
 ## <a name="storm-multi-language-support"></a>A Storm több nyelv támogatása
 
-Apache Storm használható bármely programozási nyelv használatával készítettek összetevők úgy lett kialakítva. Az összetevők kell megtudhatja, hogyan használható a [Thrift-definíciók alatt futó Storm](https://github.com/apache/storm/blob/master/storm-core/src/storm.thrift). Python a modul biztosítja az Apache Storm projekt, amely lehetővé teszi, hogy könnyen csatoló Storm részeként. A modul található [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py).
+Apache Storm használható bármely programozási nyelv használatával készítettek összetevők úgy lett kialakítva. Az összetevők kell megtudhatja, hogyan használható a [Thrift-definíciók alatt futó Storm](https://github.com/apache/storm/blob/master/storm-core/src/storm.thrift). Python a modul biztosítja az Apache Storm projekt, amely lehetővé teszi, hogy könnyen csatoló Storm részeként. A modul található [ https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py ](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py).
 
 A Storm egy Java folyamat futtatja a Java virtuális gép (JVM). Az egyéb nyelven írt összetevők vannak végre, mert magában. A Storm ezek magában stdin/stdout keresztüli üzenetküldés JSON használatával kommunikál. Összetevők közötti kommunikáció további részletek találhatók a [Multi-lang protokoll](https://storm.apache.org/documentation/Multilang-protocol.html) dokumentációját.
 
@@ -140,7 +138,7 @@ A topológia leállítása, használja a __Ctrl + C__.
     storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -r -R /topology.yaml
     ```
 
-3. A Storm felhasználói felülete segítségével megtekintheti a topológia a fürtön. A Storm felhasználói felülete https://mycluster.azurehdinsight.net/stormui helyezkedik el. Cserélje le `mycluster` elemet a fürt nevére.
+3. A Storm felhasználói felülete segítségével megtekintheti a topológia a fürtön. A Storm felhasználói felülete a következő helyen található https://mycluster.azurehdinsight.net/stormui. Cserélje le `mycluster` elemet a fürt nevére.
 
 > [!NOTE]
 > Miután elindult, a Storm-topológia fut. csak a A topológia leállítása, használja a következő módszerek egyikét:

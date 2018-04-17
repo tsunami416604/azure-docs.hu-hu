@@ -1,26 +1,24 @@
 ---
-title: "Az Event Hubs Storm - Azure HDInsight származó események feldolgozására |} Microsoft Docs"
-description: "Ismerje meg, hogyan kell feldolgozni az adatokat az Azure Event Hubs egy C# Storm-topológia hozta létre a Visual Studio, a HDInsight tools for Visual Studio használatával."
+title: Az Event Hubs Storm - Azure HDInsight származó események feldolgozására |} Microsoft Docs
+description: Ismerje meg, hogyan kell feldolgozni az adatokat az Azure Event Hubs egy C# Storm-topológia hozta létre a Visual Studio, a HDInsight tools for Visual Studio használatával.
 services: hdinsight,notification hubs
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 67f9d08c-eea0-401b-952b-db765655dad0
 ms.service: hdinsight
-ms.custom: 
+ms.custom: ''
 ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: fe1cf3eab1f0ca930b516e4ab44f1e2439cb3e07
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 475a63937ed09b4ce875465c0eb3488ce92c38be
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="process-events-from-azure-event-hubs-with-storm-on-hdinsight-c"></a>Az Azure Event Hubs (C#) futó Storm eseményeinek
 
@@ -51,7 +49,7 @@ C#-topológiák is kell használnia célként .NET 4.5.
 
 ## <a name="how-to-work-with-event-hubs"></a>Az Event Hubs használata
 
-Microsoft biztosít, amelyek segítségével kommunikál az Event Hubs egy Storm-topológia a Java-összetevők. A Java-archívumfájl (JAR), amely tartalmazza ezeket az összetevőket, egy HDInsight 3.6 kompatibilis verziója található [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar).
+Microsoft biztosít, amelyek segítségével kommunikál az Event Hubs egy Storm-topológia a Java-összetevők. A Java-archívumfájl (JAR), amely tartalmazza ezeket az összetevőket, egy HDInsight 3.6 kompatibilis verziója található [ https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar ](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar).
 
 > [!IMPORTANT]
 > Amíg az összetevők Java nyelven íródtak, könnyen használhatja őket a C#-topológiák.
@@ -132,11 +130,11 @@ Ebben az oktatóanyagban a létrehozott projekt teljes verziója letölthető [G
 
 ## <a name="download-the-event-hubs-components"></a>Az Event Hubs összetevők letöltése
 
-Töltse le az Event Hubs spout, és az összetevőt erről a boltok [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar).
+Töltse le az Event Hubs spout, és az összetevőt erről a boltok [ https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar ](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar).
 
 Hozzon létre egy könyvtárat nevű `eventhubspout`, és mentse a fájlt a könyvtárba.
 
-## <a name="configure-event-hubs"></a>Configure Event Hubs
+## <a name="configure-event-hubs"></a>Az Event Hubs konfigurálása
 
 Az Event Hubs ebben a példában az adatforrást. A "Létrehoz egy eseményközpontot" szakaszában foglaltak [Bevezetés az Event Hubs használatába](../../event-hubs/event-hubs-create.md).
 

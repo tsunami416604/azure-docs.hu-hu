@@ -1,6 +1,6 @@
 ---
-title: "Azure biztonsági és megfelelőségi tervezetének - UK hivatalos háromrétegű webes alkalmazások automatizálás"
-description: "Azure biztonsági és megfelelőségi tervezetének - UK hivatalos háromrétegű webes alkalmazások automatizálás"
+title: Azure biztonsági és megfelelőségi tervezetének - UK hivatalos háromrétegű webes alkalmazások automatizálás
+description: Azure biztonsági és megfelelőségi tervezetének - UK hivatalos háromrétegű webes alkalmazások automatizálás
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 9d95ccdd536efbff1540fab2b564e7745f5ac397
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: bb0a667c28e4ed0be3e67a7d89f10903be2c9d2a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---uk-offical-three-tier-web-applications-automation"></a>Azure biztonsági és megfelelőségi tervezetének - UK hivatalos háromrétegű webes alkalmazások automatizálás
 
@@ -185,7 +185,7 @@ A Vnetek külön erőforrásként továbbra is felügyelt, de egy, a virtuális 
 
 ### <a name="identity"></a>Identitás
 
-**Active Directory tartományi szolgáltatások**: Ez az architektúra biztosítja az Active Directory tartományi szolgáltatások központi telepítése az Azure-ban. Az Azure Active Directory végrehajtási konkrét javaslatokért tekintse meg a következő cikkeket:
+**Active Directory tartományi szolgáltatások**: Ez az architektúra biztosítja az Active Directory tartományi szolgáltatások központi telepítése az Azure-ban. Az Active Directory Azure-ban való megvalósítására vonatkozó konkrét ajánlásokért tekintse meg az alábbi cikkeket:
 
 [Az Azure Active Directory tartományi szolgáltatások (AD DS) kiterjesztése](https://docs.microsoft.com/azure/guidance/guidance-identity-adds-extend-domain).
 
@@ -211,7 +211,7 @@ Az ügyfelek is is érdemes lehet egy [a fokozott biztonság felügyeleti modell
 
 **Erőforrás-kezelés**: Azure-erőforrások, például a virtuális gépek, a virtuális hálózatokat és a terheléselosztók felügyelt révén azokat [Azure erőforráscsoportok](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groupsresource). Erőforrás-alapú hozzáférés-vezérlés szerepkörök majd rendelhetők minden erőforráscsoport csak a hitelesített felhasználóknak való hozzáférés korlátozása.
 
-**Hozzáférés-vezérlési korlátozásoknak**: használata [szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) (RBAC) kezelése a felügyelt erőforrások közé az alkalmazást a [egyéni szerepkörök](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles) RBAC segítségével korlátozható a műveletek, DevOps az egyes rétegek hajthat végre. Engedélyeket ad, ha a [legalacsonyabb jogosultsági szint elve](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1). Jelentkezzen az összes felügyeleti műveletet, és végezze el annak érdekében, hogy a konfigurációs változásokat tervezett rendszeres ellenőrzéseket.
+**Hozzáférés-vezérlési korlátozásoknak**: használata [szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (RBAC) kezelése a felügyelt erőforrások közé az alkalmazást a [egyéni szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) RBAC segítségével korlátozható a műveletek, DevOps az egyes rétegek hajthat végre. Engedélyeket ad, ha a [legalacsonyabb jogosultsági szint elve](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1). Naplózzon minden felügyeleti műveletet, és rendszeresen végezzen ellenőrzést. Így meggyőződhet arról, hogy minden konfigurációmódosítás tervezett volt.
 
 **Internet-hozzáférés**: A referencia-architektúrában használja fel a [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) , az internetes átjáró és a terheléselosztó. Egyes ügyfelek is is érdemes lehet harmadik féltől származó hálózati virtuális készülékek az további rétegek, a hálózati biztonsági alternatívájaként a [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction).
 

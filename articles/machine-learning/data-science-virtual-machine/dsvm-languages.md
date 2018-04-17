@@ -6,20 +6,20 @@ services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
-editor: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 0c780b822e80bb8fce9ef4b1d85b445ee73ae7db
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 411729155f5135c7e45588b69995274c9cac1315
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Az adatok tudományos virtuális gép támogatott nyelvek 
 
@@ -33,7 +33,7 @@ Az adatok tudományos virtuális gép (DSVM) több előre elkészített nyelvek 
 | Támogatott DSVM kiadás      | Windows Server 2016     |
 | Hogyan van azt konfigurált / a DSVM telepítve?  | A két globális `conda` környezetek jönnek létre. <br /> * `root` környezet helyen `/anaconda/` Python 3.6 van. <br/> * `python2` környezet helyen `/anaconda/envs/python2`Python 2.7 van       |
 | Minták mutató hivatkozások      | A minta Jupyter notebookok Python tartoznak.     |
-| A DSVM a kapcsolódó eszközök      | PySpark, R, Julia      |
+| A DSVM a kapcsolódó eszközök      | PySpark, R, Ágnes      |
 
 > [!NOTE]
 > Windows Server 2016. március 2018 előtt létrehozott Python 3.5-ös és a Python 2.7 tartalmazza. Python 2.7 a rendszer a conda **legfelső szintű** környezet és **py35** a Python 3.5 környezet. 
@@ -77,7 +77,7 @@ Az alapértelmezett Python-környezetek a DSVM a rendszer minden felhasználók 
 | Támogatott DSVM kiadás      | Linux, Windows Server 2012    |
 | Hogyan van azt konfigurált / a DSVM telepítve?  | A két globális `conda` környezetek jönnek létre. <br /> * `root` környezet helyen `/anaconda/` Python 2.7 van. <br/> * `py35` környezet helyen `/anaconda/envs/py35`Python 3.5 van       |
 | Minták mutató hivatkozások      | A minta Jupyter notebookok Python tartoznak.     |
-| A DSVM a kapcsolódó eszközök      | PySpark, R, Julia      |
+| A DSVM a kapcsolódó eszközök      | PySpark, R, Ágnes      |
 ### <a name="how-to-use--run-it"></a>Hogyan használja az / futtatni?    
 
 **Linux**
@@ -144,7 +144,7 @@ Az alapértelmezett Python-környezetek a DSVM a rendszer minden felhasználók 
 | Támogatott DSVM kiadás      | Linux, Windows     |
 | Hogyan van azt konfigurált / a DSVM telepítve?  | Windows: `C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux: ` /usr/lib64/microsoft-r/3.3/lib64/R`    |
 | Minták mutató hivatkozások      | Az R minta Jupyter notebookok tartoznak.     |
-| A DSVM a kapcsolódó eszközök      | SparkR, Python, Julia      |
+| A DSVM a kapcsolódó eszközök      | SparkR, Python, Ágnes      |
 ### <a name="how-to-use--run-it"></a>Hogyan használja az / futtatni?    
 
 **Windows**:
@@ -188,7 +188,7 @@ R minden felhasználó a DSVM olvasható globális környezetben van telepítve.
 
 |    |           |
 | ------------- | ------------- |
-| Támogatott nyelvi verziók | 0.6 |
+| Támogatott nyelvi verziók | 0,6 |
 | Támogatott DSVM kiadás      | Linux, Windows     |
 | Hogyan van azt konfigurált / a DSVM telepítve?  | Windows: Telepített `C:\JuliaPro-VERSION`<br /> Linux: Telepített `/opt/JuliaPro-VERSION`    |
 | Minták mutató hivatkozások      | A minta Jupyter notebookok Ágnes a tartoznak.     |

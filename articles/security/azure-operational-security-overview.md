@@ -1,12 +1,12 @@
 ---
-title: "Az Azure operational biztonsági áttekintése |} Microsoft Docs"
-description: "Ez a cikk áttekintést az Azure operational biztonsági."
+title: Az Azure operational biztonsági áttekintése |} Microsoft Docs
+description: Ez a cikk áttekintést az Azure operational biztonsági.
 services: security
 documentationcenter: na
 author: unifycloud
 manager: swadhwa
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: f656edee1460ce2bb17a582ca240e3bb4089b708
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: ca42e0cc76bc385f04cb2e010ff91dbb27bd627a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-operational-security-overview"></a>Az Azure operational biztonsági áttekintése
 Az Azure Operational biztonsági hivatkozik a szolgáltatások, a vezérlők és a felhasználók számára elérhető szolgáltatások védelmére az adatok, alkalmazások és egyéb eszközök a Microsoft Azure-ban. [Az Azure Operational biztonsági](https://docs.microsoft.com/azure/security/azure-operational-security) egy keretrendszer, amely magában foglalja a Tudásbázis a különböző képességeket, amelyeket a Microsoft, beleértve a Microsoft biztonsági fejlesztési életciklus (SDL), a Microsoft Security Response egyedi keresztül szerzett Center programot, és részletes tájékoztatást nyújthatnak a számítógépes biztonsági fenyegetésekről alkotott képet.
@@ -28,7 +28,7 @@ Ez a cikk Azure működési biztonsági áttekintése összpontosít a következ
 - Az Azure Operations Management Suite szolgáltatásban
 -   Azure Security Center
 -   Azure Monitor
--   Azure Network watcher
+-   Az Azure hálózati figyelőt
 -   Az Azure Storage analytics
 -   Azure Active directory
 
@@ -65,7 +65,7 @@ Az [Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-
 -   Központi hozzáférési kezelhető, egyszeri bejelentkezést (SSO) és a jelentéskészítési
 -   Támogatja az integrált kezelés [alkalmazások ezer](https://azure.microsoft.com/marketplace/active-directory/) az alkalmazás katalógusában, például a Salesforce, Google Apps, mezőben, Concur és egyéb.
 
-Az Azure AD is tartalmazó teljes csomag [identitáskezelési funkciói](https://docs.microsoft.com/azure/security/security-identity-management-overview#security-monitoring-alerts-and-machine-learning-based-reports) beleértve [a multi-factor authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication), [eszközregisztráció]( https://docs.microsoft.com/azure/active-directory/active-directory-device-registration-overview), [ önkiszolgáló jelszókezelés](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/), [önkiszolgáló csoportkezelési](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-update-your-own-password), [fiókkezelés privilegizált](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure), [szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is), [alkalmazás-használat figyelését](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health), [részletes naplózás](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs), és [biztonsági figyelést és riasztást](https://docs.microsoft.com/azure/operations-management-suite/oms-security-responding-alerts).
+Az Azure AD is tartalmazó teljes csomag [identitáskezelési funkciói](https://docs.microsoft.com/azure/security/security-identity-management-overview#security-monitoring-alerts-and-machine-learning-based-reports) beleértve [a multi-factor authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication), [eszközregisztráció]( https://docs.microsoft.com/azure/active-directory/active-directory-device-registration-overview), [ önkiszolgáló jelszókezelés](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/), [önkiszolgáló csoportkezelési](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-update-your-own-password), [fiókkezelés privilegizált](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure), [szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/azure/role-based-access-control/overview), [alkalmazás-használat figyelését](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health), [részletes naplózás](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs), és [biztonsági figyelést és riasztást](https://docs.microsoft.com/azure/operations-management-suite/oms-security-responding-alerts).
 
 Az Azure Active Directoryval minden alkalmazás közzététele a partnerek és ügyfelek (üzleti vagy fogyasztó) ugyanazzal az identitással rendelkezik, és hozzáférés-kezelési képességeket. Ez lehetővé teszi, hogy jelentősen csökkenti a működési költségek.
 
@@ -80,7 +80,7 @@ Az Azure Active Directoryval minden alkalmazás közzététele a partnerek és �
 -   Lemeztitkosítás ellenőrzése
 -   Hálózati támadás
 
-Az Azure Security Center által használt [szerepköralapú hozzáférés-vezérlést (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure), amely biztosítja [beépített szerepkörök](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) , hogy a felhasználók, csoportok és az Azure rendelhető.
+Az Azure Security Center által használt [szerepköralapú hozzáférés-vezérlést (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), amely biztosítja [beépített szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) , hogy a felhasználók, csoportok és az Azure rendelhető.
 
 A Security Center értékeli a konfigurációs az erőforrások biztonsági problémák és biztonsági rések azonosítása. A biztonsági központban csak akkor jelenik meg egy erőforrás tulajdonos, közreműködő vagy olvasó szerepkört az előfizetés vagy az erőforráscsoportot, amelyhez tartozik egy erőforrás hozzárendelése esetén kapcsolatos adatokat.
 
@@ -109,7 +109,7 @@ A napló, amely a erőforrást az előfizetésében végrehajtott műveletek bet
 
 Például Windows rendszer-eseménynaplói diagnosztikai napló a virtuális gépek és a blob, a tábla egy kategóriát, és várólista naplók diagnosztikai naplók kategóriáinak storage-fiókok.
 
-Diagnosztikai naplók eltérnek a [tevékenységnapló (korábbi nevén napló tartalmát, vagy a műveleti napló)](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). A műveletnapló erőforrást az előfizetésében a végrehajtott műveletek betekintést nyújt. Diagnosztikai naplók Észreveheti az olyan műveletek, hogy az erőforrás végre magát.
+Diagnosztikai naplók eltérnek a [tevékenységnapló (korábbi nevén napló tartalmát, vagy a műveleti napló)](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). A műveletnapló erőforrást az előfizetésében a végrehajtott műveletek betekintést nyújt. A diagnosztikai naplókban az erőforrás által végrehajtott műveletekkel kapcsolatos információk találhatók meg.
 
 ### <a name="metrics"></a>Mérőszámok
 Azure figyelő címinfrastruktúra megjelenítési lehetőségeinek a teljesítmény- és a munkaterhelések Azure állapot telemetriai adatok felhasználását teszi lehetővé. A legfontosabb Azure telemetriai adatok típus (más néven teljesítményszámlálók) vagy az Azure erőforrások által kibocsátott metrikákat. Az Azure figyelő többféleképpen is konfigurálhatja, és felhasználhatják ezeket [metrikák](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) figyelés és hibaelhárítás céljából.

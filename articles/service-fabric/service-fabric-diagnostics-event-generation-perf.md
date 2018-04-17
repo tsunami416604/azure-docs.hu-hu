@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: b19a2db85b2e1cc4c5f79f6b0dee97965f40ef88
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 3784cb6f713c5ce476ab980122ee6ec9fa3ebc59
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="performance-metrics"></a>Teljesítmény-mérőszámok
 
@@ -30,17 +30,17 @@ A gépek a fürt érdemes lehet jobban megismerni a minden gép terhelését, é
 
 | Teljesítményszámláló-kategóriája | Számláló neve |
 | --- | --- |
-| Fizikai lemez (lemezenként) | Avg. Olvasási Lemezvárólista hossza |
-| Fizikai lemez (lemezenként) | Avg. Írási Lemezvárólista hossza |
-| Fizikai lemez (lemezenként) | Avg. Lemez mp/Olvasás |
-| Fizikai lemez (lemezenként) | Avg. Lemez mp/írás |
+| Fizikai lemez (lemezenként) | Átlagos Olvasási Lemezvárólista hossza |
+| Fizikai lemez (lemezenként) | Átlagos Írási Lemezvárólista hossza |
+| Fizikai lemez (lemezenként) | Átlagos Lemez mp/Olvasás |
+| Fizikai lemez (lemezenként) | Átlagos Lemez mp/írás |
 | Fizikai lemez (lemezenként) | Lemezolvasások/mp |
 | Fizikai lemez (lemezenként) | Lemezolvasási sebesség (bájt/s) |
 | Fizikai lemez (lemezenként) | Lemezírás/mp |
 | Fizikai lemez (lemezenként) | Lemezírási sebesség (bájt/s) |
 | Memory (Memória) | Rendelkezésre álló memória (MB) |
 | PagingFile | Kihasználtsága |
-| Processor(Total) | Processzor kihasználtsága |
+| Processor(total) | Processzor kihasználtsága |
 | Folyamat száma (szolgáltatás) | Processzor kihasználtsága |
 | Folyamat száma (szolgáltatás) | A folyamatot |
 | Folyamat száma (szolgáltatás) | A saját memória |
@@ -75,7 +75,7 @@ A Service Fabric egyéni teljesítményszámlálóit jelentős mennyiségű áll
 
 Az alkalmazások üzembe helyezi a fürthöz, ha Reliable Actors használ, adja hozzá a countes `Service Fabric Actor` és `Service Fabric Actor Method` kategóriák (lásd: [Service Fabric megbízható szereplője diagnosztika](service-fabric-reliable-actors-diagnostics.md)).
 
-Ha Reliable Services használatához hasonló módon kell `Service Fabric Service` és `Service Fabric Service Method` kell gyűjtése teljesítményszámláló-kategóriák a teljesítményszámlálók. 
+Használatakor a távelérési szolgáltatás, hasonlóképpen tudunk `Service Fabric Service` és `Service Fabric Service Method` kell gyűjtése teljesítményszámláló-kategóriák a teljesítményszámlálók. 
 
 Megbízható gyűjtemények használatakor, azt javasoljuk, hogy a `Avg. Transaction ms/Commit` a a `Service Fabric Transactional Replicator` / tranzakció metrika az átlagos véglegesítési késés gyűjtéséhez.
 

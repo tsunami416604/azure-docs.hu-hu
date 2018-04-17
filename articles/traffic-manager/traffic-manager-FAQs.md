@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/18/2018
 ms.author: kumud
-ms.openlocfilehash: d9db669ab905fb51390f6ca80736af4cde13d902
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 18a0ca32f51e6c1be01e59c3899bc2e625868cad
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>A TRAFFIC Manager gyakori kérdések (GYIK)
 
@@ -233,7 +233,7 @@ Forgalom nézet árképzési a kimeneti létrehozásához használt adatpontok s
 
 Több előfizetés végpontok használata nem lehetséges az Azure Web Apps. Az Azure Web Apps megköveteli, hogy bármely a webalkalmazásokkal használt egyéni tartománynév csak egyetlen előfizetéssel belül használják. Nincs lehetőség a Web Apps használja több előfizetéssel, valamint az ugyanazon a néven.
 
-Más típusú végpontok esetében célszerű a Traffic Manager végpontokon egynél több előfizetésnek a használatát. Az erőforrás-kezelőben a bármely előfizetés is lehet végpontokat hozzáadni a Traffic Manager mindaddig, amíg a személy a Traffic Manager-profil konfigurálása a végpont olvasási hozzáféréssel rendelkezik. Ezek az engedélyek segítségével engedélyezhetők [Azure Resource Manager szerepköralapú hozzáférés-vezérlést (RBAC)](../active-directory/role-based-access-control-configure.md).
+Más típusú végpontok esetében célszerű a Traffic Manager végpontokon egynél több előfizetésnek a használatát. Az erőforrás-kezelőben a bármely előfizetés is lehet végpontokat hozzáadni a Traffic Manager mindaddig, amíg a személy a Traffic Manager-profil konfigurálása a végpont olvasási hozzáféréssel rendelkezik. Ezek az engedélyek segítségével engedélyezhetők [Azure Resource Manager szerepköralapú hozzáférés-vezérlést (RBAC)](../role-based-access-control/role-assignments-portal.md).
 
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>Használhatom a Traffic Manager Felhőszolgáltatás "Átmeneti" üzembe helyezési ponti?

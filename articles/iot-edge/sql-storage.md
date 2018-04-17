@@ -10,11 +10,11 @@ ms.reviewer: ebertrams
 ms.date: 02/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: c755d171b34d59d2746a965ab3511a0df00c98db
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: d464bbfb9f38b184e47911a7224be8ec8679f0be
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="store-data-at-the-edge-with-sql-server-databases"></a>SQL Server-adatbázisok a peremhálózaton adatok tárolásához
 
@@ -35,14 +35,14 @@ A következő cikkekben sikeresen az oktatóanyag elvégzéséhez nem szüksége
 A szükséges oktatóanyagok elvégzése után készen áll az összes szükséges előfeltételeket kell a számítógépre: 
 * Egy aktív Azure IoT-központot.
 * Legalább 2 GB RAM és a 2 GB-os meghajtó IoT peremhálózati eszköz.
-* [A Visual Studio Code](https://code.visualstudio.com/). 
-* [Azure IoT Edge-bővítményt a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge). 
-* [C# (OmniSharp technológiával) Visual Studio Code-bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp). 
+* [Visual Studio Code](https://code.visualstudio.com/). 
+* [Azure IoT Edge-bővítmény a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge). 
+* [C# bővítmény a Visual Studio Code-hoz (szolgáltató: OmniSharp) ](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp). 
 * [Docker](https://docs.docker.com/engine/installation/)
-* [.NET 2.0 SDK alapvető](https://www.microsoft.com/net/core#windowscmd). 
+* [.NET Core 2.0 SDK](https://www.microsoft.com/net/core#windowscmd). 
 * [Python 2.7](https://www.python.org/downloads/)
 * [Az IoT-Edge vezérlő parancsfájl](https://pypi.python.org/pypi/azure-iot-edge-runtime-ctl)
-* AzureIoTEdgeFunction template (`dotnet new -i Microsoft.Azure.IoT.Edge.Function`)
+* AzureIoTEdgeFunction sablon (`dotnet new -i Microsoft.Azure.IoT.Edge.Function`)
 * Egy aktív IoT hubot legalább egy IoT peremhálózati eszköz.
 
 Az oktatóanyag működjön processzorarchitektúrák x64 Windows és Linux tárolók. SQL Server nem támogatja az ARM-processzort.
@@ -98,7 +98,7 @@ Alapértelmezés szerint ez a szakasz a kód tárolót hoz létre az SQL Server 
 3. Cserélje le a `<docker registry address>` kitölteni a befejezett oktatóanyag címmel [Azure funkciót központi telepítése egy IoT peremhálózati modul – előzetes](https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-deploy-function)
 
    >[!NOTE]
-   >A tároló beállításjegyzék cím megegyezik a bejelentkezési kiszolgáló másolt a beállításjegyzékből. Meg kell formájában `<your container registry name>.azurecr.io`
+   >A tárolóregisztrációs adatbázis címe megegyezik a bejelentkezési kiszolgáló címével, amelyet a beállításjegyzékből másolt ki. Meg kell formájában `<your container registry name>.azurecr.io`
 
 4. Attól függően, hogy az operációs rendszer Ön által futtatott frissítse az SQL-modul beállításait az alábbi kódra: 
 
@@ -106,7 +106,7 @@ Alapértelmezés szerint ez a szakasz a kód tárolót hoz létre az SQL Server 
 
       ```json
       "image": "microsoft/mssql-server-windows-developer",
-      "createOptions": "{\"Env\": [\"ACCEPT_EULA=Y\",\"MSSQL_SA_PASSWORD=Strong!Passw0rd\"],\"HostConfig\": {\"Mounts\": [{\"Target\": \"C:\\\\mssql\",\"Source\": \"sqlVolume\",\"Type\": \"volume\"}],\"PortBindings\": {\"1433/tcp\": [{\"HostPort\": \"1401\"}]}}"
+      "createOptions": "{\"Env\": [\"ACCEPT_EULA=Y\",\"MSSQL_SA_PASSWORD=Strong!Passw0rd\"],\"HostConfig\": {\"Mounts\": [{\"Target\": \"C:\\\\mssql\",\"Source\": \"sqlVolume\",\"Type\": \"volume\"}],\"PortBindings\": {\"1433/tcp\": [{\"HostPort\": \"1401\"}]}}}"
       ```
 
    * Linux:
@@ -297,7 +297,7 @@ A végrehajtott módosítások alkalmazásához a tároló lemezképét, tegye k
 2. A platform-használata alapján, bontsa ki a **windows-nano** vagy **linux-x64** mappa. 
 3. Kattintson a jobb gombbal a **Dockerfile** fájlt, és válassza ki **Build IoT peremhálózati modul Docker kép**.
 4. Keresse meg a **FilterFunction** projektmappa, és kattintson **jelölje ki a mappát, EXE_DIR**.
-5. Az előugró szövegmezőben a Visual STUDIO Code ablak tetején adja meg a lemezkép nevét. Például: `<your container registry address>/filterfunction:latest`. Ha egy helyi beállításjegyzék telepíti, a névnek kell lennie `<localhost:5000/filterfunction:latest>`.
+5. A VS Code-ablak tetején lévő előugró szövegmezőbe írja be a rendszerkép nevét. Például: `<your container registry address>/filterfunction:latest`. Ha egy helyi beállításjegyzék telepíti, a névnek kell lennie `<localhost:5000/filterfunction:latest>`.
 6. Válassza ki a Visual STUDIO Code parancs paletta **peremhálózati: leküldéses IoT peremhálózati modul Docker kép**. 
 7. Előugró szövegmezőben adja meg a lemezkép néven. 
 8. Válassza ki a Visual STUDIO Code parancs paletta **peremhálózati: Indítsa újra a peremhálózati**.

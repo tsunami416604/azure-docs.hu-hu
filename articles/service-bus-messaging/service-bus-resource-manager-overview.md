@@ -1,24 +1,24 @@
 ---
-title: "Azure Service Bus erőforrásainak használata a Resource Manager-sablonok létrehozása |} Microsoft Docs"
-description: "Service Bus erőforrásainak automatizálhatja az Azure Resource Manager-sablonok segítségével"
+title: Azure Service Bus erőforrásainak használata a Resource Manager-sablonok létrehozása |} Microsoft Docs
+description: Service Bus erőforrásainak automatizálhatja az Azure Resource Manager-sablonok segítségével
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 24f6a207-0fa4-49cf-8a58-963f9e2fd655
 ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 11/10/2017
+ms.date: 04/11/2018
 ms.author: sethm
-ms.openlocfilehash: 0ceeb138a7432e51cabe2597c680cb01ea9eac4a
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 876b1c30c09f31958555ff3dee769d8dd443a60d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Service Bus erőforrásainak használata Azure Resource Manager-sablonok létrehozása
 
@@ -61,7 +61,7 @@ Azure PowerShell telepítése utasításait követve [Ismerkedés az Azure Power
 
 ### <a name="create-a-template"></a>Sablon létrehozása
 
-Klónozott vagy másolása a [201-szolgáltatásbusz--várólista létrehozása](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.json) sablont a Githubból:
+Klónozza a tárházat vagy másolása a [201-szolgáltatásbusz--várólista létrehozása](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.json) sablont a Githubból:
 
 ```json
 {
@@ -251,7 +251,7 @@ Parameters        :
 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most láthatta, a munkafolyamat alapvető és parancsok telepítése Azure Resource Manager-sablonok. További részletes információkért látogasson el az alábbi hivatkozásokra:
 
 * [Az Azure Resource Manager áttekintése][Azure Resource Manager overview]

@@ -1,6 +1,6 @@
 ---
-title: "Azure által felügyelt alkalmazások a piactéren |} Microsoft Docs"
-description: "Ismerteti az Azure által felügyelt alkalmazások elérhető a piactéren keresztül."
+title: Azure által felügyelt alkalmazások a piactéren |} Microsoft Docs
+description: Ismerteti az Azure által felügyelt alkalmazások elérhető a piactéren keresztül.
 services: azure-resource-manager
 author: tfitzmac
 manager: timlt
@@ -10,11 +10,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 03/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: 61815098a4935983f19b3dcea6e001230aee4771
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 753e13ea0dbfc7fe0c74987e1383f71329b76a63
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>A piactéren Azure kezelt alkalmazások
 
@@ -107,7 +107,7 @@ A Termékváltozat jelenik meg, az a szülő-ajánlat a piactéren. Úgy tűnik,
 
 Több engedélyeket adhat hozzá. Javasoljuk, hogy hozzon létre az Active Directory-felhasználók csoportnak, és adja meg az Azonosítót a **PrincipalId**. Ezzel a módszerrel adhat hozzá további felhasználókat a felhasználói csoport a Termékváltozat módosítása nélkül.
 
-Az RBAC kapcsolatos további információkért lásd: [RBAC az első lépései az Azure portálon](../active-directory/role-based-access-control-what-is.md).
+Az RBAC kapcsolatos további információkért lásd: [RBAC az első lépései az Azure portálon](../role-based-access-control/overview.md).
 
 ## <a name="marketplace-form"></a>Piactér képernyő
 

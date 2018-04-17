@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2017
 ms.author: johnkem
-ms.openlocfilehash: 81f083b799e359f69605de22c30d3adc4480e44b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 248d45a59fa2769c4cfcc4b169bd9e61059f11b0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Ismerkedés a szerepkörök, engedélyek és biztonságának és az Azure-figyelő
 Sok csapatok kell szigorúan szabályozzák, figyelési adatok és beállítások. Például ha vannak olyan dolgozó kizárólag figyelése (a támogatási szakértők, devops mérnökök) csoport tagjai, vagy ha egy felügyelt szolgáltató használja, érdemes lehet hozzáférést azokat csak figyelési adatok korlátozásával létrehozása, módosítása, vagy törli az erőforrást. Ez a cikk bemutatja, hogyan gyorsan figyelési beépített RBAC szerepkör alkalmazni a felhasználók az Azure-ban vagy a saját egyéni szerepkör a felhasználókat, akiknek korlátozott felügyeleti engedélyekkel. A cikk ismerteti az Azure-figyelő kapcsolódó erőforrások és hogyan korlátozhatja az adatok tartalmazzák a hozzáférést a biztonsági szempontok majd.
@@ -71,7 +71,7 @@ A figyelési közreműködői szerepkör hozzárendelése mások is láthatják 
 > 
 
 ## <a name="monitoring-permissions-and-custom-rbac-roles"></a>Figyelési engedélyek és egyéni RBAC-szerepkörök
-Ha a fenti beépített szerepkörök nem felelnek meg a csoport pontos igényeinek, akkor [hozzon létre egy egyéni RBAC szerepkör](../active-directory/role-based-access-control-custom-roles.md) részletesebb engedélyekkel. Az alábbiakban azok leírásait tartalmazza az általános Azure RBAC-figyelő műveleteket.
+Ha a fenti beépített szerepkörök nem felelnek meg a csoport pontos igényeinek, akkor [hozzon létre egy egyéni RBAC szerepkör](../role-based-access-control/custom-roles.md) részletesebb engedélyekkel. Az alábbiakban azok leírásait tartalmazza az általános Azure RBAC-figyelő műveleteket.
 
 | Művelet | Leírás |
 | --- | --- |
@@ -125,7 +125,7 @@ Ezek az adattípusok három storage-fiókban tárolt, vagy Eseményközpont, ame
 
 * A figyelési adatok dedikált tárolási fiók használata. Figyelési adatok több tárfiókot külön kell, ha ne ossza meg a storage-fiókok között figyelés használatát, és előfordulhat, hogy nem figyelési adatok, ez véletlenül adjon azok, akik csak a figyelési adatok (például egy harmadik fél SIEM) hozzáféréssel kell rendelkezniük hozzáférést nem figyelési adatokat.
 * Használja a dedikált Service Bus vagy az Event Hubs-névtér összes diagnosztikai beállítások ugyanebből az okból a fenti.
-* Korlátozhatja az kapcsolatos megfigyelési tárfiók vagy az event hubs egy külön erőforráscsoportot tartva és [hatókört használja](../active-directory/role-based-access-control-what-is.md#basics-of-access-management-in-azure) a figyelési szerepkörökhöz való hozzáférés csak ennek az erőforráscsoportnak korlátozására.
+* Korlátozhatja az kapcsolatos megfigyelési tárfiók vagy az event hubs egy külön erőforráscsoportot tartva és [hatókört használja](../role-based-access-control/overview.md#basics-of-access-management-in-azure) a figyelési szerepkörökhöz való hozzáférés csak ennek az erőforráscsoportnak korlátozására.
 * Soha nem engedélyt ListKeys storage-fiókok vagy az event hubs előfizetési hatókört, ha a felhasználó csak nem figyelési adatok eléréséhez. Ehelyett biztosítják azokat az engedélyeket a felhasználó egy erőforrás vagy az erőforráscsoportot, (ha van egy dedikált figyelési erőforráscsoport) hatókör.
 
 ### <a name="limiting-access-to-monitoring-related-storage-accounts"></a>Figyelési kapcsolatos tárfiókok való hozzáférés korlátozása
@@ -178,6 +178,6 @@ Az event hubs gyűjtheti hasonló mintát, de először hozzon létre egy dedik�
    ```
 
 ## <a name="next-steps"></a>További lépések
-* [További tudnivalók a Szerepalapú és engedélyeket az erőforrás-kezelőben](../active-directory/role-based-access-control-what-is.md)
+* [További tudnivalók a Szerepalapú és engedélyeket az erőforrás-kezelőben](../role-based-access-control/overview.md)
 * [Olvassa el az Azure-ban Figyelés áttekintése](monitoring-overview.md)
 

@@ -1,11 +1,11 @@
 ---
-title: "Az Azure hibrid kapcsolatok protokoll útmutató |} Microsoft Docs"
-description: "Az Azure hibrid kapcsolatok protokoll útmutató."
+title: Az Azure hibrid kapcsolatok protokoll útmutató |} Microsoft Docs
+description: Az Azure hibrid kapcsolatok protokoll útmutató.
 services: service-bus-relay
 documentationcenter: na
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 149f980c-3702-4805-8069-5321275bc3e8
 ms.service: service-bus-relay
 ms.devlang: na
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: sethm
-ms.openlocfilehash: 43c40baa74b3f7c1f5c9d6626b25bcd45c2f9a10
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 1979746d143dbf8c3f4bca3f9a3a7925fe8e3f0d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Az Azure hibrid kapcsolatok protokoll
-Az Azure továbbítási az Azure Service Bus platform a fő funkció oszlopok egyike. Az új *hibrid kapcsolatok* továbbító egy biztonságos, nyílt-protokoll alakulása a HTTP és a websocket elemek alapján. Azt írja felül a volt, ugyanilyen nevű *BizTalk szolgáltatások* funkciója, amely a saját fejlesztésű protokollja alaprendszert lett létrehozva. Hibrid kapcsolatok integrálása Azure App Service szolgáltatások továbbra is működjön-van.
+Az Azure továbbítási az Azure Service Bus platform a fő funkció oszlopok egyike. Az új *hibrid kapcsolatok* továbbító egy biztonságos, nyílt-protokoll alakulása a HTTP és a websocket elemek alapján. Azt írja felül a volt, azonos nevű *BizTalk szolgáltatások* funkciója, amely a saját fejlesztésű protokollja alaprendszert lett létrehozva. Hibrid kapcsolatok integrálása Azure App Service szolgáltatások továbbra is működjön-van.
 
 Hibrid kapcsolatok lehetővé teszi, hogy kétirányú, bináris adatfolyam közötti kommunikáció során, ami esetleg mindkét félnek elhelyezkedhetnek NAT vagy tűzfal mögé két hálózati alkalmazások. Ez a cikk ismerteti a hibrid kapcsolatok relay csatlakozó ügyfeleken figyelő küldő szerepkörök és hogyan figyelői új kapcsolatok fogadásához ügyféloldali interakció.
 
 ## <a name="interaction-model"></a>Interakció modell
 A hibrid kapcsolatok továbbítási azáltal, hogy az Azure felhőben, amelyek mind a felek felderíteni, és a saját hálózati szempontból csatlakozni a szinkronizálási pont csatlakozik a két fél. A szinkronizálási pont "Hibrid kapcsolat" Ebben és egyéb dokumentációt neve API-kban és az Azure portálon. A hibrid kapcsolatok szolgáltatási végpont a "szolgáltatás" Ez a cikk a többi nevezzük. A kommunikáció modell leans a sok más hálózati API-k által létrehozott.
 
-Egy figyelő, amely először azt jelzi, hogy készültségi bejövő kapcsolat kezelésére, és ezt követően fogadja el őket, akkor van. A másik oldalon a figyelő vár, hogy kapcsolatot létrehozó kétirányú kommunikáció elérési elfogadja felé kapcsolódó ügyfél van.
+Egy figyelő, amely először azt jelzi, hogy készültségi bejövő kapcsolat kezelésére, és ezt követően fogadja el őket, akkor van. A másik oldalon nincs csatlakozó ügyfél, amely kapcsolatot biztosít a figyelőhöz, kétirányú kommunikáció elérési létrehozó elfogadja, hogy kapcsolatot vár.
 "Csatlakozás", "Figyelés" és "Elfogadása" is az azonos feltételeket legtöbb szoftvercsatorna API-kat is megtalálhatók.
 
-A továbbítón keresztüli kommunikáció modellnek vagy fél kimenő kapcsolatok felé egy végpontot, amely lehetővé teszi a "figyelő" is "ügyfél" köznyelvi használja, és más terminológiát túlterhelések okozhat. A pontos, ezért használjuk a hibrid kapcsolatok terminológia a következőképpen történik:
+A továbbítón keresztüli kommunikáció modell mindkét felek felé egy végpontot, így a "figyelő" is "ügyfél" kimenő kapcsolatok köznyelvi használatban van, és más terminológiát túlterhelések okozhat. A pontos, ezért használjuk a hibrid kapcsolatok terminológia a következőképpen történik:
 
 A kapcsolat mindkét oldalán programok "ügyfelek," nevezzük, mivel azok az ügyfelek számára a szolgáltatás. Megvárja, és a kapcsolatokat fogad ügyfél a "figyelő", vagy a "figyelő szerepkörben.", különállónak Az ügyfélnek, amelyik a szolgáltatáson keresztül figyelő felé új kapcsolatot kezdeményez a "feladó" nevezik, vagy a "feladó szerepkör."
 
@@ -40,10 +40,10 @@ A figyelő rendelkezik a szolgáltatás; négy interakciók összes átviteli r�
 
 #### <a name="listen"></a>Figyelés
 Jelzi a szolgáltatás, amely egy figyelő készen állnak készen áll kapcsolatok fogadására létrehoz egy kimenő WebSocket-kapcsolat. A kapcsolati kézfogás hordoz magában, ha a továbbítási névteret, és egy biztonsági jogkivonatot, amely a "figyelés" jogot a ruház neve konfigurálva hibrid kapcsolat neve.
-A WebSocket a szolgáltatás által elfogadható, ha a regisztrálása sikeresen befejeződött, és a meglévő webes WebSocket megőrzi életben csatornaként"vezérlő" minden későbbi kapcsolatok engedélyezéséhez. A szolgáltatás lehetővé teszi, hogy legfeljebb 25 párhuzamos figyelők a hibrid kapcsolat. Ha két vagy több aktív figyelők, a bejövő kapcsolatok elosztását mindegyik véletlenszerű sorrendben; igazságos elosztási nem garantált.
+A WebSocket a szolgáltatás által elfogadható, ha a regisztrálása sikeresen befejeződött, és a meglévő WebSocket életben csatornaként"vezérlő" minden ezt követő kapcsolati engedélyezésének megőrzi. A szolgáltatás lehetővé teszi, hogy legfeljebb 25 párhuzamos figyelők a hibrid kapcsolat. Ha két vagy több aktív figyelők, a bejövő kapcsolatok elosztását mindegyik véletlenszerű sorrendben; igazságos elosztási nem garantált.
 
 #### <a name="accept"></a>Elfogadás
-A küldő a szolgáltatás az új kapcsolat megnyitása után a szolgáltatás úgy dönt, és értesíti a hibrid kapcsolat aktív figyelőinek egyikét. A rendszer értesítést küld a figyelő keresztül nyissa meg a vezérlőcsatorna, amelyek a figyelő csatlakoztatni kell a kapcsolat elfogadása a WebSocket-végpont URL-CÍMÉT tartalmazó JSON üzenetben.
+A küldő a szolgáltatás az új kapcsolat megnyitása után a szolgáltatás úgy dönt, és értesíti a hibrid kapcsolat aktív figyelőinek egyikét. A rendszer értesítést küld a figyelő a nyitott vezérlő csatornán a WebSocket-végpontot, amely a figyelő csatlakoztatni kell ahhoz, hogy fogadja el a kapcsolat URL-CÍMÉT tartalmazó JSON üzenetben.
 
 Az URL-címet is, és közvetlenül a figyelő extra munka nélkül kell használniuk.
 A kódolt információt csak érvénytelen, a rövid idő alatt, lényegében, az addig, amíg a küldője hajlandó várnia kell lennie a meghatározott-végpontok közötti kapcsolat, de legfeljebb 30 másodperc. Az URL-cím csak egy sikeres kapcsolódási kísérlet portbesorolása. Amint a szinkronizálási URL-címet a WebSocket-kapcsolat létrejött, a WebSocket minden további tevékenység a kezdő és a feladó, a szolgáltatás értelmezése vagy beavatkozás nélkül a továbbítón keresztüli.
@@ -52,7 +52,7 @@ A kódolt információt csak érvénytelen, a rövid idő alatt, lényegében, a
 A biztonsági jogkivonatot kell használni a figyelő regisztrálása és karbantartása a vezérlőcsatorna előfordulhat, hogy lejár, amíg a figyelő aktív. A jogkivonat lejáratának nem befolyásolja a folyamatban lévő kapcsolatok, de ennek következtében a vezérlőcsatorna, illetve hamarosan lejáró időpontjában után a szolgáltatás megszakad. A "megújítása" művelet egy JSON-üzenetet, amely a figyelő küldhet, hogy a vezérlőcsatorna hosszabb ideig is megőrizhető, cserélje le a jogkivonatot a vezérlőcsatorna társított.
 
 #### <a name="ping"></a>Ping
-Ha hosszú ideje, a a módszerrel a közvetítők tétlen marad a vezérlőcsatorna terhelés például terheléselosztó vagy NAT dobhatja TCP-kapcsolatot. A "ping" művelet elkerülhető, hogy úgy, hogy a csatornán, is emlékezteti, hogy a kapcsolat az célja, hogy kell életben, és azt is szolgál egy "élő" tesztet a figyelő a hálózati útvonalhoz mindenki kisebb mennyiségű adatot küld. Ha a pingelés nem sikerül, a vezérlőcsatorna érdemes figyelembe venni használható, és a figyelő elméletileg újracsatlakozik.
+A vezérlőcsatorna hosszú ideig inaktív marad, ha a terheléselosztó vagy NAT, például a módon közvetítők dobhatja TCP-kapcsolatot. A "ping" művelet elkerülhető, hogy úgy, hogy a csatornán, is emlékezteti, hogy a kapcsolat az célja, hogy kell életben, és azt is szolgál egy "élő" tesztet a figyelő a hálózati útvonalhoz mindenki kisebb mennyiségű adatot küld. Ha a pingelés nem sikerül, a vezérlőcsatorna érdemes figyelembe venni használható, és a figyelő elméletileg újracsatlakozik.
 
 ### <a name="sender-interaction"></a>Küldő interakció
 A küldő csak rendelkezik a szolgáltatás egyetlen interakcióba: csatlakozik.
@@ -75,7 +75,7 @@ Az összes WebSocket-kapcsolat készült a 443-as porton frissítéseként HTTPS
 A figyelő protokoll két kapcsolat kézmozdulatok és három üzenetművelet áll.
 
 #### <a name="listener-control-channel-connection"></a>Figyelő vezérlő adatcsatorna-kapcsolatot
-A vezérlőcsatorna, ahol a WebSocket-kapcsolat létrehozása:
+A vezérlőcsatorna már meg van nyitva egy WebSocket-kapcsolat létrehozása:
 
 ```
 wss://{namespace-address}/$hc/{path}?sb-hc-action=...[&sb-hc-id=...]&sb-hc-token=...
@@ -147,11 +147,11 @@ Az URL-címet kell használni, mint-létrehozásához az elfogadás szoftvercsat
 
 | Paraméter | Szükséges | Leírás |
 | --- | --- | --- |
-| `sb-hc-action` |Igen |A szoftvercsatorna elfogadásakor, a paraméternek kell lennie`sb-hc-action=accept` |
+| `sb-hc-action` |Igen |A szoftvercsatorna elfogadásakor, a paraméternek kell lennie `sb-hc-action=accept` |
 | `{path}` |Igen |(lásd a következő) |
 | `sb-hc-id` |Nem |Tekintse meg az előző leírása **azonosító**. |
 
-`{path}`az URL-kódolású névterek elérési útjai, amelyen ez a figyelő regisztrálása az előre konfigurált hibrid kapcsolat van. A kifejezés a rendszer hozzáfűzi a rögzített `$hc/` elérési út részével. 
+`{path}` az URL-kódolású névterek elérési útjai, amelyen ez a figyelő regisztrálása az előre konfigurált hibrid kapcsolat van. A kifejezés a rendszer hozzáfűzi a rögzített `$hc/` elérési út részével. 
 
 A `path` kifejezés ki, amelynek utótag és a regisztrált név elválasztó perjellel után a következő lekérdezési karakterlánc-kifejezés. Ez lehetővé teszi, hogy a küldő ügyfél feladó argumentumok átadása a átvevő figyelő, amikor nincs lehetőség a HTTP-fejlécek. Az elvárás, hogy a figyelő keretrendszer elemzi a rögzített elérési út részével és a regisztrált név elérési úton található, és valószínűleg lehetővé teszi a fennmaradó által meghatározott lekérdezési karakterlánc argumentum nélkül `sb-`, eldönti, hogy fogadja el a kapcsolatot az alkalmazás számára elérhető.
 
@@ -195,7 +195,7 @@ Megfelelően befejezése a kézfogás szándékosan sikertelen lesz, hibakódú 
 | 500 |Belső hiba |Valami hiba történt a szolgáltatásban. |
 
 ### <a name="listener-token-renewal"></a>Figyelő jogkivonat megújítási
-Ha a figyelő-token érvényessége lejár, akkor lecserélheti keret szöveges üzenetet küld a szolgáltatás a kijelölt ellenőrzési csatornán keresztül. Az üzenet tartalmaz egy JSON-objektum neve `renewToken`, amely megadja, hogy a következő tulajdonság ekkor:
+Ha a figyelő-token érvényessége lejár, a figyelő cseréjéhez keret szöveges üzenetet küld a szolgáltatásnak a kijelölt ellenőrzési csatornán keresztül. Az üzenet tartalmaz egy JSON-objektum neve `renewToken`, amely megadja, hogy a következő tulajdonság ekkor:
 
 * **token** – egy érvényes, az URL-kódolású Service Bus megosztott hozzáférési jogkivonat a névtér vagy a hibrid kapcsolat, amely ruház a **figyelésére** jobb.
 

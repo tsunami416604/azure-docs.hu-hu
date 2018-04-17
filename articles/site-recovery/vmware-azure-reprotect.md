@@ -1,6 +1,6 @@
 ---
-title: "Állítsa a virtuális gépek az Azure-ból a helyszíni helyhez |} Microsoft Docs"
-description: "Az Azure virtuális gépek feladatátvétel után a feladat-visszavételt a virtuális gépeket kapcsolja vissza a helyszíni is kezdeményezhető. Útmutató: a feladat-visszavétel előtt lássa el újból védelemmel."
+title: Állítsa a virtuális gépek az Azure-ból a helyszíni helyhez |} Microsoft Docs
+description: 'Az Azure virtuális gépek feladatátvétel után a feladat-visszavételt a virtuális gépeket kapcsolja vissza a helyszíni is kezdeményezhető. Útmutató: a feladat-visszavétel előtt lássa el újból védelemmel.'
 services: site-recovery
 author: rajani-janaki-ram
 manager: gauravd
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: rajanaki
-ms.openlocfilehash: cd5e53b49a850acf851e8351b5e14e2993176435
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 499f363dd6241612553e94e43dd56de6cfc8f71f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="reprotect-machines-from-azure-to-an-on-premises-site"></a>Lássa el újból védelemmel gépek az Azure-ból a helyszíni helyhez
 
@@ -79,7 +79,7 @@ Miután létrehozott egy fő célkiszolgálóra, tegye a következőket:
 - Egy meglévő folyamat kiszolgálóhoz vagy konfigurációs kiszolgáló vagy terjedő skálán vagy folyamat server/fő cél kiszolgáló használata, adjon hozzá egy új meghajtót kell. Az új meghajtó meg kell felelnie a fenti követelményeknek. Ha az adatmegőrzési meghajtó nincs jelen, nem jelenik meg a legördülő listában a portálon. Után hozzáadhat egy meghajtót a helyszíni fő célkiszolgáló, megjelennek a portálon a kijelölt meghajtó akár 15 percet vesz igénybe. Ha a meghajtó nem jelenik meg 15 perc után is frissítheti a konfigurációs kiszolgáló.
 - A VMware-eszközök telepítése a fő célkiszolgálón. A VMware-eszközök nélkül a fő célkiszolgáló ESXi-állomáson datastores nem észlelhető.
 - Állítsa be a `disk.EnableUUID=true` beállítása a konfigurációs paraméterek, a fő célkiszolgáló virtuális gép VMware-ben. Ha a sor nem létezik, adja hozzá. Ez a beállítás szükséges, hogy azt a megfelelő csatlakoztatja, adja meg a virtuális gép lemezét (VMDK) való egységes UUID.
-- A fő célkiszolgáló rendelkeznie kell legalább egy virtuálisgép-Fájlrendszereinek datastore csatolva. Ha nincs, a **Datastore** a védelem-újrabeállítási oldalon bemenet üres lesz, és nem folytathatja a műveletet.
+- Az ESX-gazdagépet, amelyen jön létre a fő célkiszolgáló kell legalább egy virtuálisgép-Fájlrendszereinek adattároló nem csatlakoztatható. Ha nincs, a **Datastore** a védelem-újrabeállítási oldalon bemenet üres lesz, és nem folytathatja a műveletet.
 - A fő célkiszolgáló nem lehet pillanatképeket a lemezeken. Ha pillanatképek vannak, ismételt védelem és a feladat-visszavétel nem.
 - A fő célkiszolgáló Paravirtual SCSI-vezérlőhöz nem tartozhat. A vezérlő csak egy LSI Logic vezérlő lehet. Egy LSI Logic vezérlőt ismételt védelem sikertelen lesz.
 - Adott esetben atmst 60 lemez nem csatlakoztatható a fő célkiszolgáló is biztosítani. Ha alatt látható el újra védelemmel történő a helyszíni fő célkiszolgáló virtuális gépek száma több, mint 60 lemezek sum teljes száma, majd a fő célkiszolgálóhoz reprotects indul sikertelenek lesznek. Győződjön meg arról, hogy rendelkezik-e elegendő fő cél a lemez üzembe helyezési ponti, vagy további fő célkiszolgálóra telepíteni.
@@ -92,7 +92,7 @@ Miután a virtuális gép elindul az Azure-ban, csak bizonyos idő az ügynök r
 
 1. A **tároló** > **replikált elemek**, kattintson a jobb gombbal a virtuális gépet, a feladatátvétel megtörtént, és válassza **védelmének újbóli beállításához**. Is kattintson a gépre, és válassza ki **védelmének újbóli beállításához** a parancs gombok közül.
 2. Ellenőrizze a védelem irányát **Azure a helyszíni**, már be van jelölve.
-3. A **fő célkiszolgáló** és **Folyamatkiszolgáló**, válassza ki a helyszíni fő célkiszolgáló és a folyamatkiszolgáló.
+3. A **fő célkiszolgáló** és **Folyamatkiszolgáló**, válassza ki a helyszíni fő célkiszolgáló és a folyamatkiszolgáló.  
 4. A **Datastore**, válassza ki, amelyhez végre kívánja hajtani a lemezek helyi az adattárral. Ez a beállítás használható, ha a helyszíni virtuális gép törlődik, és új lemezek létrehozásához szükség. A rendszer figyelmen kívül hagyja ezt a beállítást, ha a lemez már létezik, de továbbra is meg kell adnia egy értéket.
 5. Válassza ki az adatmegőrzési meghajtó.
 6. A feladat-visszavételi szabályzat automatikusan ki van jelölve.

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 01d5150bff8642a1a3fe9b7ac063923916f191c0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 78449a527f5ee1410530ded18a11cb8c6a5dded5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Gyakori kérdések a forgalom elemzés
 
@@ -95,7 +95,7 @@ ms.lasthandoff: 03/28/2018
 12.  Ha a következő hibaüzenet: "1.) a NSG elemzése flow naplók először. Ez a folyamat 20-30 percet is igénybe vehet. Ellenőrizze újra egy kis idő múlva. 2.) Ha a fenti lépést nem működik, és a munkaterületen a szabad SKU alatt, majd ellenőrizze a munkaterület használatát itt ellenőrzése túllépte a kvótát, ellenkező esetben tekintse meg a gyakran feltett kérdésekre további információk", hogyan hárítható el azt?
 
         Előfordulhat, hogy a hibaüzenet a következő okok miatt:
-        - Forgalom analytics előfordulhat, hogy nemrég engedélyezve van, és előfordulhat, hogy kevés az adat ahhoz, hogy a jelentéssel bíró insights származnia ahhoz, azok a jelentések is generálható kell összesítése. Ebben az esetben próbálja meg újra a 30 perc után
+        - Forgalom analytics előfordulhat, hogy nemrég engedélyezve van, majd előfordulhat, hogy nem még rendelkezik összesíti elég adat ahhoz, hogy a jelentéssel bíró insights származtatni.
         - Az OMS-munkaterület a szabad SKU alatt áll, és a kvótakorlát megszegése azt. Ebben az esetben előfordulhat, hogy kell használnia a Termékváltozat munkaterületeinek nagyobb kapacitással rendelkező átjáróeszközt.
     
         Ha a probléma továbbra is fennáll, a aggodalomra a [felhasználói hang fórum](https://feedback.azure.com/forums/217313-networking?category_id=195844).

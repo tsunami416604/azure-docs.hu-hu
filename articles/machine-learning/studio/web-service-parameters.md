@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
-ms.openlocfilehash: 520427b99c05fcbc8125bdbde7d8eb56e7487292
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3eb6f08d89daec063841eeb5fff8479c9f2f41fe
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-machine-learning-web-service-parameters"></a>Az Azure Machine Learning webszolgáltatás paramétereinek használata
 Az Azure Machine Learning webszolgáltatás közzététele, amely konfigurálható paraméterekkel lehetővé tevő modulokat tartalmaz a kísérlet hozta létre. Bizonyos esetekben érdemes lehet a modul megváltozzon, miközben fut a webes szolgáltatás. *Webszolgáltatási paramétereket* engedélyezi, hogy a feladat végrehajtásához. 
@@ -52,7 +52,7 @@ Tegyük fel, tételezzük fel, hogy az a kísérlet van egy [adatok exportálás
    * A **adja meg az adatok cél**, jelölje be az "Azure Blob Storage".
    * A **adja meg a hitelesítési típus**, jelölje be az "Account".
    * Írja be az Azure blob storage fiók adatait. 
-     <p />
+
 3. Kattintson a jobb oldalán ikonra a **elérési útját a blob-tároló paraméter-tól kezdődően**. Néz ki:
    
    ![Webes szolgáltatás paraméter ikon][icon]

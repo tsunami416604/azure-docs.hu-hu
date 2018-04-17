@@ -9,13 +9,13 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2017
-ms.openlocfilehash: 15b8548e8b5b6ff8d2f5722d2a4031f8e52d044b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: e84903870110091d527e870600d9a67bdc9cc6e5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>A Stream Analytics és a Power BI: az adatfolyamként történő adatok valós idejű elemzési irányítópult
+# <a name="tutorial-stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Oktatóanyag: A Stream Analytics és a Power BI: az adatfolyamként történő adatok valós idejű elemzési irányítópult
 Az Azure Stream Analytics lehetővé teszi, hogy a vezető üzleti intelligencia eszközök közül az egyik kihasználhatja [Microsoft Power BI](https://powerbi.com/). Ebből a cikkből megismerheti, hogyan üzleti intelligencia eszközök használatával létrehozni a Power BI kimenetként az Azure Stream Analytics-feladatok. Azt is megtudhatja, hogyan történő létrehozásáról és használatáról a valós idejű irányítópulton.
 
 Ez a cikk továbbra is fennáll, a Stream Analytics [valós idejű csalások felderítéséhez](stream-analytics-real-time-fraud-detection.md) oktatóanyag. Azt, hogy az oktatóanyagban létrehozott munkafolyamat épül, és hozzáadja a Power BI kimeneti, hogy egy Streaming Analytics-feladat által észlelt rosszindulatú telefonhívásokat jelenítheti meg. 

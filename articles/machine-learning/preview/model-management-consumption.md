@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Machine Learning modell felügyeleti webes szolgáltatások felhasználásához |} Microsoft Docs"
-description: "Ez a dokumentum ismerteti a lépéseket és fogalmak telepített modell kezelése az Azure Machine Learning webszolgáltatások felhasználása részt."
+title: Az Azure Machine Learning modell felügyeleti webes szolgáltatások felhasználásához |} Microsoft Docs
+description: Ez a dokumentum ismerteti a lépéseket és fogalmak telepített modell kezelése az Azure Machine Learning webszolgáltatások felhasználása részt.
 services: machine-learning
 author: raymondlaghaeian
 ms.author: raymondl
@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: 4d388af3175bce5df6108ff0fd836707cca5040a
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 0976e2dca909781ade76c742cc99746e1123307d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="consuming-web-services"></a>Webszolgáltatások felhasználása
 Miután telepít egy modell valós idejű webszolgáltatásként, elküldi a adatok, és előrejelzéseket beolvasása számos különböző rendszerek és alkalmazások. A valós idejű webszolgáltatás közzétesz egy REST API előrejelzéseket kapcsolódnak. A webszolgáltatás egy vagy több előrejelzéseket egyszerre beolvasandó egyetlen vagy több sor formátumú adatokat küldhet.
@@ -162,6 +162,6 @@ url = 'http://<service ip address>:80/api/v1/service/<service name>/score'
 api_key = 'your service key' 
 headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
 
-resp = requests.post(url, data, headers=headers)
+resp = requests.post(url, body, headers=headers)
 resp.text
 ```

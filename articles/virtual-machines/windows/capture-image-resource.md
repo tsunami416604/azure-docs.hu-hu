@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 04/10/2018
 ms.author: cynthn
-ms.openlocfilehash: 0b0bd48b95ad9393b4cd82081436e561326df6da
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 8195c5e86e6e8d7e2a0bd059820998692667eca8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Egy felügyelt képre egy általánosított virtuális gép létrehozása az Azure-ban
 
@@ -66,12 +66,11 @@ Győződjön meg arról, hogy a Sysprep által a gépen futó kiszolgálói szer
 Lemezkép létrehozása a közvetlenül a virtuális gépről biztosítja, hogy a kép tartalmazza a virtuális gép, beleértve az operációs rendszer lemezének és adatlemezeket társított lemezeket. Ez a példa bemutatja, hogyan hozzon létre egy felügyelt képre egy virtuális gép által használt lemezek kezelését.
 
 
-Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik-e a legújabb verzióját a AzureRM.Compute PowerShell-modult. A következő parancsot a telepítéshez. (Használata `Get-Module` ellenőrzéséhez melyik verzió van.)
+Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik-e a legújabb verzióját a AzureRM.Compute PowerShell-modult. Ez a cikk a AzureRM 5.7.0 verziója szükséges, vagy később. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
-```azurepowershell-interactive
-Install-Module AzureRM.Compute -RequiredVersion 2.6.0
-```
-További információkért lásd: [Azure PowerShell Versioning](/powershell/azure/overview).
+
+> [!NOTE]
+> Ha szeretné a zóna rugalmas tárolás tárolják, egy régióban található, amely támogatja a létrehozásához szükséges [rendelkezésre állási zónák](../../availability-zones/az-overview.md) , és tartalmazzák a `-ZoneResilient` a lemezkép-konfigurációs paraméter.
 
 
 1. Bizonyos változókat létrehozni.

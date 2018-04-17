@@ -1,22 +1,22 @@
 ---
-title: "Szolgáltatások közötti hitelesítés az Azure Key Vaultba .NET használatával"
-description: "Az Azure Key Vault használatával a .NET hitelesítés használható a Microsoft.Azure.Services.AppAuthentication könyvtár."
-keywords: "az Azure-kulcstároló helyi hitelesítő adatok"
+title: Szolgáltatások közötti hitelesítés az Azure Key Vaultba .NET használatával
+description: Az Azure Key Vault használatával a .NET hitelesítés használható a Microsoft.Azure.Services.AppAuthentication könyvtár.
+keywords: az Azure-kulcstároló helyi hitelesítő adatok
 author: lleonard-msft
 manager: mbaldwin
 services: key-vault
 ms.author: alleonar
 ms.date: 11/15/2017
 ms.topic: article
-ms.prod: 
-ms.service: microsoft-keyvault
-ms.technology: 
+ms.prod: ''
+ms.service: key-vault
+ms.technology: ''
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: bff4b15ca2f1c985c4b4e27d159adaa5fd039553
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: db0b0ca72f41c68e19db6635d9ba0e9144183204
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Szolgáltatások közötti hitelesítés az Azure Key Vaultba .NET használatával
 
@@ -113,7 +113,7 @@ Helyi fejlesztési Azure CLI használata:
 
 Használjon `az account get-access-token` való hozzáférés ellenőrzése.  Ha hibaüzenetet kap, győződjön meg arról, hogy az 1. lépésben sikeresen befejeződött-e. 
 
-Ha az Azure parancssori felület nem települ az alapértelmezett mappát, jelentéskészítési hiba jelenhet `AzureServiceTokenProvider` Azure CLI használata az elérési út nem található.  Használja a **AzureCLIPath**környezeti változót az Azure parancssori felület telepítési mappa megadása. `AzureServiceTokenProvider`a megadott könyvtárat ad a **AzureCLIPath** környezeti változót a **elérési** környezeti változó, ha szükséges.
+Ha az Azure parancssori felület nem települ az alapértelmezett mappát, jelentéskészítési hiba jelenhet `AzureServiceTokenProvider` Azure CLI használata az elérési út nem található.  Használja a **AzureCLIPath**környezeti változót az Azure parancssori felület telepítési mappa megadása. `AzureServiceTokenProvider` a megadott könyvtárat ad a **AzureCLIPath** környezeti változót a **elérési** környezeti változó, ha szükséges.
 
 Ha be van jelentkezve Azure parancssori felület használatával több fiókot, vagy a fiókjának van hozzáférési joga több előfizetéssel, meg kell adnia a használandó előfizetéshez.  Ehhez használja:
 
@@ -211,7 +211,7 @@ Jelentkezzen be az Azure AD megosztott titkos hitelesítő adat:
 
 3. Futtassa az alkalmazást. 
 
-Ha minden készen áll megfelelően, nincs további kód módosítására szükség.  `AzureServiceTokenProvider`a környezeti változó és a tanúsítvány használ az Azure AD-hitelesítéséhez. 
+Ha minden készen áll megfelelően, nincs további kód módosítására szükség.  `AzureServiceTokenProvider` a környezeti változó és a tanúsítvány használ az Azure AD-hitelesítéséhez. 
 
 <a name="connectionstrings"></a>
 ## <a name="connection-string-support"></a>Kapcsolati karakterlánc-támogatás
@@ -228,12 +228,12 @@ A következő beállításokat támogatja:
 | `RunAs=Developer; DeveloperTool=VisualStudio` | Helyi fejlesztési | AzureServiceTokenProvider Visual Studio használatával szerezze be a tokent. |
 | `RunAs=CurrentUser;` | Helyi fejlesztési | AzureServiceTokenProvider az Azure AD integrált hitelesítés használatával szerezze be a tokent. |
 | `RunAs=App;` | Felügyeltszolgáltatás-identitás | AzureServiceTokenProvider felügyelt szolgáltatás identitás használatával szerezze be a tokent. |
-| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint`<br>`   ={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`  | Egyszerű szolgáltatásnév | `AzureServiceTokenProvider`az Azure ad-token beszerzése a tanúsítványt használja. |
-| `RunAs=App;AppId={AppId};TenantId={TenantId};`<br>`   CertificateSubjectName={Subject};CertificateStoreLocation=`<br>`   {LocalMachine or CurrentUser}` | Egyszerű szolgáltatásnév | `AzureServiceTokenProvider`tanúsítványt használ az Azure AD-token beszerzése|
-| `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | Egyszerű szolgáltatásnév |`AzureServiceTokenProvider`az Azure AD-token beszerzése a titkos kulcs használatával. |
+| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint`<br>`   ={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`  | Szolgáltatásnév | `AzureServiceTokenProvider` az Azure ad-token beszerzése a tanúsítványt használja. |
+| `RunAs=App;AppId={AppId};TenantId={TenantId};`<br>`   CertificateSubjectName={Subject};CertificateStoreLocation=`<br>`   {LocalMachine or CurrentUser}` | Szolgáltatásnév | `AzureServiceTokenProvider` tanúsítványt használ az Azure AD-token beszerzése|
+| `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | Szolgáltatásnév |`AzureServiceTokenProvider` az Azure AD-token beszerzése a titkos kulcs használatával. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ [Szolgáltatásidentitás felügyelt](/azure/app-service/app-service-managed-service-identity).
 

@@ -1,11 +1,11 @@
 ---
-title: "A Security Center platform áttelepítési – gyakori kérdések |} Microsoft Docs"
-description: "Ez a GYIK az Azure Security Center platform áttelepítésével kapcsolatos kérdésekre ad választ."
+title: A Security Center platform áttelepítési – gyakori kérdések |} Microsoft Docs
+description: Ez a GYIK az Azure Security Center platform áttelepítésével kapcsolatos kérdésekre ad választ.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 4d1364cd-7847-425a-bb3a-722cb0779f78
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2017
 ms.author: terrylan
-ms.openlocfilehash: 6ccf104ea09dc1fbce1dd34a06168205d6f5fac8
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 197b1a844291f2bef2dd35001d1e6b8807ac9805
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="security-center-platform-migration-faq"></a>A Security Center platform áttelepítési – gyakori kérdések
 Korai. június 2017 az Azure Security Center megkezdte a Microsoft Monitoring Agent használatával gyűjt, és adatokat. További tudnivalókért lásd: [Azure Security Center Platform áttelepítési](security-center-platform-migration.md). Ez a GYIK a platform áttelepítésével kapcsolatos kérdésekre ad választ.
@@ -34,7 +34,7 @@ A Security Center a Microsoft Monitoring Agent biztonsági adatokat gyűjteni a 
 Az ügynök által gyűjtött adatok egy meglévő Naplóelemzési munkaterület a virtuális Géphez kapcsolódó vagy a Security Center által létrehozott új munkaterület tárolja. Biztonsági központ létrehoz egy új munkaterületet, ha a virtuális gép a földrajzi hely meghatározásának veszi figyelembe.
 
 > [!NOTE]
-> A Microsoft Monitoring Agent ugyanaz az ügynök által az Operations Management Suite (OMS), Naplóelemzés szolgáltatás és System Center Operations Manager (SCOM) használt.
+> A Microsoft Monitoring Agent a Naplóelemzési szolgáltatás és System Center Operations Manager (SCOM) által használt ugyanannak az ügynöknek.
 >
 >
 
@@ -64,8 +64,8 @@ A munkaterület helyét a virtuális gép helyét alapul. További tudnivalóké
 >
 >
 
-### <a name="am-i-billed-for-log-analytics-or-oms-on-the-workspaces-created-by-security-center"></a>Vagyok I Naplóelemzési vagy a Security Center által létrehozott munkaterületek OMS számlázása?
-Nem. Security Center által létrehozott munkaterületek közben egy csomópont számlázási OMS konfigurált nem számítunk OMS díjakat. A Security Center számlázási mindig a Security Center biztonsági házirend és a megoldások munkaterület telepítve alapján:
+### <a name="am-i-billed-for-log-analytics-on-the-workspaces-created-by-security-center"></a>Vagyok I fizetnie kell a Security Center által létrehozott munkaterületek Naplóelemzési?
+Nem. Security Center által létrehozott munkaterületek számlázást, a csomópontonkénti Naplóelemzési beállítása közben nem számítunk Naplóelemzési díjakat. A Security Center számlázási mindig a Security Center biztonsági házirend és a megoldások munkaterület telepítve alapján:
 
 - **Ingyenes szint** – a Security Center lehetővé teszi, hogy a "SecurityCenterFree" megoldást az alapértelmezett munkaterületen. Az ingyenes szint nem kell fizetni.
 - **Standard szint** – a Security Center lehetővé teszi, hogy a "Security" megoldást az alapértelmezett munkaterületen.
@@ -73,7 +73,7 @@ Nem. Security Center által létrehozott munkaterületek közben egy csomópont 
 Az árakkal kapcsolatos további információkért lásd: [Security Center árképzési](https://azure.microsoft.com/pricing/details/security-center/). A tarifákat tartalmazó oldalt megoldást a biztonsági adatok tárolási és arányosított számlázási kezdve. június 2017 módosítását.
 
 > [!NOTE]
-> A Security Center által létrehozott munkaterületek tarifacsomag OMS nincs hatással a Security Center számlázási.
+> A Security Center által létrehozott munkaterületek tarifacsomag Naplóelemzési nincs hatással a Security Center számlázási.
 >
 >
 
@@ -101,7 +101,7 @@ Egy meglévő Naplóelemzési munkaterület kiválasztása:
 
 1. A **biztonsági szabályzat – adatgyűjtés**, jelölje be **egy másik munkaterületen**.
 
-   ![Egy másik munkaterületen][5]
+   ![Másik munkaterület használata][5]
 
 2. A legördülő menüből válassza ki a munkaterület gyűjtött adatok tárolásához.
 
@@ -204,12 +204,12 @@ Távolíthatja el kézzel az ügynököt:
 >
 >
 
-## <a name="existing-oms-customers"></a>Meglévő OMS-ügyfeleknek
+## <a name="existing-log-analytics-customers"></a>Meglévő Log Analytics-ügyfeleknek
 
 ### <a name="does-security-center-override-any-existing-connections-between-vms-and-workspaces"></a>Bírálja felül a meglévő kapcsolatokat, virtuális gépek és a munkaterületek között a Security Center?
 Ha egy virtuális gép már a Microsoft Monitoring Agent telepítve, mint az Azure-bővítményt, a Security Center nem bírálja felül a meglévő munkaterület kapcsolatot. Ehelyett a Security Center használja a meglévő munkaterületen.
 
-A Security Center megoldás a munkaterület van telepítve, ha nem már létezik, és a megoldás csak a megfelelő virtuális gépek lesz alkalmazva. Ha hozzáad egy megoldást, automatikusan telepíti a Naplóelemzési munkaterület csatlakozó Windows és Linux ügynökök alapértelmezés szerint. [Megoldás célcsoportkezelést](../operations-management-suite/operations-management-suite-solution-targeting.md), amely az OMS szolgáltatása, lehetővé teszi a hatókör vonatkozik.
+A Security Center megoldás a munkaterület van telepítve, ha nem már létezik, és a megoldás csak a megfelelő virtuális gépek lesz alkalmazva. Ha hozzáad egy megoldást, automatikusan telepíti a Naplóelemzési munkaterület csatlakozó Windows és Linux ügynökök alapértelmezés szerint. [Megoldás célcsoportkezelést](../operations-management-suite/operations-management-suite-solution-targeting.md) lehetővé teszi a hatókör vonatkozik.
 
 Ha a Microsoft Monitoring Agent közvetlenül a virtuális gép (nem pedig egy Azure-bővítményt) van telepítve, a Security Center nem telepíti a Microsoft Monitoring Agent és biztonsági figyelés korlátozva.
 
@@ -220,18 +220,13 @@ Ez nem következik. Ha akkor fordulhat elő, majd [hozzon létre egy Azure támo
 - A munkaterületen, a bővítmény konfigurált előtt megszakadt a kapcsolat az Azure erőforrás-azonosítója
 - Az ügynök és a korábban telepített verzió
 
-### <a name="does-security-center-install-solutions-on-my-existing-oms-workspaces-what-are-the-billing-implications"></a>Biztonsági központ telepítési megoldások a saját meglévő OMS munkaterületek? Mik a számlázási megvalósítását?
+### <a name="does-security-center-install-solutions-on-my-existing-log-analytics-workspaces-what-are-the-billing-implications"></a>Biztonsági központ telepítési megoldások a saját meglévő Naplóelemzési munkaterület? Mik a számlázási megvalósítását?
 A Security Center azonosítja, hogy egy virtuális gép már csatlakoztatva van egy munkaterületet hozott létre, amikor a Security Center lehetővé teszi, hogy ezen a munkaterületen a tarifacsomag alapján megoldások. A megoldás csak a megfelelő Azure virtuális gépeken, vonatkoznak keresztül [célcsoport-kezelési megoldás](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solution-targeting), így a számlázási változatlan marad.
 
 - **Ingyenes szint** – a Security Center telepíti a "SecurityCenterFree" megoldás a munkaterületen. Az ingyenes szint nem kell fizetni.
 - **Standard szint** – a Security Center telepíti a "Security" megoldás a munkaterületen.
 
    ![Az alapértelmezett munkaterületi megoldások][4]
-
-> [!NOTE]
-> A "Security" napló Analytics egy a biztonsági & naplózási megoldás az OMS Szolgáltatáshoz.
->
->
 
 ### <a name="i-already-have-workspaces-in-my-environment-can-i-use-them-to-collect-security-data"></a>A környezet már van munkaterületek, használhatók biztonsági adatok gyűjtéséért felelős ügyfélfeladatot?
 Ha egy virtuális gép már a Microsoft Monitoring Agent telepítve, mint az Azure-bővítményt, a Security Center használja a meglévő csatlakoztatott munkaterületen. A Security Center megoldás a munkaterület van telepítve, ha nem már létezik, és a megoldás csak a megfelelő virtuális gépek keresztül érvényes [célcsoport-kezelési megoldás](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solution-targeting).
@@ -241,7 +236,7 @@ Ha a Security Center a Microsoft Monitoring Agent telepítése virtuális gépek
 ### <a name="i-already-have-security-solution-on-my-workspaces-what-are-the-billing-implications"></a>Már van a saját munkaterületek biztonsági megoldás. Mik a számlázási megvalósítását?
 A biztonsági & naplózási megoldás segítségével engedélyezhető a Security Center Standard szint funkciók Azure virtuális gépekhez. Ha a biztonsági & naplózási megoldás egy munkaterület már telepítve van, a Security Center használja a meglévő megoldást. Nincs változás a számlázási.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Security Center platform áttelepítésével kapcsolatos további tudnivalókért lásd:
 
 - [Az Azure Security Center Platform áttelepítése](security-center-platform-migration.md)

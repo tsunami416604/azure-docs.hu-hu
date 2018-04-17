@@ -1,12 +1,12 @@
 ---
-title: "Telepítése az Azure App Service a Jenkins beépülő modul használatával |} Microsoft Docs"
-description: "Az Azure-bA Jenkins a Java-webalkalmazás telepítése az Azure App Service Jenkins beépülő modul használata"
+title: Telepítése az Azure App Service a Jenkins beépülő modul használatával |} Microsoft Docs
+description: Az Azure-bA Jenkins a Java-webalkalmazás telepítése az Azure App Service Jenkins beépülő modul használata
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: mlearned
 manager: douge
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: multiple
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.workload: web
 ms.date: 7/24/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: 0e5916b2f8f901ff549ef74fca57cf09dc9fec21
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0128ad37e3ba66710279de42cf4eae0ce5431b5b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Telepítése az Azure App Service a Jenkins beépülő modul használatával 
 
@@ -39,7 +39,7 @@ Ha még nem rendelkezik egy Jenkins Master, kezdje a [megoldássablonban](instal
 * [Jenkins Git ügyfél beépülő modul](https://plugins.jenkins.io/git-client) 2.4.6 verziója 
 * [Docker Commons beépülő modul](https://plugins.jenkins.io/docker-commons) 1.4.0 verziója
 * [Azure hitelesítő adataival](https://plugins.jenkins.io/azure-credentials) 1.2-es verziója
-* [Az Azure App Service](https://plugins.jenkins.io/azure-app-server) 0,1 verziója
+* [Az Azure App Service](https://plugins.jenkins.io/azure-app-service) 0,1 verziója
 
 A Jenkins beépülő modul segítségével bármilyen nyelven Web Apps, például a C#, PHP, Java és Node.js által támogatott webalkalmazás üzembe helyezése. Ebben az oktatóanyagban használjuk a [egyszerű Azure Java-webalkalmazás](https://github.com/azure-devops/javawebappsample). Oszthatja ketté a tárházban saját GitHub-fiók számára, jelölje ki a **elágazás** a GitHub-felület jobb felső sarkában gombjára.  
 > [!NOTE]
@@ -54,7 +54,7 @@ sudo apt-get install -y maven
 
 Szeretné telepíteni a webalkalmazás az tárolókat, telepítse a Docker a Jenkins fő vagy a Virtuálisgép-ügynök, amely a build szolgál. Útmutatásért lásd: [Docker telepíti az Ubuntu](https://docs.docker.com/engine/installation/linux/ubuntu/).
 
-##<a name="service-principal"></a>Egy egyszerű Azure szolgáltatás hozzáadása a Jenkins hitelesítő adatok
+##<a name="service-principal"></a> Egy egyszerű Azure szolgáltatás hozzáadása a Jenkins hitelesítő adatok
 
 Egy Azure szolgáltatás egyszerű Azure telepíteni kell. 
 
@@ -90,7 +90,7 @@ A feladat Jenkins beállítása előtt kell az Azure App Service-csomag és a we
 ### <a name="set-up-the-jenkins-job"></a>A Jenkins feladat beállítása
 
 1. Hozzon létre egy új **freestyle** projekt a Jenkins irányítópulton.
-2. Konfigurálja a **forrás kód felügyeleti** a helyi elágazás a használandó mezőt a [egyszerű Azure Java-webalkalmazás](https://github.com/azure-devops/javawebappsample). Adja meg a **tárház URL-CÍMÉT** érték. Például: http://github.com/&lt;your_ID > / javawebappsample.
+2. Konfigurálja a **forrás kód felügyeleti** a helyi elágazás a használandó mezőt a [egyszerű Azure Java-webalkalmazás](https://github.com/azure-devops/javawebappsample). Adja meg a **tárház URL-CÍMÉT** érték. Például: http://github.com/ &lt;your_ID > / javawebappsample.
 3. Adjon hozzá a projekt elkészítéséhez Maven használatával adja hozzá a lépést a **hajtható végre a rendszerhéj** parancsot. Ebben a példában a parancs nevezze át kell a \*.war fájlt a cél mappában **ROOT.war**:   
     ```bash
     mvn clean package
@@ -143,7 +143,7 @@ Mielőtt beállítaná a Jenkins feladatot, a webes alkalmazás Linux kell. Szü
 ### <a name="set-up-the-jenkins-job-for-docker"></a>A Docker a Jenkins feladat beállítása
 
 1. Hozzon létre egy új **freestyle** projekt a Jenkins irányítópulton.
-2. Konfigurálja a **forrás kód felügyeleti** a helyi elágazás a használandó mezőt a [egyszerű Azure Java-webalkalmazás](https://github.com/azure-devops/javawebappsample). Adja meg a **tárház URL-CÍMÉT** érték. Például: http://github.com/&lt;your_ID > / javawebappsample.
+2. Konfigurálja a **forrás kód felügyeleti** a helyi elágazás a használandó mezőt a [egyszerű Azure Java-webalkalmazás](https://github.com/azure-devops/javawebappsample). Adja meg a **tárház URL-CÍMÉT** érték. Például: http://github.com/ &lt;your_ID > / javawebappsample.
 3. A projekt elkészítéséhez hozzáadásával Maven használatával lépés hozzáadása egy **hajtható végre a rendszerhéj** parancsot. A következő sor szerepeljenek a parancsban:
     ```bash
     mvn clean package

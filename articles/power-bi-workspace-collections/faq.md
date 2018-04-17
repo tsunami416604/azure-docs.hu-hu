@@ -1,12 +1,12 @@
 ---
-title: "A Power BI munkaterület gyűjtemények – gyakori kérdések"
-description: "A Power BI munkaterület gyűjtemények kapcsolatos gyakori kérdésekre."
+title: A Power BI munkaterület gyűjtemények – gyakori kérdések
+description: A Power BI munkaterület gyűjtemények kapcsolatos gyakori kérdésekre.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 1475ed4f-fc84-4865-b243-e8a47d8bda59
 ms.service: power-bi-embedded
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/25/2017
-ms.author: asaxton
-ms.openlocfilehash: 6b33f497a5dbc889945e2147586f79edf1bd9aeb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 6915538e47207ee9a45f2647a84924d79c7b2851
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="power-bi-workspace-collections-faq"></a>A Power BI munkaterület gyűjtemények – gyakori kérdések
 
@@ -43,7 +43,7 @@ Az alkalmazások legyenek jelentősen nagyobb teljesítményű kihasználhatja h
 A Power BI munkaterület gyűjtemények szolgálnak az alkalmazások külső használatra biztosított. Ha azt szeretné, hogy a Power BI munkaterület gyűjtemények szolgáltatással belső üzleti alkalmazás létrehozása, a belső felhasználók mindegyikének a Power BI Pro USL kell, és a Power BI munkaterület gyűjtemények szolgáltatás fogyasztását a szervezet fogjuk számlázni. mellett a Power BI Pro USL díjakat. A Power BI Pro USL díjakat és a Power BI munkaterület gyűjtemények felhasználási költségek belső alkalmazások megcélzásával elkerülheti, a Power BI szolgáltatás nyújt további költség nélkül a Power BI munkaterület gyűjtemények kívül képességeket beágyazása a saját tartalom A Power BI USL tartozó felhasználók számára (dev.powerbi.com).
 
 ## <a name="can-power-bi-workspace-collections-be-used-to-create-internal-applications"></a>Belső alkalmazások létrehozásához használt is a Power BI munkaterület gyűjtemények?
-Nem, a Power BI munkaterület gyűjtemények csak használatra lettek tervezve külső felhasználók számára, és belső üzleti alkalmazásokon belül nem használhatók. A Power BI tartalmait csak akkor tudja belső üzleti alkalmazásokban használni, ha a Ön és a tartalom minden felhasználója rendelkezik érvényes Power BI Free vagy Power BI Pro előfizetői licenccel. További információ a belső alkalmazások integrálása a Power BI-ban érhető el: [https://dev.powerbi.com](https://dev.powerbi.com).
+Nem, a Power BI munkaterület gyűjtemények csak használatra lettek tervezve külső felhasználók számára, és belső üzleti alkalmazásokon belül nem használhatók. A Power BI tartalmait csak akkor tudja belső üzleti alkalmazásokban használni, ha a Ön és a tartalom minden felhasználója rendelkezik érvényes Power BI Free vagy Power BI Pro előfizetői licenccel. További információ a belső alkalmazások integrálása a Power BI-ban érhető el: [ https://dev.powerbi.com ](https://dev.powerbi.com).
 
 ## <a name="is-this-service-available-globally"></a>Ez a szolgáltatás rendelkezésre áll globálisan?
 A Power BI munkaterület gyűjtemények szolgáltatás nem áll rendelkezésre a legtöbb adatközpont most. Mindig ellenőrizheti a legújabb rendelkezésre állási [Itt](https://azure.microsoft.com/status/).
@@ -87,7 +87,7 @@ Letöltheti a [Power BI munkaterület gyűjtemények dokumentációs oldal](get-
 ## <a name="how-do-i-get-started"></a>Hogyan kezdhetek hozzá?
 Ismerkedés az ingyenes most! Ha Azure-előfizetéssel rendelkezik, most létesíthet a Power BI munkaterület gyűjtemények Azure-portálról közvetlenül. Is létrehozhat a [ingyenes Azure-fiókot](https://azure.microsoft.com/free/). Miután a Power BI munkaterület gyűjtemények szolgáltatás fiókjához kiépítése, egyszerűen közvetlenül a Power BI REST API-k használata, vagy használja a fejlesztői SDK elérhető [GitHub](http://go.microsoft.com/fwlink/?LinkID=746472). Hogyan használhatók ki a fejlesztői SDK a rendszer rendelkezésre.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 [Újdonságok a Microsoft Power BI munkaterület gyűjtemények](what-are-power-bi-workspace-collections.md)
 [Ismerkedés a Microsoft Power BI munkaterület gyűjtemények](get-started.md)

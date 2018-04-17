@@ -1,6 +1,6 @@
 ---
-title: "Az Azure támogatási feldolgozási tervezetének - vizsgálati követelmények"
-description: "PCI DSS követelmény 11"
+title: Az Azure támogatási feldolgozási tervezetének - vizsgálati követelmények
+description: PCI DSS követelmény 11
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 57429741afd2ffd16c09a0f1485cb1cfbdda5571
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: db9f1022ecb3b727f08bb6f232a8df55476e0755
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="testing-requirements-for-pci-dss-compliant-environments"></a>PCI DSS-kompatibilis környezetben tesztelési követelményei 
 ## <a name="pci-dss-requirement-11"></a>PCI DSS követelmény 11
@@ -43,8 +43,8 @@ Bármelyik módszert használnak, azok elegendőnek kell lennie ismeri fel és a
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Azure nem engedélyezi, és vezeték nélküli kapcsolatok engedélyezése az Azure hálózati környezetben. Belső biztonsági csoportok rendszeresen ellenőrzi a vezeték nélküli jelek engedélyezetlen negyedévente és engedélyezetlen jelek a vizsgált és eltávolítása. Ügyfelek központi telepítése az Azure környezetben vezeték nélküli technológia nem engedélyezettek. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Vezeték nélküli és SNMP nem valósult meg a megoldást.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Azure nem engedélyezi, és vezeték nélküli kapcsolatok engedélyezése az Azure hálózati környezetben. Belső biztonsági csoportok rendszeresen ellenőrzi a vezeték nélküli jelek engedélyezetlen negyedévente és engedélyezetlen jelek a vizsgált és eltávolítása. Ügyfelek központi telepítése az Azure környezetben vezeték nélküli technológia nem engedélyezettek. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Vezeték nélküli és SNMP nem valósult meg a megoldást.|
 
 
 
@@ -56,8 +56,8 @@ Bármelyik módszert használnak, azok elegendőnek kell lennie ismeri fel és a
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 11.1](#pci-dss-requirement-11-1). |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Vezeték nélküli és SNMP nem valósult meg a megoldást.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 11.1](#pci-dss-requirement-11-1). |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Vezeték nélküli és SNMP nem valósult meg a megoldást.|
 
 
 
@@ -70,8 +70,8 @@ Bármelyik módszert használnak, azok elegendőnek kell lennie ismeri fel és a
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 11.1](#pci-dss-requirement-11-1). |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Vezeték nélküli és SNMP nem valósult meg a megoldást.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 11.1](#pci-dss-requirement-11-1). |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Vezeték nélküli és SNMP nem valósult meg a megoldást.|
 
 
 
@@ -88,8 +88,8 @@ Bármelyik módszert használnak, azok elegendőnek kell lennie ismeri fel és a
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Azure negyedéves belső és külső biztonsági ellenőrzéseket hajt végre. Vizsgálatok minősített személyzet hajtja végre. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló lett toll tesztelni, és a biztonsági rés beolvasott "," annak érdekében. A toll teszteredmények megkettőzhetők, például nmap vagy pentest-tools.com közös eszközök segítségével. A toll vizsgálati eredményeket nyújt vezetnek eredményre támadási felületét, nincs kihasználható elemekhez. Emellett [az Azure Security Center](https://azure.microsoft.com/services/security-center/) és [Azure Advisor](/azure/advisor/advisor-security-recommendations) adja meg a szervizelés és a biztonsági információk.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Azure negyedéves belső és külső biztonsági ellenőrzéseket hajt végre. Vizsgálatok minősített személyzet hajtja végre. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló lett toll tesztelni, és a biztonsági rés beolvasott "," annak érdekében. A toll teszteredmények megkettőzhetők, például nmap vagy pentest-tools.com közös eszközök segítségével. A toll vizsgálati eredményeket nyújt vezetnek eredményre támadási felületét, nincs kihasználható elemekhez. Emellett [az Azure Security Center](https://azure.microsoft.com/services/security-center/) és [Azure Advisor](/azure/advisor/advisor-security-recommendations) adja meg a szervizelés és a biztonsági információk.|
 
 
 
@@ -101,8 +101,8 @@ Bármelyik módszert használnak, azok elegendőnek kell lennie ismeri fel és a
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure ellenőrzéseket a hatókör alapul szolgáló infrastruktúra biztonsági réseket hajt végre. A Microsoft Azure valósítja meg a biztonsági rések keresése a kiszolgálói operációs rendszerek, adatbázisok és a megfelelő biztonsági rés beolvasó eszközök rendelkező hálózati eszközöket. Az Azure-webalkalmazások megoldások keresése megfelelő iparági ellenőrizve. A biztonsági rés vizsgálatok negyedévente történik.<br /><br />Megvizsgálja minden rendszer szemben az összes "magas kockázatú" biztonsági rés (követelmény 6.1 meghatározott) megoldásáig igény szerint történik. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló lett toll tesztelni, és a biztonsági rés beolvasott "," annak érdekében. A toll teszteredmények megkettőzhetők, például nmap vagy pentest-tools.com közös eszközök segítségével. A toll vizsgálati eredményeket nyújt vezetnek eredményre támadási felületét, nincs kihasználható elemekhez. Emellett [az Azure Security Center](https://azure.microsoft.com/services/security-center/) és [Azure Advisor](/azure/advisor/advisor-security-recommendations) adja meg a szervizelés és a biztonsági információk.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure ellenőrzéseket a hatókör alapul szolgáló infrastruktúra biztonsági réseket hajt végre. A Microsoft Azure valósítja meg a biztonsági rések keresése a kiszolgálói operációs rendszerek, adatbázisok és a megfelelő biztonsági rés beolvasó eszközök rendelkező hálózati eszközöket. Az Azure-webalkalmazások megoldások keresése megfelelő iparági ellenőrizve. A biztonsági rés vizsgálatok negyedévente történik.<br /><br />Megvizsgálja minden rendszer szemben az összes "magas kockázatú" biztonsági rés (követelmény 6.1 meghatározott) megoldásáig igény szerint történik. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló lett toll tesztelni, és a biztonsági rés beolvasott "," annak érdekében. A toll teszteredmények megkettőzhetők, például nmap vagy pentest-tools.com közös eszközök segítségével. A toll vizsgálati eredményeket nyújt vezetnek eredményre támadási felületét, nincs kihasználható elemekhez. Emellett [az Azure Security Center](https://azure.microsoft.com/services/security-center/) és [Azure Advisor](/azure/advisor/advisor-security-recommendations) adja meg a szervizelés és a biztonsági információk.|
 
 
 
@@ -118,8 +118,8 @@ Bármelyik módszert használnak, azok elegendőnek kell lennie ismeri fel és a
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure külső ellenőrzéseket a hatókör alapul szolgáló infrastruktúra, amely a kívülről elérhető legyen a biztonsági réseket hajt végre. Vizsgálatok által egy jóváhagyott vizsgálata szállító (ASV) történik.<br /><br />A Microsoft Azure MSRC/OSSC havi javítás értesítések előfizet, és biztonsági rések legalább negyedéves keres. Azonosított biztonsági rések értékelése, és egy meghatározott ütemterv alapján a kockázati szinteket illetően szervizelt.<br /><br />Minden egyes megcélzott negyedév átfogó biztonsági rést keres a rangsorolt a Microsoft Azure-környezet összetevői végez biztonsági rések azonosítása. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Ha központi telepítése a Contoso webes tároló, a bemutató ügyfelei felelősek az negyedéves külső biztonsági rés végrehajtása megvizsgálja, és megvizsgálja elleni PaaS példányainak a kártya tulajdonosát adatok környezetükben (CDE), egy jóváhagyott vizsgálatát szállító (ASV) használatával szükség szerint a fizetési kártya iparági biztonsági szabványok Tanács jóvá.<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure külső ellenőrzéseket a hatókör alapul szolgáló infrastruktúra, amely a kívülről elérhető legyen a biztonsági réseket hajt végre. Vizsgálatok által egy jóváhagyott vizsgálata szállító (ASV) történik.<br /><br />A Microsoft Azure MSRC/OSSC havi javítás értesítések előfizet, és biztonsági rések legalább negyedéves keres. Azonosított biztonsági rések értékelése, és egy meghatározott ütemterv alapján a kockázati szinteket illetően szervizelt.<br /><br />Minden egyes megcélzott negyedév átfogó biztonsági rést keres a rangsorolt a Microsoft Azure-környezet összetevői végez biztonsági rések azonosítása. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Ha központi telepítése a Contoso webes tároló, a bemutató ügyfelei felelősek az negyedéves külső biztonsági rés végrehajtása megvizsgálja, és megvizsgálja elleni PaaS példányainak a kártya tulajdonosát adatok környezetükben (CDE), egy jóváhagyott vizsgálatát szállító (ASV) használatával szükség szerint a fizetési kártya iparági biztonsági szabványok Tanács jóvá.<br /><br />|
 
 
 
@@ -131,8 +131,8 @@ Bármelyik módszert használnak, azok elegendőnek kell lennie ismeri fel és a
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Eredmények jelentett érdekelt felek és javítási követi nyomon az Azure biztonsági csapatának megszüntetésre keresztül. Az Azure vizsgálati eredmények alapján titoktartási ügyfelekkel lehet osztani. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Az ügyfelek felelősek negyedéves belső és külső biztonsági rés vizsgálatokat végez, és megvizsgálja, szemben a CDE összes PaaS-példány igény szerint. Vizsgálat után a hatókör környezetben jelentős módosításokat kell végezni.<br /><br />Vizsgálatok a szervezeti függetlenség az ASV vagy a személyzet kell elvégezni.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Eredmények jelentett érdekelt felek és javítási követi nyomon az Azure biztonsági csapatának megszüntetésre keresztül. Az Azure vizsgálati eredmények alapján titoktartási ügyfelekkel lehet osztani. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Az ügyfelek felelősek negyedéves belső és külső biztonsági rés vizsgálatokat végez, és megvizsgálja, szemben a CDE összes PaaS-példány igény szerint. Vizsgálat után a hatókör környezetben jelentős módosításokat kell végezni.<br /><br />Vizsgálatok a szervezeti függetlenség az ASV vagy a személyzet kell elvégezni.|
 
 
 
@@ -152,8 +152,8 @@ Bármelyik módszert használnak, azok elegendőnek kell lennie ismeri fel és a
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure-szolgáltatások segítségével a külső gyártótól származó behatolás érvényesíti a OWASP (webes alkalmazás biztonsági projekt megnyitása) alapján tesztelés első tíz CREST hitelesített tesztelők webhelyről használatával. A kockázat nyilvántartásba, amely van naplózva, és tekintse át biztonsági eljárásokat a megfelelőség biztosítása rendszeresen keresztül vizsgálata követi. <br /><br />Microsoft is piros összevonást használ a Microsoft által kezelt infrastruktúra, szolgáltatások és alkalmazások ellen. Nincs záró ügyféladatok szándékosan megcélzott piros Összevonás és élő webhelyet behatolást vagy a biztonság a tesztelés során. A tesztek alapján a Microsoft Azure-infrastruktúra és a platformok, valamint a Microsoft által alkalmazások és adatok vannak. Ügyfél bérlők, alkalmazások és az Azure-ban tárolt adatok soha nem célozzák meg.<br /><br />A Microsoft Azure alkalmazott rendszer assessment tervének kialakításához, és végezze el a vezérlők értékelése független értékelésében. Vezérlők értékelések évente történik, és az eredmények feleket jelentik. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló lett toll tesztelni, és a biztonsági rés beolvasott "," annak érdekében. A toll teszteredmények megkettőzhetők, például nmap vagy pentest-tools.com közös eszközök segítségével. A toll vizsgálati eredményeket nyújt vezetnek eredményre támadási felületét, nincs kihasználható elemekhez. Emellett [az Azure Security Center](https://azure.microsoft.com/services/security-center/) és [Azure Advisor](/azure/advisor/advisor-security-recommendations) adja meg a szervizelés és a biztonsági információk.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure-szolgáltatások segítségével a külső gyártótól származó behatolás érvényesíti a OWASP (webes alkalmazás biztonsági projekt megnyitása) alapján tesztelés első tíz CREST hitelesített tesztelők webhelyről használatával. A kockázat nyilvántartásba, amely van naplózva, és tekintse át biztonsági eljárásokat a megfelelőség biztosítása rendszeresen keresztül vizsgálata követi. <br /><br />Microsoft is piros összevonást használ a Microsoft által kezelt infrastruktúra, szolgáltatások és alkalmazások ellen. Nincs záró ügyféladatok szándékosan megcélzott piros Összevonás és élő webhelyet behatolást vagy a biztonság a tesztelés során. A tesztek alapján a Microsoft Azure-infrastruktúra és a platformok, valamint a Microsoft által alkalmazások és adatok vannak. Ügyfél bérlők, alkalmazások és az Azure-ban tárolt adatok soha nem célozzák meg.<br /><br />A Microsoft Azure alkalmazott rendszer assessment tervének kialakításához, és végezze el a vezérlők értékelése független értékelésében. Vezérlők értékelések évente történik, és az eredmények feleket jelentik. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló lett toll tesztelni, és a biztonsági rés beolvasott "," annak érdekében. A toll teszteredmények megkettőzhetők, például nmap vagy pentest-tools.com közös eszközök segítségével. A toll vizsgálati eredményeket nyújt vezetnek eredményre támadási felületét, nincs kihasználható elemekhez. Emellett [az Azure Security Center](https://azure.microsoft.com/services/security-center/) és [Azure Advisor](/azure/advisor/advisor-security-recommendations) adja meg a szervizelés és a biztonsági információk.|
 
 
 
@@ -165,8 +165,8 @@ Bármelyik módszert használnak, azok elegendőnek kell lennie ismeri fel és a
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 11.3](#pci-dss-requirement-11-3). |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló lett toll tesztelni, és a biztonsági rés beolvasott "," annak érdekében. A toll teszteredmények megkettőzhetők, például nmap vagy pentest-tools.com közös eszközök segítségével. A toll vizsgálati eredményeket nyújt vezetnek eredményre támadási felületét, nincs kihasználható elemekhez. Emellett [az Azure Security Center](https://azure.microsoft.com/services/security-center/) és [Azure Advisor](/azure/advisor/advisor-security-recommendations) adja meg a szervizelés és a biztonsági információk.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 11.3](#pci-dss-requirement-11-3). |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló lett toll tesztelni, és a biztonsági rés beolvasott "," annak érdekében. A toll teszteredmények megkettőzhetők, például nmap vagy pentest-tools.com közös eszközök segítségével. A toll vizsgálati eredményeket nyújt vezetnek eredményre támadási felületét, nincs kihasználható elemekhez. Emellett [az Azure Security Center](https://azure.microsoft.com/services/security-center/) és [Azure Advisor](/azure/advisor/advisor-security-recommendations) adja meg a szervizelés és a biztonsági információk.|
 
 
 
@@ -178,8 +178,8 @@ Bármelyik módszert használnak, azok elegendőnek kell lennie ismeri fel és a
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure szerződéseket független értékelő behatolást vagy a biztonság teszteléséhez a Microsoft Azure-határ. Piros-csapat gyakorlatokat is rendszeresen készül, és eredmények használ a biztonsági javítások. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló lett toll tesztelni, és a biztonsági rés beolvasott "," annak érdekében. A toll teszteredmények megkettőzhetők, például nmap vagy pentest-tools.com közös eszközök segítségével. A toll vizsgálati eredményeket nyújt vezetnek eredményre támadási felületét, nincs kihasználható elemekhez. Emellett [az Azure Security Center](https://azure.microsoft.com/services/security-center/) és [Azure Advisor](/azure/advisor/advisor-security-recommendations) adja meg a szervizelés és a biztonsági információk.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure szerződéseket független értékelő behatolást vagy a biztonság teszteléséhez a Microsoft Azure-határ. Piros-csapat gyakorlatokat is rendszeresen készül, és eredmények használ a biztonsági javítások. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló lett toll tesztelni, és a biztonsági rés beolvasott "," annak érdekében. A toll teszteredmények megkettőzhetők, például nmap vagy pentest-tools.com közös eszközök segítségével. A toll vizsgálati eredményeket nyújt vezetnek eredményre támadási felületét, nincs kihasználható elemekhez. Emellett [az Azure Security Center](https://azure.microsoft.com/services/security-center/) és [Azure Advisor](/azure/advisor/advisor-security-recommendations) adja meg a szervizelés és a biztonsági információk.|
 
 
 
@@ -191,8 +191,8 @@ Bármelyik módszert használnak, azok elegendőnek kell lennie ismeri fel és a
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Eljárások bevezetett az ismert biztonsági rések a Microsoft Azure platform összetevő figyelésére. <br /><br /><br /><br />Minden egyes megcélzott negyedév átfogó biztonsági rést keres a rangsorolt összetevői az Azure éles környezetben történik a biztonsági rések azonosítása. Eredmények jelentett érdekelt felek és javítási követi nyomon a csapat megszüntetésre keresztül. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | [Az Azure Security Center](https://azure.microsoft.com/services/security-center/) és [Azure Advisor](/azure/advisor/advisor-security-recommendations), szervizelés, és a biztonsági információk lettek megadva a használatával győződjön meg arról, hogy az összes fennálló problémákat a Contoso webes tároló bemutató CDE a szervizelt nyújt.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Eljárások bevezetett az ismert biztonsági rések a Microsoft Azure platform összetevő figyelésére. <br /><br /><br /><br />Minden egyes megcélzott negyedév átfogó biztonsági rést keres a rangsorolt összetevői az Azure éles környezetben történik a biztonsági rések azonosítása. Eredmények jelentett érdekelt felek és javítási követi nyomon a csapat megszüntetésre keresztül. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | [Az Azure Security Center](https://azure.microsoft.com/services/security-center/) és [Azure Advisor](/azure/advisor/advisor-security-recommendations), szervizelés, és a biztonsági információk lettek megadva a használatával győződjön meg arról, hogy az összes fennálló problémákat a Contoso webes tároló bemutató CDE a szervizelt nyújt.|
 
 
 
@@ -204,8 +204,8 @@ Bármelyik módszert használnak, azok elegendőnek kell lennie ismeri fel és a
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Eljárások bevezetett az ismert biztonsági rések a Microsoft Azure platform összetevő figyelésére. <br /><br /><br /><br />Minden egyes megcélzott negyedév átfogó biztonsági rést keres a rangsorolt összetevői az Azure éles környezetben történik a biztonsági rések azonosítása. Eredmények jelentett érdekelt felek és javítási követi nyomon a csapat megszüntetésre keresztül. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | [Az Azure Security Center](https://azure.microsoft.com/services/security-center/) és [Azure Advisor](/azure/advisor/advisor-security-recommendations), szervizelés, és a biztonsági információk lettek megadva a használatával győződjön meg arról, hogy az összes fennálló problémákat a Contoso webes tároló bemutató CDE a szervizelt nyújt.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Eljárások bevezetett az ismert biztonsági rések a Microsoft Azure platform összetevő figyelésére. <br /><br /><br /><br />Minden egyes megcélzott negyedév átfogó biztonsági rést keres a rangsorolt összetevői az Azure éles környezetben történik a biztonsági rések azonosítása. Eredmények jelentett érdekelt felek és javítási követi nyomon a csapat megszüntetésre keresztül. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | [Az Azure Security Center](https://azure.microsoft.com/services/security-center/) és [Azure Advisor](/azure/advisor/advisor-security-recommendations), szervizelés, és a biztonsági információk lettek megadva a használatával győződjön meg arról, hogy az összes fennálló problémákat a Contoso webes tároló bemutató CDE a szervizelt nyújt.|
 
 
 
@@ -221,8 +221,8 @@ Bármelyik módszert használnak, azok elegendőnek kell lennie ismeri fel és a
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 11.3.4](#pci-dss-requirement-11-3-4). |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | [Az Azure Security Center](https://azure.microsoft.com/services/security-center/) és [Azure Advisor](/azure/advisor/advisor-security-recommendations), szervizelés, és a biztonsági információk lettek megadva a használatával győződjön meg arról, hogy az összes fennálló problémákat a Contoso webes tároló bemutató CDE a szervizelt nyújt.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Lásd: "Microsoft Azure" szakasz [követelmény 11.3.4](#pci-dss-requirement-11-3-4). |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | [Az Azure Security Center](https://azure.microsoft.com/services/security-center/) és [Azure Advisor](/azure/advisor/advisor-security-recommendations), szervizelés, és a biztonsági információk lettek megadva a használatával győződjön meg arról, hogy az összes fennálló problémákat a Contoso webes tároló bemutató CDE a szervizelt nyújt.|
 
 
 
@@ -235,8 +235,8 @@ Behatolásérzékelési és megelőzési motorok, alapkonfigurációk és aláí
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Microsoft Azure végez valós idejű elemzési események a működési környezetben, és közel valós idejű riasztásokat az esetlegesen veszélyeztető a rendszer eseményekről készítése Azonosítók rendszerek. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló egy PaaS szolgáltatás, és hálózati behatolás felderítésére és megelőzésére Azure felelősségi hivatkozik. [Az Azure Security Center](https://azure.microsoft.com/services/security-center/) és [Azure Advisor](/azure/advisor/advisor-security-recommendations) adja meg a szervizelés és a behatolás lehetőséget.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure végez valós idejű elemzési események a működési környezetben, és közel valós idejű riasztásokat az esetlegesen veszélyeztető a rendszer eseményekről készítése Azonosítók rendszerek. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló egy PaaS szolgáltatás, és hálózati behatolás felderítésére és megelőzésére Azure felelősségi hivatkozik. [Az Azure Security Center](https://azure.microsoft.com/services/security-center/) és [Azure Advisor](/azure/advisor/advisor-security-recommendations) adja meg a szervizelés és a behatolás lehetőséget.|
 
 
 
@@ -251,8 +251,8 @@ Behatolásérzékelési és megelőzési motorok, alapkonfigurációk és aláí
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Microsoft Azure tart fenn, és értesíti a potenciális változások és tevékenységek is hatással lehetnek a biztonsági ügyfelek vagy a szolgáltatások egy online szolgáltatás irányítópulton keresztül történő rendelkezésre állását. A biztonsági kötelezettségeit, és a Microsoft Azure-ügyfelek biztonsági kötelezettségeit változtatások a Microsoft Azure-webhelyen időben.<br /><br />Telepítés vagy a Microsoft Azure éles környezetben korlátozódik szoftver módosítását engedélyezett felügyeleti csoporthoz, és a következő módosítása felügyeleti eljárások. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A webes tároló contoso bemutató egy PaaS szolgáltatás és észlelésének OMS segítségével van megvalósítva. További információkért lásd: [PCI útmutatást - alkalmazáshiba OMS megoldások](payment-processing-blueprint.md#oms-solutions).<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure tart fenn, és értesíti a potenciális változások és tevékenységek is hatással lehetnek a biztonsági ügyfelek vagy a szolgáltatások egy online szolgáltatás irányítópulton keresztül történő rendelkezésre állását. A biztonsági kötelezettségeit, és a Microsoft Azure-ügyfelek biztonsági kötelezettségeit változtatások a Microsoft Azure-webhelyen időben.<br /><br />Telepítés vagy a Microsoft Azure éles környezetben korlátozódik szoftver módosítását engedélyezett felügyeleti csoporthoz, és a következő módosítása felügyeleti eljárások. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A webes tároló contoso bemutató egy PaaS szolgáltatás és címváltozásának felderítését Log Analytics segítségével van megvalósítva. További információkért lásd: [PCI útmutatást - alkalmazáshiba megoldások](payment-processing-blueprint.md#management-solutions).<br /><br />|
 
 
 
@@ -264,8 +264,8 @@ Behatolásérzékelési és megelőzési motorok, alapkonfigurációk és aláí
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Azure figyelési esemény szabályokat a magas kockázatú műveletekhez, és az eszközök figyelését nagyobb mennyiségű biztosítanak. Azure által felügyelt hálózati eszközök számára meghatározott biztonsági előírásoknak való megfelelés figyeli. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló riasztásokat a változásokat az OMS-megvalósítás által biztosított. További információkért lásd: [PCI útmutatást - alkalmazáshiba OMS megoldások](payment-processing-blueprint.md#oms-solutions).<br /><br /><br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Azure figyelési esemény szabályokat a magas kockázatú műveletekhez, és az eszközök figyelését nagyobb mennyiségű biztosítanak. Azure által felügyelt hálózati eszközök számára meghatározott biztonsági előírásoknak való megfelelés figyeli. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló riasztások módosítások Naplóelemzési megvalósítása által biztosított. További információkért lásd: [PCI útmutatást - alkalmazáshiba megoldások](payment-processing-blueprint.md#management-solutions).<br /><br /><br /><br />|
 
 
 
@@ -277,8 +277,8 @@ Behatolásérzékelési és megelőzési motorok, alapkonfigurációk és aláí
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló riasztásokat a változásokat az OMS-megvalósítás által biztosított. További információkért lásd: [PCI útmutatást - alkalmazáshiba OMS megoldások](payment-processing-blueprint.md#oms-solutions).<br /><br /><br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló riasztások módosítások Naplóelemzési megvalósítása által biztosított. További információkért lásd: [PCI útmutatást - alkalmazáshiba megoldások](payment-processing-blueprint.md#management-solutions).<br /><br /><br /><br />|
 
 
 

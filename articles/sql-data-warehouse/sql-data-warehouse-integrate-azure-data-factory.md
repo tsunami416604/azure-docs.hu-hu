@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Data Factory használja az SQL Data Warehouse szolgáltatással |} Microsoft Docs"
-description: "Tippek az Azure Data Factory (ADF) használata az Azure SQL Data Warehouse adattárházzal történő, megoldások."
+title: Az Azure Data Factory használja az SQL Data Warehouse szolgáltatással |} Microsoft Docs
+description: Tippek az Azure Data Factory (ADF) használata az Azure SQL Data Warehouse adattárházzal történő, megoldások.
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 492de762-c7a2-4cdb-943f-3135230e94f1
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
 ms.openlocfilehash: 6adfa1264c9d196d6c6e57f1d108710b9ee73265
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-data-factory-with-sql-data-warehouse"></a>Az Azure Data Factory használja az SQL Data Warehouse szolgáltatással
 Az Azure Data Factory lehetővé teszi a teljes körűen felügyelt koordinálása az adatok átvitelét és az SQL Data warehouse tárolt eljárások végrehajtása.  Ez lehetővé teszi a könnyebb beállítás és ütemezése összetett bontsa ki az átalakítási és betöltési (ETL) eljárások az SQL Data Warehouse szolgáltatással. Azure Data Factory részletesebb áttekintéséért lásd: a [Azure Data Factory dokumentáció][Azure Data Factory documentation].
@@ -27,9 +27,9 @@ Az Azure Data Factory lehetővé teszi a teljes körűen felügyelt koordinálá
 ## <a name="data-movement"></a>Adatáthelyezés
 Az Azure Data Factory lehetővé teszi, hogy a helyszíni adatforrások és a különböző Azure-szolgáltatások közötti adatátvitelt jelölik.  Azure Data Factory átfogó, a jelenlegi integráció az alábbi helyekről érkező vagy oda irányuló adatmozgás támogatja:
 
-* Az Azure blob-tároló
+* Azure Blob Storage
 * Azure SQL Database
-* A helyszíni SQL Server
+* On-premises SQL Server
 * SQL Server IaaS
 
 Információk az adatok beállítása a másolási tevékenység: [másolja az adatokat az Azure Data Factoryvel][Copy data with Azure Data Factory]
@@ -37,7 +37,7 @@ Információk az adatok beállítása a másolási tevékenység: [másolja az a
 ## <a name="stored-procedures"></a>Tárolt eljárások
  Megegyező módon használható adatátvitel ütemezése Azure Data Factory használatával is lehet levezényelni a tárolt eljárások végrehajtása.  Így összetettebb kimenetátirányítási hozható létre, és kibővíti az Azure Data Factory képes használni az SQL Data Warehouse számítási teljesítménnyel rendelkezik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az integráció áttekintéséért lásd: [SQL Data Warehouse integrációjának áttekintése][SQL Data Warehouse integration overview].
 További fejlesztési tippek: [SQL Data Warehouse fejlesztői áttekintés][SQL Data Warehouse development overview].
 

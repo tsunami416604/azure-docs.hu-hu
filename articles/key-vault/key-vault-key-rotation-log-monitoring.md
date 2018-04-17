@@ -1,11 +1,11 @@
 ---
-title: "Állítsa be a Azure Key Vault-végpontok közötti fő elforgatás és naplózási |} Microsoft Docs"
-description: "Ez az útmutató segítségével rendszerrel legfontosabb rotációjával és figyelési kulcstároló naplóit."
+title: Állítsa be a Azure Key Vault-végpontok közötti fő elforgatás és naplózási |} Microsoft Docs
+description: Ez az útmutató segítségével rendszerrel legfontosabb rotációjával és figyelési kulcstároló naplóit.
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: swgriffith
 manager: mbaldwin
-tags: 
+tags: ''
 ms.assetid: 9cd7e15e-23b8-41c0-a10a-06e6207ed157
 ms.service: key-vault
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
-ms.author: jodehavi;stgriffi
-ms.openlocfilehash: edc9a870257536235c2bef139dc4d1ead7dd7a8f
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.author: stgriffi
+ms.openlocfilehash: 701edc784dcde067e8ec585a3b31d6075207fbbf
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-azure-key-vault-with-end-to-end-key-rotation-and-auditing"></a>Az Azure Key Vault beállítása végpontok közötti kulcsforgatással és auditálással
 ## <a name="introduction"></a>Bevezetés
@@ -423,7 +423,7 @@ Ezután létre kell hoznia egy Azure logikai alkalmazás, amely szerzi be az ese
 
 A logikai alkalmazás létrehozása után keresse meg a fájlt, és válassza a **szerkesztése**. A logic app szerkesztő választható **Service Bus-üzenetsorba** a várólista csatlakozni a Service Bus hitelesítő adataival.
 
-![Azure Logic App Service Bus](./media/keyvault-keyrotation/Azure_LogicApp_ServiceBus.png)
+![Az Azure Logic App Service Bus](./media/keyvault-keyrotation/Azure_LogicApp_ServiceBus.png)
 
 Ezután válasszon **feltétel hozzáadása**. A feltételben a speciális szerkesztő váltson, és írja be a következő kódot, a tényleges APP_ID webalkalmazás APP_ID cseréje:
 

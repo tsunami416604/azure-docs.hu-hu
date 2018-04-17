@@ -1,23 +1,23 @@
 ---
-title: "A Windows Data tudományos Azure virtuális gép kiépítéséhez |} Microsoft Docs"
-description: "Konfigurálja és tudományos adatok virtuális gép létrehozása az Azure elemzéséhez és a gépi tanulás."
+title: A Windows Data tudományos Azure virtuális gép kiépítéséhez |} Microsoft Docs
+description: Konfigurálja és tudományos adatok virtuális gép létrehozása az Azure elemzéséhez és a gépi tanulás.
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: gopitk
 manager: cgronlun
-editor: cgronlun
 ms.assetid: e1467c0f-497b-48f7-96a0-7f806a7bec0b
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
-ms.author: bradsev
-ms.openlocfilehash: 9f01ba69f6511a3f9a7f99e379522be3c00554f5
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.author: gokuma
+ms.openlocfilehash: 34bdbf6e98d5232bf924f3f32a2acb3460a7737f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>A Windows Data tudományos virtuális gépet az Azure telepítéséhez
 A Microsoft adatokat tudományos virtuális gép, a Windows Azure virtuális gép (VM) előtelepített és konfigurált számos népszerű eszköz adatelemzés és a gépi tanulás általánosan használt lemezkép. A rendszer részét képező eszközök:
@@ -26,7 +26,7 @@ A Microsoft adatokat tudományos virtuális gép, a Windows Azure virtuális gé
 * [Microsoft gépi tanulási a kiszolgáló](https://docs.microsoft.com/machine-learning-server/index) Developer Edition
 * Anaconda Python elosztási
 * Jupyter notebook (az R, Python, PySpark mag)
-* Visual Studio Community Edition
+* A Visual Studio Community Edition
 * Power BI Desktop
 * SQL Server 2017 Developer Edition
 * Önálló Spark-példány a helyi fejlesztéshez és teszteléshez
@@ -176,8 +176,8 @@ A [ **Microsoft Webplatform-telepítő** ](https://www.microsoft.com/web/downloa
 | Jupyter Notebook minták kezdőkönyvtár |c:\dsvm\notebooks és c:\users\<felhasználónév > \notebooks|
 | Más minták |c:\dsvm\samples |
 | Anaconda (alapértelmezett: Python 3.6) |c:\Anaconda |
-| Anaconda Python 2.7 environment |c:\Anaconda\envs\python2 |
-| Microsoft ML Server Standalone Python  | C:\Program Files\Microsoft\ML Server\PYTHON_SERVER |
+| Anaconda Python 2.7-es környezetben |c:\Anaconda\envs\python2 |
+| Microsoft ML-kiszolgáló önálló Python  | C:\Program Files\Microsoft\ML Server\PYTHON_SERVER |
 | Alapértelmezett R-példány (ML-kiszolgáló önálló) |C:\Program Files\Microsoft\ML Server\R_SERVER |
 | SQL ML szolgáltatások adatbázis-példány könyvtára |C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER |
 | Az Azure Machine Learning munkaterület (felhasználónként) | %localappdata%\amlworkbench | 

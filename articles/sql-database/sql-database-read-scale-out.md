@@ -9,11 +9,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: sashan
-ms.openlocfilehash: 26204d5bd61d193a3d08e26f98faf77ecc367a94
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0eda9012e6b6c7207d200a6e550b6bc0b0b09882
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Csak olvasható replikákat használ a csak olvasható elosztásában (előzetes verzió) betöltése
 
@@ -32,7 +32,7 @@ Olvasási kibővített adatbázis engedélyezése után az adatbázishoz való k
 
 ## <a name="data-consistency"></a>Adatkonzisztencia
 
-A AlwasyON előnyeit egyike, hogy a replikák mindig a tranzakciós úton konzisztens állapotban van, de különböző időpontokban időben lehet néhány kis késleltetésű között különböző replikákat. Olvassa el a kibővített munkamenet szintű konzisztencia támogatja. Azt jelenti, a csak olvasható munkamenet újracsatlakozik a replika elérhetetlensége miatt kapcsolódási hiba után, ha azt átirányíthatók replika nem naprakész a írható-olvasható replika 100 %. Ehhez hasonlóan az alkalmazások írja az adatokat, olvasási és írási munkamenet használatával, és azonnal olvassa be a csak olvasható munkamenet használatával, esetén előfordulhat, hogy a legújabb frissítések olyan nem jelennek meg azonnal. Ez azért, mert a tranzakciós napló ismét: a replikához aszinkron.
+Az AlwaysON előnyei egyike, hogy a replikák mindig a tranzakciós úton konzisztens állapotban van, de különböző időpontokban időben lehet néhány kis késleltetésű között különböző replikákat. Olvassa el a kibővített munkamenet szintű konzisztencia támogatja. Azt jelenti, a csak olvasható munkamenet újracsatlakozik a replika elérhetetlensége miatt kapcsolódási hiba után, ha azt átirányíthatók replika nem naprakész a írható-olvasható replika 100 %. Ehhez hasonlóan az alkalmazások írja az adatokat, olvasási és írási munkamenet használatával, és azonnal olvassa be a csak olvasható munkamenet használatával, esetén előfordulhat, hogy a legújabb frissítések olyan nem jelennek meg azonnal. Ez azért, mert a tranzakciós napló ismét: a replikához aszinkron.
 
 > [!NOTE]
 > Replikációs késések fordulnak elő a régión belül alacsony, és ez a helyzet ritkán fordul elő.

@@ -1,11 +1,11 @@
 ---
-title: "Végezzen hibaelhárítást az Azure virtuális hálózati átjáró és a kapcsolatok - portál |} Microsoft Docs"
-description: "Ez a lap ismerteti, hogyan Azure hálózati figyelőt portál hibaelhárítása"
+title: Végezzen hibaelhárítást az Azure virtuális hálózati átjáró és a kapcsolatok - portál |} Microsoft Docs
+description: Ez a lap ismerteti, hogyan Azure hálózati figyelőt portál hibaelhárítása
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f6f0a813-38b6-4a1f-8cfc-1dfdf979f595
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: fb8f60eea0eaa24649f584ae4183aa8e552a433e
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: becc4f799e34aabba5c703f09e51a4b7d497c45a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-network-watcher-from-azure-portal"></a>Virtuális hálózati átjáró és az Azure portálról hálózati figyelőt alkalmazó kapcsolatok hibáinak elhárítása
 
@@ -74,7 +74,7 @@ A **művelet** lapon általános útmutatást nyújt a probléma megoldásához.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha a beállítások módosítása, hogy stop VPN-kapcsolatot, lásd: [hálózati biztonsági csoportok kezelése](../virtual-network/virtual-network-manage-nsg-arm-portal.md) nyomon követheti a hálózati biztonsági csoport és a biztonsági szabályok, amelyek lehet, hogy a szóban forgó.
+Ha a beállítások módosítása, hogy stop VPN-kapcsolatot, lásd: [hálózati biztonsági csoportok kezelése](../virtual-network/manage-network-security-group.md) nyomon követheti a hálózati biztonsági csoport és a biztonsági szabályok, amelyek lehet, hogy a szóban forgó.
 
 
 [2]: ./media/network-watcher-troubleshoot-manage-portal/2.png

@@ -1,8 +1,8 @@
 ---
-title: "Az Apache Kafka készítő és fogyasztói API-k – az Azure HDInsight |} Microsoft Docs"
-description: "Útmutató a Apache Kafka készítő és fogyasztói API-k használata a HDInsight Kafka. Ezen API-k lehetővé teszik, hogy az írható és olvasható az Apache Kafka alkalmazások fejlesztéséhez."
+title: Az Apache Kafka készítő és fogyasztói API-k – az Azure HDInsight |} Microsoft Docs
+description: Útmutató a Apache Kafka készítő és fogyasztói API-k használata a HDInsight Kafka. Ezen API-k lehetővé teszik, hogy az írható és olvasható az Apache Kafka alkalmazások fejlesztéséhez.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: cgronlun
 editor: cgronlun
@@ -12,14 +12,14 @@ ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/18/2018
+ms.topic: conceptual
+ms.date: 04/10/2018
 ms.author: larryfr
-ms.openlocfilehash: b57745d6bd993a993e923c964327d9071e745413
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 01592401c4c88adeed49b11df4e7963e27b1bcee
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="apache-kafka-producer-and-consumer-apis"></a>Apache Kafka termelő és fogyasztói API-k
 
@@ -43,7 +43,7 @@ Ebben a példában a HDInsight 3.6 Kafka igényel. Megtudhatja, hogyan hozzon l�
 
 ## <a name="build-and-deploy-the-example"></a>Hozza létre és telepítheti a példa
 
-1. A példákat a [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) címről töltheti le.
+1. Töltse le az említett példákat követik [ https://github.com/Azure-Samples/hdinsight-kafka-java-get-started ](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started).
 
 2. Módosítsa a könyvtárat, hol található a `Producer-Consumer` könyvtárra, és használja a következő parancsot:
 
@@ -61,7 +61,7 @@ Ebben a példában a HDInsight 3.6 Kafka igényel. Megtudhatja, hogyan hozzon l�
    
     Cserélje le az **SSHUSER** elemet a fürt SSH-felhasználójára, illetve a **CLUSTERNAME** elemet a fürt nevére. Ha a rendszer kéri, adja meg az SSH-felhasználó jelszavát.
 
-## <a id="run"></a>A példa futtatásához
+## <a id="run"></a> A példa futtatásához
 
 1. Nyissa meg a fürthöz az SSH-kapcsolat, használja a következő parancsot:
 
@@ -144,9 +144,9 @@ Ebből a dokumentumból megismerte a Kafka gyártó és a fogyasztói API haszn�
 
 * [Kafka-naplók elemzése](apache-kafka-log-analytics-operations-management.md)
 * [Adatreplikálás Kafka-fürtök között](apache-kafka-mirroring.md)
-* [A hdinsight eszközzel API Kafka adatfolyamok](apache-kafka-streams-api.md)
+* [Kafka Streams API a HDInsighttal](apache-kafka-streams-api.md)
 * [Az Apache Spark stream (DStream) használata a Kafkával a HDInsighton](../hdinsight-apache-spark-with-kafka.md)
 * [Az Apache Spark strukturált stream használata a Kafkával a HDInsighton](../hdinsight-apache-kafka-spark-structured-streaming.md)
-* [Használja az Apache Spark strukturált Streaming tárolt adatok mozgatása Kafka a HDInsight az Cosmos-Adatbázishoz](../apache-kafka-spark-structured-streaming-cosmosdb.md)
+* [Az Apache Spark strukturált stream használata adatok áthelyezéséhez a HDInsighton lévő Kafkáról a Cosmos DB-re](../apache-kafka-spark-structured-streaming-cosmosdb.md)
 * [Az Apache Storm használata a HDInsighton futó Kafkával](../hdinsight-apache-storm-with-kafka.md)
 * [Csatlakozás a Kafkához Azure Virtual Networkön keresztül](apache-kafka-connect-vpn-gateway.md)

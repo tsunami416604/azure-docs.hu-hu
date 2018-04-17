@@ -1,6 +1,6 @@
 ---
-title: Az OMS szolgáltatáshoz figyelés beállítása az Azure Service Fabric - |} Microsoft Docs
-description: Ismerje meg, hogyan állíthat be az Operations Management Suite megjelenítése és elemzésével események figyelése az Azure Service Fabric-fürtök.
+title: A Naplóelemzési figyelés beállítása az Azure Service Fabric - |} Microsoft Docs
+description: Megtudhatja, hogyan állíthatja be Naplóelemzési megjelenítése és események elemzése az Azure Service Fabric-fürtök figyelése.
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/30/2018
 ms.author: dekapur; srrengar
-ms.openlocfilehash: 2589efa1808a394f2e32b842efa2ee70809da232
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 807c703eccf336236846212b8a0cadc20ec2bc4a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="set-up-operations-management-suite-log-analytics-for-a-cluster"></a>Operations Management Suite Naplóelemzési beállítása egy fürtben
+# <a name="set-up-log-analytics-for-a-cluster"></a>A Naplóelemzési beállítása egy fürtben
 
-Az Operations Management Suite (OMS) munkaterülethez Azure Resource Manager, a PowerShell vagy az Azure piactér állíthat be. Ha a telepítés későbbi használat érdekében egy frissített Resource Manager-sablon, használja ugyanazt a sablont az OMS-környezet beállítása. Üzembe helyezés piactér egyszerűbb, ha már rendelkezik egy fürt engedélyezve diagnosztikai telepítik. Nincs előfizetés-szintű hozzáférést a fiók, amelyen OMS telepíti, ha a PowerShell vagy a Resource Manager-sablon telepíthet.
+A Naplóelemzési munkaterület Azure Resource Manager, a PowerShell vagy az Azure piactér állíthat be. Ha a telepítés későbbi használat érdekében egy frissített Resource Manager-sablon, használja ugyanazt a sablont az OMS-környezet beállítása. Üzembe helyezés piactér egyszerűbb, ha már rendelkezik egy fürt engedélyezve diagnosztikai telepítik. Nincs előfizetés-szintű hozzáférést a fiók, amelyen OMS telepíti, ha a PowerShell vagy a Resource Manager-sablon telepíthet.
 
 > [!NOTE]
-> OMS be, figyelheti a fürtöt, meg kell rendelkeznie a fürt- vagy platform-szintjén eseményeinek engedélyezve diagnosztikai.
+> Naplóelemzési be, figyelheti a fürtöt, meg kell rendelkeznie a fürt- vagy platform-szintjén eseményeinek engedélyezve diagnosztikai.
 
 ## <a name="deploy-oms-by-using-azure-marketplace"></a>OMS telepítését az Azure piactéren
 

@@ -1,11 +1,11 @@
 ---
-title: "Oszlopcentrikus index a teljesítmény - Azure SQL Data Warehouse javítása |} Microsoft Docs"
-description: "Csökkentse a, vagy növelje a szabad memória a maximalizálása érdekében egy oszloptárindex tömöríti az egyes sorcsoport sorok száma."
+title: Oszlopcentrikus index a teljesítmény - Azure SQL Data Warehouse javítása |} Microsoft Docs
+description: Csökkentse a, vagy növelje a szabad memória a maximalizálása érdekében egy oszloptárindex tömöríti az egyes sorcsoport sorok száma.
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jhubbard
-editor: 
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 03/15/2018
 ms.author: barbkess
-ms.openlocfilehash: 74e641f9da418d678bdbef0c69f9f59ccee32303
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 6484f457731bb1b97f01df339eaf1b0aebf924c1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Az oszlopcentrikus maximalizálva sorcsoport minősége
 
@@ -139,7 +139,7 @@ OPTION (MAXDOP 1);
 DWU mérete és a felhasználó erőforrásosztály együtt határozza meg, mennyi memória érhető el a felhasználó lekérdezése. A memóriabeli ideiglenes terhelés lekérdezés növeléséhez dwu-k számának növelése, vagy növelje a erőforrásosztály.
 
 - A dwu-k növelése érdekében tekintse meg a [hogyan méretezhető teljesítmény?](quickstart-scale-compute-portal.md)
-- A lekérdezés erőforrásosztály módosításához lásd [módosíthatja a felhasználói erőforrás osztály példa](resource-classes-for-workload-management.md#assigning-resource-classes).
+- A lekérdezés erőforrásosztály módosításához lásd [módosíthatja a felhasználói erőforrás osztály példa](resource-classes-for-workload-management.md#change-a-users-resource-class).
 
 Például a DWU 100 smallrc erőforrásosztály felhasználójának használhatja 100 MB memóriát minden egyes terjesztési. A részletekért lásd: [az SQL Data Warehouse párhuzamossági](resource-classes-for-workload-management.md).
 

@@ -1,26 +1,26 @@
 ---
-title: "A felhő (Node.js) - málna Pi csatlakozzon az Azure IoT Hub Raspberry Pi |} Microsoft Docs"
-description: "Megtudhatja, hogyan kell beállítania, és Azure IoT-központ málna Pi adatokat küldeni az Azure felhőalapú platform ebben az oktatóanyagban málna Pi csatlakozni."
+title: A felhő (Node.js) - málna Pi csatlakozzon az Azure IoT Hub Raspberry Pi |} Microsoft Docs
+description: Megtudhatja, hogyan kell beállítania, és Azure IoT-központ málna Pi adatokat küldeni az Azure felhőalapú platform ebben az oktatóanyagban málna Pi csatlakozni.
 services: iot-hub
-documentationcenter: 
-author: shizn
+documentationcenter: ''
+author: rangv
 manager: timlt
-tags: 
-keywords: "az Azure iot raspberry pi, raspberry pi iot-központ, raspberry pi adatokat küldött a felhőben, raspberry pi felhőbe"
+tags: ''
+keywords: az Azure iot raspberry pi, raspberry pi iot-központ, raspberry pi adatokat küldött a felhőben, raspberry pi felhőbe
 ms.assetid: b0e14bfa-8e64-440a-a6ec-e507ca0f76ba
 ms.service: iot-hub
 ms.devlang: node
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 9/14/2017
-ms.author: xshi
+ms.date: 4/11/2018
+ms.author: rangv
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7bf423fd05d6651bf16693e6d6930fada8b5da70
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5e7db2f78a5c1a942f64a2c0a40068fffe90749d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Raspberry Pi csatlakozni az Azure IoT Hub (Node.js)
 
@@ -197,7 +197,7 @@ Kapcsolja be a Pi a micro USB-kábelen és a tápegység. Az Ethernet-kábel seg
    nano config.json
    ```
 
-   ![A konfigurációs fájl](media/iot-hub-raspberry-pi-kit-node-get-started/6_config-file.png)
+   ![Konfigurációs fájl](media/iot-hub-raspberry-pi-kit-node-get-started/6_config-file.png)
 
    Ezt a fájlt is beállíthat két elemek szerepelnek. Az első egy `interval`, amely megadja, hogy a (ezredmásodpercben) közötti időközt a felhőbe küldött üzeneteket. A második érték van `simulatedData`, vagyis az, hogy szimulált érzékelőadatait vagy nem logikai értéket.
 
@@ -205,7 +205,7 @@ Kapcsolja be a Pi a micro USB-kábelen és a tápegység. Az Ethernet-kábel seg
 
 1. Mentse és zárja be, írja be a vezérlő-O > Enter > CTRL-X.
 
-### <a name="run-the-sample-application"></a>Futtassa a mintaalkalmazást
+### <a name="run-the-sample-application"></a>A mintaalkalmazás futtatása
 
 Futtassa a mintaalkalmazást a következő parancs futtatásával:
 
@@ -221,7 +221,7 @@ A következő kimeneti bemutatja az érzékelő adatokat és az IoT hub küldöt
 
 ![Kimeneti - érzékelő adatokat küld az IoT hub málna Pi](media/iot-hub-raspberry-pi-kit-node-get-started/8_run-output.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Egy mintaalkalmazás érzékelő adatokat gyűjteni, és küldje el az IoT hub futtatását. Az IoT hub a málna Pi küldött üzeneteket, és üzeneteket küldhet a parancssori felületen málna Pi olvassa el a [kezelése felhő eszközt az IOT hubbal-explorer oktatóanyag üzenetküldési](https://docs.microsoft.com/en-gb/azure/iot-hub/iot-hub-explorer-cloud-device-messaging).
 

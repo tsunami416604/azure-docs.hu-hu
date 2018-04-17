@@ -1,38 +1,37 @@
 ---
-title: "T-SQL-nézetek használata az Azure SQL Data Warehouse |} Microsoft Docs"
-description: "Tippek a Transact-SQL-nézetek használata az Azure SQL Data Warehouse adattárházzal történő, megoldások."
-services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
-ms.assetid: b5208f32-8f4a-4056-8788-2adbb253d9fd
+title: T-SQL-nézetek használata az Azure SQL Data Warehouse |} Microsoft Docs
+description: ccccc
+services: Tips for using T-SQL views in Azure SQL Data Warehouse for developing solutions.
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: t-sql
-ms.date: 10/31/2016
-ms.author: jrj;barbkess
-ms.openlocfilehash: d2a03be810bd7f792876607ec735eb578b65a3b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/12/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: 249eaf07c5cd4ae918b6a95b1555f7198c7a23a2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="views-in-sql-data-warehouse"></a>Az SQL Data Warehouse-nézetek
-Nézetek különösen hasznosak az SQL Data Warehouse. A számos különböző módon a megoldás minőségének használható.  Ez a cikk funkciógazdagabbá teheti a megoldás a nézetek, valamint a korlátozásokat, amelyeket figyelembe kell venni néhány példák mutatja be.
+# <a name="views-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse nézetek
+Tippek a T-SQL-nézetek használata az Azure SQL Data Warehouse adattárházzal történő, megoldások. 
+
+
+## <a name="why-use-views"></a>Nézetek miért érdemes használni?
+Nézetek számos különböző módon minőségének a megoldás is használható.  Ez a cikk funkciógazdagabbá teheti a megoldás a nézetek, valamint a korlátozásokat, amelyeket figyelembe kell venni néhány példák mutatja be.
 
 > [!NOTE]
-> A szintaxis `CREATE VIEW` nem ez a cikk tárgyalja. Tekintse meg a [NÉZET létrehozása] [ CREATE VIEW] cikket az MSDN-en a referencia jellegű információihoz.
+> NÉZET létrehozása szintaxisának nem ez a cikk tárgyalja. További információkért lásd: a [NÉZET létrehozása](/sql/t-sql/statements/create-view-transact-sql) dokumentációját.
 > 
 > 
 
 ## <a name="architectural-abstraction"></a>Az architektúra absztrakciós
-Egy nagyon gyakori alkalmazásminta újra létre kell hoznia táblák létrehozása tábla AS kiválasztása (CTAS) egy objektum átnevezése mintát, miközben az adatok betöltése után.
+A közös alkalmazásminta újra létre kell hoznia táblák létrehozása tábla AS kiválasztása (CTAS) egy objektum átnevezése mintát, miközben az adatok betöltése után.
 
-Az alábbi példa új dátum rekordok hozzáadása a dátum dimenzió. Vegye figyelembe, hogyan egy új tabble DimDate_New, először hozzák létre, és lecseréli az eredeti verzióját tartalmazza a majd átnevezték.
+Az alábbi példa új dátum rekordok hozzáadása a dátum dimenzió. Vegye figyelembe, hogyan új tábla, DimDate_New, először hozzák létre, és lecseréli az eredeti verzióját tartalmazza a majd átnevezték.
 
 ```sql
 CREATE TABLE dbo.DimDate_New
@@ -52,13 +51,13 @@ RENAME OBJECT DimDate_New TO DimDate;
 
 ```
 
-Ez a módszer azonban táblák jelenik meg, és egy felhasználó, valamint a "tábla nem létezik" hibaüzenet eltűnik eredményez. Nézetek segítségével biztosít a felhasználók egy egységes megjelenítési réteg az alapul szolgáló objektumok váltják fel. Azáltal, hogy a felhasználók férhetnek hozzá az adatokhoz, a nézetek, azt jelenti, hogy a felhasználók nem látják az alapul szolgáló tábla kell. Ez egységes felhasználói élményt nyújt, győződjön meg arról, hogy az adatraktár tervezők is az adatokat az adatmodellbe fejlődnek és teljesítmény maximalizálása CTAS használatával az adatok betöltése a folyamat során.    
+Ez a módszer azonban táblák jelenik meg, és egy felhasználó, valamint a "tábla nem létezik" hibaüzenet eltűnik eredményez. Nézetek segítségével biztosít a felhasználók egy egységes megjelenítési réteg az alapul szolgáló objektumok váltják fel. Nézetek adatokhoz való hozzáférést biztosít, a felhasználóknak nem kell látható az alapul szolgáló táblákhoz. Ez a réteg egységes felhasználói élményt nyújt, közben is győződjön meg arról, hogy az adatraktár tervezők fejleszteni az adatmodellt. Is lehetővé azt fejleszteni az alapul szolgáló táblák azt jelenti, hogy a tervezők CTAS segítségével maximalizálhatja a teljesítményt az adatok betöltése a folyamat során.   
 
 ## <a name="performance-optimization"></a>Teljesítményoptimalizálás
-Nézetek is kényszeríteni optimalizált teljesítményt illesztést a táblák között állítható be. Például egy nézet építhessék be a redundáns terjesztési kulcs adatmozgás minimalizálása érdekében a csatlakozó feltétel részeként.  Egy másik előnye, hogy egy nézet egy adott lekérdezés vagy csatlakozó mutató kényszerített lehet. Nézetek használata ezen a módon kikapcsolja garantálja, hogy összekapcsolások mindig megtörténik a felhasználóknak jegyezze meg a megfelelő konstruktor a táblákra elkerülése optimális módon.
+Nézetek is kényszeríteni optimalizált teljesítményt illesztést a táblák között állítható be. Például egy nézet építhessék be a redundáns terjesztési kulcs adatmozgás minimalizálása érdekében a csatlakozó feltétel részeként. Egy másik előnye, hogy egy nézet egy adott lekérdezés vagy csatlakozó mutató kényszerített lehet. Nézetek használata ezen a módon kikapcsolja garantálja, hogy összekapcsolások mindig megtörténik a felhasználóknak jegyezze meg a megfelelő konstruktor a táblákra elkerülése optimális módon.
 
 ## <a name="limitations"></a>Korlátozások
-Az SQL Data Warehouse nézetek metaadatok csak olyan.  Ennek következtében a következő beállítások nem érhetők el:
+Az SQL Data Warehouse nézetek, csak a metaadatok tárolódnak. Ennek következtében a következő beállítások nem érhetők el:
 
 * Nincs kötés séma beállítás
 * Alaptáblát keresztül a nézet nem frissíthető
@@ -66,16 +65,7 @@ Az SQL Data Warehouse nézetek metaadatok csak olyan.  Ennek következtében a k
 * Nem támogatott a KIBONTÁS / NOEXPAND mutató
 * Nincsenek az SQL Data Warehouse nem indexelt nézetek
 
-## <a name="next-steps"></a>Következő lépések
-További fejlesztési tippek: [SQL Data Warehouse fejlesztői áttekintés][SQL Data Warehouse development overview].
-A `CREATE VIEW` tekintse meg szintaxis [NÉZET létrehozása][CREATE VIEW].
+## <a name="next-steps"></a>További lépések
+További fejlesztési tippek: [SQL Data Warehouse fejlesztői áttekintés](sql-data-warehouse-overview-develop.md).
 
-<!--Image references-->
 
-<!--Article references-->
-[SQL Data Warehouse development overview]: ./sql-data-warehouse-overview-develop.md
-
-<!--MSDN references-->
-[CREATE VIEW]: https://msdn.microsoft.com/en-us/library/ms187956.aspx
-
-<!--Other Web references-->

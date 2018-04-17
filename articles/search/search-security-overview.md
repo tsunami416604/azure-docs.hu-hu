@@ -14,11 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 01/19/2018
 ms.author: heidist
-ms.openlocfilehash: 35f875e5f6345b9ebb9abc4deb71b7bf9c78907d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 95c1f209d51093c3f2bf2555f987983a85f2bf09
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="security-and-controlled-access-in-azure-search"></a>Biztonság és ellenőrzött hozzáférés az Azure Search
 
@@ -51,7 +51,7 @@ Titkosítását a 2018 január 24 jelentették, és minden szolgáltatásrétege
 Több biztonsági mechanizmus áll, az Azure-verem keresztül elérhető, és így automatikusan elérhető, az Azure Search erőforrások hoz létre.
 
 + [Az előfizetés vagy az erőforrás törlésének megakadályozása szintet zárolásainak](../azure-resource-manager/resource-group-lock-resources.md)
-+ [Szerepköralapú hozzáférés-vezérlés (RBAC) történő hozzáférés szabályozása érdekében információkat és felügyeleti műveletek](../active-directory/role-based-access-control-what-is.md)
++ [Szerepköralapú hozzáférés-vezérlés (RBAC) történő hozzáférés szabályozása érdekében információkat és felügyeleti műveletek](../role-based-access-control/overview.md)
 
 Az összes Azure-szolgáltatások beállítása hozzáférési szintek következetesen összes szolgáltatásban a szerepköralapú hozzáférés-vezérlést (RBAC) támogatja. Például bizalmas adatokat, például az adminisztrációs kulcsot megtekintése nem használható a tulajdonos és közreműködő szerepkörökhöz, mivel a szolgáltatás állapotának megtekintése a szerepkör tagjai számára érhető el. Az RBAC biztosít a tulajdonos, közreműködő és olvasó szerepkört. Alapértelmezés szerint az összes szolgáltatás-rendszergazdák tagjai a tulajdonosi szerepkört.
 
@@ -92,7 +92,7 @@ További információ az Azure Search kérelmet szerkezetének kialakítása: [A
 
 Felhasználói hozzáférés index tartalmát a lekérdezéseket, egy adott biztonsági azonosítóhoz tartozó dokumentumok vissza olyan biztonsági szűröket keresztül valósul meg. Előre definiált szerepkörök és a szerepkör-hozzárendelések helyett azonosító-alapú hozzáférés-vezérlés szűrőként megvalósítása, hogy levágja találatok dokumentumokat és identitások alapján. A következő táblázat ismerteti a két megközelítés használatos levágási keresési eredmények jogosulatlan tartalom.
 
-| Approach | Leírás |
+| Módszer | Leírás |
 |----------|-------------|
 |[Biztonsági elrejtés identitás szűrők alapján](search-security-trimming-for-azure-search.md)  | A felhasználói identitás hozzáférés-vezérlés implementálása a következő alapvető munkafolyamattal dokumentumokat. Indexek felvenni a biztonsági azonosítók foglalkozik, és ezután bemutatja, hogy a mező lehet levágni a tiltott tartalom eredmények szűrése. |
 |[Azure Active Directory identitások alapuló biztonsági tisztítás](search-security-trimming-for-azure-search-with-aad.md)  | Ez a cikk kibővíti az előző cikkben, lépéseket biztosít az identitások az Azure Active Directory (AAD), egy a [szolgáltatások szabad](https://azure.microsoft.com/free/) az Azure felhőalapú platform. |

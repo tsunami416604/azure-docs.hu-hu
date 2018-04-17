@@ -1,6 +1,6 @@
 ---
-title: "Virtuális hálózati szolgáltatási végpont és az Azure SQL Database szabályok |} Microsoft Docs"
-description: "Egy alhálózat megjelölése egy virtuális hálózati végpontot. Ezután a végpont a hozzáférés-vezérlési lista az Azure SQL Database a virtuális hálózati szabály. SQL-adatbázist, majd fogad kommunikációt az összes virtuális gép és az alhálózat más csomópontok."
+title: Virtuális hálózati szolgáltatási végpont és az Azure SQL Database szabályok |} Microsoft Docs
+description: Egy alhálózat megjelölése egy virtuális hálózati végpontot. Ezután a végpont a hozzáférés-vezérlési lista az Azure SQL Database a virtuális hálózati szabály. SQL-adatbázist, majd fogad kommunikációt az összes virtuális gép és az alhálózat más csomópontok.
 services: sql-database
 ms.service: sql-database
 author: MightyPen
@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: 7622c6e6ffb1410cc2cbd42f6ac3601d281832da
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: b15b3c7f50c23a1c11b2467bfdd2794d52b451ac
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Virtuális hálózati szolgáltatás végpontok és szabályok az Azure SQL Database használata
 
@@ -140,7 +140,7 @@ Az Azure SQL Database a virtuális hálózati szabályok funkció rendelkezik a 
 Végpontok használata az Azure SQL Database, tekintse át a következőket kell figyelembe venni:
 
 - **Az Azure SQL adatbázis nyilvános IP-címek kimenő szükség**: Azure SQL adatbázis IP engedélyezi a csatlakozást a hálózati biztonsági csoportokkal (NSG-k) kell megnyitni. Ehhez a NSG [szolgáltatás címkék](../virtual-network/security-overview.md#service-tags) az Azure SQL Database.
-- **PostgreSQL és MySQL az Azure-adatbázis nem támogatottak**: végpontok nem támogatottak az Azure Database PostgreSQL vagy MySQL. Az SQL Database szolgáltatás végpontok engedélyezésére megszakítja a kapcsolatot, hogy ezekre a szolgáltatásokra. A megoldás tudunk a; Lépjen kapcsolatba a  *dmalik@microsoft.com* .
+- **PostgreSQL és MySQL az Azure-adatbázis nem támogatottak**: végpontok nem támogatottak az Azure Database PostgreSQL vagy MySQL. Az SQL Database szolgáltatás végpontok engedélyezésére megszakítja a kapcsolatot, hogy ezekre a szolgáltatásokra. A megoldás tudunk a; Lépjen kapcsolatba a *dmalik@microsoft.com*.
 
 #### <a name="expressroute"></a>ExpressRoute
 
@@ -177,8 +177,8 @@ Az Azure SQLDB rendelkezik az adatszinkronizálás funkciója, amely kapcsolódi
 Az Azure Storage ugyanaz a funkció, amely lehetővé teszi, hogy korlátozza a tárfiókkal van megvalósítva.
 Ha a szolgáltatás használatához egy tárfiókot, az Azure SQL-kiszolgáló által használt választja, a problémák futtathatja. Ezután egy lista és vitafórum által befolyásolt Azure SQLDB funkcióját.
 
-#### <a name="azure-sqldw-polybase"></a>Azure SQLDW PolyBase
-A PolyBase gyakran használják az adatok betöltése az Azure SQLDW a Storage-fiókok. A Storage-fiók, amely adatokat tölt be korlátozza a hozzáférést csak VNet-alhálózatokat, ha megszakad a fiók és a PolyBase közötti kapcsolatot. Nincs; Ez a megoldás Lépjen kapcsolatba a  *dmalik@microsoft.com*  további információt.
+#### <a name="azure-sqldw-polybase"></a>Az Azure SQLDW PolyBase
+A PolyBase gyakran használják az adatok betöltése az Azure SQLDW a Storage-fiókok. A Storage-fiók, amely adatokat tölt be korlátozza a hozzáférést csak VNet-alhálózatokat, ha megszakad a fiók és a PolyBase közötti kapcsolatot. Nincs; Ez a megoldás Lépjen kapcsolatba a *dmalik@microsoft.com* további információt.
 
 #### <a name="azure-sqldb-blob-auditing"></a>Azure SQLDB Blob Auditing
 A saját tárfiók blobnaplózási funkció leküldi naplókat. Ha ezt a tárfiókot használ a BBI szolgáltatás végpontok Azure SQLDB a tárolási fiók kapcsolat megszakad.
@@ -205,7 +205,7 @@ Kapcsolódási hiba 40914 vonatkozik *virtuális hálózati szabályok*, a tűzf
 
 *Névfeloldási hiba:* a tűzfal ablaktáblán az Azure portál, használja a virtuális hálózati szabályok megszabott [adja hozzá a virtuális hálózati szabály](#anchor-how-to-by-using-firewall-portal-59j) az alhálózat.
 
-#### <a name="error-40615"></a>Error 40615
+#### <a name="error-40615"></a>Hiba 40615
 
 *Szöveges üzenet:* nem nyitható meg a kiszolgáló a bejelentkezés által kért "{0}". Ügyfél IP-cím "{1}" nem engedélyezett a kiszolgálóhoz való hozzáféréshez.
 
@@ -315,7 +315,7 @@ A virtuális hálózati szabály funkció az Azure SQL Database váltak elérhet
 
 [expressroute-indexmd-744v]: ../expressroute/index.md
 
-[rbac-what-is-813s]: ../active-directory/role-based-access-control-what-is.md
+[rbac-what-is-813s]:../role-based-access-control/overview.md
 
 [sql-db-firewall-rules-config-715d]: sql-database-firewall-configure.md
 

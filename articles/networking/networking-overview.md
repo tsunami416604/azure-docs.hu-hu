@@ -1,13 +1,13 @@
 ---
-title: "Az Azure hálózatkezelés |} Microsoft Docs"
-description: "További tudnivalók az Azure hálózati szolgáltatásokat és képességeket."
+title: Az Azure hálózatkezelés |} Microsoft Docs
+description: További tudnivalók az Azure hálózati szolgáltatásokat és képességeket.
 services: networking
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: b0de4aa816d7decab1831449f855ab01b101db3a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a4f1c7c3342a2a78a2a5b765bd688bed4c85392f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-networking"></a>Az Azure hálózatkezelés
 
@@ -138,7 +138,7 @@ Azure biztosít felügyeletéhez és kezeléséhez hálózatkezelés az alábbi 
 - **Diagnosztikai naplók:** időszakos és önkéntes események hálózati erőforrások által létrehozott és bejelentkezett az Azure storage-fiókok, egy Azure Eseményközponthoz küldött, vagy Azure Naplóelemzés küldött. Diagnosztikai naplók betekintést nyújtanak a erőforrás állapotát. Diagnosztikai naplók terheléselosztó (internetről hozzáférhető), a hálózati biztonsági csoportok, a útvonalak és az Application Gateway-okat. Diagnosztikai naplók kapcsolatos további tudnivalókért olvassa el a [diagnosztikai naplók áttekintése](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
 - **Metrikák:** adatok gyűjtése le TELJESÍTMÉNYMÉRÉSEK és az erőforrás egy meghatározott időtartamra vonatkozóan gyűjtött adatait. Mérőszámok segítségével aktiváltak riasztásokat küszöbértékek alapján. Jelenleg metrikák érhetők el az alkalmazás-átjárón. Metrikák kapcsolatos további tudnivalókért olvassa el a [metrikák áttekintése](../monitoring-and-diagnostics/monitoring-overview-metrics.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
 - **Hibaelhárítás:** hibaelhárítási információkat érhető el közvetlenül az Azure-portálon. Az információk segítséget nyújtanak a ExpressRoute, VPN-átjáró, Alkalmazásátjáró, hálózati biztonsági naplókat, útvonalakat, DNS, Load Balancer és Traffic Manager kapcsolatos gyakori problémák diagnosztizálásához.
-- **Szerepköralapú hozzáférés-vezérlést (RBAC):** személyek hozhat létre és kezelhet a szerepköralapú hozzáférés-vezérlést (RBAC) hálózati erőforrásokhoz. További tudnivalók az RBAC olvasásával a [Ismerkedés az RBAC](../active-directory/role-based-access-control-what-is.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk. 
+- **Szerepköralapú hozzáférés-vezérlést (RBAC):** személyek hozhat létre és kezelhet a szerepköralapú hozzáférés-vezérlést (RBAC) hálózati erőforrásokhoz. További tudnivalók az RBAC olvasásával a [Ismerkedés az RBAC](../role-based-access-control/overview.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk. 
 - **Csomagrögzítéssel:** az Azure hálózati figyelőt szolgáltatás lehetővé teszi a virtuális gép egy csomagrögzítéssel átszervezhető egy bővítményt a virtuális Gépen belül. Ez a funkció a Linux és a Windows virtuális gépek érhető el. Csomagrögzítéssel kapcsolatos további tudnivalókért olvassa el a [csomag rögzítési áttekintése](../network-watcher/network-watcher-packet-capture-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
 - **Ellenőrizze az IP-adatfolyamok:** hálózati figyelőt lehetővé teszi, hogy ellenőrizze az IP-adatfolyamok között annak meghatározásához, hogy a csomag engedélyezett vagy megtagadott egy Azure virtuális gép és a távoli erőforrás. Ez a funkció teszi lehetővé a rendszergazdák gyorsan a problémák diagnosztizálásához. IP-adatfolyamok ellenőrzésével kapcsolatos további tudnivalókért olvassa el a [IP folyamata – áttekintés ellenőrzése](../network-watcher/network-watcher-ip-flow-verify-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
 - **VPN-kapcsolatok:** hálózati figyelőt a VPN hibaelhárító képessége lehetővé teszi a lekérdezési kapcsolat vagy átjáró és az erőforrások állapotának ellenőrzése. VPN-kapcsolatok hibaelhárítással kapcsolatos további tudnivalókért olvassa el a [VPN-kapcsolat hibaelhárítása – áttekintés](../network-watcher/network-watcher-troubleshoot-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
