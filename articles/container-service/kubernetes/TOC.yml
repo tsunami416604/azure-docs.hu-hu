@@ -23,7 +23,7 @@
       href: container-service-tutorial-kubernetes-scale.md
     - name: 6 – Alkalmazás frissítése
       href: container-service-tutorial-kubernetes-app-update.md
-    - name: 7 – Monitorozás az OMS-szel
+    - name: 7 – Monitorozás a Log Analytics használatával
       href: container-service-tutorial-kubernetes-monitor.md
 - name: Alapelvek
   items:
@@ -45,7 +45,7 @@
       href: container-service-scale.md
     - name: Figyelés
       items:
-        - name: Monitorozás az OMS-szel
+        - name: Figyelés a Log Analytics használatával
           href: container-service-kubernetes-oms.md
         - name: Monitorozás a Datadoggal
           href: container-service-kubernetes-datadog.md

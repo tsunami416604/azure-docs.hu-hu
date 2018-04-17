@@ -1,6 +1,6 @@
 # Áttekintés
 ## [Tudnivalók az Azure Portalról](../azure-portal-overview.md)
-# oktatóanyagokat
+# Oktatóanyagok
 ## [A DevOps és az Azure Portal](tutorial-azureportal-devops.md)
 # Alapelvek
 ## [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
@@ -16,7 +16,7 @@
 ## Kezelés
 ### [Kontrasztos megjelenítés bekapcsolása és téma módosítása](azure-portal-change-theme-high-contrast.md)
 ### [Erőforrások kezelése a portálon](../azure-resource-manager/resource-group-portal.md)
-### [Hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel](../active-directory/role-based-access-control-configure.md)
+### [Hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel](../role-based-access-control/role-assignments-portal.md)
 ### [Irányítópultok megosztása szerepköralapú hozzáférés-vezérléssel](azure-portal-dashboard-share-access.md)
 ### [Címkék használata az erőforrások rendszerezéséhez](../azure-resource-manager/resource-group-using-tags.md)
 ### [Az erőforrások méretezése](../monitoring-and-diagnostics/insights-how-to-scale.md)
@@ -29,7 +29,7 @@
 ### [Események és naplók megtekintése](../monitoring-and-diagnostics/insights-debugging-with-events.md)
 ### [Riasztási értesítések fogadása](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
 
-# Kapcsolódó
+# Kapcsolódó témakörök
 ## [Azure Resource Manager-sablonfüggvények](../azure-resource-manager/resource-group-template-functions.md)
 ## [Ajánlott eljárások az automatikus méretezéshez](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)
 ## [Gyakori metrikák az automatikus méretezéshez](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md)
@@ -39,7 +39,7 @@
 ## [Azure Insights – PowerShell gyors üzembe helyezési minták](../monitoring-and-diagnostics/insights-powershell-samples.md)
 ## [Azure Insights parancssori felület gyors üzembe helyezési mintái](../monitoring-and-diagnostics/insights-cli-samples.md)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazuremanagement) 
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

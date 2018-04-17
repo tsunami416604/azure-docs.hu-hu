@@ -55,7 +55,7 @@
 
 # Kapcsolódó témakörök
 ## [Azure Active Directory](/azure/active-directory/)
-## [Szerepköralapú hozzáférés-vezérlés](../role-based-access-control-what-is.md)
+## [Szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/overview.md)
 # További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

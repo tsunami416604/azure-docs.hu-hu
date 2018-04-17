@@ -7,18 +7,18 @@ metadata:
   description: Ismerje meg, hogyan építhet fel globálisan elosztott, többmodelles adatbázisokat az Azure Cosmos DB használatával. Az oktatóanyagok bemutatják a dokumentum-, kulcs/érték- és Graph-adatbázisok felépítésének és lekérdezésének folyamatát.
   services: cosmos-db
   author: mimig1
-  manager: jhubbard
+  manager: kfile
   ms.service: cosmos-db
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 02/14/2018
   ms.author: mimig
-  ms.openlocfilehash: 684b0f00e85755b55aa0bfd9e8e6f68af3d38886
-  ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+  ms.openlocfilehash: 017130095fc8de6a83cbff075f47cbff9fd48089
+  ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 04/05/2018
+  ms.lasthandoff: 04/16/2018
 abstract:
   description: Az Azure Cosmos DB egy globálisan elosztott, többmodelles adatbázis-szolgáltatás. Az itt elérhető rövid útmutatók, oktatóanyagok és minták segítségével dokumentum és kulcs-érték típusú, valamint széles oszlopú és gráfadatbázisokat fejleszthet népszerű API-kkal és programozási modellekkel. Azt is megismerheti, hogyan replikálhatja adatait tetszőleges számú Azure-régióban és méretezheti az átviteli sebességet a tárolótól függetlenül, úgy, hogy közben kihasználja az átfogó SLA-k nyújtotta előnyöket.
   aside:

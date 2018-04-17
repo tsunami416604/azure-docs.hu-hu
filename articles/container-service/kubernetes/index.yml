@@ -2,9 +2,9 @@
 documentType: LandingData
 title: Dokumentáció az Azure Container Service és a Kubernetes együttes használatához
 metadata:
-  document_id: null
+  document_id: 
   title: Dokumentáció az Azure Container Service és a Kubernetes együttes használatához – oktatóanyagok és API-referencia | Microsoft Docs
-  meta.description: 'Azure Container Service allows you to quickly deploy a production ready Kubernetes cluster. Learn how to use Azure Container Service in concert with Kubernetes with these quickstarts, tutorials, and samples.'
+  meta.description: Azure Container Service allows you to quickly deploy a production ready Kubernetes cluster. Learn how to use Azure Container Service in concert with Kubernetes with these quickstarts, tutorials, and samples.
   services: container-service
   author: carolz
   manager: carolz
@@ -14,48 +14,53 @@ metadata:
   ms.topic: landing-page
   ms.date: 07-21-2017
   ms.author: carolz
+  ms.openlocfilehash: 93abd74e649577abff9ce27f68c6b8456258d9b9
+  ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 04/16/2018
 abstract:
-  description: 'Az Azure Container Service lehetővé teszi egy üzemkész Kubernetes-fürt gyors üzembe helyezését. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerkedhet az Azure Container Service és a Kubernetes együttes használatával.'
+  description: Az Azure Container Service lehetővé teszi egy üzemkész Kubernetes-fürt gyors üzembe helyezését. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerkedhet az Azure Container Service és a Kubernetes együttes használatával.
 sections:
-  - title: 5 perces gyors útmutatók
+- title: 5 perces gyors útmutatók
+  items:
+  - type: paragraph
+    text: 'Megtudhatja, hogyan helyezhet üzembe Kubernetes-fürtöket az Azure Container Service használatával:'
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: 'Megtudhatja, hogyan helyezhet üzembe Kubernetes-fürtöket az Azure Container Service használatával:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
-            text: Kubernetes-fürt létrehozása
-            href: /azure/container-service/kubernetes/container-service-kubernetes-walkthrough
-  - title: Részletes útmutatók
+    - image:
+        src: https://docs.microsoft.com/media/logos/logo_linux.svg
+      text: Kubernetes-fürt létrehozása
+      href: /azure/container-service/kubernetes/container-service-kubernetes-walkthrough
+- title: Részletes útmutatók
+  items:
+  - type: paragraph
+    text: Megtudhatja, hogyan telepíthet, kezelhet és frissíthet alkalmazásokat az Azure Container Service Kubernetes-fürtjén.
+  - type: list
+    style: ordered
     items:
-      - type: paragraph
-        text: 'Megtudhatja, hogyan telepíthet, kezelhet és frissíthet alkalmazásokat az Azure Container Service Kubernetes-fürtjén.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/container-service/kubernetes/container-service-tutorial-kubernetes-prepare-app">Tárolórendszerképek létrehozása alkalmazásból</a>
-          - html: <a href="/azure/container-service/kubernetes/container-service-tutorial-kubernetes-prepare-acr">Tárolórendszerképek feltöltése az Azure Container Registry-be</a>
-          - html: <a href="/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster">Kubernetes-fürt üzembe helyezése az Azure Container Service-ben</a>
-          - html: <a href="/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-application">Tárolórendszerképek futtatása a Kubernetes-ben</a>
-          - html: <a href="/azure/container-service/kubernetes/container-service-tutorial-kubernetes-scale">Alkalmazás és Kubernetes-infrastruktúra skálázása</a>
-          - html: <a href="/azure/container-service/kubernetes/container-service-tutorial-kubernetes-app-update">A Kubernetes-ben futó alkalmazás frissítése</a>
-          - html: <a href="/azure/container-service/kubernetes/container-service-tutorial-kubernetes-monitor">A Kubernetes monitorozása az OMS használatával</a>
-  - title: Példák
+    - html: <a href="/azure/container-service/kubernetes/container-service-tutorial-kubernetes-prepare-app">Tárolórendszerképek létrehozása alkalmazásból</a>
+    - html: <a href="/azure/container-service/kubernetes/container-service-tutorial-kubernetes-prepare-acr">Tárolórendszerképek feltöltése az Azure Container Registry-be</a>
+    - html: <a href="/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster">Kubernetes-fürt üzembe helyezése az Azure Container Service-ben</a>
+    - html: <a href="/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-application">Tárolórendszerképek futtatása a Kubernetes-ben</a>
+    - html: <a href="/azure/container-service/kubernetes/container-service-tutorial-kubernetes-scale">Alkalmazás és Kubernetes-infrastruktúra skálázása</a>
+    - html: <a href="/azure/container-service/kubernetes/container-service-tutorial-kubernetes-app-update">A Kubernetes-ben futó alkalmazás frissítése</a>
+    - html: <a href="/azure/container-service/kubernetes/container-service-tutorial-kubernetes-monitor">A Kubernetes monitorozása a Log Analytics használatával</a>
+- title: Példák
+  items:
+  - type: list
+    style: unordered
+    className: spaced noBullet
     items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/container-service/cli-samples">Azure CLI</a>
-  - title: Referencia
+    - html: <a href="/azure/container-service/cli-samples">Azure CLI</a>
+- title: Referencia
+  items:
+  - type: list
+    style: cards
+    className: cardsD
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Parancssor
-            html: <p><a href="/cli/azure/acs">Azure CLI</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/container-service">REST API</a></p>
+    - title: Parancssor
+      html: <p><a href="/cli/azure/acs">Azure CLI</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/container-service">REST API</a></p>
