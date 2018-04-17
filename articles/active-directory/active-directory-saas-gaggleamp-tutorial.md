@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált GaggleAMP |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és GaggleAMP között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált GaggleAMP |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és GaggleAMP között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/16/2017
+ms.date: 04/06/2018
 ms.author: jeedes
-ms.openlocfilehash: ffa6a3d6cc1377277591de63c7224b23796b53d8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7f68fdd84acd95ccd2a400e02303247f246d876b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gaggleamp"></a>Oktatóanyag: Azure Active Directoryval integrált GaggleAMP
 
@@ -36,7 +36,7 @@ Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, t
 Konfigurálása az Azure AD-integrációs GaggleAMP, a következőkre van szükség:
 
 - Az Azure AD szolgáltatásra
-- Egy GaggleAMP egyszeri bejelentkezés engedélyezve van az előfizetésben
+- Egy GaggleAMP egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
 > Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
@@ -44,7 +44,7 @@ Konfigurálása az Azure AD-integrációs GaggleAMP, a következőkre van szüks
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
 - Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, egy hónapos próbaverzió kaphat [Itt](https://azure.microsoft.com/pricing/free-trial/).
+- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
@@ -106,44 +106,48 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
  
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_samlbase.png)
 
-3. Az a **GaggleAMP tartomány és az URL-címek** területen tegye a következőket:
+3. Az a **GaggleAMP tartomány és az URL-címek** területen tegye a következőket, ha szeretne beállítani az alkalmazás **IDP** kezdeményezett mód:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_url.png)
 
-     Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<subdomain>.gaggleamp.com`
+     Az a **azonosító** szövegmező, írja be az URL-cím: `https://accounts.gaggleamp.com/auth/saml/callback`
 
-    > [!NOTE] 
-    > Az érték nincs valós. Frissítse az értéket a tényleges bejelentkezési URL-címet. Ügyfél [GaggleAMP ügyfél-támogatási csoport](mailto:sales@gaggleamp.com) az értéket be kell olvasni. 
+4. Ellenőrizze **megjelenítése speciális URL-beállításainak** , és végezze el a következő lépés, ha szeretne beállítani az alkalmazás **SP** kezdeményezett mód:
+
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_url1.png)
+
+     Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://gaggleamp.com/i/<customerid>`
+
+    > [!NOTE]
+    > A bejelentkezési URL-cím értéke nincs valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címet. Ügyfél [GaggleAMP ügyfél-támogatási csoport](mailto:sales@gaggleamp.com) lekérni ezt az értéket.
  
-4. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+5. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_certificate.png) 
 
-5. Kattintson a **mentése** gombra.
+6. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-gaggleamp-tutorial/tutorial_general_400.png)
 
-6. A a **GaggleAMP konfigurációs** kattintson **konfigurálása GaggleAMP** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+7. A a **GaggleAMP konfigurációs** kattintson **konfigurálása GaggleAMP** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító és SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_configure.png) 
 
-7. Egy másik böngészőben példányát, keresse meg a SAML SSO lap: a Gaggle támogatási csoport létrehozott (például: *https://accounts.gaggleamp.com/saml_configurations/oXH8sQcP79dOzgFPqrMTyw/edit*).
+8. Egy másik böngészőben példányát, keresse meg a SAML SSO lap: a Gaggle támogatási csoport létrehozott (például: *https://accounts.gaggleamp.com/saml_configurations/oXH8sQcP79dOzgFPqrMTyw/edit*).
 
-8. Az a **SAML SSO** lapon, a következő lépésekkel:  
+9. Az a **SAML SSO** lapon, a következő lépésekkel:  
    
-    ![GaggleAMP egyszeri bejelentkezés](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_06.png) 
- 
-    a. Az a **Identity Provider kibocsátó** szövegmezőhöz illessze be az értékét **kiállítójának URL-címe** ami Azure-portálon másolta. 
- 
-    b. Az a **Identity Provider egyetlen bejelentkezési URL-címet** szövegmezőhöz illessze be az értékét **egyszeri bejelentkezési URL-címe** ami Azure-portálon másolta. 
+    ![GaggleAMP egyszeri bejelentkezés](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_06.png)
 
-    c. Kattintson a **mentése**      
-
-    d. Küldjön a **tanúsítvány (Base64)** tanúsítványt a a [GaggleAMP támogatási csoport](mailto:sales@gaggleamp.com).
-
-> [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    a. Válassza ki **más** űrlap a **identitásszolgáltató** legördülő menüre.
+    
+    b. Az a **Identity Provider kibocsátó** szövegmezőhöz illessze be az értékét **kiállítójának URL-címe** ami Azure-portálon másolta.
+    
+    c. Az a **Identity Provider egyetlen bejelentkezési URL-címet** szövegmezőhöz illessze be az értékét **egyszeri bejelentkezési URL-címe** ami Azure-portálon másolta.
+    
+    d. Nyissa meg a letöltött **Certificate(Base64)** fájlt a Jegyzettömbben, annak tartalmának másolása a vágólapra és illessze be azt a **X.509 tanúsítvány** szövegmező.
+    
+    e. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
 Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
@@ -223,8 +227,6 @@ Ha a hozzáférési panelen GaggleAMP csempére kattint, akkor kell beolvasása 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
 
-
-
 <!--Image references-->
 
 [1]: ./media/active-directory-saas-gaggleamp-tutorial/tutorial_general_01.png
@@ -238,4 +240,3 @@ Ha a hozzáférési panelen GaggleAMP csempére kattint, akkor kell beolvasása 
 [201]: ./media/active-directory-saas-gaggleamp-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-gaggleamp-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-gaggleamp-tutorial/tutorial_general_203.png
-

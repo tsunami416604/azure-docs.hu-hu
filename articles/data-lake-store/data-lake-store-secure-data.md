@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 4d926ee08da593e590aa77a2ca09d8d1e1f6bb46
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 5d91d8d00a37422dcead195354447d602b801f9e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="securing-data-stored-in-azure-data-lake-store"></a>Azure Data Lake Store-ban tárolt adatok védelme
 Adatok védelme az Azure Data Lake Store egy három lépéses megközelítés.  Mindkét szerepköralapú hozzáférés-vezérlés (RBAC), és hozzáférés-vezérlési listák (ACL) kell beállítani, hogy használhassa a felhasználók és biztonsági csoportok adatokhoz való hozzáférés.
 
-1. Először hozzon létre biztonsági csoportokat az Azure Active Directory (AAD). Ezek a biztonsági csoportok segítségével valósítja meg a szerepköralapú hozzáférés-vezérlést (RBAC) Azure-portálon. További információkért lásd: [szerepköralapú hozzáférés-vezérlés a Microsoft Azure-ban](../active-directory/role-based-access-control-configure.md).
+1. Először hozzon létre biztonsági csoportokat az Azure Active Directory (AAD). Ezek a biztonsági csoportok segítségével valósítja meg a szerepköralapú hozzáférés-vezérlést (RBAC) Azure-portálon. További információkért lásd: [szerepköralapú hozzáférés-vezérlés a Microsoft Azure-ban](../role-based-access-control/role-assignments-portal.md).
 2. Az AAD-biztonságicsoportok hozzárendelése az Azure Data Lake Store-fiók. Ez szabályozza a hozzáférést a portál vagy API-k a portál és felügyeleti műveletek a Data Lake Store-fiókhoz.
 3. Rendelje hozzá az AAD-biztonságicsoportok hozzáférés vezérlési listák (ACL) a Data Lake Store fájlrendszerben.
 4. Az ügyfelek, amelyek férhet hozzá az adatokhoz, a Data Lake Store továbbá az IP-címtartományok is beállíthatja.

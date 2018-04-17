@@ -1,31 +1,29 @@
 ---
-title: "Több HDInsight-fürt használata az Azure Data Lake Store-fiók – Azure |} Microsoft Docs"
-description: "Egynél több HDInsight-fürt használata egy Data Lake Store-fiókkal"
-keywords: "hdinsight-tárolóba, a hdfs, a strukturált adatok, a strukturálatlan adatok, a data lake store"
+title: Több HDInsight-fürt használata az Azure Data Lake Store-fiók – Azure |} Microsoft Docs
+description: Egynél több HDInsight-fürt használata egy Data Lake Store-fiókkal
+keywords: hdinsight-tárolóba, a hdfs, a strukturált adatok, a strukturálatlan adatok, a data lake store
 services: hdinsight,storage
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: c306c66354f34fc945a5fe0ffa11d63bce4d7005
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 48e5a8d270701c43276e1d248d8ea4dc748d15b2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-store-account"></a>Több HDInsight-fürt használata az Azure Data Lake Store-fiók
 
 HDInsight 3.5-ös verziója verziótól kezdődően hozhat létre HDInsight-fürtök az Azure Data Lake Store-fiók, az alapértelmezett fájlrendszer.
-Data Lake Store támogatja a korlátlan tárterület, így ideális, ha nem csak futtató nagy mennyiségű adat; de is üzemeltetéséhez több HDInsight-fürtök ennek a megosztásnak a egyetlen Data Lake Store-fiókból. Instructionson hogyan HDInsight-fürtök létrehozása a Data Lake Store áruházból, a tárolóként, lásd: [HDInsight-fürtök létrehozása a Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
+Data Lake Store támogatja a korlátlan tárterület, így ideális, ha nem csak futtató nagy mennyiségű adat; de is üzemeltetéséhez több HDInsight-fürtök ennek a megosztásnak a egyetlen Data Lake Store-fiókból. A HDInsight-fürtök létrehozása a Data Lake Store a tárolóként útmutatásért lásd: [HDInsight-fürtök létrehozása a Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
 
 Ez a cikk ismerteti a Data Lake ajánlásokat rendszergazda tárolja egyetlen és megosztott Data Lake tárolásához fiók beállítása, amely több használható **aktív** a HDInsight-fürtök. Ezek a javaslatok alkalmazása több biztonságos, valamint a nem biztonságos Hadoop-fürtök megosztott Data Lake store-fiók a futtató.
 
@@ -94,7 +92,7 @@ Ezek a beállítások ismert, hogy egy adott HDInsight használati eset rögzít
 Ahogy az a YARN JIRA kapcsolódó korábbi, azaz nyilvános erőforrásokat, miközben a lokalizáló ellenőrzi, hogy a kért erőforrások valóban nyilvános rájuk vonatkozó engedélyek a távoli fájlrendszerben ellenőrzésével. Bármely, amelyek nem felelnek meg, hogy a feltétel LocalResource honosításhoz elutasítva. Az engedélyek ellenőrzése "egyéb" olvasási jogosultsággal a fájl tartalmazza. Ebben a forgatókönyvben nem működik, a-kész esetén a HDInsight-fürtök az Azure Data Lake, mivel az Azure Data Lake összes megtagadja "egyéb" mappa gyökérszinten.
 
 #### <a name="workaround"></a>Megkerülő megoldás
-Set olvasási-végrehajtási engedélyeinek **mások** keresztül a hierarchiában, például  **/** , **/fürtök** és   **/fürtök/pénzügyi** a fenti táblázatban látható módon.
+Set olvasási-végrehajtási engedélyeinek **mások** keresztül a hierarchiában, például **/**, **/fürtök** és   **/fürtök/pénzügyi** a fenti táblázatban látható módon.
 
 ## <a name="see-also"></a>Lásd még
 

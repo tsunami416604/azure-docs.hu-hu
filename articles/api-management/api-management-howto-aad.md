@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory - Azure API Management segítségével hitelesíthetők a fejlesztői fiókok |} Microsoft Docs"
-description: "Tudnivalók a felhasználók hitelesítése az API Management az Azure Active Directory használatával."
+title: Azure Active Directory - Azure API Management segítségével hitelesíthetők a fejlesztői fiókok |} Microsoft Docs
+description: Tudnivalók a felhasználók hitelesítése az API Management az Azure Active Directory használatával.
 services: api-management
 documentationcenter: API Management
-author: juliako
+author: miaojiang
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: d89257cba70fb82d56fb1beef8a8efe66a8af02d
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 9f3669d205ab4bd24ccba53ffb532fe1d88131ac
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Az Azure API Management Azure Active Directory segítségével hitelesíthetők a fejlesztői fiókok
 
@@ -53,9 +53,9 @@ Ez a cikk bemutatja, hogyan engedélyezze a hozzáférést a fejlesztői portál
 11. Nyissa meg az [Azure Portal](https://portal.azure.com).
 12. Válassza ezt: ![nyíl](./media/api-management-howto-aad/arrow.png).
 13. Típus **aktív**. A **Azure Active Directory** ablaktáblán jelenik meg.
-14. Válassza ki **az Azure Active Directory**.
+14. Válassza az **Azure Active Directory** elemet.
 15. A **kezelése**, jelölje be **App regisztrációk**.
-16. Válassza ki **új alkalmazás regisztrációja**.
+16. Válassza az **Új alkalmazás regisztrálása** elemet.
 
     ![Új alkalmazás regisztrációjának létrehozására vonatkozó beállításokat](./media/api-management-howto-aad/api-management-with-aad002.png)
 

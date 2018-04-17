@@ -1,27 +1,25 @@
 ---
-title: "Ismerje meg, a Hadoop védőfalak - emulátor - Azure HDInsight használata |} Microsoft Docs"
-description: "A Hadoop ökoszisztémájának használatával megtanulni elindításához állíthat be egy Hadoop védőfal a Hortonworks Azure virtuális géphez. "
-keywords: "hadoop-emulátor, hadoop védőfal"
+title: Ismerje meg, a Hadoop védőfalak - emulátor - Azure HDInsight használata |} Microsoft Docs
+description: 'A Hadoop ökoszisztémájának használatával megtanulni elindításához állíthat be egy Hadoop védőfal a Hortonworks Azure virtuális géphez. '
+keywords: hadoop-emulátor, hadoop védőfal
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
 author: nitinme
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 ms.assetid: 6ad5bb58-8215-4e3d-a07f-07fcd8839cc6
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: nitinme
-ms.openlocfilehash: d7df18a80470beb8dc25cf6add6b7a61f45dcfe7
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 0b4daa8c832d40457b19ffe4aee1a365796b2435
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-a-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Ismerkedés a Hadoop védőfalat, az emulátor egy virtuális gépen
 
@@ -59,7 +57,7 @@ Töltse le egy régebbi HDP verzió védőfal, bontsa ki az archív:
 1. Az a **Ismerkedés** a Hortonworks védőfal lapon jelölje be a lépés **nézet speciális beállítások**. Olvassa el ezen a lapon jelentkezzen be a védőfal SSH használatával. Használja a megadott felhasználónévvel és jelszóval.
    
    > [!NOTE]
-   > Ha nincs telepítve egy SSH-ügyfél, használhatja a webalapú SSH, a virtuális gép által megadott **http://localhost:4200 /**.
+   > Ha nincs telepítve egy SSH-ügyfél, használhatja a webalapú SSH, a virtuális gép által megadott **http://localhost:4200/**.
    > 
    
     Az SSH-létesítsen első alkalommal kéri a rendszergazdafiók jelszavának módosítása. Adjon meg egy új jelszót, amelyet használhat, amikor bejelentkezik az SSH használatával.
@@ -82,7 +80,7 @@ Töltse le egy régebbi HDP verzió védőfal, bontsa ki az archív:
    
         select * from sample_07 limit 10;
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Ismerje meg a Visual Studio használata a Hortonworks védőfal](../hdinsight-hadoop-emulator-visual-studio.md)
 * [Az a Hortonworks védőfal drótkötelek tanulási](http://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 * [Hadoop oktatóanyag – első lépések HDP](http://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)

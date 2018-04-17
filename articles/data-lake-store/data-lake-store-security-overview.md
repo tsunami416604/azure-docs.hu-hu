@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 65319df8db339b1c124be47f27a841bbd7141921
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d3387812e064d3ce8a293db7d2c942a34cd5b364
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="security-in-azure-data-lake-store"></a>Az Azure Data Lake Store biztonsági
 Sok vállalat vannak kihasználja a big data elemzésre szolgáló üzleti elemzéseket felhasználóinál intelligens döntéseket. Egy szervezet előfordulhat, hogy rendelkezik egy összetett és szabályozott környezetben, a különböző felhasználók növekvő számú. Győződjön meg arról, hogy kritikus fontosságú üzleti adatokat tárolja a rendszer biztonsága érdekében együtt a megfelelő szintű hozzáférést biztosít az egyéni felhasználók számára a vállalati létfontosságú. Azure Data Lake Store célja e biztonsági követelményeknek. Ebből a cikkből megtudhatja, Data Lake Store biztonsági képességeivel kapcsolatos többek között:
@@ -42,7 +42,7 @@ Lehet, hogy minden Azure-előfizetéssel társítva van egy példányát az Azur
 ## <a name="authorization-and-access-control"></a>Engedélyezési és hozzáférés-vezérlés
 Azure Active Directory hitelesíti a felhasználót, hogy a felhasználó hozzáférhessen az Azure Data Lake Store, engedélyezési vezérlők férnek hozzá a Data Lake Store engedélyeit. Data Lake Store fiókhoz kapcsolódó és a kapcsolódó adatok tevékenységek engedélyezési elválasztja a következő módon:
 
-* [Szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-what-is.md) felhasználóifiók-kezelés az Azure által biztosított (RBAC)
+* [Szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md) felhasználóifiók-kezelés az Azure által biztosított (RBAC)
 * A tárolóban lévő adatok eléréséhez POSIX ACL
 
 ### <a name="rbac-for-account-management"></a>Az RBAC felhasználóifiók-kezelés
@@ -54,7 +54,7 @@ Vegye figyelembe, hogy bár szerepkörök fiókkezelés vannak hozzárendelve, a
 
 | Szerepkörök | A rights Management | Adatok hozzáférési jogok | Magyarázat |
 | --- | --- | --- | --- |
-| Nem hozzárendelt szerepkör |Nincs |Hozzáférés-vezérlési lista által szabályozott |A felhasználó nem használható az Azure portálon vagy az Azure PowerShell-parancsmagok keresse meg a Data Lake Store. A felhasználó csak a parancssori eszközöket használhatja. |
+| Nem hozzárendelt szerepkör |None |Hozzáférés-vezérlési lista által szabályozott |A felhasználó nem használható az Azure portálon vagy az Azure PowerShell-parancsmagok keresse meg a Data Lake Store. A felhasználó csak a parancssori eszközöket használhatja. |
 | Tulajdonos |Összes |Összes |A tulajdonosi szerepkört felügyelőt. Ez a szerepkör mindent felügyelhetnek, és az adatok teljes hozzáféréssel rendelkezik. |
 | Olvasó |Csak olvasható |Hozzáférés-vezérlési lista által szabályozott |Az olvasó szerepkört mindent megtekinthetnek vonatkozó felhasználóifiók-kezelés, például, hogy melyik felhasználó mely szerepkör van rendelve. Az olvasó szerepkört nem módosíthatja. |
 | Közreműködő |Hozzáadás és eltávolítás szerepkört kivéve |Hozzáférés-vezérlési lista által szabályozott |A közreműködői szerepkör kezelheti adatait, például a központi telepítések és létrehozása és a riasztások kezelése az egyes funkcióit. A közreműködői szerepkör nem hozzáadása vagy eltávolítása a szerepkörök. |

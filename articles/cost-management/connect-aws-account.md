@@ -1,26 +1,29 @@
 ---
-title: "Az Amazon Web Services-fiók csatlakozni Azure költség Management |} Microsoft Docs"
-description: "Csatlakoztassa az Amazon Web Services-fiókot az költség jelentések költség- és használati adatainak megtekintéséhez."
+title: Az Amazon Web Services-fiók csatlakozni Azure költség Management |} Microsoft Docs
+description: Csatlakoztassa az Amazon Web Services-fiókot az költség jelentések költség- és használati adatainak megtekintéséhez.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/08/2018
+ms.date: 04/06/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
-ms.custom: 
-ms.openlocfilehash: 4a0280420132aad9f1e0b17d5998ec225bb0eaa1
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.custom: ''
+ms.openlocfilehash: 109235718f085ea2912f601f0657e08230e3e91d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-an-amazon-web-services-account"></a>Csatlakozás az Amazon Web Services-fiók
 
 Az Amazon Web Services (AWS) fiók csatlakozni az Azure költség felügyeleti lehetőségei vannak. Egy IAM-szerepkörrel, vagy csak olvasható IAM felhasználói fiókkal is elérheti. A IAM-szerepkör használata ajánlott, mivel lehetővé teszi a megbízható entitások meghatározott engedélyekkel rendelkező hozzáférés delegálására. A IAM-szerepkör nem kell megosztani a hosszú távú elérési kulcsok. Költség felügyeleti AWS fiókkal csatlakozik, a költség jelentések költség- és használati adatok érhető el. Ez a dokumentum végigvezeti mindkét lehetőség.
 
 Az AWS IAM-identitások kapcsolatos további információkért lásd: [(felhasználók, csoportok és szerepkörök) identitások](https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html).
+
+Emellett engedélyezi a részletes AWS jelentések számlázási és az információkat tárolja az AWS egyszerű tárolási szolgáltatás (S3) gyűjtőjét. Részletes számlázási jelentések adatforgalmi díjak óránként címke- és erőforrás információkat tartalmaznak. A jelentések tárolása lehetővé teszi, hogy a költség felügyeleti le azokat a gyűjtő és az információk megjelenítéséhez a jelentésben.
+
 
 ## <a name="aws-role-based-access"></a>AWS szerepkörön alapuló hozzáférés
 
@@ -30,38 +33,42 @@ A következő szakaszok végigvezetik Önt a felügyeleti költségek való hozz
 
 Az első lépés az egyedi csatlakozás jelszó lekérése az Azure költség felügyeleti portálra. Szerepel, mint a AWS a **külső azonosító**.
 
-1. Nyissa meg a Cloudyn portált Azure-portálról, vagy navigáljon arra [https://azure.cloudyn.com](https://azure.cloudyn.com) , és jelentkezzen be.
-2. Kattintson a **beállítások** (fogaskerék ikonjára ikon), és válassza **felhő fiókok**.
+1. Nyissa meg a Cloudyn portált Azure-portálról, vagy navigáljon arra [ https://azure.cloudyn.com ](https://azure.cloudyn.com) , és jelentkezzen be.
+2. Válassza a fogaskerékre szimbólum **felhő fiókok**.
 3. Fiókok kezelése, válassza ki a **AWS fiókok** fülre, majd **új hozzáadása +**.
-4. Az a **AWS fiók hozzáadása** párbeszédpanelen, a Másolás a **külső azonosító** , és mentse ezt az értéket az AWS szerepkör létrehozása a következő szakaszban ismertetett visszaállítási lépésekkel. Az alábbi ábrán a példa azonosító: _Cloudyn_. Az azonosító különbözik.  
+4. Az a **AWS fiók hozzáadása** párbeszédpanelen, a Másolás a **külső azonosító** , és mentse a érték AWS szerepkör létrehozása a következő szakaszban ismertetett visszaállítási lépésekkel. A külső azonosító nem egyedi a fiókjához. Az alábbi ábrán a külső azonosító példája _Contoso_ egy szám követ. Az azonosító különbözik.  
     ![Külső azonosítója](./media/connect-aws-account/external-id.png)
 
 ### <a name="add-aws-read-only-role-based-access"></a>AWS olvasási szerepkörön alapuló hozzáférés hozzáadása
 
-1. Jelentkezzen be https://console.aws.amazon.com/iam/home, és válassza ki az AWS konzol **szerepkörök**.
+1. Jelentkezzen be az AWS konzol https://console.aws.amazon.com/iam/home válassza **szerepkörök**.
 2. Kattintson a **szerepkör létrehozása** majd **egy másik AWS fiók**.
-3. Illessze be az identitás `432263259397` a a **Fiókazonosító** mező. A Fiókazonosító költség felügyeleti adatokat gyűjtő-fiókot kell használnia.
-4. A **beállítások**, jelölje be **szükséges külső azonosító** illessze be az értéket, amelyet korábban az a **külső azonosító** mezőben, majd kattintson **tovább: Engedélyek**.  
+3. Az a **Fiókazonosító** mezőbe illessze be `432263259397`. A Fiókazonosító Cloudyn szolgáltatáshoz AWS által hozzárendelt költség felügyeleti adatokat gyűjtő fiókjának. Használja a pontos Fiókazonosító látható.
+4. A **beállítások**, jelölje be **szükséges külső azonosító**. Az egyedi érték, a korábban kimásolt illessze be a **külső azonosító** költség felügyeleti mezőbe. Kattintson a **tovább: engedélyek**.  
     ![Szerepkör létrehozása](./media/connect-aws-account/create-role01.png)
 5. A **engedélyek házirendek csatolása**, a a **házirendtípus** keresési a Szűrő mezőbe, írja be `ReadOnlyAccess`, jelölje be **ReadOnlyAccess**, kattintson a **tovább: Tekintse át**.  
     ![Csak olvasási hozzáféréssel](./media/connect-aws-account/readonlyaccess.png)
 6. Az Áttekintés lap biztosítása a beállítások helyesek, és írja be a **szerepkörnév**. Például *Azure-költség-Mgt*. Adjon meg egy **szerepkör leírása**. Például _szerepkör-hozzárendelés az Azure költség Management_, majd kattintson a **szerepkör létrehozása**.
-7. Az a **szerepkörök** listában, kattintson a létrehozott szerepkörre, és másolja a **szerepkör információ** értéket összesítő lapján. A szerepkör-információ érték későbbi használat Azure költség felügyeleti rögzítheti a konfigurációt.  
+7. Az a **szerepkörök** listában, kattintson a létrehozott szerepkörre, és másolja a **szerepkör információ** értéket összesítő lapján. A szerepkör-információ (Amazon erőforrásnév) értéket későbbi használat Azure költség felügyeleti rögzítheti a konfigurációt.  
     ![Szerepkör információ](./media/connect-aws-account/role-arn.png)
 
 ### <a name="configure-aws-iam-role-access-in-cost-management"></a>Költség felügyeleti AWS IAM szerepkör hozzáférés konfigurálása
 
-1. Nyissa meg a Cloudyn portált Azure-portálról, vagy navigáljon a https://azure.cloudyn.com/, és jelentkezzen be.
-2. Kattintson a **beállítások** (fogaskerék ikonjára ikon), és válassza **felhő fiókok**.
+1. Nyissa meg a Cloudyn portált Azure-portálról, vagy navigáljon arra https://azure.cloudyn.com/ , és jelentkezzen be.
+2. Válassza a fogaskerékre szimbólum **felhő fiókok**.
 3. Fiókok kezelése, válassza ki a **AWS fiókok** fülre, majd **új hozzáadása +**.
 4. A **fióknév**, írja be a fiók nevét.
 5. A **hozzáférési típus**, jelölje be **IAM szerepkör**.
 6. Az a **szerepkör információ** mezőben illessze be a korábban kimásolt értéket, és kattintson a **mentése**.  
-    ![AWS fiók állapota](./media/connect-aws-account/aws-account-status01.png)
+    ![A Hozzáadás AWS fiók használata](./media/connect-aws-account/add-aws-account-box.png)
 
-Az AWS fiók fiókok listája megjelenik. A **Tulajdonosazonosítót** felsorolt megegyezik-e a szerepkör-információ. A **Fiókállapotot** rendelkeznie kell egy zöld pipa szimbólumot.
 
-Költség felügyeleti elindul az adatgyűjtés, valamint a jelentések való feltöltéséhez. Egyes optimalizálási jelentések azonban szükség lehet adatokat néhány nap elteltével pontos javaslatok jönnek létre.
+Az AWS fiók fiókok listája megjelenik. A **Tulajdonosazonosítót** felsorolt megegyezik-e a szerepkör-információ. A **Fiókállapotot** rendelkeznie kell egy zöld pipa szimbólumot jelzi, hogy költség felügyeleti hozzáférhet-e a AWS fiókját. Amíg nem engedélyezi a részletes AWS számlázási, megjelenik-e a konszolidáció állapot szerint **önálló**.
+
+![AWS fiók állapota](./media/connect-aws-account/aws-account-status01.png)
+
+Költség felügyeleti elindul az adatgyűjtés, valamint a jelentések való feltöltéséhez. Ezt követően [részletes AWS számlázási engedélyezése](#enable-detailed-aws-billing).
+
 
 ## <a name="aws-user-based-access"></a>Felhasználó-alapú hozzáférés AWS
 
@@ -69,7 +76,7 @@ A következő szakaszok végigvezetik Önt a felügyeleti költségek való hozz
 
 ### <a name="add-aws-read-only-user-based-access"></a>AWS olvasási felhasználó-alapú hozzáférés hozzáadása
 
-1. Jelentkezzen be https://console.aws.amazon.com/iam/home, és válassza ki az AWS konzol **felhasználók**.
+1. Jelentkezzen be az AWS konzol https://console.aws.amazon.com/iam/home válassza **felhasználók**.
 2. Kattintson a **felhasználó hozzáadása**.
 3. Az a **felhasználónév** mezőbe írjon be egy felhasználónevet.
 4. A **hozzáférési típus**, jelölje be **programozott hozzáférés** kattintson **tovább: engedélyek**.  
@@ -82,21 +89,106 @@ A következő szakaszok végigvezetik Önt a felügyeleti költségek való hozz
 9. Kattintson a **töltse le a .csv** , és mentse a credentials.csv fájlt egy biztonságos helyre.  
     ![Töltse le a hitelesítő adatok](./media/connect-aws-account/download-csv.png)
 
-
 ### <a name="configure-aws-iam-user-based-access-in-cost-management"></a>Költség felügyeleti AWS IAM felhasználó-alapú hozzáférés konfigurálása
 
-1. Nyissa meg a Cloudyn portált Azure-portálról, vagy navigáljon a https://azure.cloudyn.com/, és jelentkezzen be.
-2. Kattintson a **beállítások** (fogaskerék ikonjára ikon), és válassza **felhő fiókok**.
+1. Nyissa meg a Cloudyn portált Azure-portálról, vagy navigáljon arra https://azure.cloudyn.com/ , és jelentkezzen be.
+2. Válassza a fogaskerékre szimbólum **felhő fiókok**.
 3. Fiókok kezelése, válassza ki a **AWS fiókok** fülre, majd **új hozzáadása +**.
 4. A **fióknév**, írja be a fiók nevét.
 5. A **hozzáférési típus**, jelölje be **IAM felhasználói**.
 6. A **hozzáférési kulcs**, illessze be a **hozzáférési kulcs azonosítója** érték a credentials.csv fájlból.
 7. A **titkos kulcs**, illessze be a **titkos hívóbetű** credentials.csv fájlból értékét, és kattintson a **mentése**.  
-    ![AWS felhasználói fiók állapota](./media/connect-aws-account/aws-user-account-status.png)
 
 Az AWS fiók fiókok listája megjelenik. A **Fiókállapotot** rendelkeznie kell egy zöld pipa szimbólumot.
 
-Költség felügyeleti elindul az adatgyűjtés, valamint a jelentések való feltöltéséhez. Egyes optimalizálási jelentések azonban szükség lehet adatokat néhány nap elteltével pontos javaslatok jönnek létre.
+Költség felügyeleti elindul az adatgyűjtés, valamint a jelentések való feltöltéséhez. Ezt követően [részletes AWS számlázási engedélyezése](#enable-detailed-aws-billing).
+
+## <a name="enable-detailed-aws-billing"></a>Részletes AWS számlázási engedélyezése
+
+Az alábbi lépések segítségével az AWS szerepkör információ lekérése. A szerepkör-információ segítségével egy számlázási gyűjtőben olvasási engedélyt.
+
+1. Jelentkezzen be az AWS konzol https://console.aws.amazon.com válassza **szolgáltatások**.
+2. A szolgáltatás Keresés mezőbe írja be *IAM*, és válassza ki ezt a beállítást.
+3. Válassza ki **szerepkörök** a bal oldali menüből.
+4. A szerepkörök, jelölje ki a szerepkör Cloudyn hozzáférés létrehozott.
+5. Másolja a Szerepkörök összegzése lapon kattintson a **szerepkör információ**. Tartsa meg a szerepkör-információ későbbi lépéseire lesz szüksége.
+
+### <a name="create-an-s3-bucket"></a>Hozzon létre egy S3 gyűjtő
+
+Létrehozhat egy S3 gyűjtő részletes számlázási adatok tárolására.
+
+1. Jelentkezzen be az AWS konzol https://console.aws.amazon.com válassza **szolgáltatások**.
+2. A szolgáltatás Keresés mezőbe írja be *S3*, és válassza ki **S3**.
+3. Az Amazon S3 lapján kattintson a **létrehozás gyűjtő**.
+4. A gyűjtő létrehozása varázslóban válasszon ki egy gyűjtő nevét és a régiót, és kattintson a **következő**.  
+    ![Gyűjtő létrehozása](./media/connect-aws-account/create-bucket.png)
+5. Az a **tulajdonságainak** lapon használja az alapértelmezett értékeket, és kattintson a **következő**.
+6. Az Áttekintés lap, kattintson a **létrehozás gyűjtő**. A gyűjtő listája jelenik meg.
+7. Kattintson a létrehozott gyűjtő, és válassza a **engedélyek** fülre, majd jelölje **gyűjtőjét házirend**. A gyűjtő Helyicsoportházirend-szerkesztő megnyitása.
+8. Másolja az alábbi JSON-példa, és illessze be a gyűjtő csoportházirend-szerkesztőt.
+  - Cserélje le `<BillingBucketName>` a S3 gyűjtő nevével.
+  - Cserélje le `<ReadOnlyUserOrRole>` szerepkör, illetve felhasználói információ korábban kimásolt volna.
+
+  ```
+  {
+    "Version": "2012-10-17",
+    "Id": "Policy1426774604000",
+    "Statement": [
+        {
+            "Sid": "Stmt1426774604000",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::386209384616:root"
+            },
+            "Action": [
+                "s3:GetBucketAcl",
+                "s3:GetBucketPolicy"
+            ],
+            "Resource": "arn:aws:s3:::<BillingBucketName>"
+        },
+        {
+            "Sid": "Stmt1426774604001",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::386209384616:root"
+            },
+            "Action": "s3:PutObject",
+            "Resource": "arn:aws:s3:::<BillingBucketName>/*"
+        },
+        {
+            "Sid": "Stmt1426774604002",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "<ReadOnlyUserOrRole>"
+            },
+            "Action": [
+                "s3:List*",
+                "s3:Get*"
+            ],
+            "Resource": "arn:aws:s3:::<BillingBucketName>/*"
+        }
+    ]
+  }
+  ```
+
+9. Kattintson a **Save** (Mentés) gombra.  
+    ![Gyűjtő Helyicsoportházirend-szerkesztő](./media/connect-aws-account/bucket-policy-editor.png)
+
+
+### <a name="enable-aws-billing-reports"></a>Jelentések számlázási AWS engedélyezése
+
+Létrehozott, és konfigurálja a S3 gyűjtő, navigáljon a [számlázási beállítások](https://console.aws.amazon.com/billing/home?#/preference) az AWS konzol.
+
+1. A beállítások lapon válassza az **számlázási jelentések kap**.
+2. A **számlázási jelentések kap**, adja meg a létrehozott gyűjtő nevét, és kattintson a **ellenőrizze**.  
+3. Válassza ki, mind a négy lehetőségeket granularitási jelentést, és kattintson a **beállítások mentése**.  
+    ![Lehetővé teszi jelentések](./media/connect-aws-account/enable-reports.png)
+
+Költség felügyeleti részletes számlázási adatait kérdezi le a S3 gyűjtő tölti fel jelentések részletes számlázási engedélyezése után. A Cloudyn konzolon részletes elszámolási adatok megjelenéséig akár 24 óráig is eltarthat. Részletes elszámolási adatok nem érhető el, a fiók-összevonási állapota akkor jelenik meg, mint **konszolidált**. Fiók állapota akkor jelenik meg, mint a **befejezve**.
+
+![Fiók konszolidált állapota](./media/connect-aws-account/consolidated-status.png)
+
+Az optimalizálás jelentések némelyike lehet szükség az adatok lekérésére egy megfelelő adatok mintájának méretét pontos javaslatok néhány nap múlva.
 
 ## <a name="next-steps"></a>További lépések
 

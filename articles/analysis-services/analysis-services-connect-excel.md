@@ -1,25 +1,18 @@
 ---
-title: "Kapcsolódás Azure Analysis Services Excel |} Microsoft Docs"
-description: "Útmutató az Azure Analysis Services-kiszolgálóhoz kapcsolódni az Excel használatával."
-services: analysis-services
-documentationcenter: 
+title: Kapcsolódás Azure Analysis Services Excel |} Microsoft Docs
+description: Útmutató az Azure Analysis Services-kiszolgálóhoz kapcsolódni az Excel használatával.
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: f5f77b70874f10a29b4ea4dba307a67361c8e2bc
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: 8414597c2c394e0b642ff47cba79c87488f56b24
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-with-excel"></a>Csatlakozás az Excellel
 
@@ -35,6 +28,9 @@ Adatok beolvasása használata az Excel 2016 az Excel programban a kiszolgálóh
 1. Az Excel 2016-ot, a **adatok** menüszalag, kattintson a **külső adatok beolvasása** > **egyéb forrásokból származó** > **Analysis Services** .
 
 2. Az Adatkapcsolat varázsló a **kiszolgálónév**, adja meg a kiszolgáló nevét, többek között a protokollt és URI-t. Ezt követően a **bejelentkezési adatok**, jelölje be **használja a következő felhasználónév és jelszó**, és írja be a szervezeti felhasználók nevét, például nancy@adventureworks.com, és a jelszót.
+
+    > [!NOTE]
+    > Ha jelentkezik be egy Microsoft Account, Live ID, Yahoo, Gmail, stb., vagy jelentkezzen be a multi-factor authentication kell, hagyja üresen a jelszó mező. Kéri a jelszót után kattintson a Tovább gombra.
 
     ![Az Excel bejelentkezéstől csatlakozás](./media/analysis-services-connect-excel/aas-connect-excel-logon.png)
 

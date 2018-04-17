@@ -1,27 +1,25 @@
 ---
-title: "Azok az adatok analytics csővezeték - Azure |} Microsoft Docs"
-description: "Telepítsen és futtasson egy példa adatok folyamatot, amely új adatok váltja ki, és tömör eredményt ad."
+title: Azok az adatok analytics csővezeték - Azure |} Microsoft Docs
+description: Telepítsen és futtasson egy példa adatok folyamatot, amely új adatok váltja ki, és tömör eredményt ad.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: 7a439c9d25a470a2474b427f6b20addb6ff3b0c7
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 7ac1ed0db15d91ef8af009c879c3634148826286
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="operationalize-a-data-analytics-pipeline"></a>Azok az adatok analytics folyamat
+# <a name="operationalize-a-data-analytics-pipeline"></a>Adatelemzési folyamat üzembe helyezése
 
 *Adatok folyamatok* underly sok adatelemző megoldásokat. A nevet javasol, adatok folyamat a nyers adatokat fogad, megtisztítja reshapes, igény szerint és általában hajtja végre számítások vagy összesítés előtt, hogy a feldolgozott adatok tárolására. A feldolgozott adatok ügyfeleknek, jelentések és API-k által felhasznált. Adatok adatcsatorna ismételhető eredményeket, biztosítania kell az ütemezés szerint vagy -változáskor induló új adatokat.
 
@@ -137,7 +135,7 @@ Az Azure SQL-adatbázis most már készen áll.
 
        ![HDInsight Metaadattárhoz beállítások](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-settings.png)
 
-12. Válassza ki **következő**.
+12. Kattintson a **Tovább** gombra.
 13. A a **összegzés** ablaktáblán válassza előbb **létrehozása** a fürt telepítéséhez.
 
 ### <a name="verify-ssh-tunneling-setup"></a>SSH-alagútkezelési a telepítés ellenőrzése
@@ -181,7 +179,7 @@ Másolhatja a fájlt a szolgáltatáskapcsolódási pont a `bash` rendszerhéj-m
 
 A mintaadatok már elérhető. Azonban a feldolgozási sor igényel a feldolgozásához, a bejövő adatok egy két Hive táblák (`rawFlights`), a másik az összegzett adatokat (`flights`). Ezek a táblázatok az alábbiak szerint Ambari létrehozása.
 
-1. Navigáljon a Ambari bejelentkezni [http://headnodehost:8080](http://headnodehost:8080).
+1. Navigáljon a Ambari bejelentkezni [ http://headnodehost:8080 ](http://headnodehost:8080).
 2. Válassza ki a listáról a szolgáltatások **Hive**.
 
     ![Az Ambari struktúra kiválasztása](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)

@@ -1,27 +1,20 @@
 ---
-title: "Az Azure Analysis Services kezelése |} Microsoft Docs"
-description: "Útmutató az Azure Analysis Services-kiszolgáló kezelhető."
-services: analysis-services
-documentationcenter: 
+title: Az Azure Analysis Services kezelése |} Microsoft Docs
+description: Útmutató az Azure Analysis Services-kiszolgáló kezelhető.
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 79491d0b-b00d-4e02-9ca7-adc99bc02fdb
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 11aa42fbe15dd68dfac128b707fd6bdbfd0b24d1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: 0cad50788eeb4a31d1e3f6f7e6c038ba2a8d4d9b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="manage-analysis-services"></a>Manage Analysis Services
+# <a name="manage-analysis-services"></a>Analysis Services kezelése
 Ha az Analysis Services-kiszolgáló létrehozta az Azure-ban, néhány adminisztrációs és kezelőkonzol feladatot kell elvégeznie a azonnal, vagy valamikor le lehet. Például futtassa a frissítési adatokhoz, személyek képes hozzáférni a modelleket a kiszolgálón, vagy a kiszolgáló állapotának figyeléséhez feldolgozása. Egyes felügyeleti feladatok csak az Azure portálon, az SQL Server Management Studio (SSMS), mások hajtható végre, és néhány feladatot teheti meg.
 
 ## <a name="azure-portal"></a>Azure Portal
@@ -47,13 +40,18 @@ Ahhoz, hogy a legújabb szolgáltatásokhoz és a legegyenletesebb tapasztalatta
    
     ![A kiszolgáló nevének lekérése az Azure-ban](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 2. Az SSMS > **Object Explorer**, kattintson a **Connect** > **Analysis Services**.
-3. Az a **kapcsolódás a kiszolgálóhoz** párbeszédpanelen illessze be a kiszolgáló nevét, majd a **hitelesítési**, válassza a következő hitelesítési típusok egyikét:
-   
+3. Az a **kapcsolódás a kiszolgálóhoz** párbeszédpanelen illessze be a kiszolgáló nevét, majd a **hitelesítési**, válassza a következő hitelesítési típusok egyikét:   
+    > [!NOTE]
+    > Hitelesítés típusa, **Active Directory - MFA-támogatással rendelkező univerzális**, ajánlott.
+
+    > [!NOTE]
+    > Ha egy Account Microsoft Live ID, Yanoo, Gmail, stb jelentkezik be, hagyja üresen a jelszó mező. Kéri a jelszót kattint, a csatlakozás után.
+
     **Windows-hitelesítés** használni a Windows tartomány\felhasználónév és jelszó hitelesítő adatokat.
 
     **Active Directory jelszavas hitelesítést** szervezeti fiók használatára. Például ha egy a tartományhoz nem csatlakozó csatlakozó számítógép.
 
-    **Active Directory univerzális hitelesítési** használandó [nem interaktív vagy a multi-factor authentication](../sql-database/sql-database-ssms-mfa-authentication.md). 
+    **Active Directory - MFA-támogatással rendelkező univerzális** használandó [nem interaktív vagy a multi-factor authentication](../sql-database/sql-database-ssms-mfa-authentication.md). 
    
     ![Csatlakozás a szolgáltatáshoz az ssms](./media/analysis-services-manage/aas-manage-connect-ssms.png)
 

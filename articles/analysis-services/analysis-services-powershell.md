@@ -1,24 +1,18 @@
 ---
-title: "A PowerShell segítségével az Azure Analysis Services kezelése |} Microsoft Docs"
-description: "Az Azure Analysis Services kezelése a PowerShell használatával."
-services: analysis-services
-documentationcenter: 
+title: A PowerShell segítségével az Azure Analysis Services kezelése |} Microsoft Docs
+description: Az Azure Analysis Services kezelése a PowerShell használatával.
 author: minewiskan
 manager: kfile
-editor: 
-ms.assetid: 
 ms.service: analysis-services
-ms.workload: data-management
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/14/2018
+ms.topic: reference
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 0e154c7789b38843cd3784daa8cf60d078bdc546
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: c7315835bca446c4cae592f4bdd58a733b203655
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>A PowerShell segítségével az Azure Analysis Services kezelése
 
@@ -29,7 +23,7 @@ Server kezelési feladatainak létrehozása kiszolgáló törlése, felfüggeszt
 ## <a name="permissions"></a>Engedélyek
 A legtöbb PowerShell feladatok szükséges rendszergazdai jogosultságokkal rendelkezik az Analysis Services-kiszolgáló felügyeli. Felügyelet nélküli műveletek PowerShell ütemezett feladatok, amelyek. Az ütemező futtatásához használt fiók rendszergazdai jogosultságokkal kell rendelkeznie az Analysis Services-kiszolgálóhoz. 
 
-A kiszolgáló műveleteket AzureRm-parancsmagok használatával, a fiók vagy a Feladatütemező futtató fiók is szerepkörhöz kell tartoznia a tulajdonos az erőforrás a [átruházásához hozzáférés-vezérlés (RBAC)](../active-directory/role-based-access-control-what-is.md). 
+A kiszolgáló műveleteket AzureRm-parancsmagok használatával, a fiók vagy a Feladatütemező futtató fiók is szerepkörhöz kell tartoznia a tulajdonos az erőforrás a [átruházásához hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md). 
 
 ## <a name="server-operations"></a>Kiszolgáló műveletei 
 Az Azure Analysis Services-parancsmagok szerepelnek a [AzureRM.AnalysisServices](https://www.powershellgallery.com/packages/AzureRM.AnalysisServices) összetevő modul. AzureRM parancsmag-modulok telepítése, lásd: [Azure Resource Manager parancsmagjainak](/powershell/azure/overview) a PowerShell-galériában.

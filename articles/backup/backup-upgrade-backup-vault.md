@@ -1,11 +1,11 @@
 ---
-title: "Az Azure biztonsági mentést a Recovery Services-tároló frissítési Backup-tárolóban |} Microsoft Docs"
-description: "Az új szolgáltatások, mint az erőforrás-kezelő virtuális gépeken, a fokozott biztonság, a VMware virtuális gép biztonsági mentése és a rendszerállapot biztonsági mentése a Windows-kiszolgálók biztonsági mentését a beolvasandó Recovery Services-tároló frissítési mentési tárolóba"
+title: Az Azure biztonsági mentést a Recovery Services-tároló frissítési Backup-tárolóban |} Microsoft Docs
+description: Az új szolgáltatások, mint az erőforrás-kezelő virtuális gépeken, a fokozott biztonság, a VMware virtuális gép biztonsági mentése és a rendszerállapot biztonsági mentése a Windows-kiszolgálók biztonsági mentését a beolvasandó Recovery Services-tároló frissítési mentési tárolóba
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: trinadhk
 manager: vijayts
-editor: 
+editor: ''
 keyword: backup vault; upgrade vault; recovery services vault
 ms.assetid: d037a8bf-49f2-4578-974a-3471d87ca278
 ms.service: backup
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2017
 ms.author: trinadhk, sogup
-ms.openlocfilehash: 708983fc2c5264d1213bdb32b665dcccc5ca9df9
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 7c340f60bc648909d073821f1987036da9633458
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="backup-vault-upgraded-to-recovery-services-vault"></a>Recovery Services-tároló frissített mentési tároló
 Ez a cikk áttekintést nyújt milyen Recovery Services-tároló, a Recovery Services-tároló és a frissítés utáni lépések tároló létező biztonsági másolathoz történő frissítéssel kapcsolatos gyakran ismételt kérdések. Recovery Services-tároló megfelel az Azure Resource Manager egy biztonsági mentési tárolót, amely a biztonsági mentési adatokat. Az adatokat a program általában másolja az adatokat, vagy a konfigurációs adatokat a virtuális gépek (VM), a munkaterhelések, a kiszolgálók vagy a munkaállomások, hogy a helyszíni vagy az Azure-ban.
@@ -32,9 +32,9 @@ Helyreállítási szolgáltatások tárolók Azure-ban Azure Resource Manager mo
 
 - **Bővített képességet biztonságos biztonsági mentési adatok segítségével**: A Recovery Services-tárolók, Azure biztonsági mentési képességeket biztosít a biztonsági felhőbeli biztonsági másolatok védelme érdekében. Biztonsági funkció ellenőrizze, hogy a biztonsági másolatok biztonságos, és biztonságosan tárolt adatok helyreállításához felhőbeli biztonsági mentések akkor is, ha az éles tárhely és a biztonsági mentés kiszolgálók kerülnek veszélybe. [További információ](backup-azure-security-feature.md)
 
-- **A hibrid informatikai környezetben központi figyelését**: A Recovery Services-tárolók, figyelheti nem csak a [Azure IaaS virtuális gépeket](backup-azure-manage-vms.md) , hanem a [a helyszíni eszközök](backup-azure-manage-windows-server.md#manage-backup-items) az egy központi portál. [További információ](http://azure.microsoft.com/blog/alerting-and-monitoring-for-azure-backup)
+- **A hibrid informatikai környezetben központi figyelését**: A Recovery Services-tárolók, figyelheti nem csak a [Azure IaaS virtuális gépeket](backup-azure-manage-vms.md) , hanem a [a helyszíni eszközök](backup-azure-manage-windows-server.md#manage-backup-items) központi portálról. [További információ](http://azure.microsoft.com/blog/alerting-and-monitoring-for-azure-backup)
 
-- **Szerepköralapú hozzáférés-vezérlés (RBAC)**: RBAC biztosít a minden részletre kiterjedő felügyeleti hozzáférés az Azure-ban. [Azure biztosít a különféle beépített szerepkörök](../active-directory/role-based-access-built-in-roles.md), és az Azure biztonsági mentés van három [beépített szerepkörök kezelése a helyreállítási pontok](backup-rbac-rs-vault.md). Helyreállítási szolgáltatások tárolók kompatibilisek-e az RBAC, amely korlátozza a biztonsági mentés, és állítsa vissza az elérését a felhasználói szerepkörök adott csoportján. [További információ](backup-rbac-rs-vault.md)
+- **Szerepköralapú hozzáférés-vezérlés (RBAC)**: RBAC biztosít a minden részletre kiterjedő felügyeleti hozzáférés az Azure-ban. [Azure biztosít a különféle beépített szerepkörök](../role-based-access-control/built-in-roles.md), és az Azure biztonsági mentés van három [beépített szerepkörök kezelése a helyreállítási pontok](backup-rbac-rs-vault.md). Helyreállítási szolgáltatások tárolók kompatibilisek-e az RBAC, amely korlátozza a biztonsági mentés, és állítsa vissza az elérését a felhasználói szerepkörök adott csoportján. [További információ](backup-rbac-rs-vault.md)
 
 - **Az összes konfiguráció Azure virtuális gépek védelme**: Recovery Services-tárolók a Resource Manager-alapú virtuális gépek többek között a Premium lemezek, a felügyelt lemezek és a titkosított virtuális gépek védelme. A biztonsági másolatok tárolóját frissítése a Recovery Services-tároló lehetőséget nyújt a Service Manager-alapú virtuális gépek frissítése a Resource Manager-alapú virtuális gépeket. A tároló a frissítés során a Service Manager-alapú virtuális gép helyreállítási pontok megőrzése, és konfigurálja a frissített (Resource Manager-kompatibilis) virtuális gépek védelmét. [További információ](http://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2018
+ms.date: 04/06/2018
 ms.author: jeedes
-ms.openlocfilehash: 018893a2124f1ab9c98e0728bc90ad0a69cf471f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3f553b9ea3629a38ab9dea0e93b16c62aebe301f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>Oktatóanyag: Azure Active Directory-integráció Amazon Web Services (AWS)
 
@@ -116,8 +116,8 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     
     | Attribútum neve  | Attribútum értéke | Névtér |
     | --------------- | --------------- | --------------- |
-    | RoleSessionName | user.userprincipalname | https://aws.amazon.com/SAML/Attributes |
-    | Szerepkör            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
+    | RoleSessionName | User.userPrincipalName | https://aws.amazon.com/SAML/Attributes |
+    | Szerepkör            | User.assignedroles |  https://aws.amazon.com/SAML/Attributes |
     
     >[!TIP]
     >Szeretne beállítani, hogy a felhasználók átadása a szerepkörök beolvasása a AWS konzol az Azure AD-ben. Tekintse meg az alábbi üzembe helyezési lépéseket.
@@ -202,9 +202,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     b. Az a **szerepkör leírása** szövegmező, adja meg a leírását.
 
-    a. Kattintson a **szerepkör létrehozása**.
+    c. Kattintson a **szerepkör létrehozása**.
 
-    b. Igény szerint annyi szerepköröket hozhat létre, és az identitásszolgáltató való hozzárendelése.
+    d. Igény szerint annyi szerepköröket hozhat létre, és az identitásszolgáltató való hozzárendelése.
 
 18. A szerepkörök beolvasása a Azure AD-felhasználó kiépítési AWS-fiókot használni AWS szolgáltatásfiók hitelesítő adatai. Ehhez nyissa meg a kezdőkönyvtár AWS konzol.
 
@@ -270,16 +270,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     
     c. Kattintson a **"Házirend létrehozása"** gombra.
 
-24. Az a **felülvizsgálati** párbeszédpanelen hajtsa végre a következő lépéseket:   
-    
-    ![Egyszeri bejelentkezés felülvizsgálati konfigurálása][34] 
-
-    a. Kattintson a **szerepkör létrehozása**.
-
-    b. Igény szerint annyi szerepköröket hozhat létre, és az identitásszolgáltató való hozzárendelése.
-
-
-25. Hozzon létre egy új felhasználói fiókot az AWS IAM-szolgáltatás a következő lépések elvégzésével:
+24. Hozzon létre egy új felhasználói fiókot az AWS IAM-szolgáltatás a következő lépések elvégzésével:
 
     a. Kattintson a **felhasználók** navigációs az AWS IAM-konzolon.
 
@@ -299,7 +290,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     
     * Kattintson a **tovább engedélyeket** gombra a jobb alsó sarokban.
 
-26. Most hozzon létre egy új házirendet a felhasználó az alábbi lépések elvégzésével:
+25. Most hozzon létre egy új házirendet a felhasználó az alábbi lépések elvégzésével:
 
     ![Felhasználó hozzáadása](./media/active-directory-saas-amazon-web-service-tutorial/adduser2.png)
     
@@ -309,7 +300,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     
     c. Válassza ki a **házirend** majd kattintson a a **tovább: felülvizsgálati** gombra.
 
-27. Tekintse át a szabályzatot, a csatlakoztatott felhasználói lépések végrehajtásával:
+26. Tekintse át a szabályzatot, a csatlakoztatott felhasználói lépések végrehajtásával:
 
     ![Felhasználó hozzáadása](./media/active-directory-saas-amazon-web-service-tutorial/adduser3.png)
     
@@ -317,7 +308,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     
     b. Kattintson a **a felhasználó létrehozása** alsó a felhasználó létrehozása gomb.
 
-28. Töltse le a felhasználói hitelesítő adatokat egy olyan felhasználó lépések végrehajtásával:
+27. Töltse le a felhasználói hitelesítő adatokat egy olyan felhasználó lépések végrehajtásával:
 
     ![Felhasználó hozzáadása](./media/active-directory-saas-amazon-web-service-tutorial/adduser4.png)
     
@@ -327,11 +318,11 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     
     c. Kattintson a **Bezárás** panel alján.
 
-29. Navigáljon a **Felhasználólétesítés** Amazon Web Services-alkalmazás az Azure AD felügyeleti portál szakaszban.
+28. Navigáljon a **Felhasználólétesítés** Amazon Web Services-alkalmazás az Azure AD felügyeleti portál szakaszban.
 
     ![Felhasználó hozzáadása](./media/active-directory-saas-amazon-web-service-tutorial/provisioning.png)
 
-30. Adja meg a **hozzáférési kulcs** és **titkos** a a **Ügyfélkulcs** és **titkos Token** rendre mezőben.
+29. Adja meg a **hozzáférési kulcs** és **titkos** a a **Ügyfélkulcs** és **titkos Token** rendre mezőben.
 
     ![Felhasználó hozzáadása](./media/active-directory-saas-amazon-web-service-tutorial/provisioning1.png)
     
@@ -343,7 +334,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     d. A beállítás mentése, kattintson a **mentése** gombra az oldal tetején.
  
-31. Ellenőrizze, hogy, hogy engedélyezze a kiépítési állapot **a** hajtsanak végre a kapcsolót a, és kattintson a beállítások szakaszában a **mentése** gombra az oldal tetején.
+30. Ellenőrizze, hogy, hogy engedélyezze a kiépítési állapot **a** hajtsanak végre a kapcsolót a, és kattintson a beállítások szakaszában a **mentése** gombra az oldal tetején.
 
     ![Felhasználó hozzáadása](./media/active-directory-saas-amazon-web-service-tutorial/provisioning2.png)
 

@@ -1,8 +1,8 @@
 ---
-title: "Alkalmazások integrálása az Azure Active Directoryval"
-description: "Hogyan lehet hozzáadni, frissítés, vagy távolítsa el a kérelmet az Azure Active Directory (Azure AD)."
+title: Alkalmazások integrálása az Azure Active Directoryval
+description: Hogyan lehet hozzáadni, frissítés, vagy távolítsa el a kérelmet az Azure Active Directory (Azure AD).
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: PatAltimore
 manager: mtillman
 editor: mbaldwin
@@ -15,11 +15,11 @@ ms.date: 10/04/2017
 ms.author: bryanla
 ms.custom: aaddev
 ms.reviewer: luleon
-ms.openlocfilehash: f08e7327e266c342fe7f869f0b7a6a251792a071
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 472a1746a338857d457a7b8d5e7fec3ddbf65895
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Alkalmazások integrálása az Azure Active Directoryban
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -47,7 +47,7 @@ Bármely alkalmazás, amely szeretné használni az Azure AD képességeit, elő
     - Válassza ki a "Natív" a [ügyfélalkalmazások](active-directory-dev-glossary.md#client-application) , amelyek telepítése helyileg történik az eszközön. Ezzel a beállítással az OAuth nyilvános [natív ügyfelek](active-directory-dev-glossary.md#native-client).
     - Jelölje ki "webalkalmazás / API" a [ügyfélalkalmazások](active-directory-dev-glossary.md#client-application) és [erőforrás/API-alkalmazások](active-directory-dev-glossary.md#resource-server) a biztonságos kiszolgáló telepítéséhez. Ezzel a beállítással az OAuth bizalmas [webalkalmazás-ügyfelek](active-directory-dev-glossary.md#web-client) és nyilvános [felhasználói ügynök-alapú ügyfelek](active-directory-dev-glossary.md#user-agent-based-client). Ugyanazt az alkalmazást is is elérhetővé teheti a ügyfél és az erőforrás/API.
   - **Bejelentkezési URL-címe:** a "Web app / API" alkalmazások esetén adja meg az alkalmazás alap URL-CÍMÉT. Például `http://localhost:31544` lehet, hogy a helyi gépen futó webes alkalmazás URL-CÍMÉT. Felhasználók használna az URL-cím egy webes ügyfél alkalmazásba való bejelentkezéshez. 
-  - **Átirányítási URI-ja:** "Natív" alkalmazások esetén adja meg a token válaszok vissza az Azure AD által használt URI-azonosító. Adja meg például egy adott értéket az alkalmazás`http://MyFirstAADApp`
+  - **Átirányítási URI-ja:** "Natív" alkalmazások esetén adja meg a token válaszok vissza az Azure AD által használt URI-azonosító. Adja meg például egy adott értéket az alkalmazás `http://MyFirstAADApp`
 
    ![Egy új alkalmazás regisztrálása – létrehozása](./media/active-directory-integrating-applications/add-app-registration-create.png)
 
@@ -101,7 +101,7 @@ Az alábbi lépések bemutatják, hogyan a hozzájárulási tapasztalhat az alka
   > Explicit megadását hozzájárulás használatával a **engedélyt adjon** gomb akkor ADAL.js használó egylapos alkalmazások (SPA) szükséges. Ellenkező esetben az alkalmazás meghiúsul, ha a hozzáférési jogkivonat van szükség.   
 
 ### <a name="configure-a-client-application-to-access-web-apis"></a>Webes API-k elérésére ügyfélalkalmazás konfigurálása
-Ahhoz, hogy részt vesz egy engedélyezési grant flow, amelyhez hitelesítés szükséges a (és egy hozzáférési jogkivonat beszerzése) webes bizalmas ügyfélalkalmazást azt kell létesítenie a biztonságos hitelesítő adatok. Az alapértelmezett hitelesítési módszer az Azure portál által támogatott ügyfél-azonosító + titkos kulcs. Ez a szakasz szükséges a titkos kulcsot az ügyfél hitelesítő konfigurációs lépéseket ismerteti.
+Ahhoz, hogy részt vesz egy engedélyezési grant flow, amelyhez hitelesítés szükséges a (és egy hozzáférési jogkivonat beszerzése) webes bizalmas ügyfélalkalmazást azt kell létesítenie a biztonságos hitelesítő adatok. Az alapértelmezett hitelesítési módszer az Azure portál által támogatott ügyfél-azonosító + titkos kulcs. Ez a fejezet a konfigurációs lépéseket kell adnia a titkos kulcsot az ügyfél-hitelesítő adatokkal.
 
 Emellett egy ügyfél egy webes API-t egy erőforrás-alkalmazáshoz (például Microsoft Graph API) által elérhetővé tett hozzáférni, a hozzájárulási keretrendszer biztosítja az ügyfél beolvassa az engedély megadása szükséges, a kért engedélyek alapján. Alapértelmezés szerint minden alkalmazás engedélyek választhatja ki a "Windows Azure Active Directory" (Graph API-val) és a "Windows Azure szolgáltatásfelügyeleti API." A [Graph API "Bejelentkezés és olvasási felhasználói profil" engedély](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes#PermissionScopeDetails) is alapértelmezettként van beállítva. Ha az ügyfél, amely rendelkezik Office 365 előfizetett fiókok bérlőjében regisztrálva van folyamatban, webes API-k és a SharePoint és az Exchange Online zónaaliasok. Választhat [engedélyek két típusú](active-directory-dev-glossary.md#permissions) az egyes webes API szükséges:
 
@@ -162,7 +162,7 @@ A következő szakasz bemutatja, hogyan teszi közzé a hozzáférési hatókör
 
 4. A következő lépés az alkalmazás fő regisztrációs oldalra, így akár a **beállítások** az alkalmazás lapját. Váltás a **Szerkesztés jegyzékfájl** lap, kattintson **Manifest** az alkalmazás regisztrálása oldalról. Megnyílik egy webalapú jegyzék szerkesztő, lehetővé téve **szerkesztése** a jegyzék a portálon. Másik lehetőségként kattinthat **letöltése** helyileg szerkesztése, majd használja **feltöltése** léptetni az alkalmazás számára.
 
-5. Ebben a példában a rendszer elérhetővé kell tenni az új hatókör neve `Employees.Read.All` az erőforrás/API, adja hozzá a következő JSON elem a `oauth2Permissions` gyűjtemény. A meglévő `user_impersonation` hatókör alapértelmezés szerint regisztrálás során. `user_impersonation`lehetővé teszi, hogy a bejelentkezett felhasználó személyazonossága alapján, az erőforrás elérésére engedélyt ügyfélalkalmazást. Ügyeljen arra, hogy a vesszővel hozzáadása után a meglévő `user_impersonation` elem hatókörét, és módosítsa az erőforrás igényeinek megfelelően tulajdonság értékét. 
+5. Ebben a példában a rendszer elérhetővé kell tenni az új hatókör neve `Employees.Read.All` az erőforrás/API, adja hozzá a következő JSON elem a `oauth2Permissions` gyűjtemény. A meglévő `user_impersonation` hatókör alapértelmezés szerint regisztrálás során. `user_impersonation` lehetővé teszi, hogy a bejelentkezett felhasználó személyazonossága alapján, az erőforrás elérésére engedélyt ügyfélalkalmazást. Ügyeljen arra, hogy a vesszővel hozzáadása után a meglévő `user_impersonation` elem hatókörét, és módosítsa az erőforrás igényeinek megfelelően tulajdonság értékét. 
 
   ```json
   {
@@ -233,7 +233,7 @@ Fontos megjegyzés: single-bérlő és a több-bérlős alkalmazás közötti k�
 Ha egy alkalmazás, ha az ügyfelekre és partnerekre a szervezeten kívül szeretné elérhetővé tenni kívánt, módosítania a definíciót az Azure portálon.
 
 > [!IMPORTANT]
-> Az Azure AD App ID URI-azonosítója globálisan egyedi több-bérlős alkalmazásokhoz szükséges. Az App ID URI az alkalmazás azonosítható protokoll üzeneteinek eljárások valamelyikével. Egyetlen bérlői alkalmazások a rendszer megfelelő a App ID URI bérlőre belül egyedinek kell lennie. Egy több-bérlős alkalmazáshoz kell legyen globálisan egyedi, az Azure AD megtalálja az alkalmazás összes bérlők között. Globális egyediségi azzal, hogy rendelkezik egy állomásnevet, amely megfelel az Azure AD-bérlő ellenőrzött tartományt App ID URI érvényesül. Például ha a bérlő neve nem contoso.onmicrosoft.com majd egy érvényes App ID URI lesz https://contoso.onmicrosoft.com/myapp. Ha a bérlő a contoso.com ellenőrzött tartományt, majd egy érvényes App ID URI is lenne https://contoso.com/myapp. Ha az App ID URI nem követi a ebben a mintában beállítását egy alkalmazás több-bérlős sikertelen lesz.
+> Az Azure AD App ID URI-azonosítója globálisan egyedi több-bérlős alkalmazásokhoz szükséges. Az App ID URI az alkalmazás azonosítható protokoll üzeneteinek eljárások valamelyikével. Egyetlen bérlői alkalmazások a rendszer megfelelő a App ID URI bérlőre belül egyedinek kell lennie. Egy több-bérlős alkalmazáshoz kell legyen globálisan egyedi, az Azure AD megtalálja az alkalmazás összes bérlők között. Globális egyediségi azzal, hogy rendelkezik egy állomásnevet, amely megfelel az Azure AD-bérlő ellenőrzött tartományt App ID URI érvényesül. Például, ha a bérlő neve contoso.onmicrosoft.com, majd egy érvényes App ID URI lenne https://contoso.onmicrosoft.com/myapp. Ha a bérlő rendelkezik egy ellenőrzött tartomány, a contoso.com, akkor egy érvényes App ID URI is használhatók lesznek https://contoso.com/myapp. Ha az App ID URI nem követi a ebben a mintában beállítását egy alkalmazás több-bérlős sikertelen lesz.
 > 
 
 Ahhoz, hogy megkapja a külső felhasználók számára az alkalmazás elérését: 

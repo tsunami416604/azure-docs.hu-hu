@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/02/2018
 ms.author: sachins
-ms.openlocfilehash: daa6a0fd6927a166ee4809dc1dc5df612765403a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 7493c10407bfe83bdc7277c49dae1a7e9d7c39f2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="best-practices-for-using-azure-data-lake-store"></a>Azure Data Lake Store használatának ajánlott eljárásai
 Ebből a cikkből megismerheti kapcsolatos ajánlott eljárásokról és az Azure Data Lake Store használata szempontjai. A cikkben információkat biztosít a biztonsági, a teljesítmény, a rugalmasság és a Data Lake Store figyelését. Data Lake Store, mielőtt Azure HDInsight hasonló szolgáltatások valóban nagy adatokkal végzett bonyolult volt. Kellett részekre bonthatók az adatok több Blob storage-fiókok között, hogy petabájtnyi tárolási és optimális teljesítményt, hogy biztosít. A Data Lake Store a szigorú korlátok mérete és a teljesítményt a legtöbb törlődnek. Van azonban továbbra is számításba kell, hogy ez a cikk ismerteti, hogy a legjobb teljesítmény érdekében a Data Lake Store kaphat. 
@@ -26,11 +26,13 @@ Ebből a cikkből megismerheti kapcsolatos ajánlott eljárásokról és az Azur
 
 Azure Data Lake Store POSIX hozzáférés szabályozza, és részletes naplózást az Azure Active Directory (Azure AD) felhasználók, csoportok és szolgáltatásnevekről kínál. A hozzáférés-vezérlést állíthat be a meglévő fájlokhoz és mappákhoz. A hozzáférés-vezérlést is segítségével hozzon létre az alapértelmezett beállításokat, amelyek új fájlokat vagy mappákat is alkalmazhatók. Engedélyek meglévő mappákat és gyermekobjektum van beállítva, amikor a minden objektumon propagált rekurzív módon kell a jogosultságokat. Ha sok fájlt, az engedélyek propagálása nincs hosszú időt vehet igénybe. Igénybe vett idő között a másodpercenként feldolgozott 30 – 50-objektumok között lehet. A mappa struktúra és felhasználói csoportok, ezért megfelelően tervezése. Ellenkező esetben okozhat váratlan késést és a problémák az adatok használata. 
 
-Tegyük fel, 100 000 gyermekobjektum egy mappa. 30 másodpercenként feldolgozott objektumok alsó határa igénybe vehet, ha az engedély az egész mappa frissítése eltarthat egy óra. További részletek a Data Lake Store hozzáférés-vezérlési listák [hozzáférés-vezérlés az Azure Data Lake Store](data-lake-store-access-control.md). A hozzáférés-vezérlési listák rekurzív módon hozzárendelésével jobb teljesítmény érdekében az Azure Data Lake parancssori eszközt használhatja. Az eszköz létrehozza a szálak és a rekurzív navigációs logika gyorsan ACL-ek alkalmazása több millió fájl. Az eszköz megtalálható a Linux és a Windows, és a [dokumentáció](https://github.com/Azure/data-lake-adlstool) és [letölti](http://aka.ms/adlstool-download) a ezt az eszközt a Githubon találhatók.
+Tegyük fel, 100 000 gyermekobjektum egy mappa. 30 másodpercenként feldolgozott objektumok alsó határa igénybe vehet, ha az engedély az egész mappa frissítése eltarthat egy óra. További részletek a Data Lake Store hozzáférés-vezérlési listák [hozzáférés-vezérlés az Azure Data Lake Store](data-lake-store-access-control.md). A hozzáférés-vezérlési listák rekurzív módon hozzárendelésével jobb teljesítmény érdekében az Azure Data Lake parancssori eszközt használhatja. Az eszköz létrehozza a szálak és a rekurzív navigációs logika gyorsan ACL-ek alkalmazása több millió fájl. Az eszköz megtalálható a Linux és a Windows, és a [dokumentáció](https://github.com/Azure/data-lake-adlstool) és [letölti](http://aka.ms/adlstool-download) a ezt az eszközt a Githubon találhatók. Ezek azonos teljesítménynövekedést lehet engedélyezni a saját eszközök készült a Data Lake Store [.NET](data-lake-store-data-operations-net-sdk.md) és [Java](data-lake-store-get-started-java-sdk.md) SDK-k.
 
 ### <a name="use-security-groups-versus-individual-users"></a>Egyes felhasználók és biztonsági csoportok használata 
 
-Amikor adatokkal dolgozik, és a big Data Lake Store-ban, valószínűleg egy egyszerű szolgáltatásnév segítségével például az adatok Azure HDInsight-szolgáltatások engedélyezése. Előfordulhatnak azonban olyan esetben, amikor az egyes felhasználók kell férhetnek hozzá az adatokhoz, valamint. Ebben az esetben Azure Active Directory biztonsági csoportok helyett egyéni felhasználók hozzárendelése a fájlokat és mappákat kell használnia. Amennyiben egy biztonsági csoportot a engedélyeket, a felhasználók hozzáadása és eltávolítása a csoportból nem igényel Data Lake Store-frissítéseket. 
+Amikor adatokkal dolgozik, és a big Data Lake Store-ban, valószínűleg egy egyszerű szolgáltatásnév segítségével például az adatok Azure HDInsight-szolgáltatások engedélyezése. Előfordulhatnak azonban olyan esetben, amikor az egyes felhasználók kell férhetnek hozzá az adatokhoz, valamint. Ilyen esetekben kell használnia Azure Active Directory [biztonsági csoportok](data-lake-store-secure-data.md#create-security-groups-in-azure-active-directory) helyett egyéni felhasználók hozzárendelése a fájlokat és mappákat. 
+
+Amennyiben egy biztonsági csoportot a engedélyeket, a felhasználók hozzáadása és eltávolítása a csoportból nem igényel Data Lake Store-frissítéseket. Ez hozzájárul annak biztosításához is nem lépik túl a korlátot [32 hozzáférés és a hozzáférés-vezérlési listákat alapértelmezett](../azure-subscription-service-limits.md#data-lake-store-limits) (Ez magában foglalja a négy POSIX-stílusú hozzáférés-vezérlési listákat, amelyek mindig társított minden fájl és mappa: [a tulajdonos felhasználó](data-lake-store-access-control.md#the-owning-user), [a tulajdonos csoport](data-lake-store-access-control.md#the-owning-group), [a maszk](data-lake-store-access-control.md#the-mask-and-effective-permissions), és az egyéb).
 
 ### <a name="security-for-groups"></a>Biztonsági csoportok 
 

@@ -13,11 +13,11 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 03/08/2018
 ms.author: trinadhk, sogup
-ms.openlocfilehash: 6d214072bccb8b2b42828ee003dcf349985b4f43
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4bdbf48030dda18e6698a7731989ec2de2319b35
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="upgrade-to-vm-backup-stack-v2"></a>Frissítés a virtuális gép biztonságimásolat-vermének 2-es verziójára
 A virtuális gép (VM) biztonsági mentési verem V2 frissítése a következő továbbfejlesztett szolgáltatásokat nyújtja:
@@ -49,7 +49,9 @@ Alapértelmezés szerint hét napos pillanatképek lesznek megőrizve. Ez lehet�
 * Ez az a virtuális gép biztonsági mentési csomagjának egy egyirányú frissítését. Igen Ez a folyamat minden jövőbeni biztonsági mentés váltanak. Mivel a **engedélyezve van egy előfizetési szinten, minden virtuális gép kerül, ez a folyamat**. Az összes új funkciót elemek ugyanazt a vermet alapul. Ez a házirend szinten későbbi hamarosan vezérlése kiadását. 
 * Virtuális gépek a premium lemezek esetében az első biztonsági mentés során győződjön meg arról, hogy a virtuális gép mérete megfelelő tárolóhely érhető el a tárfiókban lévő első biztonsági mentés befejeződéséig. 
 * Pillanatképek helyileg tárolja a helyreállítási pont létrehozása növelése érdekében és visszaállítási felgyorsítása érdekében, mivel látni fogja a 7 napos időszak alatt pillanatképek megfelelő tárolási költségeket.
+* Növekményes pillanatképek lapblobokat tárolódnak. Az ügyfél helyi tároló fiókban tárolt összes nem felügyelt lemezek segítségével az ügyfelek a 7 nap pillanatképek fogjuk számlázni. Az aktuális árképzési modellt szerinti nincs költség nélkül kezelt lemezeken található ügyfelek számára.
 * Akkor használatos, ha a visszaállítás pillanatkép helyreállítási pont a prémium szintű virtuális gépek, látni fogja a virtuális gép létrehozása részeként a visszaállítása közben használt ideiglenes tárolási helye. 
+* Prémium szintű tárfiókok esetén a pillanatképek azonnali helyreállítási szükséges a 10 TB területet, a prémium szintű storage-fiók alkalmazásban lefoglalt által elfoglalt.
 
 ## <a name="how-to-upgrade"></a>Hogyan lehet frissíteni?
 ### <a name="the-azure-portal"></a>Az Azure-portálon

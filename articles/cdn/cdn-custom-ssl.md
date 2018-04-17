@@ -1,6 +1,6 @@
 ---
-title: HTTPS konfigurálása az Azure Content Delivery Network egyéni tartomány |} Microsoft Docs
-description: Megtudhatja, hogyan engedélyezheti vagy tilthatja le a HTTPS az Azure CDN-végpont egy egyéni tartomány.
+title: HTTPS egyéni Azure CDN-tartomány konfigurálása |} Microsoft Docs
+description: Megtudhatja, hogyan engedélyezheti vagy tilthatja le a HTTPS, az Azure CDN-végpont egyéni tartomány.
 services: cdn
 documentationcenter: ''
 author: dksimpson
@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: rli; v-deasim
-ms.openlocfilehash: 554ae4c19d1a3d35075ad174549a62a20329e5fa
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ca3dad18973197f63e69e6568b8ea5988b279e01
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="configure-https-on-an-azure-content-delivery-network-custom-domain"></a>HTTPS konfigurálása az Azure Content Delivery Network egyéni tartományt
+# <a name="configure-https-on-an-azure-cdn-custom-domain"></a>HTTPS egyéni Azure CDN-tartomány konfigurálása
 
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
-A Microsoft a HTTPS protokollt támogatja az egyéni tartományok az Azure Content Delivery Network (CDN). A HTTPS egyéni tartomány támogatása biztosíthat a tartalmak biztonságos SSL-en keresztüli saját tartománynév használatával, melyekkel biztonságosabbá teheti az adatok az átvitel során. A munkafolyamat HTTPS engedélyezése az egyéni tartomány egyszerűsödött, egy kattintással engedélyezése és a teljes tanúsítványkezelés, minden további költség nélkül.
+Az Azure Content Delivery Network (CDN) egy egyéni tartomány a CDN-végpont a HTTPS protokollt támogatja. A HTTPS protokoll használatával az egyéni tartomány, akkor győződjön meg arról, hogy a bizalmas adatokat a rendszer biztonságosan keresztül SSL-titkosítást, amikor az interneten keresztül továbbítja azokat. HTTPS biztosít a megbízható, hitelesítéshez, és védelmet nyújt a webalkalmazások a támadások ellen. Ezenkívül a biztonságos tartalom továbbítása a saját tartománynév használatával (például https:\//www.contoso.com). A munkafolyamat HTTPS engedélyezése az egyszerűsített egy kattintással engedélyezése és a teljes tanúsítványkezelés, minden további költség nélkül.
 
-Nagyon fontos annak érdekében, az adatok biztonságát és sértetlenségét a webes alkalmazás a bizalmas adatok átvitel közben. A HTTPS protokoll használatával, akkor győződjön meg arról, hogy a bizalmas adatok titkosítva van, amikor az interneten keresztül továbbítja azokat. Biztosít megbízhatónak, hitelesítés, és a webalkalmazások a támadások ellen védi. Alapértelmezés szerint Azure CDN HTTPS CDN-végpont használatát támogatja. Például, ha a CDN-végpontot hoz létre Azure CDN (például a https:\//contoso.azureedge.net), automatikusan engedélyezi a HTTPS PROTOKOLLT. Emellett az egyéni tartomány HTTPS-támogatással rendelkező is engedélyezheti biztonságos kézbesítés egy egyéni tartomány (például https:\//www.contoso.com). 
+Az Azure CDN is támogatja a HTTPS PROTOKOLLT a CDN-végpont állomásnevéhez, alapértelmezés szerint. Például, ha a CDN-végpont létrehozása (például a https:\//contoso.azureedge.net), automatikusan engedélyezi a HTTPS PROTOKOLLT.  
 
 A következő fontos attribútumokat a HTTPS-funkció a következők:
 
@@ -77,6 +77,8 @@ A CNAME-rekordok kapcsolatos további információkért lásd: [a CNAME DNS-reko
 
 Ha a CNAME rekordot a megfelelő formátumban van, a DigiCert automatikusan ellenőrzi az egyéni tartománynevet, és hozzáadja azt a tulajdonos alternatív neve (SAN) tanúsítvány. DigitCert nem küld egy megerősítési e-mailt, és nem jóvá kell hagynia a kérést. A tanúsítvány egy évre érvényes, és automatikusan-megújításra kerül az Érvényesség lejárata előtt. Folytassa a [3. lépés: Várakozás propagálás](#step-3-wait-for-propagation). 
 
+Az automatikus ellenőrzést általában néhány percre időt vesz igénybe. Ha nem látja a tartomány egy órán belül érvényesítve, a támogatási jegy megnyitása.
+
 #### <a name="cname-record-is-not-mapped-to-cdn-endpoint"></a>CNAME rekordot a rendszer nem rendeli hozzá a CDN-végpont
 
 Ha a végponthoz a CNAME rekord tétel már nem létezik, vagy a cdnverify altartomány tartalmaz, kövesse az utasításokat ebben a lépésben.
@@ -87,11 +89,11 @@ HTTPS engedélyezi az egyéni tartomány, miután a DigiCert hitelesítésszolg�
 
 DigiCert ellenőrző e-mailt is küld további e-mail címet. Személyes WHOIS bejegyzés információk esetén ellenőrizze, hogy jóváhagyhatja-ről valamelyik, a következő címre:
 
-admin@&lt;your-domain-name.com&gt;  
+Admin @&lt;a tartomány name.com&gt;  
 administrator@&lt;your-domain-name.com&gt;  
-webmaster@&lt;your-domain-name.com&gt;  
+@ gazdáját&lt;a tartomány name.com&gt;  
 hostmaster@&lt;your-domain-name.com&gt;  
-postmaster@&lt;your-domain-name.com&gt;  
+@ postamester&lt;a tartomány name.com&gt;  
 
 Kap egy e-mailt néhány perc múlva, az alábbi példához hasonló kéri, hogy hagyja jóvá a kérést. Ha levélszemétszűrőt használ, adja hozzá admin@digicert.com számára az engedélyezési lista. Ha 24 órán belül nem kap egy e-mailt, a Microsoft támogatási szolgálatához.
     
@@ -124,7 +126,7 @@ A következő táblázat, amely akkor fordul elő, ha engedélyezi a HTTPS műve
 | 1 Submitting kérelem | Kérés elküldése |
 | | Folyamatban van a HTTPS-kérés elküldése. |
 | | Sikerült elküldeni a HTTPS-kérést. |
-| 2 Domain validation | Elküldtünk azt kéri, hogy ellenőrizze a tartomány tulajdonosa e-mailt. A megerősítésre vár. ** |
+| 2 tartomány ellenőrzéséhez | Tartomány automatikusan érvényesítve, ha a CDN-végpont leképezve CNAME. Ellenkező esetben a ellenőrzési kérés kapnak az e-mailt a tartomány regisztrációs rekordot (WHOIS bejegyzés) szerepel. Amint lehetséges ellenőrizze a tartomány. |
 | | Sikerült ellenőrizni a tartomány tulajdonjogát. |
 | | Tartomány tulajdonjoga ellenőrzési kérelem lejárt (ügyfél valószínűleg nem válaszolt 6 napon belül). HTTPS-tartományra nem lesz engedélyezve. * |
 | | Tartomány tulajdonjoga ellenőrzési kérelem vissza lett utasítva, az ügyfél által. HTTPS-tartományra nem lesz engedélyezve. * |
@@ -135,7 +137,6 @@ A következő táblázat, amely akkor fordul elő, ha engedélyezi a HTTPS műve
 
 \* Ez az üzenet nem jelenik meg, kivéve, ha hiba történt. 
 
-\** Ez az üzenet nem jelenik meg, ha egy CNAME bejegyzés az közvetlenül a CDN-végpont állomásnevéhez mutató egyéni tartományhoz.
 
 Ha a hiba akkor fordul elő, a küldés előtt, a következő hibaüzenet jelenik meg:
 
@@ -189,7 +190,7 @@ A következő táblázat, amely akkor fordul elő, ha letiltja az HTTPS művelet
 
 3. *Mi történik, ha a tartomány megerősítési e-mailt nem jelenik meg a DigiCert?*
 
-    Ha 24 órán belül nem kap egy e-mailt, forduljon a Microsoft támogatási szolgálatához. Ha egy CNAME-bejegyzést az egyéni tartomány, amely közvetlenül a végpont állomásnevéhez mutat (és nem használja a cdnverify altartománynév), nem tartományi ellenőrző e-mailt kap. Érvényesítési automatikusan megtörténik.
+    Ha egy CNAME-bejegyzést az egyéni tartomány, amely közvetlenül a végpont állomásnevéhez mutat (és nem használja a cdnverify altartománynév), nem tartományi ellenőrző e-mailt kap. Érvényesítési automatikusan megtörténik. Ha nem rendelkezik egy CNAME-bejegyzést, és 24 órán belül nem kapott e-mailt, ellenkező esetben forduljon a Microsoft támogatási szolgálatához.
 
 4. *Kevésbé biztonságos, mint egy dedikált tanúsítvány SAN tanúsítványt használ?*
     

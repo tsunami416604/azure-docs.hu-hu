@@ -1,32 +1,30 @@
 ---
-title: "R használata a HDInsight-fürtök - Azure testreszabása |} Microsoft Docs"
-description: "Megtudhatja, hogyan telepítse az R parancsfájl művelet segítségével, és a HDInsight-fürtök R használhatja."
+title: R használata a HDInsight-fürtök - Azure testreszabása |} Microsoft Docs
+description: Megtudhatja, hogyan telepítse az R parancsfájl művelet segítségével, és a HDInsight-fürtök R használhatja.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.assetid: be851270-afa5-4af0-a69e-2d343a4deeb7
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 666b51970bf04634708cbf65b8bca0c05412934b
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: c5fb38de8b1023a05709d07ba17b0c776c87957e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-and-use-r-on-hdinsight-hadoop-clusters"></a>Az R környezet telepítése és használata HDInsight-beli Hadoop-fürtökön
 
 Ismerje meg, hogyan szabhatja testre a Windows alapú HDInsight-fürt az R parancsfájl műveletével, és R használata a HDInsight-fürtök. A [HDInsight ajánlat](https://azure.microsoft.com/pricing/details/hdinsight/) tartalmaz R Server a HDInsight-fürt részeként. Ez lehetővé teszi az R parancsfájlok használata a MapReduce és Spark elosztott számítások futtatásához. További információk: [Get started using R Server on HDInsight](r-server/r-server-get-started.md) (R Server on HDInsight – első lépések). Az R használatával egy Linux-alapú fürttel információkért lásd: [telepítése és R használata a HDinsight Hadoop-fürtök (Linux)](hdinsight-hadoop-r-scripts-linux.md).
 
-Telepíthető R bármilyen típusú on Azure HDInsight (Hadoop-, Storm, HBase, Spark) fürt segítségével *parancsfájlművelet*. Egy minta parancsfájlt a HDInsight-fürtök R telepítéséhez érhető el, csak olvasható az Azure storage-blobból [https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1).
+Telepíthető R bármilyen típusú on Azure HDInsight (Hadoop-, Storm, HBase, Spark) fürt segítségével *parancsfájlművelet*. Egy minta parancsfájlt a HDInsight-fürtök R telepítéséhez érhető el, csak olvasható az Azure storage-blobból [ https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1 ](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1).
 
 **Kapcsolódó cikkek**
 
@@ -55,10 +53,10 @@ A [mintaparancsfájl](https://hdiconfigactions.blob.core.windows.net/rconfigacti
 
     <table border='1'>
         <tr><th>Tulajdonság</th><th>Érték</th></tr>
-        <tr><td>Név</td>
+        <tr><td>Name (Név)</td>
             <td>Adja meg a parancsfájlművelet nevét, például <b>R telepítéséhez</b>.</td></tr>
         <tr><td>A parancsfájl URI azonosítója</td>
-            <td>Adja meg az URI-t a parancsfájlt, amelyet a fürt, például testreszabásához <i>https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1</i></td></tr>
+            <td>Például adja meg az URI-t a parancsfájlt, amelyet a fürt testreszabása <i>https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1</i></td></tr>
         <tr><td>Csomóponttípus</td>
             <td>Adja meg a csomópontok, amelyen fut a testreszabási parancsfájl. Választhat <b>csomópontjaihoz</b>, <b>csak Átjárócsomópontokat</b>, vagy <b>munkavégző csomópontokhoz</b> csak.
         <tr><td>Paraméterek</td>
@@ -95,12 +93,12 @@ Az első két sorok hívható meg a telepített R. RHadoop könyvtárak A végs�
 
 
 ## <a name="install-r-using-aure-powershell"></a>Segítségével a következőkre PowerShell R telepítéséhez
-Lásd: [testreszabása HDInsight-fürtök használata parancsfájlművelet](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell).  A Spark az Azure PowerShell telepítése mutatja be. Meg kell adnia, hogy a használandó parancsfájlt [https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1).
+Lásd: [testreszabása HDInsight-fürtök használata parancsfájlművelet](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell).  A Spark az Azure PowerShell telepítése mutatja be. Meg kell adnia, hogy a használandó parancsfájlt [ https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1 ](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1).
 
 ## <a name="install-r-using-net-sdk"></a>.NET SDK használatával R telepítéséhez
-Lásd: [testreszabása HDInsight-fürtök használata parancsfájlművelet](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell). A minta bemutatja, hogyan telepítse a .NET SDK használatával Spark. Meg kell adnia, hogy a használandó parancsfájlt [https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps11).
+Lásd: [testreszabása HDInsight-fürtök használata parancsfájlművelet](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell). A minta bemutatja, hogyan telepítse a .NET SDK használatával Spark. Meg kell adnia, hogy a használandó parancsfájlt [ https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1 ](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps11).
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Telepítheti és használhatja R HDinsight Hadoop-fürtök (Linux)](hdinsight-hadoop-r-scripts-linux.md)
 * [Hdinsight Hadoop-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md): általános információk a HDInsight-fürtök létrehozása
 * [Testre szabhatja a HDInsight-fürtjéhez parancsfájlművelet][hdinsight-cluster-customize]: általános információk a HDInsight-parancsfájlművelet fürtök testreszabása

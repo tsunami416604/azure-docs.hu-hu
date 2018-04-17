@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Workday |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Workday között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Workday |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Workday között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2018
+ms.date: 04/11/2018
 ms.author: jeedes
-ms.openlocfilehash: 1dfe319e708e6a4e815413da1a7bf635f4d0a53d
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: ad3428c659e7f950d08b34d82b99930db92c0996
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>Oktatóanyag: Azure Active Directoryval integrált munkanap
 
@@ -108,15 +108,15 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Az egyszeri bejelentkezés információkat WORKDAY tartomány- és URL-címek](./media/active-directory-saas-workday-tutorial/tutorial_workday_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://impl.workday.com/<tenant>/login-saml2.htmld`
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://impl.workday.com/<tenant>/login-saml2.htmld`
 
-    b. Az a **azonosító** szövegmezőhöz URL-címet írja be:`http://www.workday.com`
+    b. Az a **azonosító** szövegmezőhöz URL-címet írja be: `http://www.workday.com`
 
 4. Ellenőrizze **megjelenítése speciális URL-beállításainak** és hajtsa végre a következő lépést:
 
     ![Az egyszeri bejelentkezés információkat WORKDAY tartomány- és URL-címek](./media/active-directory-saas-workday-tutorial/tutorial_workday_url1.png)
 
-    Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://impl.workday.com/<tenant>/login-saml.htmld`
+    Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://impl.workday.com/<tenant>/login-saml.htmld`
      
     > [!NOTE] 
     > Ezek az értékek nincsenek tényleges. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és a válasz URL-CÍMEN. A válasz URL-címe például altartomány kell rendelkeznie: www, wd2, wd3, wd3-impl, wd5, wd5-impl). Valami, amit például "*http://www.myworkday.com*" működik, de "*http://myworkday.com*" viszont nem. Ügyfél [Workday ügyfél-támogatási csoport](https://www.workday.com/en-us/partners-services/services/support.html) beolvasni ezeket az értékeket.  
@@ -153,7 +153,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     >[!NOTE]
     > A környezet attribútum értéke van kötve a bérlői URL-cím értéke:  
-    >-Ha a tartomány neve a Workday-bérlői URL-cím kezdődik impl például: *https://impl.workday.com/\<bérlői\>/login-saml2.htmld*), a **környezet** attribútum Megvalósítási értékre kell állítani.  
+    >-Ha a tartomány neve a Workday-bérlői URL-cím kezdődik impl például:  *https://impl.workday.com/ \<bérlői\>/login-saml2.htmld*), a **környezet** attribútumot úgy kell beállítani megvalósításához.  
     >-Ha a tartomány neve kezdődik valami mást, szeretné-e forduljon [Workday ügyfél-támogatási csoport](https://www.workday.com/en-us/partners-services/services/support.html) beolvasni a megfelelő **környezet** érték.
 
 11. Az a **SAML-alapú telepítő** területen tegye a következőket:
@@ -172,9 +172,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
    
     b. Az Azure portálon a a **bejelentkezés konfigurálása** ablakban, a Másolás a **SAML Entitásazonosító** értékét, és illessze be azt a **kibocsátó** szövegmező.
 
-    ![SAML-alapú identitás-szolgáltatóktól](./media/active-directory-saas-workday-tutorial/IC7829271(1).png "SAML-alapú identitás-szolgáltatóktól")
+    ![SAML-alapú identitás-szolgáltatóktól](./media/active-directory-saas-workday-tutorial/IC7829272.png "SAML-alapú identitás-szolgáltatóktól")
    
-    c. Válassza ki **engedélyezése a Workday kezdeményezett kijelentkezési**.
+    c. Válassza ki **engedélyezése idp kezdeményezett kijelentkezési**.
    
     d. Az Azure portálon a a **bejelentkezés konfigurálása** ablakban, a Másolás a **Sign-Out URL-cím** értékét, és illessze be azt a **kijelentkezési válaszcíme (URL)** szövegmező.
 
@@ -226,9 +226,6 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     d. Kattintson az **OK** gombra. 
    
     ![OK](./media/active-directory-saas-workday-tutorial/IC782933.png "OK")
-
-> [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
 
@@ -309,7 +306,6 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
 
 
-
 <!--Image references-->
 
 [1]: ./media/active-directory-saas-workday-tutorial/tutorial_general_01.png
@@ -323,4 +319,3 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 [201]: ./media/active-directory-saas-workday-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-workday-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-workday-tutorial/tutorial_general_203.png
-

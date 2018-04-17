@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 04/13/2018
 ms.author: jingwang
-ms.openlocfilehash: 3c1e5dbf60c247399b620a437da92a166990087e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4d20ed753c2e53d6a7c117e0c00671ab05036b03
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával MongoDB
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -36,7 +36,7 @@ Adatok bármely támogatott fogadó adattárolóhoz másolhatja MongoDB-adatbáz
 
 Pontosabban a MongoDB összekötő támogatja:
 
-- MongoDB **2.4, 2.6, 3.0 és 3.2**.
+- MongoDB **2.4, 2.6, 3.0, 3.2-es, 3.4 és 3.6**.
 - Adatok másolása **alapvető** vagy **névtelen** hitelesítés.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -63,6 +63,8 @@ MongoDB kapcsolódó szolgáltatás támogatott a következő tulajdonságokkal:
 | felhasználónév |Felhasználói fiók MongoDB eléréséhez. |Igen (Ha alapszintű hitelesítést használ). |
 | jelszó |A felhasználó jelszavát. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). |Igen (Ha alapszintű hitelesítést használ). |
 | authSource |A MongoDB-adatbázist, amely a hitelesítő adatok kereséséhez használni kívánt nevét. |Nem. Az egyszerű hitelesítés alapértelmezés szerint a rendszer a rendszergazdai fiókot és a databaseName tulajdonsággal megadott adatbázis. |
+| enableSsl | Meghatározza, hogy a kapcsolat titkosítása SSL használatával. Az alapértelmezett értéke hamis.  | Nem |
+| allowSelfSignedServerCert | Megadja, hogy engedélyezi a kiszolgáló önaláírt tanúsítványokat. Az alapértelmezett értéke hamis.  | Nem |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhatja Self-hosted integrációs futásidejű vagy Azure integrációs futásidejű (ha az adattároló nyilvánosan elérhető). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
 
 **Példa**
@@ -116,7 +118,7 @@ Adatok másolása a MongoDB, az adatkészlet típus tulajdonságának beállít�
             "collectionName": "<Collection name>"
         }
     }
-
+}
 ```
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
@@ -229,7 +231,7 @@ Az alábbi táblázatok bemutatják a virtuális táblákat, amelyek megfelelnek
 | _id | ExampleTable_Invoices_dim1_idx | invoice_id | Elem | price | Kedvezmény |
 | --- | --- | --- | --- | --- | --- |
 | 1111 |0 |123 |a toaster |456 |0.2 |
-| 1111 |1 |124 |oven |1235 |0.2 |
+| 1111 |1 |124 |Helyezzük |1235 |0.2 |
 | 2222 |0 |135 |kombinált hűtőszekrények |12543 |0.0 |
 
 **"ExampleTable_Ratings". tábla:**

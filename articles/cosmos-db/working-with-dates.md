@@ -1,11 +1,10 @@
 ---
-title: "Az Azure Cosmos Adatbázisba dátumok használata |} Microsoft Docs"
-description: "További tudnivalók az Azure Cosmos Adatbázisba dátumok használata."
+title: Az Azure Cosmos Adatbázisba dátumok használata |} Microsoft Docs
+description: További tudnivalók az Azure Cosmos Adatbázisba dátumok használata.
 services: cosmos-db
-author: arramac
-manager: jhubbard
-editor: mimig
-documentationcenter: 
+author: SnehaGunda
+manager: kfile
+documentationcenter: ''
 ms.assetid: e587772f-ce9f-498c-a017-a51e7265bb23
 ms.service: cosmos-db
 ms.workload: data-services
@@ -13,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
-ms.author: arramac
-ms.openlocfilehash: 1a54884196e5b4ff5b16425e902abeb8d82aa8f1
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.author: sngun
+ms.openlocfilehash: a1f8b38725eb188b609fbdc8efa09ed5aaaf6ae5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Az Azure Cosmos DB dátumok használata
 Azure Cosmos DB biztosítja a sémák rugalmasságát és a gazdag indexelési keresztül natív [JSON](http://www.json.org) adatmodell. Minden Azure Cosmos DB-erőforrások, például az adatbázisok, gyűjtemények, dokumentumok és tárolt eljárások modellezése és tárolása JSON-dokumentumok is. Hordozható lesznek követelményként JSON (és az Azure Cosmos DB) támogatja a típus csak egy kis készletét: karakterlánc, szám, logikai érték, a tömb, objektum és Null. Azonban JSON rugalmas, és engedélyezze a fejlesztők és keretrendszerek képviselő összetett típusok ezek primitívek használatával, és objektumokat vagy tömbök összeállítása őket. 
@@ -87,7 +86,7 @@ További Azure Cosmos DB SQL lekérdező nyelve és a LINQ szolgáltatónál, [l
 
 Ez a cikk azt venni, hogyan tárolhatja, index és az Azure Cosmos Adatbázisba időpontok lekérdezése.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Töltse le és futtassa a [minták a Githubon Code](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)
 * További információ [SQL-lekérdezések](sql-api-sql-query.md)
 * További információ [Azure Cosmos DB indexelő házirendek](indexing-policies.md)

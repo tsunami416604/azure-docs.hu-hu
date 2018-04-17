@@ -1,6 +1,6 @@
 ---
-title: "Hozzon létre egy egyszerű Azure verem |} Microsoft Docs"
-description: "Hozzon létre egy új szolgáltatás egyszerű erőforrásokhoz való hozzáférés kezelésére használható a szerepköralapú hozzáférés-vezérlés az Azure Resource Manager ismerteti."
+title: Hozzon létre egy egyszerű Azure verem |} Microsoft Docs
+description: Hozzon létre egy új szolgáltatás egyszerű erőforrásokhoz való hozzáférés kezelésére használható a szerepköralapú hozzáférés-vezérlés az Azure Resource Manager ismerteti.
 services: azure-resource-manager
 documentationcenter: na
 author: mattbriggs
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2018
 ms.author: mabrigg
-ms.openlocfilehash: 3a22efa4ace8b779f51ca5036b7df536b8c39313
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 00bd606fc1b0d2c075789addd1b601becf7a011b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Alkalmazások elérést biztosíthat az Azure-verem
 
@@ -46,25 +46,25 @@ Ebben a szakaszban az Azure ad-ben, amely képviseli az alkalmazást egy alkalma
 
 1. Az Azure-fiók használatával jelentkezzen be a [Azure-portálon](https://portal.azure.com).
 2. Válassza ki **Azure Active Directory** > **App regisztrációk** > **hozzáadása**   
-3. Adjon meg egy nevet és egy URL-címet az alkalmazáshoz. Válassza ki vagy **Web app / API** vagy **natív** a létrehozandó alkalmazás típusától. Miután beállította az értékeket, válassza ki a **létrehozása**.
+3. Adja meg az alkalmazás nevét és URL-címét. Válassza ki vagy **Web app / API** vagy **natív** a létrehozandó alkalmazás típusától. Miután beállította az értékeket, válassza ki a **létrehozása**.
 
 Az alkalmazás hozott létre egy egyszerű szolgáltatást.
 
 ### <a name="get-credentials"></a>Hitelesítő adatainak lekérése
-Bejelentkezéskor programozott módon, a Azonosítóját használnia az alkalmazás és egy hitelesítési kulcs. Ahhoz, hogy ezeket az értékeket, tegye a következőket:
+Bejelentkezéskor programozott módon, a Azonosítóját használnia az alkalmazás és egy hitelesítési kulcs. Az értékek beszerzéséhez kövesse az alábbi lépéseket:
 
 1. A **App regisztrációk** az Active Directoryban, válassza ki az alkalmazást.
 
-2. Másolás a **Alkalmazásazonosító** és az alkalmazás kódjában tárolja. Az alkalmazások a [mintaalkalmazást](#sample-applications) szakasz tekintse meg ezt az értéket az ügyfél-azonosító.
+2. Másolja ki az **Alkalmazásazonosítót**, és tárolja az alkalmazás kódjában. Az alkalmazások a [mintaalkalmazást](#sample-applications) szakasz tekintse meg ezt az értéket az ügyfél-azonosító.
 
      ![ügyfél-azonosító](./media/azure-stack-create-service-principal/image12.png)
-3. A hitelesítési kulcs létrehozásához válasszon **kulcsok**.
+3. A hitelesítési kulcs létrehozásához válassza a **Kulcsok** elemet.
 
-4. Adja meg a kulcsot, és egy időtartamot a kulcs leírását. Ha elkészült, válassza ki a **mentése**.
+4. Adjon meg egy leírást és egy időtartamot a kulcshoz. Ha elkészült, kattintson a **Mentés** elemre.
 
-A kulcs mentése után a kulcsnak az értéke megjelenik. Másolja ezt az értéket, mert nem sikerült beolvasni a a kulcs később. A kulcs értéke megegyezik az alkalmazáséval aláírásához az alkalmazás azonosítójával adja meg. Tárolja a kulcs értékét, ahol az alkalmazás kérheti le.
+A kulcs mentése után megjelenik a kulcs értéke. Másolja ezt az értéket, mivel később nem lesz lehetősége lekérni a kulcsot. A kulcs értéke megegyezik az alkalmazáséval aláírásához az alkalmazás azonosítójával adja meg. A kulcsértéket olyan helyen tárolja, ahonnan az alkalmazás le tudja kérni.
 
-![kulcs mentése](./media/azure-stack-create-service-principal/image15.png)
+![mentett kulcs](./media/azure-stack-create-service-principal/image15.png)
 
 
 Művelet befejeződése után folytassa a [az alkalmazás-szerepkör hozzárendelése](azure-stack-create-service-principals.md#assign-role-to-service-principal).
@@ -113,7 +113,7 @@ Add-AzureRmAccount -EnvironmentName "<AzureStackEnvironmentName>" `
 ```
 
 ## <a name="assign-role-to-service-principal"></a>Szolgáltatás egyszerű szerepkör hozzárendelése
-Az előfizetés az erőforrások eléréséhez az alkalmazást egy szerepkörhöz kell rendelni. Döntse el, melyik szerepkört jelöli a megfelelő engedélyekkel az alkalmazáshoz. A rendelkezésre álló szerepkörökkel kapcsolatos további tudnivalókért lásd: [RBAC: beépített szerepkörök](../../active-directory/role-based-access-built-in-roles.md).
+Az előfizetés az erőforrások eléréséhez az alkalmazást egy szerepkörhöz kell rendelni. Döntse el, melyik szerepkört jelöli a megfelelő engedélyekkel az alkalmazáshoz. A rendelkezésre álló szerepkörökkel kapcsolatos további tudnivalókért lásd: [RBAC: beépített szerepkörök](../../role-based-access-control/built-in-roles.md).
 
 A hatókör szintjén található az előfizetés, erőforráscsoportból vagy erőforrás állíthatja be. Engedélyek hatókör alacsonyabb szintre származnak. Például egy alkalmazást az olvasó szerepkört erőforráscsoport hozzáadása azt jelenti, hogy ez az erőforráscsoport és a benne található erőforrásokat tudja olvasni.
 

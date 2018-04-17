@@ -1,26 +1,24 @@
 ---
-title: "Hozzon létre Java MapReduce a Hadoop - az Azure HDInsight |} Microsoft Docs"
-description: "Útmutató Apache Maven használatával hozzon létre egy Java-alapú MapReduce-alkalmazást, majd az Azure HDInsight Hadoop futtassák azt."
+title: Hozzon létre Java MapReduce a Hadoop - az Azure HDInsight |} Microsoft Docs
+description: Útmutató Apache Maven használatával hozzon létre egy Java-alapú MapReduce-alkalmazást, majd az Azure HDInsight Hadoop futtassák azt.
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
 author: Blackmist
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 ms.assetid: 9ee6384c-cb61-4087-8273-fb53fa27c1c3
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: Java
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/25/2018
 ms.author: larryfr
-ms.openlocfilehash: 16cb62c95784d7c8b284e03f0759028038af7f0a
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 05b41f90b9508088c32923469b6c437b74ee5333
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="develop-java-mapreduce-programs-for-hadoop-on-hdinsight"></a>A hdinsight Hadoop Java MapReduce programok fejlesztése
 
@@ -42,13 +40,13 @@ ms.lasthandoff: 01/25/2018
 
 A következő környezeti változók Java és a JDK telepítésekor lehet beállítani. Azonban ellenőrizni kell, hogy léteznek, illetve a rendszer a megfelelő értékeket tartalmaz.
 
-* `JAVA_HOME`-érdemes mutasson a mappát, ahová a Java-futtatókörnyezet (JRE) telepítve van. Például az OS X, Unix vagy Linux rendszeren nem rendelkezhet hasonló érték `/usr/lib/jvm/java-7-oracle`. A Windows rendszerben kellene hasonló érték`c:\Program Files (x86)\Java\jre1.7`
+* `JAVA_HOME` -érdemes mutasson a mappát, ahová a Java-futtatókörnyezet (JRE) telepítve van. Például az OS X, Unix vagy Linux rendszeren nem rendelkezhet hasonló érték `/usr/lib/jvm/java-7-oracle`. A Windows rendszerben kellene hasonló érték `c:\Program Files (x86)\Java\jre1.7`
 
-* `PATH`-a következő elérési utakat kell tartalmaznia:
+* `PATH` -a következő elérési utakat kell tartalmaznia:
   
-  * `JAVA_HOME`(vagy ezzel egyenértékű elérési útja)
+  * `JAVA_HOME` (vagy ezzel egyenértékű elérési útja)
 
-  * `JAVA_HOME\bin`(vagy ezzel egyenértékű elérési útja)
+  * `JAVA_HOME\bin` (vagy ezzel egyenértékű elérési útja)
 
   * A mappát, ahová a Maven telepítve van
 
@@ -69,9 +67,9 @@ A következő környezeti változók Java és a JDK telepítésekor lehet beáll
 
     Ez a parancs által megadott nevű könyvtár létrehozása a `artifactID` paraméter (**wordcountjava** ebben a példában.) Ez a könyvtár a következő elemeket tartalmazza:
 
-   * `pom.xml`-A [projekt Object Model (POM)](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html) , amely tartalmazza a projekt felépítéséhez használt információkat és a konfigurációs adatait.
+   * `pom.xml` -A [projekt Object Model (POM)](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html) , amely tartalmazza a projekt felépítéséhez használt információkat és a konfigurációs adatait.
 
-   * `src`-A könyvtárban, amely tartalmazza az alkalmazás.
+   * `src` -A könyvtárban, amely tartalmazza az alkalmazás.
 
 3. Törölje a `src/test/java/org/apache/hadoop/examples/apptest.java` fájlt. Ebben a példában nem szolgál.
 

@@ -1,8 +1,8 @@
 ---
-title: "Telepítheti és használhatja Giraph HDInsight (Hadoop) - Azure |} Microsoft Docs"
-description: "Megtudhatja, hogyan Giraph telepítése Linux-alapú HDInsight-fürtök Parancsfájlműveletek használatával. A Parancsfájlműveletek engedélyezi, hogy testre szabhatja a fürt létrehozásakor fürtkonfiguráció módosításával, vagy a szolgáltatások és segédprogramok telepítése."
+title: Telepítheti és használhatja Giraph HDInsight (Hadoop) - Azure |} Microsoft Docs
+description: Megtudhatja, hogyan Giraph telepítése Linux-alapú HDInsight-fürtök Parancsfájlműveletek használatával. A Parancsfájlműveletek engedélyezi, hogy testre szabhatja a fürt létrehozásakor fürtkonfiguráció módosításával, vagy a szolgáltatások és segédprogramok telepítése.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 9fcac906-8f06-4002-9fe8-473e42f8fd0f
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 1f2ee45d5d3a4dbb53faf43f67989ea92488b92a
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: dcfd37a40ce16a1574c21e3a6e9520cb2e773166
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>HDInsight Hadoop-fürtök Giraph telepítse, és nagy méretű diagramjait feldolgozásához Giraph használni
 
@@ -42,16 +40,16 @@ ms.lasthandoff: 01/22/2018
 > [!WARNING]
 > A HDInsight-fürt összetevői teljes mértékben támogatottak, mert a Microsoft Support segít elkülöníteni, és ezeket az összetevőket kapcsolatos problémák megoldásához.
 >
-> Egyéni összetevők, például Giraph, minden üzleti szempontból ésszerű terméktámogatási segítséget nyújtanak a probléma további hibaelhárításához. Microsoft Support lehet a probléma megoldását. Ha nem, ahol részletes segítséget, hogy a technológiát található nyílt forráskódú Közösségek kell tájékozódnia. Például nincsenek sok közösségi webhelyek használható, például: [MSDN fórum hdinsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Is Apache projektek rendelkezik projekt helyek [http://apache.org](http://apache.org), például: [Hadoop](http://hadoop.apache.org/).
+> Egyéni összetevők, például Giraph, minden üzleti szempontból ésszerű terméktámogatási segítséget nyújtanak a probléma további hibaelhárításához. Microsoft Support lehet a probléma megoldását. Ha nem, ahol részletes segítséget, hogy a technológiát található nyílt forráskódú Közösségek kell tájékozódnia. Például nincsenek sok közösségi webhelyek használható, például: [MSDN fórum hdinsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Is Apache projektek rendelkezik projekt helyek [ http://apache.org ](http://apache.org), például: [Hadoop](http://hadoop.apache.org/).
 
 
 ## <a name="what-the-script-does"></a>A parancsfájl funkciója
 
 Ezt a parancsfájlt a következő műveleteket hajtja végre:
 
-* Giraph történő telepítése`/usr/hdp/current/giraph`
+* Giraph történő telepítése `/usr/hdp/current/giraph`
 
-* Másolja a `giraph-examples.jar` fájl alapértelmezett Storage (WASB) a fürt:`/example/jars/giraph-examples.jar`
+* Másolja a `giraph-examples.jar` fájl alapértelmezett Storage (WASB) a fürt: `/example/jars/giraph-examples.jar`
 
 ## <a name="install"></a>A Parancsfájlműveletek segítségével Giraph telepítése
 
@@ -76,7 +74,7 @@ Ez a szakasz utasításokat biztosít a minta-parancsfájl használata a fürt l
 
    * **NÉV**: Adja meg a parancsfájlművelet rövid nevét.
 
-   * **SCRIPT URI**: https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh
+   * **PARANCSFÁJL URI AZONOSÍTÓJA**: https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh
 
    * **HEAD**: Ez a bejegyzés ellenőrzése
 

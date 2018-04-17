@@ -1,11 +1,11 @@
 ---
-title: "Felhasználói engedélyek adott labor szabályzatokkal |} Microsoft Docs"
-description: "Útmutató: a DevTest Labs szolgáltatásban minden egyes felhasználói igények alapján adott labor házirendek felhasználói engedélyeket"
+title: Felhasználói engedélyek adott labor szabályzatokkal |} Microsoft Docs
+description: 'Útmutató: a DevTest Labs szolgáltatásban minden egyes felhasználói igények alapján adott labor házirendek felhasználói engedélyeket'
 services: devtest-lab,virtual-machines,visual-studio-online
 documentationcenter: na
 author: craigcaseyMSFT
 manager: douge
-editor: 
+editor: ''
 ms.assetid: 5ca829f0-eb69-40a1-ae26-03a629db1d7e
 ms.service: devtest-lab
 ms.workload: na
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2016
 ms.author: v-craic
-ms.openlocfilehash: f92ad5e991bdb066bb9680b4865501076d43f450
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 2e42d371e1f5244b61dc30823db43fefe549b00d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>A konkrét labor házirendek felhasználói engedélyek
 ## <a name="overview"></a>Áttekintés
 Ez a cikk bemutatja, hogyan lehet egy adott labor házirend felhasználók engedélyeket a PowerShell használatával. Ily módon engedélyek alkalmazhatók minden felhasználói igények alapján. Például érdemes egy adott felhasználó megváltoztathatja a virtuális gép házirend-beállításokat, de nem a költségek házirendek megadását.
 
 ## <a name="policies-as-resources"></a>Erőforrásként házirendek
-A bemutatott a [Azure szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-configure.md) RBAC a cikkben lehetővé teszi, hogy az Azure-erőforrások részletes hozzáféréskezelést. Az RBAC használata, feladatokat elkülönítse a DevOps munkacsoporton belül, és csak olyan mértékű hozzáférést biztosítania a felhasználók számára, hogy be kell elvégezni a munkájukat.
+A bemutatott a [Azure szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md) RBAC a cikkben lehetővé teszi, hogy az Azure-erőforrások részletes hozzáféréskezelést. Az RBAC használata, feladatokat elkülönítse a DevOps munkacsoporton belül, és csak olyan mértékű hozzáférést biztosítania a felhasználók számára, hogy be kell elvégezni a munkájukat.
 
 A DevTest Labs szolgáltatásban, a házirend, amely lehetővé teszi a Szerepalapú művelet erőforrástípus **Microsoft.DevTestLab/labs/policySets/policies/**. Minden tesztkörnyezeti házirend házirend erőforrástípus az erőforráshoz, és hatóköreként RBAC szerepkörhöz is hozzárendelhető.
 
 Például ahhoz, hogy a felhasználók olvasási/írási engedélyeket a **engedélyezett Virtuálisgép-méretek** házirend, akkor létre egy egyéni biztonsági szerepkört, amely kompatibilis a **Microsoft.DevTestLab/labs/policySets/policies/*** a művelet, majd rendelje hozzá a megfelelő felhasználók az egyéni szerepkör hatókörébe tartozó **Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab**.
 
-Egyéni szerepkörök az RBAC kapcsolatos további tudnivalókért tekintse meg a [egyéni szerepkörök hozzáférés-vezérlés](../active-directory/role-based-access-control-custom-roles.md).
+Egyéni szerepkörök az RBAC kapcsolatos további tudnivalókért tekintse meg a [egyéni szerepkörök hozzáférés-vezérlés](../role-based-access-control/custom-roles.md).
 
 ## <a name="creating-a-lab-custom-role-using-powershell"></a>PowerShell-lel labor egyéni szerepkör létrehozása
 Ahhoz, hogy az első lépések, olvassa el az alábbi cikket, amely fogja azt ismertetik, hogyan telepítse és konfigurálja az Azure PowerShell-parancsmagok szüksége: [ https://azure.microsoft.com/blog/azps-1-0-pre ](https://azure.microsoft.com/blog/azps-1-0-pre).

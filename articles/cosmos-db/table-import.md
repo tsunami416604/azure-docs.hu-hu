@@ -1,10 +1,10 @@
 ---
-title: "Importálhat adatokat az Azure Cosmos DB tábla API való használatra |} Microsoft Docs"
-description: "Megtudhatja, hogyan importálhat az adatokat az Azure Cosmos DB tábla API használata."
+title: Importálhat adatokat az Azure Cosmos DB tábla API való használatra |} Microsoft Docs
+description: Megtudhatja, hogyan importálhat az adatokat az Azure Cosmos DB tábla API használata.
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-documentationcenter: 
+author: SnehaGunda
+manager: kfile
+documentationcenter: ''
 ms.assetid: b60743e2-0227-43ab-965a-0ae3ebacd917
 ms.service: cosmos-db
 ms.workload: data-services
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: mimig
-ms.openlocfilehash: 1c53be736ad65a53767626033be27f0891de06ba
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.author: sngun
+ms.openlocfilehash: 7a8eaaaaa8bbfa8cf9397ce52dfa93d71b0df30c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="import-data-for-use-with-the-azure-cosmos-db-table-api"></a>Adatok importálása az Azure Cosmos DB tábla API való használatra
 
 Ez az oktatóanyag utasításokkal szolgál az adatok az Azure Cosmos DB való használatra importálása [tábla API](table-introduction.md). Azure Table storage-ban tárolt adatok az adatok importálásához használhatja az adatáttelepítés eszközzel vagy az AzCopy. Ha egy Azure Cosmos DB tábla API (előzetes verzió) fiókban tárolt adatok, az adatok áttelepítése eszközt kell használnia az adatok áttelepítéséhez. Az adatok importálása után a prémium szintű képességek kihasználásához Azure Cosmos DB ajánlatok kulcsrakész globális terjesztési, dedikált átviteli, egyjegyű ezredmásodperces késések fordulnak elő, az 99th aránya a garantált magas rendelkezésre állású, például képes lesz és másodlagos indexelő.
 
-Ez az oktatóanyag ismerteti a következő feladatokat:
+Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
 > * Az adatáttelepítés eszközzel adatok importálása
@@ -131,9 +131,9 @@ Az általánosan elérhető tábla API áttelepítésére tábla API (előzetes 
 
 3. Az ügyfél adatok áttelepítését preview táblázatokból GA táblák az adatáttelepítés eszközzel. Ismerteti az adatok áttelepítési eszköz használatával erre a célra [adatáttelepítési eszközét](#data-migration-tool). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
+Ennek az oktatóanyagnak a segítségével megtanulta a következőket:
 
 > [!div class="checklist"]
 > * Az adatáttelepítés eszközzel adatok importálása

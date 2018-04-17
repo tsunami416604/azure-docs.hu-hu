@@ -1,25 +1,18 @@
 ---
-title: "Az Azure Analysis Services modellek aszinkron frissítési |} Microsoft Docs"
-description: "Útmutató: az aszinkron frissítési kód REST API használatával."
-services: analysis-services
-documentationcenter: 
+title: Az Azure Analysis Services modellek aszinkron frissítési |} Microsoft Docs
+description: 'Útmutató: az aszinkron frissítési kód REST API használatával.'
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 03/05/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: bb3e50c3e481bcedc436b8382fb55d6402d058b2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: minewiskan
+ms.openlocfilehash: 74ef8ae45215badf2b5a83cc2d82c3db1eef8980
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>A REST API aszinkron frissítés
 Bármely programozási nyelv, amely támogatja a REST-hívások segítségével az Azure Analysis Services rendszerbeli táblázatos modellek aszinkron adatfrissítési műveleteket végezheti el. Ez magában foglalja a lekérdezés kibővített írásvédett replikák szinkronizálását. 
@@ -104,7 +97,7 @@ Paraméterek megadása nem kötelező. Az alapértelmezett vonatkozik.
 
 |Name (Név)  |Típus  |Leírás  |Alapértelmezett  |
 |---------|---------|---------|---------|
-|Típus     |  Enum       |  A végrehajtandó feldolgozástípust típusa. A típusok összhangban legyenek a TMSL [a frissítési parancs](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl) típusok: full, clearValues, kiszámításához, dataOnly, automatikus adja hozzá, és töredezettségmentesítése.       |   automatic      |
+|Típus     |  Enum       |  A végrehajtandó feldolgozástípust típusa. A típusok összhangban legyenek a TMSL [a frissítési parancs](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl) típusok: full, clearValues, kiszámításához, dataOnly, automatikus adja hozzá, és töredezettségmentesítése.       |   Automatikus      |
 |CommitMode     |  Enum       |  Határozza meg, ha objektumok véglegesített kötegekben telepítse, vagy csak akkor, ha teljes lesz. Módok közé tartozik: alapértelmezés szerint tranzakciós, partialBatch.  |  tranzakciós       |
 |MaxParallelism     |   Int      |  A párhuzamos feldolgozás parancsok futtatására szálak maximális számát határozza meg. Ez az érték a MaxParallelism tulajdonsággal állítható be a TMSL igazítva [parancs feladatütemezési](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl) vagy más módszerrel.       | 10        |
 |a retryCount    |    Int     |   Azt jelzi, hogy hányszor, mielőtt hibát jelentene próbálkozik újra a műveletet.      |     0    |
@@ -115,7 +108,7 @@ CommitMode partialBatch megegyezik. Szolgál, amely során egy kezdeti betölté
 > [!NOTE]
 > Írásának időpontjában a Köteg mérete MaxParallelism értékét, de ez az érték módosítása sikerült.
 
-## <a name="get-refreshesrefreshid"></a>GET /refreshes/\<refreshId>
+## <a name="get-refreshesrefreshid"></a>GET /refreshes/\<refreshId >
 
 A frissítési művelet állapotának ellenőrzéséhez használja a GET-műveletet a frissítés azonosítóját. Íme egy példa az adott válasz törzse. Ha a művelet van folyamatban, **esetbejegyzések** állapot ad vissza.
 
@@ -165,11 +158,11 @@ Egy modell korábbi frissítési műveletek listájának megtekintéséhez haszn
 ]
 ```
 
-## <a name="delete-refreshesrefreshid"></a>DELETE /refreshes/\<refreshId>
+## <a name="delete-refreshesrefreshid"></a>TÖRLÉS /refreshes/\<refreshId >
 
 Egy folyamatban lévő frissítés megszakítására használja a DELETE művelet a frissítés azonosítóját.
 
-## <a name="post-sync"></a>POST /sync
+## <a name="post-sync"></a>POST/Sync
 
 Kellene végrehajtani a frissítési műveletek, akkor szükség lehet az új adatok szinkronizálása a lekérdezés kibővített replikáit. Egy modell synchronize művelet elvégzésére, használja a/Sync függvény a POST műveletet. A hely egy fejléc a következő a válasz tartalmazza a szinkronizálási művelet azonosítója.
 

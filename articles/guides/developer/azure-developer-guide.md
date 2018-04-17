@@ -1,12 +1,12 @@
 ---
-title: "Get lépésekről szóló útmutatót a fejlesztők számára az Azure-on |} Microsoft Docs"
-description: "Ez a témakör alapvető információkat szeretné használatának megkezdésében a Microsoft Azure platform fejlesztési igényeiknek a fejlesztők számára."
-services: 
-cloud: 
-documentationcenter: 
+title: Get lépésekről szóló útmutatót a fejlesztők számára az Azure-on |} Microsoft Docs
+description: Ez a témakör alapvető információkat szeretné használatának megkezdésében a Microsoft Azure platform fejlesztési igényeiknek a fejlesztők számára.
+services: ''
+cloud: ''
+documentationcenter: ''
 author: ggailey777
 manager: erikre
-ms.assetid: 
+ms.assetid: ''
 ms.service: na
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: e740b655cbd22a08aab988e83a057cc770e8dfe3
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: b1cda302636d8bd4d0f14536f186c7b4951c09c1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Első lépésekhez készült útmutató Azure-fejlesztőknek
 
@@ -77,7 +77,7 @@ Vezérlő, amely a virtuális gépeken, mivel számos különböző kiszolgáló
 
 >**Első lépések**: hozzon létre egy [Linux virtuális gép](../../virtual-machines/virtual-machines-linux-quick-create-portal.md) vagy [Windows virtuális gép](../../virtual-machines/virtual-machines-windows-hero-tutorial.md) Azure-portálról.
 
-#### <a name="azure-functions-serverless"></a>Azure Functions (serverless)
+#### <a name="azure-functions-serverless"></a>Az Azure Functions (kiszolgáló nélküli)
 
 Nem pedig a kimenő felépítését és kezelését az Ön kódjának futtatásához egy egész alkalmazással vagy az infrastruktúra aggódni. Mi történik, ha Ön volt ebben az esetben a kód írása és azt válaszként események vagy ütemezés szerint?  [Az Azure Functions](../../azure-functions/functions-overview.md) van a "kiszolgáló"nélküli-stílus ajánlat, amely lehetővé teszi, hogy csak a kód írását, van szüksége. Azokat a funkciókat kód aktiválja a végrehajtást, vagy ütemezés szerint HTTP-kérelmekre, webhookokkal, felhőalapú szolgáltatás eseményeit. A fejlesztési nyelven szerkesztőprogramban, például C is kódaláírással\#, F\#, Node.js, Python vagy a PHP. A fogyasztás alapján történő számlázáshoz, csak fizetnie végrehajtja a kódot, és Azure méretezi igény szerint.
 
@@ -295,7 +295,7 @@ Amikor engedélyezi a hozzáférést az Azure-erőforrások, nem mindig ajánlot
 
     >**Mikor érdemes használni**: amikor a felhasználók és csoportok részletes hozzáféréskezelést kell.
 
-    >**Első lépések**: további információkért lásd: [Ismerkedés az Azure-portálon kezelési](../../active-directory/role-based-access-control-what-is.md).
+    >**Első lépések**: további információkért lásd: [Ismerkedés az Azure-portálon kezelési](../../role-based-access-control/overview.md).
 
 -   **Szolgáltatás egyszerű objektumok**: hozzáférés biztosítása a felhasználó rendszerbiztonsági tagok és a csoportok, mellett biztosíthat ugyanolyan szintű hozzáférése egy egyszerű szolgáltatást.
 

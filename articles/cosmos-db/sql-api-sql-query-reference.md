@@ -3,8 +3,7 @@ title: 'Azure Cosmos DB: SQL-szintaxis lekérdezés referencia |} Microsoft Docs
 description: Az Azure Cosmos DB SQL lekérdező nyelve dokumentációját.
 services: cosmos-db
 author: LalithaMV
-manager: jhubbard
-editor: mimig
+manager: kfile
 documentationcenter: ''
 ms.assetid: ''
 ms.service: cosmos-db
@@ -14,11 +13,11 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 10/18/2017
 ms.author: laviswa
-ms.openlocfilehash: 012fa27fdebebf1c86a324c49c53d665a15a91c2
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 83ee1d37dd6d79ce26ae95cd1486298f0210f661
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-sql-syntax-reference"></a>Az Azure Cosmos adatbázis SQL-szintaxis referencia
 
@@ -279,7 +278,7 @@ Vizsgáljuk meg FROM záradék a következő: `<from_source1> JOIN <from_source2
   
     (input_alias1, input_alias2, input_alias3):  
   
-    (A, 1, 100), (A, 1, 200), (B, 3, 300)  
+    (A, 1, 100), (A, 1, 200-AS), (B, 3, 300)  
   
 > [!NOTE]
 > Más értékek a rekordokat hiánya `input_alias1`, `input_alias2`, amelynek a `<from_source3>` nem adott vissza semmilyen értéket.  
@@ -308,7 +307,7 @@ Vizsgáljuk meg FROM záradék a következő: `<from_source1> JOIN <from_source2
   
     (`input_alias1, input_alias2, input_alias3`):  
   
-    (A, 1, 100), (A, 1, 200), (A, 2, 100), (A, 2, 200),  (C, 4, 300) ,  (C, 5, 300)  
+    (A, 1, 100), (A, 1, 200-AS) (A, 2, 100), (A, 2, 200-AS), C, 4, 300, (C, 5, 300)  
   
 > [!NOTE]
 > Ennek következtében határokon termék közötti `<from_source2>` és `<from_source3>` mert mindkét hatóköre azonos `<from_source1>`.  Ez 4 (2 x 2) eredményezett a érték 0 rekordokat B (1 x 0) értékkel rendelkező rekordokat és (2 x 1) 2 c-értékkel rekordokat  
@@ -482,9 +481,9 @@ ORDER BY <sort_specification>
   
 |**Kategória**|**Részletek**|  
 |-|-|  
-|**arithmetic**|Operátor száma kell input(s) vár. Kimeneti az a szám. Ha a bemeneti adatok bármelyike **nem definiált** vagy típustól eltérő, majd az eredmények számát **nem definiált**.|  
+|**Aritmetikai**|Operátor száma kell input(s) vár. Kimeneti az a szám. Ha a bemeneti adatok bármelyike **nem definiált** vagy típustól eltérő, majd az eredmények számát **nem definiált**.|  
 |**Bitenként**|Operátor vár input(s) 32 bites előjeles egész száma kell lennie. Kimeneti is 32 bites, előjeles egész szám.<br /><br /> Nem egész értéket a rendszer kerekíti. Pozitív értéket lefelé, negatív értékeket kerekíti.<br /><br /> Bármely érték, amely a 32 bites egész tartományon kívül esik a két tartozó hexadecimális utolsó 32-bites megtételével konvertálja.<br /><br /> Ha a bemeneti adatok bármelyike **nem definiált** vagy adjon meg másik számot, akkor az eredmény **nem definiált**.<br /><br /> **Megjegyzés:** fenti a rendszer nem kompatibilis a JavaScript bitenkénti operátor viselkedését.|  
-|**logical**|Operátor Boolean(s) kell input(s) vár. Kimeneti is olyan logikai érték.<br />Ha a bemeneti adatok bármelyike **nem definiált** vagy adjon meg eltérő logikai érték, akkor az eredmény lesz **nem definiált**.|  
+|**Logikai**|Operátor Boolean(s) kell input(s) vár. Kimeneti is olyan logikai érték.<br />Ha a bemeneti adatok bármelyike **nem definiált** vagy adjon meg eltérő logikai érték, akkor az eredmény lesz **nem definiált**.|  
 |**Összehasonlítása**|Operátor azonos típusú és nem lehet nem definiált input(s) vár. Olyan logikai érték eredménye.<br /><br /> Ha a bemeneti adatok bármelyike **nem definiált** vagy a bemeneti adatok különböző rendelkezik, majd az eredmény **nem definiált**.<br /><br /> Lásd: **összehasonlított értékek rendezési** tábla értékhez rendelés részleteit.|  
 |**string**|Operátor karakterlánc(ok) kell input(s) vár. Kimenet: karakterlánc.<br />Ha a bemeneti adatok bármelyike **nem definiált** vagy írja be a másik karakterláncot, majd az eredmény **nem definiált**.|  
   
@@ -492,7 +491,7 @@ ORDER BY <sort_specification>
   
 |**Name (Név)**|**Operátor**|**Részletek**|  
 |-|-|-|  
-|**arithmetic**|+<br /><br /> -|A szám értékét adja vissza.<br /><br /> Bitenkénti negálást. Számú értéket ad vissza negated.|  
+|**Aritmetikai**|+<br /><br /> -|A szám értékét adja vissza.<br /><br /> Bitenkénti negálást. Számú értéket ad vissza negated.|  
 |**Bitenként**|~|Egyesek komplemens számnak. Az érték egy szám kiegészítése adja vissza.|  
 |**Logical**|**NEM**|Tagadásának. Beolvasása negated logikai érték.|  
   
@@ -500,11 +499,11 @@ ORDER BY <sort_specification>
   
 |**Name (Név)**|**Operátor**|**Részletek**|  
 |-|-|-|  
-|**arithmetic**|+<br /><br /> -<br /><br /> *<br /><br /> /<br /><br /> %|Hozzáadását.<br /><br /> Kivonás.<br /><br /> Szorzást végezhet.<br /><br /> Osztás.<br /><br /> Modulációs.|  
+|**Aritmetikai**|+<br /><br /> -<br /><br /> *<br /><br /> /<br /><br /> %|Hozzáadását.<br /><br /> Kivonás.<br /><br /> Szorzást végezhet.<br /><br /> Osztás.<br /><br /> Modulációs.|  
 |**Bitenként**|&#124;<br /><br /> &<br /><br /> ^<br /><br /> <<<br /><br /> >><br /><br /> >>>|Bitenkénti vagy.<br /><br /> Bitenkénti és művelet<br /><br /> Bitenkénti kizáró vagy.<br /><br /> Balra Tolást.<br /><br /> Jobbra Tolást.<br /><br /> Nulla-Kitöltés jobbra Tolást.|  
-|**logical**|**ÉS**<br /><br /> **OR**|Logikai együtt. Visszaadja **igaz** , ha mindkét argumentuma **igaz**, adja vissza **hamis** ellenkező esetben.<br /><br /> Logikai együtt. Visszaadja **igaz** , ha mindkét argumentuma **igaz**, adja vissza **hamis** ellenkező esetben.|  
+|**Logikai**|**ÉS**<br /><br /> **VAGY**|Logikai együtt. Visszaadja **igaz** , ha mindkét argumentuma **igaz**, adja vissza **hamis** ellenkező esetben.<br /><br /> Logikai együtt. Visszaadja **igaz** , ha mindkét argumentuma **igaz**, adja vissza **hamis** ellenkező esetben.|  
 |**Összehasonlítása**|**=**<br /><br /> **!=, <>**<br /><br /> **>**<br /><br /> **>=**<br /><br /> **<**<br /><br /> **<=**<br /><br /> **??**|Egyenlő. Visszaadja **igaz** Ha az argumentum értéke, akkor adja vissza **hamis** egyéb.<br /><br /> Nem egyenlő. Visszaadja **igaz** Ha az argumentum nem egyenlő, adja vissza **hamis** egyéb.<br /><br /> Nagyobb, mint. Beolvasása **igaz** első argumentum értéke nagyobb, mint a második, ha vissza **hamis** más módon.<br /><br /> Nagyobb vagy egyenlő. Beolvasása **igaz** első argumentum értéke nagyobb vagy egyenlő irányából a második, ha vissza **hamis** más módon.<br /><br /> Kisebb, mint. Beolvasása **igaz** Ha első argumentum nem kisebb, mint a második egy visszatérési **hamis** más módon.<br /><br /> Kisebb vagy egyenlő, mint. Beolvasása **igaz** első argumentum értéke kisebb vagy egyenlő, mint a második érték, ha vissza **hamis** más módon.<br /><br /> A Coalesce. A második argumentum adja vissza, ha az első argumentum egy **nem definiált** érték.|  
-|**String**|**&#124;&#124;**|Kapott. Mindkét argumentumot összefűzése adja vissza.|  
+|**Karakterlánc**|**&#124;&#124;**|Kapott. Mindkét argumentumot összefűzése adja vissza.|  
   
  **Ternáris kezelők:**  
   
@@ -518,7 +517,7 @@ ORDER BY <sort_specification>
 |**Nincs definiálva**|Nem hasonlítható össze.|  
 |**NULL értékű**|Egyetlen érték: **null értékű**|  
 |**Szám**|Természetes valós szám.<br /><br /> Negatív végtelen értéke kisebb, mint bármely más számértéket.<br /><br /> Pozitív végtelen értéke nagyobb, mint bármely más számértéket. **NaN** értéke nem hasonlítható össze. Összehasonlítva az **NaN** eredményez **nem definiált** érték.|  
-|**String**|Lexicographical sorrendje.|  
+|**Karakterlánc**|Lexicographical sorrendje.|  
 |**A tömb**|Nincs rendezést, de egyenlő.|  
 |**Object**|Nincs rendezést, de egyenlő.|  
   
@@ -545,9 +544,9 @@ ORDER BY <sort_specification>
 |-|-|  
 |**Nincs definiálva**|Egyetlen érték: **nincs megadva**|  
 |**NULL értékű**|Egyetlen érték: **null értékű**|  
-|**Boolean**|Értékek: **hamis**, **igaz**.|  
+|**Logikai érték**|Értékek: **hamis**, **igaz**.|  
 |**Szám**|Egy kétszeres pontosságú lebegőpontos számnál, szabványos IEEE 754.|  
-|**String**|Nulla vagy több Unicode-karaktereket sorozata. Karakterláncok egyetlen vagy dupla idézőjelek között kell foglalni.|  
+|**Karakterlánc**|Nulla vagy több Unicode-karaktereket sorozata. Karakterláncok egyetlen vagy dupla idézőjelek között kell foglalni.|  
 |**A tömb**|Nulla vagy több elemek sorrendjét. Minden elem meghatározatlan kivételével minden skaláris adattípusú érték lehet.|  
 |**Object**|Egy nulla vagy több név/érték párok rendezetlen készlete. Értéke a Unicode-karakterláncot, kivéve értéke lehet bármely skaláris adattípusú, **meghatározatlan**.|  
   
@@ -696,10 +695,10 @@ ORDER BY <sort_specification>
   
 ||||  
 |-|-|-|  
-|[ABS](#bk_abs)|[ACOS](#bk_acos)|[ASIN](#bk_asin)|  
-|[ATAN](#bk_atan)|[ATN2](#bk_atn2)|[CEILING](#bk_ceiling)|  
+|[ABS](#bk_abs)|[ARCCOS](#bk_acos)|[ASIN](#bk_asin)|  
+|[ATAN](#bk_atan)|[ATN2](#bk_atn2)|[FELSŐ HATÁR](#bk_ceiling)|  
 |[COS](#bk_cos)|[COT](#bk_cot)|[DEGREES](#bk_degrees)|  
-|[EXP](#bk_exp)|[FLOOR](#bk_floor)|[LOG](#bk_log)|  
+|[EXP](#bk_exp)|[EMELET](#bk_floor)|[LOG](#bk_log)|  
 |[LOG10](#bk_log10)|[PI](#bk_pi)|[POWER](#bk_power)|  
 |[RADIANS](#bk_radians)|[CIKLIKUS](#bk_round)|[SIN](#bk_sin)|  
 |[SQRT](#bk_sqrt)|[NÉGYZETES](#bk_square)|[SIGN](#bk_sign)|  
@@ -771,7 +770,7 @@ SELECT ACOS(-1)
 [{"$1": 3.1415926535897931}]  
 ```  
   
-####  <a name="bk_asin"></a> ASIN  
+####  <a name="bk_asin"></a> ARCSIN  
  A szög radiánban megadott szög, amelynek szinusza a megadott numerikus kifejezést ad vissza. Ez rövidítése szinuszát.  
   
  **Syntax**  
@@ -969,7 +968,7 @@ SELECT COT(124.1332)
 [{"$1": -0.040311998371148884}]  
 ```  
   
-####  <a name="bk_degrees"></a> DEGREES  
+####  <a name="bk_degrees"></a> FOK  
  A megfelelő szöget adja vissza, az a radiánban megadott szög fokban megadva.  
   
  **Syntax**  
@@ -1852,12 +1851,12 @@ SELECT
   
 ||||  
 |-|-|-|  
-|[CONCAT](#bk_concat)|[CONTAINS](#bk_contains)|[ENDSWITH](#bk_endswith)|  
-|[INDEX_OF](#bk_index_of)|[LEFT](#bk_left)|[LENGTH](#bk_length)|  
-|[LOWER](#bk_lower)|[LTRIM](#bk_ltrim)|[CSERÉLJE LE](#bk_replace)|  
+|[CONCAT](#bk_concat)|[TARTALMAZZA](#bk_contains)|[MEGADOTT MÓDON VÉGZŐDŐ](#bk_endswith)|  
+|[INDEX_OF](#bk_index_of)|[LEFT](#bk_left)|[HOSSZA](#bk_length)|  
+|[ALACSONYABB](#bk_lower)|[LTRIM](#bk_ltrim)|[CSERÉLJE LE](#bk_replace)|  
 |[REPLIKÁLÁS](#bk_replicate)|[FORDÍTOTT](#bk_reverse)|[RIGHT](#bk_right)|  
-|[RTRIM](#bk_rtrim)|[STARTSWITH](#bk_startswith)|[SUBSTRING](#bk_substring)|  
-|[UPPER](#bk_upper)|||  
+|[RTRIM](#bk_rtrim)|[STARTSWITH ELEMNEK](#bk_startswith)|[SUBSTRING](#bk_substring)|  
+|[FELSŐ](#bk_upper)|||  
   
 ####  <a name="bk_concat"></a> CONCAT  
  Karakterlánc, amely legalább két karakterlánc-értékek hozzáfűzésével eredményét adja vissza.  

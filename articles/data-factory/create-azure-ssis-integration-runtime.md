@@ -10,13 +10,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/22/2018
+ms.date: 04/13/2018
 ms.author: douglasl
-ms.openlocfilehash: c8804dce7dd8291b65f704ba36aaa1cd05eb4518
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 8995689be7467553069e056347f6dec7378fd186
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Egy Azure-SSIS-integrációs futásidejű létrehozása az Azure Data Factory
 Ez a cikk lépéseit egy Azure-SSIS-integráció futtatókörnyezetet, az Azure Data Factory történő üzembe helyezéséhez. Ezután az SQL Server Data Tools (SSDT) vagy az SQL Server Management Studio (SSMS) használatával üzembe helyezhet SQL Server Integration Services- (SSIS-) csomagokat ebben az Azure-beli modulban.
@@ -39,12 +39,12 @@ Ez a cikk egy Azure-SSIS-IR-kiépítés különböző módokat ismerteti:
 
 Egy Azure-SSIS-IR létrehozásakor adat-előállító kapcsolódik az Azure SQL-adatbázis előkészítése a SSIS-katalógus-adatbázis (SSISDB). A szkript konfigurálja a virtuális hálózat engedélyeit és beállításait is, ha ez lett megadva, és csatlakoztatja az Azure SSIS integrációs modul új példányát a virtuális hálózathoz.
 
-Amikor üzembe helyezi az Azure-SSIS IR egy példányát, az Azure Feature Pack for SSIS és az Access Redistributable is telepítve lesz. Ezek az összetevők biztosítják a csatlakozást az Excel- és Access-fájlokhoz és különböző Azure-adatforrásokhoz a beépített összetevők által támogatott adatforrások mellett. Jelenleg az SSIS-hez nem lehet külső gyártóktól származó összetevőket telepíteni (beleértve a Microsofttól származó külső gyártású összetevőket, például az Attunity Oracle és Teradata összetevőit és az SAP BI összetevőket).
+Amikor üzembe helyezi az Azure-SSIS IR egy példányát, az Azure Feature Pack for SSIS és az Access Redistributable is telepítve lesz. Ezek az összetevők biztosítják a csatlakozást az Excel- és Access-fájlokhoz és különböző Azure-adatforrásokhoz a beépített összetevők által támogatott adatforrások mellett. További összetevőket is telepíthet. További információk: [egyéni beállítása az Azure-SSIS-integráció futási időben](how-to-configure-azure-ssis-ir-custom-setup.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - **Azure-előfizetés**. Ha nem rendelkezik előfizetéssel, létrehozhat egy [ingyenes próbafiókot](http://azure.microsoft.com/pricing/free-trial/).
-- **Azure SQL adatbázis-kiszolgáló** vagy **SQL Server-felügyelt példány (Preview) (kiterjesztett magán előnézetben)**. Ha még nem rendelkezik adatbázis-kiszolgálóval, először hozzon létre egyet az Azure Portalon. Ez a kiszolgáló üzemelteti az SSIS-katalógusadatbázist (SSISDB-t). Javasoljuk, hogy az adatbáziskiszolgálót az integrációs modullal megegyező Azure-régióban hozza létre. Ez a konfiguráció lehetővé teszi, hogy az integrációs modul Azure-régiók határainak átlépése nélkül írjon végrehajtási naplókat a katalógusadatbázisba. Jegyezze fel az Azure SQL-kiszolgáló tarifacsomagját. Az Azure SQL Database támogatott tarifacsomagok listáját lásd: [SQL-adatbázis erőforrás korlátok](../sql-database/sql-database-resource-limits.md).
+- **Azure SQL adatbázis-kiszolgáló** vagy **SQL Server-felügyelt példány (előzetes verzió)**. Ha még nem rendelkezik adatbázis-kiszolgálóval, először hozzon létre egyet az Azure Portalon. Ez a kiszolgáló üzemelteti az SSIS-katalógusadatbázist (SSISDB-t). Javasoljuk, hogy az adatbáziskiszolgálót az integrációs modullal megegyező Azure-régióban hozza létre. Ez a konfiguráció lehetővé teszi, hogy az integrációs modul Azure-régiók határainak átlépése nélkül írjon végrehajtási naplókat a katalógusadatbázisba. Jegyezze fel az Azure SQL-kiszolgáló tarifacsomagját. Az Azure SQL Database támogatott tarifacsomagok listáját lásd: [SQL-adatbázis erőforrás korlátok](../sql-database/sql-database-resource-limits.md).
 
     Győződjön meg arról, hogy az Azure SQL Database-kiszolgálóhoz vagy az SQL Server-felügyelt példány (előzetes verzió) nem rendelkezik egy SSIS-katalógus (SSIDB adatbázis). Az Azure-SSIS IR üzembe helyezése nem támogatja a meglévő SSIS-katalógusok használatát.
 - **Klasszikus Azure Resource Manager virtuális Network(VNet) (nem kötelező), vagy**. Legalább egy Azure virtuális hálózat (VNet) szükséges, ha a következő feltételek bármelyike igaz:
@@ -54,7 +54,7 @@ Amikor üzembe helyezi az Azure-SSIS IR egy példányát, az Azure Feature Pack 
 
 > [!NOTE]
 > - 2-es verziójú adat-előállítót a következő régiókban hozhat létre: USA keleti régiója, USA 2. keleti régiója, Délkelet-Ázsia és Nyugat-Európa. 
-> - Azure-SSIS integrációs modult a következő régiókban hozhat létre: USA keleti régiója, USA 2. keleti régiója, USA középső régiója, Észak-Európa, Nyugat-Európa és Kelet-Ausztrália.
+> - A következő régiókban is létrehozhat egy Azure-SSIS-IR: USA keleti régiója, USA keleti régiója 2. régiója, USA középső RÉGIÓJA, USA 2. nyugati régiója, Észak-Európa, Nyugat-Európa, Egyesült Királyság déli régiója és Kelet-Ausztrália.
 
 ## <a name="azure-portal"></a>Azure Portal
 Ebben a szakaszban használhatja az Azure-portálon, kifejezetten a Data Factory felhasználói felületén hozzon létre egy Azure-SSIS infravörös 
@@ -70,9 +70,10 @@ Ebben a szakaszban használhatja az Azure-portálon, kifejezetten a Data Factory
       
      ![Új adat-előállító lap](./media/tutorial-create-azure-ssis-runtime-portal/new-azure-data-factory.png)
  
-   Az Azure data factory nevének **globálisan egyedinek** kell lennie. Ha a következő hibaüzenetet kapja, változtassa meg az adat-előállító nevét (például sajátneveMyAzureSsisDataFactoryra), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+   Az Azure data factory nevének **globálisan egyedinek** kell lennie. Ha a következő hibaüzenetet kapja, változtassa meg az adat-előállító nevét (például sajátneveMyAzureSsisDataFactoryra), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők elnevezésére vonatkozó részleteket a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
   
        `Data factory name “MyAzureSsisDataFactory” is not available`
+
 3. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 
 4. Az **erőforráscsoportban** hajtsa végre a következő lépések egyikét:
      
@@ -170,8 +171,10 @@ $DataFactoryLocation = "EastUS"
 # Azure-SSIS integration runtime information - This is the Data Factory compute resource for running SSIS packages
 $AzureSSISName = "[your Azure-SSIS integration runtime name]"
 $AzureSSISDescription = "This is my Azure-SSIS integration runtime"
+# Azure-SSIS IR edition/license info: Standard or Enterprise 
+$AzureSSISEdition = "Standard" # Enterprise Edition supports advanced/premium features
 
-# You can create an Azure-SSIS IR in the following regions: East US, East US 2, Central US, North Europe, West Europe, and Australia East.
+# You can create an Azure-SSIS IR in the following regions: East US, East US 2, Central US, West US 2, North Europe, West Europe, UK South, and Australia East.
 $AzureSSISLocation = "EastUS" 
 # In public preview, only Standard_A4_v2|Standard_A8_v2|Standard_D1_v2|Standard_D2_v2|Standard_D3_v2|Standard_D4_v2 are supported.
 $AzureSSISNodeSize = "Standard_D3_v2"
@@ -179,6 +182,9 @@ $AzureSSISNodeSize = "Standard_D3_v2"
 $AzureSSISNodeNumber = 2 
 # For a Standard_D1_v2 node, 1-4 parallel executions per node are supported. For other nodes, it's 1-8.
 $AzureSSISMaxParallelExecutionsPerNode = 2 
+
+# Custom setup info
+$SetupScriptContainerSasUri = "" # OPTIONAL: SAS URI of blob container where your custom setup script and its associated files are stored
 
 # SSISDB info
 $SSISDBServerEndpoint = "[your Azure SQL Database server name.database.windows.net or your Azure SQL Managed Instance (Preview) server endpoint]"
@@ -278,10 +284,12 @@ Set-AzureRmDataFactoryV2IntegrationRuntime  -ResourceGroupName $ResourceGroupNam
                                             -CatalogAdminCredential $serverCreds `
                                             -CatalogPricingTier $SSISDBPricingTier `
                                             -Description $AzureSSISDescription `
+                                            -Edition $AzureSSISEdition ` 
                                             -Location $AzureSSISLocation `
                                             -NodeSize $AzureSSISNodeSize `
                                             -NodeCount $AzureSSISNodeNumber `
-                                            -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode
+                                            -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
+                                            -SetupScriptContainerSasUri $SetupScriptContainerSasUri
 ```
 
 Nem kell értéket átadni VNetId és alhálózathoz, ha nem kell a helyszíni adatok elérése, ez azt jelenti, hogy rendelkezik a helyszíni adatok források/célok a SSIS-csomagok. Át kell adnia a CatalogPricingTier paraméter értékét. Az Azure SQL Database támogatott tarifacsomagok listáját lásd: [SQL-adatbázis erőforrás korlátok](../sql-database/sql-database-resource-limits.md).
@@ -298,10 +306,12 @@ Set-AzureRmDataFactoryV2IntegrationRuntime  -ResourceGroupName $ResourceGroupNam
                                             -CatalogServerEndpoint $SSISDBServerEndpoint `
                                             -CatalogAdminCredential $serverCreds `
                                             -Description $AzureSSISDescription `
+                                            -Edition $AzureSSISEdition ` 
                                             -Location $AzureSSISLocation `
                                             -NodeSize $AzureSSISNodeSize `
                                             -NodeCount $AzureSSISNodeNumber `
                                             -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
+                                            -SetupScriptContainerSasUri $SetupScriptContainerSasUri `
                                             -VnetId $VnetId `
                                             -Subnet $SubnetName
 ```
@@ -339,6 +349,9 @@ $DataFactoryLocation = "EastUS"
 # Azure-SSIS integration runtime information. This is a Data Factory compute resource for running SSIS packages
 $AzureSSISName = "<Specify a name for your Azure-SSIS (IR)>"
 $AzureSSISDescription = "<Specify description for your Azure-SSIS IR"
+# Azure-SSIS IR edition/license info: Standard or Enterprise 
+$AzureSSISEdition = "Standard" # Enterprise Edition supports advanced/premium features
+
 $AzureSSISLocation = "EastUS" 
  # In public preview, only Standard_A4_v2, Standard_A8_v2, Standard_D1_v2, Standard_D2_v2, Standard_D3_v2, Standard_D4_v2 are supported
 $AzureSSISNodeSize = "Standard_D3_v2"
@@ -346,6 +359,9 @@ $AzureSSISNodeSize = "Standard_D3_v2"
 $AzureSSISNodeNumber = 2 
 # For a Standard_D1_v2 node, 1-4 parallel executions per node are supported. For other nodes, it's 1-8.
 $AzureSSISMaxParallelExecutionsPerNode = 2 
+
+# Custom setup info
+$SetupScriptContainerSasUri = "" # OPTIONAL: SAS URI of blob container where your custom setup script and its associated files are stored
 
 # SSISDB info
 $SSISDBServerEndpoint = "<Azure SQL server name>.database.windows.net"
@@ -389,10 +405,12 @@ Set-AzureRmDataFactoryV2IntegrationRuntime  -ResourceGroupName $ResourceGroupNam
                                             -CatalogAdminCredential $serverCreds `
                                             -CatalogPricingTier $SSISDBPricingTier `
                                             -Description $AzureSSISDescription `
+                                            -Edition $AzureSSISEdition ` 
                                             -Location $AzureSSISLocation `
                                             -NodeSize $AzureSSISNodeSize `
                                             -NodeCount $AzureSSISNodeNumber `
-                                            -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode
+                                            -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
+                                            -SetupScriptContainerSasUri $SetupScriptContainerSasUri
 
 write-host("##### Starting your Azure-SSIS integration runtime. This command takes 20 to 30 minutes to complete. #####")
 Start-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `

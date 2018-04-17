@@ -1,11 +1,11 @@
 ---
-title: "Diagnosztikai naplók megtekintése az Azure Data Lake Analytics |} Microsoft Docs"
-description: "Ismerje meg, hogyan kell beállítania, és hozzáférés az Azure Data Lake analytics diagnosztikai naplók "
+title: Diagnosztikai naplók megtekintése az Azure Data Lake Analytics |} Microsoft Docs
+description: 'Ismerje meg, hogyan kell beállítania, és hozzáférés az Azure Data Lake analytics diagnosztikai naplók '
 services: data-lake-analytics
-documentationcenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
+documentationcenter: ''
+author: jasonwhowell
+ms.author: jasonh
+manager: kfile
 ms.assetid: cf5633d4-bc43-444e-90fc-f90fbd0b7935
 ms.service: data-lake-analytics
 ms.devlang: na
@@ -13,12 +13,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/12/2018
-ms.author: larryfr
-ms.openlocfilehash: e6cc5fd3d45691dbdc004f346c10d7b4568ae9aa
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: efec1e00e9c2da519028f7e6ff094a0f0876df79
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Diagnosztikai naplók elérése az Azure Data Lake Analytics
 
@@ -150,7 +149,7 @@ A naplózási és kérelem naplók strukturált JSON formátumban vannak.
 | Útvonal |Karakterlánc |Az elérési út a művelet végrehajtásának ideje |
 | RequestContentLength |int |A HTTP-kérelem a tartalom hossza |
 | ClientRequestId |Karakterlánc |Az azonosító, amely egyedileg azonosítja az ehhez a kérelemhez |
-| StartTime |Karakterlánc |Az a kiszolgáló fogadja a kérelem ideje |
+| Kezdő időpont |Karakterlánc |Az a kiszolgáló fogadja a kérelem ideje |
 | Befejezés időpontja |Karakterlánc |Az idő, ahol a kiszolgáló által küldött választ |
 
 ### <a name="audit-logs"></a>Naplók
@@ -206,7 +205,7 @@ A naplózási és kérelem naplók strukturált JSON formátumban vannak.
 | Feladat neve |Karakterlánc |A feladat a megadott neve |
 | JobRunTime |Karakterlánc |A futtatókörnyezet segítségével dolgozza fel a feladatot |
 | SubmitTime |Karakterlánc |Az idő (UTC), a feladat el lett küldve |
-| StartTime |Karakterlánc |A indításakor a feladat futtatása után küldése (az UTC) |
+| Kezdő időpont |Karakterlánc |A indításakor a feladat futtatása után küldése (az UTC) |
 | Befejezés időpontja |Karakterlánc |A feladat befejezésének időpontja |
 | Párhuzamos végrehajtás |Karakterlánc |Ez a feladat kért végzett leadásakor Data Lake Analytics egységek száma |
 
@@ -215,7 +214,7 @@ A naplózási és kérelem naplók strukturált JSON formátumban vannak.
 
 ## <a name="process-the-log-data"></a>A naplózási adatok feldolgozása
 
-Az Azure Data Lake Analytics egy minta feldolgozhatja és elemezheti a naplóadatok hogyan biztosít. A minta a található [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample).
+Az Azure Data Lake Analytics egy minta feldolgozhatja és elemezheti a naplóadatok hogyan biztosít. A minta a található [ https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample ](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample).
 
 ## <a name="next-steps"></a>További lépések
 * [Az Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)

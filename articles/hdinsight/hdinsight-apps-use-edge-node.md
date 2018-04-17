@@ -1,26 +1,24 @@
 ---
-title: "Üres peremhálózati csomópontok használata a hdinsight - Azure Hadoop-fürtök |} Microsoft Docs"
-description: "Hogyan adhat hozzá egy üres élcsomópontot ügyfélként is használható, amely majd vizsgálati és a gazdagép a HDInsight-alkalmazások HDInsight-fürtöt."
+title: Üres peremhálózati csomópontok használata a hdinsight - Azure Hadoop-fürtök |} Microsoft Docs
+description: Hogyan adhat hozzá egy üres élcsomópontot ügyfélként is használható, amely majd vizsgálati és a gazdagép a HDInsight-alkalmazások HDInsight-fürtöt.
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
 author: mumian
 tags: azure-portal
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: cdc7d1b4-15d7-4d4d-a13f-c7d3a694b4fb
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: jgao
-ms.openlocfilehash: 7c09b2aefac1248a0bad06b913a8da56e73c0e4d
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 0e5e05a1a5c084854cd911188777dedf40817227
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-empty-edge-nodes-on-hadoop-clusters-in-hdinsight"></a>Üres peremhálózati csomópontok használata a hdinsight Hadoop-fürtök
 
@@ -69,10 +67,10 @@ Miután létrehozott egy élcsomópontot, csatlakozás az élcsomóponthoz SSH h
 > * [A HDInsight MSDN fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)
 > * [http://stackoverflow.com](http://stackoverflow.com).
 >
-> Az Apache-okat használ, ha esetleg találni az Apache keresztül projekt helyek [http://apache.org](http://apache.org), például a [Hadoop](http://hadoop.apache.org/) hely.
+> Az Apache-okat használ, ha esetleg találni az Apache keresztül projekt helyek [ http://apache.org ](http://apache.org), például a [Hadoop](http://hadoop.apache.org/) hely.
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>Meglévő fürt egy élcsomópontot hozzáadása
-Ebben a szakaszban egy Resource Manager-sablon egy élcsomópontot hozzáadása egy meglévő HDInsight-fürt használatára.  A Resource Manager-sablon található [GitHub](https://azure.microsoft.com/en-us/resources/templates/101-hdinsight-linux-add-edge-node/). A Resource Manager-sablon meghívja a parancsfájlművelet https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh helyen. A parancsfájl nem más műveletet végrehajtani.  A Resource Manager-sablon a hívó parancsfájlművelet bemutatásához.
+Ebben a szakaszban egy Resource Manager-sablon egy élcsomópontot hozzáadása egy meglévő HDInsight-fürt használatára.  A Resource Manager-sablon található [GitHub](https://azure.microsoft.com/en-us/resources/templates/101-hdinsight-linux-add-edge-node/). A Resource Manager-sablon meghívja a helyen található parancsfájlművelet https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh. A parancsfájl nem más műveletet végrehajtani.  A Resource Manager-sablon a hívó parancsfájlművelet bemutatásához.
 
 **Egy üres élcsomópontot hozzáadása egy meglévő fürthöz**
 
@@ -95,7 +93,7 @@ Ebben a szakaszban egy Resource Manager-sablon egy élcsomópontot hozzáadása 
 > Ügyeljen arra, hogy a meglévő HDInsight-fürthöz az Azure erőforráscsoport kiválasztását.  Ellenkező esetben a következő üzenet jelenik "nem hajtható végre a kért művelet beágyazott erőforráson. Szülő erőforrás "&lt;ClusterName >" nem található. "
 
 ## <a name="add-an-edge-node-when-creating-a-cluster"></a>Adja hozzá egy élcsomópontot, ha a fürt létrehozása
-Ebben a szakaszban a Resource Manager-sablon létrehozása a HDInsight-fürt egy élcsomópontot a használhatja.  A Resource Manager-sablon megtalálható a [Azure gyors üzembe helyezés sablontárban](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/). A Resource Manager-sablon meghívja a parancsfájlművelet https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh helyen. A parancsfájl nem más műveletet végrehajtani.  A Resource Manager-sablon a hívó parancsfájlművelet bemutatásához.
+Ebben a szakaszban a Resource Manager-sablon létrehozása a HDInsight-fürt egy élcsomópontot a használhatja.  A Resource Manager-sablon megtalálható a [Azure gyors üzembe helyezés sablontárban](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/). A Resource Manager-sablon meghívja a helyen található parancsfájlművelet https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh. A parancsfájl nem más műveletet végrehajtani.  A Resource Manager-sablon a hívó parancsfájlművelet bemutatásához.
 
 **Egy üres élcsomópontot hozzáadása egy meglévő fürthöz**
 
@@ -132,7 +130,7 @@ Ebben a szakaszban a Resource Manager-sablon létrehozása a HDInsight-fürt egy
 
 **A Hive használata a peremhálózati csomóponton**
 
-1. Az SSH használata a csatlakozás az élcsomóponthoz. További információk: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
+1. Csatlakozzon az élcsomóponthoz SSH használatával. További információk: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 2. Az SSH használatával élcsomóponthoz csatlakoztatása után a Hive-konzolt használja a következő parancsot:
    

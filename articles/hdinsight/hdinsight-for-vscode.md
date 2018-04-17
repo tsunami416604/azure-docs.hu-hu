@@ -12,15 +12,13 @@ ms.assetid: ''
 ms.service: HDInsight
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: 8c976e5508c928943e2a5e4820f72520554f9b5d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 0074486d3d7fb58bc6e3adcbe4245ec53e7e4cde
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Az Azure HDInsight eszközök segítségével a Visual Studio Code
 
@@ -32,7 +30,7 @@ Ismerje meg, hogyan használható az Azure HDInsight Tools a Visual Studio (kód
 A következőkre lesz szükség a cikkben szereplő lépések végrehajtását:
 
 - A HDInsight-fürthöz.  Hozzon létre egy fürtöt, tekintse meg [első lépései a hdinsight eszközzel]( hdinsight-hadoop-linux-tutorial-get-started.md).
-- [A Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx).
+- [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx).
 - [Monó](http://www.mono-project.com/docs/getting-started/install/). Monó van csak a Linux és macOS szükséges.
 
 ## <a name="install-the-hdinsight-tools"></a>A HDInsight-eszközök telepítése
@@ -41,7 +39,7 @@ Az előfeltételek telepítése után telepítheti az Azure HDInsight Tools for 
 
 **Telepítse az Azure HDInsight eszközök**
 
-1. Nyissa meg a Visual Studio Code.
+1. Nyissa meg a Visual Studio Code-ot.
 
 2. A bal oldali panelen válassza ki a **bővítmények**. A keresési mezőbe, írja be a **HDInsight**.
 

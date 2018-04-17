@@ -1,13 +1,13 @@
 ---
-title: "Az Azure Functions méretezése és üzemeltetéséhez |} Microsoft Docs"
-description: "Útmutató az Azure Functions használat terv és az App Service-csomag választhat."
+title: Az Azure Functions méretezése és üzemeltetéséhez |} Microsoft Docs
+description: Útmutató az Azure Functions használat terv és az App Service-csomag választhat.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure funkciók, Funkciók, fogyasztás terv, app service-csomag, esemény feldolgozása, webhookokkal, dinamikus számítási, kiszolgáló nélküli architektúrája"
+editor: ''
+tags: ''
+keywords: Azure funkciók, Funkciók, fogyasztás terv, app service-csomag, esemény feldolgozása, webhookokkal, dinamikus számítási, kiszolgáló nélküli architektúrája
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.service: functions
 ms.devlang: multiple
@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 12/12/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5be2fe57287f816434b6d6fdf40dbbcb0dd435f4
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: a4c43477a28efe01fd197a0c09afadb338638036
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Az Azure Functions méretezése és üzemeltetéséhez
 
@@ -74,7 +74,7 @@ Ha azt tervezi, JavaScript-funkcióként futhat az App Service-csomagot, válass
 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 <a name="always-on"></a>
-###Always On
+### Always On
 
 Ha az App Service-csomagot futtatja, engedélyeznie kell a **mindig a** beállítása, hogy a függvény alkalmazás megfelelő működését. Az App Service-csomagot a functions futtatókörnyezete kerül üresjárati tétlen, néhány perc múlva, csak a HTTP-eseményindítók fogja "felébreszteni" függvényeit. Ez hasonlít hogyan WebJobs rendelkeznie kell mindig engedélyezve van. 
 
@@ -86,7 +86,7 @@ A felhasználási terv vagy az App Service-csomag a függvény az alkalmazás cs
 
 <!-- JH: Does using a PRemium Storage account improve perf? -->
 
-Tárfióktípusokat kapcsolatos további információkért lásd: [az Azure Storage szolgáltatásainak bemutatása](../storage/common/storage-introduction.md#introducing-the-azure-storage-services).
+Tárfióktípusokat kapcsolatos további információkért lásd: [az Azure Storage szolgáltatásainak bemutatása](../storage/common/storage-introduction.md#azure-storage-services).
 
 ## <a name="how-the-consumption-plan-works"></a>A felhasználási terv működése
 

@@ -3,7 +3,7 @@ title: Az Azure Cosmos DB több főkiszolgálós adatbázis architektúrák |} M
 description: További tudnivalók a helyi olvasási és írási alkalmazási architektúrákban tervezéséről Azure Cosmos DB több földrajzi régiók között.
 services: cosmos-db
 documentationcenter: ''
-author: arramac
+author: SnehaGunda
 manager: kfile
 ms.assetid: 706ced74-ea67-45dd-a7de-666c3c893687
 ms.service: cosmos-db
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2017
-ms.author: arramac
+ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 941af42561afbdf91cb3529fd51971ee88fafdbc
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 5e8853d521173a9a8d3c925361e43ce469471918
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="multi-master-globally-replicated-database-architectures-with-azure-cosmos-db"></a>Több főkiszolgálós globálisan replikált Azure Cosmos DB az adatbázis-architektúra
 Azure Cosmos DB támogatja kulcsrakész [globális replikációs](distribute-data-globally.md), amely lehetővé teszi, hogy több területre kis késleltetésű hozzáféréssel bárhol a munkaterhelési adatok terjesztése. Ebben a modellben van általánosan használt publisher/fogyasztói ahol egy-egy földrajzi régiót íróhoz és egyéb (olvasás) régiókban globálisan elosztott olvasók van. 

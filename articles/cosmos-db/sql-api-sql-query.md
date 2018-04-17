@@ -5,7 +5,7 @@ keywords: SQL-szintaxis, sql-lekérdezést, az sql-lekérdezések, json lekérde
 services: cosmos-db
 documentationcenter: ''
 author: LalithaMV
-manager: jhubbard
+manager: kfile
 editor: monicar
 ms.assetid: a73b4ab3-0786-42fd-b59b-555fce09db6e
 ms.service: cosmos-db
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: laviswa
-ms.openlocfilehash: a79b1a97909a38b4bfba06186db875d0c0c25f03
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 725dfa2e76ae03f17a17991c523e85e9c69a69ec
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="sql-queries-for-azure-cosmos-db"></a>Azure Cosmos adatbázis SQL-lekérdezések
 
@@ -360,13 +360,13 @@ A következő táblázat az SQL API bármely JSON kétféle közötti egyenlős�
             <strong>NULL értékű</strong>
          </td>
          <td valign="top">
-            <strong>Boolean</strong>
+            <strong>Logikai érték</strong>
          </td>
          <td valign="top">
             <strong>Szám</strong>
          </td>
          <td valign="top">
-            <strong>String</strong>
+            <strong>Karakterlánc</strong>
          </td>
          <td valign="top">
             <strong>Object</strong>
@@ -416,7 +416,7 @@ Meghatározatlan </td>
       </tr>
       <tr>
          <td valign="top">
-            <strong>Boolean<strong>
+            <strong>Logikai érték<strong>
          </td>
          <td valign="top">
 Meghatározatlan </td>
@@ -456,7 +456,7 @@ Meghatározatlan </td>
       </tr>
       <tr>
          <td valign="top">
-            <strong>String<strong>
+            <strong>Karakterlánc<strong>
          </td>
          <td valign="top">
 Meghatározatlan </td>
@@ -1417,21 +1417,21 @@ A matematikai funkciók végezhet a számítást, a bemeneti értékek, amelyek 
 | [NAPLÓ (num_expr [, Alap])](#bk_log) | A megadott numerikus kifejezés, vagy használja a megadott alapban logaritmusát a természetes alapú logaritmusát adja vissza |
 | [LOG10 (num_expr)](#bk_log10) | A 10-es logaritmikus a megadott numerikus kifejezés értékét adja vissza. |
 | [KEREK (num_expr)](#bk_round) | Egy numerikus érték, a legközelebbi egész értéket kerekítve adja vissza. |
-| [TRUNC (num_expr)](#bk_trunc) | Egy numerikus érték, csak az a legközelebbi egész értéket ad vissza. |
+| [CSONK (num_expr)](#bk_trunc) | Egy numerikus érték, csak az a legközelebbi egész értéket ad vissza. |
 | [SQRT (num_expr)](#bk_sqrt) | A megadott numerikus kifejezés négyzetgyökét adja vissza. |
 | [NÉGYZETES (num_expr)](#bk_square) | Kiszámítja a megadott numerikus kifejezés. |
 | [ENERGIAGAZDÁLKODÁSI (num_expr, num_expr)](#bk_power) | A megadott numerikus kifejezés power visszatér a megadott érték. |
 | [BEJELENTKEZÉSI (num_expr)](#bk_sign) | A megadott numerikus kifejezés bejelentkezési értékét (-1, 0, 1) adja vissza. |
-| [ACOS (num_expr)](#bk_acos) | A szöget adja vissza, az radiánban megadott szög, amelynek koszinusza a megadott numerikus kifejezés; más néven koszinuszát. |
+| [ARCCOS (num_expr)](#bk_acos) | A szöget adja vissza, az radiánban megadott szög, amelynek koszinusza a megadott numerikus kifejezés; más néven koszinuszát. |
 | [ARCSIN (num_expr)](#bk_asin) | A szög radiánban megadott szög, amelynek szinusza a megadott numerikus kifejezést ad vissza. Ez rövidítése szinuszát. |
 | [ATAN (num_expr)](#bk_atan) | A szög radiánban megadott szög, amelynek tangense a megadott numerikus kifejezést ad vissza. Ezt arkusz is nevezik. |
 | [ATN2 (num_expr)](#bk_atn2) | A szöget adja vissza, az x tengely pozitív és a pont (y, x), a forrásból a ray közötti radiánban ahol x és y az érték a két megadott lebegőpontos kifejezés. |
 | [COS (num_expr)](#bk_cos) | Koszinuszát trigonometric a megadott szög radiánban, a megadott kifejezésben. |
-| [COT (num_expr)](#bk_cot) | A megadott szög trigonometric kotangensét adja meg a megadott numerikus kifejezés radiánban. |
+| [TŰZ (num_expr)](#bk_cot) | A megadott szög trigonometric kotangensét adja meg a megadott numerikus kifejezés radiánban. |
 | [Fokban megadva (num_expr)](#bk_degrees) | A megfelelő szöget adja vissza, az a radiánban megadott szög fokban megadva. |
 | [PI ()](#bk_pi) | A konstans PI értékét adja vissza. |
 | [RADIÁNBAN (num_expr)](#bk_radians) | Vissza a radiánban megadott szög, ha egy numerikus kifejezés fokban, is meg kell adni. |
-| [SIN (num_expr)](#bk_sin) | Szinuszát trigonometric a megadott szög radiánban, a megadott kifejezésben. |
+| [EG (num_expr)](#bk_sin) | Szinuszát trigonometric a megadott szög radiánban, a megadott kifejezésben. |
 | [TAN (num_expr)](#bk_tan) | A bemeneti kifejezést tangensét adja vissza a megadott kifejezésben. |
 
 Például most lekérdezéseket is futtathat a következőhöz hasonló:
@@ -1471,7 +1471,7 @@ A típus ellenőrzési funkciók lehetővé teszik az SQL-lekérdezések lévő 
   <td>Azt jelzi, hogy ha az érték típusa több logikai érték beolvasása.</td>
 </tr>
 <tr>
-  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_object">IS_OBJECT (expr)</a></td>
+  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_object">IS_OBJECT (kifejezés)</a></td>
   <td>Azt jelzi, hogy ha az érték típusa egy JSON-objektum logikai érték beolvasása.</td>
 </tr>
 <tr>
@@ -1761,7 +1761,7 @@ A .NET-objektumokat és a JSON-dokumentumok közötti leképezéseket természet
 
 
 
-### <a name="linq-to-sql-translation"></a>LINQ to SQL translation
+### <a name="linq-to-sql-translation"></a>"LINQ to SQL fordítási"
 A Cosmos DB lekérdezésszolgáltató hajt végre, egy Cosmos-adatbázis SQL-lekérdezést az elérhető legjobb leképezéseket a LINQ lekérdezés. A következő leírásában feltételezzük, hogy az olvasó rendelkezik a LINQ alapszintű ismeretét.
 
 Először a típus rendszer esetében támogatott összes JSON egyszerű típusokhoz – numerikus típusok, logikai érték, karakterlánc vagy null. Ezek a JSON típusok támogatottak. A következő skaláris kifejezések használhatók.
@@ -1994,7 +1994,7 @@ A cosmos DB keresztül tesz elérhetővé erőforrásokat egy REST API-t, amely 
 
 A következő példák bemutatják, hogyan hozzon létre egy lekérdezést, és küldje el egy Cosmos-adatbázis adatbázis-fiók.
 
-### <a id="RestAPI"></a>REST API
+### <a id="RestAPI"></a>REST API-N
 Cosmos DB egy megnyitott RESTful programozási modellt biztosít a HTTP Protokollon keresztül. Adatbázis-fiókok egy Azure-előfizetés használatával telepíthető. A Cosmos DB erőforrás-modellje egy adatbázis-fiók, amelyek egy-címezhető logikai és állandó URI-k használata alatt lévő erőforrások készlete áll. Erőforráscsoport ebben a dokumentumban adatcsatornára nevezzük. Az adatbázisfiók áll az adatbázisok, mindegyike több gyűjteményt, mely szolgálna mindegyikének tartalmazza a dokumentumok, a felhasználó által megadott függvények és a más típusú erőforrások.
 
 Az alapvető interakció modell ezekkel az erőforrásokkal keresztül történik a HTTP-műveletek GET, PUT, POST és DELETE a szabványos tolmácsolási szolgáltatással. A POST műveletet egy új erőforrást, egy tárolt eljárás végrehajtása vagy egy Cosmos-adatbázis-lekérdezés kiadására szolgál. Lekérdezéseket a rendszer mindig csak olvasható műveletekhez, nincs mellékhatásokkal.

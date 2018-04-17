@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Active Directory Connect Health üzemeltetése"
-description: "Ez a cikk ismerteti a további műveleteket, miután telepítette az Azure AD Connect Health végrehajtható."
+title: Az Azure Active Directory Connect Health üzemeltetése
+description: Ez a cikk ismerteti a további műveleteket, miután telepítette az Azure AD Connect Health végrehajtható.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: karavar
 manager: mtillman
 ms.assetid: 86cc3840-60fb-43f9-8b2a-8598a9df5c94
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 98dc12a857d910e8822dcfbb61209aa9ef773f47
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: c9920857f7d1910921b4bb3771e770fb4c3a42c3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Az Azure Active Directory Connect Health üzemeltetése
 Ez a témakör ismerteti a különböző műveletek Azure Active Directory (Azure AD) Connect Health használatával végezheti el.
@@ -91,9 +91,9 @@ Amikor a szolgáltatáspéldány törölni, vegye figyelembe a következőket:
 4. Kattintson a **Törlés** gombra.
    <br><br>
 
-[//]: # (Start of RBAC section)
+[//]: # (Az RBAC szakasz elején)
 ## <a name="manage-access-with-role-based-access-control"></a>Hozzáférés kezelése a szerepköralapú hozzáférés-vezérlés
-[Szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control-configure.md) az Azure AD Connect Health hozzáférést biztosít a felhasználók és csoportok globális rendszergazdák eltérő. Az RBAC szerepkört rendel hozzá a kívánt felhasználók számára csoportok és a globális rendszergazdák a címtáron belül korlátozni mechanizmust biztosít.
+[Szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/role-assignments-portal.md) az Azure AD Connect Health hozzáférést biztosít a felhasználók és csoportok globális rendszergazdák eltérő. Az RBAC szerepkört rendel hozzá a kívánt felhasználók számára csoportok és a globális rendszergazdák a címtáron belül korlátozni mechanizmust biztosít.
 
 ### <a name="roles"></a>Szerepkörök
 Az Azure AD Connect Health támogatja a következő beépített szerepkörök:
@@ -153,7 +153,7 @@ Most már a listán szereplő felhasználók és csoportok hozzáféréssel rend
 Eltávolíthatja a felhasználó vagy egy csoportot az Azure AD Connect Health RBAC hozzáadni. Egyszerűen kattintson a jobb gombbal a felhasználót vagy csoportot, és válassza **eltávolítása**.<br>
 ![Képernyőfelvétel az Azure AD Connect Health RBAC felhasználók-ablakot, távolítsa el a kijelölt](./media/active-directory-aadconnect-health/RBAC_remove.png)
 
-[//]: # (End of RBAC section)
+[//]: # (Az RBAC szakasz)
 
 ## <a name="next-steps"></a>További lépések
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/30/2018
 ms.author: billmath
-ms.openlocfilehash: 87d349933a8daeaf8b7a4487612ad62dd2b9efc2
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: edf22ea0cfe60cb734b4339363d50af050466000
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="pim-for-azure-resources"></a>Az Azure-erőforrások PIM
 
@@ -43,7 +43,7 @@ Az Azure AD PIM a beépített Azure erőforrás-szerepköröket, valamint a egy�
 - Biztonsági és egyéb
 
 >[!NOTE]
-Felhasználók vagy a tulajdonos vagy a felhasználói hozzáférés adminisztrátora szerepkört, és, amelyek lehetővé teszik az előfizetés-kezelés az Azure AD globális rendszergazdák csoport tagjai az erőforrás-rendszergazdák. A rendszergazdák előfordulhat, hogy szerepköröket, szerepkör beállításainak konfigurálása, és tekintse át a PIM használó Azure-erőforrások hozzáférés. A lista megtekintése [beépített szerepkörök az Azure-erőforrások](../role-based-access-built-in-roles.md).
+Felhasználók vagy a tulajdonos vagy a felhasználói hozzáférés adminisztrátora szerepkört, és, amelyek lehetővé teszik az előfizetés-kezelés az Azure AD globális rendszergazdák csoport tagjai az erőforrás-rendszergazdák. A rendszergazdák előfordulhat, hogy szerepköröket, szerepkör beállításainak konfigurálása, és tekintse át a PIM használó Azure-erőforrások hozzáférés. A lista megtekintése [beépített szerepkörök az Azure-erőforrások](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="tasks"></a>Feladatok
 
@@ -193,6 +193,6 @@ Jelöljön ki a bal oldali navigációs menü a szerepkört, és válassza ki a 
 
 ## <a name="next-steps"></a>További lépések
 
-- [Beépített szerepkörök az Azure-erőforrások](../role-based-access-built-in-roles.md)
+- [Beépített szerepkörök az Azure-erőforrások](../../role-based-access-control/built-in-roles.md)
 - További tudnivalók [itt az Azure AD-szerepkörök aktiválása](../active-directory-privileged-identity-management-how-to-activate-role.md)
 - [A PIM jóváhagyási munkafolyamatok](azure-ad-pim-approval-workflow.md)

@@ -1,6 +1,6 @@
 ---
-title: "DNS-zónák és a rekordok védelme |} Microsoft Docs"
-description: "Hogyan védi a DNS-zónák és a Microsoft Azure DNS rekordhalmazok."
+title: DNS-zónák és a rekordok védelme |} Microsoft Docs
+description: Hogyan védi a DNS-zónák és a Microsoft Azure DNS rekordhalmazok.
 services: dns
 documentationcenter: na
 author: jtuliani
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2016
 ms.author: jonatul
-ms.openlocfilehash: 0b7040d6273b3a6b85cd55850d596807226b87fc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a23f5fa296be6d883229d3810e0387224b6708ff
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>DNS-zónák és rekordok védelme
 
 DNS-zónák és rekordok a fontos erőforrásokhoz. A DNS-zónához vagy akár csak egyetlen DNS-rekord törlése azt eredményezheti, hogy a teljes szolgáltatáskimaradás.  Ezért fontos, hogy a kritikus DNS-zónák és rekordok védett véletlen vagy illetéktelen módosítások ellen.
 
-Ez a cikk azt ismerteti, hogyan Azure DNS lehetővé teszi a DNS-zónák és a rekordok ilyen változások elleni védelmét.  Azure Resource Manager által biztosított két hatékony funkciókat érvénybe lépni: [szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-what-is.md) és [erőforrás zárolások](../azure-resource-manager/resource-group-lock-resources.md).
+Ez a cikk azt ismerteti, hogyan Azure DNS lehetővé teszi a DNS-zónák és a rekordok ilyen változások elleni védelmét.  Azure Resource Manager által biztosított két hatékony funkciókat érvénybe lépni: [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md) és [erőforrás zárolások](../azure-resource-manager/resource-group-lock-resources.md).
 
 ## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 
-Azure szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi, hogy a részletes hozzáféréskezelést az Azure-felhasználók, csoportok és erőforrásokat. Az RBAC használ, meg lehet adni pontosan olyan mértékű hozzáférést a felhasználóknak frissíteniük kell a munkája elvégzéséhez. Hogyan segít az RBAC-hozzáférés kezelése kapcsolatos további információkért lásd: [Mi az szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-what-is.md).
+Azure szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi, hogy a részletes hozzáféréskezelést az Azure-felhasználók, csoportok és erőforrásokat. Az RBAC használ, meg lehet adni pontosan olyan mértékű hozzáférést a felhasználóknak frissíteniük kell a munkája elvégzéséhez. Hogyan segít az RBAC-hozzáférés kezelése kapcsolatos további információkért lásd: [Mi az szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md).
 
 ### <a name="the-dns-zone-contributor-role"></a>A "DNS-zóna közreműködői" szerepkör
 
@@ -35,18 +35,18 @@ A "DNS-zóna közreműködői" szerepkör a rendszer beépített Azure által bi
 
 Tegyük fel, hogy az erőforrás csoport "myzones" Contoso Corporation öt zónák tartalmazza. A DNS-rendszergazda engedélyekkel "DNS-zóna közreműködői" erőforráscsoport, lehetővé teszi számára teljes hozzáférést adott DNS-zónák. Azt is elkerüli a szükségtelen engedélyeket ad, például a DNS-rendszergazda nem hozható létre, vagy állítsa le a virtuális gépek.
 
-A legegyszerűbb RBAC engedélyek hozzárendelése [az Azure-portálon](../active-directory/role-based-access-control-configure.md).  Az erőforráscsoport "Hozzáférés-vezérlés (IAM)" panel megnyitásához, majd kattintson a "Hozzáadás", majd válassza ki a "DNS-zóna közreműködői" szerepkör és válassza ki a szükséges felhasználók vagy csoportok olyan engedélyek megadásához.
+A legegyszerűbb RBAC engedélyek hozzárendelése [az Azure-portálon](../role-based-access-control/role-assignments-portal.md).  Az erőforráscsoport "Hozzáférés-vezérlés (IAM)" panel megnyitásához, majd kattintson a "Hozzáadás", majd válassza ki a "DNS-zóna közreműködői" szerepkör és válassza ki a szükséges felhasználók vagy csoportok olyan engedélyek megadásához.
 
 ![Erőforráscsoport szintjén RBAC az Azure-portálon](./media/dns-protect-zones-recordsets/rbac1.png)
 
-Engedélyek is lehet [kap, az Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md):
+Engedélyek is lehet [kap, az Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
 
 ```powershell
 # Grant 'DNS Zone Contributor' permissions to all zones in a resource group
 New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>"
 ```
 
-Az egyenértékű parancs egyben [elérhető az Azure parancssori felület](../active-directory/role-based-access-control-manage-access-azure-cli.md):
+Az egyenértékű parancs egyben [elérhető az Azure parancssori felület](../role-based-access-control/role-assignments-cli.md):
 
 ```azurecli
 # Grant 'DNS Zone Contributor' permissions to all zones in a resource group
@@ -63,14 +63,14 @@ Zónaszintű RBAC hozzárendelhető az Azure-portálon.  A zóna a "Hozzáféré
 
 ![DNS-zóna szintű RBAC az Azure-portálon](./media/dns-protect-zones-recordsets/rbac2.png)
 
-Engedélyek is lehet [kap, az Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md):
+Engedélyek is lehet [kap, az Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
 
 ```powershell
 # Grant 'DNS Zone Contributor' permissions to a specific zone
 New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>" -ResourceName "<zone name>" -ResourceType Microsoft.Network/DNSZones
 ```
 
-Az egyenértékű parancs egyben [elérhető az Azure parancssori felület](../active-directory/role-based-access-control-manage-access-azure-cli.md):
+Az egyenértékű parancs egyben [elérhető az Azure parancssori felület](../role-based-access-control/role-assignments-cli.md):
 
 ```azurecli
 # Grant 'DNS Zone Contributor' permissions to a specific zone
@@ -85,14 +85,14 @@ Rekordhalmaz szintű RBAC engedélyek konfigurálható az Azure-portál, a "Felh
 
 ![A rekordhalmaz szint RBAC az Azure-portálon](./media/dns-protect-zones-recordsets/rbac3.png)
 
-Rekordhalmaz szintű RBAC engedélyeket is lehet [kap, az Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md):
+Rekordhalmaz szintű RBAC engedélyeket is lehet [kap, az Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
 
 ```powershell
 # Grant permissions to a specific record set
 New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -Scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
 ```
 
-Az egyenértékű parancs egyben [elérhető az Azure parancssori felület](../active-directory/role-based-access-control-manage-access-azure-cli.md):
+Az egyenértékű parancs egyben [elérhető az Azure parancssori felület](../role-based-access-control/role-assignments-cli.md):
 
 ```azurecli
 # Grant permissions to a specific record set
@@ -133,10 +133,10 @@ A következő példa bemutatja egy egyéni biztonsági szerepkört definíciója
 
 A műveletek tulajdonság határozza meg a következő DNS-specifikus engedélyeket:
 
-* `Microsoft.Network/dnsZones/CNAME/*`teljes hozzáférést biztosít a CNAME-rekordok
-* `Microsoft.Network/dnsZones/read`engedélyt ad a DNS-zónák olvasni, de nem módosíthatók, amely lehetővé teszi, hogy a zóna, ahol a CNAME létrehozása folyamatban van.
+* `Microsoft.Network/dnsZones/CNAME/*` teljes hozzáférést biztosít a CNAME-rekordok
+* `Microsoft.Network/dnsZones/read` engedélyt ad a DNS-zónák olvasni, de nem módosíthatók, amely lehetővé teszi, hogy a zóna, ahol a CNAME létrehozása folyamatban van.
 
-A fennmaradó műveletek másolja át a [DNS-zóna közreműködői beépített szerepkör](../active-directory/role-based-access-built-in-roles.md#dns-zone-contributor).
+A fennmaradó műveletek másolja át a [DNS-zóna közreműködői beépített szerepkör](../role-based-access-control/built-in-roles.md#dns-zone-contributor).
 
 > [!NOTE]
 > Egyéni RBAC szerepkör alapján rekordhalmazok törlése közben továbbra is lehetővé teheti, hogy frissíthető nem hatékony ellenőrzése érdekében. Megakadályozza, hogy rekordhalmazok törlés alatt áll, de nem akadályozza meg azok már nem módosítható.  Engedélyezett módosítások hozzáadása és eltávolítása a bejegyzések a rekordhalmaz, beleértve az "empty" rekordhalmaz, hogy az összes rekord eltávolítását a tartalmazza. Ugyanaz, mintha egy DNS-feloldási szempontból a rekordhalmaz törlése azt.
@@ -157,9 +157,9 @@ azure role create -inputfile <file path>
 
 A szerepkör lehet hozzárendelni a beépített szerepkörök azonos módon az ebben a cikkben leírtak szerint.
 
-Létrehozására, kezelésére és egyéni szerepkörök hozzárendelése kapcsolatos további információkért lásd: [egyéni szerepkörök az Azure RBAC](../active-directory/role-based-access-control-custom-roles.md).
+Létrehozására, kezelésére és egyéni szerepkörök hozzárendelése kapcsolatos további információkért lásd: [egyéni szerepkörök az Azure RBAC](../role-based-access-control/custom-roles.md).
 
-## <a name="resource-locks"></a>Erőforrás zárolások feloldása
+## <a name="resource-locks"></a>Erőforrás-zárolások
 
 Mellett RBAC Azure Resource Manager támogatja a más típusú biztonsági ellenőrzést, nevezetesen erőforrások "lock" lehetőséget. Ahol RBAC szabályok lehetővé teszik annak vezérléséhez a műveletek a megadott felhasználók és csoportok, erőforrás zárolások lesznek alkalmazva az erőforráshoz, és összes felhasználók és szerepkörök érvényben. További információ: [Erőforrások zárolása az Azure Resource Manager eszközzel](../azure-resource-manager/resource-group-lock-resources.md).
 
@@ -217,8 +217,8 @@ Ez a második megközelítés azzal az előnnyel jár, a működését, az össz
 
 Akkor lehet egy időben, a DNS-zóna védelemre védelemmel az olyan jellegű megközelítés mindkét megközelítés - erőforrás zárolások és egyéni szerepkör - használatát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Az RBAC használatáról további információk: [Ismerkedés az Azure-portálon kezelési](../active-directory/role-based-access-control-what-is.md).
+* Az RBAC használatáról további információk: [Ismerkedés az Azure-portálon kezelési](../role-based-access-control/overview.md).
 * Működő erőforrás zárral kapcsolatos további információkért lásd: [erőforrások az Azure Resource Manager zárolása](../azure-resource-manager/resource-group-lock-resources.md).
 

@@ -1,8 +1,8 @@
 ---
-title: "Átmeneti környezet az Azure App Service web Apps beállítása |} Microsoft Docs"
-description: "Ismerje meg, előkészített közzététele az Azure App Service web Apps használatával."
+title: Átmeneti környezet az Azure App Service web Apps beállítása |} Microsoft Docs
+description: Ismerje meg, előkészített közzététele az Azure App Service web Apps használatával.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 writer: cephalin
 manager: erikre
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: a262ba335256878b03a9a2cce6f7ba6a3dae715c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c02b7a74eea6973d6ccfbc1cc59d15bfd5cb5b77
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Átmeneti környezet az Azure App Service beállítása
 <a name="Overview"></a>
@@ -30,7 +30,7 @@ A webalkalmazás, webes alkalmazás a Linux, mobil háttér és API-alkalmazás 
 * Központilag telepíthetők az alkalmazások a tárhely először és csere az éles környezetben biztosítja, hogy a összes példányát a tárolóhely Mielőtt éles környezetben felcserélés folyamatban vannak tárolóhelyspecifikus. Ez megszünteti állásidő, az alkalmazás központi telepítésekor. A forgalom átirányítása zökkenőmentes-kérelmek nem dobja swap műveletek miatt. A teljes munkafolyamat konfigurálásával automatizálható [automatikus felcserélés](#Auto-Swap) , ha nincs szükség a előtti swap érvényesítése.
 * Egy felcserélés után a tárolóhely korábban előkészített alkalmazással most már rendelkezik az előző éles alkalmazások. Ha a módosításokat, azokat az éles tárolóhelyre felcserélve nem a várt módon, közvetlenül a "utolsó ismert helyes"nevű hely eléréséhez a azonos virtuális végezhet vissza.
 
-Minden kiválasztása az App Service-csomaghoz támogatja az üzembe helyezési oszlopaik száma különböző. Tárolóhely száma megállapítása: az alkalmazás támogatja, lásd: [App Service szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/app-service/).
+Minden kiválasztása az App Service-csomaghoz támogatja az üzembe helyezési oszlopaik száma különböző. Tárolóhely száma megállapítása: az alkalmazás támogatja, lásd: [App szolgáltatásra vonatkozó korlátozások](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits#app-service-limits).
 
 * Ha az alkalmazás több tárolóhelye van, a réteg nem módosítható.
 * Skálázás nem érhető el a nem végleges pont felcserélése.

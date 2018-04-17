@@ -1,29 +1,27 @@
 ---
-title: "A HDInsight az Azure Resource Manager eszközeinek át |} Microsoft Docs"
-description: "Azure Resource Manager Fejlesztőeszközök a HDInsight-fürtök áttelepítése"
+title: A HDInsight az Azure Resource Manager eszközeinek át |} Microsoft Docs
+description: Azure Resource Manager Fejlesztőeszközök a HDInsight-fürtök áttelepítése
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
 author: nitinme
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 05efedb5-6456-4552-87ff-156d77fbe2e1
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 8ce1d6300731af5ae972675a08ef64f5c4ffa342
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: a18d045815a65953aafd690674fb9b5ce129c825
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>A Fejlesztőeszközök Azure Resource Manager-alapú HDInsight-fürtök áttelepítése
 
-A HDInsight-ból kivezettük való Azure Service Manager ASM-alapú eszközök hdinsight. Ha használta az Azure PowerShell, az Azure parancssori felület vagy a HDInsight .NET SDK a HDInsight-fürtök együttműködni, hosszúan az Azure Resource Manager ARM-alapú verziói PowerShell parancssori felület és továbbítja a .NET SDK használatával. Ez a cikk mutatók áttelepítése az új ARM-alapú módszert biztosít. Megfelelő esetben ez a cikk is rámutat, a címterület-kezelési és ARM közötti különbségekről megközelítések hdinsight.
+A HDInsight-ból kivezettük való Azure Service Manager ASM-alapú eszközök hdinsight. Ha használta az Azure PowerShell, az Azure parancssori felület vagy a HDInsight .NET SDK a HDInsight-fürtök együttműködni, hosszúan PowerShell, a parancssori felület és a .NET SDK továbbítja az Azure Resource Manager-verziót használnak. Ez a cikk mutatók áttelepítése az új Resource Manager-alapú módszert biztosít. Megfelelő esetben ez a dokumentum a HDInsight a címterület-kezelési és erőforrás-kezelő módszerek közötti különbségeket mutatja be.
 
 > [!IMPORTANT]
 > A címterület-kezelési támogatás PowerShell parancssori felület, és a .NET SDK nem küld a **2017. január 1**.
@@ -31,11 +29,11 @@ A HDInsight-ból kivezettük való Azure Service Manager ASM-alapú eszközök h
 > 
 
 ## <a name="migrating-azure-cli-to-azure-resource-manager"></a>Az Azure CLI áttelepítése az Azure Resource Manager számára
-Az Azure parancssori felület most alapértelmezés szerint az Azure Resource Managerrel (ARM) módot, kivéve, ha frissíti a korábbi telepítés; Ebben az esetben előfordulhat, hogy kell használnia a `azure config mode arm` parancs futtatásával váltson az ARM üzemmódban.
 
-Az alapszintű Azure Service Management (ASM) használatával történő együttműködésre a HDInsight az Azure parancssori felület megadott parancsok esetén ugyanazt az ARM; azonban bizonyos paraméterek és kapcsolók előfordulhat, hogy új neve lehet, és nincsenek sok új paraméter elérhető ARM használatakor. Például használhatja `azure hdinsight cluster create` a Azure virtuális hálózat, amely egy fürt, létre kell hozni, vagy Hive- és Oozie metaadattárhoz megadásához.
+> [!IMPORTANT]
+> Az Azure CLI 2.0 nem támogatják a HDInsight-fürtök használata. Továbbra is használhatja Azure CLI 1.0 a hdinsight eszközzel, azonban az Azure CLI 1.0 elavult.
 
-A HDInsight Azure Resource Manageren keresztül használatához alapvető parancsok a következők:
+A HDInsight az Azure CLI 1.0 keresztül használatához alapvető parancsok a következők:
 
 * `azure hdinsight cluster create` -hoz létre egy új HDInsight-fürt
 * `azure hdinsight cluster delete` – egy meglévő HDInsight-fürt törlése
@@ -54,7 +52,7 @@ Elérhető az Azure Resource Manager új parancsok a következők:
 * `azure hdinsight config` -parancsok biztosít a konfigurációs fájl létrehozása, amely használható a `hdinsight cluster create` parancs használatával adja meg a konfigurációs adatokat.
 
 ### <a name="deprecated-commands"></a>Elavult parancsok
-Ha használja a `azure hdinsight job` parancsok elküldeni a HDInsight-fürtjét, feladatok ezek nem állnak rendelkezésre az ARM-parancsok használatával. Ha programozottan feladatok elküldéséhez a HDInsight parancsfájlok van szüksége, helyette használja a HDInsight által biztosított REST API-k. A REST API-k használatával feladatok elküldésekor további információkért lásd a következő dokumentumokat.
+Ha használja a `azure hdinsight job` elküldeni a HDInsight-fürtjét, feladatok parancsok ezek a parancsok nem érhetők el az erőforrás-kezelő parancsok. Ha programozottan feladatok elküldéséhez a HDInsight parancsfájlok van szüksége, helyette használja a HDInsight által biztosított REST API-k. A REST API-k használatával feladatok elküldésekor további információkért lásd a következő dokumentumokat.
 
 * [Hadoop MapReduce-feladatok a HDInsight használata cURL használatával futtassa](hadoop/apache-hadoop-use-mapreduce-curl.md)
 * [A Hadoop Hive-lekérdezések futtatása a HDInsight használata cURL használatával](hadoop/apache-hadoop-use-hive-curl.md)
@@ -66,17 +64,17 @@ Információk más módjairól MapReduce futtatásához, struktúra, és interak
 **Fürt létrehozása**
 
 * Régi parancs (ASM)- `azure hdinsight cluster create myhdicluster --location northeurope --osType linux --storageAccountName mystorage --storageAccountKey <storagekey> --storageContainer mycontainer --userName admin --password mypassword --sshUserName sshuser --sshPassword mypassword`
-* Új parancs (ARM)- `azure hdinsight cluster create myhdicluster -g myresourcegroup --location northeurope --osType linux --clusterType hadoop --defaultStorageAccountName mystorage --defaultStorageAccountKey <storagekey> --defaultStorageContainer mycontainer --userName admin -password mypassword --sshUserName sshuser --sshPassword mypassword`
+* Új parancsot: `azure hdinsight cluster create myhdicluster -g myresourcegroup --location northeurope --osType linux --clusterType hadoop --defaultStorageAccountName mystorage --defaultStorageAccountKey <storagekey> --defaultStorageContainer mycontainer --userName admin -password mypassword --sshUserName sshuser --sshPassword mypassword`
 
 **A fürtök törlésével**
 
 * Régi parancs (ASM)- `azure hdinsight cluster delete myhdicluster`
-* Új parancs (ARM)- `azure hdinsight cluster delete mycluster -g myresourcegroup`
+* Új parancsot: `azure hdinsight cluster delete mycluster -g myresourcegroup`
 
 **Lista fürtök**
 
 * Régi parancs (ASM)- `azure hdinsight cluster list`
-* Új parancs (ARM)- `azure hdinsight cluster list`
+* Új parancsot: `azure hdinsight cluster list`
 
 > [!NOTE]
 > A parancs megadásával az erőforrás csoport használatával `-g` csak a fürtök ad vissza a megadott erőforráscsoportban.
@@ -86,12 +84,12 @@ Információk más módjairól MapReduce futtatásához, struktúra, és interak
 **Fürt információ megjelenítése**
 
 * Régi parancs (ASM)- `azure hdinsight cluster show myhdicluster`
-* Új parancs (ARM)- `azure hdinsight cluster show myhdicluster -g myresourcegroup`
+* Új parancsot: `azure hdinsight cluster show myhdicluster -g myresourcegroup`
 
 ## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>Az Azure PowerShell áttelepítése az Azure Resource Manager számára
-Az Azure PowerShell általános információk az Azure Resource Managerrel (ARM) módban található [az Azure PowerShell használata Azure Resource Managerrel](../powershell-azure-resource-manager.md).
+Az Azure PowerShell általános információk az Azure Resource Manager módban található [az Azure PowerShell használata Azure Resource Managerrel](../powershell-azure-resource-manager.md).
 
-Az Azure PowerShell ARM-parancsmagok telepített-mellé a címterület-kezelési parancsmagokkal is lehet. A két mód a parancsmag elkülönítsék névvel.  Az ARM üzemmódban van *AzureRmHDInsight* való hasonlítás parancsmag nevében szereplő *AzureHDInsight* a címterület-kezelési módban.  Például *New-AzureRmHDInsightCluster* vs. *New-AzureHDInsightCluster*. Paraméterek és kapcsolók hírek nevük lehet, hogy legyen, és nincsenek sok új paraméter elérhető ARM használatakor.  Például több parancsmagok szükséges nevű új kapcsoló *- ResourceGroupName*. 
+Az Azure PowerShell Resource Manager parancsmagok és a címterület-kezelési parancsmagok telepíthetők. A két mód a parancsmag elkülönítsék névvel.  A Resource Manager módra van *AzureRmHDInsight* való hasonlítás parancsmag nevében szereplő *AzureHDInsight* a címterület-kezelési módban.  Például *New-AzureRmHDInsightCluster* vs. *New-AzureHDInsightCluster*. Paraméterek és kapcsolók hírek nevük lehet, hogy legyen, és nincsenek sok új paraméter elérhető erőforrás-kezelő használata esetén.  Például több parancsmagok szükséges nevű új kapcsoló *- ResourceGroupName*. 
 
 A HDInsight-parancsmagokat használhatja, csatlakozzon az Azure-fiókjával, és az új erőforráscsoport létrehozása:
 
@@ -103,9 +101,9 @@ A HDInsight ASM-parancsmagok a Windows PowerShell-konzolban listázásához:
 
     help *azurermhdinsight*
 
-A következő táblázat a címterület-kezelési parancsmagok és a nevek a ARM üzemmódban.
+A következő táblázat a címterület-kezelési parancsmagok és a Resource Manager módra a nevek:
 
-| Címterület-kezelési parancsmagok | ARM-parancsmagok |
+| Címterület-kezelési parancsmagok | Erőforrás-kezelő parancsmagok |
 | --- | --- |
 | Add-AzureHDInsightConfigValues |[Add-AzureRmHDInsightConfigValues](https://msdn.microsoft.com/library/mt603530.aspx) |
 | Add-AzureHDInsightMetastore |[Add-AzureRmHDInsightMetastore](https://msdn.microsoft.com/library/mt603670.aspx) |
@@ -136,9 +134,9 @@ A következő táblázat a címterület-kezelési parancsmagok és a nevek a ARM
 | Wait-AzureHDInsightJob |[Wait-AzureRmHDInsightJob](https://msdn.microsoft.com/library/mt603834.aspx) |
 
 ### <a name="new-cmdlets"></a>Új parancsmagok
-Az alábbiakban az új parancsmagok, amelyek csak a ARM módban érhető el. 
+Az alábbiakban az új parancsmagok, amelyek csak erőforrás-kezelő módban érhető el. 
 
-**A kapcsolódó parancsmagok parancsfájlművelet:**
+**Parancsfájl művelet kapcsolatos parancsmagok:**
 
 * **Get-AzureRmHDInsightPersistedScriptAction**: lekérdezi a megőrzött Parancsfájlműveletek fürt és időrendben sorolja fel azokat, vagy egy megadott megőrzött parancsfájl művelet lekérdezi a részletek. 
 * **Get-AzureRmHDInsightScriptActionHistory**: a parancsfájlművelet előzményeinek lekérdezi a fürt, fordított időrendben sorolja fel, és lekérdezi a korábban végrehajtott parancsfájlművelet részleteit. 
@@ -148,12 +146,12 @@ Az alábbiakban az új parancsmagok, amelyek csak a ARM módban érhető el.
 
 További használati információkért lásd: [testreszabása Linux-alapú HDInsight-fürtök használata parancsfájlművelet](hdinsight-hadoop-customize-cluster-linux.md).
 
-**A kapcsolódó parancsmagok Clsuter identitás:**
+**A fürt identitását kapcsolatos parancsmagok:**
 
 * **Adja hozzá AzureRmHDInsightClusterIdentity**: ad hozzá egy fürt identitását egy fürt konfigurációs objektumot, hogy a HDInsight-fürt elérhessék az Azure Data Lake tárolja. Lásd: [HDInsight-fürtök létrehozása az Azure PowerShell használatával a Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md).
 
 ### <a name="examples"></a>Példák
-Fürt létrehozása
+**Fürt létrehozása**
 
 Régi parancs (ASM): 
 
@@ -170,7 +168,7 @@ Régi parancs (ASM):
         -Credential $httpCredential `
         -SshCredential $sshCredential
 
-Új parancs (ARM):
+Új parancs:
 
     New-AzureRmHDInsightCluster `
         -ClusterName $clusterName `
@@ -187,13 +185,13 @@ Régi parancs (ASM):
         -SshCredential $sshCredentials
 
 
-Fürt törlése
+**Fürt törlése**
 
 Régi parancs (ASM):
 
     Remove-AzureHDInsightCluster -name $clusterName 
 
-Új parancs (ARM):
+Új parancs:
 
     Remove-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName 
 
@@ -203,7 +201,7 @@ Régi parancs (ASM):
 
     Get-AzureHDInsightCluster
 
-Új parancs (ARM):
+Új parancs:
 
     Get-AzureRmHDInsightCluster 
 
@@ -213,7 +211,7 @@ Régi parancs (ASM):
 
     Get-AzureHDInsightCluster -Name $clusterName
 
-Új parancs (ARM):
+Új parancs:
 
     Get-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName -clusterName $clusterName
 
@@ -224,15 +222,15 @@ Régi parancs (ASM):
 * [Küldje el a Pig-feladatokhoz](hadoop/apache-hadoop-use-pig-powershell.md)
 * [Sqoop feladatok elküldéséhez](hadoop/apache-hadoop-use-sqoop-powershell.md)
 
-## <a name="migrating-to-the-arm-based-hdinsight-net-sdk"></a>Az ARM-alapú HDInsight .NET SDK áttelepítése
-Az Azure Szolgáltatáskezelés-alapú [(ASM) HDInsight .NET SDK](https://msdn.microsoft.com/library/azure/mt416619.aspx) elavult. Hosszúan használja az Azure Resource Manager-alapú [(ARM) a HDInsight .NET SDK](https://msdn.microsoft.com/library/azure/mt271028.aspx). A következő ASM-alapú HDInsight-csomagok elavulttá válnak.
+## <a name="migrating-to-the-new-hdinsight-net-sdk"></a>Az új HDInsight .NET SDK áttelepítése
+Az Azure Szolgáltatáskezelés-alapú [(ASM) HDInsight .NET SDK](https://msdn.microsoft.com/library/azure/mt416619.aspx) elavult. Hosszúan használja az Azure Resource Manager-alapú [Resource Manager-alapú HDInsight .NET SDK](https://msdn.microsoft.com/library/azure/mt271028.aspx). A következő ASM-alapú HDInsight-csomagok elavulttá válnak.
 
 * `Microsoft.WindowsAzure.Management.HDInsight`
 * `Microsoft.Hadoop.Client`
 
-Ez a témakör mutatókat biztosít a további információt az ARM-alapú SDK segítségével bizonyos feladatok elvégzéséhez.
+Ez a témakör mutatókat biztosít a további információt a Resource Manager-alapú SDK használatával bizonyos feladatok elvégzéséhez.
 
-| Hogyan... az ARM-alapú HDInsight SDK használatával | Hivatkozások |
+| Hogyan... a Resource Manager-alapú HDInsight SDK használatával | Hivatkozások |
 | --- | --- |
 | .NET SDK használatával a HDInsight-fürtök létrehozása |Lásd: [HDInsight-fürtök létrehozása .NET SDK használatával](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md) |
 | A fürt parancsfájlművelet .NET SDK-val testreszabása |Lásd: [testreszabása HDInsight Linux clusters parancsfájlművelet használatával](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-script-action) |
@@ -249,19 +247,19 @@ Ez a témakör mutatókat biztosít a további információt az ARM-alapú SDK s
 | .NET SDK használatával a HDInsight-fürtök törlése |Lásd: [törlése HDInsight-fürtök](hdinsight-administer-use-dotnet-sdk.md#delete-clusters) |
 
 ### <a name="examples"></a>Példák
-A következő példák a hogyan van egy művelet alapján történik a címterület-kezelési alapú SDK és az azzal egyenértékű kódrészletet az ARM-alapú SDK-ban.
+A következő példák a hogyan van egy művelet alapján történik a címterület-kezelési alapú SDK és az azzal egyenértékű kódrészletet a Resource Manager-alapú SDK-ban.
 
 **A fürt CRUD-ügyfél létrehozása**
 
 * Régi parancs (ASM)
   
         //Certificate auth
-        //This logs the application in using a subscription administration certificate, which is not offered in Azure Resource Manager (ARM)
+        //This logs the application in using a subscription administration certificate, which is not offered in Azure Resource Manager
   
         const string subid = "454467d4-60ca-4dfd-a556-216eeeeeeee1";
         var cred = new HDInsightCertificateCredential(new Guid(subid), new X509Certificate2(@"path\to\certificate.cer"));
         var client = HDInsightClient.Connect(cred);
-* Új parancs (ARM) (egyszerű szolgáltatás engedélyezése)
+* Új parancs (egyszerű szolgáltatás engedélyezése)
   
         //Service principal auth
         //This will log the application in as itself, rather than on behalf of a specific user.
@@ -279,7 +277,7 @@ A következő példák a hogyan van egy művelet alapján történik a címterü
         var creds = new TokenCloudCredentials(subId.ToString(), accessToken);
   
         _hdiManagementClient = new HDInsightManagementClient(creds);
-* Új parancs (ARM) (felhasználói engedélyezési)
+* Új parancs (felhasználói engedélyezési)
   
         //User auth
         //This will log the application in on behalf of the user.
@@ -317,7 +315,7 @@ A következő példák a hogyan van egy művelet alapján történik a címterü
                     };
         clusterInfo.CoreConfiguration.Add(new KeyValuePair<string, string>("config1", "value1"));
         client.CreateCluster(clusterInfo);
-* Új parancs (ARM)
+* Új parancs
   
         var clusterCreateParameters = new ClusterCreateParameters
             {
@@ -344,7 +342,7 @@ A következő példák a hogyan van egy művelet alapján történik a címterü
 * Régi parancs (ASM)
   
         client.EnableHttp(dnsName, "West US", "admin", "*******");
-* Új parancs (ARM)
+* Új parancs
   
         var httpParams = new HttpSettingsParameters
         {
@@ -359,7 +357,7 @@ A következő példák a hogyan van egy művelet alapján történik a címterü
 * Régi parancs (ASM)
   
         client.DeleteCluster(dnsName);
-* Új parancs (ARM)
+* Új parancs
   
         client.Clusters.Delete(resourceGroup, dnsname);
 

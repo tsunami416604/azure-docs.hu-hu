@@ -1,6 +1,6 @@
 ---
-title: "Az Azure lemez használata AKS"
-description: "Azure-lemezeket használata AKS"
+title: Az Azure lemez használata AKS
+description: Azure-lemezeket használata AKS
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -8,17 +8,20 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: nepeters
-ms.openlocfilehash: 36e25d7e5f1e5c6e1cf72442b73ac081810d216a
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: a6bc79d0556299634a78c5232bbab4e20810172c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="persistent-volumes-with-azure-disks"></a>Az Azure-lemezeket állandó kötetek
 
 Egy állandó kötet egy adat Kubernetes három munkaállomás-csoporttal való használatra van kiépítve tároló jelöli. Egy állandó kötet segítségével egy vagy több három munkaállomás-csoporttal, és dinamikusan vagy statikusan létesíthetők. Kubernetes állandó köteteken további információkért lásd: [Kubernetes állandó kötetek][kubernetes-volumes].
 
 Ez a dokumentum adatokat állandó kötetek használata Azure-lemezeket Azure tároló szolgáltatás (AKS)-fürtben lévő.
+
+> [!NOTE]
+> Egy Azure lemez csak a hozzáférési mód típusú ReadWriteOnce, amely lehetővé teszi az egyetlen AKS csomópont lehet csatlakoztatni. Ha kellene megosztani egy állandó köteten több csomópont között, fontolja meg [Azure fájlok][azure-files-pvc].
 
 ## <a name="built-in-storage-classes"></a>A beépített tárolókezelési osztályok
 
@@ -40,7 +43,7 @@ Egy állandó kötet jogcímet (PVC) használt automatikusan tárolási osztály
 
 Hozzon létre egy fájlt `azure-premimum.yaml`, és másolja a következő jegyzékben.
 
-Jegyezze fel, amely a `managed-premium` tárolási osztály a jegyzet szerepel, és a jogcímek kér egy lemezt `5GB` a méreténél `ReadWriteOnce` hozzáférést. 
+Jegyezze fel, amely a `managed-premium` tárolási osztály a jegyzet szerepel, és a jogcímek kér egy lemezt `5GB` a méreténél `ReadWriteOnce` hozzáférést.
 
 ```yaml
 apiVersion: v1
@@ -63,12 +66,9 @@ Az állandó kötet jogcímet létrehozása a [kubectl létrehozása] [ kubectl-
 kubectl create -f azure-premimum.yaml
 ```
 
-> [!NOTE]
-> Egy Azure lemez csak a hozzáférési mód típusú ReadWriteOnce, amely lehetővé teszi az egyetlen AKS csomópont lehet csatlakoztatni. Ha kellene megosztani egy állandó köteten több csomópont között, fontolja meg [Azure fájlok][azure-files-pvc].
-
 ## <a name="using-the-persistent-volume"></a>Az állandó kötet használata
 
-Miután az állandó kötet jogcím létrejött, és a lemez sikeresen kiépítette, egy pod hozható létre a lemez hozzáférést. A következő jegyzékfájl létrehoz egy pod az állandó kötet jogcím használó `azure-managed-disk` csatlakoztassa a lemezt az Azure a `/mnt/azure` elérési útja. 
+Miután az állandó kötet jogcím létrejött, és a lemez sikeresen kiépítette, egy pod hozható létre a lemez hozzáférést. A következő jegyzékfájl létrehoz egy pod az állandó kötet jogcím használó `azure-managed-disk` csatlakoztassa a lemezt az Azure a `/mnt/azure` elérési útja.
 
 Hozzon létre egy fájlt `azure-pvc-disk.yaml`, és másolja a következő jegyzékben.
 
@@ -96,7 +96,7 @@ Hozzon létre a fogyasztanak a [kubectl létrehozása] [ kubectl-create] parancs
 kubectl create -f azure-pvc-disk.yaml
 ```
 
-Most már rendelkezik futó pod lemezt az Azure-e csatlakoztatva a `/mnt/azure` könyvtár. Láthatja, hogy a kötet csatlakoztatási vizsgálatakor ellenőrizze a pod keresztül `kubectl describe pod mypod`.
+Most már rendelkezik futó pod lemezt az Azure-e csatlakoztatva a `/mnt/azure` könyvtár. Ez a konfiguráció látható vizsgálatakor ellenőrizze a pod keresztül `kubectl describe pod mypod`.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,25 +1,18 @@
 ---
-title: "Azure Analysis Services-kiszolgáló metrikát |} Microsoft Docs"
-description: "Útmutató: az Analysis Services-kiszolgáló metrikát az Azure-portálon."
-services: analysis-services
-documentationcenter: 
+title: Azure Analysis Services-kiszolgáló metrikát |} Microsoft Docs
+description: 'Útmutató: az Analysis Services-kiszolgáló metrikát az Azure-portálon.'
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: e82fb85e78058d03b8615ef3fbe80bbfa1ad71ed
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: b07bd41ee3aa67924256d694c1f9dadd39b038cc
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitor-server-metrics"></a>A figyelő kiszolgálói metrikák
 
@@ -32,7 +25,7 @@ További részletes diagnosztikai végrehajtásához nyomon követése teljesít
 
 1. Azure-portálon, válassza ki a **metrikák**.
 
-    ![Azure-portálon figyelése](./media/analysis-services-monitor/aas-monitor-portal.png)
+    ![Monitorozás az Azure Portalon](./media/analysis-services-monitor/aas-monitor-portal.png)
 
 2. A **elérhető**, válassza ki a mérni kívánt a diagramban fel. 
 

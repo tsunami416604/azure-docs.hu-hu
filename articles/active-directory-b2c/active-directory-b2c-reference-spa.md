@@ -11,17 +11,13 @@ ms.workload: identity
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: davidmu
-ms.openlocfilehash: ac0351ce220da5194d3a447e51185409b7368f21
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3347eac16e447091ffcaaf403e1291e2c7175a2d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-ad-b2c-single-page-app-sign-in-by-using-oauth-20-implicit-flow"></a>Az Azure AD B2C: Egyoldalas alkalmazások bejelentkezés OAuth 2.0 típusú implicit engedélyezési folyamat használatával
-
-> [!NOTE]
-> A funkció jelenleg előzetes verzió.
-> 
 
 Számos modern alkalmazások alkalmazás előtér írt elsősorban a JavaScript rendelkezik. Az alkalmazás íródik gyakran, például az AngularJS, az Ember.js vagy a Durandal keretrendszer használatával. Egyoldalas alkalmazások és más elsősorban a böngészőben futó JavaScript-alkalmazások van néhány további kihívást hitelesítéshez:
 
@@ -93,7 +89,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | response_type |Szükséges |Tartalmaznia kell `id_token` az OpenID Connect bejelentkezhet. A válasz típusa is tartalmazhatja `token`. Ha `token`, az alkalmazás azonnal fogadhat második kérést a hitelesítési végpontra nélkül hozzáférési token a hitelesítési végpontra.  Ha használja a `token` válaszának típusa, a `scope` paraméternek tartalmaznia kell egy hatókör, amely jelzi, melyik erőforrást kell a jogkivonatot bocsásson ki. |
 | redirect_uri |Ajánlott |Az átirányítási URI-t, az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszokat. Az pontosan egyeznie kell az átirányítási URI-k, a portál regisztrált azzal a különbséggel, hogy az URL-kódolású kell lennie. |
 | response_mode |Ajánlott |Meghatározza az eredményül kapott jogkivonat vissza küldése az alkalmazásnak használandó módszert.  Implicit adatfolyamok, használjon `fragment`. |
-| Hatókör |Szükséges |Hatókörök szóközökkel elválasztott listája. Egy hatókör érték azt jelzi, az Azure AD mindkét kérnek engedély. A `openid` hatókör azt jelzi, a felhasználói azonosító-jogkivonatokat formájában adatait, és jelentkezzen be a felhasználó engedélyt. (Lesz döntésről bővebben Ez a cikk több későbbi részében.) A `offline_access` hatókör megadása nem kötelező web Apps. Azt jelzi, hogy kell-e az alkalmazást egy frissítési jogkivonat hosszú élettartamú erőforrások elérése érdekében. |
+| scope |Szükséges |Hatókörök szóközökkel elválasztott listája. Egy hatókör érték azt jelzi, az Azure AD mindkét kérnek engedély. A `openid` hatókör azt jelzi, a felhasználói azonosító-jogkivonatokat formájában adatait, és jelentkezzen be a felhasználó engedélyt. (Lesz döntésről bővebben Ez a cikk több későbbi részében.) A `offline_access` hatókör megadása nem kötelező web Apps. Azt jelzi, hogy kell-e az alkalmazást egy frissítési jogkivonat hosszú élettartamú erőforrások elérése érdekében. |
 | state |Ajánlott |A kérelemhez, amely az eredmény abban is a lexikális elem szerepel érték. Bármely, a használni kívánt tartalmat karakterlánc lehet. Általában egy véletlenszerűen generált, egyedi érték használata esetén webhelyközi kérések hamisításának megakadályozása támadások megelőzése érdekében. Az állapot is kódolásához használatos a felhasználói állapot az alkalmazás információkat történt a hitelesítési kérést, mielőtt a lap, amilyenek korábban voltak a. |
 | Nonce |Szükséges |A kérelem (az alkalmazás által generált), amely megtalálható az eredményül kapott azonosító jogkivonat jogcímként szerepel érték. Az alkalmazás ezután ellenőrizheti a hitelesítési karakterláncok ismétlésének támadások mérséklése ezt az értéket. Általában értéke véletlenszerű, egyedi karakterlánc, amely segítségével azonosíthatja a kérelem forrása. |
 | p |Szükséges |A házirend végrehajtásához. Olyan házirendet, amely az Azure AD B2C bérlő létrehozása nevét. A házirend nevének értékét kell kezdődnie **b2c\_1\_**. További információkért lásd: [beépített házirendek az Azure AD B2C](active-directory-b2c-reference-policies.md). |
@@ -121,7 +117,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | access_token |A hozzáférési jogkivonat, amely az alkalmazás kéri.  A hozzáférési jogkivonat nem szabad dekódolni, vagy más módon megvizsgálni. Nem átlátszó karakterláncként kezelhető. |
 | token_type |A jogkivonat típusa érték. A csak az Azure AD támogató típus tulajdonosi. |
 | expires_in |Mennyi ideig, amely a hozzáférési jogkivonat érvénytelen (másodpercben). |
-| Hatókör |A hatókörök, amely a token érvényes. Is használhatja szerepet, amelyet a gyorsítótár jogkivonatok későbbi használatra. |
+| scope |A hatókörök, amely a token érvényes. Is használhatja szerepet, amelyet a gyorsítótár jogkivonatok későbbi használatra. |
 | id_token |Az alkalmazás által kért azonosítója jogkivonat. Az azonosító jogkivonat segítségével ellenőrzi a felhasználó identitását, és a felhasználói munkamenet elindításához. Azonosító-jogkivonatokat és azok tartalmát kapcsolatos további információkért tekintse meg a [Azure AD B2C-jogkivonatok referenciájából](active-directory-b2c-reference-tokens.md). |
 | state |Ha egy `state` paraméter szerepel a kérést, ugyanazt az értéket meg kell jelennie a válaszban. Az alkalmazás győződjön meg arról, hogy a `state` a kérelem és a válaszban szereplő értékek azonosak. |
 
@@ -203,7 +199,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | client_id |Szükséges |Az alkalmazást a hozzárendelt Alkalmazásazonosító a [Azure-portálon](https://portal.azure.com). |
 | response_type |Szükséges |Tartalmaznia kell `id_token` az OpenID Connect bejelentkezhet.  Az is előfordulhat, hogy tartalmazza a választípus `token`. Ha `token` itt, az alkalmazás azonnal fogadhat olyan hozzáférési jogkivonatot a hitelesítési végpontra, anélkül, hogy egy második kérelmet a hitelesítési végpontra. Ha használja a `token` válaszának típusa, a `scope` paraméternek tartalmaznia kell egy hatókör, amely jelzi, melyik erőforrást kell a jogkivonatot bocsásson ki. |
 | redirect_uri |Ajánlott |Az átirányítási URI-t, az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszokat. Az pontosan egyeznie kell az átirányítási URI-azonosítók regisztrálta a portálon, azzal a különbséggel, hogy az URL-kódolású kell lennie. |
-| Hatókör |Szükséges |Hatókörök szóközökkel elválasztott listája.  A jogkivonatok lekérésének tartalmazza a hatóköröket a kívánt erőforrás szükséges. |
+| scope |Szükséges |Hatókörök szóközökkel elválasztott listája.  A jogkivonatok lekérésének tartalmazza a hatóköröket a kívánt erőforrás szükséges. |
 | response_mode |Ajánlott |Megadja azt a módszert, amelynek használatával az eredményül kapott jogkivonat vissza küldése az alkalmazásnak.  Lehet `query`, `form_post`, vagy `fragment`. |
 | state |Ajánlott |A token válaszként visszaadott a kérelemben szereplő érték.  Bármely, a használni kívánt tartalmat karakterlánc lehet.  Általában egy véletlenszerűen generált, egyedi érték használata esetén webhelyközi kérések hamisításának megakadályozása támadások megelőzése érdekében.  Az állapot is kódolásához használatos a felhasználói állapot az alkalmazás információkat előtt a hitelesítési kérelmet. Például a lap vagy nézet, a felhasználó nem az. |
 | Nonce |Szükséges |A kérelem, az eredményül kapott azonosító jogkivonat jogcímként megtalálható az alkalmazás által generált szerepel érték.  Az alkalmazás ezután ellenőrizheti a hitelesítési karakterláncok ismétlésének támadások mérséklése ezt az értéket. Általában értéke véletlenszerű, egyedi karakterlánc, amely azonosítja a kérelem forrása. |
@@ -231,7 +227,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | token_type |A jogkivonat típusa mindig lesz tulajdonosi. |
 | state |Ha egy `state` paraméter szerepel a kérést, ugyanazt az értéket meg kell jelennie a válaszban. Az alkalmazás győződjön meg arról, hogy a `state` a kérelem és a válaszban szereplő értékek azonosak. |
 | expires_in |Mennyi ideig a hozzáférési jogkivonat érvénytelen (másodpercben). |
-| Hatókör |A hatókörök, amely a hozzáférési token érvényes. |
+| scope |A hatókörök, amely a hozzáférési token érvényes. |
 
 ### <a name="error-response"></a>Hibaválaszba
 Hibaválaszok is küldhetők az átirányítási URI-t, hogy az alkalmazás képes kezelni őket megfelelően.  A `prompt=none`, várt hiba néz ki:

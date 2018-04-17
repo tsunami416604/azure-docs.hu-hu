@@ -1,25 +1,23 @@
 ---
-title: "Hibaelhárítás YARN Azure HDInsight segítségével |} Microsoft Docs"
-description: "Az Apache Hadoop yarn rendszerre és az Azure HDInsight kapcsolatos gyakori kérdésekre adott válaszok."
-keywords: "Az Azure HDInsight, YARN, gyakori kérdések hibaelhárítási útmutatója, gyakori kérdések"
+title: Hibaelhárítás YARN Azure HDInsight segítségével |} Microsoft Docs
+description: Az Apache Hadoop yarn rendszerre és az Azure HDInsight kapcsolatos gyakori kérdésekre adott válaszok.
+keywords: Az Azure HDInsight, YARN, gyakori kérdések hibaelhárítási útmutatója, gyakori kérdések
 services: Azure HDInsight
 documentationcenter: na
 author: arijitt
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: F76786A9-99AB-4B85-9B15-CA03528FC4CD
-ms.service: multiple
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
 ms.date: 11/2/2017
 ms.author: arijitt
-ms.openlocfilehash: fbcb4807aa7f6a3d6227cd630c77714c4d2834b3
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 338d678fb31a86046b8bc6424d0e8aac2de1a0c5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-yarn-by-using-azure-hdinsight"></a>Hibaelhárítás YARN Azure HDInsight segítségével
 
@@ -28,7 +26,7 @@ A legfőbb problémákat és azok megoldásait ismerje meg az Apache Ambari az A
 ## <a name="how-do-i-create-a-new-yarn-queue-on-a-cluster"></a>Hogyan hozzon létre egy új YARN várólistát egy fürtön?
 
 
-### <a name="resolution-steps"></a>Megoldási lépések 
+### <a name="resolution-steps"></a>A megoldás lépései 
 
 Ambari az alábbi lépések segítségével hozzon létre egy új YARN várólistát, majd válassza az között az összes várólistán kapacitás lefoglalása egyenleg. 
 
@@ -73,7 +71,7 @@ A módosítások azonnal a YARN Feladatütemező felhasználói felület az lát
 ## <a name="how-do-i-download-yarn-logs-from-a-cluster"></a>Hogyan le a YARN naplóit fürtből?
 
 
-### <a name="resolution-steps"></a>Megoldási lépések 
+### <a name="resolution-steps"></a>A megoldás lépései 
 
 1. Csatlakozás egy Secure Shell (SSH) ügyfél segítségével a HDInsight-fürthöz. További információkért lásd: [További olvasnivaló](#additional-reading-2).
 

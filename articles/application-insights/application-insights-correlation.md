@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Application Insights Telemetria korrelációs |} Microsoft Docs"
-description: "Application Insights telemetria korrelációs"
+title: Az Azure Application Insights Telemetria korrelációs |} Microsoft Docs
+description: Application Insights telemetria korrelációs
 services: application-insights
 documentationcenter: .net
 author: SergeyKanzhelev
@@ -10,13 +10,13 @@ ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/25/2017
+ms.date: 04/09/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5d4abbf8194d633305877275e3dd273352906ad3
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9adecca35524962402d46169c531d135d0772bbd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Az Application Insights telemetria korrelációs
 
@@ -53,12 +53,12 @@ Lekérdezés eredményeként kapott telemetriai elemezheti:
 
 Az eredmény nézet vegye figyelembe, hogy az összes telemetriai elemet a legfelső szintű közös a `operation_Id`. A lap – új egyedi azonosító ajax hívás esetén készült `qJSXU` hozzá van rendelve a függőségi telemetria pageView tartozó azonosító vettük `operation_ParentId`. Viszont a kiszolgálói kérelem használja ajax tartozó azonosítója `operation_ParentId`stb.
 
-| itemType   | név                      | id           | operation_ParentId | operation_Id |
+| ItemType   | név                      | id           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | pageView   | A rendszer lap                |              | STYz               | STYz         |
 | függőség | GET/Home/Stock           | qJSXU        | STYz               | STYz         |
 | Kérelem    | GET otthoni/Stock            | KqKwlrSt9PA= | qJSXU              | STYz         |
-| függőség | GET /api/stock/value      | bBrf2L7mm2g= | KqKwlrSt9PA=       | STYz         |
+| függőség | /Api/stock/value beolvasása      | bBrf2L7mm2g= | KqKwlrSt9PA=       | STYz         |
 
 Most amikor a hívás `GET /api/stock/value` meg szeretné ismerni, hogy a kiszolgáló identitásának egy külső szolgáltatáshoz. Amelyen beállíthatja `dependency.target` megfelelően mezőben. Ha a külső szolgáltatás nem támogatja a figyelési - `target` értéke például a szolgáltatás állomásneve `stock-prices-api.com`. Azonban ha a szolgáltatás azonosítja magát vissza egy előre meghatározott HTTP-fejléc - `target` tartalmaz, amely lehetővé teszi, hogy a szolgáltatás telemetriai lekérdezésével elosztott nyomkövetési létrehozásához az Application Insights szolgáltatás identitásának. 
 
@@ -103,6 +103,31 @@ Az ASP.NET Core 2.0 támogatja a HTTP-fejlécek és az új tevékenység indít�
 Nincs új Http-modulja [Microsoft.AspNet.TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/) az ASP.NET klasszikus. Ebben a modulban telemetriai korrelációs DiagnosticsSource használatával. A bejövő kérelem fejlécek alapján tevékenység elindul. Emellett a különböző szakaszaiban a kérelem feldolgozása a telemetriai adatok ad eredményül. Még a az esetekben, amikor fut az IIS feldolgozó minden szakasza egy másik kezelése szálak.
 
 Application Insights SDK kezdési verzió `2.4.0-beta1` gyűjthet, és rendelje hozzá azt az aktuális tevékenység DiagnosticsSource és a tevékenység használja. 
+
+<a name="java-correlation"></a>
+## <a name="telemetry-correlation-in-the-java-sdk"></a>A Java SDK-ban a telemetria korrelációs
+A [Application Insights Java SDK](app-insights-java-get-started.md) támogatja az automatikus korrelációs telemetriai kezdetének verziójával `2.0.0`. Automatikusan feltölti `operation_id` a kérelem hatókörén belül kiadott összes telemetriai (nyomkövetések, kivételek, egyéni események, stb.). Azt is gondoskodik a korrelációs fejléceket (lásd fent) a szolgáltatások közötti hívások HTTP Protokollon keresztül propagálása Ha a [Java SDK ügynök](app-insights-java-agent.md) van konfigurálva. Megjegyzés: a korrelációs funkció csak az Apache HTTP-ügyfél keresztül hívások támogatottak. Rugó Rest-sablon vagy Feign használata, ha mindkét használható Apache HTTP-ügyfél alatt a technikai részletek.
+
+Automatikus környezetben propagálás üzenetkezelési technológiák (például Kafka, RabbitMQ, Azure Service Bus) keresztül jelenleg nem támogatott. Azonban lehetséges, azonban kézzel jelöléssel ilyen forgatókönyvek például használatával történő a `trackDependency` és `trackRequest` API, amellyel egy függőségi telemetria egy üzenetet a várólistában levő a gyártó által éppen és a kérelem a fogyasztó által feldolgozott üzenet jelenti. Ebben az esetben is `operation_id` és `operation_parentId` kell terjeszteni az üzenet tulajdonságai.
+
+<a name="java-role-name"></a>
+### <a name="role-name"></a>Szerepkör neve
+Esetenként, érdemes jelennek meg az összetevő neve testreszabhatja a [alkalmazás-hozzárendelés](app-insights-app-map.md). Ehhez az szükséges, kézzel is beállíthatja a `cloud_roleName` a következő tevékenységek végrehajtásával:
+
+A telemetriai adatok inicializáló (összes telemetriai elemet címkézett) keresztül
+```Java
+public class CloudRoleNameInitializer extends WebTelemetryInitializerBase {
+
+    @Override
+    protected void onInitializeTelemetry(Telemetry telemetry) {
+        telemetry.getContext().getTags().put(ContextTagKeys.getKeys().getDeviceRoleName(), "My Component Name");
+    }
+  }
+```
+Keresztül a [környezetben eszközosztályt](https://docs.microsoft.com/et-ee/java/api/com.microsoft.applicationinsights.extensibility.context._device_context) (csak az telemetriai elem címkézett)
+```Java
+telemetry.getContext().getDevice().setRoleName("My Component Name");
+```
 
 ## <a name="next-steps"></a>További lépések
 

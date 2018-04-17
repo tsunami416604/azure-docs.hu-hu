@@ -1,6 +1,6 @@
 ---
 title: Azure verem nyilvános kulcsokra épülő infrastruktúrát tanúsítványok integrált Azure verem rendszerek telepítés ellenőrzéséhez |} Microsoft Docs
-description: Az Azure verem PKI-tanúsítványok integrált Azure verem rendszerekhez ellenőrzését ismerteti.
+description: Az Azure verem PKI-tanúsítványok integrált Azure verem rendszerekhez ellenőrzését ismerteti. Ismerteti az Azure verem tanúsítvány ellenőrző eszközének használatával.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,171 +11,164 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 04/11/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 0bdadadb1f4ee5f76cde9d05b11e8d57b99ac191
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: cd917165804314f6ee4ee006e3f29263d8d4b4c5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>Azure verem PKI-tanúsítványok ellenőrzése
 
-A Azure verem tanúsítvány-ellenőrző eszközt, a cikkben a deploymentdata.json fájlt mellékelt ellenőrizni fogja az, hogy az OEM által biztosított a [generált PKI-tanúsítványok](azure-stack-get-pki-certs.md) alkalmasak a központi telepítés előtti. Tanúsítványok kell ellenőriznie az elegendő időt tesztelése, és újra ki bocsátani, ha a szükséges tanúsítványokat.
+A jelen cikkben ismertetett Azure verem készültségi ellenőrző eszköz [a PowerShell-galériából](https://aka.ms/AzsReadinessChecker). Az eszköz segítségével ellenőrizze, hogy a [generált PKI-tanúsítványok](azure-stack-get-pki-certs.md) alkalmasak a központi telepítés előtti. Tesztelje, majd újból kiadja azokat tanúsítványokat, szükség esetén elegendő időt távozó ellenőriznie kell a tanúsítványokat.
 
-A tanúsítvány-ellenőrző eszközt (Certchecker) a következő műveleteket hajtja végre:
+A készenléti-ellenőrző eszközt hajtja végre a következő tanúsítvány ellenőrzések:
 
-- **Olvassa el a PFX**. Ellenőrzi, hogy érvényes PFX-fájl helyes jelszót, és figyelmezteti, ha nyilvános információ nem védi jelszó. 
-- **Aláírási algoritmus**. Ellenőrzi, hogy az aláírási algoritmus nincs SHA1.
-- **Titkos kulcs**. Ellenőrzi a titkos kulcs található, és exportálja a helyi számítógép attribútummal. 
-- **Tanúsítványlánc**. Ellenőrzi tanúsítványlánc tact önaláírt tanúsítványokat is beleértve. 
-- **DNS-nevek**. A SAN tartalmaz minden végpontra vonatkozó DNS-neveit, vagy egy támogatása jelen-e helyettesítő ellenőrzi. 
-- **Kulcshasználat**. Ellenőrzi, kulcshasználat a digitális aláírás és kulcstitkosítás tartalmaz, és a kibővített kulcshasználat tartalmazza a kiszolgáló hitelesítése és ügyfél-hitelesítéshez.
-- **Kulcsméret**. Ellenőrzi a kulcs mérete pedig 2048 vagy nagyobb.
-- **Tanúsítványlánc rendelés**. Ellenőrzi, hogy a más tanúsítványokat, így a lánc sorrendjének helyes-e.
-- **Más tanúsítványok**. Gondoskodjon arról, hogy nincs más tanúsítványok van csomagolva, PFX nem a megfelelő levéltanúsítvány vagy láncában.
-- **Nincs profil**. Ellenőrzi, hogy egy új felhasználó be tudják tölteni a PFX-adatainak nélkül a felhasználói profil betöltése, a csoportosan felügyelt szolgáltatásfiók fiókok viselkedését mimicking tanúsítvány karbantartás során.
+- **Olvassa el a PFX**  
+    Érvényes PFX-fájl helyes jelszót keres, és figyelmeztet, ha nyilvános információ nem védi jelszó. 
+- **Aláírási algoritmus**  
+    Ellenőrzi, hogy az aláírási algoritmus nem SHA1.
+- **Titkos kulcs**  
+    Ellenőrzi, hogy a titkos kulcs létezik-e, és exportálja a helyi számítógép attribútummal. 
+- **Tanúsítványlánc**  
+    Ellenőrzések tanúsítványlánc érintetlen is, hogy önaláírt tanúsítványokat.
+- **DNS-nevek**  
+    A SAN tartalmaz minden végpontra vonatkozó DNS-neveit, vagy egy támogatása jelen-e helyettesítő ellenőrzi.
+- **Kulcshasználat**  
+    Ellenőrzi, ha a kulcshasználat a digitális aláírás és kulcstitkosítás tartalmaz, és a kibővített kulcshasználathoz tartalmazza a kiszolgáló hitelesítése és ügyfél-hitelesítéshez.
+- **Kulcs mérete**  
+    Ellenőrzi, hogy a kulcs mérete 2048 vagy nagyobb.
+- **Lánc sorrendje**  
+    Ellenőrzi az ellenőrzése, hogy helyes-e a sorrendet, az egyéb tanúsítványok sorrendjét.
+- **Más tanúsítványok**  
+    Gondoskodjon arról, hogy nincs más tanúsítványok van csomagolva, PFX nem a megfelelő levéltanúsítvány vagy láncában.
 
 > [!IMPORTANT]  
-> A PKI-tanúsítvány PFX-fájlt és a jelszó bizalmas adatokat kell kezelni.
+> A PKI-tanúsítványt egy PFX-fájlt, és jelszót kell tekinteni a bizalmas adatokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
-A rendszer Azure Alkalmazásveremben üzembe PKI-tanúsítványok érvényesítése előtt kell felelnie a következő előfeltételek teljesülését:
-- CertChecker (a **PartnerToolKit** alatt **\utils\certchecker**)
+
+A rendszer meg kell felelnie a következő előfeltételek PKI-tanúsítványok telepítését bemutató Azure verem érvényesítése előtt:
+
+- A Microsoft Azure verem készültségének ellenőrzése
 - A következő exportált SSL tanúsítvány(ok) a [utasítások előkészítése](azure-stack-prepare-pki-certs.md)
 - DeploymentData.json
 - Windows 10 vagy Windows Server 2016
 
 ## <a name="perform-certificate-validation"></a>Végzehessenek a tanúsítványérvényesítést
 
-Használja ezeket a lépéseket az Azure verem PKI-tanúsítványok ellenőrzése: 
+Előkészítéséhez és az Azure verem PKI-tanúsítványok érvényesítéséhez, tegye a következőket:
 
-1. Bontsa ki a tartalmát <partnerToolkit>egy új mappába, például \utils\certchecker **c:\certchecker**.
+1. AzsReadinessChecker telepíthessenek egy PowerShell-parancssorba (5.1-es vagy újabb), a következő parancsmagot:
 
-2. Nyissa meg a Powershellt rendszergazdaként, és módosítsa a könyvtárat a certchecker mappába:
+    ````PowerShell  
+        Install-Module Microsoft.AzureStack.ReadinessChecker 
+    ````
 
-  ```powershell
-  cd c:\certchecker
-  ```
- 
-3. A tanúsítványok könyvtárstruktúra létrehozása a következő PowerShell-parancsok futtatásával:
+2. A tanúsítvány könyvtárstruktúrát létrehozása. Az alábbi példában a módosíthatja `<c:\certificates>` számára az Ön által választott az új elérési utat.
 
-  ```powershell 
-  $directories = "ACS","ADFS","Admin Portal","ARM Admin","ARM Public","Graph","KeyVault","KeyVaultInternal","Public Portal" 
-  $destination = '.\certs' 
-  $directories | % { New-Item -Path (Join-Path $destination $PSITEM) -ItemType Directory -Force}  
-  ```
+    ````PowerShell  
+    New-Item C:\Certificates -ItemType Directory
 
-  >  [!NOTE]
-  >  Ha az identitásszolgáltató az Azure Alkalmazásveremben üzembe az Azure AD, távolítsa el a **az AD FS** és **Graph** könyvtárak. 
+    $directories = 'ACSBlob','ACSQueue','ACSTable','ADFS','Admin Portal','ARM Admin','ARM Public','Graph','KeyVault','KeyVaultInternal','Public Portal' 
 
-4. Az (oka) t, például az előző lépésben létrehozott megfelelő könyvtárak. hely: 
-  - c:\certchecker\Certs\ACS\CustomerCertificate.pfx,  
-  - c:\certchecker\Certs\Admin Portal\CustomerCertificate.pfx  
-  - c:\certchecker\Certs\ARM Admin\CustomerCertificate.pfx  
-  - és így tovább... 
+    $destination = 'c:\certificates' 
 
-5. Másolás **deploymentdata.json** azokat a **c:\certchecker** könyvtár.
+    $directories | % { New-Item -Path (Join-Path $destination $PSITEM) -ItemType Directory -Force}  
+    ````
 
-6. A PowerShell-ablakban futtassa az alábbi parancsokat: 
+ - A megfelelő könyvtár az előző lépésben létrehozott helyezze el az (oka) t. Példa:  
+    - c:\certificates\ACSBlob\CustomerCertificate.pfx 
+    - c:\certificates\Certs\Admin Portal\CustomerCertificate.pfx 
+    - c:\certificates\Certs\ARM Admin\CustomerCertificate.pfx 
+    - és így tovább... 
 
-  ```powershell
-  $password = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
-  .\CertChecker.ps1 -CertificatePath .\Certs\ -pfxPassword $password -deploymentDataJSONPath .\DeploymentData.json  
-  ```
+3. A PowerShell-ablakban futtassa:
 
-7. A kimeneti összes tanúsítvány és az összes attribútum be van jelölve OK tartalmaznia kell: 
+    ````PowerShell  
+    $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString
 
-  ```powershell
-  Starting Azure Stack Certificate Validation 1.1802.221.1
-  Testing: ADFS\ContosoSSL.pfx
-    Read PFX: OK
-    Signature Algorithm: OK
-    Private Key: OK
-    Cert Chain: OK
-    DNS Names: OK
-    Key Usage: OK
-    Key Size: OK
-    Chain Order: OK
-    Other Certificates: OK
-    No Profile: OK
-  Testing: KeyVaultInternal\ContosoSSL.pfx
-    Read PFX: OK
-    Signature Algorithm: OK
-    Private Key: OK
-    Cert Chain: OK
-    DNS Names: OK
-    Key Usage: OK
-    Key Size: OK
-    Chain Order: OK
-    Other Certificates: OK
-    No Profile: OK
-  Testing: ACS\ContosoSSL.pfx
-  WARNING: Pre-1803 certificate structure. The folder structure for Azure Stack 1803 and above is: ACSBlob, ACSQueue, ACSTable instead of ACS folder. Refer to deployment documentation for further informat
-  ion.
-    Read PFX: OK
-    Signature Algorithm: OK
-    Private Key: OK
-    Cert Chain: OK
-    DNS Names: OK
-    Key Usage: OK
-    Key Size: OK
-    Chain Order: OK
-    Other Certificates: OK
-    No Profile: OK
-  Detailed log can be found C:\CertChecker\CertChecker.log 
-  ```
+    Start-AzsReadinessChecker -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD
+    ````
 
-### <a name="known-issues"></a>Ismert problémák 
-**Jelenség**: Certchecker túl korán kilép, és a következő hibaüzenetet kapja: 
-> Meghiúsult
+4. Tekintse át a kimenetet, ellenőrizheti, hogy a tanúsítványok átadott a tesztet. Példa:
 
-> Részletek: Ez a parancs nem futtatható, a hiba miatt: A könyvtár neve érvénytelen. 
+    ````PowerShell
+    AzsReadinessChecker v1.1803.405.3 started
+    Starting Certificate Validation
 
-**OK**: certchecker.ps1 például korlátozó mappából, fut, a c:\temp vagy a % temp % 
+    Starting Azure Stack Certificate Validation 1.1803.405.3
+    Testing: ARM Public\ssl.pfx
+        Read PFX: OK
+        Signature Algorithm: OK
+        Private Key: OK
+        Cert Chain: OK
+        DNS Names: OK
+        Key Usage: OK
+        Key Size: OK
+        Chain Order: OK
+        Other Certificates: OK
+    Testing: ACSBlob\ssl.pfx
+        Read PFX: OK
+        Signature Algorithm: OK
+        Private Key: OK
+        Cert Chain: OK
+        DNS Names: OK
+        Key Usage: OK
+        Key Size: OK
+        Chain Order: OK
+        Other Certificates: OK
+    Detailed log can be found C:\AzsReadinessChecker\CertificateValidation\CertChecker.log
 
-**Megoldási**: a certchecker eszköz áthelyezése új könyvtárba, például C:\CertChecker 
+    Finished Certificate Validation
 
+    AzsReadinessChecker Log location: C:\AzsReadinessChecker\AzsReadinessChecker.log
+    AzsReadinessChecker Report location (for OEM): C:\AzsReadinessChecker\AzsReadinessReport.json
+    AzsReadinessChecker Completed
+    ````
 
-**Jelenség**: Certchecker figyelmeztetést előtti-1803 használatáról (ahogy a fenti példában a 7. lépés):
-
-> [!WARNING]
-> Előre-1803 tanúsítvány szerkezete. A mappa Azure verem 1803 szerkezetének vagy újabb verzió: ACSBlob, ACSQueue, ACSTable ACS mappa helyett. További információ a központi telepítési dokumentációjában talál.
-
-**OK**: így megfelelő központi telepítés előtt 1803 észlelt CertChecker egyetlen ACS-mappa használatát. Azure verem verziójához 1803 és központi telepítések fent a gyökérmappa-szerkezetében ACSTable, ACSQueue, ACSBlob módosításait. Certchecker már frissítve van ez a funkció támogatásához.
-
-**Megoldási**: Ha 1802 üzembe, intézkedés nem szükséges. Ha 1803 üzembe és újabb, cserélje le az ACS ACSTable, ACSQueue, ACSBlob, és az ACS tanúsítvány(ok) másolja a mappákat.
+### <a name="known-issues"></a>Ismert problémák
 
 **Jelenség**: kimarad a tesztek
 
-**OK**: CertChecker kihagyja bizonyos teszteket, ha egy függőség nem teljesül:
-- Más tanúsítványok kimarad a tanúsítványlánc meghibásodásakor.
-- Ha a rendszer kihagyja a profil:
-  - Nincs olyan korlátozzák az ideiglenes felhasználó létrehozása, és a powershell futtatásához, hogy a felhasználó biztonsági házirenddel.
-  - Titkos kulcs az ellenőrzés sikertelen.
+**OK**: AzsReadinessChecker kihagyja bizonyos teszteket, ha egy függőség nem teljesül:
 
-**Megoldási**: eszközök kövessék a teszteket hajtson végre minden tanúsítvány részletei szakaszában.
+ - Más tanúsítványok kimarad a tanúsítványlánc meghibásodásakor.
 
+    ````PowerShell  
+    Testing: ACSBlob\singlewildcard.pfx
+        Read PFX: OK
+        Signature Algorithm: OK
+        Private Key: OK
+        Cert Chain: OK
+        DNS Names: Fail
+        Key Usage: OK
+        Key Size: OK
+        Chain Order: OK
+        Other Certificates: Skipped
+    Details:
+    The certificate records '*.east.azurestack.contoso.com' do not contain a record that is valid for '*.blob.east.azurestack.contoso.com'. Please refer to the documentation for how to create the required certificate file.
+    The Other Certificates check was skipped because Cert Chain and/or DNS Names failed. Follow the guidance to remediate those issues and recheck. 
+    Detailed log can be found C:\AzsReadinessChecker\CertificateValidation\CertChecker.log
 
-## <a name="prepare-deployment-script-certificates"></a>Készítse elő a telepítési parancsfájl tanúsítványok 
-Utolsó lépésként összes tanúsítvány előkészítése után kell lenniük a központi telepítés gazdagépen megfelelő könyvtárak. A központi telepítés állomáson hozzon létre egy nevű mappát. Tanúsítványok ** és helye az exportált tanúsítványt a megadott almappáiban adatbázisfájlok a [kötelező tanúsítványok](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs#mandatory-certificates) szakasz:
+    Finished Certificate Validation
 
-```
-\Certificates
-\ACS\ssl.pfx
-\Admin Portal\ssl.pfx
-\ARM Admin\ssl.pfx
-\ARM Public\ssl.pfx
-\KeyVault\ssl.pfx
-\KeyVaultInternal\ssl.pfx
-\Public Portal\ssl.pfx
-\ADFS\ssl.pfx*
-\Graph\ssl.pfx*
-```
+    AzsReadinessChecker Log location: C:\AzsReadinessChecker\AzsReadinessChecker.log
+    AzsReadinessChecker Report location (for OEM): C:\AzsReadinessChecker\AzsReadinessChecker.log
+    AzsReadinessChecker Completed
+    ````
 
-<sup>*</sup> A tanúsítványok csillaggal jelölt * csak van szükség, ha az AD FS használva identity.
+**Megoldási**: kövesse az eszköz útmutató alapján minden egyes tanúsítvány teszteket hajtson végre a Részletek területen.
 
+## <a name="using-validated-certificates"></a>Ellenőrzött tanúsítványok használatával
+
+Ha a tanúsítványok érvényesítése a AzsReadinessChecker által készen áll is használhatja őket az Azure Alkalmazásveremben üzembe, vagy Azure verem titkos elforgatási. 
+
+ - Üzembe helyezés esetén biztonságos átvitelére a tanúsítványok a központi telepítés szakértőnek, hogy a megadott központi telepítési gazdagép-kiszolgálóra átmásolhatók a [Azure verem nyilvános kulcsokra épülő infrastruktúra követelményei dokumentáció](azure-stack-pki-certs.md).
+ - Titkos elforgatás, használhatja a tanúsítványok következő Azure verem környezetét nyilvános infrastruktúra végpontok régi tanúsítványok frissítése a [Azure verem titkos Elforgatás dokumentáció](azure-stack-rotate-secrets.md).
 
 ## <a name="next-steps"></a>További lépések
+
 [Datacenter identitásintegráció](azure-stack-integrate-identity.md)

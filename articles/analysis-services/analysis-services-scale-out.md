@@ -1,24 +1,18 @@
 ---
-title: "Az Azure Analysis Services kibővített |} Microsoft Docs"
-description: "A kibővített Azure Analysis Services-kiszolgálók replikálása"
-services: analysis-services
-documentationcenter: 
+title: Az Azure Analysis Services kibővített |} Microsoft Docs
+description: A kibővített Azure Analysis Services-kiszolgálók replikálása
 author: minewiskan
-manager: erikre
-editor: 
-ms.assetid: 
+manager: kfile
 ms.service: analysis-services
-ms.workload: data-management
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: d00f6bbc285cca028f22ced69ad03d8a2814d76a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: 6a340cb3d73e0aaa86a5b7beb555133daed39d8b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-analysis-services-scale-out"></a>Az Azure Analysis Services kibővített
 
@@ -79,7 +73,7 @@ Használja a **szinkronizálási** műveletet.
 `GET https://<region>.asazure.windows.net/servers/<servername>:rw/models/<modelname>/sync`
 
 ### <a name="powershell"></a>PowerShell
-PowerShell, a szinkronizálási futtatásához [frissítése a legújabb](https://github.com/Azure/azure-powershell/releases) 5.01 vagy magasabb AzureRM modul. Use [Sync-AzureAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance).
+PowerShell, a szinkronizálási futtatásához [frissítése a legújabb](https://github.com/Azure/azure-powershell/releases) 5.01 vagy magasabb AzureRM modul. Használjon [Sync-AzureAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance).
 
 ## <a name="connections"></a>Kapcsolatok
 

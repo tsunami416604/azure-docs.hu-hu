@@ -1,11 +1,11 @@
 ---
-title: "Adja hozzá a tulajdonosok és a felhasználók a Azure DevTest Labs szolgáltatásban |} Microsoft Docs"
-description: "Adja hozzá a tulajdonosok és a felhasználók a Azure DevTest Labs szolgáltatásban az Azure-portálon vagy a PowerShell használatával"
+title: Adja hozzá a tulajdonosok és a felhasználók a Azure DevTest Labs szolgáltatásban |} Microsoft Docs
+description: Adja hozzá a tulajdonosok és a felhasználók a Azure DevTest Labs szolgáltatásban az Azure-portálon vagy a PowerShell használatával
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: craigcaseyMSFT
 manager: douge
-editor: 
+editor: ''
 ms.assetid: 4f51d9a5-2702-45f0-a2d5-a3635b58c416
 ms.service: devtest-lab
 ms.workload: na
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: v-craic
-ms.openlocfilehash: 348952626e13b9ac73ca2ec8e101bf02e416dc9b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d0fdd8441143e2d2eb49399a10dc12d38fbf6823
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Adja hozzá a tulajdonosok és a felhasználók a Azure DevTest Labs szolgáltatásban
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
 > 
 > 
 
-Hozzáférés az Azure DevTest Labs vezérli [átruházásához hozzáférés-vezérlés (RBAC)](../active-directory/role-based-access-control-what-is.md). Szerepalapú használ, akkor is elkülönítse azon belül a csapat a *szerepkörök* ahol engedélyezheti, hogy csak olyan mértékű hozzáférést a felhasználóknak a feladataik elvégzéséhez szükséges. Közül három ezeket az RBAC-szerepkörök *tulajdonos*, *DevTest Labs felhasználói*, és *közreműködő*. Ebből a cikkből megismerheti milyen műveletek is elvégezhetők a három fő RBAC-szerepkörök. Ott megismerheti a felhasználók felvétele egy tesztlabor - mind a portálon keresztül egy PowerShell-parancsfájlt, és felhasználók hozzáadása az előfizetés szintjén.
+Hozzáférés az Azure DevTest Labs vezérli [átruházásához hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md). Szerepalapú használ, akkor is elkülönítse azon belül a csapat a *szerepkörök* ahol engedélyezheti, hogy csak olyan mértékű hozzáférést a felhasználóknak a feladataik elvégzéséhez szükséges. Közül három ezeket az RBAC-szerepkörök *tulajdonos*, *DevTest Labs felhasználói*, és *közreműködő*. Ebből a cikkből megismerheti milyen műveletek is elvégezhetők a három fő RBAC-szerepkörök. Ott megismerheti a felhasználók felvétele egy tesztlabor - mind a portálon keresztül egy PowerShell-parancsfájlt, és felhasználók hozzáadása az előfizetés szintjén.
 
 ## <a name="actions-that-can-be-performed-in-each-role"></a>Az egyes szerepkörökhöz végrehajtható műveletek
 Az a felhasználó hozzárendelheti három fő szerepkörök állnak rendelkezésre:

@@ -1,8 +1,8 @@
 ---
-title: "MapReduce és a PowerShell használata a Hadoop - az Azure HDInsight |} Microsoft Docs"
-description: "Tudnivalók a PowerShell használatával távolról ugyanúgy futtathatják a HDInsight Hadoop a MapReduce-feladatok."
+title: MapReduce és a PowerShell használata a Hadoop - az Azure HDInsight |} Microsoft Docs
+description: Tudnivalók a PowerShell használatával távolról ugyanúgy futtathatják a HDInsight Hadoop a MapReduce-feladatok.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: 21b56d32-1785-4d44-8ae8-94467c12cfba
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: larryfr
-ms.openlocfilehash: ba4a2dfc6a69e9ab18948bc9e33597a56bdd3bd9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b6e68b4c93e6385367b5aab01bebe1d29b7b9d13
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="run-mapreduce-jobs-with-hadoop-on-hdinsight-using-powershell"></a>A PowerShell használatával HDInsight Hadoop MapReduce-feladatok futtassa
 

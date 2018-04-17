@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Media Services API eléréséhez az Azure AD-alkalmazás létrehozása a PowerShell használatával |} Microsoft Docs"
-description: "Tudnivalók a PowerShell segítségével hozzon létre egy Azure Active Directory (Azure AD) alkalmazást, és állítsa be a hozzáférés az Azure Media Services API."
+title: Az Azure Media Services API eléréséhez az Azure AD-alkalmazás létrehozása a PowerShell használatával |} Microsoft Docs
+description: Tudnivalók a PowerShell segítségével hozzon létre egy Azure Active Directory (Azure AD) alkalmazást, és állítsa be a hozzáférés az Azure Media Services API.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: juliako
-ms.openlocfilehash: eea0f3a03dd77ce56484f32b192299bd97c05300
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 575e8a050a344cf3abb8adcda40b1f66fd9dcf59
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-powershell-to-create-an-azure-ad-app-to-use-with-the-azure-media-services-api"></a>Az Azure Media Services API használata az Azure AD-alkalmazás létrehozása a PowerShell használatával
 
@@ -55,9 +55,9 @@ $Retries = 0;While ($NewRole -eq $null -and $Retries -le 6)
 További információkért tekintse át a következő cikkeket:
 
 - [Szolgáltatásnév létrehozása erőforrások eléréséhez az Azure PowerShell használatával](../azure-resource-manager/resource-group-authenticate-service-principal.md)
-- [Szerepköralapú hozzáférés-vezérlés kezelése az Azure PowerShell használatával](../active-directory/role-based-access-control-manage-access-powershell.md)
+- [Szerepköralapú hozzáférés-vezérlés kezelése az Azure PowerShell használatával](../role-based-access-control/role-assignments-powershell.md)
 - [Saját kezű konfigurálásáról démon alkalmazások tanúsítványok használatával](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/Manual-Configuration-Steps.md#add-the-certificate-as-a-key-for-the-todolistdaemonwithcert-application-in-azure-ad)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerkedés a [fájlok feltöltése a fiókjához](media-services-portal-upload-files.md).

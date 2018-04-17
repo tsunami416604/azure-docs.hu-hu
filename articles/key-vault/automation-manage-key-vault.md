@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Key Vault használatával az Azure Automation kezelése |} Microsoft Docs"
-description: "További tudnivalók hogyan az Azure Automation szolgáltatás használható-e az Azure Key Vault kezeléséhez."
+title: Az Azure Key Vault használatával az Azure Automation kezelése |} Microsoft Docs
+description: További tudnivalók hogyan az Azure Automation szolgáltatás használható-e az Azure Key Vault kezeléséhez.
 services: Key-Vault, automation
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: jwhit
-editor: 
+editor: ''
 ms.assetid: 4e780762-19b6-4ca6-b894-ebb44c538f35
 ms.service: key-vault
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2016
-ms.author: magoedte;csand
-ms.openlocfilehash: dee39662472fe54776b591977f2b1ecb39d15b00
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: magoedte
+ms.openlocfilehash: b5f8a1b826717d51729b0bb621bf26e35d4bdd36
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="managing-azure-key-vault-using-azure-automation"></a>Az Azure Key Vault használatával az Azure Automation kezelése
 Az útmutatóból megismerheti az Azure Automation szolgáltatás, és hogyan használható egyszerűbbé teheti a kulcsok és titkos kulcsok Azure Key Vault a kezelését.
@@ -47,7 +47,7 @@ Az Azure Key Vault parancsmagjainak hajthatja végre ezeket a feladatokat, több
 * [Az Azure Key Vault - lépésről lépésre](https://blogs.technet.microsoft.com/kv/2015/06/02/azure-key-vault-step-by-step)
 * [Beállítása és konfigurálása az Azure Key Vault](https://www.simple-talk.com/cloud/platform-as-a-service/setting-up-and-configuring-an-azure-key-vault)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy megismerte az Azure Automation, és hogyan használható az Azure Key Vault kezeléséhez alapjait, az alábbi hivatkozásokból tudhat meg többet az Azure Automation.
 
 * Tekintse meg az Azure Automation szolgáltatásbeli [használatába bevezető oktatóanyagot](../automation/automation-first-runbook-graphical.md).

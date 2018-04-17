@@ -1,6 +1,6 @@
 ---
-title: "Hogyan használható az Azure Mobile Apps SDK Android |} Microsoft Docs"
-description: "Az Azure Mobile Apps SDK használatával Android rendszeren"
+title: Hogyan használható az Azure Mobile Apps SDK Android |} Microsoft Docs
+description: Az Azure Mobile Apps SDK használatával Android rendszeren
 services: app-service\mobile
 documentationcenter: android
 author: conceptdev
@@ -13,11 +13,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: crdun
-ms.openlocfilehash: f04f3fc7d2ff2e01baa78571b2ba267f8e4905c6
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 868ce171206fcd74ee0ecb099b67bf81970bc9ae
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Az Azure Mobile Apps SDK használatával Android rendszeren
 
@@ -143,7 +143,7 @@ public class AzureServiceAdapter {
 
 Most hívása `AzureServiceAdapter.Initialize(this);` a a `onCreate()` a fő tevékenységnél metódusában.  Semmilyen más metódus anélkül, hogy az ügyfélen használjon `AzureServiceAdapter.getInstance();` a szolgáltatás adapter mutató hivatkozás beszerzése.
 
-## <a name="data-operations"></a>Adatműveletek
+## <a name="data-operations"></a>Adatok műveletek
 
 Az Azure Mobile Apps SDK mag, hogy a Mobile Apps-háttéralkalmazás SQL Azure-ban tárolt adatok eléréséhez.  Hozzáférnének ehhez ezen adatokhoz szigorú típusmegadású osztályokat (ajánlott) vagy típus nélküli lekérdezéseket (nem ajánlott).  Ez a szakasz a nagy foglalkozik szigorú típusmegadású osztályokat.
 
@@ -224,8 +224,8 @@ public class ToDoItem
 
     @com.google.gson.annotations.SerializedName("createdAt")
     private DateTimeOffset mCreatedAt;
-    public DateTimeOffset getUpdatedAt() { return mCreatedAt; }
-    protected DateTimeOffset setUpdatedAt(DateTimeOffset createdAt) { mCreatedAt = createdAt; }
+    public DateTimeOffset getCreatedAt() { return mCreatedAt; }
+    protected DateTimeOffset setCreatedAt(DateTimeOffset createdAt) { mCreatedAt = createdAt; }
 
     @com.google.gson.annotations.SerializedName("updatedAt")
     private DateTimeOffset mUpdatedAt;
@@ -290,7 +290,7 @@ Először szerezze be a táblahivatkozás.  Ezután a táblahivatkozás a lekér
 
 A feltételek a fenti sorrendben kell bemutatni.
 
-### <a name="filter"></a>Szűrési eredmények
+### <a name="filter"></a> Szűrési eredmények
 
 Az általános a lekérdezések formátuma:
 

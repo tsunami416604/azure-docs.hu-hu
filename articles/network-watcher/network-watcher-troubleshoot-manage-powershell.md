@@ -1,11 +1,11 @@
 ---
-title: "Az Azure virtuális hálózati átjáró és a kapcsolatok - PowerShell hibaelhárítása |} Microsoft Docs"
-description: "Ez a lap ismerteti, hogyan Azure hálózati figyelőt PowerShell-parancsmaggal hibaelhárításához"
+title: Az Azure virtuális hálózati átjáró és a kapcsolatok - PowerShell hibaelhárítása |} Microsoft Docs
+description: Ez a lap ismerteti, hogyan Azure hálózati figyelőt PowerShell-parancsmaggal hibaelhárításához
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f6f0a813-38b6-4a1f-8cfc-1dfdf979f595
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: d7ae5599b3fa1876e2b5af79f56548cd17c1c8ed
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: d0ee73ebb05999eed18e555a9b7a928e73c284e7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>Virtuális hálózati átjáró és az Azure hálózati figyelő PowerShell kapcsolatok hibáinak elhárítása
 
@@ -89,4 +89,4 @@ A fájlok letöltését az azure storage-fiókok útmutatásért tekintse meg [a
 
 ## <a name="next-steps"></a>További lépések
 
-Ha a beállítások módosítása, hogy stop VPN-kapcsolatot, lásd: [hálózati biztonsági csoportok kezelése](../virtual-network/virtual-network-manage-nsg-arm-portal.md) nyomon követheti a hálózati biztonsági csoport és a biztonsági szabályok, amelyek lehet, hogy a szóban forgó.
+Ha a beállítások módosítása, hogy stop VPN-kapcsolatot, lásd: [hálózati biztonsági csoportok kezelése](../virtual-network/manage-network-security-group.md) nyomon követheti a hálózati biztonsági csoport és a biztonsági szabályok, amelyek lehet, hogy a szóban forgó.

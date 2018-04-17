@@ -1,25 +1,18 @@
 ---
-title: "Az Azure Analysis Services hitelesítés és a felhasználói engedélyek |} Microsoft Docs"
-description: "További tudnivalók az Azure Analysis Services hitelesítés és a felhasználó engedélyeit."
-services: analysis-services
-documentationcenter: 
+title: Az Azure Analysis Services hitelesítés és a felhasználói engedélyek |} Microsoft Docs
+description: További tudnivalók az Azure Analysis Services hitelesítés és a felhasználó engedélyeit.
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 1011e2c8351839cc8c93fc74a7d6f51f29e52410
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: ede05667d794267443babacaa8b016206d86ab2c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="authentication-and-user-permissions"></a>Hitelesítés és a felhasználói engedélyek
 Az Azure Analysis Services az Azure Active Directory (Azure AD) identitás- és felhasználói hitelesítés. Bármely felhasználó létrehozása, kezelése és csatlakozás az Azure Analysis Services szolgáltatáshoz server rendelkeznie kell érvényes felhasználói azonosítót egy [Azure AD-bérlő](../active-directory/active-directory-administer.md) ugyanahhoz az előfizetéshez.
@@ -69,7 +62,7 @@ Excel felhasználók egy Windows-fiókot, egy szervezet azonosítója (e-mail c�
 
 ![Hozzáférés-vezérlés az Azure portálon](./media/analysis-services-manage-users/aas-manage-users-rbac.png)
 
-Ezen a szinten szerepkörök a felhasználók vagy a fiókokat, amelyek feladatokat kell elvégezni, hogy elvégezhető legyen a portálon vagy az Azure Resource Manager-sablonok segítségével vonatkozik. További tudnivalókért lásd: [szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-what-is.md). 
+Ezen a szinten szerepkörök a felhasználók vagy a fiókokat, amelyek feladatokat kell elvégezni, hogy elvégezhető legyen a portálon vagy az Azure Resource Manager-sablonok segítségével vonatkozik. További tudnivalókért lásd: [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md). 
 
 
 ## <a name="database-roles"></a>Adatbázis-szerepkörök
@@ -85,4 +78,4 @@ Ezen a szinten szerepkörök a felhasználók vagy a fiókokat, amelyek feladato
 [Az Azure Active Directoryval erőforrásokhoz való hozzáférés kezelése](../active-directory/active-directory-manage-groups.md)   
 [Adatbázis-szerepkörök és a felhasználók kezelése](analysis-services-database-users.md)  
 [A kiszolgálók rendszergazdáinak kezelése](analysis-services-server-admins.md)  
-[Szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-what-is.md)  
+[Szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md)  

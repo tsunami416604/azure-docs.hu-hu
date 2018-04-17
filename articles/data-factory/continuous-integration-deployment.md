@@ -10,13 +10,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2018
+ms.date: 04/11/2018
 ms.author: douglasl
-ms.openlocfilehash: e021403cd5544f0570e8ea3c73a17a57b241a65f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 4f44d8cc48d6bfee909c04b20136cd2be6f828a0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Folyamatos integrációt és üzembe helyezés az Azure Data Factory
 
@@ -61,6 +61,8 @@ Ez a teljes életciklusa folyamatos integrációt és a központi telepítést, 
 ## <a name="automate-continuous-integration-with-vsts-releases"></a>Folyamatos integrációt VSTS kiadásainak automatizálásához
 
 Az alábbiakban egy VSTS-Feloldás beállítása, úgy automatizálható, hogy egy adat-előállító több környezetekben való központi telepítésének lépéseit.
+
+![Folyamatos integráció a VSTS ábrája](media/continuous-integration-deployment/continuous-integration-image12.png)
 
 ### <a name="requirements"></a>Követelmények
 

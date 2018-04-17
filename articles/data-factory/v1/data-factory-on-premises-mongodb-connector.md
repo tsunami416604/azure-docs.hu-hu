@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 086cc528e500a55bba73796e5fc7b17c561de8b4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0afdfb7b7d1f74d3df40b22bb97afc0f39bcc6d1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Helyezze át az adatokat a MongoDB Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -36,7 +36,7 @@ Egy helyszíni MongoDB adattároló adatok bármely támogatott fogadó adattár
 ## <a name="prerequisites"></a>Előfeltételek
 Az Azure Data Factory szolgáltatás kell kapcsolódnia kell a helyszíni MongoDB-adatbázist a következő összetevőket kell telepíteni:
 
-- MongoDB-verziók a következők: 2.4, 2.6, 3.0-s és 3.2-es verzióját.
+- MongoDB-verziók a következők: 2.4, 2.6, 3.0-s, 3.2-es, 3.4 és 3.6.
 - Az adatkezelési átjáró ugyanazon a számítógépen, amelyen az adatbázis vagy egy külön számítógépen elkerülésére használják a források az adatbázissal. Az adatkezelési átjáró olyan szoftver, a helyszíni adatforrások csatlakozik a felhőalapú szolgáltatások biztonságának és kezelésének módja. Lásd: [az adatkezelési átjáró](data-factory-data-management-gateway.md) szóló cikkben olvashat az adatkezelési átjáró. Lásd: [tárolt adatok mozgatása felhőbe helyszíni](data-factory-move-data-between-onprem-and-cloud.md) cikk lépésenkénti adatok folyamat az átjáró beállítása áthelyezni az adatokat.
 
     Az átjáró telepítésekor automatikusan telepíti a MongoDB való kapcsolódáshoz használt Microsoft MongoDB ODBC-illesztőprogram.
@@ -347,7 +347,7 @@ Az alábbi táblázatok bemutatják a virtuális táblákat, amelyek megfelelnek
 | _id | ExampleTable_Invoices_dim1_idx | invoice_id | Elem | price | Kedvezmény |
 | --- | --- | --- | --- | --- | --- |
 | 1111 |0 |123 |a toaster |456 |0.2 |
-| 1111 |1 |124 |oven |1235 |0.2 |
+| 1111 |1 |124 |Helyezzük |1235 |0.2 |
 | 2222 |0 |135 |kombinált hűtőszekrények |12543 |0.0 |
 
 "ExampleTable_Ratings". tábla:

@@ -1,25 +1,18 @@
 ---
 title: A helyszíni adatátjáró |} Microsoft Docs
 description: Egy helyszíni átjárót szükség, ha az Azure-ban az Analysis Services-kiszolgálóhoz csatlakoznak a helyszíni adatforrások.
-services: analysis-services
-documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: ''
-tags: ''
-ms.assetid: cd596155-b608-4a34-935e-e45c95d884a9
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 04/03/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: f38faf4d75125201ee209eb40c9f223a0487f042
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.reviewer: minewiskan
+ms.openlocfilehash: 5d327f016237890b506f45c4c494bd08ad2f71bb
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>Csatlakozás az adatforrásokhoz helyszíni Azure a helyszíni adatok átjáróval
 Az a helyszíni átjáró működik hídként, a helyszíni adatforrások és a felhőben az Azure Analysis Services-kiszolgálók közötti biztonságos adatátvitel biztosítása. Mellett több Azure Analysis Services-kiszolgáló ugyanabban a régióban dolgozik, az átjáró legújabb verzióját is működik az Azure Logic Apps, a Power bi-ban, a kiemelt alkalmazások és a Microsoft Flow. Csak egyetlen átjáró ugyanabban a régióban több szolgáltatáshoz is társíthat. 
@@ -55,7 +48,7 @@ Az a helyszíni átjáró használatára van konfigurálva *NT SERVICE\PBIEgwSer
 
 Ha problémák lépnek fel a proxykiszolgáló hitelesítést miatt, előfordulhat, hogy módosítani szeretné a Windows-fiók egy tartományi felhasználó vagy a felügyelt szolgáltatásfiók.
 
-## <a name="ports"> </a>Ports
+## <a name="ports"> </a>Portok
 Az átjáró Azure Service Bus egy kimenő kapcsolatot hoz létre. A kimenő portokon kommunikál: TCP 443-as (alapértelmezett), 5671, 5672, 9350 – 9354-es.  Az átjáró nincs szükség a bejövő portra.
 
 Javasoljuk, hogy a tűzfal az adatterület az IP-címek engedélyezési listája. Letöltheti a [Microsoft Azure Datacenter IP-lista](https://www.microsoft.com/download/details.aspx?id=41653). A lista a heti frissül.
@@ -182,7 +175,7 @@ Naplófájlok egy fontos erőforrás hibaelhárítása során.
 Az adatkezelési átjáró, a PowerBIGateway naplókat alatt található **alkalmazás- és szolgáltatásnaplók**.
 
 
-## <a name="telemetry"></a>Telemetry
+## <a name="telemetry"></a>Telemetria
 Telemetriai adatainak figyelés és hibaelhárítás céljából is használható. Alapértelmezés szerint
 
 **Telemetria bekapcsolása**

@@ -1,11 +1,11 @@
 ---
-title: "Szerepkörök az Azure AD Privileged Identity Management |} Microsoft Docs"
-description: "Ismerje meg, milyen szerepkörök kiemelt identitásokat az Azure Privileged Identity Management bővítmény használhatók."
+title: Szerepkörök az Azure AD Privileged Identity Management |} Microsoft Docs
+description: Ismerje meg, milyen szerepkörök kiemelt identitásokat az Azure Privileged Identity Management bővítmény használhatók.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ac812ccc-cf4e-4ac2-b981-69598056c9ed
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 03/04/2018
 ms.author: billmath
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: 500fb11627fa0ce7ac838c650a582dd9d49b598c
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 94a066c43d1b04161a46dac15e5b373d97cc063d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="different-administrative-role-in-azure-active-directory-pim"></a>Az Azure Active Directory PIM különböző rendszergazdai szerepkör
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
@@ -67,7 +67,7 @@ Ha azt szeretné, a másik felhasználó hozzáférésének kezelhetik a PIM mag
 ## <a name="roles-not-managed-in-pim"></a>A PIM nem kezelt szerepkörök
 Szerepkörök Exchange Online vagy SharePoint online-hoz, kivéve a fent említett nem találhatók az Azure ad-ben, és ezért nem láthatók a PIM. Ezek az Office 365-szolgáltatásokhoz részletes szerepkör-hozzárendelések módosításáról bővebben lásd: [engedélyek az Office 365-ben](https://support.office.com/article/Permissions-in-Office-365-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
-Azure-előfizetések és -erőforráscsoportok is nem jelennek meg az Azure ad-ben. Azure-előfizetések kezeléséhez, tekintse meg [hozzáadása vagy módosítása az Azure-rendszergazdai szerepkörök](../billing/billing-add-change-azure-subscription-administrator.md) és további információ az Azure RBAC lásd [átruházásához hozzáférés-vezérlés](role-based-access-control-configure.md).
+Azure-előfizetések és -erőforráscsoportok is nem jelennek meg az Azure ad-ben. Azure-előfizetések kezeléséhez, tekintse meg [hozzáadása vagy módosítása az Azure-rendszergazdai szerepkörök](../billing/billing-add-change-azure-subscription-administrator.md) és további információ az Azure RBAC lásd [átruházásához hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md).
 
 <!--**The above links might be replaced by ones that are from within this documentation repository **-->
 

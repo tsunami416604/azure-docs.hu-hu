@@ -1,11 +1,9 @@
 ---
-title: "Gyakori alkalmazási esetei és Azure Cosmos DB forgatókönyvek |} Microsoft Docs"
-description: "További tudnivalók az első öt használati esetekben az Azure Cosmos DB: felhasználók létrehozott tartalom, eseménynaplózás, a katalógus adatainak, felhasználói beállítások adatok és az eszközök internetes hálózatát (IoT)."
+title: Gyakori alkalmazási esetei és Azure Cosmos DB forgatókönyvek |} Microsoft Docs
+description: 'További tudnivalók az első öt használati esetekben az Azure Cosmos DB: felhasználók létrehozott tartalom, eseménynaplózás, a katalógus adatainak, felhasználói beállítások adatok és az eszközök internetes hálózatát (IoT).'
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-editor: 
-documentationcenter: 
+author: SnehaGunda
+manager: kfile
 ms.assetid: eca68a58-1a8c-4851-8cf8-6e4d2b889905
 ms.service: cosmos-db
 ms.workload: data-services
@@ -13,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
-ms.author: mimig
-ms.openlocfilehash: bcafc999c30d1e72971c8e26e951169ea6b56416
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.author: sngun
+ms.openlocfilehash: c85aa1a010ea9ccac807d676fd69473de07abca9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB gyakori alkalmazási esetei
 Ez a cikk számos gyakori alkalmazási esetei áttekintést nyújt az Azure Cosmos DB rendszerhez.  Az ebben a cikkben szereplő ajánlásokhoz szolgál, kiindulási pontként a Cosmos DB alkalmazást fejleszt.   
@@ -104,7 +102,7 @@ JSON formátuma nem támogatott Cosmos DB egy hatékony formátuma nem csak egys
 
 ![Az Azure Cosmos DB webes alkalmazás referencia-architektúrában](./media/use-cases/personalization.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ismerkedés az Azure Cosmos DB, hajtsa végre a [gyors üzembe helyezések](create-sql-api-dotnet.md), amely végigvezetik Önt egy fiókot és az első lépések Cosmos DB létrehozása. 
 
 Vagy, ha azt szeretné, hogy további kapcsolatos Cosmos DB használatával az ügyfelek, a következő felhasználói szövegek érhetők el:

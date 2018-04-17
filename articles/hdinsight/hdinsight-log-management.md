@@ -1,28 +1,26 @@
 ---
-title: "A HDInsight-fürtök - Azure HDInsight naplóinak kezeléséhez |} Microsoft Docs"
-description: "A típusokat, méretek és HDInsight tevékenység naplófájlok adatmegőrzési határozza meg."
+title: A HDInsight-fürtök - Azure HDInsight naplóinak kezeléséhez |} Microsoft Docs
+description: A típusokat, méretek és HDInsight tevékenység naplófájlok adatmegőrzési határozza meg.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: a161a5c639ff02e1e8a2ea987d9f913ff41c5618
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 165464bd6851bf5fa76632731455722c393060c6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="manage-logs-for-an-hdinsight-cluster"></a>A HDInsight-fürtök kezelése
+# <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight-fürt naplóinak kezelése
 
 HDInsight-fürtök különböző naplófájlokat hoz létre. Például az Apache Hadoop és a kapcsolódó szolgáltatások, például az Apache Spark on az részletes feladatvégrehajtási naplók eredményez. Naplófájl kezelése karbantartásának megfelelő HDInsight-fürt része. Is napló archiválásra szabályozási követelmények lehet.  A szám és a naplófájlok méretét, miatt optimalizálása a naplók tárolásához, és segítséget nyújt az archiválás szolgáltatásfelügyelet költség.
 
@@ -179,8 +177,8 @@ A Hadoop a .NET SDK használatával vizsgálja meg a naplófájlokat hoz létre,
 
 Megőrzött fájlok száma és mérete szabályozására, a következő tulajdonságainak beállítása a `RollingFileAppender`:
 
-* `maxFileSize`a kritikus mérete a fájl, amely fölött a fájl lesz állítva. Az alapértelmezett érték 10 MB.
-* `maxBackupIndex`a létrehozandó 1 alapértelmezett biztonsági másolatok számát adja meg.
+* `maxFileSize` a kritikus mérete a fájl, amely fölött a fájl lesz állítva. Az alapértelmezett érték 10 MB.
+* `maxBackupIndex` a létrehozandó 1 alapértelmezett biztonsági másolatok számát adja meg.
 
 ### <a name="other-log-management-techniques"></a>Más napló technikák
 

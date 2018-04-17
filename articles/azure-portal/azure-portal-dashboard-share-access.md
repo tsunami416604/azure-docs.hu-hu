@@ -1,8 +1,8 @@
 ---
-title: "Ossza meg az Azure portál irányítópultok RBAC |} Microsoft Docs"
-description: "Ez a cikk azt ismerteti, hogyan az Azure-portálon az irányítópultok megosztása a szerepköralapú hozzáférés-vezérlés használatával."
+title: Ossza meg az Azure portál irányítópultok RBAC |} Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan az Azure-portálon az irányítópultok megosztása a szerepköralapú hozzáférés-vezérlés használatával.
 services: azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: tomfitz
-ms.openlocfilehash: 33ddfef1e23a6ff0c2cb8e359d408d2c42cbcf3a
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 75f06e49aa317fc887831a9e04861d9a7989bdb2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Azure irányítópultok megosztása a szerepköralapú hozzáférés-vezérlés használatával
-Miután egy irányítópultot, tegye közzé, és megoszthatják más felhasználókkal a szervezetében. Engedélyezi a többi Azure használatával az irányítópult megtekintéséhez [szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-configure.md). Egy felhasználó vagy csoport számára hozzárendelése egy szerepkörhöz, és ez a szerepkör határozza meg, hogy ezek a felhasználók megtekintheti és módosíthatja a közzétett irányítópulton. 
+Miután egy irányítópultot, tegye közzé, és megoszthatják más felhasználókkal a szervezetében. Engedélyezi a többi Azure használatával az irányítópult megtekintéséhez [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md). Egy felhasználó vagy csoport számára hozzárendelése egy szerepkörhöz, és ez a szerepkör határozza meg, hogy ezek a felhasználók megtekintheti és módosíthatja a közzétett irányítópulton. 
 
 Az összes közzétett irányítópultok Azure-erőforrások, mint kerülnek végrehajtásra, ami azt jelenti, hogy az előfizetés kezelhető elemeiként létezik, és egy erőforráscsoport található.  Egy hozzáférés-vezérlő szempontjából irányítópultok ugyanazok, mint más erőforrások, például egy virtuális gép vagy egy tárfiókot.
 
@@ -73,7 +73,7 @@ Az irányítópult már közzé van téve. Ha az előfizetés az örökölt enge
    
      ![rendelt szerepkörök](./media/azure-portal-dashboard-share-access/assigned-roles.png)
 
-## <a name="next-steps"></a>Következő lépések
-* A szerepkörök listájáért lásd: [RBAC: beépített szerepkörök](../active-directory/role-based-access-built-in-roles.md).
+## <a name="next-steps"></a>További lépések
+* A szerepkörök listájáért lásd: [RBAC: beépített szerepkörök](../role-based-access-control/built-in-roles.md).
 * Erőforrások kezelésével kapcsolatos információkért lásd: [kezelése Azure-erőforrások portálon keresztül](resource-group-portal.md).
 

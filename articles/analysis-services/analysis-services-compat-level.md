@@ -1,25 +1,18 @@
 ---
-title: "Adatok modell kompatibilitási szint az Azure Analysis Services |} Microsoft Docs"
-description: "Táblázatos modell kompatibilitási szintnek ismertetése."
-services: analysis-services
-documentationcenter: 
+title: Adatok modell kompatibilitási szint az Azure Analysis Services |} Microsoft Docs
+description: Táblázatos modell kompatibilitási szintnek ismertetése.
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: a07514c7734f3cd4be1e11a984151abb8ee3f23d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: 231a7ea42560aac3fba0ccf27e27123320f219a3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="compatibility-level-for-analysis-services-tabular-models"></a>Az Analysis Services rendszerbeli táblázatos modellek kompatibilitási szintjének
 

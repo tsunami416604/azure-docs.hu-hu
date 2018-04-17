@@ -4,7 +4,7 @@ description: Tudnivalók az SQL Node.js API-t és SDK, beleértve a kiadási dá
 services: cosmos-db
 documentationcenter: nodejs
 author: rnagpal
-manager: jhubbard
+manager: kfile
 editor: cgronlun
 ms.assetid: 9d5621fa-0e11-4619-a28b-a19d872bcf37
 ms.service: cosmos-db
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 1/4/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 728db669954e317905d762c68c8990f064529699
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 68c124bc2a89c819eb72310138ddd5d0c7739c4d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB Node.js SDK API-SQL: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ ms.lasthandoff: 03/30/2018
 
 <tr><td>**SDK telepítési utasításokat**</td><td>[Telepítési utasításokat](http://azure.github.io/azure-documentdb-node/)</td></tr>
 
-<tr><td>**Hozzájárul az SDK**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-node/tree/master/source)</td></tr>
+<tr><td>**Hozzájárul az SDK**</td><td>[GitHubon](https://github.com/Azure/azure-documentdb-node/tree/master/source)</td></tr>
 
 <tr><td>**Minták**</td><td>[NODE.js-Kódminták](sql-api-nodejs-samples.md)</td></tr>
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 03/30/2018
 
 <tr><td>**Aktuális támogatott platform**</td><td> 
 [NODE.js 6.x](https://nodejs.org/en/blog/release/v6.10.3/)<br/> 
-[Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)<br/> 
+[NODE.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)<br/> 
 [NODE.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)<br/> 
 [NODE.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/) 
 </td></tr>
@@ -226,7 +226,7 @@ A Cosmos DB használatával kivont SDK kell elutasította a szolgáltatás.
 | [1.0.1](#1.0.1) |2015. május 15. |--- |
 | [1.0.0](#1.0.0) |2015. áprilisi 08 |--- |
 
-## <a name="faq"></a>Gyakori kérdések
+## <a name="faq"></a>GYIK
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Lásd még

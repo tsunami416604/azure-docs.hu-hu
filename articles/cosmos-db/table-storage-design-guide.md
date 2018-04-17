@@ -1,11 +1,10 @@
 ---
-title: "Az Azure Storage táblázat kialakítási útmutató |} Microsoft Docs"
-description: "A Tervező méretezhető és Performant táblák Azure Table Storage-ban"
+title: Az Azure Storage táblázat kialakítási útmutató |} Microsoft Docs
+description: A Tervező méretezhető és Performant táblák Azure Table Storage-ban
 services: cosmos-db
 documentationcenter: na
-author: mimig1
-manager: tadb
-editor: tysonn
+author: SnehaGunda
+manager: kfile
 ms.assetid: 8e228b0c-2998-4462-8101-9f16517393ca
 ms.service: cosmos-db
 ms.devlang: na
@@ -13,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 11/03/2017
-ms.author: mimig
-ms.openlocfilehash: fadb81e16a6c641ca15efb4f910a51de4fe7c997
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.author: sngun
+ms.openlocfilehash: 667fef855238b2524c05bbc2f137d466c0e56de8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Az Azure Storage táblázat kialakítási Útmutató: Méretezhető tervezésével és Performant táblák
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -54,7 +53,7 @@ Az alábbi példában egy egyszerű Táblatervezés alkalmazott és részleg ent
 <th>Utónév</th>
 <th>Vezetéknév</th>
 <th>Kor</th>
-<th>E-mail cím</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Nincs</td>
@@ -74,11 +73,11 @@ Az alábbi példában egy egyszerű Táblatervezés alkalmazott és részleg ent
 <th>Utónév</th>
 <th>Vezetéknév</th>
 <th>Kor</th>
-<th>E-mail cím</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>jún.</td>
-<td>Cao</td>
+<td>CaO</td>
 <td>47</td>
 <td>junc@contoso.com</td>
 </tr>
@@ -111,7 +110,7 @@ Az alábbi példában egy egyszerű Táblatervezés alkalmazott és részleg ent
 <th>Utónév</th>
 <th>Vezetéknév</th>
 <th>Kor</th>
-<th>E-mail cím</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Ken</td>
@@ -207,7 +206,7 @@ Az alábbi példák azt feltételezik, hogy a table szolgáltatás a következő
 | **PartitionKey** (részleg neve) |Karakterlánc |
 | **RowKey** (alkalmazott azonosítója) |Karakterlánc |
 | **Utónév** |Karakterlánc |
-| **LastName** |Karakterlánc |
+| **Vezetéknév** |Karakterlánc |
 | **kora** |Egész szám |
 | **E-mail cím** |Karakterlánc |
 
@@ -331,7 +330,7 @@ Az alábbi táblázat foglalja össze, és az egyes az alkalmazottak és a rész
 
 <table>
 <tr>
-<th>Approach</th>
+<th>Módszer</th>
 <th>Informatikai szakemberek</th>
 <th>Hátrányok</th>
 </tr>
@@ -1087,7 +1086,7 @@ Fontos megjegyezni, hogy a kivételek, amikor a Storage ügyféloldali kódtár 
 
 Azt is figyelembe kell venni, hogyan a kialakítás befolyásolja, miként kezeli az ügyfélalkalmazást a feldolgozási mód és a frissítési művelet.  
 
-#### <a name="managing-concurrency"></a>Párhuzamossági kezelése
+#### <a name="managing-concurrency"></a>Az egyidejűség kezelése
 Alapértelmezés szerint a table szolgáltatás megvalósítja az optimista feldolgozási ellenőrzi az egyes entitásokat szintjén **beszúrása**, **egyesítése**, és **törlése** műveletek, bár ez az ügyfél számára a table szolgáltatás ellenőrzés elkerülésére lehetőség. Hogyan kezeli a table szolgáltatás a feldolgozási kapcsolatos további információkért lásd: [egyidejűségi kezelése a Microsoft Azure Storage](../storage/common/storage-concurrency.md).  
 
 #### <a name="merge-or-replace"></a>Egyesítés vagy cseréje
@@ -1120,7 +1119,7 @@ A Table szolgáltatás egy *séma nélküli* tábla tároló, amely azt jelenti,
 <th>Utónév</th>
 <th>Vezetéknév</th>
 <th>Kor</th>
-<th>E-mail cím</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td></td>
@@ -1140,7 +1139,7 @@ A Table szolgáltatás egy *séma nélküli* tábla tároló, amely azt jelenti,
 <th>Utónév</th>
 <th>Vezetéknév</th>
 <th>Kor</th>
-<th>E-mail cím</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td></td>
@@ -1177,7 +1176,7 @@ A Table szolgáltatás egy *séma nélküli* tábla tároló, amely azt jelenti,
 <th>Utónév</th>
 <th>Vezetéknév</th>
 <th>Kor</th>
-<th>E-mail cím</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td></td>
@@ -1213,7 +1212,7 @@ Vegye figyelembe, hogy minden egyes szervezet továbbra is rendelkeznie kell **P
 <th>Utónév</th>
 <th>Vezetéknév</th>
 <th>Kor</th>
-<th>E-mail cím</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Alkalmazott</td>
@@ -1235,7 +1234,7 @@ Vegye figyelembe, hogy minden egyes szervezet továbbra is rendelkeznie kell **P
 <th>Utónév</th>
 <th>Vezetéknév</th>
 <th>Kor</th>
-<th>E-mail cím</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Alkalmazott</td>
@@ -1276,7 +1275,7 @@ Vegye figyelembe, hogy minden egyes szervezet továbbra is rendelkeznie kell **P
 <th>Utónév</th>
 <th>Vezetéknév</th>
 <th>Kor</th>
-<th>E-mail cím</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Alkalmazott</td>

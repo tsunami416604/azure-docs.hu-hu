@@ -1,8 +1,8 @@
 ---
-title: "Excel csatlakoztatása a Power Query - az Azure HDInsight Hadoop |} Microsoft Docs"
-description: "Megtudhatja, hogyan előnyeit az üzleti intelligenciát biztosító összetevők, és használja a Power Query az Excel programhoz a hdinsight Hadoop hozzáférés adataihoz."
+title: Excel csatlakoztatása a Power Query - az Azure HDInsight Hadoop |} Microsoft Docs
+description: Megtudhatja, hogyan előnyeit az üzleti intelligenciát biztosító összetevők, és használja a Power Query az Excel programhoz a hdinsight Hadoop hozzáférés adataihoz.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
@@ -10,17 +10,15 @@ editor: cgronlun
 ms.assetid: 01ad2f90-7520-44d9-8c16-4d936faaff9b
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 21dfaa9b4d2bb59cb2e84006ad58fcb6ce3f81b4
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 0afb1259465189034a69ab7197cdea6fc0f517a3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-excel-to-hadoop-by-using-power-query"></a>Az Excel és a Hadoop csatlakoztatása a Power Query használatával
 A Microsoft big data-megoldás egyik fontos jellemzők az üzleti intelligenciával összetevők Microsoft Azure hdinsight Hadoop-fürtök integrálását. Egy elsődleges példa azt a képességet Excel csatlakoztatása az Azure Storage-fiók, amely a Microsoft Power Query az Excel beépülő modul használatával a Hadoop-fürthöz kapcsolódó adatokat tartalmazza. Ez a cikk bemutatja, hogyan állítson be és a Power Query használatával kezeli a HDInsight Hadoop-fürthöz társított adatait kérdezi le.
@@ -52,7 +50,7 @@ A Power Query beépülő modul az Excel segítségével egyszerűen adatok impor
 
         ![HDI.PowerQuery.SelectHdiSource](./media/apache-hadoop-connect-excel-power-query/hdi.powerquery.selecthdisource.excel2016.png)
 
-    - Excel 2013/2010
+    - Az Excel 2013/2010
 
         - Kattintson a **Power Query** menüben kattintson a **az Azure**, és kattintson a **a Microsoft Azure HDInsight**.
    
@@ -69,7 +67,7 @@ A Power Query beépülő modul az Excel segítségével egyszerűen adatok impor
     ![HDI.PowerQuery.ImportData][image-hdi-powerquery-importdata]
 8. Ha azt szeretné, átnevezheti az oszlopok neveit. Amikor elkészült, kattintson **zárja be az & betölteni**.  Az adatok betöltése a munkafüzethez:
    
-    ![HDI.PowerQuery.ImportedTable][image-hdi-powerquery-imported-table]
+    ![HDI. PowerQuery.ImportedTable][image-hdi-powerquery-imported-table]
 
 ## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, HDInsight Excelbe adatainak lekérése a Power Query segítségével. Ehhez hasonlóan is visszaállíthatja az adatokat a HDInsight-ból az Azure SQL-adatbázisba. Akkor is a HDInsight feltölteni az adatokat. További tudnivalókért tekintse meg a következő cikkeket:

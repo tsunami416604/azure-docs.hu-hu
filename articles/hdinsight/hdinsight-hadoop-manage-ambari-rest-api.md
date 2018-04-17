@@ -1,8 +1,8 @@
 ---
-title: "Felügyeletéhez és kezeléséhez az Ambari REST API - Azure HDInsight Hadoop |} Microsoft Docs"
-description: "Megtudhatja, hogyan figyelheti és kezelheti az Azure HDInsight Hadoop-fürtök az Ambari használatával. Ebben a dokumentumban, megtudhatja, hogyan használható az Ambari REST API-t a HDInsight-fürtök részét képező."
+title: Felügyeletéhez és kezeléséhez az Ambari REST API - Azure HDInsight Hadoop |} Microsoft Docs
+description: Megtudhatja, hogyan figyelheti és kezelheti az Azure HDInsight Hadoop-fürtök az Ambari használatával. Ebben a dokumentumban, megtudhatja, hogyan használható az Ambari REST API-t a HDInsight-fürtök részét képező.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: 2400530f-92b3-47b7-aa48-875f028765ff
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 44066a3b4d5bebc67b089bebc2f3c11d33c77000
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 6d82e67e546c8c2079d1feced6e10954fe67a83d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-rest-api"></a>A HDInsight-fürtök kezelése az Ambari REST API használatával
 
@@ -51,7 +49,7 @@ E Bash vagy a PowerShell használatával, rendelkeznie kell [jq](https://stedola
 
 ### <a name="base-uri-for-ambari-rest-api"></a>Alap URI-JÁNAK Ambari Rest API
 
-Az Ambari REST API-t a HDInsight alap URI-azonosító https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME, ahol **CLUSTERNAME** a fürt neve.
+Az alap URI az Ambari REST API a HDInsight https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME, ahol **CLUSTERNAME** a fürt neve.
 
 > [!IMPORTANT]
 > Míg a fürt neve a teljesen minősített tartománynév (FQDN) része az URI (CLUSTERNAME.azurehdinsight.net) a nagybetűk között, más előfordulások URI azonosítójában nagybetűk között. Például, ha a fürt neve `MyCluster`, érvényes URI-azonosítók a következők:
@@ -82,7 +80,7 @@ curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$C
 > Ebben a dokumentumban a Bash példák hajtsa végre a következő előfeltételek:
 >
 > * A bejelentkezési név a fürt az alapértelmezett értékének `admin`.
-> * `$CLUSTERNAME`a fürt nevét tartalmazza. Használja ezt az értéket is megadhat`set CLUSTERNAME='clustername'`
+> * `$CLUSTERNAME` a fürt nevét tartalmazza. Használja ezt az értéket is megadhat `set CLUSTERNAME='clustername'`
 > * Amikor a rendszer kéri, adja meg a jelszót a fürt bejelentkezési azonosítóhoz (rendszergazda).
 
 ```powershell
@@ -94,8 +92,8 @@ $resp.Content
 > [!IMPORTANT]
 > Ebben a dokumentumban a PowerShell-példák hajtsa végre a következő előfeltételek:
 >
-> * `$creds`a hitelesítő objektum, amely tartalmazza a rendszergazdai bejelentkezés és a jelszót a fürthöz van. Használja ezt az értéket is megadhat `$creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"` , és adja meg a hitelesítő adatokat, amikor a rendszer kéri.
-> * `$clusterName`egy olyan karakterlánc, amely a fürt nevét tartalmazza. Használja ezt az értéket is megadhat `$clusterName="clustername"`.
+> * `$creds` a hitelesítő objektum, amely tartalmazza a rendszergazdai bejelentkezés és a jelszót a fürthöz van. Használja ezt az értéket is megadhat `$creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"` , és adja meg a hitelesítő adatokat, amikor a rendszer kéri.
+> * `$clusterName` egy olyan karakterlánc, amely a fürt nevét tartalmazza. Használja ezt az értéket is megadhat `$clusterName="clustername"`.
 
 Mindkét példák adja vissza egy JSON-dokumentum információkat az alábbi példához hasonló karakterlánccal kezdődik:
 
@@ -259,9 +257,9 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 
 A visszatérési érték a következő példák hasonló:
 
-* `wasb://CONTAINER@ACCOUNTNAME.blob.core.windows.net`-Ez az érték azt jelzi, hogy a fürt alapértelmezett tárolására használt Azure Storage-fiók. A `ACCOUNTNAME` értéke a tárfiók neve. A `CONTAINER` részét pedig a tárfiók a blob-tároló neve. A tároló a fürt HDFS-kompatibilis tárolási gyökérmappájában.
+* `wasb://CONTAINER@ACCOUNTNAME.blob.core.windows.net` -Ez az érték azt jelzi, hogy a fürt alapértelmezett tárolására használt Azure Storage-fiók. A `ACCOUNTNAME` értéke a tárfiók neve. A `CONTAINER` részét pedig a tárfiók a blob-tároló neve. A tároló a fürt HDFS-kompatibilis tárolási gyökérmappájában.
 
-* `adl://home`-Ez az érték azt jelzi, hogy a fürt egy Azure Data Lake Store használt alapértelmezett tárolási.
+* `adl://home` -Ez az érték azt jelzi, hogy a fürt egy Azure Data Lake Store használt alapértelmezett tárolási.
 
     A Data Lake Store-fiók neve megkereséséhez használja az alábbi példákat:
 

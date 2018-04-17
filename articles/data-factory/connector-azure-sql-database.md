@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 04/13/2018
 ms.author: jingwang
-ms.openlocfilehash: 82aea8b13fd4bad777fd3120fa811fa1ab284ac1
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c4f27f59412fbfc72e193f916895c3e67091f5f6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Másolja a adatok vagy az Azure SQL Database az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -127,7 +127,7 @@ Szolgáltatás egyszerű AAD alkalmazás jogkivonat hitelesítési módszer hasz
         "typeProperties": {
             "connectionString": {
                 "type": "SecureString",
-                "value": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+                "value": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;Connection Timeout=30"
             },
             "servicePrincipalId": "<service principal id>",
             "servicePrincipalKey": {
@@ -342,7 +342,7 @@ Adatok másolása az Azure SQL Database, állítsa be a fogadó típusa a másol
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység fogadó type tulajdonsága értékre kell állítani: **SqlSink** | Igen |
-| writeBatchSize |Szúr be az SQL-tábla adatokat, amikor a puffer mérete eléri writeBatchSize.<br/>Két érték engedélyezett: egész szám (sorok száma). |Nem (alapértelmezett beállítás 10000) |
+| WriteBatchSize |Szúr be az SQL-tábla adatokat, amikor a puffer mérete eléri writeBatchSize.<br/>Két érték engedélyezett: egész szám (sorok száma). |Nem (alapértelmezett beállítás 10000) |
 | writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezését, mielőtt azt az időkorlátot.<br/>Két érték engedélyezett: timespan. Példa: "00: 30:00" (30 perc). |Nem |
 | preCopyScript |Adjon meg egy SQL-lekérdezést a másolási tevékenység végrehajtása előtt az adatok írása az Azure SQL-adatbázisba. Akkor lesz csak egyszer hívható futtatása példányonként. Ez a tulajdonság segítségével törölje az előre betöltött adatokat. |Nem |
 | sqlWriterStoredProcedureName |A tárolt eljárás, amely meghatározza, hogyan alkalmazhat forrásadatok a céloldali tábla, pl. do upserts vagy a saját üzleti logikát használó átalakító neve. <br/><br/>Megjegyzés: Ez a tárolt eljárás fog **kötegenként meghívott**. Ha művelet, amelynek csak egyszer futnak, és érinti a elvégezni a segítségével például törlés/truncate forrásadatok használja szeretné `preCopyScript` tulajdonság. |Nem |
@@ -576,11 +576,11 @@ A/az Azure SQL Database adatok másolásakor a következő leképezéseit segít
 | dátum |DateTime |
 | Dátum és idő |DateTime |
 | datetime2 |DateTime |
-| Datetimeoffset |DateTimeOffset |
+| datetimeoffset |DateTimeOffset |
 | Decimális |Decimális |
 | A FILESTREAM attribútum (varbinary(max)) |Byte] |
 | Lebegőpontos |Dupla |
-| image |Byte] |
+| Kép |Byte] |
 | int |Int32 |
 | pénz |Decimális |
 | nchar |Karakterlánc, Char] |
@@ -594,7 +594,7 @@ A/az Azure SQL Database adatok másolásakor a következő leképezéseit segít
 | kis pénz típusú értéknél |Decimális |
 | sql_variant |Objektum * |
 | Szöveg |Karakterlánc, Char] |
-| time |TimeSpan |
+| time |A TimeSpan |
 | időbélyeg |Byte] |
 | tinyint |Bájt |
 | egyedi azonosító |GUID |

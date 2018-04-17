@@ -9,21 +9,21 @@ ms.topic: article
 ms.date: 03/06/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 78f447c96afe7955f115de4bbd28015cd231bb53
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ab118cd43f1e3e57627d940072e50405cd85ca58
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="persistent-volumes-with-azure-files"></a>Az Azure files állandó kötetek
 
-Egy állandó kötet egy adat van kiépítve Kubernetes fürt használatra szánt tároló jelöli. Egy állandó kötet segítségével egy vagy több három munkaállomás-csoporttal, és dinamikusan vagy statikusan létesíthetők. Ez a dokumentum részletesen dinamikus kiépítése az Azure fájlmegosztások kötetként Kubernetes állandó AKS fürtben. 
+Egy állandó kötet egy adat van kiépítve Kubernetes fürt használatra szánt tároló jelöli. Egy állandó kötet segítségével egy vagy több három munkaállomás-csoporttal, és dinamikusan vagy statikusan létesíthetők. Ez a dokumentum részletesen dinamikus kiépítése az Azure fájlmegosztások kötetként Kubernetes állandó AKS fürtben.
 
 Kubernetes állandó köteteken további információkért lásd: [Kubernetes állandó kötetek][kubernetes-volumes].
 
 ## <a name="create-storage-account"></a>Storage-fiók létrehozása
 
-Létesítésekor dinamikusan az Azure fájlmegosztások Kubernetes kötetként, minden tárfiók használható, amíg a AKS fürtként ugyanabban az erőforráscsoportban szerepel. Szükség esetén hozzon létre egy tárfiókot a ugyanabban az erőforráscsoportban a AKS fürtként. 
+Létesítésekor dinamikusan az Azure fájlmegosztások Kubernetes kötetként, minden tárfiók használható, amíg a AKS fürtként ugyanabban az erőforráscsoportban szerepel. Szükség esetén hozzon létre egy tárfiókot a ugyanabban az erőforráscsoportban a AKS fürtként.
 
 A megfelelő erőforráscsoport azonosításához használja a [az listájának] [ az-group-list] parancsot.
 
@@ -40,7 +40,7 @@ MC_myAKSCluster_myAKSCluster_eastus  eastus      Succeeded
 myAKSCluster                         eastus      Succeeded
 ```
 
-Használja a [az storage-fiók létrehozása] [ az-storage-account-create] parancsot a tárfiók létrehozásához. 
+Használja a [az storage-fiók létrehozása] [ az-storage-account-create] parancsot a tárfiók létrehozásához.
 
 Ez a példa használ, frissítse `--resource-group` az erőforráscsoport nevét és `--name` az Ön által választott névre.
 
@@ -74,7 +74,7 @@ kubectl create -f azure-file-sc.yaml
 
 ## <a name="create-persistent-volume-claim"></a>Állandó kötet jogcím létrehozása
 
-Egy állandó kötet jogcímet (PVC) tárolóobjektum osztály használatával dinamikusan létesítenek az Azure fájlmegosztások. 
+Egy állandó kötet jogcímet (PVC) tárolóobjektum osztály használatával dinamikusan létesítenek az Azure fájlmegosztások.
 
 A következő jegyzékfájl segítségével hozzon létre egy állandó kötet jogcím `5GB` a méreténél `ReadWriteOnce` hozzáférést.
 
@@ -132,22 +132,22 @@ Hozzon létre a fogyasztanak a [kubectl létrehozása] [ kubectl-create] parancs
 kubectl create -f azure-pvc-files.yaml
 ```
 
-Most már rendelkezik futó pod lemezt az Azure-e csatlakoztatva a `/mnt/azure` könyvtár. Láthatja, hogy a kötet csatlakoztatási vizsgálatakor ellenőrizze a pod keresztül `kubectl describe pod mypod`.
+Most már rendelkezik futó pod lemezt az Azure-e csatlakoztatva a `/mnt/azure` könyvtár. Ez a konfiguráció látható vizsgálatakor ellenőrizze a pod keresztül `kubectl describe pod mypod`.
 
 ## <a name="mount-options"></a>Csatlakoztatási beállítások
- 
+
 A fileMode és dirMode alapértékeket eltérő Kubernetes verzió a következő táblázatban ismertetett módon.
- 
+
 | verzió: | érték |
 | ---- | ---- |
-| v1.6.x, v1.7.x | 0777 |
+| V1.6.x, v1.7.x | 0777 |
 | v1.8.0-v1.8.5 | 0700 |
 | V1.8.6 vagy újabb | 0755 |
 | v1.9.0 | 0700 |
 | V1.9.1 vagy újabb | 0755 |
- 
+
 Ha verzió 1.8.5 fürt segítségével vagy nagyobb, csatlakozási beállítások adhatók meg a tárolási osztály objektum. A következő példa készletek `0777`.
- 
+
 ```yaml
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
@@ -162,7 +162,7 @@ mountOptions:
 parameters:
   skuName: Standard_LRS
 ```
- 
+
 Ha verzió 1.8.0 - 1.8.4, fürt segítségével a biztonsági környezet az adható meg a `runAsUser` értéke `0`. Pod biztonsági környezetben további információkért lásd: [konfigurálja a biztonsági környezet][kubernetes-security-context].
 
 ## <a name="next-steps"></a>További lépések

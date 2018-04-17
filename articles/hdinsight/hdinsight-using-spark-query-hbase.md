@@ -1,27 +1,25 @@
 ---
-title: "Olvasási és írási adatok a HBase - Azure HDInsight Spark használatával |} Microsoft Docs"
-description: "A Spark HBase-összekötő segítségével olvashatja és Spark-fürt adatokat írhat HBase-fürtöt."
+title: Olvasási és írási adatok a HBase - Azure HDInsight Spark használatával |} Microsoft Docs
+description: A Spark HBase-összekötő segítségével olvashatja és Spark-fürt adatokat írhat HBase-fürtöt.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: maxluk
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: maxluk
-ms.openlocfilehash: ccbcd1d9cb45da7076d73f71a2ed692e71816650
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: acad1058cbff2099a67603cc547a19d6cac022be
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="use-spark-to-read-and-write-hbase-data"></a>Válassza a Spark írási és olvasási HBase adatok
+# <a name="use-spark-to-read-and-write-hbase-data"></a>A Spark használata HBase-adatok írására és olvasására
 
 Apache HBase jellemzően az alacsony szintű API (vizsgálatokat, lekérdezi és visszahelyezi) vagy egy SQL-szintaxis használatával Phoenix lekérik. Apache Spark HBase összekötő, amely kényelmes és performant alternatív lekérdezése, és módosítsa a HBase tárolt adatokat is mutatja.
 

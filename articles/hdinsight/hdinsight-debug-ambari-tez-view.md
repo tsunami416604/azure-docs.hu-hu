@@ -1,8 +1,8 @@
 ---
-title: "Ambari Tez nézet használata a HDInsight - Azure |} Microsoft Docs"
-description: "Útmutató az Ambari Tez nézet használata a HDInsight-on Tez feladatokhoz."
+title: Ambari Tez nézet használata a HDInsight - Azure |} Microsoft Docs
+description: Útmutató az Ambari Tez nézet használata a HDInsight-on Tez feladatokhoz.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,16 +10,14 @@ ms.assetid: 9c39ea56-670b-4699-aba0-0f64c261e411
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: bf34bc5a65c2beb55c7039868e4d90d83d28de51
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 98874377f31a435e7dd9736410c123ef623928d0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-ambari-views-to-debug-tez-jobs-on-hdinsight"></a>Az Ambari nézetek használata a HDInsight-on Tez feladatokhoz
 
@@ -52,7 +50,7 @@ A Tez nézet csak adatokat tartalmaz, ha egy feladatot, amely használja a Tez m
 
 Az alábbi lépések segítségével által használt Tez Hive-lekérdezések futtatása:
 
-1. Egy böngészőben navigáljon a https://CLUSTERNAME.azurehdinsight.net, ahol **CLUSTERNAME** a HDInsight-fürt neve.
+1. Egy böngészőben navigáljon https://CLUSTERNAME.azurehdinsight.net, ahol **CLUSTERNAME** a HDInsight-fürt neve.
 
 2. Az oldal tetején a menüből válassza ki a **nézetek** ikonra. Ez az ikon négyzetes több tűnik. Válassza ki a legördülő listában megjelenő, **Hive view**.
 

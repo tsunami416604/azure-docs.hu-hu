@@ -1,25 +1,18 @@
 ---
 title: Az Azure Analysis Services Diganostic naplózási |} Microsoft Docs
 description: További tudnivalók az Azure Analysis Services diagnosztikai naplózásának beállítása.
-services: analysis-services
-documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: ''
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 20e2e76e8df9421ee97671000f9557f5db34f1b4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.reviewer: minewiskan
+ms.openlocfilehash: 12f745958130e931bc3c8e81a0a61f3c3f4c4e3c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="setup-diagnostic-logging"></a>Diagnosztikai naplózás beállítása
 
@@ -38,7 +31,7 @@ Kiválasztása **motor** naplózza az összes [Xevent](https://docs.microsoft.co
 
 |Az XEvent kategóriák |esemény neve  |
 |---------|---------|
-|Biztonsági naplózás    |   Audit Login      |
+|Biztonsági naplózás    |   Naplózási bejelentkezés      |
 |Biztonsági naplózás    |   Kijelentkezési naplózása      |
 |Biztonsági naplózás    |   Naplózási kiszolgáló indítása és leállítása      |
 |Folyamatban lévő jelentések     |   Folyamatban van a jelentés kezdő      |

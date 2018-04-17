@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Data Factory Spark programok meghívása |} Microsoft Docs"
-description: "Megtudhatja, hogyan lehet meghívni egy az Azure data factory Spark programok a MapReduce művelethez használatával."
+title: Az Azure Data Factory Spark programok meghívása |} Microsoft Docs
+description: Megtudhatja, hogyan lehet meghívni egy az Azure data factory Spark programok a MapReduce művelethez használatával.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: fd98931c-cab5-4d66-97cb-4c947861255c
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b39e6012365c426e95a38d5c5a40790f584ba473
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 9df8b0987378fef37c7ca8f24070a88cbfc42f2a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Az Azure Data Factory folyamatok Spark programok meghívása
 
@@ -59,7 +59,7 @@ A data factory-folyamat létrehozása egy Spark tevékenységet a szokásos lép
 
 2. A HDInsight Spark-fürt létrehozása az oktatóanyagban szereplő utasítások alapján [Spark-fürt létrehozása hdinsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Társítsa az 1. lépésben a fürthöz létrehozott tárfiók.
 
-3. Töltse le, és tekintse át a Python-parancsfájl **test.py** helyen [https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py](https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py).
+3. Töltse le, és tekintse át a Python-parancsfájl **test.py** helyen [ https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py ](https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py).
 
 4. Töltse fel **test.py** számára a **pyFiles** mappájában a **adfspark** a blob Storage tárolóban. A tároló és a mappa létrehozása, ha azok még nem léteznek.
 
@@ -84,7 +84,7 @@ Adat-előállító létrehozásához kövesse az alábbi lépéseket:
 7. Kattintson a **Létrehozás** gombra.
 
    > [!IMPORTANT]
-   > Data Factory-példányok létrehozásához a [Data Factory közreműködője](../../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) szerepkör tagjának kell lennie az előfizetés/erőforráscsoport szintjén.
+   > Data Factory-példányok létrehozásához a [Data Factory közreműködője](../../role-based-access-control/built-in-roles.md#data-factory-contributor) szerepkör tagjának kell lennie az előfizetés/erőforráscsoport szintjén.
 
 8. Az Azure portál irányítópultján létrehozás láthatja az adat-előállítóban.
 
@@ -353,7 +353,7 @@ A következő mappaszerkezet létrehozása a blob Storage HDInsight kapcsolódó
 | &lt;Felhasználó által definiált &gt; | A bejegyzés fájlt a Spark feladat mutató elérési utat. | Igen | Fájl |
 | . / jars | Ebben a mappában található összes fájl feltöltése, és a fürt a Java classpath helyezve. | Nem | Mappa |
 | ./pyFiles | Ebben a mappában található összes fájl feltöltése, és a fürt PYTHONPATH helyezve. | Nem | Mappa |
-| ./files | Ebben a mappában található összes fájl feltöltése, és a végrehajtó munkakönyvtár helyezve. | Nem | Mappa |
+| . / fájlok | Ebben a mappában található összes fájl feltöltése, és a végrehajtó munkakönyvtár helyezve. | Nem | Mappa |
 | . / archiválja | Ebben a mappában található összes fájl nincs tömörítve. | Nem | Mappa |
 | . / naplói | A Spark-fürt származó naplók tárolására szolgáló mappa.| Nem | Mappa |
 

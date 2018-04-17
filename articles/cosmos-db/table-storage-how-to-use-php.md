@@ -3,22 +3,21 @@ title: Hogyan használható az Azure Storage Table szolgáltatás vagy az Azure 
 description: Használata php-ből a Table szolgáltatás API létrehozása, és törölni kívánja a táblázatot, és helyezze, törlése, és a tábla lekérdezése.
 services: cosmos-db
 documentationcenter: php
-author: mimig1
-manager: jhubbard
-editor: tysonn
+author: SnehaGunda
+manager: kfile
 ms.assetid: 1e57f371-6208-4753-b2a0-05db4aede8e3
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: php
 ms.topic: article
-ms.date: 02/22/2018
-ms.author: mimig
-ms.openlocfilehash: 69fa1f8f9717d1ea4ca5081a45317cff8d752809
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/05/2018
+ms.author: sngun
+ms.openlocfilehash: af193c5ec7993d44fe67216843eb18f459718cfe
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-use-azure-storage-table-service-or-cosmos-db-table-api-from-php"></a>Hogyan használható az Azure Storage Table szolgáltatás vagy Cosmos DB tábla API php-ből
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -27,23 +26,18 @@ ms.lasthandoff: 04/06/2018
 ## <a name="overview"></a>Áttekintés
 Ez az útmutató bemutatja, hogyan hajthat végre a gyakori forgatókönyvek az Azure Storage Table szolgáltatás és az Azure Cosmos DB tábla API használatával. A mintákat a PHP és -felhasználási nyelven íródtak a [Azure Storage tábla PHP ügyféloldali kódtár][download]. Az ismertetett forgatókönyvek **létrehozása és egy tábla törlése**, és **beszúrását, törlését és entitások egy tábla lekérdezése**. Az Azure Table szolgáltatás további információkért tekintse meg a [további lépések](#next-steps) szakasz.
 
-[!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
 ## <a name="create-an-azure-service-account"></a>Az Azure szolgáltatás-fiók létrehozása
 
-Dolgozhat Azure Table storage vagy Azure Cosmos DB tábla API segítségével. További ehhez beolvassa a szolgáltatások közötti különbségekről [ajánlatok tábla](table-introduction.md#table-offerings). Hozzon létre egy fiókot a szolgáltatás használni fog lesz szüksége. 
+[!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-### <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
+### <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása
 
-Az első tárfiók létrehozásához legegyszerűbb módja a [Azure-portálon](https://portal.azure.com). További tudnivalókért lásd: [Create a storage account](../storage/common/storage-create-storage-account.md#create-a-storage-account) (Tárfiók létrehozása).
+[!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
-A Storage-fiók használatával is létrehozhat [Azure PowerShell](../storage/common/storage-powershell-guide-full.md) vagy [Azure CLI](../storage/common/storage-azure-cli.md).
+### <a name="create-an-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB tábla API-fiók létrehozása
 
-Ha nem szeretné most hozzon létre egy tárfiókot, futtathatja és tesztelheti a kódját a helyi környezetben is használhatja az Azure Storage emulator. További információkért lásd: [Fejlesztés és tesztelés az Azure Storage Emulatorral](../storage/common/storage-use-emulator.md).
-
-### <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB-fiók létrehozása
-
-Egy Azure Cosmos DB fiók létrehozását, lásd: [tábla API-fiók létrehozása](create-table-dotnet.md#create-a-database-account).
+[!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="create-a-php-application"></a>PHP-alkalmazás létrehozása
 

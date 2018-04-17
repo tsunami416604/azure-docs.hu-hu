@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/03/2018
+ms.date: 04/05/2018
 ms.author: jeedes
-ms.openlocfilehash: 6a72cc1829b7b8a5c7c588543d0b5c91f9f36bf5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2c41b2c297d8d89554950e8c77201ff5bedf743e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-elium"></a>Oktatóanyag: Azure Active Directoryval integrált Elium
 
@@ -117,7 +117,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: ` https://<platform-domain>.elium.com/login/saml2/login`
      
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Ezeket az értékeket az elérhetővé válik a **SP metaadatfájl** letölthető a következő `https://<platform-domain>/login/saml2/metadata`, amely esetén, tekintse meg az oktatóanyag későbbi részében.
+    > Ezek az értékek nincsenek valós. Ezeket az értékeket az elérhetővé válik a **SP metaadatfájl** letölthető a következő `https://<platform-domain>.elium.com/login/saml2/metadata`, amely esetén, tekintse meg az oktatóanyag későbbi részében.
 
 5. A Elium alkalmazás a SAML helyességi feltételek egy meghatározott formátumban, amelyek megkövetelik olyan egyéni attribútum-leképezésekhez hozzáadása a SAML-jogkivonat attribútumok konfigurációs vár. A következő jogcímek alkalmazás konfigurálása. Ezek az attribútumok értékének kezelheti a "**felhasználói attribútumok**" szakasz alkalmazás integráció lapján.
 
@@ -128,10 +128,10 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     | Attribútum neve | Attribútum értéke |   
     | ---------------| ----------------|
     | e-mail   |user.mail |
-    | first_name| user.givenname |
-    | last_name| user.surname|
+    | first_name| User.givenName |
+    | last_name| User.surname|
     | job_title| user.jobtitle|
-    | Vállalati| user.companyname|
+    | Vállalati| User.CompanyName|
     
     > [!NOTE]
     > Ezek azok az alapértelmezett jogcímeket. **Csak e-mail jogcím szükség**. Jogcím kiépítése is csak az e-mailek JIT megadása kötelező. Egy másik felhasználói platformra más egyéni jogcím egy ügyfél platform változhat.

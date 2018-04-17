@@ -1,24 +1,24 @@
 ---
-title: "Az Azure Active Directory engedélyeinek összehasonlítása |} Microsoft Docs"
-description: "Hasonlítsa össze a tag, Vendég, alkalmazás tulajdonosa és csoportengedélyek tulajdonosa"
+title: Az Azure Active Directory engedélyeinek összehasonlítása |} Microsoft Docs
+description: Hasonlítsa össze a tag, Vendég, alkalmazás tulajdonosa és csoportengedélyek tulajdonosa
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: curtand
 ms.reviewer: vincesm
-ms.openlocfilehash: 880eaedcba2c0cdfe057ddb2460cf6a19bf8298e
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 7465486109af773403c61f6b4505d932949009df
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="default-user-permissions-in-azure-active-directory"></a>Alapértelmezett felhasználói engedélyek az Azure Active Directoryban
 
@@ -77,6 +77,6 @@ Amikor egy felhasználó létrehoz egy csoportot, azok automatikusan hozzá lesz
 ## <a name="next-steps"></a>További lépések
 
 * Az Azure-előfizetések rendszergazdáinak módosításáról további információ: [Azure-rendszergazdai szerepkörök felvétele vagy módosítása](../billing-add-change-azure-subscription-administrator.md)
-* Az erőforrások hozzáférésének Microsoft Azure-ban történő kezeléséről további információért lásd: [Az erőforrások hozzáférésének megismerése az Azure-ban](active-directory-understanding-resource-access.md)
+* Az erőforrások hozzáférésének Microsoft Azure-ban történő kezeléséről további információért lásd: [Az erőforrások hozzáférésének megismerése az Azure-ban](../role-based-access-control/rbac-and-directory-admin-roles.md)
 * Hogyan Azure Active Directory vonatkozik-e az Azure-előfizetéshez további információkért lásd: [kapcsolódnak hogyan Azure-előfizetések az Azure Active Directoryval](active-directory-how-subscriptions-associated-directory.md)
 * [Felhasználók kezelése](active-directory-create-users.md)

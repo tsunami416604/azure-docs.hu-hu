@@ -1,24 +1,24 @@
 ---
-title: "Azure Table Storage és Azure Cosmos DB tábla API használata Ruby |} Microsoft Docs"
-description: "Az Azure Table Storage, amely egy NoSQL-adattár, a strukturált adatok felhőben való tárolásához használható."
+title: Azure Table Storage és Azure Cosmos DB tábla API használata Ruby |} Microsoft Docs
+description: Az Azure Table Storage, amely egy NoSQL-adattár, a strukturált adatok felhőben való tárolásához használható.
 services: cosmos-db
 documentationcenter: ruby
-author: mimig1
-manager: jhubbard
-editor: 
+author: SnehaGunda
+manager: kfile
+editor: ''
 ms.assetid: 047cd9ff-17d3-4c15-9284-1b5cc61a3224
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
-ms.date: 02/27/2018
-ms.author: mimig
-ms.openlocfilehash: 104d793826116462f71e4889386906256b2df8f8
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.date: 04/05/2018
+ms.author: sngun
+ms.openlocfilehash: 19ffdab40b3032421612ef4ba1b840eeb0d2e62b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-ruby"></a>Ruby Azure Table Storage és Azure Cosmos DB tábla API használata
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -27,9 +27,14 @@ ms.lasthandoff: 03/08/2018
 ## <a name="overview"></a>Áttekintés
 Ez az útmutató bemutatja, hogyan hajthat végre a gyakori forgatókönyvek az Azure Table szolgáltatás és az Azure Cosmos DB tábla API használatával. A minták írt Ruby és használni a [Azure Storage tábla ügyféloldali kódtára a Rubyhoz](https://github.com/azure/azure-storage-ruby/tree/master/table). Az ismertetett forgatókönyvek **létrehozása és egy tábla törlésével és a tábla az entitások lekérdezése**.
 
-[!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
+## <a name="create-an-azure-service-account"></a>Az Azure szolgáltatás-fiók létrehozása
+[!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-[!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
+### <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása
+[!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
+
+### <a name="create-an-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB tábla API-fiók létrehozása
+[!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="add-access-to-storage-or-azure-cosmos-db"></a>Tároló vagy Azure Cosmos DB hozzáférés hozzáadása
 Azure Storage- vagy Azure Cosmos DB használni, töltse le, és a Ruby Azure-csomag, amely tartalmaz, a felhasználók kényelme érdekében szalagtár szerepel, amely a táblázat többi szolgáltatásokkal kommunikálni.

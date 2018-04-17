@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: 338a153ac4e00c329bf6854306a466657de1d70f
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 5f5cfc49bd7b5e1c06adf97bc6f6ba88fc81f77a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="upgrade-an-azure-container-service-aks-cluster"></a>Azure Container Service- (AKS-) fürt frissítése
 
@@ -100,7 +100,7 @@ Kimenet:
 }
 ```
 
-Most az `az aks show` paranccsal ellenőrizheti, hogy sikerült-e a frissítés.
+Győződjön meg arról, hogy az sikeres volt-e a frissítés a `az aks show` parancsot.
 
 ```azurecli-interactive
 az aks show --name myAKSCluster --resource-group myResourceGroup --output table

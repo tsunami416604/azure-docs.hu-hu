@@ -1,8 +1,8 @@
 ---
-title: "C# használata a hdinsight - Azure Hadoop MapReduce |} Microsoft Docs"
-description: "Megtudhatja, hogyan használja a C# Azure HDInsight Hadoop MapReduce megoldások létrehozásához."
+title: C# használata a hdinsight - Azure Hadoop MapReduce |} Microsoft Docs
+description: Megtudhatja, hogyan használja a C# Azure HDInsight Hadoop MapReduce megoldások létrehozásához.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: d83def76-12ad-4538-bb8e-3ba3542b7211
 ms.custom: hdinsightactive
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 0db3df1666a56ca96af208a4e43f814105de40d5
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 7287972ccf63f33a8cf08065f8d5d30ee1b1afb5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-c-with-mapreduce-streaming-on-hadoop-in-hdinsight"></a>C# használata a hdinsight Hadoop streamelési MapReduce
 
@@ -33,7 +31,7 @@ Hadoop streamelési egy segédprogram, amely lehetővé teszi egy parancsfájl v
 
 ## <a name="net-on-hdinsight"></a>A HDInsight .NET
 
-__Linux-alapú HDInsight__ fürtök használata [monó (https://mono-project.com)](https://mono-project.com) .NET-alkalmazások futtatására. Monó verzió 4.2.1 3.6 verzió HDInsight része. Monó részét képező HDInsight-verzión további információkért lásd: [HDInsight összetevő verziók](../hdinsight-component-versioning.md). Monó adott verzióját használja, tekintse meg a [telepítés vagy frissítés monó](../hdinsight-hadoop-install-mono.md) dokumentum.
+__Linux-alapú HDInsight__ fürtök használata [monó (https://mono-project.com) ](https://mono-project.com) .NET-alkalmazások futtatására. Monó verzió 4.2.1 3.6 verzió HDInsight része. Monó részét képező HDInsight-verzión további információkért lásd: [HDInsight összetevő verziók](../hdinsight-component-versioning.md). Monó adott verzióját használja, tekintse meg a [telepítés vagy frissítés monó](../hdinsight-hadoop-install-mono.md) dokumentum.
 
 A .NET-keretrendszer verzióival is kompatibilisek monó további információkért lásd: [monó kompatibilitási](http://www.mono-project.com/docs/about-mono/compatibility/).
 

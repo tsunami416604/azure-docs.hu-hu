@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: mabrigg
 ms.reviewer: jeffgo
-ms.openlocfilehash: d0b287eb61087e90c898aad5273ab5be8c1f98b2
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: bd3618367f91fe043cc8412481b38a9c996a5275
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>SQL-adatbázis használata a Microsoft Azure veremben
 
@@ -81,7 +81,7 @@ Meg kell hozzon létre egy (vagy több) az SQL Server példányai és/vagy a kü
 
     - Csak egyetlen fájl a könyvtárban, a DependencyFilesLocalPath paraméter által hivatkozott létezhet.
 
-    - A fájl neve nem tartalmazhat speciális karaktereket.
+    - A fájl neve nem tartalmazhat különleges karaktereket vagy szóköz.
 
 
 5. Nyissa meg a **új** emelt szintű (felügyeleti) PowerShell-konzolt, és módosítsa a könyvtárra, amelybe kibontotta a fájlokat. Egy új ablak segítségével a rendszer helytelen PowerShell-modul, amely már be van töltve az esetlegesen felmerülő problémák elkerülése érdekében.
@@ -144,7 +144,7 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
   -DependencyFilesLocalPath $tempDir\cert
  ```
 
-### <a name="deploysqlproviderps1-parameters"></a>DeploySqlProvider.ps1 parameters
+### <a name="deploysqlproviderps1-parameters"></a>DeploySqlProvider.ps1 paraméterek
 Ezeket a paramétereket is megadhat a parancssorban. Ha nem, vagy bármely paraméter érvényesítése sikertelen, a szükséges paraméterek megadását kéri.
 
 | Paraméter neve | Leírás | Megjegyzés vagy az alapértelmezett érték |
@@ -241,7 +241,7 @@ Ezeket a paramétereket is megadhat a parancssorban. Ha nem, vagy bármely param
 | **VMLocalCredential** | Az SQL erőforrás-szolgáltató VM a helyi rendszergazdai fiók hitelesítő adatait. | _Szükséges_ |
 | **PrivilegedEndpoint** | Az IP-cím vagy a kiemelt végpont DNS-nevét. |  _Szükséges_ |
 | **DependencyFilesLocalPath** | A .pfx fájl a könyvtárban kell elhelyezni. | _Nem kötelező_ (_kötelező_ több csomópont) |
-| **DefaultSSLCertificatePassword** | A .pfx tanúsítvány jelszava. | _required_ |
+| **DefaultSSLCertificatePassword** | A .pfx tanúsítvány jelszava. | _Szükséges_ |
 | **MaxRetryCount** | Ennyiszer azt szeretné, majd ismételje meg minden egyes művelet, ha hiba történik.| 2 |
 | **RetryDuration** |Az időkorlát másodpercben az újrapróbálkozások között. | 120 |
 | **Eltávolítás** | Eltávolítja az erőforrás-szolgáltató és minden kapcsolódó erőforrások (lásd az alábbi megjegyzések). | Nem |

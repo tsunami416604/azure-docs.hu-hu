@@ -1,10 +1,10 @@
 ---
-title: "Hogyan kell módosítani, törléséhez vagy kezeléséhez a felügyeleti csoport – Azure |} Microsoft Docs"
-description: "Megtudhatja, hogyan karbantartása, és frissítse a felügyeleti csoport hierarchiában."
+title: Hogyan kell módosítani, törléséhez vagy kezeléséhez a felügyeleti csoport – Azure |} Microsoft Docs
+description: Megtudhatja, hogyan karbantartása, és frissítse a felügyeleti csoport hierarchiában.
 author: rthorn17
 manager: rithorn
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/1/2018
 ms.author: rithorn
-ms.openlocfilehash: 33797ddcd2a6ff083c5fb4b2fa7ddb8f9d6bd76c
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: cba3f9290aff1808133b9d7780e4169fa25a10b2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Kezelheti az erőforrásokat a felügyeleti csoportok 
-Felügyeleti csoportok elősegítő tárolók hozzáférési házirend és megfelelőség kezeléséhez több előfizetéssel. Módosítsa, törölje, és kezelje az ezekben a tárolókban, amelyek együtt hierarchiákkal rendelkeznek a következő [Azure házirend](../azure-policy/azure-policy-introduction.md) és [Azure szerepköralapú hozzáférés vezérlők (RBAC)](../active-directory/role-based-access-control-what-is.md). Felügyeleti csoportok kapcsolatos további információkért lásd: [rendezheti az erőforrásokat az Azure felügyeleti csoportok ](management-groups-overview.md).
+Felügyeleti csoportok elősegítő tárolók hozzáférési házirend és megfelelőség kezeléséhez több előfizetéssel. Módosítsa, törölje, és kezelje az ezekben a tárolókban, amelyek együtt hierarchiákkal rendelkeznek a következő [Azure házirend](../azure-policy/azure-policy-introduction.md) és [Azure szerepköralapú hozzáférés vezérlők (RBAC)](../role-based-access-control/overview.md). Felügyeleti csoportok kapcsolatos további információkért lásd: [rendezheti az erőforrásokat az Azure felügyeleti csoportok ](management-groups-overview.md).
 
 A felügyeleti csoport funkciót egy nyilvános előzetes verziójában érhető el. Indíthatja a felügyeleti csoportok, jelentkezzen be a [Azure-portálon](https://portal.azure.com) vagy használhat [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview), [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/extension?view=azure-cli-latest#az_extension_list_available), vagy a [REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview/2018-01-01-preview) számára a felügyeleti csoportok kezelése.
 
-Változtatásokat egy felügyeleti csoporthoz, a felügyeleti csoport egy tulajdonos vagy közreműködő szerepkörrel kell rendelkeznie. Milyen engedélyekkel Ön rendelkezik, válassza ki a felügyeleti csoportot, és válassza ki **IAM**. Az RBAC-szerepkörök kapcsolatos további információkért lásd: [kezelheti a hozzáférést és engedélyeket az RBAC](../active-directory/role-based-access-control-what-is.md).
+Változtatásokat egy felügyeleti csoporthoz, a felügyeleti csoport egy tulajdonos vagy közreműködő szerepkörrel kell rendelkeznie. Milyen engedélyekkel Ön rendelkezik, válassza ki a felügyeleti csoportot, és válassza ki **IAM**. Az RBAC-szerepkörök kapcsolatos további információkért lásd: [kezelheti a hozzáférést és engedélyeket az RBAC](../role-based-access-control/overview.md).
 
 ## <a name="change-the-name-of-a-management-group"></a>A felügyeleti csoport nevének módosítása 
 A portál, a PowerShell vagy az Azure CLI segítségével módosíthatja a felügyeleti csoport neve.
@@ -64,7 +64,7 @@ A felügyeleti csoport törléséhez a következő követelményeinek teljesüln
 1. Nincsenek olyan felügyeleti csoportokat vagy a felügyeleti csoportba tartozó előfizetések. 
     - A felügyeleti csoport kívül előfizetés áthelyezésével kapcsolatban lásd: [előfizetés áthelyezése egy másik managemnt csoport](#Move-subscriptions-in-the-hierarchy). 
     - Felügyeleti csoport áthelyezése egy másik felügyeleti csoportba, lásd: [helyezze át a felügyeleti csoportok a hierarchia](#Move-management-groups-in-the-hierarchy). 
-2. Írási engedélyekkel rendelkezzen a felügyeleti csoport tulajdonosi vagy közreműködői szerepkört a felügyeleti csoportban. Milyen engedélyekkel Ön rendelkezik, válassza ki a felügyeleti csoportot, és válassza ki **IAM**. Az RBAC-szerepkörök további tudnivalókért lásd: [kezelheti a hozzáférést és engedélyeket az RBAC](../active-directory/role-based-access-control-what-is.md).  
+2. Írási engedélyekkel rendelkezzen a felügyeleti csoport tulajdonosi vagy közreműködői szerepkört a felügyeleti csoportban. Milyen engedélyekkel Ön rendelkezik, válassza ki a felügyeleti csoportot, és válassza ki **IAM**. Az RBAC-szerepkörök további tudnivalókért lásd: [kezelheti a hozzáférést és engedélyeket az RBAC](../role-based-access-control/overview.md).  
 
 ### <a name="delete-in-the-portal"></a>A portál törlése
 
@@ -139,7 +139,7 @@ Helyezze át az előfizetést, van néhány engedélyekkel kell rendelkeznie:
 - A gyermek előfizetés "Owner" szerepkört.
 - Az új fölérendelt felügyeleti csoport "Owner" vagy "Közreműködői" szerepkör. 
 - "Tulajdonos" vagy "Közreműködői" szerepkört a régi szülő felügyeleti csoportra vonatkozóan.
-Milyen engedélyekkel Ön rendelkezik, válassza ki a felügyeleti csoportot, és válassza ki **IAM**. Az RBAC-szerepkörök további tudnivalókért lásd: [kezelheti a hozzáférést és engedélyeket az RBAC](../active-directory/role-based-access-control-what-is.md). 
+Milyen engedélyekkel Ön rendelkezik, válassza ki a felügyeleti csoportot, és válassza ki **IAM**. Az RBAC-szerepkörök további tudnivalókért lásd: [kezelheti a hozzáférést és engedélyeket az RBAC](../role-based-access-control/overview.md). 
 
 ### <a name="move-subscriptions-in-the-portal"></a>Helyezze át az előfizetések a portálon
 
@@ -151,7 +151,7 @@ Milyen engedélyekkel Ön rendelkezik, válassza ki a felügyeleti csoportot, é
 6. Megnyitott menüben válasszon ki a **erőforrástípus** az elem, amely áthelyezni kívánt **előfizetés**.
 7. A megfelelő azonosítójú listájában válassza ki az előfizetést 
 
-    ![Children](media/management-groups/add_context_2.png)
+    ![Gyermekek](media/management-groups/add_context_2.png)
 8. Válassza ki a "Mentés"
 
 **Előfizetés eltávolítása a felügyeleti csoport**
@@ -207,7 +207,7 @@ Ha a fölérendelt felügyeleti csoport, a gyermek erőforrások közé tartozna
 6. Megnyitott menüben válasszon ki a **erőforrástípus** az elem, amely áthelyezni kívánt **felügyeleti csoport**.
 7. Válassza ki a felügyeleti csoport helyes Azonosítóját és nevét.
 
-    ![move](media/management-groups/add_context.png)
+    ![Helyezze át](media/management-groups/add_context.png)
 8. Válassza ki **mentése**
 
 ### <a name="move-management-groups-in-powershell"></a>Helyezze át a felügyeleti csoportok a PowerShellben

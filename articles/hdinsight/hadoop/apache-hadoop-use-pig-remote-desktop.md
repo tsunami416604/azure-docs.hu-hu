@@ -1,8 +1,8 @@
 ---
-title: "Hadoop a Pig használata a HDInsight - Azure távoli asztal |} Microsoft Docs"
-description: "Ismerje meg, a Pig parancs használata a távoli asztali kapcsolat egy Windows-alapú Hadoop-fürt hdinsightban történő Pig Latin utasítás futtatását."
+title: Hadoop a Pig használata a HDInsight - Azure távoli asztal |} Microsoft Docs
+description: Ismerje meg, a Pig parancs használata a távoli asztali kapcsolat egy Windows-alapú Hadoop-fürt hdinsightban történő Pig Latin utasítás futtatását.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: e034a286-de0f-465f-8bf1-3d085ca6abed
 ms.service: hdinsight
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8b5e8e7f400a4494549c997e969a46ca90eb0ba5
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: f8d403e46f7460dff92cc418b829cc5510efd982
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="run-pig-jobs-from-a-remote-desktop-connection"></a>A távoli asztali kapcsolat-ről futtatva a Pig-feladatokhoz
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
@@ -64,7 +62,7 @@ A távoli asztal engedélyezése a HDInsight-fürthöz, majd csatlakozni a köve
 
     <table>
     <tr>
-    <th>Utasítás</th><th>Funkció</th>
+    <th>Utasítás</th><th>Művelet</th>
     </tr>
     <tr>
     <td>FILTEREDLEVELS = által LOGLEVEL SZINTJEINEK értéke nem null;</td><td>A naplózási szint megadásához null értéket tartalmazó sorok eltávolítása és az eredményt FILTEREDLEVELS be.</td>
@@ -79,7 +77,7 @@ A távoli asztal engedélyezése a HDInsight-fürthöz, majd csatlakozni a köve
     <td>EREDMÉNY = rendelés GYAKORISÁGOT által száma desc;</td><td>A naplózási szintek rendelések (csökkenő) száma szerint, és tárolja az eredmény</td>
     </tr>
     </table>
-6.Az átalakítás eredménye használatával is mentheti a `STORE` utasítást. Például a következő parancsot a menti a `RESULT` számára a **/example/data/pigout** könyvtárban lévő az alapértelmezett tároló, a fürt:
+6. Az átalakítás eredménye használatával is mentheti a `STORE` utasítást. Például a következő parancsot a menti a `RESULT` számára a **/example/data/pigout** könyvtárban lévő az alapértelmezett tároló, a fürt:
 
         STORE RESULT into 'wasb:///example/data/pigout'
 

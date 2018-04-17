@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: ab4bc4024248675c6325159b5507add1274addc9
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b33c95af94c436b1069658963692242d0f905554
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API-importálási korlátozások és ismert problémák
 ## <a name="about-this-list"></a>Ez a lista
@@ -34,16 +34,16 @@ A nyílt API-t dokumentum importálása hibák fordulnak elő, ha győződjön m
 * Egyéni bővítmény importálási figyelmen kívül lesznek hagyva, és nem menti és nem őrződik meg az exportált.
 
 > [!IMPORTANT]
-> Ez [dokumentum](https://blogs.msdn.microsoft.com/apimanagement/2018/03/28/important-changes-to-openapi-import-and-export/) a fontos információkat és tippeket OpenAPI importálási kapcsolódik.
+> Az OpenAPI-importálásról ebben a [dokumentumban](https://blogs.msdn.microsoft.com/apimanagement/2018/03/28/important-changes-to-openapi-import-and-export/) talál fontos információt és cikkeket.
 
 ## <a name="wsdl"> </a>WSDL
 SOAP áteresztő API-k létrehozása, vagy a SOAP-REST API háttéralkalmazás szolgálhat WSDL fájljait használja.
-
-* **WSDL** -jelenleg APIM nem támogatja a API-k ezzel az attribútummal. Az ügyfelek kell az importált elem egyesítése egy dokumentumot.
-* **Több alkotórészek üzenetek** jelenleg APIM nem támogatja az ilyen típusú üzenetek.
-* **WCF wsHttpBinding** SOAP-szolgáltatások a Windows Communication Foundation létre kell használnia a basicHttpBinding - wsHttpBinding nem támogatott.
-* **Az MTOM** -szolgáltatások MTOM <em>előfordulhat, hogy</em> működik. Jelenleg nem érhető hivatalos támogatást.
-* **A rekurzió** , amelyek meghatározott rekurzív módon (például saját magukat olyan tömbjét lásd) APIM által nem támogatott.
+* **SOAP-kötések** -style "dokumentumok" és "literal" encoding csak a SOAP-kötések támogatottak. Nincs "rpc" style vagy a SOAP-kódolás nem támogatott.
+* **WSDL** -Ez az attribútum nem támogatott. Az ügyfelek a import kell egyesítése egy dokumentumot.
+* **Több alkotórészek üzenetek** -üzenetek típusai nem támogatottak.
+* **WCF wsHttpBinding** -SOAP-szolgáltatások a Windows Communication Foundation létre kell használnia a basicHttpBinding - wsHttpBinding nem támogatott.
+* **Az MTOM** - szolgáltatásokat az MTOM <em>előfordulhat, hogy</em> működik. Jelenleg nem érhető hivatalos támogatást.
+* **A rekurzió** -típusok definiált rekurzív módon (például saját magukat olyan tömbjét lásd) APIM által nem támogatott.
 
 ## <a name="wadl"> </a>WADL
 Jelenleg nincsenek ismert problémák WADL importálása.

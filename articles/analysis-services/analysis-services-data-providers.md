@@ -1,25 +1,18 @@
 ---
-title: "Azure Analysis Services való kapcsolódáshoz szükséges ügyfél-könyvtárak |} Microsoft Docs"
-description: "Ismerteti a szükséges ügyfél-alkalmazások és az eszközök csatlakozni az Azure Analysis Services ügyfél könyvtárak"
-services: analysis-services
-documentationcenter: 
+title: Azure Analysis Services való kapcsolódáshoz szükséges ügyfél-könyvtárak |} Microsoft Docs
+description: Ismerteti a szükséges ügyfél-alkalmazások és az eszközök csatlakozni az Azure Analysis Services ügyfél könyvtárak
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/27/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 5c847f5cd02503b708db8a0a0211b5d403df0943
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.reviewer: minewiskan
+ms.openlocfilehash: 66818fd0d6618abe83903df8723e3e17920a4a2e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Ügyfél-könyvtárakban csatlakozás Azure Analysis Services szolgáltatáshoz
 
@@ -72,7 +65,7 @@ A Microsoft ügyfél alkalmazások, például a Power BI Desktop és az Excel te
 
  ADOMD.NET egy Analysis Services-adatok lekérdezése használt felügyelt adatok ügyféloldali kódtárára. Eszközök és az ügyfélalkalmazások által használt, és telepítve. 
   
- -Adatbázishoz szeretne csatlakozni, ha tárakat három kapcsolati karakterlánc tulajdonságainak hasonlóak. Szinte bármilyen kapcsolati karakterlánc használatával ADOMD.NET definiálása [Microsoft.AnalysisServices.AdomdClient.AdomdConnection.ConnectionString](https://msdn.microsoft.com/library/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring.aspx) AMO és az Analysis Services OLE DB szolgáltató (MSOLAP) is működik. További tudnivalókért lásd: [kapcsolatikarakterlánc-tulajdonságokat &#40; Analysis Services &#41; ](https://docs.microsoft.com/sql/analysis-services/instances/connection-string-properties-analysis-services).  
+ -Adatbázishoz szeretne csatlakozni, ha tárakat három kapcsolati karakterlánc tulajdonságainak hasonlóak. Szinte bármilyen kapcsolati karakterlánc használatával ADOMD.NET definiálása [Microsoft.AnalysisServices.AdomdClient.AdomdConnection.ConnectionString](https://msdn.microsoft.com/library/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring.aspx) AMO és az Analysis Services OLE DB szolgáltató (MSOLAP) is működik. További tudnivalókért lásd: [kapcsolatikarakterlánc-tulajdonságokat &#40;Analysis Services&#41;](https://docs.microsoft.com/sql/analysis-services/instances/connection-string-properties-analysis-services).  
 
   
 ##  <a name="bkmk_LibUpdate"></a> Ügyfél könyvtárverzió megállapítása   
@@ -94,7 +87,7 @@ A Microsoft ügyfél alkalmazások, például a Power BI Desktop és az Excel te
 ### <a name="adomd"></a>ADOMD
 
 1. Nyissa meg a következőt: `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices.AdomdClient\`. Ha egynél több mappát, válassza ki a nagyobb számot.
-2. Right-click **Microsoft.AnalysisServices.AdomdClient** > **Properties** > **Details**.  
+2. Kattintson a jobb gombbal **Microsoft.AnalysisServices.AdomdClient** > **tulajdonságok** > **részletek**.  
 
 
 ## <a name="next-steps"></a>További lépések

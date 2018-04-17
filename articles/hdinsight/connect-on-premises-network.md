@@ -1,23 +1,21 @@
 ---
-title: "HDInsight csatlakozni a helyszíni hálózatra - Azure HDInsight |} Microsoft Docs"
-description: "Útmutató a HDInsight-fürtök létrehozása egy Azure virtuális hálózatra, és csatlakoztassa a helyszíni hálózat. Megtudhatja, hogyan konfigurálhatja a névfeloldást HDInsight és a helyszíni hálózat között egyéni DNS-kiszolgáló használatával."
-documentationcenter: 
+title: HDInsight csatlakozni a helyszíni hálózatra - Azure HDInsight |} Microsoft Docs
+description: Útmutató a HDInsight-fürtök létrehozása egy Azure virtuális hálózatra, és csatlakoztassa a helyszíni hálózat. Megtudhatja, hogyan konfigurálhatja a névfeloldást HDInsight és a helyszíni hálózat között egyéni DNS-kiszolgáló használatával.
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: larryfr
-ms.openlocfilehash: 9470e052b4f57e52fa140b53fa7c32d199c58e1e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ea793af7fc4565c054675af7cbf88b74722690f7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-hdinsight-to-your-on-premise-network"></a>HDInsight csatlakozni a helyi hálózatra
 
@@ -74,7 +72,7 @@ Linux virtuális gép által használt létrehozásához a [kötési](https://ww
 > * [Virtuális gép létrehozása – Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 > * [Virtuális gép - létrehozása az Azure PowerShell](../virtual-machines/linux/quick-create-portal.md)
 
-1. Az a [Azure-portálon](https://portal.azure.com), jelölje be  __+__ , __számítási__, és __Ubuntu Server 16.04 LTS__.
+1. Az a [Azure-portálon](https://portal.azure.com), jelölje be __+__, __számítási__, és __Ubuntu Server 16.04 LTS__.
 
     ![Egy Ubuntu virtuális gép létrehozása](./media/connect-on-premises-network/create-ubuntu-vm.png)
 
@@ -123,10 +121,10 @@ Linux virtuális gép által használt létrehozásához a [kötési](https://ww
     > [!NOTE]
     > Nincsenek az sokféleképpen beszerzése a `ssh` segédprogram. A Linux, Unix és macOS Ez biztosítja az operációs rendszer részeként. Ha Windows használja, fontolja meg az alábbi lehetőségek közül:
     >
-    > * [Azure Cloud Shell](../cloud-shell/quickstart.md)
+    > * [Azure-felhőbe rendszerhéj](../cloud-shell/quickstart.md)
     > * [A Windows 10 Ubuntu bash](https://msdn.microsoft.com/commandline/wsl/about)
-    > * [Git (https://git-scm.com/)](https://git-scm.com/)
-    > * [OpenSSH (https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
+    > * [Git)https://git-scm.com/)](https://git-scm.com/)
+    > * [OpenSSH)https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
 
 2. A kötés telepítéséhez használja az SSH-munkamenetet a következő parancsokat:
 
@@ -297,7 +295,7 @@ Az alábbi témakörben található lépésekkel a [az Azure portál használat�
 
 ## <a name="connecting-to-hdinsight"></a>HDInsight csatlakozik
 
-A legtöbb dokumentáció a HDInsight feltételezi, hogy rendelkezik-e a fürt eléréséhez az interneten keresztül. Például, hogy a fürthöz https://CLUSTERNAME.azurehdinsight.net kapcsolódhat. A cím használja a nyilvános átjáró, amely nem érhető el, ha már használta az NSG-k vagy udr-EK hozzáférés korlátozása az internetről.
+A legtöbb dokumentáció a HDInsight feltételezi, hogy rendelkezik-e a fürt eléréséhez az interneten keresztül. Például hogy a https://CLUSTERNAME.azurehdinsight.net címen tud csatlakozni a fürthöz. A cím használja a nyilvános átjáró, amely nem érhető el, ha már használta az NSG-k vagy udr-EK hozzáférés korlátozása az internetről.
 
 Bizonyos dokumentációkban is hivatkozik `headnodehost` az SSH-munkamenetet a fürthöz történő csatlakozás során. Ez a cím csak érhető el a fürt, és nem használható a virtuális hálózaton keresztül csatlakozó ügyfeleken.
 

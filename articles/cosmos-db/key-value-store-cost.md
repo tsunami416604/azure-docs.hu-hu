@@ -1,13 +1,12 @@
 ---
-title: "Azure Cosmos-adatbázis egy kulcs-érték tárolóként – költség áttekintése |} Microsoft Docs"
-description: "További tudnivalók az alacsony költségű Azure Cosmos DB használatával egy kulcs-érték tárolóként."
-keywords: "kulcs-érték tároló"
+title: Azure Cosmos-adatbázis egy kulcs-érték tárolóként – költség áttekintése |} Microsoft Docs
+description: További tudnivalók az alacsony költségű Azure Cosmos DB használatával egy kulcs-érték tárolóként.
+keywords: kulcs-érték tároló
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-editor: 
-tags: 
-documentationcenter: 
+author: SnehaGunda
+manager: kfile
+tags: ''
+documentationcenter: ''
 ms.assetid: 7f765c17-8549-4509-9475-46394fc3a218
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
-ms.author: mimig
-ms.openlocfilehash: e6f87cd82ebe31965fcaac1f66d2df03fd58294f
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.author: sngun
+ms.openlocfilehash: 9854ed30672ea16650fbdd98e991fb3916afef07
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Azure Cosmos-adatbázis egy kulcs-érték tárolóként – költség áttekintése
 
@@ -53,7 +52,7 @@ Ha 1000 RU/mp, 3,6 m RU/óra és a rendszer a díjak költsége $0.08 az óra (a
 
 A legtöbb alapvető blob vagy objektum tárolók szolgáltatások költség $0,40 / millió olvasási tranzakció és $5 millió írási tranzakciónként. Ha optimálisan használja, Cosmos DB 98 %-kal (1 KB-os tranzakciókhoz) ezek más megoldásokat olcsóbbak lehet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Kövessen bennünket az új cikkek az Azure Cosmos DB az erőforrás-kiépítés optimalizálásához. Addig nyugodtan használja a [RU Számológép](https://www.documentdb.com/capacityplanner).
 

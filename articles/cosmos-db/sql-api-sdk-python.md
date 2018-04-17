@@ -4,7 +4,7 @@ description: Tudnivalók az SQL Python API és SDK, beleértve a kiadási dátum
 services: cosmos-db
 documentationcenter: python
 author: rnagpal
-manager: jhubbard
+manager: kfile
 editor: cgronlun
 ms.assetid: 3ac344a9-b2fa-4a3f-a4cc-02d287e05469
 ms.service: cosmos-db
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 1/4/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dbc23dda366e38bda20010576c3258f0fd6e656b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: cab4e44f8c5612a71aa9e024b4327a55bd2b8b87
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB Python SDK API-SQL: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ ms.lasthandoff: 03/30/2018
 
 <tr><td>**SDK telepítési utasításokat**</td><td>[Python SDK telepítési utasításokat](http://azure.github.io/azure-documentdb-python/)</td></tr>
 
-<tr><td>**Hozzájárul az SDK**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-python)</td></tr>
+<tr><td>**Hozzájárul az SDK**</td><td>[GitHubon](https://github.com/Azure/azure-documentdb-python)</td></tr>
 
 <tr><td>**Első lépések**</td><td>[Ismerkedés a Python SDK-val](sql-api-python-application.md)</td></tr>
 
@@ -163,7 +163,7 @@ A Cosmos DB kivont SDK használatával a szolgáltatás vannak elutasította.
 | 0.9.1-prelease |2014. szeptember 23. |2016. február 29. |
 | 0.9.0-prelease |2014. augusztus 21. |2016. február 29. |
 
-## <a name="faq"></a>Gyakori kérdések
+## <a name="faq"></a>GYIK
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Lásd még

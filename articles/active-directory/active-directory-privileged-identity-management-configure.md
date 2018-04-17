@@ -1,11 +1,11 @@
 ---
-title: "Konfigurálja az Azure AD Privileged Identity Management |} Microsoft Docs"
-description: "Ez a témakör azt ismerteti, mi az Azure AD Privileged Identity Management és a PIM használatát a felhő biztonság növelése érdekében."
+title: Konfigurálja az Azure AD Privileged Identity Management |} Microsoft Docs
+description: Ez a témakör azt ismerteti, mi az Azure AD Privileged Identity Management és a PIM használatát a felhő biztonság növelése érdekében.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: c548ed2e-06e3-4eaf-a63d-0f02ee72da25
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/07/2018
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 827e3521be8918f4de00113fd9eaf4e01679cac5
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f91ebe0f94c57c9ad217ffe280f9aa0a9aa6acb9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Mi az Azure AD Privileged Identity Management?
 
@@ -72,7 +72,7 @@ Azure RBAC-szerepkörök csak egy előfizetési rendszergazda, erőforrás tulaj
 
 ## <a name="privileged-identity-management-overview-entry-point"></a>Privileged Identity Management áttekintése (belépési pont)
 
-Az Azure AD Privileged Identity Management támogatja az Azure Active directory szerepkörök és a szerepkörök felügyelete az Azure-erőforrások (előzetes verzió). Szerepkörök az Azure-erőforrások funkciót az Azure AD rendszergazdai szerepkörei eltérnek. Azure-erőforrás szerepkör, amellyel hozzárendelt erőforrás és az összes alárendelt erőforrásokhoz (más néven öröklési) erőforrás-hierarchiában részletes engedélyeket ad. [További információ az RBAC, erőforrás-hierarchia és öröklési további](role-based-access-control-configure.md). Mind az Azure Active directory szerepkörök PIM, és az Azure-erőforrások (előzetes verzió) felügyelhetők a megfelelő hivatkozásra a PIM áttekintése belépési pont bal oldali navigációs menü kezelése részében található elérésével.
+Az Azure AD Privileged Identity Management támogatja az Azure Active directory szerepkörök és a szerepkörök felügyelete az Azure-erőforrások (előzetes verzió). Szerepkörök az Azure-erőforrások funkciót az Azure AD rendszergazdai szerepkörei eltérnek. Azure-erőforrás szerepkör, amellyel hozzárendelt erőforrás és az összes alárendelt erőforrásokhoz (más néven öröklési) erőforrás-hierarchiában részletes engedélyeket ad. [További információ az RBAC, erőforrás-hierarchia és öröklési további](../role-based-access-control/role-assignments-portal.md). Mind az Azure Active directory szerepkörök PIM, és az Azure-erőforrások (előzetes verzió) felügyelhetők a megfelelő hivatkozásra a PIM áttekintése belépési pont bal oldali navigációs menü kezelése részében található elérésével.
 
 A PIM kényelmes hozzáférést biztosít a szerepkörök aktiválása, és tekintse meg függő aktiválások/kérések, függőben lévő jóváhagyások (az Azure Active directory szerepkörök), és ellenőrzi, hogy a válasz a bal oldali navigációs menü feladatok részéből függőben.
 

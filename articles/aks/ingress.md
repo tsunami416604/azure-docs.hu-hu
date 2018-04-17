@@ -9,17 +9,21 @@ ms.topic: article
 ms.date: 03/03/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 4294169e89533150cade700fb89e14c4121c4404
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1fe8a52a946b7e70a845e26b80dec94176c346f0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="https-ingress-on-azure-container-service-aks"></a>Azure tárolószolgáltatás (AKS) HTTPS érkező
 
 Az érkező vezérlőhöz egy adott szoftver, amely fordított proxy, konfigurálható a forgalom útválasztásához megszüntetése, és a TLS Kubernetes szolgáltatásokhoz. Kubernetes érkező erőforrások érkező szabályok és az egyes Kubernetes szolgáltatások útvonalak konfigurálására szolgálnak. Az érkező vezérlőhöz és érkező szabályokat használ, egy külső cím forgalom irányítására vonatkozik több szolgáltatásra Kubernetes fürtben használható.
 
 Ez a dokumentum végigvezeti egy minta központi telepítése a [NGINX érkező vezérlő] [ nginx-ingress] Azure tároló szolgáltatás (AKS) fürtben. Emellett a [KUBE-LEGO] [ kube-lego] projekt használt automatikus létrehozása és konfigurálása [most titkosítása] [ lets-encrypt] tanúsítványokat. Végül több alkalmazást futtathatók a AKS fürtben, amelyek érhető el egyetlen címen keresztül.
+
+## <a name="prerequisite"></a>Előfeltétel
+
+Helm parancssori felület telepítése – tekintse meg a Helm CLI [dokumentáció] [helm-cli] telepítési utasításokat.
 
 ## <a name="install-an-ingress-controller"></a>Egy érkező controller telepítése
 
@@ -183,6 +187,7 @@ További információ a jelen dokumentumban bemutatott szoftver.
 - [KUBE-LEGO][kube-lego]
 
 <!-- LINKS - external -->
+[helm-client]: https://docs.microsoft.com/en-us/azure/aks/kubernetes-helm#install-helm-cli
 [kube-lego]: https://github.com/jetstack/kube-lego
 [lets-encrypt]: https://letsencrypt.org/
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx

@@ -1,13 +1,13 @@
 ---
-title: "Az önkiszolgáló jelszó-átállítási gyakori kérdések – Azure Active Directoryban"
-description: "Gyakori kérdések az Azure AD az önkiszolgáló jelszó alaphelyzetbe állítása"
+title: Az önkiszolgáló jelszó-átállítási gyakori kérdések – Azure Active Directoryban
+description: Gyakori kérdések az Azure AD az önkiszolgáló jelszó alaphelyzetbe állítása
 services: active-directory
-keywords: "Az Active directory-jelszókezelés, jelszókezelés, az Azure AD self service jelszó alaphelyzetbe állítása"
-documentationcenter: 
+keywords: Az Active directory-jelszókezelés, jelszókezelés, az Azure AD self service jelszó alaphelyzetbe állítása
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: seohack1
-ms.openlocfilehash: f5236b81c70caee4417777ffadcababebaa84620
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6d30e3f099f497f35938b702d5fbb3ca38565f7c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="password-management-frequently-asked-questions"></a>A jelszókezelés gyakran ismételt kérdések
 
@@ -105,7 +105,7 @@ Ez a GYIK a következő szakaszok oszlik:
     >Ha nem jelenik meg az értesítés a időkereten belül:
         > * Ellenőrizze a Levélszemét mappát.
         > * Ellenőrizze, hogy a vagy e-mail, amelyhez csatlakozik egy várt.
-        > * Ellenőrizze, hogy a címtárban a hitelesítési adatok megfelelően van formázva, például + 1 4255551234 vagy  *user@contoso.com* . 
+        > * Ellenőrizze, hogy a címtárban a hitelesítési adatok megfelelően van formázva, például + 1 4255551234 vagy *user@contoso.com*. 
   >
   >
 * **K: jelszó alaphelyzetbe állítása milyen nyelveket támogatja?**
@@ -190,7 +190,7 @@ Ez a GYIK a következő szakaszok oszlik:
   >
 * **K: a jelszó alaphelyzetbe állításával felhasználók megakadályozása?**
 
-  > **V:** Igen, ha csoportot használjon SSPR engedélyezéséhez, eltávolíthat egy adott felhasználó a csoport, amely lehetővé teszi a felhasználók visszaállíthassák a jelszavukat.
+  > **V:** Igen, ha csoportot használjon SSPR engedélyezéséhez, eltávolíthat egy adott felhasználó a csoport, amely lehetővé teszi a felhasználók visszaállíthassák a jelszavukat. Ha a felhasználó egy globális rendszergazda azok megőrzik a jelszó alaphelyzetbe állításához, és ez nem lehet letiltani.
   >
   >
 

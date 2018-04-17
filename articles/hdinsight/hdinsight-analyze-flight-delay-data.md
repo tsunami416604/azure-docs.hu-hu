@@ -1,25 +1,23 @@
 ---
-title: "A HDInsight - Azure Hadoop repülési késleltetés adatok elemzése |} Microsoft Docs"
-description: "Ismerje meg, egy Windows PowerShell-parancsfájl használata a HDInsight-fürtök létrehozása, egy Hive-feladat futtatása, a Sqoop feladat futtatása és a fürt törlésekor."
+title: A HDInsight - Azure Hadoop repülési késleltetés adatok elemzése |} Microsoft Docs
+description: Ismerje meg, egy Windows PowerShell-parancsfájl használata a HDInsight-fürtök létrehozása, egy Hive-feladat futtatása, a Sqoop feladat futtatása és a fürt törlésekor.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 00e26aa9-82fb-4dbe-b87d-ffe8e39a5412
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5da745901ec2fe57530e4d7fe38a055e0b8691ac
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 6e42cfa666ad6b6523043f4412a321789adad9a1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>Repülési késleltetés adatok elemzése a Hive HDInsight használatával
 Hive lehetővé teszi egy SQL-szerű nevű programozási nyelv használatával a feladatok Hadoop MapReduce futó  *[HiveQL][hadoop-hiveql]*, amelyek alkalmazhatók felé összefoglalójához, kérdez le, és nagy mennyiségű adatot elemzése.
@@ -256,12 +254,12 @@ Az adatfájl és a HiveQL parancsfájlok feltöltése (lásd: [B függelék](#ap
 2. A lapon válassza ki a következő értékeket:
 
     <table border="1">
-    <tr><th>Név</th><th>Érték</th></tr>
+    <tr><th>Name (Név)</th><th>Érték</th></tr>
     <tr><td>Szűrő év</td><td>2013 </td></tr>
     <tr><td>Időszak szűrése</td><td>Január</td></tr>
-    <tr><td>Mezők</td><td>*Év*, *FlightDate*, *UniqueCarrier*, *szolgáltatónként*, *FlightNum*, *OriginAirportID* , *Származási*, *OriginCityName*, *OriginState*, *DestAirportID*, *cél* , *DestCityName*, *DestState*, *DepDelayMinutes*, *ArrDelay*,  *ArrDelayMinutes*, *CarrierDelay*, *WeatherDelay*, *NASDelay*, *SecurityDelay*,  *LateAircraftDelay* (a többi mező törlése)</td></tr>
+    <tr><td>Mezők</td><td>*Év*, *FlightDate*, *UniqueCarrier*, *szolgáltatónként*, *FlightNum*, *OriginAirportID*, *Származási*, *OriginCityName*, *OriginState*, *DestAirportID*, *cél*, *DestCityName*, *DestState*, *DepDelayMinutes*, *ArrDelay*,  *ArrDelayMinutes*, *CarrierDelay*, *WeatherDelay*, *NASDelay*, *SecurityDelay*,  *LateAircraftDelay* (a többi mező törlése)</td></tr>
     </table>
-3.Kattintson a **letöltése**.
+3. Kattintson a **letöltése**.
 4. Bontsa ki a fájlt a **C:\Tutorials\FlightDelay\2013Data** mappa. Minden fájlt egy CSV-fájl, és körülbelül 60 GB-nál.
 5. Nevezze át a fájlt a benne található adatok hónap nevét. Például a január adatokat tartalmazó fájl neve volna *January.csv*.
 6. Ismételje meg a 2. és 5 fájlok letöltéséhez az egyes 2013 12 hónapig. Szüksége lesz legalább egy fájlt az oktatóanyag futtatásához.
@@ -346,7 +344,7 @@ Az adatfájl és a HiveQL parancsfájlok feltöltése (lásd: [B függelék](#ap
     Get-AzureStorageBlob -Container $blobContainerName  -Context $storageContext -Prefix $destFolder
     #EndRegion
     ```
-4. A szkript futtatásához nyomja le az **F5** billentyűt.
+4. A szkriptek futtatásához nyomja le az **F5** billentyűt.
 
 Ha a fájlok feltöltése más módszert használja, ellenőrizze, hogy a fájl elérési útja oktatóanyagok/flightdelay/adatokat. A fájlokhoz való hozzáférést szintaxisa a következő:
 
@@ -383,8 +381,10 @@ A HiveQL parancsok teljes listáját lásd: [Hive adatdefiníciós nyelv][hadoop
     <tr><td>$storageAccountName</td><td>Az Azure Storage-fiók hol szeretne feltölteni a HiveQL-parancsfájlt.</td></tr>
     <tr><td>$blobContainerName</td><td>A Blob tároló, ahol szeretne feltölteni a HiveQL-parancsfájlt.</td></tr>
     </table>
-2. Nyissa meg az Azure PowerShell ISE.
-3. Másolja és illessze be az alábbi parancsfájl a parancsfájl panelen:
+    
+2. Nyissa meg az Azure PowerShell ISE.  
+
+3. Másolja és illessze be az alábbi parancsfájl a parancsfájl panelen:  
 
     ```powershell
     [CmdletBinding()]
@@ -573,8 +573,10 @@ A HiveQL parancsok teljes listáját lásd: [Hive adatdefiníciós nyelv][hadoop
     <tr><td>$sqlDatabaseLocation</td><td>Ezt az értéket csak akkor, ha hoz létre egy új Azure-adatbázis-kiszolgálót használja.</td></tr>
     <tr><td>$sqlDatabaseName</td><td>Az SQL-adatbázis a AvgDelays tábla a Sqoop feladat létrehozásához használt. Hagyja üresen HDISqoop nevű adatbázist fog létrehozni. A táblanév Sqoop feladat kimenetének AvgDelays. </td></tr>
     </table>
+    
 2. Nyissa meg az Azure PowerShell ISE.
-3. Másolja és illessze be az alábbi parancsfájl a parancsfájl panelen:
+
+3. Másolja és illessze be az alábbi parancsfájl a parancsfájl panelen:  
 
     ```powershell
     [CmdletBinding()]
@@ -703,11 +705,11 @@ A HiveQL parancsok teljes listáját lásd: [Hive adatdefiníciós nyelv][hadoop
 
     Az alábbiakban néhány változók a parancsfájl szerepel:
 
-   * **$ipAddressRestService** -az alapértelmezett érték: http://bot.whatismyipaddress.com. Egy nyilvános IP-címet a külső IP-cím beolvasása a REST-szolgáltatást is. Más szolgáltatások is használhatja, ha azt szeretné. A külső IP-cím, a szolgáltatás segítségével használandó hozzon létre egy tűzfalszabályt, az Azure SQL adatbázis-kiszolgáló számára, hogy Ön hozzáférhessen az adatbázishoz a munkaállomáson (a Windows PowerShell-parancsfájl használatával).
+   * **$ipAddressRestService** -az alapértelmezett érték http://bot.whatismyipaddress.com. Egy nyilvános IP-címet a külső IP-cím beolvasása a REST-szolgáltatást is. Más szolgáltatások is használhatja, ha azt szeretné. A külső IP-cím, a szolgáltatás segítségével használandó hozzon létre egy tűzfalszabályt, az Azure SQL adatbázis-kiszolgáló számára, hogy Ön hozzáférhessen az adatbázishoz a munkaállomáson (a Windows PowerShell-parancsfájl használatával).
    * **$fireWallRuleName** – az Azure SQL-kiszolgáló a tűzfalszabály neve. Az alapértelmezett név az <u>FlightDelay</u>. Ha azt szeretné, átnevezheti.
    * **$sqlDatabaseMaxSizeGB** -Ez az érték csak egy új Azure SQL adatbázis-kiszolgáló létrehozásakor használható. Az alapértelmezett érték: 10 GB-os. 10 GB-os is elegendő ehhez az oktatóanyaghoz.
    * **$sqlDatabaseName** -Ez az érték csak egy új Azure SQL-adatbázis létrehozásakor használható. Az alapértelmezett érték: HDISqoop. Ha átnevezi, ennek megfelelően kell frissíteni a Sqoop Windows PowerShell-parancsfájlt.
-4. A szkript futtatásához nyomja le az **F5** billentyűt.
+4. A szkriptek futtatásához nyomja le az **F5** billentyűt.
 5. Ellenőrizze a parancsfájl kimenete. Győződjön meg arról, hogy a parancsfájl sikeresen lefutott.
 
 ## <a id="nextsteps"></a> Következő lépések

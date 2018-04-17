@@ -1,12 +1,12 @@
 ---
-title: "Azure-előfizetés tulajdonjogának átruházása másik fiókra |} Microsoft Docs"
-description: "Ismerteti, hogyan lehet egy Azure-előfizetés átvitele egy másik felhasználó, és a folyamat kapcsolatos néhány gyakran ismételt kérdések (GYIK)"
-keywords: "azure-előfizetésre, az azure átviteli előfizetés átvitele, azure-előfizetés áthelyezése egy másik fiókot, azure új előfizetés tulajdonos, azure-előfizetés átvitele egy másik fiókkal"
-services: 
-documentationcenter: 
+title: Azure-előfizetés tulajdonjogának átruházása másik fiókra |} Microsoft Docs
+description: Ismerteti, hogyan lehet egy Azure-előfizetés átvitele egy másik felhasználó, és a folyamat kapcsolatos néhány gyakran ismételt kérdések (GYIK)
+keywords: azure-előfizetésre, az azure átviteli előfizetés átvitele, azure-előfizetés áthelyezése egy másik fiókot, azure új előfizetés tulajdonos, azure-előfizetés átvitele egy másik fiókkal
+services: ''
+documentationcenter: ''
 author: genlin
 manager: jlian
-editor: 
+editor: ''
 tags: billing,top-support-issue
 ms.assetid: c8ecdc1e-c9c5-468c-a024-94ae41e64702
 ms.service: billing
@@ -17,11 +17,11 @@ ms.topic: troubleshooting
 ms.date: 12/13/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff694ee7c2ecf7f8ee5ea89902fa77efad3f501c
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 7e81037aeb3a8aee4f70eaf33280b1dc0d483332
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Egy másik fiókot az Azure-előfizetés tulajdonjogának átruházása
 
@@ -29,7 +29,7 @@ Az előfizetés átvitele egy másik felhasználója a Account Center Fiókadmin
 
 > [!IMPORTANT]
 > 
-> Egy új Azure AD-előfizetés átvitele esetén a bérlői, a szerepkör-hozzárendelések [szerepköralapú hozzáférés-vezérlést (RBAC)](../active-directory/role-based-access-control-what-is.md) véglegesen törli a forrás-bérlőhöz, és nem települnek a célként megadott tenant módosításait.
+> Egy új Azure AD-előfizetés átvitele esetén a bérlői, a szerepkör-hozzárendelések [szerepköralapú hozzáférés-vezérlést (RBAC)](../role-based-access-control/overview.md) véglegesen törli a forrás-bérlőhöz, és nem települnek a célként megadott tenant módosításait.
 
 ## <a name="transfer-ownership-of-an-azure-subscription"></a>Azure-előfizetés tulajdonjogának átruházása
 
@@ -51,7 +51,7 @@ Az előfizetés átvitele egy másik felhasználója a Account Center Fiókadmin
 
    > [!IMPORTANT]
    > 
-   > Egy új Azure AD-előfizetés átvitele esetén a bérlői, a szerepkör-hozzárendelések [szerepköralapú hozzáférés-vezérlést (RBAC)](../active-directory/role-based-access-control-what-is.md) véglegesen törli a forrás-bérlőhöz, és nem települnek a célként megadott tenant módosításait.
+   > Egy új Azure AD-előfizetés átvitele esetén a bérlői, a szerepkör-hozzárendelések [szerepköralapú hozzáférés-vezérlést (RBAC)](../role-based-access-control/overview.md) véglegesen törli a forrás-bérlőhöz, és nem települnek a célként megadott tenant módosításait.
 
    ![Átviteli előfizetés párbeszédpanel](./media/billing-subscription-transfer/image2.PNG)
 
@@ -93,7 +93,7 @@ A vállalati rendszergazda vihetők át a beléptetési belül előfizetések tu
 | [A Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/)          | MS-AZR-0025P        |
 | [MSDN platformok](https://azure.microsoft.com/offers/ms-azr-0062p/)                     | MS-AZR-0062P        |
 | [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0003p/)                      | MS-AZR-0003P        |
-| [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/)             | MS-AZR-0023P        |
+| [Fejlesztés/tesztelés – használatalapú fizetés](https://azure.microsoft.com/offers/ms-azr-0023p/)             | MS-AZR-0023P        |
 | [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/)           | MS-AZR-0063P        |
 | [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/) | MS-AZR-0064P        |
 | [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/)         | MS-AZR-0059P        |
@@ -115,7 +115,7 @@ A Fiókadminisztrátor az a személy, aki regisztrált a vagy vásárolt Azure-e
 
 ### <a name="does-everything-transfer-including-resource-groups-vms-disks-and-other-running-services"></a>Nem minden átviszi a? Többek között az erőforráscsoportok, a virtuális gépek, a lemezek és a többi futó szolgáltatások?
 
-Az erőforrások, például virtuális gépek, a lemezek és a webhelyek átvitelét az új tulajdonos. Azonban bármely [rendszergazdai szerepkörök](billing-add-change-azure-subscription-administrator.md) és [szerepköralapú hozzáférés-vezérlés (RBAC)](../active-directory/role-based-access-control-configure.md) létrehozott házirendeket nem veszi át más címtárak között. Emellett [app regisztrációk](../active-directory//develop/active-directory-integrating-applications.md) és a többi bérlő szolgáltatásokat nem átvitele mentén.
+Az erőforrások, például virtuális gépek, a lemezek és a webhelyek átvitelét az új tulajdonos. Azonban bármely [rendszergazdai szerepkörök](billing-add-change-azure-subscription-administrator.md) és [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/role-assignments-portal.md) létrehozott házirendeket nem veszi át más címtárak között. Emellett [app regisztrációk](../active-directory//develop/active-directory-integrating-applications.md) és a többi bérlő szolgáltatásokat nem átvitele mentén.
 
 ### <a id="no-button"></a> Miért nem látom, hogy az "Előfizetés átvitele" gombra?
 
