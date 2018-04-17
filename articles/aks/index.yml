@@ -2,9 +2,9 @@
 documentType: LandingData
 title: Azure Container Service (AKS)
 metadata:
-  document_id: null
+  document_id: 
   title: Az Azure Container Service (AKS) dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-  meta.description: 'AKS allows you to quickly deploy a production ready Kubernetes cluster in Azure. Learn how to use AKS with these quickstarts, tutorials, and samples.'
+  meta.description: AKS allows you to quickly deploy a production ready Kubernetes cluster in Azure. Learn how to use AKS with these quickstarts, tutorials, and samples.
   services: container-service
   author: carolz
   manager: carolz
@@ -14,42 +14,47 @@ metadata:
   ms.topic: landing-page
   ms.date: 07-21-2017
   ms.author: carolz
+  ms.openlocfilehash: a381697e27a2d85d99fcbb1eb54bd7c0ab7d743a
+  ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 04/16/2018
 abstract:
-  description: 'Az Azure Container Service (AKS) felügyeli az üzemeltetett Kubernetes környezetet, lehetővé téve a tárolóalapú alkalmazások gyors és egyszerű üzembe helyezését és felügyeletét tárolóvezénylési szakértelem nélkül is. Ezenkívül a folyamatban lévő műveletek és karbantartás terhét is megszünteti az erőforrások igény szerinti kiépítésével, frissítésével és méretezésével anélkül, hogy offline állapotba kellene helyezni az alkalmazásait.'
+  description: Az Azure Container Service (AKS) felügyeli az üzemeltetett Kubernetes környezetet, lehetővé téve a tárolóalapú alkalmazások gyors és egyszerű üzembe helyezését és felügyeletét tárolóvezénylési szakértelem nélkül is. Ezenkívül a folyamatban lévő műveletek és karbantartás terhét is megszünteti az erőforrások igény szerinti kiépítésével, frissítésével és méretezésével anélkül, hogy offline állapotba kellene helyezni az alkalmazásait.
 sections:
-  - title: 5 perces gyors útmutatók
+- title: 5 perces gyors útmutatók
+  items:
+  - type: paragraph
+    text: 'Ismerje meg az AKS-fürt üzembe helyezésének módját:'
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: 'Ismerje meg az AKS-fürt üzembe helyezésének módját:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/media/index/ContainerService.svg
-            text: AKS-fürt létrehozása
-            href: /azure/aks/kubernetes-walkthrough
-  - title: Részletes útmutatók
+    - image:
+        src: /azure/media/index/ContainerService.svg
+      text: AKS-fürt létrehozása
+      href: /azure/aks/kubernetes-walkthrough
+- title: Részletes útmutatók
+  items:
+  - type: paragraph
+    text: Tudja meg, hogyan helyezhet üzembe, kezelhet és frissíthet alkalmazásokat AKS-fürtön.
+  - type: list
+    style: ordered
     items:
-      - type: paragraph
-        text: 'Tudja meg, hogyan helyezhet üzembe, kezelhet és frissíthet alkalmazásokat AKS-fürtön.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">Tárolórendszerképek létrehozása alkalmazásból</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-prepare-acr">Tárolórendszerképek feltöltése az Azure Container Registry-be</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-deploy-cluster">AKS-fürt telepítése</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-deploy-application">Tárolórendszerképek futtatása a Kubernetes-ben</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-scale">Alkalmazás és Kubernetes-infrastruktúra skálázása</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-app-update">A Kubernetes-ben futó alkalmazás frissítése</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-monitor">A Kubernetes monitorozása az OMS használatával</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-upgrade-cluster">AKS-fürt frissítése</a>
-  - title: Referencia
+    - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">Tárolórendszerképek létrehozása alkalmazásból</a>
+    - html: <a href="/azure/aks/tutorial-kubernetes-prepare-acr">Tárolórendszerképek feltöltése az Azure Container Registry-be</a>
+    - html: <a href="/azure/aks/tutorial-kubernetes-deploy-cluster">AKS-fürt telepítése</a>
+    - html: <a href="/azure/aks/tutorial-kubernetes-deploy-application">Tárolórendszerképek futtatása a Kubernetes-ben</a>
+    - html: <a href="/azure/aks/tutorial-kubernetes-scale">Alkalmazás és Kubernetes-infrastruktúra skálázása</a>
+    - html: <a href="/azure/aks/tutorial-kubernetes-app-update">A Kubernetes-ben futó alkalmazás frissítése</a>
+    - html: <a href="/azure/aks/tutorial-kubernetes-monitor">A Kubernetes monitorozása a Log Analytics használatával</a>
+    - html: <a href="/azure/aks/tutorial-kubernetes-upgrade-cluster">AKS-fürt frissítése</a>
+- title: Referencia
+  items:
+  - type: list
+    style: cards
+    className: cardsD
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Parancssor
-            html: <p><a href="/cli/azure/aks">Azure CLI</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/aks">REST API</a></p>
+    - title: Parancssor
+      html: <p><a href="/cli/azure/aks">Azure CLI</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/aks">REST API</a></p>

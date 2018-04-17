@@ -24,7 +24,7 @@
 ###[Sablonok üzembe helyezése az Azure CLI-vel](../../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [Biztonság (RBAC)](azure-operations-guide.md#security-of-azure-resource)
-###[Erőforrások kezelése szerepkör-hozzárendelésekkel](../../active-directory/role-based-access-control-configure.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+###[Erőforrások kezelése szerepkör-hozzárendelésekkel](../../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [Virtuális gépek](azure-operations-guide.md#azure-virtual-machines)
 ### [Windows rendszerű virtuális gépek méretei](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fguides%2foperations%2ftoc.json) 

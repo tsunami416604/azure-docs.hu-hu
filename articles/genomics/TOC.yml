@@ -25,6 +25,8 @@
       href: frequently-asked-questions-genomics.md
     - name: Verziókiadások előzményei
       href: version-release-history-genomics.md
+    - name: Az üzletmenet folytonossága
+      href: business-continuity-genomics.md
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=cognitive-services'
     - name: Díjszabás
