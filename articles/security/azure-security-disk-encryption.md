@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2018
 ms.author: devtiw
-ms.openlocfilehash: f42f20893a815640378b9d18186c88b782e61284
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: df13f23908aa787bfcc579340ed0aa6cb0d5ed29
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Windows és Linux IaaS virtuális gépeket az Azure Disk Encryption
 A Microsoft Azure elkötelezett a kifejezetten a adatvédelem, az adatok közös joghatóság alá és a lehetővé teszi, hogy az Azure tárolt adatok végig a vezérlő speciális technológiák titkosításához, szabályozása és titkosítási kulcsok kezeléséhez az adatok vezérlő & naplózási hozzáférést. Ez rugalmasságot biztosít, Azure-ügyfél és válassza ki a saját üzleti igényeinek leginkább megfelelő megoldást. A dokumentum azt kódelemeit egy új technológia megoldás "Azure Disk Encryption for Windows és Linux infrastruktúra-szolgáltatási virtuális gép által" és az adatokat, hogy megfeleljen a szervezeti biztonsági és megfelelőségi kötelezettségvállalások megvédeni segítségével. A dokumentum biztosít részletes útmutatás a lemezt Azure titkosítási szolgáltatásai, beleértve a támogatott forgatókönyveket, és a felhasználói élmény.
@@ -662,10 +662,10 @@ A lemez-titkosítás CLI paranccsal kaphat az infrastruktúra-szolgáltatási vi
 #### <a name="disable-encryption-on-running-windows-iaas-vm"></a>Tiltsa le a titkosítást a windowsos infrastruktúra-szolgáltatási virtuális gép futó
 Tiltsa le a titkosítást a futó Windows vagy Linux IaaS virtuális Gépet az Azure lemez titkosítási Resource Manager-sablon vagy a PowerShell-parancsmagok használatával, és adja meg a visszafejtési konfigurációt.
 
-##### <a name="windows-vm"></a>Windowsos VM
+##### <a name="windows-vm"></a>Windows rendszerű virtuális gép
 A disable-titkosítás lépés letiltja a titkosítást az operációs rendszer, az adatmennyiség vagy mindkét szolgáltatás a Windows infrastruktúra-szolgáltatási virtuális gép. Az operációs rendszer kötetén tiltása nem, és a titkosított adatok kötet hagyja. A disable-titkosítás a lépést, ha az Azure klasszikus üzembe helyezési modellel frissíti a virtuális gép modell, és a Windows-infrastruktúra-szolgáltatási virtuális gép visszafejtett van megjelölve. A virtuális gép tartalmát lévő, aktívan nem titkosított. A visszafejtés nem törli a kulcstartót és a titkosítási kulcs anyagok (a BitLocker titkosítási kulcsokat a Windows és Linux jelszava).
 
-##### <a name="linux-vm"></a>Linux virtuális gép
+##### <a name="linux-vm"></a>Linux rendszerű virtuális gép
 A disable-titkosítás lépés letiltja a titkosítást az adatmennyiség a futó Linux IaaS virtuális Gépen. Ez a lépés csak akkor működik, ha az operációs rendszer lemezének nem titkosított.
 
 > [!NOTE]
@@ -720,7 +720,7 @@ Mielőtt folytatná, tekintse át a *Előfeltételek* című részben. Miután m
 
 1. Indítsa el az Azure PowerShell-munkamenetet, és jelentkezzen be az Azure-fiókjával a következő parancsot:
 
-    `Login-AzureRmAccount`
+    `Connect-AzureRmAccount`
 
 2. Ha több előfizetéssel rendelkezik, és adjon meg másik szeretne, írja be a fiókhoz tartozó előfizetések megjelenítéséhez a következőket:
 

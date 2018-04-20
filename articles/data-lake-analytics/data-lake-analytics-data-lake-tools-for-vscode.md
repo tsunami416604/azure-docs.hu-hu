@@ -1,10 +1,10 @@
 ---
-title: "Az Azure Data Lake Tools: Használata Azure Data Lake Tools Visual Studio Code |} Microsoft Docs"
-description: "Ismerje meg, hogyan használható az Azure Data Lake Tools for Visual Studio Code létrehozása, tesztelése és U-SQL-parancsfájlok futtatása. "
+title: 'Az Azure Data Lake Tools: Használata Azure Data Lake Tools Visual Studio Code |} Microsoft Docs'
+description: 'Ismerje meg, hogyan használható az Azure Data Lake Tools for Visual Studio Code létrehozása, tesztelése és U-SQL-parancsfájlok futtatása. '
 Keywords: VScode,Azure Data Lake Tools,Local run,Local debug,Local Debug,preview file,upload to storage path,download,upload
 services: data-lake-analytics
-documentationcenter: 
-author: jejiang
+documentationcenter: ''
+author: Jejiang
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/09/2018
 ms.author: jejiang
-ms.openlocfilehash: 7e1e2c0a5481a81e9267bcf87076076b377a1496
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: fcd821c91a8c94792eeed83940abe1c72d0b2fb8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Az Azure Data Lake Tools használja a Visual Studio Code
 
@@ -32,7 +32,7 @@ Tudhat meg az Azure Data Lake Tools for Visual Studio (kód VS) hozhat létre, t
 
 VSCode az Azure Data Lake Tools támogatja a Windows, Linux és MacOS.  
 
-- [A Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx).
+- [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx).
 
 MacOS és Linux rendszerekhez:
 - [A .NET core SDK 2.0](https://www.microsoft.com/net/download/core). 
@@ -44,7 +44,7 @@ Az előfeltételek telepítése után a Data Lake Tools for VS kód is telepíth
 
 **A Data Lake Tools telepítése**
 
-1. Nyissa meg a Visual Studio Code.
+1. Nyissa meg a Visual Studio Code-ot.
 2. Kattintson a **bővítmények** a bal oldali ablaktáblán. Adja meg **Azure Data Lake** be a keresőmezőbe.
 3. Kattintson a **telepítése** melletti **Azure Data Lake tools**. Néhány másodpercen belül a **telepítése** gomb változik **Újrabetöltés**.
 4. Kattintson a **Újrabetöltés** aktiválja a **Azure Data Lake tools** bővítmény.
@@ -356,13 +356,13 @@ Az állapotsor letöltését, majd ismét feltölteni a befejezésekor alján á
 
 **Azure-integráció** 
 
-- Bejelentkezés az Azure-ba, mielőtt mindig bővítheti **DATALAKE EXPLORER**, majd kattintson a **Azur bejelentkezés** történő bejelentkezés az Azure-bA. Bejelentkezés, után megjelenik az Azure-fiókjában az előfizetések jelennek meg a bal oldali paneljének láthatóságát a **DATALAKE EXPLORER**. 
+- Bejelentkezés az Azure-ba, mielőtt mindig bővítheti **AZURE DATALAKE**, majd kattintson a **jelentkezzen be Azure** történő bejelentkezés az Azure-bA. Bejelentkezés, után megjelenik az Azure-fiókjában az előfizetések jelennek meg a bal oldali paneljének láthatóságát a **AZURE DATALAKE**. 
 
    ![DataLake explorer](./media/data-lake-analytics-data-lake-tools-for-vscode/sign-in-datalake-explorer.png)
 
    ![DataLake explorer](./media/data-lake-analytics-data-lake-tools-for-vscode/datalake-explorer.png)
 
-**ADLA metaadatok navigációs** 
+**ADLA metaadatok navigációs**
 
 - Bontsa ki az Azure-előfizetéséhez, a U-SQL-adatbázis navigálhat nézet a **sémák**, **hitelesítő adatok**, **szerelvények**, **tábla**, **Index**, és így tovább, a U-SQL-adatbázisok csomópont alatt.
 
@@ -382,11 +382,31 @@ Az állapotsor letöltését, majd ismét feltölteni a befejezésekor alján á
 
 **ADLS-integráció** 
 
- - Navigáljon a **Tárfiók**, is **előzetes**, **letöltése**, **törlése**, **másolási relatív elérési út**, **Másolási teljes elérési útja** által a helyi menüben a fájl csomóponton. Is **frissítése**, **feltöltése**, **feltöltése mappa**, **törlése** kattintson a jobb gombbal a helyi menüben a mappa csomóponton.
+Navigáljon a **Data Lake Store**
+
+ - A mappa csomóponton is **frissítése**, **törlése**, **feltöltése**, **feltöltése mappa**, **másolási relatív elérési út**, **Másolási teljes elérési útja** a kattintson a jobb gombbal a helyi menü.
 
    ![DataLake explorer](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-folder-menu.png)
 
+ - A fájl csomóponton is **letöltése**, **előzetes**, **törlése**, **másolási relatív elérési út**, **másolási teljes elérési útja**a kattintson a jobb gombbal a helyi menü. 
+
    ![DataLake explorer](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-download-preview-file.png)
+
+**WASB integráció**
+
+Navigáljon a **Blob-tároló**
+
+- A blob-tároló csomóponton is **frissítése**, **Blob-tároló törlése**, **Blob feltöltése** a kattintson a jobb gombbal a helyi menü.
+
+    ![A BLOB Storage blob tároló csomópont](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-blob-container-node.png)
+
+- A mappa csomóponton is **frissítése**, **Blob feltöltése** a kattintson a jobb gombbal a helyi menü.
+
+    ![A BLOB tároló mappa csomópont](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-folder-node.png)
+
+- A fájl csomóponton is **megtekintése/szerkesztése**, **letöltése**, **törlése**, **másolási relatív elérési út**, **másolási teljes elérési útja** a kattintson a jobb gombbal a helyi menü.
+
+    ![A BLOB Storage fájl csomópont](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-file-node.png)
 
 ## <a name="open-adl-storage-explorer-in-portal"></a>Nyissa meg a portál ADL a Tártallózó
 1. Válassza ki a Ctrl + Shift + U nyissa meg a parancs palettát.
@@ -411,7 +431,7 @@ A Data Lake Tools for Visual STUDIO Code támogatja a következő funkciókat:
 
     - Scala adattípus
     - Összetett adattípusú
-    - Built-in UDTs
+    - Beépített UDTs
     - .NET adatgyűjtési és -osztályok
     - C# kifejezések
     - Beépített C# felhasználó által megadott függvények, udo-k és UDAAGs 

@@ -1,11 +1,11 @@
 ---
-title: "A Media Services kibocsátási megjegyzései |} Microsoft Docs"
-description: "A Media Services kibocsátási megjegyzései"
+title: A Media Services kibocsátási megjegyzései |} Microsoft Docs
+description: A Media Services kibocsátási megjegyzései
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 3ca2d7af-1cf0-45fa-9585-3b73f3ee057d
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: juliako
-ms.openlocfilehash: 919851db455e1ac727d8c98346d13e45d4336bc7
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 20a24aa19989370c6ce82a738193a78f24b0eba9
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="azure-media-services-release-notes"></a>Az Azure Media Services kibocsátási megjegyzései
 Ezek a kibocsátási megjegyzések az Azure Media Services összesítse a módosításokat a korábbi kiadásokban és ismert problémákat.
@@ -47,7 +47,7 @@ A Media Services REST API verziójának előzményei kapcsolatos információké
 
 ## <a name="october-2017-release"></a>2017. októberi kiadás
 > [!IMPORTANT] 
-> A Media Services ból kivezettük való hozzáférés-vezérlési szolgáltatásban Azure hitelesítési kulcsokat támogatása. 2018. június 1. a már nem hitelesítheti a Media Services háttérrendszer működésében kód hozzáférés-vezérlési szolgáltatásban kulcsok használatával. Frissítse a kódot az Azure Active Directoryt (Azure AD) a [az Azure AD-alapú hitelesítés](media-services-use-aad-auth-to-access-ams-api.md). Ez a változás az Azure portálon kapcsolatos figyelmeztetések figyelje.
+> A Media Services ból kivezettük való hozzáférés-vezérlési szolgáltatásban Azure hitelesítési kulcsokat támogatása. 2018. június 22. a már nem hitelesítheti a Media Services háttérrendszer működésében kód hozzáférés-vezérlési szolgáltatásban kulcsok használatával. Frissítse a kódot az Azure Active Directoryt (Azure AD) a [az Azure AD-alapú hitelesítés](media-services-use-aad-auth-to-access-ams-api.md). Ez a változás az Azure portálon kapcsolatos figyelmeztetések figyelje.
 
 ### <a name="updates-for-october-2017"></a>2017. októberi frissítései
 #### <a name="sdks"></a>SDK-k
@@ -95,7 +95,7 @@ Ezután már használhatja Media Encoder Standard vagy a Media Encoder prémium 
 
 A Media Services szolgáltatásban a streamvégpontján egy adatfolyam-szolgáltatás által biztosított tartalom közvetlenül egy ügyfélalkalmazás player vagy későbbi terjesztés tartalomkézbesítési hálózat (CDN) jelöli. A Media Services is biztosít az Azure Content Delivery Network való zökkenőmentes integrációt. A kimenő adatfolyam egy StreamingEndpoint szolgáltatásból lehet élő stream, az igény szerinti videó vagy az eszköz a Media Services-fiók a progresszív letöltés. Minden egyes Media Services-fiók egy alapértelmezett streamvégpontból tartalmazza. A fiók alatt további streamvégpontok hozhatók létre. 
 
-Adatfolyam-végpontok, két verziója van 1.0-s és 2.0-s. 2017. január 10., kezdési egyetlen újonnan létrehozott Media Services-fiókot a 2.0-s verziójának alapértelmezett streamvégpontból tartalmazza. Ehhez a fiókhoz hozzáadni kívánt további streamvégpontok egyaránt 2.0-s verziójában. Ez a változás nincs hatással a meglévő fiókokat. Meglévő streamvégpontok 1.0-s verziója és a 2.0-s verziójának frissítése. Nincsenek viselkedés, a számlázással és a szolgáltatás módosításokat az módosítását. További információkért lásd: [Streaming végpontok áttekintése](media-services-streaming-endpoints-overview.md).
+Adatfolyam-végpontok, két verziója van 1.0-s és 2.0-s. 2017. január 10., kezdési egyetlen újonnan létrehozott Media Services-fiókot a 2.0-s verziójának alapértelmezett streamvégpontból tartalmazza. Ehhez a fiókhoz hozzáadni kívánt további streamvégpontok egyaránt 2.0-s verziójában. Ez a változás nincs hatással a meglévő fiókokat. Meglévő streamvégpontok 1.0-s verziója és a 2.0-s verziójának frissítése. Nincsenek viselkedés, a számlázással és a szolgáltatás módosításokat az módosítását. További információk: [Streamvégpontok áttekintése](media-services-streaming-endpoints-overview.md).
 
 Media Services a 2.15 verziójától kezdve, az adatfolyam-továbbítási végpont entitásban hozzáadva a következő tulajdonságokkal:
 
@@ -307,7 +307,7 @@ A [Media Services .NET SDK](http://www.nuget.org/packages/windowsazure.mediaserv
 ### <a id="new_encoder_release"></a>Media Services kódoló kiadás
  A Media Services Azure Media Encoder új kiadásának jelentették. A legújabb Media Encoder meg van szó, csak a kimeneti GB-ban. Ellenkező esetben az új kódoló egy olyan szolgáltatás, amely kompatibilis a korábbi kódoló. További információkért lásd: [Media Services díjszabása].
 
-### <a id="oct_sdk"></a>Media Services .NET SDK
+### <a id="oct_sdk"></a>Media Services .NET SDK-val
 A Media Services SDK .NET-bővítmények verziója most 2.0.0.3.
 
 A Media Services SDK for .NET verziója most 3.0.0.8. A következő frissítéseket történtek:
@@ -456,19 +456,19 @@ A következő módosításokat-e adva a júniusi 2013 a Media Services SDK kiad�
 
 * A Media Services SDK-t támogatja, több tároló linking fiókok 2.3.0.0 verziójától kezdve, a Media Services-fiók. A következő API-kat támogatja ezt a szolgáltatást:
   
-    * IStorageAccount type
+    * IStorageAccount típusa
     * Microsoft.WindowsAzure.MediaServices.Client.CloudMediaContext.StorageAccounts property
     * StorageAccount tulajdonság
-    * StorageAccountName property
+    * StorageAccountName tulajdonság
   
     További információkért lásd: [Media Services kezelése eszközök több tárfiókok között](http://msdn.microsoft.com/library/azure/dn271889.aspx).
 * Értesítési kapcsolatos API-k. 2.2.0.0 verziójától kezdve, hogy figyelheti az Azure Queue storage értesítésekre. További információkért lásd: [kezelni a Media Services feladat értesítések](http://msdn.microsoft.com/library/azure/dn261241.aspx).
   
     * Microsoft.WindowsAzure.MediaServices.Client.IJob.JobNotificationSubscriptions tulajdonság
-    * Microsoft.WindowsAzure.MediaServices.Client.INotificationEndPoint type
+    * Microsoft.WindowsAzure.MediaServices.Client.INotificationEndPoint típusa
     * Microsoft.WindowsAzure.MediaServices.Client.IJobNotificationSubscription típusa
-    * Microsoft.WindowsAzure.MediaServices.Client.NotificationEndPointCollection type
-    * Microsoft.WindowsAzure.MediaServices.Client.NotificationEndPointType type
+    * Microsoft.WindowsAzure.MediaServices.Client.NotificationEndPointCollection típusa
+    * Microsoft.WindowsAzure.MediaServices.Client.NotificationEndPointType típusa
 * A tárolási ügyfél SDK 2.0 (Microsoft.WindowsAzure.StorageClient.dll) függőség
 * Függőség OData 5.5 (Microsoft.Data.OData.dll)
 

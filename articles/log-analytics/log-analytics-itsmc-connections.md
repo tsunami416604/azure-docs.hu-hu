@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: v-jysur
 ms.openlocfilehash: 35d04fabc66ede309fe91969c5bec3131a282afb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Csatlakozás ITSM termékek vagy szolgáltatások IT Service Management-összekötő
 Ez a cikk tájékoztatást ad azokról a ITSM termékszolgáltatásból és az informatikai szolgáltatás Management Connector (ITSMC) közötti kapcsolat konfigurálása a Log Analyticshez központilag a a munkaelemek kezeléséhez. ITSMC kapcsolatos további információkért lásd: [áttekintése](log-analytics-itsmc-overview.md).
@@ -73,7 +73,7 @@ A következő eljárással csatlakozzon a System Center Service Manager-példán
 | **Ügyfél-azonosító**   | A webalkalmazás hitelesítéséhez, írja be az ügyfél-azonosító, ami akkor jön létre (az automatikus parancsfájl használatával). További információk az automatizált parancsfájl [itt.](log-analytics-itsmc-service-manager-script.md)|
 | **Ügyfélkulcs**   | Írja be a ügyfélkulcs jön létre a azonosítóját.   |
 | **Adatok szinkronizálási hatókör**   | Válassza ki a Service Manager munkaelemek ITSMC keresztül szinkronizálni kívánt.  A munkahelyi elemeket a rendszer importálta a Naplóelemzési. **Beállítások:** incidensek, Változáskérések.|
-| **Sync Data** | Írja be a hány napra visszamenőleg, amelyet az adatait. **Maximális**: 120 nap. |
+| **Szinkronizálja az adatokat** | Írja be a hány napra visszamenőleg, amelyet az adatait. **Maximális**: 120 nap. |
 | **Hozzon létre új konfigurációelemet ITSM megoldás** | Válassza ezt a lehetőséget, ha azt szeretné, hogy a konfigurációelemek létrehozása a ITSM termékben. Kiválasztásakor OMS hoz létre az érintett Konfigurációelemek (esetén nem létező CIs) konfigurációelemként a támogatott ITSM rendszerben. **Alapértelmezett**: le van tiltva. |
 
 ![Service manager-kapcsolat](./media/log-analytics-itsmc/service-manager-connection.png)
@@ -106,7 +106,7 @@ Futtassa a parancsfájlt a következő szükséges adatok megadásával:
 - Hely
 - A Service Manager-kiszolgálóadatok (kiszolgáló neve, tartomány, felhasználónév és jelszó)
 - A webalkalmazás hely előtagja
-- ServiceBus Namespace.
+- A Szolgáltatásbusz-Namespace.
 
 A parancsfájl létrehozza a webalkalmazást, az Ön által megadott nevét (valamint néhány további karakterláncok, ami) használatával. Előállítja a **webes alkalmazás URL-címhez**, **ügyfél-azonosító** és **ügyfélkulcs**.
 
@@ -227,7 +227,7 @@ A következő eljárással ServiceNow VPN-kapcsolat létrehozásához:
 | **Ügyfél-azonosító**   | Írja be a korábban létrehozott OAuth2 hitelesítéshez használni kívánt ügyfél-azonosító.  További információ az ügyfél-azonosító és a titkos kulcs létrehozása: [OAuth telepítését](http://wiki.servicenow.com/index.php?title=OAuth_Setup). |
 | **Ügyfélkulcs**   | Írja be a ügyfélkulcs jön létre a azonosítóját.   |
 | **Adatok szinkronizálási hatókör**   | Válassza ki a ServiceNow munkaelemeket szeretné szinkronizálni az Azure Naplóelemzés szolgáltatáshoz, a ITSMC keresztül.  A kiválasztott értékét a rendszer importálta a naplóelemzési.   **Beállítások:** incidensek és Változáskérések.|
-| **Sync Data** | Írja be a hány napra visszamenőleg, amelyet az adatait. **Maximális**: 120 nap. |
+| **Szinkronizálja az adatokat** | Írja be a hány napra visszamenőleg, amelyet az adatait. **Maximális**: 120 nap. |
 | **Hozzon létre új konfigurációelemet ITSM megoldás** | Válassza ezt a lehetőséget, ha azt szeretné, hogy a konfigurációelemek létrehozása a ITSM termékben. Kiválasztásakor ITSMC hoz létre az érintett Konfigurációelemek (esetén nem létező CIs) konfigurációelemként a támogatott ITSM rendszerben. **Alapértelmezett**: le van tiltva. |
 
 ![A ServiceNow kapcsolat](./media/log-analytics-itsmc/itsm-connection-servicenow-connection-latest.png)
@@ -263,7 +263,7 @@ Az újonnan létrehozott felhasználó megjelenik, amely az alapértelmezett sze
 - personalize_choices
 - import_transformer
 -   x_mioms_microsoft.user
--   itil
+-   ITIL
 -   template_editor
 -   view_changer
 
@@ -315,7 +315,7 @@ A következő eljárással Provance VPN-kapcsolat létrehozásához:
 | **URL-címe**   | Írja be a Provance példányát ITSMC való csatlakozáshoz használni kívánt URL-CÍMÉT. |
 | **Ügyfél-azonosító**   | Írja be az ügyfél-Azonosítót az ezt a kapcsolatot, a Provance példányt létrehozó hitelesítéséhez.  További információ az ügyfél-azonosító, lásd: [active directory-hitelesítés konfigurálása](../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md). |
 | **Adatok szinkronizálási hatókör**   | Válassza ki a szinkronizálni kívánt Azure Naplóelemzés keresztül ITSMC kívánt Provance munkaelemek.  A munkahelyi elemeket a rendszer importálta a naplóelemzési.   **Beállítások:** incidensek, Változáskérések.|
-| **Sync Data** | Írja be a hány napra visszamenőleg, amelyet az adatait. **Maximális**: 120 nap. |
+| **Szinkronizálja az adatokat** | Írja be a hány napra visszamenőleg, amelyet az adatait. **Maximális**: 120 nap. |
 | **Hozzon létre új konfigurációelemet ITSM megoldás** | Válassza ezt a lehetőséget, ha azt szeretné, hogy a konfigurációelemek létrehozása a ITSM termékben. Kiválasztásakor ITSMC hoz létre az érintett Konfigurációelemek (esetén nem létező CIs) konfigurációelemként a támogatott ITSM rendszerben. **Alapértelmezett**: le van tiltva.|
 
 ![Provance kapcsolat](./media/log-analytics-itsmc/itsm-connections-provance-latest.png)
@@ -366,7 +366,7 @@ A következő eljárással Provance VPN-kapcsolat létrehozásához:
 | **URL-címe**   | Írja be a Cherwell példányát ITSMC való csatlakozáshoz használni kívánt URL-CÍMÉT. |
 | **Ügyfél-azonosító**   | Írja be az ügyfél-Azonosítót az ezt a kapcsolatot, a Cherwell példányt létrehozó hitelesítéséhez.   |
 | **Adatok szinkronizálási hatókör**   | Válassza ki a Cherwell munkaelemek ITSMC keresztül szinkronizálni kívánt.  A munkahelyi elemeket a rendszer importálta a naplóelemzési.   **Beállítások:** incidensek, Változáskérések. |
-| **Sync Data** | Írja be a hány napra visszamenőleg, amelyet az adatait. **Maximális**: 120 nap. |
+| **Szinkronizálja az adatokat** | Írja be a hány napra visszamenőleg, amelyet az adatait. **Maximális**: 120 nap. |
 | **Hozzon létre új konfigurációelemet ITSM megoldás** | Válassza ezt a lehetőséget, ha azt szeretné, hogy a konfigurációelemek létrehozása a ITSM termékben. Kiválasztásakor ITSMC hoz létre az érintett Konfigurációelemek (esetén nem létező CIs) konfigurációelemként a támogatott ITSM rendszerben. **Alapértelmezett**: le van tiltva. |
 
 

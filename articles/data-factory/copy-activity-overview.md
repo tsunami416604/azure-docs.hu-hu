@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/16/2018
 ms.author: jingwang
 ms.openlocfilehash: 3b92aed83e01d223b33f269f0202355836f806c1
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Az Azure Data Factory a másolási tevékenység
 
@@ -136,9 +136,9 @@ A másolási tevékenység a következő sablon tartalmazza a támogatott tulajd
 | Bemenetek | Adja meg az adatkészlet mely pontok a forrásadatokhoz való létrehozott. Másolási tevékenység során csak egyetlen bemenetet támogatja. | Igen |
 | kimenetek | Adja meg az adatkészlet mely pontok, a fogadó adatok létrehozott. Másolási tevékenység során csak egyetlen kimeneti támogatja. | Igen |
 | typeProperties | Tulajdonságok másolása tevékenység konfigurálása csoportja. | Igen |
-| forrás | Adja meg a másolási adatforrás típusa és a vonatkozó tulajdonságok kapcsolatos adatok lekéréséhez.<br/><br/>További részletek az összekötő a cikkben szereplő "Másolása a tevékenység tulajdonságai" szakaszából [adatokról és formátumok támogatott](#supported-data-stores-and-formats). | Igen |
+| source | Adja meg a másolási adatforrás típusa és a vonatkozó tulajdonságok kapcsolatos adatok lekéréséhez.<br/><br/>További részletek az összekötő a cikkben szereplő "Másolása a tevékenység tulajdonságai" szakaszából [adatokról és formátumok támogatott](#supported-data-stores-and-formats). | Igen |
 | a fogadó | Adja meg a másolási a fogadó típusa és a vonatkozó tulajdonságok hogyan adatokat írni.<br/><br/>További részletek az összekötő a cikkben szereplő "Másolása a tevékenység tulajdonságai" szakaszából [adatokról és formátumok támogatott](#supported-data-stores-and-formats). | Igen |
-| translator | Adjon meg explicit oszlop-hozzárendelések gyűjtése forrásból. Érvényes, ha az alapértelmezett példány viselkedés nem teljesíthető az igényeknek.<br/><br/>További részletek a [séma- és adatok hozzárendelése](copy-activity-schema-and-type-mapping.md). | Nem |
+| A fordító | Adjon meg explicit oszlop-hozzárendelések gyűjtése forrásból. Érvényes, ha az alapértelmezett példány viselkedés nem teljesíthető az igényeknek.<br/><br/>További részletek a [séma- és adatok hozzárendelése](copy-activity-schema-and-type-mapping.md). | Nem |
 | cloudDataMovementUnits | Adja meg a powerfulness [Azure integrációs futásidejű](concepts-integration-runtime.md) építve az adatok másolását.<br/><br/>További részletek a [adatátviteli adategységek felhőalapú](copy-activity-performance.md). | Nem |
 | parallelCopies | Adja meg, amelyet a másolási tevékenység gyűjtése adatok a forrás adatok írásakor vagy olvasásakor használandó párhuzamosságát.<br/><br/>További részletek a [másolási párhuzamos](copy-activity-performance.md#parallel-copy). | Nem |
 | enableStaging<br/>stagingSettings | Válassza ki az átmeneti adatok helyett közvetlenül adatok gyűjtésének forrásból aa blob Storage előkészítése.<br/><br/>Ismerje meg a hasznos forgatókönyvek és a konfigurációs adatait a [másolási előkészített](copy-activity-performance.md#staged-copy). | Nem |

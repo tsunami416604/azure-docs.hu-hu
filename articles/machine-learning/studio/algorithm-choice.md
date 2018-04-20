@@ -16,10 +16,10 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 12/18/2017
 ms.openlocfilehash: e1c7030a5f0c6e13653b302fcb48e7d4efa232c7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="how-to-choose-algorithms-for-microsoft-azure-machine-learning"></a>A Microsoft Azure Machine Learning-algoritmusok kiválasztása
 A "Milyen gépi tanulási algoritmus érdemes használni?" kérdésre adott válasz mindig kapcsolva "Attól függ." Azt a mérete, a minőségi és a adatok jellegének függ. Ez attól függ, hogy mit kíván tenni a választ. Ez attól függ, hogy hogyan algoritmus matematikai utasításokat a számítógépet, hogy lett lefordítva. Annak függvénye, és mennyi idővel rendelkezik. Még a legtöbb tapasztalt adatszakértőkön nem sikerült megállapítani, mely algoritmus hajtja végre a legjobb előtt őket.
@@ -102,7 +102,7 @@ Bizonyos típusú adatok, szolgáltatások száma lehet nagyon nagy adatpontok s
 ### <a name="special-cases"></a>Bizonyos esetekben
 Néhány tanulási algoritmusok ellenőrizze az adatokat, vagy a kívánt eredményeket szerkezete adott feltételezéseket. Ha talál egyet, amely megfelel az igényeinek, azt tudhatja meg több eredményeket, több pontos előrejelzéseket vagy gyorsabb képzési.
 
-| **Algoritmus** | **Accuracy** | **Képzési idő** | **Lineáris** | **Paraméterek** | **Megjegyzések** |
+| **Algoritmus** | **Pontosság** | **Képzési idő** | **Lineáris** | **Paraméterek** | **Megjegyzések** |
 | --- |:---:|:---:|:---:|:---:| --- |
 | **Két osztályú osztályozás** | | | | | |
 | [Logisztikai regresszió](https://msdn.microsoft.com/library/azure/dn905994.aspx) | |● |● |5 | |
@@ -128,7 +128,7 @@ Néhány tanulási algoritmusok ellenőrizze az adatokat, vagy a kívánt eredm�
 | [gyors erdő ki osztóérték](https://msdn.microsoft.com/library/azure/dn913093.aspx) |● |○ | |9 |Terjesztési pont előrejelzéseket helyett |
 | [Neurális hálózat](https://msdn.microsoft.com/library/azure/dn905924.aspx) |● | | |9 |[További testreszabási lehetőség.](http://go.microsoft.com/fwlink/?LinkId=402867) |
 | [Poisson](https://msdn.microsoft.com/library/azure/dn905988.aspx) | | |● |5 |Technikailag napló lineáris. Előrejelzésére száma |
-| [ordinal](https://msdn.microsoft.com/library/azure/dn906029.aspx) | | | |0 |Előrejelzésére dimenziószáma-rendezés |
+| [sorszám](https://msdn.microsoft.com/library/azure/dn906029.aspx) | | | |0 |Előrejelzésére dimenziószáma-rendezés |
 | **Anomáliadetektálás** | | | | | |
 | [támogatja a vektoros gép](https://msdn.microsoft.com/library/azure/dn913103.aspx) |○ |○ | |2 |Különösen hasznos nagy szolgáltatás beállítása |
 | [PEM-alapú anomáliadetektálás](https://msdn.microsoft.com/library/azure/dn913102.aspx) | |○ |● |3 | |

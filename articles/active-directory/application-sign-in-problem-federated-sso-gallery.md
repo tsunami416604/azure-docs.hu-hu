@@ -1,11 +1,11 @@
 ---
-title: "A gyűjtemény alkalmazáshoz konfigurált összevont bejelentkezés problémák egyszeri bejelentkezés |} Microsoft Docs"
-description: "Útmutatás az egyes hibaüzenetek, amikor bejelentkezik egy alkalmazás már konfigurálta az SAML-alapú összevont egyszeri bejelentkezés az Azure ad szolgáltatással"
+title: A gyűjtemény alkalmazáshoz konfigurált összevont bejelentkezés problémák egyszeri bejelentkezés |} Microsoft Docs
+description: Útmutatás az egyes hibaüzenetek, amikor bejelentkezik egy alkalmazás már konfigurálta az SAML-alapú összevont egyszeri bejelentkezés az Azure ad szolgáltatással
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: fa1387c3eb11899bb74418b2ff1af4a5d22a73d9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Bejelentkezés egy összevont egyszeri bejelentkezés beállítása gyűjtemény alkalmazás problémák
 
@@ -31,7 +31,7 @@ A hiba elhárításához ellenőrizze az alkalmazás konfigurációját az Azure
 
 ## <a name="application-not-found-in-directory"></a>Az alkalmazás nem található a könyvtárban
 
-*Hiba AADSTS70001: "Https://contoso.com" azonosítójú alkalmazás nem található a könyvtárban*.
+*Hiba AADSTS70001: Alkalmazás-azonosítójú "https://contoso.com" nem található a könyvtárban*.
 
 **Lehetséges ok**
 
@@ -63,7 +63,7 @@ Miután frissítette az azonosító értéket az Azure ad-ben, és azt az érté
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>A válaszcím nem egyezik meg az alkalmazáshoz beállított válasz-címeket.
 
-*AADSTS50011. hiba: A válasz "https://contoso.com" nem egyezik a válasz címek konfigurálva az alkalmazáshoz*
+*AADSTS50011. hiba: A címet "https://contoso.com" nem felel meg a válasz címek konfigurálva az alkalmazáshoz*
 
 **Lehetséges ok**
 

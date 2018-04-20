@@ -1,17 +1,17 @@
 ---
-title: "A konfigurációs kiszolgáló, az Azure Site Recovery VMware vész-helyreállítási kezelése |} Microsoft Docs"
-description: "Ez a cikk az Azure-bA az Azure Site Recovery VMware vész-helyreállítási meglévő konfigurációs kiszolgáló kezelését ismerteti."
+title: A konfigurációs kiszolgáló, az Azure Site Recovery VMware vész-helyreállítási kezelése |} Microsoft Docs
+description: Ez a cikk az Azure-bA az Azure Site Recovery VMware vész-helyreállítási meglévő konfigurációs kiszolgáló kezelését ismerteti.
 services: site-recovery
 author: AnoopVasudavan
 ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: anoopkv
-ms.openlocfilehash: ddb1c9426874634fea54f1b67509d4ac2af70eba
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b5ba316b21e0c31e0ecc99fc2d57f81b0f24c086
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="manage-the-configuration-server-for-vmware-vms"></a>VMware virtuális gépek esetén a kiszolgáló kezelése
 
@@ -102,7 +102,7 @@ A kiszolgáló frissítése az alábbiak szerint:
 4. Nyissa meg a tároló **Site Recovery-infrastruktúra** > **konfigurációs kiszolgálók**.
 5. Válassza ki az eltávolítani kívánt konfigurációs kiszolgáló. Ezt követően a **részletek** lapon jelölje be **törlése**.
 
-    ![Delete configuration server](./media/vmware-azure-manage-configuration-server/delete-configuration-server.png)
+    ![Törli a konfigurációs kiszolgálót](./media/vmware-azure-manage-configuration-server/delete-configuration-server.png)
    
 
 ### <a name="delete-with-powershell"></a>Törölje a PowerShell használatával
@@ -112,7 +112,7 @@ Törölheti a konfigurációs kiszolgáló opcionális PowerShell használatáva
 1. [Telepítés](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0) az Azure PowerShell modul.
 2. Jelentkezzen be az Azure-fiókjával használja a következő parancsot:
     
-    `Login-AzureRmAccount`
+    `Connect-AzureRmAccount`
 3. Válassza ki a tároló-előfizetést.
 
      `Get-AzureRmSubscription –SubscriptionName <your subscription name> | Select-AzureRmSubscription`

@@ -15,10 +15,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: ce5909bd522ab7af77846af598506ea69058bd5c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="copy-data-to-and-from-data-lake-store-by-using-data-factory"></a>Adatok másolása, illetve onnan Data Lake Store Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -72,7 +72,7 @@ A társított szolgáltatás adattárat egy adat-előállító hivatkozásokat t
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| **Típusa** | A type tulajdonságot meg kell **AzureDataLakeStore**. | Igen |
+| **type** | A type tulajdonságot meg kell **AzureDataLakeStore**. | Igen |
 | **dataLakeStoreUri** | Az Azure Data Lake Store-fiókja adatait. Ez az információ időt vesz igénybe, a következő formátumok egyikének: `https://[accountname].azuredatalakestore.net/webhdfs/v1` vagy `adl://[accountname].azuredatalakestore.net/`. | Igen |
 | **subscriptionId** | Azure-előfizetése Azonosítóját, amelyhez a Data Lake Store-fiók tartozik. | A fogadó szükséges |
 | **resourceGroupName** | Azure erőforráscsoport-név, amely a Data Lake Store-fiók tartozik. | A fogadó szükséges |
@@ -120,7 +120,7 @@ Felhasználói hitelesítő adatok hitelesítése segítségével azt is megtehe
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| **authorization** | Kattintson a **engedélyezés** a Data Factory Editor gombra, és adja meg a hitelesítő adatok, amelyek az automatikusan létrehozott engedélyezési URL-címet rendel hozzá ehhez a tulajdonsághoz. | Igen |
+| **Engedélyezési** | Kattintson a **engedélyezés** a Data Factory Editor gombra, és adja meg a hitelesítő adatok, amelyek az automatikusan létrehozott engedélyezési URL-címet rendel hozzá ehhez a tulajdonsághoz. | Igen |
 | **sessionId** | OAuth munkamenet-azonosító az OAuth hitelesítési munkamenetből. Minden munkamenet-azonosító egyedi, és csak egyszer használható. Ez a beállítás automatikusan jön létre, a Data Factory Editor használatakor. | Igen |
 
 > [!IMPORTANT]
@@ -240,9 +240,9 @@ A **typeProperties** szakasz egy adatkészlet típusú **AzureDataLakeStore** ta
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | **folderPath** |A tároló és a Data Lake Store mappa elérési útja. |Igen |
-| **fileName** |A fájl az Azure Data Lake Store nevét. A **Fájlnév** tulajdonság nem kötelező, és a kis-és nagybetűket. <br/><br/>Ha megad **Fájlnév**, a tevékenység (például a Másolás) működik-e az adott fájlt.<br/><br/>Ha **Fájlnév** nincs megadva, másolása tartalmazza az összes fájl **folderPath** bemeneti adatkészlet.<br/><br/>Ha **Fájlnév** nincs megadva egy kimeneti adatkészlet és **preserveHierarchy** nincs megadva a tevékenység fogadó, a létrehozott fájl neve nem formátumú adatok. _GUID_.txt ". Például: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |Nem |
+| **Fájlnév** |A fájl az Azure Data Lake Store nevét. A **Fájlnév** tulajdonság nem kötelező, és a kis-és nagybetűket. <br/><br/>Ha megad **Fájlnév**, a tevékenység (például a Másolás) működik-e az adott fájlt.<br/><br/>Ha **Fájlnév** nincs megadva, másolása tartalmazza az összes fájl **folderPath** bemeneti adatkészlet.<br/><br/>Ha **Fájlnév** nincs megadva egy kimeneti adatkészlet és **preserveHierarchy** nincs megadva a tevékenység fogadó, a létrehozott fájl neve nem formátumú adatok. _GUID_.txt ". Például: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |Nem |
 | **partitionedBy** |A **partitionedBy** tulajdonság nem kötelező megadni. Használhatja a dinamikus elérési út és fájlnév idősorozat adatok megadása. Például **folderPath** adatok órára is lehet paraméterezett. Részletek és példák: [partitionedBy tulajdonság](#using-partitionedby-property). |Nem |
-| **format** | A következő formátumban típusok támogatottak: **szöveges**, **JsonFormat**, **AvroFormat**, **OrcFormat**, és  **ParquetFormat**. Állítsa be a **típus** tulajdonság alapján **formátum** számára a következő értékek egyike. További információkért lásd: a [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [JSON formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [az Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [ORC formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquet formátumban ](data-factory-supported-file-and-compression-formats.md#parquet-format) szakaszában a [Azure Data Factory által támogatott formátumú és tömörítést](data-factory-supported-file-and-compression-formats.md) cikk. <br><br> Ha a másolandó fájlok ",-van" közötti fájlalapú tárolók (bináris másolhatja azokat), hagyja ki a `format` mindkét bemeneti és kimeneti adatkészlet-definíciókban szakasz. |Nem |
+| **Formátumban** | A következő formátumban típusok támogatottak: **szöveges**, **JsonFormat**, **AvroFormat**, **OrcFormat**, és  **ParquetFormat**. Állítsa be a **típus** tulajdonság alapján **formátum** számára a következő értékek egyike. További információkért lásd: a [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [JSON formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [az Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [ORC formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquet formátumban ](data-factory-supported-file-and-compression-formats.md#parquet-format) szakaszában a [Azure Data Factory által támogatott formátumú és tömörítést](data-factory-supported-file-and-compression-formats.md) cikk. <br><br> Ha a másolandó fájlok ",-van" közötti fájlalapú tárolók (bináris másolhatja azokat), hagyja ki a `format` mindkét bemeneti és kimeneti adatkészlet-definíciókban szakasz. |Nem |
 | **Tömörítés** | Adja meg a típus és az adatok tömörítése szintjét. Támogatott típusok a következők **GZip**, **Deflate**, **BZip2**, és **ZipDeflate**. Támogatott szintek a következők **Optimal** és **leggyorsabb**. További információkért lásd: [Azure Data Factory által támogatott formátumú és tömörítést](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |
 
 ### <a name="the-partitionedby-property"></a>A partitionedBy tulajdonság

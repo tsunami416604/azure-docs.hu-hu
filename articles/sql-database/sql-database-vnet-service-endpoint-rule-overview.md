@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: b15b3c7f50c23a1c11b2467bfdd2794d52b451ac
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6037659eb419a785b01d4cbb6a2428cbd7f852da
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Virtuális hálózati szolgáltatás végpontok és szabályok az Azure SQL Database használata
 
@@ -129,8 +129,8 @@ Az Azure SQL Database a virtuális hálózati szabályok funkció rendelkezik a 
 
 - Virtuális hálózati szabályok vonatkoznak csak Azure Resource Manager virtuális hálózatok; és nem arra [klasszikus üzembe helyezési modellel] [ arm-deployment-model-568f] hálózatok.
 
-- Virtuális hálózati Szolgáltatásvégpontok indításának ON Azure SQL Database is lehetővé teszi a MySQL és PostGres Azure szolgáltatáshoz a végpontok. Azonban a végpontok ON példányokhoz való csatlakozáshoz a végpontról a MySQL vagy Postgres kísérlet sikertelen lesz.
-    - Az alapul szolgáló oka az, hogy a MySQL és PostGres jelenleg nem támogatják az ACLing.
+- Virtuális hálózati Szolgáltatásvégpontok indításának ON Azure SQL Database is lehetővé teszi a MySQL és PostgreSQL Azure szolgáltatáshoz a végpontok. Azonban a végpontok ON, példányokhoz való csatlakozáshoz a végpontról a MySQL vagy PostgreSQL kísérlet sikertelen lesz.
+    - Az alapul szolgáló oka, hogy a MySQL és PostgreSQL nem jelenleg támogatja ACLing.
 
 - A tűzfalon az IP-címtartományok alkalmazása a következő hálózati elemek, de a virtuális hálózati szabályok azonban nem:
     - [Webhelyek (közötti S2S) virtuális magánhálózati (VPN)][vpn-gateway-indexmd-608y]
@@ -225,6 +225,10 @@ Több SQL adatbázis-hibaüzenetek listáját dokumentált [Itt][sql-database-de
 ## <a name="portal-can-create-a-virtual-network-rule"></a>Portál virtuális hálózati szabályt hozhat létre.
 
 Ez a szakasz bemutatja, hogyan használhatja a [Azure-portálon] [ http-azure-portal-link-ref-477t] létrehozásához egy *virtuális hálózati szabály* az Azure SQL-adatbázisban. A szabály közli az SQL-adatbázis-kommunikációt fogad az adott alhálózat, amely rendelkezik amelyeken meg van jelölve, hogy egy *virtuális hálózati szolgáltatási végpont*.
+
+> [!NOTE]
+> Győződjön meg arról, hogy a szolgáltatás végpontok hozzáadása a virtuális hálózat tűzfalszabályt a kiszolgáló kívánt virtuális Hálózatot/alhálózatot vannak-e kapcsolva.
+> Ha a végpontok nem kapcsolja be a virtuális hálózat vagy alhálózat kérni fogja a portál lehetővé teszi, kattintson az engedélyezése a panelen, amelyre a szabály hozzáadása.
 
 #### <a name="powershell-alternative"></a>PowerShell alternatív
 

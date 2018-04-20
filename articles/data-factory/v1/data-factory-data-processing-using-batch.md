@@ -15,10 +15,10 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 8f0cd8aad2d5c5142fc66c78393b57ff210a7b83
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Folyamat nagy méretű adatkészletek adat-előállító és kötegelt használatával
 > [!NOTE]
@@ -42,7 +42,7 @@ A Batch szolgáltatással Azure számítási erőforrásokat határoz meg az alk
 
 Másik lehetőségként kötegelt kapcsolatos további információkért lásd: [kötegelt képzési terv](https://azure.microsoft.com/documentation/learning-paths/batch/).
 
-## <a name="why-azure-data-factory"></a>Miért érdemes az Azure Data Factory?
+## <a name="why-azure-data-factory"></a>Miért érdemes az Azure Data Factoryt választani?
 A Data Factory egy felhőalapú adatintegrációs szolgáltatás, amellyel előkészíthető és automatizálható az adatok továbbítása és átalakítása. Adat-előállító hozhat létre, amely tárolt adatok mozgatása a helyszíni és felhőalapú adattároló központosított adattárolóhoz felügyelt adatok folyamatok. Példa: az Azure Blob Storage tárolóban. Adat-előállító segítségével folyamat vagy átalakítási adatok szolgáltatásokat, például Azure HDInsight és az Azure Machine Learning segítségével. Adatok folyamatok (például óránként, naponta, és heti) ütemezett módon futtatásra is ütemezheti. Figyelheti és kezelheti a folyamatok egy pillanat alatt azonosíthatja a problémákat, és hajtsa végre a műveletet.
 
   Ha nem ismeri a Data Factory, a következő cikkekben megismerheti a megoldás, a cikkben leírt architektúra/végrehajtására:  
@@ -171,7 +171,7 @@ A metódushoz meg kell ismernie néhány kulcsfontosságú összetevők:
   * **linkedServices**. Ez a paraméter egy-egy bemeneti/kimeneti adatforrások (például blob-tároló) az adat-előállítóban hivatkozó csatolt szolgáltatások enumerálható lista. Ez a példa nincs Azure Storage használt bemeneti és kimeneti típus csak egy kapcsolódó szolgáltatás.
   * **adatkészletek**. Ez a paraméter egy-egy enumerálható lista állnak. A helyek és a bemeneti és kimeneti adatkészletek által megadott sémák használhatja ezt a paramétert.
   * **tevékenység**. Ez a paraméter az aktuális entitásnak számítási. Ebben az esetben a Batch szolgáltatás is.
-  * **logger**. A naplózó segítségével írható hibakeresési megjegyzéseket, hogy a felület a "User" napló a következő feldolgozási sor.
+  * **naplózó**. A naplózó segítségével írható hibakeresési megjegyzéseket, hogy a felület a "User" napló a következő feldolgozási sor.
 * A metódus visszaadja a szótár részére láncolni egyéni tevékenységek együtt a jövőben használható. Ez a funkció még nincs implementálva kerül, ezért csak egy üres szótár metódusa.
 
 #### <a name="procedure-create-the-custom-activity"></a>Az eljárás: Az egyéni tevékenység létrehozása

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
 ms.openlocfilehash: 32e595b6ae01e77289a81734f61b9036835dd2fd
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>IaaS-erőforrásokra a klasszikus Azure Resource Manager az áttelepítés tervezése
 Azure Resource Manager számos elképesztő funkciókat nyújtja, miközben nagyon fontos tervezze meg az áttelepítési út zökkenőmentesek sure művelet. Tervezési idő költségeik biztosítja, hogy nem tapasztal, az áttelepítési tevékenységek végrehajtása során.

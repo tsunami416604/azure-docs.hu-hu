@@ -1,11 +1,11 @@
 ---
-title: "S2S VPN- és VNet – VNet kapcsolatokhoz IPsec/IKE-házirend konfigurálása: Azure Resource Manager: PowerShell |} Microsoft Docs"
-description: "S2S és VNet – VNet kapcsolatokhoz IPsec/IKE-házirend konfigurálása az Azure VPN Gatewayek Azure Resource Manager és a PowerShell használatával."
+title: 'S2S VPN- és VNet – VNet kapcsolatokhoz IPsec/IKE-házirend konfigurálása: Azure Resource Manager: PowerShell |} Microsoft Docs'
+description: S2S és VNet – VNet kapcsolatokhoz IPsec/IKE-házirend konfigurálása az Azure VPN Gatewayek Azure Resource Manager és a PowerShell használatával.
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 238cd9b3-f1ce-4341-b18e-7390935604fa
 ms.service: vpn-gateway
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: 19233ccd306f507ef2e36bee878aa9705c115780
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: fa1aed76f63e500a6c2849fb9b62a918e85c9fb0
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>S2S VPN- és VNet – VNet kapcsolatokhoz IPsec/IKE-házirend konfigurálása
 
@@ -44,7 +44,7 @@ Ez a cikk bemutatja, és hozhat létre és IPsec/IKE-szabályzat beállítása e
 > 3. Meg kell adnia a internetes KULCSCSERE (alapmód) és a IPsec (gyorsmódú) algoritmusok és a paraméterek. A részleges házirend-megadás nem engedélyezett.
 > 4. Vegye fel a kapcsolatot VPN szállító műszaki győződjön meg arról, a házirend a helyszíni VPN-eszközök esetén támogatott. S2S vagy a VNet – VNet kapcsolatokhoz a nem tud, ha a házirendek nem kompatibilisek.
 
-## <a name ="workflow">1 - munkafolyamat létrehozása és IPsec/IKE házirend beállítása. rész</a>
+## <a name ="workflow"></a>1 - munkafolyamat létrehozása és IPsec/IKE házirend beállítása. rész
 Ez a szakasz ismerteti a munkafolyamat létrehozásához, és a S2S VPN- vagy a VNet – VNet kapcsolat IPsec/IKE-házirend frissítése:
 1. Virtuális hálózat és VPN-átjáró létrehozása
 2. Helyi hálózati átjáró a helyi kapcsolat vagy egy másik virtuális hálózati közötti és VNet – VNet-kapcsolatot az átjáró létrehozása
@@ -54,7 +54,7 @@ Ez a szakasz ismerteti a munkafolyamat létrehozásához, és a S2S VPN- vagy a 
 
 A jelen cikkben lévő utasítások segít beállítása és konfigurálása IPsec/IKE házirendek az ábrán látható módon:
 
-![ipsec-ike-policy](./media/vpn-gateway-ipsecikepolicy-rm-powershell/ipsecikepolicy.png)
+![IPSec-ike-házirend](./media/vpn-gateway-ipsecikepolicy-rm-powershell/ipsecikepolicy.png)
 
 ## <a name ="params"></a>2. rész - támogatott titkosítási algoritmusok és a kulcs szintjeiről
 
@@ -66,7 +66,7 @@ Az alábbi táblázat a támogatott titkosítási algoritmusok és a kulcs szint
 | IKEv2-integritás  | SHA384, MD5, SHA1, SHA256  |
 | DH-csoport         | DHGroup24, ECP384, ECP256, DHGroup14, DHGroup2048, DHGroup2, DHGroup1, None |
 | IPsec-titkosítás | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, Nincs    |
-| IPsec-integritás  | GCMASE256, GCMAES192, GCMAES128, SHA256, SHA1, MD5 |
+| IPsec-integritás  | GCMASE256, GCMAES192, GCMAES128, SHA-256, SHA1, MD5 |
 | PFS-csoport        | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, Nincs 
 | Gyorsmódú biztonsági társítás élettartama   | (**Nem kötelező**: alapértelmezett értékek vannak használt Ha nincs megadva)<br>Másodperc (egész szám; **min. 300**/alapértelmezett érték: 27000 másodperc)<br>KB (egész szám; **min. 1024**/alapértelmezett érték: 102400000 KB)   |
 | Forgalomválasztó | UsePolicyBasedTrafficSelectors ** ($True vagy $False; **Nem kötelező**, alapértelmezett $False Ha nincs megadva)    |
@@ -111,7 +111,7 @@ A következő táblázat felsorolja a megfelelő Diffie-Hellman csoport, az egy�
 
 További részletekért lásd: [RFC3526](https://tools.ietf.org/html/rfc3526) és [RFC5114](https://tools.ietf.org/html/rfc5114).
 
-## <a name ="crossprem">3. rész – hozzon létre egy új S2S VPN-kapcsolat IPsec/IKE-házirend</a>
+## <a name ="crossprem"></a>3. rész – hozzon létre egy új S2S VPN-kapcsolat IPsec/IKE-házirend
 
 Ez a szakasz bemutatja, hogyan hozzon létre egy S2S VPN-kapcsolatot az IPsec/IKE házirendjével. Az alábbi lépéseket a kapcsolat létrehozása, az ábrán látható módon:
 
@@ -162,7 +162,7 @@ A Resource Manager parancsmagjainak használatához váltson át PowerShell mód
 Nyissa meg a PowerShell konzolt, és csatlakozzon a fiókjához. A következő minta segíthet a kapcsolódásban:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName $Sub1
 New-AzureRmResourceGroup -Name $RG1 -Location $Location1
 ```
@@ -220,7 +220,7 @@ Opcionálisan hozzáadhat "-UsePolicyBasedTrafficSelectors $True" a létrehozás
 > Miután egy IPsec-/ h.rend kapcsolat van megadva, az Azure VPN gateway csak elküldi vagy elfogadja a IPsec/IKE-a megadott titkosítási algoritmusok és a kulcs szintjeiről a adott kapcsolat. Győződjön meg arról, hogy a kapcsolat a helyszíni VPN-eszköz használ, vagy fogadja el a pontos házirend kombináció, ellenkező esetben az S2S VPN-alagút fog létrehozni a.
 
 
-## <a name ="vnet2vnet">Rész 4 – hozzon létre egy új VNet – VNet-kapcsolatot IPsec/IKE-házirend</a>
+## <a name ="vnet2vnet"></a>Rész 4 – hozzon létre egy új VNet – VNet-kapcsolatot IPsec/IKE-házirend
 
 Hozzon létre egy VNet – VNet-kapcsolatot az IPsec/IKE házirendjével hasonlóak az S2S VPN-kapcsolatot. A következő minta parancsfájlokat hozza létre a kapcsolat, az ábrán látható módon:
 
@@ -305,7 +305,7 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $Connection21 -ResourceGroupNam
 
 A lépések elvégzése után a kapcsolat néhány perc múlva, és a következő hálózati topológia fog, ahogy az a kezdő:
 
-![ipsec-ike-policy](./media/vpn-gateway-ipsecikepolicy-rm-powershell/ipsecikepolicy.png)
+![IPSec-ike-házirend](./media/vpn-gateway-ipsecikepolicy-rm-powershell/ipsecikepolicy.png)
 
 
 ## <a name ="managepolicy"></a>Rész 5 - kapcsolat frissítés IPsec/IKE-házirend

@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
 ms.openlocfilehash: 5c2c39db7ab89b06915c014778977915cca15190
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: Konfigurálja automatikus felhasználói kialakítási munkanap
 
@@ -363,18 +363,18 @@ Ebben a szakaszban konfigurál, hogy felhasználói adatáramlás a WORKDAY-ből
 | WORKDAY ATTRIBÚTUM | AZ ACTIVE DIRECTORY-ATTRIBÚTUM |  EGYEZŐ AZONOSÍTÓ? | LÉTREHOZÁSA / FRISSÍTÉSE |
 | ---------- | ---------- | ---------- | ---------- |
 | **WorkerID**  |  EmployeeID | **Igen** | Írt csak létrehozásakor | 
-| **UserID**    |  cn    |   |   Írt csak létrehozásakor |
+| **Felhasználói azonosítóját**    |  CN    |   |   Írt csak létrehozásakor |
 | **Csatlakozás ("@", [felhasználónév], a "contoso.com")**   | userPrincipalName     |     | Írt csak létrehozásakor 
-| **Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         Írt csak létrehozásakor |
-| **Kapcsoló (\[aktív\],, "0", "True", "1")** |  accountDisabled      |     | Hozzon létre + frissítése |
+| **Cserélje le (Left (cseréje (\[UserID\],, "(\[ \\ \\ / \\ \\ \\ \\ \\ \\ \[ \\\\\]\\\\:\\\\;\\ \\|\\\\=\\\\,\\\\+\\\\\*\\ \\? \\ \\ &lt; \\ \\ &gt; \]) "," ",), 1, 20)," ([\\\\.) \* \$] (file:///\\.) *$)", , "", , )**      |    sAMAccountName            |     |         Írt csak létrehozásakor |
+| **Kapcsoló (\[aktív\],, "0", "True", "1")** |  AccountDisabled      |     | Hozzon létre + frissítése |
 | **Utónév**   | givenName       |     |    Hozzon létre + frissítése |
-| **LastName**   |   sorozatszám   |     |  Hozzon létre + frissítése |
+| **Vezetéknév**   |   sorozatszám   |     |  Hozzon létre + frissítése |
 | **PreferredNameData**  |  displayName |     |   Hozzon létre + frissítése |
 | **Vállalati**         | Vállalati   |     |  Hozzon létre + frissítése |
 | **SupervisoryOrganization**  | Szervezeti egység  |     |  Hozzon létre + frissítése |
 | **ManagerReference**   | Manager  |     |  Hozzon létre + frissítése |
 | **BusinessTitle**   |  cím     |     |  Hozzon létre + frissítése | 
-| **AddressLineData**    |  streetAddress  |     |   Hozzon létre + frissítése |
+| **AddressLineData**    |  StreetAddress  |     |   Hozzon létre + frissítése |
 | **Település**   |   l   |     | Hozzon létre + frissítése |
 | **CountryReferenceTwoLetter**      |   CO |     |   Hozzon létre + frissítése |
 | **CountryReferenceTwoLetter**    |  c  |     |         Hozzon létre + frissítése |
@@ -697,7 +697,7 @@ Ehhez az szükséges, használjon [Workday Studio](https://community.workday.com
 
 5. Válassza ki **külső**, és válassza ki a letöltött Human_Resources WSDL-fájl a 2.
 
-    ![Workday Studio](./media/active-directory-saas-workday-inbound-tutorial/WDstudio1.PNG)
+    ![WORKDAY Studio](./media/active-directory-saas-workday-inbound-tutorial/WDstudio1.PNG)
 
 6. Állítsa be a **hely** mezőről `https://IMPL-CC.workday.com/ccx/service/TENANT/Human_Resources`, de cseréje "IMPL-CC" az aktuális példánytípus és "BÉRLŐBEN" a valódi bérlő neve.
 
@@ -705,7 +705,7 @@ Ehhez az szükséges, használjon [Workday Studio](https://community.workday.com
 
 8.  Kattintson a kis **konfigurálása** hivatkozás alatt a kérelem/válasz ablaktábla a Workday használandó hitelesítő adatok beállításához. Ellenőrizze **hitelesítési**, és a Workday-integrációs rendszerfiók adja meg a felhasználónevet és jelszót. Ügyeljen arra, hogy a felhasználó nevét, name@tenant, és hagyja a **WS-biztonsági UsernameToken** kiválasztott beállítás.
 
-    ![Workday Studio](./media/active-directory-saas-workday-inbound-tutorial/WDstudio2.PNG)
+    ![WORKDAY Studio](./media/active-directory-saas-workday-inbound-tutorial/WDstudio2.PNG)
 
 9. Kattintson az **OK** gombra.
 
@@ -744,7 +744,7 @@ Ehhez az szükséges, használjon [Workday Studio](https://community.workday.com
 
 13. Válassza a a parancs sáv a Workday Studio **fájl > fájl megnyitása...**  , és nyissa meg az imént mentett XML-fájlt. Ekkor megnyílik a Workday Studio XML-szerkesztőben.
 
-    ![Workday Studio](./media/active-directory-saas-workday-inbound-tutorial/WDstudio3.PNG)
+    ![WORKDAY Studio](./media/active-directory-saas-workday-inbound-tutorial/WDstudio3.PNG)
 
 14. A fájl fában járja végig **/env:Envelope > env > wd:Get_Workers_Response > wd:Response_Data > wd:Worker** a felhasználói adatok kereséséhez. 
 
@@ -771,7 +771,7 @@ Ehhez az szükséges, használjon [Workday Studio](https://community.workday.com
 
 5. Válassza ki **Szerkesztés attribútumlista a Workday**.
 
-    ![Workday Studio](./media/active-directory-saas-workday-inbound-tutorial/WDstudio_AAD1.PNG)
+    ![WORKDAY Studio](./media/active-directory-saas-workday-inbound-tutorial/WDstudio_AAD1.PNG)
 
 6. A beviteli mezők esetén a attribútum lista alján görgessen.
 
@@ -783,7 +783,7 @@ Ehhez az szükséges, használjon [Workday Studio](https://community.workday.com
 
 10. Válassza ki **attribútum hozzáadása**.
 
-    ![Workday Studio](./media/active-directory-saas-workday-inbound-tutorial/WDstudio_AAD2.PNG)
+    ![WORKDAY Studio](./media/active-directory-saas-workday-inbound-tutorial/WDstudio_AAD2.PNG)
 
 11. Válassza ki **mentése** fenti, majd **Igen** a párbeszédpanelre. Zárja be a attribútum leképezési képernyő, ha folyamatban.
 

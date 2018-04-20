@@ -1,7 +1,7 @@
 ---
-title: "Azure SQL Database-séma kezelése több-bérlős alkalmazásban | Microsoft Docs"
-description: "Több bérlő sémájának kezelése Azure SQL Database-t használó több-bérlős alkalmazásban"
-keywords: "sql database-oktatóanyag"
+title: Azure SQL Database-séma kezelése több-bérlős alkalmazásban | Microsoft Docs
+description: Több bérlő sémájának kezelése Azure SQL Database-t használó több-bérlős alkalmazásban
+keywords: sql database-oktatóanyag
 services: sql-database
 author: MightyPen
 manager: craigg
@@ -12,10 +12,10 @@ ms.date: 01/03/2018
 ms.reviewers: billgib
 ms.author: genemi
 ms.openlocfilehash: 474b7842c8295be0dd30c2c03b92dc68ce40630d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Horizontálisan skálázott több-bérlős SQL-adatbázisok használó SaaS-alkalmazás a séma kezelése
 
@@ -51,7 +51,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 - Az Azure PowerShell telepítve kell lennie. További információkért lásd: [Ismerkedés az Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure SQL Database szolgáltatás egy korlátozott előzetes verziójú funkciókat használ ([rugalmas adatbázis-feladatok](sql-database-elastic-database-client-library.md)). Ha ez az oktatóanyag elvégzéséhez, adja meg az előfizetés-Azonosítóval történő  *SaaSFeedback@microsoft.com*  témát = a rugalmas feladatok megtekintése. Miután megkapta a megerősítést az előfizetésének engedélyezéséről, [töltse le és telepítse a legújabb kiadás előtti feladatok parancsmagjait](https://github.com/jaredmoo/azure-powershell/releases). Ez az előnézet korlátozva, így forduljon  *SaaSFeedback@microsoft.com*  kapcsolatos kérdésekre, vagy a támogatási szolgálathoz.
+> Ez az oktatóanyag az Azure SQL Database szolgáltatás egy korlátozott előzetes verziójú funkciókat használ ([rugalmas adatbázis-feladatok](sql-database-elastic-database-client-library.md)). Ha ez az oktatóanyag elvégzéséhez, adja meg az előfizetés-Azonosítóval történő *SaaSFeedback@microsoft.com* témát = a rugalmas feladatok megtekintése. Miután megkapta a megerősítést az előfizetésének engedélyezéséről, [töltse le és telepítse a legújabb kiadás előtti feladatok parancsmagjait](https://github.com/jaredmoo/azure-powershell/releases). Ez az előnézet korlátozva, így forduljon *SaaSFeedback@microsoft.com* kapcsolatos kérdésekre, vagy a támogatási szolgálathoz.
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>Bevezetés a Szolgáltatottszoftver-séma felügyeleti minták
 

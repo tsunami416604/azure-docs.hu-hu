@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: v-jysur
 ms.openlocfilehash: c39cf464a7e838fecf7ebd4a3cbb08612388a5fa
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Csatlakozás Azure ITSM eszközök IT Service Management-összekötő használatával
 
@@ -78,7 +78,7 @@ A kapcsolat létrehozásához, szüksége lesz a ITSM összekötő megoldásban 
 
 Attól függően, hogy a ITSM termék csatlakozik tegye a következőket:
 
-- [System Center Service Manager (SCSM)](log-analytics-itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
+- [A System Center Service Manager (SCSM)](log-analytics-itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
 - [ServiceNow](log-analytics-itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
 - [Provance](log-analytics-itsmc-connections.md#connect-provance-to-it-service-management-connector-in-azure)  
 - [Cherwell](log-analytics-itsmc-connections.md#connect-cherwell-to-it-service-management-connector-in-azure)
@@ -229,7 +229,7 @@ ServiceDeskWorkItemType_s="Incident"
 **Mezők**
 
 - ServiceDeskConnectionName
-- Service Desk ID
+- Szolgáltatás ügyfélszolgálati azonosítója
 - Állapot
 - Sürgős
 - Hatás
@@ -256,7 +256,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 **Mezők**
 - ServiceDeskConnectionName
-- Service Desk ID
+- Szolgáltatás ügyfélszolgálati azonosítója
 - Létrehozta
 - Lezárt
 - Forrás

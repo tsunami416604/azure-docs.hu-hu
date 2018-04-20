@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: bradsev
-ms.openlocfilehash: f3ddebdd02d4766b83f0834979a54552f88179cb
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4715384a0c6eb24a6a4208ca387b8c4a9871d5c7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Az adatok tudományos virtuális gép kiépítése Linux (Ubuntu)
 
-A Linux adatok tudományos virtuális gépen egy Ubuntu-alapú virtuálisgép-lemezkép, amellyel könnyedén mély learning Azure használatába. A részletes tanulási eszközök a következők:
+A Linux adatok tudományos virtuális gépen egy Ubuntu-alapú virtuálisgép-lemezkép, amellyel könnyedén gépi tanulás, beleértve a mély learning Azure használatába. A részletes tanulási eszközök a következők:
 
   * [Caffe](http://caffe.berkeleyvision.org/): sebességét, expressivity és modularitás épített mély tanulási keretrendszer
   * [Caffe2](https://github.com/caffe2/caffe2): egy Caffe platformfüggetlen verziója
@@ -31,6 +31,7 @@ A Linux adatok tudományos virtuális gépen egy Ubuntu-alapú virtuálisgép-le
   * [Keras](https://keras.io/): egy magas szintű Neurális hálózat API Theano és TensorFlow pythonban
   * [MXNet](http://mxnet.io/): egy rugalmas, hatékony mély tanulási függvénytár, amely sok nyelvi kötések
   * [NVIDIA számjegyek](https://developer.nvidia.com/digits): egy grafikus rendszer egyszerűsíti a részletes tanulási gyakori feladatok
+  * [PyTorch](http://pytorch.org/): egy magas szintű Python kódtár támogatja a dinamikus hálózatok
   * [TensorFlow](https://www.tensorflow.org/): egy nyílt forráskódú könyvtár számára a Google gép eszközintelligencia
   * [Theano](http://deeplearning.net/software/theano/): A Python kódtár meghatározása, optimalizálásához, és hatékonyan a többdimenziós tömböket tartalmazó matematikai kifejezések kiértékelése
   * [Torch](http://torch.ch/): gépi tanulási algoritmusok széles támogatása tudományos számítógépes keretrendszer
@@ -113,6 +114,14 @@ Az adatok tudományos virtuális gép példányt létrehozni a Linux lépései a
 A kiépítése körülbelül 5 – 10 percet kell végrehajtani. A kiépítési állapotát az Azure portálon jelenik meg.
 
 ## <a name="how-to-access-the-data-science-virtual-machine-for-linux"></a>Hogyan érhetők el az adatok tudományos virtuális gép Linux
+
+A három módszerrel Ubuntu DSVM érhető el:
+1. A Terminálszolgáltatások munkamenetek SSH
+2. Grafikus munkamenetek X2Go
+3. JupyterHub és a Jupyter notebookok JupyterLab
+
+### <a name="ssh"></a>SSH
+
 A virtuális gép létrehozása után is bejelentkezik az ssh protokoll használatával. A létrehozott fiók hitelesítő adatait használja a **alapjai** szakasz 3. lépés a szöveg shell felületén. Windows, egy SSH-ügyfél eszköz, például letöltheti [Putty](http://www.putty.org). Grafikus asztali (X Windows rendszer) tetszés szerint használhatja a Putty továbbítási X11, de X2Go ügyfél telepítése.
 
 > [!NOTE]
@@ -120,7 +129,7 @@ A virtuális gép létrehozása után is bejelentkezik az ssh protokoll használ
 > 
 > 
 
-## <a name="installing-and-configuring-x2go-client"></a>Telepítése és konfigurálása X2Go ügyfél
+### <a name="x2go"></a>X2Go
 A Linux virtuális gép már kiépített X2Go kiszolgálóval és készen áll kapcsolatok fogadására. A Linux virtuális gép grafikus asztali való kapcsolódáshoz az alábbi eljárással az ügyfélen:
 
 1. Töltse le és telepítse a saját ügyfélplatformjára X2Go ügyfél [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient).    
@@ -134,6 +143,14 @@ A Linux virtuális gép már kiépített X2Go kiszolgálóval és készen áll k
    * **Megosztott mappák**: Ha az ügyfél gépek, a Linux virtuális gép csatlakoztatott könyvtárak, az ügyfél gép címtárakat, a virtuális gép ezen a lapon megosztani kívánt fel.
 
 Bejelentkezés után a virtuális gép SSH-ügyfél vagy a XFCE grafikus asztali a X2Go ügyfélen keresztül, készen áll az eszközök, amelyek telepítése és konfigurálása történik meg a virtuális Gépen elindítására. A XFCE látható alkalmazások parancsikonjai és asztali ikonok esetében számos eszközt.
+
+### <a name="jupyterhub-and-jupyterlab"></a>JupyterHub és JupyterLab
+
+Futtatja az Ubuntu DSVM [JupyterHub](https://github.com/jupyterhub/jupyterhub), egy többfelhasználós Jupyter kiszolgáló. Szeretne csatlakozni, tallózással https://your-vm-ip:8000 a hordozható vagy asztali, írja be a felhasználónevét és jelszavát, amellyel a virtuális gép létrehozása, és jelentkezzen be. Sok minta notebookok érhetők el, hogy a Tallózás gombra, és próbálja ki.
+
+JupyterLab, a Jupyter notebookokból és JupyterHub, következő generációja érhető el. Az eléréséhez, jelentkezzen be JupyterHub, majd keresse meg az URL-címet a https://your-vm-ip:8000/lab. Az alapértelmezett notebook kiszolgálóként JupyterLab ezt a sort ad hozzá /etc/jupyterhub/jupyterhub_config.py állíthatja be:
+
+    c.Spawner.default_url = '/lab'
 
 ## <a name="tools-installed-on-the-data-science-virtual-machine-for-linux"></a>Az adatok tudományos virtuális gép telepített Linux eszközök
 ### <a name="deep-learning-libraries"></a>A részletes tanulási függvénytárak
@@ -193,30 +210,32 @@ Indítási R konzol, csak gépelje **R** a rendszerhéj. Ezzel megnyitná intera
 Is van, hogy telepítse az R-parancsfájl a [első 20 R csomagok](http://www.kdnuggets.com/2015/06/top-20-r-packages.html) irányíthatók. Ez a parancsfájl futtatása után lehetséges az R interaktív felületet is meg lehet adni (említett) írja be a **R** a rendszerhéj.  
 
 ### <a name="python"></a>Python
-A fejlesztési pythonos környezetekben Anaconda Python elosztási 2.7 és 3.5-ös telepítve van. Ehhez a terjesztéshez együtt a legnépszerűbb matematikai, tervezés és adatok analytics csomagok körülbelül 300 alap Python tartalmazza. Az alapértelmezett szöveg szerkesztők is használhatja. Ezenkívül Spyder, a Python IDE Anaconda Python terjesztéseket mellékelt is használhatja. Spyder kell egy grafikus asztali vagy X11 továbbítása. A grafikus asztali Spyder parancsikon valósul meg.
+Anaconda Python Python 2.7-es és 3.5-ös környezetek együtt települ. A 2.7 környezet nevezik _legfelső szintű_, és a 3.5-ös környezet nevezik _py35_. Ehhez a terjesztéshez együtt a legnépszerűbb matematikai, tervezés és adatok analytics csomagok körülbelül 300 alap Python tartalmazza. 
 
-Python 2.7-es és 3.5-ös verzióját is van, mert az aktuális munkamenetben a használni kívánt kívánt Python verziójával (conda környezet) kifejezetten aktiválni kell. Az aktiválási folyamat a PATH változó állítja be a Python kívánt verziójával.
+A py35 környezet az alapértelmezett beállítás. A legfelső szintű (2.7) környezet aktiválása:
 
-A Python 2.7 conda környezet aktiválásához a következő parancsot a rendszerhéj a:
+    source activate root
 
-    source /anaconda/bin/activate root
+Aktiválja újra a py35 környezetben:
 
-Python 2.7 telepített */anaconda/bin*.
+    source activate py35
 
-A Python 3.5 conda környezet aktiválásához a rendszerhéjból futtassa a következő:
+A Python interaktív munkamenet meghívni, csak gépelje **python** a rendszerhéj. 
 
-    source /anaconda/bin/activate py35
+További Python-könyvtárak használatával telepítse ```conda``` vagy ````pip```` . A pip aktiválja a megfelelő környezet először Ha nem szeretné, hogy az alapértelmezett:
 
+    source activate root
+    pip install <package>
 
-Python 3.5 telepített */anaconda/envs/py35/bin*.
+Vagy adja meg a pip teljes elérési útja:
 
-A Python interaktív munkamenet meghívni, csak gépelje **python** a rendszerhéj. Ha Ön a grafikus felület vagy X11 továbbítási állítsa be, írja **pycharm** elindíthatja az PyCharm Python IDE.
+    /anaconda/bin/pip install <package>
+    
+A conda, akkor mindig meg kell adnia a környezet neve (_py35_ vagy _legfelső szintű_):
 
-További Python-könyvtárak telepítéséhez futtatnia kell ```conda``` vagy ````pip```` a sudo parancsot, és adja meg a teljes elérési útja a Python package Manager (conda vagy pip) a megfelelő Python-környezetben való telepítéséhez. Példa:
+    conda install <package> -n py35
 
-    sudo /anaconda/bin/pip install -n <package> #for Python 2.7 environment
-    sudo /anaconda/envs/py35/bin/pip install -n <package> # for Python 3.5 environment
-
+Ha Ön a grafikus felület vagy X11 továbbítási állítsa be, írja **pycharm** elindíthatja az PyCharm Python IDE. Az alapértelmezett szöveg szerkesztők is használhatja. Ezenkívül Spyder, a Python IDE Anaconda Python terjesztéseket mellékelt is használhatja. Spyder kell egy grafikus asztali vagy X11 továbbítása. A grafikus desktop.s megadott Spyder mutató hivatkozás
 
 ### <a name="jupyter-notebook"></a>Jupyter notebook
 A Anaconda terjesztési Jupyter notebook, egy környezet kóddal és elemzési is tartalmaz. A Jupyter notebook JupyterHub keresztül érhető el. A helyi Linux-felhasználónév és jelszó használatával bejelentkezik.

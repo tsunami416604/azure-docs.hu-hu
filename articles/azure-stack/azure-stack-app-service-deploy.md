@@ -1,12 +1,12 @@
 ---
-title: "App Service szolgáltatások telepítése: Az Azure verem |} Microsoft Docs"
-description: "Részletes útmutató a verem Azure App Service telepítése"
+title: 'App Service szolgáltatások telepítése: Az Azure verem |} Microsoft Docs'
+description: Részletes útmutató a verem Azure App Service telepítése
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: apwestgarth
 manager: stefsch
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/09/2018
 ms.author: anwestg
-ms.openlocfilehash: 2d26aedf37727a4e3d687cdc6c748268d546f60f
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 330b8015bdddbbcf27e4325b97e8b734c4d98d12
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Az App Service erőforrás-szolgáltató hozzáadása Azure verem
 
@@ -168,6 +168,18 @@ App Service erőforrás-szolgáltató telepítéséhez kövesse az alábbi lép�
 2. Az áttekintésben állapota, ellenőrizze, hogy, hogy a **állapot** látható **készen áll az összes szerepkör**.
 
     ![Az alkalmazásszolgáltatási Management](media/azure-stack-app-service-deploy/image12.png)
+    
+> [!NOTE]
+> Ha úgy dönt, hogy az üzembe helyezés meglévő virtuális hálózat és a fájlkiszolgáló a conenct egy belső IP-címet, hozzá kell adnia egy kimenő biztonsági szabály engedélyezése az SMB adatforgalmát. a munkavégző és a fájlkiszolgáló között.  Ehhez nyissa meg a felügyeleti portál WorkersNsg, és a következő tulajdonságokkal kimenő biztonsági szabály felvétele:
+> * Forrás: bármely
+> * Forrás-porttartomány: *
+> * Cél: IP-címek
+> * Cél IP-címtartomány: IP-címtartományra vonatkozó a fájlkiszolgáló
+> * Célporttartomány: 445-ös
+> * Protokoll: TCP
+> * Művelet: engedélyezése
+> * Prioritás: 700
+> * Name: Outbound_Allow_SMB445
 
 ## <a name="test-drive-app-service-on-azure-stack"></a>App Service-meghajtó a Azure verem tesztelése
 
@@ -198,9 +210,9 @@ Webes API és Azure létrehozásához funkciókkal, alkalmazások, kell a bérl�
 
 ## <a name="deploy-a-wordpress-dnn-or-django-website-optional"></a>(Választható) WordPress, DNN vagy Django webhely telepítése
 
-1. Az Azure-verem bérlői portálon kattintson  **+** nyissa meg az Azure piactéren, egy Django-webhely telepítése, és várjon, amíg a művelet sikeresen befejeződött. A Django webes platform jöhet létre fájl rendszer-alapú adatbázist használ. Bármely további erőforrás-szolgáltató SQL vagy MySQL például nem igényel.
+1. Az Azure-verem bérlői portálon kattintson **+**nyissa meg az Azure piactéren, egy Django-webhely telepítése, és várjon, amíg a művelet sikeresen befejeződött. A Django webes platform jöhet létre fájl rendszer-alapú adatbázist használ. Bármely további erőforrás-szolgáltató SQL vagy MySQL például nem igényel.
 
-2. Amennyiben egy MySQL erőforrás-szolgáltató is telepített, telepíthet egy WordPress-webhely a piactérről. Amikor a rendszer kéri az adatbázis-paraméterek, írja be a felhasználónevet, mint a  *User1@Server1* , a felhasználó nevét és a kívánt kiszolgáló nevét.
+2. Amennyiben egy MySQL erőforrás-szolgáltató is telepített, telepíthet egy WordPress-webhely a piactérről. Amikor a rendszer kéri az adatbázis-paraméterek, írja be a felhasználónevet, mint a *User1@Server1*, a felhasználó nevét és a kívánt kiszolgáló nevét.
 
 3. Ha egy SQL Server erőforrás-szolgáltató is telepített, telepítheti a piactérről DNN webhely. Amikor a rendszer kéri az adatbázis-paraméterek, válasszon egy adatbázist, amely kapcsolódik az erőforrás-szolgáltató SQL Server rendszert futtató számítógép.
 
