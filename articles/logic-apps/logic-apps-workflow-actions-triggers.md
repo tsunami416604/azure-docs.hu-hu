@@ -1,11 +1,11 @@
 ---
-title: "Munkafolyamat-eseményindítók és műveletek - Azure Logic Apps |} Microsoft Docs"
-description: "Az eseményindítók és műveletek automatizált munkafolyamatok és a folyamatok létrehozni a logic apps megismerése"
+title: Munkafolyamat-eseményindítók és műveletek - Azure Logic Apps |} Microsoft Docs
+description: Az eseményindítók és műveletek automatizált munkafolyamatok és a folyamatok létrehozni a logic apps megismerése
 services: logic-apps
 author: divyaswarnkar
 manager: anneta
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: 86a53bb3-01ba-4e83-89b7-c9a7074cb159
 ms.service: logic-apps
 ms.workload: integration
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: klam; LADocs
 ms.openlocfilehash: 28d28888ce66c354da39dc636579655aadbb9e51
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="triggers-and-actions-for-logic-app-workflows"></a>Eseményindítók és műveletek a logic app munkafolyamatok
 
@@ -53,7 +53,7 @@ Minden egyes indítási típus egy másik felülettel rendelkezik, és különb�
 
 | Indítási típus | Leírás | 
 | ------------ | ----------- | 
-| **Recurrence** | Akkor következik be, a megadott ütemezés szerint. Beállíthatja, hogy egy jövőbeli dátumot és időt az eseményindító kiváltó. A gyakoriság alapján azt is megadhatja, időpontok és a munkafolyamat futtatási nap. | 
+| **Ismétlődés** | Akkor következik be, a megadott ütemezés szerint. Beállíthatja, hogy egy jövőbeli dátumot és időt az eseményindító kiváltó. A gyakoriság alapján azt is megadhatja, időpontok és a munkafolyamat futtatási nap. | 
 | **Kérés**  | A Logic Apps alkalmazást teszi az olyan végponttal, amely hívása, más néven "manual" eseményindító. | 
 | **HTTP** | Ellenőrzi, vagy *szavazások*, webes HTTP-végponttal. A HTTP-végpont meg kell felelnie egy meghatározott eseményindító szerződés "202" aszinkron minta használatával vagy tömböt ad vissza. | 
 | **ApiConnection** | Például egy HTTP-eseményindítóval kérdezi le, de használja [Microsoft által felügyelt API-k](../connectors/apis-list.md). | 
@@ -192,7 +192,7 @@ Ehhez az eseményindítóhoz lekérdezi a megadott végpontot, és ellenőrzi a 
 
 | Elem neve | Szükséges | Típus | Leírás | 
 | ------------ | -------- | ---- | ----------- | 
-| metódus | Igen | Karakterlánc | A HTTP-metódus egyikét használja: "GET", "POST", "PUT", "DELETE", "Javítás" vagy "HEAD" | 
+| method | Igen | Karakterlánc | A HTTP-metódus egyikét használja: "GET", "POST", "PUT", "DELETE", "Javítás" vagy "HEAD" | 
 | uri azonosító | Igen| Karakterlánc | A HTTP vagy HTTPs végpont az eseményindító-kereső. Maximális méret: 2 KB | 
 | Lekérdezések | Nem | Objektum | Lekérdezési paramétereket, hogy az URL-címben felvenni kívánt jelöli. <p>Például `"queries": { "api-version": "2015-02-01" }` hozzáadja `?api-version=2015-02-01` URL-címét. | 
 | fejlécek | Nem | Objektum | Minden egyes fejlécet tartalmazta, amely a kérelemben küldött jelöli. <p>Ha például a nyelv, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
@@ -268,7 +268,7 @@ Az alapvető funkciókat ehhez az eseményindítóhoz működik, mint a HTTP-ese
 | Elem neve | Szükséges | Típus | Leírás | 
 | ------------ | -------- | ---- | ----------- | 
 | gazdagép | Igen | Objektum | Az üzemeltetett átjáró és az API-alkalmazás azonosítója | 
-| metódus | Igen | Karakterlánc | A HTTP-metódus egyikét használja: "GET", "POST", "PUT", "DELETE", "Javítás" vagy "HEAD" | 
+| method | Igen | Karakterlánc | A HTTP-metódus egyikét használja: "GET", "POST", "PUT", "DELETE", "Javítás" vagy "HEAD" | 
 | Lekérdezések | Nem | Objektum | Lekérdezési paramétereket, hogy az URL-címben felvenni kívánt jelöli. <p>Például `"queries": { "api-version": "2015-02-01" }` hozzáadja `?api-version=2015-02-01` URL-címét. | 
 | fejlécek | Nem | Objektum | Minden egyes fejlécet tartalmazta, amely a kérelemben küldött jelöli. <p>Ha például a nyelv, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | törzs | Nem | Objektum | A tartalom a végpontnak küldött jelöli. | 
@@ -511,7 +511,7 @@ Nincsenek számos különböző típusú műveletek, az egyedi viselkedését. M
 | **Összeállítás** | A tevékenység bemenetei tetszőleges objektum hoz létre. | 
 | **Lekérdezés** | Egy tömb feltétel alapján szűri. | 
 | **Kiválasztás** | A tömb egyes elemei projektek be új értéket. Például átalakíthatja számokból álló tömb egy objektumokból álló tömb. | 
-| **Table** | Elemek tömbje alakítja át a CSV és HTML táblát. | 
+| **Tábla** | Elemek tömbje alakítja át a CSV és HTML táblát. | 
 | **Leáll** | Egy munkafolyamat leáll. | 
 | **Wait** | A rögzített méretű idő vagy egy adott időpontig vár. | 
 | **munkafolyamat** | Egy beágyazott munkafolyamat jelöli. | 
@@ -546,7 +546,7 @@ Itt a `inputs` objektum e egy HTTP-hívás megalkotásához szükséges paramét
 
 | Elem neve | Szükséges | Típus | Leírás | 
 | ------------ | -------- | ---- | ----------- | 
-| metódus | Igen | Karakterlánc | A HTTP-metódus egyikét használja: "GET", "POST", "PUT", "DELETE", "Javítás" vagy "HEAD" | 
+| method | Igen | Karakterlánc | A HTTP-metódus egyikét használja: "GET", "POST", "PUT", "DELETE", "Javítás" vagy "HEAD" | 
 | uri azonosító | Igen| Karakterlánc | A HTTP vagy HTTPs végpont az eseményindító-kereső. Maximális méret: 2 KB | 
 | Lekérdezések | Nem | Objektum | Lekérdezési paramétereket, hogy az URL-címben felvenni kívánt jelöli. <p>Például `"queries": { "api-version": "2015-02-01" }` hozzáadja `?api-version=2015-02-01` URL-címét. | 
 | fejlécek | Nem | Objektum | Minden egyes fejlécet tartalmazta, amely a kérelemben küldött jelöli. <p>Ha például a nyelv, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
@@ -650,7 +650,7 @@ Ez a művelet egy Microsoft által felügyelt összekötő, egy hivatkozást egy
 | Elem neve | Szükséges | Típus | Leírás | 
 | ------------ | -------- | ---- | ----------- | 
 | gazdagép | Igen | Objektum | Az összekötő adatait jelöli, mint a `runtimeUrl` és a kapcsolat objektum hivatkozását. | 
-| metódus | Igen | Karakterlánc | A HTTP-metódus egyikét használja: "GET", "POST", "PUT", "DELETE", "Javítás" vagy "HEAD" | 
+| method | Igen | Karakterlánc | A HTTP-metódus egyikét használja: "GET", "POST", "PUT", "DELETE", "Javítás" vagy "HEAD" | 
 | elérési út | Igen | Karakterlánc | Az API-művelet elérési útja | 
 | Lekérdezések | Nem | Objektum | Lekérdezési paramétereket, hogy az URL-címben felvenni kívánt jelöli. <p>Például `"queries": { "api-version": "2015-02-01" }` hozzáadja `?api-version=2015-02-01` URL-címét. | 
 | fejlécek | Nem | Objektum | Minden egyes fejlécet tartalmazta, amely a kérelemben küldött jelöli. <p>Ha például a nyelv, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
@@ -793,7 +793,7 @@ Ez a művelet lehetővé teszi, hogy jelentik és hívás egy [Azure függvény]
 | Elem neve | Szükséges | Típus | Leírás | 
 | ------------ | -------- | ---- | ----------- |  
 | függvény azonosítója | Igen | Karakterlánc | Az Azure függvény hívása kívánt erőforrás-azonosító. | 
-| metódus | Nem | Karakterlánc | A függvény használt HTTP-metódus. Ha nincs megadva, a "POST" az alapértelmezett mód. | 
+| method | Nem | Karakterlánc | A függvény használt HTTP-metódus. Ha nincs megadva, a "POST" az alapértelmezett mód. | 
 | Lekérdezések | Nem | Objektum | Lekérdezési paramétereket, hogy az URL-címben felvenni kívánt jelöli. <p>Például `"queries": { "api-version": "2015-02-01" }` hozzáadja `?api-version=2015-02-01` URL-címét. | 
 | fejlécek | Nem | Objektum | Minden egyes fejlécet tartalmazta, amely a kérelemben küldött jelöli. <p>Ha például a nyelv, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | törzs | Nem | Objektum | A tartalom a végpontnak küldött jelöli. | 
@@ -1028,7 +1028,7 @@ Ez a művelet lehetővé teszi a munkafolyamat ágyazhatók be. A Logic Apps mot
 | Elem neve | Szükséges | Típus | Leírás | 
 | ------------ | -------- | ---- | ----------- |  
 | állomás azonosítója | Igen | Karakterlánc| Az erőforrás-azonosítója a hívni kívánt munkafolyamat | 
-| host triggerName | Igen | Karakterlánc | A meghívni kívánt eseményindító nevét | 
+| állomás Eseményindító_neve | Igen | Karakterlánc | A meghívni kívánt eseményindító nevét | 
 | Lekérdezések | Nem | Objektum | Lekérdezési paramétereket, hogy az URL-címben felvenni kívánt jelöli. <p>Például `"queries": { "api-version": "2015-02-01" }` hozzáadja `?api-version=2015-02-01` URL-címét. | 
 | fejlécek | Nem | Objektum | Minden egyes fejlécet tartalmazta, amely a kérelemben küldött jelöli. <p>Ha például a nyelv, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | törzs | Nem | Objektum | A tartalom a végpontnak küldött jelöli. | 

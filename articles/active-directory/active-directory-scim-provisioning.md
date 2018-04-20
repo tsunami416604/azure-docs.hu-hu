@@ -1,11 +1,11 @@
 ---
-title: "SCIM használata az Azure Active Directory-alkalmazások létesítési automatizálásához |} Microsoft Docs"
-description: "Az Azure Active Directory automatikusan telepíthetik a felhasználókat és csoportokat a webszolgáltatás által a felülettel, a SCIM protokoll specifikációja definiálva van fronted alkalmazás vagy identitás tároló"
+title: SCIM használata az Azure Active Directory-alkalmazások létesítési automatizálásához |} Microsoft Docs
+description: Az Azure Active Directory automatikusan telepíthetik a felhasználókat és csoportokat a webszolgáltatás által a felülettel, a SCIM protokoll specifikációja definiálva van fronted alkalmazás vagy identitás tároló
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 4d86f3dc-e2d3-4bde-81a3-4a0e092551c0
 ms.service: active-directory
 ms.workload: identity
@@ -17,10 +17,10 @@ ms.author: asmalser
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
 ms.openlocfilehash: 3b7f2f104046313e7d60cea4ef296f265d204aec
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="using-system-for-cross-domain-identity-management-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>A tartományok közötti Identity Management rendszert használ automatikusan a felhasználók és csoportok az Azure Active Directory alkalmazások telepítéséhez
 
@@ -114,7 +114,7 @@ Az egy SCIM végpontot, amelyhez is fogadja el a kiépítési kérelmekre, az Az
 
 **A minta SCIM-végpont létrehozása:**
 
-1. Töltse le a kód a minta csomagjához [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master)
+1. A kód a minta csomag: [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master)
 2. Bontsa ki a csomagot, és helyezze el a Windows-számítógép C:\AzureAD-BYOA-Provisioning-Samples\ például egy helyen.
 3. Ebben a mappában nyissa meg a Visual Studio FileProvisioningAgent megoldás.
 4. Válassza ki **eszközök > Kódtárcsomag-kezelő > Csomagkezelő konzol**, és a következő parancsok a FileProvisioningAgent projekt oldani a megoldás hivatkozásokat:
@@ -124,7 +124,7 @@ Az egy SCIM végpontot, amelyhez is fogadja el a kiépítési kérelmekre, az Az
    Install-Package Microsoft.Owin.Diagnostics
    Install-Package Microsoft.Owin.Host.SystemWeb
   ````
-5. Build the FileProvisioningAgent project.
+5. A FileProvisioningAgent projekt felépítéséhez.
 6. Indítsa el a (rendszergazdaként) a Windows parancssori alkalmazás, és használja a **cd** paranccsal lépjen be a **\AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug** mappa.
 7. A következő parancsot, a Windows-számítógép IP-cím vagy tartománynév kiszolgálónevét < ip-cím > cseréje:
   ````   
@@ -144,7 +144,7 @@ Az egy SCIM végpontot, amelyhez is fogadja el a kiépítési kérelmekre, az Az
   ![][2]
   *4. ábra: Konfigurálása kiosztás az Azure portálon*
     
-6. Az a **bérlői URL-cím** mezőbe írja be az internet elérhetővé tett URL-cím és port a SCIM végpont. Ez lenne valamit, például http://testmachine.contoso.com:9000 vagy http://<ip-address>:9000/, ahol a < ip-cím > az interneten közzétéve az IP cím.  
+6. Az a **bérlői URL-cím** mezőbe írja be az internet elérhetővé tett URL-cím és port a SCIM végpont. Ez lehet hasonlót http://testmachine.contoso.com:9000 vagy http://<ip-address>:9000/, ahol a < ip-cím > az interneten közzétéve az IP-cím.  
 7. Ha a SCIM végpont az OAuth tulajdonosi jogkivonat nem az Azure AD egy kibocsátótól igényel, majd másolja a szükséges OAuth tulajdonosi jogkivonatot az opcionális **titkos Token** mező. Ez a mező üresen marad, ha az Azure AD tartalmazza az Azure ad-minden egyes kérelemmel kiadott OAuth tulajdonosi jogkivonat. Alkalmazások, az Azure AD használja az identitásszolgáltató azt is ellenőrzi az Azure AD-jogkivonatot ki.
 8. Kattintson a **kapcsolat tesztelése** kell rendelkeznie az Azure Active Directory megpróbál csatlakozni a SCIM végpont gombra. Ha a kísérlet sikertelen, hiba információk jelennek meg.  
 9. Ha a kísérel meg csatlakozni az alkalmazás Succeed, majd kattintson a **mentése** mentéséhez rendszergazdai hitelesítő adatokat.
@@ -168,7 +168,7 @@ A saját webes szolgáltatás, amely megfelel a SCIM specifikációjának elkés
 2. [Express route kezelők](http://expressjs.com/guide/routing.html) érhető el elemzés node.js kérelem objektumokból-hívások (amelyeket a SCIM specification) végrehajtott egy node.js webes szolgáltatás.   
 
 ### <a name="building-a-custom-scim-endpoint"></a>Egy egyéni SCIM végpont létrehozása
-A CLI-tárakat használ, a tárak használó fejlesztők tárolhatja bármilyen végrehajtható közös nyelvi infrastruktúra szerelvényen belül, vagy az Internet Information Services belül a szolgáltatások. Itt látható mintakód egy végrehajtható szerelvényben, a következő címen: http://localhost:9000 szolgáltatás üzemeltetéséhez: 
+A CLI-tárakat használ, a tárak használó fejlesztők tárolhatja bármilyen végrehajtható közös nyelvi infrastruktúra szerelvényen belül, vagy az Internet Information Services belül a szolgáltatások. Itt látható mintakód egy végrehajtható szerelvényben, a címen szolgáltatás üzemeltetéséhez http://localhost:9000: 
 
     private static void Main(string[] arguments)
     {
@@ -288,7 +288,7 @@ Az Internet Information Services belül a szolgáltatás futtatásához, a fejle
     }
 
 ### <a name="handling-endpoint-authentication"></a>Kezelési végpont hitelesítés
-Az Azure Active Directory kérések tartalmazzák az OAuth 2.0 tulajdonosi jogkivonatot.   Minden szolgáltatás, a kérelem fogadása hitelesítenie kell a kibocsátó, hogy az Azure Active Directory nevében a várt Azure Active Directory-bérlőt az Azure Active Directory Graph webszolgáltatás elérésére.  A jogkivonat a kibocsátó azonosít egy iss jogcímet, például "iss": "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/".  Ebben a példában a jogcím értéke alapszintű címéből https://sts.windows.net, mint a kibocsátó Azure Active Directory azonosítja a cbb1a5ac-f33b-45fa-9bf5-f37db0fed422 relatív címet szegmens pedig az Azure Active Directory-bérlő nevében, amely a token ki egy egyedi azonosítója.  Ha a jogkivonat az Azure Active Directory Graph webszolgáltatás eléréséhez adta ki, majd szolgáltatáshoz, 00000002-0000-0000-c000-000000000000 azonosítóját kell lennie a token és jogcím értéke.  
+Az Azure Active Directory kérések tartalmazzák az OAuth 2.0 tulajdonosi jogkivonatot.   Minden szolgáltatás, a kérelem fogadása hitelesítenie kell a kibocsátó, hogy az Azure Active Directory nevében a várt Azure Active Directory-bérlőt az Azure Active Directory Graph webszolgáltatás elérésére.  A jogkivonat a kibocsátó azonosít egy iss jogcímet, például "iss": "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/".  Ebben a példában a jogcím értéke alapszintű címéből https://sts.windows.net, azonosítja az Azure Active Directory, a kibocsátó, amíg relatív cím szegmens, cbb1a5ac-f33b-45fa-9bf5-f37db0fed422, megtalálható az Azure Active Directory-bérlő egyedi azonosítója a token ki, amelyek nevében.  Ha a jogkivonat az Azure Active Directory Graph webszolgáltatás eléréséhez adta ki, majd szolgáltatáshoz, 00000002-0000-0000-c000-000000000000 azonosítóját kell lennie a token és jogcím értéke.  
 
 A fejlesztők a SCIM szolgáltatás létrehozása a Microsoft által biztosított CLA könyvtárak segítségével hitelesítheti a kérelmeket az Azure Active Directoryból a Microsoft.Owin.Security.ActiveDirectory csomag használata a következő lépések végrehajtásával: 
 
@@ -349,16 +349,16 @@ Az Azure Active Directory kétféle típusú erőforrások SCIM webszolgáltatá
 
 Felhasználói erőforrásokat azonosítja a sémaazonosítót urn: ietf:params:scim:schemas:extension:enterprise:2.0:User, amely szerepel a protokoll-meghatározása: http://tools.ietf.org/html/draft-ietf-scim-core-schema.  Az alapértelmezett leképezését a felhasználók az Azure Active Directoryban urn: ietf:params:scim:schemas:extension:enterprise:2.0:User erőforrások attribútumait alább tábla 1.  
 
-Erőforrások azonosítják a sémaazonosítót http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group.  Táblázat 2, az alábbi, az alapértelmezett leképezést csoportok az Azure Active Directoryban attribútumait http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group erőforrások attribútumát.  
+Erőforrások azonosítják a sémaazonosítót http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group.  Táblázat 2, az alábbi, az alapértelmezett leképezését a csoportok az Azure Active Directoryban attribútumait http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group erőforrásokat.  
 
 ### <a name="table-1-default-user-attribute-mapping"></a>1. táblázat: Alapértelmezett felhasználói címtárattribútum-leképezésben
-| Azure Active Directory user | urn:ietf:params:scim:schemas:extension:enterprise:2.0:User |
+| Az Azure Active Directory-felhasználó | urn:ietf:params:scim:schemas:extension:enterprise:2.0:User |
 | --- | --- |
 | IsSoftDeleted |aktív |
 | displayName |displayName |
-| Facsimile-TelephoneNumber |.value phoneNumbers [típus eq "fax"] |
+| Telefax-TelephoneNumber |.value phoneNumbers [típus eq "fax"] |
 | givenName |name.givenName |
-| jobTitle |cím |
+| Beosztás |cím |
 | mail |e-mailek [típus eq "munkahelyi"] .value |
 | mailNickname |externalId |
 | Manager |Manager |
@@ -366,11 +366,11 @@ Erőforrások azonosítják a sémaazonosítót http://schemas.microsoft.com/200
 | objectId |id |
 | Irányítószám |[típus eq "munkahelyi"] címek .postalCode |
 | proxy-Addresses |[Írja be az "egyéb" eq] e-maileket. Érték |
-| physical-Delivery-OfficeName |[Írja be az "egyéb" eq] címek. Formázott |
-| streetAddress |[típus eq "munkahelyi"] címek .streetAddress |
+| fizikai-kézbesítés-OfficeName |[Írja be az "egyéb" eq] címek. Formázott |
+| StreetAddress |[típus eq "munkahelyi"] címek .streetAddress |
 | Vezetéknév |name.familyName |
 | Telefonszám |.value phoneNumbers [típus eq "munkahelyi"] |
-| user-PrincipalName |Felhasználónév |
+| felhasználó-egyszerű név |Felhasználónév |
 
 ### <a name="table-2-default-group-attribute-mapping"></a>2. táblázat: Alapértelmezett attribútum leképezése
 | Azure Active Directory-csoport | http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group |
@@ -442,9 +442,9 @@ A következő ábra azt mutatja, hogy Azure Active Directory küld SCIM szolgál
     }
   ````
   A következő példában a lekérdezés egy felhasználó a externalId attribútum egy megadott értékkel a lekérdezés metódusnak átadott argumentumok értékek a következők: 
-  * parameters.AlternateFilters.Count: 1
+  * a paraméterek. AlternateFilters.Count: 1
   * parameters.AlternateFilters.ElementAt(0).AttributePath: "externalId"
-  * parameters.AlternateFilters.ElementAt(0).ComparisonOperator: ComparisonOperator.Equals
+  * a paraméterek. AlternateFilters.ElementAt(0). ÖsszehasonlítóOperátor: ComparisonOperator.Equals
   * a paraméterek. AlternateFilter.ElementAt(0). ComparisonValue: "jyoung"
   * correlationIdentifier: System.Net.Http.HttpRequestMessage.GetOwinEnvironment["owin.RequestId"] 
 
@@ -526,8 +526,8 @@ A következő ábra azt mutatja, hogy Azure Active Directory küld SCIM szolgál
   ````
   A példa egy kérelem a felhasználó aktuális állapotának beolvasására, a paraméterek argumentum értéke a megadott objektum tulajdonságainak értékei a következők: 
   
-  * Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
-  * SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
+  * Azonosító: "54D382A4-2050-4C03-94D1-E769F1D15682"
+  * SchemaIdentifier: "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
 4. Ha a hivatkozási attribútum frissíteni kell, majd az Azure Active Directory-e a hivatkozási attribútum identitás tárolójában aktuális értékének fronted a szolgáltatás már meghatározni a szolgáltatás lekérdezi az Azure Active Directoryban ez az attribútum értéke megegyezik. Felhasználók a, amelyek a jelenlegi érték a ily módon le kell kérdezni attribútum esetén a kezelő attribútum. Íme egy példa egy kérelem annak meghatározásához, hogy a kezelő egy adott felhasználó objektum attribútuma van a megadott érték: 
   ````
@@ -538,14 +538,14 @@ A következő ábra azt mutatja, hogy Azure Active Directory küld SCIM szolgál
 
   Ha a szolgáltatás a Microsoft által előírt végrehajtási SCIM szolgáltatások közös nyelvi infrastruktúra könyvtárak segítségével lett létrehozva, majd a kérést lefordítását a szolgáltató lekérdezési metódus hívásakor. A paraméterek argumentumnak az értékeként megadott objektum tulajdonságainak értékének a következők: 
   
-  * parameters.AlternateFilters.Count: 2
+  * a paraméterek. AlternateFilters.Count: 2. régiója
   * a paraméterek. AlternateFilters.ElementAt(x). AttributePath: "id"
-  * parameters.AlternateFilters.ElementAt(x).ComparisonOperator: ComparisonOperator.Equals
-  * parameters.AlternateFilter.ElementAt(x).ComparisonValue: "54D382A4-2050-4C03-94D1-E769F1D15682"
-  * parameters.AlternateFilters.ElementAt(y).AttributePath: "manager"
+  * a paraméterek. AlternateFilters.ElementAt(x). ÖsszehasonlítóOperátor: ComparisonOperator.Equals
+  * a paraméterek. AlternateFilter.ElementAt(x). ComparisonValue: "54D382A4-2050-4C03-94D1-E769F1D15682"
+  * a paraméterek. AlternateFilters.ElementAt(y). AttributePath: "manager"
   * a paraméterek. AlternateFilters.ElementAt(y). ÖsszehasonlítóOperátor: ComparisonOperator.Equals
-  * parameters.AlternateFilter.ElementAt(y).ComparisonValue: "2819c223-7f76-453a-919d-413861904646"
-  * parameters.RequestedAttributePaths.ElementAt(0): "id"
+  * a paraméterek. AlternateFilter.ElementAt(y). ComparisonValue: "2819c223-7f76-453a-919d-413861904646"
+  * a paraméterek. RequestedAttributePaths.ElementAt(0): "id"
   * parameters.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
   Itt lehet, hogy az index x értékének 0 és lehet, hogy az index y értéke 1, vagy lehet, hogy az x értéknek 1 és y értékének lehet 0, attól függően, hogy a szűrő lekérdezési paraméter kifejezések sorrendjét.   

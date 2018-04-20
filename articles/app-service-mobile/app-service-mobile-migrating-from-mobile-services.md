@@ -1,11 +1,11 @@
 ---
-title: "Mobilszolgáltatások telepítenek át egy App Service mobilalkalmazás"
-description: "Útmutató: a Mobile Services alkalmazás az App Service Mobile Apps könnyen áttelepítése"
+title: Mobilszolgáltatások telepítenek át egy App Service mobilalkalmazás
+description: 'Útmutató: a Mobile Services alkalmazás az App Service Mobile Apps könnyen áttelepítése'
 services: app-service\mobile
-documentationcenter: 
+documentationcenter: ''
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 07507ea2-690f-4f79-8776-3375e2adeb9e
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/03/2016
 ms.author: crdun
 ms.openlocfilehash: e94f08b9b9dad20c6f47367c47eb49aea59f4bd8
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="article-top"></a>A meglévő Azure Mobile szolgáltatás áttelepítése az Azure App Service
 Az a [Azure App Service általános rendelkezésre állását], Azure Mobile Services-webhelyek könnyen áttelepíthető helyi előnyeit az Azure App Service összes funkcióját.  Ez a dokumentum azt ismerteti, mi történik, ha az Azure App Service telepítheti át webhelyét az Azure Mobile Services.
@@ -80,7 +80,7 @@ Kiindulási pontként a következő rétegek javasoljuk:
 | Mobilszolgáltatás Tarifacsomagot | Az App Service Tarifacsomagot |
 |:--- |:--- |
 | Ingyenes |F1 – Ingyenes |
-| Alapszintű |B1 Basic |
+| Alapszintű |A K1 Basic |
 | Standard |S1 – Standard |
 
 Nincs rugalmasan kiválasztani a tarifacsomag az alkalmazáshoz.  Tekintse meg [App Service szolgáltatás díjszabása] az új App Service díjszabás teljes leírását.
@@ -269,7 +269,7 @@ A következő további beállításokkal: áttelepített Mobile szolgáltatás �
 | Alkalmazás-beállítás | Leírás |
 |:--- |:--- |
 | **MS\_MobileServiceName** |Az alkalmazás neve |
-| **MS\_MobileServiceDomainSuffix** |The domain prefix. Egytényezős azure-mobile.net |
+| **MS\_MobileServiceDomainSuffix** |A megadott tartománynév előtagja. Egytényezős azure-mobile.net |
 | **MS\_ApplicationKey** |Az alkalmazás kulcs |
 | **MS\_MasterKey** |Az alkalmazás főkulcs |
 
@@ -311,7 +311,7 @@ Diagnosztikai naplózás általában le van tiltva, az Azure App Service-ben.  D
 4. Válassza ki **diagnosztikai naplók** szolgáltatások menüjében.
 5. Kattintson a **ON** esetében a következő naplók kapcsolódnak: **Alkalmazásnaplózást (fájlrendszer)**, **a részletes hibaüzeneteket**, és **sikertelen kérelmek nyomkövetése**
 6. Kattintson a **fájlrendszer** Web server naplózás
-7. Kattintson a **mentése**
+7. Kattintson a **Mentés** gombra.
 
 A naplók megtekintéséhez:
 

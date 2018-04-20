@@ -9,10 +9,10 @@ ms.date: 03/30/2018
 ms.author: danlep;azcspmt;jonbeck
 ms.custom: include file
 ms.openlocfilehash: 5457ac8bd229889ed2b96354c44066959c00c64f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/20/2018
 ---
 GPU optimalizált VM értékek speciális virtuális gépek egy vagy több NVIDIA Feldolgozóegységekkel érhető el. Ezek méretek számítási igényű grafikai igényű és a képi megjelenítés munkaterhelések készültek. Ez a cikk tájékoztatást ad azokról a számát és típusát Feldolgozóegységekkel, Vcpu, adatlemezek, és a hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati sávszélesség megadása ennél a csoportosításnál minden méretét. 
 
@@ -87,7 +87,7 @@ NT-sorozatú virtuális gépek a GPU termékcsalád AI és részletes tanulási 
 | Standard_ND6s |6 |112 | 736 | 1 | 12 | 4 |
 | Standard_ND12s |12 |224 | 1474 | 2 | 24 | 8 | 
 | Standard_ND24s |24 |448 | 2948 | 4 | 32 | 8 |
-| Standard_ND24rs* |24 |448 | 2948 | 4 | 32 | 8 |
+| Standard_ND24rs * |24 |448 | 2948 | 4 | 32 | 8 |
 
 1 GPU = egy P40 kártya.
 

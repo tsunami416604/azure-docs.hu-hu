@@ -10,18 +10,18 @@ ms.topic: article
 manager: carmonm
 tags: top-support-issue
 keywords: Automation-hiba, hibaelhárítási, probléma
-ms.openlocfilehash: 9764068dd7a1a499c61695f39bff726a8ea3aac9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 44200ae9deb1a5c11c81550173b3f6f90b5d62ab
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="troubleshooting-common-issues-in-azure-automation"></a>Az Azure Automationben kapcsolatos gyakori hibák elhárítása 
 Ez a cikk ismerteti a hibaelhárítást előforduló hibákat tapasztalhat az Azure Automationben és azok megoldását lehetséges megoldások javasolja.
 
 ## <a name="authentication-errors-when-working-with-azure-automation-runbooks"></a>Az Azure Automation-runbook használatakor hitelesítési hibák
 ### <a name="scenario-sign-in-to-azure-account-failed"></a>Forgatókönyv: Nem sikerült Azure-fiókkal bejelentkezni
-**Hiba:** hibaüzenet jelenik a "Unknown_user_type: Ismeretlen felhasználó típusa" az Add-AzureAccount vagy Login-AzureRmAccount parancsmagok használata.
+**Hiba:** hibaüzenet jelenik a "Unknown_user_type: Ismeretlen felhasználó típusa" az Add-AzureAccount vagy Connect-AzureRmAccount parancsmagok használata.
 
 **A hiba oka:** Ez a hiba akkor fordul elő, ha a hitelesítőadat-eszköz neve nem érvényes, vagy ha a felhasználónév és a Automation szolgáltatásbeli hitelesítőadat-eszköz beállításához használt jelszót nem érvényes.
 
@@ -34,7 +34,7 @@ Ez a cikk ismerteti a hibaelhárítást előforduló hibákat tapasztalhat az Az
         #Using Azure Service Management   
         Add-AzureAccount –Credential $Cred  
         #Using Azure Resource Manager  
-        Login-AzureRmAccount –Credential $Cred
+        Connect-AzureRmAccount –Credential $Cred
 3. Ha a hitelesítés sikertelen helyileg, ez azt jelenti, hogy nem állított be az Azure Active Directorybeli hitelesítő adatokat megfelelően. Tekintse meg [hitelesítéséhez az Azure-bA az Azure Active Directoryval](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/) blogbejegyzés az Azure Active Directory-fiók helytelenül eléréséhez.  
 
 ### <a name="scenario-unable-to-find-the-azure-subscription"></a>Forgatókönyv: Nem található az Azure-előfizetés

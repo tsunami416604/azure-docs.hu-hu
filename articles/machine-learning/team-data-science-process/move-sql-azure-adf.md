@@ -1,8 +1,8 @@
 ---
-title: "Adatok áthelyezése egy helyi SQL Server az SQL Azure-bA az Azure Data Factoryvel |} Microsoft Docs"
-description: "Állítsa be az ADF-feldolgozási folyamat composes adatok áttelepítési két tevékenység váltó együtt adatok naponta helyszíni adatbázisok között, és a felhőben."
+title: Adatok áthelyezése egy helyi SQL Server az SQL Azure-bA az Azure Data Factoryvel |} Microsoft Docs
+description: Állítsa be az ADF-feldolgozási folyamat composes adatok áttelepítési két tevékenység váltó együtt adatok naponta helyszíni adatbázisok között, és a felhőben.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: jhubbard
 editor: cgronlun
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: bradsev
 ms.openlocfilehash: 05884fd39db284e268f31987e5ad7a47b9f87ebf
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Adatok áthelyezése egy helyi SQL server SQL Azure és az Azure Data Factory
 Ez a témakör bemutatja, hogyan tárolt adatok mozgatása egy helyi SQL Server-adatbázis SQL Azure adatbázishoz keresztül Azure Blob Storage használata az Azure Data Factory (ADF).
@@ -113,7 +113,7 @@ Három definíciói az ADF adatcsatorna van szükség:
 >
 >
 
-### <a name="adf-table-onprem-sql">A helyszíni SQL-tábla</a>
+### <a name="adf-table-onprem-sql"></a>A helyszíni SQL-tábla
 A helyszíni SQL Server-definíció van megadva a következő JSON-fájlban:
 
         {
@@ -178,7 +178,7 @@ Másolás fájlba a tábla JSON-definícióból nevű *bloboutputtabledef.json* 
 
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json  
 
-### <a name="adf-table-azure-sql">Az SQL Azure-tábla</a>
+### <a name="adf-table-azure-sql"></a>Az SQL Azure-tábla
 Definíciója a következő táblázatban az SQL Azure kimeneti (ebben a sémában az adatokat a blob érkező képezi le) a következőket:
 
     {

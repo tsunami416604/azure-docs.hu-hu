@@ -1,11 +1,11 @@
 ---
-title: "A virtuálisgép-lemezkép az Azure piactéren kezelése |} Microsoft Docs"
-description: "Részletes útmutató a virtuálisgép-lemezkép az Azure piactéren kezdeti közzétételét követően kezelésének módját"
+title: A virtuálisgép-lemezkép az Azure piactéren kezelése |} Microsoft Docs
+description: Részletes útmutató a virtuálisgép-lemezkép az Azure piactéren kezdeti közzétételét követően kezelésének módját
 services: Azure Marketplace
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: cc8648d4-59c2-4678-b47d-992300677537
 ms.service: marketplace
 ms.devlang: na
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/03/2016
 ms.author: mbaldwin;
 ms.openlocfilehash: 19f60de4a6c651885da7ff1fb7612a77f3d0c8f1
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="post-production-guide-for-virtual-machine-offers-in-the-azure-marketplace"></a>A virtuális gép ajánlatok az Azure piactéren utáni éles útmutató
 Ez a cikk azt ismerteti, hogyan frissítheti az olyan élő virtuális gép ajánlat az Azure piactéren. Végigvezeti egy vagy több új termékváltozatok hozzáadása egy meglévő ajánlatra. Azt is végigvezeti Önt egy élő virtuális gép ajánlat vagy SKU eltávolítása a piactér folyamata.
@@ -47,7 +47,7 @@ Az ajánlat/SKU szerepel-e után a [piactér](http://azure.microsoft.com/marketp
 2. Lépjen a **virtuális gépek** fülre, és válassza ki az ajánlatot.
 3. A bal oldali menüben kattintson a **Virtuálisgép-rendszerképek** fülre.
 4. Az a **termékváltozatok** területén keresse meg a frissíteni kívánt Termékváltozat.
-5. Adja hozzá egy új verziószámot a termékváltozat, majd kattintson a  **+**  gombra. Az új verzió X.Y.Z formátumban, ahol X, Y és Z egész számnak kell lennie. Megváltozik a verzió csak növekményes kell lennie.
+5. Adja hozzá egy új verziószámot a termékváltozat, majd kattintson a **+** gombra. Az új verzió X.Y.Z formátumban, ahol X, Y és Z egész számnak kell lennie. Megváltozik a verzió csak növekményes kell lennie.
 6. Az a **az operációs rendszer virtuális merevlemez URL-cím** mezőbe, írja be a virtuális merevlemez operációs rendszerhez létrehozott URI közös hozzáférésű jogosultságkódot, és menti a módosításokat.
 
    > [!IMPORTANT]

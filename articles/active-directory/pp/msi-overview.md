@@ -1,25 +1,25 @@
 ---
-title: "Szolgáltatásidentitás (MSI) az Azure Active Directory felügyelete"
-description: "Az Azure-erőforrások Szolgáltatásidentitás felügyelt áttekintése."
+title: Szolgáltatásidentitás (MSI) az Azure Active Directory felügyelete
+description: Az Azure-erőforrások Szolgáltatásidentitás felügyelt áttekintése.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ms.reviewer: skwan
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 95980c082b09ad959ab8bbaae0250b40ac08d2c8
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/20/2018
 ---
 #  <a name="managed-service-identity-msi-for-azure-resources"></a>Szolgáltatás-identitás (MSI) felügyelt Azure-erőforrások
 
@@ -47,7 +47,7 @@ Nincsenek elérhető szolgáltatás-identitások felügyelt kétféle: *rendszer
 2. Az Azure Resource Manager az Azure AD-határoz meg a virtuális gép identitásának hoz létre egy egyszerű szolgáltatást. A szolgáltatás egyszerű az előfizetés által megbízhatónak minősített Azure AD-bérlő jön létre.
 3. Az Azure Resource Manager szolgáltatás egyszerű részleteit azt állítja be az MSI-fájl a virtuális gép Virtuálisgép-bővítmény. Ez a lépés ügyfél-azonosító és a hozzáférési jogkivonatok lekérni az Azure AD a bővítmény által használt tanúsítvány konfigurálását foglalja magában.
 4. Most, hogy a szolgáltatás egyszerű a virtuális gép ismerik fel, akkor engedélyezhetők Azure-erőforrások eléréséhez. Például ha a kódot kell hívni az Azure Resource Manager, majd rendelne a virtuális gép szolgáltatás egyszerű szerepköralapú hozzáférés-vezérlést (RBAC) használata az Azure ad-ben a megfelelő szerepkörrel.  Ha a kódot kell hívni a Key Vault, majd meg volna hozzáférést a kódot az adott titkos kód vagy a kulcsot a Key Vault.
-5. A virtuális gépen a kód egy token kér a helyi végpont az MSI-Virtuálisgép-bővítmény által futtatott: http://localhost:50342/oauth2/jogkivonat. Az erőforrás-paraméter, amelyhez a tokent küldött a szolgáltatás. Például, ha azt szeretné, hogy a kód az Azure Resource Manager hitelesítéséhez, használhatja erőforrás = https://management.azure.com/.
+5. A virtuális gépen a kód egy token kér a helyi végpont az MSI-Virtuálisgép-bővítmény által futtatott: http://localhost:50342/oauth2/token. Az erőforrás-paraméter, amelyhez a tokent küldött a szolgáltatás. Például, ha azt szeretné, hogy a kód az Azure Resource Manager hitelesítéséhez, használhatja erőforrás =https://management.azure.com/.
 6. Az MSI Virtuálisgép-bővítmény olyan hozzáférési jogkivonatot kérhet az Azure AD a beállított ügyfél-azonosító és a tanúsítványt használja.  Az Azure AD egy JSON webes jogkivonat (JWT) hozzáférési jogkivonatot ad vissza.
 7. A kód elküldi a hozzáférési jogkivonat egy olyan szolgáltatás, amely támogatja az Azure AD authentication hívásakor.
 
@@ -59,7 +59,7 @@ Az azonos ábra, itt egy példa egy felhasználó által hozzárendelt MSI műk�
 2. Az Azure Resource Manager az Azure AD az MSI identitásának képviselő hoz létre egy egyszerű szolgáltatást. A szolgáltatás egyszerű az előfizetés által megbízhatónak minősített Azure AD-bérlő jön létre.
 3. Az Azure Resource Manager konfigurálhatja az egyszerű szolgáltatás részletei a virtuális gépek MSI Virtuálisgép-bővítmény üzenetet kap. Ez a lépés ügyfél-azonosító és a hozzáférési jogkivonatok lekérni az Azure AD a bővítmény által használt tanúsítvány konfigurálását foglalja magában.
 4. Most, hogy a szolgáltatás egyszerű MSI ismerik fel, akkor engedélyezhetők Azure-erőforrások eléréséhez. Például ha a kódot kell hívni az Azure Resource Manager, majd rendelne MSI szolgáltatás egyszerű szerepköralapú hozzáférés-vezérlést (RBAC) használata az Azure ad-ben a megfelelő szerepkörrel. Ha a kódot kell hívni a Key Vault, majd meg volna hozzáférést a kódot az adott titkos kód vagy a kulcsot a Key Vault. Megjegyzés: 3. lépés nincs szükség a teljes 4. Ha létezik egy olyan MSI Csomaghoz, azt is hozzáférést erőforrásokhoz, függetlenül a virtuális gép-e konfigurálva.
-5. A virtuális gépen a kód egy token kér a helyi végpont az MSI-Virtuálisgép-bővítmény által futtatott: http://localhost:50342/oauth2/jogkivonat. Az ügyfél-azonosító paraméter neve az MSI-identitás használatára. Továbbá az erőforrás paraméter, amelyhez a tokent küldött a szolgáltatás. Például, ha azt szeretné, hogy a kód az Azure Resource Manager hitelesítéséhez, használhatja erőforrás = https://management.azure.com/.
+5. A virtuális gépen a kód egy token kér a helyi végpont az MSI-Virtuálisgép-bővítmény által futtatott: http://localhost:50342/oauth2/token. Az ügyfél-azonosító paraméter neve az MSI-identitás használatára. Továbbá az erőforrás paraméter, amelyhez a tokent küldött a szolgáltatás. Például, ha azt szeretné, hogy a kód az Azure Resource Manager hitelesítéséhez, használhatja erőforrás =https://management.azure.com/.
 6. Az MSI Virtuálisgép-bővítmény ellenőrzi, ha a kért ügyfél-azonosító tanúsítványa van konfigurálva, és egy hozzáférési jogkivonatot az Azure AD-kérelmek. Az Azure AD egy JSON webes jogkivonat (JWT) hozzáférési jogkivonatot ad vissza.
 7. A kód elküldi a hozzáférési jogkivonat egy olyan szolgáltatás, amely támogatja az Azure AD authentication hívásakor.
 

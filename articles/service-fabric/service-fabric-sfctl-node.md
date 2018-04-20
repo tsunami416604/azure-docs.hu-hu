@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Service Fabric CLI - sfctl csomópont |} Microsoft Docs"
-description: "A Service Fabric CLI sfctl csomópont parancsok ismerteti."
+title: Az Azure Service Fabric CLI - sfctl csomópont |} Microsoft Docs
+description: A Service Fabric CLI sfctl csomópont parancsok ismerteti.
 services: service-fabric
 documentationcenter: na
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: cli
 ms.topic: reference
@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 02/22/2018
 ms.author: ryanwi
 ms.openlocfilehash: 50c7fe38d8bf7b14adf437f85c758e465e7d231d
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="sfctl-node"></a>sfctl-csomópont
 A csomópontok, amely egy fürt része legyen kezelése.
@@ -33,7 +33,7 @@ A csomópontok, amely egy fürt része legyen kezelése.
 |    információ          | Egy adott csomópont a információ lekérése a Service Fabric-fürt.|
 |    lista          | A Service Fabric-fürt a csomópontok listájának beolvasása.|
 |    betöltés          | Lekérdezi a terhelés adatokat a Service Fabric-csomópont.|
-|    remove-state  | A Service Fabric értesíti az, hogy a csomópont a megőrzött állapot véglegesen eltávolították vagy elveszett.|
+|    Remove-állapot  | A Service Fabric értesíti az, hogy a csomópont a megőrzött állapot véglegesen eltávolították vagy elveszett.|
 |    report-health | A Service Fabric-csomópont állapotát jelentést küld.|
 |    Indítsa újra a       | A Service Fabric fürt csomópont újraindul.|
 |    átmenet    | Elindítja vagy leállítja egy fürt csomópontja.|
@@ -57,7 +57,7 @@ A Service Fabric fürt csomópontokat a megadott inaktiválási szándék inakti
 
 |Argumentum|Leírás|
 | --- | --- |
-| --debug            | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+| --hibakeresése            | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h          | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o        | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett: JSON-ná.|
 | --lekérdezés            | JMESPath lekérdezési karakterlánc. További információk és példák: http://jmespath.org/.|
@@ -79,7 +79,7 @@ Aktiválja a Service Fabric-fürt csomópont, mely inaktív. Amennyiben az aktí
 
 |Argumentum|Leírás|
 | --- | --- |
-| --debug            | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+| --hibakeresése            | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h          | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o        | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett: JSON-ná.|
 | --lekérdezés            | JMESPath lekérdezési karakterlánc. További információk és példák: http://jmespath.org/.|
@@ -95,17 +95,17 @@ Lekérdezi a Service Fabric-csomópont állapotát. Az EventsHealthStateFilter h
 |Argumentum|Leírás|
 | --- | --- |
 | --csomópontnév [szükséges]| A csomópont neve.|
-| --events-health-state-filter| A gyűjtemény által visszaadott HealthEvent objektumok állapota alapján szűrését teszi lehetővé. Ez a paraméter lehetséges értékei közé tartozik a következő állapotok közül az egyik egész értéket. Csak a szűrőnek megfelelő események adja vissza. Összes esemény összesített állapotát értékeléséhez használt. Ha nincs megadva, a rendszer összes bejegyzés is megjelennek. Az állapot értékei jelző-alapú számbavétel, az érték lehet ezeket az értékeket bitenkénti "Vagy" operátor segítségével. Például ha a megadott érték azonban 6 majd az OK (2) és a figyelmeztető (4) HealthState értékkel rendelkező események is megjelennek. -Alapértelmezett - alapértelmezett értéket. Bármely HealthState megegyezik. A tulajdonság értéke nulla. -None - szűrőt, amely nem egyezik a HealthState értékét. Ahhoz, hogy nincs eredményeket egy adott gyűjtemény állapotok használt. Az érték 1. -Ok - szűrheti, hogy egyező bemeneti érték a HealthState az OK gombra. A 2 érték. -A figyelmeztetési - szűrő, hogy egyező bemeneti healthstate értékét figyelmeztetés. Az érték 4. -Hiba – hiba HealthState értékű bemeneti egyező szűrő. A értéke 8. -Az összes - szűrő, amely megfelel a bemeneti bármely HealthState értékkel. Az érték 65535.|
+| --események-rendszerállapot-állapot-szűrő| A gyűjtemény által visszaadott HealthEvent objektumok állapota alapján szűrését teszi lehetővé. Ez a paraméter lehetséges értékei közé tartozik a következő állapotok közül az egyik egész értéket. Csak a szűrőnek megfelelő események adja vissza. Összes esemény összesített állapotát értékeléséhez használt. Ha nincs megadva, a rendszer összes bejegyzés is megjelennek. Az állapot értékei jelző-alapú számbavétel, az érték lehet ezeket az értékeket bitenkénti "Vagy" operátor segítségével. Például ha a megadott érték azonban 6 majd az OK (2) és a figyelmeztető (4) HealthState értékkel rendelkező események is megjelennek. -Alapértelmezett - alapértelmezett értéket. Bármely HealthState megegyezik. A tulajdonság értéke nulla. -None - szűrőt, amely nem egyezik a HealthState értékét. Ahhoz, hogy nincs eredményeket egy adott gyűjtemény állapotok használt. Az érték 1. -Ok - szűrheti, hogy egyező bemeneti érték a HealthState az OK gombra. A 2 érték. -A figyelmeztetési - szűrő, hogy egyező bemeneti healthstate értékét figyelmeztetés. Az érték 4. -Hiba – hiba HealthState értékű bemeneti egyező szűrő. A értéke 8. -Az összes - szűrő, amely megfelel a bemeneti bármely HealthState értékkel. Az érték 65535.|
 | – időtúllépés -t             | Időtúllépését másodpercben.  Alapértelmezett: 60.|
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --debug                  | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+| --hibakeresése                  | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h                | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o              | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett: JSON-ná.|
-| --lekérdezés                  | JMESPath lekérdezési karakterlánc. További információt és példákat http://jmespath.org/ talál.|
+| --lekérdezés                  | JMESPath lekérdezési karakterlánc. Lásd: http://jmespath.org/ további információt és példákat.|
 | – részletes                | Naplózási növelése. Használatát – a teljes hibakeresési naplók hibakeresési.|
 
 ## <a name="sfctl-node-info"></a>sfctl csomópont adatai
@@ -124,7 +124,7 @@ Lekérdezi az adatokat egy adott csomópont a Service Fabric Cluster.The a vála
 
 |Argumentum|Leírás|
 | --- | --- |
-| --debug            | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+| --hibakeresése            | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h          | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o        | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett: JSON-ná.|
 | --lekérdezés            | JMESPath lekérdezési karakterlánc. További információk és példák: http://jmespath.org/.|
@@ -147,7 +147,7 @@ A Service Fabric-fürt a csomópontok listájának beolvasása. A válasz tartal
 
 |Argumentum|Leírás|
 | --- | --- |
-| --debug          | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+| --hibakeresése          | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h        | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o      | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett: JSON-ná.|
 | --lekérdezés          | JMESPath lekérdezési karakterlánc. További információk és példák: http://jmespath.org/.|
@@ -169,7 +169,7 @@ A Service Fabric csomópont a load vagy a meghatározott kapacitás rendelkező 
 
 |Argumentum|Leírás|
 | --- | --- |
-| --debug            | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+| --hibakeresése            | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h          | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o        | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett: JSON-ná.|
 | --lekérdezés            | JMESPath lekérdezési karakterlánc. További információk és példák: http://jmespath.org/.|
@@ -193,7 +193,7 @@ A Service Fabric fürt csomópont újraindul.
 
 |Argumentum|Leírás|
 | --- | --- |
-| --debug            | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+| --hibakeresése            | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h          | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o        | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett: JSON-ná.|
 | --lekérdezés            | JMESPath lekérdezési karakterlánc. További információk és példák: http://jmespath.org/.|
@@ -213,17 +213,17 @@ Indítja el a csomópontot, adja át a "Start" NodeTransitionType paramétereké
 | --csomópontnév [szükséges]| A csomópont neve.|
 | – [szükséges] csomópont-átviteli-típusa| Hajtsa végre az áttérés típusát jelöli.                       NodeTransitionType.Start elindít egy leállított csomópont.                       NodeTransitionType. Állítsa le, hogy egy csomópont leáll. |
 | --Műveletazonosító [szükséges]| Ez az API hívása azonosító egy GUID.  Ez a megfelelő GetProgress API be lett átadva.|
-| --stop-duration-in-seconds [Required]| Az időtartam (másodpercben), a csomópont tartása leállt.  A minimális értéke 600, a maximális hossz 14400. Az idő lejárta után a csomópont automatikusan leállást vissza.|
+| --stop-időtartam-a-másodperc []| Az időtartam (másodpercben), a csomópont tartása leállt.  A minimális értéke 600, a maximális hossz 14400. Az idő lejárta után a csomópont automatikusan leállást vissza.|
 | – időtúllépés -t                      | Időtúllépését másodpercben.  Alapértelmezett: 60.|
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --debug                           | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+| --hibakeresése                           | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h                         | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o                       | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.                       Alapértelmezett: JSON-ná.|
-| --lekérdezés                           | JMESPath lekérdezési karakterlánc. További információt és példákat http://jmespath.org/ talál.|
+| --lekérdezés                           | JMESPath lekérdezési karakterlánc. Lásd: http://jmespath.org/ további információt és példákat.|
 | – részletes                         | Naplózási növelése. Használatát – a teljes hibakeresési naplók hibakeresési.|
 
 ## <a name="next-steps"></a>További lépések

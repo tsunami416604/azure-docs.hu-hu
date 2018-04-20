@@ -1,13 +1,13 @@
 ---
-title: "Készítése és a pont-pont tanúsítványok exportálása: MakeCert: Azure |} Microsoft Docs"
-description: "Hozzon létre egy önaláírt legfelső szintű tanúsítványt, a nyilvános kulcs exportálásának és MakeCert használatával ügyféltanúsítványok előállításához."
+title: 'Készítése és a pont-pont tanúsítványok exportálása: MakeCert: Azure |} Microsoft Docs'
+description: Hozzon létre egy önaláírt legfelső szintű tanúsítványt, a nyilvános kulcs exportálásának és MakeCert használatával ügyféltanúsítványok előállításához.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/12/2018
 ms.author: cherylmc
 ms.openlocfilehash: b2f31761e4560cf4b9b9a5b92f5de9982a663a75
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>Létrehozása és exportálása a MakeCert használatával pont – hely kapcsolatok tanúsítványai
 
@@ -100,4 +100,4 @@ A pont-hely konfigurációs folytatásához.
 * A **erőforrás-kezelő** telepítési modell lépéseket lásd: [konfigurálása P2S natív Azure-alapú hitelesítést használó](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
 * A **klasszikus** telepítési modell lépéseket lásd: [egy virtuális hálózat (klasszikus) pont – hely típusú VPN-kapcsolat konfigurálva](vpn-gateway-howto-point-to-site-classic-azure-portal.md).
 
-P2S hibaelhárítási információkért [Azure hibaelhárítási pont – hely kapcsolatok](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).
+A pont–hely hibaelhárítási információiért tekintse át az [Azure pont–hely kapcsolatok hibaelhárításával](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md) foglalkozó cikket.

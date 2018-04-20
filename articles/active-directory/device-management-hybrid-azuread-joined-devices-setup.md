@@ -1,11 +1,11 @@
 ---
-title: "Hogyan hibrid konfigurálása az Azure Active Directoryhoz csatlakoztatott eszközök |} Microsoft Docs"
-description: "Tudnivalók a hibrid Azure Active Directoryhoz csatlakoztatott eszközök konfigurálásához."
+title: Hogyan hibrid konfigurálása az Azure Active Directoryhoz csatlakoztatott eszközök |} Microsoft Docs
+description: Tudnivalók a hibrid Azure Active Directoryhoz csatlakoztatott eszközök konfigurálásához.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.workload: identity
@@ -16,10 +16,10 @@ ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.openlocfilehash: 34d1ba2e1e84c268442d47d8865d3e3bebb53e53
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Hibrid Azure Active Directoryhoz csatlakoztatott eszközök konfigurálása
 
@@ -526,7 +526,7 @@ Az AD FS-ben hozzá kell adnia egy kiadási átalakítási szabálykészlet, ame
 
     `c:[Type == "http://schemas.microsoft.com/claims/authnmethodsreferences"] => issue(claim = c);`
 
-8. Az összevonási kiszolgálón, írja be az alábbi PowerShell-paranccsal cseréje után  **\<RPObjectName\>**  az Azure AD függő entitás megbízhatósági objektum a függő entitás objektum névvel. Ez az objektum neve általában **Microsoft Office 365 Identitásplatformmal**.
+8. Az összevonási kiszolgálón, írja be az alábbi PowerShell-paranccsal cseréje után **\<RPObjectName\>** az Azure AD függő entitás megbízhatósági objektum a függő entitás objektum névvel. Ez az objektum neve általában **Microsoft Office 365 Identitásplatformmal**.
    
     `Set-AdfsRelyingPartyTrust -TargetName <RPObjectName> -AllowedAuthenticationClassReferences wiaormultiauthn`
 

@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Service Fabric CLI - sfctl összeállítása |} Microsoft Docs"
-description: "Ismerteti a Service Fabric CLI sfctl állítható össze a parancsok."
+title: Az Azure Service Fabric CLI - sfctl összeállítása |} Microsoft Docs
+description: Ismerteti a Service Fabric CLI sfctl állítható össze a parancsok.
 services: service-fabric
 documentationcenter: na
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: cli
 ms.topic: reference
@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 02/22/2018
 ms.author: ryanwi
 ms.openlocfilehash: 19afd35248cc0796eddbb50db4f38b813f5d568e
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="sfctl-compose"></a>sfctl-összeállítás
 Létrehozása, törlése és a Docker Compose központi telepítések felügyeletéhez szükséges.
@@ -53,7 +53,7 @@ A Service Fabric hoz létre központi telepítési összeállítása.
 
 |Argumentum|Leírás|
 | --- | --- |
-| --debug                 | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+| --hibakeresése                 | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h               | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o             | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett: JSON-ná.|
 | --lekérdezés                 | JMESPath lekérdezési karakterlánc. További információk és példák: http://jmespath.org/.|
@@ -76,7 +76,7 @@ Lekérdezi a feladat állapotát a compose-telepítés hozta létre, vagy a Serv
 
 |Argumentum|Leírás|
 | --- | --- |
-| --debug          | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+| --hibakeresése          | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h        | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o      | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett: JSON-ná.|
 | --lekérdezés          | JMESPath lekérdezési karakterlánc. További információk és példák: http://jmespath.org/.|
@@ -98,7 +98,7 @@ Törli a meglévő Service Fabric telepítési állítható össze.
 
 |Argumentum|Leírás|
 | --- | --- |
-| --debug                 | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+| --hibakeresése                 | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h               | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o             | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett: JSON-ná.|
 | --lekérdezés                 | JMESPath lekérdezési karakterlánc. További információk és példák: http://jmespath.org/.|
@@ -120,7 +120,7 @@ A Service Fabric lekérdezi információ állítható össze a központi telepí
 
 |Argumentum|Leírás|
 | --- | --- |
-| --debug                 | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+| --hibakeresése                 | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h               | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o             | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett: JSON-ná.|
 | --lekérdezés                 | JMESPath lekérdezési karakterlánc. További információk és példák: http://jmespath.org/.|
@@ -139,16 +139,16 @@ Ellenőrzi a megadott frissítési paramétert, és elindítja az üzemelő pél
 |    --default-svc-type-health-map| JSON-NÁ, amely leírja a szolgáltatások állapotának értékeléséhez használt állapotházirend szótár kódolva.|
 |    --titkosított fázis             | Ahelyett, hogy a tároló beállításjegyzék jelszót kér, használjon egy már titkosított jelszót.|
  |   --failure-action             | Lehetséges értékek a következők: "Érvénytelen", "Visszaállítási", "Manual".|
-|    --force-restart              | Újraindítását kényszeríti ki.|
+|    – force-újraindítás              | Újraindítását kényszeríti ki.|
  |   --rendelkezik fázis                   | A tároló beállításjegyzék jelszót kér.|
 |    --health-check-retry         | Állapotfigyelő ellenőrizze újra időkorlátja ezredmásodpercben.|
 |    – rendszerállapot-ellenőrzés-stabil        | Állapotának ellenőrzése stabil időtartam ezredmásodpercben.|
 |    --állapot-ellenőrzés-várakozási          | Állapotfigyelő ellenőrzés várakozási időtartama ezredmásodpercben.|
 |    --replica-set-check          | Frissítési replikakészlet ellenőrzése időkorlátja, másodpercben.|
-|    --svc-type-health-map        | JSON-objektumok, amelyek ismertetik a különböző szolgáltatástípusok állapotának értékeléséhez használt házirendek listáját kódolva.|
+|    --svc-típus-rendszerállapot-leképezés        | JSON-objektumok, amelyek ismertetik a különböző szolgáltatástípusok állapotának értékeléséhez használt házirendek listáját kódolva.|
 |    – időtúllépés -t                 | Kiszolgáló időkorlátja, másodpercben.  Alapértelmezett: 60.|
 |    --unhealthy-app              | Az engedélyezett maximális százalékos aránya a nem megfelelő alkalmazások mielőtt hibajelzést.        Ahhoz, hogy 10 %-a nem kifogástalan, hogy az alkalmazások, például ez az érték lenne 10. A százalékos alkalmazásokat, amelyek nem megfelelő állapotú lehet, mielőtt a fürt tekinthető hiba a maximális megengedett százalékát jelenti. Ha százalékos tiszteletben tartják, de legalább egy nem megfelelő alkalmazás, az egészségügyi értékeli – figyelmeztetés. Ez a százalékérték nem megfelelő alkalmazások számát elosztjuk keresztül alkalmazáspéldányok a fürt teljes száma.|
-|    --upgrade-domain-timeout     | A frissítési tartomány időkorlátja ezredmásodpercben.|
+|    --frissítés-tartományi-időtúllépés     | A frissítési tartomány időkorlátja ezredmásodpercben.|
 |    --frissítés-típusa               | Alapértelmezett: működés közbeni.|
 |    --frissítés-mód               | Lehetséges értékek a következők: "Érvénytelen", "UnmonitoredAuto", "UnmonitoredManual", "A figyelt".  Alapértelmezett: UnmonitoredAuto.|
 |    --frissítés – időtúllépés            | Frissítési időkorlát ezredmásodpercben.|
@@ -158,10 +158,10 @@ Ellenőrzi a megadott frissítési paramétert, és elindítja az üzemelő pél
 ### <a name="global-arguments"></a>Globális argumentumok
  |Argumentum|Leírás|
 | --- | --- |
-|   --debug                      | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+|   --hibakeresése                      | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 |    – Súgó -h                    | Ez egy súgóüzenet és kilépési megjelenítése.|
 |   – a kimeneti -o                  | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv. Alapértelmezett: JSON-ná.|
-|   --lekérdezés                      | JMESPath lekérdezési karakterlánc. További információt és példákat http://jmespath.org/ talál.|
+|   --lekérdezés                      | JMESPath lekérdezési karakterlánc. Lásd: http://jmespath.org/ további információt és példákat.|
 |   – részletes                    | Naplózási növelése. Használatát – a teljes hibakeresési naplók hibakeresési.|
 
 ## <a name="next-steps"></a>További lépések

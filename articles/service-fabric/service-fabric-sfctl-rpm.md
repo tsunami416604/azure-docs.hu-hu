@@ -5,8 +5,8 @@ services: service-fabric
 documentationcenter: na
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: cli
 ms.topic: reference
@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 02/22/2018
 ms.author: ryanwi
 ms.openlocfilehash: 34e7693ea40df2bf12fd6e9be2ef627f30748bcd
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
 Lekérdezi és parancsainak elküldését a repair-kezelő szolgáltatás.
@@ -44,10 +44,10 @@ Ez az API támogatja a Service Fabric-platformról; nem célja, hogy közvetlen�
 ### <a name="global-arguments"></a>Globális argumentumok
 |Argumentum|Leírás|
 | --- | --- |
-|    --debug             | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+|    --hibakeresése             | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 |    – Súgó -h           | Ez egy súgóüzenet és kilépési megjelenítése.|
 |    – a kimeneti -o         | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett: JSON-ná.
-|    --lekérdezés             | JMESPath lekérdezési karakterlánc. További információt és példákat http://jmespath.org/ talál.|
+|    --lekérdezés             | JMESPath lekérdezési karakterlánc. Lásd: http://jmespath.org/ további információt és példákat.|
 |    – részletes           | Naplózási növelése. Használatát – a teljes hibakeresési naplók hibakeresési.|
 
 
@@ -60,16 +60,16 @@ Ez az API támogatja a Service Fabric-platformról; nem célja, hogy közvetlen�
 |Argumentum|Leírás|
 | --- | --- |
 |    --executor-filter| A javítási végrehajtó, amelynek az igényelt feladatok szerepelnie kell a lista neve.|
-|    --state-filter   | Az eredménylista egy, a következő értékek megadásával, mely feladat állapota bitenkénti – vagy szerepelnie kell. -1 - létrehozott - 2 - igényelt - 4 - előkészítése - 8 - jóváhagyott - 16 - végrehajtó - 32 - visszaállítási - 64 - befejeződött.|
+|    --Állapot-szűrő   | Az eredménylista egy, a következő értékek megadásával, mely feladat állapota bitenkénti – vagy szerepelnie kell. -1 - létrehozott - 2 - igényelt - 4 - előkészítése - 8 - jóváhagyott - 16 - végrehajtó - 32 - visszaállítási - 64 - befejeződött.|
 |    --task-id-filter | A javítási feladat Azonosítójának előtagja megfeleltethetők.|
 
 ### <a name="global-arguments"></a>Globális argumentumok
 |Argumentum|Leírás|
 | --- | --- |
-|    --debug          | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+|    --hibakeresése          | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 |    – Súgó -h        | Ez egy súgóüzenet és kilépési megjelenítése.|
-|    – a kimeneti -o      | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett| json.|
-|    --lekérdezés          | JMESPath lekérdezési karakterlánc. További információt és példákat http://jmespath.org/ talál.|
+|    – a kimeneti -o      | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett| JSON-ná.|
+|    --lekérdezés          | JMESPath lekérdezési karakterlánc. Lásd: http://jmespath.org/ további információt és példákat.|
 |    – részletes        | Naplózási növelése. Használatát – a teljes hibakeresési naplók hibakeresési.|
 
 ## <a name="next-steps"></a>További lépések

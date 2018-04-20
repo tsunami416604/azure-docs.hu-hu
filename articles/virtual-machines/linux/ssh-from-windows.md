@@ -13,173 +13,118 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 04/17/2018
 ms.author: danlep
-ms.openlocfilehash: fcc2365c3b41fb69492aa68bf7c48c2d3b8ee5f3
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: d0762f80267fa927681344a3e0de78b0800c8306
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/20/2018
 ---
-# <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Az SSH kulcsok a Windows Azure-on
-> [!div class="op_single_selector"]
-> * [Windows](ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-> * [Linux/Mac](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
->
->
+# <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>SSH-kulcsok használata a Windows Azure-on
 
-Linux virtuális gépek (VM) az Azure-ban való csatlakozáskor használandó [nyilvános kulcsú](https://wikipedia.org/wiki/Public-key_cryptography) jelentkezzen be a Linux virtuális Gépet egy biztonságosabb megoldást biztosítson. A folyamat során a nyilvános és titkos kulcsok cseréjét saját maga helyett egy felhasználónév és jelszó hitelesítéséhez a secure shell (SSH) parancs használatával. Ki téve találgatásos támadások, különösen az internetre irányuló virtuális gépeken futó, például jelszavakat. Ez a cikk áttekintést nyújt az SSH-kulcsok és a Windows rendszerű számítógépeken a megfelelő kulcsok létrehozása.
+Ez a cikk készítése és a secure shell (SSH) kulcsok használata Windows rendszerű számítógépeken a létrehozása, és kapcsolódjon a Linux virtuális gépek (VM) az Azure-ban módjai be. A Linux vagy macOS ügyfélben SSH-kulcsok használatát ismerteti a [gyors](mac-create-ssh-keys.md) vagy [részletes](create-ssh-keys-detailed.md) útmutatást.
 
-## <a name="overview-of-ssh-and-keys"></a>SSH és a kulcsok – áttekintés
-Biztonságosan bejelentkezhet a Linux virtuális gép nyilvános és titkos kulcsok használatával:
+[!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 
-* A **nyilvános kulcs** helyezkedik el a Linux virtuális Gépet, vagy bármely olyan szolgáltatás, amely a nyilvános kulcsú titkosítás használna.
-* A **titkos kulcs** van Mi mutassa be a Linux virtuális Gépre történő bejelentkezéskor, a személyazonosságát. Védje a titkos kulcsot. Ne ossza meg senkivel.
-
-A nyilvános és titkos kulcsokat több virtuális gépek és szolgáltatások is használható. Nem kell egy kulcspárra van szüksége az egyes virtuális gép vagy szolgáltatás el szeretné érni. Részletesebb áttekintéséért lásd: [nyilvános kulcsú](https://wikipedia.org/wiki/Public-key_cryptography).
-
-Az SSH egy olyan titkosított kapcsolati protokoll, amely lehetővé teszi, hogy a biztonságos bejelentkezés titkosítatlan kapcsolaton keresztül. Az Azure szolgáltatásban üzemeltetett Linux virtuális gépek alapértelmezett csatlakozási protokoll. Habár maga SSH titkosított kapcsolatot biztosít, jelszavak használata SSH-kapcsolatok továbbra is védtelen a virtuális Gépet a találgatásos támadásokkal vagy a jelszavak találgatás. A biztonságosabb és előnyben részesített csatlakoztatása egy virtuális gép SSH módszer a nyilvános és titkos kulcsok, más néven az SSH-kulcsok használatával.
-
-Ha nem szeretne SSH-kulcsok használata, továbbra is bejelentkezhet a Linux virtuális gépek jelszó használatával. Ha a virtuális gép nem kapcsolódik az internethez, elegendő jelszóval lehet. Azonban továbbra is szeretné az egyes Linux virtuális gépek a jelszavak kezelése és karbantartása a megfelelő jelszót házirendeket és gyakorlatokat, például a jelszó minimális hossza, és rendszeresen frissíteni azokat. SSH-kulcsok használata révén egyszerűbben egyéni hitelesítő adatok kezelése több virtuális gépek között.
+[!INCLUDE [virtual-machines-common-ssh-support](../../../includes/virtual-machines-common-ssh-support.md)]
 
 ## <a name="windows-packages-and-ssh-clients"></a>Windows-csomagok és az SSH-ügyfél
-Csatlakozhat, és a Linux virtuális gépek kezelése az Azure használatával egy **SSH-ügyfél**. Windows rendszerű számítógépek általában nincs egy SSH-ügyfél telepítve. A Windows 10 évforduló frissítés hozzáadott Bash a Windows, és a Windows 10 Creators legfrissebb további frissítéseit tartalmazza. A Linux Windows alrendszere futtatására és segédprogramok például egy SSH-ügyfél alapértelmezés szerint a rendszerhéjakba belül elérésére teszi lehetővé. Kövesse a Linux docs bármelyikét például [SSH-kulcspár létrehozása Linux](mac-create-ssh-keys.md). Bash Windows még fejlesztés alatt áll, ezért a bétaverzió tekinthető. A Windows Bash kapcsolatos további információkért lásd: [Windows Ubuntu a Bash](https://msdn.microsoft.com/commandline/wsl/about).
+Csatlakozhat, és a Linux virtuális gépek kezelése az Azure használatával egy *SSH-ügyfél*. Linux- vagy macOS általában futtató számítógépek rendelkezik SSH parancskészlet szeretnék létrehozni és felügyelni az SSH-kulcsokat, és, hogy az SSH-kapcsolatokhoz. 
 
-Ha valami nem Bash Windows használni kívánt, közös Windows SSH ügyfelek telepítése tartalmazza a következő csomagokhoz:
+Windows rendszerű számítógépek mindig összehasonlítható SSH parancsa sincs telepítve. Amely tartalmazza a Windows 10-verziók a [Linux rendszerhez készült Windows alrendszer](https://docs.microsoft.com/windows/wsl/about) lehetővé teszik futtatására és segédprogramok például egy SSH-ügyfél alapértelmezés szerint a rendszerhéjakba belül elérésére. 
 
+Ha valami nem Bash Windows használni kívánt, közös Windows SSH ügyfelek helyileg is telepítheti a következő csomagokat tartalmazza:
+
+* [A puTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/)
 * [A Windows Git](https://git-for-windows.github.io/)
-* [puTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/)
 * [MobaXterm](http://mobaxterm.mobatek.net/)
 * [Cygwin](https://cygwin.com/)
 
+Egy másik lehetőség, hogy a Bash elérhető az SSH segédeszközök használja a [Azure Cloud rendszerhéj](../../cloud-shell/overview.md). 
 
-## <a name="which-key-files-do-you-need-to-create"></a>Mely kulcsfontosságú fájlokat szeretné létrehozni?
-Az Azure-nak, legalább 2048 bites **ssh-rsa** formátumú nyilvános és titkos kulcsok. A klasszikus telepítési modell használata Azure-erőforrások kezelése, is kell létrehozni egy PEM (`.pem` fájl).
+* Felhő rendszerhéj eléréséhez a böngészőben, [ https://shell.azure.com ](https://shell.azure.com) vagy a [Azure-portálon](https://portal.azure.com). 
+* Egy terminált a Visual Studio kód felhő rendszerhéj telepítésével elérni a [Azure-fiók bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account).
 
-Az alábbiakban a központi telepítési forgatókönyvek és használ az egyes fájltípusok:
+## <a name="create-an-ssh-key-pair"></a>SSH-kulcs létrehozása
+Ez a szakasz ismerteti a Windows egy SSH-kulcspárral létrehozásához két lehetőség közül választhat.
 
-1. **ssh-rsa** bármely használó telepítés esetében szükség a [Azure-portálon](https://portal.azure.com), és a Resource Manager üzembe helyezése a [Azure CLI](../../cli-install-nodejs.md).
-   * Ezek a kulcsok rendszerint minden legtöbbek számára szükséges.
-2. A `.pem` fájl a klasszikus telepítési használó virtuális gépek létrehozásához szükséges. Ezek a kulcsok használata esetén támogatottak klasszikus telepítések esetén a [Azure-portálon](https://portal.azure.com) vagy [Azure CLI](../../cli-install-nodejs.md).
-   * Csak a további kulcsok és a tanúsítványok létrehozásához klasszikus telepítési modellel létrehozott erőforrások kezelése esetén szükséges.
+### <a name="create-ssh-keys-with-ssh-keygen"></a>Az ssh-keygen SSH-kulcsok létrehozása
 
-## <a name="install-git-for-windows"></a>Git for Windows telepítése
-Az előző szakaszban felsorolt több csomagot, amely tartalmazza a `openssl` eszköz Windows rendszerhez. Ez az eszköz nyilvános és titkos kulcsok létrehozásához szükséges. A következő példák részletesen telepítése és használata **Git for Windows**, abban az esetben, ha bármelyik csomag inkább választhat. **Git for Windows** elérheti a szoftverek némelyike kiegészítő nyílt forráskódú ([OSS](https://en.wikipedia.org/wiki/Open-source_software)) eszközök és segédeszközök Linux virtuális gépek használata hasznos lehet.
+Ha a parancs-rendszerhéj például Bash a Windows vagy GitBash (vagy a Bash Azure Cloud rendszerhéj) futtatása, hozzon létre egy SSH kulcspár az a `ssh-keygen` parancsot. Írja be a következő parancsot, és válaszolja meg a megjelenő utasításokat. Ha egy SSH-kulcspárral megtalálható az aktuális helyen, a rendszer felülírja ezeket a fájlokat. 
 
-1. Töltse le és telepítse **Git for Windows** a következő helyről: [ https://git-for-windows.github.io/ ](https://git-for-windows.github.io/).
-2. Fogadja el az alapértelmezett beállításokat a telepítés során, kivéve, ha kifejezetten módosítani szeretné őket.
-3. Futtatás **Git bash eszközt** a a **Start menü** > **Git** > **Git bash eszközt**. A konzol az alábbihoz hasonlít:
+```bash
+ssh-keygen -t rsa -b 2048
+```
 
-    ![Git a Windows Bash rendszerhéjat](./media/ssh-from-windows/git-bash-window.png)
+További háttér és adatokat, a [gyors](mac-create-ssh-keys.md) vagy [részletes](create-ssh-keys-detailed.md) a kulcsok létrehozásához szükséges lépéseket `ssh-keygen`.
 
-## <a name="create-a-private-key"></a>A titkos kulcs létrehozása
-1. Az a **Git bash eszközt** ablakban használata `openssl.exe` titkos kulcs létrehozásához. Az alábbi példakód létrehozza nevű kulcs `myPrivateKey` és nevű tanúsítvány `myCert.pem`:
+### <a name="create-ssh-keys-with-puttygen"></a>A PuTTYgen SSH-kulcsok létrehozása
 
-    ```bash
-    openssl.exe req -x509 -nodes -days 365 -newkey rsa:2048 \
-        -keyout myPrivateKey.key -out myCert.pem
-    ```
+Ha jobban szeret SSH-kulcsok létrehozása a GUI-alapú eszköz segítségével, használhatja a PuTTYgen megosztottelérésikulcs-készítő, mellékelt a [PuTTY letöltőcsomag](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). 
 
-    A kimeneti az alábbihoz hasonlít:
+Egy SSH-RSA kulcspár létrehozása PuTTYgen:
 
-    ```bash
-    Generating a 2048 bit RSA private key
-    .......................................+++
-    .......................+++
-    writing new private key to 'myPrivateKey.key'
-    -----
-    You are about to be asked to enter information that will be incorporated
-    into your certificate request.
-    What you are about to enter is what is called a Distinguished Name or a DN.
-    There are quite a few fields but you can leave some blank
-    For some fields there will be a default value,
-    If you enter '.', the field will be left blank.
-    -----
-    Country Name (2 letter code) [AU]:
-    ```
+1. Indítsa el a puttygen eszközzel készíthet.
 
-   Ha bash hiba azt jelenti, próbálkozzon egy új **Git bash eszközt** ablakot emelt szintű jogosultságokkal. Ezután futtassa újra a `openssl` parancsot.
+2. Kattintson a **készítése**. Alapértelmezés szerint a PuTTYgen egy 2048 bites SSH-2 RSA-kulcsot hoz létre.
 
-2. Válaszolja meg a megjelenő utasításokat az ország-név, a helyet, a szervezet neve, a stb.
-3. Az új titkos kulcsot és tanúsítványt az aktuális munkakönyvtárban jönnek létre. Biztonsági okból kell az engedélyek beállítása a titkos kulcs, hogy csak Ön férhessen hozzá:
+4. Az egér néhány annak véletlenszerű, a kulcs létrehozásához üres terület felett.
 
-    ```bash
-    chmod 0600 myPrivateKey.key
-    ```
+5. Után a nyilvános kulcs jön létre, igény szerint adja meg, és erősítse meg a jelszót. Bekéri a jelszavát Önt a hitelesítéshez a virtuális gép SSH-kulcsban. Nélkül egy hozzáférési kódot Ha valaki beszerzi a titkos kulcsot, akkor is bejelentkezhetnek a valamennyi virtuális gép által használt kulcs. Azt javasoljuk, hogy hozzon létre egy hozzáférési kódot. Ha azonban elfelejti a hozzáférési kódját, nincs lehetőség a helyreállításra.
 
-4. A [következő szakasz](#create-a-private-key-for-putty) PuTTYgen használatával megtekintése és használata a nyilvános kulcsot, és hozzon létre egy titkos kulcsot adott PuTTY SSH a Linux virtuális gépekhez való használatára vonatkozó részletek. A következő parancs nevű nyilvános kulcsfájlt hoz létre `myPublicKey.key` azonnal használható:
-
-    ```bash
-    openssl.exe rsa -pubout -in myPrivateKey.key -out myPublicKey.key
-    ```
-
-5. Ha is szükség van, klasszikus-erőforrások kezeléséhez, alakítsa át a `myCert.pem` való `myCert.cer` (DER kódolású X509 tanúsítvány). Hajtsa végre ezt a lépést nem kötelező, csak akkor, ha kifejezetten a régebbi klasszikus-erőforrások kezeléséhez van szüksége.
-
-    Alakítsa át a tanúsítványt a következő parancsot:
-
-    ```bash
-    openssl.exe  x509 -outform der -in myCert.pem -out myCert.cer
-    ```
-
-## <a name="create-a-private-key-for-putty"></a>Hozzon létre egy titkos kulcsot a putty rendszerhez
-A puTTY gyakori SSH-ügyfél Windows rendszerre. Szabadon bármely SSH-ügyfél, amely kívánja használni. A PuTTY használata szüksége egy további típusú kulcs - a PuTTY titkos kulcs (PPK) létrehozásához. Ha nem kíván a PuTTY használata, hagyja ki ezt a szakaszt.
-
-Az alábbi példakód létrehozza a további titkos kulcs kifejezetten a PuTTY használata:
-
-1. Használjon **Git bash eszközt** konvertálni a titkos kulcsot egy RSA-titkos kulcsot, amely a PuTTYgen tudja értelmezni. Az alábbi példakód létrehozza nevű kulcs `myPrivateKey_rsa` nevű meglévő kulcsból `myPrivateKey`:
-
-    ```bash
-    openssl rsa -in ./myPrivateKey.key -out myPrivateKey_rsa
-    ```
-
-    Biztonsági okból kell az engedélyek beállítása a titkos kulcs, hogy csak Ön férhessen hozzá:
-
-    ```bash
-    chmod 0600 myPrivateKey_rsa
-    ```
-2. Töltse le és futtassa a PuTTYgen a következő helyről: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
-3. A menü: **fájl** > **terhelés titkos kulcs**
-4. Keresse meg a titkos kulcsot (`myPrivateKey_rsa` az előző példában). Az alapértelmezett címtár indításakor **Git bash eszközt** van `C:\Users\%username%`. Módosítsa a fájl szűrőt **minden fájl (\*.\*)** :
-
-    ![A meglévő titkos kulcs betöltése a PuTTYgen](./media/ssh-from-windows/load-private-key.png)
-5. Kattintson a **nyitott**. A kérdés azt jelzi, hogy a kulcs sikeresen importálva lett:
-
-    ![Az importálás sikeres kulcs PuTTYgen](./media/ssh-from-windows/successfully-imported-key.png)
-6. Kattintson a **OK** kattintva zárja be a parancssorba.
-7. A nyilvános kulcs tetején jelenik meg a **PuTTYgen** ablak. Másolja és illessze be a nyilvános kulcsot az Azure-portálon vagy az Azure Resource Manager sablon Linux virtuális gép létrehozásakor. Is **mentés nyilvános kulcs** , mentse a számítógéphez:
+6. A nyilvános kulcs jelenik meg a az ablak tetején. Ön lemásolhatja és beillesztheti az egysoros formátumú nyilvános kulcsot az Azure-portálon vagy az Azure Resource Manager-sablon Linux virtuális gép létrehozásakor. Is **mentés nyilvános kulcs** , mentse a számítógéphez:
 
     ![PuTTY nyilvánoskulcs-fájl mentése](./media/ssh-from-windows/save-public-key.png)
 
-    A következő példa bemutatja, hogyan, akkor másolja és illessze be a nyilvános kulcs be az Azure portálon Linux virtuális gép létrehozásakor. A nyilvános kulcsot általában majd tárolja `~/.ssh/authorized_keys` a új virtuális gépén.
+7. A PuTTy titkos kulcs formátumaként (.ppk fájlt) a titkos kulcs mentéséhez kattintson **mentés titkos kulcs**. A .ppk fájlt a PuTTY SSH-kapcsolat legyen a virtuális Gépet későbbi használatra szeretné.
 
-    ![Használja a nyilvános kulcsot, ha a virtuális gép létrehozása az Azure-portálon](./media/ssh-from-windows/use-public-key-azure-portal.png)
-8. Vissza a **PuTTYgen**, kattintson a **titkos kulcs mentése**:
+    ![Mentse a PuTTY titkos kulcs fájlja](./media/ssh-from-windows/save-ppk-file.png)
 
-    ![A PuTTY titkos kulcs fájl mentése](./media/ssh-from-windows/save-ppk-file.png)
+    A titkos kulcs a protokoll OpenSSH formátumban menti, a titkos kulcs formátumaként sok SSH-ügyfelek, kattintson a **átalakítások** > **exportálása OpenSSH-kulcsot**.
 
-   > [!WARNING]
-   > A kérdés kéri, ha továbbra is szeretné a kulcsot a jelszó megadása nélkül. Jelszó szükséges a jelszót a titkos kulcs csatolva hasonlít. Akkor is, ha valaki volt, a titkos kulcs beszerzése, azok továbbra is nem tudná hitelesítést csak a kulcsot. A jelszó is kell. Nélkül egy hozzáférési kódot Ha valaki beszerzi a titkos kulcsot, akkor is bejelentkezhetnek a valamennyi virtuális gép által használt kulcs. Azt javasoljuk, hogy hozzon létre egy hozzáférési kódot. Ha azonban elfelejti a hozzáférési kódját, nincs lehetőség a helyreállításra.
-   >
-   >
+## <a name="provide-ssh-public-key-when-deploying-a-vm"></a>A virtuális gép telepítésekor adja meg a nyilvános SSH-kulcs
 
-    Ha szeretne adni egy jelszót, kattintson a **nem**, adja meg a PuTTYgen főablakban, és kattintson a **mentés titkos kulcs** újra. Ellenkező esetben kattintson a **Igen** anélkül, hogy a jelszót a folytatáshoz.
-9. Adjon nevet és a PPK fájl mentési helyét.
+Hozzon létre egy Linux virtuális gép SSH-kulcsokat használ, adja meg a nyilvános SSH-kulcsot az Azure-portálon vagy más módszerrel virtuális gép létrehozásakor.
 
-## <a name="use-putty-to-ssh-to-a-linux-machine"></a>A Putty használata az SSH a Linux-gépekhez
-A PuTTY újra, a gyakori SSH-ügyfél Windows. Szabadon bármely SSH-ügyfél, amely kívánja használni. Az alábbi lépéseket a titkos kulcsa segítségével hitelesítik magukat az Azure virtuális gép SSH használatával módjáról részletesen. A lépések hasonlóak a más SSH kulcs ügyfelek tekintetében kell betölteni a titkos kulcs az SSH-kapcsolat hitelesítéséhez.
+A következő példa bemutatja, hogyan, akkor másolja és illessze be a nyilvános kulcs be az Azure portálon Linux virtuális gép létrehozásakor. A nyilvános kulcsot általában majd tárolja `~/.ssh/authorized_keys` a új virtuális gépén.
 
-1. A letöltés és futtatási putty a következő helyről: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+   ![Használja a nyilvános kulcsot, ha a virtuális gép létrehozása az Azure-portálon](./media/ssh-from-windows/use-public-key-azure-portal.png)
+
+
+## <a name="connect-to-your-vm"></a>Csatlakoztassa a virtuális Gépet
+
+Egy kapcsolat egy SSH a Linux virtuális gépre a Windows módja egy SSH-ügyfél használata. Ha egy SSH-ügyfél Windows rendszerre telepített, vagy Azure Cloud rendszerhéj Bash használ SSH-eszközök esetében előnyben részesített módszert. Ha inkább a GUI-alapú eszköz, a PuTTY kapcsolatba léphet.  
+
+### <a name="use-an-ssh-client"></a>Egy SSH-ügyfél használata
+A nyilvános kulcsot az Azure virtuális gépen telepített, és a titkos kulcsot a helyi számítógépen, a virtuális géphez az IP-cím vagy a DNS-neve, a virtuális gép SSH. Cserélje le *azureuser* és *myvm.westus.cloudapp.azure.com* a rendszergazdai felhasználónevet és a teljes tartománynév (vagy IP-címet) az alábbi parancs:
+
+```bash
+ssh azureuser@myvm.westus.cloudapp.azure.com
+```
+
+Ha a kulcspár létrehozásakor konfigurált egy jelszót, írja be a jelszót, amikor a rendszer kéri a bejelentkezési folyamat során.
+
+### <a name="connect-with-putty"></a>Csatlakozzon a PuTTY
+
+Ha telepítette a [PuTTY letöltőcsomag](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) korábban létrehozott PuTTY titkos kulcs (.ppk fájlt), és a Linux virtuális Géphez a PuTTY kapcsolódhat.
+
+1. Indítsa el a PuTTy.
+
 2. Adja meg az állomásnevet vagy IP-címet a virtuális gép az Azure-portálon:
 
     ![Új PuTTY kapcsolat megnyitása](./media/ssh-from-windows/putty-new-connection.png)
-3. Mielőtt kiválasztja **nyissa meg**, kattintson a **kapcsolat** > **SSH** > **Auth** lapon. Keresse meg, és a titkos kulcs kiválasztásához:
+
+3. Mielőtt kiválasztja **nyissa meg**, kattintson a **kapcsolat** > **SSH** > **Auth** lapon. Keresse meg és jelölje ki a PuTTY titkos kulcsot (.ppk fájlt):
 
     ![Válassza ki a PuTTY titkos kulcsot a hitelesítéshez](./media/ssh-from-windows/putty-auth-dialog.png)
-4. Kattintson a **nyitott** a virtuális géphez való kapcsolódáshoz
+
+4. Kattintson a **nyitott** a virtuális Géphez való kapcsolódáshoz.
 
 ## <a name="next-steps"></a>További lépések
-A nyilvános és titkos kulcsokat is létrehozhat [OS X-és Linux](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-További információ a Bash a Windows és a Windows-számítógépen OSS eszközöket járó előnyöket: [Windows Ubuntu a Bash](https://msdn.microsoft.com/commandline/wsl/about).
+* Részletes lépéseket, a beállításokat és az SSH-kulcsok speciális példák, lásd: [SSH létrehozásának részletes lépései kulcs párok](create-ssh-keys-detailed.md).
 
-Ha gondja támad az SSH használata a Linux virtuális gépek csatlakozni, lásd: [hibaelhárítása SSH kapcsolódik az Azure Linux virtuális gép](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Azure Cloud rendszerhéj PowerShell is használható SSH-kulcsok létrehozása és az SSH-kapcsolat létrehozása a Linux virtuális gépek. Tekintse meg a [PowerShell gyors üzembe helyezés](../../cloud-shell/quickstart-powershell.md#ssh).
+
+* Ha gondja támad az SSH használata a Linux virtuális gépek csatlakozni, lásd: [hibaelhárítása SSH kapcsolódik az Azure Linux virtuális gép](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

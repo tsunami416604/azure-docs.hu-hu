@@ -19,8 +19,8 @@ Ennek a beállítási oktatóanyagnak az elvégzéséhez szüksége lesz erre az
 
 1. Az [Azure Portalon](https://portal.azure.com/) nyissa meg az IoT Hubot.
 
-2. Kattintson a **Device Explorer** elemre.
-3. A Device Explorer panelen a **Hozzáadás** gombra kattintva vehet fel eszközt az IoT Hubba. Ezután tegye a következőket:
+2. Kattintson a **az IoT-eszközök**.
+3. Az IoT-eszközök ablaktábláján kattintson **Hozzáadás** hozzáad egy eszközt az IoT-központ számára. Ezután tegye a következőket:
 
    **Eszközazonosító**: Adja meg az új eszköz azonosítóját. Az eszközazonosítókban különbözőnek számítanak a kis- és nagybetűk.
 
@@ -30,12 +30,15 @@ Ennek a beállítási oktatóanyagnak az elvégzéséhez szüksége lesz erre az
 
    **Eszköz csatlakoztatása az IoT Hubhoz**: Kattintson az **Engedélyezés** lehetőségre.
 
-   ![Eszköz felvétele a Device Explorerben az IoT Hubon](../articles/iot-hub/media/iot-hub-create-hub-and-device/6_add-device-in-azure-iot-hub-device-explorer-portal.png)
+   ![Az IoT-eszközök az IoT hub, az eszköz hozzáadásához](../articles/iot-hub/media/iot-hub-create-hub-and-device/6_add-device-in-azure-iot-hub-iot-devices-portal.png)
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
 4. Kattintson a **Save** (Mentés) gombra.
-5. Az eszköz létrehozása után nyissa meg azt a **Device Explorer** panelen.
+5. Az eszköz létrehozását követően nyissa meg az eszközt a **az IoT-eszközök** ablaktáblán.
+
+   ![IoT-eszközök listája az IoT hubon](../articles/iot-hub/media/iot-hub-create-hub-and-device/7_device-list-in-iot-devices-portal.png)
+
 6. Jegyezze fel a kapcsolati karakterlánc elsődleges kulcsának értékét.
 
-   ![Az eszköz kapcsolati karakterláncának beszerzése](../articles/iot-hub/media/iot-hub-create-hub-and-device/7_get-device-connection-string-in-device-explorer-portal.png)
+   ![Az eszköz kapcsolati karakterláncának beszerzése](../articles/iot-hub/media/iot-hub-create-hub-and-device/8_get-device-connection-string-in-iot-devices-portal.png)

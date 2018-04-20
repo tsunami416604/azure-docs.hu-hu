@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directory-integráció Tableau kiszolgálóval |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Tableau kiszolgáló között."
+title: 'Oktatóanyag: Azure Active Directory-integráció Tableau kiszolgálóval |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Tableau kiszolgáló között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
 ms.openlocfilehash: 3b0390c8b95a46b2c134252532bef118ea4df52d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>Oktatóanyag: Azure Active Directory-integráció Tableau kiszolgálóval
 
@@ -158,7 +158,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
   
    b. A jelölőnégyzet bejelölésével **az egyszeri bejelentkezéshez használható SAML**.
    
-   c. Tableau kiszolgálói válasz URL-cím – az URL-címet, amely a Tableau Server felhasználók hozzáférhetnek, például a http://tableau_server. Http://localhost használata nem ajánlott. Egy URL-címet a záró perjelet (például http://tableau_server/) használata nem támogatott. Másolás **Tableau kiszolgálói válasz URL-cím** és illessze be az Azure AD **URL-cím bejelentkezési** textbox **Tableau kiszolgáló tartományával és URL-címek** szakasz.
+   c. Tableau kiszolgálói válasz URL-cím – az URL-címet, amely a Tableau Server felhasználók hozzáférhetnek, például a http://tableau_server. Használatával http://localhost nem ajánlott. Egy URL-cím használata a záró perjelet (például http://tableau_server/) nem támogatott. Másolás **Tableau kiszolgálói válasz URL-cím** és illessze be az Azure AD **URL-cím bejelentkezési** textbox **Tableau kiszolgáló tartományával és URL-címek** szakasz.
    
    d. SAML Entitásazonosító – az entitás azonosítója egyedileg azonosítja a kiállító terjesztési hely a Tableau Server telepítése. Adhatja meg a Tableau URL-címe újra ide, ha szeretné, de nem rendelkezik a Tableau kiszolgáló URL-címét. Másolás **SAML Entitásazonosító** és illessze be az Azure AD **azonosító** textbox **Tableau kiszolgáló tartományával és URL-címek** szakasz.
      
