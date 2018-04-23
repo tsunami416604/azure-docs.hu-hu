@@ -1,11 +1,11 @@
 ---
-title: "Termék létrehozása és közzététele az Azure API Managementben"
-description: "Megismerheti, hogyan hozhat létre és tehet közzé termékeket az Azure API Managementben."
+title: Termék létrehozása és közzététele az Azure API Managementben
+description: Megismerheti, hogyan hozhat létre és tehet közzé termékeket az Azure API Managementben.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: b9e3127a6b055a1fe013fa91714676a7c56686c5
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 4df1aac9b7176962c6030ad9ed998d50bdf576af
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-and-publish-a-product"></a>Termékek létrehozása és közzététele  
 
@@ -37,8 +37,6 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 + Tekintse át a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
 + Végezze el a következő oktatóanyagot is: [Az első API importálása és közzététele](import-and-publish.md).
 
-[!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
-
 ## <a name="create-and-publish-a-product"></a>Termékek létrehozása és közzététele
 
 1. Kattintson a bal oldali menü **Termékek** lehetőségére a **Termékek** oldal megjelenítéséhez.
@@ -48,10 +46,10 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
     Termék hozzáadásakor meg kell adnia a következő információkat: 
 
-    |Név|Leírás|
+    |Name (Név)|Leírás|
     |---|---|
     |Megjelenített név|A név, ahogyan a **fejlesztői portálon** meg szeretné jeleníteni.|
-    |Név|A termék leíró neve.|
+    |Name (Név)|A termék leíró neve.|
     |Leírás|A **Leírás** mezőben részletes információkat adhat meg a termékről, például a funkcióját vagy az API-kat, amelyekhez hozzáférést nyújt.|
     |Állapot|Kattintson a **Közzétett** elemre, ha közzé szeretné tenni a terméket. Mielőtt meghívhatná egy termék API-jait, közzé kell tenni a terméket. Alapértelmezés szerint az új termékek nincsenek közzétéve, és csak a **Rendszergazdák** csoport tagjai számára láthatók.|
     |Jóváhagyást igényel|Jelölje be az **Előfizetés jóváhagyása szükséges** jelölőnégyzetet, ha azt szeretné, hogy egy rendszergazda döntsön a termék előfizetésére vonatkozó kérelmek elfogadásáról vagy elutasításáról. Ha a jelölőnégyzet nincs bejelölve, a rendszer az előfizetési kísérleteket automatikusan elfogadja. |

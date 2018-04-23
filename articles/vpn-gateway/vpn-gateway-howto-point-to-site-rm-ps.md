@@ -1,11 +1,11 @@
 ---
-title: "Számítógép csatlakoztatása Azure-beli virtuális hálózathoz pont–hely kapcsolat és az Azure natív tanúsítványalapú hitelesítésének használatával: PowerShell | Microsoft Docs"
-description: "Windows- vagy Mac OS X-ügyfelek biztonságos csatlakoztatása Azure-beli virtuális hálózathoz, a pont–hely kapcsolat és önaláírt vagy hitelesítésszolgáltató által kibocsátott tanúsítványok használatával. Ebben a cikkben a PowerShellt fogjuk használni."
+title: 'Számítógép csatlakoztatása Azure-beli virtuális hálózathoz pont–hely kapcsolat és az Azure natív tanúsítványalapú hitelesítésének használatával: PowerShell | Microsoft Docs'
+description: Windows- vagy Mac OS X-ügyfelek biztonságos csatlakoztatása Azure-beli virtuális hálózathoz, a pont–hely kapcsolat és önaláírt vagy hitelesítésszolgáltató által kibocsátott tanúsítványok használatával. Ebben a cikkben a PowerShellt fogjuk használni.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 3eddadf6-2e96-48c4-87c6-52a146faeec6
 ms.service: vpn-gateway
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: ab171a97855090302148651e8e9c3d0d8b91a33a
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 42afdee5ac58db005a7ecfb6388c88a974704a03
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Pont–hely kapcsolat konfigurálása virtuális hálózathoz az Azure natív tanúsítványalapú hitelesítésének használatával: PowerShell
 
@@ -70,7 +70,7 @@ Ez a szakasz a bejelentkezést és a konfigurációban használt értékek dekla
 1. Nyissa meg emelt a PowerShell-konzolt szintű jogosultságokkal, és jelentkezzen be az Azure-fiókjába. Ez a parancsmag bejelentkezési hitelesítő adatokat kér be. A bejelentkezés után letölti a fiók beállításait, hogy elérhetők legyenek az Azure PowerShell számára.
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ```
 2. Olvassa be az Azure-előfizetések listáját.
 

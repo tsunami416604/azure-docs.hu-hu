@@ -12,10 +12,10 @@ ms.date: 03/14/2018
 ms.author: bonova
 manager: craigg
 ms.openlocfilehash: 774a761465cfd886b85378a35dd43ac656a7ee48
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/12/2018
 ---
 # <a name="create-an-azure-sql-database-managed-instance-in-the-azure-portal"></a>Felügyelt Azure SQL Database-példány létrehozása az Azure Portalon
 
@@ -203,8 +203,8 @@ A következő lépések bemutatják, hogyan hozhat létre egy második alhálóz
    | ------ | --------------- | ----------- |
    |**Name (Név)**|Bármely érvényes név|Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket.|
    |**Címtartomány (CIDR-blokk)**|Bármely érvényes címtartomány a VNeten belül (használja az alapértelmezettet)||
-   |**Hálózati biztonsági csoport**|Nincs||
-   |**Útvonaltábla**|Nincs||
+   |**Hálózati biztonsági csoport**|None||
+   |**Útvonaltábla**|None||
    |**Szolgáltatásvégpontok**|Nincs||
 
    ![virtuális gép alhálózatának részletei](./media/sql-database-managed-instance-tutorial/vm-subnet-details.png)

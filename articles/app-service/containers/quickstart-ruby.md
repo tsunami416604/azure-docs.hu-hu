@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.date: 10/10/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 6668f02bb7ac9588e1bb11b3848d0a3e25cbed67
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 079eb7b89ff3d6c1e4ec0de6136cd934ba3a1f70
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-ruby-app-in-app-service-on-linux"></a>Ruby alkalmazás létrehozása a Linux App Service-ben | Microsoft Docs
 
@@ -53,34 +53,6 @@ rails server
 ```
 
 Webböngészőjével a `http://localhost:3000` hely megkeresésével helyileg tesztelheti az alkalmazást.
-
-![Hello-world](./media/quickstart-ruby/hello-world.png)
-
-## <a name="modify-app-to-display-welcome-message"></a>Alkalmazás módosítása az üdvözlő üzenet megjelenítéséhez
-
-Módosítsa az alkalmazást, hogy az megjelenítse az üdvözlő üzenetet. Először be kell állítania egy útvonalat a *~/workspace/ruby-docs-hello-world/config/routes.rb* fájl módosításával, hogy az tartalmazzon egy `hello` nevű útvonalat.
-
-  ```ruby
-  Rails.application.routes.draw do
-      #For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-      root 'application#hello'
-  end
-  ```
-
-Módosítsa az alkalmazás vezérlőjét, hogy az a böngésző számára HTML formátumban küldje vissza az üzenetet. 
-
-Nyissa meg a *~/workspace/hello-world/app/controllers/application_controller.rb* fájlt szerkesztésre. Módosítsa az `ApplicationController` osztályt, hogy az alábbi példakódhoz hasonlítson:
-
-  ```ruby
-  class ApplicationController > ActionController :: base
-    protect_from_forgery with: :exception
-    def hello
-      render html: "Hello, world from Azure Web App on Linux!"
-    end
-  end
-  ```
-
-Az alkalmazás konfigurálása ekkor kész. Webböngészőjével a `http://localhost:3000` hely megkeresésével erősítheti meg a gyökér kezdőlapját.
 
 ![Hello world konfigurálva](./media/quickstart-ruby/hello-world-configured.png)
 

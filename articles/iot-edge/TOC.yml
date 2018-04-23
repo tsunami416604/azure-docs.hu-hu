@@ -45,16 +45,12 @@
       href: how-to-install-iot-core.md
     - name: A VS Code használata IoT Edge-megoldások fejlesztéséhez
       items:
-        - name: 'C# modul fejlesztése és üzembe helyezése'
-          href: how-to-vscode-develop-csharp-module.md
-        - name: 'C# modul hibakeresése'
-          href: how-to-vscode-debug-csharp-module.md
-        - name: Azure-függvények kifejlesztése és üzembe helyezése
-          href: how-to-vscode-develop-azure-function.md
-        - name: Azure-függvények hibakeresése
-          href: how-to-vscode-debug-azure-function.md
         - name: Több modul egyidejű használata
           href: tutorial-multiple-modules-in-vscode.md
+        - name: 'C# modul hibakeresése'
+          href: how-to-vscode-debug-csharp-module.md
+        - name: Azure-függvények hibakeresése
+          href: how-to-vscode-debug-azure-function.md
     - name: Adatok tárolása a peremhálózaton
       href: sql-storage.md
     - name: Hibaelhárítás

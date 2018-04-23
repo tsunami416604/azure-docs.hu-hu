@@ -1,11 +1,11 @@
 ---
-title: "Azure-alapú virtuális hálózat csatlakoztatása másik virtuális hálózathoz virtuális hálózatok közötti kapcsolattal: PowerShell | Microsoft Docs"
-description: "Egymáshoz csatlakoztathatja a virtuális hálózatokat a virtuális hálózatok közötti kapcsolat és a PowerShell használatával."
+title: 'Azure-alapú virtuális hálózat csatlakoztatása másik virtuális hálózathoz virtuális hálózatok közötti kapcsolattal: PowerShell | Microsoft Docs'
+description: Egymáshoz csatlakoztathatja a virtuális hálózatokat a virtuális hálózatok közötti kapcsolat és a PowerShell használatával.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 0683c664-9c03-40a4-b198-a6529bf1ce8b
 ms.service: vpn-gateway
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 8f2ecf4f10c5506b79adb033c67c41a4b1e17777
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a96326e23a2ed913ccab8a23666a4f408157d3da
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Virtuális hálózatok közötti VPN Gateway-kapcsolat konfigurálása a PowerShell használatával
 
@@ -153,7 +153,7 @@ A példákban a következő értékeket használjuk:
 2. Csatlakozás a fiókhoz. A következő példa segít a kapcsolódásban:
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ```
 
   Keresse meg a fiókot az előfizetésekben.
@@ -349,7 +349,7 @@ Ezt a lépést az új előfizetés környezetében kell elvégezni. Ezt a részt
 2. Csatlakozzon az 5. előfizetéshez. Nyissa meg a PowerShell konzolt, és csatlakozzon a fiókjához. A következő minta segíthet a kapcsolódásban:
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ```
 
   Keresse meg a fiókot az előfizetésekben.

@@ -1,8 +1,8 @@
 ---
-title: "Kulcstartó védelme | Microsoft Docs"
-description: "Kulcstartó-hozzáférési engedélyek kezelése tárolók, kulcsok és titkos kulcsok kezeléséhez. Kulcstartó hitelesítési és engedélyezési modellje, illetve a kulcstartó biztosításának módja"
+title: Kulcstartó védelme | Microsoft Docs
+description: Kulcstartó-hozzáférési engedélyek kezelése tárolók, kulcsok és titkos kulcsok kezeléséhez. Kulcstartó hitelesítési és engedélyezési modellje, illetve a kulcstartó biztosításának módja
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: amitbapat
 manager: mbaldwin
 tags: azure-resource-manager
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: ambapat
-ms.openlocfilehash: b81791f0bce7e6f57782dfe7bc5fb5fc21369e7d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3a769d15fe79a56d623399d0d38b6dd9c060db36
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="secure-your-key-vault"></a>Kulcstartó védelme
 Az Azure Key Vault egy felhőszolgáltatás, mely a titkosítási kulcsokat és titkos kulcsokat (pl. tanúsítványok, kapcsolati karakterláncok, jelszavak) védi az Ön felhőalkalmazásainál. Mivel ezek érzékeny és üzleti szempontból kritikus jellegű adatok, fontos, hogy Ön csak jogosult alkalmazások és felhasználók számára engedélyezzen kulcstartó-hozzáférést. Ez a cikk áttekintést ad a kulcstartó-hozzáférési modellről, elmagyarázza, mi a hitelesítés és az engedélyezés, és egy példával szemlélteti, hogyan biztosíthat kulcstartó-hozzáférést felhőalkalmazásai számára.
@@ -76,7 +76,7 @@ Minden Azure-előfizetés Azure Active Directoryval rendelkezik. Ezen könyvtár
 
 Az Azure Resource Manager modellel kulcstartót hozhat létre erőforráscsoporton belül, és az Azure Active Directory használatával vezérelheti e kulcstartó felügyeleti síkját. Lehetőséget adhat például felhasználóknak vagy egy csoportnak, hogy egy adott erőforráscsoport kulcstartóit kezeljék.
 
-Megfelelő RBAC-szerepek kiosztásával meghatározott hatáskörrel rendelkező felhasználók, csoportok és alkalmazások számára biztosíthat hozzáférést. Például, ha kulcstartókezelési hozzáférést kíván biztosítani egy felhasználónak, előre meghatározott „kulcstartó-közreműködői” szerepkört rendelhet ehhez a felhasználóhoz egy adott hatókörnél. A hatókör ebben az esetben lehet egy előfizetés, egy erőforráscsoport vagy egyszerűen egy adott kulcstartó. Az előfizetés-szinten hozzárendelt szerepkör az adott előfizetésen belül működő összes erőforráscsoportra és erőforrásra vonatkozik. Az erőforráscsoport-szinten hozzárendelt szerepkör az adott erőforráscsoport valamennyi erőforrására vonatkozik. A meghatározott erőforráshoz rendelt szerepkör csak az adott erőforrásra vonatkozik. Számos előre definiált szerepkör létezik (lásd: [RBAC: Beépített szerepkörök](../active-directory/role-based-access-built-in-roles.md)), ha pedig az előre definiált szerepkörök nem felelnek meg igényeinek, saját szerepköröket is meghatározhat.
+Megfelelő RBAC-szerepek kiosztásával meghatározott hatáskörrel rendelkező felhasználók, csoportok és alkalmazások számára biztosíthat hozzáférést. Például, ha kulcstartókezelési hozzáférést kíván biztosítani egy felhasználónak, előre meghatározott „kulcstartó-közreműködői” szerepkört rendelhet ehhez a felhasználóhoz egy adott hatókörnél. A hatókör ebben az esetben lehet egy előfizetés, egy erőforráscsoport vagy egyszerűen egy adott kulcstartó. Az előfizetés-szinten hozzárendelt szerepkör az adott előfizetésen belül működő összes erőforráscsoportra és erőforrásra vonatkozik. Az erőforráscsoport-szinten hozzárendelt szerepkör az adott erőforráscsoport valamennyi erőforrására vonatkozik. A meghatározott erőforráshoz rendelt szerepkör csak az adott erőforrásra vonatkozik. Számos előre definiált szerepkör létezik (lásd: [RBAC: Beépített szerepkörök](../role-based-access-control/built-in-roles.md)), ha pedig az előre definiált szerepkörök nem felelnek meg igényeinek, saját szerepköröket is meghatározhat.
 
 > [!IMPORTANT]
 > Vegye figyelembe: ha a kulcstartó felügyeleti síkjához a felhasználónak közreműködői engedélye (RBAC) van, hozzáférést engedélyezhet magának az adatsíkhoz is az adatsík-hozzáférést vezérlő kulcstartó-hozzáférési házirend beállításával. Ezért javasoljuk, hogy tartsa szigorú ellenőrzés alatt, ki rendelkezhet „közreműködői” hozzáféréssel kulcstartóihoz, így csak az arra jogosult személyek érhetik el, illetve kezelhetik kulcstartóit, kulcsait, titkos kulcsait és tanúsítványait.
@@ -134,8 +134,8 @@ Most nézzük meg, milyen kulcstartó-hozzáférési engedélyek szükségesek a
 | Felhasználói szerepkör | Felügyeleti sík engedélyei | Adatsík engedélyei |
 | --- | --- | --- |
 | Biztonsági csapat |Kulcstartó-közreműködő |Kulcsok: biztonsági mentése, létrehozása, törlése, beolvasása, importálása, listázása, visszaállítása <br> Titkos kulcsok: összes |
-| Fejlesztők/operátor |kulcstartó-üzembehelyezési engedély, hogy az általuk üzembe helyezett virtuális gépek lehívhassák a kulcstartóból a titkos kulcsokat |None |
-| Ellenőrök |None |Kulcsok: listája<br>Titkos kulcsok: listája |
+| Fejlesztők/operátor |kulcstartó-üzembehelyezési engedély, hogy az általuk üzembe helyezett virtuális gépek lehívhassák a kulcstartóból a titkos kulcsokat |Nincs |
+| Ellenőrök |Nincs |Kulcsok: listája<br>Titkos kulcsok: listája |
 | Alkalmazás |None |Kulcsok: aláírása<br>Titkos kulcsok: beolvasása |
 
 > [!NOTE]
@@ -203,20 +203,20 @@ Ez a példa egy egyszerű forgatókönyvet mutat be. Előfordulhat, hogy a való
 > 
 > 
 
-## <a name="resources"></a>Erőforrások
-* [Azure Active Directory szerepköralapú hozzáférés-vezérlése](../active-directory/role-based-access-control-configure.md)
+## <a name="resources"></a>További források
+* [Azure Active Directory szerepköralapú hozzáférés-vezérlése](../role-based-access-control/role-assignments-portal.md)
   
   Ez a cikk az Azure Active Directory szerepkörön alapuló hozzáférés-vezérlését és annak működési módját ismerteti.
-* [RBAC: Beépített szerepkörök](../active-directory/role-based-access-built-in-roles.md)
+* [RBAC: Beépített szerepkörök](../role-based-access-control/built-in-roles.md)
   
   Ez a cikk az RBAC-ben elérhető összes beépített szerepkört ismerteti.
 * [A Resource Manager-alapú és a klasszikus üzembe helyezés ismertetése](../azure-resource-manager/resource-manager-deployment-model.md)
   
   Ez a cikk a Resource Manager-alapú és a klasszikus üzembe helyezési modelleket ismerteti, és bemutatja az erőforrás-kezelő és az erőforráscsoportok használatának előnyeit
-* [Szerepköralapú hozzáférés-vezérlés kezelése az Azure PowerShell-lel](../active-directory/role-based-access-control-manage-access-powershell.md)
+* [Szerepköralapú hozzáférés-vezérlés kezelése az Azure PowerShell-lel](../role-based-access-control/role-assignments-powershell.md)
   
   Ez a cikk azt ismerteti, hogyan kezelheti a szerepköralapú hozzáférés-vezérlést Azure PowerShell-lel
-* [Szerepköralapú hozzáférés-vezérlés kezelése REST API-val](../active-directory/role-based-access-control-manage-access-rest.md)
+* [Szerepköralapú hozzáférés-vezérlés kezelése REST API-val](../role-based-access-control/role-assignments-rest.md)
   
   Ez a cikk leírja, hogyan használható a REST API az RBAC kezeléséhez.
 * [Szerepköralapú hozzáférés-vezérlés az Ignite-tól a Microsoft Azure számára](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
@@ -241,7 +241,7 @@ Ez a példa egy egyszerű forgatókönyvet mutat be. Előfordulhat, hogy a való
   
   PowerShell-parancsmagok kulcstartó-hozzáférési házirend kezeléséhez szükséges referenciadokumentációjára mutató hivatkozások.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A rendszergazdáknak szóló bevezető oktatóanyag a [Bevezetés az Azure Key Vault használatába](key-vault-get-started.md) című cikkben érhető el.
 
 A kulcstartó használatának naplózásával kapcsolatos további információkért tekintse meg [Az Azure Key Vault naplózása](key-vault-logging.md) című cikket.

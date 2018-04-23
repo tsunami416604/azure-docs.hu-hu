@@ -5,7 +5,7 @@
 ## [PIM Azure-erőforrásokhoz](azure-pim-resource-rbac.md)
 ## [A PIM jóváhagyási munkafolyamata](azure-ad-pim-approval-workflow.md)
 ## [Szerepkörök](../active-directory-privileged-identity-management-roles.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-## [A Privileged Identity Management jóváhagyási munkafolyamatai](azure-ad-pim-approval-workflow.md)
+
 
 
 # Bevezetés

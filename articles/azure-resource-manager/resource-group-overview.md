@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Resource Manager áttekintése | Microsoft Docs"
-description: "Ismerteti, hogyan használja az Azure Resource Manager eszközt erőforrások telepítésére, felügyeletére és hozzáférés-vezérlésére az Azure portálon."
+title: Az Azure Resource Manager áttekintése | Microsoft Docs
+description: Ismerteti, hogyan használja az Azure Resource Manager eszközt erőforrások telepítésére, felügyeletére és hozzáférés-vezérlésére az Azure portálon.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: cc3402b56b12e82653f673d7a5ab527231599c5b
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: a7e3d817923b0f9a691d5acaba606bdcd0012e60
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-resource-manager-overview"></a>Az Azure Resource Manager áttekintése
 Az alkalmazás infrastruktúrája általában számos összetevőből áll – például egy virtuális gépből, tárfiókból és virtuális hálózatból, vagy egy webalkalmazásból, adatbázisból, adatbázis-kiszolgálóból és harmadik féltől származó szolgáltatásokból. Ezeket az összetevőket nem külön entitásokként látja, hanem egyetlen entitás kapcsolódó és egymással összefüggő részeiként. Csoportként érdemes telepíteni, kezelni és megfigyelni őket. Az Azure Resource Manager lehetővé teszi, hogy a megoldásában az erőforrásokkal egy csoportként dolgozzon. A megoldás összes erőforrását egyetlen, koordinált műveletben telepítheti, frissítheti vagy törölheti. A telepítéshez egy sablon használatos, amely különböző, például tesztelési, átmeneti és üzemi környezetben is képes működni. A Resource Manager biztonsági, naplózási és címkézési szolgáltatásokat biztosít, hogy segítsen az erőforrások kezelésében a telepítést követően. 
@@ -215,7 +215,7 @@ Az Azure számos erőforrás-specifikus szerepkört is biztosít. Ilyenek péld�
 4. SQL Server közreműködője – felügyelheti az SQL-kiszolgálókat és -adatbázisokat, de nem kezelheti a biztonsággal kapcsolatos házirendjeiket
 5. Webhelyek közreműködője – felügyelheti a webhelyeket, de nem kezelheti a hozzájuk kapcsolódó webes tarifacsomagokat
 
-A szerepkörök és a hozzájuk kapcsolódó engedélyezett műveletek teljes listáját lásd: [RBAC: Beépített szerepkörök](../active-directory/role-based-access-built-in-roles.md). A szerepköralapú hozzáférés-vezérléssel kapcsolatos további információk: [Azure szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-configure.md). 
+A szerepkörök és a hozzájuk kapcsolódó engedélyezett műveletek teljes listáját lásd: [RBAC: Beépített szerepkörök](../role-based-access-control/built-in-roles.md). A szerepköralapú hozzáférés-vezérléssel kapcsolatos további információk: [Azure szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md). 
 
 Egyes esetekben előfordulhat, hogy olyan kódot vagy szkriptet kíván futtatni, amely hozzáféréssel rendelkezik bizonyos erőforrásokhoz, de nem felhasználói hitelesítő adatokkal kívánja végrehajtani a futtatást. Ehelyett egy szolgáltatásnév nevű identitást hozhat létre az alkalmazásnak, és hozzárendelheti a megfelelő szerepkört a szolgáltatásnévhez. A Resource Manager használatával hitelesítő adatokat hozhat létre az alkalmazáshoz, és programozott módon hitelesítheti az alkalmazást. A szolgáltatásnevek létrehozásáról a következő témakörökben talál további információt:
 

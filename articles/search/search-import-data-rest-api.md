@@ -1,25 +1,18 @@
 ---
-title: "Adatok feltöltése (REST API – Azure Search) | Microsoft Docs"
-description: "Megismerkedhet az adatfeltöltéssel az Azure Search szolgáltatás indexébe, a REST API használatával."
-services: search
-documentationcenter: 
-author: ashmaka
-manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 8d0749fb-6e08-4a17-8cd3-1a215138abc6
+title: Adatok feltöltése (REST API – Azure Search) | Microsoft Docs
+description: Megismerkedhet az adatfeltöltéssel az Azure Search szolgáltatás indexébe, a REST API használatával.
+author: brjohnstmsft
+manager: jlembicz
+ms.author: brjohnst
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
+ms.topic: quickstart
 ms.date: 12/08/2016
-ms.author: ashmaka
-ms.openlocfilehash: f22a33ed86fbfc46dfa732239263a49f34c4afee
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 5322faf04d29643bba2d1371cef23ab224675adb
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="upload-data-to-azure-search-using-the-rest-api"></a>Adatfeltöltés az Azure Search szolgáltatásba a REST API használatával
 > [!div class="op_single_selector"]
@@ -177,5 +170,5 @@ Ha az indexelés a kérésben szereplő összes elem esetében meghiúsult, a re
 
 További információk a dokumentumokkal végzett műveletekről, illetve a sikeres/meghiúsult műveletekre adott rendszerválaszokról: [Dokumentumok hozzáadása, frissítése vagy törlése](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents). További információk a meghiúsult műveletek esetében visszaadható HTTP-állapotkódokról: [HTTP-állapotkódok (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az Azure Search-index feltöltését követően készen áll a dokumentumkeresési lekérdezések kiadásának elindítására. Részletes információk: [Az Azure Search-index lekérdezése](search-query-overview.md).

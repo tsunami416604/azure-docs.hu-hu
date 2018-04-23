@@ -1,6 +1,6 @@
 ---
-title: "Visual Studio Tools for Machine Learning az Azure-ban – rövid útmutató | Microsoft Docs"
-description: "Ez a cikk ismerteti a Visual Studio Tools for Machine Learning használatának első lépéseit, egy kísérlet létrehozásától egy modell tanításán át egy webszolgáltatás üzembe helyezéséig."
+title: Visual Studio Tools for Machine Learning az Azure-ban – rövid útmutató | Microsoft Docs
+description: Ez a cikk ismerteti a Visual Studio Tools for Machine Learning használatának első lépéseit, egy kísérlet létrehozásától egy modell tanításán át egy webszolgáltatás üzembe helyezéséig.
 services: machine-learning
 author: ahgyger
 ms.author: ahgyger
@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/15/2017
 ms.openlocfilehash: bbcb2ea5a7ceeb976f590393608cc29c67d9a49e
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="visual-studio-tools-for-ai"></a>Visual Studio Tools for AI
 A Visual Studio Tools for AI egy fejlesztési bővítmény, amely mélytanulási és AI-megoldások összeállítását, tesztelését és üzembe helyezését teszi lehetővé. Zökkenőmentes integrációt biztosít az Azure Machine Learninggel, többek között egy futtatásielőzmények-nézetet, amely a korábbi betanítások és egyéni mérőszámok teljesítményét részletezi. Mintatallózó nézetet is kínál, amely lehetővé teszi az új projektek tallózását és elindítását a [Microsoft Cognitive Toolkittel (korábban CNTK)](http://www.microsoft.com/en-us/cognitive-toolkit), [Google TensorFlow-val](https://www.tensorflow.org) és más mélytanulási keretrendszerekkel. Végül egy tallózót biztosít a számítási célokhoz, amely lehetővé teszi modellek távoli környezetben (például Azure-beli virtuális gépeken vagy GPU-val rendelkező Linux-kiszolgálókon) való betanítási feladatainak elküldését. Emellett könnyített hozzáférést biztosít az [Azure Batch AI előzetes verziójához](https://docs.microsoft.com/azure/batch-ai/).

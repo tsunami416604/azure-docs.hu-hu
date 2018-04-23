@@ -16,11 +16,11 @@ ms.date: 12/12/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 2b9ed5b3374c98740923790dac90cb1eb2f065d8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1e258473614e01ca35eaa5970d02544844da6972
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Azure-előfizetés társítása vagy hozzáadása az Azure Active Directoryhoz
 
@@ -42,7 +42,7 @@ Minden felhasználó egyetlen saját címtárral rendelkezik, amely hitelesíti 
 2. Kattintson a **Címtár módosítása** elemre.
 
     ![A Címtár módosítása gomb képernyőképe](./media/active-directory-how-subscriptions-associated-directory/edit-directory-button.PNG)
-3. Tekintse át a figyelmeztetéseket. A címtár módosításakor minden [Szerepköralapú hozzáférés-vezérlés (RBAC-)](role-based-access-control-configure.md) felhasználó és minden előfizetés-rendszergazda elveszíti a hozzárendelt hozzáférését.
+3. Tekintse át a figyelmeztetéseket. A címtár módosításakor minden [Szerepköralapú hozzáférés-vezérlés (RBAC-)](../role-based-access-control/role-assignments-portal.md) felhasználó és minden előfizetés-rendszergazda elveszíti a hozzárendelt hozzáférését.
 4. Válasszon egy címtárat.
 
     ![A Címtár módosítása felhasználói felület képernyőképe](./media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.PNG)
@@ -60,7 +60,7 @@ Az előfizetés címtárának módosítása szolgáltatásszintű művelet. Ez n
 
 * További információ új Azure AD-címtár ingyenes létrehozásáról: [Azure Active Directory-bérlő beszerzése](develop/active-directory-howto-tenant.md)
 * További információ az Azure-előfizetések számlázási tulajdonjogának átadásáról: [Azure-előfizetés tulajdonjogának átruházása másik fiókra](../billing/billing-subscription-transfer.md)
-* Az erőforrások hozzáférésének Microsoft Azure-ban történő kezeléséről további információért lásd: [Az erőforrások hozzáférésének megismerése az Azure-ban](active-directory-understanding-resource-access.md)
+* Az erőforrások hozzáférésének Microsoft Azure-ban történő kezeléséről további információért lásd: [Az erőforrások hozzáférésének megismerése az Azure-ban](../role-based-access-control/rbac-and-directory-admin-roles.md)
 * A szerepkörök Azure AD-ben történő hozzárendeléséről további információért lásd: [Rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban](active-directory-assign-admin-roles-azure-portal.md).
 
 <!--Image references-->

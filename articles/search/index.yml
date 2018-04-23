@@ -1,40 +1,38 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Azure Search-dokumentáció"
+title: Azure Search-dokumentáció
 metadata:
   document_id: 
-  title: "Az Azure Search dokumentációja – oktatóanyagok, gyors útmutatók és API-referenciák"
+  title: Az Azure Search dokumentációja – oktatóanyagok, gyors útmutatók és API-referenciák
   meta.description: Learn how to create an enterprise search solution over private, heterogenous content using Azure Search. Tutorials, API references, and other docs show you how to  consolidate searchable content into a single fast index, queryable using simple-to-advanced syntax for a broad range of scenarios.
-  services: search
   author: HeidiSteen
   manager: cgronlun
   ms.service: search
-  ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/04/2018
   ms.author: heidist
-  ms.openlocfilehash: 046159c537d31579f0eb0dcd65c7fb8903dffd20
-  ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+  ms.openlocfilehash: e22cd20edcb9e60b13a5c608b5e51064101b4813
+  ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 01/13/2018
+  ms.lasthandoff: 04/18/2018
 abstract:
-  description: "Megtudhatja, hogyan hozható létre vállalati keresési megoldás különféle személyes tartalmakhoz az Azure Search használatával. Az oktatóanyagok, API-hivatkozások és más dokumentumok bemutatják, hogyan egyesíthetők a kereshető tartalmak egyetlen gyors indexbe, amely az alkalmazási helyzetek széles körében lekérdezhető egyszerű vagy összetett szintaxissal."
+  description: Megtudhatja, hogyan hozható létre vállalati keresési megoldás különféle személyes tartalmakhoz az Azure Search használatával. Az oktatóanyagok, API-hivatkozások és más dokumentumok bemutatják, hogyan egyesíthetők a kereshető tartalmak egyetlen gyors indexbe, amely az alkalmazási helyzetek széles körében lekérdezhető egyszerű vagy összetett szintaxissal.
   aside:
     image:
       alt: 
       height: 110
       src: https://docs.microsoft.com/azure/search/media/index/search-page-callouts3.png
       width: 250
-    title: "Tudnivalók az Azure Searchről (9:32)"
+    title: Tudnivalók az Azure Searchről (9:32)
     href: https://channel9.msdn.com/Events/Connect/2016/138/player
     width: 250
 sections:
-- title: "5 perces gyors útmutatók"
+- title: 5 perces gyors útmutatók
   items:
   - type: paragraph
-    text: "A portálon egy keresési szolgáltatással kezdhet, majd indexeket határozhat meg, tölthet be és kérhet le C# vagy REST nyelven."
+    text: A portálon egy keresési szolgáltatással kezdhet, majd indexeket határozhat meg, tölthet be és kérhet le C# vagy REST nyelven.
   - type: list
     style: icon48
     items:
@@ -50,25 +48,25 @@ sections:
         src: /azure/search/media/index/rest.svg
       text: REST
       href: https://docs.microsoft.com/azure/search/search-fiddler
-- title: "Részletes útmutatók"
+- title: Részletes útmutatók
   items:
   - type: paragraph
-    text: ".NET vagy REST nyelven kódolhat, vagy kipróbálhatja a portálon a gyors fogalomtesztelést."
+    text: .NET vagy REST nyelven kódolhat, vagy kipróbálhatja a portálon a gyors fogalomtesztelést.
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"/azure/search/search-howto-dotnet-sdk\">Az Azure Search használata a .NET-tel</a>"
-    - html: "<a href=\"/azure/search/search-indexer-tutorial\">Azure SQL Database-tartalom indexelése a .NET-tel</a>"
-    - html: "<a href=\"/azure/search/search-semi-structured-data\">Részben strukturált adatok indexelése az Azure Blob Storage-ban a REST-tel</a>"
-    - html: "<a href=\"/azure/search/search-synonyms-tutorial-sdk\">Szinonimák felvétele az egyenértékű kifejezések eredményeinek visszaadásához</a>"
-    - html: "<a href=\"/azure/search/search-get-started-portal\">A portál használata indexeléshez és lekérdezésteszteléshez</a>"
-- title: "Hivatkozás"
+    - html: <a href="/azure/search/search-howto-dotnet-sdk">Az Azure Search használata a .NET-tel</a>
+    - html: <a href="/azure/search/search-indexer-tutorial">Azure SQL Database-tartalom indexelése a .NET-tel</a>
+    - html: <a href="/azure/search/search-semi-structured-data">Részben strukturált adatok indexelése az Azure Blob Storage-ban a REST-tel</a>
+    - html: <a href="/azure/search/search-synonyms-tutorial-sdk">Szinonimák felvétele az egyenértékű kifejezések eredményeinek visszaadásához</a>
+    - html: <a href="/azure/search/search-get-started-portal">A portál használata indexeléshez és lekérdezésteszteléshez</a>
+- title: Referencia
   items:
   - type: list
     style: cards
     className: cardsD
     items:
     - title: Nyelvek
-      html: "<p><a href=\"/dotnet/api/?term=microsoft.azure.search\">.NET</a></p><p><a href=\"/dotnet/api/?term=microsoft.azure.management.search\">.NET (Felügyelet)</a></p><p><a href=\"http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html\">Python (Felügyelet)</a></p>"
+      html: <p><a href="/dotnet/api/?term=microsoft.azure.search">.NET</a></p><p><a href="/dotnet/api/?term=microsoft.azure.management.search">.NET (Felügyelet)</a></p><p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html">Python (Felügyelet)</a></p>
     - title: REST
-      html: "<p><a href=\"/rest/api/searchservice\">Szolgáltatási API-referencia</a></p><p><a href=\"/rest/api/searchmanagement\">Felügyeleti API-referencia</a></p>"
+      html: <p><a href="/rest/api/searchservice">Szolgáltatási API-referencia</a></p><p><a href="/rest/api/searchmanagement">Felügyeleti API-referencia</a></p>

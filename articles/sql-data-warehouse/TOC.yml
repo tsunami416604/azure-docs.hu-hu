@@ -11,6 +11,8 @@
   items:
     - name: Létrehozás és csatlakozás – portál
       href: create-data-warehouse-portal.md
+    - name: Létrehozás – PowerShell
+      href: create-data-warehouse-powershell.md
     - name: Számítás szüneteltetése és folytatása
       items:
         - name: Portál
