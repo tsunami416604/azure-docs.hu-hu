@@ -284,7 +284,7 @@ A más felhasználók hozzáférésének a tárolási erőforrások:
 
     - **SAS-jogkivonat**: egy SAS-jogkivonat segítségével érheti el az adatait a végpontról. További információkért lásd: [használata közös hozzáférésű jogosultságkód](storage-dotnet-shared-access-signature-part-1.md).
 
-**Hogyan használható egy HTTPS egyéni tartomány a storage-fiókom? Például Hogyan tehetem "https://mystorageaccountname.blob.core.windows.net/images/image.gif"tűnnek"https://www.contoso.com/images/image.gif"?**
+**Hogyan használható egy HTTPS egyéni tartomány a storage-fiókom? Például Hogyan tehetem "https://mystorageaccountname.blob.core.windows.net/images/image.gif" tűnnek "https://www.contoso.com/images/image.gif"?**
 
 SSL jelenleg nem támogatott az egyéni tartomány tárfiókokban.
 De egyéni tartományok nem HTTPS. További információkért lásd: [állítson be egy egyéni tartománynevet a Blob storage-végponthoz](../blobs/storage-custom-domain-name.md).

@@ -69,7 +69,7 @@ Ha a feltételek megadása esetén az csatolható mintavétel konfigurálása eg
 > [!NOTE]
 > A port, a háttér-HTTP-beállítások ugyanazt a portot.
 
-Az alapértelmezett vizsgálat ellenőrzi, hogy az csak http://127.0.0.1: \<port\> állapot meghatározásához. Ha az állapotfigyelő mintavétel nyissa meg egy egyéni URL-címre, vagy egyéb beállításait módosítani kell, a következő lépésekben leírtaknak egyéni mintavételt kell használnia:
+Az alapértelmezett vizsgálat ellenőrzi, hogy az csak http://127.0.0.1:\<port\> állapot meghatározásához. Ha az állapotfigyelő mintavétel nyissa meg egy egyéni URL-címre, vagy egyéb beállításait módosítani kell, a következő lépésekben leírtaknak egyéni mintavételt kell használnia:
 
 ## <a name="custom-health-probe"></a>Egyéni állapotmintáihoz
 
