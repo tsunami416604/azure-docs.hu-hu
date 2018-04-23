@@ -1,11 +1,11 @@
 ---
-title: "Az Azure API-felügyeleti házirendek |} Microsoft Docs"
-description: "További tudnivalók a házirendek az Azure API Management használható."
+title: Az Azure API-felügyeleti házirendek |} Microsoft Docs
+description: További tudnivalók a házirendek az Azure API Management használható.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na

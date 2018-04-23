@@ -1,6 +1,6 @@
 ---
-title: "Magas rendelkezésre állású fogalmak PostgreSQL Azure-adatbázisban"
-description: "Ez a cikk a magas rendelkezésre állás információkat tartalmazza, PostgreSQL az Azure-adatbázis használata esetén."
+title: Magas rendelkezésre állású fogalmak PostgreSQL Azure-adatbázisban
+description: Ez a cikk a magas rendelkezésre állás információkat tartalmazza, PostgreSQL az Azure-adatbázis használata esetén.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema

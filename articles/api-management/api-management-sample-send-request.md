@@ -1,11 +1,11 @@
 ---
-title: "HTTP-kérelmek létrehozásához az API Management szolgáltatással"
-description: "Ismerkedjen meg az API Management kérelem-válasz házirendek segítségével külső szolgáltatások hívja az API-t"
+title: HTTP-kérelmek létrehozásához az API Management szolgáltatással
+description: Ismerkedjen meg az API Management kérelem-válasz házirendek segítségével külső szolgáltatások hívja az API-t
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 4539c0fa-21ef-4b1c-a1d4-d89a38c242fa
 ms.service: api-management
 ms.devlang: dotnet

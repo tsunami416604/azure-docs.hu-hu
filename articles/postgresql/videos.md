@@ -1,6 +1,6 @@
 ---
-title: "Azure-adatbázis PostgreSQL-videók"
-description: "Ezen a lapon találhatók a videó az Azure-adatbázis learning PostgreSQL a megfelelő tartalom."
+title: Azure-adatbázis PostgreSQL-videók
+description: Ezen a lapon találhatók a videó az Azure-adatbázis learning PostgreSQL a megfelelő tartalom.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema

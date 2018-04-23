@@ -470,6 +470,8 @@
           href: troubleshoot-app-connection.md
         - name: Foglalási hibák
           href: allocation-failure.md
+        - name: Foglalási hibák – klasszikus virtuális gép
+          href: allocation-failure-classic.md
         - name: Üzembe helyezési problémák
           href: troubleshoot-deploy-vm.md
         - name: Virtuális gép létrehozása

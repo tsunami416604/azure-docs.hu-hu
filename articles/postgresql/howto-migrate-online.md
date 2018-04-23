@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Database-áttelepítés minimális állásidővel PostgreSQL"
-description: "Ez a cikk ismerteti a minimális állásidő áttelepítéshez PostgreSQL-adatbázisból csomagolja ki a biztonsági másolat fájlt, a PostgreSQL-adatbázis visszaállítása az Azure Database pg_dump hozta létre a PostgreSQL archív fájlból, és a kezdeti betöltés beállítását és a céladatbázis Attunity megfelel a Microsoft Migrations a forrásadatbázis szinkronizálási adatok folyamatos."
+title: Az Azure Database-áttelepítés minimális állásidővel PostgreSQL
+description: Ez a cikk ismerteti a minimális állásidő áttelepítéshez PostgreSQL-adatbázisból csomagolja ki a biztonsági másolat fájlt, a PostgreSQL-adatbázis visszaállítása az Azure Database pg_dump hozta létre a PostgreSQL archív fájlból, és a kezdeti betöltés beállítását és a céladatbázis Attunity megfelel a Microsoft Migrations a forrásadatbázis szinkronizálási adatok folyamatos.
 services: postgresql
 author: HJToland3
 ms.author: jtoland

@@ -1,6 +1,6 @@
 ---
-title: "SSL-kapcsolatot a MySQL az Azure-adatbázis"
-description: "Azure-adatbázis a MySQL és a társított alkalmazások megfelelően használni az SSL-kapcsolatok konfigurálását."
+title: SSL-kapcsolatot a MySQL az Azure-adatbázis
+description: Azure-adatbázis a MySQL és a társított alkalmazások megfelelően használni az SSL-kapcsolatok konfigurálását.
 services: mysql
 author: JasonMAnderson
 ms.author: janders

@@ -29,6 +29,8 @@
   items:
     - name: Azure PowerShell
       href: powershell-backup-samples.md
+    - name: Resource Manager-sablonok
+      href: backup-rm-template-samples.md
 - name: Alapelvek
   items:
     - name: GYIK
@@ -100,7 +102,7 @@
         - name: Virtuális gépek biztonsági mentése
           items:
             - name: Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-tárolóba
-              href: backup-azure-arm-vms.md
+              href: backup-azure-vms-first-look-arm.md
             - name: Titkosított virtuális gépek biztonsági mentése
               href: backup-azure-vms-encryption.md
             - name: Virtuális gép biztonsági mentésének engedélyezése a virtuális gépek létrehozása során
@@ -179,9 +181,9 @@
           href: backup-azure-delete-vault.md
     - name: Hibaelhárítás
       items:
-        - name: IaaS virtuális gép biztonsági mentési hibaüzenetei
+        - name: Azure VM
           href: backup-azure-vms-troubleshoot.md
-        - name: Az Azure Backup (MARS) ügynöke vagy a virtuális gép bővítménye esetében időtúllépés történt
+        - name: Az Azure Backup ügynöke vagy a virtuális gép bővítménye esetében időtúllépés történt
           href: backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md
         - name: A fájlok és mappák biztonsági mentése lassú
           href: backup-azure-troubleshoot-slow-backup-performance-issue.md
@@ -189,16 +191,22 @@
           href: backup-azure-mabs-troubleshoot.md
         - name: System Center DPM
           href: backup-azure-scdpm-troubleshooting.md
-        - name: Azure Backup (MARS) ügynöke
+        - name: Az Azure Backup ügynöke
           href: backup-azure-mars-troubleshoot.md
-        - name: Azure-fájlmegosztások biztonsági mentése
+        - name: Azure-fájlmegosztás
           href: troubleshoot-azure-files.md
 - name: Referencia
   items:
-    - name: Azure PowerShell
-      href: /powershell/module/azurerm.recoveryservices.backup
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.recoveryservices.backup
+    - name: Azure CLI 2.0
+      href: /cli/azure/backup?view=azure-cli-latest
+    - name: PowerShell
+      href: /powershell/module/azurerm.recoveryservices.backup
+    - name: REST – Biztonsági mentés
+      href: /rest/api/backup/
+    - name: REST – Recovery Services tár
+      href: /rest/api/recoveryservices/
 - name: További források
   items:
     - name: Azure-ütemterv

@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált BUKÓÍV |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és BUKÓÍV között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált BUKÓÍV |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és BUKÓÍV között.
 services: active-directory
 documentationCenter: na
 author: jeevansd

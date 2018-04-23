@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Service Fabric lemezképet tároló karakterláncában |} Microsoft Docs"
-description: "A lemezkép tárolási kapcsolati karakterlánc ismertetése"
+title: Az Azure Service Fabric lemezképet tároló karakterláncában |} Microsoft Docs
+description: A lemezkép tárolási kapcsolati karakterlánc ismertetése
 services: service-fabric
 documentationcenter: .net
 author: alexwun
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 00f8059d-9d53-4cb8-b44a-b25149de3030
 ms.service: service-fabric
 ms.devlang: dotnet

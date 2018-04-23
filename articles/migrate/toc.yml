@@ -18,6 +18,12 @@
       href: concepts-dependency-visualization.md
 - name: Útmutatók
   items:
+    - name: Helyszíni erőforrások migrálása az Azure-ba
+      items:
+        - name: Forgatókönyv áttekintése – Helyszíni erőforrások migrálása az Azure-ba
+          href: migrate-scenarios-overview.md
+        - name: 1. forgatókönyv – Helyszíni erőforrások értékelése az Azure-ba való migráláshoz
+          href: migrate-scenarios-assessment.md
     - name: Nagy méretű környezet felderítése és értékelése
       href: how-to-scale-assessment.md
     - name: Gépek csoportosítása

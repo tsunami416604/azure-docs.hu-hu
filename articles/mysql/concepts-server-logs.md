@@ -1,6 +1,6 @@
 ---
-title: "A kiszolgáló naplóiban MySQL az Azure-adatbázis"
-description: "Ismerteti az Azure-adatbázisban elérhető naplók a MySQL és a különböző naplózási szintek engedélyezésének a rendelkezésre álló paramétereket."
+title: A kiszolgáló naplóiban MySQL az Azure-adatbázis
+description: Ismerteti az Azure-adatbázisban elérhető naplók a MySQL és a különböző naplózási szintek engedélyezésének a rendelkezésre álló paramétereket.
 services: mysql
 author: rachel-msft
 ms.author: raagyema

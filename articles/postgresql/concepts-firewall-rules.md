@@ -1,6 +1,6 @@
 ---
-title: "Azure-adatbázis PostgreSQL-kiszolgáló tűzfalszabályainak"
-description: "Ez a cikk ismerteti a tűzfalszabályokat az Azure-adatbázis PostgreSQL-kiszolgáló számára."
+title: Azure-adatbázis PostgreSQL-kiszolgáló tűzfalszabályainak
+description: Ez a cikk ismerteti a tűzfalszabályokat az Azure-adatbázis PostgreSQL-kiszolgáló számára.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema

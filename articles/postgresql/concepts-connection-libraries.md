@@ -1,6 +1,6 @@
 ---
-title: "Adatkapcsolattárak PostgreSQL Azure-adatbázis"
-description: "Ez a cikk ismerteti a több szalagtárak és illesztőprogramokat, hogy a fejlesztők használhatják mikor kódolási kapcsolódás és lekérdezés az Azure-adatbázis a PostgreSQL-alkalmazások."
+title: Adatkapcsolattárak PostgreSQL Azure-adatbázis
+description: Ez a cikk ismerteti a több szalagtárak és illesztőprogramokat, hogy a fejlesztők használhatják mikor kódolási kapcsolódás és lekérdezés az Azure-adatbázis a PostgreSQL-alkalmazások.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema

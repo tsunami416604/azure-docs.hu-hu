@@ -1,6 +1,6 @@
 ---
-title: "Hozzon létre és kezelheti az Azure-adatbázis MySQL tűzfalszabályok Azure parancssori felület használatával"
-description: "Ez a cikk ismerteti, hogyan létrehozása és kezelése az Azure Database az Azure CLI-vel parancssori MySQL tűzfalszabályok."
+title: Hozzon létre és kezelheti az Azure-adatbázis MySQL tűzfalszabályok Azure parancssori felület használatával
+description: Ez a cikk ismerteti, hogyan létrehozása és kezelése az Azure Database az Azure CLI-vel parancssori MySQL tűzfalszabályok.
 services: mysql
 author: ajlam
 ms.author: andrela

@@ -1,6 +1,6 @@
 ---
-title: "A MySQL az Azure-adatbázis a lekérdezési teljesítmény hibaelhárítása"
-description: "A cikk ismerteti a magyarázat használata, hogy a MySQL az Azure-adatbázisban a lekérdezések teljesítményét."
+title: A MySQL az Azure-adatbázis a lekérdezési teljesítmény hibaelhárítása
+description: A cikk ismerteti a magyarázat használata, hogy a MySQL az Azure-adatbázisban a lekérdezések teljesítményét.
 services: mysql
 author: ajlam
 ms.author: andrela

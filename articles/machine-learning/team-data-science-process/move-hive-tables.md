@@ -1,8 +1,8 @@
 ---
-title: "Hive táblák létrehozása és az adatok betöltése az Azure Blob Storage |} Microsoft Docs"
-description: "Hive táblák létrehozása és a hive táblák blob adatainak betöltése"
+title: Hive táblák létrehozása és az adatok betöltése az Azure Blob Storage |} Microsoft Docs
+description: Hive táblák létrehozása és a hive táblák blob adatainak betöltése
 services: machine-learning,storage
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: jhubbard
 editor: cgronlun

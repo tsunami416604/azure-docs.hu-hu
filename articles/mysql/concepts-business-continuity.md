@@ -1,6 +1,6 @@
 ---
-title: "Az üzletmenet folytonosságának és MySQL az Azure-adatbázis – áttekintés"
-description: "Az üzletmenet folytonossága MySQL az Azure-adatbázissal áttekintése."
+title: Az üzletmenet folytonosságának és MySQL az Azure-adatbázis – áttekintés
+description: Az üzletmenet folytonossága MySQL az Azure-adatbázissal áttekintése.
 services: mysql
 author: kamathsun
 ms.author: sukamat

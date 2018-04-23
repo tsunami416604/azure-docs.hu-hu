@@ -1,6 +1,6 @@
 ---
-title: "Adatbázis alkalmazások fejlesztése MySQL az Azure-adatbázis – áttekintés"
-description: "Bemutatja, hogy a fejlesztő kell követnie, MySQL Azure adatbázishoz való kapcsolódáshoz alkalmazáskód írásakor kialakítási szempontok"
+title: Adatbázis alkalmazások fejlesztése MySQL az Azure-adatbázis – áttekintés
+description: Bemutatja, hogy a fejlesztő kell követnie, MySQL Azure adatbázishoz való kapcsolódáshoz alkalmazáskód írásakor kialakítási szempontok
 services: mysql
 author: ajlam
 ms.author: andrela

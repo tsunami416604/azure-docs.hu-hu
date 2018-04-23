@@ -1,6 +1,6 @@
 ---
-title: "Felhasználók Azure-adatbázis létrehozása a MySQL-kiszolgáló"
-description: "Ez a cikk ismerteti, hogyan kommunikál a MySQL-kiszolgáló egy Azure-adatbázis új felhasználói fiókokat hozhat létre."
+title: Felhasználók Azure-adatbázis létrehozása a MySQL-kiszolgáló
+description: Ez a cikk ismerteti, hogyan kommunikál a MySQL-kiszolgáló egy Azure-adatbázis új felhasználói fiókokat hozhat létre.
 services: mysql
 author: jasonwhowell
 ms.author: jasonh

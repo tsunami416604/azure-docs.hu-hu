@@ -1,11 +1,11 @@
 ---
-title: "Hibaelhárítás az Azure Diagnostics |} Microsoft Docs"
-description: "Kapcsolatos problémák elhárítása az Azure diagnostics Azure virtuális gépek, a Service Fabric vagy a Cloud Services használata esetén."
+title: Hibaelhárítás az Azure Diagnostics |} Microsoft Docs
+description: Kapcsolatos problémák elhárítása az Azure diagnostics Azure virtuális gépek, a Service Fabric vagy a Cloud Services használata esetén.
 services: monitoring-and-diagnostics
 documentationcenter: .net
 author: rboucher
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 66469bce-d457-4d1e-b550-a08d2be4d28c
 ms.service: monitoring-and-diagnostics
 ms.workload: na

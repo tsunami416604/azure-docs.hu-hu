@@ -1,12 +1,12 @@
 ---
-title: "Ütemezőn alapuló automatizált munkafolyamatok létrehozása – Azure Logic Apps | Microsoft Docs"
-description: "Ez az oktatóanyag bemutatja, hogyan hozhat létre üzemezőn alapuló, ismétlődő, automatizált munkafolyamatokat az Azure Logic Apps segítségével"
+title: Ütemezőn alapuló automatizált munkafolyamatok létrehozása – Azure Logic Apps | Microsoft Docs
+description: Ez az oktatóanyag bemutatja, hogyan hozhat létre üzemezőn alapuló, ismétlődő, automatizált munkafolyamatokat az Azure Logic Apps segítségével
 author: ecfan
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: logic-apps
 ms.tgt_pltfrm: na

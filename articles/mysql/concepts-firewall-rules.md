@@ -1,6 +1,6 @@
 ---
-title: "Kiszolgáló tűzfalszabályainak MySQL Azure-adatbázis"
-description: "A témakör ismerteti a tűzfalszabályok a MySQL-kiszolgálóhoz tartozó Azure-adatbázis."
+title: Kiszolgáló tűzfalszabályainak MySQL Azure-adatbázis
+description: A témakör ismerteti a tűzfalszabályok a MySQL-kiszolgálóhoz tartozó Azure-adatbázis.
 services: mysql
 author: ajlam
 ms.author: andrela

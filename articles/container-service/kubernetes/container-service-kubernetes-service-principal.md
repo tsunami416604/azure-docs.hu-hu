@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Kubernetes-fürthöz tartozó egyszerű szolgáltatás"
-description: "Kubernetes-fürthöz tartozó Azure Active Directory egyszerű szolgáltatás létrehozása és felügyelete az Azure Container Service-ben"
+title: Az Azure Kubernetes-fürthöz tartozó egyszerű szolgáltatás
+description: Kubernetes-fürthöz tartozó Azure Active Directory egyszerű szolgáltatás létrehozása és felügyelete az Azure Container Service-ben
 services: container-service
 author: neilpeterson
 manager: timlt

@@ -1,8 +1,8 @@
 ---
-title: "Irányítópultok és az Azure Application Insights navigációs |} Microsoft Docs"
-description: "A kulcs APM diagramok és a lekérdezések nézetek létrehozása."
+title: Irányítópultok és az Azure Application Insights navigációs |} Microsoft Docs
+description: A kulcs APM diagramok és a lekérdezések nézetek létrehozása.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 39b0701b-2fec-4683-842a-8a19424f67bd

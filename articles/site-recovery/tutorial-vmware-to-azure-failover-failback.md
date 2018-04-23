@@ -1,6 +1,6 @@
 ---
-title: "Az Azure-ba replikált VMware virtuális gépek és fizikai kiszolgálók feladatátvétele és feladat-visszavétele a Site Recoveryvel | Microsoft Docs"
-description: "Tekintse meg, hogy a VMware virtuális gépek és fizikai kiszolgálók feladatait hogyan veheti át az Azure-ban, hogyan veheti vissza a feladatokat a helyszíni kiszolgálókra az Azure Site Recoveryvel"
+title: Az Azure-ba replikált VMware virtuális gépek és fizikai kiszolgálók feladatátvétele és feladat-visszavétele a Site Recoveryvel | Microsoft Docs
+description: Tekintse meg, hogy a VMware virtuális gépek és fizikai kiszolgálók feladatait hogyan veheti át az Azure-ban, hogyan veheti vissza a feladatokat a helyszíni kiszolgálókra az Azure Site Recoveryvel
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm

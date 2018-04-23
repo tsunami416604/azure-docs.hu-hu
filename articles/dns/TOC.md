@@ -8,6 +8,7 @@
 ## [DNS – gyakori kérdések](dns-faq.md)
 ## [Privát DNS-zónák használata](private-dns-overview.md)
 ## [Privát DNS-forgatókönyvek](private-dns-scenarios.md)
+## [DNS-mérőszámok és riasztások](dns-alerts-metrics.md)
 
 
 # Első lépések

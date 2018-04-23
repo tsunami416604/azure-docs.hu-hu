@@ -47,6 +47,7 @@
 ### [Azure Portal](resource-group-portal.md)
 ### [Címkék használata az erőforrások rendszerezéséhez](resource-group-using-tags.md)
 ### [Erőforrások áthelyezése új csoportba vagy előfizetésbe](resource-group-move-resources.md)
+### [EA-előfizetések létrehozása programozott módon](programmatically-create-subscription.md)
 ### [Felügyeleti csoportok létrehozása](management-groups-create.md)
 ### [Felügyeleti csoportok kezelése](management-groups-manage.md)
 ### [Irányítási példák](resource-manager-subscription-examples.md)

@@ -9,6 +9,34 @@
               href: tutorial-windows-vm-access-arm.md
             - name: Linux rendszerű virtuális gép
               href: tutorial-linux-vm-access-arm.md
+    - name: Oktatóanyagok
+      items:
+        - name: Windows VM/VMSS
+          items:
+            - name: Az Azure Data Lake Store elérése
+              href: tutorial-windows-vm-access-datalake.md
+            - name: Az Azure Storage elérése hozzáférési kulcs használatával
+              href: tutorial-windows-vm-access-storage.md
+            - name: Az Azure Storage elérése SAS-sel
+              href: tutorial-windows-vm-access-storage-sas.md
+            - name: Az Azure SQL elérése
+              href: tutorial-windows-vm-access-sql.md
+            - name: Az Azure Key Vault elérése
+              href: tutorial-windows-vm-access-nonaad.md
+            - name: Az Azure Cosmos DB elérése
+              href: tutorial-windows-vm-access-cosmos-db.md
+        - name: Linux VM/VMSS
+          items:
+            - name: Az Azure Data Lake Store elérése
+              href: tutorial-linux-vm-access-datalake.md
+            - name: Az Azure Storage elérése hozzáférési kulcs használatával
+              href: tutorial-linux-vm-access-storage-access-key.md
+            - name: Az Azure Storage elérése SAS-sel
+              href: tutorial-linux-vm-access-storage-sas.md
+            - name: Az Azure Key Vault elérése
+              href: tutorial-linux-vm-access-nonaad.md
+            - name: Az Azure Cosmos DB elérése
+              href: tutorial-linux-vm-access-cosmos-db.md
     - name: Az MSI konfigurálása Azure-beli virtuális géphez
       items:
         - name: Az Azure Portal használata
@@ -45,30 +73,6 @@
           href: how-to-use-vm-sign-in.md
         - name: Használat Azure SDK-kal
           href: how-to-use-vm-sdk.md
-    - name: Windowsos VM/VMSS felügyelt identitás használata
-      items:
-        - name: Az Azure Data Lake Store elérése
-          href: tutorial-windows-vm-access-datalake.md
-        - name: Az Azure SQL elérése
-          href: tutorial-windows-vm-access-sql.md
-        - name: Az Azure Storage elérése hozzáférési kulcs használatával
-          href: tutorial-windows-vm-access-storage.md
-        - name: Az Azure Storage elérése SAS-sel
-          href: tutorial-windows-vm-access-storage-sas.md
-        - name: Az Azure Key Vault elérése
-          href: tutorial-windows-vm-access-nonaad.md
-    - name: Linuxos VM/VMSS felügyelt identitás használata
-      items:
-        - name: Az Azure Data Lake Store elérése
-          href: tutorial-linux-vm-access-datalake.md
-        - name: Az Azure Storage elérése hozzáférési kulcs használatával
-          href: tutorial-linux-vm-access-storage.md
-        - name: Az Azure Storage elérése SAS-sel
-          href: tutorial-linux-vm-access-storage-sas.md
-        - name: Az Azure Key Vault elérése
-          href: tutorial-linux-vm-access-nonaad.md
-        - name: Az Azure Cosmos DB elérése
-          href: tutorial-linux-vm-access-cosmos-db.md
     - name: Gyakori kérdések és ismert problémák
       href: known-issues.md
     - name: Referencia

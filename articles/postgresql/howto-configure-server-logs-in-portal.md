@@ -1,6 +1,6 @@
 ---
-title: "Konfigurálja, és hozzáférést kiszolgálónaplókban PostgreSQL Azure-portálon"
-description: "A cikkből megtudhatja, hogyan lehet konfigurálni és a kiszolgálói naplók az Azure-adatbázis hozzáférését az Azure portálról PostgreSQL."
+title: Konfigurálja, és hozzáférést kiszolgálónaplókban PostgreSQL Azure-portálon
+description: A cikkből megtudhatja, hogyan lehet konfigurálni és a kiszolgálói naplók az Azure-adatbázis hozzáférését az Azure portálról PostgreSQL.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema

@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Az Azure Machine Learning dokumentációja"
+title: Az Azure Machine Learning dokumentációja
 metadata:
-  title: "Az Azure Machine Learning dokumentációja – oktatóanyagok és API-referencia"
-  description: "A dokumentáció, a videók és a példamodellek a Machine Learning felhőszolgáltatáshoz, amely adatkutatóknak és fejlesztőknek biztosít prediktív elemzéseket az alkalmazásokban."
+  title: Az Azure Machine Learning dokumentációja – oktatóanyagok és API-referencia
+  description: A dokumentáció, a videók és a példamodellek a Machine Learning felhőszolgáltatáshoz, amely adatkutatóknak és fejlesztőknek biztosít prediktív elemzéseket az alkalmazásokban.
   services: machine-learning
   author: garyericson
   manager: jhubbard
@@ -13,13 +13,13 @@ metadata:
   ms.topic: landing-page
   ms.date: 02/01/2018
   ms.author: garye
-  ms.openlocfilehash: 3303174486e9fd7a5b0f6dfe713be93e569a80a7
-  ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+  ms.openlocfilehash: 6bfeb53dccd9d281cd467b8261eff5cd47cb4dfb
+  ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 02/13/2018
+  ms.lasthandoff: 04/19/2018
 abstract:
-  description: "Ismerje meg, hogyan használható az Azure Machine Learning teljeskörűen felügyelt szolgáltatásaival a tanulási és AI-modellek létrehozására, üzembe helyezésére és kezelésére a felhőben. Oktatóanyagokból, rövid útmutatókból, referenciákból és példákból ismerheti meg, hogyan építhet fel és helyezhet üzembe modelleket bármely alkalmazásához."
+  description: Ismerje meg, hogyan használható az Azure Machine Learning teljeskörűen felügyelt szolgáltatásaival a tanulási és AI-modellek létrehozására, üzembe helyezésére és kezelésére a felhőben. Oktatóanyagokból, rövid útmutatókból, referenciákból és példákból ismerheti meg, hogyan építhet fel és helyezhet üzembe modelleket bármely alkalmazásához.
 sections:
 - title: 
   items:
@@ -27,13 +27,13 @@ sections:
     style: cards
     className: cardsA
     items:
-    - html: "<a href=\"/azure/machine-learning/preview/\"> <img height=\"48\" width=\"48\" src=\"/azure/machine-learning/media/index/i_machine-learning.svg\" alt=\"Azure Machine Learning services\"> (előzetes verzió) <br><b>Azure Machine Learning-szolgáltatások</b></a> <p>Ismerje meg, hogyan teszik lehetővé ezek a szolgáltatások az adatelemzők számára a mesterségesintelligencia-megoldások fejlesztését Python-eszközök és -kódtárak, valamint az Azure különböző adatelemzési és számítási szolgáltatásainak használatával.</p>"
-    - html: "<a href=\"/azure/machine-learning/studio/\"> <img height=\"48\" width=\"48\" src=\"/azure/machine-learning/media/index/machine-learning-studio.svg\" alt=\"Azure Machine Learning Studio\"> <br><b>Azure Machine Learning Studio</b></a> <p>Ismerje meg, hogyan használhatja ezt az együttműködést támogató, egérrel kezelhető eszközt az adataira alkalmazható prediktív elemzési megoldások létrehozására, tesztelésére és üzembe helyezésére.</p>"
-    - html: "<a href=\"/azure/machine-learning/data-science-virtual-machine/index\"> <img height=\"48\" width=\"48\" src=\"/azure/machine-learning/media/index/virtualmachine.svg\" alt=\"Data Science Virtual Machine\"> <br><b>Adatelemzési virtuális gép</b></a> <p>Ismerje meg, hogyan használhatja az adatelemzési és a mélytanulási virtuális gépeket, amelyek testre szabott Azure VM-rendszerképek, rengeteg beépített adatelemzési eszközzel, és fejlett elemzésre tervezett, intelligens alkalmazások létrehozására használhatók.</p>"
-- title: "5 perces gyors útmutatók"
+    - html: <a href="/azure/machine-learning/service/"> <img height="48" width="48" src="/azure/machine-learning/media/index/i_machine-learning.svg" alt="Azure Machine Learning services"> (előzetes verzió) <br><b>Azure Machine Learning-szolgáltatások</b></a> <p>Ismerje meg, hogyan teszik lehetővé ezek a szolgáltatások az adatelemzők számára a mesterségesintelligencia-megoldások fejlesztését Python-eszközök és -kódtárak, valamint az Azure különböző adatelemzési és számítási szolgáltatásainak használatával.</p>
+    - html: <a href="/azure/machine-learning/studio/"> <img height="48" width="48" src="/azure/machine-learning/media/index/machine-learning-studio.svg" alt="Azure Machine Learning Studio"> <br><b>Azure Machine Learning Studio</b></a> <p>Ismerje meg, hogyan használhatja ezt az együttműködést támogató, egérrel kezelhető eszközt az adataira alkalmazható prediktív elemzési megoldások létrehozására, tesztelésére és üzembe helyezésére.</p>
+    - html: <a href="/azure/machine-learning/data-science-virtual-machine/index"> <img height="48" width="48" src="/azure/machine-learning/media/index/virtualmachine.svg" alt="Data Science Virtual Machine"> <br><b>Adatelemzési virtuális gép</b></a> <p>Ismerje meg, hogyan használhatja az adatelemzési és a mélytanulási virtuális gépeket, amelyek testre szabott Azure VM-rendszerképek, rengeteg beépített adatelemzési eszközzel, és fejlett elemzésre tervezett, intelligens alkalmazások létrehozására használhatók.</p>
+- title: 5 perces gyors útmutatók
   items:
   - type: paragraph
-    text: "Ismerje meg, hogy állíthatja be gyorsan és használhatja az Azure Machine Learning-szolgáltatásokat (előzetes verzió), az Azure Machine Learning Studiót és az adatelemzési virtuális gépet:"
+    text: 'Ismerje meg, hogy állíthatja be gyorsan és használhatja az Azure Machine Learning-szolgáltatásokat (előzetes verzió), az Azure Machine Learning Studiót és az adatelemzési virtuális gépet:'
   - type: table
     style: dataMatrix
     columns:
@@ -44,20 +44,20 @@ sections:
     - image:
         src: media/index/virtualmachine.svg
     rows:
-    - title: "Beállítás"
+    - title: Beállítás
       values:
-      - href: /azure/machine-learning/preview/quickstart-installation
+      - href: /azure/machine-learning/service/quickstart-installation
       - href: /azure/machine-learning/studio/create-workspace
       - href: /azure/machine-learning/data-science-virtual-machine/provision-vm
-    - title: "Modell létrehozása"
+    - title: Modell létrehozása
       values:
-      - href: /azure/machine-learning/preview/quickstart-installation
+      - href: /azure/machine-learning/service/quickstart-installation
       - href: /azure/machine-learning/studio/create-experiment
       - href: 
-- title: "Részletes útmutatók"
+- title: Részletes útmutatók
   items:
   - type: paragraph
-    text: "Ismerje meg, hogyan hozhat létre, helyezhet üzembe és használhat fel modelleket az Azure Machine Learning-szolgáltatások (előzetes verzió) és az Azure Machine Learning Studio használatával:"
+    text: 'Ismerje meg, hogyan hozhat létre, helyezhet üzembe és használhat fel modelleket az Azure Machine Learning-szolgáltatások (előzetes verzió) és az Azure Machine Learning Studio használatával:'
   - type: table
     style: dataMatrix
     columns:
@@ -66,31 +66,31 @@ sections:
     - image:
         src: media/index/machine-learning-studio.svg
     rows:
-    - title: "Adatok előkészítése"
+    - title: Adatok előkészítése
       values:
-      - href: /azure/machine-learning/preview/tutorial-classifying-iris-part-1
+      - href: /azure/machine-learning/desktop-workbench/tutorial-classifying-iris-part-1
       - href: /azure/machine-learning/studio/walkthrough-2-upload-data
-    - title: "Modell létrehozása"
+    - title: Modell létrehozása
       values:
-      - href: /azure/machine-learning/preview/tutorial-classifying-iris-part-2
+      - href: /azure/machine-learning/desktop-workbench/tutorial-classifying-iris-part-2
       - href: /azure/machine-learning/studio/walkthrough-3-create-new-experiment
-    - title: "Modell üzembe helyezése"
+    - title: Modell üzembe helyezése
       values:
-      - href: /azure/machine-learning/preview/tutorial-classifying-iris-part-3
+      - href: /azure/machine-learning/desktop-workbench/tutorial-classifying-iris-part-3
       - href: /azure/machine-learning/studio/walkthrough-5-publish-web-service
-    - title: "Modell felhasználása"
+    - title: Modell felhasználása
       values:
-      - href: /azure/machine-learning/preview/model-management-consumption
+      - href: /azure/machine-learning/desktop-workbench/model-management-consumption
       - href: /azure/machine-learning/studio/walkthrough-6-access-web-service
-- title: "További Microsoft Machine Learning-technológiák"
+- title: További Microsoft Machine Learning-technológiák
   items:
   - type: list
     style: cards
     className: cardsA
     items:
-    - html: "<a href=\"/azure/machine-learning/team-data-science-process\"> <img src=\"media/index/tdsp.png\" alt=\"Team Data Science Process\" height=\"32\" width=\"32\"> <p><b>Csoportos adatelemzési folyamat</b></p> </a> Együttműködésen alapuló adatelemzési módszer, amely segít az adatelemző csapatoknak a prediktív elemzési megoldások és intelligens alkalmazások hatékony megvalósításában."
-    - html: "<a href=\"/sql/advanced-analytics/r/r-services\"> <img src=\"media/index/logo_sql.png\" alt=\"SQL Server Machine Learning Services\" height=\"32\" width=\"32\"> <p><b>SQL Server Machine Learning-szolgáltatások</b></p> </a> Adatbázison belüli elemzés R- és Python-támogatással."
-    - html: "<a href=\"/machine-learning-server/\"> <img src=\"media/index/ml-server.png\" alt=\"Microsoft Machine Learning Server\" height=\"32\" width=\"32\"> <p><b>Microsoft Machine Learning Server</b></p> </a> Rugalmas vállalati gépi tanulási platform, amely támogatja az R- és Python-környezeteket a Windows-, Linux-, HDInsight Spark- és Hadoop-fürtökön."
-    - html: "<a href=\"/azure/batch-ai/\"> <img src=\"media/index/batch.png\" alt=\"Batch AI Training\" height=\"32\" width=\"32\"> <p><b>Batch AI Training</b></p> </a> Felügyelt szolgáltatás, amely az AI-modellekkel párhuzamos kísérletezésben segít bármely keretrendszer használatakor, majd nagy számban betanítja őket csoportosított GPU-kon keresztül."
-    - html: "<a href=\"/azure/#pivot=products&panel=cognitive\"> <img src=\"media/index/cognitive-services.png\" alt=\"Cognitive Services\" height=\"32\" width=\"32\"> <p><b>Cognitive Services</b></p> </a> Az alkalmazásokhoz, webhelyekhez és robotprogramokhoz tervezett intelligens algoritmusokat biztosító API-k."
-    - html: "<a href=\"/cognitive-toolkit/\"> <img src=\"media/index/cntk.png\" alt=\"Microsoft Cognitive Toolkit\" height=\"32\" width=\"32\"> <p><b>Microsoft Cognitive Toolkit</b></p> </a> Ingyenes, nyílt forráskódú eszközkészlet mélytanulási algoritmusok betanításához."
+    - html: <a href="/azure/machine-learning/team-data-science-process"> <img src="media/index/tdsp.png" alt="Team Data Science Process" height="32" width="32"> <p><b>Csoportos adatelemzési folyamat</b></p> </a> Együttműködésen alapuló adatelemzési módszer, amely segít az adatelemző csapatoknak a prediktív elemzési megoldások és intelligens alkalmazások hatékony megvalósításában.
+    - html: <a href="/sql/advanced-analytics/r/r-services"> <img src="media/index/logo_sql.png" alt="SQL Server Machine Learning Services" height="32" width="32"> <p><b>SQL Server Machine Learning-szolgáltatások</b></p> </a> Adatbázison belüli elemzés R- és Python-támogatással.
+    - html: <a href="/machine-learning-server/"> <img src="media/index/ml-server.png" alt="Microsoft Machine Learning Server" height="32" width="32"> <p><b>Microsoft Machine Learning Server</b></p> </a> Rugalmas vállalati gépi tanulási platform, amely támogatja az R- és Python-környezeteket a Windows-, Linux-, HDInsight Spark- és Hadoop-fürtökön.
+    - html: <a href="/azure/batch-ai/"> <img src="media/index/batch.png" alt="Batch AI Training" height="32" width="32"> <p><b>Batch AI Training</b></p> </a> Felügyelt szolgáltatás, amely az AI-modellekkel párhuzamos kísérletezésben segít bármely keretrendszer használatakor, majd nagy számban betanítja őket csoportosított GPU-kon keresztül.
+    - html: <a href="/azure/#pivot=products&panel=cognitive"> <img src="media/index/cognitive-services.png" alt="Cognitive Services" height="32" width="32"> <p><b>Cognitive Services</b></p> </a> Az alkalmazásokhoz, webhelyekhez és robotprogramokhoz tervezett intelligens algoritmusokat biztosító API-k.
+    - html: <a href="/cognitive-toolkit/"> <img src="media/index/cntk.png" alt="Microsoft Cognitive Toolkit" height="32" width="32"> <p><b>Microsoft Cognitive Toolkit</b></p> </a> Ingyenes, nyílt forráskódú eszközkészlet mélytanulási algoritmusok betanításához.

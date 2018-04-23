@@ -1,9 +1,9 @@
 ---
-title: "Biztonságos átvitelű tárfiókokkal rendelkező Hadoop-fürt létrehozása az Azure HDInsightban | Microsoft Docs"
-description: "Megtudhatja, hogyan hozhat létre biztonságos átvitelű Azure-tárfiókokkal rendelkező HDInsight-fürtöket."
-keywords: "hadoop első lépései,hadoop linux,hadoop gyorsútmutató,biztonságos átvitel,azure-tárfiók"
+title: Biztonságos átvitelű tárfiókokkal rendelkező Hadoop-fürt létrehozása az Azure HDInsightban | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre biztonságos átvitelű Azure-tárfiókokkal rendelkező HDInsight-fürtöket.
+keywords: hadoop első lépései,hadoop linux,hadoop gyorsútmutató,biztonságos átvitel,azure-tárfiók
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun

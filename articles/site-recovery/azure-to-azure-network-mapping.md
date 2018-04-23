@@ -1,11 +1,11 @@
 ---
-title: "Virtuális hálózatok közötti két Azure-régiók az Azure Site Recovery leképezése |} Microsoft Docs"
-description: "Az Azure Site Recovery koordinálja a replikáció, feladatátvétel és helyreállítási virtuális gépek és fizikai kiszolgálók. További információk a feladatátvétel az Azure-bA vagy másodlagos adatközpontba."
+title: Virtuális hálózatok közötti két Azure-régiók az Azure Site Recovery leképezése |} Microsoft Docs
+description: Az Azure Site Recovery koordinálja a replikáció, feladatátvétel és helyreállítási virtuális gépek és fizikai kiszolgálók. További információk a feladatátvétel az Azure-bA vagy másodlagos adatközpontba.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: mayanknayar
 manager: rochakm
-editor: 
+editor: ''
 ms.assetid: 44813a48-c680-4581-a92e-cecc57cc3b1e
 ms.service: site-recovery
 ms.devlang: na

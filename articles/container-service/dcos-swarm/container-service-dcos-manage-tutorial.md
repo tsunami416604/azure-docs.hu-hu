@@ -1,6 +1,6 @@
 ---
-title: "Azure Container Service-oktatóanyag – A DC/OS kezelése"
-description: "Azure Container Service-oktatóanyag – A DC/OS kezelése"
+title: Azure Container Service-oktatóanyag – A DC/OS kezelése
+description: Azure Container Service-oktatóanyag – A DC/OS kezelése
 services: container-service
 author: neilpeterson
 manager: timlt
