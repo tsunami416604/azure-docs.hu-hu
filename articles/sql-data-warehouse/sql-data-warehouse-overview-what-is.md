@@ -1,25 +1,20 @@
 ---
 title: Mi az Azure SQL Data Warehouse? | Microsoft Docs
-description: "Vállalati szintű elosztott adatbázis, amely petabájtnyi mennyiségű relációs és nem relációs adatot képes feldolgozni. Ez az iparág első felhőalapú adatraktára, amely másodpercek alatt szüneteltethető, illetve növelhető vagy csökkenthető a mérete."
+description: Vállalati szintű elosztott adatbázis, amely petabájtnyi mennyiségű relációs és nem relációs adatot képes feldolgozni. Ez az iparág első felhőalapú adatraktára, amely másodpercek alatt szüneteltethető, illetve növelhető vagy csökkenthető a mérete.
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jenniehubbard
-editor: 
-ms.assetid: 4006c201-ec71-4982-b8ba-24bba879d7bb
+author: igorstanko
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: hero-article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: overview
-ms.date: 10/23/2017
-ms.author: jrj
-ms.openlocfilehash: 7fd17c29c413905084c6b3736018d111d3b28fea
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.topic: overview
+ms.component: design
+ms.date: 04/17/2018
+ms.author: igorstan
+ms.reviewer: igorstan
+ms.openlocfilehash: 57b94a57ae0279a391cb4269f7b1625499748bae
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="what-is-azure-sql-data-warehouse"></a>Mi az Azure SQL Data Warehouse?
 
@@ -37,15 +32,8 @@ Az SQL Data Warehouse az adatokat oszlopos szerkezetű relációs adattáblákba
 
 Az elemzések eredményei globális jelentéskészítési adatbázisokba vagy alkalmazásokba küldhetőek. Az üzleti elemzők így az ezekből nyerhető betekintések révén tájékozott üzleti döntéseket hozhatnak.
 
-## <a name="optimization-choices"></a>Optimalizálási lehetőségek
 
-Az SQL Data Warehouse rugalmas kialakítású [teljesítményszintjei](performance-tiers.md) mindenféle adatigénynek megfelelnek, a kisebbektől a nagyobbakig. Választhat a rugalmasságra vagy a számítási teljesítményre optimalizált adattárházak közt. 
-
-- A **rugalmasságra optimalizált teljesítményszint** különválasztja a számítási és tárolási rétegeket az architektúrában. Ez a lehetőség az olyan számítási feladatok esetében teljesít kiemelkedően, amelyek teljes mértékben képesek kiaknázni a számítási és a tárolási kapacitások elkülönítése nyújtotta lehetőségeket a rövid tevékenységcsúcsokat kielégítő gyakori átméretezések során. Ez a számítási teljesítményszint rendelkezik a legalacsonyabb belépő költségszinttel, és a skálázásnak köszönhetően jól szolgálja ki az ügyfelek számítási feladatainak nagy részét.
-
-- A **számítási teljesítményre optimalizált teljesítményszint** az Azure legújabb hardverein egy új NVMe SSD-alapú gyorsítótárat vezet be, amely a leggyakrabban lehívott adatokat a processzorokhoz közel tárolja, azaz épp ott, ahol lenniük kell. A tárolás automatikus szintezésével ez a teljesítményszint kiemelkedően teljesít a komplex lekérdezések esetében, mivel az összes be- és kimeneti adat a helyi számítási rétegben található. Emellett a fejlesztett oszlopcentrikus tárolás révén korlátlan mennyiségű adat tárolható az SQL Data Warehouse-ban. A számítási teljesítményre optimalizált teljesítményszint kínálja a legnagyobb szintű vertikális felskálázást, akár 30 000 számítási adattárházegységig (cDWU). Ezt a teljesítményszintet folyamatos, villámgyors teljesítményt igénylő számítási feladatokhoz válassza.
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy jobban megismerte az SQL Data Warehouse szolgáltatást, tudjon meg többet az [SQL Data Warehouse gyors létrehozásáról][create a SQL Data Warehouse] és a [mintaadatok betöltéséről][load sample data]. Ha az Azure új felhasználója, hasznosnak találhatja az [Azure szószedetét][Azure glossary], amikor az új fogalmakkal ismerkedik. Vagy tekintsen meg néhányat a többi SQL Data Warehouse-erőforrás közül.  
 
 * [Ügyfelek sikertörténetei]

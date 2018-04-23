@@ -1,3 +1,19 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: active-directory-b2c
+author: davidmu1
+ms.service: active-directory-b2c
+ms.topic: include
+ms.date: 04/09/2018
+ms.author: davidmu
+ms.custom: include file
+ms.openlocfilehash: 8363d023e89c77aabc0d123f19264c9a0758a656
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 04/18/2018
+---
 [!INCLUDE [active-directory-b2c-portal-add-application](active-directory-b2c-portal-add-application.md)]
 
 Mobil vagy natív alkalmazásának regisztrálásához használja a táblázatban megadott beállításokat.
@@ -8,7 +24,7 @@ Mobil vagy natív alkalmazásának regisztrálásához használja a táblázatba
 | ------------ | ------- | -------------------------------------------------- |
 | **Name (Név)** | Contoso B2C-alkalmazás | Adjon meg egy olyan **nevet**, amely ismerteti az alkalmazást a felhasználók számára. |
 | **Natív ügyfél** | Igen | Válassza az **Igen** lehetőséget mobil vagy natív alkalmazás esetén. |
-| **Egyéni átirányítási URI** | `com.onmicrosoft.contoso.appname://redirect/path` | Adjon meg egy egyéni sémával rendelkező átirányítási URI-t. Ügyeljen arra, hogy [megfelelő átirányítási URI-t](../articles/active-directory-b2c/active-directory-b2c-app-registration.md#choosing-a-native-application-redirect-uri) válasszon, és különleges karakterek, például aláhúzásjelek ne szerepeljenek benne. |
+| **Egyéni átirányítási URI** | `com.onmicrosoft.contoso.appname://redirect/path` | Adjon meg egy egyéni sémával rendelkező átirányítási URI-t. Ügyeljen arra, hogy [megfelelő átirányítási URI-t](../articles/active-directory-b2c/active-directory-b2c-app-registration.md) válasszon, és különleges karakterek, például aláhúzásjelek ne szerepeljenek benne. |
 
 Kattintson a **Create** (Létrehozás) gombra az alkalmazás regisztrálásához.
 

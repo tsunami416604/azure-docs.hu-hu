@@ -1,11 +1,11 @@
 ---
-title: "A Scheduler alapfogalmai, terminológiája és entitásai | Microsoft Docs"
-description: "Az Azure Scheduler alapfogalmai, entitáshierarchiája és terminológiája, beleértve a feladatokat és a feladatgyűjteményeket.  Egy ütemezett feladat átfogó példáját mutatja be."
+title: A Scheduler alapfogalmai, terminológiája és entitásai | Microsoft Docs
+description: Az Azure Scheduler alapfogalmai, entitáshierarchiája és terminológiája, beleértve a feladatokat és a feladatgyűjteményeket.  Egy ütemezett feladat átfogó példáját mutatja be.
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: 
+editor: ''
 ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
 ms.service: scheduler
 ms.workload: infrastructure-services
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: get-started-article
 ms.date: 08/18/2016
 ms.author: deli
-ms.openlocfilehash: 0f035b58ccd140a5481703df7e184206da2ed651
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 91302d57c43a6c9d14aeeee95df3d61fa6f73172
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="scheduler-concepts-terminology--entity-hierarchy"></a>A Scheduler alapfogalmai, entitáshierarchiája és terminológiája
 ## <a name="scheduler-entity-hierarchy"></a>A Scheduler entitáshierarchiája
@@ -31,7 +31,7 @@ A következő táblázat ismerteti a feladatütemezési API által közzétett v
 | **Feladatelőzmények** |A feladatelőzmény egy feladat végrehajtásának részletes adatait jelenti. Megállapítható belőle a feladat végrehajtásának sikeressége vagy meghiúsulása, illetve bármely részletes válaszadat. |
 
 ## <a name="scheduler-entity-management"></a>A Scheduler entitáskezelése
-Az Scheduler és a Szolgáltatásfelügyeleti API lényegében a következő műveleteket teszi elérhetővé az erőforrásokon:
+Az Scheduler és a Service Management API lényegében a következő műveleteket teszi elérhetővé az erőforrásokon:
 
 | Képesség | Leírás és URI-cím |
 | --- | --- |
@@ -176,9 +176,9 @@ Ha egy Scheduler-feladat meghiúsul, újrapróbálkozási házirend adható meg 
 
 Egy újrapróbálkozási házirend beállításához a rendszer két további beállítás megadását kérheti: az újbóli próbálkozási időközt (**retryInterval**) és az újbóli próbálkozások számát (**retryCount**).
 
-A **retryInterval** objektummal megadott újrapróbálkozási időköz az újbóli próbálkozások közötti időtartamot jelenti. Ennek alapértelmezett értéke 30 másodperc; minimum 15 másodperc, maximum 18 hónap állítható be. Az Ingyenes feladatok gyűjteményében szereplő feladatok minimális konfigurálható értéke 1 óra.  Ennek megadása ISO 8601 formátumban történik. Ehhez hasonlóan történik a **retryCount** objektummal megadott újbóli próbálkozási szám értékének megadása is; ez a megkísérelt újbóli próbálkozások száma. Ennek alapértelmezett értéke 4, és legfeljebb 20 lehet. A **retryInterval** és a **retryCount** egyike sem kötelező. Ha a **retryType** objektum beállítása **fixed** (rögzített), és explicit módon nem lett megadva érték, az alapértelmezett értékek lesznek érvényesek.
+A **retryInterval** objektummal megadott újrapróbálkozási időköz az újbóli próbálkozások közötti időtartamot jelenti. Ennek alapértelmezett értéke 30 másodperc; minimum 15 másodperc, maximum 18 hónap állítható be. Ennek megadása ISO 8601 formátumban történik. Ehhez hasonlóan történik a **retryCount** objektummal megadott újbóli próbálkozási szám értékének megadása is; ez a megkísérelt újbóli próbálkozások száma. Ennek alapértelmezett értéke 4, és legfeljebb 20 lehet. A **retryInterval** és a **retryCount** egyike sem kötelező. Ha a **retryType** objektum beállítása **fixed** (rögzített), és explicit módon nem lett megadva érték, az alapértelmezett értékek lesznek érvényesek.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
  [A Scheduler ismertetése](scheduler-intro.md)
 
  [Ismerkedés a Scheduler szolgáltatás Azure Portalon való használatával](scheduler-get-started-portal.md)

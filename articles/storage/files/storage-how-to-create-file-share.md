@@ -1,12 +1,12 @@
 ---
-title: "Azure-fájlmegosztás létrehozása | Microsoft Docs"
-description: "Azure-fájlmegosztás létrehozása az Azure Files szolgáltatásban az Azure Portal, PowerShell és az Azure CLI használatával."
+title: Azure-fájlmegosztás létrehozása | Microsoft Docs
+description: Azure-fájlmegosztás létrehozása az Azure Files szolgáltatásban az Azure Portal, PowerShell és az Azure CLI használatával.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: RenaShahMSFT
 manager: aungoo
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: bc01e5427f32e9532e39694f6de9f0b1146eda35
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4dfc4bca4453b5a8027086bd7c3625efc8feda03
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-file-share-in-azure-files"></a>Fájlmegosztás létrehozása az Azure Filesban
 Azure-fájlmegosztásokat létrehozhat az [Azure Portalon](https://portal.azure.com/), az Azure Storage PowerShell parancsmagjainak segítségével, illetve az Azure Storage ügyfélkódtáraival vagy az Azure Storage REST API-val. Az oktatóanyag során a következőket fogja elsajátítani:
@@ -69,7 +69,7 @@ A PowerShell használatának előkészítéseként töltse le és telepítse az 
 
 ## <a name="create-file-share-through-command-line-interface-cli"></a>Fájlmegosztás létrehozása parancssori felület (CLI) használatával
 1. **A parancssori felület (CLI) használatának előkészítéseként töltse le és telepítse az Azure CLI-t.**  
-    Lásd: [Az Azure CLI 2.0-s verziójának telepítése](/cli/azure/install-az-cli2.md) és [Bevezetés az Azure CLI 2.0-s verziójának használatába](/cli/azure/get-started-with-azure-cli.md).
+    Lásd: [Az Azure CLI 2.0-s verziójának telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) és [Bevezetés az Azure CLI 2.0-s verziójának használatába](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
 
 2. **Hozzon létre egy kapcsolati karakterláncot ahhoz a tárfiókhoz, amelyen létre szeretné hozni a megosztást.**  
     Az alábbi példában cserélje ki a ```<storage-account>``` és a ```<resource_group>``` elemet a Storage-fiók nevére és erőforráscsoportjára:
@@ -87,13 +87,13 @@ A PowerShell használatának előkészítéseként töltse le és telepítse az 
     az storage share create --name files --quota 2048 --connection-string $current_env_conn_string 1 > /dev/null
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Fájlmegosztás csatlakoztatása – Windows](storage-how-to-use-files-windows.md)
 * [Fájlmegosztás csatlakoztatása – Linux](../storage-how-to-use-files-linux.md)
 * [Fájlmegosztás csatlakoztatása – macOS](storage-how-to-use-files-mac.md)
 
 Az alábbi hivatkozások további információkat tartalmaznak az Azure Filesról.
 
-* [Gyakori kérdések](../storage-files-faq.md)
+* [GYIK](../storage-files-faq.md)
 * [Hibaelhárítás a Windows rendszerben](storage-troubleshoot-windows-file-connection-problems.md)      
 * [Hibaelhárítás a Linux rendszerben](storage-troubleshoot-linux-file-connection-problems.md)   

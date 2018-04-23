@@ -12,15 +12,15 @@
 ## [A Standard Load Balancer mérőszámai és diagnosztikái](load-balancer-standard-diagnostics.md)
 
 # Első lépések
-## [Alapszintű Load Balancer létrehozása](load-balancer-get-started-internet-portal.md)
-### [Alapszintű Load Balancer létrehozása (parancssori felület)](load-balancer-get-started-internet-arm-cli.md)
-### [Alapszintű Load Balancer létrehozása (PowerShell)](load-balancer-get-started-internet-arm-ps.md)
-## [Standard Load Balancer létrehozása](load-balancer-standard-public-portal.md)
-### [Standard Load Balancer létrehozása (parancssori felület)](load-balancer-standard-public-cli.md)
+## [Alapszintű Load Balancer létrehozása](quickstart-create-basic-load-balancer-portal.md)
+### [Alapszintű Load Balancer létrehozása (parancssori felület)](quickstart-create-basic-load-balancer-cli.md)
+### [Alapszintű Load Balancer létrehozása (PowerShell)](quickstart-create-basic-load-balancer-powershell.md)
+## [Standard Load Balancer létrehozása](quickstart-load-balancer-standard-public-portal.md)
+### [Standard Load Balancer létrehozása (parancssori felület)](quickstart-load-balancer-standard-public-cli.md)
 
 # Útmutató
 
-## [Zónaredundáns nyilvános Standard Load Balancer létrehozása](load-balancer-get-started-internet-az-portal.md)
+## [Zónaredundáns nyilvános Standard Load Balancer létrehozása](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
 ### [Zónaredundáns nyilvános Standard Load Balancer létrehozása (PowerShell)](load-balancer-get-started-internet-az-powershell.md)
 ### [Zónaredundáns nyilvános Standard Load Balancer létrehozása (CLI)](load-balancer-get-started-internet-az-cli.md)
 ## [Zónaszintű nyilvános Standard Load Balancer létrehozása](load-balancer-get-started-internet-availability-zones-zonal-portal.md)

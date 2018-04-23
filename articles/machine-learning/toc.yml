@@ -1,5 +1,5 @@
 - name: Azure Machine Learning-szolgáltatások (előzetes verzió)
-  href: preview/index.yml
+  href: service/index.yml
 - name: Azure Machine Learning Studio
   href: studio/index.yml
 - name: Adatelemzési virtuális gép

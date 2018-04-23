@@ -134,24 +134,24 @@
 #### [Tanúsítványok használata](active-directory-reporting-api-with-certificates.md)
 
 ## Jelszavak kezelése
-### [Jelszavak áttekintése](active-directory-passwords-overview.md)
+### [Jelszavak áttekintése](authentication/active-directory-passwords-overview.md)
 ### Felhasználói dokumentumok
 #### [Jelszó visszaállítása vagy módosítása](active-directory-passwords-update-your-own-password.md)
 #### [Ajánlott eljárások a jelszavakhoz](active-directory-secure-passwords.md)
 #### [Regisztráció önkiszolgáló jelszó-visszaállításra](active-directory-passwords-reset-register.md)
-### [Az SSPR működése](active-directory-passwords-how-it-works.md)
-### [SSPR üzembehelyezési útmutató](active-directory-passwords-best-practices.md)
+### [Az SSPR működése](authentication/concept-sspr-howitworks.md)
+### [SSPR üzembehelyezési útmutató](authentication/howto-sspr-deployment.md)
 ### [SSPR és Windows 10](active-directory-passwords-login.md)
-### [SSPR-házirendek ](active-directory-passwords-policy.md)
-### [SSPR-testreszabás](active-directory-passwords-customize.md)
-### [SSPR-adatkövetelmények](active-directory-passwords-data.md)
-### [SSPR-jelentéskészítés](active-directory-passwords-reporting.md)
+### [SSPR-házirendek ](authentication/concept-sspr-policy.md)
+### [SSPR-testreszabás](authentication/concept-sspr-customization.md)
+### [SSPR-adatkövetelmények](authentication/howto-sspr-authenticationdata.md)
+### [SSPR-jelentéskészítés](authentication/howto-sspr-reporting.md)
 ### Informatikai rendszergazdák: Új jelszavak kérése
 #### [Azure Portal](active-directory-users-reset-password-azure-portal.md)
-### [SSPR licenc](active-directory-passwords-licensing.md)
+### [SSPR licenc](authentication/concept-sspr-licensing.md)
 ### [Jelszóvisszaíró](active-directory-passwords-writeback.md)
-### [Hibaelhárítás](active-directory-passwords-troubleshoot.md)
-### [GYIK](active-directory-passwords-faq.md)
+### [Hibaelhárítás](authentication/active-directory-passwords-troubleshoot.md)
+### [GYIK](authentication/active-directory-passwords-faq.md)
 
 
 ## Eszközök kezelése

@@ -1,11 +1,11 @@
 ---
-title: "Azure ExpressRoute felhőszolgáltatók számára | Microsoft Docs"
-description: "A cikk olyan felhőszolgáltatók számára kínál információkat, akik be kívánják építeni az Azure -szolgáltatásokat és az ExpressRoute-ot az ajánlataikba."
+title: Azure ExpressRoute felhőszolgáltatók számára | Microsoft Docs
+description: A cikk olyan felhőszolgáltatók számára kínál információkat, akik be kívánják építeni az Azure -szolgáltatásokat és az ExpressRoute-ot az ajánlataikba.
 documentationcenter: na
 services: expressroute
 author: richcar
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: f6c5f8ee-40ba-41a1-ae31-67669ca419a6
 ms.service: expressroute
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: richcar
-ms.openlocfilehash: dfae23638e31242dc795922fd62d1abb02579480
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 9991da5d5ab6f43cc8c5ebf1672d7da0f1ad061e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>ExpressRoute felhőszolgáltatók (CSP) számára
 A Microsoft hatalmas léptékű szolgáltatásokat kínál a hagyományos viszonteladók és forgalmazók (CSP) számára, hogy gyorsan láthassák el ügyfeleiket új szolgáltatásokat és megoldásokat anélkül, hogy be kellene fektetniük az új szolgáltatások fejlesztésébe. Ahhoz, hogy lehetővé tegye a felhőszolgáltatók (CSP) számára az új szolgáltatások közvetlen felügyeletét, a Microsoft olyan programokat és API-kat biztosít, amelyek segítségével a CSP-k ügyfeleik nevében felügyelhetik a Microsoft Azure-erőforrásokat. Ezeknek az erőforrásoknak az egyike az ExpressRoute. Az ExpressRoute lehetővé teszi, hogy a CSP meglévő ügyfélerőforrásait csatlakoztassa az Azure-szolgáltatásokhoz. Az ExpressRoute egy nagy sebességű privát kommunikációs kapcsolat az Azure-ban lévő szolgáltatásokhoz. 
@@ -65,7 +65,7 @@ Ebben a kapcsolódási forgatókönyvben az ügyfélnek egy ügyfélhálózaton 
 
 Hogy a két lehetőség közül melyiket érdemes választani, azt az ügyfél igényei és az Ön az Azure-szolgáltatások nyújtásával kapcsolatos aktuális igényei határozzák meg. A modellekkel és a kapcsolódó szerepköralapú hozzáférésvezérlés-, hálózat- és identitástervezési mintákkal kapcsolatos részletek az alábbi hivatkozásokon tekinthetők meg:
 
-* **Szerepköralapú hozzáférés-vezérlés (RBAC)** – Az RBAC az Azure Active Directoryn alapul.  Az Azure RBAC-ról [itt](../active-directory/role-based-access-control-configure.md) talál további információt.
+* **Szerepköralapú hozzáférés-vezérlés (RBAC)** – Az RBAC az Azure Active Directoryn alapul.  Az Azure RBAC-ról [itt](../role-based-access-control/role-assignments-portal.md) talál további információt.
 * **Hálózat** – A különféle hálózati témaköröket fedi le a Microsoft Azure-ban.
 * **Azure Active Directory (Azure AD)** – Az Azure AD biztosítja az identitáskezelést a Microsoft Azure és a külső szolgáltatók által biztosított SaaS-alkalmazások számára. Az Azure AD-vel kapcsolatos további információkat lásd [itt](https://azure.microsoft.com/documentation/services/active-directory/).  
 
@@ -129,7 +129,7 @@ A használt modelltől – Szolgáltatóhoz való csatlakozás vagy Szolgáltat�
 
 ![helyettesítő szöveg](./media/expressroute-for-cloud-solution-providers/expressroute-security.png)  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A felhőszolgáltatói szolgáltatás segítségével anélkül növelheti az ügyfelei számára nyújtott értéket, hogy költséges infrastruktúra- és képességberuházásokat kellene eszközölnie, és így megtarthatja pozícióját, mint első számú szolgáltató a kiszervezések terén. A Microsoft Azure-ral való zökkenőmentes integráció a CSP API-n keresztül valósítható meg, amelynek segítségével a Microsoft Azure felügyelete integrálható meglévő felügyeleti keretrendszerekbe.  
 
 További információt az alábbi hivatkozásokat követve tekinthet meg:

@@ -11,11 +11,11 @@ ms.devlang: azure-cli
 ms.topic: tutorial
 ms.date: 04/01/2018
 ms.custom: mvc
-ms.openlocfilehash: 0c1c9364d6d7071e0aa454889417eeec3807f406
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3a06374119851560d517704b817fb9bf18728059
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>Oktatóanyag: Azure Database for MySQL tervezése az Azure CLI használatával
 
@@ -48,30 +48,6 @@ A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a 
 
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
-```
-## <a name="add-the-extension"></a>A bővítmény hozzáadása
-A következő paranccsal adhatja hozzá a frissített Azure Database for MySQL felügyeleti bővítményt:
-```azurecli-interactive
-az extension add --name rdbms
-``` 
-
-Ellenőrizze, hogy a bővítmény megfelelő verziója van-e telepítve. 
-```azurecli-interactive
-az extension list
-```
-
-A visszaküldött JSON-fájlnak a következőket kell tartalmaznia: 
-```json
-{
-    "extensionType": "whl",
-    "name": "rdbms",
-    "version": "0.0.5"
-}
-```
-
-Ha a parancs nem a 0.0.5-ös verziót adja vissza, akkor a bővítményt a következő parancs futtatásával frissítheti: 
-```azurecli-interactive
-az extension update --name rdbms
 ```
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Azure-adatbázis létrehozása MySQL-kiszolgálóhoz
