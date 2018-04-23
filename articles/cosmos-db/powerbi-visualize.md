@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2018
+ms.date: 04/19/2018
 ms.author: sngun
-ms.openlocfilehash: 7f884589cc198bed95a4a5fe51325a72cb799b69
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 8a0f50ad6df1135e05cd69be78e6b7f7820f90c6
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>A Power BI oktatóanyag az Azure Cosmos DB: a Power BI-összekötővel adatok megjelenítése
 [Powerbi.com webhelyen](https://powerbi.microsoft.com/) egy olyan online szolgáltatás, ahol létrehozása és megosztása irányítópultokat és jelentéseket, és a szervezet számára fontos adatokkal.  A Power BI Desktop egy dedikált jelentéskészítési eszköz, amely lehetővé teszi a különféle adatforrásokból származó adatok beolvasása egyesítése és a átalakíthatja az adatokat, hatékony képi megjelenítések létrehozásához, és tegye közzé a jelentéseket a Power bi-bA.  A Power BI Desktop legújabb verziójával most csatlakozhat az Azure Cosmos DB összekötőn keresztül Azure Cosmos DB fiókját Power bi.   
@@ -103,9 +103,9 @@ Most próbálja ki! Lássunk neki.
     > [!NOTE] 
     > Ha a hiba, amely szerint "a megadott adatbázis nem található." Ez a megoldás lépéseit lásd [Power BI probléma](https://community.powerbi.com/t5/Issues/Document-DB-Power-BI/idi-p/208200).
     
-9. Ha a fiók sikeresen csatlakozik, a **Navigator** jelenik meg.  A **Navigator** jelennek meg a fiók alatt az adatbázisok listája.
-10. Kattintson, és bontsa ki az adatbázishoz, ahol az adatokat a jelentés határozza meg, ha a bemutató fiók használata válasszon **volcanodb**.   
-11. Jelölje ki a gyűjteményt, amelyik be szeretné olvasni az adatokat. Ha a bemutató-fiókot használ, jelölje be **volcano1**.
+9. Ha a fiók sikeresen csatlakozik, a **Navigator** ablaktáblán jelenik meg.  A **Navigator** a fiókhoz tartozó adatbázisok listáját tartalmazza.
+10. Kattintson, és bontsa ki az adatbázishoz, ahol az adatokat a jelentés származik, a bemutató fiók használata válasszon **volcanodb**.   
+11. Jelölje ki, egy gyűjteményt, amely tartalmazza az adatokat beolvasni. Ha a bemutató-fiókot használ, jelölje be **volcano1**.
     
     Az előnézeti ablaktáblában láthatja listája látható **rekord** elemeket.  A dokumentum egy jelenik meg egy **rekord** típus a Power bi-ban. Ehhez hasonlóan belül egy dokumentumot egy beágyazott JSON blokkot is van egy **rekord**.
     
@@ -115,28 +115,29 @@ Most próbálja ki! Lássunk neki.
 ## <a name="flattening-and-transforming-json-documents"></a>Egybesimítását és JSON-dokumentumok átalakítása
 1. Váltás a Power BI Lekérdezésszerkesztő ablak, ahol a **dokumentum** oszlop a középső ablaktáblán.
    ![A Power BI Desktop Lekérdezésszerkesztő](./media/powerbi-visualize/power_bi_connector_pbiqueryeditor.png)
-2. Kattintson a jobb oldalán a bővítő a **dokumentum** oszlop fejlécére.  A helyi menü mezők listája jelenik meg.  Válassza ki a példány szükséges a jelentés mezők, mexikói neve, ország, régió, hely, jogosultságszint-emelési, típusát, állapota és utolsó tudja határozzák, és kattintson **OK**.
+2. Kattintson a jobb oldalán a bővítő a **dokumentum** oszlop fejlécére.  A helyi menü mezők listája jelenik meg.  Például mexikói nevét, ország, régió, hely, jogosultságszint-emelés, típusát, állapota és utolsó tudja határozzák van szüksége a jelentés mezők kiválasztása. Törölje a jelet a **eredeti oszlopnév használata előtagként** gombra, majd **OK**.
    
     ![A Power BI-oktatóanyag Azure Cosmos DB Power BI Connector - bontsa ki a dokumentumok](./media/powerbi-visualize/power_bi_connector_pbiqueryeditorexpander.png)
-3. A középső ablaktáblán az eredmény előnézete megjeleníti a kijelölt mezőket.
+3. A középső ablaktáblán az eredmény megjeleníti a kijelölt mezőket.
    
     ![A Power BI-oktatóanyag Azure Cosmos DB Power BI Connector - eredmények Egybesimítására](./media/powerbi-visualize/power_bi_connector_pbiresultflatten.png)
 4. A példánkban a Location tulajdonság egy GeoJSON letiltása végzését a dokumentumok.  Ahogy látja, a hely egy jelenik meg egy **rekord** a Power BI Desktop típusa.  
-5. Kattintson a jobb oldalán a hely oszlopfejléc bővítő.  A helyi menüt, típusa és a mezőben jelenik meg.  Most jelölje ki a koordináták mezőt, majd kattintson **OK**.
+5. Kattintson a jobb oldali az Document.Location oszlopfejléc bővítő.  A helyi menüt, és a típus mezőkkel jelennek meg.  Most a koordináták mezőben válassza ki, győződjön meg arról **eredeti oszlopnév használata előtagként** nincs bejelölve, és kattintson a **OK**.
    
     ![A Power BI oktatóanyag Azure Cosmos DB Power BI Connector - bejegyzés](./media/powerbi-visualize/power_bi_connector_pbilocationrecord.png)
 6. A középső ablaktáblán megjelenik koordináták oszlop **lista** típusa.  Az oktatóanyag elején látható, a GeoJSON-adatokat ebben az oktatóanyagban pont típusa nem a koordináták a tömb rögzített szélességi és hosszúsági értékeket.
    
     A koordináták [0] elem hosszúság jelöli, amíg koordináták [1] szélesség jelöli.
     ![A Power BI oktatóanyag Azure Cosmos DB Power BI Connector - koordináták listája](./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png)
-7. A koordináták tömb egybesimítására, létrehozunk egy **egyéni oszlop** LatLong nevezik.  Válassza ki a **oszlop hozzáadása** , majd kattintson a menüszalag **egyéni oszlop hozzáadása**.  A **egyéni oszlop hozzáadása** ablak meg kell jelennie.
+7. A koordináták tömb egybesimítására, hozzon létre egy **egyéni oszlop** LatLong nevezik.  Válassza ki a **oszlop hozzáadása** , majd kattintson a menüszalag **egyéni oszlop**.  A **egyéni oszlop** ablak jelenik meg.
 8. Adja meg a létrehozandó oszlop, például LatLong nevét.
 9. Ezt követően adja meg a létrehozandó oszlop értékeit egyéni képlet.  A fenti példában, azt fogja összefűzésére a szélességi és hosszúsági értékeket vesszővel elválasztva, a következő képlettel alább látható módon: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`. Kattintson az **OK** gombra.
    
     Az adatok elemzése kifejezések (DAX) DAX-funkciók ideértve további információkért látogasson el a [a Power BI Desktop alapvető DAX](https://support.powerbi.com/knowledgebase/articles/554619-dax-basics-in-power-bi-desktop).
    
     ![A Power BI oktatóanyag Azure Cosmos DB Power BI Connector - egyéni oszlop hozzáadása](./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png)
-10. Most a középső ablaktáblán megjelenik az új LatLong oszlop feltöltve a szélességi és hosszúsági értékeket vesszővel elválasztva.
+
+10. A középső ablaktáblán megjelenik az új értékekkel feltöltve LatLong oszlopokat.
     
     ![A Power BI oktatóanyag Azure Cosmos DB Power BI Connector - egyéni LatLong oszlop](./media/powerbi-visualize/power_bi_connector_pbicolumnlatlong.png)
     
@@ -145,10 +146,8 @@ Most próbálja ki! Lássunk neki.
     ![Alkalmazott lépéseket forrás, a navigációs, a dokumentum kibontva, a Document.Location kibontva, a hozzáadott egyéni kell lennie.](./media/powerbi-visualize/power-bi-applied-steps.png)
     
     A lépések eltérőek, ha törli a további lépéseket, és próbálja meg újból felvenni az egyéni oszlop. 
-11. Most már a program kiegészítette egybesimítását az adatok táblázatos formátumban.  Használja ki a lekérdezés-szerkesztőben alakzathoz elérhető funkciók, és az adatok a Cosmos DB átalakítása.  A minta használata, ha módosítja az adattípust a jogosultsági szint emeléséhez **egész számot** módosításával a **adattípus** a a **Home** menüszalagján.
-    
-    ![A Power BI oktatóanyag Azure Cosmos DB Power BI Connector - oszlop típusának módosítása](./media/powerbi-visualize/power_bi_connector_pbichangetype.png)
-12. Kattintson a **zárja be, és alkalmazni** menteni az adatokat az adatmodellbe.
+
+11. Kattintson a **zárja be, és alkalmazni** menteni az adatokat az adatmodellbe.
     
     ![A Power BI oktatóanyag az Azure Cosmos DB Power BI connector – zárja be és alkalmazása](./media/powerbi-visualize/power_bi_connector_pbicloseapply.png)
 
@@ -160,9 +159,9 @@ A Power BI Desktop jelentés nézet, ahol készítése jelentéseket adatok megj
 
 A jelentés nézetben keresse meg:
 
-1. A **mezők** ablaktáblán, ez az adatok modellek is használhatja a jelentések a mezők listája megjelenik.
+1. A **mezők** ablaktáblán, ahol adatmodellekben mezőkkel is használhatja a jelentések listáját láthatja azt.
 2. A **képi megjelenítések** ablaktáblán. A jelentés egy vagy több vizuális megjelenítés tartalmazhat.  Válassza ki az igényeinek illeszkedő visual típusok a **képi megjelenítések** ablaktáblán.
-3. A **jelentés** vászonra, ahol fog létrehozni a látványelemek a jelentés azt.
+3. A **jelentés** vászonra, ahol a látványelemek létrehozása a jelentés azt.
 4. A **jelentés** lap. A Power BI Desktop jelentés több oldalra is hozzáadhat.
 
 Az alábbiakban látható egy egyszerű interaktív térkép jelentés megtekintése létrehozásának lépéseit.
@@ -175,12 +174,13 @@ Az alábbiakban látható egy egyszerű interaktív térkép jelentés megtekint
 6. Most létrehozott egy egyszerű jelentést.  További további képi megjelenítések való hozzáadásával szabhatja a jelentést.  Ebben az esetben ha a jelentés interaktív mexikói típus szeletelővé hozzáadott.  
    
     ![Képernyőfelvétel az Azure Cosmos DB a Power bi-ban az oktatóanyag befejezése után utolsó Power BI Desktop jelentés](./media/powerbi-visualize/power_bi_connector_pbireportfinal.png)
+7. A Fájl menüben kattintson **mentése** és PowerBITutorial.pbix mentse a fájlt.
 
 ## <a name="publish-and-share-your-report"></a>Közzététele és megosztása a jelentés
 A jelentés megosztása fiókkal kell rendelkeznie a powerbi.com webhelyen.
 
 1. A Power BI Desktopban, és kattintson a a **Home** menüszalagján.
-2. Kattintson a **Publish** (Közzététel) gombra.  Adja meg a felhasználónevet és jelszót a powerbi.com webhelyen fiók kéri.
+2. Kattintson a **Publish** (Közzététel) gombra.  Adja meg a felhasználónevet és jelszót a powerbi.com webhelyen fiók vannak kérni.
 3. Ha a hitelesítő adatok hitelesítése, a jelentés a megadott helyre van közzétéve.
 4. Kattintson a **nyitott "PowerBITutorial.pbix" Power BI-ban** tekintse meg és osszanak meg a jelentést a powerbi.com webhelyen.
    
@@ -201,26 +201,26 @@ Ezután kövesse a [rögzítheti egy mozaik jelentésből](https://powerbi.micro
 
 Irányítópult létrehozása előtt is elvégezheti jelentés alkalmi módosításait. Ajánlott azonban, hogy használja-e a Power BI Desktop hajtsa végre a módosításokat, és a jelentést a powerbi.com webhelyre közzé.
 
-## <a name="refresh-data-in-powerbicom"></a>Adatok frissítése a powerbi.com webhelyre
-Két módon lehet adatokat, eseti és ütemezett frissítése.
+<!-- ## Refresh data in PowerBI.com
+There are two ways to refresh data, ad hoc and scheduled.
 
-Az ad hoc frissítéshez egyszerűen kattintson a a eclipses (...) által a **Dataset**, pl. PowerBITutorial. Láthatja, beleértve azokat **frissítés most**. Kattintson a **frissítés most** az adatok frissítéséhez.
+For an ad hoc refresh, simply click on the eclipses (…) by the **Dataset**, e.g. PowerBITutorial. You should see a list of actions including **Refresh Now**. Click **Refresh Now** to refresh the data.
 
-![Képernyőkép a frissítés most a powerbi.com webhelyen](./media/powerbi-visualize/power-bi-refresh-now.png)
+![Screenshot of Refresh Now in PowerBI.com](./media/powerbi-visualize/power-bi-refresh-now.png)
 
-Egy ütemezett frissítés tegye a következőket.
+For a scheduled refresh, do the following.
 
-1. Kattintson a **ütemezés frissítése** művelet listájában. 
+1. Click **Schedule Refresh** in the action list. 
 
-    ![Képernyőfelvétel a Frissítésütemezés a powerbi.com webhelyen](./media/powerbi-visualize/power-bi-schedule-refresh.png)
-2. Az a **beállítások** ablaktáblában bontsa ki a **adatforrás hitelesítő adatai**. 
-3. Kattintson a **hitelesítő adatok szerkesztése**. 
+    ![Screenshot of the Schedule Refresh in PowerBI.com](./media/powerbi-visualize/power-bi-schedule-refresh.png)
+2. In the **Settings** page, expand **Data source credentials**. 
+3. Click on **Edit credentials**. 
    
-    A konfigurálás előugró ablak akkor jelenik meg. 
-4. Adja meg az adott adatkészlet Azure Cosmos DB fiók kapcsolódni, majd kattintson a kulcs **bejelentkezés**. 
-5. Bontsa ki a **ütemezés frissítése** és frissítse az adatkészletet kívánt ütemezést beállítani. 
-6. Kattintson a **alkalmaz** és befejezte az ütemezett frissítés beállítása.
-
+    The Configure popup appears. 
+4. Enter the key to connect to the Azure Cosmos DB account for that data set, then click **Sign in**. 
+5. Expand **Schedule Refresh** and set up the schedule you want to refresh the dataset. 
+6. Click **Apply** and you are done setting up the scheduled refresh.
+-->
 ## <a name="next-steps"></a>További lépések
 * További információ a Power BI, [első lépések a Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/).
 * Azure Cosmos DB kapcsolatos további tudnivalókért tekintse meg a [Azure Cosmos DB dokumentációjának kezdőlapján](https://azure.microsoft.com/documentation/services/cosmos-db/).

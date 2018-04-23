@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2017
 ms.author: yurid
-ms.openlocfilehash: 2b77167992704bd342d67dc03b66af1e55955532
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 761013ad82fb8fa7d84e7929341d2e7d9e2d724c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Az Azure Identitáskezelés és hozzáférés szabályozása ajánlott biztonsági eljárások
 Számos fontolja meg az identitást kell lennie az új határ réteg a biztonság érdekében, hogy a hagyományos hálózati-központú szempontjából szerepkör tovább tart. Ez az elsődleges pivot fejlődéséhez vonatkozó biztonsági figyelmet és beruházások származik, hogy a hálózati kialakítását egyre elválasztó vált, és a külső védelem nem lehet hatásos azok egyszer volt felbontására előtt [BYOD ](http://aka.ms/byodcg) eszközök és a felhőalapú alkalmazásokhoz.
@@ -88,7 +88,7 @@ A felhasználók számára az Azure MFA engedélyezésével ad hozzá egy másod
 
 Például: Azure MFA kényszerítéséhez a felhasználók számára, és konfigurálja úgy, hogy telefonhívást vagy SMS-üzenet használata ellenőrzése. Ha a felhasználói hitelesítő adatok integritása sérül, a támadó nincs hogy bármilyen olyan erőforrás elérésére, mivel azok nincs hozzáférése a felhasználó telefonjára. A szervezetek, ne vegyen fel további identitás védelmi réteget amelyek jobban ki vannak téve a hitelesítő adatok jelszóellopásos támadáshoz, ami azt eredményezheti, hogy az adatok biztonsági sérülése.
 
-Olyan szervezeteknek, amelyek az egész hitelesítési vezérlő helyszíni megtartja egy alternatív, hogy használja [Azure multi-factor Authentication kiszolgáló](../multi-factor-authentication/multi-factor-authentication-get-started-server.md), más néven az MFA a helyszínen. Ez a módszer használatával is tudja kényszeríteni a többtényezős hitelesítést a multi-factor Authentication kiszolgáló helyszíni megtartásával.
+Olyan szervezeteknek, amelyek az egész hitelesítési vezérlő helyszíni megtartja egy alternatív, hogy használja [Azure multi-factor Authentication kiszolgáló](../active-directory/authentication/howto-mfaserver-deploy.md), más néven az MFA a helyszínen. Ez a módszer használatával is tudja kényszeríteni a többtényezős hitelesítést a multi-factor Authentication kiszolgáló helyszíni megtartásával.
 
 Az Azure MFA további információkért lásd: a cikk [Ismerkedés az Azure multi-factor Authentication a felhőben](../active-directory/authentication/howto-mfa-getstarted.md).
 

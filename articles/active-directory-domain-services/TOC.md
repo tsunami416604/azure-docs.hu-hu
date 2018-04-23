@@ -61,7 +61,7 @@
 # Kapcsolódó témakörök
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)
 ## [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-overview.md)
-## [Többtényezős hitelesítés](../multi-factor-authentication/multi-factor-authentication.md)
+## [Többtényezős hitelesítés](../active-directory/authentication/multi-factor-authentication.md)
 
 # További források
 ## [Azure AD visszajelzési fórum](https://feedback.azure.com/forums/169401-azure-active-directory)

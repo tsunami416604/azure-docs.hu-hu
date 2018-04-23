@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/02/2018
 ms.author: maheshu
-ms.openlocfilehash: 5d65ce4c199c9ddc54e0120fe1c456a95a34f649
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 4122052e48e57a27492433d01ee93536a9bbcf35
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="enable-password-hash-synchronization-to-azure-active-directory-domain-services"></a>Az Azure Active Directory Domain Servicesre történő jelszókivonat-szinkronizálás engedélyezése
 Az előző feladatokban engedélyezte az Active Directory Domain Servicest az Azure Active Directory (Azure AD) bérlő számára. A következő feladat a jelszókivonatok szinkronizálásának engedélyezése, amely az Azure AD Domain Servicesszel való NT LAN Manager- (NTLM) és Kerberos-hitelesítéshez szükséges. A jelszókivonat-adatok szinkronizálásának beállítása után a felhasználók a vállalati hitelesítő adataikkal jelentkezhetnek be a felügyelt tartományba.
@@ -64,7 +64,7 @@ Az alábbi utasításokat küldje el a végfelhasználóknak a jelszavuk módos�
     ![Kattintson a „Jelszó módosítása” lehetőségre](./media/active-directory-domain-services-getting-started/user-change-password.png)
 
    > [!TIP]
-   > Ha a hozzáférési panel ablakában nem jelenik meg a **Jelszó módosítása** lehetőség, győződjön meg róla, hogy a szervezethez be van állítva a [jelszókezelés az Azure AD-ben](../active-directory/active-directory-passwords-getting-started.md).
+   > Ha a hozzáférési panel ablakában nem jelenik meg a **Jelszó módosítása** lehetőség, győződjön meg róla, hogy a szervezethez be van állítva a [jelszókezelés az Azure AD-ben](../active-directory/authentication/quickstart-sspr.md).
    >
    >
 4. A **Jelszó módosítása** oldalon adja meg a meglévő (régi) jelszavát, adja meg az új jelszót, majd erősítse meg.
@@ -77,7 +77,7 @@ Néhány perccel azután, hogy módosította a jelszavát, az új jelszó haszn�
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 * [Saját jelszó frissítése](../active-directory/active-directory-passwords-update-your-own-password.md)
-* [A jelszókezelés első lépései az Azure AD-ben](../active-directory/active-directory-passwords-getting-started.md)
+* [A jelszókezelés első lépései az Azure AD-ben](../active-directory/authentication/quickstart-sspr.md)
 * [Azure Active Directory Domain Servicesre történő jelszókivonat-szinkronizálás engedélyezése szinkronizált Azure AD-bérlő esetén](active-directory-ds-getting-started-password-sync-synced-tenant.md)
 * [Az Azure Active Directory tartományi szolgáltatások által felügyelt tartományok adminisztrációja](active-directory-ds-admin-guide-administer-domain.md)
 * [Windows virtuális gép csatlakoztatása az Active Directory Domain Services által felügyelt tartományhoz](active-directory-ds-admin-guide-join-windows-vm.md)

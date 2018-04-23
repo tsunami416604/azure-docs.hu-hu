@@ -7,14 +7,14 @@ author: MightyPen
 manager: craigg
 ms.custom: VNet Service endpoints
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 04/19/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: 6037659eb419a785b01d4cbb6a2428cbd7f852da
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: d6b8ddaa0eaf560352bc0aa0127b33f32ee4574a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Virtuális hálózati szolgáltatás végpontok és szabályok az Azure SQL Database használata
 
@@ -140,7 +140,7 @@ Az Azure SQL Database a virtuális hálózati szabályok funkció rendelkezik a 
 Végpontok használata az Azure SQL Database, tekintse át a következőket kell figyelembe venni:
 
 - **Az Azure SQL adatbázis nyilvános IP-címek kimenő szükség**: Azure SQL adatbázis IP engedélyezi a csatlakozást a hálózati biztonsági csoportokkal (NSG-k) kell megnyitni. Ehhez a NSG [szolgáltatás címkék](../virtual-network/security-overview.md#service-tags) az Azure SQL Database.
-- **PostgreSQL és MySQL az Azure-adatbázis nem támogatottak**: végpontok nem támogatottak az Azure Database PostgreSQL vagy MySQL. Az SQL Database szolgáltatás végpontok engedélyezésére megszakítja a kapcsolatot, hogy ezekre a szolgáltatásokra. A megoldás tudunk a; Lépjen kapcsolatba a *dmalik@microsoft.com*.
+- **PostgreSQL és MySQL az Azure-adatbázis nem támogatottak**: végpontok nem támogatottak az Azure Database PostgreSQL vagy MySQL. Az SQL Database szolgáltatás végpontok engedélyezésére megszakítja a kapcsolatot, hogy ezekre a szolgáltatásokra. Ez a megoldás van, és kapcsolatba léphet *dmalik@microsoft.com* további információt.
 
 #### <a name="expressroute"></a>ExpressRoute
 
@@ -178,7 +178,7 @@ Az Azure Storage ugyanaz a funkció, amely lehetővé teszi, hogy korlátozza a 
 Ha a szolgáltatás használatához egy tárfiókot, az Azure SQL-kiszolgáló által használt választja, a problémák futtathatja. Ezután egy lista és vitafórum által befolyásolt Azure SQLDB funkcióját.
 
 #### <a name="azure-sqldw-polybase"></a>Az Azure SQLDW PolyBase
-A PolyBase gyakran használják az adatok betöltése az Azure SQLDW a Storage-fiókok. A Storage-fiók, amely adatokat tölt be korlátozza a hozzáférést csak VNet-alhálózatokat, ha megszakad a fiók és a PolyBase közötti kapcsolatot. Nincs; Ez a megoldás Lépjen kapcsolatba a *dmalik@microsoft.com* további információt.
+A PolyBase gyakran használják az adatok betöltése az Azure SQLDW a Storage-fiókok. A Storage-fiók, amely adatokat tölt be korlátozza a hozzáférést csak VNet-alhálózatokat, ha megszakad a fiók és a PolyBase közötti kapcsolatot. Ez a megoldás, és kapcsolatba léphet *dmalik@microsoft.com* további információt.
 
 #### <a name="azure-sqldb-blob-auditing"></a>Azure SQLDB Blob Auditing
 A saját tárfiók blobnaplózási funkció leküldi naplókat. Ha ezt a tárfiókot használ a BBI szolgáltatás végpontok Azure SQLDB a tárolási fiók kapcsolat megszakad.
@@ -227,8 +227,9 @@ Több SQL adatbázis-hibaüzenetek listáját dokumentált [Itt][sql-database-de
 Ez a szakasz bemutatja, hogyan használhatja a [Azure-portálon] [ http-azure-portal-link-ref-477t] létrehozásához egy *virtuális hálózati szabály* az Azure SQL-adatbázisban. A szabály közli az SQL-adatbázis-kommunikációt fogad az adott alhálózat, amely rendelkezik amelyeken meg van jelölve, hogy egy *virtuális hálózati szolgáltatási végpont*.
 
 > [!NOTE]
-> Győződjön meg arról, hogy a szolgáltatás végpontok hozzáadása a virtuális hálózat tűzfalszabályt a kiszolgáló kívánt virtuális Hálózatot/alhálózatot vannak-e kapcsolva.
-> Ha a végpontok nem kapcsolja be a virtuális hálózat vagy alhálózat kérni fogja a portál lehetővé teszi, kattintson az engedélyezése a panelen, amelyre a szabály hozzáadása.
+> Ha azt tervezi, a szolgáltatási végpont hozzáadása a virtuális hálózat tűzfalszabályt az Azure SQL Database-kiszolgálóhoz, előbb győződjön meg arról, hogy az alhálózat be vannak kapcsolva a végpontok szolgáltatás.
+>
+> Ha a végpontok nem kapcsolja be az alhálózat, a portál arra kéri, hogy lehetővé teszi. Kattintson a **engedélyezése** az azonos panel, amelyen a szabály hozzáadása gomb.
 
 #### <a name="powershell-alternative"></a>PowerShell alternatív
 
