@@ -1,6 +1,6 @@
 ---
-title: "A szolgáltatás paraméterei PostgreSQL Azure-adatbázis konfigurálása"
-description: "Ez a cikk ismerteti a paramétereket az Azure-adatbázis konfigurálása az Azure CLI parancssorból PostgreSQL."
+title: A szolgáltatás paraméterei PostgreSQL Azure-adatbázis konfigurálása
+description: Ez a cikk ismerteti a paramétereket az Azure-adatbázis konfigurálása az Azure CLI parancssorból PostgreSQL.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema

@@ -1,6 +1,6 @@
 ---
-title: "MySQL az Azure Database-áttelepítés minimális állásidő érdekében"
-description: "Ez a cikk ismerteti, hogyan hajthat végre az Azure Database-MySQL-adatbázis minimális állásidővel áttelepítését a MySQL és beállítása a terhelési kezdeti és folyamatos adatszinkronizálás forrásadatbázis céladatbázist Attunity megfelel a Microsoft Áttelepítés."
+title: MySQL az Azure Database-áttelepítés minimális állásidő érdekében
+description: Ez a cikk ismerteti, hogyan hajthat végre az Azure Database-MySQL-adatbázis minimális állásidővel áttelepítését a MySQL és beállítása a terhelési kezdeti és folyamatos adatszinkronizálás forrásadatbázis céladatbázist Attunity megfelel a Microsoft Áttelepítés.
 services: mysql
 author: HJToland3
 ms.author: jtoland

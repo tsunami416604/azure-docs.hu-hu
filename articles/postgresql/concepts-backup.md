@@ -1,6 +1,6 @@
 ---
-title: "Biztonsági mentés és visszaállítás az Azure-adatbázisban a PostgreSQL"
-description: "Információ az automatikus biztonsági mentés és az Azure-adatbázis PostgreSQL-kiszolgáló visszaállításához."
+title: Biztonsági mentés és visszaállítás az Azure-adatbázisban a PostgreSQL
+description: Információ az automatikus biztonsági mentés és az Azure-adatbázis PostgreSQL-kiszolgáló visszaállításához.
 services: postgresql
 author: kamathsun
 ms.author: sukamat

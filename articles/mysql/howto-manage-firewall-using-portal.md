@@ -1,6 +1,6 @@
 ---
-title: "Hozzon létre és tűzfalszabályok MySQL az Azure-adatbázisban kezelheti a MySQL"
-description: "Hozzon létre és kezelheti az Azure-adatbázis MySQL tűzfalszabályokat az Azure portál használatával"
+title: Hozzon létre és tűzfalszabályok MySQL az Azure-adatbázisban kezelheti a MySQL
+description: Hozzon létre és kezelheti az Azure-adatbázis MySQL tűzfalszabályokat az Azure portál használatával
 services: mysql
 author: ajlam
 ms.author: andrela

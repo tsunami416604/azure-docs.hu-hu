@@ -1,8 +1,8 @@
 ---
-title: ".NET SDK: Fájlrendszerműveletek az Azure Data Lake Store-ban | Microsoft Docs"
-description: "Az Azure Data Lake Store .NET SDK használata fájlrendszerműveletek (például mappák létrehozása) végrehajtására a Data Lake Store-ban."
+title: '.NET SDK: Fájlrendszerműveletek az Azure Data Lake Store-ban | Microsoft Docs'
+description: Az Azure Data Lake Store .NET SDK használata fájlrendszerműveletek (például mappák létrehozása) végrehajtására a Data Lake Store-ban.
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun

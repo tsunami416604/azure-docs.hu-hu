@@ -1,11 +1,11 @@
 ---
-title: "Összetett ütemezés és a speciális ismétlődési és Azure-ütemező hozhat létre."
-description: "Ismerje meg, hogyan hozhat létre ütemezése összetett és speciális ismétlődési és Azure-ütemező."
+title: Összetett ütemezés és a speciális ismétlődési és Azure-ütemező hozhat létre.
+description: Ismerje meg, hogyan hozhat létre ütemezése összetett és speciális ismétlődési és Azure-ütemező.
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: 
+editor: ''
 ms.assetid: 5c124986-9f29-4cbc-ad5a-c667b37fbe5a
 ms.service: scheduler
 ms.workload: infrastructure-services

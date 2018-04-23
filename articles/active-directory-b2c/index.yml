@@ -1,0 +1,96 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Az Azure Active Directory B2C dokumentációja
+metadata:
+  title: Az Azure Active Directory B2C dokumentációja
+  meta.description: Learn how to use Azure Active Directory B2C to customize and control how customers sign up, sign in, and manage their profiles when using your applications.
+  services: active-directory-b2c
+  author: davidmu1
+  manager: mtillman
+  ms.service: active-directory-b2c
+  ms.topic: landing-page
+  ms.date: 03/29/2018
+  ms.author: davidmu
+  ms.openlocfilehash: 5ca78abe01132ec557b4722d457f7b76684ce3c0
+  ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 04/18/2018
+abstract:
+  description: Az Azure Active Directory (Azure AD) B2C egy identitáskezelő szolgáltatás, amely lehetővé teszi az ügyfelek regisztrációjának és bejelentkezésének testreszabását és felügyeletét, valamint a profiljuk kezelését az alkalmazások használatakor. Ez az iOS, Android, .NET és más rendszerekre fejlesztett alkalmazásokra is vonatkozik. Az Azure AD B2C az ügyfelei identitásainak védelme mellett teszi lehetővé e műveletek végrehajtását. Gyors útmutatóink, oktatóanyagaink és a felhozott példák segítségével megismerkedhet az Azure AD B2C használatával.
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: https://docs.microsoft.com/azure/active-directory-b2c/media/index/active-directory-b2c-video.PNG
+      width: 250
+    title: B2C identitáskezelés az Azure Active Directory B2C-vel (12:56)
+    href: https://azure.microsoft.com/resources/videos/build-2016-business-to-consumer-identity-management-with-azure-active-directory-b2c/
+    width: 250
+sections:
+- title: 5 perces gyors útmutatók
+  items:
+  - type: paragraph
+    text: 'Itt megtudhatja, hogyan állíthatja be az alkalmazását használó ügyfelek identitáskezelését:'
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/azure/active-directory-b2c/media/index/logo_NET.svg
+      text: .NET
+      href: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-quickstarts-web-app
+    - image:
+        src: https://docs.microsoft.com/azure/active-directory-b2c/media/index/logo_windows.svg
+      text: Asztal
+      href: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-quickstarts-desktop-app
+    - image:
+        src: https://docs.microsoft.com/azure/active-directory-b2c/media/index/logo_nodejs.svg
+      text: Egyoldalas
+      href: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-quickstarts-spa
+- title: Részletes útmutatók
+  items:
+  - type: paragraph
+    text: Megtudhatja, hogyan kezelheti a regisztrációt, a bejelentkezést és az ügyfélprofilokat az ASP.NET, asztali vagy egyoldalas Node.js-alkalmazásaiban.
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: ASP.NET
+      html: <p>1. <a href="/azure/active-directory-b2c/tutorial-register-applications">Alkalmazás regisztrálása</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-app">Felhasználók hitelesítése</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-api">API-hozzáférés biztosítása</a></p>
+    - title: Asztal
+      html: <p>1. <a href="/azure/active-directory-b2c/tutorial-register-applications">Alkalmazás regisztrálása</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app">Felhasználók hitelesítése</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app-webapi">API-hozzáférés biztosítása</a></p>
+    - title: Egyoldalas
+      html: <p>1. <a href="/azure/active-directory-b2c/tutorial-register-applications">Alkalmazás regisztrálása</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa">Felhasználók hitelesítése</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa-webapi">API-hozzáférés biztosítása</a></p>
+- title: Ingyenes Pluralsight videós képzés
+  items:
+  - type: list
+    style: cards
+    className: cardsF
+    items:
+    - title: Identitás-, alkalmazás- és hálózati szolgáltatások kezelése
+      href: https://www.pluralsight.com/courses/microsoft-azure-identity-application-network-services
+      html: <p>A 6. modulban megtekintheti a bérlők létrehozását, az alkalmazások regisztrálását és a szabályzatok létrehozását.</p>
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://www.pluralsight.com/courses/microsoft-azure-identity-application-network-services
+    - title: Kiszolgáló nélküli alkalmazás biztonságossá tétele
+      href: https://www.pluralsight.com/courses/azure-serverless-applications
+      html: <p>A 6. modulban megtudhatja, miért érdemes az Azure AD B2C-t használni a kiszolgáló nélküli alkalmazások biztonságossá tételéhez.</p>
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://www.pluralsight.com/courses/azure-serverless-applications
+    - title: ASP.NET Core 2 és Azure AD B2C
+      href: https://www.pluralsight.com/courses/aspnet-core-identity-management-playbook
+      html: <p>A 8. modulban megtekintheti, hogyan adhat hozzá regisztrációt, bejelentkezést és profilszerkesztést az ASP.NET Core 2 alkalmazásokhoz.</p>
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://www.pluralsight.com/courses/aspnet-core-identity-management-playbook
+- title: Példák
+  items:
+  - type: paragraph
+    text: Itt olyan példákat talál, amelyek bemutatják az ügyfélidentitások kezelését az alkalmazásokban.
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/active-directory-b2c/code-samples">Mobil, asztali, webes és egyoldalas alkalmazások</a>

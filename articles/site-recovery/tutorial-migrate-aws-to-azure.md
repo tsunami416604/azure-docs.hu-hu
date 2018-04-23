@@ -1,6 +1,6 @@
 ---
-title: "Virtuális gépek áttelepítése az AWS-ből az Azure-ba az Azure Site Recoveryvel | Microsoft Docs"
-description: "Ez a cikk bemutatja, hogyan telepíthetők át az Amazon Web Servicesben (AWS) futó virtuális gépek az Azure-ba az Azure Site Recovery használatával."
+title: Virtuális gépek áttelepítése az AWS-ből az Azure-ba az Azure Site Recoveryvel | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan telepíthetők át az Amazon Web Servicesben (AWS) futó virtuális gépek az Azure-ba az Azure Site Recovery használatával.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm

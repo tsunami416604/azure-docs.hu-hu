@@ -11,6 +11,12 @@
 ### [Azure PowerShell](create-routebased-vpn-gateway-powershell.md)
 ### [Azure CLI](create-routebased-vpn-gateway-cli.md)
 
+# Példák
+## [VPN Gateway létrehozása](./scripts/vpn-gateway-sample-create-vpn-gateway-powershell.md)
+## [Pont–hely kapcsolat – RADIUS-hitelesítés](./scripts/vpn-gateway-sample-point-to-site-radius-authentication-powershell.md)
+## [Pont–hely kapcsolat – Tanúsítványalapú hitelesítés](./scripts/vpn-gateway-sample-point-to-site-certificate-authentication-powershell.md)
+## [Helyek közötti kapcsolat](./scripts/vpn-gateway-sample-site-to-site-powershell.md)
+
 # Alapelvek
 ## [A VPN Gateway tervezése és kialakítása](vpn-gateway-plan-design.md)
 ## [Tudnivalók a VPN Gateway beállításairól](vpn-gateway-about-vpn-gateway-settings.md)
@@ -19,8 +25,9 @@
 ## [A BGP és a VPN-átjáró ismertetése](vpn-gateway-bgp-overview.md)
 ## [Tudnivalók a magas rendelkezésre állású kapcsolatokról](vpn-gateway-highlyavailable.md)
 ## [A pont–hely kapcsolatokról](point-to-site-about.md)
+## [A pont–hely útválasztás ismertetése](vpn-gateway-about-point-to-site-routing.md)
 
-# Útmutató
+# Útmutatók
 ## Helyek közötti kapcsolatok konfigurálása
 ### [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 ### [Azure PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)

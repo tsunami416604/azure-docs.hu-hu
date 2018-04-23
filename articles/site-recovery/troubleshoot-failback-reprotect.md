@@ -1,12 +1,12 @@
 ---
-title: "Hibák elhárítása feladat-visszavétel során a helyszínen az Azure-ból, és utána állítsa az Azure-bA |} Microsoft Docs"
-description: "A cikk ismerteti az Azure-ból és védelem-újrabeállítási során vissza a helyszíni hibás gyakori hibáinak elhárítása"
+title: Hibák elhárítása feladat-visszavétel során a helyszínen az Azure-ból, és utána állítsa az Azure-bA |} Microsoft Docs
+description: A cikk ismerteti az Azure-ból és védelem-újrabeállítási során vissza a helyszíni hibás gyakori hibáinak elhárítása
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: rajani-janaki-ram
 manager: gauravd
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article

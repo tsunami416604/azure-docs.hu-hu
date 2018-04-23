@@ -18,6 +18,7 @@
 ## [Bash – Ansible-forgatókönyvek futtatása](../ansible/ansible-run-playbook-in-cloudshell.md)
 
 # [Cloud Shell beágyazása](embed-cloud-shell.md)
+# [MSI használata a Cloud Shellben](msi-authorization.md)
 
 # [Hibaelhárítás és korlátozások](troubleshooting.md)
 

@@ -1,6 +1,6 @@
 ---
-title: "Telepítse át az importálási egy adatbázist és az Azure Database PostgreSQL exportálás"
-description: "Ismerteti, hogyan bontsa ki a PostgreSQL-adatbázisból egy parancsfájl-fájlba, és az adatok importálása a céladatbázis, a fájl."
+title: Telepítse át az importálási egy adatbázist és az Azure Database PostgreSQL exportálás
+description: Ismerteti, hogyan bontsa ki a PostgreSQL-adatbázisból egy parancsfájl-fájlba, és az adatok importálása a céladatbázis, a fájl.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema

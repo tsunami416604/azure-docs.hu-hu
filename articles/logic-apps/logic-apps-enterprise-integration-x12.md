@@ -1,11 +1,11 @@
 ---
-title: "Az B2B vállalati integrációs - Azure Logic Apps állapotüzeneteit X12 |} Microsoft Docs"
-description: "Exchange X12 üzenetek B2B vállalati integráció az Azure Logic Apps EDI-formátumban"
+title: Az B2B vállalati integrációs - Azure Logic Apps állapotüzeneteit X12 |} Microsoft Docs
+description: Exchange X12 üzenetek B2B vállalati integráció az Azure Logic Apps EDI-formátumban
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 7422d2d5-b1c7-4a11-8c9b-0d8cfa463164
 ms.service: logic-apps
 ms.workload: integration

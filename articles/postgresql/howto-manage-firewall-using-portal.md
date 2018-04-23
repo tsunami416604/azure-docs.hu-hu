@@ -1,6 +1,6 @@
 ---
-title: "Hozzon létre és kezelheti az Azure adatbázis tűzfalszabályok PostgreSQL"
-description: "Hozzon létre és kezelheti az Azure-adatbázis PostgreSQL-tűzfalszabályok az Azure portál használatával"
+title: Hozzon létre és kezelheti az Azure adatbázis tűzfalszabályok PostgreSQL
+description: Hozzon létre és kezelheti az Azure-adatbázis PostgreSQL-tűzfalszabályok az Azure portál használatával
 services: postgresql
 author: rachel-msft
 ms.author: raagyema

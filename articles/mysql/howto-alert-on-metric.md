@@ -1,6 +1,6 @@
 ---
-title: "Metrikák riasztások konfigurálása az Azure-adatbázis MySQL az Azure-portálon"
-description: "A cikk konfigurálása és hozzáférési metrika riasztások az Azure Database MySQL az Azure-portálról."
+title: Metrikák riasztások konfigurálása az Azure-adatbázis MySQL az Azure-portálon
+description: A cikk konfigurálása és hozzáférési metrika riasztások az Azure Database MySQL az Azure-portálról.
 services: mysql
 author: rachel-msft
 ms.author: raagyema

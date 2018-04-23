@@ -1,6 +1,6 @@
 ---
-title: "Hogyan használja sys_schema teljesítményhangolás és MySQL az Azure-adatbázis adatbázis-karbantartás"
-description: "Ez a cikk ismerteti, hogyan sys_schema segítségével található teljesítményproblémákat és MySQL az Azure-adatbázis adatbázis karbantartása."
+title: Hogyan használja sys_schema teljesítményhangolás és MySQL az Azure-adatbázis adatbázis-karbantartás
+description: Ez a cikk ismerteti, hogyan sys_schema segítségével található teljesítményproblémákat és MySQL az Azure-adatbázis adatbázis karbantartása.
 services: mysql
 author: ajlam
 ms.author: andrela

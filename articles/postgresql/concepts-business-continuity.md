@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Database PostgreSQL az üzletmenet folytonossága áttekintése"
-description: "Az Azure Database PostgreSQL az üzletmenet folytonossága áttekintése."
+title: Az Azure Database PostgreSQL az üzletmenet folytonossága áttekintése
+description: Az Azure Database PostgreSQL az üzletmenet folytonossága áttekintése.
 services: postgresql
 author: kamathsun
 ms.author: sukamat

@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center oktatóanyag – Reagálás a biztonsági incidensekre | Microsoft Docs"
-description: "Azure Security Center oktatóanyag – Reagálás a biztonsági incidensekre"
+title: Azure Security Center oktatóanyag – Reagálás a biztonsági incidensekre | Microsoft Docs
+description: Azure Security Center oktatóanyag – Reagálás a biztonsági incidensekre
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 181e3695-cbb8-4b4e-96e9-c4396754862f
 ms.service: security-center
 ms.devlang: na

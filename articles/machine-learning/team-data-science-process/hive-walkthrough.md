@@ -1,8 +1,8 @@
 ---
-title: "Hadoop-fürthöz az adatokba, és az Azure Machine Learning modellek létrehozása |} Microsoft Docs"
-description: "Egy végpontok közötti alkalmazó egy HDInsight Hadoop-fürt létrehozása és a modell rendszerbe állítása a forgatókönyvben az Team tudományos folyamat használja."
+title: Hadoop-fürthöz az adatokba, és az Azure Machine Learning modellek létrehozása |} Microsoft Docs
+description: Egy végpontok közötti alkalmazó egy HDInsight Hadoop-fürt létrehozása és a modell rendszerbe állítása a forgatókönyvben az Team tudományos folyamat használja.
 services: machine-learning,hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun

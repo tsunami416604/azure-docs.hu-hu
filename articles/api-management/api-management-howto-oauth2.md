@@ -1,11 +1,11 @@
 ---
-title: "Engedélyezze az OAuth 2.0 verziót használja az Azure API Management fejlesztői fiókok |} Microsoft Docs"
-description: "Útmutató a felhasználóknak az API Management OAuth 2.0 használatával engedélyezik."
+title: Engedélyezze az OAuth 2.0 verziót használja az Azure API Management fejlesztői fiókok |} Microsoft Docs
+description: Útmutató a felhasználóknak az API Management OAuth 2.0 használatával engedélyezik.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na

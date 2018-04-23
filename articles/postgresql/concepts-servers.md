@@ -1,6 +1,6 @@
 ---
-title: "Kiszolgáló fogalmak PostgreSQL Azure-adatbázisban"
-description: "Ez a cikk a szempontok és konfigurálása és kezelése az Azure-adatbázis PostgreSQL-kiszolgálók iránymutatásokat tartalmaz."
+title: Kiszolgáló fogalmak PostgreSQL Azure-adatbázisban
+description: Ez a cikk a szempontok és konfigurálása és kezelése az Azure-adatbázis PostgreSQL-kiszolgálók iránymutatásokat tartalmaz.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema

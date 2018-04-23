@@ -1,11 +1,11 @@
 ---
-title: "Az Azure AD Connect Health - Állapotfigyelő szolgáltatás nincs dátum riasztás legfeljebb |} Microsoft Docs"
-description: "Ez a dokumentum ismerteti az \"Állapotfigyelő szolgáltatás adatai nem naprakészek\" riasztás és hibaelhárítás érdekében annak okait."
+title: Az Azure AD Connect Health - Állapotfigyelő szolgáltatás nincs dátum riasztás legfeljebb |} Microsoft Docs
+description: Ez a dokumentum ismerteti az "Állapotfigyelő szolgáltatás adatai nem naprakészek" riasztás és hibaelhárítás érdekében annak okait.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: zhiweiw
 manager: maheshu
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na

@@ -1,6 +1,6 @@
 ---
-title: "Azure parancssori felülettel Resource Manager sablon exportálása |} Microsoft Docs"
-description: "Azure Resource Manager és az Azure parancssori felület használatával sablonokat exportálhat egy erőforráscsoportot."
+title: Azure parancssori felülettel Resource Manager sablon exportálása |} Microsoft Docs
+description: Azure Resource Manager és az Azure parancssori felület használatával sablonokat exportálhat egy erőforráscsoportot.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac

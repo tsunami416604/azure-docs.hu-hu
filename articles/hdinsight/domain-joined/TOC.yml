@@ -14,8 +14,12 @@
     - name: Hive-házirendek konfigurálása
       href: apache-domain-joined-run-hive.md
       maintainContext: true
-    - name: Tartományhoz csatlakoztatott fürtök felügyelete
-      href: apache-domain-joined-manage.md
+    - name: VSCode használata egy tartományhoz csatlakozó fürthöz való kapcsolódáshoz
+      href: ../hdinsight-for-vscode.md
+    - name: IntelliJ használata egy tartományhoz csatlakozó fürthöz való kapcsolódáshoz
+      href: ../spark/apache-spark-intellij-tool-plugin.md
+    - name: Eclipse használata egy tartományhoz csatlakozó fürthöz való kapcsolódáshoz
+      href: ../spark/apache-spark-eclipse-tool-plugin.md
 - name: Adatok védelme
   href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
   maintainContext: true

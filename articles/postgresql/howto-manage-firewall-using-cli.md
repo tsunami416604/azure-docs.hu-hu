@@ -1,6 +1,6 @@
 ---
-title: "Hozzon létre és kezelheti az Azure-adatbázis PostgreSQL-tűzfalszabályok Azure parancssori felület használatával"
-description: "Ez a cikk ismerteti, hogyan létrehozásához és kezeléséhez Azure Database az Azure CLI parancssorból PostgreSQL tűzfalszabályokat."
+title: Hozzon létre és kezelheti az Azure-adatbázis PostgreSQL-tűzfalszabályok Azure parancssori felület használatával
+description: Ez a cikk ismerteti, hogyan létrehozásához és kezeléséhez Azure Database az Azure CLI parancssorból PostgreSQL tűzfalszabályokat.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema

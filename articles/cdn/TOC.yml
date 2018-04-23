@@ -14,6 +14,8 @@
   items:
     - name: Egyéni tartomány hozzáadása
       href: cdn-map-content-to-custom-domain.md
+    - name: HTTPS konfigurálása egyéni tartományon
+      href: cdn-custom-ssl.md
 - name: Példák
   items:
     - name: Kódminták
@@ -38,10 +40,6 @@
               href: cdn-sas-storage-support.md
         - name: Eltérő eredetű erőforrások megosztása
           href: cdn-cors.md
-        - name: Egyéni tartomány hozzáadása a CDN-végponthoz
-          href: cdn-map-content-to-custom-domain.md
-        - name: HTTPS konfigurálása egyéni tartományon
-          href: cdn-custom-ssl.md
     - name: Tartalom optimalizálása
       items:
         - name: Optimalizálás áttekintése
@@ -137,6 +135,11 @@
           href: cdn-rules-engine-reference-match-conditions.md
         - name: Szabálymotor funkciói
           href: cdn-rules-engine-reference-features.md
+    - name: Verizon-specifikus HTTP-fejlécek
+      href: cdn-verizon-http-headers.md
+      items:
+        - name: X-EC-Debug fejlécek
+          href: cdn-http-debug-headers.md
     - name: Azure PowerShell
       href: /powershell/module/azurerm.cdn
     - name: .NET

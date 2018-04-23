@@ -1,6 +1,6 @@
 ---
-title: "Biztonsági mentés és MySQL az Azure-adatbázis visszaállítása"
-description: "Információ az automatikus biztonsági mentés és a MySQL-kiszolgálóhoz tartozó Azure-adatbázis visszaállítása."
+title: Biztonsági mentés és MySQL az Azure-adatbázis visszaállítása
+description: Információ az automatikus biztonsági mentés és a MySQL-kiszolgálóhoz tartozó Azure-adatbázis visszaállítása.
 services: mysql
 author: kamathsun
 ms.author: sukamat

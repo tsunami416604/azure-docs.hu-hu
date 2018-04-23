@@ -1,6 +1,6 @@
 ---
-title: "Azure-adatbázis MySQL-videók"
-description: "Ezen a lapon learning Azure-adatbázis a MySQL vonatkozó videó tartalom jeleníti meg, a Microsoft által felügyelt MySQL az Azure-ajánlat."
+title: Azure-adatbázis MySQL-videók
+description: Ezen a lapon learning Azure-adatbázis a MySQL vonatkozó videó tartalom jeleníti meg, a Microsoft által felügyelt MySQL az Azure-ajánlat.
 services: mysql
 author: jasonwhowell
 ms.author: jasonh

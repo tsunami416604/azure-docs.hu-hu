@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Service Fabric szolgáltatás modell XML-séma leírásait |} Microsoft Docs"
-description: "Ismerteti a Service Fabric-szolgáltatás modell XML-séma."
+title: Az Azure Service Fabric szolgáltatás modell XML-séma leírásait |} Microsoft Docs
+description: Ismerteti a Service Fabric-szolgáltatás modell XML-séma.
 services: service-fabric
 documentationcenter: na
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: xml
 ms.topic: article

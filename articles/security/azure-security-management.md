@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 7575e25f06014caf962a4b7241a8a2d6bca8c918
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f8e9a2fbf28ace78b4ad2d361358bd394ac69ac7
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="security-management-in-azure"></a>Biztonságkezelés az Azure-ban
 Az Azure-előfizetők több eszközről kezelhetik felhőkörnyezeteiket, például felügyeleti munkaállomásokról, fejlesztői PC-kről, és olyan jogosult végfelhasználói eszközökről is, amelyek feladatspecifikus engedélyekkel rendelkeznek. Egyes esetekben a felügyeleti feladatkörök ellátását olyan webalapú konzolok használatával végzik, mint például az [Azure Portal](https://azure.microsoft.com/features/azure-portal/). Más esetekben az Azure-hoz való közvetlen kapcsolat létesíthető virtuális magánhálózatokon (VPN), terminálszolgáltatásokon, ügyfél-alkalmazásprotokollokon, vagy (szoftveresen) az Azure Service Management API-n (SMAPI) keresztül. Továbbá az ügyfél-végpontok lehetnek vagy tartományhoz csatlakoztatottak, vagy pedig elkülönítettek és felügyelet nélküliek, mint például a táblagépek vagy az okostelefonok.
@@ -99,7 +99,7 @@ Az Azure felhőszolgáltatások konfigurálása lehetséges az Azure Portalon va
 
 A virtuális gépek által telepített alkalmazások szükség szerint saját ügyféleszközöket és -felületeket biztosítanak. Ilyen a Microsoft Management Console (MMC), a vállalati felügyeleti konzolok (mint a Microsoft System Center vagy a Windows Intune), vagy más felügyeleti alkalmazások, például a Microsoft SQL Server Management Studio. Ezek az eszközök általában vállalati környezetben vagy az ügyfélhálózaton találhatóak meg. Függhetnek meghatározott hálózati protokolloktól (ilyen például a Remote Desktop Protocol (RDP)), amelyek közvetlen, állapotalapú kapcsolatokat igényelnek. Némelyik webes felülettel rendelkezhet, amelyet nem szabad nyilvánosan vagy az interneten keresztül elérhetővé tenni.
 
-Az Azure-ban korlátozhatja az infrastruktúrához és a platformszolgáltatások kezeléséhez való hozzáférést [többtényezős hitelesítés](../multi-factor-authentication/multi-factor-authentication.md), [X.509 felügyeleti tanúsítványok](https://blogs.msdn.microsoft.com/azuresecurity/2015/07/13/certificate-management-in-azure-dos-and-donts/) és tűzfalszabályok használatával. Az Azure Portal és a SMAPI a Transport Layer Security (TLS) protokoll használatát követeli meg. Azonban az Azure-ra telepített szolgáltatások és alkalmazások megkövetelik a megfelelő védelmi intézkedéseket, az adott alkalmazástól függően. Ezek a mechanizmusok gyakran egyszerűbben engedélyezhetőek egy szabványosított, megerősített munkaállomás-konfigurációval.
+Az Azure-ban korlátozhatja az infrastruktúrához és a platformszolgáltatások kezeléséhez való hozzáférést [többtényezős hitelesítés](../active-directory/authentication/multi-factor-authentication.md), [X.509 felügyeleti tanúsítványok](https://blogs.msdn.microsoft.com/azuresecurity/2015/07/13/certificate-management-in-azure-dos-and-donts/) és tűzfalszabályok használatával. Az Azure Portal és a SMAPI a Transport Layer Security (TLS) protokoll használatát követeli meg. Azonban az Azure-ra telepített szolgáltatások és alkalmazások megkövetelik a megfelelő védelmi intézkedéseket, az adott alkalmazástól függően. Ezek a mechanizmusok gyakran egyszerűbben engedélyezhetőek egy szabványosított, megerősített munkaállomás-konfigurációval.
 
 ### <a name="management-gateway"></a>Felügyeleti átjáró
 Beiktathat az Azure-környezetéhez csatlakoztatott, dedikált[távoli asztali átjáró](https://technet.microsoft.com/library/dd560672) (RD-átjáró) kiszolgálót a helyszíni hálózatába, hogy központosíthasson minden rendszergazdai hozzáférést, és leegyszerűsíthesse a figyelést és a naplózást.
@@ -110,7 +110,7 @@ A távoli asztali átjáró egy házirendalapú RDP-proxyszolgáltatás, amely k
 * Csatlakoztassa az RD-átjárót ugyanahhoz a [felügyeleti tartományhoz](http://technet.microsoft.com/library/bb727085.aspx), amelyikhez a felügyeleti munkaállomások is kapcsolódnak. Ez akkor szükséges, ha helyek közötti IPsec VPN-t vagy ExpressRoute-ot használ az Azure AD felé egyirányú bizalmi kapcsolattal rendelkező tartományban, vagy ha összevonja a hitelesítő adatokat a helyszíni AD DS-példánya és az Azure AD között.
 * Állítson be egy [ügyfélkapcsolat-engedélyezési házirendet](http://technet.microsoft.com/library/cc753324.aspx) úgy, hogy az RD-átjáró ellenőrizze, érvényes-e (a tartományhoz csatlakozó-e) az ügyfélgép neve, és jogosult-e az Azure Portalhoz való hozzáférésre.
 * Használjon IPsec-et az [Azure VPN-hez](https://azure.microsoft.com/documentation/services/vpn-gateway/) annak érdekében, hogy még jobban védje a felügyeleti adatforgalmat a lehallgatástól és a tokenlopástól. Ennek alternatívája lehet az elkülönített internetkapcsolat [Azure ExpressRoute-on](https://azure.microsoft.com/documentation/services/expressroute/) keresztül.
-* Állítson be többtényezős hitelesítést ([Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) használatával) vagy intelligens kártyás hitelesítést az RD-átjárón keresztül bejelentkező rendszergazdák számára.
+* Állítson be többtényezős hitelesítést ([Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) használatával) vagy intelligens kártyás hitelesítést az RD-átjárón keresztül bejelentkező rendszergazdák számára.
 * Állítson be forrás [IP-címekre vonatkozó korlátozásokat](http://azure.microsoft.com/blog/2013/08/27/confirming-dynamic-ip-address-restrictions-in-windows-azure-web-sites/) vagy [hálózati biztonsági csoportokat](../virtual-network/virtual-networks-nsg.md) az Azure-ban a megengedett felügyeleti végpontok számának minimalizálása érdekében.
 
 ## <a name="security-guidelines"></a>Biztonsági irányelvek

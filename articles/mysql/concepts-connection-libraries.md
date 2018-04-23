@@ -1,6 +1,6 @@
 ---
-title: "Adatkapcsolattárak MySQL az Azure-adatbázis"
-description: "Ez a cikk sorolja fel, minden könyvtár vagy illesztőprogram, ügyfélprogramok MySQL az Azure-adatbázishoz való csatlakozáshoz használhat."
+title: Adatkapcsolattárak MySQL az Azure-adatbázis
+description: Ez a cikk sorolja fel, minden könyvtár vagy illesztőprogram, ügyfélprogramok MySQL az Azure-adatbázishoz való csatlakozáshoz használhat.
 services: mysql
 author: mswutao
 ms.author: wutao

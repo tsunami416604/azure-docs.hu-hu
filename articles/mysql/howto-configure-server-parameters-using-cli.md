@@ -1,6 +1,6 @@
 ---
-title: "A szolgáltatás paraméterei MySQL az Azure-adatbázis konfigurálása"
-description: "Ez a cikk ismerteti az Azure-adatbázis konfigurálása a szolgáltatás paraméterei MySQL az Azure CLI parancssori segédprogram használatával."
+title: A szolgáltatás paraméterei MySQL az Azure-adatbázis konfigurálása
+description: Ez a cikk ismerteti az Azure-adatbázis konfigurálása a szolgáltatás paraméterei MySQL az Azure CLI parancssori segédprogram használatával.
 services: mysql
 author: rachel-msft
 ms.author: raagyema

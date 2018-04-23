@@ -1,6 +1,6 @@
 ---
-title: "PostgreSQL-bővítmények PostgreSQL Azure-adatbázis használata"
-description: "Kiterjesztheti az Azure-adatbázis bővítményekkel PostgreSQL az adatbázis működését ismerteti."
+title: PostgreSQL-bővítmények PostgreSQL Azure-adatbázis használata
+description: Kiterjesztheti az Azure-adatbázis bővítményekkel PostgreSQL az adatbázis működését ismerteti.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema

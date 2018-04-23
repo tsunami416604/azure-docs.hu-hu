@@ -1,6 +1,6 @@
 ---
-title: "Csatlakozás a MySQL az Azure Database-alkalmazások"
-description: "Ez a dokumentum a jelenleg támogatott kapcsolati karakterláncok az alkalmazások az Azure Database-MySQL, beleértve az ADO.NET (C#), JDBC, Node.js, ODBC, PHP, Python vagy Ruby kapcsolati sorolja fel."
+title: Csatlakozás a MySQL az Azure Database-alkalmazások
+description: Ez a dokumentum a jelenleg támogatott kapcsolati karakterláncok az alkalmazások az Azure Database-MySQL, beleértve az ADO.NET (C#), JDBC, Node.js, ODBC, PHP, Python vagy Ruby kapcsolati sorolja fel.
 services: mysql
 author: mswutao
 ms.author: wuta

@@ -25,6 +25,7 @@
 ## [Kompatibilitási szint](stream-analytics-compatibility-level.md)
 ## [Gyakori lekérdezési minták](stream-analytics-stream-analytics-query-patterns.md)
 ## [Eseményrendezési szempontok](stream-analytics-out-of-order-and-late-events.md)
+## [Ellenőrzőpont és visszajátszás](stream-analytics-concepts-checkpoint-replay.md)
 
 # Útmutatók
 
@@ -68,7 +69,7 @@
 
 ## Hibaelhárítás
 ### [Hibaelhárítási lépések](stream-analytics-troubleshooting-guide.md)
-### [Gyakori problémák elhárítása](stream-analytics-common-troubleshooting-issues.md)
+### [Gyakori problémák](stream-analytics-common-troubleshooting-issues.md)
 ### [Feladatábra](stream-analytics-job-diagram-with-metrics.md)
 ### [Diagnosztikai naplók](stream-analytics-job-diagnostic-logs.md)
 ### [Erőforrás állapotának ellenőrzése](stream-analytics-resource-health.md)
@@ -94,16 +95,8 @@
 ## [Fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/stream-analytics/)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
-## [Kibocsátási megjegyzések](stream-analytics-release-notes.md)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=stream-analytics)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-stream-analytics)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=stream-analytics)
 ## [Ügyféleset-tanulmányok](https://azure.microsoft.com/case-studies/?service=stream-analytics)
 ## [Tanulmány – Valós idejű eseményfeldolgozás](stream-analytics-real-time-event-processing-reference-architecture.md)
-## [A Storm és a Stream Analytics összehasonlítása](stream-analytics-comparison-storm.md)
-
-
-
-
-
-

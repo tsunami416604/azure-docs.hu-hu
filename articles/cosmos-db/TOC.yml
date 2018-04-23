@@ -307,7 +307,7 @@ items:
                       - name: .NET
                         href: table-storage-how-to-use-dotnet.md
                       - name: 'F#'
-                        href: /dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
+                        href: 'https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage'
                       - name: Node.js
                         href: table-storage-cloud-service-nodejs.md
                       - name: Java
@@ -371,18 +371,17 @@ items:
           - name: Csatlakozás a Spark GraphX-hez
             href: spark-connector-graph.md
           - name: Streamelés a Kafka és a Spark használatával a HDInsighton
-            href: ../hdinsight/apache-kafka-spark-structured-streaming-cosmosdb.md
-            maintainContext: true
+            href: 'https://docs.microsoft.com/azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=/azure/cosmos-db/toc.json'
           - name: Webhely üzembe helyezése az Azure App Service-szel
             href: create-website.md
           - name: Alkalmazásnaplózás a Logic Apps használatával
-            href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md
+            href: 'https://docs.microsoft.com/azure/logic-apps/logic-apps-scenario-error-and-exception-handling?toc=/azure/cosmos-db/toc.json'
           - name: Kötés az Azure Functionshöz
-            href: ../azure-functions/functions-bindings-cosmosdb.md
+            href: 'https://docs.microsoft.com/azure/azure-functions/functions-bindings-cosmosdb?toc=/azure/cosmos-db/toc.json'
           - name: Integrálás az Azure Search szolgáltatással
-            href: ../search/search-howto-index-cosmosdb.md
+            href: 'https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json'
           - name: Adatok áthelyezése az Azure Data Factoryvel
-            href: ../data-factory/connector-azure-cosmos-db.md
+            href: 'https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db?toc=/azure/cosmos-db/toc.json'
           - name: Valós idejű adatok elemzése az Azure Stream Analyticsszel
             href: '../stream-analytics/stream-analytics-define-outputs.md#azure-cosmos-db'
           - name: Módosított HL7 FHIR-rekord beszerzése a Logic Apps használatával
@@ -394,7 +393,7 @@ items:
           - name: Az ODBC-illesztő felhasználása az adatmegjelenítéshez
             href: odbc-driver.md
           - name: Spring Boot Starter használata SQL API-kkal
-            href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db
+            href: 'https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json'
   - name: Referencia
     items:
       - name: Kódminták

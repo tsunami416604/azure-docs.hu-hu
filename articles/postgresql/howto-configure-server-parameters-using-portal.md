@@ -1,6 +1,6 @@
 ---
-title: "Állítsa be a kiszolgáló adatait az Azure Database PostgreSQL Azure-portálon"
-description: "Ez a cikk ismerteti, hogyan paramétereinek a konfigurálása a kiszolgáló Azure-adatbázisban a PostgreSQL az Azure portálon keresztül."
+title: Állítsa be a kiszolgáló adatait az Azure Database PostgreSQL Azure-portálon
+description: Ez a cikk ismerteti, hogyan paramétereinek a konfigurálása a kiszolgáló Azure-adatbázisban a PostgreSQL az Azure portálon keresztül.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema

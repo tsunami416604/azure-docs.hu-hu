@@ -1,6 +1,6 @@
 ---
-title: "Rövid útmutató – Azure Kubernetes-fürt Linux esetén"
-description: "Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre az Azure CLI segítségével Kubernetes-fürtöt Linux-tárolók esetén az Azure Container Service-ben."
+title: Rövid útmutató – Azure Kubernetes-fürt Linux esetén
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre az Azure CLI segítségével Kubernetes-fürtöt Linux-tárolók esetén az Azure Container Service-ben.
 services: container-service
 author: neilpeterson
 manager: timlt

@@ -1,6 +1,6 @@
 ---
-title: "-Kiszolgáló naplóit Azure-adatbázisban PostgreSQL"
-description: "Ez a cikk ismerteti, hogyan Azure adatbázis PostgreSQL hoz létre a lekérdezés és a hiba naplókat, és hogyan jelentkezzen az adatmegőrzési van konfigurálva."
+title: -Kiszolgáló naplóit Azure-adatbázisban PostgreSQL
+description: Ez a cikk ismerteti, hogyan Azure adatbázis PostgreSQL hoz létre a lekérdezés és a hiba naplókat, és hogyan jelentkezzen az adatmegőrzési van konfigurálva.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema

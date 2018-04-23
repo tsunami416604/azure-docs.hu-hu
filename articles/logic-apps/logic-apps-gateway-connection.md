@@ -1,12 +1,12 @@
 ---
-title: "A helyszíni adatforrások elérése az Azure Logic Apps |} Microsoft Docs"
-description: "A helyszíni adatátjáró beállítása, a helyszíni adatforrások eléréséhez a logic Apps alkalmazásokból"
-keywords: "adatok, a helyszíni, az adatok átvitele, a titkosítás és a adatforrások eléréséhez"
+title: A helyszíni adatforrások elérése az Azure Logic Apps |} Microsoft Docs
+description: A helyszíni adatátjáró beállítása, a helyszíni adatforrások eléréséhez a logic Apps alkalmazásokból
+keywords: adatok, a helyszíni, az adatok átvitele, a titkosítás és a adatforrások eléréséhez
 services: logic-apps
 author: jeffhollan
 manager: anneta
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: 6cb4449d-e6b8-4c35-9862-15110ae73e6a
 ms.service: logic-apps
 ms.devlang: na

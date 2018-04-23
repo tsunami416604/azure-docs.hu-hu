@@ -1,12 +1,12 @@
 ---
-title: "A Linux virtuális gép távoli asztal használata az Azure-ban |} Microsoft Docs"
-description: "Megtudhatja, hogyan telepítse és konfigurálja az Azure-ban a grafikus eszközök Linux virtuális gép kapcsolódni a távoli asztal (xrdp)"
+title: A Linux virtuális gép távoli asztal használata az Azure-ban |} Microsoft Docs
+description: Megtudhatja, hogyan telepítse és konfigurálja az Azure-ban a grafikus eszközök Linux virtuális gép kapcsolódni a távoli asztal (xrdp)
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux

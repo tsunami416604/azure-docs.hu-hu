@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI-példák az Azure Database for MySQL-hez"
-description: "Ez a cikk felsorolja az Azure Database for MySQL-lel folytatott kommunikációhoz elérhető Azure CLI-példakódokat."
+title: Azure CLI-példák az Azure Database for MySQL-hez
+description: Ez a cikk felsorolja az Azure Database for MySQL-lel folytatott kommunikációhoz elérhető Azure CLI-példakódokat.
 services: mysql
 author: jasonwhowell
 ms.author: jasonh

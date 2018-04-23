@@ -1,12 +1,12 @@
 ---
-title: "Mi az az Azure Event Hubs, és mire használható? | Microsoft Docs"
-description: "Az Azure Event Hubs áttekintése és bemutatása – Felhőméretű telemetriaadat-feldolgozás webhelyekről, alkalmazásokból és eszközökről származó adatok esetén"
+title: Mi az az Azure Event Hubs, és mire használható? | Microsoft Docs
+description: Az Azure Event Hubs áttekintése és bemutatása – Felhőméretű telemetriaadat-feldolgozás webhelyekről, alkalmazásokból és eszközökről származó adatok esetén
 services: event-hubs
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: get-started-article

@@ -1,6 +1,6 @@
 ---
-title: "Konfigurálja, és hozzáférést kiszolgálónaplókban az Azure Database MySQL az Azure portálon"
-description: "A cikkből megtudhatja, hogyan lehet konfigurálni és MySQL az Azure portálról a kiszolgálói naplók az Azure-adatbázis hozzáférését."
+title: Konfigurálja, és hozzáférést kiszolgálónaplókban az Azure Database MySQL az Azure portálon
+description: A cikkből megtudhatja, hogyan lehet konfigurálni és MySQL az Azure portálról a kiszolgálói naplók az Azure-adatbázis hozzáférését.
 services: mysql
 author: rachel-msft
 ms.author: raagyema

@@ -1,6 +1,6 @@
 ---
-title: "Helyszíni gépek migrálása az Azure-ba az Azure Site Recoveryvel | Microsoft Docs"
-description: "Ez a cikk bemutatja, hogyan migrálhatók a helyszíni gépek az Azure-ba az Azure Site Recovery használatával."
+title: Helyszíni gépek migrálása az Azure-ba az Azure Site Recoveryvel | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan migrálhatók a helyszíni gépek az Azure-ba az Azure Site Recovery használatával.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery

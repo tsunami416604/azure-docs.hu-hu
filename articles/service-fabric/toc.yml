@@ -238,6 +238,8 @@
               href: service-fabric-cluster-resource-manager-advanced-throttling.md
             - name: Szolgáltatás áthelyezése
               href: service-fabric-cluster-resource-manager-movement-cost.md
+            - name: Automatikus skálázási szolgáltatások
+              href: service-fabric-cluster-resource-manager-autoscaling.md
     - name: Monitorozás és diagnosztika
       items:
         - name: Monitorozás áttekintése
@@ -261,8 +263,6 @@
           href: service-fabric-health-introduction.md
         - name: Állapotesemények jelentése
           href: service-fabric-report-health.md
-        - name: Monitorozás az OMS-szel
-          href: service-fabric-diagnostics-event-analysis-oms.md
     - name: Integráció az API Management szolgáltatással
       href: service-fabric-api-management-overview.md
 - name: Útmutatók
@@ -405,6 +405,10 @@
               href: service-fabric-securing-containers.md
             - name: Csoportosan felügyelt szolgáltatásfiók beállítása Windows-tárolókhoz
               href: service-fabric-setup-gmsa-for-windows-containers.md
+        - name: Rendszeres biztonsági mentések konfigurálása (Fürtök az Azure-on)
+          href: service-fabric-backuprestoreservice-quickstart-azurecluster.md
+        - name: Rendszeres biztonsági mentések konfigurálása (Önálló fürtök)
+          href: service-fabric-backuprestoreservice-quickstart-standalonecluster.md
         - name: Régi Java-alkalmazás migrálása a Maven támogatására
           href: service-fabric-migrate-old-javaapp-to-use-maven.md
     - name: Munka a Windows/VS fejlesztői környezetében
@@ -555,6 +559,8 @@
               href: service-fabric-diagnostics-oms-setup.md
             - name: Az OMS-ügynök hozzáadása
               href: service-fabric-diagnostics-oms-agent.md
+            - name: Monitorozás az OMS-szel
+              href: service-fabric-diagnostics-event-analysis-oms.md
             - name: Tárolók figyelése
               href: service-fabric-diagnostics-oms-containers.md
         - name: Elemzés az Application Insights segítségével

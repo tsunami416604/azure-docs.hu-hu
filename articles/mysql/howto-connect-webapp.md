@@ -1,6 +1,6 @@
 ---
-title: "Meglévő Azure App Service csatlakozzon az Azure-adatbázis az MySQL"
-description: "Utasításokat megfelelően kapcsolódás MySQL az Azure-adatbázishoz egy meglévő Azure App Service"
+title: Meglévő Azure App Service csatlakozzon az Azure-adatbázis az MySQL
+description: Utasításokat megfelelően kapcsolódás MySQL az Azure-adatbázishoz egy meglévő Azure App Service
 services: mysql
 author: ajlam
 ms.author: andrela

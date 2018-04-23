@@ -1,6 +1,6 @@
 ---
-title: "Magas rendelkezésre állású kapcsolatos fogalmak, MySQL az Azure-adatbázis"
-description: "Ez a témakör a magas rendelkezésre állás MySQL az Azure-adatbázis használata esetén"
+title: Magas rendelkezésre állású kapcsolatos fogalmak, MySQL az Azure-adatbázis
+description: Ez a témakör a magas rendelkezésre állás MySQL az Azure-adatbázis használata esetén
 services: mysql
 author: jasonwhowell
 ms.author: jasonh

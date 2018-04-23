@@ -121,7 +121,7 @@
 #### [.NET-háttérrendszer/.NET-eszköz](iot-hub-csharp-csharp-twin-how-to-configure.md)
 #### [Java-háttérrendszer/Java-eszköz](iot-hub-java-java-twin-how-to-configure.md)
 #### [Python-háttérrendszer/Python-eszköz](iot-hub-python-python-twin-how-to-configure.md)
-### Eszközfeladatok használata az eszköz belső vezérlőprogramjának frissítéséhez
+### Ikereszközök használata az eszköz belső vezérlőprogramjának frissítéséhez
 #### [Node-háttérrendszer/Node-eszköz](iot-hub-node-node-firmware-update.md)
 #### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-firmware-update.md)
 #### [.NET-háttérrendszer/.NET-eszköz](iot-hub-csharp-csharp-firmware-update.md)

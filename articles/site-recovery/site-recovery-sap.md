@@ -1,12 +1,12 @@
 ---
-title: "A többrétegű SAP NetWeaver alkalmazástelepítést Azure Site Recovery segítségével védeni |} Microsoft Docs"
-description: "A cikkből megtudhatja, hogyan védheti SAP NetWeaver alkalmazástelepítések Azure Site Recovery segítségével."
+title: A többrétegű SAP NetWeaver alkalmazástelepítést Azure Site Recovery segítségével védeni |} Microsoft Docs
+description: A cikkből megtudhatja, hogyan védheti SAP NetWeaver alkalmazástelepítések Azure Site Recovery segítségével.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: mayanknayar
 manager: rochakm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.workload: backup-recovery
 ms.tgt_pltfrm: na

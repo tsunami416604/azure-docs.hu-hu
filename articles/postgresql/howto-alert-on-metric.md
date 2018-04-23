@@ -1,6 +1,6 @@
 ---
-title: "Metrikák riasztások konfigurálása az Azure-adatbázis PostgreSQL az Azure-portálon"
-description: "A cikk konfigurálása és hozzáférési metrika riasztások az Azure Database PostgreSQL az Azure-portálról."
+title: Metrikák riasztások konfigurálása az Azure-adatbázis PostgreSQL az Azure-portálon
+description: A cikk konfigurálása és hozzáférési metrika riasztások az Azure Database PostgreSQL az Azure-portálról.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema

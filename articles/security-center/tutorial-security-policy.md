@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center oktatóanyag – Biztonsági szabályzatok meghatározása és értékelése | Microsoft Docs"
-description: "Azure Security Center oktatóanyag – Biztonsági szabályzatok meghatározása és értékelése"
+title: Azure Security Center oktatóanyag – Biztonsági szabályzatok meghatározása és értékelése | Microsoft Docs
+description: Azure Security Center oktatóanyag – Biztonsági szabályzatok meghatározása és értékelése
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
 ms.service: security-center
 ms.devlang: na

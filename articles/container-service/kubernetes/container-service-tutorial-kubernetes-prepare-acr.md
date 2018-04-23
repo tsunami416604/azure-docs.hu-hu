@@ -1,6 +1,6 @@
 ---
-title: "Azure Container Service-oktatóanyag – Az ACR előkészítése"
-description: "Azure Container Service-oktatóanyag – Az ACR előkészítése"
+title: Azure Container Service-oktatóanyag – Az ACR előkészítése
+description: Azure Container Service-oktatóanyag – Az ACR előkészítése
 services: container-service
 author: neilpeterson
 manager: timlt

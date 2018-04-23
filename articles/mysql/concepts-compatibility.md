@@ -1,6 +1,6 @@
 ---
-title: "MySQL-illesztőprogramok és a felügyeleti eszközök kompatibilitása"
-description: "Ez a cikk ismerteti a MySQL-illesztőprogramok és MySQL az Azure-adatbázis kompatibilis eszközök."
+title: MySQL-illesztőprogramok és a felügyeleti eszközök kompatibilitása
+description: Ez a cikk ismerteti a MySQL-illesztőprogramok és MySQL az Azure-adatbázis kompatibilis eszközök.
 services: mysql
 author: ajlam
 ms.author: andrela

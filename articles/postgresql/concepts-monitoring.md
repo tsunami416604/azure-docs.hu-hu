@@ -1,6 +1,6 @@
 ---
-title: "Az Azure-adatbázis PostgreSQL figyelése"
-description: "Ez a cikk ismerteti a figyelés és riasztás Azure-adatbázis PostgreSQL, beleértve a CPU, a tároló és a kapcsolat statisztika metrikáit."
+title: Az Azure-adatbázis PostgreSQL figyelése
+description: Ez a cikk ismerteti a figyelés és riasztás Azure-adatbázis PostgreSQL, beleértve a CPU, a tároló és a kapcsolat statisztika metrikáit.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema

@@ -1,6 +1,6 @@
 ---
-title: "Kapacitástervezés és a VMware-replikáció az Azure szolgáltatásban az Azure Site Recovery skálázás |} Microsoft Docs"
-description: "Ez a cikk terv kapacitás és a skála használja, ha VMware virtuális gépek replikálása Azure-bA az Azure Site Recovery szolgáltatással"
+title: Kapacitástervezés és a VMware-replikáció az Azure szolgáltatásban az Azure Site Recovery skálázás |} Microsoft Docs
+description: Ez a cikk terv kapacitás és a skála használja, ha VMware virtuális gépek replikálása Azure-bA az Azure Site Recovery szolgáltatással
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm

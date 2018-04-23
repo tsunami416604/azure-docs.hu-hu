@@ -1,6 +1,6 @@
 ---
-title: "Kiszolgáló kapcsolatos fogalmak, MySQL az Azure-adatbázis"
-description: "Ez a témakör szempontjait és irányelveket MySQL-kiszolgálók Azure-adatbázishoz való munkához."
+title: Kiszolgáló kapcsolatos fogalmak, MySQL az Azure-adatbázis
+description: Ez a témakör szempontjait és irányelveket MySQL-kiszolgálók Azure-adatbázishoz való munkához.
 services: mysql
 author: ajlam
 ms.author: andrela

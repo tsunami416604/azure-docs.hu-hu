@@ -1,6 +1,6 @@
 ---
-title: "Nyomkövetési naplók az Azure Application Insights Java felfedezése |} Microsoft Docs"
-description: "Keresési Log4J vagy a Logback nyomkövetések az Application Insightsban"
+title: Nyomkövetési naplók az Azure Application Insights Java felfedezése |} Microsoft Docs
+description: Keresési Log4J vagy a Logback nyomkövetések az Application Insightsban
 services: application-insights
 documentationcenter: java
 author: mrbullwinkle
