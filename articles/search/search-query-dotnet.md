@@ -1,23 +1,18 @@
 ---
-title: "Index lekérdezése (.NET API – Azure Search) | Microsoft Docs"
-description: "Létrehozhat keresési lekérdezést az Azure Search szolgáltatásban, a keresési eredmények szűrését és rendezését pedig keresési paraméterek használatával végezheti el."
-services: search
-manager: jhubbard
-documentationcenter: 
+title: Index lekérdezése (.NET API – Azure Search) | Microsoft Docs
+description: Létrehozhat keresési lekérdezést az Azure Search szolgáltatásban, a keresési eredmények szűrését és rendezését pedig keresési paraméterek használatával végezheti el.
 author: brjohnstmsft
-ms.assetid: 12c3efba-ea99-4187-9d2d-f63b5ec7040d
+manager: jlembicz
+ms.author: brjohnst
 ms.service: search
 ms.devlang: dotnet
-ms.workload: search
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
+ms.topic: quickstart
 ms.date: 05/19/2017
-ms.author: brjohnst
-ms.openlocfilehash: c3c22b83346269cf3c0327fe3fb98510a6266733
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 7aa372f751cc15e05cd7f118a862275d21627d73
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="query-your-azure-search-index-using-the-net-sdk"></a>Az Azure Search-index lekérdezése a .NET SDK használatával
 > [!div class="op_single_selector"]
