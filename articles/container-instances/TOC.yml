@@ -43,6 +43,8 @@
       href: container-instances-environment-variables.md
     - name: Üzemelő példányok hibaelhárítása
       href: container-instances-troubleshooting.md
+    - name: Jenkins-buildügynökök az ACI-ban
+      href: container-instances-jenkins.md
     - name: Adatkötetek konfigurálása
       items:
         - name: Azure Files

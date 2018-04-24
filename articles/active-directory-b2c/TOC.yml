@@ -195,6 +195,8 @@
                   href: active-directory-b2c-reference-password-change-custom.md
                 - name: A bejelentkezve maradás engedélyezése
                   href: active-directory-b2c-reference-kmsi-custom.md
+            - name: A felhasználók viselkedésének nyomon követése
+              href: active-directory-b2c-custom-guide-eventlogger-appins.md
             - name: Hibaelhárítás
               items:
                 - name: Naplók gyűjtése az Application Insights használatával

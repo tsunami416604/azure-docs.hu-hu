@@ -48,6 +48,7 @@
 ### [A prediktív karbantartási megoldás bemutatója](iot-suite-predictive-walkthrough.md)
 
 ## Csatlakoztatott gyár
+### [Mi az a csatlakoztatott gyár?](iot-suite-connected-factory-features.md)
 ### [Csatlakoztatott factory-megoldás áttekintése](iot-suite-connected-factory-overview.md)
 ### [Csatlakoztatott gyáron alapuló megoldás bemutatója](iot-suite-connected-factory-sample-walkthrough.md)
 

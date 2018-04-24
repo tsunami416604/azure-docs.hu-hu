@@ -31,6 +31,7 @@
 ### [A kiszolgálók rendszergazdáinak kezelése](analysis-services-server-admins.md)
 ### [A kiszolgáló metrikáinak monitorozása](analysis-services-monitor.md)
 ### [Diagnosztikai naplózás beállítása](analysis-services-logging.md)
+### [Átjáró használata az adatforrásokhoz a virtuális hálózaton](analysis-services-vnet-gateway.md)
 ## Kapcsolódás
 ### [Ügyfélkódtárak beszerzése](analysis-services-data-providers.md)
 ### [Kapcsolódás Excellel](analysis-services-connect-excel.md)

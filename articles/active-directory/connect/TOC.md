@@ -50,7 +50,7 @@
 ### [Többtartományos támogatás összevonási szolgáltatásokhoz](active-directory-aadconnect-multiple-domains.md)
 ### [Automatikus frissítés](active-directory-aadconnect-feature-automatic-upgrade.md)
 ### [SAML 2.0 identitásszolgáltató használata egyszeri bejelentkezéshez](active-directory-aadconnect-federation-saml-idp.md)
-
+### [A bejelentkezéshez e-mail-címet használó vendégfelhasználói fiókok szinkronizálása](active-directory-aadconnect-guest-sync.md)
 
 
 ## Azure AD Connect-szinkronizálás kezelése
