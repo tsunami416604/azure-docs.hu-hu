@@ -17,7 +17,7 @@
 ## [Vállalati arculat konfigurálása](customize-branding.md)
 ## [Felhasználók hozzáadása az Azure AD-hez](add-users-azure-active-directory.md)
 ## [Licencek hozzárendelése felhasználókhoz](license-users-groups.md)
-## [Új jelszó önkiszolgáló kérésének konfigurálása](active-directory-passwords-getting-started.md)
+## [Új jelszó önkiszolgáló kérésének konfigurálása](authentication/quickstart-sspr.md)
 
 
 # Útmutató
@@ -63,6 +63,8 @@
 #### [Dinamikus csoportok és B2B-felhasználók](active-directory-b2b-dynamic-groups.md)
 #### [Naplózás és jelentéskészítés](active-directory-b2b-auditing-and-reporting.md)
 #### [B2B hibrid cégekhez és vállalkozásokhoz](active-directory-b2b-hybrid-organizations.md)
+##### [B2B-felhasználók hozzáférésének engedélyezése a helyi alkalmazásokhoz](active-directory-b2b-hybrid-cloud-to-on-premises.md)
+##### [Helyi felhasználók hozzáférésének engedélyezése a felhőalkalmazásokhoz](active-directory-b2b-hybrid-on-premises-to-cloud.md)
 #### [Külső B2B- és Office 365-megosztás](active-directory-b2b-o365-external-user.md)
 #### [B2B-licencelés](active-directory-b2b-licensing.md)
 #### [Aktuális korlátozások](active-directory-b2b-current-limitations.md)
@@ -119,6 +121,7 @@
 #### [Megőrzés](active-directory-reporting-retention.md)
 #### [Késések](active-directory-reporting-latencies-azure-portal.md)
 #### [Értesítések](active-directory-reporting-notifications.md)
+#### [Naplózott tevékenységekre vonatkozó referencia](active-directory-reporting-activity-audit-reference.md)
 #### [Bejelentkezési tevékenységek hibakódjai](active-directory-reporting-activity-sign-ins-errors.md)
 #### [Többtényezős hitelesítés](active-directory-reporting-activity-sign-ins-mfa.md)
 ### Hibaelhárítás
@@ -141,7 +144,7 @@
 #### [Regisztráció önkiszolgáló jelszó-visszaállításra](active-directory-passwords-reset-register.md)
 ### [Az SSPR működése](authentication/concept-sspr-howitworks.md)
 ### [SSPR üzembehelyezési útmutató](authentication/howto-sspr-deployment.md)
-### [SSPR és Windows 10](active-directory-passwords-login.md)
+### [SSPR és Windows 10](authentication/tutorial-sspr-windows.md)
 ### [SSPR-házirendek ](authentication/concept-sspr-policy.md)
 ### [SSPR-testreszabás](authentication/concept-sspr-customization.md)
 ### [SSPR-adatkövetelmények](authentication/howto-sspr-authenticationdata.md)
@@ -149,7 +152,7 @@
 ### Informatikai rendszergazdák: Új jelszavak kérése
 #### [Azure Portal](active-directory-users-reset-password-azure-portal.md)
 ### [SSPR licenc](authentication/concept-sspr-licensing.md)
-### [Jelszóvisszaíró](active-directory-passwords-writeback.md)
+### [Jelszóvisszaíró](authentication/howto-sspr-writeback.md)
 ### [Hibaelhárítás](authentication/active-directory-passwords-troubleshoot.md)
 ### [GYIK](authentication/active-directory-passwords-faq.md)
 

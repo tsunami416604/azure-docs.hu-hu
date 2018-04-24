@@ -29,7 +29,7 @@
       href: app-service-web-get-started-html.md
 - name: Oktatóanyagok
   items:
-    - name: 1 – Adatbázist használó alkalmazás
+    - name: Adatbázist használó alkalmazás
       items:
         - name: .NET Core és SQL-adatbázis
           href: app-service-web-tutorial-dotnetcore-sqldb.md
@@ -43,15 +43,17 @@
           href: app-service-web-tutorial-java-mysql.md
         - name: Python és PostgreSQL
           href: app-service-web-tutorial-python-postgresql.md
-    - name: 1 – RESTful API üzemeltetése
+    - name: Az SQL DB biztonságos elérése
+      href: app-service-web-tutorial-connect-msi.md
+    - name: RESTful API üzemeltetése
       href: app-service-web-tutorial-rest-api.md
-    - name: 2 – Egyéni tartomány leképezése
+    - name: Egyéni tartomány leképezése
       href: app-service-web-tutorial-custom-domain.md
-    - name: 3 – SSL-tanúsítvány kötése
+    - name: SSL-tanúsítvány kötése
       href: app-service-web-tutorial-custom-ssl.md
-    - name: 4 – CDN hozzáadása
+    - name: CDN hozzáadása
       href: app-service-web-tutorial-content-delivery-network.md
-    - name: 5 – Felhasználók hitelesítése
+    - name: Felhasználók hitelesítése
       href: app-service-web-tutorial-auth-aad.md
 - name: Példák
   items:
@@ -69,6 +71,8 @@
       href: azure-web-sites-web-hosting-plans-in-depth-overview.md
     - name: OS-funkciók
       href: web-sites-available-operating-system-functionality.md
+    - name: Bemeneti és kimeneti IP-címek
+      href: app-service-ip-addresses.md
     - name: Hitelesítés és engedélyezés
       href: app-service-authentication-overview.md
     - name: Hibrid kapcsolatok
@@ -143,6 +147,8 @@
               href: app-service-mobile-how-to-configure-twitter-authentication.md
         - name: Hitelesítés testreszabása
           href: app-service-authentication-how-to.md
+        - name: IP-címek korlátozása
+          href: app-service-ip-restrictions.md
         - name: Felügyeltszolgáltatás-identitás használata
           href: app-service-managed-service-identity.md
         - name: SSL-tanúsítvány használata alkalmazáskódban
