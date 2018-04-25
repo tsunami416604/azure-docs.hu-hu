@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/14/2017
 ms.author: markvi
-ms.openlocfilehash: 83586cff59d5beb7c48bc6bb8b72fd09e4d37bf8
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: be5f5a6c39e27ae7fedab32fea12f5cf9b7cd3bd
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory – gyakori kérdések
 Az Azure Active Directory (Azure AD) egy átfogó szolgáltatott identitási (IDaaS) megoldás, amely az identitások, a hozzáférés-kezelés és a biztonság minden szempontját lefedi.
@@ -112,7 +112,7 @@ További információkért lásd: [A helyszíni identitás-infrastruktúra és a
 
 **V:** A jelszavak visszaírása valós időben történik.
 
-További részletekért lásd: [A jelszókezelés első lépései](active-directory-passwords-getting-started.md).
+További részletekért lásd: [A jelszókezelés első lépései](authentication/quickstart-sspr.md).
 
 - - -
 **K: Használhatok jelszóvisszaírást rendszergazda által kezelt jelszavakhoz?**

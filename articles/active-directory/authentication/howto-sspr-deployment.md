@@ -16,19 +16,19 @@ ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro;seohack1
-ms.openlocfilehash: 22086a0d9fc774b75e1b0873188b16fc548d0791
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: e34bf6ec106976c1c3aab0f2b5c4ebf4b6ccc54b
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>Új jelszó önkiszolgáló kérésének sikeres bevezetése
 
 Az Azure Active Directory (Azure AD) önkiszolgáló jelszóváltoztatási (SSPR) funkciójának zökkenőmentes bevezetése érdekében a legtöbb ügyfél a következő lépéseket végzi el:
 
-1. [Az új jelszavak kérésének engedélyezése a címtárban](../active-directory-passwords-getting-started.md).
-2. [A helyszíni Active Directory-engedélyek konfigurálása a jelszóvisszaíró számára](../active-directory-passwords-writeback.md#active-directory-permissions).
-3. [Jelszóvisszaíró konfigurálása](../active-directory-passwords-writeback.md#configure-password-writeback) jelszavak az Azure AD-ből a helyszíni könyvtárba történő visszaírásához.
+1. [Az új jelszavak kérésének engedélyezése a címtárban](quickstart-sspr.md).
+2. [A helyszíni Active Directory-engedélyek konfigurálása a jelszóvisszaíró számára](howto-sspr-writeback.md#active-directory-permissions).
+3. [Jelszóvisszaíró konfigurálása](howto-sspr-writeback.md#configure-password-writeback) jelszavak az Azure AD-ből a helyszíni könyvtárba történő visszaírásához.
 4. [A szükséges licencek hozzárendelése és ellenőrzése](concept-sspr-licensing.md).
 5. Annak meghatározása, hogy fokozatos bevezetést szeretne-e végezni. Ha az SSPR bevezetését fokozatosan szeretné elvégezni, a hozzáférést a felhasználók egy csoportjára korlátozhatja, így egy adott csoporttal kísérletezhet a programban. Ha egy adott csoportra szeretné korlátozni a bevezetést, állítsa az **Új jelszó önkiszolgáló kérése engedélyezve** beállítást a **Kiválasztva** értékre, majd válassza ki azt a biztonsági csoportot, amelynek engedélyezni szeretné az új jelszavak kérését. 
 6. Töltse ki a felhasználók regisztrálásához szükséges [hitelesítési adatokat](howto-sspr-authenticationdata.md), például az irodai telefonszámukat, a mobiltelefonszámukat és a másodlagos e-mail-címüket.
@@ -41,7 +41,7 @@ Az Azure Active Directory (Azure AD) önkiszolgáló jelszóváltoztatási (SSPR
    > [!NOTE]
    > Ha a beállítást egy kiválasztott csoportról mindenkire módosítja, a felhasználók által egy tesztcsoport tagjaként regisztrált meglévő hitelesítési adatok nem vesztik érvényüket. A konfigurált felhasználók, akik érvényes hitelesítési adatokat regisztráltak, továbbra is működni fognak.
 
-12. [Az új jelszó kérésének engedélyezése a Windows 10-felhasználók számára a bejelentkezési képernyőn](../active-directory-passwords-login.md).
+12. [Az új jelszó kérésének engedélyezése a Windows 10-felhasználók számára a bejelentkezési képernyőn](tutorial-sspr-windows.md).
 
    > [!IMPORTANT]
    > Az SSPR-t egy felhasználóval tesztelje, ne egy rendszergazdával, mert a Microsoft szigorú hitelesítési előírásokat tartat be az Azure rendszergazdai fiókjaihoz. A rendszergazdai jelszavakra vonatkozó szabályzatról a [jelszóházirendről szóló cikkünkben](concept-sspr-policy.md#administrator-password-policy-differences) talál további információt.
@@ -90,7 +90,7 @@ Az önkiszolgáló jelszóátállítás letiltása egyszerű feladat. Nyissa meg
 * [Kérdése van a licenceléssel kapcsolatban?](concept-sspr-licensing.md)
 * [Milyen adatokat használ az SSPR, és milyen adatokat kell kitöltenie a felhasználók számára?](howto-sspr-authenticationdata.md)
 * [Mik az SSPR szabályzatbeállításai?](concept-sspr-policy.md)
-* [Mi a jelszóvisszaíró, és miért fontos?](../active-directory-passwords-writeback.md)
+* [Mi a jelszóvisszaíró, és miért fontos?](howto-sspr-writeback.md)
 * [Hogyan készíthető jelentés az SSPR-ben végzett tevékenységekről?](howto-sspr-reporting.md)
 * [Mik az SSPR beállításai, és mit jelentenek?](concept-sspr-howitworks.md)
 * [Azt hiszem, hogy valami nem működik. Hogyan háríthatom el az SSPR hibáit?](active-directory-passwords-troubleshoot.md)
