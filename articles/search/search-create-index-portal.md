@@ -1,25 +1,20 @@
 ---
-title: "(Portál – Azure Search) index létrehozása |} Microsoft Docs"
-description: "Az Azure portál használatával index létrehozása."
-services: search
-manager: jhubbard
+title: Index létrehozása (Portal – Azure Search) | Microsoft Docs
+description: Index létrehozása az Azure Portal használatával.
+manager: cgronlun
 author: heidisteen
-documentationcenter: 
-ms.assetid: 
 ms.service: search
 ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: quickstart
 ms.date: 06/20/2017
 ms.author: heidist
-ms.openlocfilehash: a7d98ab0937a7d3f932d5df34c19ae091129804e
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
-ms.translationtype: MT
+ms.openlocfilehash: ab0352b8c830e875afc9b1d1b006ba4d2a512d7a
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="create-an-azure-search-index-using-the-azure-portal"></a>Az Azure portál használata az Azure Search-index létrehozása
+# <a name="create-an-azure-search-index-using-the-azure-portal"></a>Azure Search-index létrehozása az Azure Portal használatával
 > [!div class="op_single_selector"]
 > * [Áttekintés](search-what-is-an-index.md)
 > * [Portál](search-create-index-portal.md)
@@ -28,73 +23,73 @@ ms.lasthandoff: 12/21/2017
 > 
 > 
 
-A beépített index-tervező használata Azure-portálon prototípusként vagy hozzon létre egy [search-index](search-what-is-an-index.md) az Azure Search szolgáltatás futtatásához. 
+Az Azure Portal beépített indextervezőjével az Azure Search szolgáltatáson futtatható [keresési index](search-what-is-an-index.md) tervezhető vagy hozható létre. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk feltételezi, hogy egy [Azure-előfizetés](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) és [Azure Search szolgáltatás](search-create-service-portal.md).  
+A cikk feltételezi, hogy rendelkezik [Azure-előfizetéssel](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) és az [Azure Search szolgáltatással](search-create-service-portal.md).  
 
-## <a name="find-your-search-service"></a>Keresse meg a keresési szolgáltatáshoz
-1. Jelentkezzen be az Azure portálon, és tekintse át a [keresési az előfizetéshez tartozó szolgáltatások](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)
+## <a name="find-your-search-service"></a>A Search szolgáltatás megkeresése
+1. Jelentkezzen be az Azure Portal oldalán, és tekintse át az [előfizetéséhez elérhető keresési szolgáltatásokat](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)
 2. Válassza ki az Azure Search szolgáltatást.
 
-## <a name="name-the-index"></a>Az index neve
+## <a name="name-the-index"></a>Az index elnevezése
 
-1. Kattintson a **index hozzáadása** gombra a parancssávon az oldal tetején.
-2. Nevezze el az Azure Search-index. 
-   * Betűvel kezdődhet.
-   * Csak kisbetűk, számjegyek és kötőjelek használja ("-").
-   * Korlátozza a nevét, 60 karakter hosszúságú lehet.
+1. Kattintson az **Index hozzáadása** gombra a lap tetején található parancssávon.
+2. Adjon nevet az Azure Search-indexnek. 
+   * Kezdje betűvel.
+   * Csak kisbetűket, számjegyeket vagy kötőjeleket ("-") használjon.
+   * A név ne legyen 60 karakternél hosszabb.
 
-  Az index neve kapcsolatok használata esetén az index és az Azure Search REST API a HTTP-kérelmek küldéséhez használt végponti URL-Címének részévé válik.
+  Az index neve része lesz az indexhez való kapcsolódáshoz és az Azure Search REST API-ban HTTP-kérelmek küldéséhez használt végpont URL-címének.
 
-## <a name="define-the-fields-of-your-index"></a>Az index mezők megadása
+## <a name="define-the-fields-of-your-index"></a>Az index mezőinek definiálása
 
-Index összeállítás tartalmaz egy *gyűjtemény mezők* a kereshető adatokat, amely meghatározza az indexben. Pontosabban adja meg azt jelzi, hogy külön-külön feltöltése a struktúra. A mezők gyűjteménybe szükséges és választható mezőket, és a adta-e, annak meghatározásához, hogy miként legyen használható a mező index attribútumokkal.
+Az index összeállításához tartozik egy *Mezőkollekció*, amely az indexben kereshető adatok körét határozza meg. Még pontosabban ez adja meg a külön feltöltött dokumentumok struktúráját. A mezőkollekcióhoz kötelező és választható, névvel és típussal rendelkező mezők is tartoznak, a mezők felhasználási módját meghatározó index-tulajdonságokkal.
 
-1. A a **Index hozzáadása** panelen kattintson a **mezők >** diák nyitott a mező definition panel. 
+1. Nyissa meg a meződefiníciós panelt az **Index hozzáadása** panel **Mezők >** elemére kattintva. 
 
-2. Fogadja el a létrehozott *kulcs* Edm.String típusú mező. Alapértelmezés szerint a mező neve *azonosító* azonban mindaddig, amíg a karakterlánc megfelel a átnevezheti [elnevezési szabályait](https://docs.microsoft.com/rest/api/searchservice/Naming-rules). A következő kulcsmező minden Azure Search-index esetén kötelező, és karakterláncnak kell lennie.
+2. Fogadja el a generált Edm.String típusú *key* (kulcs) mezőt. A mező neve alapértelmezés szerint *id*, de az [elnevezési szabályok](https://docs.microsoft.com/rest/api/searchservice/Naming-rules) betartása mellett át is nevezhető. A kulcs mező minden Azure Search-indexhez kötelező, és karakterláncnak (string) kell lennie.
 
-3. Adja hozzá a mezőt fel kell töltenie a dokumentumok teljes megadásához. Ha dokumentumok alkotják egy *azonosító*, *Szálloda neve*, *cím*, *Város*, és *régió*, hozzon létre egy megfelelő mező mindegyiknél az index. Tekintse át a [kialakítási útmutató az alábbi részben](#design) segítségre attribútum.
+3. Adja meg a feltölteni kívánt dokumentumokat teljesen leíró mezőket. Ha a dokumentumok tartalma *azonosító*, *szálloda neve*, *cím*, *város* és *régió*, akkor mindegyikhez hozza létre a megfelelő mezőt az indexben. A tulajdonságok beállításához [a lenti tervezési útmutató](#design) nyújt segítséget.
 
-4. Opcionálisan adja hozzá a mezőket használt belső szűrőkifejezéseket. Zárja ki a mezőket a keresési műveletek attribútumok használatát a mezőben állítható be.
+4. Belső használatra a szűrőkifejezésekben használt mezőket is hozzáadhat. A mezőtulajdonságok beállíthatók úgy, hogy kizárja a mezőket a keresési műveletekből.
 
-5. Ha befejezte, kattintson a **OK** mentéséhez, és hozza létre az indexet.
+5. Ha elkészült, kattintson az **OK** gombra az index mentéséhez és létrehozásához.
 
-## <a name="tips-for-adding-fields"></a>Tippek a mezők hozzáadása
+## <a name="tips-for-adding-fields"></a>Tippek a mezők hozzáadásához
 
-Az index létrehozása a portálon intenzív billentyűzet. Ez a munkafolyamat következő minimalizálása érdekében a lépéseket:
+A portálon az indexek létrehozása billentyűzetfüggő. A szükséges műveletek száma a következő munkafolyamat követésével csökkenthető:
 
-1. Először is hozhat létre a mezőlista nevet, és az adattípus beállítása.
+1. Először építse fel a mezők listáját a nevek beírásával és az adattípusok beállításával.
 
-2. Ezután használja a jelölőnégyzeteket minden tetején attribútumot tömeges engedélyezi a beállítást, minden mezőbe, és szelektív módon törölheti a kevés mezőből áll, amelyek nem igényelnek jelölőnégyzetéből. Például karakterlánc mező kitöltése általában kereshetők. Így előfordulhat, hogy kattintson **lekérhető** és **kereshető** mindkét adja vissza a mező értékének a találatok között, valamint a mező a teljes szöveges keresés engedélyezése. 
+2. Ez után az egyes tulajdonságok feletti jelölőmezőket használva egyszerre engedélyezheti az adott beállítást az összes mezőre, majd egyesével törölheti a jelöléseket az olyan mezők mellett, amelyekhez nem szükséges. A karakterlánc-mezők például általában kereshetők. Ilyen esetben érdemes bejelölni a **Retrievable** (Lekérdezhető) és **Searchable** (Kereshető) tulajdonságokat, hogy a keresési eredményben megjelenjen a mező tartalma és lehetséges legyen a mezőn a teljes szöveges keresés. 
 
 <a name="design"></a>
-## <a name="design-guidance-for-setting-attributes"></a>Tervezési útmutatást nyújt attribútumainak beállítása
+## <a name="design-guidance-for-setting-attributes"></a>Tervezési útmutató a tulajdonságok beállításához
 
-Habár bármikor hozzáadhat új mezőket, meglévő mező definíciók zárolta élettartamát az index. Emiatt fejlesztők általában használni a portál egyszerű indexek létrehozása, ötleteket tesztelési vagy a portál lapjai használatával kereshet meg egy beállítást. Egy index terv keresztül gyakori iteráció egy sokkal hatékonyabb, ha a kódalapú megközelítés követi, hogy az index könnyedén létre újra.
+Új mezők bármikor megadhatók, a meglévő meződefiníciók azonban az index élettartamára rögzülnek. A fejlesztők ezért általában egyszerű indexek létrehozására vagy ötletek kipróbálására használják a portált, vagy a portál oldalain néznek utána egy beállításnak. Egy index rendszeres kiegészítése hatékonyabb az index újraépítését megkönnyítő kódalapú megközelítéssel.
 
-Elemzőkkel és a javaslattevők társítva a mezőket, az index mentése előtt. Ne kattintson végig lapokra nyelvi elemzőkkel és a javaslattevők hozzáadását az index definícióját.
+Az index mentése előtt elemzők és javaslattevők lesznek a mezőkhöz rendelve. Mindenképpen kattintsa végig az összes lapot, hogy az index definíciójához megadja a nyelvi elemzőket vagy javaslattevőket.
 
-A karakterlánc típusú gyakran fel van tüntetve **kereshető** és **lekérhető**.
+A karakterlánc típusú mezők gyakran mint **Searchable** (Kereshető) és **Retrievable** (Lekérdezhető)vannak megjelölve.
 
-Keresési eredmények szűkítéséhez használt mezőkkel következők **rendezhető**, **Filterable**, és **kategorizálható**.
+A keresési eredmények szűkítésére használt mezők **Sortable** (Rendezhető), **Filterable** (Szűrhető) és **Facetable** (Kategorizálható) tulajdonsággal is rendelkeznek.
 
-A mező attribútumok határozza meg, hogyan mező használata esetén például, hogy használatba a teljes szöveges keresés, jellemzőalapú navigációs, rendezési műveletet, és így tovább. A következő táblázat ismerteti az összes attribútumot.
+A mezőtulajdonságok határozzák meg egy mező használati módját, például hogy használva lesz-e teljes szöveges keresésben, kategorizált navigációban, rendezési műveletekben stb. Az alábbi táblázat külön ismerteti az egyes tulajdonságokat.
 
 |Attribútum|Leírás|  
 |---------------|-----------------|  
-|**kereshető**|Teljes szöveges kereshető, például szóhatároló indexelés során lexikális elemzés vonatkoznak. Ha például a "napfényes" értékre van beállítva kereshető mezőt, belső azt lesznek osztva az egyes jogkivonatok "moziba" és "day". További információkért lásd: [hogyan teljes szöveges keresés works](search-lucene-query-architecture.md).|  
-|**szűrhető**|A hivatkozott **$filter** lekérdezések. Típusú szűrhető mezők `Edm.String` vagy `Collection(Edm.String)` nem kerülnek szóhatároló, így csak pontosan megegyezik az összehasonlítást. Például, ha a mező f "moziba Day" `$filter=f eq 'sunny'` megkeresi, nincs találat, de `$filter=f eq 'sunny day'` lesz. |  
-|**rendezhető**|Alapértelmezés szerint a rendszer rendezése az eredmények pontszám, de be lehet állítani a rendezési a a dokumentumokban lévő mezők alapján. Típusú mezők `Collection(Edm.String)` nem lehet **rendezhető**. |  
-|**kategorizálható**|A keresési eredmények kategória (például egy adott városban szállodák) találati számát tartalmazó bemutató jellemzően használt. Ez a beállítás nem használható típusú mezők `Edm.GeographyPoint`. Típusú mezők `Edm.String` , amelyek **szűrhető**, **rendezhető**, vagy **kategorizálható** legfeljebb 32 kilobájt hosszabb használható. További információkért lásd: [a Create Index (REST API-t)](https://docs.microsoft.com/rest/api/searchservice/create-index).|  
-|**kulcs**|Az index dokumentumokon egyedi azonosítója. Pontosan egy mezőt ki kell választani, a következő kulcsmező és típusúnak kell lennie `Edm.String`.|  
-|**lekérhető**|Meghatározza, hogy a mező a keresési eredmény adhatók vissza. Ez akkor hasznos, ha egy mező használni kívánt (például *nyereség margó*) szűrőként, rendezés, vagy pontozási mechanizmus, de nem szeretné, hogy a végfelhasználók számára megjelenített a mező. Ennek az attribútumnak kell lennie `true` a `key` mezőket.|  
+|**searchable**|Kereshető – Teljes szöveges keresésre alkalmas, az indexelés során lexikai elemzés, például szavakra bontás végezhető rajta. Ha egy kereshető mező értékének például a „sunny day” szöveget adja meg, akkor az két különálló tokenre lesz bontva: „sunny” és „day”. További részletek az [A teljes szöveges keresés működése](search-lucene-query-architecture.md) című cikkben.|  
+|**filterable**|Szűrhető – A **$filter** lekérdezések hivatkoznak rá. Az `Edm.String` vagy `Collection(Edm.String)` típusú szűrhető mezők nem lesznek szavakra bontva, ezért összehasonlítások csak pontos egyezésekre végezhetők. Ha egy ilyen mező értékének például a „sunny day” szöveget adja meg, akkor a `$filter=f eq 'sunny'` keresés nem talál egyezést, a `$filter=f eq 'sunny day'` viszont igen. |  
+|**sortable**|Rendezhető – A rendszer alapértelmezés szerint érték szerint rendezi a találatokat, de a dokumentumok mezői alapján végzett rendezés is konfigurálható. A `Collection(Edm.String)` típusú mezőkhöz nem adható meg a **sortable** tulajdonság. |  
+|**facetable**|Kategorizálható – Általában akkor használják, ha a keresési eredményeket a kategóriánkénti találatok számával együtt kell bemutatni (például szállodák egy adott városban). Ez a lehetőség az `Edm.GeographyPoint` típusú mezők esetén nem használható. A **filterable** (szűrhető), **sortable** (rendezhető) vagy **facetable** (kategorizálható) tulajdonsággal rendelkező `Edm.String` típusú mezők hossza legfeljebb 32 kilobájt lehet. Részletek az [Index létrehozása (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) című cikkben.|  
+|**key**|Kulcs – Az indexen belüli dokumentumok egyedi azonosítója. Kulcsmezőként egyetlen `Edm.String` típusú mezőt kell megadni.|  
+|**retrievable**|Lekérdezhető – Megadja, hogy a mező visszaadható-e egy keresési eredményben. Ez akkor hasznos, ha egy mező (például *nyereség*) szűrésre, rendezésre vagy értékelésre szolgál, de a végfelhasználó számára nem kell megjelennie. Ennek a tulajdonságnak az értéke `key` tulajdonságú mezők esetén csak `true` lehet.|  
 
-## <a name="create-the-hotels-index-used-in-example-api-sections"></a>Példa API szakaszokban használt szállodák index létrehozása
+## <a name="create-the-hotels-index-used-in-example-api-sections"></a>A példa API-szakaszokban használt szálloda-index létrehozása
 
-Az Azure Search API dokumentációja tartalmaz egy egyszerű kiemeli kódpéldák *szállodák* index. Az alábbi képernyőfelvételnek tekintse meg az index definícióját, beleértve az index definícióját, során megadott francia nyelvű analyzer amely létrehozhatja a gyakorlat során a portálon.
+Az Azure Search API dokumentációja egy egyszerű *szálloda*-indexet használó kódpéldákat is tartalmaz. Az alábbi képernyőképeken az index definíciója és annak során a francia nyelvi elemző megadása látható. Ezt gyakorlásként Ön is elkészítheti a portálon.
 
 ![](./media/search-create-index-portal/field-definitions.png)
 
@@ -102,12 +97,12 @@ Az Azure Search API dokumentációja tartalmaz egy egyszerű kiemeli kódpéldá
 
 ## <a name="next-steps"></a>További lépések
 
-Miután létrehozta az Azure Search-index, áthelyezheti a következő lépéssel: [kereshető adatokat feltölteni az indexbe](search-what-is-data-import.md).
+Miután létrehozott egy Azure Search-indexet, folytathatja a következő lépéssel, ami a [kereshető adatok feltöltése az indexbe](search-what-is-data-import.md).
 
-Másik lehetőségként is készíthet, indexek mélyebb betekintést. Mellett a mezők gyűjteményében index azt is meghatározza, elemzőkkel, a javaslattevők, a pontozási profil és a CORS-beállítások. A portál lapokra lapokat biztosít a leggyakrabban használt elemek meghatározásához: mezők, lekérdezések és javaslattevők. Hozzon létre, és más elemek módosítása, használhatja a REST API-t vagy a .NET SDK-val.
+Úgy is dönthet, hogy inkább az indexeket tanulmányozza alaposabban. Az indexek a Mezőkollekción kívül megadják az elemzőket, javaslattevőket, értékelési profilokat és CORS-beállításokat is. A portál lapokra osztott oldalakat kínál a leggyakrabban használt elemek: a mezők, elemzők és javaslattevők megadására. Más elemek létrehozására vagy módosítására a REST API vagy a .NET SDK használható.
 
 ## <a name="see-also"></a>Lásd még
 
  [A teljes szöveges keresés működése](search-lucene-query-architecture.md)  
- [Keresési szolgáltatás REST API](https://docs.microsoft.com/rest/api/searchservice/) [.NET SDK-val](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)
+ [Keresési szolgáltatás REST API](https://docs.microsoft.com/rest/api/searchservice/) [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)
 

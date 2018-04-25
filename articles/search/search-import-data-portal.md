@@ -1,25 +1,18 @@
 ---
-title: "Adatok importálása az Azure Search szolgáltatásba a portálon | Microsoft Docs"
-description: "Az Azure Portalon az Azure Search Adatok importálása varázslójával bejárhatja az Azure-beli virtuális gépeken található NoSQL Azure Cosmos DB-ben, Blob Storage-ban, Table Storage-ban, SQL Database-ben és SQL Serverben tárolt Azure-adatokat."
-services: search
-documentationcenter: 
+title: Adatok importálása az Azure Search szolgáltatásba a portálon | Microsoft Docs
+description: Az Azure Portalon az Azure Search Adatok importálása varázslójával bejárhatja az Azure-beli virtuális gépeken található NoSQL Azure Cosmos DB-ben, Blob Storage-ban, Table Storage-ban, SQL Database-ben és SQL Serverben tárolt Azure-adatokat.
 author: HeidiSteen
-manager: jhubbard
-editor: 
+manager: cgronlun
 tags: Azure Portal
-ms.assetid: f40fe07a-0536-485d-8dfa-8226eb72e2cd
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
+ms.topic: quickstart
 ms.date: 05/01/2017
 ms.author: heidist
-ms.openlocfilehash: 286408fb0c3aa2b83cf17a4646f6f7420b6884f4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b651ccaa59e40b9d8d1c682fc8c266bf95b62a2e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="import-data-to-azure-search-using-the-portal"></a>Adatok importálása az Azure Search szolgáltatásba a portál használatával
 Az Azure portál Azure Search irányítópultján található **Adatok importálása** varázsló segítségével az adatok betölthetők egy indexbe. 
@@ -94,7 +87,7 @@ Miután az összes dokumentum betöltődött, az index azonnal lekérdezhető.
 
 A portál tartalmaz egy **Keresési ablakot**, amelynek segítségével kód írása nélkül kérdezheti le az indexeket. A [Keresési ablak](search-explorer.md) bármely indexen használható.
 
-A keresési funkció alapértelmezett beállításokon alapul, [egyszerű szintaxist](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) használ és az alapértelmezett [searchMode lekérdezési paramétert(https://docs.microsoft.com/rest/api/searchservice/search-documents) követi. 
+A keresési funkció alapértelmezett beállításokon alapul, mint az [egyszerű szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) és az alapértelmezett [searchMode lekérdezési paraméter(https://docs.microsoft.com/rest/api/searchservice/search-documents). 
 
 A rendszer az eredményeket JSON-formátumban nagy részletességgel adja vissza, így a teljes dokumentum vizsgálható.
 

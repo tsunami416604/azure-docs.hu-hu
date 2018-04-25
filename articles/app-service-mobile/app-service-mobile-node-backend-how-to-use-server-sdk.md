@@ -869,7 +869,7 @@ Az Azure portál használatával módosíthatja a Node.js háttér-parancsfájlo
 
 <!-- URLs -->
 [Android ügyfél gyors üzembe helyezés]: app-service-mobile-android-get-started.md
-[Apache Cordova ügyfél gyors üzembe helyezés]: app-service-mobile-cordova-get-started.md
+[Apache Cordova-ügyfél gyors üzembe helyezés]: app-service-mobile-cordova-get-started.md
 [iOS ügyfél gyors üzembe helyezés]: app-service-mobile-ios-get-started.md
 [Xamarin.iOS ügyfél gyors üzembe helyezés]: app-service-mobile-xamarin-ios-get-started.md
 [Xamarin.Android ügyfél gyors üzembe helyezés]: app-service-mobile-xamarin-android-get-started.md
