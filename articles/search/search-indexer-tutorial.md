@@ -1,25 +1,18 @@
 ---
-title: "Oktatóanyag az Azure SQL-adatbázisok indexeléséről az Azure Search szolgáltatásban | Microsoft Docs"
-description: "Feltérképezi az Azure SQL-adatbázist a kereshető adatok kinyeréséhez és az Azure Search-index feltöltéséhez."
-services: search
-documentationcenter: 
+title: Oktatóanyag az Azure SQL-adatbázisok indexeléséről az Azure Search szolgáltatásban | Microsoft Docs
+description: Feltérképezi az Azure SQL-adatbázist a kereshető adatok kinyeréséhez és az Azure Search-index feltöltéséhez.
 author: HeidiSteen
-manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 
+manager: cgronlun
 ms.service: search
 ms.devlang: na
-ms.workload: search
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
+ms.topic: tutorial
 ms.date: 11/10/2017
 ms.author: heidist
-ms.openlocfilehash: 22eeccfd692cca74bc0cf12c3400d717c103332f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f123b4f5d0a51a4ab5015a2a0008a76fbfa0318e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Azure SQL-adatbázis feltérképezése Azure Search-indexelők használatával
 
@@ -95,7 +88,7 @@ A keresési szolgáltatás végpontját és kulcsát a portálon találja. A szo
 4. Másolja és illessze be első bejegyzésként az **appsettings.json** fájlba a Visual Studióban.
 
   > [!Note]
-  > A szolgáltatásnév része a search.windows.net fájlt tartalmazó végpontnak. Ha kíváncsi rá, a teljes URL-címet az Áttekintés oldal **Alapvető szolgáltatások** részében tekintheti meg. Az URL-cím a következő példához hasonlít: https://szolgáltatásnév.search.windows.net
+  > A szolgáltatásnév része a search.windows.net fájlt tartalmazó végpontnak. Ha kíváncsi rá, a teljes URL-címet az Áttekintés oldal **Alapvető szolgáltatások** részében tekintheti meg. Az URL-cím a következő példához hasonlít: https://your-service-name.search.windows.net
 
 5. A bal oldalon másolja az egyik rendszergazdai kulcsot a **Beállítások** > **Kulcsok** területről, majd illessze be azt második bejegyzésként az **appsettings.json** fájlba. A kulcsok olyan alfanumerikus karakterláncok, amelyeket a rendszer a kiépítés során hoz létre a szolgáltatás számára, és amelyekre a szolgáltatási műveletekhez történő engedélyezett hozzáféréshez van szükség. 
 

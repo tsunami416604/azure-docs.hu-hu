@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 11/30/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 7c14b241155e10f0bb325b50819e2277622e4dff
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 5a6fd54e4d20e55116bc0fa771e039e5ea2bb30b
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Oktatóanyag: Meglévő egyéni SSL-tanúsítvány kötése az Azure Web Appshez
 
@@ -149,7 +149,7 @@ Ha az IIS vagy a _Certreq.exe_ használatával hozta létre a tanúsítványkér
 
 ### <a name="upload-your-ssl-certificate"></a>Az SSL-tanúsítvány feltöltése
 
-Az SSL-tanúsítvány feltöltéséhez kattintson az **SSL certificates** (SSL-tanúsítványok) elemre a webalkalmazás bal oldali navigációs sávján.
+Az SSL-tanúsítvány feltöltéséhez kattintson az **SSL settings** (SSL-beállítások) elemre a webalkalmazás bal oldali navigációs sávján.
 
 Kattintson az **Upload Certificate** (Tanúsítvány feltöltése) parancsra. 
 
@@ -159,7 +159,7 @@ Kattintson a **Feltöltés** gombra.
 
 ![Tanúsítvány feltöltése](./media/app-service-web-tutorial-custom-ssl/upload-certificate-private1.png)
 
-Amikor az App Service befejezi a tanúsítvány feltöltését, a tanúsítvány megjelenik az **SSL certificates** (SSL-tanúsítványok) lapon.
+Amikor az App Service befejezi a tanúsítvány feltöltését, a tanúsítvány megjelenik az **SSL settings** (SSL-beállítások) lapon.
 
 ![Feltöltött tanúsítvány](./media/app-service-web-tutorial-custom-ssl/certificate-uploaded.png)
 
@@ -216,7 +216,7 @@ Már csak annak ellenőrzése van hátra, hogy a HTTPS működik-e az egyéni ta
 
 Alapértelmezés szerint bárki elérheti a webalkalmazást HTTP-vel. A HTTP-kéréseket átirányíthatja a HTTPS-portra.
 
-A webalkalmazás lapjának bal oldali navigációs sávján válassza a **Custom domains** (Egyéni tartományok) elemet. Ezután a **HTTPS Only** (Csak HTTPS) területen válassza az **On** (Be) elemet.
+A webalkalmazás lapjának bal oldali navigációs sávján válassza az **SSL settings** (SSL-beállítások) elemet. Ezután a **HTTPS Only** (Csak HTTPS) területen válassza az **On** (Be) elemet.
 
 ![HTTPS kényszerítése](./media/app-service-web-tutorial-custom-ssl/enforce-https.png)
 
@@ -225,6 +225,16 @@ Ha a művelet befejeződött, nyissa meg az alkalmazásra mutató HTTP URL-címe
 - `http://<app_name>.azurewebsites.net`
 - `http://contoso.com`
 - `http://www.contoso.com`
+
+## <a name="enforce-tls-1112"></a>A TLS 1.1/1.2 kényszerítése
+
+Az alkalmazása alapértelmezés szerint engedélyezi a [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0-t, amely az iparági szabványok, például a [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard) szerint már nem biztonságos. A TLS újabb verziójának kényszerítéséhez kövesse az alábbi lépéseket:
+
+A webalkalmazás lapjának bal oldali navigációs sávján válassza az **SSL settings** (SSL-beállítások) elemet. Ezután a **TLS version** (TLS-verzió) szakaszban válassza ki a kívánt TLS minimális verzióját.
+
+![HTTPS kényszerítése](./media/app-service-web-tutorial-custom-ssl/enforce-tls1.2.png)
+
+A művelet befejezése után az alkalmazás elutasítja a korábbi TLS-verziójú kapcsolatokat.
 
 ## <a name="automate-with-scripts"></a>Automatizálás szkriptekkel
 

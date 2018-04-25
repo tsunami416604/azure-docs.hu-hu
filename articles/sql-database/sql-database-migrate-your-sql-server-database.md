@@ -1,23 +1,28 @@
 ---
-title: SQL Server-adatbázis migrálása az Azure SQL Database szolgáltatásba | Microsoft Docs
-description: Ismerje meg, hogyan telepítheti át SQL Server-adatbázisát az Azure SQL Database szolgáltatásba.
+title: SQL Server-adatbázis migrálása az Azure SQL Database-be a DMS használatával | Microsoft Docs
+description: Ismerje meg, hogyan migrálhatja SQL Server-adatbázisát az Azure SQL Database-be a DMS használatával.
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: mvc,migrate
 ms.topic: tutorial
-ms.date: 04/04/2018
+ms.date: 04/10/2018
 ms.author: carlrab
-ms.openlocfilehash: c4b4354cb1090b9abc388da9d1d1b135f135144d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 14e9949fe0c292a366fa55e3f16d14d885606f6b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="migrate-your-sql-server-database-to-azure-sql-database"></a>SQL Server-adatbázis migrálása az Azure SQL Database szolgáltatásba
+# <a name="migrate-your-sql-server-database-to-azure-sql-database-using-dms"></a>SQL Server-adatbázis migrálása az Azure SQL Database-be a DMS használatával
 
-Az SQL Server-adatbázis áthelyezéséhez az Azure SQL Database-be csak létre kell hoznia egy üres SQL-adatbázist az Azure-ban, majd a [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) segítségével importálni az adatbázist az Azure-ba. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az SQL Server-adatbázis önálló Azure SQL Database-adatbázisba való áthelyezéséhez csak létre kell hoznia egy üres SQL-adatbázist az Azure-ban, majd a [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) segítségével importálnia kell az adatbázist az Azure-ba. További migrálási lehetőségekért lásd: [Adatbázis migrálása az Azure SQL Database-be](sql-database-cloud-migrate.md).
+
+> [!IMPORTANT]
+> A felügyelt Azure SQL Database-példányba való migráláshoz lásd: [Migrálás SQL Serverről egy felügyelt példányba](sql-database-managed-instance-migrate.md)
+
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Üres Azure SQL-adatbázis létrehozása az Azure Portalon (egy új vagy meglévő Azure SQL Database-kiszolgáló használatával)

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 804bc3f3708a6b5e70c91d68f954ebc10c477831
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: cf678eac16f8b13c5ffaa1d5673ca1cb47440cf9
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>A fejlesztőkörnyezet előkészítése Linuxon
 > [!div class="op_single_selector"]
@@ -41,16 +41,17 @@ A Service Fabric-futtatókörnyezet és az SDK telepítése nem támogatott a Li
 
     * Ubuntu 16.04 (`Xenial Xerus`)
 
-* Ellenőrizze, hogy telepítve van-e az `apt-transport-https` csomag:
-
-      ```bash
-      sudo apt-get install apt-transport-https
-      ```
+      * Ellenőrizze, hogy telepítve van-e az `apt-transport-https` csomag:
+         
+         ```bash
+         sudo apt-get install apt-transport-https
+         ```
+    * Red Hat Enterprise Linux 7.4 (Service Fabric előzetes verzió támogatása)
 
 
 ## <a name="installation-methods"></a>Telepítési módok
 
-### <a name="1-script-installation"></a>1. Telepítés szkripttel
+### <a name="1-script-installation-ubuntu"></a>1. Telepítés szkripttel (Ubuntu)
 
 Az egyszerű használat érdekében megadunk egy szkriptet a Service Fabric-futtatókörnyezet és a Service Fabric általános SDK az **sfctl** CLI felülettel együtt történő telepítéséhez. Kövesse a következő szakaszban található manuális telepítési lépéseket, ha el szeretné dönteni, mi legyen telepítve és mely licenceket fogadja el. A szkript a futtatáskor azt feltételezi, hogy Ön átolvasta és elfogadja a telepített szoftverek licencfeltételeit. 
 
@@ -63,8 +64,10 @@ sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-
 ### <a name="2-manual-installation"></a>2. Manuális telepítés
 A Service Fabric-futtatókörnyezet és az általános SDK manuális telepítéséhez kövesse ezt az útmutatót.
 
-## <a name="update-your-apt-sources"></a>Frissítse az APT-forrásait
+## <a name="update-your-apt-sourcesyum-repositories"></a>Az APT-erőforrások / Yum-adattárak frissítése
 Az SDK és a kapcsolódó futtatókörnyezet-csomag apt-get parancssori eszköz használatával történő telepítéséhez először frissítenie kell az Advanced Packaging Tool- (APT-) forrásait.
+
+### <a name="ubuntu"></a>Ubuntu
 
 1. Nyisson meg egy terminált.
 2. Adja hozzá a Service Fabric-adattárat a források listájához.
@@ -105,9 +108,43 @@ Az SDK és a kapcsolódó futtatókörnyezet-csomag apt-get parancssori eszköz 
     sudo apt-get update
     ```
 
+
+### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4 (Service Fabric előzetes verzió támogatása)
+
+1. Nyisson meg egy terminált.
+2. Töltse le és telepítse az Extra Packages for Enterprise Linux (EPEL) programot.
+
+    ```bash
+    wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    sudo yum install epel-release-latest-7.noarch.rpm
+    ```
+3. Adja hozzá az EfficiOS RHEL7 csomagtárat a rendszerhez.
+
+    ```bash
+    sudo wget -P /etc/yum.repos.d/ https://packages.efficios.com/repo.files/EfficiOS-RHEL7-x86-64.repo
+    ```
+
+4. Importálja az efficios csomag aláírókulcsát a helyi GPG-kulcstárba.
+
+    ```bash
+    sudo rpmkeys --import https://packages.efficios.com/rhel/repo.key
+    ```
+5. Adja hozzá a Microsoft RHEL-adattárat a rendszerhez.
+   ```bash
+      curl https://packages.microsoft.com/config/rhel/7.4/prod.repo > ./microsoft-prod.repo
+      sudo cp ./microsoft-prod.repo /etc/yum.repos.d/
+   ```
+6. Telepítse a dotnet SDK-t.
+   ```bash
+      yum install rh-dotnet20 -y
+      scl enable rh-dotnet20 bash
+   ```
+
 ## <a name="install-and-set-up-the-service-fabric-sdk-for-local-cluster-setup"></a>A Service Fabric SDK telepítése és beállítása helyi fürtbeállításhoz
 
 A források frissítése után telepítheti az SDK-t. Telepítse a Service Fabric SDK-csomagot, erősítse meg a telepítést, és fogadja el a licencszerződést.
+
+### <a name="ubuntu"></a>Ubuntu
 
 ```bash
 sudo apt-get install servicefabricsdkcommon
@@ -120,11 +157,18 @@ sudo apt-get install servicefabricsdkcommon
 >   echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-ga select true" | sudo debconf-set-selections
 >   ```
 
+### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4 (Service Fabric előzetes verzió támogatása)
+
+```bash
+sudo yum install servicefabricsdkcommon
+```
+
 A fenti telepítéssel együtt érkező Service Fabric-futtatókörnyezet az alábbi táblázatban szereplő csomagokat tartalmazza. 
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
 Ubuntu | 2.0.0 | OpenJDK 1.8 | Implicit módon az npm-ből | legújabb |
+RHEL | - | OpenJDK 1.8 | Implicit módon az npm-ből | legújabb |
 
 ## <a name="set-up-a-local-cluster"></a>Helyi fürt beállítása
   Ha a telepítés befejeződött, elindíthatja a helyi fürtöt.
@@ -135,7 +179,7 @@ Ubuntu | 2.0.0 | OpenJDK 1.8 | Implicit módon az npm-ből | legújabb |
       sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
       ```
 
-  2. Indítson el egy webböngészőt, és nyissa meg a [Service Fabric Explorert](http://localhost:19080/Explorer). Ha a fürt elindult, megjelenik a Service Fabric Explorer irányítópultja.
+  2. Indítson el egy webböngészőt, és nyissa meg a [Service Fabric Explorert](http://localhost:19080/Explorer) (`http://localhost:19080/Explorer`). Ha a fürt elindult, megjelenik a Service Fabric Explorer irányítópultja. Eltarthat néhány percig, amíg a rendszer teljesen beállítja a fürtöt. Ha a böngésző nem tudja megnyitni az URL-címet, vagy a Service Fabric Explorer azt mutatja, hogy a rendszer nem áll készen, várjon néhány percet, és próbálkozzon újra.
 
       ![Service Fabric Explorer Linuxon][sfx-linux]
 
@@ -167,6 +211,11 @@ Ubuntu
   sudo apt install nodejs-legacy
   ```
 
+Red Hat Enterprise Linux 7.4 (Service Fabric előzetes verzió támogatása)
+  ```bash
+  sudo yum install nodejs
+  sudo yum install npm
+  ```
 2. A [Yeoman](http://yeoman.io/) sablongenerátor telepítése a gépre az NPM-ből
 
   ```bash
@@ -189,21 +238,30 @@ Telepítse az [Ubuntu rendszerre készült .NET Core 2.0 SDK-t](https://www.micr
 
 A Service Fabric-szolgáltatások Java használatával történő létrehozásához telepítse a JDK 1.8-at és a Gradle-t az összeállítási feladatok futtatásához. Az Open JDK 1.8 és a Gradle az alábbi kódrészlettel telepíthető. A Service Fabric Java-kódtárakat a Mavenből kéri le a rendszer.
 
+
+Ubuntu 
  ```bash
   sudo apt-get install openjdk-8-jdk-headless
   sudo apt-get install gradle
   ```
 
+Red Hat Enterprise Linux 7.4 (Service Fabric előzetes verzió támogatása)
+  ```bash
+  sudo yum install java-1.8.0-openjdk-devel
+  curl -s https://get.sdkman.io | bash
+  sdk install gradle
+  ```
+ 
 ## <a name="install-the-eclipse-plug-in-optional"></a>Az Eclipse beépülő modul telepítése (nem kötelező)
 
-A Service Fabric Eclipse beépülő modulját a Java-fejlesztőknek készült Eclipse IDE-ből telepítheti. Az Eclipse segítségével új Service Fabric futtatható vendégalkalmazásokat és tárolóalkalmazásokat, valamint Service Fabric Java-alkalmazásokat hozhat létre.
+A Service Fabric Eclipse beépülő modulját a Java-fejlesztőknek vagy a Java EE-fejlesztőknek készült Eclipse IDE-ből telepítheti. Az Eclipse segítségével új Service Fabric futtatható vendégalkalmazásokat és tárolóalkalmazásokat, valamint Service Fabric Java-alkalmazásokat hozhat létre.
 
 > [!IMPORTANT]
 > A Service Fabric beépülő modulhoz Eclipse Neon vagy újabb verzió szükséges. Az ezt a megjegyzést követő útmutatások segítségével ellenőrizheti az Eclipse verzióját. Ha az Eclipse egy korábbi verziója van telepítve, az [Eclipse webhelyéről](https://www.eclipse.org) tölthet le újabb verziót. Nem ajánlott az új verziót az Eclipse meglévő telepítésére telepíteni (azt felülírni). A meglévő verziót eltávolíthatja a telepítő futtatása előtt, vagy másik könyvtárba telepítheti az újabb verziót. 
 > 
-> Ubuntu rendszeren ajánlott közvetlenül az Eclipse webhelyéről elvégezni a telepítést csomagtelepítő helyett (`apt` vagy `apt-get`). Így biztosan az Eclipse legfrissebb verzióját fogja beszerezni. 
+> Ubuntu rendszeren ajánlott közvetlenül az Eclipse webhelyéről elvégezni a telepítést csomagtelepítő helyett (`apt` vagy `apt-get`). Így biztosan az Eclipse legfrissebb verzióját fogja beszerezni. Telepítheti a Java-fejlesztőknek vagy a Java EE-fejlesztőknek készült Eclipse IDE-t.
 
-1. Az Eclipse-ben győződjön meg arról, hogy telepítve van az Eclipse Neon vagy újabb verzió és a Buildship legújabb (1.0.17-es vagy újabb) verziója. A telepített összetevők verzióját a **Súgó** > **Telepítés részletei** lehetőség kiválasztásával ellenőrizheti. A Buildship frissítéséhez kövesse az [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: Eclipse beépülő modulok a Gradle-hez) című témakör utasításait.
+1. Az Eclipse-ben győződjön meg arról, hogy telepítve van az Eclipse Neon vagy egy újabb verzió, és a Buildship 2.2.1-es vagy újabb verziója. A telepített összetevők verzióját a **Help** > **About Eclipse** > **Installation Details** (Súgó, Az Eclipse névjegye, Telepítés részletei) lehetőség kiválasztásával ellenőrizheti. A Buildship frissítéséhez kövesse az [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: Eclipse beépülő modulok a Gradle-hez) című témakör utasításait.
 
 2. A Service Fabric beépülő modul telepítéséhez válassza a **Help** > **Install New Software** (Súgó, Új szoftver telepítése) elemet.
 
@@ -217,7 +275,7 @@ A Service Fabric Eclipse beépülő modulját a Java-fejlesztőknek készült Ec
 
 6. Végezze el a telepítés lépéseit, majd fogadja el a végfelhasználói licencszerződést.
 
-Ha a Service Fabric Eclipse beépülő modul már telepítve van, győződjön meg arról, hogy a legújabb verzióval rendelkezik. Ennek ellenőrzéséhez válassza a **Súgó** > **Telepítés részletei** elemet, majd keresse meg a Service Fabricet a telepített beépülő modulok listájában. Válassza a **Frissítés** lehetőséget, ha újabb verzió érhető el.
+Ha a Service Fabric Eclipse beépülő modul már telepítve van, győződjön meg arról, hogy a legújabb verzióval rendelkezik. Ennek ellenőrzéséhez válassza a **Help** > **About Eclipse** > **Installation Details** (Súgó, Az Eclipse névjegye, Telepítés részletei) elemet, majd keresse meg a Service Fabricet a telepített beépülő modulok listájában. Válassza a **Frissítés** lehetőséget, ha újabb verzió érhető el.
 
 További információ: [Service Fabric beépülő modul az Eclipse-alapú Java-alkalmazásfejlesztéshez](service-fabric-get-started-eclipse.md).
 
@@ -237,11 +295,22 @@ A Java SDK bináris fájljainak a Mavenből való frissítéséhez frissítenie 
 ## <a name="remove-the-sdk"></a>Az SDK eltávolítása
 A Service Fabric SDK-k eltávolításához futtassa a következőket:
 
+### <a name="ubuntu"></a>Ubuntu
+
 ```bash
 sudo apt-get remove servicefabric servicefabicsdkcommon
 sudo npm uninstall generator-azuresfcontainer
 sudo npm uninstall generator-azuresfguest
 sudo apt-get install -f
+```
+
+
+### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4 (Service Fabric előzetes verzió támogatása)
+
+```bash
+sudo yum remote servicefabric servicefabicsdkcommon
+sudo npm uninstall generator-azuresfcontainer
+sudo npm uninstall generator-azuresfguest
 ```
 
 ## <a name="next-steps"></a>További lépések

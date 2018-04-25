@@ -1,58 +1,57 @@
 ---
-title: "Az Azure felhőalapú tárolást félig strukturált adatok keresése"
-description: "A keresés blob félig strukturált adatok Azure Search használatával."
+title: Részben strukturált adatok keresése az Azure felhőalapú tárolóban
+description: Részben strukturált blobadatok keresése az Azure Search használatával.
 author: roygara
-manager: timlt
+manager: cgronlun
 ms.service: search
 ms.topic: tutorial
 ms.date: 10/12/2017
 ms.author: v-rogara
-ms.custom: mvc
-ms.openlocfilehash: a80ae99c2ada00885019ee93e4ef36821340d3a5
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
-ms.translationtype: MT
+ms.openlocfilehash: f05e9dd12a838199b23deddb4f6c4fb4c2fced08
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="part-2-search-semi-structured-data-in-cloud-storage"></a>2. lépés: Keresési félig strukturált adatok felhőben
+# <a name="part-2-search-semi-structured-data-in-cloud-storage"></a>2. rész: Részben strukturált adatok keresése felhőalapú tárolóban
 
-Kétlépéses oktatóanyag sorozat megismerheti, hogyan használja az Azure search félig strukturált és strukturálatlan adatok kereséséhez. [1. rész](../storage/blobs/storage-unstructured-search.md) strukturálatlan adatok keresési segítségével, telefonon, de ez az oktatóanyag, például a tárfiók létrehozása fontos előfeltételei is megtalálhatók. 
+Ebben a kétrészes oktatóanyag-sorozatban megismerheti, hogyan kereshet részben strukturált és strukturálatlan adatokat az Azure Search használatával. Az [1. rész](../storage/blobs/storage-unstructured-search.md) bemutatta a strukturálatlan adatok keresését, de az ehhez az oktatóanyaghoz fontos előfeltételeket is tartalmazott, ilyen például a tárfiók létrehozása. 
 
-A 2. rész lesz aktuális félig strukturált adatok, például JSON, Azure-blobokat tárolja. Félig strukturált adatok címkéket és az adatok tartalmakra, amelyek jeleinek tartalmazza. Felosztja a strukturálatlan adatok, amelyek wholistically indexelni, és megfelelő adatmodell, például egy relációs adatbázis-séma, amely mező alapon bejárható hivatalosan strukturált adatok közötti különbség.
+A 2. részben a hangsúly a részben strukturált adatokra helyeződik át, például az Azure-blobokban tárolt JSON-ra. A részben strukturált adatok címkéket és jelölőket tartalmaznak, amelyek a tartalmakat választják el az adatokon belül. Kompromisszumot jelent a holisztikusan indexelendő strukturálatlan adatok és a formálisan strukturált adatok között, amelyek egy adatmodellt követnek, például egy relációsadatbázis-sémát, amely mezőnként könnyen bejárható.
 
-2. rész, megtudhatja, hogyan:
+A 2. részben a következőkkel ismerkedhet meg:
 
 > [!div class="checklist"]
-> * Egy Azure Search adatforrás az Azure blob-tároló konfigurálása
-> * Létrehozása és feltöltése az Azure Search-index és a bejárás a tárolót, és bontsa ki a kereshető tartalom indexelő
-> * Keresse meg a most létrehozott
+> * Azure Search-adatforrás konfigurálása egy Azure Blob-tárolóhoz
+> * Azure Search-index és indexelő létrehozása és feltöltése a tároló bejárásához és kereshető tartalom kinyeréséhez
+> * Keresés az újonnan létrehozott indexben
 
 > [!NOTE]
-> Ez az oktatóanyag JSON tömb támogatást, amely jelenleg előzetes verziójú funkciók az Azure Search támaszkodik. Nem érhető el a portálon. Emiatt az előzetes REST API, így ez a szolgáltatás és az API REST ügyfél eszközt használunk.
+> Ez az oktatóanyag a JSON-tömbök támogatására támaszkodik, amely jelenleg előzetes verziójú funkció az Azure Search szolgáltatásban. A portálon nem érhető el. Ezért az előzetes verziójú, ezt a funkciót biztosító REST API-t használjuk, és egy REST-ügyféleszköz segítségével hívjuk meg az API-t.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Létrehozása után a [az oktatóanyag előző](../storage/blobs/storage-unstructured-search.md) az előző oktatóanyag létrehozni a tárolási fiók és a keresési szolgáltatást.
+* Az [előző oktatóanyag](../storage/blobs/storage-unstructured-search.md) befejezése, amely biztosítja a benne létrehozott tárfiókot és keresési szolgáltatást.
 
-* A többi ügyfél és a HTTP-lekérdezés összeállításához megértéséhez telepítését. Ez az oktatóanyag céljából használjuk [Postman](https://www.getpostman.com/). Szabadon használhatja egy másik többi ügyfél, ha már tudjuk, egy adott.
+* REST-ügyfél telepítése és a HTTP-kérelmek létrehozásának ismerete. Ebben az oktatóanyagban a [Postman](https://www.getpostman.com/) szolgáltatást használjuk. Nyugodtan használhat egy másik REST-ügyfélt, ha azt már jól ismeri.
 
-## <a name="set-up-postman"></a>Postman beállítása
+## <a name="set-up-postman"></a>A Postman beállítása
 
-Indítsa el a Postman, és állítson be egy HTTP-kérelem. Ha nem ismeri ezt az eszközt, tekintse meg [felfedezés Azure Search REST API-k a Fiddler vagy Postman](search-fiddler.md) további információt.
+Indítsa el a Postmant, és hozzon létre egy HTTP-kérelmet. Ha nem ismeri ezt az eszközt, további információért tekintse meg a következőt: [Az Azure Search REST API-k vizsgálata a Fiddlerrel vagy a Postmannel](search-fiddler.md).
 
-A kérelem minden hívás ebben az oktatóanyagban metódus "POST". A fejléc kulcsai "Content-type" és "api-kulcsot." A fejléc kulcsok értékei a "application/json" és a "adminisztrációs kulcsot" (az adminisztrációs kulcsot helyőrzője az elsődleges kulcs) kulcsattribútumokkal. A szervezetnek, a tényleges tartalmát a hívás helyétől. Attól függően, hogy az ügyfél használ előfordulhat, hogy néhány változata hogyan hozható létre a lekérdezést, de azok alapjait.
+A kérelem metódusa az oktatóanyagban található minden hívás esetében: POST. A fejléckulcsok Content-type (tartalomtípus) és api-key (API-kulcs) típusúak. A fejléckulcsok értékei: application/json (alkalmazás/json) és admin key (adminisztrációs kulcs, amely az elsődleges keresési kulcs helyőrzője). A törzs az a hely, ahol elhelyezi a hívás tényleges tartalmát. Attól függően, hogy milyen ügyfélt használ, különböző módszerekkel hozhatja létre a lekérdezést, de ezek az alapvető tudnivalók.
 
-  ![Félig strukturált keresése](media/search-semi-structured-data/postmanoverview.png)
+  ![Részben strukturált keresés](media/search-semi-structured-data/postmanoverview.png)
 
-Az ebben az oktatóanyagban szereplő REST-hívások a keresési api-kulcsot meg kell adni. Az api-kulcs alatt található **kulcsok** belül a keresési szolgáltatáshoz. Az api-kulcs fejlécében szereplő minden API-hívás (a név felülírandó "admin key" az előző képernyőképet vele) kell lennie, ez az oktatóanyag arra utasítja, hogy. Tartsa meg a kulcsot, mert minden egyes kell.
+A jelen oktatóanyagban bemutatott REST-hívásokhoz szükség van a keresési API-kulcsra. Az API-kulcsot a keresési szolgáltatás **Kulcsok** területén találja meg. Ennek az API-kulcsnak szerepelnie kell minden API-hívás fejlécében (cserélje le rá az előző képernyőképen látható „adminisztrációs kulcsot”), amelyet ezen oktatóanyagban hoz létre. Őrizze meg a kulcsot, mivel minden híváshoz szüksége lesz rá.
 
-  ![Félig strukturált keresése](media/search-semi-structured-data/keys.png)
+  ![Részben strukturált keresés](media/search-semi-structured-data/keys.png)
 
-## <a name="download-the-sample-data"></a>Töltse le a mintaadatokat
+## <a name="download-the-sample-data"></a>A mintaadatok letöltése
 
-Egy minta adatkészlet Önnek készült. **Töltse le [klinikai kísérletek json.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip)**  és csomagolja ki azt a saját mappába.
+Előkészítettünk Önnek egy mintaadatkészletet. **Töltse le a [clinical-trials-json.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) fájlt**, és bontsa ki a saját mappájába.
 
-A mintában van például JSON-fájlokat, amelyek nem az eredeti szöveg fájlok nyert [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results). A Microsoft azokat való konvertálása JSON a felhasználók kényelme érdekében.
+A mintában példa JSON-fájlok találhatók, amelyek eredetileg a [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results) oldalról származó szöveges fájlok. A kényelmes használat érdekében ezeket JSON-fájlokká alakítottuk át.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
@@ -60,33 +59,33 @@ Jelentkezzen be az [Azure portálra](http://portal.azure.com).
 
 ## <a name="upload-the-sample-data"></a>A mintaadatok feltöltése
 
-Az Azure portálon lépjen vissza a storage-fiók létrehozása a [az oktatóanyag előző](../storage/blobs/storage-unstructured-search.md). Nyissa meg a **adatok** tárolót, majd kattintson **feltöltése**.
+Az Azure Portalon lépjen vissza az [előző oktatóanyagban](../storage/blobs/storage-unstructured-search.md) létrehozott tárfiókhoz. Ezután nyissa meg az **adattárolót**, és kattintson a **Feltöltés** elemre.
 
-Kattintson a **speciális**, és adja meg a "klinikai-próbaverzió-json", majd töltse fel az összes letöltött JSON-fájlokat.
+Kattintson a **Speciális** elemre, írja be a clinical-trials-json kifejezést, majd töltse fel az összes letöltött JSON-fájlt.
 
-  ![Félig strukturált keresése](media/search-semi-structured-data/clinicalupload.png)
+  ![Részben strukturált keresés](media/search-semi-structured-data/clinicalupload.png)
 
-Ha befejeződött a feltöltés, a fájlok az adatokat tároló belül a saját almappájában kell megjelennie.
+Ha befejeződött a feltöltés, a fájlok a saját almappájukban jelennek meg az adattárolóban.
 
-## <a name="connect-your-search-service-to-your-container"></a>A keresési szolgáltatáshoz kapcsolódni a tárolóhoz
+## <a name="connect-your-search-service-to-your-container"></a>Keresési szolgáltatás csatlakoztatása a tárolóhoz
 
-Postman ahhoz, hogy hozzon létre egy adatforrást, egy index és az indexelő három API-hívásokat a keresőszolgáltatása használjuk. Az adatforrás egy mutatót a tárfiók és a JSON-adatokat tartalmaz. A keresési szolgáltatás lehetővé teszi a kapcsolat, az adatok betöltésekor.
+A Postmannel három API-hívást indítunk a keresési szolgáltatás felé annak érdekében, hogy létrehozzunk egy adatforrást, egy indexet és egy indexelőt. Az adatforrás tartalmaz egy, a tárfiókjára irányuló mutatót és a JSON-adatait. A keresési szolgáltatás az adatok betöltésekor hozza létre a kapcsolatot.
 
-A lekérdezési karakterláncnak tartalmaznia kell **api-version = 2016 09-01. dátumú előnézeti** és minden hívás kell visszaadnia egy **201 Created**. Az általánosan elérhető api-version még nem rendelkezik olyan jellegű kezelik a json-, egy jsonArray, jelenleg csak a minta api-verzió.
+A lekérdezési karakterláncnak tartalmaznia kell az **api-version=2016-09-01-Preview** elemet, és minden hívásnak egy **201 Created** elemet kell visszaadnia. Az általánosan elérhető api-version még nem képes a JSON-t egy JSON-tömbként kezelni, jelenleg erre csak az előzetes api-version képes.
 
-A következő három API-hívások végrehajtása a többi ügyfélről.
+Hajtsa végre az alábbi három API-hívást a REST-ügyfélről.
 
-### <a name="create-a-datasource"></a>Egy adatforrás létrehozása
+### <a name="create-a-datasource"></a>Adatforrás létrehozása
 
-Adatforrás határozza meg, hogy milyen adatokat kell index.
+Az adatforrás határozza meg, hogy mely adatok legyenek indexelve.
 
-A végpont hívás `https://[service name].search.windows.net/datasources?api-version=2016-09-01-Preview`. Cserélje le `[service name]` nevű, a keresési szolgáltatáshoz.
+A hívás végpontja: `https://[service name].search.windows.net/datasources?api-version=2016-09-01-Preview`. Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
 
-Ez a hívás szüksége van a tárfiók és a tárfiók kulcsának neve. A tárfiók hívóbetűjét az Azure portálon belül a tárfiókban található **hívóbetűk**. Helye az alábbi ábrán látható:
+Ehhez a híváshoz szükség lesz a tárfiókja nevére és a tárfiók kulcsára. A tárfiók kulcsa megtalálható az Azure Portalon a tárfiókja **Hozzáférési kulcsok** részében. Ennek helye az alábbi képen látható:
 
-  ![Félig strukturált keresése](media/search-semi-structured-data/storagekeys.png)
+  ![Részben strukturált keresés](media/search-semi-structured-data/storagekeys.png)
 
-Cserélje le a `[storage account name]` és `[storage account key]` törzsében. a hívás a hívás végrehajtása előtt.
+A hívás törzsében cserélje le a `[storage account name]` és a `[storage account key]` elemet a hívás végrehajtása előtt.
 
 ```json
 {
@@ -97,7 +96,7 @@ Cserélje le a `[storage account name]` és `[storage account key]` törzsében.
 }
 ```
 
-A válasz hasonlóan kell kinéznie:
+A válasznak így kell kinéznie:
 
 ```json
 {
@@ -121,11 +120,11 @@ A válasz hasonlóan kell kinéznie:
 
 ### <a name="create-an-index"></a>Index létrehozása
     
-A második API-hívás indexet hoz létre. Az index határozza meg, a paraméterek és attribútumaik.
+A második API-hívás létrehoz egy indexet. Az index határozza meg az összes paramétert és ezek attribútumait.
 
-Az URL-címe az e híváshoz `https://[service name].search.windows.net/indexes?api-version=2016-09-01-Preview`. Cserélje le `[service name]` nevű, a keresési szolgáltatáshoz.
+A hívás URL-címe: `https://[service name].search.windows.net/indexes?api-version=2016-09-01-Preview`. Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
 
-Először cserélje le az URL-címet. Másolja és illessze be a következő kódot a szervezet és a lekérdezés futtatásához.
+Első lépésként cserélje le az URL-címet. Ezután másolja és illessze be a következő kódot a törzsbe, majd futtassa a lekérdezést.
 
 ```json
 {
@@ -161,7 +160,7 @@ Először cserélje le az URL-címet. Másolja és illessze be a következő kó
 }
 ```
 
-A válasz hasonlóan kell kinéznie:
+A válasznak így kell kinéznie:
 
 ```json
 {
@@ -209,13 +208,13 @@ A válasz hasonlóan kell kinéznie:
 }
 ```
 
-### <a name="create-an-indexer"></a>Hozzon létre egy indexelőt
+### <a name="create-an-indexer"></a>Indexelő létrehozása
 
-Az indexelő az adatforráshoz kapcsolódik a cél search-indexet, és opcionálisan biztosítja a automatizálhatja az adatfrissítési ütemezés szerint.
+Az indexelő a cél keresési indexhez csatlakoztatja az adatforrást, és opcionálisan ütemezést biztosít az adatfrissítés automatizálásához.
 
-Az URL-címe az e híváshoz `https://[service name].search.windows.net/indexers?api-version=2016-09-01-Preview`. Cserélje le `[service name]` nevű, a keresési szolgáltatáshoz.
+A hívás URL-címe: `https://[service name].search.windows.net/indexers?api-version=2016-09-01-Preview`. Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
 
-Először cserélje le az URL-címet. Másolja és illessze be a következő kódot a szervezet és a lekérdezés futtatásához.
+Első lépésként cserélje le az URL-címet. Ezután másolja és illessze be a következő kódot a törzsbe, majd futtassa a lekérdezést.
 
 ```json
 {
@@ -226,7 +225,7 @@ Először cserélje le az URL-címet. Másolja és illessze be a következő kó
 }
 ```
 
-A válasz hasonlóan kell kinéznie:
+A válasznak így kell kinéznie:
 
 ```json
 {
@@ -252,39 +251,39 @@ A válasz hasonlóan kell kinéznie:
 }
 ```
 
-## <a name="search-your-json-files"></a>A JSON-fájlok keresése
+## <a name="search-your-json-files"></a>JSON-fájlok keresése
 
-Most, hogy a keresési szolgáltatás az adatokat tároló csatlakoztatva van, megkezdheti a fájlok keresése.
+Most, hogy a keresési szolgáltatást csatlakoztatta az adattárolóhoz, megkezdheti fájljai keresését.
 
-Nyissa meg az Azure-portálon, és lépjen vissza a keresési szolgáltatáshoz. Ahogy az előző oktatóanyag.
+Nyissa meg az Azure Portalt, és lépjen vissza a keresési szolgáltatásához. Pontosan úgy, ahogyan az előző oktatóanyagban tette.
 
-  ![Strukturálatlan keresése](media/search-semi-structured-data/indexespane.png)
+  ![Strukturálatlan keresés](media/search-semi-structured-data/indexespane.png)
 
 ### <a name="user-defined-metadata-search"></a>Felhasználó által definiált metaadatok keresése
 
-Mivel előtt, az adatok a számos módon lehet lekérdezni: teljes szöveges keresés, a rendszer tulajdonságai, vagy a felhasználó által definiált metaadatok. Rendszer tulajdonságai és a felhasználó által definiált metaadatok előfordulhat, hogy csak keres a a `$select` paraméternek, ha volt megjelölve **lekérhető** a cél-index létrehozása közben. Az index paraméter nem lehet módosítani a létrehozásuk után. Azonban további paraméterek adhatók meg.
+Mint korábban, az adatok többféle módon kérdezhetők le: teljes szöveges keresés, rendszertulajdonságok vagy felhasználó által definiált metaadatok használatával. A rendszertulajdonságok és a felhasználó által definiált metaadatok is csak a `$select` paraméterrel kereshetők, ha a célindex létrehozása során **lekérdezhetőként** lettek megjelölve. Létrehozásuk után az index paraméterei nem módosíthatók. Azonban lehetőség van további paraméterek hozzáadására.
 
-Például egy egyszerű lekérdezést `$select=Gender,metadata_storage_size`, amely korlátozza, hogy két paraméterek visszaállításához.
+Egy példa alapszintű lekérdezésre: `$select=Gender,metadata_storage_size`. Ez a lekérdezés korlátozza ezt a két paramétert.
 
-  ![Félig strukturált keresése](media/search-semi-structured-data/lastquery.png)
+  ![Részben strukturált keresés](media/search-semi-structured-data/lastquery.png)
 
-Összetettebb lekérdezés például `$filter=MinimumAge ge 30 and MaximumAge lt 75`, amely csak eredményt, ahol a paraméterek MinimumAge nagyobb vagy egyenlő, 30 és MaximumAge kisebb, mint 75 ad vissza.
+Egy példa összetettebb lekérdezésre: `$filter=MinimumAge ge 30 and MaximumAge lt 75`. Ez a lekérdezés csak olyan eredményeket ad vissza, ahol a paraméterek MinimumAge értéke legalább 30, és a MaximumAge értéke kisebb, mint 75.
 
-  ![Félig strukturált keresése](media/search-semi-structured-data/metadatashort.png)
+  ![Részben strukturált keresés](media/search-semi-structured-data/metadatashort.png)
 
-Ha szeretné kipróbálni, majd próbálja meg néhány további lekérdezések, saját magának, nyugodtan ehhez. Logikai operátorok használhatók tudja (és, vagy nem) és összehasonlító operátorok (eq, ne, gt, lt, ge, le). Karakterláncok összehasonlítására-és nagybetűk.
+Nyugodtan kísérletezhet, és néhány további lekérdezést is kipróbálhat. Használhat logikai operátorokat (and, or, not) és összehasonlító operátorokat (eq, ne, gt, lt, ge, le) is. A karakterlánc-összehasonlítások megkülönböztetik a kis- és nagybetűket.
 
-A `$filter` paraméter csak akkor vannak megjelölve az index létrehozása szűrhető metaadatokkal működik.
+A `$filter` paraméter csak olyan metaadatokkal működik, amelyek szűrhetőként lettek megjelölve az index létrehozásakor.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóprogramban megismerte félig strukturált adatok, például az az Azure search használatával keresése:
+Ez az oktatóanyag bemutatta, hogyan kereshet részben strukturált adatokat az Azure Search használatával, például a következőkkel:
 
 > [!div class="checklist"]
-> * A REST API használatával Azure Search szolgáltatás létrehozása
-> * Az Azure keresési szolgáltatását használja a tároló keresése
+> * Azure Search szolgáltatás létrehozása REST API használatával
+> * Az Azure Search szolgáltatás használata tároló keresésére
 
-Kattintson ide további információt a keresés.
+A kereséssel kapcsolatos további információkat erre a hivatkozásra kattintva érheti el.
 
 > [!div class="nextstepaction"]
-> [Az Azure Blob Storage dokumentumok indexelő](search-howto-indexing-azure-blob-storage.md)
+> [Dokumentumok indexelése az Azure Blob Storage-ban](search-howto-indexing-azure-blob-storage.md)
