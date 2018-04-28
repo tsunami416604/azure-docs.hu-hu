@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: joflore
-ms.openlocfilehash: 5fbc42d11ccb9a36ce146deca173526536c9fc9e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: c5ed3674c724b30962fbd52b9955ec89c35745d1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Azure multi-factor Authentication beszerzése
 
@@ -69,7 +69,7 @@ A következő táblázat felsorolja az Azure multi-factor Authentication külön
 | Többtényezős hitelesítés a helyszíni alkalmazások | | |● |
 
 ## <a name="how-to-turn-on-azure-multi-factor-authentication-for-azure-ad-administrators"></a>Az Azure AD-rendszergazdák az Azure multi-factor Authentication bekapcsolása
-A globális rendszergazdai szerepkörrel rendelkeznek az Azure AD-bérlő felhasználók engedélyezheti a kétlépéses ellenőrzést, az Azure AD globális rendszergazdai fiókok, minden további költség nélkül. A Microsoft Account használja, ha a multi-factor authentication regisztrálni [Itt](https://support.microsoft.com/en-us/help/12408/microsoft-account-about-two-step-verification). Ha nem használ egy Microsoft Account, kapcsolja be a globális rendszergazdák számára a multi-factor authentication [Itt](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/multi-factor-authentication-get-started-user-states).
+A globális rendszergazdai szerepkörrel rendelkeznek az Azure AD-bérlő felhasználók engedélyezheti a kétlépéses ellenőrzést, az Azure AD globális rendszergazdai fiókok, minden további költség nélkül. A Microsoft Account használja, ha a multi-factor authentication regisztrálni [Itt](https://support.microsoft.com/en-us/help/12408/microsoft-account-about-two-step-verification). Ha nem használ egy Microsoft Account, kapcsolja be a globális rendszergazdák számára a multi-factor authentication [Itt](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-user-states).
 
 ## <a name="how-to-get-azure-multi-factor-authentication"></a>Azure multi-factor Authentication beszerzése
 Ha szeretné, hogy a teljes Azure multi-factor Authentication által kínált funkciót közzétevő, többféle módon:

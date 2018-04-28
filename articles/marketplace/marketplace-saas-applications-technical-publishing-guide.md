@@ -1,29 +1,29 @@
 ---
-title: "Az Azure piactér SaaS alkalmazások technikai útmutató közzététele"
-description: "Részletes útmutató és a közzétételi ellenőrzőlisták közzétételéhez SaaS-alkalmazásokhoz az Azure piactéren"
+title: Az Azure piactér SaaS alkalmazások technikai útmutató közzététele
+description: Részletes útmutató és a közzétételi ellenőrzőlisták közzétételéhez SaaS-alkalmazásokhoz az Azure piactéren
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
-documentationcenter: 
+documentationcenter: ''
 author: BrentL-Collabera
-manager: 
+manager: ''
 editor: BrentL-Collabera
-ms.assetid: 
+ms.assetid: ''
 ms.service: marketplace
-ms.workload: 
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.workload: ''
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: pabutler
-ms.openlocfilehash: 64becc80192e69bd332d6657637c845acf93748b
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: eb6db45ca0fcb6879aeaeaaf70715691cac438b0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="saas-applications-technical-publishing-guide"></a>SaaS alkalmazások műszaki közzétételi útmutató
 
 Üdvözli az Azure piactér SaaS alkalmazások technikai útmutató közzététele. Ez az útmutató célja jelölt és a meglévő közzétevők az alkalmazásaikat és az Azure piactéren ajánlat SaaS-alkalmazások használata a szolgáltatások elemre.  
-Használandó SaaS-alkalmazásokhoz ajánlat lesz telepítve, a megoldás a saját Azure-előfizetés és az ügyfelek fog jelentkezzen be egy felületen, tervezése és kezelheti az alkalmazás teszteléséhez. Ennek érdekében használatával [Azure Active Directory (Azure AD)](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-whatis) kihasználhatják a meglévő próba-környezettel. Ez azt jelenti akkor egy ügyfél által vezetett, szolgáltatott ingyenes próbaverziót. Alapvető fontosságú a megoldás úgy, hogy lehetőséget felhő vásárlói élmény a megoldás egymástól függetlenül kell fizetni vagy díj nem teszi közzé, és így a ajánlattípus próba élményt nyújt, amely megfelel az ügyfelek hogyan megoldások keresése.  
+Használandó SaaS-alkalmazásokhoz ajánlat lesz telepítve, a megoldás a saját Azure-előfizetés és az ügyfelek fog jelentkezzen be egy felületen, tervezése és kezelheti az alkalmazás teszteléséhez. Ennek érdekében használatával [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) kihasználhatják a meglévő próba-környezettel. Ez azt jelenti akkor egy ügyfél által vezetett, szolgáltatott ingyenes próbaverziót. Alapvető fontosságú a megoldás úgy, hogy lehetőséget felhő vásárlói élmény a megoldás egymástól függetlenül kell fizetni vagy díj nem teszi közzé, és így a ajánlattípus próba élményt nyújt, amely megfelel az ügyfelek hogyan megoldások keresése.  
 
 A más piactér-ajánlatokhoz áttekintéséhez tekintse meg a [piactér Publisher útmutató](https://aka.ms/sellerguide).
 
@@ -31,8 +31,8 @@ A más piactér-ajánlatokhoz áttekintéséhez tekintse meg a [piactér Publish
 A műszaki által támasztott követelmények a SaaS-alkalmazások egyszerű. Közzétevők csak kell meg tudjanak jelenni az Azure AD integrálva van szükség.  Alkalmazások integrálása az Azure AD megfelelően legyen dokumentálva, és a Microsoft több SDK-k és erőforrások ehhez biztosít.  
 
 Indítsa el, azt javasoljuk, hogy rendelkezik előfizetéssel az Azure piactér a közzététel dedikált lehetővé téve a munkát a más kezdeményezések elkülönítése. Továbbá, ha még nem telepítette, javasoljuk, hogy rendelkezik-e a következő eszközök a fejlesztési környezet részeként: 
-- [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)  
-- [Azure powerShell](https://docs.microsoft.com/en-us/powershell/azure/overview?view=azurermps-5.0.0)  
+- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)  
+- [Az Azure powerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-5.0.0)  
 - [Az Azure Fejlesztőeszközök (áttekintheti az elérhető)](https://azure.microsoft.com/tools/)  
 - [Visual Studio Code](https://code.visualstudio.com/)  
 
@@ -41,11 +41,11 @@ Az alábbiakban adja meg a használatuk megkönnyítése érdekében ajánlott a
 
 **Dokumentáció**
 
-- [Az Azure Active Directory fejlesztői útmutatója](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-developers-guide)
+- [Az Azure Active Directory fejlesztői útmutatója](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
 
-- [Az Azure Active Directory integrálása](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-how-to-integrate)
+- [Az Azure Active Directory integrálása](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-to-integrate)
 
-- [Alkalmazások integrálása az Azure Active Directoryval](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications)
+- [Alkalmazások integrálása az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
 
 - [Azure menetrend - biztonság és identitás](https://azure.microsoft.com/roadmap/?category=security-identity)
 

@@ -1,11 +1,11 @@
 ---
-title: "A Naplóelemzési VMware figyelésére szolgáló megoldás |} Microsoft Docs"
-description: "További tudnivalók a VMware figyelésére szolgáló megoldás hogyan segíthet naplóinak kezeléséhez és az ESXi-gazdagépek figyelésére."
+title: A Naplóelemzési VMware figyelésére szolgáló megoldás |} Microsoft Docs
+description: További tudnivalók a VMware figyelésére szolgáló megoldás hogyan segíthet naplóinak kezeléséhez és az ESXi-gazdagépek figyelésére.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 16516639-cc1e-465c-a22f-022f3be297f1
 ms.service: log-analytics
 ms.workload: na
@@ -14,15 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: magoedte
-ms.openlocfilehash: f54d24659ad13aa02462938711482326c5bf763c
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 98969cf2f6604843bc1502990222264e7acc363b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>A Naplóelemzési megoldás VMware figyelése (előzetes verzió)
 
 ![VMware szimbólum](./media/log-analytics-vmware/vmware-symbol.png)
+
+> [!NOTE]
+> A VMware figyelésére szolgáló megoldás elavult.  Az ügyfelek, akik már telepítették a megoldás továbbra is használhatja, de a VMware-figyelés nem adható hozzá a bármely új munkaterületekhez való.
 
 A VMware figyelésére szolgáló megoldás a Naplóelemzési olyan megoldás, amely segítségével hozhat létre a központi naplózás és a nagy VMware-naplók figyelési megközelítést. Ez a cikk ismerteti, hogyan hibaelhárítása, rögzítése és az ESXi-gazdagépek a segítségével egy helyen kezelheti. A megoldás részletes adatok egyetlen helyen megvalósítható az ESXi gazdagépek látható. Felső esemény számát, állapotát és az ESXi-gazdagép naplók keresztül elérhető virtuális gép és az ESXi gazdagépek trendek tekintheti meg. Elháríthatja az megtekintésével és központosított ESXi-gazdagép naplók keresése. És riasztások napló keresési lekérdezések alapján is létrehozhat.
 
@@ -88,7 +91,7 @@ Az alábbi táblázatban példák a VMware figyelésére szolgáló megoldás á
 | Device_s |VMware-tárolóeszközök |
 | ESXIFailure_s |Hiba típusa |
 | EventTime_t |idő, amikor esemény történt |
-| HostName_s |ESXi host name |
+| HostName_s |ESXi-gazdagép neve |
 | Operation_s |Hozzon létre virtuális Gépet vagy virtuális gép törlése |
 | ProcessName_s |esemény neve |
 | ResourceId_s |a VMware gazdagép neve |

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: agummadi
-ms.openlocfilehash: 7d6f064be21f717c825843780fac28bc874f46ce
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0d8bee936717a5668e16fbd66d416fcc4e738814
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Az ExpressRoute hálózati Teljesítményfigyelő konfigurálása
 
@@ -73,7 +73,7 @@ Munkaterület létrehozása, amely rendelkezik az ExpressRoute circuit(s) Vnetek
 1. Az a [Azure-portálon](https://portal.azure.com), válassza ki az előfizetést, amely rendelkezik a Vnetek társítottak, az ExpressRoute-kapcsolatcsoportot. Majd keresse meg a szolgáltatások listájában a **piactér** "Hálózati Teljesítményfigyelő". Megnyitásához kattintson a vissza a **hálózati Teljesítményfigyelő** lap.
 
    >[!NOTE]
-   >Előfordulhat, hogy hozzon létre egy új munkaterületet, vagy egy meglévő munkaterületen.  Ha szeretne egy meglévő munkaterületen, győződjön meg róla, hogy a munkaterület áttelepítése megtörtént-e az új lekérdezési nyelv. [További információ...](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-log-search-upgrade)
+   >Előfordulhat, hogy hozzon létre egy új munkaterületet, vagy egy meglévő munkaterületen.  Ha szeretne egy meglévő munkaterületen, győződjön meg róla, hogy a munkaterület áttelepítése megtörtént-e az új lekérdezési nyelv. [További információ...](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search-upgrade)
    >
 
    ![portal](.\media\how-to-npm\3.png)<br><br>
@@ -118,7 +118,7 @@ Azt javasoljuk, hogy telepítse a redundancia érdekében legalább két ügynö
   >
   
   >[!NOTE]
-  >Ügynökök leküldött által SCOM (tartalmazza a [MMA](https://technet.microsoft.com/en-us/library/dn465154(v=sc.12).aspx)) nem lehet következetesen észleli a helytől, ha az Azure üzemeltetése.  Azt javasoljuk, hogy nem használja ezeket az ügynököket az Azure Vnetekhez ExpressRoute figyelésére.
+  >Ügynökök leküldött által SCOM (tartalmazza a [MMA](https://technet.microsoft.com/library/dn465154(v=sc.12).aspx)) nem lehet következetesen észleli a helytől, ha az Azure üzemeltetése.  Azt javasoljuk, hogy nem használja ezeket az ügynököket az Azure Vnetekhez ExpressRoute figyelésére.
   >
   >
 

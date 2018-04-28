@@ -9,11 +9,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: billmath
-ms.openlocfilehash: f450747cac06a416950efc6c37c1058c1cb40775
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: d21f124858a7f98227eb301a97b9837e3adbba68
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="synchronizing-guest-user-accounts-that-use-email-for-sign-in-preview"></a>E-mailt a bejelentkezéshez (előzetes verzió) használó Vendég felhasználói fiókok szinkronizálása
 
@@ -37,7 +37,7 @@ Ez a szakasz a szükséges előfeltételeket és állíthatja be a forgatóköny
 - Az Azure AD Connect 1.1.524.0 verzió vagy újabb
 - A felhő külső felhasználók egyszerű Felhasználónevük beállítása ellenőrzött tartomány (például: bmcontoso.com).
 - Összevonási szolgáltatás a külső felhasználók hitelesítésére. Active Directory összevonási szolgáltatások használatakor kell lennie a 2012 R2 vagy újabb
-- MSOL PowerShell v1.1 telepítve van a gép összevonási beállításainak ellenőrzése. További információkért lásd: [Azure Active Directoryban (MSOnline)](https://docs.microsoft.com/en-us/powershell/azure/active-directory/overview?view=azureadps-1.0).
+- MSOL PowerShell v1.1 telepítve van a gép összevonási beállításainak ellenőrzése. További információkért lásd: [Azure Active Directoryban (MSOnline)](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-1.0).
 
 
 ### <a name="assumptions"></a>Előfeltételek 
@@ -45,7 +45,7 @@ Ez a szakasz a szükséges előfeltételeket és állíthatja be a forgatóköny
 Ez a dokumentum lehetővé teszi a következő előfeltételek:
 - hogy rendelkezik beállítása összevonási szolgáltatás és az általa sikeresen hitelesíti magát felhasználók.
 - külső felhasználók hitelesítheti használt külső e-mail címüket.
-- - A másik azonosító használata bejelentkezés beállítása és konfigurálása megtörtént. Felhasználók képes hitelesíteni a másik azonosítójával. Az AD FS a másik azonosító beállításával kapcsolatos további információkért lásd: [másodlagos bejelentkezési azonosító konfigurálása](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configuring-alternate-login-id).
+- - A másik azonosító használata bejelentkezés beállítása és konfigurálása megtörtént. Felhasználók képes hitelesíteni a másik azonosítójával. Az AD FS a másik azonosító beállításával kapcsolatos további információkért lásd: [másodlagos bejelentkezési azonosító konfigurálása](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id).
 
 ## <a name="task-1--prepare-the-environment"></a>1. feladat: A környezet előkészítése
 A következő feladat több olyan tájékoztató, úgy, hogy készen áll a szinkronizálás a külső fiókjait, hogy azok is jelentkezzen be használatával alternatív indítása i, például a mail attribútum.
@@ -139,7 +139,7 @@ A következő eljárással konfigurálhatja az Azure AD Connect.
 ## <a name="task-3--federation"></a>3. feladat: összevonási
 A következő feladatot egy tájékoztató a szempontokat kell rendelkeznie a helyi ahhoz, hogy a forgatókönyv működjön.
 
-A Azure-ban az Azure AD PowerShell segítségével ellenőrizheti a összevonási beállításait. Ez a dokumentum MSOL PowerShell v1.1 használja. Ebben a verzióban telepítése [Itt](https://docs.microsoft.com/en-us/powershell/azure/active-directory/overview?view=azureadps-1.0).
+A Azure-ban az Azure AD PowerShell segítségével ellenőrizheti a összevonási beállításait. Ez a dokumentum MSOL PowerShell v1.1 használja. Ebben a verzióban telepítése [Itt](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-1.0).
 
 ### <a name="verify-the-federation-settings"></a>Az összevonási beállításainak ellenőrzése
 A következő eljárással összevonási beállításainak ellenőrzése.
@@ -181,5 +181,5 @@ Győződjön meg arról, hogy ez megfelelően működik, kell jelentkezzen be eg
 
 ## <a name="next-steps"></a>További lépések
 - [Egy Azure Active Directory B2B együttműködés felhasználó tulajdonságai](../../active-directory/active-directory-b2b-user-properties.md#key-properties-of-the-azure-ad-b2b-collaboration-user)
-- [Másodlagos bejelentkezési azonosító konfigurálása](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)
+- [Másodlagos bejelentkezési azonosító konfigurálása](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)
 - [Az Azure AD Connect verziókiadásai](active-directory-aadconnect-version-history.md)

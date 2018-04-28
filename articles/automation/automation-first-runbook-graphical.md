@@ -9,11 +9,11 @@ ms.author: gwallace
 ms.date: 04/13/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 6893d3c79a5f827f214b12ce1dc5f5af7bbc2891
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: fe383d172def4916338db86c5fba641d75813e9b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="my-first-graphical-runbook"></a>Az első grafikus forgatókönyvem
 
@@ -117,6 +117,10 @@ Most, hogy van egy változója az előfizetés-azonosító tárolására, úgy k
 1. Nincs szükség a **írási Hello World kimeneti** többé, így kattintson folytatást jelző pontokra (...), és válassza **törlése**.
 1. A Könyvtár vezérlőben bontsa ki az **ADATEGYSÉGEK**, **Kapcsolatok** lehetőséget, és a **Hozzáadás a vászonhoz** lehetőség kiválasztásával adja hozzá a vászonhoz az **AzureRunAsConnection** elemet.
 1. Írja be a könyvtár vezérlő **Connect-AzureRmAccount** a keresési szövegmezőben.
+
+   > [!IMPORTANT]
+   > **Adja hozzá-AzureRmAccount** alias már **Connect-AzureRMAccount**. Amikor keresést a könyvtár elemek, ha nem látja **Connect-AzureRMAccount**, használhat **Add-AzureRmAccount**, vagy frissítheti a modulok az Automation-fiókban.
+
 1. Adja hozzá **Connect-AzureRmAccount** a vászonra.
 1. Vigye a kurzort a **Futtató kapcsolat létesítése** fölé, és várja meg, amíg megjelenik az alakzat alján egy kör. A kör kattintással és húzással vigye a nyílra kattintva **Connect-AzureRmAccount**. A létrehozott nyíl egy *hivatkozás*. A runbook kezdődik-e **beolvasása Futtatás mint kapcsolat** , majd futtassa **Connect-AzureRmAccount**.<br> ![Hivatkozás létrehozása a tevékenységek között](media/automation-first-runbook-graphical/runbook-link-auth-activities.png)
 1. A vásznon, válassza ki a **Connect-AzureRmAccount** és a konfigurációs vezérlőtípus ablaktáblán **Azure bejelentkezési** a a **címke** szövegmező.
@@ -135,9 +139,6 @@ Most, hogy van egy változója az előfizetés-azonosító tárolására, úgy k
 1. A paraméterhalmaz kiválasztása után a paramétereket a tevékenység-paraméter konfigurálása lapon jelennek meg. Kattintson a **SubscriptionID** elemre.
 1. A paraméter értéke lapon válassza **Változóeszköz** a a **adatforrás** válassza ki **AzureSubscriptionId** a listában, és kattintson a **OK** kétszer.
 1. Vigye a kurzort a **Bejelentkezés az Azure-ba** fölé, és várja meg, amíg megjelenik az alakzat alján egy kör. Kattintson a körre, és húzza a nyilat az **Előfizetés azonosítójának megadása** elemre.
-
-> [!IMPORTANT]
-> **Connect-AzureRmAccount** alias már **Connect-AzureRMAccount**. Amikor keresést a könyvtár elemek, ha nem látja **Connect-AzureRMAccount**, használhat **Connect-AzureRmAccount**, vagy frissítheti a modulok az Automation-fiókban.
 
 A forgatókönyvnek ezen a ponton az alábbi kódhoz kell hasonlítania: <br>![Forgatókönyv-hitelesítés konfigurálása](media/automation-first-runbook-graphical/runbook-auth-config.png)
 

@@ -11,15 +11,15 @@ ms.topic: article
 ms.service: iot-edge
 ms.custom: ''
 ms.reviewer: kgremban
-ms.openlocfilehash: 1f71fdfb7090dce24ba73f1fa01e287c52b065f8
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 7bc0d0706385f2f3e101d06be3a2837341c331b9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-modules-to-an-iot-edge-device-using-iot-extension-for-azure-cli-20"></a>Az IoT-bővítmény használatával az Azure CLI 2.0 IoT peremhálózati eszköz modulok telepítése
 
-Az [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure?view=azure-cli-latest) egy nyílt forrású, több platformon is használható parancssori eszköz különböző Azure-erőforrások, például az IoT Edge felügyeletére. Az Azure CLI 2.0 Windows, Linux és Mac OS rendszereken érhető el.
+Az [Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) egy nyílt forrású, több platformon is használható parancssori eszköz különböző Azure-erőforrások, például az IoT Edge felügyeletére. Az Azure CLI 2.0 Windows, Linux és Mac OS rendszereken érhető el.
 
 Az Azure CLI 2.0 egy használatra kész megoldás Azure IoT Hub-erőforrások, eszközregisztrációs szolgáltatáspéldányok és csatolt központok felügyeletéhez. Az új IoT-bővítmény Azure CLI 2.0 szolgáltatások, mint a kezelés, és a teljes IoT peremhálózati képes a következőképpen színesíti.
 

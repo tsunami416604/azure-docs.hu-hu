@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: kumud
-ms.openlocfilehash: d384f8867ddfd28acaf78a47a7d32729e87c5580
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3fee44e282424caa0a9e57dae1228d8af075e4a6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli-20"></a>Az Azure DNS az Azure CLI 2.0 használatával DNS-zónák kezelése
 
@@ -47,7 +47,7 @@ A konfigurálás megkezdése előtt győződjön meg arról, hogy rendelkezik a 
 
 ### <a name="sign-in-to-your-azure-account"></a>Jelentkezzen be az Azure-fiókjába
 
-Nyisson meg egy konzolablakot, adja meg a saját hitelesítő adatait. További információt az [Azure parancssori felületből (CLI) Azure-ba történő bejelentkezést ismertető cikkben](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli?view=azure-cli-latest) talál.
+Nyisson meg egy konzolablakot, adja meg a saját hitelesítő adatait. További információt az [Azure parancssori felületből (CLI) Azure-ba történő bejelentkezést ismertető cikkben](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) talál.
 
 ```
 az login
@@ -68,7 +68,7 @@ az account set --subscription "subscription name"
 ```
 
 ### <a name="optional-to-installuse-azure-dns-private-zones-feature-public-preview"></a>Választható lehetőség: Telepítés/használatához Azure saját DNS-zónák funkció (nyilvános előzetes verzió)
-Az Azure DNS saját zóna funkció Public Preview bővítménye, az Azure parancssori felület használatával jelent meg. A "dns" Azure CLI-bővítmény telepítése 
+Az Azure DNS saját zóna funkció nyilvános előzetes verziója az Azure CLI bővítményeként jelent meg. A „dns” Azure CLI-bővítmény telepítése 
 ```
 az extension add --name dns
 ``` 
@@ -143,30 +143,30 @@ A következő példa a válasz.
 }
 ```
 
-Megjegyzés: a DNS-rekordokat nem által visszaadott `az network dns zone show`. A DNS-rekordok listában használja `az network dns record-set list`.
+Vegye figyelembe, hogy az `az network dns zone show` nem ad vissza DNS-rekordokat. A DNS-rekordok listázásához az `az network dns record-set list` használható.
 
 
-## <a name="list-dns-zones"></a>Lista DNS-zónák
+## <a name="list-dns-zones"></a>DNS-zónák listázása
 
-Operációs rendszer DNS-zónák, használjon `az network dns zone list`. További segítségért lásd: `az network dns zone list --help`.
+A DNS-zónák felsorolásához használja az `az network dns zone list` parancsot. További segítségért lásd: `az network dns zone list --help`.
 
-Adja meg az erőforráscsoport csak az erőforráscsoporton belül zónák sorolja fel:
+Az erőforráscsoport megadásakor a rendszer csak az adott csoporton belüli zónákat sorolja fel:
 
 ```azurecli
 az network dns zone list --resource-group MyResourceGroup
 ```
 
-Az előfizetés minden zóna az erőforráscsoport kihagyásával sorolja fel:
+Az erőforráscsoport kihagyásakor a rendszer az előfizetésben található összes zónát felsorolja:
 
 ```azurecli
 az network dns zone list 
 ```
 
-## <a name="update-a-dns-zone"></a>A DNS-zóna frissítéséhez
+## <a name="update-a-dns-zone"></a>DNS-zóna frissítése
 
-DNS-zóna erőforráshoz módosítás használatával `az network dns zone update`. További segítségért lásd: `az network dns zone update --help`.
+A DNS-zóna erőforrásai az `az network dns zone update` paranccsal módosíthatók. További segítségért lásd: `az network dns zone update --help`.
 
-Ez a parancs frissíti a DNS-rekordhalmazok a zónán belül (lásd: [kezelése DNS-rekordok hogyan](dns-operations-recordsets-cli.md)). Csak a zóna erőforrás maga tulajdonságainak frissítésére szolgál. Ezeket a tulajdonságokat a rendszer jelenleg csak a [Azure Resource Manager "címke"](dns-zones-records.md#tags) a zóna erőforrás.
+Ez a parancs nem frissíti a zóna egy DNS-rekordhalmazát sem (lásd: [DNS-rekordok kezelése](dns-operations-recordsets-cli.md)). Csak a zónaerőforrás tulajdonságainak frissítésére használatos. Ezeket a tulajdonságokat a rendszer jelenleg csak a [Azure Resource Manager "címke"](dns-zones-records.md#tags) a zóna erőforrás.
 
 A következő példa bemutatja, hogyan a címke van megadva a DNS-zónák frissítéséhez. A meglévő címkék megadott helyett.
 
@@ -174,16 +174,16 @@ A következő példa bemutatja, hogyan a címke van megadva a DNS-zónák friss�
 az network dns zone update --resource-group myresourcegroup --name contoso.com --set tags.team=support
 ```
 
-## <a name="delete-a-dns-zone"></a>A DNS-zóna törlése
+## <a name="delete-a-dns-zone"></a>DNS-zóna törlése
 
-DNS-zónák törölhetők segítségével `az network dns zone delete`. További segítségért lásd: `az network dns zone delete --help`.
+A DNS-zónák törléséhez használja az `az network dns zone delete` parancsot. További segítségért lásd: `az network dns zone delete --help`.
 
 > [!NOTE]
-> Is egy DNS-zóna törlésével törli az összes DNS-rekordokat a zónán belül. Ez a művelet nem vonható vissza. Ha a DNS-zóna használatban van, a zóna szolgáltatásokat sikertelen lesz a zóna törlődik.
+> A DNS-zónák törlésével a zónában található összes DNS-rekord is törlődni fog. Ez a művelet nem vonható vissza. Ha a DNS-zóna használatban van, a zónát használó szolgáltatások futtatása meghiúsul a zóna törlésekor.
 >
->A zóna véletlen törlés elleni védelem érdekében, lásd: [hogyan védi a DNS-zónák és rekordok](dns-protect-zones-recordsets.md).
+>A zónák véletlen törlése elleni védelemről további információt talál a [DNS-zónák és -rekordok védelme](dns-protect-zones-recordsets.md) című szakaszban.
 
-Ez a parancs felszólítja megerősítést kér. A választható `--yes` letiltja a parancssorhoz.
+Ez a parancs megerősítést kér. A választható `--yes` kapcsoló kiiktatja a megerősítés kérését.
 
 A következő példa bemutatja, hogyan törölni a zónát *contoso.com* erőforráscsoportból *MyResourceGroup*.
 

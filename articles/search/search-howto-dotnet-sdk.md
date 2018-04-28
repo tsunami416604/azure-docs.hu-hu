@@ -7,40 +7,48 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/22/2017
+ms.date: 04/20/2018
 ms.author: brjohnst
-ms.openlocfilehash: b50dda3847431299d7a2ffac84ecd89f3c4a586d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: e8a492a0786281bdc1d7c2123a7188c32a124e13
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>Azure Search .NET-alkalmazás használata
 Ez a cikk a forgatókönyv az első működik, és a rendszer a [Azure Search .NET SDK](https://aka.ms/search-sdk). A .NET SDK használatával valósít meg egy hatékony keresési élményt biztosít az alkalmazás Azure Search használatával.
 
 ## <a name="whats-in-the-azure-search-sdk"></a>Mi az az Azure SDK keresése
-Az SDK-t tartalmaz egy ügyféloldali kódtár `Microsoft.Azure.Search`. Lehetővé teszi kezeli az indexek, az adatforrások és az indexelők, valamint feltöltése és dokumentumok kezeléséhez, és hajtsa végre a lekérdezéseket, anélkül, HTTP és a JSON részleteit kezelésére.
+Az SDK-t tartalmaz néhány klienskódtárait, amelyek lehetővé teszik, hogy az Indexek kezelése, adatforrások, indexelők és szinonimát leképezik, valamint feltöltés és dokumentumok kezeléséhez, hajtsa végre a lekérdezéseket, anélkül, HTTP és a JSON részleteit kezelésére. Ügyfél tárakban NuGet csomag küld.
 
-Az ügyféloldali kódtár határozza meg, például osztályok `Index`, `Field`, és `Document`, illetve műveletek, például `Indexes.Create` és `Documents.Search` a a `SearchServiceClient` és `SearchIndexClient` osztályok. Ezeket az osztályokat a következő névterek szerint vannak csoportosítva:
+A fő NuGet-csomag `Microsoft.Azure.Search`, amely csomag egy metaadat-szerint függőségeinek összes többi csomagot tartalmazó. Használja ezt a csomagot, ha Ön most csak az első lépések, vagy ha tudja, hogy az alkalmazásnak szüksége lesz az Azure Search összes funkcióját.
+
+A más NuGet-csomagok az SDK-ban a következők:
+ 
+  - `Microsoft.Azure.Search.Data`: Használja ezt a csomagot, ha egy .NET-alkalmazást az Azure Search kidolgozása, és csak lekérdezni, vagy az indexek dokumentumainak frissíteni kell. Ha is kell létrehozni vagy frissíteni az indexek, szinonima maps, vagy más szolgáltatásiszint-erőforrások, használja a `Microsoft.Azure.Search` csomag helyette.
+  - `Microsoft.Azure.Search.Service`: Használja ezt a csomagot, ha az Azure Search-indexek, szinonima maps, indexelők, adatforrások vagy más szolgáltatásiszint-erőforrások kezeléséhez .NET automatikus. Ha csak kell lekérdezés vagy a frissítés dokumentumot az indexben, használja a `Microsoft.Azure.Search.Data` csomag helyette. Ha módosítania kell az Azure Search összes funkcióját, használja a `Microsoft.Azure.Search` csomag helyette.
+  - `Microsoft.Azure.Search.Common`: Az Azure Search .NET-kódtárakra igényli általános típusok. Nem kell használni a csomag közvetlenül az alkalmazás; Csak célja, hogy a függőség beállításához használható.
+
+A különböző klienskódtárak segítségével adja meg például osztályok `Index`, `Field`, és `Document`, illetve műveletek, például `Indexes.Create` és `Documents.Search` a a `SearchServiceClient` és `SearchIndexClient` osztályok. Ezeket az osztályokat a következő névterek szerint vannak csoportosítva:
 
 * [Microsoft.Azure.Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
 * [Microsoft.Azure.Search.Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models)
 
 Az aktuális az Azure Search .NET SDK verziója most általánosan elérhető. Ha azt szeretné, vegye figyelembe a következő verziójára való visszajelzést, kérjük, látogasson el a [visszajelzés](https://feedback.azure.com/forums/263029-azure-search/).
 
-Támogatja a .NET SDK `2016-09-01` , a [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/). Ebben a verzióban mostantól tartalmazza az egyéni lekérdezések és Azure-Blob és az Azure tábla indexelő támogatást. Az előzetes funkciók, amelyek *nem* verzióhoz, például az indexelés JSON és a CSV-fájlok támogatását szerepelnek [előzetes](search-api-2016-09-01-preview.md) és keresztül elérhető [4.0.1-preview verziójának a .NET SDK](https://aka.ms/search-sdk-preview).
+Támogatja a .NET SDK `2017-11-11` , a [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/). Ezen verziója most már támogatja az szinonimák, valamint az indexelők fokozatos fejlesztést tartalmaz. Az előzetes funkciók, amelyek *nem* verzióhoz, például az indexelés JSON-tömbök és CSV-fájlok támogatását szerepelnek [előzetes](search-api-2016-09-01-preview.md) és keresztül elérhető [4.0-előzetes verzióját, a .NET SDK](https://aka.ms/search-sdk-preview).
 
 Ez az SDK nem támogatja a [felügyeleti műveletek](https://docs.microsoft.com/rest/api/searchmanagement/) például létrehozása és a keresési szolgáltatás méretezése és API-kulcsokat kezelése. Ha a keresési erőforrások kezelése a .NET-alkalmazás van szüksége, használhatja a [Azure Search .NET SDK-t felügyeleti](https://aka.ms/search-mgmt-sdk).
 
 ## <a name="upgrading-to-the-latest-version-of-the-sdk"></a>Az SDK legújabb verziójára
-Ha már használja az Azure Search .NET SDK régebbi verziója, és frissítse az általánosan elérhető új verzióra szeretné [Ez a cikk](search-dotnet-sdk-migration.md) ismerteti, hogyan.
+Ha már használja az Azure Search .NET SDK régebbi verziója, és frissítse az általánosan elérhető új verzióra szeretné [Ez a cikk](search-dotnet-sdk-migration-version-5.md) ismerteti, hogyan.
 
 ## <a name="requirements-for-the-sdk"></a>Az SDK követelményei
 1. Visual Studio 2017.
 2. A saját Azure Search szolgáltatás. Az SDK használatához szüksége lesz a nevét, valamint a szolgáltatás egy vagy több API-kulcsokat. [A szolgáltatás létrehozása a portálon](search-create-service-portal.md) segít a fenti lépéseket.
-3. Töltse le az Azure Search .NET SDK [NuGet-csomag](http://www.nuget.org/packages/Microsoft.Azure.Search) a Visual Studio "Manage NuGet Packages" használatával. A csomag neve csak keressen `Microsoft.Azure.Search` NuGet.org meg.
+3. Töltse le az Azure Search .NET SDK [NuGet-csomag](http://www.nuget.org/packages/Microsoft.Azure.Search) a Visual Studio "Manage NuGet Packages" használatával. A csomag neve csak keressen `Microsoft.Azure.Search` on NuGet.org (vagy egy másik csomagot a fenti nevek, ha csak a található funkciók egy részét kell).
 
-Az Azure Search .NET SDK támogatja a .NET-keretrendszer 4.6 és a .NET Core célzó alkalmazásokat.
+Az Azure Search .NET SDK támogatja a .NET-keretrendszer 4.5.2-es célzó alkalmazásokat és az újabb, valamint a .NET Core.
 
 ## <a name="core-scenarios"></a>Legfontosabb forgatókönyvek
 Számos szempontot következőket kell tennie az alkalmazás. Ez az oktatóanyag azt érintünk core forgatókönyvekben:

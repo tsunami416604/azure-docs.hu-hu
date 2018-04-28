@@ -1,8 +1,8 @@
 ---
-title: "Egy Azure fájlszinkronizálás (előzetes verzió) kiszolgáló végpont hozzáadása |} Microsoft Docs"
-description: "További tudnivalók az Azure-fájlok központi telepítésének tervezése során megfontolandó tényezőkről."
+title: Egy Azure fájlszinkronizálás (előzetes verzió) kiszolgáló végpont hozzáadása |} Microsoft Docs
+description: További tudnivalók az Azure-fájlok központi telepítésének tervezése során megfontolandó tényezőkről.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: wmgries
 manager: klaasl
 editor: jgerend
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: 1619b3c67fb68f05c4af999a38794e4a52c22264
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 26e4af814bad988da02d4e0cf36f17e1beec872e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="addremove-an-azure-file-sync-preview-server-endpoint"></a>Egy Azure fájlszinkronizálás (előzetes verzió) kiszolgáló végpont hozzáadása
 Az Azure File Sync (előzetes verzió) lehetővé teszi a szervezet Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. Ezt úgy éri el, hogy átalakítja a Windows-kiszolgálókat az Azure-fájlmegosztás gyors gyorsítótáraivá. A Windows Server rendszeren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl. SMB, NFS vagy FTPS), és annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -49,7 +49,7 @@ A következő adatszolgáltatás **server végpont hozzáadása**:
 Válassza ki **létrehozása** a kiszolgáló végpont hozzáadása. A fájlok egy szinkronizálási csoport egy adott névtéren belül most folyamatosan szinkronban. 
 
 ## <a name="remove-a-server-endpoint"></a>Távolítsa el a kiszolgáló végpont
-Ha engedélyezve van a kiszolgáló végpont, a felhő rétegezési lesz *réteg* fájlok az Azure fájlmegosztások. Ez lehetővé teszi a helyszíni fájlmegosztások a gyorsítótár ahelyett, hogy az adatkészlet, teljes másolata ügyfélgépként hatékonyan használhatják a területet a fájlkiszolgálón. Azonban ha egy kiszolgáló végpont rétegzett fájlok a kiszolgálón továbbra is helyben távolítja el, azokat a fájlokat válnak lehet. Ezért továbbra is fájl hozzáférésre van szükség, ha kell Emlékezzen vissza Azure-fájlokból rétegzett bővítményi regisztráció törléséhez folytatása előtt. 
+Ha engedélyezve van a kiszolgáló végpont, a felhő rétegezési lesz *réteg* fájlok az Azure fájlmegosztások. Ez lehetővé teszi a helyszíni fájlmegosztások a gyorsítótár ahelyett, hogy az adatkészlet, teljes másolata ügyfélgépként hatékonyan használhatják a területet a fájlkiszolgálón. Azonban **Ha egy kiszolgáló végpont rétegzett fájlok a kiszolgálón továbbra is helyben távolítja el, ezek a fájlok már nem lesz elérhető**. Ezért ha továbbra is a helyszíni fájlmegosztások fájl hozzáférésre van szükség, kell Emlékezzen vissza Azure-fájlokból rétegzett bővítményi a kiszolgáló-végpont törlése folyamatban, mielőtt. 
 
 Ezt megteheti a PowerShell-parancsmaggal alább látható módon:
 

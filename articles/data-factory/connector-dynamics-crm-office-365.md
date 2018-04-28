@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: jingwang
-ms.openlocfilehash: e68f8d4405ae82cfaae59b1e4d9dcea8b361baff
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 2f56443eb41e2a7f723e95f86f39c5cc47e82f6f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Adatok másolása Dynamics 365 (közös adatszolgáltatás) vagy a Dynamics CRM és Azure Data Factory használatával
 
@@ -210,7 +210,7 @@ Adatok másolása Dynamics, állítsa be a forrás típusa a másolási tevéken
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot a másolási tevékenység forrás értékre kell állítani **DynamicsSource**. | Igen |
-| lekérdezés | FetchXML Dynamics használt jogvédett lekérdezésnyelvet (online és helyszíni). Tekintse meg a következő példát. További tudnivalókért lásd: [hozhatók létre olyan lekérdezések a FeachXML](https://msdn.microsoft.com/en-us/library/gg328332.aspx). | Nem (Ha a "entityName" adatkészlet paraméter van megadva) |
+| lekérdezés | FetchXML Dynamics használt jogvédett lekérdezésnyelvet (online és helyszíni). Tekintse meg a következő példát. További tudnivalókért lásd: [hozhatók létre olyan lekérdezések a FeachXML](https://msdn.microsoft.com/library/gg328332.aspx). | Nem (Ha a "entityName" adatkészlet paraméter van megadva) |
 
 **Példa**
 

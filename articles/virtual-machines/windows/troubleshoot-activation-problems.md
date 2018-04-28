@@ -1,11 +1,11 @@
 ---
-title: "Az Azure-ban a Windows virtuális gép aktiválással kapcsolatos problémák elhárítása |} Microsoft Docs"
-description: "A hibaelhárítás javaslatot tesz, ha a Windows virtuális gép aktiválási problémák elhárítása az Azure-ban"
+title: Az Azure-ban a Windows virtuális gép aktiválással kapcsolatos problémák elhárítása |} Microsoft Docs
+description: A hibaelhárítás javaslatot tesz, ha a Windows virtuális gép aktiválási problémák elhárítása az Azure-ban
 services: virtual-machines-windows, azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: willchen
-editor: 
+editor: ''
 tags: top-support-issue, azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: fd3f52de40c6d448d457824bcc675db036d2cb86
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 3926522c8359587798ea540d13b157832551f24d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Azure Windows virtuális gép aktiválással kapcsolatos problémák elhárítása
 
@@ -29,9 +29,9 @@ Ha gondja támad, amikor aktiválja a Azure Windows virtuális gép (VM), amely 
 ## <a name="understanding-azure-kms-endpoints-for-windows-product-activation-of-azure-virtual-machines"></a>A Windows Azure virtuális gépek Azure KMS végpontok ismertetése
 Azure különböző végpontokhoz használja a KMS-aktiválás attól függően, hogy a felhő régió, ahol a virtuális gép található. Hibaelhárítási útmutatóban használjon a megfelelő KMS-végpont a régiójában érvényes.
 
-* Azure public cloud regions: kms.core.windows.net:1688
-* Azure China national cloud regions: kms.core.chinacloudapi.cn:1688
-* Azure Germany national cloud regions: kms.core.cloudapi.de:1688
+* Azure nyilvános felhőjében régiók: kms.core.windows.net:1688
+* Az Azure Kína nemzeti felhőalapú területeket: kms.core.chinacloudapi.cn:1688
+* Az Azure Németország nemzeti felhőalapú területeket: kms.core.cloudapi.de:1688
 * Az Azure Velünk – (kormányzati) nemzeti felhőalapú területeket: kms.core.usgovcloudapi.net:1688
 
 ## <a name="symptom"></a>Jelenség
@@ -78,7 +78,7 @@ Ez a lépés nem vonatkozik a Windows 2012 vagy Windows 2008 R2. Az automatizál
 
 ### <a name="step-2-verify-the-connectivity-between-the-vm-and-azure-kms-service"></a>2. lépés a virtuális gép és az Azure KMS szolgáltatás közötti kapcsolat ellenőrzése
 
-1. Töltse le, és bontsa ki a [Psping](http:/technet.microsoft.com/en-us/sysinternals/jj729731.aspx) eszköz egy helyi mappába a virtuális gépen, amely nem aktiválható. 
+1. Töltse le, és bontsa ki a [Psping](http:/technet.microsoft.com/sysinternals/jj729731.aspx) eszköz egy helyi mappába a virtuális gépen, amely nem aktiválható. 
 
 2. Ugrás a Start, keresse meg a Windows PowerShell, kattintson a jobb gombbal a Windows PowerShell, és válassza a Futtatás rendszergazdaként.
 
@@ -126,7 +126,7 @@ Igen.
  
 ### <a name="what-happens-if-windows-activation-period-expires"></a>Mi történik, ha a Windows aktiválási időszak lejár? 
  
-Ha a türelmi időszak lejárt, és még nincs aktiválva a Windows, Windows Server 2008 R2 és a Windows újabb verzióiban kattintás aktiválásával kapcsolatos további értesítések. A tapéta fekete marad, és a Windows Update biztonsági és csak a kritikus frissítéseket, de nem választható frissítéseket telepíti. Az értesítések című alján a [licencelési feltételek](http://technet.microsoft.com/en-us/library/ff793403.aspx) lap.   
+Ha a türelmi időszak lejárt, és még nincs aktiválva a Windows, Windows Server 2008 R2 és a Windows újabb verzióiban kattintás aktiválásával kapcsolatos további értesítések. A tapéta fekete marad, és a Windows Update biztonsági és csak a kritikus frissítéseket, de nem választható frissítéseket telepíti. Az értesítések című alján a [licencelési feltételek](http://technet.microsoft.com/library/ff793403.aspx) lap.   
 
 ## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
 Ha további segítségre van, [forduljon a támogatási szolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma elhárítva gyors eléréséhez.

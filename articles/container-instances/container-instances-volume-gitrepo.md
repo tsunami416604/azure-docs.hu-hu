@@ -3,16 +3,16 @@ title: Azure-tároló példányok gitRepo kötet csatlakoztatása
 description: 'Útmutató: a Git-tárház klónozása be a tároló példányok gitRepo kötet csatlakoztatása'
 services: container-instances
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: marsma
-ms.openlocfilehash: 9c4e6e16bed6c8563561e292fe93c974376bab09
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: e40d841c07534c9c0074c038d1e3c6e435265564
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Azure-tároló példányát gitRepo kötet csatlakoztatása
 

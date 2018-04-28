@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 919b1bef1f1337ad188e26476da8c5a5ef029224
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 133c09ad1f81a122d089485f8793d7dddbd1488a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Egy általánosított virtuális merevlemez feltöltéséhez, és beállítsa, hogy létrehozott egy új virtuális gépet az Azure-ban
 
@@ -100,14 +100,14 @@ Attól függően, hogy a hálózati kapcsolat és a VHD-fájl mérete a parancs 
 Feltöltheti a virtuális merevlemez a tárfiókhoz, az alábbiak egyikének használatával:
 
 - [AzCopy](http://aka.ms/downloadazcopy)
-- [Azure Storage Copy Blob API](https://msdn.microsoft.com/library/azure/dd894037.aspx)
+- [Az Azure Storage másolási Blob API](https://msdn.microsoft.com/library/azure/dd894037.aspx)
 - [Az Azure Storage Explorer feltöltése a BLOB](https://azurestorageexplorer.codeplex.com/)
 - [Storage Import/Export szolgáltatás REST API-referencia](https://msdn.microsoft.com/library/dn529096.aspx)
 -   Ajánlott Import/Export szolgáltatás használata, ha becsült a 7 napnál hosszabb idő feltöltése. Használhat [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) becsléséhez adatok méretét és átviteli egység időpontját. 
     Importálási/exportálási segítségével másolja egy standard szintű tárfiókot. Szüksége lesz a prémium szintű storage-fiókra egy eszköz, például az AzCopy standard tárolási másolja.
 
 > [!IMPORTANT]
-> Ha a virtuális merevlemez feltöltése az Azure-bA AzCopy használ, győződjön meg arról, állított [/BlobType:page](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy#blobtypeblock--page--append) futtatása előtt töltse fel a parancsfájlt. Ha a cél egy blobot, és ez a beállítás nincs megadva, alapértelmezés szerint az AzCopy egy blokkblob hoz létre.
+> Ha a virtuális merevlemez feltöltése az Azure-bA AzCopy használ, győződjön meg arról, állított [/BlobType:page](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy#blobtypeblock--page--append) futtatása előtt töltse fel a parancsfájlt. Ha a cél egy blobot, és ez a beállítás nincs megadva, alapértelmezés szerint az AzCopy egy blokkblob hoz létre.
 > 
 > 
 

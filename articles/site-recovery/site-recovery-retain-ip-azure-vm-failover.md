@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2018
 ms.author: manayar
-ms.openlocfilehash: 8e128e057e45f6966067ebaaf039d9b14349d926
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3e23bab6d67cc4911dd46c226ebc9b87e40e2fa2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="ip-address-retention-for-azure-virtual-machine-failover"></a>Azure virtuális gép feladatátvételi IP-cím megőrzési
 
@@ -34,20 +34,20 @@ A követelmény IP adatmegőrzési (ilyen alkalmazás kötések mint) megadott, 
 
 Ez a hálózati architektúra néz feladatátvétel előtt:
 - Alkalmazás virtuális gépeket üzemeltető az Azure Kelet-Ázsia, a cím terület 10.1.0.0/16 Azure virtuális hálózat használatával. Ez a virtuális hálózat neve **forrás VNet**.
-- Alkalmazások és szolgáltatások el vannak osztva három alhálózatokban – 10.1.0.0/24, 10.1.1.0/24, 10.1.2.0/24, illetve nevű **alhálózati 1**, **alhálózati 2**, **alhálózati 3**.
+- Alkalmazások és szolgáltatások el vannak osztva három alhálózatokban – 10.1.1.0/24, 10.1.2.0/24, 10.1.3.0/24, illetve nevű **alhálózati 1**, **alhálózati 2**, **alhálózati 3**.
 - Azure Délkelet-Ázsia a cél régió, és egy helyreállítási virtuális hálózathoz, amely a forrás és az alhálózati beállításában utánozza rendelkezik. Ez a virtuális hálózat neve **helyreállítási VNet**.
-- Például a mindig bekapcsolva, tartományvezérlő, stb. szükséges replikacsomópontokon cím terület 20.1.0.0/16 alhálózati 4 belüli cím 20.1.0.0/24 a virtuális hálózat kerülnek. A virtuális hálózat neve **Azure VNet** , és az Azure Délkelet-Ázsia.
+- Például a mindig bekapcsolva, tartományvezérlő, stb. szükséges replikacsomópontokon cím terület 10.2.0.0/16 alhálózati 4 belüli cím 10.2.4.0/24 a virtuális hálózat kerülnek. A virtuális hálózat neve **Azure VNet** , és az Azure Délkelet-Ázsia.
 - **A forrás virtuális hálózat** és **Azure VNet** VPN hely-hely kapcsolatot keresztül csatlakoznak.
 - **A helyreállítási virtuális hálózat** nem csatlakozik más virtuális hálózathoz.
 - **A vállalati** replikált elemek cél IP-címet rendel/ellenőrzi. Ebben a példában a cél IP-címet megegyezik a forrás IP-cím, az egyes virtuális gépek.
 
-![Feladatátvétel előtt Azure-Azure kapcsolat](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-before-failover.png)
+![Feladatátvétel előtt Azure-Azure kapcsolat](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-before-failover2.png)
 
 ### <a name="full-region-failover"></a>Teljes terület feladatátvétel
 
 A regionális kimaradás esetén **a vállalat** helyre tudja állítani a teljes telepítés gyorsan és egyszerűen Azure Site Recovery hatékony [helyreállítási tervek](site-recovery-create-recovery-plans.md). Ha már be van állítva a cél IP-címet az egyes virtuális gépek a feladatátvétel előtt **a vállalat** kezelheti feladatátvételi és helyreállítási virtuális hálózat és az Azure Vnet közötti kapcsolat felépítése automatizálhatja, ahogy az az alábbi ábra.
 
-![Teljes terület feladatátvételi Azure-Azure kapcsolat](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-full-region-failover.png)
+![Teljes terület feladatátvételi Azure-Azure kapcsolat](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-full-region-failover2.png)
 
 Attól függően, hogy az alkalmazás követelményeinek, a két Vnetek cél régió közötti kapcsolatok lehet meghatározott előtt, közben (mint egy köztes lépés) vagy a feladatátvétel után. Használjon [helyreállítási tervek](site-recovery-create-recovery-plans.md) parancsfájlok hozzáadása, és adja meg a feladatátvételi sorrendjét.
 
@@ -62,23 +62,23 @@ A jobb fiókot alhálózati szintű application feladatátvétel követelményei
 A tervezővel egyes alkalmazások a rugalmasságot, javasoljuk a saját dedikált virtuális hálózatban egy alkalmazás tartalmazhat, és szükség szerint a virtuális hálózatok közötti kapcsolatot létrehozni. Ez lehetővé teszi elkülönített alkalmazás feladatátvételi megtartja az eredeti magánhálózati IP-címét.
 
 Ezután a előtti-feladatátvételi konfiguráció a következőképpen néz ki:
-- Alkalmazás virtuális gépeket üzemeltető az Azure Kelet-Ázsia, az első alkalmazás címe terület 10.1.0.0/16 és 15.1.0.0/16 a második alkalmazáshoz egy Azure virtuális hálózat használatával. A virtuális hálózatok nevesített **forrás VNet1** és **forrás VNet2** az első és második alkalmazáshoz, illetve.
+- Alkalmazás virtuális gépeket üzemeltető az Azure Kelet-Ázsia, az első alkalmazás címe terület 10.1.0.0/16 és 10.2.0.0/16 a második alkalmazáshoz egy Azure virtuális hálózat használatával. A virtuális hálózatok nevesített **forrás VNet1** és **forrás VNet2** az első és második alkalmazáshoz, illetve.
 - Minden egyes virtuális hálózat további felosztása két alhálózat.
 - Az Azure Délkelet-Ázsia a cél régió és helyreállítási virtuális hálózatok a helyreállítási VNet1 és helyreállítási VNet2.
-- Például a mindig bekapcsolva, tartományvezérlő, stb. szükséges replikacsomópontokon kerülnek cím terület 20.1.0.0/16 belüli virtuális hálózat **alhálózati 4** a cím 20.1.0.0/24. A virtuális hálózati Azure VNet neve és az Azure Délkelet-Ázsia.
+- Például a mindig bekapcsolva, tartományvezérlő, stb. szükséges replikacsomópontokon kerülnek cím terület 10.3.0.0/16 belüli virtuális hálózat **alhálózati 4** a cím 10.3.4.0/24. A virtuális hálózati Azure VNet neve és az Azure Délkelet-Ázsia.
 - **Forrás-VNet1** és **Azure VNet** VPN hely-hely kapcsolatot keresztül csatlakoznak. Hasonlóképpen **forrás VNet2** és **Azure VNet** keresztül VPN hely-hely kapcsolatot is csatlakoznak.
 - **Forrás-VNet1** és **forrás VNet2** ebben a példában S2S VPN-en keresztül is csatlakoznak. Mivel a két Vnetek ugyanabban a régióban, Vnetben társviszony-létesítést is használható S2S VPN-je helyett.
 - **Helyreállítási VNet1** és **helyreállítási VNet2** nem csatlakoznak bármely más virtuális hálózattal.
 - Csökkentse a helyreállítási idő célkitűzése (RTO), a VPN-átjárók konfigurálása a **helyreállítási VNet1** és **helyreállítási VNet2** feladatátvétel után már.
 
-![Elkülönített Azure-Azure kapcsolat alkalmazás feladatátvétel előtt](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-before-failover.png)
+![Elkülönített Azure-Azure kapcsolat alkalmazás feladatátvétel előtt](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-before-failover2.png)
 
 Esetén a katasztrófa helyzet, amely befolyásolja a csak egy alkalmazás (az ebben a példában az adatforrás VNet2 fájlban található) a vállalat állíthatja helyre az érintett alkalmazás az alábbiak szerint:
 - VPN-kapcsolatok között **forrás VNet1** és **forrás VNet2**, és közötti **forrás VNet2** és **Azure VNet** megszakad.
 - VPN-kapcsolatot létesít közötti **forrás VNet1** és **helyreállítási VNet2**, és közötti **helyreállítási VNet2** és **Azure VNet**.
 - A virtuális gépek **forrás VNet2** keresztül nem sikerült **helyreállítási VNet2**.
 
-![Elkülönített Azure-Azure kapcsolat alkalmazás feladatátvételt követően](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-after-failover.png)
+![Elkülönített Azure-Azure kapcsolat alkalmazás feladatátvételt követően](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-after-failover2.png)
 
 A fenti elkülönített feladatátvételi példa bővíthető további alkalmazásokat is, és a hálózati kapcsolat. Az ajánljuk, hogy a hasonló jellegű kapcsolat modell, amennyire csak lehetséges, kövesse az feladatátadás a cél-bejegyzéseket.
 
@@ -92,13 +92,13 @@ A második esetben az adatraktárakban **B vállalat** , amely rendelkezik az al
 
 Ez a hálózati architektúra néz feladatátvétel előtt:
 - Alkalmazás virtuális gépeket üzemeltető az Azure Kelet-Ázsia, a cím terület 10.1.0.0/16 Azure virtuális hálózat használatával. Ez a virtuális hálózat neve **forrás VNet**.
-- Alkalmazások és szolgáltatások el vannak osztva három alhálózatokban – 10.1.0.0/24, 10.1.1.0/24, 10.1.2.0/24, illetve nevű **alhálózati 1**, **alhálózati 2**, **alhálózati 3**.
+- Alkalmazások és szolgáltatások el vannak osztva három alhálózatokban – 10.1.1.0/24, 10.1.2.0/24, 10.1.3.0/24, illetve nevű **alhálózati 1**, **alhálózati 2**, **alhálózati 3**.
 - Azure Délkelet-Ázsia a cél régió, és egy helyreállítási virtuális hálózathoz, amely a forrás és az alhálózati beállításában utánozza rendelkezik. Ez a virtuális hálózat neve **helyreállítási VNet**.
 - Virtuális gépek Azure Kelet-Ázsia ExpressRoute vagy telephelyek közötti VPN használatával a helyszíni adatközpontjához csatlakoznak.
 - Helyreállítási idő célkitűzése (RTO) csökkentése érdekében a B átjárókat a helyreállítási virtuális hálózatot az Azure Délkelet-Ázsiában, feladatátvétel után már látja el.
 - **B vállalat** replikált elemek cél IP-címet rendel/ellenőrzi. Ebben a példában a cél IP-cím ugyanaz, mint a forrás IP-cím, az egyes virtuális gépek
 
-![A helyszíni-az-Azure-kapcsolat feladatátvétel előtt](./media/site-recovery-retain-ip-azure-vm-failover/on-premises-to-azure-connectivity-before-failover.png)
+![A helyszíni-az-Azure-kapcsolat feladatátvétel előtt](./media/site-recovery-retain-ip-azure-vm-failover/on-premises-to-azure-connectivity-before-failover2.png)
 
 ### <a name="full-region-failover"></a>Teljes terület feladatátvétel
 
@@ -106,7 +106,7 @@ A regionális kimaradás esetén **B vállalat** helyre tudja állítani a telje
 
 Az eredeti kapcsolatot az Azure Kelet-Ázsia és a helyszíni adatközpontját a Azure Délkelet-Ázsia és a helyszíni adatközpontban közötti kapcsolat létrehozása előtt kell leválasztja. A helyi útválasztási is konfigurálni, hogy a cél régió mutasson, és átjárók feladatátvétel utáni.
 
-![A feladatátvételt követően a helyi-az-Azure-kapcsolat](./media/site-recovery-retain-ip-azure-vm-failover/on-premises-to-azure-connectivity-after-failover.png)
+![A feladatátvételt követően a helyi-az-Azure-kapcsolat](./media/site-recovery-retain-ip-azure-vm-failover/on-premises-to-azure-connectivity-after-failover2.png)
 
 ### <a name="subnet-failover"></a>Alhálózati feladatátvétel
 

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 01/02/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 718990b69cc75709af819ad7df9a77ad0f8f33ce
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a5e657d3c171b63734ad4bf6c0097a3142993360
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>A hálózat elérését gyorsítja fel Linux virtuális gép létrehozása
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 04/16/2018
 >   2. Hozza létre a virtuális gép a hálózat elérését gyorsítja fel engedélyezve van.
 >
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan hozzon létre egy Linux virtuális gép (VM) a hálózat elérését gyorsítja fel. Gyorsított hálózatkezelés lehetővé teszi, hogy az egygyökerű i/o-virtualizálás (SR-IOV) egy virtuális géphez, a hálózati teljesítmény nagy mértékben javítva. A nagy teljesítményű elérési út nincs hatással a gazdagép a datapath, így csökkentve a késést, a jitter és a CPU felhasználását, a legnagyobb igénybevételt jelentő munkaterheléseit támogatott Virtuálisgép-típusokon való használatra. Az alábbi képen látható rendelkező és anélküli gyorsított hálózatkezelés két virtuális gépek közötti kommunikáció:
+Ebben az oktatóanyagban elsajátíthatja, hogyan hozzon létre egy Linux virtuális gép (VM) a hálózat elérését gyorsítja fel. A hálózat elérését gyorsítja fel, a Windows virtuális gépek létrehozásához lásd: [Windows virtuális gép létrehozása az elérését gyorsítja fel hálózatkezelési](create-vm-accelerated-networking-powershell.md). Gyorsított hálózatkezelés lehetővé teszi, hogy az egygyökerű i/o-virtualizálás (SR-IOV) egy virtuális géphez, a hálózati teljesítmény nagy mértékben javítva. A nagy teljesítményű elérési út nincs hatással a gazdagép a datapath, így csökkentve a késést, a jitter és a CPU felhasználását, a legnagyobb igénybevételt jelentő munkaterheléseit támogatott Virtuálisgép-típusokon való használatra. Az alábbi képen látható rendelkező és anélküli gyorsított hálózatkezelés két virtuális gépek közötti kommunikáció:
 
 ![Összehasonlítása](./media/create-vm-accelerated-networking/accelerated-networking.png)
 
@@ -78,7 +78,7 @@ Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_
 az group create --name myResourceGroup --location centralus
 ```
 
-Ki kell választania egy támogatott Linux régióban felsorolt [Linux az elérését gyorsítja fel hálózati](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview).
+Válasszon egy támogatott Linux régiót felsorolt [Linux az elérését gyorsítja fel hálózati](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview).
 
 Hozzon létre egy virtuális hálózatot az [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) paranccsal. Az alábbi példa létrehoz egy virtuális hálózatot nevű *myVnet* egyetlen alhálózattal:
 
@@ -141,7 +141,7 @@ az network nic create \
 ```
 
 ## <a name="create-a-vm-and-attach-the-nic"></a>Hozzon létre egy virtuális Gépet, és csatlakoztassa a hálózati adapter
-A virtuális gép létrehozásakor adja meg a hálózati adapter segítségével létrehozott `--nics`. Ki kell választania a méretre és a felsorolt terjesztési [Linux az elérését gyorsítja fel hálózati](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview). 
+A virtuális gép létrehozásakor adja meg a hálózati adapter segítségével létrehozott `--nics`. Válasszon ki egy mérete és a felsorolt terjesztési [Linux az elérését gyorsítja fel hálózati](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview). 
 
 Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. Az alábbi példakód létrehozza a virtuális gépek nevű *myVM* UbuntuLTS kép és a méretet, amely támogatja a hálózat elérését gyorsítja fel (*Standard_DS4_v2*):
 
@@ -158,7 +158,7 @@ az vm create \
 
 Az összes Virtuálisgép-méretek és jellemzők listájáért lásd: [Linux Virtuálisgép-méretek](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-A virtuális gép létrehozása után a következő egy példa a kimenetre hasonló kimenetet küld vissza. Vegye figyelembe a **publicIpAddress**. Ez a cím a virtuális Gépet, a későbbi lépésekben eléréséhez használt.
+A virtuális gép létrehozása után a következő egy példa a kimenetre hasonló kimenetet küld vissza. Jegyezze fel a **publicIpAddress** értékét. Ez a cím a virtuális Gépet, a későbbi lépésekben eléréséhez használt.
 
 ```azurecli
 {

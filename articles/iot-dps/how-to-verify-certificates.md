@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: dd54ca5a172bdb65b7781f2fb764b00f50e5df28
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: eb37ce7e61796494be0a9282afdc620b0ca5886a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Útmutatás igazolása-az-birtokában az X.509 CA tanúsítványaiban az eszköz kiépítése szolgáltatáshoz
 
@@ -58,7 +58,7 @@ Microsoft eszközöket biztosít, és minták, amelyek segítségével hozzon l�
 
 - A **Azure IoT Hub C SDK** PowerShell (Windows) és (Linux) Bash parancsfájlok fejlesztésére hitelesítésszolgáltató és a levél tanúsítványok létrehozásához, valamint igazolása-az-birtokában ellenőrző kód használata végrehajtásához. Letöltheti a [fájlok](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) a rendszerben egy munkakönyvtárhoz és kövesse az utasításokat a a [kezelése Hitelesítésszolgáltatói tanúsítványok információs](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) igazolása a birtokában a végrehajtásához a Hitelesítésszolgáltatói tanúsítványra. 
 - A **Azure IoT Hub C# SDK** tartalmazza a [csoport tanúsítvány ellenőrzési minta](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples/GroupCertificateVerificationSample), amely igazolása a birtokában ehhez használhatja.
-- A lépéseket követheti a [PowerShell-parancsfájlokkal kezelheti a hitelesítésszolgáltató által aláírt X.509-tanúsítványokat](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-security-x509-create-certificates) az IoT Hub-dokumentáció kifejezetten a parancsfájl című részben a cikk [adatok a X.509 Hitelesítésszolgáltatói tanúsítvány](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-security-x509-create-certificates#signverificationcode).
+- A lépéseket követheti a [PowerShell-parancsfájlokkal kezelheti a hitelesítésszolgáltató által aláírt X.509-tanúsítványokat](https://docs.microsoft.com/azure/iot-hub/iot-hub-security-x509-create-certificates) az IoT Hub-dokumentáció kifejezetten a parancsfájl című részben a cikk [adatok a X.509 Hitelesítésszolgáltatói tanúsítvány](https://docs.microsoft.com/azure/iot-hub/iot-hub-security-x509-create-certificates#signverificationcode).
  
 > [!IMPORTANT]
 > Mellett igazolása a birtokában, a PowerShell és a Bash parancsfájlok idézett korábban is engedélyezi, hogy ellátja az eszközöket és hitelesítéséhez használható tanúsítványok levél, legfelső szintű tanúsítványok és köztes tanúsítványokat létrehozni. Ezek a tanúsítványok csak fejlesztési használható. Akkor kell soha nem használható éles környezetben. 

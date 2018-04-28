@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: robb,bwren
-ms.openlocfilehash: 404ede664f13900137c730034798fbb4b8307852
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 16478d0223f59abb239d39fa27453e41b6980727
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitoring-azure-applications-and-resources"></a>Azure-alkalmazások és erőforrások figyelése
 
@@ -161,6 +161,6 @@ Egy jelentett leállás után a Szolgáltatástérkép az adott azon gépek azon
 ## <a name="next-steps"></a>További lépések
 További információ:
 
-* [Az Azure figyelő](https://azure.microsoft.com/en-us/services/monitor/) core monitoring – metrikák és értesítések használatába.
+* [Az Azure figyelő](https://azure.microsoft.com/services/monitor/) core monitoring – metrikák és értesítések használatába.
 * [Az Application Insights](https://azure.microsoft.com/documentation/services/application-insights/) Ha próbál az App Service web app alkalmazásban problémák diagnosztizálásához.
 * [Naplófájl Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) elemzéséhez összegyűjtött figyelési adatok és a naplókat.

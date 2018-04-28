@@ -12,21 +12,25 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/19/2018
+ms.date: 04/25/2018
 ms.author: dekapur
-ms.openlocfilehash: 46ba7b6e638fafa512d4a3f291c49acc1ddf02e4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 1ba02afa775343f496a2b5fec98699e593a330ba
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitoring-the-cluster-and-platform"></a>A fürt és a platform figyelése
 
 Fontos annak meghatározásához, függetlenül attól, a hardver és a fürt mutatnak elvárt platform szintjén figyelésére. Bár a Service Fabric hálózati adaptere esetében megtarthatja hardverhiba alatt futó alkalmazások azonban továbbra is szeretné diagnosztizálni, hogy hiba jelentkezik egy alkalmazás vagy a az alkalmazás mögötti infrastruktúra. Is figyelje a fürtök kapacitását, és jobban tervezése segíti a hozzáadásával vagy eltávolításával hardver döntéseket.
 
-A Service Fabric az alábbi naplózási csatornák az a-kész biztosítja:
+A Service Fabric mutatja több strukturált platform eseményt, "[Service Fabric események](service-fabric-diagnostics-events.md)," a EventStore és a különböző keresztül jelentkezzen csatornák out-of-az-box. 
 
-* **Operational**  
+A EventStore hozzáférést biztosít (beleértve a fürt, csomópontok, alkalmazások, szolgáltatások, partíciók, replikák és tárolók entitások) / entitás alapja a fürt eseményeit, és elérhetővé teszi azokat REST API-k és a Service Fabric ügyféloldali kódtár segítségével. A EventStore segítségével figyelheti a fejlesztési és tesztelési célú fürtökhöz, és lekérhesse a termelési fürtökhöz állapotának egy időpontban ismertetése. További információk a következő [EventStore áttekintése](service-fabric-diagnostics-eventstore.md).
+
+A Service Fabric is tartalmaz, az alábbi naplózási csatornák out-of-a-box a termelési fürtök figyelése egy folyamat beállításával kapcsolatos:
+
+* [**Működési**](service-fabric-diagnostics-event-generation-operational.md)  
 Magas szintű műveleteket végzi el a Service Fabric és a fürt, beleértve az események várható csomópont, telepített új alkalmazást vagy egy frissítési visszaállítási stb.
 
 * **Működési – részletes**  

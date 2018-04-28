@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric támogatási lehetőségek megismerése |} Microsoft Docs"
-description: "Azure Service Fabric-fürt verziók támogatott és a fájl mutató hivatkozásokat tartalmaz támogatási jegy megjelenítése"
+title: Azure Service Fabric támogatási lehetőségek megismerése |} Microsoft Docs
+description: Azure Service Fabric-fürt verziók támogatott és a fájl mutató hivatkozásokat tartalmaz támogatási jegy megjelenítése
 services: service-fabric
 documentationcenter: .net
 author: pkcsf
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/26/2018
 ms.author: pkc
-ms.openlocfilehash: 970f1ff59560beaf898f22eb4e701088a6d5902a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: ec634dd19cf1e944c768e1d368f114f66e9c38a9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-service-fabric-support-options"></a>Az Azure Service Fabric támogatási lehetőségek
 
@@ -30,7 +30,7 @@ A telepített Azure Service Fabric-fürt a problémák jelentési, nyissa meg a 
 
 További információ:
  
-- [A Microsoft Azure támogatási](https://azure.microsoft.com/en-us/support/plans/?b=16.44).
+- [A Microsoft Azure támogatási](https://azure.microsoft.com/support/plans/?b=16.44).
 - [Microsoft Premier szintű támogatás](https://support.microsoft.com/en-us/premier).
 
 <a id="getlivesitesupportonprem"></a>
@@ -63,8 +63,8 @@ Győződjön meg arról, hogy a fürt mindig fut a Service Fabric támogatott ve
 
 Tekintse meg a következő dokumentumok részletes információt a Service Fabric támogatott verzióját futtató fürtre tartani.
 
-- [Egy Azure fürt frissítési Service Fabric-verzió](service-fabric-cluster-upgrade.md)
-- [Service Fabric verziója a különálló windows server-fürt frissítése](service-fabric-cluster-upgrade-windows-server.md)
+- [Egy Azure fürt frissítési Service Fabric-verzió ](service-fabric-cluster-upgrade.md)
+- [Service Fabric verziója a különálló windows server-fürt frissítése ](service-fabric-cluster-upgrade-windows-server.md)
  
 Az alábbiakban a Service Fabric által támogatott verziók listáját és azok támogatás záró dátumát.
 
@@ -77,7 +77,8 @@ Az alábbiakban a Service Fabric által támogatott verziók listáját és azok
 | 5.6.* | 5.4.164.* |Kisebb vagy egyenlő, mint 2.6-os verziója |Október 13,2017   |
 | 5.7.* | 5.4.164.* |Kisebb vagy egyenlő, mint 2.7-es verzió |December 15,2017  |
 | 6.0.* | 5.6.205.* |Kisebb vagy egyenlő, mint 2.8-as verziója |30,2018. március     | 
-| 6.1.* | 5.7.221.* |Kisebb vagy egyenlő, mint a 3.0-s verzió |Aktuális verzióra, és ezért nincs befejezési dátum |
+| 6.1.* | 5.7.221.* |Kisebb vagy egyenlő, mint a 3.0-s verzió |Június 15,2018      |
+| 6.2. * | 6.0.232.* |Kisebb vagy egyenlő, mint 3.1-es verziója |Aktuális verzióra, és ezért nincs befejezési dátum |
 
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Service Fabric előzetes verzió – üzemi használatra nem támogatott.
 Időről időre azt verzióira, amelyek azt szeretnénk, ha visszajelzést, amelyeket mintaként jelentős funkciót. Ezen előzetes verziói csak tesztelési célra használható. Az éles fürt mindig futnia kell egy támogatott, stabil, a Service Fabric-verzió. Előzetes verzióval mindig a fő- és alverzió verziószámát 255 kezdődik. Például a Service Fabric 255.255.5703.949 verzió jelenik meg, ha a verzió csak a tesztfürtökön lévő használni kívánt tartalmaz, és jelenleg előzetes verzióban érhető. Ezen előzetes kiadások is nem jelentik be a [Service Fabric csapat blogja](https://blogs.msdn.microsoft.com/azureservicefabric) és részletek rendelkezzen a szolgáltatásai.
@@ -86,8 +87,8 @@ Nincs a preview kiadásokban fizetős támogatási lehetőség. A felsorolt lehe
 
 ## <a name="next-steps"></a>További lépések
 
-- [Service fabric-verzió egy Azure fürt frissítése](service-fabric-cluster-upgrade.md)
-- [Service Fabric verziója a különálló windows server-fürt frissítése](service-fabric-cluster-upgrade-windows-server.md)
+- [Service fabric-verzió egy Azure fürt frissítése ](service-fabric-cluster-upgrade.md)
+- [Service Fabric verziója a különálló windows server-fürt frissítése ](service-fabric-cluster-upgrade-windows-server.md)
 
 <!--references-->
 [msdn-forum]: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureServiceFabric

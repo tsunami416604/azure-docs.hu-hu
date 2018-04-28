@@ -10,14 +10,14 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: c9fa74304e8672bc18f403aae138a3c1dbea3d4e
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: e56a40e1afef9c622d14804cb7f845b7b6edae6a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitoring-database-performance-in-azure-sql-database"></a>Adatbázis teljesítményének figyelése Azure SQL Database adatbázisokban
-Egy Azure SQL-adatbázis teljesítményének figyelése az erőforrás-használatnak a kiválasztott adatbázis teljesítményszintjéhez viszonyított figyelésével kezdődik. A figyelés segítségével megállapítható, ha az adatbázis többletkapacitással rendelkezik, vagy éppen elérte a maximumot az erőforrások kihasználtságában, és emiatt problémák jelentkezhetnek, így az is eldönthető, hogy módosítani kell-e az adatbázis teljesítményszintjét és [szolgáltatásszintjét](sql-database-service-tiers.md). Az adatbázist figyelheti grafikus eszközök használatával az [Azure Portalon](https://portal.azure.com) vagy SQL [dinamikus felügyeleti nézetek](https://msdn.microsoft.com/library/ms188754.aspx) használatával.
+Egy Azure SQL-adatbázis teljesítményének figyelése az erőforrás-használatnak a kiválasztott adatbázis teljesítményszintjéhez viszonyított figyelésével kezdődik. Figyelés segítségével határozza meg, hogy az adatbázis többletkapacitással rendelkezik, vagy mert erőforrások amelyek kihasználtságában nehézségekkel küzd a, és majd eldönteni, hogy a teljesítmény szint és az adatbázis, a szolgáltatás a [DTU-alapú alapjául szolgáló vásárlási modell](sql-database-service-tiers-dtu.md) vagy [vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers-vcore.md). Az adatbázist figyelheti grafikus eszközök használatával az [Azure Portalon](https://portal.azure.com) vagy SQL [dinamikus felügyeleti nézetek](https://msdn.microsoft.com/library/ms188754.aspx) használatával.
 
 > [!TIP]
 > Használjon [Azure SQL intelligens Insights](sql-database-intelligent-insights.md) automatikus ellenőrzésére, az adatbázis teljesítménye. Ha a teljesítménybeli problémát észlel, egy diagnosztikai naplófájl részleteit és a legfelső szintű ok elemzés (RCA) a probléma jön létre. Ha lehetséges teljesítményének fokozása javaslat valósul meg.
@@ -31,7 +31,7 @@ Az [Azure Portalon](https://portal.azure.com/) az adatbázis kiválasztásával 
 * Adat IO kihasználtsága (%)
 * Adatbázis méretének kihasználtsága
 
-Fenti metrikák hozzáadása után továbbra is megtekintheti azokat a **figyelés** további információkat a diagram a **metrika** ablak. A négy metrika az átlagos kihasználtság százalékos arányát jeleníti meg az adatbázis **DTU-jához** viszonyítva. A DTU-król részletesebben a [szolgáltatásszintekről](sql-database-service-tiers.md) szóló cikkben olvashat.
+Fenti metrikák hozzáadása után továbbra is megtekintheti azokat a **figyelés** további információkat a diagram a **metrika** ablak. A négy metrika az átlagos kihasználtság százalékos arányát jeleníti meg az adatbázis **DTU-jához** viszonyítva. Tekintse meg a [alapjául szolgáló vásárlási modell DTU-alapú](sql-database-service-tiers-dtu.md) és [vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers-vcore.md) cikkek szolgáltatásrétegeiben használt funkciókkal kapcsolatos további információk.  
 
 ![Adatbázis-teljesítményének szolgáltatásszint-figyelése.](./media/sql-database-single-database-monitoring/sqldb_service_tier_monitoring.png)
 

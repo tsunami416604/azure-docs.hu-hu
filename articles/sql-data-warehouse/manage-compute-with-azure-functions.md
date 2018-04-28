@@ -7,18 +7,18 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: consume
-ms.date: 04/17/2018
+ms.date: 04/27/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: c5b47a2d30f4533455b4e0eaacb777299aff4d43
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: 48428ef329de4719a25afd20c21ac102bba540a8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-sql-data-warehouse"></a>Azure-függvények kezelése számítási erőforrásokat az Azure SQL Data Warehouse
 
-Ez az oktatóanyag az Azure Functions használja az Azure SQL Data Warehouse az adatok a számítási erőforrások kezeléséhez. Az architektúrák használata a [rugalmasságra optimalizált][Performance Tiers] SQL Data Warehouse esetén ajánlott.
+Ez az oktatóanyag az Azure Functions használja az Azure SQL Data Warehouse az adatok a számítási erőforrások kezeléséhez.
 
 Az Azure-függvényalkalmazás és az SQL Data Warehouse együttes használatához létre kell hoznia egy közreműködői hozzáféréssel rendelkező [egyszerű szolgáltatásfiókot](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) ugyanahhoz az előfizetéshez, amelyhez az adattárház-példány is tartozik. 
 
@@ -183,5 +183,3 @@ Tekintse meg az SQL Data Warehouse [mintaadattárát](https://github.com/Microso
 
 [Application Settings]: ../azure-functions/functions-how-to-use-azure-function-app-settings.md
 [Add a new trigger function]: manage-compute-with-azure-functions.md#add-a-new-trigger-function
-
-[Performance Tiers]: memory-and-concurrency-limits.md#performance-tiers

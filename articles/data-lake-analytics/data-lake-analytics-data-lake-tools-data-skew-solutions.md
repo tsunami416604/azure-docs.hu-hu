@@ -1,12 +1,12 @@
 ---
-title: "Adatok-döntés teljesítése Azure Data Lake Tools for Visual Studio használatával |} Microsoft Docs"
-description: "Hibaelhárítás az adatok-döntés problémák lehetséges megoldások Azure Data Lake Tools for Visual Studio használatával."
+title: Adatok-döntés teljesítése Azure Data Lake Tools for Visual Studio használatával |} Microsoft Docs
+description: Hibaelhárítás az adatok-döntés problémák lehetséges megoldások Azure Data Lake Tools for Visual Studio használatával.
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: yanancai
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: data-lake-analytics
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/16/2016
 ms.author: yanacai
-ms.openlocfilehash: 9b284ef33be4b935569fc368d81ddf040b2c2b7d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e1d33b5d2392832899fd30636e9d40231fc74ee
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>Adatok-döntés teljesítése Azure Data Lake Tools for Visual Studio használatával
 
@@ -49,13 +49,13 @@ Csak helyett _állapot_ partíciókulcsként, használhat több kulcs particion�
 
 ### <a name="option-4-use-round-robin-distribution"></a>4. lehetőség: Ciklikus multiplexelés használata
 
-Ha nem találja a megfelelő kulcs partíció és terjesztési, megpróbálhatja ciklikus multiplexelés használandó. Ciklikus multiplexelés egyaránt kezeli az összes sort, és véletlenszerűen megfelelő gyűjtők elhelyezi azokat. Az adatok beolvasása egyenletesen, de helység információ, amely az egyes műveletek esetében a feladat teljesítmény is csökkentheti visszatérítési elveszíti. Emellett akkor használatos, ha a kihasználtságot kulcs összesítési ennek ellenére is, az adatok-döntés probléma áll fenn. Ciklikus multiplexelés kapcsolatos további tudnivalókért tekintse meg a U-SQL táblázat azokat a Terjesztéseket részt [CREATE TABLE (U-SQL): a táblázatok létrehozásáról az a séma](https://msdn.microsoft.com/en-us/library/mt706196.aspx#dis_sch).
+Ha nem találja a megfelelő kulcs partíció és terjesztési, megpróbálhatja ciklikus multiplexelés használandó. Ciklikus multiplexelés egyaránt kezeli az összes sort, és véletlenszerűen megfelelő gyűjtők elhelyezi azokat. Az adatok beolvasása egyenletesen, de helység információ, amely az egyes műveletek esetében a feladat teljesítmény is csökkentheti visszatérítési elveszíti. Emellett akkor használatos, ha a kihasználtságot kulcs összesítési ennek ellenére is, az adatok-döntés probléma áll fenn. Ciklikus multiplexelés kapcsolatos további tudnivalókért tekintse meg a U-SQL táblázat azokat a Terjesztéseket részt [CREATE TABLE (U-SQL): a táblázatok létrehozásáról az a séma](https://msdn.microsoft.com/library/mt706196.aspx#dis_sch).
 
 ## <a name="solution-2-improve-the-query-plan"></a>2. megoldás: A lekérdezésterv javítása
 
 ### <a name="option-1-use-the-create-statistics-statement"></a>1. lehetőség: A CREATE statistics UTASÍTÁSHOZ utasítás használható.
 
-U-SQL-táblák a CREATE statistics UTASÍTÁSHOZ utasítás biztosít. A jelen nyilatkozat ad a lekérdezésoptimalizáló a adatjellemzők, többek között a terjesztési érték, a táblában tárolt kapcsolatos további információt. A legtöbb lekérdezésnél a lekérdezésoptimalizáló már jó minőségű lekérdezéstervet szükséges statisztikai adatait állít elő. Alkalmanként szükség lehet további statisztikák létrehozása a CREATE statistics UTASÍTÁSHOZ vagy a lekérdezés tervezési módosításával javíthatja a lekérdezések teljesítményét. További információkért lásd: a [CREATE statistics UTASÍTÁSHOZ (U-SQL)](https://msdn.microsoft.com/en-us/library/azure/mt771898.aspx) lap.
+U-SQL-táblák a CREATE statistics UTASÍTÁSHOZ utasítás biztosít. A jelen nyilatkozat ad a lekérdezésoptimalizáló a adatjellemzők, többek között a terjesztési érték, a táblában tárolt kapcsolatos további információt. A legtöbb lekérdezésnél a lekérdezésoptimalizáló már jó minőségű lekérdezéstervet szükséges statisztikai adatait állít elő. Alkalmanként szükség lehet további statisztikák létrehozása a CREATE statistics UTASÍTÁSHOZ vagy a lekérdezés tervezési módosításával javíthatja a lekérdezések teljesítményét. További információkért lásd: a [CREATE statistics UTASÍTÁSHOZ (U-SQL)](https://msdn.microsoft.com/library/azure/mt771898.aspx) lap.
 
 Példa:
 

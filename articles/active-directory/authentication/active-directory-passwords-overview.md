@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: e084db41cd199a9609e3edaf8b427a85ab2366b4
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 7d1103e0ab21d2eac336a0e460156d47012b2a86
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-self-service-password-reset-for-the-it-professional"></a>Az Azure AD az önkiszolgáló jelszó-változtatási az informatikai szakemberek számára
 
@@ -50,7 +50,7 @@ Az Azure AD SSPR attól függően, hogy az előfizetés három réteg érhető e
 
 * **Az Azure AD ingyenes**: csak felhőalapú rendszergazdák alaphelyzetbe állíthatja a saját jelszavukat.
 * **Az Azure AD alapszintű** vagy bármely **Office 365-előfizetéssel**: csak felhőalapú felhasználók visszaállíthatják a saját jelszavukat.
-* **Prémium szintű Azure AD**: bármely felhasználó vagy a rendszergazda, csak felhőalapú, beleértve összevont, vagy a szinkronizált felhasználók és az új jelszó is. A helyszíni jelszavak a jelszóvisszaírás engedélyezése szükséges.
+* **Prémium szintű Azure AD**: bármely felhasználó vagy a rendszergazda, csak felhőalapú, összevont, átmenő hitelesítés vagy a jelszó szinkronizálva kivonatoló felhasználók, például alaphelyzetbe állíthatja a saját jelszavukat. A helyszíni jelszavak a jelszóvisszaírás engedélyezése szükséges.
 
 ## <a name="azure-ad-pricing-sla-updates-and-roadmap"></a>Az Azure AD díjszabás, szolgáltatásiszint-szerződés, frissítések és terv
 

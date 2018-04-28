@@ -9,11 +9,11 @@ ms.custom: business continuity
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 09672c9f8ba725e46f2cdbb1a13de101137cb718
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 89839d18e90a75f81e78edcb7f54e77a31ea4886
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Aktív georeplikáció konfigurálása az Azure SQL Database az Azure-portálon és kezdeményezhet feladatátvételi
 
@@ -33,7 +33,7 @@ Az alábbi lépéseket a georeplikáció együttműködve hozzon létre egy új 
 
 Vegye fel a másodlagos adatbázist, az előfizetés tulajdonosa vagy a társtulajdonos kell lennie.
 
-A másodlagos adatbázis ugyanaz a neve, mint az elsődleges adatbázissal, és alapértelmezés szerint rendelkezik ugyanazt a szolgáltatási szint. A másodlagos adatbázis egy adatbázis vagy a rugalmas készletekben található adatbázis lehet. További információkért lásd: [szolgáltatásszintek](sql-database-service-tiers.md).
+A másodlagos adatbázis ugyanaz a neve, mint az elsődleges adatbázissal, és alapértelmezés szerint rendelkezik ugyanazt a szolgáltatási szint. A másodlagos adatbázis egy adatbázis vagy a rugalmas készletekben található adatbázis lehet. További információkért lásd: [alapjául szolgáló vásárlási modell DTU-alapú](sql-database-service-tiers-dtu.md) és [vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers-vcore.md).
 Miután a másodlagos létrehozták, és a rendezés, adatok kezdődik, az új másodlagos adatbázis replikálása az elsődleges adatbázisból.
 
 > [!NOTE]

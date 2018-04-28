@@ -10,11 +10,11 @@ ms.service: postgresql
 ms.custom: ''
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 0a4a7041a905470f895921cfedf2bd94e8466966
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: f3efb99ddb47f167a0d9cbef064890e817a18841
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql"></a>SSL-kapcsolatot PostgreSQL Azure-adatbázis konfigurálása
 Azure-adatbázis PostgreSQL inkább csatlakozás az ügyfél alkalmazásait, és a Secure Sockets Layer (SSL) használatával PostgreSQL-szolgáltatás. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti SSL-kapcsolatok kikényszerítése elősegíti a „köztes” támadások elleni védelmet, mert titkosítja a kiszolgáló és az alkalmazás közötti streameket.
@@ -98,7 +98,7 @@ OpenSSL 1.1.0e 7 Apr 2014
 
 #### <a name="for-windows"></a>Windows rendszerhez
 OpenSSL telepítése Windows rendszerű megteheti a következőképpen:
-1. **(Ajánlott)**  Funkcióval a beépített Bash a Windows a Windows 10-es és újabb verziók, OpenSSL alapértelmezés szerint telepítve van-e. Windows 10 Bash a Windows-funkció engedélyezésével kapcsolatos útmutatást itt talál [Itt](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide).
+1. **(Ajánlott)**  Funkcióval a beépített Bash a Windows a Windows 10-es és újabb verziók, OpenSSL alapértelmezés szerint telepítve van-e. Windows 10 Bash a Windows-funkció engedélyezésével kapcsolatos útmutatást itt talál [Itt](https://msdn.microsoft.com/commandline/wsl/install_guide).
 2. A letöltés a Win32/64 alkalmazás a Közösség által meghatározott. Során a OpenSSL szoftver Foundation nem adja meg, vagy hagyja jóvá a megadott Windows Installer telepítők elérhető telepítők listáját tartalmazzák [Itt](https://wiki.openssl.org/index.php/Binaries).
 
 ### <a name="decode-your-certificate-file"></a>A tanúsítványfájl dekódolása

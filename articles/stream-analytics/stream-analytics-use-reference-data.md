@@ -8,18 +8,19 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/28/2017
-ms.openlocfilehash: 9d1763697e93ea0bd5eaeaeb92f5f882f39a6c64
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/25/2018
+ms.openlocfilehash: 6dd96ee96201b05e4b272214983e955fcc5b9125
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Referenciaadatok használja a Stream Analytics keresések
 Referenciaadatok (más néven keresési tábla), amely statikus véges adatkészlet vagy lelassulnak, ami módosítása ideiglenesek, keresés végrehajtásához, vagy az adatfolyam függ. Annak hivatkozás adatok az Azure Stream Analytics-feladat, általában fogja használni a [hivatkozás adatok csatlakozás](https://msdn.microsoft.com/library/azure/dn949258.aspx) a lekérdezésben. A Stream Analytics használ a tárolási réteg a Referenciaadatoknál Azure Blob Storage tárolót, és az Azure Data Factory hivatkozás adatokat át legyenek-e vagy átmásolva az Azure Blob storage referenciaadatok, használni [tetszőleges számú felhőalapú és a helyszíni adattárolókhoz](../data-factory/copy-activity-overview.md). Referenciaadatok növekvő sorrendben az a dátum/idő, a blob neve (a bemeneti konfigurációs meghatározott) blobok sorozataként van modellezve. Az **csak** támogatja a sorozat végére hozzáadása egy dátum/idő használatával **nagyobb** a sorban utolsó blob a megadottól.
 
 A Stream Analytics rendelkezik egy **100 MB-os felső határ az egyes blob** feladatok használatával tud feldolgozni több hivatkozás blobokat, de a **elérési út mintája** tulajdonság.
 
+Tömörítés támogatása nem érhető el a referenciaadatoknál. 
 
 ## <a name="configuring-reference-data"></a>Referenciaadatok konfigurálása
 A referenciaadatok konfigurálásához először szeretne létrehozni, amely típusú bemeneti **referenciaadatok**. Az alábbi táblázat azt ismerteti, hogy minden egyes tulajdonsága, amely meg kell adnia a leírás a referenciaadatok bemeneti létrehozása során:
@@ -49,7 +50,7 @@ A referenciaadatok konfigurálásához először szeretne létrehozni, amely tí
 </tr>
 <tr>
 <td>Elérési út mintája</td>
-<td>A megadott tárolóban található blobok helyének azonosításához használt elérési utat. Az elérési útban kiválaszthatja a következő 2 változó egy vagy több példányát adhatja meg:<BR>{date}, {time}<BR>1. példa: products/{date}/{time}/product-list.csv<BR>2. példa: products/{date}/product-list.csv
+<td>A megadott tárolóban található blobok helyének azonosításához használt elérési utat. Az elérési útban kiválaszthatja a következő 2 változó egy vagy több példányát adhatja meg:<BR>a {date}, {time}<BR>1. példa: products/{date}/{time}/product-list.csv<BR>2. példa: products/{date}/product-list.csv
 </tr>
 <tr>
 <td>[Választható] dátumformátum</td>
@@ -91,16 +92,9 @@ A lassan változó adatkészletet a referenciaadatok esetén majd adatok engedé
 2. A BLOB-adatobjektumok hivatkozás vannak **nem** a blob "Utolsó módosítás" idő szerint, de csak a blob megadott dátumát és időpontját segítségével a {date} és {time} helyettesítések szempontjából.
 3. Kívánja kerülni a listáról a nagy számú blobot, fontolja meg, amelynek feldolgozása már nem kerül sor nagyon régi blobok törlése. Vegye figyelembe, hogy ASA mehet kell újból feldolgozza a kis méretű bizonyos esetekben, például a számítógép újraindítását.
 
-## <a name="get-help"></a>Segítségkérés
-További támogatásért keresse fel az [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
-
 ## <a name="next-steps"></a>További lépések
-Bemutattuk Önnek a Stream Analytics felügyelt szolgáltatást, amely streamelő elemzéseket biztosít az eszközök internetes hálózatáról (IoT) származó adatokon. További információk a szolgáltatásról:
-
-* [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
-* [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
-* [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
-* [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+> [!div class="nextstepaction"]
+> [Gyors üzembe helyezés: A Stream Analytics-feladat létrehozása az Azure portál használatával](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

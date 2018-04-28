@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Service Bus és az Event Hubs protokoll útmutatóban AMQP 1.0-s |} Microsoft Docs"
-description: "Protokoll útmutató kifejezések és az Azure Service Bus és az Event Hubs AMQP 1.0 leírása"
+title: Az Azure Service Bus és az Event Hubs protokoll útmutatóban AMQP 1.0-s |} Microsoft Docs
+description: Protokoll útmutató kifejezések és az Azure Service Bus és az Event Hubs AMQP 1.0 leírása
 services: service-bus-messaging,event-hubs
 documentationcenter: .net
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: d2d3d540-8760-426a-ad10-d5128ce0ae24
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: clemensv;hillaryc;sethm
-ms.openlocfilehash: 4e1fa9db3b4801103069163c55a9b342a27d00ac
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 9af578cef9a89b4ae953b26f261f99593b79deb2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1.0 Azure Service Bus és az Event Hubs protokoll útmutató
 
@@ -205,26 +205,28 @@ A következő táblázat a nyilak a performative folyamat iránya.
 
 Az alábbi szakaszok ismertetik a Service Bus által használt tulajdonságok a szabványos AMQP üzenet szakaszok, és hogyan leképezik a Service Bus API-készlethez.
 
+Bármely tulajdonságot, amelyet a alkalmazás meghatározása AMQP meg kell rendelni `application-properties` leképezés.
+
 #### <a name="header"></a>header
 
-| Mező neve | Használat | API-név |
+| Mező neve | Használat | API neve |
 | --- | --- | --- |
 | tartós |- |- |
-| Prioritás |- |- |
-| élettartam |Az üzenet élettartama |[A TimeToLive tulajdonság](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_TimeToLive) |
+| prioritás |- |- |
+| TTL |Az üzenet élettartama |[TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_TimeToLive) |
 | első-beszerző |- |- |
 | kézbesítési-száma |- |[DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeliveryCount) |
 
 #### <a name="properties"></a>properties
 
-| Mező neve | Használat | API-név |
+| Mező neve | Használat | API neve |
 | --- | --- | --- |
-| üzenetazonosító |Alkalmazás által meghatározott, szabad formátumú azonosító az üzenethez. Használja az ismétlődő észlelésére. |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) |
+| üzenetazonosító |Alkalmazás által meghatározott, szabad formátumú azonosító az üzenethez. Használja az ismétlődő észlelésére. |[messageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) |
 | felhasználói azonosító |Alkalmazás által meghatározott felhasználói azonosítóját, a Service Bus által nem értelmezhető. |Nem érhető el a Service Bus API-n keresztül. |
 | erre: |Alkalmazás által meghatározott cél azonosítója, a Service Bus által nem értelmezhető. |[Címzett](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_To) |
-| Tulajdonos |Alkalmazás által meghatározott célú üzenetazonosító, Service Bus által nem értelmezhető. |[Címke](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) |
+| Tulajdonos |Alkalmazás által meghatározott célú üzenetazonosító, Service Bus által nem értelmezhető. |[Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) |
 | Válaszcím |Alkalmazás által meghatározott válasz-elérési út mutató, Service Bus által nem értelmezhető. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyTo) |
-| korrelációs azonosító |Alkalmazás által meghatározott korrelációs azonosító, a Service Bus által nem értelmezhető. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_CorrelationId) |
+| korrelációs azonosító |Alkalmazás által meghatározott korrelációs azonosító, a Service Bus által nem értelmezhető. |[correlationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_CorrelationId) |
 | tartalomtípus |Alkalmazás által meghatározott tartalomtípus mutató törzséhez, Service Bus által nem értelmezhető. |[A ContentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ContentType) |
 | tartalom kódolása |Alkalmazás által meghatározott tartalom kódolása mutató törzséhez, Service Bus által nem értelmezhető. |Nem érhető el a Service Bus API-n keresztül. |
 | abszolút-lejárati-időpont |Deklarálja, mely abszolút azonnali üzenet lejár. A bemeneti (TTL követi fejlécet), figyelmen kívül hagyja a kimenetet mérvadó. |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ExpiresAtUtc) |
@@ -232,6 +234,80 @@ Az alábbi szakaszok ismertetik a Service Bus által használt tulajdonságok a 
 | csoport-azonosítója |Az üzenetek kapcsolódó készletének, alkalmazásszinten megadott azonosító. A Service Bus-munkamenetek használt. |[Munkamenet-azonosító](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_SessionId) |
 | csoport-sorozat |A számláló azonosítására az üzenet egy munkamenet belül relatív sorszámát. A Service Bus figyelmen kívül hagyja. |Nem érhető el a Service Bus API-n keresztül. |
 | válasz a csoport azonosítója |- |[ReplyToSessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyToSessionId) |
+
+#### <a name="message-annotations"></a>Üzenet jegyzetek
+
+Néhány más service bus message tulajdonság nem AMQP üzenettulajdonságok részét képezik, és mint továbbítódnak `MessageAnnotations` az üzenetben.
+
+| A jegyzet ábrázolási kulcs | Használat | API neve |
+| --- | --- | --- |
+| x-opt-ütemezett-sorba helyezni-idő | Deklarálja időtartamban az üzenet meg kell jelennie az entitás |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc?view=azure-dotnet) |
+| x-opt-partíció-kulcs | Alkalmazás által meghatározott, határozzák meg, hogy mely partíciós kulcs az üzenet kell megnyílik a. | [PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey?view=azure-dotnet) |
+| x-opt-keresztül-partíció-kulcs | Alkalmazás által meghatározott partíciókulcs érték, amikor egy tranzakció keresztül átviteli üzenetek küldéséhez használt. | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey?view=azure-dotnet) |
+| x-opt-várólistán lévő-idő | Szolgáltatás által definiált UTC idő képviselő enqueuing az üzenet tényleges ideje. Bemeneti figyelmen kívül hagyható. | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc?view=azure-dotnet) |
+| x-opt--sorszáma | Szolgáltatás által definiált egyedi száma üzenetet. | [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber?view=azure-dotnet) |
+| x opt eltolása | Az üzenet a várólistában levő szolgáltatás által definiált sorszámát. | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber?view=azure-dotnet) |
+| x-részt vesz-zárolva-ig | Szolgáltatás által definiált. A dátum és idő, ameddig az az üzenet zárolva lesz a várólista/előfizetést. | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc?view=azure-dotnet) |
+| x-opt-kézbesítetlen levelek-forrás | Szolgáltatás által definiált. Ha az üzenet jelenik meg a halott levél várósor, az eredeti üzenet forrása. | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource?view=azure-dotnet) |
+
+### <a name="transaction-capability"></a>Tranzakció funkció
+
+Egy tranzakció két vagy több műveletek együtt egy végrehajtási hatókör felsorolását tartalmazza. Természetüknél ilyen tranzakció győződjön meg arról, hogy a műveletek adott csoporthoz tartozó összes művelet sikeres vagy sikertelen lehet közösen.
+A műveletek azonosító szerint vannak csoportosítva `txn-id`.
+
+Tranzakciós interakció, az ügyfél működik egy `transaction controller` amely meghatározza, hogy a műveletek a csoportosított lehet. Service Bus szolgáltatás úgy működik, mint egy `transactional resource` és végez a munkát, amint azt a `transaction controller`.
+
+Az ügyfél és a szolgáltatás protokollt használó kommunikációra egy `control link` az ügyfél létrehozott. A `declare` és `discharge` üzeneteket foglal le, majd fejezze be a tranzakciók rendre vezérlő-kapcsolaton keresztül küldik a tartományvezérlő (azok nem felelnek meg a tranzakciós munkahelyi határait). A tényleges Küldés/fogadás nem történik meg a hivatkozáson keresztül. Minden kért tranzakciós művelet explicit módon van, egy a kívánt `txn-id` , és ezért előfordulhat, hogy a kapcsolatra vonatkozó bármelyik hivatkozása. Ha a vezérlő kapcsolat le van zárva, azt nem környezetébe tranzakciók léteznek, majd az összes ilyen van azonnal tranzakciók visszaállítása, és hiba tapasztalható, további tranzakciós munkájuk elvégzéséhez kísérletek irányítja. A vezérlő hivatkozásra üzenetek nem lehet rendezni előtti.
+
+Minden kapcsolat kezdeményezése a saját kell kezdődnie és végződnie tranzakciók vezérlő hivatkozás van. A szolgáltatás határozza meg, mely különleges célja egy `coordinator`. Az ügyfél/tartományvezérlő a cél vezérlő kapcsolatot hoz létre. Vezérlő hivatkozás kívüli az entitás, azaz, egyazon vezérlő kapcsolat kezdeményezéséhez és lezárására több entitások tranzakciói használható.
+
+#### <a name="starting-a-transaction"></a>A tranzakció elindítása
+
+Tranzakciós munka megkezdéséhez. a vezérlő be kell szereznie egy `txn-id` a koordinátortól. Ennek érdekében küld egy `declare` típusú üzenetet. Ha a deklaráció sikeres, a koordinátor válaszol, a témakör eredményét `declared` amely hordoz magában, ha a hozzárendelt `txn-id`.
+
+| Ügyfél (vezérlő) | | A Service Bus (koordinátor) |
+| --- | --- | --- |
+| (csatolása<br/>Name = {link name}.<br/>... ,<br/>szerepkör =**küldő**,<br/>cél =**koordinátora**<br/>) | ------> |  |
+|  | <------ | (csatolása<br/>Name = {link name}.<br/>... ,<br/>TARGET=Coordinator()<br/>) |
+| átvitel)<br/>kézbesítési-id = 0,...)<br/>{AmqpValue (**Declare()**)}| ------> |  |
+|  | <------ | törlése) <br/> első = 0, 0, utolsó = <br/>állapot =**Declared**()<br/>**túlhasználat-id**= {tranzakcióazonosító}<br/>))|
+
+#### <a name="discharging-a-transaction"></a>Egy tranzakció lezáró
+
+A tartományvezérlő a tranzakciós munka kipróbálásában küldésével egy `discharge` a koordinátor üzenetet. A vezérlő azt jelzi, hogy kíván véglegesítési vagy a visszaállítási a tranzakciós munkahelyi úgy, hogy a `fail` jelzőt a kibocsátás törzsében. Ha a koordinátor nem tudja végrehajtani a kibocsátás, az üzenet a eredménye végrehajtsa lesz elutasítva a `transaction-error`.
+
+> Megjegyzés: sikertelen = true hivatkozik egy tranzakció, és sikertelen visszaállításának = false véglegesítési hivatkozik.
+
+| Ügyfél (vezérlő) | | A Service Bus (koordinátor) |
+| --- | --- | --- |
+| átvitel)<br/>kézbesítési-id = 0,...)<br/>{AmqpValue (Declare())}| ------> |  |
+|  | <------ | törlése) <br/> első = 0, 0, utolsó = <br/>állapot deklarált () =<br/>túlhasználat-id = {tranzakcióazonosító}<br/>))|
+| | . . . <br/>Tranzakciós munka<br/>az egyéb hivatkozások<br/> . . . |
+| átvitel)<br/>kézbesítési-id = 57,...)<br/>{AmqpValue)<br/>**Lezárására (túlhasználat-id = 0,<br/>sikertelen = false)**)}| ------> |  |
+| | <------ | törlése) <br/> első = 57, utolsó = 57, <br/>állapot =**az Accepted() művelet**)|
+
+#### <a name="sending-a-message-in-a-transaction"></a>Üzenet küldése egy tranzakcióban
+
+Minden tranzakciós munkát tranzakciós kézbesítési állapotával `transactional-state` , amely hordoz magában, ha a tranzakciók-azonosító. Üzenetek küldése, ha a tranzakciós állapot végzi az üzenet átviteli keret. 
+
+| Ügyfél (vezérlő) | | A Service Bus (koordinátor) |
+| --- | --- | --- |
+| átvitel)<br/>kézbesítési-id = 0,...)<br/>{AmqpValue (Declare())}| ------> |  |
+|  | <------ | törlése) <br/> első = 0, 0, utolsó = <br/>állapot deklarált () =<br/>túlhasználat-id = {tranzakcióazonosító}<br/>))|
+| átvitel)<br/>kezelni = 1,<br/>kézbesítési-id = 1, <br/>**állapot =<br/>TransactionalState (<br/>túlhasználat-id = 0)**)<br/>{hasznos}| ------> |  |
+| | <------ | törlése) <br/> első = 1, a legutóbbi = 1, <br/>állapot =**TransactionalState (<br/>túlhasználat-id = 0,<br/>outcome=Accepted()**))|
+
+#### <a name="disposing-a-message-in-a-transaction"></a>Egy üzenet valamely tranzakcióban ártalmatlanítása
+
+Üzenet törlése olyan műveletek, például a `Complete`  /  `Abandon`  /  `DeadLetter`  /  `Defer`. A tranzakción belül műveletek végrehajtására, adja át a `transactional-state` a rendezése.
+
+| Ügyfél (vezérlő) | | A Service Bus (koordinátor) |
+| --- | --- | --- |
+| átvitel)<br/>kézbesítési-id = 0,...)<br/>{AmqpValue (Declare())}| ------> |  |
+|  | <------ | törlése) <br/> első = 0, 0, utolsó = <br/>állapot deklarált () =<br/>túlhasználat-id = {tranzakcióazonosító}<br/>))|
+| | <------ |átvitel)<br/>kezelni = 2,<br/>kézbesítési-id = 11, <br/>állapot = null)<br/>{hasznos}|  
+| törlése) <br/> első = 11, utolsó = 11, <br/>állapot =**TransactionalState (<br/>túlhasználat-id = 0,<br/>outcome=Accepted()**))| ------> |
+
 
 ## <a name="advanced-service-bus-capabilities"></a>Speciális Service Bus-képességek
 
@@ -284,10 +360,10 @@ A kérelemüzenetben a következő alkalmazás tulajdonságokkal rendelkeznek:
 
 | Kulcs | Optional | Érték típusa | Érték tartalma |
 | --- | --- | --- | --- |
-| művelet |Nem |Karakterlánc |**a PUT-jogkivonat** |
-| type |Nem |Karakterlánc |Mivel ez egy put a jogkivonat típusa. |
-| név |Nem |Karakterlánc |A "célközönség", amely a token vonatkozik. |
-| lejárati |Igen |időbélyeg |A jogkivonat lejárati idejét. |
+| művelet |Nem |karakterlánc |**a PUT-jogkivonat** |
+| type |Nem |karakterlánc |Mivel ez egy put a jogkivonat típusa. |
+| név |Nem |karakterlánc |A "célközönség", amely a token vonatkozik. |
+| lejárat |Igen |időbélyeg |A jogkivonat lejárati idejét. |
 
 A *neve* tulajdonság azonosítja az entitást, amellyel a token társítva kell lennie. A Service Bus az elérési útját a várólista, illetve témakört/előfizetést is. A *típus* tulajdonság azonosítja a jogkivonat típusa:
 
@@ -304,7 +380,7 @@ A válaszüzenet rendelkezik-e a következő *alkalmazástulajdonságok* érték
 | Kulcs | Optional | Érték típusa | Érték tartalma |
 | --- | --- | --- | --- |
 | állapotkód-: |Nem |int |HTTP-válaszkód **[RFC2616]**. |
-| állapot-leírása |Igen |Karakterlánc |Az állapot leírása. |
+| állapot-leírása |Igen |karakterlánc |Az állapot leírása. |
 
 Az ügyfél *put-jogkivonat* ismételten és egyetlen entitás az üzenetkezelési infrastruktúrára. A jogkivonatok az aktuális ügyfél hatókörű, és az aktuális kapcsolatot, ami azt jelenti, a kiszolgáló megszakítja a szükséges megtartott jogkivonatokhoz, amikor a kapcsolat csökken a rögzített.
 
@@ -316,7 +392,20 @@ Miután létrejött a kapcsolat és a munkamenet, az alábbi hivatkozásokat csa
 
 Az ügyfél ezt követően felelős nyomon követése céljából jogkivonat lejáratáról. A Service Bus egy jogkivonat lejár, azonnal esik összes hivatkozás a megfelelő entitás-kapcsolaton. Ennek megelőzése érdekében az ügyfél is cserélje le a jogkivonatot a csomópont egy új virtuális keresztül bármikor *$cbs* azonos csomópontot *put-jogkivonat* akár többérintéses kézmozdulatokkal is, és a nélkül úton, a a különböző kapcsolatokon forgalomáramlás hasznos forgalom.
 
-## <a name="next-steps"></a>Következő lépések
+### <a name="send-via-functionality"></a>Küldési keresztül funkció
+
+[Küldési keresztül / küldő Transfer](service-bus-transactions.md#transfers-and-send-via) egyik funkciója, amely lehetővé teszi, hogy a szolgáltatás egy cél entitásra keresztül egy másik entitás előre üzenetekkel buszhoz van. Ez főleg használható egy tranzakción belül entitások közötti műveletek végrehajtásához.
+
+Ezzel a funkcióval egy küldő létrehozása és való kapcsolatot létesíteni a `via-entity`. A hivatkozás létrehozásakor további információt az üzenetek/átvitelek erre a hivatkozásra a true cél létrehozásához lett átadva. Miután a csatolási sikeres volt, ez a hivatkozás a küldött összes üzenet a rendszer automatikusan továbbítja a *cél-entitás* keresztül *keresztül entitás*. 
+
+> Megjegyzés: A hitelesítést kifejezetten az is végre kell hajtani *keresztül entitás* és *cél-entitás* Ez a hivatkozás létrehozása előtt.
+
+| Ügyfél | | Service Bus |
+| --- | --- | --- |
+| (csatolása<br/>Name = {link name}.<br/>szerepkör = küldő,<br/>forrás = {Ügyfélazonosító hivatkozás}<br/>cél =**{keresztül-entitás}**,<br/>**Tulajdonságok térkép = [(<br/>com.microsoft:transfer célcím =<br/>{cél-entitás})]** ) | ------> | |
+| | <------ | (csatolása<br/>Name = {link name}.<br/>szerepkör = fogadó,<br/>forrás = {Ügyfélazonosító hivatkozás}<br/>cél = {keresztül-entitás},<br/>Tulajdonságok térkép [() =<br/>célcím com.Microsoft:Transfer =<br/>{cél-entitás})] ) |
+
+## <a name="next-steps"></a>További lépések
 
 AMQP kapcsolatos további információkért látogasson el a következő hivatkozásokra:
 

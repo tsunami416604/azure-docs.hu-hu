@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: abnarain
-ms.openlocfilehash: 46d4962040a78942adbad443d5cbde64755ddadf
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 855cb159474836e4c015f84d7d57546b5e1a2e99
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Biztonsági szempontok az Azure Data Factory adatok áttelepítéséről –
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -39,7 +39,7 @@ A hitelesített adatátvitelt jelölik a Data Factory használatával:
 -   [HIPAA/HITECH](https://www.microsoft.com/en-us/trustcenter/Compliance/HIPAA) 
 -   [ISO/IEC 27001](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27001)  
 -   [ISO/IEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018)
--   [CSA STAR](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
+-   [CSA CSILLAG](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
 
 Ha érdekli az Azure megfelelő, és hogyan Azure biztosítja a saját infrastruktúra, látogasson el a [Microsoft Trust Center](https://www.microsoft.com/trustcenter).
 
@@ -68,7 +68,7 @@ Egyes adatokat inaktív adatok titkosítása támogatási tárolja. Azt javasolj
 Transzparens Data Encryption (TDE) az Azure SQL Data Warehouse abban a kártékony tevékenység fenyegetés valós idejű titkosítási és visszafejtési az adatok aktívan elvégzésével. Ez a viselkedés az transzparens az ügyfélnek. További információkért lásd: [az SQL Data Warehouse adatbázis védelme](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md).
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
-Az Azure SQL Database átlátható titkosítási (TDE), amely segít valós idejű titkosítási és visszafejtési az adatok anélkül, hogy az alkalmazást módosítani kellene elvégzésével elleni a fenyegetését, hogy a rosszindulatú tevékenységhez is támogatja. Ez a viselkedés az transzparens az ügyfélnek. További információkért lásd: [átlátható adattitkosítást az SQL-adatbázis és adatraktár](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
+Az Azure SQL Database átlátható titkosítási (TDE), amely segít valós idejű titkosítási és visszafejtési az adatok anélkül, hogy az alkalmazást módosítani kellene elvégzésével elleni a fenyegetését, hogy a rosszindulatú tevékenységhez is támogatja. Ez a viselkedés az transzparens az ügyfélnek. További információkért lásd: [átlátható adattitkosítást az SQL-adatbázis és adatraktár](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
 
 #### <a name="azure-data-lake-store"></a>Azure Data Lake Store
 Azure Data Lake Store is biztosít a fiókban tárolt adatok titkosítása. Ha engedélyezve van, a Data Lake Store automatikusan megőrzése előtt titkosítja az adatokat, és visszafejti előtt lekérését, így átlátható az ügyfél, aki hozzáfér az adatokat. További információkért lásd: [az Azure Data Lake Store biztonsági](../data-lake-store/data-lake-store-security-overview.md). 
@@ -86,7 +86,7 @@ Amazon Redshift támogatja a fürt titkosítást az inaktív adatok. További in
 Salesforce Shield Platform titkosítási, amely lehetővé teszi az összes fájl, a mellékletek és az egyéni mezők titkosítási támogatja. További információkért lásd: [ismertetése a Web Server OAuth hitelesítési Flow](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm).  
 
 ## <a name="hybrid-scenarios"></a>Hibrid forgatókönyvek
-Hibrid forgatókönyvekben szükséges önálló üzemeltetett integrációs futásidejű telepíthető egy helyszíni hálózat, a virtuális hálózaton (Azure) vagy virtuális magánfelhőbe (Amazon) belül. Az önálló üzemeltetett integrációs futásidejű való hozzáférést, a helyi képesnek kell lennie. Önálló üzemeltetett integrációs futásidejű kapcsolatos további információkért lásd: [létrehozása és konfigurálása önállóan üzemel integrációs futásidejű](https://docs.microsoft.com/en-us/azure/data-factory/create-self-hosted-integration-runtime). 
+Hibrid forgatókönyvekben szükséges önálló üzemeltetett integrációs futásidejű telepíthető egy helyszíni hálózat, a virtuális hálózaton (Azure) vagy virtuális magánfelhőbe (Amazon) belül. Az önálló üzemeltetett integrációs futásidejű való hozzáférést, a helyi képesnek kell lennie. Önálló üzemeltetett integrációs futásidejű kapcsolatos további információkért lásd: [létrehozása és konfigurálása önállóan üzemel integrációs futásidejű](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime). 
 
 ![önálló üzemeltetett integrációs futásidejű csatornán](media/data-movement-security-considerations/data-management-gateway-channels.png)
 

@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 10e0e0df4bf71c7a21a3cc06b5b1c16930d54ec6
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 12d3d2d4b0c35dc7d21cb78465225e3c029ca33e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-dsc"></a>Azure Automation DSC általi kezelésre bevezetési gépek
 
@@ -31,7 +31,7 @@ Az Azure Automation DSC gépek számos kezelésére használható:
 Emellett ha nem készen áll a számítógép-konfiguráció kezelése a felhőből, Azure Automation DSC is használható csak a jelentés-végpontként. Ez lehetővé teszi (leküldéses) szükségeskonfiguráció keresztül DSC a helyszíni és a kívánt állapot az Azure Automationben csomópont való megfelelés gazdag jelentéskészítési adatainak megtekintése.
 
 > [!NOTE]
-> Azure virtuális gépek DSC kezelése része külön díjfizetés nélkül Ha a virtuális gépek DSC-kiterjesztés telepítése nagyobb 2.70. bekezdés. Tekintse meg a [ **árképzést ismertető oldalra Automation** ](https://azure.microsoft.com/en-us/pricing/details/automation/) további részleteket.
+> Azure virtuális gépek DSC kezelése része külön díjfizetés nélkül Ha a virtuális gépek DSC-kiterjesztés telepítése nagyobb 2.70. bekezdés. Tekintse meg a [ **árképzést ismertető oldalra Automation** ](https://azure.microsoft.com/pricing/details/automation/) további részleteket.
 
 
 Az alábbi szakaszok felsorolják, hogyan zajlik bevezetésében Azure Automation DSC gép különböző típusú.
@@ -195,7 +195,7 @@ Ez a parancs fut a gépen kell rendelkeznie a legújabb [WMF 5](http://aka.ms/wm
 
 ## <a name="generating-dsc-metaconfigurations"></a>A DSC metaconfigurations létrehozása
 
-Általános érheti minden gép Azure Automation DSC szolgáltatásra, egy [DSC metakonfigurációját](https://msdn.microsoft.com/en-us/powershell/dsc/metaconfig) lehet létre, amelyek, alkalmazása esetén a DSC-ügynök tájékoztatja a lekéréses és/vagy az Azure Automation DSC jelentse a számítógépen. Az Azure Automation DSC DSC metaconfigurations a PowerShell DSC-konfiguráció, vagy az Azure Automation PowerShell-parancsmagok használatával hozhatók létre.
+Általános érheti minden gép Azure Automation DSC szolgáltatásra, egy [DSC metakonfigurációját](https://msdn.microsoft.com/powershell/dsc/metaconfig) lehet létre, amelyek, alkalmazása esetén a DSC-ügynök tájékoztatja a lekéréses és/vagy az Azure Automation DSC jelentse a számítógépen. Az Azure Automation DSC DSC metaconfigurations a PowerShell DSC-konfiguráció, vagy az Azure Automation PowerShell-parancsmagok használatával hozhatók létre.
 
 > [!NOTE]
 > DSC metaconfigurations tartalmazza a titkos kulcsok szükséges és bevezetni a gép az Automation-fiók Management. Ügyeljen arra, hogy megfelelően védhetné a DSC-metaconfigurations hoz létre, vagy után törölje őket.

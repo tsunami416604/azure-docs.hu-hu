@@ -1,8 +1,8 @@
 ---
-title: "Másolja, vagy helyezze át az adatok Azure Storage az AzCopy Linux |} Microsoft Docs"
-description: "Linux-segédprogram az AzCopy segítségével áthelyezi vagy másolja az adatokat, vagy a blob és a fájl tartalmát. Adatok másolása az Azure Storage a helyi fájlokból, vagy másolja az adatokat belül vagy tárfiókok között. Adatok áttelepítése egyszerű Azure Storage."
+title: Másolja, vagy helyezze át az adatok Azure Storage az AzCopy Linux |} Microsoft Docs
+description: Linux-segédprogram az AzCopy segítségével áthelyezi vagy másolja az adatokat, vagy a blob és a fájl tartalmát. Adatok másolása az Azure Storage a helyi fájlokból, vagy másolja az adatokat belül vagy tárfiókok között. Adatok áttelepítése egyszerű Azure Storage.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: seguler
 manager: jahogg
 editor: tysonn
@@ -12,48 +12,79 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2017
+ms.date: 04/26/2018
 ms.author: seguler
-ms.openlocfilehash: 2fd89684176cd832b656dae8c8f94a6f1ccbbbe8
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 80b112de1fd8417dd64d9d95b7a037ec876d18c7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>Adatátvitel az AzCopy Linux rendszeren
 
-AzCopy egy parancssori segédprogram, és a Microsoft Azure Blob, a fájl és a tábla tárolási, adat másolása az optimális teljesítményének készült egyszerű parancsok használatával. Másolhat adatokat a fájlrendszer és a storage-fiók, vagy tárfiókok között.  
+AzCopy egy parancssori segédprogram, és a Microsoft Azure-Blob és a fájl tárolási, adat másolása az optimális teljesítményének készült egyszerű parancsok használatával. Az adatokat egy fájlrendszer és egy tárfiók, illetve több tárfiók között is másolhatja.  
 
-AzCopy, letöltheti a két verziója van. AzCopy Linux ajánlat POSIX-stílusú parancssori kapcsolók Linux platformon célozza .NET Core keretrendszerrel épül. [A Windows AzCopy](../storage-use-azcopy.md) a .NET-keretrendszer épül, és ez biztosítja a Windows stílus parancssori kapcsolókat. Ez a cikk a Linux AzCopy ismerteti.
+AzCopy, letöltheti a két verziója van. Linux AzCopy parancssori kapcsolókat az ajánlat POSIX-stílusú Linux platformon célozza. [A Windows AzCopy](../storage-use-azcopy.md) parancssori lehetőséget kínál a Windows stílusát. Ez a cikk a Linux AzCopy ismerteti. 
+
+> [!NOTE]  
+> AzCopy 7.2 verziójával kezdődően a .NET Core függőségei vannak csomagolva az AzCopy csomaggal. Ha német nyelvű verziót 7,2, vagy később már nem szeretne telepíteni a .NET Core előfeltételként.
 
 ## <a name="download-and-install-azcopy"></a>Töltse le és telepítse az AzCopy
+
 ### <a name="installation-on-linux"></a>Linux-telepítés
 
-A cikk Ubuntu különböző kiadásaiban parancsokat tartalmaz.  Használja a `lsb_release -a` erősítse meg az terjesztésű kiadású és concero kódnevű parancsot. 
+> [!NOTE]
+> Előfordulhat, hogy szeretne telepíteni a .NET Core 2.1 függőségek, a kiemelt [.NET Core Előfeltételek cikk](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) attól függően, hogy a terjesztési. Az alapvető technikai terjesztéseket például Ubuntu 16.04 és RHEL 7 Ez általában nem szükséges.
 
-AzCopy Linux szükséges a .NET Core framework (verzió: 2.0) a platformon. A telepítési utasításokat tekintse meg a [.NET Core](https://www.microsoft.com/net/download/linux) lap.
+AzCopy telepítése Linux (v7.2 vagy újabb) egyszerű módon bont csomag beolvasása és a telepítési parancsfájl futtatásával. 
 
-Tegyük fel most telepítse a .NET Core Ubuntu 16.04. A legfrissebb telepítési útmutató a Microsoft [.NET Core Linux](https://www.microsoft.com/net/download/linux) telepítési oldal.
-
-
+**RHEL 6 alapú terjesztéseket**: [hivatkozás letöltése](https://aka.ms/downloadazcopylinuxrhel6)
 ```bash
-curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
-sudo apt-get update
-sudo apt-get install dotnet-sdk-2.0.2
-```
-
-A .NET Core telepítése után töltse le és telepítse az AzCopy.
-
-```bash
-wget -O azcopy.tar.gz https://aka.ms/downloadazcopyprlinux
+wget -O azcopy.tar.gz https://aka.ms/downloadazcopylinuxrhel6
 tar -xf azcopy.tar.gz
 sudo ./install.sh
 ```
 
-A kibontott fájlokat is távolítható el, ha az AzCopy Linux rendszeren telepítve van. Másik lehetőségként nem jogosult felügyelő, ha is futtathatja a kibontott mappában található a "azcopy" parancsfájl segítségével AzCopy. 
+**Más Linux terjesztésekről**: [hivatkozás letöltése](https://aka.ms/downloadazcopylinux64)
+```bash
+wget -O azcopy.tar.gz https://aka.ms/downloadazcopylinux64
+tar -xf azcopy.tar.gz
+sudo ./install.sh
+```
 
+A kibontott fájlokat is távolítható el, ha az AzCopy Linux rendszeren telepítve van. Másik lehetőségként, ha Ön nem rendelkezik jogosultságokkal felügyelő is futtathatja `azcopy` a rendszerhéj parancsfájl azcopy használata a kibontott mappát.
+
+### <a name="alternative-installation-on-ubuntu"></a>Ubuntu alternatív telepítése
+
+**Ubuntu 14.04**
+
+Microsoft Linux termék tárház apt forrás hozzáadása, és telepítse az AzCopy:
+
+```bash
+sudo echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-trusty-prod/ trusty main" > azure.list
+sudo cp ./azure.list /etc/apt/sources.list.d/
+apt-key adv --keyserver packages.microsoft.com --recv-keys B02C46DF417A0893
+```
+
+```bash
+sudo apt-get update
+sudo apt-get install azcopy
+```
+
+**Ubuntu 16.04**
+
+Microsoft Linux termék tárház apt forrás hozzáadása, és telepítse az AzCopy:
+
+```bash
+echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod/ xenial main" > azure.list
+sudo cp ./azure.list /etc/apt/sources.list.d/
+apt-key adv --keyserver packages.microsoft.com --recv-keys B02C46DF417A0893
+```
+
+```bash
+sudo apt-get update
+sudo apt-get install azcopy
+```
 
 ## <a name="writing-your-first-azcopy-command"></a>Az első AzCopy parancs írása
 Az AzCopy parancs alapvető szintaxisa:
@@ -193,7 +224,7 @@ azcopy \
     --dest-key <key>
 ```
 
-Ha a megadott célhely tároló nem létezik, az AzCopy létrehozása, és a fájlt tölt be.
+Ha a célként megadott tároló nem létezik, az AzCopy létrehozza, majd feltölti a fájlt a tárolóba.
 
 ### <a name="upload-single-file-to-virtual-directory"></a>Egy fájlból töltse fel a virtuális könyvtár
 
@@ -205,6 +236,14 @@ azcopy \
 ```
 
 Ha a megadott virtuális könyvtár nem létezik, az AzCopy feltölti a fájlt a virtuális könyvtárat a blob nevének (*pl.*, `vd/abc.txt` a fenti példában).
+
+### <a name="redirect-from-stdin"></a>A stdin átirányítása
+
+```azcopy
+gzip myarchive.tar -c | azcopy \
+    --destination https://myaccount.blob.core.windows.net/mycontainer/mydir/myarchive.tar.gz \
+    --dest-key <key>
+```
 
 ### <a name="upload-all-files"></a>Minden fájl feltöltése
 
@@ -379,7 +418,7 @@ azcopy \
     --sync-copy
 ```
 
-`--sync-copy`További kilépő költség képest aszinkron másolási hozhat létre. Az ajánlott módszer, hogy ezt a beállítást használja egy Azure virtuális gép, és a kimenő forgalom költségek elkerülése érdekében forrás tárfiók ugyanabban a régióban található.
+`--sync-copy` További kilépő költség képest aszinkron másolási hozhat létre. Az ajánlott módszer, hogy ezt a beállítást használja egy Azure virtuális gép, és a kimenő forgalom költségek elkerülése érdekében forrás tárfiók ugyanabban a régióban található.
 
 ## <a name="file-download"></a>Fájl: letöltése
 ### <a name="download-single-file"></a>Töltse le egy fájlból
@@ -601,10 +640,31 @@ A beállítás `--parallel-level` egyidejű másolási műveletek számát adja 
 >[!TIP]
 >AzCopy paraméterek teljes listájának megtekintéséhez tekintse meg a "azcopy – súgó" menü.
 
-## <a name="known-issues-and-best-practices"></a>Ismert problémák és ajánlott eljárások
-### <a name="error-net-sdk-20-is-not-found-in-the-system"></a>Hiba: A .NET SDK 2.0-s nem található a rendszerben.
-AzCopy attól függ, hogy a .NET SDK 2.0-s verziójától kezdve az AzCopy 7.0-s verzió. Korábbi verziói AzCopy használt .NET Core 1.1. Ha hibaüzenet jelenik meg, amely meghatározza, hogy, hogy a .NET Core 2.0 nincs telepítve a rendszeren, szükség lehet telepíteni vagy frissíteni a használatával a [.NET Core telepítési utasításokat](https://www.microsoft.com/net/learn/get-started/linuxredhat).
+## <a name="installation-steps-for-azcopy-71-and-earlier-versions"></a>AzCopy 7.1-es és korábbi verziók telepítésének lépései
 
+AzCopy Linux (v7.1 és régebbi verziók esetén) szükséges a .NET Core framework. Telepítési útmutatás itt érhetők el a [.NET Core telepítés](https://www.microsoft.com/net/core#linuxubuntu) lap.
+
+Például első lépésként telepítse a .NET Core az Ubuntu 16.10. A legfrissebb telepítési útmutató a Microsoft [.NET Core Linux](https://www.microsoft.com/net/core#linuxubuntu) telepítési oldal.
+
+
+```bash
+sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ yakkety main" > /etc/apt/sources.list.d/dotnetdev.list' 
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
+sudo apt-get update
+sudo apt-get install dotnet-sdk-2.0.0
+```
+
+A .NET Core telepítése után töltse le és telepítse az AzCopy.
+
+```bash
+wget -O azcopy.tar.gz https://aka.ms/downloadazcopyprlinux
+tar -xf azcopy.tar.gz
+sudo ./install.sh
+```
+
+A kibontott fájlokat is távolítható el, ha az AzCopy Linux rendszeren telepítve van. Másik lehetőségként nem jogosult felügyelő, ha is futtathatja `azcopy` a rendszerhéj parancsfájl azcopy használata a kibontott mappát.
+
+## <a name="known-issues-and-best-practices"></a>Ismert problémák és ajánlott eljárások
 ### <a name="error-installing-azcopy"></a>Hiba történt az AzCopy telepítése
 Ha hibát tapasztal az AzCopy telepítési, megpróbálhatja újból futtatni a bash parancsfájlok használatát a kibontott AzCopy `azcopy` mappa.
 
@@ -618,16 +678,34 @@ AzCopy rendelkező fájlokat vagy a BLOB másolása esetén vegye figyelembe, ho
 
 A blobok vagy a fájlok írása közben másolja őket, hogy más alkalmazások nem megakadályozása, majd vegye figyelembe, hogy az idő, a feladat befejeződik, a másolt erőforrások már nincs a forrás-erőforrások teljes paritás.
 
-### <a name="run-one-azcopy-instance-on-one-machine"></a>Futtassa az AzCopy egy példány egy számítógépen.
-AzCopy célja, hogy felgyorsítsa az adatok átvitele a gép erőforrás-felhasználás, azt javasoljuk, hogy csak egy AzCopy példány egy számítógépen futtatja, és adja meg a beállítást `--parallel-level` Ha több egyidejű műveletek van szüksége. További tudnivalókért írja be a `AzCopy --help parallel-level` a parancssorból.
+### <a name="running-multiple-azcopy-processes"></a>Több AzCopy folyamat fut
+Több AzCopy folyamat megadása, hogy más-más mappákat használja egyetlen ügyfélre is futtathatja. Egyetlen napló mappa több AzCopy folyamatok használata nem támogatott.
+
+1. a folyamat:
+```azcopy
+azcopy \
+    --source /mnt/myfiles1 \
+    --destination https://myaccount.blob.core.windows.net/mycontainer/myfiles1 \
+    --dest-key <key> \
+    --resume "/mnt/myazcopyjournal1"
+```
+
+2. folyamat:
+```azcopy
+azcopy \
+    --source /mnt/myfiles2 \
+    --destination https://myaccount.blob.core.windows.net/mycontainer/myfiles2 \
+    --dest-key <key> \
+    --resume "/mnt/myazcopyjournal2"
+```
 
 ## <a name="next-steps"></a>További lépések
-Azure Storage és AzCopy kapcsolatos további információkért lásd a következőket:
+További, az Azure Storage szolgáltatással és az AzCopyval kapcsolatos adatokat a következő erőforrások nyújtanak:
 
 ### <a name="azure-storage-documentation"></a>Az Azure Storage-dokumentáció:
-* [Az Azure Storage bemutatása](../storage-introduction.md)
+* [A Microsoft Azure Storage bemutatása](../storage-introduction.md)
 * [Tárfiók létrehozása](../storage-create-storage-account.md)
-* [A Tártallózó alkalmazással blobok kezelése](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs)
+* [Blobok kezelése a Storage Explorerrel](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs)
 * [Az Azure parancssori felület 2.0 használatával az Azure Storage](../storage-azure-cli.md)
 * [Blob storage-ának C++ használata](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [How to use Blob storage from Java (A Blob Storage használata Javával)](../blobs/storage-java-how-to-use-blob-storage.md)

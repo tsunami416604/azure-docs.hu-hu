@@ -1,13 +1,13 @@
 ---
-title: "A Microsoft Azure virtuális hálózat VPN átviteli ellenőrzése |} Microsoft Docs"
-description: "Ez a dokumentum célja a felhasználó a hálózati teljesítményt a helyszíni erőforrások az Azure virtuális gép ellenőrzése érdekében."
+title: A Microsoft Azure virtuális hálózat VPN átviteli ellenőrzése |} Microsoft Docs
+description: Ez a dokumentum célja a felhasználó a hálózati teljesítményt a helyszíni erőforrások az Azure virtuális gép ellenőrzése érdekében.
 services: vpn-gateway
 documentationcenter: na
 author: chadmath
 manager: jasmc
-editor: 
+editor: ''
 tags: azure-resource-manager,azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: troubleshooting
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2017
 ms.author: radwiv;chadmat;genli
-ms.openlocfilehash: e7e3c641791e7c72f5c2d6f8ecf674d1d7ee7ffa
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: cad7719eb077d7aca9c1db5741a5fe1e0ca910a2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Hogyan VPN átviteli virtuális hálózat ellenőrzése
 
@@ -121,7 +121,7 @@ Töltse le [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip). T
 ## <a name="address-slow-file-copy-issues"></a>Lassú fájl másolása problémák megoldása
 Problémákat tapasztalhat a másolás, ha a Windows Intézővel vagy áthúzza egy RDP-kapcsolaton keresztül lassú fájlt. Ez a probléma általában nem két, a következő tényezőket:
 
-- Fájl másolása alkalmazások, például a Windows Intézőt, és RDP, ne használja egyszerre használható szálak, amikor a fájlok másolása. A jobb teljesítmény érdekében használjon egy többszálas fájl másolása alkalmazás például [Richcopy](https://technet.microsoft.com/en-us/magazine/2009.04.utilityspotlight.aspx) 16 vagy 32 szálat használ a fájlok másolása. A szál száma Richcopy fájlmásolási módosításához kattintson **művelet** > **beállításai** > **fájlmásolás**.<br><br>
+- Fájl másolása alkalmazások, például a Windows Intézőt, és RDP, ne használja egyszerre használható szálak, amikor a fájlok másolása. A jobb teljesítmény érdekében használjon egy többszálas fájl másolása alkalmazás például [Richcopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) 16 vagy 32 szálat használ a fájlok másolása. A szál száma Richcopy fájlmásolási módosításához kattintson **művelet** > **beállításai** > **fájlmásolás**.<br><br>
 ![Lassú fájl másolása problémák](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
 - Nincs elegendő méretű lemez olvasási/írási sebessége. További információkért lásd: [Azure Storage hibaelhárítása](../storage/common/storage-e2e-troubleshooting.md).
 
@@ -134,7 +134,7 @@ A nyomkövetést a Microsoft Azure peremhálózati eszköz tracert segítségév
 A helyi hálózatról futtatni *tracert* a VIP az Azure-átjáró vagy a virtuális gép. Miután látja csak * lett visszaadva, akkor tudja az Azure biztonsági elérte. Amikor megjelenik, amely tartalmazza az adott vissza "MSN" DNS-nevek, ismernie elérte a Microsoft gerincét.<br><br>
 ![Késés ellenőrzése](./media/vpn-gateway-validate-throughput-to-vnet/08checkinglatency.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információt vagy a help tekintse meg a következőket:
 
 - [Az Azure virtuális gépek hálózati teljesítmény optimalizálása](../virtual-network/virtual-network-optimize-network-bandwidth.md)

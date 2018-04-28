@@ -1,6 +1,6 @@
 ---
-title: "Azure Blob Storage tárolóban csatlakoztatásáról a fájlrendszer Linux |} Microsoft Docs"
-description: "Csatlakoztassa az Azure Blob storage tárolók biztosító rendelkező Linux"
+title: Azure Blob Storage tárolóban csatlakoztatásáról a fájlrendszer Linux |} Microsoft Docs
+description: Csatlakoztassa az Azure Blob storage tárolók biztosító rendelkező Linux
 services: storage
 documentationcenter: linux
 author: seguler
@@ -10,11 +10,11 @@ ms.devlang: bash
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: seguler
-ms.openlocfilehash: 299b96c783fb3606347bb448d00d44f0071da429
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 44b0c36ad366d50480212adff9cdb8b10a17db05
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse-preview"></a>A Blob storage csatlakoztatásáról a fájlrendszer a blobfuse (előzetes verzió)
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 01/23/2018
 Ez az útmutató bemutatja, hogyan blobfuse használja, és a Linux és a hozzáférési adatok egy Blob storage tárolót csatlakoztatható. Blobfuse kapcsolatos további tudnivalókért olvassa el a részleteket [blobfuse összetevőtárházat](https://github.com/Azure/azure-storage-fuse).
 
 > [!WARNING]
-> Blobfuse nem garantálja a 100 %-os POSIX megfelelőség egyszerűen rendszerhez történő kérelmek [Blob REST API-k](https://docs.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api). Például nevezze át olyan POSIX, de nem a blobfuse atomi.
+> Blobfuse nem garantálja a 100 %-os POSIX megfelelőség egyszerűen rendszerhez történő kérelmek [Blob REST API-k](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api). Például nevezze át olyan POSIX, de nem a blobfuse atomi.
 > A fájlrendszer és a blobfuse közötti különbségek teljes listájának megtekintéséhez keresse fel a [a blobfuse forráskódraktárban](https://github.com/azure/azure-storage-fuse).
 > 
 

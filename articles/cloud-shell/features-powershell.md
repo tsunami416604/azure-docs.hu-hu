@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
 ms.author: damaerte
-ms.openlocfilehash: 8ab436900329d83f069b26cd11a60bce720c618c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: cd1582697307219bf3710139c6b44b5957b176e4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="features--tools-for-powershell-in-azure-cloud-shell-preview"></a>Szolgáltatások és eszközök PowerShell Azure Cloud rendszerhéj (előzetes verzió)
 
@@ -77,7 +77,7 @@ Használatával [PowerShellGet](https://docs.microsoft.com/powershell/module/pow
 A telepítés után a modulok automatikusan megmaradnak felhő rendszerhéj-munkamenetek között.
 
 > [!TIP]
-> Felhasználók által telepített modulok lesznek mentve a `$Home\CloudDrive\.pscloudshell\WindowsPowerShell` mappát. Ez a mappa a szimbolikus hivatkozást a felhasználó Dokumentumok mappában jön létre (`$home\Documents\WindowsPowerShell`).
+> Felhasználók által telepített modulok lesznek mentve a `$Home\clouddrive\.pscloudshell\WindowsPowerShell` mappát. Ez a mappa a szimbolikus hivatkozást a felhasználó Dokumentumok mappában jön létre (`$home\Documents\WindowsPowerShell`).
 
 ![](media/features-powershell/powershellget-module.png)
 

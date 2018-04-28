@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: ellacroi
-ms.openlocfilehash: de7716a540737d4f2cc6f0f495180533ef6aa90a
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: f0d9739dda608b7c49ff9a8fbd93d08b301c0b9c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="grow-your-business-with-appsource"></a>Cége AppSource
 Azure piactér és AppSource is a Microsoft közös Ugrás piacra jutási tevékenységek indító pontokat és üzleti növekedésének megfelelően lendítõtömeggel. Indítsa el az előléptetés, igény szerinti létrehozásának és az értékesítési és közös használ, a Piactéri ajánlat lehet a felhő üzleti motor centerpiece. Nincs részt vevő díja van. Microsoft-ügyfél látogasson el a felhő piacterek naponta keresse meg a megfelelő alkalmazások és szolgáltatások üzleti növelése érdekében. Célunk megoldások és a Microsoft és a partner ökoszisztéma szolgáltatások szervezetek kapcsolódni. 
@@ -117,7 +117,7 @@ Ezek a Paraméterek hozzáadása a AppSource URL-cím lehetővé teszi, hogy tek
 
 #### <a name="marketplace-gtm-benefits"></a>Piactér GTM előnyei 
 
-Új listák a AppSource kerülnek szabad piactér GTM előnye kap. Után jelenik meg, az egész szakemberei marketing fog érheti el, és gyorsan létrehozhatja a marketing partnerével működni ezek a tevékenységek. A tevékenységek nyújtunk eltérőek lehetnek attól függően, hogy a megoldás állapota a piactéren. Előnyei egy próbaverziója járó ajánlatokhoz növeléséhez. Microsoft Gold partnerek férhetnek hozzá további előnyökkel is jár. Ezek a tevékenységek hatásának maximalizálása érdekében javasoljuk, hogy rendelkezik a végrehajtásra kész indítási tervvel. Érdemes lehet a kezdőlapja kihasználhatja a ezek taktikai számos. Vegye figyelembe, hogy egy kereskedelmi Partner (OCP) katalógus egy előnye, hogy a Microsoft Partner Network tagjai. Hogyan hozhat létre nagyszerű kezdőlapja útmutatóért lásd: [létre nagyszerű Üzenetsorokra lap](https://docs.microsoft.com/en-us/azure/marketplace/grow-your-business-azure-marketplace#build-a-great-landing-page). Többek között a sablonok, a webes tartalom, a képzési és a történő előléptetéséhez az üzleti eszközök további Ugrás piacra jutási támogatásért látogasson el a [ https://www.MicrosoftGoToMarket.com ](https://www.MicrosoftGoToMarket.com). 
+Új listák a AppSource kerülnek szabad piactér GTM előnye kap. Után jelenik meg, az egész szakemberei marketing fog érheti el, és gyorsan létrehozhatja a marketing partnerével működni ezek a tevékenységek. A tevékenységek nyújtunk eltérőek lehetnek attól függően, hogy a megoldás állapota a piactéren. Előnyei egy próbaverziója járó ajánlatokhoz növeléséhez. Microsoft Gold partnerek férhetnek hozzá további előnyökkel is jár. Ezek a tevékenységek hatásának maximalizálása érdekében javasoljuk, hogy rendelkezik a végrehajtásra kész indítási tervvel. Érdemes lehet a kezdőlapja kihasználhatja a ezek taktikai számos. Vegye figyelembe, hogy egy kereskedelmi Partner (OCP) katalógus egy előnye, hogy a Microsoft Partner Network tagjai. Hogyan hozhat létre nagyszerű kezdőlapja útmutatóért lásd: [létre nagyszerű Üzenetsorokra lap](https://docs.microsoft.com/azure/marketplace/grow-your-business-azure-marketplace#build-a-great-landing-page). Többek között a sablonok, a webes tartalom, a képzési és a történő előléptetéséhez az üzleti eszközök további Ugrás piacra jutási támogatásért látogasson el a [ https://www.MicrosoftGoToMarket.com ](https://www.MicrosoftGoToMarket.com). 
 
 #### <a name="enable-lead-sharing"></a>Az érdeklődési megosztásának engedélyezése 
 Győződjön meg arról, hogy az érdeklődési felügyeleti engedélyezve van a Piactéri ajánlat úgy, hogy megkapja az üzleti felhasználók, próbálja meg az alkalmazások, illetve a szolgáltatások iránt érdeklődik kapcsolattartási adatait. Ezek az érdeklődők szolgáljon nurture kampányok szolgálat, a mező értékesítőknek, és hogyan működik-e az ajánlatot információt értékesítési mozdulatok. Gyakorlati tanácsok a érdeklődők használatához a következők:

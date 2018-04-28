@@ -1,20 +1,43 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 04/19/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: 6871127ac138fb0113af73ca5222e3e2c2f99d7e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 04/28/2018
+---
 # <a name="call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>A Microsoft Graph API meghívása a JavaScript egyetlen oldal alkalmazásból (SPA)
 
 Ez az útmutató ismerteti, hogyan bejelentkezhet az egy JavaScript egyetlen oldal alkalmazás (SPA) a személyes, munkahelyi és iskolai fiókok szereznie egy hozzáférési jogkivonatot, és hívja meg a Microsoft Graph API vagy egyéb szükséges hozzáférési jogkivonatok az Azure Active Directory v2 végpont az API-k.
 
-### <a name="how-this-guide-works"></a>Ez az útmutató működése
+## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Ez az útmutató által generált mintaalkalmazás működése
 
 ![Ez az útmutató által generált mintaalkalmazás működése](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.png)
 
 <!--start-collapse-->
-### <a name="more-information"></a>További információ
+## <a name="more-information"></a>További információ
 
 Ez az útmutató által létrehozott mintaalkalmazás lehetővé teszi, hogy a JavaScript SPA lekérdezni a Microsoft Graph API vagy egy webes API, amely az Azure Active Directory v2 végpont jogkivonatokat fogad el. Ebben a forgatókönyvben után a felhasználó bejelentkezik olyan hozzáférési jogkivonatot kérése és hitelesítési fejlécéhez via HTTP-kérelmek hozzáadni. Token beszerzése és -megújítás kezelése a Microsoft hitelesítési könyvtár (MSAL).
 
 <!--end-collapse-->
 
 <!--start-collapse-->
-### <a name="libraries"></a>Szalagtárak
+## <a name="libraries"></a>Szalagtárak
 
 Ez az útmutató használja a következő könyvtárban:
 

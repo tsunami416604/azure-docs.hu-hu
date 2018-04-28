@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2018
 ms.author: liydu
-ms.openlocfilehash: d17f117d71eb0616201df18aea6dc48749ae24a8
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ac0b82c4683f5a1b09d7e6102a7b70361e1fbce2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-iot-devkit-az3166-with-azure-function-and-cognitive-services-to-make-a-language-translator"></a>Az Azure-függvény és kognitív szolgáltatásokkal IoT DevKit AZ3166 használata nyelvi a fordító
 
@@ -35,7 +35,7 @@ Befejezés a [– első lépések útmutató](https://docs.microsoft.com/azure/i
 
 Aktív Azure-előfizetés. Ha még nem rendelkezik ilyennel, ezek két módszer használatával regisztrálhatja:
 
-* Aktiválja a [ingyenes 30 napos próbafiókot Microsoft Azure](https://azure.microsoft.com/en-us/free/)
+* Aktiválja a [ingyenes 30 napos próbafiókot Microsoft Azure](https://azure.microsoft.com/free/)
 * Jogcím a [Azure-kreditjeinek](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) MSDN vagy a Visual Studio előfizetői esetén
 
 ## <a name="step-1-open-the-project-folder"></a>1. lépés Nyissa meg a projekt mappát
@@ -46,17 +46,14 @@ Aktív Azure-előfizetés. Ha még nem rendelkezik ilyennel, ezek két módszer 
 - Indítsa el a Visual STUDIO Code
 - A DevKit kapcsolódni a számítógéphez.
 
-Visual STUDIO Code automatikusan megkeresi a DevKit és bemutatása lap megnyitása:
-
-![Bemutató lapja](media/iot-hub-arduino-iot-devkit-az3166-translator/vscode_start.png)
-
 ### <a name="b-open-the-arduino-examples-folder"></a>B. Nyissa meg a Arduino példák
 
 Bontsa ki a bal oldali **ARDUINO példák > MXCHIP AZ3166 példák > AzureIoT**, és válassza ki **DevKitTranslator**. Egy új Visual STUDIO Code ablak nyílik meg benne DEVKITTRANSLATOR projektmappában.
 
 ![Az IoT-DevKit minták](media/iot-hub-arduino-iot-devkit-az3166-translator/vscode_examples.png)
 
-Ha véletlenül bezárja a panelen, akkor nyissa meg újra. Használjon `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) nyissa meg a parancs palettát, írja be a következőt **Arduino**, keresése és válassza a **Arduino: Példák**.
+> [!NOTE]
+> Példa parancs palettáról is megnyithatja. Használjon `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) nyissa meg a parancs palettát, írja be a következőt **Arduino**, keresése és válassza a **Arduino: Példák**.
 
 ## <a name="step-2-provision-azure-services"></a>2. lépés Azure-szolgáltatások kiépítése
 
@@ -143,4 +140,4 @@ Most elvégezte az IoT DevKit, mint a fordító Azure-függvény és kognitív s
 Továbblépés további az egyéb oktatóanyagok:
 
 > [!div class="nextstepaction"]
-> [Azure IoT Suite IoT DevKit AZ3166 csatlakoztatni a távoli figyelése](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring)
+> [Azure IoT Suite IoT DevKit AZ3166 csatlakoztatni a távoli figyelése](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring)

@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: afe06d6e61d4b2b99a47f3d3348299c61863fec3
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f40bd7954bbf079c87f8312bff731b68d1acb7dc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Automatikus adatbázis biztonsági mentését használó Azure SQL-adatbázis helyreállítása
 SQL-adatbázis biztosítja ezeket a beállításokat, az adatbázis helyreállítási használatával [adatbázis biztonsági másolatait automatikus](sql-database-automated-backups.md) és [hosszú távú megőrzési a biztonsági másolatok](sql-database-long-term-retention.md). Egy adatbázis biztonsági másolatát arra állíthatja vissza:
@@ -50,7 +50,7 @@ A felesleges költségek az az oka a visszaállított adatbázis maximális mér
   
   Nagyon nagy és/vagy aktív-adatbázis a visszaállítás több óráig is eltarthat. Nincs leállás hosszabb régióban, akkor lehetséges, hogy vannak-e más régiókban által feldolgozott georedundáns helyreállítás kérelmek nagy mennyiségű. Ha sok kérelmet, a helyreállítás ideje megnőhet az adatbázisok az adott régióban. A legtöbb adatbázis visszaállítása befejeződött 12 órában.
 
-Egyetlen előfizetéssel, van még néhány korlátozást számú párhuzamos visszaállítási kérések (beleértve a visszaállítás egy korábbi időpontra, a georedundáns helyreállítás és a hosszú távú megőrzési biztonsági másolatból való visszaállítása) alatt Beküldve, és el:
+Egyetlen előfizetéssel, vannak bizonyos korlátai számú párhuzamos visszaállítási kérések (beleértve a visszaállítás egy korábbi időpontra, a georedundáns helyreállítás és a hosszú távú megőrzési biztonsági másolatból való visszaállítása) alatt benyújtott és kezdett a:
 |  | **Párhuzamos feldolgozás alatt álló kérelmek maximális száma** | **Nem továbbíthatók egyidejű kérelmek maximális száma** |
 | :--- | --: | --: |
 |Önálló adatbázis (előfizetésenként)|10|60|
@@ -97,7 +97,7 @@ Visszaállíthatja a törölt adatbázisok a törlés időpontjával, az azonos 
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Során törölt adatbázis helyreállítása a [megőrzési időszak](sql-database-service-tiers.md) az Azure portál használatával, nyissa meg az oldalt, a kiszolgáló és a műveletek területen, kattintson a **adatbázisait törölte a**.
+Során törölt adatbázis helyreállítása a [DTU-alapú modell megőrzési időszak](sql-database-service-tiers-dtu.md) vagy [vCore-alapú modell megőrzési időszak](sql-database-service-tiers-vcore.md) az Azure portál használatával, nyissa meg az oldalt, a kiszolgáló és a műveletek területen, kattintson a **Adatbázisait törölte a**.
 
 ![deleted-database-restore-1](./media/sql-database-recovery-using-backups/deleted-database-restore-1.png)
 
@@ -109,7 +109,7 @@ SQL-adatbázis minden olyan kiszolgálón bármely Azure régióban állíthatja
 
 Georedundáns helyreállítás beállítás az alapértelmezett helyreállítási Ha az adatbázis nem érhető el a régióban, ahol az adatbázis egy incidens miatt. Ha a felügyeleti teendők központjaként, amelyhez a régió eredmények hiányában az adatbázis-alkalmazás, a kiszolgáló más régióban a georeplikált biztonsági másolatból visszaállíthatja egy adatbázis. Amikor a különbözeti biztonsági másolatot készít-e és egy Azure-bA georeplikált közötti késés blob egy másik régióban. Ez a késés lehet akár egy óra alatt tehát ha katasztrófa történik, lehet fel egy órával adatok veszhetnek el. A következő ábrán az adatbázis visszaállítása a legutóbbi elérhető biztonsági másolat egy másik régióban.
 
-![geo-restore](./media/sql-database-geo-restore/geo-restore-2.png)
+![georedundáns helyreállítás](./media/sql-database-geo-restore/geo-restore-2.png)
 
 > [!TIP]
 > A PowerShell-parancsfájlpélda bemutatja, hogyan hajtsa végre a georedundáns helyreállítás, lásd: [állítson vissza egy SQL-adatbázist PowerShell](scripts/sql-database-restore-database-powershell.md).
@@ -123,7 +123,7 @@ Egy földrajzi másodlagos időpontban visszaállítás jelenleg nem támogatott
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Georedundáns helyreállítás során az adatbázis számára a [megőrzési időszak](sql-database-service-tiers.md) az Azure portál használatával, nyissa meg az SQL-adatbázisok lapját, és kattintson **Hozzáadás**. Az a **forrás kiválasztása** válassza ki a szövegmezőben **biztonsági mentés**. Adja meg a biztonsági mentés, amelyből a régióban, és a kiszolgálón, az Ön által választott, végezze el a helyreállítást. 
+Georedundáns helyreállítás során az adatbázis számára a [DTU-alapú modell megőrzési időszak](sql-database-service-tiers-dtu.md) vagy [vCore-alapú modell megőrzési időszak](sql-database-service-tiers-vcore.md) az Azure portál használatával, nyissa meg az SQL-adatbázisok lapját, és kattintson **hozzáadása** . Az a **forrás kiválasztása** válassza ki a szövegmezőben **biztonsági mentés**. Adja meg a biztonsági mentés, amelyből a régióban, és a kiszolgálón, az Ön által választott, végezze el a helyreállítást. 
 
 ## <a name="programmatically-performing-recovery-using-automated-backups"></a>Programozott módon az automatikus biztonsági mentés segítségével történő helyreállítás végrehajtása
 Korábban már említettük, az Azure portálon kívül, mert az adatbázis helyreállításának végrehajtható programozott módon, Azure PowerShell vagy a REST API-t. Az alábbi táblázatban láthatók az elérhető parancsok készlete.
@@ -132,9 +132,9 @@ Korábban már említettük, az Azure portálon kívül, mert az adatbázis hely
 | Parancsmag | Leírás |
 | --- | --- |
 | [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase) |Egy vagy több adatbázist kér le. |
-| [Get-AzureRMSqlDeletedDatabaseBackup](/powershell/module/azurerm.sql/get-azurermsqldeleteddatabasebackup) | Lekérdezi a törölt adatbázisok, amelyek is helyreállíthatja. |
-| [Get-AzureRmSqlDatabaseGeoBackup](/powershell/module/azurerm.sql/get-azurermsqldatabasegeobackup) |Egy adatbázis georedundáns biztonsági másolatot kap. |
-| [Restore-AzureRmSqlDatabase](/powershell/module/azurerm.sql/restore-azurermsqldatabase) |SQL-adatbázis visszaállítása. |
+| [Get-AzureRMSqlDeletedDatabaseBackup](/powershell/module/azurerm.sql/get-azurermsqldeleteddatabasebackup) | Lekér egy törölt adatbázist, amelyet visszaállíthat. |
+| [Get-AzureRmSqlDatabaseGeoBackup](/powershell/module/azurerm.sql/get-azurermsqldatabasegeobackup) |Lekéri egy adatbázis georedundáns biztonsági másolatát. |
+| [Restore-AzureRmSqlDatabase](/powershell/module/azurerm.sql/restore-azurermsqldatabase) |Visszaállít egy SQL-adatbázist. |
 |  | |
 
 ### <a name="rest-api"></a>REST API

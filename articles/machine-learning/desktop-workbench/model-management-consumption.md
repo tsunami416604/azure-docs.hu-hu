@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: 0976e2dca909781ade76c742cc99746e1123307d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 93df053bf62b5a69f74d816fc05520d040d73bd7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="consuming-web-services"></a>Webszolgáltatások felhasználása
 Miután telepít egy modell valós idejű webszolgáltatásként, elküldi a adatok, és előrejelzéseket beolvasása számos különböző rendszerek és alkalmazások. A valós idejű webszolgáltatás közzétesz egy REST API előrejelzéseket kapcsolódnak. A webszolgáltatás egy vagy több előrejelzéseket egyszerre beolvasandó egyetlen vagy több sor formátumú adatokat küldhet.

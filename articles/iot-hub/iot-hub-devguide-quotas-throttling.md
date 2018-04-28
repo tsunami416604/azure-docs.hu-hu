@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: ef86af61284bb208cc8c469e3fe75bd4f4bdc5bf
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 37d1397b0601e09b12c0c05ff0adc6a916d66d70
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referencia - IoT-központ kvóták és sávszélesség-szabályozás
 
@@ -44,9 +44,9 @@ A következő táblázat a kényszerített szabályozások. Értékek egyes hubh
 | Felhő eszközre elküldi<sup>1</sup> | 1.67/sec/Unit (100/perc/egység) | 1.67/sec/Unit (100/perc/egység) | 83.33/sec/Unit (5000/perc/egység) |
 | Felhő-eszköz megkapja<sup>1</sup> <br/> (csak ha eszköz HTTPS PROTOKOLLT használ)| 16.67/sec/Unit (1000/perc/egység) | 16.67/sec/Unit (1000/perc/egység) | 833.33/sec/Unit (50000/perc/egység) |
 | Fájl feltöltése | értesítések/mp/egység 1.67 fájl feltöltése (100/perc/egység) | értesítések/mp/egység 1.67 fájl feltöltése (100/perc/egység) | értesítések/mp/egység 83.33 fájl feltöltése (5000/perc/egység) |
-| Közvetlen módszerek<sup>1</sup> | 160KB/sec/unit<sup>2</sup> | 480KB/sec/unit<sup>2</sup> | 24MB/sec/unit<sup>2</sup> | 
-| Eszköz iker beolvassa<sup>1</sup> | 10/mp | Magasabb 10 másodpercenként vagy 1/mp/egység | 50/mp/egység |
-| A két eszközfrissítésekhez<sup>1</sup> | 10/mp | Magasabb 10 másodpercenként vagy 1/mp/egység | 50/mp/egység |
+| Közvetlen módszerek<sup>1</sup> | 160KB/sec/unit<sup>2</sup> | 480KB/sec/unit<sup>2</sup> | 24MB/s/egység<sup>2</sup> | 
+| Kettős (eszköz- és modul) olvasási<sup>1</sup> | 10/mp | Magasabb 10 másodpercenként vagy 1/mp/egység | 50/mp/egység |
+| Kettős (eszköz és modul)<sup>1</sup> | 10/mp | Magasabb 10 másodpercenként vagy 1/mp/egység | 50/mp/egység |
 | Operatív feladatok<sup>1</sup> <br/> (létrehozás, frissítés, listázás, törlés) | 1.67/sec/Unit (100/perc/egység) | 1.67/sec/Unit (100/perc/egység) | 83.33/sec/Unit (5000/perc/egység) |
 | Feladatok eszközönkénti művelet átviteli<sup>1</sup> | 10/mp | Magasabb 10 másodpercenként vagy 1/mp/egység | 50/mp/egység |
 

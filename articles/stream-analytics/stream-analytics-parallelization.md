@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/22/2017
-ms.openlocfilehash: fae9d7f871dbb20f19bfd61576e017b3910ee8f4
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.date: 04/27/2018
+ms.openlocfilehash: fd373093264122fda45697acc81929d3c723c957
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Használja ki az Azure Stream Analytics lekérdezési párhuzamos folyamatkezelést biztosítja
 Ez a cikk bemutatja, hogyan Azure Stream Analytics párhuzamos folyamatkezelést biztosítja előnyeit. Megismerheti a Stream Analytics-feladatok méretezése bemeneti partíciók beállításával, és az elemzés Lekérdezésdefiníció hangolása.
@@ -35,7 +35,7 @@ Minden Azure Stream Analytics-bevitel kihasználhatják a particionálás:
 
 ### <a name="outputs"></a>Kimenetek
 
-A Stream Analytics használata, kihasználhatja a legtöbb kimeneti mosdók particionálás. További információ a kimeneti particionálás érhető el a [a kimeneti oldal szakasza particionálás](https://review.docs.microsoft.com/azure/stream-analytics/stream-analytics-define-outputs?branch=master#partitioning).
+A Stream Analytics használata, kihasználhatja a legtöbb kimeneti mosdók particionálás. További információ a kimeneti particionálás érhető el a [a kimeneti oldal szakasza particionálás](stream-analytics-define-outputs.md#partitioning).
 
 Power BI, az SQL és az SQL-adatraktár kimenetek nem támogatják a particionálást. Azonban Ön is továbbra is partícióazonosító a bemeneti leírtak [Ez a szakasz](#multi-step-query-with-different-partition-by-values) 
 

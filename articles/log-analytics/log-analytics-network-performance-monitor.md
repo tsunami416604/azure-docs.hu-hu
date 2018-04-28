@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 6e81f2cdd0cd3f62d93c85c1a073e0b9df542ec7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 1d12df7c37c4c96198865479326851040b46986a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Hálózati Teljesítményfigyelő megoldás az Azure-ban
 
@@ -158,7 +158,7 @@ Adja meg a kívánt lehetőségeket:
 
 - [Teljesítményfigyelő](log-analytics-network-performance-monitor-performance-monitor.md#configuration)
 - [Szolgáltatási végpont-figyelő](log-analytics-network-performance-monitor-performance-monitor.md#configuration)
-- [ExpressRoute Monitor](log-analytics-network-performance-monitor-expressroute.md#configuration)
+- [Az ExpressRoute-figyelő](log-analytics-network-performance-monitor-expressroute.md#configuration)
 
  
 
@@ -249,6 +249,24 @@ A topológia látható módon a térkép 3 rétegbeli topológia, és nem tartal
 ## <a name="log-analytics-search"></a>A Naplóelemzési keresése 
 
 Minden adat, amely grafikusan elérhetővé a hálózati Teljesítményfigyelő irányítópulton keresztül történő és leásási oldalon érhető el natív módon [Naplóelemzési keresési](log-analytics-log-search-new.md). Hajtsa végre az adatok interaktív elemzések elvégzéséhez a tárházban, és a különböző forrásokból származó adatok összefüggéseket. Is hozhat létre egyéni riasztások és a nézetek és az adatok exportálása az Excel, a Power bi-ban vagy a megosztható hivatkozást. A **közös lekérdezések** az irányítópult tartalmaz néhány hasznos lekérdezések, amelyek a saját lekérdezések és jelentések használhatja kiindulási pontként. 
+
+## <a name="alerts"></a>Riasztások
+
+Hálózati Teljesítményfigyelő használja a riasztási képességeit [Azure figyelő](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts).
+
+Ez azt jelenti, hogy az összes riasztás kezeli használatával [művelet csoportok](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview).  
+
+Ha egy NPM felhasználó létre riasztást OMS keresztül: 
+1. Egy hivatkozást, amely átirányítja Önt Azure-portálon jelenik meg. Kattintson rá a portál eléréséhez.
+2. Kattintson a hálózati Teljesítményfigyelő megoldás csempére. 
+3. Keresse meg konfigurálásához.  
+4. Válassza ki a teszt a riasztás létrehozása, és kövesse az alábbiakban említett lépéseket.
+
+Ha egy NPM felhasználó létrehozása az Azure-portálon riasztást:  
+1. Ha szeretné, adja meg az e-maileket közvetlenül, vagy választhatja azt is, figyelmeztetések segítségével művelet csoportok létrehozásához.
+2. Adja meg az e-maileket közvetlenül mellett dönt, ha intézkedésre nevű csoport **NPM E-mail ActionGroup** jön létre, és az e-mailek azonosítója ad hozzá a csoporthoz tartozó művelet.
+3. Ha a művelet csoportok használatát választja, akkor válasszon egy korábban létrehozott művelet csoportot. Megismerheti a művelet csoport létrehozásához [itt.](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal) 
+4. Ha a riasztás sikeresen létrejött, a riasztások kezelése hivatkozás segítségével a riasztásokat. 
 
 ##<a name="pricing"></a>Díjszabás
 

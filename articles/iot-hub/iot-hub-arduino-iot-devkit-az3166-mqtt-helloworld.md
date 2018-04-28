@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2018
 ms.author: liydu
-ms.openlocfilehash: 121bd8a21e74a836fcca74af97fc20cae297d9a2
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 13b1c5b9ae05a6c2d11420812efc1af17912aa28
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Üzenetek küldése egy MQTT kiszolgáló
 
@@ -46,20 +46,13 @@ Befejezés a [– első lépések útmutató](https://docs.microsoft.com/azure/i
 2. Indítsa el a Visual STUDIO Code.
 
 3. A DevKit kapcsolódni a számítógéphez.
-    Visual STUDIO Code automatikusan észleli a DevKit, és megnyílik a következő lapokon:
-    * A DevKit bemutató lapja.
-    * Arduino példák: Gyakorlati mintákat az első lépések a DevKit.
-
-    ![mini-solution-vscode](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/vscode-start.png)
 
 ## <a name="open-the-mqttclient-sample"></a>Nyissa meg a MQTTClient minta
 
 Bontsa ki a bal oldali **ARDUINO példák** szakaszban, keresse meg a **MXCHIP AZ3166 példák > MQTT**, és válassza ki **MQTTClient**. Egy új Visual STUDIO Code-ablak nyílik meg azt a projekt mappát.
 
-![examples-folder](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/examples.png)
-
 > [!NOTE]
-> Ha véletlenül bezárja a panelen, akkor nyissa meg újra. Használjon `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) nyissa meg a parancs palettát, írja be a következőt **Arduino**, keresése és válassza a **Arduino: Példák**.
+> Példa parancs palettáról is megnyithatja. Használjon `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) nyissa meg a parancs palettát, írja be a következőt **Arduino**, keresése és válassza a **Arduino: Példák**.
 
 ## <a name="build-and-upload-the-arduino-sketch-to-the-devkit"></a>Build, majd töltse fel a Arduino vázlatot a DevKit
 
@@ -101,4 +94,4 @@ Ha problémába ütközik, tekintse meg a [– gyakori kérdések](https://micro
 Most, hogy megtanulhatta, hogyan lehet konfigurálni a MXChip Iot DevKit MQTT-ügyfélként, és üzenetek küldése egy MQTT broker a MQTT ügyféloldali kódtár segítségével, az alábbiakban a javasolt lépéseket:
 
 * [Az Azure IoT Suite – áttekintés](https://docs.microsoft.com/azure/iot-suite/)
-* [Csatlakoztasson egy MXChip IoT DevKit eszközt a Microsoft IoT Central alkalmazás](https://docs.microsoft.com/en-us/microsoft-iot-central/howto-connect-devkit)
+* [Csatlakoztasson egy MXChip IoT DevKit eszközt a Microsoft IoT Central alkalmazás](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

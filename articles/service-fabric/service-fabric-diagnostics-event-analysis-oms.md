@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: dekapur; srrengar
-ms.openlocfilehash: da78f88f0c79c0ad853dd644ef278f8402824760
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: 8efbc1d400f1d32e6aee2c1e2d78847bea786940
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="event-analysis-and-visualization-with-log-analytics"></a>Esemény elemzése és Naplóelemzési a képi megjelenítés
 
@@ -36,7 +36,7 @@ Naplóelemzési fogadja a adatokat, miután a Azure rendelkezik, több *megoldá
 
 ## <a name="access-the-service-fabric-analytics-solution"></a>Hozzáférés a Service Fabric elemzési megoldások
 
-1. Nyissa meg az erőforráscsoporthoz, amelyben létrehozta a Service Fabric elemzési megoldások. Válassza ki az erőforrás**ServiceFabric\<nameOfOMSWorkspace\>**  és Ugrás a – áttekintés oldalra.
+1. Nyissa meg az erőforráscsoporthoz, amelyben létrehozta a Service Fabric elemzési megoldások. Válassza ki az erőforrás **ServiceFabric\<nameOfOMSWorkspace\>**  és Ugrás a – áttekintés oldalra.
 
 2. A áttekintése lapon kattintson a hivatkozásra az OMS-portálon végezhető felső részén
 
@@ -67,13 +67,14 @@ A fenti kép a Service Fabric elemzési megoldások kezdőlapján. Ez az egy pil
     
     ![Lekérdezés működési csatornát OMS](media/service-fabric-diagnostics-event-analysis-oms/oms-query-operational-channel.png)
 
-Másik lehetőségként kattintson a bal oldali a Nagyító, és találja, amit keres a Kusto lekérdezési nyelv használatával. Például a fürt csomópontjai végzett műveleteket kapcsolódó összes esemény megkeresése, használhatja a következő lekérdezés. A eseményazonosítókat alatt használt találhatók a [működési csatorna események referencia](service-fabric-diagnostics-event-generation-operational.md)
+Másik lehetőségként kattintson a bal oldali a Nagyító, és találja, amit keres a Kusto lekérdezési nyelv használatával. Például található összes műveleteit a fürt csomópontja, használhatja a következő lekérdezés. A eseményazonosítókat alatt használt találhatók a [működési csatorna események referencia](service-fabric-diagnostics-event-generation-operational.md)
 
 ```kusto
 ServiceFabricOperationalEvent
-| where EventId < 29627 and EventId > 29619 
+| where EventId < 25627 and EventId > 25619 
 ```
-A rendszer szolgáltatás (feladatnév) és egyéb lekérdezheti az adott csomópont (számítógép) például számos további mezők
+
+A megadott csomópontok (számítógép) a rendszer szolgáltatás (feladatnév) például számos további mezőkre kérdezheti le.
 
 ### <a name="view-service-fabric-reliable-service-and-actor-events"></a>Nézet Service Fabric megbízható szolgáltatás és szereplő események
 

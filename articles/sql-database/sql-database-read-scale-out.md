@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 04/23/2018
 ms.author: sashan
-ms.openlocfilehash: 6e82b851f7dc7e2b8c7fe996bff843c8f10f2978
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: d2472867c71aedf35e537a29d3912b9e423de2e2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Csak olvasható replikákat használ a csak olvasható elosztásában (előzetes verzió) betöltése
 
@@ -21,18 +21,20 @@ ms.lasthandoff: 04/19/2018
 
 ## <a name="overview-of-read-scale-out"></a>Olvassa el a kibővített áttekintése
 
-A prémium szinten lévő minden egyes adatbázis ([alapjául szolgáló vásárlási modell DTU-alapú](sql-database-service-tiers.md#dtu-based-purchasing-model)) vagy a fontos üzleti szinten lévő ([alapjául szolgáló vásárlási modell vCore alapú](sql-database-service-tiers.md#vcore-based-purchasing-model-preview)) automatikusan ki van építve a több Alwayson-replikák támogatja a rendelkezésre állási SLA-t. Ezekre a replikákra ki vannak építve az írható-olvasható replika rendszeres adatbázis-kapcsolatok által használt teljesítmény szintjét. A **olvasási kibővített** funkció lehetővé teszi, hogy SQL-adatbázis csak olvasható elosztásában a csak olvasható replika kapacitása nem osztja meg a írható-olvasható replika használatával. Ezzel a módszerrel a csak olvasható munkaterhelés elkülönül a fő olvasási és írási terhelést, és nem lesz hatással a teljesítményét. A szolgáltatás célja, az alkalmazásokat, amelyek logikailag tartalmaznak csak olvasható munkaterhelések, például az elemzés, szóközzel, és ezért szerezhet jobb teljesítményt nyújt a további tartalékkapacitását használja, nem kapcsolódik további költség.
+A prémium szinten lévő minden egyes adatbázis ([alapjául szolgáló vásárlási modell DTU-alapú](sql-database-service-tiers-dtu.md)) vagy a fontos üzleti szinten lévő ([vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers-vcore.md)) automatikusan ki van építve több Always ON replikák SLA-elérhetőséget támogatásához. Ezekre a replikákra ki vannak építve az írható-olvasható replika rendszeres adatbázis-kapcsolatok által használt teljesítmény szintjét. A **olvasási kibővített** funkció lehetővé teszi, hogy SQL-adatbázis csak olvasható elosztásában a csak olvasható replika kapacitása nem osztja meg a írható-olvasható replika használatával. Ezzel a módszerrel a csak olvasható munkaterhelés elkülönül a fő olvasási és írási terhelést, és nem lesz hatással a teljesítményét. A szolgáltatás célja, az alkalmazásokat, amelyek logikailag tartalmaznak csak olvasható munkaterhelések, például az elemzés, szóközzel, és ezért szerezhet jobb teljesítményt nyújt a további tartalékkapacitását használja, nem kapcsolódik további költség.
 
 Az olvasási kibővített szolgáltatással az adott adatbázishoz, explicit módon engedélyeznie kell azt az adatbázis létrehozásakor vagy ezek után a PowerShell használatával való konfigurációját megváltoztatásával a [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) vagy a [ Új AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) parancsmagok vagy az Azure Resource Manager REST API használatával a [- adatbázisok létrehozása vagy frissítése](/rest/api/sql/databases/createorupdate) metódust. 
 
 Olvasási kibővített adatbázis engedélyezése után az adatbázishoz való kapcsolódás alkalmazásokat a rendszer kéri, vagy az olvasási és írási replikára vagy egy csak olvasható replika az adatbázist a következők szerint a `ApplicationIntent` tulajdonság, az alkalmazás konfigurálva kapcsolati karakterlánc. Információk a `ApplicationIntent` tulajdonság, lásd: [megadó alkalmazás szándéka](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent).
+
+Olvasási kibővített le van tiltva, vagy a ReadScale tulajdonsága egy nem támogatott szolgáltatási rétegben, ha az írható-olvasható replika, függetlenül az összes kapcsolat van irányítva a `ApplicationIntent` tulajdonság.
 
 > [!NOTE]
 > Előzetes lekérdezés adattár és a bővített eseményektől nem támogatottak a csak olvasható replikákon.
 
 ## <a name="data-consistency"></a>Adatkonzisztencia
 
-Az Always ON előnyei egyike, hogy a replikák mindig a tranzakciós úton konzisztens állapotban van, de különböző időpontokban időben lehet néhány kis késleltetésű között különböző replikákat. Olvassa el a kibővített munkamenet szintű konzisztencia támogatja. Azt jelenti, a csak olvasható munkamenet újracsatlakozik a replika elérhetetlensége miatt kapcsolódási hiba után, ha azt átirányíthatók replika nem naprakész a írható-olvasható replika 100 %. Ehhez hasonlóan az alkalmazások írja az adatokat, olvasási és írási munkamenet használatával, és azonnal olvassa be a csak olvasható munkamenet használatával, esetén előfordulhat, hogy a legújabb frissítések olyan nem jelennek meg azonnal. Ez azért, mert a tranzakciós napló ismét: a replikához aszinkron.
+Az Always ON előnyei egyike, hogy a replikák mindig a tranzakciós úton konzisztens állapotban van, de különböző időpontokban időben lehet néhány kis késleltetésű között különböző replikákat. Olvassa el a kibővített munkamenet szintű konzisztencia támogatja. Azt jelenti, ha a csak olvasható munkamenet újracsatlakozik a replika elérhetetlensége miatt kapcsolódási hiba után, akkor átirányíthatók replika nem naprakész, és az írható-olvasható replika 100 %. Ehhez hasonlóan az alkalmazások írja az adatokat, olvasási és írási munkamenet használatával, és azonnal olvassa be a csak olvasható munkamenet használatával, esetén előfordulhat, hogy a legújabb frissítések olyan nem jelennek meg azonnal. Ez azért, mert a tranzakciós napló ismét: a replikához aszinkron.
 
 > [!NOTE]
 > Replikációs késések fordulnak elő a régión belül alacsony, és ez a helyzet ritkán fordul elő.
@@ -54,6 +56,12 @@ Az ügyfél csatlakozik a következő kapcsolati karakterláncok vagy írható-o
 Server=tcp:<server>.database.windows.net;Database=<mydatabase>;ApplicationIntent=ReadWrite;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
 
 Server=tcp:<server>.database.windows.net;Database=<mydatabase>;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
+```
+
+Ellenőrizheti, hogy csatlakozik egy csak olvasható replika a következő lekérdezés futtatásával. Ha csatlakozik egy csak olvasható replika READ_ONLY ad vissza.
+
+```SQL
+SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 ```
 
 ## <a name="enable-and-disable-read-scale-out-using-azure-powershell"></a>Engedélyezheti vagy letilthatja a olvasási kibővített Azure PowerShell használatával
@@ -82,7 +90,7 @@ New-AzureRmSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserve
 
 ## <a name="enabling-and-disabling-read-scale-out-using-the-azure-sql-database-rest-api"></a>Engedélyezése és letiltása olvasási kibővített az Azure SQL Database REST API használatával
 
-Adatbázis létrehozása a olvasási kibővített engedélyezve van, vagy engedélyezi vagy letiltja a meglévő adatbázis olvasási kibővített, hozzon létre, vagy frissítse az adatbázis megfelelő entitásának a `readScale` tulajdonsága `Enabled` vagy `Disabled` és a az alábbi minta a kérést.
+Olvasási kibővített engedélyezve van, az adatbázis létrehozásához vagy engedélyezi vagy letiltja a meglévő adatbázis olvasási kibővített, hozzon létre, vagy frissítse az adatbázis megfelelő entitásának a `readScale` tulajdonsága `Enabled` vagy `Disabled` és a az alábbi minta a kérést.
 
 ```rest
 Method: PUT

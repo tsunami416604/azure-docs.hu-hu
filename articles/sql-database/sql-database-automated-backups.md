@@ -11,11 +11,11 @@ ms.workload: Active
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: ab1793621950fd57d3f0be545772d85b32f5d7b8
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 37bbbf8ea5a5d8439b300d0740e4f1a048e98e91
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>További tudnivalók az automatikus SQL-adatbázis biztonsági mentése
 
@@ -44,8 +44,11 @@ Adatbázis teljes biztonsági mentések fordulhat elő, hetente, adatbázis kül
 A biztonsági mentési tároló földrajzi-replikáció az Azure Storage replikációs ütemezés alapján.
 
 ## <a name="how-long-do-you-keep-my-backups"></a>Mennyi ideig megtartja a biztonsági másolatok?
-Minden egyes SQL-adatbázis biztonsági mentése van a megőrzési időtartam, amely azon alapul a [szolgáltatásréteg](sql-database-service-tiers.md) az adatbázis. Egy adatbázis megőrzési időtartama a:
+Minden egyes SQL-adatbázis biztonsági mentése van a megőrzési időtartam, amely az adatbázis a szolgáltatási szint alapul, és nem egyezik meg a [alapjául szolgáló vásárlási modell DTU-alapú](sql-database-service-tiers-dtu.md) és a [vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers-vcore.md). 
 
+
+### <a name="database-retention-for-dtu-based-purchasing-model"></a>A DTU-alapú alapjául szolgáló vásárlási modell adatbázisának megőrzése
+A DTU-alapú alapjául szolgáló vásárlási modell adatbázis megőrzési időtartama attól függ, hogy a szolgáltatási rétegben. Az adatbázis megőrzési időtartama a:
 
 * Alapszintű service érvényben lévő korlát miatt 7 nap.
 * Standard szintű szolgáltatási rétegben 35 napon.
@@ -63,13 +66,19 @@ Ha töröl egy adatbázist, SQL-adatbázis a biztonsági mentések tartja azt sz
 
 > [!IMPORTANT]
 > Ha törli az Azure SQL-kiszolgálót futtató SQL-adatbázisok, a kiszolgálóhoz tartozó összes adatbázis is törlődnek, és nem állítható helyre. A Törölt kiszolgáló nem tudja visszaállítani.
-> 
+
+### <a name="database-retention-for-the-vcore-based-purchasing-model-preview"></a>Adatbázis-megőrzési szabályai vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)
+
+Az adatbázis biztonsági mentések tárolási rendelt a pont támogatja az SQL adatbázis idő visszaállítása (PITR) és a hosszú távú megőrzési (LTR) képességeit. Ez a tároló külön-külön az egyes adatbázisok számára lefoglalt és két külön adatbázis-díjak terheli. 
+
+- **PITR**: egyedi biztonsági másolatok átmásolt az RA-GRS tárolóba adatbázis automatikusan vannak. A tároló mérete dinamikusan nő, amikor az új biztonsági mentéseket hoz létre.  A tárolót a heti teljes biztonsági mentésekhez, a napi differenciális biztonsági mentésekhez, illetve a tranzakciónaplók 5 percenként másolt biztonsági másolataihoz használja a rendszer. A tároló fogyasztása attól függ, hogy módosítsa az adatbázis és a megőrzési időszak aránya. Konfigurálhatja az egyes adatbázisok 7 és 35 nap közötti külön megőrzési időtartamot. A minimális tárolási mennyiségű egyenlő 1 x adatméret külön díjfizetés nélkül valósul meg. Ez a mennyiség legtöbb adatbázis esetén elegendő 7 nap, a biztonsági mentések tárolására. További információkért lásd: [pont időponthoz kötött visszaállítás](sql-database-recovery-using-backups.md#point-in-time-restore)
+- **Balról jobbra**: SQL-adatbázis lehetővé teszi a hosszú távú megőrzési teljes biztonsági mentések konfigurálása legfeljebb 10 év. Ha balról jobbra házirend engedélyezve van, ezek biztonsági másolatai RA-GRS tárolási automatikusan, de megadhatja, milyen gyakran a biztonsági mentések kerülnek. Teljesíti-e több megfelelőségi követelményt, jelölje ki az eltérő megőrzési idejű a heti, havi vagy éves biztonsági mentésekhez. Ez a konfiguráció határozza meg az mennyi tárhelyre lesz a balról jobbra biztonsági mentéseket. A balról jobbra árképzési Számológép segítségével balról jobbra tárolási költségét. További információkért lásd: [Hosszú távú megőrzés](sql-database-long-term-retention.md).
 
 ## <a name="how-to-extend-the-backup-retention-period"></a>Hogyan terjeszthető ki a biztonsági mentés megőrzési időszakot?
 
 Ha az alkalmazás által igényelt, hogy a biztonsági másolatok elérhetők a maximális PITR biztonsági mentés megőrzési időszaknál hosszabb ideig, konfigurálhatja az egyes adatbázisok (balról jobbra házirend) egy hosszú távú biztonsági mentés megőrzési házirend. Ez lehetővé teszi, hogy terjessze ki a beépített informatikai megőrzési időtartam legfeljebb 35 nappal a legfeljebb 10 év. További információkért lásd: [Hosszú távú megőrzés](sql-database-long-term-retention.md).
 
-Miután hozzáadta a balról jobbra házirend Azure-portálon vagy API-val egy adatbázist, a heti teljes adatbázis biztonsági mentései automatikusan másolódnak RA-GRS külön tárolót a hosszú távú megőrzési (balról jobbra tároló). Ha az adatbázis TDE van titkosítva a rendszer automatikusan titkosítja a biztonsági mentések aktívan. SQL-adatbázis automatikusan törli a lejárt biztonsági mentések időbélyegzőik és a balról jobbra házirend alapján. A házirend telepítése után, nem kell kezelheti a biztonsági mentési ütemezést, vagy a karbantartás, régi fájlok foglalkoznia. Az Azure portálon vagy a PowerShell segítségével megtekintheti, vissza, vagy törölje a biztonsági mentéseket.
+Miután hozzáadta a balról jobbra házirend Azure-portálon vagy API-val egy adatbázist, a heti teljes adatbázis biztonsági mentései automatikusan másolódnak RA-GRS külön tárolót a hosszú távú megőrzési (balról jobbra tároló). Ha az adatbázis TDE van titkosítva a rendszer automatikusan titkosítja a biztonsági mentések aktívan. SQL-adatbázis automatikusan törli a lejárt biztonsági mentések időbélyegzőik és a balról jobbra házirend alapján. A házirend telepítése után, nem kell kezelheti a biztonsági mentési ütemezést, vagy a karbantartás, régi fájlok foglalkoznia. Az Azure portálon vagy a PowerShell segítségével megtekintése, állítsa vissza, vagy törölje a biztonsági mentéseket.
 
 ## <a name="are-backups-encrypted"></a>Biztonsági mentés titkosítása?
 

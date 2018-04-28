@@ -1,11 +1,11 @@
 ---
-title: "Bevezetés az Azure mikroszolgáltatások |} Microsoft Docs"
-description: "Miért egy mikroszolgáltatások módszert használja a felhőalapú alkalmazások számára fontos a modern alkalmazások fejlesztését, és hogyan Azure Service Fabric ennek érdekében platformot biztosít áttekintése."
+title: Bevezetés az Azure mikroszolgáltatások |} Microsoft Docs
+description: Miért egy mikroszolgáltatások módszert használja a felhőalapú alkalmazások számára fontos a modern alkalmazások fejlesztését, és hogyan Azure Service Fabric ennek érdekében platformot biztosít áttekintése.
 services: service-fabric
 documentationcenter: .net
 author: msfussell
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: fae2be85-0ab4-4cd3-9d1f-e0d95fe1959b
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/02/2017
 ms.author: msfussell
-ms.openlocfilehash: f69f594d058ba061cec116f87435c96280e19f93
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: d56b78a0274842c012e57f80f0c2fe5619a62962
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="why-a-microservices-approach-to-building-applications"></a>Miért egy mikroszolgáltatások közelítik meg az alkalmazások?
 Szoftverfejlesztők, mert jelenleg nincs újdonságunk a ahogyan szerintünk kapcsolatos faktoring egy alkalmazás összetevő részre. A központi paradigma objektum tájolás, a szoftver absztrakt entitással egészült ki, és a componentization. Napjainkban a factorization általában osztályok és a megosztott szalagtárakkal és technológiai réteg kapcsolódási formájában. Általában a rétegzett megközelítés használatban van egy háttér-tároló, középszintű üzleti logika és előtér felhasználói felület (UI). Mi *rendelkezik* változások az elmúlt néhány évben, hogy azt, mint a fejlesztők számára által létrehozott elosztott alkalmazások, amelyek a felhőben és a vállalat által vezérelt.
@@ -179,9 +179,9 @@ A Service Fabric célja csökkenteni a bonyolultságára alkalmazások egy mikro
  
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A Service Fabric-terminológia áttekintése](service-fabric-technical-overview.md)
-* [Mikroszolgáltatások: Egy alkalmazás fordulat a felhő technológiával](https://azure.microsoft.com/en-us/blog/microservices-an-application-revolution-powered-by-the-cloud/)
+* [Mikroszolgáltatások: Egy alkalmazás fordulat a felhő technológiával](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
 
 [Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png
 [Image2]: media/service-fabric-overview-microservices/statemonolithic-vs-micro.png

@@ -9,26 +9,26 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: carlrab
-ms.openlocfilehash: ca9e2935f3d44952235a1669b3f5bebc7708f4bf
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: c84104ac9094980d0e6d16b535dcf13c462a645a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>Az Azure SQL-adatbázis teljesítményének hangolása
 
 Az Azure SQL Database is tartalmaz [javaslatok](sql-database-advisor.md) , hogy az adatbázis teljesítményének javításával használhatja, vagy hagyhatja, hogy az Azure SQL Database [automatikusan alkalmazkodnak hozzá az alkalmazás](sql-database-automatic-tuning.md) és a módosítások életbe léptetéséhez, javítja a teljesítményt a munkaterhelés.
 
 Az Ön nem rendelkezik megfelelő javaslatokkal és teljesítménnyel kapcsolatos problémák továbbra is fennáll, teljesítményének javítása érdekében a következő módszereket használhatja:
-1. Növelje [szolgáltatásszintek](sql-database-service-tiers.md) , és adja meg a további erőforrások az adatbázisba.
-2. Az alkalmazás hangolás, és alkalmazni, néhány ajánlott eljárás, amely növelheti a teljesítményt. 
-3. Az adatbázis hangolására indexek és lekérdezéseket, amelyekkel hatékonyabban dolgozhasson adatokkal történő módosításával.
+- Növelje a a szolgáltatási rétegekkel a [alapjául szolgáló vásárlási modell DTU-alapú](sql-database-service-tiers-dtu.md) vagy a [vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers-vcore.md) további erőforrások az adatbázisba.
+- Az alkalmazás hangolás, és alkalmazni, néhány ajánlott eljárás, amely növelheti a teljesítményt. 
+- Az adatbázis hangolására indexek és lekérdezéseket, amelyekkel hatékonyabban dolgozhasson adatokkal történő módosításával.
 
-Ezek a kézi módszert, mert később szüksége lesz, hogy mit [szolgáltatásszintek](sql-database-service-tiers.md) kellene kiválasztania vagy kell újraírnia a programot alkalmazást vagy az adatbázis és a módosítása.
+Ezek a kézi módszert, mert később szüksége lesz, hogy mit [DTU-alapú modell erőforrás korlátok](sql-database-dtu-resource-limits.md) és [vCore-alapú modell erőforrás korlátok (előzetes verzió)](sql-database-vcore-resource-limits.md) az igényeinek. Ellenkező esetben kellene írja újra az alkalmazást vagy az adatbázis-kódot, és telepítheti a módosításokat.
 
 ## <a name="increasing-performance-tier-of-your-database"></a>Az adatbázis teljesítményének szintjének növelése
 
-Azure SQL adatbázis két vásárlási modell, a DTU-alapú alapjául szolgáló vásárlási modell és a v-Core-alapú alapjául szolgáló vásárlási modell kínál. Minden egyes modellnek több [szolgáltatásszintek](sql-database-service-tiers.md) , amelyek közül választhat. Egyes szolgáltatásszinteken szigorúan elkülöníti az erőforrásokat, hogy használható-e az SQL-adatbázis, és biztosítja, hogy a szolgáltatási szint kiszámítható teljesítményt. Ebben a cikkben szereplő útmutatást, amelyek segítségével válassza ki a szolgáltatási rétegben, az alkalmazás fel. Azt is ismertetik, hogy az alkalmazás úgy hasznosíthatja a legjobban az Azure SQL Database észlelheti.
+Az Azure SQL adatbázis két vásárlási modell kínál a [alapjául szolgáló vásárlási modell DTU-alapú](sql-database-service-tiers-dtu.md) és egy [vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers-vcore.md) , amelyek közül választhat. Egyes szolgáltatásszinteken szigorúan elkülöníti az erőforrásokat, hogy használható-e az SQL-adatbázis, és biztosítja, hogy a szolgáltatási szint kiszámítható teljesítményt. Ebben a cikkben szereplő útmutatást, amelyek segítségével válassza ki a szolgáltatási rétegben, az alkalmazás fel. Azt is ismertetik, hogy az alkalmazás úgy hasznosíthatja a legjobban az Azure SQL Database észlelheti.
 
 > [!NOTE]
 > Ez a cikk foglalkozik, a teljesítmény útmutatást az önálló adatbázisok Azure SQL-adatbázisban. Rugalmas készletek kapcsolódó teljesítmény útmutatóért lásd: [rugalmas készletek ára és teljesítménye szempontjai](sql-database-elastic-pool-guidance.md). Vegye figyelembe azonban, hogy ebben a cikkben szereplő hangolási javaslatok alkalmazása az adatbázisok rugalmas készlethez, és beállíthatja hasonló teljesítmény előnyök.
@@ -48,7 +48,7 @@ A szolgáltatási szint, amelyekre szüksége van az SQL-adatbázis a maximális
 
 ### <a name="service-tier-capabilities-and-limits"></a>Szolgáltatás szolgáltatásszintek lehetőségei és korlátai
 
-Egyes szolgáltatásszinteken, beállíthatja a teljesítményszintet, rugalmasan fizetni csak a szükséges kapacitást. Is [a kapacitás](sql-database-service-tiers.md), felfelé vagy lefelé, mint a munkaterhelési változások. Például ha a biztonsági-iskolai bevásárlási időszak alatt az adatbázisban munkaterhelés magas, növelheti az adatbázis teljesítményszintjét beállított ideje, július szeptember keresztül. A maximális időszak végén csökkentheti. Minimalizálhatja a vállalat számára a szezonalitás értékének a felhőkörnyezet optimalizálásával fizet. Ez a modell szoftver termék kiadási ciklusok esetén is működik. A teszt csoport kapacitás foglal le, amíg a teszt futtatása, és a kapacitás majd engedje a tesztelés befejezése. A kapacitás kérelem modellben kell fizetnie kapacitás szükség lenne rá, és előfordulhat, hogy ritkán használt dedikált erőforrások kell.
+Egyes szolgáltatásszinteken, beállíthatja a teljesítményszintet, rugalmasan fizetni csak a szükséges kapacitást. Is [a kapacitás](sql-database-service-tiers-dtu.md), felfelé vagy lefelé, mint a munkaterhelési változások. Például ha a biztonsági-iskolai bevásárlási időszak alatt az adatbázisban munkaterhelés magas, növelheti az adatbázis teljesítményszintjét beállított ideje, július szeptember keresztül. A maximális időszak végén csökkentheti. Minimalizálhatja a vállalat számára a szezonalitás értékének a felhőkörnyezet optimalizálásával fizet. Ez a modell szoftver termék kiadási ciklusok esetén is működik. A teszt csoport kapacitás foglal le, amíg a teszt futtatása, és a kapacitás majd engedje a tesztelés befejezése. A kapacitás kérelem modellben kell fizetnie kapacitás szükség lenne rá, és előfordulhat, hogy ritkán használt dedikált erőforrások kell.
 
 ### <a name="why-service-tiers"></a>Miért szolgáltatásszintek?
 Bár egyes adatbázis munkaterhelések eltérőek lehetnek, a szolgáltatási rétegekkel célja teljesítmény kiszámíthatóságot különböző teljesítményt nyújtanak. Nagy méretű adatbázist erőforrás-követelményekkel rendelkező ügyfelek a több dedikált számítógépes környezetekben is működik.
@@ -270,7 +270,8 @@ Egyes alkalmazások írási igényű. Néha egy adatbázis teljes IO terhelésé
 Egyes adatbázis-alkalmazások olvasási műveleteket munkaterhelésekkel rendelkeznek. Rétegek gyorsítótárazás csökkentheti az adatbázis terhelését, és előfordulhat, hogy lehetséges csökkentése az Azure SQL Database segítségével adatbázis támogatásához szükséges teljesítményszint szükséges. A [Azure Redis Cache](https://azure.microsoft.com/services/cache/), ha egy olvasási műveleteket végez, érheti el az adatokat többször (vagy lehet, hogy minden alkalmazás szintű machine konfigurációjától függően), majd helyezze el az adatok az SQL-adatbázis kívül. Ez az adatbázis-terhelésnek (Processzor és olvasási I/O) csökkentheti, de nincs hatással lévő tranzakciós konzisztencia, mivel előfordulhat, hogy az adatok olvasása a gyorsítótárból szinkronban az adatbázis adatai. Bár számos alkalmazás bizonyos fokú inkonzisztenciát elfogadható, hogy igaz nem munkaterhelések. Egy alkalmazás szintű gyorsítótárazási stratégia megvalósítása előtt, teljes mértékben ismernie kell bármely alkalmazás követelményeinek.
 
 ## <a name="next-steps"></a>További lépések
-* Szolgáltatásrétegeiben használt funkciókkal kapcsolatos további információkért lásd: [SQL Database beállításai és teljesítménye](sql-database-service-tiers.md)
+* DTU-alapú szolgáltatásrétegeiben használt funkciókkal kapcsolatos további információkért lásd: [alapjául szolgáló vásárlási modell DTU-alapú](sql-database-service-tiers-dtu.md) és [DTU-alapú modell erőforrás-korlátozások](sql-database-dtu-resource-limits.md)
+* VCore-alapú szolgáltatásrétegeiben használt funkciókkal kapcsolatos további információkért lásd: [vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers-vcore.md) és [vCore alapuló erőforrás-korlátozások (előzetes verzió)](sql-database-vcore-resource-limits.md)
 * További információ a rugalmas készletek: [Mi az Azure rugalmas készletek?](sql-database-elastic-pool.md)
 * Teljesítmény és a rugalmas készletek kapcsolatos információkért lásd: [mikor érdemes figyelembe venni a rugalmas készlethez](sql-database-elastic-pool-guidance.md)
 

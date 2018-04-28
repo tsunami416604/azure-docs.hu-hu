@@ -1,19 +1,19 @@
 ---
-title: "Egy Azure DC/OS-fürtről - ELK verem figyelése"
-description: "A DC/OS fürtben Azure Tárolószolgáltatás-fürt ELK (Elasticsearch Logstash és Kibana) a figyelheti."
+title: Egy Azure DC/OS-fürtről - ELK verem figyelése
+description: A DC/OS fürtben Azure Tárolószolgáltatás-fürt ELK (Elasticsearch Logstash és Kibana) a figyelheti.
 services: container-service
 author: sauryadas
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 03/27/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: b378fc38233534df74582388e6e832d40f431d11
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: dc863894d8846e066c90bdf7b309f141d32a1186
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitor-an-azure-container-service-cluster-with-elk"></a>A figyelő egy ELK az Azure Tárolószolgáltatás-fürt
 
@@ -27,7 +27,7 @@ Ebben a témakörben bemutatjuk, hogyan központi telepítése az Azure Tároló
 ELK verem Elasticsearch, Logstash és egy teljes körű verem használható figyelésére és a fürt naplóinak elemzése biztosító Kibana.
 
 ## <a name="configure-the-elk-stack-on-a-dcos-cluster"></a>A DC/OS-fürtről a ELK verem konfigurálása
-A DC/OS felhasználói felületén keresztül elérni [http://localhost:80 /](http://localhost:80/) egyszer a DC/OS felhasználói felületének navigáljon **Universe**. Keressen, és telepítse a Elasticsearch Logstash és Kibana, a DC/OS Universe és a megadott sorrendben. További konfigurációjával kapcsolatos Ha a **speciális telepítési** hivatkozásra.
+A DC/OS felhasználói felületén keresztül elérni [ http://localhost:80/ ](http://localhost:80/) egyszer a DC/OS felhasználói felületének navigáljon **Universe**. Keressen, és telepítse a Elasticsearch Logstash és Kibana, a DC/OS Universe és a megadott sorrendben. További konfigurációjával kapcsolatos Ha a **speciális telepítési** hivatkozásra.
 
 ![ELK1](./media/container-service-monitoring-elk/elk1.PNG) ![ELK2](./media/container-service-monitoring-elk/elk2.PNG) ![ELK3](./media/container-service-monitoring-elk/elk3.PNG) 
 
@@ -55,7 +55,7 @@ Keresse meg az URL-címet, miután kell megjelennie a haproxy esetén irányít�
 
 A port 5601 van telepítve, Kibana irányítópult eléréséhez nyissa meg a portot 5601 kell. Kövesse az utasításokat [Itt](container-service-enable-public-access.md). Nyissa meg a következő Kibana irányítópult: `http://localhost:5601`.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Rendszer- és napló továbbítás és a telepítés [napló kezelése a DC/OS rendelkező ELK](https://docs.mesosphere.com/1.8/administration/logging/elk/).
 

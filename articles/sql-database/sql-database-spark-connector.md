@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: ''
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 04/23/2018
 ms.author: xiwu
-ms.openlocfilehash: 46849d551b6996caaf020caec1ab8104d5388c8f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 393af463c4145e1d865c14f2ace7d5123ab12cfa
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-spark-connector-for-azure-sql-database-and-sql-server"></a>Spark-összekötővel valós idejű big data elemzés érdekében az Azure SQL Database és SQL Server
 
@@ -38,6 +38,10 @@ Az adatfolyamban a következőképpen történik:
 1. A Spark főcsomópont SQL Server vagy az Azure SQL Database csatlakozik, és adatokat tölt a bizonyos táblájához vagy egy adott SQL-lekérdezés
 2. A Spark főcsomópont elosztása az adatok munkavégző csomópontokhoz az átalakításhoz. 
 3. A munkavégző csomópont csatlakozik az SQL Server vagy az Azure SQL Database, és adatokat ír az adatbázis. Felhasználó soronként-beszúrási vagy tömeges beszúrás választhat.
+
+A következő ábra szemlélteti az adatfolyam.
+
+   ![architektúra](./media/sql-database-spark-connector/architecture.png)
 
 ### <a name="build-the-spark-to-sql-db-connector"></a>A Spark SQL DB összekötőre összeállítása
 Az összekötő projekt jelenleg maven használja. Az összekötő függőségek nélkül létrehozásához futtathatja:
@@ -153,7 +157,7 @@ collection.show()
 #### <a name="setup-requirement"></a>A telepítő követelmény
 Ha a hozzáférési jogkivonat-alapú hitelesítési módot használ, le kell töltenie [azure-Active Directoryban – könyvtár-az-java](https://github.com/AzureAD/azure-activedirectory-library-for-java) és függőségeit, és azokat a Java build elérési útja.
 
-Lásd: [Azure Active Directory hitelesítés használata a hitelesítés az SQL Database](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication) megtudhatja, hogyan férhetnek hozzá az Azure SQL-adatbázis tokenjét.
+Lásd: [Azure Active Directory hitelesítés használata a hitelesítés az SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) megtudhatja, hogyan férhetnek hozzá az Azure SQL-adatbázis tokenjét.
 
 ```scala
 import com.microsoft.azure.sqldb.spark.config.Config
@@ -211,5 +215,5 @@ Ha még nem tette meg, töltse le a Spark-összekötő az Azure SQL Database és
 -   [A minta Azure Databricks notebookok](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/notebooks)
 - [Mintaparancsfájlok (Scala)](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/scripts)
 
-Is érdemes áttekinteni a [Apache Spark SQL, DataFrames és adatkészletek útmutató](http://spark.apache.org/docs/latest/sql-programming-guide.html) és a [Azure Databricks dokumentáció](https://docs.microsoft.com/en-us/azure/azure-databricks/).
+Is érdemes áttekinteni a [Apache Spark SQL, DataFrames és adatkészletek útmutató](http://spark.apache.org/docs/latest/sql-programming-guide.html) és a [Azure Databricks dokumentáció](https://docs.microsoft.com/azure/azure-databricks/).
 

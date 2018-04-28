@@ -1,19 +1,19 @@
 ---
-title: "A Marathon felhasználói felület Azure DC/OS-fürt kezeléséhez"
-description: "A cikk azt ismerteti, hogyan telepíthetők tárolók egy Azure tárolószolgáltatásba a Marathon webes felhasználói felület segítségével."
+title: A Marathon felhasználói felület Azure DC/OS-fürt kezeléséhez
+description: A cikk azt ismerteti, hogyan telepíthetők tárolók egy Azure tárolószolgáltatásba a Marathon webes felhasználói felület segítségével.
 services: container-service
 author: dlepow
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: b1c5fc223105b1dae0ce07f242a6b42b34fd2ab3
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 43407d40db0aab2772cb1baeab3471be68aee2ab
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>Azure Container Service DC/OS-fürt kezelése a Marathon webes felhasználói felületén
 
@@ -33,16 +33,16 @@ A példákban szereplő feladatok elvégzéséhez szüksége lesz egy az Azure t
 >
 
 ## <a name="explore-the-dcos-ui"></a>A DC/OS felhasználói felületének megnyitása
-[Alakítson ki](../container-service-connect.md) egy Secure Shell- (SSH-) alagutat, és nyissa meg a böngészőben a http://localhost/ címet. Ez betölti a DC/OS webes felhasználói felületét, és a fürtre vonatkozó információkat jelenít meg, például a felhasznált erőforrásokat, az aktív ügynököket és a futó szolgáltatásokat.
+Az egy Secure Shell (SSH) alagút [létrehozott](../container-service-connect.md), keresse meg a http://localhost/. Ez betölti a DC/OS webes felhasználói felületét, és a fürtre vonatkozó információkat jelenít meg, például a felhasznált erőforrásokat, az aktív ügynököket és a futó szolgáltatásokat.
 
 ![A DC/OS UI felhasználói felülete](./media/container-service-mesos-marathon-ui/dcos2.png)
 
 ## <a name="explore-the-marathon-ui"></a>A Marathon felhasználói felület megnyitása
-A Marathon felhasználói felület megtekintéséhez keresse meg azt a http://localhost/marathon. Ezen a képernyőn elindíthat egy új tárolót vagy más szolgáltatást az Azure tárolószolgáltatási DC/OS-fürtön. A futó tárolókkal és alkalmazásokkal kapcsolatos információkat is láthat.  
+A Marathon felhasználói felület megtekintéséhez navigáljon a http://localhost/marathon. Ezen a képernyőn elindíthat egy új tárolót vagy más szolgáltatást az Azure tárolószolgáltatási DC/OS-fürtön. A futó tárolókkal és alkalmazásokkal kapcsolatos információkat is láthat.  
 
 ![Marathon felhasználói felület](./media/container-service-mesos-marathon-ui/dcos3.png)
 
-## <a name="deploy-a-docker-formatted-container"></a>Docker-formázású tároló üzembe helyezése
+## <a name="deploy-a-docker-formatted-container"></a>Docker-formátumú tároló üzembe helyezése
 Ha új tárolót szeretne üzembe helyezni a Marathon segítségével, kattintson a **Create Application** (Alkalmazás létrehozása) gombra, és adja meg a következő információkat az űrlapon:
 
 | Mező | Érték |
@@ -82,7 +82,7 @@ A Marathon főoldalára visszatérve láthatja a tároló üzembe helyezési ál
 
 ![A Marathon főoldala – a tároló üzembe helyezési állapota](./media/container-service-mesos-marathon-ui/dcos7.png)
 
-Amikor visszavált a DC/OS webes felhasználói felületére (http://localhost/), láthatja, hogy a DC/OS-fürtön fut egy feladat (ez esetben egy Docker-formázású tároló).
+Amikor visszavált a DC/OS webes felhasználói felülete (http://localhost/), láthatja, hogy a DC/OS fürtben fut egy feladat (ebben az esetben egy Docker-formázású tároló).
 
 ![DC/OS webes felhasználói felülete – a fürtön futó feladat](./media/container-service-mesos-marathon-ui/dcos8.png)
 
@@ -100,7 +100,7 @@ Ebben a példában az alkalmazás fut egy nyilvános ügynök csomóponton. Kere
     ![Internetről érkező Nginx](./media/container-service-mesos-marathon-ui/nginx.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A DC/OS és a Marathon API használata](container-service-mesos-marathon-rest.md)
 
 * A Mesost használó Azure Container Service részletes bemutatása

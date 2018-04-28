@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/20/2018
 ms.author: sngun
-ms.openlocfilehash: a8e4ac763b9a16210d62fc080aaf8917c1eefc33
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b80ad9837939af5406989d08e18f6f3d9fe3064f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB aszinkron Java SDK API-SQL: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -55,6 +55,16 @@ A SQL API aszinkron Java SDK abban tér el az SQL API Java SDK-támogatása az a
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
+### <a name="a-name101101"></a><a name="1.0.1"/>1.0.1
+* Biztonsági-nyomás támogatja a lekérdezést.
+* Partícióazonosító legfontosabb tartomány a lekérdezés támogatása.
+* Javítsa ki, hogy lehetővé tegyék a nagyobb folytatási kérelem fejléce (bugfix github #24).
+* JVM biztosításához 4.1.22.Final frissített netty függőségi leállítja a fő szálnak befejeződése után.
+* Javítsa ki a munkameneti jogkivonat átadása a fő erőforrások olvasásakor elkerülése érdekében.
+* További példák hozzá.
+* További összehasonlítási forgatókönyvek hozzá.
+* Rögzített Java fejlécfájlok megfelelő javadoc létrehozásánál.
+
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 * GA SDK-val nem blokkoló IO használatával végpont támogatása a [Netty könyvtár](http://netty.io/) átjáró módban. 
 
@@ -69,6 +79,7 @@ A Cosmos DB kivont SDK használatával fog kell elutasította a szolgáltatás.
 
 | Verzió | Kiadás dátuma | Kivezetési dátum |
 | --- | --- | --- |
+| [1.0.1](#1.0.1) |2018. április 20.|--- |
 | [1.0.0](#1.0.0) |2018. február 27.|--- |
 
 ## <a name="faq"></a>GYIK

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: sngun
-ms.openlocfilehash: 6bad6c7cd641a2ef5461ee37b89c0bdc6a221017
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 103d9d36ae1290f7af18be83f41bd9b83dbd3fbe
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Az Azure Cosmos DB diagnosztikai naplózás
 
@@ -26,7 +26,7 @@ Egy vagy több Azure Cosmos DB adatbázis használandó elindítása után is fi
 
 ## <a name="logs-available-in-azure"></a>Az Azure-ban elérhető naplók
 
-Döntésről bővebben figyelése Azure Cosmos DB fiókja, mielőtt most tisztázása naplózásának és figyelésének kapcsolatos néhány dolgot. Nincsenek naplók az Azure platformon különböző típusait. Nincsenek [Azure tevékenységi naplóit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs), [Azure diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs), [Azure metrikák](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics), események, szívverés-figyelés, műveletek naplókat, és így tovább. A naplók formátum van. A naplók teljes listáját megtekintheti [Azure Naplóelemzés](https://azure.microsoft.com/en-us/services/log-analytics/) az Azure portálon. 
+Döntésről bővebben figyelése Azure Cosmos DB fiókja, mielőtt most tisztázása naplózásának és figyelésének kapcsolatos néhány dolgot. Nincsenek naplók az Azure platformon különböző típusait. Nincsenek [Azure tevékenységi naplóit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs), [Azure diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs), [Azure metrikák](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics), események, szívverés-figyelés, műveletek naplókat, és így tovább. A naplók formátum van. A naplók teljes listáját megtekintheti [Azure Naplóelemzés](https://azure.microsoft.com/services/log-analytics/) az Azure portálon. 
 
 A következő kép bemutatja a különböző Azure naplók:
 
@@ -51,7 +51,7 @@ Tevékenységi naplóit (vezérlő vezérlősík műveletek) gazdagabb jellegűe
 
 ### <a name="azure-metrics"></a>Az Azure metrikák
 
-[Az Azure metrikák](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-metrics) Azure telemetriai adatok legfontosabb típusa (más néven _teljesítményszámlálók_) az Azure erőforrások által kibocsátott. Metrikák lehetővé teszik, hogy az átviteli sebesség, tárolási, konzisztencia, rendelkezésre állás és a késés az Azure Cosmos DB erőforrások vonatkozó információk megtekintése. További információkért lásd: [figyelés és az Azure Cosmos DB a metrikák hibakeresés](use-metrics.md).
+[Az Azure metrikák](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) Azure telemetriai adatok legfontosabb típusa (más néven _teljesítményszámlálók_) az Azure erőforrások által kibocsátott. Metrikák lehetővé teszik, hogy az átviteli sebesség, tárolási, konzisztencia, rendelkezésre állás és a késés az Azure Cosmos DB erőforrások vonatkozó információk megtekintése. További információkért lásd: [figyelés és az Azure Cosmos DB a metrikák hibakeresés](use-metrics.md).
 
 ### <a name="azure-diagnostic-logs"></a>Az Azure diagnosztikai naplók
 

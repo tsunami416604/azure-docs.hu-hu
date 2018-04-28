@@ -1,6 +1,6 @@
 ---
-title: "A Hyper-V replikáció az Azure támogatási mátrix |} Microsoft Docs"
-description: "A támogatott összetevők és a Hyper-V replikálás az Azure-bA az Azure Site Recovery követelményei"
+title: A Hyper-V replikáció az Azure támogatási mátrix |} Microsoft Docs
+description: A támogatott összetevők és a Hyper-V replikálás az Azure-bA az Azure Site Recovery követelményei
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: raynew
-ms.openlocfilehash: 9078b56ae9c5582aa21201c168974eb6cc7a4ed6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d2c637dc742ee854c7787cf7cd883930c4eaa8bc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>A Hyper-V replikáció az Azure támogatási mátrix
 
@@ -22,7 +22,7 @@ Ez a cikk bemutatja a támogatott összetevők és az Azure-bA helyszíni Hyper-
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
 
-**Scenario** | **Részletek**
+**Forgatókönyv** | **Részletek**
 --- | --- 
 A Hyper-V Virtual Machine Managerrel | A System Center Virtual Machine Manager hálóban felügyelt Hyper-V-gazdagépeken futó virtuális gépek Azure-bA vész-helyreállítási végezheti el.<br/><br/> Ebben a forgatókönyvben, az Azure portálon vagy a PowerShell használatával telepítheti.<br/><br/> Ha Hyper-V-gazdagépek Virtual Machine Manager által felügyelt, is elvégezhet katasztrófa utáni helyreállítás egy másodlagos helyszíni helyre. Ebben a forgatókönyvben kapcsolatos további tudnivalókért olvassa el [ebben az oktatóanyagban](tutorial-vmm-to-vmm.md).
 A Hyper-V nélkül a Virtual Machine Manager | Vész-helyreállítási Azure Virtual Machine Manager által nem felügyelt Hyper-V-gazdagépeken futó virtuális gépek végezheti el.<br/><br/> Ebben a forgatókönyvben, az Azure portálon vagy a PowerShell használatával telepítheti. 
@@ -55,8 +55,8 @@ Vendég operációs rendszer | A vendég operációs rendszer [használható az 
 --- | --- | ---
 Gazdagép hálózati: hálózati összevonása | Igen
 Gazdagép hálózati: VLAN | Igen
-Host network: IPv4 | Igen
-Host network: IPv6 | Nem
+Gazdagép hálózati: IPv4 | Igen
+Gazdagép hálózati: IPv6 | Nem
 Vendég Virtuálisgép-hálózathoz: hálózati összevonása | Nem
 Vendég Virtuálisgép-hálózathoz: IPv4 | Igen
 Vendég Virtuálisgép-hálózathoz: IPv6 | Nem
@@ -170,7 +170,7 @@ Arra, hogy a központi telepítés ebben a cikkben beállításokkal kompatibili
 
 **Name (Név)** | **Leírás** | **Részletek**
 --- | --- | --- | --- | ---
-Az Azure Site Recovery provider | Koordinálja a helyszíni kiszolgálók és az Azure közötti kommunikáció <br/><br/> Hyper-V Virtual Machine Managerrel: telepítve a Virtual Machine Manager-kiszolgálón<br/><br/> Hyper-V nélkül a Virtual Machine Manager: telepített Hyper-V-gazdagépek| Legújabb verzió: 5.1.2700.1 (az Azure portálról érhető el)<br/><br/> [Legújabb funkcióit és javításokat](https://aka.ms/latest_asr_updates)
+Az Azure Site Recovery provider | Koordinálja a helyszíni kiszolgálók és az Azure közötti kommunikáció <br/><br/> Hyper-V Virtual Machine Managerrel: telepítve a Virtual Machine Manager-kiszolgálón<br/><br/> Hyper-V nélkül a Virtual Machine Manager: telepített Hyper-V-gazdagépek| Legújabb verzió: 5.1.2700.1 (az Azure portálról érhető el)<br/><br/> [Legújabb funkcióit és javításokat](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
 A Microsoft Azure Recovery Services Agent ügynök | Koordinálja a Hyper-V virtuális gépek és az Azure közötti replikáció<br/><br/> Telepített helyszíni Hyper-V kiszolgálón (a vagy a Virtual Machine Manager nélkül) | A portálon elérhető legújabb ügynök
 
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 94b6864bec157694e0192597c0fecfa0d3e407ec
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 62ecacb16c891905eb67a6bae08cf81ac2cdb173
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Az Application Insights SDK konfigurálása az ApplicationInsights.config vagy .xml használatával
 Az Application Insights .NET SDK NuGet-csomagok számos áll. A [core csomag](http://www.nuget.org/packages/Microsoft.ApplicationInsights) telemetriai adatok küldése az Application Insights az API-t biztosít. [További csomagok](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights) adja meg a telemetriai adatok *modulok* és *inicializálók* automatikusan nyomon követése a telemetriai adatok az alkalmazás és a környezetben. A konfigurációs fájl módosításával engedélyezze vagy tiltsa le a telemetria-modulokat és az inicializálók, és némelyikük paramétereinek megadása.
@@ -30,7 +30,7 @@ Nincs a vezérlőhöz egy egyenértékű fájlt a [SDK-t egy weblap][client].
 Ez a dokumentum ismerteti a szakaszok látható, a konfigurációs fájlban, hogyan azok szabályozza, hogy az SDK összetevői és mely NuGet-csomagok betölteni az összetevőket.
 
 > [!NOTE]
-> ApplicationInsights.config és .xml utasítások nem vonatkoznak a .NET Core SDK-val. A .NET Core végrehajtott módosításokat a általában használjuk a appsettings.json fájlt. Például az itt található: a [pillanatkép hibakereső dokumentációját.](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications)
+> ApplicationInsights.config és .xml utasítások nem vonatkoznak a .NET Core SDK-val. A .NET Core végrehajtott módosításokat a általában használjuk a appsettings.json fájlt. Például az itt található: a [pillanatkép hibakereső dokumentációját.](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications)
 
 ## <a name="telemetry-modules-aspnet"></a>Telemetria modulok (ASP.NET)
 Minden telemetriai modul egy adott típusú adatokat gyűjt, és a core API segítségével küldheti az adatokat. A modulok különböző NuGet-csomagok, amelyek is vegye fel a szükséges sorok .config fájl telepíti.
@@ -294,7 +294,7 @@ A konfigurációs fájlhoz hozzá a szolgáltatót, vagy telepítésekor [Micros
 
 Ez az osztály tulajdonsága egy nem kötelező `ProfileQueryEndpoint`.
 Alapértelmezés szerint a beállított érték `https://dc.services.visualstudio.com/api/profiles/{0}/appId`.
-Ha ez a konfiguráció esetén a proxy konfigurálása van szüksége, ajánlott proxyhasználat alapszintű címéből és többek között a következőket "/ api/profilok / {0} / appId". Vegye figyelembe, hogy a(z) "{0}" változó helyére kérelmenként futásidőben a Instrumentation kulcsot.
+Ha ez a konfiguráció esetén a proxy konfigurálása van szüksége, ajánlott proxyhasználat alap címét és többek között "/api/profilok/{0}/appId". Vegye figyelembe, hogy "{0}" változó helyére kérelmenként futásidőben a Instrumentation kulcsot.
 
 #### <a name="example-configuration-via-applicationinsightsconfig"></a>Példa Configuration ApplicationInsights.config keresztül:
 ```xml

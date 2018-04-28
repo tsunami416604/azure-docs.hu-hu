@@ -3,7 +3,7 @@ title: Biztonságos egylapos alkalmazások az Azure AD v2.0 implicit engedélyez
 description: Épület webes alkalmazások az Azure AD v2.0 implicit engedélyezési folyamat végrehajtása egylapos alkalmazások.
 services: active-directory
 documentationcenter: ''
-author: dstrockis
+author: hpsin
 manager: mtillman
 editor: ''
 ms.assetid: 3605931f-dc24-4910-bb50-5375defec6a8
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
-ms.author: dastrock
+ms.date: 04/22/2018
+ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b855dcaae99e16aa21a0e19ad37d933cb18c678a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: abd9471ca3f6dd5448eb5d969186f8200023683d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>v2.0 protokoll - gyógyfürdők a implicit engedélyezési folyamat használata
 A v2.0-végponttal is jelentkezzen be arra a egylapos alkalmazások a Microsoft a személyes és munkahelyi vagy iskolai fiókkal rendelkező felhasználók. Egyetlen lap, és más JavaScript alkalmazásokkal szerepkört futtató elsősorban egy böngésző arc érdekes néhány felkéri, amikor a hitelesítés:
@@ -47,6 +47,9 @@ A teljes implicit bejelentkezési folyamata az alábbihoz hasonló - lépéseit 
 ## <a name="send-the-sign-in-request"></a>A bejelentkezési kérelem elküldése
 Kezdetben beléptetni a felhasználót az alkalmazásba, küldjön egy [OpenID Connect](active-directory-v2-protocols-oidc.md) engedélyezési kérelem és a get egy `id_token` a v2.0-végponttal való:
 
+> [!IMPORTANT]
+> Ahhoz, hogy sikeresen egy azonosító jogkivonatot, az alkalmazás regisztrációja a kérelem a [regisztrációs portál](https://apps.dev.microsoft.com) kell rendelkeznie a **[Implicit grant](active-directory-v2-protocols-implicit.md)** engedélyezve a a webes ügyféllel.  Ha nincs engedélyezve, egy `unsupported_response` hibaüzenetet küld: "a"response_type"bemeneti paraméter megadott értéke nem engedélyezett ennél az ügyfélnél. Várt érték "code" "
+
 ```
 // Line breaks for legibility only
 
@@ -69,16 +72,17 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | Paraméter |  | Leírás |
 | --- | --- | --- |
 | bérlő |Szükséges |A `{tenant}` személyek is jelentkezzen be az alkalmazás a kérelem elérési útjában szereplő érték is használható.  Az engedélyezett értékek a következők `common`, `organizations`, `consumers`, és a bérlői azonosítókat.  További részletekért lásd: [alapjai protokoll](active-directory-v2-protocols.md#endpoints). |
-| client_id |Szükséges |Az alkalmazás azonosítója, amely a regisztrációs portál ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) az alkalmazáshoz hozzárendelt. |
-| response_type |Szükséges |Tartalmaznia kell `id_token` az OpenID Connect bejelentkezhet.  Az is előfordulhat, hogy tartalmazza a response_type `token`. Használatával `token` itt lehetővé teszi az alkalmazásnak, hogy fogadjon olyan hozzáférési jogkivonatot azonnal a hitelesítési végpontra anélkül, hogy a hitelesítési végpontra második kérelem végrehajtásához. Ha használja a `token` response_type, a `scope` paraméternek tartalmaznia kell egy hatókör, amely jelzi, melyik erőforrást kell a jogkivonatot bocsásson ki. |
-| redirect_uri |Ajánlott |Az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszok redirect_uri. Ez pontosan egyeznie kell a redirect_uris regisztrálta a portálon, kivéve az url-kódolású kell lennie. |
-| scope |Szükséges |Hatókörök szóközökkel elválasztott listája. Az OpenID Connect, magában kell foglalnia a hatókör `openid`, amely az eszköz a hozzájárulási felhasználói felületén a "Bejelentkezés" engedélyt. Opcionálisan is érdemes lehet felvenni a `email` vagy `profile` [hatókörök](active-directory-v2-scopes.md) további felhasználói adatok hozzáféréséhez. A kérelem a különböző erőforrások beleegyezést kérő más hatókörök is. |
-| response_mode |Ajánlott |Megadja azt a módszert, amelynek használatával az eredményül kapott jogkivonat vissza küldése az alkalmazásnak. Meg kell `fragment` a implicit engedélyezési folyamat számára. |
-| state |Ajánlott |A kérelemhez, amely a token válaszul is visszaadott szerepel érték. Bármely, a kívánt tartalmat karakterlánc lehet.  Egy véletlenszerűen generált egyedi érték jellemzően a [webhelyközi kérések hamisításának megakadályozása támadások megelőzése](http://tools.ietf.org/html/rfc6749#section-10.12). Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérést, például az oldal vagy nézet, amilyenek korábban voltak a is használatos. |
-| Nonce |Szükséges |A kérelem, az alkalmazás, az eredményül kapott id_token jogcímként szerepeltetni által generált szerepel érték.  Az alkalmazás ezután ellenőrizheti a hitelesítési karakterláncok ismétlésének támadások mérséklése ezt az értéket. Az érték véletlenszerű, egyedi karakterlánc, amely segítségével azonosíthatja a kérelem forrása általában. |
-| parancssor |választható |Azt jelzi, hogy milyen típusú felhasználói beavatkozás szükséges. Jelenleg csak érvényes értékei a "bejelentkezés", "none", és "".  `prompt=login` arra kényszeríti a felhasználó megadja a hitelesítő adataikat, hogy kérésre nem lehet negálni egyszeri bejelentkezést.  `prompt=none` Ellenkező - biztosítja, hogy a felhasználó számára nem jelenik meg minden bármely interaktív kérdés. Ha a kérelem nem hajtható végre csendes keresztül egyszeri bejelentkezést, akkor a v2.0-végpontra hibát adnak vissza.  `prompt=consent` az OAuth-hozzájárulás párbeszédpanel akkor indul el, miután a felhasználó jelentkezik be, amely kéri a felhasználót, hogy engedélyezze, hogy az alkalmazás. |
-| login_hint |választható |Segítségével előre töltse ki a felhasználónév vagy e-mail cím mező annak a bejelentkezési oldal a felhasználó számára, ha tudja, hogy időben a felhasználónevét. Gyakran alkalmazások ismételt hitelesítés, hogy már kivont a felhasználónév egy korábbi bejelentkezési használatával során fogja használni ezt a paramétert a `preferred_username` jogcímek. |
-| domain_hint |választható |Egyike lehet `consumers` vagy `organizations`. Ha tartalmazza, azt az e-mail alapú felderítési folyamat kihagyja, hogy a felhasználó végighalad a v2.0 bejelentkezési oldal, ami egy nagyobb jelentőséggel zökkenőmentes felhasználói élmény.  Gyakran alkalmazások használja ezt a paramétert ismételt hitelesítés során kivonja a `tid` a id_token származó jogcímek.  Ha a `tid` jogcím értéke `9188040d-6c67-4c5b-b112-36a304b66dad`, használjon `domain_hint=consumers`.  Ellenkező esetben használja `domain_hint=organizations`. |
+| client_id |Szükséges |Az alkalmazásazonosító, amely a regisztrációs portál ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) az alkalmazáshoz hozzárendelt. |
+| response_type |Szükséges |Tartalmaznia kell `id_token` az OpenID Connect bejelentkezhet.  Az is előfordulhat, hogy tartalmazza a response_type `token`. Használatával `token` itt lehetővé teszi az alkalmazásnak, hogy fogadjon olyan hozzáférési jogkivonatot azonnal a hitelesítési végpontra anélkül, hogy a hitelesítési végpontra második kérelem végrehajtásához.  Ha használja a `token` response_type, a `scope` paraméternek tartalmaznia kell egy hatókör, amely jelzi, melyik erőforrást kell a jogkivonatot bocsásson ki. |
+| redirect_uri |Ajánlott |Az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszok redirect_uri.  Ez pontosan egyeznie kell a redirect_uris regisztrálta a portálon, kivéve az url-kódolású kell lennie. |
+| scope |Szükséges |Hatókörök szóközökkel elválasztott listája.  Az OpenID Connect, magában kell foglalnia a hatókör `openid`, amely az eszköz a hozzájárulási felhasználói felületén a "Bejelentkezés" engedélyt.  Opcionálisan is érdemes lehet felvenni a `email` vagy `profile` [hatókörök](active-directory-v2-scopes.md) további felhasználói adatok hozzáféréséhez.  A kérelem a különböző erőforrások beleegyezést kérő más hatókörök is. |
+| response_mode |Ajánlott |Megadja azt a módszert, amelynek használatával az eredményül kapott jogkivonat vissza küldése az alkalmazásnak.  Meg kell `fragment` a implicit engedélyezési folyamat számára. |
+| state |Ajánlott |A kérelemhez, amely a token válaszul is visszaadott szerepel érték.  Bármely, a kívánt tartalmat karakterlánc lehet.  Egy véletlenszerűen generált egyedi érték jellemzően a [webhelyközi kérések hamisításának megakadályozása támadások megelőzése](http://tools.ietf.org/html/rfc6749#section-10.12).  Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérést, például az oldal vagy nézet, amilyenek korábban voltak a is használatos. |
+| Nonce |Szükséges |A kérelem, az alkalmazás, az eredményül kapott id_token jogcímként szerepeltetni által generált szerepel érték.  Az alkalmazás ezután ellenőrizheti a hitelesítési karakterláncok ismétlésének támadások mérséklése ezt az értéket.  Az érték véletlenszerű, egyedi karakterlánc, amely segítségével azonosíthatja a kérelem forrása általában. |
+| parancssor |választható |Azt jelzi, hogy milyen típusú felhasználói beavatkozás szükséges.  Jelenleg csak érvényes értékei a "bejelentkezés", "none", és "".  `prompt=login` arra kényszeríti a felhasználó megadja a hitelesítő adataikat, hogy kérésre nem lehet negálni egyszeri bejelentkezést.  `prompt=none` Ellenkező - biztosítja, hogy a felhasználó számára nem jelenik meg minden bármely interaktív kérdés.  Ha a kérelem nem hajtható végre csendes keresztül egyszeri bejelentkezést, akkor a v2.0-végpontra hibát adnak vissza.  `prompt=consent` az OAuth-hozzájárulás párbeszédpanel akkor indul el, miután a felhasználó jelentkezik be, amely kéri a felhasználót, hogy engedélyezze, hogy az alkalmazás. |
+| login_hint |választható |Segítségével előre töltse ki a felhasználónév vagy e-mail cím mező annak a bejelentkezési oldal a felhasználó számára, ha tudja, hogy időben a felhasználónevét.  Gyakran alkalmazások ismételt hitelesítés, hogy már kivont a felhasználónév egy korábbi bejelentkezési használatával során fogja használni ezt a paramétert a `preferred_username` jogcímek. |
+| domain_hint |választható |Egyike lehet `consumers` vagy `organizations`.  Ha tartalmazza, azt az e-mail alapú felderítési folyamat kihagyja, hogy a felhasználó végighalad a v2.0 bejelentkezési oldal, ami egy nagyobb jelentőséggel zökkenőmentes felhasználói élmény.  Gyakran alkalmazások használja ezt a paramétert ismételt hitelesítés során kivonja a `tid` a id_token származó jogcímek.  Ha a `tid` jogcím értéke `9188040d-6c67-4c5b-b112-36a304b66dad` használja (a Microsoft Account fogyasztói bérlő), `domain_hint=consumers`.  Ellenkező esetben használja `domain_hint=organizations`. |
+
 
 Ezen a ponton a kérni fogja a felhasználótól kell adnia a hitelesítő adatait, és a hitelesítés végrehajtásához.  A v2.0-végpontra is biztosítják, hogy a felhasználó hozzájárult szerepelnek az engedélyeket a `scope` lekérdezési paraméter.  Ha a felhasználó nem hozzájárult bármelyik ezeket az engedélyeket, azt kéri a felhasználó számára, hogy a szükséges engedélyekkel.  A részletek [engedélyek, beleegyezése és több-bérlős alkalmazásokhoz itt megadott](active-directory-v2-scopes.md).
 
@@ -227,7 +231,7 @@ Miután egy access_token kap, ellenőrizze, hogy az aláírás a jogkivonat, val
 A hozzáférési jogkivonat szerepel a jogcímek kapcsolatos további információkért tekintse meg a [v2.0 jogkivonat végponthivatkozás](active-directory-v2-tokens.md)
 
 ## <a name="refreshing-tokens"></a>Jogkivonatok frissítése
-Mindkét `id_token`s és `access_token`s rövid idő alatt, így ezek frissítése elő kell készíteni az alkalmazás rendszeres időközönként jogkivonatok után lejár.  Mindkét típusú jogkivonat frissítéséhez a rejtett iframe kérésben promptjai használatával végezheti el a `prompt=none` paraméter segítségével szabályozhatja az Azure AD működését.  Ha szeretne kapni egy új `id_token`, használjon `response_type=id_token` és `scope=openid`, valamint egy `nonce` paraméter.
+Az implicit támogatás nem biztosít a frissítési jogkivonatokat.  Mindkét `id_token`s és `access_token`s rövid idő alatt, így ezek frissítése elő kell készíteni az alkalmazás rendszeres időközönként jogkivonatok után lejár.  Mindkét típusú jogkivonat frissítéséhez a rejtett iframe kérésben promptjai használatával végezheti el a `prompt=none` paraméter segítségével szabályozhatja az Azure AD működését.  Ha szeretne kapni egy új `id_token`, használjon `response_type=id_token` és `scope=openid`, valamint egy `nonce` paraméter.
 
 ## <a name="send-a-sign-out-request"></a>A Kijelentkezés kérelem küldése
 A OpenIdConnect `end_session_endpoint` lehetővé teszi az alkalmazás kérelmet küld a v2.0-végpontra a felhasználói munkamenet befejezését, majd törölje a cookie-kat a v2.0-végpontra állítja be.  Webalkalmazás kívül egy felhasználó teljesen bejelentkezni az alkalmazás kell a saját munkamenet befejezése a felhasználó (általában egy token gyorsítótár kiürítése vagy elvetése cookie-k) által, és majd irányítsa át a böngésző számára:

@@ -8,16 +8,14 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/19/2018
-ms.openlocfilehash: 5ebf2d1025c8f9469a83a408cb79e3d944a601bc
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.date: 04/25/2018
+ms.openlocfilehash: 1fc1791d75355cc30f2ef43fc17e39a868e2c756
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>A Stream Analytics bevitt adatfolyam adatok
-
-A Stream Analytics a eseményforrások különböző típusú adatok bejövő fogad el. A megadott bemeneti a Stream Analytics-feladat nevezzük a feladat adatkapcsolat *bemeneti*. 
 
 A Stream Analytics három típusú erőforrások bemeneteként Azure adatfolyamokat első osztályú integrálva van:
 - [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
@@ -25,17 +23,6 @@ A Stream Analytics három típusú erőforrások bemeneteként Azure adatfolyamo
 - [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) 
 
 A bemeneti erőforrást is megmarad a azonos Azure-előfizetés a Stream Analytics-feladat, vagy egy másik előfizetésből.
-
-## <a name="compare-stream-and-reference-inputs"></a>Adatfolyam- és referenciaadatok bemenetek összehasonlítása
-Mivel az adatokat a rendszer előkészítésre továbbít egy adatforrást, a Stream Analytics-feladat által használt, és valós időben feldolgozott. Bemeneti adatok meg vannak osztva kétféle: adatok adatfolyam-bemenet, és az adatok bemenetek hivatkozik.
-
-### <a name="data-stream-input"></a>Adatfolyam-bemenet
-Adatfolyam események unbounded sorozatát adott idő alatt. Stream Analytics-feladatok tartalmaznia kell legalább egy adatfolyam-bemenetre. Az Event Hubs, IoT Hub és a Blob storage adatforrások adatfolyam bemeneti is támogatottak. Az Event Hubs segítségével több eszközökön és szolgáltatásokon szolgáltatásból összegyűjtsék az eseményfolyamokat. Ezekbe az adatfolyamokba közé tartozik a közösségi média tevékenység hírcsatornák, a készlet kereskedelmi információ vagy az érzékelők. IoT-központok adatokat gyűjteni az eszközök internetes hálózatát (IoT) forgatókönyvekben csatlakoztatott eszközök vannak optimalizálva.  A BLOB storage tömeges eseményközpontokból adatfolyamként, például a naplófájlok bemeneti forrása is használható.  
-
-### <a name="reference-data-input"></a>Referenciaadat-bemenetek
-A Stream Analytics is támogatja a bemeneti néven *referenciaadatok*. Ez az kiegészítő adatokat, amelyek statikus vagy lassan módosítja. Referenciaadatok általában korrelációs és végrehajtott keresési műveletek végrehajtásához használatos. Például előfordulhat, hogy csatlakozik a adatok az adatok a referenciaadatok az adatfolyam-bemenetre mint statikus értékek kereshető SQL illesztés kell elvégeznie. Az Azure Blob storage jelenleg az egyetlen támogatott bemeneti forrás a referenciaadatoknál. Hivatkozási adatforrás a BLOB-adatobjektumok korlátozódnak 100 MB-nál.
-
-Adatok bemeneti hivatkozást létrehozni, lásd: [használata referenciaadatok](stream-analytics-use-reference-data.md).  
 
 ### <a name="compression"></a>Tömörítés
 A Stream Analytics minden adatok adatfolyam bemeneti forrás támogatja a tömörítést. Jelenleg támogatott referencia típusok a következők: None, GZip, és a Deflate tömörítést. Tömörítés támogatása nem érhető el a referenciaadatoknál. Az Avro-adatok tömörített megadott bemeneti formátum esetén transzparens módon azt kell kezelni. Adja meg az Avro szerializálási tömörítési típus nem kell. 
@@ -50,7 +37,6 @@ Hozzon létre új bemenetek, és a listában, vagy a folyamatos átviteli felada
 7. Válassza ki **teszt** bemeneti részleteit megjelenítő oldalon kell ellenőriznie, hogy a kapcsolati beállítások érvényes, és üzemel. 
 8. Kattintson a jobb gombbal a meglévő bemeneti nevét, és válassza ki **az adatokat a bemeneti** további vizsgálat szükséges.
 
-Is [Azure PowerShell](https://docs.microsoft.com/en-us/powershell/module/azurerm.streamanalytics/New-AzureRmStreamAnalyticsInput), [.Net API](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions), [REST API](https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-input), és [Visual Studio](stream-analytics-tools-for-visual-studio.md) létrehozása, szerkesztése és tesztelése a Stream Analytics-feladat a bemeneti adatok.
 
 ## <a name="stream-data-from-event-hubs"></a>Az Event Hubs adatfolyam adatok
 
@@ -72,7 +58,7 @@ Az alábbi táblázat ismerteti az egyes tulajdonságai a **új bemeneti** oldal
 | **Eseményközpont neve** | Az event hubs bemenetként használandó neve. |
 | **Eseményközpont házirend neve** | A megosztott elérési házirendet, amely hozzáférést biztosít az eseményközpontba. Minden megosztott elérési házirend rendelkezik egy nevet, hogy Ön meghatározott engedélyekkel és hozzáférési kulcsokkal. Ha nem az Eseményközpont beállításai is megadhat a rendszer automatikusan kitölti ezt a beállítást a manuálisan.|
 | **Event Hub fogyasztói csoportot** (ajánlott) | Ajánlott egy különálló fogyasztói csoportot használni minden egyes Stream Analytics-feladathoz. Ez a karakterlánc az event hubs származó adatok használandó fogyasztói csoportot határozza meg. Ha nincs felhasználói csoportban van megadva, a Stream Analytics-feladat használ a $Default fogyasztói csoportot.  |
-| **Esemény szerializálási formátum** | A szerializálási formátum (JSON, CSV vagy Avro) a bejövő adatfolyam. |
+| **Esemény szerializálási formátum** | A szerializálási formátum (JSON, CSV vagy Avro) a bejövő adatfolyam.  Győződjön meg arról, a JSON formátum igazodik a megadását, és nem tartalmazza a decimális számok kezdő 0. |
 | **Kódolás** | Jelenleg az UTF-8 az egyetlen támogatott kódolási formátum. |
 | **Esemény tömörítési típus** | A használni kívánt olvassa el a bejövő adatfolyam, például a None (alapértelmezett), vagy a GZip, Deflate tömörítést típusát. |
 
@@ -95,7 +81,7 @@ FROM Input
 ```
 
 > [!NOTE]
-> Használatakor az Event Hubs végpontjaként IoT Hub útvonalak tudja elérni az IoT-központ medadata használatával a [GetMetadataPropertyValue függvény](https://msdn.microsoft.com/en-us/library/azure/mt793845.aspx).
+> Használatakor az Event Hubs végpontjaként IoT Hub útvonalak tudja elérni az IoT-központ medadata használatával a [GetMetadataPropertyValue függvény](https://msdn.microsoft.com/library/azure/mt793845.aspx).
 > 
 
 ## <a name="stream-data-from-iot-hub"></a>Az IoT-központ adatfolyam adatait
@@ -122,7 +108,7 @@ Az alábbi táblázat ismerteti az egyes tulajdonságai a **új bemeneti** lap a
 | **Megosztott elérési házirend neve** | A megosztott elérési házirendet, amely hozzáférést biztosít az IoT-központot. Minden megosztott elérési házirend rendelkezik egy nevet, hogy Ön meghatározott engedélyekkel és hozzáférési kulcsokkal. |
 | **Megosztott elérési házirend kulcs** | A közös hozzáférési kulcs segítségével engedélyezi a hozzáférést az IoT-központ részére.  Ez a beállítás automatikusan kitölti, kivéve ha a lehetőséget, ha az Iot Hub beállításainak manuális. |
 | **Felhasználói csoport** | Erősen ajánlott használni, amikor egy másik felhasználói csoport minden egyes Stream Analytics-feladat. A fogyasztói csoportot az IoT Hub származó adatok szolgál. A Stream Analytics a $Default fogyasztói csoportot használ, hacsak nem ad meg.  |
-| **Esemény szerializálási formátum** | A szerializálási formátum (JSON, CSV vagy Avro) a bejövő adatfolyam. |
+| **Esemény szerializálási formátum** | A szerializálási formátum (JSON, CSV vagy Avro) a bejövő adatfolyam.  Győződjön meg arról, a JSON formátum igazodik a megadását, és nem tartalmazza a decimális számok kezdő 0. |
 | **Kódolás** | Jelenleg az UTF-8 az egyetlen támogatott kódolási formátum. |
 | **Esemény tömörítési típus** | A használni kívánt olvassa el a bejövő adatfolyam, például a None (alapértelmezett), vagy a GZip, Deflate tömörítést típusát. |
 
@@ -171,7 +157,7 @@ Az alábbi táblázat ismerteti az egyes tulajdonságai a **új bemeneti** oldal
 | **Elérési út mintája** (nem kötelező) | A fájl elérési útja, a megadott tárolóban található blobok helyének azonosításához használt. Az elérési útban, adja meg a következő három változó egy vagy több példányát: `{date}`, `{time}`, vagy `{partition}`<br/><br/>1. példa: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>2. példa: `cluster1/logs/{date}`<br/><br/>A `*` karakter értéke nem engedélyezett az elérési út előtag. Csak érvényes <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure blob karakterek</a> engedélyezettek. |
 | **Dátumformátum** (nem kötelező) | Ha a dátum változó az elérési út, a dátumformátum, amelyben a fájlok vannak rendezve. Példa: `YYYY/MM/DD` |
 | **Időformátum** (nem kötelező) |  Ha a idő változó az elérési út, az időformátum, amelyben a fájlok vannak rendezve. Jelenleg az egyetlen támogatott érték `HH` órán keresztül. |
-| **Esemény szerializálási formátum** | A szerializálási formátum (JSON, CSV vagy Avro) a bejövő adatfolyamokhoz. |
+| **Esemény szerializálási formátum** | A szerializálási formátum (JSON, CSV vagy Avro) a bejövő adatfolyam.  Győződjön meg arról, a JSON formátum igazodik a megadását, és nem tartalmazza a decimális számok kezdő 0. |
 | **Kódolás** | A fürt megosztott kötetei szolgáltatás és a JSON UTF-8 jelenleg az egyetlen támogatott kódolási formátum. |
 | **Tömörítés** | A használni kívánt olvassa el a bejövő adatfolyam, például a None (alapértelmezett), vagy a GZip, Deflate tömörítést típusát. |
 
@@ -195,12 +181,8 @@ FROM Input
 ```
 
 ## <a name="next-steps"></a>További lépések
-Hogy megismerkedett adatok kapcsolat beállításai az Azure-ban a Stream Analytics-feladatok. A Stream Analytics kapcsolatos további információkért lásd:
-
-* [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
-* [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
-* [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
-* [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+> [!div class="nextstepaction"]
+> [Gyors üzembe helyezés: A Stream Analytics-feladat létrehozása az Azure portál használatával](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

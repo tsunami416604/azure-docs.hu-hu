@@ -1,8 +1,8 @@
 ---
-title: "Azure Data Lake Store kereszt-régió áttelepítési |} Microsoft Docs"
-description: "További tudnivalók az Azure Data Lake Store kereszt-régió történő áttelepítés."
+title: Azure Data Lake Store kereszt-régió áttelepítési |} Microsoft Docs
+description: További tudnivalók az Azure Data Lake Store kereszt-régió történő áttelepítés.
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: swums
 manager: amitkul
 editor: swums
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/27/2017
 ms.author: stewu
-ms.openlocfilehash: b04cca6e551a15a31bbebc4932ea05dd39e8e916
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 488a9954cef210b727518375e218fe084129a6f7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="migrate-data-lake-store-across-regions"></a>Telepítse át a Data Lake Store régiók között
 
@@ -28,7 +28,7 @@ Az Azure Data Lake Store új régióban elérhetővé, választja előfordulhat,
 
 * **Azure-előfizetés**. További információkért lásd: [ma létrehozása az ingyenes Azure-fiókjával](https://azure.microsoft.com/pricing/free-trial/).
 * **A Data Lake Store-fiók két különböző régiókban**. További információkért lásd: [Ismerkedés az Azure Data Lake Store](data-lake-store-get-started-portal.md).
-* **Az Azure Data Factory**. További információkért lásd: [Bevezetés az Azure Data Factory](../data-factory/introduction.md).
+* **Az Azure Data Factory**. További információkért lásd: [Az Azure Data Factory bemutatása](../data-factory/introduction.md).
 
 
 ## <a name="migration-considerations"></a>Az áttelepítés szempontjai
@@ -45,11 +45,11 @@ Az áttelepítés tervezése során megfontolandó tényezőkről más fontos r�
 
 * **Eszközök**. Azt javasoljuk, hogy használja a [Azure Data Factory másolási tevékenység](../data-factory/connector-azure-data-lake-store.md) Data Lake Store fájlok másolásához. Adat-előállító adatátvitel nagy teljesítményt és a megbízhatóság támogatja. Ne feledje, hogy a Data Factory másolja, csak a mappahierarchia és a fájlok tartalmát. Akkor manuálisan kell alkalmaznia a hozzáférés-vezérlési listák (ACL), amely az új fiók a régi fiókot használja. További információ hányad forgatókönyvek esetén a teljesítmény célokat is beleértve: a [másolási tevékenység teljesítmény- és hangolási útmutató](../data-factory/copy-activity-performance.md). Ha azt szeretné, hogy gyorsabban másolt adatokra, szükség lehet további Felhőbeli adatok adatátviteli egység használatára. Olyan eszközöket, például a AdlCopy, nem támogatják az adatok másolását a régiók között.  
 
-* **Sávszélesség-költségek**. [Sávszélesség-költségek](https://azure.microsoft.com/en-us/pricing/details/bandwidth/) alkalmazni, mert egy Azure-régiót kivitt adatok.
+* **Sávszélesség-költségek**. [Sávszélesség-költségek](https://azure.microsoft.com/pricing/details/bandwidth/) alkalmazni, mert egy Azure-régiót kivitt adatok.
 
 * **Az adatok ACL-ek**. Az új adatok biztonságos hozzáférés-vezérlési listák alkalmaz a fájlok és mappák. További információkért lásd: [biztonságossá tétele az Azure Data Lake Store-ban tárolt adatok](data-lake-store-secure-data.md). Azt javasoljuk, hogy az áttelepítés használatával frissíti, és állítsa be a hozzáférés-vezérlési listák. Előfordulhat, hogy használni kívánt beállításokat a jelenlegi beállítások hasonlóak. Megtekintheti az ACL-ek minden olyan fájlt az Azure portál használatával alkalmazott [PowerShell-parancsmagok](/powershell/module/azurerm.datalakestore/get-azurermdatalakestoreitempermission), vagy az SDK-k.  
 
 * **Az elemzés services helyének**. A legjobb teljesítmény érdekében az analytics-szolgáltatások, Azure Data Lake Analytics vagy az Azure HDInsight, például az adatok ugyanabban a régióban kell lennie.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az Azure Data Lake Store áttekintése](data-lake-store-overview.md)

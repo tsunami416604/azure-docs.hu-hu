@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/01/2017
 ms.author: brenduns
-ms.openlocfilehash: 9c821f20ce5826666a05121e1a39882fae0930d3
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 10b2bf863540330a57b5aecac438f2b9e4bc8a74
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>VPN-átjáró Azure verem kapcsolatos
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
@@ -26,11 +26,11 @@ ms.lasthandoff: 04/23/2018
 
 Az Azure virtuális hálózat és a helyszíni hely közötti hálózati forgalom küldése, előtt létre kell hoznia a virtuális hálózati átjáró a virtuális hálózat.
 
-A VPN-átjáró a virtuális hálózati átjárók egy olyan típusa, amely titkosított adatforgalmat továbbít nyilvános kapcsolaton keresztül. VPN-átjárók használatával biztonságosan verem Azure virtuális hálózat és az Azure virtuális hálózat között, vagy egy virtuális hálózatot és a VPN-eszközhöz van csatlakoztatva egy másik hálózat közötti forgalmat küldeni.
+A VPN-átjáró a virtuális hálózati átjárók egy olyan típusa, amely titkosított adatforgalmat továbbít nyilvános kapcsolaton keresztül. VPN-átjárók használatával biztonságosan a verem Azure virtuális hálózat és a virtuális hálózat között forgalmat küldeni az Azure-ban. Biztonságosan a virtuális hálózat és a VPN-eszközhöz van csatlakoztatva egy másik hálózat közötti forgalmat is küldhet.
 
 Virtuális hálózati átjáró létrehozásakor megadja a létrehozni kívánt átjárótípust. Az Azure verem támogat egy olyan virtuális hálózati átjáró: a 'VPN-' típus.
 
-Mindegyik virtuális hálózat kettő virtuális hálózati átjáróval rendelkezhet, de típusonként csak eggyel. A kiválasztott beállításoktól függően több kapcsolatot is létrehozhat egyetlen VPN-átjáróhoz. Erre egy példa a Többhelyes csatlakozás konfiguráció.
+Mindegyik virtuális hálózat kettő virtuális hálózati átjáróval rendelkezhet, de típusonként csak eggyel. A kiválasztott beállításoktól függően több kapcsolatot is létrehozhat egyetlen VPN-átjáróhoz. Példa: egy többhelyes kapcsolat konfigurációját.
 
 > [!NOTE]
 > Az Azure VPN Gateway SKU úgy dönt, a sávszélesség adatátviteli sebességét, amelyek csatlakoznak az összes kapcsolat szét lehetnek osztva.  Azure-vermet a VPN Gateway SKU sávszélesség értéke alkalmazzák minden kapcsolati erőforrást, amely csatlakozik a hozzá.     
@@ -46,10 +46,10 @@ A VPN-átjárós kapcsolatok több erőforrást használnak, amelyek speciális 
 Az egyes erőforrások megfelelő beállítása kritikus fontosságú a sikeres kapcsolat létrehozásához. További információ az egyes erőforrások és a VPN-átjáró beállításainak: [kapcsolatos VPN-átjáró beállítások Azure verem](azure-stack-vpn-gateway-settings.md). Tekinthet meg információkat, amelyekkel jobban megértheti az átjáró, VPN és rugalmasságtípusokat, kapcsolattípusokat, átjáró-alhálózatot, helyi hálózati átjáró, valamint különböző más erőforrás-beállítások érdemes figyelembe venni.
 
 ### <a name="deployment-tools"></a>Üzembe helyezési eszközök
-Az erőforrások létrehozásának és konfigurálásának megkezdéséhez használjon egy konfigurációs eszközt, például az Azure Portalt. Később átválthat egy másik eszközre, például a PowerShellre, a további erőforrások konfigurálásához, vagy adott esetekben a létező erőforrások módosításához. Jelenleg nem lehet a minden erőforrást és erőforrás-beállítást az Azure Portalon konfigurálni. Az egyes kapcsolati topológiákhoz tartozó cikkekben lévő utasítások egyértelműsítik, hogy mikor van szükség egy speciális konfigurációs eszközre.
+Hozzon létre, és konfigurálja az erőforrásokat egy konfigurálása eszköz, például az Azure-portál használatával. Később lehet, hogy vált egy másik eszköz, például a PowerShell használatával további erőforrások konfigurálása, vagy módosítsa a meglévő erőforrásokat, ha alkalmazható. Jelenleg nem lehet a minden erőforrást és erőforrás-beállítást az Azure Portalon konfigurálni. Az egyes kapcsolati topológiákhoz tartozó cikkekben lévő utasítások egyértelműsítik, hogy mikor van szükség egy speciális konfigurációs eszközre.
 
 ## <a name="connection-topology-diagrams"></a>Kapcsolat topológiai diagramot
-Fontos szem előtt tartani, hogy a VPN-átjárós kapcsolatokhoz különböző konfigurációk érhetők el. Önnek kell eldöntenie, melyik konfiguráció felel meg a legjobban az igényeinek. Az alábbi szakaszokban a következő VPN-átjárós kapcsolatokról találhat információt és topológia-diagramokat: Az alábbi szakaszokban található táblázatok a következőket tartalmazzák:
+Fontos szem előtt tartani, hogy a VPN-átjárós kapcsolatokhoz különböző konfigurációk érhetők el. Határozza meg, melyik ajánlott konfiguráció megfelel az igényeinek. Az alábbi szakaszokban a következő VPN-átjárós kapcsolatokról találhat információt és topológia-diagramokat: Az alábbi szakaszokban található táblázatok a következőket tartalmazzák:
 
 - Elérhető üzemi modell
 - Elérhető konfigurációs eszközök
@@ -78,7 +78,7 @@ Kiválasztásakor egy magasabb gateway SKU, például a Standard keresztül Basi
 
 Az Azure verem nem támogatja a UltraPerformance gateway SKU, amely kizárólag az Express Route.
 
-A termékváltozat kiválasztásakor vegye figyelembe az alábbiakat:
+Ha SKU választja, vegye figyelembe a következőket:
 - Az Azure verem nem támogatja a csoportházirend-alapú átjárók.
 - Border Gateway Protocol (BGP) az alapszintű Termékváltozat nem támogatott.
 - Az ExpressRoute-VPN-átjáró lehet konfigurációk nem támogatottak a Azure verem
@@ -93,8 +93,8 @@ Az alábbi táblázatban az átjárótípusok és azok becsült összesített á
 |**Standard Termékváltozat**       | 100 Mbps  | 10    |
 |**Nagy teljesítményű Termékváltozat** | 200 Mbps    | 5 |
 ***(1)***  A VPN esetén átviteli sebesség nem garantált átviteli sebességgel létesítmények közötti kapcsolatok az interneten keresztül. Ez a maximális mérhető teljesítmény.  
-***(2)***  Maximális alagutak száma nem haladhatja meg az összes előfizetést Azure verem üzemelő példányonként.
-***(3)***  Az alapszintű termékváltozat nem támogatott a BGP.
+***(2)***  Maximális alagutak száma nem haladhatja meg az összes előfizetést Azure verem üzemelő példányonként.  
+***(3)***  Az alapszintű termékváltozat nem támogatott a BGP.  
 
 ## <a name="next-steps"></a>További lépések
 További tudnivalók [VPN-átjárók beállításainak](azure-stack-vpn-gateway-settings.md) Azure verem.

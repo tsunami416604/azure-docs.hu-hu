@@ -1,26 +1,26 @@
 ---
-title: "Hozzon létre egy átlátszó átjáróeszköz Azure IoT peremhálózati |} Microsoft Docs"
-description: "Azure IoT peremhálózati segítségével hozzon létre egy átlátszó átjáróeszköz, amely képes több eszközökre vonatkozó információkat"
+title: Hozzon létre egy átlátszó átjáróeszköz Azure IoT peremhálózati |} Microsoft Docs
+description: Azure IoT peremhálózati segítségével hozzon létre egy átlátszó átjáróeszköz, amely képes több eszközökre vonatkozó információkat
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 12/04/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 0ea4d8ec51211f1208083d3f93c3c100dc54e6b0
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0378cb2964a496a2bfe5a0bc08296cbab462a409
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-an-iot-edge-device-that-acts-as-a-transparent-gateway---preview"></a>Hozzon létre egy IoT peremhálózati eszköz, amely átlátszó átjáróként – előzetes
 
 Ez a cikk átlátszó átjáróként IoT peremhálózati eszköz használatára vonatkozó részletes útmutatást. Ez a cikk a többi kifejezés *IoT peremhálózati átjáró* átlátszó átjáróként használt IoT peremhálózati eszköz hivatkozik. Részletes információkat lásd: [hogyan egy IoT-peremhálózati eszköz egy átjáró használható][lnk-edge-as-gateway], ami fogalmi áttekintése. 
 
 >[!NOTE]
->Currently:
+>Jelenleg:
 > * Az átjáró le van választva az IoT-központ, ha az eszközöket az átjáró nem hitelesíthető.
 > * Az IoT-peremeszközök IoT peremhálózati átjáró nem tud kapcsolódni.
 
@@ -73,10 +73,10 @@ Használhatja a Powershell sample és Bash parancsfájlok ismertetett [Hitelesí
 
 ### <a name="bash"></a>Bash
 
-Az új eszköz-tanúsítvány létrehozásához:
+Az új eszköz-tanúsítvány létrehozásához.  **NE** nevét a `myGatewayCAName` azonos az átjáró-állomás neve.  Ez ugyanis az ügyfél hitelesítő elleni ezen tanúsítványok sikertelen lesz.
 
    ```bash
-   ./certGen.sh create_edge_device_certificate myGateway
+   ./certGen.sh create_edge_device_certificate myGatewayCAName
    ```
 
 Új fájlok jönnek létre:.\certs\new-edge-device.* tartalmazza a nyilvános kulcs és a PFX és.\private\new-edge-device.key.pem tartalmazza az eszköz titkos kulcsot.
@@ -84,6 +84,7 @@ Az új eszköz-tanúsítvány létrehozásához:
 Az a `certs` directory, a teljes lánc eszköz nyilvános kulcsának eléréséhez a következő parancsot:
 
    ```bash
+   cd ./certs
    cat ./new-edge-device.cert.pem ./azure-iot-test-only.intermediate.cert.pem ./azure-iot-test-only.root.ca.cert.pem > ./new-edge-device-full-chain.cert.pem
    ```
 
@@ -116,11 +117,11 @@ Az eszköz és a tanúsítvány az IoT-Edge futásidejű információt tartalmaz
 A Linux a Bash kimeneti használatával:
 
    ```bash
-   sudo iotedgectl setup --connection-string {device connection string}
-        --edge-hostname {gateway hostname, e.g. mygateway.contoso.com}
-        --device-ca-cert-file {full path}/certs/new-edge-device.cert.pem
-        --device-ca-chain-cert-file {full path}/certs/new-edge-device-full-chain.cert.pem
-        --device-ca-private-key-file {full path}/private/new-edge-device.key.pem
+   sudo iotedgectl setup --connection-string {device connection string} \
+        --edge-hostname {gateway hostname, e.g. mygateway.contoso.com} \
+        --device-ca-cert-file {full path}/certs/new-edge-device.cert.pem \
+        --device-ca-chain-cert-file {full path}/certs/new-edge-device-full-chain.cert.pem \
+        --device-ca-private-key-file {full path}/private/new-edge-device.key.pem \
         --owner-ca-cert-file {full path}/certs/azure-iot-test-only.root.ca.cert.pem
    ```
 

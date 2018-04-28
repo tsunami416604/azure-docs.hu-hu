@@ -12,13 +12,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2018
+ms.date: 04/23/2018
 ms.author: jgao
-ms.openlocfilehash: 6cb7bb982da36256707d080a7f5118127deb3a9c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 95ffc033a442fcf6074998398104ccb01e7a01a7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-empty-edge-nodes-on-hadoop-clusters-in-hdinsight"></a>Üres peremhálózati csomópontok használata a hdinsight Hadoop-fürtök
 
@@ -73,12 +73,11 @@ Miután létrehozott egy élcsomópontot, csatlakozás az élcsomóponthoz SSH h
 > Ugyanaz, mint a fürtök, peremhálózati csomópontok egyaránt felügyelt javítás.  További információkért lásd: [hdinsight javítás az operációs rendszer](./hdinsight-os-patching.md).
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>Meglévő fürt egy élcsomópontot hozzáadása
-Ebben a szakaszban egy Resource Manager-sablon egy élcsomópontot hozzáadása egy meglévő HDInsight-fürt használatára.  A Resource Manager-sablon található [GitHub](https://azure.microsoft.com/en-us/resources/templates/101-hdinsight-linux-add-edge-node/). A Resource Manager-sablon meghívja a helyen található parancsfájlművelet https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh. A parancsfájl nem más műveletet végrehajtani.  A Resource Manager-sablon a hívó parancsfájlművelet bemutatásához.
+Ebben a szakaszban egy Resource Manager-sablon egy élcsomópontot hozzáadása egy meglévő HDInsight-fürt használatára.  A Resource Manager-sablon található [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/). A Resource Manager-sablon meghívja a helyen található parancsfájlművelet https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh. A parancsfájl nem más műveletet végrehajtani.  A Resource Manager-sablon a hívó parancsfájlművelet bemutatásához.
 
 **Egy üres élcsomópontot hozzáadása egy meglévő fürthöz**
 
-1. HDInsight-fürtök létrehozása, ha még nincs ilyen.  Lásd: [Hadoop oktatóanyag: Hadoop használatának megkezdésében a HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).
-2. Kattintson az alábbi képre kattintva jelentkezzen be az Azure-ba, és nyissa meg az Azure Resource Manager-sablon az Azure portálon. 
+1. Kattintson az alábbi képre kattintva jelentkezzen be az Azure-ba, és nyissa meg az Azure Resource Manager-sablon az Azure portálon. 
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-add-edge-node%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-use-edge-node/deploy-to-azure.png" alt="Deploy to Azure"></a>
 3. Konfigurálja a következő tulajdonságokat:
@@ -98,7 +97,7 @@ Ebben a szakaszban egy Resource Manager-sablon egy élcsomópontot hozzáadása 
 ## <a name="add-an-edge-node-when-creating-a-cluster"></a>Adja hozzá egy élcsomópontot, ha a fürt létrehozása
 Ebben a szakaszban a Resource Manager-sablon létrehozása a HDInsight-fürt egy élcsomópontot a használhatja.  A Resource Manager-sablon megtalálható a [Azure gyors üzembe helyezés sablontárban](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/). A Resource Manager-sablon meghívja a helyen található parancsfájlművelet https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh. A parancsfájl nem más műveletet végrehajtani.  A Resource Manager-sablon a hívó parancsfájlművelet bemutatásához.
 
-**Egy üres élcsomópontot hozzáadása egy meglévő fürthöz**
+**HDInsight-fürtöt létrehozni egy élcsomópontot**
 
 1. HDInsight-fürtök létrehozása, ha még nincs ilyen.  Lásd: [Hadoop használatának megkezdésében a HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 2. Kattintson az alábbi képre kattintva jelentkezzen be az Azure-ba, és nyissa meg az Azure Resource Manager-sablon az Azure portálon. 
@@ -121,7 +120,7 @@ Ebben a szakaszban a Resource Manager-sablon létrehozása a HDInsight-fürt egy
 
 ## <a name="add-multiple-edge-nodes"></a>Több biztonsági csomópontok hozzáadása
 
-Több biztonsági csomópontokat adhat hozzá egy HDInsight-fürtre.  A több peremhálózati csomópontok konfigurációs csak végezhető Azure Resource Manager-sablonok használatával.  Tekintse meg a sablon mintában Ez a cikk elején.  Frissíteni kell a **targetInstanceCount** megfelelően a létrehozandó peremhálózati csomópontok száma.
+Peremhálózati több csomópont is hozzáadhat egy HDInsight-fürthöz.  A több peremhálózati csomópontok konfigurációs csak végezhető Azure Resource Manager-sablonok használatával.  Tekintse meg a sablon mintában Ez a cikk elején.  Frissíteni kell a **targetInstanceCount** megfelelően a létrehozandó peremhálózati csomópontok száma.
 
 ## <a name="access-an-edge-node"></a>Hozzáférés egy élcsomópontot
 Élcsomópont ssh-végpont esetében &lt;EdgeNodeName >.&lt; ClusterName >-ssh.azurehdinsight.net:22.  Például új-edgenode.myedgenode0914-ssh.azurehdinsight.net:22.
@@ -132,7 +131,7 @@ Több biztonsági csomópontokat adhat hozzá egy HDInsight-fürtre.  A több pe
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Nyissa meg a HDInsight-fürt egy élcsomópontot.
-3. Kattintson a **alkalmazások** a fürt paneljén. Ekkor megjelenik az élcsomóponthoz.  Az alapértelmezett név az **új edgenode**.
+3. Kattintson a **alkalmazások**. Ekkor megjelenik az élcsomóponthoz.  Az alapértelmezett név az **új edgenode**.
 4. Kattintson az élcsomóponthoz. Ekkor megjelenik az SSH-végpontot.
 
 **A Hive használata a peremhálózati csomóponton**
@@ -153,7 +152,7 @@ Azure-portálról egy élcsomópontot törölheti.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Nyissa meg a HDInsight-fürt egy élcsomópontot.
-3. Kattintson a **alkalmazások** a fürt paneljén. Peremhálózati lista megjelenik.  
+3. Kattintson a **alkalmazások**. Peremhálózati lista megjelenik.  
 4. Kattintson a jobb gombbal az élcsomóponthoz, törlése, és kattintson a kívánt **törlése**.
 5. Kattintson a **Yes** (Igen) gombra a megerősítéshez.
 

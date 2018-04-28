@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: json
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 04/25/2018
 ms.author: richrund
-ms.openlocfilehash: e51dab1543c9c5c1c762134b3e73d608bcd523ba
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 297f15430c64e5de3c10e6f38855664a50d11a8d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Log Analytics használata Azure Resource Manager-sablonok kezelése
 Használhat [Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-authoring-templates.md) létrehozása és konfigurálása a Naplóelemzési munkaterület. A sablonok végrehajtható műveletek közé tartoznak:
@@ -124,7 +124,7 @@ A következő paraméterek állítsa be az alapértelmezett érték:
 
 Az üzembe helyezés eltarthat néhány percig. A Befejezés után, amely tartalmazza az eredmény az alábbihoz hasonló üzenet jelenik meg:<br><br> ![Ha befejeződött a telepítés példa eredménye](./media/log-analytics-template-workspace-configuration/template-output-01.png)
 
-## <a name="create-and-configure-a-log-analytics-workspace"></a>Hozza létre és konfigurálja a Naplóelemzési munkaterület
+## <a name="configure-a-log-analytics-workspace"></a>A Naplóelemzési munkaterület konfigurálása
 A következő sablon minta bemutatja, hogyan:
 
 1. A munkaterület megoldások hozzáadása
@@ -230,7 +230,7 @@ A következő sablon minta bemutatja, hogyan:
             "Category": "VMSS",
             "ETag": "*",
             "DisplayName": "VMSS Instance Count",
-            "Query": "Event | where Source == "ServiceFabricNodeBootstrapAgent" | summarize AggregatedValue = count() by Computer",
+            "Query": "Event | where Source == \"ServiceFabricNodeBootstrapAgent\" | summarize AggregatedValue = count() by Computer",
             "Version": 1
           }
         },
@@ -506,10 +506,9 @@ Az Azure gyors üzembe helyezés sablon gyűjtemény Naplóelemzési, beleértve
 * [A napló Analytics Virtuálisgép-bővítmény linuxos virtuális gép telepítése](https://azure.microsoft.com/documentation/templates/201-oms-extension-ubuntu-vm/)
 * [A figyelő Azure Site Recovery segítségével egy meglévő Naplóelemzési munkaterület](https://azure.microsoft.com/documentation/templates/asr-oms-monitoring/)
 * [Egy meglévő Naplóelemzési munkaterület használata Azure-webalkalmazások figyelése](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
-* [A figyelő SQL Azure-ban egy meglévő Naplóelemzési munkaterület](https://azure.microsoft.com/documentation/templates/101-sqlazure-oms-monitoring/)
-* [A Service Fabric-fürt telepítéséhez és figyeléséhez azt egy meglévő Naplóelemzési munkaterület](https://azure.microsoft.com/documentation/templates/service-fabric-oms/)
-* [A Service Fabric-fürt központi telepítése és a figyeléshez Naplóelemzési munkaterület létrehozása](https://azure.microsoft.com/documentation/templates/service-fabric-vmss-oms/)
+* [Meglévő tárfiók hozzáadása az OMS-be](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
 
 ## <a name="next-steps"></a>További lépések
-* [Ügynökök üzembe helyezés virtuális gépek Azure Resource Manager-sablonok](log-analytics-azure-vm-extension.md)
+* [Windows-ügynök telepítése Azure virtuális gépek erőforrás-kezelő sablonnal](../virtual-machines/windows/extensions-oms.md).
+* [Linux-ügynök telepítése Azure virtuális gépek erőforrás-kezelő sablonnal](../virtual-machines/linux/extensions-oms.md).
 

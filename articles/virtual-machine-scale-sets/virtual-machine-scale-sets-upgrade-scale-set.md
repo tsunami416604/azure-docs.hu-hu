@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: negat
-ms.openlocfilehash: bfbcf8ff3f24b69b49b9a2bd5d567e1ead57d974
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 662cea7ac47e411b127540faf5cab8b3c4d8964a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Módosítsa a virtuálisgép-méretezési csoport
 Az alkalmazások életciklusa során szükség lehet módosítani, vagy a virtuálisgép-méretezési csoport frissítése. Ezeket a frissítéseket is venni, hogyan lehet frissíteni a beállításait, a méretezési, vagy módosítsa az alkalmazás konfigurációját. A cikkből megtudhatja, hogyan lehet módosítani egy meglévő méretezési a REST API-k, az Azure PowerShell vagy Azure CLI 2.0 készletben.
@@ -373,12 +373,12 @@ Ha egy alkalmazás központi telepítése egy méretezési extensions segítség
 Azt is alkalmazások esetében gyakori egyéni lemezkép keresztül telepíteni. Ebben a forgatókönyvben a következő szakasz foglalkozik.
 
 ### <a name="os-updates"></a>Operációs rendszer frissítése érdekében
-Ha Azure platformon lemezképeket használ, a kép módosításával frissítheti a *imageReference* (további információkért lásd: a [REST API-dokumentáció](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachinescalesets/createorupdate)).
+Ha Azure platformon lemezképeket használ, a kép módosításával frissítheti a *imageReference* (további információkért lásd: a [REST API-dokumentáció](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)).
 
 >[!NOTE]
 > Platform képekkel esetében gyakori, a lemezkép referencia verziója "legújabb" megadása. Létrehozásakor réteget, és lemezkép alaphelyzetbe, virtuális gépek jönnek létre az elérhető legújabb verzióra. Azonban az **nem** jelenti azt, hogy az operációsrendszer-lemezképek automatikusan frissül időbeli kiadott új lemezkép-verziók. Egy külön funkció jelenleg előzetes, amely automatikus operációsrendszer-frissítések. További információkért lásd: a [automatikus operációsrendszer-frissítések dokumentáció](virtual-machine-scale-sets-automatic-upgrade.md).
 
-Egyéni lemezképek használatakor a lemezkép frissítéséhez frissítheti a *imageReference* azonosítója (további információkért tekintse meg a [REST API-dokumentáció](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachinescalesets/createorupdate)).
+Egyéni lemezképek használatakor a lemezkép frissítéséhez frissítheti a *imageReference* azonosítója (további információkért tekintse meg a [REST API-dokumentáció](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)).
 
 ## <a name="examples"></a>Példák
 

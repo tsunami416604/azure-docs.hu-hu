@@ -9,11 +9,11 @@ ms.custom: develop databases
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: jodebrui
-ms.openlocfilehash: 36a6b32851c4778db3405b6b9b35d9551181abf4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b4f8388fdf104253aad07de77e89c30df4e4b128
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>A memórián belüli technológiái az SQL-adatbázis teljesítményének optimalizálása
 
@@ -22,7 +22,7 @@ A memórián belüli technológiái az Azure SQL Database, a különböző munka
 Az alábbiakban a két példa hogyan segített a memórián belüli online Tranzakciófeldolgozási jelentősen fejleszti a teljesítményt:
 
 - A memórián belüli online Tranzakciófeldolgozási, [kvórum üzleti megoldások tudta 70 %-kal dtu-k fokozása mellett az alkalmazások és szolgáltatások duplán](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database).
-    - DTU azt jelenti, hogy *adatbázis tranzakciós egység*, és egy az erőforrás-felhasználás mesurement tartalmazza.
+    - DTU azt jelenti, hogy *adatbázis tranzakciós egység*, és az erőforrás-felhasználás mérték tartalmazza.
 - A következő videó bemutatja az erőforrás-felhasználást egy példa munkaterhelés jelentős fejlesztéseket: [memórián belüli online Tranzakciófeldolgozási az Azure SQL adatbázis Video](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB).
     - További információkért lásd a következő blogbejegyzésben: [memórián belüli online Tranzakciófeldolgozási az Azure SQL adatbázis Blog utáni](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
@@ -43,7 +43,7 @@ Az Azure SQL-adatbázis a következő memórián belüli technológiákat rendel
 
 Oszlopcentrikus indexek és a memórián belüli online Tranzakciófeldolgozási óta SQL Server termékhez 2012 és a 2014, illetve. Az Azure SQL Database és SQL Server megosztani a memórián belüli technológiák azonos végrehajtására. Következő lépésként ezek a technológiák új lehetőségek kiadott az Azure SQL Database először előtt a SQL Server.
 
-Ez a témakör a memórián belüli online Tranzakciófeldolgozási és oszlopcentrikus indexek, az Azure SQL Database vonatkozó szempontokat ismerteti, és minták is tartalmazza:
+Ez a cikk memórián belüli online Tranzakciófeldolgozási és oszlopcentrikus indexek, az Azure SQL Database vonatkozó szempontokat ismerteti, és minták is tartalmazza:
 - A tárolási és adatok méretkorlátait látni fogja, ezek a technológiák hatását.
 - Láthatja, hogy ezek a technológiák között a különböző árképzési szinteket használó adatbázisok mozgása kezelése.
 - Látni fogja, hogy bemutassa a memórián belüli online Tranzakciófeldolgozási, valamint az Azure SQL Database oszlopcentrikus indexek használata két minta.
@@ -92,7 +92,7 @@ A rugalmas készletek a memórián belüli online Tranzakciófeldolgozási táro
 
 ### <a name="data-size-and-storage-for-columnstore-indexes"></a>Adatok mérete és az oszlopcentrikus indexek tároló
 
-Oszlopcentrikus indexek nem szükséges a memóriában. A csak kap az indexek mérete ezért a maximális általános adatbázis méretet, amelyet dokumentációja a [SQL adatbázis szolgáltatásszintjeinek](sql-database-service-tiers.md) cikk.
+Oszlopcentrikus indexek nem szükséges a memóriában. A csak kap az indexek mérete ezért a maximális általános adatbázis méretet, amelyet dokumentációja a [alapjául szolgáló vásárlási modell DTU-alapú](sql-database-service-tiers-dtu.md) és [vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers-vcore.md) cikkeket.
 
 Fürtözött oszlopcentrikus indexek használata esetén a oszlopos tömörítési alaptábla tárolására szolgál. Ez a fajta tömörítés jelentősen csökkenti a tárolási kezdjen a felhasználói adatok, ami azt jelenti, hogy több adatot elfér az adatbázisban. A tömörítés további növelni a [oszlopos archiválási tömörítési](https://msdn.microsoft.com/library/cc280449.aspx#Using Columnstore and Columnstore Archive Compression). Az adatok jellegétől függ érhet el tömörítés mértéke, de 10-szer a tömörítés nem ritka.
 
@@ -169,7 +169,7 @@ CREATE TABLE [SalesLT].[SalesOrderHeader_inmem](
 ```
 
 
-#### <a name="error-40536"></a>Error 40536
+#### <a name="error-40536"></a>Hiba 40536
 
 
 Ha hiba 40536 a T-SQL parancsfájl futtatásakor, futtassa a következő T-SQL parancsfájlt, és győződjön meg arról, hogy az adatbázis támogatja-e a memóriában lévő:
@@ -223,8 +223,8 @@ SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
 
 Az egyetlen különbség a következő két *tárolt eljárások* , hogy az első eljárás használja verziók memóriaoptimalizált táblák esetén a második eljárás a lemezen tábláit használja:
 
-- SalesLT**.**usp_InsertSalesOrder**_inmem**
-- SalesLT**.**usp_InsertSalesOrder**_ondisk**
+- SalesLT **.** usp_InsertSalesOrder **_inmem**
+- SalesLT **.** usp_InsertSalesOrder **_ondisk**
 
 
 Ez a szakasz használata a hasznos látható **ostress.exe** segédprogram stressful szinten két tárolt eljárások végrehajtása. Összehasonlíthatja mennyi ideig tart a két magas terhelés kísérletekhez befejezéséhez.

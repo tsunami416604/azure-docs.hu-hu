@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/26/2018
 ms.author: johnkem
-ms.openlocfilehash: 1963c4d7b2e895032862fae896c6d9ff7cf80806
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 090629874e75d75223e018b002cf04a02b1d1bb0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automatikus engedélyezés a Resource Manager-sablon használatával erőforrás létrehozásakor diagnosztikai beállítások
 Ebben a cikkben megmutatjuk, hogyan használható egy [Azure Resource Manager sablon](../azure-resource-manager/resource-group-authoring-templates.md) létrehozásakor erőforrás diagnosztikai beállításainak konfigurálására. Ez lehetővé teszi, hogy automatikusan elindítja a diagnosztikai naplók és a mérni kívánt Event Hubs tárfiókokban archiválás őket, vagy Naplóelemzési elküldi őket egy erőforrás létrehozásakor.
@@ -116,7 +116,7 @@ Nem számítási erőforrásokat akkor két műveletet kell végrehajtania:
     ]
     ```
 
-A Tulajdonságok blob a diagnosztikai beállítások a következő [a jelen cikkben ismertetett formátum](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings/createorupdate). Hozzáadás a `metrics` tulajdonság lehetővé teszi, hogy ezek azonos kimenetek, feltéve, hogy erőforrás metrikáit is küldhet [az erőforrás támogatja az Azure-figyelő metrikák](monitoring-supported-metrics.md).
+A Tulajdonságok blob a diagnosztikai beállítások a következő [a jelen cikkben ismertetett formátum](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate). Hozzáadás a `metrics` tulajdonság lehetővé teszi, hogy ezek azonos kimenetek, feltéve, hogy erőforrás metrikáit is küldhet [az erőforrás támogatja az Azure-figyelő metrikák](monitoring-supported-metrics.md).
 
 Ez egy teljes példa, amely hoz létre egy logikai alkalmazást, és bekapcsolja a streaming az Eseményközpontokhoz és a tárolási tárfiókokban.
 
@@ -134,7 +134,7 @@ Ez egy teljes példa, amely hoz létre egy logikai alkalmazást, és bekapcsolja
     },
     "testUri": {
       "type": "string",
-      "defaultValue": "http://azure.microsoft.com/en-us/status/feed/"
+      "defaultValue": "http://azure.microsoft.com/status/feed/"
     },
     "settingName": {
       "type": "string",

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2018
 ms.author: johndeu;
-ms.openlocfilehash: cf4541aebe0c735d66f42532c74e97bf9bbc4a5f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 9c8472e74cab779e417e68316a6125d40410ef1c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Jelzés túllépte az időkorlátot metaadat az élő adatfolyam-továbbítás
 
@@ -44,9 +44,9 @@ A kulcs szavak "kell", "Nem", "REQUIRED", "SHALL", "Nem kell", "SHOULD", "Nem ke
 | Forrás            | Az Azure Media adatfolyam-szolgáltatás                                                                                                                                                                                                |
 | Csatornagyűjtő      | Az Azure Media élő adatfolyam-szolgáltatás                                                                                                                                                                                           |
 | HLS               | Apple HTTP Live Streaming protokoll                                                                                                                                                                                               |
-| DASH              | Dinamikus adaptív adatfolyam-HTTP-kapcsolaton keresztül                                                                                                                                                                                             |
+| KÖTŐJEL              | Dinamikus adaptív adatfolyam-HTTP-kapcsolaton keresztül                                                                                                                                                                                             |
 | Zökkenőmentes            | Zökkenőmentes Streamelési protokoll                                                                                                                                                                                                        |
-| MPEG2-TS          | MPEG-2 Transport adatfolyamok                                                                                                                                                                                                         |
+| MPEG2 – TS          | MPEG-2 Transport adatfolyamok                                                                                                                                                                                                         |
 | RTMP              | Valós idejű multimédiás protokoll                                                                                                                                                                                                    |
 | uimsbf            | Előjel nélküli egész számokat, legjelentősebb először bit.                                                                                                                                                                                    |
 
@@ -70,7 +70,7 @@ Media Services RTMP egyszerű mód, támogatja a "onAdCue" a következő formát
 | Köteg        | Karakterlánc     | Szükséges | Az esemény üzenet.  Kell kell jelölnie egy egyszerű módot "SpliceOut" splice.                                              |
 | id         | Karakterlánc     | Szükséges | A splice vagy szegmens leíró egyedi azonosítója. Ez az üzenet példányát azonosítja.                            |
 | Időtartam   | Szám     | Szükséges | A splice időtartama. Egységek törtrész másodperc alatt.                                                                |
-| Eltelt idő    | Szám     | Optional | A jel alatt ismételt támogatása érdekében hangolására, ebben a mezőben kell lennie a bemutató, hogy mennyi ideig a splice kezdete óta eltelt. Egységek törtrész másodperc alatt. Ha egyszerű módot, ez az érték nem haladhatja meg a splice eredeti időtartama.                                                  |
+| elapsed    | Szám     | Optional | A jel alatt ismételt támogatása érdekében hangolására, ebben a mezőben kell lennie a bemutató, hogy mennyi ideig a splice kezdete óta eltelt. Egységek törtrész másodperc alatt. Ha egyszerű módot, ez az érték nem haladhatja meg a splice eredeti időtartama.                                                  |
 | time       | Szám     | Szükséges | A splice bemutató időben idején kell lennie. Egységek törtrész másodperc alatt.                                     |
 
 ---------------------------
@@ -83,7 +83,7 @@ Media Services RTMP egyszerű mód, támogatja a "onAdCue" a következő formát
 | type       | Karakterlánc     | Szükséges | Egy URN vagy URL-cím azonosítására az üzenet séma; például "urn: Példa: jelzés: 1.0".  [SCTE-35] üzenetek esetén "urn: scte:scte35:2013a:bin" ahhoz, hogy az [SCTE-67] HLS, Smooth és kötőjel ügyfelek küldendő üzenetek kell.  |
 | id         | Karakterlánc     | Szükséges | A splice vagy szegmens leíró egyedi azonosítója. Ez az üzenet példányát azonosítja.  Egyenértékű szemantika-üzenetek rendelkezik ugyanazt az értéket.|
 | Időtartam   | Szám     | Szükséges | Az esemény vagy ad splice-szegmens, ha ismert időtartama. Ismeretlen, ha az érték 0 kell lennie.                                                                 |
-| Eltelt idő    | Szám     | Optional | A [SCTE-35] ad jel ahhoz, hogy hangolására alatt ismételt, ez a mező a bemutató, hogy mennyi ideig a splice kezdete óta eltelt kell lennie. Egységek törtrész másodperc alatt. [SCTE-35] módban Ez az érték haladhatja meg a splice vagy szegmens eredeti megadott időtartama.                                                  |
+| elapsed    | Szám     | Optional | A [SCTE-35] ad jel ahhoz, hogy hangolására alatt ismételt, ez a mező a bemutató, hogy mennyi ideig a splice kezdete óta eltelt kell lennie. Egységek törtrész másodperc alatt. [SCTE-35] módban Ez az érték haladhatja meg a splice vagy szegmens eredeti megadott időtartama.                                                  |
 | time       | Szám     | Szükséges | Az esemény vagy ad splice bemutató idején.  A bemutató időpontja és időtartama kell igazítania az adatfolyam hozzáférési pontok (SAP) 1 vagy 2, típus i. [ISO-14496-12] melléklet. A HLS kilépő időpontja és időtartama kell igazodni szegmens határokat. A bemutató idejét és a különböző eseményüzeneteket belül azonos időtartamát eseményfelhasználó nem lehet átfedésben. Egységek törtrész másodperc alatt.
 
 ---------------------------
@@ -151,7 +151,7 @@ A MediaDataBox (mdat) mezőben a következő formátumban kell rendelkeznie:
 | verzió:                 | 32 bites, előjel nélküli egész (uimsbf) | Szükséges      | Meghatározza, hogy a "mdat" mező tartalmát formátuma. Ismeretlen verziójú a rendszer figyelmen kívül hagyja. Jelenleg az egyetlen támogatott verzió: 1.                                                                                                                                                                                                                                                                                                                                                      |
 | id                      | 32 bites, előjel nélküli egész (uimsbf) | Szükséges      | Ez az üzenet példányát azonosítja. Egyenértékű szemantika-üzenetek van ugyanarra az értékre; Ez azt jelenti, hogy bármely események üzenetablak ugyanezzel az azonosítóval rendelkező feldolgozása is használhatók.                                                                                                                                                                                                                                                                                                            |
 | presentation_time_delta | 32 bites, előjel nélküli egész (uimsbf) | Szükséges      | A fragment_absolute_time a TrackFragmentExtendedHeaderBox és a presentation_time_delta megadott összege kell lennie a bemutató esemény időpontja. A bemutató időpontja és időtartama kell igazítania az adatfolyam hozzáférési pontok (SAP) 1 vagy 2, típus i. [ISO-14496-12] melléklet. A HLS kilépő időpontja és időtartama kell igazodni szegmens határokat. A bemutató idejét és a különböző eseményüzeneteket belül azonos időtartamát eseményfelhasználó nem lehet átfedésben. |
-| üzenet                 | bájttömbben.                       | Szükséges      | Az esemény üzenet. [SCTE-35] üzenetek az üzenet a bináris splice_info_section(), bár [SCTE-67] azt javasolja, hogy valami mással. [SCTE-35] üzenetek kell ahhoz, hogy az [SCTE-67] HLS, Smooth és kötőjel ügyfelek küldendő üzenetek splice_info_section(). [SCTE-35] üzenetek a bináris splice_info_section() "mdat" mezőben a tartalom, pedig nem base64-kódolású.                                                            |
+| message                 | bájttömbben.                       | Szükséges      | Az esemény üzenet. [SCTE-35] üzenetek az üzenet a bináris splice_info_section(), bár [SCTE-67] azt javasolja, hogy valami mással. [SCTE-35] üzenetek kell ahhoz, hogy az [SCTE-67] HLS, Smooth és kötőjel ügyfelek küldendő üzenetek splice_info_section(). [SCTE-35] üzenetek a bináris splice_info_section() "mdat" mezőben a tartalom, pedig nem base64-kódolású.                                                            |
 
 ------------------------------
 
@@ -228,7 +228,7 @@ A Szegmens lista egy egyéni M3U címkében rendszeres metaadat az Apple HTTP Li
 | TÍPUS               | idézőjelek közé zárt karakterlánc                 | Szükséges                                  | Egy URN vagy URL-cím azonosítására az üzenet séma; például "urn: Példa: jelzés: 1.0". [SCTE-35] üzenetek típusa "scte35" különleges értéket veszi fel.                                                                                                                                |
 | ID (Azonosító)                 | idézőjelek közé zárt karakterlánc                 | Szükséges                                  | Az esemény egyedi azonosítója. Ha nincs megadva a azonosító, ha az üzenet van okozhatnak, Azure Media Services egyedi azonosítót hoz létre.                                                                                                                                          |
 | IDŐTARTAM           | decimális lebegőpontos szám | Szükséges                                  | Az esemény időtartamát. Ismeretlen, ha az érték 0 kell lennie. Egységek factional másodperc alatt.                                                                                                                                                                                           |
-| ELAPSED            | decimális lebegőpontos szám | Nem kötelező, de szükséges késleltetett ablak | A jel bemutató csúszóablak támogatásához alatt ismételt, írjon be az esemény kezdete óta eltelt idő bemutató mennyisége. Egységek törtrész másodperc alatt. Ez az érték haladhatja meg a splice vagy szegmens eredeti megadott időtartama. |
+| ELTELT IDŐ            | decimális lebegőpontos szám | Nem kötelező, de szükséges késleltetett ablak | A jel bemutató csúszóablak támogatásához alatt ismételt, írjon be az esemény kezdete óta eltelt idő bemutató mennyisége. Egységek törtrész másodperc alatt. Ez az érték haladhatja meg a splice vagy szegmens eredeti megadott időtartama. |
 | IDŐ               | decimális lebegőpontos szám | Szükséges                                  | A bemutató esemény időpontja. Egységek törtrész másodperc alatt.                                                                                                                                                                                                                    |
 
 
@@ -407,7 +407,7 @@ Smooth Streaming-betöltési megköveteli, hogy az adathordozó adatok (mdat) ta
 
 **[AMF0]**  ["Művelet üzenet formátuma AMF0"](http://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf)
 
-**[LIVE-FMP4]**  [Töredezett MP4 élő azure Media Services betöltési meghatározása](https://docs.microsoft.com/en-us/azure/media-services/media-services-fmp4-live-ingest-overview)
+**[LIVE-FMP4]**  [Töredezett MP4 élő azure Media Services betöltési meghatározása](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview)
 
 **[ISO-14496-12]**  ISO/IEC 14496-12: rész 12 ISO alap media fájlformátum – Edition 2012-07-15 negyedik.
 

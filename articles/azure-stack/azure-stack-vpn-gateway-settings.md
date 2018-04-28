@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/18/2018
 ms.author: brenduns
-ms.openlocfilehash: b732770b2eace07690d112e81c6916b16b2cb5b0
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: d23f5b91e08c169975ac5d0bb8d9f048828c2910
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>VPN-átjáró konfigurációs beállítások Azure verem
 
@@ -45,16 +45,13 @@ New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 ### <a name="gateway-skus"></a>Gateway termékváltozatok
 Egy virtuális hálózati átjáró létrehozásakor meg kell adni a használni kívánt termékváltozatot. Válassza ki a számítási feladatok, a teljesítmény, a funkciók és a szolgáltatói szerződés igényeinek megfelelő termékváltozatokat.
 
->[!NOTE]
-> A klasszikus virtuális hálózatok továbbra is a régi termékváltozatokat használják. További információkat az átjárók új termékváltozatairól [a virtuális hálózati átjárók termékváltozatainak használatát bemutató (régi)](/azure/vpn-gateway/vpn-gateway-about-skus-legacy) cikkben talál.
-
 Az Azure verem kínál az alábbi VPN gateway SKU:
 
 |   | VPN Gateway teljesítménye |VPN-átjáró maximális IPsec-alagutak |
 |-------|-------|-------|
 |**Alapszintű Termékváltozat**  | 100 Mbps  | 10    |
 |**Standard Termékváltozat**           | 100 Mbps  | 10    |
-|**Nagy teljesítményű Termékváltozat** | 200 Mbps    | 30    |
+|**Nagy teljesítményű Termékváltozat** | 200 Mbps    | 5 |
 
 ### <a name="resizing-gateway-skus"></a>Átjáró-termékváltozat átméretezése
 Azure verem nem támogatja a méretezze át a támogatott régi termékváltozatok közötti SKU.
@@ -90,11 +87,11 @@ New-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName t
 A virtuális hálózati átjáró VPN-átjáró konfigurációt létrehozásakor meg kell adnia egy VPN-típus. A VPN-típus az Ön által a létrehozni kívánt kapcsolat topológia függ.  A VPN-típus az Ön által használt hardver is függ. S2S-konfigurációk esetén van szükség, a VPN-eszközön. VPN-eszközök csak egy meghatározott VPN-típus támogatja.
 
 > [!IMPORTANT]  
-> Ilyenkor Azure verem csak az útvonal-alapú VPN-típus támogatja. Ha az eszköz támogatja a házirend alapú VPN-hálózatokhoz csak, majd az Azure oszlopból az eszközök kapcsolatok nem támogatottak.
+> Ilyenkor Azure verem csak az útvonal-alapú VPN-típus támogatja. Ha az eszköz támogatja a házirend alapú VPN-hálózatokhoz csak, majd az Azure oszlopból az eszközök kapcsolatok nem támogatottak.  Emellett Azure verem nem támogatja a házirend-alapú forgalom választók útvonal alapú átjárók jelenleg IPSec/IKE-házirend egyéni konfigurációk nincsenek még támogatott.
 
 - **PolicyBased**: *(az Azure-ban, de nem Azure verem által támogatott)* házirendalapú VPN titkosítják és irányítják a csomagokat a címelőtag-kombinációkkal konfigurált IPsec-házirendek alapján IPsec-alagutakon keresztül a helyszíni hálózat és a verem Azure virtuális hálózatot. A házirend (vagy forgalomválasztó) általában egy hozzáférési listaként van megadva a VPN-eszköz konfigurációjában.
 
-- **RouteBased**: RouteBased VPN-EK "útvonalakat" használja az az IP-továbbítási vagy útvonalválasztási táblán, hogy a csomagokat a megfelelő alagútkapcsolatokhoz irányítsák a. Az alagútkapcsolatok ezután titkosítják vagy visszafejtik az alagutakba bemenő vagy onnan kijövő csomagokat. A házirend (vagy forgalomválasztója) VPN RouteBased konfigurált bármely elem közöttiként (vagy helyettesítő karakterek). Egy RouteBased VPN-típus értéke RouteBased.
+- **RouteBased**: RouteBased VPN-EK "útvonalakat" használja az az IP-továbbítási vagy útvonalválasztási táblán, hogy a csomagokat a megfelelő alagútkapcsolatokhoz irányítsák a. Az alagútkapcsolatok ezután titkosítják vagy visszafejtik az alagutakba bemenő vagy onnan kijövő csomagokat. A házirend (vagy forgalomválasztója) VPN RouteBased konfigurált bármely elem közöttiként (vagy helyettesítő karakterek) által alapértelmezett, és nem módosítható. Egy RouteBased VPN-típus értéke RouteBased.
 
 A következő PowerShell-példa – VpnType RouteBased határozza meg. Egy átjáró létrehozásakor biztosítania kell, hogy -VpnType megfeleljen a konfigurációnak.
 
@@ -110,7 +107,7 @@ A következő táblázat a VPN-átjáró rendszerkövetelményeit sorolja fel.
 |--|--|--|--|--|
 | **Hely-hely kapcsolatot (S2S kapcsolat)** | Nem támogatott | RouteBased VPN-konfiguráció | RouteBased VPN-konfiguráció | RouteBased VPN-konfiguráció |
 | **Hitelesítési módszer**  | Nem támogatott | Előre megosztott kulcs S2S  | Előre megosztott kulcs S2S  | Előre megosztott kulcs S2S  |   
-| **S2S-kapcsolatok maximális száma**  | Nem támogatott | 10 | 10| 30|
+| **S2S-kapcsolatok maximális száma**  | Nem támogatott | 10 | 10| 5|
 |**Aktív útválasztás-támogatás (BGP)** | Nem támogatott | Nem támogatott | Támogatott | Támogatott |
 
 ### <a name="gateway-subnet"></a>Átjáró alhálózata
@@ -160,7 +157,7 @@ Azure, amely támogatja több ajánlatok egy kezdeményező és a válaszoló is
 |IKE verziószám |IKEv2 |
 |Titkosítás és kivonatoló algoritmusokat (titkosítás)     | GCMAES256|
 |Titkosítás és kivonatoló algoritmusokat (hitelesítés) | GCMAES256|
-|SA élettartama (Idő)  | 27,700 másodpercben |
+|SA élettartama (Idő)  | 27 000 másodperc |
 |SA élettartama (bájt) | 819,200       |
 |Sérülés utáni titkosságvédelem (PFS) |PFS2048 |
 |Kapcsolat megszakadásának észlelése | Támogatott|  

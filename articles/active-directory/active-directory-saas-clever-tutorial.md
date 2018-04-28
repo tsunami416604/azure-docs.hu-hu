@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2018
+ms.date: 04/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 6531e6c8c97bfadac898c4aa4943855dcd32bdfe
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: b7529b0942cd86b0d9e657d8d0f61313aa7f0a66
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clever"></a>Oktatóanyag: Azure Active Directoryval integrált Clever
 
@@ -110,10 +110,10 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://clever.com/in/<companyname>`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://clever.com/<companyname>`
+    b. Az a **azonosító** szövegmező, írja be az URL-cím: `https://clever.com/oauth/saml/metadata.xml`
 
     > [!NOTE]
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [intelligens ügyfél-támogatási csoport](https://clever.com/about/contact/) beolvasni ezeket az értékeket.
+    > Bejelentkezési URL-cím értéke nincs valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címet. Ügyfél [intelligens ügyfél-támogatási csoport](https://clever.com/about/contact/) lekérni ezt az értéket.
 
 4. Az a **SAML-aláíró tanúsítványa** területen kattintson a Másolás gombra másolása **alkalmazás összevonási metaadatainak URL-címe** és illessze be a Jegyzettömbbe.
     
@@ -129,7 +129,8 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     
     | Attribútum neve  | Attribútum értéke |
     | --------------- | -------------------- |
-    | clever.Student.credentials.District\_felhasználónév  | User.userPrincipalName |
+    | clever.Teacher.credentials.district_username|User.userPrincipalName|
+    | clever.Student.credentials.district_username| User.userPrincipalName |
     | Utónév  | User.givenName |
     | Vezetéknév  | User.surname |
 
@@ -157,19 +158,22 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Azonnali bejelentkezési](./media/active-directory-saas-clever-tutorial/ic798984.png "azonnali bejelentkezés")
 
+    > [!NOTE]
+    > Egyszeri bejelentkezés tesztelheti, mielőtt kell fordulnia [intelligens ügyfél-támogatási csoport](https://clever.com/about/contact/) háttérben lévő Office 365 egyszeri bejelentkezés engedélyezése.
+
 10. Az a **azonnali bejelentkezési** lapon, a következő lépésekkel:
-      
+    
       ![Azonnali bejelentkezési](./media/active-directory-saas-clever-tutorial/ic798985.png "azonnali bejelentkezés")
-      
+    
       a. Típus a **bejelentkezési URL-cím**.
-      
+    
       >[!NOTE]
       >A **bejelentkezési URL-cím** egy egyéni érték. Ügyfél [intelligens ügyfél-támogatási csoport](https://clever.com/about/contact/) lekérni ezt az értéket.
-      
+    
       b. Mint **Identitásrendszere**, jelölje be **az AD FS**.
 
       c. Az a **metaadatainak URL-CÍMÉT** szövegmezőhöz Beillesztés **alkalmazás összevonási metaadatainak URL-címe** érték, amely az Azure portálról másolta.
-      
+    
       d. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó

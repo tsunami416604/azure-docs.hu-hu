@@ -13,11 +13,11 @@ ms.workload: identity
 ms.date: 04/20/2018
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 0eb567c8587b0eec367160facc86f163ef6b3c15
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: b3cc52246db213ff8d5946a1ff3ac3dbe231f4ad
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Támogatás B2B az Azure AD férhetnek hozzá a helyszíni alkalmazások
 
@@ -45,8 +45,8 @@ B2B felhasználók hozzáférést biztosítson a helyszíni alkalmazások védet
 
    A B2B felhasználói forgatókönyvhöz kétféleképpen érhető el, hogy a Vendég felhasználói objektumok, amelyek szükségesek a hitelesítéshez a helyi címtárban létrehozásához használhatja:
 
-   - [A Microsoft Identity Manager (MIM) és a MIM management Agent ügynököt a Microsoft Graph](#create-b2b-guest-user-objects-through-mim-preview). Ehhez a megoldáshoz szükségesek, hogy rendelkezik-e az Azure AD Premium P1 előfizetéssel. 
-   - [PowerShell parancsfájl](#create-b2b-guest-user-objects-through-a-script-preview). A parancsfájl használata több könnyű megoldást nem igénylő MIM vagy az Azure AD Premium. 
+   - A Microsoft Identity Manager (MIM) és a [Microsoft Graph MIM-kezelőügynök](#create-b2b-guest-user-objects-through-mim-preview). 
+   - [PowerShell parancsfájl](#create-b2b-guest-user-objects-through-a-script-preview). A parancsfájl használata nem szükséges a MIM több könnyű megoldást. 
 
 A következő ábra biztosít az Azure AD-alkalmazásproxy magas szintű áttekintését és a generáció a B2B felhasználói objektum, a helyszíni címtár B2B felhasználónak hozzáférést biztosít a helyszíni integrált Windows-Hitelesítést és Kerberos által korlátozott Delegálás alkalmazások segítségével. A számozott lépéseket ismertetjük részletesen az alábbiakban a diagram.
 
@@ -86,6 +86,6 @@ Győződjön meg arról, hogy rendelkezik-e megfelelő ügyféllicenc (CAL) azon
 ## <a name="next-steps"></a>További lépések
 
 - [Az Azure Active Directory B2B együttműködés hibrid szervezeteknek](active-directory-b2b-hybrid-organizations.md)
-- [Helyileg kezelt partner fiókok hozzáférést biztosít felhőbeli erőforrásokat használó Azure AD B2B együttműködés](active-directory-b2b-hybrid-on-premises-to-cloud.md)
+
 - Az Azure AD Connect áttekintéséért lásd: [integrálása a helyszíni címtárakat az Azure Active Directoryval](connect/active-directory-aadconnect.md).
 

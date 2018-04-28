@@ -10,11 +10,11 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 08/15/2016
 ms.author: heidist
-ms.openlocfilehash: 974f2df8c4c9c9730f176a1e8472199960b359f6
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 8f83f2652f7bd34f53dde1674c022f8792ae7658
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>A PowerShell segítségével az Azure Search szolgáltatás kezelése
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.lasthandoff: 04/23/2018
 > 
 
 Ez a témakör ismerteti a PowerShell-parancsokat az Azure Search szolgáltatások felügyeleti feladatok elvégzéséhez. Végigvezetjük a search szolgáltatás létrehozása, skálázás, és annak API-kulcsok kezelése.
-Ezek a parancsok párhuzamosan használható felügyeleti lehetőségekről a [Azure Search felügyeleti REST API](http://msdn.microsoft.com/library/dn832684.aspx).
+Ezek a parancsok párhuzamosan használható felügyeleti lehetőségekről a [Azure Search felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement).
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Az Azure PowerShell 1.0-ás vagy újabb verzióját kell rendelkeznie. Útmutatásért lásd: [telepítse és konfigurálja az Azure Powershellt](/powershell/azure/overview).

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: 8ec74f69d2de7b167fcc66d0e2499d052f0bf18e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: 6274e4ebbc9f3c5b21c479b10e112459000fd28b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>A Microsoft Azure Tártallózó kibocsátási megjegyzései
 
@@ -227,7 +227,7 @@ A cikkben a kibocsátási megjegyzések a 0.9.6. Azure Tártallózó (előzetes 
 * Ha próbált megnyitni, vagy letöltheti egy blobot a Windows fájl neve érvénytelen, a művelet sikertelen lesz. A Tártallózó most ellenőrzés, hogy a blob neve érvénytelen, és kérje meg, ha szeretné kódolása, vagy hagyja ki a blob. A Tártallózó is észlelni fogja, ha a fájl nevét úgy tűnik, hogy kódolhatók, és megkérdezi, hogy ha kívánja dekódolni a feltöltés előtt.
 * Blob feltöltése közben a cél blob tároló szerkesztője néha nem megfelelően frissíti. A probléma javítását.
 * Több űrlap kapcsolati karakterláncok és a SAS URI-k támogatása közleményében szerepelt. Rendszer foglalkoztak minden ismert problémákat, de küldjön visszajelzést, ha hibát tapasztal további.
-* A frissítési értesítés 0.9.0-s a felhasználók megszakadt. Ezt a problémát, és azok a hiba érinti, manuálisan töltse le a legújabb verzióját a Tártallózó [Itt](https://azure.microsoft.com/en-us/features/storage-explorer/).
+* A frissítési értesítés 0.9.0-s a felhasználók megszakadt. Ezt a problémát, és azok a hiba érinti, manuálisan töltse le a legújabb verzióját a Tártallózó [Itt](https://azure.microsoft.com/features/storage-explorer/).
 
 ### <a name="known-issues"></a>Ismert problémák
 * A Tártallózó nem támogatja az AD FS-fiókokat.
@@ -281,7 +281,7 @@ A cikkben a kibocsátási megjegyzések a 0.9.6. Azure Tártallózó (előzetes 
 * Ha próbált megnyitni, vagy letöltheti egy blobot a Windows fájl neve érvénytelen, a művelet sikertelen lesz. A Tártallózó most ellenőrzés, hogy a blob neve érvénytelen, és kérje meg, ha szeretné kódolása, vagy hagyja ki a blob. A Tártallózó is észlelni fogja, ha a fájl nevét úgy tűnik, hogy kódolhatók, és megkérdezi, hogy ha kívánja dekódolni a feltöltés előtt.
 * Blob feltöltése közben a cél blob tároló szerkesztője néha nem megfelelően frissíti. A probléma javítását.
 * Több űrlap kapcsolati karakterláncok és a SAS URI-k támogatása közleményében szerepelt. Rendszer foglalkoztak minden ismert problémákat, de küldjön visszajelzést, ha hibát tapasztal további.
-* A frissítési értesítés 0.9.0-s a felhasználók megszakadt. Ezt a problémát, és azok a hiba érinti, manuálisan töltse le a legújabb verzióját a Tártallózó [Itt](https://azure.microsoft.com/en-us/features/storage-explorer/)
+* A frissítési értesítés 0.9.0-s a felhasználók megszakadt. Ezt a problémát, és azok a hiba érinti, manuálisan töltse le a legújabb verzióját a Tártallózó [Itt](https://azure.microsoft.com/features/storage-explorer/)
 
 ### <a name="known-issues"></a>Ismert problémák
 * A Tártallózó nem támogatja az AD FS-fiókokat.

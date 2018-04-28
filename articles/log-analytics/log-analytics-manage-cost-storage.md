@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: magoedte
-ms.openlocfilehash: 865b0e485480f5ee7d676d3a6c90cb51fd50d19c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9a360b41b24f4aca3c3aba29387ecd55faf881b7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>Költség kezelése adatmennyiség és a Naplóelemzési megőrzési vezérlése
 A Naplóelemzési úgy tervezték, hogy a skála és támogatási összegyűjtésének, indexelő és nagy mennyiségű adatot naponta forrásból tárolása a vállalati vagy Azure szolgáltatásba telepített.  Amikor ez lehet, hogy a szervezete elsődleges illesztőprogram, költséghatékonyságának végső soron az alapul szolgáló illesztőprogram. Ebből a célból, fontos ismerni, hogy a napló Analytisc munkaterület költségét nem csupán mennyisége alapján adatgyűjtés, azt is a kiválasztott csomag függ, és mennyi ideig úgy döntött, hogy a csatlakoztatott forrásból adatainak tárolásához.  
@@ -38,7 +38,7 @@ Tekintse meg az egyes megoldások dokumentációjában mennyi adatot összegyűj
 Ha az "ingyenes" tarifacsomag, adatok korlátozódik 7 napos adatmegőrzési. A "/ GB-os (önálló)" vagy "Csomópontonként (OMS)" rétegek gyűjtött adatok az elmúlt 31 napra vonatkozó és megőrzési a 2 éves növelhető. Díjak vonatkoznak, ha egy hosszabb megőrzési időtartam. Az ingyenes csomagban rendelkezik 500 MB-os napi adatfeldolgozást korlátot, és ha talál meg, hogy következetesen túllépi az engedélyezett mennyiségi összegek, a munkaterület módosíthatja a Per GB-os vagy Per-csomópontok szintjeinek meghaladja ezt a határt adatok gyűjtéséért felelős ügyfélfeladatot. A terv típusának módosítása, tetszőleges időpontban, és az árakkal kapcsolatos további információt, lásd: [díjszabása](https://azure.microsoft.com/pricing/details/log-analytics/). 
 
 > [!NOTE]
-> A április 2018 azt [bevezetett](https://azure.microsoft.com/en-us/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) Azure figyelési új árképzési modellt. Ez a modell egy egyszerű "használatalapú" modell a teljes kaphat a szolgáltatások figyelése fogad el. További információ a [új árképzési modellt](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), hogy a [ebben a modellben való áthelyezése hatásának értékelése](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) a használati minták alapján és [az új modell programba történő](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model). 
+> A április 2018 azt [bevezetett](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) Azure figyelési új árképzési modellt. Ez a modell egy egyszerű "használatalapú" modell a teljes kaphat a szolgáltatások figyelése fogad el. További információ a [új árképzési modellt](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), hogy a [ebben a modellben való áthelyezése hatásának értékelése](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) a használati minták alapján és [az új modell programba történő](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model). 
 
 A díjszabási modell vagy a réteg, függetlenül az adatok mennyisége kezelésére fundmental számára a költségek szabályozása. A választott és bizonyos megoldást belül van, amelyben az adatok mennyisége korlátozódik, és segítségével kétféleképpen szabályozhatja a költség, Naplóelemzés konfigurációja vezérelt ezek a napi cap és az adatok megőrzési.  
 

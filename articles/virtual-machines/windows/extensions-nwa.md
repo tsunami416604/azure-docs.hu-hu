@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: 84ac50ea555df538cc6347be58537e31b0f14611
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: dcfbc22b0f3d6eac58a6a6e0c95dd5c1f8df3527
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>Windows hálózati figyelő ügynök virtuálisgép-bővítmény
 
@@ -40,7 +40,7 @@ A hálózati figyelő ügynök kiterjesztése a Windows is futtathatók a Window
 
 A hálózati figyelő ügynök funkciók némelyike megköveteli, hogy a cél virtuális gép kapcsolódnia kell az internetre. Kimenő kapcsolatok létesítéséhez képessége nélkül a hálózati figyelő ügynök nem lesz tölthet fel csomag rögzíti a tárfiókhoz. További részletekért lásd: a [hálózati figyelőt dokumentáció](../../network-watcher/network-watcher-monitoring-overview.md).
 
-## <a name="extension-schema"></a>A séma kiterjesztése
+## <a name="extension-schema"></a>Bővítményséma
 
 A következő JSON jeleníti meg a hálózati figyelő ügynök bővítmény sémáját. A bővítmény sem van szüksége, és nem támogatja, a megadott felhasználó által megadott beállításokat és az alapértelmezett beállításon támaszkodik.
 
@@ -109,4 +109,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentW
 
 ### <a name="support"></a>Támogatás
 
-Ha ez a cikk bármely pontján további segítségre van szüksége, tekintse meg a hálózati figyelő felhasználói útmutató dokumentációját, vagy lépjen kapcsolatba az Azure-szakértők a a [MSDN Azure és a Stack Overflow fórumok](https://azure.microsoft.com/en-us/support/forums/). Másik lehetőségként is fájl az Azure támogatási incidens. Lépjen a [az Azure támogatási webhelyén](https://azure.microsoft.com/en-us/support/options/) válassza ki a Get-támogatási szolgálathoz. Támogatja az Azure használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/en-us/support/faq/).
+Ha ez a cikk bármely pontján további segítségre van szüksége, tekintse meg a hálózati figyelő felhasználói útmutató dokumentációját, vagy lépjen kapcsolatba az Azure-szakértők a a [MSDN Azure és a Stack Overflow fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként is fájl az Azure támogatási incidens. Lépjen a [az Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) válassza ki a Get-támogatási szolgálathoz. Támogatja az Azure használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).

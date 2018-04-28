@@ -9,19 +9,19 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 08/29/2016
 ms.author: heidist
-ms.openlocfilehash: 3ef946c6c0ab9c111932b3145fd46ae6ef2684cd
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 516760031918c667b39cc8b3dd94d91c42623efc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-page-search-results-in-azure-search"></a>A keresési eredmények oldalakra tördelése az Azure Search-ben
 Ez a cikk az Azure Search szolgáltatás REST API használatával valósítja meg a keresési eredmények oldalának, például az érintett teljes, a dokumentum beolvasása, a rendezési sorrend és a navigációs szokásos megoldások szabványos elemeit nyújt útmutatást.
 
-Az alábbiakban leírt minden esetben keresztül megadott lapokkal kapcsolatos beállításokat, amelyek adatokat vagy a keresési eredmények oldalának információkat a [keresés a dokumentum](http://msdn.microsoft.com/library/azure/dn798927.aspx) az Azure Search szolgáltatás küldött kérelmeket. A kérelemnek tartalmaznia egy GET parancs, a elérési utat, és a lekérdezési paraméterek, amely tájékoztatja a szolgáltatás milyen vonatkozó kérelem és a hogyan állítson össze a választ.
+Az alábbiakban leírt minden esetben keresztül megadott lapokkal kapcsolatos beállításokat, amelyek adatokat vagy a keresési eredmények oldalának információkat a [keresés a dokumentum](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) az Azure Search szolgáltatás küldött kérelmeket. A kérelemnek tartalmaznia egy GET parancs, a elérési utat, és a lekérdezési paraméterek, amely tájékoztatja a szolgáltatás milyen vonatkozó kérelem és a hogyan állítson össze a választ.
 
 > [!NOTE]
-> Kérés számos olyan elemeket, például egy URL-címe és az elérési út, HTTP-műveletet, `api-version`, és így tovább. Kivonatosan mutatja azt levágja a példák, jelölje ki, amely fontos tördelési szintaxisát. Tekintse meg a [Azure Search szolgáltatás REST API](http://msdn.microsoft.com/library/azure/dn798935.aspx) dokumentációjában szintaxis található.
+> Kérés számos olyan elemeket, például egy URL-címe és az elérési út, HTTP-műveletet, `api-version`, és így tovább. Kivonatosan mutatja azt levágja a példák, jelölje ki, amely fontos tördelési szintaxisát. Tekintse meg a [Azure Search szolgáltatás REST API](https://docs.microsoft.com/rest/api/searchservice) dokumentációjában szintaxis található.
 > 
 > 
 
@@ -59,7 +59,7 @@ Egy mozaik elrendezés mezők vissza:
 
 Képek és médiafájlok nem közvetlenül kereshető, és egy másik tárolási platform, például az Azure Blob Storage tárolóban, költségek csökkentése érdekében kell tárolni. Az index és a dokumentumok határozza meg az URL-címet a külső tartalom tárol. A mezőben egy Képhivatkozás módon használhatja. A kép URL-című dokumentumban kell lennie.
 
-A termék leírását tartalmazó lapon a beolvasandó egy **onClick** esemény, használja [keresési dokumentum](http://msdn.microsoft.com/library/azure/dn798929.aspx) felelt meg a kulcs a dokumentum beolvasása. A kulcs adattípusa `Edm.String`. Az ebben a példában is *246810*. 
+A termék leírását tartalmazó lapon a beolvasandó egy **onClick** esemény, használja [keresési dokumentum](https://docs.microsoft.com/rest/api/searchservice/Lookup-Document) felelt meg a kulcs a dokumentum beolvasása. A kulcs adattípusa `Edm.String`. Az ebben a példában is *246810*. 
 
         GET /indexes/onlineCatalog/docs/246810
 
@@ -81,7 +81,7 @@ Fogad el bemenetként a kijelölt rendezési beállítást, és ez a lehetőség
  ![][5]
 
 > [!NOTE]
-> Az alapértelmezett pontozási nem elegendő-e több forgatókönyv, de javasolt relevanciájának alapozva egyéni pontozási profil helyette. Egyéni pontozási profil akadályozható meg, amelyek az üzleti több hasznos program elemekre. Lásd: [a relevanciaprofil felvétele](http://msdn.microsoft.com/library/azure/dn798928.aspx) további információt. 
+> Az alapértelmezett pontozási nem elegendő-e több forgatókönyv, de javasolt relevanciájának alapozva egyéni pontozási profil helyette. Egyéni pontozási profil akadályozható meg, amelyek az üzleti több hasznos program elemekre. Lásd: [a relevanciaprofil felvétele](https://docs.microsoft.com/rest/api/searchservice/Add-scoring-profiles-to-a-search-index) további információt. 
 > 
 > 
 
@@ -95,12 +95,12 @@ Egy szűrőt, vagy egy keresési kifejezés nélkül küldhet. Például a köve
 
         GET /indexes/onlineCatalog/docs?$filter=brandname eq ‘Microsoft’ and category eq ‘Games’
 
-Lásd: [dokumentumok keresése (Azure Search API)](http://msdn.microsoft.com/library/azure/dn798927.aspx) kapcsolatos további információk `$filter` kifejezések.
+Lásd: [dokumentumok keresése (Azure Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) kapcsolatos további információk `$filter` kifejezések.
 
 ## <a name="see-also"></a>Lásd még:
-* [Az Azure Search szolgáltatás REST API](http://msdn.microsoft.com/library/azure/dn798935.aspx)
-* [Indexművelet](http://msdn.microsoft.com/library/azure/dn798918.aspx)
-* [A dokumentum műveletek](http://msdn.microsoft.com/library/azure/dn800962.aspx)
+* [Az Azure Search szolgáltatás REST API](https://docs.microsoft.com/rest/api/searchservice)
+* [Indexművelet](https://docs.microsoft.com/rest/api/searchservice/Index-operations)
+* [A dokumentum műveletek](https://docs.microsoft.com/rest/api/searchservice/Document-operations)
 * [Videók és oktatóanyagok Azure Search kapcsolatos](search-video-demo-tutorial-list.md)
 * [Az Azure Search jellemzőalapú navigáció](search-faceted-navigation.md)
 
